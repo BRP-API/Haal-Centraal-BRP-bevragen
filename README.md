@@ -35,6 +35,13 @@ Vanuit VNG Realisatie, en op verzoek van verschillende gemeenten, is ook de mani
 ## Documentatie
 * Hoe u kunt [bijdragen](https://github.com/VNG-Realisatie/Tutorial/blob/master/CONTRIBUTING.md)
 * [Omgangsvormen](https://github.com/VNG-Realisatie/Tutorial/blob/master/CODE_OF_CONDUCT.md)
+* In welke [documenten(soorten)](https://github.com/VNG-Realisatie/gemma-zaken/docs/content/introduction/documentatie.md) vindt (of plaatst) u welke informatie
+
+## Bronnen
+* Informatiemodel [RSGB](https://www.gemmaonline.nl/index.php/RSGB_3.0_in_ontwikkeling) (in ontwikkeling)
+* [API strategie en URI strategie](https://aandeslagmetdeomgevingswet.nl/digitaal-stelsel/documenten/documenten/api-uri-strategie/)
+* [GEMMA 2](https://www.gemmaonline.nl/index.php/GEMMA_Architectuur)
+* [Common Ground](https://commonground.pleio.nl)
 
 ## Contactpersonen:
 * Projectleider: Frank Samwel frank.samwel@vng.nl
