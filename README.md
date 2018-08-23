@@ -6,7 +6,7 @@ Inhoudelijk startpunt voor de bevragingen zijn de geïnventariseerde vragen die 
 
 Startpunt voor informatiemodellen van gegevens in de berichten is RSGB 3.
 
-Startpunt voor technische uitwisselafspraken voor de te ontwikkelen RESTfull API operaties is de DSO API strategie en DSO URI strategie. 
+Startpunt voor technische uitwisselafspraken voor de te ontwikkelen RESTfull API operaties is de DSO API strategie en DSO URI strategie.
 
 De koppelvlakstandaard voor bevragings-API’s zijn modulair opgebouwd. De koppelvlakstandaard is opgebouwd in 6 modules, voor de verschillende domeinen:
 * BAG (basisgegevens adressen en gebouwen)
@@ -33,9 +33,13 @@ Voor het domein BRP is juist RSGB 3 aangepast naar het GBA model, aangezien de o
 Vanuit VNG Realisatie, en op verzoek van verschillende gemeenten, is ook de manier waarop koppelvlakstandaarden worden ontwikkeld aangepast. Een meer agile aanpak, waarbij direct getoetst wordt op een aantal criteria, met name met betrekking tot de eenvoud van implementatie. Het ontwikkelen van test- of referentie-implementaties maakt direct onderdeel uit van het ontwikkelen van koppelvlakken.
 
 ## Documentatie
+* [Productvisie](https://github.com/VNG-Realisatie/RSGB-bevragingen/blob/master/docs/productvision.md)
+* [Definition of Ready](https://github.com/VNG-Realisatie/RSGB-bevragingen/blob/master/docs/definition_of_ready.md)
+* [Definition of Done](https://github.com/VNG-Realisatie/RSGB-bevragingen/blob/master/docs/definition_of_done.md)
 * Hoe u kunt [bijdragen](https://github.com/VNG-Realisatie/Tutorial/blob/master/CONTRIBUTING.md)
 * [Omgangsvormen](https://github.com/VNG-Realisatie/Tutorial/blob/master/CODE_OF_CONDUCT.md)
-* In welke [documenten(soorten)](https://github.com/VNG-Realisatie/gemma-zaken/docs/content/introduction/documentatie.md) vindt (of plaatst) u welke informatie
+* Technische specificaties (Open API Specificaties en JSON schema):
+  * [Module ingeschreven personen](https://github.com/VNG-Realisatie/RSGB-bevragingen/tree/master/api-specificatie/Module%20ingeschreven%20personen)
 
 ## Bronnen
 * Informatiemodel [RSGB](https://www.gemmaonline.nl/index.php/RSGB_3.0_in_ontwikkeling) (in ontwikkeling)
