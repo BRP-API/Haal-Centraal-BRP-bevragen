@@ -106,8 +106,6 @@ Elk deelproject doorloopt de volgende stappen:
 -	Consultatie van belanghebbenden leidend tot vaststelling van de eerste versie van de standaard.
 -	Implementatie en in productie nemen van de API’s door de bronhouder (indien van toepassing) en bij enkele gemeentelijke applicaties (consumers van de API’s).
 
-## Transitie
-
 ## Gerelateerde trajecten
 Gedeeltelijk parallel aan de (eerste) deelprojecten voor RSGB-bevragingen wordt het project Zaak- Documentservices uitgevoerd. In dit project wordt ook de werkwijze voor het ontwikkelen en specificeren van een RESTful API koppelvlakstandaard uitgewerkt. De RSGB-bevragingen koppelvlakken volgen deze werkwijze. Wanneer blijkt dat aspecten van deze werkwijze slecht toepasbaar is of aanvulling nodig heeft, wordt dit teruggekoppeld naar het Zaak- Documentservices project.
 
