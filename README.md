@@ -39,7 +39,7 @@ Vanuit VNG Realisatie, en op verzoek van verschillende gemeenten, is ook de mani
 * Hoe u kunt [bijdragen](https://github.com/VNG-Realisatie/Tutorial/blob/master/CONTRIBUTING.md)
 * [Omgangsvormen](https://github.com/VNG-Realisatie/Tutorial/blob/master/CODE_OF_CONDUCT.md)
 * Technische specificaties (Open API Specificaties en JSON schema):
-  * [Module ingeschreven personen](https://github.com/VNG-Realisatie/RSGB-bevragingen/tree/master/api-specificatie/Module%20ingeschreven%20personen)
+  * [Module ingeschreven personen](https://github.com/VNG-Realisatie/RSGB-bevragingen/tree/master/api-specificatie/Module%20ingeschreven%20personen) op [SwaggerHub](https://app.swaggerhub.com/apis/VNGRealisatie/Module_ingeschreven_personen/1.0)
 
 ## Bronnen
 * Informatiemodel [RSGB](https://www.gemmaonline.nl/index.php/RSGB_3.0_in_ontwikkeling) (in ontwikkeling)
