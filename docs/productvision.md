@@ -22,11 +22,21 @@ raken (i.p.v. te concurreren op infrastructuur)
 - Backwards compatibiliteit is eenvoudiger te behouden
 
 ## Context
+In 2017 is koppelvlakstandaard [RSGB-bevragingen 1.0](https://www.gemmaonline.nl/index.php/RSGB_Bevragingen) ontwikkeld en vastgesteld, met daarin een aantal geïnventariseerde vragen op RSGB. Deze versie is gebaseerd op informatiemodel RSGB 2.0. Technisch bestaat deze standaard uit een SOAP/XML (niet StUF) variant en een RPC/JSON variant.
+
+Inmiddels is er bij gemeenten behoefte ontstaan aan de architectuurontwikkeling [Common Ground](https://vng.nl/samen-organiseren/common-ground). Als onderdeel van die ontwikkeling is er behoefte aan het direct bij de bron kunnen bevragen van gegevens, inplaats van het distribureren en kopiëren van gegevens over veel verschillende gemeentelijke systemen. Daarom worden er afspraken gemaakt met de bronhouders (landelijke voorzieningen en basisregistraties), bijvoorbeeld het Kadaster voor BAG en BRK en Kamer van Koophandel voor HR) voor het ontsluiten van de gegevens.
+
+Hierbij hoort ook een transitie naar actuele informatiemodellen, in dit geval de overgang naar RSGB 3, én naar moderne uitwisseltechnieken en -architectuurstijlen (in dit geval RESTfull API's op basis van JSON). We streven voor de uitwisseltechnieken naar het bewegen richting één overheidsbrede API strategie. Het startpunt hiervoor is de [DSO API strategie](https://aandeslagmetdeomgevingswet.nl/digitaal-stelsel/documenten/documenten/api-uri-strategie/).
+
+In 2018 is er een pilot gedaan met de gemeente Den Haag en het Kadaster voor het direct bevragen van BRK gegevens bij het Kadaster. Naar aanleiding van constateringen uit deze pilot is/wordt RSGB 3 geactualiseerd, zodat het beter aansluit op de informatiemodellen en datamodellen van de bronnen waaruit gegevens worden bevraagd.
+Voor het domein BRP (ingeschreven personen) is juist RSGB 3 aangepast naar het GBA model, aangezien de ontwikkeling van BRP is stopgezet.
+
+Vanuit VNG Realisatie, en op verzoek van verschillende gemeenten, is ook de manier waarop koppelvlakstandaarden worden ontwikkeld aangepast. Een meer agile aanpak, waarbij direct getoetst wordt op een aantal criteria, met name met betrekking tot de eenvoud van implementatie. Het ontwikkelen van test- of referentie-implementaties maakt direct onderdeel uit van het ontwikkelen van koppelvlakken.
 VNG en gemeenten hebben een beweging in gang gezet richting het ‘samen organiseren’, een ‘common ground’ en een gegevenslandschap. Deze ontwikkelingen hebben belangrijke gevolgen voor de gemeentelijke gegevens- en berichtenstandaarden.
 
 Sterk verbonden, en deels afgeleid van de beweging naar een gegevenslandschap, is een andere manier van gegevens ontsluiten, waarbij een beweging wordt gemaakt van op StUF gebaseerde berichtenstandaarden naar API’s.
 
-Bij VNG Realisatie en gemeenten is in de afgelopen jaren een ontwikkeling in gang gezet naar andere koppelvlakstandaarden en een andere manier om koppelvlakstandaarden te ontwikkelen:
+Bij VNG Realisatie en gemeenten is in de afgelopen jaren een ontwikkeling in gang gezet naar andere koppelvlakstandaarden en een andere manier om koppelvlakstandaarden te ontwikkelen. Hiertoe zijn er een aantal notities geschreven die deze visie en ontwikkelingen beschrijven:
 - [Visie op standaarden](https://www.gemmaonline.nl/images/gemmaonline/3/31/20171124_KING_Visie_op_Standaarden.pdf)
 - [Visie op ontwikkelen en beheer van standaarden voor gegevens- en berichtmodellen](https://www.gemmaonline.nl/images/gemmaonline/b/bd/Ag_5_Visie_op_ontwikkelen_en_beheer_van_standaarden_voor_gegevens_en_berichtmodellen.pdf)
 - [Transitie naar een gegevenslandschap](https://www.gemmaonline.nl/images/gemmaonline/0/01/Ag_4_Transitie_naar_een_gegevenslandschap.pdf)
@@ -104,7 +114,11 @@ Tijdens het project wordt er nog geen volwaardige referentie-implementatie gemaa
 Ook zal er tijdens het project nog geen compliancy-test worden geleverd. Wel worden testgevallen en testdata opgeleverd waarmee een API getest kan worden.
 
 ## Gerelateerde trajecten
-Gedeeltelijk parallel aan de (eerste) deelprojecten voor RSGB-bevragingen wordt het project Zaak- Documentservices uitgevoerd. In dit project wordt ook de werkwijze voor het ontwikkelen en specificeren van een RESTful API koppelvlakstandaard uitgewerkt. De RSGB-bevragingen koppelvlakken volgen deze werkwijze. Wanneer blijkt dat aspecten van deze werkwijze slecht toepasbaar is of aanvulling nodig heeft, wordt dit teruggekoppeld naar het Zaak- Documentservices project.
+Tijdens de ontwikkeling van dit koppelvlak worden ook criteria voor API koppelvlakken uitgewerkt, inclusief operationalisering van deze criteria, zodat ze bij koppelvlakontwikkeling kunnen worden getoetst.
+
+Gedeeltelijk parallel aan, en volgend op de ontwikkeling van koppelvlak Bevragingen ingeschreven personen worden koppelvlakken voor de andere modules van RSGB-bevragingen ontwikkeld. Dit betreft koppelvlakken voor het opvragen van BRK-gegevens (Kadaster), HR-gegevens (Handelsregister) en BAG (adressen en gebouwen).
+
+Ook wordt het project Zaak- Documentservices uitgevoerd. In dit project wordt ook de werkwijze voor het ontwikkelen en specificeren van een RESTful API koppelvlakstandaard uitgewerkt. De RSGB-bevragingen koppelvlakken volgen deze werkwijze. Wanneer blijkt dat aspecten van deze werkwijze slecht toepasbaar is of aanvulling nodig heeft, wordt dit teruggekoppeld naar het Zaak- Documentservices project.
 
 Parallel aan het eerste deelproject RSGB-bevragingen (domein BRP) wordt een opdracht uitgevoerd tot het ontwikkelen van criteria voor een RESTful API koppelvlakstandaard, waarbij deze criteria ook worden geoperationaliseerd voor het meten van de kwaliteit van een koppelvlakstandaard op de criteria. De (tussen)resultaten van deze opdracht worden steeds direct in het RSGB-bevragingen BRP project toegepast en getoetst. In de volgende RSGB-bevragingen deelprojecten worden de ontwikkelde criteria gevolgd en de kwaliteit van de standaard gemeten op basis van de geleverde operationalisering.
 
