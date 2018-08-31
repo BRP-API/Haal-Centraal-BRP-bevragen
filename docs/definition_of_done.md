@@ -3,12 +3,12 @@
 - er is een Open API specificatie (versie 3)
 - er is gegenereerde code
 - er zijn testgevallen beschreven
-- er is een backlog
-- er is een 'getting started' beschrijving
+- er is een referentie-implementatie
 
 Geen onderdeel van de definition of done tijdens het project, wel onderdeel van de vastgestelde koppelvlakstandaard zijn:
-- er is een referentie-implementatie
 - er is een compliancy- en testvoorziening
+- er is een backlog
+- er is een 'getting started' beschrijving
 
 ## Functionele Specificatie
 - Is gepubliceerd op GEMMAonline als webpagina(s)
