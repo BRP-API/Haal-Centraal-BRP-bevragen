@@ -104,4 +104,3 @@ Er worden geen aparte endpoints of resources gedefinieerd per autorisatieprofiel
 
 *Ratio*
 Uitgangspunt in de architectuur is gedelegeerde autorisatie. De bronhouder die gegevens ter beschikking stelt is verantwoordelijk voor het leveren van alleen gegevens waarvoor de juiste autorisatie bestaat. Bij de bronhouder gaat het om autorisatie op niveau van de vragende organisatie (gemeente). De gemeente is er verantwoordelijk voor de resultaten van de API aanvraag te filteren op autorisatie van de betreffende gebruiker.
-Bij het ontwerp van de (RESTful) API's gaan we uit van een uniforme resource definitie, dus is er voor alle gebruikers (alle autorisaties) één uniforme manier om de resource te benaderen.
