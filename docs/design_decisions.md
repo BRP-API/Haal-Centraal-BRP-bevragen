@@ -102,5 +102,8 @@ Zie issue [#1](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-person
 De API levert alleen gegevens terug waar de vragende organisatie voor geautoriseerd is.
 Er worden geen aparte endpoints of resources gedefinieerd per autorisatieprofiel.
 
+De bronhouder die gegevens ter beschikking stelt is verantwoordelijk voor het leveren van alleen gegevens waarvoor de juiste autorisatie bestaat. Bij de bronhouder gaat het om autorisatie op niveau van de vragende organisatie (gemeente).
+De gemeente is er verantwoordelijk voor de resultaten van de API aanvraag te filteren op autorisatie van de betreffende gebruiker.
+
 *Ratio*
-Uitgangspunt in de architectuur is gedelegeerde autorisatie. De bronhouder die gegevens ter beschikking stelt is verantwoordelijk voor het leveren van alleen gegevens waarvoor de juiste autorisatie bestaat. Bij de bronhouder gaat het om autorisatie op niveau van de vragende organisatie (gemeente). De gemeente is er verantwoordelijk voor de resultaten van de API aanvraag te filteren op autorisatie van de betreffende gebruiker.
+Uitgangspunt in de architectuur is gedelegeerde autorisatie.
