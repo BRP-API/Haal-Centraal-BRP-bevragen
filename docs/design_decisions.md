@@ -14,7 +14,7 @@ Bijvoorbeeld voor geslacht wordt "Vrouw" of "Man" gestuurd, niet "V" of "M".
 Uitgangspunt binnen Common Ground is gebruik van gegevens, niet opslag van gegevens. Dus de omschrijving (uitgeschreven waarde) is relevant voor de gebruiker.
 
 ## Volledige overerving van supertypen in schema
-Entiteittypen die een suptype zijn van een ander (al dan niet abstract) entiteittype (supertype), worden als zodanig gespecificeerd in de Open API specificaties.
+Entiteittypen die een subtype zijn van een ander (al dan niet abstract) entiteittype (supertype), worden als zodanig gespecificeerd in de Open API specificaties.
 Bijvoorbeeld een "ingeschreven natuurlijk persoon" is een "natuurlijk persoon" is een "persoon" is een "subject". In Open API Specificaties 3 wordt dit gespecificeerd via allOf met referentie naar de schema component van het supertype.
 
 *Ratio*
