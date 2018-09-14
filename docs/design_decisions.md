@@ -95,6 +95,7 @@ Er wordt per combinatie van query parameters voor het zoeken van ingeschreven na
 De identificatie van BAG-objecten wordt geïmplementeerd als string, waarin de delen worden samengevoegd:identificatiecode = gemeentecode + objecttypecode + objectvolgnummer.
 
 *Ratio*
+
 In het RSGB is de identificatie van BAG-objecten (bijvoorbeeld identificatiecode van een nummeraanduiding) opgenomen als complex datatype. In de BAG-registratie is dit echter één string waarin de deel-elementen uit het complex datatype zijn samengevoegd.
 Zie issue [#1](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/issues/1).
 
@@ -106,4 +107,5 @@ De bronhouder die gegevens ter beschikking stelt is verantwoordelijk voor het le
 De gemeente is er verantwoordelijk voor de resultaten van de API aanvraag te filteren op autorisatie van de betreffende gebruiker.
 
 *Ratio*
+
 Uitgangspunt in de architectuur is gedelegeerde autorisatie.
