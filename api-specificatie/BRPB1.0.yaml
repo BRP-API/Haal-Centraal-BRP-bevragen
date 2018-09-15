@@ -1586,8 +1586,8 @@ components:
       enum:
       - "Eigen"
       - "Partner"
-      - "Partner, eigen"
-      - "Eigen, partner"
+      - "Partner eigen"
+      - "Eigen partner"
       description: "De voorgedefinieerde waarden van naamgebruik volgens de centrale\
         \ voorzieningen. Zie attribuut Naamgebruik van groep A.1.12 Naamgebruik van\
         \ BRP."
