@@ -84,7 +84,7 @@ Embedded gegevens (van een gerelateerde resource), voor de ingeschreven natuurli
 * Andere gegevens van het BAG-object zijn niet relevant in het verblijfsadres van een persoon.
 * Gegevens moeten worden gehaald bij de bron.
 
-# Een endpoint per combinatie van zoek parameters
+## Een endpoint per combinatie van zoek parameters
 Er wordt per combinatie van query parameters voor het zoeken van ingeschreven natuurlijk personen een endpoint gedefineerd. Bijvoorbeeld "/ingeschrevennatuurlijkpersonenpostcode" en "/ingeschrevennatuurlijkpersonengeslachtsnaam".
 
 *Ratio*
@@ -109,3 +109,6 @@ De gemeente is er verantwoordelijk voor de resultaten van de API aanvraag te fil
 *Ratio*
 
 Uitgangspunt in de architectuur is gedelegeerde autorisatie.
+
+## Voor paginering bij collecties wordt geconformeerd aan API-46 van de API-strategie en Json+Hal toegepast.
+Bij koppelvlakken waar gebruik gemaakt wordt van paginering wordt conform de API-strategie JSON+HAL toegepast. Om binnen het betreffende koppelvlak eenduidigheid te bewerkstelligen wordt Json+Hal in het hele koppelvlak toegepast.  
