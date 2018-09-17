@@ -110,5 +110,5 @@ De gemeente is er verantwoordelijk voor de resultaten van de API aanvraag te fil
 
 Uitgangspunt in de architectuur is gedelegeerde autorisatie.
 
-## Voor paginering bij collecties wordt geconformeerd aan API-46 van de API-strategie en Json+Hal toegepast.
+## Voor paginering bij collecties wordt geconformeerd aan API-46 van de API-strategie Json+Hal toegepast.
 Bij koppelvlakken waar gebruik gemaakt wordt van paginering wordt conform de API-strategie JSON+HAL toegepast. Om binnen het betreffende koppelvlak eenduidigheid te bewerkstelligen wordt Json+Hal in het hele koppelvlak toegepast.  
