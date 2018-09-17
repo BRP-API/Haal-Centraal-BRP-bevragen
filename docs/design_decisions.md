@@ -66,7 +66,7 @@ Verblijfadres wordt als embedded resource opgenomen (dus niet platgeslagen in de
 * Veel van de bevragingen op persoonsgegevens hebben ook het verblijfsadres nodig.
 * We werken toe naar linked data en common ground (gegevenslandschap architectuur), dus gerelateerde moet als resource herkenbaar blijven en bevraagbaar (via uri link) zijn.
 
-# Namen van gegevensgroepen worden ingekort.
+## Namen van gegevensgroepen worden ingekort.
 Het stuk "IngeschrevenNatuurlijkPersoon" aan het eind van de groepsnaam wordt verwijderd.
 
 Bijvoorbeeld "verblijfstitelIngeschrevenNatuurlijkPersoon" wordt "verblijfstitel", "overlijdenIngeschrevenNatuurlijkPersoon" wordt "overlijden", "geboorteIngeschrevenNatuurlijkPersoon" wordt "geboorte", enz.
