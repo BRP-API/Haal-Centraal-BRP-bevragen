@@ -84,13 +84,6 @@ Embedded gegevens (van een gerelateerde resource), voor de ingeschreven natuurli
 * Andere gegevens van het BAG-object zijn niet relevant in het verblijfsadres van een persoon.
 * Gegevens moeten worden gehaald bij de bron.
 
-# Een endpoint per combinatie van zoek parameters
-Er wordt per combinatie van query parameters voor het zoeken van ingeschreven natuurlijk personen een endpoint gedefineerd. Bijvoorbeeld "/ingeschrevennatuurlijkpersonenpostcode" en "/ingeschrevennatuurlijkpersonengeslachtsnaam".
-
-*Ratio*
-* Ten behoeve van de implementeerbaarheid van de provider en het kunnen voldoen aan non-functionals door de provider is het niet wenselijk te vereisen dat elke combinatie van parameters wordt ondersteund. Daarom hoeven alleen gedefinieerde combinaties van parameters te worden ondersteund.
-* Implementatie wordt vereenvoudigd en verduidelijkt door dit in API definities af te dwingen. Hiervoor is het nodig dat elke combinatie van parameters een eigen pad krijgt.
-
 ## Identificatie BAG-objecten is een string
 De identificatie van BAG-objecten wordt geïmplementeerd als string, waarin de delen worden samengevoegd:identificatiecode = gemeentecode + objecttypecode + objectvolgnummer.
 
@@ -109,3 +102,68 @@ De gemeente is er verantwoordelijk voor de resultaten van de API aanvraag te fil
 *Ratio*
 
 Uitgangspunt in de architectuur is gedelegeerde autorisatie.
+
+## Eén uniform endpoint voor zoeken ingeschreven natuurlijk persoonsgegevens
+Voor ingeschreven natuurlijk personen komt er één endpoint voor het zoeken: /ingeschrevenNatuurlijkPersonen.
+Het antwoord op dit bericht bevat alle attributen van de ingeschreven natuurlijk persoon van het LO GBA, geen aanhangende gegevens of gemeentelijke kerngegevens, alle relaties (die in GBA zitten) als link (uri).
+Alleen verblijfsadres kan worden embed via de "expand" parameter, default wordt niets embed.
+Op dit endpoint worden alle zoekparameters die gebruikt zijn bij zoekpaden in RSGB-bevragingen 1.0 ondersteund. Alleen combinaties van parameters per zoekpad wordt ondersteund, inclusief evt. verplichting van specifieke parameters. Op andere paramters kan niet worden gezocht.
+Wanneer een client een andere combinatie gebruikt dan beschreven (bijvoorbeeld postcode + geboortedatum), moet de provider een foutmelding teruggeven.
+De ondersteunde combinaties worden in de specificaties beschreven in woorden en als uri-sjablonen.
+
+*Ratio*
+Het ondersteunen van één uniform endpoint per resource is duidelijker voor implementatie. Gevolgen van wijzigingen zijn beter te overzien (losse koppeling). Het voorkomt wildgroei van endpoints.
+Functioneel is vooralsnog alleen behoefte aan het embedden van het verblijfsadres, daarom wordt het embedded van andere relaties niet niet ondersteund.
+Beperken van het aantal mogelijke combinaties van zoekparameters maakt het mogelijk de provider te optimaliseren.
+Verplicht beperken van ondersteunde zoek-combinaties voorkomt vendor lock in, omdat zeker is dat elke leverancier exact dezelfde functionaliteit biedt in de API. Ook wordt de testbaarheid van de API hiermee vergroot.
+Zie issue [16](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/issues/16).
+
+## Verblijfadres wordt relatie naar een resource BAG adressen of een resource andere adressen
+Er worden twee resources gedefinieerd voor het weergeven van een adres. Dit is een BAG-adres (/bagadressen) voor adressen die in het BAG staan, en een ander adres (/anderadressen) voor adressen die niet in de BAG staan.
+Het verblijfadres wordt gedefinieerd als relatie naar óf een BAG-adres óf een ander adres.
+In deze resources zijn de relevantie adresgegevens platgeslagen, zodat de gebruiker eenvoudig alle adresgegevens beschikbaar heeft in het antwoord.
+Alle relaties naar de werkelijke BAG objecttypen (nummeraanduiding, ligplaats, enz.) worden als relatie in de resource opgenomen (kunnen niet worden embed/expand).
+
+*Ratio*
+Functionele vraag is: ik wil in één vraag een persoon met adres hebben.
+Een groot deel van de vragen om persoonsgegevens is er direct behoefte aan de adresgegevens, zonder geïnteresseerd te zijn in de structuur in BAG (zoals naar nummeraanduiding, woonplaats, ligplaats, adresseerbaar object).
+Deze oplossing is ook een oplossing voor issue [22](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/issues/22) en [14](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/issues/14).
+
+## Zoeken op geboortedatum gebeurt alleen op volledige datum.
+Er wordt geen zoeken op onvolledige geboortedatum ondersteund in de API.
+
+*Ratio*
+Hier is geen functionele behoefte aan.
+
+## Geboortedatum wordt gegevensgroep met dag, maand en jaar
+Ten behoeve van het ondersteunen van onvolledige datums, wordt de geboortedatum in het responsebericht een gegevensgroep "geboorte" met 4 properties:
+- geboortejaar: date-fullyear
+- geboortemaand: date-month
+- geboortedag: date-mday
+- geboortedatum: date
+
+Deze velden zijn gedefinieerd in ISO8601-typen.
+Als er een volledige geboortedatum is, worden alle 4 velden ingevuld, anders alleen de bekende delen.
+
+*Ratio*
+In het bericht moet het mogelijk zijn een persoon met gedeeltelijk onbekende geboortedatum op te nemen, zie issue [6](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/issues/6).
+De gekozen oplossing is het eenvoudigst te implementeren.
+
+## Schema componenten voor tabelentiteit en enumeraties krijgen vaste extensie
+Schema componenten voor tabel-entiteiten en enumeraties krijgen extensie "\_tabel" en "\_enum".
+
+*Ratio*
+Er kunnen gegevensgroepen, tabel-entiteiten en enumeraties zijn met dezelfde naam. Bijvoorbeeld gegevensgroep Nationaliteit bevat een tabel-entiteit Nationaliteit.
+Om deze schema componenten uniek en herkenbaar te maken krijgt de naam van de schemacomponent voor een tabel de suffix "\_tabel" (bijvoorbeeld Nationaliteit_tabel) en krijgt de schemacomponent voor elke enumeratie de suffix "\_enum" (bijvoorbeeld Geslacht_enum).
+
+## gemeenteVanInschrijving is een property met gemeentecode
+
+*Ratio*
+Gemeente is een objecttype (en daarmee waarschijnlijk een resource van de BAG). Daarom zou je verwachten dat gemeenteVanInschrijving een relatie is. In het model is het echter een attribuut met de gemeentecode.
+We houden dit een attribuut met gemeentecode, omdat dit gegeven wordt niet actief bijgehouden.
+
+## Het antwoordbericht heeft geen verplichte properties
+Alle properties in het antwoordbericht worden in de Open API Specificaties gedefinieerd als optioneel, ook wanneer de betreffende attributen in het informatiemodel verplicht zijn.
+
+*Ratio*
+De hoeveelheid businesslogica in interface beperken. Zorgen dat zoveel mogelijk antwoord gegeven kan worden, ook wanneer een verwachte property geen waarde heeft. Het alternatief, het opnemen van de reden van geen waarde (zoals StUF:noValue) is dan niet nodig, wat het gebruik van de API eenvoudiger maakt.
