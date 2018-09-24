@@ -84,13 +84,6 @@ Embedded gegevens (van een gerelateerde resource), voor de ingeschreven natuurli
 * Andere gegevens van het BAG-object zijn niet relevant in het verblijfsadres van een persoon.
 * Gegevens moeten worden gehaald bij de bron.
 
-## Een endpoint per combinatie van zoek parameters
-Er wordt per combinatie van query parameters voor het zoeken van ingeschreven natuurlijk personen een endpoint gedefineerd. Bijvoorbeeld "/ingeschrevennatuurlijkpersonenpostcode" en "/ingeschrevennatuurlijkpersonengeslachtsnaam".
-
-*Ratio*
-* Ten behoeve van de implementeerbaarheid van de provider en het kunnen voldoen aan non-functionals door de provider is het niet wenselijk te vereisen dat elke combinatie van parameters wordt ondersteund. Daarom hoeven alleen gedefinieerde combinaties van parameters te worden ondersteund.
-* Implementatie wordt vereenvoudigd en verduidelijkt door dit in API definities af te dwingen. Hiervoor is het nodig dat elke combinatie van parameters een eigen pad krijgt.
-
 ## Identificatie BAG-objecten is een string
 De identificatie van BAG-objecten wordt geïmplementeerd als string, waarin de delen worden samengevoegd:identificatiecode = gemeentecode + objecttypecode + objectvolgnummer.
 
