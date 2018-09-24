@@ -13,15 +13,6 @@ Bijvoorbeeld voor geslacht wordt "Vrouw" of "Man" gestuurd, niet "V" of "M".
 *Ratio*
 Uitgangspunt binnen Common Ground is gebruik van gegevens, niet opslag van gegevens. Dus de omschrijving (uitgeschreven waarde) is relevant voor de gebruiker.
 
-## Volledige overerving van supertypen in schema
-Entiteittypen die een subtype zijn van een ander (al dan niet abstract) entiteittype (supertype), worden als zodanig gespecificeerd in de Open API specificaties.
-Bijvoorbeeld een "ingeschreven natuurlijk persoon" is een "natuurlijk persoon" is een "persoon" is een "subject". In Open API Specificaties 3 wordt dit gespecificeerd via allOf met referentie naar de schema component van het supertype.
-
-*Ratio*
-* Dit sluit aan bij een object georiënteerde ontwikkelstijl.
-* Het bevordert hergebruik van code.
-* Bevordert consistentie van implementatie van dezelfde gegevens uit supertypen voor verschillende subtypen.
-
 ## Gemeentelijke kerngegevens en plusgegevens worden niet opgenomen in de resource.
 In het antwoordbericht worden alleen gegevens opgenomen die in het BRP zitten.
 
@@ -55,16 +46,13 @@ Het algoritme voor het samenstellen moet worden beschreven in de API specificati
 * Het in de API implementeren van deze logica garandeert een consistente uitvoering hiervan binnen een gemeente.
 * Dit is een verbetering voor AVG eisen, omdat hierdoor gegevens zoals van de partner niet meer bij een persoon meegeleverd hoeven te worden (deze werken immers alleen gebruikt voor het samenstellen van de aanschrijfwijze).
 
-## Verblijfadres opnemen in de ingeschreven natuurlijk persoon
-In de resource van een ingeschreven natuurlijk persoon wordt het verblijfadres opgenomen.
+## Alle relaties kunnen embed worden
+In de resource van een ingeschreven natuurlijk persoon kunnen alle relaties embedded worden opgenomen met gebruik van de expand-parameter.
 
-Andere gerelateerde resources worden niet opgenomen.
-
-Verblijfadres wordt als embedded resource opgenomen (dus niet platgeslagen in de persoon!), inclusief de uri ernaar in de BAG-registratie.
+## Gebruik van expand=true wordt uitgesloten
 
 *Ratio*
-* Veel van de bevragingen op persoonsgegevens hebben ook het verblijfsadres nodig.
-* We werken toe naar linked data en common ground (gegevenslandschap architectuur), dus gerelateerde moet als resource herkenbaar blijven en bevraagbaar (via uri link) zijn.
+Het embedded van gerelateerde resources moet bewust worden gebruikt.
 
 ## Namen van gegevensgroepen worden ingekort.
 Het stuk "IngeschrevenNatuurlijkPersoon" aan het eind van de groepsnaam wordt verwijderd.
@@ -167,3 +155,15 @@ Alle properties in het antwoordbericht worden in de Open API Specificaties gedef
 
 *Ratio*
 De hoeveelheid businesslogica in interface beperken. Zorgen dat zoveel mogelijk antwoord gegeven kan worden, ook wanneer een verwachte property geen waarde heeft. Het alternatief, het opnemen van de reden van geen waarde (zoals StUF:noValue) is dan niet nodig, wat het gebruik van de API eenvoudiger maakt.
+
+## We gebruiken geen overerving van abstracte types in de API specificaties
+Bijvoorbeeld ingeschreven natuurlijk persoon wordt in de schema's platgeslagen met bovenliggende types (subject, persoon, natuurlijk persoon).
+
+*Ratio*
+Zolang we niets doen met de abstracte types (subject, persoon, natuurlijk persoon), heeft het geen zin dit mee te nemen in de component schema's.
+
+## Uitgangspunt voor modellering is de basisregistratie
+Voor persoonsgegevens gebruiken we LO GBA 3.10.
+
+*Ratio*
+Het gaat om bevragen bij de bron. De bron voor persoonsgegevens is het GBA. Daarom moet het logisch ontwerp van de GBA worden gebruikt en er geen afwijkende RSGB-modellering zijn van persoonsgegevens.
