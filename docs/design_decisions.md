@@ -7,6 +7,9 @@ Voor een element van een tabelentiteit-type, wordt in het bericht zowel de code 
 *Ratio*
 Garanderen dat verschillende systemen binnen en buiten de gemeente dezelfde (toestand) van de tabel kennen is duur, ingewikkeld en foutgevoelig.
 
+*Kanttekening* 
+Als landelijk beheerde tabellen ook daadwerkelijk landelijk beschikbaar gesteld worden (zoals de common groud gedachte wel beoogd) dan worden tabel-entiteiten als resource ontsloten en dus als link opgenomen.
+
 ## Enumeraties worden in het bericht opgenomen met de enumeratiewaarde (omschrijving), niet de code.
 Bijvoorbeeld voor geslacht wordt "Vrouw" of "Man" gestuurd, niet "V" of "M".
 
