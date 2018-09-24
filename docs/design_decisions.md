@@ -66,7 +66,7 @@ Verblijfadres wordt als embedded resource opgenomen (dus niet platgeslagen in de
 * Veel van de bevragingen op persoonsgegevens hebben ook het verblijfsadres nodig.
 * We werken toe naar linked data en common ground (gegevenslandschap architectuur), dus gerelateerde moet als resource herkenbaar blijven en bevraagbaar (via uri link) zijn.
 
-# Namen van gegevensgroepen worden ingekort.
+## Namen van gegevensgroepen worden ingekort.
 Het stuk "IngeschrevenNatuurlijkPersoon" aan het eind van de groepsnaam wordt verwijderd.
 
 Bijvoorbeeld "verblijfstitelIngeschrevenNatuurlijkPersoon" wordt "verblijfstitel", "overlijdenIngeschrevenNatuurlijkPersoon" wordt "overlijden", "geboorteIngeschrevenNatuurlijkPersoon" wordt "geboorte", enz.
@@ -83,6 +83,13 @@ Embedded gegevens (van een gerelateerde resource), voor de ingeschreven natuurli
 * Alleen de gegevens die ook in het BRP zitten zijn relevant voor de resource ingeschreven natuurlijk persoon.
 * Andere gegevens van het BAG-object zijn niet relevant in het verblijfsadres van een persoon.
 * Gegevens moeten worden gehaald bij de bron.
+
+## Een endpoint per combinatie van zoek parameters
+Er wordt per combinatie van query parameters voor het zoeken van ingeschreven natuurlijk personen een endpoint gedefineerd. Bijvoorbeeld "/ingeschrevennatuurlijkpersonenpostcode" en "/ingeschrevennatuurlijkpersonengeslachtsnaam".
+
+*Ratio*
+* Ten behoeve van de implementeerbaarheid van de provider en het kunnen voldoen aan non-functionals door de provider is het niet wenselijk te vereisen dat elke combinatie van parameters wordt ondersteund. Daarom hoeven alleen gedefinieerde combinaties van parameters te worden ondersteund.
+* Implementatie wordt vereenvoudigd en verduidelijkt door dit in API definities af te dwingen. Hiervoor is het nodig dat elke combinatie van parameters een eigen pad krijgt.
 
 ## Identificatie BAG-objecten is een string
 De identificatie van BAG-objecten wordt geïmplementeerd als string, waarin de delen worden samengevoegd:identificatiecode = gemeentecode + objecttypecode + objectvolgnummer.
