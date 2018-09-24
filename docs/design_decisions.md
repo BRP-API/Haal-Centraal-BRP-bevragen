@@ -48,6 +48,7 @@ Het algoritme voor het samenstellen moet worden beschreven in de API specificati
 
 ## Alle relaties kunnen embed worden
 In de resource van een ingeschreven natuurlijk persoon kunnen alle relaties embedded worden opgenomen met gebruik van de expand-parameter.
+Wanneer een gerelateerde resource expand wordt, wordt de gehele resource teruggegeven, tenzij in de expand parameter alleen een deel van de gerelateerde resource gevraagd is.
 
 ## Gebruik van expand=true wordt uitgesloten
 
@@ -106,11 +107,12 @@ Beperken van het aantal mogelijke combinaties van zoekparameters maakt het mogel
 Verplicht beperken van ondersteunde zoek-combinaties voorkomt vendor lock in, omdat zeker is dat elke leverancier exact dezelfde functionaliteit biedt in de API. Ook wordt de testbaarheid van de API hiermee vergroot.
 Zie issue [16](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/issues/16).
 
-## Verblijfadres wordt relatie naar een resource BAG adressen of een resource andere adressen
-Er worden twee resources gedefinieerd voor het weergeven van een adres. Dit is een BAG-adres (/bagadressen) voor adressen die in het BAG staan, en een ander adres (/anderadressen) voor adressen die niet in de BAG staan.
-Het verblijfadres wordt gedefinieerd als relatie naar óf een BAG-adres óf een ander adres.
-In deze resources zijn de relevantie adresgegevens platgeslagen, zodat de gebruiker eenvoudig alle adresgegevens beschikbaar heeft in het antwoord.
+## Verblijfadres wordt relatie naar een resource verblijfplaatsen
+Er wordt een resource gedefinieerd voor het weergeven van een verblijfplaats (/verblijfplaatsen).
+In deze resource zijn de relevantie adresgegevens platgeslagen, zodat de gebruiker eenvoudig alle adresgegevens beschikbaar heeft in het antwoord.
+Het verblijfadres van een ingeschreven natuurlijk persoon wordt vormgegeven als relatie naar de verblijfplaats.
 Alle relaties naar de werkelijke BAG objecttypen (nummeraanduiding, ligplaats, enz.) worden als relatie in de resource opgenomen (kunnen niet worden embed/expand).
+De gebruikers kan van een persoon de adresgegevens krijgen door /ingeschrevennatuurlijkpersonen?expand=verblijfadres.
 
 *Ratio*
 Functionele vraag is: ik wil in één vraag een persoon met adres hebben.
@@ -167,3 +169,17 @@ Voor persoonsgegevens gebruiken we LO GBA 3.10.
 
 *Ratio*
 Het gaat om bevragen bij de bron. De bron voor persoonsgegevens is het GBA. Daarom moet het logisch ontwerp van de GBA worden gebruikt en er geen afwijkende RSGB-modellering zijn van persoonsgegevens.
+
+# Zoeken van personen op adres kan via endpoint /bewoning
+Via resource bewoning kunnen de bewoners op een adres worden gezocht. Hiervoor kunnen de queryparameters worden gebruikt voor het zoeken van een adres (zoals postcode, huisnummer, enz.).
+Het antwoord bevat een lijst met in elk voorkomen de link naar het betreffende adres en de link naar de betreffende persoon (bewoner). De gegevens van de bewoners en adressen kan met parameter expand worden teruggegeven.
+
+## Opvragen van historie kan via specifieke endpoints
+Er komen endpoints /verblijfplaatshistorie/{burgerservicenummer}, /verblijfstitelhistorie/{burgerservicenummer}, /partnerhistorie/{burgerservicenummer} en /bewoningshistorie.
+Via deze endpoints kan de historie op het betreffende aspect opgevraagd worden.
+Er kan gekozen worden om de status op peildatum te raadplegen met de queryparameter geldigOp.
+Er kan gekozen worden de historische voorkomens te raadplegen binnen een periode met queryparameters periodevan en periodetot.
+Het antwoordbericht van /verblijfplaatshistorie bevat het property burgerservicenummer van de ingeschreven natuurlijk persoon, plus _links en _embedded met de historische voorkomens van de verblijfplaats. Hierin zitten ook de properties periodeVan en periodeTotEnMet.
+Het antwoordbericht van /verblijfstitelhistorie bevat de historische voorkomens van de property verblijfstitel van de ingeschreven natuurlijk persoon en de properties periodeVan en periodeTotEnMet.
+Het antwoordbericht van /partnerhistorie bevat het property burgerservicenummer van de ingeschreven natuurlijk persoon, plus _links en _embedded met de historische voorkomens van de partner. Hierin zitten ook de properties periodeVan en periodeTotEnMet.
+Het antwoordbericht van /bewoningshistorie bevat de lijst voorkomens met elk de properties periodeVan en periodeTotEnMet, plus _links en _embedded met het betreffende adres en de betreffende persoon (bewoner). De bewoningshistorie kan worden gezocht met dezelfde queryparameters als voor resource bewoning.
