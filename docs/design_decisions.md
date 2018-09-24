@@ -58,6 +58,7 @@ Het algoritme voor het samenstellen moet worden beschreven in de API specificati
 ## Verblijfadres opnemen in de ingeschreven natuurlijk persoon
 In de resource van een ingeschreven natuurlijk persoon wordt het verblijfadres opgenomen.
 
+Voor het verblijfsadres wordt een entiteit toegevoegd aan het model. Deze entiteit is gerelateerd aan de Ingeschreven Persoon en is gevuld met elementen uit de groep VebrNummeraanduiding, OpenbareRuimte en woornplaats.
 Andere gerelateerde resources worden niet opgenomen.
 
 Verblijfadres wordt als embedded resource opgenomen (dus niet platgeslagen in de persoon!), inclusief de uri ernaar in de BAG-registratie.
