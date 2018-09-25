@@ -1,23 +1,24 @@
 # Design decisions
-Dit document beschrijft ontwerpkeuzes die gemaakt zijn voor het ontwerpen en specificeren van de API's in dit koppelvlak.
+Dit document beschrijft ontwerpkeuzes die gemaakt zijn voor het ontwerpen en specificeren van de API's.
 
-## Tabelentiteiten worden in het bericht opgenomen met zowel de code als de omschrijving
-Voor een element van een tabelentiteit-type, wordt in het bericht zowel de code als de omschrijving opgenomen.
+## Dynamische domeinwaarden worden in de response opgenomen met zowel de code als de omschrijving
+Voor een element van een referentielijst-type, wordt in de response zowel de code als de omschrijving opgenomen. Dit betreft dynamische lijsten (tabellen) met een code en waarde, zoals "Tabel 32 Nationaliteitentabel" en "Tabel 36 Voorvoegselstabel".
 
 *Ratio*
-Garanderen dat verschillende systemen binnen en buiten de gemeente dezelfde (toestand) van de tabel kennen is duur, ingewikkeld en foutgevoelig.
+Garanderen dat verschillende systemen binnen en buiten de gemeente dezelfde (toestand) van de referentielijst kennen is duur, ingewikkeld en foutgevoelig.
 
-*Kanttekening* 
-Als landelijk beheerde tabellen ook daadwerkelijk landelijk beschikbaar gesteld worden (zoals de common groud gedachte wel beoogd) dan worden tabel-entiteiten als resource ontsloten en dus als link opgenomen.
+*Kanttekening*
+Als landelijk beheerde dynamische domeinwaarden ook daadwerkelijk landelijk beschikbaar gesteld worden (zoals de common groud gedachte wel beoogd) dan worden deze als resource ontsloten en dus als link (uri) opgenomen.
 
-## Enumeraties worden in het bericht opgenomen met de enumeratiewaarde (omschrijving), niet de code.
-Bijvoorbeeld voor geslacht wordt "Vrouw" of "Man" gestuurd, niet "V" of "M".
+## Enumeraties worden in de API specificatie opgenomen als code - waarde paren.
+De code wordt daarin gedefinieerd als const (constante).
 
 *Ratio*
 Uitgangspunt binnen Common Ground is gebruik van gegevens, niet opslag van gegevens. Dus de omschrijving (uitgeschreven waarde) is relevant voor de gebruiker.
+Echter de omschrijving (waarde) van enumeraties kan lang zijn en tekens bevatten waar code niet tegen kan (zoals komma, slash, haakjes). Uitgangspunt is eenvoud van implemententatie (developer first).
 
 ## Gemeentelijke kerngegevens en plusgegevens worden niet opgenomen in de resource.
-In het antwoordbericht worden alleen gegevens opgenomen die in het BRP zitten.
+In de response worden alleen gegevens opgenomen die in het BRP zitten.
 
 *Ratio*
 Deze gegevens zitten niet in een (voor alle gemeenten geldend) bronsysteem dat voor de bevraging geraadpleegd kan worden. Deze gegevens zijn dus (voorlopig) niet raadpleegbaar. Ook worden deze gegevens niet in alle gemeenten (op dezelfde manier) gebruikt.
@@ -30,12 +31,12 @@ Zoeken op adres (postcode) bij een ingeschreven persoon wordt gedaan op de postc
 * Implementatie is veel makkelijker en response veel sneller bij bevragen op deze gegevens binnen de BRP.
 * Niet alle adressen in BRP zijn te relateren aan een postcode in de BAG en deze personen moeten ook gevonden kunnen worden.
 
-## Resourcedefinitie binnen koppelvlak voor elke gelinkte resource
-Voor elke gelinkte resource (relatie) moet er binnen het Bevragen ingeschreven personen koppelvlak (ten minste tijdelijk) een resource API beschreven (ontsloten) zijn. Voor een gelinkte resource buiten het BRP-domein wordt alleen het opvragen van de actuele status van de enkele resource gespecificeerd.
+## Resourcedefinitie binnen API voor elke gelinkte resource
+Voor elke gelinkte resource (relatie) moet er binnen het Bevragen ingeschreven personen API (ten minste tijdelijk) een resource beschreven (ontsloten) zijn. Voor een gelinkte resource buiten het BRP-domein wordt alleen het opvragen van de actuele status van de enkele resource gespecificeerd.
 
 *Ratio*
 Relaties worden opgenomen als uri naar de betreffende resource. De API voor het opvragen van de ingeschreven persoon moet dus URI's kunnen samenstellen die verwijzen naar de betreffende objecten (resources) en waar deze objecten (resources) ook daadwerkelijk op te vragen zijn.
-Zo lang deze resources nog niet ontsloten zijn (in een koppelvlak en API op betreffende bron) moeten deze dus binnen dit koppelvlak beschreven worden.
+Zo lang deze resources nog niet ontsloten zijn (in een API op betreffende bron) moeten deze dus binnen deze API beschreven worden.
 
 ## Aanschrijfwijze opnemen in de resource
 We voegen een veld "aanschrijfwijze" toe aan de resource ingeschrevenNatuurlijkPersoon.
@@ -90,7 +91,7 @@ Uitgangspunt in de architectuur is gedelegeerde autorisatie.
 
 ## Eén uniform endpoint voor zoeken ingeschreven natuurlijk persoonsgegevens
 Voor ingeschreven natuurlijk personen komt er één endpoint voor het zoeken: /ingeschrevenNatuurlijkPersonen.
-Het antwoord op dit bericht bevat alle attributen van de ingeschreven natuurlijk persoon van het LO GBA, geen aanhangende gegevens of gemeentelijke kerngegevens, alle relaties (die in GBA zitten) als link (uri). In de documentatie wordt in tekst aangegeven dat expand=verblijfsadres moet worden opgegeven als de consumer het verblijfsadres in het zoekresultaat wil terugkrijgen.
+Dit endpoint geeft alle attributen van de ingeschreven natuurlijk persoon van het LO GBA, geen aanhangende gegevens of gemeentelijke kerngegevens, alle relaties (die in GBA zitten) als link (uri). In de documentatie wordt in tekst aangegeven dat expand=verblijfsadres moet worden opgegeven als de consumer het verblijfsadres in het zoekresultaat wil terugkrijgen.
 
 Op dit endpoint worden alle zoekparameters die gebruikt zijn bij zoekpaden in RSGB-bevragingen 1.0 ondersteund. Alleen combinaties van parameters per zoekpad wordt ondersteund, inclusief evt. verplichting van specifieke parameters. Op andere paramters kan niet worden gezocht.
 Wanneer een client een andere combinatie gebruikt dan beschreven (bijvoorbeeld postcode + geboortedatum), moet de provider een foutmelding teruggeven.
@@ -107,7 +108,7 @@ Zie issue [16](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-person
 Er wordt een resource gedefinieerd voor het weergeven van een verblijfplaats (/verblijfplaatsen).
 In deze resource zijn de relevantie adresgegevens platgeslagen, zodat de gebruiker eenvoudig alle adresgegevens beschikbaar heeft in het antwoord.
 Het verblijfadres van een ingeschreven natuurlijk persoon wordt vormgegeven als relatie naar de verblijfplaats.
-Alle relaties naar de werkelijke BAG objecttypen (nummeraanduiding, ligplaats, enz.) worden als relatie in de resource opgenomen. 
+Alle relaties naar de werkelijke BAG objecttypen (nummeraanduiding, ligplaats, enz.) worden als relatie in de resource opgenomen.
 De gebruiker kan van een persoon de adresgegevens krijgen door /ingeschrevennatuurlijkpersonen?expand=verblijfadres. Dit wordt in de documentatie opgenomen.
 
 *Ratio*
@@ -122,7 +123,7 @@ Er wordt geen zoeken op onvolledige geboortedatum ondersteund in de API.
 Hier is geen functionele behoefte aan.
 
 ## Geboortedatum wordt gegevensgroep met dag, maand en jaar
-Ten behoeve van het ondersteunen van onvolledige datums, wordt de geboortedatum in het responsebericht een gegevensgroep "geboorte" met 4 properties:
+Ten behoeve van het ondersteunen van onvolledige datums, wordt de geboortedatum in de response een gegevensgroep "geboorte" met 4 properties:
 - geboortejaar: date-fullyear
 - geboortemaand: date-month
 - geboortedag: date-mday
@@ -132,15 +133,15 @@ Deze velden zijn gedefinieerd in ISO8601-typen.
 Als er een volledige geboortedatum is, worden alle 4 velden ingevuld, anders alleen de bekende delen.
 
 *Ratio*
-In het bericht moet het mogelijk zijn een persoon met gedeeltelijk onbekende geboortedatum op te nemen, zie issue [6](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/issues/6).
+In de API moet het mogelijk zijn een persoon met gedeeltelijk onbekende geboortedatum op te nemen, zie issue [6](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/issues/6).
 De gekozen oplossing is het eenvoudigst te implementeren.
 
-## Schema componenten voor tabelentiteit en enumeraties krijgen vaste extensie
-Schema componenten voor tabel-entiteiten en enumeraties krijgen extensie "\_tabel" en "\_enum".
+## Schema componenten voor domeinwaarden en enumeraties krijgen vaste extensie
+Schema componenten voor dynamische domeinwaarden (referentielijsten zoals "Tabel 32 Nationaliteitentabel") en enumeraties krijgen respectievelijk extensie "\_tabel" en "\_enum".
 
 *Ratio*
-Er kunnen gegevensgroepen, tabel-entiteiten en enumeraties zijn met dezelfde naam. Bijvoorbeeld gegevensgroep Nationaliteit bevat een tabel-entiteit Nationaliteit.
-Om deze schema componenten uniek en herkenbaar te maken krijgt de naam van de schemacomponent voor een tabel de suffix "\_tabel" (bijvoorbeeld Nationaliteit_tabel) en krijgt de schemacomponent voor elke enumeratie de suffix "\_enum" (bijvoorbeeld Geslacht_enum).
+Er kunnen gegevensgroepen, domeinwaarden en enumeraties zijn met dezelfde naam. Bijvoorbeeld gegevensgroep Nationaliteit bevat een property van type domeinwaarden Nationaliteit (verwijzend naar Tabel 32 Nationaliteitentabel).
+Om deze schema componenten uniek en herkenbaar te maken krijgt de naam van de schemacomponent voor een domeinwaardenlijst de suffix "\_tabel" (bijvoorbeeld Nationaliteit_tabel) en krijgt de schemacomponent voor elke enumeratie de suffix "\_enum" (bijvoorbeeld Geslacht_enum).
 
 ## gemeenteVanInschrijving is een property met gemeentecode
 
@@ -148,8 +149,8 @@ Om deze schema componenten uniek en herkenbaar te maken krijgt de naam van de sc
 Gemeente is een objecttype (en daarmee waarschijnlijk een resource van de BAG). Daarom zou je verwachten dat gemeenteVanInschrijving een relatie is. In het model is het echter een attribuut met de gemeentecode.
 We houden dit een attribuut met gemeentecode, omdat dit gegeven wordt niet actief bijgehouden.
 
-## Het antwoordbericht heeft geen verplichte properties
-Alle properties in het antwoordbericht worden in de Open API Specificaties gedefinieerd als optioneel, ook wanneer de betreffende attributen in het informatiemodel verplicht zijn.
+## De response heeft geen verplichte properties
+Alle properties in de response worden in de Open API Specificaties gedefinieerd als optioneel, ook wanneer de betreffende attributen in het informatiemodel verplicht zijn.
 
 *Ratio*
 De hoeveelheid businesslogica in interface beperken. Zorgen dat zoveel mogelijk antwoord gegeven kan worden, ook wanneer een verwachte property geen waarde heeft. Het alternatief, het opnemen van de reden van geen waarde (zoals StUF:noValue) is dan niet nodig, wat het gebruik van de API eenvoudiger maakt.
@@ -175,7 +176,7 @@ Er komen endpoints /verblijfplaatshistorie/{burgerservicenummer}, /verblijfstite
 Via deze endpoints kan de historie op het betreffende aspect opgevraagd worden.
 Er kan gekozen worden om de status op peildatum te raadplegen met de queryparameter geldigOp.
 Er kan gekozen worden de historische voorkomens te raadplegen binnen een periode met queryparameters periodevan en periodetot.
-Het antwoordbericht van /verblijfplaatshistorie bevat het property burgerservicenummer van de ingeschreven natuurlijk persoon, plus _links en _embedded met de historische voorkomens van de verblijfplaats. Hierin zitten ook de properties periodeVan en periodeTotEnMet.
-Het antwoordbericht van /verblijfstitelhistorie bevat de historische voorkomens van de property verblijfstitel van de ingeschreven natuurlijk persoon en de properties periodeVan en periodeTotEnMet.
-Het antwoordbericht van /partnerhistorie bevat het property burgerservicenummer van de ingeschreven natuurlijk persoon, plus _links en _embedded met de voorkomens van de partner. Hierin zitten ook de properties periodeVan en periodeTotEnMet.
-Het antwoordbericht van /bewoningshistorie bevat de lijst voorkomens met elk de properties periodeVan en periodeTotEnMet, plus _links en _embedded met het betreffende adres en de betreffende persoon (bewoner). De bewoningshistorie kan worden gezocht met dezelfde queryparameters als voor resource bewoning.
+De response van /verblijfplaatshistorie bevat het property burgerservicenummer van de ingeschreven natuurlijk persoon, plus \_links en \_embedded met de historische voorkomens van de verblijfplaats. Hierin zitten ook de properties periodeVan en periodeTotEnMet.
+De response van /verblijfstitelhistorie bevat de historische voorkomens van de property verblijfstitel van de ingeschreven natuurlijk persoon en de properties periodeVan en periodeTotEnMet.
+De response van /partnerhistorie bevat het property burgerservicenummer van de ingeschreven natuurlijk persoon, plus \_links en \_embedded met de voorkomens van de partner. Hierin zitten ook de properties periodeVan en periodeTotEnMet.
+De response van /bewoningshistorie bevat de lijst voorkomens met elk de properties periodeVan en periodeTotEnMet, plus \_links en \_embedded met het betreffende adres en de betreffende persoon (bewoner). De bewoningshistorie kan worden gezocht met dezelfde queryparameters als voor resource bewoning.
