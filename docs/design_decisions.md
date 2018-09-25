@@ -68,13 +68,6 @@ Bijvoorbeeld "verblijfstitelIngeschrevenNatuurlijkPersoon" wordt "verblijfstitel
 * Extensie "IngeschrevenNatuurlijkPersoon" is redundant, want het is al duidelijk dat het gaat over eigenschappen van een ingeschreven natuurlijk persoon.
 * Is consistent met ontwerpbeslissing [Naamgeving van de API velden binnen een resource] (https://github.com/VNG-Realisatie/gemma-zaken/blob/master/docs/content/developers/design-keuzes.md#naamgeving-van-de-api-velden-binnen-een-resource)
 
-## Alleen gegevens van een gerelateerde resource die ook in de BRP worden opgeslagen kunnen worden embed
-Embedded gegevens (van een gerelateerde resource), voor de ingeschreven natuurlijk persoon alleen het verblijfsadres, bevat alleen die gegevens die ook in de BRP worden opgeslagen. Deze gegevens worden door de provider gehaald uit de betreffende basisregistratie (hier: BAG).
-
-*Ratio*
-* Alleen de gegevens die ook in het BRP zitten zijn relevant voor de resource ingeschreven natuurlijk persoon.
-* Andere gegevens van het BAG-object zijn niet relevant in het verblijfsadres van een persoon.
-* Gegevens moeten worden gehaald bij de bron.
 
 ## Identificatie BAG-objecten is een string
 De identificatie van BAG-objecten wordt geïmplementeerd als string, waarin de delen worden samengevoegd:identificatiecode = gemeentecode + objecttypecode + objectvolgnummer.
