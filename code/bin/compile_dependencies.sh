@@ -4,7 +4,7 @@ set -ex
 
 toplevel=$(git rev-parse --show-toplevel)
 
-cd $toplevel
+cd $toplevel/code
 
 # Base deps
 pip-compile \

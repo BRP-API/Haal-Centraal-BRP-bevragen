@@ -69,4 +69,4 @@ waitress==1.1.0           # via webtest
 webob==1.8.2              # via webtest
 webtest==2.0.30
 wrapt==1.10.11            # via astroid
-zds-schema==0.5.0
+zds-schema==0.5.1
