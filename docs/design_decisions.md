@@ -97,8 +97,8 @@ Uitgangspunt in de architectuur is gedelegeerde autorisatie.
 
 ## Eén uniform endpoint voor zoeken ingeschreven natuurlijk persoonsgegevens
 Voor ingeschreven natuurlijk personen komt er één endpoint voor het zoeken: /ingeschrevenNatuurlijkPersonen.
-Het antwoord op dit bericht bevat alle attributen van de ingeschreven natuurlijk persoon van het LO GBA, geen aanhangende gegevens of gemeentelijke kerngegevens, alle relaties (die in GBA zitten) als link (uri).
-Alleen verblijfsadres kan worden embed via de "expand" parameter, default wordt niets embed.
+Het antwoord op dit bericht bevat alle attributen van de ingeschreven natuurlijk persoon van het LO GBA, geen aanhangende gegevens of gemeentelijke kerngegevens, alle relaties (die in GBA zitten) als link (uri). In de documentatie wordt in tekst aangegeven dat expand=verblijfsadres moet worden opgegeven als de consumer het verblijfsadres in het zoekresultaat wil terugkrijgen.
+
 Op dit endpoint worden alle zoekparameters die gebruikt zijn bij zoekpaden in RSGB-bevragingen 1.0 ondersteund. Alleen combinaties van parameters per zoekpad wordt ondersteund, inclusief evt. verplichting van specifieke parameters. Op andere paramters kan niet worden gezocht.
 Wanneer een client een andere combinatie gebruikt dan beschreven (bijvoorbeeld postcode + geboortedatum), moet de provider een foutmelding teruggeven.
 De ondersteunde combinaties worden in de specificaties beschreven in woorden en als uri-sjablonen.
