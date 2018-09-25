@@ -114,8 +114,8 @@ Zie issue [16](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-person
 Er wordt een resource gedefinieerd voor het weergeven van een verblijfplaats (/verblijfplaatsen).
 In deze resource zijn de relevantie adresgegevens platgeslagen, zodat de gebruiker eenvoudig alle adresgegevens beschikbaar heeft in het antwoord.
 Het verblijfadres van een ingeschreven natuurlijk persoon wordt vormgegeven als relatie naar de verblijfplaats.
-Alle relaties naar de werkelijke BAG objecttypen (nummeraanduiding, ligplaats, enz.) worden als relatie in de resource opgenomen (kunnen niet worden embed/expand).
-De gebruikers kan van een persoon de adresgegevens krijgen door /ingeschrevennatuurlijkpersonen?expand=verblijfadres.
+Alle relaties naar de werkelijke BAG objecttypen (nummeraanduiding, ligplaats, enz.) worden als relatie in de resource opgenomen. 
+De gebruiker kan van een persoon de adresgegevens krijgen door /ingeschrevennatuurlijkpersonen?expand=verblijfadres. Dit wordt in de documentatie opgenomen.
 
 *Ratio*
 Functionele vraag is: ik wil in één vraag een persoon met adres hebben.
