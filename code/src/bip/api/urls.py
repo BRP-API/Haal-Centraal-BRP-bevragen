@@ -3,14 +3,14 @@ from django.conf.urls import include, url
 from zds_schema import routers
 
 from .schema import schema_view
-from .viewsets import NatuurlijkPersoonViewSet
+from .viewsets import IngeschrevenNatuurlijkPersoonViewSet, ReisdocumentViewSet, LandViewSet
 
 router = routers.DefaultRouter()
-router.register('ingeschrevennatuurlijkpersonen', NatuurlijkPersoonViewSet, [
-    # routers.nested('informatieobjecten', BesluitInformatieObjectViewSet),
-])
+router.register(
+    'ingeschrevennatuurlijkpersonen', IngeschrevenNatuurlijkPersoonViewSet)
+router.register('reisdocumenten', ReisdocumentViewSet)
+router.register('landen', LandViewSet)
 
-# TODO: the EndpointEnumerator seems to choke on path and re_path
 
 urlpatterns = [
     url(r'^v(?P<version>\d+)/', include([

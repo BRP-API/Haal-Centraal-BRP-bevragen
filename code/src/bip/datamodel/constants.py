@@ -58,7 +58,7 @@ class NaamgebruikAanduiding(DjangoChoices):
 
 class AdresHerkomst(DjangoChoices):
     woonadres = ChoiceItem('Woonadres')
-    Briefadres = ChoiceItem('Briefadres')
+    briefadres = ChoiceItem('Briefadres')
 
 
 class BurgerlijkeStaat(DjangoChoices):

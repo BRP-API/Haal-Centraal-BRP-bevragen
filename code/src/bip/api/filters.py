@@ -1,14 +1,15 @@
+import django_filters
 from zds_schema.filtersets import FilterSet
 
 from bip.datamodel.models import IngeschrevenNatuurlijkPersoon
 
 
-class NatuurlijkPersoonFilter(FilterSet):
+class IngeschrevenNatuurlijkPersoonFilter(FilterSet):
+    # postcode = django_filters.CharFilter(field_name='verblijfsplaats__postcode')
+
     class Meta:
         model = IngeschrevenNatuurlijkPersoon
         fields = (
-            # 'identificatie',
-            # 'verantwoordelijke_organisatie',
-            # 'besluittype',
-            # 'zaak',
+            'burgerservicenummer',
+            # 'postcode'
         )

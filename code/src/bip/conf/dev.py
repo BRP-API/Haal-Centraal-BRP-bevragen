@@ -44,6 +44,8 @@ LOGGING['loggers'].update({
     },
 })
 
+LOGGING = None
+
 #
 # Additional Django settings
 #

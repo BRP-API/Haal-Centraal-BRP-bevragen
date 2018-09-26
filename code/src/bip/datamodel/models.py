@@ -24,7 +24,7 @@ class IngeschrevenNatuurlijkPersoon(APIMixin, models.Model):
         help_text='Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet '
                   'algemene bepalingen burgerservicenummer.'
     )
-    a_nummer = models.IntegerField(
+    a_nummer = models.BigIntegerField(
         null=True
     )
     geslachtsaanduiding = models.CharField(
@@ -55,31 +55,34 @@ class IngeschrevenNatuurlijkPersoon(APIMixin, models.Model):
         null=True
     )
     overlijden = models.ForeignKey(
-        'Overlijden', null=True, on_delete=models.CASCADE
+        'Overlijden', null=True, blank=True, on_delete=models.CASCADE
     )
     geboorte = models.ForeignKey(
-        'Geboorte', null=True, on_delete=models.CASCADE
+        'Geboorte', null=True, blank=True, on_delete=models.CASCADE
     )
     verblijfstitel = models.ForeignKey(
-        'Verblijfstitel', null=True, on_delete=models.CASCADE
+        'Verblijfstitel', null=True, blank=True, on_delete=models.CASCADE
     )
     naamgebruik = models.ForeignKey(
-        'Naamgebruik', null=True, on_delete=models.CASCADE
+        'Naamgebruik', null=True, blank=True, on_delete=models.CASCADE
     )
     naam = models.ForeignKey(
-        'Naam', null=True, on_delete=models.CASCADE,
+        'Naam', null=True, blank=True, on_delete=models.CASCADE,
          help_text='Gegevens over de naam van de NATUURLIJK PERSOON'
     )
     nationaliteit = models.ForeignKey(
-        'Nationaliteit', null=True, on_delete=models.CASCADE
+        'Nationaliteit', null=True, blank=True, on_delete=models.CASCADE
+    )
+    verblijfsplaats = models.ForeignKey(
+        'Verblijfsplaats', null=True, blank=True, on_delete=models.CASCADE
     )
 
     # TODO: In spec is er maar 1 ouder
     kinderen = models.ManyToManyField(
-        'self', null=True, related_name='ouders'
+        'self', blank=True, related_name='ouders', symmetrical=False
     )
     partners = models.ManyToManyField(
-        'self', null=True, symmetrical=True
+        'self', blank=True, symmetrical=True
     )
 
     def __str__(self):
@@ -100,7 +103,7 @@ class Geboorte(models.Model):
 
 class Verblijfstitel(models.Model):
     ingangsdatum = models.DateField()
-    datumEinde = models.DateField()
+    datum_einde = models.DateField()
 
     # TODO: Matcht totaal niet met model...
     numeriek = models.CharField(max_length=2)
@@ -130,7 +133,7 @@ class Naam(models.Model):
     voorvoegsel_geslachtsnaam = models.ForeignKey(
         'VoorvoegselGeslachtsnaam', null=True, on_delete=models.SET_NULL,
     )
-    adelijke_titel_predikaat = models.ForeignKey(
+    adellijke_titel_predikaat = models.ForeignKey(
         'AdellijkeTitelPredikaat', null=True, on_delete=models.SET_NULL,
     )
 
@@ -154,6 +157,8 @@ class Nationaliteit(models.Model):
 
 
 class Land(models.Model):
+    uuid = models.UUIDField(default=_uuid.uuid4)
+
     code = models.CharField(
         max_length=4,
         help_text='De code, behorende bij de landnaam, zoals opgenomen in de '
@@ -180,6 +185,8 @@ class AdellijkeTitelPredikaat(models.Model):
 # Related models
 
 class Reisdocument(models.Model):
+    uuid = models.UUIDField(default=_uuid.uuid4)
+
     subject = models.ForeignKey(
         'IngeschrevenNatuurlijkPersoon', on_delete=models.CASCADE
     )
@@ -202,6 +209,7 @@ class Verblijfsplaats(models.Model):
         help_text='Een geheel of gedeeltelijke omschrijving van de ligging van '
                   'een object.'
     )
+    woonplaatsnaam = models.CharField(max_length=80)
     huisnummertoevoeging = models.CharField(
         max_length=4, blank=True
     )
