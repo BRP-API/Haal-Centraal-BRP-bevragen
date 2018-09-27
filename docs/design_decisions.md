@@ -180,3 +180,11 @@ De response van /verblijfplaatshistorie bevat het property burgerservicenummer v
 De response van /verblijfstitelhistorie bevat de historische voorkomens van de property verblijfstitel van de ingeschreven natuurlijk persoon en de properties periodeVan en periodeTotEnMet.
 De response van /partnerhistorie bevat het property burgerservicenummer van de ingeschreven natuurlijk persoon, plus \_links en \_embedded met de voorkomens van de partner. Hierin zitten ook de properties periodeVan en periodeTotEnMet.
 De response van /bewoningshistorie bevat de lijst voorkomens met elk de properties periodeVan en periodeTotEnMet, plus \_links en \_embedded met het betreffende adres en de betreffende persoon (bewoner). De bewoningshistorie kan worden gezocht met dezelfde queryparameters als voor resource bewoning.
+
+## Elementnamen die verwijzen naar een resource die maximaal 1 keer kan voorkomen worden enkelvoud.
+
+Als voorbeeld de verblijfsplaats bij een ingeschreven persoon. De kardinaliteit daarvan is 0..1, dus er kan maximaal 1 verblijfsplaats aan gerelateerd zijn aan een ingeschreven persoon. 
+
+*Ratio*
+Het is voor de developer verwarrend als de elementnaam in meervoud is gesteld terwijl de kardinaliteit maximaal 1 is. 
+Ratio
