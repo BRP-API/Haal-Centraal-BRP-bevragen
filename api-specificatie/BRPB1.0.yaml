@@ -1296,7 +1296,7 @@ components:
           properties:
             href:
               $ref: "#/components/schemas/Href"
-        verblijfsplaatsen:
+        verblijfsplaats:
           title: "isIngeschreven"
           type: "object"
           description: "De NUMMERAANDUIDING bij het ADRESSEERBAAR OBJECT waarin de\
@@ -1454,7 +1454,7 @@ components:
             $ref: "#/components/schemas/IngeschrevenNatuurlijkPersoon_gerelateerde"
         ouders:
           $ref: "#/components/schemas/IngeschrevenNatuurlijkPersoon_gerelateerde"
-        verblijfsplaatsen:
+        verblijfsplaats:
           $ref: "#/components/schemas/Verblijfsplaats"
     Verblijfsplaats_embedded:
       type: "object"
