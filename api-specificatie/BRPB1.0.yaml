@@ -738,6 +738,87 @@ components:
           $ref: "#/components/schemas/Bewoning_links"
         _embedded:
           $ref: "#/components/schemas/Bewoning_embedded"
+    AnderNatuurlijkPersoon:
+      type: "object"
+      description: "Een NATUURLIJK PERSOON, niet ingeschreven in de BasisRegistratie\
+        \ Personen (BRP), woonachtig in Nederland dan wel woonachtig in het buitenland\
+        \ en van belang voor de gemeentelijke taakuitoefening. Het betreft hier de\
+        \ natuurlijke personen die niet ingeschreven zijn in de BRP (GBA en het RNI)\
+        \ maar wel van belang zijn voor de gemeentelijke taakuitoefening. Het kan\
+        \ gaan om zowel in Nederland woonachtige personen als in het buitenlandse\
+        \ verblijvende personen. Een ANDER NATUURLIJK PERSOON is een specialisatie\
+        \ van NATUURLIJK PERSOON. In de BRP worden deze personen niet-ingeschrevenen\
+        \ genoemd en kunnen meerdere keren voorkomen in de centrale voorzieningen.\
+        \ In de BRP worden niet-ingeschrevenen gevonden door te zoeken op de combinatie\
+        \ van Samengestelde naam, Geboorte en Geslachtsaanduiding."
+      required:
+      - "nummerAnderNatuurlijkPersoon"
+      properties:
+        nummerAnderNatuurlijkPersoon:
+          type: "string"
+          title: "Nummer ander natuurlijk persoon"
+          description: "Het door de gemeente uitgegeven unieke nummer voor een ANDER\
+            \ NATUURLIJK PERSOON Natuurlijke personen, zijnde (nog) geen ingeschreven\
+            \ personen, die wel relevant zijn voor de gemeentelijke taakuitoefening\
+            \ worden geregistreerd en door de gemeente voorzien van een unieke aanduiding.\
+            \ Het kan aldus voorkomen dat dezelfde natuurlijke persoon bij twee gemeenten\
+            \ geregistreerd is onder een ander nummer. De attribuutsoort kent historie\
+            \ omdat het mogelijk is dat het wijzigt, bijvoorbeeld omdat het Ander\
+            \ natuurlijk persoon overgaat in een Ingeschreven natuurlijk persoon.\
+            \ viercijferige gemeentecode gevolgd door een volgnummer van 13 cijfers\
+            \ met voorloopnullen"
+          maxLength: 17
+        geboortedatum:
+          type: "string"
+          title: "Geboortedatum"
+          description: "De datum waarop de ander natuurlijk persoon is geboren. Default:"
+          format: "date"
+        geslachtsaanduiding:
+          $ref: "#/components/schemas/Geslacht_enum"
+        overlijdensdatum:
+          type: "string"
+          title: "Overlijdensdatum"
+          description: "De datum van overlijden van een ANDER NATUURLIJK PERSOON"
+          format: "date"
+        naamgebruik:
+          $ref: "#/components/schemas/Naamgebruik"
+        naam:
+          $ref: "#/components/schemas/Naam"
+        _links:
+          $ref: "#/components/schemas/AnderNatuurlijkPersoon_links"
+    Naamgebruik:
+      type: "object"
+      description: "De naamgegevens waarmee de persoon heeft aangegeven aangeschreven\
+        \ te willen worden"
+      properties:
+        aanduidingAanschrijving:
+          $ref: "#/components/schemas/Naamgebruik_enum"
+        aanschrijfwijze:
+          type: "string"
+          title: "aanschrijfwijze"
+          description: "Hoe het samenstellen van een aanschrijfwijze te werk gaat\
+            \ is beschreven in een document dat te vinden is op : https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/api-specificatie/AanschrijfwijzeOpstellen.pdf"
+          maxLength: 50
+    Naam:
+      type: "object"
+      description: "Gegevens over de naam van de NATUURLIJK PERSOON"
+      properties:
+        voornamen:
+          type: "string"
+          title: "Voornamen"
+          description: "De verzameling namen die, gescheiden door spaties, aan de\
+            \ geslachtsnaam voorafgaat."
+          maxLength: 200
+        geslachtsnaam:
+          type: "string"
+          title: "Geslachtsnaam"
+          description: "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels\
+            \ en adellijke titel/predikaat zijn afgesplitst."
+          maxLength: 200
+        voorvoegselGeslachtsnaam:
+          $ref: "#/components/schemas/Voorvoegsel_tabel"
+        adellijkeTitel_predikaat:
+          $ref: "#/components/schemas/AdellijkeTitel_predikaat_tabel"
     IngeschrevenNatuurlijkPersoon_gerelateerde:
       type: "object"
       description: "Een NATUURLIJK PERSOON ingeschreven in de Basisregistratie Personen\
@@ -1025,7 +1106,15 @@ components:
           $ref: "#/components/schemas/Land_tabel"
     Nummeraanduiding_gerelateerde:
       type: "object"
-      description: ""
+      description: "Een door het bevoegde gemeentelijke orgaan als zodanig toegekende\
+        \ aanduiding van een VERBLIJFSOBJECT, een STANDPLAATS of een LIGPLAATS. Zie\
+        \ de toelichting in de Catalogus BAG. In aanvulling hierop het volgende. Het\
+        \ betreft alle gegevens en relaties van de NUMMERAANDUIDING zoals deze in\
+        \ de BAG gedefinieerd zijn. NUMMERAANDUIDING is gemodelleerd als een specialisatie\
+        \ van ADRESSEERBAAR OBJECT AANDUIDING. Daar bij overige (officieel vastgestelde)\
+        \ adressen deels vergelijkbare gegevens en relaties van toepassing zijn, zijn\
+        \ desbetreffende gegevens gemodelleerd bij ADRESSEERBAAR OBJECT AANDUIDING,\
+        \ de verzameling van nummeraanduidingen en overige adresseerbaar object aanduidingen."
       properties:
         identificatiecodeNummeraanduiding:
           type: "string"
@@ -1058,6 +1147,54 @@ components:
           description: "De naam van het land, zoals opgenomen in de Landentabel van\
             \ de GBA."
           maxLength: 40
+    Voorvoegsel_tabel:
+      type: "object"
+      description: "Een opsomming van de toegestane voorvoegsels."
+      required:
+      - "voorvoegselnummer"
+      - "voorvoegsel"
+      - "scheidingsteken"
+      properties:
+        voorvoegselnummer:
+          type: "integer"
+          title: "Voorvoegselnummer"
+          description: "Het identificerende nummer van het voorvoegsel Natuurlijk\
+            \ getal met voorloopnullen. Alleen waarden in de codelijst zijn geldig."
+        voorvoegsel:
+          type: "string"
+          title: "Voorvoegsel"
+          description: "Het voorvoegsel"
+          maxLength: 10
+        scheidingsteken:
+          type: "string"
+          title: "Scheidingsteken"
+          description: "Het scheidingsteken"
+          maxLength: 1
+    AdellijkeTitel_predikaat_tabel:
+      type: "object"
+      description: "Een opsomming van de adellijke titels en/of predikaten die een\
+        \ persoon kan bezitten of die aan een persoon kunnen worden toegekend met\
+        \ hun codes, omschrijvingen en soorten."
+      required:
+      - "adellijkeTitel_predikaat"
+      - "omschrijvingAdellijkeTitel_predikaat"
+      - "soort"
+      properties:
+        adellijkeTitel_predikaat:
+          type: "string"
+          title: "Adellijke titel/predikaat"
+          description: "De code van de Adellijke titel/predikaat"
+          maxLength: 2
+        omschrijvingAdellijkeTitel_predikaat:
+          type: "string"
+          title: "Omschrijving adellijke titel/predikaat"
+          description: "De omschrijving van de adellijke titel en/of het predikaat."
+          maxLength: 10
+        soort:
+          type: "string"
+          title: "Soort"
+          description: "De soort van de Adellijke titel/predikaat"
+          maxLength: 10
     Verblijfstitel_tabel:
       type: "object"
       description: "Een opsomming van de verblijfsrechtelijke statussen met hun codes,\
@@ -1079,7 +1216,7 @@ components:
           title: "Datum aanvang geldigheid verblijfstitel"
           description: "Aanvang geldigheid van de verblijfstitel"
           format: "date"
-        datumEindeGeldigheidVerblijfstiel:
+        datumEindeGeldigheidVerblijfstitel:
           type: "string"
           title: "Datum einde geldigheid verblijfstiel"
           description: "Einde geldigheid van de verblijfstitel"
@@ -1151,54 +1288,6 @@ components:
           description: "De datum einde van het opnemen/beëindigen van de Nederlandse\
             \ nationaliteit"
           format: "date"
-    Voorvoegsel:
-      type: "object"
-      description: "Een opsomming van de toegestane voorvoegsels."
-      required:
-      - "voorvoegselnummer"
-      - "voorvoegsel"
-      - "scheidingsteken"
-      properties:
-        voorvoegselnummer:
-          type: "integer"
-          title: "Voorvoegselnummer"
-          description: "Het identificerende nummer van het voorvoegsel Natuurlijk\
-            \ getal met voorloopnullen. Alleen waarden in de codelijst zijn geldig."
-        voorvoegsel:
-          type: "string"
-          title: "Voorvoegsel"
-          description: "Het voorvoegsel"
-          maxLength: 10
-        scheidingsteken:
-          type: "string"
-          title: "Scheidingsteken"
-          description: "Het scheidingsteken"
-          maxLength: 1
-    AdellijkeTitel_predikaat_tabel:
-      type: "object"
-      description: "Een opsomming van de adellijke titels en/of predikaten die een\
-        \ persoon kan bezitten of die aan een persoon kunnen worden toegekend met\
-        \ hun codes, omschrijvingen en soorten."
-      required:
-      - "adellijkeTitel_predikaat"
-      - "omschrijvingAdellijkeTitel_predikaat"
-      - "soort"
-      properties:
-        adellijkeTitel_predikaat:
-          type: "string"
-          title: "Adellijke titel/predikaat"
-          description: "De code van de Adellijke titel/predikaat"
-          maxLength: 2
-        omschrijvingAdellijkeTitel_predikaat:
-          type: "string"
-          title: "Omschrijving adellijke titel/predikaat"
-          description: "De omschrijving van de adellijke titel en/of het predikaat."
-          maxLength: 10
-        soort:
-          type: "string"
-          title: "Soort"
-          description: "De soort van de Adellijke titel/predikaat"
-          maxLength: 10
     NederlandsReisdocument_tabel:
       type: "object"
       description: "Een opsomming van de modellen van de Nederlandse reisdocumenten."
@@ -1272,6 +1361,15 @@ components:
           title: "heeftAlsKind"
           type: "array"
           description: "De ingezetene, zijnde de ouder, waarnaar de KIND-OUDER-RELATIE\
+            \ verwijst"
+          items:
+            $ref: "#/components/schemas/Link"
+        partners:
+          title: "heeftAlsPartner"
+          type: "array"
+          description: "De INGEZETENE(n) bij wie de PARTNER-RELATIE is geregistreerd."
+          items:
+            $ref: "#/components/schemas/Link"
             \ verwijst De ingezetene, zijnde de ouder, waarnaar de KIND-OUDER-RELATIE\
             \ verwijst"
           items:
@@ -1280,12 +1378,6 @@ components:
           title: "isHouderVan"
           type: "array"
           description: "De ingezetene waaraan het REISDOCUMENT is verstrekt."
-          items:
-            $ref: "#/components/schemas/Link"
-        partners:
-          title: "heeftAlsPartner"
-          type: "array"
-          description: "De INGEZETENE(n) bij wie de PARTNER-RELATIE is geregistreerd."
           items:
             $ref: "#/components/schemas/Link"
         ouders:
@@ -1311,6 +1403,11 @@ components:
           properties:
             href:
               $ref: "#/components/schemas/Href"
+    AnderNatuurlijkPersoon_links:
+      type: "object"
+      properties:
+        self:
+          $ref: "#/components/schemas/Link"
     IngeschrevenNatuurlijkPersoon_gerelateerde_links:
       type: "object"
       properties:
@@ -1361,8 +1458,7 @@ components:
     IngeschrevenNatuurlijkPersoon_gerelateerde2_links:
       type: "object"
       properties:
-        self:
-          $ref: "#/components/schemas/Link"
+        self:          $ref: "#/components/schemas/Link"
     Reisdocument_gerelateerde_links:
       type: "object"
       properties:
@@ -1436,24 +1532,30 @@ components:
           title: "heeftAlsKind"
           type: "array"
           description: "De ingezetene, zijnde de ouder, waarnaar de KIND-OUDER-RELATIE\
-            \ verwijst De ingezetene, zijnde de ouder, waarnaar de KIND-OUDER-RELATIE\
+            \ verwijst De ingezetene, zijnde het kind, waarnaar de KIND-OUDER-RELATIE\
             \ verwijst"
           items:
-            $ref: "#/components/schemas/IngeschrevenNatuurlijkPersoon_gerelateerde"
+            oneOf:
+            - $ref: "#/components/schemas/AnderNatuurlijkPersoon"
+            - $ref: "#/components/schemas/IngeschrevenNatuurlijkPersoon_gerelateerde"
+        partners:
+          title: "heeftAlsPartner"
+          type: "array"
+          description: "De INGEZETENE(n) bij wie de PARTNER-RELATIE is geregistreerd."
+          items:
+            oneOf:
+            - $ref: "#/components/schemas/AnderNatuurlijkPersoon"
+            - $ref: "#/components/schemas/IngeschrevenNatuurlijkPersoon_gerelateerde"
         reisdocumenten:
           title: "isHouderVan"
           type: "array"
           description: "De ingezetene waaraan het REISDOCUMENT is verstrekt."
           items:
             $ref: "#/components/schemas/Reisdocument"
-        partners:
-          title: "heeftAlsPartner"
-          type: "array"
-          description: "De INGEZETENE(n) bij wie de PARTNER-RELATIE is geregistreerd."
-          items:
-            $ref: "#/components/schemas/IngeschrevenNatuurlijkPersoon_gerelateerde"
         ouders:
-          $ref: "#/components/schemas/IngeschrevenNatuurlijkPersoon_gerelateerde"
+            oneOf:
+            - $ref: "#/components/schemas/AnderNatuurlijkPersoon"
+            - $ref: "#/components/schemas/IngeschrevenNatuurlijkPersoon_gerelateerde"
         verblijfsplaats:
           $ref: "#/components/schemas/Verblijfsplaats"
     Verblijfsplaats_embedded:
