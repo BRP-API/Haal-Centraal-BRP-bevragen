@@ -4,12 +4,15 @@ from rest_framework import viewsets
 from zds_schema.utils import lookup_kwargs_to_filters
 from zds_schema.viewsets import NestedViewSetMixin
 
-from bip.datamodel.models import IngeschrevenNatuurlijkPersoon, Reisdocument, \
-    Land
+from bip.datamodel.models import (
+    IngeschrevenNatuurlijkPersoon, Land, Reisdocument
+)
 
 from .filters import IngeschrevenNatuurlijkPersoonFilter
-from .serializers import IngeschrevenNatuurlijkPersoonSerializer, \
-    ReisdocumentSerializer, LandSerializer
+from .serializers import (
+    IngeschrevenNatuurlijkPersoonSerializer, LandSerializer,
+    ReisdocumentSerializer
+)
 
 
 class IngeschrevenNatuurlijkPersoonViewSet(viewsets.ReadOnlyModelViewSet):

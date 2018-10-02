@@ -5,9 +5,15 @@ from django.db import transaction
 
 from tablib import import_set
 
-from bip.datamodel.constants import AdresHerkomst, BurgerlijkeStaat, \
-    RedenOpschortingBijhouding
-from ....datamodel.models import IngeschrevenNatuurlijkPersoon, Naam, AdellijkeTitelPredikaat, Land, Naamgebruik, Nationaliteit, Geboorte, Overlijden, Reisdocument, Verblijfsplaats, Verblijfstitel, VoorvoegselGeslachtsnaam
+from bip.datamodel.constants import (
+    AdresHerkomst, BurgerlijkeStaat, RedenOpschortingBijhouding
+)
+
+from ....datamodel.models import (
+    AdellijkeTitelPredikaat, Geboorte, IngeschrevenNatuurlijkPersoon, Land,
+    Naam, Naamgebruik, Nationaliteit, Overlijden, Reisdocument,
+    Verblijfsplaats, Verblijfstitel, VoorvoegselGeslachtsnaam
+)
 
 
 class Command(BaseCommand):

@@ -2,7 +2,7 @@
 Copyright
 =========
 
-*Besluitregistratiecomponent User Manual*
+*Bevragingen-ingeschreven-personen User Manual*
 
 .. |copy|   unicode:: U+000A9 .. COPYRIGHT SIGN
 

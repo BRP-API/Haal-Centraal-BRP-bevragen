@@ -2,25 +2,19 @@
 besluitregistratiecomponent
 ============================
 
-:Version: 0.1.1
-:Source: https://github.com/VNG-Realisatie/gemma-besluitregistratiecomponent
+:Version: 0.1.0
+:Source: https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen
 :Keywords: zaken, zaakgericht werken, GEMMA, RGBZ, bip
 :PythonVersion: 3.6
 
 |build-status|
 
-Referentieimplementatie van de besluitregistratiecomponent (bip).
+Referentieimplementatie van de Bevragingen ingeschreven personen (bip) API.
 
 Introduction
 ============
 
-Binnen het Nederlandse gemeentelandschap wordt zaakgericht werken nagestreefd.
-Om dit mogelijk te maken is er gegevensuitwisseling nodig. Er is een behoefte
-om informatieobjecten (documenten) te relateren aan zaken.
-
-Deze referentieimplementatie toont aan dat de API specificatie voor de
-besluitregistratiecomponent (hierna bip) implementeerbaar is, en vormt een
-voorbeeld voor andere implementaties indien ergens twijfel bestaat.
+Bevragingen ingeschreven personen is een berichtenstandaard voor het opvragen van gegevens van ingeschreven natuurlijk personen zoals beschreven in het RSGB.
 
 Deze component heeft ook een `testomgeving`_ waar leveranciers tegenaan kunnen
 testen.
@@ -38,19 +32,10 @@ document, otherwise ``docker.rst`` is recommended.
 References
 ==========
 
-* `Issues <https://github.com/VNG-Realisatie/gemma-besluitregistratiecomponent/issues>`_
-* `Code <https://github.com/VNG-Realisatie/gemma-besluitregistratiecomponent/>`_
+* `Issues <https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/issues>`_
+* `Code <https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/>`_
 
-
-.. |build-status| image:: http://jenkins.nlx.io/buildStatus/icon?job=gemma-besluitregistratiecomponent-stable
-    :alt: Build status
-    :target: http://jenkins.nlx.io/job/gemma-besluitregistratiecomponent-stable
-
-.. |requirements| image:: https://requires.io/github/VNG-Realisatie/gemma-besluitregistratiecomponent/requirements.svg?branch=master
-     :target: https://requires.io/github/VNG-Realisatie/gemma-besluitregistratiecomponent/requirements/?branch=master
-     :alt: Requirements status
-
-.. _testomgeving: https://ref.tst.vng.cloud/bip/
+.. _testomgeving: http://brp.tst.vng.cloud/
 
 Licentie
 ========

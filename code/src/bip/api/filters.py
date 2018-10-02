@@ -1,6 +1,5 @@
-import django_filters
-from zds_schema.filtersets import FilterSet
 from zds_schema.filters import WildcardFilter
+from zds_schema.filtersets import FilterSet
 
 from bip.datamodel.models import IngeschrevenNatuurlijkPersoon
 

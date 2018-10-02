@@ -3,7 +3,9 @@ from django.conf.urls import include, url
 from zds_schema import routers
 
 from .schema import schema_view
-from .viewsets import IngeschrevenNatuurlijkPersoonViewSet, ReisdocumentViewSet, LandViewSet
+from .viewsets import (
+    IngeschrevenNatuurlijkPersoonViewSet, LandViewSet, ReisdocumentViewSet
+)
 
 router = routers.DefaultRouter()
 router.register(

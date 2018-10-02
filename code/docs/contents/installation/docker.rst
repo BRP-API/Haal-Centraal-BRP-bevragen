@@ -19,11 +19,11 @@ Docker basics
 
    .. code-block:: bash
 
-       $ git clone https://github.com/VNG-realisatie/gemma-besluitregistratiecomponent.git bip
+       $ git clone https://github.com/VNG-realisatie/Bevragingen-ingeschreven-personen.git bip
        Cloning into 'bip'...
        ...
 
-       $ cd bip
+       $ cd bip/code
 
 2. Start the database and web services:
 
@@ -94,6 +94,6 @@ all settings.
     $ docker exec -it bip /app/src/manage.py createsuperuser
 
 
-.. _Github: https://github.com/VNG-realisatie/gemma-besluitregistratiecomponent
+.. _Github: https://github.com/VNG-realisatie/Bevragingen-ingeschreven-personen
 .. _Docker: https://docs.docker.com/install/
 .. _Docker Compose: https://docs.docker.com/compose/install/

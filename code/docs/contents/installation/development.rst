@@ -32,13 +32,13 @@ You can retrieve the source code using the following command:
 
    .. code-block:: bash
 
-        $ git clone git@github.com:VNG-realisatie/gemma-besluitregistratiecomponent.git bip
+        $ git clone git@github.com:VNG-realisatie/Bevragingen-ingeschreven-personen.git bip
 
 **Note:** You can also use the HTTPS syntax:
 
    .. code-block:: bash
 
-        $ git clone https://github.com/VNG-realisatie/gemma-besluitregistratiecomponent.git bip
+        $ git clone https://github.com/VNG-realisatie/Bevragingen-ingeschreven-personen.git bip
 
 Setting up virtualenv
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -47,7 +47,7 @@ Setting up virtualenv
 
    .. code-block:: bash
 
-        $ cd bip
+        $ cd bip/code
 
 2. Create the virtual environment:
 

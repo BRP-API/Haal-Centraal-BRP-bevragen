@@ -8,7 +8,7 @@ info = openapi.Info(
     description="Een API om een bevragingen ingeschreven personen uit te voeren.",
     contact=openapi.Contact(
         email="support@maykinmedia.nl",
-        url="https://github.com/VNG-Realisatie/gemma-zaken"
+        url="https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen"
     ),
     license=openapi.License(name="EUPL 1.2"),
 )

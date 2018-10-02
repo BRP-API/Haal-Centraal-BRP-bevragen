@@ -28,19 +28,6 @@ class GeslachtsAanduiding(DjangoChoices):
         label=_('Onbekend')
     )
 
-class AdellijkeTitel(DjangoChoices):
-    baron = ChoiceItem('B', 'Baron')
-    barones = ChoiceItem('B', 'Barones')
-    graaf = ChoiceItem('G', 'Graaf')
-    gravin = ChoiceItem('G', 'Gravin')
-    hertog = ChoiceItem('H', 'Hertog')
-    hertogin = ChoiceItem('H', 'Hertogin')
-    Markies = ChoiceItem('M', 'Markies')
-    Markiezin = ChoiceItem('M', 'Markiezin')
-    prins = ChoiceItem('P', 'Prins')
-    prinses = ChoiceItem('P', 'Prinses')
-    ridder = ChoiceItem('R', 'Ridder')
-
 
 class NaamgebruikAanduiding(DjangoChoices):
     """

@@ -2,18 +2,12 @@
 Serializers of the Basisregistratie Ingeschreven Personen REST API
 """
 from rest_framework import serializers
-from rest_framework_nested.serializers import NestedHyperlinkedModelSerializer
-from zds_schema.validators import (
-    InformatieObjectUniqueValidator, ObjectInformatieObjectValidator,
-    UniekeIdentificatieValidator, URLValidator
+
+from bip.datamodel.models import (
+    AdellijkeTitelPredikaat, Geboorte, IngeschrevenNatuurlijkPersoon, Land,
+    Naam, Naamgebruik, Nationaliteit, Overlijden, Reisdocument,
+    Verblijfsplaats, Verblijfstitel, VoorvoegselGeslachtsnaam
 )
-
-from bip.datamodel.models import IngeschrevenNatuurlijkPersoon, Geboorte, \
-    Verblijfstitel, \
-    Nationaliteit, Overlijden, Naam, VoorvoegselGeslachtsnaam, \
-    AdellijkeTitelPredikaat, Land, Naamgebruik, Reisdocument, Verblijfsplaats
-
-
 
 # Nested level 2
 

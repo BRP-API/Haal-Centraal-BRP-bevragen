@@ -3,7 +3,11 @@
 set -e # exit on error
 set -x # echo commands
 
-CONTAINER_REPO=vngr/gemma-bip
+echo "TODO: Container repository"
+exit
+
+CONTAINER_REPO=vngr/XXXX
+
 
 git_tag=$(git tag --points-at HEAD) &>/dev/null
 git_branch=$(git rev-parse --abbrev-ref HEAD)

@@ -2,7 +2,7 @@
 
 for /F "tokens=1" %%i in ('git rev-parse --show-toplevel') do set toplevel=%%i
 
-cd %toplevel%
+cd %toplevel%/code
 
 REM Base deps
 pip-compile^

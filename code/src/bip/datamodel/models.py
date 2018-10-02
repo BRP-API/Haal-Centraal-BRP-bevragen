@@ -1,31 +1,28 @@
 import uuid as _uuid
 
-from django.core.validators import MinValueValidator, MaxValueValidator, \
-    RegexValidator
+from django.core.validators import RegexValidator
 from django.db import models
 
-from zds_schema.fields import RSINField
 from zds_schema.models import APIMixin
-from zds_schema.validators import (
-    UntilNowValidator, alphanumeric_excluding_diacritic,
-    validate_non_negative_string)
+from zds_schema.validators import validate_non_negative_string
 
-from .constants import GeslachtsAanduiding, NaamgebruikAanduiding, \
-    AdresHerkomst, BurgerlijkeStaat, RedenOpschortingBijhouding, \
-    AanduidingBijzonderNederlandschap
+from .constants import (
+    AanduidingBijzonderNederlandschap, AdresHerkomst, BurgerlijkeStaat,
+    GeslachtsAanduiding, NaamgebruikAanduiding, RedenOpschortingBijhouding
+)
 
 
 class IngeschrevenNatuurlijkPersoon(APIMixin, models.Model):
     uuid = models.UUIDField(default=_uuid.uuid4)
 
     burgerservicenummer = models.CharField(
-        null=True, blank=True, max_length=9,
+        blank=True, max_length=9,
         validators=[validate_non_negative_string, ],
         help_text='Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet '
                   'algemene bepalingen burgerservicenummer.'
     )
     a_nummer = models.BigIntegerField(
-        null=True
+        null=True, blank=True
     )
     geslachtsaanduiding = models.CharField(
         blank=True, max_length=1,
@@ -40,19 +37,19 @@ class IngeschrevenNatuurlijkPersoon(APIMixin, models.Model):
         max_length=200 # TODO: choices
     )
     gemeente_van_inschrijving = models.IntegerField(
-        null=True
+        null=True, blank=True
     )
     datum_inschrijving_in_gemeente = models.DateField()
     datum_begin_geldigheid_verblijfplaats = models.DateField()
     datum_vestiging_in_nederland = models.DateField(
-        null=True
+        null=True, blank=True
     )
     reden_opschorting_bijhouding = models.CharField(
         max_length=40, choices=RedenOpschortingBijhouding.choices
     )
     datum_opschorting_bijhouding = models.DateField()
     signalering_nederlands_reisdocument = models.IntegerField(
-        null=True
+        null=True, blank=True
     )
     overlijden = models.ForeignKey(
         'Overlijden', null=True, blank=True, on_delete=models.CASCADE
@@ -109,7 +106,7 @@ class Verblijfstitel(models.Model):
     numeriek = models.CharField(max_length=2)
     omschrijving = models.CharField(max_length=80)
     datum_aanvang_geldigheid = models.DateField()
-    datum_einde_geldigheid = models.DateField(null=True)
+    datum_einde_geldigheid = models.DateField(null=True, blank=True)
 
 
 class Naamgebruik(models.Model):
@@ -131,10 +128,10 @@ class Naam(models.Model):
         help_text='De stam van de geslachtsnaam.'
     )
     voorvoegsel_geslachtsnaam = models.ForeignKey(
-        'VoorvoegselGeslachtsnaam', null=True, on_delete=models.SET_NULL,
+        'VoorvoegselGeslachtsnaam', null=True, blank=True, on_delete=models.SET_NULL,
     )
     adellijke_titel_predikaat = models.ForeignKey(
-        'AdellijkeTitelPredikaat', null=True, on_delete=models.SET_NULL,
+        'AdellijkeTitelPredikaat', null=True, blank=True, on_delete=models.SET_NULL,
     )
 
 
@@ -146,7 +143,7 @@ class Nationaliteit(models.Model):
     # TODO: ARGH INLINE ZOOI
     code = models.IntegerField()
     officiele_omschrijving = models.CharField(max_length=42)
-    datum_einde_geldigheid = models.DateField(null=True)
+    datum_einde_geldigheid = models.DateField(null=True, blank=True)
     # End
 
     # redenOpnameNationaliteit
