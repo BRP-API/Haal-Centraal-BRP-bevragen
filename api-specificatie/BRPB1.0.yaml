@@ -846,6 +846,11 @@ components:
           description: "Unieke identificatie van een verblijfsplaats"
         _links:
           $ref: "#/components/schemas/Verblijfsplaats_links"
+<<<<<<< master
+=======
+        _embedded:
+          $ref: "#/components/schemas/Verblijfsplaats_embedded"
+>>>>>>> master
     Bewoning:
       type: "object"
       description: "Een door het bevoegde gemeentelijke orgaan als zodanig aangewezen\
@@ -1259,6 +1264,7 @@ components:
         redenBeindigenNationaliteit:
           $ref: "#/components/schemas/RedenVerkrijgingOpnemen_beindigenNationaliteit_tabel"
     Overlijden:
+<<<<<<< master
       type: "object"
       description: "Gegevens over het overlijden van de ingeschreven natuurlijk persoon.\
         \ Zie verder de toelichting in de GBA."
@@ -1321,6 +1327,8 @@ components:
         landGeboorte:
           $ref: "#/components/schemas/Land_tabel"
     Verblijfsplaatshistorie:
+=======
+>>>>>>> master
       type: "object"
       description: "Een door het bevoegde gemeentelijke orgaan als zodanig aangewezen\
         \ en van een naam voorzien gedeelte van het grondgebied van de gemeente. Een\
@@ -1445,6 +1453,7 @@ components:
           format: "date"
         datumTotEnMet:
           type: "string"
+<<<<<<< master
           title: "datumTotEnMet"
           description: "De datum waarop de INGESCHREVEN NATUURLIJK PERSOON is uitgeschreven\
             \ op een verblijfsplaats"
@@ -1498,6 +1507,33 @@ components:
           title: "uuid"
           description: ""
         datumIngangGeldigheid:
+=======
+          title: "Plaats overlijden"
+          description: "De naam van de Nederlandse gemeente of een buitenlandse plaats\
+            \ of een plaatsbepaling, die aangeeft waar de persoon is overleden In\
+            \ afwijking van het corresponderende GBA-attribuutsoort wordt voor gemeenten\
+            \ niet de code vastgelegd maar de gemeentenaam. Het betreft een gemeente\
+            \ in het Europese deel van het Koninkrijk. Zie verder de toelichting in\
+            \ de GBA. Wanneer het niet een Nederandse gemeente betreft, wordt een\
+            \ buitenlandse plaatsnaam of een omschrijving zo nodig aangevuld met een\
+            \ aanduiding in lengte- en breedtegraden, indien het overlijden niet in\
+            \ een gemeente of buitenlandse plaats heeft plaatsgevonden (bijvoorbeeld\
+            \ bij een overlijden op of boven internationaal gebied). Standaardwaarde\
+            \ '0000' indien onbekend."
+          maxLength: 40
+        landOverlijden:
+          $ref: "#/components/schemas/Land_tabel"
+    Geboorte:
+      type: "object"
+      description: "Gegevens over de geboorte van de INGESCHREVEN NATUURLIJK PERSOON.\
+        \ Zie verder de toelichting in de GBA"
+      required:
+      - "geboortedatum"
+      - "geboorteplaats"
+      - "landGeboorte"
+      properties:
+        geboortedatum:
+>>>>>>> master
           type: "string"
           title: "datumIngangGeldigheid"
           description: "Einddatum van de geregistreerde partnerrelatie"
