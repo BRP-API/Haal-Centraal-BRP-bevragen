@@ -7,5 +7,8 @@ Hier vind je de API specificaties in drie verschillende formaten:
 
 In deze versie zijn nu handmatig enkele wijzigingen in het .yaml bestand doorgevoerd die niet in de .json bestanden zijn doorgevoerd. 
 Op hooflijnen zijn dit :
-* Het toevoegen van een oneOf constructie in de embedded van ingeschreven personen voor kinderen, ouders en partners.
-* Het verwijderen van een 6-tal schema-componenten waarnaar niet verwezen wordt. 
+* De verwijzing naar “ouders” omzetten naar een array met maxItems=4. Ook op het niveau van de gerelateerde. – Nog een issue voor aanmaken
+* Alle verwijzingen naar ouders, partners en kinderen voorzien van de oneOf met AnderNatuurlijkPersoon. Issue is bekend (met de Xor) nogmaals benadrukken.  – Bestaande Issue prioriteren
+* Verwijderen van embedded elementen waar die niet aangemaakt hoeven te worden (bij verwijzing naar “lege” gerelateerde entiteittypen ) – Nog een issue voor aanmaken
+* Verblijfstitelhistorie is geen array. Dus array van maken . – Known issue
+
