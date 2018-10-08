@@ -50,14 +50,30 @@ Het algoritme voor het samenstellen moet worden beschreven in de API specificati
 * Het in de API implementeren van deze logica garandeert een consistente uitvoering hiervan binnen een gemeente.
 * Dit is een verbetering voor AVG eisen, omdat hierdoor gegevens zoals van de partner niet meer bij een persoon meegeleverd hoeven te worden (deze werken immers alleen gebruikt voor het samenstellen van de aanschrijfwijze).
 
-## Alle relaties kunnen embed worden
+## Alle relaties uit dezelfde bron kunnen embed worden
 In de resource van een ingeschreven natuurlijk persoon kunnen alle relaties embedded worden opgenomen met gebruik van de expand-parameter.
 Wanneer een gerelateerde resource expand wordt, wordt de gehele resource teruggegeven, tenzij in de expand parameter alleen een deel van de gerelateerde resource gevraagd is.
 
+Gegevens uit een andere bron/registratie (bijvoorbeeld het BAG-adres van een persoon) kunnen niet embed worden.
+
+*Ratio*
+Vooralsnog heeft de bron, het GBA, geen directe toegang tot andere bronnen (BAG).
+
 ## Gebruik van expand=true wordt uitgesloten
+Voor het gebruik van de API is het gebruiken van expand=true om alle relaties embed te krijgen is niet toegestaan.
 
 *Ratio*
 Het embedded van gerelateerde resources moet bewust worden gebruikt.
+
+## Relaties kunnen maximaal één niveau diep worden embed
+Door het gebruik van de parameter expand kunnen relaties/gerelateerde resources worden embed in het antwoord. Relaties van de embedde gerelateerde resource worden alleen als link opgenomen, maar kunnen zelf niet embed worden.
+
+Het is dus bijvoorbeeld niet mogelijk in één call van een persoon de details van de kinderen te krijgen inclusief details van de partners van de kinderen.
+
+*Ratio*
+Implementatie en gebruik eenvoudig houden.
+We zien geen functionele behoefte om diep gegevens te embedded.
+Het opvragen van relaties is eenvoudig.
 
 ## Namen van gegevensgroepen worden ingekort.
 Het stuk "IngeschrevenNatuurlijkPersoon" aan het eind van de groepsnaam wordt verwijderd.
@@ -104,17 +120,22 @@ Beperken van het aantal mogelijke combinaties van zoekparameters maakt het mogel
 Verplicht beperken van ondersteunde zoek-combinaties voorkomt vendor lock in, omdat zeker is dat elke leverancier exact dezelfde functionaliteit biedt in de API. Ook wordt de testbaarheid van de API hiermee vergroot.
 Zie issue [16](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/issues/16).
 
-## Verblijfadres wordt relatie naar een resource verblijfplaatsen
-Er wordt een resource gedefinieerd voor het weergeven van een verblijfplaats (/verblijfplaatsen).
-In deze resource zijn de relevantie adresgegevens platgeslagen, zodat de gebruiker eenvoudig alle adresgegevens beschikbaar heeft in het antwoord.
-Het verblijfadres van een ingeschreven natuurlijk persoon wordt vormgegeven als relatie naar de verblijfplaats.
-Alle relaties naar de werkelijke BAG objecttypen (nummeraanduiding, ligplaats, enz.) worden als relatie in de resource opgenomen.
-De gebruiker kan van een persoon de adresgegevens krijgen door /ingeschrevennatuurlijkpersonen?expand=verblijfadres. Dit wordt in de documentatie opgenomen.
+## Verblijfadres wordt relatie naar de nummeraanduiding plus een gegevensgroep
+Het verblijfadres van een persoon wordt bij de persoon opgenomen als gegevensgroep. Daarin staan de adresgegevens zoals die in het GBA bekend zijn. In deze gegevensgroep zijn de relevantie adresgegevens platgeslagen, zodat de gebruiker eenvoudig alle adresgegevens beschikbaar heeft in het antwoord.
+
+Wanneer het verblijfadres een BAG-adres is, wordt ook een relatie (link) naar de nummeraanduiding in het BAG opgenomen.
 
 *Ratio*
 Functionele vraag is: ik wil in één vraag een persoon met adres hebben.
 Een groot deel van de vragen om persoonsgegevens is er direct behoefte aan de adresgegevens, zonder geïnteresseerd te zijn in de structuur in BAG (zoals naar nummeraanduiding, woonplaats, ligplaats, adresseerbaar object).
 Deze oplossing is ook een oplossing voor issue [22](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/issues/22) en [14](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/issues/14).
+
+## Verblijfplaats wordt gevuld met adresgegevens uit het GBA
+De verblijfplaats toont de adresgegevens zoals die in het GBA staan geregistreerd.
+
+*Ratio*
+Vanuit het GBA hoeft er geen verbinding te zijn naar het BAG om de juiste adresgegevens op te halen.
+Er is niet altijd een BAG-adres.
 
 ## Zoeken op geboortedatum gebeurt alleen op volledige datum.
 Er wordt geen zoeken op onvolledige geboortedatum ondersteund in de API.
@@ -183,8 +204,24 @@ De response van /bewoningshistorie bevat de lijst voorkomens met elk de properti
 
 ## Elementnamen die verwijzen naar een resource die maximaal 1 keer kan voorkomen worden enkelvoud.
 
-Als voorbeeld de verblijfsplaats bij een ingeschreven persoon. De kardinaliteit daarvan is 0..1, dus er kan maximaal 1 verblijfsplaats aan gerelateerd zijn aan een ingeschreven persoon. 
+Als voorbeeld de verblijfsplaats bij een ingeschreven persoon. De kardinaliteit daarvan is 0..1, dus er kan maximaal 1 verblijfsplaats aan gerelateerd zijn aan een ingeschreven persoon.
 
 *Ratio*
-Het is voor de developer verwarrend als de elementnaam in meervoud is gesteld terwijl de kardinaliteit maximaal 1 is. 
+Het is voor de developer verwarrend als de elementnaam in meervoud is gesteld terwijl de kardinaliteit maximaal 1 is.
 Ratio
+
+## Burgerservicenummer is unieke sleutel voor een ingeschreven natuurlijk persoon
+De resource ingeschrevenNatuurlijkPersonen wordt uniek geïdentificeerd met de sleutel burgerservicenummer.
+Dus is het pad naar de gegevens van één persoon gedefinieerd als /ingeschrevennatuurlijkpersonen/{burgerservicenummer}
+
+*Ratio*
+Het burgerservicenummer is het persoonsnummer voor contact van een burger met de overheid. Andere registraties die verwijzen naar een persoon zullen geen andere unieke identificatie kennen dan het burgerservicenummer. Zolang andere registraties (zoals BRK en HR) alleen het burgerservicenummer als functionele sleutel van de persoon kennen kan er geen technische sleutel (UUID) gebruikt worden voor het ophalen van een enkele resource.
+Ook voor apps die op bais van DigiD de persoonsgegevens ophalen kennen alleen het burgerservicenummer, geen technische sleutel.
+
+## We nemen geen (inverse) relaties uit een ander domein op
+Vanuit andere registraties bestaan er relaties naar ingeschreven natuurlijk personen. Een persoon kan bijvoorbeeld zakelijk gerechtigde zijn van een Kadastraal object of functionaris zijn van een bedrijf.
+Deze inverse relaties uit een andere bron worden niet opgenomen bij de ingeschreven natuurlijk persoon.
+Wanneer er functionele behoefte is aan deze gegevens moeten deze bij de betreffende bron (bijvoorbeeld BRK of HR) worden opgevraagd.
+
+*Ratio*
+We bevragen gegevens bij de bron. Een bron kan alleen gegevens leveren die ze zelf heeft.
