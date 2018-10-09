@@ -3,18 +3,41 @@ info:
   title: Bevragingen-ingeschreven-personen (bip) API
   description: Een API om een bevragingen ingeschreven personen uit te voeren.
   contact:
-    url: https://github.com/VNG-Realisatie/gemma-zaken
+    url: 'https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen'
     email: support@maykinmedia.nl
   license:
     name: EUPL 1.2
   version: '1'
 security:
-- basic: []
+  - basic: []
 paths:
   /ingeschrevennatuurlijkpersonen:
     get:
       operationId: ingeschrevennatuurlijkpersoon_list
-      description: Geef een lijst van BESLUITen, waarin gefiltered kan worden.
+      description: |-
+        Geef een lijst van INGESCHREVEN NATUURLIJK PERSOON objecten, waarin
+        gefiltered kan worden.
+      parameters:
+        - name: burgerservicenummer
+          in: query
+          description: >-
+            Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene
+            bepalingen burgerservicenummer.
+          required: false
+          schema:
+            type: string
+        - name: geboorte__datum
+          in: query
+          description: ''
+          required: false
+          schema:
+            type: string
+        - name: naam__geslachtsnaam
+          in: query
+          description: Zoeken op geslachtsnaam met ondersteuning voor wildcards (*).
+          required: false
+          schema:
+            type: string
       responses:
         '200':
           description: ''
@@ -23,134 +46,410 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NatuurlijkPersoon'
+                  $ref: '#/components/schemas/IngeschrevenNatuurlijkPersoon'
         '401':
           description: ''
           content:
-            application/problem+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/Fout'
         '403':
           description: ''
           content:
-            application/problem+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/Fout'
         '406':
           description: ''
           content:
-            application/problem+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/Fout'
         '409':
           description: ''
           content:
-            application/problem+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/Fout'
         '410':
           description: ''
           content:
-            application/problem+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/Fout'
         '415':
           description: ''
           content:
-            application/problem+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/Fout'
         '429':
           description: ''
           content:
-            application/problem+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/Fout'
         '500':
           description: ''
           content:
-            application/problem+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/Fout'
       tags:
-      - ingeschrevennatuurlijkpersonen
+        - ingeschrevennatuurlijkpersonen
     parameters: []
-  /ingeschrevennatuurlijkpersonen/{uuid}:
+  '/ingeschrevennatuurlijkpersonen/{uuid}':
     get:
       operationId: ingeschrevennatuurlijkpersoon_read
-      description: Geef de details van 1 enkel BESLUIT.
+      description: Geef de details van 1 enkel INGESCHREVEN NATUURLIJK PERSOON.
       responses:
         '200':
           description: ''
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NatuurlijkPersoon'
+                $ref: '#/components/schemas/IngeschrevenNatuurlijkPersoon'
         '401':
           description: ''
           content:
-            application/problem+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/Fout'
         '403':
           description: ''
           content:
-            application/problem+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/Fout'
         '404':
           description: ''
           content:
-            application/problem+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/Fout'
         '406':
           description: ''
           content:
-            application/problem+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/Fout'
         '409':
           description: ''
           content:
-            application/problem+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/Fout'
         '410':
           description: ''
           content:
-            application/problem+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/Fout'
         '415':
           description: ''
           content:
-            application/problem+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/Fout'
         '429':
           description: ''
           content:
-            application/problem+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/Fout'
         '500':
           description: ''
           content:
-            application/problem+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/Fout'
       tags:
-      - ingeschrevennatuurlijkpersonen
+        - ingeschrevennatuurlijkpersonen
     parameters:
-    - name: uuid
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
+      - name: uuid
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+  /landen:
+    get:
+      operationId: land_list
+      description: 'Geef een lijst van LAND objecten, waarin gefiltered kan worden.'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Land'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '406':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '410':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '415':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '429':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+      tags:
+        - landen
+    parameters: []
+  '/landen/{uuid}':
+    get:
+      operationId: land_read
+      description: Geef de details van 1 enkel LAND.
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Land'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '406':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '410':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '415':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '429':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+      tags:
+        - landen
+    parameters:
+      - name: uuid
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+  /reisdocumenten:
+    get:
+      operationId: reisdocument_list
+      description: 'Geef een lijst van REISDOCUMENT objecten, waarin gefiltered kan worden.'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Reisdocument'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '406':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '410':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '415':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '429':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+      tags:
+        - reisdocumenten
+    parameters: []
+  '/reisdocumenten/{uuid}':
+    get:
+      operationId: reisdocument_read
+      description: Geef de details van 1 enkel REISDOCUMENT.
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reisdocument'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '406':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '410':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '415':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '429':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fout'
+      tags:
+        - reisdocumenten
+    parameters:
+      - name: uuid
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
 servers:
-- url: /api/v1
+  - url: /api/v1
 components:
   securitySchemes:
     basic:
@@ -160,16 +459,11 @@ components:
     Overlijden:
       title: Overlijden
       required:
-      - datum
-      - plaats
-      - land
+        - datum
+        - plaats
+        - land
       type: object
       properties:
-        url:
-          title: Url
-          type: string
-          format: uri
-          readOnly: true
         datum:
           title: Datum
           type: string
@@ -183,30 +477,243 @@ components:
           title: Land
           type: string
           format: uri
-    Reisdocument:
+    Geboorte:
+      title: Geboorte
       required:
-      - subject
+        - datum
+        - plaats
+        - land
       type: object
       properties:
-        url:
-          title: Url
+        datum:
+          title: Datum
+          type: string
+          format: date
+        plaats:
+          title: Plaats
+          type: string
+          maxLength: 40
+          minLength: 1
+        land:
+          title: Land
           type: string
           format: uri
-          readOnly: true
-        subject:
-          title: Subject
-          type: string
-          format: uri
-    NatuurlijkPersoon:
+    Verblijfstitel:
+      title: Verblijfstitel
       required:
-      - overlijden
-      - reisdocumenten
-      - burgerlijkeStaat
-      - indicatieGeheim
-      - datumInschrijvingInGemeente
-      - datumBeginGeldigheidVerblijfplaats
-      - redenOpschortingBijhouding
-      - datumOpschortingBijhouding
+        - ingangsdatum
+        - datumEinde
+        - numeriek
+        - omschrijving
+        - datumAanvangGeldigheid
+      type: object
+      properties:
+        ingangsdatum:
+          title: Ingangsdatum
+          type: string
+          format: date
+        datumEinde:
+          title: Datum einde
+          type: string
+          format: date
+        numeriek:
+          title: Numeriek
+          type: string
+          maxLength: 2
+          minLength: 1
+        omschrijving:
+          title: Omschrijving
+          type: string
+          maxLength: 80
+          minLength: 1
+        datumAanvangGeldigheid:
+          title: Datum aanvang geldigheid
+          type: string
+          format: date
+        datumEindeGeldigheid:
+          title: Datum einde geldigheid
+          type: string
+          format: date
+    Naamgebruik:
+      title: Naamgebruik
+      required:
+        - aanduiding
+        - aanschrijfwijze
+      type: object
+      properties:
+        aanduiding:
+          title: Aanduiding
+          type: string
+          enum:
+            - E
+            - P
+            - V
+            - 'N'
+        aanschrijfwijze:
+          title: Aanschrijfwijze
+          type: string
+          maxLength: 50
+          minLength: 1
+    VoorvoegselGeslachtsnaam:
+      title: Voorvoegsel geslachtsnaam
+      required:
+        - voorvoegselnummer
+        - voorvoegsel
+        - scheidingsteken
+      type: object
+      properties:
+        voorvoegselnummer:
+          title: Voorvoegselnummer
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        voorvoegsel:
+          title: Voorvoegsel
+          type: string
+          maxLength: 10
+          minLength: 1
+        scheidingsteken:
+          title: Scheidingsteken
+          type: string
+          maxLength: 1
+          minLength: 1
+    AdellijkeTitelPredikaat:
+      title: Adellijke titel predikaat
+      required:
+        - predikaat
+        - omschrijving
+        - soort
+      type: object
+      properties:
+        predikaat:
+          title: Predikaat
+          type: string
+          maxLength: 2
+          minLength: 1
+        omschrijving:
+          title: Omschrijving
+          type: string
+          maxLength: 10
+          minLength: 1
+        soort:
+          title: Soort
+          type: string
+          maxLength: 10
+          minLength: 1
+    Naam:
+      title: Naam
+      required:
+        - geslachtsnaam
+      type: object
+      properties:
+        voorvoegselGeslachtsnaam:
+          $ref: '#/components/schemas/VoorvoegselGeslachtsnaam'
+        adellijkeTitelPredikaat:
+          $ref: '#/components/schemas/AdellijkeTitelPredikaat'
+        voornamen:
+          title: Voornamen
+          description: Voornamen bij de naam die de persoon wenst te voeren.
+          type: string
+          maxLength: 200
+        geslachtsnaam:
+          title: Geslachtsnaam
+          description: De stam van de geslachtsnaam.
+          type: string
+          maxLength: 200
+          minLength: 1
+    Nationaliteit:
+      title: Nationaliteit
+      required:
+        - aanduidingBijzonderNederlanderschap
+        - code
+        - officieleOmschrijving
+      type: object
+      properties:
+        aanduidingBijzonderNederlanderschap:
+          title: Aanduiding bijzonder nederlanderschap
+          type: string
+          enum:
+            - behandeld als Nederlander
+            - vastgesteld niet-Nederlander
+        code:
+          title: Code
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        officieleOmschrijving:
+          title: Officiele omschrijving
+          type: string
+          maxLength: 42
+          minLength: 1
+        datumEindeGeldigheid:
+          title: Datum einde geldigheid
+          type: string
+          format: date
+    Verblijfsplaats:
+      title: Verblijfsplaats
+      required:
+        - adresherkomst
+        - huisnummer
+        - woonplaatsnaam
+        - naamOpenbareRuimte
+        - postcode
+      type: object
+      properties:
+        adresherkomst:
+          title: Adresherkomst
+          type: string
+          enum:
+            - Woonadres
+            - Briefadres
+        huisletter:
+          title: Huisletter
+          type: string
+          maxLength: 1
+        identificatiecodeNummeraanduiding:
+          title: Identificatiecode nummeraanduiding
+          type: string
+          maxLength: 29
+        huisnummer:
+          title: Huisnummer
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        locatiebeschrijving:
+          title: Locatiebeschrijving
+          description: >-
+            Een geheel of gedeeltelijke omschrijving van de ligging van een
+            object.
+          type: string
+          maxLength: 35
+        woonplaatsnaam:
+          title: Woonplaatsnaam
+          type: string
+          maxLength: 80
+          minLength: 1
+        huisnummertoevoeging:
+          title: Huisnummertoevoeging
+          type: string
+          maxLength: 4
+        naamOpenbareRuimte:
+          title: Naam openbare ruimte
+          type: string
+          maxLength: 80
+          minLength: 1
+        postcode:
+          title: Postcode
+          type: string
+          pattern: '^[1-9]{1}[0-9]{3}[A-Z]{2}$'
+          maxLength: 6
+          minLength: 1
+    IngeschrevenNatuurlijkPersoon:
+      required:
+        - verblijfsplaats
+        - burgerlijkeStaat
+        - indicatieGeheim
+        - datumInschrijvingInGemeente
+        - datumBeginGeldigheidVerblijfplaats
+        - redenOpschortingBijhouding
+        - datumOpschortingBijhouding
       type: object
       properties:
         url:
@@ -216,45 +723,62 @@ components:
           readOnly: true
         overlijden:
           $ref: '#/components/schemas/Overlijden'
-        reisdocumenten:
+        geboorte:
+          $ref: '#/components/schemas/Geboorte'
+        verblijfstitel:
+          $ref: '#/components/schemas/Verblijfstitel'
+        naamgebruik:
+          $ref: '#/components/schemas/Naamgebruik'
+        naam:
+          $ref: '#/components/schemas/Naam'
+        nationaliteit:
+          $ref: '#/components/schemas/Nationaliteit'
+        verblijfsplaats:
+          $ref: '#/components/schemas/Verblijfsplaats'
+        ouders:
           type: array
           items:
-            $ref: '#/components/schemas/Reisdocument'
+            type: string
+            format: uri
+          readOnly: true
+          uniqueItems: true
         uuid:
           title: Uuid
           type: string
           format: uuid
         burgerservicenummer:
           title: Burgerservicenummer
-          description: Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet
-            algemene bepalingen burgerservicenummer.
+          description: >-
+            Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene
+            bepalingen burgerservicenummer.
           type: string
           maxLength: 9
         aNummer:
           title: A nummer
           type: integer
-          maximum: 2147483647
-          minimum: -2147483648
+          maximum: 9223372036854776000
+          minimum: -9223372036854776000
         geslachtsaanduiding:
           title: Geslachtsaanduiding
-          description: Een aanduiding die aangeeft of de persoon een man of een vrouw
-            is, of dat het geslacht nog onbekend is.
+          description: >-
+            Een aanduiding die aangeeft of de persoon een man of een vrouw is,
+            of dat het geslacht nog onbekend is.
           type: string
           enum:
-          - Man
-          - Vrouw
-          - Onbekend
+            - Man
+            - Vrouw
+            - Onbekend
         burgerlijkeStaat:
           title: Burgerlijke staat
           type: string
           enum:
-          - ongehuwd en nooit gehuwd geweest
-          - gehuwd
-          - gescheiden
-          - weduwe / weduwnaar
-          - partnerschap
-          - partnerschap beeindigd
-          - achtergebleven partner
+            - ongehuwd en nooit gehuwd geweest
+            - gehuwd
+            - gescheiden
+            - weduwe / weduwnaar
+            - partnerschap
+            - partnerschap beeindigd
+            - achtergebleven partner
         indicatieGeheim:
           title: Indicatie geheim
           type: string
@@ -281,12 +805,12 @@ components:
           title: Reden opschorting bijhouding
           type: string
           enum:
-          - overlijden
-          - emigratie
-          - Ministerieel besluit
-          - PL aangelegd in de RNI
-          - fout
-          - standaardwaarde indien onbekend
+            - overlijden
+            - emigratie
+            - Ministerieel besluit
+            - PL aangelegd in de RNI
+            - fout
+            - standaardwaarde indien onbekend
         datumOpschortingBijhouding:
           title: Datum opschorting bijhouding
           type: string
@@ -296,27 +820,6 @@ components:
           type: integer
           maximum: 2147483647
           minimum: -2147483648
-        geboorte:
-          title: Geboorte
-          type: string
-          format: uri
-        verblijfstitel:
-          title: Verblijfstitel
-          type: string
-          format: uri
-        naamgebruik:
-          title: Naamgebruik
-          type: string
-          format: uri
-        naam:
-          title: Naam
-          description: Gegevens over de naam van de NATUURLIJK PERSOON
-          type: string
-          format: uri
-        nationaliteit:
-          title: Nationaliteit
-          type: string
-          format: uri
         kinderen:
           type: array
           items:
@@ -331,16 +834,16 @@ components:
           uniqueItems: true
     Fout:
       required:
-      - code
-      - title
-      - status
-      - detail
-      - instance
+        - code
+        - title
+        - status
+        - detail
+        - instance
       type: object
       properties:
         type:
           title: Type
-          description: URI referentie naar het type fout, bedoeld voor developers
+          description: 'URI referentie naar het type fout, bedoeld voor developers'
           type: string
         code:
           title: Code
@@ -358,12 +861,62 @@ components:
           type: integer
         detail:
           title: Detail
-          description: Extra informatie bij de fout, indien beschikbaar
+          description: 'Extra informatie bij de fout, indien beschikbaar'
           type: string
           minLength: 1
         instance:
           title: Instance
-          description: URI met referentie naar dit specifiek voorkomen van de fout.
-            Deze kan gebruikt worden in combinatie met server logs, bijvoorbeeld.
+          description: >-
+            URI met referentie naar dit specifiek voorkomen van de fout. Deze
+            kan gebruikt worden in combinatie met server logs, bijvoorbeeld.
           type: string
           minLength: 1
+    Land:
+      required:
+        - code
+        - naam
+      type: object
+      properties:
+        url:
+          title: Url
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          title: Uuid
+          type: string
+          format: uuid
+        code:
+          title: Code
+          description: >-
+            De code, behorende bij de landnaam, zoals opgenomen in de
+            Land/Gebied-tabel van de BRP.
+          type: string
+          maxLength: 4
+          minLength: 1
+        naam:
+          title: Naam
+          description: >-
+            De naam van het land, zoals opgenomen in de Land/Gebied-tabel van de
+            BRP.
+          type: string
+          maxLength: 40
+          minLength: 1
+    Reisdocument:
+      required:
+        - subject
+      type: object
+      properties:
+        url:
+          title: Url
+          type: string
+          format: uri
+          readOnly: true
+        uuid:
+          title: Uuid
+          type: string
+          format: uuid
+        subject:
+          title: Subject
+          type: string
+          format: uri
