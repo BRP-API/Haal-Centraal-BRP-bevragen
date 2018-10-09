@@ -1,0 +1,447 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Bevragingen-ingeschreven-personen (bip) API",
+        "description": "Een API om een bevragingen ingeschreven personen uit te voeren.",
+        "contact": {
+            "url": "https://github.com/VNG-Realisatie/gemma-zaken",
+            "email": "support@maykinmedia.nl"
+        },
+        "license": {
+            "name": "EUPL 1.2"
+        },
+        "version": "1"
+    },
+    "basePath": "/api/v1",
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "securityDefinitions": {
+        "basic": {
+            "type": "basic"
+        }
+    },
+    "security": [
+        {
+            "basic": []
+        }
+    ],
+    "paths": {
+        "/ingeschrevennatuurlijkpersonen": {
+            "get": {
+                "operationId": "ingeschrevennatuurlijkpersoon_list",
+                "description": "Geef een lijst van BESLUITen, waarin gefiltered kan worden.",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/NatuurlijkPersoon"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fout"
+                        }
+                    },
+                    "403": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fout"
+                        }
+                    },
+                    "406": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fout"
+                        }
+                    },
+                    "409": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fout"
+                        }
+                    },
+                    "410": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fout"
+                        }
+                    },
+                    "415": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fout"
+                        }
+                    },
+                    "429": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fout"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fout"
+                        }
+                    }
+                },
+                "tags": [
+                    "ingeschrevennatuurlijkpersonen"
+                ]
+            },
+            "parameters": []
+        },
+        "/ingeschrevennatuurlijkpersonen/{uuid}": {
+            "get": {
+                "operationId": "ingeschrevennatuurlijkpersoon_read",
+                "description": "Geef de details van 1 enkel BESLUIT.",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/NatuurlijkPersoon"
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fout"
+                        }
+                    },
+                    "403": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fout"
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fout"
+                        }
+                    },
+                    "406": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fout"
+                        }
+                    },
+                    "409": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fout"
+                        }
+                    },
+                    "410": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fout"
+                        }
+                    },
+                    "415": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fout"
+                        }
+                    },
+                    "429": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fout"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fout"
+                        }
+                    }
+                },
+                "tags": [
+                    "ingeschrevennatuurlijkpersonen"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "uuid",
+                    "in": "path",
+                    "required": true,
+                    "type": "string",
+                    "format": "uuid"
+                }
+            ]
+        }
+    },
+    "definitions": {
+        "Overlijden": {
+            "title": "Overlijden",
+            "required": [
+                "datum",
+                "plaats",
+                "land"
+            ],
+            "type": "object",
+            "properties": {
+                "url": {
+                    "title": "Url",
+                    "type": "string",
+                    "format": "uri",
+                    "readOnly": true
+                },
+                "datum": {
+                    "title": "Datum",
+                    "type": "string",
+                    "format": "date"
+                },
+                "plaats": {
+                    "title": "Plaats",
+                    "type": "string",
+                    "maxLength": 40,
+                    "minLength": 1
+                },
+                "land": {
+                    "title": "Land",
+                    "type": "string",
+                    "format": "uri"
+                }
+            }
+        },
+        "Reisdocument": {
+            "required": [
+                "subject"
+            ],
+            "type": "object",
+            "properties": {
+                "url": {
+                    "title": "Url",
+                    "type": "string",
+                    "format": "uri",
+                    "readOnly": true
+                },
+                "subject": {
+                    "title": "Subject",
+                    "type": "string",
+                    "format": "uri"
+                }
+            }
+        },
+        "NatuurlijkPersoon": {
+            "required": [
+                "overlijden",
+                "reisdocumenten",
+                "burgerlijkeStaat",
+                "indicatieGeheim",
+                "datumInschrijvingInGemeente",
+                "datumBeginGeldigheidVerblijfplaats",
+                "redenOpschortingBijhouding",
+                "datumOpschortingBijhouding"
+            ],
+            "type": "object",
+            "properties": {
+                "url": {
+                    "title": "Url",
+                    "type": "string",
+                    "format": "uri",
+                    "readOnly": true
+                },
+                "overlijden": {
+                    "$ref": "#/definitions/Overlijden"
+                },
+                "reisdocumenten": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Reisdocument"
+                    }
+                },
+                "uuid": {
+                    "title": "Uuid",
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "burgerservicenummer": {
+                    "title": "Burgerservicenummer",
+                    "description": "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer.",
+                    "type": "string",
+                    "maxLength": 9
+                },
+                "aNummer": {
+                    "title": "A nummer",
+                    "type": "integer",
+                    "maximum": 2147483647,
+                    "minimum": -2147483648
+                },
+                "geslachtsaanduiding": {
+                    "title": "Geslachtsaanduiding",
+                    "description": "Een aanduiding die aangeeft of de persoon een man of een vrouw is, of dat het geslacht nog onbekend is.",
+                    "type": "string",
+                    "enum": [
+                        "Man",
+                        "Vrouw",
+                        "Onbekend"
+                    ]
+                },
+                "burgerlijkeStaat": {
+                    "title": "Burgerlijke staat",
+                    "type": "string",
+                    "enum": [
+                        "ongehuwd en nooit gehuwd geweest",
+                        "gehuwd",
+                        "gescheiden",
+                        "weduwe / weduwnaar",
+                        "partnerschap",
+                        "partnerschap beeindigd",
+                        "achtergebleven partner"
+                    ]
+                },
+                "indicatieGeheim": {
+                    "title": "Indicatie geheim",
+                    "type": "string",
+                    "maxLength": 200,
+                    "minLength": 1
+                },
+                "gemeenteVanInschrijving": {
+                    "title": "Gemeente van inschrijving",
+                    "type": "integer",
+                    "maximum": 2147483647,
+                    "minimum": -2147483648
+                },
+                "datumInschrijvingInGemeente": {
+                    "title": "Datum inschrijving in gemeente",
+                    "type": "string",
+                    "format": "date"
+                },
+                "datumBeginGeldigheidVerblijfplaats": {
+                    "title": "Datum begin geldigheid verblijfplaats",
+                    "type": "string",
+                    "format": "date"
+                },
+                "datumVestigingInNederland": {
+                    "title": "Datum vestiging in nederland",
+                    "type": "string",
+                    "format": "date"
+                },
+                "redenOpschortingBijhouding": {
+                    "title": "Reden opschorting bijhouding",
+                    "type": "string",
+                    "enum": [
+                        "overlijden",
+                        "emigratie",
+                        "Ministerieel besluit",
+                        "PL aangelegd in de RNI",
+                        "fout",
+                        "standaardwaarde indien onbekend"
+                    ]
+                },
+                "datumOpschortingBijhouding": {
+                    "title": "Datum opschorting bijhouding",
+                    "type": "string",
+                    "format": "date"
+                },
+                "signaleringNederlandsReisdocument": {
+                    "title": "Signalering nederlands reisdocument",
+                    "type": "integer",
+                    "maximum": 2147483647,
+                    "minimum": -2147483648
+                },
+                "geboorte": {
+                    "title": "Geboorte",
+                    "type": "string",
+                    "format": "uri"
+                },
+                "verblijfstitel": {
+                    "title": "Verblijfstitel",
+                    "type": "string",
+                    "format": "uri"
+                },
+                "naamgebruik": {
+                    "title": "Naamgebruik",
+                    "type": "string",
+                    "format": "uri"
+                },
+                "naam": {
+                    "title": "Naam",
+                    "description": "Gegevens over de naam van de NATUURLIJK PERSOON",
+                    "type": "string",
+                    "format": "uri"
+                },
+                "nationaliteit": {
+                    "title": "Nationaliteit",
+                    "type": "string",
+                    "format": "uri"
+                },
+                "kinderen": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "uniqueItems": true
+                },
+                "partners": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "uniqueItems": true
+                }
+            }
+        },
+        "Fout": {
+            "required": [
+                "code",
+                "title",
+                "status",
+                "detail",
+                "instance"
+            ],
+            "type": "object",
+            "properties": {
+                "type": {
+                    "title": "Type",
+                    "description": "URI referentie naar het type fout, bedoeld voor developers",
+                    "type": "string"
+                },
+                "code": {
+                    "title": "Code",
+                    "description": "Systeemcode die het type fout aangeeft",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "title": {
+                    "title": "Title",
+                    "description": "Generieke titel voor het type fout",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "status": {
+                    "title": "Status",
+                    "description": "De HTTP status code",
+                    "type": "integer"
+                },
+                "detail": {
+                    "title": "Detail",
+                    "description": "Extra informatie bij de fout, indien beschikbaar",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "instance": {
+                    "title": "Instance",
+                    "description": "URI met referentie naar dit specifiek voorkomen van de fout. Deze kan gebruikt worden in combinatie met server logs, bijvoorbeeld.",
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        }
+    }
+}

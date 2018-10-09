@@ -1,0 +1,13 @@
+{% extends "master.html" %}
+
+
+{% block content %}
+<article class="index">
+
+    <a href="{% url 'schema-redoc' version=1 %}" class="link-block">API spec</a>
+    <a href="{% url 'schema-redoc' version=1 %}" class="link-block">API endpoint</a>
+    <a href="{% url 'admin:index' %}" class="link-block">Admin</a>
+    <a href="https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/" class="link-block">Github</a>
+
+</article>
+{% endblock %}
