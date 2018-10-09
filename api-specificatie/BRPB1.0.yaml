@@ -242,12 +242,36 @@ paths:
             type: string
             maxLength: 4
         - in: query
+          name: geldigop
+          description: "De peildatum van de periode waarover de verblijfsplaatshistorie wordt opgevraagd. Het resultaat bevat de verblijfsplaats historie waarvan de begindatum voor op op de peildatum ligt en de eindatum na of op de peildatum ligt."
+          required: false
+          schema:
+            type: string
+        - in: query
           name: postcode
           description: "De door PostNL vastgestelde code behorende bij een bepaalde combinatie van een naam van een woonplaats, naam van een openbare ruimte en een huisnummer Dit attribuutsoort is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING. Het is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting in de BAG."
           required: false
           schema:
             type: string
             pattern: ^[1-9]{1}[0-9]{3}[A-Z]{2}$
+        - in: query
+          name: datumvan
+          description: "De datum waarop de INGESCHREVEN NATUURLIJK PERSOON is ingeschreven op zijn of haar laatst bekende verblijfsplaats De begindatum van de periode waarover de verblijfsplaatshistorie wordt opgevraagd. Het resultaat bevatde verblijfsplaatshistorie waarvan de begindatum op of na de datumVan ligt"
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: inclusiefoverledenpersonen
+          description: "Indien in het antwoord op de zoekvraag ook overleden personen moeten worden geretourneerd, dan dient de parameter ?inclusiefOverledenPersonen? opgenomen te zijn met de waarde True. Indien de parameter ?inclusiefOverledenPersonen? ontbreekt of de waarde False heeft worden geen overleden personen opgenomen in het zoekresultaat."
+          required: false
+          schema:
+            type: boolean
+        - in: query
+          name: datumtotenmet
+          description: "De einddatum van de periode waarover de verblijfsplaatshistorie wordt opgevraagd. Het resultaat bevatde verblijfsplaatshistorie waarvan de einddatum op of voor datumTotEnMet ligt."
+          required: false
+          schema:
+            type: string
         - in: query
           name: uuid
           description: ""
@@ -1045,7 +1069,10 @@ components:
             \ cijfers aanwezig zijn."
           maxLength: 9
         verblijfstitelhistorie:
-          $ref: "#/components/schemas/Verblijfstitelhistorie"
+          type: "array"
+          description: "De INGEZETENE(n) bij wie de PARTNER-RELATIE is geregistreerd."
+          items:
+            $ref: "#/components/schemas/Verblijfstitelhistorie"
         _links:
           $ref: "#/components/schemas/VerblijfstitelHistoriePersoon_links"
     AnderNatuurlijkPersoon:
@@ -1320,6 +1347,57 @@ components:
           maxLength: 40
         landGeboorte:
           $ref: "#/components/schemas/Land_tabel"
+    Bewoners:
+      type: "object"
+      description: "Een NATUURLIJK PERSOON ingeschreven in de Basisregistratie Personen\
+        \ (BRP). Het betreft de verzameling van personen ingeschreven in de GBA of\
+        \ RNI woonachtig in de gemeente dan wel elders en van belang voor de gemeentelijke\
+        \ taakuitoefening. Een INGESCHREVEN NATUURLIJK PERSOON is een specialisatie\
+        \ van NATUURLIJK PERSOON."
+      required:
+      - "burgerservicenummer"
+      properties:
+        burgerservicenummer:
+          type: "string"
+          title: "Burgerservicenummer"
+          description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet\
+            \ algemene bepalingen burgerservicenummer. Elk ingeschreven natuurlijk\
+            \ persoon heeft een BSN, een nummer dat de natuurlijk persoon uniek identificeert\
+            \ in overheidsadministraties. De attribuutsoort kent onder meer historie\
+            \ omdat het mogelijk is dat het Burgerservicenummer van een natuurlijk\
+            \ persoon wijzigt, met name vanwege ambtelijke correcties. Zie verder\
+            \ de toelichting in de GBA Alle nummers waarvoor geldt dat, indien aangeduid\
+            \ als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1)\
+            \ + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9\
+            \ cijfers aanwezig zijn."
+          maxLength: 9
+        aNummer:
+          type: "integer"
+          title: "A-nummer"
+          description: "Het administratienummer van de persoon, bedoeld in de Wet\
+            \ BRP zie GBA"
+        geslachtsaanduiding:
+          $ref: "#/components/schemas/Geslacht_enum"
+        burgerlijkeStaat:
+          $ref: "#/components/schemas/BurgelijkeStaat_enum"
+        indicatieGeheim:
+          $ref: "#/components/schemas/IndicatieGeheim_enum"
+        datumBeginGeldigheidVerblijfplaats:
+          type: "string"
+          title: "Datum begin geldigheid verblijfplaats"
+          description: "De datum waarop de INGESCHREVEN NATUURLIJK PERSOON is ingeschreven\
+            \ op zijn of haar laatst bekende verblijfsplaats"
+          format: "date"
+        datumEindeGeldigheidVerblijfsplaats:
+          type: "string"
+          title: "datumEindeGeldigheidVerblijfsplaats"
+          description: "De datum waarop de INGESCHREVEN NATUURLIJK PERSOON is uitgeschreven\
+            \ op deze verblijfsplaats"
+          format: "date"
+        naam:
+          $ref: "#/components/schemas/Naam"
+        _links:
+          $ref: "#/components/schemas/Bewoners_links"
     Verblijfsplaatshistorie:
       type: "object"
       description: "Een door het bevoegde gemeentelijke orgaan als zodanig aangewezen\
@@ -1512,7 +1590,7 @@ components:
         _links:
           $ref: "#/components/schemas/Partnerhistorie_links"
     Verblijfstitelhistorie:
-      type: "array"
+      type: "object"
       description: "Gegevens over de verblijfsrechtelijke status."
       properties:
         ingangsdatumVerblijfstitel:
@@ -1823,7 +1901,7 @@ components:
           items:
             $ref: "#/components/schemas/Link"
         ouders:
-          title: "heeftAlsOuder"
+          title: "heeftAlOuder"
           type: "array"
           description: "De ingezetene, zijnde de ouder, waarnaar de KIND-OUDER-RELATIE\
             \ verwijst De ingezetene, zijnde de ouder, waarnaar de KIND-OUDER-RELATIE\
@@ -1896,7 +1974,7 @@ components:
         self:
           $ref: "#/components/schemas/Link"
         bewoners:
-          title: "wordtNuBewoondDoor"
+          title: "wordtBewoondDoor"
           type: "array"
           description: "De NUMMERAANDUIDING bij het ADRESSEERBAAR OBJECT waarin de\
             \ INGESCHREVEN NATUURLIJK PERSOON verblijft en die hij/zij gekozen heeft\
@@ -1909,6 +1987,18 @@ components:
             \ kan de waarde 0 hebben."
           items:
             $ref: "#/components/schemas/Link"
+    Bewoners_links:
+      type: "object"
+      properties:
+        self:
+          $ref: "#/components/schemas/Link"
+        ingeschrevenpersonen:
+          title: "is"
+          type: "object"
+          description: ""
+          properties:
+            href:
+              $ref: "#/components/schemas/Href"
     Verblijfsplaatshistoriepersoon_links:
       type: "object"
       properties:
@@ -1979,16 +2069,16 @@ components:
             \ verwijst"
           items:
             oneOf:
-              - $ref: "#/components/schemas/IngeschrevenNatuurlijkPersoon_gerelateerde"
-              - $ref: "#/components/schemas/AnderNatuurlijkPersoon"
+            - $ref: "#/components/schemas/IngeschrevenNatuurlijkPersoon_gerelateerde"
+            - $ref: "#/components/schemas/AnderNatuurlijkPersoon"
         partners:
           title: "heeftAlsPartner"
           type: "array"
           description: "De INGEZETENE(n) bij wie de PARTNER-RELATIE is geregistreerd."
           items:
             oneOf:
-              - $ref: "#/components/schemas/IngeschrevenNatuurlijkPersoon_gerelateerde"
-              - $ref: "#/components/schemas/AnderNatuurlijkPersoon"
+            - $ref: "#/components/schemas/IngeschrevenNatuurlijkPersoon_gerelateerde"
+            - $ref: "#/components/schemas/AnderNatuurlijkPersoon"
         reisdocumenten:
           title: "isHouderVan"
           type: "array"
@@ -1998,19 +2088,17 @@ components:
         ouders:
           title: "heeftAlsOuder"
           type: "array"
-          description: "De INGEZETENE(n) bij wie de OuderPARTNER-RELATIE is geregistreerd."
           items:
             oneOf:
-              - $ref: "#/components/schemas/IngeschrevenNatuurlijkPersoon_gerelateerde"
-              - $ref: "#/components/schemas/AnderNatuurlijkPersoon"
-          maxItems: 4
+            - $ref: "#/components/schemas/IngeschrevenNatuurlijkPersoon_gerelateerde"
+            - $ref: "#/components/schemas/AnderNatuurlijkPersoon"
         verblijfsplaats:
           $ref: "#/components/schemas/Verblijfsplaats"
     Bewoning_embedded:
       type: "object"
       properties:
         bewoners:
-          title: "wordtNuBewoondDoor"
+          title: "wordtBewoondDoor"
           type: "array"
           description: "De NUMMERAANDUIDING bij het ADRESSEERBAAR OBJECT waarin de\
             \ INGESCHREVEN NATUURLIJK PERSOON verblijft en die hij/zij gekozen heeft\
@@ -2022,7 +2110,7 @@ components:
             \ maakt deel uit van het groepattribuutsoort Verblijfsplaats. Het huisnummer\
             \ kan de waarde 0 hebben."
           items:
-            $ref: "#/components/schemas/IngeschrevenNatuurlijkPersoon"
+            $ref: "#/components/schemas/Bewoners"
     Verblijfsplaatshistoriepersoon_embedded:
       type: "object"
       properties:
