@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  db:
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  web:
+    volumes:
+      - media:/app/media
+
+volumes:
+  postgres_data:
+  media:

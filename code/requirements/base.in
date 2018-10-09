@@ -1,0 +1,14 @@
+Pillow
+pip-tools
+psycopg2-binary
+python-dotenv
+python-dateutil
+pytz
+raven
+
+Django<2.1
+django-axes
+django-choices
+
+djangorestframework
+zds-schema==0.6.0
