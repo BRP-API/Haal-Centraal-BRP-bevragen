@@ -128,6 +128,7 @@ Wanneer het verblijfadres een BAG-adres is, wordt ook een relatie (link) naar de
 *Ratio*
 Functionele vraag is: ik wil in één vraag een persoon met adres hebben.
 Een groot deel van de vragen om persoonsgegevens is er direct behoefte aan de adresgegevens, zonder geïnteresseerd te zijn in de structuur in BAG (zoals naar nummeraanduiding, woonplaats, ligplaats, adresseerbaar object).
+Zie https://www.rvig.nl/brp/vraag-en-antwoord/mag-een-persoon-worden-ingeschreven-op-een-locatieomschrijving-in-de-gba-als-er-geen-authentiek-bag-adres-is
 Deze oplossing is ook een oplossing voor issue [22](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/issues/22) en [14](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/issues/14).
 
 ## Verblijfplaats wordt gevuld met adresgegevens uit het GBA
@@ -136,6 +137,7 @@ De verblijfplaats toont de adresgegevens zoals die in het GBA staan geregistreer
 *Ratio*
 Vanuit het GBA hoeft er geen verbinding te zijn naar het BAG om de juiste adresgegevens op te halen.
 Er is niet altijd een BAG-adres.
+Zie https://www.rvig.nl/brp/vraag-en-antwoord/mag-een-persoon-worden-ingeschreven-op-een-locatieomschrijving-in-de-gba-als-er-geen-authentiek-bag-adres-is
 
 ## Zoeken op geboortedatum gebeurt alleen op volledige datum.
 Er wordt geen zoeken op onvolledige geboortedatum ondersteund in de API.
