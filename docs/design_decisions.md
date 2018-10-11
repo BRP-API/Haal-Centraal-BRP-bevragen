@@ -10,12 +10,12 @@ Garanderen dat verschillende systemen binnen en buiten de gemeente dezelfde (toe
 *Kanttekening*
 Als landelijk beheerde dynamische domeinwaarden ook daadwerkelijk landelijk beschikbaar gesteld worden (zoals de common groud gedachte wel beoogd) dan worden deze als resource ontsloten en dus als link (uri) opgenomen.
 
-## Enumeraties worden in de API specificatie opgenomen als code - waarde paren.
-De code wordt daarin gedefinieerd als const (constante).
+## Enumeraties worden in het bericht opgenomen als code.
+In de API specificaties worden enumeratiewaarden opgenomen met de code, in de description wordt de betekenis van de code genoemd.
 
 *Ratio*
 Uitgangspunt binnen Common Ground is gebruik van gegevens, niet opslag van gegevens. Dus de omschrijving (uitgeschreven waarde) is relevant voor de gebruiker.
-Echter de omschrijving (waarde) van enumeraties kan lang zijn en tekens bevatten waar code niet tegen kan (zoals komma, slash, haakjes). Uitgangspunt is eenvoud van implemententatie (developer first).
+Echter de omschrijving (waarde) van enumeraties kan lang zijn en tekens bevatten waar code niet tegen kan (zoals komma, slash, haakjes). Uitgangspunt is eenvoud van implemententatie (developer first). Andere oplossingen geven problemen met het genereren en gebruiken van code uit de API specificaties.
 
 ## Gemeentelijke kerngegevens en plusgegevens worden niet opgenomen in de resource.
 In de response worden alleen gegevens opgenomen die in het BRP zitten.
