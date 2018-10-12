@@ -14,7 +14,7 @@ Startpunt voor technische uitwisselafspraken voor de te ontwikkelen RESTfull API
 * [Definition of Done](https://github.com/VNG-Realisatie/RSGB-bevragingen/blob/master/docs/definition_of_done.md)
 * Hoe u kunt [bijdragen](https://github.com/VNG-Realisatie/Tutorial/blob/master/CONTRIBUTING.md)
 * [Omgangsvormen](https://github.com/VNG-Realisatie/Tutorial/blob/master/CODE_OF_CONDUCT.md)
-* [Technische specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/api-specificatie) (Open API Specificaties en JSON schema) en op [SwaggerHub](https://app.swaggerhub.com/apis/VNGRealisatie/Bevragingen-ingeschreven-personen/1.0)
+* [Technische specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/api-specificatie) (Open API Specificaties en JSON schema) en op [SwaggerHub](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/openapi.yaml#/ingeschrevennatuurlijkpersonen/ingeschrevennatuurlijkpersonen)
 * Ontwerpkeuzes staan in het document [Design decisions](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/docs/design_decisions.md)
 
 ## Bronnen
