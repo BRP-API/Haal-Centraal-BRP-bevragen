@@ -34,13 +34,6 @@ paths:
             type: string
             example: kinderen,adressen.postcode,adressen.huisnummer
         - in: query
-          name: fields
-          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven."
-          required: false
-          schema:
-            type: string
-            example: id,onderwerp,aanvrager,wijzig_datum
-        - in: query
           name: burgerservicenummer
           description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Elk ingeschreven natuurlijk persoon heeft een BSN, een nummer dat de natuurlijk persoon uniek identificeert in overheidsadministraties. De attribuutsoort kent onder meer historie omdat het mogelijk is dat het Burgerservicenummer van een natuurlijk persoon wijzigt, met name vanwege ambtelijke correcties. Zie verder de toelichting in de GBA Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
           required: false
@@ -115,6 +108,13 @@ paths:
             type: string
             pattern: ^[1-9]{1}[0-9]{3}[A-Z]{2}$
         - in: query
+          name: gemeentevaninschrijving
+          description: "Een code die aangeeft in welke gemeente de PL zich bevindt of de gemeente waarnaar de PL is uitgeschreven of de gemeente waar de PL voor de eerste keer is opgenomen. standaardwaarde is 0000 indien onbekend"
+          required: false
+          schema:
+            type: integer
+          example: 0518
+        - in: query
           name: inclusiefoverledenpersonen
           description: "Indien in het antwoord op de zoekvraag ook overleden personen moeten worden geretourneerd, dan dient de parameter ?inclusiefOverledenPersonen? opgenomen te zijn met de waarde True. Indien de parameter ?inclusiefOverledenPersonen? ontbreekt of de waarde False heeft worden geen overleden personen opgenomen in het zoekresultaat."
           required: false
@@ -123,12 +123,6 @@ paths:
         - in: query
           name: inclusiefnietingezetenen
           description: "Met niet-ingezetenen worden personen bedoeld die geen ingezetene van Nederland zijn. Alleen ingeschreven niet-ingezetenen worden opgenomen in het zoekresultaat. Indien in het antwoord op de zoekvraag ook niet-ingezetenen moeten worden geretourneerd, dan dient de parameter ?inclusiefNietIngezetenen? opgenomen te zijn met de waarde True. Dan worden alleen ingeschreven niet-ingezetenen opgenomen in het antwoordbericht.Indien de parameter ?inclusiefNietIngezetenen? ontbreekt of de waarde False heeft worden niet-ingezetenen niet opgenomen in het zoekresultaat."
-          required: false
-          schema:
-            type: boolean
-        - in: query
-          name: inclusiefbuitengemeentelijk
-          description: "Als inclusiefbuitenhgemeentelijk de waarde  true  heeft dan wordt de zoek-actie ook buitengemeentelijk uitgevoerd bij de waarde  false  wordt alleen een binnengemeentelijke zoek-actie uitgevoerd."
           required: false
           schema:
             type: boolean
@@ -212,13 +206,6 @@ paths:
           schema:
             type: string
             example: kinderen,adressen.postcode,adressen.huisnummer
-        - in: query
-          name: fields
-          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven."
-          required: false
-          schema:
-            type: string
-            example: id,onderwerp,aanvrager,wijzig_datum
         - in: path
           name: burgerservicenummer
           description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Elk ingeschreven natuurlijk persoon heeft een BSN, een nummer dat de natuurlijk persoon uniek identificeert in overheidsadministraties. De attribuutsoort kent onder meer historie omdat het mogelijk is dat het Burgerservicenummer van een natuurlijk persoon wijzigt, met name vanwege ambtelijke correcties. Zie verder de toelichting in de GBA Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
@@ -319,7 +306,7 @@ paths:
             type: string
             pattern: ^[1-9]{1}[0-9]{3}[A-Z]{2}$
         - in: query
-          name: datumvan
+          name: geldigvan
           description: "De datum waarop de INGESCHREVEN NATUURLIJK PERSOON is ingeschreven op zijn of haar laatst bekende verblijfsplaats De begindatum van de periode waarover de verblijfsplaatshistorie wordt opgevraagd. Het resultaat bevat de verblijfsplaatshistorie waarvan de EINDdatumgeldigheidverblijfsplaats op of na de datumVan ligt EN de BEGINdatumgeldigheidverblijfsplaats op of voor de DatumTotEnMet ligt."
           required: false
           schema:
@@ -331,14 +318,8 @@ paths:
           schema:
             type: boolean
         - in: query
-          name: datumtotenmet
+          name: geldigtotenmet
           description: "De einddatum van de periode waarover de verblijfsplaatshistorie wordt opgevraagd. Het resultaat bevat de verblijfsplaatshistorie waarvan de EINDdatumgeldigheidverblijfsplaats op of na de datumVan ligt EN de BEGINdatumgeldigheidverblijfsplaats op of voor de DatumTotEnMet ligt."
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: uuid
-          description: ""
           required: false
           schema:
             type: string
@@ -464,13 +445,13 @@ paths:
           schema:
             type: string
         - in: query
-          name: datumvan
+          name: geldigvan
           description: "De datum waarop de INGESCHREVEN NATUURLIJK PERSOON is ingeschreven op zijn of haar laatst bekende verblijfsplaats De begindatum van de periode waarover de verblijfsplaatshistorie wordt opgevraagd. Het resultaat bevatde verblijfsplaatshistorie waarvan de begindatum op of na de datumVan ligt"
           required: false
           schema:
             type: string
         - in: query
-          name: datumtotenmet
+          name: geldigtotenmet
           description: "De einddatum van de periode waarover de verblijfsplaatshistorie wordt opgevraagd. Het resultaat bevatde verblijfsplaatshistorie waarvan de einddatum op of voor datumTotEnMet ligt."
           required: false
           schema:
@@ -534,13 +515,13 @@ paths:
           schema:
             type: string
         - in: query
-          name: datumvan
+          name: geldigvan
           description: "De datum waarop de INGESCHREVEN NATUURLIJK PERSOON is ingeschreven op zijn of haar laatst bekende verblijfsplaats De begindatum van de periode waarover de partnerhistorie wordt opgevraagd. Het resultaat bevat de partnerhistorie waarvan de datumIngangGeldigheid op of na datumVan ligt."
           required: false
           schema:
             type: string
         - in: query
-          name: datumtotenmet
+          name: geldigtotenmet
           description: "De einddatum van de periode waarover de partnerhistorie wordt opgevraagd. Het resultaat bevat de partnerhistorie waarvan de datumEindeGeldigheid op of voor datumTotEnMet ligt."
           required: false
           schema:
@@ -591,13 +572,13 @@ paths:
             type: string
             maxLength: 9
         - in: query
-          name: datumvan
+          name: geldigvan
           description: "De datum waarop de verblijfstitel zijn geldigheid krijgt. De begindatum van de periode waarover de verblijfstitelhistorie wordt opgevraagd. Het resultaat bevat de verblijfstitelhistorie waarvan de ingangsdatumVerblijfstitel op of na datumVan ligt."
           required: false
           schema:
             type: string
         - in: query
-          name: datumtotenmet
+          name: geldigtotenmet
           description: "De datum waarop de verblijfstitel zijn geldigheid verliest De einddatum van de periode waarover de verblijfstitelhistorie wordt opgevraagd. Het resultaat bevat de verblijfstitelhistorie waarvan de datumEindeVerblijfstitel op of voor datumTotEnMet ligt. Dit attribuut wordt uitsluitend opgenomen indien er sprake is van een verblijfstitel voor bepaalde tijd. Bij een verblijfstitel voor het leven komt het niet voor."
           required: false
           schema:
@@ -643,8 +624,6 @@ components:
         \ RNI woonachtig in de gemeente dan wel elders en van belang voor de gemeentelijke\
         \ taakuitoefening. Een INGESCHREVEN NATUURLIJK PERSOON is een specialisatie\
         \ van NATUURLIJK PERSOON."
-      required:
-      - "burgerservicenummer"
       properties:
         burgerservicenummer:
           type: "string"
@@ -692,13 +671,6 @@ components:
             \ ambtshalve opneming mededeling is gedaan."
           format: "date"
           example: "20120212"
-        datumBeginGeldigheidVerblijfplaats:
-          type: "string"
-          title: "Datum begin geldigheid verblijfplaats"
-          description: "De datum waarop de INGESCHREVEN NATUURLIJK PERSOON is ingeschreven\
-            \ op zijn of haar laatst bekende verblijfsplaats"
-          format: "date"
-          example: "20180412"
         datumVestigingInNederland:
           type: "string"
           title: "Datum vestiging in Nederland"
@@ -730,13 +702,19 @@ components:
         geboorte:
           $ref: "#/components/schemas/Geboorte"
         verblijfstitel:
-          $ref: "#/components/schemas/Verblijfstitel"
+          type: "array"
+          description: ""
+          items: 
+            $ref: "#/components/schemas/Verblijfstitel"
         naamgebruik:
           $ref: "#/components/schemas/Naamgebruik"
         naam:
           $ref: "#/components/schemas/Naam"
         verblijfsplaats:
-          $ref: "#/components/schemas/Verblijfsplaats"
+          type: "array"
+          description: ""
+          items: 
+            $ref: "#/components/schemas/Verblijfsplaats"
         nationaliteit:
           $ref: "#/components/schemas/Nationaliteit"
         _links:
@@ -759,7 +737,7 @@ components:
           description: "De datum waarop het Nederlands reisdocument is uitgegeven"
           format: "date"
           example: "20161212"
-        datumTotEnMet:
+        geldigTotEnMet:
           type: "string"
           title: "Einddatum geldigheid document"
           description: "Datum waarop een reisdocument, dat aan de INGEZETENE is verstrekt,\
@@ -909,8 +887,6 @@ components:
         \ RNI woonachtig in de gemeente dan wel elders en van belang voor de gemeentelijke\
         \ taakuitoefening. Een INGESCHREVEN NATUURLIJK PERSOON is een specialisatie\
         \ van NATUURLIJK PERSOON."
-      required:
-      - "burgerservicenummer"
       properties:
         burgerservicenummer:
           type: "string"
@@ -938,8 +914,6 @@ components:
         \ RNI woonachtig in de gemeente dan wel elders en van belang voor de gemeentelijke\
         \ taakuitoefening. Een INGESCHREVEN NATUURLIJK PERSOON is een specialisatie\
         \ van NATUURLIJK PERSOON."
-      required:
-      - "burgerservicenummer"
       properties:
         burgerservicenummer:
           type: "string"
@@ -966,8 +940,6 @@ components:
         \ RNI woonachtig in de gemeente dan wel elders en van belang voor de gemeentelijke\
         \ taakuitoefening. Een INGESCHREVEN NATUURLIJK PERSOON is een specialisatie\
         \ van NATUURLIJK PERSOON."
-      required:
-      - "burgerservicenummer"
       properties:
         burgerservicenummer:
           type: "string"
@@ -1025,7 +997,7 @@ components:
       description: "Het verband tussen een kind en één van zijn of haar juridische\
         \ ouders."
       properties:
-        datumIngangFamilierechtelijkeBetrekking:
+        geldigVan:
           type: "string"
           title: "Datum ingang familierechtelijke betrekking"
           description: "De datum waarop de familierechtelijke betrekking is ontstaan.\
@@ -1034,7 +1006,7 @@ components:
             \ Zie verder de GBA."
           format: "date"
           example: "19871102"
-        datumEindeFamilierechtelijkeBetrekking:
+        geldigTotEnMet:
           type: "string"
           title: "Datum einde familierechtelijke betrekking"
           description: "De datum waarop de familierechtelijke betrekking tussen ouder\
@@ -1137,8 +1109,6 @@ components:
         \ RNI woonachtig in de gemeente dan wel elders en van belang voor de gemeentelijke\
         \ taakuitoefening. Een INGESCHREVEN NATUURLIJK PERSOON is een specialisatie\
         \ van NATUURLIJK PERSOON."
-      required:
-      - "burgerservicenummer"
       properties:
         burgerservicenummer:
           type: "string"
@@ -1213,7 +1183,10 @@ components:
         landVanwaarIngeschreven:
           $ref: "#/components/schemas/Land_tabel"
         verblijfstitel:
-          $ref: "#/components/schemas/Verblijfstitel"
+          type: "array"
+          description: ""
+          items:
+            $ref: "#/components/schemas/Verblijfstitel"
         nationaliteit:
           $ref: "#/components/schemas/Nationaliteit"
         naamgebruik:
@@ -1223,7 +1196,10 @@ components:
         overlijden:
           $ref: "#/components/schemas/Overlijden"
         verblijfsplaats:
-          $ref: "#/components/schemas/Verblijfsplaats"
+          type: "array"
+          description: ""
+          items:
+            $ref: "#/components/schemas/Verblijfsplaats"
         geboorte:
           $ref: "#/components/schemas/Geboorte"
         _links:
@@ -1488,7 +1464,7 @@ components:
       description: "Het verband tussen een kind en één van zijn of haar juridische\
         \ ouders."
       properties:
-        datumIngangFamilierechtelijkeBetrekking:
+        geldigVan:
           type: "string"
           title: "Datum ingang familierechtelijke betrekking"
           description: "De datum waarop de familierechtelijke betrekking is ontstaan.\
@@ -1497,7 +1473,7 @@ components:
             \ Zie verder de GBA."
           format: "date"
           example: "20010129"
-        datumEindeFamilierechtelijkeBetrekking:
+        geldigTotEnMet:
           type: "string"
           title: "Datum einde familierechtelijke betrekking"
           description: "De datum waarop de familierechtelijke betrekking tussen ouder\
@@ -1517,8 +1493,6 @@ components:
         \ RNI woonachtig in de gemeente dan wel elders en van belang voor de gemeentelijke\
         \ taakuitoefening. Een INGESCHREVEN NATUURLIJK PERSOON is een specialisatie\
         \ van NATUURLIJK PERSOON."
-      required:
-      - "burgerservicenummer"
       properties:
         burgerservicenummer:
           type: "string"
@@ -1547,22 +1521,24 @@ components:
           $ref: "#/components/schemas/BurgelijkeStaat_enum"
         indicatieGeheim:
           $ref: "#/components/schemas/IndicatieGeheim_enum"
-        datumBeginGeldigheidVerblijfplaats:
+        geldigVan:
           type: "string"
           title: "Datum begin geldigheid verblijfplaats"
           description: "De datum waarop de INGESCHREVEN NATUURLIJK PERSOON is ingeschreven\
             \ op zijn of haar laatst bekende verblijfsplaats"
           format: "date"
           example: "20180921"
-        datumEindeGeldigheidVerblijfsplaats:
+        geldigTotEnmet:
           type: "string"
-          title: "datumEindeGeldigheidVerblijfsplaats"
+          title: "geldigTotEnmet"
           description: "De datum waarop de INGESCHREVEN NATUURLIJK PERSOON is uitgeschreven\
             \ op deze verblijfsplaats"
           format: "date"
           example: "20180930"
         naam:
           $ref: "#/components/schemas/Naam"
+        overlijden:
+          $ref: "#/components/schemas/Overlijden"
         _links:
           $ref: "#/components/schemas/Bewoners_links"
     Verblijfsplaatshistorie:
@@ -1687,16 +1663,16 @@ components:
             \ Zie verder de toelichting in de BAG."
           pattern: "^[1-9]{1}[0-9]{3}[A-Z]{2}$"
           example: "2564TT"
-        datumVan:
+        geldigVan:
           type: "string"
           title: "Datum begin geldigheid verblijfplaats"
           description: "De datum waarop de INGESCHREVEN NATUURLIJK PERSOON is ingeschreven\
             \ op zijn of haar laatst bekende verblijfsplaats"
           format: "date"
           example: "20150921"
-        datumTotEnMet:
+        geldigTotEnMet:
           type: "string"
-          title: "datumTotEnMet"
+          title: "geldigTotEnMet"
           description: "De datum waarop de INGESCHREVEN NATUURLIJK PERSOON is uitgeschreven\
             \ op een verblijfsplaats"
           format: "date"
@@ -1710,8 +1686,6 @@ components:
         \ RNI woonachtig in de gemeente dan wel elders en van belang voor de gemeentelijke\
         \ taakuitoefening. Een INGESCHREVEN NATUURLIJK PERSOON is een specialisatie\
         \ van NATUURLIJK PERSOON."
-      required:
-      - "burgerservicenummer"
       properties:
         burgerservicenummer:
           type: "string"
@@ -1760,6 +1734,21 @@ components:
       type: "object"
       description: "Gegevens over de verblijfsrechtelijke status."
       properties:
+        geldigVan:
+          type: "string"
+          title: "Ingangsdatum verblijfstitel"
+          description: "De datum waarop de verblijfstitel zijn geldigheid krijgt."
+          format: "date"
+          example: "20120212"
+        geldigTotEnMet:
+          type: "string"
+          title: "Datum einde verblijfstitel"
+          description: "De datum waarop de verblijfstitel zijn geldigheid verliest\
+            \ Dit attribuut wordt uitsluitend opgenomen indien er sprake is van een\
+            \ verblijfstitel voor bepaalde tijd. Bij een verblijfstitel voor het leven\
+            \ komt het niet voor."
+          format: "date"
+          example: "20181011"
         aanduidingVerblijfstitel:
           $ref: "#/components/schemas/Verblijfstitel_tabel"
     Land_tabel:
@@ -2078,6 +2067,13 @@ components:
       properties:
         self:
           $ref: "#/components/schemas/Link"
+        is:
+          title: "Is"
+          type: "object"
+          description: ""
+          properties:
+            href:
+              $ref: "#/components/schemas/Href"
         ingeschrevennatuurlijpersonen:
           title: "is"
           type: "object"
@@ -2100,6 +2096,7 @@ components:
           items:
             $ref: "#/components/schemas/Reisdocument"
         ouders:
+          title: "isKindVan"
           type: "array"
           description: ""
           items:
