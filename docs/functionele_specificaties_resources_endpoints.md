@@ -3,6 +3,7 @@ Dit document beschrijft de functionele werking van resources en endpoints in de 
 Naast dit document is er ook:
 * [Resource- of endpointoverstijgende functionele specificaties](algemene_werking_api.md).
 * [Functionele specificaties](functionele_specificaties.md)
+* [technische specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/api-specificatie/openapi.yaml) (Open APO Specificaties 3).
 
 ## Resources
 ### Ingeschreven natuurlijk personen

@@ -1,6 +1,12 @@
 # Algemene werking van de API
 Dit document bevat de functionele specificaties van de werking van de api op resource- of endpointoverstijgende onderwerpen.
 
+De functionaliteit van de api wordt beschreven in:
+* [Functionele specificaties](functionele_specificaties.md)
+* [technische specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/api-specificatie/openapi.yaml) (Open APO Specificaties 3).
+* [Algemene werking van de API](algemene_werking_api.md)
+* [Functionele specificaties van resources en endpoints](functionele_specificaties_resources_endpoints.md)
+
 ## API Strategie
 Deze API volgt de [DSO API strategie](https://github.com/Geonovum/KP-APIs/blob/master/Werkgroep%20API%20strategie/API%20strategie%20voorbeelden/dso-api-strategie_-_12_maart_2018.pdf), tenzij expliciet anders aangegeven.
 In deze API gebruiken we onder anderen de in de DSO API Strategie beschreven functionaliteit onder andere voor:
