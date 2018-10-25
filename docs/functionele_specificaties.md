@@ -1,8 +1,13 @@
 # Functionele Specificaties Bevragingen ingeschreven natuurlijk personen
 
 ## Doel van dit document
-Dit document beschrijft de API voor het bevragen van ingeschreven natuurlijk personen voor niet-technische gebruikers van de API.
-Tot de doelgroep behoren bijvoorbeeld informatie managers, architecten, inkopers en product managers.
+Dit document beschrijft de API voor het bevragen van ingeschreven natuurlijk personen.
+
+De werking van de API wordt functioneel beschreven in de volgende documenten:
+* Functionele specificaties (dit document)
+* [technische specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/api-specificatie/openapi.yaml) (Open APO Specificaties 3).
+* [Algemene werking van de API](algemene_werking_api.md)
+* [Functionele specificaties van resources en endpoints](functionele_specificaties_resources_endpoints.md)
 
 ## Doel van de API
 Het doel van de API is om op een eenvoudige en eenduidige manier persoonsgegevens te ontsluiten. Dit betreft het raadplegen van personen en het zoeken van personen die zijn ingeschreven in het GBA of in het andernatuurlijkpersonen.
@@ -23,8 +28,8 @@ Bij het ontwerp van de API is gestreefd deze zoveel mogelijk RESTful te laten zi
 
 De API wordt agile (door)ontwikkeld. Voor de eerste versie is de informatiebehoefte die is geïnventariseerd voor koppelvlakstandaard RSGB-bevragingen gebruikt. De standaard kan op basis van user stories, daadwerkelijke functionele vraag in processen en ketens, worden uitgebreid.
 
-## Functionaliteit
-De API ondersteunt de volgende functionaliteit:
+## User stories
+De API implementeert de volgende user stories:
 
 ### Ik wil ingeschreven natuurlijk personen zoeken op de geslachtsnaam
 Het is mogelijk ingeschreven natuurlijk personen te zoeken op de volgende eigenschappen van de persoon:
@@ -34,39 +39,72 @@ Het is mogelijk ingeschreven natuurlijk personen te zoeken op de volgende eigens
 * voorvoegselGeslachtsnaam
 * geslachtsaanduiding
 * geboorteplaats
+* gemeenteVanInschrijving
 
-Bij het zoeken op geslachtsnaam mag een wildcard worden gebruikt. Bijvoorbeeld door te zoeken op "jans*" kun je "Jansen", "Jansens", enz. vinden.
-Bij het zoeken op voornamen mag een wildcard worden gebruikt.
-Bij het zoeken/ op geboortedatum mag *geen* onvolledige datum worden gebruikt.
-Het is mogelijk te kiezen om ook of juist geen overleden personen terug te krijgen.
-Het is mogelijk te kiezen om ook of juist geen niet-ingezeten terug te krijgen.
+Wanneer gezocht wordt op naam moet minimaal de geslachtsnaam worden opgegeven.
 
-Als resultaat van de zoekvraag wordt een lijst gegeven van de gevonden ingeschreven natuurlijk personen.
+Als resultaat van de zoekvraag wordt een lijst gegeven van de gevonden [ingeschreven natuurlijk personen](functionele_specificaties_resources_endpoints.md#ingeschreven-natuurlijk-personen).
 
-Het is mogelijk in de zoekvraag aan te geven welke attributen moeten worden teruggegeven. Standaard worden alle attributen van de persoon in het antwoord teruggegeven.
-Standaard worden in het antwoord relaties naar andere objecttypen (zoals kinderen, ouders, partner, adres) teruggegeven als hyperlink. De gegevens van de relatie (gerelateerde) kunnen dan in een extra aanroep worden opgevraagd. Het is ook mogelijk in de zoekvraag aan te geven welke relaties direct moeten worden gegeven met de persoon. Op deze manier is het bijvoorbeeld mogelijk in één vraag de gevonden persoon en diens partner te krijgen.
+Deze functionaliteit is te gebruiken via de endpoint [/ingeschrevennatuurlijkpersonen](functionele_specificaties_resources_endpoints.md#ingeschrevennatuurlijkpersonen).
 
-Deze functionaliteit is te gebruiken via de resource /ingeschrevennatuurlijkpersonen
+#### Zoeken binnen eigen gemeente of landelijk
+Default wordt gezocht onder alle ingeschreven personen in Nederlandse gemeenten. Dit zijn ingeschreven personen binnen en buiten de eigen gemeente.
 
-### Ik wil ingeschreven natuurlijk personen zoeken op het verblijfplaats
+Om alleen personen die zijn ingeschreven in de eigen gemeente in het antwoord te krijgen, kan zoekparameter **gemeenteVanInschrijving** worden gebruikt.
+
+#### Zoeken met geboorteplaats
+De zoekparameter geboorteplaats kan een Nederlandse of een niet-Nederlandse plaats betreffen. Gezocht wordt op de *naam* van de geboorteplaats, niet de gemeentecode.
+  Bijvoorbeeld zoeken met geboorteplaats=Sas van Gent vindt alleen personen die zijn geboren in Sas van Gent.
+  Bijvoorbeeld zoeken met geboorteplaats=0704 vindt geen personen.
+
+Zoeken op geboorteplaats is case-insensitive.
+  Bijvoorbeeld zoeken met geboorteplaats=sas van gent vindt alleen personen die zijn geboren in Sas van Gent.
+
+Zie [Zoeken met diakrieten](algemene_werking_api.md#zoeken-met-diakrieten).
+  Bijvoorbeeld zoeken met geboorteplaats=malmo vint personen die zijn geboren in Malmo of Malmö.
+  Bijvoorbeeld zoeken met geboorteplaats=malmö vint personen die zijn geboren in Malmö, geen personen die geboren zijn in Malmo.
+
+### Ik wil ingeschreven natuurlijk personen zoeken op de verblijfplaats
 Het is mogelijk ingeschreven personen te zoeken die op een adres verblijven. Het gaat hier om ingeschreven natuurlijk personen die het opgegeven adres als actuele verblijfplaats hebben.
 
+Als resultaat van de zoekvraag wordt een lijst gegeven van de gevonden [ingeschreven natuurlijk personen](functionele_specificaties_resources_endpoints.md#ingeschreven-natuurlijk-personen).
+
+Deze functionaliteit is te gebruiken via de endpoint [/ingeschrevennatuurlijkpersonen](functionele_specificaties_resources_endpoints.md#ingeschrevennatuurlijkpersonen).
+
+Er zijn drie manieren om te zoeken op verblijfsplaats:
+1. Zoeken op postcode en huisnummer
+2. Zoeken op woonplaatsnaam, naamOpenbareRuimte en huisnummer
+3. Zoeken op identificatiecodeNummeraanduiding
+
+#### Zoeken op postcode en huisnummer
 Dit kan door te zoeken op de volgende eigenschappen van de verblijfsplaats:
 * postcode
 * huisnummer
 * huisletter
 * huisnummertoevoeging
-* identificatiecodenummeraanduiding
 
-Het is mogelijk te kiezen om ook of juist geen overleden personen terug te krijgen
+Hier moeten postcode en huisnummer minimaal een waarde hebben en zijn huisletter en huisnummertoevoeging optioneel.
 
-Als resultaat van de zoekvraag wordt een lijst gegeven van de gevonden adressen met voor elk adres de ingeschreven natuurlijk personen die dit adres als actuele verblijfplaats hebben.
+Bijvoorbeeld zoeken met postcode=1234AB&huisnummer=56 levert zoekresultaten terug.
+Bijvoorbeeld zoeken met postcode=1234AB&huisnummer=56&huisletter=A levert zoekresultaten terug.
+Bijvoorbeeld zoeken met postcode=1234AB&huisnummer=56&huisnummertoevoeging=tegenover levert zoekresultaten terug.
+Bijvoorbeeld zoeken met postcode=1234AB&huisnummer=56&huisletter=A&huisnummertoevoeging=tegenover levert zoekresultaten terug.
+Bijvoorbeeld zoeken met postcode=1234AB&huisnummertoevoeging=tegenover levert een foutmelding.
+Bijvoorbeeld zoeken met huisnummer=56&huisletter=A&huisnummertoevoeging=tegenover levert een foutmelding.
 
-Het is mogelijk in de zoekvraag aan te geven welke attributen moeten worden teruggegeven. Standaard worden alle attributen van de persoon in het antwoord teruggegeven.
+#### Zoeken op woonplaatsnaam, naamOpenbareRuimte en huisnummer
+Dit kan door te zoeken op de volgende eigenschappen van de verblijfsplaats:
+* naamopenbareruimte
+* huisnummer
+* huisletter
+* huisnummertoevoeging
+* woonplaatsnaam
 
-Standaard worden in het antwoord de bewoners (ingeschreven natuurlijk personen) teruggegeven als hyperlink. De gegevens van de persoon kunnen dan in een extra aanroep worden opgevraagd. Het is ook mogelijk in de zoekvraag aan te geven dat de attributen van de gevonden bewoners direct moeten worden teruggegeven.
+Hier moeten minimaal de woonplaatsnaam, naamopenbareruimte en huisnummer een waarde hebben. Zoekparameters huisletter en huisnummertoevoeging zijn optioneel.
 
-Deze functionaliteit is te gebruiken via de resource /bewoningen
+Bijvoorbeeld zoeken met woonplaatsnaam=rotterdam&naamopenbareruimte=coolsingel&huisnummer=101 levert zoekresultaten terug.
+Bijvoorbeeld zoeken met woonplaatsnaam=rotterdam&naamopenbareruimte=coolsingel&huisnummer=101&huisletter=B levert zoekresultaten terug.
+Bijvoorbeeld zoeken met naamopenbareruimte=coolsingel&huisnummer=101&huisletter=B levert een foutmelding.
 
 ### Ik wil een ingeschreven natuurlijk persoon raadplegen
 Het is mogelijk de gegevens van een ingeschreven natuurlijk persoon te raadplegen. De ingeschreven natuurlijk persoon wordt geïdentificeerd (uri) door het burgerservicenummer van de persoon.
@@ -77,7 +115,9 @@ Het is mogelijk in de vraag aan te geven welke attributen moeten worden teruggeg
 
 Standaard worden in het antwoord relaties naar andere objecttypen (zoals kinderen, ouders, partner, adres) teruggegeven als hyperlink. De gegevens van de relatie (gerelateerde) kunnen dan in een extra aanroep worden opgevraagd. Het is ook mogelijk in de zoekvraag aan te geven welke relaties direct moeten worden gegeven met de persoon. Op deze manier is het bijvoorbeeld mogelijk in één vraag de gevonden persoon en diens partner te krijgen.
 
-Deze functionaliteit is te gebruiken via de resource /bewoningen/{burgerservicenummer}
+Deze functionaliteit is te gebruiken via de endpoint [/ingeschrevennatuurlijkpersonen/{burgerservicenummer}](functionele_specificaties_resources_endpoints.md#ingeschrevennatuurlijkpersonenburgerservicenummer).
+
+Als resultaat worden de gegevens van resource [ingeschreven natuurlijk personen](functionele_specificaties_resources_endpoints.md#ingeschreven-natuurlijk-personen) gegeven.
 
 ### Ik wil de verblijfsplaatshistorie van een ingeschreven natuurlijk persoon raadplegen
 Het is mogelijk te raadplegen welke verblijfsplaatsen een ingeschreven natuurlijk persoon heeft gehad. De ingeschreven natuurlijk persoon wordt geïdentificeerd (uri) door het burgerservicenummer van de persoon. De historie die wordt teruggegeven betreft de materiële historie.
@@ -86,7 +126,7 @@ Bij de vraag kan de periode (van en tot en met) worden opgegeven waarvoor de ver
 
 Als resultaat worden de attributen van de ingeschreven natuurlijk persoon teruggegeven, waarbij de historische voorkomens van de verblijfsplaats allemaal worden opgenomen. In elk historisch voorkomen van de verblijfsplaats bevat de begin- en einddatum van geldigheid van de verblijfsplaats.
 
-Deze functionaliteit is te gebruiken via de resource /verblijfsplaatshistoriepersoon/{burgerservicenummer}
+**TODO: oplossing voor historie uitwerken**
 
 ### Ik wil de partnerhistorie van een ingeschreven natuurlijk persoon raadplegen
 Het is mogelijk de historie van partners van een ingeschreven natuurlijk persoon te raadplegen. De historie die wordt teruggegeven betreft de materiële historie.
@@ -96,7 +136,7 @@ Bij de vraag kan de periode (van en tot en met) worden opgegeven waarvoor de par
 Als resultaat wordt het burgerservicenummer van de ingeschreven natuurlijk persoon teruggegeven en een lijst met voor elk historisch partnerschap de link waarmee de details over het partnerschap kunnen worden opgehaald.
 Het is mogelijk in de zoekvraag aan te geven dat de attributen van elk historisch voorkomen van partnerschap van de persoon in het antwoord moeten worden teruggegeven.
 
-Deze functionaliteit is te gebruiken via de resource /partnerhistoriepersoon/{burgerservicenummer}
+**TODO: oplossing voor historie uitwerken**
 
 ### Ik wil de verblijfstitelhistorie van een ingeschreven natuurlijk persoon raadplegen
 Het is mogelijk de historie van de verblijfstitel van een ingeschreven natuurlijk persoon te raadplegen.
@@ -105,7 +145,7 @@ Bij de vraag kan de periode (van en tot en met) worden opgegeven waarvoor de ver
 
 Als resultaat wordt het burgerservicenummer van de ingeschreven natuurlijk persoon teruggegeven en een lijst met voor elk historisch voorkomen van verblijfstitel de Ingangsdatum verblijfstitel, Datum einde verblijfstitel en de aanduidingVerblijfstitel.
 
-Deze functionaliteit is te gebruiken via de resource /verblijfstitelhistoriepersoon/{burgerservicenummer}
+**TODO: oplossing voor historie uitwerken**
 
 ### Ik wil de bewoning van een verblijfsadres raadplegen, zodat ik kan zien welke personen gedurende welke periode op een verblijfsadres zijn/waren ingeschreven.
 Het is mogelijk te raadplegen welke bewoners er op een adres verblijven of hebben verbleven. Hiermee worden alle ingeschreven natuurlijk personen gezocht die het opgegeven adres als verblijfsplaats hebben (gehad).
@@ -121,36 +161,7 @@ Bij de vraag kan de periode (van en tot en met) worden opgegeven waarvoor de bew
 
 Als resultaat wordt een lijst met verblijfsplaatsen (adressen) gegeven, met per verblijfsplaats een lijst met bewoners (ingeschreven natuurlijk personen). Bij elke bewoner is de begin- en einddatum opgenomen van de bewoning.
 
-Deze functionaliteit is te gebruiken via de resource /bewoninghistorie
-
-## Algemene werking van de API
-### Pagineren
-Zoekvragen kunnen mogelijk veel resultaten teruggeven. De provider van de API kan het aantal zoekresultaten per zoekvraag beperken. In dat geval wordt een maximaal aantal resultaten teruggegeven op een zoekvraag. Meer resultaten kunnen worden teruggegeven met een volgende zoekvraag. Bij een zoekvraag kan daartoe worden aangegeven naar welke "pagina" aan zoekresultaten gevraagd wordt.
-
-Om dit te ondersteunen wordt bij het antwoord een aantal links meegegeven om te navigeren door het resultaat:
-* Eerste pagina
-* Vorige pagina
-* Volgende pagina
-* Laatste pagina
-
-### Bepalen van de inhoud van het antwoord
-Het is mogelijk in de vraag aan te geven welke attributen moeten worden teruggegeven. Standaard worden alle attributen van de persoon in het antwoord teruggegeven. De gebruiker kan de gewenste attributen in het antwoord opgeven via vraagparameter "fields", waarin de veldnamen kommagescheiden worden opgenomen.
-
-Standaard worden in het antwoord relaties naar andere objecttypen (zoals kinderen, ouders, partner, adres) teruggegeven als link met de uri (unieke resource identificatie) naar de betreffende resource. De attributen van de relatie (gerelateerde) kunnen dan in een extra aanroep worden opgevraagd. Het is ook mogelijk in de zoekvraag aan te geven welke relaties direct moeten worden gegeven in het antwoord.  De gebruiker kan de gewenste op te nemen gerelateerde resources opgeven in zoekparameter "expand", waarin de relatienamen kommagescheiden worden opgenomen.
-
-### Opvragen van gerelateerde resources
-Wanneer een ingeschreven natuurlijk persoon relaties heeft, naar bijvoorbeeld een kind, ouder, partner, nummeraanduiding (adres), reisdocument, wordt deze in het antwoord opgenomen als link (uri) naar de betreffende gerelateerde resource. Deze gerelateerde resource kan hiermee worden opgevraagd.
-
-Voor elk soort gegeven (objecttype) waarnaar vanuit de ingeschreven natuurlijk persoon relaties kunnen bestaan, is een resource gedefinieerd in de API. De volgende resources kunnen worden geraadpleegd:
-* /reisdocumenten/{reisdocumentnummer}
-* /andernatuurlijkpersonen/{uuid}
-* /ingeschrevennatuurlijkpersonen/{burgerservicenummer}/partners/{uuid}
-* /ingeschrevennatuurlijkpersonen/{burgerservicenummer}/kinderen/{uuid}
-
-De resource van een nummeraanduiding valt binnen de BAG en maakt geen deel uit van de API voor het bevragen van natuurlijk personen.
-
-### Autorisatie
-De API levert alleen gegevens terug waar de vragende organisatie voor geautoriseerd is. De vragende applicatie is verantwoordelijk voor het filteren van het antwoord op autorisatie van de gebruiker.
+**TODO: oplossing voor historie uitwerken**
 
 ## Migratie en doorontwikkeling van de standaard
 De API is ontwikkeld met het oog op de ambitie van een landelijke voorziening voor het bevragen van de GBA gegevens, waarop kan worden aangesloten met de NLX voorziening die door de Common Ground beweging wordt gerealiseerd. Deze voorziening maakt het mogelijk om veilig te communiceren tussen partijen op een manier die AVG-compliant is. Implementatie van deze architectuur is mogelijk op het moment dat de landelijke voorziening beschikbaar is én NLX een productiestatus heeft gekregen.
