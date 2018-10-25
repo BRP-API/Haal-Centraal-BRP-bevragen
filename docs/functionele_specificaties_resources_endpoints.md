@@ -37,7 +37,7 @@ De resource ingeschrevennatuurlijkpersonen kent twee endpoints:
 Dit endpoint kan gebruikt worden om één of meerdere [ingeschreven natuurlijk personen](#ingeschreven-natuurlijk-personen) te zoeken. Het levert een collectie van [ingeschreven natuurlijk personen](#Ingeschrevennatuurlijkpersonen).
 
 Er kan gezocht worden met verschillende zoekpaden van zoekparameters:
-* geslachtsnaam, geboortedatum, voornamen, voorvoegselGeslachtsnaam, geslachtsaanduiding, geboorteplaats, gemeenteVanInschrijving
+* geslachtsnaam, geboortedatum, voornamen, voorvoegselGeslachtsnaam, geslachtsaanduiding, geboorteplaats, gemeenteVanInschrijving, [inclusiefnietingezetenen](#ingezetenen-en-niet-ingezetenen)
 * postcode, huisnummer, huisletter, huisnummertoevoeging
 * woonplaatsnaam, naamopenbareruimte, huisnummer, huisletter, huisnummertoevoeging
 * identificatiecodeNummeraanduiding
@@ -47,8 +47,7 @@ Deze zoekpaden mogen *NIET* gecombineerd worden. Wanneer een combinatie van zoek
 Bijvoorbeeld zoeken op ?postcode=1234AA&geboortedatum=19750730 levert een foutmelding.
 
 Aanvullend kunnen de volgende parameters worden gebruikt:
-* [inclusiefnietingezetenen](#ingezetenen-en-niet-ingezetenen): om naast ingezet personen ook niet-ingezeteren in het antwoord op te nemen
-* [inclusiefoverledenpersonen](#overleden-personen): om ook overleden personen in het antwoord op te nemen
+* [inclusiefoverledenpersonen](#overleden-personen)
 * page: voor paginering
 * sort: voor de sortering van het antwoord
 * fields: voor het filteren van welke attributen in het antwoord moeten worden opgenomen
