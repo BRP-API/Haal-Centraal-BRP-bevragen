@@ -40,7 +40,7 @@ Er kan gezocht worden met verschillende zoekpaden van zoekparameters:
 * geslachtsnaam, geboortedatum, voornamen, voorvoegselGeslachtsnaam, geslachtsaanduiding, geboorteplaats, gemeenteVanInschrijving, [inclusiefnietingezetenen](#ingezetenen-en-niet-ingezetenen)
 * postcode, huisnummer, huisletter, huisnummertoevoeging
 * woonplaatsnaam, naamopenbareruimte, huisnummer, huisletter, huisnummertoevoeging
-* identificatiecodeNummeraanduiding
+* identificatiecodenummeraanduiding
 
 Deze zoekpaden mogen *NIET* gecombineerd worden. Wanneer een combinatie van zoekparameters wordt gebruikt uit meerdere van de bovengenoemde zoekpaden, *MOET* een foutmelding worden gegeven.
 
