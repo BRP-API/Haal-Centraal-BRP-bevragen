@@ -65,17 +65,22 @@ Bijvoorbeeld bekend is geboortejaar 1956:
 ## Zoeken met een wildcard
 Bij het zoeken op enkele zoekparameters mag een wildcard worden gebruikt. Voor de overige zoek-parameters wordt zoeken met wildcard *niet* ondersteund.
 
-Het wildcard karakter is "%". De wildcard mag vooraan, achteraan of beide worden gezet.
-  Bijvoorbeeld zoeken op geslachtsnaam "groen%" vindt geslachtsnamen die beginnen met "groen", zoals "Groen", "Groenlo" en "Groenink".
-  Bijvoorbeeld zoeken op voornamen "jan%" vindt o.a. "Jan", "Jan Willem" en "Jan Piet Joris".
-  Bijvoorbeeld zoeken op geslachtsnaam "%Man" vindt geslachtsnamen die eindigen op "man", zoals "Hofman" en "Bosman", maar niet "Hermans".
-  Bijvoorbeeld zoeken op geslachtsnaam "%man%" vindt geslachtsnamen waarin "man" voorkomt, zoals "Hofman", "Bosman", "Hermans" en "Timmermans".
+Zoeken kan met twee soorten wildcard karakters:
+* * Komt overeen met nul of meer (niet-spatie) karakters
+* ? Komt precies overeen met één (niet-spatie) karakter
+
+  Bijvoorbeeld zoeken op geslachtsnaam "groen*" vindt geslachtsnamen die beginnen met "groen", zoals "Groen", "Groenlo" en "Groenink".
+  Bijvoorbeeld zoeken op voornamen "jan*" vindt o.a. "Jan", "Jan Willem" en "Jan Piet Joris".
+  Bijvoorbeeld zoeken op geslachtsnaam "*Man" vindt geslachtsnamen die eindigen op "man", zoals "Hofman" en "Bosman", maar niet "Hermans".
+  Bijvoorbeeld zoeken op geslachtsnaam "*man*" vindt geslachtsnamen waarin "man" voorkomt, zoals "Hofman", "Bosman", "Hermans", "Timmermans" en "Manfredi".
+  Bijvoorbeeld zoeken op voornamen "quin?" vindt "Quint" en "Quins" maar niet "Quin" noch "Quinten".
+  Bijvoorbeeld zoeken op geslachtsnaam "ku?per" vindt "Kuiper" en "Kuyper".
 
 Bij het zoeken op de parameters die een wildcard ondersteunen, moeten er minimaal 2 karakters exclusief de wildcard(s) worden opgegeven.
-  Bijvoorbeeld zoeken op geslachtsnaam "a%" levert een foutmelding.
-  Bijvoorbeeld zoeken op geslachtsnaam "%a%" levert een foutmelding.
+  Bijvoorbeeld zoeken op geslachtsnaam "a*" levert een foutmelding.
+  Bijvoorbeeld zoeken op geslachtsnaam "*a*" levert een foutmelding.
   Bijvoorbeeld zoeken op geslachtsnaam "a" levert een foutmelding.
-  Bijvoorbeeld zoeken op geslachtsnaam "os" vindt *geen* foutmelding.
+  Bijvoorbeeld zoeken op geslachtsnaam "os" levert *geen* foutmelding.
 
 ## Valideren van zoekparameters
 Wanneer de waarde bij een zoekparameter niet voldoet aan de specificatie voor de parameter, **MOET** een fout worden teruggegeven.
