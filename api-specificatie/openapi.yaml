@@ -6,7 +6,7 @@ servers:
     url: https://www.voorbeeldgemeente.nl/api/bevragingen_ingeschreven_personen/v1
 info:
   title: Bevragingen ingeschreven personen
-  description: "Koppelvlak voor het ontsluiten van gegevens van ingeschreven natuurlijk personen uit de GBA. Kanttekening: Er zijn nu aparte endpoints gemaakt voor diverse zoekpaden. Het is ook mogelijk om al deze zoekpaden te combineren op 1 endpoint (/ingeschrevenpersonen) en applicatief af te dwingen dat bepaalde combinaties niet mogen. Todo: In onderzoek Todo: Historie"
+  description: "Koppelvlak voor het ontsluiten van gegevens van ingeschreven natuurlijk personen en aanverwante gegevens uit de GBA. Naast de actuele gegevens van ingeschreven personen, niet-ingeschreen personenen, reisdocumenten en nummeraabduidingen zijn ook endpoints toegevoegd om diverse historische gegevens te bevragen. Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/docs/functionele_specificaties.md)"
   version: "1.0"
   contact:
     url: https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen
@@ -14,10 +14,10 @@ info:
     name: European Union Public License, version 1.2 (EUPL-1.2)
     url: https://eupl.eu/1.2/nl/
 paths:
-  /ingeschrevennatuurlijkpersonen:
+  /ingeschrevenpersonen:
     get:
-      operationId: ingeschrevennatuurlijkpersonen
-      description: "Het ophalen van een collectie Ingeschreven Natuurlijk Personeninclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten."
+      operationId: ingeschrevenpersonen
+      description: "Het ophalen van een collectie Ingeschreven Natuurlijk Personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten."
       parameters: 
         - in: query
           name: page
@@ -176,10 +176,10 @@ paths:
                  _embedded:
                    type: object
                    properties:
-                     ingeschrevennatuurlijkpersonen:
+                     ingeschrevenpersonen:
                        type: array
                        items:
-                         $ref: '#/components/schemas/IngeschrevenNatuurlijkPersoon'
+                         $ref: '#/components/schemas/IngeschrevenPersoon'
         default:
           description: "Er is een onverwachte fout opgetreden."
           content:
@@ -187,10 +187,10 @@ paths:
               schema:  
                 $ref: '#/components/schemas/Foutbericht'
       tags: 
-      - ingeschrevennatuurlijkpersonen
-  /ingeschrevennatuurlijkpersonen/{burgerservicenummer}:
+      - ingeschrevenpersonen
+  /ingeschrevenpersonen/{burgerservicenummer}:
     get:
-      operationId: ingeschrevennatuurlijkpersonenBurgerservicenummer
+      operationId: ingeschrevenpersonenBurgerservicenummer
       description: "Het ophalen van een Ingeschreven Natuurlijk Persoon, inclusief verblijfsadres, kinderen, partners, ouders en reisdocumenten."
       parameters: 
         - in: query
@@ -224,7 +224,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/IngeschrevenNatuurlijkPersoon'
+                $ref: '#/components/schemas/IngeschrevenPersoon'
         default:
           description: "Er is een onverwachte fout opgetreden."
           content:
@@ -232,8 +232,169 @@ paths:
               schema:  
                 $ref: '#/components/schemas/Foutbericht'
       tags: 
-      - ingeschrevennatuurlijkpersonen
-  /bewoningen:
+      - ingeschrevenpersonen
+  /anderpersonen:
+    get:
+      operationId: anderpersonen
+      description: "Het ophalen van een collectie Ander (Niet ingeschreven Personen."
+      parameters: 
+        - in: query
+          name: page
+          description: "Een pagina binnen de gepagineerde resultatenset."
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+        - in: query
+          name: geboortedatum
+          description: "De datum waarop de ander natuurlijk persoon is geboren. Default:"
+          required: false
+          schema:
+            type: string
+            format: date
+          example: 1953-02-01
+        - in: query
+          name: geslachtsaanduiding
+          description: "Een aanduiding die aangeeft dat de ingeschrevene een man of een vrouw is, of dat het geslacht (nog) onbekend is."
+          required: false
+          schema:
+              $ref: "#/components/schemas/Geslacht_enum"
+        - in: query
+          name: overlijdensdatum
+          description: "De datum van overlijden van een ANDER NATUURLIJK PERSOON"
+          required: false
+          schema:
+            type: string
+            format: date
+          example: 2018-11-12
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+            warning:
+              $ref: '#/components/headers/warning'
+            X-Total-Count:
+              $ref: '#/components/headers/X_Total_Count'
+            X-Pagination-Count:
+              $ref: '#/components/headers/X_Pagination_Count'
+            X-Pagination-Page:
+              $ref: '#/components/headers/X_Pagination_Page'
+            X-Pagination-Limit:
+              $ref: '#/components/headers/X_Pagination_Limit'
+            X-Rate-Limit-Limit:
+              $ref: '#/components/headers/X_Rate_Limit_Limit'
+            X-Rate-Limit-Remaining:
+              $ref: '#/components/headers/X_Rate_Limit_Remaining'
+            X-Rate-Limit-Reset:
+              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+          content:
+            application/hal+json:
+              schema:
+               type: object
+               properties:
+                 _links:
+                   $ref: '#/components/schemas/Pagineerlinks'
+                 _embedded:
+                   type: object
+                   properties:
+                     anderPersonen:
+                       type: array
+                       items:
+                         $ref: '#/components/schemas/AnderPersoon'
+        default:
+          description: "Er is een onverwachte fout opgetreden."
+          content:
+            application/problem+json:
+              schema:  
+                $ref: '#/components/schemas/Foutbericht'
+      tags: 
+      - anderPersonen
+  /anderpersonen/{nummeranderpersoon}:
+    get:
+      operationId: anderpersonenNummeranderpersoon
+      description: "Het ophalen van een Ander (Niet ingeschreven) Persoon."
+      parameters: 
+        - in: path
+          name: nummeranderpersoon
+          description: "Het door de gemeente uitgegeven unieke nummer voor een ANDER NATUURLIJK PERSOON Natuurlijke personen, zijnde (nog) geen ingeschreven personen, die wel relevant zijn voor de gemeentelijke taakuitoefening worden geregistreerd en door de gemeente voorzien van een unieke aanduiding. Het kan aldus voorkomen dat dezelfde natuurlijke persoon bij twee gemeenten geregistreerd is onder een ander nummer. De attribuutsoort kent historie omdat het mogelijk is dat het wijzigt, bijvoorbeeld omdat het Ander natuurlijk persoon overgaat in een Ingeschreven natuurlijk persoon. viercijferige gemeentecode gevolgd door een volgnummer van 13 cijfers met voorloopnullen"
+          required: true
+          schema:
+            type: string
+            maxLength: 17
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+            warning:
+              $ref: '#/components/headers/warning'
+            X-Rate-Limit-Limit:
+              $ref: '#/components/headers/X_Rate_Limit_Limit'
+            X-Rate-Limit-Remaining:
+              $ref: '#/components/headers/X_Rate_Limit_Remaining'
+            X-Rate-Limit-Reset:
+              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/AnderPersoon'
+        default:
+          description: "Er is een onverwachte fout opgetreden."
+          content:
+            application/problem+json:
+              schema:  
+                $ref: '#/components/schemas/Foutbericht'
+      tags: 
+      - anderPersonen
+  /reisdocumenten/{reisdocumentnummer}:
+    get:
+      operationId: reisdocumentenReisdocumentnummer
+      description: "Het ophalen van een collectie REISDOCUMENTEN."
+      parameters: 
+        - in: query
+          name: fields
+          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven."
+          required: false
+          schema:
+            type: string
+            example: id,onderwerp,aanvrager,wijzig_datum
+        - in: path
+          name: reisdocumentnummer
+          description: "Het nummer van het verstrekte Nederlandse reisdocument."
+          required: true
+          schema:
+            type: string
+            maxLength: 9
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+            warning:
+              $ref: '#/components/headers/warning'
+            X-Rate-Limit-Limit:
+              $ref: '#/components/headers/X_Rate_Limit_Limit'
+            X-Rate-Limit-Remaining:
+              $ref: '#/components/headers/X_Rate_Limit_Remaining'
+            X-Rate-Limit-Reset:
+              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Reisdocument'
+        default:
+          description: "Er is een onverwachte fout opgetreden."
+          content:
+            application/problem+json:
+              schema:  
+                $ref: '#/components/schemas/Foutbericht'
+      tags: 
+      - reisdocumenten
+  /historie/bewoningen:
     get:
       operationId: bewoningen
       description: "Het ophalen van een collectie Bewoningen retourneert. Een bewoning is een VERBLIJFSPLAATS waar op het moment van bevragen daadwerkelijk minimaal 1 INGESCHREVEN PERSOON is ingeschreven Op basis van de parameters wordt een bewoning geretourneerd inclusief de bewoners van het betreffende adres. Het resultaat bevat de verblijfsplaatshistorie waarvan de EINDdatumgeldigheidverblijfsplaats op of na de datumVan ligt EN de BEGINdatum op of voor de DatumTotEnMet ligt. Of Het resultaat bevat de verblijfsplaats historie waarvan de begindatumgeldigheidverblijfsplaats voor op op de geldigOp ligt en de eindatumgeldigheidverblijfsplaats na of op de geldigOp ligt. Als geldigOp is ingevlud mogen datumVan en datumTotenMet nietingevuld zijn."
@@ -302,6 +463,13 @@ paths:
             type: string
             pattern: ^[1-9]{1}[0-9]{3}[A-Z]{2}
         - in: query
+          name: geldigvan
+          description: "De datum waarop de INGESCHREVEN NATUURLIJK PERSOON is ingeschreven op zijn of haar laatst bekende verblijfsplaats De begindatum van de periode waarover de verblijfsplaatshistorie wordt opgevraagd. Het resultaat bevat de verblijfsplaatshistorie waarvan de EINDdatumgeldigheidverblijfsplaats op of na de datumVan ligt EN de BEGINdatumgeldigheidverblijfsplaats op of voor de DatumTotEnMet ligt."
+          required: false
+          schema:
+            type: string
+            format: date
+        - in: query
           name: inclusiefoverledenpersonen
           description: "Indien in het antwoord op de zoekvraag ook overleden personen moeten worden geretourneerd, dan dient de parameter ?inclusiefOverledenPersonen? opgenomen te zijn met de waarde True. Indien de parameter ?inclusiefOverledenPersonen? ontbreekt of de waarde False heeft worden geen overleden personen opgenomen in het zoekresultaat."
           required: false
@@ -346,7 +514,7 @@ paths:
                  _embedded:
                    type: object
                    properties:
-                     bewoningen:
+                     historie:
                        type: array
                        items:
                          $ref: '#/components/schemas/Bewoning'
@@ -357,55 +525,10 @@ paths:
               schema:  
                 $ref: '#/components/schemas/Foutbericht'
       tags: 
-      - bewoningen
-  /reisdocumenten/{reisdocumentnummer}:
+      - historie
+  /historie/ingeschrevenpersonen/{burgerservicenummer}/verblijfsplaatsen:
     get:
-      operationId: reisdocumentenReisdocumentnummer
-      description: "Het ophalen van een collectie REISDOCUMENTEN."
-      parameters: 
-        - in: query
-          name: fields
-          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven."
-          required: false
-          schema:
-            type: string
-            example: id,onderwerp,aanvrager,wijzig_datum
-        - in: path
-          name: reisdocumentnummer
-          description: "Het nummer van het verstrekte Nederlandse reisdocument."
-          required: true
-          schema:
-            type: string
-            maxLength: 9
-      responses:
-        '200':
-          description: "Zoekactie geslaagd"
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-            warning:
-              $ref: '#/components/headers/warning'
-            X-Rate-Limit-Limit:
-              $ref: '#/components/headers/X_Rate_Limit_Limit'
-            X-Rate-Limit-Remaining:
-              $ref: '#/components/headers/X_Rate_Limit_Remaining'
-            X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
-          content:
-            application/hal+json:
-              schema:
-                $ref: '#/components/schemas/Reisdocument'
-        default:
-          description: "Er is een onverwachte fout opgetreden."
-          content:
-            application/problem+json:
-              schema:  
-                $ref: '#/components/schemas/Foutbericht'
-      tags: 
-      - reisdocumenten
-  /ingeschrevennatuurlijkpersonen/{burgerservicenummer}/verblijfsplaatsenhistorie:
-    get:
-      operationId: ingeschrevennatuurlijkpersonenBurgerservicenummerverblijfsplaatsenhistorie
+      operationId: ingeschrevenpersonenBurgerservicenummerverblijfsplaatsen
       description: "Het ophalen van de verblijfsplaatshistorie van een ingeschreven persoon. Van een ingeschreven persoon worden verblijfsplaatsen waar een persoon zich in het verleden op heeft ingeschreven (inclusief de actuele verblijfsplaats) geretourneerd voorzover deze voldoen aan de queryparameters."
       parameters: 
         - in: query
@@ -482,10 +605,10 @@ paths:
                  _embedded:
                    type: object
                    properties:
-                     verblijfsplaatshistorie:
+                     historie:
                        type: array
                        items:
-                         $ref: '#/components/schemas/Verblijfplaatshistorie'
+                         $ref: '#/components/schemas/Verblijfplaatsen'
         default:
           description: "Er is een onverwachte fout opgetreden."
           content:
@@ -493,10 +616,10 @@ paths:
               schema:  
                 $ref: '#/components/schemas/Foutbericht'
       tags: 
-      - verblijfsplaatshistorie
-  /ingeschrevennatuurlijkpersonen/{burgerservicenummer}/partnerhistorie:
+      - historie
+  /historie/ingeschrevenpersonen/{burgerservicenummer}/partnerhistorie:
     get:
-      operationId: ingeschrevennatuurlijkpersonenBurgerservicenummerpartnerhistorie
+      operationId: ingeschrevenpersonenBurgerservicenummerpartnerhistorie
       description: "Het ophalen van de partnerhistorie van een ingeschreven persoon. Van een ingeschreven persoon worden parters waarmee in het verleden relaties geregistreerd zijn geretourneerd voorzover deze voldoen aan de queryparameters."
       parameters: 
         - in: query
@@ -560,10 +683,10 @@ paths:
                  _embedded:
                    type: object
                    properties:
-                     partnerhistorie:
+                     historie:
                        type: array
                        items:
-                         $ref: '#/components/schemas/Partnerhistorie'
+                         $ref: '#/components/schemas/Partners'
         default:
           description: "Er is een onverwachte fout opgetreden."
           content:
@@ -571,10 +694,10 @@ paths:
               schema:  
                 $ref: '#/components/schemas/Foutbericht'
       tags: 
-      - partnerhistorie
-  /ingeschrevennatuurlijkpersonen/{burgerservicenummer}/verblijfstitelhistorie:
+      - historie
+  /historie/ingeschrevenpersonen/{burgerservicenummer}/verblijfstitels:
     get:
-      operationId: ingeschrevennatuurlijkpersonenBurgerservicenummerverblijfstitelhistorie
+      operationId: ingeschrevenpersonenBurgerservicenummerverblijfstitels
       description: "Het ophalen van de verblijfstitelhistorie van een ingeschreven persoon. Van een ingeschreven persoon worden verblijfstitels die er in het verleden geregistreerd zijn (inclusief de actuele verblijfstitel) geretourneerd voorzover deze voldoen aan de queryparameters."
       parameters: 
         - in: query
@@ -638,10 +761,10 @@ paths:
                  _embedded:
                    type: object
                    properties:
-                     verblijfstitelhistorie:
+                     historie:
                        type: array
                        items:
-                         $ref: '#/components/schemas/Verblijfstitelhistorie'
+                         $ref: '#/components/schemas/Verblijfstitels'
         default:
           description: "Er is een onverwachte fout opgetreden."
           content:
@@ -649,7 +772,7 @@ paths:
               schema:  
                 $ref: '#/components/schemas/Foutbericht'
       tags: 
-      - verblijfstitelhistorie
+      - historie
   /nummeraanduidingen/{identificatiecodenummeraanduiding}:
     get:
       operationId: nummeraanduidingenIdentificatiecodenummeraanduiding
@@ -704,7 +827,7 @@ paths:
       - nummeraanduidingen
 components:
   schemas:
-    IngeschrevenNatuurlijkPersoon:
+    IngeschrevenPersoon:
       type: "object"
       description: "Een NATUURLIJK PERSOON ingeschreven in de Basisregistratie Personen\
         \ (BRP). Het betreft de verzameling van personen ingeschreven in de GBA of\
@@ -778,6 +901,8 @@ components:
           $ref: "#/components/schemas/Land_tabel"
         overlijden:
           $ref: "#/components/schemas/Overlijden"
+        inOnderzoek:
+          $ref: "#/components/schemas/InOnderzoek"
         geboorte:
           $ref: "#/components/schemas/Geboorte"
         verblijfstitel:
@@ -791,9 +916,88 @@ components:
         nationaliteit:
           $ref: "#/components/schemas/Nationaliteit"
         _links:
-          $ref: "#/components/schemas/IngeschrevenNatuurlijkPersoon_links"
+          $ref: "#/components/schemas/IngeschrevenPersoon_links"
         _embedded:
-          $ref: "#/components/schemas/IngeschrevenNatuurlijkPersoon_embedded"
+          $ref: "#/components/schemas/IngeschrevenPersoon_embedded"
+    AnderPersoon:
+      type: "object"
+      description: "Een NATUURLIJK PERSOON, niet ingeschreven in de BasisRegistratie\
+        \ Personen (BRP), woonachtig in Nederland dan wel woonachtig in het buitenland\
+        \ en van belang voor de gemeentelijke taakuitoefening. Het betreft hier de\
+        \ natuurlijke personen die niet ingeschreven zijn in de BRP (GBA en het RNI)\
+        \ maar wel van belang zijn voor de gemeentelijke taakuitoefening. Het kan\
+        \ gaan om zowel in Nederland woonachtige personen als in het buitenlandse\
+        \ verblijvende personen. Een ANDER NATUURLIJK PERSOON is een specialisatie\
+        \ van NATUURLIJK PERSOON. In de BRP worden deze personen niet-ingeschrevenen\
+        \ genoemd en kunnen meerdere keren voorkomen in de centrale voorzieningen.\
+        \ In de BRP worden niet-ingeschrevenen gevonden door te zoeken op de combinatie\
+        \ van Samengestelde naam, Geboorte en Geslachtsaanduiding."
+      properties:
+        nummerAnderPersoon:
+          type: "string"
+          title: "Nummer ander natuurlijk persoon"
+          description: "Het door de gemeente uitgegeven unieke nummer voor een ANDER\
+            \ NATUURLIJK PERSOON Natuurlijke personen, zijnde (nog) geen ingeschreven\
+            \ personen, die wel relevant zijn voor de gemeentelijke taakuitoefening\
+            \ worden geregistreerd en door de gemeente voorzien van een unieke aanduiding.\
+            \ Het kan aldus voorkomen dat dezelfde natuurlijke persoon bij twee gemeenten\
+            \ geregistreerd is onder een ander nummer. De attribuutsoort kent historie\
+            \ omdat het mogelijk is dat het wijzigt, bijvoorbeeld omdat het Ander\
+            \ natuurlijk persoon overgaat in een Ingeschreven natuurlijk persoon.\
+            \ viercijferige gemeentecode gevolgd door een volgnummer van 13 cijfers\
+            \ met voorloopnullen"
+          maxLength: 17
+        geslachtsaanduiding:
+          $ref: "#/components/schemas/Geslacht_enum"
+        geboortedatum:
+          $ref: "#/components/schemas/Datum_onvolledig"
+        overlijdensdatum:
+          $ref: "#/components/schemas/Datum_onvolledig"
+        naamgebruik:
+          $ref: "#/components/schemas/Naamgebruik"
+        naam:
+          $ref: "#/components/schemas/Naam"
+        _links:
+          $ref: "#/components/schemas/AnderPersoon_links"
+    Reisdocument:
+      type: "object"
+      description: "Een document dat vereist is voor reizen naar het buitenland"
+      properties:
+        reisdocumentnummer:
+          type: "string"
+          title: "Reisdocumentnummer"
+          description: "Het nummer van het verstrekte Nederlandse reisdocument."
+          maxLength: 9
+          example: "546376728"
+        datumUitgifte:
+          type: "string"
+          title: "Datum uitgifte"
+          description: "De datum waarop het Nederlands reisdocument is uitgegeven"
+          format: "date"
+          example: "2016-12-12"
+        geldigTotEnMet:
+          type: "string"
+          title: "Einddatum geldigheid document"
+          description: "Datum waarop een reisdocument, dat aan de INGEZETENE is verstrekt,\
+            \ zijn geldigheid verliest. Het gaat hier om de datum die bij uitgifte\
+            \ van het document als einddatum wordt voorzien."
+          format: "date"
+          example: "2020-12-12"
+        datumInhoudingOfVermissing:
+          type: "string"
+          title: "Datum inhouding of vermissing"
+          description: "De datum waarop een Nederlands reisdocument is vermist, ingehouden,\
+            \ ingeleverd, dan wel van rechtswege is vervallen."
+          format: "date"
+          example: "2015-06-21"
+        aanduidingInhouding_vermissing:
+          $ref: "#/components/schemas/AanduidingInhoudingVermissingReisdocument_enum"
+        soortReisdocument:
+          $ref: "#/components/schemas/NederlandsReisdocument_tabel"
+        autoriteitAfgifte:
+          $ref: "#/components/schemas/AutoriteitAfgifteNederlandsReisdocument_tabel"
+        _links:
+          $ref: "#/components/schemas/Reisdocument_links"
     Bewoning:
       type: "object"
       description: "Een door het bevoegde gemeentelijke orgaan als zodanig aangewezen\
@@ -801,10 +1005,15 @@ components:
         \ door het bevoegde gemeentelijke orgaan als zodanig toegekende aanduiding\
         \ van een VERBLIJFSOBJECT, een STANDPLAATS of een LIGPLAATS. Een door het\
         \ bevoegde gemeentelijke orgaan als zodanig aangewezen en van een naam voorziene\
-        \ buitenruimte die binnen één woonplaats is gelegen In incidentele gevallen\
-        \ komt het voor dat een woonplaats (in de zin van het gebied dat in de praktijk\
-        \ aangeduid wordt met dezelfde woonplaatsnaam) doorsneden wordt door een gemeentegrens.\
-        \ Volgens de definitie zou dit niet kunnen c.q. is een woonplaats anders gedefinieerd\
+        \ buitenruimte die binnen één woonplaats is gelegen Een bewoning is een adres\
+        \ waar op enig moment in de tijd een of meerdere personen is ingeschreven.\
+        \ Daarmee is dit adres een veblijfplaats, of is dit adres in het verleden\
+        \ een verblijfsplaats geweest. Deze resource is samengesteld op basis van\
+        \ de gegevensgroep VERBLIJFSADRES en elementen uit de objecttypen NUMMERAANDUIDING,\
+        \ OPENBARE RUIMTE en WOONPLAATS. In incidentele gevallen komt het voor dat\
+        \ een woonplaats (in de zin van het gebied dat in de praktijk aangeduid wordt\
+        \ met dezelfde woonplaatsnaam) doorsneden wordt door een gemeentegrens. Volgens\
+        \ de definitie zou dit niet kunnen c.q. is een woonplaats anders gedefinieerd\
         \ en dus afgebakend: ?gedeelte van het gemeentelijk grondgebied?. Vooralsnog\
         \ wordt uitgegaan van de BAG-insteek en wordt afgewacht hoe dit opgelost wordt\
         \ in de landelijk te specificeren woonplaatsentabel. Zie de toelichting in\
@@ -914,53 +1123,14 @@ components:
           $ref: "#/components/schemas/Bewoning_links"
         _embedded:
           $ref: "#/components/schemas/Bewoning_embedded"
-    Reisdocument:
-      type: "object"
-      description: "Een document dat vereist is voor reizen naar het buitenland"
-      properties:
-        reisdocumentnummer:
-          type: "string"
-          title: "Reisdocumentnummer"
-          description: "Het nummer van het verstrekte Nederlandse reisdocument."
-          maxLength: 9
-          example: "546376728"
-        datumUitgifte:
-          type: "string"
-          title: "Datum uitgifte"
-          description: "De datum waarop het Nederlands reisdocument is uitgegeven"
-          format: "date"
-          example: "2016-12-12"
-        geldigTotEnMet:
-          type: "string"
-          title: "Einddatum geldigheid document"
-          description: "Datum waarop een reisdocument, dat aan de INGEZETENE is verstrekt,\
-            \ zijn geldigheid verliest. Het gaat hier om de datum die bij uitgifte\
-            \ van het document als einddatum wordt voorzien."
-          format: "date"
-          example: "2020-12-12"
-        datumInhoudingOfVermissing:
-          type: "string"
-          title: "Datum inhouding of vermissing"
-          description: "De datum waarop een Nederlands reisdocument is vermist, ingehouden,\
-            \ ingeleverd, dan wel van rechtswege is vervallen."
-          format: "date"
-          example: "2015-06-21"
-        aanduidingInhouding_vermissing:
-          $ref: "#/components/schemas/AanduidingInhoudingVermissingReisdocument_enum"
-        soortReisdocument:
-          $ref: "#/components/schemas/NederlandsReisdocument_tabel"
-        autoriteitAfgifte:
-          $ref: "#/components/schemas/AutoriteitAfgifteNederlandsReisdocument_tabel"
-        _links:
-          $ref: "#/components/schemas/Reisdocument_links"
-    Verblijfplaatshistorie:
+    Verblijfplaatsen:
       type: "object"
       description: "Een door het bevoegde gemeentelijke orgaan als zodanig aangewezen\
         \ en van een naam voorzien gedeelte van het grondgebied van de gemeente. Een\
         \ door het bevoegde gemeentelijke orgaan als zodanig toegekende aanduiding\
         \ van een VERBLIJFSOBJECT, een STANDPLAATS of een LIGPLAATS. Een door het\
         \ bevoegde gemeentelijke orgaan als zodanig aangewezen en van een naam voorziene\
-        \ buitenruimte die binnen één woonplaats is gelegen De hitorische gegevens\
+        \ buitenruimte die binnen één woonplaats is gelegen De historische gegevens\
         \ over het verblijf en adres van de INGESCHREVEN NATUURLIJK PERSOON. Dit is\
         \ het adres waarop een persoon is of was ingeschreven inclusief de periode\
         \ dat de persoon ingeschreven was. Deze resource is samengesteld op basis\
@@ -1085,8 +1255,8 @@ components:
         geldigVan:
           $ref: "#/components/schemas/Datum_onvolledig"
         _links:
-          $ref: "#/components/schemas/Verblijfplaatshistorie_links"
-    Partnerhistorie:
+          $ref: "#/components/schemas/Verblijfplaatsen_links"
+    Partners:
       type: "object"
       description: "Een NATUURLIJK PERSOON ingeschreven in de Basisregistratie Personen\
         \ (BRP). Het betreft de verzameling van personen ingeschreven in de GBA of\
@@ -1117,10 +1287,12 @@ components:
         naam:
           $ref: "#/components/schemas/Naam"
         _links:
-          $ref: "#/components/schemas/Partnerhistorie_links"
-    Verblijfstitelhistorie:
+          $ref: "#/components/schemas/Partners_links"
+    Verblijfstitels:
       type: "object"
-      description: "Gegevens over de verblijfsrechtelijke status."
+      description: "Gegevens over de verblijfsrechtelijke status. De historische gegevens\
+        \ over de verblijfsrechtelijke status van een ingeschreven persoon. Deze resource\
+        \ is samengesteld op basis van de gegevensgroep VERBLIJFSTITEL"
       properties:
         aanduidingVerblijfstitel:
           $ref: "#/components/schemas/Verblijfstitel_tabel"
@@ -1129,7 +1301,7 @@ components:
         geldigTotEnMet:
           $ref: "#/components/schemas/Datum_onvolledig"
         _links:
-          $ref: "#/components/schemas/Verblijfstitelhistorie_links"
+          $ref: "#/components/schemas/Verblijfstitels_links"
     Nummeraanduiding:
       type: "object"
       description: "Een door het bevoegde gemeentelijke orgaan als zodanig toegekende\
@@ -1248,6 +1420,165 @@ components:
           example: "763254152"
         _links:
           $ref: "#/components/schemas/Reisdocument_gerelateerde_links"
+    InOnderzoek:
+      type: "object"
+      description: "Een groep van booleans om aan te geven welke gegevens van de ingeschreven\
+        \ persoon in onderzoek zijn. Er kunnen ook gegevensgroepen in onderzoek zijn."
+      properties:
+        burgerservicenummer:
+          type: "boolean"
+          title: "burgerservicenummer"
+          description: "Indicator die aangeeft of het gegeven met dezelfde naam als\
+            \ deze indicator in onderzoek is."
+        aNummer:
+          type: "boolean"
+          title: "a-nummer"
+          description: "Indicator die aangeeft of het gegeven met dezelfde naam als\
+            \ deze indicator in onderzoek is."
+        datumInschrijvingInGemeente:
+          type: "boolean"
+          title: "datumInschrijvingInGemeente"
+          description: "Indicator die aangeeft of het gegeven met dezelfde naam als\
+            \ deze indicator in onderzoek is."
+        partner:
+          type: "boolean"
+          title: "partner"
+          description: "Indicator die aangeeft of het gegeven met dezelfde naam als\
+            \ deze indicator in onderzoek is."
+        kind:
+          type: "boolean"
+          title: "kind"
+          description: "Indicator die aangeeft of het gegeven met dezelfde naam als\
+            \ deze indicator in onderzoek is."
+        ouder:
+          type: "boolean"
+          title: "ouder"
+          description: "Indicator die aangeeft of het gegeven met dezelfde naam als\
+            \ deze indicator in onderzoek is."
+        signaleringNederlandsReisdocument:
+          type: "boolean"
+          title: "signaleringNederlandsReisdocument"
+          description: "Indicator die aangeeft of het gegeven met dezelfde naam als\
+            \ deze indicator in onderzoek is."
+        naamInOnderzoek:
+          $ref: "#/components/schemas/NaamInOnderzoek"
+        overlijdenInOnderzoek:
+          $ref: "#/components/schemas/OverlijdenInOnderzoek"
+        geboorteInOnderzoek:
+          $ref: "#/components/schemas/GeboorteInOnderzoek"
+        nationaliteitInOnderzoek:
+          $ref: "#/components/schemas/NationaliteitInOnderzoek"
+        verblijfplaatsInOnderzoek:
+          $ref: "#/components/schemas/VerblijfplaatsInOnderzoek"
+    NaamInOnderzoek:
+      type: "object"
+      description: "In onderzoekgroep om aan te geven of Gegevens over de naam van\
+        \ de NATUURLIJK PERSOON in onderzoek zijn."
+      properties:
+        voornamen:
+          type: "boolean"
+          title: "voornamen"
+          description: "Indicator die aangeeft of het gegeven met de dezelfde naam\
+            \ als deze indicator in onderzoek is."
+        voorvoegselGeslachtsnaam:
+          type: "boolean"
+          title: "voorvoegselGeslachtsnaam"
+          description: "Indicator die aangeeft of het gegeven met de dezelfde naam\
+            \ als deze indicator in onderzoek is."
+        geslachtsnaam:
+          type: "boolean"
+          title: "geslachtsnaam"
+          description: "Indicator die aangeeft of het gegeven met de dezelfde naam\
+            \ als deze indicator in onderzoek is."
+        adellijkeTitel_predikaat:
+          type: "boolean"
+          title: "adellijkeTitel_predikaat"
+          description: "Indicator die aangeeft of het gegeven met de dezelfde naam\
+            \ als deze indicator in onderzoek is."
+    OverlijdenInOnderzoek:
+      type: "object"
+      description: "In onderzoek indicators voor gegevens over het overlijden van\
+        \ de ingeschreven natuurlijk persoon."
+      properties:
+        datumOverlijden:
+          type: "boolean"
+          title: "datumOverlijden"
+          description: "Indicator die aangeeft of het gegeven met dezelfde naam als\
+            \ deze indicator in onderzoek is."
+        plaatsOverlijden:
+          type: "boolean"
+          title: "plaatsOverlijden"
+          description: "Indicator die aangeeft of het gegeven met dezelfde naam als\
+            \ deze indicator in onderzoek is."
+        landOverlijden:
+          type: "boolean"
+          title: "landOverlijden"
+          description: "Indicator die aangeeft of het gegeven met dezelfde naam als\
+            \ deze indicator in onderzoek is."
+    GeboorteInOnderzoek:
+      type: "object"
+      description: "Indocators over het in onderzoek zijn van gegevens over de geboorte\
+        \ van de INGESCHREVEN NATUURLIJK PERSOON."
+      properties:
+        geboortedatum:
+          type: "boolean"
+          title: "geboortedatum"
+          description: "Indicator die aangeeft of het gegeven met dezelfde naam als\
+            \ deze indicator in onderzoek is."
+        geboorteplaats:
+          type: "boolean"
+          title: "geboorteplaats"
+          description: "Indicator die aangeeft of het gegeven met dezelfde naam als\
+            \ deze indicator in onderzoek is."
+        landGeboorte:
+          type: "boolean"
+          title: "landGeboorte"
+          description: "Indicator die aangeeft of het gegeven met dezelfde naam als\
+            \ deze indicator in onderzoek is."
+    NationaliteitInOnderzoek:
+      type: "object"
+      description: "In onderzoek indicators over de gegevens over de nationaliteit."
+      properties:
+        nationaliteit:
+          type: "boolean"
+          title: "nationaliteit"
+          description: "Indicator die aangeeft of het gegeven met de dezelfde naam\
+            \ als deze indicator in onderzoek is."
+        redenOpnameNationaliteit:
+          type: "boolean"
+          title: "redenOpnameNationaliteit"
+          description: "Indicator die aangeeft of het gegeven met de dezelfde naam\
+            \ als deze indicator in onderzoek is."
+        redenBeindigenNationaliteit:
+          type: "boolean"
+          title: "redenBeëindigenNationaliteit"
+          description: "Indicator die aangeeft of het gegeven met de dezelfde naam\
+            \ als deze indicator in onderzoek is."
+        aanduidingBijzonderNederlanderschap:
+          type: "boolean"
+          title: "aanduidingBijzonderNederlanderschap"
+          description: "Indicator die aangeeft of het gegeven met de dezelfde naam\
+            \ als deze indicator in onderzoek is."
+    VerblijfplaatsInOnderzoek:
+      type: "object"
+      description: "Indicators om aan te geven dat de gegevens over het verblijf en\
+        \ adres van de INGESCHREVEN NATUURLIJK PERSOON in onderzoek zijn."
+      properties:
+        adresherkomst:
+          type: "boolean"
+          title: "adresherkomst"
+          description: "Indicator die aangeeft of het gegeven met de dezelfde naam\
+            \ als deze indicator in onderzoek is."
+        identificatiecodeNummeraanduiding:
+          type: "boolean"
+          title: "identificatiecodeNummeraanduiding"
+          description: "Indicator die aangeeft of het gegeven met de dezelfde naam\
+            \ als deze indicator in onderzoek is."
+        locatiebeschrijving:
+          type: "boolean"
+          title: "locatiebeschrijving"
+          description: "Indicator die aangeeft of het gegeven met de dezelfde naam\
+            \ als deze indicator in onderzoek is."
     Ouder_relatie:
       type: "object"
       description: "Het verband tussen een kind en één van zijn of haar juridische\
@@ -1263,46 +1594,6 @@ components:
           $ref: "#/components/schemas/Ouder_relatie_links"
         _embedded:
           $ref: "#/components/schemas/Ouder_relatie_embedded"
-    AnderNatuurlijkPersoon:
-      type: "object"
-      description: "Een NATUURLIJK PERSOON, niet ingeschreven in de BasisRegistratie\
-        \ Personen (BRP), woonachtig in Nederland dan wel woonachtig in het buitenland\
-        \ en van belang voor de gemeentelijke taakuitoefening. Het betreft hier de\
-        \ natuurlijke personen die niet ingeschreven zijn in de BRP (GBA en het RNI)\
-        \ maar wel van belang zijn voor de gemeentelijke taakuitoefening. Het kan\
-        \ gaan om zowel in Nederland woonachtige personen als in het buitenlandse\
-        \ verblijvende personen. Een ANDER NATUURLIJK PERSOON is een specialisatie\
-        \ van NATUURLIJK PERSOON. In de BRP worden deze personen niet-ingeschrevenen\
-        \ genoemd en kunnen meerdere keren voorkomen in de centrale voorzieningen.\
-        \ In de BRP worden niet-ingeschrevenen gevonden door te zoeken op de combinatie\
-        \ van Samengestelde naam, Geboorte en Geslachtsaanduiding."
-      properties:
-        nummerAnderNatuurlijkPersoon:
-          type: "string"
-          title: "Nummer ander natuurlijk persoon"
-          description: "Het door de gemeente uitgegeven unieke nummer voor een ANDER\
-            \ NATUURLIJK PERSOON Natuurlijke personen, zijnde (nog) geen ingeschreven\
-            \ personen, die wel relevant zijn voor de gemeentelijke taakuitoefening\
-            \ worden geregistreerd en door de gemeente voorzien van een unieke aanduiding.\
-            \ Het kan aldus voorkomen dat dezelfde natuurlijke persoon bij twee gemeenten\
-            \ geregistreerd is onder een ander nummer. De attribuutsoort kent historie\
-            \ omdat het mogelijk is dat het wijzigt, bijvoorbeeld omdat het Ander\
-            \ natuurlijk persoon overgaat in een Ingeschreven natuurlijk persoon.\
-            \ viercijferige gemeentecode gevolgd door een volgnummer van 13 cijfers\
-            \ met voorloopnullen"
-          maxLength: 17
-        geslachtsaanduiding:
-          $ref: "#/components/schemas/Geslacht_enum"
-        geboortedatum:
-          $ref: "#/components/schemas/Datum_onvolledig"
-        overlijdensdatum:
-          $ref: "#/components/schemas/Datum_onvolledig"
-        naamgebruik:
-          $ref: "#/components/schemas/Naamgebruik"
-        naam:
-          $ref: "#/components/schemas/Naam"
-        _links:
-          $ref: "#/components/schemas/AnderNatuurlijkPersoon_links"
     Naamgebruik:
       type: "object"
       description: "De naamgegevens waarmee de persoon heeft aangegeven aangeschreven\
@@ -1339,7 +1630,7 @@ components:
           $ref: "#/components/schemas/Voorvoegsel_tabel"
         adellijkeTitel_predikaat:
           $ref: "#/components/schemas/AdellijkeTitel_predikaat_tabel"
-    IngeschrevenNatuurlijkPersoon_gerelateerde:
+    IngeschrevenPersoon_gerelateerde:
       type: "object"
       description: "Een NATUURLIJK PERSOON ingeschreven in de Basisregistratie Personen\
         \ (BRP). Het betreft de verzameling van personen ingeschreven in de GBA of\
@@ -1425,8 +1716,10 @@ components:
           $ref: "#/components/schemas/Verblijfplaats"
         geboorte:
           $ref: "#/components/schemas/Geboorte"
+        inOnderzoek:
+          $ref: "#/components/schemas/InOnderzoek"
         _links:
-          $ref: "#/components/schemas/IngeschrevenNatuurlijkPersoon_gerelateerde_links"
+          $ref: "#/components/schemas/IngeschrevenPersoon_gerelateerde_links"
     Verblijfstitel:
       type: "object"
       description: "Gegevens over de verblijfsrechtelijke status."
@@ -1591,18 +1884,7 @@ components:
         \ adressen deels vergelijkbare gegevens en relaties van toepassing zijn, zijn\
         \ desbetreffende gegevens gemodelleerd bij ADRESSEERBAAR OBJECT AANDUIDING,\
         \ de verzameling van nummeraanduidingen en overige adresseerbaar object aanduidingen."
-      required:
-      - "identificatiecodeNummeraanduiding"
       properties:
-        identificatiecodeNummeraanduiding:
-          type: "string"
-          title: "Identificatiecode nummeraanduiding"
-          description: "De unieke aanduiding van een NUMMERAANDUIDING. zie toelichting\
-            \ BAG Combinatie van de viercijferige 'gemeentecode' (volgens GBA tabel\
-            \ 33, Gemeententabel), de tweecijferige 'objecttypecode' en een voor het\
-            \ betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'.\
-            \ De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding."
-          maxLength: 29
         _links:
           $ref: "#/components/schemas/Nummeraanduiding_gerelateerde_links"
     Geboorte:
@@ -1694,30 +1976,6 @@ components:
           $ref: "#/components/schemas/Kind_relatie_links"
         _embedded:
           $ref: "#/components/schemas/Kind_relatie_embedded"
-    Verblijfplaatshistorie_gerelateerde:
-      type: "object"
-      description: "De hitorische gegevens over het verblijf en adres van de INGESCHREVEN\
-        \ NATUURLIJK PERSOON. Dit is het adres waarop een persoon is of was ingeschreven\
-        \ inclusief de periode dat de persoon ingeschreven was. Deze resource is samengesteld\
-        \ op basis van de gegevensgroep VERBLIJFSADRES en elementen uit de objecttypen\
-        \ NUMMERAANDUIDING, OPENBARE RUIMTE en WOONPLAATS. Daaraan zijn de datumbegingeldigheid\
-        \ (datumvan) en de datumeindgeldigheid (datumtotenmet) van de bewonings-relatie\
-        \ toegevoegd."
-      properties:
-        _links:
-          $ref: "#/components/schemas/Verblijfplaatshistorie_gerelateerde_links"
-    Partnerhistorie_gerelateerde:
-      type: "object"
-      description: ""
-      properties:
-        _links:
-          $ref: "#/components/schemas/Partnerhistorie_gerelateerde_links"
-    Verblijfstitelhistorie_gerelateerde:
-      type: "object"
-      description: ""
-      properties:
-        _links:
-          $ref: "#/components/schemas/Verblijfstitelhistorie_gerelateerde_links"
     Bewoners:
       type: "object"
       description: "Een NATUURLIJK PERSOON ingeschreven in de Basisregistratie Personen\
@@ -1851,35 +2109,31 @@ components:
       description: "Gegevens over de datums die mogelijk niet volledig zijn, maar\
         \ waarvan de bekende gedeeltes wel moeten kunnen worden uitgewisseld. Als\
         \ de volledige datum bekend is worden alle elementen gevuld."
-      required:
-      - "maand"
-      - "dag"
       properties:
         jaar:
-          type: "integer"
+          type: "string"
           title: "jaar"
           description: "Het jaar van de datum. Als het jaar bekend is wordt dit element\
             \ gevuld, ook als de volledige datum bekend is."
-          example: "1966"
+          format: "date-fullyear"
         datum:
           type: "string"
           title: "datum"
           description: "De volledige datum die in de `date` definitie past. Dit element\
             \ wordt alleen gevuld als de volledige datum bekend is."
           format: "date"
-          example: "1966-05-28"
         maand:
-          type: "integer"
+          type: "string"
           title: "maand"
           description: "De maand. Als de maand van een datum bekend is wordt dee hier\
             \ ingeveuld. Ook als de volledige datum is ingevuld."
-          example: "05"
+          format: "date-month"
         dag:
-          type: "integer"
+          type: "string"
           title: "dag"
           description: "De dag. Als de dag van de datum bekend is wordt deze hier\
             \ ingevuld. Ook als de volledige datum bekend is."
-          example: "28"
+          format: "date-mday"
     Land_tabel:
       type: "object"
       description: "Een opsomming van alle huidige en voormalige landen met hun codes,\
@@ -2049,7 +2303,7 @@ components:
           title: "Omschrijving autoriteit"
           description: "De omschrijving van de autoriteit van afgifte"
           maxLength: 80
-    IngeschrevenNatuurlijkPersoon_links:
+    IngeschrevenPersoon_links:
       type: "object"
       properties:
         self:
@@ -2098,12 +2352,12 @@ components:
           properties:
             href:
               $ref: "#/components/schemas/Href"
-    AnderNatuurlijkPersoon_links:
+    AnderPersoon_links:
       type: "object"
       properties:
         self:
           $ref: "#/components/schemas/Link"
-    IngeschrevenNatuurlijkPersoon_gerelateerde_links:
+    IngeschrevenPersoon_gerelateerde_links:
       type: "object"
       properties:
         self:
@@ -2135,21 +2389,18 @@ components:
           properties:
             href:
               $ref: "#/components/schemas/Href"
-    Verblijfplaatshistorie_gerelateerde_links:
+    Reisdocument_links:
       type: "object"
       properties:
         self:
           $ref: "#/components/schemas/Link"
-    Partnerhistorie_gerelateerde_links:
-      type: "object"
-      properties:
-        self:
-          $ref: "#/components/schemas/Link"
-    Verblijfstitelhistorie_gerelateerde_links:
-      type: "object"
-      properties:
-        self:
-          $ref: "#/components/schemas/Link"
+        ingeschrevennatuurlijkpersonen:
+          title: "heeftAlsHouder"
+          type: "object"
+          description: "De ingezetene waaraan het REISDOCUMENT is verstrekt."
+          properties:
+            href:
+              $ref: "#/components/schemas/Href"
     Bewoning_links:
       type: "object"
       properties:
@@ -2181,19 +2432,7 @@ components:
           properties:
             href:
               $ref: "#/components/schemas/Href"
-    Reisdocument_links:
-      type: "object"
-      properties:
-        self:
-          $ref: "#/components/schemas/Link"
-        ingeschrevennatuurlijkpersonen:
-          title: "heeftAlsHouder"
-          type: "object"
-          description: "De ingezetene waaraan het REISDOCUMENT is verstrekt."
-          properties:
-            href:
-              $ref: "#/components/schemas/Href"
-    Verblijfplaatshistorie_links:
+    Verblijfplaatsen_links:
       type: "object"
       properties:
         self:
@@ -2205,7 +2444,7 @@ components:
           properties:
             href:
               $ref: "#/components/schemas/Href"
-    Partnerhistorie_links:
+    Partners_links:
       type: "object"
       properties:
         self:
@@ -2224,7 +2463,7 @@ components:
           properties:
             href:
               $ref: "#/components/schemas/Href"
-    Verblijfstitelhistorie_links:
+    Verblijfstitels_links:
       type: "object"
       properties:
         self:
@@ -2258,7 +2497,7 @@ components:
       properties:
         self:
           $ref: "#/components/schemas/Link"
-    IngeschrevenNatuurlijkPersoon_embedded:
+    IngeschrevenPersoon_embedded:
       type: "object"
       properties:
         reisdocumenten:
@@ -2288,33 +2527,27 @@ components:
             \ verwijst"
           items:
             $ref: "#/components/schemas/Kind_relatie"
-        verblijfsplaatsenhistorie:
-          $ref: "#/components/schemas/Verblijfplaatshistorie_gerelateerde"
-        partnershistorie:
-          $ref: "#/components/schemas/Partnerhistorie_gerelateerde"
-        verblijfstitelshistorie:
-          $ref: "#/components/schemas/Verblijfstitelhistorie_gerelateerde"
     Ouder_relatie_embedded:
       type: "object"
       properties:
         ouders:
           oneOf:
-            - $ref: "#/components/schemas/IngeschrevenNatuurlijkPersoon_gerelateerde"
-            - $ref: "#/components/schemas/AnderNatuurlijkPersoon"
+            - $ref: "#/components/schemas/IngeschrevenPersoon_gerelateerde"
+            - $ref: "#/components/schemas/AnderPersoon"
     Partner_relatie_embedded:
       type: "object"
       properties:
         partners:
           oneOf:
-            - $ref: "#/components/schemas/IngeschrevenNatuurlijkPersoon_gerelateerde"
-            - $ref: "#/components/schemas/AnderNatuurlijkPersoon"
+            - $ref: "#/components/schemas/IngeschrevenPersoon_gerelateerde"
+            - $ref: "#/components/schemas/AnderPersoon"
     Kind_relatie_embedded:
       type: "object"
       properties:
         kinderen:
-          oneOf:
-            - $ref: "#/components/schemas/IngeschrevenNatuurlijkPersoon_gerelateerde"
-            - $ref: "#/components/schemas/AnderNatuurlijkPersoon"
+           oneOf:
+            - $ref: "#/components/schemas/IngeschrevenPersoon_gerelateerde"
+            - $ref: "#/components/schemas/AnderPersoon"
     Bewoning_embedded:
       type: "object"
       properties:
