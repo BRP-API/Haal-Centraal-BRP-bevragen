@@ -61,8 +61,8 @@ Zoeken op geboorteplaats is case-insensitive.
   Bijvoorbeeld zoeken met geboorteplaats=sas van gent vindt alleen personen die zijn geboren in Sas van Gent.
 
 Zie [Zoeken met diakrieten](algemene_werking_api.md#zoeken-met-diakrieten).
-  Bijvoorbeeld zoeken met geboorteplaats=malmo vint personen die zijn geboren in Malmo of Malmö.
-  Bijvoorbeeld zoeken met geboorteplaats=malmö vint personen die zijn geboren in Malmö, geen personen die geboren zijn in Malmo.
+  Bijvoorbeeld zoeken met geboorteplaats=malmo vindt personen die zijn geboren in Malmo of Malmö.
+  Bijvoorbeeld zoeken met geboorteplaats=malmö vindt personen die zijn geboren in Malmö, geen personen die geboren zijn in Malmo.
 
 ### Ik wil ingeschreven natuurlijk personen zoeken op de verblijfplaats
 Het is mogelijk ingeschreven personen te zoeken die op een adres verblijven. Het gaat hier om ingeschreven natuurlijk personen die het opgegeven adres als actuele verblijfplaats hebben.

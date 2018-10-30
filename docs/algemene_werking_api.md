@@ -121,11 +121,14 @@ Het zoeken op een enumeratie is wél case-sensitive.
   Bijvoorbeeld zoeken op geslachtsaanduiding=v levert een foutmelding.
 
 ## Zoeken met diakrieten
-Wanneer een diakriet wordt opgegeven, wordt deze ook gebruikt.
+Wanneer een diakriet wordt opgegeven, wordt deze ook gebruikt. Dit geldt voor alle attributen die gedefinieerd zijn als string.
   Bijvoorbeeld zoeken op "Stöcker" vindt wel "Stöcker", maar niet "Stocker".
 
 Wanneer geen diakriet wordt opgegeven, worden equivalente diakrieten ook gevonden.
   Bijvoorbeeld zoeken op "Stocker" vindt "Stocker" én "Stöcker".
+
+Wanneer er een pattern is gedefinieerd op een attribuut, moet de invoer inclusief de eventuele diakrieten voldoen aan het patroon.
+  Bijvoorbeeld zoeken op postcode=1234äB levert een foutmelding, want dit voldoet niet aan het patroon "^[1-9]{1}[0-9]{3}[A-Z]{2}".
 
 ## Pagineren
 Het maximaal aantal zoekresultaten per zoekvraag op zoekvragen wordt beperkt. Voor alle zoekvragen in deze API wordt daarom paginering toegepast.
