@@ -64,6 +64,21 @@ Zie [Zoeken met diakrieten](algemene_werking_api.md#zoeken-met-diakrieten).
   Bijvoorbeeld zoeken met geboorteplaats=malmo vindt personen die zijn geboren in Malmo of Malmö.
   Bijvoorbeeld zoeken met geboorteplaats=malmö vindt personen die zijn geboren in Malmö, geen personen die geboren zijn in Malmo.
 
+#### Zoeken met wildcard
+Bij het zoeken op **geslachtsnaam** en **voornamen** *mag* een wildcard worden gebruikt. Voor de overige zoek-parameters wordt zoeken met wildcard *NIET* ondersteund.
+
+Zie [Zoeken met een wildcard](algemene_werking_api.md#zoeken-met-een-wildcard) voor de werking van zoeken met een wildcard.
+
+#### Zoeken op onvolledige datum
+Bij het zoeken op geboortedatum mag *GEEN* onvolledige datum worden gebruikt.
+De datum waarop gezocht wordt moet een volledige en geldige datum zijn.
+  Bijvoorbeeld zoeken op geboortedatum "2001-11" levert een foutmelding.
+  Bijvoorbeeld zoeken op geboortedatum "2001-11-00" levert een foutmelding.
+  Bijvoorbeeld zoeken op geboortedatum "2001-11-??" levert een foutmelding.
+  Bijvoorbeeld zoeken op geboortedatum "2001-11-31" levert een foutmelding.
+
+In het antwoord kunnen wel onvolledige datums worden teruggegeven. Zie [Algemene werking van de API | Onvolledige datums](algemene_werking_api.md#onvolledige-datums).
+
 ### Ik wil ingeschreven natuurlijk personen zoeken op de verblijfplaats
 Het is mogelijk ingeschreven personen te zoeken die op een adres verblijven. Het gaat hier om ingeschreven natuurlijk personen die het opgegeven adres als actuele verblijfplaats hebben.
 
@@ -105,6 +120,11 @@ Hier moeten minimaal de woonplaatsnaam, naamopenbareruimte en huisnummer een waa
 Bijvoorbeeld zoeken met woonplaatsnaam=rotterdam&naamopenbareruimte=coolsingel&huisnummer=101 levert zoekresultaten terug.
 Bijvoorbeeld zoeken met woonplaatsnaam=rotterdam&naamopenbareruimte=coolsingel&huisnummer=101&huisletter=B levert zoekresultaten terug.
 Bijvoorbeeld zoeken met naamopenbareruimte=coolsingel&huisnummer=101&huisletter=B levert een foutmelding.
+
+##### Zoeken met wildcard
+Bij het zoeken op **naamopenbareruimte** *mag* een wildcard worden gebruikt. Voor de overige zoek-parameters wordt zoeken met wildcard *NIET* ondersteund.
+
+Zie [Zoeken met een wildcard](algemene_werking_api.md#zoeken-met-een-wildcard) voor de werking van zoeken met een wildcard.
 
 ### Ik wil een ingeschreven natuurlijk persoon raadplegen
 Het is mogelijk de gegevens van een ingeschreven natuurlijk persoon te raadplegen. De ingeschreven natuurlijk persoon wordt geïdentificeerd (uri) door het burgerservicenummer van de persoon.

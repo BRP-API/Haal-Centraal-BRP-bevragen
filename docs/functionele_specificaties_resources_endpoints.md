@@ -53,21 +53,6 @@ Aanvullend kunnen de volgende parameters worden gebruikt:
 * fields: voor het filteren van welke attributen in het antwoord moeten worden opgenomen
 * expand: voor lazy loading van gerelateerde resources in het antwoord
 
-#### Zoeken met wildcard
-Bij het zoeken op **geslachtsnaam**, **voornamen** en **naamopenbareruimte** *mag* een wildcard worden gebruikt. Voor de overige zoek-parameters wordt zoeken met wildcard *NIET* ondersteund.
-
-Zie [Zoeken met een wildcard](algemene_werking_api.md#zoeken-met-een-wildcard) voor de werking van zoeken met een wildcard.
-
-#### Zoeken op onvolledige datum
-Bij het zoeken op geboortedatum mag *GEEN* onvolledige datum worden gebruikt.
-De datum waarop gezocht wordt moet een volledige en geldige datum zijn.
-  Bijvoorbeeld zoeken op geboortedatum "2001-11" levert een foutmelding.
-  Bijvoorbeeld zoeken op geboortedatum "2001-11-00" levert een foutmelding.
-  Bijvoorbeeld zoeken op geboortedatum "2001-11-??" levert een foutmelding.
-  Bijvoorbeeld zoeken op geboortedatum "2001-11-31" levert een foutmelding.
-
-In het antwoord kunnen wel onvolledige datums worden teruggegeven. Zie [Algemene werking van de API | Onvolledige datums](algemene_werking_api.md#onvolledige-datums).
-
 #### Overleden personen
 Default levert een zoekvraag **alleen personen op die nog in leven zijn**.
 Om ook overleden personen in het antwoord te krijgen, kan zoekparameter **inclusiefoverledenpersonen** worden gebruikt.
