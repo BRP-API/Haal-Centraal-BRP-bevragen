@@ -908,6 +908,8 @@ components:
           $ref: "#/components/schemas/Datum_onvolledig"
         landVanwaarIngeschreven:
           $ref: "#/components/schemas/Land_tabel"
+        verblijfBuitenland:
+          $ref: "#/components/schemas/VerblijfBuitenland"
         overlijden:
           $ref: "#/components/schemas/Overlijden"
         inOnderzoek:
@@ -1389,6 +1391,46 @@ components:
           $ref: "#/components/schemas/Nummeraanduiding_links"
         _embedded:
           $ref: "#/components/schemas/Nummeraanduiding_embedded"
+    VerblijfBuitenland:
+      type: "object"
+      description: "De gegevens over het verblijf in het buitenland Voor een ingezetene\
+        \ (die emigreert) kan dit het buitenlandse adres zijn dat vastgesteld is door\
+        \ een aangewezen bestuursorgaan of het voorlopige adres vastgesteld door een\
+        \ college. Zie ook attribuutsoort Bron adres buitenland van INGESCHREVEN NATUURLIJK\
+        \ PERSOON. Daarnaast kan ook het Nederlandse adres zijn van geprivilegieerden\
+        \ (diplomaten etc)."
+      required:
+      - "landVerblijfadres"
+      properties:
+        adresRegelBuitenland1:
+          type: "string"
+          title: "Adres regel buitenland 1"
+          description: "Het eerste deel van het adres in het buitenland dat het SUBJECT\
+            \ opgeeft bij vertrek naar het buitenland dan wel waar het SUBJECT in\
+            \ het buitenland verblijft. Het attribuutsoort is ontleend aan de GBA,\
+            \ betreft het eerste deel van het actuele verblijfs- of bezoekadres in\
+            \ het buitenland en geldt hier ook voor niet-natuurlijke personen en vestigingen."
+          maxLength: 35
+        adresRegelBuitenland2:
+          type: "string"
+          title: "Adres regel buitenland 2"
+          description: "Het tweede deel van het adres in het buitenland dat het SUBJECT\
+            \ opgeeft bij vertrek naar het buitenland dan wel waar het SUBJECT in\
+            \ het buitenland verblijft. Het attribuutsoort is ontleend aan de GBA,\
+            \ betreft het eerste deel van het actuele verblijfs- of bezoekadres in\
+            \ het buitenland en geldt hier ook voor niet-natuurlijke personen en vestigingen."
+          maxLength: 35
+        adresRegelBuitenland3:
+          type: "string"
+          title: "Adres regel buitenland 3"
+          description: "Het derde deel van het adres in het buitenland dat het SUBJECT\
+            \ opgeeft bij vertrek naar het buitenland dan wel waar het SUBJECT in\
+            \ het buitenland verblijft. Het attribuutsoort is ontleend aan de GBA,\
+            \ betreft het eerste deel van het actuele verblijfs- of bezoekadres in\
+            \ het buitenland en geldt hier ook voor niet-natuurlijke personen en vestigingen."
+          maxLength: 35
+        landVerblijfadres:
+          $ref: "#/components/schemas/Land_tabel"
     Overlijden:
       type: "object"
       description: "Gegevens over het overlijden van de ingeschreven natuurlijk persoon.\
