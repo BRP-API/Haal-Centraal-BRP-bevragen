@@ -403,7 +403,7 @@ paths:
                 $ref: '#/components/schemas/Foutbericht'
       tags: 
       - reisdocumenten
-  /bewoningen:
+  /historie/bewoningen:
     get:
       operationId: bewoningen
       description: "Het ophalen van de gegevens van een collectie Bewoningen. Een bewoning is een VERBLIJFPLAATS waar op enig moment daadwerkelijk minimaal 1 INGESCHREVEN PERSOON is ingeschreven Op basis van de parameters wordt een meerdere bewoningen geretourneerd inclusief de bewoners van het betreffende verblijfplaats. Het resultaat bevat de verblijfsplaatshistorie waarvan de EINDdatumgeldigheidverblijfsplaats op of na de datumVan ligt EN de BEGINdatum op of voor de DatumTotEnMet ligt. Of Het resultaat bevat de verblijfsplaats historie waarvan de begindatumgeldigheidverblijfsplaats voor op op de geldigOp ligt en de eindatumgeldigheidverblijfsplaats na of op de geldigOp ligt. Als geldigOp is ingevuld mogen datumVan en datumTotenMet nietingevuld zijn."
