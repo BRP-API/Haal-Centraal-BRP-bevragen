@@ -523,7 +523,7 @@ paths:
                  _embedded:
                    type: object
                    properties:
-                     historie:
+                     bewoningen:
                        type: array
                        items:
                          $ref: '#/components/schemas/Bewoning'
@@ -614,7 +614,7 @@ paths:
                  _embedded:
                    type: object
                    properties:
-                     historie:
+                     verblijfsplaatsen:
                        type: array
                        items:
                          $ref: '#/components/schemas/Verblijfplaatsen'
@@ -692,7 +692,7 @@ paths:
                  _embedded:
                    type: object
                    properties:
-                     historie:
+                     portners:
                        type: array
                        items:
                          $ref: '#/components/schemas/Partners'
@@ -770,7 +770,7 @@ paths:
                  _embedded:
                    type: object
                    properties:
-                     historie:
+                     verblijfstitels:
                        type: array
                        items:
                          $ref: '#/components/schemas/Verblijfstitels'
