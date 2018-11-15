@@ -1,0 +1,34 @@
+burgerservicenummer;geslachtsnaam;voornamen;voorvoegselGeslachtsnaam;aanduidingAanschrijving;adellijkeTitel_predikaat;geslachtsaanduiding;geboortedatum;geboorteplaats;datumOverlijden;postcode;naamOpenbareRuimte;huisnummer;huisletter;huisnummertoevoeging;gemeenteVanInschrijving;partner;kinderen
+999999011;Groen;Frank;van;;null;M;01-01-75;Sas van Gent;null;9744CZ;Beatrixstraat;5;null;null;0014;;
+999999023;Groenlo;Franka;null;V;null;V;;;null;2628HJ;Sint Aldegondestraat;2;A;to;0503;999999047;999999084
+999999035;Groenink;Johan Frank Robert;null;P;null;O;;;null;;;;;;0518;999999060;
+999999047;Groenen;Franklin;null;E;null;M;;;null;2595AK;Prinses Beatrixlaan;21;null;null;0518;999999023;
+999999059;Groenen;Franky;null;;null;M;1975-01-??;Amsterdam;null;2595AK;Prinses Beatrixlaan;21;null;null;0518;;
+999999060;Groenen;Franka;null;N;null;V;1975-??-??;Sas van Gent;23-01-19;2595AK;Prinses Beatrixlaan;21;null;null;0518;999999035;
+999999072;Groenen;Theo Philip IJsbrand;null;E;null;;;;;;;;;;;;
+999999084;Groenen;Anne-Fleur Belle;null;E;null;;;;;;;;;;;;
+999999096;;;;;;;;;;;;;;;;;
+999999102;Veld;Henk;in het;E;null;;;;;;;;;;;999999114;
+999999114;Velzen;Ingrid;van;N;null;;;;;;;;;;;999999102;
+999999126;Veld;Suzanne;in het;P;null;;;;;;;;;;;999999138;
+999999138;Velzen;Fred;van;V;null;;;;;;;;;;;999999126;
+999999151;Veen;Johannus;van der;E;null;;;;;;;;;;;555555719;
+999999163;Veen;Anna Cornelia;van der;N;null;;;;;;;;;;;555555379;
+999999175;Veen;Ruud;van der;P;null;;;;;;;;;;;555555112;
+999999187;Veen;Maria;van der;V;null;;;;;;;;;;;555555021;
+999999199;Berg;Sjaak;van der;E;null;;;;;;;;;;;555555926;
+999999205;Berg;Peter;van der;N;null;;;;;;;;;;;555555938;
+999999217;Berg;Marlies;van der;P;null;;;;;;;;;;;555555951;
+999999229;Berg;Fleur;van der;V;null;;;;;;;;;;;555555914;
+555555021;Aedel;Hendrik Willem;van den;E;G;;;;;;;;;;;999999187;
+555555112;Aedel;Wilhelmina;van den;N;GI;;;;;;;;;;;999999175;
+555555379;Aedel;Frederique;van den;P;M;;;;;;;;;;;999999163;
+555555719;Aedel;Emma Louise;van den;V;HI;;;;;;;;;;;999999151;
+555555914;Hoogh;Tim;van;E;JH;;;;;;;;;;;999999229;
+555555926;Hoogh;Charlotte;van;N;JV;;;;;;;;;;;999999199;
+555555938;Hoogh;Belle;van;P;JV;;;;;;;;;;;999999205;
+555555951;Hoogh;Erik;van;V;JH;;;;;;;;;;;999999217;
+555555963;Aedel;Constantijn;van den;N;B;;;;;;;;;;;555555987;
+555555975;Aedel;Irene;van den;V;MI;;;;;;;;;;;555555999;
+555555987;Stand;Elisabeth;van;V;BS;;;;;;;;;;;555555963;
+555555999;Stand;Karel;van;E;R;;;;;;;;;;;555555975;
