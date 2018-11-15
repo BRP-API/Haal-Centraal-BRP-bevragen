@@ -42,4 +42,5 @@ Deze uitgangssituatie(s) gedefinieerd in "Background" of "Gegeven" zijn in de te
 De test veronderstelt ook dat de verwachte resultaten op (pagina 1 van) de zoekvraag terugkomt. Er mag dus niet (significant) meer data zijn die aan de zoekvragen voldoet dan in de test is beschreven.
 
 ## testuitvoering
+In steps/config.py kan de base url van de api worden gewijzigd.
 De test wordt vanuit de basis map (/test) uitgevoerd met de opdracht "behave --lang nl"
