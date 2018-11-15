@@ -67,8 +67,10 @@ Het embedded van gerelateerde resources moet bewust worden gebruikt.
 
 ## Relaties kunnen maximaal één niveau diep worden embed
 Door het gebruik van de parameter expand kunnen relaties/gerelateerde resources worden embed in het antwoord. Relaties van de embedde gerelateerde resource worden alleen als link opgenomen, maar kunnen zelf niet embed worden.
+Uitzondering is wanneer de relatie een relatieklasse heeft. In dat geval wordt ook de gerelateerde opgenomen in de embed.
 
 Het is dus bijvoorbeeld niet mogelijk in één call van een persoon de details van de kinderen te krijgen inclusief details van de partners van de kinderen.
+Het is wel mogelijk de details van het huwelijk/partnerschap te krijgen inclusief de details van de partner.
 
 *Ratio*
 Implementatie en gebruik eenvoudig houden.
@@ -200,10 +202,10 @@ Via deze endpoints kan de historie op het betreffende aspect opgevraagd worden.
 Er kan gekozen worden om de status op peildatum te raadplegen met de queryparameter geldigOp.
 Er kan gekozen worden de historische voorkomens te raadplegen binnen een periode met queryparameters periodevan en periodetot.
 
-Het antwoordbericht van /verblijfplaatshistorie bevat het property burgerservicenummer van de ingeschreven natuurlijk persoon, plus _links en _embedded met de historische voorkomens van de verblijfplaats. Hierin zitten ook de properties periodeVan en periodeTotEnMet.
+Het antwoordbericht van /verblijfplaatshistorie bevat het property burgerservicenummer van de ingeschreven natuurlijk persoon, plus \_links en \_embedded met de historische voorkomens van de verblijfplaats. Hierin zitten ook de properties periodeVan en periodeTotEnMet.
 Het antwoordbericht van /verblijfstitelhistorie bevat de historische voorkomens van de property verblijfstitel van de ingeschreven natuurlijk persoon en de properties periodeVan en periodeTotEnMet.
-Het antwoordbericht van /partnerhistorie bevat het property burgerservicenummer van de ingeschreven natuurlijk persoon, plus _links en _embedded met de historische voorkomens van de partner. Hierin zitten ook de properties periodeVan en periodeTotEnMet.
-Het antwoordbericht van /bewonershistorie bevat de lijst voorkomens met elk de properties periodeVan en periodeTotEnMet, plus _links en _embedded met het betreffende verblijfsadres met de relatie naar de betreffende bewoners (resource ingeschreven natuurlijke persoon). De bewonershistorie kan worden gezocht met dezelfde queryparameters als voor resource bewoners.
+Het antwoordbericht van /partnerhistorie bevat het property burgerservicenummer van de ingeschreven natuurlijk persoon, plus \_links en \_embedded met de historische voorkomens van de partner. Hierin zitten ook de properties periodeVan en periodeTotEnMet.
+Het antwoordbericht van /bewonershistorie bevat de lijst voorkomens met elk de properties periodeVan en periodeTotEnMet, plus \_links en \_embedded met het betreffende verblijfsadres met de relatie naar de betreffende bewoners (resource ingeschreven natuurlijke persoon). De bewonershistorie kan worden gezocht met dezelfde queryparameters als voor resource bewoners.
 
 ## Elementnamen die verwijzen naar een resource die maximaal 1 keer kan voorkomen worden enkelvoud.
 
@@ -228,3 +230,15 @@ Wanneer er functionele behoefte is aan deze gegevens moeten deze bij de betreffe
 
 *Ratio*
 We bevragen gegevens bij de bron. Een bron kan alleen gegevens leveren die ze zelf heeft.
+
+## Bij polymorfe relaties moet het type van de gerelateerde worden opgenomen
+Bij de relaties kinderen, ouders en partners kan de gerelateerde een ingeschreven persoon zijn of een ander persoon (niet-ingeschreven). Het is dan voor de ontvanger niet direct duidelijk welk type gerelateerde ontvangen wordt.
+
+Daarom wordt het type opgenomen als attribuut conform: https://github.com/VNG-Realisatie/gemma-zaken/blob/master/docs/content/developers/design-keuzes.md#omgang-met-polymorfe-resources
+
+Voor ouders wordt dit "ouderType".
+Voor kinderen wordt dit "kindType".
+Voor partners wordt dit "partnerType".
+
+Deze attributen worden gedefinieerd als enumeratie met mogelijke waarden "ingeschreven persoon", "ander persoon".
+Deze attributen worden toegevoegd in de nested resource voor de relatie.
