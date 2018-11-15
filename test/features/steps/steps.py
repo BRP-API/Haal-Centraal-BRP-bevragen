@@ -107,6 +107,19 @@ def step_impl(context, attribuut, waarde):
     assert resourceFound
 
 
+@then('wordt geen ingeschreven persoon gevonden met {attribuut}={waarde}')
+def step_impl(context, attribuut, waarde):
+    resource = 'ingeschrevennatuurlijkpersonen'
+    responsebody = context.response.json()
+    collection = GetCollection(responsebody, resource)
+    assert collection is not None
+
+    for item in collection:
+        attribuutWaarde = GetAttribute(item, attribuut)
+
+        assert attribuutWaarde is not None and attribuutWaarde == waarde
+
+
 @then('voldoet elke van de gevonden {resource} aan de query {attribuut}={querywaarde}')
 def step_impl(context, resource, attribuut, querywaarde):
     responsebody = context.response.json()
