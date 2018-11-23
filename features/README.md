@@ -1,7 +1,9 @@
-# Test
-De hier opgenomen tests zijn bedoeld om een provider van de API te testen in de correcte werking op:
-- user stories
+# Behaviour driven specificatie en tests
+De hier opgenomen tests zijn bedoeld als:
 - functionele specificaties
+- test om een provider van de API te testen in de correcte werking op:
+  - user stories
+  - functionele specificaties
 
 Doel van de test is dat:
 * aangetoond wordt dat de referentie-implementatie van de provider voldoet aan de standaard
@@ -10,7 +12,12 @@ Doel van de test is dat:
 * de beheerder(s) van de standaard en belanghebbenden de dekking van de test kunnen begrijpen
 * developers van een client kunnen zien hoe de API werkt/moet werken in verschillende grenssituaties en foutsituaties
 
-De test is functioneel gedefinieerd in [Gherkin](https://docs.cucumber.io/gherkin/reference/). Hiermee kan in menselijke taal de test worden gedefinieerd. De test is in de *Nederlandse taal* gedefinieerd. Structuur wordt aangegeven via de sleutelwoorden "Functionaliteit", "Achtergrond", "Scenario", "Gegeven", "Als", "Dan" en "En", "Abstract Scenario" en "Voorbeelden".
+De specificatie/test is gespecificeerd in documenten per functionaliteit. Per functionaliteit is een korte beschrijving van de functionaliteit opgenomen plus scenario's die de gewenste werking van de functionaliteit toelichten en demonstreren.
+
+De specificatie/test is functioneel gedefinieerd in [Gherkin](https://docs.cucumber.io/gherkin/reference/). Hiermee kan in menselijke taal de specificatie/test worden opgesteld.
+De test is in de *Nederlandse taal* gedefinieerd.
+
+Structuur wordt aangegeven via de sleutelwoorden "Functionaliteit", "Achtergrond", "Scenario", "Gegeven", "Als", "Dan" en "En", "Abstract Scenario" en "Voorbeelden".
 
 | Sleutelwoord      | Engels equivalent | Betekenis                                   |
 | ----------------- | ----------------- | ------------------------------------------- |
