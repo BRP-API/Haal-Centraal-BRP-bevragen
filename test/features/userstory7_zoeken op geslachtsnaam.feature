@@ -134,6 +134,7 @@ Functionaliteit: ALS gemeente wil ik ingeschreven personen kunnen zoeken op gesl
     DAN levert dit zoekresultaten
     ALS ingeschreven personen gezocht worden met ?geslachtsnaam=ve*
     DAN levert dit zoekresultaten
+    # foutmelding (http code 400 + invalid-params)
 
   Scenario: Zoeken een zoekwaarde die niet voldoet aan de parameterspecificatie levert een foutmelding
     # Invoer te lang
