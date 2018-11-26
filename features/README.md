@@ -1,11 +1,9 @@
 # Behaviour driven specificatie en tests
-De hier opgenomen tests zijn bedoeld als:
-- functionele specificaties
-- test om een provider van de API te testen in de correcte werking op:
-  - user stories
-  - functionele specificaties
+Het doel is:
+- functionele werking van de api specificeren en illustreren
+- test om een provider van de API te testen
 
-Doel van de test is dat:
+De test helpt erbij dat:
 * aangetoond wordt dat de referentie-implementatie van de provider voldoet aan de standaard
 * een leverancier van een/de provider kan testen dat zijn applicatie voldoet aan de standaard
 * de test gebruikt kan worden voor een compliancy test op de standaard
@@ -35,7 +33,7 @@ De Gherkin testscenario's worden opgenomen in de map /features. Voor elke functi
 
 De implementatie van de testuitvoering is gebouwd in [Behave](https://behave.readthedocs.io/en/latest/). Behave is een Python implementatie van [Cucumber](https://cucumber.io). De implementatie wordt gemaakt in /features/steps/steps.py.
 
-Met deze opzet van de test wordt [Behaviour Driven Development (BDD)](https://docs.cucumber.io/bdd) ondersteund.
+Met deze opzet van de specificatie/test wordt [Behaviour Driven Development (BDD)](https://docs.cucumber.io/bdd) ondersteund.
 
 ## Requirements
 Om de test uit te kunnen voeren moeten de volgende requirements zijn ingevuld:

@@ -1,10 +1,14 @@
 # Test van endpoint /ingeschrevennatuurlijkpersonen op benodigde combinaties van query parameters
 
-Functionaliteit: bij zoeken moet tenminste gezocht worden met
-# OF geslachtsnaam + geboortedatum
-# OF postcode + huisnummer
-# OF gemeentevaninschrijving + openbareruimtenaam + huisnummer
-# OF identificatiecodenummeraanduiding
+Functionaliteit: bij zoeken moet tenminste gezocht worden met bepaalde parameters
+  Bij het zoeken moet ten minste één van de volgende combinaties van parameters aanwezig zijn.
+  - geslachtsnaam + geboortedatum
+  - postcode + huisnummer
+  - gemeentevaninschrijving + openbareruimtenaam + huisnummer
+  - identificatiecodenummeraanduiding
+
+  Het is mogelijk bovenop deze parameters alle toegestane parameters te gebruiken om de zoekresultaten verder in te perken.
+
 
   Scenario: Er kan niet gezocht worden zonder zoekparameters
     Als ingeschreven personen gezocht worden zonder parameters
@@ -40,54 +44,3 @@ Functionaliteit: bij zoeken moet tenminste gezocht worden met
   Scenario: Er kan gezocht worden op postcode + huisnummer + optioneel andere zoekparameters
 
   Scenario: Er kan gezocht worden met de volgende optionele zoekparameters: ...
-
-
-  # Foutafhandeling -->
-
-  # Fields en Expand
-  Functionaliteit: Filteren van antwoord inhoud met fields parameter
-    Scenario: enkel attribuut
-
-    Scenario: meerdere attributen
-
-    Scenario: groepsattribuut
-      gegeven er een persoon de Vries
-      naam
-      DAN krijg ik naam.geslachtsnaam, naam.voornamen, naam.aanschrijfwijze, ...
-
-    Scenario: attributen binnen een groep
-      naam.geslachtsnaam
-
-    Scenario: relatie (links)
-      ouders
-      partners
-      kinderen
-
-    Scenario: altijd self link
-
-  Functionaliteit: direct meekrijgen van nested resource (subresource) via expand parameter
-
-  Functionaliteit: er worden alleen actuele partners teruggegeven
-    Gegeven persoon heeft ex-partner en actuele partner
-    DAN krijgen we alleen de actuele partner
-
-    Gegeven persoon heeft ex-partner, geen actuele partner
-    DAN krijgen we geen partner(s)
-
-    Gegeven persoon heeft twee actuele partners en één ex-partner
-    DAN krijgen we de twee actuele partners, geen ex-partner
-
-  Functionaliteit: in onderzoek
-    # Een categorie kan in zijn geheel in onderzoek zijn, maar er kunnen ook individuele attributen binnen de categorie in onderzoek zijn
-    Scenario: hele categorie in onderzoek
-    ALS een hele categorie in onderzoek is
-    DAN komen in het antwoord alle attributen van de categorie voor en hebben de waarde True
-
-  Functionaliteit: historie wordt gesorteerd op geldigheid met meest actuele bovenaan
-    Scenario: partnerhistorie wordt aflopend gesorteerd op geldigVan
-
-    Scenario: verblijfplaatshistorie wordt aflopend gesorteerd op geldigVan
-
-    Scenario: verblijfstitelhistorie wordt aflopend gesorteerd op geldigVan
-
-    Scenario: bij bewoningen worden de bewoners aflopend gesorteerd op geldigVan
