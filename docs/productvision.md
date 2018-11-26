@@ -3,22 +3,6 @@
 ## Introductie
 Voor de beweging richting gegevenslandschap is er behoefte aan API’s voor het bevragen van gegevens bij de bron. Op korte termijn is er daarbij grote behoefte aan het kunnen bevragen van persoonsgegevens. Dit koppelvlak beschrijft een API voor het zoeken en opvragen van ingeschreven  personen.
 
-### Toegevoegde waarde voor gemeenten
-- Kortere doorlooptijd van het inrichten van nieuwe koppelingen (plug and play is veelgehoorde wens)
-- Lagere ontwikkelkosten van koppelingen
-- Lagere beheerkosten door backwards compatibiliteit (wijzigingen in de standaard leiden meestal niet tot aanpassingen in bestaande koppelingen)
-- Voorkomen lock-in door echt uitwisselbare componenten
-- Een herbruikbare, plug and play API waarmee in apps en applicaties de persoonsgegevens  consistent gebruikt kunnen worden
-
-### Toegevoegde waarde voor leveranciers
-- Lagere ontwikkelkosten van het koppelvlak
-- Kunnen zich onderscheiden op onderdelen die burgers, bedrijven en medewerkers raken (i.p.v. te concurreren op infrastructuur)
-
-### Toegevoegde waarde voor VNG Realisatie
-- Beheer van de standaard is eenvoudiger doordat aanpassingen gemakkelijker zijn door te voeren
-- Kwaliteitscontrole van koppelvlakken van leveranciers is eenvoudiger en daarmee goedkoper
-- Backwards compatibiliteit is eenvoudiger te behouden
-
 ## Context
 In 2017 is koppelvlakstandaard [RSGB-bevragingen 1.0](https://www.gemmaonline.nl/index.php/RSGB_Bevragingen) ontwikkeld en vastgesteld, met daarin een aantal geïnventariseerde vragen op RSGB. Deze versie is gebaseerd op informatiemodel RSGB 2.0. Technisch bestaat deze standaard uit een SOAP/XML (niet StUF) variant en een RPC/JSON variant.
 
