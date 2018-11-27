@@ -1,7 +1,24 @@
 # Productvisie Bevragingen ingeschreven personen
 
 ## Introductie
-Voor de beweging richting gegevenslandschap is er behoefte aan API’s voor het bevragen van gegevens bij de bron. Op korte termijn is er daarbij grote behoefte aan het kunnen bevragen van persoonsgegevens. Dit koppelvlak beschrijft een API voor het zoeken en opvragen van ingeschreven  personen.
+Voor de beweging richting gegevenslandschap is er behoefte aan API’s voor het bevragen van gegevens bij de bron. Op korte termijn is er daarbij grote behoefte aan het kunnen bevragen van persoonsgegevens.
+
+Deze API standaard bevat functionaliteit voor het zoeken en opvragen van ingeschreven personen. Dit betreft zowel ingezeten ingeschreven personen uit het GBA als neit-ingezeten ingeschreven personen uit het RNI.
+
+De API levert geen functionaliteit voor:
+•	Asynchrone bevragingsdiensten
+•	Bewerkingsdiensten (toevoegen, verwijderen en wijzigen)
+•	‘Fuzzy search ’zoekunctionaliteit (CQRS patroon zoals ElasticSearch)
+
+De API standaard bestaat uit twee delen:
+1. Zoeken en raadplegen van actuele gegevens van ingeschreven personen
+  - Zoeken op naam van de persoon
+  - Zoeken op verblijfplaats van de persoon (postcode/huisnummer of adres of nummeraanduiding)
+2. Zoeken en raadplegen van historische gegevens van ingeschreven personen
+  - Zoeken van de bewoning van een verblijfadres gedurende een periode of op een peildatum
+  - Raadplegen van het verblijfadres van een persoon gedurende een periode of op een peildatum
+  - Raadplegen van de partnerschappen (huwelijk of geregistreerd partnerschap) van een persoon gedurende een periode of op een peildatum
+  - Raadplegen van de verblijfstitel van een persoon gedurende een periode of op een peildatum
 
 ## Context
 In 2017 is koppelvlakstandaard [RSGB-bevragingen 1.0](https://www.gemmaonline.nl/index.php/RSGB_Bevragingen) ontwikkeld en vastgesteld, met daarin een aantal geïnventariseerde vragen op RSGB. Deze versie is gebaseerd op informatiemodel RSGB 2.0. Technisch bestaat deze standaard uit een SOAP/XML (niet StUF) variant en een RPC/JSON variant.
