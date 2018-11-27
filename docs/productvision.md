@@ -3,7 +3,9 @@
 ## Introductie
 Voor de beweging richting gegevenslandschap is er behoefte aan API’s voor het bevragen van gegevens bij de bron. Op korte termijn is er daarbij grote behoefte aan het kunnen bevragen van persoonsgegevens.
 
-Deze API standaard bevat functionaliteit voor het zoeken en opvragen van ingeschreven personen. Dit betreft zowel ingezeten ingeschreven personen uit het GBA als neit-ingezeten ingeschreven personen uit het RNI.
+Deze API standaard bevat functionaliteit voor het zoeken en opvragen van ingeschreven personen. Dit betreft zowel ingezeten ingeschreven personen uit het GBA als niet-ingezeten ingeschreven personen uit het RNI.
+
+De API levert alleen personen en gegevens van personen die zoals die geregistreerd staan in de BRP/GBA.
 
 De API levert geen functionaliteit voor:
 •	Asynchrone bevragingsdiensten
