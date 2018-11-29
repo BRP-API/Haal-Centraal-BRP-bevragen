@@ -1,23 +1,54 @@
 # User story #13
-# Test het algoritme voor het samenstellen van attribuut aanschrijfwijze
-# Zie de [specificatie van het algotitme](https://github.com/VLG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/api-specificatie/Aanschijfwijze%20opstellen.md).
-
-# In onderstaande tabellen betekenen de afkortingen:
-# VL = voorletters
-# VV = voorvoegselGeslachtsnaam
-# GN = geslachtsnaam
-# VP = voorvoegselGeslachtsnaam partner
-# GP = geslachtsnaam partner
-# AT = adelijke titel
-# PK = predikaat
 
 Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze van mijn burgers
+  Attribuut aanschrijfwijze bij een ingeschreven persoon wordt gevuld door de provider om op deze wijze op eenduidige wijze een persoon te kunnen aanschrijven. Bij het samenstellen van de aanschrijfwijze worden academische titels vooralsnog niet opgenomen. Academische titels zijn geen authentiek gegeven en daarom buiten scope geplaatst.
+
+  Attribuut aanschrijfwijze wordt samengesteld op basis van:
+  * voornamen (wordt omgezet naar voorletters)
+  * voorvoegselGeslachtsnaam
+  * geslachtsnaam
+  * voorvoegselGeslachtsnaam partner
+  * geslachtsnaam partner
+  * aanduidingAanschrijving
+  * adellijkeTitel_predikaat
+
+  De waarde van aanduidingAanschrijving bepaalt hoe de aanschrijfwijze wordt samengesteld uit de naam van de persoon en de naam van de partner. Zie de tabel "Voorbeelden: met tussenvoegsel" en "Voorbeelden: met tussenvoegsel" hieronder.
+
+  Wanneer er geen tussenvoegsel is, wordt deze niet opgenomen. Er zit dan één spatie tussen de voorletters en de geslachtsnaam. Zie de tabel "Voorbeelden: met tussenvoegsel" en "Voorbeelden: met tussenvoegsel" hieronder.
+
+  De voorletters worden opgenomen als één (1) voorletter per voornaam, gevolgd door een punt (.).
+  ALS een voornaam een samengestelde naam is gescheiden door een koppelteken (-), DAN wordt deze voornaam (ook) afgekort tot één voorletter.
+  ALS een voornaam  begint met een dubbelklank (Th, Ph, Ch, IJ, enz.), DAN wordt deze voornaam (ook) afgekort tot één voorletter.
+  ALS de rubriek Voornamen is gevuld met de standaardwaarde '.' (punt), DAN wordt geen extra (scheidings)punt toegevoegd; de inhoud van de attribuut voorletters is na afleiding dan '.'
+  Zie de tabel "Voorbeelden: voornamen naar voorletters".
+
+  Op basis van attribuut adellijkeTitel_predikaat wordt het de adelijke titel of het predikaat toegevoegd in de aanschrijfwijze. Zie ook de tabel "Voorbeelden: adelijke titels en predikaat" hieronder.
+    ALS de betrokkene beschikt over een predikaat, DAN wordt deze geplaatst vóór de voorletters.
+    ALS de betrokkene over een adelijke titel beschikt, DAN wordt de adelijke titel geplaatst tussen voorletters en achternaam (tussenvoegsel en geslachtsnaam).
+    ALS de betrokkene beschikt over een predikaat, DAN wordt deze opgenomen zoals genoemd in kolom "Omschrijving" in GBA tabel 38 "Adellijke titel/predikaat".
+    ALS de betrokkene beschikt over een adelijke titel, DAN wordt deze opgenomen zoals genoemd in kolom "Omschrijving" in GBA tabel 38 "Adellijke titel/predikaat", geschreven in kleine letters.
+    ALS de echtgenoot/partner beschikt over een predikaat of adellijke titel, DAN wordt bij gebruik van de achternaam van de echtgenoot/partner het predikaat of de titel van de echtgenoot/partner niet meegenomen.
+    ALS betrokkene zelf beschikt over een adellijke titel, EN betrokkene gebruikt de achternaam van de echtgenoot/partner gevolgd door de eigen naam (aanduidingAanschrijving="V"), DAN wordt de titel van betrokkene voor de eigen achternaam geplaatst.
+    ALS betrokkene de achternaam van de echtgenoot/partnergebruikt (aanduidingAanschrijving="P"), DAN wordt het predikaat niet gebruikt.
+    ALS de betrokkene beschikt over een predikaat EN betrokkene gebruikt de achternaam van de echtgenoot/partner gevolgd door de eigen naam (aanduidingAanschrijving="V"), DAN wordt het predikaat niet gebruikt.
+
+  # Om de onderstaande scenario's te kunnen gebruiken in een geautomatiseerde test van de API, moeten bij de API bepaalde personen bekend zijn. Dit staat beschreven in "testdata.csv".
   Achtergrond:
     Gegeven de registratie ingeschreven personen kent zoals beschreven in testdata.csv
+
 
   Abstract Scenario: De aanschrijfwijze wordt samengesteld op basis van aanduidingAanschrijving en naamgegevens van de persoon en de partner
     ALS ingeschreven personen gezocht worden met ?geslachtsnaam=<geslachtsnaam>&voornamen=<voornamen>
     DAN heeft elke van de gevonden ingeschrevennatuurlijkpersonen naamgebruik.aanschrijfwijze=<aanschrijfwijze>
+
+    # In onderstaande tabellen betekenen de afkortingen:
+    # VL = voorletters
+    # VV = voorvoegselGeslachtsnaam
+    # GN = geslachtsnaam
+    # VP = voorvoegselGeslachtsnaam partner
+    # GP = geslachtsnaam partner
+    # AT = adelijke titel
+    # PK = predikaat
 
     Voorbeelden: met tussenvoegsel
       | aanduidingAanschrijving | samenstelling aanschrijfwijze | geslachtsnaam | voornamen | aanschrijfwijze |
@@ -26,7 +57,6 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | P | VL VP GP          | Veld   | Suzanne | S. van Velzen |
       | V | VL VP GP-VV GN    | Velzen | Fred    | F. in het Veld-van Velzen |
 
-    # Wanneer er geen tussenvoegsel is, wordt deze niet opgenomen. Er zit dan één spatie tussen de voorletters en de geslachtsnaam.
     Voorbeelden: zonder tussenvoegsel
       | aanduidingAanschrijving | samenstelling aanschrijfwijze | geslachtsnaam | voornamen | aanschrijfwijze |
       | E | VL GN    | Groenen  | Franklin           | F. Groenen |
@@ -34,24 +64,12 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | P | VL GP    | Groenink | Johan Frank Robert | J.F.R. Groenen |
       | V | VL GP-GN | Groenlo  | Franka             | F. Groenen-Groenlo |
 
-    # De voorletters worden opgenomen als één (1) voorletter per voornaam, gevolgd door een punt (.).
-    # ALS een voornaam een samengestelde naam is gescheiden door een koppelteken (-), DAN wordt deze voornaam (ook) afgekort tot één voorletter.
-    # ALS een voornaam  begint met een dubbelklank (Th, Ph, Ch, IJ, enz.), DAN wordt deze voornaam (ook) afgekort tot één voorletter.
-    # ALS de rubriek Voornamen is gevuld met de standaardwaarde '.' (punt), DAN wordt geen extra (scheidings)punt toegevoegd; de inhoud van de rubriek Voorletters is na afleiding dan '.'
     Voorbeelden: voornamen naar voorletters
       | testsituatie | geslachtsnaam | voornamen | aanschrijfwijze |
       | Voornaam met twee-letter klank        | Groenen  | Theo Philip IJsbrand | T.P.I. Groenen |
       | Dubbele voornaam met verbindingsteken | Groenen  | Anne-Fleur Belle     | A.B. Groenen |
       | Geen voornaam (punt)                  | Groenen  | .                    | . Groenen |
 
-    # ALS de betrokkene beschikt over een predikaat, DAN wordt deze geplaatst vóór de voorletters.
-    # ALS de betrokkene over een adelijke titel beschikt, DAN wordt de adelijke titel geplaatst tussen voorletters en achternaam (tussenvoegsel en geslachtsnaam).
-    # ALS de betrokkene beschikt over een predikaat, DAN wordt deze opgenomen zoals genoemd in kolom "Omschrijving" in GBA tabel 38 "Adellijke titel/predikaat".
-    # ALS de betrokkene beschikt over een adelijke titel, DAN wordt deze opgenomen zoals genoemd in kolom "Omschrijving" in GBA tabel 38 "Adellijke titel/predikaat", geschreven in kleine letters.
-    # ALS de echtgenoot/partner beschikt over een predikaat of adellijke titel, DAN wordt bij gebruik van de achternaam van de echtgenoot/partner het predikaat of de titel van de echtgenoot/partner niet meegenomen.
-    # ALS betrokkene zelf beschikt over een adellijke titel, EN betrokkene gebruikt de achternaam van de echtgenoot/partner gevolgd door de eigen naam, DAN wordt de titel van betrokkene voor de eigen achternaam geplaatst.
-    # ALS betrokkene gebruikt de achternaam van de echtgenoot/partner, DAN wordt het predikaat niet gebruikt.
-    # ALS betrokkene gebruikt de achternaam van de echtgenoot/partner gevolgd door de eigen naam, DAN wordt het predikaat niet gebruikt.
     Voorbeelden: adelijke titels en predikaat
       | adellijkeTitel_predikaat | adellijkeTitel_predikaat partner | aanduidingAanschrijving | samenstelling aanschrijfwijze | geslachtsnaam | voornamen | aanschrijfwijze |
       | -  | AT | E | VL VV GN          | Veen  | Johannes       | J. van der Veen |

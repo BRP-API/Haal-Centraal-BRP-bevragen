@@ -1,10 +1,10 @@
 burgerservicenummer;geslachtsnaam;voornamen;voorvoegselGeslachtsnaam;aanduidingAanschrijving;adellijkeTitel_predikaat;geslachtsaanduiding;geboortedatum;geboorteplaats;datumOverlijden;postcode;naamOpenbareRuimte;huisnummer;huisletter;huisnummertoevoeging;gemeenteVanInschrijving;partner;kinderen
-999999011;Groen;Frank;van;;null;M;01-01-75;Sas van Gent;null;9744CZ;Beatrixstraat;5;null;null;14;;
-999999023;Groenlo;Franka;null;V;null;V;;;null;2628HJ;Sint Aldegondestraat;2;A;to;503;999999047;999999084
-999999035;Groenink;Johan Frank Robert;null;P;null;O;;;null;;;;;;518;999999060;
-999999047;Groenen;Franklin;null;E;null;M;;;null;2595AK;Prinses Beatrixlaan;21;null;null;518;999999023;
-999999059;Groenen;Franky;null;;null;M;1975-01-??;Amsterdam;null;2595AK;Prinses Beatrixlaan;21;null;null;518;;
-999999060;Groenen;Franka;null;N;null;V;1975-??-??;Sas van Gent;23-01-19;2595AK;Prinses Beatrixlaan;21;null;null;518;999999035;
+999999011;Groen;Frank;van;;null;M;01-01-75;Sas van Gent;null;9744CZ;Beatrixstraat;5;null;null;0014;;
+999999023;Groenlo;Franka;null;V;null;V;26-05-83;Delft;null;2628HJ;Sint Aldegondestraat;2;A;to;0503;999999047;999999084
+999999035;Groenink;Johan Frank Robert;null;P;null;O;;;null;;;;;;0518;999999060;
+999999047;Groenen;Franklin;null;E;null;M;;;null;2595AK;Prinses Beatrixlaan;21;null;null;0518;999999023;
+999999059;Groenen;Franky;null;;null;M;1975-01-??;Amsterdam;null;2595AK;Prinses Beatrixlaan;21;null;null;0518;;
+999999060;Groenen;Franka;null;N;null;V;1975-??-??;Sas van Gent;23-01-19;2595AK;Prinses Beatrixlaan;21;null;null;0518;999999035;
 999999072;Groenen;Theo Philip IJsbrand;null;E;null;;;;;;;;;;;;
 999999084;Groenen;Anne-Fleur Belle;null;E;null;;;;;;;;;;;;
 999999096;Groenen;.;null;E;null;;;;;;;;;;;;
