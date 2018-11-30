@@ -4,9 +4,7 @@ Functionaliteit: endpoint /ingeschrevennatuurlijkpersonen
   Achtergrond:
     Gegeven de registratie ingeschreven personen kent zoals beschreven in testdata.csv
 
-  Scenario: Er kan niet gezocht worden zonder zoekparameters
-    Als ingeschreven personen gezocht worden zonder parameters
-    Dan levert dit een foutmelding
+
 
   Scenario: Als resultaat van de zoekvraag wordt een lijst gegeven van de gevonden ingeschreven personen
     # bevat _embedded met daarin ingeschrevennatuurlijkpersonen en daarin een lijst met 0..* objecten
