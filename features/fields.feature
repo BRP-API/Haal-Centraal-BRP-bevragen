@@ -21,19 +21,22 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
   Gevraagde attributen worden komma-gescheiden opgesomd. Bijvoorbeeld fields=burgerservicenummer,naam,geslachtsaanduiding.
   Gevraagde attributen kunnen in willekeurige volgorde worden opgenomen in de fields parameter. De volgorde waarin de gevraagde attributen worden opgesomd in de fields parameter heeft geen invloed op de volgorde waarin deze attributen worden opgenomen in het antwoord (volgorde is niet relevant in een json object).
 
-  Categorieën (groepen attributen) kunnen in gezamenlijk worden gevraagd door de naam van de categorie op te nemen in de fieldsparameter. In dat geval worden alle attributen van de categorie opgenomen in het antwoord, voor zover ze een waarde hebben. Bijvoorbeeld fields=burgerservicenummer,naam geeft naast het burgerservicenummer alle attributen van de naam (geslachtsnaam, voornamen, voorvoegsel, enz.) terug.
+  Categorieën (groepen attributen) kunnen in gezamenlijk worden gevraagd door de naam van de categorie op te nemen in de fields-parameter. In dat geval worden alle attributen van de categorie opgenomen in het antwoord, voor zover ze een waarde hebben. Bijvoorbeeld fields=burgerservicenummer,naam geeft naast het burgerservicenummer alle attributen van de naam (geslachtsnaam, voornamen, voorvoegsel, enz.) terug.
 
   Attributen binnen een categorie (een groep attributen) kunnen ook individueel worden bevraagd. De dot-notatie wordt gebruikt om specifieke velden van een categorie te selecteren. Bijvoorbeeld de voornamen, geboortedatum en geboorteplaats van een persoon kunnen worden opgevraagd via fields=naam.voornamen,geboorte.datum,geboorte.plaats.
 
   Gebruik van de fields parameter heeft geen invloed op eventueel meegeladen sub-resources. Dat wordt gestuurd via de expand parameter.
 
-  Wanneer de fieldsparameter wordt opgenomen zonder waarde, wordt een foutmelding gegeven.
-  Wanneer in de fieldsparameter namen zijn opgenomen die niet voorkomen als attribuut in de resource, wordt een foutmelding gegeven.
+  Wanneer de fields-parameter wordt opgenomen zonder waarde, wordt een foutmelding gegeven.
+  Wanneer in de fields-parameter namen zijn opgenomen die niet voorkomen als attribuut in de resource, wordt een foutmelding gegeven.
 
-  In de fieldsparameter moeten veldnamen exact zo worden geschreven als voor de resource-response gedefinieerd. Dit is case sensitive. Bijvoorbeeld fields=BURGERSERVICENUMMER levert een foutmelding, want dat attribuut bestaat niet (attribuut burgerservicenummer bestaat wel).
+  In de fields-parameter moeten veldnamen exact zo worden geschreven als voor de resource-response gedefinieerd. Dit is case sensitive. Bijvoorbeeld fields=BURGERSERVICENUMMER levert een foutmelding, want dat attribuut bestaat niet (attribuut burgerservicenummer bestaat wel).
 
-  Scenario: De fieldsparameter is niet opgenomen
-    Als een ingeschreven persoon wordt geraadpleegd zonder fieldsparameter
+  Achtergrond:
+    Gegeven de registratie ingeschreven personen kent zoals beschreven in testdata.csv
+
+  Scenario: De fields-parameter is niet opgenomen
+    Als een ingeschreven persoon wordt geraadpleegd zonder fields-parameter
     Dan worden alle attributen van de resource teruggegeven
     En worden alle relaties van de resource teruggegeven
 

@@ -35,7 +35,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
 
   # Om de onderstaande scenario's te kunnen gebruiken in een geautomatiseerde test van de API, moeten bij de API bepaalde personen bekend zijn. Dit staat beschreven in "testdata.csv".
   Achtergrond:
-    Gegeven de registratie ingeschreven personen kent zoAls beschreven in testdata.csv
+    Gegeven de registratie ingeschreven personen kent zoals beschreven in testdata.csv
 
   Abstract Scenario: De aanschrijfwijze wordt samengesteld op basis van aanduidingAanschrijving en naamgegevens van de persoon en de partner
     Als ingeschreven personen gezocht worden met ?geslachtsnaam=<geslachtsnaam>&voornamen=<voornamen>&geboorte__datum=1983-05-26
