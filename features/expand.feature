@@ -56,6 +56,10 @@ Functionaliteit: Automatische laden van gelinkte resources
     Als een ingeschreven persoon wordt geraadpleegd met expand=ouders.veldbestaatniet
     Dan levert dit een foutmelding
 
+  Scenario: Expand met lege waarde
+    Als een ingeschreven persoon wordt geraadpleegd met expand=
+    Dan levert dit een foutmelding
+
   Scenario: Er kunnen meerdere nested resources worden embed door de resources als een komma's gescheiden lijst te specificeren
     Als een ingeschreven persoon wordt geraadpleegd met expand=partners,kinderen
     Dan wordt attribuut _embedded.partners teruggegeven
