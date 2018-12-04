@@ -135,11 +135,16 @@ Foutbericht:
       type: string
       description: Systeemcode die het type fout aangeeft
       minLength: 1
-    invalid-params:
-      type: array
-      items:
-        $ref: "#/ParamFoutDetails"
-      description: "Foutmelding per fout in een parameter. Alle gevonden fouten worden één keer teruggemeld."
+ValidatieFoutbericht:
+  allOf:
+    - $ref: '#/Foutbericht'
+    - type: object
+      properties:
+        invalid-params:
+          type: array
+          items:
+            $ref: "#/ParamFoutDetails"
+          description: "Foutmelding per fout in een parameter. Alle gevonden fouten worden één keer teruggemeld."
 ParamFoutDetails:
   type: object
   description: Details over fouten in opgegeven parameters
