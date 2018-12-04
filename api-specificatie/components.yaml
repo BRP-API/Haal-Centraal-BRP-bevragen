@@ -1,6 +1,7 @@
 Href:
   type: string
   format: "uri"
+  example: "datapunt.voorbeeldgemeente.nl/api/v1/resourcename/123456789"
 HalLink:
   type: object
   properties:
@@ -27,7 +28,7 @@ HalPaginationLinks:
           href:
             type: "string"
             format: "uri"
-            example: "https://datapunt.voorbeeldgemeente.nl/service/api/v1/resourcenaam?page=1"
+            example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?page=1"
           title:
             type: "string"
             example: "Eerste pagina"
@@ -38,7 +39,7 @@ HalPaginationLinks:
           href:
             type: "string"
             format: "uri"
-            example: "https://datapunt.voorbeeldgemeente.nl/service/api/v1/resourcenaam?page=3"
+            example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?page=3"
           title:
             type: "string"
             example: "Vorige pagina"
@@ -49,7 +50,7 @@ HalPaginationLinks:
           href:
             type: "string"
             format: "uri"
-            example: "https://datapunt.voorbeeldgemeente.nl/service/api/v1/resourcenaam?page=5"
+            example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?page=5"
           title:
             type: "string"
             example: "Volgende pagina"
@@ -85,6 +86,25 @@ DatumOnvolledig:
       title: dag
       description: "De dag. Als de dag van de datum bekend is wordt deze hier ingevuld. Ook als de volledige datum bekend is."
       format: date_mday
+NEN3610ID:
+  type: object
+  description: Identificatiegegevens voor de universeel unieke identificatie van een object. De combinatie van ?namespace? van een registratie, lokale identificatie en versie-informatie maken een object uniek identificeerbaar. Met de informatie van deze klasse kan daardoor met zekerheid worden verwezen naar het geÃ¯dentificeerde object.
+  required:
+    -	Namespace
+    -	lokaalId
+  properties:
+    namespace:
+      type: string
+      title: Namespace
+      description: (EDIT) tikfout hersteld Unieke verwijzing naar een registratie van objecten. De volgende karakters mogen in een namespace aanduiding voorkomen: {?A???Z?, ?a???z?, ?0???9?, ?_?, ?- ?, ?,?, ?.?} pattern: ([A-Za-z0-9_\-,\.])+
+    lokaalId:
+      type: string
+      title: Lokaal id
+      description: Unieke identificatiecode binnen een registratie.
+    versie:
+      type: string
+      title: Versie
+      description: Versie-aanduiding van een object
 Foutbericht:
   type: object
   description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
@@ -110,7 +130,7 @@ Foutbericht:
       type: string
       format: uri
       description: Uri van de aanroep die de fout heeft veroorzaakt
-      example: "https://datapunt.voorbeeldgemeente.nl/service/api/v1/resourcenaam?parameter=waarde"
+      example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
     code:
       type: string
       description: Systeemcode die het type fout aangeeft
