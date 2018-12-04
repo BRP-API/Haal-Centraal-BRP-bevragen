@@ -65,6 +65,7 @@ DatumOnvolledig:
     jaar:
       type: integer
       title: jaar
+      example: 1989
       description: "Het jaar van de datum. Als het jaar bekend is wordt dit element gevuld, ook als de volledige datum bekend is."
       format: date-fullyear
       pattern: "^[1-2]{1}[0-9]{3}$"
@@ -72,20 +73,18 @@ DatumOnvolledig:
       type: integer
       minimum: 1
       maximum: 12
+      example: 5
       title: maand
       description: "De maand. Als de maand van een datum bekend is wordt dee hier ingeveuld. Ook als de volledige datum is ingevuld."
       format: date-month
-      pattern: "^99$"
-      maxLength: 2
     dag:
       type: integer
       minimum: 1
       maximum: 31
+      example: 3
       title: dag
       description: "De dag. Als de dag van de datum bekend is wordt deze hier ingevuld. Ook als de volledige datum bekend is."
       format: date_mday
-      pattern: "^99$"
-      maxLength: 2
 Foutbericht:
   type: object
   description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
