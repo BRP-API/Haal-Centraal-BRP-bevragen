@@ -95,7 +95,7 @@ Nen3610Id:
     namespace:
       type: string
       title: Namespace
-      description: Unieke verwijzing naar een registratie van objecten. De volgende karakters mogen in een namespace aanduiding voorkomen: {?A???Z?, ?a???z?, ?0???9?, ?_?, ?- ?, ?,?, ?.?}
+      description: Unieke verwijzing naar een registratie van objecten.
       pattern: ([A-Za-z0-9_\-,\.])+
     lokaalId:
       type: string
