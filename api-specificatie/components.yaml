@@ -1,0 +1,140 @@
+Href:
+  type: string
+  format: "uri"
+HalLink:
+  type: object
+  properties:
+    href:
+      $ref: "#/components/schemas/Href"
+HalCollectionLinks:
+  type: object
+  properties:
+    self:
+      type: object
+      description: "uri van de api aanroep die tot dit resultaat heeft geleid"
+      properties:
+        href:
+          $ref: "#/Href"
+HalPaginationLinks:
+  allOf:
+  - $ref: "#/HalCollectionLinks"
+  - type: "object"
+    properties:
+      first:
+        type: "object"
+        description: "uri voor het opvragen van de eerste pagina van deze collectie"
+        properties:
+          href:
+            type: "string"
+            format: "uri"
+            example: "https://datapunt.voorbeeldgemeente.nl/service/api/v1/resourcenaam?page=1"
+          title:
+            type: "string"
+            example: "Eerste pagina"
+      previous:
+        type: "object"
+        description: "uri voor het opvragen van de vorige pagina van deze collectie"
+        properties:
+          href:
+            type: "string"
+            format: "uri"
+            example: "https://datapunt.voorbeeldgemeente.nl/service/api/v1/resourcenaam?page=3"
+          title:
+            type: "string"
+            example: "Vorige pagina"
+      next:
+        type: "object"
+        description: "uri voor het opvragen van de volgende pagina van deze collectie"
+        properties:
+          href:
+            type: "string"
+            format: "uri"
+            example: "https://datapunt.voorbeeldgemeente.nl/service/api/v1/resourcenaam?page=5"
+          title:
+            type: "string"
+            example: "Volgende pagina"
+DatumOnvolledig:
+  type: object
+  properties:
+    datum:
+      type: string
+      title: datum
+      format: date
+      example: "1989-05-03"
+      description: "De volledige datum die in de `date` definitie past. Dit element wordt alleen gevuld als de volledige datum bekend is."
+    jaar:
+      type: integer
+      title: jaar
+      description: "Het jaar van de datum. Als het jaar bekend is wordt dit element gevuld, ook als de volledige datum bekend is."
+      format: date-fullyear
+      pattern: "^[1-2]{1}[0-9]{3}$"
+    maand:
+      type: integer
+      minimum: 1
+      maximum: 12
+      title: maand
+      description: "De maand. Als de maand van een datum bekend is wordt dee hier ingeveuld. Ook als de volledige datum is ingevuld."
+      format: date-month
+      pattern: "^99$"
+      maxLength: 2
+    dag:
+      type: integer
+      minimum: 1
+      maximum: 31
+      title: dag
+      description: "De dag. Als de dag van de datum bekend is wordt deze hier ingevuld. Ook als de volledige datum bekend is."
+      format: date_mday
+      pattern: "^99$"
+      maxLength: 2
+Foutbericht:
+  type: object
+  description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
+  properties:
+    type:
+      type: string
+      format: uri
+      description: Link naar meer informatie over deze fout
+      example: "https://www.gemmaonline.nl/standaarden/api/ValidatieFout"
+    title:
+      type: string
+      description: Beschrijving van de fout
+      example: "Validatiefout"
+    status:
+      type: integer
+      description: "Http status code"
+      example: 400
+    detail:
+      type: string
+      description: Details over de fout
+      example: "Er is een fout gevonden in de opgegeven parameters"
+    instance:
+      type: string
+      format: uri
+      description: Uri van de aanroep die de fout heeft veroorzaakt
+      example: "https://datapunt.voorbeeldgemeente.nl/service/api/v1/resourcenaam?parameter=waarde"
+    code:
+      type: string
+      description: Systeemcode die het type fout aangeeft
+      minLength: 1
+    invalid-params:
+      type: array
+      items:
+        $ref: "#/ParamFoutDetails"
+      description: "Foutmelding per fout in een parameter. Alle gevonden fouten worden één keer teruggemeld."
+ParamFoutDetails:
+  type: object
+  description: Details over fouten in opgegeven parameters
+  properties:
+    type:
+      type: string
+      format: uri
+    name:
+      type: string
+      description: Naam van de parameter
+    code:
+      type: string
+      description: Systeemcode die het type fout aangeeft
+      minLength: 1
+    reason:
+      type: string
+      description: Beschrijving van de fout op de parameterwaarde
