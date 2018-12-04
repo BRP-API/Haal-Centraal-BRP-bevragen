@@ -69,7 +69,6 @@ DatumOnvolledig:
       example: 1989
       description: "Het jaar van de datum. Als het jaar bekend is wordt dit element gevuld, ook als de volledige datum bekend is."
       format: date-fullyear
-      pattern: "^[1-2]{1}[0-9]{3}$"
     maand:
       type: integer
       minimum: 1
@@ -85,10 +84,10 @@ DatumOnvolledig:
       example: 3
       title: dag
       description: "De dag. Als de dag van de datum bekend is wordt deze hier ingevuld. Ook als de volledige datum bekend is."
-      format: date_mday
+      format: date-mday
 NEN3610ID:
   type: object
-  description: Identificatiegegevens voor de universeel unieke identificatie van een object. De combinatie van ?namespace? van een registratie, lokale identificatie en versie-informatie maken een object uniek identificeerbaar. Met de informatie van deze klasse kan daardoor met zekerheid worden verwezen naar het geÃ¯dentificeerde object.
+  description: Identificatiegegevens voor de universeel unieke identificatie van een object. De combinatie van namespace van een registratie, lokale identificatie en versie-informatie maken een object uniek identificeerbaar. Met de informatie van deze klasse kan daardoor met zekerheid worden verwezen naar het geïdentificeerde object.
   required:
     -	Namespace
     -	lokaalId
@@ -96,7 +95,8 @@ NEN3610ID:
     namespace:
       type: string
       title: Namespace
-      description: (EDIT) tikfout hersteld Unieke verwijzing naar een registratie van objecten. De volgende karakters mogen in een namespace aanduiding voorkomen: {?A???Z?, ?a???z?, ?0???9?, ?_?, ?- ?, ?,?, ?.?} pattern: ([A-Za-z0-9_\-,\.])+
+      description: Unieke verwijzing naar een registratie van objecten. De volgende karakters mogen in een namespace aanduiding voorkomen: {?A???Z?, ?a???z?, ?0???9?, ?_?, ?- ?, ?,?, ?.?}
+      pattern: ([A-Za-z0-9_\-,\.])+
     lokaalId:
       type: string
       title: Lokaal id
