@@ -53,17 +53,6 @@ HalPaginationLinks:
           title:
             type: "string"
             example: "Volgende pagina"
-      last:
-        type: "object"
-        description: "uri voor het opvragen van de laatste pagina van deze collectie"
-        properties:
-          href:
-            type: "string"
-            format: "uri"
-            example: "https://datapunt.voorbeeldgemeente.nl/service/api/v1/resourcenaam?page=8"
-          title:
-            type: "string"
-            example: "Laatste pagina"
 DatumOnvolledig:
   type: object
   properties:
@@ -71,12 +60,13 @@ DatumOnvolledig:
       type: string
       title: datum
       format: date
+      example: "1989-05-03"
       description: "De volledige datum die in de `date` definitie past. Dit element wordt alleen gevuld als de volledige datum bekend is."
     jaar:
       type: integer
       title: jaar
       description: "Het jaar van de datum. Als het jaar bekend is wordt dit element gevuld, ook als de volledige datum bekend is."
-      format: date_fullyear
+      format: date-fullyear
       pattern: "^[1-2]{1}[0-9]{3}$"
     maand:
       type: integer
