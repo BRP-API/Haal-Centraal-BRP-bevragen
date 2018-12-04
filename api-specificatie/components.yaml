@@ -85,7 +85,7 @@ DatumOnvolledig:
       title: dag
       description: "De dag. Als de dag van de datum bekend is wordt deze hier ingevuld. Ook als de volledige datum bekend is."
       format: date-mday
-NEN3610ID:
+Nen3610Id:
   type: object
   description: Identificatiegegevens voor de universeel unieke identificatie van een object. De combinatie van namespace van een registratie, lokale identificatie en versie-informatie maken een object uniek identificeerbaar. Met de informatie van deze klasse kan daardoor met zekerheid worden verwezen naar het geïdentificeerde object.
   required:
