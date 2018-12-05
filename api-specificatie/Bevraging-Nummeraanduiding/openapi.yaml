@@ -6,7 +6,7 @@ servers:
     url: https://www.voorbeeldgemeente.nl/api/bevragingen_ingeschreven_personen/v1
 info:
   title: Bevragingen ingeschreven personen
-  description: "Koppelvlak voor het ontsluiten van gegevens van andere basisregistraties. N\In het kader van de bevraging ingeschreven persoon is er beoefte aan een endpoint waar gegevens van een nummeraanduiding opgehaald kunnen worden. Zolang er geen API voor de BAG is gerealiseerd wordt de endpoint voor de nummeraanduiding apart vormgegeven. Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/docs/functionele_specificaties.md) voor nadere toelichting."
+  description: "Koppelvlak voor het ontsluiten van gegevens van andere basisregistraties. In het kader van de bevraging ingeschreven persoon is er beoefte aan een endpoint waar gegevens van een nummeraanduiding opgehaald kunnen worden. Zolang er geen API voor de BAG is gerealiseerd wordt de endpoint voor de nummeraanduiding apart vormgegeven. Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/docs/functionele_specificaties.md) voor nadere toelichting."
   version: "1.0"
   contact:
     url: https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen
