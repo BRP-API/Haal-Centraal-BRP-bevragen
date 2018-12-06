@@ -1,4 +1,4 @@
-﻿openapi: 3.0.0
+openapi: 3.0.0
 servers:
   - description: "SwaggerHub API Auto Mocking"
     url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bevragingen_ingeschreven_personen/v1
@@ -6,7 +6,7 @@ servers:
     url: https://www.voorbeeldgemeente.nl/api/bevragingen_ingeschreven_personen/v1
 info:
   title: Bevragingen ingeschreven personen
-  description: "Koppelvlak voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA. Met deze API worden de actuele gegevens van ingeschreven personen, kinderen, partners en ouders ontsloten. Ook de gegevens over reisdocumenten worden via deze API ontsloten. Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/docs/functionele_specificaties.md) voor nadere toelichting."
+  description: "API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. Ook de gegevens over reisdocumenten worden via deze API ontsloten. Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting."
   version: "1.0"
   contact:
     url: https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen
@@ -18,9 +18,9 @@ paths:
     get:
       operationId: ingeschrevenpersonen
       description: |
-        Het ophalen van een collectie Ingeschreven Natuurlijk Personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen
-        
-        
+        Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen:
+
+
         1.  Persoon
             -  geboorte__datum
             -  naam__geslachtsnaam (minimaal 2 karakters, trailing wildcard __(* of ?)__ toegestaan)
@@ -32,42 +32,42 @@ paths:
 
 
         3.  NaamOpenbareRuimte
-            -  verblijfplaats__naamOpenbareRuimte
+            -  verblijfplaats__naamopenbareruimte
             -  verblijfplaats__gemeentevaninschrijving
             -  verblijfplaats__huisnummer
-            
+
 
         4.  Nummeraanduiding
-            -  verblijfsplaats__identificatiecodeNummeraanduiding
+            -  verblijfsplaats__identificatiecodenummeraanduiding
 
-        De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters.
+        De bovenstaande combinaties van parameters mogen gecombineerd worden met de alle beschikbare query-parameters.
 
 
-        Indien _inclusiefverledenpersonen_ de waarde _true_ heeft worden overleden personen opgenomen in het zoekresultaat.
+        Default levert een zoekvraag alleen personen op die nog in leven zijn. Indien _inclusiefverledenpersonen_ de waarde _true_ heeft worden [overleden personen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) opgenomen in het zoekresultaat.
 
 
         Het maximale aantal zoekresultaten dat geretourneerd wordt is aan de provider om te bepalen. Als het resultaat van de de request dit aantal overtreft worden er geen resultaten geretourneerd en volgt er een foutmelding.
 
 
          Er vind geen sortering plaats.
-      parameters: 
+      parameters:
         - in: query
           name: expand
-          description: "Hier kan aangegeven worden welke gerelateerde resources meegeladen moeten worden. Resources en velden van resources die gewenst zijn kunnen in de expand parameter kommagescheiden worden opgegeven. Specifieke velden van resource kunnen worden opgegeven door het opgeven van de resource-naam gevolgd door de veldnaam, met daartussen een punt."
+          description: "Hier kan aangegeven worden welke gerelateerde resources meegeladen moeten worden. Resources en velden van resources die gewenst zijn kunnen in de expand parameter kommagescheiden worden opgegeven. Specifieke velden van resource kunnen worden opgegeven door het opgeven van de resource-naam gevolgd door de veldnaam, met daartussen een punt. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/expand.feature)"
           required: false
           schema:
             type: string
             example: kinderen,adressen.postcode,adressen.huisnummer
         - in: query
           name: fields
-          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven."
+          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature)"
           required: false
           schema:
             type: string
             example: id,onderwerp,aanvrager,wijzig_datum
         - in: query
           name: geboorte__datum
-          description: "Datum waarop de INGESCHREVEN NATUURLIJK PERSOON geboren is."
+          description: "Datum waarop de INGESCHREVEN PERSOON geboren is. Er kan alleen gezocht worden met een volledige geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature)"
           required: false
           schema:
             type: string
@@ -75,11 +75,12 @@ paths:
           example: 24-09-1964
         - in: query
           name: naam__voornamen
-          description: "De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een trailing wildcard toegestaan in combinatie met minimaal 2 karakters.**"
+          description: "De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.**"
           required: false
           schema:
             type: string
             maxLength: 200
+            minLength: 2
           example: Dirk
         - in: query
           name: verblijfplaats__huisletter
@@ -128,19 +129,21 @@ paths:
           example: bis
         - in: query
           name: naam__geslachtsnaam
-          description: "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst. **Bij deze query-parameter is het gebruik van een trailing wildcard toegestaan in combinatie met minimaal 2 karakters.**"
+          description: "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst. **Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.**"
           required: false
           schema:
             type: string
             maxLength: 200
+            minLength: 2
           example: Vries
         - in: query
           name: verblijfplaats__naamopenbareruimte
-          description: "Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming **Bij deze query-parameter is het gebruik van een trailing wildcard toegestaan in combinatie met minimaal 2 karakters.** Zie verder de toelichting in de BAG. Tekens gecodeerd volgens de UTF-8 standaard"
+          description: "Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming **Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** Zie verder de toelichting in de BAG. Tekens gecodeerd volgens de UTF-8 standaard"
           required: false
           schema:
             type: string
             maxLength: 80
+            minLength: 2
           example: Tulpstraat
         - in: query
           name: verblijfplaats__postcode
@@ -152,7 +155,7 @@ paths:
           example: 2341SX
         - in: query
           name: inclusiefoverledenpersonen
-          description: "Indien in het antwoord op de zoekvraag ook overleden personen moeten worden geretourneerd, dan dient de parameter *inclusiefOverledenPersonen* opgenomen te zijn met de waarde True. Indien de parameter *inclusiefOverledenPersonen* ontbreekt of de waarde False heeft worden geen overleden personen opgenomen in het zoekresultaat."
+          description: "Indien in het antwoord op de zoekvraag ook overleden personen moeten worden geretourneerd, dan dient de parameter *inclusiefOverledenPersonen* opgenomen te zijn met de waarde True. Indien de parameter *inclusiefOverledenPersonen* ontbreekt of de waarde False heeft worden geen overleden personen opgenomen in het zoekresultaat. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature)"
           required: false
           schema:
             type: boolean
@@ -170,7 +173,7 @@ paths:
             X-Rate-Limit-Remaining:
               $ref: '#/components/headers/X_Rate_Limit_Remaining'
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -189,25 +192,25 @@ paths:
           description: "Er is een onverwachte fout opgetreden."
           content:
             application/problem+json:
-              schema:  
+              schema:
                 $ref: '#/components/schemas/Foutbericht'
-      tags: 
+      tags:
       - ingeschrevenpersonen
   /ingeschrevenpersonen/{burgerservicenummer}:
     get:
       operationId: ingeschrevenpersonenBurgerservicenummer
-      description: "Het ophalen de actuele gegevens van een Ingeschreven Natuurlijk Persoon, inclusief verblijfplaats, kinderen, partners, ouders en reisdocumenten."
-      parameters: 
+      description: "Het ophalen de actuele gegevens van een Ingeschreven Persoon, inclusief verblijfplaats, kinderen, partners, ouders en reisdocumenten."
+      parameters:
         - in: query
           name: expand
-          description: "Hier kan aangegeven worden welke gerelateerde resources meegeladen moeten worden. Resources en velden van resources die gewenst zijn kunnen in de expand parameter kommagescheiden worden opgegeven. Specifieke velden van resource kunnen worden opgegeven door het opgeven van de resource-naam gevolgd door de veldnaam, met daartussen een punt."
+          description: "Hier kan aangegeven worden welke gerelateerde resources meegeladen moeten worden. Resources en velden van resources die gewenst zijn kunnen in de expand parameter kommagescheiden worden opgegeven. Specifieke velden van resource kunnen worden opgegeven door het opgeven van de resource-naam gevolgd door de veldnaam, met daartussen een punt. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/expand.feature)"
           required: false
           schema:
             type: string
             example: kinderen,adressen.postcode,adressen.huisnummer
         - in: query
           name: fields
-          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven."
+          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature)"
           required: false
           schema:
             type: string
@@ -232,7 +235,7 @@ paths:
             X-Rate-Limit-Remaining:
               $ref: '#/components/headers/X_Rate_Limit_Remaining'
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -241,15 +244,15 @@ paths:
           description: "Er is een onverwachte fout opgetreden."
           content:
             application/problem+json:
-              schema:  
+              schema:
                 $ref: '#/components/schemas/Foutbericht'
-      tags: 
+      tags:
       - ingeschrevenpersonen
   /ingeschrevenpersonen/{burgerservicenummer}/kinderen/{uuid}:
     get:
       operationId: ingeschrevenpersonenBurgerservicenummerkinderenUuid
-      description: "Het ophalen de kind-gegevens van een Ingeschreven Natuurlijk Persoon zoals die op de persoonslijst voorkomen."
-      parameters: 
+      description: "Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen."
+      parameters:
         - in: query
           name: fields
           description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven."
@@ -259,7 +262,7 @@ paths:
             example: id,onderwerp,aanvrager,wijzig_datum
         - in: path
           name: burgerservicenummer
-          description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Elk ingeschreven natuurlijk persoon heeft een BSN, een nummer dat de natuurlijk persoon uniek identificeert in overheidsadministraties. De attribuutsoort kent onder meer historie omdat het mogelijk is dat het Burgerservicenummer van een natuurlijk persoon wijzigt, met name vanwege ambtelijke correcties. Zie verder de toelichting in de GBA Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
+          description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Elke ingeschreven persoon heeft een burgerservicenummer, een nummer dat de natuurlijk persoon uniek identificeert in overheidsadministraties. De attribuutsoort kent onder meer historie omdat het mogelijk is dat het Burgerservicenummer van een natuurlijk persoon wijzigt, met name vanwege ambtelijke correcties. Zie verder de toelichting in de GBA Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
           required: true
           schema:
             type: string
@@ -284,7 +287,7 @@ paths:
             X-Rate-Limit-Remaining:
               $ref: '#/components/headers/X_Rate_Limit_Remaining'
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -293,15 +296,15 @@ paths:
           description: "Er is een onverwachte fout opgetreden."
           content:
             application/problem+json:
-              schema:  
+              schema:
                 $ref: '#/components/schemas/Foutbericht'
-      tags: 
+      tags:
       - ingeschrevenpersonen
   /ingeschrevenpersonen/{burgerservicenummer}/kinderen:
     get:
       operationId: ingeschrevenpersonenBurgerservicenummerkinderen
-      description: "Het ophalen de kind-gegevens van een Ingeschreven Natuurlijk Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats."
-      parameters: 
+      description: "Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats."
+      parameters:
         - in: query
           name: fields
           description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven."
@@ -329,7 +332,7 @@ paths:
             X-Rate-Limit-Remaining:
               $ref: '#/components/headers/X_Rate_Limit_Remaining'
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -348,15 +351,15 @@ paths:
           description: "Er is een onverwachte fout opgetreden."
           content:
             application/problem+json:
-              schema:  
+              schema:
                 $ref: '#/components/schemas/Foutbericht'
-      tags: 
+      tags:
       - ingeschrevenpersonen
   /ingeschrevenpersonen/{burgerservicenummer}/ouders/{uuid}:
     get:
       operationId: ingeschrevenpersonenBurgerservicenummeroudersUuid
-      description: "Het ophalen de ouder-gegevens van een van een Ingeschreven Natuurlijk Persoon zoals die op de persoonslijst voorkomen."
-      parameters: 
+      description: "Het ophalen de ouder-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen."
+      parameters:
         - in: query
           name: fields
           description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven."
@@ -391,7 +394,7 @@ paths:
             X-Rate-Limit-Remaining:
               $ref: '#/components/headers/X_Rate_Limit_Remaining'
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -400,15 +403,15 @@ paths:
           description: "Er is een onverwachte fout opgetreden."
           content:
             application/problem+json:
-              schema:  
+              schema:
                 $ref: '#/components/schemas/Foutbericht'
-      tags: 
+      tags:
       - ingeschrevenpersonen
   /ingeschrevenpersonen/{burgerservicenummer}/ouders:
     get:
       operationId: ingeschrevenpersonenBurgerservicenummerouders
-      description: "Het ophalen de ouder-gegevens van een Ingeschreven Natuurlijk Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats."
-      parameters: 
+      description: "Het ophalen de ouder-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats."
+      parameters:
         - in: query
           name: fields
           description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven."
@@ -436,7 +439,7 @@ paths:
             X-Rate-Limit-Remaining:
               $ref: '#/components/headers/X_Rate_Limit_Remaining'
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -455,15 +458,15 @@ paths:
           description: "Er is een onverwachte fout opgetreden."
           content:
             application/problem+json:
-              schema:  
+              schema:
                 $ref: '#/components/schemas/Foutbericht'
-      tags: 
+      tags:
       - ingeschrevenpersonen
   /ingeschrevenpersonen/{burgerservicenummer}/partners/{uuid}:
     get:
       operationId: ingeschrevenpersonenBurgerservicenummerpartnersUuid
-      description: "Het ophalen de partner-gegevens van een van een Ingeschreven Natuurlijk Persoon zoals die op de persoonslijst voorkomen."
-      parameters: 
+      description: "Het ophalen de partner-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen."
+      parameters:
         - in: query
           name: fields
           description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven."
@@ -498,7 +501,7 @@ paths:
             X-Rate-Limit-Remaining:
               $ref: '#/components/headers/X_Rate_Limit_Remaining'
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -507,15 +510,15 @@ paths:
           description: "Er is een onverwachte fout opgetreden."
           content:
             application/problem+json:
-              schema:  
+              schema:
                 $ref: '#/components/schemas/Foutbericht'
-      tags: 
+      tags:
       - ingeschrevenpersonen
   /ingeschrevenpersonen/{burgerservicenummer}/partners:
     get:
       operationId: ingeschrevenpersonenBurgerservicenummerpartners
-      description: "Het ophalen de partner-gegevens van een van een Ingeschreven Natuurlijk Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats."
-      parameters: 
+      description: "Het ophalen de actuele partner-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet opgenomen in het antwoord. De gevonden huwelijken/partnerschappen worden ongesorteerd teruggegeven."
+      parameters:
         - in: query
           name: fields
           description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven."
@@ -543,7 +546,7 @@ paths:
             X-Rate-Limit-Remaining:
               $ref: '#/components/headers/X_Rate_Limit_Remaining'
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -562,15 +565,15 @@ paths:
           description: "Er is een onverwachte fout opgetreden."
           content:
             application/problem+json:
-              schema:  
+              schema:
                 $ref: '#/components/schemas/Foutbericht'
-      tags: 
+      tags:
       - ingeschrevenpersonen
   /reisdocumenten/{reisdocumentnummer}:
     get:
       operationId: reisdocumentenReisdocumentnummer
       description: "Het ophalen van de gegevens van een REISDOCUMENT op basis van het reisdocumentnummer."
-      parameters: 
+      parameters:
         - in: query
           name: fields
           description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven."
@@ -598,7 +601,7 @@ paths:
             X-Rate-Limit-Remaining:
               $ref: '#/components/headers/X_Rate_Limit_Remaining'
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -607,9 +610,9 @@ paths:
           description: "Er is een onverwachte fout opgetreden."
           content:
             application/problem+json:
-              schema:  
+              schema:
                 $ref: '#/components/schemas/Foutbericht'
-      tags: 
+      tags:
       - reisdocumenten
 components:
   schemas:
@@ -620,11 +623,6 @@ components:
         \ RNI woonachtig in de gemeente dan wel elders en van belang voor de gemeentelijke\
         \ taakuitoefening. Een INGESCHREVEN NATUURLIJK PERSOON is een specialisatie\
         \ van NATUURLIJK PERSOON."
-      required:
-      - "naam"
-      - "inOnderzoek"
-      - "nationaliteit"
-      - "geboorte"
       properties:
         burgerservicenummer:
           type: "string"
@@ -697,8 +695,6 @@ components:
           $ref: "#/components/schemas/Overlijden"
         verblijfplaats:
           $ref: "#/components/schemas/Verblijfplaats"
-        verblijfBuitenland:
-          $ref: "#/components/schemas/VerblijfBuitenland"
         verblijfstitel:
           $ref: "#/components/schemas/Verblijfstitel"
         _links:
@@ -748,15 +744,6 @@ components:
             \ van LO GBA."
           maxLength: 200
           example: "Vries"
-        uuid:
-          type: "string"
-          title: "uuid"
-          description: "Een UUID is een nummer van 128 bits (= 16 bytes). UUID wordt\
-            \ weergegeven in 32 ??hexadecimale cijfers. Deze cijfers zijn ingedeeld\
-            \ in vijf groepen, in ongelijk aantal en gescheiden door koppeltekens:\
-            \ 8-4-4-4-12 In zijn geheel wordt een UUID dus door 36 tekens gevormd,\
-            \ waarvan 32 hexadecimale karakters en vier streepjes: 550e8400-e29b-41d4-a716-446655440000"
-          maxLength: 36
         geldigVan:
           $ref: "#/components/schemas/Datum_onvolledig"
         geldigTotEnMet:
@@ -771,11 +758,8 @@ components:
           $ref: "#/components/schemas/Ouder_links"
     Kind:
       type: "object"
-      description: "Het verband tussen een kind en één van zijn of haar juridische\
-        \ ouders."
-      required:
-      - "uuid"
-      - "geboorte"
+      description: "Het verband tussen de ingeschreven persoon en één van zijn of haar juridische\
+        \ kinderen."
       properties:
         burgerservicenummer:
           type: "string"
@@ -810,15 +794,6 @@ components:
             \ van LO GBA."
           maxLength: 200
           example: "Vries"
-        uuid:
-          type: "string"
-          title: "uuid"
-          description: "Een UUID is een nummer van 128 bits (= 16 bytes). UUID wordt\
-            \ weergegeven in 32 ??hexadecimale cijfers. Deze cijfers zijn ingedeeld\
-            \ in vijf groepen, in ongelijk aantal en gescheiden door koppeltekens:\
-            \ 8-4-4-4-12 In zijn geheel wordt een UUID dus door 36 tekens gevormd,\
-            \ waarvan 32 hexadecimale karakters en vier streepjes: 550e8400-e29b-41d4-a716-446655440000"
-          maxLength: 36
         voorvoegsel:
           $ref: "#/components/schemas/Voorvoegsel_tabel"
         adellijkeTitel_predikaat:
@@ -870,15 +845,6 @@ components:
             \ van LO GBA."
           maxLength: 200
           example: "Vries"
-        uuid:
-          type: "string"
-          title: "uuid"
-          description: "Een UUID is een nummer van 128 bits (= 16 bytes). UUID wordt\
-            \ weergegeven in 32 ??hexadecimale cijfers. Deze cijfers zijn ingedeeld\
-            \ in vijf groepen, in ongelijk aantal en gescheiden door koppeltekens:\
-            \ 8-4-4-4-12 In zijn geheel wordt een UUID dus door 36 tekens gevormd,\
-            \ waarvan 32 hexadecimale karakters en vier streepjes: 550e8400-e29b-41d4-a716-446655440000"
-          maxLength: 36
         voorvoegsel:
           $ref: "#/components/schemas/Voorvoegsel_tabel"
         adellijkeTitel_predikaat:
@@ -963,10 +929,10 @@ components:
         aanschrijfwijze:
           type: "string"
           title: "aanschrijfwijze"
-          description: "| Hoe het samenstellen van een aanschrijfwijze te werk gaat\
-            \ is beschreven in een document dat [hier te vinden is.](https://www.github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/api-specificatie/Aanschijfwijze%20opstellen.md)"
+          description: "| Samengestelde naam zoals die in communicatie met de persoon gebruikt kan worden. Hoe het samenstellen van een aanschrijfwijze te werk gaat\
+            \ is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanschrijfwijze.feature)"
           maxLength: 50
-          example: "P.J. Graaf de Vries"
+          example: "P.J. graaf de Vries-van der Zon"
         voorvoegsel:
           $ref: "#/components/schemas/Voorvoegsel_tabel"
         adellijkeTitel_predikaat:
@@ -974,9 +940,9 @@ components:
     InOnderzoek:
       type: "object"
       description: "Een groep van booleans om aan te geven welke gegevens van de ingeschreven\
-        \ persoon in onderzoek zijn. Er kunnen ook gegevensgroepen in onderzoek zijn.\
+        \ persoon in onderzoek zijn. Er kunnen ook categorieën in onderzoek zijn.\
         \ Als een hele categorie in onderzoek is worden alle rubrieken binnen die\
-        \ groep op true gezet."
+        \ categorie op true gezet. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
       properties:
         burgerservicenummer:
           type: "boolean"
@@ -1008,19 +974,19 @@ components:
           title: "signaleringNederlandsReisdocument"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        naamInOnderzoek:
+        naam:
           $ref: "#/components/schemas/NaamInOnderzoek"
-        nationaliteitInOnderzoek:
+        nationaliteit:
           $ref: "#/components/schemas/NationaliteitInOnderzoek"
-        geboorteInOnderzoek:
+        geboorte:
           $ref: "#/components/schemas/GeboorteInOnderzoek"
-        overlijdenInOnderzoek:
+        overlijden:
           $ref: "#/components/schemas/OverlijdenInOnderzoek"
-        verblijfplaatsInOnderzoek:
+        verblijfplaats:
           $ref: "#/components/schemas/VerblijfplaatsInOnderzoek"
     NaamInOnderzoek:
       type: "object"
-      description: "In onderzoekgroep om aan te geven of Gegevens over de naam van\
+      description: "In onderzoekgroep om aan te geven of gegevens over de naam van\
         \ de NATUURLIJK PERSOON in onderzoek zijn."
       properties:
         voornamen:
@@ -1070,7 +1036,7 @@ components:
     GeboorteInOnderzoek:
       type: "object"
       description: "Indicators over het in onderzoek zijn van gegevens over de geboorte\
-        \ van de INGESCHREVEN NATUURLIJK PERSOON."
+        \ van de INGESCHREVEN PERSOON."
       properties:
         geboortedatum:
           type: "boolean"
@@ -1325,6 +1291,8 @@ components:
           example: "2571CC"
         gemeenteVanInschrijving:
           $ref: "#/components/schemas/Gemeenten"
+        verblijfBuitenland:
+          $ref: "#/components/schemas/VerblijfBuitenland"
         geldigVan:
           $ref: "#/components/schemas/Datum_onvolledig"
         geldigTotEnMet:
@@ -1418,7 +1386,7 @@ components:
           maxLength: 2
     Land_tabel:
       type: "object"
-      description: "Een opsomming van alle huidige en voormalige landen met hun codes,\
+      description: "Een waarde uit GBA Tabel34 Landentabel. Deze tabel bevat een opsomming van alle huidige en voormalige landen met hun codes,\
         \ namen en geldigheidstermijnen."
       properties:
         landcode:
@@ -1437,7 +1405,7 @@ components:
           example: "Nederland"
     Voorvoegsel_tabel:
       type: "object"
-      description: "Een opsomming van de toegestane voorvoegsels."
+      description: "Een waarde uit GBA Tabel 36 Voorvoegsels. Deze tabel bevat de mogelijke voorvoegsels in de naam van een persoon."
       properties:
         voorvoegsel:
           type: "string"
@@ -1447,7 +1415,7 @@ components:
           example: "de"
     AdellijkeTitel_predikaat_tabel:
       type: "object"
-      description: "Een opsomming van de adellijke titels en/of predikaten die een\
+      description: "Een waarde uit GBA Tabel 38 Adellijke titel predikaat. Deze tabel bevat de mogelijke adellijke titels en/of predikaten die een\
         \ persoon kan bezitten of die aan een persoon kunnen worden toegekend met\
         \ hun codes, omschrijvingen en soorten."
       properties:
@@ -1472,7 +1440,7 @@ components:
     Nationaliteit_tabel:
       type: "object"
       description: "De mogelijk onderscheiden hoedanigheden van tot een bepaalde natie\
-        \ te behoren."
+        \ te behoren. Waarde uit GBA Tabel 32 Nationaliteitentabel."
       properties:
         nationaliteitcode:
           type: "integer"
@@ -1486,7 +1454,7 @@ components:
           maxLength: 42
     RedenVerkrijgingOpnemen_beindigenNationaliteit_tabel:
       type: "object"
-      description: "Deze tabel heeft enerzijds betrekking op de Nederlandse nationaliteit\
+      description: "Waarde uit GBA Tabel 37 Reden opnemen beëindigen nationaliteit. Deze tabel heeft enerzijds betrekking op de Nederlandse nationaliteit\
         \ en het bijzonder Nederlanderschap en anderzijds op andere nationaliteiten\
         \ De Nederlandse nationaliteit: Een opsomming van de wettelijke gronden ter\
         \ verkrijging/verlies van het Nederlanderschap met hun codes, omschrijvingen,\
@@ -1510,7 +1478,7 @@ components:
           $ref: "#/components/schemas/SoortRedenWijzigingNationaliteit_enum"
     RedenOntbindingHuwelijk_geregistreerdPartnerschap_tabel:
       type: "object"
-      description: "Een opsomming van de wettelijke gronden van ontbinding/nietigverklaring\
+      description: "Waarde uit GBA Tabel 41 Reden ontbinding/nietigverklaring huwelijk/geregistreerd partnerschaptabel. Deze bevat een opsomming van de wettelijke gronden van ontbinding/nietigverklaring\
         \ van een huwelijk/geregistreerd partnerschap met hun codes, omschrijvingen\
         \ en geldigheidstermijnen."
       properties:
@@ -1528,7 +1496,7 @@ components:
           maxLength: 80
     Gemeenten:
       type: "object"
-      description: "Gemeentetabel 33 conform LO GBA"
+      description: "Gemeente die voorkomt in Gemeentetabel 33 conform LO GBA"
       properties:
         gemeentecode:
           type: "string"
@@ -1545,7 +1513,7 @@ components:
           example: "Nederland"
     Verblijfstitel_tabel:
       type: "object"
-      description: "Een opsomming van de verblijfsrechtelijke statussen met hun codes,\
+      description: "Een waarde uit GBA Tabel 56 Verblijfstiteltabel. Deze tabel is een opsomming van de mogelijke verblijfsrechtelijke statussen met hun codes,\
         \ omschrijvingen en geldigheidstermijnen."
       properties:
         verblijfstitelNumeriek:
@@ -1582,7 +1550,7 @@ components:
     AutoriteitAfgifteNederlandsReisdocument_tabel:
       type: "object"
       description: "Een opsomming van de diverse coderingen van de autoriteiten die\
-        \ een Nederlands reisdocument kunnen afgegeven"
+        \ een Nederlands reisdocument kunnen afgegeven. Waarde uit GBA Tabel 49."
       properties:
         autoriteitVanAfgifte:
           type: "string"
@@ -1602,7 +1570,7 @@ components:
         ouders:
           title: "heeftAlsOuder"
           type: "array"
-          description: "De ingezetene, zijnde de ouder, waarnaar de KIND-OUDER-RELATIE\
+          description: "De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE\
             \ verwijst"
           maxItems: 4
           items:
@@ -1610,39 +1578,39 @@ components:
         reisdocumenten:
           title: "isHouderVan"
           type: "array"
-          description: "De ingezetene waaraan het REISDOCUMENT is verstrekt."
+          description: "Het REISDOCUMENT dat aan de ingezetene is verstrekt."
           items:
             $ref: "#/components/schemas/Link"
         kinderen:
           title: "heeftAlsKind"
           type: "array"
-          description: "De ingezetene, zijnde de ouder, waarnaar de KIND-OUDER-RELATIE\
+          description: "De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE\
             \ verwijst"
           items:
             $ref: "#/components/schemas/Link"
         partnerhistorie:
           title: "heeftAlsPartner"
           type: "array"
-          description: "De INGEZETENE(n) bij wie de PARTNER-RELATIE is geregistreerd."
+          description: "Het ophalen van de partnerhistorie van een ingeschreven persoon. Van een ingeschreven persoon worden parters waarmee nu of in het verleden relaties geregistreerd zijn geretourneerd."
           items:
             $ref: "#/components/schemas/Link"
         partners:
           title: "heeftAlsPartner"
           type: "array"
-          description: "De INGEZETENE(n) bij wie de PARTNER-RELATIE is geregistreerd."
+          description: "De actuele bij de ingeschreven persoon geregistreerde huwelijken en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven."
           items:
             $ref: "#/components/schemas/Link"
         verblijfsplaatsenhistorie:
           title: "verbleefOp"
           type: "object"
-          description: ""
+          description: "Het ophalen van de verblijfsplaatshistorie van een ingeschreven persoon. Van een ingeschreven persoon worden verblijfsplaatsen waar een persoon zich in het verleden op heeft ingeschreven (inclusief de actuele verblijfsplaats) geretourneerd. "
           properties:
             href:
               $ref: "#/components/schemas/Href"
         verblijfstitelshistorie:
-          title: "had"
+          title: "hadAlsVerblijfstitel"
           type: "object"
-          description: ""
+          description: "Het ophalen van de verblijfstitelhistorie van een ingeschreven persoon. Van een ingeschreven persoon worden verblijfstitels die er in het verleden geregistreerd zijn (inclusief de actuele verblijfstitel) geretourneerd."
           properties:
             href:
               $ref: "#/components/schemas/Href"
@@ -1650,14 +1618,13 @@ components:
           title: "isIngeschrevenOp"
           type: "object"
           description: "De NUMMERAANDUIDING bij het ADRESSEERBAAR OBJECT waarin de\
-            \ INGESCHREVEN NATUURLIJK PERSOON verblijft en die hij/zij gekozen heeft\
+            \ INGESCHREVEN PERSOON verblijft en die hij/zij gekozen heeft\
             \ als inschrijvingsadres. Het betreft het hergebruik als relatiesoort\
             \ van attribuut Identificatiecode nummeraanduiding van groep A.1.13 (Adres)\
             \ in de BRP in de gevallen dat de persoon verblijft op een adresseerbaar\
             \ object. De ingeschreven natuurlijk persoon kan er aldus voor kiezen\
             \ zich op een hoofd- of op een nevenadres te laten inschrijven. De relatiesoort\
-            \ maakt deel uit van het groepattribuutsoort Verblijfsplaats. Het huisnummer\
-            \ kan de waarde 0 hebben."
+            \ maakt deel uit van het groepattribuutsoort Verblijfsplaats."
           properties:
             href:
               $ref: "#/components/schemas/Href"
@@ -1667,9 +1634,9 @@ components:
         self:
           $ref: "#/components/schemas/Link"
         ingeschrevenpersonen:
-          title: "is"
+          title: "isOuder"
           type: "object"
-          description: ""
+          description: "De ingeschreven persoon die ouder is van de opgevraagde persoon."
           properties:
             href:
               $ref: "#/components/schemas/Href"
@@ -1679,9 +1646,9 @@ components:
         self:
           $ref: "#/components/schemas/Link"
         ingeschrevenpersonen:
-          title: "is"
+          title: "isKind"
           type: "object"
-          description: ""
+          description: "De ingeschreven persoon die kind is van de opgevraagde persoon."
           properties:
             href:
               $ref: "#/components/schemas/Href"
@@ -1691,7 +1658,7 @@ components:
         self:
           $ref: "#/components/schemas/Link"
         ingeschrevenPersonen:
-          title: "is"
+          title: "isPartner"
           type: "object"
           description: ""
           properties:
@@ -1715,22 +1682,20 @@ components:
         ouders:
           title: "heeftAlsOuder"
           type: "array"
-          description: "De ingezetene, zijnde de ouder, waarnaar de KIND-OUDER-RELATIE\
-            \ verwijst"
+          description: "**** Zie eerdere wijziging description ouder-relatie ****"
           maxItems: 4
           items:
             $ref: "#/components/schemas/Ouder"
         kinderen:
           title: "heeftAlsKind"
           type: "array"
-          description: "De ingezetene, zijnde de ouder, waarnaar de KIND-OUDER-RELATIE\
-            \ verwijst"
+          description: "**** Zie eerdere wijziging description kind-relatie ****"
           items:
             $ref: "#/components/schemas/Kind"
         partners:
           title: "heeftAlsPartner"
           type: "array"
-          description: "De INGEZETENE(n) bij wie de PARTNER-RELATIE is geregistreerd."
+          description: "**** Zie eerdere wijziging description partner-relatie ****"
           items:
             $ref: "#/components/schemas/Partner"
     Href:
@@ -1871,9 +1836,7 @@ components:
       - "7"
     Naamgebruik_enum:
       type: "string"
-      description: "De voorgedefinieerde waarden van naamgebruik volgens de centrale\
-        \ voorzieningen. Zie attribuut Naamgebruik van groep A.1.12 Naamgebruik van\
-        \ BRP.:\n* E - Eigen\n* P - Partner\n* V - Partner, eigen\n* N - Eigen, partner"
+      description: "Gegevens over de wijze van aanschrijving (61.10).:\n* E - eigen geslachtsnaam\n* P - geslachtsnaam echtgenoot/geregistreerd partner\n* V - geslachtsnaam echtgenoot/geregistreerd partner voor eigen geslachtsnaam\n* N - geslachtsnaam echtgenoot/geregistreerd partner na eigen geslachtsnaam"
       enum:
       - "E"
       - "P"
