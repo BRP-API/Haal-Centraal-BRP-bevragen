@@ -116,6 +116,47 @@ Functionele specificaties worden behaviour driven beschreven. Dit betekent dat d
 Tijdens het project wordt er nog geen volwaardige referentie-implementatie gemaakt. Na afloop van het project en (voorlopige) vaststelling van de standaard wordt wel een referentie-implementatie gemaakt.
 Ook zal er tijdens het project nog geen compliancy-test worden geleverd. Wel worden testgevallen en testdata opgeleverd waarmee een API getest kan worden.
 
+## Terminologie
+Binnen het project gebruiken we een aantal termen voor het API-ontwerp en de API werking. Hier worden enkele beschreven, zodat voor iedereen die bijdraagt aan de API-ontwikkeling begrijpt wat er hiermee bedoelt wordt.
+
+### API
+Wanneer we spreken over "API's", bedoelen we kleine, scherp gedefinieerde, voor een businessbehoefte doelmatige en voor consumers van de API/service eenvoudig te begrijpen en eenvoudig te implementeren webservices.
+
+VNG-Realisatie ontwikkelt in dit project de API-specificatie, die wordt vastgesteld als standaard en op basis waarvan leveranciers en gemeenten de API kunnen implementeren.
+
+De API die in dit project wordt gespecificeert is zoveel mogelijk RESTful en serialiseert berichtinhoud in json
+
+### Resource
+Onder Resources wordt in deze contect verstaan Web Resources. Een Resource is de weergave van de gegevens.
+
+Tenzij expliciet anders aangegeven toont een resource de actuele toestand (status) van gegevens. Bijvoorbeeld wanneer de api ingeschreven personen wordt geraadpleegd, spreken we van een resource als de actuele gegevens van één persoon.
+
+Een resource hoeft niet altijd equivalent te zijn aan een objecttype of in de werkelijkheid bestaand iets (zoals een persoon of gebouw). Bijvoorbeeld de resource bewoning toont welke personen op een adres wonen (of hebben gewoond).
+
+### Collectie
+Een collectie is een lijst resources. Wanneer gezocht wordt op eigenschappen van een resource, kunnen meerdere resources voldoen aan de zoekcriteria. De API geeft dan een lijst terug met resources. Bijvoorbeeld wanneer we zoeken op geslachtsnaam "Jansen", geeft de api een lijst ingeschreven personen terug met de geslachtsnaam "Jansen".
+
+### Relatie
+Een resource kan relaties hebben met andere resources. Bijvoorbeeld een persoon woont op een adres, heeft een partner, ouders en kinderen en een reisdocument. Dit zijn allemaal relaties van de persoon met andere reources.
+
+### Link
+We nemen een relatie op in het bericht als link. Een link is een verwijzing naar de gerelateerde resource, waarmee de gegevens van deze relatie direct kunnen worden opgehaald. Dit heeft de vorm van een uri (unique resource identifier). Bijvoorbeeld "https://www.voorbeeldgemeente.nl/brp/v1/ingeschrevenpersonen/555555021".
+
+### Sub-resources
+Wanneer de gerelateerde resource alleen bestaat in de context van de resource, noemen we dit een sub-resource.
+Bijvoorbeeld voor een persoon is het huwelijk een sub-resource. Het huwelijk bestaat niet of heeft geen betekenis zonder de betreffende persoon.
+
+### Embed en expand
+Vaak wordt er vanuit één resource verwezen (gelinkt) naar andere resources. De RESTful manier om dit op te lossen is de verwijzing naar andere resources als URI op te nemen in een resource. Op basis hiervan kan de afnemer, indien gewenst, de gelinkte resources zelf opvragen. Dit is vergelijkbaar met “lazy loading” in een ORM oplossing: resources worden alleen opgehaald als ze nodig zijn.
+
+In sommige gevallen, als de afnemer alle resources nodig heeft, is het efficiënter als de gerelateerde resources in één keer opgehaald worden. Dit is vergelijkbaar met “eager loading” patroon in een ORM-oplossing.
+
+Bijvoorbeeld wanneer we van een persoon direct ook de partnergegevens nodig zijn, kan de gebruiker in één aanroep eigenschappen van de persoon én eigenschappen van het huwelijk/partnerschap in het antwoord opgenomen worden.
+
+De gebruiker kan dit vragen door gebruik van de parameter **expand**.
+
+Wanneer met de expand parameter is gevraagd om het meeladen van de relatie, wordt deze in het bericht opgenomen. De relatie wordt in het bericht opgenomen in element \_embedded. We spreken daarom ook over het **"embedden"** van de resource.
+
 ## Gerelateerde trajecten
 Tijdens de ontwikkeling van dit koppelvlak worden ook criteria voor API koppelvlakken uitgewerkt, inclusief operationalisering van deze criteria, zodat ze bij koppelvlakontwikkeling kunnen worden getoetst.
 
