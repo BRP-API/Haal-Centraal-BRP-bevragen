@@ -10,12 +10,12 @@ Garanderen dat verschillende systemen binnen en buiten de gemeente dezelfde (toe
 *Kanttekening*
 Als landelijk beheerde dynamische domeinwaarden ook daadwerkelijk landelijk beschikbaar gesteld worden (zoals de common groud gedachte wel beoogd) dan worden deze als resource ontsloten en dus als link (uri) opgenomen.
 
-## Enumeraties worden in de API specificatie opgenomen als code - waarde paren.
-De code wordt daarin gedefinieerd als const (constante).
+## Enumeraties worden in het bericht opgenomen als code.
+In de API specificaties worden enumeratiewaarden opgenomen met de code, in de description wordt de betekenis van de code genoemd.
 
 *Ratio*
 Uitgangspunt binnen Common Ground is gebruik van gegevens, niet opslag van gegevens. Dus de omschrijving (uitgeschreven waarde) is relevant voor de gebruiker.
-Echter de omschrijving (waarde) van enumeraties kan lang zijn en tekens bevatten waar code niet tegen kan (zoals komma, slash, haakjes). Uitgangspunt is eenvoud van implemententatie (developer first).
+Echter de omschrijving (waarde) van enumeraties kan lang zijn en tekens bevatten waar code niet tegen kan (zoals komma, slash, haakjes). Uitgangspunt is eenvoud van implemententatie (developer first). Andere oplossingen geven problemen met het genereren en gebruiken van code uit de API specificaties.
 
 ## Gemeentelijke kerngegevens en plusgegevens worden niet opgenomen in de resource.
 In de response worden alleen gegevens opgenomen die in het BRP zitten.
@@ -50,14 +50,37 @@ Het algoritme voor het samenstellen moet worden beschreven in de API specificati
 * Het in de API implementeren van deze logica garandeert een consistente uitvoering hiervan binnen een gemeente.
 * Dit is een verbetering voor AVG eisen, omdat hierdoor gegevens zoals van de partner niet meer bij een persoon meegeleverd hoeven te worden (deze werken immers alleen gebruikt voor het samenstellen van de aanschrijfwijze).
 
-## Alle relaties kunnen embed worden
-In de resource van een ingeschreven natuurlijk persoon kunnen alle relaties embedded worden opgenomen met gebruik van de expand-parameter.
-Wanneer een gerelateerde resource expand wordt, wordt de gehele resource teruggegeven, tenzij in de expand parameter alleen een deel van de gerelateerde resource gevraagd is.
+## Relaties uit dezelfde bron kunnen embed worden
+In de resource van een ingeschreven natuurlijk persoon kunnen de relaties partner(schap), ouders en kinderen embed worden opgenomen met gebruik van de expand-parameter. Dit betekent dat het mogelijk is in één aanroep de ingeschreven persoon te krijgen, met daarbij gegevens over de relaties met eventuele partner(s), ouders en kinderen.
+
+Wanneer een gerelateerde resource expand wordt, wordt de gehele sub-resource teruggegeven, tenzij in de expand parameter alleen een deel van de gerelateerde resource gevraagd is.
+
+Gegevens uit een andere bron/registratie (bijvoorbeeld het BAG-adres van een persoon) kunnen niet embed worden.
+
+Reisdocumenten kunnen niet embed worden.
+
+*Ratio*
+Vooralsnog heeft de bron, het GBA, geen directe toegang tot andere bronnen (BAG).
+Gegevens over de relaties met partner, ouders en kinderen horen bij de persoon.
+Vraag naar de combinatie van persoonsgegevens inclusief reisdocumentgegevens komt niet heel vaak voor.
 
 ## Gebruik van expand=true wordt uitgesloten
+Voor het gebruik van de API is het gebruiken van expand=true om alle relaties embed te krijgen is niet toegestaan.
 
 *Ratio*
 Het embedded van gerelateerde resources moet bewust worden gebruikt.
+
+## Relaties kunnen maximaal één niveau diep worden embed
+Door het gebruik van de parameter expand kunnen relaties/gerelateerde sub-resources worden embed in het antwoord. Relaties van de gerelateerde resource worden alleen als link opgenomen, maar kunnen zelf niet embed worden.
+
+Bijvoorbeeld van een persoon kunnen de gegevens van de gerelateerde sub-resource huwelijk/geregistreerd partnerschap direct worden meegeladen. Daarin zitten alleen de gegevens van de relatie zoals die ook in betreffende categorie van LO GBA voorkomen, zoals ook de naam van de partner.
+Wanneer echter de partner (ook) een ingeschreven persoon is, wordt een hyperlink naar de resource van deze persoon opgenomen. De gegevens van deze ingeschreven persoon (de partner) kunnen echter niet ok worden embed.
+
+*Ratio*
+Implementatie en gebruik eenvoudig houden.
+We zien geen functionele behoefte om diep gegevens te embedded.
+Het opvragen van relaties is eenvoudig.
+Opnemen van meer gegevens van gerelateerde personen dan bij de persoon zelf horen, mag vaak niet aangezien er geen doelbinding voor de gegevens van de partner.
 
 ## Namen van gegevensgroepen worden ingekort.
 Het stuk "IngeschrevenNatuurlijkPersoon" aan het eind van de groepsnaam wordt verwijderd.
@@ -89,32 +112,37 @@ De gemeente is er verantwoordelijk voor de resultaten van de API aanvraag te fil
 
 Uitgangspunt in de architectuur is gedelegeerde autorisatie.
 
-## Eén uniform endpoint voor zoeken ingeschreven natuurlijk persoonsgegevens
-Voor ingeschreven natuurlijk personen komt er één endpoint voor het zoeken: /ingeschrevenNatuurlijkPersonen.
-Dit endpoint geeft alle attributen van de ingeschreven natuurlijk persoon van het LO GBA, geen aanhangende gegevens of gemeentelijke kerngegevens, alle relaties (die in GBA zitten) als link (uri). In de documentatie wordt in tekst aangegeven dat expand=verblijfsadres moet worden opgegeven als de consumer het verblijfsadres in het zoekresultaat wil terugkrijgen.
+## Eén uniform endpoint voor zoeken ingeschreven persoonsgegevens
+Voor ingeschreven personen komt er één endpoint voor het zoeken: /ingeschrevenNatuurlijkPersonen.
+Dit endpoint geeft alle attributen van de ingeschreven persoon van het LO GBA, geen aanhangende gegevens of gemeentelijke kerngegevens, alle relaties (die in GBA zitten) als link (uri).
 
-Op dit endpoint worden alle zoekparameters uit RSGB-bevragingen 1.0 ondersteund die vallen onder "zoeken op persoonskenmerken". Alleen combinaties van parameters per zoekpad wordt ondersteund, inclusief evt. verplichting van specifieke parameters. Op andere paramters kan niet worden gezocht.
-Wanneer een client een andere combinatie gebruikt dan beschreven (bijvoorbeeld postcode + geboortedatum), moet de provider een foutmelding teruggeven.
-De ondersteunde combinaties worden in de specificaties beschreven in woorden en als uri-sjablonen.
+Op dit endpoint worden alle zoekparameters uit RSGB-bevragingen 1.0 ondersteund die vallen onder "zoeken op persoonskenmerken". Er worden minimale combinaties van parameters voorgeschreven.
 
 *Ratio*
 Het ondersteunen van één uniform endpoint per resource is duidelijker voor implementatie. Gevolgen van wijzigingen zijn beter te overzien (losse koppeling). Het voorkomt wildgroei van endpoints.
-Functioneel is vooralsnog alleen behoefte aan het embedden van het verblijfsadres, daarom wordt het embedded van andere relaties niet niet ondersteund.
-Beperken van het aantal mogelijke combinaties van zoekparameters maakt het mogelijk de provider te optimaliseren.
-Verplicht beperken van ondersteunde zoek-combinaties voorkomt vendor lock in, omdat zeker is dat elke leverancier exact dezelfde functionaliteit biedt in de API. Ook wordt de testbaarheid van de API hiermee vergroot.
-Zie issue [16](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/issues/16).
 
-## Verblijfadres wordt relatie naar een resource verblijfplaatsen
-Er wordt een resource gedefinieerd voor het weergeven van een verblijfplaats (/verblijfplaatsen).
-In deze resource zijn de relevantie adresgegevens platgeslagen, zodat de gebruiker eenvoudig alle adresgegevens beschikbaar heeft in het antwoord.
-Het verblijfadres van een ingeschreven natuurlijk persoon wordt vormgegeven als relatie naar de verblijfplaats.
-Alle relaties naar de werkelijke BAG objecttypen (nummeraanduiding, ligplaats, enz.) worden als relatie in de resource opgenomen.
-De gebruiker kan van een persoon de adresgegevens krijgen door /ingeschrevennatuurlijkpersonen?expand=verblijfadres. Dit wordt in de documentatie opgenomen.
+Vereisen van minimale combinaties van zoekparameters stimuleert gerichte zoekvragen.
+
+De API moet elke combinatie van toegestane zoekparameters ondersteunen, zolang het voldoet aan de eis van minimale combinaties. Bijvoorbeeld een van de minimale combinaties is postcode + huisnummer, elke combinatie van zoekparameters naast postcode en huisnummer moet ondersteund worden in de API en de zoekresultaten filteren op alle opgegeven zoekparameters.
+
+## Verblijfadres wordt relatie naar de nummeraanduiding plus een gegevensgroep
+Het verblijfadres van een persoon wordt bij de persoon opgenomen als gegevensgroep. Daarin staan de adresgegevens zoals die in het GBA bekend zijn. In deze gegevensgroep zijn de relevantie adresgegevens platgeslagen, zodat de gebruiker eenvoudig alle adresgegevens beschikbaar heeft in het antwoord.
+
+Wanneer het verblijfadres een BAG-adres is, wordt ook een relatie (link) naar de nummeraanduiding in het BAG opgenomen.
 
 *Ratio*
 Functionele vraag is: ik wil in één vraag een persoon met adres hebben.
 Een groot deel van de vragen om persoonsgegevens is er direct behoefte aan de adresgegevens, zonder geïnteresseerd te zijn in de structuur in BAG (zoals naar nummeraanduiding, woonplaats, ligplaats, adresseerbaar object).
+Zie https://www.rvig.nl/brp/vraag-en-antwoord/mag-een-persoon-worden-ingeschreven-op-een-locatieomschrijving-in-de-gba-als-er-geen-authentiek-bag-adres-is
 Deze oplossing is ook een oplossing voor issue [22](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/issues/22) en [14](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/issues/14).
+
+## Verblijfplaats wordt gevuld met adresgegevens uit het GBA
+De verblijfplaats toont de adresgegevens zoals die in het GBA staan geregistreerd.
+
+*Ratio*
+Vanuit het GBA hoeft er geen verbinding te zijn naar het BAG om de juiste adresgegevens op te halen.
+Er is niet altijd een BAG-adres.
+Zie https://www.rvig.nl/brp/vraag-en-antwoord/mag-een-persoon-worden-ingeschreven-op-een-locatieomschrijving-in-de-gba-als-er-geen-authentiek-bag-adres-is
 
 ## Zoeken op geboortedatum gebeurt alleen op volledige datum.
 Er wordt geen zoeken op onvolledige geboortedatum ondersteund in de API.
@@ -167,25 +195,67 @@ Voor persoonsgegevens gebruiken we LO GBA 3.10.
 *Ratio*
 Het gaat om bevragen bij de bron. De bron voor persoonsgegevens is het GBA. Daarom moet het logisch ontwerp van de GBA worden gebruikt en er geen afwijkende RSGB-modellering zijn van persoonsgegevens.
 
-# Zoeken van personen op adres kan via endpoint /bewoning
-Via resource bewoning kunnen de bewoners op een adres worden gezocht. Hiervoor kunnen de queryparameters worden gebruikt voor het zoeken van een adres (zoals postcode, huisnummer, enz.).
-Het antwoord bevat een lijst met in elk voorkomen de link naar het betreffende adres en de link naar de betreffende persoon (bewoner). De gegevens van de bewoners en adressen kan met parameter expand worden teruggegeven.
+## Zoeken en raadplegen van personen levert alleen actuele relaties
+Volgens LO GBA zijn ook relaties die zijn beëindigd nog "actueel". Voor het zoeken en raadplegen van actuele persoonsgegevens is echter alleen behoefte aan relaties die niet beëindigd zijn.
+
+Wanneer wel behoefte is aan alle partner-relaties, inclusief relaties die al beëindigd zijn, kan hiervoor historisch zoeken op partners worden gebruikt.
 
 ## Opvragen van historie kan via specifieke endpoints
-Er komen endpoints /verblijfplaatshistorie/{burgerservicenummer}, /verblijfstitelhistorie/{burgerservicenummer}, /partnerhistorie/{burgerservicenummer} en /bewoningshistorie.
-Via deze endpoints kan de historie op het betreffende aspect opgevraagd worden.
+Opvragen van historie wordt gedefinieerd in een aparte API specificatie.
+Met deze API kan de historie op het betreffende aspect opgevraagd worden.
+
+Hiermee wordt het zoeken/raadplegen van de volgende historie ondersteund:
+- bewoningen (welke personen hebben een adres als verblijfplaats gehad)
+- verblijfplaatsen (welke verblijfplaatsen heeft een persoon gehad)
+- partners (welke partnerrelaties heeft een persoon gehad)
+- verblijftitels (welke verblijftitels heeft een persoon gehad)
+
+
 Er kan gekozen worden om de status op peildatum te raadplegen met de queryparameter geldigOp.
 Er kan gekozen worden de historische voorkomens te raadplegen binnen een periode met queryparameters periodevan en periodetot.
 
-Het antwoordbericht van /verblijfplaatshistorie bevat het property burgerservicenummer van de ingeschreven natuurlijk persoon, plus _links en _embedded met de historische voorkomens van de verblijfplaats. Hierin zitten ook de properties periodeVan en periodeTotEnMet.
-Het antwoordbericht van /verblijfstitelhistorie bevat de historische voorkomens van de property verblijfstitel van de ingeschreven natuurlijk persoon en de properties periodeVan en periodeTotEnMet.
-Het antwoordbericht van /partnerhistorie bevat het property burgerservicenummer van de ingeschreven natuurlijk persoon, plus _links en _embedded met de historische voorkomens van de partner. Hierin zitten ook de properties periodeVan en periodeTotEnMet.
-Het antwoordbericht van /bewonershistorie bevat de lijst voorkomens met elk de properties periodeVan en periodeTotEnMet, plus _links en _embedded met het betreffende verblijfsadres met de relatie naar de betreffende bewoners (resource ingeschreven natuurlijke persoon). De bewonershistorie kan worden gezocht met dezelfde queryparameters als voor resource bewoners.
+Het antwoordbericht van /verblijfplaatsen bevat het property burgerservicenummer van de ingeschreven natuurlijk persoon, plus \_links en \_embedded met de historische voorkomens van de verblijfplaats van de persoon. Hierin zitten ook de properties geldigVan en geldigTotEnMet.
+Het antwoordbericht van /verblijfstitels bevat de historische voorkomens van de verblijfstitel van de ingeschreven persoon en de properties geldigVan en geldigTotEnMet.
+Het antwoordbericht van /partners bevat het property burgerservicenummer van de ingeschreven natuurlijk persoon, plus de historische voorkomens van partner-relaties (huwelijken of geregistreerd partnerschappen). Hierin zitten ook de geldigVan en geldigTotEnMet.
+Het antwoordbericht van /bewoningen bevat de lijst gevonden adressen, met voor elk adres de bewoners met elk de properties geldigVan en geldigTotEnMet.
 
 ## Elementnamen die verwijzen naar een resource die maximaal 1 keer kan voorkomen worden enkelvoud.
 
-Als voorbeeld de verblijfsplaats bij een ingeschreven persoon. De kardinaliteit daarvan is 0..1, dus er kan maximaal 1 verblijfsplaats aan gerelateerd zijn aan een ingeschreven persoon. 
+Als voorbeeld de verblijfsplaats bij een ingeschreven persoon. De kardinaliteit daarvan is 0..1, dus er kan maximaal 1 verblijfsplaats aan gerelateerd zijn aan een ingeschreven persoon.
 
 *Ratio*
-Het is voor de developer verwarrend als de elementnaam in meervoud is gesteld terwijl de kardinaliteit maximaal 1 is. 
+Het is voor de developer verwarrend als de elementnaam in meervoud is gesteld terwijl de kardinaliteit maximaal 1 is.
 Ratio
+
+## Burgerservicenummer is unieke sleutel voor een ingeschreven natuurlijk persoon
+De resource ingeschrevenNatuurlijkPersonen wordt uniek geïdentificeerd met de sleutel burgerservicenummer.
+Dus is het pad naar de gegevens van één persoon gedefinieerd als /ingeschrevennatuurlijkpersonen/{burgerservicenummer}
+
+*Ratio*
+Het burgerservicenummer is het persoonsnummer voor contact van een burger met de overheid. Andere registraties die verwijzen naar een persoon zullen geen andere unieke identificatie kennen dan het burgerservicenummer. Zolang andere registraties (zoals BRK en HR) alleen het burgerservicenummer als functionele sleutel van de persoon kennen kan er geen technische sleutel (UUID) gebruikt worden voor het ophalen van een enkele resource.
+Ook voor apps die op bais van DigiD de persoonsgegevens ophalen kennen alleen het burgerservicenummer, geen technische sleutel.
+
+## We nemen geen (inverse) relaties uit een ander domein op
+Vanuit andere registraties bestaan er relaties naar ingeschreven natuurlijk personen. Een persoon kan bijvoorbeeld zakelijk gerechtigde zijn van een Kadastraal object of functionaris zijn van een bedrijf.
+Deze inverse relaties uit een andere bron worden niet opgenomen bij de ingeschreven natuurlijk persoon.
+Wanneer er functionele behoefte is aan deze gegevens moeten deze bij de betreffende bron (bijvoorbeeld BRK of HR) worden opgevraagd.
+
+*Ratio*
+We bevragen gegevens bij de bron. Een bron kan alleen gegevens leveren die ze zelf heeft.
+
+## Bij het zoeken van personen is er een maximum aantal resultaten
+Personen mogen alleen gericht worden gezocht. Daarom moet het aantal mogelijke resultaten op een zoekvraag worden gelimiteerd. Wanneer met opgegeven zoekparameters het aantal resultaten groter is dan het maximum, wordt een foutmelding gegeven en krijgt de gebruiker verder geen gevonden personen terug in het antwoord.
+Er is dus ook geen paginering nodig in deze API.
+
+Er wordt in de API standaard geen aantal als maximum vastgesteld. De provider van de API mag dit aantal zelf bepalen en optimaliseren op basis van ervaringen in het gebruik van de API.
+
+## In onderzoek kan betrekking hebben op groepen van attributen én op individuele attributen
+Groepen van attributen (zoals "naam" die o.a. voornamen en geslachtsnaam bevat) kunnen in zijn geheel in onderzoek zijn, maar ook kunnen individuele attributen in de groep (zoals alleen de voornamen) in onderzoek zijn.
+
+Wanneer een hele groep attributen (als groep) in onderzoek is, wordt in het antwoord op de bevraging van de persoon elk attribuut van de groep aangegeven als in onderzoek.
+
+## Sortering voor actuele zoekresultaten worden niet gesorteerd
+De API standaard schrijft niet voor hoe zoekresultaten in de API moeten worden gesorteerd. Wanneer de client behoefte heeft aan gesorteerde resultaten, moet zij de ontvangen resultaten zelf sorteren.
+
+## Historie wordt gesorteerd op geldigheid met meest actuele resultaat bovenaan
+Historie wordt aflopend gesorteerd op datum geldigheid (geldigVan).

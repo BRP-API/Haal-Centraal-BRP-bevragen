@@ -1,0 +1,164 @@
+Href:
+  type: string
+  format: "uri"
+  example: "datapunt.voorbeeldgemeente.nl/api/v1/resourcename/123456789"
+HalLink:
+  type: object
+  properties:
+    href:
+      $ref: "#/components/schemas/Href"
+HalCollectionLinks:
+  type: object
+  properties:
+    self:
+      type: object
+      description: "uri van de api aanroep die tot dit resultaat heeft geleid"
+      properties:
+        href:
+          $ref: "#/Href"
+HalPaginationLinks:
+  allOf:
+  - $ref: "#/HalCollectionLinks"
+  - type: "object"
+    properties:
+      first:
+        type: "object"
+        description: "uri voor het opvragen van de eerste pagina van deze collectie"
+        properties:
+          href:
+            type: "string"
+            format: "uri"
+            example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?page=1"
+          title:
+            type: "string"
+            example: "Eerste pagina"
+      previous:
+        type: "object"
+        description: "uri voor het opvragen van de vorige pagina van deze collectie"
+        properties:
+          href:
+            type: "string"
+            format: "uri"
+            example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?page=3"
+          title:
+            type: "string"
+            example: "Vorige pagina"
+      next:
+        type: "object"
+        description: "uri voor het opvragen van de volgende pagina van deze collectie"
+        properties:
+          href:
+            type: "string"
+            format: "uri"
+            example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?page=5"
+          title:
+            type: "string"
+            example: "Volgende pagina"
+DatumOnvolledig:
+  type: object
+  properties:
+    datum:
+      type: string
+      title: datum
+      format: date
+      example: "1989-05-03"
+      description: "De volledige datum die in de `date` definitie past. Dit element wordt alleen gevuld als de volledige datum bekend is."
+    jaar:
+      type: integer
+      title: jaar
+      example: 1989
+      description: "Het jaar van de datum. Als het jaar bekend is wordt dit element gevuld, ook als de volledige datum bekend is."
+      format: date-fullyear
+    maand:
+      type: integer
+      minimum: 1
+      maximum: 12
+      example: 5
+      title: maand
+      description: "De maand. Als de maand van een datum bekend is wordt dee hier ingeveuld. Ook als de volledige datum is ingevuld."
+      format: date-month
+    dag:
+      type: integer
+      minimum: 1
+      maximum: 31
+      example: 3
+      title: dag
+      description: "De dag. Als de dag van de datum bekend is wordt deze hier ingevuld. Ook als de volledige datum bekend is."
+      format: date-mday
+Nen3610Id:
+  type: object
+  description: Identificatiegegevens voor de universeel unieke identificatie van een object. De combinatie van namespace van een registratie, lokale identificatie en versie-informatie maken een object uniek identificeerbaar. Met de informatie van deze klasse kan daardoor met zekerheid worden verwezen naar het geïdentificeerde object.
+  required:
+    -	Namespace
+    -	lokaalId
+  properties:
+    namespace:
+      type: string
+      title: Namespace
+      description: Unieke verwijzing naar een registratie van objecten.
+      pattern: ([A-Za-z0-9_\-,\.])+
+    lokaalId:
+      type: string
+      title: Lokaal id
+      description: Unieke identificatiecode binnen een registratie.
+    versie:
+      type: string
+      title: Versie
+      description: Versie-aanduiding van een object
+Foutbericht:
+  type: object
+  description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
+  properties:
+    type:
+      type: string
+      format: uri
+      description: Link naar meer informatie over deze fout
+      example: "https://www.gemmaonline.nl/standaarden/api/ValidatieFout"
+    title:
+      type: string
+      description: Beschrijving van de fout
+      example: "Validatiefout"
+    status:
+      type: integer
+      description: "Http status code"
+      example: 400
+    detail:
+      type: string
+      description: Details over de fout
+      example: "Er is een fout gevonden in de opgegeven parameters"
+    instance:
+      type: string
+      format: uri
+      description: Uri van de aanroep die de fout heeft veroorzaakt
+      example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+    code:
+      type: string
+      description: Systeemcode die het type fout aangeeft
+      minLength: 1
+ValidatieFoutbericht:
+  allOf:
+    - $ref: '#/Foutbericht'
+    - type: object
+      properties:
+        invalid-params:
+          type: array
+          items:
+            $ref: "#/ParamFoutDetails"
+          description: "Foutmelding per fout in een parameter. Alle gevonden fouten worden één keer teruggemeld."
+ParamFoutDetails:
+  type: object
+  description: Details over fouten in opgegeven parameters
+  properties:
+    type:
+      type: string
+      format: uri
+    name:
+      type: string
+      description: Naam van de parameter
+    code:
+      type: string
+      description: Systeemcode die het type fout aangeeft
+      minLength: 1
+    reason:
+      type: string
+      description: Beschrijving van de fout op de parameterwaarde
