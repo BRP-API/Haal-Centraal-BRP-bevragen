@@ -1636,7 +1636,7 @@ components:
         ingeschrevenpersonen:
           title: "isOuder"
           type: "object"
-          description: "De ingeschreven persoon die ouder is van de opgevraagde persoon."
+          description: "De ingeschreven persoon die ouder is van de opgevraagde persoon. Deze wordt alleen opgenomen wanneer de ouder een ingeschreven persoon is."
           properties:
             href:
               $ref: "#/components/schemas/Href"
@@ -1648,7 +1648,7 @@ components:
         ingeschrevenpersonen:
           title: "isKind"
           type: "object"
-          description: "De ingeschreven persoon die kind is van de opgevraagde persoon."
+          description: "De ingeschreven persoon die kind is van de opgevraagde persoon. Deze wordt alleen opgenomen wanneer het kind een ingeschreven persoon is."
           properties:
             href:
               $ref: "#/components/schemas/Href"
@@ -1660,7 +1660,7 @@ components:
         ingeschrevenPersonen:
           title: "isPartner"
           type: "object"
-          description: ""
+          description: "De ingeschreven persoon die partner is van de opgevraagde persoon. Deze wordt alleen opgenomen wanneer de partner een ingeschreven persoon is."
           properties:
             href:
               $ref: "#/components/schemas/Href"
