@@ -10,31 +10,23 @@ Functionaliteit: zoeken met een wildcard wordt ondersteund op enkele parameters
   - "*": Komt overeen met nul of meer (niet-spatie) karakters
   - "?": Komt precies overeen met één (niet-spatie) karakter
 
-  Er kan meer dan één wildcard in één zoekterm of zin voorkomen.
-  De twee wildcard karakters kunnen in combinatie worden gebruikt. Bijvoorbeeld m*?? komt overeen met woorden die beginnen met m en drie of meer tekens hebben.
+  Een wildcard kan geplaatst worden aan het begin van de zoekstring en/of aan het eind van de zoekstring.
 
-  Spaties (URL-encoded als %20) worden gebruikt als woordscheiding en wildcard-matching werkt alleen binnen een enkel woord. Bijvoorbeeld, r*te* komt overeen met de ruimtelijk, maar niet met ruimte tekort.
+  De "?" wildcard kan meerdere keren achter elkaar worden opgenomen. Bijvoorbeeld zoeken op "groen??" zoekt op namen die beginnen met "groen" en exact 7 karakters bevatten (bijv. Groenlo en Groenen, maar niet Groen of Groens).
 
   Bij het zoeken op de parameters die een wildcard ondersteunen, moeten er minimaal 2 karakters exclusief de wildcard(s) worden opgegeven.
 
   Achtergrond:
-    Gegeven de registratie ingeschreven personen kent zoAls beschreven in testdata.csv
+    Gegeven de registratie ingeschreven personen kent zoals beschreven in testdata.csv
 
   Scenario: Voor attribuut geslachtsnaam wordt zoeken met een wildcard ondersteund
-    Gegeven de registratie ingeschreven personen kent met de geslachtsnaam "Groen", "Groenlo", "Groenink"
+    Gegeven de registratie ingeschreven personen kent met de geslachtsnaam "Groen", "Groenlo", "Groenink", "Groenen"
     Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=groen*
     Dan wordt de ingeschreven persoon gevonden met naam.geslachtsnaam=Groen
     En wordt de ingeschreven persoon gevonden met naam.geslachtsnaam=Groenlo
     En wordt de ingeschreven persoon gevonden met naam.geslachtsnaam=Groenink
+    En wordt de ingeschreven persoon gevonden met naam.geslachtsnaam=Groenen
     En voldoet elke van de gevonden ingeschrevennatuurlijkpersonen aan de query naam.geslachtsnaam=groen*
-    Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=ve*en
-    Dan wordt de ingeschreven persoon gevonden met naam.geslachtsnaam=Velzen
-    En wordt de ingeschreven persoon gevonden met naam.geslachtsnaam=Veen
-    Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=ve??en
-    Dan wordt de ingeschreven persoon gevonden met naam.geslachtsnaam=Velzen
-    En wordt de ingeschreven persoon gevonden met naam.geslachtsnaam=Velden
-    En wordt geen ingeschreven persoon gevonden met naam.geslachtsnaam=Veen
-    En wordt geen ingeschreven persoon gevonden met naam.geslachtsnaam=Veerlen
 
   Scenario: Voor attribuut voornamen wordt zoeken met een wildcard ondersteund
     Gegeven de registratie ingeschreven personen kent met de voornamen "Frank", "Franka", "Johan Frank Robert", "Franklin", "Franky"
@@ -43,13 +35,16 @@ Functionaliteit: zoeken met een wildcard wordt ondersteund op enkele parameters
     En wordt de ingeschreven persoon gevonden met naam.voornamen=Franka
     En wordt de ingeschreven persoon gevonden met naam.voornamen=Franklin
     En wordt de ingeschreven persoon gevonden met naam.voornamen=Franky
+    En wordt de ingeschreven persoon gevonden met naam.voornamen=Johan Frank Robert
     En voldoet elke van de gevonden ingeschrevennatuurlijkpersonen aan de query naam.voornamen=*frank*
+
     Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=groen*&naam__voornamen=frank?
     Dan wordt de ingeschreven persoon gevonden met naam.voornamen=Franka
     En wordt de ingeschreven persoon gevonden met naam.voornamen=Franky
     En wordt geen ingeschreven persoon gevonden met naam.voornamen=Frank
     En wordt geen ingeschreven persoon gevonden met naam.voornamen=Franklin
     En voldoet elke van de gevonden ingeschrevennatuurlijkpersonen aan de query naam.voornamen=frank?
+
     Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=ve*&naam__voornamen=Mari?
     Dan wordt de ingeschreven persoon gevonden met naam.voornamen=Maria
     En wordt de ingeschreven persoon gevonden met naam.voornamen=Marie
@@ -61,10 +56,27 @@ Functionaliteit: zoeken met een wildcard wordt ondersteund op enkele parameters
     Dan wordt de ingeschreven persoon gevonden met verblijfplaats.naamOpenbareRuimte=Prinses Beatrixlaan
     En wordt de ingeschreven persoon gevonden met verblijfplaats.naamOpenbareRuimte=Beatrixstraat
     En voldoet elke van de gevonden ingeschrevennatuurlijkpersonen aan de query verblijfplaats.naamOpenbareRuimte=*beatrix*
-    Als ingeschreven personen gezocht worden met ?naamopenbareruimte=*tri?straat
+
+    Als ingeschreven personen gezocht worden met ?naamopenbareruimte=*trixstraa?
     Dan wordt de ingeschreven persoon gevonden met verblijfplaats.naamOpenbareRuimte=Beatrixstraat
-    Als ingeschreven personen gezocht worden met ?naamopenbareruimte=*%20?eatrix*
-    Dan wordt de ingeschreven persoon gevonden met verblijfplaats.naamOpenbareRuimte=Prinses Beatrixlaan
+
+  Scenario: De "?" wildcard kan meerdere keren achter elkaar worden opgenomen
+    Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=groen??
+    En wordt de ingeschreven persoon gevonden met naam.geslachtsnaam=Groenlo
+    En wordt de ingeschreven persoon gevonden met naam.geslachtsnaam=Groenen
+    En wordt geen ingeschreven persoon gevonden met naam.geslachtsnaam=Groen
+    En wordt geen ingeschreven persoon gevonden met naam.geslachtsnaam=Groenink
+    En voldoet elke van de gevonden ingeschrevennatuurlijkpersonen aan de query naam.geslachtsnaam=groen??
+
+  Scenario: De wildcard karakters moeten aan het begin en/of aan het eind van de zoekstring staan
+    Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=ve*en
+    Dan levert dit een foutmelding
+    Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=ve??en
+    Dan levert dit een foutmelding
+    Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=*de*
+    Dan levert dit zoekresultaten
+    En wordt de ingeschreven persoon gevonden met naam.geslachtsnaam=Velden
+    En wordt de ingeschreven persoon gevonden met naam.geslachtsnaam=Aedel
 
   Scenario: Bij het zoeken op de parameters die een wildcard ondersteunen, moeten er minimaal 2 karakters exclusief de wildcard(s) worden opgegeven.
     Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=v
@@ -79,17 +91,4 @@ Functionaliteit: zoeken met een wildcard wordt ondersteund op enkele parameters
     Dan levert dit zoekresultaten
     Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=ve*
     Dan levert dit zoekresultaten
-
-  Scenario: Zoeken met een wildcard zoekt alleen binnen enkele woorden
-    Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=groen*
-    Dan wordt de ingeschreven persoon gevonden met naam.geslachtsnaam=Groenen
-    En wordt de ingeschreven persoon gevonden met naam.geslachtsnaam=Groen-Geel
-    En wordt geen ingeschreven persoon gevonden met naam.geslachtsnaam=Groen en Geel
-    Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=*en%20en%20Geel
-    Dan wordt de ingeschreven persoon gevonden met naam.geslachtsnaam=Groen en Geel
-    Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=groen*&naam__voornamen=*frank*
-    Dan wordt de ingeschreven persoon gevonden met naam.voornamen=Franklin
-    En wordt geen ingeschreven persoon gevonden met naam.voornamen=Johan Frank Robert
-    Als ingeschreven personen gezocht worden met ?gemeentevaninschrijving=0503&verblijfplaats__huisnummer=2&verblijfplaats__naamopenbareruimte=*beatrix*
-    Dan wordt de ingeschreven persoon gevonden met verblijfplaats.naamOpenbareRuimte=Beatrixstraat
-    En wordt geen ingeschreven persoon gevonden met verblijfplaats.naamOpenbareRuimte=Prinses Beatrixlaan
+    
