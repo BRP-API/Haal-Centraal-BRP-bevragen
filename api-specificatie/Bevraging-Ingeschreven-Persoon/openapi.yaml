@@ -618,33 +618,20 @@ components:
   schemas:
     IngeschrevenPersoon:
       type: "object"
-      description: "Een NATUURLIJK PERSOON ingeschreven in de Basisregistratie Personen\
-        \ (BRP). Het betreft de verzameling van personen ingeschreven in de GBA of\
-        \ RNI woonachtig in de gemeente dan wel elders en van belang voor de gemeentelijke\
-        \ taakuitoefening. Een INGESCHREVEN NATUURLIJK PERSOON is een specialisatie\
-        \ van NATUURLIJK PERSOON."
+      description: "01/51 Gegevens over de ingeschrevene. Het betreft een persoon ingeschreven in de GBA of\
+        \ RNI woonachtig in de gemeente dan wel elders."
       properties:
         burgerservicenummer:
           type: "string"
-          title: "Burgerservicenummer"
-          description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet\
-            \ algemene bepalingen burgerservicenummer. Elk ingeschreven natuurlijk\
-            \ persoon heeft een BSN, een nummer dat de natuurlijk persoon uniek identificeert\
-            \ in overheidsadministraties. De attribuutsoort kent onder meer historie\
-            \ omdat het mogelijk is dat het Burgerservicenummer van een natuurlijk\
-            \ persoon wijzigt, met name vanwege ambtelijke correcties. Zie verder\
-            \ de toelichting in de GBA Alle nummers waarvoor geldt dat, indien aangeduid\
-            \ als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1)\
-            \ + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9\
-            \ cijfers aanwezig zijn."
+          title: "01.20 Burgerservicenummer"
+          description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer."
           pattern: "^[0-9]$"
           maxLength: 9
-          example: "430422088"
+          example: "555555021"
         a_nummer:
           type: "integer"
-          title: "A-nummer"
-          description: "Het administratienummer van de persoon, bedoeld in de Wet\
-            \ BRP zie GBA"
+          title: "01.10 A-nummer"
+          description: "Het administratienummer, bedoeld in artikel 4.9 van de Wet BRP."
           example: "876352431"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
@@ -682,7 +669,7 @@ components:
         landVanwaarIngeschreven:
           $ref: "#/components/schemas/Land_tabel"
         naam:
-          $ref: "#/components/schemas/Naam"
+          $ref: "#/components/schemas/NaamPersoon"
         inOnderzoek:
           $ref: "#/components/schemas/InOnderzoek"
         nationaliteit:
@@ -703,11 +690,7 @@ components:
           $ref: "#/components/schemas/IngeschrevenPersoon_embedded"
     Ouder:
       type: "object"
-      description: "Het verband tussen een kind en één van zijn of haar juridische\
-        \ ouders."
-      required:
-      - "uuid"
-      - "geboorte"
+      description: "02/52 of 03/53 Gegevens over de ouder van de ingeschrevene."
       properties:
         burgerservicenummer:
           type: "string"
@@ -725,41 +708,23 @@ components:
           pattern: "^[0-9]$"
           maxLength: 9
           example: "430422088"
-        voornamen:
-          type: "string"
-          title: "Voornamen"
-          description: "De verzameling namen die, gescheiden door spaties, aan de\
-            \ geslachtsnaam voorafgaat. Conform categorie 05.02 van LO GBA."
-          maxLength: 200
-          example: "Pieter Jan"
+        naam:
+          $ref: "#/components/schemas/Naam"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
         ouder_aanduiding:
           $ref: "#/components/schemas/OuderAanduiding_enum"
-        geslachtsnaam:
-          type: "string"
-          title: "Geslachtsnaam"
-          description: "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels\
-            \ en adellijke titel/predikaat zijn afgesplitst. Conform categorie 05.02\
-            \ van LO GBA."
-          maxLength: 200
-          example: "Vries"
         geldigVan:
           $ref: "#/components/schemas/Datum_onvolledig"
         geldigTotEnMet:
           $ref: "#/components/schemas/Datum_onvolledig"
-        voorvoegsel:
-          $ref: "#/components/schemas/Voorvoegsel_tabel"
-        adellijkeTitel_predikaat:
-          $ref: "#/components/schemas/AdellijkeTitel_predikaat_tabel"
         geboorte:
           $ref: "#/components/schemas/Geboorte"
         _links:
           $ref: "#/components/schemas/Ouder_links"
     Kind:
       type: "object"
-      description: "Het verband tussen de ingeschreven persoon en één van zijn of haar juridische\
-        \ kinderen."
+      description: "09/59 Gegevens over een kind van de ingeschrevene."
       properties:
         burgerservicenummer:
           type: "string"
@@ -777,38 +742,15 @@ components:
           pattern: "^[0-9]$"
           maxLength: 9
           example: "430422088"
-        voornamen:
-          type: "string"
-          title: "Voornamen"
-          description: "De verzameling namen die, gescheiden door spaties, aan de\
-            \ geslachtsnaam voorafgaat. Conform categorie 05.02 van LO GBA."
-          maxLength: 200
-          example: "Pieter Jan"
-        ouder_aanduiding:
-          $ref: "#/components/schemas/OuderAanduiding_enum"
-        geslachtsnaam:
-          type: "string"
-          title: "Geslachtsnaam"
-          description: "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels\
-            \ en adellijke titel/predikaat zijn afgesplitst. Conform categorie 05.02\
-            \ van LO GBA."
-          maxLength: 200
-          example: "Vries"
-        voorvoegsel:
-          $ref: "#/components/schemas/Voorvoegsel_tabel"
-        adellijkeTitel_predikaat:
-          $ref: "#/components/schemas/AdellijkeTitel_predikaat_tabel"
+        naam:
+          $ref: "#/components/schemas/Naam"
         geboorte:
           $ref: "#/components/schemas/Geboorte"
         _links:
           $ref: "#/components/schemas/Kind_links"
     Partner:
       type: "object"
-      description: "Gegevens over een huwelijk/geregistreerd partnerschap van de NATUURLIJK\
-        \ PERSOON"
-      required:
-      - "uuid"
-      - "geboorte"
+      description: "05/55 Gegevens over een gesloten huwelijk/geregistreerd partnerschap van de ingeschrevene."
       properties:
         burgerservicenummer:
           type: "string"
@@ -828,27 +770,10 @@ components:
           example: "430422088"
         soortVerbintenis:
           $ref: "#/components/schemas/SoortVerbintenis_enum"
-        voornamen:
-          type: "string"
-          title: "Voornamen"
-          description: "De verzameling namen die, gescheiden door spaties, aan de\
-            \ geslachtsnaam voorafgaat. Conform categorie 05.02 van LO GBA."
-          maxLength: 200
-          example: "Pieter Jan"
+        naam:
+          $ref: "#/components/schemas/Naam"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
-        geslachtsnaam:
-          type: "string"
-          title: "Geslachtsnaam"
-          description: "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels\
-            \ en adellijke titel/predikaat zijn afgesplitst. Conform categorie 05.02\
-            \ van LO GBA."
-          maxLength: 200
-          example: "Vries"
-        voorvoegsel:
-          $ref: "#/components/schemas/Voorvoegsel_tabel"
-        adellijkeTitel_predikaat:
-          $ref: "#/components/schemas/AdellijkeTitel_predikaat_tabel"
         geboorte:
           $ref: "#/components/schemas/Geboorte"
         ontbindingPartnerschap:
@@ -890,16 +815,7 @@ components:
           type: "string"
           title: "Geboorteplaats"
           description: "De naam van de Nederlandse gemeente of een buitenlandse plaats\
-            \ of een plaatsbepaling, die aangeeft waar de persoon is overleden In\
-            \ afwijking van het corresponderende GBA-attribuutsoort wordt voor gemeenten\
-            \ niet de code vastgelegd maar de gemeentenaam. Het betreft een gemeente\
-            \ in het Europese deel van het Koninkrijk. Zie verder de toelichting in\
-            \ de GBA. Wanneer het niet een Nederandse gemeente betreft, wordt een\
-            \ buitenlandse plaatsnaam of een omschrijving zo nodig aangevuld met een\
-            \ aanduiding in lengte- en breedtegraden, indien de geboorte niet in een\
-            \ gemeente of buitenlandse plaats heeft plaatsgevonden (bijvoorbeeld bij\
-            \ een geboorte op of boven internationaal gebied). Standaardwaarde '0000'\
-            \ indien onbekend."
+            \ of een plaatsbepaling, die aangeeft waar de persoon is geboren. In afwijking van GBA attribuut 03.20 wordt voor een Nederlandse plaats niet de code, maar de plaatsnaam opgenomen."
           maxLength: 40
           example: "Nieuwegein"
         datum:
@@ -908,35 +824,40 @@ components:
           $ref: "#/components/schemas/Land_tabel"
     Naam:
       type: "object"
-      description: "Gegevens over de naam van de NATUURLIJK PERSOON"
+      description: "02 + 61 Gegevens over de naam van de NATUURLIJK PERSOON"
       properties:
         aanduidingAanschrijving:
           $ref: "#/components/schemas/Naamgebruik_enum"
         voornamen:
           type: "string"
-          title: "Voornamen"
+          title: "02.10 Voornamen"
           description: "De verzameling namen die, gescheiden door spaties, aan de\
             \ geslachtsnaam voorafgaat."
           maxLength: 200
+          minLength: 1
           example: "Pieter Jan"
         geslachtsnaam:
           type: "string"
-          title: "Geslachtsnaam"
+          title: "02.40 Geslachtsnaam"
           description: "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels\
             \ en adellijke titel/predikaat zijn afgesplitst."
           maxLength: 200
+          minLength: 1
           example: "Vries"
-        aanschrijfwijze:
-          type: "string"
-          title: "aanschrijfwijze"
-          description: "| Samengestelde naam zoals die in communicatie met de persoon gebruikt kan worden. Hoe het samenstellen van een aanschrijfwijze te werk gaat\
-            \ is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanschrijfwijze.feature)"
-          maxLength: 50
-          example: "P.J. graaf de Vries-van der Zon"
         voorvoegsel:
           $ref: "#/components/schemas/Voorvoegsel_tabel"
         adellijkeTitel_predikaat:
           $ref: "#/components/schemas/AdellijkeTitel_predikaat_tabel"
+    NaamPersoon:
+      allOf:
+        - $ref: "#/components/schemas/Naam"
+        - properties:
+            aanschrijfwijze:
+              type: "string"
+              title: "aanschrijfwijze"
+              description: "| Samengestelde naam zoals die in communicatie met de persoon gebruikt kan worden. Hoe het samenstellen van een aanschrijfwijze te werk gaat\
+                \ is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanschrijfwijze.feature)"
+              example: "P.J. graaf de Vries-van der Zon"
     InOnderzoek:
       type: "object"
       description: "Een groep van booleans om aan te geven welke gegevens van de ingeschreven\
@@ -1095,8 +1016,7 @@ components:
             \ deze persoon in onderzoek is."
     Nationaliteit:
       type: "object"
-      description: "Gegevens over de nationaliteit. Zie verder de toelichting in de\
-        \ GBA."
+      description: "04/54 Gegevens over een nationaliteit van de ingeschrevene."
       properties:
         aanduidingBijzonderNederlanderschap:
           $ref: "#/components/schemas/AanduidingBijzonderNederlanderschap_enum"
@@ -1108,8 +1028,7 @@ components:
           $ref: "#/components/schemas/RedenVerkrijgingOpnemen_beindigenNationaliteit_tabel"
     Overlijden:
       type: "object"
-      description: "Gegevens over het overlijden van de ingeschreven natuurlijk persoon.\
-        \ Zie verder de toelichting in de GBA."
+      description: "06/56 Gegevens over het overlijden van de ingeschrevene."
       properties:
         plaats:
           type: "string"
@@ -1167,39 +1086,13 @@ components:
           $ref: "#/components/schemas/Land_tabel"
     Verblijfplaats:
       type: "object"
-      description: "Een door het bevoegde gemeentelijke orgaan als zodanig toegekende\
-        \ aanduiding van een VERBLIJFSOBJECT, een STANDPLAATS of een LIGPLAATS. De\
-        \ gegevens over het verblijf en adres van de INGESCHREVEN NATUURLIJK PERSOON\
-        \ De gegevens over het verblijf en adres van de INGESCHREVEN NATUURLIJK PERSOON.\
-        \ Dit is het adres waarop een persoon is ingeschreven. Deze resource is samengesteld\
-        \ op basis van de gegevensgroep VERBLIJFSADRES en elementen uit de objecttypen\
-        \ NUMMERAANDUIDING, OPENBARE RUIMTE en WOONPLAATS. Zie de toelichting in de\
-        \ Catalogus BAG. In aanvulling hierop het volgende. Het betreft alle gegevens\
-        \ en relaties van de NUMMERAANDUIDING zoals deze in de BAG gedefinieerd zijn.\
-        \ NUMMERAANDUIDING is gemodelleerd als een specialisatie van ADRESSEERBAAR\
-        \ OBJECT AANDUIDING. Daar bij overige (officieel vastgestelde) adressen deels\
-        \ vergelijkbare gegevens en relaties van toepassing zijn, zijn desbetreffende\
-        \ gegevens gemodelleerd bij ADRESSEERBAAR OBJECT AANDUIDING, de verzameling\
-        \ van nummeraanduidingen en overige adresseerbaar object aanduidingen. Het\
-        \ betreft een gegevensgroeptype dat bestaat uit de volgende (groep)attribuutsoorten:\
-        \ Adresherkomst Locatie beschrijving en de volgende relatiesoorten: is ingeschreven\
-        \ op NUMMERAANDUIDING verblijft op LIGPLAATS verblijft op STANDPLAATS. verblijft\
-        \ in VERBLIJFSOBJECT verblijft op locatie in WOONPLAATS Het gegevensgroeptype\
-        \ is ontleend aan de groep Adres (A.1.13) in de BRP (versie 1.0, oktober 2014).\
-        \ Daarin betreft een verblijfadres van een persoon telkens een woon- of een\
-        \ briefadres. Met het gegevensgroeptype Verblijfsadres modelleren we v.w.b.\
-        \ de BRP alleen verblijfadressen zijnde woonadressen. BRP-verblijfplaatsen\
-        \ zijnde briefadressen modelleren we als correspondentieadres bij SUBJECT.\
-        \ Indien in de BRP bij een persoon alleen een briefadres is opgenomen, kan\
-        \ een andere bron toch beschikken over een woonadres. Vandaar dat met de attribuutsoort\
-        \ Adresherkomst wordt aangegeven of het verblijfadres al dan niet als authentieke\
-        \ bron de BRP heeft. Zie ook de toelichting bij laatstgenoemd attribuutsoort."
+      description: "08/58 Gegevens over het verblijf en adres van de ingeschrevene."
       properties:
         adresherkomst:
           $ref: "#/components/schemas/SoortAdres_enum"
         huisletter:
           type: "string"
-          title: "Huisletter"
+          title: "11.30 Huisletter"
           description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien\
             \ van een adresseerbaar object toegekende toevoeging aan een huisnummer\
             \ in de vorm van een alfanumeriek teken. Dit attribuutsoort is in de BAG\
@@ -1215,7 +1108,7 @@ components:
           example: "B"
         identificatiecodeNummeraanduiding:
           type: "string"
-          title: "Identificatiecode nummeraanduiding"
+          title: "11.90 Identificatiecode nummeraanduiding"
           description: "De unieke aanduiding van een NUMMERAANDUIDING. zie toelichting\
             \ BAG Combinatie van de viercijferige 'gemeentecode' (volgens GBA tabel\
             \ 33, Gemeententabel), de tweecijferige 'objecttypecode' en een voor het\
@@ -1225,7 +1118,7 @@ components:
           example: "0518200000366054"
         huisnummer:
           type: "integer"
-          title: "Huisnummer"
+          title: "11.20 Huisnummer"
           description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien\
             \ van een adresseerbaar object toegekende nummering. Dit attribuutsoort\
             \ is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING. Het\
@@ -1238,14 +1131,14 @@ components:
           example: "23"
         locatiebeschrijving:
           type: "string"
-          title: "Locatiebeschrijving"
+          title: "12.10 Locatiebeschrijving"
           description: "Een geheel of gedeeltelijke omschrijving van de ligging van\
             \ een object."
           maxLength: 35
           example: "Naast de derde brug"
         woonplaatsnaam:
           type: "string"
-          title: "Woonplaatsnaam"
+          title: "11.70 Woonplaatsnaam"
           description: "De door het bevoegde gemeentelijke orgaan aan een WOONPLAATS\
             \ toegekende benaming. Zie verder de toelichting in de BAG. Tekens gecodeerd\
             \ volgens de UTF-8 standaard."
@@ -1253,7 +1146,7 @@ components:
           example: "Utrecht"
         huisnummertoevoeging:
           type: "string"
-          title: "Huisnummertoevoeging"
+          title: "11.40 Huisnummertoevoeging"
           description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien\
             \ van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer\
             \ of een combinatie van huisnummer en huisletter. Dit attribuutsoort is\
@@ -1269,7 +1162,7 @@ components:
           example: "2"
         naamOpenbareRuimte:
           type: "string"
-          title: "Naam openbare ruimte"
+          title: "11.15 Naam openbare ruimte"
           description: "Een door het bevoegde gemeentelijke orgaan aan een OPENBARE\
             \ RUIMTE toegekende benaming Zie verder de toelichting in de BAG. Tekens\
             \ gecodeerd volgens de UTF-8 standaard"
@@ -1277,7 +1170,7 @@ components:
           example: "Loosduinsekade"
         postcode:
           type: "string"
-          title: "Postcode"
+          title: "11.60 Postcode"
           description: "De door PostNL vastgestelde code behorende bij een bepaalde\
             \ combinatie van een naam van een woonplaats, naam van een openbare ruimte\
             \ en een huisnummer Dit attribuutsoort is in de BAG gespecificeerd bij\
@@ -1341,7 +1234,7 @@ components:
           $ref: "#/components/schemas/Land_tabel"
     Verblijfstitel:
       type: "object"
-      description: "Gegevens over de verblijfsrechtelijke status."
+      description: "10/60 Gegevens over de verblijfsrechtelijke status van de ingeschrevene."
       properties:
         aanduiding:
           $ref: "#/components/schemas/Verblijfstitel_tabel"
@@ -1405,7 +1298,7 @@ components:
           example: "Nederland"
     Voorvoegsel_tabel:
       type: "object"
-      description: "Een waarde uit GBA Tabel 36 Voorvoegsels. Deze tabel bevat de mogelijke voorvoegsels in de naam van een persoon."
+      description: "Dat deel van de geslachtsnaam dat voorkomt in Tabel 36, Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam."
       properties:
         voorvoegsel:
           type: "string"
@@ -1415,9 +1308,7 @@ components:
           example: "de"
     AdellijkeTitel_predikaat_tabel:
       type: "object"
-      description: "Een waarde uit GBA Tabel 38 Adellijke titel predikaat. Deze tabel bevat de mogelijke adellijke titels en/of predikaten die een\
-        \ persoon kan bezitten of die aan een persoon kunnen worden toegekend met\
-        \ hun codes, omschrijvingen en soorten."
+      description: "Een code, voorkomend in Tabel 38, Tabel Adellijke titel/predikaat, die aangeeft welke titel of welk predikaat behoort tot de naam (bij adellijke titel geslachtsnaam, bij predikaat voornaam)."
       properties:
         adellijkeTitel_predikaat:
           type: "string"
@@ -1439,42 +1330,33 @@ components:
           example: "titel"
     Nationaliteit_tabel:
       type: "object"
-      description: "De mogelijk onderscheiden hoedanigheden van tot een bepaalde natie\
-        \ te behoren. Waarde uit GBA Tabel 32 Nationaliteitentabel."
+      description: "Een waarde, opgenomen in Tabel 32, Nationaliteitentabel, die aangeeft welke nationaliteit de ingeschrevene bezit."
       properties:
-        nationaliteitcode:
+        code:
           type: "integer"
-          title: "Nationaliteitcode"
-          description: "Een code die aangeeft welke nationaliteit de ingeschrevene\
-            \ bezit. Zie het LO GBA"
-        officieleOmschrijvingNationaliteit:
+          title: "Code"
+          description: "Een code, opgenomen in Tabel 32, Nationaliteitentabel, die aangeeft welke nationaliteit de ingeschrevene bezit."
+        omschrijving:
           type: "string"
-          title: "Officiële omschrijving nationaliteit"
+          title: "Omschrijving"
           description: "De omschrijving van de nationaliteit."
           maxLength: 42
     RedenVerkrijgingOpnemen_beindigenNationaliteit_tabel:
       type: "object"
-      description: "Waarde uit GBA Tabel 37 Reden opnemen beëindigen nationaliteit. Deze tabel heeft enerzijds betrekking op de Nederlandse nationaliteit\
-        \ en het bijzonder Nederlanderschap en anderzijds op andere nationaliteiten\
-        \ De Nederlandse nationaliteit: Een opsomming van de wettelijke gronden ter\
-        \ verkrijging/verlies van het Nederlanderschap met hun codes, omschrijvingen,\
-        \ soorten en geldigheidstermijnen. De niet-Nederlandse nationaliteit en het\
-        \ bijzonder Nederlanderschap: Een opsomming van de redenen waarom de nationaliteitsgegevens\
-        \ anders dan de Nederlandse op de PL zijn geactualiseerd met hun codes, omschrijvingen,\
-        \ soorten en geldigheidstermijnen."
+      description: "Waarde uit GBA Tabel 37 Reden opnemen beëindigen nationaliteit. 63: Gegevens over de verkrijging van de Nederlandse nationaliteit dan wel het opnemen van een niet-Nederlandse nationaliteit. 64: Gegevens over het verlies van de Nederlandse nationaliteit dan wel het beëindigen van een niet-Nederlandse nationaliteit."
       properties:
-        redenOpnemen_beindigenNationaliteit:
+        redenOpnemen_beeindigenNationaliteit:
           type: "integer"
           title: "Reden opnemen/beëindigen nationaliteit"
           description: "Het identificerende nummer van de reden van het opnemen/beë\
             indigen van de Nederlandse nationaliteit"
-        omschrijvingOpnemen_beindigenNationaliteit:
+        omschrijvingOpnemen_beeindigenNationaliteit:
           type: "string"
           title: "Omschrijving opnemen/beëindigen nationaliteit"
           description: "De omschrijving van de reden van opnemen/beëindigen van de\
             \ Nederlandse nationaliteit"
           maxLength: 80
-        soortOpnemen_beindigenNationaliteit:
+        soortOpnemen_beeindigenNationaliteit:
           $ref: "#/components/schemas/SoortRedenWijzigingNationaliteit_enum"
     RedenOntbindingHuwelijk_geregistreerdPartnerschap_tabel:
       type: "object"
@@ -1808,7 +1690,7 @@ components:
       - "7"
     Geslacht_enum:
       type: "string"
-      description: "Aanduiding van het geslacht volgens het GBA:\n* M - Man\n* V -\
+      description: "Een aanduiding die aangeeft dat de ingeschrevene een man of een vrouw is, of dat het geslacht (nog) onbekend is.:\n* M - Man\n* V -\
         \ Vrouw\n* O - Onbekend"
       enum:
       - "M"
@@ -1836,7 +1718,7 @@ components:
       - "7"
     Naamgebruik_enum:
       type: "string"
-      description: "Gegevens over de wijze van aanschrijving (61.10).:\n* E - eigen geslachtsnaam\n* P - geslachtsnaam echtgenoot/geregistreerd partner\n* V - geslachtsnaam echtgenoot/geregistreerd partner voor eigen geslachtsnaam\n* N - geslachtsnaam echtgenoot/geregistreerd partner na eigen geslachtsnaam"
+      description: "61.10 Gegevens over de wijze van aanschrijving.:\n* E - eigen geslachtsnaam\n* P - geslachtsnaam echtgenoot/geregistreerd partner\n* V - geslachtsnaam echtgenoot/geregistreerd partner voor eigen geslachtsnaam\n* N - geslachtsnaam echtgenoot/geregistreerd partner na eigen geslachtsnaam"
       enum:
       - "E"
       - "P"
