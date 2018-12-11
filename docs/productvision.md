@@ -93,7 +93,29 @@ De API standaard beschrijft niet hoe identificatie, authenticatie, authorisatie 
 - Voor de specificatie van API's wordt de onlangs door Forum Standaardisatie op de ["Pas toe of leg uit"-lijst](https://www.forumstandaardisatie.nl/lijst-open-standaarden/in_lijst/verplicht-pas-toe-leg-uit) geplaatste
 [OpenAPI Specification v3.x](https://www.forumstandaardisatie.nl/standaard/openapi-specification) gebruikt.
 
-Een van de belangrijkste uitgangspunten voor de ontwikkeling van de API standaard is dat gebruik van de API zo duidelijk en eenvoudig mogelijk moet zijn. De API wordt dus zodanig ontworpen dat deze voor een developer van een API client zo makkelijk mogelijk te gebruiken is. Dit noemen we "developer first".
+## Ontwerpprincipes
+1. Consumer first
+2. Developer first
+3. Contract first
+
+### Consumer first
+Het aantal applicaties dat de API gebruikt is veel groter dan het aantal applicaties dat de API levert. Deze verhouding is orde grote tientallen tot honderden consumers tegen enkele providers. Dus wordt de API zo ontworpen dat deze voor consumers zo eenvoudig mogelijk te gebruiken moet zijn. Er wordt dus steeds geoptimaliseerd voor eenvoudig gebruik voor consumers, ook wanneer dat leidt tot veel complexere implementatie voor de provider(s).
+
+### Developer first
+Gebruik van de API moet zo duidelijk en eenvoudig mogelijk moet zijn. De eigenlijke gebruiker van de API is de developer van een consumer applicatie. De API wordt dus zodanig ontworpen dat deze voor een developer van een API consumer zo makkelijk mogelijk te gebruiken is. Dit noemen we "developer first".
+Dit heeft betrekking op ontwerp en functionaliteit van de API Dit komt ook tot uiting in de manier waarop de API standaard wordt aangeboden:
+- Open API Specificaties 3 om één centrale plek te hebben voor developers om de werking van de API te zien,
+- publiceren op GitHub zodat een developer eenvoudig bij de laatste versie specificaties komt vanuit zijn IDE,
+- publiceren op Swagger zodat een developer op een gebruikersvriendelijke manier de specificaties kan bekijken,
+- behaviour driven specificaties die de werking in voorbeelden expliciet maakt,
+- referentie-implementatie van een provider die gebruikt kan worden om de consumer applicatie tegen te testen,
+- referentie-implementatie van een client die gebruik van de API demonstreert voor een aantal use cases,
+- controleren dat vanuit de API specificaties goede en bruikbare code kan worden gegenereerd.
+
+### Contract first
+De API specificaties worden door veel developers gebruikt, die werken met verschillende ontwikkelomgevingen, zeer verschillende soorten applicaties maken en die niet bekend zijn bij de beheerders van de API (iedereen moet de API kunnen gebruiken).
+Dus moet bij het opstellen van de API specificaties geoptimaliseerd worden op bruikbaarheid, duidelijkheid en eenvoud voor deze consumers. De API specificaties worden daarom niet ontwikkeld vanuit een implementatie van de API (provider), maar gemaakt op gebruik door developers van consumerapplicaties.
+Zie bijvoorbeeld deze [post op SWAGGER](https://swagger.io/blog/api-design/design-first-or-code-first-api-development/) over de afweging contract first versus code first.
 
 ## Realisatie
 De eerste versie van de API standaard wordt ontworpen in een project waarin verschillende gemeenten deelnemen, enkele developers, plus VNG-realisatie.
