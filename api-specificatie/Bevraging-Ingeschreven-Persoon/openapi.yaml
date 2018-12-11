@@ -1751,6 +1751,17 @@ components:
       - "OP"
       - "VL"
       - "BE"
+    IndicatieGezagMinderjarige_enum:
+      type: "string"
+      description: "Een aanduiding die aangeeft wie belast is met het gezag over de minderjarige ingeschrevene.:\n\
+        * `1` - ouder1 heeft het gezag\n* `2` - ouder2 heeft het gezag\n* `D` - een of meer derden hebben het gezag\n* `1D` - ouder1 + een derde hebben het gezag\n* `2D` - ouder2 + een derde hebben het gezag\n* `12` - ouder1 + ouder2 hebben het gezag"
+      enum:
+      - "1"
+      - "2"
+      - "D"
+      - "1D"
+      - "2D"
+      - "12"
   headers:
     api_version:
       schema:
