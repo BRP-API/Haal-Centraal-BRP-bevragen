@@ -684,6 +684,8 @@ components:
           $ref: "#/components/schemas/Verblijfplaats"
         verblijfstitel:
           $ref: "#/components/schemas/Verblijfstitel"
+        indicatieGezagMinderjarige:
+          $ref: "#/components/schemas/IndicatieGezagMinderjarige_enum"
         _links:
           $ref: "#/components/schemas/IngeschrevenPersoon_links"
         _embedded:
