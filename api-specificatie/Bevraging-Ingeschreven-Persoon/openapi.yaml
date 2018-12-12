@@ -1,4 +1,4 @@
-﻿openapi: 3.0.0
+openapi: 3.0.0
 servers:
   - description: "SwaggerHub API Auto Mocking"
     url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bevragingen_ingeschreven_personen/v1
@@ -19,8 +19,7 @@ paths:
       operationId: ingeschrevenpersonen
       description: |
         Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen:
-        
-        
+
         1.  Persoon
             -  geboorte__datum
             -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 
@@ -38,15 +37,14 @@ paths:
 
         4.  NaamOpenbareRuimte
             -  verblijfplaats__naamopenbareruimte (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 
-
             -  verblijfplaats__gemeentevaninschrijving
             -  verblijfplaats__huisnummer
-            
+
 
         5.  Nummeraanduiding
             -  verblijfsplaats__identificatiecodenummeraanduiding
 
-        De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters.
+        De bovenstaande combinaties van parameters mogen gecombineerd worden met de alle beschikbare query-parameters.
 
 
         Default levert een zoekvraag alleen personen op die nog in leven zijn. Indien **_inclusiefverledenpersonen_** de waarde **_true_** heeft worden [overleden personen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) opgenomen in het zoekresultaat.
@@ -56,7 +54,7 @@ paths:
 
 
          Er vind geen sortering plaats.
-      parameters: 
+      parameters:
         - in: query
           name: expand
           description: "Hier kan aangegeven worden welke gerelateerde resources meegeladen moeten worden. Resources en velden van resources die gewenst zijn kunnen in de expand parameter kommagescheiden worden opgegeven. Specifieke velden van resource kunnen worden opgegeven door het opgeven van de resource-naam gevolgd door de veldnaam, met daartussen een punt. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/expand.feature)"
@@ -86,6 +84,7 @@ paths:
           schema:
             type: string
             maxLength: 200
+            minLength: 2
           example: Dirk
         - in: query
           name: verblijfplaats__huisletter
@@ -134,11 +133,12 @@ paths:
           example: bis
         - in: query
           name: naam__geslachtsnaam
-          description: "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)**"
+          description: "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)"
           required: false
           schema:
             type: string
             maxLength: 200
+            minLength: 2
           example: Vries
         - in: query
           name: verblijfplaats__naamopenbareruimte
@@ -147,6 +147,7 @@ paths:
           schema:
             type: string
             maxLength: 80
+            minLength: 2
           example: Tulpstraat
         - in: query
           name: verblijfplaats__postcode
@@ -176,7 +177,7 @@ paths:
             X-Rate-Limit-Remaining:
               $ref: '#/components/headers/X_Rate_Limit_Remaining'
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -292,7 +293,7 @@ paths:
             X-Rate-Limit-Remaining:
               $ref: '#/components/headers/X_Rate_Limit_Remaining'
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -357,7 +358,7 @@ paths:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
-      tags: 
+      tags:
       - ingeschrevenpersonen
   /ingeschrevenpersonen/{burgerservicenummer}/kinderen/{uuid}:
     get:
@@ -373,7 +374,7 @@ paths:
             example: id,onderwerp,aanvrager,wijzig_datum
         - in: path
           name: burgerservicenummer
-          description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Elk ingeschreven natuurlijk persoon heeft een BSN, een nummer dat de natuurlijk persoon uniek identificeert in overheidsadministraties. De attribuutsoort kent onder meer historie omdat het mogelijk is dat het Burgerservicenummer van een natuurlijk persoon wijzigt, met name vanwege ambtelijke correcties. Zie verder de toelichting in de GBA Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
+          description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Elke ingeschreven persoon heeft een burgerservicenummer, een nummer dat de natuurlijk persoon uniek identificeert in overheidsadministraties. De attribuutsoort kent onder meer historie omdat het mogelijk is dat het Burgerservicenummer van een natuurlijk persoon wijzigt, met name vanwege ambtelijke correcties. Zie verder de toelichting in de GBA Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
           required: true
           schema:
             type: string
@@ -398,7 +399,7 @@ paths:
             X-Rate-Limit-Remaining:
               $ref: '#/components/headers/X_Rate_Limit_Remaining'
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -497,7 +498,7 @@ paths:
             X-Rate-Limit-Remaining:
               $ref: '#/components/headers/X_Rate_Limit_Remaining'
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -613,7 +614,7 @@ paths:
             X-Rate-Limit-Remaining:
               $ref: '#/components/headers/X_Rate_Limit_Remaining'
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -712,7 +713,7 @@ paths:
             X-Rate-Limit-Remaining:
               $ref: '#/components/headers/X_Rate_Limit_Remaining'
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -828,7 +829,7 @@ paths:
             X-Rate-Limit-Remaining:
               $ref: '#/components/headers/X_Rate_Limit_Remaining'
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -899,7 +900,7 @@ paths:
     get:
       operationId: ingeschrevenpersonenBurgerservicenummerpartners
       description: "Het ophalen de actuele partner-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet opgenomen in het antwoord. De gevonden huwelijken/partnerschappen worden ongesorteerd teruggegeven."
-      parameters: 
+      parameters:
         - in: query
           name: fields
           description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature)"
@@ -927,7 +928,7 @@ paths:
             X-Rate-Limit-Remaining:
               $ref: '#/components/headers/X_Rate_Limit_Remaining'
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -1008,7 +1009,7 @@ paths:
     get:
       operationId: reisdocumentenReisdocumentnummer
       description: "Het ophalen van de gegevens van een REISDOCUMENT op basis van het reisdocumentnummer."
-      parameters: 
+      parameters:
         - in: query
           name: fields
           description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature)"
@@ -1036,7 +1037,7 @@ paths:
             X-Rate-Limit-Remaining:
               $ref: '#/components/headers/X_Rate_Limit_Remaining'
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -1232,7 +1233,7 @@ components:
     Kind:
       type: "object"
       description: "09/59 Gegevens over een kind van de ingeschrevene."
-      properties:
+        properties:
         burgerservicenummer:
           type: "string"
           title: "Burgerservicenummer"
@@ -1481,7 +1482,7 @@ components:
     GeboorteInOnderzoek:
       type: "object"
       description: "Indicators over het in onderzoek zijn van gegevens over de geboorte\
-        \ van de INGESCHREVEN NATUURLIJK PERSOON."
+        \ van de INGESCHREVEN PERSOON."
       properties:
         geboortedatum:
           type: "boolean"
@@ -1736,6 +1737,8 @@ components:
           example: "2571CC"
         gemeenteVanInschrijving:
           $ref: "#/components/schemas/Gemeenten"
+        verblijfBuitenland:
+          $ref: "#/components/schemas/VerblijfBuitenland"
         geldigVan:
           $ref: "#/components/schemas/Datum_onvolledig"
         geldigTotEnMet:
@@ -1859,7 +1862,7 @@ components:
           example: "de"
     AdellijkeTitel_predikaat_tabel:
       type: "object"
-      description: "Een opsomming van de adellijke titels en/of predikaten die een\
+      description: "Een waarde uit GBA Tabel 38 Adellijke titel predikaat. Deze tabel bevat de mogelijke adellijke titels en/of predikaten die een\
         \ persoon kan bezitten of die aan een persoon kunnen worden toegekend met\
         \ hun codes, omschrijvingen en soorten. Een code, voorkomend in Tabel 38,\
         \ Tabel Adellijke titel/predikaat, die aangeeft welke titel of welk predikaat\
@@ -1902,7 +1905,7 @@ components:
           maxLength: 42
     RedenVerkrijgingOpnemen_beeindigenNationaliteit_tabel:
       type: "object"
-      description: "Deze tabel heeft enerzijds betrekking op de Nederlandse nationaliteit\
+      description: "Waarde uit GBA Tabel 37 Reden opnemen beëindigen nationaliteit. Deze tabel heeft enerzijds betrekking op de Nederlandse nationaliteit\
         \ en het bijzonder Nederlanderschap en anderzijds op andere nationaliteiten\
         \ Waarde uit GBA Tabel 37 Reden opnemen beëindigen nationaliteit. 63: Gegevens\
         \ over de verkrijging van de Nederlandse nationaliteit dan wel het opnemen\
@@ -1930,7 +1933,7 @@ components:
           $ref: "#/components/schemas/SoortRedenWijzigingNationaliteit_enum"
     RedenOntbindingHuwelijk_geregistreerdPartnerschap_tabel:
       type: "object"
-      description: "Een opsomming van de wettelijke gronden van ontbinding/nietigverklaring\
+      description: "Waarde uit GBA Tabel 41 Reden ontbinding/nietigverklaring huwelijk/geregistreerd partnerschaptabel. Deze bevat een opsomming van de wettelijke gronden van ontbinding/nietigverklaring\
         \ van een huwelijk/geregistreerd partnerschap met hun codes, omschrijvingen\
         \ en geldigheidstermijnen. Waarde uit GBA Tabel 41 Reden ontbinding/nietigverklaring\
         \ huwelijk/geregistreerd partnerschaptabel."
@@ -1949,7 +1952,7 @@ components:
           maxLength: 80
     Gemeenten:
       type: "object"
-      description: "Gemeentetabel 33 conform LO GBA"
+      description: "Gemeente die voorkomt in Gemeentetabel 33 conform LO GBA"
       properties:
         gemeentecode:
           type: "string"
@@ -2088,14 +2091,13 @@ components:
           title: "isIngeschrevenOp"
           type: "object"
           description: "De NUMMERAANDUIDING bij het ADRESSEERBAAR OBJECT waarin de\
-            \ INGESCHREVEN NATUURLIJK PERSOON verblijft en die hij/zij gekozen heeft\
+            \ INGESCHREVEN PERSOON verblijft en die hij/zij gekozen heeft\
             \ als inschrijvingsadres. Het betreft het hergebruik als relatiesoort\
             \ van attribuut Identificatiecode nummeraanduiding van groep A.1.13 (Adres)\
             \ in de BRP in de gevallen dat de persoon verblijft op een adresseerbaar\
             \ object. De ingeschreven natuurlijk persoon kan er aldus voor kiezen\
             \ zich op een hoofd- of op een nevenadres te laten inschrijven. De relatiesoort\
-            \ maakt deel uit van het groepattribuutsoort Verblijfsplaats. Het huisnummer\
-            \ kan de waarde 0 hebben."
+            \ maakt deel uit van het groepattribuutsoort Verblijfsplaats."
           properties:
             href:
               $ref: "#/components/schemas/Href"
@@ -2106,7 +2108,6 @@ components:
           $ref: "#/components/schemas/Link"
         ingeschrevenpersonen:
           title: "isOuder"
-          type: "object"
           description: "De ingeschreven persoon die ouder is van de opgevraagde persoon.\
             \ Deze wordt alleen opgenomen wanneer de ouder een ingeschreven persoon\
             \ is."
