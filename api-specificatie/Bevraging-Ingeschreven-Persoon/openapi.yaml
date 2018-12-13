@@ -1233,31 +1233,31 @@ components:
     Kind:
       type: "object"
       description: "09/59 Gegevens over een kind van de ingeschrevene."
-        properties:
-          burgerservicenummer:
-            type: "string"
-            title: "Burgerservicenummer"
-            description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet\
-              \ algemene bepalingen burgerservicenummer. Elk ingeschreven natuurlijk\
-              \ persoon heeft een BSN, een nummer dat de natuurlijk persoon uniek identificeert\
-              \ in overheidsadministraties. De attribuutsoort kent onder meer historie\
-              \ omdat het mogelijk is dat het Burgerservicenummer van een natuurlijk\
-              \ persoon wijzigt, met name vanwege ambtelijke correcties. Zie verder\
-              \ de toelichting in de GBA Alle nummers waarvoor geldt dat, indien aangeduid\
-              \ als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1)\
-              \ + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9\
-              \ cijfers aanwezig zijn."
-            pattern: "^[0-9]$"
-            maxLength: 9
-            example: "430422088"
-          ouder_aanduiding:
-            $ref: "#/components/schemas/OuderAanduiding_enum"
-          naam:
-            $ref: "#/components/schemas/Naam"
-          geboorte:
-            $ref: "#/components/schemas/Geboorte"
-          _links:
-            $ref: "#/components/schemas/Kind_links"
+      properties:
+        burgerservicenummer:
+          type: "string"
+          title: "Burgerservicenummer"
+          description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet\
+            \ algemene bepalingen burgerservicenummer. Elk ingeschreven natuurlijk\
+            \ persoon heeft een BSN, een nummer dat de natuurlijk persoon uniek identificeert\
+            \ in overheidsadministraties. De attribuutsoort kent onder meer historie\
+            \ omdat het mogelijk is dat het Burgerservicenummer van een natuurlijk\
+            \ persoon wijzigt, met name vanwege ambtelijke correcties. Zie verder\
+            \ de toelichting in de GBA Alle nummers waarvoor geldt dat, indien aangeduid\
+            \ als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1)\
+            \ + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9\
+            \ cijfers aanwezig zijn."
+          pattern: "^[0-9]$"
+          maxLength: 9
+          example: "430422088"
+        ouder_aanduiding:
+          $ref: "#/components/schemas/OuderAanduiding_enum"
+        naam:
+          $ref: "#/components/schemas/Naam"
+        geboorte:
+          $ref: "#/components/schemas/Geboorte"
+        _links:
+          $ref: "#/components/schemas/Kind_links"
     Partner:
       type: "object"
       description: "05/55 Gegevens over een gesloten huwelijk/geregistreerd partnerschap\
