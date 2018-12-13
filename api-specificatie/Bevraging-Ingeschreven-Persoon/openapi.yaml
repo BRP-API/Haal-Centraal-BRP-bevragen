@@ -20,30 +20,34 @@ paths:
       description: |
         Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen:
 
-
         1.  Persoon
             -  geboorte__datum
-            -  naam__geslachtsnaam (minimaal 2 karakters, trailing wildcard __(* of ?)__ toegestaan)
+            -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 
 
 
-        2.  Postcode
+        2.  Persoon
+            -  verblijfplaats__gemeentevaninschrijving
+            -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 
+    
+
+        3.  Postcode
             -  verblijfplaats__postcode
             -  verblijfplaats__huisnummer
 
 
-        3.  NaamOpenbareRuimte
-            -  verblijfplaats__naamopenbareruimte
+        4.  NaamOpenbareRuimte
+            -  verblijfplaats__naamopenbareruimte (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 
             -  verblijfplaats__gemeentevaninschrijving
             -  verblijfplaats__huisnummer
 
 
-        4.  Nummeraanduiding
+        5.  Nummeraanduiding
             -  verblijfsplaats__identificatiecodenummeraanduiding
 
         De bovenstaande combinaties van parameters mogen gecombineerd worden met de alle beschikbare query-parameters.
 
 
-        Default levert een zoekvraag alleen personen op die nog in leven zijn. Indien _inclusiefverledenpersonen_ de waarde _true_ heeft worden [overleden personen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) opgenomen in het zoekresultaat.
+        Default levert een zoekvraag alleen personen op die nog in leven zijn. Indien **_inclusiefverledenpersonen_** de waarde **_true_** heeft worden [overleden personen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) opgenomen in het zoekresultaat.
 
 
         Het maximale aantal zoekresultaten dat geretourneerd wordt is aan de provider om te bepalen. Als het resultaat van de de request dit aantal overtreft worden er geen resultaten geretourneerd en volgt er een foutmelding.
@@ -67,7 +71,7 @@ paths:
             example: id,onderwerp,aanvrager,wijzig_datum
         - in: query
           name: geboorte__datum
-          description: "Datum waarop de INGESCHREVEN PERSOON geboren is. Er kan alleen gezocht worden met een volledige geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature)"
+          description: "Datum waarop de INGESCHREVEN NATUURLIJK PERSOON geboren is. Er kan alleen gezocht worden met een volledige geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature)"
           required: false
           schema:
             type: string
@@ -75,7 +79,7 @@ paths:
           example: 24-09-1964
         - in: query
           name: naam__voornamen
-          description: "De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.**"
+          description: "De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. * Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.**"
           required: false
           schema:
             type: string
@@ -129,7 +133,7 @@ paths:
           example: bis
         - in: query
           name: naam__geslachtsnaam
-          description: "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst. **Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.**"
+          description: "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)"
           required: false
           schema:
             type: string
@@ -138,7 +142,7 @@ paths:
           example: Vries
         - in: query
           name: verblijfplaats__naamopenbareruimte
-          description: "Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming **Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** Zie verder de toelichting in de BAG. Tekens gecodeerd volgens de UTF-8 standaard"
+          description: "Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** Zie verder de toelichting in de BAG. Tekens gecodeerd volgens de UTF-8 standaard"
           required: false
           schema:
             type: string
@@ -155,7 +159,7 @@ paths:
           example: 2341SX
         - in: query
           name: inclusiefoverledenpersonen
-          description: "Indien in het antwoord op de zoekvraag ook overleden personen moeten worden geretourneerd, dan dient de parameter *inclusiefOverledenPersonen* opgenomen te zijn met de waarde True. Indien de parameter *inclusiefOverledenPersonen* ontbreekt of de waarde False heeft worden geen overleden personen opgenomen in het zoekresultaat. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature)"
+          description: "Indien in het antwoord op de zoekvraag ook overleden personen moeten worden geretourneerd, dan dient de parameter *inclusiefOverledenPersonen* opgenomen te zijn met de waarde _True_. Indien de parameter *inclusiefOverledenPersonen* ontbreekt of de waarde _False_ heeft worden geen overleden personen opgenomen in het zoekresultaat. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature)"
           required: false
           schema:
             type: boolean
@@ -188,19 +192,73 @@ paths:
                        type: array
                        items:
                          $ref: '#/components/schemas/IngeschrevenPersoon'
-        default:
-          description: "Er is een onverwachte fout opgetreden."
+        '400':
+          description: Bad Request
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Foutbericht'
-      tags:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '401':
+          description: Unauthorized
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '403':
+          description: Forbidden
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '406':
+          description: Not Acceptable
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '409':
+          description: Conflict
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '410':
+          description: Gone
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '415':
+          description: Unsupported Media Type
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '429':
+          description: Too Many Requests
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '500':
+          description: Internal Server Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        'default':
+          description: Er is een onverwachte fout opgetreden.
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+      tags: 
       - ingeschrevenpersonen
   /ingeschrevenpersonen/{burgerservicenummer}:
     get:
       operationId: ingeschrevenpersonenBurgerservicenummer
-      description: "Het ophalen de actuele gegevens van een Ingeschreven Persoon, inclusief verblijfplaats, kinderen, partners, ouders en reisdocumenten."
-      parameters:
+      description: "Het ophalen de actuele gegevens van een Ingeschreven Persoon, inclusief verblijfplaats, kinderen, partners en ouders. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen."
+      parameters: 
         - in: query
           name: expand
           description: "Hier kan aangegeven worden welke gerelateerde resources meegeladen moeten worden. Resources en velden van resources die gewenst zijn kunnen in de expand parameter kommagescheiden worden opgegeven. Specifieke velden van resource kunnen worden opgegeven door het opgeven van de resource-naam gevolgd door de veldnaam, met daartussen een punt. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/expand.feature)"
@@ -240,22 +298,76 @@ paths:
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/IngeschrevenPersoon'
-        default:
-          description: "Er is een onverwachte fout opgetreden."
+        '401':
+          description: Unauthorized
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Foutbericht'
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '403':
+          description: Forbidden
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '404':
+          description: Not Found
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '406':
+          description: Not Acceptable
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '409':
+          description: Conflict
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '410':
+          description: Gone
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '415':
+          description: Unsupported Media Type
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '429':
+          description: Too Many Requests
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '500':
+          description: Internal Server Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        'default':
+          description: Er is een onverwachte fout opgetreden.
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
       tags:
       - ingeschrevenpersonen
   /ingeschrevenpersonen/{burgerservicenummer}/kinderen/{uuid}:
     get:
       operationId: ingeschrevenpersonenBurgerservicenummerkinderenUuid
       description: "Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen."
-      parameters:
+      parameters: 
         - in: query
           name: fields
-          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven."
+          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature)"
           required: false
           schema:
             type: string
@@ -292,22 +404,76 @@ paths:
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/Kind'
-        default:
-          description: "Er is een onverwachte fout opgetreden."
+        '401':
+          description: Unauthorized
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Foutbericht'
-      tags:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '403':
+          description: Forbidden
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '404':
+          description: Not Found
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '406':
+          description: Not Acceptable
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '409':
+          description: Conflict
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '410':
+          description: Gone
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '415':
+          description: Unsupported Media Type
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '429':
+          description: Too Many Requests
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '500':
+          description: Internal Server Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        'default':
+          description: Er is een onverwachte fout opgetreden.
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+      tags: 
       - ingeschrevenpersonen
   /ingeschrevenpersonen/{burgerservicenummer}/kinderen:
     get:
       operationId: ingeschrevenpersonenBurgerservicenummerkinderen
       description: "Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats."
-      parameters:
+      parameters: 
         - in: query
           name: fields
-          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven."
+          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature)"
           required: false
           schema:
             type: string
@@ -343,26 +509,80 @@ paths:
                  _embedded:
                    type: object
                    properties:
-                     kindrelatie:
+                     kind:
                        type: array
                        items:
                          $ref: '#/components/schemas/Kind'
-        default:
-          description: "Er is een onverwachte fout opgetreden."
+        '401':
+          description: Unauthorized
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Foutbericht'
-      tags:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '403':
+          description: Forbidden
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '404':
+          description: Not Found
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '406':
+          description: Not Acceptable
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '409':
+          description: Conflict
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '410':
+          description: Gone
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '415':
+          description: Unsupported Media Type
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '429':
+          description: Too Many Requests
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '500':
+          description: Internal Server Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        'default':
+          description: Er is een onverwachte fout opgetreden.
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+      tags: 
       - ingeschrevenpersonen
   /ingeschrevenpersonen/{burgerservicenummer}/ouders/{uuid}:
     get:
       operationId: ingeschrevenpersonenBurgerservicenummeroudersUuid
-      description: "Het ophalen de ouder-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen."
-      parameters:
+      description: "Het ophalen de ouder-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.."
+      parameters: 
         - in: query
           name: fields
-          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven."
+          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature)"
           required: false
           schema:
             type: string
@@ -399,22 +619,76 @@ paths:
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/Ouder'
-        default:
-          description: "Er is een onverwachte fout opgetreden."
+        '401':
+          description: Unauthorized
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Foutbericht'
-      tags:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '403':
+          description: Forbidden
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '404':
+          description: Not Found
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '406':
+          description: Not Acceptable
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '409':
+          description: Conflict
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '410':
+          description: Gone
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '415':
+          description: Unsupported Media Type
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '429':
+          description: Too Many Requests
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '500':
+          description: Internal Server Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        'default':
+          description: Er is een onverwachte fout opgetreden.
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+      tags: 
       - ingeschrevenpersonen
   /ingeschrevenpersonen/{burgerservicenummer}/ouders:
     get:
       operationId: ingeschrevenpersonenBurgerservicenummerouders
       description: "Het ophalen de ouder-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats."
-      parameters:
+      parameters: 
         - in: query
           name: fields
-          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven."
+          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature)"
           required: false
           schema:
             type: string
@@ -450,26 +724,80 @@ paths:
                  _embedded:
                    type: object
                    properties:
-                     ouderrelatie:
+                     ouders:
                        type: array
                        items:
                          $ref: '#/components/schemas/Ouder'
-        default:
-          description: "Er is een onverwachte fout opgetreden."
+        '401':
+          description: Unauthorized
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Foutbericht'
-      tags:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '403':
+          description: Forbidden
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '404':
+          description: Not Found
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '406':
+          description: Not Acceptable
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '409':
+          description: Conflict
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '410':
+          description: Gone
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '415':
+          description: Unsupported Media Type
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '429':
+          description: Too Many Requests
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '500':
+          description: Internal Server Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        'default':
+          description: Er is een onverwachte fout opgetreden.
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+      tags: 
       - ingeschrevenpersonen
   /ingeschrevenpersonen/{burgerservicenummer}/partners/{uuid}:
     get:
       operationId: ingeschrevenpersonenBurgerservicenummerpartnersUuid
-      description: "Het ophalen de partner-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen."
-      parameters:
+      description: "Het ophalen de partner-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen."
+      parameters: 
         - in: query
           name: fields
-          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven."
+          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature)"
           required: false
           schema:
             type: string
@@ -506,13 +834,67 @@ paths:
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/Partner'
-        default:
-          description: "Er is een onverwachte fout opgetreden."
+        '401':
+          description: Unauthorized
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Foutbericht'
-      tags:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '403':
+          description: Forbidden
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '404':
+          description: Not Found
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '406':
+          description: Not Acceptable
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '409':
+          description: Conflict
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '410':
+          description: Gone
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '415':
+          description: Unsupported Media Type
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '429':
+          description: Too Many Requests
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '500':
+          description: Internal Server Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        'default':
+          description: Er is een onverwachte fout opgetreden.
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+      tags: 
       - ingeschrevenpersonen
   /ingeschrevenpersonen/{burgerservicenummer}/partners:
     get:
@@ -521,7 +903,7 @@ paths:
       parameters:
         - in: query
           name: fields
-          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven."
+          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature)"
           required: false
           schema:
             type: string
@@ -561,13 +943,67 @@ paths:
                        type: array
                        items:
                          $ref: '#/components/schemas/Partner'
-        default:
-          description: "Er is een onverwachte fout opgetreden."
+        '401':
+          description: Unauthorized
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Foutbericht'
-      tags:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '403':
+          description: Forbidden
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '404':
+          description: Not Found
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '406':
+          description: Not Acceptable
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '409':
+          description: Conflict
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '410':
+          description: Gone
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '415':
+          description: Unsupported Media Type
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '429':
+          description: Too Many Requests
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '500':
+          description: Internal Server Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        'default':
+          description: Er is een onverwachte fout opgetreden.
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+      tags: 
       - ingeschrevenpersonen
   /reisdocumenten/{reisdocumentnummer}:
     get:
@@ -576,7 +1012,7 @@ paths:
       parameters:
         - in: query
           name: fields
-          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven."
+          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature)"
           required: false
           schema:
             type: string
@@ -606,23 +1042,77 @@ paths:
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/Reisdocument'
-        default:
-          description: "Er is een onverwachte fout opgetreden."
+        '401':
+          description: Unauthorized
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Foutbericht'
-      tags:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '403':
+          description: Forbidden
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '404':
+          description: Not Found
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '406':
+          description: Not Acceptable
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '409':
+          description: Conflict
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '410':
+          description: Gone
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '415':
+          description: Unsupported Media Type
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '429':
+          description: Too Many Requests
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '500':
+          description: Internal Server Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        'default':
+          description: Er is een onverwachte fout opgetreden.
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+      tags: 
       - reisdocumenten
 components:
   schemas:
     IngeschrevenPersoon:
       type: "object"
       description: "Een NATUURLIJK PERSOON ingeschreven in de Basisregistratie Personen\
-        \ (BRP). Het betreft de verzameling van personen ingeschreven in de GBA of\
-        \ RNI woonachtig in de gemeente dan wel elders en van belang voor de gemeentelijke\
-        \ taakuitoefening. Een INGESCHREVEN NATUURLIJK PERSOON is een specialisatie\
-        \ van NATUURLIJK PERSOON."
+        \ (BRP). Categorie 01/51 Gegevens over de ingeschrevene. Het betreft de verzameling\
+        \ van personen ingeschreven in de GBA of RNI woonachtig in de gemeente dan\
+        \ wel elders en van belang voor de gemeentelijke taakuitoefening. Een INGESCHREVEN\
+        \ NATUURLIJK PERSOON is een specialisatie van NATUURLIJK PERSOON."
       properties:
         burgerservicenummer:
           type: "string"
@@ -639,12 +1129,13 @@ components:
             \ cijfers aanwezig zijn."
           pattern: "^[0-9]$"
           maxLength: 9
-          example: "430422088"
+          example: "555555021"
         a_nummer:
           type: "integer"
           title: "A-nummer"
           description: "Het administratienummer van de persoon, bedoeld in de Wet\
-            \ BRP zie GBA"
+            \ BRP Het administratienummer, bedoeld in artikel 4.9 van de Wet BRP.\
+            \ zie GBA"
           example: "876352431"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
@@ -660,6 +1151,8 @@ components:
             \ tot ambtshalve inschrijving mededeling is gedaan. In alle andere gevallen\
             \ is dit de datum waarop de aangifte is ontvangen."
           format: "date"
+        indicatieGezagMinderjarige:
+          $ref: "#/components/schemas/IndicatieGezagMinderjarige_enum"
         redenOpschortingBijhouding:
           $ref: "#/components/schemas/RedenOpschortingBijhouding_enum"
         datumOpschortingBijhouding:
@@ -682,7 +1175,9 @@ components:
         landVanwaarIngeschreven:
           $ref: "#/components/schemas/Land_tabel"
         naam:
-          $ref: "#/components/schemas/Naam"
+          type: "array"
+          items:
+            $ref: "#/components/schemas/NaamPersoon"
         inOnderzoek:
           $ref: "#/components/schemas/InOnderzoek"
         nationaliteit:
@@ -703,11 +1198,7 @@ components:
           $ref: "#/components/schemas/IngeschrevenPersoon_embedded"
     Ouder:
       type: "object"
-      description: "Het verband tussen een kind en één van zijn of haar juridische\
-        \ ouders."
-      required:
-      - "uuid"
-      - "geboorte"
+      description: "02/52 of 03/53 Gegevens over de ouder van de ingeschrevene."
       properties:
         burgerservicenummer:
           type: "string"
@@ -725,42 +1216,24 @@ components:
           pattern: "^[0-9]$"
           maxLength: 9
           example: "430422088"
-        voornamen:
-          type: "string"
-          title: "Voornamen"
-          description: "De verzameling namen die, gescheiden door spaties, aan de\
-            \ geslachtsnaam voorafgaat. Conform categorie 05.02 van LO GBA."
-          maxLength: 200
-          example: "Pieter Jan"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
         ouder_aanduiding:
           $ref: "#/components/schemas/OuderAanduiding_enum"
-        geslachtsnaam:
-          type: "string"
-          title: "Geslachtsnaam"
-          description: "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels\
-            \ en adellijke titel/predikaat zijn afgesplitst. Conform categorie 05.02\
-            \ van LO GBA."
-          maxLength: 200
-          example: "Vries"
         geldigVan:
           $ref: "#/components/schemas/Datum_onvolledig"
         geldigTotEnMet:
           $ref: "#/components/schemas/Datum_onvolledig"
-        voorvoegsel:
-          $ref: "#/components/schemas/Voorvoegsel_tabel"
-        adellijkeTitel_predikaat:
-          $ref: "#/components/schemas/AdellijkeTitel_predikaat_tabel"
+        naam:
+          $ref: "#/components/schemas/Naam"
         geboorte:
           $ref: "#/components/schemas/Geboorte"
         _links:
           $ref: "#/components/schemas/Ouder_links"
     Kind:
       type: "object"
-      description: "Het verband tussen de ingeschreven persoon en één van zijn of haar juridische\
-        \ kinderen."
-      properties:
+      description: "09/59 Gegevens over een kind van de ingeschrevene."
+        properties:
         burgerservicenummer:
           type: "string"
           title: "Burgerservicenummer"
@@ -777,38 +1250,18 @@ components:
           pattern: "^[0-9]$"
           maxLength: 9
           example: "430422088"
-        voornamen:
-          type: "string"
-          title: "Voornamen"
-          description: "De verzameling namen die, gescheiden door spaties, aan de\
-            \ geslachtsnaam voorafgaat. Conform categorie 05.02 van LO GBA."
-          maxLength: 200
-          example: "Pieter Jan"
         ouder_aanduiding:
           $ref: "#/components/schemas/OuderAanduiding_enum"
-        geslachtsnaam:
-          type: "string"
-          title: "Geslachtsnaam"
-          description: "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels\
-            \ en adellijke titel/predikaat zijn afgesplitst. Conform categorie 05.02\
-            \ van LO GBA."
-          maxLength: 200
-          example: "Vries"
-        voorvoegsel:
-          $ref: "#/components/schemas/Voorvoegsel_tabel"
-        adellijkeTitel_predikaat:
-          $ref: "#/components/schemas/AdellijkeTitel_predikaat_tabel"
+        naam:
+          $ref: "#/components/schemas/Naam"
         geboorte:
           $ref: "#/components/schemas/Geboorte"
         _links:
           $ref: "#/components/schemas/Kind_links"
     Partner:
       type: "object"
-      description: "Gegevens over een huwelijk/geregistreerd partnerschap van de NATUURLIJK\
-        \ PERSOON"
-      required:
-      - "uuid"
-      - "geboorte"
+      description: "05/55 Gegevens over een gesloten huwelijk/geregistreerd partnerschap\
+        \ van de ingeschrevene."
       properties:
         burgerservicenummer:
           type: "string"
@@ -828,27 +1281,10 @@ components:
           example: "430422088"
         soortVerbintenis:
           $ref: "#/components/schemas/SoortVerbintenis_enum"
-        voornamen:
-          type: "string"
-          title: "Voornamen"
-          description: "De verzameling namen die, gescheiden door spaties, aan de\
-            \ geslachtsnaam voorafgaat. Conform categorie 05.02 van LO GBA."
-          maxLength: 200
-          example: "Pieter Jan"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
-        geslachtsnaam:
-          type: "string"
-          title: "Geslachtsnaam"
-          description: "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels\
-            \ en adellijke titel/predikaat zijn afgesplitst. Conform categorie 05.02\
-            \ van LO GBA."
-          maxLength: 200
-          example: "Vries"
-        voorvoegsel:
-          $ref: "#/components/schemas/Voorvoegsel_tabel"
-        adellijkeTitel_predikaat:
-          $ref: "#/components/schemas/AdellijkeTitel_predikaat_tabel"
+        naam:
+          $ref: "#/components/schemas/Naam"
         geboorte:
           $ref: "#/components/schemas/Geboorte"
         ontbindingPartnerschap:
@@ -881,6 +1317,29 @@ components:
           $ref: "#/components/schemas/Datum_onvolledig"
         _links:
           $ref: "#/components/schemas/Reisdocument_links"
+    Naam:
+      type: "object"
+      description: "Gegevens over de naam van de NATUURLIJK PERSOON 02 + 61 Gegevens\
+        \ over de naam van de NATUURLIJK PERSOON"
+      properties:
+        voornamen:
+          type: "string"
+          title: "Voornamen"
+          description: "De verzameling namen die, gescheiden door spaties, aan de\
+            \ geslachtsnaam voorafgaat. 02.10 Voornamen"
+          maxLength: 200
+          example: "Pieter Jan"
+        geslachtsnaam:
+          type: "string"
+          title: "Geslachtsnaam"
+          description: "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels\
+            \ en adellijke titel/predikaat zijn afgesplitst. 02.40 Geslachtsnaam"
+          maxLength: 200
+          example: "Vries"
+        voorvoegsel:
+          $ref: "#/components/schemas/Voorvoegsel_tabel"
+        adellijkeTitel_predikaat:
+          $ref: "#/components/schemas/AdellijkeTitel_predikaat_tabel"
     Geboorte:
       type: "object"
       description: "Gegevens over de geboorte van de INGESCHREVEN NATUURLIJK PERSOON.\
@@ -890,59 +1349,46 @@ components:
           type: "string"
           title: "Geboorteplaats"
           description: "De naam van de Nederlandse gemeente of een buitenlandse plaats\
-            \ of een plaatsbepaling, die aangeeft waar de persoon is overleden In\
-            \ afwijking van het corresponderende GBA-attribuutsoort wordt voor gemeenten\
-            \ niet de code vastgelegd maar de gemeentenaam. Het betreft een gemeente\
-            \ in het Europese deel van het Koninkrijk. Zie verder de toelichting in\
-            \ de GBA. Wanneer het niet een Nederandse gemeente betreft, wordt een\
-            \ buitenlandse plaatsnaam of een omschrijving zo nodig aangevuld met een\
-            \ aanduiding in lengte- en breedtegraden, indien de geboorte niet in een\
-            \ gemeente of buitenlandse plaats heeft plaatsgevonden (bijvoorbeeld bij\
-            \ een geboorte op of boven internationaal gebied). Standaardwaarde '0000'\
-            \ indien onbekend."
+            \ of een plaatsbepaling, die aangeeft waar de persoon is overleden De\
+            \ naam van de Nederlandse gemeente of een buitenlandse plaats of een plaatsbepaling,\
+            \ die aangeeft waar de persoon is geboren. In afwijking van GBA attribuut\
+            \ 03.20 wordt voor een Nederlandse plaats niet de code, maar de plaatsnaam\
+            \ opgenomen In afwijking van het corresponderende GBA-attribuutsoort wordt\
+            \ voor gemeenten niet de code vastgelegd maar de gemeentenaam. Het betreft\
+            \ een gemeente in het Europese deel van het Koninkrijk. Zie verder de\
+            \ toelichting in de GBA. Wanneer het niet een Nederandse gemeente betreft,\
+            \ wordt een buitenlandse plaatsnaam of een omschrijving zo nodig aangevuld\
+            \ met een aanduiding in lengte- en breedtegraden, indien de geboorte niet\
+            \ in een gemeente of buitenlandse plaats heeft plaatsgevonden (bijvoorbeeld\
+            \ bij een geboorte op of boven internationaal gebied). Standaardwaarde\
+            \ '0000' indien onbekend."
           maxLength: 40
           example: "Nieuwegein"
         datum:
           $ref: "#/components/schemas/Datum_onvolledig"
         land:
           $ref: "#/components/schemas/Land_tabel"
-    Naam:
-      type: "object"
-      description: "Gegevens over de naam van de NATUURLIJK PERSOON"
-      properties:
-        aanduidingAanschrijving:
-          $ref: "#/components/schemas/Naamgebruik_enum"
-        voornamen:
-          type: "string"
-          title: "Voornamen"
-          description: "De verzameling namen die, gescheiden door spaties, aan de\
-            \ geslachtsnaam voorafgaat."
-          maxLength: 200
-          example: "Pieter Jan"
-        geslachtsnaam:
-          type: "string"
-          title: "Geslachtsnaam"
-          description: "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels\
-            \ en adellijke titel/predikaat zijn afgesplitst."
-          maxLength: 200
-          example: "Vries"
-        aanschrijfwijze:
-          type: "string"
-          title: "aanschrijfwijze"
-          description: "| Samengestelde naam zoals die in communicatie met de persoon gebruikt kan worden. Hoe het samenstellen van een aanschrijfwijze te werk gaat\
-            \ is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanschrijfwijze.feature)"
-          maxLength: 50
-          example: "P.J. graaf de Vries-van der Zon"
-        voorvoegsel:
-          $ref: "#/components/schemas/Voorvoegsel_tabel"
-        adellijkeTitel_predikaat:
-          $ref: "#/components/schemas/AdellijkeTitel_predikaat_tabel"
+    NaamPersoon:
+      allOf:
+        - $ref: "#/components/schemas/Naam"
+        - properties:
+            aanduidingAanschrijving:
+              $ref: "#/components/schemas/Naamgebruik_enum"
+            aanschrijfwijze:
+              type: "string"
+              title: "aanschrijfwijze"
+              description: "| Samengestelde naam zoals die in communicatie met de persoon\
+                \ gebruikt kan worden. Hoe het samenstellen van een aanschrijfwijze te\
+                \ werk gaat is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blo b/master/features/aanschrijfwijze.feature)"
+              maxLength: 50
+              example: "P.J. graaf de Vries- van der Zon"
     InOnderzoek:
       type: "object"
       description: "Een groep van booleans om aan te geven welke gegevens van de ingeschreven\
         \ persoon in onderzoek zijn. Er kunnen ook categorieën in onderzoek zijn.\
         \ Als een hele categorie in onderzoek is worden alle rubrieken binnen die\
-        \ categorie op true gezet. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
+        \ categorie op _true_ gezet. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)\
+        \ ."
       properties:
         burgerservicenummer:
           type: "boolean"
@@ -987,7 +1433,7 @@ components:
     NaamInOnderzoek:
       type: "object"
       description: "In onderzoekgroep om aan te geven of gegevens over de naam van\
-        \ de NATUURLIJK PERSOON in onderzoek zijn."
+        \ de Ingeschreven persoon in onderzoek zijn."
       properties:
         voornamen:
           type: "boolean"
@@ -1095,21 +1541,22 @@ components:
             \ deze persoon in onderzoek is."
     Nationaliteit:
       type: "object"
-      description: "Gegevens over de nationaliteit. Zie verder de toelichting in de\
-        \ GBA."
+      description: "Gegevens over de nationaliteit. 04/54 Gegevens over een nationaliteit\
+        \ van de ingeschrevene. Zie verder de toelichting in de GBA."
       properties:
         aanduidingBijzonderNederlanderschap:
           $ref: "#/components/schemas/AanduidingBijzonderNederlanderschap_enum"
         nationaliteit:
           $ref: "#/components/schemas/Nationaliteit_tabel"
         redenOpname:
-          $ref: "#/components/schemas/RedenVerkrijgingOpnemen_beindigenNationaliteit_tabel"
+          $ref: "#/components/schemas/RedenVerkrijgingOpnemen_beeindigenNationaliteit_tabel"
         redenBeeindigen:
-          $ref: "#/components/schemas/RedenVerkrijgingOpnemen_beindigenNationaliteit_tabel"
+          $ref: "#/components/schemas/RedenVerkrijgingOpnemen_beeindigenNationaliteit_tabel"
     Overlijden:
       type: "object"
       description: "Gegevens over het overlijden van de ingeschreven natuurlijk persoon.\
-        \ Zie verder de toelichting in de GBA."
+        \ 06/56 Gegevens over het overlijden van de ingeschrevene. Zie verder de toelichting\
+        \ in de GBA."
       properties:
         plaats:
           type: "string"
@@ -1170,10 +1617,8 @@ components:
       description: "Een door het bevoegde gemeentelijke orgaan als zodanig toegekende\
         \ aanduiding van een VERBLIJFSOBJECT, een STANDPLAATS of een LIGPLAATS. De\
         \ gegevens over het verblijf en adres van de INGESCHREVEN NATUURLIJK PERSOON\
-        \ De gegevens over het verblijf en adres van de INGESCHREVEN NATUURLIJK PERSOON.\
-        \ Dit is het adres waarop een persoon is ingeschreven. Deze resource is samengesteld\
-        \ op basis van de gegevensgroep VERBLIJFSADRES en elementen uit de objecttypen\
-        \ NUMMERAANDUIDING, OPENBARE RUIMTE en WOONPLAATS. Zie de toelichting in de\
+        \ 08/58 Gegevens over het verblijf en adres van de ingeschreven persoon. Dit\
+        \ is het adres waarop een persoon is ingeschreven. Zie de toelichting in de\
         \ Catalogus BAG. In aanvulling hierop het volgende. Het betreft alle gegevens\
         \ en relaties van de NUMMERAANDUIDING zoals deze in de BAG gedefinieerd zijn.\
         \ NUMMERAANDUIDING is gemodelleerd als een specialisatie van ADRESSEERBAAR\
@@ -1202,34 +1647,35 @@ components:
           title: "Huisletter"
           description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien\
             \ van een adresseerbaar object toegekende toevoeging aan een huisnummer\
-            \ in de vorm van een alfanumeriek teken. Dit attribuutsoort is in de BAG\
-            \ gespecificeerd bij het objecttype NUMMERAANDUIDING. Het is bij de ADRESSEERBAAR\
-            \ OBJECT AANDUIDING opgenomen aangezien naast de NUMMERAANDUIDING de OVERIG\
-            \ ADRESSEERBAAR OBJECT AANDUIDING wordt onderscheiden. Aangezien de ADRESSEERBAAR\
-            \ OBJECT AANDUIDING een generalisatie is van NUMMERAANDUIDING en OVERIG\
-            \ ADRESSEERBAAR OBJECT AANDUIDING overerven beide laatstgenoemde objecttypen\
-            \ dit attribuutsoort. Zie verder de toelichting in de BAG. a - z , A ?\
-            \ Z"
+            \ in de vorm van een alfanumeriek teken. 11.30 Huisletter Dit attribuutsoort\
+            \ is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING. Het\
+            \ is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast\
+            \ de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt\
+            \ onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie\
+            \ is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven\
+            \ beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting\
+            \ in de BAG. a - z , A ? Z"
           pattern: "^[A-Z,a-z]$"
           maxLength: 1
           example: "B"
         identificatiecodeNummeraanduiding:
           type: "string"
           title: "Identificatiecode nummeraanduiding"
-          description: "De unieke aanduiding van een NUMMERAANDUIDING. zie toelichting\
-            \ BAG Combinatie van de viercijferige 'gemeentecode' (volgens GBA tabel\
-            \ 33, Gemeententabel), de tweecijferige 'objecttypecode' en een voor het\
-            \ betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'.\
-            \ De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding."
+          description: "De unieke aanduiding van een NUMMERAANDUIDING. 11.90 Identificatiecode\
+            \ nummeraanduiding zie toelichting BAG Combinatie van de viercijferige\
+            \ 'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige\
+            \ 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente\
+            \ uniek tiencijferig 'objectvolgnummer'. De objecttypecode kent in de\
+            \ BAG de volgende waarde:20 nummeraanduiding."
           maxLength: 16
           example: "0518200000366054"
         huisnummer:
           type: "integer"
           title: "Huisnummer"
           description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien\
-            \ van een adresseerbaar object toegekende nummering. Dit attribuutsoort\
-            \ is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING. Het\
-            \ is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast\
+            \ van een adresseerbaar object toegekende nummering. 11.20 Huisnummer\
+            \ Dit attribuutsoort is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING.\
+            \ Het is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast\
             \ de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt\
             \ onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie\
             \ is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven\
@@ -1240,15 +1686,15 @@ components:
           type: "string"
           title: "Locatiebeschrijving"
           description: "Een geheel of gedeeltelijke omschrijving van de ligging van\
-            \ een object."
+            \ een object. 12.10 Locatiebeschrijving"
           maxLength: 35
           example: "Naast de derde brug"
         woonplaatsnaam:
           type: "string"
           title: "Woonplaatsnaam"
           description: "De door het bevoegde gemeentelijke orgaan aan een WOONPLAATS\
-            \ toegekende benaming. Zie verder de toelichting in de BAG. Tekens gecodeerd\
-            \ volgens de UTF-8 standaard."
+            \ toegekende benaming. 11.70 Woonplaatsnaam Zie verder de toelichting\
+            \ in de BAG. Tekens gecodeerd volgens de UTF-8 standaard."
           maxLength: 80
           example: "Utrecht"
         huisnummertoevoeging:
@@ -1256,12 +1702,12 @@ components:
           title: "Huisnummertoevoeging"
           description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien\
             \ van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer\
-            \ of een combinatie van huisnummer en huisletter. Dit attribuutsoort is\
-            \ in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING. Het is\
-            \ bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast de\
-            \ NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt onderscheiden.\
-            \ Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie is van\
-            \ NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven\
+            \ of een combinatie van huisnummer en huisletter. 11.40 Huisnummertoevoeging\
+            \ Dit attribuutsoort is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING.\
+            \ Het is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast\
+            \ de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt\
+            \ onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie\
+            \ is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven\
             \ beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting\
             \ in de BAG. a - z , A - Z , 0 ? 9"
           pattern: "^[a-zA-Z0-9]$"
@@ -1271,8 +1717,8 @@ components:
           type: "string"
           title: "Naam openbare ruimte"
           description: "Een door het bevoegde gemeentelijke orgaan aan een OPENBARE\
-            \ RUIMTE toegekende benaming Zie verder de toelichting in de BAG. Tekens\
-            \ gecodeerd volgens de UTF-8 standaard"
+            \ RUIMTE toegekende benaming 11.15 Naam openbare ruimte Zie verder de\
+            \ toelichting in de BAG. Tekens gecodeerd volgens de UTF-8 standaard"
           maxLength: 80
           example: "Loosduinsekade"
         postcode:
@@ -1280,8 +1726,8 @@ components:
           title: "Postcode"
           description: "De door PostNL vastgestelde code behorende bij een bepaalde\
             \ combinatie van een naam van een woonplaats, naam van een openbare ruimte\
-            \ en een huisnummer Dit attribuutsoort is in de BAG gespecificeerd bij\
-            \ het objecttype NUMMERAANDUIDING. Het is bij de ADRESSEERBAAR OBJECT\
+            \ en een huisnummer 11.60 Postcode Dit attribuutsoort is in de BAG gespecificeerd\
+            \ bij het objecttype NUMMERAANDUIDING. Het is bij de ADRESSEERBAAR OBJECT\
             \ AANDUIDING opgenomen aangezien naast de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR\
             \ OBJECT AANDUIDING wordt onderscheiden. Aangezien de ADRESSEERBAAR OBJECT\
             \ AANDUIDING een generalisatie is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR\
@@ -1297,6 +1743,8 @@ components:
           $ref: "#/components/schemas/Datum_onvolledig"
         geldigTotEnMet:
           $ref: "#/components/schemas/Datum_onvolledig"
+        verblijfBuitenland:
+          $ref: "#/components/schemas/VerblijfBuitenland"
     VerblijfBuitenland:
       type: "object"
       description: "De gegevens over het verblijf in het buitenland Voor een ingezetene\
@@ -1333,15 +1781,12 @@ components:
             \ betreft het eerste deel van het actuele verblijfs- of bezoekadres in\
             \ het buitenland en geldt hier ook voor niet-natuurlijke personen en vestigingen."
           maxLength: 35
-        geldigVan:
-          $ref: "#/components/schemas/Datum_onvolledig"
-        geldigTotEnMet:
-          $ref: "#/components/schemas/Datum_onvolledig"
         land:
           $ref: "#/components/schemas/Land_tabel"
     Verblijfstitel:
       type: "object"
-      description: "Gegevens over de verblijfsrechtelijke status."
+      description: "Gegevens over de verblijfsrechtelijke status. 10/60 Gegevens over\
+        \ de verblijfsrechtelijke status van de ingeschrevene."
       properties:
         aanduiding:
           $ref: "#/components/schemas/Verblijfstitel_tabel"
@@ -1360,7 +1805,7 @@ components:
           title: "jaar"
           description: "Het jaar van de datum. Als het jaar bekend is wordt dit element\
             \ gevuld, ook als de volledige datum bekend is."
-          format: "date-fullyear"
+          format: "date_fullyear"
           pattern: "^[1-2]{1}[0-9]{3}$"
         datum:
           type: "string"
@@ -1373,7 +1818,6 @@ components:
           title: "maand"
           description: "De maand. Als de maand van een datum bekend is wordt deze\
             \ hier ingevuld. Ook als de volledige datum is ingevuld."
-          format: "date-month"
           pattern: "^99$"
           maxLength: 2
         dag:
@@ -1381,13 +1825,14 @@ components:
           title: "dag"
           description: "De dag. Als de dag van de datum bekend is wordt deze hier\
             \ ingevuld. Ook als de volledige datum bekend is."
-          format: "date-mday"
           pattern: "^99$"
           maxLength: 2
     Land_tabel:
       type: "object"
-      description: "Een waarde uit GBA Tabel34 Landentabel. Deze tabel bevat een opsomming van alle huidige en voormalige landen met hun codes,\
-        \ namen en geldigheidstermijnen."
+      description: "Een opsomming van alle huidige en voormalige landen met hun codes,\
+        \ namen en geldigheidstermijnen. Een waarde uit GBA Tabel34 Landentabel. Deze\
+        \ tabel bevat een opsomming van alle huidige en voormalige landen met hun\
+        \ codes, namen en geldigheidstermijnen."
       properties:
         landcode:
           type: "string"
@@ -1405,7 +1850,9 @@ components:
           example: "Nederland"
     Voorvoegsel_tabel:
       type: "object"
-      description: "Een waarde uit GBA Tabel 36 Voorvoegsels. Deze tabel bevat de mogelijke voorvoegsels in de naam van een persoon."
+      description: "Een opsomming van de toegestane voorvoegsels. Dat deel van de\
+        \ geslachtsnaam dat voorkomt in Tabel 36, Voorvoegseltabel en, gescheiden\
+        \ door een spatie, vooraf gaat aan de rest van de geslachtsnaam."
       properties:
         voorvoegsel:
           type: "string"
@@ -1417,7 +1864,9 @@ components:
       type: "object"
       description: "Een waarde uit GBA Tabel 38 Adellijke titel predikaat. Deze tabel bevat de mogelijke adellijke titels en/of predikaten die een\
         \ persoon kan bezitten of die aan een persoon kunnen worden toegekend met\
-        \ hun codes, omschrijvingen en soorten."
+        \ hun codes, omschrijvingen en soorten. Een code, voorkomend in Tabel 38,\
+        \ Tabel Adellijke titel/predikaat, die aangeeft welke titel of welk predikaat\
+        \ behoort tot de naam (bij adellijke titel geslachtsnaam, bij predikaat voornaam)."
       properties:
         adellijkeTitel_predikaat:
           type: "string"
@@ -1440,47 +1889,54 @@ components:
     Nationaliteit_tabel:
       type: "object"
       description: "De mogelijk onderscheiden hoedanigheden van tot een bepaalde natie\
-        \ te behoren. Waarde uit GBA Tabel 32 Nationaliteitentabel."
+        \ te behoren. Een waarde, opgenomen in Tabel 32, Nationaliteitentabel, die\
+        \ aangeeft welke nationaliteit de ingeschrevene bezit."
       properties:
-        nationaliteitcode:
+        code:
           type: "integer"
           title: "Nationaliteitcode"
           description: "Een code die aangeeft welke nationaliteit de ingeschrevene\
-            \ bezit. Zie het LO GBA"
-        officieleOmschrijvingNationaliteit:
+            \ bezit. Een code, opgenomen in Tabel 32, Nationaliteitentabel, die aangeeft\
+            \ welke nationaliteit de ingeschrevene bezit. Zie het LO GBA"
+        omschrijving:
           type: "string"
           title: "Officiële omschrijving nationaliteit"
           description: "De omschrijving van de nationaliteit."
           maxLength: 42
-    RedenVerkrijgingOpnemen_beindigenNationaliteit_tabel:
+    RedenVerkrijgingOpnemen_beeindigenNationaliteit_tabel:
       type: "object"
       description: "Waarde uit GBA Tabel 37 Reden opnemen beëindigen nationaliteit. Deze tabel heeft enerzijds betrekking op de Nederlandse nationaliteit\
         \ en het bijzonder Nederlanderschap en anderzijds op andere nationaliteiten\
-        \ De Nederlandse nationaliteit: Een opsomming van de wettelijke gronden ter\
-        \ verkrijging/verlies van het Nederlanderschap met hun codes, omschrijvingen,\
-        \ soorten en geldigheidstermijnen. De niet-Nederlandse nationaliteit en het\
-        \ bijzonder Nederlanderschap: Een opsomming van de redenen waarom de nationaliteitsgegevens\
-        \ anders dan de Nederlandse op de PL zijn geactualiseerd met hun codes, omschrijvingen,\
-        \ soorten en geldigheidstermijnen."
+        \ Waarde uit GBA Tabel 37 Reden opnemen beëindigen nationaliteit. 63: Gegevens\
+        \ over de verkrijging van de Nederlandse nationaliteit dan wel het opnemen\
+        \ van een niet-Nederlandse nationaliteit. 64: Gegevens over het verlies van\
+        \ de Nederlandse nationaliteit dan wel het bee¨indigen van een niet-Nederlandse\
+        \ nationaliteit De Nederlandse nationaliteit: Een opsomming van de wettelijke\
+        \ gronden ter verkrijging/verlies van het Nederlanderschap met hun codes,\
+        \ omschrijvingen, soorten en geldigheidstermijnen. De niet-Nederlandse nationaliteit\
+        \ en het bijzonder Nederlanderschap: Een opsomming van de redenen waarom de\
+        \ nationaliteitsgegevens anders dan de Nederlandse op de PL zijn geactualiseerd\
+        \ met hun codes, omschrijvingen, soorten en geldigheidstermijnen."
       properties:
-        redenOpnemen_beindigenNationaliteit:
+        redenOpnemen_beeindigenNationaliteit:
           type: "integer"
           title: "Reden opnemen/beëindigen nationaliteit"
           description: "Het identificerende nummer van de reden van het opnemen/beë\
             indigen van de Nederlandse nationaliteit"
-        omschrijvingOpnemen_beindigenNationaliteit:
+        omschrijvingOpnemen_beeindigenNationaliteit:
           type: "string"
           title: "Omschrijving opnemen/beëindigen nationaliteit"
           description: "De omschrijving van de reden van opnemen/beëindigen van de\
             \ Nederlandse nationaliteit"
           maxLength: 80
-        soortOpnemen_beindigenNationaliteit:
+        soortOpnemen_beeindigenNationaliteit:
           $ref: "#/components/schemas/SoortRedenWijzigingNationaliteit_enum"
     RedenOntbindingHuwelijk_geregistreerdPartnerschap_tabel:
       type: "object"
       description: "Waarde uit GBA Tabel 41 Reden ontbinding/nietigverklaring huwelijk/geregistreerd partnerschaptabel. Deze bevat een opsomming van de wettelijke gronden van ontbinding/nietigverklaring\
         \ van een huwelijk/geregistreerd partnerschap met hun codes, omschrijvingen\
-        \ en geldigheidstermijnen."
+        \ en geldigheidstermijnen. Waarde uit GBA Tabel 41 Reden ontbinding/nietigverklaring\
+        \ huwelijk/geregistreerd partnerschaptabel."
       properties:
         redenOntbinding_nietigverklaringHuwelijk_geregistreerdPartnerschap:
           type: "string"
@@ -1513,8 +1969,10 @@ components:
           example: "Nederland"
     Verblijfstitel_tabel:
       type: "object"
-      description: "Een waarde uit GBA Tabel 56 Verblijfstiteltabel. Deze tabel is een opsomming van de mogelijke verblijfsrechtelijke statussen met hun codes,\
-        \ omschrijvingen en geldigheidstermijnen."
+      description: "Een opsomming van de verblijfsrechtelijke statussen met hun codes,\
+        \ omschrijvingen en geldigheidstermijnen. Een waarde uit GBA Tabel 56 Verblijfstiteltabel.\
+        \ Deze tabel is een opsomming van de mogelijke verblijfsrechtelijke statussen\
+        \ met hun codes, omschrijvingen en geldigheidstermijnen.`"
       properties:
         verblijfstitelNumeriek:
           type: "string"
@@ -1550,7 +2008,7 @@ components:
     AutoriteitAfgifteNederlandsReisdocument_tabel:
       type: "object"
       description: "Een opsomming van de diverse coderingen van de autoriteiten die\
-        \ een Nederlands reisdocument kunnen afgegeven. Waarde uit GBA Tabel 49."
+        \ een Nederlands reisdocument kunnen afgegeven Waarde uit GBA Tabel 49."
       properties:
         autoriteitVanAfgifte:
           type: "string"
@@ -1570,47 +2028,62 @@ components:
         ouders:
           title: "heeftAlsOuder"
           type: "array"
-          description: "De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE\
-            \ verwijst"
+          description: "De ingezetene, zijnde de ouder, waarnaar de KIND-OUDER-RELATIE\
+            \ verwijst De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE\
+            \ verwijst`"
           maxItems: 4
           items:
             $ref: "#/components/schemas/Link"
         reisdocumenten:
           title: "isHouderVan"
           type: "array"
-          description: "Het REISDOCUMENT dat aan de ingezetene is verstrekt."
+          description: "De ingezetene waaraan het REISDOCUMENT is verstrekt. Dit is\
+            \ de inverse relatie van heeftAlsHouder. Reisdocumenten die aan een ingezetene\
+            \ zijn verstrekt."
           items:
             $ref: "#/components/schemas/Link"
         kinderen:
           title: "heeftAlsKind"
           type: "array"
-          description: "De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE\
+          description: "De ingezetene, zijnde de ouder, waarnaar de KIND-OUDER-RELATIE\
+            \ verwijst De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE\
             \ verwijst"
           items:
             $ref: "#/components/schemas/Link"
         partnerhistorie:
           title: "heeftAlsPartner"
           type: "array"
-          description: "Het ophalen van de partnerhistorie van een ingeschreven persoon. Van een ingeschreven persoon worden parters waarmee nu of in het verleden relaties geregistreerd zijn geretourneerd."
+          description: "Het ophalen van de partnerhistorie van een ingeschreven persoon.\
+            \ Van een ingeschreven persoon worden parters waarmee nu of in het verleden\
+            \ relaties geregistreerd zijn geretourneerd."
           items:
             $ref: "#/components/schemas/Link"
         partners:
           title: "heeftAlsPartner"
           type: "array"
-          description: "De actuele bij de ingeschreven persoon geregistreerde huwelijken en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven."
+          description: "De INGEZETENE(n) bij wie de PARTNER-RELATIE is geregistreerd.\
+            \ De actuele bij de ingeschreven persoon geregistreerde huwelijken en\
+            \ geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd\
+            \ partnerschap wordt niet teruggegeven."
           items:
             $ref: "#/components/schemas/Link"
         verblijfsplaatsenhistorie:
           title: "verbleefOp"
           type: "object"
-          description: "Het ophalen van de verblijfsplaatshistorie van een ingeschreven persoon. Van een ingeschreven persoon worden verblijfsplaatsen waar een persoon zich in het verleden op heeft ingeschreven (inclusief de actuele verblijfsplaats) geretourneerd. "
+          description: "Het ophalen van de verblijfsplaatshistorie van een ingeschreven\
+            \ persoon. Van een ingeschreven persoon worden verblijfsplaatsen waar\
+            \ een persoon zich in het verleden op heeft ingeschreven (inclusief de\
+            \ actuele verblijfsplaats) geretourneerd."
           properties:
             href:
               $ref: "#/components/schemas/Href"
         verblijfstitelshistorie:
           title: "hadAlsVerblijfstitel"
           type: "object"
-          description: "Het ophalen van de verblijfstitelhistorie van een ingeschreven persoon. Van een ingeschreven persoon worden verblijfstitels die er in het verleden geregistreerd zijn (inclusief de actuele verblijfstitel) geretourneerd."
+          description: "Het ophalen van de verblijfstitelhistorie van een ingeschreven\
+            \ persoon. Van een ingeschreven persoon worden verblijfstitels die er\
+            \ in het verleden geregistreerd zijn (inclusief de actuele verblijfstitel)\
+            \ geretourneerd."
           properties:
             href:
               $ref: "#/components/schemas/Href"
@@ -1635,8 +2108,9 @@ components:
           $ref: "#/components/schemas/Link"
         ingeschrevenpersonen:
           title: "isOuder"
-          type: "object"
-          description: "De ingeschreven persoon die ouder is van de opgevraagde persoon. Deze wordt alleen opgenomen wanneer de ouder een ingeschreven persoon is."
+          description: "De ingeschreven persoon die ouder is van de opgevraagde persoon.\
+            \ Deze wordt alleen opgenomen wanneer de ouder een ingeschreven persoon\
+            \ is."
           properties:
             href:
               $ref: "#/components/schemas/Href"
@@ -1648,7 +2122,9 @@ components:
         ingeschrevenpersonen:
           title: "isKind"
           type: "object"
-          description: "De ingeschreven persoon die kind is van de opgevraagde persoon. Deze wordt alleen opgenomen wanneer het kind een ingeschreven persoon is."
+          description: "De ingeschreven persoon die kind is van de opgevraagde persoon.\
+            \ Deze wordt alleen opgenomen wanneer het kind een ingeschreven persoon\
+            \ is."
           properties:
             href:
               $ref: "#/components/schemas/Href"
@@ -1660,7 +2136,9 @@ components:
         ingeschrevenPersonen:
           title: "isPartner"
           type: "object"
-          description: "De ingeschreven persoon die partner is van de opgevraagde persoon. Deze wordt alleen opgenomen wanneer de partner een ingeschreven persoon is."
+          description: "De ingeschreven persoon die partner is van de opgevraagde\
+            \ persoon. Deze wordt alleen opgenomen wanneer de partner een ingeschreven\
+            \ persoon is."
           properties:
             href:
               $ref: "#/components/schemas/Href"
@@ -1682,20 +2160,27 @@ components:
         ouders:
           title: "heeftAlsOuder"
           type: "array"
-          description: "**** Zie eerdere wijziging description ouder-relatie ****"
+          description: "De ingezetene, zijnde de ouder, waarnaar de KIND-OUDER-RELATIE\
+            \ verwijst De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE\
+            \ verwijst`"
           maxItems: 4
           items:
             $ref: "#/components/schemas/Ouder"
         kinderen:
           title: "heeftAlsKind"
           type: "array"
-          description: "**** Zie eerdere wijziging description kind-relatie ****"
+          description: "De ingezetene, zijnde de ouder, waarnaar de KIND-OUDER-RELATIE\
+            \ verwijst De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE\
+            \ verwijst"
           items:
             $ref: "#/components/schemas/Kind"
         partners:
           title: "heeftAlsPartner"
           type: "array"
-          description: "**** Zie eerdere wijziging description partner-relatie ****"
+          description: "De INGEZETENE(n) bij wie de PARTNER-RELATIE is geregistreerd.\
+            \ De actuele bij de ingeschreven persoon geregistreerde huwelijken en\
+            \ geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd\
+            \ partnerschap wordt niet teruggegeven."
           items:
             $ref: "#/components/schemas/Partner"
     Href:
@@ -1715,65 +2200,6 @@ components:
           properties:
             href:
               $ref: "#/components/schemas/Href"
-    Foutbericht:
-      type: "object"
-      description: "Terugmelding bij een fout"
-      properties:
-        type:
-          type: "string"
-          format: "uri"
-          description: "Link naar meer informatie over deze fout"
-          example: "https://www.gemmaonline.nl/standaarden/api/ValidatieFout"
-        title:
-          type: "string"
-          description: "Beschrijving van de fout"
-          example: "Hier staat wat er is misgegaan..."
-        status:
-          type: "integer"
-          description: "Http status code"
-          example: 400
-        detail:
-          type: "string"
-          description: "Details over de fout"
-          example: "Meer details over de fout staan hier..."
-        instance:
-          type: "string"
-          format: "uri"
-          description: "Uri van de aanroep die de fout heeft veroorzaakt"
-          example: "https://datapunt.voorbeeldgemeente.nl/service/api/v1/resourcenaam?parameter=waarde"
-        invalid-params:
-          type: "array"
-          items:
-            $ref: "#/components/schemas/ParamFoutDetails"
-          description: "Foutmelding per fout in een parameter. Alle gevonden fouten\
-            \ worden één keer teruggemeld."
-    ParamFoutDetails:
-      type: "object"
-      description: "Details over fouten in opgegeven parameters"
-      properties:
-        type:
-          type: "string"
-          format: "uri"
-        name:
-          type: "string"
-          description: "Naam van de parameter"
-        reason:
-          type: "string"
-          description: "Beschrijving van de fout op de parameterwaarde"
-    OuderAanduiding_enum:
-      type: "string"
-      description: "Aanduiding om welke ouder het gaat volgens de GBA:\n* 1 - Ouder1\n\
-        * 2 - Ouder2"
-      enum:
-      - "1"
-      - "2"
-    SoortVerbintenis_enum:
-      type: "string"
-      description: "Soort verbintenis van een bij de burgerlijke stand ingeschreven\
-        \ verbintenis:\n* H - huwelijk\n* P - geregistreerd partnerschap"
-      enum:
-      - "H"
-      - "P"
     AanduidingInhoudingVermissingReisdocument_enum:
       type: "string"
       description: "De mogelijke waarden van de aanduiding van inhouding of vermissing\
@@ -1808,23 +2234,25 @@ components:
       - "7"
     Geslacht_enum:
       type: "string"
-      description: "Aanduiding van het geslacht volgens het GBA:\n* M - Man\n* V -\
-        \ Vrouw\n* O - Onbekend"
+      description: "Een aanduiding die aangeeft dat de ingeschrevene een man of een\
+        \ vrouw is, of dat het geslacht (nog) onbekend isAanduiding van het geslacht\
+        \ volgens het GBA:\n* M - Man\n* V - Vrouw\n* O - Onbekend"
       enum:
       - "M"
       - "V"
       - "O"
     IndicatieGeheim_enum:
       type: "string"
-      description: "de verschillende aanduidingen of gegevens wel of niet verstrekt\
-        \ mogen worden:\n* 0 - geen beperking\n* 1 - niet zonder toestemming aan derden\
-        \ ter uitvoering van een\n* 2 - niet aan kerken\n* 3 - niet aan vrije derden\n\
-        * 4 - niet zonder toestemming aan derden ter uitvoering van een algemeen verbindend\
-        \ voorschrift en niet aan kerken\n* 5 - niet zonder toestemming aan derden\
-        \ ter uitvoering van een algemeen verbindend voorschrift en niet aan vrije\
-        \ derden\n* 6 - niet aan kerken en niet aan vrije derden\n* 7 - niet zonder\
-        \ toestemming aan derden ter uitvoering van een algemeen verbindend voorschrift\
-        \ en niet aan vrije derden en niet aan kerken"
+      description: "Categorie 07.70 uit de GBA.de verschillende aanduidingen of gegevens\
+        \ wel of niet verstrekt mogen worden:\n* 0 - geen beperking\n* 1 - niet zonder\
+        \ toestemming aan derden ter uitvoering van een\n* 2 - niet aan kerken\n*\
+        \ 3 - niet aan vrije derden\n* 4 - niet zonder toestemming aan derden ter\
+        \ uitvoering van een algemeen verbindend voorschrift en niet aan kerken\n\
+        * 5 - niet zonder toestemming aan derden ter uitvoering van een algemeen verbindend\
+        \ voorschrift en niet aan vrije derden\n* 6 - niet aan kerken en niet aan\
+        \ vrije derden\n* 7 - niet zonder toestemming aan derden ter uitvoering van\
+        \ een algemeen verbindend voorschrift en niet aan vrije derden en niet aan\
+        \ kerken"
       enum:
       - "0"
       - "1"
@@ -1834,14 +2262,40 @@ components:
       - "5"
       - "6"
       - "7"
+    IndicatieGezagMinderjarige_enum:
+      type: "string"
+      description: "Een aanduiding die aangeeft wie belast is met het gezag over de\
+        \ minderjarige ingeschrevene.De mogelijke aanduidingen die aangeven wie belast\
+        \ is met het gezag over de minderjarige ingeschrevene. Dit komt uit het GBA.:\n\
+        * 1 - ouder1 heeft het gezag\n* 2 - ouder2 heeft het gezag\n* D - een of meer\
+        \ derden hebben het gezag\n* 1D - ouder1 + een derde hebben het gezag\n* 2D\
+        \ - ouder2 + een derde hebben het gezag\n* 12 - ouder1 + ouder2 hebben het\
+        \ gezag"
+      enum:
+      - "1"
+      - "2"
+      - "D"
+      - "1D"
+      - "2D"
+      - "12"
     Naamgebruik_enum:
       type: "string"
-      description: "Gegevens over de wijze van aanschrijving (61.10).:\n* E - eigen geslachtsnaam\n* P - geslachtsnaam echtgenoot/geregistreerd partner\n* V - geslachtsnaam echtgenoot/geregistreerd partner voor eigen geslachtsnaam\n* N - geslachtsnaam echtgenoot/geregistreerd partner na eigen geslachtsnaam"
+      description: "61.10 Gegevens over de wijze van aanschrijving.De voorgedefinieerde\
+        \ waarden van naamgebruik volgens de centrale voorzieningen. Zie attribuut\
+        \ Naamgebruik van groep A.1.12 Naamgebruik van BRP.:\n* E - Eigen\n* P - Partner\n\
+        * V - Partner, eigen\n* N - Eigen, partner"
       enum:
       - "E"
       - "P"
       - "V"
       - "N"
+    OuderAanduiding_enum:
+      type: "string"
+      description: "Aanduiding om welke ouder het gaat volgens de GBA:\n* 1 - Ouder1\n\
+        * 2 - Ouder2"
+      enum:
+      - "1"
+      - "2"
     RedenOpschortingBijhouding_enum:
       type: "string"
       description: "Redenen voor opschorting van de bijhouding:\n* O - overlijden\n\
@@ -1869,6 +2323,13 @@ components:
       - "OP"
       - "VL"
       - "BE"
+    SoortVerbintenis_enum:
+      type: "string"
+      description: "Soort verbintenis van een bij de burgerlijke stand ingeschreven\
+        \ verbintenis:\n* H - huwelijk\n* P - geregistreerd partnerschap"
+      enum:
+      - "H"
+      - "P"
   headers:
     api_version:
       schema:
