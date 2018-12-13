@@ -1743,8 +1743,6 @@ components:
           $ref: "#/components/schemas/Datum_onvolledig"
         geldigTotEnMet:
           $ref: "#/components/schemas/Datum_onvolledig"
-        verblijfBuitenland:
-          $ref: "#/components/schemas/VerblijfBuitenland"
     VerblijfBuitenland:
       type: "object"
       description: "De gegevens over het verblijf in het buitenland Voor een ingezetene\
