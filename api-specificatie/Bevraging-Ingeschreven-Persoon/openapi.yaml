@@ -1175,9 +1175,7 @@ components:
         landVanwaarIngeschreven:
           $ref: "#/components/schemas/Land_tabel"
         naam:
-          type: "array"
-          items:
-            $ref: "#/components/schemas/NaamPersoon"
+          $ref: "#/components/schemas/NaamPersoon"
         inOnderzoek:
           $ref: "#/components/schemas/InOnderzoek"
         nationaliteit:
