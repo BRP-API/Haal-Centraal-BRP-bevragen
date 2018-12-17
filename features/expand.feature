@@ -10,6 +10,9 @@ Functionaliteit: Automatisch laden van sub-resources
   - ouders
   - partners
 
+  "eager loading" wordt mogelijk gemaakt voor de volgende sub-resource van bewoning:
+  - bewoners
+
   Deze gelinkte resources kunnen direct bij de gezochte of geraadpleegde persoon (personen) worden meegeladen. Hiervoor gebruikt men de parameter expand.
   De gevraagde resources worden dan (conform HAL) opgenomen in veld _embedded binnen de resource.
 

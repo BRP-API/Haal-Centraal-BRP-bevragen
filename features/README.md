@@ -3,6 +3,46 @@ Het doel is:
 - functionele werking van de api specificeren en illustreren
 - test om een provider van de API te testen
 
+## Opbouw van de functionele specificaties
+De specificaties zijn opgebouwd per functionalteit van de API. Op elke functionaliteit van de API is de werking beschreven én is de werking geïllustreerd in de vorm van scenario's (als ik dit doe, dan doet de api dat).
+
+Voor het zoeken van personen zijn de volgende functionaliteiten beschreven:
+- Zoeken vindt standaard [alleen personen die nog in leven zijn](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature), gebruik anders parameter inclusiefoverledenpersonen
+- [Validatie van parameters](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature) in een API aanroep
+- Mogelijke [combinaties van parameters](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametercombinaties.feature) die minimaal vereist zijn
+- Gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) op bepaalde parameters
+- Zoeken op een parameterwaarde is [case-insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature) wanneer de parameter een string is
+- Zoeken met [diakrieten](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/diakrieten_in_parameter.feature)
+
+Voor het samenstellen van het antwoord op een zoekvraag of het raadplegen van een persoon zijn de volgende functionaliteiten beschreven:
+- Samenstellen van de [aanschrijfwijze](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanschrijfwijze.feature)
+- Samenstellen en interpreteren van gegevens die [in onderzoek](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature) zijn
+- Mogelijk onvolledige datums *TODO*
+- Links naar relaties *TODO*
+- Links naar historie-resources van de persoon *TODO*
+- Alleen opnemen van actuele partners, kinderen en ouders *TODO*
+
+Voor het ophalen van historie is de volgende functionaliteit beschreven:
+- Bepalen van het moment of de periode waarover historie wordt gevraagd *TODO*
+
+Voor ophalen van historie en het samenstellen van het antwoord daarop geldt ook:
+- [Validatie van parameters](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature) in een API aanroep
+- Zoeken op een parameterwaarde is [case-insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature) wanneer de parameter een string is
+- Mogelijk onvolledige datums *TODO*
+- Gebruik [fields](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature) om een deel van de attributen in het antwoord te krijgen
+
+Voor het ophalen van de historie van bewoningen kan bovendien [expand](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/expand.feature) gebruikt worden om gegevens van de bewoners in het antwoord mee te laden.
+
+Voor het samenstellen van het antwoord op historie-collectie is de volgende functionaliteit beschreven:
+- [Sorting](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/historie_sorteren.feature) van historische voorkomens *TODO*
+
+ Voor het manipuleren van de omvang van het antwoord zijn de volgende functionaliteiten beschreven:
+ - Gebruik [fields](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature) om een deel van de attributen in het antwoord te krijgen
+ - Gebruik [expand](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/expand.feature) om een sub-resource (partners, ouders, kinderen) in het antwoord mee te laden
+
+ Er is ook functionaliteit beschreven over de foutafhandeling. *TODO*
+
+## Features en scenario's
 De specificatie/test is gespecificeerd in documenten per functionaliteit, elk met extensie ".feature". Per functionaliteit is een korte beschrijving van de functionaliteit opgenomen plus scenario's die de gewenste werking van de functionaliteit toelichten en demonstreren.
 
 De specificatie/test is functioneel gedefinieerd in [Gherkin](https://docs.cucumber.io/gherkin/reference/). Hiermee kan in menselijke taal de specificatie/test worden opgesteld.

@@ -1,10 +1,10 @@
 burgerservicenummer;geslachtsnaam;voornamen;voorvoegselGeslachtsnaam;aanduidingAanschrijving;adellijkeTitel_predikaat;geslachtsaanduiding;geboortedatum;geboorteplaats;datumOverlijden;postcode;naamOpenbareRuimte;huisnummer;huisletter;huisnummertoevoeging;gemeenteVanInschrijving;identificatiecodenummeraanduiding;inOnderzoek;partner;kinderen
-999999011;Groen;Frank;van;;null;M;26-05-83;Sas van Gent;null;9744CZ;Beatrixstraat;5;null;null;0014;704019876543210;;;
-999999023;Groenlo;Franka;null;V;null;V;26-05-83;Delft;null;2628HJ;Sint Aldegondestraat;2;A;to;0503;893675839595730;;999999047;999999084
-999999035;Groenink;Johan Frank Robert;null;P;null;O;26-05-83;;null;;;;;;0518;;;999999060;
-999999047;Groenen;Franklin;null;E;null;M;26-05-83;;null;2595AK;Prinses Beatrixlaan;21;null;null;0518;689047857696734;;999999023;
-999999059;Groenen;Franky;null;;null;M;26-05-83;Amsterdam;null;2595AK;Prinses Beatrixlaan;21;null;null;0518;689047857696734;;;
-999999060;Groenen;Franka;null;N;null;V;26-05-83;Sas van Gent;;2595AK;Prinses Beatrixlaan;21;null;null;0518;689047857696734;;999999035;
+999999011;Groen;Frank;van;;null;M;26-05-83;Sas van Gent;null;9744CZ;Beatrixstraat;5;null;null;14;704019876543210;;;
+999999023;Groenlo;Franka;null;V;null;V;26-05-83;Delft;null;2628HJ;Sint Aldegondestraat;2;A;to;503;893675839595730;;999999047;999999084
+999999035;Groenink;Johan Frank Robert;null;P;null;O;26-05-83;;null;;;;;;518;;;999999060;
+999999047;Groenen;Franklin;null;E;null;M;26-05-83;;null;2595AK;Prinses Beatrixlaan;21;null;null;518;689047857696734;;999999023;
+999999059;Groenen;Franky;null;;null;M;26-05-83;Amsterdam;null;2595AK;Prinses Beatrixlaan;21;null;null;518;689047857696734;;;
+999999060;Groenen;Franka;null;N;null;V;26-05-83;Sas van Gent;;2595AK;Prinses Beatrixlaan;21;null;null;518;689047857696734;;999999035;
 999999072;Groenen;Theo Philip IJsbrand;null;E;null;;26-05-83;;;;;;;;;;;;
 999999084;Groenen;Anne-Fleur Belle;null;E;null;;26-05-83;;;;;;;;;;;;
 999999096;Groenen;.;null;E;null;;26-05-83;;;;;;;;;;;;
@@ -20,7 +20,7 @@ burgerservicenummer;geslachtsnaam;voornamen;voorvoegselGeslachtsnaam;aanduidingA
 999999205;Berg;Peter;van der;N;null;;26-05-83;;;;;;;;;;;555555938;
 999999217;Berg;Marlies;van der;P;null;;26-05-83;;;;;;;;;;;555555951;
 999999229;Berg;Fleur;van der;V;null;;26-05-83;;;;;;;;;;;555555914;
-999999230;Velden;André;;;;;26-05-83;;;;;;;;;;;;
+999999230;Velden;André;;;;;26-05-83;;;;;;;;;;;999999242;
 999999242;Veerlen;Andrea;;;;;26-05-83;;;;;;;;;;;;
 999999254;Velden;Marie;;;;;26-05-83;;;;;;;;;;;;
 999999266;Velden;Mariëlle;;;;;26-05-83;;;;;;;;;;;;
@@ -37,8 +37,8 @@ burgerservicenummer;geslachtsnaam;voornamen;voorvoegselGeslachtsnaam;aanduidingA
 555555975;Aedel;Irene;van den;V;MI;;26-05-83;;;;;;;;;;;555555999;
 555555987;Stand;Elisabeth;van;V;BS;;26-05-83;;;;;;;;;;;555555963;
 555555999;Stand;Karel;van;E;R;;26-05-83;;;;;;;;;;;555555975;
-999999291;Groenen;Çelik;;;;;1975-01-??;;;9744CZ;Beatrixstraat;7;;;0014;;;;
+999999291;Groenen;Çelik;;;;;1975-01-??;;;9744CZ;Beatrixstraat;7;;;14;;;;
 999999308;Groenen;;;;;;1975-??-??;;;;;;;;;;;;
 999999321;Groen en Geel;;van;;;;26-05-83;;;;;;;;;;;;
 999999333;Groen-Geel;;;;;;26-05-83;;;;;;;;;;;;
-999999345;Groenen;;;;;;26-05-83;;23-01-18;2595AK;Prinses Beatrixlaan;21;null;null;0518;689047857696734;;;
+999999345;Groenen;;;;;;26-05-83;;23-01-18;2595AK;Prinses Beatrixlaan;21;null;null;518;689047857696734;;;
