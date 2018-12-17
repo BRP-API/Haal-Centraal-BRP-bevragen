@@ -143,9 +143,9 @@ ValidatieFoutbericht:
         invalid-params:
           type: array
           items:
-            $ref: "#/ParamFoutDetails"
+            $ref: "#/InvalidParams"
           description: "Foutmelding per fout in een parameter. Alle gevonden fouten worden één keer teruggemeld."
-ParamFoutDetails:
+InvalidParams:
   type: object
   description: Details over fouten in opgegeven parameters
   properties:
