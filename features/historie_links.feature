@@ -11,7 +11,7 @@ Functionaliteit: Links naar historie resources van een persoon
   - verblijfsplaatsenhistorie
   - verblijfstitelshistorie
 
-  Wanneer de API "Historie ingeschreven personen" NIET beschikbaar is, mag de resource ingeschrevenpersonen GEEN bevatten naar historische resources.
+  Wanneer de API "Historie ingeschreven personen" NIET beschikbaar is, mag de resource ingeschrevenpersonen GEEN links bevatten naar historische resources.
 
   Scenario: historie-API is beschikbaar en resource wordt geraadpleegd
     Gegeven de API "Historie ingeschreven personen" is beschikbaar
