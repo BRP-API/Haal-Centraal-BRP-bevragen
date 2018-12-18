@@ -17,10 +17,10 @@ Voor het zoeken van personen zijn de volgende functionaliteiten beschreven:
 Voor het samenstellen van het antwoord op een zoekvraag of het raadplegen van een persoon zijn de volgende functionaliteiten beschreven:
 - Samenstellen van de [aanschrijfwijze](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanschrijfwijze.feature)
 - Samenstellen en interpreteren van gegevens die [in onderzoek](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature) zijn
-- Mogelijk onvolledige datums *TODO*
-- Links naar relaties *TODO*
+- [Mogelijk onvolledige datums](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/onvolledige_datum.feature)
+- [Links](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/links.feature) naar relaties
 - Links naar historie-resources van de persoon *TODO*
-- Alleen opnemen van actuele partners, kinderen en ouders *TODO*
+- Alleen opnemen van [actuele partners, kinderen en ouders](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/partners_ouders_kinderen.feature)
 
 Voor het ophalen van historie is de volgende functionaliteit beschreven:
 - Bepalen van het moment of de periode waarover historie wordt gevraagd *TODO*

@@ -62,7 +62,7 @@ Functionaliteit: zoeken met een wildcard wordt ondersteund op enkele parameters
 
   Scenario: De "?" wildcard kan meerdere keren achter elkaar worden opgenomen
     Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=groen??
-    En wordt de ingeschreven persoon gevonden met naam.geslachtsnaam=Groenlo
+    Dan wordt de ingeschreven persoon gevonden met naam.geslachtsnaam=Groenlo
     En wordt de ingeschreven persoon gevonden met naam.geslachtsnaam=Groenen
     En wordt geen ingeschreven persoon gevonden met naam.geslachtsnaam=Groen
     En wordt geen ingeschreven persoon gevonden met naam.geslachtsnaam=Groenink
@@ -91,4 +91,3 @@ Functionaliteit: zoeken met een wildcard wordt ondersteund op enkele parameters
     Dan levert dit zoekresultaten
     Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=ve*
     Dan levert dit zoekresultaten
-    
