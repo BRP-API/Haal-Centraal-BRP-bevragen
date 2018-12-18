@@ -19,7 +19,7 @@ Voor het samenstellen van het antwoord op een zoekvraag of het raadplegen van ee
 - Samenstellen en interpreteren van gegevens die [in onderzoek](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature) zijn
 - [Mogelijk onvolledige datums](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/onvolledige_datum.feature)
 - [Links](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/links.feature) naar relaties
-- Links naar historie-resources van de persoon *TODO*
+- [Links naar historie-resources](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/historie_links.feature) van de persoon
 - Alleen opnemen van [actuele partners, kinderen en ouders](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/partners_ouders_kinderen.feature)
 
 Voor het ophalen van historie is de volgende functionaliteit beschreven:
