@@ -6,7 +6,7 @@ HalLink:
   type: object
   properties:
     href:
-      $ref: "#/components/schemas/Href"
+      $ref: "#/Href"
 HalCollectionLinks:
   type: object
   properties:
