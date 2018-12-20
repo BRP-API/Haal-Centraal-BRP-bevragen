@@ -4,7 +4,7 @@ Bevragingen ingeschreven personen is een berichtenstandaard voor het opvragen va
 
 Inhoudelijk startpunt voor de bevragingen zijn de geïnventariseerde vragen die zijn opgesteld door de werkgroep RSGB bevragingen en vastgelegd in standaard [RSGB-bevragingen 1.0](https://www.gemmaonline.nl/index.php/RSGB_Bevragingen), module ingeschreven personen.
 
-Het initiële startpunt voor informatiemodellen van gegevens in de berichten was RSGB 3. Gaandeweg het traject is ervoor gekozen om bij de vormgeving van de berichten zo dicht mogelijk bij het Logisch Ontwerp GBA te blijven. 
+Het initiële startpunt voor informatiemodellen van gegevens in de berichten was RSGB 3. Gaandeweg het traject is ervoor gekozen om bij de vormgeving van de berichten zo dicht mogelijk bij het Logisch Ontwerp GBA te blijven.
 
 Startpunt voor technische uitwisselafspraken voor de te ontwikkelen RESTfull API operaties is de DSO API strategie en DSO URI strategie.
 
@@ -27,8 +27,8 @@ Startpunt voor technische uitwisselafspraken voor de te ontwikkelen RESTfull API
 * [Common Ground](https://commonground.pleio.nl)
 
 ## Contactpersonen:
-* Projectleider: Frank Samwel frank.samwel@vng.nl
-* Berichtontwerper: Johan Boer johan.boer@vng.nl
+* Product owner: @CathyDingemanse
+* Berichtontwerper: @JohanBoer
 
 ## Licentie
 De koppelvlakstandaard, inclusief alle onderdelen die erbij horen (volgens productvisie en/of definition of done) zijn gelicenceerd onder [EUPL](https://eupl.eu/1.2/nl/).
