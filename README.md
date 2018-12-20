@@ -27,8 +27,8 @@ Startpunt voor technische uitwisselafspraken voor de te ontwikkelen RESTfull API
 * [Common Ground](https://commonground.pleio.nl)
 
 ## Contactpersonen:
-* Product owner: @CathyDingemanse
-* Berichtontwerper: @JohanBoer
+* Product owner: [@CathyDingemanse](https://github.com/CathyDingemanse)
+* Berichtontwerper: [@JohanBoer](https://github.com/JohanBoer)
 
 ## Licentie
 De koppelvlakstandaard, inclusief alle onderdelen die erbij horen (volgens productvisie en/of definition of done) zijn gelicenceerd onder [EUPL](https://eupl.eu/1.2/nl/).
