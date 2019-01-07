@@ -39,7 +39,7 @@ python-dotenv==0.9.1
 pytz==2018.5
 pyyaml>=4.2b1             # via gemma-zds-client, oyaml, zds-schema
 raven==6.9.0
-requests==2.19.1          # via coreapi, gemma-zds-client, zds-schema
+requests>=2.20.0          # via coreapi, gemma-zds-client, zds-schema
 ruamel.yaml==0.15.64      # via drf-yasg
 six==1.11.0               # via drf-yasg, isodate, pip-tools, python-dateutil
 unidecode==1.0.22         # via zds-schema
