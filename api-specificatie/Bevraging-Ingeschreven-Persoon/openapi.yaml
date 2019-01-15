@@ -1,5 +1,8 @@
 ﻿openapi: 3.0.0
 servers:
+# Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/King4/KING4TEST/1.0.0
   - description: "SwaggerHub API Auto Mocking"
     url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bevragingen_ingeschreven_personen/v1
   - description: "Referentie-implementatie"
@@ -7,7 +10,7 @@ servers:
 info:
   title: Bevragingen ingeschreven personen
   description: "API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. Ook de gegevens over reisdocumenten worden via deze API ontsloten. Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting."
-  version: "1.0"
+  version: "1.0.0"
   contact:
     url: https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen
   license:
@@ -44,7 +47,7 @@ paths:
             
 
         5.  Nummeraanduiding
-            -  verblijfsplaats__identificatiecodenummeraanduiding
+            -  verblijfplaats__identificatiecodenummeraanduiding
 
         De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters.
 
@@ -126,7 +129,7 @@ paths:
           example: 14
         - in: query
           name: verblijfplaats__huisnummertoevoeging
-          description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter. Dit attribuutsoort is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING. Het is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting in de BAG. a - z , A - Z , 0 ? 9"
+          description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter. Dit attribuutsoort is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING. Het is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting in de BAG. a - z , A - Z , 0 – 9"
           required: false
           schema:
             type: string
@@ -168,35 +171,35 @@ paths:
           description: "Zoekactie geslaagd"
           headers:
             api-version:
-              $ref: '#/components/headers/api_version'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
             warning:
-              $ref: '#/components/headers/warning'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/warning"
             X-Rate-Limit-Limit:
-              $ref: '#/components/headers/X_Rate_Limit_Limit'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Limit"
             X-Rate-Limit-Remaining:
-              $ref: '#/components/headers/X_Rate_Limit_Remaining'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Remaining"
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Reset"
           content:
             application/hal+json:
               schema:
-               type: object
-               properties:
-                 _links:
-                   $ref: '#/components/schemas/Collectionlinks'
-                 _embedded:
-                   type: object
-                   properties:
-                     ingeschrevenpersonen:
-                       type: array
-                       items:
-                         $ref: '#/components/schemas/IngeschrevenPersoon'
+                type: object
+                properties:
+                  _links:
+                    $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalCollectionLinks"
+                  _embedded:
+                    type: object
+                    properties:
+                      ingeschrevenpersonen:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/IngeschrevenPersoon'
         '400':
           description: Bad Request
           content:
             application/problem+json:
               schema:
-                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/ValidatieFoutbericht"
         '401':
           description: Unauthorized
           content:
@@ -284,15 +287,15 @@ paths:
           description: "Zoekactie geslaagd"
           headers:
             api-version:
-              $ref: '#/components/headers/api_version'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
             warning:
-              $ref: '#/components/headers/warning'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/warning"
             X-Rate-Limit-Limit:
-              $ref: '#/components/headers/X_Rate_Limit_Limit'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Limit"
             X-Rate-Limit-Remaining:
-              $ref: '#/components/headers/X_Rate_Limit_Remaining'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Remaining"
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Reset"
           content:
             application/hal+json:
               schema:
@@ -390,15 +393,15 @@ paths:
           description: "Zoekactie geslaagd"
           headers:
             api-version:
-              $ref: '#/components/headers/api_version'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
             warning:
-              $ref: '#/components/headers/warning'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/warning"
             X-Rate-Limit-Limit:
-              $ref: '#/components/headers/X_Rate_Limit_Limit'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Limit"
             X-Rate-Limit-Remaining:
-              $ref: '#/components/headers/X_Rate_Limit_Remaining'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Remaining"
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Reset"
           content:
             application/hal+json:
               schema:
@@ -489,29 +492,29 @@ paths:
           description: "Zoekactie geslaagd"
           headers:
             api-version:
-              $ref: '#/components/headers/api_version'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
             warning:
-              $ref: '#/components/headers/warning'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/warning"
             X-Rate-Limit-Limit:
-              $ref: '#/components/headers/X_Rate_Limit_Limit'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Limit"
             X-Rate-Limit-Remaining:
-              $ref: '#/components/headers/X_Rate_Limit_Remaining'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Remaining"
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Reset"
           content:
             application/hal+json:
               schema:
-               type: object
-               properties:
-                 _links:
-                   $ref: '#/components/schemas/Collectionlinks'
-                 _embedded:
-                   type: object
-                   properties:
-                     kind:
-                       type: array
-                       items:
-                         $ref: '#/components/schemas/Kind'
+                type: object
+                properties:
+                  _links:
+                    $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalCollectionLinks"
+                  _embedded:
+                    type: object
+                    properties:
+                      kind:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Kind'
         '401':
           description: Unauthorized
           content:
@@ -605,15 +608,15 @@ paths:
           description: "Zoekactie geslaagd"
           headers:
             api-version:
-              $ref: '#/components/headers/api_version'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
             warning:
-              $ref: '#/components/headers/warning'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/warning"
             X-Rate-Limit-Limit:
-              $ref: '#/components/headers/X_Rate_Limit_Limit'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Limit"
             X-Rate-Limit-Remaining:
-              $ref: '#/components/headers/X_Rate_Limit_Remaining'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Remaining"
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Reset"
           content:
             application/hal+json:
               schema:
@@ -704,29 +707,29 @@ paths:
           description: "Zoekactie geslaagd"
           headers:
             api-version:
-              $ref: '#/components/headers/api_version'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
             warning:
-              $ref: '#/components/headers/warning'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/warning"
             X-Rate-Limit-Limit:
-              $ref: '#/components/headers/X_Rate_Limit_Limit'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Limit"
             X-Rate-Limit-Remaining:
-              $ref: '#/components/headers/X_Rate_Limit_Remaining'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Remaining"
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Reset"
           content:
             application/hal+json:
               schema:
-               type: object
-               properties:
-                 _links:
-                   $ref: '#/components/schemas/Collectionlinks'
-                 _embedded:
-                   type: object
-                   properties:
-                     ouders:
-                       type: array
-                       items:
-                         $ref: '#/components/schemas/Ouder'
+                type: object
+                properties:
+                  _links:
+                    $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalCollectionLinks"
+                  _embedded:
+                    type: object
+                    properties:
+                      ouders:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Ouder'
         '401':
           description: Unauthorized
           content:
@@ -820,15 +823,15 @@ paths:
           description: "Zoekactie geslaagd"
           headers:
             api-version:
-              $ref: '#/components/headers/api_version'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
             warning:
-              $ref: '#/components/headers/warning'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/warning"
             X-Rate-Limit-Limit:
-              $ref: '#/components/headers/X_Rate_Limit_Limit'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Limit"
             X-Rate-Limit-Remaining:
-              $ref: '#/components/headers/X_Rate_Limit_Remaining'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Remaining"
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Reset"
           content:
             application/hal+json:
               schema:
@@ -919,29 +922,29 @@ paths:
           description: "Zoekactie geslaagd"
           headers:
             api-version:
-              $ref: '#/components/headers/api_version'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
             warning:
-              $ref: '#/components/headers/warning'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/warning"
             X-Rate-Limit-Limit:
-              $ref: '#/components/headers/X_Rate_Limit_Limit'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Limit"
             X-Rate-Limit-Remaining:
-              $ref: '#/components/headers/X_Rate_Limit_Remaining'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Remaining"
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Reset"
           content:
             application/hal+json:
               schema:
-               type: object
-               properties:
-                 _links:
-                   $ref: '#/components/schemas/Collectionlinks'
-                 _embedded:
-                   type: object
-                   properties:
-                     partners:
-                       type: array
-                       items:
-                         $ref: '#/components/schemas/Partner'
+                type: object
+                properties:
+                  _links:
+                    $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalCollectionLinks"
+                  _embedded:
+                    type: object
+                    properties:
+                      partners:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Partner'
         '401':
           description: Unauthorized
           content:
@@ -1028,15 +1031,15 @@ paths:
           description: "Zoekactie geslaagd"
           headers:
             api-version:
-              $ref: '#/components/headers/api_version'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
             warning:
-              $ref: '#/components/headers/warning'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/warning"
             X-Rate-Limit-Limit:
-              $ref: '#/components/headers/X_Rate_Limit_Limit'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Limit"
             X-Rate-Limit-Remaining:
-              $ref: '#/components/headers/X_Rate_Limit_Remaining'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Remaining"
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Reset"
           content:
             application/hal+json:
               schema:
@@ -1117,15 +1120,16 @@ components:
           type: "string"
           title: "Burgerservicenummer"
           description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet\
-            \ algemene bepalingen burgerservicenummer. Elk ingeschreven natuurlijk\
-            \ persoon heeft een BSN, een nummer dat de natuurlijk persoon uniek identificeert\
-            \ in overheidsadministraties. De attribuutsoort kent onder meer historie\
-            \ omdat het mogelijk is dat het Burgerservicenummer van een natuurlijk\
-            \ persoon wijzigt, met name vanwege ambtelijke correcties. Zie verder\
-            \ de toelichting in de GBA Alle nummers waarvoor geldt dat, indien aangeduid\
-            \ als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1)\
-            \ + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9\
-            \ cijfers aanwezig zijn."
+            \ algemene bepalingen burgerservicenummer. Element 01.20 Het burgerservicenummer,\
+            \ bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer.\
+            \ Elk ingeschreven natuurlijk persoon heeft een BSN, een nummer dat de\
+            \ natuurlijk persoon uniek identificeert in overheidsadministraties. De\
+            \ attribuutsoort kent onder meer historie omdat het mogelijk is dat het\
+            \ Burgerservicenummer van een natuurlijk persoon wijzigt, met name vanwege\
+            \ ambtelijke correcties. Zie verder de toelichting in de GBA Alle nummers\
+            \ waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8),\
+            \ het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar\
+            \ is door elf. Er moeten dus 9 cijfers aanwezig zijn."
           pattern: "^[0-9]$"
           maxLength: 9
           example: "555555021"
@@ -1133,8 +1137,8 @@ components:
           type: "integer"
           title: "A-nummer"
           description: "Het administratienummer van de persoon, bedoeld in de Wet\
-            \ BRP Het administratienummer, bedoeld in artikel 4.9 van de Wet BRP.\
-            \ zie GBA"
+            \ BRP Element 01.10 Het administratienummer, bedoeld in artikel 4.9 van\
+            \ de Wet BRP. zie GBA"
           example: "876352431"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
@@ -1150,8 +1154,6 @@ components:
             \ tot ambtshalve inschrijving mededeling is gedaan. In alle andere gevallen\
             \ is dit de datum waarop de aangifte is ontvangen."
           format: "date"
-        indicatieGezagMinderjarige:
-          $ref: "#/components/schemas/IndicatieGezagMinderjarige_enum"
         redenOpschortingBijhouding:
           $ref: "#/components/schemas/RedenOpschortingBijhouding_enum"
         datumOpschortingBijhouding:
@@ -1160,23 +1162,14 @@ components:
           description: "De datum waarop de bijhouding van de persoonslijst is gestaakt."
           format: "date"
           example: "2018-01-29"
-        signaleringNederlandsReisdocument:
-          type: "integer"
-          title: "Signalering Nederlands reisdocument"
-          description: "Een aanduiding dat aan de ingeschrevene geen reisdocument\
-            \ mag worden verstrekt Als dit attribuut voorkomt, dan is de waarde '1'\
-            \ = belemmering verstrekking Nederlands reisdocument."
-          minimum: 1
-          maximum: 1
-          example: "1"
         datumInschrijvingInGemeente:
           $ref: "#/components/schemas/Datum_onvolledig"
         landVanwaarIngeschreven:
           $ref: "#/components/schemas/Land_tabel"
-        naam:
-          type: "array"
-          items:
-            $ref: "#/components/schemas/NaamPersoon"
+        kiesrecht:
+          $ref: "#/components/schemas/Kiesrecht"
+        naamPersoon:
+          $ref: "#/components/schemas/NaamPersoon"
         inOnderzoek:
           $ref: "#/components/schemas/InOnderzoek"
         nationaliteit:
@@ -1189,6 +1182,8 @@ components:
           $ref: "#/components/schemas/Overlijden"
         verblijfplaats:
           $ref: "#/components/schemas/Verblijfplaats"
+        gezagsverhouding:
+          $ref: "#/components/schemas/Gezagsverhouding"
         verblijfstitel:
           $ref: "#/components/schemas/Verblijfstitel"
         _links:
@@ -1197,7 +1192,8 @@ components:
           $ref: "#/components/schemas/IngeschrevenPersoon_embedded"
     Ouder:
       type: "object"
-      description: "02/52 of 03/53 Gegevens over de ouder van de ingeschrevene."
+      description: "Het verband tussen een kind en één van zijn of haar juridische\
+        \ ouders. 02/52 of 03/53 Gegevens over de ouder van de ingeschrevene."
       properties:
         burgerservicenummer:
           type: "string"
@@ -1221,8 +1217,6 @@ components:
           $ref: "#/components/schemas/OuderAanduiding_enum"
         geldigVan:
           $ref: "#/components/schemas/Datum_onvolledig"
-        geldigTotEnMet:
-          $ref: "#/components/schemas/Datum_onvolledig"
         naam:
           $ref: "#/components/schemas/Naam"
         geboorte:
@@ -1231,7 +1225,8 @@ components:
           $ref: "#/components/schemas/Ouder_links"
     Kind:
       type: "object"
-      description: "09/59 Gegevens over een kind van de ingeschrevene."
+      description: "Het verband tussen een kind en één van zijn of haar juridische\
+        \ ouders. 09/59 Gegevens over een kind van de ingeschrevene."
       properties:
         burgerservicenummer:
           type: "string"
@@ -1249,8 +1244,6 @@ components:
           pattern: "^[0-9]$"
           maxLength: 9
           example: "430422088"
-        ouder_aanduiding:
-          $ref: "#/components/schemas/OuderAanduiding_enum"
         naam:
           $ref: "#/components/schemas/Naam"
         geboorte:
@@ -1259,7 +1252,8 @@ components:
           $ref: "#/components/schemas/Kind_links"
     Partner:
       type: "object"
-      description: "05/55 Gegevens over een gesloten huwelijk/geregistreerd partnerschap\
+      description: "Gegevens over een huwelijk/geregistreerd partnerschap van de NATUURLIJK\
+        \ PERSOON 05/55 Gegevens over een gesloten huwelijk/geregistreerd partnerschap\
         \ van de ingeschrevene."
       properties:
         burgerservicenummer:
@@ -1304,6 +1298,15 @@ components:
           example: "546376728"
         aanduidingInhouding_vermissing:
           $ref: "#/components/schemas/AanduidingInhoudingVermissingReisdocument_enum"
+        signaleringVerstrekkenReisdocument:
+          type: "integer"
+          title: "Signalering Nederlands reisdocument"
+          description: "Een aanduiding dat aan de ingeschrevene geen reisdocument\
+            \ mag worden verstrekt Als dit attribuut voorkomt, dan is de waarde '1'\
+            \ = belemmering verstrekking Nederlands reisdocument."
+          minimum: 1
+          maximum: 1
+          example: "1"
         soortReisdocument:
           $ref: "#/components/schemas/NederlandsReisdocument_tabel"
         datumUitgifte:
@@ -1325,14 +1328,17 @@ components:
           type: "string"
           title: "Voornamen"
           description: "De verzameling namen die, gescheiden door spaties, aan de\
-            \ geslachtsnaam voorafgaat. 02.10 Voornamen"
+            \ geslachtsnaam voorafgaat. Element 02.10 De verzameling namen die, gescheiden\
+            \ door spaties, aan de geslachtsnaam voorafgaat."
           maxLength: 200
           example: "Pieter Jan"
         geslachtsnaam:
           type: "string"
           title: "Geslachtsnaam"
           description: "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels\
-            \ en adellijke titel/predikaat zijn afgesplitst. 02.40 Geslachtsnaam"
+            \ en adellijke titel/predikaat zijn afgesplitst. Element 02.40 De (geslachts)naam\
+            \ waarvan de eventueel aanwezige voorvoegsels (tabel 36) en adellijke\
+            \ titel/predikaat (tabel 38) zijn afgesplitst."
           maxLength: 200
           example: "Vries"
         voorvoegsel:
@@ -1342,7 +1348,9 @@ components:
     Geboorte:
       type: "object"
       description: "Gegevens over de geboorte van de INGESCHREVEN NATUURLIJK PERSOON.\
-        \ Zie verder de toelichting in de GBA"
+        \ Groep 03 Gegevens over de geboorte van respectievelijk de persoon, de ouder,\
+        \ de echtgenoot/geregistreerd partner, de eerdere echtgenoot/geregistreerd\
+        \ partner of het kind. Zie verder de toelichting in de GBA"
       properties:
         plaats:
           type: "string"
@@ -1367,10 +1375,35 @@ components:
           $ref: "#/components/schemas/Datum_onvolledig"
         land:
           $ref: "#/components/schemas/Land_tabel"
+    Kiesrecht:
+      type: "object"
+      description: "Categorie 13 Gegevens over het kiesrecht van de ingeschrevene."
+      required:
+      - "einddatumUitsluitingKiesrecht"
+      properties:
+        aanduidingEuropeesKiesrecht:
+          type: "integer"
+          title: "aanduidingEuropeesKiesrecht"
+          description: "Element 31.10 Een aanduiding die aangeeft of de persoon een\
+            \ oproep moet ontvangen voor verkiezingen voor het Europees parlement."
+          example: "1"
+        aanduidingUitgeslotenKiesrecht:
+          type: "string"
+          title: "aanduidingUitgeslotenKiesrecht"
+          description: "Element 38.10 Een aanduiding ter uitvoering van de Kieswet."
+          maxLength: 1
+          example: "A"
+        datumEuropeesKiesrecht:
+          $ref: "#/components/schemas/Datum_onvolledig"
+        einddatumUitsluitingEuropeesKiesrecht:
+          $ref: "#/components/schemas/Datum_onvolledig"
+        einddatumUitsluitingKiesrecht:
+          $ref: "#/components/schemas/Datum_onvolledig"
     NaamPersoon:
-      allOf:
+      allOf: 
         - $ref: "#/components/schemas/Naam"
-        - properties:
+        - type: object
+          properties:
             aanduidingAanschrijving:
               $ref: "#/components/schemas/Naamgebruik_enum"
             aanschrijfwijze:
@@ -1378,7 +1411,7 @@ components:
               title: "aanschrijfwijze"
               description: "| Samengestelde naam zoals die in communicatie met de persoon\
                 \ gebruikt kan worden. Hoe het samenstellen van een aanschrijfwijze te\
-                \ werk gaat is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blo b/master/features/aanschrijfwijze.feature)"
+                \ werk gaat is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanschrijfwijze.feature)"
               maxLength: 50
               example: "P.J. graaf de Vries- van der Zon"
     InOnderzoek:
@@ -1653,7 +1686,7 @@ components:
             \ onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie\
             \ is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven\
             \ beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting\
-            \ in de BAG. a - z , A ? Z"
+            \ in de BAG. a - z , A – Z"
           pattern: "^[A-Z,a-z]$"
           maxLength: 1
           example: "B"
@@ -1708,7 +1741,7 @@ components:
             \ onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie\
             \ is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven\
             \ beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting\
-            \ in de BAG. a - z , A - Z , 0 ? 9"
+            \ in de BAG. a - z , A - Z , 0 – 9"
           pattern: "^[a-zA-Z0-9]$"
           maxLength: 4
           example: "2"
@@ -1780,6 +1813,26 @@ components:
           maxLength: 35
         land:
           $ref: "#/components/schemas/Land_tabel"
+    Gezagsverhouding:
+      type: "object"
+      description: "Categorie 11 Gegevens betreffende het gezag over de ingeschrevene."
+      required:
+      - "indicatieCurateleRegister"
+      - "datumVan"
+      properties:
+        indicatieCurateleRegister:
+          type: "integer"
+          title: "indicatieCurateleRegister"
+          description: "Element 33.10 Een aanduiding dat de ingeschrevene onder curatele\
+            \ is gesteld."
+        datumVan:
+          type: "string"
+          title: "datumVan"
+          description: "Element 85.10 Ingangsdatum geldigheid met betrekking tot de\
+            \ elementen van de categorie Gezagsverhouding"
+          format: "date"
+        indicatieGezagMinderjarige:
+          $ref: "#/components/schemas/IndicatieGezagMinderjarige_enum"
     Verblijfstitel:
       type: "object"
       description: "Gegevens over de verblijfsrechtelijke status. 10/60 Gegevens over\
@@ -1815,6 +1868,7 @@ components:
           title: "maand"
           description: "De maand. Als de maand van een datum bekend is wordt deze\
             \ hier ingevuld. Ook als de volledige datum is ingevuld."
+          format: "date_month"
           pattern: "^99$"
           maxLength: 2
         dag:
@@ -1822,6 +1876,7 @@ components:
           title: "dag"
           description: "De dag. Als de dag van de datum bekend is wordt deze hier\
             \ ingevuld. Ook als de volledige datum bekend is."
+          format: "date_mday"
           pattern: "^99$"
           maxLength: 2
     Land_tabel:
@@ -1878,11 +1933,7 @@ components:
           maxLength: 10
           example: "Graaf"
         soort:
-          type: "string"
-          title: "Soort"
-          description: "De soort van de Adellijke titel/predikaat"
-          maxLength: 10
-          example: "titel"
+          $ref: "#/components/schemas/SoortAdellijkeTitel_predikaat"
     Nationaliteit_tabel:
       type: "object"
       description: "De mogelijk onderscheiden hoedanigheden van tot een bepaalde natie\
@@ -2021,7 +2072,7 @@ components:
       type: "object"
       properties:
         self:
-          $ref: "#/components/schemas/Link"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
         ouders:
           title: "heeftAlsOuder"
           type: "array"
@@ -2030,7 +2081,7 @@ components:
             \ verwijst`"
           maxItems: 4
           items:
-            $ref: "#/components/schemas/Link"
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
         reisdocumenten:
           title: "isHouderVan"
           type: "array"
@@ -2038,7 +2089,7 @@ components:
             \ de inverse relatie van heeftAlsHouder. Reisdocumenten die aan een ingezetene\
             \ zijn verstrekt."
           items:
-            $ref: "#/components/schemas/Link"
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
         kinderen:
           title: "heeftAlsKind"
           type: "array"
@@ -2046,7 +2097,7 @@ components:
             \ verwijst De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE\
             \ verwijst"
           items:
-            $ref: "#/components/schemas/Link"
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
         partnerhistorie:
           title: "heeftAlsPartner"
           type: "array"
@@ -2054,7 +2105,7 @@ components:
             \ Van een ingeschreven persoon worden parters waarmee nu of in het verleden\
             \ relaties geregistreerd zijn geretourneerd."
           items:
-            $ref: "#/components/schemas/Link"
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
         partners:
           title: "heeftAlsPartner"
           type: "array"
@@ -2063,7 +2114,7 @@ components:
             \ geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd\
             \ partnerschap wordt niet teruggegeven."
           items:
-            $ref: "#/components/schemas/Link"
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
         verblijfsplaatsenhistorie:
           title: "verbleefOp"
           type: "object"
@@ -2073,7 +2124,7 @@ components:
             \ actuele verblijfsplaats) geretourneerd."
           properties:
             href:
-              $ref: "#/components/schemas/Href"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
         verblijfstitelshistorie:
           title: "hadAlsVerblijfstitel"
           type: "object"
@@ -2083,7 +2134,7 @@ components:
             \ geretourneerd."
           properties:
             href:
-              $ref: "#/components/schemas/Href"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
         nummeraanduidingen:
           title: "isIngeschrevenOp"
           type: "object"
@@ -2098,26 +2149,12 @@ components:
             \ kan de waarde 0 hebben."
           properties:
             href:
-              $ref: "#/components/schemas/Href"
-    Ouder_links:
-      type: "object"
-      properties:
-        self:
-          $ref: "#/components/schemas/Link"
-        ingeschrevenpersonen:
-          title: "isOuder"
-          type: "object"
-          description: "De ingeschreven persoon die ouder is van de opgevraagde persoon.\
-            \ Deze wordt alleen opgenomen wanneer de ouder een ingeschreven persoon\
-            \ is."
-          properties:
-            href:
-              $ref: "#/components/schemas/Href"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
     Kind_links:
       type: "object"
       properties:
         self:
-          $ref: "#/components/schemas/Link"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
         ingeschrevenpersonen:
           title: "isKind"
           type: "object"
@@ -2126,13 +2163,27 @@ components:
             \ is."
           properties:
             href:
-              $ref: "#/components/schemas/Href"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
+    Ouder_links:
+      type: "object"
+      properties:
+        self:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
+        ingeschrevenpersonen:
+          title: "isOuder"
+          type: "object"
+          description: "De ingeschreven persoon die ouder is van de opgevraagde persoon.\
+            \ Deze wordt alleen opgenomen wanneer de ouder een ingeschreven persoon\
+            \ is."
+          properties:
+            href:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
     Partner_links:
       type: "object"
       properties:
         self:
-          $ref: "#/components/schemas/Link"
-        ingeschrevenPersonen:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
+        ingeschrevenpersonen:
           title: "isPartner"
           type: "object"
           description: "De ingeschreven persoon die partner is van de opgevraagde\
@@ -2140,19 +2191,19 @@ components:
             \ persoon is."
           properties:
             href:
-              $ref: "#/components/schemas/Href"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
     Reisdocument_links:
       type: "object"
       properties:
         self:
-          $ref: "#/components/schemas/Link"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
         ingeschrevennatuurlijkpersonen:
           title: "heeftAlsHouder"
           type: "object"
           description: "De ingezetene waaraan het REISDOCUMENT is verstrekt."
           properties:
             href:
-              $ref: "#/components/schemas/Href"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
     IngeschrevenPersoon_embedded:
       type: "object"
       properties:
@@ -2165,14 +2216,6 @@ components:
           maxItems: 4
           items:
             $ref: "#/components/schemas/Ouder"
-        kinderen:
-          title: "heeftAlsKind"
-          type: "array"
-          description: "De ingezetene, zijnde de ouder, waarnaar de KIND-OUDER-RELATIE\
-            \ verwijst De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE\
-            \ verwijst"
-          items:
-            $ref: "#/components/schemas/Kind"
         partners:
           title: "heeftAlsPartner"
           type: "array"
@@ -2182,23 +2225,6 @@ components:
             \ partnerschap wordt niet teruggegeven."
           items:
             $ref: "#/components/schemas/Partner"
-    Href:
-      type: "string"
-      format: "uri"
-    Link:
-      type: "object"
-      properties:
-        href:
-          $ref: "#/components/schemas/Href"
-    Collectionlinks:
-      type: "object"
-      properties:
-        self:
-          type: "object"
-          description: "uri van de api aanroep die tot dit resultaat heeft geleid"
-          properties:
-            href:
-              $ref: "#/components/schemas/Href"
     AanduidingInhoudingVermissingReisdocument_enum:
       type: "string"
       description: "De mogelijke waarden van de aanduiding van inhouding of vermissing\
@@ -2329,34 +2355,10 @@ components:
       enum:
       - "H"
       - "P"
-  headers:
-    api_version:
-      schema:
-        type: "integer"
-        description: "Geeft een specifieke API-versie aan in de context van een specifieke\
-          \ aanroep."
-        example: "1.0.1"
-    warning:
-      schema:
-        type: "string"
-        description: "zie RFC 7234. In het geval een major versie wordt uitgefaseerd,\
-          \ gebruiken we warn-code 299 ('Miscellaneous Persistent Warning') en het\
-          \ API end-point (inclusief versienummer) als de warn-agent van de warning,\
-          \ gevolgd door de warn-text met de human-readable waarschuwing"
-        example: "299 https://service.../api/.../v1 'Deze versie van de API is verouderd\
-          \ en zal uit dienst worden genomen op 2018-02-01. Raadpleeg voor meer informatie\
-          \ hier de documentatie: https://omgevingswet.../api/.../v1'."
-    X_Total_Count:
-      schema:
-        type: "integer"
-        description: "Totaal aantal paginas."
-        example: "163"
-    X_Rate_Limit_Limit:
-      schema:
-        type: "integer"
-    X_Rate_Limit_Remaining:
-      schema:
-        type: "integer"
-    X_Rate_Limit_Reset:
-      schema:
-        type: "integer"
+    SoortAdellijkeTitel_predikaat:
+      type: "string"
+      description: "Geeft aan of het een titel of een predikaat betreft.:\n* H - huwelijk\n\
+        * P - geregistreerd partnerschap"
+      enum:
+      - "H"
+      - "P"
