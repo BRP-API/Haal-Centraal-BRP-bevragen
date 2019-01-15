@@ -2212,6 +2212,15 @@ components:
           maxItems: 4
           items:
             $ref: "#/components/schemas/Ouder"
+        kinderen:
+          title: "heeftAlsKind"
+          type: "array"
+          description: "De ingezetene, zijnde het kind, waarnaar de KIND-OUDER-RELATIE\
+            \ verwijst De kinderen van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE\
+            \ verwijst`"
+          maxItems: 4
+          items:
+            $ref: "#/components/schemas/Kind"
         partners:
           title: "heeftAlsPartner"
           type: "array"
