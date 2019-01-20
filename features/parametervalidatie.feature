@@ -25,31 +25,34 @@ Functionaliteit: parameters worden gevalideerd
   Achtergrond:
     Gegeven de registratie ingeschreven personen kent zoAls beschreven in testdata.csv
 
-  Scenario: Zoeken met een parameterwaarde langer Dan toegestaan levert een foutmelding
+  Scenario: Zoeken met een parameterwaarde langer dan toegestaan levert een foutmelding
     Als ingeschreven personen gezocht worden met ?verblijfplaats__postcode=9744CZ&verblijfplaats__huisnummer=5&verblijfplaats__huisletter=AA
     Dan levert dit een foutmelding
+    En heeft de foutmelding betrekking op parameter verblijfplaats__huisletter
 
   Scenario: Zoeken met een parameterwaarde die niet voldoet aan het gedefinieerde patroon levert een foutmelding
     Als ingeschreven personen gezocht worden met ?verblijfplaats__postcode=XX44CZ&verblijfplaats__huisnummer=5
     Dan levert dit een foutmelding
+    En heeft de foutmelding betrekking op parameter verblijfplaats__postcode
 
   Scenario: Zoeken met een parameterwaarde op een intedie geen geldig geheel getal is op een integer levert een foutmelding
     Als ingeschreven personen gezocht worden met ?verblijfplaats__postcode=9744CZ&verblijfplaats__huisnummer=A
     Dan levert dit een foutmelding
+    En heeft de foutmelding betrekking op parameter verblijfplaats__huisnummer
     Als ingeschreven personen gezocht worden met ?verblijfplaats__postcode=9744CZ&verblijfplaats__huisnummer=12A3
     Dan levert dit een foutmelding
+    En heeft de foutmelding betrekking op parameter verblijfplaats__huisnummer
     Als ingeschreven personen gezocht worden met ?verblijfplaats__postcode=9744CZ&verblijfplaats__huisnummer=1.2
     Dan levert dit een foutmelding
+    En heeft de foutmelding betrekking op parameter verblijfplaats__huisnummer
     Als ingeschreven personen gezocht worden met ?verblijfplaats__postcode=9744CZ&verblijfplaats__huisnummer=1,2
     Dan levert dit een foutmelding
+    En heeft de foutmelding betrekking op parameter verblijfplaats__huisnummer
 
   Scenario: Zoeken met een parameterwaarde die niet voorkomt in de gedefinieerde enumeratielijst levert een foutmelding
     Als ingeschreven personen gezocht worden met ?naam__geslachtsnaam=groen&geboorte__datum=1983-05-26&geslachtsaanduiding=Y
     Dan levert dit een foutmelding
-
-  Scenario: Zoeken met een parameterwaarde die niet voorkomt in de gedefinieerde enumeratielijst levert een foutmelding
-    Als ingeschreven personen gezocht worden met ?naam__geslachtsnaam=groen&geboorte__datum=1983-05-26&geslachtsaanduiding=Y
-    Dan levert dit een foutmelding
+    En heeft de foutmelding betrekking op parameter geslachtsaanduiding
 
   Scenario: Zoeken met een parameterwaarde die geen true of false is op een boolean parameter levert een foutmelding
     Als ingeschreven personen gezocht worden met ?naam__geslachtsnaam=groen&geboorte__datum=1983-05-26&inclusiefoverledenpersonen=true
@@ -60,44 +63,58 @@ Functionaliteit: parameters worden gevalideerd
     Dan levert dit zoekresultaten
     Als ingeschreven personen gezocht worden met ?naam__geslachtsnaam=groen&geboorte__datum=1983-05-26&inclusiefoverledenpersonen=ja
     Dan levert dit een foutmelding
+    En heeft de foutmelding betrekking op parameter inclusiefoverledenpersonen
 
   Scenario: Zoeken met onvolledige geboortedatum wordt niet ondersteund
     Als ingeschreven personen gezocht worden met ?naam__geslachtsnaam=groen*&geboorte__datum=1983-05-00
     Dan levert dit een foutmelding
+    En heeft de foutmelding betrekking op parameter geboorte__datum
     Als ingeschreven personen gezocht worden met ?naam__geslachtsnaam=groen*&geboorte__datum=1983-05
     Dan levert dit een foutmelding
+    En heeft de foutmelding betrekking op parameter geboorte__datum
     Als ingeschreven personen gezocht worden met ?naam__geslachtsnaam=groen*&geboorte__datum=1983
     Dan levert dit een foutmelding
+    En heeft de foutmelding betrekking op parameter geboorte__datum
 
   Scenario: Bij zoeken op een datum-parameter moet de parameterwaarde datum in het ISO 8601 formaat jjjj-mm-dd zijn
     Als ingeschreven personen gezocht worden met ?naam__geslachtsnaam=groen*&geboorte__datum=1983-05-AA
     Dan levert dit een foutmelding
+    En heeft de foutmelding betrekking op parameter geboorte__datum
     Als ingeschreven personen gezocht worden met ?naam__geslachtsnaam=groen*&geboorte__datum=19830526
     Dan levert dit een foutmelding
+    En heeft de foutmelding betrekking op parameter geboorte__datum
     Als ingeschreven personen gezocht worden met ?naam__geslachtsnaam=groen*&geboorte__datum=26-05-1983
     Dan levert dit een foutmelding
+    En heeft de foutmelding betrekking op parameter geboorte__datum
 
   Scenario: Bij zoeken op een datum-parameter moet de parameterwaarde een geldige datum zijn
     Als ingeschreven personen gezocht worden met ?naam__geslachtsnaam=groen*&geboorte__datum=1983-05-32
     Dan levert dit een foutmelding
+    En heeft de foutmelding betrekking op parameter geboorte__datum
     Als ingeschreven personen gezocht worden met ?naam__geslachtsnaam=groen*&geboorte__datum=1983-02-30
     Dan levert dit een foutmelding
+    En heeft de foutmelding betrekking op parameter geboorte__datum
     Als ingeschreven personen gezocht worden met ?naam__geslachtsnaam=groen*&geboorte__datum=1983-13-01
     Dan levert dit een foutmelding
+    En heeft de foutmelding betrekking op parameter geboorte__datum
 
   Scenario: Bij zoeken op gemeente van inschrijving moet een gemeentecode worden gebruikt die bestaat
-    Als ingeschreven personen gezocht worden met ?verblijfplaats__naamopenbareruimte=Sint%20Aldegondestraat&verblijfplaats__huisnummer=2&gemeentevaninschrijving=0503
+    Als ingeschreven personen gezocht worden met ?verblijfplaats__naamopenbareruimte=Sint%20Aldegondestraat&verblijfplaats__huisnummer=2&verblijfplaats__gemeentevaninschrijving=0503
     Dan levert dit zoekresultaten
-    Als ingeschreven personen gezocht worden met ?verblijfplaats__naamopenbareruimte=Sint%20Aldegondestraat&verblijfplaats__huisnummer=2&gemeentevaninschrijving=503
+    Als ingeschreven personen gezocht worden met ?verblijfplaats__naamopenbareruimte=Sint%20Aldegondestraat&verblijfplaats__huisnummer=2&verblijfplaats__gemeentevaninschrijving=503
     Dan levert dit een foutmelding
-    Als ingeschreven personen gezocht worden met ?verblijfplaats__naamopenbareruimte=Sint%20Aldegondestraat&verblijfplaats__huisnummer=2&gemeentevaninschrijving=ABCD
+    En heeft de foutmelding betrekking op parameter verblijfplaats__gemeentevaninschrijving
+    Als ingeschreven personen gezocht worden met ?verblijfplaats__naamopenbareruimte=Sint%20Aldegondestraat&verblijfplaats__huisnummer=2&verblijfplaats__gemeentevaninschrijving=ABCD
     Dan levert dit een foutmelding
-    Als ingeschreven personen gezocht worden met ?verblijfplaats__naamopenbareruimte=Sint%20Aldegondestraat&verblijfplaats__huisnummer=2&gemeentevaninschrijving=1899
+    En heeft de foutmelding betrekking op parameter verblijfplaats__gemeentevaninschrijving
+    Als ingeschreven personen gezocht worden met ?verblijfplaats__naamopenbareruimte=Sint%20Aldegondestraat&verblijfplaats__huisnummer=2&verblijfplaats__gemeentevaninschrijving=1899
     Dan levert dit een foutmelding
+    En heeft de foutmelding betrekking op parameter verblijfplaats__gemeentevaninschrijving
 
   Scenario: Bij zoeken op voorvoegsel moet een waarde worden gebruikt die voorkomt in de betreffende GBA tabel of moet leeg zijn
-    Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&geslachtsnaam=Velzen&voorvoegselGeslachtsnaam=bestaatniet
+    Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=Velzen&naam__voorvoegsel=niet
     Dan levert dit een foutmelding
-    Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=Groen&naam_voorvoegselGeslachtsnaam=
+    En heeft de foutmelding betrekking op parameter naam__voorvoegsel
+    Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=Groenen&naam__voorvoegsel=
     Dan levert dit zoekresultaten
-    En wordt de ingeschreven persoon gevonden met naam.geslachtsnaam=Groen
+    En wordt de ingeschreven persoon gevonden met naam.geslachtsnaam=Groenen

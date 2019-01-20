@@ -12,16 +12,16 @@ Functionaliteit: Zoeken op tekstvelden is case-insensitive
   Scenario: Zoeken op tekstvelden is case-insensitive
     Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=groen
     Dan wordt de ingeschreven persoon gevonden met naam.geslachtsnaam=Groen
-    Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&geslachtsnaam=GROEn
+    Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=GROEn
     Dan wordt de ingeschreven persoon gevonden met naam.geslachtsnaam=Groen
-    Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&geslachtsnaam=Velzen&voorvoegselGeslachtsnaam=VAN
-    Dan wordt de ingeschreven persoon gevonden met naam.voorvoegselGeslachtsnaam=van
-    Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&geslachtsnaam=groenen&voornamen=theo%20philip%20ijsbrand
+    Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=Velzen&naam__voorvoegsel=VAN
+    Dan wordt de ingeschreven persoon gevonden met naam.voorvoegsel=van
+    Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=groenen&naam__voornamen=theo%20philip%20ijsbrand
     Dan wordt de ingeschreven persoon gevonden met naam.voornamen=Theo Philip IJsbrand
-    Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&geslachtsnaam=groenen&voornamen=THEO%20PHILIP%20IJSBRAND
+    Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=groenen&naam__voornamen=THEO%20PHILIP%20IJSBRAND
     Dan wordt de ingeschreven persoon gevonden met naam.voornamen=Theo Philip IJsbrand
-    Als ingeschreven personen gezocht worden met ?gemeentevaninschrijving=0503&verblijfplaats__naamopenbareruimte=sint%20aldegondestraat&verblijfplaats__huisnummer=2
-    Dan wordt de ingeschreven persoon gevonden met verblijfplaats.naamopenbareruimte=Sint Aldegondestraat
+    Als ingeschreven personen gezocht worden met ?verblijfplaats__gemeentevaninschrijving=0503&verblijfplaats__naamopenbareruimte=sint%20aldegondestraat&verblijfplaats__huisnummer=2
+    Dan wordt de ingeschreven persoon gevonden met verblijfplaats.naamOpenbareRuimte=Sint Aldegondestraat
     Als ingeschreven personen gezocht worden met ?verblijfplaats__postcode=2628HJ&verblijfplaats__huisnummer=2&verblijfplaats__huisletter=a
     Dan wordt de ingeschreven persoon gevonden met verblijfplaats.huisletter=A
 

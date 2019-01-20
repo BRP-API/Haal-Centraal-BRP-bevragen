@@ -91,4 +91,4 @@ De test veronderstelt ook dat de verwachte resultaten op (pagina 1 van) de zoekv
 
 ### testuitvoering
 In steps/config.py kan de base url van de api worden gewijzigd.
-De test wordt vanuit de basis map (/test) uitgevoerd met de opdracht "behave --lang nl"
+De test wordt vanuit de basis map (/test) uitgevoerd met de opdracht "behave --lang nl". Er zijn een aantal mogelijkheden dit te verfijnen, bijvoorbeeld door "behave --lang nl --format progress2" toont alleen details van gefaalde scenario's.

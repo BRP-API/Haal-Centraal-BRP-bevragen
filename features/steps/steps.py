@@ -6,27 +6,104 @@ import re
 import config
 
 
-@given('de registratie ingeschreven personen kent met {eigenschappen}')
+@given('de registratie ingeschreven personen kent {eigenschappen}')
 def step_impl(context, eigenschappen):
     pass
 
 
-@given('de registratie ingeschreven personen kent zoals beschreven in {filename}')
-def step_impl(context, filename):
+@given(u'in onderstaande scenario\'s wordt de expand parameter niet gebruikt, tenzij expliciet aangegeven')
+def step_impl(context):
     pass
 
 
+@given(u'de te raadplegen persoon {eigenschappen}')
+def step_impl(context, eigenschappen):
+    if eigenschappen=='verblijft in het buitenland':
+        context.bsn = config.RAADPLEEGBSNBUITENLAND
+    pass
+
+
+@given(u'de gebruiker {eigenschappen}')
+def step_impl(context, eigenschappen):
+    pass
+
+
+@given(u'de {attribute} van de geraadpleegde persoon is in onderzoek')
+def step_impl(context, attribute):
+    pass
+
+
+@given(u'in onderstaande scenario\'s wordt de fields-parameter niet gebruikt, tenzij expliciet aangegeven')
+def step_impl(context):
+    pass
+
+
+@given(u'{objectNaam} van de ingeschreven persoon heeft {eigenschappen}')
+def step_impl(context, objectNaam, eigenschappen):
+    pass
+
+
+@given(u'het reisdocument {eigenschappen}')
+def step_impl(context, eigenschappen):
+    pass
+
+
+@when(u'de ingeschreven persoon met burgerservicenummer {burgerservicenummer} wordt geraadpleegd')
+def step_impl(context, burgerservicenummer):
+    url = config.BASEURL + '/ingeschrevenpersonen/' + burgerservicenummer
+    context.response = requests.get(url)
+
+
+@when(u'de link {link} wordt gevolgd')
+def step_impl(context, link):
+    links = GetAttribute(context.response.json(), '_links.' + link)
+    if isinstance(links, list):
+        url = GetAttribute(links[0], 'href')
+    else:
+        url = GetAttribute(links, 'href')
+
+    assert url is not None
+    context.response = requests.get(url)
+
 @when('ingeschreven personen gezocht worden zonder parameters')
 def step_impl(context):
-    url = config.BASEURL + 'ingeschrevennatuurlijkpersonen'
+    url = config.BASEURL + '/ingeschrevenpersonen'
     context.response = requests.get(url)
 
 
 @when('ingeschreven personen gezocht worden met {querystring}')
 def step_impl(context, querystring):
-    url = 'http://localhost:8080/ingeschrevennatuurlijkpersonen' + querystring
+    url = config.BASEURL + '/ingeschrevenpersonen' + querystring
     context.response = requests.get(url)
     context.querystring = querystring
+
+
+@when(u'een ingeschreven persoon wordt geraadpleegd zonder {parameter}')
+def step_impl(context, parameter):
+	url = config.BASEURL + '/ingeschrevenpersonen/' + config.RAADPLEEGBSN
+	context.response = requests.get(url)
+
+
+@when(u'een ingeschreven persoon wordt geraadpleegd met {querystring}')
+def step_impl(context, querystring):
+    if hasattr(context, 'bsn'):
+        url = config.BASEURL + '/ingeschrevenpersonen/' + context.bsn + '?' + querystring
+    else:
+        url = config.BASEURL + '/ingeschrevenpersonen/' + config.RAADPLEEGBSN + '?' + querystring
+
+    context.response = requests.get(url)
+
+
+@when(u'de {subresource} worden geraadpleegd van de ingeschreven persoon met burgerservicenummer {burgerservicenummer}')
+def step_impl(context, subresource, burgerservicenummer):
+    url = config.BASEURL + '/ingeschrevenpersonen/' + burgerservicenummer + '/' + subresource
+    context.response = requests.get(url)
+
+
+@when(u'het reisdocument geraadpleegd met reisdocumentnummer {reisdocumentnummer}')
+def step_impl(context, reisdocumentnummer):
+    url = config.BASEURL + '/reisdocumenten/' + reisdocumentnummer
+    context.response = requests.get(url)
 
 
 @then('levert dit zoekresultaten')
@@ -49,6 +126,23 @@ def step_impl(context):
         print("http statuscode: " + str(context.response.status_code))
         # print("body: " + context.response.text)
     assert context.response.status_code >= 400
+
+
+@then(u'heeft de foutmelding betrekking op parameter {parameter}')
+def step_impl(context, parameter):
+    responsebody = context.response.json()
+    if not 'invalid-params' in responsebody:
+        print('Foutmelding heeft geen invalid-params')
+    assert 'invalid-params' in responsebody
+    if not isinstance(responsebody['invalid-params'], list):
+        print('Foutmelding invalid-params is geen array')
+    assert isinstance(responsebody['invalid-params'], list)
+    if len(responsebody['invalid-params'])!=1:
+        print('Meer parameterfouten dan verwacht: ' + len(responsebody['invalid-params']))
+    assert len(responsebody['invalid-params'])==1
+    if responsebody['invalid-params'][0]['name']!=parameter:
+        print ('Fout heeft betrekking op andere parameter: ' + responsebody['invalid-params'][0]['name'])
+    assert responsebody['invalid-params'][0]['name']==parameter
 
 
 @then('heeft het antwoord een embedded lijst met {resource}')
@@ -86,38 +180,174 @@ def step_impl(context, resource, attribuut, waarde):
         assert attribuutWaarde == waarde
 
 
-@then('wordt de ingeschreven persoon gevonden met {attribuut}={waarde}')
-def step_impl(context, attribuut, waarde):
-    resource = 'ingeschrevennatuurlijkpersonen'
+@then('is in het antwoord {attribute}={value}')
+def step_impl(context, attribute, value):
+    responsebody = context.response.json()
+    responseValue = GetAttribute(responsebody, attribute)
+
+    if value=='null':
+        if responseValue is not None:
+            print (attribute + '=' + str(responseValue))
+        assert responseValue is None
+    elif isinstance(responseValue, str):
+        if responseValue!=value:
+            print (attribute + '=' + responseValue)
+        assert responseValue==value
+    elif isinstance(responseValue, bool):
+        if responseValue!=bool(value):
+            print (attribute + '=' + str(responseValue))
+        assert responseValue==bool(value)
+    elif isinstance(responseValue, int):
+        if responseValue!=int(value):
+            print (attribute + '=' + str(responseValue))
+        assert responseValue==int(value)
+    else:
+        if responseValue!=value:
+            print (attribute + '==' + str(responseValue))
+        assert responseValue==value
+
+@then(u'is in het antwoord {attribute} niet aanwezig of null')
+def step_impl(context, attribute):
+    responsebody = context.response.json()
+
+    assert GetAttribute(responsebody, attribute, False) is None
+
+
+@then('wordt de {objectNaam} gevonden met {attribuut}={waarde}')
+def step_impl(context, objectNaam, attribuut, waarde):
+    if objectNaam=='ingeschreven persoon':
+        context.objectId = getResourceWithValue(context.response.json(), 'ingeschrevenpersonen', attribuut, waarde)
+    if objectNaam=='partner':
+        context.objectId = getResourceWithValue(context.response.json(), 'partners', attribuut, waarde)
+    if objectNaam=='ouder':
+        context.objectId = getResourceWithValue(context.response.json(), 'ouders', attribuut, waarde)
+
+    assert context.objectId!=-1
+
+@then('wordt het {objectNaam} gevonden met {attribuut}={waarde}')
+def step_impl(context, objectNaam, attribuut, waarde):
+    if objectNaam=='kind':
+        context.objectId = getResourceWithValue(context.response.json(), 'kinderen', attribuut, waarde)
+    if objectNaam=='reisdocument':
+        context.objectId = getResourceWithValue(context.response.json(), 'reisducmenten', attribuut, waarde)
+
+    assert context.objectId!=-1
+
+
+@then(u'heeft deze gevonden {objectNaam} de {relatie} link met {uri}')
+def step_impl(context, objectNaam, relatie, uri):
+    if objectNaam=='ingeschreven persoon':
+        assertLinkValue(context.response.json(), context.objectId, 'ingeschrevenpersonen', relatie, uri)
+    if objectNaam=='partner':
+        assertLinkValue(context.response.json(), context.objectId, 'partners', relatie, uri)
+    if objectNaam=='ouder':
+        assertLinkValue(context.response.json(), context.objectId, 'ouders', relatie, uri)
+
+
+@then(u'heeft dit gevonden {objectNaam} de {relatie} link met {uri}')
+def step_impl(context, objectNaam, relatie, uri):
+    if objectNaam=='kind':
+        assertLinkValue(context.response.json(), context.objectId, 'kinderen', relatie, uri)
+
+
+@then(u'is het aantal links naar {relatie} gelijk aan {aantal}')
+def step_impl(context, relatie, aantal):
+    links = GetAttribute(context.response.json(), '_links.' + relatie)
+    assert links is not None
+
+    if len(links)!=int(aantal):
+        print ('Aantal ' + relatie + ' links=' + str(len(links)))
+
+    assert len(links)==int(aantal)
+
+
+@then(u'wordt een {relatie} link gevonden naar {uri}')
+def step_impl(context, relatie, uri):
+    links = GetAttribute(context.response.json(), '_links.' + relatie)
+    assert links is not None
+
+    if type(links) is list:
+        objectId = -1
+        for key, link in enumerate(links):
+            href = GetAttribute(link, 'href')
+            if href is not None and href.endswith(uri):
+                objectId = key
+                break
+
+        if (objectId!=-1):
+            context.objectId = objectId
+        else:
+            print ('Link ' + relatie + ' niet gevonden naar ' + uri)
+            print (links)
+
+        assert objectId!=-1
+
+    if type(links) is dict:
+        href = GetAttribute(links, 'href')
+        if href is None:
+            print ('Link ' + relatie + ' niet gevonden of leeg')
+        if not href.endswith(uri):
+            print ('Link ' + relatie + '=' + href)
+
+        assert href is not None and href.endswith(uri)
+
+
+@then(u'heeft deze gevonden {objectNaam} een lege link {relatie}')
+def step_impl(context, objectNaam, relatie):
+    if objectNaam=='ingeschreven persoon':
+        assertEmptyLink(context.response.json(), context.objectId, 'ingeschrevenpersonen', relatie)
+    if objectNaam=='partner':
+        assertEmptyLink(context.response.json(), context.objectId, 'partners', relatie)
+    if objectNaam=='ouder':
+        assertEmptyLink(context.response.json(), context.objectId, 'ouders', relatie)
+
+
+@then(u'heeft dit gevonden {objectNaam} een lege link {relatie}')
+def step_impl(context, objectNaam, relatie):
+    if objectNaam=='kind':
+        assertEmptyLink(context.response.json(), context.objectId, 'kinderen', relatie)
+
+
+@then('heeft deze {objectNaam} {attribuut}={waarde}')
+def step_impl(context, objectNaam, attribuut, waarde):
+    if objectNaam=='ingeschreven persoon':
+        assertValueInItem(context.response.json(), context.objectId, 'ingeschrevenpersonen', attribuut, waarde)
+    if objectNaam=='partner':
+        assertValueInItem(context.response.json(), context.objectId, 'partners', attribuut, waarde)
+    if objectNaam=='ouder':
+        assertValueInItem(context.response.json(), context.objectId, 'ouders', attribuut, waarde)
+
+
+@then('heeft dit {objectNaam} {attribuut}={waarde}')
+def step_impl(context, objectNaam, attribuut, waarde):
+    if objectNaam=='kind':
+        assertValueInItem(context.response.json(), context.objectId, 'kinderen', attribuut, waarde)
+
+
+@then('wordt geen {objectNaam} gevonden met {attribuut}={waarde}')
+def step_impl(context, objectNaam, attribuut, waarde):
+    if objectNaam=='ingeschreven persoon':
+        resource = 'ingeschrevenpersonen'
+    if objectNaam=='partner':
+        resource = 'partners'
+    if objectNaam=='ouder':
+        resource = 'ouders'
+    if objectNaam=='kind':
+        resource = 'kinderen'
+
     responsebody = context.response.json()
     collection = GetCollection(responsebody, resource)
     assert collection is not None
 
-    resourceFound = False
     for item in collection:
         attribuutWaarde = GetAttribute(item, attribuut)
 
-        if attribuutWaarde is not None and attribuutWaarde == waarde:
-            resourceFound = True
-            break
-
-    if not resourceFound:
-        print('Geen ingeschreven persoon gevonden met ' + attribuut + '=' + waarde)
-
-    assert resourceFound
-
-
-@then('wordt geen ingeschreven persoon gevonden met {attribuut}={waarde}')
-def step_impl(context, attribuut, waarde):
-    resource = 'ingeschrevennatuurlijkpersonen'
-    responsebody = context.response.json()
-    collection = GetCollection(responsebody, resource)
-    assert collection is not None
-
-    for item in collection:
-        attribuutWaarde = GetAttribute(item, attribuut)
-
-        assert attribuutWaarde is not None and attribuutWaarde == waarde
+        if waarde=='null':
+            assert attribuutWaarde is not None
+        else:
+            if attribuutWaarde!=waarde:
+                print(attribuut + ' gevonden met waarde ' + waarde)
+            assert attribuutWaarde is not None and attribuutWaarde != waarde
 
 
 @then('voldoet elke van de gevonden {resource} aan de query {attribuut}={querywaarde}')
@@ -142,6 +372,8 @@ def step_impl(context, resource, attribuut, querywaarde):
 def step_impl(context, resource, attribuut):
     responsebody = context.response.json()
     collection = GetCollection(responsebody, resource)
+    if collection is None:
+        print(responsebody)
     assert collection is not None
 
     for item in collection:
@@ -181,6 +413,17 @@ def step_impl(context, resource):
         # test dat er geen andere attributen in het antwoord zitten
         assert OnlyAttributesInPathList(expandlist, embedded)
 
+
+@then(u'is het aantal gevonden {resource} {resultCount}')
+def step_impl(context, resource, resultCount):
+    responsebody = context.response.json()
+    collection = GetCollection(responsebody, resource)
+
+    if len(collection)!=int(resultCount):
+        print('Er zijn ' + str(len(collection)) + ' ' + resource + ' gevonden')
+    assert len(collection)==int(resultCount)
+
+
 @then(u'hebben alle gevonden {resource} embedded {nestedresource}')
 def step_impl(context, resource, nestedresource):
     responsebody = context.response.json()
@@ -190,6 +433,265 @@ def step_impl(context, resource, nestedresource):
     for item in collection:
         embedded = GetAttribute(item, '_embedded.' + nestedresource, False)
         assert embedded is not None
+
+
+@then(u'worden alle attributen van de resource teruggegeven')
+def step_impl(context):
+    responsebody = context.response.json()
+
+    for name in config.SWAGGER['components']['schemas']['IngeschrevenPersoon']['properties']:
+        if name in {'_embedded', '_links'}:
+            continue
+
+        if name not in responsebody:
+            print(name + ' missing in response')
+        assert name in responsebody
+
+
+@then(u'worden alle relaties van de resource teruggegeven')
+def step_impl(context):
+    responsebody = context.response.json()['_links']
+
+    for name in config.SWAGGER['components']['schemas']['IngeschrevenPersoon_links']['properties']:
+        if name not in responsebody:
+            print('_links.' + name + ' missing in response')
+        assert name in responsebody
+
+
+@then(u'wordt er geen gerelateerde sub-resource teruggegeven in _embedded')
+def step_impl(context):
+    responsebody = context.response.json()
+
+    if '_embedded' in responsebody:
+        for name in config.SWAGGER['components']['schemas']['IngeschrevenPersoon_embedded']['properties']:
+            if name  in responsebody['_embedded']:
+                print('_embedded.' + name + ' in response')
+            assert name not in responsebody['_embedded']
+
+
+@then(u'wordt geen enkele relatie van de resource in _links teruggegeven')
+def step_impl(context):
+    responsebody = context.response.json()
+
+    if '_links' in responsebody:
+        for name in config.SWAGGER['components']['schemas']['IngeschrevenPersoon_links']['properties']:
+            if name=='self':
+                continue
+
+            if name in responsebody['_links']:
+                print('_links.' + name + ' in response')
+            assert name not in responsebody['_links']
+
+
+@then(u'wordt attribuut {attribute} teruggegeven')
+def step_impl(context, attribute):
+    responsebody = context.response.json()
+    GetAttribute(responsebody, attribute)
+    #assert attribute in responsebody
+
+
+@then(u'wordt geen enkel ander attribuut dan {attribute} teruggegeven')
+def step_impl(context, attribute):
+    responsebody = context.response.json()
+
+    attributeList = attribute.replace(' en ', ',').replace(', ', ',').split(',')
+
+    for element in responsebody:
+        if element=='_links':
+            continue
+        if element not in attributeList:
+            print(element + ' found but not expected')
+        assert element in attributeList
+
+
+@then(u'worden alle attributen van de persoon teruggegeven, voor zover ze een waarde hebben')
+def step_impl(context):
+    pass
+
+
+@then(u'wordt voor alle {subresource} in _embedded attribuut {attribute} teruggegeven')
+def step_impl(context, subresource, attribute):
+    resources = GetAttribute(context.response.json(), '_embedded.' + subresource)
+
+    for resource in resources:
+        if not AttributeExists(resource, attribute):
+            print (attribute + ' niet gevonden in ' + subresource)
+        assert AttributeExists(resource, attribute)
+
+
+@then(u'is voor alle {subresource} in _embedded attribuut {attribute} niet aanwezig')
+def step_impl(context, subresource, attribute):
+    resources = GetAttribute(context.response.json(), '_embedded.' + subresource)
+
+    for resource in resources:
+        if AttributeExists(resource, attribute):
+            print (attribute + ' gevonden in ' + subresource)
+        assert not AttributeExists(resource, attribute)
+
+
+@then(u'is het resultaat {expectedResult}')
+def step_impl(context, expectedResult):
+    if expectedResult=='foutmelding':
+        if context.response.status_code < 400:
+            print("http statuscode: " + str(context.response.status_code))
+            # print("body: " + context.response.text)
+        assert context.response.status_code >= 400
+    if expectedResult=='zoekresultaten':
+        if context.response.status_code >= 400:
+            print("http statuscode: " + str(context.response.status_code))
+            # print("body: " + context.response.text)
+        assert context.response.status_code < 400
+
+
+@then(u'wordt in {groupName} geen enkel ander attribuut dan {attribute} teruggegeven')
+def step_impl(context, groupName, attribute):
+    responsebody = GetAttribute(context.response.json(), groupName)
+
+    attributeList = attribute.replace(' en ', ',').replace(', ', ',').split(',')
+
+    for element in responsebody.keys():
+        if element not in attributeList:
+            print ('element: ' + element)
+        assert element in attributeList
+
+
+@then(u'is elke link {relationLink} een geldige uri')
+def step_impl(context, relationLink):
+    responsebody = GetAttribute(context.response.json(), '_links.' + relationLink)
+    regExp = '^https?:\/\/[a-z0-9]+[a-zA-Z0-9\_\-\.\/]+[a-zA-Z0-9\_\-]+$'
+
+    for link in responsebody:
+        if re.match(regExp, link['href']) is None:
+            print ('incorrect url: ' + link['href'])
+        assert re.match(regExp, link['href']) is not None
+
+
+@then(u'is in het antwoord attribuut {attribute} niet aanwezig')
+def step_impl(context, attribute):
+    responsebody = context.response.json()
+
+    assert not AttributeExists(responsebody, attribute)
+
+
+@then(u'is in het antwoord attribuut {attribute} null, leeg of afwezig')
+def step_impl(context, attribute):
+    if AttributeExists(context.response.json(), attribute):
+        attributeValue = GetAttribute(context.response.json(), attribute)
+        assert attributeValue=='' or attributeValue is None
+    else:
+        pass
+
+
+@then(u'worden voor alle {subresource} in _embedded alle attributen van {groupName} teruggegeven voor zover ze een waarde hebben ({attributes})')
+def step_impl(context, subresource, groupName, attributes):
+    resources = GetAttribute(context.response.json(), '_embedded.' + subresource)
+    attributeList = attributes.replace(' en ', ',').replace(', ', ',').split(',')
+
+    for resource in resources:
+        group = GetAttribute(resource, groupName)
+
+        for attribute in attributeList:
+            assert AttributeExists(group, attribute)
+
+
+@then(u'wordt voor alle {subresource} in _embedded geen enkel ander attribuut dan {attributes} teruggegeven')
+def step_impl(context, subresource, attributes):
+    resources = GetAttribute(context.response.json(), '_embedded.' + subresource)
+    attributeList = attributes.replace(' en ', ',').replace(', ', ',').split(',')
+
+    for resource in resources:
+        for element in resource.keys():
+            if element not in attributeList:
+                print ('element: ' + element)
+            assert element in attributeList
+
+
+@then(u'wordt voor alle {subresource} in _embedded geen enkel ander attribuut van {groupName} teruggegeven dan {attributes}')
+def step_impl(context, subresource, groupName, attributes):
+    resources = GetAttribute(context.response.json(), '_embedded.' + subresource)
+    attributeList = attributes.replace(' en ', ',').replace(', ', ',').split(',')
+
+    for resource in resources:
+        group = GetAttribute(resource, groupName)
+
+        for element in group.keys():
+            if element not in attributeList:
+                print ('element: ' + element)
+            assert element in attributeList
+
+
+@then(u'heeft de gevonden {objectNaam} {attribuut}={waarde}')
+def step_impl(context, objectNaam, attribuut, waarde):
+    if objectNaam=='ingeschreven persoon':
+        resource = 'ingeschrevenpersonen'
+    if objectNaam=='partner':
+        resource = 'partners'
+    if objectNaam=='ouder':
+        resource = 'ouders'
+    if objectNaam=='kind':
+        resource = 'kinderen'
+
+    collection = GetCollection(context.response.json(), resource)
+    if collection is None:
+        print(responsebody)
+    assert collection is not None
+
+    attribuutWaarde = GetAttribute(collection[0], attribuut)
+
+    if waarde=='null':
+        if attribuutWaarde is not None:
+            print(attribuut + '=' + attribuutWaarde)
+        assert attribuutWaarde is None
+    else:
+        if attribuutWaarde!=waarde:
+            print(attribuut + '=' + str(attribuutWaarde))
+        assert attribuutWaarde==waarde
+
+
+@then(u'heeft de gevonden {objectNaam} link {relatie} met {uri}')
+def step_impl(context, objectNaam, relatie, uri):
+    if objectNaam=='ingeschreven persoon':
+        resource = 'ingeschrevenpersonen'
+    if objectNaam=='partner':
+        resource = 'partners'
+    if objectNaam=='ouder':
+        resource = 'ouders'
+    if objectNaam=='kind':
+        resource = 'kinderen'
+
+    collection = GetCollection(context.response.json(), resource)
+    if collection is None:
+        print(responsebody)
+    assert collection is not None
+
+    attribuutWaarde = GetAttribute(collection[0], '_links.' + relatie + '.href')
+
+    if not attribuutWaarde.endswith(uri):
+        print(relatie + '=' + attribuutWaarde)
+    assert attribuutWaarde.endswith(uri)
+
+
+@then(u'heeft de gevonden {objectNaam} een lege link {relatie}')
+def step_impl(context, objectNaam, relatie):
+    if objectNaam=='ingeschreven persoon':
+        resource = 'ingeschrevenpersonen'
+    if objectNaam=='partner':
+        resource = 'partners'
+    if objectNaam=='ouder':
+        resource = 'ouders'
+    if objectNaam=='kind':
+        resource = 'kinderen'
+
+    collection = GetCollection(context.response.json(), resource)
+    if collection is None:
+        print(responsebody)
+    assert collection is not None
+
+    attribuutWaarde = GetAttribute(collection[0], '_links.' + relatie + '.href')
+
+    if attribuutWaarde is not None:
+        print (relatie + '=' + attribuutWaarde)
+    assert attribuutWaarde is None
 
 
 def OnlyAttributesInPathList(toegestanePaden, jsonObject, contextPad=""):
@@ -304,3 +806,70 @@ def AssertWildcardQuery(querystring, teststring):
     # wildcard character "*" is regular expression ".*"
     querystring = '^' + querystring.replace('?', '.').replace('*', '.*') + '$'
     return re.match(querystring, teststring) is not None
+
+def assertLinkValue(responsebody, objectId, resource, link, uri):
+    collection = GetCollection(responsebody, resource)
+    if collection is None:
+        print(responsebody)
+    assert collection is not None
+
+    attribuutWaarde = GetAttribute(collection[objectId], '_links.' + link + '.href')
+
+    assert attribuutWaarde is not None
+
+    if not attribuutWaarde.endswith(uri):
+        print(link + '=' + attribuutWaarde)
+    assert attribuutWaarde.endswith(uri)
+
+
+def getResourceWithValue(responsebody, resource, attribute, expectedValue):
+    collection = GetCollection(responsebody, resource)
+    if collection is None:
+        print(responsebody)
+    assert collection is not None
+
+    objectId = -1
+    for key, item in enumerate(collection):
+        value = GetAttribute(item, attribute)
+
+        if expectedValue=='null' and value is None:
+            objectId = key
+            break
+
+        if value is not None and value==expectedValue:
+            objectId = key
+            break
+
+    if objectId<0:
+        print('Geen ' + resource + ' gevonden met ' + attribute + '=' + expectedValue)
+
+    return objectId
+
+def assertEmptyLink(responsebody, objectId, resource, link):
+    collection = GetCollection(responsebody, resource)
+    if collection is None:
+        print(responsebody)
+    assert collection is not None
+
+    value = GetAttribute(collection[objectId], '_links.' + link + '.href')
+
+    if value is not None:
+        print (link + '=' + value)
+    assert value is None
+
+def assertValueInItem(responsebody, objectId, resource, attribute, expectedValue):
+    collection = GetCollection(responsebody, resource)
+    if collection is None:
+        print(responsebody)
+    assert collection is not None
+
+    value = GetAttribute(collection[objectId], attribute)
+
+    if expectedValue=='null':
+        if value is not None:
+            print (attribute + '=' + str(value))
+        assert value is None
+    else:
+        if value!=expectedValue:
+            print (attribute + '=' + str(value))
+            assert value==expectedValue
