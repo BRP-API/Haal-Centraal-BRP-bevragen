@@ -38,7 +38,7 @@ Functionaliteit: Automatisch laden van sub-resources
 
   Achtergrond:
     Gegeven de registratie ingeschreven personen kent zoals beschreven in testdata.csv
-    En de geraadpleegde persoon een actuele partner(partnerschap of huwelijk), ouders en kinderen heeft
+    En de te raadplegen persoon een actuele partner(partnerschap of huwelijk), ouders en kinderen heeft
     En in onderstaande scenario's wordt de fields-parameter niet gebruikt, tenzij expliciet aangegeven
     En de gebruiker geautoriseerd is voor gevraagde gegevens (sub-resources), tenzij expliciet anders aangegeven
 
@@ -46,33 +46,40 @@ Functionaliteit: Automatisch laden van sub-resources
     Als een ingeschreven persoon wordt geraadpleegd zonder expand-parameter
     Dan is in het antwoord attribuut _embedded niet aanwezig
     En worden alle attributen van de persoon teruggegeven, voor zover ze een waarde hebben
-    En wordt er een link partners teruggegeven
-    En wordt er een link ouders teruggegeven
-    En wordt er een link kinderen teruggegeven
+    En wordt attribuut _links.partners teruggegeven
+    En wordt attribuut _links.ouders teruggegeven
+    En wordt attribuut _links.kinderen teruggegeven
 
   Scenario: Gebruik van expand=true is niet toegestaan
     Als een ingeschreven persoon wordt geraadpleegd met expand=true
     Dan levert dit een foutmelding
+    En heeft de foutmelding betrekking op parameter expand
 
     Als een ingeschreven persoon wordt geraadpleegd met expand=True
     Dan levert dit een foutmelding
+    En heeft de foutmelding betrekking op parameter expand
 
     Als ingeschreven personen gezocht worden met ?naam__geslachtsnaam=groen&geboorte__datum=1983-05-26&expand=true
     Dan levert dit een foutmelding
+    En heeft de foutmelding betrekking op parameter expand
 
   Scenario: Expand met incorrecte resource of velden
     Als een ingeschreven persoon wordt geraadpleegd met expand=resourcebestaatniet
     Dan levert dit een foutmelding
+    En heeft de foutmelding betrekking op parameter expand
 
     Als een ingeschreven persoon wordt geraadpleegd met expand=reisdocumenten # automatisch laden van reisdocumenten wordt niet ondersteund
     Dan levert dit een foutmelding
+    En heeft de foutmelding betrekking op parameter expand
 
     Als een ingeschreven persoon wordt geraadpleegd met expand=ouders.veldbestaatniet
     Dan levert dit een foutmelding
+    En heeft de foutmelding betrekking op parameter expand
 
   Scenario: Expand met lege waarde
     Als een ingeschreven persoon wordt geraadpleegd met expand=
     Dan levert dit een foutmelding
+    En heeft de foutmelding betrekking op parameter expand
 
   Scenario: Er kunnen meerdere sub-resources worden meegeladen door deze als een komma's gescheiden lijst te specificeren
     Als een ingeschreven persoon wordt geraadpleegd met expand=partners,kinderen
@@ -80,9 +87,9 @@ Functionaliteit: Automatisch laden van sub-resources
     En wordt attribuut _embedded.kinderen teruggegeven
     En is in het antwoord attribuut _embedded.ouders niet aanwezig
     En worden alle attributen van de persoon teruggegeven, voor zover ze een waarde hebben
-    En wordt er een link partners teruggegeven
-    En wordt er een link ouders teruggegeven
-    En wordt er een link kinderen teruggegeven
+    En wordt attribuut _links.partners teruggegeven
+    En wordt attribuut _links.ouders teruggegeven
+    En wordt attribuut _links.kinderen teruggegeven
 
   Scenario: De dot-notatie wordt gebruikt om specifieke attributen van resources te selecteren
     Als een ingeschreven persoon wordt geraadpleegd met expand=ouders.geslachtsaanduiding,ouders.ouder_aanduiding
@@ -96,56 +103,62 @@ Functionaliteit: Automatisch laden van sub-resources
     En is voor alle ouders in _embedded attribuut geldigTotEnMet niet aanwezig
     En is voor alle ouders in _embedded attribuut _links.ingeschrevenpersonen niet aanwezig
     En worden alle attributen van de persoon teruggegeven, voor zover ze een waarde hebben
-    En wordt er een link partners teruggegeven
-    En wordt er een link ouders teruggegeven
-    En wordt er een link kinderen teruggegeven
+    En wordt attribuut _links.partners teruggegeven
+    En wordt attribuut _links.ouders teruggegeven
+    En wordt attribuut _links.kinderen teruggegeven
 
   Scenario: Vragen om een hele gegevensgroep
     Als een ingeschreven persoon wordt geraadpleegd met expand=kinderen.naam,kinderen.geboorte
-    Dan worden voor alle kinderen in _embedded alle attributen van naam teruggegeven voor zover ze een waarde hebben (voornamen, geslachtsnaam, voorvoegsel)
+    Dan worden voor alle kinderen in _embedded alle attributen van naam teruggegeven voor zover ze een waarde hebben (voornamen, geslachtsnaam)
     En worden voor alle kinderen in _embedded alle attributen van geboorte teruggegeven voor zover ze een waarde hebben (plaats, datum, land)
     En wordt voor alle kinderen in _embedded attribuut _links.self teruggegeven
     En is voor alle kinderen in _embedded attribuut burgerservicenummer niet aanwezig
     En is voor alle kinderen in _embedded attribuut geldigVan niet aanwezig
     En is voor alle kinderen in _embedded attribuut geldigTotEnMet niet aanwezig
     En is voor alle kinderen in _embedded attribuut _links.ingeschrevenpersonen niet aanwezig
-    En is in het antwoord attribuut _embedded.ouders niet aanwezig # geen andere resource dan die gevraagd is
-    En is in het antwoord attribuut _embedded.partners niet aanwezig # geen andere resource dan die gevraagd is
+    En is in het antwoord attribuut _embedded.ouders niet aanwezig
+    # geen andere resource dan die gevraagd is
+    En is in het antwoord attribuut _embedded.partners niet aanwezig
+    # geen andere resource dan die gevraagd is
     En worden alle attributen van de persoon teruggegeven, voor zover ze een waarde hebben
-    En wordt er een link partners teruggegeven
-    En wordt er een link ouders teruggegeven
-    En wordt er een link kinderen teruggegeven
+    En wordt attribuut _links.partners teruggegeven
+    En wordt attribuut _links.ouders teruggegeven
+    En wordt attribuut _links.kinderen teruggegeven
 
   Scenario: Vragen om attributen binnen een groep
     Als een ingeschreven persoon wordt geraadpleegd met expand=kinderen.naam.voornamen,kinderen.naam.geslachtsnaam
     Dan wordt voor alle kinderen in _embedded attribuut naam.voornamen teruggegeven
     En wordt voor alle kinderen in _embedded attribuut naam.geslachtsnaam teruggegeven
-    En wordt voor alle kinderen in _embedded geen enkel ander attribuut dan naam teruggegeven
+    En wordt voor alle kinderen in _embedded geen enkel ander attribuut dan naam en _links teruggegeven
     En wordt voor alle kinderen in _embedded geen enkel ander attribuut van naam teruggegeven dan voornamen en geslachtsnaam
-    En is in het antwoord attribuut _embedded.ouders niet aanwezig # geen andere resource dan die gevraagd is
-    En is voor alle kinderen in _embedded attribuut burgerservicenummer niet aanwezig # geen velden waar niet naar gevraagd is
+    En wordt voor alle kinderen in _embedded geen enkel ander attribuut van _links teruggegeven dan self
+    En is in het antwoord attribuut _embedded.ouders niet aanwezig
+    En is in het antwoord attribuut _embedded.partners niet aanwezig
     En worden alle attributen van de persoon teruggegeven, voor zover ze een waarde hebben
-    En wordt er een link partners teruggegeven
-    En wordt er een link ouders teruggegeven
-    En wordt er een link kinderen teruggegeven
+    En wordt attribuut _links.partners teruggegeven
+    En wordt attribuut _links.ouders teruggegeven
+    En wordt attribuut _links.kinderen teruggegeven
 
   Scenario: Vragen om een link
     Als een ingeschreven persoon wordt geraadpleegd met expand=kinderen.naam.voornamen,kinderen.naam.geslachtsnaam
-    Dan is voor alle kinderen in _embedded attribuut _links.ingeschrevenpersonen niet aanwezig # geen links geven waar niet naar gevraagd is
+    Dan is voor alle kinderen in _embedded attribuut _links.ingeschrevenpersonen niet aanwezig
+    # geen links geven waar niet naar gevraagd is
     En wordt voor alle kinderen in _embedded attribuut naam.voornamen teruggegeven
     En wordt voor alle kinderen in _embedded attribuut naam.geslachtsnaam teruggegeven
-    En wordt voor alle kinderen in _embedded attribuut _links.self teruggegeven # de self link moet altijd worden opgenomen
+    En wordt voor alle kinderen in _embedded attribuut _links.self teruggegeven
+    # de self link moet altijd worden opgenomen
     En worden alle attributen van de persoon teruggegeven, voor zover ze een waarde hebben
-    En wordt er een link partners teruggegeven
-    En wordt er een link ouders teruggegeven
-    En wordt er een link kinderen teruggegeven
+    En wordt attribuut _links.partners teruggegeven
+    En wordt attribuut _links.ouders teruggegeven
+    En wordt attribuut _links.kinderen teruggegeven
 
     Als een ingeschreven persoon wordt geraadpleegd met expand=kinderen.naam.voornamen,kinderen.naam.geslachtsnaam,kinderen.ingeschrevenpersonen
     Dan wordt voor alle kinderen in _embedded attribuut _links.ingeschrevenpersonen teruggegeven
     En wordt voor alle kinderen in _embedded attribuut naam.voornamen teruggegeven
     En wordt voor alle kinderen in _embedded attribuut naam.geslachtsnaam teruggegeven
-    En wordt voor alle kinderen in _embedded attribuut _links.self teruggegeven # de self link moet altijd worden opgenomen
+    En wordt voor alle kinderen in _embedded attribuut _links.self teruggegeven
+    # de self link moet altijd worden opgenomen
     En worden alle attributen van de persoon teruggegeven, voor zover ze een waarde hebben
-    En wordt er een link partners teruggegeven
-    En wordt er een link ouders teruggegeven
-    En wordt er een link kinderen teruggegeven
+    En wordt attribuut _links.partners teruggegeven
+    En wordt attribuut _links.ouders teruggegeven
+    En wordt attribuut _links.kinderen teruggegeven

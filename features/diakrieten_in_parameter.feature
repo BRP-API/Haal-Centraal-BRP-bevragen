@@ -11,19 +11,19 @@ Functionaliteit: Zoeken met diakrieten
   Wanneer er een pattern is gedefinieerd op een attribuut, moet de invoer inclusief de eventuele diakrieten voldoen aan het patroon. Bijvoorbeeld zoeken op postcode=1234äB levert een foutmelding, want dit voldoet niet aan het patroon "^[1-9]{1}[0-9]{3}[A-Z]{2}".
 
 Scenario: Wanneer een diakriet wordt opgegeven, wordt deze ook gebruikt
-  Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam_geslachtsnaam=ve*&voornamen=andré*
+  Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=ve*&naam__voornamen=andré*
   Dan wordt de ingeschreven persoon gevonden met naam.voornamen=André
   En wordt geen ingeschreven persoon gevonden met naam.voornamen=Andrea
-  Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=velden&voornamen=Mariëlle
+  Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=velden&naam__voornamen=Mariëlle
   Dan wordt de ingeschreven persoon gevonden met naam.voornamen=Mariëlle
   En wordt geen ingeschreven persoon gevonden met naam.voornamen=Marielle
 
 Scenario: Wanneer geen diakriet wordt opgegeven, worden equivalente diakrieten ook gevonden
-  Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=groenen&voornamen=Andre
+  Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=velden&naam__voornamen=andre
   Dan wordt de ingeschreven persoon gevonden met naam.voornamen=André
-  Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=veld&geboorteplaats=malmo
-  Dan wordt de ingeschreven persoon gevonden met geboorte.plaats=Malmø
-  Als ingeschreven personen gezocht worden met ?verblijfplaats__postcode&naam__voornamen=celik
+  #Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=veld&geboorteplaats=malmo
+  #Dan wordt de ingeschreven persoon gevonden met geboorte.plaats=Malmø
+  Als ingeschreven personen gezocht worden met ?verblijfplaats__postcode=9744CZ&verblijfplaats__huisnummer=7&naam__voornamen=celik
   Dan wordt de ingeschreven persoon gevonden met naam.voornamen=Çelik
-  Als ingeschreven personen gezocht worden met ?verblijfplaats__postcode&naam__voornamen=Celik
+  Als ingeschreven personen gezocht worden met ?verblijfplaats__postcode=9744CZ&verblijfplaats__huisnummer=7&naam__voornamen=Celik
   Dan wordt de ingeschreven persoon gevonden met naam.voornamen=Çelik

@@ -9,15 +9,21 @@ Functionaliteit: in onderzoek
   Een attribuut dat niet in onderzoek is, wordt niet in het antwoord in inOnderzoek opgenomen, ook niet met de waarde false of null.
 
   Scenario: Hele groep in onderzoek
-    Gegeven groep naam is in onderzoek bij Johannes van der Veen
-    Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam_geslachtsnaam=veen&voornamen=johannes
-    Dan heeft elke van de gevonden ingeschrevennatuurlijkpersonen inOnderzoek.naam.geslachtsnaam=true
-    En heeft elke van de gevonden ingeschrevennatuurlijkpersonen inOnderzoek.naam.voornamen=true
-    En heeft elke van de gevonden ingeschrevennatuurlijkpersonen inOnderzoek.naam.voorvoegsel=true
+    Gegeven de te raadplegen persoon heeft groep naam in onderzoek
+    Als de ingeschreven persoon met burgerservicenummer 999999151 wordt geraadpleegd
+    Dan is in het antwoord inOnderzoek.naam.geslachtsnaam=true
+    En is in het antwoord inOnderzoek.naam.voornamen=true
+    En is in het antwoord inOnderzoek.naam.voorvoegsel=true
+    Gegeven de te raadplegen persoon heeft groep nationaliteit in onderzoek
+    Als de ingeschreven persoon met burgerservicenummer 999999102 wordt geraadpleegd
+    Dan is in het antwoord inOnderzoek.nationaliteit.nationaliteit=true
+    En is in het antwoord inOnderzoek.nationaliteit.redenOpname=true
+    En is in het antwoord inOnderzoek.nationaliteit.redenBeindigen=true
+    En is in het antwoord inOnderzoek.nationaliteit.aanduidingBijzonderNederlanderschap=true
 
   Scenario: Een attribuut is in inOnderzoek
-    Gegeven attribuut naam.voornamen is in onderzoek bij Anna Cornelia van der Veen
-    Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam_geslachtsnaam=veen&voornamen=Anna%20Cornelia
-    Dan heeft elke van de gevonden ingeschrevennatuurlijkpersonen inOnderzoek.naam.voornamen=true
-    En is in elke van de gevonden ingeschrevennatuurlijkpersonen attribuut inOnderzoek.naam.geslachtsnaam niet aanwezig of null
-    En is in elke van de gevonden ingeschrevennatuurlijkpersonen attribuut inOnderzoek.naam.voorvoegsel niet aanwezig of null
+    Gegeven de te raadplegen persoon heeft attribuut naam.voornamen in onderzoek
+    Als de ingeschreven persoon met burgerservicenummer 999999163 wordt geraadpleegd
+    Dan is in het antwoord inOnderzoek.naam.geslachtsnaam niet aanwezig of null
+    En is in het antwoord inOnderzoek.naam.voornamen=true
+    En is in het antwoord inOnderzoek.naam.voorvoegsel niet aanwezig of null

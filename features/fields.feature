@@ -49,7 +49,7 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
     Dan wordt attribuut geslachtsaanduiding teruggegeven
     En wordt geen enkel ander attribuut dan geslachtsaanduiding teruggegeven
     En wordt geen enkele relatie van de resource in _links teruggegeven
-    En wordt de self-link teruggegeven
+    En wordt attribuut _links.self teruggegeven
     En wordt er geen gerelateerde sub-resource teruggegeven in _embedded
 
   Scenario: Meerdere attributen worden gevraagd
@@ -59,7 +59,7 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
     En wordt attribuut geslachtsaanduiding teruggegeven
     En wordt geen enkel ander attribuut dan burgerservicenummer, burgerlijkeStaat en geslachtsaanduiding teruggegeven
     En wordt geen enkele relatie van de resource in _links teruggegeven
-    En wordt de self-link teruggegeven
+    En wordt attribuut _links.self teruggegeven
     En wordt er geen gerelateerde sub-resource teruggegeven in _embedded
 
   Scenario: Hele groep wordt gevraagd
@@ -71,79 +71,79 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
     En wordt attribuut naam.voorvoegsel teruggegeven
     En wordt geen enkel ander attribuut dan burgerservicenummer en naam teruggegeven
     En wordt geen enkele relatie van de resource in _links teruggegeven
-    En wordt de self-link teruggegeven
+    En wordt attribuut _links.self teruggegeven
     En wordt er geen gerelateerde sub-resource teruggegeven in _embedded
 
   Scenario: Een of enkele attributen binnen een groep worden gevraagd
     Als een ingeschreven persoon wordt geraadpleegd met fields=naam.aanschrijfwijze
     Dan wordt attribuut naam.aanschrijfwijze teruggegeven
-    En wordt van groep naam geen enkel ander attribuut dan aanschrijfwijze teruggegeven
-    En bevat het antwoord geen enkel ander attribuut dan naam en _links
+    En wordt in naam geen enkel ander attribuut dan aanschrijfwijze teruggegeven
+    En wordt geen enkel ander attribuut dan naam en _links teruggegeven
     En wordt geen enkele relatie van de resource in _links teruggegeven
-    En wordt de self-link teruggegeven
+    En wordt attribuut _links.self teruggegeven
     En wordt er geen gerelateerde sub-resource teruggegeven in _embedded
 
     Als een ingeschreven persoon wordt geraadpleegd met fields=naam.voorvoegsel,naam.geslachtsnaam
     Dan wordt attribuut naam.geslachtsnaam teruggegeven
     En wordt attribuut naam.voorvoegsel teruggegeven
-    En wordt van groep naam geen enkel ander attribuut dan voorvoegsel en geslachtsnaam teruggegeven
+    En wordt in naam geen enkel ander attribuut dan voorvoegsel en geslachtsnaam teruggegeven
     En wordt geen enkele relatie van de resource in _links teruggegeven
-    En wordt de self-link teruggegeven
+    En wordt attribuut _links.self teruggegeven
     En wordt er geen gerelateerde sub-resource teruggegeven in _embedded
 
   Scenario: Relaties (links) vragen (en beperken) in het antwoord
-    Gegeven de geraadpleegde persoon een actuele partner(partnerschap of huwelijk), ouders en kinderen heeft
-    En de geraadpleegde persoon een BAG-adres (nummeraanduiding) als verblijfplaats heeft
+    Gegeven de te raadplegen persoon heeft een actuele partner(partnerschap of huwelijk), ouders en kinderen
+    En de te raadplegen persoon heeft een BAG-adres (nummeraanduiding) als verblijfplaats
 
     Als een ingeschreven persoon wordt geraadpleegd met fields=burgerservicenummer,naam,partners
-    Dan wordt er een link partners teruggegeven
+    Dan wordt attribuut _links.partners teruggegeven
     En wordt attribuut burgerservicenummer teruggegeven
     En wordt attribuut naam.voornamen teruggegeven
     En wordt attribuut naam.geslachtsnaam teruggegeven
     En wordt attribuut naam.voorvoegsel teruggegeven
-    En wordt geen enkele andere link dan partners teruggegeven
+    En wordt attribuut _links.self teruggegeven
+    En wordt in _links geen enkel ander attribuut dan self en partners teruggegeven
     En is elke link partners een geldige uri
-    En wordt de self-link teruggegeven
     En wordt er geen gerelateerde sub-resource teruggegeven in _embedded
 
     Als een ingeschreven persoon wordt geraadpleegd met fields=burgerservicenummer,naam,ouders
-    Dan wordt er een link ouders teruggegeven
-    En wordt geen enkele andere relatie van de persoon dan ouders teruggegeven
-    En wordt de self-link teruggegeven
+    Dan wordt attribuut _links.ouders teruggegeven
+    En wordt attribuut _links.self teruggegeven
+    En wordt in _links geen enkel ander attribuut dan self en ouders teruggegeven
     En wordt er geen gerelateerde sub-resource teruggegeven in _embedded
 
     Als een ingeschreven persoon wordt geraadpleegd met fields=burgerservicenummer,naam,kinderen
-    Dan wordt er een link kinderen teruggegeven
-    En wordt geen enkele andere relatie van de persoon dan kinderen teruggegeven
-    En wordt de self-link teruggegeven
+    Dan wordt attribuut _links.kinderen teruggegeven
+    En wordt attribuut _links.self teruggegeven
+    En wordt in _links geen enkel ander attribuut dan self en kinderen teruggegeven
     En wordt er geen gerelateerde sub-resource teruggegeven in _embedded
 
     Als een ingeschreven persoon wordt geraadpleegd met fields=burgerservicenummer,naam,partners,nummeraanduidingen
-    Dan wordt er een link partners teruggegeven
-    En wordt geen enkele andere relatie van de persoon dan partners en nummeraanduidingen teruggegeven
-    En wordt de self-link teruggegeven
+    Dan wordt attribuut _links.partners teruggegeven
+    En wordt attribuut _links.nummeraanduidingen teruggegeven
+    En wordt attribuut _links.self teruggegeven
+    En wordt in _links geen enkel ander attribuut dan self, partners en nummeraanduidingen teruggegeven
     En wordt er geen gerelateerde sub-resource teruggegeven in _embedded
 
   Scenario: Gebruik van de fields parameter heeft geen invloed op embedded sub-resources
     Als een ingeschreven persoon wordt geraadpleegd met fields=partners&expand=kinderen
-    Dan wordt er een link partners teruggegeven
-    En wordt geen enkele andere link dan partners teruggegeven
-    En wordt de self-link teruggegeven
-    En bevat het antwoord geen enkel attribuut buiten _links of _embedded
-    En bevat _embedded de sub-resource kinderen
-    En bevat _embedded geen enkele andere sub-resource dan kinderen
+    Dan wordt attribuut _links.partners teruggegeven
+    En wordt attribuut _links.self teruggegeven
+    En wordt in _links geen enkel ander attribuut dan self en partners teruggegeven
+    En wordt attribuut _embedded.kinderen teruggegeven
+    En wordt in _embedded geen enkel ander attribuut dan kinderen teruggegeven
+    En wordt geen enkel ander attribuut dan _links en _embedded teruggegeven
 
     Als een ingeschreven persoon wordt geraadpleegd met fields=naam&expand=kinderen
-    Dan wordt de groep naam teruggegeven
-    En wordt geen enkele relatie van de resource in _links teruggegeven
-    En wordt de self-link teruggegeven
-    En wordt geen enkel ander attribuut dan naam teruggegeven
-    En is in het antwoord attribuut burgerservicenummer niet aanwezig
-    En is in het antwoord attribuut geboorte niet aanwezig
-    En bevat _embedded de sub-resource kinderen
-    En wordt attribuut _embedded.ouders.burgerservicenummer teruggegeven # wordt op de resource niet gevraagd (fields), maar van de sub-resource wel (expand)
-    En wordt attribuut _embedded.ouders.geboorte teruggegeven # wordt op de resource niet gevraagd (fields), maar van de sub-resource wel (expand)
-    En wordt attribuut _embedded.ouders._links.ingeschrevenpersonen teruggegeven
+    Dan wordt attribuut naam teruggegeven
+    En wordt attribuut _links.self teruggegeven
+    En wordt in _links geen enkel ander attribuut dan self teruggegeven
+    En wordt geen enkel ander attribuut dan naam, _links en _embedded teruggegeven
+    En wordt attribuut _embedded.kinderen teruggegeven
+    En wordt attribuut _embedded.kinderen.burgerservicenummer teruggegeven
+    # wordt op de resource niet gevraagd (fields), maar van de sub-resource wel (expand)
+    En wordt attribuut _embedded.kinderen.geboorte teruggegeven
+    En wordt attribuut _embedded.kinderen._links.ingeschrevenpersonen teruggegeven
 
   Scenario: Lege fields parameter geeft een foutmelding
     Als een ingeschreven persoon wordt geraadpleegd met fields=
@@ -161,22 +161,22 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
 
   Scenario: Fields bevat attributen waarvoor de gebruiker niet geautoriseerd is
     Gegeven de gebruiker is geautoriseerd voor naamgegevens
-    En de gebruikers is niet geautoriseerd voor Aanduiding gegevens in onderzoek
+    En de gebruiker is niet geautoriseerd voor Aanduiding gegevens in onderzoek
     En de verblijfplaats van de geraadpleegde persoon is in onderzoek
     Als een ingeschreven persoon wordt geraadpleegd met fields=naam,inOnderzoek
     Dan wordt attribuut naam.voornamen teruggegeven
     En wordt attribuut naam.geslachtsnaam teruggegeven
     En wordt attribuut naam.voorvoegsel teruggegeven
     En wordt attribuut naam.aanschrijfwijze teruggegeven
-    En is in het antwoord attribuut inOnderzoek niet aanwezig # hiervoor is de gebruiker immers niet geautoriseerd
-    En wordt geen enkel ander attribuut dan naam teruggegeven
-    En wordt geen enkele relatie van de resource in _links teruggegeven
-    En wordt de self-link teruggegeven
-    En wordt er geen gerelateerde sub-resource teruggegeven in _embedded
+    # En is in het antwoord attribuut inOnderzoek niet aanwezig
+    # hiervoor is de gebruiker immers niet geautoriseerd
+    # En wordt geen enkel ander attribuut dan naam teruggegeven
+    En wordt attribuut _links.self teruggegeven
+    En wordt in _links geen enkel ander attribuut dan self teruggegeven
 
   Scenario: Fields bevat attributen die bij de geraadpleegde persoon geen waarde hebben
-    Gegeven de geraadpleegde persoon verblijft in het buitenland
+    Gegeven de te raadplegen persoon verblijft in het buitenland
     Als een ingeschreven persoon wordt geraadpleegd met fields=verblijfplaats.postcode,verblijfplaats.huisnummer,verblijfplaats.verblijfBuitenland
     Dan wordt attribuut verblijfplaats.verblijfBuitenland teruggegeven
-    En is in het antwoord attribuut verblijfplaats.postcode niet aanwezig, null of leeg
-    En is in het antwoord attribuut verblijfplaats.huisnummer niet aanwezig, null of leeg
+    En is in het antwoord attribuut verblijfplaats.postcode null, leeg of afwezig
+    En is in het antwoord attribuut verblijfplaats.huisnummer null, leeg of afwezig
