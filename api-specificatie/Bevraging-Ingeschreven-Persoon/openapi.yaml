@@ -7,7 +7,7 @@ servers:
 info:
   title: Bevragingen ingeschreven personen
   description: "API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. Ook de gegevens over reisdocumenten worden via deze API ontsloten. Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting."
-  version: "1.0"
+  version: "1.0.0"
   contact:
     url: https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen
   license:
@@ -17,7 +17,7 @@ paths:
   /ingeschrevenpersonen:
     get:
       operationId: ingeschrevenpersonen
-      description: |
+      description: "|
         Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen:
         
         
@@ -55,7 +55,7 @@ paths:
         Het maximale aantal zoekresultaten dat geretourneerd wordt is aan de provider om te bepalen. Als het resultaat van de de request dit aantal overtreft worden er geen resultaten geretourneerd en volgt er een foutmelding.
 
 
-         Er vind geen sortering plaats.
+         Er vind geen sortering plaats."
       parameters: 
         - in: query
           name: expand
@@ -1369,11 +1369,7 @@ components:
       - "einddatumUitsluitingKiesrecht"
       properties:
         aanduidingEuropeesKiesrecht:
-          type: "integer"
-          title: "aanduidingEuropeesKiesrecht"
-          description: "Element 31.10 Een aanduiding die aangeeft of de persoon een\
-            \ oproep moet ontvangen voor verkiezingen voor het Europees parlement."
-          example: "1"
+          $ref: "#/components/schemas/AanduidingEuropeesKiesrecht_enum"
         aanduidingUitgeslotenKiesrecht:
           type: "string"
           title: "aanduidingUitgeslotenKiesrecht"
@@ -1401,6 +1397,7 @@ components:
                 \ werk gaat is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanschrijfwijze.feature)"
               maxLength: 50
               example: "P.J. graaf de Vries- van der Zon"
+
     InOnderzoek:
       type: "object"
       description: "Een groep van booleans om aan te geven welke gegevens van de ingeschreven\
@@ -1439,15 +1436,15 @@ components:
           title: "signaleringNederlandsReisdocument"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        naam:
+        naamInOnderzoek:
           $ref: "#/components/schemas/NaamInOnderzoek"
-        nationaliteit:
+        nationaliteitInOnderzoek:
           $ref: "#/components/schemas/NationaliteitInOnderzoek"
-        geboorte:
+        geboorteInOnderzoek:
           $ref: "#/components/schemas/GeboorteInOnderzoek"
-        overlijden:
+        overlijdenInOnderzoek:
           $ref: "#/components/schemas/OverlijdenInOnderzoek"
-        verblijfplaats:
+        verblijfplaatsInOnderzoek:
           $ref: "#/components/schemas/VerblijfplaatsInOnderzoek"
     NaamInOnderzoek:
       type: "object"
@@ -1939,7 +1936,7 @@ components:
           maxLength: 10
           example: "Graaf"
         soort:
-          $ref: "#/components/schemas/SoortAdellijkeTitel_predikaat"
+          $ref: "#/components/schemas/SoortAdellijkeTitel_predikaat_enum"
     Nationaliteit_tabel:
       type: "object"
       description: "De mogelijk onderscheiden hoedanigheden van tot een bepaalde natie\
@@ -2239,6 +2236,12 @@ components:
             \ partnerschap wordt niet teruggegeven."
           items:
             $ref: "#/components/schemas/Partner"
+    AanduidingEuropeesKiesrecht_enum:
+      type: "string"
+      description: ":\n* 1 - persoon is uitgesloten\n* 2 - persoon ontvangt oproep"
+      enum:
+      - "1"
+      - "2"
     AanduidingInhoudingVermissingReisdocument_enum:
       type: "string"
       description: "De mogelijke waarden van de aanduiding van inhouding of vermissing\
@@ -2369,7 +2372,7 @@ components:
       enum:
       - "H"
       - "P"
-    SoortAdellijkeTitel_predikaat:
+    SoortAdellijkeTitel_predikaat_enum:
       type: "string"
       description: "Geeft aan of het een titel of een predikaat betreft.:\n* H - huwelijk\n\
         * P - geregistreerd partnerschap"
