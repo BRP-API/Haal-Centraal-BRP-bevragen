@@ -1,12 +1,13 @@
 ﻿openapi: 3.0.0
 servers:
-# Added by API Auto Mocking Plugin
-  - description: SwaggerHub API Auto Mocking
-    url: https://virtserver.swaggerhub.com/VNGRealisatie/Bevraging-ingeschreven-persoon/1.0.0
+  - description: "SwaggerHub API Auto Mocking"
+    url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bevragingen_ingeschreven_personen/v1
+  - description: "Referentie-implementatie"
+    url: https://www.voorbeeldgemeente.nl/api/bevragingen_ingeschreven_personen/v1
 info:
   title: Bevragingen ingeschreven personen
   description: "API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. Ook de gegevens over reisdocumenten worden via deze API ontsloten. Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting."
-  version: "1.0.0"
+  version: "1.0"
   contact:
     url: https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen
   license:
@@ -1142,13 +1143,13 @@ components:
           $ref: "#/components/schemas/BurgelijkeStaat_enum"
         indicatieGeheim:
           $ref: "#/components/schemas/IndicatieGeheim_enum"
-        datumVestigingInNederland:
-          $ref: "#/components/schemas/Datum_onvolledig"
         redenOpschortingBijhouding:
           $ref: "#/components/schemas/RedenOpschortingBijhouding_enum"
-        datumOpschortingBijhouding:
-          $ref: "#/components/schemas/Datum_onvolledig"
         datumInschrijvingInGemeente:
+          $ref: "#/components/schemas/Datum_onvolledig"
+        datumVestigingInNederland:
+          $ref: "#/components/schemas/Datum_onvolledig"
+        datumOpschortingBijhouding:
           $ref: "#/components/schemas/Datum_onvolledig"
         landVanwaarIngeschreven:
           $ref: "#/components/schemas/Land_tabel"
@@ -1492,6 +1493,15 @@ components:
           title: "redenBeëindigenNationaliteit"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        uuid:
+          type: "string"
+          title: "uuid"
+          description: "Een UUID is een nummer van 128 bits (= 16 bytes). UUID wordt\
+            \ weergegeven in 32 ??hexadecimale cijfers. Deze cijfers zijn ingedeeld\
+            \ in vijf groepen, in ongelijk aantal en gescheiden door koppeltekens:\
+            \ 8-4-4-4-12 In zijn geheel wordt een UUID dus door 36 tekens gevormd,\
+            \ waarvan 32 hexadecimale karakters en vier streepjes: 550e8400-e29b-41d4-a716-446655440000"
+          maxLength: 36
         aanduidingBijzonderNederlanderschap:
           type: "boolean"
           title: "aanduidingBijzonderNederlanderschap"
@@ -1562,6 +1572,15 @@ components:
       description: "Gegevens over de nationaliteit. 04/54 Gegevens over een nationaliteit\
         \ van de ingeschrevene. Zie verder de toelichting in de GBA."
       properties:
+        uuid:
+          type: "string"
+          title: "uuid"
+          description: "Een UUID is een nummer van 128 bits (= 16 bytes). UUID wordt\
+            \ weergegeven in 32 ??hexadecimale cijfers. Deze cijfers zijn ingedeeld\
+            \ in vijf groepen, in ongelijk aantal en gescheiden door koppeltekens:\
+            \ 8-4-4-4-12 In zijn geheel wordt een UUID dus door 36 tekens gevormd,\
+            \ waarvan 32 hexadecimale karakters en vier streepjes: 550e8400-e29b-41d4-a716-446655440000"
+          maxLength: 36
         aanduidingBijzonderNederlanderschap:
           $ref: "#/components/schemas/AanduidingBijzonderNederlanderschap_enum"
         nationaliteit:
@@ -1811,6 +1830,7 @@ components:
           title: "indicatieCurateleRegister"
           description: "Element 33.10 Een aanduiding dat de ingeschrevene onder curatele\
             \ is gesteld."
+          example: "1"
         datumVan:
           type: "string"
           title: "datumVan"
@@ -1854,16 +1874,16 @@ components:
           title: "maand"
           description: "De maand. Als de maand van een datum bekend is wordt deze\
             \ hier ingevuld. Ook als de volledige datum is ingevuld."
-          format: "date_month"
           pattern: "^99$"
+          format: "date_month"
           maxLength: 2
         dag:
           type: "string"
           title: "dag"
           description: "De dag. Als de dag van de datum bekend is wordt deze hier\
             \ ingevuld. Ook als de volledige datum bekend is."
-          format: "date_mday"
           pattern: "^99$"
+          format: "date_mday"
           maxLength: 2
     Land_tabel:
       type: "object"
@@ -2136,20 +2156,6 @@ components:
           properties:
             href:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
-    Kind_links:
-      type: "object"
-      properties:
-        self:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
-        ingeschrevenpersonen:
-          title: "isKind"
-          type: "object"
-          description: "De ingeschreven persoon die kind is van de opgevraagde persoon.\
-            \ Deze wordt alleen opgenomen wanneer het kind een ingeschreven persoon\
-            \ is."
-          properties:
-            href:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
     Ouder_links:
       type: "object"
       properties:
@@ -2160,6 +2166,20 @@ components:
           type: "object"
           description: "De ingeschreven persoon die ouder is van de opgevraagde persoon.\
             \ Deze wordt alleen opgenomen wanneer de ouder een ingeschreven persoon\
+            \ is."
+          properties:
+            href:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
+    Kind_links:
+      type: "object"
+      properties:
+        self:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
+        ingeschrevenpersonen:
+          title: "isKind"
+          type: "object"
+          description: "De ingeschreven persoon die kind is van de opgevraagde persoon.\
+            \ Deze wordt alleen opgenomen wanneer het kind een ingeschreven persoon\
             \ is."
           properties:
             href:
@@ -2205,10 +2225,9 @@ components:
         kinderen:
           title: "heeftAlsKind"
           type: "array"
-          description: "De ingezetene, zijnde het kind, waarnaar de KIND-OUDER-RELATIE\
-            \ verwijst De kinderen van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE\
-            \ verwijst`"
-          maxItems: 4
+          description: "De ingezetene, zijnde de ouder, waarnaar de KIND-OUDER-RELATIE\
+            \ verwijst De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE\
+            \ verwijst"
           items:
             $ref: "#/components/schemas/Kind"
         partners:
