@@ -1143,21 +1143,11 @@ components:
         indicatieGeheim:
           $ref: "#/components/schemas/IndicatieGeheim_enum"
         datumVestigingInNederland:
-          type: "string"
-          title: "Datum vestiging in Nederland"
-          description: "Datum van inschrijving in Nederland Bij ambtshalve inschrijving\
-            \ is dit de datum waarop de betrokkene schriftelijk van het voornemen\
-            \ tot ambtshalve inschrijving mededeling is gedaan. In alle andere gevallen\
-            \ is dit de datum waarop de aangifte is ontvangen."
-          format: "date"
+          $ref: "#/components/schemas/Datum_onvolledig"
         redenOpschortingBijhouding:
           $ref: "#/components/schemas/RedenOpschortingBijhouding_enum"
         datumOpschortingBijhouding:
-          type: "string"
-          title: "Datum opschorting bijhouding"
-          description: "De datum waarop de bijhouding van de persoonslijst is gestaakt."
-          format: "date"
-          example: "2018-01-29"
+          $ref: "#/components/schemas/Datum_onvolledig"
         datumInschrijvingInGemeente:
           $ref: "#/components/schemas/Datum_onvolledig"
         landVanwaarIngeschreven:
