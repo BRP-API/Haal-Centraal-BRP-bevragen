@@ -1139,8 +1139,6 @@ components:
           example: "876352431"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
-        burgerlijkeStaat:
-          $ref: "#/components/schemas/BurgelijkeStaat_enum"
         indicatieGeheim:
           $ref: "#/components/schemas/IndicatieGeheim_enum"
         redenOpschortingBijhouding:
@@ -2259,21 +2257,6 @@ components:
       enum:
       - "B"
       - "V"
-    BurgelijkeStaat_enum:
-      type: "string"
-      description: "Een aanduiding van alle waarden die een burgelijke staat kan aannemen:\n\
-        * 0 - onbekend\n* 1 - ongehuwd en nooit gehuwd geweest\n* 2 - gehuwd\n* 3\
-        \ - gescheiden\n* 4 - weduwe / weduwnaar\n* 5 - partnerschap\n* 6 - partnerschap\
-        \ beeindigd\n* 7 - achtergebleven partner"
-      enum:
-      - "0"
-      - "1"
-      - "2"
-      - "3"
-      - "4"
-      - "5"
-      - "6"
-      - "7"
     Geslacht_enum:
       type: "string"
       description: "Een aanduiding die aangeeft dat de ingeschrevene een man of een\
