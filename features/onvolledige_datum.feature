@@ -32,3 +32,8 @@ Functionaliteit: Sommige datum-attributen kunnen een onvolledige datum bevatten
     En heeft attribuut geboorte.datum.jaar de waarde 1975
     En is attribuut geboorte.datum.maand niet aanwezig of null
     En is attribuut geboorte.datum.dag niet aanwezig of null
+
+  Scenario: Er is geen geboortedatum bekend
+    Gegeven de registratie ingeschreven persoon 999999308 kent geen geboortedatum (00000000)
+    Dan is groep geboorte.datum niet aanwezig of null
+    
