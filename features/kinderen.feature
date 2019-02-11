@@ -39,17 +39,20 @@ Functionaliteit: Kinderen van een ingeschreven persoon raadplegen
     En heeft dit kind geboorte.land.landnaam=Turkije
     En heeft dit gevonden kind een lege link ingeschrevenpersonen
 
-  Scenario: de ingeschreven persoon twee ouders
-    Gegeven de te raadplegen persoon heeft meerdere (twee) ouders (Marie en Cornelis Petrus Johannus)
-    Als de ouders worden geraadpleegd van de ingeschreven persoon met burgerservicenummer 999999011
-    Dan is het aantal gevonden ouders 2
-    En wordt de ouder gevonden met naam.voornamen=Marie
-    En wordt de ouder gevonden met naam.voornamen=Cornelis Petrus Johannus
+  Scenario: de ingeschreven persoon twee kinderen
+    Gegeven de te raadplegen persoon heeft meerdere (twee) kinderen (Lisa en Daan)
+    Als de kinderen worden geraadpleegd van de ingeschreven persoon met burgerservicenummer 999999047
+    Dan is het aantal gevonden kinderen 2
+    En wordt het kind gevonden met naam.voornamen=Lisa
+    En wordt het kind gevonden met naam.voornamen=Daan
 
-  Scenario: de ingeschreven persoon heeft drie ouders
-    Gegeven de te raadplegen persoon heeft drie ouders
-    Als de ouders worden geraadpleegd van de ingeschreven persoon met burgerservicenummer 999999448
-    Dan is het aantal gevonden ouders 3
+  Scenario: de ingeschreven persoon heeft drie kinderen
+    Gegeven de te raadplegen persoon heeft drie kinderen (Jip, Chantal en Jesse)
+    Als de kinderen worden geraadpleegd van de ingeschreven persoon met burgerservicenummer 999999291
+    Dan is het aantal gevonden kinderen 3
+    En wordt het kind gevonden met naam.voornamen=Jip
+    En wordt het kind gevonden met naam.voornamen=Chantal
+    En wordt het kind gevonden met naam.voornamen=Jesse
 
   Scenario: kind ophalen vanuit links van ingeschreven persoon via sub-resource kinderen
     Gegeven de te raadplegen persoon heeft een kind dat zelf ingeschreven persoon is

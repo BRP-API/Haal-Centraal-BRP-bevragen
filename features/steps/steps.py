@@ -48,8 +48,44 @@ def step_impl(context, eigenschappen):
     pass
 
 
+@given(u'de API {eigenschappen}')
+def step_impl(context, eigenschappen):
+    pass
+
+
+@given(u'nummeraanduidingen zijn te raadplegen in een BAG API')
+def step_impl(context):
+    pass
+
+
+@given(u'de geraadpleegde {eigenschappen}')
+def step_impl(context, eigenschappen):
+    pass
+
+
+@given(u'de registratie {eigenschappen}')
+def step_impl(context, eigenschappen):
+    pass
+
+
+@given(u'Reden {eigenschappen}')
+def step_impl(context, eigenschappen):
+    pass
+
+
 @when(u'de ingeschreven persoon met burgerservicenummer {burgerservicenummer} wordt geraadpleegd')
 def step_impl(context, burgerservicenummer):
+    url = config.BASEURL + '/ingeschrevenpersonen/' + burgerservicenummer
+    context.response = requests.get(url)
+
+@when(u'ingeschreven persoon met burgerservicenummer {burgerservicenummer} wordt geraadpleegd met {parameters}')
+def step_impl(context, burgerservicenummer, parameters):
+    url = config.BASEURL + '/ingeschrevenpersonen/' + burgerservicenummer + '?' + parameters
+    context.response = requests.get(url)
+
+
+@when(u'ingeschreven persoon met burgerservicenummer {burgerservicenummer} wordt geraadpleegd zonder {parameter}')
+def step_impl(context, burgerservicenummer, parameter):
     url = config.BASEURL + '/ingeschrevenpersonen/' + burgerservicenummer
     context.response = requests.get(url)
 
@@ -180,6 +216,89 @@ def step_impl(context, resource, attribuut, waarde):
         assert attribuutWaarde == waarde
 
 
+@then('heeft geen van de gevonden {resource} {attribuut}={waarde}')
+def step_impl(context, resource, attribuut, waarde):
+    responsebody = context.response.json()
+    collection = GetCollection(responsebody, resource)
+    assert collection is not None
+
+    for item in collection:
+        assert GetAttribute(item, attribuut) != waarde
+
+
+@then(u'bevat het attribuut {attribute} in elke van de gevonden {embeddedResource} {part}')
+def step_impl(context, embeddedResource, attribute, part):
+    embeddedResources = GetAttribute(context.response.json(), embeddedResource)
+    assert embeddedResources is not None
+
+    for item in embeddedResources:
+        value = GetAttribute(item, attribute)
+        assert value is not None
+
+        if part not in value:
+            print (embeddedResource + '.' + attribute + '=' + value)
+        assert part in value
+
+
+@then(u'bevat het attribuut {attribute} in geen van de gevonden {embeddedResource} {part}')
+def step_impl(context, embeddedResource, attribute, part):
+    embeddedResources = GetAttribute(context.response.json(), embeddedResource)
+    assert embeddedResources is not None
+
+    for item in embeddedResources:
+        value = GetAttribute(item, attribute)
+
+        if part in value:
+            print (embeddedResource + '.' + attribute + '=' + value)
+        assert part not in value
+
+
+@then(u'eindigt het attribuut {attribute} in geen van de gevonden {embeddedResource} op {suffix}')
+def step_impl(context, embeddedResource, attribute, suffix):
+    embeddedResources = GetAttribute(context.response.json(), embeddedResource)
+    assert embeddedResources is not None
+
+    for item in embeddedResources:
+        value = GetAttribute(item, attribute)
+
+        if value.endswith(suffix):
+            print (embeddedResource + '.' + attribute + '=' + value)
+        assert not value.endswith(suffix)
+
+
+@then(u'begint het attribuut {attribute} in elk van de gevonden {embeddedResource} met http:// of https://')
+def step_impl(context, embeddedResource, attribute):
+    embeddedResources = GetAttribute(context.response.json(), embeddedResource)
+    assert embeddedResources is not None
+
+    for item in embeddedResources:
+        attributeValue = GetAttribute(item, attribute)
+
+        if not (attributeValue.startswith('http://') or attributeValue.startswith('https://')):
+            print (embeddedResource + '.' + attribute + '=' + attributeValue + ' begint niet met http:// of https://')
+
+        assert attributeValue.startswith('http://') or attributeValue.startswith('https://')
+
+
+@then('heeft elke gevonden {objectNaam} attribuut {attribuut} met een waarde')
+def step_impl(context, objectNaam, attribuut):
+    responsebody = context.response.json()
+
+    if objectNaam=='persoon':
+        resource = 'ingeschrevenpersonen'
+
+    collection = GetCollection(responsebody, resource)
+    assert collection is not None
+
+    for item in collection:
+        attribuutWaarde = GetAttribute(item, attribuut)
+        assert attribuutWaarde is not None
+
+        if attribuutWaarde == "":
+            print('Waarde van ' + attribuut + '=' + attribuutWaarde)
+        assert attribuutWaarde != ""
+
+
 @then('is in het antwoord {attribute}={value}')
 def step_impl(context, attribute, value):
     responsebody = context.response.json()
@@ -210,7 +329,12 @@ def step_impl(context, attribute, value):
 def step_impl(context, attribute):
     responsebody = context.response.json()
 
-    assert GetAttribute(responsebody, attribute, False) is None
+    value = GetAttribute(responsebody, attribute, False)
+
+    if value is not None:
+        print (attribute + '=' + str(value))
+
+    assert value is None
 
 
 @then('wordt de {objectNaam} gevonden met {attribuut}={waarde}')
@@ -259,6 +383,17 @@ def step_impl(context, relatie, aantal):
         print ('Aantal ' + relatie + ' links=' + str(len(links)))
 
     assert len(links)==int(aantal)
+
+
+@then(u'is het aantal embedded {subresource} gelijk aan {aantal}')
+def step_impl(context, subresource, aantal):
+    embeddedResources = GetAttribute(context.response.json(), '_embedded.' + subresource)
+    assert embeddedResources is not None
+
+    if len(embeddedResources)!=int(aantal):
+        print ('Aantal embedded ' + subresource + '=' + str(len(embeddedResources)))
+
+    assert len(embeddedResources)==int(aantal)
 
 
 @then(u'wordt een {relatie} link gevonden naar {uri}')
@@ -377,10 +512,68 @@ def step_impl(context, resource, attribuut):
     assert collection is not None
 
     for item in collection:
-        attribuutWaarde = GetAttribute(item, attribuut, False)
-        if attribuutWaarde is not None and type(attribuutWaarde) is str:
-            print(attribuut + '=' + attribuutWaarde)
-        assert attribuutWaarde is None
+        assertNoneObject(GetAttribute(item, attribuut, False))
+        #attribuutWaarde = GetAttribute(item, attribuut, False)
+        #if attribuutWaarde is not None :
+        #    print(attribuut + '=' + str(attribuutWaarde))
+        #assert attribuutWaarde is None
+
+
+@then(u'geldt voor elk van de gevonden {resource} dat attribuut {attribute} de tekst {part} bevat')
+def step_impl(context, resource, attribute, part):
+    collection = GetCollection(context.response.json(), resource)
+
+    if collection is None:
+        print(responsebody)
+    assert collection is not None
+
+    for item in collection:
+        attributeValue = GetAttribute(item, attribute)
+
+        assert attributeValue is not None
+
+        if part not in attributeValue:
+            print (part + ' niet gevonden in ' + attribute + '=' + attributeValue)
+
+        assert part in attributeValue
+
+
+@then(u'geldt voor elk van de gevonden {resource} dat attribuut {attribute} begint met http:// of https://')
+def step_impl(context, resource, attribute):
+    collection = GetCollection(context.response.json(), resource)
+
+    if collection is None:
+        print(responsebody)
+    assert collection is not None
+
+    for item in collection:
+        attributeValue = GetAttribute(item, attribute)
+
+        assert attributeValue is not None
+
+        if not (attributeValue.startswith('http://') or attributeValue.startswith('https://')):
+            print (attribute + '=' + attributeValue + ' begint niet met http:// of https://')
+
+        assert attributeValue.startswith('http://') or attributeValue.startswith('https://')
+
+
+@then(u'geldt voor elk van de gevonden {resource} dat attribuut {attribute} geen waarde {part} bevat')
+def step_impl(context, resource, attribute, part):
+    collection = GetCollection(context.response.json(), resource)
+
+    if collection is None:
+        print(responsebody)
+    assert collection is not None
+
+    for item in collection:
+        attributeValue = GetAttribute(item, attribute)
+
+        assert attributeValue is not None
+
+        if part in attributeValue:
+            print (part + " gevonden in " + attributeValue)
+
+        assert part not in attributeValue
 
 
 @then('bevatten alle gevonden {resource} alleen gevraagde embedded attributen')
@@ -418,6 +611,7 @@ def step_impl(context, resource):
 def step_impl(context, resource, resultCount):
     responsebody = context.response.json()
     collection = GetCollection(responsebody, resource)
+    assert collection is not None
 
     if len(collection)!=int(resultCount):
         print('Er zijn ' + str(len(collection)) + ' ' + resource + ' gevonden')
@@ -486,8 +680,8 @@ def step_impl(context):
 @then(u'wordt attribuut {attribute} teruggegeven')
 def step_impl(context, attribute):
     responsebody = context.response.json()
-    GetAttribute(responsebody, attribute)
-    #assert attribute in responsebody
+
+    assert AttributeExists(responsebody, attribute)
 
 
 @then(u'wordt geen enkel ander attribuut dan {attribute} teruggegeven')
@@ -566,6 +760,24 @@ def step_impl(context, relationLink):
         assert re.match(regExp, link['href']) is not None
 
 
+@then(u'bevat het antwoord {attribute} met een waarde')
+def step_impl(context, attribute):
+    responsebody = GetAttribute(context.response.json(), attribute)
+
+    assert responsebody is not None
+
+
+@then(u'is in het antwoord {attribute} een geldige uri')
+def step_impl(context, attribute):
+    responsebody = GetAttribute(context.response.json(), attribute)
+    regExp = '^https?:\/\/[a-z0-9]+[a-zA-Z0-9\_\-\.\/]+[a-zA-Z0-9\_\-]+$'
+
+    assert responsebody is not None
+
+    if re.match(regExp, responsebody) is None:
+        print ('incorrect url: ' + responsebody)
+    assert re.match(regExp, responsebody) is not None
+
 @then(u'is in het antwoord attribuut {attribute} niet aanwezig')
 def step_impl(context, attribute):
     responsebody = context.response.json()
@@ -575,11 +787,22 @@ def step_impl(context, attribute):
 
 @then(u'is in het antwoord attribuut {attribute} null, leeg of afwezig')
 def step_impl(context, attribute):
-    if AttributeExists(context.response.json(), attribute):
-        attributeValue = GetAttribute(context.response.json(), attribute)
-        assert attributeValue=='' or attributeValue is None
-    else:
-        pass
+    assertNoneObject(GetAttribute(context.response.json(), attribute, False))
+    #if AttributeExists(context.response.json(), attribute):
+    #    attributeValue = GetAttribute(context.response.json(), attribute)
+    #    assert attributeValue=='' or attributeValue is None
+    #else:
+    #    pass
+
+
+@then(u'is {attribute} leeg')
+def step_impl(context, attribute):
+    list = GetAttribute(context.response.json(), attribute)
+
+    if len(list)>0:
+        print (attribute + ' heeft ' + str(len(list)) + ' items')
+
+    assert len(list)==0
 
 
 @then(u'worden voor alle {subresource} in _embedded alle attributen van {groupName} teruggegeven voor zover ze een waarde hebben ({attributes})')
@@ -694,6 +917,123 @@ def step_impl(context, objectNaam, relatie):
     assert attribuutWaarde is None
 
 
+@then(u'heeft attribuut {attribute} de waarde {expectedValue}')
+def step_impl(context, attribute, expectedValue):
+    attributeValue = GetAttribute(context.response.json(), attribute)
+
+    assert attributeValue is not None
+
+    if not attributeValue==expectedValue:
+        print (attribute + '=' + attributeValue)
+
+    assert attributeValue==expectedValue
+
+
+@then(u'eindigt attribuut {attribute} met {suffix}')
+def step_impl(context, attribute, suffix):
+    attributeValue = GetAttribute(context.response.json(), attribute)
+
+    assert attributeValue is not None
+
+    if not attributeValue.endswith(suffix):
+        print (attribute + '=' + attributeValue + ' eindigt niet op ' + suffix)
+
+    assert attributeValue.endswith(suffix)
+
+
+@then(u'eindigt attribuut {attribute} niet op {suffix}')
+def step_impl(context, attribute, suffix):
+    attributeValue = GetAttribute(context.response.json(), attribute)
+
+    assert attributeValue is not None
+
+    if attributeValue.endswith(suffix):
+        print (attribute + '=' + attributeValue + ' eindigt op ' + suffix)
+
+    assert not attributeValue.endswith(suffix)
+
+
+@then(u'begint attribuut {attribute} met http:// of https://')
+def step_impl(context, attribute):
+    attributeValue = GetAttribute(context.response.json(), attribute)
+
+    assert attributeValue is not None
+
+    if not (attributeValue.startswith('http://') or attributeValue.startswith('https://')):
+        print (attribute + '=' + attributeValue + ' begint niet met http:// of https://')
+
+    assert attributeValue.startswith('http://') or attributeValue.startswith('https://')
+
+@then(u'bevat attribuut {attribute} {part}')
+def step_impl(context, attribute, part):
+    attributeValue = GetAttribute(context.response.json(), attribute)
+
+    assert attributeValue is not None
+
+    if part not in attributeValue:
+        print (part + ' niet gevonden in ' + attribute + '=' + attributeValue)
+
+    assert part in attributeValue
+
+
+@then(u'zit er geen {part} in {attribute}')
+def step_impl(context, attribute, part):
+    attributeValue = GetAttribute(context.response.json(), attribute)
+
+    assert attributeValue is not None
+
+    if part in attributeValue:
+        print (part + ' gevonden in ' + attribute + '=' + attributeValue)
+
+    assert part not in attributeValue
+
+
+@then(u'levert een GET request naar de url in {attribute} een antwoord')
+def step_impl(context, attribute):
+    url = GetAttribute(context.response.json(), attribute)
+
+    assert url is not None
+
+    response = requests.get(url)
+
+    if response.status_code >= 400:
+        print ('GET ' + url + ' geeft foutcode: ' + response.status_code)
+    assert response.status_code < 400
+
+@then(u'levert voor elk van de gevonden {resource} een GET request naar de url in {attribute} een antwoord')
+def step_impl(context, resource, attribute):
+    collection = GetCollection(context.response.json(), resource)
+
+    assert collection is not None
+
+    for item in collection:
+        url = GetAttribute(item, attribute)
+
+        assert url is not None
+
+        response = requests.get(url)
+
+        if response.status_code >= 400:
+            print ('GET ' + url + ' geeft foutcode: ' + response.status_code)
+        assert response.status_code < 400
+
+
+@then(u'levert voor alle gevonden {linkedResource} een GET request naar de url in {attribute} een antwoord')
+def step_impl(context, linkedResource, attribute):
+    links = GetAttribute(context.response.json(), linkedResource)
+    assert links is not None
+
+    for item in links:
+        url = GetAttribute(item, attribute)
+        assert url is not None
+
+        response = requests.get(url)
+
+        if response.status_code >= 400:
+            print ('GET ' + url + ' geeft foutcode: ' + response.status_code)
+        assert response.status_code < 400
+
+
 def OnlyAttributesInPathList(toegestanePaden, jsonObject, contextPad=""):
     # Geeft True wanneer elk (groeps)attribuut in jsonObject ook in
     # toegestanePaden zit. Geeft False wanneer een attribuut niet in
@@ -793,6 +1133,7 @@ def AttributeExists(jsonObject, jsonAttribute):
 
     return True
 
+
 def AssertWildcardQuery(querystring, teststring):
     # Geeft True wanneer teststring voldoet aan de querystring
     # Geeft False wanneer teststring niet voldoet aan de querystring
@@ -873,3 +1214,17 @@ def assertValueInItem(responsebody, objectId, resource, attribute, expectedValue
         if value!=expectedValue:
             print (attribute + '=' + str(value))
             assert value==expectedValue
+
+
+def assertNoneObject(jsonObject):
+    if isinstance(jsonObject, dict):
+        for attr, value in jsonObject.items():
+            assertNoneObject(value)
+    elif isinstance(jsonObject, list):
+        if len(jsonObject)>0:
+            print(str(jsonObject))
+        assert len(jsonObject)==0
+    else:
+        if jsonObject is not None:
+            print (str(jsonObject))
+        assert jsonObject is None
