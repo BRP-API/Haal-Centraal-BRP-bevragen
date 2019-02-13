@@ -1,4 +1,4 @@
-# Bevragingen ingeschreven personen
+# BRP Bevragen
 
 BRP Bevragen is een Haal Centraal API voor het zoeken en raadplegen van ingeschreven natuurlijke personen voor alle binnengemeentelijke afnemers in NL. 
 
