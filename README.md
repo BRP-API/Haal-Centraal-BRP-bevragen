@@ -1,12 +1,8 @@
 # Bevragingen ingeschreven personen
 
-Bevragingen ingeschreven personen is een berichtenstandaard voor het opvragen van gegevens van ingeschreven natuurlijk personen zoals beschreven in het RSGB.
+BRP Bevragen is een Haal Centraal API voor het zoeken en raadplegen van ingeschreven natuurlijke personen voor alle binnengemeentelijke afnemers in NL. 
 
-Inhoudelijk startpunt voor de bevragingen zijn de geïnventariseerde vragen die zijn opgesteld door de werkgroep RSGB bevragingen en vastgelegd in standaard [RSGB-bevragingen 1.0](https://www.gemmaonline.nl/index.php/RSGB_Bevragingen), module ingeschreven personen.
-
-Het initiële startpunt voor informatiemodellen van gegevens in de berichten was RSGB 3. Gaandeweg het traject is ervoor gekozen om bij de vormgeving van de berichten zo dicht mogelijk bij het Logisch Ontwerp GBA te blijven.
-
-Startpunt voor technische uitwisselafspraken voor de te ontwikkelen RESTfull API operaties is de DSO API strategie en DSO URI strategie.
+De informatie die de API levert is herleidbaar naar het LO GBA 3.10.
 
 ## Documentatie
 * [Productvisie](https://github.com/VNG-Realisatie/RSGB-bevragingen/blob/master/docs/productvision.md)
@@ -21,14 +17,11 @@ Startpunt voor technische uitwisselafspraken voor de te ontwikkelen RESTfull API
 * Ontwerpkeuzes staan in het document [Design decisions](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/docs/design_decisions.md)
 
 ## Bronnen
-* Informatiemodel [RSGB](https://www.gemmaonline.nl/index.php/RSGB_3.0_in_ontwikkeling) (in ontwikkeling)
 * [API strategie en URI strategie](https://aandeslagmetdeomgevingswet.nl/digitaal-stelsel/documenten/documenten/api-uri-strategie/)
-* [GEMMA 2](https://www.gemmaonline.nl/index.php/GEMMA_Architectuur)
-* [Common Ground](https://commonground.pleio.nl)
 
 ## Contactpersonen:
 * Product owner: [@CathyDingemanse](https://github.com/CathyDingemanse)
 * Berichtontwerper: [@JohanBoer](https://github.com/JohanBoer)
 
 ## Licentie
-De koppelvlakstandaard, inclusief alle onderdelen die erbij horen (volgens productvisie en/of definition of done) zijn gelicenceerd onder [EUPL](https://eupl.eu/1.2/nl/).
+De OAS sepcificatie, inclusief alle onderdelen die erbij horen volgens de definition of done zijn gelicenceerd onder [EUPL](https://eupl.eu/1.2/nl/).
