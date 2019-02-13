@@ -3,7 +3,7 @@
 ## Introductie
 Doel van het programma Haal Centraal het verstrekken van basisgegevens aan binnengemeentelijke afnemers te outsourcen naar Landelijke Registraties (RvIG, Kadaster, KVK). Dit moet leiden tot een forse reductie van lokale kopieën bij gemeenten. 
 
-We doen dit door voor zoveel mogelijk activiteiten op een lokale kopie een Haal Centraal alternatief te bieden in de vorm van een API. We beginnen bij de meest gebruikte functionaliteit (van het gegevensmagazijn) op dit moment: het zoeken en raadplegen van ingeschreven natuurlijke personen. 
+We doen dit door voor zoveel mogelijk activiteiten op een lokale kopie een Haal Centraal alternatief te bieden in de vorm van een API. We beginnen bij de meest gebruikte functionaliteit die een gemeentelijk gegevensmagazijn op dit moment biedt: het zoeken en raadplegen van ingeschreven natuurlijke personen. 
 
 De API is ontworpen om door een Landelijke Registratie te worden aangeboden. RvIG is nog niet betrokken bij de tot stand koming van deze API. Uitgangspuntspunt is dat gemeenten de API tijdelijk op het eigen gegevensmagazijn implementeren, totdat outsourcing naar een Landelijke Voorziening kan worden gerealiseerd. Zo kan al een deel van de voordelen worden behaald en de migratie naar volledige outsourcing worden versneld. 
 
