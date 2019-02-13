@@ -1,7 +1,7 @@
 # Productvisie BRP Bevragen
 
 ## Introductie
-Doel van het programma Haal Centraal het verstrekken van basisgegevens aan binnengemeentelijke afnemers te outsourcen naar Landelijke Registraties (RvIG, Kadaster, KVK). Dit moet leiden tot een forse reductie van lokale kopieën bij gemeenten. 
+Doel van het programma Haal Centraal is om de verstrekking van basisgegevens aan binnengemeentelijke afnemers te outsourcen naar Landelijke Registraties (RvIG, Kadaster, KVK). Dit moet leiden tot een forse reductie van lokale kopieën bij gemeenten. 
 
 In principe willen we voor iedere activiteit op een lokale kopie een Haal Centraal alternatief te bieden in de vorm van een API. We beginnen bij de meest gebruikte functie die een gemeentelijk gegevensmagazijn op dit moment te bieden heeft: het zoeken en raadplegen van ingeschreven natuurlijke personen. 
 
