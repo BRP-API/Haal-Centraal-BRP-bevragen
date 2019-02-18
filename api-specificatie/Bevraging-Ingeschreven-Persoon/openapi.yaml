@@ -47,7 +47,7 @@ paths:
         5.  Nummeraanduiding
             -  verblijfplaats__identificatiecodenummeraanduiding
 
-        De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters.
+        De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters, maar binnen iedere combinatie zijn de hier genoemde velden **verplicht**. 
 
 
         Default levert een zoekvraag alleen personen op die nog in leven zijn. Indien **_inclusiefoverledenpersonen_** de waarde **_true_** heeft worden [overleden personen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) opgenomen in het zoekresultaat.
@@ -74,7 +74,7 @@ paths:
             example: 24-09-1964
         - in: query
           name: naam__voornamen
-          description: "De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. * Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.**"
+          description: "De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).**"
           required: false
           schema:
             type: string
@@ -98,7 +98,7 @@ paths:
             example: 0518200000366054
         - in: query
           name: geboorte__plaats
-          description: ""
+          description: "Een code, opgenomen in Tabel 33, Gemeententabel of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).**"
           required: false
           schema:
             type: string
@@ -128,7 +128,7 @@ paths:
             example: bis
         - in: query
           name: naam__geslachtsnaam
-          description: "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)**"
+          description: "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).**"
           required: false
           schema:
             type: string
@@ -136,7 +136,7 @@ paths:
             example: Vries
         - in: query
           name: verblijfplaats__naamopenbareruimte
-          description: "Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** Zie verder de toelichting in de BAG. Tekens gecodeerd volgens de UTF-8 standaard"
+          description: "Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** Zie verder de toelichting in de BAG. Tekens gecodeerd volgens de UTF-8 standaard"
           required: false
           schema:
             type: string
@@ -151,6 +151,14 @@ paths:
             pattern: ^[1-9]{1}[0-9]{3}[A-Z]{2}
             example: 2341SX
         - in: query
+          name: verblijfplaats__gemeentevaninschrijving
+          description: "Een code die aangeeft in welke gemeente de PL zich bevindt of de gemeente waarnaar de PL is uitgeschreven of de gemeente waar de PL voor de eerste keer is opgenomen. De standaardwaarde (0000) is geen geldige inhoud voor de query-parameter. standaardwaarde is 0000 indien onbekend"
+          required: false
+          schema:
+            type: integer
+            maximum: 9999
+            example: 0518
+        - in: query
           name: inclusiefoverledenpersonen
           description: "Indien in het antwoord op de zoekvraag ook overleden personen moeten worden geretourneerd, dan dient de parameter *inclusiefOverledenPersonen* opgenomen te zijn met de waarde _True_. Indien de parameter *inclusiefOverledenPersonen* ontbreekt of de waarde _False_ heeft worden geen overleden personen opgenomen in het zoekresultaat. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature)"
           required: false
@@ -164,8 +172,8 @@ paths:
           schema:
             type: string
         - in: query
-          name: voorvoegsel
-          description: "Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam. Element 02.30 Dat deel van de geslachtsnaam dat voorkomt in Tabel 36, Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam."
+          name: naam__voorvoegsel
+          description: "Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam."
           required: false
           schema:
             type: string
@@ -1101,7 +1109,7 @@ components:
         datumEersteInschrijvingGBA:
           $ref: "#/components/schemas/Datum_onvolledig"
         registergemeenteAkte:
-          $ref: "#/components/schemas/Gemeenten"
+          $ref: "#/components/schemas/Gemeenten_tabel"
         datumOpschortingBijhouding:
           $ref: "#/components/schemas/Datum_onvolledig"
         kiesrecht:
@@ -1173,7 +1181,7 @@ components:
         datumVan:
           $ref: "#/components/schemas/Datum_onvolledig"
         registergemeenteAkte:
-          $ref: "#/components/schemas/Gemeenten"
+          $ref: "#/components/schemas/Gemeenten_tabel"
         naam:
           $ref: "#/components/schemas/Naam"
         inOnderzoek:
@@ -1221,7 +1229,7 @@ components:
             \ te zijn. De laatste 4 posities bevatten een volgnummer van de akte."
           maxLength: 7
         registergemeenteAkte:
-          $ref: "#/components/schemas/Gemeenten"
+          $ref: "#/components/schemas/Gemeenten_tabel"
         inOnderzoek:
           $ref: "#/components/schemas/KindInOnderzoek"
         naam:
@@ -1274,7 +1282,7 @@ components:
             \ te zijn. De laatste 4 posities bevatten een volgnummer van de akte."
           maxLength: 7
         registergemeenteAkte:
-          $ref: "#/components/schemas/Gemeenten"
+          $ref: "#/components/schemas/Gemeenten_tabel"
         naam:
           $ref: "#/components/schemas/Naam"
         geboorte:
@@ -1364,16 +1372,16 @@ components:
     NaamInOnderzoek:
       type: "object"
       description: "In onderzoekgroep om aan te geven of gegevens over de naam van\
-        \ de Ingeschreven persoon in onderzoek zijn."
+        \ de Ingeschreven persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
       properties:
         voornamen:
           type: "boolean"
           title: "voornamen"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        voorvoegselGeslachtsnaam:
+        voorvoegsel:
           type: "boolean"
-          title: "voorvoegselGeslachtsnaam"
+          title: "voorvoegsel"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         geslachtsnaam:
@@ -1389,7 +1397,7 @@ components:
     OuderInOnderzoek:
       type: "object"
       description: "Indicators over het in onderzoek zijn van gegevens over de aangaan\
-        \ van het huwelijk van de INGESCHREVEN PERSOON."
+        \ van het huwelijk van de INGESCHREVEN PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
       properties:
         burgerservicenummer:
           type: "boolean"
@@ -1446,7 +1454,7 @@ components:
     GeboorteInOnderzoek:
       type: "object"
       description: "Indicators over het in onderzoek zijn van gegevens over de geboorte\
-        \ van de INGESCHREVEN NATUURLIJK PERSOON."
+        \ van de INGESCHREVEN NATUURLIJK PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
       properties:
         datum:
           type: "boolean"
@@ -1519,7 +1527,7 @@ components:
         - $ref: "#/components/schemas/Naam"
         - type: "object"
           description: "De naamgegevens waarmee de persoon heeft aangegeven aangeschreven\
-        \ te willen worden"
+               \ te willen worden"
           properties:
             aanduidingNaamgebruik:
               $ref: "#/components/schemas/Naamgebruik_enum"
@@ -1528,7 +1536,7 @@ components:
               title: "aanschrijfwijze"
               description: "| Samengestelde naam zoals die in communicatie met de persoon\
                 \ gebruikt kan worden. Hoe het samenstellen van een aanschrijfwijze te\
-                \ werk gaat is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanschrijfwijze.feature)"
+                \ werk gaat is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen    -ingeschreven-personen/blob/master/features/aanschrijfwijze.feature)"
               maxLength: 50
               example: "P.J. graaf de Vries- van der Zon"
     PersoonInOnderzoek:
@@ -1597,14 +1605,14 @@ components:
           title: "nationaliteit"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        redenOpnameNationaliteit:
+        redenOpname:
           type: "boolean"
-          title: "redenOpnameNationaliteit"
+          title: "redenOpname"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        redenBeindigenNationaliteit:
+        redenBeindigen:
           type: "boolean"
-          title: "redenBeëindigenNationaliteit"
+          title: "redenBeëindigen"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
@@ -1663,13 +1671,13 @@ components:
         land:
           $ref: "#/components/schemas/Land_tabel"
         registergemeenteAkte:
-          $ref: "#/components/schemas/Gemeenten"
+          $ref: "#/components/schemas/Gemeenten_tabel"
         inOnderzoek:
           $ref: "#/components/schemas/OverlijdenInOnderzoek"
     OverlijdenInOnderzoek:
       type: "object"
       description: "In onderzoek indicators voor gegevens over het overlijden van\
-        \ de ingeschreven natuurlijk persoon."
+        \ de ingeschreven natuurlijk persoon. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
       properties:
         datum:
           type: "boolean"
@@ -1689,7 +1697,7 @@ components:
     KindInOnderzoek:
       type: "object"
       description: "Indicators over het in onderzoek zijn van gegevens over de aangaan\
-        \ van het huwelijk van de INGESCHREVEN PERSOON."
+        \ van het huwelijk van de INGESCHREVEN PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
       properties:
         burgerservicenummer:
           type: "boolean"
@@ -1704,7 +1712,7 @@ components:
     PartnerInOnderzoek:
       type: "object"
       description: "Indicators over het in onderzoek zijn van gegevens over de aangaan\
-        \ van het huwelijk van de INGESCHREVEN PERSOON."
+        \ van het huwelijk van de INGESCHREVEN PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
       properties:
         burgerservicenummer:
           type: "boolean"
@@ -1748,7 +1756,7 @@ components:
     OntbindingHuwelijkInOnderzoek:
       type: "object"
       description: "Indicators over het in onderzoek zijn van gegevens over de aangaan\
-        \ van het huwelijk van de INGESCHREVEN PERSOON."
+        \ van het huwelijk van de INGESCHREVEN PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
       properties:
         datum:
           type: "boolean"
@@ -1793,7 +1801,7 @@ components:
     AangaanHuwelijkInOnderzoek:
       type: "object"
       description: "Indicators over het in onderzoek zijn van gegevens over de aangaan\
-        \ van het huwelijk van de INGESCHREVEN PERSOON."
+        \ van het huwelijk van de INGESCHREVEN PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
       properties:
         datum:
           type: "boolean"
@@ -1979,12 +1987,12 @@ components:
         datumIngangGeldigheid:
           $ref: "#/components/schemas/Datum_onvolledig"
         gemeenteVanInschrijving:
-          $ref: "#/components/schemas/Gemeenten"
+          $ref: "#/components/schemas/Gemeenten_tabel"
         datumVestigingInNederland:
           $ref: "#/components/schemas/Datum_onvolledig"
         datumAanvangAdreshouding:
           $ref: "#/components/schemas/Datum_onvolledig"
-        geldigTotEnMet:
+        datumEindeGeldigheid:
           $ref: "#/components/schemas/Datum_onvolledig"
         datumInschrijvingInGemeente:
           $ref: "#/components/schemas/Datum_onvolledig"
@@ -2044,7 +2052,10 @@ components:
         \ adres van de INGESCHREVEN NATUURLIJK PERSOON in onderzoek zijn. Elementen\
         \ van het GBA-adres zelf (Dat zou eigenlijk een BAG-adres moeten zijn) kunnen\
         \ niet in onderzoek zijn. Wel de relatie naar de nummeraanduding. Dat wordt\
-        \ gedaan door de identificatiecodeNummeraanduiding in onderzoek te zetten."
+        \ gedaan door de identificatiecodeNummeraanduiding in onderzoek te zetten.\
+        \ Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
+      required:
+      - "datumIngangGeldigheid"
       properties:
         functieAdres:
           type: "boolean"
@@ -2065,6 +2076,10 @@ components:
           type: "boolean"
           title: "datumAanvangAdreshouding"
           description: ""
+        datumEindeGeldigheid:
+          type: "boolean"
+          title: "datumEindeGeldigheid"
+          description: ""
         datumIngangOnderzoek:
           type: "string"
           title: "datumIngangOnderzoek"
@@ -2072,10 +2087,6 @@ components:
             \ of de strijdigheid met de openbare orde is gestart."
           format: "date"
           example: "20190201"
-        geldigTotEnMet:
-          type: "boolean"
-          title: "geldigTotEnMet"
-          description: ""
         datumEindeOnderzoek:
           type: "string"
           title: "datumEindeOnderzoek"
@@ -2087,15 +2098,19 @@ components:
           type: "boolean"
           title: "datumInschrijvingInGemeente"
           description: ""
-        veblijfBuitenland:
+        verblijfBuitenland:
           type: "boolean"
-          title: "veblijfBuitenland"
+          title: "verblijfBuitenland"
           description: ""
         landVanWaarIngeschreven:
           type: "boolean"
           title: "landVanWaarIngeschreven"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        datumIngangGeldigheid:
+          type: "boolean"
+          title: "datumIngangGeldigheid"
+          description: ""
         datumVestigingInNederland:
           type: "boolean"
           title: "datumVestigingInNederland"
@@ -2260,7 +2275,7 @@ components:
           format: "date_mday"
           pattern: "^99$"
           maxLength: 2
-    Gemeenten:
+    Gemeenten_tabel:
       type: "object"
       description: "Gemeentetabel 33 conform LO GBA"
       properties:
@@ -2327,12 +2342,12 @@ components:
         \ aangeeft welke nationaliteit de ingeschrevene bezit."
       properties:
         code:
-          type: "integer"
+          type: "string"
           title: "Nationaliteitcode"
           description: "Een code die aangeeft welke nationaliteit de ingeschrevene\
             \ bezit. Een code, opgenomen in Tabel 32, Nationaliteitentabel, die aangeeft\
             \ welke nationaliteit de ingeschrevene bezit. Zie het LO GBA"
-          maximum: 9999
+          maxLength: 4
         omschrijving:
           type: "string"
           title: "Officiële omschrijving nationaliteit"
@@ -2354,11 +2369,11 @@ components:
         \ met hun codes, omschrijvingen, soorten en geldigheidstermijnen."
       properties:
         redenOpnemen_beeindigenNationaliteit:
-          type: "integer"
+          type: "string"
           title: "Reden opnemen/beëindigen nationaliteit"
           description: "Het identificerende nummer van de reden van het opnemen/beë\
             indigen van de Nederlandse nationaliteit"
-          maximum: 999
+          maxLength: 3
         omschrijvingOpnemen_beeindigenNationaliteit:
           type: "string"
           title: "Omschrijving opnemen/beëindigen nationaliteit"
