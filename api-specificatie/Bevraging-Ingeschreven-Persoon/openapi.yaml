@@ -1,13 +1,14 @@
 ﻿openapi: 3.0.0
 servers:
+# Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/VNGRealisatie/Bevraging-ingeschreven-persoon/1.0.0
   - description: "SwaggerHub API Auto Mocking"
     url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bevragingen_ingeschreven_personen/v1
-  - description: "Referentie-implementatie"
-    url: https://www.voorbeeldgemeente.nl/api/bevragingen_ingeschreven_personen/v1
 info:
   title: Bevragingen ingeschreven personen
   description: "API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. Ook de gegevens over reisdocumenten worden via deze API ontsloten. Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting."
-  version: "1.0"
+  version: "1.0.0"
   contact:
     url: https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen
   license:
@@ -49,7 +50,7 @@ paths:
         De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters.
 
 
-        Default levert een zoekvraag alleen personen op die nog in leven zijn. Indien **_inclusiefverledenpersonen_** de waarde **_true_** heeft worden [overleden personen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) opgenomen in het zoekresultaat.
+        Default levert een zoekvraag alleen personen op die nog in leven zijn. Indien **_inclusiefoverledenpersonen_** de waarde **_true_** heeft worden [overleden personen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) opgenomen in het zoekresultaat.
 
 
         Het maximale aantal zoekresultaten dat geretourneerd wordt is aan de provider om te bepalen. Als het resultaat van de de request dit aantal overtreft worden er geen resultaten geretourneerd en volgt er een foutmelding.
@@ -63,14 +64,6 @@ paths:
           required: false
           schema:
             type: string
-            example: kinderen,adressen.postcode,adressen.huisnummer
-        - in: query
-          name: fields
-          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature)"
-          required: false
-          schema:
-            type: string
-            example: id,onderwerp,aanvrager,wijzig_datum
         - in: query
           name: geboorte__datum
           description: "Datum waarop de INGESCHREVEN NATUURLIJK PERSOON geboren is. Er kan alleen gezocht worden met een volledige geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature)"
@@ -78,7 +71,7 @@ paths:
           schema:
             type: string
             format: date
-          example: 24-09-1964
+            example: 24-09-1964
         - in: query
           name: naam__voornamen
           description: "De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. * Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.**"
@@ -86,7 +79,7 @@ paths:
           schema:
             type: string
             maxLength: 200
-          example: Dirk
+            example: Dirk
         - in: query
           name: verblijfplaats__huisletter
           description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende toevoeging aan een huisnummer in de vorm van een alfanumeriek teken. Dit attribuutsoort is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING. Het is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting in de BAG."
@@ -94,7 +87,7 @@ paths:
           schema:
             type: string
             maxLength: 1
-          example: a
+            example: a
         - in: query
           name: verblijfplaats__identificatiecodenummeraanduiding
           description: "De unieke aanduiding van een NUMMERAANDUIDING. zie toelichting BAG Combinatie van de viercijferige 'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding."
@@ -102,7 +95,7 @@ paths:
           schema:
             type: string
             maxLength: 16
-          example: 0518200000366054
+            example: 0518200000366054
         - in: query
           name: geboorte__plaats
           description: ""
@@ -110,7 +103,7 @@ paths:
           schema:
             type: string
             maxLength: 40
-          example: Utrecht
+            example: Utrecht
         - in: query
           name: geslachtsaanduiding
           description: "Een aanduiding die aangeeft dat de ingeschrevene een man of een vrouw is, of dat het geslacht (nog) onbekend is."
@@ -123,7 +116,8 @@ paths:
           required: false
           schema:
             type: integer
-          example: 14
+            maximum: 99999
+            example: 14
         - in: query
           name: verblijfplaats__huisnummertoevoeging
           description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter. Dit attribuutsoort is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING. Het is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting in de BAG. a - z , A - Z , 0 – 9"
@@ -131,7 +125,7 @@ paths:
           schema:
             type: string
             maxLength: 4
-          example: bis
+            example: bis
         - in: query
           name: naam__geslachtsnaam
           description: "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)**"
@@ -139,7 +133,7 @@ paths:
           schema:
             type: string
             maxLength: 200
-          example: Vries
+            example: Vries
         - in: query
           name: verblijfplaats__naamopenbareruimte
           description: "Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** Zie verder de toelichting in de BAG. Tekens gecodeerd volgens de UTF-8 standaard"
@@ -147,7 +141,7 @@ paths:
           schema:
             type: string
             maxLength: 80
-          example: Tulpstraat
+            example: Tulpstraat
         - in: query
           name: verblijfplaats__postcode
           description: "De door PostNL vastgestelde code behorende bij een bepaalde combinatie van een naam van een woonplaats, naam van een openbare ruimte en een huisnummer Dit attribuutsoort is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING. Het is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting in de BAG."
@@ -155,14 +149,28 @@ paths:
           schema:
             type: string
             pattern: ^[1-9]{1}[0-9]{3}[A-Z]{2}
-          example: 2341SX
+            example: 2341SX
         - in: query
           name: inclusiefoverledenpersonen
           description: "Indien in het antwoord op de zoekvraag ook overleden personen moeten worden geretourneerd, dan dient de parameter *inclusiefOverledenPersonen* opgenomen te zijn met de waarde _True_. Indien de parameter *inclusiefOverledenPersonen* ontbreekt of de waarde _False_ heeft worden geen overleden personen opgenomen in het zoekresultaat. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature)"
           required: false
           schema:
             type: boolean
-          example: false
+            example: false
+        - in: query
+          name: fields
+          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature)"
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: voorvoegsel
+          description: "Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam. Element 02.30 Dat deel van de geslachtsnaam dat voorkomt in Tabel 36, Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam."
+          required: false
+          schema:
+            type: string
+            maxLength: 10
+            example: de
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -258,20 +266,7 @@ paths:
       operationId: ingeschrevenpersonenBurgerservicenummer
       description: "Het ophalen de actuele gegevens van een Ingeschreven Persoon, inclusief verblijfplaats, kinderen, partners en ouders. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen."
       parameters: 
-        - in: query
-          name: expand
-          description: "Hier kan aangegeven worden welke gerelateerde resources meegeladen moeten worden. Resources en velden van resources die gewenst zijn kunnen in de expand parameter kommagescheiden worden opgegeven. Specifieke velden van resource kunnen worden opgegeven door het opgeven van de resource-naam gevolgd door de veldnaam, met daartussen een punt. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/expand.feature)"
-          required: false
-          schema:
-            type: string
-            example: kinderen,adressen.postcode,adressen.huisnummer
-        - in: query
-          name: fields
-          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature)"
-          required: false
-          schema:
-            type: string
-            example: id,onderwerp,aanvrager,wijzig_datum
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/parameters.yaml#/expand"
         - in: path
           name: burgerservicenummer
           description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Elk ingeschreven natuurlijk persoon heeft een BSN, een nummer dat de natuurlijk persoon uniek identificeert in overheidsadministraties. De attribuutsoort kent onder meer historie omdat het mogelijk is dat het Burgerservicenummer van een natuurlijk persoon wijzigt, met name vanwege ambtelijke correcties. Zie verder de toelichting in de GBA Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
@@ -364,13 +359,6 @@ paths:
       operationId: ingeschrevenpersonenBurgerservicenummerkinderenUuid
       description: "Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen."
       parameters: 
-        - in: query
-          name: fields
-          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature)"
-          required: false
-          schema:
-            type: string
-            example: id,onderwerp,aanvrager,wijzig_datum
         - in: path
           name: burgerservicenummer
           description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Elk ingeschreven natuurlijk persoon heeft een BSN, een nummer dat de natuurlijk persoon uniek identificeert in overheidsadministraties. De attribuutsoort kent onder meer historie omdat het mogelijk is dat het Burgerservicenummer van een natuurlijk persoon wijzigt, met name vanwege ambtelijke correcties. Zie verder de toelichting in de GBA Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
@@ -470,13 +458,6 @@ paths:
       operationId: ingeschrevenpersonenBurgerservicenummerkinderen
       description: "Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats."
       parameters: 
-        - in: query
-          name: fields
-          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature)"
-          required: false
-          schema:
-            type: string
-            example: id,onderwerp,aanvrager,wijzig_datum
         - in: path
           name: burgerservicenummer
           description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Elk ingeschreven natuurlijk persoon heeft een BSN, een nummer dat de natuurlijk persoon uniek identificeert in overheidsadministraties. De attribuutsoort kent onder meer historie omdat het mogelijk is dat het Burgerservicenummer van een natuurlijk persoon wijzigt, met name vanwege ambtelijke correcties. Zie verder de toelichting in de GBA Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
@@ -579,13 +560,6 @@ paths:
       operationId: ingeschrevenpersonenBurgerservicenummeroudersUuid
       description: "Het ophalen de ouder-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.."
       parameters: 
-        - in: query
-          name: fields
-          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature)"
-          required: false
-          schema:
-            type: string
-            example: id,onderwerp,aanvrager,wijzig_datum
         - in: path
           name: burgerservicenummer
           description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Elk ingeschreven natuurlijk persoon heeft een BSN, een nummer dat de natuurlijk persoon uniek identificeert in overheidsadministraties. De attribuutsoort kent onder meer historie omdat het mogelijk is dat het Burgerservicenummer van een natuurlijk persoon wijzigt, met name vanwege ambtelijke correcties. Zie verder de toelichting in de GBA Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
@@ -685,13 +659,6 @@ paths:
       operationId: ingeschrevenpersonenBurgerservicenummerouders
       description: "Het ophalen de ouder-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats."
       parameters: 
-        - in: query
-          name: fields
-          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature)"
-          required: false
-          schema:
-            type: string
-            example: id,onderwerp,aanvrager,wijzig_datum
         - in: path
           name: burgerservicenummer
           description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Elk ingeschreven natuurlijk persoon heeft een BSN, een nummer dat de natuurlijk persoon uniek identificeert in overheidsadministraties. De attribuutsoort kent onder meer historie omdat het mogelijk is dat het Burgerservicenummer van een natuurlijk persoon wijzigt, met name vanwege ambtelijke correcties. Zie verder de toelichting in de GBA Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
@@ -794,13 +761,6 @@ paths:
       operationId: ingeschrevenpersonenBurgerservicenummerpartnersUuid
       description: "Het ophalen de partner-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen."
       parameters: 
-        - in: query
-          name: fields
-          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature)"
-          required: false
-          schema:
-            type: string
-            example: id,onderwerp,aanvrager,wijzig_datum
         - in: path
           name: burgerservicenummer
           description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Elk ingeschreven natuurlijk persoon heeft een BSN, een nummer dat de natuurlijk persoon uniek identificeert in overheidsadministraties. De attribuutsoort kent onder meer historie omdat het mogelijk is dat het Burgerservicenummer van een natuurlijk persoon wijzigt, met name vanwege ambtelijke correcties. Zie verder de toelichting in de GBA Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
@@ -900,13 +860,6 @@ paths:
       operationId: ingeschrevenpersonenBurgerservicenummerpartners
       description: "Het ophalen de actuele partner-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet opgenomen in het antwoord. De gevonden huwelijken/partnerschappen worden ongesorteerd teruggegeven."
       parameters: 
-        - in: query
-          name: fields
-          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature)"
-          required: false
-          schema:
-            type: string
-            example: id,onderwerp,aanvrager,wijzig_datum
         - in: path
           name: burgerservicenummer
           description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Elk ingeschreven natuurlijk persoon heeft een BSN, een nummer dat de natuurlijk persoon uniek identificeert in overheidsadministraties. De attribuutsoort kent onder meer historie omdat het mogelijk is dat het Burgerservicenummer van een natuurlijk persoon wijzigt, met name vanwege ambtelijke correcties. Zie verder de toelichting in de GBA Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
@@ -1009,13 +962,6 @@ paths:
       operationId: reisdocumentenReisdocumentnummer
       description: "Het ophalen van de gegevens van een REISDOCUMENT op basis van het reisdocumentnummer."
       parameters: 
-        - in: query
-          name: fields
-          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature)"
-          required: false
-          schema:
-            type: string
-            example: id,onderwerp,aanvrager,wijzig_datum
         - in: path
           name: reisdocumentnummer
           description: "Het nummer van het verstrekte Nederlandse reisdocument."
@@ -1136,23 +1082,28 @@ components:
           description: "Het administratienummer van de persoon, bedoeld in de Wet\
             \ BRP Element 01.10 Het administratienummer, bedoeld in artikel 4.9 van\
             \ de Wet BRP. zie GBA"
+          maximum: 9.999999999E9
           example: "876352431"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
         indicatieGeheim:
           $ref: "#/components/schemas/IndicatieGeheim_enum"
+        aktenummer:
+          type: "string"
+          title: "aktenummer"
+          description: "Element 81.20 Een aanduiding van de akte die is opgenomen\
+            \ in de registers van de burgerlijke stand in Nederland. De eerste drie\
+            \ posities van het aktenummer dienen conform [Tabel 39,Tabel Akteaanduiding](https://publicaties.rvig.nl/dsresource?objectid=4796&amp;type=org)\
+            \ te zijn. De laatste 4 posities bevatten een volgnummer van de akte."
+          maxLength: 7
         redenOpschortingBijhouding:
           $ref: "#/components/schemas/RedenOpschortingBijhouding_enum"
-        gemeenteWaarPK:
-          $ref: "#/components/schemas/Gemeenten"
         datumEersteInschrijvingGBA:
           $ref: "#/components/schemas/Datum_onvolledig"
-        datumVestigingInNederland:
-          $ref: "#/components/schemas/Datum_onvolledig"
+        registergemeenteAkte:
+          $ref: "#/components/schemas/Gemeenten"
         datumOpschortingBijhouding:
           $ref: "#/components/schemas/Datum_onvolledig"
-        landVanwaarIngeschreven:
-          $ref: "#/components/schemas/Land_tabel"
         kiesrecht:
           $ref: "#/components/schemas/Kiesrecht"
         naamPersoon:
@@ -1205,13 +1156,24 @@ components:
           description: "Het administratienummer van de persoon, bedoeld in de Wet\
             \ BRP Element 01.10 Het administratienummer, bedoeld in artikel 4.9 van\
             \ de Wet BRP. zie GBA"
+          maximum: 9.999999999E9
           example: "876352431"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
         ouder_aanduiding:
           $ref: "#/components/schemas/OuderAanduiding_enum"
+        aktenummer:
+          type: "string"
+          title: "aktenummer"
+          description: "Element 81.20 Een aanduiding van de akte die is opgenomen\
+            \ in de registers van de burgerlijke stand in Nederland. De eerste drie\
+            \ posities van het aktenummer dienen conform [Tabel 39,Tabel Akteaanduiding](https://publicaties.rvig.nl/dsresource?objectid=4796&amp;type=org)\
+            \ te zijn. De laatste 4 posities bevatten een volgnummer van de akte."
+          maxLength: 7
         datumVan:
           $ref: "#/components/schemas/Datum_onvolledig"
+        registergemeenteAkte:
+          $ref: "#/components/schemas/Gemeenten"
         naam:
           $ref: "#/components/schemas/Naam"
         inOnderzoek:
@@ -1248,7 +1210,18 @@ components:
           description: "Het administratienummer van de persoon, bedoeld in de Wet\
             \ BRP Element 01.10 Het administratienummer, bedoeld in artikel 4.9 van\
             \ de Wet BRP. zie GBA"
+          maximum: 9.999999999E9
           example: "876352431"
+        aktenummer:
+          type: "string"
+          title: "aktenummer"
+          description: "Element 81.20 Een aanduiding van de akte die is opgenomen\
+            \ in de registers van de burgerlijke stand in Nederland. De eerste drie\
+            \ posities van het aktenummer dienen conform [Tabel 39,Tabel Akteaanduiding](https://publicaties.rvig.nl/dsresource?objectid=4796&amp;type=org)\
+            \ te zijn. De laatste 4 posities bevatten een volgnummer van de akte."
+          maxLength: 7
+        registergemeenteAkte:
+          $ref: "#/components/schemas/Gemeenten"
         inOnderzoek:
           $ref: "#/components/schemas/KindInOnderzoek"
         naam:
@@ -1288,9 +1261,20 @@ components:
           description: "Het administratienummer van de persoon, bedoeld in de Wet\
             \ BRP Element 01.10 Het administratienummer, bedoeld in artikel 4.9 van\
             \ de Wet BRP. zie GBA"
+          maximum: 9.999999999E9
           example: "876352431"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
+        aktenummer:
+          type: "string"
+          title: "aktenummer"
+          description: "Element 81.20 Een aanduiding van de akte die is opgenomen\
+            \ in de registers van de burgerlijke stand in Nederland. De eerste drie\
+            \ posities van het aktenummer dienen conform [Tabel 39,Tabel Akteaanduiding](https://publicaties.rvig.nl/dsresource?objectid=4796&amp;type=org)\
+            \ te zijn. De laatste 4 posities bevatten een volgnummer van de akte."
+          maxLength: 7
+        registergemeenteAkte:
+          $ref: "#/components/schemas/Gemeenten"
         naam:
           $ref: "#/components/schemas/Naam"
         geboorte:
@@ -1337,7 +1321,7 @@ components:
           $ref: "#/components/schemas/Datum_onvolledig"
         datumInhoudingOfVermissing:
           $ref: "#/components/schemas/Datum_onvolledig"
-        inOnderzoek:
+        reisdocumentInOnderzoek:
           $ref: "#/components/schemas/ReisdocumentInOnderzoek"
         _links:
           $ref: "#/components/schemas/Reisdocument_links"
@@ -1364,7 +1348,15 @@ components:
           maxLength: 200
           example: "Vries"
         voorvoegsel:
-          $ref: "#/components/schemas/Voorvoegsel_tabel"
+          type: "string"
+          title: "Voorvoegsel"
+          description: "Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel\
+            \ en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam.\
+            \ Element 02.30 Dat deel van de geslachtsnaam dat voorkomt in Tabel 36,\
+            \ Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de\
+            \ rest van de geslachtsnaam."
+          maxLength: 10
+          example: "de"
         adellijkeTitel_predikaat:
           $ref: "#/components/schemas/AdellijkeTitel_predikaat_tabel"
         inOnderzoek:
@@ -1449,7 +1441,7 @@ components:
           $ref: "#/components/schemas/Datum_onvolledig"
         land:
           $ref: "#/components/schemas/Land_tabel"
-        geboorteInOnderzoek:
+        inOnderzoek:
           $ref: "#/components/schemas/GeboorteInOnderzoek"
     GeboorteInOnderzoek:
       type: "object"
@@ -1474,8 +1466,6 @@ components:
     Kiesrecht:
       type: "object"
       description: "Categorie 13 Gegevens over het kiesrecht van de ingeschrevene."
-      required:
-      - "einddatumUitsluitingKiesrecht"
       properties:
         aanduidingEuropeesKiesrecht:
           $ref: "#/components/schemas/AanduidingEuropeesKiesrecht_enum"
@@ -1525,11 +1515,13 @@ components:
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
     NaamPersoon:
-      allOf: 
+      allOf:
         - $ref: "#/components/schemas/Naam"
-        - type: object
+        - type: "object"
+          description: "De naamgegevens waarmee de persoon heeft aangegeven aangeschreven\
+        \ te willen worden"
           properties:
-            aanduidingAanschrijving:
+            aanduidingNaamgebruik:
               $ref: "#/components/schemas/Naamgebruik_enum"
             aanschrijfwijze:
               type: "string"
@@ -1546,9 +1538,6 @@ components:
         \ Als een hele categorie in onderzoek is worden alle rubrieken binnen die\
         \ categorie op _true_ gezet. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)\
         \ ."
-      required:
-      - "datumOpschortingBijhouding"
-      - "landVanWaarIngeschreven"
       properties:
         burgerservicenummer:
           type: "boolean"
@@ -1565,11 +1554,6 @@ components:
           title: "datumOpschortingBijhouding"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        landVanWaarIngeschreven:
-          type: "boolean"
-          title: "landVanWaarIngeschreven"
-          description: "Indicator die aangeeft of het corresponderende gegeven voor\
-            \ deze persoon in onderzoek is."
         indicatieGeheim:
           type: "boolean"
           title: "indicatieGeheim"
@@ -1578,11 +1562,6 @@ components:
         datumEersteInschrijvingGBA:
           type: "boolean"
           title: "datumEersteInschrijvingGBA"
-          description: "Indicator die aangeeft of het corresponderende gegeven voor\
-            \ deze persoon in onderzoek is."
-        datumVestigingInNederland:
-          type: "boolean"
-          title: "datumVestigingInNederland"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         redenOpschortingBijhouding:
@@ -1603,6 +1582,8 @@ components:
           $ref: "#/components/schemas/RedenVerkrijgingOpnemen_beeindigenNationaliteit_tabel"
         redenBeeindigen:
           $ref: "#/components/schemas/RedenVerkrijgingOpnemen_beeindigenNationaliteit_tabel"
+        datumIngangGeldigheid:
+          $ref: "#/components/schemas/Datum_onvolledig"
         inOnderzoek:
           $ref: "#/components/schemas/NationaliteitInOnderzoek"
     NationaliteitInOnderzoek:
@@ -1626,11 +1607,25 @@ components:
           title: "redenBeëindigenNationaliteit"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        datumIngangOnderzoek:
+          type: "string"
+          title: "datumIngangOnderzoek"
+          description: "Element 83.20 De datum waarop een onderzoek inzake de onjuistheid\
+            \ of de strijdigheid met de openbare orde is gestart."
+          format: "date"
+          example: "20190201"
         aanduidingBijzonderNederlanderschap:
           type: "boolean"
           title: "aanduidingBijzonderNederlanderschap"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        datumEindeOnderzoek:
+          type: "string"
+          title: "datumEindeOnderzoek"
+          description: "Element 83.30 De datum waarop een onderzoek inzake de onjuistheid\
+            \ of de strijdigheid met de openbare orde is beëindigd."
+          format: "date"
+          example: "20190202"
     Overlijden:
       type: "object"
       description: "Gegevens over het overlijden van de ingeschreven natuurlijk persoon.\
@@ -1655,10 +1650,20 @@ components:
             \ '0000' indien onbekend."
           maxLength: 40
           example: "Waddinxveen"
+        aktenummer:
+          type: "string"
+          title: "aktenummer"
+          description: "Element 81.20 Een aanduiding van de akte die is opgenomen\
+            \ in de registers van de burgerlijke stand in Nederland. De eerste drie\
+            \ posities van het aktenummer dienen conform [Tabel 39,Tabel Akteaanduiding](https://publicaties.rvig.nl/dsresource?objectid=4796&amp;type=org)\
+            \ te zijn. De laatste 4 posities bevatten een volgnummer van de akte."
+          maxLength: 7
         datum:
           $ref: "#/components/schemas/Datum_onvolledig"
         land:
           $ref: "#/components/schemas/Land_tabel"
+        registergemeenteAkte:
+          $ref: "#/components/schemas/Gemeenten"
         inOnderzoek:
           $ref: "#/components/schemas/OverlijdenInOnderzoek"
     OverlijdenInOnderzoek:
@@ -1832,8 +1837,6 @@ components:
         \ een andere bron toch beschikken over een woonadres. Vandaar dat met de attribuutsoort\
         \ Adresherkomst wordt aangegeven of het verblijfadres al dan niet als authentieke\
         \ bron de BRP heeft. Zie ook de toelichting bij laatstgenoemd attribuutsoort."
-      required:
-      - "datumInschrijvingInGemeente"
       properties:
         functieAdres:
           $ref: "#/components/schemas/SoortAdres_enum"
@@ -1889,6 +1892,7 @@ components:
             \ is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven\
             \ beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting\
             \ in de BAG. Alle natuurlijke getallen tussen 1 en 99999."
+          maximum: 99999
           example: "23"
         locatiebeschrijving:
           type: "string"
@@ -1959,12 +1963,33 @@ components:
             \ Zie verder de toelichting in de BAG."
           pattern: "^[1-9]{1}[0-9]{3}[A-Z]{2}$"
           example: "2571CC"
+        straatnaam:
+          type: "string"
+          title: "Straatnaam"
+          description: "De officiële straatnaam zoals door het bevoegd gemeentelijk\
+            \ orgaan is vastgesteld, zo nodig ingekort conform de specificaties van\
+            \ de NEN 5825. Voor straatnamen langer dan 24 posities gelden inkortingsregels.\
+            \ Hiervoor wordt NEN 5825 (versie 2002) gevolgd. De hier gehanteerde schrijfwijze\
+            \ kan afwijken van de POSTNL-schrijfwijze. alle alfanumrieke tekens"
+          maxLength: 24
+        aanduidingBijHuisnummer:
+          $ref: "#/components/schemas/AanduidingBijHuisnummer_enum"
+        indicatieOnjuist:
+          $ref: "#/components/schemas/IndicatieOnjuist_enum"
+        datumIngangGeldigheid:
+          $ref: "#/components/schemas/Datum_onvolledig"
+        gemeenteVanInschrijving:
+          $ref: "#/components/schemas/Gemeenten"
+        datumVestigingInNederland:
+          $ref: "#/components/schemas/Datum_onvolledig"
         datumAanvangAdreshouding:
           $ref: "#/components/schemas/Datum_onvolledig"
         geldigTotEnMet:
           $ref: "#/components/schemas/Datum_onvolledig"
         datumInschrijvingInGemeente:
           $ref: "#/components/schemas/Datum_onvolledig"
+        landVanwaarIngeschreven:
+          $ref: "#/components/schemas/Land_tabel"
         verblijfBuitenland:
           $ref: "#/components/schemas/VerblijfBuitenland"
         inOnderzoek:
@@ -2016,11 +2041,10 @@ components:
     VerblijfplaatsInOnderzoek:
       type: "object"
       description: "Indicators om aan te geven dat de gegevens over het verblijf en\
-        \ adres van de INGESCHREVEN NATUURLIJK PERSOON in onderzoek zijn."
-      required:
-      - "datumAanvangAdreshouding"
-      - "geldigTotEnMet"
-      - "datumInschrijvingInGemeente"
+        \ adres van de INGESCHREVEN NATUURLIJK PERSOON in onderzoek zijn. Elementen\
+        \ van het GBA-adres zelf (Dat zou eigenlijk een BAG-adres moeten zijn) kunnen\
+        \ niet in onderzoek zijn. Wel de relatie naar de nummeraanduding. Dat wordt\
+        \ gedaan door de identificatiecodeNummeraanduiding in onderzoek te zetten."
       properties:
         functieAdres:
           type: "boolean"
@@ -2041,14 +2065,42 @@ components:
           type: "boolean"
           title: "datumAanvangAdreshouding"
           description: ""
+        datumIngangOnderzoek:
+          type: "string"
+          title: "datumIngangOnderzoek"
+          description: "Element 83.20 De datum waarop een onderzoek inzake de onjuistheid\
+            \ of de strijdigheid met de openbare orde is gestart."
+          format: "date"
+          example: "20190201"
         geldigTotEnMet:
           type: "boolean"
           title: "geldigTotEnMet"
           description: ""
+        datumEindeOnderzoek:
+          type: "string"
+          title: "datumEindeOnderzoek"
+          description: "Element 83.30 De datum waarop een onderzoek inzake de onjuistheid\
+            \ of de strijdigheid met de openbare orde is beëindigd."
+          format: "date"
+          example: "20190202"
         datumInschrijvingInGemeente:
           type: "boolean"
           title: "datumInschrijvingInGemeente"
           description: ""
+        veblijfBuitenland:
+          type: "boolean"
+          title: "veblijfBuitenland"
+          description: ""
+        landVanWaarIngeschreven:
+          type: "boolean"
+          title: "landVanWaarIngeschreven"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        datumVestigingInNederland:
+          type: "boolean"
+          title: "datumVestigingInNederland"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
     Gezagsverhouding:
       type: "object"
       description: "Categorie 11 Gegevens betreffende het gezag over de ingeschrevene."
@@ -2060,6 +2112,7 @@ components:
           title: "indicatieCurateleRegister"
           description: "Element 33.10 Een aanduiding dat de ingeschrevene onder curatele\
             \ is gesteld."
+          maximum: 9
           example: "1"
         indicatieGezagMinderjarige:
           $ref: "#/components/schemas/IndicatieGezagMinderjarige_enum"
@@ -2070,8 +2123,6 @@ components:
       description: "Een groep van booleans om aan te geven welke gegevens van de gezagsverhouding\
         \ in onderzoek zijn. Als een de categorie in onderzoek is worden alle rubrieken\
         \ binnen die categorie op _true_ gezet. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
-      required:
-      - "indicatieGezagMinderjarige"
       properties:
         indicatieCurateleRegister:
           type: "boolean"
@@ -2115,6 +2166,20 @@ components:
           title: "datumEinde"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze verblijfstitel in onderzoek is."
+        datumIngangOnderzoek:
+          type: "string"
+          title: "datumIngangOnderzoek"
+          description: "Element 83.20 De datum waarop een onderzoek inzake de onjuistheid\
+            \ of de strijdigheid met de openbare orde is gestart."
+          format: "date"
+          example: "20190201"
+        datumEindeOnderzoek:
+          type: "string"
+          title: "datumEindeOnderzoek"
+          description: "Element 83.30 De datum waarop een onderzoek inzake de onjuistheid\
+            \ of de strijdigheid met de openbare orde is beëindigd."
+          format: "date"
+          example: "20190202"
     ReisdocumentInOnderzoek:
       type: "object"
       description: "Een groep van booleans om aan te geven welke gegevens van het\
@@ -2184,6 +2249,7 @@ components:
           title: "maand"
           description: "De maand. Als de maand van een datum bekend is wordt deze\
             \ hier ingevuld. Ook als de volledige datum is ingevuld."
+          format: "date_month"
           pattern: "^99$"
           maxLength: 2
         dag:
@@ -2191,6 +2257,7 @@ components:
           title: "dag"
           description: "De dag. Als de dag van de datum bekend is wordt deze hier\
             \ ingevuld. Ook als de volledige datum bekend is."
+          format: "date_mday"
           pattern: "^99$"
           maxLength: 2
     Gemeenten:
@@ -2210,39 +2277,6 @@ components:
           description: ""
           maxLength: 80
           example: "Nederland"
-    Land_tabel:
-      type: "object"
-      description: "Een opsomming van alle huidige en voormalige landen met hun codes,\
-        \ namen en geldigheidstermijnen. Een waarde uit GBA Tabel34 Landentabel. Deze\
-        \ tabel bevat een opsomming van alle huidige en voormalige landen met hun\
-        \ codes, namen en geldigheidstermijnen."
-      properties:
-        landcode:
-          type: "string"
-          title: "Landcode"
-          description: "De code, behorende bij de landnaam, opgenomen in de Landentabel\
-            \ van de GBA. 0000 en verder alleen natuurlijke getallen zonder voorloopnullen"
-          maxLength: 4
-          example: "6030"
-        landnaam:
-          type: "string"
-          title: "Landnaam"
-          description: "De naam van het land, zoals opgenomen in de Landentabel van\
-            \ de GBA."
-          maxLength: 40
-          example: "Nederland"
-    Voorvoegsel_tabel:
-      type: "object"
-      description: "Een opsomming van de toegestane voorvoegsels. Dat deel van de\
-        \ geslachtsnaam dat voorkomt in Tabel 36, Voorvoegseltabel en, gescheiden\
-        \ door een spatie, vooraf gaat aan de rest van de geslachtsnaam."
-      properties:
-        voorvoegsel:
-          type: "string"
-          title: "Voorvoegsel"
-          description: "Het voorvoegsel"
-          maxLength: 10
-          example: "de"
     AdellijkeTitel_predikaat_tabel:
       type: "object"
       description: "Een opsomming van de adellijke titels en/of predikaten die een\
@@ -2265,6 +2299,27 @@ components:
           example: "Graaf"
         soort:
           $ref: "#/components/schemas/SoortAdellijkeTitel_predikaat_enum"
+    Land_tabel:
+      type: "object"
+      description: "Een opsomming van alle huidige en voormalige landen met hun codes,\
+        \ namen en geldigheidstermijnen. Een waarde uit GBA Tabel34 Landentabel. Deze\
+        \ tabel bevat een opsomming van alle huidige en voormalige landen met hun\
+        \ codes, namen en geldigheidstermijnen."
+      properties:
+        landcode:
+          type: "string"
+          title: "Landcode"
+          description: "De code, behorende bij de landnaam, opgenomen in de Landentabel\
+            \ van de GBA. 0000 en verder alleen natuurlijke getallen zonder voorloopnullen"
+          maxLength: 4
+          example: "6030"
+        landnaam:
+          type: "string"
+          title: "Landnaam"
+          description: "De naam van het land, zoals opgenomen in de Landentabel van\
+            \ de GBA."
+          maxLength: 40
+          example: "Nederland"
     Nationaliteit_tabel:
       type: "object"
       description: "De mogelijk onderscheiden hoedanigheden van tot een bepaalde natie\
@@ -2277,6 +2332,7 @@ components:
           description: "Een code die aangeeft welke nationaliteit de ingeschrevene\
             \ bezit. Een code, opgenomen in Tabel 32, Nationaliteitentabel, die aangeeft\
             \ welke nationaliteit de ingeschrevene bezit. Zie het LO GBA"
+          maximum: 9999
         omschrijving:
           type: "string"
           title: "Officiële omschrijving nationaliteit"
@@ -2302,6 +2358,7 @@ components:
           title: "Reden opnemen/beëindigen nationaliteit"
           description: "Het identificerende nummer van de reden van het opnemen/beë\
             indigen van de Nederlandse nationaliteit"
+          maximum: 999
         omschrijvingOpnemen_beeindigenNationaliteit:
           type: "string"
           title: "Omschrijving opnemen/beëindigen nationaliteit"
@@ -2524,7 +2581,7 @@ components:
       type: "object"
       properties:
         ouders:
-          title: "heeftAlsOuder"
+          title: "heeft als ouder"
           type: "array"
           description: "De ingezetene, zijnde de ouder, waarnaar de KIND-OUDER-RELATIE\
             \ verwijst De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE\
@@ -2533,7 +2590,7 @@ components:
           items:
             $ref: "#/components/schemas/Ouder"
         kinderen:
-          title: "heeftAlsKind"
+          title: "heeft als ouder"
           type: "array"
           description: "De ingezetene, zijnde de ouder, waarnaar de KIND-OUDER-RELATIE\
             \ verwijst De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE\
@@ -2541,7 +2598,7 @@ components:
           items:
             $ref: "#/components/schemas/Kind"
         partners:
-          title: "heeftAlsPartner"
+          title: "heeft als partner"
           type: "array"
           description: "De INGEZETENE(n) bij wie de PARTNER-RELATIE is geregistreerd.\
             \ De actuele bij de ingeschreven persoon geregistreerde huwelijken en\
@@ -2551,7 +2608,7 @@ components:
             $ref: "#/components/schemas/Partner"
     AanduidingEuropeesKiesrecht_enum:
       type: "string"
-      description: ":\n* 1 - persoon is uitgesloten\n* 2 - persoon ontvangt oproep"
+      description: ":\n* `1` - persoon is uitgesloten\n* `2` - persoon ontvangt oproep"
       enum:
       - "1"
       - "2"
@@ -2559,7 +2616,8 @@ components:
       type: "string"
       description: "De mogelijke waarden van de aanduiding van inhouding of vermissing\
         \ van een Nederlands reisdocument. Zie logisch ontwerp BRP bij de stamtabellen:\n\
-        * I - Ingehouden, ingeleverd\n* V - Vermist\n* R - Rechtswege\n* . - Onbekend"
+        * `I` - Ingehouden, ingeleverd\n* `V` - Vermist\n* `R` - Rechtswege\n* `.`\
+        \ - Onbekend"
       enum:
       - "I"
       - "V"
@@ -2567,16 +2625,32 @@ components:
       - "."
     AanduidingBijzonderNederlanderschap_enum:
       type: "string"
-      description: "De aanduiding van het bijzonder Nederlanderschap:\n* B - behandeld\
-        \ als Nederlander\n* V - vastgesteld niet-Nederlander"
+      description: "De aanduiding van het bijzonder Nederlanderschap:\n* `B` - behandeld\
+        \ als Nederlander\n* `V` - vastgesteld niet-Nederlander"
       enum:
       - "B"
       - "V"
+    AanduidingBijHuisnummer_enum:
+      type: "string"
+      description: "De aanduiding die wordt gebruikt voor adressen die niet zijn voorzien\
+        \ van de gebruikelijke straatnaam en huisnummeraanduidingen.:\n* `M` - Man\n\
+        * `O` - Onbekend"
+      enum:
+      - "M"
+      - "O"
+    IndicatieOnjuist_enum:
+      type: "string"
+      description: "Een aanduiding die aangeeft dat de ingeschrevene een man of een\
+        \ vrouw is, of dat het geslacht (nog) onbekend is:\n* `O` - onjuist\n* `S`\
+        \ - strijdig met de openbare orde"
+      enum:
+      - "O"
+      - "S"
     Geslacht_enum:
       type: "string"
       description: "Een aanduiding die aangeeft dat de ingeschrevene een man of een\
         \ vrouw is, of dat het geslacht (nog) onbekend isAanduiding van het geslacht\
-        \ volgens het GBA:\n* M - Man\n* V - Vrouw\n* O - Onbekend"
+        \ volgens het GBA:\n* `M` - Man\n* `V` - Vrouw\n* `O` - Onbekend"
       enum:
       - "M"
       - "V"
@@ -2584,15 +2658,15 @@ components:
     IndicatieGeheim_enum:
       type: "string"
       description: "Categorie 07.70 uit de GBA.de verschillende aanduidingen of gegevens\
-        \ wel of niet verstrekt mogen worden:\n* 0 - geen beperking\n* 1 - niet zonder\
-        \ toestemming aan derden ter uitvoering van een\n* 2 - niet aan kerken\n*\
-        \ 3 - niet aan vrije derden\n* 4 - niet zonder toestemming aan derden ter\
-        \ uitvoering van een algemeen verbindend voorschrift en niet aan kerken\n\
-        * 5 - niet zonder toestemming aan derden ter uitvoering van een algemeen verbindend\
-        \ voorschrift en niet aan vrije derden\n* 6 - niet aan kerken en niet aan\
-        \ vrije derden\n* 7 - niet zonder toestemming aan derden ter uitvoering van\
-        \ een algemeen verbindend voorschrift en niet aan vrije derden en niet aan\
-        \ kerken"
+        \ wel of niet verstrekt mogen worden:\n* `0` - geen beperking\n* `1` - niet\
+        \ zonder toestemming aan derden ter uitvoering van een\n* `2` - niet aan kerken\n\
+        * `3` - niet aan vrije derden\n* `4` - niet zonder toestemming aan derden\
+        \ ter uitvoering van een algemeen verbindend voorschrift en niet aan kerken\n\
+        * `5` - niet zonder toestemming aan derden ter uitvoering van een algemeen\
+        \ verbindend voorschrift en niet aan vrije derden\n* `6` - niet aan kerken\
+        \ en niet aan vrije derden\n* `7` - niet zonder toestemming aan derden ter\
+        \ uitvoering van een algemeen verbindend voorschrift en niet aan vrije derden\
+        \ en niet aan kerken"
       enum:
       - "0"
       - "1"
@@ -2607,10 +2681,10 @@ components:
       description: "Een aanduiding die aangeeft wie belast is met het gezag over de\
         \ minderjarige ingeschrevene.De mogelijke aanduidingen die aangeven wie belast\
         \ is met het gezag over de minderjarige ingeschrevene. Dit komt uit het GBA.:\n\
-        * 1 - ouder1 heeft het gezag\n* 2 - ouder2 heeft het gezag\n* D - een of meer\
-        \ derden hebben het gezag\n* 1D - ouder1 + een derde hebben het gezag\n* 2D\
-        \ - ouder2 + een derde hebben het gezag\n* 12 - ouder1 + ouder2 hebben het\
-        \ gezag"
+        * `1` - ouder1 heeft het gezag\n* `2` - ouder2 heeft het gezag\n* `D` - een\
+        \ of meer derden hebben het gezag\n* `1D` - ouder1 + een derde hebben het\
+        \ gezag\n* `2D` - ouder2 + een derde hebben het gezag\n* `12` - ouder1 + ouder2\
+        \ hebben het gezag"
       enum:
       - "1"
       - "2"
@@ -2622,8 +2696,8 @@ components:
       type: "string"
       description: "61.10 Gegevens over de wijze van aanschrijving.De voorgedefinieerde\
         \ waarden van naamgebruik volgens de centrale voorzieningen. Zie attribuut\
-        \ Naamgebruik van groep A.1.12 Naamgebruik van BRP.:\n* E - Eigen\n* P - Partner\n\
-        * V - Partner, eigen\n* N - Eigen, partner"
+        \ Naamgebruik van groep A.1.12 Naamgebruik van BRP.:\n* `E` - Eigen\n* `P`\
+        \ - Partner\n* `V` - Partner, eigen\n* `N` - Eigen, partner"
       enum:
       - "E"
       - "P"
@@ -2631,16 +2705,16 @@ components:
       - "N"
     OuderAanduiding_enum:
       type: "string"
-      description: "Aanduiding om welke ouder het gaat volgens de GBA:\n* 1 - Ouder1\n\
-        * 2 - Ouder2"
+      description: "Aanduiding om welke ouder het gaat volgens de GBA:\n* `1` - Ouder1\n\
+        * `2` - Ouder2"
       enum:
       - "1"
       - "2"
     RedenOpschortingBijhouding_enum:
       type: "string"
-      description: "Redenen voor opschorting van de bijhouding:\n* O - overlijden\n\
-        * E - emigratie\n* M - Ministerieel besluit\n* R - PL aangelegd in de RNI\n\
-        * F - fout\n* . - standaardwaarde indien onbekend"
+      description: "Redenen voor opschorting van de bijhouding:\n* `O` - overlijden\n\
+        * `E` - emigratie\n* `M` - Ministerieel besluit\n* `R` - PL aangelegd in de\
+        \ RNI\n* `F` - fout\n* `.` - standaardwaarde indien onbekend"
       enum:
       - "O"
       - "E"
@@ -2650,14 +2724,14 @@ components:
       - "."
     SoortAdres_enum:
       type: "string"
-      description: "Aanduiding van het soort adres.:\n* W - Woonadres\n* B - Briefadres"
+      description: "Aanduiding van het soort adres.:\n* `W` - Woonadres\n* `B` - Briefadres"
       enum:
       - "W"
       - "B"
     SoortRedenWijzigingNationaliteit_enum:
       type: "string"
       description: "De soort van de reden van de wijziging van de Nationaliteitgegevens:\n\
-        * VK - verkrijging\n* OP - opname\n* VL - verlies\n* BE - beëindiging"
+        * `VK` - verkrijging\n* `OP` - opname\n* `VL` - verlies\n* `BE` - beëindiging"
       enum:
       - "VK"
       - "OP"
@@ -2665,15 +2739,15 @@ components:
       - "BE"
     SoortAdellijkeTitel_predikaat_enum:
       type: "string"
-      description: "Geeft aan of het een titel of een predikaat betreft.:\n* H - huwelijk\n\
-        * P - geregistreerd partnerschap"
+      description: "Geeft aan of het een titel of een predikaat betreft.:\n* `H` -\
+        \ huwelijk\n* `P` - geregistreerd partnerschap"
       enum:
       - "H"
       - "P"
     SoortVerbintenis_enum:
       type: "string"
       description: "Soort verbintenis van een bij de burgerlijke stand ingeschreven\
-        \ verbintenis:\n* H - huwelijk\n* P - geregistreerd partnerschap"
+        \ verbintenis:\n* `H` - huwelijk\n* `P` - geregistreerd partnerschap"
       enum:
       - "H"
       - "P"
