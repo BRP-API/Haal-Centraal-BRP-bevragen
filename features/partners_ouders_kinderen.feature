@@ -11,7 +11,7 @@ Functionaliteit: De resource ingeschrevenpersonen bevat alleen relaties naar act
 
   Dit feature heeft GEEN betrekking op endpoint /historie/ingeschrevenpersonen/{burgerservicenummer}/partners.
 
-  Een partner is actueel wanneer Ontbinding huwelijk/geregistreerd partnerschap (05.07) leeg is en indicatie onjuist (05.84.10) leeg is.
+  Een partner is actueel wanneer Ontbinding huwelijk/geregistreerd partnerschap (05/55.07) leeg is en indicatie onjuist (05/55.84.10) leeg is.
   Wanneer Ontbinding huwelijk/geregistreerd partnerschap van de partner een waarde heeft, wordt deze niet opgenomen.
   Wanneer indicatie onjuist van de partner een waarde heeft, wordt deze niet opgenomen.
 
@@ -24,96 +24,101 @@ Functionaliteit: De resource ingeschrevenpersonen bevat alleen relaties naar act
   Scenario: Huwelijk/partnerschap is ontbonden
     Gegeven de geraadpleegde persoon heeft een partner met 05.07 gevuld en 05.84 leeg
     En de geraadpleegde persoon heeft geen andere partner (actueel of historisch)
-    Als de ingeschreven persoon wordt geraadpleegd
+    Als de ingeschreven persoon met burgerservicenummer 999999321 wordt geraadpleegd
     Dan is _links.partners leeg
-    Als de ingeschreven persoon wordt geraadpleegd met expand=partners
+    Als ingeschreven persoon met burgerservicenummer 999999321 wordt geraadpleegd met expand=partners
     Dan is _links.partners leeg
     En is _embedded.partners leeg
-    Als de ingeschreven persoon wordt geraadpleegd met /ingeschrevenpersonen/{burgerservicenummer}/partners
-    Dan bevat het antwoord geen partners
+    Als de partners worden geraadpleegd van de ingeschreven persoon met burgerservicenummer 999999321
+    Dan is het aantal gevonden partners 0
 
   Scenario: Huwelijk/partnerschap is nietig verklaard
     Gegeven de geraadpleegde persoon heeft een partner met 05.07 gevuld en 05.84 leeg
     En Reden ontbinding huwelijk/geregistreerd partnerschap = N (Nietigverklaring)
     En de geraadpleegde persoon heeft geen andere partner (actueel of historisch)
-    Als de ingeschreven persoon wordt geraadpleegd
-    Dan is _links.partners leeg
-    Als de ingeschreven persoon wordt geraadpleegd met expand=partners
-    Dan is _links.partners leeg
-    En is _embedded.partners leeg
-    Als de ingeschreven persoon wordt geraadpleegd met /ingeschrevenpersonen/{burgerservicenummer}/partners
-    Dan bevat het antwoord geen partners
+    Als de ingeschreven persoon met burgerservicenummer 999999254 wordt geraadpleegd
+    Dan is het aantal links naar partners gelijk aan 0
+    Als ingeschreven persoon met burgerservicenummer 999999254 wordt geraadpleegd met expand=partners
+    Dan is het aantal links naar partners gelijk aan 0
+    En is het aantal embedded partners gelijk aan 0
+    Als de partners worden geraadpleegd van de ingeschreven persoon met burgerservicenummer 999999254
+    Dan is het aantal gevonden partners 0
 
   Scenario: Huwelijk/partnerschap is onjuist
     Gegeven de geraadpleegde persoon heeft een partner met 05.07 leeg en 05.84 gevuld
     En de geraadpleegde persoon heeft geen andere partner (actueel of historisch)
-    Als de ingeschreven persoon wordt geraadpleegd
+    Als de ingeschreven persoon met burgerservicenummer 999999345 wordt geraadpleegd
     Dan is _links.partners leeg
-    Als de ingeschreven persoon wordt geraadpleegd met expand=partners
-    Dan is _links.partners leeg
-    En is _embedded.partners leeg
-    Als de ingeschreven persoon wordt geraadpleegd met /ingeschrevenpersonen/{burgerservicenummer}/partners
-    Dan bevat het antwoord geen partners
+    Als ingeschreven persoon met burgerservicenummer 999999345 wordt geraadpleegd met expand=partners
+    Dan is het aantal links naar partners gelijk aan 0
+    En is het aantal embedded partners gelijk aan 0
+    Als de partners worden geraadpleegd van de ingeschreven persoon met burgerservicenummer 999999345
+    Dan is het aantal gevonden partners 0
 
   Scenario: Persoon is gescheiden en daarna opnieuw getrouwd
     Gegeven de geraadpleegde persoon heeft een partner met 05.07 gevuld en 05.84 leeg
-    En de geraadpleegde persoon heeft een partner met 05.07 leeg en 05.84 leeg
-    En de geraadpleegde persoon heeft geen andere partner (actueel of historisch)
-    Als de ingeschreven persoon wordt geraadpleegd
-    Dan bevat _links.partners exact 1 voorkomen(s)
-    Als de ingeschreven persoon wordt geraadpleegd met expand=partners
-    Dan bevat _links.partners exact 1 voorkomen(s)
-    En bevat _embedded.partners exact 1 voorkomen(s)
-    En is in elk van de gevonden partners ontbindingPartnerschap niet opgenomen of null
-    Als de ingeschreven persoon wordt geraadpleegd met /ingeschrevenpersonen/{burgerservicenummer}/partners
-    Dan bevat het antwoord 1 partners
+    En de geraadpleegde persoon heeft twee partners met 05.07 leeg en 05.84 leeg
+    Als de ingeschreven persoon met burgerservicenummer 999999291 wordt geraadpleegd
+    Dan is het aantal links naar partners gelijk aan 2
+    Als ingeschreven persoon met burgerservicenummer 999999291 wordt geraadpleegd met expand=partners
+    Dan is het aantal links naar partners gelijk aan 2
+    En is het aantal embedded partners gelijk aan 2
+    En is in elke van de gevonden partners attribuut ontbindingPartnerschap niet aanwezig of null
+    Als de partners worden geraadpleegd van de ingeschreven persoon met burgerservicenummer 999999291
+    Dan is het aantal gevonden partners 2
 
   Scenario: Persoon heeft twee ouders
     Gegeven de geraadpleegde persoon heeft ouder1 met 02/52.84 Onjuist leeg
     En de geraadpleegde persoon heeft ouder2 met 02/52.84 Onjuist leeg
     En de geraadpleegde persoon heeft geen andere ouder(s)
-    Als de ingeschreven persoon wordt geraadpleegd
-    Dan bevat _links.ouders exact 2 voorkomen(s)
-    Als de ingeschreven persoon wordt geraadpleegd met expand=ouders
-    Dan bevat _links.ouders exact 2 voorkomen(s)
-    En bevat _embedded.ouders exact 2 voorkomen(s)
-    Als de ingeschreven persoon wordt geraadpleegd met /ingeschrevenpersonen/{burgerservicenummer}/ouders
-    Dan bevat het antwoord 2 ouders
+    Als de ingeschreven persoon met burgerservicenummer 999999011 wordt geraadpleegd
+    Dan is het aantal links naar ouders gelijk aan 2
+    Als ingeschreven persoon met burgerservicenummer 999999011 wordt geraadpleegd met expand=ouders
+    Dan is het aantal links naar ouders gelijk aan 2
+    En is het aantal embedded ouders gelijk aan 2
+    Als de ouders worden geraadpleegd van de ingeschreven persoon met burgerservicenummer 999999011
+    Dan is het aantal gevonden ouders 2
+    En wordt de ouder gevonden met ouder_aanduiding=1
+    En wordt de ouder gevonden met ouder_aanduiding=2
 
   Scenario: Persoon heeft een ouder met indicatie onjuist (84) gevuld
-    Gegeven de geraadpleegde persoon heeft ouder1 met 02/52.84 gevuld
-    En de geraadpleegde persoon heeft ouder2 met 03/53.84 leeg
+    Gegeven de geraadpleegde persoon heeft ouder1 met 02/52.84 leeg
+    En de geraadpleegde persoon heeft ouder2 met 03/53.84 gevuld
     En de geraadpleegde persoon heeft geen andere ouder(s)
-    Als de ingeschreven persoon wordt geraadpleegd
-    Dan bevat _links.ouders exact 1 voorkomen(s)
-    Als de ingeschreven persoon wordt geraadpleegd met expand=ouders
-    Dan bevat _links.ouders exact 1 voorkomen(s)
-    En bevat _embedded.ouders exact 1 voorkomen(s)
-    En heeft in geen van de gevonden _links.ouders attribuut ouder_aanduiding de waarde 1
-    En heeft in elke van de gevonden _links.ouders attribuut ouder_aanduiding de waarde 2
-    Als de ingeschreven persoon wordt geraadpleegd met /ingeschrevenpersonen/{burgerservicenummer}/ouders
-    Dan bevat het antwoord 1 ouders
-    En wordt de ouder gevonden met ouder_aanduiding=2
+    Als de ingeschreven persoon met burgerservicenummer 999999023 wordt geraadpleegd
+    Dan is het aantal links naar ouders gelijk aan 1
+    Als ingeschreven persoon met burgerservicenummer 999999023 wordt geraadpleegd met expand=ouders
+    Dan is het aantal links naar ouders gelijk aan 1
+    En is het aantal embedded ouders gelijk aan 1
+    En heeft elke van de gevonden ouders ouder_aanduiding=1
+    En heeft geen van de gevonden ouders ouder_aanduiding=2
+    Als de ouders worden geraadpleegd van de ingeschreven persoon met burgerservicenummer 999999023
+    Dan is het aantal gevonden ouders 1
+    En wordt de ouder gevonden met ouder_aanduiding=1
 
   Scenario: Persoon heeft drie kinderen
     Gegeven de geraadpleegde persoon heeft drie kinderen met 02/52.84 Onjuist leeg
     En de geraadpleegde persoon heeft geen andere kinderen
-    Als de ingeschreven persoon wordt geraadpleegd
-    Dan bevat _links.kinderen exact 3 voorkomen(s)
-    Als de ingeschreven persoon wordt geraadpleegd met expand=kinderen
-    Dan bevat _links.kinderen exact 3 voorkomen(s)
-    En bevat _embedded.kinderen exact 3 voorkomen(s)
-    Als de ingeschreven persoon wordt geraadpleegd met /ingeschrevenpersonen/{burgerservicenummer}/kinderen
-    Dan bevat het antwoord 3 kinderen
+    Als de ingeschreven persoon met burgerservicenummer 999999291 wordt geraadpleegd
+    Dan is het aantal links naar kinderen gelijk aan 3
+    Als ingeschreven persoon met burgerservicenummer 999999291 wordt geraadpleegd met expand=kinderen
+    Dan is het aantal links naar kinderen gelijk aan 3
+    En is het aantal embedded kinderen gelijk aan 3
+    Als de kinderen worden geraadpleegd van de ingeschreven persoon met burgerservicenummer 999999291
+    Dan is het aantal gevonden kinderen 3
 
   Scenario: Persoon heeft een kind met indicatie onjuist (84) gevuld
-    Gegeven de geraadpleegde persoon heeft een kind met 02/52.84 gevuld
-    En de geraadpleegde persoon heeft een kind met 03/53.84 leeg
+    Gegeven de geraadpleegde persoon heeft een kind met 02/52.84 gevuld (Franka)
+    En de geraadpleegde persoon heeft een kind met 03/53.84 leeg (Frank)
     En de geraadpleegde persoon heeft geen andere kinderen
-    Als de ingeschreven persoon wordt geraadpleegd
-    Dan bevat _links.kinderen exact 1 voorkomen(s)
-    Als de ingeschreven persoon wordt geraadpleegd met expand=kinderen
-    Dan bevat _links.kinderen exact 1 voorkomen(s)
-    En bevat _embedded.kinderen exact 1 voorkomen(s)
-    Als de ingeschreven persoon wordt geraadpleegd met /ingeschrevenpersonen/{burgerservicenummer}/kinderen
-    Dan bevat het antwoord 1 kinderen
+    Als de ingeschreven persoon met burgerservicenummer 999999370 wordt geraadpleegd
+    Dan is het aantal links naar kinderen gelijk aan 1
+    Als ingeschreven persoon met burgerservicenummer 999999370 wordt geraadpleegd met expand=kinderen
+    Dan is het aantal links naar kinderen gelijk aan 1
+    En is het aantal embedded kinderen gelijk aan 1
+    En wordt het kind gevonden met naam.voornamen=Frank
+    En heeft geen van de gevonden kinderen naam.voornamen=Franka
+    Als de kinderen worden geraadpleegd van de ingeschreven persoon met burgerservicenummer 999999370
+    Dan is het aantal gevonden kinderen 1
+    En wordt het kind gevonden met naam.voornamen=Frank
+    En heeft geen van de gevonden kinderen naam.voornamen=Franka
