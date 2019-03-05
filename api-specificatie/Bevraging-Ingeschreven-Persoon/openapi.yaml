@@ -1552,8 +1552,6 @@ components:
     Reisdocument:
       type: "object"
       description: "Een document dat vereist is voor reizen naar het buitenland"
-      required:
-      - "indicatieReisdocumentGeldig"
       properties:
         reisdocumentnummer:
           type: "string"
@@ -1960,8 +1958,6 @@ components:
       description: "Gegevens over het overlijden van de ingeschreven natuurlijk persoon.\
         \ 06/56 Gegevens over het overlijden van de ingeschrevene. Zie verder de toelichting\
         \ in de GBA."
-      required:
-      - "indicatieOverleden"
       properties:
         plaats:
           type: "string"
