@@ -1,14 +1,13 @@
 ﻿openapi: 3.0.0
 servers:
-# Added by API Auto Mocking Plugin
-  - description: SwaggerHub API Auto Mocking
-    url: https://virtserver.swaggerhub.com/VNGRealisatie/Bevraging-ingeschreven-persoon/1.0.0
   - description: "SwaggerHub API Auto Mocking"
     url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bevragingen_ingeschreven_personen/v1
+  - description: "Referentie-implementatie"
+    url: https://www.voorbeeldgemeente.nl/api/bevragingen_ingeschreven_personen/v1
 info:
   title: Bevragingen ingeschreven personen
   description: "API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. Ook de gegevens over reisdocumenten worden via deze API ontsloten. Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting."
-  version: "1.0.0"
+  version: "1.0"
   contact:
     url: https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen
   license:
@@ -17,7 +16,7 @@ info:
 paths:
   /ingeschrevenpersonen:
     get:
-      operationId: ingeschrevenpersonen
+      operationId: ingeschrevenNatuurlijkPersonen
       description: |
         Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen:
         
@@ -57,6 +56,7 @@ paths:
 
 
          Er vind geen sortering plaats.
+
       parameters: 
         - in: query
           name: expand
@@ -209,60 +209,90 @@ paths:
                           $ref: '#/components/schemas/IngeschrevenPersoon'
         '400':
           description: Bad Request
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/ValidatieFoutbericht"
         '401':
           description: Unauthorized
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '403':
           description: Forbidden
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '406':
           description: Not Acceptable
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '409':
           description: Conflict
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '410':
           description: Gone
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '415':
           description: Unsupported Media Type
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '429':
           description: Too Many Requests
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '500':
           description: Internal Server Error
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         'default':
           description: Er is een onverwachte fout opgetreden.
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
@@ -271,10 +301,15 @@ paths:
       - ingeschrevenpersonen
   /ingeschrevenpersonen/{burgerservicenummer}:
     get:
-      operationId: ingeschrevenpersonenBurgerservicenummer
+      operationId: ingeschrevenNatuurlijkPersoon
       description: "Het ophalen de actuele gegevens van een Ingeschreven Persoon, inclusief verblijfplaats, kinderen, partners en ouders. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen."
       parameters: 
-        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/parameters.yaml#/expand"
+        - in: query
+          name: expand
+          description: "Hier kan aangegeven worden welke gerelateerde resources meegeladen moeten worden. Resources en velden van resources die gewenst zijn kunnen in de expand parameter kommagescheiden worden opgegeven. Specifieke velden van resource kunnen worden opgegeven door het opgeven van de resource-naam gevolgd door de veldnaam, met daartussen een punt. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/expand.feature)"
+          required: false
+          schema:
+            type: string
         - in: path
           name: burgerservicenummer
           description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Elk ingeschreven natuurlijk persoon heeft een BSN, een nummer dat de natuurlijk persoon uniek identificeert in overheidsadministraties. De attribuutsoort kent onder meer historie omdat het mogelijk is dat het Burgerservicenummer van een natuurlijk persoon wijzigt, met name vanwege ambtelijke correcties. Zie verder de toelichting in de GBA Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
@@ -282,6 +317,12 @@ paths:
           schema:
             type: string
             maxLength: 9
+        - in: query
+          name: fields
+          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature)"
+          required: false
+          schema:
+            type: string
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -302,60 +343,90 @@ paths:
                 $ref: '#/components/schemas/IngeschrevenPersoon'
         '401':
           description: Unauthorized
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '403':
           description: Forbidden
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '404':
           description: Not Found
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '406':
           description: Not Acceptable
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '409':
           description: Conflict
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '410':
           description: Gone
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '415':
           description: Unsupported Media Type
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '429':
           description: Too Many Requests
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '500':
           description: Internal Server Error
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         'default':
           description: Er is een onverwachte fout opgetreden.
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
@@ -401,60 +472,90 @@ paths:
                 $ref: '#/components/schemas/Kind'
         '401':
           description: Unauthorized
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '403':
           description: Forbidden
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '404':
           description: Not Found
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '406':
           description: Not Acceptable
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '409':
           description: Conflict
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '410':
           description: Gone
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '415':
           description: Unsupported Media Type
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '429':
           description: Too Many Requests
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '500':
           description: Internal Server Error
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         'default':
           description: Er is een onverwachte fout opgetreden.
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
@@ -503,60 +604,90 @@ paths:
                           $ref: '#/components/schemas/Kind'
         '401':
           description: Unauthorized
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '403':
           description: Forbidden
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '404':
           description: Not Found
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '406':
           description: Not Acceptable
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '409':
           description: Conflict
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '410':
           description: Gone
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '415':
           description: Unsupported Media Type
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '429':
           description: Too Many Requests
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '500':
           description: Internal Server Error
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         'default':
           description: Er is een onverwachte fout opgetreden.
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
@@ -602,60 +733,90 @@ paths:
                 $ref: '#/components/schemas/Ouder'
         '401':
           description: Unauthorized
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '403':
           description: Forbidden
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '404':
           description: Not Found
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '406':
           description: Not Acceptable
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '409':
           description: Conflict
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '410':
           description: Gone
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '415':
           description: Unsupported Media Type
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '429':
           description: Too Many Requests
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '500':
           description: Internal Server Error
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         'default':
           description: Er is een onverwachte fout opgetreden.
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
@@ -704,60 +865,90 @@ paths:
                           $ref: '#/components/schemas/Ouder'
         '401':
           description: Unauthorized
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '403':
           description: Forbidden
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '404':
           description: Not Found
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '406':
           description: Not Acceptable
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '409':
           description: Conflict
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '410':
           description: Gone
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '415':
           description: Unsupported Media Type
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '429':
           description: Too Many Requests
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '500':
           description: Internal Server Error
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         'default':
           description: Er is een onverwachte fout opgetreden.
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
@@ -803,60 +994,90 @@ paths:
                 $ref: '#/components/schemas/Partner'
         '401':
           description: Unauthorized
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '403':
           description: Forbidden
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '404':
           description: Not Found
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '406':
           description: Not Acceptable
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '409':
           description: Conflict
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '410':
           description: Gone
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '415':
           description: Unsupported Media Type
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '429':
           description: Too Many Requests
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '500':
           description: Internal Server Error
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         'default':
           description: Er is een onverwachte fout opgetreden.
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
@@ -905,60 +1126,90 @@ paths:
                           $ref: '#/components/schemas/Partner'
         '401':
           description: Unauthorized
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '403':
           description: Forbidden
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '404':
           description: Not Found
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '406':
           description: Not Acceptable
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '409':
           description: Conflict
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '410':
           description: Gone
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '415':
           description: Unsupported Media Type
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '429':
           description: Too Many Requests
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '500':
           description: Internal Server Error
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         'default':
           description: Er is een onverwachte fout opgetreden.
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
@@ -997,60 +1248,90 @@ paths:
                 $ref: '#/components/schemas/Reisdocument'
         '401':
           description: Unauthorized
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '403':
           description: Forbidden
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '404':
           description: Not Found
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '406':
           description: Not Acceptable
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '409':
           description: Conflict
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '410':
           description: Gone
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '415':
           description: Unsupported Media Type
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '429':
           description: Too Many Requests
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '500':
           description: Internal Server Error
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         'default':
           description: Er is een onverwachte fout opgetreden.
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
               schema:
@@ -1084,14 +1365,6 @@ components:
           pattern: "^[0-9]$"
           maxLength: 9
           example: "555555021"
-        a_nummer:
-          type: "integer"
-          title: "A-nummer"
-          description: "Het administratienummer van de persoon, bedoeld in de Wet\
-            \ BRP Element 01.10 Het administratienummer, bedoeld in artikel 4.9 van\
-            \ de Wet BRP. zie GBA"
-          maximum: 9.999999999E9
-          example: "876352431"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
         indicatieGeheim:
@@ -1158,14 +1431,6 @@ components:
           pattern: "^[0-9]$"
           maxLength: 9
           example: "430422088"
-        a_nummer:
-          type: "integer"
-          title: "A-nummer"
-          description: "Het administratienummer van de persoon, bedoeld in de Wet\
-            \ BRP Element 01.10 Het administratienummer, bedoeld in artikel 4.9 van\
-            \ de Wet BRP. zie GBA"
-          maximum: 9.999999999E9
-          example: "876352431"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
         ouder_aanduiding:
@@ -1212,14 +1477,6 @@ components:
           pattern: "^[0-9]$"
           maxLength: 9
           example: "430422088"
-        a_nummer:
-          type: "integer"
-          title: "A-nummer"
-          description: "Het administratienummer van de persoon, bedoeld in de Wet\
-            \ BRP Element 01.10 Het administratienummer, bedoeld in artikel 4.9 van\
-            \ de Wet BRP. zie GBA"
-          maximum: 9.999999999E9
-          example: "876352431"
         aktenummer:
           type: "string"
           title: "aktenummer"
@@ -1263,16 +1520,13 @@ components:
           example: "430422088"
         soortVerbintenis:
           $ref: "#/components/schemas/SoortVerbintenis_enum"
-        a_nummer:
-          type: "integer"
-          title: "A-nummer"
-          description: "Het administratienummer van de persoon, bedoeld in de Wet\
-            \ BRP Element 01.10 Het administratienummer, bedoeld in artikel 4.9 van\
-            \ de Wet BRP. zie GBA"
-          maximum: 9.999999999E9
-          example: "876352431"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
+        indicatieHuwelijkPartnerschapBeeindigd:
+          type: "boolean"
+          title: "indicatieHuwelijkPartnerschapBeeindigd"
+          description: "Indicator waarmee aangegeven wordt of het huwelijk ontbonden\
+            \ is, danwel de partnerschap beeindigd is."
         aktenummer:
           type: "string"
           title: "aktenummer"
@@ -1309,6 +1563,11 @@ components:
           example: "546376728"
         aanduidingInhouding_vermissing:
           $ref: "#/components/schemas/AanduidingInhoudingVermissingReisdocument_enum"
+        indicatieReisdocumentGeldig:
+          type: "boolean"
+          title: "indicatieReisdocumentGeldig"
+          description: "Indicator waarmee aangegeven wordt of het reisdocument geldig\
+            \ is."
         signaleringVerstrekkenReisdocument:
           type: "integer"
           title: "Signalering Nederlands reisdocument"
@@ -1389,11 +1648,25 @@ components:
           title: "geslachtsnaam"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        datumIngangOnderzoek:
+          type: "string"
+          title: "datumIngangOnderzoek"
+          description: "Element 83.20 De datum waarop een onderzoek inzake de onjuistheid\
+            \ of de strijdigheid met de openbare orde is gestart."
+          format: "date"
+          example: "20190201"
         adellijkeTitel_predikaat:
           type: "boolean"
           title: "adellijkeTitel_predikaat"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        datumEindeOnderzoek:
+          type: "string"
+          title: "datumEindeOnderzoek"
+          description: "Element 83.30 De datum waarop een onderzoek inzake de onjuistheid\
+            \ of de strijdigheid met de openbare orde is beëindigd."
+          format: "date"
+          example: "20190202"
     OuderInOnderzoek:
       type: "object"
       description: "Indicators over het in onderzoek zijn van gegevens over de aangaan\
@@ -1419,6 +1692,20 @@ components:
           title: "geslachtsaanduiding"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        datumIngangOnderzoek:
+          type: "string"
+          title: "datumIngangOnderzoek"
+          description: "Element 83.20 De datum waarop een onderzoek inzake de onjuistheid\
+            \ of de strijdigheid met de openbare orde is gestart."
+          format: "date"
+          example: "20190201"
+        datumEindeOnderzoek:
+          type: "string"
+          title: "datumEindeOnderzoek"
+          description: "Element 83.30 De datum waarop een onderzoek inzake de onjuistheid\
+            \ of de strijdigheid met de openbare orde is beëindigd."
+          format: "date"
+          example: "20190202"
     Geboorte:
       type: "object"
       description: "Gegevens over de geboorte van de INGESCHREVEN NATUURLIJK PERSOON.\
@@ -1466,11 +1753,25 @@ components:
           title: "plaats"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        datumIngangOnderzoek:
+          type: "string"
+          title: "datumIngangOnderzoek"
+          description: "Element 83.20 De datum waarop een onderzoek inzake de onjuistheid\
+            \ of de strijdigheid met de openbare orde is gestart."
+          format: "date"
+          example: "20190201"
         land:
           type: "boolean"
           title: "land"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        datumEindeOnderzoek:
+          type: "string"
+          title: "datumEindeOnderzoek"
+          description: "Element 83.30 De datum waarop een onderzoek inzake de onjuistheid\
+            \ of de strijdigheid met de openbare orde is beëindigd."
+          format: "date"
+          example: "20190202"
     Kiesrecht:
       type: "object"
       description: "Categorie 13 Gegevens over het kiesrecht van de ingeschrevene."
@@ -1517,17 +1818,31 @@ components:
           title: "aanduidingUitsluitingKiesrecht"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        datumIngangOnderzoek:
+          type: "string"
+          title: "datumIngangOnderzoek"
+          description: "Element 83.20 De datum waarop een onderzoek inzake de onjuistheid\
+            \ of de strijdigheid met de openbare orde is gestart."
+          format: "date"
+          example: "20190201"
         aanduidingEuropeesKiesrecht:
           type: "boolean"
           title: "aanduidingEuropeesKiesrecht"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        datumEindeOnderzoek:
+          type: "string"
+          title: "datumEindeOnderzoek"
+          description: "Element 83.30 De datum waarop een onderzoek inzake de onjuistheid\
+            \ of de strijdigheid met de openbare orde is beëindigd."
+          format: "date"
+          example: "20190202"
     NaamPersoon:
       allOf:
         - $ref: "#/components/schemas/Naam"
         - type: "object"
           description: "De naamgegevens waarmee de persoon heeft aangegeven aangeschreven\
-               \ te willen worden"
+            \ te willen worden"
           properties:
             aanduidingNaamgebruik:
               $ref: "#/components/schemas/Naamgebruik_enum"
@@ -1536,7 +1851,7 @@ components:
               title: "aanschrijfwijze"
               description: "| Samengestelde naam zoals die in communicatie met de persoon\
                 \ gebruikt kan worden. Hoe het samenstellen van een aanschrijfwijze te\
-                \ werk gaat is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen    -ingeschreven-personen/blob/master/features/aanschrijfwijze.feature)"
+                \ werk gaat is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanschrijfwijze.feature)"
               maxLength: 50
               example: "P.J. graaf de Vries- van der Zon"
     PersoonInOnderzoek:
@@ -1562,6 +1877,10 @@ components:
           title: "datumOpschortingBijhouding"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        indicatieOpschortingBijhouding:
+          type: "boolean"
+          title: "indicatieOpschortingBijhouding"
+          description: "Indicator die aangeeft of de bijhouding opgeschort is."
         indicatieGeheim:
           type: "boolean"
           title: "indicatieGeheim"
@@ -1658,6 +1977,14 @@ components:
             \ '0000' indien onbekend."
           maxLength: 40
           example: "Waddinxveen"
+        indicatieOverleden:
+          type: "boolean"
+          title: "indicatieOverleden"
+          description: "Deze indicator geeft aan of de persoon overleden is (waarde\
+            \ true). Als er overlijdensgegevens (datum, plaats, land) beschikbaar\
+            \ zijn worden deze uiteraard meegeleverd. Als er geen gegevens bekend\
+            \ zijn maar er is wel bekend dat de persoon is overleden, dan geeft de\
+            \ indicator uitsluitsel."
         aktenummer:
           type: "string"
           title: "aktenummer"
@@ -1689,6 +2016,20 @@ components:
           title: "plaats"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        datumIngangOnderzoek:
+          type: "string"
+          title: "datumIngangOnderzoek"
+          description: "Element 83.20 De datum waarop een onderzoek inzake de onjuistheid\
+            \ of de strijdigheid met de openbare orde is gestart."
+          format: "date"
+          example: "20190201"
+        datumEindeOnderzoek:
+          type: "string"
+          title: "datumEindeOnderzoek"
+          description: "Element 83.30 De datum waarop een onderzoek inzake de onjuistheid\
+            \ of de strijdigheid met de openbare orde is beëindigd."
+          format: "date"
+          example: "20190202"
         land:
           type: "boolean"
           title: "land"
@@ -1709,6 +2050,20 @@ components:
           title: "a_nummer"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        datumIngangOnderzoek:
+          type: "string"
+          title: "datumIngangOnderzoek"
+          description: "Element 83.20 De datum waarop een onderzoek inzake de onjuistheid\
+            \ of de strijdigheid met de openbare orde is gestart."
+          format: "date"
+          example: "20190201"
+        datumEindeOnderzoek:
+          type: "string"
+          title: "datumEindeOnderzoek"
+          description: "Element 83.30 De datum waarop een onderzoek inzake de onjuistheid\
+            \ of de strijdigheid met de openbare orde is beëindigd."
+          format: "date"
+          example: "20190202"
     PartnerInOnderzoek:
       type: "object"
       description: "Indicators over het in onderzoek zijn van gegevens over de aangaan\
@@ -1734,6 +2089,20 @@ components:
           title: "geslachtsaanduiding"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        datumIngangOnderzoek:
+          type: "string"
+          title: "datumIngangOnderzoek"
+          description: "Element 83.20 De datum waarop een onderzoek inzake de onjuistheid\
+            \ of de strijdigheid met de openbare orde is gestart."
+          format: "date"
+          example: "20190201"
+        datumEindeOnderzoek:
+          type: "string"
+          title: "datumEindeOnderzoek"
+          description: "Element 83.30 De datum waarop een onderzoek inzake de onjuistheid\
+            \ of de strijdigheid met de openbare orde is beëindigd."
+          format: "date"
+          example: "20190202"
     OntbindingPartnerschap:
       type: "object"
       description: "Gegevens over het ontbonden huwelijk of geregistreerd partnerschap."
@@ -1772,11 +2141,25 @@ components:
           type: "boolean"
           title: "reden"
           description: ""
+        datumIngangOnderzoek:
+          type: "string"
+          title: "datumIngangOnderzoek"
+          description: "Element 83.20 De datum waarop een onderzoek inzake de onjuistheid\
+            \ of de strijdigheid met de openbare orde is gestart."
+          format: "date"
+          example: "20190201"
         land:
           type: "boolean"
           title: "land"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        datumEindeOnderzoek:
+          type: "string"
+          title: "datumEindeOnderzoek"
+          description: "Element 83.30 De datum waarop een onderzoek inzake de onjuistheid\
+            \ of de strijdigheid met de openbare orde is beëindigd."
+          format: "date"
+          example: "20190202"
     AangaanHuwelijk_Partnerschap:
       type: "object"
       description: "Gegevens over het gesloten huwelijk of het aangegane geregistreerd\
@@ -1813,11 +2196,25 @@ components:
           title: "plaats"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        datumIngangOnderzoek:
+          type: "string"
+          title: "datumIngangOnderzoek"
+          description: "Element 83.20 De datum waarop een onderzoek inzake de onjuistheid\
+            \ of de strijdigheid met de openbare orde is gestart."
+          format: "date"
+          example: "20190201"
         land:
           type: "boolean"
           title: "land"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        datumEindeOnderzoek:
+          type: "string"
+          title: "datumEindeOnderzoek"
+          description: "Element 83.30 De datum waarop een onderzoek inzake de onjuistheid\
+            \ of de strijdigheid met de openbare orde is beëindigd."
+          format: "date"
+          example: "20190202"
     Verblijfplaats:
       type: "object"
       description: "Een door het bevoegde gemeentelijke orgaan als zodanig toegekende\
@@ -1980,6 +2377,11 @@ components:
             \ Hiervoor wordt NEN 5825 (versie 2002) gevolgd. De hier gehanteerde schrijfwijze\
             \ kan afwijken van de POSTNL-schrijfwijze. alle alfanumrieke tekens"
           maxLength: 24
+        indicatieVestigingVanuitBuitenland:
+          type: "boolean"
+          title: "indicatieVestigingVanuitBuitenland"
+          description: "Indicatie waarmee aangegeven wordt of de ingeschreven persoon\
+            \ zich vanuit het buitenland heeftingeschreven."
         aanduidingBijHuisnummer:
           $ref: "#/components/schemas/AanduidingBijHuisnummer_enum"
         indicatieOnjuist:
@@ -2054,8 +2456,6 @@ components:
         \ niet in onderzoek zijn. Wel de relatie naar de nummeraanduding. Dat wordt\
         \ gedaan door de identificatiecodeNummeraanduiding in onderzoek te zetten.\
         \ Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
-      required:
-      - "datumIngangGeldigheid"
       properties:
         functieAdres:
           type: "boolean"
@@ -2119,8 +2519,6 @@ components:
     Gezagsverhouding:
       type: "object"
       description: "Categorie 11 Gegevens betreffende het gezag over de ingeschrevene."
-      required:
-      - "indicatieCurateleRegister"
       properties:
         indicatieCurateleRegister:
           type: "integer"
@@ -2144,16 +2542,35 @@ components:
           title: "indicatieCurateleRegister"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        datumIngangOnderzoek:
+          type: "string"
+          title: "datumIngangOnderzoek"
+          description: "Element 83.20 De datum waarop een onderzoek inzake de onjuistheid\
+            \ of de strijdigheid met de openbare orde is gestart."
+          format: "date"
+          example: "20190201"
         indicatieGezagMinderjarige:
           type: "boolean"
           title: "indicatieGezagMinderjarige"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        datumEindeOnderzoek:
+          type: "string"
+          title: "datumEindeOnderzoek"
+          description: "Element 83.30 De datum waarop een onderzoek inzake de onjuistheid\
+            \ of de strijdigheid met de openbare orde is beëindigd."
+          format: "date"
+          example: "20190202"
     Verblijfstitel:
       type: "object"
       description: "Gegevens over de verblijfsrechtelijke status. 10/60 Gegevens over\
         \ de verblijfsrechtelijke status van de ingeschrevene."
       properties:
+        indicatie_verblijfstitelBeeindigd:
+          type: "boolean"
+          title: "indicatie_verblijfstitelBeeindigd"
+          description: "Indicator waarmee aangegeven wordt of de verblijfstitel beeindigd\
+            \ is."
         aanduiding:
           $ref: "#/components/schemas/Verblijfstitel_tabel"
         datumIngang:
@@ -2202,14 +2619,26 @@ components:
         \ alle rubrieken binnen die categorie op _true_ gezet. Zie de [functionele\
         \ specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)\
         \ ."
-      required:
-      - "signaleringVerstrekkenReisdocument"
       properties:
         reisdocumentnummer:
           type: "boolean"
           title: "reisdocumentnummer"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        datumIngangOnderzoek:
+          type: "string"
+          title: "datumIngangOnderzoek"
+          description: "Element 83.20 De datum waarop een onderzoek inzake de onjuistheid\
+            \ of de strijdigheid met de openbare orde is gestart."
+          format: "date"
+          example: "20190201"
+        datumEindeOnderzoek:
+          type: "string"
+          title: "datumEindeOnderzoek"
+          description: "Element 83.30 De datum waarop een onderzoek inzake de onjuistheid\
+            \ of de strijdigheid met de openbare orde is beëindigd."
+          format: "date"
+          example: "20190202"
         soortReisdocument:
           type: "boolean"
           title: "soortReisdocument"
@@ -2585,7 +3014,7 @@ components:
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
-        ingeschrevennatuurlijkpersonen:
+        ingeschrevenpersonen:
           title: "heeftAlsHouder"
           type: "object"
           description: "De ingezetene waaraan het REISDOCUMENT is verstrekt."
@@ -2752,17 +3181,17 @@ components:
       - "OP"
       - "VL"
       - "BE"
-    SoortAdellijkeTitel_predikaat_enum:
-      type: "string"
-      description: "Geeft aan of het een titel of een predikaat betreft.:\n* `H` -\
-        \ huwelijk\n* `P` - geregistreerd partnerschap"
-      enum:
-      - "H"
-      - "P"
     SoortVerbintenis_enum:
       type: "string"
       description: "Soort verbintenis van een bij de burgerlijke stand ingeschreven\
         \ verbintenis:\n* `H` - huwelijk\n* `P` - geregistreerd partnerschap"
       enum:
       - "H"
+      - "P"
+    SoortAdellijkeTitel_predikaat_enum:
+      type: "string"
+      description: "Geeft aan of het een titel of een predikaat betreft.:\n* `T` -\
+        \ titel\n* `P` - predikaat"
+      enum:
+      - "T"
       - "P"
