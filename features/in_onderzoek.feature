@@ -15,6 +15,7 @@ Functionaliteit: in onderzoek
 
   Scenario: hele categorie persoon in onderzoek
     Gegeven de te raadplegen persoon heeft de hele persoon in onderzoek (01.83.10=010000)
+    En geen enkele andere categorie, groep of attribuut is in onderzoek
     Als de ingeschreven persoon met burgerservicenummer 999991449 wordt geraadpleegd
     Dan is in het antwoord inOnderzoek.burgerservicenummer=true
     En is in het antwoord inOnderzoek.geslachtsaanduiding=true
@@ -35,7 +36,7 @@ Functionaliteit: in onderzoek
     En is in het antwoord attribuut verblijfplaats.inOnderzoek null, leeg of afwezig
     En is in het antwoord attribuut gezagsverhouding.inOnderzoek null, leeg of afwezig
     En is in het antwoord attribuut verblijfstitel.inOnderzoek null, leeg of afwezig
-    
+
   Scenario: Hele groep in onderzoek
     Gegeven de te raadplegen persoon heeft groep naam in onderzoek
     Als de ingeschreven persoon met burgerservicenummer 999999151 wordt geraadpleegd
