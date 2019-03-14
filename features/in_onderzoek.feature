@@ -37,18 +37,20 @@ Functionaliteit: in onderzoek
     En is in het antwoord attribuut gezagsverhouding.inOnderzoek null, leeg of afwezig
     En is in het antwoord attribuut verblijfstitel.inOnderzoek null, leeg of afwezig
 
+  Scenario: hele categorie in onderzoek
+    Gegeven de te raadplegen persoon heeft categorie nationaliteit in onderzoek
+    Als de ingeschreven persoon met burgerservicenummer 999999102 wordt geraadpleegd
+    Dan is in het antwoord nationaliteit.inOnderzoek.nationaliteit=true
+    En is in het antwoord nationaliteit.inOnderzoek.redenOpname=true
+    En is in het antwoord nationaliteit.inOnderzoek.redenBeindigen=true
+    En is in het antwoord nationaliteit.inOnderzoek.aanduidingBijzonderNederlanderschap=true
+
   Scenario: Hele groep in onderzoek
     Gegeven de te raadplegen persoon heeft groep naam in onderzoek
     Als de ingeschreven persoon met burgerservicenummer 999999151 wordt geraadpleegd
     Dan is in het antwoord inOnderzoek.naam.geslachtsnaam=true
     En is in het antwoord inOnderzoek.naam.voornamen=true
     En is in het antwoord inOnderzoek.naam.voorvoegsel=true
-    Gegeven de te raadplegen persoon heeft groep nationaliteit in onderzoek
-    Als de ingeschreven persoon met burgerservicenummer 999999102 wordt geraadpleegd
-    Dan is in het antwoord inOnderzoek.nationaliteit.nationaliteit=true
-    En is in het antwoord inOnderzoek.nationaliteit.redenOpname=true
-    En is in het antwoord inOnderzoek.nationaliteit.redenBeindigen=true
-    En is in het antwoord inOnderzoek.nationaliteit.aanduidingBijzonderNederlanderschap=true
 
   Scenario: Een attribuut is in inOnderzoek
     Gegeven de te raadplegen persoon heeft attribuut naam.voornamen in onderzoek
