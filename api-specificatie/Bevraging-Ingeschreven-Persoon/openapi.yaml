@@ -1747,8 +1747,6 @@ components:
     Kiesrecht:
       type: "object"
       description: "Categorie 13 Gegevens over het kiesrecht van de ingeschrevene."
-      required:
-      - "einddatumUitsluitingKiesrechtOnbekend"
       properties:
         aanduidingEuropeesKiesrecht:
           $ref: "#/components/schemas/AanduidingEuropeesKiesrecht_enum"
@@ -2525,8 +2523,6 @@ components:
         \ alle rubrieken binnen die categorie op _true_ gezet. Zie de [functionele\
         \ specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)\
         \ ."
-      required:
-      - "datumEindeGeldigheid"
       properties:
         reisdocumentnummer:
           type: "boolean"
@@ -2570,8 +2566,6 @@ components:
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
           $ref: "#/components/schemas/Datum_onvolledig"
-        datumEindeOnderzoek:
-          $ref: "#/components/schemas/Datum_onvolledig"
     Datum_onvolledig:
       type: "object"
       description: "Gegevens over de datums die mogelijk niet volledig zijn, maar\
@@ -2596,7 +2590,7 @@ components:
           title: "maand"
           description: "De maand. Als de maand van een datum bekend is wordt deze\
             \ hier ingevuld. Ook als de volledige datum is ingevuld."
-          format: "month"
+          format: "date_month"
           pattern: "^99$"
           maxLength: 2
         dag:
@@ -2604,7 +2598,7 @@ components:
           title: "dag"
           description: "De dag. Als de dag van de datum bekend is wordt deze hier\
             \ ingevuld. Ook als de volledige datum bekend is."
-          format: "date_mDay"
+          format: "date_mday"
           pattern: "^99$"
           maxLength: 2
     Gemeenten_tabel:
