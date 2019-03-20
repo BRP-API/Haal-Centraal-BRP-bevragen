@@ -56,7 +56,6 @@ paths:
 
 
          Er vind geen sortering plaats.
-
       parameters: 
         - in: query
           name: expand
@@ -71,7 +70,7 @@ paths:
           schema:
             type: string
             format: date
-            example: 24-09-1964
+            example: 1964-09-24
         - in: query
           name: naam__voornamen
           description: "De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).**"
@@ -316,6 +315,7 @@ paths:
           required: true
           schema:
             type: string
+            minLength: 9
             maxLength: 9
         - in: query
           name: fields
@@ -444,6 +444,7 @@ paths:
           required: true
           schema:
             type: string
+            minLength: 9
             maxLength: 9
         - in: path
           name: uuid
@@ -573,6 +574,7 @@ paths:
           required: true
           schema:
             type: string
+            minLength: 9
             maxLength: 9
       responses:
         '200':
@@ -705,6 +707,7 @@ paths:
           required: true
           schema:
             type: string
+            minLength: 9
             maxLength: 9
         - in: path
           name: uuid
@@ -834,6 +837,7 @@ paths:
           required: true
           schema:
             type: string
+            minLength: 9
             maxLength: 9
       responses:
         '200':
@@ -966,6 +970,7 @@ paths:
           required: true
           schema:
             type: string
+            minLength: 9
             maxLength: 9
         - in: path
           name: uuid
@@ -1095,6 +1100,7 @@ paths:
           required: true
           schema:
             type: string
+            minLength: 9
             maxLength: 9
       responses:
         '200':
@@ -1362,13 +1368,18 @@ components:
             \ waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8),\
             \ het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar\
             \ is door elf. Er moeten dus 9 cijfers aanwezig zijn."
-          pattern: "^[0-9]$"
+          pattern: "^[0-9]{9}$"
+          minLength: 9
           maxLength: 9
           example: "555555021"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
         indicatieGeheim:
           $ref: "#/components/schemas/IndicatieGeheim_enum"
+        indicatieOpschortingBijhouding:
+          type: "boolean"
+          title: "indicatieOpschortingBijhouding"
+          description: "Indicator die aangeeft of de bijhouding opgeschort is."
         aktenummer:
           type: "string"
           title: "aktenummer"
@@ -1387,7 +1398,7 @@ components:
           $ref: "#/components/schemas/Datum_onvolledig"
         kiesrecht:
           $ref: "#/components/schemas/Kiesrecht"
-        naamPersoon:
+        naam:
           $ref: "#/components/schemas/NaamPersoon"
         inOnderzoek:
           $ref: "#/components/schemas/PersoonInOnderzoek"
@@ -1428,7 +1439,8 @@ components:
             \ waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8),\
             \ het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar\
             \ is door elf. Er moeten dus 9 cijfers aanwezig zijn."
-          pattern: "^[0-9]$"
+          pattern: "^[0-9]{9}$"
+          minLength: 9
           maxLength: 9
           example: "430422088"
         geslachtsaanduiding:
@@ -1443,7 +1455,7 @@ components:
             \ posities van het aktenummer dienen conform [Tabel 39,Tabel Akteaanduiding](https://publicaties.rvig.nl/dsresource?objectid=4796&amp;type=org)\
             \ te zijn. De laatste 4 posities bevatten een volgnummer van de akte."
           maxLength: 7
-        datumVan:
+        datumAanvangFamilierechtelijkeBetrekking:
           $ref: "#/components/schemas/Datum_onvolledig"
         registergemeenteAkte:
           $ref: "#/components/schemas/Gemeenten_tabel"
@@ -1474,7 +1486,7 @@ components:
             \ waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8),\
             \ het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar\
             \ is door elf. Er moeten dus 9 cijfers aanwezig zijn."
-          pattern: "^[0-9]$"
+          pattern: "^[0-9]{9}$"
           maxLength: 9
           example: "430422088"
         aktenummer:
@@ -1515,7 +1527,8 @@ components:
             \ waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8),\
             \ het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar\
             \ is door elf. Er moeten dus 9 cijfers aanwezig zijn."
-          pattern: "^[0-9]$"
+          pattern: "^[0-9]{9}$"
+          minLength: 9
           maxLength: 9
           example: "430422088"
         soortVerbintenis:
@@ -1648,25 +1661,13 @@ components:
           title: "geslachtsnaam"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        datumIngangOnderzoek:
-          type: "string"
-          title: "datumIngangOnderzoek"
-          description: "Element 83.20 De datum waarop een onderzoek inzake de onjuistheid\
-            \ of de strijdigheid met de openbare orde is gestart."
-          format: "date"
-          example: "20190201"
         adellijkeTitel_predikaat:
           type: "boolean"
           title: "adellijkeTitel_predikaat"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        datumEindeOnderzoek:
-          type: "string"
-          title: "datumEindeOnderzoek"
-          description: "Element 83.30 De datum waarop een onderzoek inzake de onjuistheid\
-            \ of de strijdigheid met de openbare orde is beëindigd."
-          format: "date"
-          example: "20190202"
+        datumIngangOnderzoek:
+          $ref: "#/components/schemas/Datum_onvolledig"
     OuderInOnderzoek:
       type: "object"
       description: "Indicators over het in onderzoek zijn van gegevens over de aangaan\
@@ -1682,30 +1683,13 @@ components:
           title: "datumVan"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        a_nummer:
-          type: "boolean"
-          title: "a_nummer"
-          description: "Indicator die aangeeft of het corresponderende gegeven voor\
-            \ deze persoon in onderzoek is."
         geslachtsaanduiding:
           type: "boolean"
           title: "geslachtsaanduiding"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
-          type: "string"
-          title: "datumIngangOnderzoek"
-          description: "Element 83.20 De datum waarop een onderzoek inzake de onjuistheid\
-            \ of de strijdigheid met de openbare orde is gestart."
-          format: "date"
-          example: "20190201"
-        datumEindeOnderzoek:
-          type: "string"
-          title: "datumEindeOnderzoek"
-          description: "Element 83.30 De datum waarop een onderzoek inzake de onjuistheid\
-            \ of de strijdigheid met de openbare orde is beëindigd."
-          format: "date"
-          example: "20190202"
+          $ref: "#/components/schemas/Datum_onvolledig"
     Geboorte:
       type: "object"
       description: "Gegevens over de geboorte van de INGESCHREVEN NATUURLIJK PERSOON.\
@@ -1753,28 +1737,18 @@ components:
           title: "plaats"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        datumIngangOnderzoek:
-          type: "string"
-          title: "datumIngangOnderzoek"
-          description: "Element 83.20 De datum waarop een onderzoek inzake de onjuistheid\
-            \ of de strijdigheid met de openbare orde is gestart."
-          format: "date"
-          example: "20190201"
         land:
           type: "boolean"
           title: "land"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        datumEindeOnderzoek:
-          type: "string"
-          title: "datumEindeOnderzoek"
-          description: "Element 83.30 De datum waarop een onderzoek inzake de onjuistheid\
-            \ of de strijdigheid met de openbare orde is beëindigd."
-          format: "date"
-          example: "20190202"
+        datumIngangOnderzoek:
+          $ref: "#/components/schemas/Datum_onvolledig"
     Kiesrecht:
       type: "object"
       description: "Categorie 13 Gegevens over het kiesrecht van de ingeschrevene."
+      required:
+      - "einddatumUitsluitingKiesrechtOnbekend"
       properties:
         aanduidingEuropeesKiesrecht:
           $ref: "#/components/schemas/AanduidingEuropeesKiesrecht_enum"
@@ -1784,6 +1758,19 @@ components:
           description: "Element 38.10 Een aanduiding ter uitvoering van de Kieswet."
           maxLength: 1
           example: "A"
+        datumEuropeesKiesrechtOnbekend:
+          type: "boolean"
+          title: "datumEuropeesKiesrechtOnbekend"
+          description: "Indicator dat de datumEuropeesKiesrecht onbekend is."
+        einddatumUitsluitingEuropeesKiesrechtOnbekend:
+          type: "boolean"
+          title: "einddatumUitsluitingEuropeesKiesrechtOnbekend"
+          description: "Indicator dat de einddatumUitsluitingEuropeesKiesrecht onbekend\
+            \ is"
+        einddatumUitsluitingKiesrechtOnbekend:
+          type: "boolean"
+          title: "einddatumUitsluitingKiesrechtOnbekend"
+          description: "Indicator dat einddatumUitsluitingKiesrecht onbekend is."
         datumEuropeesKiesrecht:
           $ref: "#/components/schemas/Datum_onvolledig"
         einddatumUitsluitingEuropeesKiesrecht:
@@ -1818,42 +1805,30 @@ components:
           title: "aanduidingUitsluitingKiesrecht"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        datumIngangOnderzoek:
-          type: "string"
-          title: "datumIngangOnderzoek"
-          description: "Element 83.20 De datum waarop een onderzoek inzake de onjuistheid\
-            \ of de strijdigheid met de openbare orde is gestart."
-          format: "date"
-          example: "20190201"
         aanduidingEuropeesKiesrecht:
           type: "boolean"
           title: "aanduidingEuropeesKiesrecht"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        datumEindeOnderzoek:
-          type: "string"
-          title: "datumEindeOnderzoek"
-          description: "Element 83.30 De datum waarop een onderzoek inzake de onjuistheid\
-            \ of de strijdigheid met de openbare orde is beëindigd."
-          format: "date"
-          example: "20190202"
+        datumIngangOnderzoek:
+          $ref: "#/components/schemas/Datum_onvolledig"
     NaamPersoon:
       allOf:
-        - $ref: "#/components/schemas/Naam"
-        - type: "object"
-          description: "De naamgegevens waarmee de persoon heeft aangegeven aangeschreven\
-            \ te willen worden"
-          properties:
-            aanduidingNaamgebruik:
-              $ref: "#/components/schemas/Naamgebruik_enum"
-            aanschrijfwijze:
-              type: "string"
-              title: "aanschrijfwijze"
-              description: "| Samengestelde naam zoals die in communicatie met de persoon\
-                \ gebruikt kan worden. Hoe het samenstellen van een aanschrijfwijze te\
-                \ werk gaat is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanschrijfwijze.feature)"
-              maxLength: 50
-              example: "P.J. graaf de Vries- van der Zon"
+      - $ref: "#/components/schemas/Naam"
+      - type: "object"
+        description: "De naamgegevens waarmee de persoon heeft aangegeven aangeschreven\
+        \ te willen worden"
+        properties:
+          aanduidingNaamgebruik:
+            $ref: "#/components/schemas/Naamgebruik_enum"
+          aanschrijfwijze:
+            type: "string"
+            title: "aanschrijfwijze"
+            description: "| Samengestelde naam zoals die in communicatie met de persoon\
+              \ gebruikt kan worden. Hoe het samenstellen van een aanschrijfwijze te\
+              \ werk gaat is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanschrijfwijze.feature)"
+            maxLength: 50
+            example: "P.J. graaf de Vries- van der Zon"
     PersoonInOnderzoek:
       type: "object"
       description: "Een groep van booleans om aan te geven welke gegevens van de ingeschreven\
@@ -1877,10 +1852,6 @@ components:
           title: "datumOpschortingBijhouding"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        indicatieOpschortingBijhouding:
-          type: "boolean"
-          title: "indicatieOpschortingBijhouding"
-          description: "Indicator die aangeeft of de bijhouding opgeschort is."
         indicatieGeheim:
           type: "boolean"
           title: "indicatieGeheim"
@@ -1896,6 +1867,8 @@ components:
           title: "redenOpschortingBijhouding"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        datumIngangOnderzoek:
+          $ref: "#/components/schemas/Datum_onvolledig"
     Nationaliteit:
       type: "object"
       description: "Gegevens over de nationaliteit. 04/54 Gegevens over een nationaliteit\
@@ -1906,8 +1879,6 @@ components:
         nationaliteit:
           $ref: "#/components/schemas/Nationaliteit_tabel"
         redenOpname:
-          $ref: "#/components/schemas/RedenVerkrijgingOpnemen_beeindigenNationaliteit_tabel"
-        redenBeeindigen:
           $ref: "#/components/schemas/RedenVerkrijgingOpnemen_beeindigenNationaliteit_tabel"
         datumIngangGeldigheid:
           $ref: "#/components/schemas/Datum_onvolledig"
@@ -1929,30 +1900,13 @@ components:
           title: "redenOpname"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        redenBeindigen:
-          type: "boolean"
-          title: "redenBeëindigen"
-          description: "Indicator die aangeeft of het corresponderende gegeven voor\
-            \ deze persoon in onderzoek is."
-        datumIngangOnderzoek:
-          type: "string"
-          title: "datumIngangOnderzoek"
-          description: "Element 83.20 De datum waarop een onderzoek inzake de onjuistheid\
-            \ of de strijdigheid met de openbare orde is gestart."
-          format: "date"
-          example: "20190201"
         aanduidingBijzonderNederlanderschap:
           type: "boolean"
           title: "aanduidingBijzonderNederlanderschap"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        datumEindeOnderzoek:
-          type: "string"
-          title: "datumEindeOnderzoek"
-          description: "Element 83.30 De datum waarop een onderzoek inzake de onjuistheid\
-            \ of de strijdigheid met de openbare orde is beëindigd."
-          format: "date"
-          example: "20190202"
+        datumIngangOnderzoek:
+          $ref: "#/components/schemas/Datum_onvolledig"
     Overlijden:
       type: "object"
       description: "Gegevens over het overlijden van de ingeschreven natuurlijk persoon.\
@@ -2016,25 +1970,13 @@ components:
           title: "plaats"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        datumIngangOnderzoek:
-          type: "string"
-          title: "datumIngangOnderzoek"
-          description: "Element 83.20 De datum waarop een onderzoek inzake de onjuistheid\
-            \ of de strijdigheid met de openbare orde is gestart."
-          format: "date"
-          example: "20190201"
-        datumEindeOnderzoek:
-          type: "string"
-          title: "datumEindeOnderzoek"
-          description: "Element 83.30 De datum waarop een onderzoek inzake de onjuistheid\
-            \ of de strijdigheid met de openbare orde is beëindigd."
-          format: "date"
-          example: "20190202"
         land:
           type: "boolean"
           title: "land"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        datumIngangOnderzoek:
+          $ref: "#/components/schemas/Datum_onvolledig"
     KindInOnderzoek:
       type: "object"
       description: "Indicators over het in onderzoek zijn van gegevens over de aangaan\
@@ -2045,25 +1987,8 @@ components:
           title: "burgerservicenummer"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        a_nummer:
-          type: "boolean"
-          title: "a_nummer"
-          description: "Indicator die aangeeft of het corresponderende gegeven voor\
-            \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
-          type: "string"
-          title: "datumIngangOnderzoek"
-          description: "Element 83.20 De datum waarop een onderzoek inzake de onjuistheid\
-            \ of de strijdigheid met de openbare orde is gestart."
-          format: "date"
-          example: "20190201"
-        datumEindeOnderzoek:
-          type: "string"
-          title: "datumEindeOnderzoek"
-          description: "Element 83.30 De datum waarop een onderzoek inzake de onjuistheid\
-            \ of de strijdigheid met de openbare orde is beëindigd."
-          format: "date"
-          example: "20190202"
+          $ref: "#/components/schemas/Datum_onvolledig"
     PartnerInOnderzoek:
       type: "object"
       description: "Indicators over het in onderzoek zijn van gegevens over de aangaan\
@@ -2079,30 +2004,13 @@ components:
           title: "soortVerbintenis"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        a_nummer:
-          type: "boolean"
-          title: "a_nummer"
-          description: "Indicator die aangeeft of het corresponderende gegeven voor\
-            \ deze persoon in onderzoek is."
         geslachtsaanduiding:
           type: "boolean"
           title: "geslachtsaanduiding"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
-          type: "string"
-          title: "datumIngangOnderzoek"
-          description: "Element 83.20 De datum waarop een onderzoek inzake de onjuistheid\
-            \ of de strijdigheid met de openbare orde is gestart."
-          format: "date"
-          example: "20190201"
-        datumEindeOnderzoek:
-          type: "string"
-          title: "datumEindeOnderzoek"
-          description: "Element 83.30 De datum waarop een onderzoek inzake de onjuistheid\
-            \ of de strijdigheid met de openbare orde is beëindigd."
-          format: "date"
-          example: "20190202"
+          $ref: "#/components/schemas/Datum_onvolledig"
     OntbindingPartnerschap:
       type: "object"
       description: "Gegevens over het ontbonden huwelijk of geregistreerd partnerschap."
@@ -2141,25 +2049,13 @@ components:
           type: "boolean"
           title: "reden"
           description: ""
-        datumIngangOnderzoek:
-          type: "string"
-          title: "datumIngangOnderzoek"
-          description: "Element 83.20 De datum waarop een onderzoek inzake de onjuistheid\
-            \ of de strijdigheid met de openbare orde is gestart."
-          format: "date"
-          example: "20190201"
         land:
           type: "boolean"
           title: "land"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        datumEindeOnderzoek:
-          type: "string"
-          title: "datumEindeOnderzoek"
-          description: "Element 83.30 De datum waarop een onderzoek inzake de onjuistheid\
-            \ of de strijdigheid met de openbare orde is beëindigd."
-          format: "date"
-          example: "20190202"
+        datumIngangOnderzoek:
+          $ref: "#/components/schemas/Datum_onvolledig"
     AangaanHuwelijk_Partnerschap:
       type: "object"
       description: "Gegevens over het gesloten huwelijk of het aangegane geregistreerd\
@@ -2196,25 +2092,13 @@ components:
           title: "plaats"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        datumIngangOnderzoek:
-          type: "string"
-          title: "datumIngangOnderzoek"
-          description: "Element 83.20 De datum waarop een onderzoek inzake de onjuistheid\
-            \ of de strijdigheid met de openbare orde is gestart."
-          format: "date"
-          example: "20190201"
         land:
           type: "boolean"
           title: "land"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        datumEindeOnderzoek:
-          type: "string"
-          title: "datumEindeOnderzoek"
-          description: "Element 83.30 De datum waarop een onderzoek inzake de onjuistheid\
-            \ of de strijdigheid met de openbare orde is beëindigd."
-          format: "date"
-          example: "20190202"
+        datumIngangOnderzoek:
+          $ref: "#/components/schemas/Datum_onvolledig"
     Verblijfplaats:
       type: "object"
       description: "Een door het bevoegde gemeentelijke orgaan als zodanig toegekende\
@@ -2282,6 +2166,23 @@ components:
             \ nummeraanduiding."
           maxLength: 16
           example: "0518200000366054"
+        identificatiecodeVerblijfplaats:
+          type: "string"
+          title: "identificatiecodeVerblijfplaats"
+          description: "Element 11.80 Een verblijfplaats kan een ligplaats, een standplaats\
+            \ of een verblijfsobject in een of meerdere panden zijn, waaraan respectievelijk\
+            \ een ligplaatsidentificatie, standplaatsidentificatie of verblijfsobjectidentificatie\
+            \ is toegekend. De Identificatiecode verblijfplaats is een combinatie\
+            \ van een viercijferige gemeentecode, een tweecijferige objecttypecode\
+            \ die aangeeft of de aanduiding een verblijfsobject (01), ligplaats (02)\
+            \ of standplaats (03) betreft en een voor het betreffende objecttype binnen\
+            \ een gemeente uniek tiencijferig volgnummer. Combinatie van de viercijferige\
+            \ 'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige\
+            \ 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente\
+            \ uniek tiencijferig 'objectvolgnummer'. De objecttypecode kent in de\
+            \ BAG de volgende waarde:20 nummeraanduiding."
+          maxLength: 16
+          example: "0518200000366054"
         huisnummer:
           type: "integer"
           title: "Huisnummer"
@@ -2335,9 +2236,9 @@ components:
             \ is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven\
             \ beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting\
             \ in de BAG. a - z , A - Z , 0 – 9"
-          pattern: "^[a-zA-Z0-9]$"
+          pattern: "^[a-zA-Z0-9]{1,4}$"
           maxLength: 4
-          example: "2"
+          example: "IV"
         naamOpenbareRuimte:
           type: "string"
           title: "Naam openbare ruimte"
@@ -2384,8 +2285,6 @@ components:
             \ zich vanuit het buitenland heeftingeschreven."
         aanduidingBijHuisnummer:
           $ref: "#/components/schemas/AanduidingBijHuisnummer_enum"
-        indicatieOnjuist:
-          $ref: "#/components/schemas/IndicatieOnjuist_enum"
         datumIngangGeldigheid:
           $ref: "#/components/schemas/Datum_onvolledig"
         gemeenteVanInschrijving:
@@ -2393,8 +2292,6 @@ components:
         datumVestigingInNederland:
           $ref: "#/components/schemas/Datum_onvolledig"
         datumAanvangAdreshouding:
-          $ref: "#/components/schemas/Datum_onvolledig"
-        datumEindeGeldigheid:
           $ref: "#/components/schemas/Datum_onvolledig"
         datumInschrijvingInGemeente:
           $ref: "#/components/schemas/Datum_onvolledig"
@@ -2467,41 +2364,56 @@ components:
           title: "identificatiecodeNummeraanduiding"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        identificatiecodeVerblijfplaats:
+          type: "boolean"
+          title: "identificatiecodeVerblijfplaats"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
         locatiebeschrijving:
           type: "boolean"
           title: "locatiebeschrijving"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        woonplaatsnaam:
+          type: "boolean"
+          title: "woonplaatsnaam"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        huisnummertoevoeging:
+          type: "boolean"
+          title: "huisnummertoevoeging"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
         datumAanvangAdreshouding:
           type: "boolean"
           title: "datumAanvangAdreshouding"
-          description: ""
-        datumEindeGeldigheid:
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        naamOpenbareRuimte:
           type: "boolean"
-          title: "datumEindeGeldigheid"
-          description: ""
-        datumIngangOnderzoek:
-          type: "string"
-          title: "datumIngangOnderzoek"
-          description: "Element 83.20 De datum waarop een onderzoek inzake de onjuistheid\
-            \ of de strijdigheid met de openbare orde is gestart."
-          format: "date"
-          example: "20190201"
-        datumEindeOnderzoek:
-          type: "string"
-          title: "datumEindeOnderzoek"
-          description: "Element 83.30 De datum waarop een onderzoek inzake de onjuistheid\
-            \ of de strijdigheid met de openbare orde is beëindigd."
-          format: "date"
-          example: "20190202"
+          title: "naamOpenbareRuimte"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        postcode:
+          type: "boolean"
+          title: "postcode"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
         datumInschrijvingInGemeente:
           type: "boolean"
           title: "datumInschrijvingInGemeente"
-          description: ""
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        straatnaam:
+          type: "boolean"
+          title: "straatnaam"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
         verblijfBuitenland:
           type: "boolean"
           title: "verblijfBuitenland"
-          description: ""
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
         landVanWaarIngeschreven:
           type: "boolean"
           title: "landVanWaarIngeschreven"
@@ -2510,12 +2422,30 @@ components:
         datumIngangGeldigheid:
           type: "boolean"
           title: "datumIngangGeldigheid"
-          description: ""
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        huisletter:
+          type: "boolean"
+          title: "huisletter"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
         datumVestigingInNederland:
           type: "boolean"
           title: "datumVestigingInNederland"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        huisnummer:
+          type: "boolean"
+          title: "huisnummer"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        aanduidingBijHuisnummer:
+          type: "boolean"
+          title: "aanduidingBijHuisnummer"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        datumIngangOnderzoek:
+          $ref: "#/components/schemas/Datum_onvolledig"
     Gezagsverhouding:
       type: "object"
       description: "Categorie 11 Gegevens betreffende het gezag over de ingeschrevene."
@@ -2542,25 +2472,13 @@ components:
           title: "indicatieCurateleRegister"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        datumIngangOnderzoek:
-          type: "string"
-          title: "datumIngangOnderzoek"
-          description: "Element 83.20 De datum waarop een onderzoek inzake de onjuistheid\
-            \ of de strijdigheid met de openbare orde is gestart."
-          format: "date"
-          example: "20190201"
         indicatieGezagMinderjarige:
           type: "boolean"
           title: "indicatieGezagMinderjarige"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        datumEindeOnderzoek:
-          type: "string"
-          title: "datumEindeOnderzoek"
-          description: "Element 83.30 De datum waarop een onderzoek inzake de onjuistheid\
-            \ of de strijdigheid met de openbare orde is beëindigd."
-          format: "date"
-          example: "20190202"
+        datumIngangOnderzoek:
+          $ref: "#/components/schemas/Datum_onvolledig"
     Verblijfstitel:
       type: "object"
       description: "Gegevens over de verblijfsrechtelijke status. 10/60 Gegevens over\
@@ -2599,19 +2517,7 @@ components:
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze verblijfstitel in onderzoek is."
         datumIngangOnderzoek:
-          type: "string"
-          title: "datumIngangOnderzoek"
-          description: "Element 83.20 De datum waarop een onderzoek inzake de onjuistheid\
-            \ of de strijdigheid met de openbare orde is gestart."
-          format: "date"
-          example: "20190201"
-        datumEindeOnderzoek:
-          type: "string"
-          title: "datumEindeOnderzoek"
-          description: "Element 83.30 De datum waarop een onderzoek inzake de onjuistheid\
-            \ of de strijdigheid met de openbare orde is beëindigd."
-          format: "date"
-          example: "20190202"
+          $ref: "#/components/schemas/Datum_onvolledig"
     ReisdocumentInOnderzoek:
       type: "object"
       description: "Een groep van booleans om aan te geven welke gegevens van het\
@@ -2619,26 +2525,14 @@ components:
         \ alle rubrieken binnen die categorie op _true_ gezet. Zie de [functionele\
         \ specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)\
         \ ."
+      required:
+      - "datumEindeGeldigheid"
       properties:
         reisdocumentnummer:
           type: "boolean"
           title: "reisdocumentnummer"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        datumIngangOnderzoek:
-          type: "string"
-          title: "datumIngangOnderzoek"
-          description: "Element 83.20 De datum waarop een onderzoek inzake de onjuistheid\
-            \ of de strijdigheid met de openbare orde is gestart."
-          format: "date"
-          example: "20190201"
-        datumEindeOnderzoek:
-          type: "string"
-          title: "datumEindeOnderzoek"
-          description: "Element 83.30 De datum waarop een onderzoek inzake de onjuistheid\
-            \ of de strijdigheid met de openbare orde is beëindigd."
-          format: "date"
-          example: "20190202"
         soortReisdocument:
           type: "boolean"
           title: "soortReisdocument"
@@ -2649,14 +2543,19 @@ components:
           title: "signaleringVerstrekkenReisdocument"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        datumEindeGeldigheid:
+          type: "boolean"
+          title: "datumEindeGeldigheid"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
         datumUitgifte:
           type: "boolean"
           title: "datumUitgifte"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        autoriteitUitgifte:
+        autoriteitAfgifte:
           type: "boolean"
-          title: "autoriteitUitgifte"
+          title: "autoriteitAfgifte"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumInhoudingOfVermissing:
@@ -2669,6 +2568,10 @@ components:
           title: "aanduidingInhoudingOfVermissing"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        datumIngangOnderzoek:
+          $ref: "#/components/schemas/Datum_onvolledig"
+        datumEindeOnderzoek:
+          $ref: "#/components/schemas/Datum_onvolledig"
     Datum_onvolledig:
       type: "object"
       description: "Gegevens over de datums die mogelijk niet volledig zijn, maar\
@@ -2693,7 +2596,7 @@ components:
           title: "maand"
           description: "De maand. Als de maand van een datum bekend is wordt deze\
             \ hier ingevuld. Ook als de volledige datum is ingevuld."
-          format: "date_month"
+          format: "month"
           pattern: "^99$"
           maxLength: 2
         dag:
@@ -2701,7 +2604,7 @@ components:
           title: "dag"
           description: "De dag. Als de dag van de datum bekend is wordt deze hier\
             \ ingevuld. Ook als de volledige datum bekend is."
-          format: "date_mday"
+          format: "date_mDay"
           pattern: "^99$"
           maxLength: 2
     Gemeenten_tabel:
@@ -3077,19 +2980,11 @@ components:
     AanduidingBijHuisnummer_enum:
       type: "string"
       description: "De aanduiding die wordt gebruikt voor adressen die niet zijn voorzien\
-        \ van de gebruikelijke straatnaam en huisnummeraanduidingen.:\n* `M` - Man\n\
-        * `O` - Onbekend"
+        \ van de gebruikelijke straatnaam en huisnummeraanduidingen.:\n* `to` - tegenover\n\
+        * `by` - bij"
       enum:
-      - "M"
-      - "O"
-    IndicatieOnjuist_enum:
-      type: "string"
-      description: "Een aanduiding die aangeeft dat de ingeschrevene een man of een\
-        \ vrouw is, of dat het geslacht (nog) onbekend is:\n* `O` - onjuist\n* `S`\
-        \ - strijdig met de openbare orde"
-      enum:
-      - "O"
-      - "S"
+      - "to"
+      - "by"
     Geslacht_enum:
       type: "string"
       description: "Een aanduiding die aangeeft dat de ingeschrevene een man of een\
