@@ -26,12 +26,17 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
 
   De self-link in _links (JSON HAL) wordt altijd teruggegeven in het antwoord. Deze hoeft (en mag) niet te worden opgenomen in de fields parameter.
 
+  Attributen inOnderzoek worden meegegeven wanneer gevraagde attributen in onderzoek zijn. Zie in_onderzoek.feature voor uitleg wanneer attributen in onderzoek zijn.
+
+  Attribuut indicatieGeheim wordt altijd meegegeven wanneer deze een waarde anders dan 0 heeft.
+
   Gebruik van de fields parameter heeft geen invloed op eventueel meegeladen sub-resources. Dat wordt gestuurd via de expand parameter. Dus wanneer er specifieke attributen van een sub-resource gewenst zijn, worden die opgesomd in de expand parameter. Bijvoorbeeld expand=partners.geslachtsnaam. Zie verder expand.feature
 
   Wanneer de fields-parameter wordt opgenomen zonder waarde, wordt een foutmelding gegeven.
   Wanneer in de fields-parameter namen zijn opgenomen die niet voorkomen als attribuut in de resource, wordt een foutmelding gegeven.
 
   In de fields-parameter moeten attribuutnamen exact zo worden geschreven als voor de resource-response gedefinieerd. Dit is case sensitive. Bijvoorbeeld fields=BURGERSERVICENUMMER levert een foutmelding, want dat attribuut bestaat niet (attribuut burgerservicenummer bestaat wel).
+
 
   Achtergrond:
     Gegeven de registratie ingeschreven personen kent zoals beschreven in testdata.csv
@@ -160,17 +165,11 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
     Dan levert dit een foutmelding
 
   Scenario: Fields bevat attributen waarvoor de gebruiker niet geautoriseerd is
-    Gegeven de gebruiker is geautoriseerd voor naamgegevens
-    En de gebruiker is niet geautoriseerd voor Aanduiding gegevens in onderzoek
-    En de verblijfplaats van de geraadpleegde persoon is in onderzoek
-    Als een ingeschreven persoon wordt geraadpleegd met fields=naam,inOnderzoek
-    Dan wordt attribuut naam.voornamen teruggegeven
-    En wordt attribuut naam.geslachtsnaam teruggegeven
-    En wordt attribuut naam.voorvoegsel teruggegeven
-    En wordt attribuut naam.aanschrijfwijze teruggegeven
-    # En is in het antwoord attribuut inOnderzoek niet aanwezig
-    # hiervoor is de gebruiker immers niet geautoriseerd
-    # En wordt geen enkel ander attribuut dan naam teruggegeven
+    Gegeven de gebruiker is geautoriseerd voor geboortedatum
+    En de gebruiker is niet geautoriseerd voor geboorteplaats
+    Als een ingeschreven persoon wordt geraadpleegd met fields=geboorte
+    Dan wordt attribuut geboorte.datum teruggegeven
+    En is in het antwoord attribuut geboorte.plaats niet aanwezig
     En wordt attribuut _links.self teruggegeven
     En wordt in _links geen enkel ander attribuut dan self teruggegeven
 
@@ -178,5 +177,69 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
     Gegeven de te raadplegen persoon verblijft in het buitenland
     Als een ingeschreven persoon wordt geraadpleegd met fields=verblijfplaats.postcode,verblijfplaats.huisnummer,verblijfplaats.verblijfBuitenland
     Dan wordt attribuut verblijfplaats.verblijfBuitenland teruggegeven
-    En is in het antwoord attribuut verblijfplaats.postcode null, leeg of afwezig
-    En is in het antwoord attribuut verblijfplaats.huisnummer null, leeg of afwezig
+    En is in het antwoord attribuut verblijfplaats.postcode afwezig
+    En is in het antwoord attribuut verblijfplaats.huisnummer afwezig
+
+  Scenario: inOnderzoek wordt altijd teruggegeven wanneer dat van toepassing is
+    Gegeven de te raadplegen persoon heeft geboortedatum in onderzoek (83.10 = 010310)
+    Als een ingeschreven persoon wordt geraadpleegd met fields=geboorte.datum
+    Dan wordt attribuut geboorte.datum teruggegeven
+    En wordt attribuut geboorte.inOnderzoek.datum teruggegeven
+    En is in het antwoord attribuut geboorte.inOnderzoek.plaats afwezig
+    En is in het antwoord attribuut inOnderzoek afwezig
+
+    Gegeven de te raadplegen persoon heeft naam in onderzoek (83.10 = 010200)
+    Als een ingeschreven persoon wordt geraadpleegd met fields=naam
+    Dan is in het antwoord naam.inOnderzoek.voornamen=true
+    En is in het antwoord naam.inOnderzoek.adellijkeTitel_predikaat=true
+    Dan is in het antwoord naam.inOnderzoek.voorvoegsel=true
+    Dan is in het antwoord naam.inOnderzoek.geslachtsnaam=true
+    En is in het antwoord attribuut naam.inOnderzoek.aanduidingNaamgebruik afwezig
+    En is in het antwoord attribuut inOnderzoek afwezig
+
+    Gegeven de te raadplegen persoon heeft naam in onderzoek (83.10 = 010200)
+    Als een ingeschreven persoon wordt geraadpleegd met fields=naam.voornamen,naam.geslachtsnaam
+    Dan is in het antwoord naam.inOnderzoek.voornamen=true
+    En is in het antwoord attribuut naam.inOnderzoek.adellijkeTitel_predikaat afwezig
+    En is in het antwoord attribuut naam.inOnderzoek.voorvoegsel afwezig
+    En is in het antwoord naam.inOnderzoek.geslachtsnaam=true
+    En is in het antwoord attribuut naam.inOnderzoek.aanduidingNaamgebruik afwezig
+    En is in het antwoord attribuut inOnderzoek afwezig
+
+    Gegeven de te raadplegen persoon heeft naam in onderzoek (83.10 = 010200)
+    Als een ingeschreven persoon wordt geraadpleegd met fields=geboorte
+    Dan is in het antwoord attribuut naam.inOnderzoek afwezig
+    En is in het antwoord attribuut geboorte.inOnderzoek afwezig
+    En is in het antwoord attribuut inOnderzoek afwezig
+
+    Gegeven de te raadplegen persoon heeft de hele categorie persoon in onderzoek (83.10 = 010000)
+    Als een ingeschreven persoon wordt geraadpleegd met fields=geboorte
+    Dan is in het antwoord geboorte.inOnderzoek.datum=true
+    En is in het antwoord geboorte.inOnderzoek.plaats=true
+    En is in het antwoord geboorte.inOnderzoek.land=true
+    En is in het antwoord attribuut naam.inOnderzoek afwezig
+    En is in het antwoord attribuut inOnderzoek afwezig
+
+  Scenario: indicatie geheim wordt altijd meegegeven wanneer deze een waarde heeft anders dan 0
+    Gegeven de te raadplegen persoon heeft indicatie geheim "niet aan kerken" (70.10 = 2)
+    Als een ingeschreven persoon wordt geraadpleegd met fields=geslachtsaanduiding
+    Dan wordt attribuut geslachtsaanduiding teruggegeven
+    En  wordt attribuut indicatieGeheim teruggegeven
+    En is in het antwoord indicatieGeheim=2
+    En wordt attribuut _links.self teruggegeven
+    En wordt geen enkel ander attribuut dan geslachtsaanduiding, indicatieGeheim en _links.self teruggegeven
+
+    Gegeven de te raadplegen persoon heeft indicatie geheim "geen beperking" (70.10 = 0)
+    Als een ingeschreven persoon wordt geraadpleegd met fields=geslachtsaanduiding
+    Dan wordt attribuut geslachtsaanduiding teruggegeven
+    En is in het antwoord attribuut indicatieGeheim afwezig
+    En wordt attribuut _links.self teruggegeven
+    En wordt geen enkel ander attribuut dan geslachtsaanduiding en _links.self teruggegeven
+
+    Gegeven de te raadplegen persoon heeft indicatie geheim "geen beperking" (70.10 = 0)
+    Als een ingeschreven persoon wordt geraadpleegd met fields=geslachtsaanduiding,indicatieGeheim
+    Dan wordt attribuut geslachtsaanduiding teruggegeven
+    En wordt attribuut indicatieGeheim teruggegeven
+    En is in het antwoord indicatieGeheim=0
+    En wordt attribuut _links.self teruggegeven
+    En wordt geen enkel ander attribuut dan geslachtsaanduiding, indicatieGeheim en _links.self teruggegeven
