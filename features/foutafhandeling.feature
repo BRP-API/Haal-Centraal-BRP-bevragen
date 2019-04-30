@@ -56,6 +56,7 @@ Functionaliteit: Afhandeling van fouten
   | parameters       | Parameter is niet verwacht                               | unknownParam |
   | fields           | Fields parameter is niet correct                         | fields       |
   | expand           | Expand parameter is niet correct                         | expand       |
+  | wildcard         | Incorrect gebruik van wildcard karakter "{wildcard}"     | wildcard     |
 
 
 
@@ -79,7 +80,7 @@ Functionaliteit: Afhandeling van fouten
       | fields       | Expand parameter is niet correct           | ingeschrevenpersonen | expand              | bestaatniet      |
 
   Abstract Scenario: Ongeldige queryparameter waarde bij zoeken
-    Als {resource} worden gezocht met {paramter}={waarde}
+    Als {resource} worden gezocht met {parameter}={waarde}
     Dan is de http status code van het antwoord 400
     En is in het antwoord title=Een of meerdere parameters zijn niet correct
     En is in het antwoord status=400
@@ -102,7 +103,8 @@ Functionaliteit: Afhandeling van fouten
       | table        | Waarde komt niet voor in de tabel                           | ingeschrevenpersonen | verblijfplaats__gemeentevaninschrijving | 2019             |
       | unknownParam | Parameter is niet verwacht                                  | ingeschrevenpersonen | indicatieGeheim                         | 0                |
       | fields       | Fields parameter is niet correct                            | ingeschrevenpersonen | fields                                  | bestaatniet      |
-      | fields       | Expand parameter is niet correct                            | ingeschrevenpersonen | expand                                  | bestaatniet      |
+      | expand       | Expand parameter is niet correct                            | ingeschrevenpersonen | expand                                  | bestaatniet      |
+      | wildcard     | Incorrect gebruik van wildcard karakter "*"                 | ingeschrevenpersonen | naam__geslachtsnaam                     | Ja*en            |
 
 
   Scenario: geen enkele zoekparameter opgegeven in zoekvraag
