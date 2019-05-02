@@ -30,6 +30,8 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
 
   Attribuut indicatieGeheim wordt altijd meegegeven wanneer deze een waarde anders dan 0 heeft.
 
+  Attributen datumOpschortingBijhouding en redenOpschortingBijhouding worden altijd meegegeven wanneer deze een waarde hebben.
+
   Gebruik van de fields parameter heeft geen invloed op eventueel meegeladen sub-resources. Dat wordt gestuurd via de expand parameter. Dus wanneer er specifieke attributen van een sub-resource gewenst zijn, worden die opgesomd in de expand parameter. Bijvoorbeeld expand=partners.geslachtsnaam. Zie verder expand.feature
 
   Wanneer de fields-parameter wordt opgenomen zonder waarde, wordt een foutmelding gegeven.
@@ -224,7 +226,7 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
     Gegeven de te raadplegen persoon heeft indicatie geheim "niet aan kerken" (70.10 = 2)
     Als een ingeschreven persoon wordt geraadpleegd met fields=geslachtsaanduiding
     Dan wordt attribuut geslachtsaanduiding teruggegeven
-    En  wordt attribuut indicatieGeheim teruggegeven
+    En wordt attribuut indicatieGeheim teruggegeven
     En is in het antwoord indicatieGeheim=2
     En wordt attribuut _links.self teruggegeven
     En wordt geen enkel ander attribuut dan geslachtsaanduiding, indicatieGeheim en _links.self teruggegeven
@@ -243,3 +245,15 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
     En is in het antwoord indicatieGeheim=0
     En wordt attribuut _links.self teruggegeven
     En wordt geen enkel ander attribuut dan geslachtsaanduiding, indicatieGeheim en _links.self teruggegeven
+
+  Scenario: reden opschorting bijhouding wordt altijd meegegeven wanneer deze een waarde heeft
+    Gegeven de te raadplegen persoon heeft Datum opschorting bijhouding = "20100101"
+    En de te raadplegen persoon heeft Omschrijving reden opschorting bijhouding (67.20) = "E" (emigratie)
+    Als een ingeschreven persoon wordt geraadpleegd met fields=geslachtsaanduiding
+    Dan wordt attribuut geslachtsaanduiding teruggegeven
+    En wordt attribuut datumOpschortingBijhouding teruggegeven
+    En wordt attribuut redenOpschortingBijhouding teruggegeven
+    En is in het antwoord datumOpschortingBijhouding.datum=2010-01-01
+    En is in het antwoord redenOpschortingBijhouding=E
+    En wordt attribuut _links.self teruggegeven
+    En wordt geen enkel ander attribuut dan geslachtsaanduiding, datumOpschortingBijhouding, redenOpschortingBijhouding en _links.self teruggegeven
