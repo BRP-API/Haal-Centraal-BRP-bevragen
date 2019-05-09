@@ -11,15 +11,15 @@ Functionaliteit: Afhandeling van fouten
   In de foutresponse krijgt "instance" de url van het request die tot de fout heeft geleid.
 
   We kennen de volgende foutsituaties:
-  | Foutsituatie                      | status | title                                                        | code              |
-  | Geen parameter is meegegeven      | 400    | Ten minste één parameter moet worden opgegeven               | paramsRequired    |
-  | Verplichte parameter(combinatie)  | 400    | Minimale combinatie van parameters moet worden opgegeven     | paramsCombination |
-  | Parametervalidatie                | 400    | Een of meerdere parameters zijn niet correct                 | paramsValidation  |
-  | Niet geauthenticeerd              | 401    | Niet correct geauthenticeerd                                 | authentication    |
-  | Geen autorisatie voor operatie    | 403    | U bent niet geautoriseerd voor deze operatie                 | autorisation      |
-  | Opgevraagde resource bestaat niet | 404    | Opgevraagde resource bestaat niet                            | notFound          |
-  | Accept header <> JSON             | 406    | Gevraagde contenttype wordt niet ondersteund                 | notAcceptable     |
-  | Technische of interne fout        | 500    | Interne server fout                                          | serverError       |
+  | Foutsituatie                      | status | title                                                         | code              |
+  | Geen parameter is meegegeven      | 400    | Ten minste één parameter moet worden opgegeven.               | paramsRequired    |
+  | Verplichte parameter(combinatie)  | 400    | Minimale combinatie van parameters moet worden opgegeven.     | paramsCombination |
+  | Parametervalidatie                | 400    | Een of meerdere parameters zijn niet correct.                 | paramsValidation  |
+  | Niet geauthenticeerd              | 401    | Niet correct geauthenticeerd.                                 | authentication    |
+  | Geen autorisatie voor operatie    | 403    | U bent niet geautoriseerd voor deze operatie.                 | autorisation      |
+  | Opgevraagde resource bestaat niet | 404    | Opgevraagde resource bestaat niet.                            | notFound          |
+  | Accept header <> JSON             | 406    | Gevraagde contenttype wordt niet ondersteund.                 | notAcceptable     |
+  | Technische of interne fout        | 500    | Interne server fout.                                          | serverError       |
 
   Wanneer bij het raadplegen van een persoon op burgerservicenummer meerdere personen worden teruggegeven door de bron, wordt een interne server fout (status 500) teruggegeven.
   Wanneer een onderliggende bron, zoas GBA-V, een timeout of geen response geeft, wordt een interne server fout (status 500) teruggegeven.
@@ -41,22 +41,22 @@ Functionaliteit: Afhandeling van fouten
   Bij een fout op een parameter krijgt in "invalid-params" attribuut "reason" een vaste omschrijving afhankelijk van het soort fout, zie tabel hieronder.
 
   Bij valideren van een parameter tegen schema kunnen de volgende meldingen komen:
-  | validatie        | reason                                                   | code         |
-  | type: integer    | Waarde is geen geldige integer                           | integer      |
-  | type: boolean    | Waarde is geen geldige boolean                           | boolean      |
-  | format: date     | Waarde is geen geldige datum                             | date         |
-  | minimum          | Waarde is lager dan minimum {minimum}                    | minimum      |
-  | maximum          | Waarde is hoger dan maximum {maximum}                    | maximum      |
-  | minLength        | Waarde is korter dan minimale lengte {minLength}         | minLength    |
-  | maxLength        | Waarde is langer dan maximale lengte {minLength}         | maxLength    |
-  | pattern          | Waarde voldoet niet aan patroon "{pattern}"              | pattern      |
-  | enumeratiewaarde | Waarde heeft geen geldige waarde uit de enumeratie       | enum         |
-  | tabelwaarde      | Waarde komt niet voor in de tabel                        | table        |
-  | required         | Parameter is verplicht                                   | required     |
-  | parameters       | Parameter is niet verwacht                               | unknownParam |
-  | fields           | Fields parameter is niet correct                         | fields       |
-  | expand           | Expand parameter is niet correct                         | expand       |
-  | wildcard         | Incorrect gebruik van wildcard karakter "{wildcard}"     | wildcard     |
+  | validatie        | reason                                                    | code         |
+  | type: integer    | Waarde is geen geldige integer.                           | integer      |
+  | type: boolean    | Waarde is geen geldige boolean.                           | boolean      |
+  | format: date     | Waarde is geen geldige datum.                             | date         |
+  | minimum          | Waarde is lager dan minimum {minimum}.                    | minimum      |
+  | maximum          | Waarde is hoger dan maximum {maximum}.                    | maximum      |
+  | minLength        | Waarde is korter dan minimale lengte {minLength}.         | minLength    |
+  | maxLength        | Waarde is langer dan maximale lengte {minLength}.         | maxLength    |
+  | pattern          | Waarde voldoet niet aan patroon {pattern}.                | pattern      |
+  | enumeratiewaarde | Waarde heeft geen geldige waarde uit de enumeratie.       | enum         |
+  | tabelwaarde      | Waarde komt niet voor in de tabel.                        | table        |
+  | required         | Parameter is verplicht.                                   | required     |
+  | parameters       | Parameter is niet verwacht.                               | unknownParam |
+  | fields           | Fields parameter is niet correct.                         | fields       |
+  | expand           | Expand parameter is niet correct.                         | expand       |
+  | wildcard         | Incorrect gebruik van wildcard karakter {wildcard}.       | wildcard     |
 
 
 
