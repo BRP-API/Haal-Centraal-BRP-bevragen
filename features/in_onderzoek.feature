@@ -58,3 +58,13 @@ Functionaliteit: in onderzoek
     Dan is in het antwoord inOnderzoek.naam.geslachtsnaam niet aanwezig of null
     En is in het antwoord inOnderzoek.naam.voornamen=true
     En is in het antwoord inOnderzoek.naam.voorvoegsel niet aanwezig of null
+
+  Scenario: Het onderzoek is beëindigd
+    Gegeven de te raadplegen persoon heeft in onderzoek gevuld (010000), met datum einde in onderzoek ook gevuld
+    Als de ingeschreven persoon met burgerservicenummer 999994888 wordt geraadpleegd
+    Dan is in het antwoord inOnderzoek niet aanwezig of null
+
+  Scenario: Een attribuut is in onderzoek dat niet opgenomen is in de API
+    Gegeven de te raadplegen persoon heeft in onderzoek gevuld op attribuut (048510)
+    Als de ingeschreven persoon wordt geraadpleegd
+    Dan is in het antwoord nationaliteit..inOnderzoek niet aanwezig of null
