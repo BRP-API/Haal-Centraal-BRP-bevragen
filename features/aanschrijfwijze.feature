@@ -17,6 +17,10 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
 
   Wanneer er geen tussenvoegsel is, wordt deze niet opgenomen. Er zit dan één spatie tussen de voorletters en de geslachtsnaam. Zie de tabel "Voorbeelden: met tussenvoegsel" en "Voorbeelden: met tussenvoegsel" hieronder.
 
+  Wanneer er meerdere actuele (niet ontbonden) huwelijken/partnerschappen zijn en de aanschijfwijze is ongelijk aan 'E', dan wordt als partnernaam de naam van de eerste partner (oudste relatie) gebruikt.
+
+  Wanneer er meerdere ontbonden huwelijken/partnerschappen zijn en er geen actueel (niet ontbonden) huwelijk/partnerschap is en de aanschijfwijze is ongelijk aan 'E', wordt als partnernaam de naam van de laatst ontbinden relatie gebruikt.
+
   De voorletters worden opgenomen als één (1) voorletter per voornaam, gevolgd door een punt (.).
   Als een voornaam een samengestelde naam is gescheiden door een koppelteken (-), Dan wordt deze voornaam (ook) afgekort tot één voorletter.
   Als een voornaam  begint met een dubbelklank (Th, Ph, Ch, IJ, enz.), Dan wordt deze voornaam (ook) afgekort tot één voorletter.
@@ -91,3 +95,20 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | AT | AT | N | VL AT VV GN-VP GP | Aedel | Constantijn    | C. baron van den Aedel-van Stand |
       | AT | AT | P | VL VP GP          | Stand | Elisabeth      | E. van den Aedel |
       | AT | AT | V | VL VP GP-AT VV GN | Aedel | Irene          | I. van Stand-markiezin van den Aedel |
+
+  Scenario: meerdere actuele relaties
+    Gegeven de ingeschreven persoon F.C. Groen is getrouwd in 1958 met Geel
+    En de ingeschreven persoon is getrouwd in 1961 met Roodt
+    En geen van beide relaties is beëindigd
+    En de ingeschreven persoon heeft aanduidingAanschrijving='V'
+    Als de ingeschreven persoon wordt geraadpleegd
+    Dan is in het antwoord naam.aanschrijfwijze=F.C. Geel-Groen
+
+  Scenario: meerdere ontbonden relaties
+    Gegeven de ingeschreven persoon J. Wit is getrouwd in 1958 met Geel
+    En de ingeschreven persoon is getrouwd in 1961 met Roodt
+    En het huwelijk met Geel is ontbonden in 1960
+    En het huwelijk met Roodt is ontbonden in 2006
+    En de ingeschreven persoon heeft aanduidingAanschrijving='V'
+    Als de ingeschreven persoon wordt geraadpleegd
+    Dan is in het antwoord naam.aanschrijfwijze=J. Roodt-Wit
