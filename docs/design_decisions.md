@@ -259,3 +259,6 @@ De API standaard schrijft niet voor hoe zoekresultaten in de API moeten worden g
 
 ## Historie wordt gesorteerd op geldigheid met meest actuele resultaat bovenaan
 Historie wordt aflopend gesorteerd op datum geldigheid (geldigVan).
+
+## Historie elementen krijgen dezelfde naam en betekenis als in de NEN3610
+beginGeldigheid en eindGeldigheid
