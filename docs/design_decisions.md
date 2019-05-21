@@ -262,3 +262,4 @@ Historie wordt aflopend gesorteerd op datum geldigheid (geldigVan).
 
 ## Historie elementen krijgen dezelfde naam en betekenis als in de NEN3610
 beginGeldigheid en eindGeldigheid
+Binnen de NEN standaard is er een keuze-mogelijkheid (datum en datumtijd) voor het formaat waarin de historie wordt bijgehouden. De Bron houdt geen tijd bij dus schrijven we het datum-formaat voor. 
