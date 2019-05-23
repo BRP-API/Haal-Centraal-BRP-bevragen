@@ -2471,7 +2471,7 @@ components:
           description: "De dag. Als de dag van de datum bekend is wordt deze hier\
             \ ingevuld. Ook als de volledige datum bekend is."
           pattern: "^99$"
-          format: "dat_mday"
+          format: "date_mday"
           maxLength: 2
         datum:
           type: "string"
@@ -2924,6 +2924,7 @@ components:
       description: "Soort verbintenis van een bij de burgerlijke stand ingeschreven\
         \ verbintenis:\n* `H` - huwelijk\n* `P` - geregistreerd partnerschap\n* `.`\
         \ - standaardwaarde indien onbekend"
+
       enum:
       - "H"
       - "P"
