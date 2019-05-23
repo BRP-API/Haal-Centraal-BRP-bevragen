@@ -17,7 +17,46 @@ paths:
   /ingeschrevenpersonen:
     get:
       operationId: ingeschrevenNatuurlijkPersonen
-      description: "| Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen: 1. Persoon - geboorte__datum - naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 2. Persoon - verblijfplaats__gemeentevaninschrijving - naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 3. Postcode - verblijfplaats__postcode - verblijfplaats__huisnummer 4. NaamOpenbareRuimte - verblijfplaats__naamopenbareruimte (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) - verblijfplaats__gemeentevaninschrijving - verblijfplaats__huisnummer 5. Nummeraanduiding - verblijfplaats__identificatiecodenummeraanduiding De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters, maar binnen iedere combinatie zijn de hier genoemde velden **verplicht**. Default levert een zoekvraag alleen personen op die nog in leven zijn. Indien **_inclusiefoverledenpersonen_** de waarde **_true_** heeft worden [overleden personen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) opgenomen in het zoekresultaat. Het maximale aantal zoekresultaten dat geretourneerd wordt is aan de provider om te bepalen. Als het resultaat van de de request dit aantal overtreft worden er geen resultaten geretourneerd en volgt er een foutmelding. Er vind geen sortering plaats."
+      description: |
+        Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen:
+        
+        
+        1.  Persoon
+            -  geboorte__datum
+            -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 
+
+
+        2.  Persoon
+            -  verblijfplaats__gemeentevaninschrijving
+            -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 
+    
+
+        3.  Postcode
+            -  verblijfplaats__postcode
+            -  verblijfplaats__huisnummer
+
+
+        4.  NaamOpenbareRuimte
+            -  verblijfplaats__naamopenbareruimte (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 
+
+            -  verblijfplaats__gemeentevaninschrijving
+            -  verblijfplaats__huisnummer
+            
+
+        5.  Nummeraanduiding
+            -  verblijfplaats__identificatiecodenummeraanduiding
+
+        De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters, maar binnen iedere combinatie zijn de hier genoemde velden **verplicht**. 
+
+
+        Default levert een zoekvraag alleen personen op die nog in leven zijn. Indien **_inclusiefoverledenpersonen_** de waarde **_true_** heeft worden [overleden personen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) opgenomen in het zoekresultaat.
+
+
+        Het maximale aantal zoekresultaten dat geretourneerd wordt is aan de provider om te bepalen. Als het resultaat van de de request dit aantal overtreft worden er geen resultaten geretourneerd en volgt er een foutmelding.
+
+
+         Er vind geen sortering plaats.
+
       parameters: 
         - in: query
           name: expand
@@ -81,8 +120,8 @@ paths:
           description: "Een code die aangeeft in welke gemeente de PL zich bevindt of de gemeente waarnaar de PL is uitgeschreven of de gemeente waar de PL voor de eerste keer is opgenomen. De standaardwaarde (0000) is geen geldige inhoud voor de query-parameter."
           required: false
           schema:
-            type: integer
-            maximum: 9999
+            type: string
+            maxLength: 4
             example: 0518
         - in: query
           name: verblijfplaats__huisletter
@@ -278,6 +317,7 @@ paths:
           schema:
             type: string
             maxLength: 9
+            minLength: 9
         - in: query
           name: fields
           description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature)"
@@ -406,6 +446,7 @@ paths:
           schema:
             type: string
             maxLength: 9
+            minLength: 9
         - in: path
           name: uuid
           description: "Een UUID is een nummer van 128 bits (= 16 bytes). UUID wordt weergegeven in 32 ??hexadecimale cijfers. Deze cijfers zijn ingedeeld in vijf groepen, in ongelijk aantal en gescheiden door koppeltekens: 8-4-4-4-12 In zijn geheel wordt een UUID dus door 36 tekens gevormd, waarvan 32 hexadecimale karakters en vier streepjes: 550e8400-e29b-41d4-a716-446655440000"
@@ -535,6 +576,7 @@ paths:
           schema:
             type: string
             maxLength: 9
+            minLength: 9
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -667,6 +709,7 @@ paths:
           schema:
             type: string
             maxLength: 9
+            minLength: 9
         - in: path
           name: uuid
           description: "Een UUID is een nummer van 128 bits (= 16 bytes). UUID wordt weergegeven in 32 ??hexadecimale cijfers. Deze cijfers zijn ingedeeld in vijf groepen, in ongelijk aantal en gescheiden door koppeltekens: 8-4-4-4-12 In zijn geheel wordt een UUID dus door 36 tekens gevormd, waarvan 32 hexadecimale karakters en vier streepjes: 550e8400-e29b-41d4-a716-446655440000"
@@ -796,6 +839,7 @@ paths:
           schema:
             type: string
             maxLength: 9
+            minLength: 9
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -928,6 +972,7 @@ paths:
           schema:
             type: string
             maxLength: 9
+            minLength: 9
         - in: path
           name: uuid
           description: "Een UUID is een nummer van 128 bits (= 16 bytes). UUID wordt weergegeven in 32 ??hexadecimale cijfers. Deze cijfers zijn ingedeeld in vijf groepen, in ongelijk aantal en gescheiden door koppeltekens: 8-4-4-4-12 In zijn geheel wordt een UUID dus door 36 tekens gevormd, waarvan 32 hexadecimale karakters en vier streepjes: 550e8400-e29b-41d4-a716-446655440000"
@@ -1057,6 +1102,7 @@ paths:
           schema:
             type: string
             maxLength: 9
+            minLength: 9
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -1318,6 +1364,7 @@ paths:
           schema:
             type: string
             maxLength: 9
+            minLength: 9
         - in: query
           name: soortreisdocument
           description: "Het soort reisdocument dat verstrekt is aan de INGESCHREVEN NATUURLIJK PERSOON. Element 35.10 Een codering, opgenomen in Tabel 48, Tabel Nederlands reisdocument, die aangeeft welk Nederlandse reisdocument is verstrekt of in welk reisdocument de ingeschrevene is bijgeschreven."
@@ -1473,6 +1520,7 @@ components:
             \ - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
           pattern: "^[0-9]{9}$"
           maxLength: 9
+          minLength: 9
           example: "555555021"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
@@ -1533,6 +1581,7 @@ components:
             \ - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
           pattern: "^[0-9]{9}$"
           maxLength: 9
+          minLength: 9
           example: "430422088"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
@@ -1573,6 +1622,7 @@ components:
             \ - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
           pattern: "^[0-9]{9}$"
           maxLength: 9
+          minLength: 9
           example: "430422088"
         registergemeenteAkte:
           $ref: "#/components/schemas/Gemeenten_tabel"
@@ -1608,6 +1658,7 @@ components:
             \ - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
           pattern: "^[0-9]{9}$"
           maxLength: 9
+          minLength: 9
           example: "430422088"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
@@ -1627,7 +1678,7 @@ components:
           $ref: "#/components/schemas/Partner_links"
     Reisdocument:
       type: "object"
-      description: ""
+      description: "Een document dat vereist is voor reizen naar het buitenland"
       properties:
         aanduidingInhouding_vermissing:
           $ref: "#/components/schemas/AanduidingInhoudingVermissingReisdocument_enum"
@@ -1636,7 +1687,9 @@ components:
           title: "Reisdocumentnummer"
           description: "Het nummer van het verstrekte Nederlandse reisdocument. Element\
             \ 35.20 Het nummer van het verstrekte Nederlandse reisdocument of het\
-            \ nummer van het Nederlandse reisdocument waarin de ingeschrevene is bijgeschreven."
+            \ nummer van het Nederlandse reisdocument waarin de ingeschrevene is bijgeschreven.\
+            \ Standaardwaarde ......... Mogelijke waarden Het nummer van het reisdocument.\
+            \ Standaardwaarde indien onbekend."
           maxLength: 9
           example: "546376728"
         signaleringVerstrekkenReisdocument:
@@ -1673,7 +1726,8 @@ components:
           description: "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels\
             \ en adellijke titel/predikaat zijn afgesplitst. Element 02.40 De (geslachts)naam\
             \ waarvan de eventueel aanwezige voorvoegsels (tabel 36) en adellijke\
-            \ titel/predikaat (tabel 38) zijn afgesplitst."
+            \ titel/predikaat (tabel 38) zijn afgesplitst. Standaardwaarde . Mogelijke\
+            \ waarden De geslachtsnaam. Standaardwaarde indien onbekend."
           maxLength: 200
           example: "Vries"
         voornamen:
@@ -1814,21 +1868,20 @@ components:
         einddatumUitsluitingKiesrecht:
           $ref: "#/components/schemas/Datum_onvolledig"
     NaamPersoon:
-      type: "object"
-      description: ""
-      properties:
-        aanduidingNaamgebruik:
-          $ref: "#/components/schemas/Naamgebruik_enum"
-        aanschrijfwijze:
-          type: "string"
-          title: "aanschrijfwijze"
-          description: "| Samengestelde naam zoals die in communicatie met de persoon\
-            \ gebruikt kan worden. Hoe het samenstellen van een aanschrijfwijze te\
-            \ werk gaat is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanschrijfwijze.feature)"
-          maxLength: 50
-          example: "P.J. graaf de Vries- van der Zon"
-        naam:
-          $ref: "#/components/schemas/Naam"
+      allOf: 
+        - $ref: "#/components/schemas/Naam"
+        - type: object
+          properties:
+            aanduidingAanschrijving:
+              $ref: "#/components/schemas/Naamgebruik_enum"
+            aanschrijfwijze:
+              type: "string"
+              title: "aanschrijfwijze"
+              description: "| Samengestelde naam zoals die in communicatie met de persoon\
+                \ gebruikt kan worden. Hoe het samenstellen van een aanschrijfwijze te\
+                \ werk gaat is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanschrijfwijze.feature)"
+              maxLength: 50
+              example: "P.J. graaf de Vries- van der Zon"
     PersoonInOnderzoek:
       type: "object"
       description: "Een groep van booleans om aan te geven welke gegevens van de ingeschreven\
@@ -1973,7 +2026,8 @@ components:
           $ref: "#/components/schemas/Datum_onvolledig"
     AangaanHuwelijk_Partnerschap:
       type: "object"
-      description: ""
+      description: "Gegevens over het gesloten huwelijk of het aangegane geregistreerd\
+        \ partnerschap."
       properties:
         datum:
           $ref: "#/components/schemas/Datum_onvolledig"
@@ -2034,8 +2088,8 @@ components:
             \ van een adresseerbaar object toegekende nummering. Element 11.20 De\
             \ numerieke aanduiding zoals deze door het gemeentebestuur aan het object\
             \ is toegekend dan wel een door of namens het bevoegde gemeentelijke orgaan\
-            \ ten aanzien van een adresseerbaar object toegekende nummering. Alle\
-            \ natuurlijke getallen tussen 1 en 99999."
+            \ ten aanzien van een adresseerbaar object toegekende nummering. Standaardwaarde\
+            \ is 0 Alle natuurlijke getallen tussen 1 en 99999."
           maximum: 99999
           example: "23"
         huisnummertoevoeging:
@@ -2062,11 +2116,11 @@ components:
             \ is een combinatie van een viercijferige gemeentecode, de tweecijferige\
             \ objecttypecode 20 die aangeeft dat om een nummeraanduiding gaat en een\
             \ voor het betreffende objecttype binnen een gemeente uniek tiencijferig\
-            \ volgnummer. Combinatie van de viercijferige 'gemeentecode' (volgens\
-            \ GBA tabel 33, Gemeententabel), de tweecijferige 'objecttypecode' en\
-            \ een voor het betreffende objecttype binnen een gemeente uniek tiencijferig\
-            \ 'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde:20\
-            \ nummeraanduiding."
+            \ volgnummer. Standaardwaarde is 0000000000000000 Combinatie van de viercijferige\
+            \ 'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige\
+            \ 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente\
+            \ uniek tiencijferig 'objectvolgnummer'. De objecttypecode kent in de\
+            \ BAG de volgende waarde:20 nummeraanduiding."
           maxLength: 16
           example: "0518200000366054"
         identificatiecodeVerblijfplaats:
@@ -2079,11 +2133,11 @@ components:
             \ van een viercijferige gemeentecode, een tweecijferige objecttypecode\
             \ die aangeeft of de aanduiding een verblijfsobject (01), ligplaats (02)\
             \ of standplaats (03) betreft en een voor het betreffende objecttype binnen\
-            \ een gemeente uniek tiencijferig volgnummer. Combinatie van de viercijferige\
-            \ 'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige\
-            \ 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente\
-            \ uniek tiencijferig 'objectvolgnummer'. De objecttypecode kent in de\
-            \ BAG de volgende waarde:20 nummeraanduiding."
+            \ een gemeente uniek tiencijferig volgnummer. Standaardwaarde is 0000000000000000\
+            \ Combinatie van de viercijferige 'gemeentecode' (volgens GBA tabel 33,\
+            \ Gemeententabel), de tweecijferige 'objecttypecode' en een voor het betreffende\
+            \ objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'.\
+            \ De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding."
           maxLength: 16
           example: "0518200000366054"
         indicatieVestigingVanuitBuitenland:
@@ -2139,8 +2193,8 @@ components:
           description: "De door het bevoegde gemeentelijke orgaan aan een WOONPLAATS\
             \ toegekende benaming. Element 11.70 Een woonplaatsnaam is de naam van\
             \ een door het bevoegde gemeentelijke orgaan als zodanig aangewezen gedeelte\
-            \ van het gemeentelijk grondgebied. Tekens gecodeerd volgens de UTF-8\
-            \ standaard."
+            \ van het gemeentelijk grondgebied. De standaardwaarde is . Tekens gecodeerd\
+            \ volgens de UTF-8 standaard."
           maxLength: 80
           example: "Utrecht"
         datumAanvangAdreshouding:
@@ -2161,7 +2215,7 @@ components:
           $ref: "#/components/schemas/VerblijfplaatsInOnderzoek"
     VerblijfBuitenland:
       type: "object"
-      description: ""
+      description: "De gegevens over het verblijf in het buitenland"
       properties:
         adresRegel1:
           type: "string"
@@ -2417,6 +2471,7 @@ components:
           description: "De dag. Als de dag van de datum bekend is wordt deze hier\
             \ ingevuld. Ook als de volledige datum bekend is."
           pattern: "^99$"
+          format: "dat_mday"
           maxLength: 2
         datum:
           type: "string"
@@ -2437,6 +2492,7 @@ components:
           description: "De maand. Als de maand van een datum bekend is wordt deze\
             \ hier ingevuld. Ook als de volledige datum is ingevuld."
           pattern: "^99$"
+          format: "date-month"
           maxLength: 2
     Gemeenten_tabel:
       type: "object"
@@ -2746,14 +2802,18 @@ components:
             $ref: "#/components/schemas/Partner"
     AanduidingEuropeesKiesrecht_enum:
       type: "string"
-      description: ":\n* `1` - persoon is uitgesloten\n* `2` - persoon ontvangt oproep"
+      description: "De mogelijke waarden van de aanduiding van inhouding of vermissing\
+        \ van een Nederlands reisdocument. Zie logisch ontwerp BRP bij de stamtabellen:\n\
+        * `1` - persoon is uitgesloten\n* `2` - persoon ontvangt oproep"
       enum:
       - "1"
       - "2"
     AanduidingInhoudingVermissingReisdocument_enum:
       type: "string"
-      description: ":\n* `I` - Ingehouden, ingeleverd\n* `V` - Vermist\n* `R` - Rechtswege\n\
-        * `.` - Onbekend"
+      description: "De mogelijke waarden van de aanduiding van inhouding of vermissing\
+        \ van een Nederlands reisdocument. Zie logisch ontwerp BRP bij de stamtabellen:\n\
+        * `I` - Ingehouden, ingeleverd\n* `V` - Vermist\n* `R` - Rechtswege\n* `.`\
+        \ - Onbekend"
       enum:
       - "I"
       - "V"
@@ -2761,7 +2821,8 @@ components:
       - "."
     AanduidingBijzonderNederlanderschap_enum:
       type: "string"
-      description: ":\n* `B` - behandeld als Nederlander\n* `V` - vastgesteld niet-Nederlander"
+      description: "De aanduiding van het bijzonder Nederlanderschap:\n* `B` - behandeld\
+        \ als Nederlander\n* `V` - vastgesteld niet-Nederlander"
       enum:
       - "B"
       - "V"
@@ -2784,23 +2845,14 @@ components:
       - "O"
     IndicatieGeheim_enum:
       type: "string"
-      description: "Categorie 07.70 uit de GBA.:\n* `0` - geen beperking\n* `1` -\
-        \ niet zonder toestemming aan derden ter uitvoering van een\n* `2` - niet\
-        \ aan kerken\n* `3` - niet aan vrije derden\n* `4` - niet zonder toestemming\
-        \ aan derden ter uitvoering van een algemeen verbindend voorschrift en niet\
-        \ aan kerken\n* `5` - niet zonder toestemming aan derden ter uitvoering van\
-        \ een algemeen verbindend voorschrift en niet aan vrije derden\n* `6` - niet\
-        \ aan kerken en niet aan vrije derden\n* `7` - niet zonder toestemming aan\
-        \ derden ter uitvoering van een algemeen verbindend voorschrift en niet aan\
-        \ vrije derden en niet aan kerken"
+      description: "Categorie 07.70 uit de GBA. Conform &amp; 3.8.7 LO GBA is alleen\
+        \ de waarde 0 en de waarde 7 toegestaan. Mocht de bron de waarde 1 t/m 6 bevatten\
+        \ dan dient deze door de provider geconverteerd te worden naar waarde 7.:\n\
+        * `0` - geen beperking\n* `7` - niet zonder toestemming aan derden ter uitvoering\
+        \ van een algemeen verbindend voorschrift en niet aan vrije derden en niet\
+        \ aan kerken"
       enum:
       - "0"
-      - "1"
-      - "2"
-      - "3"
-      - "4"
-      - "5"
-      - "6"
       - "7"
     IndicatieGezagMinderjarige_enum:
       type: "string"
@@ -2827,15 +2879,18 @@ components:
       - "N"
     OuderAanduiding_enum:
       type: "string"
-      description: ":\n* `1` - Ouder1\n* `2` - Ouder2"
+      description: "Aanduiding om welke ouder het gaat volgens de GBA:\n* `1` - Ouder1\n\
+        * `2` - Ouder2"
       enum:
       - "1"
       - "2"
     RedenOpschortingBijhouding_enum:
       type: "string"
-      description: ":\n* `O` - overlijden\n* `E` - emigratie\n* `M` - Ministerieel\
-        \ besluit\n* `R` - PL aangelegd in de RNI\n* `F` - fout\n* `.` - standaardwaarde\
-        \ indien onbekend"
+      description: "Redenen voor opschorting van de bijhouding. Indien er wel een\
+        \ redenOpschortingBijhouding is maar er wordt geen datumOpschortingBijhouding\
+        \ geleverd, dan is dat datumOpschortingBijhouding onbekend.:\n* `O` - overlijden\n\
+        * `E` - emigratie\n* `M` - Ministerieel besluit\n* `R` - PL aangelegd in de\
+        \ RNI\n* `F` - fout\n* `.` - standaardwaarde indien onbekend"
       enum:
       - "O"
       - "E"
@@ -2845,14 +2900,14 @@ components:
       - "."
     SoortAdres_enum:
       type: "string"
-      description: ":\n* `W` - Woonadres\n* `B` - Briefadres"
+      description: "Aanduiding van het soort adres.:\n* `W` - Woonadres\n* `B` - Briefadres"
       enum:
       - "W"
       - "B"
     SoortRedenWijzigingNationaliteit_enum:
       type: "string"
-      description: ":\n* `VK` - verkrijging\n* `OP` - opname\n* `VL` - verlies\n*\
-        \ `BE` - beëindiging"
+      description: "De soort van de reden van de wijziging van de Nationaliteitgegevens:\n\
+        * `VK` - verkrijging\n* `OP` - opname\n* `VL` - verlies\n* `BE` - beëindiging"
       enum:
       - "VK"
       - "OP"
@@ -2860,13 +2915,15 @@ components:
       - "BE"
     AanduidingUitsluitingKiesrecht_enum:
       type: "string"
-      description: ":\n* `A` - uitgesloten van kiesrecht."
+      description: "Soort verbintenis van een bij de burgerlijke stand ingeschreven\
+        \ verbintenis:\n* `A` - uitgesloten van kiesrecht."
       enum:
       - "A"
     SoortVerbintenis_enum:
       type: "string"
-      description: ":\n* `H` - huwelijk\n* `P` - geregistreerd partnerschap\n* `.`\
-        \ - onbekend"
+      description: "Soort verbintenis van een bij de burgerlijke stand ingeschreven\
+        \ verbintenis:\n* `H` - huwelijk\n* `P` - geregistreerd partnerschap\n* `.`\
+        \ - standaardwaarde indien onbekend"
       enum:
       - "H"
       - "P"
