@@ -169,7 +169,7 @@ paths:
           required: false
           schema:
             type: string
-            pattern: ^[1-9]{1}[0-9]{3}[A-Z]{2}
+            pattern: ^[1-9]{1}[0-9]{3}[A-Z]{2}$
             example: 2341SX
         - in: query
           name: naam__voorvoegsel
@@ -281,6 +281,15 @@ paths:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '500':
           description: Internal Server Error
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '503':
+          description: Service Unavailable
           headers:
             api-version:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
@@ -423,6 +432,15 @@ paths:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '503':
+          description: Service Unavailable
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         'default':
           description: Er is een onverwachte fout opgetreden.
           headers:
@@ -546,6 +564,15 @@ paths:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '500':
           description: Internal Server Error
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '503':
+          description: Service Unavailable
           headers:
             api-version:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
@@ -686,6 +713,15 @@ paths:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '503':
+          description: Service Unavailable
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         'default':
           description: Er is een onverwachte fout opgetreden.
           headers:
@@ -809,6 +845,15 @@ paths:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '500':
           description: Internal Server Error
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '503':
+          description: Service Unavailable
           headers:
             api-version:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
@@ -949,6 +994,15 @@ paths:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '503':
+          description: Service Unavailable
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         'default':
           description: Er is een onverwachte fout opgetreden.
           headers:
@@ -1072,6 +1126,15 @@ paths:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '500':
           description: Internal Server Error
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '503':
+          description: Service Unavailable
           headers:
             api-version:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
@@ -1212,6 +1275,15 @@ paths:
             application/problem+json:
               schema:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '503':
+          description: Service Unavailable
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         'default':
           description: Er is een onverwachte fout opgetreden.
           headers:
@@ -1327,6 +1399,15 @@ paths:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '500':
           description: Internal Server Error
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '503':
+          description: Service Unavailable
           headers:
             api-version:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
@@ -1477,6 +1558,15 @@ paths:
                 $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
         '500':
           description: Internal Server Error
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '503':
+          description: Service Unavailable
           headers:
             api-version:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
@@ -1680,7 +1770,7 @@ components:
       type: "object"
       description: "Een document dat vereist is voor reizen naar het buitenland"
       properties:
-        aanduidingInhouding_vermissing:
+        aanduidingInhoudingOfVermissing:
           $ref: "#/components/schemas/AanduidingInhoudingVermissingReisdocument_enum"
         reisdocumentnummer:
           type: "string"
@@ -1755,11 +1845,6 @@ components:
       description: "In onderzoekgroep om aan te geven of gegevens over de naam van\
         \ de Ingeschreven persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
       properties:
-        aanduidingNaamgebruik:
-          type: "boolean"
-          title: "aanduidingNaamgebruik"
-          description: "Indicator die aangeeft of het corresponderende gegeven voor\
-            \ deze persoon in onderzoek is."
         adellijkeTitel_predikaat:
           type: "boolean"
           title: "adellijkeTitel_predikaat"
@@ -2492,7 +2577,7 @@ components:
           description: "De maand. Als de maand van een datum bekend is wordt deze\
             \ hier ingevuld. Ook als de volledige datum is ingevuld."
           pattern: "^99$"
-          format: "date-month"
+          format: "date_month"
           maxLength: 2
     Gemeenten_tabel:
       type: "object"
@@ -2598,9 +2683,9 @@ components:
         code:
           type: "string"
           title: "Verblijfstitel numeriek"
-          description: "Het nummer van de verblijfstitel alle natuurlijk getallen\
-            \ met voorloopnullen (inclusief 00)"
-          pattern: "^[0-9]$"
+          description: "Het nummer van de verblijfstitel Het nummer van de verblijfstitel\
+            \ alle natuurlijk getallen met voorloopnullen"
+          pattern: "^[0-9]{2}$"
           maxLength: 2
           example: "09"
         omschrijving:
@@ -2673,12 +2758,13 @@ components:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
         partnerhistorie:
           title: "heeftAlsPartner"
-          type: "array"
+          type: "object"
           description: "Het ophalen van de partnerhistorie van een ingeschreven persoon.\
             \ Van een ingeschreven persoon worden parters waarmee nu of in het verleden\
             \ relaties geregistreerd zijn geretourneerd."
-          items:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
+          properties:
+            href:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
         partners:
           title: "heeftAlsPartner"
           type: "array"
@@ -2924,7 +3010,6 @@ components:
       description: "Soort verbintenis van een bij de burgerlijke stand ingeschreven\
         \ verbintenis:\n* `H` - huwelijk\n* `P` - geregistreerd partnerschap\n* `.`\
         \ - standaardwaarde indien onbekend"
-
       enum:
       - "H"
       - "P"
