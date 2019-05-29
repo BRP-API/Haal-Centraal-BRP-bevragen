@@ -11,18 +11,17 @@ Functionaliteit: Afhandeling van fouten
   In de foutresponse krijgt "instance" de url van het request die tot de fout heeft geleid.
 
   We kennen de volgende foutsituaties:
-  | Foutsituatie                      | status | title                                                         | code              |
-  | Geen parameter is meegegeven      | 400    | Ten minste één parameter moet worden opgegeven.               | paramsRequired    |
-  | Verplichte parameter(combinatie)  | 400    | Minimale combinatie van parameters moet worden opgegeven.     | paramsCombination |
-  | Parametervalidatie                | 400    | Een of meerdere parameters zijn niet correct.                 | paramsValidation  |
-  | Niet geauthenticeerd              | 401    | Niet correct geauthenticeerd.                                 | authentication    |
-  | Geen autorisatie voor operatie    | 403    | U bent niet geautoriseerd voor deze operatie.                 | autorisation      |
-  | Opgevraagde resource bestaat niet | 404    | Opgevraagde resource bestaat niet.                            | notFound          |
-  | Accept header <> JSON             | 406    | Gevraagde contenttype wordt niet ondersteund.                 | notAcceptable     |
-  | Technische of interne fout        | 500    | Interne server fout.                                          | serverError       |
-
-  Wanneer bij het raadplegen van een persoon op burgerservicenummer meerdere personen worden teruggegeven door de bron, wordt een interne server fout (status 500) teruggegeven.
-  Wanneer een onderliggende bron, zoas GBA-V, een timeout of geen response geeft, wordt een interne server fout (status 500) teruggegeven.
+  | Foutsituatie                       | status | title                                                         | code              |
+  | Geen parameter is meegegeven       | 400    | Ten minste één parameter moet worden opgegeven.               | paramsRequired    |
+  | Verplichte parameter(combinatie)   | 400    | Minimale combinatie van parameters moet worden opgegeven.     | paramsCombination |
+  | Parametervalidatie                 | 400    | Een of meerdere parameters zijn niet correct.                 | paramsValidation  |
+  | Niet geauthenticeerd               | 401    | Niet correct geauthenticeerd.                                 | authentication    |
+  | Geen autorisatie voor operatie     | 403    | U bent niet geautoriseerd voor deze operatie.                 | autorisation      |
+  | Opgevraagde resource bestaat niet  | 404    | Opgevraagde resource bestaat niet.                            | notFound          |
+  | Accept header <> JSON              | 406    | Gevraagde contenttype wordt niet ondersteund.                 | notAcceptable     |
+  | Technische of interne fout         | 500    | Interne server fout.                                          | serverError       |
+  | Bronservice is niet beschikbaar    | 503    | Bronservice {bron} is niet beschikbaar.                       | sourceUnavailable |
+  | Raadplegen geeft meerdere personen | 400    | Opgegeven {parameternaam} is niet uniek.                      | notUnique         |
 
   Wanneer de onderliggende bron GBA-V, een foutcode teruggeeft wordt dat als volgt vertaald:
   | /vraagResponse/vraagReturn/resultaat/letter | status | code             | invalid-params.code | invalid-params.reason                           |
@@ -110,7 +109,7 @@ Functionaliteit: Afhandeling van fouten
   Scenario: geen enkele zoekparameter opgegeven in zoekvraag
     Als ingeschrevenpersonen worden gezocht zonder parameters
     Dan is de http status code van het antwoord 400
-    En is in het antwoord title=Minimale combinatie van parameters moet worden opgegeven
+    En is in het antwoord title=Minimale combinatie van parameters moet worden opgegeven.
     En is in het antwoord status=400
     En eindigt attribuut instance met /ingeschrevenpersonen
     En is in het antwoord code=paramsRequired
@@ -120,7 +119,7 @@ Functionaliteit: Afhandeling van fouten
   Scenario: personen zoeken zonder minimale combinatie van zoekparamters
     Als ingeschrevenpersonen worden gezocht met naam__geslachtsnaam=jansen
     Dan is de http status code van het antwoord 400
-    En is in het antwoord title=Minimale combinatie van parameters moet worden opgegeven
+    En is in het antwoord title=Minimale combinatie van parameters moet worden opgegeven.
     En is in het antwoord status=400
     En eindigt attribuut instance met ingeschrevenpersonen?naam__geslachtsnaam=jansen
     En is in het antwoord code=paramsCombination
@@ -130,7 +129,7 @@ Functionaliteit: Afhandeling van fouten
   Scenario: meerdere fouten in parameters
     Als ingeschrevenpersonen worden gezocht met verblijfplaats__huisnummer=a&verblijfplaats__postcode=b&inclusiefoverledenpersonen=c&geboorte__datum=d
     Dan is de http status code van het antwoord 400
-    En is in het antwoord title=Een of meerdere parameters zijn niet correct
+    En is in het antwoord title=Een of meerdere parameters zijn niet correct.
     En is in het antwoord status=400
     En eindigt attribuut instance met ingeschrevenpersonen?huisnummer=a&postcode=b&inclusiefoverledenpersonen=c&geboorte__datum=d
     En bevat invalid-params exact 4 voorkomen(s)
@@ -148,13 +147,13 @@ Functionaliteit: Afhandeling van fouten
     En komt attribuut invalid-params niet voor in het antwoord
     Als ingeschrevenpersonen worden gezocht met invalide authenticatiegegevens (onjuiste SAML assertion)
     Dan is de http status code van het antwoord 401
-    En is in het antwoord title=Niet correct geauthenticeerd
+    En is in het antwoord title=Niet correct geauthenticeerd.
     En is in het antwoord status=401
     En is in het antwoord code=authentication
     En komt attribuut invalid-params niet voor in het antwoord
     Als ingeschrevenpersonen worden gezocht met onbekende gebruiker (onbekende SAML assertion)
     Dan is de http status code van het antwoord 401
-    En is in het antwoord title=Niet correct geauthenticeerd
+    En is in het antwoord title=Niet correct geauthenticeerd.
     En is in het antwoord status=401
     En is in het antwoord code=authentication
     En komt attribuut invalid-params niet voor in het antwoord
@@ -162,7 +161,7 @@ Functionaliteit: Afhandeling van fouten
   Scenario: niet geautoriseerd
     Als ingeschrevenpersonen worden gezocht met een geauthentiseerde gebruiker zonder rechten op de API
     Dan is de http status code van het antwoord 403
-    En is in het antwoord title=U bent niet geautoriseerd voor deze operatie
+    En is in het antwoord title=U bent niet geautoriseerd voor deze operatie.
     En is in het antwoord status=403
     En is in het antwoord code=autorisation
     En komt attribuut invalid-params niet voor in het antwoord
@@ -170,7 +169,7 @@ Functionaliteit: Afhandeling van fouten
   Scenario: niet gevonden
     Als de ingeschrevenpersonen wordt geraadpleegd met burgerservicenummer=123456789
     Dan is de http status code van het antwoord 404
-    En is in het antwoord title=Opgevraagde resource bestaat niet
+    En is in het antwoord title=Opgevraagde resource bestaat niet.
     En is in het antwoord status=404
     En is in het antwoord code=notFound
     En komt attribuut invalid-params niet voor in het antwoord
@@ -178,7 +177,23 @@ Functionaliteit: Afhandeling van fouten
   Scenario: niet ondersteund contenttype
     Als de ingeschrevenpersonen wordt geraadpleegd met acceptheader application/xml
     Dan is de http status code van het antwoord 406
-    En is in het antwoord title=Gevraagde contenttype wordt niet ondersteund
+    En is in het antwoord title=Gevraagde contenttype wordt niet ondersteund.
     En is in het antwoord status=406
     En is in het antwoord code=notAcceptable
+    En komt attribuut invalid-params niet voor in het antwoord
+
+  Scenario: bronservice is niet beschikbaar
+    Als een ingeschreven persoon wordt geraadpleegd
+    En de bron GBA-V geen response of een timeout geeft
+    Dan is de http status code van het antwoord 503
+    En is in het antwoord title=Bronservice GBA-V is niet beschikbaar.
+    En is in het antwoord status=503
+    En is in het antwoord code=sourceUnavailable
+    En komt attribuut invalid-params niet voor in het antwoord
+    Als een ingeschreven persoon wordt geraadpleegd
+    En de bron GBA-V geeft de foutmelding “Service is niet geactiveerd voor dit account.”
+    Dan is de http status code van het antwoord 503
+    En is in het antwoord title=Bronservice GBA-V is niet beschikbaar.
+    En is in het antwoord status=503
+    En is in het antwoord code=sourceUnavailable
     En komt attribuut invalid-params niet voor in het antwoord
