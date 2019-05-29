@@ -136,8 +136,8 @@ Een groot deel van de vragen om persoonsgegevens is er direct behoefte aan de ad
 Zie https://www.rvig.nl/brp/vraag-en-antwoord/mag-een-persoon-worden-ingeschreven-op-een-locatieomschrijving-in-de-gba-als-er-geen-authentiek-bag-adres-is
 Deze oplossing is ook een oplossing voor issue [22](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/issues/22) en [14](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/issues/14).
 
-## Verblijfplaats wordt gevuld met adresgegevens uit het GBA
-De verblijfplaats toont de adresgegevens zoals die in het GBA staan geregistreerd.
+## Verblijfplaats wordt gevuld met adresgegevens uit het GBA als er geen BAG adres beschikbaar is
+De verblijfplaats toont de adresgegevens zoals die in het GBA staan geregistreerd als er geen BAG nummeraanduiding en openbare ruimtenaam uit de BAG beschikbaar is.
 
 *Ratio*
 Vanuit het GBA hoeft er geen verbinding te zijn naar het BAG om de juiste adresgegevens op te halen.
