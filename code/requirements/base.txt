@@ -14,9 +14,9 @@ django-axes==4.4.0
 django-choices==1.6.1
 django-filter==2.0.0      # via zds-schema
 django-ipware==2.1.0      # via django-axes
-django>=2.0.11
+django==2.0.13
 djangorestframework-camel-case==0.2.0  # via zds-schema
-djangorestframework==3.8.2
+djangorestframework==3.9.1
 drf-nested-routers==0.90.2  # via zds-schema
 drf-yasg==1.10.0          # via zds-schema
 first==2.0.1              # via pip-tools
@@ -37,9 +37,9 @@ psycopg2-binary==2.7.5
 python-dateutil==2.7.3
 python-dotenv==0.9.1
 pytz==2018.5
-pyyaml>=4.2b1             # via gemma-zds-client, oyaml, zds-schema
+pyyaml==5.1               # via gemma-zds-client, oyaml, zds-schema
 raven==6.9.0
-requests>=2.20.0          # via coreapi, gemma-zds-client, zds-schema
+requests==2.22.0          # via coreapi, gemma-zds-client, zds-schema
 ruamel.yaml==0.15.64      # via drf-yasg
 six==1.11.0               # via drf-yasg, isodate, pip-tools, python-dateutil
 unidecode==1.0.22         # via zds-schema
