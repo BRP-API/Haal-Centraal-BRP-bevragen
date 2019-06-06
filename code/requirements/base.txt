@@ -44,5 +44,5 @@ ruamel.yaml==0.15.64      # via drf-yasg
 six==1.11.0               # via drf-yasg, isodate, pip-tools, python-dateutil
 unidecode==1.0.22         # via zds-schema
 uritemplate==3.0.0        # via coreapi, drf-yasg
-urllib3==1.23             # via requests
+urllib3==1.24.2           # via requests
 zds-schema==0.6.0
