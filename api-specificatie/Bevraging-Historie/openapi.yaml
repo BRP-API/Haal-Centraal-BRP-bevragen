@@ -1,4 +1,4 @@
-﻿openapi: 3.0.0
+openapi: 3.0.0
 servers:
   - description: "SwaggerHub API Auto Mocking"
     url: https://virtserver.swaggerhub.com/VNGRealisatie/api/historie_ingeschreven_personen/v1
@@ -16,14 +16,13 @@ info:
 paths:
   /historie/bewoningen:
     get:
-      operationId: historieBewoningen
+      operationId: ingeschrevenNatuurlijkPersonen
       description: |
         Het ophalen van de gegevens van een collectie Bewoningen. 
         Een bewoning is een VERBLIJFPLAATS waar op enig moment daadwerkelijk minimaal 1 INGESCHREVEN PERSOON is ingeschreven 
         
 
-        Op basis van de parameters wordt een meerdere bewoningen geretourneerd inclusief de bewoners van het betreffende verblijfplaats.
-
+        Op basis van de parameters wordt een meerdere bewoningen geretourneerd inclusief de bewoners van het betreffende verblijfplaats. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen.
 
 
         1.  Postcode
@@ -56,49 +55,10 @@ paths:
 
         Als geldigOp is ingevuld mogen datumVan en datumTotenMet nietingevuld zijn. 
 
-        Erwordt niet op de gevonden adressen gesorteerd, maar per aders (bewoning) worden de bewoners wel gesorteerd op geldigVan.
+        Er wordt niet op de gevonden adressen gesorteerd, maar per aders (bewoning) worden de bewoners wel gesorteerd op geldigVan.
+
       parameters: 
-        - in: query
-          name: expand
-          description: "Hier kan aangegeven worden welke gerelateerde resources meegeladen moeten worden. Resources en velden van resources die gewenst zijn kunnen in de expand parameter kommagescheiden worden opgegeven. Specifieke velden van resource kunnen worden opgegeven door het opgeven van de resource-naam gevolgd door de veldnaam, met daartussen een punt."
-          required: false
-          schema:
-            type: string
-            example: kinderen,adressen.postcode,adressen.huisnummer
-        - in: query
-          name: fields
-          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven."
-          required: false
-          schema:
-            type: string
-            example: id,onderwerp,aanvrager,wijzig_datum
-        - in: query
-          name: huisletter
-          description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende toevoeging aan een huisnummer in de vorm van een alfanumeriek teken. **Deze query-parameter moet minimaal gecombineerd worden met de queryparameter POSTCODE en HUISNUMMER of met de combinatie of met de WOONPLAATSNAAM en NAAMOPENBARERUIMTE en HUISNUMMER** Dit attribuutsoort is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING. Het is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting in de BAG. a - z , A ? Z"
-          required: false
-          schema:
-            type: string
-            maxLength: 1
-        - in: query
-          name: identificatiecodenummeraanduiding
-          description: "De unieke aanduiding van een NUMMERAANDUIDING. zie toelichting BAG Combinatie van de viercijferige 'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding."
-          required: false
-          schema:
-            type: string
-            maxLength: 16
-        - in: query
-          name: huisnummer
-          description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nummering. **Deze query-parameter moet minimaal gecombineerd worden met de queryparameter POSTCODE of met de WOONPLAATSNAAM en NAAMOPENBARERUIMTE** Dit attribuutsoort is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING. Het is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting in de BAG. Alle natuurlijke getallen tussen 1 en 99999."
-          required: false
-          schema:
-            type: integer
-        - in: query
-          name: huisnummertoevoeging
-          description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter. **Deze query-parameter moet minimaal gecombineerd worden met de queryparameter POSTCODE en HUISNUMMER of met de combinatie WOONPLAATSNAAM en NAAMOPENBARERUIMTE en HUISNUMMER** Dit attribuutsoort is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING. Het is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting in de BAG. a - z , A - Z , 0 ? 9"
-          required: false
-          schema:
-            type: string
-            maxLength: 4
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/parameters.yaml#/expand"
         - in: query
           name: geldigop
           description: "De peildatum van de periode waarover de bewoning wordt opgevraagd. Het resultaat bevat de bewoning en de bewoners waarvan de begindatumgeldigheidDe peildatum van de periode waarover de verblijfsplaatshistorie wordt opgevraagd. Het resultaat bevat de verblijfsplaats historie waarvan de begindatum voor op op de peildatum ligt en de eindatum na of op de peildatum ligt. verblijfsplaats voor op op de geldigOp ligt en de eindatumgeldigheidverblijfsplaats na of op de geldigOp ligt."
@@ -106,14 +66,14 @@ paths:
           schema:
             type: string
             format: date
-          example: 2018-09-09
+            example: 2018-09-09
         - in: query
-          name: postcode
-          description: "De door PostNL vastgestelde code behorende bij een bepaalde combinatie van een naam van een woonplaats, naam van een openbare ruimte en een huisnummer **Deze query-parameter moet minimaal gecombineerd worden met de queryparameter HUISNUMMER. ** Dit attribuutsoort is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING. Het is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting in de BAG."
+          name: geldigtot
+          description: "De einddatum van de periode waarover de bewoning wordt opgevraagd. Het resultaat bevat de bewoning en bewoners verblijfsplaatshistorie waarvan de einddatum op of na de datumVan ligt"
           required: false
           schema:
             type: string
-            pattern: ^[1-9]{1}[0-9]{3}[A-Z]{2}
+            format: date
         - in: query
           name: geldigvan
           description: "De begindatum van de periode waarover de bewoning wordt opgevraagd. Het resultaat bevat debewoningen en bewoners waarvan de begindatum op of na de datumVan ligt"
@@ -122,66 +82,171 @@ paths:
             type: string
             format: date
         - in: query
+          name: huisletter
+          description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende toevoeging aan een huisnummer in de vorm van een alfanumeriek teken. Dit attribuutsoort is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING. Het is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting in de BAG. a - z , A – Z"
+          required: false
+          schema:
+            type: string
+            maxLength: 1
+        - in: query
+          name: huisnummer
+          description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nummering. Dit attribuutsoort is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING. Het is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting in de BAG. Alle natuurlijke getallen tussen 1 en 99999."
+          required: false
+          schema:
+            type: integer
+            maximum: 99999
+        - in: query
+          name: huisnummertoevoeging
+          description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter. Dit attribuutsoort is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING. Het is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting in de BAG. a - z , A - Z , 0 – 9"
+          required: false
+          schema:
+            type: string
+            maxLength: 4
+        - in: query
+          name: identificatiecodenummeraanduiding
+          description: "De unieke aanduiding van een NUMMERAANDUIDING. zie toelichting BAG Combinatie van de viercijferige 'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding."
+          required: false
+          schema:
+            type: string
+            maxLength: 16
+        - in: query
           name: inclusiefoverledenpersonen
-          description: "Indien in het antwoord op de zoekvraag ook overleden personen moeten worden geretourneerd, dan dient de parameter ?inclusiefOverledenPersonen? opgenomen te zijn met de waarde True. Indien de parameter ?inclusiefOverledenPersonen? ontbreekt of de waarde False heeft worden geen overleden personen opgenomen in het zoekresultaat."
+          description: "Indien in het antwoord op de zoekvraag ook overleden personen moeten worden geretourneerd, dan dient de parameter ‘inclusiefOverledenPersonen’ opgenomen te zijn met de waarde True. Indien de parameter ‘inclusiefOverledenPersonen’ ontbreekt of de waarde False heeft worden geen overleden personen opgenomen in het zoekresultaat."
           required: false
           schema:
             type: boolean
         - in: query
-          name: geldigtotenmet
-          description: "De einddatum van de periode waarover de bewoning wordt opgevraagd. Het resultaat bevat de bewoning en bewoners verblijfsplaatshistorie waarvan de einddatum op of na de datumVan ligt"
+          name: postcode
+          description: "De door PostNL vastgestelde code behorende bij een bepaalde combinatie van een naam van een woonplaats, naam van een openbare ruimte en een huisnummer Dit attribuutsoort is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING. Het is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting in de BAG."
           required: false
           schema:
             type: string
-            format: date
+            pattern: ^[1-9]{1}[0-9]{3}[A-Z]{2}
       responses:
         '200':
           description: "Zoekactie geslaagd"
           headers:
             api-version:
-              $ref: '#/components/headers/api_version'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
             warning:
-              $ref: '#/components/headers/warning'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/warning"
             X-Rate-Limit-Limit:
-              $ref: '#/components/headers/X_Rate_Limit_Limit'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Limit"
             X-Rate-Limit-Remaining:
-              $ref: '#/components/headers/X_Rate_Limit_Remaining'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Remaining"
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Reset"
           content:
             application/hal+json:
               schema:
-               type: object
-               properties:
-                 _links:
-                   $ref: '#/components/schemas/Collectionlinks'
-                 _embedded:
-                   type: object
-                   properties:
-                     bewoningen:
-                       type: array
-                       items:
-                         $ref: '#/components/schemas/Bewoning'
-        default:
-          description: "Er is een onverwachte fout opgetreden."
+                type: object
+                properties:
+                  _links:
+                    $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalCollectionLinks"
+                  _embedded:
+                    type: object
+                    properties:
+                      bewoningen:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Bewoning'
+        '400':
+          description: Bad Request
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
-              schema:  
-                $ref: '#/components/schemas/Foutbericht'
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/ValidatieFoutbericht"
+        '401':
+          description: Unauthorized
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '403':
+          description: Forbidden
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '406':
+          description: Not Acceptable
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '409':
+          description: Conflict
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '410':
+          description: Gone
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '415':
+          description: Unsupported Media Type
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '429':
+          description: Too Many Requests
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '500':
+          description: Internal Server Error
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        'default':
+          description: Er is een onverwachte fout opgetreden.
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
       tags: 
       - historie
   /historie/ingeschrevenpersonen/{burgerservicenummer}/verblijfplaatsen:
     get:
-      operationId: historieIngeschrevenpersonenBurgerservicenummerverblijfplaatsen
+      operationId: verblijfsplaatshistorie
       description: "Het ophalen van de verblijfsplaatshistorie van een ingeschreven persoon. Van een ingeschreven persoon worden verblijfsplaatsen waar een persoon zich in het verleden op heeft ingeschreven (inclusief de actuele verblijfsplaats) geretourneerd voorzover deze voldoen aan de queryparameters. Er wordt aflopend gesorteerd op geldigVan, zodat de meest actuele bovenaan staat."
       parameters: 
-        - in: query
-          name: fields
-          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven."
-          required: false
-          schema:
-            type: string
-            example: id,onderwerp,aanvrager,wijzig_datum
         - in: path
           name: burgerservicenummer
           description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Elk ingeschreven natuurlijk persoon heeft een BSN, een nummer dat de natuurlijk persoon uniek identificeert in overheidsadministraties. De attribuutsoort kent onder meer historie omdat het mogelijk is dat het Burgerservicenummer van een natuurlijk persoon wijzigt, met name vanwege ambtelijke correcties. Zie verder de toelichting in de GBA Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
@@ -197,14 +262,14 @@ paths:
             type: string
             format: date
         - in: query
-          name: geldigvan
+          name: geldigtot
           description: "De begindatum van de periode waarover de verblijfsplaatshistorie wordt opgevraagd. Het resultaat bevatde verblijfsplaatshistorie waarvan de begindatum op of na de datumVan ligt"
           required: false
           schema:
             type: string
             format: date
         - in: query
-          name: geldigtotenmet
+          name: geldigvan
           description: "De begindatum van de periode waarover de verblijfsplaatshistorie wordt opgevraagd. Het resultaat bevatde verblijfsplaatshistorie waarvan de begindatum op of na de datumVan ligt"
           required: false
           schema:
@@ -215,49 +280,126 @@ paths:
           description: "Zoekactie geslaagd"
           headers:
             api-version:
-              $ref: '#/components/headers/api_version'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
             warning:
-              $ref: '#/components/headers/warning'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/warning"
             X-Rate-Limit-Limit:
-              $ref: '#/components/headers/X_Rate_Limit_Limit'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Limit"
             X-Rate-Limit-Remaining:
-              $ref: '#/components/headers/X_Rate_Limit_Remaining'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Remaining"
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Reset"
           content:
             application/hal+json:
               schema:
-               type: object
-               properties:
-                 _links:
-                   $ref: '#/components/schemas/Collectionlinks'
-                 _embedded:
-                   type: object
-                   properties:
-                     verblijfplaatsen:
-                       type: array
-                       items:
-                         $ref: '#/components/schemas/Verblijfplaatsen'
-        default:
-          description: "Er is een onverwachte fout opgetreden."
+                type: object
+                properties:
+                  _links:
+                    $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalCollectionLinks"
+                  _embedded:
+                    type: object
+                    properties:
+                      verblijfplaatsen:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Verblijfplaats'
+        '401':
+          description: Unauthorized
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
-              schema:  
-                $ref: '#/components/schemas/Foutbericht'
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '403':
+          description: Forbidden
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '404':
+          description: Not Found
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '406':
+          description: Not Acceptable
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '409':
+          description: Conflict
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '410':
+          description: Gone
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '415':
+          description: Unsupported Media Type
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '429':
+          description: Too Many Requests
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '500':
+          description: Internal Server Error
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        'default':
+          description: Er is een onverwachte fout opgetreden.
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
       tags: 
       - historie
   /historie/ingeschrevenpersonen/{burgerservicenummer}/partners:
     get:
-      operationId: historieIngeschrevenpersonenBurgerservicenummerpartners
+      operationId: partnerhistorie
       description: "Het ophalen van de partnerhistorie van een ingeschreven persoon. Van een ingeschreven persoon worden parters waarmee in het verleden relaties geregistreerd zijn geretourneerd voorzover deze voldoen aan de queryparameters. Er wordt aflopend gesorteerd op geldigVan, zodat de meest actuele bovenaan staat."
       parameters: 
-        - in: query
-          name: fields
-          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven."
-          required: false
-          schema:
-            type: string
-            example: id,onderwerp,aanvrager,wijzig_datum
         - in: path
           name: burgerservicenummer
           description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Elk ingeschreven natuurlijk persoon heeft een BSN, een nummer dat de natuurlijk persoon uniek identificeert in overheidsadministraties. De attribuutsoort kent onder meer historie omdat het mogelijk is dat het Burgerservicenummer van een natuurlijk persoon wijzigt, met name vanwege ambtelijke correcties. Zie verder de toelichting in de GBA Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
@@ -273,15 +415,15 @@ paths:
             type: string
             format: date
         - in: query
-          name: geldigvan
-          description: "De begindatum van de periode waarover de partnerhistorie wordt opgevraagd. Het resultaat bevat de partnerhistorie waarvan de datumIngangGeldigheid op of na datumVan ligt."
+          name: geldigtot
+          description: "De einddatum van de periode waarover de partnerhistorie wordt opgevraagd. Het resultaat bevat de partnerhistorie waarvan de datumEindeGeldigheid op of voor datumTotEnMet ligt."
           required: false
           schema:
             type: string
             format: date
         - in: query
-          name: geldigtotenmet
-          description: "De einddatum van de periode waarover de partnerhistorie wordt opgevraagd. Het resultaat bevat de partnerhistorie waarvan de datumEindeGeldigheid op of voor datumTotEnMet ligt."
+          name: geldigvan
+          description: "De begindatum van de periode waarover de partnerhistorie wordt opgevraagd. Het resultaat bevat de partnerhistorie waarvan de datumIngangGeldigheid op of na datumVan ligt."
           required: false
           schema:
             type: string
@@ -291,49 +433,126 @@ paths:
           description: "Zoekactie geslaagd"
           headers:
             api-version:
-              $ref: '#/components/headers/api_version'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
             warning:
-              $ref: '#/components/headers/warning'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/warning"
             X-Rate-Limit-Limit:
-              $ref: '#/components/headers/X_Rate_Limit_Limit'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Limit"
             X-Rate-Limit-Remaining:
-              $ref: '#/components/headers/X_Rate_Limit_Remaining'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Remaining"
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Reset"
           content:
             application/hal+json:
               schema:
-               type: object
-               properties:
-                 _links:
-                   $ref: '#/components/schemas/Collectionlinks'
-                 _embedded:
-                   type: object
-                   properties:
-                     partners:
-                       type: array
-                       items:
-                         $ref: '#/components/schemas/Partner'
-        default:
-          description: "Er is een onverwachte fout opgetreden."
+                type: object
+                properties:
+                  _links:
+                    $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalCollectionLinks"
+                  _embedded:
+                    type: object
+                    properties:
+                      partners:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Partnerhistorie'
+        '401':
+          description: Unauthorized
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
-              schema:  
-                $ref: '#/components/schemas/Foutbericht'
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '403':
+          description: Forbidden
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '404':
+          description: Not Found
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '406':
+          description: Not Acceptable
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '409':
+          description: Conflict
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '410':
+          description: Gone
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '415':
+          description: Unsupported Media Type
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '429':
+          description: Too Many Requests
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '500':
+          description: Internal Server Error
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        'default':
+          description: Er is een onverwachte fout opgetreden.
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
       tags: 
       - historie
   /historie/ingeschrevenpersonen/{burgerservicenummer}/verblijfstitels:
     get:
-      operationId: historieIngeschrevenpersonenBurgerservicenummerverblijfstitels
+      operationId: verblijfstitelistorie
       description: "Het ophalen van de verblijfstitelhistorie van een ingeschreven persoon. Van een ingeschreven persoon worden verblijfstitels die er in het verleden geregistreerd zijn (inclusief de actuele verblijfstitel) geretourneerd voorzover deze voldoen aan de queryparameters. Er wordt aflopend gesorteerd op geldigVan, zodat de meest actuele bovenaan staat."
       parameters: 
-        - in: query
-          name: fields
-          description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven."
-          required: false
-          schema:
-            type: string
-            example: id,onderwerp,aanvrager,wijzig_datum
         - in: path
           name: burgerservicenummer
           description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Elk ingeschreven natuurlijk persoon heeft een BSN, een nummer dat de natuurlijk persoon uniek identificeert in overheidsadministraties. De attribuutsoort kent onder meer historie omdat het mogelijk is dat het Burgerservicenummer van een natuurlijk persoon wijzigt, met name vanwege ambtelijke correcties. Zie verder de toelichting in de GBA Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
@@ -342,8 +561,8 @@ paths:
             type: string
             maxLength: 9
         - in: query
-          name: geldigvan
-          description: "De datum waarop de verblijfstitel zijn geldigheid krijgt. De begindatum van de periode waarover de verblijfstitelhistorie wordt opgevraagd. Het resultaat bevat de verblijfstitelhistorie waarvan de ingangsdatumVerblijfstitel op of na datumVan ligt."
+          name: geldigop
+          description: "De peildatum van de periode waarover de verblijfstitelhistorie wordt opgevraagd. Het resultaat bevat de verblijfstitelhistorie waarvan de peildatum op of na de ingangsdatumVerblijfstitel ligt en op of voor de datumEindeVerblijfstitel ligt."
           required: false
           schema:
             type: string
@@ -356,8 +575,8 @@ paths:
             type: string
             format: date
         - in: query
-          name: geldigop
-          description: "De peildatum van de periode waarover de verblijfstitelhistorie wordt opgevraagd. Het resultaat bevat de verblijfstitelhistorie waarvan de peildatum op of na de ingangsdatumVerblijfstitel ligt en op of voor de datumEindeVerblijfstitel ligt."
+          name: geldigvan
+          description: "De datum waarop de verblijfstitel zijn geldigheid krijgt. De begindatum van de periode waarover de verblijfstitelhistorie wordt opgevraagd. Het resultaat bevat de verblijfstitelhistorie waarvan de ingangsdatumVerblijfstitel op of na datumVan ligt."
           required: false
           schema:
             type: string
@@ -367,35 +586,119 @@ paths:
           description: "Zoekactie geslaagd"
           headers:
             api-version:
-              $ref: '#/components/headers/api_version'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
             warning:
-              $ref: '#/components/headers/warning'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/warning"
             X-Rate-Limit-Limit:
-              $ref: '#/components/headers/X_Rate_Limit_Limit'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Limit"
             X-Rate-Limit-Remaining:
-              $ref: '#/components/headers/X_Rate_Limit_Remaining'
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Remaining"
             X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'  
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Reset"
           content:
             application/hal+json:
               schema:
-               type: object
-               properties:
-                 _links:
-                   $ref: '#/components/schemas/Collectionlinks'
-                 _embedded:
-                   type: object
-                   properties:
-                     verblijfstitels:
-                       type: array
-                       items:
-                         $ref: '#/components/schemas/Verblijfstitels'
-        default:
-          description: "Er is een onverwachte fout opgetreden."
+                type: object
+                properties:
+                  _links:
+                    $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalCollectionLinks"
+                  _embedded:
+                    type: object
+                    properties:
+                      verblijfstitels:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Verblijfstitels'
+        '401':
+          description: Unauthorized
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
           content:
             application/problem+json:
-              schema:  
-                $ref: '#/components/schemas/Foutbericht'
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '403':
+          description: Forbidden
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '404':
+          description: Not Found
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '406':
+          description: Not Acceptable
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '409':
+          description: Conflict
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '410':
+          description: Gone
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '415':
+          description: Unsupported Media Type
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '429':
+          description: Too Many Requests
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        '500':
+          description: Internal Server Error
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+        'default':
+          description: Er is een onverwachte fout opgetreden.
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+          content:
+            application/problem+json:
+              schema:
+                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
       tags: 
       - historie
 components:
@@ -421,20 +724,10 @@ components:
             \ ADRESSEERBAAR OBJECT AANDUIDING wordt onderscheiden. Aangezien de ADRESSEERBAAR\
             \ OBJECT AANDUIDING een generalisatie is van NUMMERAANDUIDING en OVERIG\
             \ ADRESSEERBAAR OBJECT AANDUIDING overerven beide laatstgenoemde objecttypen\
-            \ dit attribuutsoort. Zie verder de toelichting in de BAG. a - z , A ?\
+            \ dit attribuutsoort. Zie verder de toelichting in de BAG. a - z , A –\
             \ Z"
           maxLength: 1
           example: "F"
-        identificatiecodeNummeraanduiding:
-          type: "string"
-          title: "Identificatiecode nummeraanduiding"
-          description: "De unieke aanduiding van een NUMMERAANDUIDING. zie toelichting\
-            \ BAG Combinatie van de viercijferige 'gemeentecode' (volgens GBA tabel\
-            \ 33, Gemeententabel), de tweecijferige 'objecttypecode' en een voor het\
-            \ betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'.\
-            \ De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding."
-          maxLength: 16
-          example: "0518200001645858"
         huisnummer:
           type: "integer"
           title: "Huisnummer"
@@ -447,22 +740,8 @@ components:
             \ is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven\
             \ beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting\
             \ in de BAG. Alle natuurlijke getallen tussen 1 en 99999."
+          maximum: 99999
           example: "11"
-        locatiebeschrijving:
-          type: "string"
-          title: "Locatiebeschrijving"
-          description: "Een geheel of gedeeltelijke omschrijving van de ligging van\
-            \ een object."
-          maxLength: 35
-          example: "naast de derde brug rechts"
-        woonplaatsnaam:
-          type: "string"
-          title: "Woonplaatsnaam"
-          description: "De door het bevoegde gemeentelijke orgaan aan een WOONPLAATS\
-            \ toegekende benaming. Zie verder de toelichting in de BAG. Tekens gecodeerd\
-            \ volgens de UTF-8 standaard."
-          maxLength: 80
-          example: "s'Gravenhage"
         huisnummertoevoeging:
           type: "string"
           title: "Huisnummertoevoeging"
@@ -475,9 +754,26 @@ components:
             \ Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie is van\
             \ NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven\
             \ beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting\
-            \ in de BAG. a - z , A - Z , 0 ? 9"
+            \ in de BAG. a - z , A - Z , 0 – 9"
           maxLength: 4
           example: "2"
+        identificatiecodeNummeraanduiding:
+          type: "string"
+          title: "Identificatiecode nummeraanduiding"
+          description: "De unieke aanduiding van een NUMMERAANDUIDING. zie toelichting\
+            \ BAG Combinatie van de viercijferige 'gemeentecode' (volgens GBA tabel\
+            \ 33, Gemeententabel), de tweecijferige 'objecttypecode' en een voor het\
+            \ betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'.\
+            \ De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding."
+          maxLength: 16
+          example: "0518200001645858"
+        locatiebeschrijving:
+          type: "string"
+          title: "Locatiebeschrijving"
+          description: "Een geheel of gedeeltelijke omschrijving van de ligging van\
+            \ een object."
+          maxLength: 35
+          example: "naast de derde brug rechts"
         naamOpenbareRuimte:
           type: "string"
           title: "Naam openbare ruimte"
@@ -500,87 +796,6 @@ components:
             \ Zie verder de toelichting in de BAG."
           pattern: "^[1-9]{1}[0-9]{3}[A-Z]{2}$"
           example: "2571BP"
-        _links:
-          $ref: "#/components/schemas/Bewoning_links"
-        _embedded:
-          $ref: "#/components/schemas/Bewoning_embedded"
-    Verblijfplaatsen:
-      type: "object"
-      description: "Een door het bevoegde gemeentelijke orgaan als zodanig aangewezen\
-        \ en van een naam voorzien gedeelte van het grondgebied van de gemeente. Een\
-        \ door het bevoegde gemeentelijke orgaan als zodanig aangewezen en van een\
-        \ naam voorziene buitenruimte die binnen één woonplaats is gelegen Een door\
-        \ het bevoegde gemeentelijke orgaan als zodanig toegekende aanduiding van\
-        \ een VERBLIJFSOBJECT, een STANDPLAATS of een LIGPLAATS. De historische gegevens\
-        \ over het verblijf en adres van de INGESCHREVEN NATUURLIJK PERSOON. Dit is\
-        \ het adres waarop een persoon is of was ingeschreven inclusief de periode\
-        \ dat de persoon ingeschreven was. Deze resource is samengesteld op basis\
-        \ van de gegevensgroep VERBLIJFSADRES en elementen uit de objecttypen NUMMERAANDUIDING,\
-        \ OPENBARE RUIMTE en WOONPLAATS. Daaraan zijn de datumbegingeldigheid (datumvan)\
-        \ en de datumeindgeldigheid (datumtotenmet) van de bewonings-relatie toegevoegd.\
-        \ In incidentele gevallen komt het voor dat een woonplaats (in de zin van\
-        \ het gebied dat in de praktijk aangeduid wordt met dezelfde woonplaatsnaam)\
-        \ doorsneden wordt door een gemeentegrens. Volgens de definitie zou dit niet\
-        \ kunnen c.q. is een woonplaats anders gedefinieerd en dus afgebakend: ?gedeelte\
-        \ van het gemeentelijk grondgebied?. Vooralsnog wordt uitgegaan van de BAG-insteek\
-        \ en wordt afgewacht hoe dit opgelost wordt in de landelijk te specificeren\
-        \ woonplaatsentabel. Als openbare ruimte worden onder meer aangemerkt wegen,\
-        \ water, spoorbanen en landschappelijke gebieden. Zie de toelichting in de\
-        \ Catalogus BAG. In aanvulling hierop het volgende. Het betreft alle gegevens\
-        \ en relaties van de NUMMERAANDUIDING zoals deze in de BAG gedefinieerd zijn.\
-        \ NUMMERAANDUIDING is gemodelleerd als een specialisatie van ADRESSEERBAAR\
-        \ OBJECT AANDUIDING. Daar bij overige (officieel vastgestelde) adressen deels\
-        \ vergelijkbare gegevens en relaties van toepassing zijn, zijn desbetreffende\
-        \ gegevens gemodelleerd bij ADRESSEERBAAR OBJECT AANDUIDING, de verzameling\
-        \ van nummeraanduidingen en overige adresseerbaar object aanduidingen."
-      properties:
-        adresfunctie:
-          $ref: "#/components/schemas/SoortAdres_enum"
-        huisletter:
-          type: "string"
-          title: "Huisletter"
-          description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien\
-            \ van een adresseerbaar object toegekende toevoeging aan een huisnummer\
-            \ in de vorm van een alfanumeriek teken. Dit attribuutsoort is in de BAG\
-            \ gespecificeerd bij het objecttype NUMMERAANDUIDING. Het is bij de ADRESSEERBAAR\
-            \ OBJECT AANDUIDING opgenomen aangezien naast de NUMMERAANDUIDING de OVERIG\
-            \ ADRESSEERBAAR OBJECT AANDUIDING wordt onderscheiden. Aangezien de ADRESSEERBAAR\
-            \ OBJECT AANDUIDING een generalisatie is van NUMMERAANDUIDING en OVERIG\
-            \ ADRESSEERBAAR OBJECT AANDUIDING overerven beide laatstgenoemde objecttypen\
-            \ dit attribuutsoort. Zie verder de toelichting in de BAG. a - z , A ?\
-            \ Z"
-          maxLength: 1
-          example: "B"
-        identificatiecodeNummeraanduiding:
-          type: "string"
-          title: "Identificatiecode nummeraanduiding"
-          description: "De unieke aanduiding van een NUMMERAANDUIDING. zie toelichting\
-            \ BAG Combinatie van de viercijferige 'gemeentecode' (volgens GBA tabel\
-            \ 33, Gemeententabel), de tweecijferige 'objecttypecode' en een voor het\
-            \ betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'.\
-            \ De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding."
-          maxLength: 29
-          example: "0518200001645858"
-        huisnummer:
-          type: "integer"
-          title: "Huisnummer"
-          description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien\
-            \ van een adresseerbaar object toegekende nummering. Dit attribuutsoort\
-            \ is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING. Het\
-            \ is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast\
-            \ de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt\
-            \ onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie\
-            \ is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven\
-            \ beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting\
-            \ in de BAG. Alle natuurlijke getallen tussen 1 en 99999."
-          example: "42"
-        locatiebeschrijving:
-          type: "string"
-          title: "Locatiebeschrijving"
-          description: "Een geheel of gedeeltelijke omschrijving van de ligging van\
-            \ een object."
-          maxLength: 35
-          example: "Naast de derde brug"
         woonplaatsnaam:
           type: "string"
           title: "Woonplaatsnaam"
@@ -589,27 +804,142 @@ components:
             \ volgens de UTF-8 standaard."
           maxLength: 80
           example: "s'Gravenhage"
+        _links:
+          $ref: "#/components/schemas/Bewoning_links"
+        _embedded:
+          $ref: "#/components/schemas/Bewoning_embedded"
+    Verblijfplaats:
+      type: "object"
+      description: "08/58 Gegevens over het verblijf en adres van de ingeschreven\
+        \ persoon. Dit is het adres waarop een persoon is ingeschreven."
+      required:
+      - "datumeEindeGeldigheid"
+      - "inOnderzoek"
+      properties:
+        aanduidingBijHuisnummer:
+          $ref: "#/components/schemas/AanduidingBijHuisnummer_enum"
+        functieAdres:
+          $ref: "#/components/schemas/SoortAdres_enum"
+        huisletter:
+          type: "string"
+          title: "Huisletter"
+          description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien\
+            \ van een adresseerbaar object toegekende toevoeging aan een huisnummer\
+            \ in de vorm van een alfanumeriek teken. Element 11.30 Een alfabetisch\
+            \ teken achter het huisnummer zoals dit door het gemeentebestuur is toegekend\
+            \ dan wel een door of namens het bevoegde gemeentelijke orgaan ten aanzien\
+            \ van een adresseerbaar object toegekende toevoeging aan een huisnummer\
+            \ in de vorm van een alfabetisch teken. Dit attribuutsoort is in de BAG\
+            \ gespecificeerd bij het objecttype NUMMERAANDUIDING. Het is bij de ADRESSEERBAAR\
+            \ OBJECT AANDUIDING opgenomen aangezien naast de NUMMERAANDUIDING de OVERIG\
+            \ ADRESSEERBAAR OBJECT AANDUIDING wordt onderscheiden. Aangezien de ADRESSEERBAAR\
+            \ OBJECT AANDUIDING een generalisatie is van NUMMERAANDUIDING en OVERIG\
+            \ ADRESSEERBAAR OBJECT AANDUIDING overerven beide laatstgenoemde objecttypen\
+            \ dit attribuutsoort. Zie verder de toelichting in de BAG. a - z , A –\
+            \ Z"
+          pattern: "^[A-Z,a-z]$"
+          maxLength: 1
+          example: "B"
+        huisnummer:
+          type: "integer"
+          title: "Huisnummer"
+          description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien\
+            \ van een adresseerbaar object toegekende nummering. Element 11.20 De\
+            \ numerieke aanduiding zoals deze door het gemeentebestuur aan het object\
+            \ is toegekend dan wel een door of namens het bevoegde gemeentelijke orgaan\
+            \ ten aanzien van een adresseerbaar object toegekende nummering. Standaardwaarde\
+            \ is 0 Dit attribuutsoort is in de BAG gespecificeerd bij het objecttype\
+            \ NUMMERAANDUIDING. Het is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen\
+            \ aangezien naast de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING\
+            \ wordt onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een\
+            \ generalisatie is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT\
+            \ AANDUIDING overerven beide laatstgenoemde objecttypen dit attribuutsoort.\
+            \ Zie verder de toelichting in de BAG. Alle natuurlijke getallen tussen\
+            \ 1 en 99999."
+          maximum: 99999
+          example: "23"
         huisnummertoevoeging:
           type: "string"
           title: "Huisnummertoevoeging"
           description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien\
             \ van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer\
-            \ of een combinatie van huisnummer en huisletter. Dit attribuutsoort is\
-            \ in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING. Het is\
-            \ bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast de\
-            \ NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt onderscheiden.\
-            \ Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie is van\
-            \ NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven\
+            \ of een combinatie van huisnummer en huisletter. Element 11.40 Die letters\
+            \ of tekens die noodzakelijk zijn om, naast huisnummer en -letter, de\
+            \ brievenbus te vinden dan wel een door of namens het bevoegde gemeentelijke\
+            \ orgaan ten aanzien van een adresseerbaar object toegekende toevoeging\
+            \ aan een huisnummer of een combinatie van huisletter en huisnummer. Dit\
+            \ attribuutsoort is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING.\
+            \ Het is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast\
+            \ de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt\
+            \ onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie\
+            \ is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven\
             \ beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting\
-            \ in de BAG. a - z , A - Z , 0 ? 9"
+            \ in de BAG. a - z , A - Z , 0 – 9"
+          pattern: "^[a-zA-Z0-9]{1,4}$"
           maxLength: 4
-          example: "2"
+          example: "IV"
+        identificatiecodeNummeraanduiding:
+          type: "string"
+          title: "Identificatiecode nummeraanduiding"
+          description: "De unieke aanduiding van een NUMMERAANDUIDING. Element 11.90\
+            \ De unieke aanduiding van een nummeraanduiding. Een nummeraanduiding\
+            \ is een door het bevoegde gemeentelijke orgaan als zodanig toegekende\
+            \ aanduiding van een adresseerbaar object. De Identificatiecode nummeraanduiding\
+            \ is een combinatie van een viercijferige gemeentecode, de tweecijferige\
+            \ objecttypecode 20 die aangeeft dat om een nummeraanduiding gaat en een\
+            \ voor het betreffende objecttype binnen een gemeente uniek tiencijferig\
+            \ volgnummer. Standaardwaarde is 0000000000000000 zie toelichting BAG\
+            \ Combinatie van de viercijferige 'gemeentecode' (volgens GBA tabel 33,\
+            \ Gemeententabel), de tweecijferige 'objecttypecode' en een voor het betreffende\
+            \ objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'.\
+            \ De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding."
+          maxLength: 16
+          example: "0518200000366054"
+        identificatiecodeVerblijfplaats:
+          type: "string"
+          title: "identificatiecodeVerblijfplaats"
+          description: "Element 11.80 Een verblijfplaats kan een ligplaats, een standplaats\
+            \ of een verblijfsobject in een of meerdere panden zijn, waaraan respectievelijk\
+            \ een ligplaatsidentificatie, standplaatsidentificatie of verblijfsobjectidentificatie\
+            \ is toegekend. De Identificatiecode verblijfplaats is een combinatie\
+            \ van een viercijferige gemeentecode, een tweecijferige objecttypecode\
+            \ die aangeeft of de aanduiding een verblijfsobject (01), ligplaats (02)\
+            \ of standplaats (03) betreft en een voor het betreffende objecttype binnen\
+            \ een gemeente uniek tiencijferig volgnummer. Standaardwaarde is 0000000000000000\
+            \ Combinatie van de viercijferige 'gemeentecode' (volgens GBA tabel 33,\
+            \ Gemeententabel), de tweecijferige 'objecttypecode' en een voor het betreffende\
+            \ objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'.\
+            \ De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding."
+          maxLength: 16
+          example: "0518200000366054"
+        indicatieVestigingVanuitBuitenland:
+          type: "boolean"
+          title: "indicatieVestigingVanuitBuitenland"
+          description: "Indicatie waarmee aangegeven wordt of de ingeschreven persoon\
+            \ zich vanuit het buitenland heeftingeschreven. Deze indicatie heeft als\
+            \ rol om aan te geven dat iemand zich vanuit het buitenland gevestigd\
+            \ heeft. Deze indicator wordt altijd meegeleverd als de waarde true is.\
+            \ Als de waarde false is wordt de indicator niet meegeleverd."
+        locatiebeschrijving:
+          type: "string"
+          title: "Locatiebeschrijving"
+          description: "Een geheel of gedeeltelijke omschrijving van de ligging van\
+            \ een object. Element 12.10 Een geheel of gedeeltelijke omschrijving van\
+            \ de ligging van een object, indien dit niet kan worden aangegeven in\
+            \ de groep 11 Adres."
+          maxLength: 35
+          example: "Naast de derde brug"
         naamOpenbareRuimte:
           type: "string"
           title: "Naam openbare ruimte"
           description: "Een door het bevoegde gemeentelijke orgaan aan een OPENBARE\
-            \ RUIMTE toegekende benaming Zie verder de toelichting in de BAG. Tekens\
-            \ gecodeerd volgens de UTF-8 standaard"
+            \ RUIMTE toegekende benaming Element 11.15 Een naam die aan een openbare\
+            \ ruimte is toegekend in een daartoe strekkend formeel gemeentelijk besluit.\
+            \ Een openbare ruimte is een door het bevoegde gemeentelijke orgaan als\
+            \ zodanig aangewezen benaming van een binnen één woonplaats gelegen buitenruimte.\
+            \ Voor ‘Naam openbare ruimte’ mag ‘officiele straatnaam’ gelezen worden.\
+            \ Zie verder de toelichting in de BAG. Tekens gecodeerd volgens de UTF-8\
+            \ standaard"
           maxLength: 80
           example: "Loosduinsekade"
         postcode:
@@ -617,115 +947,128 @@ components:
           title: "Postcode"
           description: "De door PostNL vastgestelde code behorende bij een bepaalde\
             \ combinatie van een naam van een woonplaats, naam van een openbare ruimte\
-            \ en een huisnummer Dit attribuutsoort is in de BAG gespecificeerd bij\
-            \ het objecttype NUMMERAANDUIDING. Het is bij de ADRESSEERBAAR OBJECT\
+            \ en een huisnummer Element 11.60 De door de TNT Post vastgestelde code\
+            \ behorend bij de straatnaam en het huisnummer dan wel de door TNT Post\
+            \ vastgestelde code behorende bij een bepaalde combinatie van een naam\
+            \ openbare ruimte en een huisnummer. Dit attribuutsoort is in de BAG gespecificeerd\
+            \ bij het objecttype NUMMERAANDUIDING. Het is bij de ADRESSEERBAAR OBJECT\
             \ AANDUIDING opgenomen aangezien naast de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR\
             \ OBJECT AANDUIDING wordt onderscheiden. Aangezien de ADRESSEERBAAR OBJECT\
             \ AANDUIDING een generalisatie is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR\
             \ OBJECT AANDUIDING overerven beide laatstgenoemde objecttypen dit attribuutsoort.\
             \ Zie verder de toelichting in de BAG."
           pattern: "^[1-9]{1}[0-9]{3}[A-Z]{2}$"
-          example: "2564TT"
-        geldigTotEnMet:
+          example: "2571CC"
+        straatnaam:
           type: "string"
-          title: "geldigTotEnMet"
-          description: "De datum waarop de INGESCHREVEN NATUURLIJK PERSOON is uitgeschreven\
-            \ op een verblijfsplaats"
-          format: "date"
-          example: "2017-02-13"
-        geldigVan:
+          title: "Straatnaam"
+          description: "De officiële straatnaam zoals door het bevoegd gemeentelijk\
+            \ orgaan is vastgesteld, zo nodig ingekort conform de specificaties van\
+            \ de NEN 5825. Voor straatnamen langer dan 24 posities gelden inkortingsregels.\
+            \ Hiervoor wordt NEN 5825 (versie 2002) gevolgd. De hier gehanteerde schrijfwijze\
+            \ kan afwijken van de POSTNL-schrijfwijze. alle alfanumrieke tekens"
+          maxLength: 24
+        woonplaatsnaam:
+          type: "string"
+          title: "Woonplaatsnaam"
+          description: "De door het bevoegde gemeentelijke orgaan aan een WOONPLAATS\
+            \ toegekende benaming. Element 11.70 Een woonplaatsnaam is de naam van\
+            \ een door het bevoegde gemeentelijke orgaan als zodanig aangewezen gedeelte\
+            \ van het gemeentelijk grondgebied. De standaardwaarde is . Zie verder\
+            \ de toelichting in de BAG. Tekens gecodeerd volgens de UTF-8 standaard."
+          maxLength: 80
+          example: "Utrecht"
+        datumAanvangAdreshouding:
           $ref: "#/components/schemas/Datum_onvolledig"
+        datumeEindeGeldigheid:
+          $ref: "#/components/schemas/Datum_onvolledig"
+        datumIngangGeldigheid:
+          $ref: "#/components/schemas/Datum_onvolledig"
+        datumInschrijvingInGemeente:
+          $ref: "#/components/schemas/Datum_onvolledig"
+        datumVestigingInNederland:
+          $ref: "#/components/schemas/Datum_onvolledig"
+        gemeenteVanInschrijving:
+          $ref: "#/components/schemas/Gemeenten_tabel"
+        landVanwaarIngeschreven:
+          $ref: "#/components/schemas/Land_tabel"
+        inOnderzoek:
+          $ref: "#/components/schemas/VerblijfplaatsInOnderzoek"
         _links:
-          $ref: "#/components/schemas/Verblijfplaatsen_links"
-    Partner:
+          $ref: "#/components/schemas/Verblijfplaats_links"
+    Partnerhistorie:
       type: "object"
-      description: "Gegevens over een huwelijk/geregistreerd partnerschap van de NATUURLIJK\
-        \ PERSOON"
-      required:
-      - "uuid"
-      - "geboorte"
+      description: "05/55 Gegevens over een gesloten huwelijk/geregistreerd partnerschap\
+        \ van de ingeschrevene."
       properties:
+        aktenummer:
+          type: "string"
+          title: "aktenummer"
+          description: "Element 81.20 Een aanduiding van de akte die is opgenomen\
+            \ in de registers van de burgerlijke stand in Nederland. De eerste drie\
+            \ posities van het aktenummer dienen conform [Tabel 39,Tabel Akteaanduiding](https://publicaties.rvig.nl/dsresource?objectid=4796&amp;type=org)\
+            \ te zijn. De laatste 4 posities bevatten een volgnummer van de akte."
+          maxLength: 7
         burgerservicenummer:
           type: "string"
           title: "Burgerservicenummer"
           description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet\
-            \ algemene bepalingen burgerservicenummer. Elk ingeschreven natuurlijk\
-            \ persoon heeft een BSN, een nummer dat de natuurlijk persoon uniek identificeert\
-            \ in overheidsadministraties. De attribuutsoort kent onder meer historie\
-            \ omdat het mogelijk is dat het Burgerservicenummer van een natuurlijk\
-            \ persoon wijzigt, met name vanwege ambtelijke correcties. Zie verder\
-            \ de toelichting in de GBA Alle nummers waarvoor geldt dat, indien aangeduid\
-            \ als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1)\
-            \ + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9\
-            \ cijfers aanwezig zijn."
-          pattern: "^[0-9]$"
+            \ algemene bepalingen burgerservicenummer. Element 01.20 Het burgerservicenummer,\
+            \ bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer.\
+            \ Elk ingeschreven natuurlijk persoon heeft een BSN, een nummer dat de\
+            \ natuurlijk persoon uniek identificeert in overheidsadministraties. De\
+            \ attribuutsoort kent onder meer historie omdat het mogelijk is dat het\
+            \ Burgerservicenummer van een natuurlijk persoon wijzigt, met name vanwege\
+            \ ambtelijke correcties. Zie verder de toelichting in de GBA Alle nummers\
+            \ waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8),\
+            \ het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar\
+            \ is door elf. Er moeten dus 9 cijfers aanwezig zijn."
+          pattern: "^[0-9]{9}$"
           maxLength: 9
           example: "430422088"
-        soortVerbintenis:
-          $ref: "#/components/schemas/SoortVerbintenis_enum"
-        voornamen:
-          type: "string"
-          title: "Voornamen"
-          description: "De verzameling namen die, gescheiden door spaties, aan de\
-            \ geslachtsnaam voorafgaat. Conform categorie 05.02 van LO GBA."
-          maxLength: 200
-          example: "Pieter Jan"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
-        geslachtsnaam:
-          type: "string"
-          title: "Geslachtsnaam"
-          description: "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels\
-            \ en adellijke titel/predikaat zijn afgesplitst. Conform categorie 05.02\
-            \ van LO GBA."
-          maxLength: 200
-          example: "Vries"
-        uuid:
-          type: "string"
-          title: "uuid"
-          description: "Een UUID is een nummer van 128 bits (= 16 bytes). UUID wordt\
-            \ weergegeven in 32 ??hexadecimale cijfers. Deze cijfers zijn ingedeeld\
-            \ in vijf groepen, in ongelijk aantal en gescheiden door koppeltekens:\
-            \ 8-4-4-4-12 In zijn geheel wordt een UUID dus door 36 tekens gevormd,\
-            \ waarvan 32 hexadecimale karakters en vier streepjes: 550e8400-e29b-41d4-a716-446655440000"
-          maxLength: 36
-        voorvoegselGeslachtsnaam:
-          $ref: "#/components/schemas/Voorvoegsel_tabel"
-        adellijkeTitel_predikaat:
-          $ref: "#/components/schemas/AdellijkeTitel_predikaat_tabel"
-        geboorte:
-          $ref: "#/components/schemas/Geboorte"
+        soortVerbintenis:
+          $ref: "#/components/schemas/SoortVerbintenis_enum"
+        registergemeenteAkte:
+          $ref: "#/components/schemas/Gemeenten_tabel"
+        inOnderzoek:
+          $ref: "#/components/schemas/PartnerInOnderzoek"
         aangaanHuwelijk_Partnerschap:
           $ref: "#/components/schemas/AangaanHuwelijk_Partnerschap"
-        ontbindingPartnerschap:
-          $ref: "#/components/schemas/OntbindingPartnerschap"
+        naam:
+          $ref: "#/components/schemas/Naam"
+        ontbindinghuwelijk_Partnerschap:
+          $ref: "#/components/schemas/Ontbindinghuwelijk_Partnerschap"
         _links:
-          $ref: "#/components/schemas/Partner_links"
+          $ref: "#/components/schemas/Partnerhistorie_links"
     Verblijfstitels:
       type: "object"
-      description: "Gegevens over de verblijfsrechtelijke status."
+      description: ""
       properties:
         aanduidingVerblijfstitel:
           $ref: "#/components/schemas/Verblijfstitel_tabel"
-        geldigVan:
+        datumEinde:
           $ref: "#/components/schemas/Datum_onvolledig"
-        geldigTotEnMet:
+        datumIngang:
           $ref: "#/components/schemas/Datum_onvolledig"
+        inOnderzoek:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/VerblijfstitelInOnderzoek"
         _links:
           $ref: "#/components/schemas/Verblijfstitels_links"
     Bewoners:
       type: "object"
-      description: "Een NATUURLIJK PERSOON ingeschreven in de Basisregistratie Personen\
-        \ (BRP). ** Dit betreft een historische resource. De BEWONER kan in het verleden\
-        \ een ingeschreven persoon zij ngeweest, maar nu niet meer ingeschreven zijn\
-        \ ** Het betreft de verzameling van personen ingeschreven in de GBA of RNI\
-        \ woonachtig in de gemeente dan wel elders en van belang voor de gemeentelijke\
-        \ taakuitoefening. Een INGESCHREVEN NATUURLIJK PERSOON is een specialisatie\
-        \ van NATUURLIJK PERSOON."
+      description: "** Dit betreft een historische resource. De BEWONER kan in het\
+        \ verleden een ingeschreven persoon zij ngeweest, maar nu niet meer ingeschreven\
+        \ zijn **"
       required:
       - "overlijden"
       - "naam"
       properties:
+        burgerlijkeStaat:
+          $ref: "#/components/schemas/BurgelijkeStaat_enum"
         burgerservicenummer:
           type: "string"
           title: "Burgerservicenummer"
@@ -741,21 +1084,13 @@ components:
             \ cijfers aanwezig zijn."
           maxLength: 9
           example: "555555914"
-        a_nummer:
-          type: "integer"
-          title: "A-nummer"
-          description: "Het administratienummer van de persoon, bedoeld in de Wet\
-            \ BRP zie GBA"
-          example: "9878271827"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
-        burgerlijkeStaat:
-          $ref: "#/components/schemas/BurgelijkeStaat_enum"
         indicatieGeheim:
           $ref: "#/components/schemas/IndicatieGeheim_enum"
-        geldigVan:
-          $ref: "#/components/schemas/Datum_onvolledig"
         geldigTotEnmet:
+          $ref: "#/components/schemas/Datum_onvolledig"
+        geldigVan:
           $ref: "#/components/schemas/Datum_onvolledig"
         overlijden:
           $ref: "#/components/schemas/Overlijden"
@@ -765,8 +1100,7 @@ components:
           $ref: "#/components/schemas/Bewoners_links"
     Overlijden:
       type: "object"
-      description: "Gegevens over het overlijden van de ingeschreven natuurlijk persoon.\
-        \ Zie verder de toelichting in de GBA."
+      description: ""
       properties:
         plaatsOverlijden:
           type: "string"
@@ -784,126 +1118,307 @@ components:
             \ '0000' indien onbekend."
           maxLength: 40
           example: "Waddinxveen"
-        overlijdensdatum:
-          $ref: "#/components/schemas/Datum_onvolledig"
         landOverlijden:
           $ref: "#/components/schemas/Land_tabel"
+        overlijdensdatum:
+          $ref: "#/components/schemas/Datum_onvolledig"
     Naam:
       type: "object"
-      description: "Gegevens over de naam van de NATUURLIJK PERSOON"
+      description: "02 + 61 Gegevens over de naam van de NATUURLIJK PERSOON"
       properties:
-        aanduidingAanschrijving:
-          $ref: "#/components/schemas/Naamgebruik_enum"
-        voornamen:
-          type: "string"
-          title: "Voornamen"
-          description: "De verzameling namen die, gescheiden door spaties, aan de\
-            \ geslachtsnaam voorafgaat."
-          maxLength: 200
-          example: "Pieter Jan"
         geslachtsnaam:
           type: "string"
           title: "Geslachtsnaam"
           description: "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels\
-            \ en adellijke titel/predikaat zijn afgesplitst."
+            \ en adellijke titel/predikaat zijn afgesplitst. Element 02.40 De (geslachts)naam\
+            \ waarvan de eventueel aanwezige voorvoegsels (tabel 36) en adellijke\
+            \ titel/predikaat (tabel 38) zijn afgesplitst. Standaardwaarde . Mogelijke\
+            \ waarden De geslachtsnaam. Standaardwaarde indien onbekend."
           maxLength: 200
           example: "Vries"
-        aanschrijfwijze:
+        voornamen:
           type: "string"
-          title: "aanschrijfwijze"
-          description: "| Hoe het samenstellen van een aanschrijfwijze te werk gaat\
-            \ is beschreven in een document dat [hier te vinden is.](https://www.github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/api-specificatie/Aanschijfwijze%20opstellen.md)"
-          maxLength: 50
-          example: "P.J. Graaf de Vries"
-        voorvoegselGeslachtsnaam:
-          $ref: "#/components/schemas/Voorvoegsel_tabel"
+          title: "Voornamen"
+          description: "De verzameling namen die, gescheiden door spaties, aan de\
+            \ geslachtsnaam voorafgaat. Element 02.10 De verzameling namen die, gescheiden\
+            \ door spaties, aan de geslachtsnaam voorafgaat."
+          maxLength: 200
+          example: "Pieter Jan"
         adellijkeTitel_predikaat:
           $ref: "#/components/schemas/AdellijkeTitel_predikaat_tabel"
-    Geboorte:
-      type: "object"
-      description: "Gegevens over de geboorte van de INGESCHREVEN NATUURLIJK PERSOON.\
-        \ Zie verder de toelichting in de GBA"
-      properties:
-        geboorteplaats:
+        voorvoegsel:
           type: "string"
-          title: "Geboorteplaats"
-          description: "De naam van de Nederlandse gemeente of een buitenlandse plaats\
-            \ of een plaatsbepaling, die aangeeft waar de persoon is overleden In\
-            \ afwijking van het corresponderende GBA-attribuutsoort wordt voor gemeenten\
-            \ niet de code vastgelegd maar de gemeentenaam. Het betreft een gemeente\
-            \ in het Europese deel van het Koninkrijk. Zie verder de toelichting in\
-            \ de GBA. Wanneer het niet een Nederandse gemeente betreft, wordt een\
-            \ buitenlandse plaatsnaam of een omschrijving zo nodig aangevuld met een\
-            \ aanduiding in lengte- en breedtegraden, indien de geboorte niet in een\
-            \ gemeente of buitenlandse plaats heeft plaatsgevonden (bijvoorbeeld bij\
-            \ een geboorte op of boven internationaal gebied). Standaardwaarde '0000'\
-            \ indien onbekend."
-          maxLength: 40
-          example: "Nieuwegein"
-        geboortedatum:
+          title: "Voorvoegsel"
+          description: "Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel\
+            \ en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam.\
+            \ Element 02.30"
+          maxLength: 10
+          example: "de"
+        inOnderzoek:
+          $ref: "#/components/schemas/NaamInOnderzoek"
+    NaamInOnderzoek:
+      type: "object"
+      description: "In onderzoekgroep om aan te geven of gegevens over de naam van\
+        \ de Ingeschreven persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
+      properties:
+        adellijkeTitel_predikaat:
+          type: "boolean"
+          title: "adellijkeTitel_predikaat"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        geslachtsnaam:
+          type: "boolean"
+          title: "geslachtsnaam"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        voornamen:
+          type: "boolean"
+          title: "voornamen"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        voorvoegsel:
+          type: "boolean"
+          title: "voorvoegsel"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        datumIngangOnderzoek:
           $ref: "#/components/schemas/Datum_onvolledig"
-        landGeboorte:
-          $ref: "#/components/schemas/Land_tabel"
+    VerblijfplaatsInOnderzoek:
+      type: "object"
+      description: "Indicators om aan te geven dat de gegevens over het verblijf en\
+        \ adres van de INGESCHREVEN NATUURLIJK PERSOON in onderzoek zijn. Elementen\
+        \ van het GBA-adres zelf (Dat zou eigenlijk een BAG-adres moeten zijn) kunnen\
+        \ niet in onderzoek zijn. Wel de relatie naar de nummeraanduding. Dat wordt\
+        \ gedaan door de identificatiecodeNummeraanduiding in onderzoek te zetten.\
+        \ Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
+      required:
+      - "datumEindeOnderzoek"
+      properties:
+        aanduidingBijHuisnummer:
+          type: "boolean"
+          title: "aanduidingBijHuisnummer"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        datumAanvangAdreshouding:
+          type: "boolean"
+          title: "datumAanvangAdreshouding"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        datumIngangGeldigheid:
+          type: "boolean"
+          title: "datumIngangGeldigheid"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        datumInschrijvingInGemeente:
+          type: "boolean"
+          title: "datumInschrijvingInGemeente"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        datumVestigingInNederland:
+          type: "boolean"
+          title: "datumVestigingInNederland"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        functieAdres:
+          type: "boolean"
+          title: "functieAdres"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        huisletter:
+          type: "boolean"
+          title: "huisletter"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        huisnummer:
+          type: "boolean"
+          title: "huisnummer"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        huisnummertoevoeging:
+          type: "boolean"
+          title: "huisnummertoevoeging"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        identificatiecodeNummeraanduiding:
+          type: "boolean"
+          title: "identificatiecodeNummeraanduiding"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        identificatiecodeVerblijfplaats:
+          type: "boolean"
+          title: "identificatiecodeVerblijfplaats"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        landVanwaarIngeschreven:
+          type: "boolean"
+          title: "landVanwaarIngeschreven"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        locatiebeschrijving:
+          type: "boolean"
+          title: "locatiebeschrijving"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        naamOpenbareRuimte:
+          type: "boolean"
+          title: "naamOpenbareRuimte"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        postcode:
+          type: "boolean"
+          title: "postcode"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        straatnaam:
+          type: "boolean"
+          title: "straatnaam"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        verblijfBuitenland:
+          type: "boolean"
+          title: "verblijfBuitenland"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        woonplaatsnaam:
+          type: "boolean"
+          title: "woonplaatsnaam"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        datumEindeOnderzoek:
+          $ref: "#/components/schemas/Datum_onvolledig"
+        datumIngangOnderzoek:
+          $ref: "#/components/schemas/Datum_onvolledig"
+    PartnerInOnderzoek:
+      type: "object"
+      description: "Indicators over het in onderzoek zijn van gegevens over de aangaan\
+        \ van het huwelijk van de INGESCHREVEN PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
+      required:
+      - "datumEindeOnderzoek"
+      properties:
+        burgerservicenummer:
+          type: "boolean"
+          title: "burgerservicenummer"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        geslachtsaanduiding:
+          type: "boolean"
+          title: "geslachtsaanduiding"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        soortVerbintenis:
+          type: "boolean"
+          title: "soortVerbintenis"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        datumEindeOnderzoek:
+          $ref: "#/components/schemas/Datum_onvolledig"
+        datumIngangOnderzoek:
+          $ref: "#/components/schemas/Datum_onvolledig"
     AangaanHuwelijk_Partnerschap:
       type: "object"
-      description: "Gegevens over het gesloten huwelijk of het aangegane geregistreerd\
-        \ partnerschap."
+      description: ""
       properties:
-        plaats:
-          type: "string"
-          title: "Plaats huwelijkssluiting/aangaan geregistreerd partnerschap"
-          description: "De code uit de GBA/Gemeententabel of een buitenlandse plaats\
-            \ of een plaatsbepaling, die aangeeft waar het huwelijk is voltrokken\
-            \ of het partnerschap is aangegaan."
-          maxLength: 40
-          example: "Maarssen"
         datum:
           $ref: "#/components/schemas/Datum_onvolledig"
         land:
           $ref: "#/components/schemas/Land_tabel"
-    OntbindingPartnerschap:
-      type: "object"
-      description: "Gegevens over het ontbonden huwelijk of geregistreerd partnerschap."
-      properties:
         plaats:
-          type: "string"
-          title: "Plaats ontbinding huwelijk/geregistreerd partnerschap"
-          description: "De code uit de GBA-Gemeententabel of een buitenlandse plaats\
-            \ of een plaatsbepaling die aangeeft waar het huwelijk/ geregistreerd\
-            \ partnerschap is ontbonden of nietig verklaard."
-          maxLength: 40
+          $ref: "#/components/schemas/Gemeenten_tabel"
+        inOnderzoek:
+          $ref: "#/components/schemas/AangaanHuwelijkInOnderzoek"
+    AangaanHuwelijkInOnderzoek:
+      type: "object"
+      description: "Indicators over het in onderzoek zijn van gegevens over de aangaan\
+        \ van het huwelijk van de INGESCHREVEN PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
+      required:
+      - "datumEindeOnderzoek"
+      properties:
+        datum:
+          type: "boolean"
+          title: "datum"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        land:
+          type: "boolean"
+          title: "land"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        plaats:
+          type: "boolean"
+          title: "plaats"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        datumEindeOnderzoek:
+          $ref: "#/components/schemas/Datum_onvolledig"
+        datumIngangOnderzoek:
+          $ref: "#/components/schemas/Datum_onvolledig"
+    Ontbindinghuwelijk_Partnerschap:
+      type: "object"
+      description: ""
+      properties:
+        datum:
+          $ref: "#/components/schemas/Datum_onvolledig"
+        land:
+          $ref: "#/components/schemas/Land_tabel"
+        plaats:
+          $ref: "#/components/schemas/Gemeenten_tabel"
         reden:
           $ref: "#/components/schemas/RedenOntbindingHuwelijk_geregistreerdPartnerschap_tabel"
+        inOnderzoek:
+          $ref: "#/components/schemas/OntbindingHuwelijkInOnderzoek"
+    OntbindingHuwelijkInOnderzoek:
+      type: "object"
+      description: "Indicators over het in onderzoek zijn van gegevens over de aangaan\
+        \ van het huwelijk van de INGESCHREVEN PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
+      required:
+      - "datumEindeOnderzoek"
+      properties:
         datum:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          type: "boolean"
+          title: "datum"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
         land:
-          $ref: "#/components/schemas/Land_tabel"
+          type: "boolean"
+          title: "land"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        plaats:
+          type: "boolean"
+          title: "plaats"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
+        datumEindeOnderzoek:
+          $ref: "#/components/schemas/Datum_onvolledig"
+        datumIngangOnderzoek:
+          $ref: "#/components/schemas/Datum_onvolledig"
+    VerblijfstitelInOnderzoek:
+      type: "object"
+      description: "In onderzoek indicators over de gegevens over de verblijfstitel."
+      properties:
+        aanduiding:
+          type: "boolean"
+          title: "aanduiding"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze verblijfstitel in onderzoek is."
+        datumEinde:
+          type: "boolean"
+          title: "datumEinde"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze verblijfstitel in onderzoek is."
+        datumIngang:
+          type: "boolean"
+          title: "datumIngang"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze verblijfstitel in onderzoek is."
+        datumIngangOnderzoek:
+          $ref: "#/components/schemas/Datum_onvolledig"
     Datum_onvolledig:
       type: "object"
       description: "Gegevens over de datums die mogelijk niet volledig zijn, maar\
         \ waarvan de bekende gedeeltes wel moeten kunnen worden uitgewisseld. Als\
         \ de volledige datum bekend is worden alle elementen gevuld."
       properties:
-        jaar:
-          type: "string"
-          title: "jaar"
-          description: "Het jaar van de datum. Als het jaar bekend is wordt dit element\
-            \ gevuld, ook als de volledige datum bekend is."
-          format: "date_fullyear"
-          pattern: "^[1-2]{1}[0-9]{3}$"
-        datum:
-          type: "string"
-          title: "datum"
-          description: "De volledige datum die in de `date` definitie past. Dit element\
-            \ wordt alleen gevuld als de volledige datum bekend is."
-          format: "date"
-        maand:
-          type: "string"
-          title: "maand"
-          description: "De maand. Als de maand van een datum bekend is wordt deze\
-            \ hier ingevuld. Ook als de volledige datum is ingevuld."
-          pattern: "^99$"
-          maxLength: 2
         dag:
           type: "string"
           title: "dag"
@@ -911,10 +1426,29 @@ components:
             \ ingevuld. Ook als de volledige datum bekend is."
           pattern: "^99$"
           maxLength: 2
+        datum:
+          type: "string"
+          title: "datum"
+          description: "De volledige datum die in de `date` definitie past. Dit element\
+            \ wordt alleen gevuld als de volledige datum bekend is."
+          format: "date"
+        jaar:
+          type: "string"
+          title: "jaar"
+          description: "Het jaar van de datum. Als het jaar bekend is wordt dit element\
+            \ gevuld, ook als de volledige datum bekend is."
+          format: "date_fullyear"
+          pattern: "^[1-2]{1}[0-9]{3}$"
+        maand:
+          type: "string"
+          title: "maand"
+          description: "De maand. Als de maand van een datum bekend is wordt deze\
+            \ hier ingevuld. Ook als de volledige datum is ingevuld."
+          pattern: "^99$"
+          maxLength: 2
     Land_tabel:
       type: "object"
-      description: "Een opsomming van alle huidige en voormalige landen met hun codes,\
-        \ namen en geldigheidstermijnen."
+      description: ""
       properties:
         landcode:
           type: "string"
@@ -930,21 +1464,9 @@ components:
             \ de GBA."
           maxLength: 40
           example: "Nederland"
-    Voorvoegsel_tabel:
-      type: "object"
-      description: "Een opsomming van de toegestane voorvoegsels."
-      properties:
-        voorvoegsel:
-          type: "string"
-          title: "Voorvoegsel"
-          description: "Het voorvoegsel"
-          maxLength: 10
-          example: "de"
     AdellijkeTitel_predikaat_tabel:
       type: "object"
-      description: "Een opsomming van de adellijke titels en/of predikaten die een\
-        \ persoon kan bezitten of die aan een persoon kunnen worden toegekend met\
-        \ hun codes, omschrijvingen en soorten."
+      description: ""
       properties:
         adellijkeTitel_predikaat:
           type: "string"
@@ -964,28 +1486,42 @@ components:
           description: "De soort van de Adellijke titel/predikaat"
           maxLength: 10
           example: "titel"
+    Gemeenten_tabel:
+      type: "object"
+      description: "Gemeentetabel 33 conform LO GBA"
+      properties:
+        code:
+          type: "string"
+          title: "code"
+          description: "De code, behorende bij de gemeentenaam opgenomen in de Gemeentetabel\
+            \ van de GBA."
+          maxLength: 4
+          example: "0737"
+        naam:
+          type: "string"
+          title: "naam"
+          description: ""
+          maxLength: 80
+          example: "Tytsjerksteradiel"
     RedenOntbindingHuwelijk_geregistreerdPartnerschap_tabel:
       type: "object"
-      description: "Een opsomming van de wettelijke gronden van ontbinding/nietigverklaring\
-        \ van een huwelijk/geregistreerd partnerschap met hun codes, omschrijvingen\
-        \ en geldigheidstermijnen."
+      description: ""
       properties:
-        redenOntbinding_nietigverklaringHuwelijk_geregistreerdPartnerschap:
-          type: "string"
-          title: "Reden ontbinding/nietigverklaring huwelijk/geregistreerd partnerschap"
-          description: "De code van de reden van ontbinding of nietigverklaring van\
-            \ het huwelijk of geregistreerd partnerschap"
-          maxLength: 1
         omschrijving:
           type: "string"
           title: "Omschrijving"
           description: "De omschrijving van de reden van ontbinding of nietigverklaring\
             \ van het huwelijk of geregistreerd partnerschap"
           maxLength: 80
+        redenOntbinding_nietigverklaringHuwelijk_geregistreerdPartnerschap:
+          type: "string"
+          title: "Reden ontbinding/nietigverklaring huwelijk/geregistreerd partnerschap"
+          description: "De code van de reden van ontbinding of nietigverklaring van\
+            \ het huwelijk of geregistreerd partnerschap"
+          maxLength: 1
     Verblijfstitel_tabel:
       type: "object"
-      description: "Een opsomming van de verblijfsrechtelijke statussen met hun codes,\
-        \ omschrijvingen en geldigheidstermijnen."
+      description: ""
       properties:
         verblijfstitelNumeriek:
           type: "string"
@@ -1005,62 +1541,62 @@ components:
       type: "object"
       properties:
         self:
-          $ref: "#/components/schemas/Link"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
         bewoners:
           title: "bewoondDoor"
           type: "array"
           description: ""
           minItems: 1
           items:
-            $ref: "#/components/schemas/Link"
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
         nummeraanduidingen:
           title: "is"
           type: "object"
           description: ""
           properties:
             href:
-              $ref: "#/components/schemas/Href"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
     Bewoners_links:
       type: "object"
       properties:
         self:
-          $ref: "#/components/schemas/Link"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
         ingeschrevenpersonen:
           title: "is"
           type: "object"
           description: ""
           properties:
             href:
-              $ref: "#/components/schemas/Href"
-    Verblijfplaatsen_links:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
+    Verblijfplaats_links:
       type: "object"
       properties:
         self:
-          $ref: "#/components/schemas/Link"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
         nummeraanduidingen:
           title: "is"
           type: "object"
           description: ""
           properties:
             href:
-              $ref: "#/components/schemas/Href"
-    Verblijfstitels_links:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
+    Partnerhistorie_links:
       type: "object"
       properties:
         self:
-          $ref: "#/components/schemas/Link"
-    Partner_links:
-      type: "object"
-      properties:
-        self:
-          $ref: "#/components/schemas/Link"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
         ingeschrevenPersonen:
           title: "is"
           type: "object"
           description: ""
           properties:
             href:
-              $ref: "#/components/schemas/Href"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
+    Verblijfstitels_links:
+      type: "object"
+      properties:
+        self:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
     Bewoning_embedded:
       type: "object"
       properties:
@@ -1071,81 +1607,11 @@ components:
           minItems: 1
           items:
             $ref: "#/components/schemas/Bewoners"
-    Href:
-      type: "string"
-      format: "uri"
-    Link:
-      type: "object"
-      properties:
-        href:
-          $ref: "#/components/schemas/Href"
-    Collectionlinks:
-      type: "object"
-      properties:
-        self:
-          type: "object"
-          description: "uri van de api aanroep die tot dit resultaat heeft geleid"
-          properties:
-            href:
-              $ref: "#/components/schemas/Href"
-    Foutbericht:
-      type: "object"
-      description: "Terugmelding bij een fout"
-      properties:
-        type:
-          type: "string"
-          format: "uri"
-          description: "Link naar meer informatie over deze fout"
-          example: "https://www.gemmaonline.nl/standaarden/api/ValidatieFout"
-        title:
-          type: "string"
-          description: "Beschrijving van de fout"
-          example: "Hier staat wat er is misgegaan..."
-        status:
-          type: "integer"
-          description: "Http status code"
-          example: 400
-        detail:
-          type: "string"
-          description: "Details over de fout"
-          example: "Meer details over de fout staan hier..."
-        instance:
-          type: "string"
-          format: "uri"
-          description: "Uri van de aanroep die de fout heeft veroorzaakt"
-          example: "https://datapunt.voorbeeldgemeente.nl/service/api/v1/resourcenaam?parameter=waarde"
-        invalid-params:
-          type: "array"
-          items:
-            $ref: "#/components/schemas/ParamFoutDetails"
-          description: "Foutmelding per fout in een parameter. Alle gevonden fouten\
-            \ worden één keer teruggemeld."
-    ParamFoutDetails:
-      type: "object"
-      description: "Details over fouten in opgegeven parameters"
-      properties:
-        type:
-          type: "string"
-          format: "uri"
-        name:
-          type: "string"
-          description: "Naam van de parameter"
-        reason:
-          type: "string"
-          description: "Beschrijving van de fout op de parameterwaarde"
-    SoortVerbintenis_enum:
-      type: "string"
-      description: "Soort verbintenis van een bij de burgerlijke stand ingeschreven\
-        \ verbintenis:\n* H - huwelijk\n* P - geregistreerd partnerschap"
-      enum:
-      - "H"
-      - "P"
     BurgelijkeStaat_enum:
       type: "string"
-      description: "Een aanduiding van alle waarden die een burgelijke staat kan aannemen:\n\
-        * 0 - onbekend\n* 1 - ongehuwd en nooit gehuwd geweest\n* 2 - gehuwd\n* 3\
-        \ - gescheiden\n* 4 - weduwe / weduwnaar\n* 5 - partnerschap\n* 6 - partnerschap\
-        \ beeindigd\n* 7 - achtergebleven partner"
+      description: ":\n* `0` - onbekend\n* `1` - ongehuwd en nooit gehuwd geweest\n\
+        * `2` - gehuwd\n* `3` - gescheiden\n* `4` - weduwe / weduwnaar\n* `5` - partnerschap\n\
+        * `6` - partnerschap beeindigd\n* `7` - achtergebleven partner"
       enum:
       - "0"
       - "1"
@@ -1157,23 +1623,22 @@ components:
       - "7"
     Geslacht_enum:
       type: "string"
-      description: "Aanduiding van het geslacht volgens het GBA:\n* M - Man\n* V -\
-        \ Vrouw\n* O - Onbekend"
+      description: ":\n* `M` - Man\n* `V` - Vrouw\n* `O` - Onbekend"
       enum:
       - "M"
       - "V"
       - "O"
     IndicatieGeheim_enum:
       type: "string"
-      description: "de verschillende aanduidingen of gegevens wel of niet verstrekt\
-        \ mogen worden:\n* 0 - geen beperking\n* 1 - niet zonder toestemming aan derden\
-        \ ter uitvoering van een\n* 2 - niet aan kerken\n* 3 - niet aan vrije derden\n\
-        * 4 - niet zonder toestemming aan derden ter uitvoering van een algemeen verbindend\
-        \ voorschrift en niet aan kerken\n* 5 - niet zonder toestemming aan derden\
-        \ ter uitvoering van een algemeen verbindend voorschrift en niet aan vrije\
-        \ derden\n* 6 - niet aan kerken en niet aan vrije derden\n* 7 - niet zonder\
-        \ toestemming aan derden ter uitvoering van een algemeen verbindend voorschrift\
-        \ en niet aan vrije derden en niet aan kerken"
+      description: ":\n* `0` - geen beperking\n* `1` - niet zonder toestemming aan\
+        \ derden ter uitvoering van een\n* `2` - niet aan kerken\n* `3` - niet aan\
+        \ vrije derden\n* `4` - niet zonder toestemming aan derden ter uitvoering\
+        \ van een algemeen verbindend voorschrift en niet aan kerken\n* `5` - niet\
+        \ zonder toestemming aan derden ter uitvoering van een algemeen verbindend\
+        \ voorschrift en niet aan vrije derden\n* `6` - niet aan kerken en niet aan\
+        \ vrije derden\n* `7` - niet zonder toestemming aan derden ter uitvoering\
+        \ van een algemeen verbindend voorschrift en niet aan vrije derden en niet\
+        \ aan kerken"
       enum:
       - "0"
       - "1"
@@ -1183,50 +1648,23 @@ components:
       - "5"
       - "6"
       - "7"
-    Naamgebruik_enum:
-      type: "string"
-      description: "De voorgedefinieerde waarden van naamgebruik volgens de centrale\
-        \ voorzieningen. Zie attribuut Naamgebruik van groep A.1.12 Naamgebruik van\
-        \ BRP.:\n* E - Eigen\n* P - Partner\n* V - Partner, eigen\n* N - Eigen, partner"
-      enum:
-      - "E"
-      - "P"
-      - "V"
-      - "N"
     SoortAdres_enum:
       type: "string"
-      description: "Aanduiding van het soort adres.:\n* W - Woonadres\n* B - Briefadres"
+      description: ":\n* `W` - Woonadres\n* `B` - Briefadres"
       enum:
       - "W"
       - "B"
-  headers:
-    api_version:
-      schema:
-        type: "integer"
-        description: "Geeft een specifieke API-versie aan in de context van een specifieke\
-          \ aanroep."
-        example: "1.0.1"
-    warning:
-      schema:
-        type: "string"
-        description: "zie RFC 7234. In het geval een major versie wordt uitgefaseerd,\
-          \ gebruiken we warn-code 299 ('Miscellaneous Persistent Warning') en het\
-          \ API end-point (inclusief versienummer) als de warn-agent van de warning,\
-          \ gevolgd door de warn-text met de human-readable waarschuwing"
-        example: "299 https://service.../api/.../v1 'Deze versie van de API is verouderd\
-          \ en zal uit dienst worden genomen op 2018-02-01. Raadpleeg voor meer informatie\
-          \ hier de documentatie: https://omgevingswet.../api/.../v1'."
-    X_Total_Count:
-      schema:
-        type: "integer"
-        description: "Totaal aantal paginas."
-        example: "163"
-    X_Rate_Limit_Limit:
-      schema:
-        type: "integer"
-    X_Rate_Limit_Remaining:
-      schema:
-        type: "integer"
-    X_Rate_Limit_Reset:
-      schema:
-        type: "integer"
+    SoortVerbintenis_enum:
+      type: "string"
+      description: ":\n* `H` - huwelijk\n* `P` - geregistreerd partnerschap"
+      enum:
+      - "H"
+      - "P"
+    AanduidingBijHuisnummer_enum:
+      type: "string"
+      description: "De aanduiding die wordt gebruikt voor adressen die niet zijn voorzien\
+        \ van de gebruikelijke straatnaam en huisnummeraanduidingen.:\n* `to` - tegenover\n\
+        * `by` - bij"
+      enum:
+      - "to"
+      - "by"
