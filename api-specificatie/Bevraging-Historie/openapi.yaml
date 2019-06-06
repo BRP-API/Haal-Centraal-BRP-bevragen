@@ -16,7 +16,7 @@ info:
 paths:
   /historie/bewoningen:
     get:
-      operationId: ingeschrevenNatuurlijkPersonen
+      operationId: getbewoningen
       description: |
         Het ophalen van de gegevens van een collectie Bewoningen. 
         Een bewoning is een VERBLIJFPLAATS waar op enig moment daadwerkelijk minimaal 1 INGESCHREVEN PERSOON is ingeschreven 
@@ -812,9 +812,6 @@ components:
       type: "object"
       description: "08/58 Gegevens over het verblijf en adres van de ingeschreven\
         \ persoon. Dit is het adres waarop een persoon is ingeschreven."
-      required:
-      - "datumeEindeGeldigheid"
-      - "inOnderzoek"
       properties:
         aanduidingBijHuisnummer:
           $ref: "#/components/schemas/AanduidingBijHuisnummer_enum"
@@ -1063,9 +1060,6 @@ components:
       description: "** Dit betreft een historische resource. De BEWONER kan in het\
         \ verleden een ingeschreven persoon zij ngeweest, maar nu niet meer ingeschreven\
         \ zijn **"
-      required:
-      - "overlijden"
-      - "naam"
       properties:
         burgerlijkeStaat:
           $ref: "#/components/schemas/BurgelijkeStaat_enum"
@@ -1191,8 +1185,6 @@ components:
         \ niet in onderzoek zijn. Wel de relatie naar de nummeraanduding. Dat wordt\
         \ gedaan door de identificatiecodeNummeraanduiding in onderzoek te zetten.\
         \ Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
-      required:
-      - "datumEindeOnderzoek"
       properties:
         aanduidingBijHuisnummer:
           type: "boolean"
@@ -1292,8 +1284,6 @@ components:
       type: "object"
       description: "Indicators over het in onderzoek zijn van gegevens over de aangaan\
         \ van het huwelijk van de INGESCHREVEN PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
-      required:
-      - "datumEindeOnderzoek"
       properties:
         burgerservicenummer:
           type: "boolean"
@@ -1330,8 +1320,6 @@ components:
       type: "object"
       description: "Indicators over het in onderzoek zijn van gegevens over de aangaan\
         \ van het huwelijk van de INGESCHREVEN PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
-      required:
-      - "datumEindeOnderzoek"
       properties:
         datum:
           type: "boolean"
@@ -1370,8 +1358,6 @@ components:
       type: "object"
       description: "Indicators over het in onderzoek zijn van gegevens over de aangaan\
         \ van het huwelijk van de INGESCHREVEN PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
-      required:
-      - "datumEindeOnderzoek"
       properties:
         datum:
           type: "boolean"
