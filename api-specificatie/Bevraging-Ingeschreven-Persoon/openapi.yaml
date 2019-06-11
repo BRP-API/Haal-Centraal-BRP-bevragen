@@ -2279,7 +2279,7 @@ components:
           title: "Straatnaam"
           description: "De officiële straatnaam zoals door het bevoegd gemeentelijk\
             \ orgaan is vastgesteld, zo nodig ingekort conform de specificaties van\
-            \ de NEN 5825. alle alfanumrieke tekens"
+            \ de NEN 5825. De standaardwaarde is .  alle alfanumrieke tekens"
           maxLength: 24
         woonplaatsnaam:
           type: "string"
