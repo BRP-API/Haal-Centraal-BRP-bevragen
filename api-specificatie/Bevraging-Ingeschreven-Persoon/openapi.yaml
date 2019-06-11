@@ -1565,7 +1565,10 @@ components:
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
         indicatieGeheim:
-          $ref: "#/components/schemas/IndicatieGeheim_enum"
+          type: "boolean"
+          title: "indicatieGeheim"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is.
         redenOpschortingBijhouding:
           $ref: "#/components/schemas/RedenOpschortingBijhouding_enum"
         datumEersteInschrijvingGBA:
