@@ -196,17 +196,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                type: object
-                properties:
-                  _links:
-                    $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalCollectionLinks"
-                  _embedded:
-                    type: object
-                    properties:
-                      ingeschrevenpersonen:
-                        type: array
-                        items:
-                          $ref: '#/components/schemas/IngeschrevenPersoon'
+                $ref: '#/components/schemas/IngeschrevenPersoonCollectie'
         '400':
           description: Bad Request
           headers:
@@ -621,17 +611,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                type: object
-                properties:
-                  _links:
-                    $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalCollectionLinks"
-                  _embedded:
-                    type: object
-                    properties:
-                      kinderen:
-                        type: array
-                        items:
-                          $ref: '#/components/schemas/Kind'
+                $ref: '#/components/schemas/KindCollectie'
         '401':
           description: Unauthorized
           headers:
@@ -902,17 +882,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                type: object
-                properties:
-                  _links:
-                    $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalCollectionLinks"
-                  _embedded:
-                    type: object
-                    properties:
-                      ouders:
-                        type: array
-                        items:
-                          $ref: '#/components/schemas/Ouder'
+                $ref: '#/components/schemas/OuderCollectie'
         '401':
           description: Unauthorized
           headers:
@@ -1183,17 +1153,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                type: object
-                properties:
-                  _links:
-                    $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalCollectionLinks"
-                  _embedded:
-                    type: object
-                    properties:
-                      partners:
-                        type: array
-                        items:
-                          $ref: '#/components/schemas/Partner'
+                $ref: '#/components/schemas/PartnerCollectie'
         '401':
           description: Unauthorized
           headers:
@@ -1473,17 +1433,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                type: object
-                properties:
-                  _links:
-                    $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalPaginationLinks"
-                  _embedded:
-                    type: object
-                    properties:
-                      residocumenten:
-                        type: array
-                        items:
-                          $ref: '#/components/schemas/Reisdocument'
+                $ref: '#/components/schemas/ReisdocumentCollectie'
         '401':
           description: Unauthorized
           headers:
@@ -1648,6 +1598,19 @@ components:
           $ref: "#/components/schemas/IngeschrevenPersoon_links"
         _embedded:
           $ref: "#/components/schemas/IngeschrevenPersoon_embedded"
+    IngeschrevenPersoonCollectie:
+      type: object
+      properties:
+        _links:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalCollectionLinks"
+        _embedded:
+          type: object
+          properties:
+            ingeschrevenpersonen:
+              type: array
+              items:
+                $ref: '#/components/schemas/IngeschrevenPersoon'
+    
     Ouder:
       type: "object"
       description: "02/52 of 03/53 Gegevens over de ouder van de ingeschrevene."
@@ -1689,6 +1652,18 @@ components:
           $ref: "#/components/schemas/Geboorte"
         _links:
           $ref: "#/components/schemas/Ouder_links"
+    OuderCollectie:
+      type: object
+      properties:
+        _links:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalCollectionLinks"
+        _embedded:
+          type: object
+          properties:
+            ouders:
+              type: array
+              items:
+                $ref: '#/components/schemas/Ouder'
     Kind:
       type: "object"
       description: "09/59 Gegevens over een kind van de ingeschrevene."
@@ -1724,6 +1699,18 @@ components:
           $ref: "#/components/schemas/Geboorte"
         _links:
           $ref: "#/components/schemas/Kind_links"
+    KindCollectie:
+      type: object
+      properties:
+        _links:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalCollectionLinks"
+        _embedded:
+          type: object
+          properties:
+            kinderen:
+              type: array
+              items:
+                $ref: '#/components/schemas/Kind'
     Partner:
       type: "object"
       description: "05/55 Gegevens over een gesloten huwelijk/geregistreerd partnerschap\
@@ -1766,6 +1753,18 @@ components:
           $ref: "#/components/schemas/AangaanHuwelijk_Partnerschap"
         _links:
           $ref: "#/components/schemas/Partner_links"
+    PartnerCollectie:
+      type: object
+      properties:
+        _links:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalCollectionLinks"
+        _embedded:
+          type: object
+          properties:
+            partners:
+              type: array
+              items:
+                $ref: '#/components/schemas/Partner'
     Reisdocument:
       type: "object"
       description: "Een document dat vereist is voor reizen naar het buitenland"
@@ -1806,6 +1805,18 @@ components:
           $ref: "#/components/schemas/InOnderzoek"
         _links:
           $ref: "#/components/schemas/Reisdocument_links"
+    ReisdocumentCollectie:
+      type: object
+      properties:
+        _links:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalPaginationLinks"
+        _embedded:
+          type: object
+          properties:
+            residocumenten:
+              type: array
+              items:
+                $ref: '#/components/schemas/Reisdocument'
     Naam:
       type: "object"
       description: "02 + 61 Gegevens over de naam van de NATUURLIJK PERSOON"
