@@ -1948,15 +1948,6 @@ components:
           type: "boolean"
           title: "datumEuropeesKiesrechtOnbekend"
           description: "Indicator dat de datumEuropeesKiesrecht onbekend is."
-        einddatumUitsluitingEuropeesKiesrechtOnbekend:
-          type: "boolean"
-          title: "einddatumUitsluitingEuropeesKiesrechtOnbekend"
-          description: "Indicator dat iemand is uitgesloten van kiesrecht inddatumUitsluitingEuropeesKiesrecht\
-            \ onbekend is"
-        einddatumUitsluitingKiesrechtOnbekend:
-          type: "boolean"
-          title: "einddatumUitsluitingKiesrechtOnbekend"
-          description: "Indicator dat einddatumUitsluitingKiesrecht onbekend is."
         datumEuropeesKiesrecht:
           $ref: "#/components/schemas/Datum_onvolledig"
         einddatumUitsluitingEuropeesKiesrecht:
