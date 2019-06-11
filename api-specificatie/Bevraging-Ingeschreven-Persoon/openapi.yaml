@@ -1839,6 +1839,13 @@ components:
             \ door spaties, aan de geslachtsnaam voorafgaat."
           maxLength: 200
           example: "Pieter Jan"
+        voorletters:
+          type: "string"
+          title: "Voorletters aanschrijving"
+          description: "De voorletters waarmee een persoon aangeschreven wil worden.\
+            \ De voorlettes zijn afgeleid van de voornamen."
+          maxLength: 20
+          minLength: 1
         adellijkeTitel_predikaat:
           $ref: "#/components/schemas/AdellijkeTitel_predikaat_tabel"
         voorvoegsel:
