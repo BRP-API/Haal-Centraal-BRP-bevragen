@@ -2379,6 +2379,11 @@ components:
           title: "functieAdres"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
+        gemeenteVanInschrijving:
+          type: "boolean"
+          title: "gemeenteVanInschrijving"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze persoon in onderzoek is."
         huisletter:
           type: "boolean"
           title: "huisletter"
