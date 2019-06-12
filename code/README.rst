@@ -1,11 +1,11 @@
 ============================
-besluitregistratiecomponent
+Haal Centraal BRP Bevragen
 ============================
 
 :Version: 0.1.0
 :Source: https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen
-:Keywords: zaken, zaakgericht werken, GEMMA, RGBZ, bip
-:PythonVersion: 3.6
+:Keywords: Haal Centraal, BRP, BRP bevragen
+
 
 |build-status|
 
