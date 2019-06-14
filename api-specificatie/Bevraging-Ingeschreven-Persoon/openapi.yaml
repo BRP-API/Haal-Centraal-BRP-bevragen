@@ -1969,7 +1969,7 @@ components:
         - $ref: "#/components/schemas/Naam"
         - type: object
           properties:
-            aanduidingAanschrijving:
+            aanduidingNaamgebruik:
               $ref: "#/components/schemas/Naamgebruik_enum"
             aanschrijfwijze:
               type: "string"
