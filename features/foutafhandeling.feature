@@ -53,11 +53,11 @@ Functionaliteit: Afhandeling van fouten
   | tabelwaarde      | Waarde komt niet voor in de tabel.                        | table        |
   | required         | Parameter is verplicht.                                   | required     |
   | parameters       | Parameter is niet verwacht.                               | unknownParam |
-  | fields           | Fields parameter is niet correct.                         | fields       |
-  | expand           | Expand parameter is niet correct.                         | expand       |
+  | fields           | Deel van de parameterwaarde is niet correct: {waarde}.    | fields       |
+  | expand           | Deel van de parameterwaarde is niet correct: {waarde}.    | expand       |
   | wildcard         | Incorrect gebruik van wildcard karakter {wildcard}.       | wildcard     |
 
-
+  Bij een validatiefout op de expandparameter of fieldsparameter, wordt de plek binnen de parameterwaarde opgenomen waar de fout gevonden wordt.
 
   Abstract Scenario: Ongeldige pathparameter waarde bij raadplegen resource
     Als de {resource} wordt geraadpleegd met {parameter}={waarde}
@@ -71,12 +71,13 @@ Functionaliteit: Afhandeling van fouten
     En is in het antwoord invalid-params.code={code}
 
     Voorbeelden:
-      | code         | reason                                      | resource             | parameter           | waarde           |
-      | minLength    | Waarde is korter dan minimale lengte 9.     | ingeschrevenpersonen | burgerservicenummer | 12345678         |
-      | maxLength    | Waarde is langer dan maximale lengte 9.     | ingeschrevenpersonen | burgerservicenummer | 1234567890       |
-      | unknownParam | Parameter is niet verwacht.                 | ingeschrevenpersonen | bestaatniet         | fout             |
-      | fields       | Fields parameter is niet correct.           | ingeschrevenpersonen | fields              | bestaatniet      |
-      | fields       | Expand parameter is niet correct.           | ingeschrevenpersonen | expand              | bestaatniet      |
+      | code         | reason                                                    | resource             | parameter           | waarde                      |
+      | minLength    | Waarde is korter dan minimale lengte 9.                   | ingeschrevenpersonen | burgerservicenummer | 12345678                    |
+      | maxLength    | Waarde is langer dan maximale lengte 9.                   | ingeschrevenpersonen | burgerservicenummer | 1234567890                  |
+      | unknownParam | Parameter is niet verwacht.                               | ingeschrevenpersonen | bestaatniet         | fout                        |
+      | fields       | Deel van de parameterwaarde is niet correct: bestaatniet. | ingeschrevenpersonen | fields              | naam,bestaatniet,geboorte   |
+      | fields       | Deel van de parameterwaarde is niet correct: bestaatniet. | ingeschrevenpersonen | expand              | ouders,bestaatniet,kinderen |
+      | fields       | Deel van de parameterwaarde is niet correct: true.        | ingeschrevenpersonen | expand              | true                        |
 
   Abstract Scenario: Ongeldige queryparameter waarde bij zoeken
     Als {resource} worden gezocht met {parameter}={waarde}
@@ -90,20 +91,20 @@ Functionaliteit: Afhandeling van fouten
     En is in het antwoord invalid-params.code={code}
 
     Voorbeelden:
-      | code         | reason                                                       | resource             | parameter                               | waarde           |
-      | integer      | Waarde is geen geldige integer.                              | ingeschrevenpersonen | verblijfplaats__huisnummer              | a                |
-      | boolean      | Waarde is geen geldige boolean.                              | ingeschrevenpersonen | inclusiefoverledenpersonen              | nee              |
-      | date         | Waarde is geen geldige datum.                                | ingeschrevenpersonen | geboorte__datum                         | 23-04-2019       |
-      | date         | Waarde is geen geldige datum.                                | ingeschrevenpersonen | geboorte__datum                         | 1983-05-00       |
-      | maximum      | Waarde is hoger dan maximum 99999.                           | ingeschrevenpersonen | verblijfplaats__huisnummer              | 123456           |
-      | maxLength    | Waarde is langer dan maximale lengte 4.                      | ingeschrevenpersonen | verblijfplaats__huisnummertoevoeging    | tegenover        |
-      | pattern      | Waarde voldoet niet aan patroon ^[1-9]{1}[0-9]{3}[A-Z]{2}.   | ingeschrevenpersonen | verblijfplaats__postcode                | 123aa            |
-      | enum         | Waarde heeft geen geldige waarde uit de enumeratie.          | ingeschrevenpersonen | geslachtsaanduiding                     | B                |
-      | table        | Waarde komt niet voor in de tabel.                           | ingeschrevenpersonen | verblijfplaats__gemeentevaninschrijving | 2019             |
-      | unknownParam | Parameter is niet verwacht.                                  | ingeschrevenpersonen | indicatieGeheim                         | 0                |
-      | fields       | Fields parameter is niet correct.                            | ingeschrevenpersonen | fields                                  | bestaatniet      |
-      | expand       | Expand parameter is niet correct.                            | ingeschrevenpersonen | expand                                  | bestaatniet      |
-      | wildcard     | Incorrect gebruik van wildcard karakter *.                   | ingeschrevenpersonen | naam__geslachtsnaam                     | Ja*en            |
+      | code         | reason                                                       | resource             | parameter                               | waarde                      |
+      | integer      | Waarde is geen geldige integer.                              | ingeschrevenpersonen | verblijfplaats__huisnummer              | a                           |
+      | boolean      | Waarde is geen geldige boolean.                              | ingeschrevenpersonen | inclusiefoverledenpersonen              | nee                         |
+      | date         | Waarde is geen geldige datum.                                | ingeschrevenpersonen | geboorte__datum                         | 23-04-2019                  |
+      | date         | Waarde is geen geldige datum.                                | ingeschrevenpersonen | geboorte__datum                         | 1983-05-00                  |
+      | maximum      | Waarde is hoger dan maximum 99999.                           | ingeschrevenpersonen | verblijfplaats__huisnummer              | 123456                      |
+      | maxLength    | Waarde is langer dan maximale lengte 4.                      | ingeschrevenpersonen | verblijfplaats__huisnummertoevoeging    | tegenover                   |
+      | pattern      | Waarde voldoet niet aan patroon ^[1-9]{1}[0-9]{3}[A-Z]{2}.   | ingeschrevenpersonen | verblijfplaats__postcode                | 123aa                       |
+      | enum         | Waarde heeft geen geldige waarde uit de enumeratie.          | ingeschrevenpersonen | geslachtsaanduiding                     | B                           |
+      | table        | Waarde komt niet voor in de tabel.                           | ingeschrevenpersonen | verblijfplaats__gemeentevaninschrijving | 2019                        |
+      | unknownParam | Parameter is niet verwacht.                                  | ingeschrevenpersonen | indicatieGeheim                         | 0                           |
+      | fields       | Deel van de parameterwaarde is niet correct: bestaatniet.    | ingeschrevenpersonen | fields                                  | naam,bestaatniet,geboorte   |
+      | expand       | Deel van de parameterwaarde is niet correct: bestaatniet.    | ingeschrevenpersonen | expand                                  | ouders,bestaatniet,kinderen |
+      | wildcard     | Incorrect gebruik van wildcard karakter *.                   | ingeschrevenpersonen | naam__geslachtsnaam                     | Ja*en                       |
 
 
   Scenario: geen enkele zoekparameter opgegeven in zoekvraag
