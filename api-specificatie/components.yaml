@@ -135,6 +135,66 @@ Foutbericht:
       type: string
       description: Systeemcode die het type fout aangeeft
       minLength: 1
+Foutbericht_400:
+  type: object
+  description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
+  properties:
+    type:
+      type: string
+      format: uri
+      description: Link naar meer informatie over deze fout
+      example: "https://www.gemmaonline.nl/standaarden/api/ValidatieFout"
+    title:
+      type: string
+      description: Beschrijving van de fout
+      example: "Bad request"
+    status:
+      type: integer
+      description: "Http status code"
+      example: 400
+    detail:
+      type: string
+      description: Details over de fout
+      example: "Het verzoek is ongeldig"
+    instance:
+      type: string
+      format: uri
+      description: Uri van de aanroep die de fout heeft veroorzaakt
+      example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+    code:
+      type: string
+      description: Systeemcode die het type fout aangeeft
+      minLength: 1
+Foutbericht_401:
+  type: object
+  description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
+  properties:
+    type:
+      type: string
+      format: uri
+      description: Link naar meer informatie over deze fout
+      example: "https://www.gemmaonline.nl/standaarden/api/ValidatieFout"
+    title:
+      type: string
+      description: Beschrijving van de fout
+      example: "Not Authorized"
+    status:
+      type: integer
+      description: "Http status code"
+      example: 401
+    detail:
+      type: string
+      description: Details over de fout
+      example: "Niet geautoriseerd voor dit verzoek."
+    instance:
+      type: string
+      format: uri
+      description: Uri van de aanroep die de fout heeft veroorzaakt
+      example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+    code:
+      type: string
+      description: Systeemcode die het type fout aangeeft
+      minLength: 1
 ValidatieFoutbericht:
   allOf:
     - $ref: '#/Foutbericht'
