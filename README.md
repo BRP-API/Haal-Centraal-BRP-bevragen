@@ -24,4 +24,5 @@ De informatie die de API levert is herleidbaar naar het LO GBA 3.10.
 * Berichtontwerper: [@JohanBoer](https://github.com/JohanBoer)
 
 ## Licentie
-De OAS sepcificatie, inclusief alle onderdelen die erbij horen volgens de definition of done zijn gelicenceerd onder [EUPL](https://eupl.eu/1.2/nl/).
+Copyright (C) VNG rRealisatie 2018
+Licensed under the [EUPL](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/LICENCE.md)
