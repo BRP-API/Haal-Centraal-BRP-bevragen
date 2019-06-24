@@ -135,7 +135,21 @@ Foutbericht:
       type: string
       description: Systeemcode die het type fout aangeeft
       minLength: 1
-Foutbericht_400:
+Foutbericht_401:
+  allOf:
+   -  $ref: '#/Foutbericht'
+   -  properties 
+      type:
+        example: "https://www.gemmaonline.nl/standaarden/api/ValidatieFout"
+      title:
+        example: "Bad request"
+      status:
+        example: 400
+      detail:
+        example: "Het verzoek is ongeldig"
+      instance:
+        example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+Foutbericht_402:
   type: object
   description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
   properties:
@@ -147,15 +161,15 @@ Foutbericht_400:
     title:
       type: string
       description: Beschrijving van de fout
-      example: "Bad request"
+      example: "Not Authorized"
     status:
       type: integer
       description: "Http status code"
-      example: 400
+      example: 401
     detail:
       type: string
       description: Details over de fout
-      example: "Het verzoek is ongeldig"
+      example: "Niet geautoriseerd voor dit verzoek."
     instance:
       type: string
       format: uri
@@ -165,7 +179,7 @@ Foutbericht_400:
       type: string
       description: Systeemcode die het type fout aangeeft
       minLength: 1
-Foutbericht_401:
+Foutbericht_403:
   type: object
   description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
   properties:
@@ -173,7 +187,7 @@ Foutbericht_401:
       type: string
       format: uri
       description: Link naar meer informatie over deze fout
-      example: "https://www.gemmaonline.nl/standaarden/api/ValidatieFout"
+      example: "https://www.gemmaonline.nl/standaarden/api/Fout_403"
     title:
       type: string
       description: Beschrijving van de fout
