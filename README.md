@@ -24,5 +24,5 @@ De informatie die de API levert is herleidbaar naar het LO GBA 3.10.
 * Berichtontwerper: [@JohanBoer](https://github.com/JohanBoer)
 
 ## Licentie
-Copyright &copy; VNG Realisatie 2018
+Copyright &copy; VNG Realisatie 2018 
 Licensed under the [EUPL](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/LICENCE.md)
