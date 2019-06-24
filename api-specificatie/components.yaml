@@ -146,7 +146,7 @@ Foutbericht_401:
         status:
           example: 401
         detail:
-          example: "The request requires user authentication. The response MUST include a WWW-Authenticate header field (section 14.47) containing a challenge applicable to the requested resource. The client MAY repeat the request with a suitable Authorization header field (section 14.8). If the request already included Authorization credentials, then the 401 response indicates that authorization has been refused for those credentials. If the 401 response contains the same challenge as the prior response, and the user agent has already attempted authentication at least once, then the user SHOULD be presented the entity that was given in the response, since that entity might include relevant diagnostic information. HTTP access authentication is explained in "HTTP Authentication: Basic and Digest Access Authentication" [43]."
+          example: "The request requires user authentication. The response MUST include a WWW-Authenticate header field (section 14.47) containing a challenge applicable to the requested resource."
         instance:
           example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
 Foutbericht_403:
@@ -174,7 +174,105 @@ Foutbericht_404:
       status:
         example: 404
       detail:
-        example: "The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent. The 410 (Gone) status code SHOULD be used if the server knows, through some internally configurable mechanism, that an old resource is permanently unavailable and has no forwarding address. This status code is commonly used when the server does not wish to reveal exactly why the request has been refused, or when no other response is applicable."
+        example: "The server has not found anything matching the Request-URI."
+      instance:
+        example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+Foutbericht_406:
+  allOf:
+   -  $ref: '#/Foutbericht'
+   -  properties:
+      type:
+        example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.7 406 Not Acceptable"
+      title:
+        example: "Not Acceptable"
+      status:
+        example: 406
+      detail:
+        example: "The resource identified by the request is only capable of generating response entities which have content characteristics not acceptable according to the accept headers sent in the request."
+      instance:
+        example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+Foutbericht_409:
+  allOf:
+   -  $ref: '#/Foutbericht'
+   -  properties:
+      type:
+        example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.10 409 Conflict"
+      title:
+        example: "Conflict"
+      status:
+        example: 409
+      detail:
+        example: "The request could not be completed due to a conflict with the current state of the resource."
+      instance:
+        example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+Foutbericht_410:
+  allOf:
+   -  $ref: '#/Foutbericht'
+   -  properties:
+      type:
+        example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.11 410 Gone"
+      title:
+        example: "Gone"
+      status:
+        example: 410
+      detail:
+        example: "The requested resource is no longer available at the server and no forwarding address is known. "
+      instance:
+        example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+Foutbericht_412:
+  allOf:
+   -  $ref: '#/Foutbericht'
+   -  properties:
+      type:
+        example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.13 412 Precondition Failed"
+      title:
+        example: "Precondition Failed"
+      status:
+        example: 412
+      detail:
+        example: "The precondition given in one or more of the request-header fields evaluated to false when it was tested on the server."
+      instance:
+        example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+Foutbericht_415:
+  allOf:
+   -  $ref: '#/Foutbericht'
+   -  properties:
+      type:
+        example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.15 414 Request-URI Too Long"
+      title:
+        example: "Request URI too long"
+      status:
+        example: 415
+      detail:
+        example: "The server is refusing to service the request because the Request-URI is longer than the server is willing to interpret."
+      instance:
+        example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+Foutbericht_429:
+  allOf:
+   -  $ref: '#/Foutbericht'
+   -  properties:
+      type:
+        example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"
+      title:
+        example: "Too many requests"
+      status:
+        example: 429
+      detail:
+        example: "The user has sent too many requests in a given amount of time ("rate limiting")."
+      instance:
+        example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+Foutbericht_500:
+  allOf:
+   -  $ref: '#/Foutbericht'
+   -  properties:
+      type:
+        example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.1 500 Internal Server Error"
+      title:
+        example: "Internal Server Error"
+      status:
+        example: 500
+      detail:
+        example: "The server encountered an unexpected condition which prevented it from fulfilling the request."
       instance:
         example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
 ValidatieFoutbericht:
