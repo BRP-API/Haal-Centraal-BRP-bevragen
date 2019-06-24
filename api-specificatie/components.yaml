@@ -138,7 +138,7 @@ Foutbericht:
 Foutbericht_401:
   allOf:
    -  $ref: '#/Foutbericht'
-   -  properties 
+   -  properties:
       type:
         example: "https://www.gemmaonline.nl/standaarden/api/ValidatieFout"
       title:
