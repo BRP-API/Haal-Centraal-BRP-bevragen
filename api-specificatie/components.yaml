@@ -87,7 +87,7 @@ DatumOnvolledig:
       format: date-mday
 Nen3610Id:
   type: object
-  description: Identificatiegegevens voor de universeel unieke identificatie van een object. De combinatie van namespace van een registratie, lokale identificatie en versie-informatie maken een object uniek identificeerbaar. Met de informatie van deze klasse kan daardoor met zekerheid worden verwezen naar het geïdentificeerde object.
+  description: "Identificatiegegevens voor de universeel unieke identificatie van een object. De combinatie van namespace van een registratie, lokale identificatie en versie-informatie maken een object uniek identificeerbaar. Met de informatie van deze klasse kan daardoor met zekerheid worden verwezen naar het geïdentificeerde object."
   required:
     -	Namespace
     -	lokaalId
@@ -258,9 +258,9 @@ Foutbericht_429:
       status:
         example: 429
       detail:
-        example: "The user has sent too many requests in a given amount of time ("rate limiting")."
+        example: "The user has sent too many requests in a given amount of time (rate limiting)."
       instance:
-        example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+        example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"F
 Foutbericht_500:
   allOf:
    -  $ref: '#/Foutbericht'
