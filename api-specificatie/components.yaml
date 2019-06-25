@@ -131,6 +131,20 @@ Foutbericht:
       type: string
       description: Systeemcode die het type fout aangeeft
       minLength: 1
+Foutbericht400:
+  allOf:
+   -  $ref: '#/Foutbericht'
+   -  properties:
+        type:
+          example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1 400 Bad Request"
+        title:
+          example: "Bad Request"
+        status:
+          example: 400
+        detail:
+          example: "The request could not be understood by the server due to malformed syntax. The client SHOULD NOT repeat the request without modification."
+        instance:
+          example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
 Foutbericht401:
   allOf:
    -  $ref: '#/Foutbericht'
@@ -259,7 +273,7 @@ Foutbericht500:
           example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
 ValidatieFoutbericht:
   allOf:
-    - $ref: '#/Foutbericht'
+    - $ref: '#/Foutbericht400'
     - type: object
       properties:
         invalid-params:
@@ -274,9 +288,11 @@ InvalidParams:
     type:
       type: string
       format: uri
+      example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
     name:
       type: string
       description: Naam van de parameter
+      example: "parameternaam"
     code:
       type: string
       description: Systeemcode die het type fout aangeeft
@@ -284,3 +300,4 @@ InvalidParams:
     reason:
       type: string
       description: Beschrijving van de fout op de parameterwaarde
+      example: "Mag alleen numeriek karakter bevatten"
