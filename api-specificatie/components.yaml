@@ -135,7 +135,7 @@ Foutbericht:
       type: string
       description: Systeemcode die het type fout aangeeft
       minLength: 1
-Foutbericht400:
+400:
   type: object
   description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
   properties:
