@@ -15,6 +15,7 @@ Functionaliteit: Afhandeling van fouten
   | Geen parameter is meegegeven       | 400    | Ten minste één parameter moet worden opgegeven.               | paramsRequired    |
   | Verplichte parameter(combinatie)   | 400    | Minimale combinatie van parameters moet worden opgegeven.     | paramsCombination |
   | Parametervalidatie                 | 400    | Een of meerdere parameters zijn niet correct.                 | paramsValidation  |
+  | Teveel zoekresultaten              | 400    | Teveel zoekresultaten (meer dan {maximaal aantal}).           | tooManyResults    |
   | Niet geauthenticeerd               | 401    | Niet correct geauthenticeerd.                                 | authentication    |
   | Geen autorisatie voor operatie     | 403    | U bent niet geautoriseerd voor deze operatie.                 | autorisation      |
   | Opgevraagde resource bestaat niet  | 404    | Opgevraagde resource bestaat niet.                            | notFound          |
