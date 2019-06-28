@@ -271,6 +271,20 @@ Foutbericht500:
           example: "The server encountered an unexpected condition which prevented it from fulfilling the request."
         instance:
           example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+Foutbericht503:
+  allOf:
+   -  $ref: '#/Foutbericht'
+   -  properties:
+        type:
+          example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.4 503 Service Unavailable"
+        title:
+          example: "Service Unavailable"
+        status:
+          example: 503
+        detail:
+          example: "The service is currently unable to handle the request due to a temporary overloading or maintenance of the server."
+        instance:
+          example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
 ValidatieFoutbericht:
   allOf:
     - $ref: '#/Foutbericht400'
