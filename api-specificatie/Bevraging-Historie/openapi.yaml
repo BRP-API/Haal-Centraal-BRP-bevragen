@@ -16,7 +16,7 @@ info:
 paths:
   /historie/bewoningen:
     get:
-      operationId: getbewoningen
+      operationId: getBewoningen
       description: |
         Het ophalen van de gegevens van een collectie Bewoningen. 
         Een bewoning is een VERBLIJFPLAATS waar op enig moment daadwerkelijk minimaal 1 INGESCHREVEN PERSOON is ingeschreven 
@@ -41,7 +41,7 @@ paths:
 
         De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters.
 
-        _inclusiefverledenpersonen_ indien true worden overleden personen opgenomen in het zoekresultaat.
+        Overleden personen worden opgenomen in het zoekresultaat.
         
 
         Het resultaat bevat de verblijfsplaatshistorie waarvan de EINDdatumgeldigheidverblijfsplaats op of na de  datumVan ligt EN de BEGINdatum op of voor de DatumTotEnMet ligt.
@@ -56,7 +56,6 @@ paths:
         Als geldigOp is ingevuld mogen datumVan en datumTotenMet nietingevuld zijn. 
 
         Er wordt niet op de gevonden adressen gesorteerd, maar per aders (bewoning) worden de bewoners wel gesorteerd op geldigVan.
-
       parameters: 
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/parameters.yaml#/expand"
         - in: query
@@ -110,18 +109,12 @@ paths:
             type: string
             maxLength: 16
         - in: query
-          name: inclusiefoverledenpersonen
-          description: "Indien in het antwoord op de zoekvraag ook overleden personen moeten worden geretourneerd, dan dient de parameter ‘inclusiefOverledenPersonen’ opgenomen te zijn met de waarde True. Indien de parameter ‘inclusiefOverledenPersonen’ ontbreekt of de waarde False heeft worden geen overleden personen opgenomen in het zoekresultaat."
-          required: false
-          schema:
-            type: boolean
-        - in: query
           name: postcode
           description: "De door PostNL vastgestelde code behorende bij een bepaalde combinatie van een naam van een woonplaats, naam van een openbare ruimte en een huisnummer Dit attribuutsoort is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING. Het is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting in de BAG."
           required: false
           schema:
             type: string
-            pattern: ^[1-9]{1}[0-9]{3}[A-Z]{2}
+            pattern: ^[1-9]{1}[0-9]{3}[A-Z]{2}$
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -188,6 +181,7 @@ paths:
           schema:
             type: string
             maxLength: 9
+            minLength: 9
         - in: query
           name: geldigop
           description: "De peildatum van de periode waarover de verblijfsplaatshistorie wordt opgevraagd. Het resultaat bevat de verblijfsplaats historie waarvan de begindatum voor op op de peildatum ligt en de eindatum na of op de peildatum ligt."
@@ -275,6 +269,7 @@ paths:
           schema:
             type: string
             maxLength: 9
+            minLength: 9
         - in: query
           name: geldigop
           description: "De peildatum van de periode waarover de partnerhistorie wordt opgevraagd. Het resultaat bevat de partnerhistorie waarvan de datumIngangGeldigheid op of voor de peildatum ligt en de datumEindeGeldigheid op of na de peildatum ligt."
@@ -362,6 +357,7 @@ paths:
           schema:
             type: string
             maxLength: 9
+            minLength: 9
         - in: query
           name: geldigop
           description: "De peildatum van de periode waarover de verblijfstitelhistorie wordt opgevraagd. Het resultaat bevat de verblijfstitelhistorie waarvan de peildatum op of na de ingangsdatumVerblijfstitel ligt en op of voor de datumEindeVerblijfstitel ligt."
@@ -758,6 +754,7 @@ components:
             \ is door elf. Er moeten dus 9 cijfers aanwezig zijn."
           pattern: "^[0-9]{9}$"
           maxLength: 9
+          minLength: 9
           example: "430422088"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
@@ -813,6 +810,7 @@ components:
             \ + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9\
             \ cijfers aanwezig zijn."
           maxLength: 9
+          minLength: 9
           example: "555555914"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
@@ -866,6 +864,17 @@ components:
             \ waarden De geslachtsnaam. Standaardwaarde indien onbekend."
           maxLength: 200
           example: "Vries"
+        voorletters:
+          type: "string"
+          title: "Voorletters aanschrijving"
+          description: "De voorletters waarmee een persoon aangeschreven wil worden.\
+            \ De voorlettes zijn afgeleid van de voornamen. Het attribuutsoort biedt\
+            \ de mogelijkheid de natuurlijk persoon zelf te laten bepalen hoe hij\
+            \ aangeschreven wil worden indien in de aanschrijving gebruik gemaakt\
+            \ wordt van voorletters. Bijvoorbeeld “A.C.’’ maar ook “Ch.IJ.”. Indien\
+            \ geen opgave is gedaan bevat het attribuut de eerste letters van de voornamen\
+            \ van de persoon gescheiden door punten."
+          maxLength: 20
         voornamen:
           type: "string"
           title: "Voornamen"
@@ -1147,6 +1156,7 @@ components:
           description: "De dag. Als de dag van de datum bekend is wordt deze hier\
             \ ingevuld. Ook als de volledige datum bekend is."
           pattern: "^99$"
+          format: "date_mday"
           maxLength: 2
         datum:
           type: "string"
@@ -1167,6 +1177,7 @@ components:
           description: "De maand. Als de maand van een datum bekend is wordt deze\
             \ hier ingevuld. Ook als de volledige datum is ingevuld."
           pattern: "^99$"
+          format: "date_month"
           maxLength: 2
     Land_tabel:
       type: "object"
