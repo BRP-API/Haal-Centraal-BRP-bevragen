@@ -116,21 +116,37 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
 
     Als een ingeschreven persoon wordt geraadpleegd met fields=burgerservicenummer,naam,ouders
     Dan wordt attribuut _links.ouders teruggegeven
+    En wordt attribuut burgerservicenummer teruggegeven
+    En wordt attribuut naam.voornamen teruggegeven
+    En wordt attribuut naam.geslachtsnaam teruggegeven
+    En wordt attribuut naam.voorvoegsel teruggegeven
     En wordt attribuut _links.self teruggegeven
     En wordt in _links geen enkel ander attribuut dan self en ouders teruggegeven
+    En is elke link ouders een geldige uri
     En wordt er geen gerelateerde sub-resource teruggegeven in _embedded
 
     Als een ingeschreven persoon wordt geraadpleegd met fields=burgerservicenummer,naam,kinderen
     Dan wordt attribuut _links.kinderen teruggegeven
+    En wordt attribuut burgerservicenummer teruggegeven
+    En wordt attribuut naam.voornamen teruggegeven
+    En wordt attribuut naam.geslachtsnaam teruggegeven
+    En wordt attribuut naam.voorvoegsel teruggegeven
     En wordt attribuut _links.self teruggegeven
     En wordt in _links geen enkel ander attribuut dan self en kinderen teruggegeven
+    En is elke link kinderen een geldige uri
     En wordt er geen gerelateerde sub-resource teruggegeven in _embedded
 
-    Als een ingeschreven persoon wordt geraadpleegd met fields=burgerservicenummer,naam,partners,nummeraanduidingen
+    Als een ingeschreven persoon wordt geraadpleegd met fields=burgerservicenummer,naam,partners,ouders
     Dan wordt attribuut _links.partners teruggegeven
-    En wordt attribuut _links.nummeraanduidingen teruggegeven
+    En wordt attribuut _links.ouders teruggegeven
+    En wordt attribuut burgerservicenummer teruggegeven
+    En wordt attribuut naam.voornamen teruggegeven
+    En wordt attribuut naam.geslachtsnaam teruggegeven
+    En wordt attribuut naam.voorvoegsel teruggegeven
     En wordt attribuut _links.self teruggegeven
-    En wordt in _links geen enkel ander attribuut dan self, partners en nummeraanduidingen teruggegeven
+    En wordt in _links geen enkel ander attribuut dan self, partners en ouders teruggegeven
+    En is elke link partners een geldige uri
+    En is elke link ouders een geldige uri
     En wordt er geen gerelateerde sub-resource teruggegeven in _embedded
 
   Scenario: Gebruik van de fields parameter heeft geen invloed op embedded sub-resources
@@ -171,6 +187,14 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
     Gegeven de gebruiker is geautoriseerd voor geboortedatum
     En de gebruiker is niet geautoriseerd voor geboorteplaats
     Als een ingeschreven persoon wordt geraadpleegd met fields=geboorte
+    Dan wordt attribuut geboorte.datum teruggegeven
+    En is in het antwoord attribuut geboorte.plaats niet aanwezig
+    En wordt attribuut _links.self teruggegeven
+    En wordt in _links geen enkel ander attribuut dan self teruggegeven
+
+    Gegeven de gebruiker is geautoriseerd voor geboortedatum
+    En de gebruiker is niet geautoriseerd voor geboorteplaats
+    Als een ingeschreven persoon wordt geraadpleegd met fields=geboorte.datum,geboorte.plaats
     Dan wordt attribuut geboorte.datum teruggegeven
     En is in het antwoord attribuut geboorte.plaats niet aanwezig
     En wordt attribuut _links.self teruggegeven
