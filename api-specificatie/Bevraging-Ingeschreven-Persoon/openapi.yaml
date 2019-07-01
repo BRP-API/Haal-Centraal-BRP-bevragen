@@ -17,7 +17,44 @@ paths:
   /ingeschrevenpersonen:
     get:
       operationId: ingeschrevenNatuurlijkPersonen
-      description: "| Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen: 1. Persoon - geboorte__datum - naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 2. Persoon - verblijfplaats__gemeentevaninschrijving - naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 3. Postcode - verblijfplaats__postcode - verblijfplaats__huisnummer 4. NaamOpenbareRuimte - verblijfplaats__naamopenbareruimte (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) - verblijfplaats__gemeentevaninschrijving - verblijfplaats__huisnummer 5. Nummeraanduiding - verblijfplaats__identificatiecodenummeraanduiding De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters, maar binnen iedere combinatie zijn de hier genoemde velden **verplicht**. Default levert een zoekvraag alleen personen op die nog in leven zijn. Indien **_inclusiefoverledenpersonen_** de waarde **_true_** heeft worden [overleden personen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) opgenomen in het zoekresultaat. Het maximale aantal zoekresultaten dat geretourneerd wordt is aan de provider om te bepalen. Als het resultaat van de de request dit aantal overtreft worden er geen resultaten geretourneerd en volgt er een foutmelding. Er vind geen sortering plaats."
+      description: |
+        Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen:
+        
+        
+        1.  Persoon
+            -  geboorte__datum
+            -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 
+        2.  Persoon
+            -  verblijfplaats__gemeentevaninschrijving
+            -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 
+    
+
+        3.  Postcode
+            -  verblijfplaats__postcode
+            -  verblijfplaats__huisnummer
+
+
+        4.  NaamOpenbareRuimte
+            -  verblijfplaats__naamopenbareruimte (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 
+
+            -  verblijfplaats__gemeentevaninschrijving
+            -  verblijfplaats__huisnummer
+            
+
+        5.  Nummeraanduiding
+            -  verblijfplaats__identificatiecodenummeraanduiding
+
+        De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters, maar binnen iedere combinatie zijn de hier genoemde velden **verplicht**. 
+
+
+        Default levert een zoekvraag alleen personen op die nog in leven zijn. Indien **_inclusiefoverledenpersonen_** de waarde **_true_** heeft worden [overleden personen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) opgenomen in het zoekresultaat.
+
+
+        Het maximale aantal zoekresultaten dat geretourneerd wordt is aan de provider om te bepalen. Als het resultaat van de de request dit aantal overtreft worden er geen resultaten geretourneerd en volgt er een foutmelding.
+
+
+         Er vind geen sortering plaats.
+
       parameters: 
         - in: query
           name: expand
@@ -157,17 +194,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                type: object
-                properties:
-                  _links:
-                    $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalCollectionLinks"
-                  _embedded:
-                    type: object
-                    properties:
-                      ingeschrevenpersonen:
-                        type: array
-                        items:
-                          $ref: '#/components/schemas/IngeschrevenPersoon'
+                $ref: '#/components/schemas/IngeschrevenPersoonCollectie'
         '400':
           $ref: "#/components/responses/400"
         '401':
@@ -210,6 +237,7 @@ paths:
           schema:
             type: string
             maxLength: 9
+            minLength: 9
         - in: query
           name: fields
           description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature)"
@@ -270,6 +298,7 @@ paths:
           schema:
             type: string
             maxLength: 9
+            minLength: 9
         - in: path
           name: uuid
           description: "Een UUID is een nummer van 128 bits (= 16 bytes). UUID wordt weergegeven in 32 ??hexadecimale cijfers. Deze cijfers zijn ingedeeld in vijf groepen, in ongelijk aantal en gescheiden door koppeltekens: 8-4-4-4-12 In zijn geheel wordt een UUID dus door 36 tekens gevormd, waarvan 32 hexadecimale karakters en vier streepjes: 550e8400-e29b-41d4-a716-446655440000"
@@ -331,6 +360,7 @@ paths:
           schema:
             type: string
             maxLength: 9
+            minLength: 9
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -348,17 +378,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                type: object
-                properties:
-                  _links:
-                    $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalCollectionLinks"
-                  _embedded:
-                    type: object
-                    properties:
-                      kinderen:
-                        type: array
-                        items:
-                          $ref: '#/components/schemas/Kind'
+                $ref: '#/components/schemas/KindCollectie'
         '400':
           $ref: "#/components/responses/400"
         '401':
@@ -395,6 +415,7 @@ paths:
           schema:
             type: string
             maxLength: 9
+            minLength: 9
         - in: path
           name: uuid
           description: "Een UUID is een nummer van 128 bits (= 16 bytes). UUID wordt weergegeven in 32 ??hexadecimale cijfers. Deze cijfers zijn ingedeeld in vijf groepen, in ongelijk aantal en gescheiden door koppeltekens: 8-4-4-4-12 In zijn geheel wordt een UUID dus door 36 tekens gevormd, waarvan 32 hexadecimale karakters en vier streepjes: 550e8400-e29b-41d4-a716-446655440000"
@@ -456,6 +477,7 @@ paths:
           schema:
             type: string
             maxLength: 9
+            minLength: 9
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -473,17 +495,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                type: object
-                properties:
-                  _links:
-                    $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalCollectionLinks"
-                  _embedded:
-                    type: object
-                    properties:
-                      ouders:
-                        type: array
-                        items:
-                          $ref: '#/components/schemas/Ouder'
+                $ref: '#/components/schemas/OuderCollectie'
         '400':
           $ref: "#/components/responses/400"
         '401':
@@ -520,6 +532,7 @@ paths:
           schema:
             type: string
             maxLength: 9
+            minLength: 9
         - in: path
           name: uuid
           description: "Een UUID is een nummer van 128 bits (= 16 bytes). UUID wordt weergegeven in 32 ??hexadecimale cijfers. Deze cijfers zijn ingedeeld in vijf groepen, in ongelijk aantal en gescheiden door koppeltekens: 8-4-4-4-12 In zijn geheel wordt een UUID dus door 36 tekens gevormd, waarvan 32 hexadecimale karakters en vier streepjes: 550e8400-e29b-41d4-a716-446655440000"
@@ -581,6 +594,7 @@ paths:
           schema:
             type: string
             maxLength: 9
+            minLength: 9
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -598,17 +612,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                type: object
-                properties:
-                  _links:
-                    $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalCollectionLinks"
-                  _embedded:
-                    type: object
-                    properties:
-                      partners:
-                        type: array
-                        items:
-                          $ref: '#/components/schemas/Partner'
+                $ref: '#/components/schemas/PartnerCollectie'
         '400':
           $ref: "#/components/responses/400"
         '401':
@@ -706,6 +710,7 @@ paths:
           schema:
             type: string
             maxLength: 9
+            minLength: 9
         - in: query
           name: soortreisdocument
           description: "Het soort reisdocument dat verstrekt is aan de INGESCHREVEN NATUURLIJK PERSOON. Element 35.10 Een codering, opgenomen in Tabel 48, Tabel Nederlands reisdocument, die aangeeft welk Nederlandse reisdocument is verstrekt of in welk reisdocument de ingeschrevene is bijgeschreven."
@@ -733,17 +738,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                type: object
-                properties:
-                  _links:
-                    $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalPaginationLinks"
-                  _embedded:
-                    type: object
-                    properties:
-                      residocumenten:
-                        type: array
-                        items:
-                          $ref: '#/components/schemas/Reisdocument'
+                $ref: '#/components/schemas/ReisdocumentCollectie'
         '400':
           $ref: "#/components/responses/400"
         '401':
@@ -793,6 +788,7 @@ components:
             \ - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
           pattern: "^[0-9]{9}$"
           maxLength: 9
+          minLength: 9
           example: "555555021"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
@@ -834,6 +830,19 @@ components:
           $ref: "#/components/schemas/IngeschrevenPersoon_links"
         _embedded:
           $ref: "#/components/schemas/IngeschrevenPersoon_embedded"
+    IngeschrevenPersoonCollectie:
+      type: object
+      properties:
+        _links:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalCollectionLinks"
+        _embedded:
+          type: object
+          properties:
+            ingeschrevenpersonen:
+              type: array
+              items:
+                $ref: '#/components/schemas/IngeschrevenPersoon'
+    
     Ouder:
       type: "object"
       description: "02/52 of 03/53 Gegevens over de ouder van de ingeschrevene."
@@ -857,6 +866,7 @@ components:
             \ - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
           pattern: "^[0-9]{9}$"
           maxLength: 9
+          minLength: 9
           example: "430422088"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
@@ -874,6 +884,18 @@ components:
           $ref: "#/components/schemas/Geboorte"
         _links:
           $ref: "#/components/schemas/Ouder_links"
+    OuderCollectie:
+      type: object
+      properties:
+        _links:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalCollectionLinks"
+        _embedded:
+          type: object
+          properties:
+            ouders:
+              type: array
+              items:
+                $ref: '#/components/schemas/Ouder'
     Kind:
       type: "object"
       description: "09/59 Gegevens over een kind van de ingeschrevene."
@@ -897,6 +919,7 @@ components:
             \ - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
           pattern: "^[0-9]{9}$"
           maxLength: 9
+          minLength: 9
           example: "430422088"
         registergemeenteAkte:
           $ref: "#/components/schemas/Gemeenten_tabel"
@@ -908,6 +931,18 @@ components:
           $ref: "#/components/schemas/Geboorte"
         _links:
           $ref: "#/components/schemas/Kind_links"
+    KindCollectie:
+      type: object
+      properties:
+        _links:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalCollectionLinks"
+        _embedded:
+          type: object
+          properties:
+            kinderen:
+              type: array
+              items:
+                $ref: '#/components/schemas/Kind'
     Partner:
       type: "object"
       description: "05/55 Gegevens over een gesloten huwelijk/geregistreerd partnerschap\
@@ -932,6 +967,7 @@ components:
             \ - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
           pattern: "^[0-9]{9}$"
           maxLength: 9
+          minLength: 9
           example: "430422088"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
@@ -949,6 +985,18 @@ components:
           $ref: "#/components/schemas/AangaanHuwelijk_Partnerschap"
         _links:
           $ref: "#/components/schemas/Partner_links"
+    PartnerCollectie:
+      type: object
+      properties:
+        _links:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalCollectionLinks"
+        _embedded:
+          type: object
+          properties:
+            partners:
+              type: array
+              items:
+                $ref: '#/components/schemas/Partner'
     Reisdocument:
       type: "object"
       description: "Een document dat vereist is voor reizen naar het buitenland"
@@ -989,6 +1037,18 @@ components:
           $ref: "#/components/schemas/InOnderzoek"
         _links:
           $ref: "#/components/schemas/Reisdocument_links"
+    ReisdocumentCollectie:
+      type: object
+      properties:
+        _links:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalPaginationLinks"
+        _embedded:
+          type: object
+          properties:
+            residocumenten:
+              type: array
+              items:
+                $ref: '#/components/schemas/Reisdocument'
     Naam:
       type: "object"
       description: "02 + 61 Gegevens over de naam van de NATUURLIJK PERSOON"
@@ -1003,12 +1063,6 @@ components:
             \ waarden De geslachtsnaam. Standaardwaarde indien onbekend."
           maxLength: 200
           example: "Vries"
-        voorletters:
-          type: "string"
-          title: "Voorletters aanschrijving"
-          description: "De voorletters waarmee een persoon aangeschreven wil worden.\
-            \ De voorlettes zijn afgeleid van de voornamen."
-          maxLength: 20
         voornamen:
           type: "string"
           title: "Voornamen"
@@ -1017,6 +1071,13 @@ components:
             \ door spaties, aan de geslachtsnaam voorafgaat."
           maxLength: 200
           example: "Pieter Jan"
+        voorletters:
+          type: "string"
+          title: "Voorletters aanschrijving"
+          description: "De voorletters waarmee een persoon aangeschreven wil worden.\
+            \ De voorlettes zijn afgeleid van de voornamen."
+          maxLength: 20
+          minLength: 1
         adellijkeTitel_predikaat:
           $ref: "#/components/schemas/AdellijkeTitel_predikaat_tabel"
         voorvoegsel:
@@ -1133,21 +1194,20 @@ components:
         einddatumUitsluitingKiesrecht:
           $ref: "#/components/schemas/Datum_onvolledig"
     NaamPersoon:
-      type: "object"
-      description: ""
-      properties:
-        aanduidingNaamgebruik:
-          $ref: "#/components/schemas/Naamgebruik_enum"
-        aanschrijfwijze:
-          type: "string"
-          title: "aanschrijfwijze"
-          description: "| Samengestelde naam zoals die in communicatie met de persoon\
-            \ gebruikt kan worden. Hoe het samenstellen van een aanschrijfwijze te\
-            \ werk gaat is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanschrijfwijze.feature)"
-          maxLength: 50
-          example: "P.J. graaf de Vries- van der Zon"
-        naam:
-          $ref: "#/components/schemas/Naam"
+      allOf: 
+        - $ref: "#/components/schemas/Naam"
+        - type: object
+          properties:
+            aanduidingNaamgebruik:
+              $ref: "#/components/schemas/Naamgebruik_enum"
+            aanschrijfwijze:
+              type: "string"
+              title: "aanschrijfwijze"
+              description: "| Samengestelde naam zoals die in communicatie met de persoon\
+                \ gebruikt kan worden. Hoe het samenstellen van een aanschrijfwijze te\
+                \ werk gaat is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanschrijfwijze.feature)"
+              maxLength: 50
+              example: "P.J. graaf de Vries- van der Zon"
     PersoonInOnderzoek:
       type: "object"
       description: "Een groep van booleans om aan te geven welke gegevens van de ingeschreven\
@@ -1451,7 +1511,7 @@ components:
           title: "Straatnaam"
           description: "De officiële straatnaam zoals door het bevoegd gemeentelijk\
             \ orgaan is vastgesteld, zo nodig ingekort conform de specificaties van\
-            \ de NEN 5825. alle alfanumrieke tekens"
+            \ de NEN 5825. De standaardwaarde is .  alle alfanumrieke tekens"
           maxLength: 24
         woonplaatsnaam:
           type: "string"
@@ -1742,6 +1802,7 @@ components:
           description: "De dag. Als de dag van de datum bekend is wordt deze hier\
             \ ingevuld. Ook als de volledige datum bekend is."
           pattern: "^99$"
+          format: "date_mday"
           maxLength: 2
         datum:
           type: "string"
@@ -1762,6 +1823,7 @@ components:
           description: "De maand. Als de maand van een datum bekend is wordt deze\
             \ hier ingevuld. Ook als de volledige datum is ingevuld."
           pattern: "^99$"
+          format: "date_month"
           maxLength: 2
     Gemeenten_tabel:
       type: "object"
@@ -1968,7 +2030,7 @@ components:
           properties:
             href:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
-        verblijfstitelhistorie:
+        verblijfstitelshistorie:
           title: "hadAlsVerblijfstitel"
           type: "object"
           description: "Het ophalen van de verblijfstitelhistorie van een ingeschreven\
