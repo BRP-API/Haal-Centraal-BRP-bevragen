@@ -1566,9 +1566,10 @@ components:
           $ref: "#/components/schemas/Geslacht_enum"
         indicatieGeheim:
           type: "boolean"
-          title: "indicatieGeheim"
-          description: "Indicator die aangeeft of het corresponderende gegeven voor\
-            \ deze persoon in onderzoek is.
+          title: "Indicatie geheim"
+          description: "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt\
+            \ mogen worden. Element 70.10 Een aanduiding die aangeeft dat gegevens\
+            \ wel of niet verstrekt mogen worden. “j(a)” of leeg"
         redenOpschortingBijhouding:
           $ref: "#/components/schemas/RedenOpschortingBijhouding_enum"
         datumEersteInschrijvingGBA:
