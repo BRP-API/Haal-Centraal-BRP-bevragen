@@ -24,6 +24,8 @@ paths:
         1.  Persoon
             -  geboorte__datum
             -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 
+
+
         2.  Persoon
             -  verblijfplaats__gemeentevaninschrijving
             -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 
@@ -202,7 +204,7 @@ paths:
         '403':
           $ref: "#/components/responses/403"
         '404':
-          $ref: "#/components/responses/404"        
+          $ref: "#/components/responses/404"
         '406':
           $ref: "#/components/responses/406"
         '409':
@@ -456,7 +458,7 @@ paths:
         '403':
           $ref: "#/components/responses/403"
         '404':
-          $ref: "#/components/responses/404"        
+          $ref: "#/components/responses/404"
         '406':
           $ref: "#/components/responses/406"
         '409':
@@ -513,7 +515,7 @@ paths:
         '403':
           $ref: "#/components/responses/403"
         '404':
-          $ref: "#/components/responses/404"        
+          $ref: "#/components/responses/404"
         '406':
           $ref: "#/components/responses/406"
         '409':
@@ -862,7 +864,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/IngeschrevenPersoon'
-    
     Ouder:
       type: "object"
       description: "02/52 of 03/53 Gegevens over de ouder van de ingeschrevene."
@@ -1054,7 +1055,7 @@ components:
         soortReisdocument:
           $ref: "#/components/schemas/NederlandsReisdocument_tabel"
         inOnderzoek:
-          $ref: "#/components/schemas/InOnderzoek"
+          $ref: "#/components/schemas/ReisdocumentInOnderzoek"
         _links:
           $ref: "#/components/schemas/Reisdocument_links"
     ReisdocumentCollectie:
@@ -1083,6 +1084,12 @@ components:
             \ waarden De geslachtsnaam. Standaardwaarde indien onbekend."
           maxLength: 200
           example: "Vries"
+        voorletters:
+          type: "string"
+          title: "Voorletters aanschrijving"
+          description: "De voorletters waarmee een persoon aangeschreven wil worden.\
+            \ De voorlettes zijn afgeleid van de voornamen."
+          maxLength: 20
         voornamen:
           type: "string"
           title: "Voornamen"
@@ -1091,13 +1098,6 @@ components:
             \ door spaties, aan de geslachtsnaam voorafgaat."
           maxLength: 200
           example: "Pieter Jan"
-        voorletters:
-          type: "string"
-          title: "Voorletters aanschrijving"
-          description: "De voorletters waarmee een persoon aangeschreven wil worden.\
-            \ De voorlettes zijn afgeleid van de voornamen."
-          maxLength: 20
-          minLength: 1
         adellijkeTitel_predikaat:
           $ref: "#/components/schemas/AdellijkeTitel_predikaat_tabel"
         voorvoegsel:
@@ -1531,7 +1531,7 @@ components:
           title: "Straatnaam"
           description: "De officiële straatnaam zoals door het bevoegd gemeentelijk\
             \ orgaan is vastgesteld, zo nodig ingekort conform de specificaties van\
-            \ de NEN 5825. De standaardwaarde is .  alle alfanumrieke tekens"
+            \ de NEN 5825. alle alfanumrieke tekens"
           maxLength: 24
         woonplaatsnaam:
           type: "string"
@@ -1760,7 +1760,7 @@ components:
             \ deze verblijfstitel in onderzoek is."
         datumIngangOnderzoek:
           $ref: "#/components/schemas/Datum_onvolledig"
-    InOnderzoek:
+    ReisdocumentInOnderzoek:
       type: "object"
       description: "Een groep van booleans om aan te geven welke gegevens van het\
         \ reisdocument in onderzoek zijn. Als de hele categorie in onderzoek is worden\
@@ -2050,7 +2050,7 @@ components:
           properties:
             href:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
-        verblijfstitelshistorie:
+        verblijfstitelhistorie:
           title: "hadAlsVerblijfstitel"
           type: "object"
           description: "Het ophalen van de verblijfstitelhistorie van een ingeschreven\
