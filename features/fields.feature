@@ -34,7 +34,8 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
 
   Gebruik van de fields parameter heeft geen invloed op eventueel meegeladen sub-resources. Dat wordt gestuurd via de expand parameter. Dus wanneer er specifieke attributen van een sub-resource gewenst zijn, worden die opgesomd in de expand parameter. Bijvoorbeeld expand=partners.geslachtsnaam. Zie verder expand.feature
 
-  Wanneer de fields-parameter wordt opgenomen zonder waarde, wordt een foutmelding gegeven.
+  Gebruik van parameter fields zonder waarde (lege waarde) is equivalent aan het niet opnemen van de fields parameter. Wanneer de fields-parameter wordt opgenomen zonder waarde, worden alle attribbuten teruggegeven met een waarden en waarvoor autorisatie is.
+
   Wanneer in de fields-parameter namen zijn opgenomen die niet voorkomen als attribuut in de resource, wordt een foutmelding gegeven.
 
   In de fields-parameter moeten attribuutnamen exact zo worden geschreven als voor de resource-response gedefinieerd. Dit is case sensitive. Bijvoorbeeld fields=BURGERSERVICENUMMER levert een foutmelding, want dat attribuut bestaat niet (attribuut burgerservicenummer bestaat wel).
@@ -115,21 +116,37 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
 
     Als een ingeschreven persoon wordt geraadpleegd met fields=burgerservicenummer,naam,ouders
     Dan wordt attribuut _links.ouders teruggegeven
+    En wordt attribuut burgerservicenummer teruggegeven
+    En wordt attribuut naam.voornamen teruggegeven
+    En wordt attribuut naam.geslachtsnaam teruggegeven
+    En wordt attribuut naam.voorvoegsel teruggegeven
     En wordt attribuut _links.self teruggegeven
     En wordt in _links geen enkel ander attribuut dan self en ouders teruggegeven
+    En is elke link ouders een geldige uri
     En wordt er geen gerelateerde sub-resource teruggegeven in _embedded
 
     Als een ingeschreven persoon wordt geraadpleegd met fields=burgerservicenummer,naam,kinderen
     Dan wordt attribuut _links.kinderen teruggegeven
+    En wordt attribuut burgerservicenummer teruggegeven
+    En wordt attribuut naam.voornamen teruggegeven
+    En wordt attribuut naam.geslachtsnaam teruggegeven
+    En wordt attribuut naam.voorvoegsel teruggegeven
     En wordt attribuut _links.self teruggegeven
     En wordt in _links geen enkel ander attribuut dan self en kinderen teruggegeven
+    En is elke link kinderen een geldige uri
     En wordt er geen gerelateerde sub-resource teruggegeven in _embedded
 
-    Als een ingeschreven persoon wordt geraadpleegd met fields=burgerservicenummer,naam,partners,nummeraanduidingen
+    Als een ingeschreven persoon wordt geraadpleegd met fields=burgerservicenummer,naam,partners,ouders
     Dan wordt attribuut _links.partners teruggegeven
-    En wordt attribuut _links.nummeraanduidingen teruggegeven
+    En wordt attribuut _links.ouders teruggegeven
+    En wordt attribuut burgerservicenummer teruggegeven
+    En wordt attribuut naam.voornamen teruggegeven
+    En wordt attribuut naam.geslachtsnaam teruggegeven
+    En wordt attribuut naam.voorvoegsel teruggegeven
     En wordt attribuut _links.self teruggegeven
-    En wordt in _links geen enkel ander attribuut dan self, partners en nummeraanduidingen teruggegeven
+    En wordt in _links geen enkel ander attribuut dan self, partners en ouders teruggegeven
+    En is elke link partners een geldige uri
+    En is elke link ouders een geldige uri
     En wordt er geen gerelateerde sub-resource teruggegeven in _embedded
 
   Scenario: Gebruik van de fields parameter heeft geen invloed op embedded sub-resources
@@ -152,9 +169,9 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
     En wordt attribuut _embedded.kinderen.geboorte teruggegeven
     En wordt attribuut _embedded.kinderen._links.ingeschrevenpersonen teruggegeven
 
-  Scenario: Lege fields parameter geeft een foutmelding
+  Scenario: Lege fields parameter geeft alle attributen
     Als een ingeschreven persoon wordt geraadpleegd met fields=
-    Dan levert dit een foutmelding
+    Dan levert dit alle attributen die een waarde hebben en waarvoor autorisatie is
 
   Scenario: Fields parameter met attribuutnaam die niet bestaat
     Als een ingeschreven persoon wordt geraadpleegd met fields=burgerservicenummer,geslachtsaanduiding,bestaatniet
@@ -170,6 +187,14 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
     Gegeven de gebruiker is geautoriseerd voor geboortedatum
     En de gebruiker is niet geautoriseerd voor geboorteplaats
     Als een ingeschreven persoon wordt geraadpleegd met fields=geboorte
+    Dan wordt attribuut geboorte.datum teruggegeven
+    En is in het antwoord attribuut geboorte.plaats niet aanwezig
+    En wordt attribuut _links.self teruggegeven
+    En wordt in _links geen enkel ander attribuut dan self teruggegeven
+
+    Gegeven de gebruiker is geautoriseerd voor geboortedatum
+    En de gebruiker is niet geautoriseerd voor geboorteplaats
+    Als een ingeschreven persoon wordt geraadpleegd met fields=geboorte.datum,geboorte.plaats
     Dan wordt attribuut geboorte.datum teruggegeven
     En is in het antwoord attribuut geboorte.plaats niet aanwezig
     En wordt attribuut _links.self teruggegeven
