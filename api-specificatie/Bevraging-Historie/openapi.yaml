@@ -156,6 +156,8 @@ paths:
           $ref: "#/components/responses/401"
         '403':
           $ref: "#/components/responses/403"
+        '404':
+          $ref: "#/components/responses/404"
         '406':
           $ref: "#/components/responses/406"
         '409':
@@ -241,6 +243,8 @@ paths:
           $ref: "#/components/responses/401"
         '403':
           $ref: "#/components/responses/403"
+        '404':
+          $ref: "#/components/responses/404"
         '406':
           $ref: "#/components/responses/406"
         '409':
@@ -326,6 +330,8 @@ paths:
           $ref: "#/components/responses/401"
         '403':
           $ref: "#/components/responses/403"
+        '404':
+          $ref: "#/components/responses/404"
         '406':
           $ref: "#/components/responses/406"
         '409':
@@ -411,6 +417,8 @@ paths:
           $ref: "#/components/responses/401"
         '403':
           $ref: "#/components/responses/403"
+        '404':
+          $ref: "#/components/responses/404"
         '406':
           $ref: "#/components/responses/406"
         '409':
