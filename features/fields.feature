@@ -34,7 +34,8 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
 
   Gebruik van de fields parameter heeft geen invloed op eventueel meegeladen sub-resources. Dat wordt gestuurd via de expand parameter. Dus wanneer er specifieke attributen van een sub-resource gewenst zijn, worden die opgesomd in de expand parameter. Bijvoorbeeld expand=partners.geslachtsnaam. Zie verder expand.feature
 
-  Wanneer de fields-parameter wordt opgenomen zonder waarde, wordt een foutmelding gegeven.
+  Gebruik van parameter fields zonder waarde (lege waarde) is equivalent aan het niet opnemen van de fields parameter. Wanneer de fields-parameter wordt opgenomen zonder waarde, worden alle attribbuten teruggegeven met een waarden en waarvoor autorisatie is.
+
   Wanneer in de fields-parameter namen zijn opgenomen die niet voorkomen als attribuut in de resource, wordt een foutmelding gegeven.
 
   In de fields-parameter moeten attribuutnamen exact zo worden geschreven als voor de resource-response gedefinieerd. Dit is case sensitive. Bijvoorbeeld fields=BURGERSERVICENUMMER levert een foutmelding, want dat attribuut bestaat niet (attribuut burgerservicenummer bestaat wel).
@@ -152,9 +153,9 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
     En wordt attribuut _embedded.kinderen.geboorte teruggegeven
     En wordt attribuut _embedded.kinderen._links.ingeschrevenpersonen teruggegeven
 
-  Scenario: Lege fields parameter geeft een foutmelding
+  Scenario: Lege fields parameter geeft alle attributen
     Als een ingeschreven persoon wordt geraadpleegd met fields=
-    Dan levert dit een foutmelding
+    Dan levert dit alle attributen die een waarde hebben en waarvoor autorisatie is
 
   Scenario: Fields parameter met attribuutnaam die niet bestaat
     Als een ingeschreven persoon wordt geraadpleegd met fields=burgerservicenummer,geslachtsaanduiding,bestaatniet
