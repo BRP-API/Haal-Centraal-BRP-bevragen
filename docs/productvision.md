@@ -27,7 +27,7 @@ Haal Centraal is een G5 initiatief (Amsterdam, Rotterdam, Den Haag, Utrecht en E
 
 ### Business driven 
 Resourcedefinitie en functionaliteit op basis van de businessvraag van de grootste gemene infobehoefte van alle binnengemeentelijke afnemers van NL. 
-Niet te verwarren met modelgedreven ontwikkeling (MDD). Er is sprake van herleidbaar naar het LO GBA 3.10, zodat de realiseerbaarheid en semantiek van de API geborgd is, maar implementation bleed en tight coupling met provider implementatiedetails wordt voorkomen.
+Niet te verwarren met modelgedreven ontwikkeling (MDD). De API is weliswaar herleidbaar naar het LO GBA 3.10, zodat de realiseerbaarheid en semantiek van de API geborgd is, maar implementation bleed en tight coupling met provider implementatiedetails wordt voorkomen.
 
 ### Consumer first
 Beleg de voordelen waar mogelijk bij de consumer (=binnengemeentelijke afnemer) vanwege de hefboomwerking: complexiteit bij de provider (1x), de voordelen in kosten en doorlooptijd bij de consumer (aantal binnengemeentelijke afnemers x 351)
