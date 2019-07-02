@@ -27,7 +27,7 @@ Haal Centraal is een G5 initiatief (Amsterdam, Rotterdam, Den Haag, Utrecht en E
 
 ### Business driven 
 Resourcedefinitie op basis van de businessvraag van de grootste gemene infobehoefte van alle binnengemeentelijke afnemers van NL. 
-Niet te verwarren met modelgedreven ontwikkeling (MDD). Er is sprake van traceerbaarheid naar het LO GBA 3.10, zodat de realiseerbaarheid, semantiek en volledigheid van de API geborgd is. 
+Niet te verwarren met modelgedreven ontwikkeling (MDD). Er is sprake van traceerbaarheid naar het LO GBA 3.10, zodat de realiseerbaarheid en semantiek van de API geborgd is. 
 
 ### Consumer first
 Beleg de voordelen waar mogelijk bij de consumer (=binnengemeentelijke afnemer) vanwege de hefboomwerking: complexiteit bij de provider (1x), de voordelen in kosten en doorlooptijd bij de consumer (aantal binnengemeentelijke afnemers x 351)
@@ -36,7 +36,7 @@ Beleg de voordelen waar mogelijk bij de consumer (=binnengemeentelijke afnemer) 
 Focus op bruikbaarheid voor de ontwikkelaar: AOS spec is getest op codegeneratie (Java, .NET meest gebruikt in gemeentelijke markt), ontwerpbeslissingen zijn getoetst op het effect op de code, maximale consistentie met andere Haal Centraal API’s en behaviour driven development (BDD) scenario's in Gherkin om het gedrag van de API te beschrijven.
 
 ### Contract first
-…en niet development first. De API is agnostisch, vrij van implementatiedetails providersysteem en niet gevoelig voor wijzigen in systeemlogica provider.
+…en niet development first. De API is agnostisch, vrij van implementatiedetails providersysteem en niet gevoelig voor wijzigen in systeemlogica bij de provider.
 
 ### Agnostisch
 = zonder kennis van de consumer. De API moet door alle (in theorie 200 verschillende) gemeentelijke processen kunnen worden gebruikt die BRP gegevens nodig hebben.
