@@ -132,173 +132,346 @@ Foutbericht:
       description: Systeemcode die het type fout aangeeft
       minLength: 1
 Foutbericht400:
-  allOf:
-   -  $ref: '#/Foutbericht'
-   -  properties:
-        type:
-          example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1 400 Bad Request"
-        title:
-          example: "Ten minste één parameter moet worden opgegeven."
-        status:
-          example: 400
-        detail:
-          example: "The request could not be understood by the server due to malformed syntax. The client SHOULD NOT repeat the request without modification."
-        instance:
-          example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
-        code:
-          example: "paramsRequired"
+  type: object
+  description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
+  properties:
+    type:
+      type: string
+      format: uri
+      description: Link naar meer informatie over deze fout
+      example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1 400 Bad Request"
+    title:
+      type: string
+      description: Beschrijving van de fout
+      example: "Ten minste één parameter moet worden opgegeven."
+    status:
+      type: integer
+      description: "Http status code"
+      example: 400
+    detail:
+      type: string
+      description: Details over de fout
+      example: "The request could not be understood by the server due to malformed syntax. The client SHOULD NOT repeat the request without modification."
+    instance:
+      type: string
+      format: uri
+      description: Uri van de aanroep die de fout heeft veroorzaakt
+      example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+    code:
+      type: string
+      description: Systeemcode die het type fout aangeeft
+      minLength: 1
+      example: "paramsRequired"
 Foutbericht401:
-  allOf:
-   -  $ref: '#/Foutbericht'
-   -  properties:
-        type:
-          example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.2 401 Unauthorized"
-        title:
-          example: "Niet correct geauthenticeerd."
-        status:
-          example: 401
-        detail:
-          example: "The request requires user authentication. The response MUST include a WWW-Authenticate header field (section 14.47) containing a challenge applicable to the requested resource."
-        instance:
-          example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
-        code:
-          example: "authentication"
+  type: object
+  description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
+  properties:
+    type:
+      type: string
+      format: uri
+      description: Link naar meer informatie over deze fout
+      example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.2 401 Unauthorized"
+    title:
+      type: string
+      description: Beschrijving van de fout
+      example: "Niet correct geauthenticeerd."
+    status:
+      type: integer
+      description: "Http status code"
+      example: 401
+    detail:
+      type: string
+      description: Details over de fout
+      example: "The request requires user authentication. The response MUST include a WWW-Authenticate header field (section 14.47) containing a challenge applicable to the requested resource."
+    instance:
+      type: string
+      format: uri
+      description: Uri van de aanroep die de fout heeft veroorzaakt
+      example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+    code:
+      type: string
+      description: Systeemcode die het type fout aangeeft
+      minLength: 1
+      example: "authentication"
 Foutbericht403:
-  allOf:
-   -  $ref: '#/Foutbericht'
-   -  properties:
-        type:
-          example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.4 403 Forbidden"
-        title:
-          example: "U bent niet geautoriseerd voor deze operatie."
-        status:
-          example: 403
-        detail:
-          example: "The server understood the request, but is refusing to fulfill it."
-        instance:
-          example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
-        code:
-          example: "autorisation"
+  type: object
+  description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
+  properties:
+    type:
+      type: string
+      format: uri
+      description: Link naar meer informatie over deze fout
+      example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.4 403 Forbidden"
+    title:
+      type: string
+      description: Beschrijving van de fout
+      example: "U bent niet geautoriseerd voor deze operatie."
+    status:
+      type: integer
+      description: "Http status code"
+      example: 403
+    detail:
+      type: string
+      description: Details over de fout
+      example: "The server understood the request, but is refusing to fulfill it."
+    instance:
+      type: string
+      format: uri
+      description: Uri van de aanroep die de fout heeft veroorzaakt
+      example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+    code:
+      type: string
+      description: Systeemcode die het type fout aangeeft
+      minLength: 1
+      example: "autorisation"  
 Foutbericht404:
-  allOf:
-   -  $ref: '#/Foutbericht'
-   -  properties:
-        type:
-          example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.5 404 Not Found"
-        title:
-          example: "Opgevraagde resource bestaat niet."
-        status:
-          example: 404
-        detail:
-          example: "The server has not found anything matching the Request-URI."
-        instance:
-          example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
-        code:
-          example: "notFound"
+  type: object
+  description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
+  properties:
+    type:
+      type: string
+      format: uri
+      description: Link naar meer informatie over deze fout
+      example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.5 404 Not Found"
+    title:
+      type: string
+      description: Beschrijving van de fout
+      example: "Opgevraagde resource bestaat niet."
+    status:
+      type: integer
+      description: "Http status code"
+      example: 404
+    detail:
+      type: string
+      description: Details over de fout
+      example: "The server has not found anything matching the Request-URI."
+    instance:
+      type: string
+      format: uri
+      description: Uri van de aanroep die de fout heeft veroorzaakt
+      example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+    code:
+      type: string
+      description: Systeemcode die het type fout aangeeft
+      minLength: 1
+      example: "notFound" 
 Foutbericht406:
-  allOf:
-   -  $ref: '#/Foutbericht'
-   -  properties:
-        type:
-          example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.7 406 Not Acceptable"
-        title:
-          example: "Gevraagde contenttype wordt niet ondersteund."
-        status:
-          example: 406
-        detail:
-          example: "The resource identified by the request is only capable of generating response entities which have content characteristics not acceptable according to thr accept headers sent in the request"
-        instance:
-          example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
-        code:
-          example: "notAcceptable"
+  type: object
+  description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
+  properties:
+    type:
+      type: string
+      format: uri
+      description: Link naar meer informatie over deze fout
+      example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.7 406 Not Acceptable"
+    title:
+      type: string
+      description: Beschrijving van de fout
+      example: "Gevraagde contenttype wordt niet ondersteund."
+    status:
+      type: integer
+      description: "Http status code"
+      example: 406
+    detail:
+      type: string
+      description: Details over de fout
+      example: "The resource identified by the request is only capable of generating response entities which have content characteristics not acceptable according to thr accept headers sent in the request"
+    instance:
+      type: string
+      format: uri
+      description: Uri van de aanroep die de fout heeft veroorzaakt
+      example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+    code:
+      type: string
+      description: Systeemcode die het type fout aangeeft
+      minLength: 1
+      example: "notAcceptable" 
 Foutbericht409:
-  allOf:
-   -  $ref: '#/Foutbericht'
-   -  properties:
-        type:
-          example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.10 409 Conflict"
-        title:
-          example: "Conflict"
-        status:
-          example: 409
-        detail:
-          example: "The request could not be completed due to a conflict with the current state of the resource"
-        instance:
-          example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+  type: object
+  description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
+  properties:
+    type:
+      type: string
+      format: uri
+      description: Link naar meer informatie over deze fout
+      example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.10 409 Conflict"
+    title:
+      type: string
+      description: Beschrijving van de fout
+      example: "Conflict"
+    status:
+      type: integer
+      description: "Http status code"
+      example: 409
+    detail:
+      type: string
+      description: Details over de fout
+      example: "The request could not be completed due to a conflict with the current state of the resource"
+    instance:
+      type: string
+      format: uri
+      description: Uri van de aanroep die de fout heeft veroorzaakt
+      example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+    code:
+      type: string
+      description: Systeemcode die het type fout aangeeft
+      minLength: 1
+      example: "conflict"
 Foutbericht410:
-  allOf:
-   -  $ref: '#/Foutbericht'
-   -  properties:
-        type:
-          example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.11 410 Gone"
-        title:
-          example: "Gone"
-        status:
-          example: 410
-        detail:
-          example: "The requested resource is no longer available at the server and no forwarding adress is known."
-        instance:
-          example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+  type: object
+  description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
+  properties:
+    type:
+      type: string
+      format: uri
+      description: Link naar meer informatie over deze fout
+      example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.11 410 Gone"
+    title:
+      type: string
+      description: Beschrijving van de fout
+      example: "Gone"
+    status:
+      type: integer
+      description: "Http status code"
+      example: 410
+    detail:
+      type: string
+      description: Details over de fout
+      example: "The request could not be completed due to a conflict with the current state of the resource"
+    instance:
+      type: string
+      format: uri
+      description: Uri van de aanroep die de fout heeft veroorzaakt
+      example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+    code:
+      type: string
+      description: Systeemcode die het type fout aangeeft
+      minLength: 1
+      example: "gone"
 Foutbericht415:
-  allOf:
-   -  $ref: '#/Foutbericht'
-   -  properties:
-        type:
-          example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.16 415 Unsupported Media Type"
-        title:
-          example: "Unsupported Media Type"
-        status:
-          example: 415
-        detail:
-          example: "The server is refusing the request because the entity of the request is in a format not supported by the requested resource for the requested method."
-        instance:
-          example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+  type: object
+  description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
+  properties:
+    type:
+      type: string
+      format: uri
+      description: Link naar meer informatie over deze fout
+      example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.16 415 Unsupported Media Type"
+    title:
+      type: string
+      description: Beschrijving van de fout
+      example: "Unsupported Media Type"
+    status:
+      type: integer
+      description: "Http status code"
+      example: 415
+    detail:
+      type: string
+      description: Details over de fout
+      example: "The server is refusing the request because the entity of the request is in a format not supported by the requested resource for the requested method."
+    instance:
+      type: string
+      format: uri
+      description: Uri van de aanroep die de fout heeft veroorzaakt
+      example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+    code:
+      type: string
+      description: Systeemcode die het type fout aangeeft
+      minLength: 1
+      example: "unsupported"
 Foutbericht429:
-  allOf:
-   -  $ref: '#/Foutbericht'
-   -  properties:
-        type:
-          example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"
-        title:
-          example: "Too many requests"
-        status:
-          example: 429
-        detail:
-          example: "The user has sent too many requests in a given amount of time (rate limiting)."
-        instance:
-          example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+  type: object
+  description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
+  properties:
+    type:
+      type: string
+      format: uri
+      description: Link naar meer informatie over deze fout
+      example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"
+    title:
+      type: string
+      description: Beschrijving van de fout
+      example: "Too many requests"
+    status:
+      type: integer
+      description: "Http status code"
+      example: 429
+    detail:
+      type: string
+      description: Details over de fout
+      example: "The user has sent too many requests in a given amount of time (rate limiting)."
+    instance:
+      type: string
+      format: uri
+      description: Uri van de aanroep die de fout heeft veroorzaakt
+      example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+    code:
+      type: string
+      description: Systeemcode die het type fout aangeeft
+      minLength: 1
+      example: "t0oManyRequests"
 Foutbericht500:
-  allOf:
-   -  $ref: '#/Foutbericht'
-   -  properties:
-        type:
-          example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.1 500 Internal server error"
-        title:
-          example: "Interne server fout."
-        status:
-          example: 500
-        detail:
-          example: "The server encountered an unexpected condition which prevented it from fulfilling the request."
-        instance:
-          example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
-        code:
-          example: "serverError"
+  type: object
+  description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
+  properties:
+    type:
+      type: string
+      format: uri
+      description: Link naar meer informatie over deze fout
+      example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.1 500 Internal server error"
+    title:
+      type: string
+      description: Beschrijving van de fout
+      example: "Interne server fout."
+    status:
+      type: integer
+      description: "Http status code"
+      example: 500
+    detail:
+      type: string
+      description: Details over de fout
+      example: "The server encountered an unexpected condition which prevented it from fulfilling the request."
+    instance:
+      type: string
+      format: uri
+      description: Uri van de aanroep die de fout heeft veroorzaakt
+      example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+    code:
+      type: string
+      description: Systeemcode die het type fout aangeeft
+      minLength: 1
+      example: "serverError"
 Foutbericht503:
-  allOf:
-   -  $ref: '#/Foutbericht'
-   -  properties:
-        type:
-          example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.4 503 Service Unavailable"
-        title:
-          example: "Bronservice {bron} is niet beschikbaar."
-        status:
-          example: 503
-        detail:
-          example: "The service is currently unable to handle the request due to a temporary overloading or maintenance of the server."
-        instance:
-          example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
-        code:
-          example: "sourceUnavailable"
+  type: object
+  description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
+  properties:
+    type:
+      type: string
+      format: uri
+      description: Link naar meer informatie over deze fout
+      example: "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.4 503 Service Unavailable"
+    title:
+      type: string
+      description: Beschrijving van de fout
+      example: "Bronservice {bron} is niet beschikbaar."
+    status:
+      type: integer
+      description: "Http status code"
+      example: 503
+    detail:
+      type: string
+      description: Details over de fout
+      example: "The service is currently unable to handle the request due to a temporary overloading or maintenance of the server."
+    instance:
+      type: string
+      format: uri
+      description: Uri van de aanroep die de fout heeft veroorzaakt
+      example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+    code:
+      type: string
+      description: Systeemcode die het type fout aangeeft
+      minLength: 1
+      example: "sourceUnavailable"
 ValidatieFoutbericht:
   allOf:
     - $ref: '#/Foutbericht400'
