@@ -10,6 +10,12 @@ Functionaliteit: Ouders van een ingeschreven persoon raadplegen
     Als de ouders worden geraadpleegd van de ingeschreven persoon met burgerservicenummer 999999291
     Dan is het aantal gevonden ouders 0
 
+  Scenario: er zijn onbekende ouders
+    Gegeven de ouders van de te raadplegen persoon zijn onbekend
+    Als de ouders worden geraadpleegd van de ingeschreven persoon met burgerservicenummer 999999291
+    Dan is het aantal gevonden ouders 0
+    En zijn er geen links naar de onbekende ouders
+  
   Scenario: de ouders zijn ingeschreven personen
     Gegeven de te raadplegen persoon heeft een ouder die zelf ingeschreven persoon is
     En de Ouder1 van de ingeschreven persoon heeft in de registratie burgerservicenummer 999999382, naam Jonkheer Franciscus Theodorus in 't Groen
