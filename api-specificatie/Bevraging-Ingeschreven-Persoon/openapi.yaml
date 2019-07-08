@@ -29,21 +29,25 @@ paths:
         2.  Persoon
             -  verblijfplaats__gemeentevaninschrijving
             -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 
+
+
+        3.  Persoon
+            -  burgerservicenummer
     
 
-        3.  Postcode
+        4.  Postcode
             -  verblijfplaats__postcode
             -  verblijfplaats__huisnummer
 
 
-        4.  NaamOpenbareRuimte
+        5.  NaamOpenbareRuimte
             -  verblijfplaats__naamopenbareruimte (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 
 
             -  verblijfplaats__gemeentevaninschrijving
             -  verblijfplaats__huisnummer
             
 
-        5.  Nummeraanduiding
+        6.  Nummeraanduiding
             -  verblijfplaats__identificatiecodenummeraanduiding
 
         De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters, maar binnen iedere combinatie zijn de hier genoemde velden **verplicht**. 
@@ -56,7 +60,6 @@ paths:
 
 
          Er vind geen sortering plaats.
-
       parameters: 
         - in: query
           name: expand
@@ -64,6 +67,14 @@ paths:
           required: false
           schema:
             type: string
+        - in: query
+          name: burgerservicenummer
+          description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
+          required: false
+          schema:
+            type: string
+            maxLength: 9
+            minLength: 9
         - in: query
           name: fields
           description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature)"
@@ -173,7 +184,7 @@ paths:
             example: 2341SX
         - in: query
           name: naam__voorvoegsel
-          description: "Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam."
+          description: "Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam. **De tabel bevat vorvoegsels met hoofdletters en met kleine letters. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).**"
           required: false
           schema:
             type: string
@@ -203,8 +214,6 @@ paths:
           $ref: "#/components/responses/401"
         '403':
           $ref: "#/components/responses/403"
-        '404':
-          $ref: "#/components/responses/404"
         '406':
           $ref: "#/components/responses/406"
         '409':
@@ -330,8 +339,6 @@ paths:
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/Kind'
-        '400':
-          $ref: "#/components/responses/400"
         '401':
           $ref: "#/components/responses/401"
         '403':
@@ -387,8 +394,6 @@ paths:
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/KindCollectie'
-        '400':
-          $ref: "#/components/responses/400"
         '401':
           $ref: "#/components/responses/401"
         '403':
@@ -451,8 +456,6 @@ paths:
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/Ouder'
-        '400':
-          $ref: "#/components/responses/400"
         '401':
           $ref: "#/components/responses/401"
         '403':
@@ -508,8 +511,6 @@ paths:
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/OuderCollectie'
-        '400':
-          $ref: "#/components/responses/400"
         '401':
           $ref: "#/components/responses/401"
         '403':
@@ -572,8 +573,6 @@ paths:
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/Partner'
-        '400':
-          $ref: "#/components/responses/400"
         '401':
           $ref: "#/components/responses/401"
         '403':
@@ -629,8 +628,6 @@ paths:
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/PartnerCollectie'
-        '400':
-          $ref: "#/components/responses/400"
         '401':
           $ref: "#/components/responses/401"
         '403':
@@ -685,82 +682,6 @@ paths:
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/Reisdocument'
-        '400':
-          $ref: "#/components/responses/400"
-        '401':
-          $ref: "#/components/responses/401"
-        '403':
-          $ref: "#/components/responses/403"
-        '404':
-          $ref: "#/components/responses/404"
-        '406':
-          $ref: "#/components/responses/406"
-        '409':
-          $ref: "#/components/responses/409"
-        '410':
-          $ref: "#/components/responses/410"
-        '415':
-          $ref: "#/components/responses/415"
-        '429':
-          $ref: "#/components/responses/429"
-        '500':
-          $ref: "#/components/responses/500"
-        '503':
-          $ref: "#/components/responses/503"
-        'default':
-          $ref: "#/components/responses/default"
-      tags: 
-      - reisdocumenten
-  /ingeschrevenpersonen/{burgerservicenummer}/reisdocumenten:
-    get:
-      operationId: ingeschrevenpersonenBurgerservicenummerreisdocumenten
-      description: "Het ophalen van de gegevens van REISDOCUMENTen op basis van het burgerservicenummer van de houder. Er kan op type document gezocht worden."
-      parameters: 
-        - in: query
-          name: page
-          description: "Een pagina binnen de gepagineerde resultatenset."
-          required: false
-          schema:
-            type: integer
-            minimum: 1
-        - in: path
-          name: burgerservicenummer
-          description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
-          required: true
-          schema:
-            type: string
-            maxLength: 9
-            minLength: 9
-        - in: query
-          name: soortreisdocument
-          description: "Het soort reisdocument dat verstrekt is aan de INGESCHREVEN NATUURLIJK PERSOON. Element 35.10 Een codering, opgenomen in Tabel 48, Tabel Nederlands reisdocument, die aangeeft welk Nederlandse reisdocument is verstrekt of in welk reisdocument de ingeschrevene is bijgeschreven."
-          required: false
-          schema:
-            type: string
-      responses:
-        '200':
-          description: "Zoekactie geslaagd"
-          headers:
-            api-version:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
-            warning:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/warning"
-            X-Pagination-Page:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Pagination_Page"
-            X-Pagination-Limit:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Pagination_Limit"
-            X-Rate-Limit-Limit:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Limit"
-            X-Rate-Limit-Remaining:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Remaining"
-            X-Rate-Limit-Reset:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Reset"
-          content:
-            application/hal+json:
-              schema:
-                $ref: '#/components/schemas/ReisdocumentCollectie'
-        '400':
-          $ref: "#/components/responses/400"
         '401':
           $ref: "#/components/responses/401"
         '403':
@@ -791,14 +712,6 @@ components:
       type: "object"
       description: "Categorie 01/51 Gegevens over de ingeschrevene."
       properties:
-        aktenummer:
-          type: "string"
-          title: "aktenummer"
-          description: "Element 81.20 Een aanduiding van de akte die is opgenomen\
-            \ in de registers van de burgerlijke stand in Nederland. De eerste drie\
-            \ posities van het aktenummer dienen conform [Tabel 39,Tabel Akteaanduiding](https://publicaties.rvig.nl/dsresource?objectid=4796&amp;type=org)\
-            \ te zijn. De laatste 4 posities bevatten een volgnummer van de akte."
-          maxLength: 7
         burgerservicenummer:
           type: "string"
           title: "Burgerservicenummer"
@@ -826,8 +739,6 @@ components:
           $ref: "#/components/schemas/Datum_onvolledig"
         datumOpschortingBijhouding:
           $ref: "#/components/schemas/Datum_onvolledig"
-        registergemeenteAkte:
-          $ref: "#/components/schemas/Gemeenten_tabel"
         kiesrecht:
           $ref: "#/components/schemas/Kiesrecht"
         naam:
@@ -868,14 +779,6 @@ components:
       type: "object"
       description: "02/52 of 03/53 Gegevens over de ouder van de ingeschrevene."
       properties:
-        aktenummer:
-          type: "string"
-          title: "aktenummer"
-          description: "Element 81.20 Een aanduiding van de akte die is opgenomen\
-            \ in de registers van de burgerlijke stand in Nederland. De eerste drie\
-            \ posities van het aktenummer dienen conform [Tabel 39,Tabel Akteaanduiding](https://publicaties.rvig.nl/dsresource?objectid=4796&amp;type=org)\
-            \ te zijn. De laatste 4 posities bevatten een volgnummer van de akte."
-          maxLength: 7
         burgerservicenummer:
           type: "string"
           title: "Burgerservicenummer"
@@ -895,8 +798,6 @@ components:
           $ref: "#/components/schemas/OuderAanduiding_enum"
         datumIngangFamilierechtelijkeBetrekking:
           $ref: "#/components/schemas/Datum_onvolledig"
-        registergemeenteAkte:
-          $ref: "#/components/schemas/Gemeenten_tabel"
         naam:
           $ref: "#/components/schemas/Naam"
         inOnderzoek:
@@ -921,14 +822,6 @@ components:
       type: "object"
       description: "09/59 Gegevens over een kind van de ingeschrevene."
       properties:
-        aktenummer:
-          type: "string"
-          title: "aktenummer"
-          description: "Element 81.20 Een aanduiding van de akte die is opgenomen\
-            \ in de registers van de burgerlijke stand in Nederland. De eerste drie\
-            \ posities van het aktenummer dienen conform [Tabel 39,Tabel Akteaanduiding](https://publicaties.rvig.nl/dsresource?objectid=4796&amp;type=org)\
-            \ te zijn. De laatste 4 posities bevatten een volgnummer van de akte."
-          maxLength: 7
         burgerservicenummer:
           type: "string"
           title: "Burgerservicenummer"
@@ -942,8 +835,6 @@ components:
           maxLength: 9
           minLength: 9
           example: "430422088"
-        registergemeenteAkte:
-          $ref: "#/components/schemas/Gemeenten_tabel"
         inOnderzoek:
           $ref: "#/components/schemas/KindInOnderzoek"
         naam:
@@ -969,14 +860,6 @@ components:
       description: "05/55 Gegevens over een gesloten huwelijk/geregistreerd partnerschap\
         \ van de ingeschrevene."
       properties:
-        aktenummer:
-          type: "string"
-          title: "aktenummer"
-          description: "Element 81.20 Een aanduiding van de akte die is opgenomen\
-            \ in de registers van de burgerlijke stand in Nederland. De eerste drie\
-            \ posities van het aktenummer dienen conform [Tabel 39,Tabel Akteaanduiding](https://publicaties.rvig.nl/dsresource?objectid=4796&amp;type=org)\
-            \ te zijn. De laatste 4 posities bevatten een volgnummer van de akte."
-          maxLength: 7
         burgerservicenummer:
           type: "string"
           title: "Burgerservicenummer"
@@ -994,8 +877,6 @@ components:
           $ref: "#/components/schemas/Geslacht_enum"
         soortVerbintenis:
           $ref: "#/components/schemas/SoortVerbintenis_enum"
-        registergemeenteAkte:
-          $ref: "#/components/schemas/Gemeenten_tabel"
         naam:
           $ref: "#/components/schemas/Naam"
         geboorte:
@@ -1058,18 +939,6 @@ components:
           $ref: "#/components/schemas/ReisdocumentInOnderzoek"
         _links:
           $ref: "#/components/schemas/Reisdocument_links"
-    ReisdocumentCollectie:
-      type: object
-      properties:
-        _links:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalPaginationLinks"
-        _embedded:
-          type: object
-          properties:
-            residocumenten:
-              type: array
-              items:
-                $ref: '#/components/schemas/Reisdocument'
     Naam:
       type: "object"
       description: "02 + 61 Gegevens over de naam van de NATUURLIJK PERSOON"
@@ -1289,14 +1158,6 @@ components:
       type: "object"
       description: "06/56 Gegevens over het overlijden van de ingeschrevene."
       properties:
-        aktenummer:
-          type: "string"
-          title: "aktenummer"
-          description: "Element 81.20 Een aanduiding van de akte die is opgenomen\
-            \ in de registers van de burgerlijke stand in Nederland. De eerste drie\
-            \ posities van het aktenummer dienen conform [Tabel 39,Tabel Akteaanduiding](https://publicaties.rvig.nl/dsresource?objectid=4796&amp;type=org)\
-            \ te zijn. De laatste 4 posities bevatten een volgnummer van de akte."
-          maxLength: 7
         indicatieOverleden:
           type: "boolean"
           title: "indicatieOverleden"
@@ -1309,8 +1170,6 @@ components:
         land:
           $ref: "#/components/schemas/Land_tabel"
         plaats:
-          $ref: "#/components/schemas/Gemeenten_tabel"
-        registergemeenteAkte:
           $ref: "#/components/schemas/Gemeenten_tabel"
         inOnderzoek:
           $ref: "#/components/schemas/OverlijdenInOnderzoek"
@@ -1704,7 +1563,7 @@ components:
           title: "indicatieCurateleRegister"
           description: "Element 33.10 Een aanduiding dat de ingeschrevene onder curatele\
             \ is gesteld."
-          example: "1"
+          example: "true"
         indicatieGezagMinderjarige:
           $ref: "#/components/schemas/IndicatieGezagMinderjarige_enum"
         inOnderzoek:
@@ -1845,23 +1704,6 @@ components:
           pattern: "^99$"
           format: "date_month"
           maxLength: 2
-    Gemeenten_tabel:
-      type: "object"
-      description: "Gemeentetabel 33 conform LO GBA"
-      properties:
-        code:
-          type: "string"
-          title: "code"
-          description: "De code, behorende bij de gemeentenaam opgenomen in de Gemeentetabel\
-            \ van de GBA."
-          maxLength: 4
-          example: "0737"
-        naam:
-          type: "string"
-          title: "naam"
-          description: ""
-          maxLength: 80
-          example: "Tytsjerksteradiel"
     AdellijkeTitel_predikaat_tabel:
       type: "object"
       description: "Een code, voorkomend in Tabel 38, Tabel Adellijke titel/predikaat,\
@@ -1901,6 +1743,23 @@ components:
             \ de GBA."
           maxLength: 40
           example: "Nederland"
+    Gemeenten_tabel:
+      type: "object"
+      description: "Gemeentetabel 33 conform LO GBA"
+      properties:
+        code:
+          type: "string"
+          title: "code"
+          description: "De code, behorende bij de gemeentenaam opgenomen in de Gemeentetabel\
+            \ van de GBA."
+          maxLength: 4
+          example: "0737"
+        naam:
+          type: "string"
+          title: "naam"
+          description: ""
+          maxLength: 80
+          example: "Tytsjerksteradiel"
     Nationaliteit_tabel:
       type: "object"
       description: "Een waarde, opgenomen in Tabel 32, Nationaliteitentabel, die aangeeft\
@@ -2000,8 +1859,7 @@ components:
         ouders:
           title: "heeftAlsOuder"
           type: "array"
-          description: "De ingezetene, zijnde de ouder, waarnaar de KIND-OUDER-RELATIE\
-            \ verwijst De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE\
+          description: "De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE\
             \ verwijst`"
           maxItems: 4
           items:
@@ -2017,8 +1875,7 @@ components:
         kinderen:
           title: "heeftAlsKind"
           type: "array"
-          description: "De ingezetene, zijnde de ouder, waarnaar de KIND-OUDER-RELATIE\
-            \ verwijst De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE\
+          description: "De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE\
             \ verwijst"
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
@@ -2034,19 +1891,18 @@ components:
         partners:
           title: "heeftAlsPartner"
           type: "array"
-          description: "De INGEZETENE(n) bij wie de PARTNER-RELATIE is geregistreerd.\
-            \ De actuele bij de ingeschreven persoon geregistreerde huwelijken en\
-            \ geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd\
+          description: "De actuele bij de ingeschreven persoon geregistreerde huwelijken\
+            \ en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd\
             \ partnerschap wordt niet teruggegeven."
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
         verblijfplaatshistorie:
           title: "verbleefOp"
           type: "object"
-          description: "Het ophalen van de verblijfsplaatshistorie van een ingeschreven\
-            \ persoon. Van een ingeschreven persoon worden verblijfsplaatsen waar\
-            \ een persoon zich in het verleden op heeft ingeschreven (inclusief de\
-            \ actuele verblijfsplaats) geretourneerd."
+          description: "Het ophalen van de verblijfplaatshistorie van een ingeschreven\
+            \ persoon. Van een ingeschreven persoon worden verblijfplaatsen waar een\
+            \ persoon zich in het verleden op heeft ingeschreven (inclusief de actuele\
+            \ verblijfplaats) geretourneerd."
           properties:
             href:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
@@ -2127,35 +1983,32 @@ components:
       type: "object"
       properties:
         ouders:
-          title: "heeft als ouder"
+          title: "heeftAlsOuder"
           type: "array"
-          description: "De ingezetene, zijnde de ouder, waarnaar de KIND-OUDER-RELATIE\
-            \ verwijst De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE\
+          description: "De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE\
             \ verwijst`"
           maxItems: 4
           items:
             $ref: "#/components/schemas/Ouder"
         kinderen:
-          title: "heeft als ouder"
+          title: "heeftAlsKind"
           type: "array"
-          description: "De ingezetene, zijnde de ouder, waarnaar de KIND-OUDER-RELATIE\
-            \ verwijst De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE\
+          description: "De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE\
             \ verwijst"
           items:
             $ref: "#/components/schemas/Kind"
         partners:
-          title: "heeft als partner"
+          title: "heeftAlsPartner"
           type: "array"
-          description: "De INGEZETENE(n) bij wie de PARTNER-RELATIE is geregistreerd.\
-            \ De actuele bij de ingeschreven persoon geregistreerde huwelijken en\
-            \ geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd\
+          description: "De actuele bij de ingeschreven persoon geregistreerde huwelijken\
+            \ en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd\
             \ partnerschap wordt niet teruggegeven."
           items:
             $ref: "#/components/schemas/Partner"
     AanduidingEuropeesKiesrecht_enum:
       type: "string"
-      description: "De mogelijke waarden van de aanduiding van inhouding of vermissing\
-        \ van een Nederlands reisdocument. Zie logisch ontwerp BRP bij de stamtabellen:\n\
+      description: "De mogelijke waarden van de aanduiding die aangeeft of de persoon\
+        \ een oproep moet ontvangen voor verkiezingen voor het Europees parlement.:\n\
         * `1` - persoon is uitgesloten\n* `2` - persoon ontvangt oproep"
       enum:
       - "1"
@@ -2256,8 +2109,8 @@ components:
       - "BE"
     AanduidingUitsluitingKiesrecht_enum:
       type: "string"
-      description: "Soort verbintenis van een bij de burgerlijke stand ingeschreven\
-        \ verbintenis:\n* `A` - uitgesloten van kiesrecht."
+      description: "Aanduiding dat de persoon is uitgesloten van kiesrecht:\n* `A`\
+        \ - uitgesloten van kiesrecht."
       enum:
       - "A"
     SoortVerbintenis_enum:
