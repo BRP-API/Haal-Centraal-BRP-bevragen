@@ -5,6 +5,6 @@
 #    pip-compile --no-index --output-file requirements/jenkins.txt requirements/base.txt requirements/testing.in requirements/jenkins.in
 #
 django-jenkins==0.110.0
-django==2.2.2             # via django-jenkins
+django>=2.2.3             # via django-jenkins
 pytz==2018.5              # via django
 sqlparse==0.3.0           # via django
