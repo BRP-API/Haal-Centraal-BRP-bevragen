@@ -489,16 +489,17 @@ InvalidParams:
     type:
       type: string
       format: uri
-      example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde"
+      example: "https://www.vng.nl/realisatie/api/validaties/integer"
     name:
       type: string
       description: Naam van de parameter
-      example: "parameternaam"
+      example: "verblijfplaats__huisnummer"
     code:
       type: string
       description: Systeemcode die het type fout aangeeft
       minLength: 1
+      example: "integer"
     reason:
       type: string
       description: Beschrijving van de fout op de parameterwaarde
-      example: "Mag alleen numeriek karakter bevatten"
+      "reason": "Waarde is geen geldige integer."
