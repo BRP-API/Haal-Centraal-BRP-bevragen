@@ -22,23 +22,26 @@ Functionaliteit: Sommige datum-attributen kunnen een onvolledige datum bevatten
   Scenario: Jaar en maand van de datum zijn bekend
     Gegeven de registratie ingeschreven persoon 999999291 kent met geboortedatum januari 1975 (19750100)
     Als de ingeschreven persoon met burgerservicenummer 999999291 wordt geraadpleegd
-    Dan is in het antwoord geboorte.datum.datum niet aanwezig of null
+    Dan is in het antwoord geboorte.datum.datum niet aanwezig
     En heeft attribuut geboorte.datum.jaar de waarde 1975
     En heeft attribuut geboorte.datum.maand de waarde 01
-    En is in het antwoord geboorte.datum.dag niet aanwezig of null
+    En is in het antwoord geboorte.datum.dag niet aanwezig
 
   Scenario: Alleen jaar van de datum is bekend
     Gegeven de registratie ingeschreven persoon 999999308 kent met geboortedatum 1975 (19750000)
     Als de ingeschreven persoon met burgerservicenummer 999999308 wordt geraadpleegd
-    Dan is in het antwoord geboorte.datum.datum niet aanwezig of null
+    Dan is in het antwoord geboorte.datum.datum niet aanwezig
     En heeft attribuut geboorte.datum.jaar de waarde 1975
-    En is in het antwoord geboorte.datum.maand niet aanwezig of null
-    En is in het antwoord geboorte.datum.dag niet aanwezig of null
+    En is in het antwoord geboorte.datum.maand niet aanwezig
+    En is in het antwoord geboorte.datum.dag niet aanwezig
 
   Scenario: Er is geen geboortedatum bekend
     Gegeven de registratie ingeschreven persoon 999999321 kent geen geboortedatum (00000000)
     Als de ingeschreven persoon met burgerservicenummer 999999321 wordt geraadpleegd
-    Dan is in het antwoord geboorte.datum.datum niet aanwezig of null
-    En is in het antwoord geboorte.datum.jaar niet aanwezig of null
-    En is in het antwoord geboorte.datum.maand niet aanwezig of null
-    En is in het antwoord geboorte.datum.dag niet aanwezig of null
+    Dan is in het antwoord geboorte.datum niet aanwezig
+
+  Scenario: Er is geen overlijdensdatum bekend
+    Gegeven de registratie ingeschreven persoon 999999321 kent geen overlijdensdatum (00000000)
+    Als de ingeschreven persoon met burgerservicenummer 999999321 wordt geraadpleegd
+    Dan is in het antwoord overlijden.datum niet aanwezig
+    En heeft attribuut overlijden.indicatieOverleden de waarde true
