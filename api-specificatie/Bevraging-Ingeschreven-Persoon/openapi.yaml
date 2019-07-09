@@ -1069,18 +1069,27 @@ components:
           $ref: "#/components/schemas/Datum_onvolledig"
     Kiesrecht:
       type: "object"
-      description: "Gegevens over het kiesrecht van de ingeschrevene."
+      description: "Gegevens over het kiesrecht van de ingeschreven persoon. \n* **datumUitsluitingEuropeesKiesrecht**:\
+        \ De datum waarop een uitsluiting voor deelname aan verkiezingen voor het\
+        \ Europees parlement niet meer van toepassing is, als er sprake is van uitsluiting\
+        \ voor bepaalde tijd. \n* **datumUitsluitingKiesrecht**: De datum waarop een\
+        \ uitsluiting voor deelname aan verkiezingen niet meer van toepassing is,\
+        \ als er sprake is van uitsluiting voor bepaalde tijd."
       properties:
-        aanduidingEuropeesKiesrecht:
-          $ref: "#/components/schemas/AanduidingEuropeesKiesrecht_enum"
-        aanduidingUitsluitingKiesrecht:
-          $ref: "#/components/schemas/AanduidingUitsluitingKiesrecht_enum"
-        datumEuropeesKiesrechtOnbekend:
+        europeesKiesrecht:
           type: "boolean"
-          title: "datumEuropeesKiesrechtOnbekend"
-          description: "Indicator dat de datumEuropeesKiesrecht onbekend is."
-        datumEuropeesKiesrecht:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          title: "europeesKiesrecht"
+          description: "Een aanduiding die aangeeft of de persoon een oproep moet\
+            \ ontvangen voor verkiezingen voor het Europees parlement. \n* true: persoon\
+            \ ontvangt oproep \n* false: persoon is uitgesloten"
+          example: "true"
+        kiesrecht:
+          type: "boolean"
+          title: "kiesrecht"
+          description: "Een aanduiding die aangeeft of de persoon een oproep moet\
+            \ ontvangen voor verkiezingen. \n* true: persoon ontvangt oproep \n* false:\
+            \ persoon is uitgesloten"
+          example: "true"
         einddatumUitsluitingEuropeesKiesrecht:
           $ref: "#/components/schemas/Datum_onvolledig"
         einddatumUitsluitingKiesrecht:
@@ -2001,14 +2010,6 @@ components:
             \ partnerschap wordt niet teruggegeven."
           items:
             $ref: "#/components/schemas/Partner"
-    AanduidingEuropeesKiesrecht_enum:
-      type: "string"
-      description: "De mogelijke waarden van de aanduiding die aangeeft of de persoon\
-        \ een oproep moet ontvangen voor verkiezingen voor het Europees parlement.:\n\
-        * `persoon is uitgesloten` - 1\n* `persoon ontvangt oproep` - 2"
-      enum:
-      - "persoon is uitgesloten"
-      - "persoon ontvangt oproep"
     AanduidingInhoudingVermissingReisdocument_enum:
       type: "string"
       description: "De mogelijke waarden van de aanduiding van inhouding of vermissing\
@@ -2099,12 +2100,6 @@ components:
       - "opname"
       - "verlies"
       - "beëindiging"
-    AanduidingUitsluitingKiesrecht_enum:
-      type: "string"
-      description: "Aanduiding dat de persoon is uitgesloten van kiesrecht:\n* `uitgesloten\
-        \ van kiesrecht.` - A"
-      enum:
-      - "uitgesloten van kiesrecht."
     SoortVerbintenis_enum:
       type: "string"
       description: "Soort verbintenis van een bij de burgerlijke stand ingeschreven\
@@ -2228,4 +2223,3 @@ components:
         application/problem+json:
           schema:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
-
