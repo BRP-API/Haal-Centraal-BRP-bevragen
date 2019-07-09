@@ -8,6 +8,7 @@ zodat mijn naam overzichtelijk wordt weergegeven
 De voorletters worden opgenomen als één (1) voorletter per voornaam, gevolgd door een punt (.).
 Als een voornaam een samengestelde naam is gescheiden door een koppelteken (-), Dan wordt deze voornaam (ook) afgekort tot één voorletter.
 Als een voornaam  begint met een dubbelklank (Th, Ph, Ch, IJ, enz.), Dan wordt deze voornaam (ook) afgekort tot één voorletter.
+Als één of meerdere voornamen uit één letter bestaan, dan volgt er na de letter geen .
 Als de rubriek Voornamen is gevuld met de standaardwaarde '.' (punt), Dan wordt geen extra (scheidings)punt toegevoegd; de inhoud van de attribuut voorletters is na afleiding Dan '.'
 
 
@@ -23,4 +24,7 @@ Abstract Scenario: Voorletters wordt samengesteld uit de eerste letter van de vo
 	| Johan Frank Robert   | J.F.R.      |
 	| Theo Philip IJsbrand | T.P.I.      |
 	| Anne-Fleur Belle     | A.B.        |
+	| Suzie Q              | S.Q         |
+	| J P                  | J P         |
+	| A                    | A           |
 	| .                    | .           |
