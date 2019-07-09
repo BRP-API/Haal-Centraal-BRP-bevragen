@@ -91,7 +91,7 @@ paths:
             example: 1964-09-24
         - in: query
           name: geboorte__plaats
-          description: "Een code, opgenomen in Tabel 33, Gemeententabel of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).**"
+          description: "Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).**"
           required: false
           schema:
             type: string
@@ -128,7 +128,7 @@ paths:
             example: Dirk
         - in: query
           name: verblijfplaats__gemeentevaninschrijving
-          description: "Een code die aangeeft in welke gemeente de PL zich bevindt of de gemeente waarnaar de PL is uitgeschreven of de gemeente waar de PL voor de eerste keer is opgenomen. De standaardwaarde (0000) is geen geldige inhoud voor de query-parameter."
+          description: "Een code die aangeeft in welke gemeente de PL zich bevindt of de gemeente waarnaar de PL is uitgeschreven of de gemeente waar de PL voor de eerste keer is opgenomen. De waarde (0000) is geen geldige inhoud voor de query-parameter."
           required: false
           schema:
             type: string
@@ -160,7 +160,7 @@ paths:
             example: bis
         - in: query
           name: verblijfplaats__identificatiecodenummeraanduiding
-          description: "De unieke aanduiding van een NUMMERAANDUIDING. Combinatie van de viercijferige 'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding."
+          description: "De unieke aanduiding van een NUMMERAANDUIDING. Combinatie van de viercijferige 'gemeentecode', de tweecijferige 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding."
           required: false
           schema:
             type: string
@@ -926,11 +926,7 @@ components:
         reisdocumentnummer:
           type: "string"
           title: "Reisdocumentnummer"
-          description: "Het nummer van het verstrekte Nederlandse reisdocument. Element\
-            \ 35.20 Het nummer van het verstrekte Nederlandse reisdocument of het\
-            \ nummer van het Nederlandse reisdocument waarin de ingeschrevene is bijgeschreven.\
-            \ Standaardwaarde ......... Mogelijke waarden Het nummer van het reisdocument.\
-            \ Standaardwaarde indien onbekend."
+          description: "Het nummer van het verstrekte Nederlandse reisdocument."
           maxLength: 9
           example: "546376728"
         autoriteitAfgifte:
@@ -955,10 +951,7 @@ components:
           type: "string"
           title: "Geslachtsnaam"
           description: "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels\
-            \ en adellijke titel/predikaat zijn afgesplitst. De (geslachts)naam waarvan\
-            \ de eventueel aanwezige voorvoegsels (tabel 36) en adellijke titel/predikaat\
-            \ (tabel 38) zijn afgesplitst. Standaardwaarde . Mogelijke waarden De\
-            \ geslachtsnaam. Standaardwaarde indien onbekend."
+            \ en adellijke titel/predikaat zijn afgesplitst."
           maxLength: 200
           example: "Vries"
         voorletters:
@@ -1298,7 +1291,7 @@ components:
           $ref: "#/components/schemas/Datum_onvolledig"
     Verblijfplaats:
       type: "object"
-      description: "08/58 Gegevens over het verblijf en adres van de ingeschreven\
+      description: "Gegevens over het verblijf en adres van de ingeschreven\
         \ persoon. Dit is het adres waarop een persoon is ingeschreven. \n* **datumAanvangAdreshuishouding**\
         \ : De datum van aangifte of ambtshalve melding van verblijf en adres. \n\
         * **datumIngangGeldigheid** : Datum waarop de gegevens over de verblijfplaats\
@@ -1320,11 +1313,7 @@ components:
           title: "Huisletter"
           description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien\
             \ van een adresseerbaar object toegekende toevoeging aan een huisnummer\
-            \ in de vorm van een alfanumeriek teken. Element 11.30 Een alfabetisch\
-            \ teken achter het huisnummer zoals dit door het gemeentebestuur is toegekend\
-            \ dan wel een door of namens het bevoegde gemeentelijke orgaan ten aanzien\
-            \ van een adresseerbaar object toegekende toevoeging aan een huisnummer\
-            \ in de vorm van een alfabetisch teken. a - z , A – Z"
+            \ in de vorm van een alfanumeriek teken."
           pattern: "^[A-Z,a-z]$"
           maxLength: 1
           example: "B"
@@ -1332,11 +1321,7 @@ components:
           type: "integer"
           title: "Huisnummer"
           description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien\
-            \ van een adresseerbaar object toegekende nummering. Element 11.20 De\
-            \ numerieke aanduiding zoals deze door het gemeentebestuur aan het object\
-            \ is toegekend dan wel een door of namens het bevoegde gemeentelijke orgaan\
-            \ ten aanzien van een adresseerbaar object toegekende nummering. Standaardwaarde\
-            \ is 0 Alle natuurlijke getallen tussen 1 en 99999."
+            \ van een adresseerbaar object toegekende nummering. Alle natuurlijke getallen tussen 1 en 99999."
           maximum: 99999
           example: "23"
         huisnummertoevoeging:
@@ -1344,27 +1329,14 @@ components:
           title: "Huisnummertoevoeging"
           description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien\
             \ van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer\
-            \ of een combinatie van huisnummer en huisletter. Element 11.40 Die letters\
-            \ of tekens die noodzakelijk zijn om, naast huisnummer en -letter, de\
-            \ brievenbus te vinden dan wel een door of namens het bevoegde gemeentelijke\
-            \ orgaan ten aanzien van een adresseerbaar object toegekende toevoeging\
-            \ aan een huisnummer of een combinatie van huisletter en huisnummer. a\
-            \ - z , A - Z , 0 – 9"
+            \ of een combinatie van huisnummer en huisletter.  a - z , A - Z , 0 – 9"
           pattern: "^[a-zA-Z0-9]{1,4}$"
           maxLength: 4
           example: "IV"
         identificatiecodeNummeraanduiding:
           type: "string"
           title: "Identificatiecode nummeraanduiding"
-          description: "De unieke aanduiding van een NUMMERAANDUIDING. Element 11.90\
-            \ De unieke aanduiding van een nummeraanduiding. Een nummeraanduiding\
-            \ is een door het bevoegde gemeentelijke orgaan als zodanig toegekende\
-            \ aanduiding van een adresseerbaar object. De Identificatiecode nummeraanduiding\
-            \ is een combinatie van een viercijferige gemeentecode, de tweecijferige\
-            \ objecttypecode 20 die aangeeft dat om een nummeraanduiding gaat en een\
-            \ voor het betreffende objecttype binnen een gemeente uniek tiencijferig\
-            \ volgnummer. Standaardwaarde is 0000000000000000 Combinatie van de viercijferige\
-            \ 'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige\
+          description: "De unieke aanduiding van een NUMMERAANDUIDING. Combinatie van de viercijferige 'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige\
             \ 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente\
             \ uniek tiencijferig 'objectvolgnummer'. De objecttypecode kent in de\
             \ BAG de volgende waarde:20 nummeraanduiding."
@@ -1373,16 +1345,16 @@ components:
         identificatiecodeVerblijfplaats:
           type: "string"
           title: "identificatiecodeVerblijfplaats"
-          description: "Element 11.80 Een verblijfplaats kan een ligplaats, een standplaats\
+          description: "Een verblijfplaats kan een ligplaats, een standplaats\
             \ of een verblijfsobject in een of meerdere panden zijn, waaraan respectievelijk\
             \ een ligplaatsidentificatie, standplaatsidentificatie of verblijfsobjectidentificatie\
             \ is toegekend. De Identificatiecode verblijfplaats is een combinatie\
             \ van een viercijferige gemeentecode, een tweecijferige objecttypecode\
             \ die aangeeft of de aanduiding een verblijfsobject (01), ligplaats (02)\
             \ of standplaats (03) betreft en een voor het betreffende objecttype binnen\
-            \ een gemeente uniek tiencijferig volgnummer. Standaardwaarde is 0000000000000000\
-            \ Combinatie van de viercijferige 'gemeentecode' (volgens GBA tabel 33,\
-            \ Gemeententabel), de tweecijferige 'objecttypecode' en een voor het betreffende\
+            \ een gemeente uniek tiencijferig volgnummer. \
+            \ Combinatie van de viercijferige 'gemeentecode' , de tweecijferige 'objecttypecode'\
+            \ en een voor het betreffende\
             \ objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'.\
             \ De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding."
           maxLength: 16
@@ -1399,21 +1371,14 @@ components:
           type: "string"
           title: "Locatiebeschrijving"
           description: "Een geheel of gedeeltelijke omschrijving van de ligging van\
-            \ een object. Element 12.10 Een geheel of gedeeltelijke omschrijving van\
-            \ de ligging van een object, indien dit niet kan worden aangegeven in\
-            \ de groep 11 Adres."
+            \ een object."
           maxLength: 35
           example: "Naast de derde brug"
         naamOpenbareRuimte:
           type: "string"
           title: "Naam openbare ruimte"
           description: "Een door het bevoegde gemeentelijke orgaan aan een OPENBARE\
-            \ RUIMTE toegekende benaming Element 11.15 Een naam die aan een openbare\
-            \ ruimte is toegekend in een daartoe strekkend formeel gemeentelijk besluit.\
-            \ Een openbare ruimte is een door het bevoegde gemeentelijke orgaan als\
-            \ zodanig aangewezen benaming van een binnen één woonplaats gelegen buitenruimte.\
-            \ Voor ‘Naam openbare ruimte’ mag ‘officiele straatnaam’ gelezen worden.\
-            \ Tekens gecodeerd volgens de UTF-8 standaard"
+            \ RUIMTE toegekende benaming "
           maxLength: 80
           example: "Loosduinsekade"
         postcode:
@@ -1421,10 +1386,7 @@ components:
           title: "Postcode"
           description: "De door PostNL vastgestelde code behorende bij een bepaalde\
             \ combinatie van een naam van een woonplaats, naam van een openbare ruimte\
-            \ en een huisnummer Element 11.60 De door de TNT Post vastgestelde code\
-            \ behorend bij de straatnaam en het huisnummer dan wel de door TNT Post\
-            \ vastgestelde code behorende bij een bepaalde combinatie van een naam\
-            \ openbare ruimte en een huisnummer."
+            \ en een huisnummer "
           pattern: "^[1-9]{1}[0-9]{3}[A-Z]{2}$"
           example: "2571CC"
         straatnaam:
@@ -1438,10 +1400,7 @@ components:
           type: "string"
           title: "Woonplaatsnaam"
           description: "De door het bevoegde gemeentelijke orgaan aan een WOONPLAATS\
-            \ toegekende benaming. Element 11.70 Een woonplaatsnaam is de naam van\
-            \ een door het bevoegde gemeentelijke orgaan als zodanig aangewezen gedeelte\
-            \ van het gemeentelijk grondgebied. De standaardwaarde is . Tekens gecodeerd\
-            \ volgens de UTF-8 standaard."
+            \ toegekende benaming."
           maxLength: 80
           example: "Utrecht"
         datumAanvangAdreshouding:
@@ -1469,24 +1428,21 @@ components:
           title: "Adres regel buitenland 1"
           description: "Het eerste deel van het adres in het buitenland dat het SUBJECT\
             \ opgeeft bij vertrek naar het buitenland dan wel waar het SUBJECT in\
-            \ het buitenland verblijft. Element 13.30 Eerste deel van het adres in\
-            \ het buitenland, met uitzondering van het land."
+            \ het buitenland verblijft."
           maxLength: 35
         adresRegel2:
           type: "string"
           title: "Adres regel buitenland 2"
           description: "Het tweede deel van het adres in het buitenland dat het SUBJECT\
             \ opgeeft bij vertrek naar het buitenland dan wel waar het SUBJECT in\
-            \ het buitenland verblijft. Element 13.40 Tweede deel van het adres in\
-            \ het buitenland, met uitzondering van het land."
+            \ het buitenland verblijft."
           maxLength: 35
         adresRegel3:
           type: "string"
           title: "Adres regel buitenland 3"
           description: "Het derde deel van het adres in het buitenland dat het SUBJECT\
             \ opgeeft bij vertrek naar het buitenland dan wel waar het SUBJECT in\
-            \ het buitenland verblijft. Element 13.50 Derde deel van het adres in\
-            \ het buitenland, met uitzondering van het land."
+            \ het buitenland verblijft."
           maxLength: 35
         land:
           $ref: "#/components/schemas/Land_tabel"
@@ -1603,7 +1559,7 @@ components:
         indicatieCurateleRegister:
           type: "boolean"
           title: "indicatieCurateleRegister"
-          description: "Element 33.10 Een aanduiding dat de ingeschrevene onder curatele\
+          description: "Een aanduiding dat de ingeschrevene onder curatele\
             \ is gesteld."
           example: "true"
         indicatieGezagMinderjarige:
@@ -1746,7 +1702,7 @@ components:
           maxLength: 2
     AdellijkeTitel_predikaat_tabel:
       type: "object"
-      description: "Een code, voorkomend in Tabel 38, Tabel Adellijke titel/predikaat,\
+      description: "Tabel Adellijke titel/predikaat,\
         \ die aangeeft welke titel of welk predikaat behoort tot de naam (bij adellijke\
         \ titel geslachtsnaam, bij predikaat voornaam)."
       properties:
@@ -1766,7 +1722,7 @@ components:
           $ref: "#/components/schemas/SoortAdellijkeTitel_predikaat_enum"
     Land_tabel:
       type: "object"
-      description: "Een waarde uit GBA Tabel34 Landentabel. Deze tabel bevat een opsomming\
+      description: " Deze tabel bevat een opsomming\
         \ van alle huidige en voormalige landen met hun codes, namen en geldigheidstermijnen."
       properties:
         code:
@@ -1785,7 +1741,7 @@ components:
           example: "Nederland"
     Gemeenten_tabel:
       type: "object"
-      description: "Gemeentetabel 33 conform LO GBA"
+      description: "Gemeentetabel"
       properties:
         code:
           type: "string"
@@ -1802,14 +1758,14 @@ components:
           example: "Tytsjerksteradiel"
     Nationaliteit_tabel:
       type: "object"
-      description: "Een waarde, opgenomen in Tabel 32, Nationaliteitentabel, die aangeeft\
+      description: "Een waarde die aangeeft\
         \ welke nationaliteit de ingeschrevene bezit."
       properties:
         code:
           type: "string"
           title: "Nationaliteitcode"
           description: "Een code die aangeeft welke nationaliteit de ingeschrevene\
-            \ bezit. Een code, opgenomen in Tabel 32, Nationaliteitentabel, die aangeeft\
+            \ bezit. Een code die aangeeft\
             \ welke nationaliteit de ingeschrevene bezit."
           maxLength: 4
         omschrijving:
@@ -1819,9 +1775,9 @@ components:
           maxLength: 42
     RedenVerkrijgingOpnemen_beeindigenNationaliteit_tabel:
       type: "object"
-      description: "Waarde uit GBA Tabel 37 Reden opnemen beëindigen nationaliteit.\
-        \ 63: Gegevens over de verkrijging van de Nederlandse nationaliteit dan wel\
-        \ het opnemen van een niet-Nederlandse nationaliteit. 64: Gegevens over het\
+      description: "Reden opnemen beëindigen nationaliteit.\
+        \ Gegevens over de verkrijging van de Nederlandse nationaliteit dan wel\
+        \ het opnemen van een niet-Nederlandse nationaliteit en gegevens over het\
         \ verlies van de Nederlandse nationaliteit dan wel het bee¨indigen van een\
         \ niet-Nederlandse nationaliteit"
       properties:
@@ -1841,7 +1797,7 @@ components:
           $ref: "#/components/schemas/SoortRedenWijzigingNationaliteit_enum"
     Verblijfstitel_tabel:
       type: "object"
-      description: "Een waarde uit GBA Tabel 56 Verblijfstiteltabel. Deze tabel is\
+      description: "Deze tabel is\
         \ een opsomming van de mogelijke verblijfsrechtelijke statussen met hun codes,\
         \ omschrijvingen en geldigheidstermijnen.`"
       properties:
@@ -1861,14 +1817,14 @@ components:
           example: "art. 9 van de Vreemdelingenwet"
     AutoriteitAfgifteNederlandsReisdocument_tabel:
       type: "object"
-      description: "Waarde uit GBA Tabel 49. Een opsomming van de autoriteiten die\
+      description: "Een opsomming van de autoriteiten die\
         \ een Nederlands reisdocument kunnen verstrekken met hun codes, omschrijvingen\
         \ en geldigheidstermijnen."
       properties:
         code:
           type: "string"
           title: "Autoriteit van afgifte"
-          description: "De code van de autoriteit van afgifte. zie tabel 49"
+          description: "De code van de autoriteit van afgifte."
           maxLength: 6
         omschrijving:
           type: "string"
@@ -1877,7 +1833,7 @@ components:
           maxLength: 80
     NederlandsReisdocument_tabel:
       type: "object"
-      description: "Tabel 48 conform GBA"
+      description: "Reisdocumententabel"
       properties:
         code:
           type: "string"
@@ -2101,7 +2057,7 @@ components:
       - "ouder1 en ouder2"
     Naamgebruik_enum:
       type: "string"
-      description: "61.10 Gegevens over de wijze van aanschrijving.:\n* `Eigen` -\
+      description: "Gegevens over de wijze van aanschrijving.:\n* `Eigen` -\
         \ E\n* `Partner` - P\n* `Partner en eigen` - V\n* `Eigen en partner` - N"
       enum:
       - "Eigen"
