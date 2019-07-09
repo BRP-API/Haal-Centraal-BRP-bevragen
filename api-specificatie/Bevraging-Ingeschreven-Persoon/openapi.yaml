@@ -207,7 +207,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/IngeschrevenPersoonCollectie'
+               $ref: '#/components/schemas/IngeschrevenPersoonCollectie'
         '400':
           $ref: "#/components/responses/400"
         '401':
@@ -393,7 +393,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/KindCollectie'
+               $ref: '#/components/schemas/KindCollectie'
         '401':
           $ref: "#/components/responses/401"
         '403':
@@ -710,34 +710,36 @@ components:
   schemas:
     IngeschrevenPersoon:
       type: "object"
-      description: "Categorie 01/51 Gegevens over de ingeschrevene."
+      description: "Gegevens over de ingeschreven persoon. \n* **datumEersteInschrijving**\
+        \ : Datum van eerste inschrijving in de GBA"
       properties:
         burgerservicenummer:
           type: "string"
           title: "Burgerservicenummer"
           description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet\
-            \ algemene bepalingen burgerservicenummer. Element 01.20 Het burgerservicenummer,\
-            \ bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer.\
-            \ Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4\
-            \ s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7)\
-            \ - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
+            \ algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt\
+            \ dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat\
+            \ van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door\
+            \ elf. Er moeten dus 9 cijfers aanwezig zijn."
           pattern: "^[0-9]{9}$"
           maxLength: 9
           minLength: 9
           example: "555555021"
-        geslachtsaanduiding:
-          $ref: "#/components/schemas/Geslacht_enum"
-        indicatieGeheim:
+        geheimhoudingPersoonsgegevens:
           type: "boolean"
           title: "Indicatie geheim"
           description: "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt\
-            \ mogen worden. Element 70.10 Een aanduiding die aangeeft dat gegevens\
-            \ wel of niet verstrekt mogen worden. “j(a)” of leeg"
-        redenOpschortingBijhouding:
-          $ref: "#/components/schemas/RedenOpschortingBijhouding_enum"
+            \ mogen worden. Indien true: op verzoek van deze persoon is het verstrekken\
+            \ van gegevens over deze persoon aan bepaalde derden niet toegestaan.\
+            \ “j(a)” of leeg"
+        geslachtsaanduiding:
+          $ref: "#/components/schemas/Geslacht_enum"
+        leeftijd:
+          type: "integer"
+          title: "leeftijd"
+          description: "Leeftijd in jaren op het moment van bevraging"
+          maximum: 999
         datumEersteInschrijvingGBA:
-          $ref: "#/components/schemas/Datum_onvolledig"
-        datumOpschortingBijhouding:
           $ref: "#/components/schemas/Datum_onvolledig"
         kiesrecht:
           $ref: "#/components/schemas/Kiesrecht"
@@ -751,6 +753,8 @@ components:
             $ref: "#/components/schemas/Nationaliteit"
         geboorte:
           $ref: "#/components/schemas/Geboorte"
+        opschortingBijhouding:
+          $ref: "#/components/schemas/OpschortingBijhouding"
         overlijden:
           $ref: "#/components/schemas/Overlijden"
         verblijfplaats:
@@ -777,17 +781,17 @@ components:
                 $ref: '#/components/schemas/IngeschrevenPersoon'
     Ouder:
       type: "object"
-      description: "02/52 of 03/53 Gegevens over de ouder van de ingeschrevene."
+      description: "Gegevens over de ouder van de ingeschrevene. \n* **datumIngangFamilierechtelijkeBetrekking**\
+        \ : De datum waarop de familierechtelijke betrekking is ontstaan."
       properties:
         burgerservicenummer:
           type: "string"
           title: "Burgerservicenummer"
           description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet\
-            \ algemene bepalingen burgerservicenummer. Element 01.20 Het burgerservicenummer,\
-            \ bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer.\
-            \ Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4\
-            \ s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7)\
-            \ - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
+            \ algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt\
+            \ dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat\
+            \ van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door\
+            \ elf. Er moeten dus 9 cijfers aanwezig zijn."
           pattern: "^[0-9]{9}$"
           maxLength: 9
           minLength: 9
@@ -820,21 +824,29 @@ components:
                 $ref: '#/components/schemas/Ouder'
     Kind:
       type: "object"
-      description: "09/59 Gegevens over een kind van de ingeschrevene."
+      description: "Gegevens over een kind van de ingeschrevene."
       properties:
         burgerservicenummer:
           type: "string"
           title: "Burgerservicenummer"
           description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet\
-            \ algemene bepalingen burgerservicenummer. Element 01.20 Het burgerservicenummer,\
-            \ bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer.\
-            \ Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4\
-            \ s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7)\
-            \ - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
+            \ algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt\
+            \ dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat\
+            \ van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door\
+            \ elf. Er moeten dus 9 cijfers aanwezig zijn."
           pattern: "^[0-9]{9}$"
           maxLength: 9
           minLength: 9
           example: "430422088"
+        leeftijd:
+          type: "integer"
+          title: "leeftijd"
+          description: "Leeftijd op het moment van bevragen"
+          maximum: 999
+        thuiswonend:
+          type: "boolean"
+          title: "thuiswonend"
+          description: "Indicatie of het kind thuiswonend is"
         inOnderzoek:
           $ref: "#/components/schemas/KindInOnderzoek"
         naam:
@@ -857,18 +869,17 @@ components:
                 $ref: '#/components/schemas/Kind'
     Partner:
       type: "object"
-      description: "05/55 Gegevens over een gesloten huwelijk/geregistreerd partnerschap\
+      description: "Gegevens over een gesloten huwelijk/geregistreerd partnerschap\
         \ van de ingeschrevene."
       properties:
         burgerservicenummer:
           type: "string"
           title: "Burgerservicenummer"
           description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet\
-            \ algemene bepalingen burgerservicenummer. Element 01.20 Het burgerservicenummer,\
-            \ bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer.\
-            \ Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4\
-            \ s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7)\
-            \ - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
+            \ algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt\
+            \ dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat\
+            \ van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door\
+            \ elf. Er moeten dus 9 cijfers aanwezig zijn."
           pattern: "^[0-9]{9}$"
           maxLength: 9
           minLength: 9
@@ -901,7 +912,14 @@ components:
                 $ref: '#/components/schemas/Partner'
     Reisdocument:
       type: "object"
-      description: "Een document dat vereist is voor reizen naar het buitenland"
+      description: "Een document dat vereist is voor reizen naar het buitenland \n\
+        * **datumEindeGeldigheid** : De datum waarop een Nederlands reisdocument,\
+        \ dat aan de ingeschrevene is verstrekt of waarin de ingeschrevene is bijgeschreven,\
+        \ zijn geldigheid verliest. \n* **datumInhoudingOfVermissing**: De datum waarop\
+        \ een Nederlands reisdocument is vermist, ingehouden, ingeleverd, dan wel\
+        \ van rechtswege is vervallen. \n* **datumUitgifte** : De datum waarop het\
+        \ Nederlands reisdocument is uitgegeven of de datum van bijschrijving van\
+        \ de ingeschrevene in een Nederlands reisdocument."
       properties:
         aanduidingInhoudingOfVermissing:
           $ref: "#/components/schemas/AanduidingInhoudingVermissingReisdocument_enum"
@@ -915,16 +933,6 @@ components:
             \ Standaardwaarde indien onbekend."
           maxLength: 9
           example: "546376728"
-        signaleringVerstrekkenReisdocument:
-          type: "integer"
-          title: "Signalering Nederlands reisdocument"
-          description: "Een aanduiding dat aan de ingeschrevene geen reisdocument\
-            \ mag worden verstrekt Element 36.10 Een aanduiding dat aan de ingeschrevene\
-            \ geen reisdocument mag worden verstrekt. Als dit attribuut voorkomt,\
-            \ dan is de waarde '1' = belemmering verstrekking Nederlands reisdocument."
-          minimum: 1
-          maximum: 1
-          example: "1"
         autoriteitAfgifte:
           $ref: "#/components/schemas/AutoriteitAfgifteNederlandsReisdocument_tabel"
         datumEindeGeldigheid:
@@ -941,16 +949,16 @@ components:
           $ref: "#/components/schemas/Reisdocument_links"
     Naam:
       type: "object"
-      description: "02 + 61 Gegevens over de naam van de NATUURLIJK PERSOON"
+      description: "Gegevens over de naam van de NATUURLIJK PERSOON"
       properties:
         geslachtsnaam:
           type: "string"
           title: "Geslachtsnaam"
           description: "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels\
-            \ en adellijke titel/predikaat zijn afgesplitst. Element 02.40 De (geslachts)naam\
-            \ waarvan de eventueel aanwezige voorvoegsels (tabel 36) en adellijke\
-            \ titel/predikaat (tabel 38) zijn afgesplitst. Standaardwaarde . Mogelijke\
-            \ waarden De geslachtsnaam. Standaardwaarde indien onbekend."
+            \ en adellijke titel/predikaat zijn afgesplitst. De (geslachts)naam waarvan\
+            \ de eventueel aanwezige voorvoegsels (tabel 36) en adellijke titel/predikaat\
+            \ (tabel 38) zijn afgesplitst. Standaardwaarde . Mogelijke waarden De\
+            \ geslachtsnaam. Standaardwaarde indien onbekend."
           maxLength: 200
           example: "Vries"
         voorletters:
@@ -963,8 +971,8 @@ components:
           type: "string"
           title: "Voornamen"
           description: "De verzameling namen die, gescheiden door spaties, aan de\
-            \ geslachtsnaam voorafgaat. Element 02.10 De verzameling namen die, gescheiden\
-            \ door spaties, aan de geslachtsnaam voorafgaat."
+            \ geslachtsnaam voorafgaat. De verzameling namen die, gescheiden door\
+            \ spaties, aan de geslachtsnaam voorafgaat."
           maxLength: 200
           example: "Pieter Jan"
         adellijkeTitel_predikaat:
@@ -973,8 +981,7 @@ components:
           type: "string"
           title: "Voorvoegsel"
           description: "Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel\
-            \ en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam.\
-            \ Element 02.30"
+            \ en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam."
           maxLength: 10
           example: "de"
         inOnderzoek:
@@ -1030,9 +1037,12 @@ components:
           $ref: "#/components/schemas/Datum_onvolledig"
     Geboorte:
       type: "object"
-      description: "Groep 03 Gegevens over de geboorte van respectievelijk de persoon,\
-        \ de ouder, de echtgenoot/geregistreerd partner, de eerdere echtgenoot/geregistreerd\
-        \ partner of het kind."
+      description: "Gegevens over de geboorte van respectievelijk de persoon, de ouder,\
+        \ de echtgenoot/geregistreerd partner, de eerdere echtgenoot/geregistreerd\
+        \ partner of het kind. \n* **datum** : Datum waarop de persoon is geboren.\
+        \ \n* **land** : Land waar de persoon is geboren \n* **plaats** : De plaats\
+        \ waar een persoon is geboren. Voor een plaats buiten Nederland is gemeentecode=1999\
+        \ (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding."
       properties:
         datum:
           $ref: "#/components/schemas/Datum_onvolledig"
@@ -1066,7 +1076,7 @@ components:
           $ref: "#/components/schemas/Datum_onvolledig"
     Kiesrecht:
       type: "object"
-      description: "Categorie 13 Gegevens over het kiesrecht van de ingeschrevene."
+      description: "Gegevens over het kiesrecht van de ingeschrevene."
       properties:
         aanduidingEuropeesKiesrecht:
           $ref: "#/components/schemas/AanduidingEuropeesKiesrecht_enum"
@@ -1119,7 +1129,8 @@ components:
           $ref: "#/components/schemas/Datum_onvolledig"
     Nationaliteit:
       type: "object"
-      description: "04/54 Gegevens over een nationaliteit van de ingeschrevene."
+      description: "Gegevens over een nationaliteit van de ingeschrevene. \n* **datumIngangGeldigheid**\
+        \ : De datum waarop de gegevens over deze nationaliteit geldig zijn geworden."
       properties:
         aanduidingBijzonderNederlanderschap:
           $ref: "#/components/schemas/AanduidingBijzonderNederlanderschap_enum"
@@ -1154,9 +1165,25 @@ components:
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
           $ref: "#/components/schemas/Datum_onvolledig"
+    OpschortingBijhouding:
+      type: "object"
+      description: "\n* **reden**: Een aanduiding van de reden waarom de bijhouding\
+        \ van de PL is opgeschort. \n* **datum**: De datum waarop de bijhouding van\
+        \ de persoonslijst is gestaakt. \n* Indien er wel een redenOpschortingBijhouding\
+        \ is maar er wordt geen datumOpschortingBijhouding geleverd, dan is dat datumOpschortingBijhouding\
+        \ onbekend."
+      properties:
+        reden:
+          $ref: "#/components/schemas/RedenOpschortingBijhouding_enum"
+        datum:
+          $ref: "#/components/schemas/Datum_onvolledig"
     Overlijden:
       type: "object"
-      description: "06/56 Gegevens over het overlijden van de ingeschrevene."
+      description: "Gegevens over het overlijden van de ingeschreven persoon. \n*\
+        \ **datum** : Datum waarop de persoon is overleden. \n* **land** : Land waar\
+        \ de persoon is overleden \n* **plaats** : De plaats waar een persoon is overleden.\
+        \ Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam\
+        \ de buitenlandse plaatsnaam of aanduiding."
       properties:
         indicatieOverleden:
           type: "boolean"
@@ -1232,7 +1259,12 @@ components:
     AangaanHuwelijk_Partnerschap:
       type: "object"
       description: "Gegevens over het gesloten huwelijk of het aangegane geregistreerd\
-        \ partnerschap."
+        \ partnerschap. \n* **datum** : De datum waarop het huwelijk is voltrokken\
+        \ of het partnerschap is aangegaan. \n* **land** : Het land waar het huwelijk\
+        \ is voltrokken of het partnerschap is aangegaan. \n* **plaats** : Als de\
+        \ plaats een gemeente in Nederland is dan gewoon de gemeentecode + gemeentenaam\
+        \ . Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam\
+        \ de buitenlandse plaatsnaam of aanduiding."
       properties:
         datum:
           $ref: "#/components/schemas/Datum_onvolledig"
@@ -1267,7 +1299,17 @@ components:
     Verblijfplaats:
       type: "object"
       description: "08/58 Gegevens over het verblijf en adres van de ingeschreven\
-        \ persoon. Dit is het adres waarop een persoon is ingeschreven."
+        \ persoon. Dit is het adres waarop een persoon is ingeschreven. \n* **datumAanvangAdreshuishouding**\
+        \ : De datum van aangifte of ambtshalve melding van verblijf en adres. \n\
+        * **datumIngangGeldigheid** : Datum waarop de gegevens over de verblijfplaats\
+        \ geldig zijn geworden. \n* **datumInschrijvingInGemeente**: Bij inschrijving\
+        \ op grond van een aangifte door de burger van zijn vestiging in een (volgende)\
+        \ gemeente is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte\
+        \ is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop\
+        \ de betrokkene schriftelijk van het voornemen van ambtshalve opneming mededeling\
+        \ is gedaan. \n* **datumVestigingInNederland** : Datum van inschrijving in\
+        \ Nederland \n* **landVanWaarIngeschreven** : Het land waar de ingeschreven\
+        \ persoon verblijf hield voor (her)vestiging in Nederland."
       properties:
         aanduidingBijHuisnummer:
           $ref: "#/components/schemas/AanduidingBijHuisnummer_enum"
@@ -1556,7 +1598,7 @@ components:
           $ref: "#/components/schemas/Datum_onvolledig"
     Gezagsverhouding:
       type: "object"
-      description: "Categorie 11 Gegevens betreffende het gezag over de ingeschrevene."
+      description: "Gegevens betreffende het gezag over de ingeschrevene."
       properties:
         indicatieCurateleRegister:
           type: "boolean"
@@ -1588,7 +1630,10 @@ components:
           $ref: "#/components/schemas/Datum_onvolledig"
     Verblijfstitel:
       type: "object"
-      description: "10/60 Gegevens over de verblijfsrechtelijke status van de ingeschrevene."
+      description: "Gegevens over de verblijfsrechtelijke status van de ingeschrevene.\
+        \ \n* **datumEindeGeldigheid**: Datum waarop de geldigheid van de gegevens\
+        \ over de verblijfstitel is beeindigd. \n* **datumIngangGeldigheid**: Datum\
+        \ waarop de gegevens over de verblijfstitel geldig zijn geworden."
       properties:
         aanduiding:
           $ref: "#/components/schemas/Verblijfstitel_tabel"
@@ -1655,11 +1700,6 @@ components:
         reisdocumentnummer:
           type: "boolean"
           title: "reisdocumentnummer"
-          description: "Indicator die aangeeft of het corresponderende gegeven voor\
-            \ deze persoon in onderzoek is."
-        signaleringVerstrekkenReisdocument:
-          type: "boolean"
-          title: "signaleringVerstrekkenReisdocument"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         soortReisdocument:
@@ -1733,7 +1773,7 @@ components:
           type: "string"
           title: "Landcode"
           description: "De code, behorende bij de landnaam, opgenomen in de Landentabel\
-            \ van de GBA. 0000 en verder alleen natuurlijke getallen zonder voorloopnullen"
+            \ van de GBA."
           maxLength: 4
           example: "6030"
         naam:
@@ -2009,126 +2049,120 @@ components:
       type: "string"
       description: "De mogelijke waarden van de aanduiding die aangeeft of de persoon\
         \ een oproep moet ontvangen voor verkiezingen voor het Europees parlement.:\n\
-        * `1` - persoon is uitgesloten\n* `2` - persoon ontvangt oproep"
+        * `persoon is uitgesloten` - 1\n* `persoon ontvangt oproep` - 2"
       enum:
-      - "1"
-      - "2"
+      - "persoon is uitgesloten"
+      - "persoon ontvangt oproep"
     AanduidingInhoudingVermissingReisdocument_enum:
       type: "string"
       description: "De mogelijke waarden van de aanduiding van inhouding of vermissing\
         \ van een Nederlands reisdocument. Zie logisch ontwerp BRP bij de stamtabellen:\n\
-        * `I` - Ingehouden, ingeleverd\n* `V` - Vermist\n* `R` - Rechtswege\n* `.`\
-        \ - Onbekend"
+        * `Ingehouden of ingeleverd` - I\n* `Vermist` - V\n* `Rechtswege` - R"
       enum:
-      - "I"
-      - "V"
-      - "R"
-      - "."
+      - "Ingehouden of ingeleverd"
+      - "Vermist"
+      - "Rechtswege"
     AanduidingBijzonderNederlanderschap_enum:
       type: "string"
-      description: "De aanduiding van het bijzonder Nederlanderschap:\n* `B` - behandeld\
-        \ als Nederlander\n* `V` - vastgesteld niet-Nederlander"
+      description: "De aanduiding van het bijzonder Nederlanderschap:\n* `behandeld\
+        \ als Nederlander` - B\n* `vastgesteld niet-Nederlander` - V"
       enum:
-      - "B"
-      - "V"
+      - "behandeld als Nederlander"
+      - "vastgesteld niet-Nederlander"
     AanduidingBijHuisnummer_enum:
       type: "string"
       description: "De aanduiding die wordt gebruikt voor adressen die niet zijn voorzien\
-        \ van de gebruikelijke straatnaam en huisnummeraanduidingen.:\n* `to` - tegenover\n\
-        * `by` - bij"
+        \ van de gebruikelijke straatnaam en huisnummeraanduidingen.:\n* `tegenover`\
+        \ - to\n* `bij` - by"
       enum:
-      - "to"
-      - "by"
+      - "tegenover"
+      - "bij"
     Geslacht_enum:
       type: "string"
       description: "Een aanduiding die aangeeft dat de ingeschrevene een man of een\
-        \ vrouw is, of dat het geslacht (nog) onbekend is:\n* `M` - Man\n* `V` - Vrouw\n\
-        * `O` - Onbekend"
+        \ vrouw is, of dat het geslacht (nog) onbekend is:\n* `Man` - M\n* `Vrouw`\
+        \ - V\n* `Onbekend` - O"
       enum:
-      - "M"
-      - "V"
-      - "O"
+      - "Man"
+      - "Vrouw"
+      - "Onbekend"
     IndicatieGezagMinderjarige_enum:
       type: "string"
       description: "Een aanduiding die aangeeft wie belast is met het gezag over de\
-        \ minderjarige ingeschrevene.:\n* `1` - ouder1 heeft het gezag\n* `2` - ouder2\
-        \ heeft het gezag\n* `D` - een of meer derden hebben het gezag\n* `1D` - ouder1\
-        \ + een derde hebben het gezag\n* `2D` - ouder2 + een derde hebben het gezag\n\
-        * `12` - ouder1 + ouder2 hebben het gezag"
+        \ minderjarige ingeschrevene.:\n* `ouder1` - 1\n* `ouder2` - 2\n* `derden`\
+        \ - D\n* `ouder1 en derde` - 1D\n* `ouder2 en derde` - 2D\n* `ouder1 en ouder2`\
+        \ - 12"
       enum:
-      - "1"
-      - "2"
-      - "D"
-      - "1D"
-      - "2D"
-      - "12"
+      - "ouder1"
+      - "ouder2"
+      - "derden"
+      - "ouder1 en derde"
+      - "ouder2 en derde"
+      - "ouder1 en ouder2"
     Naamgebruik_enum:
       type: "string"
-      description: "61.10 Gegevens over de wijze van aanschrijving.:\n* `E` - Eigen\n\
-        * `P` - Partner\n* `V` - Partner, eigen\n* `N` - Eigen, partner"
+      description: "61.10 Gegevens over de wijze van aanschrijving.:\n* `Eigen` -\
+        \ E\n* `Partner` - P\n* `Partner en eigen` - V\n* `Eigen en partner` - N"
       enum:
-      - "E"
-      - "P"
-      - "V"
-      - "N"
+      - "Eigen"
+      - "Partner"
+      - "Partner en eigen"
+      - "Eigen en partner"
     OuderAanduiding_enum:
       type: "string"
-      description: "Aanduiding om welke ouder het gaat volgens de GBA:\n* `1` - Ouder1\n\
-        * `2` - Ouder2"
+      description: "Aanduiding om welke ouder het gaat volgens de GBA:\n* `Ouder1`\
+        \ - 1\n* `Ouder2` - 2"
       enum:
-      - "1"
-      - "2"
+      - "Ouder1"
+      - "Ouder2"
     RedenOpschortingBijhouding_enum:
       type: "string"
-      description: "Redenen voor opschorting van de bijhouding. Indien er wel een\
-        \ redenOpschortingBijhouding is maar er wordt geen datumOpschortingBijhouding\
-        \ geleverd, dan is dat datumOpschortingBijhouding onbekend.:\n* `O` - overlijden\n\
-        * `E` - emigratie\n* `M` - Ministerieel besluit\n* `R` - PL aangelegd in de\
-        \ RNI\n* `F` - fout\n* `.` - standaardwaarde indien onbekend"
+      description: "Redenen voor opschorting van de bijhouding.:\n* `overlijden` -\
+        \ O\n* `emigratie` - E\n* `Ministerieel besluit` - M\n* `PL aangelegd in de\
+        \ RNI` - R\n* `fout` - F"
       enum:
-      - "O"
-      - "E"
-      - "M"
-      - "R"
-      - "F"
-      - "."
+      - "overlijden"
+      - "emigratie"
+      - "Ministerieel besluit"
+      - "PL aangelegd in de RNI"
+      - "fout"
     SoortAdres_enum:
       type: "string"
-      description: "Aanduiding van het soort adres.:\n* `W` - Woonadres\n* `B` - Briefadres"
+      description: "Aanduiding van het soort adres.:\n* `Woonadres` - W\n* `Briefadres`\
+        \ - B"
       enum:
-      - "W"
-      - "B"
+      - "Woonadres"
+      - "Briefadres"
     SoortRedenWijzigingNationaliteit_enum:
       type: "string"
       description: "De soort van de reden van de wijziging van de Nationaliteitgegevens:\n\
-        * `VK` - verkrijging\n* `OP` - opname\n* `VL` - verlies\n* `BE` - beëindiging"
+        * `verkrijging` - VK\n* `opname` - OP\n* `verlies` - VL\n* `beëindiging` -\
+        \ BE"
       enum:
-      - "VK"
-      - "OP"
-      - "VL"
-      - "BE"
+      - "verkrijging"
+      - "opname"
+      - "verlies"
+      - "beëindiging"
     AanduidingUitsluitingKiesrecht_enum:
       type: "string"
-      description: "Aanduiding dat de persoon is uitgesloten van kiesrecht:\n* `A`\
-        \ - uitgesloten van kiesrecht."
+      description: "Aanduiding dat de persoon is uitgesloten van kiesrecht:\n* `uitgesloten\
+        \ van kiesrecht.` - A"
       enum:
-      - "A"
+      - "uitgesloten van kiesrecht."
     SoortVerbintenis_enum:
       type: "string"
       description: "Soort verbintenis van een bij de burgerlijke stand ingeschreven\
-        \ verbintenis:\n* `H` - huwelijk\n* `P` - geregistreerd partnerschap\n* `.`\
-        \ - standaardwaarde indien onbekend"
+        \ verbintenis:\n* `huwelijk` - H\n* `geregistreerd partnerschap` - P"
       enum:
-      - "H"
-      - "P"
-      - "."
+      - "huwelijk"
+      - "geregistreerd partnerschap"
     SoortAdellijkeTitel_predikaat_enum:
       type: "string"
-      description: "Geeft aan of het een titel of een predikaat betreft.:\n* `T` -\
-        \ titel\n* `P` - predikaat"
+      description: "Geeft aan of het een titel of een predikaat betreft.:\n* `titel`\
+        \ - T\n* `predikaat` - P"
       enum:
-      - "T"
-      - "P"
+      - "titel"
+      - "predikaat"
   responses:
     '400':
       description: Bad Request
@@ -2238,3 +2272,4 @@ components:
         application/problem+json:
           schema:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+
