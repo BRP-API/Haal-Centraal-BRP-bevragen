@@ -41,7 +41,16 @@ Functionaliteit: Sommige datum-attributen kunnen een onvolledige datum bevatten
     Dan is in het antwoord geboorte.datum niet aanwezig
 
   Scenario: Er is geen overlijdensdatum bekend
-    Gegeven de registratie ingeschreven persoon 999999321 kent geen overlijdensdatum (00000000)
+    Gegeven de registratie ingeschreven persoon 999999321 heeft een volledig onbekende overlijdensdatum (00000000)
     Als de ingeschreven persoon met burgerservicenummer 999999321 wordt geraadpleegd
     Dan is in het antwoord overlijden.datum niet aanwezig
     En heeft attribuut overlijden.indicatieOverleden de waarde true
+
+    Gegeven de registratie ingeschreven persoon 999992077 kent een overlijdensdatum (20151001)
+    Als de ingeschreven persoon met burgerservicenummer 999992077 wordt geraadpleegd
+    Dan heeft in het antwoord overlijden.datum.datum de waarde 2015-10-01
+    En heeft attribuut overlijden.indicatieOverleden de waarde true
+
+    Gegeven de registratie ingeschreven persoon 999993653 kent geen overlijdensdatum
+    Als de ingeschreven persoon met burgerservicenummer 999993653 wordt geraadpleegd
+    Dan is in het antwoord overlijden niet aanwezig
