@@ -129,7 +129,7 @@ paths:
             example: Dirk
         - in: query
           name: verblijfplaats__gemeentevaninschrijving
-          description: "Een code die aangeeft in welke gemeente de PL zich bevindt of de gemeente waarnaar de PL is uitgeschreven of de gemeente waar de PL voor de eerste keer is opgenomen. De standaardwaarde (0000) is geen geldige inhoud voor de query-parameter."
+          description: "Een code die aangeeft in welke gemeente de PL zich bevindt of de gemeente waarnaar de PL is uitgeschreven of de gemeente waar de PL voor de eerste keer is opgenomen. De waarde (0000) is geen geldige inhoud voor de query-parameter."
           required: false
           schema:
             type: string
