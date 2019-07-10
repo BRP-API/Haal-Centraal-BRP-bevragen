@@ -731,8 +731,7 @@ components:
           title: "Indicatie geheim"
           description: "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt\
             \ mogen worden. Indien true: op verzoek van deze persoon is het verstrekken\
-            \ van gegevens over deze persoon aan bepaalde derden niet toegestaan.\
-            \ “j(a)” of leeg"
+            \ van gegevens over deze persoon aan bepaalde derden niet toegestaan."
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
         leeftijd:
