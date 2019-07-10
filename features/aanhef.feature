@@ -37,6 +37,8 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
   | Prinses                  | Hoogheid              |
   | Ridder                   | Hoogwelgeboren heer   |
 
+  Als betrokkene de geslachtsnaam van de echtgenoot/partner gebruikt zonder de eigen geslachtsnaam, Dan wordt de adellijke titel dan wel het predicaat niet gebruikt. De persoon wordt dan aangesproken met “Geachte mevrouw” of “Geachte heer”.
+
   Abstract Scenario: De aanhef wordt samengesteld op basis van geslachtsaanduiding en naamgegevens van de persoon en de partner
     Als ingeschreven persoon wordt geraadpleegd
     Dan heeft de gevonden ingeschrevenpersoon naam.aanhef=<aanhef>
@@ -65,15 +67,15 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
       | adellijkeTitel_predikaat | aanduidingNaamgebruik |samenstelling aanhef | aanschrijfwijze                             | aanhef                                           |
       | Baron                    | Eigen                 | GA VV GN            | H.W. baron van den Aedel                    | Hoogwelgeboren heer van den Aedel                |
       | Barones                  | Partner na eigen      | GA VV GN-VP GP      | W. barones van den Aedel-van der Veen       | Hoogwelgeboren vrouwe van den Aedel-van der Veen |
-      | Graaf                    | Partner               | GA VP GP            | F. van der Veen                             | Hooggeboren heer van der Veen                    |
+      | Graaf                    | Partner               | GA VP GP            | F. van der Veen                             | Geachte heer van der Veen                    |
       | Gravin                   | Partner voor eigen    | GA VP GP-AT VV GN   | E.L. van der Veen-gravin van den Aedel      | Hooggeboren vrouwe van der Veen-van den Aedel    |
       | Hertog                   | Eigen                 | GA VV GN            | F.W. hertog van Aedel                       | Hoogwelgeboren heer van den Aedel                |
       | Hertogin                 | Partner na eigen      | GA VV GN-VP GP      | C.A. hertogin van den Aedel-van der Veen    | Hoogwelgeboren vrouwe van den Aedel-van der Veen |
-      | Markies                  | Partner               | GA VP GP            | G.K.A. markies van der Veen                 | Hoogwelgeboren heer van der Veen                 |
+      | Markies                  | Partner               | GA VP GP            | G.K.A. markies van der Veen                 | Geachte heer van der Veen                 |
       | Markiezin                | Partner voor eigen    | GA VP GP-AT VV GN   | Y.L.C. van der Veen-markiezin van den Aedel | Hoogwelgeboren vrouwe van der Veen-van den Aedel |
       | Jonkheer                 | Eigen                 | GA VV GN            | Jonkheer T. van Hoogh                       | Hoogwelgeboren heer van Hoogh                    |
       | Jonkvrouw                | Partner na eigen      | GA VV GN-VP GP      | Jonkvrouw C. van Hoogh-van der Berg         | Hoogwelgeboren vrouwe van Hoogh-van der Berg     |
-      | Jonkheer                 | Partner               | GA VP GP            | B. van der Berg                             | Hoogwelgeboren heer van der Berg                 |
+      | Jonkheer                 | Partner               | GA VP GP            | B. van der Berg                             | Geachte heer van der Berg                 |
       | Jonkvrouw                | Partner voor eigen    | GA VP GP-VV GN      | E. van der Berg-van Hoogh                   | Hoogwelgeboren vrouwe van der Berg-van Hoogh     |
       | Prins                    | Eigen                 | GA VV GN            | O.B.B. prins van Roodt de Wit Blaauw        | Hoogheid van Roodt de Wit Blaauw                 |
       | Prinses                  | Eigen                 | GA VV GN            | E.M.V. prinses van Roodt de Wit Blaauw      | Hoogheid van Roodt de Wit Blaauw                 |

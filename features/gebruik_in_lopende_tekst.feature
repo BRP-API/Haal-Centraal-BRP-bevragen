@@ -23,7 +23,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistent naamgebruik in een 
   Wanneer de persoon geen adellijke titel of predikaat heeft, wordt de gebruikInLopendeTekst samengesteld met een geslachtsaanduiding ("mevrouw", "de heer").
 
   Op basis van attribuut adellijkeTitel_predikaat wordt het de adelijke titel of het predikaat toegevoegd in gebruikInLopendeTekst.
-    Als de betrokkene beschikt over een adellijke titel of predikaat, Dan wordt deze geplaatst vóór het voorvoegsel van de geslachtsnaam.
+    Als de betrokkene beschikt over een adellijke titel of predikaat, Dan wordt deze geplaatst vóór het voorvoegsel van de eigen geslachtsnaam.
     Als de betrokkene beschikt over een adellijke titel of predikaat, Dan wordt deze opgenomen zoals genoemd in kolom "Omschrijving" in GBA tabel 38 "Adellijke titel/predikaat", geschreven in kleine letters.
     Als de echtgenoot/partner beschikt over een predikaat of adellijke titel, Dan wordt bij gebruik van de achternaam van de echtgenoot/partner het predikaat of de titel van de echtgenoot/partner niet meegenomen.
     Als betrokkene zelf beschikt over een adellijke titel, En betrokkene gebruikt de achternaam van de echtgenoot/partner gevolgd door de eigen naam (aanduidingAanschrijving="V"), Dan wordt de titel van betrokkene voor de eigen achternaam geplaatst.
