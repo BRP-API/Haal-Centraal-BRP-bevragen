@@ -1,0 +1,311 @@
+openapi: 3.0.0
+servers:
+  - description: "SwaggerHub API Auto Mocking"
+    url: https://virtserver.swaggerhub.com/VNGRealisatie/api/landelijke_tabellen/v1
+  - description: "Referentie-implementatie"
+    url: https://www.voorbeeldgemeente.nl/api/landelijke_tabellen/v1
+info:
+  title: Landelijke tabellen
+  description: "Koppelvlak voor het ontsluiten van landelijke tabellen die nu als pdf op de website van BZK worden gepubliceerd."
+  version: "1.0"
+  contact:
+    url: https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen
+  license:
+    name: European Union Public License, version 1.2 (EUPL-1.2)
+    url: https://eupl.eu/1.2/nl/
+paths:
+  /tabellen/gemeenten/{code}:
+    get:
+      operationId: getGemeente
+      description: "Het ophalen van de gegevens van de landelijke gemeententabel (Tabel 33)"
+      parameters: 
+        - in: path
+          name: code
+          description: "De code, behorende bij de gemeentenaam opgenomen in de Gemeentetabel van de GBA."
+          required: true
+          schema:
+            type: string
+            maxLength: 4
+            minLength: 4
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/warning"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Gemeente'
+        '401':
+          $ref: "#/components/responses/401"
+        '403':
+          $ref: "#/components/responses/403"
+        '404':
+          $ref: "#/components/responses/404"
+        '406':
+          $ref: "#/components/responses/406"
+        '409':
+          $ref: "#/components/responses/409"
+        '410':
+          $ref: "#/components/responses/410"
+        '415':
+          $ref: "#/components/responses/415"
+        '429':
+          $ref: "#/components/responses/429"
+        '500':
+          $ref: "#/components/responses/500"
+        '503':
+          $ref: "#/components/responses/503"
+        'default':
+          $ref: "#/components/responses/default"
+      tags: 
+      - Tabellen
+  /tabellen/adellijketitels_predikaten/{code}:
+    get:
+      operationId: getAdellijketitel_predikaat
+      description: "Het ophalen van de gegevens van de landelijke tabel Adellijke titel/predikaat (Tabel 38)"
+      parameters:
+        - in: path
+          name: code
+          description: "De code van de Adellijke titel/predikaat"
+          required: true
+          schema:
+            type: string
+            maxLength: 4
+            minLength: 4
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/warning"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/AdellijkeTitel_predikaat'
+        '401':
+          $ref: "#/components/responses/401"
+        '403':
+          $ref: "#/components/responses/403"
+        '404':
+          $ref: "#/components/responses/404"
+        '406':
+          $ref: "#/components/responses/406"
+        '409':
+          $ref: "#/components/responses/409"
+        '410':
+          $ref: "#/components/responses/410"
+        '415':
+          $ref: "#/components/responses/415"
+        '429':
+          $ref: "#/components/responses/429"
+        '500':
+          $ref: "#/components/responses/500"
+        '503':
+          $ref: "#/components/responses/503"
+        'default':
+          $ref: "#/components/responses/default"
+      tags: 
+      - Tabellen
+components:
+  schemas:
+    Gemeente:
+      type: "object"
+      description: "Een opsomming van alle huidige en voormalige landen met hun codes,\
+        \ namen en geldigheidstermijnen conform de landelijke tabel Gemeenten Tabel\
+        \ 33"
+      properties:
+        code:
+          type: "string"
+          title: "code"
+          description: "De code, behorende bij de gemeentenaam opgenomen in de Gemeentetabel\
+            \ van de GBA."
+          maxLength: 4
+          example: "0737"
+        datumEinde:
+          type: "string"
+          title: "datumEinde"
+          description: "Einddatum van de geldigheid van de gegevens."
+          format: "date"
+        datumIngang:
+          type: "string"
+          title: "datumIngang"
+          description: "Begindatum van de geldigheid van de gegevens"
+          format: "date"
+        nieuweCode:
+          type: "string"
+          title: "nieuweCode"
+          description: "Code van de nieuwegevormde gemeente waarin deze gemeente is\
+            \ overgegaan."
+          maxLength: 4
+        omschrijving:
+          type: "string"
+          title: "omschrijving"
+          description: ""
+          maxLength: 80
+          example: "Tytsjerksteradiel"
+        _links:
+          $ref: "#/components/schemas/Gemeente_links"
+    AdellijkeTitel_predikaat:
+      type: "object"
+      description: ""
+      properties:
+        code:
+          type: "string"
+          title: "code"
+          description: "De code van de Adellijke titel/predikaat"
+          maxLength: 2
+          example: "G"
+        omschrijving:
+          type: "string"
+          title: "omschrijving"
+          description: ""
+          example: "Graaf"
+        soort:
+          $ref: "#/components/schemas/AdellijketitePredikaat_enum"
+        _links:
+          $ref: "#/components/schemas/AdellijkeTitel_predikaat_links"
+    Gemeente_links:
+      type: "object"
+      properties:
+        self:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
+    AdellijkeTitel_predikaat_links:
+      type: "object"
+      properties:
+        self:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
+    AdellijketitePredikaat_enum:
+      type: "string"
+      description: "Een aanduiding die aangeeft dat de ingeschrevene een man of een\
+        \ vrouw is, of dat het geslacht (nog) onbekend is:\n* `titel` - titel\n* `predikaat`\
+        \ - predikaat"
+      enum:
+      - "titel"
+      - "predikaat"
+  responses:
+    '400':
+      description: Bad Request
+      headers:
+        api-version:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+      content:
+        application/problem+json:
+          schema:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/ValidatieFoutbericht"
+    '401':
+      description: Unauthorized
+      headers:
+        api-version:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+      content:
+        application/problem+json:
+          schema:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht401"
+    '403':
+      description: Forbidden
+      headers:
+        api-version:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+      content:
+        application/problem+json:
+          schema:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht403"
+    '404':
+      description: Not Found
+      headers:
+        api-version:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+      content:
+        application/problem+json:
+          schema:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht404"
+    '406':
+      description: Not Acceptable
+      headers:
+        api-version:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+      content:
+        application/problem+json:
+          schema:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht406"
+    '409':
+      description: Conflict
+      headers:
+        api-version:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+      content:
+        application/problem+json:
+          schema:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht409"
+    '410':
+      description: Gone
+      headers:
+        api-version:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+      content:
+        application/problem+json:
+          schema:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht410"
+    '415':
+      description: Unsupported Media Type
+      headers:
+        api-version:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+      content:
+        application/problem+json:
+          schema:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht415"
+    '429':
+      description: Too Many Requests
+      headers:
+        api-version:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+      content:
+        application/problem+json:
+          schema:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht429"
+    '500':
+      description: Internal Server Error
+      headers:
+        api-version:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+      content:
+        application/problem+json:
+          schema:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht500"
+    '503':
+      description: Service Unavailable
+      headers:
+        api-version:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+      content:
+        application/problem+json:
+          schema:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht503"
+    'default':
+      description: Er is een onverwachte fout opgetreden.
+      headers:
+        api-version:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+      content:
+        application/problem+json:
+          schema:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
