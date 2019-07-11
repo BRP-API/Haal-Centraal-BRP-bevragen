@@ -7,7 +7,7 @@ servers:
 info:
   title: Bevragingen ingeschreven personen
   description: "API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. Ook de gegevens over reisdocumenten worden via deze API ontsloten. Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting."
-  version: "1.0"
+  version: "1.0.0"
   contact:
     url: https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen
   license:
@@ -208,7 +208,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/IngeschrevenPersoonCollectie'
+                $ref: '#/components/schemas/IngeschrevenPersoonHalCollectie'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IngeschrevenPersoonPlainCollectie'
         '400':
           $ref: "#/components/responses/400"
         '401':
@@ -275,7 +278,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/IngeschrevenPersoon'
+                $ref: '#/components/schemas/IngeschrevenPersoonHal'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IngeschrevenPersoonPlain'
         '400':
           $ref: "#/components/responses/400"
         '401':
@@ -339,7 +345,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Kind'
+                $ref: '#/components/schemas/KindHal'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KindPlain'
         '401':
           $ref: "#/components/responses/401"
         '403':
@@ -394,7 +403,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/KindCollectie'
+                $ref: '#/components/schemas/KindHalCollectie'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KindPlainCollectie'
         '401':
           $ref: "#/components/responses/401"
         '403':
@@ -456,7 +468,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Ouder'
+                $ref: '#/components/schemas/OuderHal'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OuderPlain'
         '401':
           $ref: "#/components/responses/401"
         '403':
@@ -511,7 +526,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/OuderCollectie'
+                $ref: '#/components/schemas/OuderHalCollectie'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OuderPlainCollectie'
         '401':
           $ref: "#/components/responses/401"
         '403':
@@ -573,7 +591,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Partner'
+                $ref: '#/components/schemas/PartnerHal'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerPlain'
         '401':
           $ref: "#/components/responses/401"
         '403':
@@ -628,7 +649,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/PartnerCollectie'
+                $ref: '#/components/schemas/PartnerHalCollectie'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerPlainCollectie'
         '401':
           $ref: "#/components/responses/401"
         '403':
@@ -682,7 +706,10 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Reisdocument'
+                $ref: '#/components/schemas/ReisdocumentHal'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReisdocumentPlain'
         '401':
           $ref: "#/components/responses/401"
         '403':
@@ -763,11 +790,7 @@ components:
           $ref: "#/components/schemas/Gezagsverhouding"
         verblijfstitel:
           $ref: "#/components/schemas/Verblijfstitel"
-        _links:
-          $ref: "#/components/schemas/IngeschrevenPersoon_links"
-        _embedded:
-          $ref: "#/components/schemas/IngeschrevenPersoon_embedded"
-    IngeschrevenPersoonCollectie:
+    IngeschrevenPersoonHalCollectie:
       type: object
       properties:
         _links:
@@ -778,7 +801,27 @@ components:
             ingeschrevenpersonen:
               type: array
               items:
-                $ref: '#/components/schemas/IngeschrevenPersoon'
+                $ref: '#/components/schemas/IngeschrevenPersoonHal'
+    IngeschrevenPersoonPlainCollectie:
+      type: object
+      properties:
+        ingeschrevenpersonen:
+          type: array
+          items:
+            $ref: '#/components/schemas/IngeschrevenPersoonPlain'
+    IngeschrevenPersoonHal:
+      allOf:
+        - $ref: '#/components/schemas/IngeschrevenPersoon'
+        - type: "object"
+          properties:
+            _links:
+              $ref: "#/components/schemas/IngeschrevenPersoon_links"
+            _embedded:
+              $ref: "#/components/schemas/IngeschrevenPersoon_embedded"
+    IngeschrevenPersoonPlain:
+      allOf:
+        - $ref: '#/components/schemas/IngeschrevenPersoon'
+        - $ref: "#/components/schemas/IngeschrevenPersoon_links"
     Ouder:
       type: "object"
       description: "Gegevens over de ouder van de ingeschrevene. \n* **datumIngangFamilierechtelijkeBetrekking**\
@@ -808,9 +851,7 @@ components:
           $ref: "#/components/schemas/OuderInOnderzoek"
         geboorte:
           $ref: "#/components/schemas/Geboorte"
-        _links:
-          $ref: "#/components/schemas/Ouder_links"
-    OuderCollectie:
+    OuderHalCollectie:
       type: object
       properties:
         _links:
@@ -821,7 +862,25 @@ components:
             ouders:
               type: array
               items:
-                $ref: '#/components/schemas/Ouder'
+                $ref: '#/components/schemas/OuderHal'
+    OuderPlainCollectie:
+      type: object
+      properties:
+        ouders:
+          type: array
+          items:
+            $ref: '#/components/schemas/OuderPlain'
+    OuderHal:
+      allOf:
+        - $ref: '#/components/schemas/Ouder'
+        - type: "object"
+          properties:
+            _links:
+              $ref: "#/components/schemas/Ouder_links"
+    OuderPlain:
+      allOf:
+        - $ref: '#/components/schemas/Ouder'
+        - $ref: "#/components/schemas/Ouder_links"
     Kind:
       type: "object"
       description: "Gegevens over een kind van de ingeschrevene."
@@ -853,9 +912,7 @@ components:
           $ref: "#/components/schemas/Naam"
         geboorte:
           $ref: "#/components/schemas/Geboorte"
-        _links:
-          $ref: "#/components/schemas/Kind_links"
-    KindCollectie:
+    KindHalCollectie:
       type: object
       properties:
         _links:
@@ -866,7 +923,25 @@ components:
             kinderen:
               type: array
               items:
-                $ref: '#/components/schemas/Kind'
+                $ref: '#/components/schemas/KindHal'
+    KindPlainCollectie:
+      type: object
+      properties:
+        kinderen:
+          type: array
+          items:
+            $ref: '#/components/schemas/KindPlain'
+    KindHal:
+      allOf:
+        - $ref: '#/components/schemas/Kind'
+        - type: "object"
+          properties:
+            _links:
+              $ref: "#/components/schemas/Kind_links"
+    KindPlain:
+      allOf:
+        - $ref: '#/components/schemas/Kind'
+        - $ref: "#/components/schemas/Kind_links"
     Partner:
       type: "object"
       description: "Gegevens over een gesloten huwelijk/geregistreerd partnerschap\
@@ -896,9 +971,7 @@ components:
           $ref: "#/components/schemas/PartnerInOnderzoek"
         aangaanHuwelijk_Partnerschap:
           $ref: "#/components/schemas/AangaanHuwelijk_Partnerschap"
-        _links:
-          $ref: "#/components/schemas/Partner_links"
-    PartnerCollectie:
+    PartnerHalCollectie:
       type: object
       properties:
         _links:
@@ -909,7 +982,25 @@ components:
             partners:
               type: array
               items:
-                $ref: '#/components/schemas/Partner'
+                $ref: '#/components/schemas/PartnerHal'
+    PartnerPlainCollectie:
+      type: object
+      properties:
+        partners:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartnerPlain'
+    PartnerHal:
+      allOf:
+        - $ref: '#/components/schemas/Partner'
+        - type: "object"
+          properties:
+            _links:
+              $ref: "#/components/schemas/Partner_links"
+    PartnerPlain:
+      allOf:
+        - $ref: '#/components/schemas/Partner'
+        - $ref: "#/components/schemas/Partner_links"
     Reisdocument:
       type: "object"
       description: "Een document dat vereist is voor reizen naar het buitenland \n\
@@ -948,8 +1039,17 @@ components:
           $ref: "#/components/schemas/Waardetabel"
         inOnderzoek:
           $ref: "#/components/schemas/ReisdocumentInOnderzoek"
-        _links:
-          $ref: "#/components/schemas/Reisdocument_links"
+    ReisdocumentHal:
+      allOf:
+        - $ref: '#/components/schemas/Reisdocument'
+        - type: "object"
+          properties:
+            _links:
+              $ref: "#/components/schemas/Reisdocument_links"
+    ReisdocumentPlain:
+      allOf:
+        - $ref: '#/components/schemas/Reisdocument'
+        - $ref: "#/components/schemas/Reisdocument_links"
     Naam:
       type: "object"
       description: "Gegevens over de naam van de NATUURLIJK PERSOON \n* **adellijketitelPredikaat**\
