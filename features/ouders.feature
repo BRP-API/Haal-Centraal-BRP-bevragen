@@ -11,7 +11,7 @@ Functionaliteit: Ouders van een ingeschreven persoon raadplegen
     Dan is het aantal gevonden ouders 0
 
   Abstract Scenario: een ouder is onjuist of onbekend
-    Gegeven de PL van een ouder van een ingeschreven persoon is leeg met uitzondering van de <bij onjuist of onbekend ingevulde kenmerken> kenmerken
+    Gegeven op de PL van een ingeschreven persoon is categorie ouder leeg met uitzondering van de <bij onjuist of onbekend ingevulde kenmerken> kenmerken
     Als de ouders worden geraadpleegd van de ingeschreven persoon met burgerservicenummer 999999291
     Dan is het aantal gevonden ouders 0
     En zijn er geen links naar de onbekende ouders
