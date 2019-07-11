@@ -223,7 +223,7 @@ Foutbericht403:
       type: string
       description: Systeemcode die het type fout aangeeft
       minLength: 1
-      example: "autorisation"  
+      example: "autorisation"
 Foutbericht404:
   type: object
   description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
@@ -254,7 +254,7 @@ Foutbericht404:
       type: string
       description: Systeemcode die het type fout aangeeft
       minLength: 1
-      example: "notFound" 
+      example: "notFound"
 Foutbericht406:
   type: object
   description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
@@ -285,7 +285,7 @@ Foutbericht406:
       type: string
       description: Systeemcode die het type fout aangeeft
       minLength: 1
-      example: "notAcceptable" 
+      example: "notAcceptable"
 Foutbericht409:
   type: object
   description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
@@ -502,4 +502,4 @@ InvalidParams:
     reason:
       type: string
       description: Beschrijving van de fout op de parameterwaarde
-      "reason": "Waarde is geen geldige integer."
+      example: "Waarde is geen geldige integer."
