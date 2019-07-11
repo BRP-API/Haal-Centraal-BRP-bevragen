@@ -14,11 +14,185 @@ info:
     name: European Union Public License, version 1.2 (EUPL-1.2)
     url: https://eupl.eu/1.2/nl/
 paths:
+  /tabellen/adellijketitels_predikaten:
+    get:
+      operationId: getAdellijketitels_predikaten
+      description: "Het ophalen van de gegevens van de landelijke tabel Adellijke titel/predikaat (Tabel 38) Bij het zoeken op de omschrijving mag er gebruik wrden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ). Zoeken is **case-insensitive**."
+      parameters: 
+        - in: query
+          name: page
+          description: "Een pagina binnen de gepagineerde resultatenset."
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+        - in: query
+          name: code
+          description: "De code van de Adellijke titel/predikaat"
+          required: false
+          schema:
+            type: string
+            maxLength: 2
+            example: G
+        - in: query
+          name: omschrijving
+          description: ""
+          required: false
+          schema:
+            type: string
+            example: Graaf
+        - in: query
+          name: soort
+          description: "De soort van de Adellijke titel/predikaat"
+          required: false
+          schema:
+              $ref: "#/components/schemas/AdellijketitePredikaat_enum"
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/warning"
+            X-Pagination-Page:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Pagination_Page"
+            X-Pagination-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Pagination_Limit"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/AdellijkeTitel_predikaatCollectie'
+        '401':
+          $ref: "#/components/responses/401"
+        '403':
+          $ref: "#/components/responses/403"
+        '404':
+          $ref: "#/components/responses/404"
+        '406':
+          $ref: "#/components/responses/406"
+        '409':
+          $ref: "#/components/responses/409"
+        '410':
+          $ref: "#/components/responses/410"
+        '415':
+          $ref: "#/components/responses/415"
+        '429':
+          $ref: "#/components/responses/429"
+        '500':
+          $ref: "#/components/responses/500"
+        '503':
+          $ref: "#/components/responses/503"
+        'default':
+          $ref: "#/components/responses/default"
+      tags: 
+      - Tabellen
+  /tabellen/gemeenten:
+    get:
+      operationId: getGemeenten
+      description: "Het ophalen van de gegevens van de landelijke gemeententabel (Tabel 33) Bij het zoeken op de omschrijving (gemeentenaam) mag er gebruik wrden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ). Zoeken is **case-insensitive**."
+      parameters: 
+        - in: query
+          name: page
+          description: "Een pagina binnen de gepagineerde resultatenset."
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+        - in: query
+          name: code
+          description: "De code, behorende bij de gemeentenaam opgenomen in de Gemeentetabel van de GBA."
+          required: false
+          schema:
+            type: string
+            maxLength: 4
+            example: 0737
+        - in: query
+          name: datumeinde
+          description: "Einddatum van de geldigheid van de gegevens."
+          required: false
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: datumingang
+          description: "Begindatum van de geldigheid van de gegevens"
+          required: false
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: nieuwecode
+          description: "Code van de nieuwegevormde gemeente waarin deze gemeente is overgegaan."
+          required: false
+          schema:
+            type: string
+            maxLength: 4
+        - in: query
+          name: omschrijving
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 80
+            example: Tytsjerksteradiel
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/warning"
+            X-Pagination-Page:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Pagination_Page"
+            X-Pagination-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Pagination_Limit"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                 $ref: '#/components/schemas/GemeenteCollectie'
+        '401':
+          $ref: "#/components/responses/401"
+        '403':
+          $ref: "#/components/responses/403"
+        '404':
+          $ref: "#/components/responses/404"
+        '406':
+          $ref: "#/components/responses/406"
+        '409':
+          $ref: "#/components/responses/409"
+        '410':
+          $ref: "#/components/responses/410"
+        '415':
+          $ref: "#/components/responses/415"
+        '429':
+          $ref: "#/components/responses/429"
+        '500':
+          $ref: "#/components/responses/500"
+        '503':
+          $ref: "#/components/responses/503"
+        'default':
+          $ref: "#/components/responses/default"
+      tags: 
+      - Tabellen
   /tabellen/gemeenten/{code}:
     get:
       operationId: getGemeente
       description: "Het ophalen van de gegevens van de landelijke gemeententabel (Tabel 33)"
-      parameters: 
+      parameters:
         - in: path
           name: code
           description: "De code, behorende bij de gemeentenaam opgenomen in de Gemeentetabel van de GBA."
@@ -45,6 +219,8 @@ paths:
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/Gemeente'
+        '400':
+          $ref: "#/components/responses/400"        
         '401':
           $ref: "#/components/responses/401"
         '403':
@@ -100,6 +276,8 @@ paths:
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/AdellijkeTitel_predikaat'
+        '400':
+          $ref: "#/components/responses/400"
         '401':
           $ref: "#/components/responses/401"
         '403':
@@ -126,6 +304,37 @@ paths:
       - Tabellen
 components:
   schemas:
+    AdellijkeTitel_predikaat:
+      type: "object"
+      description: ""
+      properties:
+        code:
+          type: "string"
+          title: "code"
+          description: "De code van de Adellijke titel/predikaat"
+          maxLength: 2
+          example: "G"
+        omschrijving:
+          type: "string"
+          title: "omschrijving"
+          description: ""
+          example: "Graaf"
+        soort:
+          $ref: "#/components/schemas/AdellijketitePredikaat_enum"
+        _links:
+          $ref: "#/components/schemas/AdellijkeTitel_predikaat_links"
+    AdellijkeTitel_predikaatCollectie:
+      type: object
+      properties:
+        _links:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalPaginationLinks"
+        _embedded:
+          type: object
+          properties:
+            adellijketitels_predikaten:
+              type: array
+              items:
+                $ref: '#/components/schemas/AdellijkeTitel_predikaat'
     Gemeente:
       type: "object"
       description: "Een opsomming van alle huidige en voormalige landen met hun codes,\
@@ -163,35 +372,35 @@ components:
           example: "Tytsjerksteradiel"
         _links:
           $ref: "#/components/schemas/Gemeente_links"
-    AdellijkeTitel_predikaat:
+    GemeenteCollectie:
       type: "object"
-      description: ""
       properties:
-        code:
-          type: "string"
-          title: "code"
-          description: "De code van de Adellijke titel/predikaat"
-          maxLength: 2
-          example: "G"
-        omschrijving:
-          type: "string"
-          title: "omschrijving"
-          description: ""
-          example: "Graaf"
-        soort:
-          $ref: "#/components/schemas/AdellijketitePredikaat_enum"
         _links:
-          $ref: "#/components/schemas/AdellijkeTitel_predikaat_links"
-    Gemeente_links:
-      type: "object"
-      properties:
-        self:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalPaginationLinks"
+        _embedded:
+          type: object
+          properties:
+            gemeenten:
+              type: array
+              items:
+                $ref: '#/components/schemas/Gemeente'
     AdellijkeTitel_predikaat_links:
       type: "object"
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
+    Gemeente_links:
+      type: "object"
+      properties:
+        self:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
+        gemeenten:
+          title: "overgegaanIn"
+          type: "object"
+          description: "De gemeente waarin deze gemeente is overgegaan bij een gemeentelijke herindeling. "
+          properties:
+            href:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
     AdellijketitePredikaat_enum:
       type: "string"
       description: "Een aanduiding die aangeeft dat de ingeschrevene een man of een\
