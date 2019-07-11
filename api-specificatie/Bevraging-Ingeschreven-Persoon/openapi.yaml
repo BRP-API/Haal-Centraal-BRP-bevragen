@@ -1210,14 +1210,29 @@ components:
           properties:
             aanduidingNaamgebruik:
               $ref: "#/components/schemas/Naamgebruik_enum"
+            aanhef:
+              type: "string"
+              title: "aanhef"
+              description: "| De aanhef zoals die in een brief, gericht aan een persoon\
+                \ gebruikt kan worden. Hoe het samenstellen van een aanhef te werk gaat\
+                \ is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanhef.feature)"
+              minLength: 1
+              example: "Hooggeboren vrouwe van der Veen-van den Aedel"
             aanschrijfwijze:
               type: "string"
               title: "aanschrijfwijze"
               description: "| Samengestelde naam zoals die in communicatie met de persoon\
                 \ gebruikt kan worden. Hoe het samenstellen van een aanschrijfwijze te\
                 \ werk gaat is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanschrijfwijze.feature)"
-              maxLength: 50
-              example: "P.J. graaf de Vries- van der Zon"
+              example: "W. gravin van den Aedel-van der Veen"
+            gebruikInLopendeTekst:
+              type: "string"
+              title: "gebruikInLopendeTekst"
+              description: "| De naam zoals die in lopende tekst kan worden. Hoe het samenstellen\
+                \ van een naam in de lopendetekst te werk gaat is beschreven in de [functionele\
+                \ specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/gebruik_in_lopende_tekst.feature)"
+              minLength: 1
+              example: "mevrouw van der Veen-gravin van den Aedel"
     PersoonInOnderzoek:
       type: "object"
       description: "Een groep van booleans om aan te geven welke gegevens van de ingeschreven\
