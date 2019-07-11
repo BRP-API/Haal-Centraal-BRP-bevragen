@@ -10,6 +10,17 @@ Functionaliteit: Ouders van een ingeschreven persoon raadplegen
     Als de ouders worden geraadpleegd van de ingeschreven persoon met burgerservicenummer 999999291
     Dan is het aantal gevonden ouders 0
 
+  Abstract Scenario: een ouder is onjuist of onbekend
+    Gegeven op de PL van een ingeschreven persoon is categorie ouder leeg met uitzondering van de <bij onjuist of onbekend ingevulde kenmerken> kenmerken
+    Als de ouders worden geraadpleegd van de ingeschreven persoon met burgerservicenummer 999999291
+    Dan is het aantal gevonden ouders 0
+    En zijn er geen links naar de onbekende ouders
+
+    Voorbeelden:
+    | bij onjuist of onbekend ingevulde kenmerken |
+    | registergemeenteAkte (81.10), aktenummer (81.20), datumIngangGeldigheid (85.10), datumVanOpneming (86.10) |
+    | gemeenteDocument (82.10), datumDocument (82.20), beschrijvingDocument (82.30), datumIngangGeldigheid (85.10), datumVanOpneming (86.10) |
+  
   Scenario: de ouders zijn ingeschreven personen
     Gegeven de te raadplegen persoon heeft een ouder die zelf ingeschreven persoon is
     En de Ouder1 van de ingeschreven persoon heeft in de registratie burgerservicenummer 999999382, naam Jonkheer Franciscus Theodorus in 't Groen
