@@ -1700,34 +1700,35 @@ components:
         \ de volledige datum bekend is worden alle elementen gevuld."
       properties:
         dag:
-          type: "string"
+          type: "integer"
           title: "dag"
           description: "De dag. Als de dag van de datum bekend is wordt deze hier\
             \ ingevuld. Ook als de volledige datum bekend is."
-          pattern: "^99$"
-          format: "date_mday"
-          maxLength: 2
+          minimum: 1
+          maximum: 31
+          example: "5"
         datum:
           type: "string"
           title: "datum"
           description: "De volledige datum die in de `date` definitie past. Dit element\
             \ wordt alleen gevuld als de volledige datum bekend is."
           format: "date"
+          example: "1989-05-03"
         jaar:
-          type: "string"
+          type: "integer"
           title: "jaar"
           description: "Het jaar van de datum. Als het jaar bekend is wordt dit element\
             \ gevuld, ook als de volledige datum bekend is."
-          format: "date_fullyear"
-          pattern: "^[1-2]{1}[0-9]{3}$"
+          maximum: 9999
+          example: "1989"
         maand:
-          type: "string"
+          type: "integer"
           title: "maand"
           description: "De maand. Als de maand van een datum bekend is wordt deze\
             \ hier ingevuld. Ook als de volledige datum is ingevuld."
-          pattern: "^99$"
-          format: "date_month"
-          maxLength: 2
+          minimum: 1
+          maximum: 12
+          example: "3"
     Waardetabel:
       type: "object"
       description: "Generieke tabel met waarden om om een code en omschrijving op\
