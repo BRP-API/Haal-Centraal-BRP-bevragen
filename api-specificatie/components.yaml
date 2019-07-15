@@ -1,7 +1,7 @@
 Href:
   type: string
   format: "uri"
-  example: "datapunt.voorbeeldgemeente.nl/api/v1/resourcename/123456789"
+  example: "datapunt.voorbeeldgemeente.nl/api/resourcename/123456789"
 HalLink:
   type: object
   properties:
@@ -28,7 +28,7 @@ HalPaginationLinks:
           href:
             type: "string"
             format: "uri"
-            example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?page=1"
+            example: "https://datapunt.voorbeeldgemeente.nl/api/resourcenaam?page=1"
           title:
             type: "string"
             example: "Eerste pagina"
@@ -39,7 +39,7 @@ HalPaginationLinks:
           href:
             type: "string"
             format: "uri"
-            example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?page=3"
+            example: "https://datapunt.voorbeeldgemeente.nl/api/resourcenaam?page=3"
           title:
             type: "string"
             example: "Vorige pagina"
@@ -50,7 +50,7 @@ HalPaginationLinks:
           href:
             type: "string"
             format: "uri"
-            example: "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?page=5"
+            example: "https://datapunt.voorbeeldgemeente.nl/api/resourcenaam?page=5"
           title:
             type: "string"
             example: "Volgende pagina"
