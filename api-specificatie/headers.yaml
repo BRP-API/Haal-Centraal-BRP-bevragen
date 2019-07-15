@@ -1,6 +1,6 @@
 api_version:
   schema:
-    type: integer
+    type: string
     description: Geeft een specifieke API-versie aan in de context van een specifieke aanroep.
     example: 1.0.1
 warning:
