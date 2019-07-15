@@ -156,7 +156,7 @@ paths:
             example: bis
         - in: query
           name: verblijfplaats__identificatiecodenummeraanduiding
-          description: "De unieke aanduiding van een NUMMERAANDUIDING opgebouwd uit de gemeentecode de objecttypecode) en het objectvolgnummer Combinatie van de viercijferige 'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding."
+          description: "De unieke aanduiding van een NUMMERAANDUIDING. Combinatie van de viercijferige 'gemeentecode' de tweecijferige 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding."
           required: false
           schema:
             type: string
@@ -270,7 +270,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/IngeschrevenPersoon'
+                $ref: '#/components/schemas/IngeschrevenPersoonHal'
         '400':
           $ref: "#/components/responses/400"
         '401':
@@ -334,7 +334,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Kind'
+                $ref: '#/components/schemas/KindHal'
         '401':
           $ref: "#/components/responses/401"
         '403':
@@ -451,7 +451,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Ouder'
+                $ref: '#/components/schemas/OuderHal'
         '401':
           $ref: "#/components/responses/401"
         '403':
@@ -568,7 +568,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Partner'
+                $ref: '#/components/schemas/PartnerHal'
         '401':
           $ref: "#/components/responses/401"
         '403':
@@ -734,6 +734,7 @@ components:
           title: "leeftijd"
           description: "Leeftijd in jaren op het moment van bevraging"
           maximum: 999
+          example: 34
         datumEersteInschrijvingGBA:
           $ref: "#/components/schemas/Datum_onvolledig"
         kiesrecht:
@@ -848,10 +849,12 @@ components:
           title: "leeftijd"
           description: "Leeftijd op het moment van bevragen"
           maximum: 999
+          example: 12
         thuiswonend:
           type: "boolean"
           title: "thuiswonend"
           description: "Indicatie of het kind thuiswonend is"
+          example: true
         inOnderzoek:
           $ref: "#/components/schemas/KindInOnderzoek"
         naam:
@@ -1448,9 +1451,9 @@ components:
             \ orgaan is vastgesteld, zo nodig ingekort conform de specificaties van\
             \ de NEN 5825. alle alfanumrieke tekens"
           maxLength: 24
-        vamuitVertrokkenOnbekendWaarheen:
+        vanuitVertrokkenOnbekendWaarheen:
           type: "boolean"
-          title: "vamuitVertrokkenOnbekendWaarheen"
+          title: "vanuitVertrokkenOnbekendWaarheen"
           description: "Indicatie waarmee aangegeven wordt dat de persoon is teruggekeerd\
             \ uit een situatie van vertrokken onbekend waarheen"
           example: "false"
@@ -1741,7 +1744,7 @@ components:
             \ ingevuld. Ook als de volledige datum bekend is."
           minimum: 1
           maximum: 31
-          example: 5
+          example: 3
         datum:
           type: "string"
           title: "datum"
@@ -1763,7 +1766,7 @@ components:
             \ hier ingevuld. Ook als de volledige datum is ingevuld."
           minimum: 1
           maximum: 12
-          example: 3
+          example: 5
     Waardetabel:
       type: "object"
       description: "Generieke tabel met waarden om om een code en omschrijving op\
