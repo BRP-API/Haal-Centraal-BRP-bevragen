@@ -1,9 +1,9 @@
 openapi: 3.0.0
 servers:
   - description: "SwaggerHub API Auto Mocking"
-    url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bevragingen_ingeschreven_personen/v1
+    url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bevragingen_ingeschreven_personen
   - description: "Referentie-implementatie"
-    url: https://www.voorbeeldgemeente.nl/api/bevragingen_ingeschreven_personen/v1
+    url: https://www.voorbeeldgemeente.nl/api/bevragingen_ingeschreven_personen
 info:
   title: Bevragingen ingeschreven personen
   description: "API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. Ook de gegevens over reisdocumenten worden via deze API ontsloten. Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting."
@@ -24,13 +24,9 @@ paths:
         1.  Persoon
             -  geboorte__datum
             -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 
-
-
         2.  Persoon
             -  verblijfplaats__gemeentevaninschrijving
             -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 
-
-
         3.  Persoon
             -  burgerservicenummer
     
@@ -60,7 +56,6 @@ paths:
 
 
          Er vind geen sortering plaats.
-
       parameters: 
         - in: query
           name: expand
@@ -208,7 +203,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/IngeschrevenPersoonCollectie'
+                $ref: '#/components/schemas/IngeschrevenPersoonHalCollectie'
         '400':
           $ref: "#/components/responses/400"
         '401':
@@ -275,7 +270,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/IngeschrevenPersoon'
+                $ref: '#/components/schemas/IngeschrevenPersoonHal'
         '400':
           $ref: "#/components/responses/400"
         '401':
@@ -339,7 +334,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Kind'
+                $ref: '#/components/schemas/KindHal'
         '401':
           $ref: "#/components/responses/401"
         '403':
@@ -394,7 +389,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/KindCollectie'
+                $ref: '#/components/schemas/KindHalCollectie'
         '401':
           $ref: "#/components/responses/401"
         '403':
@@ -456,7 +451,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Ouder'
+                $ref: '#/components/schemas/OuderHal'
         '401':
           $ref: "#/components/responses/401"
         '403':
@@ -511,7 +506,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/OuderCollectie'
+                $ref: '#/components/schemas/OuderHalCollectie'
         '401':
           $ref: "#/components/responses/401"
         '403':
@@ -573,7 +568,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Partner'
+                $ref: '#/components/schemas/PartnerHal'
         '401':
           $ref: "#/components/responses/401"
         '403':
@@ -628,7 +623,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/PartnerCollectie'
+                $ref: '#/components/schemas/PartnerHalCollectie'
         '401':
           $ref: "#/components/responses/401"
         '403':
@@ -682,7 +677,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Reisdocument'
+                $ref: '#/components/schemas/ReisdocumentHal'
         '401':
           $ref: "#/components/responses/401"
         '403':
@@ -739,6 +734,7 @@ components:
           title: "leeftijd"
           description: "Leeftijd in jaren op het moment van bevraging"
           maximum: 999
+          example: 34
         datumEersteInschrijvingGBA:
           $ref: "#/components/schemas/Datum_onvolledig"
         kiesrecht:
@@ -763,11 +759,7 @@ components:
           $ref: "#/components/schemas/Gezagsverhouding"
         verblijfstitel:
           $ref: "#/components/schemas/Verblijfstitel"
-        _links:
-          $ref: "#/components/schemas/IngeschrevenPersoon_links"
-        _embedded:
-          $ref: "#/components/schemas/IngeschrevenPersoon_embedded"
-    IngeschrevenPersoonCollectie:
+    IngeschrevenPersoonHalCollectie:
       type: object
       properties:
         _links:
@@ -778,7 +770,16 @@ components:
             ingeschrevenpersonen:
               type: array
               items:
-                $ref: '#/components/schemas/IngeschrevenPersoon'
+                $ref: '#/components/schemas/IngeschrevenPersoonHal'
+    IngeschrevenPersoonHal:
+      allOf:
+        - $ref: '#/components/schemas/IngeschrevenPersoon'
+        - type: "object"
+          properties:
+            _links:
+              $ref: "#/components/schemas/IngeschrevenPersoon_links"
+            _embedded:
+              $ref: "#/components/schemas/IngeschrevenPersoon_embedded"
     Ouder:
       type: "object"
       description: "Gegevens over de ouder van de ingeschrevene. \n* **datumIngangFamilierechtelijkeBetrekking**\
@@ -808,9 +809,7 @@ components:
           $ref: "#/components/schemas/OuderInOnderzoek"
         geboorte:
           $ref: "#/components/schemas/Geboorte"
-        _links:
-          $ref: "#/components/schemas/Ouder_links"
-    OuderCollectie:
+    OuderHalCollectie:
       type: object
       properties:
         _links:
@@ -821,7 +820,14 @@ components:
             ouders:
               type: array
               items:
-                $ref: '#/components/schemas/Ouder'
+                $ref: '#/components/schemas/OuderHal'
+    OuderHal:
+      allOf:
+        - $ref: '#/components/schemas/Ouder'
+        - type: "object"
+          properties:
+            _links:
+              $ref: "#/components/schemas/Ouder_links"
     Kind:
       type: "object"
       description: "Gegevens over een kind van de ingeschrevene."
@@ -843,19 +849,19 @@ components:
           title: "leeftijd"
           description: "Leeftijd op het moment van bevragen"
           maximum: 999
+          example: 12
         thuiswonend:
           type: "boolean"
           title: "thuiswonend"
           description: "Indicatie of het kind thuiswonend is"
+          example: true
         inOnderzoek:
           $ref: "#/components/schemas/KindInOnderzoek"
         naam:
           $ref: "#/components/schemas/Naam"
         geboorte:
           $ref: "#/components/schemas/Geboorte"
-        _links:
-          $ref: "#/components/schemas/Kind_links"
-    KindCollectie:
+    KindHalCollectie:
       type: object
       properties:
         _links:
@@ -866,7 +872,14 @@ components:
             kinderen:
               type: array
               items:
-                $ref: '#/components/schemas/Kind'
+                $ref: '#/components/schemas/KindHal'
+    KindHal:
+      allOf:
+        - $ref: '#/components/schemas/Kind'
+        - type: "object"
+          properties:
+            _links:
+              $ref: "#/components/schemas/Kind_links"
     Partner:
       type: "object"
       description: "Gegevens over een gesloten huwelijk/geregistreerd partnerschap\
@@ -896,9 +909,7 @@ components:
           $ref: "#/components/schemas/PartnerInOnderzoek"
         aangaanHuwelijk_Partnerschap:
           $ref: "#/components/schemas/AangaanHuwelijk_Partnerschap"
-        _links:
-          $ref: "#/components/schemas/Partner_links"
-    PartnerCollectie:
+    PartnerHalCollectie:
       type: object
       properties:
         _links:
@@ -909,7 +920,14 @@ components:
             partners:
               type: array
               items:
-                $ref: '#/components/schemas/Partner'
+                $ref: '#/components/schemas/PartnerHal'
+    PartnerHal:
+      allOf:
+        - $ref: '#/components/schemas/Partner'
+        - type: "object"
+          properties:
+            _links:
+              $ref: "#/components/schemas/Partner_links"
     Reisdocument:
       type: "object"
       description: "Een document dat vereist is voor reizen naar het buitenland \n\
@@ -948,8 +966,13 @@ components:
           $ref: "#/components/schemas/Waardetabel"
         inOnderzoek:
           $ref: "#/components/schemas/ReisdocumentInOnderzoek"
-        _links:
-          $ref: "#/components/schemas/Reisdocument_links"
+    ReisdocumentHal:
+      allOf:
+        - $ref: '#/components/schemas/Reisdocument'
+        - type: "object"
+          properties:
+            _links:
+              $ref: "#/components/schemas/Reisdocument_links"
     Naam:
       type: "object"
       description: "Gegevens over de naam van de NATUURLIJK PERSOON \n* **adellijketitelPredikaat**\
@@ -977,8 +1000,6 @@ components:
             \ spaties, aan de geslachtsnaam voorafgaat."
           maxLength: 200
           example: "Pieter Jan"
-        adellijkeTitel_predikaat:
-          $ref: "#/components/schemas/Waardetabel"
         voorvoegsel:
           type: "string"
           title: "Voorvoegsel"
@@ -993,11 +1014,6 @@ components:
       description: "In onderzoekgroep om aan te geven of gegevens over de naam van\
         \ de Ingeschreven persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
       properties:
-        adellijkeTitel_predikaat:
-          type: "boolean"
-          title: "adellijkeTitel_predikaat"
-          description: "Indicator die aangeeft of het corresponderende gegeven voor\
-            \ deze persoon in onderzoek is."
         geslachtsnaam:
           type: "boolean"
           title: "geslachtsnaam"
@@ -1106,18 +1122,30 @@ components:
     NaamPersoon:
       allOf: 
         - $ref: "#/components/schemas/Naam"
-        - type: object
+        - type: "object"
+          description: "Gegevens over de naam van de persoon"
           properties:
-            aanduidingNaamgebruik:
-              $ref: "#/components/schemas/Naamgebruik_enum"
+            aanhef:
+              type: "string"
+              title: "aanhef"
+              description: "| De aanhef zoals die in een brief, gericht aan een persoon\
+                \ gebruikt kan worden. Hoe het samenstellen van een aanhef te werk gaat\
+                \ is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanhef.feature)"
+              example: "Hooggeboren vrouwe van der Veen-van den Aedel"
             aanschrijfwijze:
               type: "string"
               title: "aanschrijfwijze"
               description: "| Samengestelde naam zoals die in communicatie met de persoon\
                 \ gebruikt kan worden. Hoe het samenstellen van een aanschrijfwijze te\
                 \ werk gaat is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanschrijfwijze.feature)"
-              maxLength: 50
-              example: "P.J. graaf de Vries- van der Zon"
+              example: "W. gravin van den Aedel-van der Veen"
+            gebruikInLopendeTekst:
+              type: "string"
+              title: "gebruikInLopendeTekst"
+              description: "| De naam zoals die in lopende tekst kan worden. Hoe het samenstellen\
+                \ van een naam in de lopendetekst te werk gaat is beschreven in de [functionele\
+                \ specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/gebruik_in_lopende_tekst.feature)"
+              example: "mevrouw van der Veen-gravin van den Aedel"
     PersoonInOnderzoek:
       type: "object"
       description: "Een groep van booleans om aan te geven welke gegevens van de ingeschreven\
@@ -1348,7 +1376,7 @@ components:
             \ van een adresseerbaar object toegekende nummering. Alle natuurlijke\
             \ getallen tussen 1 en 99999."
           maximum: 99999
-          example: "23"
+          example: 23
         huisnummertoevoeging:
           type: "string"
           title: "Huisnummertoevoeging"
@@ -1423,6 +1451,12 @@ components:
             \ orgaan is vastgesteld, zo nodig ingekort conform de specificaties van\
             \ de NEN 5825. alle alfanumrieke tekens"
           maxLength: 24
+        vanuitVertrokkenOnbekendWaarheen:
+          type: "boolean"
+          title: "vanuitVertrokkenOnbekendWaarheen"
+          description: "Indicatie waarmee aangegeven wordt dat de persoon is teruggekeerd\
+            \ uit een situatie van vertrokken onbekend waarheen"
+          example: "false"
         woonplaatsnaam:
           type: "string"
           title: "Woonplaatsnaam"
@@ -1452,25 +1486,29 @@ components:
       properties:
         adresRegel1:
           type: "string"
-          title: "Adres regel buitenland 1"
-          description: "Het eerste deel van het adres in het buitenland dat het SUBJECT\
-            \ opgeeft bij vertrek naar het buitenland dan wel waar het SUBJECT in\
-            \ het buitenland verblijft."
+          title: "adresRegel1"
+          description: "Het eerste deel van het adres in het buitenland dat de ingeschreven\
+            \ persoon opgeeft bij vertrek naar het buitenland dan wel waar de ingeschreven\
+            \ persoon in het buitenland verblijft."
           maxLength: 35
         adresRegel2:
           type: "string"
-          title: "Adres regel buitenland 2"
-          description: "Het tweede deel van het adres in het buitenland dat het SUBJECT\
-            \ opgeeft bij vertrek naar het buitenland dan wel waar het SUBJECT in\
-            \ het buitenland verblijft."
+          title: "adresRegel2"
+          description: "Het tweede deel van het adres in het buitenland dat de ingeschreven\
+            \ persoon opgeeft bij vertrek naar het buitenland dan wel waar de ingeschreven\
+            \ persoon in het buitenland verblijft."
           maxLength: 35
         adresRegel3:
           type: "string"
-          title: "Adres regel buitenland 3"
-          description: "Het derde deel van het adres in het buitenland dat het SUBJECT\
-            \ opgeeft bij vertrek naar het buitenland dan wel waar het SUBJECT in\
-            \ het buitenland verblijft."
+          title: "adresRegel3"
+          description: "Het derde deel van het adres in het buitenland dat de ingeschreven\
+            \ persoon opgeeft bij vertrek naar het buitenland dan wel waar de ingeschreven\
+            \ persoon in het buitenland verblijft."
           maxLength: 35
+        vertrokkenOnbekendWaarheen:
+          type: "boolean"
+          title: "vertrokkenOnbekendWaarheen"
+          description: ""
         land:
           $ref: "#/components/schemas/Waardetabel"
     VerblijfplaatsInOnderzoek:
@@ -1706,7 +1744,7 @@ components:
             \ ingevuld. Ook als de volledige datum bekend is."
           minimum: 1
           maximum: 31
-          example: "5"
+          example: 3
         datum:
           type: "string"
           title: "datum"
@@ -1720,7 +1758,7 @@ components:
           description: "Het jaar van de datum. Als het jaar bekend is wordt dit element\
             \ gevuld, ook als de volledige datum bekend is."
           maximum: 9999
-          example: "1989"
+          example: 1989
         maand:
           type: "integer"
           title: "maand"
@@ -1728,7 +1766,7 @@ components:
             \ hier ingevuld. Ook als de volledige datum is ingevuld."
           minimum: 1
           maximum: 12
-          example: "3"
+          example: 5
     Waardetabel:
       type: "object"
       description: "Generieke tabel met waarden om om een code en omschrijving op\
@@ -1807,7 +1845,7 @@ components:
           properties:
             href:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
-        nummeraanduidingen:
+        verblijfplaatsNummeraanduiding:
           title: "isIngeschrevenOp"
           type: "object"
           description: "De NUMMERAANDUIDING bij het ADRESSEERBAAR OBJECT waarin de\
@@ -1821,8 +1859,8 @@ components:
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
-        ingeschrevenpersonen:
-          title: "isOuder"
+        ingeschrevenPersoon:
+          title: "ingeschrevenPersoon"
           type: "object"
           description: "De ingeschreven persoon die ouder is van de opgevraagde persoon.\
             \ Deze wordt alleen opgenomen wanneer de ouder een ingeschreven persoon\
@@ -1835,8 +1873,8 @@ components:
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
-        ingeschrevenpersonen:
-          title: "isKind"
+        ingeschrevenPersoon:
+          title: "ingeschrevenPersoon"
           type: "object"
           description: "De ingeschreven persoon die kind is van de opgevraagde persoon.\
             \ Deze wordt alleen opgenomen wanneer het kind een ingeschreven persoon\
@@ -1849,8 +1887,8 @@ components:
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
-        ingeschrevenpersonen:
-          title: "isPartner"
+        ingeschrevenPersoon:
+          title: "ingeschrevenPersoon"
           type: "object"
           description: "De ingeschreven persoon die partner is van de opgevraagde\
             \ persoon. Deze wordt alleen opgenomen wanneer de partner een ingeschreven\
@@ -1880,14 +1918,14 @@ components:
             \ verwijst`"
           maxItems: 4
           items:
-            $ref: "#/components/schemas/Ouder"
+            $ref: "#/components/schemas/OuderHal"
         kinderen:
           title: "heeftAlsKind"
           type: "array"
           description: "De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE\
             \ verwijst"
           items:
-            $ref: "#/components/schemas/Kind"
+            $ref: "#/components/schemas/KindHal"
         partners:
           title: "heeftAlsPartner"
           type: "array"
@@ -1895,16 +1933,18 @@ components:
             \ en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd\
             \ partnerschap wordt niet teruggegeven."
           items:
-            $ref: "#/components/schemas/Partner"
+            $ref: "#/components/schemas/PartnerHal"
     AanduidingInhoudingVermissingReisdocument_enum:
       type: "string"
       description: "De mogelijke waarden van de aanduiding van inhouding of vermissing\
         \ van een Nederlands reisdocument. Zie logisch ontwerp BRP bij de stamtabellen:\n\
-        * `Ingehouden_of_ingeleverd` - I\n* `Vermist` - V\n* `Rechtswege` - R"
+        * `Ingehouden_of_ingeleverd` - I\n* `Vermist` - V\n* `Rechtswege` - R\n* `Niet_in_bezit_van`\
+        \ - N"
       enum:
       - "Ingehouden_of_ingeleverd"
       - "Vermist"
       - "Rechtswege"
+      - "Niet_in_bezit_van"
     AanduidingBijzonderNederlanderschap_enum:
       type: "string"
       description: "De aanduiding van het bijzonder Nederlanderschap:\n* `behandeld_als_Nederlander`\
@@ -1942,15 +1982,6 @@ components:
       - "ouder1_en_derde"
       - "ouder2_en_derde"
       - "ouder1_en_ouder2"
-    Naamgebruik_enum:
-      type: "string"
-      description: "Gegevens over de wijze van aanschrijving.:\n* `Eigen` - E\n* `Partner`\
-        \ - P\n* `Partner_en _eigen` - V\n* `Eigen_en_partner` - N"
-      enum:
-      - "Eigen"
-      - "Partner"
-      - "Partner_en _eigen"
-      - "Eigen_en_partner"
     OuderAanduiding_enum:
       type: "string"
       description: "Aanduiding om welke ouder het gaat volgens de GBA:\n* `Ouder1`\
