@@ -1859,8 +1859,8 @@ components:
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
-        isIngeschrevenPersoon:
-          title: "isIngeschrevenPersoon"
+        ingeschrevenPersoon:
+          title: "ingeschrevenPersoon"
           type: "object"
           description: "De ingeschreven persoon die ouder is van de opgevraagde persoon.\
             \ Deze wordt alleen opgenomen wanneer de ouder een ingeschreven persoon\
@@ -1873,8 +1873,8 @@ components:
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
-        isIngeschrevenPersoon:
-          title: "isIngeschrevenPersoon"
+        ingeschrevenPersoon:
+          title: "ingeschrevenPersoon"
           type: "object"
           description: "De ingeschreven persoon die kind is van de opgevraagde persoon.\
             \ Deze wordt alleen opgenomen wanneer het kind een ingeschreven persoon\
@@ -1887,8 +1887,8 @@ components:
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
-        isIngeschrevenPersoon:
-          title: "isingeschrevenPersoon"
+        ingeschrevenPersoon:
+          title: "ingeschrevenPersoon"
           type: "object"
           description: "De ingeschreven persoon die partner is van de opgevraagde\
             \ persoon. Deze wordt alleen opgenomen wanneer de partner een ingeschreven\
