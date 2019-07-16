@@ -163,7 +163,7 @@ paths:
             example: bis
         - in: query
           name: verblijfplaats__identificatiecodenummeraanduiding
-          description: "De unieke aanduiding van een NUMMERAANDUIDING opgebouwd uit de gemeentecode de objecttypecode) en het objectvolgnummer Combinatie van de viercijferige 'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding."
+          description: "De unieke aanduiding van een NUMMERAANDUIDING. Combinatie van de viercijferige 'gemeentecode' , de tweecijferige 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding."
           required: false
           schema:
             type: string
@@ -1574,7 +1574,7 @@ components:
         vertrokkenOnbekendWaarheen:
           type: "boolean"
           title: "vertrokkenOnbekendWaarheen"
-          description: "Indicatie dat de ingeschreven persoon is naar het buitenland,\
+          description: "Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland,\
             \ maar dat niet bekend is waar naar toe."
         land:
           $ref: "#/components/schemas/Waardetabel"
@@ -1876,13 +1876,7 @@ components:
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
         partnerhistorie:
-          title: "heeftAlsPartner"
-          type: "array"
-          description: "Het ophalen van de partnerhistorie van een ingeschreven persoon.\
-            \ Van een ingeschreven persoon worden parters waarmee nu of in het verleden\
-            \ relaties geregistreerd zijn geretourneerd."
-          items:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
         partners:
           title: "heeftAlsPartner"
           type: "array"
