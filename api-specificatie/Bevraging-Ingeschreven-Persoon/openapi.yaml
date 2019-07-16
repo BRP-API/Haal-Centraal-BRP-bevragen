@@ -64,6 +64,13 @@ paths:
           schema:
             type: string
         - in: query
+          name: api-version
+          description: "Bevat de versie van de aan te roepen API conform [Landelijke API-strategie](https://geonovum.github.io/KP-APIs/#versioning)."
+          required: false
+          schema:
+            type: string
+            example: 1.0.1
+        - in: query
           name: burgerservicenummer
           description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
           required: false
@@ -156,7 +163,7 @@ paths:
             example: bis
         - in: query
           name: verblijfplaats__identificatiecodenummeraanduiding
-          description: "De unieke aanduiding van een NUMMERAANDUIDING. Combinatie van de viercijferige 'gemeentecode' de tweecijferige 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding."
+          description: "De unieke aanduiding van een NUMMERAANDUIDING. Combinatie van de viercijferige 'gemeentecode' , de tweecijferige 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding."
           required: false
           schema:
             type: string
@@ -248,6 +255,13 @@ paths:
             maxLength: 9
             minLength: 9
         - in: query
+          name: api-version
+          description: "Bevat de versie van de aan te roepen API conform [Landelijke API-strategie](https://geonovum.github.io/KP-APIs/#versioning)."
+          required: false
+          schema:
+            type: string
+            example: 1.0.1
+        - in: query
           name: fields
           description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature)"
           required: false
@@ -317,6 +331,13 @@ paths:
           schema:
             type: string
             maxLength: 36
+        - in: query
+          name: api-version
+          description: "Bevat de versie van de aan te roepen API conform [Landelijke API-strategie](https://geonovum.github.io/KP-APIs/#versioning)."
+          required: false
+          schema:
+            type: string
+            example: 1.0.1
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -372,6 +393,13 @@ paths:
             type: string
             maxLength: 9
             minLength: 9
+        - in: query
+          name: api-version
+          description: "Bevat de versie van de aan te roepen API conform [Landelijke API-strategie](https://geonovum.github.io/KP-APIs/#versioning)."
+          required: false
+          schema:
+            type: string
+            example: 1.0.1
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -434,6 +462,13 @@ paths:
           schema:
             type: string
             maxLength: 36
+        - in: query
+          name: api-version
+          description: "Bevat de versie van de aan te roepen API conform [Landelijke API-strategie](https://geonovum.github.io/KP-APIs/#versioning)."
+          required: false
+          schema:
+            type: string
+            example: 1.0.1
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -489,6 +524,13 @@ paths:
             type: string
             maxLength: 9
             minLength: 9
+        - in: query
+          name: api-version
+          description: "Bevat de versie van de aan te roepen API conform [Landelijke API-strategie](https://geonovum.github.io/KP-APIs/#versioning)."
+          required: false
+          schema:
+            type: string
+            example: 1.0.1
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -551,6 +593,13 @@ paths:
           schema:
             type: string
             maxLength: 36
+        - in: query
+          name: api-version
+          description: "Bevat de versie van de aan te roepen API conform [Landelijke API-strategie](https://geonovum.github.io/KP-APIs/#versioning)."
+          required: false
+          schema:
+            type: string
+            example: 1.0.1
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -606,6 +655,13 @@ paths:
             type: string
             maxLength: 9
             minLength: 9
+        - in: query
+          name: api-version
+          description: "Bevat de versie van de aan te roepen API conform [Landelijke API-strategie](https://geonovum.github.io/KP-APIs/#versioning)."
+          required: false
+          schema:
+            type: string
+            example: 1.0.1
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -660,6 +716,13 @@ paths:
           schema:
             type: string
             maxLength: 9
+        - in: query
+          name: api-version
+          description: "Bevat de versie van de aan te roepen API conform [Landelijke API-strategie](https://geonovum.github.io/KP-APIs/#versioning)."
+          required: false
+          schema:
+            type: string
+            example: 1.0.1
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -854,7 +917,7 @@ components:
           type: "boolean"
           title: "thuiswonend"
           description: "Indicatie of het kind thuiswonend is"
-          example: true
+          example: "true"
         inOnderzoek:
           $ref: "#/components/schemas/KindInOnderzoek"
         naam:
@@ -1128,21 +1191,21 @@ components:
             aanhef:
               type: "string"
               title: "aanhef"
-              description: "| De aanhef zoals die in een brief, gericht aan een persoon\
+              description: "De aanhef zoals die in een brief, gericht aan een persoon\
                 \ gebruikt kan worden. Hoe het samenstellen van een aanhef te werk gaat\
                 \ is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanhef.feature)"
               example: "Hooggeboren vrouwe van der Veen-van den Aedel"
             aanschrijfwijze:
               type: "string"
               title: "aanschrijfwijze"
-              description: "| Samengestelde naam zoals die in communicatie met de persoon\
+              description: "Samengestelde naam zoals die in communicatie met de persoon\
                 \ gebruikt kan worden. Hoe het samenstellen van een aanschrijfwijze te\
                 \ werk gaat is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanschrijfwijze.feature)"
               example: "W. gravin van den Aedel-van der Veen"
             gebruikInLopendeTekst:
               type: "string"
               title: "gebruikInLopendeTekst"
-              description: "| De naam zoals die in lopende tekst kan worden. Hoe het samenstellen\
+              description: "De naam zoals die in lopende tekst kan worden. Hoe het samenstellen\
                 \ van een naam in de lopendetekst te werk gaat is beschreven in de [functionele\
                 \ specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/gebruik_in_lopende_tekst.feature)"
               example: "mevrouw van der Veen-gravin van den Aedel"
@@ -1305,7 +1368,7 @@ components:
         \ of het partnerschap is aangegaan. \n* **land** : Het land waar het huwelijk\
         \ is voltrokken of het partnerschap is aangegaan. \n* **plaats** : Als de\
         \ plaats een gemeente in Nederland is dan gewoon de gemeentecode + gemeentenaam\
-        \ . Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam\
+        \ . Voor een plaats buiten Nederland is de gemeentecode leeg en wordt de gemeentenaam\
         \ de buitenlandse plaatsnaam of aanduiding."
       properties:
         datum:
@@ -1389,12 +1452,16 @@ components:
           example: "IV"
         identificatiecodeNummeraanduiding:
           type: "string"
-          title: "Identificatiecode nummeraanduiding"
+          title: "identificatiecodeNummeraanduiding"
           description: "De unieke aanduiding van een NUMMERAANDUIDING. Combinatie\
-            \ van de viercijferige 'gemeentecode' (volgens GBA tabel 33, Gemeententabel),\
-            \ de tweecijferige 'objecttypecode' en een voor het betreffende objecttype\
-            \ binnen een gemeente uniek tiencijferig 'objectvolgnummer'. De objecttypecode\
-            \ kent in de BAG de volgende waarde:20 nummeraanduiding."
+            \ van de viercijferige 'gemeentecode' de tweecijferige 'objecttypecode'\
+            \ en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig\
+            \ 'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde:20\
+            \ nummeraanduiding. Combinatie van de viercijferige 'gemeentecode' (volgens\
+            \ GBA tabel 33, Gemeententabel), de tweecijferige 'objecttypecode' en\
+            \ een voor het betreffende objecttype binnen een gemeente uniek tiencijferig\
+            \ 'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde:20\
+            \ nummeraanduiding."
           maxLength: 16
           example: "0518200000366054"
         identificatiecodeVerblijfplaats:
@@ -1410,8 +1477,7 @@ components:
             \ een gemeente uniek tiencijferig volgnummer. Combinatie van de viercijferige\
             \ 'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige\
             \ 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente\
-            \ uniek tiencijferig 'objectvolgnummer'. De objecttypecode kent in de\
-            \ BAG de volgende waarde:20 nummeraanduiding."
+            \ uniek tiencijferig 'objectvolgnummer'."
           maxLength: 16
           example: "0518200000366054"
         indicatieVestigingVanuitBuitenland:
@@ -1508,7 +1574,8 @@ components:
         vertrokkenOnbekendWaarheen:
           type: "boolean"
           title: "vertrokkenOnbekendWaarheen"
-          description: ""
+          description: "Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland,\
+            \ maar dat niet bekend is waar naar toe."
         land:
           $ref: "#/components/schemas/Waardetabel"
     VerblijfplaatsInOnderzoek:
@@ -1809,14 +1876,7 @@ components:
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
         partnerhistorie:
-          title: "heeftAlsPartner"
-          type: "object"
-          description: "Het ophalen van de partnerhistorie van een ingeschreven persoon.\
-            \ Van een ingeschreven persoon worden parters waarmee nu of in het verleden\
-            \ relaties geregistreerd zijn geretourneerd."
-          properties:
-            href:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
         partners:
           title: "heeftAlsPartner"
           type: "array"
@@ -1826,88 +1886,39 @@ components:
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
         verblijfplaatshistorie:
-          title: "verbleefOp"
-          type: "object"
-          description: "Het ophalen van de verblijfplaatshistorie van een ingeschreven\
-            \ persoon. Van een ingeschreven persoon worden verblijfplaatsen waar een\
-            \ persoon zich in het verleden op heeft ingeschreven (inclusief de actuele\
-            \ verblijfplaats) geretourneerd."
-          properties:
-            href:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
         verblijfstitelhistorie:
-          title: "hadAlsVerblijfstitel"
-          type: "object"
-          description: "Het ophalen van de verblijfstitelhistorie van een ingeschreven\
-            \ persoon. Van een ingeschreven persoon worden verblijfstitels die er\
-            \ in het verleden geregistreerd zijn (inclusief de actuele verblijfstitel)\
-            \ geretourneerd."
-          properties:
-            href:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
         verblijfplaatsNummeraanduiding:
-          title: "isIngeschrevenOp"
-          type: "object"
-          description: "De NUMMERAANDUIDING bij het ADRESSEERBAAR OBJECT waarin de\
-            \ INGESCHREVEN NATUURLIJK PERSOON verblijft en die hij/zij gekozen heeft\
-            \ als inschrijvingsadres."
-          properties:
-            href:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
     Ouder_links:
       type: "object"
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
         ingeschrevenPersoon:
-          title: "ingeschrevenPersoon"
-          type: "object"
-          description: "De ingeschreven persoon die ouder is van de opgevraagde persoon.\
-            \ Deze wordt alleen opgenomen wanneer de ouder een ingeschreven persoon\
-            \ is."
-          properties:
-            href:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
     Kind_links:
       type: "object"
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
         ingeschrevenPersoon:
-          title: "ingeschrevenPersoon"
-          type: "object"
-          description: "De ingeschreven persoon die kind is van de opgevraagde persoon.\
-            \ Deze wordt alleen opgenomen wanneer het kind een ingeschreven persoon\
-            \ is."
-          properties:
-            href:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
     Partner_links:
       type: "object"
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
         ingeschrevenPersoon:
-          title: "ingeschrevenPersoon"
-          type: "object"
-          description: "De ingeschreven persoon die partner is van de opgevraagde\
-            \ persoon. Deze wordt alleen opgenomen wanneer de partner een ingeschreven\
-            \ persoon is."
-          properties:
-            href:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
     Reisdocument_links:
       type: "object"
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
-        ingeschrevenpersonen:
-          title: "heeftAlsHouder"
-          type: "object"
-          description: "De ingezetene waaraan het REISDOCUMENT is verstrekt."
-          properties:
-            href:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
+        ingeschrevenpersooon:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
     IngeschrevenPersoon_embedded:
       type: "object"
       properties:
