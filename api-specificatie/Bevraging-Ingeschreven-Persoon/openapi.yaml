@@ -57,19 +57,19 @@ paths:
 
          Er vind geen sortering plaats.
       parameters: 
-        - in: query
-          name: expand
-          description: "Hier kan aangegeven worden welke gerelateerde resources meegeladen moeten worden. Resources en velden van resources die gewenst zijn kunnen in de expand parameter kommagescheiden worden opgegeven. Specifieke velden van resource kunnen worden opgegeven door het opgeven van de resource-naam gevolgd door de veldnaam, met daartussen een punt. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/expand.feature)"
-          required: false
-          schema:
-            type: string
-        - in: query
+        - in: header
           name: api-version
           description: "Bevat de versie van de aan te roepen API conform [Landelijke API-strategie](https://geonovum.github.io/KP-APIs/#versioning)."
           required: false
           schema:
             type: string
             example: 1.0.1
+        - in: query
+          name: expand
+          description: "Hier kan aangegeven worden welke gerelateerde resources meegeladen moeten worden. Resources en velden van resources die gewenst zijn kunnen in de expand parameter kommagescheiden worden opgegeven. Specifieke velden van resource kunnen worden opgegeven door het opgeven van de resource-naam gevolgd door de veldnaam, met daartussen een punt. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/expand.feature)"
+          required: false
+          schema:
+            type: string
         - in: query
           name: burgerservicenummer
           description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
@@ -240,12 +240,6 @@ paths:
       operationId: ingeschrevenNatuurlijkPersoon
       description: "Het ophalen de actuele gegevens van een Ingeschreven Persoon, inclusief verblijfplaats, kinderen, partners en ouders. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen."
       parameters: 
-        - in: query
-          name: expand
-          description: "Hier kan aangegeven worden welke gerelateerde resources meegeladen moeten worden. Resources en velden van resources die gewenst zijn kunnen in de expand parameter kommagescheiden worden opgegeven. Specifieke velden van resource kunnen worden opgegeven door het opgeven van de resource-naam gevolgd door de veldnaam, met daartussen een punt. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/expand.feature)"
-          required: false
-          schema:
-            type: string
         - in: path
           name: burgerservicenummer
           description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn."
@@ -254,13 +248,19 @@ paths:
             type: string
             maxLength: 9
             minLength: 9
-        - in: query
+        - in: header
           name: api-version
           description: "Bevat de versie van de aan te roepen API conform [Landelijke API-strategie](https://geonovum.github.io/KP-APIs/#versioning)."
           required: false
           schema:
             type: string
             example: 1.0.1
+        - in: query
+          name: expand
+          description: "Hier kan aangegeven worden welke gerelateerde resources meegeladen moeten worden. Resources en velden van resources die gewenst zijn kunnen in de expand parameter kommagescheiden worden opgegeven. Specifieke velden van resource kunnen worden opgegeven door het opgeven van de resource-naam gevolgd door de veldnaam, met daartussen een punt. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/expand.feature)"
+          required: false
+          schema:
+            type: string
         - in: query
           name: fields
           description: "Geeft de mogelijkheid de inhoud van de body van het antwoord naar behoefte aan te passen. Bevat een door komma's gescheiden lijst van veldennamen. Als niet-bestaande veldnamen worden meegegeven wordt een 400 Bad Request teruggegeven. Wanneer de parameter fields niet is opgenomen, worden alle gedefinieerde velden die een waarde hebben teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature)"
@@ -331,7 +331,7 @@ paths:
           schema:
             type: string
             maxLength: 36
-        - in: query
+        - in: header
           name: api-version
           description: "Bevat de versie van de aan te roepen API conform [Landelijke API-strategie](https://geonovum.github.io/KP-APIs/#versioning)."
           required: false
@@ -393,7 +393,7 @@ paths:
             type: string
             maxLength: 9
             minLength: 9
-        - in: query
+        - in: header
           name: api-version
           description: "Bevat de versie van de aan te roepen API conform [Landelijke API-strategie](https://geonovum.github.io/KP-APIs/#versioning)."
           required: false
@@ -462,7 +462,7 @@ paths:
           schema:
             type: string
             maxLength: 36
-        - in: query
+        - in: header
           name: api-version
           description: "Bevat de versie van de aan te roepen API conform [Landelijke API-strategie](https://geonovum.github.io/KP-APIs/#versioning)."
           required: false
@@ -524,7 +524,7 @@ paths:
             type: string
             maxLength: 9
             minLength: 9
-        - in: query
+        - in: header
           name: api-version
           description: "Bevat de versie van de aan te roepen API conform [Landelijke API-strategie](https://geonovum.github.io/KP-APIs/#versioning)."
           required: false
@@ -593,7 +593,7 @@ paths:
           schema:
             type: string
             maxLength: 36
-        - in: query
+        - in: header
           name: api-version
           description: "Bevat de versie van de aan te roepen API conform [Landelijke API-strategie](https://geonovum.github.io/KP-APIs/#versioning)."
           required: false
@@ -655,7 +655,7 @@ paths:
             type: string
             maxLength: 9
             minLength: 9
-        - in: query
+        - in: header
           name: api-version
           description: "Bevat de versie van de aan te roepen API conform [Landelijke API-strategie](https://geonovum.github.io/KP-APIs/#versioning)."
           required: false
@@ -716,7 +716,7 @@ paths:
           schema:
             type: string
             maxLength: 9
-        - in: query
+        - in: header
           name: api-version
           description: "Bevat de versie van de aan te roepen API conform [Landelijke API-strategie](https://geonovum.github.io/KP-APIs/#versioning)."
           required: false
