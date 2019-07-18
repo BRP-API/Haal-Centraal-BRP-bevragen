@@ -1949,7 +1949,7 @@ components:
       type: "string"
       description: "De mogelijke waarden van de aanduiding van inhouding of vermissing\
         \ van een Nederlands reisdocument. Zie logisch ontwerp BRP bij de stamtabellen:\n\
-        * `Ingehouden_of_ingeleverd` - I\n* `Vermist` - V\n* `Rechtswege` - R\n* `Niet_in_bezit_van`\
+        * `ingehouden_of_ingeleverd` - I\n* `vermist` - V\n* `rechtswege` - R\n* `niet_in_bezit_van`\
         \ - N"
       enum:
       - "ingehouden_of_ingeleverd"
@@ -1958,8 +1958,8 @@ components:
       - "niet_in_bezit_van"
     AanduidingBijzonderNederlanderschap_enum:
       type: "string"
-      description: "De aanduiding van het bijzonder Nederlanderschap:\n* `behandeld_als_Nederlander`\
-        \ - B\n* `vastgesteld_niet_Nederlander` - V"
+      description: "De aanduiding van het bijzonder Nederlanderschap:\n* `behandeld_als_nederlander`\
+        \ - B\n* `vastgesteld_niet_nederlander` - V"
       enum:
       - "behandeld_als_nederlander"
       - "vastgesteld_niet_nederlander"
@@ -1974,8 +1974,8 @@ components:
     Geslacht_enum:
       type: "string"
       description: "Een aanduiding die aangeeft dat de ingeschrevene een man of een\
-        \ vrouw is, of dat het geslacht (nog) onbekend is:\n* `Man` - M\n* `Vrouw`\
-        \ - V\n* `Onbekend` - O"
+        \ vrouw is, of dat het geslacht (nog) onbekend is:\n* `man` - M\n* `vrouw`\
+        \ - V\n* `onbekend` - O"
       enum:
       - "man"
       - "vrouw"
@@ -1995,15 +1995,15 @@ components:
       - "ouder1_en_ouder2"
     OuderAanduiding_enum:
       type: "string"
-      description: "Aanduiding om welke ouder het gaat volgens de GBA:\n* `Ouder1`\
-        \ - 1\n* `Ouder2` - 2"
+      description: "Aanduiding om welke ouder het gaat volgens de GBA:\n* `ouder1`\
+        \ - 1\n* `ouder2` - 2"
       enum:
       - "ouder1"
       - "ouder2"
     RedenOpschortingBijhouding_enum:
       type: "string"
       description: "Redenen voor opschorting van de bijhouding.:\n* `overlijden` -\
-        \ O\n* `emigratie` - E\n* `Ministerieel_besluit` - M\n* `PL_aangelegd_in_de_RNI`\
+        \ O\n* `emigratie` - E\n* `ministerieel_besluit` - M\n* `pl_aangelegd_in_de_rni`\
         \ - R\n* `fout` - F"
       enum:
       - "overlijden"
@@ -2013,7 +2013,7 @@ components:
       - "fout"
     SoortAdres_enum:
       type: "string"
-      description: "Aanduiding van het soort adres.:\n* `Woonadres` - W\n* `Briefadres`\
+      description: "Aanduiding van het soort adres.:\n* `woonadres` - W\n* `briefadres`\
         \ - B"
       enum:
       - "woonadres"
