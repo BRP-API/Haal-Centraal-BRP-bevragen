@@ -1896,28 +1896,28 @@ components:
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
-        ingeschrevenPersoon:
+        ingeschrevenpersoon:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
     Kind_links:
       type: "object"
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
-        ingeschrevenPersoon:
+        ingeschrevenpersoon:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
     Partner_links:
       type: "object"
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
-        ingeschrevenPersoon:
+        ingeschrevenpersoon:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
     Reisdocument_links:
       type: "object"
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
-        ingeschrevenpersooon:
+        ingeschrevenpersoon:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
     IngeschrevenPersoon_embedded:
       type: "object"
@@ -1952,17 +1952,17 @@ components:
         * `Ingehouden_of_ingeleverd` - I\n* `Vermist` - V\n* `Rechtswege` - R\n* `Niet_in_bezit_van`\
         \ - N"
       enum:
-      - "Ingehouden_of_ingeleverd"
-      - "Vermist"
-      - "Rechtswege"
-      - "Niet_in_bezit_van"
+      - "ingehouden_of_ingeleverd"
+      - "vermist"
+      - "rechtswege"
+      - "niet_in_bezit_van"
     AanduidingBijzonderNederlanderschap_enum:
       type: "string"
       description: "De aanduiding van het bijzonder Nederlanderschap:\n* `behandeld_als_Nederlander`\
         \ - B\n* `vastgesteld_niet_Nederlander` - V"
       enum:
-      - "behandeld_als_Nederlander"
-      - "vastgesteld_niet_Nederlander"
+      - "behandeld_als_nederlander"
+      - "vastgesteld_niet_nederlander"
     AanduidingBijHuisnummer_enum:
       type: "string"
       description: "De aanduiding die wordt gebruikt voor adressen die niet zijn voorzien\
@@ -1977,9 +1977,9 @@ components:
         \ vrouw is, of dat het geslacht (nog) onbekend is:\n* `Man` - M\n* `Vrouw`\
         \ - V\n* `Onbekend` - O"
       enum:
-      - "Man"
-      - "Vrouw"
-      - "Onbekend"
+      - "man"
+      - "vrouw"
+      - "onbekend"
     IndicatieGezagMinderjarige_enum:
       type: "string"
       description: "Een aanduiding die aangeeft wie belast is met het gezag over de\
@@ -1998,8 +1998,8 @@ components:
       description: "Aanduiding om welke ouder het gaat volgens de GBA:\n* `Ouder1`\
         \ - 1\n* `Ouder2` - 2"
       enum:
-      - "Ouder1"
-      - "Ouder2"
+      - "ouder1"
+      - "ouder2"
     RedenOpschortingBijhouding_enum:
       type: "string"
       description: "Redenen voor opschorting van de bijhouding.:\n* `overlijden` -\
@@ -2008,16 +2008,16 @@ components:
       enum:
       - "overlijden"
       - "emigratie"
-      - "Ministerieel_besluit"
-      - "PL_aangelegd_in_de_RNI"
+      - "ministerieel_besluit"
+      - "pl_aangelegd_in_de_rni"
       - "fout"
     SoortAdres_enum:
       type: "string"
       description: "Aanduiding van het soort adres.:\n* `Woonadres` - W\n* `Briefadres`\
         \ - B"
       enum:
-      - "Woonadres"
-      - "Briefadres"
+      - "woonadres"
+      - "briefadres"
     SoortVerbintenis_enum:
       type: "string"
       description: "Soort verbintenis van een bij de burgerlijke stand ingeschreven\
