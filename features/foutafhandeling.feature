@@ -54,8 +54,8 @@ Functionaliteit: Afhandeling van fouten
   | tabelwaarde      | Waarde komt niet voor in de tabel.                        | table        |
   | required         | Parameter is verplicht.                                   | required     |
   | parameters       | Parameter is niet verwacht.                               | unknownParam |
-  | fields           | Deel van de parameterwaarde is niet correct: {waarde}.    | fields       |
-  | expand           | Deel van de parameterwaarde is niet correct: {waarde}.    | expand       |
+  | fields           | Deel van de parameterwaarde niet correct: {waarde}.       | fields       |
+  | expand           | Deel van de parameterwaarde niet correct: {waarde}.       | expand       |
   | wildcard         | Incorrect gebruik van wildcard karakter {wildcard}.       | wildcard     |
 
   Bij een validatiefout op de expandparameter of fieldsparameter, wordt de plek binnen de parameterwaarde opgenomen waar de fout gevonden wordt.
