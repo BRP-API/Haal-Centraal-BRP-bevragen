@@ -21,11 +21,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
 
   Wanneer er meerdere ontbonden huwelijken/partnerschappen zijn en er geen actueel (niet ontbonden) huwelijk/partnerschap is en de aanschijfwijze is ongelijk aan 'E', wordt als partnernaam de naam van de laatst ontbinden relatie gebruikt.
 
-  De voorletters worden opgenomen als één (1) voorletter per voornaam, gevolgd door een punt (.).
-  Als een voornaam een samengestelde naam is gescheiden door een koppelteken (-), Dan wordt deze voornaam (ook) afgekort tot één voorletter.
-  Als een voornaam  begint met een dubbelklank (Th, Ph, Ch, IJ, enz.), Dan wordt deze voornaam (ook) afgekort tot één voorletter.
-  Als de rubriek Voornamen is gevuld met de standaardwaarde '.' (punt), Dan wordt geen extra (scheidings)punt toegevoegd; de inhoud van de attribuut voorletters is na afleiding Dan '.'
-  Zie de tabel "Voorbeelden: voornamen naar voorletters".
+  De voorletters worden opgenomen zoals beschreven in Voorletters.feature.
 
   Op basis van attribuut adellijkeTitel_predikaat wordt het de adelijke titel of het predikaat toegevoegd in de aanschrijfwijze. Zie ook de tabel "Voorbeelden: adelijke titels en predikaat" hieronder.
     Als de betrokkene beschikt over een predikaat, Dan wordt deze geplaatst vóór de voorletters.
@@ -67,12 +63,6 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | N | VL GN-GP | Groenen  | Franka             | F. Groenen-Groenink |
       | P | VL GP    | Groenink | Johan Frank Robert | J.F.R. Groenen |
       | V | VL GP-GN | Groenlo  | Franka             | F. Groenen-Groenlo |
-
-    Voorbeelden: voornamen naar voorletters
-      | testsituatie | geslachtsnaam | voornamen | aanschrijfwijze |
-      | Voornaam met twee-letter klank        | Groenen  | Theo Philip IJsbrand | T.P.I. Groenen |
-      | Dubbele voornaam met verbindingsteken | Groenen  | Anne-Fleur Belle     | A.B. Groenen |
-      | Geen voornaam (punt)                  | Groenen  | .                    | . Groenen |
 
     Voorbeelden: adelijke titels en predikaat
       | adellijkeTitel_predikaat | adellijkeTitel_predikaat partner | aanduidingAanschrijving | samenstelling aanschrijfwijze | geslachtsnaam | voornamen | aanschrijfwijze |
