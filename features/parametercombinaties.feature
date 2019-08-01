@@ -6,6 +6,8 @@ Functionaliteit: personen kunnen worden gezocht met bepaalde combinaties van par
   Er mag niet gezocht worden zonder zoekparamters.
   Bij het zoeken moet ten minste één van de volgende combinaties van parameters aanwezig zijn.
   - geslachtsnaam + geboortedatum
+  - geslachtsnaam + gemeentevaninschrijving
+  - burgerservicenummer
   - postcode + huisnummer
   - gemeentevaninschrijving + openbareruimtenaam + huisnummer
   - identificatiecodenummeraanduiding
