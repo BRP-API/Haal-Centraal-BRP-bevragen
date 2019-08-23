@@ -207,14 +207,14 @@ Volgens LO GBA zijn ook relaties die zijn beëindigd nog "actueel". Voor het zoe
 Wanneer wel behoefte is aan alle partner-relaties, inclusief relaties die al beëindigd zijn, kan hiervoor historisch zoeken op partners worden gebruikt.
 
 ## Opvragen van historie kan via specifieke endpoints
-Opvragen van historie wordt gedefinieerd in een aparte API specificatie.
+Opvragen van historie wordt gedefinieerd met aparte endpoints. Als een provider ervoor kiest om deze niet te implementeren wordt er een 501 geretourneerd. De historische bevraging krijgen dus resourcenaam waaruit blijkt dart het om een historische resource gaat. 
 Met deze API kan de historie op het betreffende aspect opgevraagd worden.
 
 Hiermee wordt het zoeken/raadplegen van de volgende historie ondersteund:
 - bewoningen (welke personen hebben een adres als verblijfplaats gehad)
-- verblijfplaatsen (welke verblijfplaatsen heeft een persoon gehad)
-- partners (welke partnerrelaties heeft een persoon gehad)
-- verblijftitels (welke verblijftitels heeft een persoon gehad)
+- verblijfplaatshistorie (welke verblijfplaatsen heeft een persoon gehad)
+- partnerhistorie (welke partnerrelaties heeft een persoon gehad)
+- verblijftitelhistorie (welke verblijftitels heeft een persoon gehad)
 
 
 Er kan gekozen worden om de status op peildatum te raadplegen met de queryparameter geldigOp.
