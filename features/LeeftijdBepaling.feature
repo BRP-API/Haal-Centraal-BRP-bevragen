@@ -19,24 +19,34 @@ Scenario: Volledig onbekend geboortedatum
 	Dan is attribuut leeftijd niet aanwezig
 
 Abstract Scenario: Jaar en maand van geboorte datum zijn bekend
-	Geboortedatum wordt gezet op de laatste dag van de geboorte maand
 	Gegeven een ingeschreven persoon met geboortedatum mei 1983
 	Als de ingeschreven persoon op <raadpleeg datum> wordt geraadpleegd
 	Dan heeft attribuut leeftijd de waarde <leeftijd>
 
 	Voorbeelden: 
-	| raadpleeg datum  | leeftijd |
-	| 31 mei 2019      | 36       |
-	| 30 november 2019 | 36       |
-	| 30 mei 2019      | 35       |
+	| raadpleeg datum | leeftijd          | omschrijving                                                                           |
+	| 31 mei 2019     | <niet aanwezig>   | In de geboorte maand weten we niet wanneer de persoon jarig is                         |
+	| 01 juni 2019    | 36                | Na de geboorte maand weten we zeker dat de persoon 1 jaar ouder is geworden            |
+	| 30 april 2019   | 35                | Voor de geboorte maand weten we zeker dat de persoon nog niet 1 jaar ouder is geworden |
 
-Abstract Scenario: Alleen jaar van geboorte datum is bekend
-	Geboortedatum wordt gezet op de laatste dag ven het geboorte jaar
+Scenario: Alleen jaar van geboorte datum is bekend
 	Gegeven een ingeschreven persoon met geboortedatum mei 1983
+	Als de ingeschreven persoon op <raadpleeg datum> wordt geraadpleegd
+	Dan is attribuut leeftijd niet aanwezig
+
+Scenario: Persoon is overleden
+	Gegeven een ingeschreven persoon met geboortedatum 26 mei 1953
+	En de ingeschreven persoon is overleden
+	Als de ingeschreven persoon op <raadpleeg datum> wordt geraadpleegd
+	Dan is attribuut leeftijd niet aanwezig
+
+Abstract Scenario: Geboren op 29 februari in een schrikkeljaar
+	Gegeven een ingeschreven persoon met 29 februari 1996
 	Als de ingeschreven persoon op <raadpleeg datum> wordt geraadpleegd
 	Dan heeft attribuut leeftijd de waarde <leeftijd>
 
-	Voorbeelden: 
+	Voorbeelden:
 	| raadpleeg datum  | leeftijd |
-	| 31 december 2019 | 36       |
-	| 30 december 2019 | 35       |
+	| 29 februari 2016 | 20       |
+	| 28 februari 2017 | 20       |
+	| 01 maart 2017    | 21       |
