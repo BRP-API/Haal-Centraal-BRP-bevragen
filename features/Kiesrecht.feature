@@ -9,9 +9,34 @@ Functionaliteit: Kiesrecht
 	De actuele situatie wordt getoond. Dus wanneer een uitsluiting in het verleden ligt, wordt die uitsluiting niet opgenomen in de API.
 
 	Opname van onbekende datums gebeurt op dezelfde manier als elders in de API.
+	Een onbekend datum wordt hetzelfde geïnterpreteerd en weergegeven dan het niet aanwezig zijn van die datum.
+
+	Vertaling van Europees kiesrecht
+		* Alleen wanneer 31.10 gelijk is aan 2 (= persoon ontvangt oproep), wordt europeesKiesrecht = true
+		* Alleen wanneer 31.10 gelijk is aan 1 (= persoon is uitgesloten) en 31.30 is leeg of de datum ligt in de toekomst, wordt europeesKiesrecht = false
+		* In alle andere gevallen wordt europeesKiesrecht niet opgenomen
+
+		| 31.10                       | 31.30             | europeesKiesrecht | einddatumUitsluitingEuropeesKiesrecht |
+		| leeg of afwezig             | leeg of afwezig   | afwezig           | afwezig                               |
+		| 1 = persoon is uitgesloten  | leeg of afwezig   | false             | afwezig                               |
+		| 1 = persoon is uitgesloten  | toekomstige datum | false             | overnemen uit 31.30                   |
+		| 1 = persoon is uitgesloten  | datum in verleden | afwezig           | afwezig                               |
+		| 2 = persoon ontvangt oproep | leeg of afwezig   | true              | afwezig                               |
+
+	Vertaling van kiesrecht
+		* Alleen wanneer 38.10 gelijk is aan "A" (persoon is uitgesloten) en 38.20 is leeg of de datum ligt in de toekomst, wordt kiesrecht = false
+		* In alle andere gevallen wordt kiesrecht niet opgenomen
+
+		| 38.10                      | 38.20             | kiesrecht | einddatumUitsluitingKiesrecht |
+		| leeg of afwezig            | leeg of afwezig   | afwezig   | afwezig                       |
+		| A = persoon is uitgesloten | leeg of afwezig   | false     | afwezig                       |
+		| A = persoon is uitgesloten | toekomstige datum | false     | overnemen uit 38.20           |
+		| A = persoon is uitgesloten | datum in verleden | afwezig   | afwezig                       |
+
 
 Scenario: de ingeschreven persoon is uitgesloten van Europees kiesrecht
 	Gegeven op de PL van een ingeschreven persoon is categorie 13, element 31.10 gelijk aan 1 (= persoon is uitgesloten)
+	En categorie 13, element 31.30 is niet aanwezig of heeft geen waarde
 	Als de ingeschreven persoon wordt geraadpleegd
 	Dan is europeesKiesrecht gelijk aan false
 
@@ -20,7 +45,7 @@ Scenario: de ingeschreven persoon ontvangt oproep voor Europees kiesrecht
 	Als de ingeschreven persoon wordt geraadpleegd
 	Dan is europeesKiesrecht gelijk aan true
 
-Scenario: de ingeschreven persoon is niet uitgesloten van Europees kiesrecht
+Scenario: voor de ingeschreven persoon is categorie 13 en/of groep 31 Europees kiesrecht niet aanwezig
 	Gegeven op de PL van een ingeschreven persoon is categorie 13, element 31.10 is leeg
 	Als de ingeschreven persoon wordt geraadpleegd
 	Dan is europeesKiesrecht niet aanwezig
