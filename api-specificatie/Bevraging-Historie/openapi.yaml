@@ -685,15 +685,6 @@ components:
             \ heeft als rol om aan te geven dat iemand zich vanuit het buitenland\
             \ gevestigd heeft. Deze indicator wordt altijd meegeleverd als de waarde\
             \ true is. Als de waarde false is wordt de indicator niet meegeleverd.</p></body>"
-        locatiebeschrijving:
-          type: "string"
-          title: "Locatiebeschrijving"
-          description: "<body>Een geheel of gedeeltelijke omschrijving van de ligging\
-            \ van een object.</body><body><p>Element 12.10 Een geheel of gedeeltelijke\
-            \ omschrijving van de ligging van een object, indien dit niet kan worden\
-            \ aangegeven in de groep 11 Adres.</p></body>"
-          maxLength: 35
-          example: "Naast de derde brug"
         naamOpenbareRuimte:
           type: "string"
           title: "Naam openbare ruimte"
