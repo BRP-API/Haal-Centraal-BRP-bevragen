@@ -862,7 +862,7 @@ components:
           example: "430422088"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
-        ouderaanduiding:
+        ouderAanduiding:
           $ref: "#/components/schemas/OuderAanduiding_enum"
         datumIngangFamilierechtelijkeBetrekking:
           $ref: "#/components/schemas/Datum_onvolledig"
