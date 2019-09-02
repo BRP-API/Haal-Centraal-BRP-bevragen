@@ -862,7 +862,7 @@ components:
           example: "430422088"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
-        ouder_aanduiding:
+        ouderaanduiding:
           $ref: "#/components/schemas/OuderAanduiding_enum"
         datumIngangFamilierechtelijkeBetrekking:
           $ref: "#/components/schemas/Datum_onvolledig"
@@ -913,11 +913,6 @@ components:
           description: "Leeftijd op het moment van bevragen"
           maximum: 999
           example: 12
-        thuiswonend:
-          type: "boolean"
-          title: "thuiswonend"
-          description: "Indicatie of het kind thuiswonend is"
-          example: "true"
         inOnderzoek:
           $ref: "#/components/schemas/KindInOnderzoek"
         naam:
@@ -1724,6 +1719,11 @@ components:
         \ : Verblijfstiteltabel, die aangeeft over welke verblijfsrechtelijke status\
         \ de ingeschrevene beschikt."
       properties:
+        datumOpneming:
+          type: "string"
+          title: "datumOpneming"
+          description: "Datum waarop de actualisering heeft plaatsgevonden."
+          format: "date"
         aanduiding:
           $ref: "#/components/schemas/Waardetabel"
         datumEinde:
@@ -1736,6 +1736,11 @@ components:
       type: "object"
       description: "In onderzoek indicators over de gegevens over de verblijfstitel."
       properties:
+        datumOpneming:
+          type: "boolean"
+          title: "datumOpneming"
+          description: "Indicator die aangeeft of het corresponderende gegeven voor\
+            \ deze verblijfstitel in onderzoek is."
         aanduiding:
           type: "boolean"
           title: "aanduiding"
@@ -1896,28 +1901,28 @@ components:
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
-        ingeschrevenpersoon:
+        ingeschrevenPersoon:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
     Kind_links:
       type: "object"
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
-        ingeschrevenpersoon:
+        ingeschrevenPersoon:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
     Partner_links:
       type: "object"
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
-        ingeschrevenpersoon:
+        ingeschrevenPersoon:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
     Reisdocument_links:
       type: "object"
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
-        ingeschrevenpersoon:
+        ingeschrevenPersoon:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
     IngeschrevenPersoon_embedded:
       type: "object"
