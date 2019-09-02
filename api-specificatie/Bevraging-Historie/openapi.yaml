@@ -171,6 +171,8 @@ paths:
           $ref: "#/components/responses/429"
         '500':
           $ref: "#/components/responses/500"
+        '501':
+          $ref: "#/components/responses/501"
         '503':
           $ref: "#/components/responses/503"
         'default':
@@ -262,6 +264,8 @@ paths:
           $ref: "#/components/responses/429"
         '500':
           $ref: "#/components/responses/500"
+        '501':
+          $ref: "#/components/responses/501"
         '503':
           $ref: "#/components/responses/503"
         'default':
@@ -353,6 +357,8 @@ paths:
           $ref: "#/components/responses/429"
         '500':
           $ref: "#/components/responses/500"
+        '501':
+          $ref: "#/components/responses/501"
         '503':
           $ref: "#/components/responses/503"
         'default':
@@ -444,6 +450,8 @@ paths:
           $ref: "#/components/responses/429"
         '500':
           $ref: "#/components/responses/500"
+        '501':
+          $ref: "#/components/responses/501"
         '503':
           $ref: "#/components/responses/503"
         'default':
@@ -1461,6 +1469,15 @@ components:
         application/problem+json:
           schema:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht500"
+    '501':
+      description: Not Implemented
+      headers:
+        api-version:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+      content:
+        application/problem+json:
+          schema:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht501"
     '503':
       description: Service Unavailable
       headers:
