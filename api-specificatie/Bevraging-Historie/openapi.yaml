@@ -17,45 +17,7 @@ paths:
   /bewoningen:
     get:
       operationId: getBewoningen
-      description: |
-        Het ophalen van de gegevens van een collectie Bewoningen. 
-        Een bewoning is een VERBLIJFPLAATS waar op enig moment daadwerkelijk minimaal 1 INGESCHREVEN PERSOON is ingeschreven 
-        
-
-        Op basis van de parameters wordt een meerdere bewoningen geretourneerd inclusief de bewoners van het betreffende verblijfplaats. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen.
-
-
-        1.  Postcode
-            -  verblijfplaats__postcode
-            -  verblijfplaats__huisnummer
-
-
-        2.  NaamOpenbareRuimte
-            -  verblijfplaats__naamOpenbareRuimte
-            -  verblijfplaats__gemeentevaninschrijving
-            -  verblijfplaats__huisnummer
-            
-
-        3.  Nummeraanduiding
-            -  verblijfsplaats__nummeraanduiding
-
-        De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters.
-
-        Overleden personen worden opgenomen in het zoekresultaat.
-        
-
-        Het resultaat bevat de verblijfsplaatshistorie waarvan de EINDdatumgeldigheidverblijfsplaats op of na de  datumVan ligt EN de BEGINdatum op of voor de DatumTotEnMet ligt.
-        
-
-        Of
-        
-
-        Het resultaat bevat de verblijfsplaats historie waarvan de begindatumgeldigheidverblijfsplaats voor op op de geldigOp ligt en de eindatumgeldigheidverblijfsplaats na of  op de geldigOp ligt. 
-
-
-        Als geldigOp is ingevuld mogen datumVan en datumTotenMet nietingevuld zijn. 
-
-        Er wordt niet op de gevonden adressen gesorteerd, maar per aders (bewoning) worden de bewoners wel gesorteerd op geldigVan.
+      description: <body> <p>Het ophalen van de gegevens van een collectie Bewoningen.<br />Een bewoning is een VERBLIJFPLAATS waar op enig moment daadwerkelijk minimaal 1 INGESCHREVEN PERSOON is ingeschreven.</p> <p><br />Op basis van de parameters wordt een meerdere bewoningen geretourneerd inclusief de bewoners van het betreffende verblijfplaats. Ten minste &eacute;&eacute;n van de volgende combinaties van parameters moet zijn opgenomen.</p> <p><br /> 1. Postcode<br /> - verblijfplaats__postcode<br /> - verblijfplaats__huisnummer</p> <p><br /> 2. NaamOpenbareRuimte<br /> - verblijfplaats__naamOpenbareRuimte<br /> - verblijfplaats__gemeentevaninschrijving<br /> - verblijfplaats__huisnummer</p> <p>3. Nummeraanduiding<br /> - verblijfplaats__nummeraanduiding</p> <p>De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters.</p> <p>Overleden personen worden opgenomen in het zoekresultaat.</p> <p>Het resultaat bevat de verblijfplaatshistorie waarvan de EINDdatumgeldigheidverblijfplaats op of na de datumVan ligt EN de BEGINdatum op of voor de DatumTotEnMet ligt.</p> <p>Of</p> <p>Het resultaat bevat de verblijfplaats historie waarvan de begindatumgeldigheidverblijfplaats voor op op de geldigOp ligt en de eindatumgeldigheidverblijfplaats na of op de geldigOp ligt.</p> <p> Als geldigOp is ingevuld mogen datumVan en datumTotenMet nietingevuld zijn.</p> <p>Er wordt niet op de gevonden adressen gesorteerd, maar per aders (bewoning) worden de bewoners wel gesorteerd op geldigVan.</p>
       parameters: 
         - in: header
           name: api-version
