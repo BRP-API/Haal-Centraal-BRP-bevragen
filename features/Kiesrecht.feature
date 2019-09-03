@@ -8,8 +8,8 @@ Functionaliteit: Kiesrecht
 
 	De actuele situatie wordt getoond. Dus wanneer een uitsluiting in het verleden ligt, wordt die uitsluiting niet opgenomen in de API.
 
-	Opname van onbekende datums gebeurt op dezelfde manier als elders in de API.
-	Een onbekend datum wordt hetzelfde geïnterpreteerd en weergegeven dan het niet aanwezig zijn van die datum.
+	Opname van (geheel of gedeeltelijk) onbekende datums gebeurt op dezelfde manier als andere (mogelijk onvolledige) datums elders in de API.
+	Een volledig onbekende datum wordt hetzelfde geïnterpreteerd en weergegeven als het niet aanwezig zijn van die datum.
 
 	Vertaling van Europees kiesrecht
 		* Alleen wanneer 31.10 gelijk is aan 2 (= persoon ontvangt oproep), wordt europeesKiesrecht = true
