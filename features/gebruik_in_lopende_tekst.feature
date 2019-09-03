@@ -145,10 +145,10 @@ Functionaliteit: Als gemeente wil ik de juiste en consistent naamgebruik in een 
     Als de ingeschreven persoon wordt geraadpleegd
     Dan is in het antwoord naam.aanschrijfwijze=de heer Roodt-Wit
 
-    Gegeven de ingeschreven persoon de heer J. Wit is getrouwd in 1958 met Roodt
-    En de ingeschreven persoon is getrouwd in 1961 met Geel
-    En het huwelijk met Geel is ontbonden in 1983
-    En het huwelijk met Roodt is ontbonden in 2006
+    Gegeven de ingeschreven persoon de heer J. Wit is getrouwd in 1958 met Zwart
+    En de ingeschreven persoon is getrouwd in 1961 met Blaauw
+    En het huwelijk met Blaauw is ontbonden in 1983
+    En het huwelijk met Zwart is ontbonden in 2006
     En de ingeschreven persoon heeft aanduidingAanschrijving='V'
     Als de ingeschreven persoon wordt geraadpleegd
-    Dan is in het antwoord naam.aanschrijfwijze=de heer Roodt-Wit
+    Dan is in het antwoord naam.aanhef=de heer Zwart-Wit
