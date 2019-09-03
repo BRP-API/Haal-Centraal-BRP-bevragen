@@ -60,7 +60,7 @@ Functionaliteit: Ouders van een ingeschreven persoon raadplegen
     En heeft deze ouder geboorte.land.landnaam=Frankrijk
     En heeft deze gevonden ouder een lege link ingeschrevenpersonen
 
-  Scenario: de ingeschreven persoon twee ouders
+  Scenario: de ingeschreven persoon heeft twee ouders
     Gegeven de te raadplegen persoon heeft meerdere (twee) ouders (Marie en Cornelis Petrus Johannus)
     Als de ouders worden geraadpleegd van de ingeschreven persoon met burgerservicenummer 999999011
     Dan is het aantal gevonden ouders 2
