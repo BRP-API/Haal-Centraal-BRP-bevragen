@@ -50,7 +50,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
 
   Wanneer er meerdere actuele (niet ontbonden) huwelijken/partnerschappen zijn en de aanschijfwijze is ongelijk aan 'Eigen', dan wordt als partnernaam de naam van de eerste partner (oudste relatie) gebruikt.
   Wanneer er meerdere ontbonden huwelijken/partnerschappen zijn en er geen actueel (niet ontbonden) huwelijk/partnerschap is en de aanschijfwijze is ongelijk aan 'Eigen', wordt als partnernaam de naam van de laatst ontbonden relatie gebruikt.
-  
+
 
   Abstract Scenario: De aanschrijfwijze wordt samengesteld op basis van aanduidingAanschrijving en naamgegevens van de persoon en de partner
     Als ingeschreven persoon wordt geraadpleegd

@@ -43,7 +43,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
 
   Als betrokkene een predikaat heeft (jonkvrouw of jonkheer)
   En betrokkene is getrouwd of geregistreerd partnerschap of is getrouwd geweest of heeft geregistreerd partnerschap gehad
-  Dan wordt de adellijke titel dan wel het predicaat niet gebruikt
+  Dan wordt het predikaat niet gebruikt
   En de persoon wordt dan aangesproken met “Geachte mevrouw” of “Geachte heer” gevolgd door de samengestelde naam
 
   Als betrokkene geen adellijke titel of predicaat heeft
@@ -114,10 +114,10 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
       | adellijkeTitel_predikaat | soortVerbintenis | Ontbinding huwelijk/geregistreerd partnerschap | aanhef                    |
       | Jonkheer                 | Geen             | Geen                                           | Hoogwelgeboren heer       |
       | Jonkvrouw                | Geen             | Geen                                           | Hoogwelgeboren vrouwe     |
-      | Jonkheer                 | Huwelijk         | Niet                                           | Geachte heer In het Veld  |
-      | Jonkheer                 | Partnerschap     | Niet                                           | Geachte heer In het Veld  |
-      | Jonkheer                 | Huwelijk         | Ja                                             | Geachte heer In het Veld  |
-      | Jonkheer                 | Huwelijk         | Niet                                           | Geachte heer In het Veld  |
+      | Jonkheer                 | Huwelijk         | Niet                                           | Geachte heer Van Hoogh    |
+      | Jonkheer                 | Partnerschap     | Niet                                           | Geachte heer Van Hoogh    |
+      | Jonkheer                 | Huwelijk         | Ja                                             | Geachte heer Van Hoogh    |
+      | Jonkheer                 | Huwelijk         | Niet                                           | Geachte heer Van Hoogh    |
 
     Voorbeelden: partner heeft adellijke titel of predikaat
       | geslachtsaanduiding | geslachtsaanduiding partner | adellijkeTitel_predikaat partner | aanduidingNaamgebruik | aanschrijfwijze | aanhef |
@@ -136,3 +136,28 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
       | V | M | Jonkheer | Partner na eigen      | A.C. van der Veen-van den Aedel         | Geachte mevrouw Van der Veen-van den Aedel |
       | V | M | Jonkheer | Partner               | A.C. van den Aedel                      | Geachte mevrouw Van den Aedel              |
       | V | M | Jonkheer | Partner voor eigen    | A.C. van den Aedel-van der Veen         | Geachte mevrouw Van den Aedel-van der Veen |
+
+  Scenario: meerdere actuele relaties
+    Gegeven de ingeschreven persoon de heer F.C. Groen is getrouwd in 1958 met Geel
+    En de ingeschreven persoon is getrouwd in 1961 met Roodt
+    En geen van beide relaties is beëindigd
+    En de ingeschreven persoon heeft aanduidingAanschrijving='V'
+    Als de ingeschreven persoon wordt geraadpleegd
+    Dan is in het antwoord naam.aanhef=Geachte heer Geel-Groen
+
+  Scenario: meerdere ontbonden relaties
+    Gegeven de ingeschreven persoon de heer J. Wit is getrouwd in 1958 met Geel
+    En de ingeschreven persoon is getrouwd in 1961 met Roodt
+    En het huwelijk met Geel is ontbonden in 1960
+    En het huwelijk met Roodt is ontbonden in 2006
+    En de ingeschreven persoon heeft aanduidingAanschrijving='V'
+    Als de ingeschreven persoon wordt geraadpleegd
+    Dan is in het antwoord naam.aanhef=Geachte heer Roodt-Wit
+
+    Gegeven de ingeschreven persoon de heer J. Wit is getrouwd in 1958 met Zwart
+    En de ingeschreven persoon is getrouwd in 1961 met Blaauw
+    En het huwelijk met Blaauw is ontbonden in 1983
+    En het huwelijk met Zwart is ontbonden in 2006
+    En de ingeschreven persoon heeft aanduidingAanschrijving='V'
+    Als de ingeschreven persoon wordt geraadpleegd
+    Dan is in het antwoord naam.aanhef=Geachte heer Zwart-Wit
