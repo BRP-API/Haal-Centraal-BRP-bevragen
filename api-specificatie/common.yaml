@@ -228,6 +228,22 @@ components:
             detail: The server encountered an unexpected condition which prevented it from fulfilling the request.
             instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
             code: serverError
+    '501':
+      description: Not Implemented
+      headers:
+        api-version:
+          $ref: "#/components/headers/api_version"
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Foutbericht'
+          example:
+            type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.2 501 Not Implemented
+            title: Not Implemented
+            status: 501
+            detail: The server does not support the functionality required to fulfill the request.
+            instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+            code: notImplemented
     '503':
       description: Service Unavailable
       headers:
@@ -239,11 +255,11 @@ components:
             $ref: '#/components/schemas/Foutbericht'
           example:
             type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.4 503 Service Unavailable
-            title: Bronservice {bron} is niet beschikbaar.
+            title: Bronservice {bron} is tijdelijk niet beschikbaar.
             status: 503
             detail: The service is currently unable to handle the request due to a temporary overloading or maintenance of the server.
             instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-            code: notImplemented
+            code: notAvailable
     'default':
       description: Er is een onverwachte fout opgetreden
       headers:
