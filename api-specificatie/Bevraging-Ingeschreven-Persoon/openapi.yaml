@@ -1186,8 +1186,7 @@ components:
           type: "boolean"
           title: "uitgeslotenVanKiesrecht"
           description: "Een aanduiding die aangeeft of de persoon een oproep moet\
-            \ ontvangen voor verkiezingen. \n* true: persoon is uitgesloten \n* false: persoon\
-            \  ontvangt oproep"
+            \ ontvangen voor verkiezingen. \n* true: persoon is uitgesloten "
           example: "true"
         einddatumUitsluitingEuropeesKiesrecht:
           $ref: "#/components/schemas/Datum_onvolledig"
