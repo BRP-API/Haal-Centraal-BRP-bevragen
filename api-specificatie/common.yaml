@@ -81,7 +81,7 @@ components:
           type: string
           format: date
           example: 2018-09-09
-responses:
+  responses:
     '400':
       description: Bad Request
       headers:
