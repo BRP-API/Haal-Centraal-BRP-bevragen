@@ -1014,8 +1014,8 @@ components:
           $ref: "#/components/schemas/Geboorte"
         inOnderzoek:
           $ref: "#/components/schemas/PartnerInOnderzoek"
-        aangaanHuwelijk_Partnerschap:
-          $ref: "#/components/schemas/AangaanHuwelijk_Partnerschap"
+        aangaanHuwelijkPartnerschap:
+          $ref: "#/components/schemas/AangaanHuwelijkPartnerschap"
     PartnerHalCollectie:
       type: object
       properties:
@@ -1405,7 +1405,7 @@ components:
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
           $ref: "#/components/schemas/Datum_onvolledig"
-    AangaanHuwelijk_Partnerschap:
+    AangaanHuwelijkPartnerschap:
       type: "object"
       description: "Gegevens over het gesloten huwelijk of het aangegane geregistreerd\
         \ partnerschap. \n* **datum** : De datum waarop het huwelijk is voltrokken\
@@ -2157,9 +2157,9 @@ components:
         description: "<body><p>Gegevens over een gesloten huwelijk/geregistreerd partnerschap\
           \ van de ingeschrevene.</p></body>"
         properties:
-          ontbindingHuwelijk_Partnerschap:
-            $ref: "#/components/schemas/OntbindingHuwelijk_Partnerschap"
-    OntbindingHuwelijk_Partnerschap:
+          ontbindingHuwelijkPartnerschap:
+            $ref: "#/components/schemas/OntbindingHuwelijkPartnerschap"
+    OntbindingHuwelijkPartnerschap:
       type: "object"
       description: ""
       properties:
