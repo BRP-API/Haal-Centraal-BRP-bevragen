@@ -60,7 +60,11 @@ paths:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/api-version"
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/expand"
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/fields"
-        - $ref: '#/components/parameters/burgerservicenummer'
+        - in: query
+          name: burgerservicenummer
+          required: false
+          schema:
+            $ref: '#/components/schemas/Burgerservicenummer'
         - in: query
           name: geboorte__datum
           description: "Datum waarop de INGESCHREVEN NATUURLIJK PERSOON geboren is. Er kan alleen gezocht worden met een volledige geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature)"
@@ -809,30 +813,29 @@ components:
     burgerservicenummer:
       name: burgerservicenummer
       in: path
-      description: 'Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.'
       required: true
       schema:
-        type: string
-        maxLength: 9
-        minLength: 9
+        $ref: '#/components/schemas/Burgerservicenummer'
   schemas:
+    Burgerservicenummer:
+      type: "string"
+      title: "Burgerservicenummer"
+      description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet\
+        \ algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt\
+        \ dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat\
+        \ van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door\
+        \ elf. Er moeten dus 9 cijfers aanwezig zijn."
+      pattern: "^[0-9]{9}$"
+      maxLength: 9
+      minLength: 9
+      example: "555555021"
     IngeschrevenPersoon:
       type: "object"
       description: "Gegevens over de ingeschreven persoon. \n* **datumEersteInschrijving**\
         \ : Datum van eerste inschrijving in de GBA"
       properties:
         burgerservicenummer:
-          type: "string"
-          title: "Burgerservicenummer"
-          description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet\
-            \ algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt\
-            \ dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat\
-            \ van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door\
-            \ elf. Er moeten dus 9 cijfers aanwezig zijn."
-          pattern: "^[0-9]{9}$"
-          maxLength: 9
-          minLength: 9
-          example: "555555021"
+          $ref: '#/components/schemas/Burgerservicenummer'
         geheimhoudingPersoonsgegevens:
           type: "boolean"
           title: "Indicatie geheim"
@@ -898,17 +901,7 @@ components:
         \ : De datum waarop de familierechtelijke betrekking is ontstaan."
       properties:
         burgerservicenummer:
-          type: "string"
-          title: "Burgerservicenummer"
-          description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet\
-            \ algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt\
-            \ dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat\
-            \ van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door\
-            \ elf. Er moeten dus 9 cijfers aanwezig zijn."
-          pattern: "^[0-9]{9}$"
-          maxLength: 9
-          minLength: 9
-          example: "430422088"
+          $ref: '#/components/schemas/Burgerservicenummer'
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
         ouderAanduiding:
@@ -945,17 +938,7 @@ components:
       description: "Gegevens over een kind van de ingeschrevene."
       properties:
         burgerservicenummer:
-          type: "string"
-          title: "Burgerservicenummer"
-          description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet\
-            \ algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt\
-            \ dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat\
-            \ van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door\
-            \ elf. Er moeten dus 9 cijfers aanwezig zijn."
-          pattern: "^[0-9]{9}$"
-          maxLength: 9
-          minLength: 9
-          example: "430422088"
+          $ref: '#/components/schemas/Burgerservicenummer'
         leeftijd:
           type: "integer"
           title: "leeftijd"
@@ -993,17 +976,7 @@ components:
         \ van de ingeschrevene."
       properties:
         burgerservicenummer:
-          type: "string"
-          title: "Burgerservicenummer"
-          description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet\
-            \ algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt\
-            \ dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat\
-            \ van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door\
-            \ elf. Er moeten dus 9 cijfers aanwezig zijn."
-          pattern: "^[0-9]{9}$"
-          maxLength: 9
-          minLength: 9
-          example: "430422088"
+          $ref: '#/components/schemas/Burgerservicenummer'
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
         soortVerbintenis:
