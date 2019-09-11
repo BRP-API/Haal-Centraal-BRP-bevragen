@@ -848,7 +848,7 @@ components:
           maximum: 999
           example: 34
         datumEersteInschrijvingGBA:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         kiesrecht:
           $ref: "#/components/schemas/Kiesrecht"
         naam:
@@ -914,7 +914,7 @@ components:
         ouderAanduiding:
           $ref: "#/components/schemas/OuderAanduiding_enum"
         datumIngangFamilierechtelijkeBetrekking:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         naam:
           $ref: "#/components/schemas/Naam"
         inOnderzoek:
@@ -1064,11 +1064,11 @@ components:
         autoriteitAfgifte:
           $ref: "#/components/schemas/Waardetabel"
         datumEindeGeldigheid:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         datumInhoudingOfVermissing:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         datumUitgifte:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         soortReisdocument:
           $ref: "#/components/schemas/Waardetabel"
         inOnderzoek:
@@ -1137,7 +1137,7 @@ components:
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     OuderInOnderzoek:
       type: "object"
       description: "Indicators over het in onderzoek zijn van gegevens over de aangaan\
@@ -1159,7 +1159,7 @@ components:
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     Geboorte:
       allOf:
       - $ref: '#/components/schemas/Geboortedatum'
@@ -1198,7 +1198,7 @@ components:
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     Kiesrecht:
       type: "object"
       description: "Gegevens over het kiesrecht van de ingeschreven persoon. \n* **datumUitsluitingEuropeesKiesrecht**:\
@@ -1223,9 +1223,9 @@ components:
             \  ontvangt oproep"
           example: "true"
         einddatumUitsluitingEuropeesKiesrecht:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         einddatumUitsluitingKiesrecht:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     NaamPersoon:
       allOf: 
         - $ref: "#/components/schemas/Naam"
@@ -1272,7 +1272,7 @@ components:
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     Nationaliteit:
       type: "object"
       description: "Gegevens over een nationaliteit van de ingeschrevene. \n* **datumIngangGeldigheid**\
@@ -1284,7 +1284,7 @@ components:
         aanduidingBijzonderNederlanderschap:
           $ref: "#/components/schemas/AanduidingBijzonderNederlanderschap_enum"
         datumIngangGeldigheid:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         nationaliteit:
           $ref: "#/components/schemas/Waardetabel"
         redenOpname:
@@ -1313,7 +1313,7 @@ components:
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     OpschortingBijhouding:
       type: "object"
       description: "\n* **reden**: Een aanduiding van de reden waarom de bijhouding\
@@ -1325,7 +1325,7 @@ components:
         reden:
           $ref: "#/components/schemas/RedenOpschortingBijhouding_enum"
         datum:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     Overlijden:
       type: "object"
       description: "Gegevens over het overlijden van de ingeschreven persoon. \n*\
@@ -1342,7 +1342,7 @@ components:
             \ de waarde true is (dus als iemand overleden is). Als de waarde false\
             \ is wordt de indicator niet meegeleverd."
         datum:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         land:
           $ref: "#/components/schemas/Waardetabel"
         plaats:
@@ -1370,7 +1370,7 @@ components:
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     KindInOnderzoek:
       type: "object"
       description: "Indicators over het in onderzoek zijn van gegevens over de aangaan\
@@ -1382,7 +1382,7 @@ components:
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     PartnerInOnderzoek:
       type: "object"
       description: "Indicators over het in onderzoek zijn van gegevens over de aangaan\
@@ -1404,7 +1404,7 @@ components:
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     AangaanHuwelijkPartnerschap:
       type: "object"
       description: "Gegevens over het gesloten huwelijk of het aangegane geregistreerd\
@@ -1416,7 +1416,7 @@ components:
         \ de buitenlandse plaatsnaam of aanduiding."
       properties:
         datum:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         land:
           $ref: "#/components/schemas/Waardetabel"
         plaats:
@@ -1444,7 +1444,7 @@ components:
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     BinnenlandsAdres:
       type: object
       description: |
@@ -1582,13 +1582,13 @@ components:
             \ uit een situatie van vertrokken onbekend waarheen"
           example: "false"
         datumAanvangAdreshouding:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         datumIngangGeldigheid:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         datumInschrijvingInGemeente:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         datumVestigingInNederland:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         gemeenteVanInschrijving:
           $ref: "#/components/schemas/Waardetabel"
         landVanwaarIngeschreven:
@@ -1734,7 +1734,7 @@ components:
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     Gezagsverhouding:
       type: "object"
       description: "Gegevens betreffende het gezag over de ingeschrevene."
@@ -1765,7 +1765,7 @@ components:
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     Verblijfstitel:
       type: "object"
       description: "Gegevens over de verblijfsrechtelijke status van de ingeschrevene.\
@@ -1776,13 +1776,13 @@ components:
         \ de ingeschrevene beschikt."
       properties:
         datumOpneming:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         aanduiding:
           $ref: "#/components/schemas/Waardetabel"
         datumEinde:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         datumIngang:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         inOnderzoek:
           $ref: "#/components/schemas/VerblijfstitelInOnderzoek"
     VerblijfstitelInOnderzoek:
@@ -1810,7 +1810,7 @@ components:
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze verblijfstitel in onderzoek is."
         datumIngangOnderzoek:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     ReisdocumentInOnderzoek:
       type: "object"
       description: "Een groep van booleans om aan te geven welke gegevens van het\
@@ -1855,43 +1855,7 @@ components:
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
-          $ref: "#/components/schemas/Datum_onvolledig"
-    Datum_onvolledig:
-      type: "object"
-      description: "Gegevens over de datums die mogelijk niet volledig zijn, maar\
-        \ waarvan de bekende gedeeltes wel moeten kunnen worden uitgewisseld. Als\
-        \ de volledige datum bekend is worden alle elementen gevuld."
-      properties:
-        dag:
-          type: "integer"
-          title: "dag"
-          description: "De dag. Als de dag van de datum bekend is wordt deze hier\
-            \ ingevuld. Ook als de volledige datum bekend is."
-          minimum: 1
-          maximum: 31
-          example: 3
-        datum:
-          type: "string"
-          title: "datum"
-          description: "De volledige datum die in de `date` definitie past. Dit element\
-            \ wordt alleen gevuld als de volledige datum bekend is."
-          format: "date"
-          example: "1989-05-03"
-        jaar:
-          type: "integer"
-          title: "jaar"
-          description: "Het jaar van de datum. Als het jaar bekend is wordt dit element\
-            \ gevuld, ook als de volledige datum bekend is."
-          maximum: 9999
-          example: 1989
-        maand:
-          type: "integer"
-          title: "maand"
-          description: "De maand. Als de maand van een datum bekend is wordt deze\
-            \ hier ingevuld. Ook als de volledige datum is ingevuld."
-          minimum: 1
-          maximum: 12
-          example: 5
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     Waardetabel:
       type: "object"
       description: "Generieke tabel met waarden om om een code en omschrijving op\
@@ -2125,7 +2089,7 @@ components:
           \ de INGESCHREVEN PERSOON verblijf hield voor (her)vestiging in Nederland.</p></body>"
         properties:
           datumTot:
-            $ref: "#/components/schemas/Datum_onvolledig"
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     Verblijfplaatshistorie_links:
       type: "object"
       properties:
@@ -2164,7 +2128,7 @@ components:
       description: ""
       properties:
         datum:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         land:
           $ref: "#/components/schemas/Waardetabel"
         plaats:
@@ -2196,7 +2160,7 @@ components:
           description: "<body><p>Indicator die aangeeft of het corresponderende gegeven\
             \ voor deze persoon in onderzoek is.</p></body>"
         datumIngangOnderzoek:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     Partnerhistorie_links:
       type: "object"
       properties:
@@ -2249,4 +2213,4 @@ components:
         \ plaatsnaam of aanduiding.</p></body>"
       properties:
         datum:
-          $ref: "#/components/schemas/Datum_onvolledig"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
