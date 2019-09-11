@@ -357,3 +357,39 @@ components:
           type: string
           description: Beschrijving van de fout op de parameterwaarde
           example: Waarde is geen geldige integer.
+    Datum_onvolledig:
+      type: "object"
+      description: "Gegevens over de datums die mogelijk niet volledig zijn, maar\
+        \ waarvan de bekende gedeeltes wel moeten kunnen worden uitgewisseld. Als\
+        \ de volledige datum bekend is worden alle elementen gevuld."
+      properties:
+        dag:
+          type: "integer"
+          title: "dag"
+          description: "De dag. Als de dag van de datum bekend is wordt deze hier\
+            \ ingevuld. Ook als de volledige datum bekend is."
+          minimum: 1
+          maximum: 31
+          example: 3
+        datum:
+          type: "string"
+          title: "datum"
+          description: "De volledige datum die in de `date` definitie past. Dit element\
+            \ wordt alleen gevuld als de volledige datum bekend is."
+          format: "date"
+          example: "1989-05-03"
+        jaar:
+          type: "integer"
+          title: "jaar"
+          description: "Het jaar van de datum. Als het jaar bekend is wordt dit element\
+            \ gevuld, ook als de volledige datum bekend is."
+          maximum: 9999
+          example: 1989
+        maand:
+          type: "integer"
+          title: "maand"
+          description: "De maand. Als de maand van een datum bekend is wordt deze\
+            \ hier ingevuld. Ook als de volledige datum is ingevuld."
+          minimum: 1
+          maximum: 12
+          example: 5
