@@ -1,9 +1,9 @@
 openapi: 3.0.0
 servers:
   - description: "SwaggerHub API Auto Mocking"
-    url: https://virtserver.swaggerhub.com/VNGRealisatie/api/landelijke_tabellen/v1
+    url: https://virtserver.swaggerhub.com/VNGRealisatie/api/landelijke_tabellen/
   - description: "Referentie-implementatie"
-    url: https://www.voorbeeldgemeente.nl/api/landelijke_tabellen/v1
+    url: https://www.voorbeeldgemeente.nl/api/landelijke_tabellen/
 info:
   title: Landelijke tabellen
   description: "Koppelvlak voor het ontsluiten van landelijke tabellen die nu als pdf op de website van BZK worden gepubliceerd."
@@ -14,85 +14,6 @@ info:
     name: European Union Public License, version 1.2 (EUPL-1.2)
     url: https://eupl.eu/1.2/nl/
 paths:
-  /tabellen/adellijketitels_predikaten:
-    get:
-      operationId: getAdellijketitels_predikaten
-      description: "Het ophalen van de gegevens van de landelijke tabel Adellijke titel/predikaat (Tabel 38) Bij het zoeken op de omschrijving mag er gebruik wrden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ). Zoeken is **case-insensitive**."
-      parameters: 
-        - in: query
-          name: page
-          description: "Een pagina binnen de gepagineerde resultatenset."
-          required: false
-          schema:
-            type: integer
-            minimum: 1
-        - in: query
-          name: code
-          description: "De code van de Adellijke titel/predikaat"
-          required: false
-          schema:
-            type: string
-            maxLength: 2
-            example: G
-        - in: query
-          name: omschrijving
-          description: ""
-          required: false
-          schema:
-            type: string
-            example: Graaf
-        - in: query
-          name: soort
-          description: "De soort van de Adellijke titel/predikaat"
-          required: false
-          schema:
-              $ref: "#/components/schemas/AdellijketitePredikaat_enum"
-      responses:
-        '200':
-          description: "Zoekactie geslaagd"
-          headers:
-            api-version:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
-            warning:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/warning"
-            X-Pagination-Page:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Pagination_Page"
-            X-Pagination-Limit:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Pagination_Limit"
-            X-Rate-Limit-Limit:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Limit"
-            X-Rate-Limit-Remaining:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Remaining"
-            X-Rate-Limit-Reset:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Reset"
-          content:
-            application/hal+json:
-              schema:
-                $ref: '#/components/schemas/AdellijkeTitel_predikaatCollectie'
-        '401':
-          $ref: "#/components/responses/401"
-        '403':
-          $ref: "#/components/responses/403"
-        '404':
-          $ref: "#/components/responses/404"
-        '406':
-          $ref: "#/components/responses/406"
-        '409':
-          $ref: "#/components/responses/409"
-        '410':
-          $ref: "#/components/responses/410"
-        '415':
-          $ref: "#/components/responses/415"
-        '429':
-          $ref: "#/components/responses/429"
-        '500':
-          $ref: "#/components/responses/500"
-        '503':
-          $ref: "#/components/responses/503"
-        'default':
-          $ref: "#/components/responses/default"
-      tags: 
-      - Tabellen
   /tabellen/gemeenten:
     get:
       operationId: getGemeenten
@@ -147,45 +68,47 @@ paths:
           description: "Zoekactie geslaagd"
           headers:
             api-version:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml/components/headers/api_version"
             warning:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/warning"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml/components/headers/warning"
             X-Pagination-Page:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Pagination_Page"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml/components/headers/X_Pagination_Page"
             X-Pagination-Limit:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Pagination_Limit"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml/components/headers/X_Pagination_Limit"
             X-Rate-Limit-Limit:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Limit"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml/components/headers/X_Rate_Limit_Limit"
             X-Rate-Limit-Remaining:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Remaining"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml/components/headers/X_Rate_Limit_Remaining"
             X-Rate-Limit-Reset:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Reset"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml/components/headers/X_Rate_Limit_Reset"
           content:
             application/hal+json:
               schema:
-                 $ref: '#/components/schemas/GemeenteCollectie'
+                 $ref: '#/components/schemas/GemeenteHalCollectie'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/400"
         '401':
-          $ref: "#/components/responses/401"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/401"
         '403':
-          $ref: "#/components/responses/403"
-        '404':
-          $ref: "#/components/responses/404"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/403"
         '406':
-          $ref: "#/components/responses/406"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/406"
         '409':
-          $ref: "#/components/responses/409"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/409"
         '410':
-          $ref: "#/components/responses/410"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/410"
         '415':
-          $ref: "#/components/responses/415"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/415"
         '429':
-          $ref: "#/components/responses/429"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/429"
         '500':
-          $ref: "#/components/responses/500"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/501"
         '503':
-          $ref: "#/components/responses/503"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/503"
         'default':
-          $ref: "#/components/responses/default"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/default"
       tags: 
       - Tabellen
   /tabellen/gemeenten/{code}:
@@ -206,135 +129,47 @@ paths:
           description: "Zoekactie geslaagd"
           headers:
             api-version:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml/components/headers/api_version"
             warning:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/warning"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml/components/headers/warning"
             X-Rate-Limit-Limit:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Limit"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml/components/headers/X_Rate_Limit_Limit"
             X-Rate-Limit-Remaining:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Remaining"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml/components/headers/X_Rate_Limit_Remaining"
             X-Rate-Limit-Reset:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Reset"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml/components/headers/X_Rate_Limit_Reset"
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Gemeente'
+                $ref: '#/components/schemas/GemeenteHal'
         '400':
-          $ref: "#/components/responses/400"        
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/400"
         '401':
-          $ref: "#/components/responses/401"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/401"
         '403':
-          $ref: "#/components/responses/403"
-        '404':
-          $ref: "#/components/responses/404"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/403"
         '406':
-          $ref: "#/components/responses/406"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/406"
         '409':
-          $ref: "#/components/responses/409"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/409"
         '410':
-          $ref: "#/components/responses/410"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/410"
         '415':
-          $ref: "#/components/responses/415"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/415"
         '429':
-          $ref: "#/components/responses/429"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/429"
         '500':
-          $ref: "#/components/responses/500"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/501"
         '503':
-          $ref: "#/components/responses/503"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/503"
         'default':
-          $ref: "#/components/responses/default"
-      tags: 
-      - Tabellen
-  /tabellen/adellijketitels_predikaten/{code}:
-    get:
-      operationId: getAdellijketitel_predikaat
-      description: "Het ophalen van de gegevens van de landelijke tabel Adellijke titel/predikaat (Tabel 38)"
-      parameters:
-        - in: path
-          name: code
-          description: "De code van de Adellijke titel/predikaat"
-          required: true
-          schema:
-            type: string
-            maxLength: 4
-            minLength: 4
-      responses:
-        '200':
-          description: "Zoekactie geslaagd"
-          headers:
-            api-version:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
-            warning:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/warning"
-            X-Rate-Limit-Limit:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Limit"
-            X-Rate-Limit-Remaining:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Remaining"
-            X-Rate-Limit-Reset:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/X_Rate_Limit_Reset"
-          content:
-            application/hal+json:
-              schema:
-                $ref: '#/components/schemas/AdellijkeTitel_predikaat'
-        '400':
-          $ref: "#/components/responses/400"
-        '401':
-          $ref: "#/components/responses/401"
-        '403':
-          $ref: "#/components/responses/403"
-        '404':
-          $ref: "#/components/responses/404"
-        '406':
-          $ref: "#/components/responses/406"
-        '409':
-          $ref: "#/components/responses/409"
-        '410':
-          $ref: "#/components/responses/410"
-        '415':
-          $ref: "#/components/responses/415"
-        '429':
-          $ref: "#/components/responses/429"
-        '500':
-          $ref: "#/components/responses/500"
-        '503':
-          $ref: "#/components/responses/503"
-        'default':
-          $ref: "#/components/responses/default"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/default"
       tags: 
       - Tabellen
 components:
   schemas:
-    AdellijkeTitel_predikaat:
-      type: "object"
-      description: ""
-      properties:
-        code:
-          type: "string"
-          title: "code"
-          description: "De code van de Adellijke titel/predikaat"
-          maxLength: 2
-          example: "G"
-        omschrijving:
-          type: "string"
-          title: "omschrijving"
-          description: ""
-          example: "Graaf"
-        soort:
-          $ref: "#/components/schemas/AdellijketitePredikaat_enum"
-        _links:
-          $ref: "#/components/schemas/AdellijkeTitel_predikaat_links"
-    AdellijkeTitel_predikaatCollectie:
-      type: object
-      properties:
-        _links:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalPaginationLinks"
-        _embedded:
-          type: object
-          properties:
-            adellijketitels_predikaten:
-              type: array
-              items:
-                $ref: '#/components/schemas/AdellijkeTitel_predikaat'
     Gemeente:
       type: "object"
       description: "Een opsomming van alle huidige en voormalige landen met hun codes,\
@@ -370,151 +205,33 @@ components:
           description: ""
           maxLength: 80
           example: "Tytsjerksteradiel"
-        _links:
-          $ref: "#/components/schemas/Gemeente_links"
-    GemeenteCollectie:
+    GemeenteHal:
+      allOf:
+        - $ref: "#/components/schemas/Gemeente"
+        - type: "object"
+          properties:
+            _links:
+              $ref: "#/components/schemas/Gemeente_links"
+    GemeenteHalCollectie:
       type: "object"
       properties:
         _links:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalPaginationLinks"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalPaginationLinks"
         _embedded:
           type: object
           properties:
             gemeenten:
               type: array
               items:
-                $ref: '#/components/schemas/Gemeente'
-    AdellijkeTitel_predikaat_links:
-      type: "object"
-      properties:
-        self:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
+                $ref: '#/components/schemas/GemeenteHal'
     Gemeente_links:
       type: "object"
       properties:
         self:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalLink"
         gemeenten:
-          title: "overgegaanIn"
-          type: "object"
-          description: "De gemeente waarin deze gemeente is overgegaan bij een gemeentelijke herindeling. "
-          properties:
-            href:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
-    AdellijketitePredikaat_enum:
-      type: "string"
-      description: "Een aanduiding die aangeeft dat de ingeschrevene een man of een\
-        \ vrouw is, of dat het geslacht (nog) onbekend is:\n* `titel` - titel\n* `predikaat`\
-        \ - predikaat"
-      enum:
-      - "titel"
-      - "predikaat"
-  responses:
-    '400':
-      description: Bad Request
-      headers:
-        api-version:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
-      content:
-        application/problem+json:
-          schema:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/ValidatieFoutbericht"
-    '401':
-      description: Unauthorized
-      headers:
-        api-version:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
-      content:
-        application/problem+json:
-          schema:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht401"
-    '403':
-      description: Forbidden
-      headers:
-        api-version:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
-      content:
-        application/problem+json:
-          schema:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht403"
-    '404':
-      description: Not Found
-      headers:
-        api-version:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
-      content:
-        application/problem+json:
-          schema:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht404"
-    '406':
-      description: Not Acceptable
-      headers:
-        api-version:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
-      content:
-        application/problem+json:
-          schema:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht406"
-    '409':
-      description: Conflict
-      headers:
-        api-version:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
-      content:
-        application/problem+json:
-          schema:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht409"
-    '410':
-      description: Gone
-      headers:
-        api-version:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
-      content:
-        application/problem+json:
-          schema:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht410"
-    '415':
-      description: Unsupported Media Type
-      headers:
-        api-version:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
-      content:
-        application/problem+json:
-          schema:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht415"
-    '429':
-      description: Too Many Requests
-      headers:
-        api-version:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
-      content:
-        application/problem+json:
-          schema:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht429"
-    '500':
-      description: Internal Server Error
-      headers:
-        api-version:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
-      content:
-        application/problem+json:
-          schema:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht500"
-    '503':
-      description: Service Unavailable
-      headers:
-        api-version:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
-      content:
-        application/problem+json:
-          schema:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht503"
-    'default':
-      description: Er is een onverwachte fout opgetreden.
-      headers:
-        api-version:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/headers.yaml#/api_version"
-      content:
-        application/problem+json:
-          schema:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Foutbericht"
+          allOf: 
+            - title: "overgegaanIn"
+              type: "object"
+              description: "De gemeente waarin deze gemeente is overgegaan bij een gemeentelijke herindeling. "
+            - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalLink"
