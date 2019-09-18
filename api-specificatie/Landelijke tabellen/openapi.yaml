@@ -7,7 +7,7 @@ servers:
 info:
   title: Landelijke tabellen
   description: "Koppelvlak voor het ontsluiten van landelijke tabellen die nu als pdf op de website van BZK worden gepubliceerd."
-  version: "1.0.0"
+  version: "1.0"
   contact:
     url: https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen
   license:
@@ -216,7 +216,7 @@ components:
       type: "object"
       properties:
         _links:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalPaginationLinks"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalPaginationLinks"
         _embedded:
           type: object
           properties:
@@ -228,11 +228,10 @@ components:
       type: "object"
       properties:
         self:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/HalLink"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalLink"
         gemeenten:
-          title: "overgegaanIn"
-          type: "object"
-          description: "De gemeente waarin deze gemeente is overgegaan bij een gemeentelijke herindeling. "
-          properties:
-            href:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/components.yaml#/Href"
+          allOf: 
+            - title: "overgegaanIn"
+              type: "object"
+              description: "De gemeente waarin deze gemeente is overgegaan bij een gemeentelijke herindeling. "
+            - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalLink"
