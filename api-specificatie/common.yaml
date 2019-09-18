@@ -323,7 +323,7 @@ components:
           $ref: "#/components/schemas/HalLink"
     HalPaginationLinks:
       allOf:
-      - $ref: "#/HalCollectionLinks"
+      - $ref: "#/components/schemas/HalCollectionLinks"
       - type: "object"
         properties:
           first:
