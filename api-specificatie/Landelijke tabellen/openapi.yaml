@@ -7,7 +7,7 @@ servers:
 info:
   title: Landelijke tabellen
   description: "Koppelvlak voor het ontsluiten van landelijke tabellen die nu als pdf op de website van BZK worden gepubliceerd."
-  version: "1.0"
+  version: "1.0.0"
   contact:
     url: https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen
   license:
@@ -35,29 +35,8 @@ paths:
             maxLength: 4
             example: 0737
         - in: query
-          name: datumeinde
-          description: "Einddatum van de geldigheid van de gegevens."
-          required: false
-          schema:
-            type: string
-            format: date
-        - in: query
-          name: datumingang
-          description: "Begindatum van de geldigheid van de gegevens"
-          required: false
-          schema:
-            type: string
-            format: date
-        - in: query
-          name: nieuwecode
-          description: "Code van de nieuwegevormde gemeente waarin deze gemeente is overgegaan."
-          required: false
-          schema:
-            type: string
-            maxLength: 4
-        - in: query
           name: omschrijving
-          description: ""
+          description: "De gemeentenaam zoals opgenomen in de Gemeentetabel van de GBA.** Bij deze query-parameter is het gebruik van een <a href='https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature'> <b>wildcard </b></a> toegestaan in combinatie met minimaal 2 karakters. **Zoeken met tekstvelden** is <a href='https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature'> <b>case-Insensitive </b></a>"
           required: false
           schema:
             type: string
@@ -68,19 +47,19 @@ paths:
           description: "Zoekactie geslaagd"
           headers:
             api-version:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml/components/headers/api_version"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/headers/api_version"
             warning:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml/components/headers/warning"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/headers/warning"
             X-Pagination-Page:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml/components/headers/X_Pagination_Page"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/headers/X_Pagination_Page"
             X-Pagination-Limit:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml/components/headers/X_Pagination_Limit"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/headers/X_Pagination_Limit"
             X-Rate-Limit-Limit:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml/components/headers/X_Rate_Limit_Limit"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/headers/X_Rate_Limit_Limit"
             X-Rate-Limit-Remaining:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml/components/headers/X_Rate_Limit_Remaining"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/headers/X_Rate_Limit_Remaining"
             X-Rate-Limit-Reset:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml/components/headers/X_Rate_Limit_Reset"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/headers/X_Rate_Limit_Reset"
           content:
             application/hal+json:
               schema:
@@ -129,15 +108,15 @@ paths:
           description: "Zoekactie geslaagd"
           headers:
             api-version:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml/components/headers/api_version"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/headers/api_version"
             warning:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml/components/headers/warning"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/headers/warning"
             X-Rate-Limit-Limit:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml/components/headers/X_Rate_Limit_Limit"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/headers/X_Rate_Limit_Limit"
             X-Rate-Limit-Remaining:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml/components/headers/X_Rate_Limit_Remaining"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/headers/X_Rate_Limit_Remaining"
             X-Rate-Limit-Reset:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml/components/headers/X_Rate_Limit_Reset"
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/headers/X_Rate_Limit_Reset"
           content:
             application/hal+json:
               schema:
@@ -148,6 +127,8 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/401"
         '403':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/403"
+        '404':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/404"
         '406':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/406"
         '409':
@@ -229,7 +210,7 @@ components:
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalLink"
-        gemeenten:
+        overgegaanIn:
           allOf: 
             - title: "overgegaanIn"
               type: "object"
