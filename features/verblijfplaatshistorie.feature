@@ -16,12 +16,13 @@ Functionaliteit: Tonen van verblijfplaatsen
   Bij een historische verblijfplaats wordt een datumTot opgenomen, die gelijk is aan de datum aanvang adreshouding van de daarop volgende (actuele of historische) verblijfplaats.
 
   Wanneer in de registratie voor de persoon meer dan één verblijfplaats, actueel (categorie 8) of historisch (categorie 58), bevat met exact dezelfde datum aanvang adreshouding, dan wordt alleen het voorkomen met de meest recente datum ingang geldigheid opgenomen. Dit speelt bijvoorbeeld wanneer er een correctie is uitgevoerd op de verblijfplaats, of wanneer er een adres hernummering is gedaan.
+  Wanneer verblijfplaatshistorie wordt samengesteld op basis van een GBA-V bevraging, en het autorisatieprofiel geeft geen toegang tot datum ingang geldigheid, dan wordt steeds het eerste (bovenste) voorkomen gebruikt, wanneer er meerdere voorkomens zijn met exact dezelfde datum aanvang adreshouding.
 
   Historische voorkomens die onjuist zijn worden niet opgenomen in het antwoord.
 
   De verblijfplaatsen worden in het antwoord aflopend gesorteerd op datum aanvang adreshouding, zodat de meest actuele bovenaan staat.
 
-  Wanneer een verblijfplaats een buitenlands adres betreft, wordt Datum aanvang adres buitenland (element 13.20) gebruikt in plaats van datum aanvang adreshouding. Dit betreft de sortering in het antwoord, de filtering op peildatum of periode, en het afleiden van de datumTot.
+  Wanneer een verblijfplaats een buitenlands adres betreft, wordt datumAanvangAdreshouding gevuld met de waarde in Datum aanvang adres buitenland (element 13.20). In dit geval wordt ook de sortering in het antwoord, de filtering op peildatum of periode, en het afleiden van de datumTot bepaald op basis van Datum aanvang adres buitenland (element 13.20).
 
   Wanneer een verblijfplaats, actueel of historisch, in onderzoek is, en dit onderzoek is niet afgerond (Datum einde onderzoek is leeg), wordt inOnderzoek gevuld voor betreffende verblijfplaats.
 
