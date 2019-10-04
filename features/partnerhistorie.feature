@@ -4,7 +4,7 @@ Functionaliteit: Tonen van Partnerhistorie
   Huidige en beëindigde huwelijken en geregistreerd partnerschappen van ingeschreven personen kunnen worden geraadpleegd.
 
   Alleen huwelijken en partnerschappen uit categorie 05 worden opgenomen in het antwoord.
-  Bij het ophalen van ontbonden huwelijken en partnerschappen uit GBA-V wordt Datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) uit de eerste historische huwelijk/partnerschap (categorie 55) na het actuele huwelijk/partnerschap waarin  Datum huwelijkssluiting/aangaan geregistreerd partnerschap een waarde heeft.
+  Bij het ophalen van ontbonden huwelijken en partnerschappen uit GBA-V wordt Datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) uit de eerste historische huwelijk/partnerschap (categorie 55) na het actuele huwelijk/partnerschap waarin Datum huwelijkssluiting/aangaan geregistreerd partnerschap een waarde heeft.
 
   De gebruiker kan het huwelijk of partnerschap raadplegen op een specifieke peildatum (in het verleden).
   De gebruiker kan de huwelijken of partnerschappen raadplegen over een specifieke periode.
@@ -19,7 +19,7 @@ Functionaliteit: Tonen van Partnerhistorie
 
   De huwelijken/partnerschappen worden in het antwoord aflopend gesorteerd op Datum huwelijkssluiting/aangaan geregistreerd partnerschap, zodat de meest laatst gesloten huwelijk/partnerschap bovenaan staat.
 
-  Als een huwelijk/partnerschap, actueel of ontbonden, in onderzoek is, en dit onderzoek is niet afgerond (Datum einde onderzoek is leeg), wordt inOnderzoek gevuld voor betreffende verblijfstitel.
+  Als een huwelijk/partnerschap, actueel of ontbonden, in onderzoek is, en dit onderzoek is niet afgerond (Datum einde onderzoek is leeg), wordt inOnderzoek gevuld voor betreffende huwelijk/partnerschap.
 
   Als wel het begin van de periode (datumvan) wordt opgegeven, maar geen einde van de periode (datumtotenmet), dan worden alle huwelijken/partnerschappen vanaf de datumvan in het antwoord opgenomen.
   Als wel het einde van de periode (datumtotenmet) wordt opgegeven, maar geen begin van de periode (datumtotenmet), dan worden alle huwelijken/partnerschappen tot en met de datumtotenmet in het antwoord opgenomen.
@@ -32,7 +32,7 @@ Functionaliteit: Tonen van Partnerhistorie
       | 55        | Björn     | 19870714              |                          |
       | 55        | Björn     | 19870714              |                          |
 
-    Gegeven de persoon met burgerservienummer 999995182 heeft de volgende huwelijken/partnerschappen in de registratie
+    En de persoon met burgerservienummer 999995182 heeft de volgende huwelijken/partnerschappen in de registratie
       | Categorie | Voornamen | Datum aangaan (06.10) | Datum ontbinding (07.10) |
       | 5         | Erik     |                        | 19730812                 |
       | 55        | Erik     |                        | 19730812                 |
@@ -45,66 +45,66 @@ Functionaliteit: Tonen van Partnerhistorie
       | 55        | Osama     | 20000115              |                          |
 
   Scenario: ontbonden en actueel huwelijk
-    Als de partnerhistorie wordt gevraagd van de persoon met burgerservicenummer 999991553 wordt geraadpleegd
+    Als de partnerhistorie wordt gevraagd van de persoon met burgerservicenummer 999991553
     Dan worden de huwelijken/partners teruggegeven in de volgorde en met waarden:
       | # | naam.voornamen | aangaanHuwelijkPartnerschap.datum | ontbindingHuwelijkPartnerschap.datum |
       | 0 | Karel          | 2009-11-02                        |                                      |
       | 1 | Björn          | 1987-07-14                        | 2008-07-06                           |
 
   Scenario: ontbonden en actueel huwelijk (in omgekeerde volgorde in registratie)
-    Als de partnerhistorie wordt gevraagd van de persoon met burgerservicenummer 999995182 wordt geraadpleegd
+    Als de partnerhistorie wordt gevraagd van de persoon met burgerservicenummer 999995182
     Dan worden de huwelijken/partners teruggegeven in de volgorde en met waarden:
       | # | naam.voornamen | aangaanHuwelijkPartnerschap.datum | ontbindingHuwelijkPartnerschap.datum |
       | 0 | Henk           | 1974-08-08                        |                                      |
       | 1 | Erik           | 1965-08-12                        | 1973-08-12                           |
 
   Scenario: ontbonden huwelijk
-    Als de partnerhistorie wordt gevraagd van de persoon met burgerservicenummer 999992806 wordt geraadpleegd
+    Als de partnerhistorie wordt gevraagd van de persoon met burgerservicenummer 999992806
     Dan worden de huwelijken/partners teruggegeven in de volgorde en met waarden:
       | # | naam.voornamen | aangaanHuwelijkPartnerschap.datum | ontbindingHuwelijkPartnerschap.datum |
       | 0 | Osama          | 2000-01-15                        | 2001-11-09                           |
 
   Scenario: peildatum in actueel huwelijk/partnerschap
-    Als de partnerhistorie wordt gevraagd van de persoon met burgerservicenummer 999991553 wordt geraadpleegd met peildatum "2019-09-11"
+    Als de partnerhistorie wordt gevraagd van de persoon met burgerservicenummer 999991553 met peildatum "2019-09-11"
     Dan worden de huwelijken/partners teruggegeven in de volgorde en met waarden:
       | # | naam.voornamen | aangaanHuwelijkPartnerschap.datum | ontbindingHuwelijkPartnerschap.datum |
       | 0 | Karel          | 2009-11-02                        |                                      |
 
   Scenario: peildatum in ontbonden huwelijk/partnerschap
-    Als de partnerhistorie wordt gevraagd van de persoon met burgerservicenummer 999991553 wordt geraadpleegd met peildatum "2006-01-01"
+    Als de partnerhistorie wordt gevraagd van de persoon met burgerservicenummer 999991553 met peildatum "2006-01-01"
     Dan worden de huwelijken/partners teruggegeven in de volgorde en met waarden:
       | # | naam.voornamen | aangaanHuwelijkPartnerschap.datum | ontbindingHuwelijkPartnerschap.datum |
       | 0 | Björn          | 1987-07-14                        | 2008-07-06                           |
 
   Scenario: peildatum gelijk aan datum ontbinding
-    Als de partnerhistorie wordt gevraagd van de persoon met burgerservicenummer 999991553 wordt geraadpleegd met peildatum "2008-07-06"
+    Als de partnerhistorie wordt gevraagd van de persoon met burgerservicenummer 999991553 met peildatum "2008-07-06"
     Dan wordt geen enkele partner teruggegeven
 
   Scenario: periode begint tijdens huwelijk/partnerschap
-    Als de partnerhistorie wordt gevraagd van de persoon met burgerservicenummer 999991553 wordt geraadpleegd met datumvan "2019-01-01"
+    Als de partnerhistorie wordt gevraagd van de persoon met burgerservicenummer 999991553 met datumvan "2019-01-01"
     Dan worden de huwelijken/partners teruggegeven in de volgorde en met waarden:
       | # | naam.voornamen | aangaanHuwelijkPartnerschap.datum | ontbindingHuwelijkPartnerschap.datum |
       | 0 | Karel          | 2009-11-02                        |                                      |
 
   Scenario: periode begint vóór aangaan huwelijk/partnerschap
-    Als de partnerhistorie wordt gevraagd van de persoon met burgerservicenummer 999991553 wordt geraadpleegd met datumvan "2009-01-01"
+    Als de partnerhistorie wordt gevraagd van de persoon met burgerservicenummer 999991553 met datumvan "2009-01-01"
     Dan worden de huwelijken/partners teruggegeven in de volgorde en met waarden:
       | # | naam.voornamen | aangaanHuwelijkPartnerschap.datum | ontbindingHuwelijkPartnerschap.datum |
       | 0 | Karel          | 2009-11-02                        |                                      |
 
   Scenario: periode over meerdere huwelijken/partnerschappen
-    Als de partnerhistorie wordt gevraagd van de persoon met burgerservicenummer 999991553 wordt geraadpleegd met datumvan "2008-01-01" en datumtotenmet "2009-12-31"
+    Als de partnerhistorie wordt gevraagd van de persoon met burgerservicenummer 999991553 met datumvan "2008-01-01" en datumtotenmet "2009-12-31"
     Dan worden de huwelijken/partners teruggegeven in de volgorde en met waarden:
       | # | naam.voornamen | aangaanHuwelijkPartnerschap.datum | ontbindingHuwelijkPartnerschap.datum |
       | 0 | Karel          | 2009-11-02                        |                                      |
       | 1 | Björn          | 1987-07-14                        | 2008-07-06                           |
 
   Scenario: datumvan gelijk aan datum ontbinding
-    Als de partnerhistorie wordt gevraagd van de persoon met burgerservicenummer 999992806 wordt geraadpleegd met datumvan "2001-11-09"
+    Als de partnerhistorie wordt gevraagd van de persoon met burgerservicenummer 999992806 met datumvan "2001-11-09"
     Dan wordt geen enkele partner teruggegeven
 
   Scenario: datumtotenmet gelijk aan datum aangaan
-    Als de partnerhistorie wordt gevraagd van de persoon met burgerservicenummer 999991553 wordt geraadpleegd met datumvan "2009-10-02" en datumtotenmet "2009-11-02"
+    Als de partnerhistorie wordt gevraagd van de persoon met burgerservicenummer 999991553 met datumvan "2009-10-02" en datumtotenmet "2009-11-02"
     Dan worden de huwelijken/partners teruggegeven in de volgorde en met waarden:
       | # | naam.voornamen | aangaanHuwelijkPartnerschap.datum | ontbindingHuwelijkPartnerschap.datum |
       | 0 | Karel          | 2009-11-02                        |                                      |
