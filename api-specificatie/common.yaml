@@ -441,3 +441,158 @@ components:
           minimum: 1
           maximum: 12
           example: 5
+    Geometry:
+      title: Geometry
+      description: GeoJSON geometry
+      required:
+      - type
+      type: object
+      properties:
+        type:
+          description: The geometry type
+          type: string
+          enum:
+          - Point
+          - MultiPoint
+          - LineString
+          - MultiLineString
+          - Polygon
+          - MultiPolygon
+          - Feature
+          - FeatureCollection
+          - GeometryCollection
+      discriminator:
+        propertyName: type
+      externalDocs:
+        url: https://tools.ietf.org/html/rfc7946#section-3.1
+    Point2D:
+      title: Point2D
+      description: A 2D point
+      type: array
+      items:
+        type: number
+      maxItems: 2
+      minItems: 2
+    Point:
+      description: GeoJSON point geometry
+      type: object
+      allOf:
+      - $ref: '#/Geometry'
+      - required:
+        - coordinates
+        type: object
+        properties:
+          coordinates:
+            $ref: '#/Point2D'
+      externalDocs:
+        url: https://tools.ietf.org/html/rfc7946#section-3.1.2
+    MultiPoint:
+      description: GeoJSON multi-point geometry
+      type: object
+      allOf:
+      - $ref: '#/Geometry'
+      - required:
+        - coordinates
+        type: object
+        properties:
+          coordinates:
+            type: array
+            items:
+              $ref: '#/Point2D'
+      externalDocs:
+        url: https://tools.ietf.org/html/rfc7946#section-3.1.3
+    LineString:
+      description: GeoJSON line-string geometry
+      type: object
+      allOf:
+      - $ref: '#/Geometry'
+      - required:
+        - coordinates
+        type: object
+        properties:
+          coordinates:
+            type: array
+            items:
+              $ref: '#/Point2D'
+            minItems: 2
+      externalDocs:
+        url: https://tools.ietf.org/html/rfc7946#section-3.1.4
+    MultiLineString:
+      description: GeoJSON multi-line-string geometry
+      type: object
+      allOf:
+      - $ref: '#/Geometry'
+      - required:
+        - coordinates
+        type: object
+        properties:
+          coordinates:
+            type: array
+            items:
+              type: array
+              items:
+                $ref: '#/Point2D'
+      externalDocs:
+        url: https://tools.ietf.org/html/rfc7946#section-3.1.5
+    Polygon:
+      description: GeoJSON polygon geometry
+      type: object
+      allOf:
+      - $ref: '#/Geometry'
+      - required:
+        - coordinates
+        type: object
+        properties:
+          coordinates:
+            type: array
+            items:
+              type: array
+              items:
+                $ref: '#/Point2D'
+      externalDocs:
+        url: https://tools.ietf.org/html/rfc7946#section-3.1.6
+    MultiPolygon:
+      description: GeoJSON multi-polygon geometry
+      type: object
+      allOf:
+      - $ref: '#/Geometry'
+      - required:
+        - coordinates
+        type: object
+        properties:
+          coordinates:
+            type: array
+            items:
+              type: array
+              items:
+                type: array
+                items:
+                  $ref: '#/Point2D'
+      externalDocs:
+        url: https://tools.ietf.org/html/rfc7946#section-3.1.7
+    GeometryCollection:
+      description: GeoJSON multi-polygon geometry
+      type: object
+      allOf:
+      - $ref: '#/Geometry'
+      - required:
+        - geometries
+        type: object
+        properties:
+          geometries:
+            type: array
+            items:
+              $ref: '#/Geometry'
+      externalDocs:
+        url: https://tools.ietf.org/html/rfc7946#section-3.1.8
+    GeoJSONGeometry:
+      title: GeoJSONGeometry
+      type: object
+      oneOf:
+      - $ref: '#/Point'
+      - $ref: '#/MultiPoint'
+      - $ref: '#/LineString'
+      - $ref: '#/MultiLineString'
+      - $ref: '#/Polygon'
+      - $ref: '#/MultiPolygon'
+      - $ref: '#/GeometryCollection'
