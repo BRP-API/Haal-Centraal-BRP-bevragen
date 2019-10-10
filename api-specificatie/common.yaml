@@ -477,20 +477,20 @@ components:
       description: GeoJSON point geometry
       type: object
       allOf:
-      - $ref: '#/Geometry'
+      - $ref: '#/components/schemas/Geometry'
       - required:
         - coordinates
         type: object
         properties:
           coordinates:
-            $ref: '#/Point2D'
+            $ref: '#/components/schemas/Point2D'
       externalDocs:
         url: https://tools.ietf.org/html/rfc7946#section-3.1.2
     MultiPoint:
       description: GeoJSON multi-point geometry
       type: object
       allOf:
-      - $ref: '#/Geometry'
+      - $ref: '#/components/schemas/Geometry'
       - required:
         - coordinates
         type: object
@@ -498,14 +498,14 @@ components:
           coordinates:
             type: array
             items:
-              $ref: '#/Point2D'
+              $ref: '#/components/schemas/Point2D'
       externalDocs:
         url: https://tools.ietf.org/html/rfc7946#section-3.1.3
     LineString:
       description: GeoJSON line-string geometry
       type: object
       allOf:
-      - $ref: '#/Geometry'
+      - $ref: '#/components/schemas/Geometry'
       - required:
         - coordinates
         type: object
@@ -513,7 +513,7 @@ components:
           coordinates:
             type: array
             items:
-              $ref: '#/Point2D'
+              $ref: '#/components/schemas/Point2D'
             minItems: 2
       externalDocs:
         url: https://tools.ietf.org/html/rfc7946#section-3.1.4
@@ -521,7 +521,7 @@ components:
       description: GeoJSON multi-line-string geometry
       type: object
       allOf:
-      - $ref: '#/Geometry'
+      - $ref: '#/components/schemas/Geometry'
       - required:
         - coordinates
         type: object
@@ -531,14 +531,14 @@ components:
             items:
               type: array
               items:
-                $ref: '#/Point2D'
+                $ref: '#/components/schemas/Point2D'
       externalDocs:
         url: https://tools.ietf.org/html/rfc7946#section-3.1.5
     Polygon:
       description: GeoJSON polygon geometry
       type: object
       allOf:
-      - $ref: '#/Geometry'
+      - $ref: '#/components/schemas/Geometry'
       - required:
         - coordinates
         type: object
@@ -548,14 +548,14 @@ components:
             items:
               type: array
               items:
-                $ref: '#/Point2D'
+                $ref: '#/components/schemas/Point2D'
       externalDocs:
         url: https://tools.ietf.org/html/rfc7946#section-3.1.6
     MultiPolygon:
       description: GeoJSON multi-polygon geometry
       type: object
       allOf:
-      - $ref: '#/Geometry'
+      - $ref: '#/components/schemas/Geometry'
       - required:
         - coordinates
         type: object
@@ -567,14 +567,14 @@ components:
               items:
                 type: array
                 items:
-                  $ref: '#/Point2D'
+                  $ref: '#/components/schemas/Point2D'
       externalDocs:
         url: https://tools.ietf.org/html/rfc7946#section-3.1.7
     GeometryCollection:
       description: GeoJSON multi-polygon geometry
       type: object
       allOf:
-      - $ref: '#/Geometry'
+      - $ref: '#/components/schemas/Geometry'
       - required:
         - geometries
         type: object
@@ -582,17 +582,17 @@ components:
           geometries:
             type: array
             items:
-              $ref: '#/Geometry'
+              $ref: '#/components/schemas/Geometry'
       externalDocs:
         url: https://tools.ietf.org/html/rfc7946#section-3.1.8
     GeoJSONGeometry:
       title: GeoJSONGeometry
       type: object
       oneOf:
-      - $ref: '#/Point'
-      - $ref: '#/MultiPoint'
-      - $ref: '#/LineString'
-      - $ref: '#/MultiLineString'
-      - $ref: '#/Polygon'
-      - $ref: '#/MultiPolygon'
-      - $ref: '#/GeometryCollection'
+      - $ref: '#/components/schemas/Point'
+      - $ref: '#/components/schemas/MultiPoint'
+      - $ref: '#/components/schemas/LineString'
+      - $ref: '#/components/schemas/MultiLineString'
+      - $ref: '#/components/schemas/Polygon'
+      - $ref: '#/components/schemas/MultiPolygon'
+      - $ref: '#/components/schemas/GeometryCollection'
