@@ -65,7 +65,7 @@ components:
         type: string
         maxLength: 36
     geldigop:
-        name: peildatum
+        name: geldigop
         in: query
         description: "De peildatum van de periode waarover de resource wordt opgevraagd."
         required: false
@@ -74,7 +74,7 @@ components:
           format: date
           example: 2018-09-09
     geldigvan:
-        name: periodetot
+        name: geldigvan
         in: query
         description: "De begindatum van de periode waarover de resource wordt opgevraagd."
         required: false
@@ -83,7 +83,7 @@ components:
           format: date
           example: 2018-09-09
     geldigtotenmet:
-        name: periodevan
+        name: geldigtotenmet
         in: query
         description: "De einddatum van de periode waarover de resource wordt opgevraagd."
         required: false
