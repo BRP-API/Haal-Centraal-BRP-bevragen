@@ -1,13 +1,13 @@
 openapi: 3.0.0
 servers:
   - description: "SwaggerHub API Auto Mocking"
-    url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bewoning/v0
+    url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bewoning
   - description: "Referentie-implementatie"
-    url: https://www.voorbeeldgemeente.nl/api/bewoning/v0
+    url: https://www.voorbeeldgemeente.nl/api/bewoning
 info:
   title: Bewoning
   description: "<body>Koppelvlak voor het ontsluiten van historische gegevens rond de bewoners van een adres, actueel en in het verleden. Zie de Functionele documentatie voor nadere toelichting.</body>"
-  version: "1.0.0"
+  version: "0.0.1"
   x-imvertor-generator-version: "1.55.2"
   x-yamlCompiler-stylesheets-version: "20191016"
   contact:
