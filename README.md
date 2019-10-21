@@ -13,12 +13,11 @@ De informatie die de API levert is herleidbaar naar het LO GBA 3.10.
 * [Functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features)
 * [Technische specificaties van de Bevraging Ingeschreven Persoon](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/api-specificatie/Bevraging-Ingeschreven-Persoon) (Open API Specificaties en JSON schema) en in [Swagger-formaat](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/Bevraging-Ingeschreven-Persoon/openapi.yaml)
 * [Technische specificaties van de Bevraging Landelijke tabellen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/api-specificatie/Landelijke%20tabellen) (Open API Specificaties) en in [Swagger-formaat](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/Landelijke%20tabellen/openapi.yaml)
-* [Technische specificaties van de Historische Bevragingen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/api-specificatie/Bevraging-Historie) (Open API Specificaties en JSON schema) en in [Swagger-formaat](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/Bevraging-Historie/openapi.yaml)
-* [Technische specificaties van de Bevraging Nummeraanduiding](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/api-specificatie/Bevraging-Nummeraanduiding) (Open API Specificaties en JSON schema) en in [Swagger-formaat](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/Bevraging-Nummeraanduiding/openapi.yaml)
+* [Technische specificaties van de Bevraging Bewoners per adres](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/api-specificatie/Bewoning) (Open API Specificaties en JSON schema) en in [Swagger-formaat](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/Bewoning/openapi.yaml)
 * Ontwerpkeuzes staan in het document [Design decisions](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/docs/design_decisions.md)
 
 ## Bronnen
-* [API strategie en URI strategie](https://aandeslagmetdeomgevingswet.nl/digitaal-stelsel/documenten/documenten/api-uri-strategie/)
+* [Landelijke API strategie voor de overheid](https://geonovum.github.io/KP-APIs/)
 
 ## Contactpersonen:
 * Product owner: [@CathyDingemanse](https://github.com/CathyDingemanse)
