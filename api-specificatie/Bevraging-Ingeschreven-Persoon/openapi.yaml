@@ -889,8 +889,7 @@ components:
     IngeschrevenPersoonHal:
       allOf:
         - $ref: '#/components/schemas/IngeschrevenPersoon'
-        - type: "object"
-          properties:
+        - properties:
             _links:
               $ref: "#/components/schemas/IngeschrevenPersoon_links"
             _embedded:
@@ -929,8 +928,7 @@ components:
     OuderHal:
       allOf:
         - $ref: '#/components/schemas/Ouder'
-        - type: "object"
-          properties:
+        - properties:
             _links:
               $ref: "#/components/schemas/Ouder_links"
     Kind:
@@ -966,8 +964,7 @@ components:
     KindHal:
       allOf:
         - $ref: '#/components/schemas/Kind'
-        - type: "object"
-          properties:
+        - properties:
             _links:
               $ref: "#/components/schemas/Kind_links"
     Partner:
@@ -1004,8 +1001,7 @@ components:
     PartnerHal:
       allOf:
         - $ref: '#/components/schemas/Partner'
-        - type: "object"
-          properties:
+        - properties:
             _links:
               $ref: "#/components/schemas/Partner_links"
     Reisdocument:
@@ -1049,8 +1045,7 @@ components:
     ReisdocumentHal:
       allOf:
         - $ref: '#/components/schemas/Reisdocument'
-        - type: "object"
-          properties:
+        - properties:
             _links:
               $ref: "#/components/schemas/Reisdocument_links"
     Naam:
@@ -1136,20 +1131,19 @@ components:
     Geboorte:
       allOf:
       - $ref: '#/components/schemas/Geboortedatum'
-      - type: "object"
-      description: "Gegevens over de geboorte van respectievelijk de persoon, de ouder,\
+      - description: "Gegevens over de geboorte van respectievelijk de persoon, de ouder,\
         \ de echtgenoot/geregistreerd partner, de eerdere echtgenoot/geregistreerd\
         \ partner of het kind. \n* **datum** : Datum waarop de persoon is geboren.\
         \ \n* **land** : Land waar de persoon is geboren \n* **plaats** : De plaats\
         \ waar een persoon is geboren. Voor een plaats buiten Nederland is gemeentecode=1999\
         \ (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding."
-      properties:
-        land:
-          $ref: "#/components/schemas/Waardetabel"
-        plaats:
-          $ref: "#/components/schemas/Waardetabel"
-        inOnderzoek:
-          $ref: "#/components/schemas/GeboorteInOnderzoek"
+        properties:
+          land:
+            $ref: "#/components/schemas/Waardetabel"
+          plaats:
+            $ref: "#/components/schemas/Waardetabel"
+          inOnderzoek:
+            $ref: "#/components/schemas/GeboorteInOnderzoek"
     GeboorteInOnderzoek:
       type: "object"
       description: "Indicators over het in onderzoek zijn van gegevens over de geboorte\
@@ -1202,8 +1196,7 @@ components:
     NaamPersoon:
       allOf: 
         - $ref: "#/components/schemas/Naam"
-        - type: "object"
-          description: "Gegevens over de naam van de persoon"
+        - description: "Gegevens over de naam van de persoon"
           properties:
             aanhef:
               type: "string"
@@ -1493,8 +1486,7 @@ components:
     Verblijfplaats:
       allOf:
       - $ref: '#/components/schemas/BinnenlandsAdres'
-      - type: "object"
-      description: "Gegevens over het verblijf en adres van de ingeschreven persoon.\
+      - description: "Gegevens over het verblijf en adres van de ingeschreven persoon.\
         \ Dit is het adres waarop een persoon is ingeschreven. \n* **datumAanvangAdreshuishouding**\
         \ : De datum van aangifte of ambtshalve melding van verblijf en adres. \n\
         * **datumIngangGeldigheid** : Datum waarop de gegevens over de verblijfplaats\
@@ -1509,67 +1501,67 @@ components:
         \ : Een aanduiding die aangeeft in welke gemeente de PK zich bevindt. De code\
         \ kan voorloopnullen bevatten \n* **landVanWaarIngeschreven** : Het LAND waar\
         \ de INGESCHREVEN PERSOON verblijf hield voor (her)vestiging in Nederland."
-      properties:
-        identificatiecodeVerblijfplaats:
-          type: "string"
-          title: "identificatiecodeVerblijfplaats"
-          description: "Een verblijfplaats kan een ligplaats, een standplaats of een\
-            \ verblijfsobject in een of meerdere panden zijn, waaraan respectievelijk\
-            \ een ligplaatsidentificatie, standplaatsidentificatie of verblijfsobjectidentificatie\
-            \ is toegekend. De Identificatiecode verblijfplaats is een combinatie\
-            \ van een viercijferige gemeentecode, een tweecijferige objecttypecode\
-            \ die aangeeft of de aanduiding een verblijfsobject (01), ligplaats (02)\
-            \ of standplaats (03) betreft en een voor het betreffende objecttype binnen\
-            \ een gemeente uniek tiencijferig volgnummer. Combinatie van de viercijferige\
-            \ 'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige\
-            \ 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente\
-            \ uniek tiencijferig 'objectvolgnummer'."
-          maxLength: 16
-          example: "0518200000366054"
-        indicatieVestigingVanuitBuitenland:
-          type: "boolean"
-          title: "indicatieVestigingVanuitBuitenland"
-          description: "Indicatie waarmee aangegeven wordt of de ingeschreven persoon\
-            \ zich vanuit het buitenland heeftingeschreven. Deze indicatie heeft als\
-            \ rol om aan te geven dat iemand zich vanuit het buitenland gevestigd\
-            \ heeft. Deze indicator wordt altijd meegeleverd als de waarde true is.\
-            \ Als de waarde false is wordt de indicator niet meegeleverd."
-        locatiebeschrijving:
-          type: "string"
-          title: "Locatiebeschrijving"
-          description: "Een geheel of gedeeltelijke omschrijving van de ligging van\
-            \ een object."
-          maxLength: 35
-          example: "Naast de derde brug"
-        straatnaam:
-          type: "string"
-          title: "Straatnaam"
-          description: "De officiële straatnaam zoals door het bevoegd gemeentelijk\
-            \ orgaan is vastgesteld, zo nodig ingekort conform de specificaties van\
-            \ de NEN 5825. alle alfanumrieke tekens"
-          maxLength: 24
-        vanuitVertrokkenOnbekendWaarheen:
-          type: "boolean"
-          title: "vanuitVertrokkenOnbekendWaarheen"
-          description: "Indicatie waarmee aangegeven wordt dat de persoon is teruggekeerd\
-            \ uit een situatie van vertrokken onbekend waarheen"
-          example: "false"
-        datumAanvangAdreshouding:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
-        datumIngangGeldigheid:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
-        datumInschrijvingInGemeente:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
-        datumVestigingInNederland:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
-        gemeenteVanInschrijving:
-          $ref: "#/components/schemas/Waardetabel"
-        landVanwaarIngeschreven:
-          $ref: "#/components/schemas/Waardetabel"
-        verblijfBuitenland:
-          $ref: "#/components/schemas/VerblijfBuitenland"
-        inOnderzoek:
-          $ref: "#/components/schemas/VerblijfplaatsInOnderzoek"
+        properties:
+          identificatiecodeVerblijfplaats:
+            type: "string"
+            title: "identificatiecodeVerblijfplaats"
+            description: "Een verblijfplaats kan een ligplaats, een standplaats of een\
+              \ verblijfsobject in een of meerdere panden zijn, waaraan respectievelijk\
+              \ een ligplaatsidentificatie, standplaatsidentificatie of verblijfsobjectidentificatie\
+              \ is toegekend. De Identificatiecode verblijfplaats is een combinatie\
+              \ van een viercijferige gemeentecode, een tweecijferige objecttypecode\
+              \ die aangeeft of de aanduiding een verblijfsobject (01), ligplaats (02)\
+              \ of standplaats (03) betreft en een voor het betreffende objecttype binnen\
+              \ een gemeente uniek tiencijferig volgnummer. Combinatie van de viercijferige\
+              \ 'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige\
+              \ 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente\
+              \ uniek tiencijferig 'objectvolgnummer'."
+            maxLength: 16
+            example: "0518200000366054"
+          indicatieVestigingVanuitBuitenland:
+            type: "boolean"
+            title: "indicatieVestigingVanuitBuitenland"
+            description: "Indicatie waarmee aangegeven wordt of de ingeschreven persoon\
+              \ zich vanuit het buitenland heeftingeschreven. Deze indicatie heeft als\
+              \ rol om aan te geven dat iemand zich vanuit het buitenland gevestigd\
+              \ heeft. Deze indicator wordt altijd meegeleverd als de waarde true is.\
+              \ Als de waarde false is wordt de indicator niet meegeleverd."
+          locatiebeschrijving:
+            type: "string"
+            title: "Locatiebeschrijving"
+            description: "Een geheel of gedeeltelijke omschrijving van de ligging van\
+              \ een object."
+            maxLength: 35
+            example: "Naast de derde brug"
+          straatnaam:
+            type: "string"
+            title: "Straatnaam"
+            description: "De officiële straatnaam zoals door het bevoegd gemeentelijk\
+              \ orgaan is vastgesteld, zo nodig ingekort conform de specificaties van\
+              \ de NEN 5825. alle alfanumrieke tekens"
+            maxLength: 24
+          vanuitVertrokkenOnbekendWaarheen:
+            type: "boolean"
+            title: "vanuitVertrokkenOnbekendWaarheen"
+            description: "Indicatie waarmee aangegeven wordt dat de persoon is teruggekeerd\
+              \ uit een situatie van vertrokken onbekend waarheen"
+            example: "false"
+          datumAanvangAdreshouding:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
+          datumIngangGeldigheid:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
+          datumInschrijvingInGemeente:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
+          datumVestigingInNederland:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
+          gemeenteVanInschrijving:
+            $ref: "#/components/schemas/Waardetabel"
+          landVanwaarIngeschreven:
+            $ref: "#/components/schemas/Waardetabel"
+          verblijfBuitenland:
+            $ref: "#/components/schemas/VerblijfBuitenland"
+          inOnderzoek:
+            $ref: "#/components/schemas/VerblijfplaatsInOnderzoek"
     VerblijfBuitenland:
       type: "object"
       description: "De gegevens over het verblijf in het buitenland"
@@ -2035,15 +2027,13 @@ components:
     VerblijfplaatshistorieHal:
       allOf:
         - $ref: '#/components/schemas/Verblijfplaatshistorie'
-        - type: "object"
-          properties:
+        - properties:
             _links:
               $ref: "#/components/schemas/Verblijfplaatshistorie_links"
     Verblijfplaatshistorie:
       allOf:
       - $ref: "#/components/schemas/Verblijfplaats"
-      - type: "object"
-        description: "<body><p>Gegevens over het verblijf en adres van de ingeschreven\
+      - description: "<body><p>Gegevens over het verblijf en adres van de ingeschreven\
           \ persoon. Dit is het adres waarop een persoon is ingeschreven of ingeschreven\
           \ is geweest.</p><p>\n <em>*</em> datumAanvangAdreshuishouding** : De datum\
           \ van aangifte of ambtshalve melding van verblijf en adres.</p><p>\n <em>*</em>\
@@ -2083,15 +2073,13 @@ components:
     PartnerhistorieHal:
       allOf:
         - $ref: '#/components/schemas/Partnerhistorie'
-        - type: "object"
-          properties:
+        - properties:
             _links:
               $ref: "#/components/schemas/Partnerhistorie_links"
     Partnerhistorie:
       allOf:
       - $ref: "#/components/schemas/Partner"
-      - type: "object"
-        description: "<body><p>Gegevens over een gesloten huwelijk/geregistreerd partnerschap\
+      - description: "<body><p>Gegevens over een gesloten huwelijk/geregistreerd partnerschap\
           \ van de ingeschrevene.</p></body>"
         properties:
           ontbindingHuwelijkPartnerschap:
@@ -2154,15 +2142,13 @@ components:
     VerblijfstitelhistorieHal:
       allOf:
         - $ref: '#/components/schemas/Verblijfstitelhistorie'
-        - type: "object"
-          properties:
+        - properties:
             _links:
               $ref: "#/components/schemas/Verblijfstitelhistorie_links"
     Verblijfstitelhistorie:
       allOf:
       - $ref: "#/components/schemas/Verblijfstitel"
-      - type: "object"
-        description: "<body><p>Gegevens over de verblijfsrechtelijke status van de\
+      - description: "<body><p>Gegevens over de verblijfsrechtelijke status van de\
           \ ingeschrevene.</p><p>\n <em>*</em> datumEindeGeldigheid**: Datum waarop\
           \ de geldigheid van de gegevens over de verblijfstitel is beeindigd.</p><p>\n\
           \ <em>*</em> datumIngangGeldigheid**: Datum waarop de gegevens over de verblijfstitel\
