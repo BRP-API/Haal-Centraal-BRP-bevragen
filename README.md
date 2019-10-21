@@ -17,7 +17,7 @@ De informatie die de API levert is herleidbaar naar het LO GBA 3.10.
 * Ontwerpkeuzes staan in het document [Design decisions](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/docs/design_decisions.md)
 
 ## Bronnen
-* [API strategie en URI strategie](https://aandeslagmetdeomgevingswet.nl/digitaal-stelsel/documenten/documenten/api-uri-strategie/)
+* [Landelijke API strategie voor de overheid](https://geonovum.github.io/KP-APIs/)
 
 ## Contactpersonen:
 * Product owner: [@CathyDingemanse](https://github.com/CathyDingemanse)
