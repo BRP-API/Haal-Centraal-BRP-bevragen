@@ -19,7 +19,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
   Voor een persoon zonder adellijke titel of predicaat begint de briefaanhef met “Geachte mevrouw” of “Geachte heer”, afhankelijk van het geslacht van de persoon. Hierop volgt de samengestelde naam.
   De waarde van aanduidingNaamgebruik bepaalt hoe de aanhef wordt samengesteld uit de naam van de persoon en de naam van de partner.
 
-  Het voorvoegsel van de eerste geslachtsnaam in de briefaanhef wordt met een hoofdletter geschreven. Het voorvoegsel van de tweede geslachtsnaam wordt met een kleine letter geschreven.
+  Het voorvoegsel van de eerste geslachtsnaam in de briefaanhef wordt met een hoofdletter geschreven.
 
   Wanneer de persoon een adellijke titel of predikaat heeft, wordt de aanhef volgens de volgende tabel:
   | adellijkeTitel_predikaat | Aanhef                |
@@ -99,6 +99,13 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
       | Partner               | Vrouw               | GA VP GP            | J.F.R. Groenen            | Geachte mevrouw Groenen                |
       | Partner voor eigen    | Man                 | GA VP GP-VV GN      | F. in het Veld-van Velzen | Geachte heer In het Veld-van Velzen    |
       | Partner voor eigen    | Man                 | GA VP GP-VV GN      | F. Groenen-Groenink       | Geachte heer Groenen-Groenink          |
+
+    Voorbeelden: voorvoegsels met hoofdletter of kleine letter
+      | aanduidingAanschrijving | geslachtsaanduiding | VV     | GN     | VP     | GP     | aanhef                                 |
+      | E                       | man                 | In het | Veld   | van    | Velzen | Geachte heer In het Veld               |
+      | N                       | vrouw               | van    | Velzen | In het | Veld   | Geachte mevrouw Van Velzen-In het Veld |
+      | P                       | vrouw               | In het | Veld   | van    | Velzen | Geachte mevrouw Van Velzen             |
+      | V                       | man                 | van    | Velzen | In het | Veld   | Geachte heer In het Veld-van Velzen    |
 
     Voorbeelden: adelijke titels
       | adellijkeTitel_predikaat | aanduidingNaamgebruik | aanschrijfwijze                             | aanhef                    |

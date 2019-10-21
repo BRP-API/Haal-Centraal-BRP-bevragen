@@ -22,7 +22,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistent naamgebruik in een 
   Als de eerste naam geen adellijke titel of predicaat heeft,
   Dan wordt gebruikInLopendeTekst voorafgegaan door een geslachtsaanduiding ("mevrouw", "de heer") plus de samengestelde naam op basis van aanduidingNaamgebruik en de naam van de persoon en de partner.
 
-  Het voorvoegsel van de eerste geslachtsnaam in de samengestelde naam wordt met een hoofdletter geschreven. Het voorvoegsel van de tweede geslachtsnaam wordt met een kleine letter geschreven.
+  Het voorvoegsel van de eerste geslachtsnaam in de samengestelde naam wordt met een hoofdletter geschreven.
 
   Als er meerdere actuele (niet ontbonden) huwelijken/partnerschappen zijn
   En de aanduiding aanschijving is ongelijk aan 'Eigen',
@@ -88,6 +88,13 @@ Functionaliteit: Als gemeente wil ik de juiste en consistent naamgebruik in een 
       | Partner               | Vrouw               | GA VP GP        | J.F.R. Groenen            | mevrouw Groenen                |
       | Partner voor eigen    | Man                 | GA VP GP-VV GN  | F. in het Veld-van Velzen | de heer In het Veld-van Velzen |
       | Partner voor eigen    | Man                 | GA VP GP-VV GN  | F. Groenen-Groenink       | de heer Groenen-Groenink       |
+
+    Voorbeelden: voorvoegsels met hoofdletter of kleine letter
+      | aanduidingAanschrijving | geslachtsaanduiding | VV     | GN     | VP     | GP     | gebruikInLopendeTekst          |
+      | E                       | man                 | In het | Veld   | van    | Velzen | de heer In het Veld            |
+      | N                       | vrouw               | van    | Velzen | In het | Veld   | mevrouw Van Velzen-In het Veld |
+      | P                       | vrouw               | In het | Veld   | van    | Velzen | mevrouw Van Velzen             |
+      | V                       | man                 | van    | Velzen | In het | Veld   | de heer In het Veld-van Velzen |
 
     Voorbeelden: adelijke titels
       | adellijkeTitel_predikaat | aanduidingNaamgebruik | geslachtsaanduiding | samenstelling gebruikInLopendeTekst | aanschrijfwijze              | gebruikInLopendeTekst                        |

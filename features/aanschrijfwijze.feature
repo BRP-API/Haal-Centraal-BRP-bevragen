@@ -22,8 +22,6 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
 
   Wanneer er geen voorvoegsel is, wordt deze niet opgenomen. Er zit dan één spatie tussen de voorletters en de geslachtsnaam. Zie de tabel "Voorbeelden: met voorvoegsel" en "Voorbeelden: met voorvoegsel" hieronder.
 
-  Een voorvoegsel van zowel betrokkene als van de partner wordt geschreven in kleine letters.
-
   De voorletters worden opgenomen zoals beschreven in Voorletters.feature.
 
   Als er meerdere actuele (niet ontbonden) huwelijken/partnerschappen zijn
@@ -84,11 +82,11 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
     # PK = predikaat
 
     Voorbeelden: met voorvoegsel
-      | aanduidingAanschrijving | samenstelling aanschrijfwijze | voorvoegsel | geslachtsnaam | voornamen | aanschrijfwijze |
-      | E | VL VV GN          | In het | Veld   | Henk    | H. in het Veld |
-      | N | VL VV GN-VP GP    | van    | Velzen | Ingrid  | I. van Velzen-in het Veld |
-      | P | VL VP GP          | In het | Veld   | Suzanne | S. van Velzen |
-      | V | VL VP GP-VV GN    | van    | Velzen | Fred    | F. in het Veld-van Velzen |
+      | aanduidingAanschrijving | samenstelling aanschrijfwijze | voorvoegsel | geslachtsnaam | voornamen | voorvoegsel partner | geslachtsnaam partner | aanschrijfwijze |
+      | E | VL VV GN          | In het | Veld   | Henk    | van    | Velzen | H. In het Veld |
+      | N | VL VV GN-VP GP    | van    | Velzen | Ingrid  | In het | Veld   | I. van Velzen-In het Veld |
+      | P | VL VP GP          | In het | Veld   | Suzanne | van    | Velzen | S. van Velzen |
+      | V | VL VP GP-VV GN    | van    | Velzen | Fred    | In het | Veld   | F. In het Veld-van Velzen |
 
     Voorbeelden: zonder voorvoegsel
       | aanduidingAanschrijving | samenstelling aanschrijfwijze | geslachtsnaam | voornamen | aanschrijfwijze |
