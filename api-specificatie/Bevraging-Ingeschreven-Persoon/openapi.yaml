@@ -2052,7 +2052,9 @@ components:
           \ de INGESCHREVEN PERSOON verblijf hield voor (her)vestiging in Nederland.</p></body>"
         properties:
           datumTot:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
+            allOf:
+              - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
+              - description: "De datum vanaf wanneer de persoon niet meer op het adres verblijft."
     Verblijfplaatshistorie_links:
       type: "object"
       properties:
