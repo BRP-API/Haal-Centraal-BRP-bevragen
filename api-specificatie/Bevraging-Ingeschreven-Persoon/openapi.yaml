@@ -1734,9 +1734,10 @@ components:
     Verblijfstitel:
       type: "object"
       description: "Gegevens over de verblijfsrechtelijke status van de ingeschrevene.\
-        \ \n* **datumEindeGeldigheid**: Datum waarop de geldigheid van de gegevens\
-        \ over de verblijfstitel is beeindigd. \n* **datumIngangGeldigheid**: Datum\
-        \ waarop de gegevens over de verblijfstitel geldig zijn geworden. \n* **aanduiding**\
+        \ \n* **datumEinde**: Datum waarop de geldigheid van de gegevens\
+        \ over de verblijfstitel is beeindigd. \n* **datumIngang**: Datum\
+        \ waarop de gegevens over de verblijfstitel geldig zijn geworden. \n* **datumOpneming**\
+        \ : Datum en tijdstip van opneming van het geheel van de verblijfstitel. \n* **aanduiding**\
         \ : Verblijfstiteltabel, die aangeeft over welke verblijfsrechtelijke status\
         \ de ingeschrevene beschikt."
       properties:
@@ -2151,10 +2152,11 @@ components:
       allOf:
       - $ref: "#/components/schemas/Verblijfstitel"
       - description: "<body><p>Gegevens over de verblijfsrechtelijke status van de\
-          \ ingeschrevene.</p><p>\n <em>*</em> datumEindeGeldigheid**: Datum waarop\
+          \ ingeschrevene.</p><p>\n <em>*</em> datumEinde**: Datum waarop\
           \ de geldigheid van de gegevens over de verblijfstitel is beeindigd.</p><p>\n\
-          \ <em>*</em> datumIngangGeldigheid**: Datum waarop de gegevens over de verblijfstitel\
-          \ geldig zijn geworden.</p><p>\n <em>*</em> aanduiding** : Verblijfstiteltabel,\
+          \ <em>*</em> datumIngang**: Datum waarop de gegevens over de verblijfstitel\
+          \ geldig zijn geworden.</p><p> \n* **datumOpneming** : Datum en tijdstip van \
+          \ opneming van het geheel van de verblijfstitel. \n <em>*</em> aanduiding** : Verblijfstiteltabel,\
           \ die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt.</p><p>\n\
           \ <em>*</em> datumOpneming** : Datum en tijdstip van opneming van het geheel\
           \ van de verblijfstitel.</p></body>"
