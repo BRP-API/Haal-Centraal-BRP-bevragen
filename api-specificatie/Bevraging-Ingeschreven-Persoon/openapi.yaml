@@ -913,6 +913,13 @@ components:
           $ref: "#/components/schemas/OuderInOnderzoek"
         geboorte:
           $ref: "#/components/schemas/Geboorte"
+        geheimhoudingPersoonsgegevens:
+          type: "boolean"
+          title: "Indicatie geheim"
+          description: "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt\
+            \ mogen worden. Indien true: op verzoek van deze persoon is het verstrekken\
+            \ van gegevens over deze persoon aan bepaalde derden niet toegestaan."
+
     OuderHalCollectie:
       type: object
       properties:
@@ -949,6 +956,12 @@ components:
           $ref: "#/components/schemas/Naam"
         geboorte:
           $ref: "#/components/schemas/Geboorte"
+        geheimhoudingPersoonsgegevens:
+          type: "boolean"
+          title: "Indicatie geheim"
+          description: "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt\
+            \ mogen worden. Indien true: op verzoek van deze persoon is het verstrekken\
+            \ van gegevens over deze persoon aan bepaalde derden niet toegestaan."
     KindHalCollectie:
       type: object
       properties:
@@ -986,6 +999,12 @@ components:
           $ref: "#/components/schemas/PartnerInOnderzoek"
         aangaanHuwelijkPartnerschap:
           $ref: "#/components/schemas/AangaanHuwelijkPartnerschap"
+        geheimhoudingPersoonsgegevens:
+          type: "boolean"
+          title: "Indicatie geheim"
+          description: "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt\
+            \ mogen worden. Indien true: op verzoek van deze persoon is het verstrekken\
+            \ van gegevens over deze persoon aan bepaalde derden niet toegestaan."
     PartnerHalCollectie:
       type: object
       properties:
