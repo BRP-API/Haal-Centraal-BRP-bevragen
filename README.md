@@ -22,6 +22,7 @@ De informatie die de API levert is herleidbaar naar het LO GBA 3.10.
 ## Contactpersonen:
 * Product owner: [@CathyDingemanse](https://github.com/CathyDingemanse)
 * Berichtontwerper: [@JohanBoer](https://github.com/JohanBoer)
+* Scrum Master: Jan Willem Kooi JanWillem.Kooi@vng.nl
 
 ## Licentie
 Copyright &copy; VNG Realisatie 2018
