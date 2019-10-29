@@ -39,4 +39,4 @@ Functionaliteit: Woonplaats wordt altijd gevuld voor een Nederlandse verblijfpla
     En element 08.12.10 heeft geen waarde
     En element 08.13.10 heeft een waarde
     Als ingeschreven persoon met burgerservicenummer 000009921 wordt geraadpleegd
-    Dan is komt het antwoord verblijfplaats.woonplaatsnaam niet voor met een waarde
+    Dan komt in het antwoord verblijfplaats.woonplaatsnaam niet voor met een waarde
