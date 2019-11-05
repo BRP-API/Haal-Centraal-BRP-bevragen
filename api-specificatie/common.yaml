@@ -65,32 +65,32 @@ components:
         type: string
         maxLength: 36
     geldigop:
-        name: geldigop
-        in: query
-        description: "De peildatum van de periode waarover de resource wordt opgevraagd."
-        required: false
-        schema:
-          type: string
-          format: date
-          example: 2018-09-09
+      name: geldigop
+      in: query
+      description: "De peildatum van de periode waarover de resource wordt opgevraagd."
+      required: false
+      schema:
+        type: string
+        format: date
+        example: 2018-09-09
     geldigvan:
-        name: geldigvan
-        in: query
-        description: "De begindatum van de periode waarover de resource wordt opgevraagd."
-        required: false
-        schema:
-          type: string
-          format: date
-          example: 2018-09-09
+      name: geldigvan
+      in: query
+      description: "De begindatum van de periode waarover de resource wordt opgevraagd."
+      required: false
+      schema:
+        type: string
+        format: date
+        example: 2018-09-09
     geldigtotenmet:
-        name: geldigtotenmet
-        in: query
-        description: "De einddatum van de periode waarover de resource wordt opgevraagd."
-        required: false
-        schema:
-          type: string
-          format: date
-          example: 2018-10-09
+      name: geldigtotenmet
+      in: query
+      description: "De einddatum van de periode waarover de resource wordt opgevraagd."
+      required: false
+      schema:
+        type: string
+        format: date
+        example: 2018-10-09
   responses:
     '400':
       description: Bad Request
