@@ -778,13 +778,13 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/Foutbericht'
-  /ingeschrevenpersonen/{burgerservicenummer}/kinderen/{uuid}:
+  /ingeschrevenpersonen/{burgerservicenummer}/kinderen/{id}:
     get:
       tags:
       - ingeschrevenpersonen
       description: Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals
         die op de persoonslijst voorkomen.
-      operationId: ingeschrevenpersonenBurgerservicenummerkinderenUuid
+      operationId: ingeschrevenpersonenBurgerservicenummerkinderenId
       parameters:
       - name: burgerservicenummer
         in: path
@@ -793,17 +793,6 @@ paths:
         explode: false
         schema:
           $ref: '#/components/schemas/Burgerservicenummer'
-      - name: uuid
-        in: path
-        description: 'Een UUID is een nummer van 128 bits (= 16 bytes). UUID wordt
-          weergegeven in 32 ??hexadecimale cijfers. Deze cijfers zijn ingedeeld in
-          vijf groepen, in ongelijk aantal en gescheiden door koppeltekens: 8-4-4-4-12
-          In zijn geheel wordt een UUID dus door 36 tekens gevormd, waarvan 32 hexadecimale
-          karakters en vier streepjes: 550e8400-e29b-41d4-a716-446655440000'
-        required: true
-        schema:
-          maxLength: 36
-          type: string
       - name: api-version
         in: header
         description: Bevat de versie van de aan te roepen API conform [Landelijke
@@ -812,6 +801,14 @@ paths:
         schema:
           type: string
           example: 1.0.1
+      - name: id
+        in: path
+        description: Deidentifiatie van het kind.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
       responses:
         200:
           description: Zoekactie geslaagd
@@ -1317,13 +1314,13 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/Foutbericht'
-  /ingeschrevenpersonen/{burgerservicenummer}/ouders/{uuid}:
+  /ingeschrevenpersonen/{burgerservicenummer}/ouders/{id}:
     get:
       tags:
       - ingeschrevenpersonen
       description: Het ophalen de ouder-gegevens van een van een Ingeschreven Persoon
         zoals die op de persoonslijst voorkomen..
-      operationId: ingeschrevenpersonenBurgerservicenummeroudersUuid
+      operationId: ingeschrevenpersonenBurgerservicenummeroudersId
       parameters:
       - name: burgerservicenummer
         in: path
@@ -1332,17 +1329,6 @@ paths:
         explode: false
         schema:
           $ref: '#/components/schemas/Burgerservicenummer'
-      - name: uuid
-        in: path
-        description: 'Een UUID is een nummer van 128 bits (= 16 bytes). UUID wordt
-          weergegeven in 32 ??hexadecimale cijfers. Deze cijfers zijn ingedeeld in
-          vijf groepen, in ongelijk aantal en gescheiden door koppeltekens: 8-4-4-4-12
-          In zijn geheel wordt een UUID dus door 36 tekens gevormd, waarvan 32 hexadecimale
-          karakters en vier streepjes: 550e8400-e29b-41d4-a716-446655440000'
-        required: true
-        schema:
-          maxLength: 36
-          type: string
       - name: api-version
         in: header
         description: Bevat de versie van de aan te roepen API conform [Landelijke
@@ -1351,6 +1337,14 @@ paths:
         schema:
           type: string
           example: 1.0.1
+      - name: id
+        in: path
+        description: De identifiatie van de ouder.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
       responses:
         200:
           description: Zoekactie geslaagd
@@ -1856,13 +1850,13 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/Foutbericht'
-  /ingeschrevenpersonen/{burgerservicenummer}/partners/{uuid}:
+  /ingeschrevenpersonen/{burgerservicenummer}/partners/{id}:
     get:
       tags:
       - ingeschrevenpersonen
       description: Het ophalen de partner-gegevens van een Ingeschreven Persoon zoals
         die op de persoonslijst voorkomen.
-      operationId: ingeschrevenpersonenBurgerservicenummerpartnersUuid
+      operationId: ingeschrevenpersonenBurgerservicenummerpartnersId
       parameters:
       - name: burgerservicenummer
         in: path
@@ -1871,17 +1865,6 @@ paths:
         explode: false
         schema:
           $ref: '#/components/schemas/Burgerservicenummer'
-      - name: uuid
-        in: path
-        description: 'Een UUID is een nummer van 128 bits (= 16 bytes). UUID wordt
-          weergegeven in 32 ??hexadecimale cijfers. Deze cijfers zijn ingedeeld in
-          vijf groepen, in ongelijk aantal en gescheiden door koppeltekens: 8-4-4-4-12
-          In zijn geheel wordt een UUID dus door 36 tekens gevormd, waarvan 32 hexadecimale
-          karakters en vier streepjes: 550e8400-e29b-41d4-a716-446655440000'
-        required: true
-        schema:
-          maxLength: 36
-          type: string
       - name: api-version
         in: header
         description: Bevat de versie van de aan te roepen API conform [Landelijke
@@ -1890,6 +1873,14 @@ paths:
         schema:
           type: string
           example: 1.0.1
+      - name: id
+        in: path
+        description: Deidentifiatie van het kind.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
       responses:
         200:
           description: Zoekactie geslaagd
@@ -2704,21 +2695,21 @@ paths:
         required: false
         schema:
           type: string
-      - name: geldigop
+      - name: peildatum
         in: query
-        description: De peildatum van de periode waarover de resource wordt opgevraagd.
+        description: De datum waarop de resource wordt opgevraagd.
         required: false
         schema:
           type: string
           format: date
-      - name: geldigvan
+      - name: datumvan
         in: query
         description: De begindatum van de periode waarover de resource wordt opgevraagd.
         required: false
         schema:
           type: string
           format: date
-      - name: geldigtotenmet
+      - name: datumtotenmet
         in: query
         description: De einddatum van de periode waarover de resource wordt opgevraagd.
         required: false
@@ -3020,21 +3011,21 @@ paths:
         required: false
         schema:
           type: string
-      - name: geldigop
+      - name: peildatum
         in: query
-        description: De peildatum van de periode waarover de resource wordt opgevraagd.
+        description: De datum waarop de resource wordt opgevraagd.
         required: false
         schema:
           type: string
           format: date
-      - name: geldigvan
+      - name: datumvan
         in: query
         description: De begindatum van de periode waarover de resource wordt opgevraagd.
         required: false
         schema:
           type: string
           format: date
-      - name: geldigtotenmet
+      - name: datumtotenmet
         in: query
         description: De einddatum van de periode waarover de resource wordt opgevraagd.
         required: false
@@ -3339,21 +3330,21 @@ paths:
         required: false
         schema:
           type: string
-      - name: geldigop
+      - name: peildatum
         in: query
-        description: De peildatum van de periode waarover de resource wordt opgevraagd.
+        description: De datum waarop de resource wordt opgevraagd.
         required: false
         schema:
           type: string
           format: date
-      - name: geldigvan
+      - name: datumvan
         in: query
         description: De begindatum van de periode waarover de resource wordt opgevraagd.
         required: false
         schema:
           type: string
           format: date
-      - name: geldigtotenmet
+      - name: datumtotenmet
         in: query
         description: De einddatum van de periode waarover de resource wordt opgevraagd.
         required: false
@@ -3687,8 +3678,7 @@ components:
     IngeschrevenPersoonHal:
       allOf:
       - $ref: '#/components/schemas/IngeschrevenPersoon'
-      - type: object
-        properties:
+      - properties:
           _links:
             $ref: '#/components/schemas/IngeschrevenPersoon_links'
           _embedded:
@@ -3710,6 +3700,12 @@ components:
           $ref: '#/components/schemas/OuderInOnderzoek'
         geboorte:
           $ref: '#/components/schemas/Geboorte'
+        geheimhoudingPersoonsgegevens:
+          title: Indicatie geheim
+          type: boolean
+          description: 'Een aanduiding die aangeeft dat gegevens wel of niet verstrekt
+            mogen worden. Indien true: op verzoek van deze persoon is het verstrekken
+            van gegevens over deze persoon aan bepaalde derden niet toegestaan.'
       description: "Gegevens over de ouder van de ingeschrevene. \n* **datumIngangFamilierechtelijkeBetrekking**\
         \ : De datum waarop de familierechtelijke betrekking is ontstaan."
     OuderHalCollectie:
@@ -3722,8 +3718,7 @@ components:
     OuderHal:
       allOf:
       - $ref: '#/components/schemas/Ouder'
-      - type: object
-        properties:
+      - properties:
           _links:
             $ref: '#/components/schemas/Ouder_links'
     Kind:
@@ -3743,6 +3738,12 @@ components:
           $ref: '#/components/schemas/Naam'
         geboorte:
           $ref: '#/components/schemas/Geboorte'
+        geheimhoudingPersoonsgegevens:
+          title: Indicatie geheim
+          type: boolean
+          description: 'Een aanduiding die aangeeft dat gegevens wel of niet verstrekt
+            mogen worden. Indien true: op verzoek van deze persoon is het verstrekken
+            van gegevens over deze persoon aan bepaalde derden niet toegestaan.'
       description: Gegevens over een kind van de ingeschrevene.
     KindHalCollectie:
       type: object
@@ -3754,8 +3755,7 @@ components:
     KindHal:
       allOf:
       - $ref: '#/components/schemas/Kind'
-      - type: object
-        properties:
+      - properties:
           _links:
             $ref: '#/components/schemas/Kind_links'
     Partner:
@@ -3775,6 +3775,12 @@ components:
           $ref: '#/components/schemas/PartnerInOnderzoek'
         aangaanHuwelijkPartnerschap:
           $ref: '#/components/schemas/AangaanHuwelijkPartnerschap'
+        geheimhoudingPersoonsgegevens:
+          title: Indicatie geheim
+          type: boolean
+          description: 'Een aanduiding die aangeeft dat gegevens wel of niet verstrekt
+            mogen worden. Indien true: op verzoek van deze persoon is het verstrekken
+            van gegevens over deze persoon aan bepaalde derden niet toegestaan.'
       description: Gegevens over een gesloten huwelijk/geregistreerd partnerschap
         van de ingeschrevene.
     PartnerHalCollectie:
@@ -3787,8 +3793,7 @@ components:
     PartnerHal:
       allOf:
       - $ref: '#/components/schemas/Partner'
-      - type: object
-        properties:
+      - properties:
           _links:
             $ref: '#/components/schemas/Partner_links'
     Reisdocument:
@@ -3832,8 +3837,7 @@ components:
     ReisdocumentHal:
       allOf:
       - $ref: '#/components/schemas/Reisdocument'
-      - type: object
-        properties:
+      - properties:
           _links:
             $ref: '#/components/schemas/Reisdocument_links'
     Naam:
@@ -3917,22 +3921,21 @@ components:
       description: Indicators over het in onderzoek zijn van gegevens over de aangaan
         van het huwelijk van de INGESCHREVEN PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)
     Geboorte:
-      properties:
-        land:
-          $ref: '#/components/schemas/Waardetabel'
-        plaats:
-          $ref: '#/components/schemas/Waardetabel'
-        inOnderzoek:
-          $ref: '#/components/schemas/GeboorteInOnderzoek'
-      description: "Gegevens over de geboorte van respectievelijk de persoon, de ouder,\
-        \ de echtgenoot/geregistreerd partner, de eerdere echtgenoot/geregistreerd\
-        \ partner of het kind. \n* **datum** : Datum waarop de persoon is geboren.\
-        \ \n* **land** : Land waar de persoon is geboren \n* **plaats** : De plaats\
-        \ waar een persoon is geboren. Voor een plaats buiten Nederland is gemeentecode=1999\
-        \ (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding."
       allOf:
       - $ref: '#/components/schemas/Geboortedatum'
-      - type: object
+      - properties:
+          land:
+            $ref: '#/components/schemas/Waardetabel'
+          plaats:
+            $ref: '#/components/schemas/Waardetabel'
+          inOnderzoek:
+            $ref: '#/components/schemas/GeboorteInOnderzoek'
+        description: "Gegevens over de geboorte van respectievelijk de persoon, de\
+          \ ouder, de echtgenoot/geregistreerd partner, de eerdere echtgenoot/geregistreerd\
+          \ partner of het kind. \n* **datum** : Datum waarop de persoon is geboren.\
+          \ \n* **land** : Land waar de persoon is geboren \n* **plaats** : De plaats\
+          \ waar een persoon is geboren. Voor een plaats buiten Nederland is gemeentecode=1999\
+          \ (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding."
     GeboorteInOnderzoek:
       type: object
       properties:
@@ -3985,8 +3988,7 @@ components:
     NaamPersoon:
       allOf:
       - $ref: '#/components/schemas/Naam'
-      - type: object
-        properties:
+      - properties:
           aanhef:
             title: aanhef
             type: string
@@ -4273,85 +4275,85 @@ components:
       description: |
         Dit object bevat de basis Verblijfsplaats kenmerken die gedeeld worden door Bewoning en Verblijfplaats
     Verblijfplaats:
-      properties:
-        identificatiecodeVerblijfplaats:
-          title: identificatiecodeVerblijfplaats
-          maxLength: 16
-          type: string
-          description: Een verblijfplaats kan een ligplaats, een standplaats of een
-            verblijfsobject in een of meerdere panden zijn, waaraan respectievelijk
-            een ligplaatsidentificatie, standplaatsidentificatie of verblijfsobjectidentificatie
-            is toegekend. De Identificatiecode verblijfplaats is een combinatie van
-            een viercijferige gemeentecode, een tweecijferige objecttypecode die aangeeft
-            of de aanduiding een verblijfsobject (01), ligplaats (02) of standplaats
-            (03) betreft en een voor het betreffende objecttype binnen een gemeente
-            uniek tiencijferig volgnummer. Combinatie van de viercijferige 'gemeentecode'
-            (volgens GBA tabel 33, Gemeententabel), de tweecijferige 'objecttypecode'
-            en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig
-            'objectvolgnummer'.
-          example: "0518200000366054"
-        indicatieVestigingVanuitBuitenland:
-          title: indicatieVestigingVanuitBuitenland
-          type: boolean
-          description: Indicatie waarmee aangegeven wordt of de ingeschreven persoon
-            zich vanuit het buitenland heeftingeschreven. Deze indicatie heeft als
-            rol om aan te geven dat iemand zich vanuit het buitenland gevestigd heeft.
-            Deze indicator wordt altijd meegeleverd als de waarde true is. Als de
-            waarde false is wordt de indicator niet meegeleverd.
-        locatiebeschrijving:
-          title: Locatiebeschrijving
-          maxLength: 35
-          type: string
-          description: Een geheel of gedeeltelijke omschrijving van de ligging van
-            een object.
-          example: Naast de derde brug
-        straatnaam:
-          title: Straatnaam
-          maxLength: 24
-          type: string
-          description: De officiële straatnaam zoals door het bevoegd gemeentelijk
-            orgaan is vastgesteld, zo nodig ingekort conform de specificaties van
-            de NEN 5825. alle alfanumrieke tekens
-        vanuitVertrokkenOnbekendWaarheen:
-          title: vanuitVertrokkenOnbekendWaarheen
-          type: boolean
-          description: Indicatie waarmee aangegeven wordt dat de persoon is teruggekeerd
-            uit een situatie van vertrokken onbekend waarheen
-          example: false
-        datumAanvangAdreshouding:
-          $ref: '#/components/schemas/Datum_onvolledig'
-        datumIngangGeldigheid:
-          $ref: '#/components/schemas/Datum_onvolledig'
-        datumInschrijvingInGemeente:
-          $ref: '#/components/schemas/Datum_onvolledig'
-        datumVestigingInNederland:
-          $ref: '#/components/schemas/Datum_onvolledig'
-        gemeenteVanInschrijving:
-          $ref: '#/components/schemas/Waardetabel'
-        landVanwaarIngeschreven:
-          $ref: '#/components/schemas/Waardetabel'
-        verblijfBuitenland:
-          $ref: '#/components/schemas/VerblijfBuitenland'
-        inOnderzoek:
-          $ref: '#/components/schemas/VerblijfplaatsInOnderzoek'
-      description: "Gegevens over het verblijf en adres van de ingeschreven persoon.\
-        \ Dit is het adres waarop een persoon is ingeschreven. \n* **datumAanvangAdreshuishouding**\
-        \ : De datum van aangifte of ambtshalve melding van verblijf en adres. \n\
-        * **datumIngangGeldigheid** : Datum waarop de gegevens over de verblijfplaats\
-        \ geldig zijn geworden. \n* **datumInschrijvingInGemeente**: Bij inschrijving\
-        \ op grond van een aangifte door de burger van zijn vestiging in een (volgende)\
-        \ gemeente is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte\
-        \ is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop\
-        \ de betrokkene schriftelijk van het voornemen van ambtshalve opneming mededeling\
-        \ is gedaan. \n* **datumVestigingInNederland** : Datum van inschrijving in\
-        \ Nederland \n* **landVanWaarIngeschreven** : Het land waar de ingeschreven\
-        \ persoon verblijf hield voor (her)vestiging in Nederland. \n* **gemeenteVanInschrijving**\
-        \ : Een aanduiding die aangeeft in welke gemeente de PK zich bevindt. De code\
-        \ kan voorloopnullen bevatten \n* **landVanWaarIngeschreven** : Het LAND waar\
-        \ de INGESCHREVEN PERSOON verblijf hield voor (her)vestiging in Nederland."
       allOf:
       - $ref: '#/components/schemas/BinnenlandsAdres'
-      - type: object
+      - properties:
+          IdentificatiecodeVerblijfplaats:
+            title: identificatiecodeVerblijfplaats
+            maxLength: 16
+            type: string
+            description: Een verblijfplaats kan een ligplaats, een standplaats of
+              een verblijfsobject in een of meerdere panden zijn, waaraan respectievelijk
+              een ligplaatsidentificatie, standplaatsidentificatie of verblijfsobjectidentificatie
+              is toegekend. De Identificatiecode verblijfplaats is een combinatie
+              van een viercijferige gemeentecode, een tweecijferige objecttypecode
+              die aangeeft of de aanduiding een verblijfsobject (01), ligplaats (02)
+              of standplaats (03) betreft en een voor het betreffende objecttype binnen
+              een gemeente uniek tiencijferig volgnummer. Combinatie van de viercijferige
+              'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige
+              'objecttypecode' en een voor het betreffende objecttype binnen een gemeente
+              uniek tiencijferig 'objectvolgnummer'.
+            example: "0518200000366054"
+          indicatieVestigingVanuitBuitenland:
+            title: indicatieVestigingVanuitBuitenland
+            type: boolean
+            description: Indicatie waarmee aangegeven wordt of de ingeschreven persoon
+              zich vanuit het buitenland heeftingeschreven. Deze indicatie heeft als
+              rol om aan te geven dat iemand zich vanuit het buitenland gevestigd
+              heeft. Deze indicator wordt altijd meegeleverd als de waarde true is.
+              Als de waarde false is wordt de indicator niet meegeleverd.
+          locatiebeschrijving:
+            title: Locatiebeschrijving
+            maxLength: 35
+            type: string
+            description: Een geheel of gedeeltelijke omschrijving van de ligging van
+              een object.
+            example: Naast de derde brug
+          straatnaam:
+            title: Straatnaam
+            maxLength: 24
+            type: string
+            description: De officiële straatnaam zoals door het bevoegd gemeentelijk
+              orgaan is vastgesteld, zo nodig ingekort conform de specificaties van
+              de NEN 5825. alle alfanumrieke tekens
+          vanuitVertrokkenOnbekendWaarheen:
+            title: vanuitVertrokkenOnbekendWaarheen
+            type: boolean
+            description: Indicatie waarmee aangegeven wordt dat de persoon is teruggekeerd
+              uit een situatie van vertrokken onbekend waarheen
+            example: false
+          datumAanvangAdreshouding:
+            $ref: '#/components/schemas/Datum_onvolledig'
+          datumIngangGeldigheid:
+            $ref: '#/components/schemas/Datum_onvolledig'
+          datumInschrijvingInGemeente:
+            $ref: '#/components/schemas/Datum_onvolledig'
+          datumVestigingInNederland:
+            $ref: '#/components/schemas/Datum_onvolledig'
+          gemeenteVanInschrijving:
+            $ref: '#/components/schemas/Waardetabel'
+          landVanwaarIngeschreven:
+            $ref: '#/components/schemas/Waardetabel'
+          verblijfBuitenland:
+            $ref: '#/components/schemas/VerblijfBuitenland'
+          inOnderzoek:
+            $ref: '#/components/schemas/VerblijfplaatsInOnderzoek'
+        description: "Gegevens over het verblijf en adres van de ingeschreven persoon.\
+          \ Dit is het adres waarop een persoon is ingeschreven. \n* **datumAanvangAdreshuishouding**\
+          \ : De datum van aangifte of ambtshalve melding van verblijf en adres. \n\
+          * **datumIngangGeldigheid** : Datum waarop de gegevens over de verblijfplaats\
+          \ geldig zijn geworden. \n* **datumInschrijvingInGemeente**: Bij inschrijving\
+          \ op grond van een aangifte door de burger van zijn vestiging in een (volgende)\
+          \ gemeente is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte\
+          \ is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop\
+          \ de betrokkene schriftelijk van het voornemen van ambtshalve opneming mededeling\
+          \ is gedaan. \n* **datumVestigingInNederland** : Datum van inschrijving\
+          \ in Nederland \n* **landVanWaarIngeschreven** : Het land waar de ingeschreven\
+          \ persoon verblijf hield voor (her)vestiging in Nederland. \n* **gemeenteVanInschrijving**\
+          \ : Een aanduiding die aangeeft in welke gemeente de PK zich bevindt. De\
+          \ code kan voorloopnullen bevatten \n* **landVanWaarIngeschreven** : Het\
+          \ LAND waar de INGESCHREVEN PERSOON verblijf hield voor (her)vestiging in\
+          \ Nederland."
     VerblijfBuitenland:
       type: object
       properties:
@@ -4535,11 +4537,11 @@ components:
         inOnderzoek:
           $ref: '#/components/schemas/VerblijfstitelInOnderzoek'
       description: "Gegevens over de verblijfsrechtelijke status van de ingeschrevene.\
-        \ \n* **datumEindeGeldigheid**: Datum waarop de geldigheid van de gegevens\
-        \ over de verblijfstitel is beeindigd. \n* **datumIngangGeldigheid**: Datum\
-        \ waarop de gegevens over de verblijfstitel geldig zijn geworden. \n* **aanduiding**\
-        \ : Verblijfstiteltabel, die aangeeft over welke verblijfsrechtelijke status\
-        \ de ingeschrevene beschikt."
+        \ \n* **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel\
+        \ is beeindigd. \n* **datumIngang**: Datum waarop de gegevens over de verblijfstitel\
+        \ geldig zijn geworden. \n* **datumOpneming** : Datum en tijdstip van opneming\
+        \ van het geheel van de verblijfstitel. \n* **aanduiding** : Verblijfstiteltabel,\
+        \ die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt."
     VerblijfstitelInOnderzoek:
       type: object
       properties:
@@ -4830,17 +4832,18 @@ components:
     VerblijfplaatshistorieHal:
       allOf:
       - $ref: '#/components/schemas/Verblijfplaatshistorie'
-      - type: object
-        properties:
+      - properties:
           _links:
             $ref: '#/components/schemas/Verblijfplaatshistorie_links'
     Verblijfplaatshistorie:
       allOf:
       - $ref: '#/components/schemas/Verblijfplaats'
-      - type: object
-        properties:
+      - properties:
           datumTot:
-            $ref: '#/components/schemas/Datum_onvolledig'
+            allOf:
+            - $ref: '#/components/schemas/Datum_onvolledig'
+            - description: De datum vanaf wanneer de persoon niet meer op het adres
+                verblijft.
         description: |-
           <body><p>Gegevens over het verblijf en adres van de ingeschreven persoon. Dit is het adres waarop een persoon is ingeschreven of ingeschreven is geweest.</p><p>
            <em>*</em> datumAanvangAdreshuishouding** : De datum van aangifte of ambtshalve melding van verblijf en adres.</p><p>
@@ -4853,7 +4856,9 @@ components:
     Verblijfplaatshistorie_links:
       type: object
       properties:
-        self:
+        nummeraanduiding:
+          $ref: '#/components/schemas/HalLink'
+        adresseerbaarObject:
           $ref: '#/components/schemas/HalLink'
     PartnerhistorieHalCollectie:
       type: object
@@ -4865,15 +4870,13 @@ components:
     PartnerhistorieHal:
       allOf:
       - $ref: '#/components/schemas/Partnerhistorie'
-      - type: object
-        properties:
+      - properties:
           _links:
             $ref: '#/components/schemas/Partnerhistorie_links'
     Partnerhistorie:
       allOf:
       - $ref: '#/components/schemas/Partner'
-      - type: object
-        properties:
+      - properties:
           ontbindingHuwelijkPartnerschap:
             $ref: '#/components/schemas/OntbindingHuwelijkPartnerschap'
         description: <body><p>Gegevens over een gesloten huwelijk/geregistreerd partnerschap
@@ -4929,20 +4932,21 @@ components:
     VerblijfstitelhistorieHal:
       allOf:
       - $ref: '#/components/schemas/Verblijfstitelhistorie'
-      - type: object
-        properties:
+      - properties:
           _links:
             $ref: '#/components/schemas/Verblijfstitelhistorie_links'
     Verblijfstitelhistorie:
       allOf:
       - $ref: '#/components/schemas/Verblijfstitel'
-      - type: object
-        description: |-
-          <body><p>Gegevens over de verblijfsrechtelijke status van de ingeschrevene.</p><p>
-           <em>*</em> datumEindeGeldigheid**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beeindigd.</p><p>
-           <em>*</em> datumIngangGeldigheid**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.</p><p>
-           <em>*</em> aanduiding** : Verblijfstiteltabel, die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt.</p><p>
-           <em>*</em> datumOpneming** : Datum en tijdstip van opneming van het geheel van de verblijfstitel.</p></body>
+      - description: "<body><p>Gegevens over de verblijfsrechtelijke status van de\
+          \ ingeschrevene.</p><p>\n <em>*</em> datumEinde**: Datum waarop de geldigheid\
+          \ van de gegevens over de verblijfstitel is beeindigd.</p><p>\n <em>*</em>\
+          \ datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig\
+          \ zijn geworden.</p><p> \n* **datumOpneming** : Datum en tijdstip van  opneming\
+          \ van het geheel van de verblijfstitel. \n <em>*</em> aanduiding** : Verblijfstiteltabel,\
+          \ die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt.</p><p>\n\
+          \ <em>*</em> datumOpneming** : Datum en tijdstip van opneming van het geheel\
+          \ van de verblijfstitel.</p></body>"
     Verblijfstitelhistorie_links:
       type: object
       properties:

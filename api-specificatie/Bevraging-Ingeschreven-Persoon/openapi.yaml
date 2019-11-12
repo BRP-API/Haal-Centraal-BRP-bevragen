@@ -271,14 +271,19 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/default"
       tags:
       - ingeschrevenpersonen
-  /ingeschrevenpersonen/{burgerservicenummer}/kinderen/{uuid}:
+  /ingeschrevenpersonen/{burgerservicenummer}/kinderen/{id}:
     get:
-      operationId: ingeschrevenpersonenBurgerservicenummerkinderenUuid
+      operationId: ingeschrevenpersonenBurgerservicenummerkinderenId
       description: "Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen."
       parameters:
         - $ref: '#/components/parameters/burgerservicenummer'
-        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/uuid"
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/api-version"
+        - in: path
+          name: id
+          description: "Deidentifiatie van het kind."
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -374,14 +379,19 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/default"
       tags:
       - ingeschrevenpersonen
-  /ingeschrevenpersonen/{burgerservicenummer}/ouders/{uuid}:
+  /ingeschrevenpersonen/{burgerservicenummer}/ouders/{id}:
     get:
-      operationId: ingeschrevenpersonenBurgerservicenummeroudersUuid
+      operationId: ingeschrevenpersonenBurgerservicenummeroudersId
       description: "Het ophalen de ouder-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.."
       parameters:
         - $ref: '#/components/parameters/burgerservicenummer'
-        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/uuid"
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/api-version"
+        - in: path
+          name: id
+          description: "De identifiatie van de ouder."
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -477,14 +487,19 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/default"
       tags:
       - ingeschrevenpersonen
-  /ingeschrevenpersonen/{burgerservicenummer}/partners/{uuid}:
+  /ingeschrevenpersonen/{burgerservicenummer}/partners/{id}:
     get:
-      operationId: ingeschrevenpersonenBurgerservicenummerpartnersUuid
+      operationId: ingeschrevenpersonenBurgerservicenummerpartnersId
       description: "Het ophalen de partner-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen."
       parameters:
         - $ref: '#/components/parameters/burgerservicenummer'
-        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/uuid"
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/api-version"
+        - in: path
+          name: id
+          description: "Deidentifiatie van het kind."
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -913,6 +928,13 @@ components:
           $ref: "#/components/schemas/OuderInOnderzoek"
         geboorte:
           $ref: "#/components/schemas/Geboorte"
+        geheimhoudingPersoonsgegevens:
+          type: "boolean"
+          title: "Indicatie geheim"
+          description: "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt\
+            \ mogen worden. Indien true: op verzoek van deze persoon is het verstrekken\
+            \ van gegevens over deze persoon aan bepaalde derden niet toegestaan."
+
     OuderHalCollectie:
       type: object
       properties:
@@ -949,6 +971,12 @@ components:
           $ref: "#/components/schemas/Naam"
         geboorte:
           $ref: "#/components/schemas/Geboorte"
+        geheimhoudingPersoonsgegevens:
+          type: "boolean"
+          title: "Indicatie geheim"
+          description: "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt\
+            \ mogen worden. Indien true: op verzoek van deze persoon is het verstrekken\
+            \ van gegevens over deze persoon aan bepaalde derden niet toegestaan."
     KindHalCollectie:
       type: object
       properties:
@@ -986,6 +1014,12 @@ components:
           $ref: "#/components/schemas/PartnerInOnderzoek"
         aangaanHuwelijkPartnerschap:
           $ref: "#/components/schemas/AangaanHuwelijkPartnerschap"
+        geheimhoudingPersoonsgegevens:
+          type: "boolean"
+          title: "Indicatie geheim"
+          description: "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt\
+            \ mogen worden. Indien true: op verzoek van deze persoon is het verstrekken\
+            \ van gegevens over deze persoon aan bepaalde derden niet toegestaan."
     PartnerHalCollectie:
       type: object
       properties:
@@ -1502,7 +1536,7 @@ components:
         \ kan voorloopnullen bevatten \n* **landVanWaarIngeschreven** : Het LAND waar\
         \ de INGESCHREVEN PERSOON verblijf hield voor (her)vestiging in Nederland."
         properties:
-          identificatiecodeVerblijfplaats:
+          IdentificatiecodeVerblijfplaats:
             type: "string"
             title: "identificatiecodeVerblijfplaats"
             description: "Een verblijfplaats kan een ligplaats, een standplaats of een\
@@ -1734,9 +1768,10 @@ components:
     Verblijfstitel:
       type: "object"
       description: "Gegevens over de verblijfsrechtelijke status van de ingeschrevene.\
-        \ \n* **datumEindeGeldigheid**: Datum waarop de geldigheid van de gegevens\
-        \ over de verblijfstitel is beeindigd. \n* **datumIngangGeldigheid**: Datum\
-        \ waarop de gegevens over de verblijfstitel geldig zijn geworden. \n* **aanduiding**\
+        \ \n* **datumEinde**: Datum waarop de geldigheid van de gegevens\
+        \ over de verblijfstitel is beeindigd. \n* **datumIngang**: Datum\
+        \ waarop de gegevens over de verblijfstitel geldig zijn geworden. \n* **datumOpneming**\
+        \ : Datum en tijdstip van opneming van het geheel van de verblijfstitel. \n* **aanduiding**\
         \ : Verblijfstiteltabel, die aangeeft over welke verblijfsrechtelijke status\
         \ de ingeschrevene beschikt."
       properties:
@@ -2052,11 +2087,15 @@ components:
           \ de INGESCHREVEN PERSOON verblijf hield voor (her)vestiging in Nederland.</p></body>"
         properties:
           datumTot:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
+            allOf:
+              - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
+              - description: "De datum vanaf wanneer de persoon niet meer op het adres verblijft."
     Verblijfplaatshistorie_links:
       type: "object"
       properties:
-        self:
+        nummeraanduiding:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalLink"
+        adresseerbaarObject:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalLink"
     PartnerhistorieHalCollectie:
       type: object
@@ -2149,10 +2188,11 @@ components:
       allOf:
       - $ref: "#/components/schemas/Verblijfstitel"
       - description: "<body><p>Gegevens over de verblijfsrechtelijke status van de\
-          \ ingeschrevene.</p><p>\n <em>*</em> datumEindeGeldigheid**: Datum waarop\
+          \ ingeschrevene.</p><p>\n <em>*</em> datumEinde**: Datum waarop\
           \ de geldigheid van de gegevens over de verblijfstitel is beeindigd.</p><p>\n\
-          \ <em>*</em> datumIngangGeldigheid**: Datum waarop de gegevens over de verblijfstitel\
-          \ geldig zijn geworden.</p><p>\n <em>*</em> aanduiding** : Verblijfstiteltabel,\
+          \ <em>*</em> datumIngang**: Datum waarop de gegevens over de verblijfstitel\
+          \ geldig zijn geworden.</p><p> \n* **datumOpneming** : Datum en tijdstip van \
+          \ opneming van het geheel van de verblijfstitel. \n <em>*</em> aanduiding** : Verblijfstiteltabel,\
           \ die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt.</p><p>\n\
           \ <em>*</em> datumOpneming** : Datum en tijdstip van opneming van het geheel\
           \ van de verblijfstitel.</p></body>"
