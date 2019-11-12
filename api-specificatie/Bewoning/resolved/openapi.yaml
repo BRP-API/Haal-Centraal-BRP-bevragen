@@ -1107,7 +1107,7 @@ paths:
       - Bewoning
       description: <body><p><body> <p>Het ophalen van de gegevens van de hoofdbewoner
         van een verblijfsobject, woonboot of woonwagen.<br/> </p></body>
-      operationId: getHeoofdbewoners
+      operationId: getHoofdbewoners
       parameters:
       - name: api-version
         in: header
