@@ -7,7 +7,7 @@ servers:
 info:
   title: Bevragingen ingeschreven personen
   description: "API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. Ook de gegevens over reisdocumenten worden via deze API ontsloten. Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting."
-  version: "1.1.0"
+  version: "1.0.0"
   contact:
     url: https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen
   license:
