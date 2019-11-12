@@ -1536,9 +1536,9 @@ components:
         \ kan voorloopnullen bevatten \n* **landVanWaarIngeschreven** : Het LAND waar\
         \ de INGESCHREVEN PERSOON verblijf hield voor (her)vestiging in Nederland."
         properties:
-          IdentificatiecodeVerblijfplaats:
+          identificatiecodeAdresseerbaarObject:
             type: "string"
-            title: "identificatiecodeVerblijfplaats"
+            title: "identificatiecodeAdresseerbaarObject"
             description: "Een verblijfplaats kan een ligplaats, een standplaats of een\
               \ verblijfsobject in een of meerdere panden zijn, waaraan respectievelijk\
               \ een ligplaatsidentificatie, standplaatsidentificatie of verblijfsobjectidentificatie\
@@ -1692,9 +1692,9 @@ components:
           title: "identificatiecodeNummeraanduiding"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        identificatiecodeVerblijfplaats:
+        identificatiecodeAdresseerbaarObject:
           type: "boolean"
-          title: "identificatiecodeVerblijfplaats"
+          title: "identificatiecodeAdresseerbaarObject"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         landVanwaarIngeschreven:
