@@ -81,6 +81,13 @@ Functionaliteit: Als gemeente wil ik de juiste en consistent naamgebruik in een 
       | Partner voor eigen    | Man                 | GA VP GP-VV GN  | F. in het Veld-van Velzen | de heer In het Veld-van Velzen |
       | Partner voor eigen    | Man                 | GA VP GP-VV GN  | F. Groenen-Groenink       | de heer Groenen-Groenink       |
 
+    Voorbeelden: voorvoegsels met hoofdletter of kleine letter
+      | aanduidingAanschrijving | geslachtsaanduiding | VV     | GN     | VP     | GP     | gebruikInLopendeTekst          |
+      | E                       | man                 | In het | Veld   | van    | Velzen | de heer In het Veld            |
+      | N                       | vrouw               | van    | Velzen | In het | Veld   | mevrouw Van Velzen-In het Veld |
+      | P                       | vrouw               | In het | Veld   | van    | Velzen | mevrouw Van Velzen             |
+      | V                       | man                 | van    | Velzen | In het | Veld   | de heer In het Veld-van Velzen |
+
     Voorbeelden: adelijke titels
       | adellijkeTitel_predikaat | aanduidingNaamgebruik | geslachtsaanduiding | samenstelling gebruikInLopendeTekst | gebruikInLopendeTekst                        |
       | Baron                    | Eigen                 | Man                 | AT VV GN                            | baron Van den Aedel                          |

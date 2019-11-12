@@ -106,6 +106,13 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
       | Partner voor eigen    | Man                 | GA VP GP-VV GN      | F. in het Veld-van Velzen | Geachte heer In het Veld-van Velzen    |
       | Partner voor eigen    | Man                 | GA VP GP-VV GN      | F. Groenen-Groenink       | Geachte heer Groenen-Groenink          |
 
+    Voorbeelden: voorvoegsels met hoofdletter of kleine letter
+      | aanduidingAanschrijving | geslachtsaanduiding | VV     | GN     | VP     | GP     | aanhef                                 |
+      | E                       | man                 | In het | Veld   | van    | Velzen | Geachte heer In het Veld               |
+      | N                       | vrouw               | van    | Velzen | In het | Veld   | Geachte mevrouw Van Velzen-In het Veld |
+      | P                       | vrouw               | In het | Veld   | van    | Velzen | Geachte mevrouw Van Velzen             |
+      | V                       | man                 | van    | Velzen | In het | Veld   | Geachte heer In het Veld-van Velzen    |
+
     Voorbeelden: adelijke titels
       | adellijkeTitel_predikaat | aanduidingNaamgebruik | aanschrijfwijze                             | aanhef                    |
       | Baron                    | Eigen                 | H.W. baron van den Aedel                    | Hoogwelgeboren heer       |
