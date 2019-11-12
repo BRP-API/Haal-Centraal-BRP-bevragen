@@ -1536,7 +1536,7 @@ components:
         \ kan voorloopnullen bevatten \n* **landVanWaarIngeschreven** : Het LAND waar\
         \ de INGESCHREVEN PERSOON verblijf hield voor (her)vestiging in Nederland."
         properties:
-          identificatiecodeVerblijfplaats:
+          IdentificatiecodeVerblijfplaats:
             type: "string"
             title: "identificatiecodeVerblijfplaats"
             description: "Een verblijfplaats kan een ligplaats, een standplaats of een\
@@ -2093,7 +2093,9 @@ components:
     Verblijfplaatshistorie_links:
       type: "object"
       properties:
-        self:
+        nummeraanduiding:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalLink"
+        adresseerbaarObject:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalLink"
     PartnerhistorieHalCollectie:
       type: object
