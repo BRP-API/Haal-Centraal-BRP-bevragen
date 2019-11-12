@@ -271,14 +271,19 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/default"
       tags: 
       - ingeschrevenpersonen
-  /ingeschrevenpersonen/{burgerservicenummer}/kinderen/{uuid}:
+  /ingeschrevenpersonen/{burgerservicenummer}/kinderen/{id}:
     get:
-      operationId: ingeschrevenpersonenBurgerservicenummerkinderenUuid
+      operationId: ingeschrevenpersonenBurgerservicenummerkinderenId
       description: "Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen."
       parameters: 
         - $ref: '#/components/parameters/burgerservicenummer'
-        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/uuid"
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/api-version"
+        - in: path
+          name: id
+          description: "Deidentifiatie van het kind."
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -374,14 +379,19 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/default"
       tags: 
       - ingeschrevenpersonen
-  /ingeschrevenpersonen/{burgerservicenummer}/ouders/{uuid}:
+  /ingeschrevenpersonen/{burgerservicenummer}/ouders/{id}:
     get:
-      operationId: ingeschrevenpersonenBurgerservicenummeroudersUuid
+      operationId: ingeschrevenpersonenBurgerservicenummeroudersId
       description: "Het ophalen de ouder-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.."
       parameters: 
         - $ref: '#/components/parameters/burgerservicenummer'
-        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/uuid"
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/api-version"
+        - in: path
+          name: id
+          description: "De identifiatie van de ouder."
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -477,14 +487,19 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/default"
       tags: 
       - ingeschrevenpersonen
-  /ingeschrevenpersonen/{burgerservicenummer}/partners/{uuid}:
+  /ingeschrevenpersonen/{burgerservicenummer}/partners/{id}:
     get:
-      operationId: ingeschrevenpersonenBurgerservicenummerpartnersUuid
+      operationId: ingeschrevenpersonenBurgerservicenummerpartnersId
       description: "Het ophalen de partner-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen."
       parameters: 
         - $ref: '#/components/parameters/burgerservicenummer'
-        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/uuid"
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/api-version"
+        - in: path
+          name: id
+          description: "Deidentifiatie van het kind."
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: "Zoekactie geslaagd"
