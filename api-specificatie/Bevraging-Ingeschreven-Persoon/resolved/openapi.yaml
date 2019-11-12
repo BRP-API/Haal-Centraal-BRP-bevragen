@@ -11,7 +11,7 @@ info:
   license:
     name: European Union Public License, version 1.2 (EUPL-1.2)
     url: https://eupl.eu/1.2/nl/
-  version: 1.1.0
+  version: 1.0.0
 servers:
 - url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bevragingen_ingeschreven_personen
   description: SwaggerHub API Auto Mocking
@@ -22,28 +22,45 @@ paths:
     get:
       tags:
       - ingeschrevenpersonen
-      description: "Het ophalen van een collectie ingeschreven personen inclusief\
-        \ het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft\
-        \ alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste\
-        \ één van de volgende combinaties van parameters moet zijn opgenomen:\n\n\n\
-        1.  Persoon\n    -  geboorte__datum\n    -  naam__geslachtsnaam (minimaal\
-        \ 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)\
-        \ ) \n2.  Persoon\n    -  verblijfplaats__gemeentevaninschrijving\n    - \
-        \ naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)\
-        \ ) \n3.  Persoon\n    -  burgerservicenummer\n\n\n4.  Postcode\n    -  verblijfplaats__postcode\n\
-        \    -  verblijfplaats__huisnummer\n\n\n5.  NaamOpenbareRuimte\n    -  verblijfplaats__naamopenbareruimte\
-        \ (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)\
-        \ ) \n\n    -  verblijfplaats__gemeentevaninschrijving\n    -  verblijfplaats__huisnummer\n\
-        \    \n\n6.  Nummeraanduiding\n    -  verblijfplaats__identificatiecodenummeraanduiding\n\
-        \nDe bovenstaande combinaties van parameters mogen gecombineerd worden met\
-        \ de overige beschikbare query-parameters, maar binnen iedere combinatie zijn\
-        \ de hier genoemde velden **verplicht**. \n\n\nDefault levert een zoekvraag\
-        \ alleen personen op die nog in leven zijn. Indien **_inclusiefoverledenpersonen_**\
-        \ de waarde **_true_** heeft worden [overleden personen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature)\
-        \ opgenomen in het zoekresultaat.\n\n\nHet maximale aantal zoekresultaten\
-        \ dat geretourneerd wordt is aan de provider om te bepalen. Als het resultaat\
-        \ van de de request dit aantal overtreft worden er geen resultaten geretourneerd\
-        \ en volgt er een foutmelding.\n\n\n Er vind geen sortering plaats.\n"
+      description: |
+        Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen:
+
+
+        1.  Persoon
+            -  geboorte__datum
+            -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) )
+        2.  Persoon
+            -  verblijfplaats__gemeentevaninschrijving
+            -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) )
+        3.  Persoon
+            -  burgerservicenummer
+
+
+        4.  Postcode
+            -  verblijfplaats__postcode
+            -  verblijfplaats__huisnummer
+
+
+        5.  NaamOpenbareRuimte
+            -  verblijfplaats__naamopenbareruimte (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) )
+
+            -  verblijfplaats__gemeentevaninschrijving
+            -  verblijfplaats__huisnummer
+
+
+        6.  Nummeraanduiding
+            -  verblijfplaats__identificatiecodenummeraanduiding
+
+        De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters, maar binnen iedere combinatie zijn de hier genoemde velden **verplicht**.
+
+
+        Default levert een zoekvraag alleen personen op die nog in leven zijn. Indien **_inclusiefoverledenpersonen_** de waarde **_true_** heeft worden [overleden personen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) opgenomen in het zoekresultaat.
+
+
+        Het maximale aantal zoekresultaten dat geretourneerd wordt is aan de provider om te bepalen. Als het resultaat van de de request dit aantal overtreft worden er geen resultaten geretourneerd en volgt er een foutmelding.
+
+
+         Er vind geen sortering plaats.
       operationId: ingeschrevenNatuurlijkPersonen
       parameters:
       - name: api-version
@@ -624,6 +641,23 @@ paths:
                   it.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: autorisation
+        404:
+          description: Not Found
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.5
+                  404 Not Found
+                title: Opgevraagde resource bestaat niet.
+                status: 404
+                detail: The server has not found anything matching the Request-URI.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: notFound
         406:
           description: Not Acceptable
           headers:
@@ -896,6 +930,23 @@ paths:
                   it.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: autorisation
+        404:
+          description: Not Found
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.5
+                  404 Not Found
+                title: Opgevraagde resource bestaat niet.
+                status: 404
+                detail: The server has not found anything matching the Request-URI.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: notFound
         406:
           description: Not Acceptable
           headers:
@@ -1160,6 +1211,23 @@ paths:
                   it.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: autorisation
+        404:
+          description: Not Found
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.5
+                  404 Not Found
+                title: Opgevraagde resource bestaat niet.
+                status: 404
+                detail: The server has not found anything matching the Request-URI.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: notFound
         406:
           description: Not Acceptable
           headers:
@@ -1432,6 +1500,23 @@ paths:
                   it.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: autorisation
+        404:
+          description: Not Found
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.5
+                  404 Not Found
+                title: Opgevraagde resource bestaat niet.
+                status: 404
+                detail: The server has not found anything matching the Request-URI.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: notFound
         406:
           description: Not Acceptable
           headers:
@@ -1679,6 +1764,23 @@ paths:
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: authentication
         403:
+          description: Not Found
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.5
+                  404 Not Found
+                title: Opgevraagde resource bestaat niet.
+                status: 404
+                detail: The server has not found anything matching the Request-URI.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: notFound
+        404:
           description: Forbidden
           headers:
             api-version:
@@ -1968,6 +2070,23 @@ paths:
                   it.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: autorisation
+        404:
+          description: Not Found
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.5
+                  404 Not Found
+                title: Opgevraagde resource bestaat niet.
+                status: 404
+                detail: The server has not found anything matching the Request-URI.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: notFound
         406:
           description: Not Acceptable
           headers:
@@ -2234,6 +2353,23 @@ paths:
                   it.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: autorisation
+        404:
+          description: Not Found
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.5
+                  404 Not Found
+                title: Opgevraagde resource bestaat niet.
+                status: 404
+                detail: The server has not found anything matching the Request-URI.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: notFound
         406:
           description: Not Acceptable
           headers:
@@ -2500,6 +2636,23 @@ paths:
                   it.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: autorisation
+        404:
+          description: Not Found
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.5
+                  404 Not Found
+                title: Opgevraagde resource bestaat niet.
+                status: 404
+                detail: The server has not found anything matching the Request-URI.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: notFound
         406:
           description: Not Acceptable
           headers:
@@ -2660,11 +2813,11 @@ paths:
       - Historie
       description: <body><p>Het ophalen van de verblijfplaatshistorie van een ingeschreven
         persoon. Van een ingeschreven persoon wordt de verblijfplaats geretourneerd
-        waar de persoon op de (optioneel) opgegeven peildatum (geldigvan) verbleef
-        of worden de verblijfplaatsen geretourneerd waar de persoon binnen de (optioneel)
-        opgegeven periode (geldigvan tot geldigtotenmet) heeft verbleven. Wanneer
-        geen peildatum of periode wordt opgegeven, worden alle verblijfplaatsen waar
-        de persoon verbleven heeft of nu verblijft teruggegeven.</p><p>Er wordt aflopend
+        waar de persoon op de (optioneel) opgegeven peildatum verbleef of worden de
+        verblijfplaatsen geretourneerd waar de persoon binnen de (optioneel) opgegeven
+        periode (datumvan tot en met datumtotenmet) heeft verbleven. Wanneer geen
+        peildatum of periode wordt opgegeven, worden alle verblijfplaatsen waar de
+        persoon verbleven heeft of nu verblijft teruggegeven.</p><p>Er wordt aflopend
         gesorteerd op datumAanvangAdreshuishouding, zodat de meest actuele bovenaan
         staat.</p></body>
       operationId: Getverblijfplaatshistorie
@@ -2980,9 +3133,9 @@ paths:
       - Historie
       description: <body><p>Het ophalen van de partnerhistorie van een ingeschreven
         persoon. Van een ingeschreven persoon worden partners waarmee in het verleden
-        relaties geregistreerd zijn geretourneerd die geldig waren op de (optioneel)
-        opgegeven peildatum (geldigop) of die geldig waren binnen de (optioneel) opgegeven
-        periode (geldigvan tot geldigtotenmet).</p></body>
+        relaties geregistreerd zijn geretourneerd die de persoon had op de (optioneel)
+        opgegeven peildatum of binnen de (optioneel) opgegeven periode (datumvan tot
+        en met datumtotenmet).</p></body>
       operationId: Getpartnerhistorie
       parameters:
       - name: burgerservicenummer
@@ -3295,11 +3448,11 @@ paths:
       tags:
       - Historie
       description: <body><p>Het ophalen van de verblijfstitelhistorie van een ingeschreven
-        persoon. Van een ingeschreven persoon worden verblijfstitels geretourneerd
-        die geldig was op de (optioneel) opgegeven peildatum (geldigop) of worden
-        de verblijfstitels geretourneerd die geldig waren binnen de (optioneel) opgegeven
-        periode (geldigvan tot geldigtotenmet). Wanneer geen peildatum of periode
-        wordt opgegeven, worden alle verblijfstitels van de persoon teruggegeven.</p><p>Er
+        persoon. Van een ingeschreven persoon wordt de verblijfstitel geretourneerd
+        die de persoon had op de (optioneel) opgegeven peildatum of worden de verblijfstitels
+        geretourneerd die de persoon had waren binnen de (optioneel) opgegeven periode
+        (datumvan tot en met datumtotenmet). Wanneer geen peildatum of periode wordt
+        opgegeven, worden alle verblijfstitels van de persoon teruggegeven.</p><p>Er
         wordt aflopend gesorteerd op datumingang, zodat de meest actuele bovenaan
         staat.</p></body>
       operationId: getverblijfstitelhistorie
@@ -3966,7 +4119,7 @@ components:
           type: boolean
           description: "Een aanduiding die aangeeft of de persoon een oproep moet\
             \ ontvangen voor verkiezingen voor het Europees parlement. \n* true: persoon\
-            \ ontvangt oproep \n* false: persoon is uitgesloten"
+            \ is uitgesloten"
           example: true
         uitgeslotenVanKiesrecht:
           title: uitgeslotenVanKiesrecht
@@ -4278,8 +4431,8 @@ components:
       allOf:
       - $ref: '#/components/schemas/BinnenlandsAdres'
       - properties:
-          IdentificatiecodeVerblijfplaats:
-            title: identificatiecodeVerblijfplaats
+          identificatiecodeAdresseerbaarObject:
+            title: identificatiecodeAdresseerbaarObject
             maxLength: 16
             type: string
             description: Een verblijfplaats kan een ligplaats, een standplaats of
@@ -4444,8 +4597,8 @@ components:
           type: boolean
           description: Indicator die aangeeft of het corresponderende gegeven voor
             deze persoon in onderzoek is.
-        identificatiecodeVerblijfplaats:
-          title: identificatiecodeVerblijfplaats
+        identificatiecodeAdresseerbaarObject:
+          title: identificatiecodeAdresseerbaarObject
           type: boolean
           description: Indicator die aangeeft of het corresponderende gegeven voor
             deze persoon in onderzoek is.
