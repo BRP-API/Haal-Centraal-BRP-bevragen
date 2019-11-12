@@ -409,10 +409,10 @@ components:
             \ Zie verder de toelichting in de BAG.</body>"
           pattern: "^[1-9]{1}[0-9]{3}[A-Z]{2}$"
           example: "2571BP"
-        verblijfsobjectidentificatie:
+        identificatiecodeAdresseerbaarObject:
           type: "string"
           title: "Verblijfsobjectidentificatie"
-          description: "<body>De unieke identificatie van een VERBLIJFSOBJECT.</body><body>Combinatie\
+          description: "<body>De unieke identificatie van een VERBLIJFSOBJECT, LIGPLAATS of STANDPLAATS .</body><body>Combinatie\
             \ van de viercijferige 'gemeentecode' (volgens GBA tabel 33, Gemeententabel),\
             \ de tweecijferige 'objecttypecode' en een voor het betreffende objecttype\
             \ binnen een gemeente uniek tiencijferig 'objectvolgnummer'. De objecttypecode\
@@ -640,6 +640,12 @@ components:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalLink"
         nummeraanduiding:
+          allOf:
+          - title: "is"
+            type: "object"
+            description: ""
+          - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalLink"
+        adresseerbaarObject:
           allOf:
           - title: "is"
             type: "object"
