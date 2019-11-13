@@ -100,15 +100,7 @@ components:
       content:
         application/problem+json:
           schema:
-            allOf:
-            - $ref: '#/components/schemas/Foutbericht'
-            - type: object
-              properties:
-                invalid-params:
-                  description: Foutmelding per fout in een parameter. Alle gevonden fouten worden één keer teruggemeld.
-                  type: array
-                  items:
-                    $ref: '#/components/schemas/InvalidParams'
+            $ref: '#/components/schemas/BadRequestFoutbericht'
           example:
             type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1 400 Bad Request
             title: Ten minste één parameter moet worden opgegeven.
@@ -405,6 +397,16 @@ components:
           type: string
           description: Beschrijving van de fout op de parameterwaarde
           example: Waarde is geen geldige integer.
+    BadRequestFoutbericht:
+      allOf:
+      - $ref: '#/components/schemas/Foutbericht'
+      - type: object
+        properties:
+          invalid-params:
+            description: Foutmelding per fout in een parameter. Alle gevonden fouten worden één keer teruggemeld.
+            type: array
+            items:
+              $ref: '#/components/schemas/InvalidParams'
     Datum_onvolledig:
       type: "object"
       description: "Gegevens over de datums die mogelijk niet volledig zijn, maar\
