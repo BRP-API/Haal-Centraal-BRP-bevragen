@@ -4970,7 +4970,7 @@ components:
     Partnerhistorie_links:
       type: object
       properties:
-        ingeschrevenpersonen:
+        ingeschrevenPersoon:
           $ref: '#/components/schemas/HalLink'
     VerblijfstitelhistorieHalCollectie:
       type: object
@@ -4982,9 +4982,6 @@ components:
     VerblijfstitelhistorieHal:
       allOf:
       - $ref: '#/components/schemas/Verblijfstitelhistorie'
-      - properties:
-          _links:
-            $ref: '#/components/schemas/Verblijfstitelhistorie_links'
     Verblijfstitelhistorie:
       allOf:
       - $ref: '#/components/schemas/Verblijfstitel'
@@ -5001,8 +4998,6 @@ components:
            <em>*</em> datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.</p><p> <em>*</em> datumOpneming** : Datum en tijdstip van  opneming van het geheel van de verblijfstitel.  </p><p>
            <em>*</em> aanduiding** : Verblijfstiteltabel, die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt.</p><p>
            <em>*</em> datumOpneming** : Datum en tijdstip van opneming van het geheel van de verblijfstitel.</p></body>
-    Verblijfstitelhistorie_links:
-      type: object
     Geboortedatum:
       type: object
       properties:
