@@ -134,7 +134,7 @@ Functionaliteit: Tonen van Partnerhistorie
       | # | naam.voornamen | aangaanHuwelijkPartnerschap.jaar  | ontbindingHuwelijkPartnerschap.datum |
       | 0 | Ayaan          | 1936                              |                                      |
 
-    Als de partnerhistorie wordt gevraagd van de persoon met burgerservicenummer 999991553 met datumvan "1936-12-31s"
+    Als de partnerhistorie wordt gevraagd van de persoon met burgerservicenummer 999991553 met datumvan "1936-12-31"
     Dan worden de huwelijken/partners teruggegeven in de volgorde en met waarden:
       | # | naam.voornamen | aangaanHuwelijkPartnerschap.jaar  | ontbindingHuwelijkPartnerschap.datum |
       | 0 | Ayaan          | 1936                              |                                      |
