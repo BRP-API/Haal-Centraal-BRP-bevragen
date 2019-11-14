@@ -2199,8 +2199,7 @@ components:
               items:
                 $ref: '#/components/schemas/VerblijfstitelhistorieHal'
     VerblijfstitelhistorieHal:
-      allOf:
-        - $ref: '#/components/schemas/Verblijfstitelhistorie'
+      $ref: '#/components/schemas/Verblijfstitelhistorie'
     Verblijfstitelhistorie:
       allOf:
       - $ref: "#/components/schemas/Verblijfstitel"
