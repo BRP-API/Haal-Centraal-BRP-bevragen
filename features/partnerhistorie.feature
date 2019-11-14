@@ -18,9 +18,14 @@ Functionaliteit: Tonen van Partnerhistorie
   Als partnerhistorie wordt gevraagd met datumvan gelijk aan de Datum ontbinding huwelijk/geregistreerd partnerschap van een huwelijk/partnerschap, dan wordt dat huwelijk of partnerschap niet opgenomen in het antwoord.
 
   Wanneer de datum sluiting/aangaan gedeeltelijk onbekend is, wordt voor de filtering aangenomen dat de persoon gedurende de gehele onzekerheidstijd deze partner heeft gehad.
-  Wanneer van de sluiting/aangaan alleen het jaar bekend is, wordt aangenomen dat de persoon het hele jaar deze partner heeft gehad.
-  Wanneer van de sluiting/aangaan alleen het jaar en de maand bekend is, wordt aangenomen dat de persoon de hele maand deze partner heeft gehad.
+  Wanneer van de sluiting/aangaan alleen het jaar bekend is, wordt voor de filtering aangenomen dat de persoon het hele jaar deze partner heeft gehad.
+  Wanneer van de sluiting/aangaan alleen het jaar en de maand bekend is, wordt voor de filtering aangenomen dat de persoon de hele maand deze partner heeft gehad.
   Wanneer de sluiting/aangaan geheel onbekend is, wordt voor de filtering aangenomen dat de persoon deze partner altijd heeft gehad.
+
+  Wanneer de datum ontbinding gedeeltelijk onbekend is, wordt voor de filtering aangenomen dat de persoon gedurende de gehele onzekerheidstijd deze partner heeft gehad.
+  Wanneer van de ontbinding alleen het jaar bekend is, wordt voor de filtering aangenomen dat de persoon het hele jaar deze partner heeft gehad.
+  Wanneer van de ontbinding alleen het jaar en maand bekend is, wordt voor de filtering aangenomen dat de persoon de hele maand deze partner heeft gehad.
+
 
   De huwelijken/partnerschappen worden in het antwoord aflopend gesorteerd op Datum huwelijkssluiting/aangaan geregistreerd partnerschap, zodat de meest laatst gesloten huwelijk/partnerschap bovenaan staat.
 
@@ -129,7 +134,7 @@ Functionaliteit: Tonen van Partnerhistorie
       | # | naam.voornamen | aangaanHuwelijkPartnerschap.jaar  | ontbindingHuwelijkPartnerschap.datum |
       | 0 | Ayaan          | 1936                              |                                      |
 
-    Als de partnerhistorie wordt gevraagd van de persoon met burgerservicenummer 999991553 met datumvan "1936-12-31"
+    Als de partnerhistorie wordt gevraagd van de persoon met burgerservicenummer 999991553 met datumvan "1936-12-31s"
     Dan worden de huwelijken/partners teruggegeven in de volgorde en met waarden:
       | # | naam.voornamen | aangaanHuwelijkPartnerschap.jaar  | ontbindingHuwelijkPartnerschap.datum |
       | 0 | Ayaan          | 1936                              |                                      |
