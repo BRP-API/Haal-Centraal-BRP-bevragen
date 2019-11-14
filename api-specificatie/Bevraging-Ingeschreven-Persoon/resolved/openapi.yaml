@@ -3768,7 +3768,7 @@ components:
       title: Burgerservicenummer
       maxLength: 9
       minLength: 9
-      pattern: ^[0-9]{9}$
+      pattern: ^[0-9]$
       type: string
       description: Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene
         bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid
