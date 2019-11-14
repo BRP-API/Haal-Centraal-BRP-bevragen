@@ -2143,6 +2143,10 @@ components:
       type: "object"
       description: ""
       properties:
+        indicatieHuwelijkPartnerschapBeeindigd:
+          type: "boolean"
+          description: "Indicatie of het huwelijk ontbonden is danwel het partnerschap beeindigd is.\
+        \ verbintenis:\n* `True` - Huwelijk/Partnerschap is beeindigd."
         datum:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         land:
@@ -2207,11 +2211,16 @@ components:
           \ ingeschrevene.</p><p>\n <em>*</em> datumEinde**: Datum waarop\
           \ de geldigheid van de gegevens over de verblijfstitel is beeindigd.</p><p>\n\
           \ <em>*</em> datumIngang**: Datum waarop de gegevens over de verblijfstitel\
-          \ geldig zijn geworden.</p><p> \n* **datumOpneming** : Datum en tijdstip van \
-          \ opneming van het geheel van de verblijfstitel. \n <em>*</em> aanduiding** : Verblijfstiteltabel,\
+          \ geldig zijn geworden.</p><p> <em>*</em> datumOpneming** : Datum en tijdstip van \
+          \ opneming van het geheel van de verblijfstitel.  </p><p>\n\ <em>*</em> aanduiding** : Verblijfstiteltabel,\
           \ die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt.</p><p>\n\
           \ <em>*</em> datumOpneming** : Datum en tijdstip van opneming van het geheel\
           \ van de verblijfstitel.</p></body>"
+        properties:
+          indicatieVerblijfstitelBeeindigd:
+            type: "boolean"
+            description: "Indicatie of de verblijfstitel is beeindigd. (Als de beeindigingsdatum onbekend is, maar de verblijfstitel is wel beeindigd )\
+            \n* `True` - Verblijfstitel is beeindigd.\n* `False` - Verblijfstitel is niet beeindigd."
     Verblijfstitelhistorie_links:
       type: "object"
       properties:
