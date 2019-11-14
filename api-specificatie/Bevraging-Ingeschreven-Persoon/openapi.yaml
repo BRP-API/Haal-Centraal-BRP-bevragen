@@ -2184,7 +2184,7 @@ components:
     Partnerhistorie_links:
       type: "object"
       properties:
-        ingeschrevenpersonen:
+        ingeschrevenPersoon:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalLink"
     VerblijfstitelhistorieHalCollectie:
       type: object
@@ -2199,11 +2199,7 @@ components:
               items:
                 $ref: '#/components/schemas/VerblijfstitelhistorieHal'
     VerblijfstitelhistorieHal:
-      allOf:
-        - $ref: '#/components/schemas/Verblijfstitelhistorie'
-        - properties:
-            _links:
-              $ref: "#/components/schemas/Verblijfstitelhistorie_links"
+      $ref: '#/components/schemas/Verblijfstitelhistorie'
     Verblijfstitelhistorie:
       allOf:
       - $ref: "#/components/schemas/Verblijfstitel"
@@ -2221,8 +2217,6 @@ components:
             type: "boolean"
             description: "Indicatie of de verblijfstitel is beeindigd. (Als de beeindigingsdatum onbekend is, maar de verblijfstitel is wel beeindigd )\
             \n* `True` - Verblijfstitel is beeindigd.\n* `False` - Verblijfstitel is niet beeindigd."
-    Verblijfstitelhistorie_links:
-      type: "object"
     Geboortedatum:
       type: "object"
       description: "<body><p>Gegevens over de geboorte van respectievelijk de persoon,\
