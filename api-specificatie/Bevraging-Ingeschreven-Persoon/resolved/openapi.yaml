@@ -4980,8 +4980,7 @@ components:
         _embedded:
           $ref: '#/components/schemas/VerblijfstitelhistorieHalCollectie__embedded'
     VerblijfstitelhistorieHal:
-      allOf:
-      - $ref: '#/components/schemas/Verblijfstitelhistorie'
+      $ref: '#/components/schemas/Verblijfstitelhistorie'
     Verblijfstitelhistorie:
       allOf:
       - $ref: '#/components/schemas/Verblijfstitel'
