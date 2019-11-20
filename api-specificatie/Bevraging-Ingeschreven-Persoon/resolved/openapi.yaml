@@ -65,12 +65,12 @@ paths:
       parameters:
       - name: api-version
         in: header
-        description: Bevat de versie van de aan te roepen API conform [Landelijke
+        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
           API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
         required: false
         schema:
-          type: string
-          example: 1.0.1
+          type: integer
+          example: 1
       - name: expand
         in: query
         description: Hier kan aangegeven worden welke gerelateerde resources meegeladen
@@ -518,12 +518,12 @@ paths:
           $ref: '#/components/schemas/Burgerservicenummer'
       - name: api-version
         in: header
-        description: Bevat de versie van de aan te roepen API conform [Landelijke
+        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
           API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
         required: false
         schema:
-          type: string
-          example: 1.0.1
+          type: integer
+          example: 1
       - name: expand
         in: query
         description: Hier kan aangegeven worden welke gerelateerde resources meegeladen
@@ -811,12 +811,12 @@ paths:
           $ref: '#/components/schemas/Burgerservicenummer'
       - name: api-version
         in: header
-        description: Bevat de versie van de aan te roepen API conform [Landelijke
+        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
           API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
         required: false
         schema:
-          type: string
-          example: 1.0.1
+          type: integer
+          example: 1
       - name: id
         in: path
         description: Deidentifiatie van het kind.
@@ -1091,12 +1091,12 @@ paths:
           $ref: '#/components/schemas/Burgerservicenummer'
       - name: api-version
         in: header
-        description: Bevat de versie van de aan te roepen API conform [Landelijke
+        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
           API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
         required: false
         schema:
-          type: string
-          example: 1.0.1
+          type: integer
+          example: 1
       responses:
         200:
           description: Zoekactie geslaagd
@@ -1363,12 +1363,12 @@ paths:
           $ref: '#/components/schemas/Burgerservicenummer'
       - name: api-version
         in: header
-        description: Bevat de versie van de aan te roepen API conform [Landelijke
+        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
           API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
         required: false
         schema:
-          type: string
-          example: 1.0.1
+          type: integer
+          example: 1
       - name: id
         in: path
         description: De identifiatie van de ouder.
@@ -1643,12 +1643,12 @@ paths:
           $ref: '#/components/schemas/Burgerservicenummer'
       - name: api-version
         in: header
-        description: Bevat de versie van de aan te roepen API conform [Landelijke
+        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
           API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
         required: false
         schema:
-          type: string
-          example: 1.0.1
+          type: integer
+          example: 1
       responses:
         200:
           description: Zoekactie geslaagd
@@ -1915,12 +1915,12 @@ paths:
           $ref: '#/components/schemas/Burgerservicenummer'
       - name: api-version
         in: header
-        description: Bevat de versie van de aan te roepen API conform [Landelijke
+        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
           API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
         required: false
         schema:
-          type: string
-          example: 1.0.1
+          type: integer
+          example: 1
       - name: id
         in: path
         description: Deidentifiatie van het kind.
@@ -2197,12 +2197,12 @@ paths:
           $ref: '#/components/schemas/Burgerservicenummer'
       - name: api-version
         in: header
-        description: Bevat de versie van de aan te roepen API conform [Landelijke
+        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
           API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
         required: false
         schema:
-          type: string
-          example: 1.0.1
+          type: integer
+          example: 1
       responses:
         200:
           description: Zoekactie geslaagd
@@ -2471,12 +2471,12 @@ paths:
           type: string
       - name: api-version
         in: header
-        description: Bevat de versie van de aan te roepen API conform [Landelijke
+        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
           API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
         required: false
         schema:
-          type: string
-          example: 1.0.1
+          type: integer
+          example: 1
       responses:
         200:
           description: Zoekactie geslaagd
@@ -2750,12 +2750,12 @@ paths:
           $ref: '#/components/schemas/Burgerservicenummer'
       - name: api-version
         in: header
-        description: Bevat de versie van de aan te roepen API conform [Landelijke
+        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
           API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
         required: false
         schema:
-          type: string
-          example: 1.0.1
+          type: integer
+          example: 1
       - name: fields
         in: query
         description: Geeft de mogelijkheid de inhoud van de body van het antwoord
@@ -3057,12 +3057,12 @@ paths:
           $ref: '#/components/schemas/Burgerservicenummer'
       - name: api-version
         in: header
-        description: Bevat de versie van de aan te roepen API conform [Landelijke
+        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
           API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
         required: false
         schema:
-          type: string
-          example: 1.0.1
+          type: integer
+          example: 1
       - name: fields
         in: query
         description: Geeft de mogelijkheid de inhoud van de body van het antwoord
@@ -3367,12 +3367,12 @@ paths:
           $ref: '#/components/schemas/Burgerservicenummer'
       - name: api-version
         in: header
-        description: Bevat de versie van de aan te roepen API conform [Landelijke
+        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
           API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
         required: false
         schema:
-          type: string
-          example: 1.0.1
+          type: integer
+          example: 1
       - name: fields
         in: query
         description: Geeft de mogelijkheid de inhoud van de body van het antwoord
@@ -5175,10 +5175,10 @@ components:
   headers:
     api_version:
       schema:
-        type: string
-        description: Geeft een specifieke API-versie aan in de context van een specifieke
-          aanroep.
-        example: 1.0.1
+        type: integer
+        description: Geeft een specifieke major API-versie aan in de context van een
+          specifieke aanroep.
+        example: 1
     warning:
       schema:
         type: string
