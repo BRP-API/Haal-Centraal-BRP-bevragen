@@ -48,12 +48,12 @@ paths:
       parameters:
       - name: api-version
         in: header
-        description: Bevat de versie van de aan te roepen API conform [Landelijke
+        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
           API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
         required: false
         schema:
-          type: string
-          example: 1.0.1
+          type: integer
+          example: 1
       - name: fields
         in: query
         description: Geeft de mogelijkheid de inhoud van de body van het antwoord
@@ -244,16 +244,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/Foutbericht'
-                - type: object
-                  properties:
-                    invalid-params:
-                      type: array
-                      description: Foutmelding per fout in een parameter. Alle gevonden
-                        fouten worden één keer teruggemeld.
-                      items:
-                        $ref: '#/components/schemas/InvalidParams'
+                $ref: '#/components/schemas/BadRequestFoutbericht'
               example:
                 type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
                   400 Bad Request
@@ -472,12 +463,12 @@ paths:
       parameters:
       - name: api-version
         in: header
-        description: Bevat de versie van de aan te roepen API conform [Landelijke
+        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
           API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
         required: false
         schema:
-          type: string
-          example: 1.0.1
+          type: integer
+          example: 1
       - name: fields
         in: query
         description: Geeft de mogelijkheid de inhoud van de body van het antwoord
@@ -548,16 +539,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/Foutbericht'
-                - type: object
-                  properties:
-                    invalid-params:
-                      type: array
-                      description: Foutmelding per fout in een parameter. Alle gevonden
-                        fouten worden één keer teruggemeld.
-                      items:
-                        $ref: '#/components/schemas/InvalidParams'
+                $ref: '#/components/schemas/BadRequestFoutbericht'
               example:
                 type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
                   400 Bad Request
@@ -793,12 +775,12 @@ paths:
       parameters:
       - name: api-version
         in: header
-        description: Bevat de versie van de aan te roepen API conform [Landelijke
+        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
           API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
         required: false
         schema:
-          type: string
-          example: 1.0.1
+          type: integer
+          example: 1
       - name: fields
         in: query
         description: Geeft de mogelijkheid de inhoud van de body van het antwoord
@@ -869,16 +851,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/Foutbericht'
-                - type: object
-                  properties:
-                    invalid-params:
-                      type: array
-                      description: Foutmelding per fout in een parameter. Alle gevonden
-                        fouten worden één keer teruggemeld.
-                      items:
-                        $ref: '#/components/schemas/InvalidParams'
+                $ref: '#/components/schemas/BadRequestFoutbericht'
               example:
                 type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
                   400 Bad Request
@@ -1111,12 +1084,12 @@ paths:
       parameters:
       - name: api-version
         in: header
-        description: Bevat de versie van de aan te roepen API conform [Landelijke
+        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
           API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
         required: false
         schema:
-          type: string
-          example: 1.0.1
+          type: integer
+          example: 1
       - name: fields
         in: query
         description: Geeft de mogelijkheid de inhoud van de body van het antwoord
@@ -1167,16 +1140,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/Foutbericht'
-                - type: object
-                  properties:
-                    invalid-params:
-                      type: array
-                      description: Foutmelding per fout in een parameter. Alle gevonden
-                        fouten worden één keer teruggemeld.
-                      items:
-                        $ref: '#/components/schemas/InvalidParams'
+                $ref: '#/components/schemas/BadRequestFoutbericht'
               example:
                 type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
                   400 Bad Request
@@ -1748,6 +1712,17 @@ components:
       enum:
       - woonadres
       - briefadres
+    BadRequestFoutbericht:
+      allOf:
+      - $ref: '#/components/schemas/Foutbericht'
+      - type: object
+        properties:
+          invalid-params:
+            type: array
+            description: Foutmelding per fout in een parameter. Alle gevonden fouten
+              worden één keer teruggemeld.
+            items:
+              $ref: '#/components/schemas/InvalidParams'
     Foutbericht:
       type: object
       properties:
@@ -1861,10 +1836,10 @@ components:
   headers:
     api_version:
       schema:
-        type: string
-        description: Geeft een specifieke API-versie aan in de context van een specifieke
-          aanroep.
-        example: 1.0.1
+        type: integer
+        description: Geeft een specifieke major API-versie aan in de context van een
+          specifieke aanroep.
+        example: 1
     warning:
       schema:
         type: string
