@@ -1230,14 +1230,13 @@ components:
           title: "europeesKiesrecht"
           description: "Een aanduiding die aangeeft of de persoon een oproep moet\
             \ ontvangen voor verkiezingen voor het Europees parlement. \n* true: persoon\
-            \ is uitgesloten"
+            \ ontvangt een oproep"
           example: "true"
         uitgeslotenVanKiesrecht:
           type: "boolean"
           title: "uitgeslotenVanKiesrecht"
-          description: "Een aanduiding die aangeeft of de persoon een oproep moet\
-            \ ontvangen voor verkiezingen. \n* true: persoon is uitgesloten \n* false: persoon\
-            \  ontvangt oproep"
+          description: "Een aanduiding die aangeeft of de persoon is uitgesloten van kiesrecht.\
+            \n* true: persoon is uitgesloten"
           example: "true"
         einddatumUitsluitingEuropeesKiesrecht:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
