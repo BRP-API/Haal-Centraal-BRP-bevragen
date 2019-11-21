@@ -639,7 +639,7 @@ components:
             type: "object"
             description: ""
           - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalLink"
-        ingeschrevenpersonen:
+        ingeschrevenPersoon:
           title: "bewoondDoor"
           type: "array"
           description: ""
@@ -650,7 +650,7 @@ components:
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalLink"
-        ingeschrevenpersonen:
+        ingeschrevenPersoon:
           title: "is"
           type: "array"
           description: ""
