@@ -282,7 +282,7 @@ paths:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/api-version"
         - in: path
           name: id
-          description: "Deidentifiatie van het kind."
+          description: "De identificatie van het kind."
           required: true
           schema:
             type: string
@@ -394,7 +394,7 @@ paths:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/api-version"
         - in: path
           name: id
-          description: "De identifiatie van de ouder."
+          description: "De identificatie van de ouder."
           required: true
           schema:
             type: string
@@ -506,7 +506,7 @@ paths:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/api-version"
         - in: path
           name: id
-          description: "Deidentifiatie van het kind."
+          description: "De identificatie van de partner."
           required: true
           schema:
             type: string
