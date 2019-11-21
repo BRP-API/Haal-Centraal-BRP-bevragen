@@ -1253,21 +1253,21 @@ components:
               description: "De aanhef zoals die in een brief, gericht aan een persoon\
                 \ gebruikt kan worden. Hoe het samenstellen van een aanhef te werk gaat\
                 \ is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanhef.feature)"
-              example: "Hooggeboren vrouwe van der Veen-van den Aedel"
+              example: "Geachte heer In het Veld "
             aanschrijfwijze:
               type: "string"
               title: "aanschrijfwijze"
               description: "Samengestelde naam zoals die in communicatie met de persoon\
                 \ gebruikt kan worden. Hoe het samenstellen van een aanschrijfwijze te\
                 \ werk gaat is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanschrijfwijze.feature)"
-              example: "W. gravin van den Aedel-van der Veen"
+              example: "H. in het Veld"
             gebruikInLopendeTekst:
               type: "string"
               title: "gebruikInLopendeTekst"
-              description: "De naam zoals die in lopende tekst kan worden. Hoe het samenstellen\
+              description: "De naam zoals die in lopende tekst gebruikt kan worden. Hoe het samenstellen\
                 \ van een naam in de lopendetekst te werk gaat is beschreven in de [functionele\
                 \ specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/gebruik_in_lopende_tekst.feature)"
-              example: "mevrouw van der Veen-gravin van den Aedel"
+              example: "de heer In het Veld"
     PersoonInOnderzoek:
       type: "object"
       description: "Een groep van booleans om aan te geven welke gegevens van de ingeschreven\
