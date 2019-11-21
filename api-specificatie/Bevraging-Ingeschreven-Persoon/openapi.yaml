@@ -913,7 +913,7 @@ components:
         _embedded:
           type: object
           properties:
-            ingeschrevenpersonen:
+            ingeschrevenPersoon:
               type: array
               items:
                 $ref: '#/components/schemas/IngeschrevenPersoonHal'
