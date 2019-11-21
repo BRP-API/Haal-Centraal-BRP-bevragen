@@ -282,7 +282,7 @@ paths:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/api-version"
         - in: path
           name: id
-          description: "Deidentifiatie van het kind."
+          description: "De identificatie van het kind."
           required: true
           schema:
             type: string
@@ -394,7 +394,7 @@ paths:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/api-version"
         - in: path
           name: id
-          description: "De identifiatie van de ouder."
+          description: "De identificatie van de ouder."
           required: true
           schema:
             type: string
@@ -506,7 +506,7 @@ paths:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/api-version"
         - in: path
           name: id
-          description: "Deidentifiatie van het kind."
+          description: "De identificatie van de partner."
           required: true
           schema:
             type: string
@@ -856,7 +856,7 @@ components:
         \ dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat\
         \ van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door\
         \ elf. Er moeten dus 9 cijfers aanwezig zijn."
-      pattern: "^[0-9]$"
+      pattern: "^[0-9]*$"
       maxLength: 9
       minLength: 9
       example: "555555021"
@@ -913,7 +913,7 @@ components:
         _embedded:
           type: object
           properties:
-            ingeschrevenpersonen:
+            ingeschrevenPersoon:
               type: array
               items:
                 $ref: '#/components/schemas/IngeschrevenPersoonHal'
@@ -1230,14 +1230,13 @@ components:
           title: "europeesKiesrecht"
           description: "Een aanduiding die aangeeft of de persoon een oproep moet\
             \ ontvangen voor verkiezingen voor het Europees parlement. \n* true: persoon\
-            \ is uitgesloten"
+            \ ontvangt een oproep"
           example: "true"
         uitgeslotenVanKiesrecht:
           type: "boolean"
           title: "uitgeslotenVanKiesrecht"
-          description: "Een aanduiding die aangeeft of de persoon een oproep moet\
-            \ ontvangen voor verkiezingen. \n* true: persoon is uitgesloten \n* false: persoon\
-            \  ontvangt oproep"
+          description: "Een aanduiding die aangeeft of de persoon is uitgesloten van kiesrecht.\
+            \n* true: persoon is uitgesloten"
           example: "true"
         einddatumUitsluitingEuropeesKiesrecht:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
@@ -1254,21 +1253,21 @@ components:
               description: "De aanhef zoals die in een brief, gericht aan een persoon\
                 \ gebruikt kan worden. Hoe het samenstellen van een aanhef te werk gaat\
                 \ is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanhef.feature)"
-              example: "Hooggeboren vrouwe van der Veen-van den Aedel"
+              example: "Geachte heer In het Veld "
             aanschrijfwijze:
               type: "string"
               title: "aanschrijfwijze"
               description: "Samengestelde naam zoals die in communicatie met de persoon\
                 \ gebruikt kan worden. Hoe het samenstellen van een aanschrijfwijze te\
                 \ werk gaat is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanschrijfwijze.feature)"
-              example: "W. gravin van den Aedel-van der Veen"
+              example: "H. in het Veld"
             gebruikInLopendeTekst:
               type: "string"
               title: "gebruikInLopendeTekst"
-              description: "De naam zoals die in lopende tekst kan worden. Hoe het samenstellen\
+              description: "De naam zoals die in lopende tekst gebruikt kan worden. Hoe het samenstellen\
                 \ van een naam in de lopendetekst te werk gaat is beschreven in de [functionele\
                 \ specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/gebruik_in_lopende_tekst.feature)"
-              example: "mevrouw van der Veen-gravin van den Aedel"
+              example: "de heer In het Veld"
     PersoonInOnderzoek:
       type: "object"
       description: "Een groep van booleans om aan te geven welke gegevens van de ingeschreven\
@@ -2146,7 +2145,7 @@ components:
         indicatieHuwelijkPartnerschapBeeindigd:
           type: "boolean"
           description: "Indicatie of het huwelijk ontbonden is danwel het partnerschap beeindigd is.\
-        \ verbintenis:\n* `True` - Huwelijk/Partnerschap is beeindigd."
+        \n* `True` - Huwelijk/Partnerschap is beeindigd."
         datum:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         land:
@@ -2197,9 +2196,7 @@ components:
             verblijfstitelhistorie:
               type: array
               items:
-                $ref: '#/components/schemas/VerblijfstitelhistorieHal'
-    VerblijfstitelhistorieHal:
-      $ref: '#/components/schemas/Verblijfstitelhistorie'
+                $ref: '#/components/schemas/Verblijfstitelhistorie'
     Verblijfstitelhistorie:
       allOf:
       - $ref: "#/components/schemas/Verblijfstitel"

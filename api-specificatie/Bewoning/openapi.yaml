@@ -463,12 +463,6 @@ components:
           $ref: "#/components/schemas/Geboortedatum"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
-        leeftijd:
-          type: "integer"
-          title: "leeftijd"
-          description: "<body><p>Leeftijd in jaren op het moment van bevraging</p></body>"
-          maximum: 999
-          example: 34
         naam:
           $ref: "#/components/schemas/Naam"
     HoofdBewoner:
@@ -488,12 +482,6 @@ components:
           $ref: "#/components/schemas/Geboortedatum"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
-        leeftijd:
-          type: "integer"
-          title: "leeftijd"
-          description: "<body><p>Leeftijd in jaren op het moment van bevraging</p></body>"
-          maximum: 999
-          example: 34
         naam:
           $ref: "#/components/schemas/NaamHoofdbewoner"
     HoofdBewonerHal:
@@ -651,7 +639,7 @@ components:
             type: "object"
             description: ""
           - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalLink"
-        ingeschrevenpersonen:
+        ingeschrevenPersoon:
           title: "bewoondDoor"
           type: "array"
           description: ""
@@ -662,7 +650,7 @@ components:
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalLink"
-        ingeschrevenpersonen:
+        ingeschrevenPersoon:
           title: "is"
           type: "array"
           description: ""
