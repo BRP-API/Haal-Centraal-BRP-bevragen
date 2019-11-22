@@ -6,7 +6,7 @@ servers:
     url: https://www.voorbeeldgemeente.nl/api/bewoning
 info:
   title: Bewoning
-  description: "<body>Koppelvlak voor het ontsluiten van historische gegevens rond de bewoners van een adres, actueel en in het verleden. Zie de Functionele documentatie voor nadere toelichting.</body>"
+  description: "<body>API voor het ontsluiten van historische gegevens over de bewoning van een adres. <br> De gegevens van de bewoners zijn actueel.Zie de Functionele documentatie voor nadere toelichting.</body>"
   version: "1.0.0"
   x-imvertor-generator-version: "1.55.2"
   x-yamlCompiler-stylesheets-version: "20191016"
