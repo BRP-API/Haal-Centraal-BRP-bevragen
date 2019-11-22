@@ -1081,7 +1081,7 @@ components:
           maxLength: 9
           example: "546376728"
         autoriteitAfgifte:
-          $ref: "#/components/schemas/Waardetabel"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
         datumEindeGeldigheid:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         datumInhoudingOfVermissing:
@@ -1089,7 +1089,7 @@ components:
         datumUitgifte:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         soortReisdocument:
-          $ref: "#/components/schemas/Waardetabel"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
         inOnderzoek:
           $ref: "#/components/schemas/ReisdocumentInOnderzoek"
     ReisdocumentHal:
@@ -1189,9 +1189,9 @@ components:
         \ (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding."
         properties:
           land:
-            $ref: "#/components/schemas/Waardetabel"
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
           plaats:
-            $ref: "#/components/schemas/Waardetabel"
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
           inOnderzoek:
             $ref: "#/components/schemas/GeboorteInOnderzoek"
     GeboorteInOnderzoek:
@@ -1301,9 +1301,9 @@ components:
         datumIngangGeldigheid:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         nationaliteit:
-          $ref: "#/components/schemas/Waardetabel"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
         redenOpname:
-          $ref: "#/components/schemas/Waardetabel"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
         inOnderzoek:
           $ref: "#/components/schemas/NationaliteitInOnderzoek"
     NationaliteitInOnderzoek:
@@ -1359,9 +1359,9 @@ components:
         datum:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         land:
-          $ref: "#/components/schemas/Waardetabel"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
         plaats:
-          $ref: "#/components/schemas/Waardetabel"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
         inOnderzoek:
           $ref: "#/components/schemas/OverlijdenInOnderzoek"
     OverlijdenInOnderzoek:
@@ -1433,9 +1433,9 @@ components:
         datum:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         land:
-          $ref: "#/components/schemas/Waardetabel"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
         plaats:
-          $ref: "#/components/schemas/Waardetabel"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
         inOnderzoek:
           $ref: "#/components/schemas/AangaanHuwelijkInOnderzoek"
     AangaanHuwelijkInOnderzoek:
@@ -1604,9 +1604,9 @@ components:
           datumVestigingInNederland:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
           gemeenteVanInschrijving:
-            $ref: "#/components/schemas/Waardetabel"
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
           landVanwaarIngeschreven:
-            $ref: "#/components/schemas/Waardetabel"
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
           verblijfBuitenland:
             $ref: "#/components/schemas/VerblijfBuitenland"
           inOnderzoek:
@@ -1642,7 +1642,7 @@ components:
           description: "Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland,\
             \ maar dat niet bekend is waar naar toe."
         land:
-          $ref: "#/components/schemas/Waardetabel"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
     VerblijfplaatsInOnderzoek:
       type: "object"
       description: "Indicators om aan te geven dat de gegevens over het verblijf en\
@@ -1793,7 +1793,7 @@ components:
         datumOpneming:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         aanduiding:
-          $ref: "#/components/schemas/Waardetabel"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
         datumEinde:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         datumIngang:
@@ -1871,19 +1871,6 @@ components:
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
-    Waardetabel:
-      type: "object"
-      description: "Generieke tabel met waarden om om een code en omschrijving op\
-        \ te nemen."
-      properties:
-        code:
-          type: "string"
-          title: "code"
-          description: ""
-        omschrijving:
-          type: "string"
-          title: "omschrijving"
-          description: ""
     IngeschrevenPersoon_links:
       type: "object"
       properties:
@@ -2149,11 +2136,11 @@ components:
         datum:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         land:
-          $ref: "#/components/schemas/Waardetabel"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
         plaats:
-          $ref: "#/components/schemas/Waardetabel"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
         reden:
-          $ref: "#/components/schemas/Waardetabel"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
         inOnderzoek:
           $ref: "#/components/schemas/OntbindingHuwelijkInOnderzoek"
     OntbindingHuwelijkInOnderzoek:
