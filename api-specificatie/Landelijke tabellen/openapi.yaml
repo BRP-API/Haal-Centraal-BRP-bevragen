@@ -1,10 +1,6 @@
 openapi: 3.0.0
 servers:
 # Added by API Auto Mocking Plugin
-  - description: SwaggerHub API Auto Mocking
-    url: https://virtserver.swaggerhub.com/King4/test/1.0.0
-  - description: "SwaggerHub API Auto Mocking"
-    url: https://virtserver.swaggerhub.com/VNGRealisatie/api/landelijke_tabellen/
   - description: "Referentie-implementatie"
     url: https://www.voorbeeldgemeente.nl/api/landelijke_tabellen/
 info:
@@ -12,7 +8,7 @@ info:
   description: "API voor het ontsluiten van landelijke tabellen die op de website van BZK worden gepubliceerd."
   version: "1.0.0"
   contact:
-    url: https://github.com/VNG-Realisatie/Landelijke_tabellen
+    url: hhttps://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/master/api-specificatie/Landelijke%20tabellen
   license:
     name: European Union Public License, version 1.2 (EUPL-1.2)
     url: https://eupl.eu/1.2/nl/
@@ -92,7 +88,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+                $ref: "#/components/schemas/Nationaliteit"
         '400':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/400"
         '401':
@@ -250,7 +246,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                 $ref: "#/components/schemas/LandenHalCollectie"
+                 $ref: "#/components/schemas/LandHalCollectie"
         '400':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/400"
         '401':
@@ -329,7 +325,7 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/default"
       tags: 
         - Landen
-  /tabellen/redennationaliteit:
+  /tabellen/redenennationaliteit:
     get:
       operationId: getRedenenNationaliteit
       description: "Het ophalen van de gegevens van de landelijke tabel reden opnemen / beeindigen nationaliteit (Tabel 37) Bij het zoeken op de omschrijving mag er gebruik worden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ). Zoeken is **case-insensitive**."
@@ -381,7 +377,7 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/default"
       tags: 
         - Reden opnemen/beeindigen nationaliteit
-  /tabellen/redennationaliteit/{code}:
+  /tabellen/redenennationaliteit/{code}:
     get:
       operationId: getRedenNationaliteitLand
       description: "Het ophalen van de gegevens van de landelijke tabel reden opnemen/beeindigen nationaliteit  (Tabel 37)"
@@ -433,7 +429,7 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/default"
       tags: 
         - Reden opnemen/beeindigen nationaliteit
-  /tabellen/redenbeeindigenhuwelijk:
+  /tabellen/redenenbeeindigenhuwelijk:
     get:
       operationId: getRedenenBeeindigenHuwelijk
       description: "Het ophalen van de gegevens van de landelijke tabel reden ontbinden of nietigverklaren huwelijk of partnerschap (Tabel 41) Bij het zoeken op de omschrijving mag er gebruik worden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ). Zoeken is **case-insensitive**."
@@ -485,7 +481,7 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/default"
       tags: 
         - Reden ontbinden/nietigverklaren huwelijk of partnerschap
-  /tabellen/redenbeeindigenhuwelijk/{code}:
+  /tabellen/redenenbeeindigenhuwelijk/{code}:
     get:
       operationId: getRedenBeeindigenHuwelijk
       description: "Het ophalen van de gegevens van de landelijke tabel reden ontbinden / nietigverklaren huwelijk of partnerschap(Tabel 41)"
@@ -537,10 +533,10 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/default"
       tags: 
         - Reden ontbinden/nietigverklaren huwelijk of partnerschap
-  /tabellen/nederlandsreisdocument:
+  /tabellen/nederlandsereisdocumenten:
     get:
       operationId: getNederlandseReisdocumenten
-      description: "Het ophalen van de gegevens van de landelijke tabel Nederlands Reisdocument (Tabel 38) Bij het zoeken op de omschrijving mag er gebruik worden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ). Zoeken is **case-insensitive**."
+      description: "Het ophalen van de gegevens van de landelijke tabel Nederlands Reisdocument (Tabel 48) Bij het zoeken op de omschrijving mag er gebruik worden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ). Zoeken is **case-insensitive**."
       parameters: 
         - $ref: '#/components/parameters/code'
         - $ref: '#/components/parameters/omschrijving'
@@ -562,7 +558,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                 $ref: "#/components/schemas/NederlandseReisdocumentenHalCollectie"
+                 $ref: "#/components/schemas/NederlandsReisdocumentHalCollectie"
         '400':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/400"
         '401':
@@ -589,7 +585,7 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/default"
       tags: 
         - Nederlands Reisdocument
-  /tabellen/nederlandsreisdocument/{code}:
+  /tabellen/nederlandsereisdocumenten/{code}:
     get:
       operationId: getNederlandsReisdocument
       description: "Het ophalen van de gegevens van de landelijke tabel nederlands Reisdocument(Tabel 48)"
@@ -871,7 +867,7 @@ components:
               title: "datumIngang"
               description: "Begindatum van de geldigheid van de gegevens"
               format: "date"
-    LandenHalCollectie:
+    LandHalCollectie:
       type: "object"
       properties:
         _links:
@@ -879,7 +875,7 @@ components:
         _embedded:
           type: object
           properties:
-            Landen:
+            landen:
               type: array
               items:
                 $ref: '#/components/schemas/Land'
@@ -903,7 +899,6 @@ components:
               type: "string"
               title: "soort"
               description: "Soort reden."
-              format: "date"
     RedenNationaliteitHalCollectie:
       type: "object"
       properties:
@@ -912,7 +907,7 @@ components:
         _embedded:
           type: object
           properties:
-            Landen:
+            redenenNationaliteit:
               type: array
               items:
                 $ref: '#/components/schemas/RedenNationaliteit'
@@ -920,7 +915,7 @@ components:
       allOf: 
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
         - description: "Een opsomming van alle huidige en voormalige redenen voor het ontbinden of nietigverklaren van een huwelijk of partnerschap \
-          \ inclusief omschijving en geldigheidstermijnen conform de landelijke tabel Reden opnemen/Beendigen nationaliteit Tabel 37"
+          \ inclusief omschijving en geldigheidstermijnen conform de landelijke tabel Reden ontbinden of nietigverklaren van een huwelijk of partnerschap Tabel 41"
           properties:
             datumEinde:
               type: "string"
@@ -940,7 +935,7 @@ components:
         _embedded:
           type: object
           properties:
-            Landen:
+            redenenBeeindigenHuwelijk:
               type: array
               items:
                 $ref: '#/components/schemas/RedenBeeindigenHuwelijk'
@@ -948,7 +943,7 @@ components:
       allOf: 
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
         - description: "Een opsomming van alle huidige en voormalige nederlandse reisdocumenten \
-          \ inclusief omschijving en geldigheidstermijnen conform de landelijke tabel Reden opnemen/Beendigen nationaliteit Tabel 37"
+          \ inclusief omschijving en geldigheidstermijnen conform de landelijke tabel Nederlandse Reisdocumenten Tabel 48"
           properties:
             datumEinde:
               type: "string"
@@ -960,7 +955,7 @@ components:
               title: "datumIngang"
               description: "Begindatum van de geldigheid van de gegevens"
               format: "date"
-    NederlandseReisdocumentenHalCollectie:
+    NederlandsReisdocumentHalCollectie:
       type: "object"
       properties:
         _links:
@@ -968,7 +963,7 @@ components:
         _embedded:
           type: object
           properties:
-            Landen:
+            nederlandseReisdocumenten:
               type: array
               items:
                 $ref: '#/components/schemas/NederlandsReisdocument'
@@ -976,7 +971,7 @@ components:
       allOf: 
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
         - description: "Een opsomming van alle huidige en voormalige verblijfstitels \
-          \ inclusief omschijving en geldigheidstermijnen conform de landelijke tabel Reden opnemen/Beendigen nationaliteit Tabel 56"
+          \ inclusief omschijving en geldigheidstermijnen conform de landelijke tabel Verblijfstitels  Tabel 56"
           properties:
             datumEinde:
               type: "string"
@@ -996,7 +991,7 @@ components:
         _embedded:
           type: object
           properties:
-            Landen:
+            verblijfstitels:
               type: array
               items:
                 $ref: '#/components/schemas/Verblijfstitel'
