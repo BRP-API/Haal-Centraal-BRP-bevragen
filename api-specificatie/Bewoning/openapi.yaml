@@ -258,7 +258,7 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/default"
       tags: 
       - Bewoning
-  /haalcentraal/hoofbewoners:
+  /haalcentraal/hoofdbewoners:
     get:
       operationId: getHoofdbewoners
       description: "<body><p><body> <p>Het ophalen van de gegevens van de hoofdbewoner van een verblijfsobject, woonboot of woonwagen.<br/> </p></body>"
