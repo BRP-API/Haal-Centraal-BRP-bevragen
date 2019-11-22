@@ -443,7 +443,19 @@ components:
           minimum: 1
           maximum: 12
           example: 5
-    Geometry:
+     Waardetabel:
+      type: "object"
+      description: "Generieke tabel met waarden om een code en omschrijving op te nemen."
+      properties:
+        code:
+          type: "string"
+          title: "code"
+          description: ""
+        omschrijving:
+          type: "string"
+          title: "omschrijving"
+          description: ""
+     Geometry:
       title: Geometry
       description: GeoJSON geometry
       required:
