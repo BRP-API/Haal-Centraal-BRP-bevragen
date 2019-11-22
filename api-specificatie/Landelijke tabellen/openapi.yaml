@@ -1,5 +1,8 @@
 openapi: 3.0.0
 servers:
+# Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/King4/test/1.0.0
   - description: "SwaggerHub API Auto Mocking"
     url: https://virtserver.swaggerhub.com/VNGRealisatie/api/landelijke_tabellen/
   - description: "Referentie-implementatie"
@@ -14,34 +17,14 @@ info:
     name: European Union Public License, version 1.2 (EUPL-1.2)
     url: https://eupl.eu/1.2/nl/
 paths:
-  /tabellen/gemeenten:
+  /tabellen/nationaliteiten:
     get:
-      operationId: getGemeenten
-      description: "Het ophalen van de gegevens van de landelijke gemeententabel (Tabel 33) Bij het zoeken op de omschrijving (gemeentenaam) mag er gebruik wrden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ). Zoeken is **case-insensitive**."
+      operationId: getnationaliteiten
+      description: "Het ophalen van de gegevens van de landelijke nationaliteitentabel (Tabel 32) Bij het zoeken op de omschrijving mag er gebruik wrden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ). Zoeken is **case-insensitive**."
       parameters: 
-        - in: query
-          name: page
-          description: "Een pagina binnen de gepagineerde resultatenset."
-          required: false
-          schema:
-            type: integer
-            minimum: 1
-        - in: query
-          name: code
-          description: "De code, behorende bij de gemeentenaam opgenomen in de Gemeentetabel van de GBA."
-          required: false
-          schema:
-            type: string
-            maxLength: 4
-            example: 0737
-        - in: query
-          name: omschrijving
-          description: "De gemeentenaam zoals opgenomen in de Gemeentetabel van de GBA.** Bij deze query-parameter is het gebruik van een <a href='https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature'> <b>wildcard </b></a> toegestaan in combinatie met minimaal 2 karakters. **Zoeken met tekstvelden** is <a href='https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature'> <b>case-Insensitive </b></a>"
-          required: false
-          schema:
-            type: string
-            maxLength: 80
-            example: Tytsjerksteradiel
+        - $ref: '#/components/parameters/code'
+        - $ref: '#/components/parameters/omschrijving'
+        - $ref: '#/components/parameters/inclusiefbeeindigd'
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -50,10 +33,6 @@ paths:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/headers/api_version"
             warning:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/headers/warning"
-            X-Pagination-Page:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/headers/X_Pagination_Page"
-            X-Pagination-Limit:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/headers/X_Pagination_Limit"
             X-Rate-Limit-Limit:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/headers/X_Rate_Limit_Limit"
             X-Rate-Limit-Remaining:
@@ -90,6 +69,108 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/default"
       tags: 
       - Tabellen
+  /tabellen/nationaliteiten/{code}:
+    get:
+      operationId: getNationaliteit
+      description: "Het ophalen van de gegevens van de landelijke nationaliteitentabel (Tabel 32)"
+      parameters:
+        - $ref: '#/components/parameters/code_path'
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/headers/warning"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/GemeenteHal'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/403"
+        '404':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/404"
+        '406':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/406"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/default"
+  /tabellen/gemeenten:
+    get:
+      operationId: getGemeenten
+      description: "Het ophalen van de gegevens van de landelijke gemeententabel (Tabel 33) Bij het zoeken op de omschrijving (gemeentenaam) mag er gebruik wrden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ). Zoeken is **case-insensitive**."
+      parameters: 
+        - $ref: '#/components/parameters/code'
+        - $ref: '#/components/parameters/omschrijving'
+        - $ref: '#/components/parameters/inclusiefbeeindigd'
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/headers/warning"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                 $ref: '#/components/schemas/GemeenteHalCollectie'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/403"
+        '406':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/406"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/default"
+      tags: 
+      - Gemeenten
   /tabellen/gemeenten/{code}:
     get:
       operationId: getGemeente
@@ -148,56 +229,73 @@ paths:
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/responses/default"
       tags: 
-      - Tabellen
+      - Gemeenten
 components:
+  parameters:
+    code:
+      name: code
+      in: query
+      description: "De code, behorende bij de op te zoeken tabelwaarde."
+      required: false
+      schema:
+        type: string
+    code_path:
+      name: code
+      in: path
+      description: "De code, behorende bij de op te zoeken tabelwaarde."
+      required: true
+      schema:
+        type: string
+    omschrijving:
+      in: query
+      name: omschrijving
+      description: "De tabelwaarde als omschrijving **Zoeken met tekstvelden** is <a href='https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature'> <b>case-Insensitive </b></a>"
+      required: false
+      schema:
+        type: string
+    inclusiefbeeindigd:
+      in: query
+      name: inclusiefbeeindigd
+      description: "De indicatie waarmee aangegeven wordt of beeindigde waardem moeten worden meegeleverd."
+      required: false
+      schema:
+        type: boolean
   schemas:
     Gemeente:
-      type: "object"
-      description: "Een opsomming van alle huidige en voormalige landen met hun codes,\
-        \ namen en geldigheidstermijnen conform de landelijke tabel Gemeenten Tabel\
-        \ 33"
-      properties:
-        code:
-          type: "string"
-          title: "code"
-          description: "De code, behorende bij de gemeentenaam opgenomen in de Gemeentetabel\
-            \ van de GBA."
-          maxLength: 4
-          example: "0737"
-        datumEinde:
-          type: "string"
-          title: "datumEinde"
-          description: "Einddatum van de geldigheid van de gegevens."
-          format: "date"
-        datumIngang:
-          type: "string"
-          title: "datumIngang"
-          description: "Begindatum van de geldigheid van de gegevens"
-          format: "date"
-        nieuweCode:
-          type: "string"
-          title: "nieuweCode"
-          description: "Code van de nieuwegevormde gemeente waarin deze gemeente is\
-            \ overgegaan."
-          maxLength: 4
-        omschrijving:
-          type: "string"
-          title: "omschrijving"
-          description: ""
-          maxLength: 80
-          example: "Tytsjerksteradiel"
+      allOf: 
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+        - description: "Een opsomming van alle huidige en voormalige landen met hun codes,\
+          \ namen en geldigheidstermijnen conform de landelijke tabel Gemeenten Tabel 33"
+          properties:
+            datumEinde:
+              type: "string"
+              title: "datumEinde"
+              description: "Einddatum van de geldigheid van de gegevens."
+              format: "date"
+            datumIngang:
+              type: "string"
+              title: "datumIngang"
+              description: "Begindatum van de geldigheid van de gegevens"
+              format: "date"
+            nieuweCode:
+              type: "string"
+              title: "nieuweCode"
+              description: "Code van de nieuwegevormde gemeente waarin deze gemeente is\
+                \ overgegaan."
+              maxLength: 4
+            omschrijving:
+              example: "Tytsjerksteradiel"
     GemeenteHal:
       allOf:
         - $ref: "#/components/schemas/Gemeente"
-        - type: "object"
-          properties:
+        - properties:
             _links:
               $ref: "#/components/schemas/Gemeente_links"
     GemeenteHalCollectie:
       type: "object"
       properties:
         _links:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalPaginationLinks"
+         $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalCollectionLinks"
         _embedded:
           type: object
           properties:
