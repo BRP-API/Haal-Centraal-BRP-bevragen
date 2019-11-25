@@ -772,12 +772,10 @@ components:
       schema:
         type: boolean
   schemas:
-    Gemeente:
+    Landelijke_Tabel:
       allOf: 
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
-        - description: "Een opsomming van alle huidige en voormalige gemeenten met hun codes,\
-          \ namen en geldigheidstermijnen conform de landelijke tabel Gemeenten Tabel 33"
-          properties:
+        -  properties:
             datumEinde:
               type: "string"
               title: "datumEinde"
@@ -788,6 +786,17 @@ components:
               title: "datumIngang"
               description: "Begindatum van de geldigheid van de gegevens"
               format: "date"
+            _links:
+              type: object
+              properties:
+                self:
+                  $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalLink"
+    Gemeente:
+      allOf: 
+        - $ref: "#/components/schemas/Landelijke_Tabel"
+        - description: "Een opsomming van alle huidige en voormalige gemeenten met hun codes,\
+          \ namen en geldigheidstermijnen conform de landelijke tabel Gemeenten Tabel 33"
+          properties:
             nieuweCode:
               type: "string"
               title: "nieuweCode"
@@ -820,25 +829,13 @@ components:
         overgegaanIn:
           allOf: 
             - title: "overgegaanIn"
-              type: "object"
               description: "De gemeente waarin deze gemeente is overgegaan bij een gemeentelijke herindeling. "
             - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalLink"
     Nationaliteit:
       allOf: 
-        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+        - $ref: "#/components/schemas/Landelijke_Tabel"
         - description: "Een opsomming van alle huidige en voormalige nationaliteiten met hun codes,\
           \ omschijving en geldigheidstermijnen conform de landelijke tabel Nationaliteiten Tabel 32"
-          properties:
-            datumEinde:
-              type: "string"
-              title: "datumEinde"
-              description: "Einddatum van de geldigheid van de gegevens."
-              format: "date"
-            datumIngang:
-              type: "string"
-              title: "datumIngang"
-              description: "Begindatum van de geldigheid van de gegevens"
-              format: "date"
     NationaliteitenHalCollectie:
       type: "object"
       properties:
@@ -853,20 +850,9 @@ components:
                 $ref: '#/components/schemas/Nationaliteit'
     Land:
       allOf: 
-        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+        - $ref: "#/components/schemas/Landelijke_Tabel"
         - description: "Een opsomming van alle huidige en voormalige Landen met hun codes,\
           \ omschijving en geldigheidstermijnen conform de landelijke tabel Landen Tabel 34"
-          properties:
-            datumEinde:
-              type: "string"
-              title: "datumEinde"
-              description: "Einddatum van de geldigheid van de gegevens."
-              format: "date"
-            datumIngang:
-              type: "string"
-              title: "datumIngang"
-              description: "Begindatum van de geldigheid van de gegevens"
-              format: "date"
     LandHalCollectie:
       type: "object"
       properties:
@@ -881,20 +867,10 @@ components:
                 $ref: '#/components/schemas/Land'
     RedenNationaliteit:
       allOf: 
-        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+        - $ref: "#/components/schemas/Landelijke_Tabel"
         - description: "Een opsomming van alle huidige en voormalige redenen voor het opnemen of beeindigen van een nationaliteit. \
           \ inclusief omschijving en geldigheidstermijnen conform de landelijke tabel Reden opnemen/Beendigen nationaliteit Tabel 37"
           properties:
-            datumEinde:
-              type: "string"
-              title: "datumEinde"
-              description: "Einddatum van de geldigheid van de gegevens."
-              format: "date"
-            datumIngang:
-              type: "string"
-              title: "datumIngang"
-              description: "Begindatum van de geldigheid van de gegevens"
-              format: "date"
             soort:
               type: "string"
               title: "soort"
@@ -913,20 +889,9 @@ components:
                 $ref: '#/components/schemas/RedenNationaliteit'
     RedenBeeindigenHuwelijk:
       allOf: 
-        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+        - $ref: "#/components/schemas/Landelijke_Tabel"
         - description: "Een opsomming van alle huidige en voormalige redenen voor het ontbinden of nietigverklaren van een huwelijk of partnerschap \
           \ inclusief omschijving en geldigheidstermijnen conform de landelijke tabel Reden ontbinden of nietigverklaren van een huwelijk of partnerschap Tabel 41"
-          properties:
-            datumEinde:
-              type: "string"
-              title: "datumEinde"
-              description: "Einddatum van de geldigheid van de gegevens."
-              format: "date"
-            datumIngang:
-              type: "string"
-              title: "datumIngang"
-              description: "Begindatum van de geldigheid van de gegevens"
-              format: "date"
     RedenBeeindigenHuwelijkHalCollectie:
       type: "object"
       properties:
@@ -941,20 +906,9 @@ components:
                 $ref: '#/components/schemas/RedenBeeindigenHuwelijk'
     NederlandsReisdocument:
       allOf: 
-        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+        - $ref: "#/components/schemas/Landelijke_Tabel"
         - description: "Een opsomming van alle huidige en voormalige nederlandse reisdocumenten \
           \ inclusief omschijving en geldigheidstermijnen conform de landelijke tabel Nederlandse Reisdocumenten Tabel 48"
-          properties:
-            datumEinde:
-              type: "string"
-              title: "datumEinde"
-              description: "Einddatum van de geldigheid van de gegevens."
-              format: "date"
-            datumIngang:
-              type: "string"
-              title: "datumIngang"
-              description: "Begindatum van de geldigheid van de gegevens"
-              format: "date"
     NederlandsReisdocumentHalCollectie:
       type: "object"
       properties:
@@ -969,20 +923,9 @@ components:
                 $ref: '#/components/schemas/NederlandsReisdocument'
     Verblijfstitel:
       allOf: 
-        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+        - $ref: "#/components/schemas/Landelijke_Tabel"
         - description: "Een opsomming van alle huidige en voormalige verblijfstitels \
           \ inclusief omschijving en geldigheidstermijnen conform de landelijke tabel Verblijfstitels  Tabel 56"
-          properties:
-            datumEinde:
-              type: "string"
-              title: "datumEinde"
-              description: "Einddatum van de geldigheid van de gegevens."
-              format: "date"
-            datumIngang:
-              type: "string"
-              title: "datumIngang"
-              description: "Begindatum van de geldigheid van de gegevens"
-              format: "date"
     VerblijfstitelHalCollectie:
       type: "object"
       properties:
