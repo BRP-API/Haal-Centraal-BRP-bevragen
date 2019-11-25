@@ -819,7 +819,7 @@ paths:
           example: 1
       - name: id
         in: path
-        description: Deidentifiatie van het kind.
+        description: De identificatie van het kind.
         required: true
         style: simple
         explode: false
@@ -1371,7 +1371,7 @@ paths:
           example: 1
       - name: id
         in: path
-        description: De identifiatie van de ouder.
+        description: De identificatie van de ouder.
         required: true
         style: simple
         explode: false
@@ -1923,7 +1923,7 @@ paths:
           example: 1
       - name: id
         in: path
-        description: Deidentifiatie van het kind.
+        description: De identificatie van de partner.
         required: true
         style: simple
         explode: false
@@ -3660,7 +3660,7 @@ components:
       title: Burgerservicenummer
       maxLength: 9
       minLength: 9
-      pattern: ^[0-9]$
+      pattern: ^[0-9]*$
       type: string
       description: Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene
         bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid
@@ -4011,14 +4011,14 @@ components:
           type: boolean
           description: "Een aanduiding die aangeeft of de persoon een oproep moet\
             \ ontvangen voor verkiezingen voor het Europees parlement. \n* true: persoon\
-            \ is uitgesloten"
+            \ ontvangt een oproep"
           example: true
         uitgeslotenVanKiesrecht:
           title: uitgeslotenVanKiesrecht
           type: boolean
-          description: "Een aanduiding die aangeeft of de persoon een oproep moet\
-            \ ontvangen voor verkiezingen. \n* true: persoon is uitgesloten \n* false:\
-            \ persoon  ontvangt oproep"
+          description: |-
+            Een aanduiding die aangeeft of de persoon is uitgesloten van kiesrecht.
+            * true: persoon is uitgesloten
           example: true
         einddatumUitsluitingEuropeesKiesrecht:
           $ref: '#/components/schemas/Datum_onvolledig'
@@ -4040,21 +4040,21 @@ components:
             description: De aanhef zoals die in een brief, gericht aan een persoon
               gebruikt kan worden. Hoe het samenstellen van een aanhef te werk gaat
               is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanhef.feature)
-            example: Hooggeboren vrouwe van der Veen-van den Aedel
+            example: 'Geachte heer In het Veld '
           aanschrijfwijze:
             title: aanschrijfwijze
             type: string
             description: Samengestelde naam zoals die in communicatie met de persoon
               gebruikt kan worden. Hoe het samenstellen van een aanschrijfwijze te
               werk gaat is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanschrijfwijze.feature)
-            example: W. gravin van den Aedel-van der Veen
+            example: H. in het Veld
           gebruikInLopendeTekst:
             title: gebruikInLopendeTekst
             type: string
-            description: De naam zoals die in lopende tekst kan worden. Hoe het samenstellen
-              van een naam in de lopendetekst te werk gaat is beschreven in de [functionele
-              specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/gebruik_in_lopende_tekst.feature)
-            example: mevrouw van der Veen-gravin van den Aedel
+            description: De naam zoals die in lopende tekst gebruikt kan worden. Hoe
+              het samenstellen van een naam in de lopendetekst te werk gaat is beschreven
+              in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/gebruik_in_lopende_tekst.feature)
+            example: de heer In het Veld
         description: Gegevens over de naam van de persoon
     PersoonInOnderzoek:
       type: object
@@ -4571,8 +4571,6 @@ components:
     Verblijfstitel:
       type: object
       properties:
-        datumOpneming:
-          $ref: '#/components/schemas/Datum_onvolledig'
         aanduiding:
           $ref: '#/components/schemas/Waardetabel'
         datumEinde:
@@ -4584,17 +4582,11 @@ components:
       description: "Gegevens over de verblijfsrechtelijke status van de ingeschrevene.\
         \ \n* **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel\
         \ is beeindigd. \n* **datumIngang**: Datum waarop de gegevens over de verblijfstitel\
-        \ geldig zijn geworden. \n* **datumOpneming** : Datum en tijdstip van opneming\
-        \ van het geheel van de verblijfstitel. \n* **aanduiding** : Verblijfstiteltabel,\
-        \ die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt."
+        \ geldig zijn geworden. \n* **aanduiding** : Verblijfstiteltabel, die aangeeft\
+        \ over welke verblijfsrechtelijke status de ingeschrevene beschikt."
     VerblijfstitelInOnderzoek:
       type: object
       properties:
-        datumOpneming:
-          title: datumOpneming
-          type: boolean
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze verblijfstitel in onderzoek is.
         aanduiding:
           title: aanduiding
           type: boolean
@@ -4657,17 +4649,6 @@ components:
         in onderzoek zijn. Als de hele categorie in onderzoek is worden alle rubrieken
         binnen die categorie op _true_ gezet. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)
         .
-    Waardetabel:
-      type: object
-      properties:
-        code:
-          title: code
-          type: string
-        omschrijving:
-          title: omschrijving
-          type: string
-      description: Generieke tabel met waarden om om een code en omschrijving op te
-        nemen.
     IngeschrevenPersoon_links:
       type: object
       properties:
@@ -4932,7 +4913,7 @@ components:
         indicatieHuwelijkPartnerschapBeeindigd:
           type: boolean
           description: |-
-            Indicatie of het huwelijk ontbonden is danwel het partnerschap beeindigd is. verbintenis:
+            Indicatie of het huwelijk ontbonden is danwel het partnerschap beeindigd is.
             * `True` - Huwelijk/Partnerschap is beeindigd.
         datum:
           $ref: '#/components/schemas/Datum_onvolledig'
@@ -4979,8 +4960,6 @@ components:
           $ref: '#/components/schemas/HalCollectionLinks'
         _embedded:
           $ref: '#/components/schemas/VerblijfstitelhistorieHalCollectie__embedded'
-    VerblijfstitelhistorieHal:
-      $ref: '#/components/schemas/Verblijfstitelhistorie'
     Verblijfstitelhistorie:
       allOf:
       - $ref: '#/components/schemas/Verblijfstitel'
@@ -4994,9 +4973,7 @@ components:
         description: |-
           <body><p>Gegevens over de verblijfsrechtelijke status van de ingeschrevene.</p><p>
            <em>*</em> datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beeindigd.</p><p>
-           <em>*</em> datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.</p><p> <em>*</em> datumOpneming** : Datum en tijdstip van  opneming van het geheel van de verblijfstitel.  </p><p>
-           <em>*</em> aanduiding** : Verblijfstiteltabel, die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt.</p><p>
-           <em>*</em> datumOpneming** : Datum en tijdstip van opneming van het geheel van de verblijfstitel.</p></body>
+           <em>*</em> datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.</p><p> <em>*</em> aanduiding** : Verblijfstiteltabel, die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt.</p> </body>
     Geboortedatum:
       type: object
       properties:
@@ -5114,10 +5091,20 @@ components:
       type: string
       format: uri
       example: datapunt.voorbeeldgemeente.nl/api/resourcename/123456789
+    Waardetabel:
+      type: object
+      properties:
+        code:
+          title: code
+          type: string
+        omschrijving:
+          title: omschrijving
+          type: string
+      description: Generieke tabel met waarden om een code en omschrijving op te nemen.
     IngeschrevenPersoonHalCollectie__embedded:
       type: object
       properties:
-        ingeschrevenpersonen:
+        ingeschrevenPersoon:
           type: array
           items:
             $ref: '#/components/schemas/IngeschrevenPersoonHal'
@@ -5162,7 +5149,7 @@ components:
         verblijfstitelhistorie:
           type: array
           items:
-            $ref: '#/components/schemas/VerblijfstitelhistorieHal'
+            $ref: '#/components/schemas/Verblijfstitelhistorie'
   parameters:
     burgerservicenummer:
       name: burgerservicenummer
