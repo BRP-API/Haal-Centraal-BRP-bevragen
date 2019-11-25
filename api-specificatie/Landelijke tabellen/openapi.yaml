@@ -16,7 +16,7 @@ paths:
   /tabellen/nationaliteiten:
     get:
       operationId: getnationaliteiten
-      description: "Het ophalen van de gegevens van de landelijke nationaliteitentabel (Tabel 32) Bij het zoeken op de omschrijving mag er gebruik worden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ). Zoeken is **case-insensitive**."
+      description: "Het ophalen van de gegevens van de landelijke nationaliteitentabel (Tabel 32) <br> Als er op omschrijving of code gezocht wordt worden alleen actuele waarden geretourneerd. <br> Als de parameter <b> inclusief beeindigd </b> met waarde <i> true </i>  wordt meegegeven bij de call worden ook beeindigde waarden geretourneerd. <br> Bij het zoeken op de omschrijving mag er gebruik worden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature). Zoeken is **case-insensitive**."
       parameters: 
         - $ref: '#/components/parameters/code'
         - $ref: '#/components/parameters/omschrijving'
@@ -68,7 +68,7 @@ paths:
   /tabellen/nationaliteiten/{code}:
     get:
       operationId: getNationaliteit
-      description: "Het ophalen van de gegevens van de landelijke nationaliteitentabel (Tabel 32)"
+      description: "Het ophalen van de gegevens van een enkele entry uit de landelijke nationaliteitentabel (Tabel 32)"
       parameters:
         - $ref: "#/components/parameters/code_path"
       responses:
@@ -120,7 +120,7 @@ paths:
   /tabellen/gemeenten:
     get:
       operationId: getGemeenten
-      description: "Het ophalen van de gegevens van de landelijke gemeententabel (Tabel 33) Bij het zoeken op de omschrijving (gemeentenaam) mag er gebruik worden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ). Zoeken is **case-insensitive**."
+      description: "Het ophalen van de gegevens van de landelijke gemeententabel (Tabel 33) <br> Als er op omschrijving of code gezocht wordt worden alleen actuele waarden geretourneerd. <br> Als de parameter <b> inclusief beeindigd </b> met waarde <i> true </i>  wordt meegegeven bij de call worden ook beeindigde waarden geretourneerd. <br> Bij het zoeken op de omschrijving mag er gebruik worden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature). Zoeken is **case-insensitive**."
       parameters: 
         - $ref: '#/components/parameters/code'
         - $ref: '#/components/parameters/omschrijving'
@@ -172,7 +172,7 @@ paths:
   /tabellen/gemeenten/{code}:
     get:
       operationId: getGemeente
-      description: "Het ophalen van de gegevens van de landelijke gemeententabel (Tabel 33)"
+      description: "Het ophalen van de gegevens  van een enkele entry uit de landelijke gemeententabel (Tabel 33)"
       parameters:
         - $ref: "#/components/parameters/code_path"
       responses:
@@ -224,7 +224,7 @@ paths:
   /tabellen/landen:
     get:
       operationId: getlanden
-      description: "Het ophalen van de gegevens van de landelijke landentabel (Tabel 34) Bij het zoeken op de omschrijving mag er gebruik worden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ). Zoeken is **case-insensitive**."
+      description: "Het ophalen van de gegevens van de landelijke landentabel (Tabel 34) <br> Als er op omschrijving of code gezocht wordt worden alleen actuele waarden geretourneerd. <br>Als de parameter <b> inclusief beeindigd </b> met waarde <i> true </i>  wordt meegegeven bij de call worden ook beeindigde waarden geretourneerd. <br> Bij het zoeken op de omschrijving mag er gebruik worden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature). Zoeken is **case-insensitive**."
       parameters: 
         - $ref: '#/components/parameters/code'
         - $ref: '#/components/parameters/omschrijving'
@@ -276,7 +276,7 @@ paths:
   /tabellen/landen/{code}:
     get:
       operationId: getLand
-      description: "Het ophalen van de gegevens van de landelijke landentabel (Tabel 34)"
+      description: "Het ophalen van de gegevens  van een enkele entry uit de landelijke landentabel (Tabel 34)"
       parameters:
         - $ref: "#/components/parameters/code_path"
       responses:
@@ -328,7 +328,7 @@ paths:
   /tabellen/redenennationaliteit:
     get:
       operationId: getRedenenNationaliteit
-      description: "Het ophalen van de gegevens van de landelijke tabel reden opnemen / beeindigen nationaliteit (Tabel 37) Bij het zoeken op de omschrijving mag er gebruik worden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ). Zoeken is **case-insensitive**."
+      description: "Het ophalen van de gegevens van de landelijke tabel reden opnemen / beeindigen nationaliteit (Tabel 37) <br> Als er op omschrijving of code gezocht wordt worden alleen actuele waarden geretourneerd. <br> Als de parameter <b> inclusief beeindigd </b> met waarde <i> true </i>  wordt meegegeven bij de call worden ook beeindigde waarden geretourneerd. <br> Bij het zoeken op de omschrijving mag er gebruik worden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature). Zoeken is **case-insensitive**."
       parameters: 
         - $ref: '#/components/parameters/code'
         - $ref: '#/components/parameters/omschrijving'
@@ -380,7 +380,7 @@ paths:
   /tabellen/redenennationaliteit/{code}:
     get:
       operationId: getRedenNationaliteitLand
-      description: "Het ophalen van de gegevens van de landelijke tabel reden opnemen/beeindigen nationaliteit  (Tabel 37)"
+      description: "Het ophalen van de gegevens  van een enkele entry uit de landelijke tabel reden opnemen/beeindigen nationaliteit  (Tabel 37)"
       parameters:
         - $ref: "#/components/parameters/code_path"
       responses:
@@ -432,7 +432,7 @@ paths:
   /tabellen/redenenbeeindigenhuwelijk:
     get:
       operationId: getRedenenBeeindigenHuwelijk
-      description: "Het ophalen van de gegevens van de landelijke tabel reden ontbinden of nietigverklaren huwelijk of partnerschap (Tabel 41) Bij het zoeken op de omschrijving mag er gebruik worden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ). Zoeken is **case-insensitive**."
+      description: "Het ophalen van de gegevens van de landelijke tabel reden ontbinden of nietigverklaren huwelijk of partnerschap (Tabel 41) <br> Als er op omschrijving of code gezocht wordt worden alleen actuele waarden geretourneerd. <br> Als de parameter <b> inclusief beeindigd </b> met waarde <i> true </i>  wordt meegegeven bij de call worden ook beeindigde waarden geretourneerd. <br> Bij het zoeken op de omschrijving mag er gebruik worden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature). Zoeken is **case-insensitive**."
       parameters: 
         - $ref: '#/components/parameters/code'
         - $ref: '#/components/parameters/omschrijving'
@@ -484,7 +484,7 @@ paths:
   /tabellen/redenenbeeindigenhuwelijk/{code}:
     get:
       operationId: getRedenBeeindigenHuwelijk
-      description: "Het ophalen van de gegevens van de landelijke tabel reden ontbinden / nietigverklaren huwelijk of partnerschap(Tabel 41)"
+      description: "Het ophalen van de gegevens  van een enkele entry uit de landelijke tabel reden ontbinden / nietigverklaren huwelijk of partnerschap(Tabel 41)"
       parameters:
         - $ref: '#/components/parameters/code_path'
       responses:
@@ -536,7 +536,7 @@ paths:
   /tabellen/nederlandsereisdocumenten:
     get:
       operationId: getNederlandseReisdocumenten
-      description: "Het ophalen van de gegevens van de landelijke tabel Nederlands Reisdocument (Tabel 48) Bij het zoeken op de omschrijving mag er gebruik worden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ). Zoeken is **case-insensitive**."
+      description: "Het ophalen van de gegevens van de landelijke tabel Nederlands Reisdocument (Tabel 48) <br> Als er op omschrijving of code gezocht wordt worden alleen actuele waarden geretourneerd. <br> Als de parameter <b> inclusief beeindigd </b> met waarde <i> true </i>  wordt meegegeven bij de call worden ook beeindigde waarden geretourneerd. <br> Bij het zoeken op de omschrijving mag er gebruik worden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature). Zoeken is **case-insensitive**."
       parameters: 
         - $ref: '#/components/parameters/code'
         - $ref: '#/components/parameters/omschrijving'
@@ -588,7 +588,7 @@ paths:
   /tabellen/nederlandsereisdocumenten/{code}:
     get:
       operationId: getNederlandsReisdocument
-      description: "Het ophalen van de gegevens van de landelijke tabel nederlands Reisdocument(Tabel 48)"
+      description: "Het ophalen van de gegevens van een enkele entry uit de landelijke tabel nederlands Reisdocument(Tabel 48)"
       parameters:
         - $ref: '#/components/parameters/code_path'
       responses:
@@ -640,7 +640,7 @@ paths:
   /tabellen/verblijfstitels:
     get:
       operationId: getVerblijfstitels
-      description: "Het ophalen van de gegevens van de landelijke tabel Verblijfstitels (Tabel 56) Bij het zoeken op de omschrijving mag er gebruik worden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ). Zoeken is **case-insensitive**."
+      description: "Het ophalen van de gegevens van de landelijke tabel Verblijfstitels (Tabel 56) <br> Als er op omschrijving of code gezocht wordt worden alleen actuele waarden geretourneerd. <br> Als de parameter <b> inclusief beeindigd </b> met waarde <i> true </i>  wordt meegegeven bij de call worden ook beeindigde waarden geretourneerd. <br> Bij het zoeken op de omschrijving mag er gebruik worden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature). Zoeken is **case-insensitive**."
       parameters: 
         - $ref: '#/components/parameters/code'
         - $ref: '#/components/parameters/omschrijving'
@@ -692,7 +692,7 @@ paths:
   /tabellen/verblijfstitels/{code}:
     get:
       operationId: getVerblijfstitel
-      description: "Het ophalen van de gegevens van de landelijke tabel Verblijfstitels (Tabel 56)"
+      description: "Het ophalen van de gegevens van een enkele entry uit de landelijke tabel Verblijfstitels (Tabel 56)"
       parameters:
         - $ref: '#/components/parameters/code_path'
       responses:
