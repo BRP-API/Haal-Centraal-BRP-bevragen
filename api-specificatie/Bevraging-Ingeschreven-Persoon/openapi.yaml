@@ -1785,13 +1785,10 @@ components:
       description: "Gegevens over de verblijfsrechtelijke status van de ingeschrevene.\
         \ \n* **datumEinde**: Datum waarop de geldigheid van de gegevens\
         \ over de verblijfstitel is beeindigd. \n* **datumIngang**: Datum\
-        \ waarop de gegevens over de verblijfstitel geldig zijn geworden. \n* **datumOpneming**\
-        \ : Datum en tijdstip van opneming van het geheel van de verblijfstitel. \n* **aanduiding**\
+        \ waarop de gegevens over de verblijfstitel geldig zijn geworden. \n* **aanduiding**\
         \ : Verblijfstiteltabel, die aangeeft over welke verblijfsrechtelijke status\
         \ de ingeschrevene beschikt."
       properties:
-        datumOpneming:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         aanduiding:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
         datumEinde:
@@ -1804,11 +1801,6 @@ components:
       type: "object"
       description: "In onderzoek indicators over de gegevens over de verblijfstitel."
       properties:
-        datumOpneming:
-          type: "boolean"
-          title: "datumOpneming"
-          description: "Indicator die aangeeft of het corresponderende gegeven voor\
-            \ deze verblijfstitel in onderzoek is."
         aanduiding:
           type: "boolean"
           title: "aanduiding"
@@ -2191,11 +2183,8 @@ components:
           \ ingeschrevene.</p><p>\n <em>*</em> datumEinde**: Datum waarop\
           \ de geldigheid van de gegevens over de verblijfstitel is beeindigd.</p><p>\n\
           \ <em>*</em> datumIngang**: Datum waarop de gegevens over de verblijfstitel\
-          \ geldig zijn geworden.</p><p> <em>*</em> datumOpneming** : Datum en tijdstip van \
-          \ opneming van het geheel van de verblijfstitel.  </p><p>\n\ <em>*</em> aanduiding** : Verblijfstiteltabel,\
-          \ die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt.</p><p>\n\
-          \ <em>*</em> datumOpneming** : Datum en tijdstip van opneming van het geheel\
-          \ van de verblijfstitel.</p></body>"
+          \ geldig zijn geworden.</p><p> <em>*</em> aanduiding** : Verblijfstiteltabel,\
+          \ die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt.</p> </body>"
         properties:
           indicatieVerblijfstitelBeeindigd:
             type: "boolean"
