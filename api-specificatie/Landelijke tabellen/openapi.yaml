@@ -827,10 +827,7 @@ components:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalLink"
         overgegaanIn:
-          allOf: 
-            - title: "overgegaanIn"
-              description: "De gemeente waarin deze gemeente is overgegaan bij een gemeentelijke herindeling. "
-            - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalLink"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalLink"
     Nationaliteit:
       allOf: 
         - $ref: "#/components/schemas/Landelijke_Tabel"
