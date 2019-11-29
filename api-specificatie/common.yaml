@@ -312,7 +312,7 @@ components:
         href:
           $ref: "#/components/schemas/Href"
         type:
-         description: "Met dit element wordt aangegeven in welk domein de resource te vinden is waarnaar deze link verwijst. Vooerbeelden daarvan zijn *BAG*, *BRP*, *BRK*, *HR*. "
+         description: "Met dit element wordt aangegeven in welk domein de resource te vinden is waarnaar deze link verwijst. Voorbeelden daarvan zijn *BAG*, *BRP*, *BRK*, *HR*. "
          type: string
          example: "BAG"   
     HalCollectionLinks:
