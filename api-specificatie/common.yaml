@@ -304,10 +304,17 @@ components:
       format: "uri"
       example: "datapunt.voorbeeldgemeente.nl/api/resourcename/123456789"
     HalLink:
+      description: De Link Object zoals gespecificeerd in https://tools.ietf.org/html/draft-kelly-json-hal-08#section-5
       type: object
+      required: 
+        - href
       properties:
         href:
           $ref: "#/components/schemas/Href"
+        type:
+         description: "Met dit element wordt aangegeven in welk domein de resource te vinden is waarnaar deze link verwijst. Vooerbeelden daarvan zijn *BAG*, *BRP*, *BRK*, *HR*. "
+         type: string
+         example: "BAG"   
     HalCollectionLinks:
       type: object
       properties:
