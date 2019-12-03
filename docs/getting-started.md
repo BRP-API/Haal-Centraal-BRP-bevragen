@@ -56,20 +56,21 @@ In bovenstaand figuur is ook te zien hoe de `expand` Query Parameter eruit moet 
 Het is mogelijk om alleen specifieke kenmerken van een ingeschreven persoon te bevragen met behulp van de `fields` Query Parameter. In onderstaand figuur is een bevraging te zien met de `fields` Query Parameter gezet op `burgerservicenummer,naam,geboorte.datum`.
 ![fields parameter](./img/9-using-fields-parameter.jpg)
 
-Onderstaand tabel bevat de bsn van test personen voor specifieke situaties waarmee werking van de 'Bevraging Ingeschreven Persoon' Web API kan worden getest.  
-| bsn test persoon | situatie |
-| :--------------: | :------: |
-| 999993847 | ouders, partner, kinderen, BAG-adres, verblijfplaats in onderzoek |
-| 999992077 | overleden |
-| 999993483 | geëmigreerd, verblijf buitenland, geheimhouding, uitgebreide verblijfplaatshistorie |
-| 999990482 | niet-BAG adres |
-| 000009921 | locatiebeschrijving |
-| 999993653 | niet-Nederlandse nationaliteit, ouders niet ingeschreven |
-| 999995017 | actuele en historische verblijfstitel |
-| 999990408 | gezag minderjarige |
-| 999994669 | verblijfplaatshistorie met verblijf buitenland en locatiebeschrijving en adrescorrectie |
-| 999992806 | uitgebreide verblijfstitelhistorie |
-| 999993926 | actuele en meerdere ex-partners |
-| 999991905 | twee beëindigde relaties |
-| 999993550 | partner niet ingeschreven |
-| 999990421 | meerdere kinderen, wel en niet-ingeschreven |
+Onderstaand tabel bevat de bsn van test personen voor specifieke situaties waarmee werking van de 'Bevraging Ingeschreven Persoon' Web API kan worden getest.
+
+bsn test persoon | situatie
+---------------- | :-------  
+999993847 | ouders, partner, kinderen, BAG-adres, verblijfplaats in onderzoek
+999992077 | overleden
+999993483 | geëmigreerd, verblijf buitenland, geheimhouding, uitgebreide verblijfplaatshistorie
+999990482 | niet-BAG adres
+000009921 | locatiebeschrijving
+999993653 | niet-Nederlandse nationaliteit, ouders niet ingeschreven
+999995017 | actuele en historische verblijfstitel
+999990408 | gezag minderjarige
+999994669 | verblijfplaatshistorie met verblijf buitenland en locatiebeschrijving en adrescorrectie
+999992806 | uitgebreide verblijfstitelhistorie
+999993926 | actuele en meerdere ex-partners
+999991905 | twee beëindigde relaties
+999993550 | partner niet ingeschreven
+999990421 | meerdere kinderen, wel en niet-ingeschreven
