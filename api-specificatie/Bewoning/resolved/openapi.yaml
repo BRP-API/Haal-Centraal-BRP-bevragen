@@ -1,9 +1,9 @@
 openapi: 3.0.0
 info:
   title: Bewoning
-  description: <body>Koppelvlak voor het ontsluiten van historische gegevens rond
-    de bewoners van een adres, actueel en in het verleden. Zie de Functionele documentatie
-    voor nadere toelichting.</body>
+  description: <body>API voor het ontsluiten van historische gegevens over de bewoning
+    van een adres. <br> De gegevens van de bewoners zijn actueel.Zie de Functionele
+    documentatie voor nadere toelichting.</body>
   contact:
     url: https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen
   license:
@@ -219,7 +219,7 @@ paths:
           maxLength: 16
           type: string
       responses:
-        200:
+        "200":
           description: Zoekactie geslaagd
           headers:
             api-version:
@@ -236,7 +236,7 @@ paths:
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/BewoningHalCollectie'
-        400:
+        "400":
           description: Bad Request
           headers:
             api-version:
@@ -259,7 +259,7 @@ paths:
                   name: verblijfplaats__huisnummer
                   code: integer
                   reason: Waarde is geen geldige integer.
-        401:
+        "401":
           description: Unauthorized
           headers:
             api-version:
@@ -278,7 +278,7 @@ paths:
                   a challenge applicable to the requested resource.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: authentication
-        403:
+        "403":
           description: Forbidden
           headers:
             api-version:
@@ -296,7 +296,7 @@ paths:
                   it.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: autorisation
-        406:
+        "406":
           description: Not Acceptable
           headers:
             api-version:
@@ -315,7 +315,7 @@ paths:
                   not acceptable according to thr accept headers sent in the request
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: notAcceptable
-        409:
+        "409":
           description: Conflict
           headers:
             api-version:
@@ -333,7 +333,7 @@ paths:
                   the current state of the resource
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: conflict
-        410:
+        "410":
           description: Gone
           headers:
             api-version:
@@ -351,7 +351,7 @@ paths:
                   the current state of the resource
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: gone
-        415:
+        "415":
           description: Unsupported Media Type
           headers:
             api-version:
@@ -370,7 +370,7 @@ paths:
                   the requested method.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: unsupported
-        429:
+        "429":
           description: Too Many Requests
           headers:
             api-version:
@@ -387,7 +387,7 @@ paths:
                   (rate limiting).
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: tooManyRequests
-        500:
+        "500":
           description: Internal Server Error
           headers:
             api-version:
@@ -405,7 +405,7 @@ paths:
                   it from fulfilling the request.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: serverError
-        501:
+        "501":
           description: Not Implemented
           headers:
             api-version:
@@ -423,7 +423,7 @@ paths:
                   fulfill the request.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: notImplemented
-        503:
+        "503":
           description: Service Unavailable
           headers:
             api-version:
@@ -514,7 +514,7 @@ paths:
         schema:
           type: string
       responses:
-        200:
+        "200":
           description: Zoekactie geslaagd
           headers:
             api-version:
@@ -531,7 +531,7 @@ paths:
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/BewoningHal'
-        400:
+        "400":
           description: Bad Request
           headers:
             api-version:
@@ -554,7 +554,7 @@ paths:
                   name: verblijfplaats__huisnummer
                   code: integer
                   reason: Waarde is geen geldige integer.
-        401:
+        "401":
           description: Unauthorized
           headers:
             api-version:
@@ -573,7 +573,7 @@ paths:
                   a challenge applicable to the requested resource.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: authentication
-        403:
+        "403":
           description: Forbidden
           headers:
             api-version:
@@ -591,7 +591,7 @@ paths:
                   it.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: autorisation
-        404:
+        "404":
           description: Not Found
           headers:
             api-version:
@@ -608,7 +608,7 @@ paths:
                 detail: The server has not found anything matching the Request-URI.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: notFound
-        406:
+        "406":
           description: Not Acceptable
           headers:
             api-version:
@@ -627,7 +627,7 @@ paths:
                   not acceptable according to thr accept headers sent in the request
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: notAcceptable
-        409:
+        "409":
           description: Conflict
           headers:
             api-version:
@@ -645,7 +645,7 @@ paths:
                   the current state of the resource
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: conflict
-        410:
+        "410":
           description: Gone
           headers:
             api-version:
@@ -663,7 +663,7 @@ paths:
                   the current state of the resource
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: gone
-        415:
+        "415":
           description: Unsupported Media Type
           headers:
             api-version:
@@ -682,7 +682,7 @@ paths:
                   the requested method.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: unsupported
-        429:
+        "429":
           description: Too Many Requests
           headers:
             api-version:
@@ -699,7 +699,7 @@ paths:
                   (rate limiting).
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: tooManyRequests
-        500:
+        "500":
           description: Internal Server Error
           headers:
             api-version:
@@ -717,7 +717,7 @@ paths:
                   it from fulfilling the request.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: serverError
-        501:
+        "501":
           description: Not Implemented
           headers:
             api-version:
@@ -735,7 +735,7 @@ paths:
                   fulfill the request.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: notImplemented
-        503:
+        "503":
           description: Service Unavailable
           headers:
             api-version:
@@ -826,7 +826,7 @@ paths:
         schema:
           type: string
       responses:
-        200:
+        "200":
           description: Zoekactie geslaagd
           headers:
             api-version:
@@ -843,7 +843,7 @@ paths:
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/Verloop'
-        400:
+        "400":
           description: Bad Request
           headers:
             api-version:
@@ -866,7 +866,7 @@ paths:
                   name: verblijfplaats__huisnummer
                   code: integer
                   reason: Waarde is geen geldige integer.
-        401:
+        "401":
           description: Unauthorized
           headers:
             api-version:
@@ -885,7 +885,7 @@ paths:
                   a challenge applicable to the requested resource.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: authentication
-        403:
+        "403":
           description: Forbidden
           headers:
             api-version:
@@ -903,7 +903,7 @@ paths:
                   it.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: autorisation
-        404:
+        "404":
           description: Not Found
           headers:
             api-version:
@@ -920,7 +920,7 @@ paths:
                 detail: The server has not found anything matching the Request-URI.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: notFound
-        406:
+        "406":
           description: Not Acceptable
           headers:
             api-version:
@@ -939,7 +939,7 @@ paths:
                   not acceptable according to thr accept headers sent in the request
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: notAcceptable
-        409:
+        "409":
           description: Conflict
           headers:
             api-version:
@@ -957,7 +957,7 @@ paths:
                   the current state of the resource
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: conflict
-        410:
+        "410":
           description: Gone
           headers:
             api-version:
@@ -975,7 +975,7 @@ paths:
                   the current state of the resource
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: gone
-        415:
+        "415":
           description: Unsupported Media Type
           headers:
             api-version:
@@ -994,7 +994,7 @@ paths:
                   the requested method.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: unsupported
-        429:
+        "429":
           description: Too Many Requests
           headers:
             api-version:
@@ -1011,7 +1011,7 @@ paths:
                   (rate limiting).
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: tooManyRequests
-        500:
+        "500":
           description: Internal Server Error
           headers:
             api-version:
@@ -1029,7 +1029,7 @@ paths:
                   it from fulfilling the request.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: serverError
-        501:
+        "501":
           description: Not Implemented
           headers:
             api-version:
@@ -1047,7 +1047,7 @@ paths:
                   fulfill the request.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: notImplemented
-        503:
+        "503":
           description: Service Unavailable
           headers:
             api-version:
@@ -1074,7 +1074,7 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/Foutbericht'
-  /haalcentraal/hoofbewoners:
+  /haalcentraal/hoofdbewoners:
     get:
       tags:
       - Bewoning
@@ -1115,7 +1115,7 @@ paths:
           maxLength: 16
           type: string
       responses:
-        200:
+        "200":
           description: Zoekactie geslaagd
           headers:
             api-version:
@@ -1132,7 +1132,7 @@ paths:
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/HoofdBewonerCollectieHal'
-        400:
+        "400":
           description: Bad Request
           headers:
             api-version:
@@ -1155,7 +1155,7 @@ paths:
                   name: verblijfplaats__huisnummer
                   code: integer
                   reason: Waarde is geen geldige integer.
-        401:
+        "401":
           description: Unauthorized
           headers:
             api-version:
@@ -1174,7 +1174,7 @@ paths:
                   a challenge applicable to the requested resource.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: authentication
-        403:
+        "403":
           description: Forbidden
           headers:
             api-version:
@@ -1192,7 +1192,7 @@ paths:
                   it.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: autorisation
-        404:
+        "404":
           description: Not Found
           headers:
             api-version:
@@ -1209,7 +1209,7 @@ paths:
                 detail: The server has not found anything matching the Request-URI.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: notFound
-        406:
+        "406":
           description: Not Acceptable
           headers:
             api-version:
@@ -1228,7 +1228,7 @@ paths:
                   not acceptable according to thr accept headers sent in the request
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: notAcceptable
-        409:
+        "409":
           description: Conflict
           headers:
             api-version:
@@ -1246,7 +1246,7 @@ paths:
                   the current state of the resource
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: conflict
-        410:
+        "410":
           description: Gone
           headers:
             api-version:
@@ -1264,7 +1264,7 @@ paths:
                   the current state of the resource
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: gone
-        415:
+        "415":
           description: Unsupported Media Type
           headers:
             api-version:
@@ -1283,7 +1283,7 @@ paths:
                   the requested method.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: unsupported
-        429:
+        "429":
           description: Too Many Requests
           headers:
             api-version:
@@ -1300,7 +1300,7 @@ paths:
                   (rate limiting).
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: tooManyRequests
-        500:
+        "500":
           description: Internal Server Error
           headers:
             api-version:
@@ -1318,7 +1318,7 @@ paths:
                   it from fulfilling the request.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: serverError
-        501:
+        "501":
           description: Not Implemented
           headers:
             api-version:
@@ -1336,7 +1336,7 @@ paths:
                   fulfill the request.
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: notImplemented
-        503:
+        "503":
           description: Service Unavailable
           headers:
             api-version:
@@ -1498,14 +1498,14 @@ components:
           $ref: '#/components/schemas/Geboortedatum'
         geslachtsaanduiding:
           $ref: '#/components/schemas/Geslacht_enum'
-        leeftijd:
-          title: leeftijd
-          maximum: 999
-          type: integer
-          description: <body><p>Leeftijd in jaren op het moment van bevraging</p></body>
-          example: 34
         naam:
           $ref: '#/components/schemas/Naam'
+        geheimhoudingPersoonsgegevens:
+          title: Indicatie geheim
+          type: boolean
+          description: 'Een aanduiding die aangeeft dat gegevens wel of niet verstrekt
+            mogen worden. Indien true: op verzoek van deze persoon is het verstrekken
+            van gegevens over deze persoon aan bepaalde derden niet toegestaan.'
       description: |-
         <body><p> <strong>Dit betreft een historische resource. De BEWONER kan in het verleden een ingeschreven persoon zijn geweest, maar nu niet meer ingeschreven zijn</strong> </p><p>
          <em>*</em> datumIngangGeldigheid** : Datum waarop de gegevens over de bewoning geldig zijn geworden.</p><p>
@@ -1521,14 +1521,14 @@ components:
           $ref: '#/components/schemas/Geboortedatum'
         geslachtsaanduiding:
           $ref: '#/components/schemas/Geslacht_enum'
-        leeftijd:
-          title: leeftijd
-          maximum: 999
-          type: integer
-          description: <body><p>Leeftijd in jaren op het moment van bevraging</p></body>
-          example: 34
         naam:
           $ref: '#/components/schemas/NaamHoofdbewoner'
+        geheimhoudingPersoonsgegevens:
+          title: Indicatie geheim
+          type: boolean
+          description: 'Een aanduiding die aangeeft dat gegevens wel of niet verstrekt
+            mogen worden. Indien true: op verzoek van deze persoon is het verstrekken
+            van gegevens over deze persoon aan bepaalde derden niet toegestaan.'
       description: |-
         <body><p> <strong>Dit betreft een historische resource. De BEWONER kan in het verleden een ingeschreven persoon zijn geweest, maar nu niet meer ingeschreven zijn</strong> </p><p>
          <em>*</em> datumIngangGeldigheid** : Datum waarop de gegevens over de bewoning geldig zijn geworden.</p><p>
@@ -1677,7 +1677,7 @@ components:
           - title: is
             type: object
           - $ref: '#/components/schemas/HalLink'
-        ingeschrevenpersonen:
+        ingeschrevenPersoon:
           title: bewoondDoor
           type: array
           items:
@@ -1687,7 +1687,7 @@ components:
       properties:
         self:
           $ref: '#/components/schemas/HalLink'
-        ingeschrevenpersonen:
+        ingeschrevenPersoon:
           title: is
           type: array
           items:
@@ -1775,10 +1775,19 @@ components:
         self:
           $ref: '#/components/schemas/HalLink'
     HalLink:
+      required:
+      - href
       type: object
       properties:
         href:
           $ref: '#/components/schemas/Href'
+        type:
+          type: string
+          description: 'Met dit element wordt aangegeven in welk domein de resource
+            te vinden is waarnaar deze link verwijst. Voorbeelden daarvan zijn *BAG*,
+            *BRP*, *BRK*, *HR*. '
+          example: BAG
+      description: De Link Object zoals gespecificeerd in https://tools.ietf.org/html/draft-kelly-json-hal-08#section-5
     Href:
       type: string
       format: uri

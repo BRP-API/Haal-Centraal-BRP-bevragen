@@ -465,6 +465,12 @@ components:
           $ref: "#/components/schemas/Geslacht_enum"
         naam:
           $ref: "#/components/schemas/Naam"
+        geheimhoudingPersoonsgegevens:
+          type: "boolean"
+          title: "Indicatie geheim"
+          description: "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt\
+            \ mogen worden. Indien true: op verzoek van deze persoon is het verstrekken\
+            \ van gegevens over deze persoon aan bepaalde derden niet toegestaan."
     HoofdBewoner:
       type: "object"
       description: "<body><p> <strong>Dit betreft een historische resource. De BEWONER\
@@ -484,6 +490,12 @@ components:
           $ref: "#/components/schemas/Geslacht_enum"
         naam:
           $ref: "#/components/schemas/NaamHoofdbewoner"
+        geheimhoudingPersoonsgegevens:
+          type: "boolean"
+          title: "Indicatie geheim"
+          description: "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt\
+            \ mogen worden. Indien true: op verzoek van deze persoon is het verstrekken\
+            \ van gegevens over deze persoon aan bepaalde derden niet toegestaan."
     HoofdBewonerHal:
       allOf:
       - $ref: "#/components/schemas/HoofdBewoner"
