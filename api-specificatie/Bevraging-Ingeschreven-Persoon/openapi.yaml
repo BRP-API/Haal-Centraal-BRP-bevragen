@@ -1090,6 +1090,12 @@ components:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         soortReisdocument:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+        geheimhoudingPersoonsgegevens:
+          type: "boolean"
+          title: "Indicatie geheim"
+          description: "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt\
+            \ mogen worden. Indien true: op verzoek van deze persoon is het verstrekken\
+            \ van gegevens over deze persoon aan bepaalde derden niet toegestaan."
         inOnderzoek:
           $ref: "#/components/schemas/ReisdocumentInOnderzoek"
     ReisdocumentHal:
@@ -2084,6 +2090,12 @@ components:
             allOf:
               - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
               - description: "De datum vanaf wanneer de persoon niet meer op het adres verblijft."
+          geheimhoudingPersoonsgegevens:
+            type: "boolean"
+            title: "Indicatie geheim"
+            description: "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt\
+              \ mogen worden. Indien true: op verzoek van deze persoon is het verstrekken\
+              \ van gegevens over deze persoon aan bepaalde derden niet toegestaan."
     Verblijfplaatshistorie_links:
       type: "object"
       properties:
@@ -2190,6 +2202,12 @@ components:
             type: "boolean"
             description: "Indicatie of de verblijfstitel is beeindigd. (Als de beeindigingsdatum onbekend is, maar de verblijfstitel is wel beeindigd )\
             \n* `True` - Verblijfstitel is beeindigd.\n* `False` - Verblijfstitel is niet beeindigd."
+          geheimhoudingPersoonsgegevens:
+            type: "boolean"
+            title: "Indicatie geheim"
+            description: "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt\
+              \ mogen worden. Indien true: op verzoek van deze persoon is het verstrekken\
+              \ van gegevens over deze persoon aan bepaalde derden niet toegestaan."
     Geboortedatum:
       type: "object"
       description: "<body><p>Gegevens over de geboorte van respectievelijk de persoon,\
