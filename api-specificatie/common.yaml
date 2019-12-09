@@ -92,6 +92,11 @@ components:
         format: date
         example: 2018-10-09
   responses:
+    '204':
+      description: No content
+      headers:
+        api-version:
+          $ref: "#/components/headers/api_version"
     '400':
       description: Bad Request
       headers:
