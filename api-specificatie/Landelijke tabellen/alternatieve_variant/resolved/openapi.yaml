@@ -4,7 +4,7 @@ info:
   description: API voor het ontsluiten van landelijke tabellen die op de website van
     BZK worden gepubliceerd.
   contact:
-    url: hhttps://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/master/api-specificatie/Landelijke%20tabellen
+    url: https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/master/api-specificatie/Landelijke%20tabellen
   license:
     name: European Union Public License, version 1.2 (EUPL-1.2)
     url: https://eupl.eu/1.2/nl/
