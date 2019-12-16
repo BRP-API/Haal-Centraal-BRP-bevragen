@@ -7,7 +7,7 @@ Het doel is:
 De specificaties zijn opgebouwd per functionalteit van de API. Op elke functionaliteit van de API is de werking beschreven én is de werking geïllustreerd in de vorm van scenario's (als ik dit doe, dan doet de api dat).
 
 Voor het zoeken van personen zijn de volgende functionaliteiten beschreven:
-- Zoeken vindt standaard [alleen personen die nog in leven zijn](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature), gebruik anders parameter inclusiefoverledenpersonen
+- Zoeken vindt standaard [alleen personen die nog in leven zijn](./overleden_personen.feature), gebruik anders parameter inclusiefoverledenpersonen
 - [Validatie van parameters](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature) in een API aanroep
 - Mogelijke [combinaties van parameters](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametercombinaties.feature) die minimaal vereist zijn
 - Gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) op bepaalde parameters
