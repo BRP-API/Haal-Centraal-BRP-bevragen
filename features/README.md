@@ -15,15 +15,28 @@ Voor het zoeken van personen zijn de volgende functionaliteiten beschreven:
 - Zoeken met [diakrieten](./diakrieten_in_parameter.feature)
 
 Voor het samenstellen van het antwoord op een zoekvraag of het raadplegen van een persoon zijn de volgende functionaliteiten beschreven:
-- Samenstellen van de [aanschrijfwijze](./aanschrijfwijze.feature)
+- Samenstellen van de [aanschrijfwijze](./aanschrijfwijze.feature) (Juist gebruik en volgorde van voorletters, geslachtsnamen en adelijke titelatuur)
+- Samenstellen van de [brief-aanhef](./aanhef.feature).
+- Samenstellen van de [naam in lopende tekst](./gebruik_in_lopende_tekst.feature) 
+- Samenstellen van de [voorletters](./voorletters.feature).
+- Weergeven van de geslachtsaanduiding van de partne i.g.v. een [geslachtswijziging](./geslachtswijziging.feature)
 - Samenstellen en interpreteren van gegevens die [in onderzoek](./in_onderzoek.feature) zijn
+- Weergeven van gegevens met [indicatie onjuist](./indicatie_onjuist.feature)
+- [Onbekende waardes](./onbekend_waardes.feature) van gegevens.
 - [Mogelijk onvolledige datums](./onvolledige_datum.feature)
 - [Links](./links.feature) naar relaties
 - [Links naar historie-resources](./historie_links.feature) van de persoon
 - Alleen opnemen van [actuele partners, kinderen en ouders](./partners_ouders_kinderen.feature)
+- Samenstellen van de [kiesrecht-gegevens](./kiesrecht.feature)
+- Bepalen van de [leeftijd](./leeftijd_bepaling.feature)
+- gegevens over de [woonplaats](./woonplaats.feature)
 
 Voor het ophalen van historie is de volgende functionaliteit beschreven:
 - Bepalen van het moment of de periode waarover historie wordt gevraagd *TODO*
+- Bepalen van de [volgorde](./historie_sorteren.feature) van historische zoekresultaten. 
+- Weergeven van de [Verblijfstitelhistorie](./verblijfstitelhistorie.feature).
+- Weergeven van de [Verblijfplaatshistorie](./verblijfplaatshistorie.feature)
+- weergeven van de [Partnerhistorie](./partnerhistorie.feature)
 
 Voor ophalen van historie en het samenstellen van het antwoord daarop geldt ook:
 - [Validatie van parameters](./parametervalidatie.feature) in een API aanroep
