@@ -8,3 +8,5 @@ Functionaliteit: Voor ingeschreven_personen worden alleen actuele gegevens getoo
   
   Voor Huwelijk/geregistreerd partnerschap beschrijft de [partners feature](./partners.feature) de exacte functionaliteit. 
   Voor kiesrecht beschrijft de [kiesrecht feature](./kiesrecht.feature) de exacte functionaliteit.
+  
+  Alleen gegevens uit de actuele categorieën worden opgenomen (Categorieën 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 12, 13) 
