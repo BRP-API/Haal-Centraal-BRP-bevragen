@@ -46,8 +46,8 @@ Selecteer de Headers tab en voeg de x-api-key header toe met uw apikey.
 Vervang de {{baseUrl}} in de url met https://www.haalcentraal.nl/haalcentraal/api/brp en klik de Send button om de request naar de endpoint te sturen. De 'Bevraging Ingeschreven Persoon' Web API zal reageren met onderstaand response:  
 ![Response](./img/7-response.jpg)
 
-De 'Bevraging Ingeschreven Persoon' Web API maakt gebruik van de HAL (Hypertext Application Language) standaard om bij een resource links op te nemen naar gerelateerde resources te linken en/of om bij een resource gerelateerde resources op te nemen (embedden).  
-In de response hierboven is voor de bevraagde persoon te zien dat _links/ouders element links bevat naar de ouders van de bevraagde persoon.
+De 'Bevraging Ingeschreven Persoon' Web API maakt gebruik van de HAL (Hypertext Application Language) standaard om bij een resource links op te nemen naar gerelateerde resources en/of om bij een resource gerelateerde resources op te nemen (embedden).  
+In de response hierboven is voor de bevraagde persoon te zien dat het _links/ouders element links bevat naar de ouders van de bevraagde persoon.
 
 De gegevens van ouders kunnen ook worden ge-embed tijdens de bevraging van een persoon. Dit gebeurt met behulp van de `expand` Query Parameter. Behalve de ouders kunnen (indien aanwezig) ook de kind(-eren) en partner(s) in de bevraging van een ingeschreven persoon worden ge-embed. De gegevens van ouders, partners en/of kinderen zijn dan te vinden onder de _embedded element:
 ![expand parameter](./img/8-using-expand-parameter.jpg)  
