@@ -8,7 +8,7 @@ De specificaties zijn opgebouwd per functionalteit van de API. Op elke functiona
 
 Voor het zoeken van personen zijn de volgende functionaliteiten beschreven:
 - Zoeken vindt standaard [alleen personen die nog in leven zijn](./overleden_personen.feature), gebruik anders parameter inclusiefoverledenpersonen
-- [Validatie van parameters](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature) in een API aanroep
+- [Validatie van parameters](./parametervalidatie.feature) in een API aanroep
 - Mogelijke [combinaties van parameters](./parametercombinaties.feature) die minimaal vereist zijn
 - Gebruik van een [wildcard](./wildcard.feature) op bepaalde parameters
 - Zoeken op een parameterwaarde is [case-insensitive](./case_insensitive.feature) wanneer de parameter een string is
