@@ -1,4 +1,4 @@
-﻿#language: nl
+#language: nl
 Functionaliteit: Bepalen van voorletters uit de voornamen van een persoon
 
 Als klant van gemeenten

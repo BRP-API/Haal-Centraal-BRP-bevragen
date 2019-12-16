@@ -1,46 +1,59 @@
 # Behaviour driven specificatie en tests
 Het doel is:
-- functionele werking van de api specificeren en illustreren
-- test om een provider van de API te testen
+- Functionele werking van de api specificeren en illustreren
+- Test om een provider van de API te testen
 
 ## Opbouw van de functionele specificaties
 De specificaties zijn opgebouwd per functionalteit van de API. Op elke functionaliteit van de API is de werking beschreven én is de werking geïllustreerd in de vorm van scenario's (als ik dit doe, dan doet de api dat).
 
 Voor het zoeken van personen zijn de volgende functionaliteiten beschreven:
-- Zoeken vindt standaard [alleen personen die nog in leven zijn](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature), gebruik anders parameter inclusiefoverledenpersonen
-- [Validatie van parameters](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature) in een API aanroep
-- Mogelijke [combinaties van parameters](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametercombinaties.feature) die minimaal vereist zijn
-- Gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) op bepaalde parameters
-- Zoeken op een parameterwaarde is [case-insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature) wanneer de parameter een string is
-- Zoeken met [diakrieten](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/diakrieten_in_parameter.feature)
+- Zoeken vindt standaard [alleen personen die nog in leven zijn](./overleden_personen.feature), gebruik anders parameter inclusiefoverledenpersonen
+- [Validatie van parameters](./parametervalidatie.feature) in een API aanroep
+- Mogelijke [combinaties van parameters](./parametercombinaties.feature) die minimaal vereist zijn
+- Gebruik van een [wildcard](./wildcard.feature) op bepaalde parameters
+- Zoeken op een parameterwaarde is [case-insensitive](./case_insensitive.feature) wanneer de parameter een string is
+- Zoeken met [diakrieten](./diakrieten_in_parameter.feature)
 
 Voor het samenstellen van het antwoord op een zoekvraag of het raadplegen van een persoon zijn de volgende functionaliteiten beschreven:
-- Samenstellen van de [aanschrijfwijze](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanschrijfwijze.feature)
-- Samenstellen en interpreteren van gegevens die [in onderzoek](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature) zijn
-- [Mogelijk onvolledige datums](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/onvolledige_datum.feature)
-- [Links](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/links.feature) naar relaties
-- [Links naar historie-resources](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/historie_links.feature) van de persoon
-- Alleen opnemen van [actuele partners, kinderen en ouders](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/partners_ouders_kinderen.feature)
+- Samenstellen van de [aanschrijfwijze](./aanschrijfwijze.feature) (Juist gebruik en volgorde van voorletters, geslachtsnamen en adelijke titelatuur)
+- Samenstellen van de [brief-aanhef](./aanhef.feature).
+- Samenstellen van de [naam in lopende tekst](./gebruik_in_lopende_tekst.feature) 
+- Samenstellen van de [voorletters](./voorletters.feature).
+- Weergeven van de geslachtsaanduiding van de partne i.g.v. een [geslachtswijziging](./geslachtswijziging.feature)
+- Samenstellen en interpreteren van gegevens die [in onderzoek](./in_onderzoek.feature) zijn
+- Weergeven van gegevens met [indicatie onjuist](./indicatie_onjuist.feature)
+- [Onbekende waardes](./onbekend_waardes.feature) van gegevens.
+- [Mogelijk onvolledige datums](./onvolledige_datum.feature)
+- [Links](./links.feature) naar relaties
+- [Links naar historie-resources](./historie_links.feature) van de persoon
+- Alleen opnemen van [actuele partners, kinderen en ouders](./partners_ouders_kinderen.feature)
+- Samenstellen van de [kiesrecht-gegevens](./kiesrecht.feature)
+- Bepalen van de [leeftijd](./leeftijd_bepaling.feature)
+- gegevens over de [woonplaats](./woonplaats.feature)
 
 Voor het ophalen van historie is de volgende functionaliteit beschreven:
 - Bepalen van het moment of de periode waarover historie wordt gevraagd *TODO*
+- Bepalen van de [volgorde](./historie_sorteren.feature) van historische zoekresultaten. 
+- Weergeven van de [Verblijfstitelhistorie](./verblijfstitelhistorie.feature).
+- Weergeven van de [Verblijfplaatshistorie](./verblijfplaatshistorie.feature)
+- weergeven van de [Partnerhistorie](./partnerhistorie.feature)
 
 Voor ophalen van historie en het samenstellen van het antwoord daarop geldt ook:
-- [Validatie van parameters](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature) in een API aanroep
-- Zoeken op een parameterwaarde is [case-insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature) wanneer de parameter een string is
-- Mogelijk onvolledige datums *TODO*
-- Gebruik [fields](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature) om een deel van de attributen in het antwoord te krijgen
+- [Validatie van parameters](./parametervalidatie.feature) in een API aanroep
+- Zoeken op een parameterwaarde is [case-insensitive](./case_insensitive.feature) wanneer de parameter een string is
+- [Mogelijk onvolledige datums](./onvolledige_datum.feature)
+- Gebruik [fields](./fields.feature) om een deel van de attributen in het antwoord te krijgen
 
-Voor het ophalen van de historie van bewoningen kan bovendien [expand](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/expand.feature) gebruikt worden om gegevens van de bewoners in het antwoord mee te laden.
+Voor het ophalen van de historie van bewoningen kan bovendien [expand](./expand.feature) gebruikt worden om gegevens van de bewoners in het antwoord mee te laden.
 
 Voor het samenstellen van het antwoord op historie-collectie is de volgende functionaliteit beschreven:
-- [Sorting](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/historie_sorteren.feature) van historische voorkomens *TODO*
+- [Sorting](./historie_sorteren.feature) van historische voorkomens *TODO*
 
  Voor het manipuleren van de omvang van het antwoord zijn de volgende functionaliteiten beschreven:
- - Gebruik [fields](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/fields.feature) om een deel van de attributen in het antwoord te krijgen
- - Gebruik [expand](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/expand.feature) om een sub-resource (partners, ouders, kinderen) in het antwoord mee te laden
+ - Gebruik [fields](./fields.feature) om een deel van de attributen in het antwoord te krijgen
+ - Gebruik [expand](./expand.feature) om een sub-resource (partners, ouders, kinderen) in het antwoord mee te laden
 
- Er is ook functionaliteit beschreven over de foutafhandeling. *TODO*
+ Er is ook functionaliteit beschreven over de [foutafhandeling](./foutafhandeling.feature).
 
 ## Features en scenario's
 De specificatie/test is gespecificeerd in documenten per functionaliteit, elk met extensie ".feature". Per functionaliteit is een korte beschrijving van de functionaliteit opgenomen plus scenario's die de gewenste werking van de functionaliteit toelichten en demonstreren.
