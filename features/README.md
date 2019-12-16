@@ -28,7 +28,7 @@ Voor het ophalen van historie is de volgende functionaliteit beschreven:
 Voor ophalen van historie en het samenstellen van het antwoord daarop geldt ook:
 - [Validatie van parameters](./parametervalidatie.feature) in een API aanroep
 - Zoeken op een parameterwaarde is [case-insensitive](./case_insensitive.feature) wanneer de parameter een string is
-- Mogelijk onvolledige datums *TODO*
+- [Mogelijk onvolledige datums](./onvolledige_datum.feature)
 - Gebruik [fields](./fields.feature) om een deel van de attributen in het antwoord te krijgen
 
 Voor het ophalen van de historie van bewoningen kan bovendien [expand](./expand.feature) gebruikt worden om gegevens van de bewoners in het antwoord mee te laden.
