@@ -1,7 +1,7 @@
 # Behaviour driven specificatie en tests
 Het doel is:
-- functionele werking van de api specificeren en illustreren
-- test om een provider van de API te testen
+- Functionele werking van de api specificeren en illustreren
+- Test om een provider van de API te testen
 
 ## Opbouw van de functionele specificaties
 De specificaties zijn opgebouwd per functionalteit van de API. Op elke functionaliteit van de API is de werking beschreven én is de werking geïllustreerd in de vorm van scenario's (als ik dit doe, dan doet de api dat).
