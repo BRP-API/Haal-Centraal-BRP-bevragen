@@ -28,42 +28,42 @@ paths:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/datumtotenmet"
         - in: query
           name: huisletter
-          description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende toevoeging aan een huisnummer in de vorm van een alfanumeriek teken. Dit attribuutsoort is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING. Het is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting in de BAG. a - z , A – Z"
+          description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende toevoeging aan een huisnummer in de vorm van een alfanumeriek teken. "
           required: false
           schema:
             type: string
             maxLength: 1
         - in: query
           name: huisnummer
-          description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nummering. Dit attribuutsoort is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING. Het is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting in de BAG. Alle natuurlijke getallen tussen 1 en 99999."
+          description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nummering. "
           required: false
           schema:
             type: integer
             maximum: 99999
         - in: query
           name: huisnummertoevoeging
-          description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter. Dit attribuutsoort is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING. Het is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting in de BAG. a - z , A - Z , 0 – 9"
+          description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter. "
           required: false
           schema:
             type: string
             maxLength: 4
         - in: query
           name: identificatiecodenummeraanduiding
-          description: "De unieke aanduiding van een NUMMERAANDUIDING. zie toelichting BAG Combinatie van de viercijferige 'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding."
+          description: "De unieke aanduiding van een NUMMERAANDUIDING. "
           required: false
           schema:
             type: string
             maxLength: 16
         - in: query
           name: ligplaatsidentificatie
-          description: "De unieke identificatie van een VERBLIJFSOBJECT. Combinatie van de viercijferige 'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde: 01 verblijfsobject"
+          description: "De unieke identificatie van een VERBLIJFSOBJECT. "
           required: false
           schema:
             type: string
             maxLength: 16
         - in: query
           name: naamopenbareruimte
-          description: "Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming Zie verder de toelichting in de BAG. Tekens gecodeerd volgens de UTF-8 standaard"
+          description: "Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming Zie verder de toelichting in de BAG. "
           required: false
           schema:
             type: string
@@ -71,7 +71,7 @@ paths:
             example: Proteriusstraat
         - in: query
           name: postcode
-          description: "De door PostNL vastgestelde code behorende bij een bepaalde combinatie van een naam van een woonplaats, naam van een openbare ruimte en een huisnummer Dit attribuutsoort is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING. Het is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting in de BAG."
+          description: "De door PostNL vastgestelde code behorende bij een bepaalde combinatie van een naam van een woonplaats, naam van een openbare ruimte en een huisnummer "
           required: false
           schema:
             type: string
@@ -86,14 +86,14 @@ paths:
             example: 0518
         - in: query
           name: standplaatsidentificatie
-          description: "De unieke identificatie van een VERBLIJFSOBJECT. Combinatie van de viercijferige 'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde: 01 verblijfsobject"
+          description: "De unieke identificatie van een STANDPLAATS. "
           required: false
           schema:
             type: string
             maxLength: 16
         - in: query
           name: verblijfsobjectidentificatie
-          description: "De unieke identificatie van een VERBLIJFSOBJECT. Combinatie van de viercijferige 'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde: 01 verblijfsobject"
+          description: "De unieke identificatie van een VERBLIJFSOBJECT. "
           required: false
           schema:
             type: string
@@ -343,28 +343,14 @@ components:
           title: "Huisletter"
           description: "<body>Een door of namens het bevoegd gemeentelijk orgaan ten\
             \ aanzien van een adresseerbaar object toegekende toevoeging aan een huisnummer\
-            \ in de vorm van een alfanumeriek teken.</body><body>Dit attribuutsoort\
-            \ is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING. Het\
-            \ is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast\
-            \ de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt\
-            \ onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie\
-            \ is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven\
-            \ beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting\
-            \ in de BAG.</body><body>a - z , A – Z</body>"
+            \ in de vorm van een alfanumeriek teken.</body>"
           maxLength: 1
           example: "F"
         huisnummer:
           type: "integer"
           title: "Huisnummer"
           description: "<body>Een door of namens het bevoegd gemeentelijk orgaan ten\
-            \ aanzien van een adresseerbaar object toegekende nummering.</body><body>Dit\
-            \ attribuutsoort is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING.\
-            \ Het is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast\
-            \ de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt\
-            \ onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie\
-            \ is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven\
-            \ beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting\
-            \ in de BAG.</body><body>Alle natuurlijke getallen tussen 1 en 99999.</body>"
+            \ aanzien van een adresseerbaar object toegekende nummering.</body>"
           maximum: 99999
           example: 11
         huisnummertoevoeging:
@@ -372,14 +358,7 @@ components:
           title: "Huisnummertoevoeging"
           description: "<body>Een door of namens het bevoegd gemeentelijk orgaan ten\
             \ aanzien van een adresseerbaar object toegekende nadere toevoeging aan\
-            \ een huisnummer of een combinatie van huisnummer en huisletter.</body><body>Dit\
-            \ attribuutsoort is in de BAG gespecificeerd bij het objecttype NUMMERAANDUIDING.\
-            \ Het is bij de ADRESSEERBAAR OBJECT AANDUIDING opgenomen aangezien naast\
-            \ de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR OBJECT AANDUIDING wordt\
-            \ onderscheiden. Aangezien de ADRESSEERBAAR OBJECT AANDUIDING een generalisatie\
-            \ is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR OBJECT AANDUIDING overerven\
-            \ beide laatstgenoemde objecttypen dit attribuutsoort. Zie verder de toelichting\
-            \ in de BAG.</body><body>a - z , A - Z , 0 – 9</body>"
+            \ een huisnummer of een combinatie van huisnummer en huisletter.</body>"
           maxLength: 4
           example: "2"
         aanduidingBijHuisnummer:
@@ -387,8 +366,8 @@ components:
         identificatiecodeNummeraanduiding:
           type: "string"
           title: "Identificatiecode nummeraanduiding"
-          description: "<body>De unieke aanduiding van een NUMMERAANDUIDING.</body><body>zie\
-            \ toelichting BAG</body><body>Combinatie van de viercijferige 'gemeentecode'\
+          description: "<body>De unieke aanduiding van een NUMMERAANDUIDING.</body>\
+            \ <body>Combinatie van de viercijferige 'gemeentecode'\
             \ (volgens GBA tabel 33, Gemeententabel), de tweecijferige 'objecttypecode'\
             \ en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig\
             \ 'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde:20\
@@ -399,8 +378,7 @@ components:
           type: "string"
           title: "Naam openbare ruimte"
           description: "<body>Een door het bevoegde gemeentelijke orgaan aan een OPENBARE\
-            \ RUIMTE toegekende benaming</body><body>Zie verder de toelichting in\
-            \ de BAG.</body><body>Tekens gecodeerd volgens de UTF-8 standaard</body>"
+            \ RUIMTE toegekende benaming</body><body>Tekens gecodeerd volgens de UTF-8 standaard</body>"
           maxLength: 80
           example: "Proteriusstraat"
         postcode:
@@ -408,13 +386,7 @@ components:
           title: "Postcode"
           description: "<body>De door PostNL vastgestelde code behorende bij een bepaalde\
             \ combinatie van een naam van een woonplaats, naam van een openbare ruimte\
-            \ en een huisnummer</body><body>Dit attribuutsoort is in de BAG gespecificeerd\
-            \ bij het objecttype NUMMERAANDUIDING. Het is bij de ADRESSEERBAAR OBJECT\
-            \ AANDUIDING opgenomen aangezien naast de NUMMERAANDUIDING de OVERIG ADRESSEERBAAR\
-            \ OBJECT AANDUIDING wordt onderscheiden. Aangezien de ADRESSEERBAAR OBJECT\
-            \ AANDUIDING een generalisatie is van NUMMERAANDUIDING en OVERIG ADRESSEERBAAR\
-            \ OBJECT AANDUIDING overerven beide laatstgenoemde objecttypen dit attribuutsoort.\
-            \ Zie verder de toelichting in de BAG.</body>"
+            \ en een huisnummer</body>"
           pattern: "^[1-9]{1}[0-9]{3}[A-Z]{2}$"
           example: "2571BP"
         identificatiecodeAdresseerbaarObject:
@@ -430,8 +402,7 @@ components:
           type: "string"
           title: "Woonplaatsnaam"
           description: "<body>De door het bevoegde gemeentelijke orgaan aan een WOONPLAATS\
-            \ toegekende benaming.</body><body>Zie verder de toelichting in de BAG.</body><body>Tekens\
-            \ gecodeerd volgens de UTF-8 standaard.</body>"
+            \ toegekende benaming.</body><body>Zie verder de toelichting in de BAG.</body>"
           maxLength: 80
           example: "s'Gravenhage"
         _links:
@@ -472,6 +443,11 @@ components:
           $ref: "#/components/schemas/Geslacht_enum"
         naam:
           $ref: "#/components/schemas/Naam"
+        leeftijd:
+          type: "integer"
+          title: "leeftijd"
+          description: "Leeftijd in jaren op het moment van bevraging"
+          maximum: 999
         geheimhoudingPersoonsgegevens:
           type: "boolean"
           title: "Indicatie geheim"
