@@ -19,7 +19,7 @@ paths:
   /haalcentraal/bewoningen:
     get:
       operationId: getBewoningen
-      description: "<body><p><body> <p>Het ophalen van de gegevens van een collectie Bewoningen.<br />Een bewoning is een VERBLIJFPLAATS waar op enig moment daadwerkelijk minimaal 1 INGESCHREVEN PERSOON is ingeschreven.</p> <p><br />Op basis van de parameters wordt een of meerdere bewoningen geretourneerd inclusief gegevens over de bewoners van het betreffende verblijfobject. Ten minste &eacute;&eacute;n van de volgende combinaties van parameters moet zijn opgenomen.</p> <p><br /></p><ol><li>Identificatiecodenummeraanduiding <br /></li><li>Verblijfsobjectidentificatie <br /></li><li>Postcode<br /> - verblijfplaats <strong>postcode<br /> - verblijfplaats</strong>huisnummer</p> <p><br /></li><li>NaamOpenbareRuimte<br /> - verblijfplaats <strong>naamOpenbareRuimte<br /> - verblijfplaats</strong>gemeentevaninschrijving<br /> - verblijfplaats__huisnummer</p> <p></li><li>Nummeraanduiding<br /> - verblijfplaats__nummeraanduiding</p> <p>De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters.</p> <p>Overleden personen worden opgenomen in het zoekresultaat.</p> <p>Het resultaat bevat de verblijfplaatshistorie waarvan de EINDdatumgeldigheidverblijfplaats op of na de datumVan ligt EN de BEGINdatum op of voor de DatumTotEnMet ligt.</p> <p>Of</p> <p>Het resultaat bevat de verblijfplaats historie waarvan de begindatumgeldigheidverblijfplaats voor op op de peildatum ligt en de eindatumgeldigheidverblijfplaats na of op de peildatum ligt.</p> <p> Als peildatum is ingevuld mogen datumVan en datumTotenMet nietingevuld zijn.</p> <p>Er wordt niet op de gevonden adressen gesorteerd, maar per aders (bewoning) worden de bewoners wel gesorteerd op datumvan.</p></li></ol></body>"
+      description: "<body><p><body> <p>Het ophalen van de gegevens van een collectie Bewoningen.<br />Een bewoning is een VERBLIJFPLAATS waar op enig moment daadwerkelijk minimaal 1 INGESCHREVEN PERSOON is ingeschreven.</p> <p><br />Op basis van de parameters wordt een of meerdere bewoningen geretourneerd inclusief gegevens over de bewoners van het betreffende verblijfobject. Ten minste &eacute;&eacute;n van de volgende combinaties van parameters moet zijn opgenomen.</p> <p><br /></p><ol><li>Identificatiecodenummeraanduiding <br /></li><li>Verblijfsobjectidentificatie <br /></li><li>Postcode<br /> - verblijfplaats <strong>postcode<br /> - verblijfplaats</strong>huisnummer</p> <p><br /></li><li>NaamOpenbareRuimte<br /> - verblijfplaats <strong>naamOpenbareRuimte<br /> - verblijfplaats</strong>gemeentevaninschrijving<br /> - verblijfplaats__huisnummer</p> <p></li><li>Nummeraanduiding<br /> - verblijfplaats__nummeraanduiding</p> <p>De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters.</p> <p>Overleden personen worden opgenomen in het zoekresultaat.</p> <p>Het resultaat bevat de verblijfplaatshistorie waarvan de EINDdatum geldigheidverblijfplaats op of na de datumVan ligt EN de BEGINdatum op of voor de DatumTotEnMet ligt.</p> <p>Of</p> <p>Het resultaat bevat de verblijfplaats historie waarvan de begindatumgeldigheidverblijfplaats voor op op de peildatum ligt en de eindatumgeldigheidverblijfplaats na of op de peildatum ligt.</p> <p> Als peildatum is ingevuld mogen datumVan en datumTotenMet nietingevuld zijn.</p> <p>Er wordt niet op de gevonden adressen gesorteerd, maar per aders (bewoning) worden de bewoners wel gesorteerd op datumvan.</p></li></ol></body>"
       parameters: 
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/api-version"
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/fields"
@@ -330,8 +330,6 @@ components:
           type: "array"
           items:
             $ref: "#/components/schemas/Bewoner"
-        functieadres:
-          $ref: "#/components/schemas/SoortAdres_enum"
         huisletter:
           type: "string"
           title: "Huisletter"
@@ -450,14 +448,13 @@ components:
       type: "object"
       description: "<body><p> <strong>Dit betreft een historische resource. De BEWONER\
         \ kan in het verleden een ingeschreven persoon zijn geweest, maar nu niet\
-        \ meer ingeschreven zijn</strong> </p><p>\n <em>*</em> datumIngangGeldigheid**\
-        \ : Datum waarop de gegevens over de bewoning geldig zijn geworden.</p><p>\n\
-        \ <em>*</em> datumEindeGeldigheid** : Datum waarop de geldigheid van de gegevens\
-        \ over de bewoning beeindigd is.</p></body>"
+        \ meer ingeschreven zijn</strong> </p><p>\n <em>*</em> datumVan**\
+        \ : Datum waarop de bewoner op dit adres is ingeschreven.</p><p>\n\
+        \ <em>*</em> datumEindeTotenMet** : Datum waarop de bewoner bij dit adres is uitgeschreven.</p></body>"
       properties:
-        datumTotenMet:
+        datumTot:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
-        datumVan:
+        datumAanvangAdresHuishouding:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         geboortedatum:
           $ref: "#/components/schemas/Geboortedatum"
@@ -471,31 +468,23 @@ components:
           description: "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt\
             \ mogen worden. Indien true: op verzoek van deze persoon is het verstrekken\
             \ van gegevens over deze persoon aan bepaalde derden niet toegestaan."
-    HoofdBewoner:
-      type: "object"
-      description: "<body><p> <strong>Dit betreft een historische resource. De BEWONER\
-        \ kan in het verleden een ingeschreven persoon zijn geweest, maar nu niet\
-        \ meer ingeschreven zijn</strong> </p><p>\n <em>*</em> datumIngangGeldigheid**\
-        \ : Datum waarop de gegevens over de bewoning geldig zijn geworden.</p><p>\n\
-        \ <em>*</em> datumEindeGeldigheid** : Datum waarop de geldigheid van de gegevens\
-        \ over de bewoning beeindigd is.</p></body>"
-      properties:
-        datumTotenMet:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
-        datumVan:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
-        geboortedatum:
-          $ref: "#/components/schemas/Geboortedatum"
-        geslachtsaanduiding:
-          $ref: "#/components/schemas/Geslacht_enum"
-        naam:
-          $ref: "#/components/schemas/NaamHoofdbewoner"
-        geheimhoudingPersoonsgegevens:
+        opschortingBijhouding:
+          $ref: "#/components/schemas/OpschortingBijhouding"
+        indicatieverblijfsplaatsinonderzoek:
           type: "boolean"
-          title: "Indicatie geheim"
-          description: "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt\
-            \ mogen worden. Indien true: op verzoek van deze persoon is het verstrekken\
-            \ van gegevens over deze persoon aan bepaalde derden niet toegestaan."
+          title: "Indicatie verblijplaats in onderzoek"
+          description: "Een aanduiding die aangeeft dat gegevens van de verblijfplaats\
+            \ van deze bewoner in onderzoek zijn. Indien true: verblijfplaats is in onderzoek."
+        functieadres:
+          $ref: "#/components/schemas/SoortAdres_enum"
+    HoofdBewoner:
+      allOf:
+      - $ref: "#/components/schemas/Bewoner" 
+      - description: "<body><p> <strong>Dit betreft een historische resource. De BEWONER\
+        \ kan in het verleden een ingeschreven persoon zijn geweest, maar nu niet\
+        \ meer ingeschreven zijn</strong> </p><p>\n <em>*</em> datumVan**\
+        \ : Datum waarop de hoofdBewoner op dit adres is ingeschreven.</p><p>\n\
+        \ <em>*</em> datumTotenMet** : Datum waarop de hoofdbewoner bij dit adres is uitgeschreven.</p></body>"
     HoofdBewonerHal:
       allOf:
       - $ref: "#/components/schemas/HoofdBewoner"
@@ -510,13 +499,13 @@ components:
         _embedded:
           type: object
           properties:
-            bewoningen:
+            hoofdbewoners:
               type: array
               items:
                 $ref: '#/components/schemas/HoofdBewonerHal'
     Geboortedatum:
       type: "object"
-      description: "<body><p>Gegevens over de geboorte van respectievelijk de persoon,\
+      description: "<body><p>Gegevens over de geboorte van een persoon, \
         \ de ouder, de echtgenoot/geregistreerd partner, de eerdere echtgenoot/geregistreerd\
         \ partner of het kind.</p><p>\n <em>*</em> datum** : Datum waarop de persoon\
         \ is geboren.</p><p>\n <em>*</em> land** : Land waar de persoon is geboren</p><p>\n\
@@ -616,24 +605,37 @@ components:
       description: ""
       properties:
         bewoningsduur:
-          type: "string"
+          type: integer
           title: "bewoningsduur"
           description: "<body><p>De gemiddelde duur van de bewoning (in maanden) over\
             \ een bepaalde periode.</p></body>"
           minLength: 1
-          example: "7"
+          example: 7
         inVerhuizingen:
-          type: "string"
+          type: integer
           title: "inVerhuizingen"
           description: "<body><p>Het aantal verhuisbewegingen naar dit adres toe van\
-            \ gezinnen of alleenstaanden.</p></body>"
+            \ gezinnen of alleenstaanden. Als meerdere bewoners op dezelfde datum worden ingeschreven wordt dat als 1 verhuisbeweging geteld.</p></body>"
           minLength: 1
+          example: 3
         uitVerhuizingen:
-          type: "string"
+          type: integer
           title: "uitVerhuizingen"
-          description: "<body><p>Het aantal verhuisbewegingen naar dit adres toe van\
-            \ gezinnen of alleenstaanden.</p></body>"
-          example: "14"
+          description: "<body><p>Het aantal verhuisbewegingen naar een ander adres toe van\
+            \ gezinnen of alleenstaanden. Als meerdere bewoners op dezelfde datum worden uitgeschreven wordt dat als 1 verhuisbeweging geteld.</p></body>"
+          example: 14
+    OpschortingBijhouding:
+      type: "object"
+      description: "\n* **reden**: Een aanduiding van de reden waarom de bijhouding\
+        \ van de PL is opgeschort. \n* **datum**: De datum waarop de bijhouding van\
+        \ de persoonslijst is gestaakt. \n* Indien er wel een redenOpschortingBijhouding\
+        \ is maar er wordt geen datumOpschortingBijhouding geleverd, dan is dat datumOpschortingBijhouding\
+        \ onbekend."
+      properties:
+        reden:
+          $ref: "#/components/schemas/RedenOpschortingBijhouding_enum"
+        datum:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     Bewoning_links:
       type: "object"
       properties:
@@ -677,6 +679,17 @@ components:
       - "man"
       - "vrouw"
       - "onbekend"
+    RedenOpschortingBijhouding_enum:
+      type: "string"
+      description: "Redenen voor opschorting van de bijhouding.:\n* `overlijden` -\
+        \ O\n* `emigratie` - E\n* `ministerieel_besluit` - M\n* `pl_aangelegd_in_de_rni`\
+        \ - R\n* `fout` - F"
+      enum:
+      - "overlijden"
+      - "emigratie"
+      - "ministerieel_besluit"
+      - "pl_aangelegd_in_de_rni"
+      - "fout"
     SoortAdres_enum:
       type: "string"
       description: "<body><p>Aanduiding van het soort adres.</p></body>:\n* `woonadres`\
