@@ -8,7 +8,7 @@ De OAS specificatie van de 'Bevraging Ingeschreven Persoon' Web API is te downlo
 
 De [functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) van de 'Bevraging Ingeschreven Persoon' Web API is ook te vinden in de github repository.
 
-De API lab versie van de 'Bevraging Ingeschreven Persoon' Web API is te benaderen via de volgende url: https://www.haalcentraal.nl/haalcentraal/api/brp
+De 'Bevraging Ingeschreven Persoon' Web API is te benaderen via de volgende url: https://www.haalcentraal.nl/haalcentraal/api/brp
 
 Om de web api te kunnen bevragen is een apikey nodig. Een apikey kan worden aangevraagd bij ...
 
