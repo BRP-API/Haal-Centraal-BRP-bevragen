@@ -19,13 +19,23 @@ paths:
   /haalcentraal/bewoningen:
     get:
       operationId: getBewoningen
-      description: "<body><p><body> <p>Het ophalen van de gegevens van een collectie Bewoningen.<br />Een bewoning is een VERBLIJFPLAATS waar op enig moment daadwerkelijk minimaal 1 INGESCHREVEN PERSOON is ingeschreven.</p> <p><br />Op basis van de parameters wordt een of meerdere bewoningen geretourneerd inclusief gegevens over de bewoners van het betreffende verblijfobject. Ten minste &eacute;&eacute;n van de volgende combinaties van parameters moet zijn opgenomen.</p> <p><br /></p><ol><li>Identificatiecodenummeraanduiding <br /></li><li>Verblijfsobjectidentificatie <br /></li><li>Postcode<br /> - postcode<br /> - huisnummer</p> <p></li><li>NaamOpenbareRuimte<br /> - naamOpenbareRuimte<br /> - gemeentevaninschrijving<br /> - huisnummer</p> <p></li><li>Nummeraanduiding<br /> - nummeraanduiding</p> <p>De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters.</p> <p>Overleden personen worden opgenomen in het zoekresultaat.</p> <p>Het resultaat bevat de adressen en bewoners van een verblijfplaats waarvan de EINDdatum geldigheidverblijfplaats op of na de <i>datumvan</i> ligt EN de BEGINdatum op of voor de <i>datumtotenmet</i> ligt.</p> <p>Of</p> <p>Het resultaat bevat de het adres en de bewoners van de verblijfplaats waarbij de BEGINdatumgeldigheidverblijfplaats voor op op de <i>peildatum</i> ligt en de EINDdatumgeldigheidverblijfplaats na of op de <i>peildatum</i> ligt.</p> <p> Als <i>peildatum</i> is ingevuld mogen <i>datumVan</i> en <i>datumtotenmet</i> nietingevuld zijn.</p> <p> Als zowel peildatum, datumVan en datumtotenmet niet ingevuld zijn wordt impliciet de datum van vandaag gebruikt als peildatum. </p> <p>Er wordt niet op de gevonden adressen gesorteerd, maar per adres (bewoning) worden de bewoners wel gesorteerd op datumvan.</p></li></ol></body>"
+      description: "<body><p><body> <p>Het raadplegen van een Bewoning. <br> Een bewoning is een verblijfplaats waar minimaal 1 persoon is ingeschreven. Op basis van de identificatiecodenummeraanduiding retourneert Bewoning de personen die op de verblijfplaats zijn ingeschreven.</p> <p><br />Op basis van de parameters wordt een of meerdere bewoningen geretourneerd inclusief gegevens over de bewoners van het betreffende verblijfobject. Ten minste &eacute;&eacute;n van de volgende combinaties van parameters moet zijn opgenomen.</p> <p><br /></p><ol><li>Identificatiecodenummeraanduiding <br /></li><li>Verblijfsobjectidentificatie <br /></li><li>Postcode<br /> - postcode<br /> - huisnummer</p> <p></li><li>NaamOpenbareRuimte<br /> - naamOpenbareRuimte<br /> - gemeentevaninschrijving<br /> - huisnummer</p> <p></li><li>Nummeraanduiding<br /> - nummeraanduiding</p> <p>De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters.</p> <p>Overleden personen worden opgenomen in het zoekresultaat tot aan de datum van overlijden.</p> <p>Het resultaat bevat de adressen en bewoners van een verblijfplaats waarvan de EINDdatum geldigheidverblijfplaats op of na de <i>datumvan</i> ligt EN de BEGINdatum op of voor de <i>datumtotenmet</i> ligt.</p> <p>Of</p> <p>Het resultaat bevat de het adres en de bewoners van de verblijfplaats waarbij de BEGINdatumgeldigheidverblijfplaats voor op op de <i>peildatum</i> ligt en de EINDdatumgeldigheidverblijfplaats na of op de <i>peildatum</i> ligt.</p> <p> Als <i>peildatum</i> is ingevuld mogen <i>datumVan</i> en <i>datumtotenmet</i> nietingevuld zijn.</p> <p> Als zowel peildatum, datumVan en datumtotenmet niet ingevuld zijn wordt impliciet de datum van vandaag gebruikt als peildatum. </p> <p>Er wordt niet op de gevonden adressen gesorteerd, maar per adres (bewoning) worden de bewoners wel gesorteerd op datumvan.</p></li></ol></body>"
       parameters: 
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/api-version"
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/fields"
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/peildatum"
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/datumvan"
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/datumtotenmet"
+        - in: query
+          name: burgerservicenummer
+          required: false
+          description: "Met het burgerservicenummer als parameter wordt debewoning waar deze persoon op peildatum of in de gevraagde periode verblijft of verbleven is opgehaald met alle bijbehorende bewoners per bewoning. "
+          schema:
+            type: "string"
+            
+            maxLength: 9
+            minLength: 9
+            example: "555555021"
         - in: query
           name: huisletter
           description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende toevoeging aan een huisnummer in de vorm van een alfanumeriek teken. "
@@ -587,22 +597,19 @@ components:
         bewoningsduur:
           type: integer
           title: "bewoningsduur"
-          description: "<body><p>De gemiddelde duur van de bewoning (in maanden) over\
-            \ een bepaalde periode.</p></body>"
+          description: "<body><p>De gemiddelde duur van de bewoning van het adres in maanden in     een bepaalde periode.</p></body>"
           minLength: 1
           example: 7
         inVerhuizingen:
           type: integer
           title: "inVerhuizingen"
-          description: "<body><p>Het aantal verhuisbewegingen naar dit adres toe van\
-            \ gezinnen of alleenstaanden. Als meerdere bewoners op dezelfde datum worden ingeschreven wordt dat als 1 verhuisbeweging geteld.</p></body>"
+          description: "<body><p>Het aantal keren dat een alleenstaande of gezin naar het adres is verhuisd binnen de opgegeven periode</p></body>"
           minLength: 1
           example: 3
         uitVerhuizingen:
           type: integer
           title: "uitVerhuizingen"
-          description: "<body><p>Het aantal verhuisbewegingen naar een ander adres toe van\
-            \ gezinnen of alleenstaanden. Als meerdere bewoners op dezelfde datum worden uitgeschreven wordt dat als 1 verhuisbeweging geteld.</p></body>"
+          description: "<body><p>Het aantal keer dat een alleenstaande of gezin van het adres naar een ander adres is verhuisd binnen de opgegeven periode</p></body>"
           example: 14
     OpschortingBijhouding:
       type: "object"
