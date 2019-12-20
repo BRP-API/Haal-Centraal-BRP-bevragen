@@ -687,8 +687,7 @@ components:
       - "fout"
     SoortAdres_enum:
       type: "string"
-      description: "<body><p>Aanduiding van het soort adres.</p></body>:\n* `woonadres`\
-        \ - W\n* `briefadres` - B"
+      description: "Aanduiding van het soort adres. \n* `woonadres` - W\n* `briefadres` - B  \n Het briefadres is de verblijfplaats van een andere persoon of een instelling (De briefadresgever)"
       enum:
       - "woonadres"
       - "briefadres"
