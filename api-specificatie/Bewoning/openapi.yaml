@@ -221,7 +221,6 @@ paths:
       parameters:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/api-version"
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/fields"
-        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/peildatum"
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/datumvan"
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/datumtotenmet"
         - in: path
@@ -597,7 +596,7 @@ components:
         bewoningsduur:
           type: integer
           title: "bewoningsduur"
-          description: "<body><p>De gemiddelde duur van de bewoning van het adres in maanden in     een bepaalde periode.</p></body>"
+          description: "<body><p>De gemiddelde duur van de bewoning van het adres in maanden binnen de opgegeven periode.</p></body>"
           minLength: 1
           example: 7
         inVerhuizingen:
