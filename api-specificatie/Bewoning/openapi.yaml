@@ -648,8 +648,6 @@ components:
     HoofdBewoner_links:
       type: "object"
       properties:
-        self:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalLink"
         ingeschrevenPersoon:
           title: "is"
           type: "array"
