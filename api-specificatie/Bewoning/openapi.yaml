@@ -19,7 +19,7 @@ paths:
   /haalcentraal/bewoningen:
     get:
       operationId: getBewoningen
-      description: "<body><p><body> <p>Het raadplegen van een Bewoning. <br> Een bewoning is een verblijfplaats waar minimaal 1 persoon is ingeschreven. Op basis van de identificatiecodenummeraanduiding retourneert Bewoning de personen die op de verblijfplaats zijn ingeschreven.</p> <p><br />Op basis van de parameters wordt een of meerdere bewoningen geretourneerd inclusief gegevens over de bewoners van het betreffende verblijfobject. Ten minste &eacute;&eacute;n van de volgende combinaties van parameters moet zijn opgenomen.</p> <p><br /></p><ol><li>Identificatiecodenummeraanduiding <br /></li><li>Verblijfsobjectidentificatie <br /></li><li>Postcode<br /> - postcode<br /> - huisnummer</p> <p></li><li>NaamOpenbareRuimte<br /> - naamOpenbareRuimte<br /> - gemeentevaninschrijving<br /> - huisnummer</p> <p></li><li>Nummeraanduiding<br /> - nummeraanduiding</p> <li> Burgerservicenummer </li> <br>De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters.</p> <p>Overleden personen worden opgenomen in het zoekresultaat tot aan de datum van overlijden.</p> <p>Het resultaat bevat de adressen en bewoners van een verblijfplaats waarvan de EINDdatum geldigheidverblijfplaats op of na de <i>datumvan</i> ligt EN de BEGINdatum op of voor de <i>datumtotenmet</i> ligt.</p> <p>Of</p> <p>Het resultaat bevat de het adres en de bewoners van de verblijfplaats waarbij de BEGINdatumgeldigheidverblijfplaats voor op op de <i>peildatum</i> ligt en de EINDdatumgeldigheidverblijfplaats na of op de <i>peildatum</i> ligt.</p> <p> Als <i>peildatum</i> is ingevuld mogen <i>datumVan</i> en <i>datumtotenmet</i> nietingevuld zijn.</p> <p> Als zowel peildatum, datumVan en datumtotenmet niet ingevuld zijn wordt impliciet de datum van vandaag gebruikt als peildatum. </p> <p>Er wordt niet op de gevonden adressen gesorteerd, maar per adres (bewoning) worden de bewoners wel gesorteerd op datumvan.</p></li></ol></body>"
+      description: "<body><p><body> <p>Het raadplegen van een Bewoning. <br> Een bewoning is een verblijfplaats waar minimaal 1 persoon is ingeschreven. Op basis van de identificatiecodenummeraanduiding retourneert Bewoning de personen die op de verblijfplaats zijn ingeschreven.</p> <p><br />Op basis van de parameters wordt een of meerdere bewoningen geretourneerd inclusief gegevens over de bewoners van het betreffende verblijfobject. Ten minste &eacute;&eacute;n van de volgende combinaties van parameters moet zijn opgenomen.<br /></p><ol><li>Identificatiecodenummeraanduiding <br /></li><li>Verblijfsobjectidentificatie <br /></li><li>Postcode<br /> - postcode<br /> - huisnummer</p> <p></li><li>NaamOpenbareRuimte<br /> - naamOpenbareRuimte<br /> - gemeentevaninschrijving<br /> - huisnummer</p> <p></li><li>Nummeraanduiding<br /> - nummeraanduiding</p> <li> Burgerservicenummer </li> <br>De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters.</p> <p>Overleden personen worden opgenomen in het zoekresultaat tot aan de datum van overlijden voor zover deze datum overlijden binnen de opgevraagde periode valt. .</p> <p>Het resultaat bevat de adressen en bewoners van een verblijfplaats waarvan de EINDdatum geldigheidverblijfplaats op of na de <i>datumvan</i> ligt EN de BEGINdatum op of voor de <i>datumtotenmet</i> ligt.</p> <p>Of</p> <p>Het resultaat bevat de het adres en de bewoners van de verblijfplaats waarbij de BEGINdatumgeldigheidverblijfplaats voor op op de <i>peildatum</i> ligt en de EINDdatumgeldigheidverblijfplaats na of op de <i>peildatum</i> ligt.</p> <p> Als <i>peildatum</i> is ingevuld mogen <i>datumVan</i> en <i>datumtotenmet</i> nietingevuld zijn.</p> <p> Als zowel peildatum, datumVan en datumtotenmet niet ingevuld zijn wordt impliciet de datum van vandaag gebruikt als peildatum. </p> <p>Er wordt niet op de gevonden adressen gesorteerd, maar per adres (bewoning) worden de bewoners wel gesorteerd op datumvan.</p></li></ol></body>"
       parameters: 
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/api-version"
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/fields"
@@ -29,7 +29,7 @@ paths:
         - in: query
           name: burgerservicenummer
           required: false
-          description: "Met het burgerservicenummer als parameter wordt debewoning waar deze persoon op peildatum of in de gevraagde periode verblijft of verbleven is opgehaald met alle bijbehorende bewoners per bewoning. "
+          description: "Met het burgerservicenummer als parameter wordt de bewoning waar deze persoon op peildatum of in de gevraagde periode verblijft of verbleven is opgehaald met alle bijbehorende bewoners per bewoning. "
           schema:
             type: "string"
             
@@ -73,7 +73,7 @@ paths:
             maxLength: 16
         - in: query
           name: naamopenbareruimte
-          description: "Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming Zie verder de toelichting in de BAG. "
+          description: "Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming."
           required: false
           schema:
             type: string
@@ -284,7 +284,7 @@ paths:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/parameters/fields"
         - in: query
           name: identificatiecodenummeraanduiding
-          description: "De unieke aanduiding van een NUMMERAANDUIDING. zie toelichting BAG Combinatie van de viercijferige 'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding."
+          description: "De unieke aanduiding van een NUMMERAANDUIDING. "
           required: false
           schema:
             type: string
@@ -375,19 +375,14 @@ components:
         identificatiecodeNummeraanduiding:
           type: "string"
           title: "Identificatiecode nummeraanduiding"
-          description: "<body>De unieke aanduiding van een NUMMERAANDUIDING.</body>\
-            \ <body>Combinatie van de viercijferige 'gemeentecode'\
-            \ (volgens GBA tabel 33, Gemeententabel), de tweecijferige 'objecttypecode'\
-            \ en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig\
-            \ 'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde:20\
-            \ nummeraanduiding.</body>"
+          description: "De unieke aanduiding van een NUMMERAANDUIDING."
           maxLength: 16
           example: "0518200001645858"
         naamOpenbareRuimte:
           type: "string"
           title: "Naam openbare ruimte"
           description: "<body>Een door het bevoegde gemeentelijke orgaan aan een OPENBARE\
-            \ RUIMTE toegekende benaming</body><body>Tekens gecodeerd volgens de UTF-8 standaard</body>"
+            \ RUIMTE toegekende benaming</body>"
           maxLength: 80
           example: "Proteriusstraat"
         postcode:
@@ -401,11 +396,7 @@ components:
         identificatiecodeAdresseerbaarObject:
           type: "string"
           title: "Verblijfsobjectidentificatie"
-          description: "<body>De unieke identificatie van een VERBLIJFSOBJECT, LIGPLAATS of STANDPLAATS .</body><body>Combinatie\
-            \ van de viercijferige 'gemeentecode' (volgens GBA tabel 33, Gemeententabel),\
-            \ de tweecijferige 'objecttypecode' en een voor het betreffende objecttype\
-            \ binnen een gemeente uniek tiencijferig 'objectvolgnummer'. De objecttypecode\
-            \ kent in de BAG de volgende waarde: 01 verblijfsobject</body>"
+          description: "De unieke identificatie van een VERBLIJFSOBJECT."
           maxLength: 16
         woonplaatsnaam:
           type: "string"
@@ -518,10 +509,7 @@ components:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     Naam:
       type: "object"
-      description: "<body><p>Gegevens over de naam van de NATUURLIJK PERSOON</p><p>\n\
-        \ <em>*</em> adellijketitelPredikaat** : Tabel Adellijke titel/predikaat,\
-        \ die aangeeft welke titel of welk predikaat behoort tot de naam (bij adellijke\
-        \ titel geslachtsnaam, bij predikaat voornaam).</p></body>"
+      description: "Gegevens over de naam van de NATUURLIJK PERSOON"
       properties:
         geslachtsnaam:
           type: "string"
