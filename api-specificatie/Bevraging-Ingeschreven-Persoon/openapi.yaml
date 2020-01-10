@@ -1400,7 +1400,7 @@ components:
         _embedded:
           type: object
           properties:
-            Nationaliteithistorie:
+            nationaliteithistorie:
               type: array
               items:
                 $ref: '#/components/schemas/Nationaliteithistorie'
