@@ -97,11 +97,18 @@ paths:
           type: string
       - name: burgerservicenummer
         in: query
+        description: Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene
+          bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien
+          aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1)
+          + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers
+          aanwezig zijn.
         required: false
         style: form
         explode: true
         schema:
-          $ref: '#/components/schemas/Burgerservicenummer'
+          type: array
+          items:
+            $ref: '#/components/schemas/Burgerservicenummer'
       - name: geboorte__datum
         in: query
         description: Datum waarop de INGESCHREVEN NATUURLIJK PERSOON geboren is. Er
