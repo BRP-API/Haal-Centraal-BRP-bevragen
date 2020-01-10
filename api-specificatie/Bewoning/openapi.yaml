@@ -223,7 +223,7 @@ components:
         bewoners:
           type: "array"
           items:
-            $ref: "#/components/schemas/Bewoner"
+            $ref: "#/components/schemas/BewonerHal"
         huisletter:
           type: "string"
           title: "Huisletter"
@@ -288,8 +288,6 @@ components:
       - properties:
          _links:
            $ref: "#/components/schemas/Bewoning_links"
-         _embedded:
-           $ref: "#/components/schemas/Bewoning_embedded"
     BewoningHalCollectie:
       type: object
       properties:
@@ -334,11 +332,19 @@ components:
             \ van gegevens over deze persoon aan bepaalde derden niet toegestaan."
         indicatieverblijfsplaatsinonderzoek:
           type: "boolean"
-          title: "Indicatie verblijplaats in onderzoek"
+          title: "Indicatie verblijfplaats in onderzoek"
           description: "Een aanduiding die aangeeft dat gegevens van de verblijfplaats\
             \ van deze bewoner in onderzoek zijn. Indien true: verblijfplaats is in onderzoek."
         functieadres:
           $ref: "#/components/schemas/SoortAdres_enum"
+    BewonerHal:
+      allOf:
+      - $ref: "#/components/schemas/Bewoner"
+      - properties:
+         _links:
+           $ref: "#/components/schemas/Bewoner_links"
+         _embedded:
+           $ref: "#/components/schemas/Bewoner_embedded"
     Verloop:
       type: "object"
       description: ""
@@ -377,13 +383,12 @@ components:
             type: "object"
             description: ""
           - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalLink"
+    Bewoner_links:
+      type: "object"
+      properties:
         ingeschrevenPersoon:
-          title: "bewoondDoor"
-          type: "array"
-          description: ""
-          items:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalLink"
-    Bewoning_embedded:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/HalLink"
+    Bewoner_embedded:
       type: "object"
       properties:
         ingeschrevenPersoon:
@@ -392,6 +397,7 @@ components:
           description: ""
           items:
             $ref: "#/components/schemas/IngeschrevenPersoonHal"
+
     AanduidingBijHuisnummer_enum:
       type: "string"
       description: "De aanduiding die wordt gebruikt voor adressen die niet zijn voorzien\
