@@ -5489,7 +5489,7 @@ components:
     NationaliteithistorieHalCollectie__embedded:
       type: object
       properties:
-        Nationaliteithistorie:
+        nationaliteithistorie:
           type: array
           items:
             $ref: '#/components/schemas/Nationaliteithistorie'
