@@ -951,6 +951,8 @@ components:
           $ref: "#/components/schemas/Kiesrecht"
         naam:
           $ref: "#/components/schemas/NaamPersoon"
+        aanduidingnaamgebruik:
+          $ref: "#/components/schemas/Naamgebruik_enum"
         inOnderzoek:
           $ref: "#/components/schemas/PersoonInOnderzoek"
         nationaliteit:
@@ -2105,6 +2107,14 @@ components:
       - "ouder1_en_derde"
       - "ouder2_en_derde"
       - "ouder1_en_ouder2"
+    Naamgebruik_enum:
+      type: "string"
+      description: "De voorgedefinieerde waarden van naamgebruik volgens de centrale voorzieningen.\n* `eigen` - E\n* `eigen_partner` - N\n* `partner` - P\n* `partner_eigen` - V"
+      enum:
+      - "eigen"
+      - "eigen_partner"
+      - "partner"
+      - "partner_eigen"
     OuderAanduiding_enum:
       type: "string"
       description: "Aanduiding om welke ouder het gaat volgens de GBA:\n* `ouder1`\
