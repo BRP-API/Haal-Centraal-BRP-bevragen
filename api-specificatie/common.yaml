@@ -6,9 +6,9 @@ components:
   headers:
     api_version:
       schema:
-        type: integer
-        description: Geeft een specifieke major API-versie aan in de context van een specifieke aanroep.
-        example: 1
+        type: string
+        description: Geeft een specifieke API-versie aan in de context van een specifieke aanroep.
+        example: 1.0.0
     warning:
       schema:
         type: string
