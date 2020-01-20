@@ -274,7 +274,4 @@ Binnen de NEN standaard is er een keuze-mogelijkheid (datum en datumtijd) voor h
 Binnen de historie-endpoints wordt alleen de actuele situatie met betrekking tot "in Onderzoek" getoond. Er wordt geen historie getoond van de onderzoeken die in het verleden hebben plaatsgevonden.  
 
 ## Toepassen van HAL-Links
-Er zijn grofweg twee categoriën Hal-links waar we gebruik van maken. Links naar resources binnen het eigen domein en links naar resources die in een ander domein beheerd worden. Discoverability maakt het wenselijk om voor beide categorieën de Hal-link op te nemen naar de gerelateerde resource, maar uit reacties tijdens een APILab blijkt dat er ook developers zijn die niet willen vertrouwen op de aangeleverde Hallinks. Om deze developers de gelegendheid te geven zelf de API-call op te bouwen wordt de identificatie van de gerelateerde resource ook opgenomen. 
-
-*Ratio*
-Zolang we niets doen met de abstracte types (subject, persoon, natuurlijk persoon), heeft het geen zin dit mee te nemen in de component schema's.
+Er zijn grofweg twee categoriën Hal-links waar we gebruik van maken. Links naar resources binnen het eigen domein en links naar resources die in een ander domein beheerd worden. Om discoverability te bereiken, worden voor beide categorieën de Hal-link opgenomen naar de gerelateerde resource. Voor developers die geen HAL links willen gebruiken wordt tevens de identificatie van de gerelateerde resource opgenomen.
