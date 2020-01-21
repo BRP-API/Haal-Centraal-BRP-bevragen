@@ -17,7 +17,7 @@ Voor het zoeken van personen zijn de volgende functionaliteiten beschreven:
 Voor het samenstellen van het antwoord op een zoekvraag of het raadplegen van een persoon zijn de volgende functionaliteiten beschreven:
 - Samenstellen van de [aanschrijfwijze](./aanschrijfwijze.feature) (Juist gebruik en volgorde van voorletters, geslachtsnamen en adelijke titelatuur)
 - Samenstellen van de [brief-aanhef](./aanhef.feature).
-- Samenstellen van de [naam in lopende tekst](./gebruik_in_lopende_tekst.feature) 
+- Samenstellen van de [naam in lopende tekst](./gebruik_in_lopende_tekst.feature)
 - Samenstellen van de [voorletters](./voorletters.feature).
 - Weergeven van de geslachtsaanduiding van de partne i.g.v. een [geslachtswijziging](./geslachtswijziging.feature)
 - Samenstellen en interpreteren van gegevens die [in onderzoek](./in_onderzoek.feature) zijn
@@ -32,8 +32,6 @@ Voor het samenstellen van het antwoord op een zoekvraag of het raadplegen van ee
 - gegevens over de [woonplaats](./woonplaats.feature)
 
 Voor het ophalen van historie is de volgende functionaliteit beschreven:
-- Bepalen van het moment of de periode waarover historie wordt gevraagd *TODO*
-- Bepalen van de [volgorde](./historie_sorteren.feature) van historische zoekresultaten. 
 - Weergeven van de [Verblijfstitelhistorie](./verblijfstitelhistorie.feature).
 - Weergeven van de [Verblijfplaatshistorie](./verblijfplaatshistorie.feature)
 - weergeven van de [Partnerhistorie](./partnerhistorie.feature)
@@ -44,12 +42,9 @@ Voor ophalen van historie en het samenstellen van het antwoord daarop geldt ook:
 - [Mogelijk onvolledige datums](./onvolledige_datum.feature)
 - Gebruik [fields](./fields.feature) om een deel van de attributen in het antwoord te krijgen
 
-Voor het ophalen van de historie van bewoningen kan bovendien [expand](./expand.feature) gebruikt worden om gegevens van de bewoners in het antwoord mee te laden.
+Voor het ophalen van de historie van bewoningen kan bovendien [expand](./expand.feature) gebruikt worden om gegevens van de bewoners (ingeschreven personen) in het antwoord mee te laden.
 
-Voor het samenstellen van het antwoord op historie-collectie is de volgende functionaliteit beschreven:
-- [Sorting](./historie_sorteren.feature) van historische voorkomens *TODO*
-
- Voor het manipuleren van de omvang van het antwoord zijn de volgende functionaliteiten beschreven:
+Voor het manipuleren van de omvang van het antwoord zijn de volgende functionaliteiten beschreven:
  - Gebruik [fields](./fields.feature) om een deel van de attributen in het antwoord te krijgen
  - Gebruik [expand](./expand.feature) om een sub-resource (partners, ouders, kinderen) in het antwoord mee te laden
 
