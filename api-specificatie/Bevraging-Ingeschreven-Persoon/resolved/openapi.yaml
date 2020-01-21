@@ -5335,12 +5335,6 @@ components:
       allOf:
       - $ref: '#/components/schemas/Verblijfstitel'
       - properties:
-          indicatieVerblijfstitelBeeindigd:
-            type: boolean
-            description: |-
-              Indicatie of de verblijfstitel is beeindigd. (Als de beeindigingsdatum onbekend is, maar de verblijfstitel is wel beeindigd )
-              * `True` - Verblijfstitel is beeindigd.
-              * `False` - Verblijfstitel is niet beeindigd.
           geheimhoudingPersoonsgegevens:
             title: Indicatie geheim
             type: boolean
