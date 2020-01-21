@@ -275,3 +275,6 @@ Binnen de historie-endpoints wordt alleen de actuele situatie met betrekking tot
 
 ## Toepassen van HAL-Links
 Er zijn grofweg twee categoriën Hal-links waar we gebruik van maken. Links naar resources binnen het eigen domein en links naar resources die in een ander domein beheerd worden. Om discoverability te bereiken, worden voor beide categorieën de Hal-link opgenomen naar de gerelateerde resource. Voor developers die geen HAL links willen gebruiken wordt tevens de identificatie van de gerelateerde resource opgenomen.
+
+## Gebruik van Booleans als indicatoren
+In diverse situaties worden booleans opgenomen als er sprake is van indicatoren. Deze booleans worden alleen geretourneerd als de waarde van de boolean ook informatief is. De indicator wordt dus alleen opgenomen als de waarde vand de Boolean "true" is. 
