@@ -1323,22 +1323,18 @@ components:
               type: "string"
               title: "aanhef"
               description: "De aanhef zoals die in een brief, gericht aan een persoon\
-                \ gebruikt kan worden. Hoe het samenstellen van een aanhef te werk gaat\
-                \ is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanhef.feature)"
+                \ gebruikt kan worden."
               example: "Geachte heer In het Veld "
             aanschrijfwijze:
               type: "string"
               title: "aanschrijfwijze"
               description: "Samengestelde naam zoals die in communicatie met de persoon\
-                \ gebruikt kan worden. Hoe het samenstellen van een aanschrijfwijze te\
-                \ werk gaat is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanschrijfwijze.feature)"
+                \ gebruikt kan worden."
               example: "H. in het Veld"
             gebruikInLopendeTekst:
               type: "string"
               title: "gebruikInLopendeTekst"
-              description: "De naam zoals die in lopende tekst gebruikt kan worden. Hoe het samenstellen\
-                \ van een naam in de lopendetekst te werk gaat is beschreven in de [functionele\
-                \ specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/gebruik_in_lopende_tekst.feature)"
+              description: "De naam zoals die in lopende tekst gebruikt kan worden."
               example: "de heer In het Veld"
     PersoonInOnderzoek:
       type: "object"
