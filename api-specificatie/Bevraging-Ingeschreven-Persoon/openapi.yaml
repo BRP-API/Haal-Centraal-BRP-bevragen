@@ -1423,10 +1423,21 @@ components:
           \ geldig zijn geworden.</p><p> <em>*</em> aanduiding** : Nationaliteittabel,\
           \ die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt.</p> </body>"
         properties:
+          geheimhoudingPersoonsgegevens:
+            type: "boolean"
+            title: "Indicatie geheim"
+            description: "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt\
+              \ mogen worden. Indien true: op verzoek van deze persoon is het verstrekken\
+              \ van gegevens over deze persoon aan bepaalde derden niet toegestaan."
           datumEindeGeldigheid:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
           redenBeeindigen:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+          indicatieNationaliteitBeeindigd:
+            type: "boolean"
+            title: "indicatieNationaliteitBeeindigd"
+            description: "Een aanduiding dat de nationaliteit beeindigd is."
+            example: "true"
     OpschortingBijhouding:
       type: "object"
       description: "\n* **reden**: Een aanduiding van de reden waarom de bijhouding\
