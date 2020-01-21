@@ -47,7 +47,14 @@ Functionaliteit: Tonen van Nationaliteithistorie
     | 2      | 54        | 0331  |       |       | 00000000 |
     | 3      | 04        |       | V     |       | 20000114 |
 
-
+  En de ingeschreven persoon met burgerservicenummer 999995555 kent de volgende nationaliteiten:
+    | Stapel | Categorie | 05.10 | 63.10 | 64.10 | 85.10    |
+    | 1      | 04        | 0001  | 018   |       | 20180731 |
+    | 1      | 04        | 0001  | 057   |       | 20160803 |
+    | 2      | 54        |       |       | 403   | 20170526 |
+    | 2      | 54        |       |       | 402   | 20170210 |
+    | 2      | 54        | 0449  | 301   |       | 19931014 |
+    | 2      | 54        | 0268  | 301   |       | 19930419 |
 
   Scenario: actuele en beëindigde nationaliteiten in de juiste volgorde
     Als de nationaliteithistorie met burgerservicenummer 999991292 wordt geraadpleegd
@@ -77,3 +84,11 @@ Functionaliteit: Tonen van Nationaliteithistorie
       | 0 | -                  | vastgesteld_niet_nederlander        | 2000-01-14            | -                    | -                               | -                    |
       | 1 | 0334               | -                                   | -                     | -                    | -                               | -                    |
       | 2 | 0331               | -                                   | -                     | 2000-01-14           | true                            | 404                  |
+
+  Scenario: gebruik gewijzigde nationaliteitsgegevens
+    Als de nationaliteithistorie met burgerservicenummer 9999955555 wordt geraadpleegd
+    Dan bevat het antwoord 2 voorkomens
+    En worden de nationaliteiten teruggegeven in de volgorde en met waarden:
+      | # | nationaliteit.code | datumIngangGeldigheid | datumEindeGeldigheid | redenOpname.code | redenBeeindigen.code |
+      | 0 | 0001               | 2016-08-03            | -                    | 018              | -                    |
+      | 1 | 0449               | 1993-04-19            | 2017-02-10           | 301              | 403                  |
