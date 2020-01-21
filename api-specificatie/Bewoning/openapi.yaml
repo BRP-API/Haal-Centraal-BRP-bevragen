@@ -54,7 +54,7 @@ paths:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/headers/warning"
             X-Rate-Limit-Limit:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/headers/X_Rate_Limit_Limit"
-            X-Rate-Limit-Remaining:
+            X-Rate-Limit-Remaining:INGESCHRE
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/headers/X_Rate_Limit_Remaining"
             X-Rate-Limit-Reset:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/headers/X_Rate_Limit_Reset"
@@ -381,7 +381,7 @@ components:
     Bewoner_embedded:
       type: object
       properties:
-        ingeschrevenpersonen:
+        ingeschrevenPersoon:
           $ref: "#/components/schemas/IngeschrevenPersoonHal"
     AanduidingBijHuisnummer_enum:
       type: "string"
