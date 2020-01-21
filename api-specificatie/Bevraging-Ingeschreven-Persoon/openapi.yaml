@@ -951,8 +951,6 @@ components:
           $ref: "#/components/schemas/Kiesrecht"
         naam:
           $ref: "#/components/schemas/NaamPersoon"
-        aanduidingnaamgebruik:
-          $ref: "#/components/schemas/Naamgebruik_enum"
         inOnderzoek:
           $ref: "#/components/schemas/PersoonInOnderzoek"
         nationaliteit:
@@ -1336,6 +1334,8 @@ components:
               title: "gebruikInLopendeTekst"
               description: "De naam zoals die in lopende tekst gebruikt kan worden."
               example: "de heer In het Veld"
+            aanduidingnaamgebruik:
+              $ref: "#/components/schemas/Naamgebruik_enum"
     PersoonInOnderzoek:
       type: "object"
       description: "Een groep van booleans om aan te geven welke gegevens van de ingeschreven\
