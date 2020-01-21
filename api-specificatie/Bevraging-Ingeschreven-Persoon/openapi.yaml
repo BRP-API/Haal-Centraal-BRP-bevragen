@@ -2305,10 +2305,6 @@ components:
           \ geldig zijn geworden.</p><p> <em>*</em> aanduiding** : Verblijfstiteltabel,\
           \ die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt.</p> </body>"
         properties:
-          indicatieVerblijfstitelBeeindigd:
-            type: "boolean"
-            description: "Indicatie of de verblijfstitel is beeindigd. (Als de beeindigingsdatum onbekend is, maar de verblijfstitel is wel beeindigd )\
-            \n* `True` - Verblijfstitel is beeindigd.\n* `False` - Verblijfstitel is niet beeindigd."
           geheimhoudingPersoonsgegevens:
             type: "boolean"
             title: "Indicatie geheim"
