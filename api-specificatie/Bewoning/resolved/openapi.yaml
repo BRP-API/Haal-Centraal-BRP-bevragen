@@ -1183,7 +1183,7 @@ components:
       - $ref: '#/components/schemas/Foutbericht'
       - type: object
         properties:
-          invalid-params:
+          invalidParams:
             type: array
             description: Foutmelding per fout in een parameter. Alle gevonden fouten
               worden één keer teruggemeld.
@@ -1247,12 +1247,9 @@ components:
       properties:
         href:
           $ref: '#/components/schemas/Href'
-        type:
+        title:
           type: string
-          description: 'Met dit element wordt aangegeven in welk domein de resource
-            te vinden is waarnaar deze link verwijst. Voorbeelden daarvan zijn *BAG*,
-            *BRP*, *BRK*, *HR*. '
-          example: BAG
+          description: Voor mens leesbaar label bij de link
       description: De Link Object zoals gespecificeerd in https://tools.ietf.org/html/draft-kelly-json-hal-08#section-5
     Href:
       type: string
@@ -1314,11 +1311,13 @@ components:
           description: Leeftijd in jaren op het moment van bevraging
           example: 34
         datumEersteInschrijvingGBA:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/Datum_onvolledig_2'
         kiesrecht:
           $ref: '#/components/schemas/Kiesrecht'
         naam:
           $ref: '#/components/schemas/NaamPersoon'
+        aanduidingnaamgebruik:
+          $ref: '#/components/schemas/Naamgebruik_enum'
         inOnderzoek:
           $ref: '#/components/schemas/PersoonInOnderzoek'
         nationaliteit:
@@ -1362,6 +1361,42 @@ components:
       - man
       - vrouw
       - onbekend
+    Datum_onvolledig_2:
+      type: object
+      properties:
+        dag:
+          title: dag
+          maximum: 31
+          minimum: 1
+          type: integer
+          description: De dag. Als de dag van de datum bekend is wordt deze hier ingevuld.
+            Ook als de volledige datum bekend is.
+          example: 3
+        datum:
+          title: datum
+          type: string
+          description: De volledige datum die in de `date` definitie past. Dit element
+            wordt alleen gevuld als de volledige datum bekend is.
+          format: date
+          example: 1989-05-03
+        jaar:
+          title: jaar
+          maximum: 9999
+          type: integer
+          description: Het jaar van de datum. Als het jaar bekend is wordt dit element
+            gevuld, ook als de volledige datum bekend is.
+          example: 1989
+        maand:
+          title: maand
+          maximum: 12
+          minimum: 1
+          type: integer
+          description: De maand. Als de maand van een datum bekend is wordt deze hier
+            ingevuld. Ook als de volledige datum is ingevuld.
+          example: 5
+      description: Gegevens over de datums die mogelijk niet volledig zijn, maar waarvan
+        de bekende gedeeltes wel moeten kunnen worden uitgewisseld. Als de volledige
+        datum bekend is worden alle elementen gevuld.
     Kiesrecht:
       type: object
       properties:
@@ -1380,9 +1415,9 @@ components:
             * true: persoon is uitgesloten
           example: true
         einddatumUitsluitingEuropeesKiesrecht:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/Datum_onvolledig_2'
         einddatumUitsluitingKiesrecht:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/Datum_onvolledig_2'
       description: "Gegevens over het kiesrecht van de ingeschreven persoon. \n* **datumUitsluitingEuropeesKiesrecht**:\
         \ De datum waarop een uitsluiting voor deelname aan verkiezingen voor het\
         \ Europees parlement niet meer van toepassing is, als er sprake is van uitsluiting\
@@ -1470,9 +1505,22 @@ components:
           description: Indicator die aangeeft of het corresponderende gegeven voor
             deze persoon in onderzoek is.
         datumIngangOnderzoek:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/Datum_onvolledig_2'
       description: In onderzoekgroep om aan te geven of gegevens over de naam van
         de Ingeschreven persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)
+    Naamgebruik_enum:
+      type: string
+      description: |-
+        De voorgedefinieerde waarden van naamgebruik volgens de centrale voorzieningen.
+        * `eigen` - E
+        * `eigen_partner` - N
+        * `partner` - P
+        * `partner_eigen` - V
+      enum:
+      - eigen
+      - eigen_partner
+      - partner
+      - partner_eigen
     PersoonInOnderzoek:
       type: object
       properties:
@@ -1487,7 +1535,7 @@ components:
           description: Indicator die aangeeft of het corresponderende gegeven voor
             deze persoon in onderzoek is.
         datumIngangOnderzoek:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/Datum_onvolledig_2'
       description: Een groep van booleans om aan te geven welke gegevens van de ingeschreven
         persoon in onderzoek zijn. Er kunnen ook categorieën in onderzoek zijn. Als
         een hele categorie in onderzoek is worden alle rubrieken binnen die categorie
@@ -1499,7 +1547,7 @@ components:
         aanduidingBijzonderNederlanderschap:
           $ref: '#/components/schemas/AanduidingBijzonderNederlanderschap_enum'
         datumIngangGeldigheid:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/Datum_onvolledig_2'
         nationaliteit:
           $ref: '#/components/schemas/Waardetabel'
         redenOpname:
@@ -1549,7 +1597,7 @@ components:
           description: Indicator die aangeeft of het corresponderende gegeven voor
             deze persoon in onderzoek is.
         datumIngangOnderzoek:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/Datum_onvolledig_2'
       description: Een groep van booleans om aan te geven welke gegevens van de nationaliteit
         in onderzoek zijn. Als een de categorie in onderzoek is worden alle rubrieken
         binnen die categorie op _true_ gezet. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)
@@ -1573,7 +1621,7 @@ components:
       type: object
       properties:
         datum:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/Datum_onvolledig_2'
       description: |-
         <body><p>Gegevens over de geboorte van respectievelijk de persoon, de ouder, de echtgenoot/geregistreerd partner, de eerdere echtgenoot/geregistreerd partner of het kind.</p><p>
          <em>*</em> datum** : Datum waarop de persoon is geboren.</p><p>
@@ -1598,7 +1646,7 @@ components:
           description: Indicator die aangeeft of het corresponderende gegeven voor
             deze persoon in onderzoek is.
         datumIngangOnderzoek:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/Datum_onvolledig_2'
       description: Indicators over het in onderzoek zijn van gegevens over de geboorte
         van de INGESCHREVEN NATUURLIJK PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)
     OpschortingBijhouding:
@@ -1607,7 +1655,7 @@ components:
         reden:
           $ref: '#/components/schemas/RedenOpschortingBijhouding_enum'
         datum:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/Datum_onvolledig_2'
       description: "\n* **reden**: Een aanduiding van de reden waarom de bijhouding\
         \ van de PL is opgeschort. \n* **datum**: De datum waarop de bijhouding van\
         \ de persoonslijst is gestaakt. \n* Indien er wel een redenOpschortingBijhouding\
@@ -1639,7 +1687,7 @@ components:
             waarde true is (dus als iemand overleden is). Als de waarde false is wordt
             de indicator niet meegeleverd.
         datum:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/Datum_onvolledig_2'
         land:
           $ref: '#/components/schemas/Waardetabel'
         plaats:
@@ -1670,7 +1718,7 @@ components:
           description: Indicator die aangeeft of het corresponderende gegeven voor
             deze persoon in onderzoek is.
         datumIngangOnderzoek:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/Datum_onvolledig_2'
       description: In onderzoek indicators voor gegevens over het overlijden van de
         ingeschreven natuurlijk persoon. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)
     Verblijfplaats:
@@ -1722,13 +1770,13 @@ components:
               uit een situatie van vertrokken onbekend waarheen
             example: false
           datumAanvangAdreshouding:
-            $ref: '#/components/schemas/Datum_onvolledig'
+            $ref: '#/components/schemas/Datum_onvolledig_2'
           datumIngangGeldigheid:
-            $ref: '#/components/schemas/Datum_onvolledig'
+            $ref: '#/components/schemas/Datum_onvolledig_2'
           datumInschrijvingInGemeente:
-            $ref: '#/components/schemas/Datum_onvolledig'
+            $ref: '#/components/schemas/Datum_onvolledig_2'
           datumVestigingInNederland:
-            $ref: '#/components/schemas/Datum_onvolledig'
+            $ref: '#/components/schemas/Datum_onvolledig_2'
           gemeenteVanInschrijving:
             $ref: '#/components/schemas/Waardetabel'
           landVanwaarIngeschreven:
@@ -1973,7 +2021,7 @@ components:
           description: Indicator die aangeeft of het corresponderende gegeven voor
             deze persoon in onderzoek is.
         datumIngangOnderzoek:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/Datum_onvolledig_2'
       description: Indicators om aan te geven dat de gegevens over het verblijf en
         adres van de INGESCHREVEN NATUURLIJK PERSOON in onderzoek zijn. Elementen
         van het GBA-adres zelf (Dat zou eigenlijk een BAG-adres moeten zijn) kunnen
@@ -2024,7 +2072,7 @@ components:
           description: Indicator die aangeeft of het corresponderende gegeven voor
             deze persoon in onderzoek is.
         datumIngangOnderzoek:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/Datum_onvolledig_2'
       description: Een groep van booleans om aan te geven welke gegevens van de gezagsverhouding
         in onderzoek zijn. Als een de categorie in onderzoek is worden alle rubrieken
         binnen die categorie op _true_ gezet. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)
@@ -2034,9 +2082,9 @@ components:
         aanduiding:
           $ref: '#/components/schemas/Waardetabel'
         datumEinde:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/Datum_onvolledig_2'
         datumIngang:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/Datum_onvolledig_2'
         inOnderzoek:
           $ref: '#/components/schemas/VerblijfstitelInOnderzoek'
       description: "Gegevens over de verblijfsrechtelijke status van de ingeschrevene.\
@@ -2063,13 +2111,13 @@ components:
           description: Indicator die aangeeft of het corresponderende gegeven voor
             deze verblijfstitel in onderzoek is.
         datumIngangOnderzoek:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/Datum_onvolledig_2'
       description: In onderzoek indicators over de gegevens over de verblijfstitel.
     IngeschrevenPersoon_links:
       type: object
       properties:
         self:
-          $ref: '#/components/schemas/HalLink'
+          $ref: '#/components/schemas/HalLink_2'
         ouders:
           title: heeftAlsOuder
           maxItems: 4
@@ -2077,7 +2125,7 @@ components:
           description: De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE
             verwijst`
           items:
-            $ref: '#/components/schemas/HalLink'
+            $ref: '#/components/schemas/HalLink_2'
         reisdocumenten:
           title: isHouderVan
           type: array
@@ -2085,16 +2133,16 @@ components:
             de inverse relatie van heeftAlsHouder. Reisdocumenten die aan een ingezetene
             zijn verstrekt.
           items:
-            $ref: '#/components/schemas/HalLink'
+            $ref: '#/components/schemas/HalLink_2'
         kinderen:
           title: heeftAlsKind
           type: array
           description: De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE
             verwijst
           items:
-            $ref: '#/components/schemas/HalLink'
+            $ref: '#/components/schemas/HalLink_2'
         partnerhistorie:
-          $ref: '#/components/schemas/HalLink'
+          $ref: '#/components/schemas/HalLink_2'
         partners:
           title: heeftAlsPartner
           type: array
@@ -2102,13 +2150,28 @@ components:
             en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd
             partnerschap wordt niet teruggegeven.
           items:
-            $ref: '#/components/schemas/HalLink'
+            $ref: '#/components/schemas/HalLink_2'
         verblijfplaatshistorie:
-          $ref: '#/components/schemas/HalLink'
+          $ref: '#/components/schemas/HalLink_2'
         verblijfstitelhistorie:
-          $ref: '#/components/schemas/HalLink'
+          $ref: '#/components/schemas/HalLink_2'
         verblijfplaatsNummeraanduiding:
-          $ref: '#/components/schemas/HalLink'
+          $ref: '#/components/schemas/HalLink_2'
+    HalLink_2:
+      required:
+      - href
+      type: object
+      properties:
+        href:
+          $ref: '#/components/schemas/Href_2'
+        title:
+          type: string
+          description: Voor mens leesbaar label bij de link
+      description: De Link Object zoals gespecificeerd in https://tools.ietf.org/html/draft-kelly-json-hal-08#section-5
+    Href_2:
+      type: string
+      format: uri
+      example: datapunt.voorbeeldgemeente.nl/api/resourcename/123456789
     BewoningHalCollectie__embedded:
       type: object
       properties:
@@ -2119,10 +2182,10 @@ components:
   headers:
     api_version:
       schema:
-        type: integer
-        description: Geeft een specifieke major API-versie aan in de context van een
-          specifieke aanroep.
-        example: 1
+        type: string
+        description: Geeft een specifieke API-versie aan in de context van een specifieke
+          aanroep.
+        example: 1.0.0
     warning:
       schema:
         type: string

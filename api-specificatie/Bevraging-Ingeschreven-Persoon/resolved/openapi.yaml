@@ -4362,23 +4362,21 @@ components:
             title: aanhef
             type: string
             description: De aanhef zoals die in een brief, gericht aan een persoon
-              gebruikt kan worden. Hoe het samenstellen van een aanhef te werk gaat
-              is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanhef.feature)
+              gebruikt kan worden.
             example: 'Geachte heer In het Veld '
           aanschrijfwijze:
             title: aanschrijfwijze
             type: string
             description: Samengestelde naam zoals die in communicatie met de persoon
-              gebruikt kan worden. Hoe het samenstellen van een aanschrijfwijze te
-              werk gaat is beschreven in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/aanschrijfwijze.feature)
+              gebruikt kan worden.
             example: H. in het Veld
           gebruikInLopendeTekst:
             title: gebruikInLopendeTekst
             type: string
-            description: De naam zoals die in lopende tekst gebruikt kan worden. Hoe
-              het samenstellen van een naam in de lopendetekst te werk gaat is beschreven
-              in de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/gebruik_in_lopende_tekst.feature)
+            description: De naam zoals die in lopende tekst gebruikt kan worden.
             example: de heer In het Veld
+          aanduidingnaamgebruik:
+            $ref: '#/components/schemas/Naamgebruik_enum'
         description: Gegevens over de naam van de persoon
     PersoonInOnderzoek:
       type: object
@@ -4452,10 +4450,21 @@ components:
       allOf:
       - $ref: '#/components/schemas/Nationaliteit'
       - properties:
+          geheimhoudingPersoonsgegevens:
+            title: Indicatie geheim
+            type: boolean
+            description: 'Een aanduiding die aangeeft dat gegevens wel of niet verstrekt
+              mogen worden. Indien true: op verzoek van deze persoon is het verstrekken
+              van gegevens over deze persoon aan bepaalde derden niet toegestaan.'
           datumEindeGeldigheid:
             $ref: '#/components/schemas/Datum_onvolledig'
           redenBeeindigen:
             $ref: '#/components/schemas/Waardetabel'
+          indicatieNationaliteitBeeindigd:
+            title: indicatieNationaliteitBeeindigd
+            type: boolean
+            description: Een aanduiding dat de nationaliteit beeindigd is.
+            example: true
         description: |-
           <body><p>Gegevens over de verblijfsrechtelijke status van de ingeschrevene.</p><p>
            <em>*</em> datumEinde**: Datum waarop de geldigheid van de gegevens over de Nationaliteit is beeindigd.</p><p>
@@ -5149,6 +5158,19 @@ components:
       - ouder1_en_derde
       - ouder2_en_derde
       - ouder1_en_ouder2
+    Naamgebruik_enum:
+      type: string
+      description: |-
+        De voorgedefinieerde waarden van naamgebruik volgens de centrale voorzieningen.
+        * `eigen` - E
+        * `eigen_partner` - N
+        * `partner` - P
+        * `partner_eigen` - V
+      enum:
+      - eigen
+      - eigen_partner
+      - partner
+      - partner_eigen
     OuderAanduiding_enum:
       type: string
       description: |-
@@ -5313,12 +5335,6 @@ components:
       allOf:
       - $ref: '#/components/schemas/Verblijfstitel'
       - properties:
-          indicatieVerblijfstitelBeeindigd:
-            type: boolean
-            description: |-
-              Indicatie of de verblijfstitel is beeindigd. (Als de beeindigingsdatum onbekend is, maar de verblijfstitel is wel beeindigd )
-              * `True` - Verblijfstitel is beeindigd.
-              * `False` - Verblijfstitel is niet beeindigd.
           geheimhoudingPersoonsgegevens:
             title: Indicatie geheim
             type: boolean
@@ -5344,7 +5360,7 @@ components:
       - $ref: '#/components/schemas/Foutbericht'
       - type: object
         properties:
-          invalid-params:
+          invalidParams:
             type: array
             description: Foutmelding per fout in een parameter. Alle gevonden fouten
               worden één keer teruggemeld.
@@ -5444,12 +5460,9 @@ components:
       properties:
         href:
           $ref: '#/components/schemas/Href'
-        type:
+        title:
           type: string
-          description: 'Met dit element wordt aangegeven in welk domein de resource
-            te vinden is waarnaar deze link verwijst. Voorbeelden daarvan zijn *BAG*,
-            *BRP*, *BRK*, *HR*. '
-          example: BAG
+          description: Voor mens leesbaar label bij de link
       description: De Link Object zoals gespecificeerd in https://tools.ietf.org/html/draft-kelly-json-hal-08#section-5
     Href:
       type: string
@@ -5533,10 +5546,10 @@ components:
   headers:
     api_version:
       schema:
-        type: integer
-        description: Geeft een specifieke major API-versie aan in de context van een
-          specifieke aanroep.
-        example: 1
+        type: string
+        description: Geeft een specifieke API-versie aan in de context van een specifieke
+          aanroep.
+        example: 1.0.0
     warning:
       schema:
         type: string
