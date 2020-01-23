@@ -16,7 +16,9 @@ Functionaliteit: Tonen van Nationaliteithistorie
 
   Voor een beëindigde nationaliteit wordt datumEindeGeldigheid gevuld met de datum geldigheid (85.10) uit de oudste bijbehorende categorie (04 of 54) waarin er geen waarde is voor 05.10 noch voor 65.10.
 
-  Een onjuiste nationaliteit wordt niet opgenomen. Een beëindigde nationaliteit waarbij de jongste bijbehorende historische categorie 54 met nationaliteit (05.10) gevuld én indicatie onjuist (84.10) gevuld, wordt niet opgenomen in het antwoord.
+  Een onjuiste nationaliteit wordt niet opgenomen.
+  Een actuele nationaliteit waarbij in categorie 04 indicatie onjuist (84.10) is gevuld, wordt niet opgenomen in het antwoord.
+  Een beëindigde nationaliteit waarbij de jongste bijbehorende historische categorie 54 met nationaliteit (05.10) gevuld én indicatie onjuist (84.10) gevuld, wordt niet opgenomen in het antwoord.
   Voor een actuele nationaliteit (niet-beëindigd) met een bijbehorende historische categorie 54 met indicatie onjuist, worden de gegevens (incl. datum ingang) in de onjuiste categorie genegeerd.
 
   In het antwoord worden de eerst de actuele nationaliteiten opgenomen, gevolgd door de beëindigde nationaliteiten (gesorteerd op indicatieNationaliteitBeeindigd). Daarbinnen worden resultaten aflopend gesorteerd op datumEindeGeldigheid en vervolgens aflopend gesorteerd op datumIngangGeldigheid.
