@@ -223,7 +223,7 @@ components:
         bewoners:
           type: "array"
           items:
-            $ref: "#/components/schemas/BewonerHal"
+            $ref: "#/components/schemas/Bewoner"
         huisletter:
           type: "string"
           title: "Huisletter"
@@ -248,7 +248,7 @@ components:
           maxLength: 4
           example: "2"
         aanduidingBijHuisnummer:
-          $ref: "#/components/schemas/AanduidingBijHuisnummer_enum"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/Bevraging-Ingeschreven-Persoon/openapi.yaml#/components/schemas/AanduidingBijHuisnummer_enum"
         identificatiecodeNummeraanduiding:
           type: "string"
           title: "Identificatiecode nummeraanduiding"
@@ -288,6 +288,8 @@ components:
       - properties:
          _links:
            $ref: "#/components/schemas/Bewoning_links"
+         _embedded:
+           $ref: "#/components/schemas/Bewoning_embedded"
     BewoningHalCollectie:
       type: object
       properties:
@@ -309,7 +311,7 @@ components:
         \ <em>*</em> datumEindeTotenMet** : Datum waarop de bewoner bij dit adres is uitgeschreven.</p></body>"
       properties:
         burgerservicenummer:
-          $ref: "#/components/schemas/Burgerservicenummer"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/Bevraging-Ingeschreven-Persoon/openapi.yaml#/components/schemas/Burgerservicenummer"
         datumTot:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         datumAanvangAdresHuishouding:
@@ -326,15 +328,7 @@ components:
           description: "Een aanduiding die aangeeft dat gegevens van de verblijfplaats\
             \ van deze bewoner in onderzoek zijn. Indien true: verblijfplaats is in onderzoek."
         functieadres:
-          $ref: "#/components/schemas/SoortAdres_enum"
-    BewonerHal:
-      allOf:
-      - $ref: "#/components/schemas/Bewoner"
-      - properties:
-         _links:
-           $ref: "#/components/schemas/Bewoner_links"
-         _embedded:
-           $ref: "#/components/schemas/Bewoner_embedded"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/Bevraging-Ingeschreven-Persoon/openapi.yaml#/components/schemas/SoortAdres_enum"
     Verloop:
       type: "object"
       description: ""
@@ -373,45 +367,10 @@ components:
             type: "object"
             description: ""
           - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/HalLink"
-    Bewoner_links:
-      type: "object"
-      properties:
-        ingeschrevenPersoon:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/HalLink"
-    Bewoner_embedded:
+    Bewoning_embedded:
       type: object
       properties:
-        ingeschrevenPersoon:
-          $ref: "#/components/schemas/IngeschrevenPersoonHal"
-    AanduidingBijHuisnummer_enum:
-      type: "string"
-      description: "De aanduiding die wordt gebruikt voor adressen die niet zijn voorzien\
-        \ van de gebruikelijke straatnaam en huisnummeraanduidingen.:\n* `tegenover`\
-        \ - to\n* `bij` - by"
-      enum:
-      - "tegenover"
-      - "bij"
-    SoortAdres_enum:
-      type: "string"
-      description: "Aanduiding van het soort adres. \n* `woonadres` - W\n* `briefadres` - B  \n Het briefadres is de verblijfplaats van een andere persoon of een instelling (De briefadresgever)"
-      enum:
-      - "woonadres"
-      - "briefadres"
-    Burgerservicenummer:
-      type: "string"
-      title: "Burgerservicenummer"
-      description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet\
-        \ algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt\
-        \ dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat\
-        \ van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door\
-        \ elf. Er moeten dus 9 cijfers aanwezig zijn."
-      pattern: "^[0-9]*$"
-      maxLength: 9
-      minLength: 9
-      example: "555555021"
-    IngeschrevenPersoonHal:
-      allOf:
-        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/Bevraging-Ingeschreven-Persoon/openapi.yaml#/components/schemas/IngeschrevenPersoon"
-        - properties:
-            _links:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/Bevraging-Ingeschreven-Persoon/openapi.yaml#/components/schemas/IngeschrevenPersoon_links"
+        bewoners:
+          type: array
+          items:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/Bevraging-Ingeschreven-Persoon/openapi.yaml#/components/schemas/IngeschrevenPersoon"
