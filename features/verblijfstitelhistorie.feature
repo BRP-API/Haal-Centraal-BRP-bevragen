@@ -20,8 +20,9 @@
 
   Als voor een verblijfstitel groep 39 niet is gevuld, maar geldigheid (85.10) of opneming (86.10) wel, dan wordt deze niet opgenomen in het antwoord. Als de einddatum (39.20) van de voorgaande verblijfstitel leeg is, 00000000 of na de geldigheidsdatum van genoemde verblijfstitel ligt, dan wordt voor de voorgaande verblijfstitel als datumEinde de waarde in 85.10 van de lege verblijfstitel genomen.
 
+  Als voor een verblijfstitel de aanduiding gelijk is aan 98 "geen verblijfstitel (meer)", dan wordt deze verblijfstitel niet opgenomen in het antwoord. Als de einddatum (39.20) van de voorgaande verblijfstitel leeg is, 00000000 of na de geldigheidsdatum van de verblijfstitel met aanduiding 98 ligt, dan wordt voor de voorgaande verblijfstitel als datumEinde de waarde in 39.30 (ingangsdatum) van de verblijfstitel met aanduiding 98 genomen.
+
   Als voor een verblijfstitel ingangsdatum gelijk is aan datum einde, dan wordt deze verblijfstitel niet opgenomen in het antwoord.
-  Als voor een verblijfstitel de aanduiding gelijk is aan 98 "geen verblijfstitel (meer)", dan wordt deze verblijfstitel niet opgenomen in het antwoord.
 
   Historische voorkomens die onjuist zijn worden niet opgenomen in het antwoord.
 
