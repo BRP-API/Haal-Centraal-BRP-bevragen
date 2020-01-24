@@ -5,6 +5,8 @@ Functionaliteit: Ouders van een ingeschreven persoon raadplegen
 
   Wanneer de ouder een ingeschreven persoon is, levert de sub-resource ouders de actuele gegevens van de ouder(s) zoals die op de PL van de betreffende ouder staan (dus NIET zoals ze in categorie 02/52 Ouder1 of 03/53 Ouder2 staan).
 
+  Een ouder wordt alleen teruggegeven als minimaal geslachtsnaam OF voornamen (ivm naamketen) of geboortedatum van de ouder is gevuld.
+
   Scenario: er is geen ouder
     Gegeven de te raadplegen persoon heeft geen geregistreerde ouders
     Als de ouders worden geraadpleegd van de ingeschreven persoon met burgerservicenummer 999999291
@@ -20,7 +22,8 @@ Functionaliteit: Ouders van een ingeschreven persoon raadplegen
     | bij onjuist of onbekend ingevulde kenmerken |
     | registergemeenteAkte (81.10), aktenummer (81.20), datumIngangGeldigheid (85.10), datumVanOpneming (86.10) |
     | gemeenteDocument (82.10), datumDocument (82.20), beschrijvingDocument (82.30), datumIngangGeldigheid (85.10), datumVanOpneming (86.10) |
-  
+    | geboortedatum (03.10), datumIngangGeldigheid (85.10), datumVanOpneming (86.10) |
+
   Scenario: de ouders zijn ingeschreven personen
     Gegeven de te raadplegen persoon heeft een ouder die zelf ingeschreven persoon is
     En de Ouder1 van de ingeschreven persoon heeft in de registratie burgerservicenummer 999999382, naam Jonkheer Franciscus Theodorus in 't Groen
