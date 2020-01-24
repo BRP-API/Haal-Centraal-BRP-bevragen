@@ -370,7 +370,7 @@ components:
     Bewoning_embedded:
       type: object
       properties:
-        bewoners:
+        ingeschrevenPersonen:
           type: array
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/Bevraging-Ingeschreven-Persoon/openapi.yaml#/components/schemas/IngeschrevenPersoon"
