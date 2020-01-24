@@ -6,7 +6,7 @@ servers:
     url: https://www.voorbeeldgemeente.nl/api/bevragingen_ingeschreven_personen
 info:
   title: Bevragingen ingeschreven personen
-  description: "API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Ook de gegevens over reisdocumenten worden via deze API ontsloten. <br>Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> "
+  description: "API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> "
   version: "1.0.0"
   contact:
     url: https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen
@@ -616,65 +616,6 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/responses/default"
       tags:
       - ingeschrevenpersonen
-  /reisdocumenten/{reisdocumentnummer}:
-    get:
-      operationId: reisdocumentenReisdocumentnummer
-      description: "Het ophalen van de gegevens van een REISDOCUMENT op basis van het reisdocumentnummer."
-      parameters:
-        - in: path
-          name: reisdocumentnummer
-          description: "Het nummer van het verstrekte Nederlandse reisdocument."
-          required: true
-          schema:
-            type: string
-            maxLength: 9
-        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/parameters/api-version"
-      responses:
-        '200':
-          description: "Zoekactie geslaagd"
-          headers:
-            api-version:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/headers/api_version"
-            warning:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/headers/warning"
-            X-Rate-Limit-Limit:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/headers/X_Rate_Limit_Limit"
-            X-Rate-Limit-Remaining:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/headers/X_Rate_Limit_Remaining"
-            X-Rate-Limit-Reset:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/headers/X_Rate_Limit_Reset"
-          content:
-            application/hal+json:
-              schema:
-                $ref: '#/components/schemas/ReisdocumentHal'
-        '400':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/responses/400"
-        '401':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/responses/401"
-        '403':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/responses/403"
-        '404':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/responses/404"
-        '406':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/responses/406"
-        '409':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/responses/409"
-        '410':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/responses/410"
-        '415':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/responses/415"
-        '429':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/responses/429"
-        '500':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/responses/500"
-        '501':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/responses/501"
-        '503':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/responses/503"
-        'default':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/responses/default"
-      tags:
-      - reisdocumenten
   /ingeschrevenpersonen/{burgerservicenummer}/verblijfplaatshistorie:
     get:
       operationId: Getverblijfplaatshistorie
@@ -1118,56 +1059,6 @@ components:
         - properties:
             _links:
               $ref: "#/components/schemas/Partner_links"
-    Reisdocument:
-      type: "object"
-      description: "Een document dat vereist is voor reizen naar het buitenland \n\
-        * **datumEindeGeldigheid** : De datum waarop een Nederlands reisdocument,\
-        \ dat aan de ingeschrevene is verstrekt of waarin de ingeschrevene is bijgeschreven,\
-        \ zijn geldigheid verliest. \n* **datumInhoudingOfVermissing**: De datum waarop\
-        \ een Nederlands reisdocument is vermist, ingehouden, ingeleverd, dan wel\
-        \ van rechtswege is vervallen. \n* **datumUitgifte** : De datum waarop het\
-        \ Nederlands reisdocument is uitgegeven of de datum van bijschrijving van\
-        \ de ingeschrevene in een Nederlands reisdocument. \n* **autoriteitAfgifte**\
-        \ : Tabel Autoriteit van afgifte Nederlands reisdocument, die aangeeft welke\
-        \ autoriteit het Nederlands reisdocument heeft verstrekt of de bijschrijving\
-        \ heeft verricht. \n* **aanduidingInhoudingOfVermissing** : Een aanduiding\
-        \ dat een Nederlands reisdocument is vermist, ingehouden, ingeleverd, dan\
-        \ wel van rechtswege is vervallen. \n* **soortReisdocument** : Tabel Nederlands\
-        \ reisdocument, die aangeeft welk Nederlandse reisdocument is verstrekt of\
-        \ in welk reisdocument de ingeschrevene is bijgeschreven."
-      properties:
-        aanduidingInhoudingOfVermissing:
-          $ref: "#/components/schemas/AanduidingInhoudingVermissingReisdocument_enum"
-        reisdocumentnummer:
-          type: "string"
-          title: "Reisdocumentnummer"
-          description: "Het nummer van het verstrekte Nederlandse reisdocument."
-          maxLength: 9
-          example: "546376728"
-        autoriteitAfgifte:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
-        datumEindeGeldigheid:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
-        datumInhoudingOfVermissing:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
-        datumUitgifte:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
-        soortReisdocument:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
-        geheimhoudingPersoonsgegevens:
-          type: "boolean"
-          title: "Indicatie geheim"
-          description: "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt\
-            \ mogen worden. Indien true: op verzoek van deze persoon is het verstrekken\
-            \ van gegevens over deze persoon aan bepaalde derden niet toegestaan."
-        inOnderzoek:
-          $ref: "#/components/schemas/ReisdocumentInOnderzoek"
-    ReisdocumentHal:
-      allOf:
-        - $ref: '#/components/schemas/Reisdocument'
-        - properties:
-            _links:
-              $ref: "#/components/schemas/Reisdocument_links"
     Naam:
       type: "object"
       description: "Gegevens over de naam van de NATUURLIJK PERSOON \n* **adellijketitelPredikaat**\
@@ -1923,51 +1814,6 @@ components:
             \ deze verblijfstitel in onderzoek is."
         datumIngangOnderzoek:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
-    ReisdocumentInOnderzoek:
-      type: "object"
-      description: "Een groep van booleans om aan te geven welke gegevens van het\
-        \ reisdocument in onderzoek zijn. Als de hele categorie in onderzoek is worden\
-        \ alle rubrieken binnen die categorie op _true_ gezet. Zie de [functionele\
-        \ specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)\
-        \ ."
-      properties:
-        aanduidingInhoudingOfVermissing:
-          type: "boolean"
-          title: "aanduidingInhoudingOfVermissing"
-          description: "Indicator die aangeeft of het corresponderende gegeven voor\
-            \ deze persoon in onderzoek is."
-        autoriteitAfgifte:
-          type: "boolean"
-          title: "autoriteitAfgifte"
-          description: "Indicator die aangeeft of het corresponderende gegeven voor\
-            \ deze persoon in onderzoek is."
-        datumEindeGeldigheid:
-          type: "boolean"
-          title: "datumEindeGeldigheid"
-          description: "Indicator die aangeeft of het corresponderende gegeven voor\
-            \ deze persoon in onderzoek is."
-        datumInhoudingOfVermissing:
-          type: "boolean"
-          title: "datumInhoudingOfVermissing"
-          description: "Indicator die aangeeft of het corresponderende gegeven voor\
-            \ deze persoon in onderzoek is."
-        datumUitgifte:
-          type: "boolean"
-          title: "datumUitgifte"
-          description: "Indicator die aangeeft of het corresponderende gegeven voor\
-            \ deze persoon in onderzoek is."
-        reisdocumentnummer:
-          type: "boolean"
-          title: "reisdocumentnummer"
-          description: "Indicator die aangeeft of het corresponderende gegeven voor\
-            \ deze persoon in onderzoek is."
-        soortReisdocument:
-          type: "boolean"
-          title: "soortReisdocument"
-          description: "Indicator die aangeeft of het corresponderende gegeven voor\
-            \ deze persoon in onderzoek is."
-        datumIngangOnderzoek:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     IngeschrevenPersoon_links:
       type: "object"
       properties:
@@ -2033,13 +1879,6 @@ components:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/HalLink"
         ingeschrevenPersoon:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/HalLink"
-    Reisdocument_links:
-      type: "object"
-      properties:
-        self:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/HalLink"
-        ingeschrevenPersoon:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/HalLink"
     IngeschrevenPersoon_embedded:
       type: "object"
       properties:
@@ -2066,17 +1905,6 @@ components:
             \ partnerschap wordt niet teruggegeven."
           items:
             $ref: "#/components/schemas/PartnerHal"
-    AanduidingInhoudingVermissingReisdocument_enum:
-      type: "string"
-      description: "De mogelijke waarden van de aanduiding van inhouding of vermissing\
-        \ van een Nederlands reisdocument. Zie logisch ontwerp BRP bij de stamtabellen:\n\
-        * `ingehouden_of_ingeleverd` - I\n* `vermist` - V\n* `rechtswege` - R\n* `niet_in_bezit_van`\
-        \ - N"
-      enum:
-      - "ingehouden_of_ingeleverd"
-      - "vermist"
-      - "rechtswege"
-      - "niet_in_bezit_van"
     AanduidingBijzonderNederlanderschap_enum:
       type: "string"
       description: "De aanduiding van het bijzonder Nederlanderschap:\n* `behandeld_als_nederlander`\
