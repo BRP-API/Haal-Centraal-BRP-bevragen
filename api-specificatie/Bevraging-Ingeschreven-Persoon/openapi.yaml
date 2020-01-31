@@ -68,6 +68,8 @@ paths:
             \ dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat\
             \ van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door\
             \ elf. Er moeten dus 9 cijfers aanwezig zijn."
+          explode: false
+          example: 999993653,999991723,999995078
           schema:
             type: array
             items:
