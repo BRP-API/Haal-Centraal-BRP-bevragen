@@ -322,7 +322,7 @@ components:
           description: "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt\
             \ mogen worden. Indien true: op verzoek van deze persoon is het verstrekken\
             \ van gegevens over deze persoon aan bepaalde derden niet toegestaan."
-        indicatieverblijfsplaatsinonderzoek:
+        indicatieVerblijfsplaatsInOnderzoek:
           type: "boolean"
           title: "Indicatie verblijfplaats in onderzoek"
           description: "Een aanduiding die aangeeft dat gegevens van de verblijfplaats\
