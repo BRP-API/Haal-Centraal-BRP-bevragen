@@ -18,6 +18,10 @@
   Als er meerdere (historische) verblijfstitels zijn met dezelfde ingangsdatum, dan wordt alleen de meest de meest recente opgenomen in het antwoord. Dat is de meest recente datum opneming, of eerste/bovenste in GBA-V antwoord.
   Als er een verblijfstitel geldig is over de hele geldigheid van een eerder opgevoerde verblijfstitel, dan wordt alleen de meest de meest recente opgenomen in het antwoord. Dat is de meest recente datum opneming, of eerste/bovenste in GBA-V antwoord.
 
+  Als voor een verblijfstitel groep 39 niet is gevuld, maar geldigheid (85.10) of opneming (86.10) wel, dan wordt deze niet opgenomen in het antwoord. Als de einddatum (39.20) van de voorgaande verblijfstitel leeg is, 00000000 of na de geldigheidsdatum van genoemde verblijfstitel ligt, dan wordt voor de voorgaande verblijfstitel als datumEinde de waarde in 85.10 van de lege verblijfstitel genomen.
+
+  Als voor een verblijfstitel de aanduiding gelijk is aan 98 "geen verblijfstitel (meer)", dan wordt deze verblijfstitel niet opgenomen in het antwoord. Als de einddatum (39.20) van de voorgaande verblijfstitel leeg is, 00000000 of na de geldigheidsdatum van de verblijfstitel met aanduiding 98 ligt, dan wordt voor de voorgaande verblijfstitel als datumEinde de waarde in 39.30 (ingangsdatum) van de verblijfstitel met aanduiding 98 genomen.
+
   Als voor een verblijfstitel ingangsdatum gelijk is aan datum einde, dan wordt deze verblijfstitel niet opgenomen in het antwoord.
 
   Historische voorkomens die onjuist zijn worden niet opgenomen in het antwoord.
@@ -131,3 +135,15 @@
   Scenario: verblijfstitelhistorie met periode én peildatum buiten de opgegeven periode
     Als de verblijfstitelhistorie wordt opgevraagd met voor datumvan de waarde "2009-01-01" en datumtotenmet de waarde "2009-06-30" en voor peildatum de waarde "2019-03-19"
     Dan bevat het antwoord geen enkel voorkomen van verblijfstitelhistorie
+
+  Scenario: vervallen of ingetrokken verblijfstitel
+    Gegeven de persoon kent de volgende verblijfstitels in de registratie
+      | categorie | Aanduiding (39.10) | Datum einde (39.20) | Ingangsdatum (39.30) | Datum geldigheid (85.10) |
+      | 10        | 42                 | 20190901            | 20160901             | 20160905                 |
+      | 60        |                    |                     |                      | 20150723                 |
+      | 60        | 26                 | 00000000            | 20091129             | 20091203                 |
+    Als de verblijfstitelhistorie wordt opgevraagd
+    Dan wordt de volgende verblijfstitelhistorie teruggegeven
+      | aanduiding | datumIngang | datumEinde |
+      | 42         | 2016-09-01  | 2019-09-01 |
+      | 26         | 2009-11-29  | 2015-07-23 |
