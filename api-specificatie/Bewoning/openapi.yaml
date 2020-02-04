@@ -245,8 +245,6 @@ components:
             \ een huisnummer of een combinatie van huisnummer en huisletter.</body>"
           maxLength: 4
           example: "2"
-        aanduidingBijHuisnummer:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/Bevraging-Ingeschreven-Persoon/openapi.yaml#/components/schemas/AanduidingBijHuisnummer_enum"
         identificatiecodeNummeraanduiding:
           type: "string"
           title: "Identificatiecode nummeraanduiding"
