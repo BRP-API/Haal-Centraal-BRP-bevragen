@@ -329,11 +329,6 @@ components:
       type: "object"
       description: ""
       properties:
-        bewoningsduur:
-          type: integer
-          title: "bewoningsduur"
-          description: "<body><p>De gemiddelde duur van de bewoning van het adres in hele maanden binnen de opgegeven periode.</p></body>"
-          example: 7
         inVerhuizingen:
           type: integer
           title: "inVerhuizingen"
