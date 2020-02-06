@@ -342,6 +342,11 @@ components:
     Bewoning_links:
       type: "object"
       properties:
+        ingeschrevenPersonen:
+          description: "De ingeschreven natuurlijk personen die bewoner zijn of waren."
+          type: array
+          items:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/HalLink"
         nummeraanduiding:
           allOf:
           - title: "is"
