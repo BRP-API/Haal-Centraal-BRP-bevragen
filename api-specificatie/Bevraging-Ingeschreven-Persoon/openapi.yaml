@@ -908,7 +908,7 @@ components:
         _embedded:
           type: object
           properties:
-            ingeschrevenPersoon:
+            ingeschrevenpersonen:
               type: array
               items:
                 $ref: '#/components/schemas/IngeschrevenPersoonHal'
