@@ -342,6 +342,12 @@ components:
           title: "uitVerhuizingen"
           description: "<body><p>Het aantal keer dat een alleenstaande of gezin van het adres naar een ander adres is verhuisd binnen de opgegeven periode</p></body>"
           example: 14
+        gemiddeldAantalBewoners:
+          type: number
+          format: float
+          minimum: 0
+          example: 2.7
+          description: "Gemiddeld aantal bewoners in de gevraagde periode."
     Bewoning_links:
       type: "object"
       properties:
