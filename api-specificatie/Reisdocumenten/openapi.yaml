@@ -99,7 +99,7 @@ components:
           maxLength: 9
           example: "546376728"
         autoriteitAfgifte:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/Waardelijst"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
         datumEindeGeldigheid:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         datumInhoudingOfVermissing:
@@ -107,7 +107,7 @@ components:
         datumUitgifte:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         soortReisdocument:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/Waardelijst"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
         geheimhoudingPersoonsgegevens:
           type: "boolean"
           title: "Indicatie geheim"
