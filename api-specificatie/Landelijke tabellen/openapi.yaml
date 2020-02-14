@@ -247,14 +247,14 @@ components:
     tabelomschrijving:
       in: query
       name: omschrijving
-      description: "De naam van de tabel. <br> Bij het zoeken mag er gebruik worden gemaakt van <b>[wildcards](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/wildcard.feature)</b>. <br>Zoeken is <b>[case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/case_insensitive.feature)</b></a>"
+      description: "De naam van de tabel. <br> Bij het zoeken mag er gebruik worden gemaakt van <b>[wildcards](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/wildcard.feature)</b>.<br>Zoeken is <b>[case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature)</b></a>"
       required: false
       schema:
         type: string
     omschrijving:
       in: query
       name: omschrijving
-      description: "De omschrijving van de tabelwaarde. <br> Bij het zoeken mag er gebruik worden gemaakt van <b>[wildcards](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/wildcard.feature)</b>. <br>Zoeken is <b>[case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/case_insensitive.feature)</b></a>"
+      description: "De omschrijving van de tabelwaarde. <br> Bij het zoeken mag er gebruik worden gemaakt van <b>[wildcards](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/wildcard.feature)</b>. <br>Zoeken is <b>[case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature)</b></a>"
       required: false
       schema:
         type: string
