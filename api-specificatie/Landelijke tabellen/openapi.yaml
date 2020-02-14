@@ -16,10 +16,10 @@ paths:
   /tabellen:
     get:
       operationId: getTabellen
-      description: "Het ophalen van een collectie landelijke tabellen <br>  Bij het zoeken mag er gebruik worden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/wildcard.feature). Zoeken is **case-insensitive**."
-      parameters: 
+      description: "Het ophalen van een collectie landelijke tabellen."
+      parameters:
         - $ref: '#/components/parameters/tabelidentificatie'
-        - $ref: '#/components/parameters/omschrijving'
+        - $ref: '#/components/parameters/tabelomschrijving'
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -60,12 +60,12 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/responses/501"
         '503':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/responses/503"
-      tags: 
+      tags:
       - Tabellen
   /tabellen/{tabelidentificatie}:
     get:
       operationId: getTabel
-      description: "Het ophalen van de gegevens van een enkele entry collectie landelijke tabellen"
+      description: "Het ophalen van de gegevens van een enkele landelijke tabel"
       parameters:
         - $ref: "#/components/parameters/tabelidentificatie_path"
       responses:
@@ -110,13 +110,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/responses/501"
         '503':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/responses/503"
-      tags: 
+      tags:
         - Tabellen
   /tabellen/{tabelidentificatie}/waarden:
     get:
       operationId: getWaarden
-      description: "Het ophalen van de tabelwaarden van een landelijke tabel <br> Als er op omschrijving of code gezocht wordt worden alleen actuele waarden geretourneerd. <br> Als de parameter <b> inclusief beeindigd </b> met waarde <i> true </i>  wordt meegegeven bij de call worden ook beeindigde waarden geretourneerd. <br> Bij het zoeken op de omschrijving mag er gebruik worden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/wildcard.feature). Zoeken is **case-insensitive**."
-      parameters: 
+      description: "Het ophalen van de tabelwaarden van een landelijke tabel.<br>Als er op omschrijving of code gezocht wordt worden alleen actuele waarden geretourneerd. <br> Als de parameter <b> inclusief beeindigd </b> met waarde <i> true </i>  wordt meegegeven bij de call worden ook beeindigde waarden geretourneerd."
+      parameters:
         - $ref: '#/components/parameters/tabelidentificatie_path'
         - $ref: '#/components/parameters/code'
         - $ref: '#/components/parameters/omschrijving'
@@ -161,12 +161,12 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/responses/501"
         '503':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/responses/503"
-      tags: 
+      tags:
       - Tabelwaarden
   /tabellen/{tabelidentificatie}/waarden/{code}:
     get:
       operationId: getWaarde
-      description: "Het ophalen van de gegevens  van een enkele entry uit een landelijke tabel"
+      description: "Het ophalen van de gegevens van een enkele waarde uit een landelijke tabel."
       parameters:
         - $ref: '#/components/parameters/tabelidentificatie_path'
         - $ref: "#/components/parameters/code_path"
@@ -212,21 +212,21 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/responses/501"
         '503':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/responses/503"
-      tags: 
+      tags:
       - Tabelwaarden
 components:
   parameters:
     tabelidentificatie:
       name: tabelidentificatie
       in: query
-      description: "De identificatie, behorende bij de tabel."
+      description: "De identificatie van een landelijke tabel."
       required: false
       schema:
         type: string
     tabelidentificatie_path:
       name: tabelidentificatie
       in: path
-      description: "De identificatie, behorende bij de tabel."
+      description: "De identificatie van een landelijke tabel."
       required: true
       schema:
         type: string
@@ -244,24 +244,31 @@ components:
       required: true
       schema:
         type: string
+    tabelomschrijving:
+      in: query
+      name: omschrijving
+      description: "De naam van de tabel. <br> Bij het zoeken mag er gebruik worden gemaakt van <b>[wildcards](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/wildcard.feature)</b>. <br>Zoeken is <b>[case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/case_insensitive.feature)</b></a>"
+      required: false
+      schema:
+        type: string
     omschrijving:
       in: query
       name: omschrijving
-      description: "De tabelwaarde als omschrijving. <br> Bij het zoeken mag er gebruik worden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/wildcard.feature). <br> **Zoeken met tekstvelden** is <a href='https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/case_insensitive.feature'> <b>case-Insensitive </b></a>"
+      description: "De omschrijving van de tabelwaarde. <br> Bij het zoeken mag er gebruik worden gemaakt van <b>[wildcards](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/wildcard.feature)</b>. <br>Zoeken is <b>[case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/case_insensitive.feature)</b></a>"
       required: false
       schema:
         type: string
     inclusiefbeeindigd:
       in: query
       name: inclusiefbeeindigd
-      description: "De indicatie waarmee aangegeven wordt of beëindigde waarden moeten worden meegeleverd."
+      description: "De indicatie waarmee aangegeven wordt of beëindigde waarden moeten worden meegeleverd. Default worden alleen actuele tabelwaarden geretourneerd. Wanneer deze wordt opgenomen met de waarde true, dan worden ook beëindigde tabelwaarden meegeleverd."
       required: false
       schema:
         type: boolean
   schemas:
     Waarde:
-      allOf: 
-        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/Waardelijst"
+      allOf:
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/Waardetabel"
         -  properties:
             datumEinde:
               type: "string"
@@ -294,11 +301,11 @@ components:
       type: "object"
       description: "Landelijke tabellen zoals ontsloten door het RvIG."
       properties:
-        tabelidentificatie: 
+        tabelidentificatie:
           type: "string"
           description: "De identificatie, behorende bij de tabel."
           example: "Reden_Nationaliteit"
-        omschrijving: 
+        omschrijving:
           type: "string"
           description: "De omschrijving van de landelijke tabel"
           example: "Reden opnemen - beeindigen Nationaliteit"
