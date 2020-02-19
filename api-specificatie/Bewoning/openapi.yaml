@@ -2,8 +2,6 @@ openapi: 3.0.0
 servers:
   - description: "SwaggerHub API Auto Mocking"
     url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bewoning
-  - description: "Referentie-implementatie"
-    url: https://www.voorbeeldgemeente.nl/api/bewoning
 info:
   title: Bewoning
   description: "<body>API voor het ontsluiten van historische gegevens over de bewoning van een adres. <br> De gegevens van de bewoners zijn actueel.Zie de Functionele documentatie voor nadere toelichting.</body>"
