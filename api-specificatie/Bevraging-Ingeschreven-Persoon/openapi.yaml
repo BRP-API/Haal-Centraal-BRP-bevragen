@@ -855,6 +855,12 @@ components:
       maxLength: 9
       minLength: 9
       example: "555555021"
+    Reisdocumentnummer:
+      type: "string"
+      title: "Reisdocumentnummer"
+      description: "Het nummer van het verstrekte Nederlandse reisdocument."
+      maxLength: 9
+      example: "546376728"
     IngeschrevenPersoon:
       type: "object"
       description: "Gegevens over de ingeschreven persoon. \n* **datumEersteInschrijving**\
@@ -900,6 +906,12 @@ components:
           $ref: "#/components/schemas/Gezagsverhouding"
         verblijfstitel:
           $ref: "#/components/schemas/Verblijfstitel"
+        reisdocument:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Reisdocumentnummer"
+        verblijfplaatsnummeraanduiding:
+            type: string
     IngeschrevenPersoonHalCollectie:
       type: object
       properties:
