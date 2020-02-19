@@ -56,8 +56,9 @@ Ontwerp o.b.v. een inventarisatie informatiebehoefte binnengemeentelijke afnemer
 ## REST
 De API is zo RESTful mogelijk, met het oog op maximale realisatie van de REST doelstellingen: performance, schaalbaarheid, eenvoud, aanpasbaarheid, zichtbaarheid, verplaatsbaarheid en betrouwbaarheid.  
 
-## DSO API Strategie
-Het project conformeert zich aan de DSO API strategie en levert een bijdrage aan de ontwikkeling van deze strategie naar een landelijke API strategie voor de Nederlandse overheid.  
+## Landelijke API Strategie voor de Nederlandse overheid
+Het project conformeert zich aan de Landelijke API strategie en levert een bijdrage aan de ontwikkeling van de landelijke API strategie voor de Nederlandse overheid.  
+De landelijke API_strategie heeft op het moment van ontwikkelen van de HC-aapi's nog geen formele status. De check of de HC-api's aan de landelijke API-strategie voldoen is uitgevoerd op de versie die ter vaststelling is aangeboden aan het Forum Standaardisatie op (https://docs.geostandaarden.nl/api/vv-hr-API-Strategie-20200117/ ) 
 
 ## Uitgangspunten
 - Alle ingredienten van de API zijn herleidbaar naar het LO GBA 3.10
