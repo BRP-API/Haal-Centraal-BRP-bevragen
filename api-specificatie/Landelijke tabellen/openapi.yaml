@@ -1,8 +1,8 @@
 openapi: 3.0.0
 servers:
 # Added by API Auto Mocking Plugin
-  - description: "Referentie-implementatie tabellen"
-    url: https://www.voorbeeldgemeente.nl/api/landelijke_tabellen/
+  - description: "SwaggerHub API Auto Mocking"
+    url: https://virtserver.swaggerhub.com/VNGRealisatie/api/landelijke_tabellen/
 info:
   title: Landelijke tabellen
   description: "API voor het ontsluiten van landelijke tabellen die op de website van BZK worden gepubliceerd."
