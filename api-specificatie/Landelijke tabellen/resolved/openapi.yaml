@@ -17,14 +17,12 @@ paths:
     get:
       tags:
       - Tabellen
-      description: Het ophalen van een collectie landelijke tabellen <br>  Bij het
-        zoeken mag er gebruik worden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature).
-        Zoeken is **case-insensitive**.
+      description: Het ophalen van een collectie landelijke tabellen.
       operationId: getTabellen
       parameters:
       - name: tabelidentificatie
         in: query
-        description: De identificatie, behorende bij de tabel.
+        description: De identificatie van een landelijke tabel.
         required: false
         style: form
         explode: true
@@ -32,10 +30,9 @@ paths:
           type: string
       - name: omschrijving
         in: query
-        description: De tabelwaarde als omschrijving. <br> Bij het zoeken mag er gebruik
-          worden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature).
-          <br> **Zoeken met tekstvelden** is <a href='https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature'>
-          <b>case-Insensitive </b></a>
+        description: De naam van de tabel. <br> Bij het zoeken mag er gebruik worden
+          gemaakt van <b>[wildcards](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/wildcard.feature)</b>.<br>Zoeken
+          is <b>[case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature)</b></a>
         required: false
         style: form
         explode: true
@@ -268,13 +265,12 @@ paths:
     get:
       tags:
       - Tabellen
-      description: Het ophalen van de gegevens van een enkele entry collectie landelijke
-        tabellen
+      description: Het ophalen van de gegevens van een enkele landelijke tabel
       operationId: getTabel
       parameters:
       - name: tabelidentificatie
         in: path
-        description: De identificatie, behorende bij de tabel.
+        description: De identificatie van een landelijke tabel.
         required: true
         style: simple
         explode: false
@@ -524,17 +520,15 @@ paths:
     get:
       tags:
       - Tabelwaarden
-      description: Het ophalen van de tabelwaarden van een landelijke tabel <br> Als
+      description: Het ophalen van de tabelwaarden van een landelijke tabel.<br>Als
         er op omschrijving of code gezocht wordt worden alleen actuele waarden geretourneerd.
         <br> Als de parameter <b> inclusief beeindigd </b> met waarde <i> true </i>  wordt
-        meegegeven bij de call worden ook beeindigde waarden geretourneerd. <br> Bij
-        het zoeken op de omschrijving mag er gebruik worden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature).
-        Zoeken is **case-insensitive**.
+        meegegeven bij de call worden ook beeindigde waarden geretourneerd.
       operationId: getWaarden
       parameters:
       - name: tabelidentificatie
         in: path
-        description: De identificatie, behorende bij de tabel.
+        description: De identificatie van een landelijke tabel.
         required: true
         style: simple
         explode: false
@@ -550,10 +544,9 @@ paths:
           type: string
       - name: omschrijving
         in: query
-        description: De tabelwaarde als omschrijving. <br> Bij het zoeken mag er gebruik
-          worden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature).
-          <br> **Zoeken met tekstvelden** is <a href='https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature'>
-          <b>case-Insensitive </b></a>
+        description: De omschrijving van de tabelwaarde. <br> Bij het zoeken mag er
+          gebruik worden gemaakt van <b>[wildcards](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/wildcard.feature)</b>.
+          <br>Zoeken is <b>[case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature)</b></a>
         required: false
         style: form
         explode: true
@@ -562,7 +555,9 @@ paths:
       - name: inclusiefbeeindigd
         in: query
         description: De indicatie waarmee aangegeven wordt of beëindigde waarden moeten
-          worden meegeleverd.
+          worden meegeleverd. Default worden alleen actuele tabelwaarden geretourneerd.
+          Wanneer deze wordt opgenomen met de waarde true, dan worden ook beëindigde
+          tabelwaarden meegeleverd.
         required: false
         style: form
         explode: true
@@ -795,13 +790,13 @@ paths:
     get:
       tags:
       - Tabelwaarden
-      description: Het ophalen van de gegevens  van een enkele entry uit een landelijke
-        tabel
+      description: Het ophalen van de gegevens van een enkele waarde uit een landelijke
+        tabel.
       operationId: getWaarde
       parameters:
       - name: tabelidentificatie
         in: path
-        description: De identificatie, behorende bij de tabel.
+        description: De identificatie van een landelijke tabel.
         required: true
         style: simple
         explode: false
@@ -1114,7 +1109,7 @@ components:
       - $ref: '#/components/schemas/Foutbericht'
       - type: object
         properties:
-          invalid-params:
+          invalidParams:
             type: array
             description: Foutmelding per fout in een parameter. Alle gevonden fouten
               worden één keer teruggemeld.
@@ -1151,7 +1146,7 @@ components:
         type:
           type: string
           format: uri
-          example: https://www.vng.nl/realisatie/api/validaties/integer
+          example: https://www.vng.nl/realisatie/api/{major-versie}/validaties/integer
         name:
           type: string
           description: Naam van de parameter
@@ -1172,15 +1167,18 @@ components:
         code:
           title: code
           type: string
+          example: "6030"
         omschrijving:
           title: omschrijving
           type: string
+          description: Voor mensen leesbare omschrijving van de waarde.
+          example: Nederland
       description: Generieke tabel met waarden om een code en omschrijving op te nemen.
   parameters:
     tabelidentificatie:
       name: tabelidentificatie
       in: query
-      description: De identificatie, behorende bij de tabel.
+      description: De identificatie van een landelijke tabel.
       required: false
       style: form
       explode: true
@@ -1189,7 +1187,7 @@ components:
     tabelidentificatie_path:
       name: tabelidentificatie
       in: path
-      description: De identificatie, behorende bij de tabel.
+      description: De identificatie van een landelijke tabel.
       required: true
       style: simple
       explode: false
@@ -1213,13 +1211,23 @@ components:
       explode: false
       schema:
         type: string
+    tabelomschrijving:
+      name: omschrijving
+      in: query
+      description: De naam van de tabel. <br> Bij het zoeken mag er gebruik worden
+        gemaakt van <b>[wildcards](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/wildcard.feature)</b>.<br>Zoeken
+        is <b>[case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature)</b></a>
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
     omschrijving:
       name: omschrijving
       in: query
-      description: De tabelwaarde als omschrijving. <br> Bij het zoeken mag er gebruik
-        worden gemaakt van [wildcards](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature).
-        <br> **Zoeken met tekstvelden** is <a href='https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature'>
-        <b>case-Insensitive </b></a>
+      description: De omschrijving van de tabelwaarde. <br> Bij het zoeken mag er
+        gebruik worden gemaakt van <b>[wildcards](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/wildcard.feature)</b>.
+        <br>Zoeken is <b>[case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature)</b></a>
       required: false
       style: form
       explode: true
@@ -1229,7 +1237,9 @@ components:
       name: inclusiefbeeindigd
       in: query
       description: De indicatie waarmee aangegeven wordt of beëindigde waarden moeten
-        worden meegeleverd.
+        worden meegeleverd. Default worden alleen actuele tabelwaarden geretourneerd.
+        Wanneer deze wordt opgenomen met de waarde true, dan worden ook beëindigde
+        tabelwaarden meegeleverd.
       required: false
       style: form
       explode: true
@@ -1238,10 +1248,10 @@ components:
   headers:
     api_version:
       schema:
-        type: integer
-        description: Geeft een specifieke major API-versie aan in de context van een
-          specifieke aanroep.
-        example: 1
+        type: string
+        description: Geeft een specifieke API-versie aan in de context van een specifieke
+          aanroep.
+        example: 1.0.0
     warning:
       schema:
         type: string

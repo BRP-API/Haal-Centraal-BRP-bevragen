@@ -6,8 +6,7 @@ info:
     van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft
     een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet
     geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk,
-    dan wordt de partner niet geretourneerd. <br> <br> Ook de gegevens over reisdocumenten
-    worden via deze API ontsloten. <br>Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features)
+    dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features)
     voor nadere toelichting. <br> '
   contact:
     url: https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen
@@ -66,14 +65,6 @@ paths:
          Er vind geen sortering plaats.
       operationId: ingeschrevenNatuurlijkPersonen
       parameters:
-      - name: api-version
-        in: header
-        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
-          API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
-        required: false
-        schema:
-          type: integer
-          example: 1
       - name: expand
         in: query
         description: Hier kan aangegeven worden welke gerelateerde resources meegeladen
@@ -104,11 +95,12 @@ paths:
           aanwezig zijn.
         required: false
         style: form
-        explode: true
+        explode: false
         schema:
           type: array
           items:
             $ref: '#/components/schemas/Burgerservicenummer'
+        example: 999993653,999991723,999995078
       - name: geboorte__datum
         in: query
         description: Datum waarop de INGESCHREVEN NATUURLIJK PERSOON geboren is. Er
@@ -526,14 +518,6 @@ paths:
         explode: false
         schema:
           $ref: '#/components/schemas/Burgerservicenummer'
-      - name: api-version
-        in: header
-        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
-          API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
-        required: false
-        schema:
-          type: integer
-          example: 1
       - name: expand
         in: query
         description: Hier kan aangegeven worden welke gerelateerde resources meegeladen
@@ -819,14 +803,6 @@ paths:
         explode: false
         schema:
           $ref: '#/components/schemas/Burgerservicenummer'
-      - name: api-version
-        in: header
-        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
-          API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
-        required: false
-        schema:
-          type: integer
-          example: 1
       - name: id
         in: path
         description: De identificatie van het kind.
@@ -1099,14 +1075,6 @@ paths:
         explode: false
         schema:
           $ref: '#/components/schemas/Burgerservicenummer'
-      - name: api-version
-        in: header
-        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
-          API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
-        required: false
-        schema:
-          type: integer
-          example: 1
       responses:
         "200":
           description: Zoekactie geslaagd
@@ -1371,14 +1339,6 @@ paths:
         explode: false
         schema:
           $ref: '#/components/schemas/Burgerservicenummer'
-      - name: api-version
-        in: header
-        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
-          API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
-        required: false
-        schema:
-          type: integer
-          example: 1
       - name: id
         in: path
         description: De identificatie van de ouder.
@@ -1651,14 +1611,6 @@ paths:
         explode: false
         schema:
           $ref: '#/components/schemas/Burgerservicenummer'
-      - name: api-version
-        in: header
-        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
-          API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
-        required: false
-        schema:
-          type: integer
-          example: 1
       responses:
         "200":
           description: Zoekactie geslaagd
@@ -1923,14 +1875,6 @@ paths:
         explode: false
         schema:
           $ref: '#/components/schemas/Burgerservicenummer'
-      - name: api-version
-        in: header
-        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
-          API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
-        required: false
-        schema:
-          type: integer
-          example: 1
       - name: id
         in: path
         description: De identificatie van de partner.
@@ -2205,14 +2149,6 @@ paths:
         explode: false
         schema:
           $ref: '#/components/schemas/Burgerservicenummer'
-      - name: api-version
-        in: header
-        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
-          API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
-        required: false
-        schema:
-          type: integer
-          example: 1
       responses:
         "200":
           description: Zoekactie geslaagd
@@ -2231,280 +2167,6 @@ paths:
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/PartnerHalCollectie'
-        "400":
-          description: Bad Request
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/BadRequestFoutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
-                  400 Bad Request
-                title: Ten minste één parameter moet worden opgegeven.
-                status: 400
-                detail: The request could not be understood by the server due to malformed
-                  syntax. The client SHOULD NOT repeat the request without modification.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: paramsRequired
-                invalid-params:
-                - type: https://www.vng.nl/realisatie/api/validaties/integer
-                  name: verblijfplaats__huisnummer
-                  code: integer
-                  reason: Waarde is geen geldige integer.
-        "401":
-          description: Unauthorized
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.2
-                  401 Unauthorized
-                title: Niet correct geauthenticeerd.
-                status: 401
-                detail: The request requires user authentication. The response MUST
-                  include a WWW-Authenticate header field (section 14.47) containing
-                  a challenge applicable to the requested resource.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: authentication
-        "403":
-          description: Forbidden
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.4
-                  403 Forbidden
-                title: U bent niet geautoriseerd voor deze operatie.
-                status: 403
-                detail: The server understood the request, but is refusing to fulfill
-                  it.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: autorisation
-        "404":
-          description: Not Found
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.5
-                  404 Not Found
-                title: Opgevraagde resource bestaat niet.
-                status: 404
-                detail: The server has not found anything matching the Request-URI.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: notFound
-        "406":
-          description: Not Acceptable
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.7
-                  406 Not Acceptable
-                title: Gevraagde contenttype wordt niet ondersteund.
-                status: 406
-                detail: The resource identified by the request is only capable of
-                  generating response entities which have content characteristics
-                  not acceptable according to thr accept headers sent in the request
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: notAcceptable
-        "409":
-          description: Conflict
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.10
-                  409 Conflict
-                title: Conflict
-                status: 409
-                detail: The request could not be completed due to a conflict with
-                  the current state of the resource
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: conflict
-        "410":
-          description: Gone
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.11
-                  410 Gone
-                title: Gone
-                status: 410
-                detail: The request could not be completed due to a conflict with
-                  the current state of the resource
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: gone
-        "415":
-          description: Unsupported Media Type
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.16
-                  415 Unsupported Media Type
-                title: Unsupported Media Type
-                status: 415
-                detail: The server is refusing the request because the entity of the
-                  request is in a format not supported by the requested resource for
-                  the requested method.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: unsupported
-        "429":
-          description: Too Many Requests
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
-                title: Too many request
-                status: 429
-                detail: The user has sent too many requests in a given amount of time
-                  (rate limiting).
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: tooManyRequests
-        "500":
-          description: Internal Server Error
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.1
-                  500 Internal server error
-                title: Interne server fout.
-                status: 500
-                detail: The server encountered an unexpected condition which prevented
-                  it from fulfilling the request.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: serverError
-        "501":
-          description: Not Implemented
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.2
-                  501 Not Implemented
-                title: Not Implemented
-                status: 501
-                detail: The server does not support the functionality required to
-                  fulfill the request.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: notImplemented
-        "503":
-          description: Service Unavailable
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.4
-                  503 Service Unavailable
-                title: Bronservice {bron} is tijdelijk niet beschikbaar.
-                status: 503
-                detail: The service is currently unable to handle the request due
-                  to a temporary overloading or maintenance of the server.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: notAvailable
-        default:
-          description: Er is een onverwachte fout opgetreden
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-  /reisdocumenten/{reisdocumentnummer}:
-    get:
-      tags:
-      - reisdocumenten
-      description: Het ophalen van de gegevens van een REISDOCUMENT op basis van het
-        reisdocumentnummer.
-      operationId: reisdocumentenReisdocumentnummer
-      parameters:
-      - name: reisdocumentnummer
-        in: path
-        description: Het nummer van het verstrekte Nederlandse reisdocument.
-        required: true
-        style: simple
-        explode: false
-        schema:
-          maxLength: 9
-          type: string
-      - name: api-version
-        in: header
-        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
-          API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
-        required: false
-        schema:
-          type: integer
-          example: 1
-      responses:
-        "200":
-          description: Zoekactie geslaagd
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-            warning:
-              $ref: '#/components/headers/warning'
-            X-Rate-Limit-Limit:
-              $ref: '#/components/headers/X_Rate_Limit_Limit'
-            X-Rate-Limit-Remaining:
-              $ref: '#/components/headers/X_Rate_Limit_Remaining'
-            X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'
-          content:
-            application/hal+json:
-              schema:
-                $ref: '#/components/schemas/ReisdocumentHal'
         "400":
           description: Bad Request
           headers:
@@ -2758,14 +2420,6 @@ paths:
         explode: false
         schema:
           $ref: '#/components/schemas/Burgerservicenummer'
-      - name: api-version
-        in: header
-        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
-          API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
-        required: false
-        schema:
-          type: integer
-          example: 1
       - name: fields
         in: query
         description: Geeft de mogelijkheid de inhoud van de body van het antwoord
@@ -3065,14 +2719,6 @@ paths:
         explode: false
         schema:
           $ref: '#/components/schemas/Burgerservicenummer'
-      - name: api-version
-        in: header
-        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
-          API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
-        required: false
-        schema:
-          type: integer
-          example: 1
       - name: fields
         in: query
         description: Geeft de mogelijkheid de inhoud van de body van het antwoord
@@ -3374,14 +3020,6 @@ paths:
         explode: false
         schema:
           $ref: '#/components/schemas/Burgerservicenummer'
-      - name: api-version
-        in: header
-        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
-          API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
-        required: false
-        schema:
-          type: integer
-          example: 1
       - name: fields
         in: query
         description: Geeft de mogelijkheid de inhoud van de body van het antwoord
@@ -3683,14 +3321,6 @@ paths:
         explode: false
         schema:
           $ref: '#/components/schemas/Burgerservicenummer'
-      - name: api-version
-        in: header
-        description: Bevat de major-versie van de aan te roepen API conform [Landelijke
-          API-strategie](https://geonovum.github.io/KP-APIs/#versioning).
-        required: false
-        schema:
-          type: integer
-          example: 1
       - name: fields
         in: query
         description: Geeft de mogelijkheid de inhoud van de body van het antwoord
@@ -4159,56 +3789,6 @@ components:
       - properties:
           _links:
             $ref: '#/components/schemas/Partner_links'
-    Reisdocument:
-      type: object
-      properties:
-        aanduidingInhoudingOfVermissing:
-          $ref: '#/components/schemas/AanduidingInhoudingVermissingReisdocument_enum'
-        reisdocumentnummer:
-          title: Reisdocumentnummer
-          maxLength: 9
-          type: string
-          description: Het nummer van het verstrekte Nederlandse reisdocument.
-          example: "546376728"
-        autoriteitAfgifte:
-          $ref: '#/components/schemas/Waardetabel'
-        datumEindeGeldigheid:
-          $ref: '#/components/schemas/Datum_onvolledig'
-        datumInhoudingOfVermissing:
-          $ref: '#/components/schemas/Datum_onvolledig'
-        datumUitgifte:
-          $ref: '#/components/schemas/Datum_onvolledig'
-        soortReisdocument:
-          $ref: '#/components/schemas/Waardetabel'
-        geheimhoudingPersoonsgegevens:
-          title: Indicatie geheim
-          type: boolean
-          description: 'Een aanduiding die aangeeft dat gegevens wel of niet verstrekt
-            mogen worden. Indien true: op verzoek van deze persoon is het verstrekken
-            van gegevens over deze persoon aan bepaalde derden niet toegestaan.'
-        inOnderzoek:
-          $ref: '#/components/schemas/ReisdocumentInOnderzoek'
-      description: "Een document dat vereist is voor reizen naar het buitenland \n\
-        * **datumEindeGeldigheid** : De datum waarop een Nederlands reisdocument,\
-        \ dat aan de ingeschrevene is verstrekt of waarin de ingeschrevene is bijgeschreven,\
-        \ zijn geldigheid verliest. \n* **datumInhoudingOfVermissing**: De datum waarop\
-        \ een Nederlands reisdocument is vermist, ingehouden, ingeleverd, dan wel\
-        \ van rechtswege is vervallen. \n* **datumUitgifte** : De datum waarop het\
-        \ Nederlands reisdocument is uitgegeven of de datum van bijschrijving van\
-        \ de ingeschrevene in een Nederlands reisdocument. \n* **autoriteitAfgifte**\
-        \ : Tabel Autoriteit van afgifte Nederlands reisdocument, die aangeeft welke\
-        \ autoriteit het Nederlands reisdocument heeft verstrekt of de bijschrijving\
-        \ heeft verricht. \n* **aanduidingInhoudingOfVermissing** : Een aanduiding\
-        \ dat een Nederlands reisdocument is vermist, ingehouden, ingeleverd, dan\
-        \ wel van rechtswege is vervallen. \n* **soortReisdocument** : Tabel Nederlands\
-        \ reisdocument, die aangeeft welk Nederlandse reisdocument is verstrekt of\
-        \ in welk reisdocument de ingeschrevene is bijgeschreven."
-    ReisdocumentHal:
-      allOf:
-      - $ref: '#/components/schemas/Reisdocument'
-      - properties:
-          _links:
-            $ref: '#/components/schemas/Reisdocument_links'
     Naam:
       type: object
       properties:
@@ -4957,50 +4537,6 @@ components:
         datumIngangOnderzoek:
           $ref: '#/components/schemas/Datum_onvolledig'
       description: In onderzoek indicators over de gegevens over de verblijfstitel.
-    ReisdocumentInOnderzoek:
-      type: object
-      properties:
-        aanduidingInhoudingOfVermissing:
-          title: aanduidingInhoudingOfVermissing
-          type: boolean
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-        autoriteitAfgifte:
-          title: autoriteitAfgifte
-          type: boolean
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-        datumEindeGeldigheid:
-          title: datumEindeGeldigheid
-          type: boolean
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-        datumInhoudingOfVermissing:
-          title: datumInhoudingOfVermissing
-          type: boolean
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-        datumUitgifte:
-          title: datumUitgifte
-          type: boolean
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-        reisdocumentnummer:
-          title: reisdocumentnummer
-          type: boolean
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-        soortReisdocument:
-          title: soortReisdocument
-          type: boolean
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-        datumIngangOnderzoek:
-          $ref: '#/components/schemas/Datum_onvolledig'
-      description: Een groep van booleans om aan te geven welke gegevens van het reisdocument
-        in onderzoek zijn. Als de hele categorie in onderzoek is worden alle rubrieken
-        binnen die categorie op _true_ gezet. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)
-        .
     IngeschrevenPersoon_links:
       type: object
       properties:
@@ -5066,13 +4602,6 @@ components:
           $ref: '#/components/schemas/HalLink'
         ingeschrevenPersoon:
           $ref: '#/components/schemas/HalLink'
-    Reisdocument_links:
-      type: object
-      properties:
-        self:
-          $ref: '#/components/schemas/HalLink'
-        ingeschrevenPersoon:
-          $ref: '#/components/schemas/HalLink'
     IngeschrevenPersoon_embedded:
       type: object
       properties:
@@ -5099,19 +4628,6 @@ components:
             partnerschap wordt niet teruggegeven.
           items:
             $ref: '#/components/schemas/PartnerHal'
-    AanduidingInhoudingVermissingReisdocument_enum:
-      type: string
-      description: |-
-        De mogelijke waarden van de aanduiding van inhouding of vermissing van een Nederlands reisdocument. Zie logisch ontwerp BRP bij de stamtabellen:
-        * `ingehouden_of_ingeleverd` - I
-        * `vermist` - V
-        * `rechtswege` - R
-        * `niet_in_bezit_van` - N
-      enum:
-      - ingehouden_of_ingeleverd
-      - vermist
-      - rechtswege
-      - niet_in_bezit_van
     AanduidingBijzonderNederlanderschap_enum:
       type: string
       description: |-
@@ -5397,7 +4913,7 @@ components:
         type:
           type: string
           format: uri
-          example: https://www.vng.nl/realisatie/api/validaties/integer
+          example: https://www.vng.nl/realisatie/api/{major-versie}/validaties/integer
         name:
           type: string
           description: Naam van de parameter
@@ -5460,6 +4976,8 @@ components:
       properties:
         href:
           $ref: '#/components/schemas/Href'
+        templated:
+          type: boolean
         title:
           type: string
           description: Voor mens leesbaar label bij de link
@@ -5467,21 +4985,24 @@ components:
     Href:
       type: string
       format: uri
-      example: datapunt.voorbeeldgemeente.nl/api/resourcename/123456789
+      example: datapunt.voorbeeldgemeente.nl/api/{major-versie}/resourcename/{resource-identificatie}
     Waardetabel:
       type: object
       properties:
         code:
           title: code
           type: string
+          example: "6030"
         omschrijving:
           title: omschrijving
           type: string
+          description: Voor mensen leesbare omschrijving van de waarde.
+          example: Nederland
       description: Generieke tabel met waarden om een code en omschrijving op te nemen.
     IngeschrevenPersoonHalCollectie__embedded:
       type: object
       properties:
-        ingeschrevenPersoon:
+        ingeschrevenpersonen:
           type: array
           items:
             $ref: '#/components/schemas/IngeschrevenPersoonHal'
