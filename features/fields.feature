@@ -22,7 +22,9 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
 
   Attributen binnen een groep kunnen ook individueel worden bevraagd. De dot-notatie wordt gebruikt om specifieke attributen van een groep te selecteren. Bijvoorbeeld de voornamen, geboortedatum en geboorteplaats van een persoon kunnen worden opgevraagd via fields=naam.voornamen,geboorte.datum,geboorte.plaats.
 
-  Met de fields parameter kan ook worden aangegeven welke relaties moeten worden opgenomen. Dit betreft de links (in _links) die verwijzen (uri) naar de betreffende gerelateerde resource. Wanneer de fields parameter is meegegeven in het request worden alleen die relaties teruggegeven die zijn gevraagd in de fields parameter. Bijvoorbeeld de links naar de kinderen van een persoon worden teruggegeven bij fields=burgerservicenummer,naam,kinderen. In dat geval worden andere relaties, zoals ouders en partners niet opgenomen in het antwoord (in _links).
+  Met de fields parameter kan ook worden aangegeven welke relaties moeten worden opgenomen. Dit betreft de links (in _links) die verwijzen (uri) naar de betreffende gerelateerde resource. Wanneer de fields parameter is meegegeven in het request worden alleen die relaties teruggegeven die zijn gevraagd in de fields parameter.
+  In de fields parameter kan de relatie worden gevraagd door de relatienaam op te nemen al dan niet voorafgegaan door HAL-element _links.
+  Bijvoorbeeld de links naar de kinderen van een persoon worden teruggegeven bij fields=burgerservicenummer,naam,kinderen. In dat geval worden andere relaties, zoals ouders en partners niet opgenomen in het antwoord (in _links). Hetzelfde antwoord kan worden verkregen met fields=burgerservicenummer,naam,_links.kinderen.
 
   De self-link in _links (JSON HAL) wordt altijd teruggegeven in het antwoord. Deze hoeft (en mag) niet te worden opgenomen in de fields parameter.
 
