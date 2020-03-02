@@ -2,8 +2,6 @@ openapi: 3.0.0
 servers:
   - description: "SwaggerHub API Auto Mocking"
     url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bevragingen_ingeschreven_personen
-  - description: "Referentie-implementatie"
-    url: https://www.voorbeeldgemeente.nl/api/bevragingen_ingeschreven_personen
 info:
   title: Bevragingen ingeschreven personen
   description: "API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> "
@@ -855,6 +853,12 @@ components:
       maxLength: 9
       minLength: 9
       example: "555555021"
+    Reisdocumentnummer:
+      type: "string"
+      title: "Reisdocumentnummer"
+      description: "Het nummer van het verstrekte Nederlandse reisdocument."
+      maxLength: 9
+      example: "546376728"
     IngeschrevenPersoon:
       type: "object"
       description: "Gegevens over de ingeschreven persoon. \n* **datumEersteInschrijving**\
@@ -900,6 +904,12 @@ components:
           $ref: "#/components/schemas/Gezagsverhouding"
         verblijfstitel:
           $ref: "#/components/schemas/Verblijfstitel"
+        reisdocument:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Reisdocumentnummer"
+        verblijfplaatsnummeraanduiding:
+            type: string
     IngeschrevenPersoonHalCollectie:
       type: object
       properties:
@@ -1832,8 +1842,6 @@ components:
             \ verwijst"
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/HalLink"
-        partnerhistorie:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/HalLink"
         partners:
           title: "heeftAlsPartner"
           type: "array"
@@ -1842,9 +1850,13 @@ components:
             \ partnerschap wordt niet teruggegeven."
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/HalLink"
+        partnerhistorie:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/HalLink"
         verblijfplaatshistorie:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/HalLink"
         verblijfstitelhistorie:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/HalLink"
+        nationaliteitHistorie:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/HalLink"
         verblijfplaatsNummeraanduiding:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/HalLink"
