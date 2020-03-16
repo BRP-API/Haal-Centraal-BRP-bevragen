@@ -904,7 +904,7 @@ components:
           $ref: "#/components/schemas/Gezagsverhouding"
         verblijfstitel:
           $ref: "#/components/schemas/Verblijfstitel"
-        reisdocument:
+        reisdocumenten:
           type: "array"
           items:
             $ref: "#/components/schemas/Reisdocumentnummer"
