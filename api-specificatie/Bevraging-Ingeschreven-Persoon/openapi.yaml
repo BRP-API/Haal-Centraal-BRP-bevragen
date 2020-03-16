@@ -908,8 +908,6 @@ components:
           type: "array"
           items:
             $ref: "#/components/schemas/Reisdocumentnummer"
-        verblijfplaatsnummeraanduiding:
-            type: string
     IngeschrevenPersoonHalCollectie:
       type: object
       properties:
