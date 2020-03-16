@@ -1225,7 +1225,7 @@ components:
               title: "gebruikInLopendeTekst"
               description: "De naam zoals die in lopende tekst gebruikt kan worden."
               example: "de heer In het Veld"
-            aanduidingnaamgebruik:
+            aanduidingNaamgebruik:
               $ref: "#/components/schemas/Naamgebruik_enum"
     PersoonInOnderzoek:
       type: "object"
