@@ -25,7 +25,7 @@ paths:
         identificatiecodenummeraanduiding retourneert Bewoning de personen die op
         de verblijfplaats zijn ingeschreven.</p><p><br />Op basis van de parameters
         wordt een of meerdere bewoningen geretourneerd inclusief gegevens over de
-        bewoners van het betreffende verblijfobject. Ten minste &eacute;&eacute;n
+        bewoners van het betreffende verblijfobject. &Eacute;&eacute;n
         van de volgende parameters moet zijn opgenomen.</p><ol><li>Identificatiecodenummeraanduiding
         </li><li>Burgerservicenummer</li></ol><p>&nbsp;</p><p><br />De bovenstaande
         parameters moeten gecombineerd worden met een peildatum of een periode.</p><p>Overleden
