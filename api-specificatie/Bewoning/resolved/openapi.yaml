@@ -25,8 +25,8 @@ paths:
         identificatiecodenummeraanduiding retourneert Bewoning de personen die op
         de verblijfplaats zijn ingeschreven.</p><p><br />Op basis van de parameters
         wordt een of meerdere bewoningen geretourneerd inclusief gegevens over de
-        bewoners van het betreffende verblijfobject. &Eacute;&eacute;n
-        van de volgende parameters moet zijn opgenomen.</p><ol><li>Identificatiecodenummeraanduiding
+        bewoners van het betreffende verblijfobject. &Eacute;&eacute;n van de volgende
+        parameters moet zijn opgenomen.</p><ol><li>Identificatiecodenummeraanduiding
         </li><li>Burgerservicenummer</li></ol><p>&nbsp;</p><p><br />De bovenstaande
         parameters moeten gecombineerd worden met een peildatum of een periode.</p><p>Overleden
         personen worden opgenomen in het zoekresultaat tot aan de datum van overlijden
@@ -1121,7 +1121,11 @@ components:
         ingeschrevenPersonen:
           type: array
           items:
-            $ref: '#/components/schemas/IngeschrevenPersoon'
+            allOf:
+            - $ref: '#/components/schemas/IngeschrevenPersoon'
+            - properties:
+                _links:
+                  $ref: '#/components/schemas/IngeschrevenPersoon_links'
     Burgerservicenummer:
       title: Burgerservicenummer
       maxLength: 9
@@ -2031,6 +2035,52 @@ components:
       type: string
       description: Het nummer van het verstrekte Nederlandse reisdocument.
       example: "546376728"
+    IngeschrevenPersoon_links:
+      type: object
+      properties:
+        self:
+          $ref: '#/components/schemas/HalLink'
+        ouders:
+          title: heeftAlsOuder
+          maxItems: 4
+          type: array
+          description: De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE
+            verwijst`
+          items:
+            $ref: '#/components/schemas/HalLink'
+        reisdocumenten:
+          title: isHouderVan
+          type: array
+          description: De ingezetene waaraan het REISDOCUMENT is verstrekt. Dit is
+            de inverse relatie van heeftAlsHouder. Reisdocumenten die aan een ingezetene
+            zijn verstrekt.
+          items:
+            $ref: '#/components/schemas/HalLink'
+        kinderen:
+          title: heeftAlsKind
+          type: array
+          description: De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE
+            verwijst
+          items:
+            $ref: '#/components/schemas/HalLink'
+        partners:
+          title: heeftAlsPartner
+          type: array
+          description: De actuele bij de ingeschreven persoon geregistreerde huwelijken
+            en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd
+            partnerschap wordt niet teruggegeven.
+          items:
+            $ref: '#/components/schemas/HalLink'
+        partnerhistorie:
+          $ref: '#/components/schemas/HalLink'
+        verblijfplaatshistorie:
+          $ref: '#/components/schemas/HalLink'
+        verblijfstitelhistorie:
+          $ref: '#/components/schemas/HalLink'
+        nationaliteitHistorie:
+          $ref: '#/components/schemas/HalLink'
+        verblijfplaatsNummeraanduiding:
+          $ref: '#/components/schemas/HalLink'
     BewoningHalCollectie__embedded:
       type: object
       properties:
