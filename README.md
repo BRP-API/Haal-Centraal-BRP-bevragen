@@ -4,6 +4,9 @@ BRP Bevragen is een Haal Centraal API voor het zoeken en raadplegen van ingeschr
 
 De informatie die de API levert is herleidbaar naar het LO GBA 3.10.
 
+## Getting started
+Om te beginnen met ontwikkelen van de API is de [getting started](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/docs/getting-started.md) een goed beginpunt. De API is technisch gespecificeerd in Open API specificaties (zie hieronder bij documentatie).
+
 ## Documentatie
 * [Productvisie](https://github.com/VNG-Realisatie/RSGB-bevragingen/blob/master/docs/productvision.md)
 * [Definition of Ready](https://github.com/VNG-Realisatie/RSGB-bevragingen/blob/master/docs/definition_of_ready.md)
