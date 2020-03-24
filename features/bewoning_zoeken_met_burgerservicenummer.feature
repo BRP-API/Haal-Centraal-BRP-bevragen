@@ -48,11 +48,16 @@ Scenario: Zoeken in een periode
     Dan wordt de volgende bewoning teruggegeven
     | naam openbare ruimte | huisnummer | identificatie code nummeraanduiding |
     | Kerkstraat           | 83         | 234567890                           |
+    | Javaplein            | 11         | 345678901                           |
     En wordt bij de bewoning met identificatiecodenummeraanduiding 234567890 de volgende bewoners teruggegeven
     | burgerservicenummer | datum aanvang adreshouding | datum tot  |
     | 999994669           | 1993-09-10                 | 1994-05-08 |
+    En wordt bij de bewoning met identificatiecodenummeraanduiding 345678901 de volgende bewoners teruggegeven
+    | burgerservicenummer | datum aanvang adreshouding | datum tot  |
+    | 999994669           | 1961-12-30                 | 1993-02-15 |
 
-Scenario: Zoeken in een periode en peildatum (periode en peildatum overlappen en vallen op eenzelfde verblijfplaats periode)
+
+Scenario: Zoeken in een periode en peildatum (verblijfplaats op peildatum is gelijk aan een verblijfplaats in de periode)
     Als bewoningen wordt gezocht met burgerservicenummer 999994669, datumvan 1993-01-01 en datumtotenmet 1994-01-01 en peildatum 1994-02-01
     Dan wordt de volgende bewoning teruggegeven
     | naam openbare ruimte | huisnummer | identificatie code nummeraanduiding |
@@ -61,7 +66,7 @@ Scenario: Zoeken in een periode en peildatum (periode en peildatum overlappen en
     | burgerservicenummer | datum aanvang adreshouding | datum tot  |
     | 999994669           | 1993-09-10                 | 1994-05-08 |
 
-Scenario: Zoeken in een periode en peildatum (periode en peildatum overlappen en vallen niet op eenzelfde verblijfplaats periode)
-    Als bewoningen wordt gezocht met burgerservicenummer 999994669, datumvan 1993-01-01 en datumtotenmet 1994-01-01 en peildatum 1993-02-01
+Scenario: Zoeken in een periode en peildatum (verblijfplaats op peildatum is ongelijk aan een verblijfplaats in de periode)
+    Als bewoningen wordt gezocht met burgerservicenummer 999994669, datumvan 1993-01-01 en datumtotenmet 1994-01-01 en peildatum 1994-06-01
     Dan wordt er geen bewoning teruggegeven
     
