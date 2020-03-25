@@ -10,9 +10,7 @@ De [functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-inge
 
 De 'Bevraging Ingeschreven Persoon' Web API is te benaderen via de volgende url: https://www.haalcentraal.nl/haalcentraal/api/brp
 
-Om de web api te kunnen bevragen is een apikey nodig. Een apikey kan worden aangevraagd bij ...
-
-De test cases die door de API lab versie van de 'Bevraging Ingeschreven Persoon' Web API worden ondersteund zijn te downloaden via https://tinyurl.com/RVIGTestCases
+Om de web api te kunnen bevragen is een apikey nodig. Deelnemers aan een API lab krijgen de apikey toegestuurd (per e-mail) wanneer ze zich hebben aangemeld.
 
 De werking van de 'Bevraging Ingeschreven Persoon' Web API is het makkelijkst te testen met behulp van [Postman](https://www.getpostman.com/).
 
@@ -74,3 +72,6 @@ bsn test persoon | situatie
 999991905 | twee beëindigde relaties
 999993550 | partner niet ingeschreven
 999990421 | meerdere kinderen, wel en niet-ingeschreven
+
+De API gebruikt de GBA-V proefomgeving. Alle testpersonen die daarin voorkomen kun je ook in de API gebruiken. De volledige set testpersonen kan worden gedownload bij de [RvIG](https://www.rvig.nl/documenten/richtlijnen/2018/09/20/testdataset-persoonslijsten-proefomgevingen-gba-v).
+Een vertaling van GBBA-V (LO GBA) attributen naar BRP API properties staat beschreven in de [BRP-LO GBA mapping](BRP-LO GBA mapping.xlsx).
