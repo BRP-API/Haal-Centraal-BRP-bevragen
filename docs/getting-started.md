@@ -36,7 +36,7 @@ https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/mast
 
 Selecteer hiervoor de /GET ingeschreven Natuurlijk Persoon request.  
 ![/GET ingeschreven Natuurlijk Persoon request](./img/5-select-request.jpg)  
-In het rechterscherm wordt een invoerscherm voor de request getoond. Uncheck voor de volgende voorbeeld aanroep de expand en fields Query Params en vul in de burgerservicenummer Path Variabele een bsn uit het 20190524_Testset+persoonslijsten+proefomgeving+GBA-V.ods bestand dat is te downloaden via https://tinyurl.com/RVIGTestCases.
+In het rechterscherm wordt een invoerscherm voor de request getoond. Uncheck voor de volgende voorbeeld aanroep de expand en fields Query Params en vul in de burgerservicenummer Path Variabele een bsn in (zie onderaan de Getting started voor mogelijke burgerservicenummers).
 
 Selecteer de Headers tab en voeg de x-api-key header toe met uw apikey.
 ![/GET ingeschreven Natuurlijk Persoon request](./img/6-add-apikey-header.jpg)  
