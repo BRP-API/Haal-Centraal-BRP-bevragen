@@ -1,0 +1,146 @@
+openapi: 3.0.0
+info:
+  title: "BRP Wijzigingen API"
+  version: "1.0.0"
+  contact:
+    name: test
+    email: me@home.nl
+    url: http://home.nl
+paths:
+  /wijzigingen:
+    get:
+      tags: 
+      - wijzigingen
+      operationId: getWijzigingen
+      parameters:
+        - name: afnemersindicatie
+          in: query
+          description: afnemersindicatie
+          required: true
+          schema:
+            type: string
+        - name: van
+          in: query
+          description: "van (yyyy-mm-ddThh:mm:ss)"
+          required: true
+          schema:
+            type: string
+            format: datetime
+        - name: tot
+          in: query
+          description: "tot (yyyy-mm-ddThh:mm:ss)"
+          required: false
+          schema:
+            type: string
+            format: datetime
+      responses:
+        200:
+          description: "response"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WijzigingenHal'
+              examples:
+                gewijzigdIngeschrevenPersoon:
+                  $ref: '#/components/examples/GewijzigdIngeschrevenPersoon'
+                langerDanEenWeek:
+                  $ref: '#/components/examples/BevraagPeriodeLangerDanEenWeek'
+                alleenVan:
+                  $ref: '#/components/examples/AlleenVanDatumTijd'
+        400:
+          $ref: '#/components/responses/400'
+
+components:
+  responses:
+    '400':
+      description: Bad Request
+      content:
+        application/problem+json:
+          schema:
+            $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/BadRequestFoutbericht'
+          examples:
+            alleenTotDatum:
+              $ref: '#/components/examples/AlleenTotDatumTijd'
+
+  schemas:
+    WijzigingenHal:
+      type: object
+      properties:
+        _links:
+          $ref: '#/components/schemas/WijzigingenHal_links'
+        wijzigingen:
+          $ref: '#/components/schemas/Wijzigingen'
+    WijzigingenHal_links:
+      allOf:
+        - $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/HalCollectionLinks'
+        - properties:
+            ingeschrevenpersoon:
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/HalLink'
+            vervolgbevragingen:
+              type: array
+              items:
+                $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/api-specificatie/common.yaml#/components/schemas/HalLink'
+    Wijzigingen:
+      type: array
+      items:
+        $ref: '#/components/schemas/Wijziging'
+    Wijziging:
+      type: object
+      properties:
+        burgerservicenummer:
+          type: string
+        type:
+          type: string
+        mutatietijdstip:
+          type: string
+          format: datetime
+  examples:
+    GewijzigdIngeschrevenPersoon:
+      summary: gewijzigd ingeschreven persoon
+      value:
+        _links:
+          self:
+            href: '/wijzigingen?van=2020-05-11T14:00:00&tot=2020-05-11T16:00:00&afnemerindicatie=085801'
+          ingeschrevenPersoon:
+            href: '/ingeschrevenpersonen/{burgerservicenummer}'
+            templated: true
+        wijzigingen:
+          - burgerservicenummer: 999999321
+            type: ingeschrevenpersoon
+            mutatietijdstip: '2020-05-11T14:13:37'
+    BevraagPeriodeLangerDanEenWeek:
+      summary: bevraag periode is langer dan één BevraagPeriodeLangerDanEenWeek
+      description: de vervolgbevragingen zijn links met een periode van 7 dagen binnen de bevraag periode
+      value:
+        _links:
+          self:
+            href: '/wijzigingen?van=2020-02-12&tot=2020-02-13&gemeentecode=0344'
+          vervolgbevragingen:
+            - href: /wijzigingen?van=2020-05-08T00:00:00&tot=2020-05-15T00:00:00&afnemerindicatie=085801
+            - href: /wijzigingen?van=2020-05-15T00:00:00&tot=2020-05-22T00:00:00&afnemerindicatie=085801
+            - href: /wijzigingen?van=2020-05-22T00:00:00&tot=2020-05-29T00:00:00&afnemerindicatie=085801
+            - href: /wijzigingen?van=2020-05-29T00:00:00&tot=2020-05-01T00:00:00&afnemerindicatie=085801
+    AlleenVanDatumTijd:
+      summary: alleen van datumtijd is opgegeven
+      description: de van datumtijd in de vervolgbevraging is de opgegeven van datumtijd + 7 dagen
+      value:
+        _links:
+          self:
+            href: '/wijzigingen?van=2020-05-01&afnemerindicatie=085801'
+          vervolgbevragingen:
+            - href: /wijzigingen?van=2020-05-08&afnemerindicatie=085801
+    AlleenTotDatumTijd:
+      summary: alleen tot datumtijd is opgegeven
+      description: de van datumtijd is een verplicht veld
+      value:
+        type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1 400 Bad Request
+        title: van parameter moet worden opgegeven.
+        status: 400
+        detail: The request could not be understood by the server due to malformed syntax. The client SHOULD NOT repeat the request without modification.
+        instance: /wijzigingen?parameter=van
+        code: paramsRequired
+        invalid-params:
+          - type: https://www.vng.nl/realisatie/api/validaties/integer
+            name: van
+            code: datetime
+            reason: van datumtijd is verplicht.
