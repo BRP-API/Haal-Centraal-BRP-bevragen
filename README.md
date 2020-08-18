@@ -6,20 +6,22 @@ BRP Bevragen is een Haal Centraal API voor het zoeken en raadplegen van ingeschr
 https://eu-rm.roadmunk.com/publish/29a13c572a0dfc79f1d0386fc572e15383afe11f
 
 ## Getting started
-Om te beginnen met ontwikkelen van de API is de [getting started](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/docs/getting-started.md) een goed beginpunt. De API is technisch gespecificeerd in Open API specificaties (zie hieronder bij documentatie).
+Om te beginnen met ontwikkelen van de API is de [getting started](./docs/getting-started.md) een goed beginpunt. De API is technisch gespecificeerd in Open API specificaties (zie hieronder bij documentatie).
 
 ## Documentatie
+* [Technische specificaties](./specificatie) (Open API Specificaties en JSON schema) en in [Swagger-formaat](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/specificatie/openapi.yaml)
 * [Productvisie](https://github.com/VNG-Realisatie/RSGB-bevragingen/blob/master/docs/productvision.md)
 * [Definition of Ready](https://github.com/VNG-Realisatie/RSGB-bevragingen/blob/master/docs/definition_of_ready.md)
 * [Definition of Done](https://github.com/VNG-Realisatie/RSGB-bevragingen/blob/master/docs/definition_of_done.md)
 * Hoe u kunt [bijdragen](https://github.com/VNG-Realisatie/Tutorial/blob/master/CONTRIBUTING.md)
 * [Omgangsvormen](https://github.com/VNG-Realisatie/Tutorial/blob/master/CODE_OF_CONDUCT.md)
-* [Functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features)
-* [Technische specificaties van de Bevraging Ingeschreven Persoon](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/api-specificatie/Bevraging-Ingeschreven-Persoon) (Open API Specificaties en JSON schema) en in [Swagger-formaat](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/Bevraging-Ingeschreven-Persoon/openapi.yaml)
-* [Technische specificaties van Reisdocumenten](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/api-specificatie/Reisdocumenten) (Open API Specificaties en JSON schema) en in [Swagger-formaat](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/Reisdocumenten/openapi.yaml)
-* [Technische specificaties van de Bevraging Landelijke tabellen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/api-specificatie/Landelijke%20tabellen) (Open API Specificaties) en in [Swagger-formaat](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/Landelijke%20tabellen/openapi.yaml)
-* [Technische specificaties van de Bevraging Bewoners per adres en bevraging medebewonders](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/api-specificatie/Bewoning) (Open API Specificaties en JSON schema) en in [Swagger-formaat](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/api-specificatie/Bewoning/openapi.yaml)
+* [Functionele specificaties](./features)
 * Ontwerpkeuzes staan in het document [Design decisions](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/docs/design_decisions.md)
+
+Naast deze API is er nog een aantal andere aan BRP gerelateerde API's beschikbaar:
+* [Reisdocumenten bevragen](https://github.com/VNG-Realisatie/Haal-Centraal-Reisdocumenten-bevragen)
+* [Bewoning en medebewoners bevragen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bewoning)
+* [Landelijke tabellen bevragen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-tabellen-bevragen)
 
 ## Bronnen
 * [Landelijke API strategie voor de overheid](https://geonovum.github.io/KP-APIs/)
@@ -27,7 +29,6 @@ Om te beginnen met ontwikkelen van de API is de [getting started](https://github
 ## Contactpersonen:
 * Product owner: [@CathyDingemanse](https://github.com/CathyDingemanse)
 * Berichtontwerper: [@JohanBoer](https://github.com/JohanBoer)
-* Scrum Master: Jan Willem Kooi JanWillem.Kooi@vng.nl
 
 ## Licentie
 Copyright &copy; VNG Realisatie 2018
