@@ -278,12 +278,6 @@ paths:
               $ref: '#/components/headers/api_version'
             warning:
               $ref: '#/components/headers/warning'
-            X-Rate-Limit-Limit:
-              $ref: '#/components/headers/X_Rate_Limit_Limit'
-            X-Rate-Limit-Remaining:
-              $ref: '#/components/headers/X_Rate_Limit_Remaining'
-            X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -367,78 +361,6 @@ paths:
                   not acceptable according to thr accept headers sent in the request
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: notAcceptable
-        "409":
-          description: Conflict
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.10
-                  409 Conflict
-                title: Conflict
-                status: 409
-                detail: The request could not be completed due to a conflict with
-                  the current state of the resource
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: conflict
-        "410":
-          description: Gone
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.11
-                  410 Gone
-                title: Gone
-                status: 410
-                detail: The request could not be completed due to a conflict with
-                  the current state of the resource
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: gone
-        "415":
-          description: Unsupported Media Type
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.16
-                  415 Unsupported Media Type
-                title: Unsupported Media Type
-                status: 415
-                detail: The server is refusing the request because the entity of the
-                  request is in a format not supported by the requested resource for
-                  the requested method.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: unsupported
-        "429":
-          description: Too Many Requests
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
-                title: Too many request
-                status: 429
-                detail: The user has sent too many requests in a given amount of time
-                  (rate limiting).
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: tooManyRequests
         "500":
           description: Internal Server Error
           headers:
@@ -548,12 +470,6 @@ paths:
               $ref: '#/components/headers/api_version'
             warning:
               $ref: '#/components/headers/warning'
-            X-Rate-Limit-Limit:
-              $ref: '#/components/headers/X_Rate_Limit_Limit'
-            X-Rate-Limit-Remaining:
-              $ref: '#/components/headers/X_Rate_Limit_Remaining'
-            X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -654,78 +570,6 @@ paths:
                   not acceptable according to thr accept headers sent in the request
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: notAcceptable
-        "409":
-          description: Conflict
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.10
-                  409 Conflict
-                title: Conflict
-                status: 409
-                detail: The request could not be completed due to a conflict with
-                  the current state of the resource
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: conflict
-        "410":
-          description: Gone
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.11
-                  410 Gone
-                title: Gone
-                status: 410
-                detail: The request could not be completed due to a conflict with
-                  the current state of the resource
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: gone
-        "415":
-          description: Unsupported Media Type
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.16
-                  415 Unsupported Media Type
-                title: Unsupported Media Type
-                status: 415
-                detail: The server is refusing the request because the entity of the
-                  request is in a format not supported by the requested resource for
-                  the requested method.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: unsupported
-        "429":
-          description: Too Many Requests
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
-                title: Too many request
-                status: 429
-                detail: The user has sent too many requests in a given amount of time
-                  (rate limiting).
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: tooManyRequests
         "500":
           description: Internal Server Error
           headers:
@@ -820,12 +664,6 @@ paths:
               $ref: '#/components/headers/api_version'
             warning:
               $ref: '#/components/headers/warning'
-            X-Rate-Limit-Limit:
-              $ref: '#/components/headers/X_Rate_Limit_Limit'
-            X-Rate-Limit-Remaining:
-              $ref: '#/components/headers/X_Rate_Limit_Remaining'
-            X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -926,78 +764,6 @@ paths:
                   not acceptable according to thr accept headers sent in the request
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: notAcceptable
-        "409":
-          description: Conflict
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.10
-                  409 Conflict
-                title: Conflict
-                status: 409
-                detail: The request could not be completed due to a conflict with
-                  the current state of the resource
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: conflict
-        "410":
-          description: Gone
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.11
-                  410 Gone
-                title: Gone
-                status: 410
-                detail: The request could not be completed due to a conflict with
-                  the current state of the resource
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: gone
-        "415":
-          description: Unsupported Media Type
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.16
-                  415 Unsupported Media Type
-                title: Unsupported Media Type
-                status: 415
-                detail: The server is refusing the request because the entity of the
-                  request is in a format not supported by the requested resource for
-                  the requested method.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: unsupported
-        "429":
-          description: Too Many Requests
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
-                title: Too many request
-                status: 429
-                detail: The user has sent too many requests in a given amount of time
-                  (rate limiting).
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: tooManyRequests
         "500":
           description: Internal Server Error
           headers:
@@ -1084,12 +850,6 @@ paths:
               $ref: '#/components/headers/api_version'
             warning:
               $ref: '#/components/headers/warning'
-            X-Rate-Limit-Limit:
-              $ref: '#/components/headers/X_Rate_Limit_Limit'
-            X-Rate-Limit-Remaining:
-              $ref: '#/components/headers/X_Rate_Limit_Remaining'
-            X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -1190,78 +950,6 @@ paths:
                   not acceptable according to thr accept headers sent in the request
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: notAcceptable
-        "409":
-          description: Conflict
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.10
-                  409 Conflict
-                title: Conflict
-                status: 409
-                detail: The request could not be completed due to a conflict with
-                  the current state of the resource
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: conflict
-        "410":
-          description: Gone
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.11
-                  410 Gone
-                title: Gone
-                status: 410
-                detail: The request could not be completed due to a conflict with
-                  the current state of the resource
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: gone
-        "415":
-          description: Unsupported Media Type
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.16
-                  415 Unsupported Media Type
-                title: Unsupported Media Type
-                status: 415
-                detail: The server is refusing the request because the entity of the
-                  request is in a format not supported by the requested resource for
-                  the requested method.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: unsupported
-        "429":
-          description: Too Many Requests
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
-                title: Too many request
-                status: 429
-                detail: The user has sent too many requests in a given amount of time
-                  (rate limiting).
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: tooManyRequests
         "500":
           description: Internal Server Error
           headers:
@@ -1356,12 +1044,6 @@ paths:
               $ref: '#/components/headers/api_version'
             warning:
               $ref: '#/components/headers/warning'
-            X-Rate-Limit-Limit:
-              $ref: '#/components/headers/X_Rate_Limit_Limit'
-            X-Rate-Limit-Remaining:
-              $ref: '#/components/headers/X_Rate_Limit_Remaining'
-            X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -1462,78 +1144,6 @@ paths:
                   not acceptable according to thr accept headers sent in the request
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: notAcceptable
-        "409":
-          description: Conflict
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.10
-                  409 Conflict
-                title: Conflict
-                status: 409
-                detail: The request could not be completed due to a conflict with
-                  the current state of the resource
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: conflict
-        "410":
-          description: Gone
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.11
-                  410 Gone
-                title: Gone
-                status: 410
-                detail: The request could not be completed due to a conflict with
-                  the current state of the resource
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: gone
-        "415":
-          description: Unsupported Media Type
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.16
-                  415 Unsupported Media Type
-                title: Unsupported Media Type
-                status: 415
-                detail: The server is refusing the request because the entity of the
-                  request is in a format not supported by the requested resource for
-                  the requested method.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: unsupported
-        "429":
-          description: Too Many Requests
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
-                title: Too many request
-                status: 429
-                detail: The user has sent too many requests in a given amount of time
-                  (rate limiting).
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: tooManyRequests
         "500":
           description: Internal Server Error
           headers:
@@ -1620,12 +1230,6 @@ paths:
               $ref: '#/components/headers/api_version'
             warning:
               $ref: '#/components/headers/warning'
-            X-Rate-Limit-Limit:
-              $ref: '#/components/headers/X_Rate_Limit_Limit'
-            X-Rate-Limit-Remaining:
-              $ref: '#/components/headers/X_Rate_Limit_Remaining'
-            X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -1726,78 +1330,6 @@ paths:
                   not acceptable according to thr accept headers sent in the request
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: notAcceptable
-        "409":
-          description: Conflict
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.10
-                  409 Conflict
-                title: Conflict
-                status: 409
-                detail: The request could not be completed due to a conflict with
-                  the current state of the resource
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: conflict
-        "410":
-          description: Gone
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.11
-                  410 Gone
-                title: Gone
-                status: 410
-                detail: The request could not be completed due to a conflict with
-                  the current state of the resource
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: gone
-        "415":
-          description: Unsupported Media Type
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.16
-                  415 Unsupported Media Type
-                title: Unsupported Media Type
-                status: 415
-                detail: The server is refusing the request because the entity of the
-                  request is in a format not supported by the requested resource for
-                  the requested method.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: unsupported
-        "429":
-          description: Too Many Requests
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
-                title: Too many request
-                status: 429
-                detail: The user has sent too many requests in a given amount of time
-                  (rate limiting).
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: tooManyRequests
         "500":
           description: Internal Server Error
           headers:
@@ -1892,12 +1424,6 @@ paths:
               $ref: '#/components/headers/api_version'
             warning:
               $ref: '#/components/headers/warning'
-            X-Rate-Limit-Limit:
-              $ref: '#/components/headers/X_Rate_Limit_Limit'
-            X-Rate-Limit-Remaining:
-              $ref: '#/components/headers/X_Rate_Limit_Remaining'
-            X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -1998,78 +1524,6 @@ paths:
                   not acceptable according to thr accept headers sent in the request
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: notAcceptable
-        "409":
-          description: Conflict
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.10
-                  409 Conflict
-                title: Conflict
-                status: 409
-                detail: The request could not be completed due to a conflict with
-                  the current state of the resource
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: conflict
-        "410":
-          description: Gone
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.11
-                  410 Gone
-                title: Gone
-                status: 410
-                detail: The request could not be completed due to a conflict with
-                  the current state of the resource
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: gone
-        "415":
-          description: Unsupported Media Type
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.16
-                  415 Unsupported Media Type
-                title: Unsupported Media Type
-                status: 415
-                detail: The server is refusing the request because the entity of the
-                  request is in a format not supported by the requested resource for
-                  the requested method.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: unsupported
-        "429":
-          description: Too Many Requests
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
-                title: Too many request
-                status: 429
-                detail: The user has sent too many requests in a given amount of time
-                  (rate limiting).
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: tooManyRequests
         "500":
           description: Internal Server Error
           headers:
@@ -2158,12 +1612,6 @@ paths:
               $ref: '#/components/headers/api_version'
             warning:
               $ref: '#/components/headers/warning'
-            X-Rate-Limit-Limit:
-              $ref: '#/components/headers/X_Rate_Limit_Limit'
-            X-Rate-Limit-Remaining:
-              $ref: '#/components/headers/X_Rate_Limit_Remaining'
-            X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -2264,78 +1712,6 @@ paths:
                   not acceptable according to thr accept headers sent in the request
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: notAcceptable
-        "409":
-          description: Conflict
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.10
-                  409 Conflict
-                title: Conflict
-                status: 409
-                detail: The request could not be completed due to a conflict with
-                  the current state of the resource
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: conflict
-        "410":
-          description: Gone
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.11
-                  410 Gone
-                title: Gone
-                status: 410
-                detail: The request could not be completed due to a conflict with
-                  the current state of the resource
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: gone
-        "415":
-          description: Unsupported Media Type
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.16
-                  415 Unsupported Media Type
-                title: Unsupported Media Type
-                status: 415
-                detail: The server is refusing the request because the entity of the
-                  request is in a format not supported by the requested resource for
-                  the requested method.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: unsupported
-        "429":
-          description: Too Many Requests
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
-                title: Too many request
-                status: 429
-                detail: The user has sent too many requests in a given amount of time
-                  (rate limiting).
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: tooManyRequests
         "500":
           description: Internal Server Error
           headers:
@@ -2463,12 +1839,6 @@ paths:
               $ref: '#/components/headers/api_version'
             warning:
               $ref: '#/components/headers/warning'
-            X-Rate-Limit-Limit:
-              $ref: '#/components/headers/X_Rate_Limit_Limit'
-            X-Rate-Limit-Remaining:
-              $ref: '#/components/headers/X_Rate_Limit_Remaining'
-            X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -2569,78 +1939,6 @@ paths:
                   not acceptable according to thr accept headers sent in the request
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: notAcceptable
-        "409":
-          description: Conflict
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.10
-                  409 Conflict
-                title: Conflict
-                status: 409
-                detail: The request could not be completed due to a conflict with
-                  the current state of the resource
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: conflict
-        "410":
-          description: Gone
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.11
-                  410 Gone
-                title: Gone
-                status: 410
-                detail: The request could not be completed due to a conflict with
-                  the current state of the resource
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: gone
-        "415":
-          description: Unsupported Media Type
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.16
-                  415 Unsupported Media Type
-                title: Unsupported Media Type
-                status: 415
-                detail: The server is refusing the request because the entity of the
-                  request is in a format not supported by the requested resource for
-                  the requested method.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: unsupported
-        "429":
-          description: Too Many Requests
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
-                title: Too many request
-                status: 429
-                detail: The user has sent too many requests in a given amount of time
-                  (rate limiting).
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: tooManyRequests
         "500":
           description: Internal Server Error
           headers:
@@ -2764,12 +2062,6 @@ paths:
               $ref: '#/components/headers/api_version'
             warning:
               $ref: '#/components/headers/warning'
-            X-Rate-Limit-Limit:
-              $ref: '#/components/headers/X_Rate_Limit_Limit'
-            X-Rate-Limit-Remaining:
-              $ref: '#/components/headers/X_Rate_Limit_Remaining'
-            X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -2870,78 +2162,6 @@ paths:
                   not acceptable according to thr accept headers sent in the request
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: notAcceptable
-        "409":
-          description: Conflict
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.10
-                  409 Conflict
-                title: Conflict
-                status: 409
-                detail: The request could not be completed due to a conflict with
-                  the current state of the resource
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: conflict
-        "410":
-          description: Gone
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.11
-                  410 Gone
-                title: Gone
-                status: 410
-                detail: The request could not be completed due to a conflict with
-                  the current state of the resource
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: gone
-        "415":
-          description: Unsupported Media Type
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.16
-                  415 Unsupported Media Type
-                title: Unsupported Media Type
-                status: 415
-                detail: The server is refusing the request because the entity of the
-                  request is in a format not supported by the requested resource for
-                  the requested method.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: unsupported
-        "429":
-          description: Too Many Requests
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
-                title: Too many request
-                status: 429
-                detail: The user has sent too many requests in a given amount of time
-                  (rate limiting).
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: tooManyRequests
         "500":
           description: Internal Server Error
           headers:
@@ -3067,12 +2287,6 @@ paths:
               $ref: '#/components/headers/api_version'
             warning:
               $ref: '#/components/headers/warning'
-            X-Rate-Limit-Limit:
-              $ref: '#/components/headers/X_Rate_Limit_Limit'
-            X-Rate-Limit-Remaining:
-              $ref: '#/components/headers/X_Rate_Limit_Remaining'
-            X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -3173,78 +2387,6 @@ paths:
                   not acceptable according to thr accept headers sent in the request
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: notAcceptable
-        "409":
-          description: Conflict
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.10
-                  409 Conflict
-                title: Conflict
-                status: 409
-                detail: The request could not be completed due to a conflict with
-                  the current state of the resource
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: conflict
-        "410":
-          description: Gone
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.11
-                  410 Gone
-                title: Gone
-                status: 410
-                detail: The request could not be completed due to a conflict with
-                  the current state of the resource
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: gone
-        "415":
-          description: Unsupported Media Type
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.16
-                  415 Unsupported Media Type
-                title: Unsupported Media Type
-                status: 415
-                detail: The server is refusing the request because the entity of the
-                  request is in a format not supported by the requested resource for
-                  the requested method.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: unsupported
-        "429":
-          description: Too Many Requests
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
-                title: Too many request
-                status: 429
-                detail: The user has sent too many requests in a given amount of time
-                  (rate limiting).
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: tooManyRequests
         "500":
           description: Internal Server Error
           headers:
@@ -3370,12 +2512,6 @@ paths:
               $ref: '#/components/headers/api_version'
             warning:
               $ref: '#/components/headers/warning'
-            X-Rate-Limit-Limit:
-              $ref: '#/components/headers/X_Rate_Limit_Limit'
-            X-Rate-Limit-Remaining:
-              $ref: '#/components/headers/X_Rate_Limit_Remaining'
-            X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/hal+json:
               schema:
@@ -3476,78 +2612,6 @@ paths:
                   not acceptable according to thr accept headers sent in the request
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: notAcceptable
-        "409":
-          description: Conflict
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.10
-                  409 Conflict
-                title: Conflict
-                status: 409
-                detail: The request could not be completed due to a conflict with
-                  the current state of the resource
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: conflict
-        "410":
-          description: Gone
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.11
-                  410 Gone
-                title: Gone
-                status: 410
-                detail: The request could not be completed due to a conflict with
-                  the current state of the resource
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: gone
-        "415":
-          description: Unsupported Media Type
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.16
-                  415 Unsupported Media Type
-                title: Unsupported Media Type
-                status: 415
-                detail: The server is refusing the request because the entity of the
-                  request is in a format not supported by the requested resource for
-                  the requested method.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: unsupported
-        "429":
-          description: Too Many Requests
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
-                title: Too many request
-                status: 429
-                detail: The user has sent too many requests in a given amount of time
-                  (rate limiting).
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: tooManyRequests
         "500":
           description: Internal Server Error
           headers:
@@ -5101,12 +4165,3 @@ components:
         example: '299 https://service.../api/.../v1 "Deze versie van de API is verouderd
           en zal uit dienst worden genomen op 2018-02-01. Raadpleeg voor meer informatie
           hier de documentatie: https://omgevingswet.../api/.../v1".'
-    X_Rate_Limit_Limit:
-      schema:
-        type: integer
-    X_Rate_Limit_Remaining:
-      schema:
-        type: integer
-    X_Rate_Limit_Reset:
-      schema:
-        type: integer
