@@ -1,0 +1,38 @@
+{
+  "name": "haal-centraal-brp-bevragen",
+  "version": "1.0.0",
+  "description": "BRP Bevragen is een Haal Centraal API voor het zoeken en raadplegen van ingeschreven natuurlijke personen voor alle binnengemeentelijke afnemers in NL. De informatie die de API levert is herleidbaar naar het LO GBA 3.10.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "scripts": {
+    "oas:lint": "spectral lint ./specificatie/openapi.yaml",
+    "oas:lint-genereervariant": "spectral lint ./specificatie/genereervariant/openapi.yaml",
+    "preoas:resolve": "mvn-dl io.swagger.codegen.v3:swagger-codegen-cli:3.0.19 -f swagger-codegen-cli.jar",
+    "oas:resolve": "java -jar swagger-codegen-cli.jar generate -i ./specificatie/openapi.yaml -l openapi-yaml -o ./specificatie/genereervariant",
+    "postoas:resolve": "rm swagger-codegen-cli.jar & rm ./specificatie/genereervariant/readme.md",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues"
+  },
+  "homepage": "https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen#readme",
+  "devDependencies": {
+    "@stoplight/spectral": "^5.5.0",
+    "husky": "^4.3.0",
+    "mvn-dl": "^5.1.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run oas:lint && npm run oas:resolve && npm run oas:lint-genereervariant"
+    }
+  }
+}
