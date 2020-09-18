@@ -1,0 +1,69 @@
+name: Resolve gesplitste OpenAPI yaml bestanden
+
+on:
+  push:
+    paths:
+      - specificatie/*.yaml
+    branches:
+      - '**'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: stoplightio/spectral-action@v0.5.5
+        with:
+          file_glob: 'specificatie/openapi.yaml'
+
+  resolve:
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Swagger Codegen v3 yaml
+        uses: ./.github/actions/swagger-codegen-action
+        with:
+          args: generate -i specificatie/openapi.yaml -l openapi-yaml -o specificatie/genereervariant
+      - name: Swagger Codegen v3 json
+        uses: ./.github/actions/swagger-codegen-action
+        with:
+          args: generate -i specificatie/openapi.yaml -l openapi -o specificatie/genereervariant
+      - uses: actions/upload-artifact@master
+        with:
+          name: resolve artifacts
+          path: specificatie/genereervariant/
+
+  validateResolveArtifacts:
+    needs: resolve
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@master
+        with:
+          name: resolve artifacts
+          path: specificatie/genereervariant
+      - uses: stoplightio/spectral-action@v0.5.5
+        with:
+          file_glob: 'specificatie/genereervariant/openapi.yaml'
+
+  pushResolveArtifactToRemote:
+    needs: validateResolveArtifacts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@master
+        with:
+          name: resolve artifacts
+          path: specificatie/genereervariant
+      - name: push resolved to remote
+        run: |
+          if [ -n "$(git status specificatie/genereervariant/openapi.yaml --porcelain)" ]; then
+            git config user.name "$GITHUB_ACTOR"
+            git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+            git add specificatie/genereervariant/openapi.*
+            git commit -m "commit resolve artifacts"
+            git push
+          fi
+    
