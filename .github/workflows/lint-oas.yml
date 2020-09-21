@@ -25,7 +25,7 @@ jobs:
       - name: resolve OAS
         run: npm run oas:resolve
       - name: lint resolved OAS
-        run: npm run oas:lint-resolved
+        run: npm run oas:lint-genereervariant
       - name: push resolved to remote
         run: |
           if [ -n "$(git status specificatie/genereervariant/openapi.yaml --porcelain)" ]; then
