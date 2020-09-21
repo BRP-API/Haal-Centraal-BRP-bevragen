@@ -1228,80 +1228,38 @@ components:
         datumIngangOnderzoek:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     BinnenlandsAdres:
-      type: object
       description: |
         Dit object bevat de basis Verblijfsplaats kenmerken die gedeeld worden door Bewoning en Verblijfplaats
-      properties:
-        functieAdres:
-          $ref: "#/components/schemas/SoortAdres_enum"
-        huisletter:
-          type: "string"
-          description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien\
-            \ van een adresseerbaar object toegekende toevoeging aan een huisnummer\
-            \ in de vorm van een alfanumeriek teken. a - z , A - Z"
-          example: "B"
-        huisnummer:
-          type: integer
-          description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien\
-            \ van een adresseerbaar object toegekende nummering. Alle natuurlijke\
-            \ getallen tussen 1 en 99999."
-          example: 23
-        huisnummertoevoeging:
-          type: "string"
-          description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien\
-            \ van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer\
-            \ of een combinatie van huisnummer en huisletter. a - z , A - Z , 0 - 9"
-          example: "IV"
-        aanduidingBijHuisnummer:
-          $ref: "#/components/schemas/AanduidingBijHuisnummer_enum"
-        identificatiecodeNummeraanduiding:
-          type: "string"
-          description: "De unieke aanduiding van een NUMMERAANDUIDING. Combinatie\
-            \ van de viercijferige 'gemeentecode' de tweecijferige 'objecttypecode'\
-            \ en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig\
-            \ 'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde:20\
-            \ nummeraanduiding. Combinatie van de viercijferige 'gemeentecode' (volgens\
-            \ GBA tabel 33, Gemeententabel), de tweecijferige 'objecttypecode' en\
-            \ een voor het betreffende objecttype binnen een gemeente uniek tiencijferig\
-            \ 'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde:20\
-            \ nummeraanduiding."
-          example: "0518200000366054"
-        naamOpenbareRuimte:
-          type: "string"
-          description: "Een door het bevoegde gemeentelijke orgaan aan een OPENBARE\
-            \ RUIMTE toegekende benaming Tekens gecodeerd volgens de UTF-8 standaard"
-          example: "Loosduinsekade"
-        postcode:
-          type: "string"
-          description: "De door PostNL vastgestelde code behorende bij een bepaalde\
-            \ combinatie van een naam van een woonplaats, naam van een openbare ruimte\
-            \ en een huisnummer"
-          example: "2571CC"
-        woonplaatsnaam:
-          type: "string"
-          description: "De door het bevoegde gemeentelijke orgaan aan een WOONPLAATS\
-            \ toegekende benaming. Tekens gecodeerd volgens de UTF-8 standaard."
-          example: "Utrecht"
+      allOf:
+       - $ref : "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BAG-bevragen/v1.1.0/specificatie/openapi.yaml#/components/schemas/Adres"
+       - properties:
+          functieAdres:
+            $ref: "#/components/schemas/SoortAdres_enum"
+          aanduidingBijHuisnummer:
+            $ref: "#/components/schemas/AanduidingBijHuisnummer_enum"
+          nummeraanduidingIdentificatie:
+            type: "string"
+            example: "0518200000366054"
     Verblijfplaats:
       allOf:
       - $ref: '#/components/schemas/BinnenlandsAdres'
       - description: "Gegevens over het verblijf en adres van de ingeschreven persoon.\
-        \ Dit is het adres waarop een persoon is ingeschreven. \n* **datumAanvangAdreshuishouding**\
-        \ : De datum van aangifte of ambtshalve melding van verblijf en adres. \n\
-        * **datumIngangGeldigheid** : Datum waarop de gegevens over de verblijfplaats\
-        \ geldig zijn geworden. \n* **datumInschrijvingInGemeente**: Bij inschrijving\
-        \ op grond van een aangifte door de burger van zijn vestiging in een (volgende)\
-        \ gemeente is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte\
-        \ is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop\
-        \ de betrokkene schriftelijk van het voornemen van ambtshalve opneming mededeling\
-        \ is gedaan. \n* **datumVestigingInNederland** : Datum van inschrijving in\
-        \ Nederland \n* **landVanWaarIngeschreven** : Het land waar de ingeschreven\
-        \ persoon verblijf hield voor (her)vestiging in Nederland. \n* **gemeenteVanInschrijving**\
-        \ : Een aanduiding die aangeeft in welke gemeente de PK zich bevindt. De code\
-        \ kan voorloopnullen bevatten \n* **landVanWaarIngeschreven** : Het LAND waar\
-        \ de INGESCHREVEN PERSOON verblijf hield voor (her)vestiging in Nederland."
+          \ Dit is het adres waarop een persoon is ingeschreven. \n* **datumAanvangAdreshuishouding**\
+          \ : De datum van aangifte of ambtshalve melding van verblijf en adres. \n* \
+          \ **datumIngangGeldigheid** : Datum waarop de gegevens over de verblijfplaats\
+          \ geldig zijn geworden. \n* **datumInschrijvingInGemeente**: Bij inschrijving\
+          \ op grond van een aangifte door de burger van zijn vestiging in een (volgende)\
+          \ gemeente is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte\
+          \ is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop\
+          \  de betrokkene schriftelijk van het voornemen van ambtshalve opneming mededeling\
+          \ is gedaan. \n* **datumVestigingInNederland** : Datum van inschrijving in\
+          \ Nederland \n* **landVanWaarIngeschreven** : Het land waar de ingeschreven\
+          \ persoon verblijf hield voor (her)vestiging in Nederland. \n* **gemeenteVanInschrijving**\
+          \ : Een aanduiding die aangeeft in welke gemeente de PK zich bevindt. De code\
+          \ kan voorloopnullen bevatten \n* **landVanWaarIngeschreven** : Het LAND waar\
+          \ de INGESCHREVEN PERSOON verblijf hield voor (her)vestiging in Nederland."
         properties:
-          identificatiecodeAdresseerbaarObject:
+          adresseerbaarObjectIdentificatie:
             type: "string"
             description: "Een verblijfplaats kan een ligplaats, een standplaats of een\
               \ verblijfsobject in een of meerdere panden zijn, waaraan respectievelijk\
@@ -1327,11 +1285,9 @@ components:
             description: "Een geheel of gedeeltelijke omschrijving van de ligging van\
               \ een object."
             example: "Naast de derde brug"
-          straatnaam:
-            type: "string"
-            description: "De officiele straatnaam zoals door het bevoegd gemeentelijk\
-              \ orgaan is vastgesteld, zo nodig ingekort conform de specificaties van\
-              \ de NEN 5825. alle alfanumrieke tekens"
+          korteNaam:
+            description: "De officiële openbareruimtenaam of een verkorte versie. Beiden hebben maximaal 24 tekens."
+            type: string
           vanuitVertrokkenOnbekendWaarheen:
             type: boolean
             description: "Indicatie waarmee aangegeven wordt dat de persoon is teruggekeerd\
@@ -1383,7 +1339,7 @@ components:
       description: "Indicators om aan te geven dat de gegevens over het verblijf en\
         \ adres van de INGESCHREVEN NATUURLIJK PERSOON in onderzoek zijn. Elementen\
         \ van het GBA-adres zelf (Dat zou eigenlijk een BAG-adres moeten zijn) kunnen\
-        \ niet in onderzoek zijn. Wel de relatie naar de nummeraanduding. Dat wordt\
+        \ niet in onderzoek zijn. Wel de relatie naar de nummeraanduiding. Dat wordt\
         \ gedaan door de identificatiecodeNummeraanduiding in onderzoek te zetten.\
         \ Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
       properties:
@@ -1427,11 +1383,11 @@ components:
           type: boolean
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        identificatiecodeNummeraanduiding:
+        nummeraanduidingIdentificatie:
           type: boolean
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
-        identificatiecodeAdresseerbaarObject:
+        adresseerbaarObjectIdentificatie:
           type: boolean
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
