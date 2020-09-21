@@ -72,7 +72,7 @@ paths:
             items:
               $ref: '#/components/schemas/Burgerservicenummer'
         - in: query
-          name: geboorte__datum
+          name: geboortedatum
           description: "Datum waarop de INGESCHREVEN NATUURLIJK PERSOON geboren is. Er kan alleen gezocht worden met een volledige geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature)"
           required: false
           schema:
@@ -80,7 +80,7 @@ paths:
             format: date
             example: "1964-09-24"
         - in: query
-          name: geboorte__plaats
+          name: geboorteplaats
           description: "Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).**"
           required: false
           schema:
@@ -94,14 +94,14 @@ paths:
           schema:
               $ref: "#/components/schemas/Geslacht_enum"
         - in: query
-          name: inclusiefoverledenpersonen
+          name: inclusiefOverledenPersonen
           description: "Indien in het antwoord op de zoekvraag ook overleden personen moeten worden geretourneerd, dan dient de parameter *inclusiefOverledenPersonen* opgenomen te zijn met de waarde _True_. Indien de parameter *inclusiefOverledenPersonen* ontbreekt of de waarde _False_ heeft worden geen overleden personen opgenomen in het zoekresultaat. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature)"
           required: false
           schema:
             type: boolean
             example: true
         - in: query
-          name: naam__geslachtsnaam
+          name: geslachtsnaam
           description: "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).**"
           required: false
           schema:
@@ -109,7 +109,7 @@ paths:
             maxLength: 200
             example: "Vries"
         - in: query
-          name: naam__voornamen
+          name: voornamen
           description: "De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).**"
           required: false
           schema:
@@ -117,7 +117,7 @@ paths:
             maxLength: 200
             example: "Dirk"
         - in: query
-          name: verblijfplaats__gemeentevaninschrijving
+          name: gemeenteVanInschrijving
           description: "Een code die aangeeft in welke gemeente de PL zich bevindt of de gemeente waarnaar de PL is uitgeschreven of de gemeente waar de PL voor de eerste keer is opgenomen. De waarde (0000) is geen geldige inhoud voor de query-parameter."
           required: false
           schema:
@@ -125,7 +125,7 @@ paths:
             maxLength: 4
             example: "0518"
         - in: query
-          name: verblijfplaats__huisletter
+          name: huisletter
           description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende toevoeging aan een huisnummer in de vorm van een alfanumeriek teken."
           required: false
           schema:
@@ -133,7 +133,7 @@ paths:
             maxLength: 1
             example: "a"
         - in: query
-          name: verblijfplaats__huisnummer
+          name: huisnummer
           description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nummering. Alle natuurlijke getallen tussen 1 en 99999."
           required: false
           schema:
@@ -141,7 +141,7 @@ paths:
             maximum: 99999
             example: 14
         - in: query
-          name: verblijfplaats__huisnummertoevoeging
+          name: huisnummertoevoeging
           description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter. a - z , A - Z , 0 - 9"
           required: false
           schema:
@@ -149,7 +149,7 @@ paths:
             maxLength: 4
             example: "bis"
         - in: query
-          name: verblijfplaats__identificatiecodenummeraanduiding
+          name: nummeraanduidingIdentificatie
           description: "De unieke aanduiding van een NUMMERAANDUIDING. Combinatie van de viercijferige 'gemeentecode' , de tweecijferige 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding."
           required: false
           schema:
@@ -157,7 +157,7 @@ paths:
             maxLength: 16
             example: "0518200000366054"
         - in: query
-          name: verblijfplaats__naamopenbareruimte
+          name: naamOpenbareRuimte
           description: "Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** Tekens gecodeerd volgens de UTF-8 standaard"
           required: false
           schema:
@@ -165,7 +165,7 @@ paths:
             maxLength: 80
             example: "Tulpstraat"
         - in: query
-          name: verblijfplaats__postcode
+          name: postcode
           description: "De door PostNL vastgestelde code behorende bij een bepaalde combinatie van een naam van een woonplaats, naam van een openbare ruimte en een huisnummer"
           required: false
           schema:
@@ -173,7 +173,7 @@ paths:
             pattern: ^[1-9]{1}[0-9]{3}[A-Z]{2}$
             example: "2341SX"
         - in: query
-          name: naam__voorvoegsel
+          name: voorvoegsel
           description: "Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam. **De tabel bevat vorvoegsels met hoofdletters en met kleine letters. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).**"
           required: false
           schema:
