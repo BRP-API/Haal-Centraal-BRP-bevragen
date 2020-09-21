@@ -686,7 +686,6 @@ components:
           type: integer
           title: "leeftijd"
           description: "Leeftijd in jaren op het moment van bevraging"
-          maximum: 999
           example: 34
         datumEersteInschrijvingGBA:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
@@ -722,20 +721,22 @@ components:
         _links:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalCollectionLinks"
         _embedded:
-          type: object
-          properties:
-            ingeschrevenpersonen:
-              type: array
-              items:
-                $ref: '#/components/schemas/IngeschrevenPersoonHal'
+          $ref: "#/components/schemas/IngeschrevenPersoonHalCollectieEmbedded"
+    IngeschrevenPersoonHalCollectieEmbedded:
+      type: object
+      properties:
+        ingeschrevenpersonen:
+          type: array
+          items:
+            $ref: '#/components/schemas/IngeschrevenPersoonHal'
     IngeschrevenPersoonHal:
       allOf:
         - $ref: '#/components/schemas/IngeschrevenPersoon'
         - properties:
             _links:
-              $ref: "#/components/schemas/IngeschrevenPersoon_links"
+              $ref: "#/components/schemas/IngeschrevenPersoonLinks"
             _embedded:
-              $ref: "#/components/schemas/IngeschrevenPersoon_embedded"
+              $ref: "#/components/schemas/IngeschrevenPersoonEmbedded"
     Ouder:
       type: "object"
       description: "Gegevens over de ouder van de ingeschrevene. \n* **datumIngangFamilierechtelijkeBetrekking**\
@@ -768,18 +769,20 @@ components:
         _links:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalCollectionLinks"
         _embedded:
-          type: object
-          properties:
-            ouders:
-              type: array
-              items:
-                $ref: '#/components/schemas/OuderHal'
+          $ref: '#/components/schemas/OuderHalCollectieEmbedded'
+    OuderHalCollectieEmbedded:
+      type: object
+      properties:
+        ouders:
+          type: array
+          items:
+            $ref: '#/components/schemas/OuderHal'
     OuderHal:
       allOf:
         - $ref: '#/components/schemas/Ouder'
         - properties:
             _links:
-              $ref: "#/components/schemas/Ouder_links"
+              $ref: "#/components/schemas/OuderLinks"
     Kind:
       type: "object"
       description: "Gegevens over een kind van de ingeschrevene."
@@ -790,7 +793,6 @@ components:
           type: integer
           title: "leeftijd"
           description: "Leeftijd op het moment van bevragen"
-          maximum: 999
           example: 12
         inOnderzoek:
           $ref: "#/components/schemas/KindInOnderzoek"
@@ -810,18 +812,20 @@ components:
         _links:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalCollectionLinks"
         _embedded:
-          type: object
-          properties:
-            kinderen:
-              type: array
-              items:
-                $ref: '#/components/schemas/KindHal'
+          $ref: '#/components/schemas/KindHalCollectieEmbedded'
+    KindHalCollectieEmbedded:
+      type: object
+      properties:
+        kinderen:
+          type: array
+          items:
+            $ref: '#/components/schemas/KindHal'
     KindHal:
       allOf:
         - $ref: '#/components/schemas/Kind'
         - properties:
             _links:
-              $ref: "#/components/schemas/Kind_links"
+              $ref: "#/components/schemas/KindLinks"
     Partner:
       type: "object"
       description: "Gegevens over een gesloten huwelijk/geregistreerd partnerschap\
@@ -853,18 +857,20 @@ components:
         _links:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalCollectionLinks"
         _embedded:
-          type: object
-          properties:
-            partners:
-              type: array
-              items:
-                $ref: '#/components/schemas/PartnerHal'
+          $ref: '#/components/schemas/PartnerHalCollectieEmbedded'
+    PartnerHalCollectieEmbedded:
+      type: object
+      properties:
+        partners:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartnerHal'
     PartnerHal:
       allOf:
         - $ref: '#/components/schemas/Partner'
         - properties:
             _links:
-              $ref: "#/components/schemas/Partner_links"
+              $ref: "#/components/schemas/PartnerLinks"
     Naam:
       type: "object"
       description: "Gegevens over de naam van de NATUURLIJK PERSOON \n* **adellijketitelPredikaat**\
@@ -876,28 +882,24 @@ components:
           title: "Geslachtsnaam"
           description: "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels\
             \ en adellijke titel/predikaat zijn afgesplitst."
-          maxLength: 200
           example: "Vries"
         voorletters:
           type: "string"
           title: "Voorletters aanschrijving"
           description: "De voorletters waarmee een persoon aangeschreven wil worden.\
             \ De voorlettes zijn afgeleid van de voornamen."
-          maxLength: 20
         voornamen:
           type: "string"
           title: "Voornamen"
           description: "De verzameling namen die, gescheiden door spaties, aan de\
             \ geslachtsnaam voorafgaat. De verzameling namen die, gescheiden door\
             \ spaties, aan de geslachtsnaam voorafgaat."
-          maxLength: 200
           example: "Pieter Jan"
         voorvoegsel:
           type: "string"
           title: "Voorvoegsel"
           description: "Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel\
             \ en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam."
-          maxLength: 10
           example: "de"
         inOnderzoek:
           $ref: "#/components/schemas/NaamInOnderzoek"
@@ -1100,12 +1102,14 @@ components:
         _links:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalCollectionLinks"
         _embedded:
-          type: object
-          properties:
-            nationaliteithistorie:
-              type: array
-              items:
-                $ref: '#/components/schemas/Nationaliteithistorie'
+          $ref: '#/components/schemas/NationaliteithistorieHalCollectieEmbedded'
+    NationaliteithistorieHalCollectieEmbedded:
+      type: object
+      properties:
+        nationaliteithistorie:
+          type: array
+          items:
+            $ref: '#/components/schemas/Nationaliteithistorie'
     Nationaliteithistorie:
       allOf:
       - $ref: "#/components/schemas/Nationaliteit"
@@ -1275,8 +1279,6 @@ components:
           description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien\
             \ van een adresseerbaar object toegekende toevoeging aan een huisnummer\
             \ in de vorm van een alfanumeriek teken. a - z , A - Z"
-          pattern: "^[A-Z,a-z]$"
-          maxLength: 1
           example: "B"
         huisnummer:
           type: integer
@@ -1284,7 +1286,6 @@ components:
           description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien\
             \ van een adresseerbaar object toegekende nummering. Alle natuurlijke\
             \ getallen tussen 1 en 99999."
-          maximum: 99999
           example: 23
         huisnummertoevoeging:
           type: "string"
@@ -1292,8 +1293,6 @@ components:
           description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien\
             \ van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer\
             \ of een combinatie van huisnummer en huisletter. a - z , A - Z , 0 - 9"
-          pattern: "^[a-zA-Z0-9]{1,4}$"
-          maxLength: 4
           example: "IV"
         aanduidingBijHuisnummer:
           $ref: "#/components/schemas/AanduidingBijHuisnummer_enum"
@@ -1309,14 +1308,12 @@ components:
             \ een voor het betreffende objecttype binnen een gemeente uniek tiencijferig\
             \ 'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde:20\
             \ nummeraanduiding."
-          maxLength: 16
           example: "0518200000366054"
         naamOpenbareRuimte:
           type: "string"
           title: "Naam openbare ruimte"
           description: "Een door het bevoegde gemeentelijke orgaan aan een OPENBARE\
             \ RUIMTE toegekende benaming Tekens gecodeerd volgens de UTF-8 standaard"
-          maxLength: 80
           example: "Loosduinsekade"
         postcode:
           type: "string"
@@ -1324,14 +1321,12 @@ components:
           description: "De door PostNL vastgestelde code behorende bij een bepaalde\
             \ combinatie van een naam van een woonplaats, naam van een openbare ruimte\
             \ en een huisnummer"
-          pattern: "^[1-9]{1}[0-9]{3}[A-Z]{2}$"
           example: "2571CC"
         woonplaatsnaam:
           type: "string"
           title: "Woonplaatsnaam"
           description: "De door het bevoegde gemeentelijke orgaan aan een WOONPLAATS\
             \ toegekende benaming. Tekens gecodeerd volgens de UTF-8 standaard."
-          maxLength: 80
           example: "Utrecht"
     Verblijfplaats:
       allOf:
@@ -1366,7 +1361,6 @@ components:
               \ 'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige\
               \ 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente\
               \ uniek tiencijferig 'objectvolgnummer'."
-            maxLength: 16
             example: "0518200000366054"
           indicatieVestigingVanuitBuitenland:
             type: boolean
@@ -1381,7 +1375,6 @@ components:
             title: "Locatiebeschrijving"
             description: "Een geheel of gedeeltelijke omschrijving van de ligging van\
               \ een object."
-            maxLength: 35
             example: "Naast de derde brug"
           straatnaam:
             type: "string"
@@ -1389,7 +1382,6 @@ components:
             description: "De officiele straatnaam zoals door het bevoegd gemeentelijk\
               \ orgaan is vastgesteld, zo nodig ingekort conform de specificaties van\
               \ de NEN 5825. alle alfanumrieke tekens"
-            maxLength: 24
           vanuitVertrokkenOnbekendWaarheen:
             type: boolean
             title: "vanuitVertrokkenOnbekendWaarheen"
@@ -1422,21 +1414,18 @@ components:
           description: "Het eerste deel van het adres in het buitenland dat de ingeschreven\
             \ persoon opgeeft bij vertrek naar het buitenland dan wel waar de ingeschreven\
             \ persoon in het buitenland verblijft."
-          maxLength: 35
         adresRegel2:
           type: "string"
           title: "adresRegel2"
           description: "Het tweede deel van het adres in het buitenland dat de ingeschreven\
             \ persoon opgeeft bij vertrek naar het buitenland dan wel waar de ingeschreven\
             \ persoon in het buitenland verblijft."
-          maxLength: 35
         adresRegel3:
           type: "string"
           title: "adresRegel3"
           description: "Het derde deel van het adres in het buitenland dat de ingeschreven\
             \ persoon opgeeft bij vertrek naar het buitenland dan wel waar de ingeschreven\
             \ persoon in het buitenland verblijft."
-          maxLength: 35
         vertrokkenOnbekendWaarheen:
           type: boolean
           title: "vertrokkenOnbekendWaarheen"
@@ -1619,7 +1608,7 @@ components:
             \ deze verblijfstitel in onderzoek is."
         datumIngangOnderzoek:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
-    IngeschrevenPersoon_links:
+    IngeschrevenPersoonLinks:
       type: "object"
       properties:
         self:
@@ -1629,7 +1618,6 @@ components:
           type: "array"
           description: "De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE\
             \ verwijst`"
-          maxItems: 4
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         reisdocumenten:
@@ -1665,28 +1653,28 @@ components:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         verblijfplaatsNummeraanduiding:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-    Ouder_links:
+    OuderLinks:
       type: "object"
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         ingeschrevenPersoon:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-    Kind_links:
+    KindLinks:
       type: "object"
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         ingeschrevenPersoon:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-    Partner_links:
+    PartnerLinks:
       type: "object"
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         ingeschrevenPersoon:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-    IngeschrevenPersoon_embedded:
+    IngeschrevenPersoonEmbedded:
       type: "object"
       properties:
         ouders:
@@ -1694,7 +1682,6 @@ components:
           type: "array"
           description: "De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE\
             \ verwijst`"
-          maxItems: 4
           items:
             $ref: "#/components/schemas/OuderHal"
         kinderen:
@@ -1795,18 +1782,20 @@ components:
         _links:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalCollectionLinks"
         _embedded:
-          type: object
-          properties:
-            verblijfplaatshistorie:
-              type: array
-              items:
-                $ref: '#/components/schemas/VerblijfplaatshistorieHal'
+          $ref: '#/components/schemas/VerblijfplaatshistorieHalCollectieEmbedded'
+    VerblijfplaatshistorieHalCollectieEmbedded:
+      type: object
+      properties:
+        verblijfplaatshistorie:
+          type: array
+          items:
+            $ref: '#/components/schemas/VerblijfplaatshistorieHal'
     VerblijfplaatshistorieHal:
       allOf:
         - $ref: '#/components/schemas/Verblijfplaatshistorie'
         - properties:
             _links:
-              $ref: "#/components/schemas/Verblijfplaatshistorie_links"
+              $ref: "#/components/schemas/VerblijfplaatshistorieLinks"
     Verblijfplaatshistorie:
       allOf:
       - $ref: "#/components/schemas/Verblijfplaats"
@@ -1829,16 +1818,14 @@ components:
           \ de INGESCHREVEN PERSOON verblijf hield voor (her)vestiging in Nederland.</p></body>"
         properties:
           datumTot:
-            allOf:
-              - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
-              - description: "De datum vanaf wanneer de persoon niet meer op het adres verblijft."
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
           geheimhoudingPersoonsgegevens:
             type: boolean
             title: "Indicatie geheim"
             description: "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt\
               \ mogen worden. Indien true: op verzoek van deze persoon is het verstrekken\
               \ van gegevens over deze persoon aan bepaalde derden niet toegestaan."
-    Verblijfplaatshistorie_links:
+    VerblijfplaatshistorieLinks:
       type: "object"
       properties:
         nummeraanduiding:
@@ -1851,18 +1838,20 @@ components:
         _links:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalCollectionLinks"
         _embedded:
-          type: object
-          properties:
-            partnerhistorie:
-              type: array
-              items:
-                $ref: '#/components/schemas/PartnerhistorieHal'
+          $ref: '#/components/schemas/PartnerhistorieHalCollectieEmbedded'
+    PartnerhistorieHalCollectieEmbedded:
+      type: object
+      properties:
+        partnerhistorie:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartnerhistorieHal'
     PartnerhistorieHal:
       allOf:
         - $ref: '#/components/schemas/Partnerhistorie'
         - properties:
             _links:
-              $ref: "#/components/schemas/Partnerhistorie_links"
+              $ref: "#/components/schemas/PartnerhistorieLinks"
     Partnerhistorie:
       allOf:
       - $ref: "#/components/schemas/Partner"
@@ -1878,7 +1867,7 @@ components:
         indicatieHuwelijkPartnerschapBeeindigd:
           type: boolean
           description: "Indicatie of het huwelijk ontbonden is danwel het partnerschap beeindigd is.\
-        \n* `True` - Huwelijk/Partnerschap is beeindigd."
+            \ \n* `True` - Huwelijk/Partnerschap is beeindigd."
         datum:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         land:
@@ -1913,7 +1902,7 @@ components:
             \ voor deze persoon in onderzoek is.</p></body>"
         datumIngangOnderzoek:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
-    Partnerhistorie_links:
+    PartnerhistorieLinks:
       type: "object"
       properties:
         ingeschrevenPersoon:
@@ -1924,12 +1913,14 @@ components:
         _links:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalCollectionLinks"
         _embedded:
-          type: object
-          properties:
-            verblijfstitelhistorie:
-              type: array
-              items:
-                $ref: '#/components/schemas/Verblijfstitelhistorie'
+            $ref: '#/components/schemas/VerblijfstitelhistorieHalCollectieEmbedded'
+    VerblijfstitelhistorieHalCollectieEmbedded:
+      type: object
+      properties:
+        verblijfstitelhistorie:
+          type: array
+          items:
+            $ref: '#/components/schemas/Verblijfstitelhistorie'
     Verblijfstitelhistorie:
       allOf:
       - $ref: "#/components/schemas/Verblijfstitel"
