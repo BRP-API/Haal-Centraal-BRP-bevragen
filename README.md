@@ -1,5 +1,9 @@
 # Haal Centraal BRP bevragen
 
+![lint oas](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/workflows/lint-oas/badge.svg)
+![generate sdks](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/workflows/generate-sdks/badge.svg)
+![generate postman collection](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/workflows/generate-postman-collection/badge.svg)
+
 BRP Bevragen is een Haal Centraal API voor het zoeken en raadplegen van ingeschreven natuurlijke personen voor alle binnengemeentelijke afnemers in NL. De informatie die de API levert is herleidbaar naar het LO GBA 3.10.
 
 # Planning
