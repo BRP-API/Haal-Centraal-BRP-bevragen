@@ -725,12 +725,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/IngeschrevenPersoonHal'
-    IngeschrevenPersoonHal:
+    IngeschrevenPersoonHalBasis:
       allOf:
         - $ref: '#/components/schemas/IngeschrevenPersoon'
         - properties:
             _links:
               $ref: "#/components/schemas/IngeschrevenPersoonLinks"
+    IngeschrevenPersoonHal:
+      allOf:
+        - $ref: '#/components/schemas/IngeschrevenPersoonHalBasis'
+        - properties:
             _embedded:
               $ref: "#/components/schemas/IngeschrevenPersoonEmbedded"
     Ouder:
@@ -881,6 +885,7 @@ components:
           type: "string"
           description: "De voorletters waarmee een persoon aangeschreven wil worden.\
             \ De voorlettes zijn afgeleid van de voornamen."
+          example: "P J"
         voornamen:
           type: "string"
           description: "De verzameling namen die, gescheiden door spaties, aan de\
