@@ -17,7 +17,7 @@
     "oas:lint": "spectral lint ./specificatie/openapi.yaml",
     "oas:lint-genereervariant": "spectral lint ./specificatie/genereervariant/openapi.yaml",
     "preoas:resolve": "mvn-dl io.swagger.codegen.v3:swagger-codegen-cli:3.0.19 -f swagger-codegen-cli.jar",
-    "oas:resolve": "java -jar swagger-codegen-cli.jar generate -i ./specificatie/openapi.yaml -l openapi-yaml -o ./specificatie/genereervariant",
+    "oas:resolve": "java -jar swagger-codegen-cli.jar generate -i ./specificatie/openapi.yaml -l openapi-yaml -o ./specificatie/genereervariant && java -jar swagger-codegen-cli.jar generate -i ./specificatie/openapi.yaml -l openapi -o ./specificatie/genereervariant",
     "postoas:resolve": "rm swagger-codegen-cli.jar & rm ./specificatie/genereervariant/readme.md",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
