@@ -663,7 +663,6 @@ components:
     Reisdocumentnummer:
       type: "string"
       description: "Het nummer van het verstrekte Nederlandse reisdocument."
-      maxLength: 9
       example: "546376728"
     IngeschrevenPersoon:
       type: "object"
@@ -1516,7 +1515,7 @@ components:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         nationaliteitHistorie:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-        verblijfplaatsNummeraanduiding:
+        adres:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalLink"
     OuderLinks:
       type: "object"
@@ -1690,7 +1689,7 @@ components:
     VerblijfplaatshistorieLinks:
       type: "object"
       properties:
-        nummeraanduiding:
+        adres:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         adresseerbaarObject:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalLink"
