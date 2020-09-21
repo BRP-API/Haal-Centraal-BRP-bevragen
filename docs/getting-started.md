@@ -10,7 +10,7 @@ Om de API te gebruiken kun je de volgende stappen doorlopen:
 ## Functionaliteit en specificaties
 Een visuele representatie van de specificatie kan worden gegenereerd met [Swagger UI](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/specificatie/genereervariant/openapi.yaml).
 
-De [functionele documentatie](../features) van de 'Bevraging Ingeschreven Persoon' Web API is ook te vinden in de github repository.
+De [functionele documentatie](../../../features) van de 'Bevraging Ingeschreven Persoon' Web API is ook te vinden in de github repository.
 
 ## Implementeer de API
 Je kunt code genereren op basis van de [genereervariant van de specificaties](../specificatie/genereervariant/openapi.yaml).
