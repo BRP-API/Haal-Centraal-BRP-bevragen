@@ -14,7 +14,7 @@ De [functionele documentatie](../features) van de 'Bevraging Ingeschreven Persoo
 
 ## Implementeer de API
 Je kunt code genereren op basis van de [genereervariant van de specificaties](../specificatie/genereervariant/openapi.yaml).
-We hebben al voor enkele ontwikkelomgevingen [client code](../code) gegenereerd.
+We hebben al voor enkele ontwikkelomgevingen [client code](../../../code) gegenereerd.
 
 ## Probeer en test
 De 'Bevraging Ingeschreven Persoon' Web API is voor proberen en testen te benaderen via de volgende url: https://www.haalcentraal.nl/haalcentraal/api/brp
