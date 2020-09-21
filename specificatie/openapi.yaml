@@ -20,29 +20,29 @@ paths:
 
 
         1.  Persoon
-            -  geboorte__datum
-            -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/features/wildcard.feature) )
+            -  geboortedatum
+            -  geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/features/wildcard.feature) )
         2.  Persoon
-            -  verblijfplaats__gemeentevaninschrijving
-            -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/features/wildcard.feature) )
+            -  gemeenteVanInschrijving
+            -  geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/features/wildcard.feature) )
         3.  Persoon
             -  burgerservicenummer
 
 
         4.  Postcode
-            -  verblijfplaats__postcode
-            -  verblijfplaats__huisnummer
+            -  postcode
+            -  huisnummer
 
 
         5.  NaamOpenbareRuimte
-            -  verblijfplaats__naamopenbareruimte (minimaal 2 karakters, [wildcard toegestaan](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/features/wildcard.feature) )
+            -  naamOpenbareRuimte (minimaal 2 karakters, [wildcard toegestaan](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/features/wildcard.feature) )
 
-            -  verblijfplaats__gemeentevaninschrijving
-            -  verblijfplaats__huisnummer
+            -  gemeenteVanInschrijving
+            -  huisnummer
 
 
         6.  Nummeraanduiding
-            -  verblijfplaats__identificatiecodenummeraanduiding
+            -  nummeraanduidingIdentificatie
 
         De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters, maar binnen iedere combinatie zijn de hier genoemde velden **verplicht**.
 
@@ -73,7 +73,7 @@ paths:
               $ref: '#/components/schemas/Burgerservicenummer'
         - in: query
           name: geboortedatum
-          description: "Datum waarop de INGESCHREVEN NATUURLIJK PERSOON geboren is. Er kan alleen gezocht worden met een volledige geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature)"
+          description: "Er kan alleen gezocht worden met een volledige geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature)"
           required: false
           schema:
             type: string
