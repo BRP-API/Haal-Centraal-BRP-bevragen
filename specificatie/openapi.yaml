@@ -651,7 +651,6 @@ components:
   schemas:
     Burgerservicenummer:
       type: "string"
-      title: "Burgerservicenummer"
       description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet\
         \ algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt\
         \ dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat\
@@ -663,7 +662,6 @@ components:
       example: "555555021"
     Reisdocumentnummer:
       type: "string"
-      title: "Reisdocumentnummer"
       description: "Het nummer van het verstrekte Nederlandse reisdocument."
       maxLength: 9
       example: "546376728"
@@ -684,7 +682,6 @@ components:
           $ref: "#/components/schemas/Geslacht_enum"
         leeftijd:
           type: integer
-          title: "leeftijd"
           description: "Leeftijd in jaren op het moment van bevraging"
           example: 34
         datumEersteInschrijvingGBA:
@@ -791,7 +788,6 @@ components:
           $ref: '#/components/schemas/Burgerservicenummer'
         leeftijd:
           type: integer
-          title: "leeftijd"
           description: "Leeftijd op het moment van bevragen"
           example: 12
         inOnderzoek:
@@ -879,25 +875,21 @@ components:
       properties:
         geslachtsnaam:
           type: "string"
-          title: "Geslachtsnaam"
           description: "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels\
             \ en adellijke titel/predikaat zijn afgesplitst."
           example: "Vries"
         voorletters:
           type: "string"
-          title: "Voorletters aanschrijving"
           description: "De voorletters waarmee een persoon aangeschreven wil worden.\
             \ De voorlettes zijn afgeleid van de voornamen."
         voornamen:
           type: "string"
-          title: "Voornamen"
           description: "De verzameling namen die, gescheiden door spaties, aan de\
             \ geslachtsnaam voorafgaat. De verzameling namen die, gescheiden door\
             \ spaties, aan de geslachtsnaam voorafgaat."
           example: "Pieter Jan"
         voorvoegsel:
           type: "string"
-          title: "Voorvoegsel"
           description: "Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel\
             \ en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam."
           example: "de"
@@ -910,17 +902,14 @@ components:
       properties:
         geslachtsnaam:
           type: boolean
-          title: "geslachtsnaam"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         voornamen:
           type: boolean
-          title: "voornamen"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         voorvoegsel:
           type: boolean
-          title: "voorvoegsel"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
@@ -932,17 +921,14 @@ components:
       properties:
         burgerservicenummer:
           type: boolean
-          title: "burgerservicenummer"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumIngangFamilierechtelijkeBetrekking:
           type: boolean
-          title: "datumIngangFamilierechtelijkeBetrekking"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         geslachtsaanduiding:
           type: boolean
-          title: "geslachtsaanduiding"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
@@ -970,17 +956,14 @@ components:
       properties:
         datum:
           type: boolean
-          title: "datum"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         land:
           type: boolean
-          title: "land"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         plaats:
           type: boolean
-          title: "plaats"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
@@ -996,14 +979,12 @@ components:
       properties:
         europeesKiesrecht:
           type: boolean
-          title: "europeesKiesrecht"
           description: "Een aanduiding die aangeeft of de persoon een oproep moet\
             \ ontvangen voor verkiezingen voor het Europees parlement. \n* true: persoon\
             \ ontvangt een oproep"
           example: true
         uitgeslotenVanKiesrecht:
           type: boolean
-          title: "uitgeslotenVanKiesrecht"
           description: "Een aanduiding die aangeeft of de persoon is uitgesloten van kiesrecht.\
             \n* true: persoon is uitgesloten"
           example: true
@@ -1018,19 +999,16 @@ components:
           properties:
             aanhef:
               type: "string"
-              title: "aanhef"
               description: "De aanhef zoals die in een brief, gericht aan een persoon\
                 \ gebruikt kan worden."
               example: "Geachte heer In het Veld"
             aanschrijfwijze:
               type: "string"
-              title: "aanschrijfwijze"
               description: "Samengestelde naam zoals die in communicatie met de persoon\
                 \ gebruikt kan worden."
               example: "H. in het Veld"
             gebruikInLopendeTekst:
               type: "string"
-              title: "gebruikInLopendeTekst"
               description: "De naam zoals die in lopende tekst gebruikt kan worden."
               example: "de heer In het Veld"
             aanduidingNaamgebruik:
@@ -1045,12 +1023,10 @@ components:
       properties:
         burgerservicenummer:
           type: boolean
-          title: "burgerservicenummer"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         geslachtsaanduiding:
           type: boolean
-          title: "geslachtsaanduiding"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
@@ -1081,17 +1057,14 @@ components:
       properties:
         aanduidingBijzonderNederlanderschap:
           type: boolean
-          title: "aanduidingBijzonderNederlanderschap"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         nationaliteit:
           type: boolean
-          title: "nationaliteit"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         redenOpname:
           type: boolean
-          title: "redenOpname"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
@@ -1132,7 +1105,6 @@ components:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
           indicatieNationaliteitBeeindigd:
             type: boolean
-            title: "indicatieNationaliteitBeeindigd"
             description: "Een aanduiding dat de nationaliteit beeindigd is."
             example: true
     OpschortingBijhouding:
@@ -1157,7 +1129,6 @@ components:
       properties:
         indicatieOverleden:
           type: boolean
-          title: "indicatieOverleden"
           description: "Deze indicatie heeft als rol om aan te geven dat iemand is\
             \ overleden (waarde true). Deze indicator wordt altijd meegeleverd als\
             \ de waarde true is (dus als iemand overleden is). Als de waarde false\
@@ -1177,17 +1148,14 @@ components:
       properties:
         datum:
           type: boolean
-          title: "datum"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         land:
           type: boolean
-          title: "land"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         plaats:
           type: boolean
-          title: "plaats"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
@@ -1199,7 +1167,6 @@ components:
       properties:
         burgerservicenummer:
           type: boolean
-          title: "burgerservicenummer"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
@@ -1211,17 +1178,14 @@ components:
       properties:
         burgerservicenummer:
           type: boolean
-          title: "burgerservicenummer"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         geslachtsaanduiding:
           type: boolean
-          title: "geslachtsaanduiding"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         soortVerbintenis:
           type: boolean
-          title: "soortVerbintenis"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
@@ -1251,17 +1215,14 @@ components:
       properties:
         datum:
           type: boolean
-          title: "datum"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         land:
           type: boolean
-          title: "land"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         plaats:
           type: boolean
-          title: "plaats"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
@@ -1275,21 +1236,18 @@ components:
           $ref: "#/components/schemas/SoortAdres_enum"
         huisletter:
           type: "string"
-          title: "Huisletter"
           description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien\
             \ van een adresseerbaar object toegekende toevoeging aan een huisnummer\
             \ in de vorm van een alfanumeriek teken. a - z , A - Z"
           example: "B"
         huisnummer:
           type: integer
-          title: "Huisnummer"
           description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien\
             \ van een adresseerbaar object toegekende nummering. Alle natuurlijke\
             \ getallen tussen 1 en 99999."
           example: 23
         huisnummertoevoeging:
           type: "string"
-          title: "Huisnummertoevoeging"
           description: "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien\
             \ van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer\
             \ of een combinatie van huisnummer en huisletter. a - z , A - Z , 0 - 9"
@@ -1298,7 +1256,6 @@ components:
           $ref: "#/components/schemas/AanduidingBijHuisnummer_enum"
         identificatiecodeNummeraanduiding:
           type: "string"
-          title: "identificatiecodeNummeraanduiding"
           description: "De unieke aanduiding van een NUMMERAANDUIDING. Combinatie\
             \ van de viercijferige 'gemeentecode' de tweecijferige 'objecttypecode'\
             \ en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig\
@@ -1311,20 +1268,17 @@ components:
           example: "0518200000366054"
         naamOpenbareRuimte:
           type: "string"
-          title: "Naam openbare ruimte"
           description: "Een door het bevoegde gemeentelijke orgaan aan een OPENBARE\
             \ RUIMTE toegekende benaming Tekens gecodeerd volgens de UTF-8 standaard"
           example: "Loosduinsekade"
         postcode:
           type: "string"
-          title: "Postcode"
           description: "De door PostNL vastgestelde code behorende bij een bepaalde\
             \ combinatie van een naam van een woonplaats, naam van een openbare ruimte\
             \ en een huisnummer"
           example: "2571CC"
         woonplaatsnaam:
           type: "string"
-          title: "Woonplaatsnaam"
           description: "De door het bevoegde gemeentelijke orgaan aan een WOONPLAATS\
             \ toegekende benaming. Tekens gecodeerd volgens de UTF-8 standaard."
           example: "Utrecht"
@@ -1349,7 +1303,6 @@ components:
         properties:
           identificatiecodeAdresseerbaarObject:
             type: "string"
-            title: "identificatiecodeAdresseerbaarObject"
             description: "Een verblijfplaats kan een ligplaats, een standplaats of een\
               \ verblijfsobject in een of meerdere panden zijn, waaraan respectievelijk\
               \ een ligplaatsidentificatie, standplaatsidentificatie of verblijfsobjectidentificatie\
@@ -1364,7 +1317,6 @@ components:
             example: "0518200000366054"
           indicatieVestigingVanuitBuitenland:
             type: boolean
-            title: "indicatieVestigingVanuitBuitenland"
             description: "Indicatie waarmee aangegeven wordt of de ingeschreven persoon\
               \ zich vanuit het buitenland heeftingeschreven. Deze indicatie heeft als\
               \ rol om aan te geven dat iemand zich vanuit het buitenland gevestigd\
@@ -1372,19 +1324,16 @@ components:
               \ Als de waarde false is wordt de indicator niet meegeleverd."
           locatiebeschrijving:
             type: "string"
-            title: "Locatiebeschrijving"
             description: "Een geheel of gedeeltelijke omschrijving van de ligging van\
               \ een object."
             example: "Naast de derde brug"
           straatnaam:
             type: "string"
-            title: "Straatnaam"
             description: "De officiele straatnaam zoals door het bevoegd gemeentelijk\
               \ orgaan is vastgesteld, zo nodig ingekort conform de specificaties van\
               \ de NEN 5825. alle alfanumrieke tekens"
           vanuitVertrokkenOnbekendWaarheen:
             type: boolean
-            title: "vanuitVertrokkenOnbekendWaarheen"
             description: "Indicatie waarmee aangegeven wordt dat de persoon is teruggekeerd\
               \ uit een situatie van vertrokken onbekend waarheen"
             example: true
@@ -1410,25 +1359,21 @@ components:
       properties:
         adresRegel1:
           type: "string"
-          title: "adresRegel1"
           description: "Het eerste deel van het adres in het buitenland dat de ingeschreven\
             \ persoon opgeeft bij vertrek naar het buitenland dan wel waar de ingeschreven\
             \ persoon in het buitenland verblijft."
         adresRegel2:
           type: "string"
-          title: "adresRegel2"
           description: "Het tweede deel van het adres in het buitenland dat de ingeschreven\
             \ persoon opgeeft bij vertrek naar het buitenland dan wel waar de ingeschreven\
             \ persoon in het buitenland verblijft."
         adresRegel3:
           type: "string"
-          title: "adresRegel3"
           description: "Het derde deel van het adres in het buitenland dat de ingeschreven\
             \ persoon opgeeft bij vertrek naar het buitenland dan wel waar de ingeschreven\
             \ persoon in het buitenland verblijft."
         vertrokkenOnbekendWaarheen:
           type: boolean
-          title: "vertrokkenOnbekendWaarheen"
           description: "Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland,\
             \ maar dat niet bekend is waar naar toe."
         land:
@@ -1444,97 +1389,78 @@ components:
       properties:
         aanduidingBijHuisnummer:
           type: boolean
-          title: "aanduidingBijHuisnummer"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumAanvangAdreshouding:
           type: boolean
-          title: "datumAanvangAdreshouding"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumIngangGeldigheid:
           type: boolean
-          title: "datumIngangGeldigheid"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumInschrijvingInGemeente:
           type: boolean
-          title: "datumInschrijvingInGemeente"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumVestigingInNederland:
           type: boolean
-          title: "datumVestigingInNederland"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         functieAdres:
           type: boolean
-          title: "functieAdres"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         gemeenteVanInschrijving:
           type: boolean
-          title: "gemeenteVanInschrijving"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         huisletter:
           type: boolean
-          title: "huisletter"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         huisnummer:
           type: boolean
-          title: "huisnummer"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         huisnummertoevoeging:
           type: boolean
-          title: "huisnummertoevoeging"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         identificatiecodeNummeraanduiding:
           type: boolean
-          title: "identificatiecodeNummeraanduiding"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         identificatiecodeAdresseerbaarObject:
           type: boolean
-          title: "identificatiecodeAdresseerbaarObject"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         landVanwaarIngeschreven:
           type: boolean
-          title: "landVanwaarIngeschreven"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         locatiebeschrijving:
           type: boolean
-          title: "locatiebeschrijving"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         naamOpenbareRuimte:
           type: boolean
-          title: "naamOpenbareRuimte"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         postcode:
           type: boolean
-          title: "postcode"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         straatnaam:
           type: boolean
-          title: "straatnaam"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         verblijfBuitenland:
           type: boolean
-          title: "verblijfBuitenland"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         woonplaatsnaam:
           type: boolean
-          title: "woonplaatsnaam"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
@@ -1545,7 +1471,6 @@ components:
       properties:
         indicatieCurateleRegister:
           type: boolean
-          title: "indicatieCurateleRegister"
           description: "Een aanduiding dat de ingeschrevene onder curatele is gesteld."
           example: true
         indicatieGezagMinderjarige:
@@ -1560,12 +1485,10 @@ components:
       properties:
         indicatieCurateleRegister:
           type: boolean
-          title: "indicatieCurateleRegister"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         indicatieGezagMinderjarige:
           type: boolean
-          title: "indicatieGezagMinderjarige"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze persoon in onderzoek is."
         datumIngangOnderzoek:
@@ -1593,17 +1516,14 @@ components:
       properties:
         aanduiding:
           type: boolean
-          title: "aanduiding"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze verblijfstitel in onderzoek is."
         datumEinde:
           type: boolean
-          title: "datumEinde"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze verblijfstitel in onderzoek is."
         datumIngang:
           type: boolean
-          title: "datumIngang"
           description: "Indicator die aangeeft of het corresponderende gegeven voor\
             \ deze verblijfstitel in onderzoek is."
         datumIngangOnderzoek:
@@ -1614,14 +1534,12 @@ components:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         ouders:
-          title: "heeftAlsOuder"
           type: "array"
           description: "De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE\
             \ verwijst`"
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         reisdocumenten:
-          title: "isHouderVan"
           type: "array"
           description: "De ingezetene waaraan het REISDOCUMENT is verstrekt. Dit is\
             \ de inverse relatie van heeftAlsHouder. Reisdocumenten die aan een ingezetene\
@@ -1629,14 +1547,12 @@ components:
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         kinderen:
-          title: "heeftAlsKind"
           type: "array"
           description: "De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE\
             \ verwijst"
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         partners:
-          title: "heeftAlsPartner"
           type: "array"
           description: "De actuele bij de ingeschreven persoon geregistreerde huwelijken\
             \ en geregistreerd partnerschappen. Een beeindigd huwelijk of geregistreerd\
@@ -1678,21 +1594,18 @@ components:
       type: "object"
       properties:
         ouders:
-          title: "heeftAlsOuder"
           type: "array"
           description: "De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE\
             \ verwijst`"
           items:
             $ref: "#/components/schemas/OuderHal"
         kinderen:
-          title: "heeftAlsKind"
           type: "array"
           description: "De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE\
             \ verwijst"
           items:
             $ref: "#/components/schemas/KindHal"
         partners:
-          title: "heeftAlsPartner"
           type: "array"
           description: "De actuele bij de ingeschreven persoon geregistreerde huwelijken\
             \ en geregistreerd partnerschappen. Een beeindigd huwelijk of geregistreerd\
@@ -1887,17 +1800,14 @@ components:
       properties:
         datum:
           type: boolean
-          title: "datum"
           description: "<body><p>Indicator die aangeeft of het corresponderende gegeven\
             \ voor deze persoon in onderzoek is.</p></body>"
         land:
           type: boolean
-          title: "land"
           description: "<body><p>Indicator die aangeeft of het corresponderende gegeven\
             \ voor deze persoon in onderzoek is.</p></body>"
         plaats:
           type: boolean
-          title: "plaats"
           description: "<body><p>Indicator die aangeeft of het corresponderende gegeven\
             \ voor deze persoon in onderzoek is.</p></body>"
         datumIngangOnderzoek:
