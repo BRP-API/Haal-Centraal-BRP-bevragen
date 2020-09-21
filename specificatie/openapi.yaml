@@ -1305,35 +1305,28 @@ components:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
           landVanwaarIngeschreven:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
-          verblijfBuitenland:
-            $ref: "#/components/schemas/VerblijfBuitenland"
+          adresregel1:
+            type: "string"
+            description: "Het eerste deel van een adres is een combinatie van de straat en huisnummer."
+            # example: "1600 Pennsylvania Avenue NW"
+            example: "Laan van de landinrichtingscommissie Duiven-Westervoort 26A-3"
+          adresregel2:
+            type: "string"
+            description: "Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode"
+            # example: "Washington, DC 20500"
+            example: "1234AA Nootdorp"
+          adresregel3:
+            type: "string"
+            description: "Het derde deel van een adres is optioneel een of meer geografische gebieden van het adres in het buitenland"
+            example: "Selangor"
+          vertrokkenOnbekendWaarheen:
+            type: boolean
+            description: "Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland,\
+              \ maar dat niet bekend is waar naar toe."
+          land:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
           inOnderzoek:
             $ref: "#/components/schemas/VerblijfplaatsInOnderzoek"
-    VerblijfBuitenland:
-      type: "object"
-      description: "De gegevens over het verblijf in het buitenland"
-      properties:
-        adresRegel1:
-          type: "string"
-          description: "Het eerste deel van het adres in het buitenland dat de ingeschreven\
-            \ persoon opgeeft bij vertrek naar het buitenland dan wel waar de ingeschreven\
-            \ persoon in het buitenland verblijft."
-        adresRegel2:
-          type: "string"
-          description: "Het tweede deel van het adres in het buitenland dat de ingeschreven\
-            \ persoon opgeeft bij vertrek naar het buitenland dan wel waar de ingeschreven\
-            \ persoon in het buitenland verblijft."
-        adresRegel3:
-          type: "string"
-          description: "Het derde deel van het adres in het buitenland dat de ingeschreven\
-            \ persoon opgeeft bij vertrek naar het buitenland dan wel waar de ingeschreven\
-            \ persoon in het buitenland verblijft."
-        vertrokkenOnbekendWaarheen:
-          type: boolean
-          description: "Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland,\
-            \ maar dat niet bekend is waar naar toe."
-        land:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
     VerblijfplaatsInOnderzoek:
       type: "object"
       description: "Indicators om aan te geven dat de gegevens over het verblijf en\
