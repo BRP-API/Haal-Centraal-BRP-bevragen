@@ -23,7 +23,7 @@ paths:
       tags:
       - ingeschrevenpersonen
       description: |
-        Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen:
+        Even aangepast vanwege een check op diakrieten Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen:
 
 
         1.  Persoon
