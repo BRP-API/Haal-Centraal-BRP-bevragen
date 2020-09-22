@@ -11,12 +11,13 @@ Geen onderdeel van de definition of done tijdens het project, wel onderdeel van 
 
 ## Open API specificaties
 - Opgesteld in Open API Specification 3
-- Gepubliceerd op GitHub en op SWAGGERhub
+- Gepubliceerd op GitHub
+- Swagger UI toont de API specificaties correct en zonder fouten
 - Genereervariant in yaml en json op GitHub
 - Code gevalideerd met Spectral lint, inclusief validatie op Haal Centraal ontwerprichtlijnen
 - Mapping op LO-GBA is duidelijk, juist en hierop getoetst
 - Semantische betekenis van resources en parameters is opgenomen
-- Voldoet aan DSO API strategie en DSO URI strategie, dan wel afwijking is beargumenteerd (pas toe of leg uit)
+- Voldoet aan NL API strategie, dan wel afwijking is beargumenteerd in de design decisions (pas toe of leg uit)
 
 ## Gegenereerde code
 - Code gegenereerd uit de API specificaties voor ten minste Java en .Net
