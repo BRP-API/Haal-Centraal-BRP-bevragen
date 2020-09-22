@@ -12,6 +12,7 @@ Naast de features die hier staan zijn voor de API ook enkele features relevant d
 - [uri-templating](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/uri-templating.feature)
 - [indicatoren](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/indicatoren.feature)
 - [onvolledige datum](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/onvolledige_datum.feature)
+- [self-links](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/self-links.feature)
 
 ## Features en scenario's
 De specificatie/test is gespecificeerd in documenten per functionaliteit, elk met extensie ".feature". Per functionaliteit is een korte beschrijving van de functionaliteit opgenomen plus scenario's die de gewenste werking van de functionaliteit toelichten en demonstreren.
