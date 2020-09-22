@@ -29,7 +29,7 @@ import org.openapitools.client.model.VerblijfstitelhistorieHalCollectieEmbedded;
 /**
  * VerblijfstitelhistorieHalCollectie
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-21T14:20:17.398Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-22T11:55:38.455Z[Etc/UTC]")
 public class VerblijfstitelhistorieHalCollectie {
   public static final String SERIALIZED_NAME_LINKS = "_links";
   @SerializedName(SERIALIZED_NAME_LINKS)

@@ -30,7 +30,7 @@ import org.openapitools.client.model.SoortAdresEnum;
  * Dit object bevat de basis Verblijfsplaats kenmerken die gedeeld worden door Bewoning en Verblijfplaats 
  */
 @ApiModel(description = "Dit object bevat de basis Verblijfsplaats kenmerken die gedeeld worden door Bewoning en Verblijfplaats ")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-21T14:20:17.398Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-22T11:55:38.455Z[Etc/UTC]")
 public class BinnenlandsAdres {
   public static final String SERIALIZED_NAME_FUNCTIE_ADRES = "functieAdres";
   @SerializedName(SERIALIZED_NAME_FUNCTIE_ADRES)

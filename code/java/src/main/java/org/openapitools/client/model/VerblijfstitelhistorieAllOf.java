@@ -28,7 +28,7 @@ import java.io.IOException;
  * &lt;body&gt;&lt;p&gt;Gegevens over de verblijfsrechtelijke status van de ingeschrevene.&lt;/p&gt;&lt;p&gt;  &lt;em&gt;*&lt;/em&gt; datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beeindigd.&lt;/p&gt;&lt;p&gt;  &lt;em&gt;*&lt;/em&gt; datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.&lt;/p&gt;&lt;p&gt; &lt;em&gt;*&lt;/em&gt; aanduiding** : Verblijfstiteltabel, die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt.&lt;/p&gt; &lt;/body&gt;
  */
 @ApiModel(description = "<body><p>Gegevens over de verblijfsrechtelijke status van de ingeschrevene.</p><p>  <em>*</em> datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beeindigd.</p><p>  <em>*</em> datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.</p><p> <em>*</em> aanduiding** : Verblijfstiteltabel, die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt.</p> </body>")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-21T14:20:17.398Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-22T11:55:38.455Z[Etc/UTC]")
 public class VerblijfstitelhistorieAllOf {
   public static final String SERIALIZED_NAME_GEHEIMHOUDING_PERSOONSGEGEVENS = "geheimhoudingPersoonsgegevens";
   @SerializedName(SERIALIZED_NAME_GEHEIMHOUDING_PERSOONSGEGEVENS)

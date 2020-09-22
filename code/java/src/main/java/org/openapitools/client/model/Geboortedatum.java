@@ -29,7 +29,7 @@ import org.openapitools.client.model.DatumOnvolledig;
  * &lt;body&gt;&lt;p&gt;Gegevens over de geboorte van respectievelijk de persoon, de ouder, de echtgenoot/geregistreerd partner, de eerdere echtgenoot/geregistreerd partner of het kind.&lt;/p&gt;&lt;p&gt;  &lt;em&gt;*&lt;/em&gt; datum** : Datum waarop de persoon is geboren.&lt;/p&gt;&lt;p&gt;  &lt;em&gt;*&lt;/em&gt; land** : Land waar de persoon is geboren&lt;/p&gt;&lt;p&gt;  &lt;em&gt;*&lt;/em&gt; plaats** : De plaats waar een persoon is geboren. Voor een plaats buiten Nederland is gemeentecode&#x3D;1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding.&lt;/p&gt;&lt;/body&gt;
  */
 @ApiModel(description = "<body><p>Gegevens over de geboorte van respectievelijk de persoon, de ouder, de echtgenoot/geregistreerd partner, de eerdere echtgenoot/geregistreerd partner of het kind.</p><p>  <em>*</em> datum** : Datum waarop de persoon is geboren.</p><p>  <em>*</em> land** : Land waar de persoon is geboren</p><p>  <em>*</em> plaats** : De plaats waar een persoon is geboren. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding.</p></body>")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-21T14:20:17.398Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-22T11:55:38.455Z[Etc/UTC]")
 public class Geboortedatum {
   public static final String SERIALIZED_NAME_DATUM = "datum";
   @SerializedName(SERIALIZED_NAME_DATUM)

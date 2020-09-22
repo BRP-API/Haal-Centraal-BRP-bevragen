@@ -28,7 +28,7 @@ import org.openapitools.client.model.HalLink;
 /**
  * PartnerhistorieLinks
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-21T14:20:17.398Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-22T11:55:38.455Z[Etc/UTC]")
 public class PartnerhistorieLinks {
   public static final String SERIALIZED_NAME_INGESCHREVEN_PERSOON = "ingeschrevenPersoon";
   @SerializedName(SERIALIZED_NAME_INGESCHREVEN_PERSOON)

@@ -29,7 +29,7 @@ import org.openapitools.client.model.DatumOnvolledig;
  * In onderzoek indicators voor gegevens over het overlijden van de ingeschreven natuurlijk persoon. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)
  */
 @ApiModel(description = "In onderzoek indicators voor gegevens over het overlijden van de ingeschreven natuurlijk persoon. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-21T14:20:17.398Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-22T11:55:38.455Z[Etc/UTC]")
 public class OverlijdenInOnderzoek {
   public static final String SERIALIZED_NAME_DATUM = "datum";
   @SerializedName(SERIALIZED_NAME_DATUM)

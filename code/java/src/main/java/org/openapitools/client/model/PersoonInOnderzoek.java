@@ -29,7 +29,7 @@ import org.openapitools.client.model.DatumOnvolledig;
  * Een groep van booleans om aan te geven welke gegevens van de ingeschreven persoon in onderzoek zijn. Er kunnen ook categorieën in onderzoek zijn. Als een hele categorie in onderzoek is worden alle rubrieken binnen die categorie op _true_ gezet. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature) .
  */
 @ApiModel(description = "Een groep van booleans om aan te geven welke gegevens van de ingeschreven persoon in onderzoek zijn. Er kunnen ook categorieën in onderzoek zijn. Als een hele categorie in onderzoek is worden alle rubrieken binnen die categorie op _true_ gezet. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature) .")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-21T14:20:17.398Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-22T11:55:38.455Z[Etc/UTC]")
 public class PersoonInOnderzoek {
   public static final String SERIALIZED_NAME_BURGERSERVICENUMMER = "burgerservicenummer";
   @SerializedName(SERIALIZED_NAME_BURGERSERVICENUMMER)

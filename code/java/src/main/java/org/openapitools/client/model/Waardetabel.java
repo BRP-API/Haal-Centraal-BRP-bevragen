@@ -28,7 +28,7 @@ import java.io.IOException;
  * Generieke tabel met waarden om een code en omschrijving op te nemen.
  */
 @ApiModel(description = "Generieke tabel met waarden om een code en omschrijving op te nemen.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-21T14:20:17.398Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-22T11:55:38.455Z[Etc/UTC]")
 public class Waardetabel {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)

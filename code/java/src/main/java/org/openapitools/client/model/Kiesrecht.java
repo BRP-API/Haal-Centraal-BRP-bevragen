@@ -29,7 +29,7 @@ import org.openapitools.client.model.DatumOnvolledig;
  * Gegevens over het kiesrecht van de ingeschreven persoon.  * **datumUitsluitingEuropeesKiesrecht**: De datum waarop een uitsluiting voor deelname aan verkiezingen voor het Europees parlement niet meer van toepassing is, als er sprake is van uitsluiting voor bepaalde tijd.  * **datumUitsluitingKiesrecht**: De datum waarop een uitsluiting voor deelname aan verkiezingen niet meer van toepassing is, als er sprake is van uitsluiting voor bepaalde tijd.
  */
 @ApiModel(description = "Gegevens over het kiesrecht van de ingeschreven persoon.  * **datumUitsluitingEuropeesKiesrecht**: De datum waarop een uitsluiting voor deelname aan verkiezingen voor het Europees parlement niet meer van toepassing is, als er sprake is van uitsluiting voor bepaalde tijd.  * **datumUitsluitingKiesrecht**: De datum waarop een uitsluiting voor deelname aan verkiezingen niet meer van toepassing is, als er sprake is van uitsluiting voor bepaalde tijd.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-21T14:20:17.398Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-22T11:55:38.455Z[Etc/UTC]")
 public class Kiesrecht {
   public static final String SERIALIZED_NAME_EUROPEES_KIESRECHT = "europeesKiesrecht";
   @SerializedName(SERIALIZED_NAME_EUROPEES_KIESRECHT)

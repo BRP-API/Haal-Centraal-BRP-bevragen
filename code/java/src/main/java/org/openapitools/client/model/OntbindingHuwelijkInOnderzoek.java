@@ -29,7 +29,7 @@ import org.openapitools.client.model.DatumOnvolledig;
  * &lt;body&gt;&lt;p&gt;Indicators over het in onderzoek zijn van gegevens over de aangaan van het huwelijk van de INGESCHREVEN PERSOON.&lt;/p&gt;&lt;p&gt;Zie de &lt;a href&#x3D;&#x60;https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature&#x60;&gt; functionele specificaties &lt;a&gt;&lt;/p&gt;&lt;/body&gt;
  */
 @ApiModel(description = "<body><p>Indicators over het in onderzoek zijn van gegevens over de aangaan van het huwelijk van de INGESCHREVEN PERSOON.</p><p>Zie de <a href=`https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature`> functionele specificaties <a></p></body>")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-21T14:20:17.398Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-22T11:55:38.455Z[Etc/UTC]")
 public class OntbindingHuwelijkInOnderzoek {
   public static final String SERIALIZED_NAME_DATUM = "datum";
   @SerializedName(SERIALIZED_NAME_DATUM)

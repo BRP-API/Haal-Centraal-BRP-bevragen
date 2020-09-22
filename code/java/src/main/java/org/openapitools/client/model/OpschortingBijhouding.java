@@ -30,7 +30,7 @@ import org.openapitools.client.model.RedenOpschortingBijhoudingEnum;
  *  * **reden**: Een aanduiding van de reden waarom de bijhouding van de PL is opgeschort.  * **datum**: De datum waarop de bijhouding van de persoonslijst is gestaakt.  * Indien er wel een redenOpschortingBijhouding is maar er wordt geen datumOpschortingBijhouding geleverd, dan is dat datumOpschortingBijhouding onbekend.
  */
 @ApiModel(description = " * **reden**: Een aanduiding van de reden waarom de bijhouding van de PL is opgeschort.  * **datum**: De datum waarop de bijhouding van de persoonslijst is gestaakt.  * Indien er wel een redenOpschortingBijhouding is maar er wordt geen datumOpschortingBijhouding geleverd, dan is dat datumOpschortingBijhouding onbekend.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-21T14:20:17.398Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-22T11:55:38.455Z[Etc/UTC]")
 public class OpschortingBijhouding {
   public static final String SERIALIZED_NAME_REDEN = "reden";
   @SerializedName(SERIALIZED_NAME_REDEN)
