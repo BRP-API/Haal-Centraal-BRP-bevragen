@@ -34,4 +34,9 @@ Structuur wordt aangegeven via de sleutelwoorden "Functionaliteit", "Achtergrond
 | Abstract Scenario | Scenario Outline  | Scenario sjabloon die gevallen uit voorbeelden doorloopt |
 | Voorbeelden       | Examples          | Tabel met testwaarden die met Abstract scenario worden doorlopen |
 
-De Gherkin scenario's worden opgenomen in de map /features. Voor elke functionaliteit wordt een bestand gemaakt met als extensie ".feature". Per functionaliteit (feature-bestand) kunnen er meerdere scenario's zijn gedefinieerd om de betreffende functionaliteit.
+De Gherkin scenario's worden opgenomen in de map /features. Voor elke functionaliteit wordt een bestand gemaakt met als extensie ".feature". Per functionaliteit (feature-bestand) kunnen er meerdere scenario's zijn gedefinieerd om de betreffende functionaliteit te illustreren.
+
+## Tests
+Deze manier van specificeren maakt het mogelijk om te worden uitgevoerd als geautomatiseerde test van de API. Met deze opzet van de specificatie/test wordt [Behaviour Driven Development (BDD)](https://docs.cucumber.io/bdd) ondersteund.
+
+De features zijn op dit moment niet volledig uitvoerbaar als BDD test. Voor de [referentie-implementatie](https://github.com/lostlemon/haal-centraal-brp-bevragen) is een belangrijk deel van de features in een werkende test omgezet, maar de hier gepubliceerde features zijn dat niet.
