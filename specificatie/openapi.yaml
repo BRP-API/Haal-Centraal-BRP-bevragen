@@ -717,7 +717,7 @@ components:
           $ref: "#/components/schemas/NaamPersoon"
         inOnderzoek:
           $ref: "#/components/schemas/PersoonInOnderzoek"
-        nationaliteit:
+        nationaliteiten:
           type: "array"
           items:
             $ref: "#/components/schemas/Nationaliteit"
@@ -733,7 +733,7 @@ components:
           $ref: "#/components/schemas/Gezagsverhouding"
         verblijfstitel:
           $ref: "#/components/schemas/Verblijfstitel"
-        reisdocumenten:
+        reisdocumentnummers:
           type: "array"
           items:
             $ref: "#/components/schemas/Reisdocumentnummer"
