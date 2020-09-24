@@ -1,0 +1,9 @@
+# action.yml
+name: Swagger Codegen v3
+description: Run Swagger Codegen V3 with Github Actions
+branding:
+  icon: code
+  color: green
+runs:
+  using: docker
+  image: docker://swaggerapi/swagger-codegen-cli-v3:3.0.19

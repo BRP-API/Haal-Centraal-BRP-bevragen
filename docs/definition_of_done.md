@@ -11,21 +11,20 @@ Geen onderdeel van de definition of done tijdens het project, wel onderdeel van 
 
 ## Open API specificaties
 - Opgesteld in Open API Specification 3
-- Gepubliceerd op GitHub en op SWAGGERhub
-- Mapping op LO-GBA is duidelijk, juist en hierop getoets
+- Gepubliceerd op GitHub
+- Swagger UI toont de API specificaties correct en zonder fouten
+- Genereervariant in yaml en json op GitHub
+- Code gevalideerd met Spectral lint, inclusief validatie op Haal Centraal ontwerprichtlijnen
+- Mapping op LO-GBA is duidelijk, juist en hierop getoetst
 - Semantische betekenis van resources en parameters is opgenomen
-- Voldoet aan DSO API strategie en DSO URI strategie, dan wel afwijking is beargumenteerd (pas toe of leg uit)
+- Voldoet aan NL API strategie, dan wel afwijking is beargumenteerd in de design decisions (pas toe of leg uit)
 
 ## Gegenereerde code
-- Code kan gegenereerd worden uit de API specificaties of de json schema's
-- Code kan gegenereerd worden voor ten minste Java en .Net
+- Code gegenereerd uit de API specificaties voor ten minste Java en .Net
 - De gegenereerde code is gecontroleerd op:
   - Compleetheid: alle operaties, en daarbinnen alle gegevens zijn correct overgenomen
   - Efficiëntie: de gegenereerde bevat geen onnodige dubbelingen in code
   - Eenvoud: de gegenereerde code bevat geen onnodig complexe constructies
-
-## testgevallen
-- Zijn beschreven als onderdeel van de BDD-scenario's
 
 ## backlog
 - er is een lijst met bekende fouten, gewenste verbeteringen, gewenste uitbreidingen
@@ -36,13 +35,12 @@ Geen onderdeel van de definition of done tijdens het project, wel onderdeel van 
 - er is uitleg en installatie-instructies van de referentie-implementaties
 - er is uitleg over hoe bij te dragen aan de standaard
 - er is uitleg over hoe mee ontwikkeld kan worden aan de referentie-implementatie(s), inclusief gebruik van relevante tooling
+- enkele relevante testgevallen op de referentie-implementatie zijn benoemd
 
 ## Referentie-implementatie
 - Implementeert alle gedefinieerde operaties en functionaliteit
 - Is volledig functionele applicatie die de implementatie en gebruik van de koppelvlakken demonstreert
 - Implementeert ten minste alle beschreven ontwerpbeslissingen
-- Source code is open source beschikbaar (gepubliceerd) op VNG Realisatie Github
 - Een testset die de functionaliteit en correcte werking van de referentie-implementatie aantoont
 - Implementatie bevat testdata zodat gebruikers van de referentie-implementatie deze gebruiken om hun applicatie te testen
 - Documentatie van de referentie-implementatie beschrijft (ten minste) installatie en gebruik van de applicatie
-
