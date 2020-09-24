@@ -5,7 +5,7 @@ info:
     aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens
     van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft
     een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet
-    geretourneerd. <br> Heeft een persoon een beÃ«indigd partnerschap of huwelijk,
+    geretourneerd. <br> Heeft een persoon een beeindigd partnerschap of huwelijk,
     dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features)
     voor nadere toelichting. <br> '
   contact:
@@ -23,15 +23,15 @@ paths:
       tags:
       - ingeschrevenpersonen
       description: |
-        Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste Ã©Ã©n van de volgende combinaties van parameters moet zijn opgenomen:
+        Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste een van de volgende combinaties van parameters moet zijn opgenomen:
 
 
         1.  Persoon
             -  geboorte__datum
-            -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) )
+            -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/features/wildcard.feature) )
         2.  Persoon
             -  verblijfplaats__gemeentevaninschrijving
-            -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) )
+            -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/features/wildcard.feature) )
         3.  Persoon
             -  burgerservicenummer
 
@@ -42,7 +42,7 @@ paths:
 
 
         5.  NaamOpenbareRuimte
-            -  verblijfplaats__naamopenbareruimte (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) )
+            -  verblijfplaats__naamopenbareruimte (minimaal 2 karakters, [wildcard toegestaan](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/features/wildcard.feature) )
 
             -  verblijfplaats__gemeentevaninschrijving
             -  verblijfplaats__huisnummer
@@ -149,7 +149,7 @@ paths:
         in: query
         description: De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels
           en adellijke titel/predikaat zijn afgesplitst. **Gebruik van de wildcard
-          is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)**
+          is toegestaan. Zie [feature-beschrijving](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/features/wildcard.feature)**
           **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).**
         required: false
         style: form
@@ -161,7 +161,7 @@ paths:
       - name: naam__voornamen
         in: query
         description: De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam
-          voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)
+          voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/features/wildcard.feature)
           toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden
           is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).**
         required: false
@@ -212,7 +212,7 @@ paths:
         in: query
         description: Een door of namens het bevoegd gemeentelijk orgaan ten aanzien
           van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer
-          of een combinatie van huisnummer en huisletter. a - z , A - Z , 0 â€“ 9
+          of een combinatie van huisnummer en huisletter. a - z , A - Z , 0 - 9
         required: false
         style: form
         explode: true
@@ -236,7 +236,7 @@ paths:
       - name: verblijfplaats__naamopenbareruimte
         in: query
         description: Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE
-          toegekende benaming **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)**
+          toegekende benaming **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/features/wildcard.feature)**
           **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).**
           Tekens gecodeerd volgens de UTF-8 standaard
         required: false
@@ -294,7 +294,7 @@ paths:
               example:
                 type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
                   400 Bad Request
-                title: Ten minste Ã©Ã©n parameter moet worden opgegeven.
+                title: Ten minste één parameter moet worden opgegeven.
                 status: 400
                 detail: The request could not be understood by the server due to malformed
                   syntax. The client SHOULD NOT repeat the request without modification.
@@ -486,7 +486,7 @@ paths:
               example:
                 type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
                   400 Bad Request
-                title: Ten minste Ã©Ã©n parameter moet worden opgegeven.
+                title: Ten minste één parameter moet worden opgegeven.
                 status: 400
                 detail: The request could not be understood by the server due to malformed
                   syntax. The client SHOULD NOT repeat the request without modification.
@@ -680,7 +680,7 @@ paths:
               example:
                 type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
                   400 Bad Request
-                title: Ten minste Ã©Ã©n parameter moet worden opgegeven.
+                title: Ten minste één parameter moet worden opgegeven.
                 status: 400
                 detail: The request could not be understood by the server due to malformed
                   syntax. The client SHOULD NOT repeat the request without modification.
@@ -866,7 +866,7 @@ paths:
               example:
                 type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
                   400 Bad Request
-                title: Ten minste Ã©Ã©n parameter moet worden opgegeven.
+                title: Ten minste één parameter moet worden opgegeven.
                 status: 400
                 detail: The request could not be understood by the server due to malformed
                   syntax. The client SHOULD NOT repeat the request without modification.
@@ -1060,7 +1060,7 @@ paths:
               example:
                 type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
                   400 Bad Request
-                title: Ten minste Ã©Ã©n parameter moet worden opgegeven.
+                title: Ten minste één parameter moet worden opgegeven.
                 status: 400
                 detail: The request could not be understood by the server due to malformed
                   syntax. The client SHOULD NOT repeat the request without modification.
@@ -1246,7 +1246,7 @@ paths:
               example:
                 type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
                   400 Bad Request
-                title: Ten minste Ã©Ã©n parameter moet worden opgegeven.
+                title: Ten minste één parameter moet worden opgegeven.
                 status: 400
                 detail: The request could not be understood by the server due to malformed
                   syntax. The client SHOULD NOT repeat the request without modification.
@@ -1440,7 +1440,7 @@ paths:
               example:
                 type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
                   400 Bad Request
-                title: Ten minste Ã©Ã©n parameter moet worden opgegeven.
+                title: Ten minste één parameter moet worden opgegeven.
                 status: 400
                 detail: The request could not be understood by the server due to malformed
                   syntax. The client SHOULD NOT repeat the request without modification.
@@ -1592,7 +1592,7 @@ paths:
       tags:
       - ingeschrevenpersonen
       description: Het ophalen de actuele partner-gegevens van een van een Ingeschreven
-        Persoon zoals die op de persoonslijst voorkomen. Een beÃ«indigd huwelijk of
+        Persoon zoals die op de persoonslijst voorkomen. Een beeindigd huwelijk of
         geregistreerd partnerschap wordt niet opgenomen in het antwoord. De gevonden
         huwelijken/partnerschappen worden ongesorteerd teruggegeven.
       operationId: ingeschrevenpersonenBurgerservicenummerpartners
@@ -1628,7 +1628,7 @@ paths:
               example:
                 type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
                   400 Bad Request
-                title: Ten minste Ã©Ã©n parameter moet worden opgegeven.
+                title: Ten minste één parameter moet worden opgegeven.
                 status: 400
                 detail: The request could not be understood by the server due to malformed
                   syntax. The client SHOULD NOT repeat the request without modification.
@@ -1855,7 +1855,7 @@ paths:
               example:
                 type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
                   400 Bad Request
-                title: Ten minste Ã©Ã©n parameter moet worden opgegeven.
+                title: Ten minste één parameter moet worden opgegeven.
                 status: 400
                 detail: The request could not be understood by the server due to malformed
                   syntax. The client SHOULD NOT repeat the request without modification.
@@ -2078,7 +2078,7 @@ paths:
               example:
                 type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
                   400 Bad Request
-                title: Ten minste Ã©Ã©n parameter moet worden opgegeven.
+                title: Ten minste één parameter moet worden opgegeven.
                 status: 400
                 detail: The request could not be understood by the server due to malformed
                   syntax. The client SHOULD NOT repeat the request without modification.
@@ -2303,7 +2303,7 @@ paths:
               example:
                 type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
                   400 Bad Request
-                title: Ten minste Ã©Ã©n parameter moet worden opgegeven.
+                title: Ten minste één parameter moet worden opgegeven.
                 status: 400
                 detail: The request could not be understood by the server due to malformed
                   syntax. The client SHOULD NOT repeat the request without modification.
@@ -2528,7 +2528,7 @@ paths:
               example:
                 type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
                   400 Bad Request
-                title: Ten minste Ã©Ã©n parameter moet worden opgegeven.
+                title: Ten minste één parameter moet worden opgegeven.
                 status: 400
                 detail: The request could not be understood by the server due to malformed
                   syntax. The client SHOULD NOT repeat the request without modification.
@@ -3057,7 +3057,7 @@ components:
         datumIngangOnderzoek:
           $ref: '#/components/schemas/Datum_onvolledig'
       description: Een groep van booleans om aan te geven welke gegevens van de ingeschreven
-        persoon in onderzoek zijn. Er kunnen ook categorieÃ«n in onderzoek zijn. Als
+        persoon in onderzoek zijn. Er kunnen ook categorieen in onderzoek zijn. Als
         een hele categorie in onderzoek is worden alle rubrieken binnen die categorie
         op _true_ gezet. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)
         .
@@ -3275,7 +3275,7 @@ components:
           type: string
           description: Een door of namens het bevoegd gemeentelijk orgaan ten aanzien
             van een adresseerbaar object toegekende toevoeging aan een huisnummer
-            in de vorm van een alfanumeriek teken. a - z , A â€“ Z
+            in de vorm van een alfanumeriek teken. a - z , A - Z
           example: B
         huisnummer:
           title: Huisnummer
@@ -3292,7 +3292,7 @@ components:
           type: string
           description: Een door of namens het bevoegd gemeentelijk orgaan ten aanzien
             van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer
-            of een combinatie van huisnummer en huisletter. a - z , A - Z , 0 â€“ 9
+            of een combinatie van huisnummer en huisletter. a - z , A - Z , 0 - 9
           example: IV
         aanduidingBijHuisnummer:
           $ref: '#/components/schemas/AanduidingBijHuisnummer_enum'
@@ -3373,7 +3373,7 @@ components:
             title: Straatnaam
             maxLength: 24
             type: string
-            description: De officiÃ«le straatnaam zoals door het bevoegd gemeentelijk
+            description: De officiele straatnaam zoals door het bevoegd gemeentelijk
               orgaan is vastgesteld, zo nodig ingekort conform de specificaties van
               de NEN 5825. alle alfanumrieke tekens
           vanuitVertrokkenOnbekendWaarheen:
@@ -3652,7 +3652,7 @@ components:
           title: heeftAlsPartner
           type: array
           description: De actuele bij de ingeschreven persoon geregistreerde huwelijken
-            en geregistreerd partnerschappen. Een beÃ«indigd huwelijk of geregistreerd
+            en geregistreerd partnerschappen. Een beeindigd huwelijk of geregistreerd
             partnerschap wordt niet teruggegeven.
           items:
             $ref: '#/components/schemas/HalLink'
@@ -3709,7 +3709,7 @@ components:
           title: heeftAlsPartner
           type: array
           description: De actuele bij de ingeschreven persoon geregistreerde huwelijken
-            en geregistreerd partnerschappen. Een beÃ«indigd huwelijk of geregistreerd
+            en geregistreerd partnerschappen. Een beeindigd huwelijk of geregistreerd
             partnerschap wordt niet teruggegeven.
           items:
             $ref: '#/components/schemas/PartnerHal'
@@ -3964,7 +3964,7 @@ components:
           invalidParams:
             type: array
             description: Foutmelding per fout in een parameter. Alle gevonden fouten
-              worden Ã©Ã©n keer teruggemeld.
+              worden één keer teruggemeld.
             items:
               $ref: '#/components/schemas/InvalidParams'
     Foutbericht:
