@@ -13,14 +13,14 @@
     "version" : "1.0.0"
   },
   "servers" : [ {
-    "url" : "https://virtserver.swaggerhub.com/VNGRealisatie/api/bevragingen_ingeschreven_personen",
-    "description" : "SwaggerHub API Auto Mocking"
+    "url" : "https://www.haalcentraal.nl/haalcentraal/api/brp",
+    "description" : "APILAB testserver"
   } ],
   "paths" : {
     "/ingeschrevenpersonen" : {
       "get" : {
-        "tags" : [ "ingeschrevenpersonen" ],
-        "description" : "Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen:\n\n\n1.  Persoon\n    -  geboorte__datum\n    -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) )\n2.  Persoon\n    -  verblijfplaats__gemeentevaninschrijving\n    -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) )\n3.  Persoon\n    -  burgerservicenummer\n\n\n4.  Postcode\n    -  verblijfplaats__postcode\n    -  verblijfplaats__huisnummer\n\n\n5.  NaamOpenbareRuimte\n    -  verblijfplaats__naamopenbareruimte (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) )\n\n    -  verblijfplaats__gemeentevaninschrijving\n    -  verblijfplaats__huisnummer\n\n\n6.  Nummeraanduiding\n    -  verblijfplaats__identificatiecodenummeraanduiding\n\nDe bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters, maar binnen iedere combinatie zijn de hier genoemde velden **verplicht**.\n\n\nDefault levert een zoekvraag alleen personen op die nog in leven zijn. Indien **_inclusiefoverledenpersonen_** de waarde **_true_** heeft worden [overleden personen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) opgenomen in het zoekresultaat.\n\n\nHet maximale aantal zoekresultaten dat geretourneerd wordt is aan de provider om te bepalen. Als het resultaat van de de request dit aantal overtreft worden er geen resultaten geretourneerd en volgt er een foutmelding.\n\n\n Er vind geen sortering plaats.\n",
+        "tags" : [ "Ingeschreven Personen" ],
+        "description" : "Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen:\n\n\n1.  Persoon\n    -  geboorte__datum\n    -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/wildcard.feature) )\n2.  Persoon\n    -  verblijfplaats__gemeenteVanInschrijving\n    -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/wildcard.feature) )\n3.  Persoon\n    -  burgerservicenummer\n\n\n4.  Postcode\n    -  verblijfplaats__postcode\n    -  verblijfplaats__huisnummer\n\n\n5.  NaamOpenbareRuimte\n    -  verblijfplaats__naamOpenbareRuimte (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/wildcard.feature) )\n\n    -  verblijfplaats__gemeenteVanInschrijving\n    -  verblijfplaats__huisnummer\n\n\n6.  Nummeraanduiding\n    -  veblijfplaats__nummeraanduidingIdentificatie\n\nDe bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters, maar binnen iedere combinatie zijn de hier genoemde velden **verplicht**.\n\n\nDefault levert een zoekvraag alleen personen op die nog in leven zijn. Indien **_inclusiefoverledenpersonen_** de waarde **_true_** heeft worden [overleden personen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) opgenomen in het zoekresultaat.\n\n\nHet maximale aantal zoekresultaten dat geretourneerd wordt is aan de provider om te bepalen. Als het resultaat van de de request dit aantal overtreft worden er geen resultaten geretourneerd en volgt er een foutmelding.\n\n\n Er vind geen sortering plaats.\n",
         "operationId" : "ingeschrevenNatuurlijkPersonen",
         "parameters" : [ {
           "name" : "expand",
@@ -48,14 +48,17 @@
           "schema" : {
             "type" : "array",
             "items" : {
-              "$ref" : "#/components/schemas/Burgerservicenummer"
+              "maxLength" : 9,
+              "minLength" : 9,
+              "pattern" : "^[0-9]*$",
+              "type" : "string"
             }
           },
           "example" : "999993653,999991723,999995078"
         }, {
           "name" : "geboorte__datum",
           "in" : "query",
-          "description" : "Datum waarop de INGESCHREVEN NATUURLIJK PERSOON geboren is. Er kan alleen gezocht worden met een volledige geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature)",
+          "description" : "Er kan alleen gezocht worden met een volledige geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature)",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -87,7 +90,7 @@
             "$ref" : "#/components/schemas/Geslacht_enum"
           }
         }, {
-          "name" : "inclusiefoverledenpersonen",
+          "name" : "inclusiefOverledenPersonen",
           "in" : "query",
           "description" : "Indien in het antwoord op de zoekvraag ook overleden personen moeten worden geretourneerd, dan dient de parameter *inclusiefOverledenPersonen* opgenomen te zijn met de waarde _True_. Indien de parameter *inclusiefOverledenPersonen* ontbreekt of de waarde _False_ heeft worden geen overleden personen opgenomen in het zoekresultaat. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature)",
           "required" : false,
@@ -100,7 +103,7 @@
         }, {
           "name" : "naam__geslachtsnaam",
           "in" : "query",
-          "description" : "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).**",
+          "description" : "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).**",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -112,7 +115,7 @@
         }, {
           "name" : "naam__voornamen",
           "in" : "query",
-          "description" : "De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).**",
+          "description" : "De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).**",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -122,7 +125,7 @@
             "example" : "Dirk"
           }
         }, {
-          "name" : "verblijfplaats__gemeentevaninschrijving",
+          "name" : "verblijfplaats__gemeenteVanInschrijving",
           "in" : "query",
           "description" : "Een code die aangeeft in welke gemeente de PL zich bevindt of de gemeente waarnaar de PL is uitgeschreven of de gemeente waar de PL voor de eerste keer is opgenomen. De waarde (0000) is geen geldige inhoud voor de query-parameter.",
           "required" : false,
@@ -160,7 +163,7 @@
         }, {
           "name" : "verblijfplaats__huisnummertoevoeging",
           "in" : "query",
-          "description" : "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter. a - z , A - Z , 0 – 9",
+          "description" : "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter. a - z , A - Z , 0 - 9",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -170,7 +173,7 @@
             "example" : "bis"
           }
         }, {
-          "name" : "verblijfplaats__identificatiecodenummeraanduiding",
+          "name" : "verblijfplaats__nummeraanduidingIdentificatie",
           "in" : "query",
           "description" : "De unieke aanduiding van een NUMMERAANDUIDING. Combinatie van de viercijferige 'gemeentecode' , de tweecijferige 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding.",
           "required" : false,
@@ -182,9 +185,9 @@
             "example" : "0518200000366054"
           }
         }, {
-          "name" : "verblijfplaats__naamopenbareruimte",
+          "name" : "verblijfplaats__naamOpenbareRuimte",
           "in" : "query",
-          "description" : "Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** Tekens gecodeerd volgens de UTF-8 standaard",
+          "description" : "Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** Tekens gecodeerd volgens de UTF-8 standaard",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -424,7 +427,7 @@
     },
     "/ingeschrevenpersonen/{burgerservicenummer}" : {
       "get" : {
-        "tags" : [ "ingeschrevenpersonen" ],
+        "tags" : [ "Ingeschreven Personen" ],
         "description" : "Het ophalen de actuele gegevens van een Ingeschreven Persoon, inclusief verblijfplaats, kinderen, partners en ouders. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen.",
         "operationId" : "ingeschrevenNatuurlijkPersoon",
         "parameters" : [ {
@@ -434,7 +437,12 @@
           "style" : "simple",
           "explode" : false,
           "schema" : {
-            "$ref" : "#/components/schemas/Burgerservicenummer"
+            "maxLength" : 9,
+            "minLength" : 9,
+            "pattern" : "^[0-9]*$",
+            "type" : "string",
+            "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
+            "example" : "555555021"
           }
         }, {
           "name" : "expand",
@@ -682,7 +690,7 @@
     },
     "/ingeschrevenpersonen/{burgerservicenummer}/kinderen/{id}" : {
       "get" : {
-        "tags" : [ "ingeschrevenpersonen" ],
+        "tags" : [ "Ingeschreven Personen" ],
         "description" : "Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.",
         "operationId" : "ingeschrevenpersonenBurgerservicenummerkinderenId",
         "parameters" : [ {
@@ -692,7 +700,12 @@
           "style" : "simple",
           "explode" : false,
           "schema" : {
-            "$ref" : "#/components/schemas/Burgerservicenummer"
+            "maxLength" : 9,
+            "minLength" : 9,
+            "pattern" : "^[0-9]*$",
+            "type" : "string",
+            "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
+            "example" : "555555021"
           }
         }, {
           "name" : "id",
@@ -934,7 +947,7 @@
     },
     "/ingeschrevenpersonen/{burgerservicenummer}/kinderen" : {
       "get" : {
-        "tags" : [ "ingeschrevenpersonen" ],
+        "tags" : [ "Ingeschreven Personen" ],
         "description" : "Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats.",
         "operationId" : "ingeschrevenpersonenBurgerservicenummerkinderen",
         "parameters" : [ {
@@ -944,7 +957,12 @@
           "style" : "simple",
           "explode" : false,
           "schema" : {
-            "$ref" : "#/components/schemas/Burgerservicenummer"
+            "maxLength" : 9,
+            "minLength" : 9,
+            "pattern" : "^[0-9]*$",
+            "type" : "string",
+            "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
+            "example" : "555555021"
           }
         } ],
         "responses" : {
@@ -1176,7 +1194,7 @@
     },
     "/ingeschrevenpersonen/{burgerservicenummer}/ouders/{id}" : {
       "get" : {
-        "tags" : [ "ingeschrevenpersonen" ],
+        "tags" : [ "Ingeschreven Personen" ],
         "description" : "Het ophalen de ouder-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen..",
         "operationId" : "ingeschrevenpersonenBurgerservicenummeroudersId",
         "parameters" : [ {
@@ -1186,7 +1204,12 @@
           "style" : "simple",
           "explode" : false,
           "schema" : {
-            "$ref" : "#/components/schemas/Burgerservicenummer"
+            "maxLength" : 9,
+            "minLength" : 9,
+            "pattern" : "^[0-9]*$",
+            "type" : "string",
+            "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
+            "example" : "555555021"
           }
         }, {
           "name" : "id",
@@ -1428,7 +1451,7 @@
     },
     "/ingeschrevenpersonen/{burgerservicenummer}/ouders" : {
       "get" : {
-        "tags" : [ "ingeschrevenpersonen" ],
+        "tags" : [ "Ingeschreven Personen" ],
         "description" : "Het ophalen de ouder-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats.",
         "operationId" : "ingeschrevenpersonenBurgerservicenummerouders",
         "parameters" : [ {
@@ -1438,7 +1461,12 @@
           "style" : "simple",
           "explode" : false,
           "schema" : {
-            "$ref" : "#/components/schemas/Burgerservicenummer"
+            "maxLength" : 9,
+            "minLength" : 9,
+            "pattern" : "^[0-9]*$",
+            "type" : "string",
+            "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
+            "example" : "555555021"
           }
         } ],
         "responses" : {
@@ -1670,7 +1698,7 @@
     },
     "/ingeschrevenpersonen/{burgerservicenummer}/partners/{id}" : {
       "get" : {
-        "tags" : [ "ingeschrevenpersonen" ],
+        "tags" : [ "Ingeschreven Personen" ],
         "description" : "Het ophalen de partner-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.",
         "operationId" : "ingeschrevenpersonenBurgerservicenummerpartnersId",
         "parameters" : [ {
@@ -1680,7 +1708,12 @@
           "style" : "simple",
           "explode" : false,
           "schema" : {
-            "$ref" : "#/components/schemas/Burgerservicenummer"
+            "maxLength" : 9,
+            "minLength" : 9,
+            "pattern" : "^[0-9]*$",
+            "type" : "string",
+            "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
+            "example" : "555555021"
           }
         }, {
           "name" : "id",
@@ -1922,7 +1955,7 @@
     },
     "/ingeschrevenpersonen/{burgerservicenummer}/partners" : {
       "get" : {
-        "tags" : [ "ingeschrevenpersonen" ],
+        "tags" : [ "Ingeschreven Personen" ],
         "description" : "Het ophalen de actuele partner-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet opgenomen in het antwoord. De gevonden huwelijken/partnerschappen worden ongesorteerd teruggegeven.",
         "operationId" : "ingeschrevenpersonenBurgerservicenummerpartners",
         "parameters" : [ {
@@ -1932,7 +1965,12 @@
           "style" : "simple",
           "explode" : false,
           "schema" : {
-            "$ref" : "#/components/schemas/Burgerservicenummer"
+            "maxLength" : 9,
+            "minLength" : 9,
+            "pattern" : "^[0-9]*$",
+            "type" : "string",
+            "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
+            "example" : "555555021"
           }
         } ],
         "responses" : {
@@ -2174,7 +2212,12 @@
           "style" : "simple",
           "explode" : false,
           "schema" : {
-            "$ref" : "#/components/schemas/Burgerservicenummer"
+            "maxLength" : 9,
+            "minLength" : 9,
+            "pattern" : "^[0-9]*$",
+            "type" : "string",
+            "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
+            "example" : "555555021"
           }
         }, {
           "name" : "fields",
@@ -2454,7 +2497,12 @@
           "style" : "simple",
           "explode" : false,
           "schema" : {
-            "$ref" : "#/components/schemas/Burgerservicenummer"
+            "maxLength" : 9,
+            "minLength" : 9,
+            "pattern" : "^[0-9]*$",
+            "type" : "string",
+            "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
+            "example" : "555555021"
           }
         }, {
           "name" : "fields",
@@ -2734,7 +2782,12 @@
           "style" : "simple",
           "explode" : false,
           "schema" : {
-            "$ref" : "#/components/schemas/Burgerservicenummer"
+            "maxLength" : 9,
+            "minLength" : 9,
+            "pattern" : "^[0-9]*$",
+            "type" : "string",
+            "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
+            "example" : "555555021"
           }
         }, {
           "name" : "fields",
@@ -3014,7 +3067,12 @@
           "style" : "simple",
           "explode" : false,
           "schema" : {
-            "$ref" : "#/components/schemas/Burgerservicenummer"
+            "maxLength" : 9,
+            "minLength" : 9,
+            "pattern" : "^[0-9]*$",
+            "type" : "string",
+            "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
+            "example" : "555555021"
           }
         }, {
           "name" : "fields",
@@ -3285,18 +3343,7 @@
   },
   "components" : {
     "schemas" : {
-      "Burgerservicenummer" : {
-        "title" : "Burgerservicenummer",
-        "maxLength" : 9,
-        "minLength" : 9,
-        "pattern" : "^[0-9]*$",
-        "type" : "string",
-        "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
-        "example" : "555555021"
-      },
       "Reisdocumentnummer" : {
-        "title" : "Reisdocumentnummer",
-        "maxLength" : 9,
         "type" : "string",
         "description" : "Het nummer van het verstrekte Nederlandse reisdocument.",
         "example" : "546376728"
@@ -3305,7 +3352,8 @@
         "type" : "object",
         "properties" : {
           "burgerservicenummer" : {
-            "$ref" : "#/components/schemas/Burgerservicenummer"
+            "type" : "string",
+            "example" : "555555021"
           },
           "geheimhoudingPersoonsgegevens" : {
             "title" : "Indicatie geheim",
@@ -3316,8 +3364,6 @@
             "$ref" : "#/components/schemas/Geslacht_enum"
           },
           "leeftijd" : {
-            "title" : "leeftijd",
-            "maximum" : 999,
             "type" : "integer",
             "description" : "Leeftijd in jaren op het moment van bevraging",
             "example" : 34
@@ -3334,7 +3380,7 @@
           "inOnderzoek" : {
             "$ref" : "#/components/schemas/PersoonInOnderzoek"
           },
-          "nationaliteit" : {
+          "nationaliteiten" : {
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/Nationaliteit"
@@ -3358,7 +3404,7 @@
           "verblijfstitel" : {
             "$ref" : "#/components/schemas/Verblijfstitel"
           },
-          "reisdocumenten" : {
+          "reisdocumentnummers" : {
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/Reisdocumentnummer"
@@ -3374,20 +3420,39 @@
             "$ref" : "#/components/schemas/HalCollectionLinks"
           },
           "_embedded" : {
-            "$ref" : "#/components/schemas/IngeschrevenPersoonHalCollectie__embedded"
+            "$ref" : "#/components/schemas/IngeschrevenPersoonHalCollectieEmbedded"
           }
         }
       },
-      "IngeschrevenPersoonHal" : {
+      "IngeschrevenPersoonHalCollectieEmbedded" : {
+        "type" : "object",
+        "properties" : {
+          "ingeschrevenpersonen" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/IngeschrevenPersoonHal"
+            }
+          }
+        }
+      },
+      "IngeschrevenPersoonHalBasis" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/IngeschrevenPersoon"
         }, {
           "properties" : {
             "_links" : {
-              "$ref" : "#/components/schemas/IngeschrevenPersoon_links"
-            },
+              "$ref" : "#/components/schemas/IngeschrevenPersoonLinks"
+            }
+          }
+        } ]
+      },
+      "IngeschrevenPersoonHal" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/IngeschrevenPersoonHalBasis"
+        }, {
+          "properties" : {
             "_embedded" : {
-              "$ref" : "#/components/schemas/IngeschrevenPersoon_embedded"
+              "$ref" : "#/components/schemas/IngeschrevenPersoonEmbedded"
             }
           }
         } ]
@@ -3396,7 +3461,8 @@
         "type" : "object",
         "properties" : {
           "burgerservicenummer" : {
-            "$ref" : "#/components/schemas/Burgerservicenummer"
+            "type" : "string",
+            "example" : "555555021"
           },
           "geslachtsaanduiding" : {
             "$ref" : "#/components/schemas/Geslacht_enum"
@@ -3431,7 +3497,18 @@
             "$ref" : "#/components/schemas/HalCollectionLinks"
           },
           "_embedded" : {
-            "$ref" : "#/components/schemas/OuderHalCollectie__embedded"
+            "$ref" : "#/components/schemas/OuderHalCollectieEmbedded"
+          }
+        }
+      },
+      "OuderHalCollectieEmbedded" : {
+        "type" : "object",
+        "properties" : {
+          "ouders" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/OuderHal"
+            }
           }
         }
       },
@@ -3441,7 +3518,7 @@
         }, {
           "properties" : {
             "_links" : {
-              "$ref" : "#/components/schemas/Ouder_links"
+              "$ref" : "#/components/schemas/OuderLinks"
             }
           }
         } ]
@@ -3450,11 +3527,10 @@
         "type" : "object",
         "properties" : {
           "burgerservicenummer" : {
-            "$ref" : "#/components/schemas/Burgerservicenummer"
+            "type" : "string",
+            "example" : "555555021"
           },
           "leeftijd" : {
-            "title" : "leeftijd",
-            "maximum" : 999,
             "type" : "integer",
             "description" : "Leeftijd op het moment van bevragen",
             "example" : 12
@@ -3483,7 +3559,18 @@
             "$ref" : "#/components/schemas/HalCollectionLinks"
           },
           "_embedded" : {
-            "$ref" : "#/components/schemas/KindHalCollectie__embedded"
+            "$ref" : "#/components/schemas/KindHalCollectieEmbedded"
+          }
+        }
+      },
+      "KindHalCollectieEmbedded" : {
+        "type" : "object",
+        "properties" : {
+          "kinderen" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/KindHal"
+            }
           }
         }
       },
@@ -3493,7 +3580,7 @@
         }, {
           "properties" : {
             "_links" : {
-              "$ref" : "#/components/schemas/Kind_links"
+              "$ref" : "#/components/schemas/KindLinks"
             }
           }
         } ]
@@ -3502,7 +3589,8 @@
         "type" : "object",
         "properties" : {
           "burgerservicenummer" : {
-            "$ref" : "#/components/schemas/Burgerservicenummer"
+            "type" : "string",
+            "example" : "555555021"
           },
           "geslachtsaanduiding" : {
             "$ref" : "#/components/schemas/Geslacht_enum"
@@ -3537,7 +3625,18 @@
             "$ref" : "#/components/schemas/HalCollectionLinks"
           },
           "_embedded" : {
-            "$ref" : "#/components/schemas/PartnerHalCollectie__embedded"
+            "$ref" : "#/components/schemas/PartnerHalCollectieEmbedded"
+          }
+        }
+      },
+      "PartnerHalCollectieEmbedded" : {
+        "type" : "object",
+        "properties" : {
+          "partners" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/PartnerHal"
+            }
           }
         }
       },
@@ -3547,7 +3646,7 @@
         }, {
           "properties" : {
             "_links" : {
-              "$ref" : "#/components/schemas/Partner_links"
+              "$ref" : "#/components/schemas/PartnerLinks"
             }
           }
         } ]
@@ -3556,28 +3655,21 @@
         "type" : "object",
         "properties" : {
           "geslachtsnaam" : {
-            "title" : "Geslachtsnaam",
-            "maxLength" : 200,
             "type" : "string",
             "description" : "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst.",
             "example" : "Vries"
           },
           "voorletters" : {
-            "title" : "Voorletters aanschrijving",
-            "maxLength" : 20,
             "type" : "string",
-            "description" : "De voorletters waarmee een persoon aangeschreven wil worden. De voorlettes zijn afgeleid van de voornamen."
+            "description" : "De voorletters waarmee een persoon aangeschreven wil worden. De voorlettes zijn afgeleid van de voornamen.",
+            "example" : "P.J."
           },
           "voornamen" : {
-            "title" : "Voornamen",
-            "maxLength" : 200,
             "type" : "string",
             "description" : "De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat.",
             "example" : "Pieter Jan"
           },
           "voorvoegsel" : {
-            "title" : "Voorvoegsel",
-            "maxLength" : 10,
             "type" : "string",
             "description" : "Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam.",
             "example" : "de"
@@ -3592,17 +3684,14 @@
         "type" : "object",
         "properties" : {
           "geslachtsnaam" : {
-            "title" : "geslachtsnaam",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "voornamen" : {
-            "title" : "voornamen",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "voorvoegsel" : {
-            "title" : "voorvoegsel",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
@@ -3616,17 +3705,14 @@
         "type" : "object",
         "properties" : {
           "burgerservicenummer" : {
-            "title" : "burgerservicenummer",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "datumIngangFamilierechtelijkeBetrekking" : {
-            "title" : "datumIngangFamilierechtelijkeBetrekking",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "geslachtsaanduiding" : {
-            "title" : "geslachtsaanduiding",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
@@ -3658,17 +3744,14 @@
         "type" : "object",
         "properties" : {
           "datum" : {
-            "title" : "datum",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "land" : {
-            "title" : "land",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "plaats" : {
-            "title" : "plaats",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
@@ -3682,13 +3765,11 @@
         "type" : "object",
         "properties" : {
           "europeesKiesrecht" : {
-            "title" : "europeesKiesrecht",
             "type" : "boolean",
             "description" : "Een aanduiding die aangeeft of de persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. \n* true: persoon ontvangt een oproep",
             "example" : true
           },
           "uitgeslotenVanKiesrecht" : {
-            "title" : "uitgeslotenVanKiesrecht",
             "type" : "boolean",
             "description" : "Een aanduiding die aangeeft of de persoon is uitgesloten van kiesrecht.\n* true: persoon is uitgesloten",
             "example" : true
@@ -3708,19 +3789,16 @@
         }, {
           "properties" : {
             "aanhef" : {
-              "title" : "aanhef",
               "type" : "string",
               "description" : "De aanhef zoals die in een brief, gericht aan een persoon gebruikt kan worden.",
               "example" : "Geachte heer In het Veld"
             },
             "aanschrijfwijze" : {
-              "title" : "aanschrijfwijze",
               "type" : "string",
               "description" : "Samengestelde naam zoals die in communicatie met de persoon gebruikt kan worden.",
               "example" : "H. in het Veld"
             },
             "gebruikInLopendeTekst" : {
-              "title" : "gebruikInLopendeTekst",
               "type" : "string",
               "description" : "De naam zoals die in lopende tekst gebruikt kan worden.",
               "example" : "de heer In het Veld"
@@ -3736,12 +3814,10 @@
         "type" : "object",
         "properties" : {
           "burgerservicenummer" : {
-            "title" : "burgerservicenummer",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "geslachtsaanduiding" : {
-            "title" : "geslachtsaanduiding",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
@@ -3776,17 +3852,14 @@
         "type" : "object",
         "properties" : {
           "aanduidingBijzonderNederlanderschap" : {
-            "title" : "aanduidingBijzonderNederlanderschap",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "nationaliteit" : {
-            "title" : "nationaliteit",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "redenOpname" : {
-            "title" : "redenOpname",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
@@ -3803,7 +3876,18 @@
             "$ref" : "#/components/schemas/HalCollectionLinks"
           },
           "_embedded" : {
-            "$ref" : "#/components/schemas/NationaliteithistorieHalCollectie__embedded"
+            "$ref" : "#/components/schemas/NationaliteithistorieHalCollectieEmbedded"
+          }
+        }
+      },
+      "NationaliteithistorieHalCollectieEmbedded" : {
+        "type" : "object",
+        "properties" : {
+          "nationaliteithistorie" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Nationaliteithistorie"
+            }
           }
         }
       },
@@ -3824,13 +3908,12 @@
               "$ref" : "#/components/schemas/Waardetabel"
             },
             "indicatieNationaliteitBeeindigd" : {
-              "title" : "indicatieNationaliteitBeeindigd",
               "type" : "boolean",
-              "description" : "Een aanduiding dat de nationaliteit beeindigd is.",
+              "description" : "Een aanduiding dat de nationaliteit beëindigd is.",
               "example" : true
             }
           },
-          "description" : "<body><p>Gegevens over de verblijfsrechtelijke status van de ingeschrevene.</p><p>\n <em>*</em> datumEinde**: Datum waarop de geldigheid van de gegevens over de Nationaliteit is beeindigd.</p><p>\n <em>*</em> datumIngang**: Datum waarop de gegevens over de Nationaliteit geldig zijn geworden.</p><p> <em>*</em> aanduiding** : Nationaliteittabel, die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt.</p> </body>"
+          "description" : "<body><p>Gegevens over de verblijfsrechtelijke status van de ingeschrevene.</p><p>\n <em>*</em> datumEinde**: Datum waarop de geldigheid van de gegevens over de Nationaliteit is beëindigd.</p><p>\n <em>*</em> datumIngang**: Datum waarop de gegevens over de Nationaliteit geldig zijn geworden.</p><p> <em>*</em> aanduiding** : Nationaliteittabel, die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt.</p> </body>"
         } ]
       },
       "OpschortingBijhouding" : {
@@ -3849,7 +3932,6 @@
         "type" : "object",
         "properties" : {
           "indicatieOverleden" : {
-            "title" : "indicatieOverleden",
             "type" : "boolean",
             "description" : "Deze indicatie heeft als rol om aan te geven dat iemand is overleden (waarde true). Deze indicator wordt altijd meegeleverd als de waarde true is (dus als iemand overleden is). Als de waarde false is wordt de indicator niet meegeleverd."
           },
@@ -3872,17 +3954,14 @@
         "type" : "object",
         "properties" : {
           "datum" : {
-            "title" : "datum",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "land" : {
-            "title" : "land",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "plaats" : {
-            "title" : "plaats",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
@@ -3896,7 +3975,6 @@
         "type" : "object",
         "properties" : {
           "burgerservicenummer" : {
-            "title" : "burgerservicenummer",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
@@ -3910,17 +3988,14 @@
         "type" : "object",
         "properties" : {
           "burgerservicenummer" : {
-            "title" : "burgerservicenummer",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "geslachtsaanduiding" : {
-            "title" : "geslachtsaanduiding",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "soortVerbintenis" : {
-            "title" : "soortVerbintenis",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
@@ -3952,17 +4027,14 @@
         "type" : "object",
         "properties" : {
           "datum" : {
-            "title" : "datum",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "land" : {
-            "title" : "land",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "plaats" : {
-            "title" : "plaats",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
@@ -3973,100 +4045,48 @@
         "description" : "Indicators over het in onderzoek zijn van gegevens over de aangaan van het huwelijk van de INGESCHREVEN PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
       },
       "BinnenlandsAdres" : {
-        "type" : "object",
-        "properties" : {
-          "functieAdres" : {
-            "$ref" : "#/components/schemas/SoortAdres_enum"
-          },
-          "huisletter" : {
-            "title" : "Huisletter",
-            "maxLength" : 1,
-            "pattern" : "^[A-Z,a-z]$",
-            "type" : "string",
-            "description" : "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende toevoeging aan een huisnummer in de vorm van een alfanumeriek teken. a - z , A – Z",
-            "example" : "B"
-          },
-          "huisnummer" : {
-            "title" : "Huisnummer",
-            "maximum" : 99999,
-            "type" : "integer",
-            "description" : "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nummering. Alle natuurlijke getallen tussen 1 en 99999.",
-            "example" : 23
-          },
-          "huisnummertoevoeging" : {
-            "title" : "Huisnummertoevoeging",
-            "maxLength" : 4,
-            "pattern" : "^[a-zA-Z0-9]{1,4}$",
-            "type" : "string",
-            "description" : "Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter. a - z , A - Z , 0 – 9",
-            "example" : "IV"
-          },
-          "aanduidingBijHuisnummer" : {
-            "$ref" : "#/components/schemas/AanduidingBijHuisnummer_enum"
-          },
-          "identificatiecodeNummeraanduiding" : {
-            "title" : "identificatiecodeNummeraanduiding",
-            "maxLength" : 16,
-            "type" : "string",
-            "description" : "De unieke aanduiding van een NUMMERAANDUIDING. Combinatie van de viercijferige 'gemeentecode' de tweecijferige 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding. Combinatie van de viercijferige 'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding.",
-            "example" : "0518200000366054"
-          },
-          "naamOpenbareRuimte" : {
-            "title" : "Naam openbare ruimte",
-            "maxLength" : 80,
-            "type" : "string",
-            "description" : "Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming Tekens gecodeerd volgens de UTF-8 standaard",
-            "example" : "Loosduinsekade"
-          },
-          "postcode" : {
-            "title" : "Postcode",
-            "pattern" : "^[1-9]{1}[0-9]{3}[A-Z]{2}$",
-            "type" : "string",
-            "description" : "De door PostNL vastgestelde code behorende bij een bepaalde combinatie van een naam van een woonplaats, naam van een openbare ruimte en een huisnummer",
-            "example" : "2571CC"
-          },
-          "woonplaatsnaam" : {
-            "title" : "Woonplaatsnaam",
-            "maxLength" : 80,
-            "type" : "string",
-            "description" : "De door het bevoegde gemeentelijke orgaan aan een WOONPLAATS toegekende benaming. Tekens gecodeerd volgens de UTF-8 standaard.",
-            "example" : "Utrecht"
+        "description" : "Dit object bevat de basis Verblijfsplaats kenmerken die gedeeld worden door Bewoning en Verblijfplaats\n",
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/Adres"
+        }, {
+          "properties" : {
+            "adresseerbaarObjectIdentificatie" : {
+              "type" : "string",
+              "description" : "Een verblijfplaats kan een ligplaats, een standplaats of een verblijfsobject in een of meerdere panden zijn, waaraan respectievelijk een ligplaatsidentificatie, standplaatsidentificatie of verblijfsobjectidentificatie is toegekend. De Identificatiecode verblijfplaats is een combinatie van een viercijferige gemeentecode, een tweecijferige objecttypecode die aangeeft of de aanduiding een verblijfsobject (01), ligplaats (02) of standplaats (03) betreft en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig volgnummer. Combinatie van de viercijferige 'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'.",
+              "example" : "0518200000366054"
+            },
+            "aanduidingBijHuisnummer" : {
+              "$ref" : "#/components/schemas/AanduidingBijHuisnummer_enum"
+            },
+            "nummeraanduidingIdentificatie" : {
+              "type" : "string",
+              "example" : "0518200000366054"
+            }
           }
-        },
-        "description" : "Dit object bevat de basis Verblijfsplaats kenmerken die gedeeld worden door Bewoning en Verblijfplaats\n"
+        } ]
       },
       "Verblijfplaats" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/BinnenlandsAdres"
         }, {
           "properties" : {
-            "identificatiecodeAdresseerbaarObject" : {
-              "title" : "identificatiecodeAdresseerbaarObject",
-              "maxLength" : 16,
-              "type" : "string",
-              "description" : "Een verblijfplaats kan een ligplaats, een standplaats of een verblijfsobject in een of meerdere panden zijn, waaraan respectievelijk een ligplaatsidentificatie, standplaatsidentificatie of verblijfsobjectidentificatie is toegekend. De Identificatiecode verblijfplaats is een combinatie van een viercijferige gemeentecode, een tweecijferige objecttypecode die aangeeft of de aanduiding een verblijfsobject (01), ligplaats (02) of standplaats (03) betreft en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig volgnummer. Combinatie van de viercijferige 'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'.",
-              "example" : "0518200000366054"
+            "functieAdres" : {
+              "$ref" : "#/components/schemas/SoortAdres_enum"
             },
             "indicatieVestigingVanuitBuitenland" : {
-              "title" : "indicatieVestigingVanuitBuitenland",
               "type" : "boolean",
               "description" : "Indicatie waarmee aangegeven wordt of de ingeschreven persoon zich vanuit het buitenland heeftingeschreven. Deze indicatie heeft als rol om aan te geven dat iemand zich vanuit het buitenland gevestigd heeft. Deze indicator wordt altijd meegeleverd als de waarde true is. Als de waarde false is wordt de indicator niet meegeleverd."
             },
             "locatiebeschrijving" : {
-              "title" : "Locatiebeschrijving",
-              "maxLength" : 35,
               "type" : "string",
               "description" : "Een geheel of gedeeltelijke omschrijving van de ligging van een object.",
               "example" : "Naast de derde brug"
             },
-            "straatnaam" : {
-              "title" : "Straatnaam",
-              "maxLength" : 24,
+            "korteNaam" : {
               "type" : "string",
-              "description" : "De officiële straatnaam zoals door het bevoegd gemeentelijk orgaan is vastgesteld, zo nodig ingekort conform de specificaties van de NEN 5825. alle alfanumrieke tekens"
+              "description" : "De officiële openbareruimtenaam of een verkorte versie. Beiden hebben maximaal 24 tekens."
             },
             "vanuitVertrokkenOnbekendWaarheen" : {
-              "title" : "vanuitVertrokkenOnbekendWaarheen",
               "type" : "boolean",
               "description" : "Indicatie waarmee aangegeven wordt dat de persoon is teruggekeerd uit een situatie van vertrokken onbekend waarheen",
               "example" : true
@@ -4089,143 +4109,111 @@
             "landVanwaarIngeschreven" : {
               "$ref" : "#/components/schemas/Waardetabel"
             },
-            "verblijfBuitenland" : {
-              "$ref" : "#/components/schemas/VerblijfBuitenland"
+            "adresregel1" : {
+              "type" : "string",
+              "description" : "Het eerste deel van een adres is een combinatie van de straat en huisnummer.",
+              "example" : "Laan van de landinrichtingscommissie Duiven-Westervoort 26A-3"
+            },
+            "adresregel2" : {
+              "type" : "string",
+              "description" : "Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode",
+              "example" : "1234AA Nootdorp"
+            },
+            "adresregel3" : {
+              "type" : "string",
+              "description" : "Het derde deel van een adres is optioneel een of meer geografische gebieden van het adres in het buitenland",
+              "example" : "Selangor"
+            },
+            "vertrokkenOnbekendWaarheen" : {
+              "type" : "boolean",
+              "description" : "Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe."
+            },
+            "land" : {
+              "$ref" : "#/components/schemas/Waardetabel"
             },
             "inOnderzoek" : {
               "$ref" : "#/components/schemas/VerblijfplaatsInOnderzoek"
             }
           },
-          "description" : "Gegevens over het verblijf en adres van de ingeschreven persoon. Dit is het adres waarop een persoon is ingeschreven. \n* **datumAanvangAdreshuishouding** : De datum van aangifte of ambtshalve melding van verblijf en adres. \n* **datumIngangGeldigheid** : Datum waarop de gegevens over de verblijfplaats geldig zijn geworden. \n* **datumInschrijvingInGemeente**: Bij inschrijving op grond van een aangifte door de burger van zijn vestiging in een (volgende) gemeente is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop de betrokkene schriftelijk van het voornemen van ambtshalve opneming mededeling is gedaan. \n* **datumVestigingInNederland** : Datum van inschrijving in Nederland \n* **landVanWaarIngeschreven** : Het land waar de ingeschreven persoon verblijf hield voor (her)vestiging in Nederland. \n* **gemeenteVanInschrijving** : Een aanduiding die aangeeft in welke gemeente de PK zich bevindt. De code kan voorloopnullen bevatten \n* **landVanWaarIngeschreven** : Het LAND waar de INGESCHREVEN PERSOON verblijf hield voor (her)vestiging in Nederland."
+          "description" : "Gegevens over het verblijf en adres van de ingeschreven persoon. Dit is het adres waarop een persoon is ingeschreven. \n* **datumAanvangAdreshuishouding** : De datum van aangifte of ambtshalve melding van verblijf en adres. \n*  **datumIngangGeldigheid** : Datum waarop de gegevens over de verblijfplaats geldig zijn geworden. \n* **datumInschrijvingInGemeente**: Bij inschrijving op grond van een aangifte door de burger van zijn vestiging in een (volgende) gemeente is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop  de betrokkene schriftelijk van het voornemen van ambtshalve opneming mededeling is gedaan. \n* **datumVestigingInNederland** : Datum van inschrijving in Nederland \n* **landVanWaarIngeschreven** : Het land waar de ingeschreven persoon verblijf hield voor (her)vestiging in Nederland. \n* **gemeenteVanInschrijving** : Een aanduiding die aangeeft in welke gemeente de PK zich bevindt. De code kan voorloopnullen bevatten \n* **landVanWaarIngeschreven** : Het LAND waar de INGESCHREVEN PERSOON verblijf hield voor (her)vestiging in Nederland."
         } ]
-      },
-      "VerblijfBuitenland" : {
-        "type" : "object",
-        "properties" : {
-          "adresRegel1" : {
-            "title" : "adresRegel1",
-            "maxLength" : 35,
-            "type" : "string",
-            "description" : "Het eerste deel van het adres in het buitenland dat de ingeschreven persoon opgeeft bij vertrek naar het buitenland dan wel waar de ingeschreven persoon in het buitenland verblijft."
-          },
-          "adresRegel2" : {
-            "title" : "adresRegel2",
-            "maxLength" : 35,
-            "type" : "string",
-            "description" : "Het tweede deel van het adres in het buitenland dat de ingeschreven persoon opgeeft bij vertrek naar het buitenland dan wel waar de ingeschreven persoon in het buitenland verblijft."
-          },
-          "adresRegel3" : {
-            "title" : "adresRegel3",
-            "maxLength" : 35,
-            "type" : "string",
-            "description" : "Het derde deel van het adres in het buitenland dat de ingeschreven persoon opgeeft bij vertrek naar het buitenland dan wel waar de ingeschreven persoon in het buitenland verblijft."
-          },
-          "vertrokkenOnbekendWaarheen" : {
-            "title" : "vertrokkenOnbekendWaarheen",
-            "type" : "boolean",
-            "description" : "Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe."
-          },
-          "land" : {
-            "$ref" : "#/components/schemas/Waardetabel"
-          }
-        },
-        "description" : "De gegevens over het verblijf in het buitenland"
       },
       "VerblijfplaatsInOnderzoek" : {
         "type" : "object",
         "properties" : {
           "aanduidingBijHuisnummer" : {
-            "title" : "aanduidingBijHuisnummer",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "datumAanvangAdreshouding" : {
-            "title" : "datumAanvangAdreshouding",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "datumIngangGeldigheid" : {
-            "title" : "datumIngangGeldigheid",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "datumInschrijvingInGemeente" : {
-            "title" : "datumInschrijvingInGemeente",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "datumVestigingInNederland" : {
-            "title" : "datumVestigingInNederland",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "functieAdres" : {
-            "title" : "functieAdres",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "gemeenteVanInschrijving" : {
-            "title" : "gemeenteVanInschrijving",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "huisletter" : {
-            "title" : "huisletter",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "huisnummer" : {
-            "title" : "huisnummer",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "huisnummertoevoeging" : {
-            "title" : "huisnummertoevoeging",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
-          "identificatiecodeNummeraanduiding" : {
-            "title" : "identificatiecodeNummeraanduiding",
+          "nummeraanduidingIdentificatie" : {
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
-          "identificatiecodeAdresseerbaarObject" : {
-            "title" : "identificatiecodeAdresseerbaarObject",
+          "adresseerbaarObjectIdentificatie" : {
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "landVanwaarIngeschreven" : {
-            "title" : "landVanwaarIngeschreven",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "locatiebeschrijving" : {
-            "title" : "locatiebeschrijving",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "naamOpenbareRuimte" : {
-            "title" : "naamOpenbareRuimte",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "postcode" : {
-            "title" : "postcode",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "straatnaam" : {
-            "title" : "straatnaam",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "verblijfBuitenland" : {
-            "title" : "verblijfBuitenland",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "woonplaatsnaam" : {
-            "title" : "woonplaatsnaam",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
@@ -4233,13 +4221,12 @@
             "$ref" : "#/components/schemas/Datum_onvolledig"
           }
         },
-        "description" : "Indicators om aan te geven dat de gegevens over het verblijf en adres van de INGESCHREVEN NATUURLIJK PERSOON in onderzoek zijn. Elementen van het GBA-adres zelf (Dat zou eigenlijk een BAG-adres moeten zijn) kunnen niet in onderzoek zijn. Wel de relatie naar de nummeraanduding. Dat wordt gedaan door de identificatiecodeNummeraanduiding in onderzoek te zetten. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
+        "description" : "Indicators om aan te geven dat de gegevens over het verblijf en adres van de INGESCHREVEN NATUURLIJK PERSOON in onderzoek zijn. Elementen van het GBA-adres zelf (Dat zou eigenlijk een BAG-adres moeten zijn) kunnen niet in onderzoek zijn. Wel de relatie naar de nummeraanduiding. Dat wordt gedaan door de identificatiecodeNummeraanduiding in onderzoek te zetten. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
       },
       "Gezagsverhouding" : {
         "type" : "object",
         "properties" : {
           "indicatieCurateleRegister" : {
-            "title" : "indicatieCurateleRegister",
             "type" : "boolean",
             "description" : "Een aanduiding dat de ingeschrevene onder curatele is gesteld.",
             "example" : true
@@ -4257,12 +4244,10 @@
         "type" : "object",
         "properties" : {
           "indicatieCurateleRegister" : {
-            "title" : "indicatieCurateleRegister",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
           "indicatieGezagMinderjarige" : {
-            "title" : "indicatieGezagMinderjarige",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
           },
@@ -4288,23 +4273,20 @@
             "$ref" : "#/components/schemas/VerblijfstitelInOnderzoek"
           }
         },
-        "description" : "Gegevens over de verblijfsrechtelijke status van de ingeschrevene. \n* **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beeindigd. \n* **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden. \n* **aanduiding** : Verblijfstiteltabel, die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt."
+        "description" : "Gegevens over de verblijfsrechtelijke status van de ingeschrevene. \n* **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd. \n* **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden. \n* **aanduiding** : Verblijfstiteltabel, die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt."
       },
       "VerblijfstitelInOnderzoek" : {
         "type" : "object",
         "properties" : {
           "aanduiding" : {
-            "title" : "aanduiding",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze verblijfstitel in onderzoek is."
           },
           "datumEinde" : {
-            "title" : "datumEinde",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze verblijfstitel in onderzoek is."
           },
           "datumIngang" : {
-            "title" : "datumIngang",
             "type" : "boolean",
             "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze verblijfstitel in onderzoek is."
           },
@@ -4314,15 +4296,13 @@
         },
         "description" : "In onderzoek indicators over de gegevens over de verblijfstitel."
       },
-      "IngeschrevenPersoon_links" : {
+      "IngeschrevenPersoonLinks" : {
         "type" : "object",
         "properties" : {
           "self" : {
             "$ref" : "#/components/schemas/HalLink"
           },
           "ouders" : {
-            "title" : "heeftAlsOuder",
-            "maxItems" : 4,
             "type" : "array",
             "description" : "De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE verwijst`",
             "items" : {
@@ -4330,7 +4310,6 @@
             }
           },
           "reisdocumenten" : {
-            "title" : "isHouderVan",
             "type" : "array",
             "description" : "De ingezetene waaraan het REISDOCUMENT is verstrekt. Dit is de inverse relatie van heeftAlsHouder. Reisdocumenten die aan een ingezetene zijn verstrekt.",
             "items" : {
@@ -4338,7 +4317,6 @@
             }
           },
           "kinderen" : {
-            "title" : "heeftAlsKind",
             "type" : "array",
             "description" : "De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE verwijst",
             "items" : {
@@ -4346,7 +4324,6 @@
             }
           },
           "partners" : {
-            "title" : "heeftAlsPartner",
             "type" : "array",
             "description" : "De actuele bij de ingeschreven persoon geregistreerde huwelijken en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven.",
             "items" : {
@@ -4365,12 +4342,12 @@
           "nationaliteitHistorie" : {
             "$ref" : "#/components/schemas/HalLink"
           },
-          "verblijfplaatsNummeraanduiding" : {
+          "adres" : {
             "$ref" : "#/components/schemas/HalLink"
           }
         }
       },
-      "Ouder_links" : {
+      "OuderLinks" : {
         "type" : "object",
         "properties" : {
           "self" : {
@@ -4381,7 +4358,7 @@
           }
         }
       },
-      "Kind_links" : {
+      "KindLinks" : {
         "type" : "object",
         "properties" : {
           "self" : {
@@ -4392,7 +4369,7 @@
           }
         }
       },
-      "Partner_links" : {
+      "PartnerLinks" : {
         "type" : "object",
         "properties" : {
           "self" : {
@@ -4403,12 +4380,10 @@
           }
         }
       },
-      "IngeschrevenPersoon_embedded" : {
+      "IngeschrevenPersoonEmbedded" : {
         "type" : "object",
         "properties" : {
           "ouders" : {
-            "title" : "heeftAlsOuder",
-            "maxItems" : 4,
             "type" : "array",
             "description" : "De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE verwijst`",
             "items" : {
@@ -4416,7 +4391,6 @@
             }
           },
           "kinderen" : {
-            "title" : "heeftAlsKind",
             "type" : "array",
             "description" : "De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE verwijst",
             "items" : {
@@ -4424,7 +4398,6 @@
             }
           },
           "partners" : {
-            "title" : "heeftAlsPartner",
             "type" : "array",
             "description" : "De actuele bij de ingeschreven persoon geregistreerde huwelijken en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven.",
             "items" : {
@@ -4485,7 +4458,18 @@
             "$ref" : "#/components/schemas/HalCollectionLinks"
           },
           "_embedded" : {
-            "$ref" : "#/components/schemas/VerblijfplaatshistorieHalCollectie__embedded"
+            "$ref" : "#/components/schemas/VerblijfplaatshistorieHalCollectieEmbedded"
+          }
+        }
+      },
+      "VerblijfplaatshistorieHalCollectieEmbedded" : {
+        "type" : "object",
+        "properties" : {
+          "verblijfplaatshistorie" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/VerblijfplaatshistorieHal"
+            }
           }
         }
       },
@@ -4495,7 +4479,7 @@
         }, {
           "properties" : {
             "_links" : {
-              "$ref" : "#/components/schemas/Verblijfplaatshistorie_links"
+              "$ref" : "#/components/schemas/VerblijfplaatshistorieLinks"
             }
           }
         } ]
@@ -4506,11 +4490,7 @@
         }, {
           "properties" : {
             "datumTot" : {
-              "allOf" : [ {
-                "$ref" : "#/components/schemas/Datum_onvolledig"
-              }, {
-                "description" : "De datum vanaf wanneer de persoon niet meer op het adres verblijft."
-              } ]
+              "$ref" : "#/components/schemas/Datum_onvolledig"
             },
             "geheimhoudingPersoonsgegevens" : {
               "title" : "Indicatie geheim",
@@ -4521,10 +4501,10 @@
           "description" : "<body><p>Gegevens over het verblijf en adres van de ingeschreven persoon. Dit is het adres waarop een persoon is ingeschreven of ingeschreven is geweest.</p><p>\n <em>*</em> datumAanvangAdreshuishouding** : De datum van aangifte of ambtshalve melding van verblijf en adres.</p><p>\n <em>*</em> datumIngangGeldigheid** : Datum waarop de gegevens over de verblijfplaats geldig zijn geworden.</p><p>\n <em>*</em> datumInschrijvingInGemeente**: Bij inschrijving op grond van een aangifte door de burger van zijn vestiging in een (volgende) gemeente is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop de betrokkene schriftelijk van het voornemen van ambtshalve opneming mededeling is gedaan.</p><p>\n <em>*</em> datumVestigingInNederland** : Datum van inschrijving in Nederland</p><p>\n <em>*</em> landVanWaarIngeschreven** : Het land waar de ingeschreven persoon verblijf hield voor (her)vestiging in Nederland.</p><p>\n <em>*</em> gemeenteVanInschrijving** : Een aanduiding die aangeeft in welke gemeente de PK zich bevindt. De code kan voorloopnullen bevatten</p><p>\n <em>*</em> landVanWaarIngeschreven** : Het LAND waar de INGESCHREVEN PERSOON verblijf hield voor (her)vestiging in Nederland.</p></body>"
         } ]
       },
-      "Verblijfplaatshistorie_links" : {
+      "VerblijfplaatshistorieLinks" : {
         "type" : "object",
         "properties" : {
-          "nummeraanduiding" : {
+          "adres" : {
             "$ref" : "#/components/schemas/HalLink"
           },
           "adresseerbaarObject" : {
@@ -4539,7 +4519,18 @@
             "$ref" : "#/components/schemas/HalCollectionLinks"
           },
           "_embedded" : {
-            "$ref" : "#/components/schemas/PartnerhistorieHalCollectie__embedded"
+            "$ref" : "#/components/schemas/PartnerhistorieHalCollectieEmbedded"
+          }
+        }
+      },
+      "PartnerhistorieHalCollectieEmbedded" : {
+        "type" : "object",
+        "properties" : {
+          "partnerhistorie" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/PartnerhistorieHal"
+            }
           }
         }
       },
@@ -4549,7 +4540,7 @@
         }, {
           "properties" : {
             "_links" : {
-              "$ref" : "#/components/schemas/Partnerhistorie_links"
+              "$ref" : "#/components/schemas/PartnerhistorieLinks"
             }
           }
         } ]
@@ -4571,7 +4562,7 @@
         "properties" : {
           "indicatieHuwelijkPartnerschapBeeindigd" : {
             "type" : "boolean",
-            "description" : "Indicatie of het huwelijk ontbonden is danwel het partnerschap beeindigd is.\n* `True` - Huwelijk/Partnerschap is beeindigd."
+            "description" : "Indicatie of het huwelijk ontbonden is danwel het partnerschap beëindigd is. \n* `True` - Huwelijk/Partnerschap is beëindigd."
           },
           "datum" : {
             "$ref" : "#/components/schemas/Datum_onvolledig"
@@ -4594,17 +4585,14 @@
         "type" : "object",
         "properties" : {
           "datum" : {
-            "title" : "datum",
             "type" : "boolean",
             "description" : "<body><p>Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.</p></body>"
           },
           "land" : {
-            "title" : "land",
             "type" : "boolean",
             "description" : "<body><p>Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.</p></body>"
           },
           "plaats" : {
-            "title" : "plaats",
             "type" : "boolean",
             "description" : "<body><p>Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.</p></body>"
           },
@@ -4614,7 +4602,7 @@
         },
         "description" : "<body><p>Indicators over het in onderzoek zijn van gegevens over de aangaan van het huwelijk van de INGESCHREVEN PERSOON.</p><p>Zie de <a href=`https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature`> functionele specificaties <a></p></body>"
       },
-      "Partnerhistorie_links" : {
+      "PartnerhistorieLinks" : {
         "type" : "object",
         "properties" : {
           "ingeschrevenPersoon" : {
@@ -4629,7 +4617,18 @@
             "$ref" : "#/components/schemas/HalCollectionLinks"
           },
           "_embedded" : {
-            "$ref" : "#/components/schemas/VerblijfstitelhistorieHalCollectie__embedded"
+            "$ref" : "#/components/schemas/VerblijfstitelhistorieHalCollectieEmbedded"
+          }
+        }
+      },
+      "VerblijfstitelhistorieHalCollectieEmbedded" : {
+        "type" : "object",
+        "properties" : {
+          "verblijfstitelhistorie" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Verblijfstitelhistorie"
+            }
           }
         }
       },
@@ -4644,7 +4643,7 @@
               "description" : "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt mogen worden. Indien true: op verzoek van deze persoon is het verstrekken van gegevens over deze persoon aan bepaalde derden niet toegestaan."
             }
           },
-          "description" : "<body><p>Gegevens over de verblijfsrechtelijke status van de ingeschrevene.</p><p>\n <em>*</em> datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beeindigd.</p><p>\n <em>*</em> datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.</p><p> <em>*</em> aanduiding** : Verblijfstiteltabel, die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt.</p> </body>"
+          "description" : "<body><p>Gegevens over de verblijfsrechtelijke status van de ingeschrevene.</p><p>\n <em>*</em> datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd.</p><p>\n <em>*</em> datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.</p><p> <em>*</em> aanduiding** : Verblijfstiteltabel, die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt.</p> </body>"
         } ]
       },
       "Geboortedatum" : {
@@ -4814,93 +4813,43 @@
         },
         "description" : "Generieke tabel met waarden om een code en omschrijving op te nemen."
       },
-      "IngeschrevenPersoonHalCollectie__embedded" : {
+      "Adres" : {
         "type" : "object",
         "properties" : {
-          "ingeschrevenpersonen" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/IngeschrevenPersoonHal"
-            }
+          "straat" : {
+            "title" : "openbareruimte naam",
+            "type" : "string",
+            "description" : "Een naam die door de gemeente aan een openbare ruimte is gegeven.",
+            "example" : "Laan van de landinrichtingscommissie Duiven-Westervoort"
+          },
+          "huisnummer" : {
+            "type" : "integer",
+            "description" : "Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.",
+            "example" : 1
+          },
+          "huisletter" : {
+            "type" : "string",
+            "description" : "Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.",
+            "example" : "A"
+          },
+          "huisnummertoevoeging" : {
+            "type" : "string",
+            "description" : "Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.",
+            "example" : "bis"
+          },
+          "postcode" : {
+            "type" : "string",
+            "description" : "De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.",
+            "example" : "6922KZ"
+          },
+          "woonplaats" : {
+            "title" : "woonplaats naam",
+            "type" : "string",
+            "description" : "Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.",
+            "example" : "Duiven"
           }
-        }
-      },
-      "OuderHalCollectie__embedded" : {
-        "type" : "object",
-        "properties" : {
-          "ouders" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/OuderHal"
-            }
-          }
-        }
-      },
-      "KindHalCollectie__embedded" : {
-        "type" : "object",
-        "properties" : {
-          "kinderen" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/KindHal"
-            }
-          }
-        }
-      },
-      "PartnerHalCollectie__embedded" : {
-        "type" : "object",
-        "properties" : {
-          "partners" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/PartnerHal"
-            }
-          }
-        }
-      },
-      "NationaliteithistorieHalCollectie__embedded" : {
-        "type" : "object",
-        "properties" : {
-          "nationaliteithistorie" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/Nationaliteithistorie"
-            }
-          }
-        }
-      },
-      "VerblijfplaatshistorieHalCollectie__embedded" : {
-        "type" : "object",
-        "properties" : {
-          "verblijfplaatshistorie" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/VerblijfplaatshistorieHal"
-            }
-          }
-        }
-      },
-      "PartnerhistorieHalCollectie__embedded" : {
-        "type" : "object",
-        "properties" : {
-          "partnerhistorie" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/PartnerhistorieHal"
-            }
-          }
-        }
-      },
-      "VerblijfstitelhistorieHalCollectie__embedded" : {
-        "type" : "object",
-        "properties" : {
-          "verblijfstitelhistorie" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/Verblijfstitelhistorie"
-            }
-          }
-        }
+        },
+        "description" : "Eigenschappen van het adres die kunnen worden hergebruikt in andere API's waarin adresgegevens worden opgenomen. "
       }
     },
     "parameters" : {
@@ -4911,7 +4860,12 @@
         "style" : "simple",
         "explode" : false,
         "schema" : {
-          "$ref" : "#/components/schemas/Burgerservicenummer"
+          "maxLength" : 9,
+          "minLength" : 9,
+          "pattern" : "^[0-9]*$",
+          "type" : "string",
+          "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
+          "example" : "555555021"
         }
       }
     },
