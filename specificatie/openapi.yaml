@@ -70,7 +70,10 @@ paths:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/Burgerservicenummer'
+              type: string
+              pattern: "^[0-9]*$"
+              maxLength: 9
+              minLength: 9
         - in: query
           name: geboorte__datum
           description: "Er kan alleen gezocht worden met een volledige geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature)"
@@ -208,6 +211,8 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/responses/default"
+      tags:
+        - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}:
     get:
       operationId: ingeschrevenNatuurlijkPersoon
@@ -246,6 +251,8 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/responses/default"
+      tags:
+        - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/kinderen/{id}:
     get:
       operationId: ingeschrevenpersonenBurgerservicenummerkinderenId
@@ -288,6 +295,8 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/responses/default"
+      tags:
+        - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/kinderen:
     get:
       operationId: ingeschrevenpersonenBurgerservicenummerkinderen
@@ -324,6 +333,8 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/responses/default"
+      tags:
+        - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/ouders/{id}:
     get:
       operationId: ingeschrevenpersonenBurgerservicenummeroudersId
@@ -366,6 +377,8 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/responses/default"
+      tags:
+        - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/ouders:
     get:
       operationId: ingeschrevenpersonenBurgerservicenummerouders
@@ -402,6 +415,8 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/responses/default"
+      tags:
+        - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/partners/{id}:
     get:
       operationId: ingeschrevenpersonenBurgerservicenummerpartnersId
@@ -444,6 +459,8 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/responses/default"
+      tags:
+        - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/partners:
     get:
       operationId: ingeschrevenpersonenBurgerservicenummerpartners
@@ -480,6 +497,8 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/responses/default"
+      tags:
+        - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/verblijfplaatshistorie:
     get:
       operationId: Getverblijfplaatshistorie
@@ -520,6 +539,8 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/responses/default"
+      tags:
+        - Historie
   /ingeschrevenpersonen/{burgerservicenummer}/partnerhistorie:
     get:
       operationId: Getpartnerhistorie
@@ -560,6 +581,8 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/responses/default"
+      tags:
+        - Historie
   /ingeschrevenpersonen/{burgerservicenummer}/verblijfstitelhistorie:
     get:
       operationId: getverblijfstitelhistorie
@@ -600,6 +623,8 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/responses/default"
+      tags:
+        - Historie
   /ingeschrevenpersonen/{burgerservicenummer}/nationaliteithistorie:
     get:
       operationId: getnationaliteithistorie
@@ -640,6 +665,8 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/responses/default"
+      tags:
+        - Historie
 components:
   parameters:
     burgerservicenummer:
@@ -647,19 +674,17 @@ components:
       in: path
       required: true
       schema:
-        $ref: '#/components/schemas/Burgerservicenummer'
+        type: "string"
+        description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet\
+          \ algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt\
+          \ dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat\
+          \ van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door\
+          \ elf. Er moeten dus 9 cijfers aanwezig zijn."
+        pattern: "^[0-9]*$"
+        maxLength: 9
+        minLength: 9
+        example: "555555021"
   schemas:
-    Burgerservicenummer:
-      type: "string"
-      description: "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet\
-        \ algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt\
-        \ dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat\
-        \ van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door\
-        \ elf. Er moeten dus 9 cijfers aanwezig zijn."
-      pattern: "^[0-9]*$"
-      maxLength: 9
-      minLength: 9
-      example: "555555021"
     Reisdocumentnummer:
       type: "string"
       description: "Het nummer van het verstrekte Nederlandse reisdocument."
@@ -670,7 +695,8 @@ components:
         \ : Datum van eerste inschrijving in de GBA"
       properties:
         burgerservicenummer:
-          $ref: '#/components/schemas/Burgerservicenummer'
+            type: "string"
+            example: "555555021"
         geheimhoudingPersoonsgegevens:
           type: boolean
           title: "Indicatie geheim"
@@ -743,7 +769,8 @@ components:
         \ : De datum waarop de familierechtelijke betrekking is ontstaan."
       properties:
         burgerservicenummer:
-          $ref: '#/components/schemas/Burgerservicenummer'
+          type: "string"
+          example: "555555021"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
         ouderAanduiding:
@@ -788,7 +815,8 @@ components:
       description: "Gegevens over een kind van de ingeschrevene."
       properties:
         burgerservicenummer:
-          $ref: '#/components/schemas/Burgerservicenummer'
+          type: "string"
+          example: "555555021"
         leeftijd:
           type: integer
           description: "Leeftijd op het moment van bevragen"
@@ -831,7 +859,8 @@ components:
         \ van de ingeschrevene."
       properties:
         burgerservicenummer:
-          $ref: '#/components/schemas/Burgerservicenummer'
+          type: "string"
+          example: "555555021"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
         soortVerbintenis:
@@ -885,7 +914,7 @@ components:
           type: "string"
           description: "De voorletters waarmee een persoon aangeschreven wil worden.\
             \ De voorlettes zijn afgeleid van de voornamen."
-          example: "P J"
+          example: "P.J."
         voornamen:
           type: "string"
           description: "De verzameling namen die, gescheiden door spaties, aan de\
@@ -1237,8 +1266,20 @@ components:
       allOf:
        - $ref : "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BAG-bevragen/v1.1.0/specificatie/openapi.yaml#/components/schemas/Adres"
        - properties:
-          functieAdres:
-            $ref: "#/components/schemas/SoortAdres_enum"
+          adresseerbaarObjectIdentificatie:
+            type: "string"
+            description: "Een verblijfplaats kan een ligplaats, een standplaats of een\
+              \ verblijfsobject in een of meerdere panden zijn, waaraan respectievelijk\
+              \ een ligplaatsidentificatie, standplaatsidentificatie of verblijfsobjectidentificatie\
+              \ is toegekend. De Identificatiecode verblijfplaats is een combinatie\
+              \ van een viercijferige gemeentecode, een tweecijferige objecttypecode\
+              \ die aangeeft of de aanduiding een verblijfsobject (01), ligplaats (02)\
+              \ of standplaats (03) betreft en een voor het betreffende objecttype binnen\
+              \ een gemeente uniek tiencijferig volgnummer. Combinatie van de viercijferige\
+              \ 'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige\
+              \ 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente\
+              \ uniek tiencijferig 'objectvolgnummer'."
+            example: "0518200000366054"
           aanduidingBijHuisnummer:
             $ref: "#/components/schemas/AanduidingBijHuisnummer_enum"
           nummeraanduidingIdentificatie:
@@ -1263,20 +1304,8 @@ components:
           \ kan voorloopnullen bevatten \n* **landVanWaarIngeschreven** : Het LAND waar\
           \ de INGESCHREVEN PERSOON verblijf hield voor (her)vestiging in Nederland."
         properties:
-          adresseerbaarObjectIdentificatie:
-            type: "string"
-            description: "Een verblijfplaats kan een ligplaats, een standplaats of een\
-              \ verblijfsobject in een of meerdere panden zijn, waaraan respectievelijk\
-              \ een ligplaatsidentificatie, standplaatsidentificatie of verblijfsobjectidentificatie\
-              \ is toegekend. De Identificatiecode verblijfplaats is een combinatie\
-              \ van een viercijferige gemeentecode, een tweecijferige objecttypecode\
-              \ die aangeeft of de aanduiding een verblijfsobject (01), ligplaats (02)\
-              \ of standplaats (03) betreft en een voor het betreffende objecttype binnen\
-              \ een gemeente uniek tiencijferig volgnummer. Combinatie van de viercijferige\
-              \ 'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige\
-              \ 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente\
-              \ uniek tiencijferig 'objectvolgnummer'."
-            example: "0518200000366054"
+          functieAdres:
+            $ref: "#/components/schemas/SoortAdres_enum"
           indicatieVestigingVanuitBuitenland:
             type: boolean
             description: "Indicatie waarmee aangegeven wordt of de ingeschreven persoon\
