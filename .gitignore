@@ -5,5 +5,3 @@ node_modules
 # swagger-codegen-cli
 .swagger-codegen
 .swagger-codegen-ignore
-
-code
