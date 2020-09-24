@@ -4,7 +4,7 @@ servers:
     url: https://www.haalcentraal.nl/haalcentraal/api/brp
 info:
   title: Bevragingen ingeschreven personen
-  description: "API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een veëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> "
+  description: "API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> "
   version: "1.0.0"
   contact:
     url: https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen
@@ -464,7 +464,7 @@ paths:
   /ingeschrevenpersonen/{burgerservicenummer}/partners:
     get:
       operationId: ingeschrevenpersonenBurgerservicenummerpartners
-      description: "Het ophalen de actuele partner-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Een veëindigd huwelijk of geregistreerd partnerschap wordt niet opgenomen in het antwoord. De gevonden huwelijken/partnerschappen worden ongesorteerd teruggegeven."
+      description: "Het ophalen de actuele partner-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet opgenomen in het antwoord. De gevonden huwelijken/partnerschappen worden ongesorteerd teruggegeven."
       parameters:
         - $ref: '#/components/parameters/burgerservicenummer'
       responses:
@@ -1121,7 +1121,7 @@ components:
       - $ref: "#/components/schemas/Nationaliteit"
       - description: "<body><p>Gegevens over de verblijfsrechtelijke status van de\
           \ ingeschrevene.</p><p>\n <em>*</em> datumEinde**: Datum waarop\
-          \ de geldigheid van de gegevens over de Nationaliteit is veëindigd.</p><p>\n\
+          \ de geldigheid van de gegevens over de Nationaliteit is beëindigd.</p><p>\n\
           \ <em>*</em> datumIngang**: Datum waarop de gegevens over de Nationaliteit\
           \ geldig zijn geworden.</p><p> <em>*</em> aanduiding** : Nationaliteittabel,\
           \ die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt.</p> </body>"
@@ -1138,7 +1138,7 @@ components:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
           indicatieNationaliteitBeeindigd:
             type: boolean
-            description: "Een aanduiding dat de nationaliteit veëindigd is."
+            description: "Een aanduiding dat de nationaliteit beëindigd is."
             example: true
     OpschortingBijhouding:
       type: "object"
@@ -1479,7 +1479,7 @@ components:
       type: "object"
       description: "Gegevens over de verblijfsrechtelijke status van de ingeschrevene.\
         \ \n* **datumEinde**: Datum waarop de geldigheid van de gegevens\
-        \ over de verblijfstitel is veëindigd. \n* **datumIngang**: Datum\
+        \ over de verblijfstitel is beëindigd. \n* **datumIngang**: Datum\
         \ waarop de gegevens over de verblijfstitel geldig zijn geworden. \n* **aanduiding**\
         \ : Verblijfstiteltabel, die aangeeft over welke verblijfsrechtelijke status\
         \ de ingeschrevene beschikt."
@@ -1537,7 +1537,7 @@ components:
         partners:
           type: "array"
           description: "De actuele bij de ingeschreven persoon geregistreerde huwelijken\
-            \ en geregistreerd partnerschappen. Een veëindigd huwelijk of geregistreerd\
+            \ en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd\
             \ partnerschap wordt niet teruggegeven."
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalLink"
@@ -1590,7 +1590,7 @@ components:
         partners:
           type: "array"
           description: "De actuele bij de ingeschreven persoon geregistreerde huwelijken\
-            \ en geregistreerd partnerschappen. Een veëindigd huwelijk of geregistreerd\
+            \ en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd\
             \ partnerschap wordt niet teruggegeven."
           items:
             $ref: "#/components/schemas/PartnerHal"
@@ -1761,8 +1761,8 @@ components:
       properties:
         indicatieHuwelijkPartnerschapBeeindigd:
           type: boolean
-          description: "Indicatie of het huwelijk ontbonden is danwel het partnerschap veëindigd is.\
-            \ \n* `True` - Huwelijk/Partnerschap is veëindigd."
+          description: "Indicatie of het huwelijk ontbonden is danwel het partnerschap beëindigd is.\
+            \ \n* `True` - Huwelijk/Partnerschap is beëindigd."
         datum:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         land:
@@ -1818,7 +1818,7 @@ components:
       - $ref: "#/components/schemas/Verblijfstitel"
       - description: "<body><p>Gegevens over de verblijfsrechtelijke status van de\
           \ ingeschrevene.</p><p>\n <em>*</em> datumEinde**: Datum waarop\
-          \ de geldigheid van de gegevens over de verblijfstitel is veëindigd.</p><p>\n\
+          \ de geldigheid van de gegevens over de verblijfstitel is beëindigd.</p><p>\n\
           \ <em>*</em> datumIngang**: Datum waarop de gegevens over de verblijfstitel\
           \ geldig zijn geworden.</p><p> <em>*</em> aanduiding** : Verblijfstiteltabel,\
           \ die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt.</p> </body>"
