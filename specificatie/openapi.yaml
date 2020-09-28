@@ -4,7 +4,7 @@ servers:
     url: https://www.haalcentraal.nl/haalcentraal/api/brp
 info:
   title: Bevragingen ingeschreven personen
-  description: "API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> "
+  description: "API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/master/features) voor nadere toelichting. <br> "
   version: "1.0.0"
   contact:
     url: https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen
@@ -276,7 +276,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/KindHal'
+                $ref: '#/components/schemas/KindHalBasis'
         '400':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/responses/400"
         '401':
@@ -358,7 +358,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/OuderHal'
+                $ref: '#/components/schemas/OuderHalBasis'
         '400':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/responses/400"
         '401':
@@ -440,7 +440,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/PartnerHal'
+                $ref: '#/components/schemas/PartnerHalBasis'
         '400':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/responses/400"
         '401':
@@ -635,8 +635,8 @@ components:
         ouders:
           type: array
           items:
-            $ref: '#/components/schemas/OuderHal'
-    OuderHal:
+            $ref: '#/components/schemas/OuderHalBasis'
+    OuderHalBasis:
       allOf:
         - $ref: '#/components/schemas/Ouder'
         - properties:
@@ -678,8 +678,8 @@ components:
         kinderen:
           type: array
           items:
-            $ref: '#/components/schemas/KindHal'
-    KindHal:
+            $ref: '#/components/schemas/KindHalBasis'
+    KindHalBasis:
       allOf:
         - $ref: '#/components/schemas/Kind'
         - properties:
@@ -724,8 +724,8 @@ components:
         partners:
           type: array
           items:
-            $ref: '#/components/schemas/PartnerHal'
-    PartnerHal:
+            $ref: '#/components/schemas/PartnerHalBasis'
+    PartnerHalBasis:
       allOf:
         - $ref: '#/components/schemas/Partner'
         - properties:
@@ -1374,20 +1374,20 @@ components:
           description: "De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE\
             \ verwijst`"
           items:
-            $ref: "#/components/schemas/OuderHal"
+            $ref: "#/components/schemas/OuderHalBasis"
         kinderen:
           type: "array"
           description: "De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE\
             \ verwijst"
           items:
-            $ref: "#/components/schemas/KindHal"
+            $ref: "#/components/schemas/KindHalBasis"
         partners:
           type: "array"
           description: "De actuele bij de ingeschreven persoon geregistreerde huwelijken\
             \ en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd\
             \ partnerschap wordt niet teruggegeven."
           items:
-            $ref: "#/components/schemas/PartnerHal"
+            $ref: "#/components/schemas/PartnerHalBasis"
     AanduidingBijzonderNederlanderschap_enum:
       type: "string"
       description: "De aanduiding van het bijzonder Nederlanderschap:\n* `behandeld_als_nederlander`\
