@@ -30,10 +30,6 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
     Dan bevat het antwoord geboorte.datum.datum met de waarde "1986-04-01"
     En bevat het antwoord geboorte.inOnderzoek.datum met de waarde true
     En bevat het antwoord geboorte.inOnderzoek.datumIngangOnderzoek
-    En bevat het antwoord geboorte.plaats met een waarde
-    En bevat het antwoord geboorte.inOnderzoek.plaats
-    En bevat het antwoord geboorte.land met een waarde
-    En bevat het antwoord geboorte.inOnderzoek.land
 
   Scenario: gevraagd gegeven is in onderzoek en de groep waar het gegeven in onderzoek in zit wordt gevraagd met fields
     Als persoon wordt gevraagd met "/ingeschrevenpersonen/999994086?fields=geboorte"
@@ -42,7 +38,7 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
     En bevat het antwoord geboorte.inOnderzoek.datumIngangOnderzoek
     En bevat het antwoord veld geboorte.plaats met een waarde
     En bevat het antwoord niet geboorte.inOnderzoek.plaats
-    En bevat het antwoord veld datgeboorteum.land met een waarde
+    En bevat het antwoord veld geboorte.land met een waarde
     En bevat het antwoord niet geboorte.inOnderzoek.land
 
   Scenario: gevraagd gegeven is in onderzoek en het gegeven in onderzoek wordt niet gevraagd met fields
