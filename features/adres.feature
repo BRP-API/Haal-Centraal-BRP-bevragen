@@ -173,8 +173,3 @@ Functionaliteit:
     En bevat het antwoord geen veld verblijfplaats.adresregel1
     En bevat het antwoord geen veld verblijfplaats.adresregel2
     En bevat het antwoord geen veld verblijfplaats.land
-    """
-    "verblijfplaats": {
-      "vertrokkenOnbekendWaarheen": true
-    }
-    """
