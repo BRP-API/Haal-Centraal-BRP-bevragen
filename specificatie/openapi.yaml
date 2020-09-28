@@ -525,7 +525,7 @@ paths:
       tags:
         - Ingeschreven Personen
 tags:
-  - name: Ingeschreven personen
+  - name: Ingeschreven Personen
 components:
   parameters:
     burgerservicenummer:
