@@ -3,8 +3,11 @@ servers:
   - description: "APILAB testserver"
     url: https://www.haalcentraal.nl/haalcentraal/api/brp
 info:
-  title: Bevragingen ingeschreven personen
-  description: "API voor het zoeken en raadplegen van actuele ingeschreven personen uit de BRP (inclusief RNI), hun kinderen, partners en ouders. Bij een beëindigd huwelijk of partnerschap retourneert de API geen partner.
+  title: Bevragen Ingeschreven Personen
+  description: "API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.
+
+
+    Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.
 
 
     Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. <br> "
@@ -782,7 +785,7 @@ components:
               $ref: "#/components/schemas/IngeschrevenPersoonEmbedded"
     Ouder:
       type: "object"
-      description: "Gegevens over de ouder van de ingeschrevene. \n* **datumIngangFamilierechtelijkeBetrekking** : De datum waarop de familierechtelijke betrekking is ontstaan."
+      description: "Gegevens over de ouder van de persoon. \n* **datumIngangFamilierechtelijkeBetrekking** : De datum waarop de familierechtelijke betrekking is ontstaan."
       properties:
         burgerservicenummer:
           type: "string"
@@ -802,8 +805,7 @@ components:
         geheimhoudingPersoonsgegevens:
           type: boolean
           title: "Indicatie geheim"
-          description: "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt mogen worden. Indien true: op verzoek van deze persoon is het verstrekken van gegevens over deze persoon aan bepaalde derden niet toegestaan."
-
+          description: "Gegevens mogen niet worden verstrekt aan derden / maarschappelijke instellingen."
     OuderHalCollectie:
       type: object
       properties:
@@ -826,7 +828,7 @@ components:
               $ref: "#/components/schemas/OuderLinks"
     Kind:
       type: "object"
-      description: "Gegevens over een kind van de ingeschrevene."
+      description: "Gegevens over een kind van de persoon."
       properties:
         burgerservicenummer:
           type: "string"
@@ -867,7 +869,7 @@ components:
               $ref: "#/components/schemas/KindLinks"
     Partner:
       type: "object"
-      description: "Gegevens over een gesloten huwelijk/geregistreerd partnerschap van de ingeschrevene."
+      description: "Gegevens over een gesloten huwelijk/geregistreerd partnerschap van de persoon."
       properties:
         burgerservicenummer:
           type: "string"
@@ -1124,16 +1126,15 @@ components:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     KindInOnderzoek:
       type: "object"
-      description: "Indicators over het in onderzoek zijn van gegevens over de aangaan van het huwelijk van de INGESCHREVEN PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)"
+      description: "Geeft aan of de gegevens over het kind van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)"
       properties:
         burgerservicenummer:
           type: boolean
-          description: "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
         datumIngangOnderzoek:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     PartnerInOnderzoek:
       type: "object"
-      description: "Indicators over het in onderzoek zijn van gegevens over de aangaan van het huwelijk van de INGESCHREVEN PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)"
+      description: "Geeft aan welke gegevens over het huwelijk of het partnerschap in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)"
       properties:
         burgerservicenummer:
           type: boolean
@@ -1148,7 +1149,7 @@ components:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     AangaanHuwelijkPartnerschap:
       type: "object"
-      description: "Gegevens over het gesloten huwelijk of het aangegane geregistreerd partnerschap. \n* **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan. \n* **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. \n* **plaats** : Als de plaats een gemeente in Nederland is dan gewoon de gemeentecode + gemeentenaam. Voor een plaats buiten Nederland is de gemeentecode leeg en wordt de gemeentenaam de buitenlandse plaatsnaam of aanduiding."
+      description: "Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap. \n* **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan. \n* **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. \n* **plaats** : Als de plaats een gemeente in Nederland is dan gewoon de gemeentecode + gemeentenaam. Voor een plaats buiten Nederland is de gemeentecode leeg en wordt de gemeentenaam de buitenlandse plaatsnaam of aanduiding."
       properties:
         datum:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
@@ -1157,20 +1158,17 @@ components:
         plaats:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
         inOnderzoek:
-          $ref: "#/components/schemas/AangaanHuwelijkInOnderzoek"
-    AangaanHuwelijkInOnderzoek:
+          $ref: "#/components/schemas/AangaanHuwelijkPartnerschapInOnderzoek"
+    AangaanHuwelijkPartnerschapInOnderzoek:
       type: "object"
-      description: "Indicators over het in onderzoek zijn van gegevens over de aangaan van het huwelijk van de INGESCHREVEN PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)"
+      description: "Geeft aan welke gegevens over het voltrekken van het huwelijk of aangaan van het partnerschap in onderzoek zijn. Zie de functionele specificaties. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)"
       properties:
         datum:
           type: boolean
-          description: "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
         land:
           type: boolean
-          description: "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
         plaats:
           type: boolean
-          description: "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
         datumIngangOnderzoek:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     BinnenlandsAdres:
@@ -1289,11 +1287,11 @@ components:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     Gezagsverhouding:
       type: "object"
-      description: "Gegevens betreffende het gezag over de ingeschrevene."
+      description: "Gegevens over het gezag over de persoon."
       properties:
         indicatieCurateleRegister:
           type: boolean
-          description: "Een aanduiding dat de ingeschrevene onder curatele is gesteld."
+          description: "Geeft aan dat de ingeschrevene onder curatele is gesteld."
           example: true
         indicatieGezagMinderjarige:
           $ref: "#/components/schemas/IndicatieGezagMinderjarige_enum"
@@ -1301,19 +1299,17 @@ components:
           $ref: "#/components/schemas/GezagsverhoudingInOnderzoek"
     GezagsverhoudingInOnderzoek:
       type: "object"
-      description: "Een groep van booleans om aan te geven welke gegevens van de gezagsverhouding in onderzoek zijn. Als een de categorie in onderzoek is worden alle rubrieken binnen die categorie op _true_ gezet. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)"
+      description: "Geeft aan welke gegevens van de gezagsverhouding in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)"
       properties:
         indicatieCurateleRegister:
           type: boolean
-          description: "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
         indicatieGezagMinderjarige:
           type: boolean
-          description: "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
         datumIngangOnderzoek:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     Verblijfstitel:
       type: "object"
-      description: "Gegevens over de verblijfsrechtelijke status van de ingeschrevene. \n* **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd. \n* **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden. \n* **aanduiding** : Verblijfstiteltabel, die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt."
+      description: "Gegevens over de verblijfsrechtelijke status van de persoon. \n* **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd. \n* **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden. \n* **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt."
       properties:
         aanduiding:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
@@ -1325,17 +1321,14 @@ components:
           $ref: "#/components/schemas/VerblijfstitelInOnderzoek"
     VerblijfstitelInOnderzoek:
       type: "object"
-      description: "In onderzoek indicators over de gegevens over de verblijfstitel."
+      description: "Geeft aan welke gegevens over de verblijfstitel in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)"
       properties:
         aanduiding:
           type: boolean
-          description: "Indicator die aangeeft of het corresponderende gegeven voor deze verblijfstitel in onderzoek is."
         datumEinde:
           type: boolean
-          description: "Indicator die aangeeft of het corresponderende gegeven voor deze verblijfstitel in onderzoek is."
         datumIngang:
           type: boolean
-          description: "Indicator die aangeeft of het corresponderende gegeven voor deze verblijfstitel in onderzoek is."
         datumIngangOnderzoek:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     IngeschrevenPersoonLinks:
@@ -1345,17 +1338,17 @@ components:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         ouders:
           type: "array"
-          description: "De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE verwijst`"
+          description: "De ouders van de persoon."
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         reisdocumenten:
           type: "array"
-          description: "De ingezetene waaraan het REISDOCUMENT is verstrekt. Dit is de inverse relatie van heeftAlsHouder. Reisdocumenten die aan een ingezetene zijn verstrekt."
+          description: "De persoon waaraan het reisdocument is verstrekt."
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         kinderen:
           type: "array"
-          description: "De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE verwijst"
+          description: "De kinderen van de persoon."
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         partners:
@@ -1433,7 +1426,7 @@ components:
       - "onbekend"
     IndicatieGezagMinderjarige_enum:
       type: "string"
-      description: "Een aanduiding die aangeeft wie belast is met het gezag over de minderjarige ingeschrevene.:\n* `ouder1` - 1\n* `ouder2` - 2\n* `derden` - D\n* `ouder1_en_derde` - 1D\n* `ouder2_en_derde` - 2D\n* `ouder1_en_ouder2` - 12"
+      description: "Geeft aan wie het gezag heeft over de minderjarige persoon.:\n* `ouder1` - 1\n* `ouder2` - 2\n* `derden` - D\n* `ouder1_en_derde` - 1D\n* `ouder2_en_derde` - 2D\n* `ouder1_en_ouder2` - 12"
       enum:
       - "ouder1"
       - "ouder2"
@@ -1454,7 +1447,7 @@ components:
       - "partner_eigen"
     OuderAanduiding_enum:
       type: "string"
-      description: "Aanduiding om welke ouder het gaat volgens de GBA:\n* `ouder1` - 1\n* `ouder2` - 2"
+      description: "geeft aan om welke ouder het gaat volgens de BRP:\n* `ouder1` - 1\n* `ouder2` - 2"
       enum:
       - "ouder1"
       - "ouder2"
@@ -1475,7 +1468,7 @@ components:
       - "briefadres"
     SoortVerbintenis_enum:
       type: "string"
-      description: "Soort verbintenis van een bij de burgerlijke stand ingeschreven verbintenis:\n* `huwelijk` - H\n* `geregistreerd_partnerschap` - P"
+      description: "Soort verbintenis die bij de burgerlijke stand is ingeschreven:\n* `huwelijk` - H\n* `geregistreerd_partnerschap` - P"
       enum:
       - "huwelijk"
       - "geregistreerd_partnerschap"
