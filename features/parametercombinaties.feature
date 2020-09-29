@@ -16,9 +16,6 @@ Functionaliteit: personen kunnen worden gezocht met bepaalde combinaties van par
 
   Wanneer een parameter wordt gebruikt die niet in de API specificatie is gedefinieerd, levert dit een foutmelding.
 
-  Achtergrond:
-    Gegeven de registratie ingeschreven personen kent zoals beschreven in testdata.csv
-
   Scenario: Er kan niet gezocht worden zonder zoekparameters
     Als ingeschreven personen gezocht worden zonder parameters
     Dan levert dit een foutmelding
