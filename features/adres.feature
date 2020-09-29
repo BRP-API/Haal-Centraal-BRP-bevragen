@@ -3,7 +3,7 @@
 Functionaliteit:
   Veld "straat" wordt gevuld met de naam openbare ruimte (11.15) wanneer die bekend is, en anders met straatnaam (11.10)
   Veld "korteNaam" wordt gevuld met straatnaam (11.10).
-  Veld "woonplaats" wordt gevuld met de woonplaats (11.70) wanneer die bekend is, en anders met de omschrijving van de gemeente van inschrijving (09.10 via tabel 33 Gemeententabel) als de verblijfplaats geen geen buitenlands adres betreft.
+  Veld "woonplaats" wordt gevuld met de woonplaats (11.70) wanneer die bekend is, en anders met de omschrijving van de gemeente van inschrijving (09.10 via tabel 33 Gemeententabel) als de verblijfplaats geen buitenlands adres betreft.
   Veld "land" wordt alleen opgenomen wanneer het een buitenlands adres betreft.
 
   Adresregels worden gevuld met het binnenlandse of buitenlandse adres:
@@ -28,8 +28,8 @@ Functionaliteit:
     Als de verblijfplaats een buitenlands adres is (land adres buitenland 13.10 komt voor met een waarde ongelijk aan "0000"),
     Dan wordt verblijfplaats.adresregel1 gevuld met verblijfBuitenland.adresregel1 (13.30)
     En wordt verblijfplaats.adresregel2 gevuld met verblijfBuitenland.adresregel2 (13.40)
-    En wordt verblijfplaats.adresregel2 gevuld met verblijfBuitenland.adresregel3 (13.50)
-    En wordt verblijfplaats.land gevuld met de code en omschrijving van het land (13.10 via tabel 34 Landen)
+    En wordt verblijfplaats.adresregel3 gevuld met verblijfBuitenland.adresregel3 (13.50)
+    En wordt verblijfplaats.land gevuld met de code en omschrijving van verblijfBuitenland.land (13.10 via tabel 34 Landen)
 
     Als de verblijfplaats in het buitenland onbekend is (land adres buitenland 13.10 heeft de waarde "0000"),
     Dan wordt verblijfplaats.adresregel1 niet opgenomen
