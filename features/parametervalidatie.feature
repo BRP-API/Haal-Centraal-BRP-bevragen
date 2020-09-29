@@ -22,9 +22,6 @@ Functionaliteit: parameters worden gevalideerd
 
   Niet verplichte parameters mogen ook de waarde null hebben.
 
-  Achtergrond:
-    Gegeven de registratie ingeschreven personen kent zoAls beschreven in testdata.csv
-
   Scenario: Zoeken met een parameterwaarde langer dan toegestaan levert een foutmelding
     Als ingeschreven personen gezocht worden met ?verblijfplaats__postcode=9744CZ&verblijfplaats__huisnummer=5&verblijfplaats__huisletter=AA
     Dan levert dit een foutmelding
