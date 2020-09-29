@@ -963,7 +963,10 @@ components:
     Geboorte:
       allOf:
       - $ref: '#/components/schemas/Geboortedatum'
-      - description: "Gegevens over de geboorte van de persoon, de ouder, de echtgenoot/geregistreerd partner, de eerdere echtgenoot/geregistreerd partner of het kind.  \n* **datum** : datum waarop de persoon is geboren. \n* **land** : land waar de persoon is geboren \n* **plaats** : plaats waar een persoon is geboren. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding."
+      - description: "Gegevens over de geboorte van de persoon, de ouder, de echtgenoot/geregistreerd partner, de eerdere echtgenoot/geregistreerd partner of het kind.\n
+                     * **datum** : datum waarop de persoon is geboren. \n
+                     * **land** : land waar de persoon is geboren \n
+                     * **plaats** : plaats waar een persoon is geboren. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding."
         properties:
           land:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
@@ -1091,7 +1094,8 @@ components:
             example: true
     OpschortingBijhouding:
       type: "object"
-      description: "\n* **reden**: de reden waarom de bijhouding van de PL is opgeschort. \n* **datum**: de datum waarop de bijhouding van de persoonslijst is gestaakt. \n* "
+      description: "\n* **reden**: de reden waarom de bijhouding van de PL is opgeschort. \n
+                      * **datum**: de datum waarop de bijhouding van de persoonslijst is gestaakt."
       properties:
         reden:
           $ref: "#/components/schemas/RedenOpschortingBijhouding_enum"
@@ -1099,7 +1103,10 @@ components:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     Overlijden:
       type: "object"
-      description: "Gegevens over het overlijden van de persoon. \n* **datum** : datum waarop de persoon is overleden. \n* **land** : land waar de persoon is overleden \n* **plaats** : plaats waar een persoon is overleden. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding."
+      description: "Gegevens over het overlijden van de persoon. \n
+                    * **datum** : datum waarop de persoon is overleden. \n
+                    * **land** : land waar de persoon is overleden \n
+                    * **plaats** : plaats waar een persoon is overleden. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding."
       properties:
         indicatieOverleden:
           type: boolean
@@ -1149,7 +1156,10 @@ components:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     AangaanHuwelijkPartnerschap:
       type: "object"
-      description: "Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap. \n* **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan. \n* **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. \n* **plaats** : Als de plaats een gemeente in Nederland is dan gewoon de gemeentecode + gemeentenaam. Voor een plaats buiten Nederland is de gemeentecode leeg en wordt de gemeentenaam de buitenlandse plaatsnaam of aanduiding."
+      description: "Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap. \n
+                    * **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan. \n
+                    * **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. \n
+                    * **plaats** : Als de plaats een gemeente in Nederland is dan gewoon de gemeentecode + gemeentenaam. Voor een plaats buiten Nederland is de gemeentecode leeg en wordt de gemeentenaam de buitenlandse plaatsnaam of aanduiding."
       properties:
         datum:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
@@ -1190,7 +1200,13 @@ components:
     Verblijfplaats:
       allOf:
       - $ref: '#/components/schemas/BinnenlandsAdres'
-      - description: "Gegevens over het verblijf of de woonlocatie van een persoon. \n* **datumAanvangAdreshuishouding** : de datum van aangifte of ambtshalve melding van verblijf en adres. \n* **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden. \n* **datumInschrijvingInGemeente**: bij inschrijving op grond van een verhuisaangifte door de burger is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop de betrokkene schriftelijk van het voornemen van ambtshalve opneming mededeling is gedaan. \n* **datumVestigingInNederland** : datum van inschrijving in Nederland \n* **landVanWaarIngeschreven** : het land waar de ingeschreven persoon verblijf hield voor (her)vestiging in Nederland. \n* **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten."
+      - description: "Gegevens over het verblijf of de woonlocatie van een persoon. \n
+                      * **datumAanvangAdreshuishouding** : de datum van aangifte of ambtshalve melding van verblijf en adres. \n
+                      * **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden. \n
+                      * **datumInschrijvingInGemeente**: bij inschrijving op grond van een verhuisaangifte door de burger is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop de betrokkene schriftelijk van het voornemen van ambtshalve opneming mededeling is gedaan. \n
+                      * **datumVestigingInNederland** : datum van inschrijving in Nederland \n
+                      * **landVanWaarIngeschreven** : het land waar de ingeschreven persoon verblijf hield voor (her)vestiging in Nederland. \n
+                      * **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten."
         properties:
           functieAdres:
             $ref: "#/components/schemas/SoortAdres_enum"
@@ -1309,7 +1325,10 @@ components:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     Verblijfstitel:
       type: "object"
-      description: "Gegevens over de verblijfsrechtelijke status van de persoon. \n* **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd. \n* **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden. \n* **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt."
+      description: "Gegevens over de verblijfsrechtelijke status van de persoon. \n
+                    * **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd. \n
+                    * **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden. \n
+                    * **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt."
       properties:
         aanduiding:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
@@ -1407,26 +1426,39 @@ components:
             $ref: "#/components/schemas/PartnerHal"
     AanduidingBijzonderNederlanderschap_enum:
       type: "string"
-      description: "Geeft aan dat de persoon behandeld wordt als Nederlander, of dat door de rechter is vastgesteld dat de persoon niet de Nederlandse nationaliteit bezit:\n* `behandeld_als_nederlander` - B\n* `vastgesteld_niet_nederlander` - V"
+      description: "Geeft aan dat de persoon behandeld wordt als Nederlander, of dat door de rechter is vastgesteld dat de persoon niet de Nederlandse nationaliteit bezit:\n
+                    * `behandeld_als_nederlander` - B\n
+                    * `vastgesteld_niet_nederlander` - V"
       enum:
       - "behandeld_als_nederlander"
       - "vastgesteld_niet_nederlander"
     AanduidingBijHuisnummer_enum:
       type: "string"
-      description: "De aanduiding die wordt gebruikt voor adressen die geen straatnaam en huisnummeraanduidingen hebben. :\n* `tegenover` - to\n* `bij` - by"
+      description: "De aanduiding die wordt gebruikt voor adressen die geen straatnaam en huisnummeraanduidingen hebben. :\n
+                    * `tegenover` - to\n
+                    * `bij` - by"
       enum:
       - "tegenover"
       - "bij"
     Geslacht_enum:
       type: "string"
-      description: "Geeft aan dat de persoon een man of vrouw is, of dat het geslacht (nog) onbekend is.:\n* `man` - M\n* `vrouw` \ - V\n* `onbekend` - O"
+      description: "Geeft aan dat de persoon een man of vrouw is, of dat het geslacht (nog) onbekend is.:\n
+                    * `man` - M\n
+                    * `vrouw` \ - V\n
+                    * `onbekend` - O"
       enum:
       - "man"
       - "vrouw"
       - "onbekend"
     IndicatieGezagMinderjarige_enum:
       type: "string"
-      description: "Geeft aan wie het gezag heeft over de minderjarige persoon.:\n* `ouder1` - 1\n* `ouder2` - 2\n* `derden` - D\n* `ouder1_en_derde` - 1D\n* `ouder2_en_derde` - 2D\n* `ouder1_en_ouder2` - 12"
+      description: "Geeft aan wie het gezag heeft over de minderjarige persoon.:\n
+                    * `ouder1` - 1\n
+                    * `ouder2` - 2\n
+                    * `derden` - D\n
+                    * `ouder1_en_derde` - 1D\n
+                    * `ouder2_en_derde` - 2D\n
+                    * `ouder1_en_ouder2` - 12"
       enum:
       - "ouder1"
       - "ouder2"
@@ -1436,10 +1468,13 @@ components:
       - "ouder1_en_ouder2"
     Naamgebruik_enum:
       type: "string"
-      description: "De manier waarop de geslachtsnaam van persoon en partner van persoon moet worden verwerkt in de manier waarop persoon wil worden aangesproken:\n* `eigen` - E - gebruik alleen de eigen naam \n* `eigen_partner` - N - gebruik de eigen naam voor de partnernaam \n* `partner` - P gebruik alleen de partnernaam \n* `partner_eigen` - V - gebruik de partnernaam voor de eigen naam.
+      description: "De manier waarop de geslachtsnaam van persoon en partner van persoon moet worden verwerkt in de manier waarop persoon wil worden aangesproken:\n
+                    * `eigen` - E - gebruik alleen de eigen naam \n
+                    * `eigen_partner` - N - gebruik de eigen naam voor de partnernaam \n
+                    * `partner` - P gebruik alleen de partnernaam \n* `partner_eigen` - V - gebruik de partnernaam voor de eigen naam.
 
 
-      De aanduiding naamgebruik is verwerkt in Aanhef, Aanschrijfwijze en gebruikInLopendeTekst."
+                    De aanduiding naamgebruik is verwerkt in Aanhef, Aanschrijfwijze en gebruikInLopendeTekst."
       enum:
       - "eigen"
       - "eigen_partner"
@@ -1447,13 +1482,20 @@ components:
       - "partner_eigen"
     OuderAanduiding_enum:
       type: "string"
-      description: "geeft aan om welke ouder het gaat volgens de BRP:\n* `ouder1` - 1\n* `ouder2` - 2"
+      description: "Geeft aan om welke ouder het gaat volgens de BRP:\n
+                    * `ouder1` - 1\n
+                    * `ouder2` - 2"
       enum:
       - "ouder1"
       - "ouder2"
     RedenOpschortingBijhouding_enum:
       type: "string"
-      description: "Redenen voor opschorting van de bijhouding.:\n* `overlijden` - O \n* `emigratie` - E\n* `ministerieel_besluit` - M\n* `pl_aangelegd_in_de_rni` - R - opgeschort omdat persoon is ingeschreven in het Register Niet Ingezeten (RNI). \n* `fout` - F"
+      description: "Redenen voor opschorting van de bijhouding.:\n
+                    * `overlijden` - O \n
+                    * `emigratie` - E\n
+                    * `ministerieel_besluit` - M\n
+                    * `pl_aangelegd_in_de_rni` - R - opgeschort omdat persoon is ingeschreven in het Register Niet Ingezeten (RNI). \n
+                    * `fout` - F"
       enum:
       - "overlijden"
       - "emigratie"
@@ -1462,13 +1504,17 @@ components:
       - "fout"
     SoortAdres_enum:
       type: "string"
-      description: "Aanduiding van het soort adres.:\n* `woonadres` - W - adres waar de persoon woont\n* `briefadres` - B - het adres van een andere persoon of van een instelling (de zogenoemde briefadresgever). Met dit adres van de briefadresgever is de persoon zonder woonadres toch bereikbaar voor de overheid."
+      description: "Aanduiding van het soort adres.:\n
+                    * `woonadres` - W - adres waar de persoon woont\n
+                    * `briefadres` - B - het adres van een andere persoon of van een instelling (de zogenoemde briefadresgever). Met dit adres van de briefadresgever is de persoon zonder woonadres toch bereikbaar voor de overheid."
       enum:
       - "woonadres"
       - "briefadres"
     SoortVerbintenis_enum:
       type: "string"
-      description: "Soort verbintenis die bij de burgerlijke stand is ingeschreven:\n* `huwelijk` - H\n* `geregistreerd_partnerschap` - P"
+      description: "Soort verbintenis die bij de burgerlijke stand is ingeschreven:\n
+                    * `huwelijk` - H\n
+                    * `geregistreerd_partnerschap` - P"
       enum:
       - "huwelijk"
       - "geregistreerd_partnerschap"
@@ -1632,7 +1678,10 @@ components:
               \ van gegevens over deze persoon aan bepaalde derden niet toegestaan."
     Geboortedatum:
       type: "object"
-      description: "Gegevens over de geboorte van respectievelijk de persoon, de ouder, de echtgenoot/geregistreerd partner, de eerdere echtgenoot/geregistreerd partner of het kind.\n* **datum** : Datum waarop de persoon is geboren.\n* **land** : Land waar de persoon is geboren \n* **plaats** : De plaats waar een persoon is geboren. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding."
+      description: "Gegevens over de geboorte van respectievelijk de persoon, de ouder, de echtgenoot/geregistreerd partner, de eerdere echtgenoot/geregistreerd partner of het kind.\n
+                    * **datum** : Datum waarop de persoon is geboren.\n
+                    * **land** : Land waar de persoon is geboren \n
+                    * **plaats** : De plaats waar een persoon is geboren. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding."
       properties:
         datum:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
