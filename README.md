@@ -23,6 +23,7 @@ Om te beginnen met ontwikkelen van de API is de [getting started](./docs/getting
 * Ontwerpkeuzes staan in het document [Design decisions](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/docs/design_decisions.md)
 
 Naast deze API is er nog een aantal andere aan BRP gerelateerde API's beschikbaar:
+* [Historische BRP-gegevens bevragen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-historie-bevragen)
 * [Reisdocumenten bevragen](https://github.com/VNG-Realisatie/Haal-Centraal-Reisdocumenten-bevragen)
 * [Bewoning en medebewoners bevragen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bewoning)
 * [Landelijke tabellen bevragen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-tabellen-bevragen)
