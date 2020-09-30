@@ -1,10 +1,10 @@
 {
   "openapi" : "3.0.0",
   "info" : {
-    "title" : "Bevragingen ingeschreven personen",
-    "description" : "API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/master/features) voor nadere toelichting. <br> ",
+    "title" : "Bevragen Ingeschreven Personen",
+    "description" : "API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.\n\nGegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.\n\nZie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. <br> ",
     "contact" : {
-      "url" : "https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen"
+      "url" : "https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen"
     },
     "license" : {
       "name" : "European Union Public License, version 1.2 (EUPL-1.2)",
@@ -20,7 +20,8 @@
     "/ingeschrevenpersonen" : {
       "get" : {
         "tags" : [ "Ingeschreven Personen" ],
-        "description" : "Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen:\n\n\n1.  Persoon\n    -  geboorte__datum\n    -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/wildcard.feature) )\n2.  Persoon\n    -  verblijfplaats__gemeenteVanInschrijving\n    -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/wildcard.feature) )\n3.  Persoon\n    -  burgerservicenummer\n\n\n4.  Postcode\n    -  verblijfplaats__postcode\n    -  verblijfplaats__huisnummer\n\n\n5.  NaamOpenbareRuimte\n    -  verblijfplaats__naamOpenbareRuimte (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/wildcard.feature) )\n\n    -  verblijfplaats__gemeenteVanInschrijving\n    -  verblijfplaats__huisnummer\n\n\n6.  Nummeraanduiding\n    -  veblijfplaats__nummeraanduidingIdentificatie\n\nDe bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters, maar binnen iedere combinatie zijn de hier genoemde velden **verplicht**.\n\n\nDefault levert een zoekvraag alleen personen op die nog in leven zijn. Indien **_inclusiefoverledenpersonen_** de waarde **_true_** heeft worden [overleden personen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) opgenomen in het zoekresultaat.\n\n\nHet maximale aantal zoekresultaten dat geretourneerd wordt is aan de provider om te bepalen. Als het resultaat van de de request dit aantal overtreft worden er geen resultaten geretourneerd en volgt er een foutmelding.\n\n\n Er vind geen sortering plaats.\n",
+        "summary" : "Vindt personen",
+        "description" : "Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met parameters uit de andere combinaties.\n\n\nDefault krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.\n\n\nGebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/fields_extensie.feature)\n\n\nGebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.1.0/features/expand.feature)\n\n\n1.  Persoon\n    -  geboorte__datum\n    -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/wildcard.feature)\n\n\n2.  Persoon\n    -  verblijfplaats__gemeenteVanInschrijving\n    -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/wildcard.feature)\n\n\n3.  Persoon\n    -  burgerservicenummer\n\n\n4.  Postcode\n    -  verblijfplaats__postcode\n    -  verblijfplaats__huisnummer\n\n\n5.  Straat\n    -  verblijfplaats__straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/wildcard.feature) )\n    -  verblijfplaats__gemeenteVanInschrijving\n    -  verblijfplaats__huisnummer\n\n\n6.  Adres\n    -  veblijfplaats__nummeraanduidingIdentificatie\n\nDe bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters, maar binnen iedere combinatie zijn de hier genoemde velden **verplicht**.\n\n\nDefault levert een zoekvraag alleen personen op die nog in leven zijn. Indien **_inclusiefoverledenpersonen_** de waarde **_true_** heeft worden [overleden personen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/overleden_personen.feature) opgenomen in het zoekresultaat.\n\n\nHet maximale aantal zoekresultaten dat geretourneerd wordt is aan de provider om te bepalen. Als het resultaat van de de request dit aantal overtreft worden er geen resultaten geretourneerd en volgt er een foutmelding.\n\n\n Er vind geen sortering plaats.\n",
         "operationId" : "ingeschrevenNatuurlijkPersonen",
         "parameters" : [ {
           "name" : "expand",
@@ -58,7 +59,7 @@
         }, {
           "name" : "geboorte__datum",
           "in" : "query",
-          "description" : "Er kan alleen gezocht worden met een volledige geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature)",
+          "description" : "Er kan alleen gezocht worden met een volledige geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/parametervalidatie.feature)",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -70,7 +71,7 @@
         }, {
           "name" : "geboorte__plaats",
           "in" : "query",
-          "description" : "Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).**",
+          "description" : "Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -92,7 +93,7 @@
         }, {
           "name" : "inclusiefOverledenPersonen",
           "in" : "query",
-          "description" : "Indien in het antwoord op de zoekvraag ook overleden personen moeten worden geretourneerd, dan dient de parameter *inclusiefOverledenPersonen* opgenomen te zijn met de waarde _True_. Indien de parameter *inclusiefOverledenPersonen* ontbreekt of de waarde _False_ heeft worden geen overleden personen opgenomen in het zoekresultaat. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature)",
+          "description" : "Indien in het antwoord op de zoekvraag ook overleden personen moeten worden geretourneerd, dan dient de parameter *inclusiefOverledenPersonen* opgenomen te zijn met de waarde _True_. Indien de parameter *inclusiefOverledenPersonen* ontbreekt of de waarde _False_ heeft worden geen overleden personen opgenomen in het zoekresultaat. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/overleden_personen.feature)",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -103,7 +104,7 @@
         }, {
           "name" : "naam__geslachtsnaam",
           "in" : "query",
-          "description" : "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).**",
+          "description" : "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -115,7 +116,7 @@
         }, {
           "name" : "naam__voornamen",
           "in" : "query",
-          "description" : "De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).**",
+          "description" : "De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -185,9 +186,9 @@
             "example" : "0518200000366054"
           }
         }, {
-          "name" : "verblijfplaats__naamOpenbareRuimte",
+          "name" : "verblijfplaats__straat",
           "in" : "query",
-          "description" : "Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** Tekens gecodeerd volgens de UTF-8 standaard",
+          "description" : "Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).** Tekens gecodeerd volgens de UTF-8 standaard",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -211,7 +212,7 @@
         }, {
           "name" : "naam__voorvoegsel",
           "in" : "query",
-          "description" : "Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam. **De tabel bevat vorvoegsels met hoofdletters en met kleine letters. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).**",
+          "description" : "Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam. **De tabel bevat vorvoegsels met hoofdletters en met kleine letters. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -428,11 +429,13 @@
     "/ingeschrevenpersonen/{burgerservicenummer}" : {
       "get" : {
         "tags" : [ "Ingeschreven Personen" ],
-        "description" : "Het ophalen de actuele gegevens van een Ingeschreven Persoon, inclusief verblijfplaats, kinderen, partners en ouders. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen.",
+        "summary" : "Raadpleeg een persoon",
+        "description" : "Raadpleeg een (overleden) persoon.\n\nGebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/fields_extensie.feature).\n\nGebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.1.0/features/expand.feature).",
         "operationId" : "ingeschrevenNatuurlijkPersoon",
         "parameters" : [ {
           "name" : "burgerservicenummer",
           "in" : "path",
+          "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
           "required" : true,
           "style" : "simple",
           "explode" : false,
@@ -441,7 +444,6 @@
             "minLength" : 9,
             "pattern" : "^[0-9]*$",
             "type" : "string",
-            "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
             "example" : "555555021"
           }
         }, {
@@ -691,11 +693,13 @@
     "/ingeschrevenpersonen/{burgerservicenummer}/kinderen/{id}" : {
       "get" : {
         "tags" : [ "Ingeschreven Personen" ],
-        "description" : "Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.",
+        "summary" : "Raadpleeg een kind van een persoon",
+        "description" : "Raadpleeg een kind van een persoon",
         "operationId" : "ingeschrevenpersonenBurgerservicenummerkinderenId",
         "parameters" : [ {
           "name" : "burgerservicenummer",
           "in" : "path",
+          "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
           "required" : true,
           "style" : "simple",
           "explode" : false,
@@ -704,7 +708,6 @@
             "minLength" : 9,
             "pattern" : "^[0-9]*$",
             "type" : "string",
-            "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
             "example" : "555555021"
           }
         }, {
@@ -948,11 +951,13 @@
     "/ingeschrevenpersonen/{burgerservicenummer}/kinderen" : {
       "get" : {
         "tags" : [ "Ingeschreven Personen" ],
-        "description" : "Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats.",
+        "summary" : "Levert de kinderen van een persoon",
+        "description" : "Levert de kinderen van een persoon",
         "operationId" : "ingeschrevenpersonenBurgerservicenummerkinderen",
         "parameters" : [ {
           "name" : "burgerservicenummer",
           "in" : "path",
+          "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
           "required" : true,
           "style" : "simple",
           "explode" : false,
@@ -961,7 +966,6 @@
             "minLength" : 9,
             "pattern" : "^[0-9]*$",
             "type" : "string",
-            "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
             "example" : "555555021"
           }
         } ],
@@ -1195,11 +1199,13 @@
     "/ingeschrevenpersonen/{burgerservicenummer}/ouders/{id}" : {
       "get" : {
         "tags" : [ "Ingeschreven Personen" ],
-        "description" : "Het ophalen de ouder-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen..",
+        "summary" : "Raadpleeg een ouder van een persoon",
+        "description" : "Raadpleeg een ouder van een persoon",
         "operationId" : "ingeschrevenpersonenBurgerservicenummeroudersId",
         "parameters" : [ {
           "name" : "burgerservicenummer",
           "in" : "path",
+          "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
           "required" : true,
           "style" : "simple",
           "explode" : false,
@@ -1208,7 +1214,6 @@
             "minLength" : 9,
             "pattern" : "^[0-9]*$",
             "type" : "string",
-            "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
             "example" : "555555021"
           }
         }, {
@@ -1452,11 +1457,13 @@
     "/ingeschrevenpersonen/{burgerservicenummer}/ouders" : {
       "get" : {
         "tags" : [ "Ingeschreven Personen" ],
-        "description" : "Het ophalen de ouder-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats.",
+        "summary" : "Levert de ouders van een persoon",
+        "description" : "Levert de ouders van een persoon",
         "operationId" : "ingeschrevenpersonenBurgerservicenummerouders",
         "parameters" : [ {
           "name" : "burgerservicenummer",
           "in" : "path",
+          "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
           "required" : true,
           "style" : "simple",
           "explode" : false,
@@ -1465,7 +1472,6 @@
             "minLength" : 9,
             "pattern" : "^[0-9]*$",
             "type" : "string",
-            "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
             "example" : "555555021"
           }
         } ],
@@ -1699,11 +1705,13 @@
     "/ingeschrevenpersonen/{burgerservicenummer}/partners/{id}" : {
       "get" : {
         "tags" : [ "Ingeschreven Personen" ],
-        "description" : "Het ophalen de partner-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.",
+        "summary" : "Raadpleeg de partner van een persoon",
+        "description" : "Raadpleeg de partner van een persoon",
         "operationId" : "ingeschrevenpersonenBurgerservicenummerpartnersId",
         "parameters" : [ {
           "name" : "burgerservicenummer",
           "in" : "path",
+          "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
           "required" : true,
           "style" : "simple",
           "explode" : false,
@@ -1712,7 +1720,6 @@
             "minLength" : 9,
             "pattern" : "^[0-9]*$",
             "type" : "string",
-            "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
             "example" : "555555021"
           }
         }, {
@@ -1956,11 +1963,13 @@
     "/ingeschrevenpersonen/{burgerservicenummer}/partners" : {
       "get" : {
         "tags" : [ "Ingeschreven Personen" ],
-        "description" : "Het ophalen de actuele partner-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet opgenomen in het antwoord. De gevonden huwelijken/partnerschappen worden ongesorteerd teruggegeven.",
+        "summary" : "Levert de actuele partners van een persoon",
+        "description" : "Levert de actuele partners van een persoon. Partners uit beëindigde huwelijken of partnerschappen worden niet geretourneerd",
         "operationId" : "ingeschrevenpersonenBurgerservicenummerpartners",
         "parameters" : [ {
           "name" : "burgerservicenummer",
           "in" : "path",
+          "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
           "required" : true,
           "style" : "simple",
           "explode" : false,
@@ -1969,7 +1978,6 @@
             "minLength" : 9,
             "pattern" : "^[0-9]*$",
             "type" : "string",
-            "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
             "example" : "555555021"
           }
         } ],
@@ -2218,14 +2226,14 @@
           "geheimhoudingPersoonsgegevens" : {
             "title" : "Indicatie geheim",
             "type" : "boolean",
-            "description" : "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt mogen worden. Indien true: op verzoek van deze persoon is het verstrekken van gegevens over deze persoon aan bepaalde derden niet toegestaan."
+            "description" : "Gegevens mogen niet worden verstrekt aan derden / maarschappelijke instellingen."
           },
           "geslachtsaanduiding" : {
             "$ref" : "#/components/schemas/Geslacht_enum"
           },
           "leeftijd" : {
             "type" : "integer",
-            "description" : "Leeftijd in jaren op het moment van bevraging",
+            "description" : "Leeftijd in jaren op het moment van bevragen.",
             "example" : 34
           },
           "datumEersteInschrijvingGBA" : {
@@ -2270,8 +2278,7 @@
               "$ref" : "#/components/schemas/Reisdocumentnummer"
             }
           }
-        },
-        "description" : "Gegevens over de ingeschreven persoon. \n* **datumEersteInschrijving** : Datum van eerste inschrijving in de GBA"
+        }
       },
       "IngeschrevenPersoonHalCollectie" : {
         "type" : "object",
@@ -2345,10 +2352,10 @@
           "geheimhoudingPersoonsgegevens" : {
             "title" : "Indicatie geheim",
             "type" : "boolean",
-            "description" : "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt mogen worden. Indien true: op verzoek van deze persoon is het verstrekken van gegevens over deze persoon aan bepaalde derden niet toegestaan."
+            "description" : "Gegevens mogen niet worden verstrekt aan derden / maarschappelijke instellingen."
           }
         },
-        "description" : "Gegevens over de ouder van de ingeschrevene. \n* **datumIngangFamilierechtelijkeBetrekking** : De datum waarop de familierechtelijke betrekking is ontstaan."
+        "description" : "Gegevens over de ouder van de persoon. \n* **datumIngangFamilierechtelijkeBetrekking** : De datum waarop de familierechtelijke betrekking is ontstaan."
       },
       "OuderHalCollectie" : {
         "type" : "object",
@@ -2410,7 +2417,7 @@
             "description" : "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt mogen worden. Indien true: op verzoek van deze persoon is het verstrekken van gegevens over deze persoon aan bepaalde derden niet toegestaan."
           }
         },
-        "description" : "Gegevens over een kind van de ingeschrevene."
+        "description" : "Gegevens over een kind van de persoon."
       },
       "KindHalCollectie" : {
         "type" : "object",
@@ -2476,7 +2483,7 @@
             "description" : "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt mogen worden. Indien true: op verzoek van deze persoon is het verstrekken van gegevens over deze persoon aan bepaalde derden niet toegestaan."
           }
         },
-        "description" : "Gegevens over een gesloten huwelijk/geregistreerd partnerschap van de ingeschrevene."
+        "description" : "Gegevens over een gesloten huwelijk/geregistreerd partnerschap van de persoon."
       },
       "PartnerHalCollectie" : {
         "type" : "object",
@@ -2516,29 +2523,27 @@
         "properties" : {
           "geslachtsnaam" : {
             "type" : "string",
-            "description" : "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst.",
+            "description" : "De achternaam van een persoon, zonder voorvoegsels, adellijke titels of predikaat.",
             "example" : "Vries"
           },
           "voorletters" : {
             "type" : "string",
-            "description" : "De voorletters waarmee een persoon aangeschreven wil worden. De voorlettes zijn afgeleid van de voornamen.",
+            "description" : "De voorletters van de persoon, afgeleid van de voornamen.",
             "example" : "P.J."
           },
           "voornamen" : {
             "type" : "string",
-            "description" : "De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat.",
+            "description" : "De verzameling namen voor de geslachtsnaam, gescheiden door spaties.",
             "example" : "Pieter Jan"
           },
           "voorvoegsel" : {
             "type" : "string",
-            "description" : "Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam.",
             "example" : "de"
           },
           "inOnderzoek" : {
             "$ref" : "#/components/schemas/NaamInOnderzoek"
           }
-        },
-        "description" : "Gegevens over de naam van de NATUURLIJK PERSOON \n* **adellijketitelPredikaat** : Tabel Adellijke titel/predikaat, die aangeeft welke titel of welk predikaat behoort tot de naam (bij adellijke titel geslachtsnaam, bij predikaat voornaam)."
+        }
       },
       "NaamInOnderzoek" : {
         "type" : "object",
@@ -2559,7 +2564,7 @@
             "$ref" : "#/components/schemas/Datum_onvolledig"
           }
         },
-        "description" : "In onderzoekgroep om aan te geven of gegevens over de naam van de Ingeschreven persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
+        "description" : "Geeft aan welke gegevens over de naam in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)"
       },
       "OuderInOnderzoek" : {
         "type" : "object",
@@ -2580,7 +2585,7 @@
             "$ref" : "#/components/schemas/Datum_onvolledig"
           }
         },
-        "description" : "Indicators over het in onderzoek zijn van gegevens over de aangaan van het huwelijk van de INGESCHREVEN PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
+        "description" : "Indicators over het in onderzoek zijn van gegevens over de aangaan van het huwelijk van de INGESCHREVEN PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)"
       },
       "Geboorte" : {
         "allOf" : [ {
@@ -2597,41 +2602,37 @@
               "$ref" : "#/components/schemas/GeboorteInOnderzoek"
             }
           },
-          "description" : "Gegevens over de geboorte van respectievelijk de persoon, de ouder, de echtgenoot/geregistreerd partner, de eerdere echtgenoot/geregistreerd partner of het kind. \n* **datum** : Datum waarop de persoon is geboren. \n* **land** : Land waar de persoon is geboren \n* **plaats** : De plaats waar een persoon is geboren. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding."
+          "description" : "Gegevens over de geboorte van de persoon, de ouder, de echtgenoot/geregistreerd partner, de eerdere echtgenoot/geregistreerd partner of het kind.\n * **datum** : datum waarop de persoon is geboren. \n * **land** : land waar de persoon is geboren \n * **plaats** : plaats waar een persoon is geboren. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding."
         } ]
       },
       "GeboorteInOnderzoek" : {
         "type" : "object",
         "properties" : {
           "datum" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "land" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "plaats" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "datumIngangOnderzoek" : {
             "$ref" : "#/components/schemas/Datum_onvolledig"
           }
         },
-        "description" : "Indicators over het in onderzoek zijn van gegevens over de geboorte van de INGESCHREVEN NATUURLIJK PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
+        "description" : "Geeft aan welke gegevens over de geboorte van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)"
       },
       "Kiesrecht" : {
         "type" : "object",
         "properties" : {
           "europeesKiesrecht" : {
             "type" : "boolean",
-            "description" : "Een aanduiding die aangeeft of de persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. \n* true: persoon ontvangt een oproep",
+            "description" : "Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement.",
             "example" : true
           },
           "uitgeslotenVanKiesrecht" : {
             "type" : "boolean",
-            "description" : "Een aanduiding die aangeeft of de persoon is uitgesloten van kiesrecht.\n* true: persoon is uitgesloten",
             "example" : true
           },
           "einddatumUitsluitingEuropeesKiesrecht" : {
@@ -2640,8 +2641,7 @@
           "einddatumUitsluitingKiesrecht" : {
             "$ref" : "#/components/schemas/Datum_onvolledig"
           }
-        },
-        "description" : "Gegevens over het kiesrecht van de ingeschreven persoon. \n* **datumUitsluitingEuropeesKiesrecht**: De datum waarop een uitsluiting voor deelname aan verkiezingen voor het Europees parlement niet meer van toepassing is, als er sprake is van uitsluiting voor bepaalde tijd. \n* **datumUitsluitingKiesrecht**: De datum waarop een uitsluiting voor deelname aan verkiezingen niet meer van toepassing is, als er sprake is van uitsluiting voor bepaalde tijd."
+        }
       },
       "NaamPersoon" : {
         "allOf" : [ {
@@ -2650,42 +2650,39 @@
           "properties" : {
             "aanhef" : {
               "type" : "string",
-              "description" : "De aanhef zoals die in een brief, gericht aan een persoon gebruikt kan worden.",
+              "description" : "Kun je gebruiken als aanhef in een brief gericht aan persoon.",
               "example" : "Geachte heer In het Veld"
             },
             "aanschrijfwijze" : {
               "type" : "string",
-              "description" : "Samengestelde naam zoals die in communicatie met de persoon gebruikt kan worden.",
+              "description" : "Samengestelde naam die je kunt gebruiken in de communicatie met de persoon.",
               "example" : "H. in het Veld"
             },
             "gebruikInLopendeTekst" : {
               "type" : "string",
-              "description" : "De naam zoals die in lopende tekst gebruikt kan worden.",
+              "description" : "Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert.",
               "example" : "de heer In het Veld"
             },
             "aanduidingNaamgebruik" : {
               "$ref" : "#/components/schemas/Naamgebruik_enum"
             }
-          },
-          "description" : "Gegevens over de naam van de persoon"
+          }
         } ]
       },
       "PersoonInOnderzoek" : {
         "type" : "object",
         "properties" : {
           "burgerservicenummer" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "geslachtsaanduiding" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "datumIngangOnderzoek" : {
             "$ref" : "#/components/schemas/Datum_onvolledig"
           }
         },
-        "description" : "Een groep van booleans om aan te geven welke gegevens van de ingeschreven persoon in onderzoek zijn. Er kunnen ook categorieën in onderzoek zijn. Als een hele categorie in onderzoek is worden alle rubrieken binnen die categorie op _true_ gezet. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature) ."
+        "description" : "Geeft aan welke gegevens van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)."
       },
       "Nationaliteit" : {
         "type" : "object",
@@ -2706,28 +2703,25 @@
             "$ref" : "#/components/schemas/NationaliteitInOnderzoek"
           }
         },
-        "description" : "Gegevens over een nationaliteit van de ingeschrevene. \n* **datumIngangGeldigheid** : De datum waarop de gegevens over deze nationaliteit geldig zijn geworden. \n* **nationaliteit**: Een aanduiding van de nationaliteit die de ingeschreven persoon bezit. \n* **redenOpname** : De reden op grond waarvan de ingeschreven persoon de nationaliteit verkregen heeft."
+        "description" : " \n* **redenOpname** : De reden op grond waarvan de ingeschreven persoon de nationaliteit verkregen heeft."
       },
       "NationaliteitInOnderzoek" : {
         "type" : "object",
         "properties" : {
           "aanduidingBijzonderNederlanderschap" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "nationaliteit" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "redenOpname" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "datumIngangOnderzoek" : {
             "$ref" : "#/components/schemas/Datum_onvolledig"
           }
         },
-        "description" : "Een groep van booleans om aan te geven welke gegevens van de nationaliteit in onderzoek zijn. Als een de categorie in onderzoek is worden alle rubrieken binnen die categorie op _true_ gezet. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
+        "description" : "Geeft aan welke gegevens over de nationaliteit in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)"
       },
       "OpschortingBijhouding" : {
         "type" : "object",
@@ -2739,14 +2733,14 @@
             "$ref" : "#/components/schemas/Datum_onvolledig"
           }
         },
-        "description" : "\n* **reden**: Een aanduiding van de reden waarom de bijhouding van de PL is opgeschort. \n* **datum**: De datum waarop de bijhouding van de persoonslijst is gestaakt. \n* Indien er wel een redenOpschortingBijhouding is maar er wordt geen datumOpschortingBijhouding geleverd, dan is dat datumOpschortingBijhouding onbekend."
+        "description" : "\n* **reden**: de reden waarom de bijhouding van de PL is opgeschort. \n * **datum**: de datum waarop de bijhouding van de persoonslijst is gestaakt."
       },
       "Overlijden" : {
         "type" : "object",
         "properties" : {
           "indicatieOverleden" : {
             "type" : "boolean",
-            "description" : "Deze indicatie heeft als rol om aan te geven dat iemand is overleden (waarde true). Deze indicator wordt altijd meegeleverd als de waarde true is (dus als iemand overleden is). Als de waarde false is wordt de indicator niet meegeleverd."
+            "description" : "Deze indicatie geeft aan dat iemand is overleden (waarde true), ongeacht of de overlijdensdatum bekend is."
           },
           "datum" : {
             "$ref" : "#/components/schemas/Datum_onvolledig"
@@ -2761,41 +2755,37 @@
             "$ref" : "#/components/schemas/OverlijdenInOnderzoek"
           }
         },
-        "description" : "Gegevens over het overlijden van de ingeschreven persoon. \n* **datum** : Datum waarop de persoon is overleden. \n* **land** : Land waar de persoon is overleden \n* **plaats** : De plaats waar een persoon is overleden. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding."
+        "description" : "Gegevens over het overlijden van de persoon. \n * **datum** : datum waarop de persoon is overleden. \n * **land** : land waar de persoon is overleden \n * **plaats** : plaats waar een persoon is overleden. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding."
       },
       "OverlijdenInOnderzoek" : {
         "type" : "object",
         "properties" : {
           "datum" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "land" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "plaats" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "datumIngangOnderzoek" : {
             "$ref" : "#/components/schemas/Datum_onvolledig"
           }
         },
-        "description" : "In onderzoek indicators voor gegevens over het overlijden van de ingeschreven natuurlijk persoon. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
+        "description" : "Geeft aan welke gegevens over het overlijden van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)"
       },
       "KindInOnderzoek" : {
         "type" : "object",
         "properties" : {
           "burgerservicenummer" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "datumIngangOnderzoek" : {
             "$ref" : "#/components/schemas/Datum_onvolledig"
           }
         },
-        "description" : "Indicators over het in onderzoek zijn van gegevens over de aangaan van het huwelijk van de INGESCHREVEN PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
+        "description" : "Geeft aan of de gegevens over het kind van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)"
       },
       "PartnerInOnderzoek" : {
         "type" : "object",
@@ -2816,7 +2806,7 @@
             "$ref" : "#/components/schemas/Datum_onvolledig"
           }
         },
-        "description" : "Indicators over het in onderzoek zijn van gegevens over de aangaan van het huwelijk van de INGESCHREVEN PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
+        "description" : "Geeft aan welke gegevens over het huwelijk of het partnerschap in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)"
       },
       "AangaanHuwelijkPartnerschap" : {
         "type" : "object",
@@ -2831,31 +2821,28 @@
             "$ref" : "#/components/schemas/Waardetabel"
           },
           "inOnderzoek" : {
-            "$ref" : "#/components/schemas/AangaanHuwelijkInOnderzoek"
+            "$ref" : "#/components/schemas/AangaanHuwelijkPartnerschapInOnderzoek"
           }
         },
-        "description" : "Gegevens over het gesloten huwelijk of het aangegane geregistreerd partnerschap. \n* **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan. \n* **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. \n* **plaats** : Als de plaats een gemeente in Nederland is dan gewoon de gemeentecode + gemeentenaam . Voor een plaats buiten Nederland is de gemeentecode leeg en wordt de gemeentenaam de buitenlandse plaatsnaam of aanduiding."
+        "description" : "Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap. \n * **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan. \n * **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. \n * **plaats** : Als de plaats een gemeente in Nederland is dan gewoon de gemeentecode + gemeentenaam. Voor een plaats buiten Nederland is de gemeentecode leeg en wordt de gemeentenaam de buitenlandse plaatsnaam of aanduiding."
       },
-      "AangaanHuwelijkInOnderzoek" : {
+      "AangaanHuwelijkPartnerschapInOnderzoek" : {
         "type" : "object",
         "properties" : {
           "datum" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "land" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "plaats" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "datumIngangOnderzoek" : {
             "$ref" : "#/components/schemas/Datum_onvolledig"
           }
         },
-        "description" : "Indicators over het in onderzoek zijn van gegevens over de aangaan van het huwelijk van de INGESCHREVEN PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
+        "description" : "Geeft aan welke gegevens over het voltrekken van het huwelijk of aangaan van het partnerschap in onderzoek zijn. Zie de functionele specificaties. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)"
       },
       "BinnenlandsAdres" : {
         "description" : "Dit object bevat de basis Verblijfsplaats kenmerken die gedeeld worden door Bewoning en Verblijfplaats\n",
@@ -2865,7 +2852,7 @@
           "properties" : {
             "adresseerbaarObjectIdentificatie" : {
               "type" : "string",
-              "description" : "Een verblijfplaats kan een ligplaats, een standplaats of een verblijfsobject in een of meerdere panden zijn, waaraan respectievelijk een ligplaatsidentificatie, standplaatsidentificatie of verblijfsobjectidentificatie is toegekend. De Identificatiecode verblijfplaats is een combinatie van een viercijferige gemeentecode, een tweecijferige objecttypecode die aangeeft of de aanduiding een verblijfsobject (01), ligplaats (02) of standplaats (03) betreft en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig volgnummer. Combinatie van de viercijferige 'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'.",
+              "description" : "De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.",
               "example" : "0518200000366054"
             },
             "aanduidingBijHuisnummer" : {
@@ -2873,6 +2860,7 @@
             },
             "nummeraanduidingIdentificatie" : {
               "type" : "string",
+              "description" : "Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.",
               "example" : "0518200000366054"
             }
           }
@@ -2888,20 +2876,20 @@
             },
             "indicatieVestigingVanuitBuitenland" : {
               "type" : "boolean",
-              "description" : "Indicatie waarmee aangegeven wordt of de ingeschreven persoon zich vanuit het buitenland heeftingeschreven. Deze indicatie heeft als rol om aan te geven dat iemand zich vanuit het buitenland gevestigd heeft. Deze indicator wordt altijd meegeleverd als de waarde true is. Als de waarde false is wordt de indicator niet meegeleverd."
+              "description" : "Geeft aan dat de ingeschreven persoon zich vanuit het buitenland heeft ingeschreven."
             },
             "locatiebeschrijving" : {
               "type" : "string",
-              "description" : "Een geheel of gedeeltelijke omschrijving van de ligging van een object.",
+              "description" : "Een omschrijving van de ligging van een object.",
               "example" : "Naast de derde brug"
             },
             "korteNaam" : {
               "type" : "string",
-              "description" : "De officiële openbareruimtenaam of een verkorte versie. Beiden hebben maximaal 24 tekens."
+              "description" : "De officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG) of een verkorte versie."
             },
             "vanuitVertrokkenOnbekendWaarheen" : {
               "type" : "boolean",
-              "description" : "Indicatie waarmee aangegeven wordt dat de persoon is teruggekeerd uit een situatie van vertrokken onbekend waarheen",
+              "description" : "Geeft aan dat de persoon is teruggekeerd uit een situatie van 'vertrokken onbekend waarheen.'",
               "example" : true
             },
             "datumAanvangAdreshouding" : {
@@ -2948,100 +2936,81 @@
               "$ref" : "#/components/schemas/VerblijfplaatsInOnderzoek"
             }
           },
-          "description" : "Gegevens over het verblijf en adres van de ingeschreven persoon. Dit is het adres waarop een persoon is ingeschreven. \n* **datumAanvangAdreshuishouding** : De datum van aangifte of ambtshalve melding van verblijf en adres. \n*  **datumIngangGeldigheid** : Datum waarop de gegevens over de verblijfplaats geldig zijn geworden. \n* **datumInschrijvingInGemeente**: Bij inschrijving op grond van een aangifte door de burger van zijn vestiging in een (volgende) gemeente is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop  de betrokkene schriftelijk van het voornemen van ambtshalve opneming mededeling is gedaan. \n* **datumVestigingInNederland** : Datum van inschrijving in Nederland \n* **landVanWaarIngeschreven** : Het land waar de ingeschreven persoon verblijf hield voor (her)vestiging in Nederland. \n* **gemeenteVanInschrijving** : Een aanduiding die aangeeft in welke gemeente de PK zich bevindt. De code kan voorloopnullen bevatten \n* **landVanWaarIngeschreven** : Het LAND waar de INGESCHREVEN PERSOON verblijf hield voor (her)vestiging in Nederland."
+          "description" : "Gegevens over het verblijf of de woonlocatie van een persoon. \n * **datumAanvangAdreshuishouding** : de datum van aangifte of ambtshalve melding van verblijf en adres. \n * **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden. \n * **datumInschrijvingInGemeente**: bij inschrijving op grond van een verhuisaangifte door de burger is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop de betrokkene schriftelijk van het voornemen van ambtshalve opneming mededeling is gedaan. \n * **datumVestigingInNederland** : datum van inschrijving in Nederland \n * **landVanWaarIngeschreven** : het land waar de ingeschreven persoon verblijf hield voor (her)vestiging in Nederland. \n * **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten."
         } ]
       },
       "VerblijfplaatsInOnderzoek" : {
         "type" : "object",
         "properties" : {
           "aanduidingBijHuisnummer" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "datumAanvangAdreshouding" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "datumIngangGeldigheid" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "datumInschrijvingInGemeente" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "datumVestigingInNederland" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "functieAdres" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "gemeenteVanInschrijving" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "huisletter" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "huisnummer" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "huisnummertoevoeging" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "nummeraanduidingIdentificatie" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "adresseerbaarObjectIdentificatie" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "landVanwaarIngeschreven" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "locatiebeschrijving" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "naamOpenbareRuimte" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "postcode" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "straatnaam" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "verblijfBuitenland" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "woonplaatsnaam" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "datumIngangOnderzoek" : {
             "$ref" : "#/components/schemas/Datum_onvolledig"
           }
         },
-        "description" : "Indicators om aan te geven dat de gegevens over het verblijf en adres van de INGESCHREVEN NATUURLIJK PERSOON in onderzoek zijn. Elementen van het GBA-adres zelf (Dat zou eigenlijk een BAG-adres moeten zijn) kunnen niet in onderzoek zijn. Wel de relatie naar de nummeraanduiding. Dat wordt gedaan door de identificatiecodeNummeraanduiding in onderzoek te zetten. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
+        "description" : "Geeft aan welke gegevens over het verblijf en adres van de persoon in onderzoek zijn. Elementen van het GBA-adres zelf (Dat zou eigenlijk een BAG-adres moeten zijn) kunnen niet in onderzoek zijn. Wel de relatie naar de nummeraanduiding. Dat wordt gedaan door de identificatiecodeNummeraanduiding in onderzoek te zetten. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)"
       },
       "Gezagsverhouding" : {
         "type" : "object",
         "properties" : {
           "indicatieCurateleRegister" : {
             "type" : "boolean",
-            "description" : "Een aanduiding dat de ingeschrevene onder curatele is gesteld.",
+            "description" : "Geeft aan dat de ingeschrevene onder curatele is gesteld.",
             "example" : true
           },
           "indicatieGezagMinderjarige" : {
@@ -3051,24 +3020,22 @@
             "$ref" : "#/components/schemas/GezagsverhoudingInOnderzoek"
           }
         },
-        "description" : "Gegevens betreffende het gezag over de ingeschrevene."
+        "description" : "Gegevens over het gezag over de persoon."
       },
       "GezagsverhoudingInOnderzoek" : {
         "type" : "object",
         "properties" : {
           "indicatieCurateleRegister" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "indicatieGezagMinderjarige" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is."
+            "type" : "boolean"
           },
           "datumIngangOnderzoek" : {
             "$ref" : "#/components/schemas/Datum_onvolledig"
           }
         },
-        "description" : "Een groep van booleans om aan te geven welke gegevens van de gezagsverhouding in onderzoek zijn. Als een de categorie in onderzoek is worden alle rubrieken binnen die categorie op _true_ gezet. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)"
+        "description" : "Geeft aan welke gegevens van de gezagsverhouding in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)"
       },
       "Verblijfstitel" : {
         "type" : "object",
@@ -3086,28 +3053,25 @@
             "$ref" : "#/components/schemas/VerblijfstitelInOnderzoek"
           }
         },
-        "description" : "Gegevens over de verblijfsrechtelijke status van de ingeschrevene. \n* **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd. \n* **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden. \n* **aanduiding** : Verblijfstiteltabel, die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt."
+        "description" : "Gegevens over de verblijfsrechtelijke status van de persoon. \n * **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd. \n * **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden. \n * **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt."
       },
       "VerblijfstitelInOnderzoek" : {
         "type" : "object",
         "properties" : {
           "aanduiding" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze verblijfstitel in onderzoek is."
+            "type" : "boolean"
           },
           "datumEinde" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze verblijfstitel in onderzoek is."
+            "type" : "boolean"
           },
           "datumIngang" : {
-            "type" : "boolean",
-            "description" : "Indicator die aangeeft of het corresponderende gegeven voor deze verblijfstitel in onderzoek is."
+            "type" : "boolean"
           },
           "datumIngangOnderzoek" : {
             "$ref" : "#/components/schemas/Datum_onvolledig"
           }
         },
-        "description" : "In onderzoek indicators over de gegevens over de verblijfstitel."
+        "description" : "Geeft aan welke gegevens over de verblijfstitel in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)"
       },
       "IngeschrevenPersoonLinks" : {
         "type" : "object",
@@ -3117,21 +3081,21 @@
           },
           "ouders" : {
             "type" : "array",
-            "description" : "De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE verwijst`",
+            "description" : "De ouders van de persoon.",
             "items" : {
               "$ref" : "#/components/schemas/HalLink"
             }
           },
           "reisdocumenten" : {
             "type" : "array",
-            "description" : "De ingezetene waaraan het REISDOCUMENT is verstrekt. Dit is de inverse relatie van heeftAlsHouder. Reisdocumenten die aan een ingezetene zijn verstrekt.",
+            "description" : "De persoon waaraan het reisdocument is verstrekt.",
             "items" : {
               "$ref" : "#/components/schemas/HalLink"
             }
           },
           "kinderen" : {
             "type" : "array",
-            "description" : "De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE verwijst",
+            "description" : "De kinderen van de persoon.",
             "items" : {
               "$ref" : "#/components/schemas/HalLink"
             }
@@ -3221,47 +3185,47 @@
       },
       "AanduidingBijzonderNederlanderschap_enum" : {
         "type" : "string",
-        "description" : "De aanduiding van het bijzonder Nederlanderschap:\n* `behandeld_als_nederlander` - B\n* `vastgesteld_niet_nederlander` - V",
+        "description" : "Geeft aan dat de persoon behandeld wordt als Nederlander, of dat door de rechter is vastgesteld dat de persoon niet de Nederlandse nationaliteit bezit:\n * `behandeld_als_nederlander` - B\n * `vastgesteld_niet_nederlander` - V",
         "enum" : [ "behandeld_als_nederlander", "vastgesteld_niet_nederlander" ]
       },
       "AanduidingBijHuisnummer_enum" : {
         "type" : "string",
-        "description" : "De aanduiding die wordt gebruikt voor adressen die niet zijn voorzien van de gebruikelijke straatnaam en huisnummeraanduidingen.:\n* `tegenover` - to\n* `bij` - by",
+        "description" : "De aanduiding die wordt gebruikt voor adressen die geen straatnaam en huisnummeraanduidingen hebben. :\n * `tegenover` - to\n * `bij` - by",
         "enum" : [ "tegenover", "bij" ]
       },
       "Geslacht_enum" : {
         "type" : "string",
-        "description" : "Een aanduiding die aangeeft dat de ingeschrevene een man of een vrouw is, of dat het geslacht (nog) onbekend is:\n* `man` - M\n* `vrouw` - V\n* `onbekend` - O",
+        "description" : "Geeft aan dat de persoon een man of vrouw is, of dat het geslacht (nog) onbekend is.:\n * `man` - M\n * `vrouw`  - V\n * `onbekend` - O",
         "enum" : [ "man", "vrouw", "onbekend" ]
       },
       "IndicatieGezagMinderjarige_enum" : {
         "type" : "string",
-        "description" : "Een aanduiding die aangeeft wie belast is met het gezag over de minderjarige ingeschrevene.:\n* `ouder1` - 1\n* `ouder2` - 2\n* `derden` - D\n* `ouder1_en_derde` - 1D\n* `ouder2_en_derde` - 2D\n* `ouder1_en_ouder2` - 12",
+        "description" : "Geeft aan wie het gezag heeft over de minderjarige persoon.:\n * `ouder1` - 1\n * `ouder2` - 2\n * `derden` - D\n * `ouder1_en_derde` - 1D\n * `ouder2_en_derde` - 2D\n * `ouder1_en_ouder2` - 12",
         "enum" : [ "ouder1", "ouder2", "derden", "ouder1_en_derde", "ouder2_en_derde", "ouder1_en_ouder2" ]
       },
       "Naamgebruik_enum" : {
         "type" : "string",
-        "description" : "De voorgedefinieerde waarden van naamgebruik volgens de centrale voorzieningen.\n* `eigen` - E\n* `eigen_partner` - N\n* `partner` - P\n* `partner_eigen` - V",
+        "description" : "De manier waarop de geslachtsnaam van persoon en partner van persoon moet worden verwerkt in de manier waarop persoon wil worden aangesproken:\n * `eigen` - E - gebruik alleen de eigen naam \n * `eigen_partner` - N - gebruik de eigen naam voor de partnernaam \n * `partner` - P gebruik alleen de partnernaam \n* `partner_eigen` - V - gebruik de partnernaam voor de eigen naam.\n\nDe aanduiding naamgebruik is verwerkt in Aanhef, Aanschrijfwijze en gebruikInLopendeTekst.",
         "enum" : [ "eigen", "eigen_partner", "partner", "partner_eigen" ]
       },
       "OuderAanduiding_enum" : {
         "type" : "string",
-        "description" : "Aanduiding om welke ouder het gaat volgens de GBA:\n* `ouder1` - 1\n* `ouder2` - 2",
+        "description" : "Geeft aan om welke ouder het gaat volgens de BRP:\n * `ouder1` - 1\n * `ouder2` - 2",
         "enum" : [ "ouder1", "ouder2" ]
       },
       "RedenOpschortingBijhouding_enum" : {
         "type" : "string",
-        "description" : "Redenen voor opschorting van de bijhouding.:\n* `overlijden` - O\n* `emigratie` - E\n* `ministerieel_besluit` - M\n* `pl_aangelegd_in_de_rni` - R\n* `fout` - F",
+        "description" : "Redenen voor opschorting van de bijhouding.:\n * `overlijden` - O \n * `emigratie` - E\n * `ministerieel_besluit` - M\n * `pl_aangelegd_in_de_rni` - R - opgeschort omdat persoon is ingeschreven in het Register Niet Ingezeten (RNI). \n * `fout` - F",
         "enum" : [ "overlijden", "emigratie", "ministerieel_besluit", "pl_aangelegd_in_de_rni", "fout" ]
       },
       "SoortAdres_enum" : {
         "type" : "string",
-        "description" : "Aanduiding van het soort adres.:\n* `woonadres` - W\n* `briefadres` - B",
+        "description" : "Aanduiding van het soort adres.:\n * `woonadres` - W - adres waar de persoon woont\n * `briefadres` - B - het adres van een andere persoon of van een instelling (de zogenoemde briefadresgever). Met dit adres van de briefadresgever is de persoon zonder woonadres toch bereikbaar voor de overheid.",
         "enum" : [ "woonadres", "briefadres" ]
       },
       "SoortVerbintenis_enum" : {
         "type" : "string",
-        "description" : "Soort verbintenis van een bij de burgerlijke stand ingeschreven verbintenis:\n* `huwelijk` - H\n* `geregistreerd_partnerschap` - P",
+        "description" : "Soort verbintenis die bij de burgerlijke stand is ingeschreven:\n * `huwelijk` - H\n * `geregistreerd_partnerschap` - P",
         "enum" : [ "huwelijk", "geregistreerd_partnerschap" ]
       },
       "Geboortedatum" : {
@@ -3271,7 +3235,7 @@
             "$ref" : "#/components/schemas/Datum_onvolledig"
           }
         },
-        "description" : "<body><p>Gegevens over de geboorte van respectievelijk de persoon, de ouder, de echtgenoot/geregistreerd partner, de eerdere echtgenoot/geregistreerd partner of het kind.</p><p>\n <em>*</em> datum** : Datum waarop de persoon is geboren.</p><p>\n <em>*</em> land** : Land waar de persoon is geboren</p><p>\n <em>*</em> plaats** : De plaats waar een persoon is geboren. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding.</p></body>"
+        "description" : "Gegevens over de geboorte van respectievelijk de persoon, de ouder, de echtgenoot/geregistreerd partner, de eerdere echtgenoot/geregistreerd partner of het kind.\n * **datum** : Datum waarop de persoon is geboren.\n * **land** : Land waar de persoon is geboren \n * **plaats** : De plaats waar een persoon is geboren. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding."
       },
       "BadRequestFoutbericht" : {
         "allOf" : [ {
@@ -3474,6 +3438,7 @@
       "burgerservicenummer" : {
         "name" : "burgerservicenummer",
         "in" : "path",
+        "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
         "required" : true,
         "style" : "simple",
         "explode" : false,
@@ -3482,7 +3447,6 @@
           "minLength" : 9,
           "pattern" : "^[0-9]*$",
           "type" : "string",
-          "description" : "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.",
           "example" : "555555021"
         }
       }
