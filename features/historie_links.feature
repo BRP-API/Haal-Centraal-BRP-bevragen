@@ -10,6 +10,7 @@ Functionaliteit: Links naar historie resources van een persoon
   - partnerhistorie
   - verblijfsplaatsenhistorie
   - verblijfstitelshistorie
+  - nationaliteithistorie
 
   Wanneer de API "Historie ingeschreven personen" NIET beschikbaar is, mag de resource ingeschrevenpersonen GEEN links bevatten naar historische resources.
 
