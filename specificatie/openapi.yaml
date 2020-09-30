@@ -588,7 +588,7 @@ components:
           type: boolean
           title: "Indicatie geheim"
           description: |
-                        Gegevens mogen niet worden verstrekt aan derden / maarschappelijke instellingen.
+                        Gegevens mogen niet worden verstrekt aan derden / maatschappelijke instellingen.
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
         leeftijd:
@@ -719,7 +719,7 @@ components:
           type: boolean
           title: "Indicatie geheim"
           description: |
-                        Een aanduiding die aangeeft dat gegevens wel of niet verstrekt mogen worden. Indien true -  op verzoek van deze persoon is het verstrekken van gegevens over deze persoon aan bepaalde derden niet toegestaan.
+                        Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.
     KindHalCollectie:
       type: object
       properties:
@@ -764,7 +764,7 @@ components:
           type: boolean
           title: "Indicatie geheim"
           description: |
-                        Een aanduiding die aangeeft dat gegevens wel of niet verstrekt mogen worden. Indien true - op verzoek van deze persoon is het verstrekken van gegevens over deze persoon aan bepaalde derden niet toegestaan."
+                        Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.
     PartnerHalCollectie:
       type: object
       properties:
@@ -815,35 +815,23 @@ components:
       properties:
         geslachtsnaam:
           type: boolean
-          description: |
-                        Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
         voornamen:
           type: boolean
-          description: |
-                        Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
         voorvoegsel:
           type: boolean
-          description: |
-                        Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
         datumIngangOnderzoek:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     OuderInOnderzoek:
       type: "object"
       description: |
-                    Indicators over het in onderzoek zijn van gegevens over de aangaan van het huwelijk van de INGESCHREVEN PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)
+                    Geeft aan welke gegevens van de de ouder in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)
       properties:
         burgerservicenummer:
           type: boolean
-          description: |
-                        Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
         datumIngangFamilierechtelijkeBetrekking:
           type: boolean
-          description: |
-                        Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
         geslachtsaanduiding:
           type: boolean
-          description: |
-                        Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
         datumIngangOnderzoek:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     Geboorte:
@@ -851,9 +839,6 @@ components:
       - $ref: '#/components/schemas/Geboortedatum'
       - description: |
                       Gegevens over de geboorte van de persoon, de ouder, de echtgenoot/geregistreerd partner, de eerdere echtgenoot/geregistreerd partner of het kind.
-                      * **datum** : datum waarop de persoon is geboren.
-                      * **land** : land waar de persoon is geboren
-                      * **plaats** : plaats waar een persoon is geboren. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding.
         properties:
           land:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
@@ -923,8 +908,6 @@ components:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
     Nationaliteit:
       type: "object"
-      description: |
-                    * **redenOpname** : De reden op grond waarvan de ingeschreven persoon de nationaliteit verkregen heeft.
       properties:
         aanduidingBijzonderNederlanderschap:
           $ref: "#/components/schemas/AanduidingBijzonderNederlanderschap_enum"
@@ -952,8 +935,8 @@ components:
     OpschortingBijhouding:
       type: "object"
       description: |
-                    * **reden**: de reden waarom de bijhouding van de PL is opgeschort.
-                    * **datum**: de datum waarop de bijhouding van de persoonslijst is gestaakt.
+                    * **reden**: de reden waarom de bijhouding van de persoonsgegevens is gestaakt.
+                    * **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.
       properties:
         reden:
           $ref: "#/components/schemas/RedenOpschortingBijhouding_enum"
@@ -962,15 +945,12 @@ components:
     Overlijden:
       type: "object"
       description: |
-                    Gegevens over het overlijden van de persoon. \n
-                    * **datum** : datum waarop de persoon is overleden.
-                    * **land** : land waar de persoon is overleden.
-                    * **plaats** : plaats waar een persoon is overleden. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding.
+                    Gegevens over het overlijden van de persoon.
       properties:
         indicatieOverleden:
           type: boolean
           description: |
-                        Deze indicatie geeft aan dat iemand is overleden (waarde true), ongeacht of de overlijdensdatum bekend is.
+                        Geeft aan dat iemand is overleden (waarde true), ongeacht of de overlijdensdatum bekend is.
         datum:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
         land:
@@ -1070,8 +1050,7 @@ components:
                       * **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden.
                       * **datumInschrijvingInGemeente**: bij inschrijving op grond van een verhuisaangifte door de burger is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop de betrokkene schriftelijk van het voornemen van ambtshalve opneming mededeling is gedaan.
                       * **datumVestigingInNederland** : datum van inschrijving in Nederland.
-                      * **landVanWaarIngeschreven** : het land waar de ingeschreven persoon verblijf hield voor (her)vestiging in Nederland.
-                      * **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten."
+                      * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland.
         properties:
           functieAdres:
             $ref: "#/components/schemas/SoortAdres_enum"
@@ -1183,7 +1162,7 @@ components:
         indicatieCurateleRegister:
           type: boolean
           description: |
-                        Geeft aan dat de ingeschrevene onder curatele is gesteld.
+                        Geeft aan dat de persoon onder curatele is gesteld.
           example: true
         indicatieGezagMinderjarige:
           $ref: "#/components/schemas/IndicatieGezagMinderjarige_enum"
@@ -1206,7 +1185,6 @@ components:
                     Gegevens over de verblijfsrechtelijke status van de persoon.
                     * **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd.
                     * **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.
-                    * **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt.
       properties:
         aanduiding:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
@@ -1243,7 +1221,7 @@ components:
         reisdocumenten:
           type: "array"
           description: |
-                        De persoon waaraan het reisdocument is verstrekt.
+                        De reisdocumenten die aan de persoon zijn verstrekt.
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         kinderen:
@@ -1301,7 +1279,7 @@ components:
         kinderen:
           type: "array"
           description: |
-                        De kinderen van de persoon
+                        De kinderen van de persoon.
           items:
             $ref: "#/components/schemas/KindHalBasis"
         partners:
@@ -1417,10 +1395,7 @@ components:
     Geboortedatum:
       type: "object"
       description: |
-                    Gegevens over de geboorte van respectievelijk de persoon, de ouder, de echtgenoot/geregistreerd partner, de eerdere echtgenoot/geregistreerd partner of het kind.
-                    * **datum** : Datum waarop de persoon is geboren
-                    * **land** : Land waar de persoon is geboren
-                    * **plaats** : De plaats waar een persoon is geboren. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding.
+                    Datum waarop de persoon is geboren.
       properties:
         datum:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.1.0/api-specificatie/common.yaml#/components/schemas/Datum_onvolledig"
