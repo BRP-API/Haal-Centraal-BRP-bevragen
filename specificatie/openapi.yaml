@@ -20,7 +20,7 @@ info:
 paths:
   /ingeschrevenpersonen:
     get:
-      operationId: ingeschrevenNatuurlijkPersonen
+      operationId: getIngeschrevenNatuurlijkPersonen
       summary: Vindt personen
       description: |
         Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met parameters uit de andere combinaties.
@@ -236,7 +236,7 @@ paths:
         - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}:
     get:
-      operationId: ingeschrevenNatuurlijkPersoon
+      operationId: getIngeschrevenNatuurlijkPersoon
       summary: Raadpleeg een persoon
       description: |
                     Raadpleeg een (overleden) persoon.
@@ -283,7 +283,7 @@ paths:
         - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/kinderen/{id}:
     get:
-      operationId: ingeschrevenpersonenBurgerservicenummerkinderenId
+      operationId: getIngeschrevenPersonenBurgerservicenummerKinderenId
       summary: "Raadpleeg een kind van een persoon"
       description: |
                     Raadpleeg een kind van een persoon
@@ -331,7 +331,7 @@ paths:
         - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/kinderen:
     get:
-      operationId: ingeschrevenpersonenBurgerservicenummerkinderen
+      operationId: getIngeschrevenPersonenBurgerservicenummerKinderen
       summary: "Levert de kinderen van een persoon"
       description: |
                     Levert de kinderen van een persoon
@@ -372,7 +372,7 @@ paths:
         - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/ouders/{id}:
     get:
-      operationId: ingeschrevenpersonenBurgerservicenummeroudersId
+      operationId: getIngeschrevenPersonenBurgerservicenummerOudersId
       summary: "Raadpleeg een ouder van een persoon"
       description: |
                     Raadpleeg een ouder van een persoon
@@ -420,7 +420,7 @@ paths:
         - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/ouders:
     get:
-      operationId: ingeschrevenpersonenBurgerservicenummerouders
+      operationId: getIngeschrevenPersonenBurgerservicenummerOuders
       summary: "Levert de ouders van een persoon"
       description: |
                     Levert de ouders van een persoon
@@ -461,7 +461,7 @@ paths:
         - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/partners/{id}:
     get:
-      operationId: ingeschrevenpersonenBurgerservicenummerpartnersId
+      operationId: getIngeschrevenPersonenBurgerservicenummerPartnersId
       summary: "Raadpleeg de partner van een persoon"
       description: |
                     Raadpleeg de partner van een persoon
@@ -509,7 +509,7 @@ paths:
         - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/partners:
     get:
-      operationId: ingeschrevenpersonenBurgerservicenummerpartners
+      operationId: getIngeschrevenPersonenBurgerservicenummerPartners
       summary: "Levert de actuele partners van een persoon"
       description: |
                     Levert de actuele partners van een persoon. Partners uit beëindigde huwelijken of partnerschappen worden niet geretourneerd
@@ -930,7 +930,6 @@ components:
     OpschortingBijhouding:
       type: "object"
       description: |
-                    * **reden**: de reden waarom de bijhouding van de persoonsgegevens is gestaakt.
                     * **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.
       properties:
         reden:
@@ -1021,12 +1020,18 @@ components:
           type: boolean
         datumIngangOnderzoek:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
-    BinnenlandsAdres:
-      description: |
-        Dit object bevat de basis Verblijfsplaats kenmerken die gedeeld worden door Bewoning en Verblijfplaats
+    Verblijfplaats:
       allOf:
-       - $ref : "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BAG-bevragen/v1.1.0/specificatie/openapi.yaml#/components/schemas/Adres"
-       - properties:
+      - $ref : "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BAG-bevragen/v1.1.0/specificatie/openapi.yaml#/components/schemas/Adres"
+      - description: |
+                      Gegevens over het verblijf of de woonlocatie van een persoon.
+                      * **datumAanvangAdreshuishouding** : de datum van aangifte of ambtshalve melding van verblijf en adres.
+                      * **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden.
+                      * **datumInschrijvingInGemeente**: bij inschrijving op grond van een verhuisaangifte door de burger is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop het voornemen van ambtshalve opneming schriftelijk aan de persoon is medegedeeld.
+                      * **datumVestigingInNederland** : datum van inschrijving in Nederland.
+                      * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland.
+                      * **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten."
+        properties:
           adresseerbaarObjectIdentificatie:
             type: "string"
             description: |
@@ -1039,18 +1044,6 @@ components:
             description: |
                           Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
             example: "0518200000366054"
-    Verblijfplaats:
-      allOf:
-      - $ref: '#/components/schemas/BinnenlandsAdres'
-      - description: |
-                      Gegevens over het verblijf of de woonlocatie van een persoon.
-                      * **datumAanvangAdreshuishouding** : de datum van aangifte of ambtshalve melding van verblijf en adres.
-                      * **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden.
-                      * **datumInschrijvingInGemeente**: bij inschrijving op grond van een verhuisaangifte door de burger is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop het voornemen van ambtshalve opneming schriftelijk aan de persoon is medegedeeld.
-                      * **datumVestigingInNederland** : datum van inschrijving in Nederland.
-                      * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland.
-                      * **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten."
-        properties:
           functieAdres:
             $ref: "#/components/schemas/SoortAdres_enum"
           indicatieVestigingVanuitBuitenland:
