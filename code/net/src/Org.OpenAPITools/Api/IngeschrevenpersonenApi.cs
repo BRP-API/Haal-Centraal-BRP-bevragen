@@ -1,7 +1,7 @@
 /* 
- * Bevragingen ingeschreven personen
+ * Bevragen Ingeschreven Personen
  *
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -21,446 +21,446 @@ namespace Org.OpenAPITools.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IIngeschrevenpersonenApi : IApiAccessor
+    public interface IIngeschrevenPersonenApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
-        /// 
+        /// Vindt personen
         /// </summary>
         /// <remarks>
-        /// Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen:   1.  Persoon     -  geboorte__datum     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 2.  Persoon     -  verblijfplaats__gemeentevaninschrijving     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 3.  Persoon     -  burgerservicenummer   4.  Postcode     -  verblijfplaats__postcode     -  verblijfplaats__huisnummer   5.  NaamOpenbareRuimte     -  verblijfplaats__naamopenbareruimte (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) )      -  verblijfplaats__gemeentevaninschrijving     -  verblijfplaats__huisnummer   6.  Nummeraanduiding     -  verblijfplaats__identificatiecodenummeraanduiding  De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters, maar binnen iedere combinatie zijn de hier genoemde velden **verplicht**.   Default levert een zoekvraag alleen personen op die nog in leven zijn. Indien **_inclusiefoverledenpersonen_** de waarde **_true_** heeft worden [overleden personen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) opgenomen in het zoekresultaat.   Het maximale aantal zoekresultaten dat geretourneerd wordt is aan de provider om te bepalen. Als het resultaat van de de request dit aantal overtreft worden er geen resultaten geretourneerd en volgt er een foutmelding.    Er vind geen sortering plaats. 
+        /// Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met parameters uit de andere combinaties.   Default krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen&#x3D;true opgeeft.   Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/fields_extensie.feature)   Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature)   1.  Persoon     -  geboorte__datum     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)   2.  Persoon     -  verblijfplaats__gemeenteVanInschrijving     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)   3.  Persoon     -  burgerservicenummer   4.  Postcode     -  verblijfplaats__postcode     -  verblijfplaats__huisnummer   5.  Straat     -  verblijfplaats__straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) )     -  verblijfplaats__gemeenteVanInschrijving     -  verblijfplaats__huisnummer   6.  Adres     -  verblijfplaats__nummeraanduidingIdentificatie 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="expand">Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/expand.feature). (optional)</param>
         /// <param name="fields">Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma&#39;s gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature) (optional)</param>
-        /// <param name="burgerservicenummer">Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn. (optional)</param>
-        /// <param name="geboorteDatum">Datum waarop de INGESCHREVEN NATUURLIJK PERSOON geboren is. Er kan alleen gezocht worden met een volledige geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature) (optional)</param>
-        /// <param name="geboortePlaats">Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
-        /// <param name="geslachtsaanduiding">Een aanduiding die aangeeft dat de ingeschrevene een man of een vrouw is, of dat het geslacht (nog) onbekend is. (optional)</param>
-        /// <param name="inclusiefoverledenpersonen">Indien in het antwoord op de zoekvraag ook overleden personen moeten worden geretourneerd, dan dient de parameter *inclusiefOverledenPersonen* opgenomen te zijn met de waarde _True_. Indien de parameter *inclusiefOverledenPersonen* ontbreekt of de waarde _False_ heeft worden geen overleden personen opgenomen in het zoekresultaat. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) (optional)</param>
-        /// <param name="naamGeslachtsnaam">De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
-        /// <param name="naamVoornamen">De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
-        /// <param name="verblijfplaatsGemeentevaninschrijving">Een code die aangeeft in welke gemeente de PL zich bevindt of de gemeente waarnaar de PL is uitgeschreven of de gemeente waar de PL voor de eerste keer is opgenomen. De waarde (0000) is geen geldige inhoud voor de query-parameter. (optional)</param>
-        /// <param name="verblijfplaatsHuisletter">Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende toevoeging aan een huisnummer in de vorm van een alfanumeriek teken. (optional)</param>
-        /// <param name="verblijfplaatsHuisnummer">Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nummering. Alle natuurlijke getallen tussen 1 en 99999. (optional)</param>
-        /// <param name="verblijfplaatsHuisnummertoevoeging">Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter. a - z , A - Z , 0 – 9 (optional)</param>
-        /// <param name="verblijfplaatsIdentificatiecodenummeraanduiding">De unieke aanduiding van een NUMMERAANDUIDING. Combinatie van de viercijferige &#39;gemeentecode&#39; , de tweecijferige &#39;objecttypecode&#39; en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig &#39;objectvolgnummer&#39;. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding. (optional)</param>
-        /// <param name="verblijfplaatsNaamopenbareruimte">Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** Tekens gecodeerd volgens de UTF-8 standaard (optional)</param>
-        /// <param name="verblijfplaatsPostcode">De door PostNL vastgestelde code behorende bij een bepaalde combinatie van een naam van een woonplaats, naam van een openbare ruimte en een huisnummer (optional)</param>
-        /// <param name="naamVoorvoegsel">Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam. **De tabel bevat vorvoegsels met hoofdletters en met kleine letters. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer.  (optional)</param>
+        /// <param name="geboorteDatum">Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/parametervalidatie.feature)  (optional)</param>
+        /// <param name="geboortePlaats">Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="geslachtsaanduiding">Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.  (optional)</param>
+        /// <param name="inclusiefOverledenPersonen">Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/overleden_personen.feature)  (optional)</param>
+        /// <param name="naamGeslachtsnaam">De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="naamVoorvoegsel">Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="naamVoornamen">De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="verblijfplaatsGemeenteVanInschrijving">Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.  (optional)</param>
+        /// <param name="verblijfplaatsHuisletter">Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.  (optional)</param>
+        /// <param name="verblijfplaatsHuisnummer">Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.  (optional)</param>
+        /// <param name="verblijfplaatsHuisnummertoevoeging">Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.  (optional)</param>
+        /// <param name="verblijfplaatsNummeraanduidingIdentificatie">Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.  (optional)</param>
+        /// <param name="verblijfplaatsStraat">Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).  (optional)</param>
+        /// <param name="verblijfplaatsPostcode">De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.  (optional)</param>
         /// <returns>IngeschrevenPersoonHalCollectie</returns>
-        IngeschrevenPersoonHalCollectie IngeschrevenNatuurlijkPersonen (string expand = default(string), string fields = default(string), List<string> burgerservicenummer = default(List<string>), DateTime? geboorteDatum = default(DateTime?), string geboortePlaats = default(string), GeslachtEnum? geslachtsaanduiding = default(GeslachtEnum?), bool? inclusiefoverledenpersonen = default(bool?), string naamGeslachtsnaam = default(string), string naamVoornamen = default(string), string verblijfplaatsGemeentevaninschrijving = default(string), string verblijfplaatsHuisletter = default(string), int? verblijfplaatsHuisnummer = default(int?), string verblijfplaatsHuisnummertoevoeging = default(string), string verblijfplaatsIdentificatiecodenummeraanduiding = default(string), string verblijfplaatsNaamopenbareruimte = default(string), string verblijfplaatsPostcode = default(string), string naamVoorvoegsel = default(string));
+        IngeschrevenPersoonHalCollectie GetIngeschrevenPersonen (string expand = default(string), string fields = default(string), List<string> burgerservicenummer = default(List<string>), DateTime? geboorteDatum = default(DateTime?), string geboortePlaats = default(string), GeslachtEnum? geslachtsaanduiding = default(GeslachtEnum?), bool? inclusiefOverledenPersonen = default(bool?), string naamGeslachtsnaam = default(string), string naamVoorvoegsel = default(string), string naamVoornamen = default(string), string verblijfplaatsGemeenteVanInschrijving = default(string), string verblijfplaatsHuisletter = default(string), int? verblijfplaatsHuisnummer = default(int?), string verblijfplaatsHuisnummertoevoeging = default(string), string verblijfplaatsNummeraanduidingIdentificatie = default(string), string verblijfplaatsStraat = default(string), string verblijfplaatsPostcode = default(string));
 
         /// <summary>
-        /// 
+        /// Vindt personen
         /// </summary>
         /// <remarks>
-        /// Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen:   1.  Persoon     -  geboorte__datum     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 2.  Persoon     -  verblijfplaats__gemeentevaninschrijving     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 3.  Persoon     -  burgerservicenummer   4.  Postcode     -  verblijfplaats__postcode     -  verblijfplaats__huisnummer   5.  NaamOpenbareRuimte     -  verblijfplaats__naamopenbareruimte (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) )      -  verblijfplaats__gemeentevaninschrijving     -  verblijfplaats__huisnummer   6.  Nummeraanduiding     -  verblijfplaats__identificatiecodenummeraanduiding  De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters, maar binnen iedere combinatie zijn de hier genoemde velden **verplicht**.   Default levert een zoekvraag alleen personen op die nog in leven zijn. Indien **_inclusiefoverledenpersonen_** de waarde **_true_** heeft worden [overleden personen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) opgenomen in het zoekresultaat.   Het maximale aantal zoekresultaten dat geretourneerd wordt is aan de provider om te bepalen. Als het resultaat van de de request dit aantal overtreft worden er geen resultaten geretourneerd en volgt er een foutmelding.    Er vind geen sortering plaats. 
+        /// Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met parameters uit de andere combinaties.   Default krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen&#x3D;true opgeeft.   Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/fields_extensie.feature)   Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature)   1.  Persoon     -  geboorte__datum     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)   2.  Persoon     -  verblijfplaats__gemeenteVanInschrijving     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)   3.  Persoon     -  burgerservicenummer   4.  Postcode     -  verblijfplaats__postcode     -  verblijfplaats__huisnummer   5.  Straat     -  verblijfplaats__straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) )     -  verblijfplaats__gemeenteVanInschrijving     -  verblijfplaats__huisnummer   6.  Adres     -  verblijfplaats__nummeraanduidingIdentificatie 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="expand">Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/expand.feature). (optional)</param>
         /// <param name="fields">Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma&#39;s gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature) (optional)</param>
-        /// <param name="burgerservicenummer">Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn. (optional)</param>
-        /// <param name="geboorteDatum">Datum waarop de INGESCHREVEN NATUURLIJK PERSOON geboren is. Er kan alleen gezocht worden met een volledige geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature) (optional)</param>
-        /// <param name="geboortePlaats">Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
-        /// <param name="geslachtsaanduiding">Een aanduiding die aangeeft dat de ingeschrevene een man of een vrouw is, of dat het geslacht (nog) onbekend is. (optional)</param>
-        /// <param name="inclusiefoverledenpersonen">Indien in het antwoord op de zoekvraag ook overleden personen moeten worden geretourneerd, dan dient de parameter *inclusiefOverledenPersonen* opgenomen te zijn met de waarde _True_. Indien de parameter *inclusiefOverledenPersonen* ontbreekt of de waarde _False_ heeft worden geen overleden personen opgenomen in het zoekresultaat. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) (optional)</param>
-        /// <param name="naamGeslachtsnaam">De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
-        /// <param name="naamVoornamen">De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
-        /// <param name="verblijfplaatsGemeentevaninschrijving">Een code die aangeeft in welke gemeente de PL zich bevindt of de gemeente waarnaar de PL is uitgeschreven of de gemeente waar de PL voor de eerste keer is opgenomen. De waarde (0000) is geen geldige inhoud voor de query-parameter. (optional)</param>
-        /// <param name="verblijfplaatsHuisletter">Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende toevoeging aan een huisnummer in de vorm van een alfanumeriek teken. (optional)</param>
-        /// <param name="verblijfplaatsHuisnummer">Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nummering. Alle natuurlijke getallen tussen 1 en 99999. (optional)</param>
-        /// <param name="verblijfplaatsHuisnummertoevoeging">Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter. a - z , A - Z , 0 – 9 (optional)</param>
-        /// <param name="verblijfplaatsIdentificatiecodenummeraanduiding">De unieke aanduiding van een NUMMERAANDUIDING. Combinatie van de viercijferige &#39;gemeentecode&#39; , de tweecijferige &#39;objecttypecode&#39; en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig &#39;objectvolgnummer&#39;. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding. (optional)</param>
-        /// <param name="verblijfplaatsNaamopenbareruimte">Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** Tekens gecodeerd volgens de UTF-8 standaard (optional)</param>
-        /// <param name="verblijfplaatsPostcode">De door PostNL vastgestelde code behorende bij een bepaalde combinatie van een naam van een woonplaats, naam van een openbare ruimte en een huisnummer (optional)</param>
-        /// <param name="naamVoorvoegsel">Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam. **De tabel bevat vorvoegsels met hoofdletters en met kleine letters. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer.  (optional)</param>
+        /// <param name="geboorteDatum">Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/parametervalidatie.feature)  (optional)</param>
+        /// <param name="geboortePlaats">Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="geslachtsaanduiding">Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.  (optional)</param>
+        /// <param name="inclusiefOverledenPersonen">Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/overleden_personen.feature)  (optional)</param>
+        /// <param name="naamGeslachtsnaam">De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="naamVoorvoegsel">Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="naamVoornamen">De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="verblijfplaatsGemeenteVanInschrijving">Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.  (optional)</param>
+        /// <param name="verblijfplaatsHuisletter">Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.  (optional)</param>
+        /// <param name="verblijfplaatsHuisnummer">Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.  (optional)</param>
+        /// <param name="verblijfplaatsHuisnummertoevoeging">Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.  (optional)</param>
+        /// <param name="verblijfplaatsNummeraanduidingIdentificatie">Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.  (optional)</param>
+        /// <param name="verblijfplaatsStraat">Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).  (optional)</param>
+        /// <param name="verblijfplaatsPostcode">De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.  (optional)</param>
         /// <returns>ApiResponse of IngeschrevenPersoonHalCollectie</returns>
-        ApiResponse<IngeschrevenPersoonHalCollectie> IngeschrevenNatuurlijkPersonenWithHttpInfo (string expand = default(string), string fields = default(string), List<string> burgerservicenummer = default(List<string>), DateTime? geboorteDatum = default(DateTime?), string geboortePlaats = default(string), GeslachtEnum? geslachtsaanduiding = default(GeslachtEnum?), bool? inclusiefoverledenpersonen = default(bool?), string naamGeslachtsnaam = default(string), string naamVoornamen = default(string), string verblijfplaatsGemeentevaninschrijving = default(string), string verblijfplaatsHuisletter = default(string), int? verblijfplaatsHuisnummer = default(int?), string verblijfplaatsHuisnummertoevoeging = default(string), string verblijfplaatsIdentificatiecodenummeraanduiding = default(string), string verblijfplaatsNaamopenbareruimte = default(string), string verblijfplaatsPostcode = default(string), string naamVoorvoegsel = default(string));
+        ApiResponse<IngeschrevenPersoonHalCollectie> GetIngeschrevenPersonenWithHttpInfo (string expand = default(string), string fields = default(string), List<string> burgerservicenummer = default(List<string>), DateTime? geboorteDatum = default(DateTime?), string geboortePlaats = default(string), GeslachtEnum? geslachtsaanduiding = default(GeslachtEnum?), bool? inclusiefOverledenPersonen = default(bool?), string naamGeslachtsnaam = default(string), string naamVoorvoegsel = default(string), string naamVoornamen = default(string), string verblijfplaatsGemeenteVanInschrijving = default(string), string verblijfplaatsHuisletter = default(string), int? verblijfplaatsHuisnummer = default(int?), string verblijfplaatsHuisnummertoevoeging = default(string), string verblijfplaatsNummeraanduidingIdentificatie = default(string), string verblijfplaatsStraat = default(string), string verblijfplaatsPostcode = default(string));
         /// <summary>
-        /// 
+        /// Raadpleeg een persoon
         /// </summary>
         /// <remarks>
-        /// Het ophalen de actuele gegevens van een Ingeschreven Persoon, inclusief verblijfplaats, kinderen, partners en ouders. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen.
+        /// Raadpleeg een (overleden) persoon.  Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/fields_extensie.feature).  Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature). 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <param name="expand">Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/expand.feature). (optional)</param>
         /// <param name="fields">Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma&#39;s gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature) (optional)</param>
         /// <returns>IngeschrevenPersoonHal</returns>
-        IngeschrevenPersoonHal IngeschrevenNatuurlijkPersoon (string burgerservicenummer, string expand = default(string), string fields = default(string));
+        IngeschrevenPersoonHal GetIngeschrevenPersoon (string burgerservicenummer, string expand = default(string), string fields = default(string));
 
         /// <summary>
-        /// 
+        /// Raadpleeg een persoon
         /// </summary>
         /// <remarks>
-        /// Het ophalen de actuele gegevens van een Ingeschreven Persoon, inclusief verblijfplaats, kinderen, partners en ouders. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen.
+        /// Raadpleeg een (overleden) persoon.  Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/fields_extensie.feature).  Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature). 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <param name="expand">Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/expand.feature). (optional)</param>
         /// <param name="fields">Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma&#39;s gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature) (optional)</param>
         /// <returns>ApiResponse of IngeschrevenPersoonHal</returns>
-        ApiResponse<IngeschrevenPersoonHal> IngeschrevenNatuurlijkPersoonWithHttpInfo (string burgerservicenummer, string expand = default(string), string fields = default(string));
+        ApiResponse<IngeschrevenPersoonHal> GetIngeschrevenPersoonWithHttpInfo (string burgerservicenummer, string expand = default(string), string fields = default(string));
         /// <summary>
-        /// 
+        /// Raadpleeg een kind van een persoon
         /// </summary>
         /// <remarks>
-        /// Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats.
+        /// Raadpleeg een kind van een persoon 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="id">De identificatie van het kind. </param>
+        /// <returns>KindHalBasis</returns>
+        KindHalBasis GetKind (string burgerservicenummer, string id);
+
+        /// <summary>
+        /// Raadpleeg een kind van een persoon
+        /// </summary>
+        /// <remarks>
+        /// Raadpleeg een kind van een persoon 
+        /// </remarks>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="id">De identificatie van het kind. </param>
+        /// <returns>ApiResponse of KindHalBasis</returns>
+        ApiResponse<KindHalBasis> GetKindWithHttpInfo (string burgerservicenummer, string id);
+        /// <summary>
+        /// Levert de kinderen van een persoon
+        /// </summary>
+        /// <remarks>
+        /// Levert de kinderen van een persoon 
+        /// </remarks>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <returns>KindHalCollectie</returns>
-        KindHalCollectie IngeschrevenpersonenBurgerservicenummerkinderen (string burgerservicenummer);
+        KindHalCollectie GetKinderen (string burgerservicenummer);
 
         /// <summary>
-        /// 
+        /// Levert de kinderen van een persoon
         /// </summary>
         /// <remarks>
-        /// Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats.
+        /// Levert de kinderen van een persoon 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <returns>ApiResponse of KindHalCollectie</returns>
-        ApiResponse<KindHalCollectie> IngeschrevenpersonenBurgerservicenummerkinderenWithHttpInfo (string burgerservicenummer);
+        ApiResponse<KindHalCollectie> GetKinderenWithHttpInfo (string burgerservicenummer);
         /// <summary>
-        /// 
+        /// Raadpleeg een ouder van een persoon
         /// </summary>
         /// <remarks>
-        /// Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.
+        /// Raadpleeg een ouder van een persoon 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
-        /// <param name="id">De identificatie van het kind.</param>
-        /// <returns>KindHal</returns>
-        KindHal IngeschrevenpersonenBurgerservicenummerkinderenId (string burgerservicenummer, string id);
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="id">De identificatie van de ouder. </param>
+        /// <returns>OuderHalBasis</returns>
+        OuderHalBasis GetOuder (string burgerservicenummer, string id);
 
         /// <summary>
-        /// 
+        /// Raadpleeg een ouder van een persoon
         /// </summary>
         /// <remarks>
-        /// Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.
+        /// Raadpleeg een ouder van een persoon 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
-        /// <param name="id">De identificatie van het kind.</param>
-        /// <returns>ApiResponse of KindHal</returns>
-        ApiResponse<KindHal> IngeschrevenpersonenBurgerservicenummerkinderenIdWithHttpInfo (string burgerservicenummer, string id);
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="id">De identificatie van de ouder. </param>
+        /// <returns>ApiResponse of OuderHalBasis</returns>
+        ApiResponse<OuderHalBasis> GetOuderWithHttpInfo (string burgerservicenummer, string id);
         /// <summary>
-        /// 
+        /// Levert de ouders van een persoon
         /// </summary>
         /// <remarks>
-        /// Het ophalen de ouder-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats.
+        /// Levert de ouders van een persoon 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <returns>OuderHalCollectie</returns>
-        OuderHalCollectie IngeschrevenpersonenBurgerservicenummerouders (string burgerservicenummer);
+        OuderHalCollectie GetOuders (string burgerservicenummer);
 
         /// <summary>
-        /// 
+        /// Levert de ouders van een persoon
         /// </summary>
         /// <remarks>
-        /// Het ophalen de ouder-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats.
+        /// Levert de ouders van een persoon 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <returns>ApiResponse of OuderHalCollectie</returns>
-        ApiResponse<OuderHalCollectie> IngeschrevenpersonenBurgerservicenummeroudersWithHttpInfo (string burgerservicenummer);
+        ApiResponse<OuderHalCollectie> GetOudersWithHttpInfo (string burgerservicenummer);
         /// <summary>
-        /// 
+        /// Raadpleeg de partner van een persoon
         /// </summary>
         /// <remarks>
-        /// Het ophalen de ouder-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen..
+        /// Raadpleeg de partner van een persoon 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
-        /// <param name="id">De identificatie van de ouder.</param>
-        /// <returns>OuderHal</returns>
-        OuderHal IngeschrevenpersonenBurgerservicenummeroudersId (string burgerservicenummer, string id);
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="id">De identificatie van de partner. </param>
+        /// <returns>PartnerHalBasis</returns>
+        PartnerHalBasis GetPartner (string burgerservicenummer, string id);
 
         /// <summary>
-        /// 
+        /// Raadpleeg de partner van een persoon
         /// </summary>
         /// <remarks>
-        /// Het ophalen de ouder-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen..
+        /// Raadpleeg de partner van een persoon 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
-        /// <param name="id">De identificatie van de ouder.</param>
-        /// <returns>ApiResponse of OuderHal</returns>
-        ApiResponse<OuderHal> IngeschrevenpersonenBurgerservicenummeroudersIdWithHttpInfo (string burgerservicenummer, string id);
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="id">De identificatie van de partner. </param>
+        /// <returns>ApiResponse of PartnerHalBasis</returns>
+        ApiResponse<PartnerHalBasis> GetPartnerWithHttpInfo (string burgerservicenummer, string id);
         /// <summary>
-        /// 
+        /// Levert de actuele partners van een persoon
         /// </summary>
         /// <remarks>
-        /// Het ophalen de actuele partner-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet opgenomen in het antwoord. De gevonden huwelijken/partnerschappen worden ongesorteerd teruggegeven.
+        /// Levert de actuele partners van een persoon. Partners uit beëindigde huwelijken of partnerschappen worden niet geretourneerd 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <returns>PartnerHalCollectie</returns>
-        PartnerHalCollectie IngeschrevenpersonenBurgerservicenummerpartners (string burgerservicenummer);
+        PartnerHalCollectie GetPartners (string burgerservicenummer);
 
         /// <summary>
-        /// 
+        /// Levert de actuele partners van een persoon
         /// </summary>
         /// <remarks>
-        /// Het ophalen de actuele partner-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet opgenomen in het antwoord. De gevonden huwelijken/partnerschappen worden ongesorteerd teruggegeven.
+        /// Levert de actuele partners van een persoon. Partners uit beëindigde huwelijken of partnerschappen worden niet geretourneerd 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <returns>ApiResponse of PartnerHalCollectie</returns>
-        ApiResponse<PartnerHalCollectie> IngeschrevenpersonenBurgerservicenummerpartnersWithHttpInfo (string burgerservicenummer);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// Het ophalen de partner-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.
-        /// </remarks>
-        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
-        /// <param name="id">De identificatie van de partner.</param>
-        /// <returns>PartnerHal</returns>
-        PartnerHal IngeschrevenpersonenBurgerservicenummerpartnersId (string burgerservicenummer, string id);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// Het ophalen de partner-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.
-        /// </remarks>
-        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
-        /// <param name="id">De identificatie van de partner.</param>
-        /// <returns>ApiResponse of PartnerHal</returns>
-        ApiResponse<PartnerHal> IngeschrevenpersonenBurgerservicenummerpartnersIdWithHttpInfo (string burgerservicenummer, string id);
+        ApiResponse<PartnerHalCollectie> GetPartnersWithHttpInfo (string burgerservicenummer);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// 
+        /// Vindt personen
         /// </summary>
         /// <remarks>
-        /// Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen:   1.  Persoon     -  geboorte__datum     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 2.  Persoon     -  verblijfplaats__gemeentevaninschrijving     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 3.  Persoon     -  burgerservicenummer   4.  Postcode     -  verblijfplaats__postcode     -  verblijfplaats__huisnummer   5.  NaamOpenbareRuimte     -  verblijfplaats__naamopenbareruimte (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) )      -  verblijfplaats__gemeentevaninschrijving     -  verblijfplaats__huisnummer   6.  Nummeraanduiding     -  verblijfplaats__identificatiecodenummeraanduiding  De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters, maar binnen iedere combinatie zijn de hier genoemde velden **verplicht**.   Default levert een zoekvraag alleen personen op die nog in leven zijn. Indien **_inclusiefoverledenpersonen_** de waarde **_true_** heeft worden [overleden personen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) opgenomen in het zoekresultaat.   Het maximale aantal zoekresultaten dat geretourneerd wordt is aan de provider om te bepalen. Als het resultaat van de de request dit aantal overtreft worden er geen resultaten geretourneerd en volgt er een foutmelding.    Er vind geen sortering plaats. 
+        /// Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met parameters uit de andere combinaties.   Default krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen&#x3D;true opgeeft.   Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/fields_extensie.feature)   Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature)   1.  Persoon     -  geboorte__datum     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)   2.  Persoon     -  verblijfplaats__gemeenteVanInschrijving     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)   3.  Persoon     -  burgerservicenummer   4.  Postcode     -  verblijfplaats__postcode     -  verblijfplaats__huisnummer   5.  Straat     -  verblijfplaats__straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) )     -  verblijfplaats__gemeenteVanInschrijving     -  verblijfplaats__huisnummer   6.  Adres     -  verblijfplaats__nummeraanduidingIdentificatie 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="expand">Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/expand.feature). (optional)</param>
         /// <param name="fields">Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma&#39;s gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature) (optional)</param>
-        /// <param name="burgerservicenummer">Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn. (optional)</param>
-        /// <param name="geboorteDatum">Datum waarop de INGESCHREVEN NATUURLIJK PERSOON geboren is. Er kan alleen gezocht worden met een volledige geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature) (optional)</param>
-        /// <param name="geboortePlaats">Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
-        /// <param name="geslachtsaanduiding">Een aanduiding die aangeeft dat de ingeschrevene een man of een vrouw is, of dat het geslacht (nog) onbekend is. (optional)</param>
-        /// <param name="inclusiefoverledenpersonen">Indien in het antwoord op de zoekvraag ook overleden personen moeten worden geretourneerd, dan dient de parameter *inclusiefOverledenPersonen* opgenomen te zijn met de waarde _True_. Indien de parameter *inclusiefOverledenPersonen* ontbreekt of de waarde _False_ heeft worden geen overleden personen opgenomen in het zoekresultaat. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) (optional)</param>
-        /// <param name="naamGeslachtsnaam">De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
-        /// <param name="naamVoornamen">De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
-        /// <param name="verblijfplaatsGemeentevaninschrijving">Een code die aangeeft in welke gemeente de PL zich bevindt of de gemeente waarnaar de PL is uitgeschreven of de gemeente waar de PL voor de eerste keer is opgenomen. De waarde (0000) is geen geldige inhoud voor de query-parameter. (optional)</param>
-        /// <param name="verblijfplaatsHuisletter">Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende toevoeging aan een huisnummer in de vorm van een alfanumeriek teken. (optional)</param>
-        /// <param name="verblijfplaatsHuisnummer">Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nummering. Alle natuurlijke getallen tussen 1 en 99999. (optional)</param>
-        /// <param name="verblijfplaatsHuisnummertoevoeging">Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter. a - z , A - Z , 0 – 9 (optional)</param>
-        /// <param name="verblijfplaatsIdentificatiecodenummeraanduiding">De unieke aanduiding van een NUMMERAANDUIDING. Combinatie van de viercijferige &#39;gemeentecode&#39; , de tweecijferige &#39;objecttypecode&#39; en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig &#39;objectvolgnummer&#39;. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding. (optional)</param>
-        /// <param name="verblijfplaatsNaamopenbareruimte">Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** Tekens gecodeerd volgens de UTF-8 standaard (optional)</param>
-        /// <param name="verblijfplaatsPostcode">De door PostNL vastgestelde code behorende bij een bepaalde combinatie van een naam van een woonplaats, naam van een openbare ruimte en een huisnummer (optional)</param>
-        /// <param name="naamVoorvoegsel">Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam. **De tabel bevat vorvoegsels met hoofdletters en met kleine letters. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer.  (optional)</param>
+        /// <param name="geboorteDatum">Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/parametervalidatie.feature)  (optional)</param>
+        /// <param name="geboortePlaats">Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="geslachtsaanduiding">Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.  (optional)</param>
+        /// <param name="inclusiefOverledenPersonen">Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/overleden_personen.feature)  (optional)</param>
+        /// <param name="naamGeslachtsnaam">De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="naamVoorvoegsel">Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="naamVoornamen">De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="verblijfplaatsGemeenteVanInschrijving">Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.  (optional)</param>
+        /// <param name="verblijfplaatsHuisletter">Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.  (optional)</param>
+        /// <param name="verblijfplaatsHuisnummer">Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.  (optional)</param>
+        /// <param name="verblijfplaatsHuisnummertoevoeging">Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.  (optional)</param>
+        /// <param name="verblijfplaatsNummeraanduidingIdentificatie">Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.  (optional)</param>
+        /// <param name="verblijfplaatsStraat">Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).  (optional)</param>
+        /// <param name="verblijfplaatsPostcode">De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.  (optional)</param>
         /// <returns>Task of IngeschrevenPersoonHalCollectie</returns>
-        System.Threading.Tasks.Task<IngeschrevenPersoonHalCollectie> IngeschrevenNatuurlijkPersonenAsync (string expand = default(string), string fields = default(string), List<string> burgerservicenummer = default(List<string>), DateTime? geboorteDatum = default(DateTime?), string geboortePlaats = default(string), GeslachtEnum? geslachtsaanduiding = default(GeslachtEnum?), bool? inclusiefoverledenpersonen = default(bool?), string naamGeslachtsnaam = default(string), string naamVoornamen = default(string), string verblijfplaatsGemeentevaninschrijving = default(string), string verblijfplaatsHuisletter = default(string), int? verblijfplaatsHuisnummer = default(int?), string verblijfplaatsHuisnummertoevoeging = default(string), string verblijfplaatsIdentificatiecodenummeraanduiding = default(string), string verblijfplaatsNaamopenbareruimte = default(string), string verblijfplaatsPostcode = default(string), string naamVoorvoegsel = default(string));
+        System.Threading.Tasks.Task<IngeschrevenPersoonHalCollectie> GetIngeschrevenPersonenAsync (string expand = default(string), string fields = default(string), List<string> burgerservicenummer = default(List<string>), DateTime? geboorteDatum = default(DateTime?), string geboortePlaats = default(string), GeslachtEnum? geslachtsaanduiding = default(GeslachtEnum?), bool? inclusiefOverledenPersonen = default(bool?), string naamGeslachtsnaam = default(string), string naamVoorvoegsel = default(string), string naamVoornamen = default(string), string verblijfplaatsGemeenteVanInschrijving = default(string), string verblijfplaatsHuisletter = default(string), int? verblijfplaatsHuisnummer = default(int?), string verblijfplaatsHuisnummertoevoeging = default(string), string verblijfplaatsNummeraanduidingIdentificatie = default(string), string verblijfplaatsStraat = default(string), string verblijfplaatsPostcode = default(string));
 
         /// <summary>
-        /// 
+        /// Vindt personen
         /// </summary>
         /// <remarks>
-        /// Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen:   1.  Persoon     -  geboorte__datum     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 2.  Persoon     -  verblijfplaats__gemeentevaninschrijving     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 3.  Persoon     -  burgerservicenummer   4.  Postcode     -  verblijfplaats__postcode     -  verblijfplaats__huisnummer   5.  NaamOpenbareRuimte     -  verblijfplaats__naamopenbareruimte (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) )      -  verblijfplaats__gemeentevaninschrijving     -  verblijfplaats__huisnummer   6.  Nummeraanduiding     -  verblijfplaats__identificatiecodenummeraanduiding  De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters, maar binnen iedere combinatie zijn de hier genoemde velden **verplicht**.   Default levert een zoekvraag alleen personen op die nog in leven zijn. Indien **_inclusiefoverledenpersonen_** de waarde **_true_** heeft worden [overleden personen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) opgenomen in het zoekresultaat.   Het maximale aantal zoekresultaten dat geretourneerd wordt is aan de provider om te bepalen. Als het resultaat van de de request dit aantal overtreft worden er geen resultaten geretourneerd en volgt er een foutmelding.    Er vind geen sortering plaats. 
+        /// Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met parameters uit de andere combinaties.   Default krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen&#x3D;true opgeeft.   Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/fields_extensie.feature)   Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature)   1.  Persoon     -  geboorte__datum     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)   2.  Persoon     -  verblijfplaats__gemeenteVanInschrijving     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)   3.  Persoon     -  burgerservicenummer   4.  Postcode     -  verblijfplaats__postcode     -  verblijfplaats__huisnummer   5.  Straat     -  verblijfplaats__straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) )     -  verblijfplaats__gemeenteVanInschrijving     -  verblijfplaats__huisnummer   6.  Adres     -  verblijfplaats__nummeraanduidingIdentificatie 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="expand">Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/expand.feature). (optional)</param>
         /// <param name="fields">Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma&#39;s gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature) (optional)</param>
-        /// <param name="burgerservicenummer">Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn. (optional)</param>
-        /// <param name="geboorteDatum">Datum waarop de INGESCHREVEN NATUURLIJK PERSOON geboren is. Er kan alleen gezocht worden met een volledige geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature) (optional)</param>
-        /// <param name="geboortePlaats">Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
-        /// <param name="geslachtsaanduiding">Een aanduiding die aangeeft dat de ingeschrevene een man of een vrouw is, of dat het geslacht (nog) onbekend is. (optional)</param>
-        /// <param name="inclusiefoverledenpersonen">Indien in het antwoord op de zoekvraag ook overleden personen moeten worden geretourneerd, dan dient de parameter *inclusiefOverledenPersonen* opgenomen te zijn met de waarde _True_. Indien de parameter *inclusiefOverledenPersonen* ontbreekt of de waarde _False_ heeft worden geen overleden personen opgenomen in het zoekresultaat. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) (optional)</param>
-        /// <param name="naamGeslachtsnaam">De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
-        /// <param name="naamVoornamen">De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
-        /// <param name="verblijfplaatsGemeentevaninschrijving">Een code die aangeeft in welke gemeente de PL zich bevindt of de gemeente waarnaar de PL is uitgeschreven of de gemeente waar de PL voor de eerste keer is opgenomen. De waarde (0000) is geen geldige inhoud voor de query-parameter. (optional)</param>
-        /// <param name="verblijfplaatsHuisletter">Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende toevoeging aan een huisnummer in de vorm van een alfanumeriek teken. (optional)</param>
-        /// <param name="verblijfplaatsHuisnummer">Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nummering. Alle natuurlijke getallen tussen 1 en 99999. (optional)</param>
-        /// <param name="verblijfplaatsHuisnummertoevoeging">Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter. a - z , A - Z , 0 – 9 (optional)</param>
-        /// <param name="verblijfplaatsIdentificatiecodenummeraanduiding">De unieke aanduiding van een NUMMERAANDUIDING. Combinatie van de viercijferige &#39;gemeentecode&#39; , de tweecijferige &#39;objecttypecode&#39; en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig &#39;objectvolgnummer&#39;. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding. (optional)</param>
-        /// <param name="verblijfplaatsNaamopenbareruimte">Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** Tekens gecodeerd volgens de UTF-8 standaard (optional)</param>
-        /// <param name="verblijfplaatsPostcode">De door PostNL vastgestelde code behorende bij een bepaalde combinatie van een naam van een woonplaats, naam van een openbare ruimte en een huisnummer (optional)</param>
-        /// <param name="naamVoorvoegsel">Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam. **De tabel bevat vorvoegsels met hoofdletters en met kleine letters. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer.  (optional)</param>
+        /// <param name="geboorteDatum">Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/parametervalidatie.feature)  (optional)</param>
+        /// <param name="geboortePlaats">Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="geslachtsaanduiding">Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.  (optional)</param>
+        /// <param name="inclusiefOverledenPersonen">Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/overleden_personen.feature)  (optional)</param>
+        /// <param name="naamGeslachtsnaam">De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="naamVoorvoegsel">Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="naamVoornamen">De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="verblijfplaatsGemeenteVanInschrijving">Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.  (optional)</param>
+        /// <param name="verblijfplaatsHuisletter">Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.  (optional)</param>
+        /// <param name="verblijfplaatsHuisnummer">Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.  (optional)</param>
+        /// <param name="verblijfplaatsHuisnummertoevoeging">Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.  (optional)</param>
+        /// <param name="verblijfplaatsNummeraanduidingIdentificatie">Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.  (optional)</param>
+        /// <param name="verblijfplaatsStraat">Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).  (optional)</param>
+        /// <param name="verblijfplaatsPostcode">De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.  (optional)</param>
         /// <returns>Task of ApiResponse (IngeschrevenPersoonHalCollectie)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IngeschrevenPersoonHalCollectie>> IngeschrevenNatuurlijkPersonenAsyncWithHttpInfo (string expand = default(string), string fields = default(string), List<string> burgerservicenummer = default(List<string>), DateTime? geboorteDatum = default(DateTime?), string geboortePlaats = default(string), GeslachtEnum? geslachtsaanduiding = default(GeslachtEnum?), bool? inclusiefoverledenpersonen = default(bool?), string naamGeslachtsnaam = default(string), string naamVoornamen = default(string), string verblijfplaatsGemeentevaninschrijving = default(string), string verblijfplaatsHuisletter = default(string), int? verblijfplaatsHuisnummer = default(int?), string verblijfplaatsHuisnummertoevoeging = default(string), string verblijfplaatsIdentificatiecodenummeraanduiding = default(string), string verblijfplaatsNaamopenbareruimte = default(string), string verblijfplaatsPostcode = default(string), string naamVoorvoegsel = default(string));
+        System.Threading.Tasks.Task<ApiResponse<IngeschrevenPersoonHalCollectie>> GetIngeschrevenPersonenAsyncWithHttpInfo (string expand = default(string), string fields = default(string), List<string> burgerservicenummer = default(List<string>), DateTime? geboorteDatum = default(DateTime?), string geboortePlaats = default(string), GeslachtEnum? geslachtsaanduiding = default(GeslachtEnum?), bool? inclusiefOverledenPersonen = default(bool?), string naamGeslachtsnaam = default(string), string naamVoorvoegsel = default(string), string naamVoornamen = default(string), string verblijfplaatsGemeenteVanInschrijving = default(string), string verblijfplaatsHuisletter = default(string), int? verblijfplaatsHuisnummer = default(int?), string verblijfplaatsHuisnummertoevoeging = default(string), string verblijfplaatsNummeraanduidingIdentificatie = default(string), string verblijfplaatsStraat = default(string), string verblijfplaatsPostcode = default(string));
         /// <summary>
-        /// 
+        /// Raadpleeg een persoon
         /// </summary>
         /// <remarks>
-        /// Het ophalen de actuele gegevens van een Ingeschreven Persoon, inclusief verblijfplaats, kinderen, partners en ouders. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen.
+        /// Raadpleeg een (overleden) persoon.  Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/fields_extensie.feature).  Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature). 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <param name="expand">Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/expand.feature). (optional)</param>
         /// <param name="fields">Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma&#39;s gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature) (optional)</param>
         /// <returns>Task of IngeschrevenPersoonHal</returns>
-        System.Threading.Tasks.Task<IngeschrevenPersoonHal> IngeschrevenNatuurlijkPersoonAsync (string burgerservicenummer, string expand = default(string), string fields = default(string));
+        System.Threading.Tasks.Task<IngeschrevenPersoonHal> GetIngeschrevenPersoonAsync (string burgerservicenummer, string expand = default(string), string fields = default(string));
 
         /// <summary>
-        /// 
+        /// Raadpleeg een persoon
         /// </summary>
         /// <remarks>
-        /// Het ophalen de actuele gegevens van een Ingeschreven Persoon, inclusief verblijfplaats, kinderen, partners en ouders. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen.
+        /// Raadpleeg een (overleden) persoon.  Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/fields_extensie.feature).  Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature). 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <param name="expand">Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/expand.feature). (optional)</param>
         /// <param name="fields">Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma&#39;s gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature) (optional)</param>
         /// <returns>Task of ApiResponse (IngeschrevenPersoonHal)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IngeschrevenPersoonHal>> IngeschrevenNatuurlijkPersoonAsyncWithHttpInfo (string burgerservicenummer, string expand = default(string), string fields = default(string));
+        System.Threading.Tasks.Task<ApiResponse<IngeschrevenPersoonHal>> GetIngeschrevenPersoonAsyncWithHttpInfo (string burgerservicenummer, string expand = default(string), string fields = default(string));
         /// <summary>
-        /// 
+        /// Raadpleeg een kind van een persoon
         /// </summary>
         /// <remarks>
-        /// Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats.
+        /// Raadpleeg een kind van een persoon 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="id">De identificatie van het kind. </param>
+        /// <returns>Task of KindHalBasis</returns>
+        System.Threading.Tasks.Task<KindHalBasis> GetKindAsync (string burgerservicenummer, string id);
+
+        /// <summary>
+        /// Raadpleeg een kind van een persoon
+        /// </summary>
+        /// <remarks>
+        /// Raadpleeg een kind van een persoon 
+        /// </remarks>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="id">De identificatie van het kind. </param>
+        /// <returns>Task of ApiResponse (KindHalBasis)</returns>
+        System.Threading.Tasks.Task<ApiResponse<KindHalBasis>> GetKindAsyncWithHttpInfo (string burgerservicenummer, string id);
+        /// <summary>
+        /// Levert de kinderen van een persoon
+        /// </summary>
+        /// <remarks>
+        /// Levert de kinderen van een persoon 
+        /// </remarks>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <returns>Task of KindHalCollectie</returns>
-        System.Threading.Tasks.Task<KindHalCollectie> IngeschrevenpersonenBurgerservicenummerkinderenAsync (string burgerservicenummer);
+        System.Threading.Tasks.Task<KindHalCollectie> GetKinderenAsync (string burgerservicenummer);
 
         /// <summary>
-        /// 
+        /// Levert de kinderen van een persoon
         /// </summary>
         /// <remarks>
-        /// Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats.
+        /// Levert de kinderen van een persoon 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <returns>Task of ApiResponse (KindHalCollectie)</returns>
-        System.Threading.Tasks.Task<ApiResponse<KindHalCollectie>> IngeschrevenpersonenBurgerservicenummerkinderenAsyncWithHttpInfo (string burgerservicenummer);
+        System.Threading.Tasks.Task<ApiResponse<KindHalCollectie>> GetKinderenAsyncWithHttpInfo (string burgerservicenummer);
         /// <summary>
-        /// 
+        /// Raadpleeg een ouder van een persoon
         /// </summary>
         /// <remarks>
-        /// Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.
+        /// Raadpleeg een ouder van een persoon 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
-        /// <param name="id">De identificatie van het kind.</param>
-        /// <returns>Task of KindHal</returns>
-        System.Threading.Tasks.Task<KindHal> IngeschrevenpersonenBurgerservicenummerkinderenIdAsync (string burgerservicenummer, string id);
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="id">De identificatie van de ouder. </param>
+        /// <returns>Task of OuderHalBasis</returns>
+        System.Threading.Tasks.Task<OuderHalBasis> GetOuderAsync (string burgerservicenummer, string id);
 
         /// <summary>
-        /// 
+        /// Raadpleeg een ouder van een persoon
         /// </summary>
         /// <remarks>
-        /// Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.
+        /// Raadpleeg een ouder van een persoon 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
-        /// <param name="id">De identificatie van het kind.</param>
-        /// <returns>Task of ApiResponse (KindHal)</returns>
-        System.Threading.Tasks.Task<ApiResponse<KindHal>> IngeschrevenpersonenBurgerservicenummerkinderenIdAsyncWithHttpInfo (string burgerservicenummer, string id);
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="id">De identificatie van de ouder. </param>
+        /// <returns>Task of ApiResponse (OuderHalBasis)</returns>
+        System.Threading.Tasks.Task<ApiResponse<OuderHalBasis>> GetOuderAsyncWithHttpInfo (string burgerservicenummer, string id);
         /// <summary>
-        /// 
+        /// Levert de ouders van een persoon
         /// </summary>
         /// <remarks>
-        /// Het ophalen de ouder-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats.
+        /// Levert de ouders van een persoon 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <returns>Task of OuderHalCollectie</returns>
-        System.Threading.Tasks.Task<OuderHalCollectie> IngeschrevenpersonenBurgerservicenummeroudersAsync (string burgerservicenummer);
+        System.Threading.Tasks.Task<OuderHalCollectie> GetOudersAsync (string burgerservicenummer);
 
         /// <summary>
-        /// 
+        /// Levert de ouders van een persoon
         /// </summary>
         /// <remarks>
-        /// Het ophalen de ouder-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats.
+        /// Levert de ouders van een persoon 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <returns>Task of ApiResponse (OuderHalCollectie)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OuderHalCollectie>> IngeschrevenpersonenBurgerservicenummeroudersAsyncWithHttpInfo (string burgerservicenummer);
+        System.Threading.Tasks.Task<ApiResponse<OuderHalCollectie>> GetOudersAsyncWithHttpInfo (string burgerservicenummer);
         /// <summary>
-        /// 
+        /// Raadpleeg de partner van een persoon
         /// </summary>
         /// <remarks>
-        /// Het ophalen de ouder-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen..
+        /// Raadpleeg de partner van een persoon 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
-        /// <param name="id">De identificatie van de ouder.</param>
-        /// <returns>Task of OuderHal</returns>
-        System.Threading.Tasks.Task<OuderHal> IngeschrevenpersonenBurgerservicenummeroudersIdAsync (string burgerservicenummer, string id);
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="id">De identificatie van de partner. </param>
+        /// <returns>Task of PartnerHalBasis</returns>
+        System.Threading.Tasks.Task<PartnerHalBasis> GetPartnerAsync (string burgerservicenummer, string id);
 
         /// <summary>
-        /// 
+        /// Raadpleeg de partner van een persoon
         /// </summary>
         /// <remarks>
-        /// Het ophalen de ouder-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen..
+        /// Raadpleeg de partner van een persoon 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
-        /// <param name="id">De identificatie van de ouder.</param>
-        /// <returns>Task of ApiResponse (OuderHal)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OuderHal>> IngeschrevenpersonenBurgerservicenummeroudersIdAsyncWithHttpInfo (string burgerservicenummer, string id);
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="id">De identificatie van de partner. </param>
+        /// <returns>Task of ApiResponse (PartnerHalBasis)</returns>
+        System.Threading.Tasks.Task<ApiResponse<PartnerHalBasis>> GetPartnerAsyncWithHttpInfo (string burgerservicenummer, string id);
         /// <summary>
-        /// 
+        /// Levert de actuele partners van een persoon
         /// </summary>
         /// <remarks>
-        /// Het ophalen de actuele partner-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet opgenomen in het antwoord. De gevonden huwelijken/partnerschappen worden ongesorteerd teruggegeven.
+        /// Levert de actuele partners van een persoon. Partners uit beëindigde huwelijken of partnerschappen worden niet geretourneerd 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <returns>Task of PartnerHalCollectie</returns>
-        System.Threading.Tasks.Task<PartnerHalCollectie> IngeschrevenpersonenBurgerservicenummerpartnersAsync (string burgerservicenummer);
+        System.Threading.Tasks.Task<PartnerHalCollectie> GetPartnersAsync (string burgerservicenummer);
 
         /// <summary>
-        /// 
+        /// Levert de actuele partners van een persoon
         /// </summary>
         /// <remarks>
-        /// Het ophalen de actuele partner-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet opgenomen in het antwoord. De gevonden huwelijken/partnerschappen worden ongesorteerd teruggegeven.
+        /// Levert de actuele partners van een persoon. Partners uit beëindigde huwelijken of partnerschappen worden niet geretourneerd 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <returns>Task of ApiResponse (PartnerHalCollectie)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PartnerHalCollectie>> IngeschrevenpersonenBurgerservicenummerpartnersAsyncWithHttpInfo (string burgerservicenummer);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// Het ophalen de partner-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.
-        /// </remarks>
-        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
-        /// <param name="id">De identificatie van de partner.</param>
-        /// <returns>Task of PartnerHal</returns>
-        System.Threading.Tasks.Task<PartnerHal> IngeschrevenpersonenBurgerservicenummerpartnersIdAsync (string burgerservicenummer, string id);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// Het ophalen de partner-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.
-        /// </remarks>
-        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
-        /// <param name="id">De identificatie van de partner.</param>
-        /// <returns>Task of ApiResponse (PartnerHal)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PartnerHal>> IngeschrevenpersonenBurgerservicenummerpartnersIdAsyncWithHttpInfo (string burgerservicenummer, string id);
+        System.Threading.Tasks.Task<ApiResponse<PartnerHalCollectie>> GetPartnersAsyncWithHttpInfo (string burgerservicenummer);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class IngeschrevenpersonenApi : IIngeschrevenpersonenApi
+    public partial class IngeschrevenPersonenApi : IIngeschrevenPersonenApi
     {
         private Org.OpenAPITools.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="IngeschrevenpersonenApi"/> class.
+        /// Initializes a new instance of the <see cref="IngeschrevenPersonenApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public IngeschrevenpersonenApi(String basePath)
+        public IngeschrevenPersonenApi(String basePath)
         {
             this.Configuration = new Org.OpenAPITools.Client.Configuration { BasePath = basePath };
 
@@ -468,10 +468,10 @@ namespace Org.OpenAPITools.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="IngeschrevenpersonenApi"/> class
+        /// Initializes a new instance of the <see cref="IngeschrevenPersonenApi"/> class
         /// </summary>
         /// <returns></returns>
-        public IngeschrevenpersonenApi()
+        public IngeschrevenPersonenApi()
         {
             this.Configuration = Org.OpenAPITools.Client.Configuration.Default;
 
@@ -479,12 +479,12 @@ namespace Org.OpenAPITools.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="IngeschrevenpersonenApi"/> class
+        /// Initializes a new instance of the <see cref="IngeschrevenPersonenApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public IngeschrevenpersonenApi(Org.OpenAPITools.Client.Configuration configuration = null)
+        public IngeschrevenPersonenApi(Org.OpenAPITools.Client.Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Org.OpenAPITools.Client.Configuration.Default;
@@ -558,56 +558,56 @@ namespace Org.OpenAPITools.Api
         }
 
         /// <summary>
-        ///  Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen:   1.  Persoon     -  geboorte__datum     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 2.  Persoon     -  verblijfplaats__gemeentevaninschrijving     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 3.  Persoon     -  burgerservicenummer   4.  Postcode     -  verblijfplaats__postcode     -  verblijfplaats__huisnummer   5.  NaamOpenbareRuimte     -  verblijfplaats__naamopenbareruimte (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) )      -  verblijfplaats__gemeentevaninschrijving     -  verblijfplaats__huisnummer   6.  Nummeraanduiding     -  verblijfplaats__identificatiecodenummeraanduiding  De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters, maar binnen iedere combinatie zijn de hier genoemde velden **verplicht**.   Default levert een zoekvraag alleen personen op die nog in leven zijn. Indien **_inclusiefoverledenpersonen_** de waarde **_true_** heeft worden [overleden personen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) opgenomen in het zoekresultaat.   Het maximale aantal zoekresultaten dat geretourneerd wordt is aan de provider om te bepalen. Als het resultaat van de de request dit aantal overtreft worden er geen resultaten geretourneerd en volgt er een foutmelding.    Er vind geen sortering plaats. 
+        /// Vindt personen Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met parameters uit de andere combinaties.   Default krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen&#x3D;true opgeeft.   Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/fields_extensie.feature)   Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature)   1.  Persoon     -  geboorte__datum     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)   2.  Persoon     -  verblijfplaats__gemeenteVanInschrijving     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)   3.  Persoon     -  burgerservicenummer   4.  Postcode     -  verblijfplaats__postcode     -  verblijfplaats__huisnummer   5.  Straat     -  verblijfplaats__straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) )     -  verblijfplaats__gemeenteVanInschrijving     -  verblijfplaats__huisnummer   6.  Adres     -  verblijfplaats__nummeraanduidingIdentificatie 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="expand">Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/expand.feature). (optional)</param>
         /// <param name="fields">Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma&#39;s gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature) (optional)</param>
-        /// <param name="burgerservicenummer">Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn. (optional)</param>
-        /// <param name="geboorteDatum">Datum waarop de INGESCHREVEN NATUURLIJK PERSOON geboren is. Er kan alleen gezocht worden met een volledige geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature) (optional)</param>
-        /// <param name="geboortePlaats">Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
-        /// <param name="geslachtsaanduiding">Een aanduiding die aangeeft dat de ingeschrevene een man of een vrouw is, of dat het geslacht (nog) onbekend is. (optional)</param>
-        /// <param name="inclusiefoverledenpersonen">Indien in het antwoord op de zoekvraag ook overleden personen moeten worden geretourneerd, dan dient de parameter *inclusiefOverledenPersonen* opgenomen te zijn met de waarde _True_. Indien de parameter *inclusiefOverledenPersonen* ontbreekt of de waarde _False_ heeft worden geen overleden personen opgenomen in het zoekresultaat. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) (optional)</param>
-        /// <param name="naamGeslachtsnaam">De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
-        /// <param name="naamVoornamen">De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
-        /// <param name="verblijfplaatsGemeentevaninschrijving">Een code die aangeeft in welke gemeente de PL zich bevindt of de gemeente waarnaar de PL is uitgeschreven of de gemeente waar de PL voor de eerste keer is opgenomen. De waarde (0000) is geen geldige inhoud voor de query-parameter. (optional)</param>
-        /// <param name="verblijfplaatsHuisletter">Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende toevoeging aan een huisnummer in de vorm van een alfanumeriek teken. (optional)</param>
-        /// <param name="verblijfplaatsHuisnummer">Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nummering. Alle natuurlijke getallen tussen 1 en 99999. (optional)</param>
-        /// <param name="verblijfplaatsHuisnummertoevoeging">Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter. a - z , A - Z , 0 – 9 (optional)</param>
-        /// <param name="verblijfplaatsIdentificatiecodenummeraanduiding">De unieke aanduiding van een NUMMERAANDUIDING. Combinatie van de viercijferige &#39;gemeentecode&#39; , de tweecijferige &#39;objecttypecode&#39; en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig &#39;objectvolgnummer&#39;. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding. (optional)</param>
-        /// <param name="verblijfplaatsNaamopenbareruimte">Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** Tekens gecodeerd volgens de UTF-8 standaard (optional)</param>
-        /// <param name="verblijfplaatsPostcode">De door PostNL vastgestelde code behorende bij een bepaalde combinatie van een naam van een woonplaats, naam van een openbare ruimte en een huisnummer (optional)</param>
-        /// <param name="naamVoorvoegsel">Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam. **De tabel bevat vorvoegsels met hoofdletters en met kleine letters. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer.  (optional)</param>
+        /// <param name="geboorteDatum">Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/parametervalidatie.feature)  (optional)</param>
+        /// <param name="geboortePlaats">Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="geslachtsaanduiding">Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.  (optional)</param>
+        /// <param name="inclusiefOverledenPersonen">Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/overleden_personen.feature)  (optional)</param>
+        /// <param name="naamGeslachtsnaam">De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="naamVoorvoegsel">Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="naamVoornamen">De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="verblijfplaatsGemeenteVanInschrijving">Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.  (optional)</param>
+        /// <param name="verblijfplaatsHuisletter">Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.  (optional)</param>
+        /// <param name="verblijfplaatsHuisnummer">Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.  (optional)</param>
+        /// <param name="verblijfplaatsHuisnummertoevoeging">Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.  (optional)</param>
+        /// <param name="verblijfplaatsNummeraanduidingIdentificatie">Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.  (optional)</param>
+        /// <param name="verblijfplaatsStraat">Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).  (optional)</param>
+        /// <param name="verblijfplaatsPostcode">De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.  (optional)</param>
         /// <returns>IngeschrevenPersoonHalCollectie</returns>
-        public IngeschrevenPersoonHalCollectie IngeschrevenNatuurlijkPersonen (string expand = default(string), string fields = default(string), List<string> burgerservicenummer = default(List<string>), DateTime? geboorteDatum = default(DateTime?), string geboortePlaats = default(string), GeslachtEnum? geslachtsaanduiding = default(GeslachtEnum?), bool? inclusiefoverledenpersonen = default(bool?), string naamGeslachtsnaam = default(string), string naamVoornamen = default(string), string verblijfplaatsGemeentevaninschrijving = default(string), string verblijfplaatsHuisletter = default(string), int? verblijfplaatsHuisnummer = default(int?), string verblijfplaatsHuisnummertoevoeging = default(string), string verblijfplaatsIdentificatiecodenummeraanduiding = default(string), string verblijfplaatsNaamopenbareruimte = default(string), string verblijfplaatsPostcode = default(string), string naamVoorvoegsel = default(string))
+        public IngeschrevenPersoonHalCollectie GetIngeschrevenPersonen (string expand = default(string), string fields = default(string), List<string> burgerservicenummer = default(List<string>), DateTime? geboorteDatum = default(DateTime?), string geboortePlaats = default(string), GeslachtEnum? geslachtsaanduiding = default(GeslachtEnum?), bool? inclusiefOverledenPersonen = default(bool?), string naamGeslachtsnaam = default(string), string naamVoorvoegsel = default(string), string naamVoornamen = default(string), string verblijfplaatsGemeenteVanInschrijving = default(string), string verblijfplaatsHuisletter = default(string), int? verblijfplaatsHuisnummer = default(int?), string verblijfplaatsHuisnummertoevoeging = default(string), string verblijfplaatsNummeraanduidingIdentificatie = default(string), string verblijfplaatsStraat = default(string), string verblijfplaatsPostcode = default(string))
         {
-             ApiResponse<IngeschrevenPersoonHalCollectie> localVarResponse = IngeschrevenNatuurlijkPersonenWithHttpInfo(expand, fields, burgerservicenummer, geboorteDatum, geboortePlaats, geslachtsaanduiding, inclusiefoverledenpersonen, naamGeslachtsnaam, naamVoornamen, verblijfplaatsGemeentevaninschrijving, verblijfplaatsHuisletter, verblijfplaatsHuisnummer, verblijfplaatsHuisnummertoevoeging, verblijfplaatsIdentificatiecodenummeraanduiding, verblijfplaatsNaamopenbareruimte, verblijfplaatsPostcode, naamVoorvoegsel);
+             ApiResponse<IngeschrevenPersoonHalCollectie> localVarResponse = GetIngeschrevenPersonenWithHttpInfo(expand, fields, burgerservicenummer, geboorteDatum, geboortePlaats, geslachtsaanduiding, inclusiefOverledenPersonen, naamGeslachtsnaam, naamVoorvoegsel, naamVoornamen, verblijfplaatsGemeenteVanInschrijving, verblijfplaatsHuisletter, verblijfplaatsHuisnummer, verblijfplaatsHuisnummertoevoeging, verblijfplaatsNummeraanduidingIdentificatie, verblijfplaatsStraat, verblijfplaatsPostcode);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        ///  Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen:   1.  Persoon     -  geboorte__datum     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 2.  Persoon     -  verblijfplaats__gemeentevaninschrijving     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 3.  Persoon     -  burgerservicenummer   4.  Postcode     -  verblijfplaats__postcode     -  verblijfplaats__huisnummer   5.  NaamOpenbareRuimte     -  verblijfplaats__naamopenbareruimte (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) )      -  verblijfplaats__gemeentevaninschrijving     -  verblijfplaats__huisnummer   6.  Nummeraanduiding     -  verblijfplaats__identificatiecodenummeraanduiding  De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters, maar binnen iedere combinatie zijn de hier genoemde velden **verplicht**.   Default levert een zoekvraag alleen personen op die nog in leven zijn. Indien **_inclusiefoverledenpersonen_** de waarde **_true_** heeft worden [overleden personen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) opgenomen in het zoekresultaat.   Het maximale aantal zoekresultaten dat geretourneerd wordt is aan de provider om te bepalen. Als het resultaat van de de request dit aantal overtreft worden er geen resultaten geretourneerd en volgt er een foutmelding.    Er vind geen sortering plaats. 
+        /// Vindt personen Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met parameters uit de andere combinaties.   Default krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen&#x3D;true opgeeft.   Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/fields_extensie.feature)   Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature)   1.  Persoon     -  geboorte__datum     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)   2.  Persoon     -  verblijfplaats__gemeenteVanInschrijving     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)   3.  Persoon     -  burgerservicenummer   4.  Postcode     -  verblijfplaats__postcode     -  verblijfplaats__huisnummer   5.  Straat     -  verblijfplaats__straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) )     -  verblijfplaats__gemeenteVanInschrijving     -  verblijfplaats__huisnummer   6.  Adres     -  verblijfplaats__nummeraanduidingIdentificatie 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="expand">Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/expand.feature). (optional)</param>
         /// <param name="fields">Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma&#39;s gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature) (optional)</param>
-        /// <param name="burgerservicenummer">Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn. (optional)</param>
-        /// <param name="geboorteDatum">Datum waarop de INGESCHREVEN NATUURLIJK PERSOON geboren is. Er kan alleen gezocht worden met een volledige geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature) (optional)</param>
-        /// <param name="geboortePlaats">Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
-        /// <param name="geslachtsaanduiding">Een aanduiding die aangeeft dat de ingeschrevene een man of een vrouw is, of dat het geslacht (nog) onbekend is. (optional)</param>
-        /// <param name="inclusiefoverledenpersonen">Indien in het antwoord op de zoekvraag ook overleden personen moeten worden geretourneerd, dan dient de parameter *inclusiefOverledenPersonen* opgenomen te zijn met de waarde _True_. Indien de parameter *inclusiefOverledenPersonen* ontbreekt of de waarde _False_ heeft worden geen overleden personen opgenomen in het zoekresultaat. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) (optional)</param>
-        /// <param name="naamGeslachtsnaam">De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
-        /// <param name="naamVoornamen">De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
-        /// <param name="verblijfplaatsGemeentevaninschrijving">Een code die aangeeft in welke gemeente de PL zich bevindt of de gemeente waarnaar de PL is uitgeschreven of de gemeente waar de PL voor de eerste keer is opgenomen. De waarde (0000) is geen geldige inhoud voor de query-parameter. (optional)</param>
-        /// <param name="verblijfplaatsHuisletter">Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende toevoeging aan een huisnummer in de vorm van een alfanumeriek teken. (optional)</param>
-        /// <param name="verblijfplaatsHuisnummer">Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nummering. Alle natuurlijke getallen tussen 1 en 99999. (optional)</param>
-        /// <param name="verblijfplaatsHuisnummertoevoeging">Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter. a - z , A - Z , 0 – 9 (optional)</param>
-        /// <param name="verblijfplaatsIdentificatiecodenummeraanduiding">De unieke aanduiding van een NUMMERAANDUIDING. Combinatie van de viercijferige &#39;gemeentecode&#39; , de tweecijferige &#39;objecttypecode&#39; en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig &#39;objectvolgnummer&#39;. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding. (optional)</param>
-        /// <param name="verblijfplaatsNaamopenbareruimte">Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** Tekens gecodeerd volgens de UTF-8 standaard (optional)</param>
-        /// <param name="verblijfplaatsPostcode">De door PostNL vastgestelde code behorende bij een bepaalde combinatie van een naam van een woonplaats, naam van een openbare ruimte en een huisnummer (optional)</param>
-        /// <param name="naamVoorvoegsel">Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam. **De tabel bevat vorvoegsels met hoofdletters en met kleine letters. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer.  (optional)</param>
+        /// <param name="geboorteDatum">Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/parametervalidatie.feature)  (optional)</param>
+        /// <param name="geboortePlaats">Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="geslachtsaanduiding">Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.  (optional)</param>
+        /// <param name="inclusiefOverledenPersonen">Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/overleden_personen.feature)  (optional)</param>
+        /// <param name="naamGeslachtsnaam">De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="naamVoorvoegsel">Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="naamVoornamen">De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="verblijfplaatsGemeenteVanInschrijving">Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.  (optional)</param>
+        /// <param name="verblijfplaatsHuisletter">Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.  (optional)</param>
+        /// <param name="verblijfplaatsHuisnummer">Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.  (optional)</param>
+        /// <param name="verblijfplaatsHuisnummertoevoeging">Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.  (optional)</param>
+        /// <param name="verblijfplaatsNummeraanduidingIdentificatie">Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.  (optional)</param>
+        /// <param name="verblijfplaatsStraat">Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).  (optional)</param>
+        /// <param name="verblijfplaatsPostcode">De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.  (optional)</param>
         /// <returns>ApiResponse of IngeschrevenPersoonHalCollectie</returns>
-        public ApiResponse<IngeschrevenPersoonHalCollectie> IngeschrevenNatuurlijkPersonenWithHttpInfo (string expand = default(string), string fields = default(string), List<string> burgerservicenummer = default(List<string>), DateTime? geboorteDatum = default(DateTime?), string geboortePlaats = default(string), GeslachtEnum? geslachtsaanduiding = default(GeslachtEnum?), bool? inclusiefoverledenpersonen = default(bool?), string naamGeslachtsnaam = default(string), string naamVoornamen = default(string), string verblijfplaatsGemeentevaninschrijving = default(string), string verblijfplaatsHuisletter = default(string), int? verblijfplaatsHuisnummer = default(int?), string verblijfplaatsHuisnummertoevoeging = default(string), string verblijfplaatsIdentificatiecodenummeraanduiding = default(string), string verblijfplaatsNaamopenbareruimte = default(string), string verblijfplaatsPostcode = default(string), string naamVoorvoegsel = default(string))
+        public ApiResponse<IngeschrevenPersoonHalCollectie> GetIngeschrevenPersonenWithHttpInfo (string expand = default(string), string fields = default(string), List<string> burgerservicenummer = default(List<string>), DateTime? geboorteDatum = default(DateTime?), string geboortePlaats = default(string), GeslachtEnum? geslachtsaanduiding = default(GeslachtEnum?), bool? inclusiefOverledenPersonen = default(bool?), string naamGeslachtsnaam = default(string), string naamVoorvoegsel = default(string), string naamVoornamen = default(string), string verblijfplaatsGemeenteVanInschrijving = default(string), string verblijfplaatsHuisletter = default(string), int? verblijfplaatsHuisnummer = default(int?), string verblijfplaatsHuisnummertoevoeging = default(string), string verblijfplaatsNummeraanduidingIdentificatie = default(string), string verblijfplaatsStraat = default(string), string verblijfplaatsPostcode = default(string))
         {
 
             var localVarPath = "/ingeschrevenpersonen";
@@ -638,17 +638,17 @@ namespace Org.OpenAPITools.Api
             if (geboorteDatum != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "geboorte__datum", geboorteDatum)); // query parameter
             if (geboortePlaats != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "geboorte__plaats", geboortePlaats)); // query parameter
             if (geslachtsaanduiding != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "geslachtsaanduiding", geslachtsaanduiding)); // query parameter
-            if (inclusiefoverledenpersonen != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "inclusiefoverledenpersonen", inclusiefoverledenpersonen)); // query parameter
+            if (inclusiefOverledenPersonen != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "inclusiefOverledenPersonen", inclusiefOverledenPersonen)); // query parameter
             if (naamGeslachtsnaam != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "naam__geslachtsnaam", naamGeslachtsnaam)); // query parameter
+            if (naamVoorvoegsel != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "naam__voorvoegsel", naamVoorvoegsel)); // query parameter
             if (naamVoornamen != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "naam__voornamen", naamVoornamen)); // query parameter
-            if (verblijfplaatsGemeentevaninschrijving != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "verblijfplaats__gemeentevaninschrijving", verblijfplaatsGemeentevaninschrijving)); // query parameter
+            if (verblijfplaatsGemeenteVanInschrijving != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "verblijfplaats__gemeenteVanInschrijving", verblijfplaatsGemeenteVanInschrijving)); // query parameter
             if (verblijfplaatsHuisletter != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "verblijfplaats__huisletter", verblijfplaatsHuisletter)); // query parameter
             if (verblijfplaatsHuisnummer != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "verblijfplaats__huisnummer", verblijfplaatsHuisnummer)); // query parameter
             if (verblijfplaatsHuisnummertoevoeging != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "verblijfplaats__huisnummertoevoeging", verblijfplaatsHuisnummertoevoeging)); // query parameter
-            if (verblijfplaatsIdentificatiecodenummeraanduiding != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "verblijfplaats__identificatiecodenummeraanduiding", verblijfplaatsIdentificatiecodenummeraanduiding)); // query parameter
-            if (verblijfplaatsNaamopenbareruimte != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "verblijfplaats__naamopenbareruimte", verblijfplaatsNaamopenbareruimte)); // query parameter
+            if (verblijfplaatsNummeraanduidingIdentificatie != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "verblijfplaats__nummeraanduidingIdentificatie", verblijfplaatsNummeraanduidingIdentificatie)); // query parameter
+            if (verblijfplaatsStraat != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "verblijfplaats__straat", verblijfplaatsStraat)); // query parameter
             if (verblijfplaatsPostcode != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "verblijfplaats__postcode", verblijfplaatsPostcode)); // query parameter
-            if (naamVoorvoegsel != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "naam__voorvoegsel", naamVoorvoegsel)); // query parameter
 
 
             // make the HTTP request
@@ -660,7 +660,7 @@ namespace Org.OpenAPITools.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("IngeschrevenNatuurlijkPersonen", localVarResponse);
+                Exception exception = ExceptionFactory("GetIngeschrevenPersonen", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -670,57 +670,57 @@ namespace Org.OpenAPITools.Api
         }
 
         /// <summary>
-        ///  Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen:   1.  Persoon     -  geboorte__datum     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 2.  Persoon     -  verblijfplaats__gemeentevaninschrijving     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 3.  Persoon     -  burgerservicenummer   4.  Postcode     -  verblijfplaats__postcode     -  verblijfplaats__huisnummer   5.  NaamOpenbareRuimte     -  verblijfplaats__naamopenbareruimte (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) )      -  verblijfplaats__gemeentevaninschrijving     -  verblijfplaats__huisnummer   6.  Nummeraanduiding     -  verblijfplaats__identificatiecodenummeraanduiding  De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters, maar binnen iedere combinatie zijn de hier genoemde velden **verplicht**.   Default levert een zoekvraag alleen personen op die nog in leven zijn. Indien **_inclusiefoverledenpersonen_** de waarde **_true_** heeft worden [overleden personen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) opgenomen in het zoekresultaat.   Het maximale aantal zoekresultaten dat geretourneerd wordt is aan de provider om te bepalen. Als het resultaat van de de request dit aantal overtreft worden er geen resultaten geretourneerd en volgt er een foutmelding.    Er vind geen sortering plaats. 
+        /// Vindt personen Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met parameters uit de andere combinaties.   Default krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen&#x3D;true opgeeft.   Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/fields_extensie.feature)   Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature)   1.  Persoon     -  geboorte__datum     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)   2.  Persoon     -  verblijfplaats__gemeenteVanInschrijving     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)   3.  Persoon     -  burgerservicenummer   4.  Postcode     -  verblijfplaats__postcode     -  verblijfplaats__huisnummer   5.  Straat     -  verblijfplaats__straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) )     -  verblijfplaats__gemeenteVanInschrijving     -  verblijfplaats__huisnummer   6.  Adres     -  verblijfplaats__nummeraanduidingIdentificatie 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="expand">Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/expand.feature). (optional)</param>
         /// <param name="fields">Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma&#39;s gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature) (optional)</param>
-        /// <param name="burgerservicenummer">Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn. (optional)</param>
-        /// <param name="geboorteDatum">Datum waarop de INGESCHREVEN NATUURLIJK PERSOON geboren is. Er kan alleen gezocht worden met een volledige geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature) (optional)</param>
-        /// <param name="geboortePlaats">Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
-        /// <param name="geslachtsaanduiding">Een aanduiding die aangeeft dat de ingeschrevene een man of een vrouw is, of dat het geslacht (nog) onbekend is. (optional)</param>
-        /// <param name="inclusiefoverledenpersonen">Indien in het antwoord op de zoekvraag ook overleden personen moeten worden geretourneerd, dan dient de parameter *inclusiefOverledenPersonen* opgenomen te zijn met de waarde _True_. Indien de parameter *inclusiefOverledenPersonen* ontbreekt of de waarde _False_ heeft worden geen overleden personen opgenomen in het zoekresultaat. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) (optional)</param>
-        /// <param name="naamGeslachtsnaam">De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
-        /// <param name="naamVoornamen">De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
-        /// <param name="verblijfplaatsGemeentevaninschrijving">Een code die aangeeft in welke gemeente de PL zich bevindt of de gemeente waarnaar de PL is uitgeschreven of de gemeente waar de PL voor de eerste keer is opgenomen. De waarde (0000) is geen geldige inhoud voor de query-parameter. (optional)</param>
-        /// <param name="verblijfplaatsHuisletter">Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende toevoeging aan een huisnummer in de vorm van een alfanumeriek teken. (optional)</param>
-        /// <param name="verblijfplaatsHuisnummer">Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nummering. Alle natuurlijke getallen tussen 1 en 99999. (optional)</param>
-        /// <param name="verblijfplaatsHuisnummertoevoeging">Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter. a - z , A - Z , 0 – 9 (optional)</param>
-        /// <param name="verblijfplaatsIdentificatiecodenummeraanduiding">De unieke aanduiding van een NUMMERAANDUIDING. Combinatie van de viercijferige &#39;gemeentecode&#39; , de tweecijferige &#39;objecttypecode&#39; en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig &#39;objectvolgnummer&#39;. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding. (optional)</param>
-        /// <param name="verblijfplaatsNaamopenbareruimte">Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** Tekens gecodeerd volgens de UTF-8 standaard (optional)</param>
-        /// <param name="verblijfplaatsPostcode">De door PostNL vastgestelde code behorende bij een bepaalde combinatie van een naam van een woonplaats, naam van een openbare ruimte en een huisnummer (optional)</param>
-        /// <param name="naamVoorvoegsel">Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam. **De tabel bevat vorvoegsels met hoofdletters en met kleine letters. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer.  (optional)</param>
+        /// <param name="geboorteDatum">Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/parametervalidatie.feature)  (optional)</param>
+        /// <param name="geboortePlaats">Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="geslachtsaanduiding">Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.  (optional)</param>
+        /// <param name="inclusiefOverledenPersonen">Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/overleden_personen.feature)  (optional)</param>
+        /// <param name="naamGeslachtsnaam">De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="naamVoorvoegsel">Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="naamVoornamen">De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="verblijfplaatsGemeenteVanInschrijving">Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.  (optional)</param>
+        /// <param name="verblijfplaatsHuisletter">Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.  (optional)</param>
+        /// <param name="verblijfplaatsHuisnummer">Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.  (optional)</param>
+        /// <param name="verblijfplaatsHuisnummertoevoeging">Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.  (optional)</param>
+        /// <param name="verblijfplaatsNummeraanduidingIdentificatie">Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.  (optional)</param>
+        /// <param name="verblijfplaatsStraat">Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).  (optional)</param>
+        /// <param name="verblijfplaatsPostcode">De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.  (optional)</param>
         /// <returns>Task of IngeschrevenPersoonHalCollectie</returns>
-        public async System.Threading.Tasks.Task<IngeschrevenPersoonHalCollectie> IngeschrevenNatuurlijkPersonenAsync (string expand = default(string), string fields = default(string), List<string> burgerservicenummer = default(List<string>), DateTime? geboorteDatum = default(DateTime?), string geboortePlaats = default(string), GeslachtEnum? geslachtsaanduiding = default(GeslachtEnum?), bool? inclusiefoverledenpersonen = default(bool?), string naamGeslachtsnaam = default(string), string naamVoornamen = default(string), string verblijfplaatsGemeentevaninschrijving = default(string), string verblijfplaatsHuisletter = default(string), int? verblijfplaatsHuisnummer = default(int?), string verblijfplaatsHuisnummertoevoeging = default(string), string verblijfplaatsIdentificatiecodenummeraanduiding = default(string), string verblijfplaatsNaamopenbareruimte = default(string), string verblijfplaatsPostcode = default(string), string naamVoorvoegsel = default(string))
+        public async System.Threading.Tasks.Task<IngeschrevenPersoonHalCollectie> GetIngeschrevenPersonenAsync (string expand = default(string), string fields = default(string), List<string> burgerservicenummer = default(List<string>), DateTime? geboorteDatum = default(DateTime?), string geboortePlaats = default(string), GeslachtEnum? geslachtsaanduiding = default(GeslachtEnum?), bool? inclusiefOverledenPersonen = default(bool?), string naamGeslachtsnaam = default(string), string naamVoorvoegsel = default(string), string naamVoornamen = default(string), string verblijfplaatsGemeenteVanInschrijving = default(string), string verblijfplaatsHuisletter = default(string), int? verblijfplaatsHuisnummer = default(int?), string verblijfplaatsHuisnummertoevoeging = default(string), string verblijfplaatsNummeraanduidingIdentificatie = default(string), string verblijfplaatsStraat = default(string), string verblijfplaatsPostcode = default(string))
         {
-             ApiResponse<IngeschrevenPersoonHalCollectie> localVarResponse = await IngeschrevenNatuurlijkPersonenAsyncWithHttpInfo(expand, fields, burgerservicenummer, geboorteDatum, geboortePlaats, geslachtsaanduiding, inclusiefoverledenpersonen, naamGeslachtsnaam, naamVoornamen, verblijfplaatsGemeentevaninschrijving, verblijfplaatsHuisletter, verblijfplaatsHuisnummer, verblijfplaatsHuisnummertoevoeging, verblijfplaatsIdentificatiecodenummeraanduiding, verblijfplaatsNaamopenbareruimte, verblijfplaatsPostcode, naamVoorvoegsel);
+             ApiResponse<IngeschrevenPersoonHalCollectie> localVarResponse = await GetIngeschrevenPersonenAsyncWithHttpInfo(expand, fields, burgerservicenummer, geboorteDatum, geboortePlaats, geslachtsaanduiding, inclusiefOverledenPersonen, naamGeslachtsnaam, naamVoorvoegsel, naamVoornamen, verblijfplaatsGemeenteVanInschrijving, verblijfplaatsHuisletter, verblijfplaatsHuisnummer, verblijfplaatsHuisnummertoevoeging, verblijfplaatsNummeraanduidingIdentificatie, verblijfplaatsStraat, verblijfplaatsPostcode);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        ///  Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen:   1.  Persoon     -  geboorte__datum     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 2.  Persoon     -  verblijfplaats__gemeentevaninschrijving     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 3.  Persoon     -  burgerservicenummer   4.  Postcode     -  verblijfplaats__postcode     -  verblijfplaats__huisnummer   5.  NaamOpenbareRuimte     -  verblijfplaats__naamopenbareruimte (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) )      -  verblijfplaats__gemeentevaninschrijving     -  verblijfplaats__huisnummer   6.  Nummeraanduiding     -  verblijfplaats__identificatiecodenummeraanduiding  De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters, maar binnen iedere combinatie zijn de hier genoemde velden **verplicht**.   Default levert een zoekvraag alleen personen op die nog in leven zijn. Indien **_inclusiefoverledenpersonen_** de waarde **_true_** heeft worden [overleden personen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) opgenomen in het zoekresultaat.   Het maximale aantal zoekresultaten dat geretourneerd wordt is aan de provider om te bepalen. Als het resultaat van de de request dit aantal overtreft worden er geen resultaten geretourneerd en volgt er een foutmelding.    Er vind geen sortering plaats. 
+        /// Vindt personen Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met parameters uit de andere combinaties.   Default krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen&#x3D;true opgeeft.   Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/fields_extensie.feature)   Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature)   1.  Persoon     -  geboorte__datum     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)   2.  Persoon     -  verblijfplaats__gemeenteVanInschrijving     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)   3.  Persoon     -  burgerservicenummer   4.  Postcode     -  verblijfplaats__postcode     -  verblijfplaats__huisnummer   5.  Straat     -  verblijfplaats__straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) )     -  verblijfplaats__gemeenteVanInschrijving     -  verblijfplaats__huisnummer   6.  Adres     -  verblijfplaats__nummeraanduidingIdentificatie 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="expand">Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/expand.feature). (optional)</param>
         /// <param name="fields">Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma&#39;s gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature) (optional)</param>
-        /// <param name="burgerservicenummer">Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn. (optional)</param>
-        /// <param name="geboorteDatum">Datum waarop de INGESCHREVEN NATUURLIJK PERSOON geboren is. Er kan alleen gezocht worden met een volledige geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature) (optional)</param>
-        /// <param name="geboortePlaats">Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
-        /// <param name="geslachtsaanduiding">Een aanduiding die aangeeft dat de ingeschrevene een man of een vrouw is, of dat het geslacht (nog) onbekend is. (optional)</param>
-        /// <param name="inclusiefoverledenpersonen">Indien in het antwoord op de zoekvraag ook overleden personen moeten worden geretourneerd, dan dient de parameter *inclusiefOverledenPersonen* opgenomen te zijn met de waarde _True_. Indien de parameter *inclusiefOverledenPersonen* ontbreekt of de waarde _False_ heeft worden geen overleden personen opgenomen in het zoekresultaat. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) (optional)</param>
-        /// <param name="naamGeslachtsnaam">De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
-        /// <param name="naamVoornamen">De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
-        /// <param name="verblijfplaatsGemeentevaninschrijving">Een code die aangeeft in welke gemeente de PL zich bevindt of de gemeente waarnaar de PL is uitgeschreven of de gemeente waar de PL voor de eerste keer is opgenomen. De waarde (0000) is geen geldige inhoud voor de query-parameter. (optional)</param>
-        /// <param name="verblijfplaatsHuisletter">Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende toevoeging aan een huisnummer in de vorm van een alfanumeriek teken. (optional)</param>
-        /// <param name="verblijfplaatsHuisnummer">Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nummering. Alle natuurlijke getallen tussen 1 en 99999. (optional)</param>
-        /// <param name="verblijfplaatsHuisnummertoevoeging">Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter. a - z , A - Z , 0 – 9 (optional)</param>
-        /// <param name="verblijfplaatsIdentificatiecodenummeraanduiding">De unieke aanduiding van een NUMMERAANDUIDING. Combinatie van de viercijferige &#39;gemeentecode&#39; , de tweecijferige &#39;objecttypecode&#39; en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig &#39;objectvolgnummer&#39;. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding. (optional)</param>
-        /// <param name="verblijfplaatsNaamopenbareruimte">Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** Tekens gecodeerd volgens de UTF-8 standaard (optional)</param>
-        /// <param name="verblijfplaatsPostcode">De door PostNL vastgestelde code behorende bij een bepaalde combinatie van een naam van een woonplaats, naam van een openbare ruimte en een huisnummer (optional)</param>
-        /// <param name="naamVoorvoegsel">Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam. **De tabel bevat vorvoegsels met hoofdletters en met kleine letters. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)</param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer.  (optional)</param>
+        /// <param name="geboorteDatum">Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/parametervalidatie.feature)  (optional)</param>
+        /// <param name="geboortePlaats">Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="geslachtsaanduiding">Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.  (optional)</param>
+        /// <param name="inclusiefOverledenPersonen">Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/overleden_personen.feature)  (optional)</param>
+        /// <param name="naamGeslachtsnaam">De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="naamVoorvoegsel">Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="naamVoornamen">De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)</param>
+        /// <param name="verblijfplaatsGemeenteVanInschrijving">Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.  (optional)</param>
+        /// <param name="verblijfplaatsHuisletter">Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.  (optional)</param>
+        /// <param name="verblijfplaatsHuisnummer">Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.  (optional)</param>
+        /// <param name="verblijfplaatsHuisnummertoevoeging">Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.  (optional)</param>
+        /// <param name="verblijfplaatsNummeraanduidingIdentificatie">Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.  (optional)</param>
+        /// <param name="verblijfplaatsStraat">Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).  (optional)</param>
+        /// <param name="verblijfplaatsPostcode">De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.  (optional)</param>
         /// <returns>Task of ApiResponse (IngeschrevenPersoonHalCollectie)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<IngeschrevenPersoonHalCollectie>> IngeschrevenNatuurlijkPersonenAsyncWithHttpInfo (string expand = default(string), string fields = default(string), List<string> burgerservicenummer = default(List<string>), DateTime? geboorteDatum = default(DateTime?), string geboortePlaats = default(string), GeslachtEnum? geslachtsaanduiding = default(GeslachtEnum?), bool? inclusiefoverledenpersonen = default(bool?), string naamGeslachtsnaam = default(string), string naamVoornamen = default(string), string verblijfplaatsGemeentevaninschrijving = default(string), string verblijfplaatsHuisletter = default(string), int? verblijfplaatsHuisnummer = default(int?), string verblijfplaatsHuisnummertoevoeging = default(string), string verblijfplaatsIdentificatiecodenummeraanduiding = default(string), string verblijfplaatsNaamopenbareruimte = default(string), string verblijfplaatsPostcode = default(string), string naamVoorvoegsel = default(string))
+        public async System.Threading.Tasks.Task<ApiResponse<IngeschrevenPersoonHalCollectie>> GetIngeschrevenPersonenAsyncWithHttpInfo (string expand = default(string), string fields = default(string), List<string> burgerservicenummer = default(List<string>), DateTime? geboorteDatum = default(DateTime?), string geboortePlaats = default(string), GeslachtEnum? geslachtsaanduiding = default(GeslachtEnum?), bool? inclusiefOverledenPersonen = default(bool?), string naamGeslachtsnaam = default(string), string naamVoorvoegsel = default(string), string naamVoornamen = default(string), string verblijfplaatsGemeenteVanInschrijving = default(string), string verblijfplaatsHuisletter = default(string), int? verblijfplaatsHuisnummer = default(int?), string verblijfplaatsHuisnummertoevoeging = default(string), string verblijfplaatsNummeraanduidingIdentificatie = default(string), string verblijfplaatsStraat = default(string), string verblijfplaatsPostcode = default(string))
         {
 
             var localVarPath = "/ingeschrevenpersonen";
@@ -751,17 +751,17 @@ namespace Org.OpenAPITools.Api
             if (geboorteDatum != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "geboorte__datum", geboorteDatum)); // query parameter
             if (geboortePlaats != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "geboorte__plaats", geboortePlaats)); // query parameter
             if (geslachtsaanduiding != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "geslachtsaanduiding", geslachtsaanduiding)); // query parameter
-            if (inclusiefoverledenpersonen != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "inclusiefoverledenpersonen", inclusiefoverledenpersonen)); // query parameter
+            if (inclusiefOverledenPersonen != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "inclusiefOverledenPersonen", inclusiefOverledenPersonen)); // query parameter
             if (naamGeslachtsnaam != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "naam__geslachtsnaam", naamGeslachtsnaam)); // query parameter
+            if (naamVoorvoegsel != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "naam__voorvoegsel", naamVoorvoegsel)); // query parameter
             if (naamVoornamen != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "naam__voornamen", naamVoornamen)); // query parameter
-            if (verblijfplaatsGemeentevaninschrijving != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "verblijfplaats__gemeentevaninschrijving", verblijfplaatsGemeentevaninschrijving)); // query parameter
+            if (verblijfplaatsGemeenteVanInschrijving != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "verblijfplaats__gemeenteVanInschrijving", verblijfplaatsGemeenteVanInschrijving)); // query parameter
             if (verblijfplaatsHuisletter != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "verblijfplaats__huisletter", verblijfplaatsHuisletter)); // query parameter
             if (verblijfplaatsHuisnummer != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "verblijfplaats__huisnummer", verblijfplaatsHuisnummer)); // query parameter
             if (verblijfplaatsHuisnummertoevoeging != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "verblijfplaats__huisnummertoevoeging", verblijfplaatsHuisnummertoevoeging)); // query parameter
-            if (verblijfplaatsIdentificatiecodenummeraanduiding != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "verblijfplaats__identificatiecodenummeraanduiding", verblijfplaatsIdentificatiecodenummeraanduiding)); // query parameter
-            if (verblijfplaatsNaamopenbareruimte != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "verblijfplaats__naamopenbareruimte", verblijfplaatsNaamopenbareruimte)); // query parameter
+            if (verblijfplaatsNummeraanduidingIdentificatie != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "verblijfplaats__nummeraanduidingIdentificatie", verblijfplaatsNummeraanduidingIdentificatie)); // query parameter
+            if (verblijfplaatsStraat != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "verblijfplaats__straat", verblijfplaatsStraat)); // query parameter
             if (verblijfplaatsPostcode != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "verblijfplaats__postcode", verblijfplaatsPostcode)); // query parameter
-            if (naamVoorvoegsel != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "naam__voorvoegsel", naamVoorvoegsel)); // query parameter
 
 
             // make the HTTP request
@@ -773,7 +773,7 @@ namespace Org.OpenAPITools.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("IngeschrevenNatuurlijkPersonen", localVarResponse);
+                Exception exception = ExceptionFactory("GetIngeschrevenPersonen", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -783,32 +783,32 @@ namespace Org.OpenAPITools.Api
         }
 
         /// <summary>
-        ///  Het ophalen de actuele gegevens van een Ingeschreven Persoon, inclusief verblijfplaats, kinderen, partners en ouders. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen.
+        /// Raadpleeg een persoon Raadpleeg een (overleden) persoon.  Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/fields_extensie.feature).  Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature). 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <param name="expand">Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/expand.feature). (optional)</param>
         /// <param name="fields">Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma&#39;s gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature) (optional)</param>
         /// <returns>IngeschrevenPersoonHal</returns>
-        public IngeschrevenPersoonHal IngeschrevenNatuurlijkPersoon (string burgerservicenummer, string expand = default(string), string fields = default(string))
+        public IngeschrevenPersoonHal GetIngeschrevenPersoon (string burgerservicenummer, string expand = default(string), string fields = default(string))
         {
-             ApiResponse<IngeschrevenPersoonHal> localVarResponse = IngeschrevenNatuurlijkPersoonWithHttpInfo(burgerservicenummer, expand, fields);
+             ApiResponse<IngeschrevenPersoonHal> localVarResponse = GetIngeschrevenPersoonWithHttpInfo(burgerservicenummer, expand, fields);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        ///  Het ophalen de actuele gegevens van een Ingeschreven Persoon, inclusief verblijfplaats, kinderen, partners en ouders. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen.
+        /// Raadpleeg een persoon Raadpleeg een (overleden) persoon.  Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/fields_extensie.feature).  Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature). 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <param name="expand">Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/expand.feature). (optional)</param>
         /// <param name="fields">Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma&#39;s gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature) (optional)</param>
         /// <returns>ApiResponse of IngeschrevenPersoonHal</returns>
-        public ApiResponse<IngeschrevenPersoonHal> IngeschrevenNatuurlijkPersoonWithHttpInfo (string burgerservicenummer, string expand = default(string), string fields = default(string))
+        public ApiResponse<IngeschrevenPersoonHal> GetIngeschrevenPersoonWithHttpInfo (string burgerservicenummer, string expand = default(string), string fields = default(string))
         {
             // verify the required parameter 'burgerservicenummer' is set
             if (burgerservicenummer == null)
-                throw new ApiException(400, "Missing required parameter 'burgerservicenummer' when calling IngeschrevenpersonenApi->IngeschrevenNatuurlijkPersoon");
+                throw new ApiException(400, "Missing required parameter 'burgerservicenummer' when calling IngeschrevenPersonenApi->GetIngeschrevenPersoon");
 
             var localVarPath = "/ingeschrevenpersonen/{burgerservicenummer}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -846,7 +846,7 @@ namespace Org.OpenAPITools.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("IngeschrevenNatuurlijkPersoon", localVarResponse);
+                Exception exception = ExceptionFactory("GetIngeschrevenPersoon", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -856,33 +856,33 @@ namespace Org.OpenAPITools.Api
         }
 
         /// <summary>
-        ///  Het ophalen de actuele gegevens van een Ingeschreven Persoon, inclusief verblijfplaats, kinderen, partners en ouders. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen.
+        /// Raadpleeg een persoon Raadpleeg een (overleden) persoon.  Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/fields_extensie.feature).  Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature). 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <param name="expand">Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/expand.feature). (optional)</param>
         /// <param name="fields">Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma&#39;s gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature) (optional)</param>
         /// <returns>Task of IngeschrevenPersoonHal</returns>
-        public async System.Threading.Tasks.Task<IngeschrevenPersoonHal> IngeschrevenNatuurlijkPersoonAsync (string burgerservicenummer, string expand = default(string), string fields = default(string))
+        public async System.Threading.Tasks.Task<IngeschrevenPersoonHal> GetIngeschrevenPersoonAsync (string burgerservicenummer, string expand = default(string), string fields = default(string))
         {
-             ApiResponse<IngeschrevenPersoonHal> localVarResponse = await IngeschrevenNatuurlijkPersoonAsyncWithHttpInfo(burgerservicenummer, expand, fields);
+             ApiResponse<IngeschrevenPersoonHal> localVarResponse = await GetIngeschrevenPersoonAsyncWithHttpInfo(burgerservicenummer, expand, fields);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        ///  Het ophalen de actuele gegevens van een Ingeschreven Persoon, inclusief verblijfplaats, kinderen, partners en ouders. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen.
+        /// Raadpleeg een persoon Raadpleeg een (overleden) persoon.  Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/fields_extensie.feature).  Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature). 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <param name="expand">Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/expand.feature). (optional)</param>
         /// <param name="fields">Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma&#39;s gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature) (optional)</param>
         /// <returns>Task of ApiResponse (IngeschrevenPersoonHal)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<IngeschrevenPersoonHal>> IngeschrevenNatuurlijkPersoonAsyncWithHttpInfo (string burgerservicenummer, string expand = default(string), string fields = default(string))
+        public async System.Threading.Tasks.Task<ApiResponse<IngeschrevenPersoonHal>> GetIngeschrevenPersoonAsyncWithHttpInfo (string burgerservicenummer, string expand = default(string), string fields = default(string))
         {
             // verify the required parameter 'burgerservicenummer' is set
             if (burgerservicenummer == null)
-                throw new ApiException(400, "Missing required parameter 'burgerservicenummer' when calling IngeschrevenpersonenApi->IngeschrevenNatuurlijkPersoon");
+                throw new ApiException(400, "Missing required parameter 'burgerservicenummer' when calling IngeschrevenPersonenApi->GetIngeschrevenPersoon");
 
             var localVarPath = "/ingeschrevenpersonen/{burgerservicenummer}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -920,7 +920,7 @@ namespace Org.OpenAPITools.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("IngeschrevenNatuurlijkPersoon", localVarResponse);
+                Exception exception = ExceptionFactory("GetIngeschrevenPersoon", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -930,28 +930,175 @@ namespace Org.OpenAPITools.Api
         }
 
         /// <summary>
-        ///  Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats.
+        /// Raadpleeg een kind van een persoon Raadpleeg een kind van een persoon 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="id">De identificatie van het kind. </param>
+        /// <returns>KindHalBasis</returns>
+        public KindHalBasis GetKind (string burgerservicenummer, string id)
+        {
+             ApiResponse<KindHalBasis> localVarResponse = GetKindWithHttpInfo(burgerservicenummer, id);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Raadpleeg een kind van een persoon Raadpleeg een kind van een persoon 
+        /// </summary>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="id">De identificatie van het kind. </param>
+        /// <returns>ApiResponse of KindHalBasis</returns>
+        public ApiResponse<KindHalBasis> GetKindWithHttpInfo (string burgerservicenummer, string id)
+        {
+            // verify the required parameter 'burgerservicenummer' is set
+            if (burgerservicenummer == null)
+                throw new ApiException(400, "Missing required parameter 'burgerservicenummer' when calling IngeschrevenPersonenApi->GetKind");
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling IngeschrevenPersonenApi->GetKind");
+
+            var localVarPath = "/ingeschrevenpersonen/{burgerservicenummer}/kinderen/{id}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/hal+json",
+                "application/problem+json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (burgerservicenummer != null) localVarPathParams.Add("burgerservicenummer", this.Configuration.ApiClient.ParameterToString(burgerservicenummer)); // path parameter
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetKind", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<KindHalBasis>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (KindHalBasis) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(KindHalBasis)));
+        }
+
+        /// <summary>
+        /// Raadpleeg een kind van een persoon Raadpleeg een kind van een persoon 
+        /// </summary>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="id">De identificatie van het kind. </param>
+        /// <returns>Task of KindHalBasis</returns>
+        public async System.Threading.Tasks.Task<KindHalBasis> GetKindAsync (string burgerservicenummer, string id)
+        {
+             ApiResponse<KindHalBasis> localVarResponse = await GetKindAsyncWithHttpInfo(burgerservicenummer, id);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Raadpleeg een kind van een persoon Raadpleeg een kind van een persoon 
+        /// </summary>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="id">De identificatie van het kind. </param>
+        /// <returns>Task of ApiResponse (KindHalBasis)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<KindHalBasis>> GetKindAsyncWithHttpInfo (string burgerservicenummer, string id)
+        {
+            // verify the required parameter 'burgerservicenummer' is set
+            if (burgerservicenummer == null)
+                throw new ApiException(400, "Missing required parameter 'burgerservicenummer' when calling IngeschrevenPersonenApi->GetKind");
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling IngeschrevenPersonenApi->GetKind");
+
+            var localVarPath = "/ingeschrevenpersonen/{burgerservicenummer}/kinderen/{id}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/hal+json",
+                "application/problem+json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (burgerservicenummer != null) localVarPathParams.Add("burgerservicenummer", this.Configuration.ApiClient.ParameterToString(burgerservicenummer)); // path parameter
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetKind", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<KindHalBasis>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (KindHalBasis) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(KindHalBasis)));
+        }
+
+        /// <summary>
+        /// Levert de kinderen van een persoon Levert de kinderen van een persoon 
+        /// </summary>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <returns>KindHalCollectie</returns>
-        public KindHalCollectie IngeschrevenpersonenBurgerservicenummerkinderen (string burgerservicenummer)
+        public KindHalCollectie GetKinderen (string burgerservicenummer)
         {
-             ApiResponse<KindHalCollectie> localVarResponse = IngeschrevenpersonenBurgerservicenummerkinderenWithHttpInfo(burgerservicenummer);
+             ApiResponse<KindHalCollectie> localVarResponse = GetKinderenWithHttpInfo(burgerservicenummer);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        ///  Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats.
+        /// Levert de kinderen van een persoon Levert de kinderen van een persoon 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <returns>ApiResponse of KindHalCollectie</returns>
-        public ApiResponse<KindHalCollectie> IngeschrevenpersonenBurgerservicenummerkinderenWithHttpInfo (string burgerservicenummer)
+        public ApiResponse<KindHalCollectie> GetKinderenWithHttpInfo (string burgerservicenummer)
         {
             // verify the required parameter 'burgerservicenummer' is set
             if (burgerservicenummer == null)
-                throw new ApiException(400, "Missing required parameter 'burgerservicenummer' when calling IngeschrevenpersonenApi->IngeschrevenpersonenBurgerservicenummerkinderen");
+                throw new ApiException(400, "Missing required parameter 'burgerservicenummer' when calling IngeschrevenPersonenApi->GetKinderen");
 
             var localVarPath = "/ingeschrevenpersonen/{burgerservicenummer}/kinderen";
             var localVarPathParams = new Dictionary<String, String>();
@@ -987,7 +1134,7 @@ namespace Org.OpenAPITools.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("IngeschrevenpersonenBurgerservicenummerkinderen", localVarResponse);
+                Exception exception = ExceptionFactory("GetKinderen", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -997,29 +1144,29 @@ namespace Org.OpenAPITools.Api
         }
 
         /// <summary>
-        ///  Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats.
+        /// Levert de kinderen van een persoon Levert de kinderen van een persoon 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <returns>Task of KindHalCollectie</returns>
-        public async System.Threading.Tasks.Task<KindHalCollectie> IngeschrevenpersonenBurgerservicenummerkinderenAsync (string burgerservicenummer)
+        public async System.Threading.Tasks.Task<KindHalCollectie> GetKinderenAsync (string burgerservicenummer)
         {
-             ApiResponse<KindHalCollectie> localVarResponse = await IngeschrevenpersonenBurgerservicenummerkinderenAsyncWithHttpInfo(burgerservicenummer);
+             ApiResponse<KindHalCollectie> localVarResponse = await GetKinderenAsyncWithHttpInfo(burgerservicenummer);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        ///  Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats.
+        /// Levert de kinderen van een persoon Levert de kinderen van een persoon 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <returns>Task of ApiResponse (KindHalCollectie)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<KindHalCollectie>> IngeschrevenpersonenBurgerservicenummerkinderenAsyncWithHttpInfo (string burgerservicenummer)
+        public async System.Threading.Tasks.Task<ApiResponse<KindHalCollectie>> GetKinderenAsyncWithHttpInfo (string burgerservicenummer)
         {
             // verify the required parameter 'burgerservicenummer' is set
             if (burgerservicenummer == null)
-                throw new ApiException(400, "Missing required parameter 'burgerservicenummer' when calling IngeschrevenpersonenApi->IngeschrevenpersonenBurgerservicenummerkinderen");
+                throw new ApiException(400, "Missing required parameter 'burgerservicenummer' when calling IngeschrevenPersonenApi->GetKinderen");
 
             var localVarPath = "/ingeschrevenpersonen/{burgerservicenummer}/kinderen";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1055,7 +1202,7 @@ namespace Org.OpenAPITools.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("IngeschrevenpersonenBurgerservicenummerkinderen", localVarResponse);
+                Exception exception = ExceptionFactory("GetKinderen", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -1065,35 +1212,35 @@ namespace Org.OpenAPITools.Api
         }
 
         /// <summary>
-        ///  Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.
+        /// Raadpleeg een ouder van een persoon Raadpleeg een ouder van een persoon 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
-        /// <param name="id">De identificatie van het kind.</param>
-        /// <returns>KindHal</returns>
-        public KindHal IngeschrevenpersonenBurgerservicenummerkinderenId (string burgerservicenummer, string id)
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="id">De identificatie van de ouder. </param>
+        /// <returns>OuderHalBasis</returns>
+        public OuderHalBasis GetOuder (string burgerservicenummer, string id)
         {
-             ApiResponse<KindHal> localVarResponse = IngeschrevenpersonenBurgerservicenummerkinderenIdWithHttpInfo(burgerservicenummer, id);
+             ApiResponse<OuderHalBasis> localVarResponse = GetOuderWithHttpInfo(burgerservicenummer, id);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        ///  Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.
+        /// Raadpleeg een ouder van een persoon Raadpleeg een ouder van een persoon 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
-        /// <param name="id">De identificatie van het kind.</param>
-        /// <returns>ApiResponse of KindHal</returns>
-        public ApiResponse<KindHal> IngeschrevenpersonenBurgerservicenummerkinderenIdWithHttpInfo (string burgerservicenummer, string id)
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="id">De identificatie van de ouder. </param>
+        /// <returns>ApiResponse of OuderHalBasis</returns>
+        public ApiResponse<OuderHalBasis> GetOuderWithHttpInfo (string burgerservicenummer, string id)
         {
             // verify the required parameter 'burgerservicenummer' is set
             if (burgerservicenummer == null)
-                throw new ApiException(400, "Missing required parameter 'burgerservicenummer' when calling IngeschrevenpersonenApi->IngeschrevenpersonenBurgerservicenummerkinderenId");
+                throw new ApiException(400, "Missing required parameter 'burgerservicenummer' when calling IngeschrevenPersonenApi->GetOuder");
             // verify the required parameter 'id' is set
             if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling IngeschrevenpersonenApi->IngeschrevenpersonenBurgerservicenummerkinderenId");
+                throw new ApiException(400, "Missing required parameter 'id' when calling IngeschrevenPersonenApi->GetOuder");
 
-            var localVarPath = "/ingeschrevenpersonen/{burgerservicenummer}/kinderen/{id}";
+            var localVarPath = "/ingeschrevenpersonen/{burgerservicenummer}/ouders/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1128,46 +1275,46 @@ namespace Org.OpenAPITools.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("IngeschrevenpersonenBurgerservicenummerkinderenId", localVarResponse);
+                Exception exception = ExceptionFactory("GetOuder", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<KindHal>(localVarStatusCode,
+            return new ApiResponse<OuderHalBasis>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (KindHal) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(KindHal)));
+                (OuderHalBasis) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(OuderHalBasis)));
         }
 
         /// <summary>
-        ///  Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.
+        /// Raadpleeg een ouder van een persoon Raadpleeg een ouder van een persoon 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
-        /// <param name="id">De identificatie van het kind.</param>
-        /// <returns>Task of KindHal</returns>
-        public async System.Threading.Tasks.Task<KindHal> IngeschrevenpersonenBurgerservicenummerkinderenIdAsync (string burgerservicenummer, string id)
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="id">De identificatie van de ouder. </param>
+        /// <returns>Task of OuderHalBasis</returns>
+        public async System.Threading.Tasks.Task<OuderHalBasis> GetOuderAsync (string burgerservicenummer, string id)
         {
-             ApiResponse<KindHal> localVarResponse = await IngeschrevenpersonenBurgerservicenummerkinderenIdAsyncWithHttpInfo(burgerservicenummer, id);
+             ApiResponse<OuderHalBasis> localVarResponse = await GetOuderAsyncWithHttpInfo(burgerservicenummer, id);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        ///  Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.
+        /// Raadpleeg een ouder van een persoon Raadpleeg een ouder van een persoon 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
-        /// <param name="id">De identificatie van het kind.</param>
-        /// <returns>Task of ApiResponse (KindHal)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<KindHal>> IngeschrevenpersonenBurgerservicenummerkinderenIdAsyncWithHttpInfo (string burgerservicenummer, string id)
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="id">De identificatie van de ouder. </param>
+        /// <returns>Task of ApiResponse (OuderHalBasis)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<OuderHalBasis>> GetOuderAsyncWithHttpInfo (string burgerservicenummer, string id)
         {
             // verify the required parameter 'burgerservicenummer' is set
             if (burgerservicenummer == null)
-                throw new ApiException(400, "Missing required parameter 'burgerservicenummer' when calling IngeschrevenpersonenApi->IngeschrevenpersonenBurgerservicenummerkinderenId");
+                throw new ApiException(400, "Missing required parameter 'burgerservicenummer' when calling IngeschrevenPersonenApi->GetOuder");
             // verify the required parameter 'id' is set
             if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling IngeschrevenpersonenApi->IngeschrevenpersonenBurgerservicenummerkinderenId");
+                throw new ApiException(400, "Missing required parameter 'id' when calling IngeschrevenPersonenApi->GetOuder");
 
-            var localVarPath = "/ingeschrevenpersonen/{burgerservicenummer}/kinderen/{id}";
+            var localVarPath = "/ingeschrevenpersonen/{burgerservicenummer}/ouders/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1202,38 +1349,38 @@ namespace Org.OpenAPITools.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("IngeschrevenpersonenBurgerservicenummerkinderenId", localVarResponse);
+                Exception exception = ExceptionFactory("GetOuder", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<KindHal>(localVarStatusCode,
+            return new ApiResponse<OuderHalBasis>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (KindHal) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(KindHal)));
+                (OuderHalBasis) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(OuderHalBasis)));
         }
 
         /// <summary>
-        ///  Het ophalen de ouder-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats.
+        /// Levert de ouders van een persoon Levert de ouders van een persoon 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <returns>OuderHalCollectie</returns>
-        public OuderHalCollectie IngeschrevenpersonenBurgerservicenummerouders (string burgerservicenummer)
+        public OuderHalCollectie GetOuders (string burgerservicenummer)
         {
-             ApiResponse<OuderHalCollectie> localVarResponse = IngeschrevenpersonenBurgerservicenummeroudersWithHttpInfo(burgerservicenummer);
+             ApiResponse<OuderHalCollectie> localVarResponse = GetOudersWithHttpInfo(burgerservicenummer);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        ///  Het ophalen de ouder-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats.
+        /// Levert de ouders van een persoon Levert de ouders van een persoon 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <returns>ApiResponse of OuderHalCollectie</returns>
-        public ApiResponse<OuderHalCollectie> IngeschrevenpersonenBurgerservicenummeroudersWithHttpInfo (string burgerservicenummer)
+        public ApiResponse<OuderHalCollectie> GetOudersWithHttpInfo (string burgerservicenummer)
         {
             // verify the required parameter 'burgerservicenummer' is set
             if (burgerservicenummer == null)
-                throw new ApiException(400, "Missing required parameter 'burgerservicenummer' when calling IngeschrevenpersonenApi->IngeschrevenpersonenBurgerservicenummerouders");
+                throw new ApiException(400, "Missing required parameter 'burgerservicenummer' when calling IngeschrevenPersonenApi->GetOuders");
 
             var localVarPath = "/ingeschrevenpersonen/{burgerservicenummer}/ouders";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1269,7 +1416,7 @@ namespace Org.OpenAPITools.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("IngeschrevenpersonenBurgerservicenummerouders", localVarResponse);
+                Exception exception = ExceptionFactory("GetOuders", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -1279,29 +1426,29 @@ namespace Org.OpenAPITools.Api
         }
 
         /// <summary>
-        ///  Het ophalen de ouder-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats.
+        /// Levert de ouders van een persoon Levert de ouders van een persoon 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <returns>Task of OuderHalCollectie</returns>
-        public async System.Threading.Tasks.Task<OuderHalCollectie> IngeschrevenpersonenBurgerservicenummeroudersAsync (string burgerservicenummer)
+        public async System.Threading.Tasks.Task<OuderHalCollectie> GetOudersAsync (string burgerservicenummer)
         {
-             ApiResponse<OuderHalCollectie> localVarResponse = await IngeschrevenpersonenBurgerservicenummeroudersAsyncWithHttpInfo(burgerservicenummer);
+             ApiResponse<OuderHalCollectie> localVarResponse = await GetOudersAsyncWithHttpInfo(burgerservicenummer);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        ///  Het ophalen de ouder-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats.
+        /// Levert de ouders van een persoon Levert de ouders van een persoon 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <returns>Task of ApiResponse (OuderHalCollectie)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<OuderHalCollectie>> IngeschrevenpersonenBurgerservicenummeroudersAsyncWithHttpInfo (string burgerservicenummer)
+        public async System.Threading.Tasks.Task<ApiResponse<OuderHalCollectie>> GetOudersAsyncWithHttpInfo (string burgerservicenummer)
         {
             // verify the required parameter 'burgerservicenummer' is set
             if (burgerservicenummer == null)
-                throw new ApiException(400, "Missing required parameter 'burgerservicenummer' when calling IngeschrevenpersonenApi->IngeschrevenpersonenBurgerservicenummerouders");
+                throw new ApiException(400, "Missing required parameter 'burgerservicenummer' when calling IngeschrevenPersonenApi->GetOuders");
 
             var localVarPath = "/ingeschrevenpersonen/{burgerservicenummer}/ouders";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1337,7 +1484,7 @@ namespace Org.OpenAPITools.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("IngeschrevenpersonenBurgerservicenummerouders", localVarResponse);
+                Exception exception = ExceptionFactory("GetOuders", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -1347,35 +1494,35 @@ namespace Org.OpenAPITools.Api
         }
 
         /// <summary>
-        ///  Het ophalen de ouder-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen..
+        /// Raadpleeg de partner van een persoon Raadpleeg de partner van een persoon 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
-        /// <param name="id">De identificatie van de ouder.</param>
-        /// <returns>OuderHal</returns>
-        public OuderHal IngeschrevenpersonenBurgerservicenummeroudersId (string burgerservicenummer, string id)
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="id">De identificatie van de partner. </param>
+        /// <returns>PartnerHalBasis</returns>
+        public PartnerHalBasis GetPartner (string burgerservicenummer, string id)
         {
-             ApiResponse<OuderHal> localVarResponse = IngeschrevenpersonenBurgerservicenummeroudersIdWithHttpInfo(burgerservicenummer, id);
+             ApiResponse<PartnerHalBasis> localVarResponse = GetPartnerWithHttpInfo(burgerservicenummer, id);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        ///  Het ophalen de ouder-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen..
+        /// Raadpleeg de partner van een persoon Raadpleeg de partner van een persoon 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
-        /// <param name="id">De identificatie van de ouder.</param>
-        /// <returns>ApiResponse of OuderHal</returns>
-        public ApiResponse<OuderHal> IngeschrevenpersonenBurgerservicenummeroudersIdWithHttpInfo (string burgerservicenummer, string id)
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="id">De identificatie van de partner. </param>
+        /// <returns>ApiResponse of PartnerHalBasis</returns>
+        public ApiResponse<PartnerHalBasis> GetPartnerWithHttpInfo (string burgerservicenummer, string id)
         {
             // verify the required parameter 'burgerservicenummer' is set
             if (burgerservicenummer == null)
-                throw new ApiException(400, "Missing required parameter 'burgerservicenummer' when calling IngeschrevenpersonenApi->IngeschrevenpersonenBurgerservicenummeroudersId");
+                throw new ApiException(400, "Missing required parameter 'burgerservicenummer' when calling IngeschrevenPersonenApi->GetPartner");
             // verify the required parameter 'id' is set
             if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling IngeschrevenpersonenApi->IngeschrevenpersonenBurgerservicenummeroudersId");
+                throw new ApiException(400, "Missing required parameter 'id' when calling IngeschrevenPersonenApi->GetPartner");
 
-            var localVarPath = "/ingeschrevenpersonen/{burgerservicenummer}/ouders/{id}";
+            var localVarPath = "/ingeschrevenpersonen/{burgerservicenummer}/partners/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1410,46 +1557,46 @@ namespace Org.OpenAPITools.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("IngeschrevenpersonenBurgerservicenummeroudersId", localVarResponse);
+                Exception exception = ExceptionFactory("GetPartner", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<OuderHal>(localVarStatusCode,
+            return new ApiResponse<PartnerHalBasis>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (OuderHal) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(OuderHal)));
+                (PartnerHalBasis) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PartnerHalBasis)));
         }
 
         /// <summary>
-        ///  Het ophalen de ouder-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen..
+        /// Raadpleeg de partner van een persoon Raadpleeg de partner van een persoon 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
-        /// <param name="id">De identificatie van de ouder.</param>
-        /// <returns>Task of OuderHal</returns>
-        public async System.Threading.Tasks.Task<OuderHal> IngeschrevenpersonenBurgerservicenummeroudersIdAsync (string burgerservicenummer, string id)
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="id">De identificatie van de partner. </param>
+        /// <returns>Task of PartnerHalBasis</returns>
+        public async System.Threading.Tasks.Task<PartnerHalBasis> GetPartnerAsync (string burgerservicenummer, string id)
         {
-             ApiResponse<OuderHal> localVarResponse = await IngeschrevenpersonenBurgerservicenummeroudersIdAsyncWithHttpInfo(burgerservicenummer, id);
+             ApiResponse<PartnerHalBasis> localVarResponse = await GetPartnerAsyncWithHttpInfo(burgerservicenummer, id);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        ///  Het ophalen de ouder-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen..
+        /// Raadpleeg de partner van een persoon Raadpleeg de partner van een persoon 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
-        /// <param name="id">De identificatie van de ouder.</param>
-        /// <returns>Task of ApiResponse (OuderHal)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<OuderHal>> IngeschrevenpersonenBurgerservicenummeroudersIdAsyncWithHttpInfo (string burgerservicenummer, string id)
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="id">De identificatie van de partner. </param>
+        /// <returns>Task of ApiResponse (PartnerHalBasis)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<PartnerHalBasis>> GetPartnerAsyncWithHttpInfo (string burgerservicenummer, string id)
         {
             // verify the required parameter 'burgerservicenummer' is set
             if (burgerservicenummer == null)
-                throw new ApiException(400, "Missing required parameter 'burgerservicenummer' when calling IngeschrevenpersonenApi->IngeschrevenpersonenBurgerservicenummeroudersId");
+                throw new ApiException(400, "Missing required parameter 'burgerservicenummer' when calling IngeschrevenPersonenApi->GetPartner");
             // verify the required parameter 'id' is set
             if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling IngeschrevenpersonenApi->IngeschrevenpersonenBurgerservicenummeroudersId");
+                throw new ApiException(400, "Missing required parameter 'id' when calling IngeschrevenPersonenApi->GetPartner");
 
-            var localVarPath = "/ingeschrevenpersonen/{burgerservicenummer}/ouders/{id}";
+            var localVarPath = "/ingeschrevenpersonen/{burgerservicenummer}/partners/{id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1484,38 +1631,38 @@ namespace Org.OpenAPITools.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("IngeschrevenpersonenBurgerservicenummeroudersId", localVarResponse);
+                Exception exception = ExceptionFactory("GetPartner", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<OuderHal>(localVarStatusCode,
+            return new ApiResponse<PartnerHalBasis>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (OuderHal) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(OuderHal)));
+                (PartnerHalBasis) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PartnerHalBasis)));
         }
 
         /// <summary>
-        ///  Het ophalen de actuele partner-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet opgenomen in het antwoord. De gevonden huwelijken/partnerschappen worden ongesorteerd teruggegeven.
+        /// Levert de actuele partners van een persoon Levert de actuele partners van een persoon. Partners uit beëindigde huwelijken of partnerschappen worden niet geretourneerd 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <returns>PartnerHalCollectie</returns>
-        public PartnerHalCollectie IngeschrevenpersonenBurgerservicenummerpartners (string burgerservicenummer)
+        public PartnerHalCollectie GetPartners (string burgerservicenummer)
         {
-             ApiResponse<PartnerHalCollectie> localVarResponse = IngeschrevenpersonenBurgerservicenummerpartnersWithHttpInfo(burgerservicenummer);
+             ApiResponse<PartnerHalCollectie> localVarResponse = GetPartnersWithHttpInfo(burgerservicenummer);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        ///  Het ophalen de actuele partner-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet opgenomen in het antwoord. De gevonden huwelijken/partnerschappen worden ongesorteerd teruggegeven.
+        /// Levert de actuele partners van een persoon Levert de actuele partners van een persoon. Partners uit beëindigde huwelijken of partnerschappen worden niet geretourneerd 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <returns>ApiResponse of PartnerHalCollectie</returns>
-        public ApiResponse<PartnerHalCollectie> IngeschrevenpersonenBurgerservicenummerpartnersWithHttpInfo (string burgerservicenummer)
+        public ApiResponse<PartnerHalCollectie> GetPartnersWithHttpInfo (string burgerservicenummer)
         {
             // verify the required parameter 'burgerservicenummer' is set
             if (burgerservicenummer == null)
-                throw new ApiException(400, "Missing required parameter 'burgerservicenummer' when calling IngeschrevenpersonenApi->IngeschrevenpersonenBurgerservicenummerpartners");
+                throw new ApiException(400, "Missing required parameter 'burgerservicenummer' when calling IngeschrevenPersonenApi->GetPartners");
 
             var localVarPath = "/ingeschrevenpersonen/{burgerservicenummer}/partners";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1551,7 +1698,7 @@ namespace Org.OpenAPITools.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("IngeschrevenpersonenBurgerservicenummerpartners", localVarResponse);
+                Exception exception = ExceptionFactory("GetPartners", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -1561,29 +1708,29 @@ namespace Org.OpenAPITools.Api
         }
 
         /// <summary>
-        ///  Het ophalen de actuele partner-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet opgenomen in het antwoord. De gevonden huwelijken/partnerschappen worden ongesorteerd teruggegeven.
+        /// Levert de actuele partners van een persoon Levert de actuele partners van een persoon. Partners uit beëindigde huwelijken of partnerschappen worden niet geretourneerd 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <returns>Task of PartnerHalCollectie</returns>
-        public async System.Threading.Tasks.Task<PartnerHalCollectie> IngeschrevenpersonenBurgerservicenummerpartnersAsync (string burgerservicenummer)
+        public async System.Threading.Tasks.Task<PartnerHalCollectie> GetPartnersAsync (string burgerservicenummer)
         {
-             ApiResponse<PartnerHalCollectie> localVarResponse = await IngeschrevenpersonenBurgerservicenummerpartnersAsyncWithHttpInfo(burgerservicenummer);
+             ApiResponse<PartnerHalCollectie> localVarResponse = await GetPartnersAsyncWithHttpInfo(burgerservicenummer);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        ///  Het ophalen de actuele partner-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet opgenomen in het antwoord. De gevonden huwelijken/partnerschappen worden ongesorteerd teruggegeven.
+        /// Levert de actuele partners van een persoon Levert de actuele partners van een persoon. Partners uit beëindigde huwelijken of partnerschappen worden niet geretourneerd 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
+        /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <returns>Task of ApiResponse (PartnerHalCollectie)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<PartnerHalCollectie>> IngeschrevenpersonenBurgerservicenummerpartnersAsyncWithHttpInfo (string burgerservicenummer)
+        public async System.Threading.Tasks.Task<ApiResponse<PartnerHalCollectie>> GetPartnersAsyncWithHttpInfo (string burgerservicenummer)
         {
             // verify the required parameter 'burgerservicenummer' is set
             if (burgerservicenummer == null)
-                throw new ApiException(400, "Missing required parameter 'burgerservicenummer' when calling IngeschrevenpersonenApi->IngeschrevenpersonenBurgerservicenummerpartners");
+                throw new ApiException(400, "Missing required parameter 'burgerservicenummer' when calling IngeschrevenPersonenApi->GetPartners");
 
             var localVarPath = "/ingeschrevenpersonen/{burgerservicenummer}/partners";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1619,160 +1766,13 @@ namespace Org.OpenAPITools.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("IngeschrevenpersonenBurgerservicenummerpartners", localVarResponse);
+                Exception exception = ExceptionFactory("GetPartners", localVarResponse);
                 if (exception != null) throw exception;
             }
 
             return new ApiResponse<PartnerHalCollectie>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (PartnerHalCollectie) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PartnerHalCollectie)));
-        }
-
-        /// <summary>
-        ///  Het ophalen de partner-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.
-        /// </summary>
-        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
-        /// <param name="id">De identificatie van de partner.</param>
-        /// <returns>PartnerHal</returns>
-        public PartnerHal IngeschrevenpersonenBurgerservicenummerpartnersId (string burgerservicenummer, string id)
-        {
-             ApiResponse<PartnerHal> localVarResponse = IngeschrevenpersonenBurgerservicenummerpartnersIdWithHttpInfo(burgerservicenummer, id);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  Het ophalen de partner-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.
-        /// </summary>
-        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
-        /// <param name="id">De identificatie van de partner.</param>
-        /// <returns>ApiResponse of PartnerHal</returns>
-        public ApiResponse<PartnerHal> IngeschrevenpersonenBurgerservicenummerpartnersIdWithHttpInfo (string burgerservicenummer, string id)
-        {
-            // verify the required parameter 'burgerservicenummer' is set
-            if (burgerservicenummer == null)
-                throw new ApiException(400, "Missing required parameter 'burgerservicenummer' when calling IngeschrevenpersonenApi->IngeschrevenpersonenBurgerservicenummerpartnersId");
-            // verify the required parameter 'id' is set
-            if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling IngeschrevenpersonenApi->IngeschrevenpersonenBurgerservicenummerpartnersId");
-
-            var localVarPath = "/ingeschrevenpersonen/{burgerservicenummer}/partners/{id}";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/hal+json",
-                "application/problem+json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (burgerservicenummer != null) localVarPathParams.Add("burgerservicenummer", this.Configuration.ApiClient.ParameterToString(burgerservicenummer)); // path parameter
-            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("IngeschrevenpersonenBurgerservicenummerpartnersId", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<PartnerHal>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (PartnerHal) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PartnerHal)));
-        }
-
-        /// <summary>
-        ///  Het ophalen de partner-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.
-        /// </summary>
-        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
-        /// <param name="id">De identificatie van de partner.</param>
-        /// <returns>Task of PartnerHal</returns>
-        public async System.Threading.Tasks.Task<PartnerHal> IngeschrevenpersonenBurgerservicenummerpartnersIdAsync (string burgerservicenummer, string id)
-        {
-             ApiResponse<PartnerHal> localVarResponse = await IngeschrevenpersonenBurgerservicenummerpartnersIdAsyncWithHttpInfo(burgerservicenummer, id);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        ///  Het ophalen de partner-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.
-        /// </summary>
-        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="burgerservicenummer"></param>
-        /// <param name="id">De identificatie van de partner.</param>
-        /// <returns>Task of ApiResponse (PartnerHal)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<PartnerHal>> IngeschrevenpersonenBurgerservicenummerpartnersIdAsyncWithHttpInfo (string burgerservicenummer, string id)
-        {
-            // verify the required parameter 'burgerservicenummer' is set
-            if (burgerservicenummer == null)
-                throw new ApiException(400, "Missing required parameter 'burgerservicenummer' when calling IngeschrevenpersonenApi->IngeschrevenpersonenBurgerservicenummerpartnersId");
-            // verify the required parameter 'id' is set
-            if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling IngeschrevenpersonenApi->IngeschrevenpersonenBurgerservicenummerpartnersId");
-
-            var localVarPath = "/ingeschrevenpersonen/{burgerservicenummer}/partners/{id}";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/hal+json",
-                "application/problem+json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (burgerservicenummer != null) localVarPathParams.Add("burgerservicenummer", this.Configuration.ApiClient.ParameterToString(burgerservicenummer)); // path parameter
-            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("IngeschrevenpersonenBurgerservicenummerpartnersId", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<PartnerHal>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (PartnerHal) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PartnerHal)));
         }
 
     }

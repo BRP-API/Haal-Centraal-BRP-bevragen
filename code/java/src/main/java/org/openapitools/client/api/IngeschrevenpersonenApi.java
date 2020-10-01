@@ -1,6 +1,6 @@
 /*
- * Bevragingen ingeschreven personen
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * Bevragen Ingeschreven Personen
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -32,12 +32,12 @@ import org.openapitools.client.model.Foutbericht;
 import org.openapitools.client.model.GeslachtEnum;
 import org.openapitools.client.model.IngeschrevenPersoonHal;
 import org.openapitools.client.model.IngeschrevenPersoonHalCollectie;
-import org.openapitools.client.model.KindHal;
+import org.openapitools.client.model.KindHalBasis;
 import org.openapitools.client.model.KindHalCollectie;
 import java.time.LocalDate;
-import org.openapitools.client.model.OuderHal;
+import org.openapitools.client.model.OuderHalBasis;
 import org.openapitools.client.model.OuderHalCollectie;
-import org.openapitools.client.model.PartnerHal;
+import org.openapitools.client.model.PartnerHalBasis;
 import org.openapitools.client.model.PartnerHalCollectie;
 
 import java.lang.reflect.Type;
@@ -46,14 +46,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class IngeschrevenpersonenApi {
+public class IngeschrevenPersonenApi {
     private ApiClient localVarApiClient;
 
-    public IngeschrevenpersonenApi() {
+    public IngeschrevenPersonenApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public IngeschrevenpersonenApi(ApiClient apiClient) {
+    public IngeschrevenPersonenApi(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
     }
 
@@ -66,31 +66,31 @@ public class IngeschrevenpersonenApi {
     }
 
     /**
-     * Build call for ingeschrevenNatuurlijkPersonen
+     * Build call for getIngeschrevenPersonen
      * @param expand Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/expand.feature). (optional)
      * @param fields Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma&#39;s gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature) (optional)
-     * @param burgerservicenummer Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn. (optional)
-     * @param geboorteDatum Datum waarop de INGESCHREVEN NATUURLIJK PERSOON geboren is. Er kan alleen gezocht worden met een volledige geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature) (optional)
-     * @param geboortePlaats Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)
-     * @param geslachtsaanduiding Een aanduiding die aangeeft dat de ingeschrevene een man of een vrouw is, of dat het geslacht (nog) onbekend is. (optional)
-     * @param inclusiefoverledenpersonen Indien in het antwoord op de zoekvraag ook overleden personen moeten worden geretourneerd, dan dient de parameter *inclusiefOverledenPersonen* opgenomen te zijn met de waarde _True_. Indien de parameter *inclusiefOverledenPersonen* ontbreekt of de waarde _False_ heeft worden geen overleden personen opgenomen in het zoekresultaat. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) (optional)
-     * @param naamGeslachtsnaam De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)
-     * @param naamVoornamen De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)
-     * @param verblijfplaatsGemeentevaninschrijving Een code die aangeeft in welke gemeente de PL zich bevindt of de gemeente waarnaar de PL is uitgeschreven of de gemeente waar de PL voor de eerste keer is opgenomen. De waarde (0000) is geen geldige inhoud voor de query-parameter. (optional)
-     * @param verblijfplaatsHuisletter Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende toevoeging aan een huisnummer in de vorm van een alfanumeriek teken. (optional)
-     * @param verblijfplaatsHuisnummer Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nummering. Alle natuurlijke getallen tussen 1 en 99999. (optional)
-     * @param verblijfplaatsHuisnummertoevoeging Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter. a - z , A - Z , 0 – 9 (optional)
-     * @param verblijfplaatsIdentificatiecodenummeraanduiding De unieke aanduiding van een NUMMERAANDUIDING. Combinatie van de viercijferige &#39;gemeentecode&#39; , de tweecijferige &#39;objecttypecode&#39; en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig &#39;objectvolgnummer&#39;. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding. (optional)
-     * @param verblijfplaatsNaamopenbareruimte Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** Tekens gecodeerd volgens de UTF-8 standaard (optional)
-     * @param verblijfplaatsPostcode De door PostNL vastgestelde code behorende bij een bepaalde combinatie van een naam van een woonplaats, naam van een openbare ruimte en een huisnummer (optional)
-     * @param naamVoorvoegsel Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam. **De tabel bevat vorvoegsels met hoofdletters en met kleine letters. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)
+     * @param burgerservicenummer Uniek persoonsnummer.  (optional)
+     * @param geboorteDatum Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/parametervalidatie.feature)  (optional)
+     * @param geboortePlaats Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)
+     * @param geslachtsaanduiding Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.  (optional)
+     * @param inclusiefOverledenPersonen Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/overleden_personen.feature)  (optional)
+     * @param naamGeslachtsnaam De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)
+     * @param naamVoorvoegsel Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)
+     * @param naamVoornamen De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)
+     * @param verblijfplaatsGemeenteVanInschrijving Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.  (optional)
+     * @param verblijfplaatsHuisletter Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.  (optional)
+     * @param verblijfplaatsHuisnummer Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.  (optional)
+     * @param verblijfplaatsHuisnummertoevoeging Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.  (optional)
+     * @param verblijfplaatsNummeraanduidingIdentificatie Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.  (optional)
+     * @param verblijfplaatsStraat Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).  (optional)
+     * @param verblijfplaatsPostcode De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
@@ -101,7 +101,7 @@ public class IngeschrevenpersonenApi {
         <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call ingeschrevenNatuurlijkPersonenCall(String expand, String fields, List<String> burgerservicenummer, LocalDate geboorteDatum, String geboortePlaats, GeslachtEnum geslachtsaanduiding, Boolean inclusiefoverledenpersonen, String naamGeslachtsnaam, String naamVoornamen, String verblijfplaatsGemeentevaninschrijving, String verblijfplaatsHuisletter, Integer verblijfplaatsHuisnummer, String verblijfplaatsHuisnummertoevoeging, String verblijfplaatsIdentificatiecodenummeraanduiding, String verblijfplaatsNaamopenbareruimte, String verblijfplaatsPostcode, String naamVoorvoegsel, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIngeschrevenPersonenCall(String expand, String fields, List<String> burgerservicenummer, LocalDate geboorteDatum, String geboortePlaats, GeslachtEnum geslachtsaanduiding, Boolean inclusiefOverledenPersonen, String naamGeslachtsnaam, String naamVoorvoegsel, String naamVoornamen, String verblijfplaatsGemeenteVanInschrijving, String verblijfplaatsHuisletter, Integer verblijfplaatsHuisnummer, String verblijfplaatsHuisnummertoevoeging, String verblijfplaatsNummeraanduidingIdentificatie, String verblijfplaatsStraat, String verblijfplaatsPostcode, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -133,20 +133,24 @@ public class IngeschrevenpersonenApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("geslachtsaanduiding", geslachtsaanduiding));
         }
 
-        if (inclusiefoverledenpersonen != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("inclusiefoverledenpersonen", inclusiefoverledenpersonen));
+        if (inclusiefOverledenPersonen != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("inclusiefOverledenPersonen", inclusiefOverledenPersonen));
         }
 
         if (naamGeslachtsnaam != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("naam__geslachtsnaam", naamGeslachtsnaam));
         }
 
+        if (naamVoorvoegsel != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("naam__voorvoegsel", naamVoorvoegsel));
+        }
+
         if (naamVoornamen != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("naam__voornamen", naamVoornamen));
         }
 
-        if (verblijfplaatsGemeentevaninschrijving != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("verblijfplaats__gemeentevaninschrijving", verblijfplaatsGemeentevaninschrijving));
+        if (verblijfplaatsGemeenteVanInschrijving != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("verblijfplaats__gemeenteVanInschrijving", verblijfplaatsGemeenteVanInschrijving));
         }
 
         if (verblijfplaatsHuisletter != null) {
@@ -161,20 +165,16 @@ public class IngeschrevenpersonenApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("verblijfplaats__huisnummertoevoeging", verblijfplaatsHuisnummertoevoeging));
         }
 
-        if (verblijfplaatsIdentificatiecodenummeraanduiding != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("verblijfplaats__identificatiecodenummeraanduiding", verblijfplaatsIdentificatiecodenummeraanduiding));
+        if (verblijfplaatsNummeraanduidingIdentificatie != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("verblijfplaats__nummeraanduidingIdentificatie", verblijfplaatsNummeraanduidingIdentificatie));
         }
 
-        if (verblijfplaatsNaamopenbareruimte != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("verblijfplaats__naamopenbareruimte", verblijfplaatsNaamopenbareruimte));
+        if (verblijfplaatsStraat != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("verblijfplaats__straat", verblijfplaatsStraat));
         }
 
         if (verblijfplaatsPostcode != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("verblijfplaats__postcode", verblijfplaatsPostcode));
-        }
-
-        if (naamVoorvoegsel != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("naam__voorvoegsel", naamVoorvoegsel));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -199,40 +199,40 @@ public class IngeschrevenpersonenApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call ingeschrevenNatuurlijkPersonenValidateBeforeCall(String expand, String fields, List<String> burgerservicenummer, LocalDate geboorteDatum, String geboortePlaats, GeslachtEnum geslachtsaanduiding, Boolean inclusiefoverledenpersonen, String naamGeslachtsnaam, String naamVoornamen, String verblijfplaatsGemeentevaninschrijving, String verblijfplaatsHuisletter, Integer verblijfplaatsHuisnummer, String verblijfplaatsHuisnummertoevoeging, String verblijfplaatsIdentificatiecodenummeraanduiding, String verblijfplaatsNaamopenbareruimte, String verblijfplaatsPostcode, String naamVoorvoegsel, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getIngeschrevenPersonenValidateBeforeCall(String expand, String fields, List<String> burgerservicenummer, LocalDate geboorteDatum, String geboortePlaats, GeslachtEnum geslachtsaanduiding, Boolean inclusiefOverledenPersonen, String naamGeslachtsnaam, String naamVoorvoegsel, String naamVoornamen, String verblijfplaatsGemeenteVanInschrijving, String verblijfplaatsHuisletter, Integer verblijfplaatsHuisnummer, String verblijfplaatsHuisnummertoevoeging, String verblijfplaatsNummeraanduidingIdentificatie, String verblijfplaatsStraat, String verblijfplaatsPostcode, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = ingeschrevenNatuurlijkPersonenCall(expand, fields, burgerservicenummer, geboorteDatum, geboortePlaats, geslachtsaanduiding, inclusiefoverledenpersonen, naamGeslachtsnaam, naamVoornamen, verblijfplaatsGemeentevaninschrijving, verblijfplaatsHuisletter, verblijfplaatsHuisnummer, verblijfplaatsHuisnummertoevoeging, verblijfplaatsIdentificatiecodenummeraanduiding, verblijfplaatsNaamopenbareruimte, verblijfplaatsPostcode, naamVoorvoegsel, _callback);
+        okhttp3.Call localVarCall = getIngeschrevenPersonenCall(expand, fields, burgerservicenummer, geboorteDatum, geboortePlaats, geslachtsaanduiding, inclusiefOverledenPersonen, naamGeslachtsnaam, naamVoorvoegsel, naamVoornamen, verblijfplaatsGemeenteVanInschrijving, verblijfplaatsHuisletter, verblijfplaatsHuisnummer, verblijfplaatsHuisnummertoevoeging, verblijfplaatsNummeraanduidingIdentificatie, verblijfplaatsStraat, verblijfplaatsPostcode, _callback);
         return localVarCall;
 
     }
 
     /**
-     * 
-     * Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen:   1.  Persoon     -  geboorte__datum     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 2.  Persoon     -  verblijfplaats__gemeentevaninschrijving     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 3.  Persoon     -  burgerservicenummer   4.  Postcode     -  verblijfplaats__postcode     -  verblijfplaats__huisnummer   5.  NaamOpenbareRuimte     -  verblijfplaats__naamopenbareruimte (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) )      -  verblijfplaats__gemeentevaninschrijving     -  verblijfplaats__huisnummer   6.  Nummeraanduiding     -  verblijfplaats__identificatiecodenummeraanduiding  De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters, maar binnen iedere combinatie zijn de hier genoemde velden **verplicht**.   Default levert een zoekvraag alleen personen op die nog in leven zijn. Indien **_inclusiefoverledenpersonen_** de waarde **_true_** heeft worden [overleden personen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) opgenomen in het zoekresultaat.   Het maximale aantal zoekresultaten dat geretourneerd wordt is aan de provider om te bepalen. Als het resultaat van de de request dit aantal overtreft worden er geen resultaten geretourneerd en volgt er een foutmelding.    Er vind geen sortering plaats. 
+     * Vindt personen
+     * Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met parameters uit de andere combinaties.   Default krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen&#x3D;true opgeeft.   Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/fields_extensie.feature)   Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature)   1.  Persoon     -  geboorte__datum     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)   2.  Persoon     -  verblijfplaats__gemeenteVanInschrijving     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)   3.  Persoon     -  burgerservicenummer   4.  Postcode     -  verblijfplaats__postcode     -  verblijfplaats__huisnummer   5.  Straat     -  verblijfplaats__straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) )     -  verblijfplaats__gemeenteVanInschrijving     -  verblijfplaats__huisnummer   6.  Adres     -  verblijfplaats__nummeraanduidingIdentificatie 
      * @param expand Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/expand.feature). (optional)
      * @param fields Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma&#39;s gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature) (optional)
-     * @param burgerservicenummer Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn. (optional)
-     * @param geboorteDatum Datum waarop de INGESCHREVEN NATUURLIJK PERSOON geboren is. Er kan alleen gezocht worden met een volledige geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature) (optional)
-     * @param geboortePlaats Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)
-     * @param geslachtsaanduiding Een aanduiding die aangeeft dat de ingeschrevene een man of een vrouw is, of dat het geslacht (nog) onbekend is. (optional)
-     * @param inclusiefoverledenpersonen Indien in het antwoord op de zoekvraag ook overleden personen moeten worden geretourneerd, dan dient de parameter *inclusiefOverledenPersonen* opgenomen te zijn met de waarde _True_. Indien de parameter *inclusiefOverledenPersonen* ontbreekt of de waarde _False_ heeft worden geen overleden personen opgenomen in het zoekresultaat. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) (optional)
-     * @param naamGeslachtsnaam De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)
-     * @param naamVoornamen De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)
-     * @param verblijfplaatsGemeentevaninschrijving Een code die aangeeft in welke gemeente de PL zich bevindt of de gemeente waarnaar de PL is uitgeschreven of de gemeente waar de PL voor de eerste keer is opgenomen. De waarde (0000) is geen geldige inhoud voor de query-parameter. (optional)
-     * @param verblijfplaatsHuisletter Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende toevoeging aan een huisnummer in de vorm van een alfanumeriek teken. (optional)
-     * @param verblijfplaatsHuisnummer Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nummering. Alle natuurlijke getallen tussen 1 en 99999. (optional)
-     * @param verblijfplaatsHuisnummertoevoeging Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter. a - z , A - Z , 0 – 9 (optional)
-     * @param verblijfplaatsIdentificatiecodenummeraanduiding De unieke aanduiding van een NUMMERAANDUIDING. Combinatie van de viercijferige &#39;gemeentecode&#39; , de tweecijferige &#39;objecttypecode&#39; en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig &#39;objectvolgnummer&#39;. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding. (optional)
-     * @param verblijfplaatsNaamopenbareruimte Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** Tekens gecodeerd volgens de UTF-8 standaard (optional)
-     * @param verblijfplaatsPostcode De door PostNL vastgestelde code behorende bij een bepaalde combinatie van een naam van een woonplaats, naam van een openbare ruimte en een huisnummer (optional)
-     * @param naamVoorvoegsel Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam. **De tabel bevat vorvoegsels met hoofdletters en met kleine letters. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)
+     * @param burgerservicenummer Uniek persoonsnummer.  (optional)
+     * @param geboorteDatum Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/parametervalidatie.feature)  (optional)
+     * @param geboortePlaats Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)
+     * @param geslachtsaanduiding Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.  (optional)
+     * @param inclusiefOverledenPersonen Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/overleden_personen.feature)  (optional)
+     * @param naamGeslachtsnaam De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)
+     * @param naamVoorvoegsel Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)
+     * @param naamVoornamen De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)
+     * @param verblijfplaatsGemeenteVanInschrijving Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.  (optional)
+     * @param verblijfplaatsHuisletter Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.  (optional)
+     * @param verblijfplaatsHuisnummer Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.  (optional)
+     * @param verblijfplaatsHuisnummertoevoeging Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.  (optional)
+     * @param verblijfplaatsNummeraanduidingIdentificatie Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.  (optional)
+     * @param verblijfplaatsStraat Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).  (optional)
+     * @param verblijfplaatsPostcode De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.  (optional)
      * @return IngeschrevenPersoonHalCollectie
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
@@ -243,37 +243,37 @@ public class IngeschrevenpersonenApi {
         <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
      </table>
      */
-    public IngeschrevenPersoonHalCollectie ingeschrevenNatuurlijkPersonen(String expand, String fields, List<String> burgerservicenummer, LocalDate geboorteDatum, String geboortePlaats, GeslachtEnum geslachtsaanduiding, Boolean inclusiefoverledenpersonen, String naamGeslachtsnaam, String naamVoornamen, String verblijfplaatsGemeentevaninschrijving, String verblijfplaatsHuisletter, Integer verblijfplaatsHuisnummer, String verblijfplaatsHuisnummertoevoeging, String verblijfplaatsIdentificatiecodenummeraanduiding, String verblijfplaatsNaamopenbareruimte, String verblijfplaatsPostcode, String naamVoorvoegsel) throws ApiException {
-        ApiResponse<IngeschrevenPersoonHalCollectie> localVarResp = ingeschrevenNatuurlijkPersonenWithHttpInfo(expand, fields, burgerservicenummer, geboorteDatum, geboortePlaats, geslachtsaanduiding, inclusiefoverledenpersonen, naamGeslachtsnaam, naamVoornamen, verblijfplaatsGemeentevaninschrijving, verblijfplaatsHuisletter, verblijfplaatsHuisnummer, verblijfplaatsHuisnummertoevoeging, verblijfplaatsIdentificatiecodenummeraanduiding, verblijfplaatsNaamopenbareruimte, verblijfplaatsPostcode, naamVoorvoegsel);
+    public IngeschrevenPersoonHalCollectie getIngeschrevenPersonen(String expand, String fields, List<String> burgerservicenummer, LocalDate geboorteDatum, String geboortePlaats, GeslachtEnum geslachtsaanduiding, Boolean inclusiefOverledenPersonen, String naamGeslachtsnaam, String naamVoorvoegsel, String naamVoornamen, String verblijfplaatsGemeenteVanInschrijving, String verblijfplaatsHuisletter, Integer verblijfplaatsHuisnummer, String verblijfplaatsHuisnummertoevoeging, String verblijfplaatsNummeraanduidingIdentificatie, String verblijfplaatsStraat, String verblijfplaatsPostcode) throws ApiException {
+        ApiResponse<IngeschrevenPersoonHalCollectie> localVarResp = getIngeschrevenPersonenWithHttpInfo(expand, fields, burgerservicenummer, geboorteDatum, geboortePlaats, geslachtsaanduiding, inclusiefOverledenPersonen, naamGeslachtsnaam, naamVoorvoegsel, naamVoornamen, verblijfplaatsGemeenteVanInschrijving, verblijfplaatsHuisletter, verblijfplaatsHuisnummer, verblijfplaatsHuisnummertoevoeging, verblijfplaatsNummeraanduidingIdentificatie, verblijfplaatsStraat, verblijfplaatsPostcode);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen:   1.  Persoon     -  geboorte__datum     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 2.  Persoon     -  verblijfplaats__gemeentevaninschrijving     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 3.  Persoon     -  burgerservicenummer   4.  Postcode     -  verblijfplaats__postcode     -  verblijfplaats__huisnummer   5.  NaamOpenbareRuimte     -  verblijfplaats__naamopenbareruimte (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) )      -  verblijfplaats__gemeentevaninschrijving     -  verblijfplaats__huisnummer   6.  Nummeraanduiding     -  verblijfplaats__identificatiecodenummeraanduiding  De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters, maar binnen iedere combinatie zijn de hier genoemde velden **verplicht**.   Default levert een zoekvraag alleen personen op die nog in leven zijn. Indien **_inclusiefoverledenpersonen_** de waarde **_true_** heeft worden [overleden personen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) opgenomen in het zoekresultaat.   Het maximale aantal zoekresultaten dat geretourneerd wordt is aan de provider om te bepalen. Als het resultaat van de de request dit aantal overtreft worden er geen resultaten geretourneerd en volgt er een foutmelding.    Er vind geen sortering plaats. 
+     * Vindt personen
+     * Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met parameters uit de andere combinaties.   Default krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen&#x3D;true opgeeft.   Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/fields_extensie.feature)   Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature)   1.  Persoon     -  geboorte__datum     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)   2.  Persoon     -  verblijfplaats__gemeenteVanInschrijving     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)   3.  Persoon     -  burgerservicenummer   4.  Postcode     -  verblijfplaats__postcode     -  verblijfplaats__huisnummer   5.  Straat     -  verblijfplaats__straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) )     -  verblijfplaats__gemeenteVanInschrijving     -  verblijfplaats__huisnummer   6.  Adres     -  verblijfplaats__nummeraanduidingIdentificatie 
      * @param expand Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/expand.feature). (optional)
      * @param fields Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma&#39;s gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature) (optional)
-     * @param burgerservicenummer Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn. (optional)
-     * @param geboorteDatum Datum waarop de INGESCHREVEN NATUURLIJK PERSOON geboren is. Er kan alleen gezocht worden met een volledige geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature) (optional)
-     * @param geboortePlaats Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)
-     * @param geslachtsaanduiding Een aanduiding die aangeeft dat de ingeschrevene een man of een vrouw is, of dat het geslacht (nog) onbekend is. (optional)
-     * @param inclusiefoverledenpersonen Indien in het antwoord op de zoekvraag ook overleden personen moeten worden geretourneerd, dan dient de parameter *inclusiefOverledenPersonen* opgenomen te zijn met de waarde _True_. Indien de parameter *inclusiefOverledenPersonen* ontbreekt of de waarde _False_ heeft worden geen overleden personen opgenomen in het zoekresultaat. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) (optional)
-     * @param naamGeslachtsnaam De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)
-     * @param naamVoornamen De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)
-     * @param verblijfplaatsGemeentevaninschrijving Een code die aangeeft in welke gemeente de PL zich bevindt of de gemeente waarnaar de PL is uitgeschreven of de gemeente waar de PL voor de eerste keer is opgenomen. De waarde (0000) is geen geldige inhoud voor de query-parameter. (optional)
-     * @param verblijfplaatsHuisletter Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende toevoeging aan een huisnummer in de vorm van een alfanumeriek teken. (optional)
-     * @param verblijfplaatsHuisnummer Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nummering. Alle natuurlijke getallen tussen 1 en 99999. (optional)
-     * @param verblijfplaatsHuisnummertoevoeging Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter. a - z , A - Z , 0 – 9 (optional)
-     * @param verblijfplaatsIdentificatiecodenummeraanduiding De unieke aanduiding van een NUMMERAANDUIDING. Combinatie van de viercijferige &#39;gemeentecode&#39; , de tweecijferige &#39;objecttypecode&#39; en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig &#39;objectvolgnummer&#39;. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding. (optional)
-     * @param verblijfplaatsNaamopenbareruimte Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** Tekens gecodeerd volgens de UTF-8 standaard (optional)
-     * @param verblijfplaatsPostcode De door PostNL vastgestelde code behorende bij een bepaalde combinatie van een naam van een woonplaats, naam van een openbare ruimte en een huisnummer (optional)
-     * @param naamVoorvoegsel Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam. **De tabel bevat vorvoegsels met hoofdletters en met kleine letters. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)
+     * @param burgerservicenummer Uniek persoonsnummer.  (optional)
+     * @param geboorteDatum Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/parametervalidatie.feature)  (optional)
+     * @param geboortePlaats Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)
+     * @param geslachtsaanduiding Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.  (optional)
+     * @param inclusiefOverledenPersonen Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/overleden_personen.feature)  (optional)
+     * @param naamGeslachtsnaam De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)
+     * @param naamVoorvoegsel Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)
+     * @param naamVoornamen De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)
+     * @param verblijfplaatsGemeenteVanInschrijving Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.  (optional)
+     * @param verblijfplaatsHuisletter Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.  (optional)
+     * @param verblijfplaatsHuisnummer Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.  (optional)
+     * @param verblijfplaatsHuisnummertoevoeging Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.  (optional)
+     * @param verblijfplaatsNummeraanduidingIdentificatie Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.  (optional)
+     * @param verblijfplaatsStraat Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).  (optional)
+     * @param verblijfplaatsPostcode De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.  (optional)
      * @return ApiResponse&lt;IngeschrevenPersoonHalCollectie&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
@@ -284,39 +284,39 @@ public class IngeschrevenpersonenApi {
         <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
      </table>
      */
-    public ApiResponse<IngeschrevenPersoonHalCollectie> ingeschrevenNatuurlijkPersonenWithHttpInfo(String expand, String fields, List<String> burgerservicenummer, LocalDate geboorteDatum, String geboortePlaats, GeslachtEnum geslachtsaanduiding, Boolean inclusiefoverledenpersonen, String naamGeslachtsnaam, String naamVoornamen, String verblijfplaatsGemeentevaninschrijving, String verblijfplaatsHuisletter, Integer verblijfplaatsHuisnummer, String verblijfplaatsHuisnummertoevoeging, String verblijfplaatsIdentificatiecodenummeraanduiding, String verblijfplaatsNaamopenbareruimte, String verblijfplaatsPostcode, String naamVoorvoegsel) throws ApiException {
-        okhttp3.Call localVarCall = ingeschrevenNatuurlijkPersonenValidateBeforeCall(expand, fields, burgerservicenummer, geboorteDatum, geboortePlaats, geslachtsaanduiding, inclusiefoverledenpersonen, naamGeslachtsnaam, naamVoornamen, verblijfplaatsGemeentevaninschrijving, verblijfplaatsHuisletter, verblijfplaatsHuisnummer, verblijfplaatsHuisnummertoevoeging, verblijfplaatsIdentificatiecodenummeraanduiding, verblijfplaatsNaamopenbareruimte, verblijfplaatsPostcode, naamVoorvoegsel, null);
+    public ApiResponse<IngeschrevenPersoonHalCollectie> getIngeschrevenPersonenWithHttpInfo(String expand, String fields, List<String> burgerservicenummer, LocalDate geboorteDatum, String geboortePlaats, GeslachtEnum geslachtsaanduiding, Boolean inclusiefOverledenPersonen, String naamGeslachtsnaam, String naamVoorvoegsel, String naamVoornamen, String verblijfplaatsGemeenteVanInschrijving, String verblijfplaatsHuisletter, Integer verblijfplaatsHuisnummer, String verblijfplaatsHuisnummertoevoeging, String verblijfplaatsNummeraanduidingIdentificatie, String verblijfplaatsStraat, String verblijfplaatsPostcode) throws ApiException {
+        okhttp3.Call localVarCall = getIngeschrevenPersonenValidateBeforeCall(expand, fields, burgerservicenummer, geboorteDatum, geboortePlaats, geslachtsaanduiding, inclusiefOverledenPersonen, naamGeslachtsnaam, naamVoorvoegsel, naamVoornamen, verblijfplaatsGemeenteVanInschrijving, verblijfplaatsHuisletter, verblijfplaatsHuisnummer, verblijfplaatsHuisnummertoevoeging, verblijfplaatsNummeraanduidingIdentificatie, verblijfplaatsStraat, verblijfplaatsPostcode, null);
         Type localVarReturnType = new TypeToken<IngeschrevenPersoonHalCollectie>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen:   1.  Persoon     -  geboorte__datum     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 2.  Persoon     -  verblijfplaats__gemeentevaninschrijving     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) ) 3.  Persoon     -  burgerservicenummer   4.  Postcode     -  verblijfplaats__postcode     -  verblijfplaats__huisnummer   5.  NaamOpenbareRuimte     -  verblijfplaats__naamopenbareruimte (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) )      -  verblijfplaats__gemeentevaninschrijving     -  verblijfplaats__huisnummer   6.  Nummeraanduiding     -  verblijfplaats__identificatiecodenummeraanduiding  De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters, maar binnen iedere combinatie zijn de hier genoemde velden **verplicht**.   Default levert een zoekvraag alleen personen op die nog in leven zijn. Indien **_inclusiefoverledenpersonen_** de waarde **_true_** heeft worden [overleden personen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) opgenomen in het zoekresultaat.   Het maximale aantal zoekresultaten dat geretourneerd wordt is aan de provider om te bepalen. Als het resultaat van de de request dit aantal overtreft worden er geen resultaten geretourneerd en volgt er een foutmelding.    Er vind geen sortering plaats. 
+     * Vindt personen (asynchronously)
+     * Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met parameters uit de andere combinaties.   Default krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen&#x3D;true opgeeft.   Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/fields_extensie.feature)   Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature)   1.  Persoon     -  geboorte__datum     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)   2.  Persoon     -  verblijfplaats__gemeenteVanInschrijving     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)   3.  Persoon     -  burgerservicenummer   4.  Postcode     -  verblijfplaats__postcode     -  verblijfplaats__huisnummer   5.  Straat     -  verblijfplaats__straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) )     -  verblijfplaats__gemeenteVanInschrijving     -  verblijfplaats__huisnummer   6.  Adres     -  verblijfplaats__nummeraanduidingIdentificatie 
      * @param expand Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/expand.feature). (optional)
      * @param fields Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma&#39;s gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature) (optional)
-     * @param burgerservicenummer Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn. (optional)
-     * @param geboorteDatum Datum waarop de INGESCHREVEN NATUURLIJK PERSOON geboren is. Er kan alleen gezocht worden met een volledige geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature) (optional)
-     * @param geboortePlaats Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)
-     * @param geslachtsaanduiding Een aanduiding die aangeeft dat de ingeschrevene een man of een vrouw is, of dat het geslacht (nog) onbekend is. (optional)
-     * @param inclusiefoverledenpersonen Indien in het antwoord op de zoekvraag ook overleden personen moeten worden geretourneerd, dan dient de parameter *inclusiefOverledenPersonen* opgenomen te zijn met de waarde _True_. Indien de parameter *inclusiefOverledenPersonen* ontbreekt of de waarde _False_ heeft worden geen overleden personen opgenomen in het zoekresultaat. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) (optional)
-     * @param naamGeslachtsnaam De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)
-     * @param naamVoornamen De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)
-     * @param verblijfplaatsGemeentevaninschrijving Een code die aangeeft in welke gemeente de PL zich bevindt of de gemeente waarnaar de PL is uitgeschreven of de gemeente waar de PL voor de eerste keer is opgenomen. De waarde (0000) is geen geldige inhoud voor de query-parameter. (optional)
-     * @param verblijfplaatsHuisletter Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende toevoeging aan een huisnummer in de vorm van een alfanumeriek teken. (optional)
-     * @param verblijfplaatsHuisnummer Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nummering. Alle natuurlijke getallen tussen 1 en 99999. (optional)
-     * @param verblijfplaatsHuisnummertoevoeging Een door of namens het bevoegd gemeentelijk orgaan ten aanzien van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter. a - z , A - Z , 0 – 9 (optional)
-     * @param verblijfplaatsIdentificatiecodenummeraanduiding De unieke aanduiding van een NUMMERAANDUIDING. Combinatie van de viercijferige &#39;gemeentecode&#39; , de tweecijferige &#39;objecttypecode&#39; en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig &#39;objectvolgnummer&#39;. De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding. (optional)
-     * @param verblijfplaatsNaamopenbareruimte Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE toegekende benaming **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** Tekens gecodeerd volgens de UTF-8 standaard (optional)
-     * @param verblijfplaatsPostcode De door PostNL vastgestelde code behorende bij een bepaalde combinatie van een naam van een woonplaats, naam van een openbare ruimte en een huisnummer (optional)
-     * @param naamVoorvoegsel Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam. **De tabel bevat vorvoegsels met hoofdletters en met kleine letters. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).** (optional)
+     * @param burgerservicenummer Uniek persoonsnummer.  (optional)
+     * @param geboorteDatum Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/parametervalidatie.feature)  (optional)
+     * @param geboortePlaats Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)
+     * @param geslachtsaanduiding Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.  (optional)
+     * @param inclusiefOverledenPersonen Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/overleden_personen.feature)  (optional)
+     * @param naamGeslachtsnaam De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)
+     * @param naamVoorvoegsel Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)
+     * @param naamVoornamen De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**  (optional)
+     * @param verblijfplaatsGemeenteVanInschrijving Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.  (optional)
+     * @param verblijfplaatsHuisletter Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.  (optional)
+     * @param verblijfplaatsHuisnummer Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.  (optional)
+     * @param verblijfplaatsHuisnummertoevoeging Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.  (optional)
+     * @param verblijfplaatsNummeraanduidingIdentificatie Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.  (optional)
+     * @param verblijfplaatsStraat Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).  (optional)
+     * @param verblijfplaatsPostcode De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
@@ -327,16 +327,16 @@ public class IngeschrevenpersonenApi {
         <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call ingeschrevenNatuurlijkPersonenAsync(String expand, String fields, List<String> burgerservicenummer, LocalDate geboorteDatum, String geboortePlaats, GeslachtEnum geslachtsaanduiding, Boolean inclusiefoverledenpersonen, String naamGeslachtsnaam, String naamVoornamen, String verblijfplaatsGemeentevaninschrijving, String verblijfplaatsHuisletter, Integer verblijfplaatsHuisnummer, String verblijfplaatsHuisnummertoevoeging, String verblijfplaatsIdentificatiecodenummeraanduiding, String verblijfplaatsNaamopenbareruimte, String verblijfplaatsPostcode, String naamVoorvoegsel, final ApiCallback<IngeschrevenPersoonHalCollectie> _callback) throws ApiException {
+    public okhttp3.Call getIngeschrevenPersonenAsync(String expand, String fields, List<String> burgerservicenummer, LocalDate geboorteDatum, String geboortePlaats, GeslachtEnum geslachtsaanduiding, Boolean inclusiefOverledenPersonen, String naamGeslachtsnaam, String naamVoorvoegsel, String naamVoornamen, String verblijfplaatsGemeenteVanInschrijving, String verblijfplaatsHuisletter, Integer verblijfplaatsHuisnummer, String verblijfplaatsHuisnummertoevoeging, String verblijfplaatsNummeraanduidingIdentificatie, String verblijfplaatsStraat, String verblijfplaatsPostcode, final ApiCallback<IngeschrevenPersoonHalCollectie> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = ingeschrevenNatuurlijkPersonenValidateBeforeCall(expand, fields, burgerservicenummer, geboorteDatum, geboortePlaats, geslachtsaanduiding, inclusiefoverledenpersonen, naamGeslachtsnaam, naamVoornamen, verblijfplaatsGemeentevaninschrijving, verblijfplaatsHuisletter, verblijfplaatsHuisnummer, verblijfplaatsHuisnummertoevoeging, verblijfplaatsIdentificatiecodenummeraanduiding, verblijfplaatsNaamopenbareruimte, verblijfplaatsPostcode, naamVoorvoegsel, _callback);
+        okhttp3.Call localVarCall = getIngeschrevenPersonenValidateBeforeCall(expand, fields, burgerservicenummer, geboorteDatum, geboortePlaats, geslachtsaanduiding, inclusiefOverledenPersonen, naamGeslachtsnaam, naamVoorvoegsel, naamVoornamen, verblijfplaatsGemeenteVanInschrijving, verblijfplaatsHuisletter, verblijfplaatsHuisnummer, verblijfplaatsHuisnummertoevoeging, verblijfplaatsNummeraanduidingIdentificatie, verblijfplaatsStraat, verblijfplaatsPostcode, _callback);
         Type localVarReturnType = new TypeToken<IngeschrevenPersoonHalCollectie>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for ingeschrevenNatuurlijkPersoon
-     * @param burgerservicenummer  (required)
+     * Build call for getIngeschrevenPersoon
+     * @param burgerservicenummer Uniek persoonsnummer  (required)
      * @param expand Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/expand.feature). (optional)
      * @param fields Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma&#39;s gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature) (optional)
      * @param _callback Callback for upload/download progress
@@ -345,7 +345,7 @@ public class IngeschrevenpersonenApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
@@ -357,7 +357,7 @@ public class IngeschrevenpersonenApi {
         <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call ingeschrevenNatuurlijkPersoonCall(String burgerservicenummer, String expand, String fields, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIngeschrevenPersoonCall(String burgerservicenummer, String expand, String fields, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -396,23 +396,23 @@ public class IngeschrevenpersonenApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call ingeschrevenNatuurlijkPersoonValidateBeforeCall(String burgerservicenummer, String expand, String fields, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getIngeschrevenPersoonValidateBeforeCall(String burgerservicenummer, String expand, String fields, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'burgerservicenummer' is set
         if (burgerservicenummer == null) {
-            throw new ApiException("Missing the required parameter 'burgerservicenummer' when calling ingeschrevenNatuurlijkPersoon(Async)");
+            throw new ApiException("Missing the required parameter 'burgerservicenummer' when calling getIngeschrevenPersoon(Async)");
         }
         
 
-        okhttp3.Call localVarCall = ingeschrevenNatuurlijkPersoonCall(burgerservicenummer, expand, fields, _callback);
+        okhttp3.Call localVarCall = getIngeschrevenPersoonCall(burgerservicenummer, expand, fields, _callback);
         return localVarCall;
 
     }
 
     /**
-     * 
-     * Het ophalen de actuele gegevens van een Ingeschreven Persoon, inclusief verblijfplaats, kinderen, partners en ouders. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen.
-     * @param burgerservicenummer  (required)
+     * Raadpleeg een persoon
+     * Raadpleeg een (overleden) persoon.  Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/fields_extensie.feature).  Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature). 
+     * @param burgerservicenummer Uniek persoonsnummer  (required)
      * @param expand Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/expand.feature). (optional)
      * @param fields Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma&#39;s gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature) (optional)
      * @return IngeschrevenPersoonHal
@@ -420,7 +420,7 @@ public class IngeschrevenpersonenApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
@@ -432,15 +432,15 @@ public class IngeschrevenpersonenApi {
         <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
      </table>
      */
-    public IngeschrevenPersoonHal ingeschrevenNatuurlijkPersoon(String burgerservicenummer, String expand, String fields) throws ApiException {
-        ApiResponse<IngeschrevenPersoonHal> localVarResp = ingeschrevenNatuurlijkPersoonWithHttpInfo(burgerservicenummer, expand, fields);
+    public IngeschrevenPersoonHal getIngeschrevenPersoon(String burgerservicenummer, String expand, String fields) throws ApiException {
+        ApiResponse<IngeschrevenPersoonHal> localVarResp = getIngeschrevenPersoonWithHttpInfo(burgerservicenummer, expand, fields);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Het ophalen de actuele gegevens van een Ingeschreven Persoon, inclusief verblijfplaats, kinderen, partners en ouders. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen.
-     * @param burgerservicenummer  (required)
+     * Raadpleeg een persoon
+     * Raadpleeg een (overleden) persoon.  Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/fields_extensie.feature).  Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature). 
+     * @param burgerservicenummer Uniek persoonsnummer  (required)
      * @param expand Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/expand.feature). (optional)
      * @param fields Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma&#39;s gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature) (optional)
      * @return ApiResponse&lt;IngeschrevenPersoonHal&gt;
@@ -448,7 +448,7 @@ public class IngeschrevenpersonenApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
@@ -460,16 +460,16 @@ public class IngeschrevenpersonenApi {
         <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
      </table>
      */
-    public ApiResponse<IngeschrevenPersoonHal> ingeschrevenNatuurlijkPersoonWithHttpInfo(String burgerservicenummer, String expand, String fields) throws ApiException {
-        okhttp3.Call localVarCall = ingeschrevenNatuurlijkPersoonValidateBeforeCall(burgerservicenummer, expand, fields, null);
+    public ApiResponse<IngeschrevenPersoonHal> getIngeschrevenPersoonWithHttpInfo(String burgerservicenummer, String expand, String fields) throws ApiException {
+        okhttp3.Call localVarCall = getIngeschrevenPersoonValidateBeforeCall(burgerservicenummer, expand, fields, null);
         Type localVarReturnType = new TypeToken<IngeschrevenPersoonHal>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Het ophalen de actuele gegevens van een Ingeschreven Persoon, inclusief verblijfplaats, kinderen, partners en ouders. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen.
-     * @param burgerservicenummer  (required)
+     * Raadpleeg een persoon (asynchronously)
+     * Raadpleeg een (overleden) persoon.  Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/fields_extensie.feature).  Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature). 
+     * @param burgerservicenummer Uniek persoonsnummer  (required)
      * @param expand Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/expand.feature). (optional)
      * @param fields Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma&#39;s gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature) (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -478,7 +478,7 @@ public class IngeschrevenpersonenApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
@@ -490,23 +490,24 @@ public class IngeschrevenpersonenApi {
         <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call ingeschrevenNatuurlijkPersoonAsync(String burgerservicenummer, String expand, String fields, final ApiCallback<IngeschrevenPersoonHal> _callback) throws ApiException {
+    public okhttp3.Call getIngeschrevenPersoonAsync(String burgerservicenummer, String expand, String fields, final ApiCallback<IngeschrevenPersoonHal> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = ingeschrevenNatuurlijkPersoonValidateBeforeCall(burgerservicenummer, expand, fields, _callback);
+        okhttp3.Call localVarCall = getIngeschrevenPersoonValidateBeforeCall(burgerservicenummer, expand, fields, _callback);
         Type localVarReturnType = new TypeToken<IngeschrevenPersoonHal>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for ingeschrevenpersonenBurgerservicenummerkinderen
-     * @param burgerservicenummer  (required)
+     * Build call for getKind
+     * @param burgerservicenummer Uniek persoonsnummer  (required)
+     * @param id De identificatie van het kind.  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
@@ -518,155 +519,7 @@ public class IngeschrevenpersonenApi {
         <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call ingeschrevenpersonenBurgerservicenummerkinderenCall(String burgerservicenummer, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/ingeschrevenpersonen/{burgerservicenummer}/kinderen"
-            .replaceAll("\\{" + "burgerservicenummer" + "\\}", localVarApiClient.escapeString(burgerservicenummer.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-        final String[] localVarAccepts = {
-            "application/hal+json", "application/problem+json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call ingeschrevenpersonenBurgerservicenummerkinderenValidateBeforeCall(String burgerservicenummer, final ApiCallback _callback) throws ApiException {
-        
-        // verify the required parameter 'burgerservicenummer' is set
-        if (burgerservicenummer == null) {
-            throw new ApiException("Missing the required parameter 'burgerservicenummer' when calling ingeschrevenpersonenBurgerservicenummerkinderen(Async)");
-        }
-        
-
-        okhttp3.Call localVarCall = ingeschrevenpersonenBurgerservicenummerkinderenCall(burgerservicenummer, _callback);
-        return localVarCall;
-
-    }
-
-    /**
-     * 
-     * Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats.
-     * @param burgerservicenummer  (required)
-     * @return KindHalCollectie
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 404 </td><td> Not Found </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 406 </td><td> Not Acceptable </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 501 </td><td> Not Implemented </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 503 </td><td> Service Unavailable </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
-     </table>
-     */
-    public KindHalCollectie ingeschrevenpersonenBurgerservicenummerkinderen(String burgerservicenummer) throws ApiException {
-        ApiResponse<KindHalCollectie> localVarResp = ingeschrevenpersonenBurgerservicenummerkinderenWithHttpInfo(burgerservicenummer);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats.
-     * @param burgerservicenummer  (required)
-     * @return ApiResponse&lt;KindHalCollectie&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 404 </td><td> Not Found </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 406 </td><td> Not Acceptable </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 501 </td><td> Not Implemented </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 503 </td><td> Service Unavailable </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
-     </table>
-     */
-    public ApiResponse<KindHalCollectie> ingeschrevenpersonenBurgerservicenummerkinderenWithHttpInfo(String burgerservicenummer) throws ApiException {
-        okhttp3.Call localVarCall = ingeschrevenpersonenBurgerservicenummerkinderenValidateBeforeCall(burgerservicenummer, null);
-        Type localVarReturnType = new TypeToken<KindHalCollectie>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats.
-     * @param burgerservicenummer  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 404 </td><td> Not Found </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 406 </td><td> Not Acceptable </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 501 </td><td> Not Implemented </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 503 </td><td> Service Unavailable </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
-     </table>
-     */
-    public okhttp3.Call ingeschrevenpersonenBurgerservicenummerkinderenAsync(String burgerservicenummer, final ApiCallback<KindHalCollectie> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = ingeschrevenpersonenBurgerservicenummerkinderenValidateBeforeCall(burgerservicenummer, _callback);
-        Type localVarReturnType = new TypeToken<KindHalCollectie>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for ingeschrevenpersonenBurgerservicenummerkinderenId
-     * @param burgerservicenummer  (required)
-     * @param id De identificatie van het kind. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 404 </td><td> Not Found </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 406 </td><td> Not Acceptable </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 501 </td><td> Not Implemented </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 503 </td><td> Service Unavailable </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
-     </table>
-     */
-    public okhttp3.Call ingeschrevenpersonenBurgerservicenummerkinderenIdCall(String burgerservicenummer, String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getKindCall(String burgerservicenummer, String id, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -698,35 +551,35 @@ public class IngeschrevenpersonenApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call ingeschrevenpersonenBurgerservicenummerkinderenIdValidateBeforeCall(String burgerservicenummer, String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getKindValidateBeforeCall(String burgerservicenummer, String id, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'burgerservicenummer' is set
         if (burgerservicenummer == null) {
-            throw new ApiException("Missing the required parameter 'burgerservicenummer' when calling ingeschrevenpersonenBurgerservicenummerkinderenId(Async)");
+            throw new ApiException("Missing the required parameter 'burgerservicenummer' when calling getKind(Async)");
         }
         
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling ingeschrevenpersonenBurgerservicenummerkinderenId(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getKind(Async)");
         }
         
 
-        okhttp3.Call localVarCall = ingeschrevenpersonenBurgerservicenummerkinderenIdCall(burgerservicenummer, id, _callback);
+        okhttp3.Call localVarCall = getKindCall(burgerservicenummer, id, _callback);
         return localVarCall;
 
     }
 
     /**
-     * 
-     * Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.
-     * @param burgerservicenummer  (required)
-     * @param id De identificatie van het kind. (required)
-     * @return KindHal
+     * Raadpleeg een kind van een persoon
+     * Raadpleeg een kind van een persoon 
+     * @param burgerservicenummer Uniek persoonsnummer  (required)
+     * @param id De identificatie van het kind.  (required)
+     * @return KindHalBasis
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
@@ -738,22 +591,22 @@ public class IngeschrevenpersonenApi {
         <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
      </table>
      */
-    public KindHal ingeschrevenpersonenBurgerservicenummerkinderenId(String burgerservicenummer, String id) throws ApiException {
-        ApiResponse<KindHal> localVarResp = ingeschrevenpersonenBurgerservicenummerkinderenIdWithHttpInfo(burgerservicenummer, id);
+    public KindHalBasis getKind(String burgerservicenummer, String id) throws ApiException {
+        ApiResponse<KindHalBasis> localVarResp = getKindWithHttpInfo(burgerservicenummer, id);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.
-     * @param burgerservicenummer  (required)
-     * @param id De identificatie van het kind. (required)
-     * @return ApiResponse&lt;KindHal&gt;
+     * Raadpleeg een kind van een persoon
+     * Raadpleeg een kind van een persoon 
+     * @param burgerservicenummer Uniek persoonsnummer  (required)
+     * @param id De identificatie van het kind.  (required)
+     * @return ApiResponse&lt;KindHalBasis&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
@@ -765,24 +618,24 @@ public class IngeschrevenpersonenApi {
         <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
      </table>
      */
-    public ApiResponse<KindHal> ingeschrevenpersonenBurgerservicenummerkinderenIdWithHttpInfo(String burgerservicenummer, String id) throws ApiException {
-        okhttp3.Call localVarCall = ingeschrevenpersonenBurgerservicenummerkinderenIdValidateBeforeCall(burgerservicenummer, id, null);
-        Type localVarReturnType = new TypeToken<KindHal>(){}.getType();
+    public ApiResponse<KindHalBasis> getKindWithHttpInfo(String burgerservicenummer, String id) throws ApiException {
+        okhttp3.Call localVarCall = getKindValidateBeforeCall(burgerservicenummer, id, null);
+        Type localVarReturnType = new TypeToken<KindHalBasis>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.
-     * @param burgerservicenummer  (required)
-     * @param id De identificatie van het kind. (required)
+     * Raadpleeg een kind van een persoon (asynchronously)
+     * Raadpleeg een kind van een persoon 
+     * @param burgerservicenummer Uniek persoonsnummer  (required)
+     * @param id De identificatie van het kind.  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
@@ -794,27 +647,27 @@ public class IngeschrevenpersonenApi {
         <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call ingeschrevenpersonenBurgerservicenummerkinderenIdAsync(String burgerservicenummer, String id, final ApiCallback<KindHal> _callback) throws ApiException {
+    public okhttp3.Call getKindAsync(String burgerservicenummer, String id, final ApiCallback<KindHalBasis> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = ingeschrevenpersonenBurgerservicenummerkinderenIdValidateBeforeCall(burgerservicenummer, id, _callback);
-        Type localVarReturnType = new TypeToken<KindHal>(){}.getType();
+        okhttp3.Call localVarCall = getKindValidateBeforeCall(burgerservicenummer, id, _callback);
+        Type localVarReturnType = new TypeToken<KindHalBasis>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for ingeschrevenpersonenBurgerservicenummerouders
-     * @param burgerservicenummer  (required)
+     * Build call for getKinderen
+     * @param burgerservicenummer Uniek persoonsnummer  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 403 </td><td> Not Found </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 404 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 406 </td><td> Not Acceptable </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 501 </td><td> Not Implemented </td><td>  * api-version -  <br>  </td></tr>
@@ -822,11 +675,11 @@ public class IngeschrevenpersonenApi {
         <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call ingeschrevenpersonenBurgerservicenummeroudersCall(String burgerservicenummer, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getKinderenCall(String burgerservicenummer, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/ingeschrevenpersonen/{burgerservicenummer}/ouders"
+        String localVarPath = "/ingeschrevenpersonen/{burgerservicenummer}/kinderen"
             .replaceAll("\\{" + "burgerservicenummer" + "\\}", localVarApiClient.escapeString(burgerservicenummer.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -853,112 +706,29 @@ public class IngeschrevenpersonenApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call ingeschrevenpersonenBurgerservicenummeroudersValidateBeforeCall(String burgerservicenummer, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getKinderenValidateBeforeCall(String burgerservicenummer, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'burgerservicenummer' is set
         if (burgerservicenummer == null) {
-            throw new ApiException("Missing the required parameter 'burgerservicenummer' when calling ingeschrevenpersonenBurgerservicenummerouders(Async)");
+            throw new ApiException("Missing the required parameter 'burgerservicenummer' when calling getKinderen(Async)");
         }
         
 
-        okhttp3.Call localVarCall = ingeschrevenpersonenBurgerservicenummeroudersCall(burgerservicenummer, _callback);
+        okhttp3.Call localVarCall = getKinderenCall(burgerservicenummer, _callback);
         return localVarCall;
 
     }
 
     /**
-     * 
-     * Het ophalen de ouder-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats.
-     * @param burgerservicenummer  (required)
-     * @return OuderHalCollectie
+     * Levert de kinderen van een persoon
+     * Levert de kinderen van een persoon 
+     * @param burgerservicenummer Uniek persoonsnummer  (required)
+     * @return KindHalCollectie
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 403 </td><td> Not Found </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 404 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 406 </td><td> Not Acceptable </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 501 </td><td> Not Implemented </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 503 </td><td> Service Unavailable </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
-     </table>
-     */
-    public OuderHalCollectie ingeschrevenpersonenBurgerservicenummerouders(String burgerservicenummer) throws ApiException {
-        ApiResponse<OuderHalCollectie> localVarResp = ingeschrevenpersonenBurgerservicenummeroudersWithHttpInfo(burgerservicenummer);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Het ophalen de ouder-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats.
-     * @param burgerservicenummer  (required)
-     * @return ApiResponse&lt;OuderHalCollectie&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 403 </td><td> Not Found </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 404 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 406 </td><td> Not Acceptable </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 501 </td><td> Not Implemented </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 503 </td><td> Service Unavailable </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
-     </table>
-     */
-    public ApiResponse<OuderHalCollectie> ingeschrevenpersonenBurgerservicenummeroudersWithHttpInfo(String burgerservicenummer) throws ApiException {
-        okhttp3.Call localVarCall = ingeschrevenpersonenBurgerservicenummeroudersValidateBeforeCall(burgerservicenummer, null);
-        Type localVarReturnType = new TypeToken<OuderHalCollectie>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Het ophalen de ouder-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Er vind geen sortering plaats.
-     * @param burgerservicenummer  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 403 </td><td> Not Found </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 404 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 406 </td><td> Not Acceptable </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 501 </td><td> Not Implemented </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 503 </td><td> Service Unavailable </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
-     </table>
-     */
-    public okhttp3.Call ingeschrevenpersonenBurgerservicenummeroudersAsync(String burgerservicenummer, final ApiCallback<OuderHalCollectie> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = ingeschrevenpersonenBurgerservicenummeroudersValidateBeforeCall(burgerservicenummer, _callback);
-        Type localVarReturnType = new TypeToken<OuderHalCollectie>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for ingeschrevenpersonenBurgerservicenummeroudersId
-     * @param burgerservicenummer  (required)
-     * @param id De identificatie van de ouder. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
@@ -970,7 +740,90 @@ public class IngeschrevenpersonenApi {
         <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call ingeschrevenpersonenBurgerservicenummeroudersIdCall(String burgerservicenummer, String id, final ApiCallback _callback) throws ApiException {
+    public KindHalCollectie getKinderen(String burgerservicenummer) throws ApiException {
+        ApiResponse<KindHalCollectie> localVarResp = getKinderenWithHttpInfo(burgerservicenummer);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Levert de kinderen van een persoon
+     * Levert de kinderen van een persoon 
+     * @param burgerservicenummer Uniek persoonsnummer  (required)
+     * @return ApiResponse&lt;KindHalCollectie&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 406 </td><td> Not Acceptable </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 501 </td><td> Not Implemented </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
+     </table>
+     */
+    public ApiResponse<KindHalCollectie> getKinderenWithHttpInfo(String burgerservicenummer) throws ApiException {
+        okhttp3.Call localVarCall = getKinderenValidateBeforeCall(burgerservicenummer, null);
+        Type localVarReturnType = new TypeToken<KindHalCollectie>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Levert de kinderen van een persoon (asynchronously)
+     * Levert de kinderen van een persoon 
+     * @param burgerservicenummer Uniek persoonsnummer  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 406 </td><td> Not Acceptable </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 501 </td><td> Not Implemented </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getKinderenAsync(String burgerservicenummer, final ApiCallback<KindHalCollectie> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getKinderenValidateBeforeCall(burgerservicenummer, _callback);
+        Type localVarReturnType = new TypeToken<KindHalCollectie>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getOuder
+     * @param burgerservicenummer Uniek persoonsnummer  (required)
+     * @param id De identificatie van de ouder.  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 406 </td><td> Not Acceptable </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 501 </td><td> Not Implemented </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getOuderCall(String burgerservicenummer, String id, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1002,35 +855,35 @@ public class IngeschrevenpersonenApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call ingeschrevenpersonenBurgerservicenummeroudersIdValidateBeforeCall(String burgerservicenummer, String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getOuderValidateBeforeCall(String burgerservicenummer, String id, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'burgerservicenummer' is set
         if (burgerservicenummer == null) {
-            throw new ApiException("Missing the required parameter 'burgerservicenummer' when calling ingeschrevenpersonenBurgerservicenummeroudersId(Async)");
+            throw new ApiException("Missing the required parameter 'burgerservicenummer' when calling getOuder(Async)");
         }
         
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling ingeschrevenpersonenBurgerservicenummeroudersId(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getOuder(Async)");
         }
         
 
-        okhttp3.Call localVarCall = ingeschrevenpersonenBurgerservicenummeroudersIdCall(burgerservicenummer, id, _callback);
+        okhttp3.Call localVarCall = getOuderCall(burgerservicenummer, id, _callback);
         return localVarCall;
 
     }
 
     /**
-     * 
-     * Het ophalen de ouder-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen..
-     * @param burgerservicenummer  (required)
-     * @param id De identificatie van de ouder. (required)
-     * @return OuderHal
+     * Raadpleeg een ouder van een persoon
+     * Raadpleeg een ouder van een persoon 
+     * @param burgerservicenummer Uniek persoonsnummer  (required)
+     * @param id De identificatie van de ouder.  (required)
+     * @return OuderHalBasis
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
@@ -1042,22 +895,22 @@ public class IngeschrevenpersonenApi {
         <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
      </table>
      */
-    public OuderHal ingeschrevenpersonenBurgerservicenummeroudersId(String burgerservicenummer, String id) throws ApiException {
-        ApiResponse<OuderHal> localVarResp = ingeschrevenpersonenBurgerservicenummeroudersIdWithHttpInfo(burgerservicenummer, id);
+    public OuderHalBasis getOuder(String burgerservicenummer, String id) throws ApiException {
+        ApiResponse<OuderHalBasis> localVarResp = getOuderWithHttpInfo(burgerservicenummer, id);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Het ophalen de ouder-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen..
-     * @param burgerservicenummer  (required)
-     * @param id De identificatie van de ouder. (required)
-     * @return ApiResponse&lt;OuderHal&gt;
+     * Raadpleeg een ouder van een persoon
+     * Raadpleeg een ouder van een persoon 
+     * @param burgerservicenummer Uniek persoonsnummer  (required)
+     * @param id De identificatie van de ouder.  (required)
+     * @return ApiResponse&lt;OuderHalBasis&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
@@ -1069,24 +922,24 @@ public class IngeschrevenpersonenApi {
         <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
      </table>
      */
-    public ApiResponse<OuderHal> ingeschrevenpersonenBurgerservicenummeroudersIdWithHttpInfo(String burgerservicenummer, String id) throws ApiException {
-        okhttp3.Call localVarCall = ingeschrevenpersonenBurgerservicenummeroudersIdValidateBeforeCall(burgerservicenummer, id, null);
-        Type localVarReturnType = new TypeToken<OuderHal>(){}.getType();
+    public ApiResponse<OuderHalBasis> getOuderWithHttpInfo(String burgerservicenummer, String id) throws ApiException {
+        okhttp3.Call localVarCall = getOuderValidateBeforeCall(burgerservicenummer, id, null);
+        Type localVarReturnType = new TypeToken<OuderHalBasis>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Het ophalen de ouder-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen..
-     * @param burgerservicenummer  (required)
-     * @param id De identificatie van de ouder. (required)
+     * Raadpleeg een ouder van een persoon (asynchronously)
+     * Raadpleeg een ouder van een persoon 
+     * @param burgerservicenummer Uniek persoonsnummer  (required)
+     * @param id De identificatie van de ouder.  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
@@ -1098,27 +951,27 @@ public class IngeschrevenpersonenApi {
         <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call ingeschrevenpersonenBurgerservicenummeroudersIdAsync(String burgerservicenummer, String id, final ApiCallback<OuderHal> _callback) throws ApiException {
+    public okhttp3.Call getOuderAsync(String burgerservicenummer, String id, final ApiCallback<OuderHalBasis> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = ingeschrevenpersonenBurgerservicenummeroudersIdValidateBeforeCall(burgerservicenummer, id, _callback);
-        Type localVarReturnType = new TypeToken<OuderHal>(){}.getType();
+        okhttp3.Call localVarCall = getOuderValidateBeforeCall(burgerservicenummer, id, _callback);
+        Type localVarReturnType = new TypeToken<OuderHalBasis>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for ingeschrevenpersonenBurgerservicenummerpartners
-     * @param burgerservicenummer  (required)
+     * Build call for getOuders
+     * @param burgerservicenummer Uniek persoonsnummer  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 404 </td><td> Not Found </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 403 </td><td> Not Found </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 404 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 406 </td><td> Not Acceptable </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 501 </td><td> Not Implemented </td><td>  * api-version -  <br>  </td></tr>
@@ -1126,11 +979,11 @@ public class IngeschrevenpersonenApi {
         <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call ingeschrevenpersonenBurgerservicenummerpartnersCall(String burgerservicenummer, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getOudersCall(String burgerservicenummer, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/ingeschrevenpersonen/{burgerservicenummer}/partners"
+        String localVarPath = "/ingeschrevenpersonen/{burgerservicenummer}/ouders"
             .replaceAll("\\{" + "burgerservicenummer" + "\\}", localVarApiClient.escapeString(burgerservicenummer.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1157,33 +1010,33 @@ public class IngeschrevenpersonenApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call ingeschrevenpersonenBurgerservicenummerpartnersValidateBeforeCall(String burgerservicenummer, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getOudersValidateBeforeCall(String burgerservicenummer, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'burgerservicenummer' is set
         if (burgerservicenummer == null) {
-            throw new ApiException("Missing the required parameter 'burgerservicenummer' when calling ingeschrevenpersonenBurgerservicenummerpartners(Async)");
+            throw new ApiException("Missing the required parameter 'burgerservicenummer' when calling getOuders(Async)");
         }
         
 
-        okhttp3.Call localVarCall = ingeschrevenpersonenBurgerservicenummerpartnersCall(burgerservicenummer, _callback);
+        okhttp3.Call localVarCall = getOudersCall(burgerservicenummer, _callback);
         return localVarCall;
 
     }
 
     /**
-     * 
-     * Het ophalen de actuele partner-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet opgenomen in het antwoord. De gevonden huwelijken/partnerschappen worden ongesorteerd teruggegeven.
-     * @param burgerservicenummer  (required)
-     * @return PartnerHalCollectie
+     * Levert de ouders van een persoon
+     * Levert de ouders van een persoon 
+     * @param burgerservicenummer Uniek persoonsnummer  (required)
+     * @return OuderHalCollectie
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 404 </td><td> Not Found </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 403 </td><td> Not Found </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 404 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 406 </td><td> Not Acceptable </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 501 </td><td> Not Implemented </td><td>  * api-version -  <br>  </td></tr>
@@ -1191,25 +1044,25 @@ public class IngeschrevenpersonenApi {
         <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
      </table>
      */
-    public PartnerHalCollectie ingeschrevenpersonenBurgerservicenummerpartners(String burgerservicenummer) throws ApiException {
-        ApiResponse<PartnerHalCollectie> localVarResp = ingeschrevenpersonenBurgerservicenummerpartnersWithHttpInfo(burgerservicenummer);
+    public OuderHalCollectie getOuders(String burgerservicenummer) throws ApiException {
+        ApiResponse<OuderHalCollectie> localVarResp = getOudersWithHttpInfo(burgerservicenummer);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Het ophalen de actuele partner-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet opgenomen in het antwoord. De gevonden huwelijken/partnerschappen worden ongesorteerd teruggegeven.
-     * @param burgerservicenummer  (required)
-     * @return ApiResponse&lt;PartnerHalCollectie&gt;
+     * Levert de ouders van een persoon
+     * Levert de ouders van een persoon 
+     * @param burgerservicenummer Uniek persoonsnummer  (required)
+     * @return ApiResponse&lt;OuderHalCollectie&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 404 </td><td> Not Found </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 403 </td><td> Not Found </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 404 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 406 </td><td> Not Acceptable </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 501 </td><td> Not Implemented </td><td>  * api-version -  <br>  </td></tr>
@@ -1217,27 +1070,27 @@ public class IngeschrevenpersonenApi {
         <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
      </table>
      */
-    public ApiResponse<PartnerHalCollectie> ingeschrevenpersonenBurgerservicenummerpartnersWithHttpInfo(String burgerservicenummer) throws ApiException {
-        okhttp3.Call localVarCall = ingeschrevenpersonenBurgerservicenummerpartnersValidateBeforeCall(burgerservicenummer, null);
-        Type localVarReturnType = new TypeToken<PartnerHalCollectie>(){}.getType();
+    public ApiResponse<OuderHalCollectie> getOudersWithHttpInfo(String burgerservicenummer) throws ApiException {
+        okhttp3.Call localVarCall = getOudersValidateBeforeCall(burgerservicenummer, null);
+        Type localVarReturnType = new TypeToken<OuderHalCollectie>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Het ophalen de actuele partner-gegevens van een van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet opgenomen in het antwoord. De gevonden huwelijken/partnerschappen worden ongesorteerd teruggegeven.
-     * @param burgerservicenummer  (required)
+     * Levert de ouders van een persoon (asynchronously)
+     * Levert de ouders van een persoon 
+     * @param burgerservicenummer Uniek persoonsnummer  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
-        <tr><td> 404 </td><td> Not Found </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 403 </td><td> Not Found </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 404 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 406 </td><td> Not Acceptable </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 501 </td><td> Not Implemented </td><td>  * api-version -  <br>  </td></tr>
@@ -1245,24 +1098,24 @@ public class IngeschrevenpersonenApi {
         <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call ingeschrevenpersonenBurgerservicenummerpartnersAsync(String burgerservicenummer, final ApiCallback<PartnerHalCollectie> _callback) throws ApiException {
+    public okhttp3.Call getOudersAsync(String burgerservicenummer, final ApiCallback<OuderHalCollectie> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = ingeschrevenpersonenBurgerservicenummerpartnersValidateBeforeCall(burgerservicenummer, _callback);
-        Type localVarReturnType = new TypeToken<PartnerHalCollectie>(){}.getType();
+        okhttp3.Call localVarCall = getOudersValidateBeforeCall(burgerservicenummer, _callback);
+        Type localVarReturnType = new TypeToken<OuderHalCollectie>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for ingeschrevenpersonenBurgerservicenummerpartnersId
-     * @param burgerservicenummer  (required)
-     * @param id De identificatie van de partner. (required)
+     * Build call for getPartner
+     * @param burgerservicenummer Uniek persoonsnummer  (required)
+     * @param id De identificatie van de partner.  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
@@ -1274,7 +1127,7 @@ public class IngeschrevenpersonenApi {
         <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call ingeschrevenpersonenBurgerservicenummerpartnersIdCall(String burgerservicenummer, String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPartnerCall(String burgerservicenummer, String id, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1306,35 +1159,35 @@ public class IngeschrevenpersonenApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call ingeschrevenpersonenBurgerservicenummerpartnersIdValidateBeforeCall(String burgerservicenummer, String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPartnerValidateBeforeCall(String burgerservicenummer, String id, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'burgerservicenummer' is set
         if (burgerservicenummer == null) {
-            throw new ApiException("Missing the required parameter 'burgerservicenummer' when calling ingeschrevenpersonenBurgerservicenummerpartnersId(Async)");
+            throw new ApiException("Missing the required parameter 'burgerservicenummer' when calling getPartner(Async)");
         }
         
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling ingeschrevenpersonenBurgerservicenummerpartnersId(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getPartner(Async)");
         }
         
 
-        okhttp3.Call localVarCall = ingeschrevenpersonenBurgerservicenummerpartnersIdCall(burgerservicenummer, id, _callback);
+        okhttp3.Call localVarCall = getPartnerCall(burgerservicenummer, id, _callback);
         return localVarCall;
 
     }
 
     /**
-     * 
-     * Het ophalen de partner-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.
-     * @param burgerservicenummer  (required)
-     * @param id De identificatie van de partner. (required)
-     * @return PartnerHal
+     * Raadpleeg de partner van een persoon
+     * Raadpleeg de partner van een persoon 
+     * @param burgerservicenummer Uniek persoonsnummer  (required)
+     * @param id De identificatie van de partner.  (required)
+     * @return PartnerHalBasis
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
@@ -1346,22 +1199,22 @@ public class IngeschrevenpersonenApi {
         <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
      </table>
      */
-    public PartnerHal ingeschrevenpersonenBurgerservicenummerpartnersId(String burgerservicenummer, String id) throws ApiException {
-        ApiResponse<PartnerHal> localVarResp = ingeschrevenpersonenBurgerservicenummerpartnersIdWithHttpInfo(burgerservicenummer, id);
+    public PartnerHalBasis getPartner(String burgerservicenummer, String id) throws ApiException {
+        ApiResponse<PartnerHalBasis> localVarResp = getPartnerWithHttpInfo(burgerservicenummer, id);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Het ophalen de partner-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.
-     * @param burgerservicenummer  (required)
-     * @param id De identificatie van de partner. (required)
-     * @return ApiResponse&lt;PartnerHal&gt;
+     * Raadpleeg de partner van een persoon
+     * Raadpleeg de partner van een persoon 
+     * @param burgerservicenummer Uniek persoonsnummer  (required)
+     * @param id De identificatie van de partner.  (required)
+     * @return ApiResponse&lt;PartnerHalBasis&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
@@ -1373,24 +1226,24 @@ public class IngeschrevenpersonenApi {
         <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
      </table>
      */
-    public ApiResponse<PartnerHal> ingeschrevenpersonenBurgerservicenummerpartnersIdWithHttpInfo(String burgerservicenummer, String id) throws ApiException {
-        okhttp3.Call localVarCall = ingeschrevenpersonenBurgerservicenummerpartnersIdValidateBeforeCall(burgerservicenummer, id, null);
-        Type localVarReturnType = new TypeToken<PartnerHal>(){}.getType();
+    public ApiResponse<PartnerHalBasis> getPartnerWithHttpInfo(String burgerservicenummer, String id) throws ApiException {
+        okhttp3.Call localVarCall = getPartnerValidateBeforeCall(burgerservicenummer, id, null);
+        Type localVarReturnType = new TypeToken<PartnerHalBasis>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Het ophalen de partner-gegevens van een Ingeschreven Persoon zoals die op de persoonslijst voorkomen.
-     * @param burgerservicenummer  (required)
-     * @param id De identificatie van de partner. (required)
+     * Raadpleeg de partner van een persoon (asynchronously)
+     * Raadpleeg de partner van een persoon 
+     * @param burgerservicenummer Uniek persoonsnummer  (required)
+     * @param id De identificatie van de partner.  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Zoekactie geslaagd </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
@@ -1402,10 +1255,157 @@ public class IngeschrevenpersonenApi {
         <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call ingeschrevenpersonenBurgerservicenummerpartnersIdAsync(String burgerservicenummer, String id, final ApiCallback<PartnerHal> _callback) throws ApiException {
+    public okhttp3.Call getPartnerAsync(String burgerservicenummer, String id, final ApiCallback<PartnerHalBasis> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = ingeschrevenpersonenBurgerservicenummerpartnersIdValidateBeforeCall(burgerservicenummer, id, _callback);
-        Type localVarReturnType = new TypeToken<PartnerHal>(){}.getType();
+        okhttp3.Call localVarCall = getPartnerValidateBeforeCall(burgerservicenummer, id, _callback);
+        Type localVarReturnType = new TypeToken<PartnerHalBasis>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getPartners
+     * @param burgerservicenummer Uniek persoonsnummer  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 406 </td><td> Not Acceptable </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 501 </td><td> Not Implemented </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getPartnersCall(String burgerservicenummer, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/ingeschrevenpersonen/{burgerservicenummer}/partners"
+            .replaceAll("\\{" + "burgerservicenummer" + "\\}", localVarApiClient.escapeString(burgerservicenummer.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/hal+json", "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getPartnersValidateBeforeCall(String burgerservicenummer, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'burgerservicenummer' is set
+        if (burgerservicenummer == null) {
+            throw new ApiException("Missing the required parameter 'burgerservicenummer' when calling getPartners(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getPartnersCall(burgerservicenummer, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Levert de actuele partners van een persoon
+     * Levert de actuele partners van een persoon. Partners uit beëindigde huwelijken of partnerschappen worden niet geretourneerd 
+     * @param burgerservicenummer Uniek persoonsnummer  (required)
+     * @return PartnerHalCollectie
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 406 </td><td> Not Acceptable </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 501 </td><td> Not Implemented </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
+     </table>
+     */
+    public PartnerHalCollectie getPartners(String burgerservicenummer) throws ApiException {
+        ApiResponse<PartnerHalCollectie> localVarResp = getPartnersWithHttpInfo(burgerservicenummer);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Levert de actuele partners van een persoon
+     * Levert de actuele partners van een persoon. Partners uit beëindigde huwelijken of partnerschappen worden niet geretourneerd 
+     * @param burgerservicenummer Uniek persoonsnummer  (required)
+     * @return ApiResponse&lt;PartnerHalCollectie&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 406 </td><td> Not Acceptable </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 501 </td><td> Not Implemented </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
+     </table>
+     */
+    public ApiResponse<PartnerHalCollectie> getPartnersWithHttpInfo(String burgerservicenummer) throws ApiException {
+        okhttp3.Call localVarCall = getPartnersValidateBeforeCall(burgerservicenummer, null);
+        Type localVarReturnType = new TypeToken<PartnerHalCollectie>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Levert de actuele partners van een persoon (asynchronously)
+     * Levert de actuele partners van een persoon. Partners uit beëindigde huwelijken of partnerschappen worden niet geretourneerd 
+     * @param burgerservicenummer Uniek persoonsnummer  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Zoekactie geslaagd  </td><td>  * api-version -  <br>  * warning -  <br>  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 406 </td><td> Not Acceptable </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 501 </td><td> Not Implemented </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable </td><td>  * api-version -  <br>  </td></tr>
+        <tr><td> 0 </td><td> Er is een onverwachte fout opgetreden </td><td>  * api-version -  <br>  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getPartnersAsync(String burgerservicenummer, final ApiCallback<PartnerHalCollectie> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getPartnersValidateBeforeCall(burgerservicenummer, _callback);
+        Type localVarReturnType = new TypeToken<PartnerHalCollectie>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
