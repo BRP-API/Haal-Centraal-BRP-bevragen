@@ -30,7 +30,7 @@ import org.openapitools.client.model.IngeschrevenPersoonHal;
 /**
  * IngeschrevenPersoonHalCollectieEmbedded
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T11:34:05.460Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T14:03:13.754Z[Etc/UTC]")
 public class IngeschrevenPersoonHalCollectieEmbedded {
   public static final String SERIALIZED_NAME_INGESCHREVENPERSONEN = "ingeschrevenpersonen";
   @SerializedName(SERIALIZED_NAME_INGESCHREVENPERSONEN)

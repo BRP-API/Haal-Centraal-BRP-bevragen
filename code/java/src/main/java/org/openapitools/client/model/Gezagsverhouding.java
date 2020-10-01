@@ -30,7 +30,7 @@ import org.openapitools.client.model.IndicatieGezagMinderjarigeEnum;
  * Gegevens over het gezag over de persoon. 
  */
 @ApiModel(description = "Gegevens over het gezag over de persoon. ")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T11:34:05.460Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T14:03:13.754Z[Etc/UTC]")
 public class Gezagsverhouding {
   public static final String SERIALIZED_NAME_INDICATIE_CURATELE_REGISTER = "indicatieCurateleRegister";
   @SerializedName(SERIALIZED_NAME_INDICATIE_CURATELE_REGISTER)
