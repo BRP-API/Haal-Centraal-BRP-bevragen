@@ -1,6 +1,6 @@
 /*
- * Bevragingen ingeschreven personen
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * Bevragen Ingeschreven Personen
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -23,20 +23,33 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.openapitools.client.model.AanduidingBijHuisnummerEnum;
 import org.openapitools.client.model.DatumOnvolledig;
-import org.openapitools.client.model.VerblijfBuitenland;
+import org.openapitools.client.model.SoortAdresEnum;
 import org.openapitools.client.model.VerblijfplaatsInOnderzoek;
 import org.openapitools.client.model.Waardetabel;
 
 /**
- * Gegevens over het verblijf en adres van de ingeschreven persoon. Dit is het adres waarop een persoon is ingeschreven.  * **datumAanvangAdreshuishouding** : De datum van aangifte of ambtshalve melding van verblijf en adres.  * **datumIngangGeldigheid** : Datum waarop de gegevens over de verblijfplaats geldig zijn geworden.  * **datumInschrijvingInGemeente**: Bij inschrijving op grond van een aangifte door de burger van zijn vestiging in een (volgende) gemeente is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop de betrokkene schriftelijk van het voornemen van ambtshalve opneming mededeling is gedaan.  * **datumVestigingInNederland** : Datum van inschrijving in Nederland  * **landVanWaarIngeschreven** : Het land waar de ingeschreven persoon verblijf hield voor (her)vestiging in Nederland.  * **gemeenteVanInschrijving** : Een aanduiding die aangeeft in welke gemeente de PK zich bevindt. De code kan voorloopnullen bevatten  * **landVanWaarIngeschreven** : Het LAND waar de INGESCHREVEN PERSOON verblijf hield voor (her)vestiging in Nederland.
+ * Gegevens over het verblijf of de woonlocatie van een persoon. * **datumAanvangAdreshuishouding** : de datum van aangifte of ambtshalve melding van verblijf en adres. * **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden. * **datumInschrijvingInGemeente**: bij inschrijving op grond van een verhuisaangifte door de burger is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop het voornemen van ambtshalve opneming schriftelijk aan de persoon is medegedeeld. * **datumVestigingInNederland** : datum van inschrijving in Nederland. * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland. * **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten.\&quot; 
  */
-@ApiModel(description = "Gegevens over het verblijf en adres van de ingeschreven persoon. Dit is het adres waarop een persoon is ingeschreven.  * **datumAanvangAdreshuishouding** : De datum van aangifte of ambtshalve melding van verblijf en adres.  * **datumIngangGeldigheid** : Datum waarop de gegevens over de verblijfplaats geldig zijn geworden.  * **datumInschrijvingInGemeente**: Bij inschrijving op grond van een aangifte door de burger van zijn vestiging in een (volgende) gemeente is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop de betrokkene schriftelijk van het voornemen van ambtshalve opneming mededeling is gedaan.  * **datumVestigingInNederland** : Datum van inschrijving in Nederland  * **landVanWaarIngeschreven** : Het land waar de ingeschreven persoon verblijf hield voor (her)vestiging in Nederland.  * **gemeenteVanInschrijving** : Een aanduiding die aangeeft in welke gemeente de PK zich bevindt. De code kan voorloopnullen bevatten  * **landVanWaarIngeschreven** : Het LAND waar de INGESCHREVEN PERSOON verblijf hield voor (her)vestiging in Nederland.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-21T14:20:17.398Z[Etc/UTC]")
+@ApiModel(description = "Gegevens over het verblijf of de woonlocatie van een persoon. * **datumAanvangAdreshuishouding** : de datum van aangifte of ambtshalve melding van verblijf en adres. * **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden. * **datumInschrijvingInGemeente**: bij inschrijving op grond van een verhuisaangifte door de burger is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop het voornemen van ambtshalve opneming schriftelijk aan de persoon is medegedeeld. * **datumVestigingInNederland** : datum van inschrijving in Nederland. * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland. * **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten.\" ")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T11:34:05.460Z[Etc/UTC]")
 public class VerblijfplaatsAllOf {
-  public static final String SERIALIZED_NAME_IDENTIFICATIECODE_ADRESSEERBAAR_OBJECT = "identificatiecodeAdresseerbaarObject";
-  @SerializedName(SERIALIZED_NAME_IDENTIFICATIECODE_ADRESSEERBAAR_OBJECT)
-  private String identificatiecodeAdresseerbaarObject;
+  public static final String SERIALIZED_NAME_ADRESSEERBAAR_OBJECT_IDENTIFICATIE = "adresseerbaarObjectIdentificatie";
+  @SerializedName(SERIALIZED_NAME_ADRESSEERBAAR_OBJECT_IDENTIFICATIE)
+  private String adresseerbaarObjectIdentificatie;
+
+  public static final String SERIALIZED_NAME_AANDUIDING_BIJ_HUISNUMMER = "aanduidingBijHuisnummer";
+  @SerializedName(SERIALIZED_NAME_AANDUIDING_BIJ_HUISNUMMER)
+  private AanduidingBijHuisnummerEnum aanduidingBijHuisnummer;
+
+  public static final String SERIALIZED_NAME_NUMMERAANDUIDING_IDENTIFICATIE = "nummeraanduidingIdentificatie";
+  @SerializedName(SERIALIZED_NAME_NUMMERAANDUIDING_IDENTIFICATIE)
+  private String nummeraanduidingIdentificatie;
+
+  public static final String SERIALIZED_NAME_FUNCTIE_ADRES = "functieAdres";
+  @SerializedName(SERIALIZED_NAME_FUNCTIE_ADRES)
+  private SoortAdresEnum functieAdres;
 
   public static final String SERIALIZED_NAME_INDICATIE_VESTIGING_VANUIT_BUITENLAND = "indicatieVestigingVanuitBuitenland";
   @SerializedName(SERIALIZED_NAME_INDICATIE_VESTIGING_VANUIT_BUITENLAND)
@@ -46,9 +59,9 @@ public class VerblijfplaatsAllOf {
   @SerializedName(SERIALIZED_NAME_LOCATIEBESCHRIJVING)
   private String locatiebeschrijving;
 
-  public static final String SERIALIZED_NAME_STRAATNAAM = "straatnaam";
-  @SerializedName(SERIALIZED_NAME_STRAATNAAM)
-  private String straatnaam;
+  public static final String SERIALIZED_NAME_KORTE_NAAM = "korteNaam";
+  @SerializedName(SERIALIZED_NAME_KORTE_NAAM)
+  private String korteNaam;
 
   public static final String SERIALIZED_NAME_VANUIT_VERTROKKEN_ONBEKEND_WAARHEEN = "vanuitVertrokkenOnbekendWaarheen";
   @SerializedName(SERIALIZED_NAME_VANUIT_VERTROKKEN_ONBEKEND_WAARHEEN)
@@ -78,35 +91,120 @@ public class VerblijfplaatsAllOf {
   @SerializedName(SERIALIZED_NAME_LAND_VANWAAR_INGESCHREVEN)
   private Waardetabel landVanwaarIngeschreven;
 
-  public static final String SERIALIZED_NAME_VERBLIJF_BUITENLAND = "verblijfBuitenland";
-  @SerializedName(SERIALIZED_NAME_VERBLIJF_BUITENLAND)
-  private VerblijfBuitenland verblijfBuitenland;
+  public static final String SERIALIZED_NAME_ADRESREGEL1 = "adresregel1";
+  @SerializedName(SERIALIZED_NAME_ADRESREGEL1)
+  private String adresregel1;
+
+  public static final String SERIALIZED_NAME_ADRESREGEL2 = "adresregel2";
+  @SerializedName(SERIALIZED_NAME_ADRESREGEL2)
+  private String adresregel2;
+
+  public static final String SERIALIZED_NAME_ADRESREGEL3 = "adresregel3";
+  @SerializedName(SERIALIZED_NAME_ADRESREGEL3)
+  private String adresregel3;
+
+  public static final String SERIALIZED_NAME_VERTROKKEN_ONBEKEND_WAARHEEN = "vertrokkenOnbekendWaarheen";
+  @SerializedName(SERIALIZED_NAME_VERTROKKEN_ONBEKEND_WAARHEEN)
+  private Boolean vertrokkenOnbekendWaarheen;
+
+  public static final String SERIALIZED_NAME_LAND = "land";
+  @SerializedName(SERIALIZED_NAME_LAND)
+  private Waardetabel land;
 
   public static final String SERIALIZED_NAME_IN_ONDERZOEK = "inOnderzoek";
   @SerializedName(SERIALIZED_NAME_IN_ONDERZOEK)
   private VerblijfplaatsInOnderzoek inOnderzoek;
 
 
-  public VerblijfplaatsAllOf identificatiecodeAdresseerbaarObject(String identificatiecodeAdresseerbaarObject) {
+  public VerblijfplaatsAllOf adresseerbaarObjectIdentificatie(String adresseerbaarObjectIdentificatie) {
     
-    this.identificatiecodeAdresseerbaarObject = identificatiecodeAdresseerbaarObject;
+    this.adresseerbaarObjectIdentificatie = adresseerbaarObjectIdentificatie;
     return this;
   }
 
    /**
-   * Een verblijfplaats kan een ligplaats, een standplaats of een verblijfsobject in een of meerdere panden zijn, waaraan respectievelijk een ligplaatsidentificatie, standplaatsidentificatie of verblijfsobjectidentificatie is toegekend. De Identificatiecode verblijfplaats is een combinatie van een viercijferige gemeentecode, een tweecijferige objecttypecode die aangeeft of de aanduiding een verblijfsobject (01), ligplaats (02) of standplaats (03) betreft en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig volgnummer. Combinatie van de viercijferige &#39;gemeentecode&#39; (volgens GBA tabel 33, Gemeententabel), de tweecijferige &#39;objecttypecode&#39; en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig &#39;objectvolgnummer&#39;.
-   * @return identificatiecodeAdresseerbaarObject
+   * De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn. 
+   * @return adresseerbaarObjectIdentificatie
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "0518200000366054", value = "Een verblijfplaats kan een ligplaats, een standplaats of een verblijfsobject in een of meerdere panden zijn, waaraan respectievelijk een ligplaatsidentificatie, standplaatsidentificatie of verblijfsobjectidentificatie is toegekend. De Identificatiecode verblijfplaats is een combinatie van een viercijferige gemeentecode, een tweecijferige objecttypecode die aangeeft of de aanduiding een verblijfsobject (01), ligplaats (02) of standplaats (03) betreft en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig volgnummer. Combinatie van de viercijferige 'gemeentecode' (volgens GBA tabel 33, Gemeententabel), de tweecijferige 'objecttypecode' en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'.")
+  @ApiModelProperty(example = "0226010000038820", value = "De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn. ")
 
-  public String getIdentificatiecodeAdresseerbaarObject() {
-    return identificatiecodeAdresseerbaarObject;
+  public String getAdresseerbaarObjectIdentificatie() {
+    return adresseerbaarObjectIdentificatie;
   }
 
 
-  public void setIdentificatiecodeAdresseerbaarObject(String identificatiecodeAdresseerbaarObject) {
-    this.identificatiecodeAdresseerbaarObject = identificatiecodeAdresseerbaarObject;
+  public void setAdresseerbaarObjectIdentificatie(String adresseerbaarObjectIdentificatie) {
+    this.adresseerbaarObjectIdentificatie = adresseerbaarObjectIdentificatie;
+  }
+
+
+  public VerblijfplaatsAllOf aanduidingBijHuisnummer(AanduidingBijHuisnummerEnum aanduidingBijHuisnummer) {
+    
+    this.aanduidingBijHuisnummer = aanduidingBijHuisnummer;
+    return this;
+  }
+
+   /**
+   * Get aanduidingBijHuisnummer
+   * @return aanduidingBijHuisnummer
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public AanduidingBijHuisnummerEnum getAanduidingBijHuisnummer() {
+    return aanduidingBijHuisnummer;
+  }
+
+
+  public void setAanduidingBijHuisnummer(AanduidingBijHuisnummerEnum aanduidingBijHuisnummer) {
+    this.aanduidingBijHuisnummer = aanduidingBijHuisnummer;
+  }
+
+
+  public VerblijfplaatsAllOf nummeraanduidingIdentificatie(String nummeraanduidingIdentificatie) {
+    
+    this.nummeraanduidingIdentificatie = nummeraanduidingIdentificatie;
+    return this;
+  }
+
+   /**
+   * Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG. 
+   * @return nummeraanduidingIdentificatie
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "0518200000366054", value = "Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG. ")
+
+  public String getNummeraanduidingIdentificatie() {
+    return nummeraanduidingIdentificatie;
+  }
+
+
+  public void setNummeraanduidingIdentificatie(String nummeraanduidingIdentificatie) {
+    this.nummeraanduidingIdentificatie = nummeraanduidingIdentificatie;
+  }
+
+
+  public VerblijfplaatsAllOf functieAdres(SoortAdresEnum functieAdres) {
+    
+    this.functieAdres = functieAdres;
+    return this;
+  }
+
+   /**
+   * Get functieAdres
+   * @return functieAdres
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public SoortAdresEnum getFunctieAdres() {
+    return functieAdres;
+  }
+
+
+  public void setFunctieAdres(SoortAdresEnum functieAdres) {
+    this.functieAdres = functieAdres;
   }
 
 
@@ -117,11 +215,11 @@ public class VerblijfplaatsAllOf {
   }
 
    /**
-   * Indicatie waarmee aangegeven wordt of de ingeschreven persoon zich vanuit het buitenland heeftingeschreven. Deze indicatie heeft als rol om aan te geven dat iemand zich vanuit het buitenland gevestigd heeft. Deze indicator wordt altijd meegeleverd als de waarde true is. Als de waarde false is wordt de indicator niet meegeleverd.
+   * Geeft aan dat de ingeschreven persoon zich vanuit het buitenland heeft ingeschreven. 
    * @return indicatieVestigingVanuitBuitenland
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicatie waarmee aangegeven wordt of de ingeschreven persoon zich vanuit het buitenland heeftingeschreven. Deze indicatie heeft als rol om aan te geven dat iemand zich vanuit het buitenland gevestigd heeft. Deze indicator wordt altijd meegeleverd als de waarde true is. Als de waarde false is wordt de indicator niet meegeleverd.")
+  @ApiModelProperty(value = "Geeft aan dat de ingeschreven persoon zich vanuit het buitenland heeft ingeschreven. ")
 
   public Boolean getIndicatieVestigingVanuitBuitenland() {
     return indicatieVestigingVanuitBuitenland;
@@ -140,11 +238,11 @@ public class VerblijfplaatsAllOf {
   }
 
    /**
-   * Een geheel of gedeeltelijke omschrijving van de ligging van een object.
+   * Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats. 
    * @return locatiebeschrijving
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "Naast de derde brug", value = "Een geheel of gedeeltelijke omschrijving van de ligging van een object.")
+  @ApiModelProperty(example = "Naast de derde brug", value = "Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats. ")
 
   public String getLocatiebeschrijving() {
     return locatiebeschrijving;
@@ -156,26 +254,26 @@ public class VerblijfplaatsAllOf {
   }
 
 
-  public VerblijfplaatsAllOf straatnaam(String straatnaam) {
+  public VerblijfplaatsAllOf korteNaam(String korteNaam) {
     
-    this.straatnaam = straatnaam;
+    this.korteNaam = korteNaam;
     return this;
   }
 
    /**
-   * De officiële straatnaam zoals door het bevoegd gemeentelijk orgaan is vastgesteld, zo nodig ingekort conform de specificaties van de NEN 5825. alle alfanumrieke tekens
-   * @return straatnaam
+   * De officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG) of een verkorte versie. 
+   * @return korteNaam
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "De officiële straatnaam zoals door het bevoegd gemeentelijk orgaan is vastgesteld, zo nodig ingekort conform de specificaties van de NEN 5825. alle alfanumrieke tekens")
+  @ApiModelProperty(value = "De officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG) of een verkorte versie. ")
 
-  public String getStraatnaam() {
-    return straatnaam;
+  public String getKorteNaam() {
+    return korteNaam;
   }
 
 
-  public void setStraatnaam(String straatnaam) {
-    this.straatnaam = straatnaam;
+  public void setKorteNaam(String korteNaam) {
+    this.korteNaam = korteNaam;
   }
 
 
@@ -186,11 +284,11 @@ public class VerblijfplaatsAllOf {
   }
 
    /**
-   * Indicatie waarmee aangegeven wordt dat de persoon is teruggekeerd uit een situatie van vertrokken onbekend waarheen
+   * Geeft aan dat de persoon is teruggekeerd uit een situatie van &#39;vertrokken onbekend waarheen.&#39; 
    * @return vanuitVertrokkenOnbekendWaarheen
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "true", value = "Indicatie waarmee aangegeven wordt dat de persoon is teruggekeerd uit een situatie van vertrokken onbekend waarheen")
+  @ApiModelProperty(example = "true", value = "Geeft aan dat de persoon is teruggekeerd uit een situatie van 'vertrokken onbekend waarheen.' ")
 
   public Boolean getVanuitVertrokkenOnbekendWaarheen() {
     return vanuitVertrokkenOnbekendWaarheen;
@@ -340,26 +438,118 @@ public class VerblijfplaatsAllOf {
   }
 
 
-  public VerblijfplaatsAllOf verblijfBuitenland(VerblijfBuitenland verblijfBuitenland) {
+  public VerblijfplaatsAllOf adresregel1(String adresregel1) {
     
-    this.verblijfBuitenland = verblijfBuitenland;
+    this.adresregel1 = adresregel1;
     return this;
   }
 
    /**
-   * Get verblijfBuitenland
-   * @return verblijfBuitenland
+   * Het eerste deel van een adres is een combinatie van de straat en huisnummer. 
+   * @return adresregel1
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "Laan van de landinrichtingscommissie Duiven-Westervoort 26A-3", value = "Het eerste deel van een adres is een combinatie van de straat en huisnummer. ")
+
+  public String getAdresregel1() {
+    return adresregel1;
+  }
+
+
+  public void setAdresregel1(String adresregel1) {
+    this.adresregel1 = adresregel1;
+  }
+
+
+  public VerblijfplaatsAllOf adresregel2(String adresregel2) {
+    
+    this.adresregel2 = adresregel2;
+    return this;
+  }
+
+   /**
+   * Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode. 
+   * @return adresregel2
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1234AA Nootdorp", value = "Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode. ")
+
+  public String getAdresregel2() {
+    return adresregel2;
+  }
+
+
+  public void setAdresregel2(String adresregel2) {
+    this.adresregel2 = adresregel2;
+  }
+
+
+  public VerblijfplaatsAllOf adresregel3(String adresregel3) {
+    
+    this.adresregel3 = adresregel3;
+    return this;
+  }
+
+   /**
+   * Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland. 
+   * @return adresregel3
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "Selangor", value = "Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland. ")
+
+  public String getAdresregel3() {
+    return adresregel3;
+  }
+
+
+  public void setAdresregel3(String adresregel3) {
+    this.adresregel3 = adresregel3;
+  }
+
+
+  public VerblijfplaatsAllOf vertrokkenOnbekendWaarheen(Boolean vertrokkenOnbekendWaarheen) {
+    
+    this.vertrokkenOnbekendWaarheen = vertrokkenOnbekendWaarheen;
+    return this;
+  }
+
+   /**
+   * Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe. 
+   * @return vertrokkenOnbekendWaarheen
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe. ")
+
+  public Boolean getVertrokkenOnbekendWaarheen() {
+    return vertrokkenOnbekendWaarheen;
+  }
+
+
+  public void setVertrokkenOnbekendWaarheen(Boolean vertrokkenOnbekendWaarheen) {
+    this.vertrokkenOnbekendWaarheen = vertrokkenOnbekendWaarheen;
+  }
+
+
+  public VerblijfplaatsAllOf land(Waardetabel land) {
+    
+    this.land = land;
+    return this;
+  }
+
+   /**
+   * Get land
+   * @return land
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public VerblijfBuitenland getVerblijfBuitenland() {
-    return verblijfBuitenland;
+  public Waardetabel getLand() {
+    return land;
   }
 
 
-  public void setVerblijfBuitenland(VerblijfBuitenland verblijfBuitenland) {
-    this.verblijfBuitenland = verblijfBuitenland;
+  public void setLand(Waardetabel land) {
+    this.land = land;
   }
 
 
@@ -395,10 +585,13 @@ public class VerblijfplaatsAllOf {
       return false;
     }
     VerblijfplaatsAllOf verblijfplaatsAllOf = (VerblijfplaatsAllOf) o;
-    return Objects.equals(this.identificatiecodeAdresseerbaarObject, verblijfplaatsAllOf.identificatiecodeAdresseerbaarObject) &&
+    return Objects.equals(this.adresseerbaarObjectIdentificatie, verblijfplaatsAllOf.adresseerbaarObjectIdentificatie) &&
+        Objects.equals(this.aanduidingBijHuisnummer, verblijfplaatsAllOf.aanduidingBijHuisnummer) &&
+        Objects.equals(this.nummeraanduidingIdentificatie, verblijfplaatsAllOf.nummeraanduidingIdentificatie) &&
+        Objects.equals(this.functieAdres, verblijfplaatsAllOf.functieAdres) &&
         Objects.equals(this.indicatieVestigingVanuitBuitenland, verblijfplaatsAllOf.indicatieVestigingVanuitBuitenland) &&
         Objects.equals(this.locatiebeschrijving, verblijfplaatsAllOf.locatiebeschrijving) &&
-        Objects.equals(this.straatnaam, verblijfplaatsAllOf.straatnaam) &&
+        Objects.equals(this.korteNaam, verblijfplaatsAllOf.korteNaam) &&
         Objects.equals(this.vanuitVertrokkenOnbekendWaarheen, verblijfplaatsAllOf.vanuitVertrokkenOnbekendWaarheen) &&
         Objects.equals(this.datumAanvangAdreshouding, verblijfplaatsAllOf.datumAanvangAdreshouding) &&
         Objects.equals(this.datumIngangGeldigheid, verblijfplaatsAllOf.datumIngangGeldigheid) &&
@@ -406,13 +599,17 @@ public class VerblijfplaatsAllOf {
         Objects.equals(this.datumVestigingInNederland, verblijfplaatsAllOf.datumVestigingInNederland) &&
         Objects.equals(this.gemeenteVanInschrijving, verblijfplaatsAllOf.gemeenteVanInschrijving) &&
         Objects.equals(this.landVanwaarIngeschreven, verblijfplaatsAllOf.landVanwaarIngeschreven) &&
-        Objects.equals(this.verblijfBuitenland, verblijfplaatsAllOf.verblijfBuitenland) &&
+        Objects.equals(this.adresregel1, verblijfplaatsAllOf.adresregel1) &&
+        Objects.equals(this.adresregel2, verblijfplaatsAllOf.adresregel2) &&
+        Objects.equals(this.adresregel3, verblijfplaatsAllOf.adresregel3) &&
+        Objects.equals(this.vertrokkenOnbekendWaarheen, verblijfplaatsAllOf.vertrokkenOnbekendWaarheen) &&
+        Objects.equals(this.land, verblijfplaatsAllOf.land) &&
         Objects.equals(this.inOnderzoek, verblijfplaatsAllOf.inOnderzoek);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(identificatiecodeAdresseerbaarObject, indicatieVestigingVanuitBuitenland, locatiebeschrijving, straatnaam, vanuitVertrokkenOnbekendWaarheen, datumAanvangAdreshouding, datumIngangGeldigheid, datumInschrijvingInGemeente, datumVestigingInNederland, gemeenteVanInschrijving, landVanwaarIngeschreven, verblijfBuitenland, inOnderzoek);
+    return Objects.hash(adresseerbaarObjectIdentificatie, aanduidingBijHuisnummer, nummeraanduidingIdentificatie, functieAdres, indicatieVestigingVanuitBuitenland, locatiebeschrijving, korteNaam, vanuitVertrokkenOnbekendWaarheen, datumAanvangAdreshouding, datumIngangGeldigheid, datumInschrijvingInGemeente, datumVestigingInNederland, gemeenteVanInschrijving, landVanwaarIngeschreven, adresregel1, adresregel2, adresregel3, vertrokkenOnbekendWaarheen, land, inOnderzoek);
   }
 
 
@@ -420,10 +617,13 @@ public class VerblijfplaatsAllOf {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class VerblijfplaatsAllOf {\n");
-    sb.append("    identificatiecodeAdresseerbaarObject: ").append(toIndentedString(identificatiecodeAdresseerbaarObject)).append("\n");
+    sb.append("    adresseerbaarObjectIdentificatie: ").append(toIndentedString(adresseerbaarObjectIdentificatie)).append("\n");
+    sb.append("    aanduidingBijHuisnummer: ").append(toIndentedString(aanduidingBijHuisnummer)).append("\n");
+    sb.append("    nummeraanduidingIdentificatie: ").append(toIndentedString(nummeraanduidingIdentificatie)).append("\n");
+    sb.append("    functieAdres: ").append(toIndentedString(functieAdres)).append("\n");
     sb.append("    indicatieVestigingVanuitBuitenland: ").append(toIndentedString(indicatieVestigingVanuitBuitenland)).append("\n");
     sb.append("    locatiebeschrijving: ").append(toIndentedString(locatiebeschrijving)).append("\n");
-    sb.append("    straatnaam: ").append(toIndentedString(straatnaam)).append("\n");
+    sb.append("    korteNaam: ").append(toIndentedString(korteNaam)).append("\n");
     sb.append("    vanuitVertrokkenOnbekendWaarheen: ").append(toIndentedString(vanuitVertrokkenOnbekendWaarheen)).append("\n");
     sb.append("    datumAanvangAdreshouding: ").append(toIndentedString(datumAanvangAdreshouding)).append("\n");
     sb.append("    datumIngangGeldigheid: ").append(toIndentedString(datumIngangGeldigheid)).append("\n");
@@ -431,7 +631,11 @@ public class VerblijfplaatsAllOf {
     sb.append("    datumVestigingInNederland: ").append(toIndentedString(datumVestigingInNederland)).append("\n");
     sb.append("    gemeenteVanInschrijving: ").append(toIndentedString(gemeenteVanInschrijving)).append("\n");
     sb.append("    landVanwaarIngeschreven: ").append(toIndentedString(landVanwaarIngeschreven)).append("\n");
-    sb.append("    verblijfBuitenland: ").append(toIndentedString(verblijfBuitenland)).append("\n");
+    sb.append("    adresregel1: ").append(toIndentedString(adresregel1)).append("\n");
+    sb.append("    adresregel2: ").append(toIndentedString(adresregel2)).append("\n");
+    sb.append("    adresregel3: ").append(toIndentedString(adresregel3)).append("\n");
+    sb.append("    vertrokkenOnbekendWaarheen: ").append(toIndentedString(vertrokkenOnbekendWaarheen)).append("\n");
+    sb.append("    land: ").append(toIndentedString(land)).append("\n");
     sb.append("    inOnderzoek: ").append(toIndentedString(inOnderzoek)).append("\n");
     sb.append("}");
     return sb.toString();

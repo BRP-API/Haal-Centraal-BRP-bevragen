@@ -1,6 +1,6 @@
 /*
- * Bevragingen ingeschreven personen
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * Bevragen Ingeschreven Personen
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -25,35 +25,35 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.client.model.KindHal;
-import org.openapitools.client.model.OuderHal;
-import org.openapitools.client.model.PartnerHal;
+import org.openapitools.client.model.KindHalBasis;
+import org.openapitools.client.model.OuderHalBasis;
+import org.openapitools.client.model.PartnerHalBasis;
 
 /**
  * IngeschrevenPersoonEmbedded
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-21T14:20:17.398Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T11:34:05.460Z[Etc/UTC]")
 public class IngeschrevenPersoonEmbedded {
   public static final String SERIALIZED_NAME_OUDERS = "ouders";
   @SerializedName(SERIALIZED_NAME_OUDERS)
-  private List<OuderHal> ouders = null;
+  private List<OuderHalBasis> ouders = null;
 
   public static final String SERIALIZED_NAME_KINDEREN = "kinderen";
   @SerializedName(SERIALIZED_NAME_KINDEREN)
-  private List<KindHal> kinderen = null;
+  private List<KindHalBasis> kinderen = null;
 
   public static final String SERIALIZED_NAME_PARTNERS = "partners";
   @SerializedName(SERIALIZED_NAME_PARTNERS)
-  private List<PartnerHal> partners = null;
+  private List<PartnerHalBasis> partners = null;
 
 
-  public IngeschrevenPersoonEmbedded ouders(List<OuderHal> ouders) {
+  public IngeschrevenPersoonEmbedded ouders(List<OuderHalBasis> ouders) {
     
     this.ouders = ouders;
     return this;
   }
 
-  public IngeschrevenPersoonEmbedded addOudersItem(OuderHal oudersItem) {
+  public IngeschrevenPersoonEmbedded addOudersItem(OuderHalBasis oudersItem) {
     if (this.ouders == null) {
       this.ouders = new ArrayList<>();
     }
@@ -62,29 +62,29 @@ public class IngeschrevenPersoonEmbedded {
   }
 
    /**
-   * De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE verwijst&#x60;
+   * De ouders van de persoon. 
    * @return ouders
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE verwijst`")
+  @ApiModelProperty(value = "De ouders van de persoon. ")
 
-  public List<OuderHal> getOuders() {
+  public List<OuderHalBasis> getOuders() {
     return ouders;
   }
 
 
-  public void setOuders(List<OuderHal> ouders) {
+  public void setOuders(List<OuderHalBasis> ouders) {
     this.ouders = ouders;
   }
 
 
-  public IngeschrevenPersoonEmbedded kinderen(List<KindHal> kinderen) {
+  public IngeschrevenPersoonEmbedded kinderen(List<KindHalBasis> kinderen) {
     
     this.kinderen = kinderen;
     return this;
   }
 
-  public IngeschrevenPersoonEmbedded addKinderenItem(KindHal kinderenItem) {
+  public IngeschrevenPersoonEmbedded addKinderenItem(KindHalBasis kinderenItem) {
     if (this.kinderen == null) {
       this.kinderen = new ArrayList<>();
     }
@@ -93,29 +93,29 @@ public class IngeschrevenPersoonEmbedded {
   }
 
    /**
-   * De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE verwijst
+   * De kinderen van de persoon. 
    * @return kinderen
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE verwijst")
+  @ApiModelProperty(value = "De kinderen van de persoon. ")
 
-  public List<KindHal> getKinderen() {
+  public List<KindHalBasis> getKinderen() {
     return kinderen;
   }
 
 
-  public void setKinderen(List<KindHal> kinderen) {
+  public void setKinderen(List<KindHalBasis> kinderen) {
     this.kinderen = kinderen;
   }
 
 
-  public IngeschrevenPersoonEmbedded partners(List<PartnerHal> partners) {
+  public IngeschrevenPersoonEmbedded partners(List<PartnerHalBasis> partners) {
     
     this.partners = partners;
     return this;
   }
 
-  public IngeschrevenPersoonEmbedded addPartnersItem(PartnerHal partnersItem) {
+  public IngeschrevenPersoonEmbedded addPartnersItem(PartnerHalBasis partnersItem) {
     if (this.partners == null) {
       this.partners = new ArrayList<>();
     }
@@ -124,18 +124,18 @@ public class IngeschrevenPersoonEmbedded {
   }
 
    /**
-   * De actuele bij de ingeschreven persoon geregistreerde huwelijken en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven.
+   * De partners van de persoon. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven. 
    * @return partners
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "De actuele bij de ingeschreven persoon geregistreerde huwelijken en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven.")
+  @ApiModelProperty(value = "De partners van de persoon. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven. ")
 
-  public List<PartnerHal> getPartners() {
+  public List<PartnerHalBasis> getPartners() {
     return partners;
   }
 
 
-  public void setPartners(List<PartnerHal> partners) {
+  public void setPartners(List<PartnerHalBasis> partners) {
     this.partners = partners;
   }
 

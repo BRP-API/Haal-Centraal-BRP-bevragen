@@ -1,6 +1,6 @@
 /*
- * Bevragingen ingeschreven personen
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * Bevragen Ingeschreven Personen
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -39,10 +39,9 @@ import org.openapitools.client.model.Verblijfplaats;
 import org.openapitools.client.model.Verblijfstitel;
 
 /**
- * Gegevens over de ingeschreven persoon.  * **datumEersteInschrijving** : Datum van eerste inschrijving in de GBA
+ * IngeschrevenPersoon
  */
-@ApiModel(description = "Gegevens over de ingeschreven persoon.  * **datumEersteInschrijving** : Datum van eerste inschrijving in de GBA")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-21T14:20:17.398Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T11:34:05.460Z[Etc/UTC]")
 public class IngeschrevenPersoon {
   public static final String SERIALIZED_NAME_BURGERSERVICENUMMER = "burgerservicenummer";
   @SerializedName(SERIALIZED_NAME_BURGERSERVICENUMMER)
@@ -76,9 +75,9 @@ public class IngeschrevenPersoon {
   @SerializedName(SERIALIZED_NAME_IN_ONDERZOEK)
   private PersoonInOnderzoek inOnderzoek;
 
-  public static final String SERIALIZED_NAME_NATIONALITEIT = "nationaliteit";
-  @SerializedName(SERIALIZED_NAME_NATIONALITEIT)
-  private List<Nationaliteit> nationaliteit = null;
+  public static final String SERIALIZED_NAME_NATIONALITEITEN = "nationaliteiten";
+  @SerializedName(SERIALIZED_NAME_NATIONALITEITEN)
+  private List<Nationaliteit> nationaliteiten = null;
 
   public static final String SERIALIZED_NAME_GEBOORTE = "geboorte";
   @SerializedName(SERIALIZED_NAME_GEBOORTE)
@@ -104,9 +103,9 @@ public class IngeschrevenPersoon {
   @SerializedName(SERIALIZED_NAME_VERBLIJFSTITEL)
   private Verblijfstitel verblijfstitel;
 
-  public static final String SERIALIZED_NAME_REISDOCUMENTEN = "reisdocumenten";
-  @SerializedName(SERIALIZED_NAME_REISDOCUMENTEN)
-  private List<String> reisdocumenten = null;
+  public static final String SERIALIZED_NAME_REISDOCUMENTNUMMERS = "reisdocumentnummers";
+  @SerializedName(SERIALIZED_NAME_REISDOCUMENTNUMMERS)
+  private List<String> reisdocumentnummers = null;
 
 
   public IngeschrevenPersoon burgerservicenummer(String burgerservicenummer) {
@@ -116,11 +115,11 @@ public class IngeschrevenPersoon {
   }
 
    /**
-   * Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.
+   * Get burgerservicenummer
    * @return burgerservicenummer
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "555555021", value = "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.")
+  @ApiModelProperty(example = "555555021", value = "")
 
   public String getBurgerservicenummer() {
     return burgerservicenummer;
@@ -139,11 +138,11 @@ public class IngeschrevenPersoon {
   }
 
    /**
-   * Een aanduiding die aangeeft dat gegevens wel of niet verstrekt mogen worden. Indien true: op verzoek van deze persoon is het verstrekken van gegevens over deze persoon aan bepaalde derden niet toegestaan.
+   * Gegevens mogen niet worden verstrekt aan derden / maatschappelijke instellingen. 
    * @return geheimhoudingPersoonsgegevens
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt mogen worden. Indien true: op verzoek van deze persoon is het verstrekken van gegevens over deze persoon aan bepaalde derden niet toegestaan.")
+  @ApiModelProperty(value = "Gegevens mogen niet worden verstrekt aan derden / maatschappelijke instellingen. ")
 
   public Boolean getGeheimhoudingPersoonsgegevens() {
     return geheimhoudingPersoonsgegevens;
@@ -185,12 +184,11 @@ public class IngeschrevenPersoon {
   }
 
    /**
-   * Leeftijd in jaren op het moment van bevraging
-   * maximum: 999
+   * Leeftijd in jaren op het moment van bevragen. 
    * @return leeftijd
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "34", value = "Leeftijd in jaren op het moment van bevraging")
+  @ApiModelProperty(example = "34", value = "Leeftijd in jaren op het moment van bevragen. ")
 
   public Integer getLeeftijd() {
     return leeftijd;
@@ -294,34 +292,34 @@ public class IngeschrevenPersoon {
   }
 
 
-  public IngeschrevenPersoon nationaliteit(List<Nationaliteit> nationaliteit) {
+  public IngeschrevenPersoon nationaliteiten(List<Nationaliteit> nationaliteiten) {
     
-    this.nationaliteit = nationaliteit;
+    this.nationaliteiten = nationaliteiten;
     return this;
   }
 
-  public IngeschrevenPersoon addNationaliteitItem(Nationaliteit nationaliteitItem) {
-    if (this.nationaliteit == null) {
-      this.nationaliteit = new ArrayList<>();
+  public IngeschrevenPersoon addNationaliteitenItem(Nationaliteit nationaliteitenItem) {
+    if (this.nationaliteiten == null) {
+      this.nationaliteiten = new ArrayList<>();
     }
-    this.nationaliteit.add(nationaliteitItem);
+    this.nationaliteiten.add(nationaliteitenItem);
     return this;
   }
 
    /**
-   * Get nationaliteit
-   * @return nationaliteit
+   * Get nationaliteiten
+   * @return nationaliteiten
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public List<Nationaliteit> getNationaliteit() {
-    return nationaliteit;
+  public List<Nationaliteit> getNationaliteiten() {
+    return nationaliteiten;
   }
 
 
-  public void setNationaliteit(List<Nationaliteit> nationaliteit) {
-    this.nationaliteit = nationaliteit;
+  public void setNationaliteiten(List<Nationaliteit> nationaliteiten) {
+    this.nationaliteiten = nationaliteiten;
   }
 
 
@@ -463,34 +461,34 @@ public class IngeschrevenPersoon {
   }
 
 
-  public IngeschrevenPersoon reisdocumenten(List<String> reisdocumenten) {
+  public IngeschrevenPersoon reisdocumentnummers(List<String> reisdocumentnummers) {
     
-    this.reisdocumenten = reisdocumenten;
+    this.reisdocumentnummers = reisdocumentnummers;
     return this;
   }
 
-  public IngeschrevenPersoon addReisdocumentenItem(String reisdocumentenItem) {
-    if (this.reisdocumenten == null) {
-      this.reisdocumenten = new ArrayList<>();
+  public IngeschrevenPersoon addReisdocumentnummersItem(String reisdocumentnummersItem) {
+    if (this.reisdocumentnummers == null) {
+      this.reisdocumentnummers = new ArrayList<>();
     }
-    this.reisdocumenten.add(reisdocumentenItem);
+    this.reisdocumentnummers.add(reisdocumentnummersItem);
     return this;
   }
 
    /**
-   * Get reisdocumenten
-   * @return reisdocumenten
+   * Get reisdocumentnummers
+   * @return reisdocumentnummers
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public List<String> getReisdocumenten() {
-    return reisdocumenten;
+  public List<String> getReisdocumentnummers() {
+    return reisdocumentnummers;
   }
 
 
-  public void setReisdocumenten(List<String> reisdocumenten) {
-    this.reisdocumenten = reisdocumenten;
+  public void setReisdocumentnummers(List<String> reisdocumentnummers) {
+    this.reisdocumentnummers = reisdocumentnummers;
   }
 
 
@@ -511,19 +509,19 @@ public class IngeschrevenPersoon {
         Objects.equals(this.kiesrecht, ingeschrevenPersoon.kiesrecht) &&
         Objects.equals(this.naam, ingeschrevenPersoon.naam) &&
         Objects.equals(this.inOnderzoek, ingeschrevenPersoon.inOnderzoek) &&
-        Objects.equals(this.nationaliteit, ingeschrevenPersoon.nationaliteit) &&
+        Objects.equals(this.nationaliteiten, ingeschrevenPersoon.nationaliteiten) &&
         Objects.equals(this.geboorte, ingeschrevenPersoon.geboorte) &&
         Objects.equals(this.opschortingBijhouding, ingeschrevenPersoon.opschortingBijhouding) &&
         Objects.equals(this.overlijden, ingeschrevenPersoon.overlijden) &&
         Objects.equals(this.verblijfplaats, ingeschrevenPersoon.verblijfplaats) &&
         Objects.equals(this.gezagsverhouding, ingeschrevenPersoon.gezagsverhouding) &&
         Objects.equals(this.verblijfstitel, ingeschrevenPersoon.verblijfstitel) &&
-        Objects.equals(this.reisdocumenten, ingeschrevenPersoon.reisdocumenten);
+        Objects.equals(this.reisdocumentnummers, ingeschrevenPersoon.reisdocumentnummers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(burgerservicenummer, geheimhoudingPersoonsgegevens, geslachtsaanduiding, leeftijd, datumEersteInschrijvingGBA, kiesrecht, naam, inOnderzoek, nationaliteit, geboorte, opschortingBijhouding, overlijden, verblijfplaats, gezagsverhouding, verblijfstitel, reisdocumenten);
+    return Objects.hash(burgerservicenummer, geheimhoudingPersoonsgegevens, geslachtsaanduiding, leeftijd, datumEersteInschrijvingGBA, kiesrecht, naam, inOnderzoek, nationaliteiten, geboorte, opschortingBijhouding, overlijden, verblijfplaats, gezagsverhouding, verblijfstitel, reisdocumentnummers);
   }
 
 
@@ -539,14 +537,14 @@ public class IngeschrevenPersoon {
     sb.append("    kiesrecht: ").append(toIndentedString(kiesrecht)).append("\n");
     sb.append("    naam: ").append(toIndentedString(naam)).append("\n");
     sb.append("    inOnderzoek: ").append(toIndentedString(inOnderzoek)).append("\n");
-    sb.append("    nationaliteit: ").append(toIndentedString(nationaliteit)).append("\n");
+    sb.append("    nationaliteiten: ").append(toIndentedString(nationaliteiten)).append("\n");
     sb.append("    geboorte: ").append(toIndentedString(geboorte)).append("\n");
     sb.append("    opschortingBijhouding: ").append(toIndentedString(opschortingBijhouding)).append("\n");
     sb.append("    overlijden: ").append(toIndentedString(overlijden)).append("\n");
     sb.append("    verblijfplaats: ").append(toIndentedString(verblijfplaats)).append("\n");
     sb.append("    gezagsverhouding: ").append(toIndentedString(gezagsverhouding)).append("\n");
     sb.append("    verblijfstitel: ").append(toIndentedString(verblijfstitel)).append("\n");
-    sb.append("    reisdocumenten: ").append(toIndentedString(reisdocumenten)).append("\n");
+    sb.append("    reisdocumentnummers: ").append(toIndentedString(reisdocumentnummers)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,35 +1,48 @@
 openapi: 3.0.0
 info:
   contact:
-    url: https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen
-  description: 'API voor het ontsluiten van gegevens van ingeschreven personen en
-    aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens
-    van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft
-    een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet
-    geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk,
-    dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features)
-    voor nadere toelichting. <br> '
+    url: https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen
+  description: |
+    API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.
+
+    Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.
+
+    Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting.
   license:
     name: European Union Public License, version 1.2 (EUPL-1.2)
     url: https://eupl.eu/1.2/nl/
-  title: Bevragingen ingeschreven personen
+  title: Bevragen Ingeschreven Personen
   version: 1.0.0
 servers:
-- description: SwaggerHub API Auto Mocking
-  url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bevragingen_ingeschreven_personen
+- description: |
+    APILAB testserver
+  url: https://www.haalcentraal.nl/haalcentraal/api/brp
 paths:
   /ingeschrevenpersonen:
     get:
       description: |
-        Het ophalen van een collectie ingeschreven personen inclusief het verblijfsadres, ouders, partners, kinderen en reisdocumenten. Het betreft alleen actuele gegevens van de betreffende ingeschreven personen. Ten minste één van de volgende combinaties van parameters moet zijn opgenomen:
+        Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met parameters uit de andere combinaties.
+
+
+        Default krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.
+
+
+        Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/fields_extensie.feature)
+
+
+        Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature)
 
 
         1.  Persoon
             -  geboorte__datum
-            -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) )
+            -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)
+
+
         2.  Persoon
-            -  verblijfplaats__gemeentevaninschrijving
-            -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) )
+            -  verblijfplaats__gemeenteVanInschrijving
+            -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)
+
+
         3.  Persoon
             -  burgerservicenummer
 
@@ -39,27 +52,15 @@ paths:
             -  verblijfplaats__huisnummer
 
 
-        5.  NaamOpenbareRuimte
-            -  verblijfplaats__naamopenbareruimte (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature) )
-
-            -  verblijfplaats__gemeentevaninschrijving
+        5.  Straat
+            -  verblijfplaats__straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) )
+            -  verblijfplaats__gemeenteVanInschrijving
             -  verblijfplaats__huisnummer
 
 
-        6.  Nummeraanduiding
-            -  verblijfplaats__identificatiecodenummeraanduiding
-
-        De bovenstaande combinaties van parameters mogen gecombineerd worden met de overige beschikbare query-parameters, maar binnen iedere combinatie zijn de hier genoemde velden **verplicht**.
-
-
-        Default levert een zoekvraag alleen personen op die nog in leven zijn. Indien **_inclusiefoverledenpersonen_** de waarde **_true_** heeft worden [overleden personen](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature) opgenomen in het zoekresultaat.
-
-
-        Het maximale aantal zoekresultaten dat geretourneerd wordt is aan de provider om te bepalen. Als het resultaat van de de request dit aantal overtreft worden er geen resultaten geretourneerd en volgt er een foutmelding.
-
-
-         Er vind geen sortering plaats.
-      operationId: ingeschrevenNatuurlijkPersonen
+        6.  Adres
+            -  verblijfplaats__nummeraanduidingIdentificatie
+      operationId: GetIngeschrevenPersonen
       parameters:
       - description: Hiermee kun je opgeven welke gerelateerde resources meegeleverd
           moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of
@@ -87,11 +88,8 @@ paths:
         schema:
           type: string
         style: form
-      - description: Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene
-          bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien
-          aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1)
-          + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers
-          aanwezig zijn.
+      - description: |
+          Uniek persoonsnummer.
         example: 999993653,999991723,999995078
         explode: false
         in: query
@@ -99,12 +97,14 @@ paths:
         required: false
         schema:
           items:
-            $ref: '#/components/schemas/Burgerservicenummer'
+            maxLength: 9
+            minLength: 9
+            pattern: ^[0-9]*$
+            type: string
           type: array
         style: form
-      - description: Datum waarop de INGESCHREVEN NATUURLIJK PERSOON geboren is. Er
-          kan alleen gezocht worden met een volledige geboortedatum. Zie [functionele
-          specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/parametervalidatie.feature)
+      - description: |
+          Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/parametervalidatie.feature)
         explode: true
         in: query
         name: geboorte__datum
@@ -114,8 +114,8 @@ paths:
           format: date
           type: string
         style: form
-      - description: Gemeentenaam of een buitenlandse plaats of een plaatsbepaling,
-          die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).**
+      - description: |
+          Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**
         explode: true
         in: query
         name: geboorte__plaats
@@ -125,8 +125,8 @@ paths:
           maxLength: 40
           type: string
         style: form
-      - description: Een aanduiding die aangeeft dat de ingeschrevene een man of een
-          vrouw is, of dat het geslacht (nog) onbekend is.
+      - description: |
+          Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.
         explode: true
         in: query
         name: geslachtsaanduiding
@@ -134,23 +134,18 @@ paths:
         schema:
           $ref: '#/components/schemas/Geslacht_enum'
         style: form
-      - description: Indien in het antwoord op de zoekvraag ook overleden personen
-          moeten worden geretourneerd, dan dient de parameter *inclusiefOverledenPersonen*
-          opgenomen te zijn met de waarde _True_. Indien de parameter *inclusiefOverledenPersonen*
-          ontbreekt of de waarde _False_ heeft worden geen overleden personen opgenomen
-          in het zoekresultaat. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/overleden_personen.feature)
+      - description: |
+          Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/overleden_personen.feature)
         explode: true
         in: query
-        name: inclusiefoverledenpersonen
+        name: inclusiefOverledenPersonen
         required: false
         schema:
           example: true
           type: boolean
         style: form
-      - description: De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels
-          en adellijke titel/predikaat zijn afgesplitst. **Gebruik van de wildcard
-          is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)**
-          **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).**
+      - description: |
+          De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**
         explode: true
         in: query
         name: naam__geslachtsnaam
@@ -160,109 +155,8 @@ paths:
           maxLength: 200
           type: string
         style: form
-      - description: De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam
-          voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)
-          toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden
-          is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).**
-        explode: true
-        in: query
-        name: naam__voornamen
-        required: false
-        schema:
-          example: Dirk
-          maxLength: 200
-          type: string
-        style: form
-      - description: Een code die aangeeft in welke gemeente de PL zich bevindt of
-          de gemeente waarnaar de PL is uitgeschreven of de gemeente waar de PL voor
-          de eerste keer is opgenomen. De waarde (0000) is geen geldige inhoud voor
-          de query-parameter.
-        explode: true
-        in: query
-        name: verblijfplaats__gemeentevaninschrijving
-        required: false
-        schema:
-          example: "0518"
-          maxLength: 4
-          type: string
-        style: form
-      - description: Een door of namens het bevoegd gemeentelijk orgaan ten aanzien
-          van een adresseerbaar object toegekende toevoeging aan een huisnummer in
-          de vorm van een alfanumeriek teken.
-        explode: true
-        in: query
-        name: verblijfplaats__huisletter
-        required: false
-        schema:
-          example: a
-          maxLength: 1
-          type: string
-        style: form
-      - description: Een door of namens het bevoegd gemeentelijk orgaan ten aanzien
-          van een adresseerbaar object toegekende nummering. Alle natuurlijke getallen
-          tussen 1 en 99999.
-        explode: true
-        in: query
-        name: verblijfplaats__huisnummer
-        required: false
-        schema:
-          example: 14
-          maximum: 99999
-          type: integer
-        style: form
-      - description: Een door of namens het bevoegd gemeentelijk orgaan ten aanzien
-          van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer
-          of een combinatie van huisnummer en huisletter. a - z , A - Z , 0 – 9
-        explode: true
-        in: query
-        name: verblijfplaats__huisnummertoevoeging
-        required: false
-        schema:
-          example: bis
-          maxLength: 4
-          type: string
-        style: form
-      - description: De unieke aanduiding van een NUMMERAANDUIDING. Combinatie van
-          de viercijferige 'gemeentecode' , de tweecijferige 'objecttypecode' en een
-          voor het betreffende objecttype binnen een gemeente uniek tiencijferig 'objectvolgnummer'.
-          De objecttypecode kent in de BAG de volgende waarde:20 nummeraanduiding.
-        explode: true
-        in: query
-        name: verblijfplaats__identificatiecodenummeraanduiding
-        required: false
-        schema:
-          example: "0518200000366054"
-          maxLength: 16
-          type: string
-        style: form
-      - description: Een door het bevoegde gemeentelijke orgaan aan een OPENBARE RUIMTE
-          toegekende benaming **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/wildcard.feature)**
-          **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).**
-          Tekens gecodeerd volgens de UTF-8 standaard
-        explode: true
-        in: query
-        name: verblijfplaats__naamopenbareruimte
-        required: false
-        schema:
-          example: Tulpstraat
-          maxLength: 80
-          type: string
-        style: form
-      - description: De door PostNL vastgestelde code behorende bij een bepaalde combinatie
-          van een naam van een woonplaats, naam van een openbare ruimte en een huisnummer
-        explode: true
-        in: query
-        name: verblijfplaats__postcode
-        required: false
-        schema:
-          example: 2341SX
-          pattern: ^[1-9]{1}[0-9]{3}[A-Z]{2}$
-          type: string
-        style: form
-      - description: Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel
-          en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam.
-          **De tabel bevat vorvoegsels met hoofdletters en met kleine letters. Het
-          zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/case_insensitive.feature).**
+      - description: |
+          Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**
         explode: true
         in: query
         name: naam__voorvoegsel
@@ -272,13 +166,102 @@ paths:
           maxLength: 10
           type: string
         style: form
+      - description: |
+          De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**
+        explode: true
+        in: query
+        name: naam__voornamen
+        required: false
+        schema:
+          example: Dirk
+          maxLength: 200
+          type: string
+        style: form
+      - description: |
+          Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.
+        explode: true
+        in: query
+        name: verblijfplaats__gemeenteVanInschrijving
+        required: false
+        schema:
+          example: "0518"
+          maxLength: 4
+          type: string
+        style: form
+      - description: |
+          Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.
+        explode: true
+        in: query
+        name: verblijfplaats__huisletter
+        required: false
+        schema:
+          example: a
+          maxLength: 1
+          type: string
+        style: form
+      - description: |
+          Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.
+        explode: true
+        in: query
+        name: verblijfplaats__huisnummer
+        required: false
+        schema:
+          example: 14
+          maximum: 99999
+          type: integer
+        style: form
+      - description: |
+          Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.
+        explode: true
+        in: query
+        name: verblijfplaats__huisnummertoevoeging
+        required: false
+        schema:
+          example: bis
+          maxLength: 4
+          type: string
+        style: form
+      - description: |
+          Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
+        explode: true
+        in: query
+        name: verblijfplaats__nummeraanduidingIdentificatie
+        required: false
+        schema:
+          example: "0518200000366054"
+          maxLength: 16
+          type: string
+        style: form
+      - description: |
+          Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).
+        explode: true
+        in: query
+        name: verblijfplaats__straat
+        required: false
+        schema:
+          example: Tulpstraat
+          maxLength: 80
+          type: string
+        style: form
+      - description: |
+          De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.
+        explode: true
+        in: query
+        name: verblijfplaats__postcode
+        required: false
+        schema:
+          example: 2341SX
+          pattern: ^[1-9]{1}[0-9]{3}[A-Z]{2}$
+          type: string
+        style: form
       responses:
         "200":
           content:
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/IngeschrevenPersoonHalCollectie'
-          description: Zoekactie geslaagd
+          description: |
+            Zoekactie geslaagd
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
@@ -288,8 +271,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
-                  400 Bad Request
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1
                 title: Ten minste één parameter moet worden opgegeven.
                 status: 400
                 detail: The request could not be understood by the server due to malformed
@@ -311,8 +293,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.2
-                  401 Unauthorized
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2
                 title: Niet correct geauthenticeerd.
                 status: 401
                 detail: The request requires user authentication. The response MUST
@@ -330,8 +311,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.4
-                  403 Forbidden
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.4
                 title: U bent niet geautoriseerd voor deze operatie.
                 status: 403
                 detail: The server understood the request, but is refusing to fulfill
@@ -348,8 +328,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.7
-                  406 Not Acceptable
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7
                 title: Gevraagde contenttype wordt niet ondersteund.
                 status: 406
                 detail: The resource identified by the request is only capable of
@@ -367,8 +346,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.1
-                  500 Internal server error
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1
                 title: Interne server fout.
                 status: 500
                 detail: The server encountered an unexpected condition which prevented
@@ -385,8 +363,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.2
-                  501 Not Implemented
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.2
                 title: Not Implemented
                 status: 501
                 detail: The server does not support the functionality required to
@@ -403,8 +380,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.4
-                  503 Service Unavailable
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4
                 title: Bronservice {bron} is tijdelijk niet beschikbaar.
                 status: 503
                 detail: The service is currently unable to handle the request due
@@ -426,22 +402,32 @@ paths:
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
+      summary: Vindt personen
       tags:
-      - ingeschrevenpersonen
+      - Ingeschreven Personen
       x-accepts: application/hal+json,application/problem+json
   /ingeschrevenpersonen/{burgerservicenummer}:
     get:
-      description: Het ophalen de actuele gegevens van een Ingeschreven Persoon, inclusief
-        verblijfplaats, kinderen, partners en ouders. Het betreft alleen actuele gegevens
-        van de betreffende ingeschreven personen.
-      operationId: ingeschrevenNatuurlijkPersoon
+      description: |
+        Raadpleeg een (overleden) persoon.
+
+        Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/fields_extensie.feature).
+
+        Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature).
+      operationId: GetIngeschrevenPersoon
       parameters:
-      - explode: false
+      - description: |
+          Uniek persoonsnummer
+        explode: false
         in: path
         name: burgerservicenummer
         required: true
         schema:
-          $ref: '#/components/schemas/Burgerservicenummer'
+          example: "555555021"
+          maxLength: 9
+          minLength: 9
+          pattern: ^[0-9]*$
+          type: string
         style: simple
       - description: Hiermee kun je opgeven welke gerelateerde resources meegeleverd
           moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of
@@ -475,7 +461,8 @@ paths:
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/IngeschrevenPersoonHal'
-          description: Zoekactie geslaagd
+          description: |
+            Zoekactie geslaagd
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
@@ -485,8 +472,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
-                  400 Bad Request
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1
                 title: Ten minste één parameter moet worden opgegeven.
                 status: 400
                 detail: The request could not be understood by the server due to malformed
@@ -508,8 +494,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.2
-                  401 Unauthorized
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2
                 title: Niet correct geauthenticeerd.
                 status: 401
                 detail: The request requires user authentication. The response MUST
@@ -527,8 +512,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.4
-                  403 Forbidden
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.4
                 title: U bent niet geautoriseerd voor deze operatie.
                 status: 403
                 detail: The server understood the request, but is refusing to fulfill
@@ -545,8 +529,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.5
-                  404 Not Found
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5
                 title: Opgevraagde resource bestaat niet.
                 status: 404
                 detail: The server has not found anything matching the Request-URI.
@@ -562,8 +545,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.7
-                  406 Not Acceptable
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7
                 title: Gevraagde contenttype wordt niet ondersteund.
                 status: 406
                 detail: The resource identified by the request is only capable of
@@ -581,8 +563,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.1
-                  500 Internal server error
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1
                 title: Interne server fout.
                 status: 500
                 detail: The server encountered an unexpected condition which prevented
@@ -599,8 +580,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.2
-                  501 Not Implemented
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.2
                 title: Not Implemented
                 status: 501
                 detail: The server does not support the functionality required to
@@ -617,8 +597,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.4
-                  503 Service Unavailable
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4
                 title: Bronservice {bron} is tijdelijk niet beschikbaar.
                 status: 503
                 detail: The service is currently unable to handle the request due
@@ -640,23 +619,31 @@ paths:
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
+      summary: Raadpleeg een persoon
       tags:
-      - ingeschrevenpersonen
+      - Ingeschreven Personen
       x-accepts: application/hal+json,application/problem+json
   /ingeschrevenpersonen/{burgerservicenummer}/kinderen/{id}:
     get:
-      description: Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals
-        die op de persoonslijst voorkomen.
-      operationId: ingeschrevenpersonenBurgerservicenummerkinderenId
+      description: |
+        Raadpleeg een kind van een persoon
+      operationId: GetKind
       parameters:
-      - explode: false
+      - description: |
+          Uniek persoonsnummer
+        explode: false
         in: path
         name: burgerservicenummer
         required: true
         schema:
-          $ref: '#/components/schemas/Burgerservicenummer'
+          example: "555555021"
+          maxLength: 9
+          minLength: 9
+          pattern: ^[0-9]*$
+          type: string
         style: simple
-      - description: De identificatie van het kind.
+      - description: |
+          De identificatie van het kind.
         explode: false
         in: path
         name: id
@@ -669,8 +656,9 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/KindHal'
-          description: Zoekactie geslaagd
+                $ref: '#/components/schemas/KindHalBasis'
+          description: |
+            Zoekactie geslaagd
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
@@ -680,8 +668,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
-                  400 Bad Request
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1
                 title: Ten minste één parameter moet worden opgegeven.
                 status: 400
                 detail: The request could not be understood by the server due to malformed
@@ -703,8 +690,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.2
-                  401 Unauthorized
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2
                 title: Niet correct geauthenticeerd.
                 status: 401
                 detail: The request requires user authentication. The response MUST
@@ -722,8 +708,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.4
-                  403 Forbidden
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.4
                 title: U bent niet geautoriseerd voor deze operatie.
                 status: 403
                 detail: The server understood the request, but is refusing to fulfill
@@ -740,8 +725,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.5
-                  404 Not Found
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5
                 title: Opgevraagde resource bestaat niet.
                 status: 404
                 detail: The server has not found anything matching the Request-URI.
@@ -757,8 +741,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.7
-                  406 Not Acceptable
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7
                 title: Gevraagde contenttype wordt niet ondersteund.
                 status: 406
                 detail: The resource identified by the request is only capable of
@@ -776,8 +759,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.1
-                  500 Internal server error
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1
                 title: Interne server fout.
                 status: 500
                 detail: The server encountered an unexpected condition which prevented
@@ -794,8 +776,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.2
-                  501 Not Implemented
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.2
                 title: Not Implemented
                 status: 501
                 detail: The server does not support the functionality required to
@@ -812,8 +793,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.4
-                  503 Service Unavailable
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4
                 title: Bronservice {bron} is tijdelijk niet beschikbaar.
                 status: 503
                 detail: The service is currently unable to handle the request due
@@ -835,21 +815,28 @@ paths:
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
+      summary: Raadpleeg een kind van een persoon
       tags:
-      - ingeschrevenpersonen
+      - Ingeschreven Personen
       x-accepts: application/hal+json,application/problem+json
   /ingeschrevenpersonen/{burgerservicenummer}/kinderen:
     get:
-      description: Het ophalen de kind-gegevens van een Ingeschreven Persoon zoals
-        die op de persoonslijst voorkomen. Er vind geen sortering plaats.
-      operationId: ingeschrevenpersonenBurgerservicenummerkinderen
+      description: |
+        Levert de kinderen van een persoon
+      operationId: GetKinderen
       parameters:
-      - explode: false
+      - description: |
+          Uniek persoonsnummer
+        explode: false
         in: path
         name: burgerservicenummer
         required: true
         schema:
-          $ref: '#/components/schemas/Burgerservicenummer'
+          example: "555555021"
+          maxLength: 9
+          minLength: 9
+          pattern: ^[0-9]*$
+          type: string
         style: simple
       responses:
         "200":
@@ -857,7 +844,8 @@ paths:
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/KindHalCollectie'
-          description: Zoekactie geslaagd
+          description: |
+            Zoekactie geslaagd
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
@@ -867,8 +855,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
-                  400 Bad Request
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1
                 title: Ten minste één parameter moet worden opgegeven.
                 status: 400
                 detail: The request could not be understood by the server due to malformed
@@ -890,8 +877,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.2
-                  401 Unauthorized
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2
                 title: Niet correct geauthenticeerd.
                 status: 401
                 detail: The request requires user authentication. The response MUST
@@ -909,8 +895,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.4
-                  403 Forbidden
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.4
                 title: U bent niet geautoriseerd voor deze operatie.
                 status: 403
                 detail: The server understood the request, but is refusing to fulfill
@@ -927,8 +912,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.5
-                  404 Not Found
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5
                 title: Opgevraagde resource bestaat niet.
                 status: 404
                 detail: The server has not found anything matching the Request-URI.
@@ -944,8 +928,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.7
-                  406 Not Acceptable
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7
                 title: Gevraagde contenttype wordt niet ondersteund.
                 status: 406
                 detail: The resource identified by the request is only capable of
@@ -963,8 +946,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.1
-                  500 Internal server error
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1
                 title: Interne server fout.
                 status: 500
                 detail: The server encountered an unexpected condition which prevented
@@ -981,8 +963,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.2
-                  501 Not Implemented
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.2
                 title: Not Implemented
                 status: 501
                 detail: The server does not support the functionality required to
@@ -999,8 +980,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.4
-                  503 Service Unavailable
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4
                 title: Bronservice {bron} is tijdelijk niet beschikbaar.
                 status: 503
                 detail: The service is currently unable to handle the request due
@@ -1022,23 +1002,31 @@ paths:
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
+      summary: Levert de kinderen van een persoon
       tags:
-      - ingeschrevenpersonen
+      - Ingeschreven Personen
       x-accepts: application/hal+json,application/problem+json
   /ingeschrevenpersonen/{burgerservicenummer}/ouders/{id}:
     get:
-      description: Het ophalen de ouder-gegevens van een van een Ingeschreven Persoon
-        zoals die op de persoonslijst voorkomen..
-      operationId: ingeschrevenpersonenBurgerservicenummeroudersId
+      description: |
+        Raadpleeg een ouder van een persoon
+      operationId: GetOuder
       parameters:
-      - explode: false
+      - description: |
+          Uniek persoonsnummer
+        explode: false
         in: path
         name: burgerservicenummer
         required: true
         schema:
-          $ref: '#/components/schemas/Burgerservicenummer'
+          example: "555555021"
+          maxLength: 9
+          minLength: 9
+          pattern: ^[0-9]*$
+          type: string
         style: simple
-      - description: De identificatie van de ouder.
+      - description: |
+          De identificatie van de ouder.
         explode: false
         in: path
         name: id
@@ -1051,8 +1039,9 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/OuderHal'
-          description: Zoekactie geslaagd
+                $ref: '#/components/schemas/OuderHalBasis'
+          description: |
+            Zoekactie geslaagd
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
@@ -1062,8 +1051,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
-                  400 Bad Request
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1
                 title: Ten minste één parameter moet worden opgegeven.
                 status: 400
                 detail: The request could not be understood by the server due to malformed
@@ -1085,8 +1073,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.2
-                  401 Unauthorized
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2
                 title: Niet correct geauthenticeerd.
                 status: 401
                 detail: The request requires user authentication. The response MUST
@@ -1104,8 +1091,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.4
-                  403 Forbidden
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.4
                 title: U bent niet geautoriseerd voor deze operatie.
                 status: 403
                 detail: The server understood the request, but is refusing to fulfill
@@ -1122,8 +1108,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.5
-                  404 Not Found
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5
                 title: Opgevraagde resource bestaat niet.
                 status: 404
                 detail: The server has not found anything matching the Request-URI.
@@ -1139,8 +1124,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.7
-                  406 Not Acceptable
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7
                 title: Gevraagde contenttype wordt niet ondersteund.
                 status: 406
                 detail: The resource identified by the request is only capable of
@@ -1158,8 +1142,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.1
-                  500 Internal server error
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1
                 title: Interne server fout.
                 status: 500
                 detail: The server encountered an unexpected condition which prevented
@@ -1176,8 +1159,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.2
-                  501 Not Implemented
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.2
                 title: Not Implemented
                 status: 501
                 detail: The server does not support the functionality required to
@@ -1194,8 +1176,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.4
-                  503 Service Unavailable
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4
                 title: Bronservice {bron} is tijdelijk niet beschikbaar.
                 status: 503
                 detail: The service is currently unable to handle the request due
@@ -1217,21 +1198,28 @@ paths:
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
+      summary: Raadpleeg een ouder van een persoon
       tags:
-      - ingeschrevenpersonen
+      - Ingeschreven Personen
       x-accepts: application/hal+json,application/problem+json
   /ingeschrevenpersonen/{burgerservicenummer}/ouders:
     get:
-      description: Het ophalen de ouder-gegevens van een Ingeschreven Persoon zoals
-        die op de persoonslijst voorkomen. Er vind geen sortering plaats.
-      operationId: ingeschrevenpersonenBurgerservicenummerouders
+      description: |
+        Levert de ouders van een persoon
+      operationId: GetOuders
       parameters:
-      - explode: false
+      - description: |
+          Uniek persoonsnummer
+        explode: false
         in: path
         name: burgerservicenummer
         required: true
         schema:
-          $ref: '#/components/schemas/Burgerservicenummer'
+          example: "555555021"
+          maxLength: 9
+          minLength: 9
+          pattern: ^[0-9]*$
+          type: string
         style: simple
       responses:
         "200":
@@ -1239,7 +1227,8 @@ paths:
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/OuderHalCollectie'
-          description: Zoekactie geslaagd
+          description: |
+            Zoekactie geslaagd
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
@@ -1249,8 +1238,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
-                  400 Bad Request
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1
                 title: Ten minste één parameter moet worden opgegeven.
                 status: 400
                 detail: The request could not be understood by the server due to malformed
@@ -1272,8 +1260,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.2
-                  401 Unauthorized
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2
                 title: Niet correct geauthenticeerd.
                 status: 401
                 detail: The request requires user authentication. The response MUST
@@ -1291,8 +1278,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.5
-                  404 Not Found
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5
                 title: Opgevraagde resource bestaat niet.
                 status: 404
                 detail: The server has not found anything matching the Request-URI.
@@ -1308,8 +1294,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.4
-                  403 Forbidden
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.4
                 title: U bent niet geautoriseerd voor deze operatie.
                 status: 403
                 detail: The server understood the request, but is refusing to fulfill
@@ -1326,8 +1311,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.7
-                  406 Not Acceptable
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7
                 title: Gevraagde contenttype wordt niet ondersteund.
                 status: 406
                 detail: The resource identified by the request is only capable of
@@ -1345,8 +1329,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.1
-                  500 Internal server error
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1
                 title: Interne server fout.
                 status: 500
                 detail: The server encountered an unexpected condition which prevented
@@ -1363,8 +1346,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.2
-                  501 Not Implemented
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.2
                 title: Not Implemented
                 status: 501
                 detail: The server does not support the functionality required to
@@ -1381,8 +1363,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.4
-                  503 Service Unavailable
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4
                 title: Bronservice {bron} is tijdelijk niet beschikbaar.
                 status: 503
                 detail: The service is currently unable to handle the request due
@@ -1404,23 +1385,31 @@ paths:
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
+      summary: Levert de ouders van een persoon
       tags:
-      - ingeschrevenpersonen
+      - Ingeschreven Personen
       x-accepts: application/hal+json,application/problem+json
   /ingeschrevenpersonen/{burgerservicenummer}/partners/{id}:
     get:
-      description: Het ophalen de partner-gegevens van een Ingeschreven Persoon zoals
-        die op de persoonslijst voorkomen.
-      operationId: ingeschrevenpersonenBurgerservicenummerpartnersId
+      description: |
+        Raadpleeg de partner van een persoon
+      operationId: GetPartner
       parameters:
-      - explode: false
+      - description: |
+          Uniek persoonsnummer
+        explode: false
         in: path
         name: burgerservicenummer
         required: true
         schema:
-          $ref: '#/components/schemas/Burgerservicenummer'
+          example: "555555021"
+          maxLength: 9
+          minLength: 9
+          pattern: ^[0-9]*$
+          type: string
         style: simple
-      - description: De identificatie van de partner.
+      - description: |
+          De identificatie van de partner.
         explode: false
         in: path
         name: id
@@ -1433,8 +1422,9 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/PartnerHal'
-          description: Zoekactie geslaagd
+                $ref: '#/components/schemas/PartnerHalBasis'
+          description: |
+            Zoekactie geslaagd
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
@@ -1444,8 +1434,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
-                  400 Bad Request
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1
                 title: Ten minste één parameter moet worden opgegeven.
                 status: 400
                 detail: The request could not be understood by the server due to malformed
@@ -1467,8 +1456,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.2
-                  401 Unauthorized
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2
                 title: Niet correct geauthenticeerd.
                 status: 401
                 detail: The request requires user authentication. The response MUST
@@ -1486,8 +1474,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.4
-                  403 Forbidden
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.4
                 title: U bent niet geautoriseerd voor deze operatie.
                 status: 403
                 detail: The server understood the request, but is refusing to fulfill
@@ -1504,8 +1491,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.5
-                  404 Not Found
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5
                 title: Opgevraagde resource bestaat niet.
                 status: 404
                 detail: The server has not found anything matching the Request-URI.
@@ -1521,8 +1507,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.7
-                  406 Not Acceptable
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7
                 title: Gevraagde contenttype wordt niet ondersteund.
                 status: 406
                 detail: The resource identified by the request is only capable of
@@ -1540,8 +1525,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.1
-                  500 Internal server error
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1
                 title: Interne server fout.
                 status: 500
                 detail: The server encountered an unexpected condition which prevented
@@ -1558,8 +1542,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.2
-                  501 Not Implemented
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.2
                 title: Not Implemented
                 status: 501
                 detail: The server does not support the functionality required to
@@ -1576,8 +1559,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.4
-                  503 Service Unavailable
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4
                 title: Bronservice {bron} is tijdelijk niet beschikbaar.
                 status: 503
                 detail: The service is currently unable to handle the request due
@@ -1599,23 +1581,28 @@ paths:
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
+      summary: Raadpleeg de partner van een persoon
       tags:
-      - ingeschrevenpersonen
+      - Ingeschreven Personen
       x-accepts: application/hal+json,application/problem+json
   /ingeschrevenpersonen/{burgerservicenummer}/partners:
     get:
-      description: Het ophalen de actuele partner-gegevens van een van een Ingeschreven
-        Persoon zoals die op de persoonslijst voorkomen. Een beëindigd huwelijk of
-        geregistreerd partnerschap wordt niet opgenomen in het antwoord. De gevonden
-        huwelijken/partnerschappen worden ongesorteerd teruggegeven.
-      operationId: ingeschrevenpersonenBurgerservicenummerpartners
+      description: |
+        Levert de actuele partners van een persoon. Partners uit beëindigde huwelijken of partnerschappen worden niet geretourneerd
+      operationId: GetPartners
       parameters:
-      - explode: false
+      - description: |
+          Uniek persoonsnummer
+        explode: false
         in: path
         name: burgerservicenummer
         required: true
         schema:
-          $ref: '#/components/schemas/Burgerservicenummer'
+          example: "555555021"
+          maxLength: 9
+          minLength: 9
+          pattern: ^[0-9]*$
+          type: string
         style: simple
       responses:
         "200":
@@ -1623,7 +1610,8 @@ paths:
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/PartnerHalCollectie'
-          description: Zoekactie geslaagd
+          description: |
+            Zoekactie geslaagd
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
@@ -1633,8 +1621,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
-                  400 Bad Request
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1
                 title: Ten minste één parameter moet worden opgegeven.
                 status: 400
                 detail: The request could not be understood by the server due to malformed
@@ -1656,8 +1643,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.2
-                  401 Unauthorized
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2
                 title: Niet correct geauthenticeerd.
                 status: 401
                 detail: The request requires user authentication. The response MUST
@@ -1675,8 +1661,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.4
-                  403 Forbidden
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.4
                 title: U bent niet geautoriseerd voor deze operatie.
                 status: 403
                 detail: The server understood the request, but is refusing to fulfill
@@ -1693,8 +1678,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.5
-                  404 Not Found
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5
                 title: Opgevraagde resource bestaat niet.
                 status: 404
                 detail: The server has not found anything matching the Request-URI.
@@ -1710,8 +1694,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.7
-                  406 Not Acceptable
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7
                 title: Gevraagde contenttype wordt niet ondersteund.
                 status: 406
                 detail: The resource identified by the request is only capable of
@@ -1729,8 +1712,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.1
-                  500 Internal server error
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1
                 title: Interne server fout.
                 status: 500
                 detail: The server encountered an unexpected condition which prevented
@@ -1747,8 +1729,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.2
-                  501 Not Implemented
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.2
                 title: Not Implemented
                 status: 501
                 detail: The server does not support the functionality required to
@@ -1765,8 +1746,7 @@ paths:
           content:
             application/problem+json:
               example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.4
-                  503 Service Unavailable
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4
                 title: Bronservice {bron} is tijdelijk niet beschikbaar.
                 status: 503
                 detail: The service is currently unable to handle the request due
@@ -1788,944 +1768,9 @@ paths:
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
+      summary: Levert de actuele partners van een persoon
       tags:
-      - ingeschrevenpersonen
-      x-accepts: application/hal+json,application/problem+json
-  /ingeschrevenpersonen/{burgerservicenummer}/verblijfplaatshistorie:
-    get:
-      description: <body><p>Het ophalen van de verblijfplaatshistorie van een ingeschreven
-        persoon. Van een ingeschreven persoon wordt de verblijfplaats geretourneerd
-        waar de persoon op de (optioneel) opgegeven peildatum verbleef of worden de
-        verblijfplaatsen geretourneerd waar de persoon binnen de (optioneel) opgegeven
-        periode (datumvan tot en met datumtotenmet) heeft verbleven. Wanneer geen
-        peildatum of periode wordt opgegeven, worden alle verblijfplaatsen waar de
-        persoon verbleven heeft of nu verblijft teruggegeven.</p><p>Er wordt aflopend
-        gesorteerd op datumAanvangAdreshuishouding, zodat de meest actuele bovenaan
-        staat.</p></body>
-      operationId: Getverblijfplaatshistorie
-      parameters:
-      - explode: false
-        in: path
-        name: burgerservicenummer
-        required: true
-        schema:
-          $ref: '#/components/schemas/Burgerservicenummer'
-        style: simple
-      - description: Hiermee kun je de inhoud van de resource naar behoefte aanpassen
-          door een door komma's gescheiden lijst van property namen op te geven. Bij
-          opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven.
-          Wanneer de fields parameter niet is opgegeven, worden alle properties met
-          een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature)
-        explode: true
-        in: query
-        name: fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: De datum waarop de resource wordt opgevraagd.
-        explode: true
-        in: query
-        name: peildatum
-        required: false
-        schema:
-          example: 2018-09-09
-          format: date
-          type: string
-        style: form
-      - description: De begindatum van de periode waarover de resource wordt opgevraagd.
-        explode: true
-        in: query
-        name: datumvan
-        required: false
-        schema:
-          example: 2018-09-09
-          format: date
-          type: string
-        style: form
-      - description: De einddatum van de periode waarover de resource wordt opgevraagd.
-        explode: true
-        in: query
-        name: datumtotenmet
-        required: false
-        schema:
-          example: 2018-10-09
-          format: date
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/hal+json:
-              schema:
-                $ref: '#/components/schemas/VerblijfplaatshistorieHalCollectie'
-          description: Zoekactie geslaagd
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-            warning:
-              $ref: '#/components/headers/warning'
-        "400":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
-                  400 Bad Request
-                title: Ten minste één parameter moet worden opgegeven.
-                status: 400
-                detail: The request could not be understood by the server due to malformed
-                  syntax. The client SHOULD NOT repeat the request without modification.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: paramsRequired
-                invalidParams:
-                - type: https://www.vng.nl/realisatie/api/validaties/integer
-                  name: verblijfplaats__huisnummer
-                  code: integer
-                  reason: Waarde is geen geldige integer.
-              schema:
-                $ref: '#/components/schemas/BadRequestFoutbericht'
-          description: Bad Request
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        "401":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.2
-                  401 Unauthorized
-                title: Niet correct geauthenticeerd.
-                status: 401
-                detail: The request requires user authentication. The response MUST
-                  include a WWW-Authenticate header field (section 14.47) containing
-                  a challenge applicable to the requested resource.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: authentication
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Unauthorized
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        "403":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.4
-                  403 Forbidden
-                title: U bent niet geautoriseerd voor deze operatie.
-                status: 403
-                detail: The server understood the request, but is refusing to fulfill
-                  it.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: autorisation
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Forbidden
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        "404":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.5
-                  404 Not Found
-                title: Opgevraagde resource bestaat niet.
-                status: 404
-                detail: The server has not found anything matching the Request-URI.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: notFound
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Not Found
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        "406":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.7
-                  406 Not Acceptable
-                title: Gevraagde contenttype wordt niet ondersteund.
-                status: 406
-                detail: The resource identified by the request is only capable of
-                  generating response entities which have content characteristics
-                  not acceptable according to thr accept headers sent in the request
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: notAcceptable
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Not Acceptable
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        "500":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.1
-                  500 Internal server error
-                title: Interne server fout.
-                status: 500
-                detail: The server encountered an unexpected condition which prevented
-                  it from fulfilling the request.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: serverError
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Internal Server Error
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        "501":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.2
-                  501 Not Implemented
-                title: Not Implemented
-                status: 501
-                detail: The server does not support the functionality required to
-                  fulfill the request.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: notImplemented
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Not Implemented
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        "503":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.4
-                  503 Service Unavailable
-                title: Bronservice {bron} is tijdelijk niet beschikbaar.
-                status: 503
-                detail: The service is currently unable to handle the request due
-                  to a temporary overloading or maintenance of the server.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: notAvailable
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Service Unavailable
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        default:
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Er is een onverwachte fout opgetreden
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-      tags:
-      - Historie
-      x-accepts: application/hal+json,application/problem+json
-  /ingeschrevenpersonen/{burgerservicenummer}/partnerhistorie:
-    get:
-      description: <body><p>Het ophalen van de partnerhistorie van een ingeschreven
-        persoon. Van een ingeschreven persoon worden partners waarmee in het verleden
-        relaties geregistreerd zijn geretourneerd die de persoon had op de (optioneel)
-        opgegeven peildatum of binnen de (optioneel) opgegeven periode (datumvan tot
-        en met datumtotenmet).</p></body>
-      operationId: Getpartnerhistorie
-      parameters:
-      - explode: false
-        in: path
-        name: burgerservicenummer
-        required: true
-        schema:
-          $ref: '#/components/schemas/Burgerservicenummer'
-        style: simple
-      - description: Hiermee kun je de inhoud van de resource naar behoefte aanpassen
-          door een door komma's gescheiden lijst van property namen op te geven. Bij
-          opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven.
-          Wanneer de fields parameter niet is opgegeven, worden alle properties met
-          een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature)
-        explode: true
-        in: query
-        name: fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: De datum waarop de resource wordt opgevraagd.
-        explode: true
-        in: query
-        name: peildatum
-        required: false
-        schema:
-          example: 2018-09-09
-          format: date
-          type: string
-        style: form
-      - description: De begindatum van de periode waarover de resource wordt opgevraagd.
-        explode: true
-        in: query
-        name: datumvan
-        required: false
-        schema:
-          example: 2018-09-09
-          format: date
-          type: string
-        style: form
-      - description: De einddatum van de periode waarover de resource wordt opgevraagd.
-        explode: true
-        in: query
-        name: datumtotenmet
-        required: false
-        schema:
-          example: 2018-10-09
-          format: date
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/hal+json:
-              schema:
-                $ref: '#/components/schemas/PartnerhistorieHalCollectie'
-          description: Zoekactie geslaagd
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-            warning:
-              $ref: '#/components/headers/warning'
-        "400":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
-                  400 Bad Request
-                title: Ten minste één parameter moet worden opgegeven.
-                status: 400
-                detail: The request could not be understood by the server due to malformed
-                  syntax. The client SHOULD NOT repeat the request without modification.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: paramsRequired
-                invalidParams:
-                - type: https://www.vng.nl/realisatie/api/validaties/integer
-                  name: verblijfplaats__huisnummer
-                  code: integer
-                  reason: Waarde is geen geldige integer.
-              schema:
-                $ref: '#/components/schemas/BadRequestFoutbericht'
-          description: Bad Request
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        "401":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.2
-                  401 Unauthorized
-                title: Niet correct geauthenticeerd.
-                status: 401
-                detail: The request requires user authentication. The response MUST
-                  include a WWW-Authenticate header field (section 14.47) containing
-                  a challenge applicable to the requested resource.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: authentication
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Unauthorized
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        "403":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.4
-                  403 Forbidden
-                title: U bent niet geautoriseerd voor deze operatie.
-                status: 403
-                detail: The server understood the request, but is refusing to fulfill
-                  it.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: autorisation
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Forbidden
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        "404":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.5
-                  404 Not Found
-                title: Opgevraagde resource bestaat niet.
-                status: 404
-                detail: The server has not found anything matching the Request-URI.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: notFound
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Not Found
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        "406":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.7
-                  406 Not Acceptable
-                title: Gevraagde contenttype wordt niet ondersteund.
-                status: 406
-                detail: The resource identified by the request is only capable of
-                  generating response entities which have content characteristics
-                  not acceptable according to thr accept headers sent in the request
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: notAcceptable
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Not Acceptable
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        "500":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.1
-                  500 Internal server error
-                title: Interne server fout.
-                status: 500
-                detail: The server encountered an unexpected condition which prevented
-                  it from fulfilling the request.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: serverError
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Internal Server Error
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        "501":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.2
-                  501 Not Implemented
-                title: Not Implemented
-                status: 501
-                detail: The server does not support the functionality required to
-                  fulfill the request.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: notImplemented
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Not Implemented
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        "503":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.4
-                  503 Service Unavailable
-                title: Bronservice {bron} is tijdelijk niet beschikbaar.
-                status: 503
-                detail: The service is currently unable to handle the request due
-                  to a temporary overloading or maintenance of the server.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: notAvailable
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Service Unavailable
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        default:
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Er is een onverwachte fout opgetreden
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-      tags:
-      - Historie
-      x-accepts: application/hal+json,application/problem+json
-  /ingeschrevenpersonen/{burgerservicenummer}/verblijfstitelhistorie:
-    get:
-      description: <body><p>Het ophalen van de verblijfstitelhistorie van een ingeschreven
-        persoon. Van een ingeschreven persoon wordt de verblijfstitel geretourneerd
-        die de persoon had op de (optioneel) opgegeven peildatum of worden de verblijfstitels
-        geretourneerd die de persoon had binnen de (optioneel) opgegeven periode (datumvan
-        tot en met datumtotenmet). Wanneer geen peildatum of periode wordt opgegeven,
-        worden alle verblijfstitels van de persoon teruggegeven.</p><p>Er wordt aflopend
-        gesorteerd op datumingang, zodat de meest actuele bovenaan staat.</p></body>
-      operationId: getverblijfstitelhistorie
-      parameters:
-      - explode: false
-        in: path
-        name: burgerservicenummer
-        required: true
-        schema:
-          $ref: '#/components/schemas/Burgerservicenummer'
-        style: simple
-      - description: Hiermee kun je de inhoud van de resource naar behoefte aanpassen
-          door een door komma's gescheiden lijst van property namen op te geven. Bij
-          opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven.
-          Wanneer de fields parameter niet is opgegeven, worden alle properties met
-          een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature)
-        explode: true
-        in: query
-        name: fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: De datum waarop de resource wordt opgevraagd.
-        explode: true
-        in: query
-        name: peildatum
-        required: false
-        schema:
-          example: 2018-09-09
-          format: date
-          type: string
-        style: form
-      - description: De begindatum van de periode waarover de resource wordt opgevraagd.
-        explode: true
-        in: query
-        name: datumvan
-        required: false
-        schema:
-          example: 2018-09-09
-          format: date
-          type: string
-        style: form
-      - description: De einddatum van de periode waarover de resource wordt opgevraagd.
-        explode: true
-        in: query
-        name: datumtotenmet
-        required: false
-        schema:
-          example: 2018-10-09
-          format: date
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/hal+json:
-              schema:
-                $ref: '#/components/schemas/VerblijfstitelhistorieHalCollectie'
-          description: Zoekactie geslaagd
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-            warning:
-              $ref: '#/components/headers/warning'
-        "400":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
-                  400 Bad Request
-                title: Ten minste één parameter moet worden opgegeven.
-                status: 400
-                detail: The request could not be understood by the server due to malformed
-                  syntax. The client SHOULD NOT repeat the request without modification.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: paramsRequired
-                invalidParams:
-                - type: https://www.vng.nl/realisatie/api/validaties/integer
-                  name: verblijfplaats__huisnummer
-                  code: integer
-                  reason: Waarde is geen geldige integer.
-              schema:
-                $ref: '#/components/schemas/BadRequestFoutbericht'
-          description: Bad Request
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        "401":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.2
-                  401 Unauthorized
-                title: Niet correct geauthenticeerd.
-                status: 401
-                detail: The request requires user authentication. The response MUST
-                  include a WWW-Authenticate header field (section 14.47) containing
-                  a challenge applicable to the requested resource.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: authentication
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Unauthorized
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        "403":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.4
-                  403 Forbidden
-                title: U bent niet geautoriseerd voor deze operatie.
-                status: 403
-                detail: The server understood the request, but is refusing to fulfill
-                  it.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: autorisation
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Forbidden
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        "404":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.5
-                  404 Not Found
-                title: Opgevraagde resource bestaat niet.
-                status: 404
-                detail: The server has not found anything matching the Request-URI.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: notFound
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Not Found
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        "406":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.7
-                  406 Not Acceptable
-                title: Gevraagde contenttype wordt niet ondersteund.
-                status: 406
-                detail: The resource identified by the request is only capable of
-                  generating response entities which have content characteristics
-                  not acceptable according to thr accept headers sent in the request
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: notAcceptable
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Not Acceptable
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        "500":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.1
-                  500 Internal server error
-                title: Interne server fout.
-                status: 500
-                detail: The server encountered an unexpected condition which prevented
-                  it from fulfilling the request.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: serverError
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Internal Server Error
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        "501":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.2
-                  501 Not Implemented
-                title: Not Implemented
-                status: 501
-                detail: The server does not support the functionality required to
-                  fulfill the request.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: notImplemented
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Not Implemented
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        "503":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.4
-                  503 Service Unavailable
-                title: Bronservice {bron} is tijdelijk niet beschikbaar.
-                status: 503
-                detail: The service is currently unable to handle the request due
-                  to a temporary overloading or maintenance of the server.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: notAvailable
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Service Unavailable
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        default:
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Er is een onverwachte fout opgetreden
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-      tags:
-      - Historie
-      x-accepts: application/hal+json,application/problem+json
-  /ingeschrevenpersonen/{burgerservicenummer}/nationaliteithistorie:
-    get:
-      description: <body><p>Het ophalen van de nationaliteithistorie van een ingeschreven
-        persoon. Van een ingeschreven persoon wordt de nationaliteit geretourneerd
-        die de persoon had op de (optioneel) opgegeven peildatum of worden de nationaliteiten
-        geretourneerd die de persoon had binnen de (optioneel) opgegeven periode (datumvan
-        tot en met datumtotenmet). Wanneer geen peildatum of periode wordt opgegeven,
-        worden alle nationaliteiten van de persoon teruggegeven.</p><p>Er wordt aflopend
-        gesorteerd op datumingang, zodat de meest actuele bovenaan staat.</p></body>
-      operationId: getnationaliteithistorie
-      parameters:
-      - explode: false
-        in: path
-        name: burgerservicenummer
-        required: true
-        schema:
-          $ref: '#/components/schemas/Burgerservicenummer'
-        style: simple
-      - description: Hiermee kun je de inhoud van de resource naar behoefte aanpassen
-          door een door komma's gescheiden lijst van property namen op te geven. Bij
-          opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven.
-          Wanneer de fields parameter niet is opgegeven, worden alle properties met
-          een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature)
-        explode: true
-        in: query
-        name: fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: De datum waarop de resource wordt opgevraagd.
-        explode: true
-        in: query
-        name: peildatum
-        required: false
-        schema:
-          example: 2018-09-09
-          format: date
-          type: string
-        style: form
-      - description: De begindatum van de periode waarover de resource wordt opgevraagd.
-        explode: true
-        in: query
-        name: datumvan
-        required: false
-        schema:
-          example: 2018-09-09
-          format: date
-          type: string
-        style: form
-      - description: De einddatum van de periode waarover de resource wordt opgevraagd.
-        explode: true
-        in: query
-        name: datumtotenmet
-        required: false
-        schema:
-          example: 2018-10-09
-          format: date
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/hal+json:
-              schema:
-                $ref: '#/components/schemas/NationaliteithistorieHalCollectie'
-          description: Zoekactie geslaagd
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-            warning:
-              $ref: '#/components/headers/warning'
-        "400":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.1
-                  400 Bad Request
-                title: Ten minste één parameter moet worden opgegeven.
-                status: 400
-                detail: The request could not be understood by the server due to malformed
-                  syntax. The client SHOULD NOT repeat the request without modification.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: paramsRequired
-                invalidParams:
-                - type: https://www.vng.nl/realisatie/api/validaties/integer
-                  name: verblijfplaats__huisnummer
-                  code: integer
-                  reason: Waarde is geen geldige integer.
-              schema:
-                $ref: '#/components/schemas/BadRequestFoutbericht'
-          description: Bad Request
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        "401":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.2
-                  401 Unauthorized
-                title: Niet correct geauthenticeerd.
-                status: 401
-                detail: The request requires user authentication. The response MUST
-                  include a WWW-Authenticate header field (section 14.47) containing
-                  a challenge applicable to the requested resource.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: authentication
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Unauthorized
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        "403":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.4
-                  403 Forbidden
-                title: U bent niet geautoriseerd voor deze operatie.
-                status: 403
-                detail: The server understood the request, but is refusing to fulfill
-                  it.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: autorisation
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Forbidden
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        "404":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.5
-                  404 Not Found
-                title: Opgevraagde resource bestaat niet.
-                status: 404
-                detail: The server has not found anything matching the Request-URI.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: notFound
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Not Found
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        "406":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.4.7
-                  406 Not Acceptable
-                title: Gevraagde contenttype wordt niet ondersteund.
-                status: 406
-                detail: The resource identified by the request is only capable of
-                  generating response entities which have content characteristics
-                  not acceptable according to thr accept headers sent in the request
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: notAcceptable
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Not Acceptable
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        "500":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.1
-                  500 Internal server error
-                title: Interne server fout.
-                status: 500
-                detail: The server encountered an unexpected condition which prevented
-                  it from fulfilling the request.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: serverError
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Internal Server Error
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        "501":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.2
-                  501 Not Implemented
-                title: Not Implemented
-                status: 501
-                detail: The server does not support the functionality required to
-                  fulfill the request.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: notImplemented
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Not Implemented
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        "503":
-          content:
-            application/problem+json:
-              example:
-                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#/10.5.4
-                  503 Service Unavailable
-                title: Bronservice {bron} is tijdelijk niet beschikbaar.
-                status: 503
-                detail: The service is currently unable to handle the request due
-                  to a temporary overloading or maintenance of the server.
-                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-                code: notAvailable
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Service Unavailable
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-        default:
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/Foutbericht'
-          description: Er is een onverwachte fout opgetreden
-          headers:
-            api-version:
-              $ref: '#/components/headers/api_version'
-      tags:
-      - Historie
+      - Ingeschreven Personen
       x-accepts: application/hal+json,application/problem+json
 components:
   headers:
@@ -2751,71 +1796,51 @@ components:
       style: simple
   parameters:
     burgerservicenummer:
+      description: |
+        Uniek persoonsnummer
       explode: false
       in: path
       name: burgerservicenummer
       required: true
       schema:
-        $ref: '#/components/schemas/Burgerservicenummer'
+        example: "555555021"
+        maxLength: 9
+        minLength: 9
+        pattern: ^[0-9]*$
+        type: string
       style: simple
   schemas:
-    Burgerservicenummer:
-      description: Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene
-        bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid
-        als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2)
-        +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig
-        zijn.
-      example: "555555021"
-      maxLength: 9
-      minLength: 9
-      pattern: ^[0-9]*$
-      title: Burgerservicenummer
-      type: string
     Reisdocumentnummer:
-      description: Het nummer van het verstrekte Nederlandse reisdocument.
+      description: |
+        Het nummer van het verstrekte Nederlandse reisdocument.
       example: "546376728"
-      maxLength: 9
-      title: Reisdocumentnummer
       type: string
     IngeschrevenPersoon:
-      description: "Gegevens over de ingeschreven persoon. \n* **datumEersteInschrijving**\
-        \ : Datum van eerste inschrijving in de GBA"
       properties:
         burgerservicenummer:
-          description: Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet
-            algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat,
-            indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0)
-            + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten
-            dus 9 cijfers aanwezig zijn.
           example: "555555021"
-          maxLength: 9
-          minLength: 9
-          pattern: ^[0-9]*$
-          title: Burgerservicenummer
           type: string
         geheimhoudingPersoonsgegevens:
-          description: 'Een aanduiding die aangeeft dat gegevens wel of niet verstrekt
-            mogen worden. Indien true: op verzoek van deze persoon is het verstrekken
-            van gegevens over deze persoon aan bepaalde derden niet toegestaan.'
+          description: |
+            Gegevens mogen niet worden verstrekt aan derden / maatschappelijke instellingen.
           title: Indicatie geheim
           type: boolean
         geslachtsaanduiding:
           $ref: '#/components/schemas/Geslacht_enum'
         leeftijd:
-          description: Leeftijd in jaren op het moment van bevraging
+          description: |
+            Leeftijd in jaren op het moment van bevragen.
           example: 34
-          maximum: 999
-          title: leeftijd
           type: integer
         datumEersteInschrijvingGBA:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/DatumOnvolledig'
         kiesrecht:
           $ref: '#/components/schemas/Kiesrecht'
         naam:
           $ref: '#/components/schemas/NaamPersoon'
         inOnderzoek:
           $ref: '#/components/schemas/PersoonInOnderzoek'
-        nationaliteit:
+        nationaliteiten:
           items:
             $ref: '#/components/schemas/Nationaliteit'
           type: array
@@ -2831,7 +1856,7 @@ components:
           $ref: '#/components/schemas/Gezagsverhouding'
         verblijfstitel:
           $ref: '#/components/schemas/Verblijfstitel'
-        reisdocumenten:
+        reisdocumentnummers:
           items:
             $ref: '#/components/schemas/Reisdocumentnummer'
           type: array
@@ -2841,34 +1866,37 @@ components:
         _links:
           $ref: '#/components/schemas/HalCollectionLinks'
         _embedded:
-          $ref: '#/components/schemas/IngeschrevenPersoonHalCollectie__embedded'
+          $ref: '#/components/schemas/IngeschrevenPersoonHalCollectieEmbedded'
       type: object
-    IngeschrevenPersoonHal:
+    IngeschrevenPersoonHalCollectieEmbedded:
+      properties:
+        ingeschrevenpersonen:
+          items:
+            $ref: '#/components/schemas/IngeschrevenPersoonHal'
+          type: array
+      type: object
+    IngeschrevenPersoonHalBasis:
       allOf:
       - $ref: '#/components/schemas/IngeschrevenPersoon'
+      - $ref: '#/components/schemas/IngeschrevenPersoonHalBasis_allOf'
+    IngeschrevenPersoonHal:
+      allOf:
+      - $ref: '#/components/schemas/IngeschrevenPersoonHalBasis'
       - $ref: '#/components/schemas/IngeschrevenPersoonHal_allOf'
     Ouder:
-      description: "Gegevens over de ouder van de ingeschrevene. \n* **datumIngangFamilierechtelijkeBetrekking**\
-        \ : De datum waarop de familierechtelijke betrekking is ontstaan."
+      description: |
+        Gegevens over de ouder van de persoon.
+        * **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.
       properties:
         burgerservicenummer:
-          description: Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet
-            algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat,
-            indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0)
-            + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten
-            dus 9 cijfers aanwezig zijn.
           example: "555555021"
-          maxLength: 9
-          minLength: 9
-          pattern: ^[0-9]*$
-          title: Burgerservicenummer
           type: string
         geslachtsaanduiding:
           $ref: '#/components/schemas/Geslacht_enum'
         ouderAanduiding:
           $ref: '#/components/schemas/OuderAanduiding_enum'
         datumIngangFamilierechtelijkeBetrekking:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/DatumOnvolledig'
         naam:
           $ref: '#/components/schemas/Naam'
         inOnderzoek:
@@ -2876,9 +1904,8 @@ components:
         geboorte:
           $ref: '#/components/schemas/Geboorte'
         geheimhoudingPersoonsgegevens:
-          description: 'Een aanduiding die aangeeft dat gegevens wel of niet verstrekt
-            mogen worden. Indien true: op verzoek van deze persoon is het verstrekken
-            van gegevens over deze persoon aan bepaalde derden niet toegestaan.'
+          description: |
+            Gegevens mogen niet worden verstrekt aan derden / maarschappelijke instellingen.
           title: Indicatie geheim
           type: boolean
       type: object
@@ -2887,32 +1914,30 @@ components:
         _links:
           $ref: '#/components/schemas/HalCollectionLinks'
         _embedded:
-          $ref: '#/components/schemas/OuderHalCollectie__embedded'
+          $ref: '#/components/schemas/OuderHalCollectieEmbedded'
       type: object
-    OuderHal:
+    OuderHalCollectieEmbedded:
+      properties:
+        ouders:
+          items:
+            $ref: '#/components/schemas/OuderHalBasis'
+          type: array
+      type: object
+    OuderHalBasis:
       allOf:
       - $ref: '#/components/schemas/Ouder'
-      - $ref: '#/components/schemas/OuderHal_allOf'
+      - $ref: '#/components/schemas/OuderHalBasis_allOf'
     Kind:
-      description: Gegevens over een kind van de ingeschrevene.
+      description: |
+        Gegevens over een kind van de persoon.
       properties:
         burgerservicenummer:
-          description: Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet
-            algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat,
-            indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0)
-            + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten
-            dus 9 cijfers aanwezig zijn.
           example: "555555021"
-          maxLength: 9
-          minLength: 9
-          pattern: ^[0-9]*$
-          title: Burgerservicenummer
           type: string
         leeftijd:
-          description: Leeftijd op het moment van bevragen
+          description: |
+            Leeftijd op het moment van bevragen
           example: 12
-          maximum: 999
-          title: leeftijd
           type: integer
         inOnderzoek:
           $ref: '#/components/schemas/KindInOnderzoek'
@@ -2921,9 +1946,8 @@ components:
         geboorte:
           $ref: '#/components/schemas/Geboorte'
         geheimhoudingPersoonsgegevens:
-          description: 'Een aanduiding die aangeeft dat gegevens wel of niet verstrekt
-            mogen worden. Indien true: op verzoek van deze persoon is het verstrekken
-            van gegevens over deze persoon aan bepaalde derden niet toegestaan.'
+          description: |
+            Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.
           title: Indicatie geheim
           type: boolean
       type: object
@@ -2932,27 +1956,25 @@ components:
         _links:
           $ref: '#/components/schemas/HalCollectionLinks'
         _embedded:
-          $ref: '#/components/schemas/KindHalCollectie__embedded'
+          $ref: '#/components/schemas/KindHalCollectieEmbedded'
       type: object
-    KindHal:
+    KindHalCollectieEmbedded:
+      properties:
+        kinderen:
+          items:
+            $ref: '#/components/schemas/KindHalBasis'
+          type: array
+      type: object
+    KindHalBasis:
       allOf:
       - $ref: '#/components/schemas/Kind'
-      - $ref: '#/components/schemas/KindHal_allOf'
+      - $ref: '#/components/schemas/KindHalBasis_allOf'
     Partner:
-      description: Gegevens over een gesloten huwelijk/geregistreerd partnerschap
-        van de ingeschrevene.
+      description: |
+        Gegevens over een gesloten huwelijk/geregistreerd partnerschap van de persoon.
       properties:
         burgerservicenummer:
-          description: Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet
-            algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat,
-            indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0)
-            + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten
-            dus 9 cijfers aanwezig zijn.
           example: "555555021"
-          maxLength: 9
-          minLength: 9
-          pattern: ^[0-9]*$
-          title: Burgerservicenummer
           type: string
         geslachtsaanduiding:
           $ref: '#/components/schemas/Geslacht_enum'
@@ -2967,9 +1989,8 @@ components:
         aangaanHuwelijkPartnerschap:
           $ref: '#/components/schemas/AangaanHuwelijkPartnerschap'
         geheimhoudingPersoonsgegevens:
-          description: 'Een aanduiding die aangeeft dat gegevens wel of niet verstrekt
-            mogen worden. Indien true: op verzoek van deze persoon is het verstrekken
-            van gegevens over deze persoon aan bepaalde derden niet toegestaan.'
+          description: |
+            Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.
           title: Indicatie geheim
           type: boolean
       type: object
@@ -2978,180 +1999,123 @@ components:
         _links:
           $ref: '#/components/schemas/HalCollectionLinks'
         _embedded:
-          $ref: '#/components/schemas/PartnerHalCollectie__embedded'
+          $ref: '#/components/schemas/PartnerHalCollectieEmbedded'
       type: object
-    PartnerHal:
+    PartnerHalCollectieEmbedded:
+      properties:
+        partners:
+          items:
+            $ref: '#/components/schemas/PartnerHalBasis'
+          type: array
+      type: object
+    PartnerHalBasis:
       allOf:
       - $ref: '#/components/schemas/Partner'
-      - $ref: '#/components/schemas/PartnerHal_allOf'
+      - $ref: '#/components/schemas/PartnerHalBasis_allOf'
     Naam:
-      description: "Gegevens over de naam van de NATUURLIJK PERSOON \n* **adellijketitelPredikaat**\
-        \ : Tabel Adellijke titel/predikaat, die aangeeft welke titel of welk predikaat\
-        \ behoort tot de naam (bij adellijke titel geslachtsnaam, bij predikaat voornaam)."
       properties:
         geslachtsnaam:
-          description: De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels
-            en adellijke titel/predikaat zijn afgesplitst.
+          description: |
+            De achternaam van een persoon.
           example: Vries
-          maxLength: 200
-          title: Geslachtsnaam
           type: string
         voorletters:
-          description: De voorletters waarmee een persoon aangeschreven wil worden.
-            De voorlettes zijn afgeleid van de voornamen.
-          maxLength: 20
-          title: Voorletters aanschrijving
+          description: |
+            De voorletters van de persoon, afgeleid van de voornamen.
+          example: P.J.
           type: string
         voornamen:
-          description: De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam
-            voorafgaat. De verzameling namen die, gescheiden door spaties, aan de
-            geslachtsnaam voorafgaat.
+          description: |
+            De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
           example: Pieter Jan
-          maxLength: 200
-          title: Voornamen
           type: string
         voorvoegsel:
-          description: Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel
-            en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam.
           example: de
-          maxLength: 10
-          title: Voorvoegsel
           type: string
         inOnderzoek:
           $ref: '#/components/schemas/NaamInOnderzoek'
       type: object
     NaamInOnderzoek:
-      description: In onderzoekgroep om aan te geven of gegevens over de naam van
-        de Ingeschreven persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)
+      description: |
+        Geeft aan welke gegevens over de naam in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)
       properties:
         geslachtsnaam:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: geslachtsnaam
           type: boolean
         voornamen:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: voornamen
           type: boolean
         voorvoegsel:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: voorvoegsel
           type: boolean
         datumIngangOnderzoek:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/DatumOnvolledig'
       type: object
     OuderInOnderzoek:
-      description: Indicators over het in onderzoek zijn van gegevens over de aangaan
-        van het huwelijk van de INGESCHREVEN PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)
+      description: |
+        Geeft aan welke gegevens van de de ouder in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)
       properties:
         burgerservicenummer:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: burgerservicenummer
           type: boolean
         datumIngangFamilierechtelijkeBetrekking:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: datumIngangFamilierechtelijkeBetrekking
           type: boolean
         geslachtsaanduiding:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: geslachtsaanduiding
           type: boolean
         datumIngangOnderzoek:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/DatumOnvolledig'
       type: object
     Geboorte:
       allOf:
       - $ref: '#/components/schemas/Geboortedatum'
       - $ref: '#/components/schemas/Geboorte_allOf'
     GeboorteInOnderzoek:
-      description: Indicators over het in onderzoek zijn van gegevens over de geboorte
-        van de INGESCHREVEN NATUURLIJK PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)
+      description: |
+        Geeft aan welke gegevens over de geboorte van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)
       properties:
         datum:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: datum
           type: boolean
         land:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: land
           type: boolean
         plaats:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: plaats
           type: boolean
         datumIngangOnderzoek:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/DatumOnvolledig'
       type: object
     Kiesrecht:
-      description: "Gegevens over het kiesrecht van de ingeschreven persoon. \n* **datumUitsluitingEuropeesKiesrecht**:\
-        \ De datum waarop een uitsluiting voor deelname aan verkiezingen voor het\
-        \ Europees parlement niet meer van toepassing is, als er sprake is van uitsluiting\
-        \ voor bepaalde tijd. \n* **datumUitsluitingKiesrecht**: De datum waarop een\
-        \ uitsluiting voor deelname aan verkiezingen niet meer van toepassing is,\
-        \ als er sprake is van uitsluiting voor bepaalde tijd."
       properties:
         europeesKiesrecht:
-          description: "Een aanduiding die aangeeft of de persoon een oproep moet\
-            \ ontvangen voor verkiezingen voor het Europees parlement. \n* true: persoon\
-            \ ontvangt een oproep"
+          description: |
+            Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement.
           example: true
-          title: europeesKiesrecht
           type: boolean
         uitgeslotenVanKiesrecht:
-          description: |-
-            Een aanduiding die aangeeft of de persoon is uitgesloten van kiesrecht.
-            * true: persoon is uitgesloten
           example: true
-          title: uitgeslotenVanKiesrecht
           type: boolean
         einddatumUitsluitingEuropeesKiesrecht:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/DatumOnvolledig'
         einddatumUitsluitingKiesrecht:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/DatumOnvolledig'
       type: object
     NaamPersoon:
       allOf:
       - $ref: '#/components/schemas/Naam'
       - $ref: '#/components/schemas/NaamPersoon_allOf'
     PersoonInOnderzoek:
-      description: Een groep van booleans om aan te geven welke gegevens van de ingeschreven
-        persoon in onderzoek zijn. Er kunnen ook categorieën in onderzoek zijn. Als
-        een hele categorie in onderzoek is worden alle rubrieken binnen die categorie
-        op _true_ gezet. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)
-        .
+      description: |
+        Geeft aan welke gegevens van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature).
       properties:
         burgerservicenummer:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: burgerservicenummer
           type: boolean
         geslachtsaanduiding:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: geslachtsaanduiding
           type: boolean
         datumIngangOnderzoek:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/DatumOnvolledig'
       type: object
     Nationaliteit:
-      description: "Gegevens over een nationaliteit van de ingeschrevene. \n* **datumIngangGeldigheid**\
-        \ : De datum waarop de gegevens over deze nationaliteit geldig zijn geworden.\
-        \ \n* **nationaliteit**: Een aanduiding van de nationaliteit die de ingeschreven\
-        \ persoon bezit. \n* **redenOpname** : De reden op grond waarvan de ingeschreven\
-        \ persoon de nationaliteit verkregen heeft."
+      description: |
+        * **redenOpname** : De reden op grond waarvan de persoon de nationaliteit gekregen heeft.
       properties:
         aanduidingBijzonderNederlanderschap:
           $ref: '#/components/schemas/AanduidingBijzonderNederlanderschap_enum'
         datumIngangGeldigheid:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/DatumOnvolledig'
         nationaliteit:
           $ref: '#/components/schemas/Waardetabel'
         redenOpname:
@@ -3160,67 +2124,40 @@ components:
           $ref: '#/components/schemas/NationaliteitInOnderzoek'
       type: object
     NationaliteitInOnderzoek:
-      description: Een groep van booleans om aan te geven welke gegevens van de nationaliteit
-        in onderzoek zijn. Als een de categorie in onderzoek is worden alle rubrieken
-        binnen die categorie op _true_ gezet. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)
+      description: |
+        Geeft aan welke gegevens over de nationaliteit in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)
       properties:
         aanduidingBijzonderNederlanderschap:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: aanduidingBijzonderNederlanderschap
           type: boolean
         nationaliteit:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: nationaliteit
           type: boolean
         redenOpname:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: redenOpname
           type: boolean
         datumIngangOnderzoek:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/DatumOnvolledig'
       type: object
-    NationaliteithistorieHalCollectie:
-      properties:
-        _links:
-          $ref: '#/components/schemas/HalCollectionLinks'
-        _embedded:
-          $ref: '#/components/schemas/NationaliteithistorieHalCollectie__embedded'
-      type: object
-    Nationaliteithistorie:
-      allOf:
-      - $ref: '#/components/schemas/Nationaliteit'
-      - $ref: '#/components/schemas/Nationaliteithistorie_allOf'
     OpschortingBijhouding:
-      description: "\n* **reden**: Een aanduiding van de reden waarom de bijhouding\
-        \ van de PL is opgeschort. \n* **datum**: De datum waarop de bijhouding van\
-        \ de persoonslijst is gestaakt. \n* Indien er wel een redenOpschortingBijhouding\
-        \ is maar er wordt geen datumOpschortingBijhouding geleverd, dan is dat datumOpschortingBijhouding\
-        \ onbekend."
+      description: |
+        * **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.
       properties:
         reden:
           $ref: '#/components/schemas/RedenOpschortingBijhouding_enum'
         datum:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/DatumOnvolledig'
       type: object
     Overlijden:
-      description: "Gegevens over het overlijden van de ingeschreven persoon. \n*\
-        \ **datum** : Datum waarop de persoon is overleden. \n* **land** : Land waar\
-        \ de persoon is overleden \n* **plaats** : De plaats waar een persoon is overleden.\
-        \ Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam\
-        \ de buitenlandse plaatsnaam of aanduiding."
+      description: |
+        Gegevens over het overlijden van de persoon.
+        * **datum** : datum waarop de persoon is overleden.
+        * **land** : land waar de persoon is overleden.
+        * **plaats** : plaats waar de persoon is overleden. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding.
       properties:
         indicatieOverleden:
-          description: Deze indicatie heeft als rol om aan te geven dat iemand is
-            overleden (waarde true). Deze indicator wordt altijd meegeleverd als de
-            waarde true is (dus als iemand overleden is). Als de waarde false is wordt
-            de indicator niet meegeleverd.
-          title: indicatieOverleden
+          description: |
+            Geeft aan dat iemand is overleden (waarde true), ongeacht of de overlijdensdatum bekend is.
           type: boolean
         datum:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/DatumOnvolledig'
         land:
           $ref: '#/components/schemas/Waardetabel'
         plaats:
@@ -3229,321 +2166,126 @@ components:
           $ref: '#/components/schemas/OverlijdenInOnderzoek'
       type: object
     OverlijdenInOnderzoek:
-      description: In onderzoek indicators voor gegevens over het overlijden van de
-        ingeschreven natuurlijk persoon. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)
+      description: |
+        Geeft aan welke gegevens over het overlijden van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)
       properties:
         datum:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: datum
           type: boolean
         land:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: land
           type: boolean
         plaats:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: plaats
           type: boolean
         datumIngangOnderzoek:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/DatumOnvolledig'
       type: object
     KindInOnderzoek:
-      description: Indicators over het in onderzoek zijn van gegevens over de aangaan
-        van het huwelijk van de INGESCHREVEN PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)
+      description: |
+        Geeft aan of de gegevens over het kind van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)
       properties:
         burgerservicenummer:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: burgerservicenummer
           type: boolean
         datumIngangOnderzoek:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/DatumOnvolledig'
       type: object
     PartnerInOnderzoek:
-      description: Indicators over het in onderzoek zijn van gegevens over de aangaan
-        van het huwelijk van de INGESCHREVEN PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)
+      description: |
+        Geeft aan welke gegevens over het huwelijk of het partnerschap in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)
       properties:
         burgerservicenummer:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: burgerservicenummer
           type: boolean
         geslachtsaanduiding:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: geslachtsaanduiding
           type: boolean
         soortVerbintenis:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: soortVerbintenis
           type: boolean
         datumIngangOnderzoek:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/DatumOnvolledig'
       type: object
     AangaanHuwelijkPartnerschap:
-      description: "Gegevens over het gesloten huwelijk of het aangegane geregistreerd\
-        \ partnerschap. \n* **datum** : De datum waarop het huwelijk is voltrokken\
-        \ of het partnerschap is aangegaan. \n* **land** : Het land waar het huwelijk\
-        \ is voltrokken of het partnerschap is aangegaan. \n* **plaats** : Als de\
-        \ plaats een gemeente in Nederland is dan gewoon de gemeentecode + gemeentenaam\
-        \ . Voor een plaats buiten Nederland is de gemeentecode leeg en wordt de gemeentenaam\
-        \ de buitenlandse plaatsnaam of aanduiding."
+      description: |
+        Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.
+        * **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.
+        * **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan.
+        * **plaats** : Als de plaats een gemeente in Nederland is dan gewoon de gemeentecode + gemeentenaam. Voor een plaats buiten Nederland is de gemeentecode leeg en wordt de gemeentenaam de buitenlandse plaatsnaam of aanduiding."
       properties:
         datum:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/DatumOnvolledig'
         land:
           $ref: '#/components/schemas/Waardetabel'
         plaats:
           $ref: '#/components/schemas/Waardetabel'
         inOnderzoek:
-          $ref: '#/components/schemas/AangaanHuwelijkInOnderzoek'
+          $ref: '#/components/schemas/AangaanHuwelijkPartnerschapInOnderzoek'
       type: object
-    AangaanHuwelijkInOnderzoek:
-      description: Indicators over het in onderzoek zijn van gegevens over de aangaan
-        van het huwelijk van de INGESCHREVEN PERSOON. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)
+    AangaanHuwelijkPartnerschapInOnderzoek:
+      description: |
+        Geeft aan welke gegevens over het voltrekken van het huwelijk of aangaan van het partnerschap in onderzoek zijn. Zie de functionele specificaties. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)
       properties:
         datum:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: datum
           type: boolean
         land:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: land
           type: boolean
         plaats:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: plaats
           type: boolean
         datumIngangOnderzoek:
-          $ref: '#/components/schemas/Datum_onvolledig'
-      type: object
-    BinnenlandsAdres:
-      description: |
-        Dit object bevat de basis Verblijfsplaats kenmerken die gedeeld worden door Bewoning en Verblijfplaats
-      properties:
-        functieAdres:
-          $ref: '#/components/schemas/SoortAdres_enum'
-        huisletter:
-          description: Een door of namens het bevoegd gemeentelijk orgaan ten aanzien
-            van een adresseerbaar object toegekende toevoeging aan een huisnummer
-            in de vorm van een alfanumeriek teken. a - z , A – Z
-          example: B
-          maxLength: 1
-          pattern: ^[A-Z,a-z]$
-          title: Huisletter
-          type: string
-        huisnummer:
-          description: Een door of namens het bevoegd gemeentelijk orgaan ten aanzien
-            van een adresseerbaar object toegekende nummering. Alle natuurlijke getallen
-            tussen 1 en 99999.
-          example: 23
-          maximum: 99999
-          title: Huisnummer
-          type: integer
-        huisnummertoevoeging:
-          description: Een door of namens het bevoegd gemeentelijk orgaan ten aanzien
-            van een adresseerbaar object toegekende nadere toevoeging aan een huisnummer
-            of een combinatie van huisnummer en huisletter. a - z , A - Z , 0 – 9
-          example: IV
-          maxLength: 4
-          pattern: ^[a-zA-Z0-9]{1,4}$
-          title: Huisnummertoevoeging
-          type: string
-        aanduidingBijHuisnummer:
-          $ref: '#/components/schemas/AanduidingBijHuisnummer_enum'
-        identificatiecodeNummeraanduiding:
-          description: De unieke aanduiding van een NUMMERAANDUIDING. Combinatie van
-            de viercijferige 'gemeentecode' de tweecijferige 'objecttypecode' en een
-            voor het betreffende objecttype binnen een gemeente uniek tiencijferig
-            'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde:20
-            nummeraanduiding. Combinatie van de viercijferige 'gemeentecode' (volgens
-            GBA tabel 33, Gemeententabel), de tweecijferige 'objecttypecode' en een
-            voor het betreffende objecttype binnen een gemeente uniek tiencijferig
-            'objectvolgnummer'. De objecttypecode kent in de BAG de volgende waarde:20
-            nummeraanduiding.
-          example: "0518200000366054"
-          maxLength: 16
-          title: identificatiecodeNummeraanduiding
-          type: string
-        naamOpenbareRuimte:
-          description: Een door het bevoegde gemeentelijke orgaan aan een OPENBARE
-            RUIMTE toegekende benaming Tekens gecodeerd volgens de UTF-8 standaard
-          example: Loosduinsekade
-          maxLength: 80
-          title: Naam openbare ruimte
-          type: string
-        postcode:
-          description: De door PostNL vastgestelde code behorende bij een bepaalde
-            combinatie van een naam van een woonplaats, naam van een openbare ruimte
-            en een huisnummer
-          example: 2571CC
-          pattern: ^[1-9]{1}[0-9]{3}[A-Z]{2}$
-          title: Postcode
-          type: string
-        woonplaatsnaam:
-          description: De door het bevoegde gemeentelijke orgaan aan een WOONPLAATS
-            toegekende benaming. Tekens gecodeerd volgens de UTF-8 standaard.
-          example: Utrecht
-          maxLength: 80
-          title: Woonplaatsnaam
-          type: string
+          $ref: '#/components/schemas/DatumOnvolledig'
       type: object
     Verblijfplaats:
       allOf:
-      - $ref: '#/components/schemas/BinnenlandsAdres'
+      - $ref: '#/components/schemas/Adres'
       - $ref: '#/components/schemas/Verblijfplaats_allOf'
-    VerblijfBuitenland:
-      description: De gegevens over het verblijf in het buitenland
-      properties:
-        adresRegel1:
-          description: Het eerste deel van het adres in het buitenland dat de ingeschreven
-            persoon opgeeft bij vertrek naar het buitenland dan wel waar de ingeschreven
-            persoon in het buitenland verblijft.
-          maxLength: 35
-          title: adresRegel1
-          type: string
-        adresRegel2:
-          description: Het tweede deel van het adres in het buitenland dat de ingeschreven
-            persoon opgeeft bij vertrek naar het buitenland dan wel waar de ingeschreven
-            persoon in het buitenland verblijft.
-          maxLength: 35
-          title: adresRegel2
-          type: string
-        adresRegel3:
-          description: Het derde deel van het adres in het buitenland dat de ingeschreven
-            persoon opgeeft bij vertrek naar het buitenland dan wel waar de ingeschreven
-            persoon in het buitenland verblijft.
-          maxLength: 35
-          title: adresRegel3
-          type: string
-        vertrokkenOnbekendWaarheen:
-          description: Indicatie dat de ingeschreven persoon is vertrokken naar het
-            buitenland, maar dat niet bekend is waar naar toe.
-          title: vertrokkenOnbekendWaarheen
-          type: boolean
-        land:
-          $ref: '#/components/schemas/Waardetabel'
-      type: object
     VerblijfplaatsInOnderzoek:
-      description: Indicators om aan te geven dat de gegevens over het verblijf en
-        adres van de INGESCHREVEN NATUURLIJK PERSOON in onderzoek zijn. Elementen
-        van het GBA-adres zelf (Dat zou eigenlijk een BAG-adres moeten zijn) kunnen
-        niet in onderzoek zijn. Wel de relatie naar de nummeraanduding. Dat wordt
-        gedaan door de identificatiecodeNummeraanduiding in onderzoek te zetten. Zie
-        de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)
+      description: |
+        Geeft aan welke gegevens over het verblijf en adres van de persoon in onderzoek zijn. Elementen van het GBA-adres zelf (Dat zou eigenlijk een BAG-adres moeten zijn) kunnen niet in onderzoek zijn. Wel de relatie naar de nummeraanduiding. Dat wordt gedaan door de identificatiecodeNummeraanduiding in onderzoek te zetten. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)
       properties:
         aanduidingBijHuisnummer:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: aanduidingBijHuisnummer
           type: boolean
         datumAanvangAdreshouding:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: datumAanvangAdreshouding
           type: boolean
         datumIngangGeldigheid:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: datumIngangGeldigheid
           type: boolean
         datumInschrijvingInGemeente:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: datumInschrijvingInGemeente
           type: boolean
         datumVestigingInNederland:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: datumVestigingInNederland
           type: boolean
         functieAdres:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: functieAdres
           type: boolean
         gemeenteVanInschrijving:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: gemeenteVanInschrijving
           type: boolean
         huisletter:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: huisletter
           type: boolean
         huisnummer:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: huisnummer
           type: boolean
         huisnummertoevoeging:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: huisnummertoevoeging
           type: boolean
-        identificatiecodeNummeraanduiding:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: identificatiecodeNummeraanduiding
+        nummeraanduidingIdentificatie:
           type: boolean
-        identificatiecodeAdresseerbaarObject:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: identificatiecodeAdresseerbaarObject
+        adresseerbaarObjectIdentificatie:
           type: boolean
         landVanwaarIngeschreven:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: landVanwaarIngeschreven
           type: boolean
         locatiebeschrijving:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: locatiebeschrijving
           type: boolean
-        naamOpenbareRuimte:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: naamOpenbareRuimte
+        straat:
           type: boolean
         postcode:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: postcode
           type: boolean
-        straatnaam:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: straatnaam
+        korteNaam:
           type: boolean
         verblijfBuitenland:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: verblijfBuitenland
           type: boolean
-        woonplaatsnaam:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: woonplaatsnaam
+        woonplaats:
           type: boolean
         datumIngangOnderzoek:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/DatumOnvolledig'
       type: object
     Gezagsverhouding:
-      description: Gegevens betreffende het gezag over de ingeschrevene.
+      description: |
+        Gegevens over het gezag over de persoon.
       properties:
         indicatieCurateleRegister:
-          description: Een aanduiding dat de ingeschrevene onder curatele is gesteld.
+          description: |
+            Geeft aan dat de persoon onder curatele is gesteld.
           example: true
-          title: indicatieCurateleRegister
           type: boolean
         indicatieGezagMinderjarige:
           $ref: '#/components/schemas/IndicatieGezagMinderjarige_enum'
@@ -3551,94 +2293,72 @@ components:
           $ref: '#/components/schemas/GezagsverhoudingInOnderzoek'
       type: object
     GezagsverhoudingInOnderzoek:
-      description: Een groep van booleans om aan te geven welke gegevens van de gezagsverhouding
-        in onderzoek zijn. Als een de categorie in onderzoek is worden alle rubrieken
-        binnen die categorie op _true_ gezet. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)
+      description: |
+        Geeft aan welke gegevens van de gezagsverhouding in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)
       properties:
         indicatieCurateleRegister:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: indicatieCurateleRegister
           type: boolean
         indicatieGezagMinderjarige:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze persoon in onderzoek is.
-          title: indicatieGezagMinderjarige
           type: boolean
         datumIngangOnderzoek:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/DatumOnvolledig'
       type: object
     Verblijfstitel:
-      description: "Gegevens over de verblijfsrechtelijke status van de ingeschrevene.\
-        \ \n* **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel\
-        \ is beeindigd. \n* **datumIngang**: Datum waarop de gegevens over de verblijfstitel\
-        \ geldig zijn geworden. \n* **aanduiding** : Verblijfstiteltabel, die aangeeft\
-        \ over welke verblijfsrechtelijke status de ingeschrevene beschikt."
+      description: |
+        Gegevens over de verblijfsrechtelijke status van de persoon.
+        * **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd.
+        * **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.
+        * **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt.
       properties:
         aanduiding:
           $ref: '#/components/schemas/Waardetabel'
         datumEinde:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/DatumOnvolledig'
         datumIngang:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/DatumOnvolledig'
         inOnderzoek:
           $ref: '#/components/schemas/VerblijfstitelInOnderzoek'
       type: object
     VerblijfstitelInOnderzoek:
-      description: In onderzoek indicators over de gegevens over de verblijfstitel.
+      description: |
+        Geeft aan welke gegevens over de verblijfstitel in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)
       properties:
         aanduiding:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze verblijfstitel in onderzoek is.
-          title: aanduiding
           type: boolean
         datumEinde:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze verblijfstitel in onderzoek is.
-          title: datumEinde
           type: boolean
         datumIngang:
-          description: Indicator die aangeeft of het corresponderende gegeven voor
-            deze verblijfstitel in onderzoek is.
-          title: datumIngang
           type: boolean
         datumIngangOnderzoek:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/DatumOnvolledig'
       type: object
-    IngeschrevenPersoon_links:
+    IngeschrevenPersoonLinks:
       properties:
         self:
           $ref: '#/components/schemas/HalLink'
         ouders:
-          description: De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE
-            verwijst`
+          description: |
+            De ouders van de persoon.
           items:
             $ref: '#/components/schemas/HalLink'
-          maxItems: 4
-          title: heeftAlsOuder
           type: array
         reisdocumenten:
-          description: De ingezetene waaraan het REISDOCUMENT is verstrekt. Dit is
-            de inverse relatie van heeftAlsHouder. Reisdocumenten die aan een ingezetene
-            zijn verstrekt.
+          description: |
+            De reisdocumenten die aan de persoon zijn verstrekt.
           items:
             $ref: '#/components/schemas/HalLink'
-          title: isHouderVan
           type: array
         kinderen:
-          description: De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE
-            verwijst
+          description: |
+            De kinderen van de persoon.
           items:
             $ref: '#/components/schemas/HalLink'
-          title: heeftAlsKind
           type: array
         partners:
-          description: De actuele bij de ingeschreven persoon geregistreerde huwelijken
-            en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd
-            partnerschap wordt niet teruggegeven.
+          description: |
+            De actuele bij de ingeschreven persoon geregistreerde huwelijken en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven.
           items:
             $ref: '#/components/schemas/HalLink'
-          title: heeftAlsPartner
           type: array
         partnerhistorie:
           $ref: '#/components/schemas/HalLink'
@@ -3648,59 +2368,54 @@ components:
           $ref: '#/components/schemas/HalLink'
         nationaliteitHistorie:
           $ref: '#/components/schemas/HalLink'
-        verblijfplaatsNummeraanduiding:
+        adres:
           $ref: '#/components/schemas/HalLink'
       type: object
-    Ouder_links:
+    OuderLinks:
       properties:
         self:
           $ref: '#/components/schemas/HalLink'
         ingeschrevenPersoon:
           $ref: '#/components/schemas/HalLink'
       type: object
-    Kind_links:
+    KindLinks:
       properties:
         self:
           $ref: '#/components/schemas/HalLink'
         ingeschrevenPersoon:
           $ref: '#/components/schemas/HalLink'
       type: object
-    Partner_links:
+    PartnerLinks:
       properties:
         self:
           $ref: '#/components/schemas/HalLink'
         ingeschrevenPersoon:
           $ref: '#/components/schemas/HalLink'
       type: object
-    IngeschrevenPersoon_embedded:
+    IngeschrevenPersoonEmbedded:
       properties:
         ouders:
-          description: De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE
-            verwijst`
+          description: |
+            De ouders van de persoon.
           items:
-            $ref: '#/components/schemas/OuderHal'
-          maxItems: 4
-          title: heeftAlsOuder
+            $ref: '#/components/schemas/OuderHalBasis'
           type: array
         kinderen:
-          description: De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE
-            verwijst
+          description: |
+            De kinderen van de persoon.
           items:
-            $ref: '#/components/schemas/KindHal'
-          title: heeftAlsKind
+            $ref: '#/components/schemas/KindHalBasis'
           type: array
         partners:
-          description: De actuele bij de ingeschreven persoon geregistreerde huwelijken
-            en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd
-            partnerschap wordt niet teruggegeven.
+          description: |
+            De partners van de persoon. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven.
           items:
-            $ref: '#/components/schemas/PartnerHal'
-          title: heeftAlsPartner
+            $ref: '#/components/schemas/PartnerHalBasis'
           type: array
       type: object
     AanduidingBijzonderNederlanderschap_enum:
-      description: |-
-        De aanduiding van het bijzonder Nederlanderschap:
+      description: |
+        Geeft aan dat de persoon behandeld wordt als Nederlander, of dat door de rechter is vastgesteld dat de persoon niet de Nederlandse nationaliteit bezit
         * `behandeld_als_nederlander` - B
         * `vastgesteld_niet_nederlander` - V
       enum:
@@ -3708,8 +2423,8 @@ components:
       - vastgesteld_niet_nederlander
       type: string
     AanduidingBijHuisnummer_enum:
-      description: |-
-        De aanduiding die wordt gebruikt voor adressen die niet zijn voorzien van de gebruikelijke straatnaam en huisnummeraanduidingen.:
+      description: |
+        De aanduiding die wordt gebruikt voor adressen die geen straatnaam en huisnummeraanduidingen hebben
         * `tegenover` - to
         * `bij` - by
       enum:
@@ -3717,8 +2432,8 @@ components:
       - bij
       type: string
     Geslacht_enum:
-      description: |-
-        Een aanduiding die aangeeft dat de ingeschrevene een man of een vrouw is, of dat het geslacht (nog) onbekend is:
+      description: |
+        Geeft aan dat de persoon een man of vrouw is, of dat het geslacht (nog) onbekend is
         * `man` - M
         * `vrouw` - V
         * `onbekend` - O
@@ -3728,8 +2443,8 @@ components:
       - onbekend
       type: string
     IndicatieGezagMinderjarige_enum:
-      description: |-
-        Een aanduiding die aangeeft wie belast is met het gezag over de minderjarige ingeschrevene.:
+      description: |
+        Geeft aan wie het gezag heeft over de minderjarige persoon.
         * `ouder1` - 1
         * `ouder2` - 2
         * `derden` - D
@@ -3745,12 +2460,15 @@ components:
       - ouder1_en_ouder2
       type: string
     Naamgebruik_enum:
-      description: |-
-        De voorgedefinieerde waarden van naamgebruik volgens de centrale voorzieningen.
-        * `eigen` - E
-        * `eigen_partner` - N
-        * `partner` - P
-        * `partner_eigen` - V
+      description: |
+        De manier waarop de geslachtsnaam van persoon en partner van persoon moet worden verwerkt in de manier waarop persoon wil worden aangesproken
+        * `eigen` - E - gebruik alleen de eigen naam
+        * `eigen_partner` - N - gebruik de eigen naam voor de partnernaam
+        * `partner` - P gebruik alleen de partnernaam
+        * `partner_eigen` - V - gebruik de partnernaam voor de eigen naam.
+
+
+        De aanduiding naamgebruik is verwerkt in Aanhef, Aanschrijfwijze en gebruikInLopendeTekst."
       enum:
       - eigen
       - eigen_partner
@@ -3758,8 +2476,8 @@ components:
       - partner_eigen
       type: string
     OuderAanduiding_enum:
-      description: |-
-        Aanduiding om welke ouder het gaat volgens de GBA:
+      description: |
+        Geeft aan om welke ouder het gaat volgens de BRP
         * `ouder1` - 1
         * `ouder2` - 2
       enum:
@@ -3767,12 +2485,12 @@ components:
       - ouder2
       type: string
     RedenOpschortingBijhouding_enum:
-      description: |-
-        Redenen voor opschorting van de bijhouding.:
+      description: |
+        Redenen voor opschorting van de bijhouding
         * `overlijden` - O
         * `emigratie` - E
         * `ministerieel_besluit` - M
-        * `pl_aangelegd_in_de_rni` - R
+        * `pl_aangelegd_in_de_rni` - R - opgeschort omdat persoon is ingeschreven in het Register Niet Ingezeten (RNI).
         * `fout` - F
       enum:
       - overlijden
@@ -3782,126 +2500,32 @@ components:
       - fout
       type: string
     SoortAdres_enum:
-      description: |-
-        Aanduiding van het soort adres.:
-        * `woonadres` - W
-        * `briefadres` - B
+      description: |
+        Aanduiding van het soort adres
+        * `woonadres` - W - adres waar de persoon woont
+        * `briefadres` - B - het adres van een andere persoon of van een instelling (de zogenoemde briefadresgever). Met dit adres van de briefadresgever is de persoon zonder woonadres toch bereikbaar voor de overheid.
       enum:
       - woonadres
       - briefadres
       type: string
     SoortVerbintenis_enum:
-      description: |-
-        Soort verbintenis van een bij de burgerlijke stand ingeschreven verbintenis:
+      description: |
+        Soort verbintenis die bij de burgerlijke stand is ingeschreven
         * `huwelijk` - H
         * `geregistreerd_partnerschap` - P
       enum:
       - huwelijk
       - geregistreerd_partnerschap
       type: string
-    VerblijfplaatshistorieHalCollectie:
-      properties:
-        _links:
-          $ref: '#/components/schemas/HalCollectionLinks'
-        _embedded:
-          $ref: '#/components/schemas/VerblijfplaatshistorieHalCollectie__embedded'
-      type: object
-    VerblijfplaatshistorieHal:
-      allOf:
-      - $ref: '#/components/schemas/Verblijfplaatshistorie'
-      - $ref: '#/components/schemas/VerblijfplaatshistorieHal_allOf'
-    Verblijfplaatshistorie:
-      allOf:
-      - $ref: '#/components/schemas/Verblijfplaats'
-      - $ref: '#/components/schemas/Verblijfplaatshistorie_allOf'
-    Verblijfplaatshistorie_links:
-      properties:
-        nummeraanduiding:
-          $ref: '#/components/schemas/HalLink'
-        adresseerbaarObject:
-          $ref: '#/components/schemas/HalLink'
-      type: object
-    PartnerhistorieHalCollectie:
-      properties:
-        _links:
-          $ref: '#/components/schemas/HalCollectionLinks'
-        _embedded:
-          $ref: '#/components/schemas/PartnerhistorieHalCollectie__embedded'
-      type: object
-    PartnerhistorieHal:
-      allOf:
-      - $ref: '#/components/schemas/Partnerhistorie'
-      - $ref: '#/components/schemas/PartnerhistorieHal_allOf'
-    Partnerhistorie:
-      allOf:
-      - $ref: '#/components/schemas/Partner'
-      - $ref: '#/components/schemas/Partnerhistorie_allOf'
-    OntbindingHuwelijkPartnerschap:
-      properties:
-        indicatieHuwelijkPartnerschapBeeindigd:
-          description: |-
-            Indicatie of het huwelijk ontbonden is danwel het partnerschap beeindigd is.
-            * `True` - Huwelijk/Partnerschap is beeindigd.
-          type: boolean
-        datum:
-          $ref: '#/components/schemas/Datum_onvolledig'
-        land:
-          $ref: '#/components/schemas/Waardetabel'
-        plaats:
-          $ref: '#/components/schemas/Waardetabel'
-        reden:
-          $ref: '#/components/schemas/Waardetabel'
-        inOnderzoek:
-          $ref: '#/components/schemas/OntbindingHuwelijkInOnderzoek'
-      type: object
-    OntbindingHuwelijkInOnderzoek:
-      description: <body><p>Indicators over het in onderzoek zijn van gegevens over
-        de aangaan van het huwelijk van de INGESCHREVEN PERSOON.</p><p>Zie de <a href=`https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature`>
-        functionele specificaties <a></p></body>
-      properties:
-        datum:
-          description: <body><p>Indicator die aangeeft of het corresponderende gegeven
-            voor deze persoon in onderzoek is.</p></body>
-          title: datum
-          type: boolean
-        land:
-          description: <body><p>Indicator die aangeeft of het corresponderende gegeven
-            voor deze persoon in onderzoek is.</p></body>
-          title: land
-          type: boolean
-        plaats:
-          description: <body><p>Indicator die aangeeft of het corresponderende gegeven
-            voor deze persoon in onderzoek is.</p></body>
-          title: plaats
-          type: boolean
-        datumIngangOnderzoek:
-          $ref: '#/components/schemas/Datum_onvolledig'
-      type: object
-    Partnerhistorie_links:
-      properties:
-        ingeschrevenPersoon:
-          $ref: '#/components/schemas/HalLink'
-      type: object
-    VerblijfstitelhistorieHalCollectie:
-      properties:
-        _links:
-          $ref: '#/components/schemas/HalCollectionLinks'
-        _embedded:
-          $ref: '#/components/schemas/VerblijfstitelhistorieHalCollectie__embedded'
-      type: object
-    Verblijfstitelhistorie:
-      allOf:
-      - $ref: '#/components/schemas/Verblijfstitel'
-      - $ref: '#/components/schemas/Verblijfstitelhistorie_allOf'
     Geboortedatum:
-      description: |-
-        <body><p>Gegevens over de geboorte van respectievelijk de persoon, de ouder, de echtgenoot/geregistreerd partner, de eerdere echtgenoot/geregistreerd partner of het kind.</p><p>
-         <em>*</em> datum** : Datum waarop de persoon is geboren.</p><p>
-         <em>*</em> land** : Land waar de persoon is geboren</p><p>
-         <em>*</em> plaats** : De plaats waar een persoon is geboren. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding.</p></body>
+      description: |
+        Gegevens over de geboorte van respectievelijk de persoon, de ouder, de echtgenoot/geregistreerd partner, de eerdere echtgenoot/geregistreerd partner of het kind.
+        * **datum** : Datum waarop de persoon is geboren
+        * **land** : Land waar de persoon is geboren
+        * **plaats** : De plaats waar de persoon is geboren. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding.
       properties:
         datum:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/DatumOnvolledig'
       type: object
     BadRequestFoutbericht:
       allOf:
@@ -3953,49 +2577,47 @@ components:
           example: Waarde is geen geldige integer.
           type: string
       type: object
-    Datum_onvolledig:
-      description: Gegevens over de datums die mogelijk niet volledig zijn, maar waarvan
-        de bekende gedeeltes wel moeten kunnen worden uitgewisseld. Als de volledige
-        datum bekend is worden alle elementen gevuld.
+    DatumOnvolledig:
+      description: Gegevens over de datums die mogelijk niet volledig zijn.
       properties:
         dag:
-          description: De dag. Als de dag van de datum bekend is wordt deze hier ingevuld.
-            Ook als de volledige datum bekend is.
+          description: Als de dag van de datum bekend is wordt dit element gevuld,
+            ook als de volledige datum bekend is.
           example: 3
           maximum: 31
           minimum: 1
-          title: dag
           type: integer
         datum:
-          description: De volledige datum die in de `date` definitie past. Dit element
-            wordt alleen gevuld als de volledige datum bekend is.
+          description: Als de volledige datum bekend is wordt de datum gevuld die
+            in de date definitie past.
           example: 1989-05-03
           format: date
-          title: datum
           type: string
         jaar:
-          description: Het jaar van de datum. Als het jaar bekend is wordt dit element
-            gevuld, ook als de volledige datum bekend is.
+          description: Als het jaar van de datum bekend is wordt dit element gevuld,
+            ook als de volledige datum bekend is.
           example: 1989
           maximum: 9999
-          title: jaar
           type: integer
         maand:
-          description: De maand. Als de maand van een datum bekend is wordt deze hier
-            ingevuld. Ook als de volledige datum is ingevuld.
+          description: Als de maand van een datum bekend is wordt dit element gevuld,
+            ook als de volledige datum bekend is.
           example: 5
           maximum: 12
           minimum: 1
-          title: maand
           type: integer
       type: object
     HalCollectionLinks:
+      description: |
+        HalCollectionLinks bevat de self link die elke HAL Resource minimaal moet hebben in zijn _links property
       properties:
         self:
           $ref: '#/components/schemas/HalLink'
       type: object
     HalLink:
-      description: De Link Object zoals gespecificeerd in https://tools.ietf.org/html/draft-kelly-json-hal-08#section-5
+      description: De Link Object zoals gespecificeerd in https://tools.ietf.org/html/draft-kelly-json-hal-08#section-5;
+        Deze link kan als templated link worden aangeboden. [URI-templating is hier
+        beschreven](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/uri-templating.feature).
       properties:
         href:
           example: https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}
@@ -4012,99 +2634,76 @@ components:
       example: https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}
       type: string
     Waardetabel:
-      description: Generieke tabel met waarden om een code en omschrijving op te nemen.
       properties:
         code:
           example: "6030"
-          title: code
           type: string
         omschrijving:
-          description: Voor mensen leesbare omschrijving van de waarde.
           example: Nederland
-          title: omschrijving
           type: string
       type: object
-    IngeschrevenPersoonHalCollectie__embedded:
+    Adres:
+      description: 'Eigenschappen van het adres die kunnen worden hergebruikt in andere
+        API''s waarin adresgegevens worden opgenomen. '
       properties:
-        ingeschrevenpersonen:
-          items:
-            $ref: '#/components/schemas/IngeschrevenPersoonHal'
-          type: array
+        straat:
+          description: Een naam die door de gemeente aan een openbare ruimte is gegeven.
+          example: Laan van de landinrichtingscommissie Duiven-Westervoort
+          title: openbareruimte naam
+          type: string
+        huisnummer:
+          description: Een nummer dat door de gemeente aan een adresseerbaar object
+            is gegeven.
+          example: 1
+          type: integer
+        huisletter:
+          description: Een toevoeging aan een huisnummer in de vorm van een letter
+            die door de gemeente aan een adresseerbaar object is gegeven.
+          example: A
+          type: string
+        huisnummertoevoeging:
+          description: Een toevoeging aan een huisnummer of een combinatie van huisnummer
+            en huisletter die door de gemeente aan een adresseerbaar object is gegeven.
+          example: bis
+          type: string
+        postcode:
+          description: De door PostNL vastgestelde code die bij een bepaalde combinatie
+            van een straatnaam en een huisnummer hoort.
+          example: 6922KZ
+          type: string
+        woonplaats:
+          description: Een woonplaats is een gedeelte van het grondgebied van de gemeente
+            met een naam.
+          example: Duiven
+          title: woonplaats naam
+          type: string
       type: object
-    OuderHalCollectie__embedded:
+    IngeschrevenPersoonHalBasis_allOf:
       properties:
-        ouders:
-          items:
-            $ref: '#/components/schemas/OuderHal'
-          type: array
-      type: object
-    KindHalCollectie__embedded:
-      properties:
-        kinderen:
-          items:
-            $ref: '#/components/schemas/KindHal'
-          type: array
-      type: object
-    PartnerHalCollectie__embedded:
-      properties:
-        partners:
-          items:
-            $ref: '#/components/schemas/PartnerHal'
-          type: array
-      type: object
-    NationaliteithistorieHalCollectie__embedded:
-      properties:
-        nationaliteithistorie:
-          items:
-            $ref: '#/components/schemas/Nationaliteithistorie'
-          type: array
-      type: object
-    VerblijfplaatshistorieHalCollectie__embedded:
-      properties:
-        verblijfplaatshistorie:
-          items:
-            $ref: '#/components/schemas/VerblijfplaatshistorieHal'
-          type: array
-      type: object
-    PartnerhistorieHalCollectie__embedded:
-      properties:
-        partnerhistorie:
-          items:
-            $ref: '#/components/schemas/PartnerhistorieHal'
-          type: array
-      type: object
-    VerblijfstitelhistorieHalCollectie__embedded:
-      properties:
-        verblijfstitelhistorie:
-          items:
-            $ref: '#/components/schemas/Verblijfstitelhistorie'
-          type: array
-      type: object
+        _links:
+          $ref: '#/components/schemas/IngeschrevenPersoonLinks'
     IngeschrevenPersoonHal_allOf:
       properties:
-        _links:
-          $ref: '#/components/schemas/IngeschrevenPersoon_links'
         _embedded:
-          $ref: '#/components/schemas/IngeschrevenPersoon_embedded'
-    OuderHal_allOf:
+          $ref: '#/components/schemas/IngeschrevenPersoonEmbedded'
+    OuderHalBasis_allOf:
       properties:
         _links:
-          $ref: '#/components/schemas/Ouder_links'
-    KindHal_allOf:
+          $ref: '#/components/schemas/OuderLinks'
+    KindHalBasis_allOf:
       properties:
         _links:
-          $ref: '#/components/schemas/Kind_links'
-    PartnerHal_allOf:
+          $ref: '#/components/schemas/KindLinks'
+    PartnerHalBasis_allOf:
       properties:
         _links:
-          $ref: '#/components/schemas/Partner_links'
+          $ref: '#/components/schemas/PartnerLinks'
     Geboorte_allOf:
-      description: "Gegevens over de geboorte van respectievelijk de persoon, de ouder,\
-        \ de echtgenoot/geregistreerd partner, de eerdere echtgenoot/geregistreerd\
-        \ partner of het kind. \n* **datum** : Datum waarop de persoon is geboren.\
-        \ \n* **land** : Land waar de persoon is geboren \n* **plaats** : De plaats\
-        \ waar een persoon is geboren. Voor een plaats buiten Nederland is gemeentecode=1999\
-        \ (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding."
+      description: |
+        Gegevens over de geboorte.
+        * **datum** : datum waarop de persoon is geboren.
+        * **land** : land waar de persoon is geboren
+        * **plaats** : plaats waar de persoon is geboren. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding.
       properties:
         land:
           $ref: '#/components/schemas/Waardetabel'
@@ -4113,173 +2712,101 @@ components:
         inOnderzoek:
           $ref: '#/components/schemas/GeboorteInOnderzoek'
     NaamPersoon_allOf:
-      description: Gegevens over de naam van de persoon
       properties:
         aanhef:
-          description: De aanhef zoals die in een brief, gericht aan een persoon gebruikt
-            kan worden.
+          description: |
+            Kun je gebruiken als aanhef in een brief gericht aan persoon.
           example: Geachte heer In het Veld
-          title: aanhef
           type: string
         aanschrijfwijze:
-          description: Samengestelde naam zoals die in communicatie met de persoon
-            gebruikt kan worden.
+          description: |
+            Samengestelde naam die je kunt gebruiken in de communicatie met de persoon.
           example: H. in het Veld
-          title: aanschrijfwijze
           type: string
         gebruikInLopendeTekst:
-          description: De naam zoals die in lopende tekst gebruikt kan worden.
+          description: |
+            Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert.
           example: de heer In het Veld
-          title: gebruikInLopendeTekst
           type: string
         aanduidingNaamgebruik:
           $ref: '#/components/schemas/Naamgebruik_enum'
-    Nationaliteithistorie_allOf:
-      description: |-
-        <body><p>Gegevens over de verblijfsrechtelijke status van de ingeschrevene.</p><p>
-         <em>*</em> datumEinde**: Datum waarop de geldigheid van de gegevens over de Nationaliteit is beeindigd.</p><p>
-         <em>*</em> datumIngang**: Datum waarop de gegevens over de Nationaliteit geldig zijn geworden.</p><p> <em>*</em> aanduiding** : Nationaliteittabel, die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt.</p> </body>
-      properties:
-        geheimhoudingPersoonsgegevens:
-          description: 'Een aanduiding die aangeeft dat gegevens wel of niet verstrekt
-            mogen worden. Indien true: op verzoek van deze persoon is het verstrekken
-            van gegevens over deze persoon aan bepaalde derden niet toegestaan.'
-          title: Indicatie geheim
-          type: boolean
-        datumEindeGeldigheid:
-          $ref: '#/components/schemas/Datum_onvolledig'
-        redenBeeindigen:
-          $ref: '#/components/schemas/Waardetabel'
-        indicatieNationaliteitBeeindigd:
-          description: Een aanduiding dat de nationaliteit beeindigd is.
-          example: true
-          title: indicatieNationaliteitBeeindigd
-          type: boolean
     Verblijfplaats_allOf:
-      description: "Gegevens over het verblijf en adres van de ingeschreven persoon.\
-        \ Dit is het adres waarop een persoon is ingeschreven. \n* **datumAanvangAdreshuishouding**\
-        \ : De datum van aangifte of ambtshalve melding van verblijf en adres. \n\
-        * **datumIngangGeldigheid** : Datum waarop de gegevens over de verblijfplaats\
-        \ geldig zijn geworden. \n* **datumInschrijvingInGemeente**: Bij inschrijving\
-        \ op grond van een aangifte door de burger van zijn vestiging in een (volgende)\
-        \ gemeente is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte\
-        \ is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop\
-        \ de betrokkene schriftelijk van het voornemen van ambtshalve opneming mededeling\
-        \ is gedaan. \n* **datumVestigingInNederland** : Datum van inschrijving in\
-        \ Nederland \n* **landVanWaarIngeschreven** : Het land waar de ingeschreven\
-        \ persoon verblijf hield voor (her)vestiging in Nederland. \n* **gemeenteVanInschrijving**\
-        \ : Een aanduiding die aangeeft in welke gemeente de PK zich bevindt. De code\
-        \ kan voorloopnullen bevatten \n* **landVanWaarIngeschreven** : Het LAND waar\
-        \ de INGESCHREVEN PERSOON verblijf hield voor (her)vestiging in Nederland."
+      description: |
+        Gegevens over het verblijf of de woonlocatie van een persoon.
+        * **datumAanvangAdreshuishouding** : de datum van aangifte of ambtshalve melding van verblijf en adres.
+        * **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden.
+        * **datumInschrijvingInGemeente**: bij inschrijving op grond van een verhuisaangifte door de burger is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop het voornemen van ambtshalve opneming schriftelijk aan de persoon is medegedeeld.
+        * **datumVestigingInNederland** : datum van inschrijving in Nederland.
+        * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland.
+        * **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten."
       properties:
-        identificatiecodeAdresseerbaarObject:
-          description: Een verblijfplaats kan een ligplaats, een standplaats of een
-            verblijfsobject in een of meerdere panden zijn, waaraan respectievelijk
-            een ligplaatsidentificatie, standplaatsidentificatie of verblijfsobjectidentificatie
-            is toegekend. De Identificatiecode verblijfplaats is een combinatie van
-            een viercijferige gemeentecode, een tweecijferige objecttypecode die aangeeft
-            of de aanduiding een verblijfsobject (01), ligplaats (02) of standplaats
-            (03) betreft en een voor het betreffende objecttype binnen een gemeente
-            uniek tiencijferig volgnummer. Combinatie van de viercijferige 'gemeentecode'
-            (volgens GBA tabel 33, Gemeententabel), de tweecijferige 'objecttypecode'
-            en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig
-            'objectvolgnummer'.
-          example: "0518200000366054"
-          maxLength: 16
-          title: identificatiecodeAdresseerbaarObject
+        adresseerbaarObjectIdentificatie:
+          description: |
+            De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.
+          example: "0226010000038820"
           type: string
+        aanduidingBijHuisnummer:
+          $ref: '#/components/schemas/AanduidingBijHuisnummer_enum'
+        nummeraanduidingIdentificatie:
+          description: |
+            Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
+          example: "0518200000366054"
+          type: string
+        functieAdres:
+          $ref: '#/components/schemas/SoortAdres_enum'
         indicatieVestigingVanuitBuitenland:
-          description: Indicatie waarmee aangegeven wordt of de ingeschreven persoon
-            zich vanuit het buitenland heeftingeschreven. Deze indicatie heeft als
-            rol om aan te geven dat iemand zich vanuit het buitenland gevestigd heeft.
-            Deze indicator wordt altijd meegeleverd als de waarde true is. Als de
-            waarde false is wordt de indicator niet meegeleverd.
-          title: indicatieVestigingVanuitBuitenland
+          description: |
+            Geeft aan dat de ingeschreven persoon zich vanuit het buitenland heeft ingeschreven.
           type: boolean
         locatiebeschrijving:
-          description: Een geheel of gedeeltelijke omschrijving van de ligging van
-            een object.
+          description: |
+            Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats.
           example: Naast de derde brug
-          maxLength: 35
-          title: Locatiebeschrijving
           type: string
-        straatnaam:
-          description: De officiële straatnaam zoals door het bevoegd gemeentelijk
-            orgaan is vastgesteld, zo nodig ingekort conform de specificaties van
-            de NEN 5825. alle alfanumrieke tekens
-          maxLength: 24
-          title: Straatnaam
+        korteNaam:
+          description: |
+            De officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG) of een verkorte versie.
           type: string
         vanuitVertrokkenOnbekendWaarheen:
-          description: Indicatie waarmee aangegeven wordt dat de persoon is teruggekeerd
-            uit een situatie van vertrokken onbekend waarheen
+          description: |
+            Geeft aan dat de persoon is teruggekeerd uit een situatie van 'vertrokken onbekend waarheen.'
           example: true
-          title: vanuitVertrokkenOnbekendWaarheen
           type: boolean
         datumAanvangAdreshouding:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/DatumOnvolledig'
         datumIngangGeldigheid:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/DatumOnvolledig'
         datumInschrijvingInGemeente:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/DatumOnvolledig'
         datumVestigingInNederland:
-          $ref: '#/components/schemas/Datum_onvolledig'
+          $ref: '#/components/schemas/DatumOnvolledig'
         gemeenteVanInschrijving:
           $ref: '#/components/schemas/Waardetabel'
         landVanwaarIngeschreven:
           $ref: '#/components/schemas/Waardetabel'
-        verblijfBuitenland:
-          $ref: '#/components/schemas/VerblijfBuitenland'
+        adresregel1:
+          description: |
+            Het eerste deel van een adres is een combinatie van de straat en huisnummer.
+          example: Laan van de landinrichtingscommissie Duiven-Westervoort 26A-3
+          type: string
+        adresregel2:
+          description: |
+            Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode.
+          example: 1234AA Nootdorp
+          type: string
+        adresregel3:
+          description: |
+            Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.
+          example: Selangor
+          type: string
+        vertrokkenOnbekendWaarheen:
+          description: |
+            Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.
+          type: boolean
+        land:
+          $ref: '#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: '#/components/schemas/VerblijfplaatsInOnderzoek'
-    VerblijfplaatshistorieHal_allOf:
-      properties:
-        _links:
-          $ref: '#/components/schemas/Verblijfplaatshistorie_links'
-    Verblijfplaatshistorie_allOf:
-      description: |-
-        <body><p>Gegevens over het verblijf en adres van de ingeschreven persoon. Dit is het adres waarop een persoon is ingeschreven of ingeschreven is geweest.</p><p>
-         <em>*</em> datumAanvangAdreshuishouding** : De datum van aangifte of ambtshalve melding van verblijf en adres.</p><p>
-         <em>*</em> datumIngangGeldigheid** : Datum waarop de gegevens over de verblijfplaats geldig zijn geworden.</p><p>
-         <em>*</em> datumInschrijvingInGemeente**: Bij inschrijving op grond van een aangifte door de burger van zijn vestiging in een (volgende) gemeente is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop de betrokkene schriftelijk van het voornemen van ambtshalve opneming mededeling is gedaan.</p><p>
-         <em>*</em> datumVestigingInNederland** : Datum van inschrijving in Nederland</p><p>
-         <em>*</em> landVanWaarIngeschreven** : Het land waar de ingeschreven persoon verblijf hield voor (her)vestiging in Nederland.</p><p>
-         <em>*</em> gemeenteVanInschrijving** : Een aanduiding die aangeeft in welke gemeente de PK zich bevindt. De code kan voorloopnullen bevatten</p><p>
-         <em>*</em> landVanWaarIngeschreven** : Het LAND waar de INGESCHREVEN PERSOON verblijf hield voor (her)vestiging in Nederland.</p></body>
-      properties:
-        datumTot:
-          allOf:
-          - $ref: '#/components/schemas/Datum_onvolledig'
-          - description: De datum vanaf wanneer de persoon niet meer op het adres
-              verblijft.
-        geheimhoudingPersoonsgegevens:
-          description: 'Een aanduiding die aangeeft dat gegevens wel of niet verstrekt
-            mogen worden. Indien true: op verzoek van deze persoon is het verstrekken
-            van gegevens over deze persoon aan bepaalde derden niet toegestaan.'
-          title: Indicatie geheim
-          type: boolean
-    PartnerhistorieHal_allOf:
-      properties:
-        _links:
-          $ref: '#/components/schemas/Partnerhistorie_links'
-    Partnerhistorie_allOf:
-      description: <body><p>Gegevens over een gesloten huwelijk/geregistreerd partnerschap
-        van de ingeschrevene.</p></body>
-      properties:
-        ontbindingHuwelijkPartnerschap:
-          $ref: '#/components/schemas/OntbindingHuwelijkPartnerschap'
-    Verblijfstitelhistorie_allOf:
-      description: |-
-        <body><p>Gegevens over de verblijfsrechtelijke status van de ingeschrevene.</p><p>
-         <em>*</em> datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beeindigd.</p><p>
-         <em>*</em> datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.</p><p> <em>*</em> aanduiding** : Verblijfstiteltabel, die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt.</p> </body>
-      properties:
-        geheimhoudingPersoonsgegevens:
-          description: 'Een aanduiding die aangeeft dat gegevens wel of niet verstrekt
-            mogen worden. Indien true: op verzoek van deze persoon is het verstrekken
-            van gegevens over deze persoon aan bepaalde derden niet toegestaan.'
-          title: Indicatie geheim
-          type: boolean
     BadRequestFoutbericht_allOf:
       properties:
         invalidParams:

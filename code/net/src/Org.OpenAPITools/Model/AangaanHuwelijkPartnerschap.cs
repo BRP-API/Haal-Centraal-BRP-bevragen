@@ -1,7 +1,7 @@
 /* 
- * Bevragingen ingeschreven personen
+ * Bevragen Ingeschreven Personen
  *
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -25,7 +25,7 @@ using OpenAPIDateConverter = Org.OpenAPITools.Client.OpenAPIDateConverter;
 namespace Org.OpenAPITools.Model
 {
     /// <summary>
-    /// Gegevens over het gesloten huwelijk of het aangegane geregistreerd partnerschap.  * **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.  * **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan.  * **plaats** : Als de plaats een gemeente in Nederland is dan gewoon de gemeentecode + gemeentenaam . Voor een plaats buiten Nederland is de gemeentecode leeg en wordt de gemeentenaam de buitenlandse plaatsnaam of aanduiding.
+    /// Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap. * **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan. * **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. * **plaats** : Als de plaats een gemeente in Nederland is dan gewoon de gemeentecode + gemeentenaam. Voor een plaats buiten Nederland is de gemeentecode leeg en wordt de gemeentenaam de buitenlandse plaatsnaam of aanduiding.\&quot; 
     /// </summary>
     [DataContract]
     public partial class AangaanHuwelijkPartnerschap :  IEquatable<AangaanHuwelijkPartnerschap>, IValidatableObject
@@ -37,7 +37,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="land">land.</param>
         /// <param name="plaats">plaats.</param>
         /// <param name="inOnderzoek">inOnderzoek.</param>
-        public AangaanHuwelijkPartnerschap(DatumOnvolledig datum = default(DatumOnvolledig), Waardetabel land = default(Waardetabel), Waardetabel plaats = default(Waardetabel), AangaanHuwelijkInOnderzoek inOnderzoek = default(AangaanHuwelijkInOnderzoek))
+        public AangaanHuwelijkPartnerschap(DatumOnvolledig datum = default(DatumOnvolledig), Waardetabel land = default(Waardetabel), Waardetabel plaats = default(Waardetabel), AangaanHuwelijkPartnerschapInOnderzoek inOnderzoek = default(AangaanHuwelijkPartnerschapInOnderzoek))
         {
             this.Datum = datum;
             this.Land = land;
@@ -67,7 +67,7 @@ namespace Org.OpenAPITools.Model
         /// Gets or Sets InOnderzoek
         /// </summary>
         [DataMember(Name="inOnderzoek", EmitDefaultValue=false)]
-        public AangaanHuwelijkInOnderzoek InOnderzoek { get; set; }
+        public AangaanHuwelijkPartnerschapInOnderzoek InOnderzoek { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

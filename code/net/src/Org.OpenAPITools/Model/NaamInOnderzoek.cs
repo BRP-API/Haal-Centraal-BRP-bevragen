@@ -1,7 +1,7 @@
 /* 
- * Bevragingen ingeschreven personen
+ * Bevragen Ingeschreven Personen
  *
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -25,7 +25,7 @@ using OpenAPIDateConverter = Org.OpenAPITools.Client.OpenAPIDateConverter;
 namespace Org.OpenAPITools.Model
 {
     /// <summary>
-    /// In onderzoekgroep om aan te geven of gegevens over de naam van de Ingeschreven persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)
+    /// Geeft aan welke gegevens over de naam in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature) 
     /// </summary>
     [DataContract]
     public partial class NaamInOnderzoek :  IEquatable<NaamInOnderzoek>, IValidatableObject
@@ -33,9 +33,9 @@ namespace Org.OpenAPITools.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="NaamInOnderzoek" /> class.
         /// </summary>
-        /// <param name="geslachtsnaam">Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is..</param>
-        /// <param name="voornamen">Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is..</param>
-        /// <param name="voorvoegsel">Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is..</param>
+        /// <param name="geslachtsnaam">geslachtsnaam.</param>
+        /// <param name="voornamen">voornamen.</param>
+        /// <param name="voorvoegsel">voorvoegsel.</param>
         /// <param name="datumIngangOnderzoek">datumIngangOnderzoek.</param>
         public NaamInOnderzoek(bool geslachtsnaam = default(bool), bool voornamen = default(bool), bool voorvoegsel = default(bool), DatumOnvolledig datumIngangOnderzoek = default(DatumOnvolledig))
         {
@@ -46,23 +46,20 @@ namespace Org.OpenAPITools.Model
         }
         
         /// <summary>
-        /// Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+        /// Gets or Sets Geslachtsnaam
         /// </summary>
-        /// <value>Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.</value>
         [DataMember(Name="geslachtsnaam", EmitDefaultValue=false)]
         public bool Geslachtsnaam { get; set; }
 
         /// <summary>
-        /// Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+        /// Gets or Sets Voornamen
         /// </summary>
-        /// <value>Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.</value>
         [DataMember(Name="voornamen", EmitDefaultValue=false)]
         public bool Voornamen { get; set; }
 
         /// <summary>
-        /// Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+        /// Gets or Sets Voorvoegsel
         /// </summary>
-        /// <value>Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.</value>
         [DataMember(Name="voorvoegsel", EmitDefaultValue=false)]
         public bool Voorvoegsel { get; set; }
 

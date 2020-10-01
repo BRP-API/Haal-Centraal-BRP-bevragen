@@ -1,7 +1,7 @@
 /* 
- * Bevragingen ingeschreven personen
+ * Bevragen Ingeschreven Personen
  *
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -34,20 +34,12 @@ namespace Org.OpenAPITools.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="IngeschrevenPersoonHalAllOf" /> class.
         /// </summary>
-        /// <param name="links">links.</param>
         /// <param name="embedded">embedded.</param>
-        public IngeschrevenPersoonHalAllOf(IngeschrevenPersoonLinks links = default(IngeschrevenPersoonLinks), IngeschrevenPersoonEmbedded embedded = default(IngeschrevenPersoonEmbedded))
+        public IngeschrevenPersoonHalAllOf(IngeschrevenPersoonEmbedded embedded = default(IngeschrevenPersoonEmbedded))
         {
-            this.Links = links;
             this.Embedded = embedded;
         }
         
-        /// <summary>
-        /// Gets or Sets Links
-        /// </summary>
-        [DataMember(Name="_links", EmitDefaultValue=false)]
-        public IngeschrevenPersoonLinks Links { get; set; }
-
         /// <summary>
         /// Gets or Sets Embedded
         /// </summary>
@@ -62,7 +54,6 @@ namespace Org.OpenAPITools.Model
         {
             var sb = new StringBuilder();
             sb.Append("class IngeschrevenPersoonHalAllOf {\n");
-            sb.Append("  Links: ").Append(Links).Append("\n");
             sb.Append("  Embedded: ").Append(Embedded).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -99,11 +90,6 @@ namespace Org.OpenAPITools.Model
 
             return 
                 (
-                    this.Links == input.Links ||
-                    (this.Links != null &&
-                    this.Links.Equals(input.Links))
-                ) && 
-                (
                     this.Embedded == input.Embedded ||
                     (this.Embedded != null &&
                     this.Embedded.Equals(input.Embedded))
@@ -119,8 +105,6 @@ namespace Org.OpenAPITools.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Links != null)
-                    hashCode = hashCode * 59 + this.Links.GetHashCode();
                 if (this.Embedded != null)
                     hashCode = hashCode * 59 + this.Embedded.GetHashCode();
                 return hashCode;

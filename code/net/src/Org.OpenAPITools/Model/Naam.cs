@@ -1,7 +1,7 @@
 /* 
- * Bevragingen ingeschreven personen
+ * Bevragen Ingeschreven Personen
  *
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -25,7 +25,7 @@ using OpenAPIDateConverter = Org.OpenAPITools.Client.OpenAPIDateConverter;
 namespace Org.OpenAPITools.Model
 {
     /// <summary>
-    /// Gegevens over de naam van de NATUURLIJK PERSOON  * **adellijketitelPredikaat** : Tabel Adellijke titel/predikaat, die aangeeft welke titel of welk predikaat behoort tot de naam (bij adellijke titel geslachtsnaam, bij predikaat voornaam).
+    /// Naam
     /// </summary>
     [DataContract]
     public partial class Naam :  IEquatable<Naam>, IValidatableObject
@@ -33,10 +33,10 @@ namespace Org.OpenAPITools.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Naam" /> class.
         /// </summary>
-        /// <param name="geslachtsnaam">De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst..</param>
-        /// <param name="voorletters">De voorletters waarmee een persoon aangeschreven wil worden. De voorlettes zijn afgeleid van de voornamen..</param>
-        /// <param name="voornamen">De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat..</param>
-        /// <param name="voorvoegsel">Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam..</param>
+        /// <param name="geslachtsnaam">De achternaam van een persoon. .</param>
+        /// <param name="voorletters">De voorletters van de persoon, afgeleid van de voornamen. .</param>
+        /// <param name="voornamen">De verzameling namen voor de geslachtsnaam, gescheiden door spaties. .</param>
+        /// <param name="voorvoegsel">voorvoegsel.</param>
         /// <param name="inOnderzoek">inOnderzoek.</param>
         public Naam(string geslachtsnaam = default(string), string voorletters = default(string), string voornamen = default(string), string voorvoegsel = default(string), NaamInOnderzoek inOnderzoek = default(NaamInOnderzoek))
         {
@@ -48,30 +48,29 @@ namespace Org.OpenAPITools.Model
         }
         
         /// <summary>
-        /// De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst.
+        /// De achternaam van een persoon. 
         /// </summary>
-        /// <value>De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst.</value>
+        /// <value>De achternaam van een persoon. </value>
         [DataMember(Name="geslachtsnaam", EmitDefaultValue=false)]
         public string Geslachtsnaam { get; set; }
 
         /// <summary>
-        /// De voorletters waarmee een persoon aangeschreven wil worden. De voorlettes zijn afgeleid van de voornamen.
+        /// De voorletters van de persoon, afgeleid van de voornamen. 
         /// </summary>
-        /// <value>De voorletters waarmee een persoon aangeschreven wil worden. De voorlettes zijn afgeleid van de voornamen.</value>
+        /// <value>De voorletters van de persoon, afgeleid van de voornamen. </value>
         [DataMember(Name="voorletters", EmitDefaultValue=false)]
         public string Voorletters { get; set; }
 
         /// <summary>
-        /// De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat.
+        /// De verzameling namen voor de geslachtsnaam, gescheiden door spaties. 
         /// </summary>
-        /// <value>De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat.</value>
+        /// <value>De verzameling namen voor de geslachtsnaam, gescheiden door spaties. </value>
         [DataMember(Name="voornamen", EmitDefaultValue=false)]
         public string Voornamen { get; set; }
 
         /// <summary>
-        /// Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam.
+        /// Gets or Sets Voorvoegsel
         /// </summary>
-        /// <value>Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam.</value>
         [DataMember(Name="voorvoegsel", EmitDefaultValue=false)]
         public string Voorvoegsel { get; set; }
 
@@ -185,34 +184,6 @@ namespace Org.OpenAPITools.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // Geslachtsnaam (string) maxLength
-            if(this.Geslachtsnaam != null && this.Geslachtsnaam.Length > 200)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Geslachtsnaam, length must be less than 200.", new [] { "Geslachtsnaam" });
-            }
-
-            
-            // Voorletters (string) maxLength
-            if(this.Voorletters != null && this.Voorletters.Length > 20)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Voorletters, length must be less than 20.", new [] { "Voorletters" });
-            }
-
-            
-            // Voornamen (string) maxLength
-            if(this.Voornamen != null && this.Voornamen.Length > 200)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Voornamen, length must be less than 200.", new [] { "Voornamen" });
-            }
-
-            
-            // Voorvoegsel (string) maxLength
-            if(this.Voorvoegsel != null && this.Voorvoegsel.Length > 10)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Voorvoegsel, length must be less than 10.", new [] { "Voorvoegsel" });
-            }
-
-            
             yield break;
         }
     }

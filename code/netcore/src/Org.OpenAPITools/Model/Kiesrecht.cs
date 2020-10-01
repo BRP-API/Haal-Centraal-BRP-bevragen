@@ -1,7 +1,7 @@
 /* 
- * Bevragingen ingeschreven personen
+ * Bevragen Ingeschreven Personen
  *
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -26,7 +26,7 @@ using OpenAPIDateConverter = Org.OpenAPITools.Client.OpenAPIDateConverter;
 namespace Org.OpenAPITools.Model
 {
     /// <summary>
-    /// Gegevens over het kiesrecht van de ingeschreven persoon.  * **datumUitsluitingEuropeesKiesrecht**: De datum waarop een uitsluiting voor deelname aan verkiezingen voor het Europees parlement niet meer van toepassing is, als er sprake is van uitsluiting voor bepaalde tijd.  * **datumUitsluitingKiesrecht**: De datum waarop een uitsluiting voor deelname aan verkiezingen niet meer van toepassing is, als er sprake is van uitsluiting voor bepaalde tijd.
+    /// Kiesrecht
     /// </summary>
     [DataContract]
     public partial class Kiesrecht :  IEquatable<Kiesrecht>, IValidatableObject
@@ -34,8 +34,8 @@ namespace Org.OpenAPITools.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Kiesrecht" /> class.
         /// </summary>
-        /// <param name="europeesKiesrecht">Een aanduiding die aangeeft of de persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement.  * true: persoon ontvangt een oproep.</param>
-        /// <param name="uitgeslotenVanKiesrecht">Een aanduiding die aangeeft of de persoon is uitgesloten van kiesrecht. * true: persoon is uitgesloten.</param>
+        /// <param name="europeesKiesrecht">Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. .</param>
+        /// <param name="uitgeslotenVanKiesrecht">uitgeslotenVanKiesrecht.</param>
         /// <param name="einddatumUitsluitingEuropeesKiesrecht">einddatumUitsluitingEuropeesKiesrecht.</param>
         /// <param name="einddatumUitsluitingKiesrecht">einddatumUitsluitingKiesrecht.</param>
         public Kiesrecht(bool europeesKiesrecht = default(bool), bool uitgeslotenVanKiesrecht = default(bool), DatumOnvolledig einddatumUitsluitingEuropeesKiesrecht = default(DatumOnvolledig), DatumOnvolledig einddatumUitsluitingKiesrecht = default(DatumOnvolledig))
@@ -47,16 +47,15 @@ namespace Org.OpenAPITools.Model
         }
         
         /// <summary>
-        /// Een aanduiding die aangeeft of de persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement.  * true: persoon ontvangt een oproep
+        /// Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. 
         /// </summary>
-        /// <value>Een aanduiding die aangeeft of de persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement.  * true: persoon ontvangt een oproep</value>
+        /// <value>Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. </value>
         [DataMember(Name="europeesKiesrecht", EmitDefaultValue=false)]
         public bool EuropeesKiesrecht { get; set; }
 
         /// <summary>
-        /// Een aanduiding die aangeeft of de persoon is uitgesloten van kiesrecht. * true: persoon is uitgesloten
+        /// Gets or Sets UitgeslotenVanKiesrecht
         /// </summary>
-        /// <value>Een aanduiding die aangeeft of de persoon is uitgesloten van kiesrecht. * true: persoon is uitgesloten</value>
         [DataMember(Name="uitgeslotenVanKiesrecht", EmitDefaultValue=false)]
         public bool UitgeslotenVanKiesrecht { get; set; }
 

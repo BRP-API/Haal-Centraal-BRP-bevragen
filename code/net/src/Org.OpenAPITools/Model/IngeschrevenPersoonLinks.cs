@@ -1,7 +1,7 @@
 /* 
- * Bevragingen ingeschreven personen
+ * Bevragen Ingeschreven Personen
  *
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -34,16 +34,16 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="IngeschrevenPersoonLinks" /> class.
         /// </summary>
         /// <param name="self">self.</param>
-        /// <param name="ouders">De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE verwijst&#x60;.</param>
-        /// <param name="reisdocumenten">De ingezetene waaraan het REISDOCUMENT is verstrekt. Dit is de inverse relatie van heeftAlsHouder. Reisdocumenten die aan een ingezetene zijn verstrekt..</param>
-        /// <param name="kinderen">De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE verwijst.</param>
-        /// <param name="partners">De actuele bij de ingeschreven persoon geregistreerde huwelijken en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven..</param>
+        /// <param name="ouders">De ouders van de persoon. .</param>
+        /// <param name="reisdocumenten">De reisdocumenten die aan de persoon zijn verstrekt. .</param>
+        /// <param name="kinderen">De kinderen van de persoon. .</param>
+        /// <param name="partners">De actuele bij de ingeschreven persoon geregistreerde huwelijken en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven. .</param>
         /// <param name="partnerhistorie">partnerhistorie.</param>
         /// <param name="verblijfplaatshistorie">verblijfplaatshistorie.</param>
         /// <param name="verblijfstitelhistorie">verblijfstitelhistorie.</param>
         /// <param name="nationaliteitHistorie">nationaliteitHistorie.</param>
-        /// <param name="verblijfplaatsNummeraanduiding">verblijfplaatsNummeraanduiding.</param>
-        public IngeschrevenPersoonLinks(HalLink self = default(HalLink), List<HalLink> ouders = default(List<HalLink>), List<HalLink> reisdocumenten = default(List<HalLink>), List<HalLink> kinderen = default(List<HalLink>), List<HalLink> partners = default(List<HalLink>), HalLink partnerhistorie = default(HalLink), HalLink verblijfplaatshistorie = default(HalLink), HalLink verblijfstitelhistorie = default(HalLink), HalLink nationaliteitHistorie = default(HalLink), HalLink verblijfplaatsNummeraanduiding = default(HalLink))
+        /// <param name="adres">adres.</param>
+        public IngeschrevenPersoonLinks(HalLink self = default(HalLink), List<HalLink> ouders = default(List<HalLink>), List<HalLink> reisdocumenten = default(List<HalLink>), List<HalLink> kinderen = default(List<HalLink>), List<HalLink> partners = default(List<HalLink>), HalLink partnerhistorie = default(HalLink), HalLink verblijfplaatshistorie = default(HalLink), HalLink verblijfstitelhistorie = default(HalLink), HalLink nationaliteitHistorie = default(HalLink), HalLink adres = default(HalLink))
         {
             this.Self = self;
             this.Ouders = ouders;
@@ -54,7 +54,7 @@ namespace Org.OpenAPITools.Model
             this.Verblijfplaatshistorie = verblijfplaatshistorie;
             this.Verblijfstitelhistorie = verblijfstitelhistorie;
             this.NationaliteitHistorie = nationaliteitHistorie;
-            this.VerblijfplaatsNummeraanduiding = verblijfplaatsNummeraanduiding;
+            this.Adres = adres;
         }
         
         /// <summary>
@@ -64,30 +64,30 @@ namespace Org.OpenAPITools.Model
         public HalLink Self { get; set; }
 
         /// <summary>
-        /// De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE verwijst&#x60;
+        /// De ouders van de persoon. 
         /// </summary>
-        /// <value>De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE verwijst&#x60;</value>
+        /// <value>De ouders van de persoon. </value>
         [DataMember(Name="ouders", EmitDefaultValue=false)]
         public List<HalLink> Ouders { get; set; }
 
         /// <summary>
-        /// De ingezetene waaraan het REISDOCUMENT is verstrekt. Dit is de inverse relatie van heeftAlsHouder. Reisdocumenten die aan een ingezetene zijn verstrekt.
+        /// De reisdocumenten die aan de persoon zijn verstrekt. 
         /// </summary>
-        /// <value>De ingezetene waaraan het REISDOCUMENT is verstrekt. Dit is de inverse relatie van heeftAlsHouder. Reisdocumenten die aan een ingezetene zijn verstrekt.</value>
+        /// <value>De reisdocumenten die aan de persoon zijn verstrekt. </value>
         [DataMember(Name="reisdocumenten", EmitDefaultValue=false)]
         public List<HalLink> Reisdocumenten { get; set; }
 
         /// <summary>
-        /// De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE verwijst
+        /// De kinderen van de persoon. 
         /// </summary>
-        /// <value>De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE verwijst</value>
+        /// <value>De kinderen van de persoon. </value>
         [DataMember(Name="kinderen", EmitDefaultValue=false)]
         public List<HalLink> Kinderen { get; set; }
 
         /// <summary>
-        /// De actuele bij de ingeschreven persoon geregistreerde huwelijken en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven.
+        /// De actuele bij de ingeschreven persoon geregistreerde huwelijken en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven. 
         /// </summary>
-        /// <value>De actuele bij de ingeschreven persoon geregistreerde huwelijken en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven.</value>
+        /// <value>De actuele bij de ingeschreven persoon geregistreerde huwelijken en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven. </value>
         [DataMember(Name="partners", EmitDefaultValue=false)]
         public List<HalLink> Partners { get; set; }
 
@@ -116,10 +116,10 @@ namespace Org.OpenAPITools.Model
         public HalLink NationaliteitHistorie { get; set; }
 
         /// <summary>
-        /// Gets or Sets VerblijfplaatsNummeraanduiding
+        /// Gets or Sets Adres
         /// </summary>
-        [DataMember(Name="verblijfplaatsNummeraanduiding", EmitDefaultValue=false)]
-        public HalLink VerblijfplaatsNummeraanduiding { get; set; }
+        [DataMember(Name="adres", EmitDefaultValue=false)]
+        public HalLink Adres { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -138,7 +138,7 @@ namespace Org.OpenAPITools.Model
             sb.Append("  Verblijfplaatshistorie: ").Append(Verblijfplaatshistorie).Append("\n");
             sb.Append("  Verblijfstitelhistorie: ").Append(Verblijfstitelhistorie).Append("\n");
             sb.Append("  NationaliteitHistorie: ").Append(NationaliteitHistorie).Append("\n");
-            sb.Append("  VerblijfplaatsNummeraanduiding: ").Append(VerblijfplaatsNummeraanduiding).Append("\n");
+            sb.Append("  Adres: ").Append(Adres).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -223,9 +223,9 @@ namespace Org.OpenAPITools.Model
                     this.NationaliteitHistorie.Equals(input.NationaliteitHistorie))
                 ) && 
                 (
-                    this.VerblijfplaatsNummeraanduiding == input.VerblijfplaatsNummeraanduiding ||
-                    (this.VerblijfplaatsNummeraanduiding != null &&
-                    this.VerblijfplaatsNummeraanduiding.Equals(input.VerblijfplaatsNummeraanduiding))
+                    this.Adres == input.Adres ||
+                    (this.Adres != null &&
+                    this.Adres.Equals(input.Adres))
                 );
         }
 
@@ -256,8 +256,8 @@ namespace Org.OpenAPITools.Model
                     hashCode = hashCode * 59 + this.Verblijfstitelhistorie.GetHashCode();
                 if (this.NationaliteitHistorie != null)
                     hashCode = hashCode * 59 + this.NationaliteitHistorie.GetHashCode();
-                if (this.VerblijfplaatsNummeraanduiding != null)
-                    hashCode = hashCode * 59 + this.VerblijfplaatsNummeraanduiding.GetHashCode();
+                if (this.Adres != null)
+                    hashCode = hashCode * 59 + this.Adres.GetHashCode();
                 return hashCode;
             }
         }

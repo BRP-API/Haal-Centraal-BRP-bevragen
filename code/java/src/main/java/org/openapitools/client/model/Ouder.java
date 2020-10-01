@@ -1,6 +1,6 @@
 /*
- * Bevragingen ingeschreven personen
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * Bevragen Ingeschreven Personen
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -31,10 +31,10 @@ import org.openapitools.client.model.OuderAanduidingEnum;
 import org.openapitools.client.model.OuderInOnderzoek;
 
 /**
- * Gegevens over de ouder van de ingeschrevene.  * **datumIngangFamilierechtelijkeBetrekking** : De datum waarop de familierechtelijke betrekking is ontstaan.
+ * Gegevens over de ouder van de persoon. * **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan. 
  */
-@ApiModel(description = "Gegevens over de ouder van de ingeschrevene.  * **datumIngangFamilierechtelijkeBetrekking** : De datum waarop de familierechtelijke betrekking is ontstaan.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-21T14:20:17.398Z[Etc/UTC]")
+@ApiModel(description = "Gegevens over de ouder van de persoon. * **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan. ")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T11:34:05.460Z[Etc/UTC]")
 public class Ouder {
   public static final String SERIALIZED_NAME_BURGERSERVICENUMMER = "burgerservicenummer";
   @SerializedName(SERIALIZED_NAME_BURGERSERVICENUMMER)
@@ -76,11 +76,11 @@ public class Ouder {
   }
 
    /**
-   * Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.
+   * Get burgerservicenummer
    * @return burgerservicenummer
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "555555021", value = "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.")
+  @ApiModelProperty(example = "555555021", value = "")
 
   public String getBurgerservicenummer() {
     return burgerservicenummer;
@@ -237,11 +237,11 @@ public class Ouder {
   }
 
    /**
-   * Een aanduiding die aangeeft dat gegevens wel of niet verstrekt mogen worden. Indien true: op verzoek van deze persoon is het verstrekken van gegevens over deze persoon aan bepaalde derden niet toegestaan.
+   * Gegevens mogen niet worden verstrekt aan derden / maarschappelijke instellingen. 
    * @return geheimhoudingPersoonsgegevens
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt mogen worden. Indien true: op verzoek van deze persoon is het verstrekken van gegevens over deze persoon aan bepaalde derden niet toegestaan.")
+  @ApiModelProperty(value = "Gegevens mogen niet worden verstrekt aan derden / maarschappelijke instellingen. ")
 
   public Boolean getGeheimhoudingPersoonsgegevens() {
     return geheimhoudingPersoonsgegevens;

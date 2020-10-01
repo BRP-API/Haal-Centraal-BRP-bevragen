@@ -1,7 +1,7 @@
 /* 
- * Bevragingen ingeschreven personen
+ * Bevragen Ingeschreven Personen
  *
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -25,7 +25,7 @@ using OpenAPIDateConverter = Org.OpenAPITools.Client.OpenAPIDateConverter;
 namespace Org.OpenAPITools.Model
 {
     /// <summary>
-    /// Gegevens over het verblijf en adres van de ingeschreven persoon. Dit is het adres waarop een persoon is ingeschreven.  * **datumAanvangAdreshuishouding** : De datum van aangifte of ambtshalve melding van verblijf en adres.  * **datumIngangGeldigheid** : Datum waarop de gegevens over de verblijfplaats geldig zijn geworden.  * **datumInschrijvingInGemeente**: Bij inschrijving op grond van een aangifte door de burger van zijn vestiging in een (volgende) gemeente is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop de betrokkene schriftelijk van het voornemen van ambtshalve opneming mededeling is gedaan.  * **datumVestigingInNederland** : Datum van inschrijving in Nederland  * **landVanWaarIngeschreven** : Het land waar de ingeschreven persoon verblijf hield voor (her)vestiging in Nederland.  * **gemeenteVanInschrijving** : Een aanduiding die aangeeft in welke gemeente de PK zich bevindt. De code kan voorloopnullen bevatten  * **landVanWaarIngeschreven** : Het LAND waar de INGESCHREVEN PERSOON verblijf hield voor (her)vestiging in Nederland.
+    /// Gegevens over het verblijf of de woonlocatie van een persoon. * **datumAanvangAdreshuishouding** : de datum van aangifte of ambtshalve melding van verblijf en adres. * **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden. * **datumInschrijvingInGemeente**: bij inschrijving op grond van een verhuisaangifte door de burger is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop het voornemen van ambtshalve opneming schriftelijk aan de persoon is medegedeeld. * **datumVestigingInNederland** : datum van inschrijving in Nederland. * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland. * **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten.\&quot; 
     /// </summary>
     [DataContract]
     public partial class VerblijfplaatsAllOf :  IEquatable<VerblijfplaatsAllOf>, IValidatableObject
@@ -33,25 +33,35 @@ namespace Org.OpenAPITools.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="VerblijfplaatsAllOf" /> class.
         /// </summary>
-        /// <param name="identificatiecodeAdresseerbaarObject">Een verblijfplaats kan een ligplaats, een standplaats of een verblijfsobject in een of meerdere panden zijn, waaraan respectievelijk een ligplaatsidentificatie, standplaatsidentificatie of verblijfsobjectidentificatie is toegekend. De Identificatiecode verblijfplaats is een combinatie van een viercijferige gemeentecode, een tweecijferige objecttypecode die aangeeft of de aanduiding een verblijfsobject (01), ligplaats (02) of standplaats (03) betreft en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig volgnummer. Combinatie van de viercijferige &#39;gemeentecode&#39; (volgens GBA tabel 33, Gemeententabel), de tweecijferige &#39;objecttypecode&#39; en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig &#39;objectvolgnummer&#39;..</param>
-        /// <param name="indicatieVestigingVanuitBuitenland">Indicatie waarmee aangegeven wordt of de ingeschreven persoon zich vanuit het buitenland heeftingeschreven. Deze indicatie heeft als rol om aan te geven dat iemand zich vanuit het buitenland gevestigd heeft. Deze indicator wordt altijd meegeleverd als de waarde true is. Als de waarde false is wordt de indicator niet meegeleverd..</param>
-        /// <param name="locatiebeschrijving">Een geheel of gedeeltelijke omschrijving van de ligging van een object..</param>
-        /// <param name="straatnaam">De officiële straatnaam zoals door het bevoegd gemeentelijk orgaan is vastgesteld, zo nodig ingekort conform de specificaties van de NEN 5825. alle alfanumrieke tekens.</param>
-        /// <param name="vanuitVertrokkenOnbekendWaarheen">Indicatie waarmee aangegeven wordt dat de persoon is teruggekeerd uit een situatie van vertrokken onbekend waarheen.</param>
+        /// <param name="adresseerbaarObjectIdentificatie">De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn. .</param>
+        /// <param name="aanduidingBijHuisnummer">aanduidingBijHuisnummer.</param>
+        /// <param name="nummeraanduidingIdentificatie">Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG. .</param>
+        /// <param name="functieAdres">functieAdres.</param>
+        /// <param name="indicatieVestigingVanuitBuitenland">Geeft aan dat de ingeschreven persoon zich vanuit het buitenland heeft ingeschreven. .</param>
+        /// <param name="locatiebeschrijving">Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats. .</param>
+        /// <param name="korteNaam">De officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG) of een verkorte versie. .</param>
+        /// <param name="vanuitVertrokkenOnbekendWaarheen">Geeft aan dat de persoon is teruggekeerd uit een situatie van &#39;vertrokken onbekend waarheen.&#39; .</param>
         /// <param name="datumAanvangAdreshouding">datumAanvangAdreshouding.</param>
         /// <param name="datumIngangGeldigheid">datumIngangGeldigheid.</param>
         /// <param name="datumInschrijvingInGemeente">datumInschrijvingInGemeente.</param>
         /// <param name="datumVestigingInNederland">datumVestigingInNederland.</param>
         /// <param name="gemeenteVanInschrijving">gemeenteVanInschrijving.</param>
         /// <param name="landVanwaarIngeschreven">landVanwaarIngeschreven.</param>
-        /// <param name="verblijfBuitenland">verblijfBuitenland.</param>
+        /// <param name="adresregel1">Het eerste deel van een adres is een combinatie van de straat en huisnummer. .</param>
+        /// <param name="adresregel2">Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode. .</param>
+        /// <param name="adresregel3">Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland. .</param>
+        /// <param name="vertrokkenOnbekendWaarheen">Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe. .</param>
+        /// <param name="land">land.</param>
         /// <param name="inOnderzoek">inOnderzoek.</param>
-        public VerblijfplaatsAllOf(string identificatiecodeAdresseerbaarObject = default(string), bool indicatieVestigingVanuitBuitenland = default(bool), string locatiebeschrijving = default(string), string straatnaam = default(string), bool vanuitVertrokkenOnbekendWaarheen = default(bool), DatumOnvolledig datumAanvangAdreshouding = default(DatumOnvolledig), DatumOnvolledig datumIngangGeldigheid = default(DatumOnvolledig), DatumOnvolledig datumInschrijvingInGemeente = default(DatumOnvolledig), DatumOnvolledig datumVestigingInNederland = default(DatumOnvolledig), Waardetabel gemeenteVanInschrijving = default(Waardetabel), Waardetabel landVanwaarIngeschreven = default(Waardetabel), VerblijfBuitenland verblijfBuitenland = default(VerblijfBuitenland), VerblijfplaatsInOnderzoek inOnderzoek = default(VerblijfplaatsInOnderzoek))
+        public VerblijfplaatsAllOf(string adresseerbaarObjectIdentificatie = default(string), AanduidingBijHuisnummerEnum aanduidingBijHuisnummer = default(AanduidingBijHuisnummerEnum), string nummeraanduidingIdentificatie = default(string), SoortAdresEnum functieAdres = default(SoortAdresEnum), bool indicatieVestigingVanuitBuitenland = default(bool), string locatiebeschrijving = default(string), string korteNaam = default(string), bool vanuitVertrokkenOnbekendWaarheen = default(bool), DatumOnvolledig datumAanvangAdreshouding = default(DatumOnvolledig), DatumOnvolledig datumIngangGeldigheid = default(DatumOnvolledig), DatumOnvolledig datumInschrijvingInGemeente = default(DatumOnvolledig), DatumOnvolledig datumVestigingInNederland = default(DatumOnvolledig), Waardetabel gemeenteVanInschrijving = default(Waardetabel), Waardetabel landVanwaarIngeschreven = default(Waardetabel), string adresregel1 = default(string), string adresregel2 = default(string), string adresregel3 = default(string), bool vertrokkenOnbekendWaarheen = default(bool), Waardetabel land = default(Waardetabel), VerblijfplaatsInOnderzoek inOnderzoek = default(VerblijfplaatsInOnderzoek))
         {
-            this.IdentificatiecodeAdresseerbaarObject = identificatiecodeAdresseerbaarObject;
+            this.AdresseerbaarObjectIdentificatie = adresseerbaarObjectIdentificatie;
+            this.AanduidingBijHuisnummer = aanduidingBijHuisnummer;
+            this.NummeraanduidingIdentificatie = nummeraanduidingIdentificatie;
+            this.FunctieAdres = functieAdres;
             this.IndicatieVestigingVanuitBuitenland = indicatieVestigingVanuitBuitenland;
             this.Locatiebeschrijving = locatiebeschrijving;
-            this.Straatnaam = straatnaam;
+            this.KorteNaam = korteNaam;
             this.VanuitVertrokkenOnbekendWaarheen = vanuitVertrokkenOnbekendWaarheen;
             this.DatumAanvangAdreshouding = datumAanvangAdreshouding;
             this.DatumIngangGeldigheid = datumIngangGeldigheid;
@@ -59,42 +69,65 @@ namespace Org.OpenAPITools.Model
             this.DatumVestigingInNederland = datumVestigingInNederland;
             this.GemeenteVanInschrijving = gemeenteVanInschrijving;
             this.LandVanwaarIngeschreven = landVanwaarIngeschreven;
-            this.VerblijfBuitenland = verblijfBuitenland;
+            this.Adresregel1 = adresregel1;
+            this.Adresregel2 = adresregel2;
+            this.Adresregel3 = adresregel3;
+            this.VertrokkenOnbekendWaarheen = vertrokkenOnbekendWaarheen;
+            this.Land = land;
             this.InOnderzoek = inOnderzoek;
         }
         
         /// <summary>
-        /// Een verblijfplaats kan een ligplaats, een standplaats of een verblijfsobject in een of meerdere panden zijn, waaraan respectievelijk een ligplaatsidentificatie, standplaatsidentificatie of verblijfsobjectidentificatie is toegekend. De Identificatiecode verblijfplaats is een combinatie van een viercijferige gemeentecode, een tweecijferige objecttypecode die aangeeft of de aanduiding een verblijfsobject (01), ligplaats (02) of standplaats (03) betreft en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig volgnummer. Combinatie van de viercijferige &#39;gemeentecode&#39; (volgens GBA tabel 33, Gemeententabel), de tweecijferige &#39;objecttypecode&#39; en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig &#39;objectvolgnummer&#39;.
+        /// De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn. 
         /// </summary>
-        /// <value>Een verblijfplaats kan een ligplaats, een standplaats of een verblijfsobject in een of meerdere panden zijn, waaraan respectievelijk een ligplaatsidentificatie, standplaatsidentificatie of verblijfsobjectidentificatie is toegekend. De Identificatiecode verblijfplaats is een combinatie van een viercijferige gemeentecode, een tweecijferige objecttypecode die aangeeft of de aanduiding een verblijfsobject (01), ligplaats (02) of standplaats (03) betreft en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig volgnummer. Combinatie van de viercijferige &#39;gemeentecode&#39; (volgens GBA tabel 33, Gemeententabel), de tweecijferige &#39;objecttypecode&#39; en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig &#39;objectvolgnummer&#39;.</value>
-        [DataMember(Name="identificatiecodeAdresseerbaarObject", EmitDefaultValue=false)]
-        public string IdentificatiecodeAdresseerbaarObject { get; set; }
+        /// <value>De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn. </value>
+        [DataMember(Name="adresseerbaarObjectIdentificatie", EmitDefaultValue=false)]
+        public string AdresseerbaarObjectIdentificatie { get; set; }
 
         /// <summary>
-        /// Indicatie waarmee aangegeven wordt of de ingeschreven persoon zich vanuit het buitenland heeftingeschreven. Deze indicatie heeft als rol om aan te geven dat iemand zich vanuit het buitenland gevestigd heeft. Deze indicator wordt altijd meegeleverd als de waarde true is. Als de waarde false is wordt de indicator niet meegeleverd.
+        /// Gets or Sets AanduidingBijHuisnummer
         /// </summary>
-        /// <value>Indicatie waarmee aangegeven wordt of de ingeschreven persoon zich vanuit het buitenland heeftingeschreven. Deze indicatie heeft als rol om aan te geven dat iemand zich vanuit het buitenland gevestigd heeft. Deze indicator wordt altijd meegeleverd als de waarde true is. Als de waarde false is wordt de indicator niet meegeleverd.</value>
+        [DataMember(Name="aanduidingBijHuisnummer", EmitDefaultValue=false)]
+        public AanduidingBijHuisnummerEnum AanduidingBijHuisnummer { get; set; }
+
+        /// <summary>
+        /// Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG. 
+        /// </summary>
+        /// <value>Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG. </value>
+        [DataMember(Name="nummeraanduidingIdentificatie", EmitDefaultValue=false)]
+        public string NummeraanduidingIdentificatie { get; set; }
+
+        /// <summary>
+        /// Gets or Sets FunctieAdres
+        /// </summary>
+        [DataMember(Name="functieAdres", EmitDefaultValue=false)]
+        public SoortAdresEnum FunctieAdres { get; set; }
+
+        /// <summary>
+        /// Geeft aan dat de ingeschreven persoon zich vanuit het buitenland heeft ingeschreven. 
+        /// </summary>
+        /// <value>Geeft aan dat de ingeschreven persoon zich vanuit het buitenland heeft ingeschreven. </value>
         [DataMember(Name="indicatieVestigingVanuitBuitenland", EmitDefaultValue=false)]
         public bool IndicatieVestigingVanuitBuitenland { get; set; }
 
         /// <summary>
-        /// Een geheel of gedeeltelijke omschrijving van de ligging van een object.
+        /// Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats. 
         /// </summary>
-        /// <value>Een geheel of gedeeltelijke omschrijving van de ligging van een object.</value>
+        /// <value>Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats. </value>
         [DataMember(Name="locatiebeschrijving", EmitDefaultValue=false)]
         public string Locatiebeschrijving { get; set; }
 
         /// <summary>
-        /// De officiële straatnaam zoals door het bevoegd gemeentelijk orgaan is vastgesteld, zo nodig ingekort conform de specificaties van de NEN 5825. alle alfanumrieke tekens
+        /// De officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG) of een verkorte versie. 
         /// </summary>
-        /// <value>De officiële straatnaam zoals door het bevoegd gemeentelijk orgaan is vastgesteld, zo nodig ingekort conform de specificaties van de NEN 5825. alle alfanumrieke tekens</value>
-        [DataMember(Name="straatnaam", EmitDefaultValue=false)]
-        public string Straatnaam { get; set; }
+        /// <value>De officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG) of een verkorte versie. </value>
+        [DataMember(Name="korteNaam", EmitDefaultValue=false)]
+        public string KorteNaam { get; set; }
 
         /// <summary>
-        /// Indicatie waarmee aangegeven wordt dat de persoon is teruggekeerd uit een situatie van vertrokken onbekend waarheen
+        /// Geeft aan dat de persoon is teruggekeerd uit een situatie van &#39;vertrokken onbekend waarheen.&#39; 
         /// </summary>
-        /// <value>Indicatie waarmee aangegeven wordt dat de persoon is teruggekeerd uit een situatie van vertrokken onbekend waarheen</value>
+        /// <value>Geeft aan dat de persoon is teruggekeerd uit een situatie van &#39;vertrokken onbekend waarheen.&#39; </value>
         [DataMember(Name="vanuitVertrokkenOnbekendWaarheen", EmitDefaultValue=false)]
         public bool VanuitVertrokkenOnbekendWaarheen { get; set; }
 
@@ -135,10 +168,38 @@ namespace Org.OpenAPITools.Model
         public Waardetabel LandVanwaarIngeschreven { get; set; }
 
         /// <summary>
-        /// Gets or Sets VerblijfBuitenland
+        /// Het eerste deel van een adres is een combinatie van de straat en huisnummer. 
         /// </summary>
-        [DataMember(Name="verblijfBuitenland", EmitDefaultValue=false)]
-        public VerblijfBuitenland VerblijfBuitenland { get; set; }
+        /// <value>Het eerste deel van een adres is een combinatie van de straat en huisnummer. </value>
+        [DataMember(Name="adresregel1", EmitDefaultValue=false)]
+        public string Adresregel1 { get; set; }
+
+        /// <summary>
+        /// Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode. 
+        /// </summary>
+        /// <value>Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode. </value>
+        [DataMember(Name="adresregel2", EmitDefaultValue=false)]
+        public string Adresregel2 { get; set; }
+
+        /// <summary>
+        /// Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland. 
+        /// </summary>
+        /// <value>Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland. </value>
+        [DataMember(Name="adresregel3", EmitDefaultValue=false)]
+        public string Adresregel3 { get; set; }
+
+        /// <summary>
+        /// Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe. 
+        /// </summary>
+        /// <value>Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe. </value>
+        [DataMember(Name="vertrokkenOnbekendWaarheen", EmitDefaultValue=false)]
+        public bool VertrokkenOnbekendWaarheen { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Land
+        /// </summary>
+        [DataMember(Name="land", EmitDefaultValue=false)]
+        public Waardetabel Land { get; set; }
 
         /// <summary>
         /// Gets or Sets InOnderzoek
@@ -154,10 +215,13 @@ namespace Org.OpenAPITools.Model
         {
             var sb = new StringBuilder();
             sb.Append("class VerblijfplaatsAllOf {\n");
-            sb.Append("  IdentificatiecodeAdresseerbaarObject: ").Append(IdentificatiecodeAdresseerbaarObject).Append("\n");
+            sb.Append("  AdresseerbaarObjectIdentificatie: ").Append(AdresseerbaarObjectIdentificatie).Append("\n");
+            sb.Append("  AanduidingBijHuisnummer: ").Append(AanduidingBijHuisnummer).Append("\n");
+            sb.Append("  NummeraanduidingIdentificatie: ").Append(NummeraanduidingIdentificatie).Append("\n");
+            sb.Append("  FunctieAdres: ").Append(FunctieAdres).Append("\n");
             sb.Append("  IndicatieVestigingVanuitBuitenland: ").Append(IndicatieVestigingVanuitBuitenland).Append("\n");
             sb.Append("  Locatiebeschrijving: ").Append(Locatiebeschrijving).Append("\n");
-            sb.Append("  Straatnaam: ").Append(Straatnaam).Append("\n");
+            sb.Append("  KorteNaam: ").Append(KorteNaam).Append("\n");
             sb.Append("  VanuitVertrokkenOnbekendWaarheen: ").Append(VanuitVertrokkenOnbekendWaarheen).Append("\n");
             sb.Append("  DatumAanvangAdreshouding: ").Append(DatumAanvangAdreshouding).Append("\n");
             sb.Append("  DatumIngangGeldigheid: ").Append(DatumIngangGeldigheid).Append("\n");
@@ -165,7 +229,11 @@ namespace Org.OpenAPITools.Model
             sb.Append("  DatumVestigingInNederland: ").Append(DatumVestigingInNederland).Append("\n");
             sb.Append("  GemeenteVanInschrijving: ").Append(GemeenteVanInschrijving).Append("\n");
             sb.Append("  LandVanwaarIngeschreven: ").Append(LandVanwaarIngeschreven).Append("\n");
-            sb.Append("  VerblijfBuitenland: ").Append(VerblijfBuitenland).Append("\n");
+            sb.Append("  Adresregel1: ").Append(Adresregel1).Append("\n");
+            sb.Append("  Adresregel2: ").Append(Adresregel2).Append("\n");
+            sb.Append("  Adresregel3: ").Append(Adresregel3).Append("\n");
+            sb.Append("  VertrokkenOnbekendWaarheen: ").Append(VertrokkenOnbekendWaarheen).Append("\n");
+            sb.Append("  Land: ").Append(Land).Append("\n");
             sb.Append("  InOnderzoek: ").Append(InOnderzoek).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -202,9 +270,24 @@ namespace Org.OpenAPITools.Model
 
             return 
                 (
-                    this.IdentificatiecodeAdresseerbaarObject == input.IdentificatiecodeAdresseerbaarObject ||
-                    (this.IdentificatiecodeAdresseerbaarObject != null &&
-                    this.IdentificatiecodeAdresseerbaarObject.Equals(input.IdentificatiecodeAdresseerbaarObject))
+                    this.AdresseerbaarObjectIdentificatie == input.AdresseerbaarObjectIdentificatie ||
+                    (this.AdresseerbaarObjectIdentificatie != null &&
+                    this.AdresseerbaarObjectIdentificatie.Equals(input.AdresseerbaarObjectIdentificatie))
+                ) && 
+                (
+                    this.AanduidingBijHuisnummer == input.AanduidingBijHuisnummer ||
+                    (this.AanduidingBijHuisnummer != null &&
+                    this.AanduidingBijHuisnummer.Equals(input.AanduidingBijHuisnummer))
+                ) && 
+                (
+                    this.NummeraanduidingIdentificatie == input.NummeraanduidingIdentificatie ||
+                    (this.NummeraanduidingIdentificatie != null &&
+                    this.NummeraanduidingIdentificatie.Equals(input.NummeraanduidingIdentificatie))
+                ) && 
+                (
+                    this.FunctieAdres == input.FunctieAdres ||
+                    (this.FunctieAdres != null &&
+                    this.FunctieAdres.Equals(input.FunctieAdres))
                 ) && 
                 (
                     this.IndicatieVestigingVanuitBuitenland == input.IndicatieVestigingVanuitBuitenland ||
@@ -217,9 +300,9 @@ namespace Org.OpenAPITools.Model
                     this.Locatiebeschrijving.Equals(input.Locatiebeschrijving))
                 ) && 
                 (
-                    this.Straatnaam == input.Straatnaam ||
-                    (this.Straatnaam != null &&
-                    this.Straatnaam.Equals(input.Straatnaam))
+                    this.KorteNaam == input.KorteNaam ||
+                    (this.KorteNaam != null &&
+                    this.KorteNaam.Equals(input.KorteNaam))
                 ) && 
                 (
                     this.VanuitVertrokkenOnbekendWaarheen == input.VanuitVertrokkenOnbekendWaarheen ||
@@ -257,9 +340,29 @@ namespace Org.OpenAPITools.Model
                     this.LandVanwaarIngeschreven.Equals(input.LandVanwaarIngeschreven))
                 ) && 
                 (
-                    this.VerblijfBuitenland == input.VerblijfBuitenland ||
-                    (this.VerblijfBuitenland != null &&
-                    this.VerblijfBuitenland.Equals(input.VerblijfBuitenland))
+                    this.Adresregel1 == input.Adresregel1 ||
+                    (this.Adresregel1 != null &&
+                    this.Adresregel1.Equals(input.Adresregel1))
+                ) && 
+                (
+                    this.Adresregel2 == input.Adresregel2 ||
+                    (this.Adresregel2 != null &&
+                    this.Adresregel2.Equals(input.Adresregel2))
+                ) && 
+                (
+                    this.Adresregel3 == input.Adresregel3 ||
+                    (this.Adresregel3 != null &&
+                    this.Adresregel3.Equals(input.Adresregel3))
+                ) && 
+                (
+                    this.VertrokkenOnbekendWaarheen == input.VertrokkenOnbekendWaarheen ||
+                    (this.VertrokkenOnbekendWaarheen != null &&
+                    this.VertrokkenOnbekendWaarheen.Equals(input.VertrokkenOnbekendWaarheen))
+                ) && 
+                (
+                    this.Land == input.Land ||
+                    (this.Land != null &&
+                    this.Land.Equals(input.Land))
                 ) && 
                 (
                     this.InOnderzoek == input.InOnderzoek ||
@@ -277,14 +380,20 @@ namespace Org.OpenAPITools.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.IdentificatiecodeAdresseerbaarObject != null)
-                    hashCode = hashCode * 59 + this.IdentificatiecodeAdresseerbaarObject.GetHashCode();
+                if (this.AdresseerbaarObjectIdentificatie != null)
+                    hashCode = hashCode * 59 + this.AdresseerbaarObjectIdentificatie.GetHashCode();
+                if (this.AanduidingBijHuisnummer != null)
+                    hashCode = hashCode * 59 + this.AanduidingBijHuisnummer.GetHashCode();
+                if (this.NummeraanduidingIdentificatie != null)
+                    hashCode = hashCode * 59 + this.NummeraanduidingIdentificatie.GetHashCode();
+                if (this.FunctieAdres != null)
+                    hashCode = hashCode * 59 + this.FunctieAdres.GetHashCode();
                 if (this.IndicatieVestigingVanuitBuitenland != null)
                     hashCode = hashCode * 59 + this.IndicatieVestigingVanuitBuitenland.GetHashCode();
                 if (this.Locatiebeschrijving != null)
                     hashCode = hashCode * 59 + this.Locatiebeschrijving.GetHashCode();
-                if (this.Straatnaam != null)
-                    hashCode = hashCode * 59 + this.Straatnaam.GetHashCode();
+                if (this.KorteNaam != null)
+                    hashCode = hashCode * 59 + this.KorteNaam.GetHashCode();
                 if (this.VanuitVertrokkenOnbekendWaarheen != null)
                     hashCode = hashCode * 59 + this.VanuitVertrokkenOnbekendWaarheen.GetHashCode();
                 if (this.DatumAanvangAdreshouding != null)
@@ -299,8 +408,16 @@ namespace Org.OpenAPITools.Model
                     hashCode = hashCode * 59 + this.GemeenteVanInschrijving.GetHashCode();
                 if (this.LandVanwaarIngeschreven != null)
                     hashCode = hashCode * 59 + this.LandVanwaarIngeschreven.GetHashCode();
-                if (this.VerblijfBuitenland != null)
-                    hashCode = hashCode * 59 + this.VerblijfBuitenland.GetHashCode();
+                if (this.Adresregel1 != null)
+                    hashCode = hashCode * 59 + this.Adresregel1.GetHashCode();
+                if (this.Adresregel2 != null)
+                    hashCode = hashCode * 59 + this.Adresregel2.GetHashCode();
+                if (this.Adresregel3 != null)
+                    hashCode = hashCode * 59 + this.Adresregel3.GetHashCode();
+                if (this.VertrokkenOnbekendWaarheen != null)
+                    hashCode = hashCode * 59 + this.VertrokkenOnbekendWaarheen.GetHashCode();
+                if (this.Land != null)
+                    hashCode = hashCode * 59 + this.Land.GetHashCode();
                 if (this.InOnderzoek != null)
                     hashCode = hashCode * 59 + this.InOnderzoek.GetHashCode();
                 return hashCode;
@@ -314,27 +431,6 @@ namespace Org.OpenAPITools.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // IdentificatiecodeAdresseerbaarObject (string) maxLength
-            if(this.IdentificatiecodeAdresseerbaarObject != null && this.IdentificatiecodeAdresseerbaarObject.Length > 16)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for IdentificatiecodeAdresseerbaarObject, length must be less than 16.", new [] { "IdentificatiecodeAdresseerbaarObject" });
-            }
-
-            
-            // Locatiebeschrijving (string) maxLength
-            if(this.Locatiebeschrijving != null && this.Locatiebeschrijving.Length > 35)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Locatiebeschrijving, length must be less than 35.", new [] { "Locatiebeschrijving" });
-            }
-
-            
-            // Straatnaam (string) maxLength
-            if(this.Straatnaam != null && this.Straatnaam.Length > 24)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Straatnaam, length must be less than 24.", new [] { "Straatnaam" });
-            }
-
-            
             yield break;
         }
     }

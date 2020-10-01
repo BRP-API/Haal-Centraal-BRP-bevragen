@@ -1,7 +1,7 @@
 /* 
- * Bevragingen ingeschreven personen
+ * Bevragen Ingeschreven Personen
  *
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -25,7 +25,7 @@ using OpenAPIDateConverter = Org.OpenAPITools.Client.OpenAPIDateConverter;
 namespace Org.OpenAPITools.Model
 {
     /// <summary>
-    /// Gegevens over een kind van de ingeschrevene.
+    /// Gegevens over een kind van de persoon. 
     /// </summary>
     [DataContract]
     public partial class Kind :  IEquatable<Kind>, IValidatableObject
@@ -33,12 +33,12 @@ namespace Org.OpenAPITools.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Kind" /> class.
         /// </summary>
-        /// <param name="burgerservicenummer">Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn..</param>
-        /// <param name="leeftijd">Leeftijd op het moment van bevragen.</param>
+        /// <param name="burgerservicenummer">burgerservicenummer.</param>
+        /// <param name="leeftijd">Leeftijd op het moment van bevragen .</param>
         /// <param name="inOnderzoek">inOnderzoek.</param>
         /// <param name="naam">naam.</param>
         /// <param name="geboorte">geboorte.</param>
-        /// <param name="geheimhoudingPersoonsgegevens">Een aanduiding die aangeeft dat gegevens wel of niet verstrekt mogen worden. Indien true: op verzoek van deze persoon is het verstrekken van gegevens over deze persoon aan bepaalde derden niet toegestaan..</param>
+        /// <param name="geheimhoudingPersoonsgegevens">Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen. .</param>
         public Kind(string burgerservicenummer = default(string), int leeftijd = default(int), KindInOnderzoek inOnderzoek = default(KindInOnderzoek), Naam naam = default(Naam), Geboorte geboorte = default(Geboorte), bool geheimhoudingPersoonsgegevens = default(bool))
         {
             this.Burgerservicenummer = burgerservicenummer;
@@ -50,16 +50,15 @@ namespace Org.OpenAPITools.Model
         }
         
         /// <summary>
-        /// Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.
+        /// Gets or Sets Burgerservicenummer
         /// </summary>
-        /// <value>Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.</value>
         [DataMember(Name="burgerservicenummer", EmitDefaultValue=false)]
         public string Burgerservicenummer { get; set; }
 
         /// <summary>
-        /// Leeftijd op het moment van bevragen
+        /// Leeftijd op het moment van bevragen 
         /// </summary>
-        /// <value>Leeftijd op het moment van bevragen</value>
+        /// <value>Leeftijd op het moment van bevragen </value>
         [DataMember(Name="leeftijd", EmitDefaultValue=false)]
         public int Leeftijd { get; set; }
 
@@ -82,9 +81,9 @@ namespace Org.OpenAPITools.Model
         public Geboorte Geboorte { get; set; }
 
         /// <summary>
-        /// Een aanduiding die aangeeft dat gegevens wel of niet verstrekt mogen worden. Indien true: op verzoek van deze persoon is het verstrekken van gegevens over deze persoon aan bepaalde derden niet toegestaan.
+        /// Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen. 
         /// </summary>
-        /// <value>Een aanduiding die aangeeft dat gegevens wel of niet verstrekt mogen worden. Indien true: op verzoek van deze persoon is het verstrekken van gegevens over deze persoon aan bepaalde derden niet toegestaan.</value>
+        /// <value>Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen. </value>
         [DataMember(Name="geheimhoudingPersoonsgegevens", EmitDefaultValue=false)]
         public bool GeheimhoudingPersoonsgegevens { get; set; }
 
@@ -200,33 +199,6 @@ namespace Org.OpenAPITools.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // Burgerservicenummer (string) maxLength
-            if(this.Burgerservicenummer != null && this.Burgerservicenummer.Length > 9)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Burgerservicenummer, length must be less than 9.", new [] { "Burgerservicenummer" });
-            }
-
-            // Burgerservicenummer (string) minLength
-            if(this.Burgerservicenummer != null && this.Burgerservicenummer.Length < 9)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Burgerservicenummer, length must be greater than 9.", new [] { "Burgerservicenummer" });
-            }
-            
-            // Burgerservicenummer (string) pattern
-            Regex regexBurgerservicenummer = new Regex(@"^[0-9]*$", RegexOptions.CultureInvariant);
-            if (false == regexBurgerservicenummer.Match(this.Burgerservicenummer).Success)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Burgerservicenummer, must match a pattern of " + regexBurgerservicenummer, new [] { "Burgerservicenummer" });
-            }
-
-
-            
-            // Leeftijd (int) maximum
-            if(this.Leeftijd > (int)999)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Leeftijd, must be a value less than or equal to 999.", new [] { "Leeftijd" });
-            }
-
             yield break;
         }
     }

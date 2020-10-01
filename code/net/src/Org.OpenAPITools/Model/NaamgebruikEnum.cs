@@ -1,7 +1,7 @@
 /* 
- * Bevragingen ingeschreven personen
+ * Bevragen Ingeschreven Personen
  *
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -25,9 +25,9 @@ using OpenAPIDateConverter = Org.OpenAPITools.Client.OpenAPIDateConverter;
 namespace Org.OpenAPITools.Model
 {
     /// <summary>
-    /// De voorgedefinieerde waarden van naamgebruik volgens de centrale voorzieningen. * &#x60;eigen&#x60; - E * &#x60;eigen_partner&#x60; - N * &#x60;partner&#x60; - P * &#x60;partner_eigen&#x60; - V
+    /// De manier waarop de geslachtsnaam van persoon en partner van persoon moet worden verwerkt in de manier waarop persoon wil worden aangesproken * &#x60;eigen&#x60; - E - gebruik alleen de eigen naam * &#x60;eigen_partner&#x60; - N - gebruik de eigen naam voor de partnernaam * &#x60;partner&#x60; - P gebruik alleen de partnernaam * &#x60;partner_eigen&#x60; - V - gebruik de partnernaam voor de eigen naam.   De aanduiding naamgebruik is verwerkt in Aanhef, Aanschrijfwijze en gebruikInLopendeTekst.\&quot; 
     /// </summary>
-    /// <value>De voorgedefinieerde waarden van naamgebruik volgens de centrale voorzieningen. * &#x60;eigen&#x60; - E * &#x60;eigen_partner&#x60; - N * &#x60;partner&#x60; - P * &#x60;partner_eigen&#x60; - V</value>
+    /// <value>De manier waarop de geslachtsnaam van persoon en partner van persoon moet worden verwerkt in de manier waarop persoon wil worden aangesproken * &#x60;eigen&#x60; - E - gebruik alleen de eigen naam * &#x60;eigen_partner&#x60; - N - gebruik de eigen naam voor de partnernaam * &#x60;partner&#x60; - P gebruik alleen de partnernaam * &#x60;partner_eigen&#x60; - V - gebruik de partnernaam voor de eigen naam.   De aanduiding naamgebruik is verwerkt in Aanhef, Aanschrijfwijze en gebruikInLopendeTekst.\&quot; </value>
     
     [JsonConverter(typeof(StringEnumConverter))]
     

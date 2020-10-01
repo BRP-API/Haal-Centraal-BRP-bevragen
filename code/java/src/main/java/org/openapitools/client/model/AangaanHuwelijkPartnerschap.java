@@ -1,6 +1,6 @@
 /*
- * Bevragingen ingeschreven personen
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * Bevragen Ingeschreven Personen
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -23,15 +23,15 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import org.openapitools.client.model.AangaanHuwelijkInOnderzoek;
+import org.openapitools.client.model.AangaanHuwelijkPartnerschapInOnderzoek;
 import org.openapitools.client.model.DatumOnvolledig;
 import org.openapitools.client.model.Waardetabel;
 
 /**
- * Gegevens over het gesloten huwelijk of het aangegane geregistreerd partnerschap.  * **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.  * **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan.  * **plaats** : Als de plaats een gemeente in Nederland is dan gewoon de gemeentecode + gemeentenaam . Voor een plaats buiten Nederland is de gemeentecode leeg en wordt de gemeentenaam de buitenlandse plaatsnaam of aanduiding.
+ * Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap. * **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan. * **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. * **plaats** : Als de plaats een gemeente in Nederland is dan gewoon de gemeentecode + gemeentenaam. Voor een plaats buiten Nederland is de gemeentecode leeg en wordt de gemeentenaam de buitenlandse plaatsnaam of aanduiding.\&quot; 
  */
-@ApiModel(description = "Gegevens over het gesloten huwelijk of het aangegane geregistreerd partnerschap.  * **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.  * **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan.  * **plaats** : Als de plaats een gemeente in Nederland is dan gewoon de gemeentecode + gemeentenaam . Voor een plaats buiten Nederland is de gemeentecode leeg en wordt de gemeentenaam de buitenlandse plaatsnaam of aanduiding.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-21T14:20:17.398Z[Etc/UTC]")
+@ApiModel(description = "Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap. * **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan. * **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. * **plaats** : Als de plaats een gemeente in Nederland is dan gewoon de gemeentecode + gemeentenaam. Voor een plaats buiten Nederland is de gemeentecode leeg en wordt de gemeentenaam de buitenlandse plaatsnaam of aanduiding.\" ")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T11:34:05.460Z[Etc/UTC]")
 public class AangaanHuwelijkPartnerschap {
   public static final String SERIALIZED_NAME_DATUM = "datum";
   @SerializedName(SERIALIZED_NAME_DATUM)
@@ -47,7 +47,7 @@ public class AangaanHuwelijkPartnerschap {
 
   public static final String SERIALIZED_NAME_IN_ONDERZOEK = "inOnderzoek";
   @SerializedName(SERIALIZED_NAME_IN_ONDERZOEK)
-  private AangaanHuwelijkInOnderzoek inOnderzoek;
+  private AangaanHuwelijkPartnerschapInOnderzoek inOnderzoek;
 
 
   public AangaanHuwelijkPartnerschap datum(DatumOnvolledig datum) {
@@ -119,7 +119,7 @@ public class AangaanHuwelijkPartnerschap {
   }
 
 
-  public AangaanHuwelijkPartnerschap inOnderzoek(AangaanHuwelijkInOnderzoek inOnderzoek) {
+  public AangaanHuwelijkPartnerschap inOnderzoek(AangaanHuwelijkPartnerschapInOnderzoek inOnderzoek) {
     
     this.inOnderzoek = inOnderzoek;
     return this;
@@ -132,12 +132,12 @@ public class AangaanHuwelijkPartnerschap {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public AangaanHuwelijkInOnderzoek getInOnderzoek() {
+  public AangaanHuwelijkPartnerschapInOnderzoek getInOnderzoek() {
     return inOnderzoek;
   }
 
 
-  public void setInOnderzoek(AangaanHuwelijkInOnderzoek inOnderzoek) {
+  public void setInOnderzoek(AangaanHuwelijkPartnerschapInOnderzoek inOnderzoek) {
     this.inOnderzoek = inOnderzoek;
   }
 

@@ -1,6 +1,6 @@
 /*
- * Bevragingen ingeschreven personen
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * Bevragen Ingeschreven Personen
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -26,10 +26,10 @@ import java.io.IOException;
 import org.openapitools.client.model.DatumOnvolledig;
 
 /**
- * Indicators om aan te geven dat de gegevens over het verblijf en adres van de INGESCHREVEN NATUURLIJK PERSOON in onderzoek zijn. Elementen van het GBA-adres zelf (Dat zou eigenlijk een BAG-adres moeten zijn) kunnen niet in onderzoek zijn. Wel de relatie naar de nummeraanduding. Dat wordt gedaan door de identificatiecodeNummeraanduiding in onderzoek te zetten. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)
+ * Geeft aan welke gegevens over het verblijf en adres van de persoon in onderzoek zijn. Elementen van het GBA-adres zelf (Dat zou eigenlijk een BAG-adres moeten zijn) kunnen niet in onderzoek zijn. Wel de relatie naar de nummeraanduiding. Dat wordt gedaan door de identificatiecodeNummeraanduiding in onderzoek te zetten. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature) 
  */
-@ApiModel(description = "Indicators om aan te geven dat de gegevens over het verblijf en adres van de INGESCHREVEN NATUURLIJK PERSOON in onderzoek zijn. Elementen van het GBA-adres zelf (Dat zou eigenlijk een BAG-adres moeten zijn) kunnen niet in onderzoek zijn. Wel de relatie naar de nummeraanduding. Dat wordt gedaan door de identificatiecodeNummeraanduiding in onderzoek te zetten. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-21T14:20:17.398Z[Etc/UTC]")
+@ApiModel(description = "Geeft aan welke gegevens over het verblijf en adres van de persoon in onderzoek zijn. Elementen van het GBA-adres zelf (Dat zou eigenlijk een BAG-adres moeten zijn) kunnen niet in onderzoek zijn. Wel de relatie naar de nummeraanduiding. Dat wordt gedaan door de identificatiecodeNummeraanduiding in onderzoek te zetten. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature) ")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T11:34:05.460Z[Etc/UTC]")
 public class VerblijfplaatsInOnderzoek {
   public static final String SERIALIZED_NAME_AANDUIDING_BIJ_HUISNUMMER = "aanduidingBijHuisnummer";
   @SerializedName(SERIALIZED_NAME_AANDUIDING_BIJ_HUISNUMMER)
@@ -71,13 +71,13 @@ public class VerblijfplaatsInOnderzoek {
   @SerializedName(SERIALIZED_NAME_HUISNUMMERTOEVOEGING)
   private Boolean huisnummertoevoeging;
 
-  public static final String SERIALIZED_NAME_IDENTIFICATIECODE_NUMMERAANDUIDING = "identificatiecodeNummeraanduiding";
-  @SerializedName(SERIALIZED_NAME_IDENTIFICATIECODE_NUMMERAANDUIDING)
-  private Boolean identificatiecodeNummeraanduiding;
+  public static final String SERIALIZED_NAME_NUMMERAANDUIDING_IDENTIFICATIE = "nummeraanduidingIdentificatie";
+  @SerializedName(SERIALIZED_NAME_NUMMERAANDUIDING_IDENTIFICATIE)
+  private Boolean nummeraanduidingIdentificatie;
 
-  public static final String SERIALIZED_NAME_IDENTIFICATIECODE_ADRESSEERBAAR_OBJECT = "identificatiecodeAdresseerbaarObject";
-  @SerializedName(SERIALIZED_NAME_IDENTIFICATIECODE_ADRESSEERBAAR_OBJECT)
-  private Boolean identificatiecodeAdresseerbaarObject;
+  public static final String SERIALIZED_NAME_ADRESSEERBAAR_OBJECT_IDENTIFICATIE = "adresseerbaarObjectIdentificatie";
+  @SerializedName(SERIALIZED_NAME_ADRESSEERBAAR_OBJECT_IDENTIFICATIE)
+  private Boolean adresseerbaarObjectIdentificatie;
 
   public static final String SERIALIZED_NAME_LAND_VANWAAR_INGESCHREVEN = "landVanwaarIngeschreven";
   @SerializedName(SERIALIZED_NAME_LAND_VANWAAR_INGESCHREVEN)
@@ -87,25 +87,25 @@ public class VerblijfplaatsInOnderzoek {
   @SerializedName(SERIALIZED_NAME_LOCATIEBESCHRIJVING)
   private Boolean locatiebeschrijving;
 
-  public static final String SERIALIZED_NAME_NAAM_OPENBARE_RUIMTE = "naamOpenbareRuimte";
-  @SerializedName(SERIALIZED_NAME_NAAM_OPENBARE_RUIMTE)
-  private Boolean naamOpenbareRuimte;
+  public static final String SERIALIZED_NAME_STRAAT = "straat";
+  @SerializedName(SERIALIZED_NAME_STRAAT)
+  private Boolean straat;
 
   public static final String SERIALIZED_NAME_POSTCODE = "postcode";
   @SerializedName(SERIALIZED_NAME_POSTCODE)
   private Boolean postcode;
 
-  public static final String SERIALIZED_NAME_STRAATNAAM = "straatnaam";
-  @SerializedName(SERIALIZED_NAME_STRAATNAAM)
-  private Boolean straatnaam;
+  public static final String SERIALIZED_NAME_KORTE_NAAM = "korteNaam";
+  @SerializedName(SERIALIZED_NAME_KORTE_NAAM)
+  private Boolean korteNaam;
 
   public static final String SERIALIZED_NAME_VERBLIJF_BUITENLAND = "verblijfBuitenland";
   @SerializedName(SERIALIZED_NAME_VERBLIJF_BUITENLAND)
   private Boolean verblijfBuitenland;
 
-  public static final String SERIALIZED_NAME_WOONPLAATSNAAM = "woonplaatsnaam";
-  @SerializedName(SERIALIZED_NAME_WOONPLAATSNAAM)
-  private Boolean woonplaatsnaam;
+  public static final String SERIALIZED_NAME_WOONPLAATS = "woonplaats";
+  @SerializedName(SERIALIZED_NAME_WOONPLAATS)
+  private Boolean woonplaats;
 
   public static final String SERIALIZED_NAME_DATUM_INGANG_ONDERZOEK = "datumIngangOnderzoek";
   @SerializedName(SERIALIZED_NAME_DATUM_INGANG_ONDERZOEK)
@@ -119,11 +119,11 @@ public class VerblijfplaatsInOnderzoek {
   }
 
    /**
-   * Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+   * Get aanduidingBijHuisnummer
    * @return aanduidingBijHuisnummer
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.")
+  @ApiModelProperty(value = "")
 
   public Boolean getAanduidingBijHuisnummer() {
     return aanduidingBijHuisnummer;
@@ -142,11 +142,11 @@ public class VerblijfplaatsInOnderzoek {
   }
 
    /**
-   * Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+   * Get datumAanvangAdreshouding
    * @return datumAanvangAdreshouding
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.")
+  @ApiModelProperty(value = "")
 
   public Boolean getDatumAanvangAdreshouding() {
     return datumAanvangAdreshouding;
@@ -165,11 +165,11 @@ public class VerblijfplaatsInOnderzoek {
   }
 
    /**
-   * Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+   * Get datumIngangGeldigheid
    * @return datumIngangGeldigheid
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.")
+  @ApiModelProperty(value = "")
 
   public Boolean getDatumIngangGeldigheid() {
     return datumIngangGeldigheid;
@@ -188,11 +188,11 @@ public class VerblijfplaatsInOnderzoek {
   }
 
    /**
-   * Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+   * Get datumInschrijvingInGemeente
    * @return datumInschrijvingInGemeente
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.")
+  @ApiModelProperty(value = "")
 
   public Boolean getDatumInschrijvingInGemeente() {
     return datumInschrijvingInGemeente;
@@ -211,11 +211,11 @@ public class VerblijfplaatsInOnderzoek {
   }
 
    /**
-   * Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+   * Get datumVestigingInNederland
    * @return datumVestigingInNederland
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.")
+  @ApiModelProperty(value = "")
 
   public Boolean getDatumVestigingInNederland() {
     return datumVestigingInNederland;
@@ -234,11 +234,11 @@ public class VerblijfplaatsInOnderzoek {
   }
 
    /**
-   * Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+   * Get functieAdres
    * @return functieAdres
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.")
+  @ApiModelProperty(value = "")
 
   public Boolean getFunctieAdres() {
     return functieAdres;
@@ -257,11 +257,11 @@ public class VerblijfplaatsInOnderzoek {
   }
 
    /**
-   * Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+   * Get gemeenteVanInschrijving
    * @return gemeenteVanInschrijving
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.")
+  @ApiModelProperty(value = "")
 
   public Boolean getGemeenteVanInschrijving() {
     return gemeenteVanInschrijving;
@@ -280,11 +280,11 @@ public class VerblijfplaatsInOnderzoek {
   }
 
    /**
-   * Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+   * Get huisletter
    * @return huisletter
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.")
+  @ApiModelProperty(value = "")
 
   public Boolean getHuisletter() {
     return huisletter;
@@ -303,11 +303,11 @@ public class VerblijfplaatsInOnderzoek {
   }
 
    /**
-   * Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+   * Get huisnummer
    * @return huisnummer
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.")
+  @ApiModelProperty(value = "")
 
   public Boolean getHuisnummer() {
     return huisnummer;
@@ -326,11 +326,11 @@ public class VerblijfplaatsInOnderzoek {
   }
 
    /**
-   * Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+   * Get huisnummertoevoeging
    * @return huisnummertoevoeging
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.")
+  @ApiModelProperty(value = "")
 
   public Boolean getHuisnummertoevoeging() {
     return huisnummertoevoeging;
@@ -342,49 +342,49 @@ public class VerblijfplaatsInOnderzoek {
   }
 
 
-  public VerblijfplaatsInOnderzoek identificatiecodeNummeraanduiding(Boolean identificatiecodeNummeraanduiding) {
+  public VerblijfplaatsInOnderzoek nummeraanduidingIdentificatie(Boolean nummeraanduidingIdentificatie) {
     
-    this.identificatiecodeNummeraanduiding = identificatiecodeNummeraanduiding;
+    this.nummeraanduidingIdentificatie = nummeraanduidingIdentificatie;
     return this;
   }
 
    /**
-   * Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
-   * @return identificatiecodeNummeraanduiding
+   * Get nummeraanduidingIdentificatie
+   * @return nummeraanduidingIdentificatie
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.")
+  @ApiModelProperty(value = "")
 
-  public Boolean getIdentificatiecodeNummeraanduiding() {
-    return identificatiecodeNummeraanduiding;
+  public Boolean getNummeraanduidingIdentificatie() {
+    return nummeraanduidingIdentificatie;
   }
 
 
-  public void setIdentificatiecodeNummeraanduiding(Boolean identificatiecodeNummeraanduiding) {
-    this.identificatiecodeNummeraanduiding = identificatiecodeNummeraanduiding;
+  public void setNummeraanduidingIdentificatie(Boolean nummeraanduidingIdentificatie) {
+    this.nummeraanduidingIdentificatie = nummeraanduidingIdentificatie;
   }
 
 
-  public VerblijfplaatsInOnderzoek identificatiecodeAdresseerbaarObject(Boolean identificatiecodeAdresseerbaarObject) {
+  public VerblijfplaatsInOnderzoek adresseerbaarObjectIdentificatie(Boolean adresseerbaarObjectIdentificatie) {
     
-    this.identificatiecodeAdresseerbaarObject = identificatiecodeAdresseerbaarObject;
+    this.adresseerbaarObjectIdentificatie = adresseerbaarObjectIdentificatie;
     return this;
   }
 
    /**
-   * Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
-   * @return identificatiecodeAdresseerbaarObject
+   * Get adresseerbaarObjectIdentificatie
+   * @return adresseerbaarObjectIdentificatie
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.")
+  @ApiModelProperty(value = "")
 
-  public Boolean getIdentificatiecodeAdresseerbaarObject() {
-    return identificatiecodeAdresseerbaarObject;
+  public Boolean getAdresseerbaarObjectIdentificatie() {
+    return adresseerbaarObjectIdentificatie;
   }
 
 
-  public void setIdentificatiecodeAdresseerbaarObject(Boolean identificatiecodeAdresseerbaarObject) {
-    this.identificatiecodeAdresseerbaarObject = identificatiecodeAdresseerbaarObject;
+  public void setAdresseerbaarObjectIdentificatie(Boolean adresseerbaarObjectIdentificatie) {
+    this.adresseerbaarObjectIdentificatie = adresseerbaarObjectIdentificatie;
   }
 
 
@@ -395,11 +395,11 @@ public class VerblijfplaatsInOnderzoek {
   }
 
    /**
-   * Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+   * Get landVanwaarIngeschreven
    * @return landVanwaarIngeschreven
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.")
+  @ApiModelProperty(value = "")
 
   public Boolean getLandVanwaarIngeschreven() {
     return landVanwaarIngeschreven;
@@ -418,11 +418,11 @@ public class VerblijfplaatsInOnderzoek {
   }
 
    /**
-   * Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+   * Get locatiebeschrijving
    * @return locatiebeschrijving
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.")
+  @ApiModelProperty(value = "")
 
   public Boolean getLocatiebeschrijving() {
     return locatiebeschrijving;
@@ -434,26 +434,26 @@ public class VerblijfplaatsInOnderzoek {
   }
 
 
-  public VerblijfplaatsInOnderzoek naamOpenbareRuimte(Boolean naamOpenbareRuimte) {
+  public VerblijfplaatsInOnderzoek straat(Boolean straat) {
     
-    this.naamOpenbareRuimte = naamOpenbareRuimte;
+    this.straat = straat;
     return this;
   }
 
    /**
-   * Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
-   * @return naamOpenbareRuimte
+   * Get straat
+   * @return straat
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.")
+  @ApiModelProperty(value = "")
 
-  public Boolean getNaamOpenbareRuimte() {
-    return naamOpenbareRuimte;
+  public Boolean getStraat() {
+    return straat;
   }
 
 
-  public void setNaamOpenbareRuimte(Boolean naamOpenbareRuimte) {
-    this.naamOpenbareRuimte = naamOpenbareRuimte;
+  public void setStraat(Boolean straat) {
+    this.straat = straat;
   }
 
 
@@ -464,11 +464,11 @@ public class VerblijfplaatsInOnderzoek {
   }
 
    /**
-   * Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+   * Get postcode
    * @return postcode
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.")
+  @ApiModelProperty(value = "")
 
   public Boolean getPostcode() {
     return postcode;
@@ -480,26 +480,26 @@ public class VerblijfplaatsInOnderzoek {
   }
 
 
-  public VerblijfplaatsInOnderzoek straatnaam(Boolean straatnaam) {
+  public VerblijfplaatsInOnderzoek korteNaam(Boolean korteNaam) {
     
-    this.straatnaam = straatnaam;
+    this.korteNaam = korteNaam;
     return this;
   }
 
    /**
-   * Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
-   * @return straatnaam
+   * Get korteNaam
+   * @return korteNaam
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.")
+  @ApiModelProperty(value = "")
 
-  public Boolean getStraatnaam() {
-    return straatnaam;
+  public Boolean getKorteNaam() {
+    return korteNaam;
   }
 
 
-  public void setStraatnaam(Boolean straatnaam) {
-    this.straatnaam = straatnaam;
+  public void setKorteNaam(Boolean korteNaam) {
+    this.korteNaam = korteNaam;
   }
 
 
@@ -510,11 +510,11 @@ public class VerblijfplaatsInOnderzoek {
   }
 
    /**
-   * Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+   * Get verblijfBuitenland
    * @return verblijfBuitenland
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.")
+  @ApiModelProperty(value = "")
 
   public Boolean getVerblijfBuitenland() {
     return verblijfBuitenland;
@@ -526,26 +526,26 @@ public class VerblijfplaatsInOnderzoek {
   }
 
 
-  public VerblijfplaatsInOnderzoek woonplaatsnaam(Boolean woonplaatsnaam) {
+  public VerblijfplaatsInOnderzoek woonplaats(Boolean woonplaats) {
     
-    this.woonplaatsnaam = woonplaatsnaam;
+    this.woonplaats = woonplaats;
     return this;
   }
 
    /**
-   * Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
-   * @return woonplaatsnaam
+   * Get woonplaats
+   * @return woonplaats
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.")
+  @ApiModelProperty(value = "")
 
-  public Boolean getWoonplaatsnaam() {
-    return woonplaatsnaam;
+  public Boolean getWoonplaats() {
+    return woonplaats;
   }
 
 
-  public void setWoonplaatsnaam(Boolean woonplaatsnaam) {
-    this.woonplaatsnaam = woonplaatsnaam;
+  public void setWoonplaats(Boolean woonplaats) {
+    this.woonplaats = woonplaats;
   }
 
 
@@ -591,21 +591,21 @@ public class VerblijfplaatsInOnderzoek {
         Objects.equals(this.huisletter, verblijfplaatsInOnderzoek.huisletter) &&
         Objects.equals(this.huisnummer, verblijfplaatsInOnderzoek.huisnummer) &&
         Objects.equals(this.huisnummertoevoeging, verblijfplaatsInOnderzoek.huisnummertoevoeging) &&
-        Objects.equals(this.identificatiecodeNummeraanduiding, verblijfplaatsInOnderzoek.identificatiecodeNummeraanduiding) &&
-        Objects.equals(this.identificatiecodeAdresseerbaarObject, verblijfplaatsInOnderzoek.identificatiecodeAdresseerbaarObject) &&
+        Objects.equals(this.nummeraanduidingIdentificatie, verblijfplaatsInOnderzoek.nummeraanduidingIdentificatie) &&
+        Objects.equals(this.adresseerbaarObjectIdentificatie, verblijfplaatsInOnderzoek.adresseerbaarObjectIdentificatie) &&
         Objects.equals(this.landVanwaarIngeschreven, verblijfplaatsInOnderzoek.landVanwaarIngeschreven) &&
         Objects.equals(this.locatiebeschrijving, verblijfplaatsInOnderzoek.locatiebeschrijving) &&
-        Objects.equals(this.naamOpenbareRuimte, verblijfplaatsInOnderzoek.naamOpenbareRuimte) &&
+        Objects.equals(this.straat, verblijfplaatsInOnderzoek.straat) &&
         Objects.equals(this.postcode, verblijfplaatsInOnderzoek.postcode) &&
-        Objects.equals(this.straatnaam, verblijfplaatsInOnderzoek.straatnaam) &&
+        Objects.equals(this.korteNaam, verblijfplaatsInOnderzoek.korteNaam) &&
         Objects.equals(this.verblijfBuitenland, verblijfplaatsInOnderzoek.verblijfBuitenland) &&
-        Objects.equals(this.woonplaatsnaam, verblijfplaatsInOnderzoek.woonplaatsnaam) &&
+        Objects.equals(this.woonplaats, verblijfplaatsInOnderzoek.woonplaats) &&
         Objects.equals(this.datumIngangOnderzoek, verblijfplaatsInOnderzoek.datumIngangOnderzoek);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aanduidingBijHuisnummer, datumAanvangAdreshouding, datumIngangGeldigheid, datumInschrijvingInGemeente, datumVestigingInNederland, functieAdres, gemeenteVanInschrijving, huisletter, huisnummer, huisnummertoevoeging, identificatiecodeNummeraanduiding, identificatiecodeAdresseerbaarObject, landVanwaarIngeschreven, locatiebeschrijving, naamOpenbareRuimte, postcode, straatnaam, verblijfBuitenland, woonplaatsnaam, datumIngangOnderzoek);
+    return Objects.hash(aanduidingBijHuisnummer, datumAanvangAdreshouding, datumIngangGeldigheid, datumInschrijvingInGemeente, datumVestigingInNederland, functieAdres, gemeenteVanInschrijving, huisletter, huisnummer, huisnummertoevoeging, nummeraanduidingIdentificatie, adresseerbaarObjectIdentificatie, landVanwaarIngeschreven, locatiebeschrijving, straat, postcode, korteNaam, verblijfBuitenland, woonplaats, datumIngangOnderzoek);
   }
 
 
@@ -623,15 +623,15 @@ public class VerblijfplaatsInOnderzoek {
     sb.append("    huisletter: ").append(toIndentedString(huisletter)).append("\n");
     sb.append("    huisnummer: ").append(toIndentedString(huisnummer)).append("\n");
     sb.append("    huisnummertoevoeging: ").append(toIndentedString(huisnummertoevoeging)).append("\n");
-    sb.append("    identificatiecodeNummeraanduiding: ").append(toIndentedString(identificatiecodeNummeraanduiding)).append("\n");
-    sb.append("    identificatiecodeAdresseerbaarObject: ").append(toIndentedString(identificatiecodeAdresseerbaarObject)).append("\n");
+    sb.append("    nummeraanduidingIdentificatie: ").append(toIndentedString(nummeraanduidingIdentificatie)).append("\n");
+    sb.append("    adresseerbaarObjectIdentificatie: ").append(toIndentedString(adresseerbaarObjectIdentificatie)).append("\n");
     sb.append("    landVanwaarIngeschreven: ").append(toIndentedString(landVanwaarIngeschreven)).append("\n");
     sb.append("    locatiebeschrijving: ").append(toIndentedString(locatiebeschrijving)).append("\n");
-    sb.append("    naamOpenbareRuimte: ").append(toIndentedString(naamOpenbareRuimte)).append("\n");
+    sb.append("    straat: ").append(toIndentedString(straat)).append("\n");
     sb.append("    postcode: ").append(toIndentedString(postcode)).append("\n");
-    sb.append("    straatnaam: ").append(toIndentedString(straatnaam)).append("\n");
+    sb.append("    korteNaam: ").append(toIndentedString(korteNaam)).append("\n");
     sb.append("    verblijfBuitenland: ").append(toIndentedString(verblijfBuitenland)).append("\n");
-    sb.append("    woonplaatsnaam: ").append(toIndentedString(woonplaatsnaam)).append("\n");
+    sb.append("    woonplaats: ").append(toIndentedString(woonplaats)).append("\n");
     sb.append("    datumIngangOnderzoek: ").append(toIndentedString(datumIngangOnderzoek)).append("\n");
     sb.append("}");
     return sb.toString();
