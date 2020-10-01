@@ -7,7 +7,7 @@
 BRP Bevragen is een Haal Centraal API voor het zoeken en raadplegen van ingeschreven natuurlijke personen voor alle binnengemeentelijke afnemers in NL. De informatie die de API levert is herleidbaar naar het LO GBA 3.10.
 
 # Planning
-Release v1.0.0 is uitgebracht en is [hier](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0) te vinden op 
+Release v1.0.0 is uitgebracht en is [hier](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0) te vinden.
 
 https://eu-rm.roadmunk.com/publish/29a13c572a0dfc79f1d0386fc572e15383afe11f
 
@@ -15,14 +15,14 @@ https://eu-rm.roadmunk.com/publish/29a13c572a0dfc79f1d0386fc572e15383afe11f
 Om te beginnen met ontwikkelen van de API is de [getting started](./docs/getting-started.md) een goed beginpunt. De API is technisch gespecificeerd in Open API specificaties (zie hieronder bij documentatie).
 
 ## Documentatie
-* [Technische specificaties](./specificatie) (Open API Specificaties en JSON schema) en in [Swagger-formaat](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/master/specificatie/genereervariant/openapi.yaml)
+* [Technische specificaties](./specificatie/genereervariant) (Open API Specificaties en JSON schema) en in [Swagger-formaat](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/master/specificatie/genereervariant/openapi.yaml)
 * [Productvisie](./docs/productvision.md)
 * [Definition of Ready](./docs/definition_of_ready.md)
 * [Definition of Done](./docs/definition_of_done.md)
 * Hoe u kunt [bijdragen](https://github.com/VNG-Realisatie/API-kennisbank/blob/master/CONTRIBUTING.md)
 * [Omgangsvormen](https://github.com/VNG-Realisatie/API-kennisbank/blob/master/CODE_OF_CONDUCT.md)
 * [Functionele specificaties](./features)
-* Ontwerpkeuzes staan in het document [Design decisions](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/docs/design_decisions.md)
+* Ontwerpkeuzes staan in het document [Design decisions](./docs/design_decisions.md)
 
 Naast deze API is er nog een aantal andere aan BRP gerelateerde API's beschikbaar:
 * [Historische BRP-gegevens bevragen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-historie-bevragen)
