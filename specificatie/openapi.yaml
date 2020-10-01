@@ -1036,7 +1036,7 @@ components:
             type: "string"
             description: |
                           De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.
-            example: "0518200000366054"
+            example: "0226010000038820"
           aanduidingBijHuisnummer:
             $ref: "#/components/schemas/AanduidingBijHuisnummer_enum"
           nummeraanduidingIdentificatie:
