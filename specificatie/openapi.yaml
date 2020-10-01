@@ -61,7 +61,7 @@ paths:
 
 
         6.  Adres
-            -  veblijfplaats__nummeraanduidingIdentificatie
+            -  verblijfplaats__nummeraanduidingIdentificatie
 
       parameters:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/expand"
