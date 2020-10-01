@@ -20,7 +20,7 @@ info:
 paths:
   /ingeschrevenpersonen:
     get:
-      operationId: getIngeschrevenNatuurlijkPersonen
+      operationId: GetIngeschrevenPersonen
       summary: Vindt personen
       description: |
         Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met parameters uit de andere combinaties.
@@ -236,7 +236,7 @@ paths:
         - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}:
     get:
-      operationId: getIngeschrevenNatuurlijkPersoon
+      operationId: GetIngeschrevenPersoon
       summary: Raadpleeg een persoon
       description: |
                     Raadpleeg een (overleden) persoon.
@@ -283,7 +283,7 @@ paths:
         - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/kinderen/{id}:
     get:
-      operationId: getIngeschrevenPersonenBurgerservicenummerKinderenId
+      operationId: GetKind
       summary: "Raadpleeg een kind van een persoon"
       description: |
                     Raadpleeg een kind van een persoon
@@ -331,7 +331,7 @@ paths:
         - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/kinderen:
     get:
-      operationId: getIngeschrevenPersonenBurgerservicenummerKinderen
+      operationId: GetKinderen
       summary: "Levert de kinderen van een persoon"
       description: |
                     Levert de kinderen van een persoon
@@ -372,7 +372,7 @@ paths:
         - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/ouders/{id}:
     get:
-      operationId: getIngeschrevenPersonenBurgerservicenummerOudersId
+      operationId: GetOuder
       summary: "Raadpleeg een ouder van een persoon"
       description: |
                     Raadpleeg een ouder van een persoon
@@ -420,7 +420,7 @@ paths:
         - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/ouders:
     get:
-      operationId: getIngeschrevenPersonenBurgerservicenummerOuders
+      operationId: GetOuders
       summary: "Levert de ouders van een persoon"
       description: |
                     Levert de ouders van een persoon
@@ -461,7 +461,7 @@ paths:
         - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/partners/{id}:
     get:
-      operationId: getIngeschrevenPersonenBurgerservicenummerPartnersId
+      operationId: GetPartner
       summary: "Raadpleeg de partner van een persoon"
       description: |
                     Raadpleeg de partner van een persoon
@@ -509,7 +509,7 @@ paths:
         - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/partners:
     get:
-      operationId: getIngeschrevenPersonenBurgerservicenummerPartners
+      operationId: GetPartners
       summary: "Levert de actuele partners van een persoon"
       description: |
                     Levert de actuele partners van een persoon. Partners uit beëindigde huwelijken of partnerschappen worden niet geretourneerd

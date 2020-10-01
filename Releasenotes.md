@@ -22,7 +22,7 @@ Daarnaast bieden we een[postman-collectie](./test) t.b.v. testen aan.
   - verblijfplaats__identificatiecodenummeraanduiding --> verblijfplaats__nummeraanduidingIdentificatie
   - inclusiefoverledenpersonen --> inclusiefOverledenPersonen
 - Enkele namen van schema-componenten zijn aangepast vanwege consistentie met andere Haal-Centraal API's
-  - Hal-componenten die alleen _linked bevatten zijn omgenoemd van xxxHal naar xxxHalBasis
+  - Hal-componenten die alleen _links bevatten zijn omgenoemd van xxxHal naar xxxHalBasis
   - Ouder_links --> OuderLinks
   - Kind_links --> KindLinks
   - Partner_links --> PartnerLinks
@@ -31,7 +31,7 @@ Daarnaast bieden we een[postman-collectie](./test) t.b.v. testen aan.
   - IngeschrevenPersoon_embedded --> IngeschrevenPersoonEmbedded
 - Schema-component Burgerservicenummer is verwijderd
 - Schema-component BinnenlandsAdres is verwijderd
-- Schema-component Verblijfbuitenlad is verwijderd. Properties zijn opgenomen in Verblijfplaats.
+- Schema-component Verblijfbuitenland is verwijderd. Properties zijn opgenomen in Verblijfplaats.
 - Verblijfplaats is aangepast door hergebruik van het BAG-adres
 - Inline gedefinieerde objecten zijn nu als component gedefinieerd.
 - Enkele propertynamen zijn aangepast vanwege consistentie met andere Haal-Centraal API's.
@@ -51,20 +51,20 @@ Daarnaast bieden we een[postman-collectie](./test) t.b.v. testen aan.
 In het algemeen is de testdata verwijderd uit de feature-files. De feature files hebben als doel om de functioneel de werking te beschrijven.
 
 - adres.feature is toegevoegd
-- enum_waarden.feature is verplaatst naar [Common](https://github.com/VNG-Realisatie/Haal-Centraal-common/tree/master/features)
-- expand.feature is verplaatst naar [Common](https://github.com/VNG-Realisatie/Haal-Centraal-common/tree/master/features)
-- fields.feature is verplaatst naar [Common](https://github.com/VNG-Realisatie/Haal-Centraal-common/tree/master/features)
-- foutafhandeling.feature is verplaatst naar [Common](https://github.com/VNG-Realisatie/Haal-Centraal-common/tree/master/features)
+- enum_waarden.feature is verwijderd
+- expand.feature is verplaatst naar [Common](https://github.com/VNG-Realisatie/Haal-Centraal-common/tree/v1.2.0/features)
+- fields.feature is verplaatst naar [Common](https://github.com/VNG-Realisatie/Haal-Centraal-common/tree/v1.2.0/features)
+- foutafhandeling.feature is verplaatst naar [Common](https://github.com/VNG-Realisatie/Haal-Centraal-common/tree/v1.2.0/features)
 - fields_extensie. feature is toegevoegd
 - geslachtswijzing.feature is aangepast.
 - historie_links.feature is gewijzigd.
-- links.feature is verplaatst naar [Common](https://github.com/VNG-Realisatie/Haal-Centraal-common/tree/master/features)
+- links.feature is verplaatst naar [Common](https://github.com/VNG-Realisatie/Haal-Centraal-common/tree/v1.2.0/features)
 - nationaliteithistorie.feature is verplaatst naar [Haal-Centraal-BRP-historie-bevragen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-historie-bevragen/tree/master/features)
-- onvolledige_datum.feature is verplaatst naar [Common](https://github.com/VNG-Realisatie/Haal-Centraal-common/tree/master/features)
+- onvolledige_datum.feature is verplaatst naar [Common](https://github.com/VNG-Realisatie/Haal-Centraal-common/tree/v1.2.0/features)
 - overleden_personen.feature is gewijzigd.
 - partnerhistorie.feature is verplaatst naar [Haal-Centraal-BRP-historie-bevragen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-historie-bevragen/tree/master/features)
 - parametercombinaties.feature is gewijzigd.
 - parametervalidatie.feature is gewijzigd.
 - verblijfplaatshistorie.feature is verplaatst naar [Haal-Centraal-BRP-historie-bevragen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-historie-bevragen/tree/master/features)
 - verblijfstitelhistorie.feature is verplaatst naar [Haal-Centraal-BRP-historie-bevragen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-historie-bevragen/tree/master/features)
-- wildcard.feature is verplaatst naar [Common](https://github.com/VNG-Realisatie/Haal-Centraal-common/tree/master/features)
+- wildcard.feature is verplaatst naar [Common](https://github.com/VNG-Realisatie/Haal-Centraal-common/tree/v1.2.0/features)
