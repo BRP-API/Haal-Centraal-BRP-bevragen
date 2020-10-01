@@ -1,6 +1,6 @@
 /*
- * Bevragingen ingeschreven personen
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * Bevragen Ingeschreven Personen
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -26,10 +26,10 @@ import java.io.IOException;
 import org.openapitools.client.model.DatumOnvolledig;
 
 /**
- * Een groep van booleans om aan te geven welke gegevens van de nationaliteit in onderzoek zijn. Als een de categorie in onderzoek is worden alle rubrieken binnen die categorie op _true_ gezet. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)
+ * Geeft aan welke gegevens over de nationaliteit in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature) 
  */
-@ApiModel(description = "Een groep van booleans om aan te geven welke gegevens van de nationaliteit in onderzoek zijn. Als een de categorie in onderzoek is worden alle rubrieken binnen die categorie op _true_ gezet. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-21T14:20:17.398Z[Etc/UTC]")
+@ApiModel(description = "Geeft aan welke gegevens over de nationaliteit in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature) ")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T11:34:05.460Z[Etc/UTC]")
 public class NationaliteitInOnderzoek {
   public static final String SERIALIZED_NAME_AANDUIDING_BIJZONDER_NEDERLANDERSCHAP = "aanduidingBijzonderNederlanderschap";
   @SerializedName(SERIALIZED_NAME_AANDUIDING_BIJZONDER_NEDERLANDERSCHAP)
@@ -55,11 +55,11 @@ public class NationaliteitInOnderzoek {
   }
 
    /**
-   * Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+   * Get aanduidingBijzonderNederlanderschap
    * @return aanduidingBijzonderNederlanderschap
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.")
+  @ApiModelProperty(value = "")
 
   public Boolean getAanduidingBijzonderNederlanderschap() {
     return aanduidingBijzonderNederlanderschap;
@@ -78,11 +78,11 @@ public class NationaliteitInOnderzoek {
   }
 
    /**
-   * Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+   * Get nationaliteit
    * @return nationaliteit
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.")
+  @ApiModelProperty(value = "")
 
   public Boolean getNationaliteit() {
     return nationaliteit;
@@ -101,11 +101,11 @@ public class NationaliteitInOnderzoek {
   }
 
    /**
-   * Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+   * Get redenOpname
    * @return redenOpname
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.")
+  @ApiModelProperty(value = "")
 
   public Boolean getRedenOpname() {
     return redenOpname;

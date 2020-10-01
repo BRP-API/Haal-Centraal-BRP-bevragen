@@ -1,6 +1,6 @@
 /*
- * Bevragingen ingeschreven personen
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * Bevragen Ingeschreven Personen
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -26,10 +26,9 @@ import java.io.IOException;
 import org.openapitools.client.model.DatumOnvolledig;
 
 /**
- * Gegevens over het kiesrecht van de ingeschreven persoon.  * **datumUitsluitingEuropeesKiesrecht**: De datum waarop een uitsluiting voor deelname aan verkiezingen voor het Europees parlement niet meer van toepassing is, als er sprake is van uitsluiting voor bepaalde tijd.  * **datumUitsluitingKiesrecht**: De datum waarop een uitsluiting voor deelname aan verkiezingen niet meer van toepassing is, als er sprake is van uitsluiting voor bepaalde tijd.
+ * Kiesrecht
  */
-@ApiModel(description = "Gegevens over het kiesrecht van de ingeschreven persoon.  * **datumUitsluitingEuropeesKiesrecht**: De datum waarop een uitsluiting voor deelname aan verkiezingen voor het Europees parlement niet meer van toepassing is, als er sprake is van uitsluiting voor bepaalde tijd.  * **datumUitsluitingKiesrecht**: De datum waarop een uitsluiting voor deelname aan verkiezingen niet meer van toepassing is, als er sprake is van uitsluiting voor bepaalde tijd.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-21T14:20:17.398Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T11:34:05.460Z[Etc/UTC]")
 public class Kiesrecht {
   public static final String SERIALIZED_NAME_EUROPEES_KIESRECHT = "europeesKiesrecht";
   @SerializedName(SERIALIZED_NAME_EUROPEES_KIESRECHT)
@@ -55,11 +54,11 @@ public class Kiesrecht {
   }
 
    /**
-   * Een aanduiding die aangeeft of de persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement.  * true: persoon ontvangt een oproep
+   * Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. 
    * @return europeesKiesrecht
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "true", value = "Een aanduiding die aangeeft of de persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement.  * true: persoon ontvangt een oproep")
+  @ApiModelProperty(example = "true", value = "Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. ")
 
   public Boolean getEuropeesKiesrecht() {
     return europeesKiesrecht;
@@ -78,11 +77,11 @@ public class Kiesrecht {
   }
 
    /**
-   * Een aanduiding die aangeeft of de persoon is uitgesloten van kiesrecht. * true: persoon is uitgesloten
+   * Get uitgeslotenVanKiesrecht
    * @return uitgeslotenVanKiesrecht
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "true", value = "Een aanduiding die aangeeft of de persoon is uitgesloten van kiesrecht. * true: persoon is uitgesloten")
+  @ApiModelProperty(example = "true", value = "")
 
   public Boolean getUitgeslotenVanKiesrecht() {
     return uitgeslotenVanKiesrecht;

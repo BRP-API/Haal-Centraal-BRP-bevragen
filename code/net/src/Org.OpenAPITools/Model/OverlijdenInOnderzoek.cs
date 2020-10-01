@@ -1,7 +1,7 @@
 /* 
- * Bevragingen ingeschreven personen
+ * Bevragen Ingeschreven Personen
  *
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -25,7 +25,7 @@ using OpenAPIDateConverter = Org.OpenAPITools.Client.OpenAPIDateConverter;
 namespace Org.OpenAPITools.Model
 {
     /// <summary>
-    /// In onderzoek indicators voor gegevens over het overlijden van de ingeschreven natuurlijk persoon. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)
+    /// Geeft aan welke gegevens over het overlijden van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature) 
     /// </summary>
     [DataContract]
     public partial class OverlijdenInOnderzoek :  IEquatable<OverlijdenInOnderzoek>, IValidatableObject
@@ -33,9 +33,9 @@ namespace Org.OpenAPITools.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="OverlijdenInOnderzoek" /> class.
         /// </summary>
-        /// <param name="datum">Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is..</param>
-        /// <param name="land">Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is..</param>
-        /// <param name="plaats">Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is..</param>
+        /// <param name="datum">datum.</param>
+        /// <param name="land">land.</param>
+        /// <param name="plaats">plaats.</param>
         /// <param name="datumIngangOnderzoek">datumIngangOnderzoek.</param>
         public OverlijdenInOnderzoek(bool datum = default(bool), bool land = default(bool), bool plaats = default(bool), DatumOnvolledig datumIngangOnderzoek = default(DatumOnvolledig))
         {
@@ -46,23 +46,20 @@ namespace Org.OpenAPITools.Model
         }
         
         /// <summary>
-        /// Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+        /// Gets or Sets Datum
         /// </summary>
-        /// <value>Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.</value>
         [DataMember(Name="datum", EmitDefaultValue=false)]
         public bool Datum { get; set; }
 
         /// <summary>
-        /// Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+        /// Gets or Sets Land
         /// </summary>
-        /// <value>Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.</value>
         [DataMember(Name="land", EmitDefaultValue=false)]
         public bool Land { get; set; }
 
         /// <summary>
-        /// Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+        /// Gets or Sets Plaats
         /// </summary>
-        /// <value>Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.</value>
         [DataMember(Name="plaats", EmitDefaultValue=false)]
         public bool Plaats { get; set; }
 

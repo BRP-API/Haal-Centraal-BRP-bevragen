@@ -1,7 +1,7 @@
 /* 
- * Bevragingen ingeschreven personen
+ * Bevragen Ingeschreven Personen
  *
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -25,7 +25,7 @@ using OpenAPIDateConverter = Org.OpenAPITools.Client.OpenAPIDateConverter;
 namespace Org.OpenAPITools.Model
 {
     /// <summary>
-    /// Gegevens over de datums die mogelijk niet volledig zijn, maar waarvan de bekende gedeeltes wel moeten kunnen worden uitgewisseld. Als de volledige datum bekend is worden alle elementen gevuld.
+    /// Gegevens over de datums die mogelijk niet volledig zijn.
     /// </summary>
     [DataContract]
     public partial class DatumOnvolledig :  IEquatable<DatumOnvolledig>, IValidatableObject
@@ -33,10 +33,10 @@ namespace Org.OpenAPITools.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DatumOnvolledig" /> class.
         /// </summary>
-        /// <param name="dag">De dag. Als de dag van de datum bekend is wordt deze hier ingevuld. Ook als de volledige datum bekend is..</param>
-        /// <param name="datum">De volledige datum die in de &#x60;date&#x60; definitie past. Dit element wordt alleen gevuld als de volledige datum bekend is..</param>
-        /// <param name="jaar">Het jaar van de datum. Als het jaar bekend is wordt dit element gevuld, ook als de volledige datum bekend is..</param>
-        /// <param name="maand">De maand. Als de maand van een datum bekend is wordt deze hier ingevuld. Ook als de volledige datum is ingevuld..</param>
+        /// <param name="dag">Als de dag van de datum bekend is wordt dit element gevuld, ook als de volledige datum bekend is..</param>
+        /// <param name="datum">Als de volledige datum bekend is wordt de datum gevuld die in de date definitie past..</param>
+        /// <param name="jaar">Als het jaar van de datum bekend is wordt dit element gevuld, ook als de volledige datum bekend is..</param>
+        /// <param name="maand">Als de maand van een datum bekend is wordt dit element gevuld, ook als de volledige datum bekend is..</param>
         public DatumOnvolledig(int dag = default(int), DateTime datum = default(DateTime), int jaar = default(int), int maand = default(int))
         {
             this.Dag = dag;
@@ -46,31 +46,31 @@ namespace Org.OpenAPITools.Model
         }
         
         /// <summary>
-        /// De dag. Als de dag van de datum bekend is wordt deze hier ingevuld. Ook als de volledige datum bekend is.
+        /// Als de dag van de datum bekend is wordt dit element gevuld, ook als de volledige datum bekend is.
         /// </summary>
-        /// <value>De dag. Als de dag van de datum bekend is wordt deze hier ingevuld. Ook als de volledige datum bekend is.</value>
+        /// <value>Als de dag van de datum bekend is wordt dit element gevuld, ook als de volledige datum bekend is.</value>
         [DataMember(Name="dag", EmitDefaultValue=false)]
         public int Dag { get; set; }
 
         /// <summary>
-        /// De volledige datum die in de &#x60;date&#x60; definitie past. Dit element wordt alleen gevuld als de volledige datum bekend is.
+        /// Als de volledige datum bekend is wordt de datum gevuld die in de date definitie past.
         /// </summary>
-        /// <value>De volledige datum die in de &#x60;date&#x60; definitie past. Dit element wordt alleen gevuld als de volledige datum bekend is.</value>
+        /// <value>Als de volledige datum bekend is wordt de datum gevuld die in de date definitie past.</value>
         [DataMember(Name="datum", EmitDefaultValue=false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime Datum { get; set; }
 
         /// <summary>
-        /// Het jaar van de datum. Als het jaar bekend is wordt dit element gevuld, ook als de volledige datum bekend is.
+        /// Als het jaar van de datum bekend is wordt dit element gevuld, ook als de volledige datum bekend is.
         /// </summary>
-        /// <value>Het jaar van de datum. Als het jaar bekend is wordt dit element gevuld, ook als de volledige datum bekend is.</value>
+        /// <value>Als het jaar van de datum bekend is wordt dit element gevuld, ook als de volledige datum bekend is.</value>
         [DataMember(Name="jaar", EmitDefaultValue=false)]
         public int Jaar { get; set; }
 
         /// <summary>
-        /// De maand. Als de maand van een datum bekend is wordt deze hier ingevuld. Ook als de volledige datum is ingevuld.
+        /// Als de maand van een datum bekend is wordt dit element gevuld, ook als de volledige datum bekend is.
         /// </summary>
-        /// <value>De maand. Als de maand van een datum bekend is wordt deze hier ingevuld. Ook als de volledige datum is ingevuld.</value>
+        /// <value>Als de maand van een datum bekend is wordt dit element gevuld, ook als de volledige datum bekend is.</value>
         [DataMember(Name="maand", EmitDefaultValue=false)]
         public int Maand { get; set; }
 

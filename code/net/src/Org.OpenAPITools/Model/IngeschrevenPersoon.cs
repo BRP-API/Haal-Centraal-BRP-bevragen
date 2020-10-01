@@ -1,7 +1,7 @@
 /* 
- * Bevragingen ingeschreven personen
+ * Bevragen Ingeschreven Personen
  *
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -25,7 +25,7 @@ using OpenAPIDateConverter = Org.OpenAPITools.Client.OpenAPIDateConverter;
 namespace Org.OpenAPITools.Model
 {
     /// <summary>
-    /// Gegevens over de ingeschreven persoon.  * **datumEersteInschrijving** : Datum van eerste inschrijving in de GBA
+    /// IngeschrevenPersoon
     /// </summary>
     [DataContract]
     public partial class IngeschrevenPersoon :  IEquatable<IngeschrevenPersoon>, IValidatableObject
@@ -33,23 +33,23 @@ namespace Org.OpenAPITools.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="IngeschrevenPersoon" /> class.
         /// </summary>
-        /// <param name="burgerservicenummer">Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn..</param>
-        /// <param name="geheimhoudingPersoonsgegevens">Een aanduiding die aangeeft dat gegevens wel of niet verstrekt mogen worden. Indien true: op verzoek van deze persoon is het verstrekken van gegevens over deze persoon aan bepaalde derden niet toegestaan..</param>
+        /// <param name="burgerservicenummer">burgerservicenummer.</param>
+        /// <param name="geheimhoudingPersoonsgegevens">Gegevens mogen niet worden verstrekt aan derden / maatschappelijke instellingen. .</param>
         /// <param name="geslachtsaanduiding">geslachtsaanduiding.</param>
-        /// <param name="leeftijd">Leeftijd in jaren op het moment van bevraging.</param>
+        /// <param name="leeftijd">Leeftijd in jaren op het moment van bevragen. .</param>
         /// <param name="datumEersteInschrijvingGBA">datumEersteInschrijvingGBA.</param>
         /// <param name="kiesrecht">kiesrecht.</param>
         /// <param name="naam">naam.</param>
         /// <param name="inOnderzoek">inOnderzoek.</param>
-        /// <param name="nationaliteit">nationaliteit.</param>
+        /// <param name="nationaliteiten">nationaliteiten.</param>
         /// <param name="geboorte">geboorte.</param>
         /// <param name="opschortingBijhouding">opschortingBijhouding.</param>
         /// <param name="overlijden">overlijden.</param>
         /// <param name="verblijfplaats">verblijfplaats.</param>
         /// <param name="gezagsverhouding">gezagsverhouding.</param>
         /// <param name="verblijfstitel">verblijfstitel.</param>
-        /// <param name="reisdocumenten">reisdocumenten.</param>
-        public IngeschrevenPersoon(string burgerservicenummer = default(string), bool geheimhoudingPersoonsgegevens = default(bool), GeslachtEnum geslachtsaanduiding = default(GeslachtEnum), int leeftijd = default(int), DatumOnvolledig datumEersteInschrijvingGBA = default(DatumOnvolledig), Kiesrecht kiesrecht = default(Kiesrecht), NaamPersoon naam = default(NaamPersoon), PersoonInOnderzoek inOnderzoek = default(PersoonInOnderzoek), List<Nationaliteit> nationaliteit = default(List<Nationaliteit>), Geboorte geboorte = default(Geboorte), OpschortingBijhouding opschortingBijhouding = default(OpschortingBijhouding), Overlijden overlijden = default(Overlijden), Verblijfplaats verblijfplaats = default(Verblijfplaats), Gezagsverhouding gezagsverhouding = default(Gezagsverhouding), Verblijfstitel verblijfstitel = default(Verblijfstitel), List<string> reisdocumenten = default(List<string>))
+        /// <param name="reisdocumentnummers">reisdocumentnummers.</param>
+        public IngeschrevenPersoon(string burgerservicenummer = default(string), bool geheimhoudingPersoonsgegevens = default(bool), GeslachtEnum geslachtsaanduiding = default(GeslachtEnum), int leeftijd = default(int), DatumOnvolledig datumEersteInschrijvingGBA = default(DatumOnvolledig), Kiesrecht kiesrecht = default(Kiesrecht), NaamPersoon naam = default(NaamPersoon), PersoonInOnderzoek inOnderzoek = default(PersoonInOnderzoek), List<Nationaliteit> nationaliteiten = default(List<Nationaliteit>), Geboorte geboorte = default(Geboorte), OpschortingBijhouding opschortingBijhouding = default(OpschortingBijhouding), Overlijden overlijden = default(Overlijden), Verblijfplaats verblijfplaats = default(Verblijfplaats), Gezagsverhouding gezagsverhouding = default(Gezagsverhouding), Verblijfstitel verblijfstitel = default(Verblijfstitel), List<string> reisdocumentnummers = default(List<string>))
         {
             this.Burgerservicenummer = burgerservicenummer;
             this.GeheimhoudingPersoonsgegevens = geheimhoudingPersoonsgegevens;
@@ -59,27 +59,26 @@ namespace Org.OpenAPITools.Model
             this.Kiesrecht = kiesrecht;
             this.Naam = naam;
             this.InOnderzoek = inOnderzoek;
-            this.Nationaliteit = nationaliteit;
+            this.Nationaliteiten = nationaliteiten;
             this.Geboorte = geboorte;
             this.OpschortingBijhouding = opschortingBijhouding;
             this.Overlijden = overlijden;
             this.Verblijfplaats = verblijfplaats;
             this.Gezagsverhouding = gezagsverhouding;
             this.Verblijfstitel = verblijfstitel;
-            this.Reisdocumenten = reisdocumenten;
+            this.Reisdocumentnummers = reisdocumentnummers;
         }
         
         /// <summary>
-        /// Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.
+        /// Gets or Sets Burgerservicenummer
         /// </summary>
-        /// <value>Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer. Alle nummers waarvoor geldt dat, indien aangeduid als (s0 s1 s2 s3 s4 s5 s6 s7 s8), het resultaat van (9*s0) + (8*s1) + (7*s2) +...+ (2*s7) - (1*s8) deelbaar is door elf. Er moeten dus 9 cijfers aanwezig zijn.</value>
         [DataMember(Name="burgerservicenummer", EmitDefaultValue=false)]
         public string Burgerservicenummer { get; set; }
 
         /// <summary>
-        /// Een aanduiding die aangeeft dat gegevens wel of niet verstrekt mogen worden. Indien true: op verzoek van deze persoon is het verstrekken van gegevens over deze persoon aan bepaalde derden niet toegestaan.
+        /// Gegevens mogen niet worden verstrekt aan derden / maatschappelijke instellingen. 
         /// </summary>
-        /// <value>Een aanduiding die aangeeft dat gegevens wel of niet verstrekt mogen worden. Indien true: op verzoek van deze persoon is het verstrekken van gegevens over deze persoon aan bepaalde derden niet toegestaan.</value>
+        /// <value>Gegevens mogen niet worden verstrekt aan derden / maatschappelijke instellingen. </value>
         [DataMember(Name="geheimhoudingPersoonsgegevens", EmitDefaultValue=false)]
         public bool GeheimhoudingPersoonsgegevens { get; set; }
 
@@ -90,9 +89,9 @@ namespace Org.OpenAPITools.Model
         public GeslachtEnum Geslachtsaanduiding { get; set; }
 
         /// <summary>
-        /// Leeftijd in jaren op het moment van bevraging
+        /// Leeftijd in jaren op het moment van bevragen. 
         /// </summary>
-        /// <value>Leeftijd in jaren op het moment van bevraging</value>
+        /// <value>Leeftijd in jaren op het moment van bevragen. </value>
         [DataMember(Name="leeftijd", EmitDefaultValue=false)]
         public int Leeftijd { get; set; }
 
@@ -121,10 +120,10 @@ namespace Org.OpenAPITools.Model
         public PersoonInOnderzoek InOnderzoek { get; set; }
 
         /// <summary>
-        /// Gets or Sets Nationaliteit
+        /// Gets or Sets Nationaliteiten
         /// </summary>
-        [DataMember(Name="nationaliteit", EmitDefaultValue=false)]
-        public List<Nationaliteit> Nationaliteit { get; set; }
+        [DataMember(Name="nationaliteiten", EmitDefaultValue=false)]
+        public List<Nationaliteit> Nationaliteiten { get; set; }
 
         /// <summary>
         /// Gets or Sets Geboorte
@@ -163,10 +162,10 @@ namespace Org.OpenAPITools.Model
         public Verblijfstitel Verblijfstitel { get; set; }
 
         /// <summary>
-        /// Gets or Sets Reisdocumenten
+        /// Gets or Sets Reisdocumentnummers
         /// </summary>
-        [DataMember(Name="reisdocumenten", EmitDefaultValue=false)]
-        public List<string> Reisdocumenten { get; set; }
+        [DataMember(Name="reisdocumentnummers", EmitDefaultValue=false)]
+        public List<string> Reisdocumentnummers { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -184,14 +183,14 @@ namespace Org.OpenAPITools.Model
             sb.Append("  Kiesrecht: ").Append(Kiesrecht).Append("\n");
             sb.Append("  Naam: ").Append(Naam).Append("\n");
             sb.Append("  InOnderzoek: ").Append(InOnderzoek).Append("\n");
-            sb.Append("  Nationaliteit: ").Append(Nationaliteit).Append("\n");
+            sb.Append("  Nationaliteiten: ").Append(Nationaliteiten).Append("\n");
             sb.Append("  Geboorte: ").Append(Geboorte).Append("\n");
             sb.Append("  OpschortingBijhouding: ").Append(OpschortingBijhouding).Append("\n");
             sb.Append("  Overlijden: ").Append(Overlijden).Append("\n");
             sb.Append("  Verblijfplaats: ").Append(Verblijfplaats).Append("\n");
             sb.Append("  Gezagsverhouding: ").Append(Gezagsverhouding).Append("\n");
             sb.Append("  Verblijfstitel: ").Append(Verblijfstitel).Append("\n");
-            sb.Append("  Reisdocumenten: ").Append(Reisdocumenten).Append("\n");
+            sb.Append("  Reisdocumentnummers: ").Append(Reisdocumentnummers).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -267,10 +266,10 @@ namespace Org.OpenAPITools.Model
                     this.InOnderzoek.Equals(input.InOnderzoek))
                 ) && 
                 (
-                    this.Nationaliteit == input.Nationaliteit ||
-                    this.Nationaliteit != null &&
-                    input.Nationaliteit != null &&
-                    this.Nationaliteit.SequenceEqual(input.Nationaliteit)
+                    this.Nationaliteiten == input.Nationaliteiten ||
+                    this.Nationaliteiten != null &&
+                    input.Nationaliteiten != null &&
+                    this.Nationaliteiten.SequenceEqual(input.Nationaliteiten)
                 ) && 
                 (
                     this.Geboorte == input.Geboorte ||
@@ -303,10 +302,10 @@ namespace Org.OpenAPITools.Model
                     this.Verblijfstitel.Equals(input.Verblijfstitel))
                 ) && 
                 (
-                    this.Reisdocumenten == input.Reisdocumenten ||
-                    this.Reisdocumenten != null &&
-                    input.Reisdocumenten != null &&
-                    this.Reisdocumenten.SequenceEqual(input.Reisdocumenten)
+                    this.Reisdocumentnummers == input.Reisdocumentnummers ||
+                    this.Reisdocumentnummers != null &&
+                    input.Reisdocumentnummers != null &&
+                    this.Reisdocumentnummers.SequenceEqual(input.Reisdocumentnummers)
                 );
         }
 
@@ -335,8 +334,8 @@ namespace Org.OpenAPITools.Model
                     hashCode = hashCode * 59 + this.Naam.GetHashCode();
                 if (this.InOnderzoek != null)
                     hashCode = hashCode * 59 + this.InOnderzoek.GetHashCode();
-                if (this.Nationaliteit != null)
-                    hashCode = hashCode * 59 + this.Nationaliteit.GetHashCode();
+                if (this.Nationaliteiten != null)
+                    hashCode = hashCode * 59 + this.Nationaliteiten.GetHashCode();
                 if (this.Geboorte != null)
                     hashCode = hashCode * 59 + this.Geboorte.GetHashCode();
                 if (this.OpschortingBijhouding != null)
@@ -349,8 +348,8 @@ namespace Org.OpenAPITools.Model
                     hashCode = hashCode * 59 + this.Gezagsverhouding.GetHashCode();
                 if (this.Verblijfstitel != null)
                     hashCode = hashCode * 59 + this.Verblijfstitel.GetHashCode();
-                if (this.Reisdocumenten != null)
-                    hashCode = hashCode * 59 + this.Reisdocumenten.GetHashCode();
+                if (this.Reisdocumentnummers != null)
+                    hashCode = hashCode * 59 + this.Reisdocumentnummers.GetHashCode();
                 return hashCode;
             }
         }
@@ -362,33 +361,6 @@ namespace Org.OpenAPITools.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // Burgerservicenummer (string) maxLength
-            if(this.Burgerservicenummer != null && this.Burgerservicenummer.Length > 9)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Burgerservicenummer, length must be less than 9.", new [] { "Burgerservicenummer" });
-            }
-
-            // Burgerservicenummer (string) minLength
-            if(this.Burgerservicenummer != null && this.Burgerservicenummer.Length < 9)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Burgerservicenummer, length must be greater than 9.", new [] { "Burgerservicenummer" });
-            }
-            
-            // Burgerservicenummer (string) pattern
-            Regex regexBurgerservicenummer = new Regex(@"^[0-9]*$", RegexOptions.CultureInvariant);
-            if (false == regexBurgerservicenummer.Match(this.Burgerservicenummer).Success)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Burgerservicenummer, must match a pattern of " + regexBurgerservicenummer, new [] { "Burgerservicenummer" });
-            }
-
-
-            
-            // Leeftijd (int) maximum
-            if(this.Leeftijd > (int)999)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Leeftijd, must be a value less than or equal to 999.", new [] { "Leeftijd" });
-            }
-
             yield break;
         }
     }

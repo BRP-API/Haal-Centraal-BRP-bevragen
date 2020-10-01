@@ -1,6 +1,6 @@
 /*
- * Bevragingen ingeschreven personen
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * Bevragen Ingeschreven Personen
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -30,7 +30,7 @@ import org.openapitools.client.model.HalLink;
 /**
  * IngeschrevenPersoonLinks
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-21T14:20:17.398Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T11:34:05.460Z[Etc/UTC]")
 public class IngeschrevenPersoonLinks {
   public static final String SERIALIZED_NAME_SELF = "self";
   @SerializedName(SERIALIZED_NAME_SELF)
@@ -68,9 +68,9 @@ public class IngeschrevenPersoonLinks {
   @SerializedName(SERIALIZED_NAME_NATIONALITEIT_HISTORIE)
   private HalLink nationaliteitHistorie;
 
-  public static final String SERIALIZED_NAME_VERBLIJFPLAATS_NUMMERAANDUIDING = "verblijfplaatsNummeraanduiding";
-  @SerializedName(SERIALIZED_NAME_VERBLIJFPLAATS_NUMMERAANDUIDING)
-  private HalLink verblijfplaatsNummeraanduiding;
+  public static final String SERIALIZED_NAME_ADRES = "adres";
+  @SerializedName(SERIALIZED_NAME_ADRES)
+  private HalLink adres;
 
 
   public IngeschrevenPersoonLinks self(HalLink self) {
@@ -111,11 +111,11 @@ public class IngeschrevenPersoonLinks {
   }
 
    /**
-   * De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE verwijst&#x60;
+   * De ouders van de persoon. 
    * @return ouders
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE verwijst`")
+  @ApiModelProperty(value = "De ouders van de persoon. ")
 
   public List<HalLink> getOuders() {
     return ouders;
@@ -142,11 +142,11 @@ public class IngeschrevenPersoonLinks {
   }
 
    /**
-   * De ingezetene waaraan het REISDOCUMENT is verstrekt. Dit is de inverse relatie van heeftAlsHouder. Reisdocumenten die aan een ingezetene zijn verstrekt.
+   * De reisdocumenten die aan de persoon zijn verstrekt. 
    * @return reisdocumenten
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "De ingezetene waaraan het REISDOCUMENT is verstrekt. Dit is de inverse relatie van heeftAlsHouder. Reisdocumenten die aan een ingezetene zijn verstrekt.")
+  @ApiModelProperty(value = "De reisdocumenten die aan de persoon zijn verstrekt. ")
 
   public List<HalLink> getReisdocumenten() {
     return reisdocumenten;
@@ -173,11 +173,11 @@ public class IngeschrevenPersoonLinks {
   }
 
    /**
-   * De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE verwijst
+   * De kinderen van de persoon. 
    * @return kinderen
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE verwijst")
+  @ApiModelProperty(value = "De kinderen van de persoon. ")
 
   public List<HalLink> getKinderen() {
     return kinderen;
@@ -204,11 +204,11 @@ public class IngeschrevenPersoonLinks {
   }
 
    /**
-   * De actuele bij de ingeschreven persoon geregistreerde huwelijken en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven.
+   * De actuele bij de ingeschreven persoon geregistreerde huwelijken en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven. 
    * @return partners
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "De actuele bij de ingeschreven persoon geregistreerde huwelijken en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven.")
+  @ApiModelProperty(value = "De actuele bij de ingeschreven persoon geregistreerde huwelijken en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven. ")
 
   public List<HalLink> getPartners() {
     return partners;
@@ -312,26 +312,26 @@ public class IngeschrevenPersoonLinks {
   }
 
 
-  public IngeschrevenPersoonLinks verblijfplaatsNummeraanduiding(HalLink verblijfplaatsNummeraanduiding) {
+  public IngeschrevenPersoonLinks adres(HalLink adres) {
     
-    this.verblijfplaatsNummeraanduiding = verblijfplaatsNummeraanduiding;
+    this.adres = adres;
     return this;
   }
 
    /**
-   * Get verblijfplaatsNummeraanduiding
-   * @return verblijfplaatsNummeraanduiding
+   * Get adres
+   * @return adres
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public HalLink getVerblijfplaatsNummeraanduiding() {
-    return verblijfplaatsNummeraanduiding;
+  public HalLink getAdres() {
+    return adres;
   }
 
 
-  public void setVerblijfplaatsNummeraanduiding(HalLink verblijfplaatsNummeraanduiding) {
-    this.verblijfplaatsNummeraanduiding = verblijfplaatsNummeraanduiding;
+  public void setAdres(HalLink adres) {
+    this.adres = adres;
   }
 
 
@@ -353,12 +353,12 @@ public class IngeschrevenPersoonLinks {
         Objects.equals(this.verblijfplaatshistorie, ingeschrevenPersoonLinks.verblijfplaatshistorie) &&
         Objects.equals(this.verblijfstitelhistorie, ingeschrevenPersoonLinks.verblijfstitelhistorie) &&
         Objects.equals(this.nationaliteitHistorie, ingeschrevenPersoonLinks.nationaliteitHistorie) &&
-        Objects.equals(this.verblijfplaatsNummeraanduiding, ingeschrevenPersoonLinks.verblijfplaatsNummeraanduiding);
+        Objects.equals(this.adres, ingeschrevenPersoonLinks.adres);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(self, ouders, reisdocumenten, kinderen, partners, partnerhistorie, verblijfplaatshistorie, verblijfstitelhistorie, nationaliteitHistorie, verblijfplaatsNummeraanduiding);
+    return Objects.hash(self, ouders, reisdocumenten, kinderen, partners, partnerhistorie, verblijfplaatshistorie, verblijfstitelhistorie, nationaliteitHistorie, adres);
   }
 
 
@@ -375,7 +375,7 @@ public class IngeschrevenPersoonLinks {
     sb.append("    verblijfplaatshistorie: ").append(toIndentedString(verblijfplaatshistorie)).append("\n");
     sb.append("    verblijfstitelhistorie: ").append(toIndentedString(verblijfstitelhistorie)).append("\n");
     sb.append("    nationaliteitHistorie: ").append(toIndentedString(nationaliteitHistorie)).append("\n");
-    sb.append("    verblijfplaatsNummeraanduiding: ").append(toIndentedString(verblijfplaatsNummeraanduiding)).append("\n");
+    sb.append("    adres: ").append(toIndentedString(adres)).append("\n");
     sb.append("}");
     return sb.toString();
   }

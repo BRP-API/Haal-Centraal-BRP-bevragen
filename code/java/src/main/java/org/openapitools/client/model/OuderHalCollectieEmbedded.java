@@ -1,6 +1,6 @@
 /*
- * Bevragingen ingeschreven personen
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * Bevragen Ingeschreven Personen
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -25,25 +25,25 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.client.model.OuderHal;
+import org.openapitools.client.model.OuderHalBasis;
 
 /**
  * OuderHalCollectieEmbedded
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-21T14:20:17.398Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T11:34:05.460Z[Etc/UTC]")
 public class OuderHalCollectieEmbedded {
   public static final String SERIALIZED_NAME_OUDERS = "ouders";
   @SerializedName(SERIALIZED_NAME_OUDERS)
-  private List<OuderHal> ouders = null;
+  private List<OuderHalBasis> ouders = null;
 
 
-  public OuderHalCollectieEmbedded ouders(List<OuderHal> ouders) {
+  public OuderHalCollectieEmbedded ouders(List<OuderHalBasis> ouders) {
     
     this.ouders = ouders;
     return this;
   }
 
-  public OuderHalCollectieEmbedded addOudersItem(OuderHal oudersItem) {
+  public OuderHalCollectieEmbedded addOudersItem(OuderHalBasis oudersItem) {
     if (this.ouders == null) {
       this.ouders = new ArrayList<>();
     }
@@ -58,12 +58,12 @@ public class OuderHalCollectieEmbedded {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public List<OuderHal> getOuders() {
+  public List<OuderHalBasis> getOuders() {
     return ouders;
   }
 
 
-  public void setOuders(List<OuderHal> ouders) {
+  public void setOuders(List<OuderHalBasis> ouders) {
     this.ouders = ouders;
   }
 

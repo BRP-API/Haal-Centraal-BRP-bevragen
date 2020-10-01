@@ -1,7 +1,7 @@
 /* 
- * Bevragingen ingeschreven personen
+ * Bevragen Ingeschreven Personen
  *
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -26,7 +26,7 @@ using OpenAPIDateConverter = Org.OpenAPITools.Client.OpenAPIDateConverter;
 namespace Org.OpenAPITools.Model
 {
     /// <summary>
-    /// Indicators om aan te geven dat de gegevens over het verblijf en adres van de INGESCHREVEN NATUURLIJK PERSOON in onderzoek zijn. Elementen van het GBA-adres zelf (Dat zou eigenlijk een BAG-adres moeten zijn) kunnen niet in onderzoek zijn. Wel de relatie naar de nummeraanduding. Dat wordt gedaan door de identificatiecodeNummeraanduiding in onderzoek te zetten. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/blob/master/features/in_onderzoek.feature)
+    /// Geeft aan welke gegevens over het verblijf en adres van de persoon in onderzoek zijn. Elementen van het GBA-adres zelf (Dat zou eigenlijk een BAG-adres moeten zijn) kunnen niet in onderzoek zijn. Wel de relatie naar de nummeraanduiding. Dat wordt gedaan door de identificatiecodeNummeraanduiding in onderzoek te zetten. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature) 
     /// </summary>
     [DataContract]
     public partial class VerblijfplaatsInOnderzoek :  IEquatable<VerblijfplaatsInOnderzoek>, IValidatableObject
@@ -34,27 +34,27 @@ namespace Org.OpenAPITools.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="VerblijfplaatsInOnderzoek" /> class.
         /// </summary>
-        /// <param name="aanduidingBijHuisnummer">Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is..</param>
-        /// <param name="datumAanvangAdreshouding">Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is..</param>
-        /// <param name="datumIngangGeldigheid">Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is..</param>
-        /// <param name="datumInschrijvingInGemeente">Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is..</param>
-        /// <param name="datumVestigingInNederland">Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is..</param>
-        /// <param name="functieAdres">Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is..</param>
-        /// <param name="gemeenteVanInschrijving">Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is..</param>
-        /// <param name="huisletter">Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is..</param>
-        /// <param name="huisnummer">Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is..</param>
-        /// <param name="huisnummertoevoeging">Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is..</param>
-        /// <param name="identificatiecodeNummeraanduiding">Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is..</param>
-        /// <param name="identificatiecodeAdresseerbaarObject">Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is..</param>
-        /// <param name="landVanwaarIngeschreven">Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is..</param>
-        /// <param name="locatiebeschrijving">Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is..</param>
-        /// <param name="naamOpenbareRuimte">Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is..</param>
-        /// <param name="postcode">Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is..</param>
-        /// <param name="straatnaam">Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is..</param>
-        /// <param name="verblijfBuitenland">Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is..</param>
-        /// <param name="woonplaatsnaam">Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is..</param>
+        /// <param name="aanduidingBijHuisnummer">aanduidingBijHuisnummer.</param>
+        /// <param name="datumAanvangAdreshouding">datumAanvangAdreshouding.</param>
+        /// <param name="datumIngangGeldigheid">datumIngangGeldigheid.</param>
+        /// <param name="datumInschrijvingInGemeente">datumInschrijvingInGemeente.</param>
+        /// <param name="datumVestigingInNederland">datumVestigingInNederland.</param>
+        /// <param name="functieAdres">functieAdres.</param>
+        /// <param name="gemeenteVanInschrijving">gemeenteVanInschrijving.</param>
+        /// <param name="huisletter">huisletter.</param>
+        /// <param name="huisnummer">huisnummer.</param>
+        /// <param name="huisnummertoevoeging">huisnummertoevoeging.</param>
+        /// <param name="nummeraanduidingIdentificatie">nummeraanduidingIdentificatie.</param>
+        /// <param name="adresseerbaarObjectIdentificatie">adresseerbaarObjectIdentificatie.</param>
+        /// <param name="landVanwaarIngeschreven">landVanwaarIngeschreven.</param>
+        /// <param name="locatiebeschrijving">locatiebeschrijving.</param>
+        /// <param name="straat">straat.</param>
+        /// <param name="postcode">postcode.</param>
+        /// <param name="korteNaam">korteNaam.</param>
+        /// <param name="verblijfBuitenland">verblijfBuitenland.</param>
+        /// <param name="woonplaats">woonplaats.</param>
         /// <param name="datumIngangOnderzoek">datumIngangOnderzoek.</param>
-        public VerblijfplaatsInOnderzoek(bool aanduidingBijHuisnummer = default(bool), bool datumAanvangAdreshouding = default(bool), bool datumIngangGeldigheid = default(bool), bool datumInschrijvingInGemeente = default(bool), bool datumVestigingInNederland = default(bool), bool functieAdres = default(bool), bool gemeenteVanInschrijving = default(bool), bool huisletter = default(bool), bool huisnummer = default(bool), bool huisnummertoevoeging = default(bool), bool identificatiecodeNummeraanduiding = default(bool), bool identificatiecodeAdresseerbaarObject = default(bool), bool landVanwaarIngeschreven = default(bool), bool locatiebeschrijving = default(bool), bool naamOpenbareRuimte = default(bool), bool postcode = default(bool), bool straatnaam = default(bool), bool verblijfBuitenland = default(bool), bool woonplaatsnaam = default(bool), DatumOnvolledig datumIngangOnderzoek = default(DatumOnvolledig))
+        public VerblijfplaatsInOnderzoek(bool aanduidingBijHuisnummer = default(bool), bool datumAanvangAdreshouding = default(bool), bool datumIngangGeldigheid = default(bool), bool datumInschrijvingInGemeente = default(bool), bool datumVestigingInNederland = default(bool), bool functieAdres = default(bool), bool gemeenteVanInschrijving = default(bool), bool huisletter = default(bool), bool huisnummer = default(bool), bool huisnummertoevoeging = default(bool), bool nummeraanduidingIdentificatie = default(bool), bool adresseerbaarObjectIdentificatie = default(bool), bool landVanwaarIngeschreven = default(bool), bool locatiebeschrijving = default(bool), bool straat = default(bool), bool postcode = default(bool), bool korteNaam = default(bool), bool verblijfBuitenland = default(bool), bool woonplaats = default(bool), DatumOnvolledig datumIngangOnderzoek = default(DatumOnvolledig))
         {
             this.AanduidingBijHuisnummer = aanduidingBijHuisnummer;
             this.DatumAanvangAdreshouding = datumAanvangAdreshouding;
@@ -66,150 +66,131 @@ namespace Org.OpenAPITools.Model
             this.Huisletter = huisletter;
             this.Huisnummer = huisnummer;
             this.Huisnummertoevoeging = huisnummertoevoeging;
-            this.IdentificatiecodeNummeraanduiding = identificatiecodeNummeraanduiding;
-            this.IdentificatiecodeAdresseerbaarObject = identificatiecodeAdresseerbaarObject;
+            this.NummeraanduidingIdentificatie = nummeraanduidingIdentificatie;
+            this.AdresseerbaarObjectIdentificatie = adresseerbaarObjectIdentificatie;
             this.LandVanwaarIngeschreven = landVanwaarIngeschreven;
             this.Locatiebeschrijving = locatiebeschrijving;
-            this.NaamOpenbareRuimte = naamOpenbareRuimte;
+            this.Straat = straat;
             this.Postcode = postcode;
-            this.Straatnaam = straatnaam;
+            this.KorteNaam = korteNaam;
             this.VerblijfBuitenland = verblijfBuitenland;
-            this.Woonplaatsnaam = woonplaatsnaam;
+            this.Woonplaats = woonplaats;
             this.DatumIngangOnderzoek = datumIngangOnderzoek;
         }
         
         /// <summary>
-        /// Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+        /// Gets or Sets AanduidingBijHuisnummer
         /// </summary>
-        /// <value>Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.</value>
         [DataMember(Name="aanduidingBijHuisnummer", EmitDefaultValue=false)]
         public bool AanduidingBijHuisnummer { get; set; }
 
         /// <summary>
-        /// Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+        /// Gets or Sets DatumAanvangAdreshouding
         /// </summary>
-        /// <value>Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.</value>
         [DataMember(Name="datumAanvangAdreshouding", EmitDefaultValue=false)]
         public bool DatumAanvangAdreshouding { get; set; }
 
         /// <summary>
-        /// Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+        /// Gets or Sets DatumIngangGeldigheid
         /// </summary>
-        /// <value>Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.</value>
         [DataMember(Name="datumIngangGeldigheid", EmitDefaultValue=false)]
         public bool DatumIngangGeldigheid { get; set; }
 
         /// <summary>
-        /// Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+        /// Gets or Sets DatumInschrijvingInGemeente
         /// </summary>
-        /// <value>Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.</value>
         [DataMember(Name="datumInschrijvingInGemeente", EmitDefaultValue=false)]
         public bool DatumInschrijvingInGemeente { get; set; }
 
         /// <summary>
-        /// Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+        /// Gets or Sets DatumVestigingInNederland
         /// </summary>
-        /// <value>Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.</value>
         [DataMember(Name="datumVestigingInNederland", EmitDefaultValue=false)]
         public bool DatumVestigingInNederland { get; set; }
 
         /// <summary>
-        /// Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+        /// Gets or Sets FunctieAdres
         /// </summary>
-        /// <value>Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.</value>
         [DataMember(Name="functieAdres", EmitDefaultValue=false)]
         public bool FunctieAdres { get; set; }
 
         /// <summary>
-        /// Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+        /// Gets or Sets GemeenteVanInschrijving
         /// </summary>
-        /// <value>Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.</value>
         [DataMember(Name="gemeenteVanInschrijving", EmitDefaultValue=false)]
         public bool GemeenteVanInschrijving { get; set; }
 
         /// <summary>
-        /// Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+        /// Gets or Sets Huisletter
         /// </summary>
-        /// <value>Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.</value>
         [DataMember(Name="huisletter", EmitDefaultValue=false)]
         public bool Huisletter { get; set; }
 
         /// <summary>
-        /// Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+        /// Gets or Sets Huisnummer
         /// </summary>
-        /// <value>Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.</value>
         [DataMember(Name="huisnummer", EmitDefaultValue=false)]
         public bool Huisnummer { get; set; }
 
         /// <summary>
-        /// Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+        /// Gets or Sets Huisnummertoevoeging
         /// </summary>
-        /// <value>Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.</value>
         [DataMember(Name="huisnummertoevoeging", EmitDefaultValue=false)]
         public bool Huisnummertoevoeging { get; set; }
 
         /// <summary>
-        /// Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+        /// Gets or Sets NummeraanduidingIdentificatie
         /// </summary>
-        /// <value>Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.</value>
-        [DataMember(Name="identificatiecodeNummeraanduiding", EmitDefaultValue=false)]
-        public bool IdentificatiecodeNummeraanduiding { get; set; }
+        [DataMember(Name="nummeraanduidingIdentificatie", EmitDefaultValue=false)]
+        public bool NummeraanduidingIdentificatie { get; set; }
 
         /// <summary>
-        /// Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+        /// Gets or Sets AdresseerbaarObjectIdentificatie
         /// </summary>
-        /// <value>Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.</value>
-        [DataMember(Name="identificatiecodeAdresseerbaarObject", EmitDefaultValue=false)]
-        public bool IdentificatiecodeAdresseerbaarObject { get; set; }
+        [DataMember(Name="adresseerbaarObjectIdentificatie", EmitDefaultValue=false)]
+        public bool AdresseerbaarObjectIdentificatie { get; set; }
 
         /// <summary>
-        /// Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+        /// Gets or Sets LandVanwaarIngeschreven
         /// </summary>
-        /// <value>Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.</value>
         [DataMember(Name="landVanwaarIngeschreven", EmitDefaultValue=false)]
         public bool LandVanwaarIngeschreven { get; set; }
 
         /// <summary>
-        /// Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+        /// Gets or Sets Locatiebeschrijving
         /// </summary>
-        /// <value>Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.</value>
         [DataMember(Name="locatiebeschrijving", EmitDefaultValue=false)]
         public bool Locatiebeschrijving { get; set; }
 
         /// <summary>
-        /// Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+        /// Gets or Sets Straat
         /// </summary>
-        /// <value>Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.</value>
-        [DataMember(Name="naamOpenbareRuimte", EmitDefaultValue=false)]
-        public bool NaamOpenbareRuimte { get; set; }
+        [DataMember(Name="straat", EmitDefaultValue=false)]
+        public bool Straat { get; set; }
 
         /// <summary>
-        /// Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+        /// Gets or Sets Postcode
         /// </summary>
-        /// <value>Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.</value>
         [DataMember(Name="postcode", EmitDefaultValue=false)]
         public bool Postcode { get; set; }
 
         /// <summary>
-        /// Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+        /// Gets or Sets KorteNaam
         /// </summary>
-        /// <value>Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.</value>
-        [DataMember(Name="straatnaam", EmitDefaultValue=false)]
-        public bool Straatnaam { get; set; }
+        [DataMember(Name="korteNaam", EmitDefaultValue=false)]
+        public bool KorteNaam { get; set; }
 
         /// <summary>
-        /// Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+        /// Gets or Sets VerblijfBuitenland
         /// </summary>
-        /// <value>Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.</value>
         [DataMember(Name="verblijfBuitenland", EmitDefaultValue=false)]
         public bool VerblijfBuitenland { get; set; }
 
         /// <summary>
-        /// Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.
+        /// Gets or Sets Woonplaats
         /// </summary>
-        /// <value>Indicator die aangeeft of het corresponderende gegeven voor deze persoon in onderzoek is.</value>
-        [DataMember(Name="woonplaatsnaam", EmitDefaultValue=false)]
-        public bool Woonplaatsnaam { get; set; }
+        [DataMember(Name="woonplaats", EmitDefaultValue=false)]
+        public bool Woonplaats { get; set; }
 
         /// <summary>
         /// Gets or Sets DatumIngangOnderzoek
@@ -235,15 +216,15 @@ namespace Org.OpenAPITools.Model
             sb.Append("  Huisletter: ").Append(Huisletter).Append("\n");
             sb.Append("  Huisnummer: ").Append(Huisnummer).Append("\n");
             sb.Append("  Huisnummertoevoeging: ").Append(Huisnummertoevoeging).Append("\n");
-            sb.Append("  IdentificatiecodeNummeraanduiding: ").Append(IdentificatiecodeNummeraanduiding).Append("\n");
-            sb.Append("  IdentificatiecodeAdresseerbaarObject: ").Append(IdentificatiecodeAdresseerbaarObject).Append("\n");
+            sb.Append("  NummeraanduidingIdentificatie: ").Append(NummeraanduidingIdentificatie).Append("\n");
+            sb.Append("  AdresseerbaarObjectIdentificatie: ").Append(AdresseerbaarObjectIdentificatie).Append("\n");
             sb.Append("  LandVanwaarIngeschreven: ").Append(LandVanwaarIngeschreven).Append("\n");
             sb.Append("  Locatiebeschrijving: ").Append(Locatiebeschrijving).Append("\n");
-            sb.Append("  NaamOpenbareRuimte: ").Append(NaamOpenbareRuimte).Append("\n");
+            sb.Append("  Straat: ").Append(Straat).Append("\n");
             sb.Append("  Postcode: ").Append(Postcode).Append("\n");
-            sb.Append("  Straatnaam: ").Append(Straatnaam).Append("\n");
+            sb.Append("  KorteNaam: ").Append(KorteNaam).Append("\n");
             sb.Append("  VerblijfBuitenland: ").Append(VerblijfBuitenland).Append("\n");
-            sb.Append("  Woonplaatsnaam: ").Append(Woonplaatsnaam).Append("\n");
+            sb.Append("  Woonplaats: ").Append(Woonplaats).Append("\n");
             sb.Append("  DatumIngangOnderzoek: ").Append(DatumIngangOnderzoek).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -320,12 +301,12 @@ namespace Org.OpenAPITools.Model
                     this.Huisnummertoevoeging.Equals(input.Huisnummertoevoeging)
                 ) && 
                 (
-                    this.IdentificatiecodeNummeraanduiding == input.IdentificatiecodeNummeraanduiding ||
-                    this.IdentificatiecodeNummeraanduiding.Equals(input.IdentificatiecodeNummeraanduiding)
+                    this.NummeraanduidingIdentificatie == input.NummeraanduidingIdentificatie ||
+                    this.NummeraanduidingIdentificatie.Equals(input.NummeraanduidingIdentificatie)
                 ) && 
                 (
-                    this.IdentificatiecodeAdresseerbaarObject == input.IdentificatiecodeAdresseerbaarObject ||
-                    this.IdentificatiecodeAdresseerbaarObject.Equals(input.IdentificatiecodeAdresseerbaarObject)
+                    this.AdresseerbaarObjectIdentificatie == input.AdresseerbaarObjectIdentificatie ||
+                    this.AdresseerbaarObjectIdentificatie.Equals(input.AdresseerbaarObjectIdentificatie)
                 ) && 
                 (
                     this.LandVanwaarIngeschreven == input.LandVanwaarIngeschreven ||
@@ -336,24 +317,24 @@ namespace Org.OpenAPITools.Model
                     this.Locatiebeschrijving.Equals(input.Locatiebeschrijving)
                 ) && 
                 (
-                    this.NaamOpenbareRuimte == input.NaamOpenbareRuimte ||
-                    this.NaamOpenbareRuimte.Equals(input.NaamOpenbareRuimte)
+                    this.Straat == input.Straat ||
+                    this.Straat.Equals(input.Straat)
                 ) && 
                 (
                     this.Postcode == input.Postcode ||
                     this.Postcode.Equals(input.Postcode)
                 ) && 
                 (
-                    this.Straatnaam == input.Straatnaam ||
-                    this.Straatnaam.Equals(input.Straatnaam)
+                    this.KorteNaam == input.KorteNaam ||
+                    this.KorteNaam.Equals(input.KorteNaam)
                 ) && 
                 (
                     this.VerblijfBuitenland == input.VerblijfBuitenland ||
                     this.VerblijfBuitenland.Equals(input.VerblijfBuitenland)
                 ) && 
                 (
-                    this.Woonplaatsnaam == input.Woonplaatsnaam ||
-                    this.Woonplaatsnaam.Equals(input.Woonplaatsnaam)
+                    this.Woonplaats == input.Woonplaats ||
+                    this.Woonplaats.Equals(input.Woonplaats)
                 ) && 
                 (
                     this.DatumIngangOnderzoek == input.DatumIngangOnderzoek ||
@@ -381,15 +362,15 @@ namespace Org.OpenAPITools.Model
                 hashCode = hashCode * 59 + this.Huisletter.GetHashCode();
                 hashCode = hashCode * 59 + this.Huisnummer.GetHashCode();
                 hashCode = hashCode * 59 + this.Huisnummertoevoeging.GetHashCode();
-                hashCode = hashCode * 59 + this.IdentificatiecodeNummeraanduiding.GetHashCode();
-                hashCode = hashCode * 59 + this.IdentificatiecodeAdresseerbaarObject.GetHashCode();
+                hashCode = hashCode * 59 + this.NummeraanduidingIdentificatie.GetHashCode();
+                hashCode = hashCode * 59 + this.AdresseerbaarObjectIdentificatie.GetHashCode();
                 hashCode = hashCode * 59 + this.LandVanwaarIngeschreven.GetHashCode();
                 hashCode = hashCode * 59 + this.Locatiebeschrijving.GetHashCode();
-                hashCode = hashCode * 59 + this.NaamOpenbareRuimte.GetHashCode();
+                hashCode = hashCode * 59 + this.Straat.GetHashCode();
                 hashCode = hashCode * 59 + this.Postcode.GetHashCode();
-                hashCode = hashCode * 59 + this.Straatnaam.GetHashCode();
+                hashCode = hashCode * 59 + this.KorteNaam.GetHashCode();
                 hashCode = hashCode * 59 + this.VerblijfBuitenland.GetHashCode();
-                hashCode = hashCode * 59 + this.Woonplaatsnaam.GetHashCode();
+                hashCode = hashCode * 59 + this.Woonplaats.GetHashCode();
                 if (this.DatumIngangOnderzoek != null)
                     hashCode = hashCode * 59 + this.DatumIngangOnderzoek.GetHashCode();
                 return hashCode;

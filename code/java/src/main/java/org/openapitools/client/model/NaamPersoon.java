@@ -1,6 +1,6 @@
 /*
- * Bevragingen ingeschreven personen
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * Bevragen Ingeschreven Personen
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -31,7 +31,7 @@ import org.openapitools.client.model.NaamgebruikEnum;
 /**
  * NaamPersoon
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-21T14:20:17.398Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T11:34:05.460Z[Etc/UTC]")
 public class NaamPersoon {
   public static final String SERIALIZED_NAME_GESLACHTSNAAM = "geslachtsnaam";
   @SerializedName(SERIALIZED_NAME_GESLACHTSNAAM)
@@ -77,11 +77,11 @@ public class NaamPersoon {
   }
 
    /**
-   * De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst.
+   * De achternaam van een persoon. 
    * @return geslachtsnaam
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "Vries", value = "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels en adellijke titel/predikaat zijn afgesplitst.")
+  @ApiModelProperty(example = "Vries", value = "De achternaam van een persoon. ")
 
   public String getGeslachtsnaam() {
     return geslachtsnaam;
@@ -100,11 +100,11 @@ public class NaamPersoon {
   }
 
    /**
-   * De voorletters waarmee een persoon aangeschreven wil worden. De voorlettes zijn afgeleid van de voornamen.
+   * De voorletters van de persoon, afgeleid van de voornamen. 
    * @return voorletters
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "De voorletters waarmee een persoon aangeschreven wil worden. De voorlettes zijn afgeleid van de voornamen.")
+  @ApiModelProperty(example = "P.J.", value = "De voorletters van de persoon, afgeleid van de voornamen. ")
 
   public String getVoorletters() {
     return voorletters;
@@ -123,11 +123,11 @@ public class NaamPersoon {
   }
 
    /**
-   * De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat.
+   * De verzameling namen voor de geslachtsnaam, gescheiden door spaties. 
    * @return voornamen
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "Pieter Jan", value = "De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat.")
+  @ApiModelProperty(example = "Pieter Jan", value = "De verzameling namen voor de geslachtsnaam, gescheiden door spaties. ")
 
   public String getVoornamen() {
     return voornamen;
@@ -146,11 +146,11 @@ public class NaamPersoon {
   }
 
    /**
-   * Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam.
+   * Get voorvoegsel
    * @return voorvoegsel
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "de", value = "Dat deel van de geslachtsnaam dat voorkomt in de Voorvoegseltabel en, gescheiden door een spatie, vooraf gaat aan de rest van de geslachtsnaam.")
+  @ApiModelProperty(example = "de", value = "")
 
   public String getVoorvoegsel() {
     return voorvoegsel;
@@ -192,11 +192,11 @@ public class NaamPersoon {
   }
 
    /**
-   * De aanhef zoals die in een brief, gericht aan een persoon gebruikt kan worden.
+   * Kun je gebruiken als aanhef in een brief gericht aan persoon. 
    * @return aanhef
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "Geachte heer In het Veld", value = "De aanhef zoals die in een brief, gericht aan een persoon gebruikt kan worden.")
+  @ApiModelProperty(example = "Geachte heer In het Veld", value = "Kun je gebruiken als aanhef in een brief gericht aan persoon. ")
 
   public String getAanhef() {
     return aanhef;
@@ -215,11 +215,11 @@ public class NaamPersoon {
   }
 
    /**
-   * Samengestelde naam zoals die in communicatie met de persoon gebruikt kan worden.
+   * Samengestelde naam die je kunt gebruiken in de communicatie met de persoon. 
    * @return aanschrijfwijze
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "H. in het Veld", value = "Samengestelde naam zoals die in communicatie met de persoon gebruikt kan worden.")
+  @ApiModelProperty(example = "H. in het Veld", value = "Samengestelde naam die je kunt gebruiken in de communicatie met de persoon. ")
 
   public String getAanschrijfwijze() {
     return aanschrijfwijze;
@@ -238,11 +238,11 @@ public class NaamPersoon {
   }
 
    /**
-   * De naam zoals die in lopende tekst gebruikt kan worden.
+   * Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert. 
    * @return gebruikInLopendeTekst
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "de heer In het Veld", value = "De naam zoals die in lopende tekst gebruikt kan worden.")
+  @ApiModelProperty(example = "de heer In het Veld", value = "Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert. ")
 
   public String getGebruikInLopendeTekst() {
     return gebruikInLopendeTekst;

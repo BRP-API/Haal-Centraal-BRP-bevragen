@@ -1,6 +1,6 @@
 /*
- * Bevragingen ingeschreven personen
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * Bevragen Ingeschreven Personen
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -28,10 +28,10 @@ import org.openapitools.client.model.OverlijdenInOnderzoek;
 import org.openapitools.client.model.Waardetabel;
 
 /**
- * Gegevens over het overlijden van de ingeschreven persoon.  * **datum** : Datum waarop de persoon is overleden.  * **land** : Land waar de persoon is overleden  * **plaats** : De plaats waar een persoon is overleden. Voor een plaats buiten Nederland is gemeentecode&#x3D;1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding.
+ * Gegevens over het overlijden van de persoon. * **datum** : datum waarop de persoon is overleden. * **land** : land waar de persoon is overleden. * **plaats** : plaats waar de persoon is overleden. Voor een plaats buiten Nederland is gemeentecode&#x3D;1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding. 
  */
-@ApiModel(description = "Gegevens over het overlijden van de ingeschreven persoon.  * **datum** : Datum waarop de persoon is overleden.  * **land** : Land waar de persoon is overleden  * **plaats** : De plaats waar een persoon is overleden. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-21T14:20:17.398Z[Etc/UTC]")
+@ApiModel(description = "Gegevens over het overlijden van de persoon. * **datum** : datum waarop de persoon is overleden. * **land** : land waar de persoon is overleden. * **plaats** : plaats waar de persoon is overleden. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding. ")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T11:34:05.460Z[Etc/UTC]")
 public class Overlijden {
   public static final String SERIALIZED_NAME_INDICATIE_OVERLEDEN = "indicatieOverleden";
   @SerializedName(SERIALIZED_NAME_INDICATIE_OVERLEDEN)
@@ -61,11 +61,11 @@ public class Overlijden {
   }
 
    /**
-   * Deze indicatie heeft als rol om aan te geven dat iemand is overleden (waarde true). Deze indicator wordt altijd meegeleverd als de waarde true is (dus als iemand overleden is). Als de waarde false is wordt de indicator niet meegeleverd.
+   * Geeft aan dat iemand is overleden (waarde true), ongeacht of de overlijdensdatum bekend is. 
    * @return indicatieOverleden
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Deze indicatie heeft als rol om aan te geven dat iemand is overleden (waarde true). Deze indicator wordt altijd meegeleverd als de waarde true is (dus als iemand overleden is). Als de waarde false is wordt de indicator niet meegeleverd.")
+  @ApiModelProperty(value = "Geeft aan dat iemand is overleden (waarde true), ongeacht of de overlijdensdatum bekend is. ")
 
   public Boolean getIndicatieOverleden() {
     return indicatieOverleden;

@@ -1,6 +1,6 @@
 /*
- * Bevragingen ingeschreven personen
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * Bevragen Ingeschreven Personen
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -26,10 +26,10 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 /**
- * Gegevens over de datums die mogelijk niet volledig zijn, maar waarvan de bekende gedeeltes wel moeten kunnen worden uitgewisseld. Als de volledige datum bekend is worden alle elementen gevuld.
+ * Gegevens over de datums die mogelijk niet volledig zijn.
  */
-@ApiModel(description = "Gegevens over de datums die mogelijk niet volledig zijn, maar waarvan de bekende gedeeltes wel moeten kunnen worden uitgewisseld. Als de volledige datum bekend is worden alle elementen gevuld.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-21T14:20:17.398Z[Etc/UTC]")
+@ApiModel(description = "Gegevens over de datums die mogelijk niet volledig zijn.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T11:34:05.460Z[Etc/UTC]")
 public class DatumOnvolledig {
   public static final String SERIALIZED_NAME_DAG = "dag";
   @SerializedName(SERIALIZED_NAME_DAG)
@@ -55,13 +55,13 @@ public class DatumOnvolledig {
   }
 
    /**
-   * De dag. Als de dag van de datum bekend is wordt deze hier ingevuld. Ook als de volledige datum bekend is.
+   * Als de dag van de datum bekend is wordt dit element gevuld, ook als de volledige datum bekend is.
    * minimum: 1
    * maximum: 31
    * @return dag
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "3", value = "De dag. Als de dag van de datum bekend is wordt deze hier ingevuld. Ook als de volledige datum bekend is.")
+  @ApiModelProperty(example = "3", value = "Als de dag van de datum bekend is wordt dit element gevuld, ook als de volledige datum bekend is.")
 
   public Integer getDag() {
     return dag;
@@ -80,11 +80,11 @@ public class DatumOnvolledig {
   }
 
    /**
-   * De volledige datum die in de &#x60;date&#x60; definitie past. Dit element wordt alleen gevuld als de volledige datum bekend is.
+   * Als de volledige datum bekend is wordt de datum gevuld die in de date definitie past.
    * @return datum
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "Wed May 03 00:00:00 UTC 1989", value = "De volledige datum die in de `date` definitie past. Dit element wordt alleen gevuld als de volledige datum bekend is.")
+  @ApiModelProperty(example = "Wed May 03 00:00:00 UTC 1989", value = "Als de volledige datum bekend is wordt de datum gevuld die in de date definitie past.")
 
   public LocalDate getDatum() {
     return datum;
@@ -103,12 +103,12 @@ public class DatumOnvolledig {
   }
 
    /**
-   * Het jaar van de datum. Als het jaar bekend is wordt dit element gevuld, ook als de volledige datum bekend is.
+   * Als het jaar van de datum bekend is wordt dit element gevuld, ook als de volledige datum bekend is.
    * maximum: 9999
    * @return jaar
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "1989", value = "Het jaar van de datum. Als het jaar bekend is wordt dit element gevuld, ook als de volledige datum bekend is.")
+  @ApiModelProperty(example = "1989", value = "Als het jaar van de datum bekend is wordt dit element gevuld, ook als de volledige datum bekend is.")
 
   public Integer getJaar() {
     return jaar;
@@ -127,13 +127,13 @@ public class DatumOnvolledig {
   }
 
    /**
-   * De maand. Als de maand van een datum bekend is wordt deze hier ingevuld. Ook als de volledige datum is ingevuld.
+   * Als de maand van een datum bekend is wordt dit element gevuld, ook als de volledige datum bekend is.
    * minimum: 1
    * maximum: 12
    * @return maand
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "5", value = "De maand. Als de maand van een datum bekend is wordt deze hier ingevuld. Ook als de volledige datum is ingevuld.")
+  @ApiModelProperty(example = "5", value = "Als de maand van een datum bekend is wordt dit element gevuld, ook als de volledige datum bekend is.")
 
   public Integer getMaand() {
     return maand;

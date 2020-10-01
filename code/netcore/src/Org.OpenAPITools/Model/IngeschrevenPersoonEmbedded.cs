@@ -1,7 +1,7 @@
 /* 
- * Bevragingen ingeschreven personen
+ * Bevragen Ingeschreven Personen
  *
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -34,10 +34,10 @@ namespace Org.OpenAPITools.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="IngeschrevenPersoonEmbedded" /> class.
         /// </summary>
-        /// <param name="ouders">De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE verwijst&#x60;.</param>
-        /// <param name="kinderen">De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE verwijst.</param>
-        /// <param name="partners">De actuele bij de ingeschreven persoon geregistreerde huwelijken en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven..</param>
-        public IngeschrevenPersoonEmbedded(List<OuderHal> ouders = default(List<OuderHal>), List<KindHal> kinderen = default(List<KindHal>), List<PartnerHal> partners = default(List<PartnerHal>))
+        /// <param name="ouders">De ouders van de persoon. .</param>
+        /// <param name="kinderen">De kinderen van de persoon. .</param>
+        /// <param name="partners">De partners van de persoon. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven. .</param>
+        public IngeschrevenPersoonEmbedded(List<OuderHalBasis> ouders = default(List<OuderHalBasis>), List<KindHalBasis> kinderen = default(List<KindHalBasis>), List<PartnerHalBasis> partners = default(List<PartnerHalBasis>))
         {
             this.Ouders = ouders;
             this.Kinderen = kinderen;
@@ -45,25 +45,25 @@ namespace Org.OpenAPITools.Model
         }
         
         /// <summary>
-        /// De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE verwijst&#x60;
+        /// De ouders van de persoon. 
         /// </summary>
-        /// <value>De ouders van de ingeschreven persoon, waarnaar de OUDER-KIND-RELATIE verwijst&#x60;</value>
+        /// <value>De ouders van de persoon. </value>
         [DataMember(Name="ouders", EmitDefaultValue=false)]
-        public List<OuderHal> Ouders { get; set; }
+        public List<OuderHalBasis> Ouders { get; set; }
 
         /// <summary>
-        /// De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE verwijst
+        /// De kinderen van de persoon. 
         /// </summary>
-        /// <value>De kinderen van de ingeschreven persoon, waarnaar de KIND-OUDER-RELATIE verwijst</value>
+        /// <value>De kinderen van de persoon. </value>
         [DataMember(Name="kinderen", EmitDefaultValue=false)]
-        public List<KindHal> Kinderen { get; set; }
+        public List<KindHalBasis> Kinderen { get; set; }
 
         /// <summary>
-        /// De actuele bij de ingeschreven persoon geregistreerde huwelijken en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven.
+        /// De partners van de persoon. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven. 
         /// </summary>
-        /// <value>De actuele bij de ingeschreven persoon geregistreerde huwelijken en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven.</value>
+        /// <value>De partners van de persoon. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven. </value>
         [DataMember(Name="partners", EmitDefaultValue=false)]
-        public List<PartnerHal> Partners { get; set; }
+        public List<PartnerHalBasis> Partners { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

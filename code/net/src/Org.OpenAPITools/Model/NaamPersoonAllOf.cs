@@ -1,7 +1,7 @@
 /* 
- * Bevragingen ingeschreven personen
+ * Bevragen Ingeschreven Personen
  *
- * API voor het ontsluiten van gegevens van ingeschreven personen en aanverwante gegevens uit de GBA en RNI. Met deze API worden de actuele gegevens van ingeschreven personen, hun kinderen, partners en ouders ontsloten. <br> Heeft een persoon bijvoorbeeld geen geldige nationaliteit, dan wordt nationaliteit niet geretourneerd. <br> Heeft een persoon een beëindigd partnerschap of huwelijk, dan wordt de partner niet geretourneerd. <br> <br> Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/tree/master/features) voor nadere toelichting. <br> 
+ * API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.  Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.  Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -25,7 +25,7 @@ using OpenAPIDateConverter = Org.OpenAPITools.Client.OpenAPIDateConverter;
 namespace Org.OpenAPITools.Model
 {
     /// <summary>
-    /// Gegevens over de naam van de persoon
+    /// NaamPersoonAllOf
     /// </summary>
     [DataContract]
     public partial class NaamPersoonAllOf :  IEquatable<NaamPersoonAllOf>, IValidatableObject
@@ -33,9 +33,9 @@ namespace Org.OpenAPITools.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="NaamPersoonAllOf" /> class.
         /// </summary>
-        /// <param name="aanhef">De aanhef zoals die in een brief, gericht aan een persoon gebruikt kan worden..</param>
-        /// <param name="aanschrijfwijze">Samengestelde naam zoals die in communicatie met de persoon gebruikt kan worden..</param>
-        /// <param name="gebruikInLopendeTekst">De naam zoals die in lopende tekst gebruikt kan worden..</param>
+        /// <param name="aanhef">Kun je gebruiken als aanhef in een brief gericht aan persoon. .</param>
+        /// <param name="aanschrijfwijze">Samengestelde naam die je kunt gebruiken in de communicatie met de persoon. .</param>
+        /// <param name="gebruikInLopendeTekst">Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert. .</param>
         /// <param name="aanduidingNaamgebruik">aanduidingNaamgebruik.</param>
         public NaamPersoonAllOf(string aanhef = default(string), string aanschrijfwijze = default(string), string gebruikInLopendeTekst = default(string), NaamgebruikEnum aanduidingNaamgebruik = default(NaamgebruikEnum))
         {
@@ -46,23 +46,23 @@ namespace Org.OpenAPITools.Model
         }
         
         /// <summary>
-        /// De aanhef zoals die in een brief, gericht aan een persoon gebruikt kan worden.
+        /// Kun je gebruiken als aanhef in een brief gericht aan persoon. 
         /// </summary>
-        /// <value>De aanhef zoals die in een brief, gericht aan een persoon gebruikt kan worden.</value>
+        /// <value>Kun je gebruiken als aanhef in een brief gericht aan persoon. </value>
         [DataMember(Name="aanhef", EmitDefaultValue=false)]
         public string Aanhef { get; set; }
 
         /// <summary>
-        /// Samengestelde naam zoals die in communicatie met de persoon gebruikt kan worden.
+        /// Samengestelde naam die je kunt gebruiken in de communicatie met de persoon. 
         /// </summary>
-        /// <value>Samengestelde naam zoals die in communicatie met de persoon gebruikt kan worden.</value>
+        /// <value>Samengestelde naam die je kunt gebruiken in de communicatie met de persoon. </value>
         [DataMember(Name="aanschrijfwijze", EmitDefaultValue=false)]
         public string Aanschrijfwijze { get; set; }
 
         /// <summary>
-        /// De naam zoals die in lopende tekst gebruikt kan worden.
+        /// Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert. 
         /// </summary>
-        /// <value>De naam zoals die in lopende tekst gebruikt kan worden.</value>
+        /// <value>Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert. </value>
         [DataMember(Name="gebruikInLopendeTekst", EmitDefaultValue=false)]
         public string GebruikInLopendeTekst { get; set; }
 
