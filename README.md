@@ -8,7 +8,7 @@ BRP Bevragen is een Haal Centraal API voor het zoeken en raadplegen van ingeschr
 
 ## Planning
 
-Release v1.0.0 is uitgebracht en is [hier](https://eu-rm.roadmunk.com/publish/4ac89376551785bace5e22f09c8247f307e1c061) te vinden.
+Release v1.0.0 is uitgebracht en is [hier](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0) te vinden.
 
 [Haal Centraal 2020 Alle Domeinen - Timeline View](https://eu-rm.roadmunk.com/publish/4ac89376551785bace5e22f09c8247f307e1c061)
 
