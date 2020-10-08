@@ -28,7 +28,7 @@ import org.openapitools.client.model.NaamgebruikEnum;
 /**
  * NaamPersoonAllOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T11:34:05.460Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T14:03:13.754Z[Etc/UTC]")
 public class NaamPersoonAllOf {
   public static final String SERIALIZED_NAME_AANHEF = "aanhef";
   @SerializedName(SERIALIZED_NAME_AANHEF)

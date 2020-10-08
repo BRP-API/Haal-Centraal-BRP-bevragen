@@ -3,21 +3,25 @@
 De 'Bevraging Ingeschreven Persoon' Web API is gespecificeerd met behulp van de OpenAPI specifications (OAS).
 
 Om de API te gebruiken kun je de volgende stappen doorlopen:
+
 1. Bekijk de [functionaliteit en specificaties](#Functionaliteit-en-specificaties)
 2. [Implementeer](#Implementeer-de-API) de API
 3. [Probeer en test](#Probeer-en-test) de API
 
 ## Functionaliteit en specificaties
-Een visuele representatie van de specificatie kan worden gegenereerd met [Swagger UI](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/master/specificatie/genereervariant/openapi.yaml).
+
+Een visuele representatie van de specificatie kan worden gegenereerd met [Swagger UI](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/swagger-ui/) of [Redoc](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/redoc/).
 
 De [functionele documentatie](../../../features) van de 'Bevraging Ingeschreven Persoon' Web API is ook te vinden in de github repository.
 
 ## Implementeer de API
+
 Je kunt code genereren op basis van de [genereervariant van de specificaties](../specificatie/genereervariant/openapi.yaml).
 We hebben al voor enkele ontwikkelomgevingen [client code](../../../code) gegenereerd.
 
 ## Probeer en test
-De 'Bevraging Ingeschreven Persoon' Web API is voor proberen en testen te benaderen via de volgende url: https://www.haalcentraal.nl/haalcentraal/api/brp
+
+De 'Bevraging Ingeschreven Persoon' Web API is voor proberen en testen te benaderen via de volgende url: `https://www.haalcentraal.nl/haalcentraal/api/brp`
 
 Om de web api te kunnen bevragen is een apikey nodig. Deze voeg je aan een request toe als header "X-API-KEY". Een API-key kan je aanvragen bij de product owner Cathy Dingemanse, cathy.dingemanse@denhaag.nl.
 
@@ -53,7 +57,7 @@ https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/mast
 4. Kies TYPE "API Key"
 5. Vul in Key: "x-api-key", Value: de API key die je van Cathy hebt ontvangen, Add to: "Header"
 6. Selecteer tabblad "Variables"
-7. Vul bij baseUrl INITIAL VALUE en bij CURRENT VALUE: https://www.haalcentraal.nl/haalcentraal/api/brp
+7. Vul bij baseUrl INITIAL VALUE en bij CURRENT VALUE: `https://www.haalcentraal.nl/haalcentraal/api/brp`
 8. Klik op de knop Update
 
 ### Raadpleeg een Ingeschreven Natuurlijk Persoon
