@@ -63,7 +63,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
 
   Als betrokkene en partner hetzelfde geslacht hebben Of de titel van de partner komt niet voor in bovenstaande tabellen (er is geen vrouwelijke vorm van de titel)
   Dan wordt de adellijke titel van de partner niet opgenomen.
-  Als betrokkene een man is
+  Als betrokkene een man is of betrokkene heeft onbekend geslacht
   Dan wordt de adellijke titel van de partner niet opgenomen.
 
   Abstract Scenario: De aanschrijfwijze wordt samengesteld op basis van aanduidingAanschrijving en naamgegevens van de persoon en de partner
@@ -160,7 +160,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
     Als de ingeschreven persoon wordt geraadpleegd
     Dan is in het antwoord naam.aanschrijfwijze=F.C. Geel-Groen
 
-  Scenario: meerdere ontbonden relaties
+  Scenario: meerdere ontbonden relaties gebruikt de laatst ontbonden relatie
     Gegeven de ingeschreven persoon J. Wit is getrouwd in 1958 met Geel
     En de ingeschreven persoon is getrouwd in 1961 met Roodt
     En het huwelijk met Geel is ontbonden in 1960
@@ -169,6 +169,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
     Als de ingeschreven persoon wordt geraadpleegd
     Dan is in het antwoord naam.aanschrijfwijze=J. Roodt-Wit
 
+  Scenario: meerdere ontbonden relaties en oudste relatie is het laatst ontbonden
     Gegeven de ingeschreven persoon de heer J. Wit is getrouwd in 1958 met Zwart
     En de ingeschreven persoon is getrouwd in 1961 met Blaauw
     En het huwelijk met Blaauw is ontbonden in 1983

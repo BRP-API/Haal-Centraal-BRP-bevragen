@@ -20,9 +20,14 @@ Functionaliteit: Als gemeente wil ik de juiste en consistent naamgebruik in een 
   De waarde van aanduidingNaamgebruik bepaalt hoe de gebruikInLopendeTekst wordt samengesteld uit de naam van de persoon en de naam van de partner.
 
   Als de eerste naam geen adellijke titel of predicaat heeft,
-  Dan wordt gebruikInLopendeTekst voorafgegaan door een geslachtsaanduiding ("mevrouw", "de heer") plus de samengestelde naam op basis van aanduidingNaamgebruik en de naam van de persoon en de partner.
+  En de geslachtsaanduiding is gelijk aan "vrouw" of "man"
+  Dan wordt gebruikInLopendeTekst voorafgegaan door een geslachtsaanduiding ("mevrouw", "de heer"), gevolgd door de samengestelde naam op basis van aanduidingNaamgebruik en de naam van de persoon en de partner.
 
-  Het voorvoegsel van de eerste geslachtsnaam in de samengestelde naam wordt met een hoofdletter geschreven.
+  Als de eerste naam geen adellijke titel of predicaat heeft,
+  En de geslachtsaanduiding is gelijk aan "onbekend" of er is geen waarde voor geslachtsaanduiding
+  Dan wordt gebruikInLopendeTekst voorafgegaan door de voorletters, gevolgd door de samengestelde naam op basis van aanduidingNaamgebruik en de naam van de persoon en de partner.
+
+  Wanneer geslachtsaanduiding is "vrouw" of "man", dan wordt het voorvoegsel van de eerste geslachtsnaam in de samengestelde naam met een hoofdletter geschreven.
 
   Als er meerdere actuele (niet ontbonden) huwelijken/partnerschappen zijn
   En de aanduiding aanschijving is ongelijk aan 'Eigen',
@@ -62,6 +67,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistent naamgebruik in een 
 
     # In onderstaande tabellen betekenen de afkortingen:
     # GA = "mevrouw", "de heer"
+    # VL = voorletters
     # VV = voorvoegselGeslachtsnaam
     # GN = geslachtsnaam
     # VP = voorvoegselGeslachtsnaam partner
@@ -74,10 +80,12 @@ Functionaliteit: Als gemeente wil ik de juiste en consistent naamgebruik in een 
       | aanduidingNaamgebruik | geslachtsaanduiding |samenstelling gebruikInLopendeTekst | aanschrijfwijze | gebruikInLopendeTekst |
       | Eigen                 | Man                 | GA VV GN        | H. in het Veld            | de heer In het Veld            |
       | Eigen                 | Man                 | GA VV GN        | F. Groenen                | de heer Groenen                |
+      | Eigen                 | Onbekend            | VL VV GN        | P.T. Groenink             | P.T. Groenink                  |
       | Partner na eigen      | Vrouw               | GA VV GN-VP GP  | I. van Velzen-in het Veld | mevrouw Van Velzen-in het Veld |
       | Partner na eigen      | Vrouw               | GA VV GN-VP GP  | F. Groenen-Groenink       | mevrouw Groenen-Groenink       |
       | Partner               | Vrouw               | GA VP GP        | S. van Velzen             | mevrouw Van Velzen             |
       | Partner               | Vrouw               | GA VP GP        | J.F.R. Groenen            | mevrouw Groenen                |
+      | Partner               | Onbekend            | VL VP GP        | I. van Velzen             | I. van Velzen                  |
       | Partner voor eigen    | Man                 | GA VP GP-VV GN  | F. in het Veld-van Velzen | de heer In het Veld-van Velzen |
       | Partner voor eigen    | Man                 | GA VP GP-VV GN  | F. Groenen-Groenink       | de heer Groenen-Groenink       |
 
@@ -91,6 +99,8 @@ Functionaliteit: Als gemeente wil ik de juiste en consistent naamgebruik in een 
     Voorbeelden: adelijke titels
       | adellijkeTitel_predikaat | aanduidingNaamgebruik | geslachtsaanduiding | samenstelling gebruikInLopendeTekst | gebruikInLopendeTekst                        |
       | Baron                    | Eigen                 | Man                 | AT VV GN                            | baron Van den Aedel                          |
+      | Baron                    | Eigen                 | Vrouw               | AT VV GN                            | baron Van den Aedel                          |
+      | Baron                    | Eigen                 | Onbekend            | AT VV GN                            | baron Van den Aedel                          |
       | Barones                  | Partner na eigen      | Vrouw               | AT VV GN-VP GP                      | barones Van den Aedel-van der Veen           |
       | Graaf                    | Partner               | Man                 | GA VP GP                            | de heer Van der Veen                         |
       | Gravin                   | Partner voor eigen    | Vrouw               | GA VP GP-AT VV GN                   | mevrouw Van der Veen-gravin van den Aedel    |
@@ -119,6 +129,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistent naamgebruik in een 
       | M | V | Gravin   | Partner               | W. graaf van den Aedel                  | de heer Van den Aedel                      |
       | M | V | Gravin   | Partner voor eigen    | W. graaf van den Aedel-van der Veen     | de heer Van den Aedel-van der Veen         |
       | M | M | Baron    | Partner na eigen      | W. van der Veen-van den Aedel           | de heer Van der Veen-van den Aedel         |
+      | O | M | Baron    | Partner na eigen      | W. van der Veen-van den Aedel           | W. van der Veen-van den Aedel              |
       | V | V | Barones  | Partner na eigen      | W. van der Veen-van den Aedel           | mevrouw Van der Veen-van den Aedel         |
       | V | M | Ridder   | Partner na eigen      | W. van der Veen-van den Aedel           | mevrouw Van der Veen-van den Aedel         |
       | V | M | Jonkheer | Eigen                 | A.C. van der Veen                       | mevrouw Van der Veen                       |
