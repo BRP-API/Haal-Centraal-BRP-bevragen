@@ -33,7 +33,29 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
   En de aanduiding aanschijving is ongelijk aan 'Eigen'
   Dan wordt als partnernaam de naam van de laatst ontbinden relatie gebruikt.
 
-  Op basis van attribuut adellijkeTitel_predikaat wordt het de adelijke titel of het predikaat toegevoegd in de aanschrijfwijze. Zie ook de tabel "Voorbeelden: adelijke titels en predikaat" hieronder.
+  Op basis van attribuut adellijkeTitel_predikaat en de geslachtsaanduiding wordt het de adelijke titel of het predikaat toegevoegd in de aanschrijfwijze.
+  De adellijke titel of het predikaat wordt in aanschrijfwijze opgenomen in de vorm die hoort bij de geslachtsaanduiding:
+  | adellijkeTitel_predikaat | vrouw     | man      | onbekend |
+  | Graaf	                   | gravin    | graaf    | -   |
+  | Gravin                   | gravin    | graaf    | -   |
+  | Baron	                   | barones   | baron    | -   |
+  | Barones                  | barones   | baron    | -   |
+  | Hertog                   | hertogin  | hertog   | -   |
+  | Hertogin                 | hertogin  | hertog   | -   |
+  | Markies                  | markiezin | markies  | -   |
+  | Markiezin                | markiezin | markies  | -   |
+  | Prins	                   | prinses   | prins    | -   |
+  | Prinses                  | prinses   | prins    | -   |
+  | Ridder                   | -         | ridder   | -   |
+  | Jonkheer                 | jonkvrouw | jonkheer | -   |
+  | Jonkvrouw                | jonkvrouw | jonkheer | -   |
+
+  Als de adellijke titel geen vorm heeft die hoort bij de geslachtsaanduiding (in bovenstaande tabel opgenomen als - teken)
+  Dan wordt de adellijke titel niet opgenomen in de aanschrijfwijze.
+
+  Als de geslachtsaanduiding is "onbekend" (O) of geen waarde heeft
+  Dan wordt de (eventuele) adellijke titel of het predicaat niet opgenomen in de aanschrijfwijze.
+
   Als de betrokkene beschikt over een predikaat
   En de aanduiding aanschrijving is gelijk aan "E" (eigen) of "N" (partner na eigen geslachtsnaam)
   Dan wordt deze geplaatst vóór de voorletters.
@@ -95,48 +117,61 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | V | VL GP-GN | Groenlo  | Franka             | F. Groenen-Groenlo |
 
     Voorbeelden: betrokkene heeft een adelijke titel en partner heeft geen adellijke titel
-      | aanduidingAanschrijving | samenstelling aanschrijfwijze | geslachtsnaam | voornamen | aanschrijfwijze |
-      | E | VL AT VV GN       | Aedel | Hendrik Willem | H.W. graaf van den Aedel               |
-      | N | VL AT VV GN-VP GP | Aedel | Wilhelmina     | W. gravin van den Aedel-van der Veen   |
-      | P | VL VP GP          | Aedel | Frederique     | F. van der Veen                        |
-      | V | VL VP GP-AT VV GN | Aedel | Emma Louise    | E.L. van der Veen-gravin van den Aedel |
+      | geslachtsaanduiding | aanduidingAanschrijving | samenstelling aanschrijfwijze | adellijkeTitel_predikaat | geslachtsnaam | voornamen | aanschrijfwijze |
+      | man      | E | VL AT VV GN       | Baron   | Aedel | Hendrik Willem | H.W. graaf van den Aedel               |
+      | vrouw    | N | VL AT VV GN-VP GP | Gravin  | Aedel | Wilhelmina     | W. gravin van den Aedel-van der Veen   |
+      | vrouw    | P | VL VP GP          | Barones | Aedel | Frederique     | F. van der Veen                        |
+      | vrouw    | V | VL VP GP-AT VV GN | Gravin  | Aedel | Emma Louise    | E.L. van der Veen-gravin van den Aedel |
+      | man      | E | VL AT VV GN       | Barones | Aedel | Johan          | J. graaf van den Aedel                 |
+      | vrouw    | N | VL AT VV GN-VP GP | Graaf   | Aedel | Wilhelmina     | W. gravin van den Aedel-van der Veen   |
+      | vrouw    | P | VL VP GP          | Barones | Aedel | Frederique     | F. van der Veen                        |
+      | vrouw    | V | VL VP GP-AT VV GN | Baron   | Aedel | Erica          | E. van der Veen-barones van den Aedel  |
+      | vrouw    | E | VL AT VV GN       | Ridder  | Aedel | Michael        | M. van den Aedel                       |
+      | onbekend | E | VL VV GN          | Barones | Aedel | Johanna        | J. van den Aedel                       |
+      | onbekend | V | VL VP GP-AT VV GN | Ridder  | Aedel | Simon          | S. van der Veen-van den Aedel          |
 
     Voorbeelden: betrokkene heeft een predikaat en partner heeft geen adellijke titel
-      | adellijkeTitel_predikaat | aanduidingNaamgebruik | aanschrijfwijze                    |
-      | Jonkheer                 | Eigen                 | jonkheer T. van Hoogh              |
-      | Jonkvrouw                | Eigen                 | jonkvrouw T. van Hoogh             |
-      | Jonkvrouw                | Partner na eigen      | jonkvrouw T. van Hoogh-in het Veld |
-      | Jonkvrouw                | Partner               | T. in het Veld                     |
-      | Jonkheer                 | Partner               | T. in het Veld                     |
-      | Jonkvrouw                | Partner voor eigen    | T. in het Veld-jonkvrouw van Hoogh |
-      | Jonkheer                 | Partner na eigen      | jonkheer T. van Hoogh-in het Veld  |
+      | geslachtsaanduiding | adellijkeTitel_predikaat | aanduidingNaamgebruik | aanschrijfwijze                    |
+      | man      | Jonkheer                 | Eigen                 | jonkheer T. van Hoogh              |
+      | vrouw    | Jonkvrouw                | Eigen                 | jonkvrouw T. van Hoogh             |
+      | vrouw    | Jonkheer                 | Eigen                 | jonkvrouw T. van Hoogh             |
+      | onbekend | Jonkvrouw                | Eigen                 | T. van Hoogh                       |
+      | vrouw    | Jonkvrouw                | Partner na eigen      | jonkvrouw T. van Hoogh-in het Veld |
+      | vrouw    | Jonkvrouw                | Partner               | T. in het Veld                     |
+      | man      | Jonkheer                 | Partner               | T. in het Veld                     |
+      | vrouw    | Jonkvrouw                | Partner voor eigen    | T. in het Veld-jonkvrouw van Hoogh |
+      | onbekend | Jonkvrouw                | Partner voor eigen    | T. in het Veld-van Hoogh           |
+      | man      | Jonkheer                 | Partner na eigen      | jonkheer T. van Hoogh-in het Veld  |
 
     Voorbeelden: partner heeft een adellijke titel
       | geslachtsaanduiding | geslachtsaanduiding partner | adellijkeTitel_predikaat partner | aanduidingAanschrijving | samenstelling aanschrijfwijze | geslachtsnaam | voornamen | aanschrijfwijze |
-      | V | M | Baron  | E | VL VV GN          | Veen  | Anna Cornelia  | A.C. van der Veen                       |
-      | V | M | Baron  | N | VL VV GN-AP VP GP | Veen  | Anna Cornelia  | A.C. van der Veen-barones van den Aedel |
-      | V | M | Baron  | P | VL AP VP GP       | Veen  | Anna Cornelia  | A.C. barones van den Aedel              |
-      | V | M | Baron  | V | VL AP VP GP-VV GN | Veen  | Anna Cornelia  | A.C. barones van den Aedel-van der Veen |
-      | V | M | Prins  | E | VL VV GN          | Veen  | Anna Cornelia  | A.C. van der Veen                       |
-      | V | M | Prins  | N | VL VV GN-AP VP GP | Veen  | Anna Cornelia  | A.C. van der Veen-prinses van den Aedel |
-      | V | M | Prins  | P | VL AP VP GP       | Veen  | Anna Cornelia  | A.C. prinses van den Aedel              |
-      | V | M | Prins  | V | VL AP VP GP-VV GN | Veen  | Anna Cornelia  | A.C. prinses van den Aedel-van der Veen |
-      | M | V | Gravin | E | VL VV GN          | Veen  | Johannes       | J. van der Veen                         |
-      | M | V | Gravin | N | VL VV GN-VP GP    | Veen  | Johannes       | J. van der Veen-van den Aedel           |
-      | M | V | Gravin | P | VL VP GP          | Veen  | Johannes       | J. van den Aedel                        |
-      | M | V | Gravin | V | VL VP GP-VV GN    | Veen  | Johannes       | J. van den Aedel-van der Veen           |
-      | V | M | Ridder | E | VL VV GN          | Veen  | Marlies        | M. van der Veen                         |
-      | V | M | Ridder | N | VL VV GN-VP GP    | Veen  | Marlies        | M. van der Veen-van den Aedel           |
-      | V | M | Ridder | P | VL VP GP          | Veen  | Marlies        | M. van den Aedel                        |
-      | V | M | Ridder | V | VL VP GP-VV GN    | Veen  | Marlies        | M. van den Aedel-van der Veen           |
-      | V | V | Gravin | E | VL VV GN          | Veen  | Sarah          | S. van der Veen                         |
-      | V | V | Gravin | N | VL VV GN-VP GP    | Veen  | Sarah          | S. van der Veen-van den Aedel           |
-      | V | V | Gravin | P | VL VP GP          | Veen  | Sarah          | S. van den Aedel                        |
-      | V | V | Gravin | V | VL VP GP-VV GN    | Veen  | Sarah          | S. van den Aedel-van der Veen           |
-      | M | M | Baron  | E | VL VV GN          | Veen  | Willem         | W. van der Veen                         |
-      | M | M | Baron  | N | VL VV GN-VP GP    | Veen  | Willem         | W. van der Veen-van den Aedel           |
-      | M | M | Baron  | P | VL VP GP          | Veen  | Willem         | W. van den Aedel                        |
-      | M | M | Baron  | V | VL VP GP-VV GN    | Veen  | Willem         | W. van den Aedel-van der Veen           |
+      | vrouw | man   | Baron  | E | VL VV GN          | Veen  | Anna Cornelia  | A.C. van der Veen                       |
+      | vrouw | man   | Baron  | N | VL VV GN-AP VP GP | Veen  | Anna Cornelia  | A.C. van der Veen-barones van den Aedel |
+      | vrouw | man   | Baron  | P | VL AP VP GP       | Veen  | Anna Cornelia  | A.C. barones van den Aedel              |
+      | vrouw | man   | Baron  | P | VL AP VP GP       | Veen  | Anna Cornelia  | A.C. barones van den Aedel              |
+      | vrouw | man   | Baron  | V | VL AP VP GP-VV GN | Veen  | Anna Cornelia  | A.C. barones van den Aedel-van der Veen |
+      | vrouw | man   | Prins  | E | VL VV GN          | Veen  | Anna Cornelia  | A.C. van der Veen                       |
+      | vrouw | man   | Prins  | N | VL VV GN-AP VP GP | Veen  | Anna Cornelia  | A.C. van der Veen-prinses van den Aedel |
+      | vrouw | man   | Prins  | P | VL AP VP GP       | Veen  | Anna Cornelia  | A.C. prinses van den Aedel              |
+      | vrouw | man   | Prins  | V | VL AP VP GP-VV GN | Veen  | Anna Cornelia  | A.C. prinses van den Aedel-van der Veen |
+      | man   | vrouw | Gravin | E | VL VV GN          | Veen  | Johannes       | J. van der Veen                         |
+      | man   | vrouw | Gravin | N | VL VV GN-VP GP    | Veen  | Johannes       | J. van der Veen-van den Aedel           |
+      | man   | vrouw | Gravin | P | VL VP GP          | Veen  | Johannes       | J. van den Aedel                        |
+      | man   | vrouw | Gravin | V | VL VP GP-VV GN    | Veen  | Johannes       | J. van den Aedel-van der Veen           |
+      | vrouw | man   | Ridder | E | VL VV GN          | Veen  | Marlies        | M. van der Veen                         |
+      | vrouw | man   | Ridder | N | VL VV GN-VP GP    | Veen  | Marlies        | M. van der Veen-van den Aedel           |
+      | vrouw | man   | Ridder | P | VL VP GP          | Veen  | Marlies        | M. van den Aedel                        |
+      | vrouw | man   | Ridder | V | VL VP GP-VV GN    | Veen  | Marlies        | M. van den Aedel-van der Veen           |
+      | vrouw | vrouw | Gravin | E | VL VV GN          | Veen  | Sarah          | S. van der Veen                         |
+      | vrouw | vrouw | Gravin | N | VL VV GN-VP GP    | Veen  | Sarah          | S. van der Veen-van den Aedel           |
+      | vrouw | vrouw | Gravin | P | VL VP GP          | Veen  | Sarah          | S. van den Aedel                        |
+      | vrouw | vrouw | Gravin | V | VL VP GP-VV GN    | Veen  | Sarah          | S. van den Aedel-van der Veen           |
+      | man   | man   | Baron  | E | VL VV GN          | Veen  | Willem         | W. van der Veen                         |
+      | man   | man   | Baron  | N | VL VV GN-VP GP    | Veen  | Willem         | W. van der Veen-van den Aedel           |
+      | man   | man   | Baron  | P | VL VP GP          | Veen  | Willem         | W. van den Aedel                        |
+      | man   | man   | Baron  | V | VL VP GP-VV GN    | Veen  | Willem         | W. van den Aedel-van der Veen           |
+      | onbekend | man   | Baron  | P | VL AP VP GP       | Veen  | Anna Cornelia  | A.C. van den Aedel              |
+      | vrouw | onbekend | Baron  | P | VL AP VP GP       | Veen  | Anna Cornelia  | A.C. van den Aedel              |
 
     Voorbeelden: partner heeft een predikaat
       | aanduidingAanschrijving | samenstelling aanschrijfwijze | geslachtsnaam | voornamen | aanschrijfwijze |

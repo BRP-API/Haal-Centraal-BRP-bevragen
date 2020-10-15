@@ -21,23 +21,27 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
 
   Wanneer geslachtsaanduiding is niet leeg of "onbekend", dan wordt het voorvoegsel van de eerste geslachtsnaam in de briefaanhef met een hoofdletter geschreven.
 
-  Wanneer de persoon een adellijke titel of predikaat heeft, wordt de aanhef volgens de volgende tabel:
-  | adellijkeTitel_predikaat | Aanhef                |
-  | Baron                    | Hoogwelgeboren heer   |
-  | Barones                  | Hoogwelgeboren vrouwe |
-  | Graaf                    | Hooggeboren heer      |
-  | Gravin                   | Hooggeboren vrouwe    |
-  | Hertog                   | Hoogwelgeboren heer   |
-  | Hertogin                 | Hoogwelgeboren vrouwe |
-  | Jonkheer                 | Hoogwelgeboren heer   |
-  | Jonkvrouw                | Hoogwelgeboren vrouwe |
-  | Markies                  | Hoogwelgeboren heer   |
-  | Markiezin                | Hoogwelgeboren vrouwe |
-  | Prins                    | Hoogheid              |
-  | Prinses                  | Hoogheid              |
-  | Ridder                   | Hoogwelgeboren heer   |
+  Als de persoon een adellijke titel of predikaat heeft, wordt de aanhef bepaald op basis van adellijkeTitel_predikaat en de geslachtsaanduiding volgens de volgende tabel:
+  | adellijkeTitel_predikaat | geslachtsaanduiding | Aanhef                |
+  | Baron, Barones           | man                 | Hoogwelgeboren heer   |
+  | Baron, Barones           | vrouw               | Hoogwelgeboren vrouwe |
+  | Graaf, Gravin            | man                 | Hooggeboren heer      |
+  | Graaf, Gravin            | vrouw               | Hooggeboren vrouwe    |
+  | Hertog, Hertogin         | man                 | Hoogwelgeboren heer   |
+  | Hertog, Hertogin         | vrouw               | Hoogwelgeboren vrouwe |
+  | Jonkheer, Jonkvrouw      | man                 | Hoogwelgeboren heer   |
+  | Jonkheer, Jonkvrouw      | vrouw               | Hoogwelgeboren vrouwe |
+  | Markies, Markiezin       | man                 | Hoogwelgeboren heer   |
+  | Markies, Markiezin       | vrouw               | Hoogwelgeboren vrouwe |
+  | Prins, Prinses           | man                 | Hoogheid              |
+  | Prins, Prinses           | vrouw               | Hoogheid              |
+  | Ridder                   | man                 | Hoogwelgeboren heer   |
+  | Ridder                   | vrouw               | Hoogwelgeboren vrouwe |
 
-  De aanhef van een persoon met adellijke titel of predikaat en aanduidingAanschrijving ongelijk aan "partner" is niet afhankelijk van de geslachtsaanduiding (bijvoorbeeld bij geslachtswijziging zonder wijziging van de adellijke titel).
+  Als de persoon een adellijke titel of predikaat heeft
+  En de geslachtsaanduiding is gelijk aan "onbekend" of heeft geen waarde
+  Dan wordt de adellijke titel of predikaat niet gebruikt.
+  De aanhef wordt dan op dezelfde manier samengesteld als voor een persoon zonder adellijke titel of predikaat.
 
   Als betrokkene de geslachtsnaam van de echtgenoot/partner gebruikt zonder de eigen geslachtsnaam,
   Dan wordt de adellijke titel dan wel het predicaat niet gebruikt,
@@ -51,7 +55,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
   Als betrokkene het predikaat jonkvrouw heeft
   En betrokkene is getrouwd geweest of heeft een geregistreerd partnerschap gehad
   En het huwelijk dan wel geregistreerd partnerschap is ontbonden
-  En de partnernaam wordt niet (meer) gebruikt (aanduiding naamgebruik is "E")
+  En de partnernaam wordt niet (meer) gebruikt (aanduiding naamgebruik is "eigen")
   Dan wordt het predikaat gebruikt als was zij nooit getrouwd geweest
 
   Als betrokkene het predikaat jonkvrouw heeft
@@ -89,7 +93,8 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
     Dan heeft de gevonden ingeschrevenpersoon naam.aanhef=<aanhef>
 
     # In onderstaande tabellen betekenen de afkortingen:
-    # GA = "Geachte mevrouw", "Geachte heer", "Hooggeboren heer", "Hooggeboren vrouwe", "Hoogwelgeboren heer", "Hoogwelgeboren vrouwe", "Hoogheid"
+    # GA = "Geachte mevrouw", "Geachte heer", "Geachte"
+    # VL = voorletters
     # VV = voorvoegselGeslachtsnaam
     # GN = geslachtsnaam
     # VP = voorvoegselGeslachtsnaam partner
@@ -99,15 +104,16 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
 
     Voorbeelden: geen adellijke titel of predikaat
       | aanduidingNaamgebruik | geslachtsaanduiding |samenstelling aanhef | aanschrijfwijze           | aanhef                                 |
-      | Eigen                 | Man                 | GA VV GN            | H. in het Veld            | Geachte heer In het Veld               |
-      | Eigen                 | Man                 | GA VV GN            | F. Groenen                | Geachte heer Groenen                   |
-      | Eigen                 | Onbekend            | GA VV GN            | J.A. van Velzen           | Geachte J.A. van Velzen                |
-      | Partner na eigen      | Vrouw               | GA VV GN-VP GP      | I. van Velzen-in het Veld | Geachte mevrouw Van Velzen-in het Veld |
-      | Partner na eigen      | Vrouw               | GA VV GN-VP GP      | F. Groenen-Groenink       | Geachte mevrouw Groenen-Groenink       |
-      | Partner               | Vrouw               | GA VP GP            | S. van Velzen             | Geachte mevrouw Van Velzen             |
-      | Partner               | Vrouw               | GA VP GP            | J.F.R. Groenen            | Geachte mevrouw Groenen                |
-      | Partner voor eigen    | Man                 | GA VP GP-VV GN      | F. in het Veld-van Velzen | Geachte heer In het Veld-van Velzen    |
-      | Partner voor eigen    | Man                 | GA VP GP-VV GN      | F. Groenen-Groenink       | Geachte heer Groenen-Groenink          |
+      | Eigen                 | man                 | GA VV GN            | H. in het Veld            | Geachte heer In het Veld               |
+      | Eigen                 | man                 | GA VV GN            | F. Groenen                | Geachte heer Groenen                   |
+      | Eigen                 | onbekend            | GA VL VV GN         | C.F.H. van Velzen         | Geachte C.F.H. van Velzen              |
+      | Partner na eigen      | vrouw               | GA VV GN-VP GP      | I. van Velzen-in het Veld | Geachte mevrouw Van Velzen-in het Veld |
+      | Partner na eigen      | vrouw               | GA VV GN-VP GP      | F. Groenen-Groenink       | Geachte mevrouw Groenen-Groenink       |
+      | Partner               | vrouw               | GA VP GP            | S. van Velzen             | Geachte mevrouw Van Velzen             |
+      | Partner               | vrouw               | GA VP GP            | J.F.R. Groenen            | Geachte mevrouw Groenen                |
+      | Partner voor eigen    | man                 | GA VP GP-VV GN      | F. in het Veld-van Velzen | Geachte heer In het Veld-van Velzen    |
+      | Partner voor eigen    | vrouw               | GA VP GP-VV GN      | M. Groenen-Groenink       | Geachte mevrouw Groenen-Groenink       |
+      | Partner voor eigen    | onbekend            | GA VL. VP GP-VV GN  | J.P. van Velzen-Groenen   | Geachte J.P. van Velzen-Groenen        |
 
     Voorbeelden: voorvoegsels met hoofdletter of kleine letter
       | aanduidingAanschrijving | geslachtsaanduiding | VV     | GN     | VP     | GP     | aanhef                                 |
@@ -115,60 +121,63 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
       | Partner na eigen        | vrouw               | van    | Velzen | In het | Veld   | Geachte mevrouw Van Velzen-In het Veld |
       | Partner                 | vrouw               | In het | Veld   | van    | Velzen | Geachte mevrouw Van Velzen             |
       | Partner voor eigen      | man                 | van    | Velzen | In het | Veld   | Geachte heer In het Veld-van Velzen    |
+      | Partner voor eigen      | onbekend            | van    | Velzen | In het | Veld   | Geachte M.L. van Velzen-In het Veld    |
 
     Voorbeelden: adelijke titels
-      | adellijkeTitel_predikaat | aanduidingNaamgebruik | aanschrijfwijze                             | aanhef                    |
-      | Baron                    | Eigen                 | H.W. baron van den Aedel                    | Hoogwelgeboren heer       |
-      | Barones                  | Partner na eigen      | W. barones van den Aedel-van der Veen       | Hoogwelgeboren vrouwe     |
-      | Graaf                    | Partner               | F. van der Veen                             | Geachte heer Van der Veen |
-      | Gravin                   | Partner voor eigen    | E.L. van der Veen-gravin van den Aedel      | Hooggeboren vrouwe        |
-      | Prins                    | Eigen                 | O.B.B. prins van Roodt de Wit Blaauw        | Hoogheid                  |
-      | Prinses                  | Eigen                 | E.M.V. prinses van Roodt de Wit Blaauw      | Hoogheid                  |
-      | Ridder                   | Eigen                 | M. ridder van Hoogh                         | Hoogwelgeboren heer       |
+      | adellijkeTitel_predikaat | geslachtsaanduiding | aanduidingNaamgebruik | aanschrijfwijze                             | aanhef                    |
+      | Baron                    | man                 | Eigen                 | H.W. baron van den Aedel                    | Hoogwelgeboren heer       |
+      | Barones                  | vrouw               | Partner na eigen      | W. barones van den Aedel-van der Veen       | Hoogwelgeboren vrouwe     |
+      | Graaf                    | man                 | Partner               | F. van der Veen                             | Geachte heer Van der Veen |
+      | Gravin                   | vrouw               | Partner voor eigen    | E.L. van der Veen-gravin van den Aedel      | Hooggeboren vrouwe        |
+      | Prins                    | man                 | Eigen                 | O.B.B. prins van Roodt de Wit Blaauw        | Hoogheid                  |
+      | Prinses                  | vrouw               | Eigen                 | E.M.V. prinses van Roodt de Wit Blaauw      | Hoogheid                  |
+      | Ridder                   | man                 | Eigen                 | M. ridder van Hoogh                         | Hoogwelgeboren heer       |
+      | Graaf                    | vrouw               | Partner voor eigen    | J.G. van der Veen-gravin van den Aedel      | Hooggeboren vrouwe        |
+      | Ridder                   | onbekend            | Eigen                 | P. van Hoogh                                | Geachte P. van Hoogh      |
 
     Voorbeelden: predikaat
-      | adellijkeTitel_predikaat | aanduidingNaamgebruik | partner | Ontbinding huwelijk/geregistreerd partnerschap | aanhef                                 |
-      | Jonkheer                 | Eigen                 | Geen    | Geen                                           | Hoogwelgeboren heer                    |
-      | Jonkheer                 | Eigen                 | Ja      | Geen                                           | Hoogwelgeboren heer                    |
-      | Jonkheer                 | Partner na eigen      | Ja      | Geen                                           | Hoogwelgeboren heer                    |
-      | Jonkheer                 | Partner               | Ja      | Geen                                           | Hoogwelgeboren heer                    |
-      | Jonkheer                 | Partner voor eigen    | Ja      | Geen                                           | Hoogwelgeboren heer                    |
-      | Jonkvrouw                | Eigen                 | Geen    | Geen                                           | Hoogwelgeboren vrouwe                  |
-      | Jonkvrouw                | Eigen                 | Ja      | Geen                                           | Geachte mevrouw Van Hoogh              |
-      | Jonkvrouw                | Partner na eigen      | Ja      | Geen                                           | Geachte mevrouw Van Hoogh-van der Veen |
-      | Jonkvrouw                | Partner               | Ja      | Geen                                           | Geachte mevrouw Van der Veen-van Hoogh |
-      | Jonkvrouw                | Partner voor eigen    | Ja      | Geen                                           | Geachte mevrouw Van der Veen           |
-      | Jonkvrouw                | Eigen                 | Ja      | Ja                                             | Hoogwelgeboren vrouwe                  |
-      | Jonkvrouw                | Partner na eigen      | Ja      | Ja                                             | Geachte mevrouw Van Hoogh-van der Veen |
-      | Jonkvrouw                | Partner               | Ja      | Ja                                             | Geachte mevrouw Van der Veen-van Hoogh |
-      | Jonkvrouw                | Partner voor eigen    | Ja      | Ja                                             | Geachte mevrouw Van der Veen           |
+      | adellijkeTitel_predikaat | geslachtsaanduiding | aanduidingNaamgebruik | partner | Ontbinding huwelijk/geregistreerd partnerschap | aanhef                                 |
+      | Jonkheer                 | man                 | Eigen                 | Geen    | Geen                                           | Hoogwelgeboren heer                    |
+      | Jonkheer                 | man                 | Eigen                 | Ja      | Geen                                           | Hoogwelgeboren heer                    |
+      | Jonkheer                 | man                 | Partner na eigen      | Ja      | Geen                                           | Hoogwelgeboren heer                    |
+      | Jonkheer                 | man                 | Partner               | Ja      | Geen                                           | Hoogwelgeboren heer                    |
+      | Jonkheer                 | man                 | Partner voor eigen    | Ja      | Geen                                           | Hoogwelgeboren heer                    |
+      | Jonkvrouw                | vrouw               | Eigen                 | Geen    | Geen                                           | Hoogwelgeboren vrouwe                  |
+      | Jonkvrouw                | vrouw               | Eigen                 | Ja      | Geen                                           | Geachte mevrouw Van Hoogh              |
+      | Jonkvrouw                | vrouw               | Partner na eigen      | Ja      | Geen                                           | Geachte mevrouw Van Hoogh-van der Veen |
+      | Jonkvrouw                | vrouw               | Partner               | Ja      | Geen                                           | Geachte mevrouw Van der Veen-van Hoogh |
+      | Jonkvrouw                | vrouw               | Partner voor eigen    | Ja      | Geen                                           | Geachte mevrouw Van der Veen           |
+      | Jonkvrouw                | vrouw               | Eigen                 | Ja      | Ja                                             | Hoogwelgeboren vrouwe                  |
+      | Jonkvrouw                | vrouw               | Partner na eigen      | Ja      | Ja                                             | Geachte mevrouw Van Hoogh-van der Veen |
+      | Jonkvrouw                | vrouw               | Partner               | Ja      | Ja                                             | Geachte mevrouw Van der Veen-van Hoogh |
+      | Jonkvrouw                | vrouw               | Partner voor eigen    | Ja      | Ja                                             | Geachte mevrouw Van der Veen           |
+      | Jonkheer                 | vrouw               | Eigen                 | Geen    | Geen                                           | Hoogwelgeboren vrouwe                  |
+      | Jonkvrouw                | man                 | Eigen                 | Geen    | Geen                                           | Hoogwelgeboren heer                    |
+      | Jonkvrouw                | man                 | Eigen                 | Ja      | Geen                                           | Geachte heer Van Hoogh                 |
+      | Jonkheer                 | onbekend            | Eigen                 | Geen    | Geen                                           | Geachte F.H. van Hoogh               |
+      | Jonkvrouw                | onbekend            | Eigen                 | Geen    | Geen                                           | Geachte B.T.I. van Hoogh               |
 
     Voorbeelden: partner heeft adellijke titel of predikaat
       | geslachtsaanduiding | geslachtsaanduiding partner | adellijkeTitel_predikaat partner | aanduidingNaamgebruik | aanschrijfwijze | aanhef |
-      | V | M | Baron    | Eigen                 | A.C. van der Veen                       | Geachte mevrouw Van der Veen               |
-      | V | M | Baron    | Partner na eigen      | A.C. van der Veen-barones van den Aedel | Hoogwelgeboren vrouwe                      |
-      | V | M | Baron    | Partner               | A.C. barones van den Aedel              | Hoogwelgeboren vrouwe                      |
-      | V | M | Baron    | Partner voor eigen    | A.C. barones van den Aedel-van der Veen | Hoogwelgeboren vrouwe                      |
-      | O | M | Baron    | Partner voor eigen    | A.C. van den Aedel-van der Veen         | Geachte A.C. van den Aedel-van der Veen    |
-      | M | V | Gravin   | Eigen                 | W. van der Veen                         | Geachte heer Van der Veen                  |
-      | M | V | Gravin   | Partner na eigen      | W. van der Veen-van den Aedel           | Geachte heer Van der Veen-van den Aedel    |
-      | M | V | Gravin   | Partner               | W. van den Aedel                        | Geachte heer Van den Aedel                 |
-      | M | V | Gravin   | Partner voor eigen    | W. van den Aedel-van der Veen           | Geachte heer Van den Aedel-van der Veen    |
-      | M | M | Baron    | Partner na eigen      | W. van der Veen-van den Aedel           | Geachte heer Van der Veen-van den Aedel    |
-      | O | M | Baron    | Partner na eigen      | W. van der Veen-van den Aedel           | Geachte W. van der Veen-van den Aedel    |
-      | V | V | Barones  | Partner na eigen      | W. van der Veen-van den Aedel           | Geachte mevrouw Van der Veen-van den Aedel |
-      | V | M | Ridder   | Partner na eigen      | W. van der Veen-van den Aedel           | Geachte mevrouw Van der Veen-van den Aedel |
-      | V | M | Ridder   | Partner               | W. van den Aedel                        | Geachte mevrouw Van den Aedel              |
-      | V | M | Jonkheer | Eigen                 | A.C. van der Veen                       | Geachte mevrouw Van der Veen               |
-      | V | M | Jonkheer | Partner na eigen      | A.C. van der Veen-van den Aedel         | Geachte mevrouw Van der Veen-van den Aedel |
-      | V | M | Jonkheer | Partner               | A.C. van den Aedel                      | Geachte mevrouw Van den Aedel              |
-      | V | M | Jonkheer | Partner voor eigen    | A.C. van den Aedel-van der Veen         | Geachte mevrouw Van den Aedel-van der Veen |
-
-    Voorbeelden: adellijke titel of predicaat en geslachtsaanduiding
-      | geslachtsaanduiding | adellijkeTitel_predikaat | aanduidingNaamgebruik | aanschrijfwijze                             | aanhef                    |
-      | onbekend            | Baron                    | Eigen                 | H.W. baron van den Aedel                    | Hoogwelgeboren heer       |
-      | vrouw               | Baron                    | Eigen                 | H.W. baron van den Aedel                    | Hoogwelgeboren heer       |
-      | onbekend            | Graaf                    | Partner               | F. van der Veen                             | Geachte F. van der Veen   |
+      | vrouw    | man      | Baron    | Eigen                 | A.C. van der Veen                       | Geachte mevrouw Van der Veen               |
+      | vrouw    | man      | Baron    | Partner na eigen      | A.C. van der Veen-barones van den Aedel | Hoogwelgeboren vrouwe                      |
+      | vrouw    | man      | Baron    | Partner               | A.C. barones van den Aedel              | Hoogwelgeboren vrouwe                      |
+      | vrouw    | man      | Baron    | Partner voor eigen    | A.C. barones van den Aedel-van der Veen | Hoogwelgeboren vrouwe                      |
+      | onbekend | man      | Baron    | Partner voor eigen    | A.C. van den Aedel-van der Veen         | Geachte A.C. van den Aedel-van der Veen    |
+      | vrouw    | onbekend | Baron    | Partner na eigen      | A.C. van der Veen-barones van den Aedel | Geachte mevrouw Van der Veen-van den Aedel |
+      | man      | vrouw    | Gravin   | Eigen                 | W. van der Veen                         | Geachte heer Van der Veen                  |
+      | man      | vrouw    | Gravin   | Partner na eigen      | W. van der Veen-van den Aedel           | Geachte heer Van der Veen-van den Aedel    |
+      | man      | vrouw    | Gravin   | Partner               | W. van den Aedel                        | Geachte heer Van den Aedel                 |
+      | man      | vrouw    | Gravin   | Partner voor eigen    | W. van den Aedel-van der Veen           | Geachte heer Van den Aedel-van der Veen    |
+      | man      | man      | Baron    | Partner na eigen      | W. van der Veen-van den Aedel           | Geachte heer Van der Veen-van den Aedel    |
+      | onbekend | man      | Baron    | Partner na eigen      | W. van der Veen-van den Aedel           | Geachte W. van der Veen-van den Aedel      |
+      | vrouw    | vrouw    | Barones  | Partner na eigen      | W. van der Veen-van den Aedel           | Geachte mevrouw Van der Veen-van den Aedel |
+      | vrouw    | man      | Ridder   | Partner na eigen      | W. van der Veen-van den Aedel           | Geachte mevrouw Van der Veen-van den Aedel |
+      | vrouw    | man      | Ridder   | Partner               | W. van den Aedel                        | Geachte mevrouw Van den Aedel              |
+      | vrouw    | man      | Jonkheer | Eigen                 | A.C. van der Veen                       | Geachte mevrouw Van der Veen               |
+      | vrouw    | man      | Jonkheer | Partner na eigen      | A.C. van der Veen-van den Aedel         | Geachte mevrouw Van der Veen-van den Aedel |
+      | vrouw    | man      | Jonkheer | Partner               | A.C. van den Aedel                      | Geachte mevrouw Van den Aedel              |
+      | vrouw    | man      | Jonkheer | Partner voor eigen    | A.C. van den Aedel-van der Veen         | Geachte mevrouw Van den Aedel-van der Veen |
 
   Scenario: meerdere actuele relaties
     Gegeven de ingeschreven persoon de heer F.C. Groen is getrouwd in 1958 met Geel
