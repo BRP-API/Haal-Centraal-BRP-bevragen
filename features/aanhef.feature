@@ -39,7 +39,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
   | Ridder                   | vrouw               | Hoogwelgeboren vrouwe |
 
   Als de persoon een adellijke titel of predikaat heeft
-  En de geslachtsaanduiding is gelijk aan "onbekend" of heeft geen waarde
+  En de geslachtsaanduiding is gelijk aan "onbekend" of er is geen waarde voor geslachtsaanduiding
   Dan wordt de adellijke titel of predikaat niet gebruikt.
   De aanhef wordt dan op dezelfde manier samengesteld als voor een persoon zonder adellijke titel of predikaat.
 
@@ -65,9 +65,11 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
   Dan wordt het predikaat niet gebruikt
   En de persoon wordt dan aangesproken met “Geachte mevrouw” gevolgd door de samengestelde naam
 
-  Als een vrouw als partner of echtgenoot een man met adellijke titel heeft
-  En deze adellijke titel heeft een vrouwelijke vorm (zie tabel hieronder)
-  En betrokkene gebruikt de naam van de partner
+  Als de partner een adellijke titel heeft
+  En de geslachtsaanduiding van de persoon is "vrouw"
+  En de geslachtsaanduiding van de partner is "man"
+  En de adellijke titel van de partner heeft een vrouwelijke aanhef vorm (zie tabel hieronder)
+  En de persoon gebruikt de naam van haar partner (aanduidingNaamgebruik ongelijk aan E - eigen)
   Dan wordt de aanhef afhankelijk van de adellijke titel van de partner:
   | adellijkeTitel_predikaat partner | Aanhef                |
   | Baron                            | Hoogwelgeboren vrouwe |

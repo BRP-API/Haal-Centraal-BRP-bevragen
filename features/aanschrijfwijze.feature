@@ -53,7 +53,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
   Als de adellijke titel geen vorm heeft die hoort bij de geslachtsaanduiding (in bovenstaande tabel opgenomen als - teken)
   Dan wordt de adellijke titel niet opgenomen in de aanschrijfwijze.
 
-  Als de geslachtsaanduiding is "onbekend" (O) of geen waarde heeft
+  Als de geslachtsaanduiding is "onbekend" (O) of er is geen waarde voor geslachtsaanduiding
   Dan wordt de (eventuele) adellijke titel of het predicaat niet opgenomen in de aanschrijfwijze.
 
   Als de betrokkene beschikt over een predikaat
@@ -67,26 +67,23 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
   Dan wordt het predikaat niet gebruikt.
   Als de betrokkene over een adelijke titel beschikt
   Dan wordt de adelijke titel geplaatst tussen voorletters en achternaam (voorvoegsel en geslachtsnaam).
-  Als de betrokkene beschikt over een predikaat of adelijke titel
-  Dan wordt deze opgenomen zoals genoemd in kolom "Omschrijving" in GBA tabel 38 "Adellijke titel/predikaat", geschreven in kleine letters.
   Als betrokkene zelf beschikt over een adellijke titel
   En betrokkene gebruikt de geslachtsnaam van de echtgenoot/partner in combinatie met de eigen achternaam
   Dan wordt de titel van betrokkene voor de eigen achternaam geplaatst.
   Als betrokkene zelf beschikt over een adellijke titel
   En betrokkene de geslachtsnaam van de echtgenoot/partner gebruikt zonder de eigen geslachtsnaam
   Dan wordt de adellijke titel niet gebruikt.
-  Als een vrouw als partner of echtgenoot een man met adellijke titel heeft
-  En deze adellijke titel heeft een vrouwelijke vorm (zie tabel hieronder)
-  Dan wordt die adellijke titel in vrouwelijke vorm opgenomen wanneer ze de naam van haar partner gebruikt.
+  
+  Als de partner een adellijke titel heeft
+  En de geslachtsaanduiding van de persoon is "vrouw"
+  En de geslachtsaanduiding van de partner is "man"
+  En de adellijke titel van de partner heeft een vrouwelijke vorm (zie tabel hieronder)
+  En de persoon gebruikt de naam van haar partner (aanduidingNaamgebruik ongelijk aan E - eigen)
+  Dan wordt de adellijke titel van de partner in vrouwelijke vorm opgenomen voor het voorvoegsel van de naam van de partner
   | Titel | Vrouwelijke vorm |
   | Graaf	| gravin           |
   | Baron	| barones          |
   | Prins	| prinses          |
-
-  Als betrokkene en partner hetzelfde geslacht hebben Of de titel van de partner komt niet voor in bovenstaande tabellen (er is geen vrouwelijke vorm van de titel)
-  Dan wordt de adellijke titel van de partner niet opgenomen.
-  Als betrokkene een man is of betrokkene heeft onbekend geslacht
-  Dan wordt de adellijke titel van de partner niet opgenomen.
 
   Abstract Scenario: De aanschrijfwijze wordt samengesteld op basis van aanduidingAanschrijving en naamgegevens van de persoon en de partner
     Als ingeschreven persoon wordt geraadpleegd
