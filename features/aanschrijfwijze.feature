@@ -4,7 +4,7 @@
 Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze van mijn burgers
   Attribuut aanschrijfwijze bij een ingeschreven persoon wordt gevuld door de provider om op deze wijze op eenduidige wijze een persoon te kunnen aanschrijven. Bij het samenstellen van de aanschrijfwijze worden academische titels vooralsnog niet opgenomen. Academische titels zijn geen authentiek gegeven en daarom buiten scope geplaatst.
   De aanschrijfwijze wordt gebruikt als eerste regel in de adressering op een envelop, of links bovenaan een brief, direct boven het adres.
-  Bij personen met een adellijke titel of predicaat wordt ook regelVoorafgaandAanAanschrijfwijze gevuld. Deze wordt in de adressering in de regel boven aanschrijfwijze geplaatst om een correcte aanschrijving van een adellijke persoon samen te stellen.
+  Bij personen met een adellijke titel of predikaat wordt ook regelVoorafgaandAanAanschrijfwijze gevuld. Deze wordt in de adressering in de regel boven aanschrijfwijze geplaatst om een correcte aanschrijving van een adellijke persoon samen te stellen.
   De aanschrijfwijze kan ook worden gebruikt in lijsten met zoekresultaten, of op een website om te tonen op wie het betrekking heeft.
 
   Attribuut aanschrijfwijze wordt samengesteld op basis van:
@@ -55,14 +55,16 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
   Dan wordt de adellijke titel niet opgenomen in de aanschrijfwijze.
 
   Als de geslachtsaanduiding is "onbekend" (O) of er is geen waarde voor geslachtsaanduiding
-  Dan wordt de (eventuele) adellijke titel of het predicaat niet opgenomen in de aanschrijfwijze.
+  Dan wordt de (eventuele) adellijke titel of het predikaat niet opgenomen in de aanschrijfwijze.
 
   Als de betrokkene beschikt over een predikaat
   En de aanduiding aanschrijving is gelijk aan "E" (eigen) of "N" (partner na eigen geslachtsnaam)
-  Dan wordt deze geplaatst vóór de voorletters.
+  Dan wordt deze geplaatst vóór de voorletters
+  En begin het predikaat in de aanschrijfwijze met een hoofdletter (J).
   Als de betrokkene beschikt over een predikaat
   En de aanduiding aanschrijving is gelijk aan "V" (partner voor eigen geslachtsnaam)
-  Dan wordt deze geplaatst vóór het eigen voorvoegsel en geslachtsnaam.
+  Dan wordt deze geplaatst vóór het eigen voorvoegsel en geslachtsnaam
+  En begin het predikaat in de aanschrijfwijze met een kleine letter (j).
   Als de betrokkene beschikt over een predikaat
   En de aanduiding aanschrijving is gelijk aan "P" (partner)
   Dan wordt het predikaat niet gebruikt.
@@ -158,16 +160,16 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
 
     Voorbeelden: betrokkene heeft een predikaat en partner heeft geen adellijke titel
       | geslachtsaanduiding | adellijkeTitel_predikaat | aanduidingNaamgebruik | aanschrijfwijze                    | regelVoorafgaandAanAanschrijfwijze |
-      | man      | Jonkheer                 | Eigen                 | jonkheer T. van Hoogh              | De hoogwelgeboren heer   |
-      | vrouw    | Jonkvrouw                | Eigen                 | jonkvrouw T. van Hoogh             | De hoogwelgeboren vrouwe |
-      | vrouw    | Jonkheer                 | Eigen                 | jonkvrouw T. van Hoogh             | De hoogwelgeboren vrouwe |
+      | man      | Jonkheer                 | Eigen                 | Jonkheer T. van Hoogh              | De hoogwelgeboren heer   |
+      | vrouw    | Jonkvrouw                | Eigen                 | Jonkvrouw T. van Hoogh             | De hoogwelgeboren vrouwe |
+      | vrouw    | Jonkheer                 | Eigen                 | Jonkvrouw T. van Hoogh             | De hoogwelgeboren vrouwe |
       | onbekend | Jonkvrouw                | Eigen                 | T. van Hoogh                       | -                        |
-      | vrouw    | Jonkvrouw                | Partner na eigen      | jonkvrouw T. van Hoogh-in het Veld | De hoogwelgeboren vrouwe |
+      | vrouw    | Jonkvrouw                | Partner na eigen      | Jonkvrouw T. van Hoogh-in het Veld | De hoogwelgeboren vrouwe |
       | vrouw    | Jonkvrouw                | Partner               | T. in het Veld                     | -                        |
       | man      | Jonkheer                 | Partner               | T. in het Veld                     | -                        |
       | vrouw    | Jonkvrouw                | Partner voor eigen    | T. in het Veld-jonkvrouw van Hoogh | De hoogwelgeboren vrouwe |
       | onbekend | Jonkvrouw                | Partner voor eigen    | T. in het Veld-van Hoogh           | -                        |
-      | man      | Jonkheer                 | Partner na eigen      | jonkheer T. van Hoogh-in het Veld  | De hoogwelgeboren heer   |
+      | man      | Jonkheer                 | Partner na eigen      | Jonkheer T. van Hoogh-in het Veld  | De hoogwelgeboren heer   |
 
     Voorbeelden: partner heeft een adellijke titel
       | geslachtsaanduiding | geslachtsaanduiding partner | adellijkeTitel_predikaat partner | aanduidingAanschrijving | samenstelling aanschrijfwijze | geslachtsnaam | voornamen | aanschrijfwijze | regelVoorafgaandAanAanschrijfwijze |
