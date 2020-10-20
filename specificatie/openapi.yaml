@@ -881,6 +881,11 @@ components:
               description: |
                             Samengestelde naam die je kunt gebruiken in de communicatie met de persoon.
               example: "H. in het Veld"
+            regelVoorafgaandAanAanschrijfwijze:
+              type: "string"
+              description: |
+                            Deze regel moet als aparte regel boven de aanschrijfwijze worden geplaatst. Komt alleen voor bij personen met een adellijke titel of predicaat.
+              example: "De hoogwelgeboren vrouwe"
             gebruikInLopendeTekst:
               type: "string"
               description: |
