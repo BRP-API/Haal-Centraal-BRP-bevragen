@@ -16,7 +16,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
   - adellijkeTitel_predikaat partner
   - geslachtsaanduiding partner
 
-  Voor een persoon zonder adellijke titel of predicaat begint de briefaanhef met “Geachte mevrouw” (vrouw) of “Geachte heer” (man) of "Geachte " plus de voorletters (onbekend), afhankelijk van het geslacht van de persoon. Hierop volgt de samengestelde naam.
+  Voor een persoon zonder adellijke titel of predikaat begint de briefaanhef met “Geachte mevrouw” (vrouw) of “Geachte heer” (man) of "Geachte " plus de voorletters (onbekend), afhankelijk van het geslacht van de persoon. Hierop volgt de samengestelde naam.
   De waarde van aanduidingNaamgebruik bepaalt hoe de aanhef wordt samengesteld uit de naam van de persoon en de naam van de partner.
 
   Wanneer geslachtsaanduiding is niet leeg of "onbekend", dan wordt het voorvoegsel van de eerste geslachtsnaam in de briefaanhef met een hoofdletter geschreven.
@@ -35,31 +35,36 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
   | Markies, Markiezin       | vrouw               | Hoogwelgeboren vrouwe |
   | Prins, Prinses           | man                 | Hoogheid              |
   | Prins, Prinses           | vrouw               | Hoogheid              |
+  | Prins, Prinses           | onbekend            | Hoogheid              |
   | Ridder                   | man                 | Hoogwelgeboren heer   |
   | Ridder                   | vrouw               | Hoogwelgeboren vrouwe |
 
   Als de persoon een adellijke titel of predikaat heeft
   En de geslachtsaanduiding is gelijk aan "onbekend" of er is geen waarde voor geslachtsaanduiding
+  En de adellijke titel is ongelijk aan "prins" of "prinses" ("Hoogheid" is gender neutraal dus kan ook bij onbekend geslacht gebruikt worden)
   Dan wordt de adellijke titel of predikaat niet gebruikt.
   De aanhef wordt dan op dezelfde manier samengesteld als voor een persoon zonder adellijke titel of predikaat.
 
-  Als betrokkene de geslachtsnaam van de echtgenoot/partner gebruikt zonder de eigen geslachtsnaam,
-  Dan wordt de adellijke titel dan wel het predicaat niet gebruikt,
+  Als de persoon de geslachtsnaam van de echtgenoot/partner gebruikt zonder de eigen geslachtsnaam (aanduiding aanschrijving is "P" - "partner"),
+  Dan wordt de adellijke titel dan wel het predikaat niet gebruikt,
   En de persoon wordt dan aangesproken met “Geachte mevrouw” of “Geachte heer” gevolgd door voorvoegsel en geslachtsnaam van de partner.
 
-  Als betrokkene het predikaat jonkvrouw heeft
+  Als de persoon een predikaat heeft
+  En de geslachtsaanduiding is gelijk aan "vrouw"
   En betrokkene is getrouwd of heeft een geregistreerd partnerschap
   Dan wordt het predikaat niet gebruikt
   En de persoon wordt dan aangesproken met “Geachte mevrouw” gevolgd door de samengestelde naam
 
-  Als betrokkene het predikaat jonkvrouw heeft
-  En betrokkene is getrouwd geweest of heeft een geregistreerd partnerschap gehad
+  Als de persoon een predikaat heeft
+  En de geslachtsaanduiding is gelijk aan "vrouw"
+  En de persoon is getrouwd geweest of heeft een geregistreerd partnerschap gehad
   En het huwelijk dan wel geregistreerd partnerschap is ontbonden
-  En de partnernaam wordt niet (meer) gebruikt (aanduiding naamgebruik is "eigen")
+  En de partnernaam wordt niet (meer) gebruikt (aanduiding naamgebruik is "E" - "eigen")
   Dan wordt het predikaat gebruikt als was zij nooit getrouwd geweest
 
-  Als betrokkene het predikaat jonkvrouw heeft
-  En betrokkene is getrouwd geweest of heeft een geregistreerd partnerschap gehad
+  Als de persoon een predikaat heeft
+  En de geslachtsaanduiding is gelijk aan "vrouw"
+  En de persoon is getrouwd geweest of heeft een geregistreerd partnerschap gehad
   En het huwelijk dan wel geregistreerd partnerschap is ontbonden
   En de (ex)partnernaam wordt nog gebruikt (aanduiding naamgebruik is "V", "N" of "P")
   Dan wordt het predikaat niet gebruikt
@@ -69,7 +74,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
   En de geslachtsaanduiding van de persoon is "vrouw"
   En de geslachtsaanduiding van de partner is "man"
   En de adellijke titel van de partner heeft een vrouwelijke aanhef vorm (zie tabel hieronder)
-  En de persoon gebruikt de naam van haar partner (aanduidingNaamgebruik ongelijk aan E - eigen)
+  En de persoon gebruikt de naam van haar partner (aanduiding naamgebruik ongelijk aan "E" - "eigen")
   Dan wordt de aanhef afhankelijk van de adellijke titel van de partner:
   | adellijkeTitel_predikaat partner | Aanhef                |
   | Baron                            | Hoogwelgeboren vrouwe |
@@ -78,15 +83,15 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
   | Markies                          | Hoogwelgeboren vrouwe |
   | Prins                            | Hoogheid              |
 
-  In alle andere gevallen heeft de adellijke titel of het predicaat van de partner geen invloed op de aanhef.
+  In alle andere gevallen heeft de adellijke titel of het predikaat van de partner geen invloed op de aanhef.
 
   Als er meerdere actuele (niet ontbonden) huwelijken/partnerschappen zijn
-  En de aanschijfwijze is ongelijk aan 'Eigen'
-  Dan wordt als partnernaam de naam van de eerste partner (oudste relatie) gebruikt.
+  En de aanschijfwijze is ongelijk aan "E" - "Eigen"
+  Dan wordt als partnernaam de naam van de eerste partner (oudste niet ontbonden relatie) gebruikt.
 
   Als er meerdere ontbonden huwelijken/partnerschappen zijn
   En er geen actueel (niet ontbonden) huwelijk/partnerschap is
-  En de aanschijfwijze is ongelijk aan 'Eigen'
+  En de aanschijfwijze is ongelijk aan "E" - "Eigen"
   Dan wordt als partnernaam de naam van de laatst ontbonden relatie gebruikt.
 
 
@@ -136,6 +141,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
       | Ridder                   | man                 | Eigen                 | M. ridder van Hoogh                         | Hoogwelgeboren heer       |
       | Graaf                    | vrouw               | Partner voor eigen    | J.G. van der Veen-gravin van den Aedel      | Hooggeboren vrouwe        |
       | Ridder                   | onbekend            | Eigen                 | P. van Hoogh                                | Geachte P. van Hoogh      |
+      | Prinses                  | onbekend            | Eigen                 | J. Blancanieves                             | Hoogheid                  |
 
     Voorbeelden: predikaat
       | adellijkeTitel_predikaat | geslachtsaanduiding | aanduidingNaamgebruik | partner | Ontbinding huwelijk/geregistreerd partnerschap | aanhef                                 |
@@ -154,9 +160,11 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
       | Jonkvrouw                | vrouw               | Partner               | Ja      | Ja                                             | Geachte mevrouw Van der Veen-van Hoogh |
       | Jonkvrouw                | vrouw               | Partner voor eigen    | Ja      | Ja                                             | Geachte mevrouw Van der Veen           |
       | Jonkheer                 | vrouw               | Eigen                 | Geen    | Geen                                           | Hoogwelgeboren vrouwe                  |
-      | Jonkvrouw                | man                 | Eigen                 | Geen    | Geen                                           | Hoogwelgeboren heer                    |
-      | Jonkvrouw                | man                 | Eigen                 | Ja      | Geen                                           | Geachte heer Van Hoogh                 |
-      | Jonkheer                 | onbekend            | Eigen                 | Geen    | Geen                                           | Geachte F.H. van Hoogh               |
+      | Jonkheer                 | vrouw               | Eigen                 | Ja      | Geen                                           | Geachte mevrouw Van Hoogh              |
+      | Jonkheer                 | vrouw               | Eigen                 | Ja      | Ja                                             | Hoogwelgeboren vrouwe                  |
+      | Jonkheer                 | vrouw               | Partner na eigen      | Ja      | Ja                                             | Geachte mevrouw Van der Veen-van Hoogh |
+      | Jonkvrouw                | man                 | Partner na eigen      | Ja      | Geen                                           | Hoogwelgeboren heer                    |
+      | Jonkheer                 | onbekend            | Eigen                 | Geen    | Geen                                           | Geachte F.H. van Hoogh                 |
       | Jonkvrouw                | onbekend            | Eigen                 | Geen    | Geen                                           | Geachte B.T.I. van Hoogh               |
 
     Voorbeelden: partner heeft adellijke titel of predikaat

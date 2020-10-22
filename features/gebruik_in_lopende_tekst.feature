@@ -60,9 +60,11 @@ Functionaliteit: Als gemeente wil ik de juiste en consistent naamgebruik in een 
 
   Als de betrokkene beschikt over een adellijke titel of predikaat
   Dan wordt deze geplaatst vóór het voorvoegsel van de eigen geslachtsnaam.
+
   Als betrokkene beschikt over een adellijke titel of predicaat
   En betrokkene gebruikt de achternaam van de echtgenoot/partner in combinatie met de eigen geslachtsnaam
   Dan wordt de titel dan wel het predicaat van betrokkene voor de eigen geslachtsnaam geplaatst.
+
   Als betrokkene een adellijke titel of predicaat heeft
   En betrokkene gebruikt alleen de naam van de partner (aanduiding naamgebruik is "P")
   Dan wordt de eigen adellijke titel of het predicaat niet gebruikt.

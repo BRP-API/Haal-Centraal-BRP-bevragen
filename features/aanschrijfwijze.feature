@@ -57,31 +57,36 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
   Als de geslachtsaanduiding is "onbekend" (O) of er is geen waarde voor geslachtsaanduiding
   Dan wordt de (eventuele) adellijke titel of het predikaat niet opgenomen in de aanschrijfwijze.
 
-  Als de betrokkene beschikt over een predikaat
+  Als de persoon beschikt over een predikaat
   En de aanduiding aanschrijving is gelijk aan "E" (eigen) of "N" (partner na eigen geslachtsnaam)
   Dan wordt deze geplaatst vóór de voorletters
   En begin het predikaat in de aanschrijfwijze met een hoofdletter (J).
-  Als de betrokkene beschikt over een predikaat
+
+  Als de persoon beschikt over een predikaat
   En de aanduiding aanschrijving is gelijk aan "V" (partner voor eigen geslachtsnaam)
   Dan wordt deze geplaatst vóór het eigen voorvoegsel en geslachtsnaam
   En begin het predikaat in de aanschrijfwijze met een kleine letter (j).
-  Als de betrokkene beschikt over een predikaat
+
+  Als de persoon beschikt over een predikaat
   En de aanduiding aanschrijving is gelijk aan "P" (partner)
   Dan wordt het predikaat niet gebruikt.
-  Als de betrokkene over een adelijke titel beschikt
+
+  Als de persoon over een adelijke titel beschikt
   Dan wordt de adelijke titel geplaatst tussen voorletters en achternaam (voorvoegsel en geslachtsnaam).
-  Als betrokkene zelf beschikt over een adellijke titel
-  En betrokkene gebruikt de geslachtsnaam van de echtgenoot/partner in combinatie met de eigen achternaam
+
+  Als de persoon zelf beschikt over een adellijke titel
+  En de persoon gebruikt de geslachtsnaam van de echtgenoot/partner in combinatie met de eigen achternaam
   Dan wordt de titel van betrokkene voor de eigen achternaam geplaatst.
-  Als betrokkene zelf beschikt over een adellijke titel
-  En betrokkene de geslachtsnaam van de echtgenoot/partner gebruikt zonder de eigen geslachtsnaam
+
+  Als de persoon zelf beschikt over een adellijke titel
+  En de persoon de geslachtsnaam van de echtgenoot/partner gebruikt zonder de eigen geslachtsnaam (aanduiding aanschrijving is "P" - "partner")
   Dan wordt de adellijke titel niet gebruikt.
 
   Als de partner een adellijke titel heeft
   En de geslachtsaanduiding van de persoon is "vrouw"
   En de geslachtsaanduiding van de partner is "man"
   En de adellijke titel van de partner heeft een vrouwelijke vorm (zie tabel hieronder)
-  En de persoon gebruikt de naam van haar partner (aanduidingNaamgebruik ongelijk aan E - eigen)
+  En de persoon gebruikt de naam van haar partner (aanduidingNaamgebruik ongelijk aan "E" - "eigen")
   Dan wordt de adellijke titel van de partner in vrouwelijke vorm opgenomen voor het voorvoegsel van de naam van de partner
   | Titel | Vrouwelijke vorm |
   | Graaf	| gravin           |
@@ -102,19 +107,35 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
   | Markies, Markiezin       | vrouw               | De hoogwelgeboren vrouwe |
   | Prins, Prinses           | man                 | De hoogheid              |
   | Prins, Prinses           | vrouw               | De hoogheid              |
+  | Prins, Prinses           | onbekend            | De hoogheid              |
   | Ridder                   | man                 | De hoogwelgeboren heer   |
   | Ridder                   | vrouw               | De hoogwelgeboren vrouwe |
 
+  Als de persoon een predikaat heeft
+  En de geslachtsaanduiding is gelijk aan "vrouw"
+  En betrokkene is getrouwd of heeft een geregistreerd partnerschap
+  En het huwelijk dan wel geregistreerd partnerschap is niet beëindigd of ontbonden
+  Dan wordt regelVoorafgaandAanAanschrijfwijze niet opgenomen.
+
+  Als de persoon een predikaat heeft
+  En de geslachtsaanduiding is gelijk aan "vrouw"
+  En de persoon is getrouwd geweest of heeft een geregistreerd partnerschap gehad
+  En het huwelijk dan wel geregistreerd partnerschap is beëindigd of ontbonden
+  En de (ex)partnernaam wordt nog gebruikt (aanduiding naamgebruik is "V", "N" of "P")
+  Dan wordt regelVoorafgaandAanAanschrijfwijze niet opgenomen.
+
   Als de persoon een adellijke titel of predikaat heeft
   En de geslachtsaanduiding is gelijk aan "onbekend" of er is geen waarde voor geslachtsaanduiding
+  En de adellijke titel is ongelijk aan "prins" of "prinses" ("De hoogheid" is gender neutraal dus kan ook bij onbekend geslacht gebruikt worden)
   Dan wordt regelVoorafgaandAanAanschrijfwijze niet opgenomen.
 
   Als de persoon geen adellijke titel of predikaat heeft
   Dan wordt regelVoorafgaandAanAanschrijfwijze niet opgenomen.
 
   Als de persoon een adellijke titel of predikaat heeft
-  En betrokkene de geslachtsnaam van de echtgenoot/partner gebruikt zonder de eigen geslachtsnaam
+  En betrokkene de geslachtsnaam van de echtgenoot/partner gebruikt zonder de eigen geslachtsnaam (aanduiding aanschrijving is "P" - "partner")
   Dan wordt regelVoorafgaandAanAanschrijfwijze niet opgenomen.
+
 
   Abstract Scenario: De aanschrijfwijze wordt samengesteld op basis van aanduidingAanschrijving en naamgegevens van de persoon en de partner
     Als ingeschreven persoon wordt geraadpleegd
@@ -159,17 +180,25 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | onbekend | V | VL VP GP-AT VV GN | Ridder  | Aedel | Simon          | S. van der Veen-van den Aedel          | -                        |
 
     Voorbeelden: betrokkene heeft een predikaat en partner heeft geen adellijke titel
-      | geslachtsaanduiding | adellijkeTitel_predikaat | aanduidingNaamgebruik | aanschrijfwijze                    | regelVoorafgaandAanAanschrijfwijze |
-      | man      | Jonkheer                 | Eigen                 | Jonkheer T. van Hoogh              | De hoogwelgeboren heer   |
-      | vrouw    | Jonkvrouw                | Eigen                 | Jonkvrouw T. van Hoogh             | De hoogwelgeboren vrouwe |
-      | vrouw    | Jonkheer                 | Eigen                 | Jonkvrouw T. van Hoogh             | De hoogwelgeboren vrouwe |
-      | onbekend | Jonkvrouw                | Eigen                 | T. van Hoogh                       | -                        |
-      | vrouw    | Jonkvrouw                | Partner na eigen      | Jonkvrouw T. van Hoogh-in het Veld | De hoogwelgeboren vrouwe |
-      | vrouw    | Jonkvrouw                | Partner               | T. in het Veld                     | -                        |
-      | man      | Jonkheer                 | Partner               | T. in het Veld                     | -                        |
-      | vrouw    | Jonkvrouw                | Partner voor eigen    | T. in het Veld-jonkvrouw van Hoogh | De hoogwelgeboren vrouwe |
-      | onbekend | Jonkvrouw                | Partner voor eigen    | T. in het Veld-van Hoogh           | -                        |
-      | man      | Jonkheer                 | Partner na eigen      | Jonkheer T. van Hoogh-in het Veld  | De hoogwelgeboren heer   |
+      | geslacht | adellijkeTitel_predikaat | aanduidingNaamgebruik | partner | Ontbinding huwelijk/geregistreerd partnerschap | aanschrijfwijze | regelVoorafgaandAanAanschrijfwijze |
+      | man      | Jonkheer                 | Eigen                 | Geen    | Geen | Jonkheer T. van Hoogh              | De hoogwelgeboren heer   |
+      | man      | Jonkheer                 | Eigen                 | Ja      | Geen | Jonkheer T. van Hoogh              | De hoogwelgeboren heer   |
+      | vrouw    | Jonkvrouw                | Eigen                 | Geen    | Geen | Jonkvrouw T. van Hoogh             | De hoogwelgeboren vrouwe |
+      | vrouw    | Jonkvrouw                | Eigen                 | Ja      | Geen | Jonkvrouw T. van Hoogh             | -                        |
+      | vrouw    | Jonkvrouw                | Eigen                 | Ja      | Ja   | Jonkvrouw T. van Hoogh             | De hoogwelgeboren vrouwe |
+      | vrouw    | Jonkheer                 | Eigen                 | Geen    | Geen | Jonkvrouw T. van Hoogh             | De hoogwelgeboren vrouwe |
+      | vrouw    | Jonkheer                 | Eigen                 | Ja      | Geen | Jonkvrouw T. van Hoogh             | -                        |
+      | onbekend | Jonkvrouw                | Eigen                 | Geen    | Geen | T. van Hoogh                       | -                        |
+      | vrouw    | Jonkvrouw                | Partner na eigen      | Ja      | Geen | Jonkvrouw T. van Hoogh-in het Veld | -                        |
+      | vrouw    | Jonkvrouw                | Partner na eigen      | Ja      | Ja   | Jonkvrouw T. van Hoogh-in het Veld | -                        |
+      | man      | Jonkheer                 | Partner na eigen      | Ja      | Geen | Jonkheer T. van Hoogh-in het Veld  | De hoogwelgeboren heer   |
+      | vrouw    | Jonkvrouw                | Partner               | Ja      | Geen | T. in het Veld                     | -                        |
+      | vrouw    | Jonkvrouw                | Partner               | Ja      | Ja   | T. in het Veld                     | -                        |
+      | man      | Jonkheer                 | Partner               | Geen    | Geen | T. in het Veld                     | -                        |
+      | vrouw    | Jonkvrouw                | Partner voor eigen    | Ja      | Geen | T. in het Veld-jonkvrouw van Hoogh | -                        |
+      | vrouw    | Jonkheer                 | Partner voor eigen    | Ja      | Geen | T. in het Veld-jonkvrouw van Hoogh | -                        |
+      | man      | Jonkvrouw                | Partner voor eigen    | Ja      | Geen | T. in het Veld-jonkheer van Hoogh  | De hoogwelgeboren heer   |
+      | onbekend | Jonkvrouw                | Partner voor eigen    | Ja      | Geen | T. in het Veld-van Hoogh           | -                        |
 
     Voorbeelden: partner heeft een adellijke titel
       | geslachtsaanduiding | geslachtsaanduiding partner | adellijkeTitel_predikaat partner | aanduidingAanschrijving | samenstelling aanschrijfwijze | geslachtsnaam | voornamen | aanschrijfwijze | regelVoorafgaandAanAanschrijfwijze |
