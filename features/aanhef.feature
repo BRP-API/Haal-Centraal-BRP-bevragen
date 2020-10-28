@@ -86,12 +86,12 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
   In alle andere gevallen heeft de adellijke titel of het predikaat van de partner geen invloed op de aanhef.
 
   Als er meerdere actuele (niet ontbonden) huwelijken/partnerschappen zijn
-  En de aanschijfwijze is ongelijk aan "E" - "Eigen"
+  En de aanduidingNaamgebruik is ongelijk aan "E" - "Eigen"
   Dan wordt als partnernaam de naam van de eerste partner (oudste niet ontbonden relatie) gebruikt.
 
   Als er meerdere ontbonden huwelijken/partnerschappen zijn
   En er geen actueel (niet ontbonden) huwelijk/partnerschap is
-  En de aanschijfwijze is ongelijk aan "E" - "Eigen"
+  En de aanduidingNaamgebruik is ongelijk aan "E" - "Eigen"
   Dan wordt als partnernaam de naam van de laatst ontbonden relatie gebruikt.
 
 
