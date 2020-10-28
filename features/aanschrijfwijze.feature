@@ -34,7 +34,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
   En de aanduiding aanschijving is ongelijk aan 'Eigen'
   Dan wordt als partnernaam de naam van de laatst ontbinden relatie gebruikt.
 
-  Op basis van attribuut adellijkeTitel_predikaat en de geslachtsaanduiding wordt het de adelijke titel of het predikaat toegevoegd in de aanschrijfwijze.
+  Op basis van attribuut adellijkeTitel_predikaat en de geslachtsaanduiding wordt de adelijke titel of het predikaat toegevoegd in de aanschrijfwijze.
   De adellijke titel of het predikaat wordt in aanschrijfwijze opgenomen in de vorm die hoort bij de geslachtsaanduiding:
   | adellijkeTitel_predikaat | vrouw     | man      | onbekend |
   | Graaf	                   | gravin    | graaf    | -   |
