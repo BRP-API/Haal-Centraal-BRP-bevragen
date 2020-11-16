@@ -12,14 +12,12 @@ BRP Bevragen is een Haal Centraal API voor het zoeken en raadplegen van ingeschr
 
 ## Documentatie
 
-* [Technische specificaties](./specificatie/genereervariant) (Open API Specificaties en JSON schema), in [Swagger-formaat](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/swagger-ui/) en in [Redoc](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/redoc/)
-* <a class="nav-link{% if page.url == '/swagger-ui.html' %} active{% endif %}" href="{{ site.baseurl }}/swagger-ui">Bevragen API (swagger-ui)</a>
+* [Technische specificaties](./specificatie/genereervariant) (Open API Specificaties en JSON schema), in <a class="nav-link{% if page.url == '/swagger-ui.html' %} active{% endif %}" href="{{ site.baseurl }}/swagger-ui">Swagger-formaat</a> en in <a class="nav-link{% if page.url == '/redoc.html' %} active{% endif %}" href="{{ site.baseurl }}/redoc">Redoc</a>
 * [Productvisie](./productvision.md)
 * [Definition of Ready](./definition_of_ready.md)
 * [Definition of Done](./definition_of_done.md)
-* Hoe u kunt [bijdragen](https://github.com/VNG-Realisatie/API-kennisbank/blob/master/CONTRIBUTING.md)
 * [Omgangsvormen](https://github.com/VNG-Realisatie/API-kennisbank/blob/master/CODE_OF_CONDUCT.md)
-* [Functionele specificaties](./features)
+* <a class="nav-link{% if page.url == '/features.html' %} active{% endif %}" href="{{ site.baseurl }}/features">Functionele specificaties</a>
 * Ontwerpkeuzes staan in het document [Design decisions](./design_decisions.md)
 
 Naast deze API is er nog een aantal andere aan BRP gerelateerde API's beschikbaar:
