@@ -1,3 +1,7 @@
+---
+layout: page-with-side-nav
+title: Design decisions HaalCentraal BRP-Bevragen
+---
 # Design decisions HaalCentraal BRP-Bevragen
 Dit document beschrijft ontwerpkeuzes die gemaakt zijn voor het ontwerpen en specificeren van de API's. .
 

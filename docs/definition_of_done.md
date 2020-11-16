@@ -1,3 +1,7 @@
+---
+layout: page-with-side-nav
+title: Definition of Done
+---
 # Definition of Done
 - er is zijn BDD-scenario's (functionele specificatie cq testgevallen)
 - er is een Open API specificatie (versie 3)
