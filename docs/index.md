@@ -12,7 +12,7 @@ BRP Bevragen is een Haal Centraal API voor het zoeken en raadplegen van ingeschr
 
 ## Documentatie
 
-* [Technische specificaties](./specificatie/genereervariant) (Open API Specificaties en JSON schema), in <a class="nav-link{% if page.url == '/swagger-ui.html' %} active{% endif %}" href="{{ site.baseurl }}/swagger-ui">Swagger-formaat</a> en in <a class="nav-link{% if page.url == '/redoc.html' %} active{% endif %}" href="{{ site.baseurl }}/redoc">Redoc</a>
+* [Technische specificaties](./specificatie/genereervariant) (Open API Specificaties en JSON schema), in [Swagger-formaat]({{ site.baseurl }}/swagger-ui) en in <a class="nav-link{% if page.url == '/redoc.html' %} active{% endif %}" href="{{ site.baseurl }}/redoc">Redoc</a>
 * [Productvisie](./productvision.md)
 * [Definition of Ready](./definition_of_ready.md)
 * [Definition of Done](./definition_of_done.md)
