@@ -1,3 +1,7 @@
+---
+layout: page-with-side-nav
+title: Productvisie Haal Centraal BRP Bevragen
+---
 # Productvisie Haal Centraal BRP Bevragen
 
 ## Introductie
