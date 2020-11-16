@@ -1,0 +1,20 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.36.2/swagger-ui-bundle.min.js" charset="UTF-8"> </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.36.2/swagger-ui-standalone-preset.min.js" charset="UTF-8"> </script>
+<script>
+window.onload = function() {
+  const ui = SwaggerUIBundle({
+    url: "{{ page.openapi-url }}",
+    dom_id: '#swagger-ui',
+    deepLinking: true,
+    presets: [
+      SwaggerUIBundle.presets.apis,
+      SwaggerUIStandalonePreset
+    ],
+    plugins: [
+      SwaggerUIBundle.plugins.DownloadUrl
+    ],
+    layout: "BaseLayout"
+  })
+  window.ui = ui
+}
+</script>
