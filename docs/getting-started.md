@@ -1,3 +1,7 @@
+---
+layout: page-with-side-nav
+title: Getting Started
+---
 # Getting Started
 
 De 'Bevraging Ingeschreven Persoon' Web API is gespecificeerd met behulp van de OpenAPI specifications (OAS).
