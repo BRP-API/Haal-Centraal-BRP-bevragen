@@ -73,7 +73,7 @@ paths:
           die je wil ontvangen geef je op met de resource-naam gevolgd door de property
           naam, met daartussen een punt. In de definitie van het antwoord kun je bij
           _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie
-          [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/expand.feature).
+          [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature).
         required: false
         schema:
           type: string
@@ -83,7 +83,7 @@ paths:
           door een door komma's gescheiden lijst van property namen op te geven. Bij
           opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven.
           Wanneer de fields parameter niet is opgegeven, worden alle properties met
-          een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature)
+          een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature)
         required: false
         schema:
           type: string
@@ -435,7 +435,7 @@ paths:
           die je wil ontvangen geef je op met de resource-naam gevolgd door de property
           naam, met daartussen een punt. In de definitie van het antwoord kun je bij
           _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie
-          [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/expand.feature).
+          [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature).
         required: false
         schema:
           type: string
@@ -445,7 +445,7 @@ paths:
           door een door komma's gescheiden lijst van property namen op te geven. Bij
           opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven.
           Wanneer de fields parameter niet is opgegeven, worden alle properties met
-          een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/fields.feature)
+          een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature)
         required: false
         schema:
           type: string
@@ -2076,6 +2076,11 @@ components:
             description: |
               Samengestelde naam die je kunt gebruiken in de communicatie met de persoon.
             example: H. in het Veld
+          regelVoorafgaandAanAanschrijfwijze:
+            type: string
+            description: |
+              Deze regel moet als aparte regel boven de aanschrijfwijze worden geplaatst. Komt alleen voor bij personen met een adellijke titel of predicaat.
+            example: De hoogwelgeboren vrouwe
           gebruikInLopendeTekst:
             type: string
             description: |
@@ -2696,7 +2701,7 @@ components:
           description: Voor mens leesbaar label bij de link
       description: De Link Object zoals gespecificeerd in https://tools.ietf.org/html/draft-kelly-json-hal-08#section-5;
         Deze link kan als templated link worden aangeboden. [URI-templating is hier
-        beschreven](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.1.0/features/uri-templating.feature).
+        beschreven](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/uri-templating.feature).
     Href:
       type: string
       example: https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}
