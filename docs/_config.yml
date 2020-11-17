@@ -1,2 +1,3 @@
 baseurl: "/Haal-Centraal-BRP-bevragen"
+apiname: "BRP Bevragen"
 url: "http://localhost:4000"
