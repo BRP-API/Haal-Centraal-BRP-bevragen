@@ -16,6 +16,8 @@ Wil je de API gebruiken? Dit kun je doen:
 
 Je kunt een visuele representatie van de specificatie genereren met [Swagger UI]({{ site.baseurl }}/swagger-ui) of [Redoc]({{ site.baseurl }}/redoc).
 
+De (resolved) OAS3 is hier te downloaden: [openapi.yaml](https://github.com/VNG-Realisatie{{ site.baseurl }}/blob/master/specificatie/genereervariant/openapi.yaml).
+
 De [functionele documentatie]({{ site.baseurl }}/features) van de 'Bevraging Ingeschreven Persoon' Web API kun je vinden in de github repository.
 
 ## Implementeer de API
