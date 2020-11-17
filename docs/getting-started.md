@@ -14,14 +14,14 @@ Wil je de API gebruiken? Dit kun je doen:
 
 ## Functionaliteit en specificaties
 
-Je kunt een visuele representatie van de specificatie genereren met [Swagger UI](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/swagger-ui/) of [Redoc](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/redoc/).
+Je kunt een visuele representatie van de specificatie genereren met [Swagger UI](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/swagger-ui) of [Redoc](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/redoc).
 
-De [functionele documentatie](../../../features) van de 'Bevraging Ingeschreven Persoon' Web API kun je vinden in de github repository.
+De [functionele documentatie](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/features) van de 'Bevraging Ingeschreven Persoon' Web API kun je vinden in de github repository.
 
 ## Implementeer de API
 
-Je kunt code genereren op basis van de [genereervariant van de specificaties](../specificatie/genereervariant/openapi.yaml).
-Voor enkele ontwikkelomgevingen is al [client code](../../../code) gegenereerd.
+Je kunt code genereren op basis van de [genereervariant van de specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/specificatie/genereervariant/openapi.yaml).
+Voor enkele ontwikkelomgevingen is al [client code](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/code) gegenereerd.
 
 ## Probeer en test
 
@@ -29,11 +29,11 @@ Wil je de 'Bevraging Ingeschreven Persoon' Web API proberen en testen? Kijk op: 
 
 Om de web api te gebruiken heb je een apikey nodig. Deze voeg je aan een request toe als header "X-API-KEY". Een API-key vraag je aan bij de product owner cathy.dingemanse@denhaag.nl.
 
-__De Haal Centraal probeeromgeving gebruikt GBA-V op basis van de gemeentelijke autorisatie "Algemene gemeentetaken" voor buitengemeentelijke personen. Dit betekent dat de GBA-V niet alle gegevens teruggeeft die in de response zijn gedefinieerd. In de [API mapping](./BRP-LO%20GBA%20mapping.xlsx?raw=true) kun je zien welke gegevens wel of niet onder deze autorisatie vallen.__
+__De Haal Centraal probeeromgeving gebruikt GBA-V op basis van de gemeentelijke autorisatie "Algemene gemeentetaken" voor buitengemeentelijke personen. Dit betekent dat de GBA-V niet alle gegevens teruggeeft die in de response zijn gedefinieerd. In de [API mapping](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/docs/BRP-LO%20GBA%20mapping.xlsx?raw=true) kun je zien welke gegevens wel of niet onder deze autorisatie vallen.__
 
 ### Importeer de specificaties in Postman
 
-De werking van de 'Bevraging Ingeschreven Persoon' Web API is het makkelijkst te testen met behulp van [Postman](https://www.getpostman.com/). We hebben al een [Postman collection](../test/BRP-Bevragen-postman-collection.json) voor je klaargezet. Deze kun je importeren in Postman.
+De werking van de 'Bevraging Ingeschreven Persoon' Web API is het makkelijkst te testen met behulp van [Postman](https://www.getpostman.com/). We hebben al een [Postman collection](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/test/BRP-Bevragen-postman-collection.json) voor je klaargezet. Deze kun je importeren in Postman.
 
 In Postman kun je de 'Bevraging Ingeschreven Persoon' OpenAPI specificatie importeren en visueel de verschillende endpoints aanroepen. Volg deze stappen om het OpenAPI specificatie bestand te importeren:
 ![Import](./img/1-click-import-button.jpg)  
@@ -106,4 +106,4 @@ burgerservicenummer | situatie
 999990421 | meerdere kinderen, wel en niet-ingeschreven
 
 De API gebruikt de GBA-V proefomgeving. Alle testpersonen die daarin voorkomen kun je ook in de API gebruiken. De volledige set testpersonen kan worden gedownload bij de [RvIG](https://www.rvig.nl/documenten/richtlijnen/2018/09/20/testdataset-persoonslijsten-proefomgevingen-gba-v).
-Een vertaling van GBA-V (LO GBA) attributen naar BRP API properties staat beschreven in de [BRP-LO GBA mapping](./BRP-LO%20GBA%20mapping.xlsx?raw=true).
+Een vertaling van GBA-V (LO GBA) attributen naar BRP API properties staat beschreven in de [BRP-LO GBA mapping](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/docs/BRP-LO%20GBA%20mapping.xlsx?raw=true).
