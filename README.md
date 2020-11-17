@@ -18,7 +18,7 @@ Om te beginnen met ontwikkelen van de API is de [getting started](./docs/getting
 
 ## Documentatie
 
-* [Technische specificaties](./specificatie/genereervariant) (Open API Specificaties en JSON schema), in [Swagger-formaat](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/swagger-ui/) en in [Redoc](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/redoc/)
+* [Technische specificaties](./specificatie/genereervariant) (Open API Specificaties en JSON schema), in [Swagger-formaat](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/swagger-ui) en in [Redoc](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/redoc)
 * [Productvisie](./docs/productvision.md)
 * [Definition of Ready](./docs/definition_of_ready.md)
 * [Definition of Done](./docs/definition_of_done.md)
