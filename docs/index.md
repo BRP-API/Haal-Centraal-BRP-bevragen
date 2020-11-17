@@ -15,7 +15,7 @@ API voor het bevragen van ingeschreven personen uit de basisregistratie personen
 * Lees de [Getting started](./getting-started)
 * Download de [technische specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/specificatie/genereervariant/openapi.yaml){:target="_blank" rel="noopener"}
 * Download [client code](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/master/code){:target="_blank" rel="noopener"}
-* Vraag een API-key voor toegang tot de Haal Centraal probeeromgeving aan bij de product owner [cathy.dingemanse@denhaag.nl](cathy.dingemanse@denhaag.nl)
+* Vraag een API-key voor toegang tot de Haal Centraal probeeromgeving aan bij de product owner [cathy.dingemanse@denhaag.nl](mailto:cathy.dingemanse@denhaag.nl)
 
 ## Heb je meer nodig? 
 Gebruik de BRP bevragen API in combinatie met (een van de) andere BRP API’s:
