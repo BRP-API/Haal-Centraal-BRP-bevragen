@@ -12,10 +12,10 @@ API voor het bevragen van ingeschreven personen uit de basisregistratie personen
 
 Heb je meer nodig? Gebruik de BRP bevragen API in combinatie met (een van de) andere BRP API’s:
 
-* [Historische BRP-gegevens bevragen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-historie-bevragen)
-* [Reisdocumenten bevragen](https://github.com/VNG-Realisatie/Haal-Centraal-Reisdocumenten-bevragen)
-* [Bewoning en medebewoners bevragen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bewoning)
-* [Landelijke tabellen bevragen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-tabellen-bevragen)
+* [Historische BRP-gegevens bevragen](https://vng-realisatie.github.io/Haal-Centraal-BRP-historie-bevragen/)
+* [Reisdocumenten bevragen](https://vng-realisatie.github.io/Haal-Centraal-Reisdocumenten-bevragen/)
+* [Bewoning en medebewoners bevragen](https://vng-realisatie.github.io/Haal-Centraal-BRP-bewoning/)
+* [Landelijke tabellen bevragen](https://vng-realisatie.github.io/Haal-Centraal-BRP-tabellen-bevragen/)
 
 ## Bronnen
 
