@@ -20,8 +20,8 @@ De [functionele documentatie](https://vng-realisatie.github.io/Haal-Centraal-BRP
 
 ## Implementeer de API
 
-Je kunt code genereren op basis van de [genereervariant van de specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/specificatie/genereervariant/openapi.yaml){:target="_blank"}.
-Voor enkele ontwikkelomgevingen is al [client code](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/code){:target="_blank"} gegenereerd.
+Je kunt code genereren op basis van de [genereervariant van de specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/specificatie/genereervariant/openapi.yaml){:target="_blank" rel="noopener"}.
+Voor enkele ontwikkelomgevingen is al [client code](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/code){:target="_blank" rel="noopener"} gegenereerd.
 
 ## Probeer en test
 
@@ -36,6 +36,7 @@ __De Haal Centraal probeeromgeving gebruikt GBA-V op basis van de gemeentelijke 
 De werking van de 'Bevraging Ingeschreven Persoon' Web API is het makkelijkst te testen met behulp van [Postman](https://www.getpostman.com/). We hebben al een [Postman collection](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/test/BRP-Bevragen-postman-collection.json){:target="_blank"} voor je klaargezet. Deze kun je importeren in Postman.
 
 In Postman kun je de 'Bevraging Ingeschreven Persoon' OpenAPI specificatie importeren en visueel de verschillende endpoints aanroepen. Volg deze stappen om het OpenAPI specificatie bestand te importeren:
+
 ![Import](./img/1-click-import-button.jpg)  
 
 1.Klik op de Import button om de Import dialog box te openen
@@ -84,7 +85,7 @@ In dit figuur zie je hoe de `expand` Query Parameter eruit moet zien om de ouder
 Je kunt ook alleen specifieke kenmerken van een ingeschreven persoon opvragen met behulp van de `fields` Query Parameter. Hieronder zie je een bevraging met de `fields` Query Parameter gezet op `burgerservicenummer,naam,geboorte.datum`.
 ![fields parameter](./img/9-using-fields-parameter.jpg)
 
-### TestPersonen
+### Testpersonen
 
 Onderstaande tabel bevat de burgerservicenummers van testpersonen voor specifieke situaties waarmee de 'Bevraging Ingeschreven Persoon' Web API kan worden getest.
 
