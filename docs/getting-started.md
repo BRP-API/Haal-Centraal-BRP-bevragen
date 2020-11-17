@@ -36,6 +36,7 @@ __De Haal Centraal probeeromgeving gebruikt GBA-V op basis van de gemeentelijke 
 De werking van de 'Bevraging Ingeschreven Persoon' Web API is het makkelijkst te testen met behulp van [Postman](https://www.getpostman.com/). We hebben al een [Postman collection](../test/BRP-Bevragen-postman-collection.json) klaargezet. Deze kun je importeren in Postman.
 
 In Postman kan de 'Bevraging Ingeschreven Persoon' OpenAPI specificatie worden geïmporteerd en kan vervolgens visueel de verschillende endpoints worden aangeroepen. Volg onderstaande stappen om de OpenAPI specificatie bestand te importeren:
+
 ![Import](./img/1-click-import-button.jpg)  
 1.Klik op de Import button om de Import dialog box te openen
 
@@ -83,7 +84,7 @@ In bovenstaand figuur is ook te zien hoe de `expand` Query Parameter eruit moet 
 Het is mogelijk om alleen specifieke kenmerken van een ingeschreven persoon te bevragen met behulp van de `fields` Query Parameter. In onderstaand figuur is een bevraging te zien met de `fields` Query Parameter gezet op `burgerservicenummer,naam,geboorte.datum`.
 ![fields parameter](./img/9-using-fields-parameter.jpg)
 
-### Test Personen
+### Testpersonen
 
 Onderstaande tabel bevat de burgerservicenummers van testpersonen voor specifieke situaties waarmee werking van de 'Bevraging Ingeschreven Persoon' Web API kan worden getest.
 
