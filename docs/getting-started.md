@@ -71,11 +71,11 @@ Selecteer hiervoor de /GET ingeschreven Natuurlijk Persoon request.
 ![/GET ingeschreven Natuurlijk Persoon request](./img/5-select-request.jpg)  
 In het rechterscherm zie je een invoerscherm voor de request. Uncheck voor de volgende voorbeeldaanroep de expand en fields Query Params en vul in de burgerservicenummer Path Variabele een bsn in (zie onderaan de Getting started voor mogelijke burgerservicenummers).
 
-Klik op de Send button om de request naar de endpoint te sturen. De 'Bevraging Ingeschreven Persoon' Web API reageert dan met een response:  
+Klik op de Send button om de request naar de endpoint te sturen. De Web API reageert dan met een response:  
 ![Response](./img/7-response.jpg)
 
-De 'Bevraging Ingeschreven Persoon' Web API maakt gebruik van de HAL (Hypertext Application Language) standaard om bij een resource links op te nemen naar gerelateerde resources en/of om bij een resource gerelateerde resources op te nemen (embedden).  
-In de response hierboven is voor de opgevraagde persoon te zien dat het _links/ouders element links bevat naar de ouders van de persoon.
+De Web API gebruikt de HAL (Hypertext Application Language) standaard om links op te nemen naar gerelateerde resources en/of om bij een resource gerelateerde resources op te nemen (embedden).  
+In de response hierboven kun je zien dat het _links/ouders element links bevat naar de ouders van de persoon.
 
 Je kunt ook oudergegevens embedden bij het bevragen van een persoon. Dit doe je met de `expand` Query Parameter. Behalve de ouders kun je ook kind(-eren) en partner(s) in de bevraging van een ingeschreven persoon embedden. Deze gegevens zijn te vinden onder de _embedded element:
 ![expand parameter](./img/8-using-expand-parameter.jpg)  
