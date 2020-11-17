@@ -8,18 +8,9 @@ title: Haal Centraal BRP bevragen
 ![generate sdks](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/workflows/generate-sdks/badge.svg)
 ![generate postman collection](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/workflows/generate-postman-collection/badge.svg)
 
-BRP Bevragen is een Haal Centraal API voor het zoeken en raadplegen van ingeschreven natuurlijke personen voor alle binnengemeentelijke afnemers in NL. De informatie die de API levert is herleidbaar naar het LO GBA 3.10.
+API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.
 
-## Documentatie
-
-* [Technische specificaties](./specificatie/genereervariant) (Open API Specificaties en JSON schema), in [Swagger-formaat]({{ site.baseurl }}/swagger-ui) en in [Redoc]({{ site.baseurl }}/redoc)
-* [Definition of Ready](./definition_of_ready.md)
-* [Definition of Done](./definition_of_done.md)
-* [Omgangsvormen](https://github.com/VNG-Realisatie/API-kennisbank/blob/master/CODE_OF_CONDUCT.md)
-* [Functionele specificaties]({{ site.baseurl }}/features)
-* Ontwerpkeuzes staan in het document [Design decisions](./design_decisions.md)
-
-Naast deze API is er nog een aantal andere aan BRP gerelateerde API's beschikbaar:
+Heb je meer nodig? Gebruik de BRP bevragen API in combinatie met (een van de) andere BRP API’s:
 
 * [Historische BRP-gegevens bevragen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-historie-bevragen)
 * [Reisdocumenten bevragen](https://github.com/VNG-Realisatie/Haal-Centraal-Reisdocumenten-bevragen)
