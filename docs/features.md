@@ -3,7 +3,7 @@ layout: page-with-side-nav
 title: Features
 ---
 # Features
-De functionaliteit van de API is gespecificeerd en geillustreerd door middel van gerichte voorbeelden de functionele werking. Voor de meeste features is de ontwikkelaar van de provider van de API doelgroep.
+De functionaliteit van de API is gespecificeerd en geillustreerd door middel van gerichte voorbeelden.
 
 - [samenstellen naam aanhef](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/features/aanhef.feature)
 - [samenstellen naam aanschrijfwijze](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/features/aanschrijfwijze.feature)
