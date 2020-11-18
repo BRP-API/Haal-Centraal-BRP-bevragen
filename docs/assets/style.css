@@ -12,6 +12,7 @@ h1 {
   line-height: 2.4rem;
   margin-bottom: 1rem;
   color: #1a237e;
+  margin-top: 0.6rem;
 }
 h2 {
   font-size: 1.6rem;
@@ -19,6 +20,7 @@ h2 {
   line-height: 2.2rem;
   margin-bottom: 0.4rem;
   color: #1a237e;
+  margin-top: 0.6rem;
 }
 h3 {
   font-size: 1.2rem;
@@ -113,6 +115,11 @@ em {
 }
 .header {
   color: #03A9F4;
+  margin-top: 1em;
+}
+
+.active {
+  font-weight: 500;
 }
 
 .vng-logo {
