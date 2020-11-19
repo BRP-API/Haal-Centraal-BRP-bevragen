@@ -8,9 +8,9 @@ De 'Bevraging Ingeschreven Persoon' Web API is gespecificeerd in OpenAPI specifi
 
 Wil je de API gebruiken? Dit kun je doen:
 
-1. Bekijk de [functionaliteit en specificaties](#Functionaliteit-en-specificaties)
-2. [Implementeer](#Implementeer-de-API) de API
-3. [Probeer en test](#Probeer-en-test) de API
+1. Bekijk de functionaliteit en specificaties
+2. Implementeer de API
+3. Probeer en test de API
 
 ## Functionaliteit en specificaties
 
