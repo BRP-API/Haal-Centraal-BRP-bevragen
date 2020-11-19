@@ -1,132 +1,134 @@
 body {
-  font-size: 100%;
+    font-size: 100%;
 }
 * {
-  font-family: 'Montserrat', sans-serif;
-  color: #424242;
-  line-height: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #424242;
+    line-height: 1rem;
 }
 h1 {
-  font-size: 2rem;
-  font-weight: 600;
-  line-height: 2.4rem;
-  margin-bottom: 1rem;
-  color: #1a237e;
-  margin-top: 0.6rem;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 2.4rem;
+    margin-bottom: 1rem;
+    color: #1a237e;
 }
 h2 {
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 2.2rem;
-  margin-bottom: 0.4rem;
-  color: #1a237e;
-  margin-top: 0.6rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 2.2rem;
+    margin-bottom: 0.4rem;
+    color: #1a237e;
 }
 h3 {
-  font-size: 1.2rem;
-  font-weight: 500;
-  line-height: 1.8rem;
-  margin-bottom: 0.2rem;
-  color: #1a237e;
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.8rem;
+    margin-bottom: 0.2rem;
+    color: #1a237e;
 }
 h4 {
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.6rem;
-  margin-bottom: 0.2rem;
-  color: #1a237e;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.6rem;
+    margin-bottom: 0.2rem;
+    color: #1a237e;
 }
 h5 {
-  font-size: 1rem;
-  font-weight: 600;
-  font-style: italic;
-  line-height: 1.6rem;
-  margin-bottom: 0.2rem;
-  color: #1a237e;
+    font-size: 1rem;
+    font-weight: 600;
+    font-style: italic;
+    line-height: 1.6rem;
+    margin-bottom: 0.2rem;
+    color: #1a237e;
 }
 h6 {
-  font-size: 1rem;
-  font-weight: 500;
-  font-style: italic;
-  line-height: 1.6rem;
-  margin-bottom: 0.2rem;
-  color: #1a237e;
+    font-size: 1rem;
+    font-weight: 500;
+    font-style: italic;
+    line-height: 1.6rem;
+    margin-bottom: 0.2rem;
+    color: #1a237e;
 }
 p {
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.6rem;
-  margin-bottom: 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6rem;
+    margin-bottom: 1rem;
 }
 blockquote p {
-  font-size: 1.2rem;
-  font-weight: 500;
-  line-height: 1.8rem;
-  padding: 1rem;
-  background-color: #0277BD;
-  color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.8rem;
+    padding: 1rem;
+    background-color: #0277BD;
+    color: #ffffff;
 }
 ul, ol {
-  margin: 0 0 1rem -1rem;
+    margin: 0 0 1rem -1rem;
 }
 li {
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.4rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.4rem;
 }
 table {
-  border-collapse: collapse;
-  margin-bottom: 1rem;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
 }
 caption, th, td {
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.4rem;
-  padding: 0.2rem;
-  vertical-align: top;
-  border: 1px solid #b3e5fc;
-  color: #1a237e;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.4rem;
+    padding: 0.2rem;
+    vertical-align: top;
+    border: 1px solid #b3e5fc;
+    color: #1a237e;
 }
 th {
-  font-weight: 500;
-  text-align: left;
-  background-color: #b3e5fc;
+    font-weight: 500;
+    text-align: left;
+    background-color: #b3e5fc;
 }
 a {
-  color: #1a237e;
-}
-a:visited {
-  color: #424242;
+    color: #1a237e;
+    text-decoration: underline;
 }
 strong {
-  font-weight: 500;
+    font-weight: 500;
 }
 em {
-  font-weight: 400;
+    font-weight: 400;
 }
 .product-feature {
-  background-color: #FFFFFF;
-  color: #03A9F4;
+    background-color: #FFFFFF;
+    color: #03A9F4;
 }
 .landingpage-header {
-  background-color: #03A9F4;
-  color: #FFFFFF;
-  margin-bottom: 0rem;
+    background-color: #03A9F4;
+    color: #FFFFFF;
+    padding: 20px 20px 0 20px;
+    margin-bottom: 0rem;
 }
 .header {
-  color: #03A9F4;
-  margin-top: 1em;
+    margin-top: 20px;
+    color: #03A9F4;
 }
-
-.active {
-  font-weight: 500;
+.no-border {
+    border: 0;
 }
 
 .vng-logo {
-  display: inline-block;
-  width: 89px;
-  height: 61px;
-  background: url(img/VNG-Realisatie.png) no-repeat center center;
-  background-size: 100% auto;
-  text-indent: -9999px;
+    display: inline-block;
+    width: 89px;
+    height: 61px;
+    background: url(img/VNG-Realisatie.png) no-repeat center center;
+    background-size: 100% auto;
+    text-indent: -9999px;
 }
+  
+  .doel {
+      padding-bottom: 1rem;
+      margin-bottom: 0rem;
+      color: white;
+  }
