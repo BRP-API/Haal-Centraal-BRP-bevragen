@@ -16,9 +16,9 @@ Wil je de API gebruiken? Dit kun je doen:
 
 Je kunt een visuele representatie van de specificatie genereren met [Swagger UI]({{ site.baseurl }}/swagger-ui) of [Redoc]({{ site.baseurl }}/redoc).
 
-De (resolved) OAS3 is hier te downloaden: [openapi.yaml](https://github.com/VNG-Realisatie{{ site.baseurl }}/blob/master/specificatie/genereervariant/openapi.yaml).
+De (resolved) OAS3 kun je hier downloaden: [openapi.yaml](https://github.com/VNG-Realisatie{{ site.baseurl }}/blob/master/specificatie/genereervariant/openapi.yaml).
 
-Je kunt de [functionele documentatie](./features) vinden in de [features](./features).
+De [functionele documentatie](./features) vind je in [features](./features).
 
 ## Implementeer de API
 
@@ -91,7 +91,7 @@ Je kunt ook alleen specifieke kenmerken van een ingeschreven persoon opvragen me
 
 ### Testpersonen
 
-Onderstaande tabel bevat de burgerservicenummers van testpersonen voor specifieke situaties waarmee de 'Bevraging Ingeschreven Persoon' Web API kan worden getest.
+Deze tabel bevat de burgerservicenummers van testpersonen voor specifieke situaties waarmee de 'Bevraging Ingeschreven Persoon' Web API kan worden getest.
 
 burgerservicenummer | situatie
 ---------------- | :-------  
