@@ -17,6 +17,10 @@ nav:
         url: https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues?q=is%3Aissue+is%3Aopen+
         path: /user-stories
         target: blank
+      - title: User stories (afgeschermd)
+        url: https://gitlab.com/vng-realisatie/haal-centraal-brp-afgeschermd/-/issues?label_name%5B%5D=BRP+bevragen
+        path: /user-stories
+        target: blank
 #      - title: Goals canvas
 #        path: /goals-canvas
   - title: Specificaties v. 1.0 (Live)
