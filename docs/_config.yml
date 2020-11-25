@@ -14,7 +14,7 @@ nav:
       - title: Getting started
         path: /getting-started
       - title: User stories
-        url: https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues?q=is%3Aopen+is%3Aissue+label%3A%22user+story%22++label%3A%22v1.1%22+
+        url: https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues?q=is%3Aissue+is%3Aopen+
         path: /user-stories
         target: blank
 #      - title: Goals canvas
