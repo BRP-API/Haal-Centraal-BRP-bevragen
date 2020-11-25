@@ -1,3 +1,44 @@
 baseurl: "/Haal-Centraal-BRP-bevragen"
 apiname: "BRP Bevragen"
 url: "http://localhost:4000"
+# nav is t.b.v. generatie side-navigation menu.
+# Een 'title' zonder path of url genereert slechts een kopje.
+# 'path' vormt tezamen met de baseurl de url waarmee de 'href' wordt gevuld. 
+# Indien een 'url' voorradig dan wordt daarmee de 'href' gevuld en dient het path slechts om te bepalen welke link active is.
+# 'target: blank' zorgt er voor dat de link in een nieuw tabblad wordt geöpend.
+nav:
+  - title: BRP Bevragen
+    subnav:
+      - title: Main
+        path: /
+      - title: Getting started
+        path: /getting-started
+      - title: User stories
+        url: https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues?q=is%3Aissue+is%3Aopen+
+        path: /user-stories
+        target: blank
+      - title: User stories (afgeschermd)
+        url: https://gitlab.com/vng-realisatie/haal-centraal-brp-afgeschermd/-/issues?label_name%5B%5D=BRP+bevragen
+        path: /user-stories
+        target: blank
+#      - title: Goals canvas
+#        path: /goals-canvas
+  - title: Specificaties v. 1.0 (Live)
+    subnav:
+      - title: Bevragen API (swagger-ui)
+        path: /swagger-ui
+      - title: Bevragen API (redoc)
+        path: /redoc
+      - title: Features
+        path: /features
+plugins:
+  - jekyll-redirect-from
+  - jekyll-remote-theme
+
+remote_theme: VNG-Realisatie/jekyll-theme-haal-centraal
+
+github: VNG-Realisatie/Haal-Centraal-BRP-bevragen
+
+theme: jekyll-theme-time-machine
+
+project_name: /Haal-Centraal-BRP-bevragen
