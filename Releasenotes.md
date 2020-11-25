@@ -1,5 +1,15 @@
 # Releasenotes Haal-Centraal-BRP-Bevragen
 
+## Versie 1.1.0
+
+- In de resource IngeschrevenPersoon is in de naam de property "regelVoorafgaandAanAanschrijfwijze" toegevoegd
+- Het document BRP-LO GBA mapping.xlsx is aangepast voor :
+  - regelVoorafgaandAanAanschrijfwijze
+  - nationaliteithistorie (ontbrak nog)
+  - enkele correcties
+- Enkele features zijn aangepast :
+  - Aanhef.feature
+  - Aanschrijfwijze.feature
 
 ## Versie 1.0.0
 

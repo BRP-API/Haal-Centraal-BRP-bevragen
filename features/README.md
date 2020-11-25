@@ -5,14 +5,14 @@ Het doel is door middel van gerichte voorbeelden de functionele werking van de a
 De specificaties zijn opgebouwd per functionalteit van de API. Op elke functionaliteit van de API is de werking beschreven én is de werking geïllustreerd in de vorm van scenario's (als ik dit doe, dan doet de api dat).
 
 Naast de features die hier staan zijn voor de API ook enkele features relevant die zijn opgenomen in Haal Centraal common, omdat deze gelden voor alle Haal Centraal API's:
-- [fields](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/fields.feature)
-- [expand](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/expand.feature)
-- [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/wildcard.feature)
-- [foutafhandeling](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/foutafhandeling.feature)
-- [uri-templating](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/uri-templating.feature)
-- [indicatoren](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/indicatoren.feature)
-- [onvolledige datum](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/onvolledige_datum.feature)
-- [self-links](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/self-links.feature)
+- [fields](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v.1.20/features/fields.feature)
+- [expand](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature)
+- [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)
+- [foutafhandeling](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/foutafhandeling.feature)
+- [uri-templating](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/uri-templating.feature)
+- [indicatoren](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/1.2.0/features/indicatoren.feature)
+- [onvolledige datum](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/onvolledige_datum.feature)
+- [self-links](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/self-links.feature)
 
 ## Features en scenario's
 De specificatie/test is gespecificeerd in documenten per functionaliteit, elk met extensie ".feature". Per functionaliteit is een korte beschrijving van de functionaliteit opgenomen plus scenario's die de gewenste werking van de functionaliteit toelichten en demonstreren.

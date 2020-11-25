@@ -2,7 +2,7 @@
   "openapi" : "3.0.0",
   "info" : {
     "title" : "Bevragen Ingeschreven Personen",
-    "description" : "API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.\n\nGegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.\n\nZie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.0.0/features) voor nadere toelichting.\n",
+    "description" : "API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.\n\nGegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.\n\nZie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.1.0/features) voor nadere toelichting.\n",
     "contact" : {
       "url" : "https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen"
     },
@@ -10,7 +10,7 @@
       "name" : "European Union Public License, version 1.2 (EUPL-1.2)",
       "url" : "https://eupl.eu/1.2/nl/"
     },
-    "version" : "1.0.0"
+    "version" : "1.1.0"
   },
   "servers" : [ {
     "url" : "https://www.haalcentraal.nl/haalcentraal/api/brp",
@@ -21,7 +21,7 @@
       "get" : {
         "tags" : [ "Ingeschreven Personen" ],
         "summary" : "Vindt personen",
-        "description" : "Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met parameters uit de andere combinaties.\n\n\nDefault krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.\n\n\nGebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/fields_extensie.feature)\n\n\nGebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature)\n\n\n1.  Persoon\n    -  geboorte__datum\n    -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)\n\n\n2.  Persoon\n    -  verblijfplaats__gemeenteVanInschrijving\n    -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)\n\n\n3.  Persoon\n    -  burgerservicenummer\n\n\n4.  Postcode\n    -  verblijfplaats__postcode\n    -  verblijfplaats__huisnummer\n\n\n5.  Straat\n    -  verblijfplaats__straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) )\n    -  verblijfplaats__gemeenteVanInschrijving\n    -  verblijfplaats__huisnummer\n\n\n6.  Adres\n    -  verblijfplaats__nummeraanduidingIdentificatie\n",
+        "description" : "Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met parameters uit de andere combinaties.\n\n\nDefault krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.\n\n\nGebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/fields_extensie.feature)\n\n\nGebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature)\n\n\n1.  Persoon\n    -  geboorte__datum\n    -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)\n\n\n2.  Persoon\n    -  verblijfplaats__gemeenteVanInschrijving\n    -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)\n\n\n3.  Persoon\n    -  burgerservicenummer\n\n\n4.  Postcode\n    -  verblijfplaats__postcode\n    -  verblijfplaats__huisnummer\n\n\n5.  Straat\n    -  verblijfplaats__straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) )\n    -  verblijfplaats__gemeenteVanInschrijving\n    -  verblijfplaats__huisnummer\n\n\n6.  Adres\n    -  verblijfplaats__nummeraanduidingIdentificatie\n",
         "operationId" : "GetIngeschrevenPersonen",
         "parameters" : [ {
           "name" : "expand",
@@ -59,7 +59,7 @@
         }, {
           "name" : "geboorte__datum",
           "in" : "query",
-          "description" : "Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/parametervalidatie.feature)\n",
+          "description" : "Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/parametervalidatie.feature)\n",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -71,7 +71,7 @@
         }, {
           "name" : "geboorte__plaats",
           "in" : "query",
-          "description" : "Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**\n",
+          "description" : "Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).**\n",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -93,7 +93,7 @@
         }, {
           "name" : "inclusiefOverledenPersonen",
           "in" : "query",
-          "description" : "Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/overleden_personen.feature)\n",
+          "description" : "Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/overleden_personen.feature)\n",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -104,7 +104,7 @@
         }, {
           "name" : "naam__geslachtsnaam",
           "in" : "query",
-          "description" : "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**\n",
+          "description" : "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).**\n",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -116,7 +116,7 @@
         }, {
           "name" : "naam__voorvoegsel",
           "in" : "query",
-          "description" : "Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**\n",
+          "description" : "Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).**\n",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -128,7 +128,7 @@
         }, {
           "name" : "naam__voornamen",
           "in" : "query",
-          "description" : "De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).**\n",
+          "description" : "De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).**\n",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -200,7 +200,7 @@
         }, {
           "name" : "verblijfplaats__straat",
           "in" : "query",
-          "description" : "Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/case_insensitive.feature).\n",
+          "description" : "Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).\n",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -430,7 +430,7 @@
       "get" : {
         "tags" : [ "Ingeschreven Personen" ],
         "summary" : "Raadpleeg een persoon",
-        "description" : "Raadpleeg een (overleden) persoon.\n\nGebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/fields_extensie.feature).\n\nGebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature).\n",
+        "description" : "Raadpleeg een (overleden) persoon.\n\nGebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/fields_extensie.feature).\n\nGebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature).\n",
         "operationId" : "GetIngeschrevenPersoon",
         "parameters" : [ {
           "name" : "burgerservicenummer",
@@ -2561,7 +2561,7 @@
             "$ref" : "#/components/schemas/DatumOnvolledig"
           }
         },
-        "description" : "Geeft aan welke gegevens over de naam in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)\n"
+        "description" : "Geeft aan welke gegevens over de naam in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n"
       },
       "OuderInOnderzoek" : {
         "type" : "object",
@@ -2579,7 +2579,7 @@
             "$ref" : "#/components/schemas/DatumOnvolledig"
           }
         },
-        "description" : "Geeft aan welke gegevens van de de ouder in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)\n"
+        "description" : "Geeft aan welke gegevens van de de ouder in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n"
       },
       "Geboorte" : {
         "allOf" : [ {
@@ -2615,7 +2615,7 @@
             "$ref" : "#/components/schemas/DatumOnvolledig"
           }
         },
-        "description" : "Geeft aan welke gegevens over de geboorte van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)\n"
+        "description" : "Geeft aan welke gegevens over de geboorte van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n"
       },
       "Kiesrecht" : {
         "type" : "object",
@@ -2681,7 +2681,7 @@
             "$ref" : "#/components/schemas/DatumOnvolledig"
           }
         },
-        "description" : "Geeft aan welke gegevens van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature).\n"
+        "description" : "Geeft aan welke gegevens van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature).\n"
       },
       "Nationaliteit" : {
         "type" : "object",
@@ -2720,7 +2720,7 @@
             "$ref" : "#/components/schemas/DatumOnvolledig"
           }
         },
-        "description" : "Geeft aan welke gegevens over de nationaliteit in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)\n"
+        "description" : "Geeft aan welke gegevens over de nationaliteit in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n"
       },
       "OpschortingBijhouding" : {
         "type" : "object",
@@ -2772,7 +2772,7 @@
             "$ref" : "#/components/schemas/DatumOnvolledig"
           }
         },
-        "description" : "Geeft aan welke gegevens over het overlijden van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)\n"
+        "description" : "Geeft aan welke gegevens over het overlijden van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n"
       },
       "KindInOnderzoek" : {
         "type" : "object",
@@ -2784,7 +2784,7 @@
             "$ref" : "#/components/schemas/DatumOnvolledig"
           }
         },
-        "description" : "Geeft aan of de gegevens over het kind van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)\n"
+        "description" : "Geeft aan of de gegevens over het kind van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n"
       },
       "PartnerInOnderzoek" : {
         "type" : "object",
@@ -2802,7 +2802,7 @@
             "$ref" : "#/components/schemas/DatumOnvolledig"
           }
         },
-        "description" : "Geeft aan welke gegevens over het huwelijk of het partnerschap in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)\n"
+        "description" : "Geeft aan welke gegevens over het huwelijk of het partnerschap in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n"
       },
       "AangaanHuwelijkPartnerschap" : {
         "type" : "object",
@@ -2838,7 +2838,7 @@
             "$ref" : "#/components/schemas/DatumOnvolledig"
           }
         },
-        "description" : "Geeft aan welke gegevens over het voltrekken van het huwelijk of aangaan van het partnerschap in onderzoek zijn. Zie de functionele specificaties. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)\n"
+        "description" : "Geeft aan welke gegevens over het voltrekken van het huwelijk of aangaan van het partnerschap in onderzoek zijn. Zie de functionele specificaties. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n"
       },
       "Verblijfplaats" : {
         "allOf" : [ {
@@ -2990,7 +2990,7 @@
             "$ref" : "#/components/schemas/DatumOnvolledig"
           }
         },
-        "description" : "Geeft aan welke gegevens over het verblijf en adres van de persoon in onderzoek zijn. Elementen van het GBA-adres zelf (Dat zou eigenlijk een BAG-adres moeten zijn) kunnen niet in onderzoek zijn. Wel de relatie naar de nummeraanduiding. Dat wordt gedaan door de identificatiecodeNummeraanduiding in onderzoek te zetten. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)\n"
+        "description" : "Geeft aan welke gegevens over het verblijf en adres van de persoon in onderzoek zijn. Elementen van het GBA-adres zelf (Dat zou eigenlijk een BAG-adres moeten zijn) kunnen niet in onderzoek zijn. Wel de relatie naar de nummeraanduiding. Dat wordt gedaan door de identificatiecodeNummeraanduiding in onderzoek te zetten. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n"
       },
       "Gezagsverhouding" : {
         "type" : "object",
@@ -3022,7 +3022,7 @@
             "$ref" : "#/components/schemas/DatumOnvolledig"
           }
         },
-        "description" : "Geeft aan welke gegevens van de gezagsverhouding in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)\n"
+        "description" : "Geeft aan welke gegevens van de gezagsverhouding in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n"
       },
       "Verblijfstitel" : {
         "type" : "object",
@@ -3058,7 +3058,7 @@
             "$ref" : "#/components/schemas/DatumOnvolledig"
           }
         },
-        "description" : "Geeft aan welke gegevens over de verblijfstitel in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.0.0/features/in_onderzoek.feature)\n"
+        "description" : "Geeft aan welke gegevens over de verblijfstitel in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n"
       },
       "IngeschrevenPersoonLinks" : {
         "type" : "object",
