@@ -8,17 +8,17 @@ De 'Bevraging Ingeschreven Persoon' Web API is gespecificeerd in OpenAPI specifi
 
 Wil je de API gebruiken? Dit kun je doen:
 
-1. Bekijk de [functionaliteit en specificaties](#Functionaliteit-en-specificaties)
-2. [Implementeer](#Implementeer-de-API) de API
-3. [Probeer en test](#Probeer-en-test) de API
+1. Bekijk de functionaliteit en specificaties
+2. Implementeer de API
+3. Probeer en test de API
 
 ## Functionaliteit en specificaties
 
 Je kunt een visuele representatie van de specificatie genereren met [Swagger UI]({{ site.baseurl }}/swagger-ui) of [Redoc]({{ site.baseurl }}/redoc).
 
-De (resolved) OAS3 is hier te downloaden: [openapi.yaml](https://github.com/VNG-Realisatie{{ site.baseurl }}/blob/master/specificatie/genereervariant/openapi.yaml).
+De (resolved) OAS3 kun je hier downloaden: [openapi.yaml](https://github.com/VNG-Realisatie{{ site.baseurl }}/blob/master/specificatie/genereervariant/openapi.yaml).
 
-De [functionele documentatie]({{ site.baseurl }}/features) van de 'Bevraging Ingeschreven Persoon' Web API kun je vinden in de github repository.
+De [functionele documentatie](./features) vind je in [features](./features).
 
 ## Implementeer de API
 
@@ -91,7 +91,7 @@ Je kunt ook alleen specifieke kenmerken van een ingeschreven persoon opvragen me
 
 ### Testpersonen
 
-Onderstaande tabel bevat de burgerservicenummers van testpersonen voor specifieke situaties waarmee de 'Bevraging Ingeschreven Persoon' Web API kan worden getest.
+Deze tabel bevat de burgerservicenummers van testpersonen voor specifieke situaties waarmee de 'Bevraging Ingeschreven Persoon' Web API kan worden getest.
 
 burgerservicenummer | situatie
 ---------------- | :-------  
