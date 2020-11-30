@@ -7,7 +7,7 @@
   - regelVoorafgaandAanAanschrijfwijze
   - nationaliteithistorie (ontbrak nog)
   - enkele correcties
-- Enkele features zijn aangepast :
+- Enkele features zijn aangepast i.v.m de correcte aanschrijving bij personen met een gewijzigd geslacht of geslachts is onbekend (genderneutraal) :
   - Aanhef.feature
   - Aanschrijfwijze.feature
 

@@ -5,7 +5,7 @@ Het doel is door middel van gerichte voorbeelden de functionele werking van de a
 De specificaties zijn opgebouwd per functionalteit van de API. Op elke functionaliteit van de API is de werking beschreven én is de werking geïllustreerd in de vorm van scenario's (als ik dit doe, dan doet de api dat).
 
 Naast de features die hier staan zijn voor de API ook enkele features relevant die zijn opgenomen in Haal Centraal common, omdat deze gelden voor alle Haal Centraal API's:
-- [fields](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v.1.20/features/fields.feature)
+- [fields](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v.1.2.0/features/fields.feature)
 - [expand](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature)
 - [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)
 - [foutafhandeling](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/foutafhandeling.feature)
