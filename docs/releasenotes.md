@@ -1,5 +1,16 @@
 # Releasenotes Haal-Centraal-BRP-Bevragen
 
+## Versie 1.1.0
+
+- In de resource IngeschrevenPersoon zijn in de naam de properties "regelVoorafgaandAanAanschrijfwijze" en "adellijkeTitelPredikaat" toegevoegd
+- Het document BRP-LO GBA mapping.xlsx is aangepast voor :
+  - regelVoorafgaandAanAanschrijfwijze
+  - adellijkeTitelPredikaat
+  - nationaliteithistorie (ontbrak nog)
+  - enkele correcties
+- Enkele features zijn aangepast i.v.m de correcte aanschrijving bij personen met een gewijzigd geslacht of geslachts is onbekend (genderneutraal) :
+  - Aanhef.feature
+  - Aanschrijfwijze.feature
 
 ## Versie 1.0.0
 
