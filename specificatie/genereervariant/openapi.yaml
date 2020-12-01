@@ -2088,9 +2088,8 @@ components:
             example: baron Van den Aedel
           aanduidingNaamgebruik:
             $ref: '#/components/schemas/Naamgebruik_enum'
-          adelijkeTitelPredikaat:
-            type: string
-            example: Baron
+          adellijkeTitelPredikaat:
+            $ref: '#/components/schemas/Waardetabel'
     PersoonInOnderzoek:
       type: object
       properties:
