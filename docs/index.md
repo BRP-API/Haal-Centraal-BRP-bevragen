@@ -8,9 +8,8 @@ title: Haal Centraal BRP bevragen
 ![generate sdks](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/workflows/generate-sdks/badge.svg)
 ![generate postman collection](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/workflows/generate-postman-collection/badge.svg)
 
-API voor het zoeken en raadplegen personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je actuele personen, kinderen, partners en ouders raadplegen.
-
-De API wordt nog niet door RvIG aangeboden. Om de migratieperiode te verkorten kiezen sommige gemeenten er voor de API zelf aan te bieden.  
+API voor het zoeken en raadplegen van actuele personen, partners, ouders en kinderen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). 
+De API wordt nog niet door RvIG aangeboden. Om de migratie naar API's te versnellen besluiten sommige gemeenten de API zelf aan te bieden.  
 
 ## Direct uitproberen?
 * Bekijk de specificaties met [Swagger UI](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/swagger-ui) of [Redoc](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/redoc)
