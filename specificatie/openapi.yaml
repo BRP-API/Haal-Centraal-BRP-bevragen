@@ -893,9 +893,8 @@ components:
               example: "baron Van den Aedel"
             aanduidingNaamgebruik:
               $ref: "#/components/schemas/Naamgebruik_enum"
-            adelijkeTitelPredikaat:
-              type: "string"
-              example: "Baron"
+            adellijkeTitelPredikaat:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
     PersoonInOnderzoek:
       type: "object"
       description: |
