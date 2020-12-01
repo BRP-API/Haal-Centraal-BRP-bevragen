@@ -2645,25 +2645,29 @@
             "aanhef" : {
               "type" : "string",
               "description" : "Kun je gebruiken als aanhef in een brief gericht aan persoon.\n",
-              "example" : "Geachte heer In het Veld"
+              "example" : "Hoogwelgeboren heer"
             },
             "aanschrijfwijze" : {
               "type" : "string",
               "description" : "Samengestelde naam die je kunt gebruiken in de communicatie met de persoon.\n",
-              "example" : "H. in het Veld"
+              "example" : "H.W. baron van den Aedel"
             },
             "regelVoorafgaandAanAanschrijfwijze" : {
               "type" : "string",
               "description" : "Deze regel moet als aparte regel boven de aanschrijfwijze worden geplaatst. Komt alleen voor bij personen met een adellijke titel of predicaat.\n",
-              "example" : "De hoogwelgeboren vrouwe"
+              "example" : "De hoogwelgeboren heer"
             },
             "gebruikInLopendeTekst" : {
               "type" : "string",
               "description" : "Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert.\n",
-              "example" : "de heer In het Veld"
+              "example" : "baron Van den Aedel"
             },
             "aanduidingNaamgebruik" : {
               "$ref" : "#/components/schemas/Naamgebruik_enum"
+            },
+            "adelijkeTitelPredikaat" : {
+              "type" : "string",
+              "example" : "Baron"
             }
           }
         } ]

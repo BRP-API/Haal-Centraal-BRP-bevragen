@@ -6,7 +6,7 @@ info:
 
     Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.
 
-    Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.1.0/features) voor nadere toelichting. 
+    Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.1.0/features) voor nadere toelichting.
   contact:
     url: https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen
   license:
@@ -2070,24 +2070,27 @@ components:
             type: string
             description: |
               Kun je gebruiken als aanhef in een brief gericht aan persoon.
-            example: Geachte heer In het Veld
+            example: Hoogwelgeboren heer
           aanschrijfwijze:
             type: string
             description: |
               Samengestelde naam die je kunt gebruiken in de communicatie met de persoon.
-            example: H. in het Veld
+            example: H.W. baron van den Aedel
           regelVoorafgaandAanAanschrijfwijze:
             type: string
             description: |
               Deze regel moet als aparte regel boven de aanschrijfwijze worden geplaatst. Komt alleen voor bij personen met een adellijke titel of predicaat.
-            example: De hoogwelgeboren vrouwe
+            example: De hoogwelgeboren heer
           gebruikInLopendeTekst:
             type: string
             description: |
               Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert.
-            example: de heer In het Veld
+            example: baron Van den Aedel
           aanduidingNaamgebruik:
             $ref: '#/components/schemas/Naamgebruik_enum'
+          adelijkeTitelPredikaat:
+            type: string
+            example: Baron
     PersoonInOnderzoek:
       type: object
       properties:
