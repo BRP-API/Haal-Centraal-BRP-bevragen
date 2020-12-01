@@ -2665,9 +2665,8 @@
             "aanduidingNaamgebruik" : {
               "$ref" : "#/components/schemas/Naamgebruik_enum"
             },
-            "adelijkeTitelPredikaat" : {
-              "type" : "string",
-              "example" : "Baron"
+            "adellijkeTitelPredikaat" : {
+              "$ref" : "#/components/schemas/Waardetabel"
             }
           }
         } ]
