@@ -1,3 +1,7 @@
+---
+layout: page-with-side-nav
+title: Definition of ready
+---
 # Definition of ready
 
 - Iedereen in het team begrijpt de user story

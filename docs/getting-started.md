@@ -1,38 +1,48 @@
+---
+layout: page-with-side-nav
+title: Getting Started
+---
 # Getting Started
 
-De 'Bevraging Ingeschreven Persoon' Web API is gespecificeerd met behulp van de OpenAPI specifications (OAS).
+De 'Bevraging Ingeschreven Persoon' Web API is gespecificeerd in OpenAPI specifications (OAS).
 
-Om de API te gebruiken kun je de volgende stappen doorlopen:
+Wil je de API gebruiken? Dit kun je doen:
 
-1. Bekijk de [functionaliteit en specificaties](#Functionaliteit-en-specificaties)
-2. [Implementeer](#Implementeer-de-API) de API
-3. [Probeer en test](#Probeer-en-test) de API
+1. Bekijk de functionaliteit en specificaties
+2. Implementeer de API
+3. Probeer en test de API
 
 ## Functionaliteit en specificaties
 
-Een visuele representatie van de specificatie kan worden gegenereerd met [Swagger UI](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/swagger-ui/) of [Redoc](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/redoc/).
+Je kunt een visuele representatie van de specificatie genereren met [Swagger UI]({{ site.baseurl }}/swagger-ui) of [Redoc]({{ site.baseurl }}/redoc).
 
-De [functionele documentatie](../../../features) van de 'Bevraging Ingeschreven Persoon' Web API is ook te vinden in de github repository.
+De (resolved) OAS3 kun je hier downloaden: [openapi.yaml](https://github.com/VNG-Realisatie{{ site.baseurl }}/blob/master/specificatie/genereervariant/openapi.yaml).
+
+De [functionele documentatie](./features) vind je in [features](./features).
 
 ## Implementeer de API
 
-Je kunt code genereren op basis van de [genereervariant van de specificaties](../specificatie/genereervariant/openapi.yaml).
-We hebben al voor enkele ontwikkelomgevingen [client code](../../../code) gegenereerd.
+Je kunt code genereren op basis van de [genereervariant van de specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/specificatie/genereervariant/openapi.yaml){:target="_blank" rel="noopener"}.
+Voor enkele ontwikkelomgevingen is al [client code](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/master/code){:target="_blank" rel="noopener"} gegenereerd.
 
 ## Probeer en test
 
-De 'Bevraging Ingeschreven Persoon' Web API is voor proberen en testen te benaderen via de volgende url: `https://www.haalcentraal.nl/haalcentraal/api/brp`
+Wil je de 'Bevraging Ingeschreven Persoon' Web API proberen en testen? Kijk op: `https://www.haalcentraal.nl/haalcentraal/api/brp`
 
-Om de web api te kunnen bevragen is een apikey nodig. Deze voeg je aan een request toe als header "X-API-KEY". Een API-key kan je aanvragen bij de product owner Cathy Dingemanse, cathy.dingemanse@denhaag.nl.
+Om de web api te gebruiken heb je een apikey nodig. Deze voeg je aan een request toe als header "X-API-KEY". Een API-key vraag je aan bij de product owner [cathy.dingemanse@denhaag.nl](mailto:cathy.dingemanse@denhaag.nl).
 
-__De Haal Centraal probeeromgeving gebruikt GBA-V op basis van de gemeentelijke autorisatie "Algemene gemeentetaken" voor buitengemeentelijke personen. Dit betekent dat niet alle gegevens die in de API voor kunnen komen worden gevuld. In de [API mapping](./BRP-LO%20GBA%20mapping.xlsx?raw=true) kun je zien welke gegevens wel of niet onder deze autorisatie vallen.__
+__De Haal Centraal probeeromgeving gebruikt GBA-V op basis van de gemeentelijke autorisatie "Algemene gemeentetaken" voor buitengemeentelijke personen. Dit betekent dat de GBA-V niet alle gegevens teruggeeft die in de response zijn gedefinieerd. In de [API mapping](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/docs/BRP-LO%20GBA%20mapping.xlsx?raw=true){:target="_blank" rel="noopener"} kun je zien welke gegevens wel of niet onder deze autorisatie vallen.__
+
+__Je kan de Haal Centraal probeeromgeving niet gebruiken vanuit de browser, dus ook niet vanuit de browserversie van Postman. Gebruik dus de desktopversie van een testtool (zoals Postman) om berichten te sturen.__
 
 ### Importeer de specificaties in Postman
 
-De werking van de 'Bevraging Ingeschreven Persoon' Web API is het makkelijkst te testen met behulp van [Postman](https://www.getpostman.com/). We hebben al een [Postman collection](../test/BRP-Bevragen-postman-collection.json) klaargezet. Deze kun je importeren in Postman.
+De werking van de 'Bevraging Ingeschreven Persoon' Web API is het makkelijkst te testen met behulp van [Postman](https://www.getpostman.com/){:target="_blank" rel="noopener"}. We hebben al een [Postman collection](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/test/BRP-Bevragen-postman-collection.json){:target="_blank" rel="noopener"} voor je klaargezet. Deze kun je importeren in Postman.
 
-In Postman kan de 'Bevraging Ingeschreven Persoon' OpenAPI specificatie worden geïmporteerd en kan vervolgens visueel de verschillende endpoints worden aangeroepen. Volg onderstaande stappen om de OpenAPI specificatie bestand te importeren:
+In Postman kun je de 'Bevraging Ingeschreven Persoon' OpenAPI specificatie importeren en visueel de verschillende endpoints aanroepen. Volg deze stappen om het OpenAPI specificatie bestand te importeren:
+
 ![Import](./img/1-click-import-button.jpg)  
+
 1.Klik op de Import button om de Import dialog box te openen
 
 !['Import From Link'](./img/2-select-import-from-link-tab.jpg)  
@@ -43,7 +53,7 @@ https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/mast
 ```
 
 ![Generate Postman collection](./img/3-generate-postman-collection.jpg)  
-3.Klik op de Next button om een Postman collectie te genereren uit OpenAPI specificatie bestand
+3.Klik op de Next button om een Postman collectie te genereren uit het OpenAPI specificatie bestand
 
 ![Postman collection overview](./img/4-postman-collection-overview.jpg)  
 4.Import overzicht
@@ -64,24 +74,24 @@ https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/mast
 
 Selecteer hiervoor de /GET ingeschreven Natuurlijk Persoon request.  
 ![/GET ingeschreven Natuurlijk Persoon request](./img/5-select-request.jpg)  
-In het rechterscherm wordt een invoerscherm voor de request getoond. Uncheck voor de volgende voorbeeld aanroep de expand en fields Query Params en vul in de burgerservicenummer Path Variabele een bsn in (zie onderaan de Getting started voor mogelijke burgerservicenummers).
+In het rechterscherm zie je een invoerscherm voor de request. Uncheck voor de volgende voorbeeldaanroep de expand en fields Query Params en vul in de burgerservicenummer Path Variabele een bsn in (zie onderaan de Getting started voor mogelijke burgerservicenummers).
 
-Klik de Send button om de request naar de endpoint te sturen. De 'Bevraging Ingeschreven Persoon' Web API zal reageren met een response:  
+Klik op de Send button om de request naar de endpoint te sturen. De Web API reageert dan met een response:  
 ![Response](./img/7-response.jpg)
 
-De 'Bevraging Ingeschreven Persoon' Web API maakt gebruik van de HAL (Hypertext Application Language) standaard om bij een resource links op te nemen naar gerelateerde resources en/of om bij een resource gerelateerde resources op te nemen (embedden).  
-In de response hierboven is voor de bevraagde persoon te zien dat het _links/ouders element links bevat naar de ouders van de bevraagde persoon.
+De Web API gebruikt de HAL (Hypertext Application Language) standaard om links op te nemen naar gerelateerde resources en/of om bij een resource gerelateerde resources op te nemen (embedden).  
+In de response hierboven kun je zien dat het _links/ouders element links bevat naar de ouders van de persoon.
 
-De gegevens van ouders kunnen ook worden ge-embed tijdens de bevraging van een persoon. Dit gebeurt met behulp van de `expand` Query Parameter. Behalve de ouders kunnen (indien aanwezig) ook de kind(-eren) en partner(s) in de bevraging van een ingeschreven persoon worden ge-embed. De gegevens van ouders, partners en/of kinderen zijn dan te vinden onder de _embedded element:
+Je kunt ook oudergegevens embedden bij het bevragen van een persoon. Dit doe je met de `expand` Query Parameter. Behalve de ouders kun je ook kind(-eren) en partner(s) in de bevraging van een ingeschreven persoon embedden. Deze gegevens zijn te vinden onder de _embedded element:
 ![expand parameter](./img/8-using-expand-parameter.jpg)  
-In bovenstaand figuur is ook te zien hoe de `expand` Query Parameter eruit moet zien om de ouders, kinderen en partner te embedden in de response van een bevraging van een ingeschreven persoon.
+In dit figuur zie je hoe de `expand` Query Parameter eruit moet zien om de ouders, kinderen en partner te embedden in de response van een ingeschreven persoon.
 
-Het is mogelijk om alleen specifieke kenmerken van een ingeschreven persoon te bevragen met behulp van de `fields` Query Parameter. In onderstaand figuur is een bevraging te zien met de `fields` Query Parameter gezet op `burgerservicenummer,naam,geboorte.datum`.
+Je kunt ook alleen specifieke kenmerken van een ingeschreven persoon opvragen met behulp van de `fields` Query Parameter. Hieronder zie je een bevraging met de `fields` Query Parameter gezet op `burgerservicenummer,naam,geboorte.datum`.
 ![fields parameter](./img/9-using-fields-parameter.jpg)
 
-### Test Personen
+### Testpersonen
 
-Onderstaande tabel bevat de burgerservicenummers van testpersonen voor specifieke situaties waarmee werking van de 'Bevraging Ingeschreven Persoon' Web API kan worden getest.
+Deze tabel bevat de burgerservicenummers van testpersonen voor specifieke situaties waarmee de 'Bevraging Ingeschreven Persoon' Web API kan worden getest.
 
 burgerservicenummer | situatie
 ---------------- | :-------  
@@ -100,5 +110,5 @@ burgerservicenummer | situatie
 999993550 | partner niet ingeschreven
 999990421 | meerdere kinderen, wel en niet-ingeschreven
 
-De API gebruikt de GBA-V proefomgeving. Alle testpersonen die daarin voorkomen kun je ook in de API gebruiken. De volledige set testpersonen kan worden gedownload bij de [RvIG](https://www.rvig.nl/documenten/richtlijnen/2018/09/20/testdataset-persoonslijsten-proefomgevingen-gba-v).
-Een vertaling van GBA-V (LO GBA) attributen naar BRP API properties staat beschreven in de [BRP-LO GBA mapping](./BRP-LO%20GBA%20mapping.xlsx?raw=true).
+De API gebruikt de GBA-V proefomgeving. Alle testpersonen die daarin voorkomen kun je ook in de API gebruiken. De volledige set testpersonen kan worden gedownload bij de [RvIG](https://www.rvig.nl/documenten/richtlijnen/2018/09/20/testdataset-persoonslijsten-proefomgevingen-gba-v){:target="_blank"}.
+Een vertaling van GBA-V (LO GBA) attributen naar BRP API properties staat beschreven in de [BRP-LO GBA mapping](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/docs/BRP-LO%20GBA%20mapping.xlsx?raw=true){:target="_blank" rel="noopener"}.
