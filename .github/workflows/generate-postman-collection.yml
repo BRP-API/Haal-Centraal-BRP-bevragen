@@ -3,8 +3,8 @@ name: generate-postman-collection
 on:
   push:
     paths:
-        - "specificatie/genereervariant/*.yaml"
-        - ".github/workflows/generate-postman-collection.yml"
+        - specificatie/genereervariant/*.yaml
+        - .github/workflows/generate-postman-collection.yml
     branches:
       - '**'
   workflow_dispatch:
