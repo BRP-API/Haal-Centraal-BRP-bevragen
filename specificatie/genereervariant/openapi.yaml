@@ -17,6 +17,8 @@ servers:
 - url: https://www.haalcentraal.nl/haalcentraal/api/brp
   description: |
     APILAB testserver
+tags:
+- name: Ingeschreven Personen
 paths:
   /ingeschrevenpersonen:
     get:

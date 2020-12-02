@@ -16,6 +16,9 @@
     "url" : "https://www.haalcentraal.nl/haalcentraal/api/brp",
     "description" : "APILAB testserver\n"
   } ],
+  "tags" : [ {
+    "name" : "Ingeschreven Personen"
+  } ],
   "paths" : {
     "/ingeschrevenpersonen" : {
       "get" : {
