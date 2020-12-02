@@ -17,6 +17,8 @@ info:
   license:
     name: European Union Public License, version 1.2 (EUPL-1.2)
     url: https://eupl.eu/1.2/nl/
+tags:
+- name: Ingeschreven Personen
 paths:
   /ingeschrevenpersonen:
     get:
