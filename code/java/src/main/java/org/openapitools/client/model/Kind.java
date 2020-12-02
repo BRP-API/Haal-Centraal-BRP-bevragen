@@ -31,7 +31,7 @@ import org.openapitools.client.model.Naam;
  * Gegevens over een kind van de persoon. 
  */
 @ApiModel(description = "Gegevens over een kind van de persoon. ")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-12-02T08:12:12.840Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-12-02T08:18:19.408Z[Etc/UTC]")
 public class Kind {
   public static final String SERIALIZED_NAME_BURGERSERVICENUMMER = "burgerservicenummer";
   @SerializedName(SERIALIZED_NAME_BURGERSERVICENUMMER)

@@ -29,7 +29,7 @@ import java.time.LocalDate;
  * Gegevens over de datums die mogelijk niet volledig zijn.
  */
 @ApiModel(description = "Gegevens over de datums die mogelijk niet volledig zijn.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-12-02T08:12:12.840Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-12-02T08:18:19.408Z[Etc/UTC]")
 public class DatumOnvolledig {
   public static final String SERIALIZED_NAME_DAG = "dag";
   @SerializedName(SERIALIZED_NAME_DAG)

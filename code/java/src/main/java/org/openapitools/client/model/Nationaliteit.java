@@ -32,7 +32,7 @@ import org.openapitools.client.model.Waardetabel;
  * * **redenOpname** : De reden op grond waarvan de persoon de nationaliteit gekregen heeft. 
  */
 @ApiModel(description = "* **redenOpname** : De reden op grond waarvan de persoon de nationaliteit gekregen heeft. ")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-12-02T08:12:12.840Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-12-02T08:18:19.408Z[Etc/UTC]")
 public class Nationaliteit {
   public static final String SERIALIZED_NAME_AANDUIDING_BIJZONDER_NEDERLANDERSCHAP = "aanduidingBijzonderNederlanderschap";
   @SerializedName(SERIALIZED_NAME_AANDUIDING_BIJZONDER_NEDERLANDERSCHAP)
