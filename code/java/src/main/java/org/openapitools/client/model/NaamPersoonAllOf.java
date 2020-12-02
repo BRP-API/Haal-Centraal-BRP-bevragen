@@ -29,7 +29,7 @@ import org.openapitools.client.model.Waardetabel;
 /**
  * NaamPersoonAllOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-12-02T07:33:59.951Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-12-02T07:53:40.991Z[Etc/UTC]")
 public class NaamPersoonAllOf {
   public static final String SERIALIZED_NAME_AANHEF = "aanhef";
   @SerializedName(SERIALIZED_NAME_AANHEF)

@@ -31,7 +31,7 @@ import org.openapitools.client.model.Waardetabel;
  * Gegevens over de verblijfsrechtelijke status van de persoon. * **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd. * **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden. * **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt. 
  */
 @ApiModel(description = "Gegevens over de verblijfsrechtelijke status van de persoon. * **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd. * **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden. * **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt. ")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-12-02T07:33:59.951Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-12-02T07:53:40.991Z[Etc/UTC]")
 public class Verblijfstitel {
   public static final String SERIALIZED_NAME_AANDUIDING = "aanduiding";
   @SerializedName(SERIALIZED_NAME_AANDUIDING)
