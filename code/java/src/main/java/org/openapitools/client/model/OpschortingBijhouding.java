@@ -30,7 +30,7 @@ import org.openapitools.client.model.RedenOpschortingBijhoudingEnum;
  * * **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt. 
  */
 @ApiModel(description = "* **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt. ")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-12-02T07:53:40.991Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-12-02T08:12:12.840Z[Etc/UTC]")
 public class OpschortingBijhouding {
   public static final String SERIALIZED_NAME_REDEN = "reden";
   @SerializedName(SERIALIZED_NAME_REDEN)
