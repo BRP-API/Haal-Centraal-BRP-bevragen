@@ -3,8 +3,8 @@ name: generate-sdks
 on:
   push:
     paths:
-        - ".specificatie/genereervariant/*.yaml"
-        - ".github/workflows/generate-sdks.yml"
+        - specificatie/genereervariant/*.yaml
+        - .github/workflows/generate-sdks.yml
     branches:
       - '**'
   workflow_dispatch:
