@@ -79,7 +79,7 @@ zoals opgesteld binnen het programma Digitaal Stelsel Omgevingswet worden waar
 mogelijk toegepast.
 
 ## Realisatie
-Van iedere informatiebehoefte van een binnengemeentelijke afnemer die bij ons bekend is wordt een issue (user story) gemaakt. Voor de meest voorkomende stories worden achtereenvolgens AOS3 specs en indien nodig BDD scenario's opgesteld en gerealiseerd. 
+Van iedere informatiebehoefte van een binnengemeentelijke afnemer die bij ons bekend is wordt een issue (user story) gemaakt. Voor de meest voorkomende stories worden achtereenvolgens OAS3 specs en indien nodig BDD scenario's opgesteld en gerealiseerd. 
 
 - OAS3 specs worden opgesteld door VNG Realisatie adviseur standaarden ism een developer. 
 - OAS3 specs worden getoetst door een developer. 
