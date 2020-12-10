@@ -811,6 +811,12 @@ components:
           type: boolean
         datumIngangOnderzoek:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+    NaamInOnderzoekUitgebreid:
+      allOf:
+        - $ref: '#/components/schemas/NaamInOnderzoek'
+        - properties:
+            adellijkeTitelPredikaat:
+              type: boolean
     OuderInOnderzoek:
       type: "object"
       description: |
@@ -895,6 +901,8 @@ components:
               $ref: "#/components/schemas/Naamgebruik_enum"
             adellijkeTitelPredikaat:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+            inOnderzoek:
+              $ref: "#/components/schemas/NaamInOnderzoekUitgebreid"
     PersoonInOnderzoek:
       type: "object"
       description: |
