@@ -2006,6 +2006,12 @@ components:
           $ref: '#/components/schemas/DatumOnvolledig'
       description: |
         Geeft aan welke gegevens over de naam in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+    NaamInOnderzoekUitgebreid:
+      allOf:
+      - $ref: '#/components/schemas/NaamInOnderzoek'
+      - properties:
+          adellijkeTitelPredikaat:
+            type: boolean
     OuderInOnderzoek:
       type: object
       properties:
@@ -2090,6 +2096,8 @@ components:
             $ref: '#/components/schemas/Naamgebruik_enum'
           adellijkeTitelPredikaat:
             $ref: '#/components/schemas/Waardetabel'
+          inOnderzoek:
+            $ref: '#/components/schemas/NaamInOnderzoekUitgebreid'
     PersoonInOnderzoek:
       type: object
       properties:
