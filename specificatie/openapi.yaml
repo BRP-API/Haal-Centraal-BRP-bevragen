@@ -796,6 +796,10 @@ components:
         voorvoegsel:
           type: "string"
           example: "de"
+        aanduidingNaamgebruik:
+          $ref: "#/components/schemas/Naamgebruik_enum"
+        adellijkeTitelPredikaat:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
         inOnderzoek:
           $ref: "#/components/schemas/NaamInOnderzoek"
     NaamInOnderzoek:
@@ -808,6 +812,8 @@ components:
         voornamen:
           type: boolean
         voorvoegsel:
+          type: boolean
+        adellijkeTitelPredikaat:
           type: boolean
         datumIngangOnderzoek:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
@@ -891,10 +897,6 @@ components:
               description: |
                             Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert.
               example: "baron Van den Aedel"
-            aanduidingNaamgebruik:
-              $ref: "#/components/schemas/Naamgebruik_enum"
-            adellijkeTitelPredikaat:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
     PersoonInOnderzoek:
       type: "object"
       description: |
