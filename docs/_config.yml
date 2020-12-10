@@ -13,7 +13,7 @@ nav:
         path: /
 #      - title: Goals canvas
 #        path: /goals-canvas
-  - title: Specificaties v. 1.0
+  - title: Specificaties v. 1.1
     subnav:
       - title: Getting started
         path: /getting-started
