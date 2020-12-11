@@ -5,7 +5,7 @@
 - De property "adellijkeTitelPredikaat" is verplaatst van "NaamPersoon" naar "Naam"
   Dit heeft als gevolg dat deze property nu ook onderdeel is van de resources "ouder", "kind" en "partner"
 - De property "adellijkeTitelPredikaat" (boolean) is toegevoegd aan "InOnderzoek" van het schemacomponent "Naam"
-- Bij "NaamPersoon" is de boolean "aanduidingNaamGebruik" toegevoegd aan "Inonderzoek"  
+- Bij "NaamPersoon" is de boolean "aanduidingNaamGebruik" toegevoegd aan "inonderzoek"  
 
 ## Versie 1.1.0
 
