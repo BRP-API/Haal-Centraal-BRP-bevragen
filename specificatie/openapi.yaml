@@ -817,7 +817,7 @@ components:
           type: boolean
         datumIngangOnderzoek:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
-    NaamInOnderzoekUitgebreid:
+    NaamPersoonInOnderzoek:
       allOf:
         - $ref: '#/components/schemas/NaamInOnderzoek'
         - properties:
@@ -906,7 +906,7 @@ components:
             aanduidingNaamgebruik:
               $ref: "#/components/schemas/Naamgebruik_enum"
             inOnderzoek:
-              $ref: "#/components/schemas/NaamInOnderzoekUitgebreid"
+              $ref: "#/components/schemas/NaamPersoonInOnderzoek"
     PersoonInOnderzoek:
       type: "object"
       description: |

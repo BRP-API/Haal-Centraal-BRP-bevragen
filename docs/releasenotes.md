@@ -1,5 +1,12 @@
 # Releasenotes Haal-Centraal-BRP-Bevragen
 
+## Versie 1.2.0
+
+- De property "adellijkeTitelPredikaat" is verplaatst van "NaamPersoon" naar "Naam"
+  Dit heeft als gevolg dat deze property nu ook onderdeel is van de resources "ouder", "kind" en "partner"
+- De property "adellijkeTitelPredikaat" (boolean) is toegevoegd aan "InOnderzoek" van het schemacomponent "Naam"
+- Bij "NaamPersoon" is de boolean "aanduidingNaamGebruik" toegevoegd aan "Inonderzoek"  
+
 ## Versie 1.1.0
 
 - In de resource IngeschrevenPersoon zijn in de naam de properties "regelVoorafgaandAanAanschrijfwijze" en "adellijkeTitelPredikaat" toegevoegd

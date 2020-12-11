@@ -2012,7 +2012,7 @@ components:
           $ref: '#/components/schemas/DatumOnvolledig'
       description: |
         Geeft aan welke gegevens over de naam in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
-    NaamInOnderzoekUitgebreid:
+    NaamPersoonInOnderzoek:
       allOf:
       - $ref: '#/components/schemas/NaamInOnderzoek'
       - properties:
@@ -2101,7 +2101,7 @@ components:
           aanduidingNaamgebruik:
             $ref: '#/components/schemas/Naamgebruik_enum'
           inOnderzoek:
-            $ref: '#/components/schemas/NaamInOnderzoekUitgebreid'
+            $ref: '#/components/schemas/NaamPersoonInOnderzoek'
     PersoonInOnderzoek:
       type: object
       properties:
