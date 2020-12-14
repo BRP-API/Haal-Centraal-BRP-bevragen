@@ -1,0 +1,76 @@
+name: publish 'in productie' en 'in ontwikkeling' user stories
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Create User Stories IO
+        run: |
+          echo -e '---\nlayout: page-with-side-nav\ntitle: User Stories in Ontwikkeling\n---\n' >> user-stories-dev.md
+          echo -e '# User stories\n' >> user-stories-dev.md
+
+      - name: List 'v1.2' user stories
+        uses: lee-dohm/select-matching-issues@v1.2.0
+        with:
+          format: list
+          query:  label:"v1.2" label:"User Story"
+          token: ${{ secrets.USER_TOKEN }}
+          path: issues-tmp.md
+      - run: |
+          cat issues-tmp.md >> user-stories-dev.md
+          echo -e '\n' >> user-stories-dev.md
+        
+      - name: Create User Stories Prod
+        run: |
+          echo -e '---\nlayout: page-with-side-nav\ntitle: User Stories in Productie\n---\n' >> user-stories-prod.md
+          echo -e '# User stories\n' >> user-stories-prod.md
+          
+      - name: List 'v1.1' user stories
+        uses: lee-dohm/select-matching-issues@v1.2.0
+        with:
+          format: list
+          query:  label:"v1.1" label:"User Story"
+          token: ${{ secrets.USER_TOKEN }}
+          path: issues-tmp.md
+      - run: |
+          cat issues-tmp.md >> user-stories-prod.md
+          echo -e '\n' >> user-stories-prod.md
+        
+      - name: List 'v1.0' user stories
+        uses: lee-dohm/select-matching-issues@v1.2.0
+        with:
+          format: list
+          query:  label:"v1.0" label:"User Story"
+          token: ${{ secrets.USER_TOKEN }}
+          path: issues-tmp.md
+      - run: |
+          cat issues-tmp.md >> user-stories-prod.md
+          echo -e '\n' >> user-stories-prod.md
+
+      - name: target=_blank toevoegen, move naar ./docs en committen
+        run: |
+          sed -i 's/)$/){:target="_blank" rel="noopener"}/' user-stories-dev.md
+          sed -i 's/)$/){:target="_blank" rel="noopener"}/' user-stories-prod.md
+
+          mv user-stories-dev.md ./docs/user-stories-dev.md
+          mv user-stories-prod.md ./docs/user-stories-prod.md
+
+          if [ -n "$(git status ./docs/user-stories-dev.md --porcelain)" ]; then
+            git add ./docs/user-stories-dev.md
+          fi
+          if [ -n "$(git status ./docs/user-stories-prod.md --porcelain)" ]; then
+            git add ./docs/user-stories-prod.md
+          fi
+
+          if [ -n "$(git status ./docs --porcelain)" ]; then
+            git config user.name "$GITHUB_ACTOR"
+            git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+            git commit -m "commit user stories artifacts"
+            git push
+          fi
