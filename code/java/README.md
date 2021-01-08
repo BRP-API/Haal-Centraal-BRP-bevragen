@@ -2,7 +2,7 @@
 
 Bevragen Ingeschreven Personen
 - API version: 1.1.0
-  - Build date: 2021-01-08T13:57:27.296Z[Etc/UTC]
+  - Build date: 2021-01-08T14:03:42.958Z[Etc/UTC]
 
 API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.
 

@@ -29,7 +29,7 @@ import org.openapitools.client.model.DatumOnvolledig;
  * Geeft aan welke gegevens over de nationaliteit in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature) 
  */
 @ApiModel(description = "Geeft aan welke gegevens over de nationaliteit in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature) ")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-08T13:57:27.296Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-08T14:03:42.958Z[Etc/UTC]")
 public class NationaliteitInOnderzoek {
   public static final String SERIALIZED_NAME_AANDUIDING_BIJZONDER_NEDERLANDERSCHAP = "aanduidingBijzonderNederlanderschap";
   @SerializedName(SERIALIZED_NAME_AANDUIDING_BIJZONDER_NEDERLANDERSCHAP)

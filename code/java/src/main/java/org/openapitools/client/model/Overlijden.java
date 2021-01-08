@@ -31,7 +31,7 @@ import org.openapitools.client.model.Waardetabel;
  * Gegevens over het overlijden van de persoon. * **datum** : datum waarop de persoon is overleden. * **land** : land waar de persoon is overleden. * **plaats** : plaats waar de persoon is overleden. Voor een plaats buiten Nederland is gemeentecode&#x3D;1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding. 
  */
 @ApiModel(description = "Gegevens over het overlijden van de persoon. * **datum** : datum waarop de persoon is overleden. * **land** : land waar de persoon is overleden. * **plaats** : plaats waar de persoon is overleden. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding. ")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-08T13:57:27.296Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-08T14:03:42.958Z[Etc/UTC]")
 public class Overlijden {
   public static final String SERIALIZED_NAME_INDICATIE_OVERLEDEN = "indicatieOverleden";
   @SerializedName(SERIALIZED_NAME_INDICATIE_OVERLEDEN)

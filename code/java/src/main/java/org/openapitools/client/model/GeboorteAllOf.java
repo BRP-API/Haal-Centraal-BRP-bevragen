@@ -30,7 +30,7 @@ import org.openapitools.client.model.Waardetabel;
  * Gegevens over de geboorte. * **datum** : datum waarop de persoon is geboren. * **land** : land waar de persoon is geboren * **plaats** : plaats waar de persoon is geboren. Voor een plaats buiten Nederland is gemeentecode&#x3D;1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding. 
  */
 @ApiModel(description = "Gegevens over de geboorte. * **datum** : datum waarop de persoon is geboren. * **land** : land waar de persoon is geboren * **plaats** : plaats waar de persoon is geboren. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding. ")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-08T13:57:27.296Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-08T14:03:42.958Z[Etc/UTC]")
 public class GeboorteAllOf {
   public static final String SERIALIZED_NAME_LAND = "land";
   @SerializedName(SERIALIZED_NAME_LAND)
