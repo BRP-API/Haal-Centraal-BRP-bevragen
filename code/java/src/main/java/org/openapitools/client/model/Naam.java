@@ -24,11 +24,12 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import org.openapitools.client.model.NaamInOnderzoek;
+import org.openapitools.client.model.Waardetabel;
 
 /**
  * Naam
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-12-02T08:12:12.840Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-08T13:57:27.296Z[Etc/UTC]")
 public class Naam {
   public static final String SERIALIZED_NAME_GESLACHTSNAAM = "geslachtsnaam";
   @SerializedName(SERIALIZED_NAME_GESLACHTSNAAM)
@@ -45,6 +46,10 @@ public class Naam {
   public static final String SERIALIZED_NAME_VOORVOEGSEL = "voorvoegsel";
   @SerializedName(SERIALIZED_NAME_VOORVOEGSEL)
   private String voorvoegsel;
+
+  public static final String SERIALIZED_NAME_ADELLIJKE_TITEL_PREDIKAAT = "adellijkeTitelPredikaat";
+  @SerializedName(SERIALIZED_NAME_ADELLIJKE_TITEL_PREDIKAAT)
+  private Waardetabel adellijkeTitelPredikaat;
 
   public static final String SERIALIZED_NAME_IN_ONDERZOEK = "inOnderzoek";
   @SerializedName(SERIALIZED_NAME_IN_ONDERZOEK)
@@ -143,6 +148,29 @@ public class Naam {
   }
 
 
+  public Naam adellijkeTitelPredikaat(Waardetabel adellijkeTitelPredikaat) {
+    
+    this.adellijkeTitelPredikaat = adellijkeTitelPredikaat;
+    return this;
+  }
+
+   /**
+   * Get adellijkeTitelPredikaat
+   * @return adellijkeTitelPredikaat
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Waardetabel getAdellijkeTitelPredikaat() {
+    return adellijkeTitelPredikaat;
+  }
+
+
+  public void setAdellijkeTitelPredikaat(Waardetabel adellijkeTitelPredikaat) {
+    this.adellijkeTitelPredikaat = adellijkeTitelPredikaat;
+  }
+
+
   public Naam inOnderzoek(NaamInOnderzoek inOnderzoek) {
     
     this.inOnderzoek = inOnderzoek;
@@ -167,7 +195,7 @@ public class Naam {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -179,12 +207,13 @@ public class Naam {
         Objects.equals(this.voorletters, naam.voorletters) &&
         Objects.equals(this.voornamen, naam.voornamen) &&
         Objects.equals(this.voorvoegsel, naam.voorvoegsel) &&
+        Objects.equals(this.adellijkeTitelPredikaat, naam.adellijkeTitelPredikaat) &&
         Objects.equals(this.inOnderzoek, naam.inOnderzoek);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(geslachtsnaam, voorletters, voornamen, voorvoegsel, inOnderzoek);
+    return Objects.hash(geslachtsnaam, voorletters, voornamen, voorvoegsel, adellijkeTitelPredikaat, inOnderzoek);
   }
 
 
@@ -196,6 +225,7 @@ public class Naam {
     sb.append("    voorletters: ").append(toIndentedString(voorletters)).append("\n");
     sb.append("    voornamen: ").append(toIndentedString(voornamen)).append("\n");
     sb.append("    voorvoegsel: ").append(toIndentedString(voorvoegsel)).append("\n");
+    sb.append("    adellijkeTitelPredikaat: ").append(toIndentedString(adellijkeTitelPredikaat)).append("\n");
     sb.append("    inOnderzoek: ").append(toIndentedString(inOnderzoek)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -205,7 +235,7 @@ public class Naam {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

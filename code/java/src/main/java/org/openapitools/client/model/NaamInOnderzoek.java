@@ -29,7 +29,7 @@ import org.openapitools.client.model.DatumOnvolledig;
  * Geeft aan welke gegevens over de naam in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature) 
  */
 @ApiModel(description = "Geeft aan welke gegevens over de naam in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature) ")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-12-02T08:12:12.840Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-08T13:57:27.296Z[Etc/UTC]")
 public class NaamInOnderzoek {
   public static final String SERIALIZED_NAME_GESLACHTSNAAM = "geslachtsnaam";
   @SerializedName(SERIALIZED_NAME_GESLACHTSNAAM)
@@ -42,6 +42,10 @@ public class NaamInOnderzoek {
   public static final String SERIALIZED_NAME_VOORVOEGSEL = "voorvoegsel";
   @SerializedName(SERIALIZED_NAME_VOORVOEGSEL)
   private Boolean voorvoegsel;
+
+  public static final String SERIALIZED_NAME_ADELLIJKE_TITEL_PREDIKAAT = "adellijkeTitelPredikaat";
+  @SerializedName(SERIALIZED_NAME_ADELLIJKE_TITEL_PREDIKAAT)
+  private Boolean adellijkeTitelPredikaat;
 
   public static final String SERIALIZED_NAME_DATUM_INGANG_ONDERZOEK = "datumIngangOnderzoek";
   @SerializedName(SERIALIZED_NAME_DATUM_INGANG_ONDERZOEK)
@@ -117,6 +121,29 @@ public class NaamInOnderzoek {
   }
 
 
+  public NaamInOnderzoek adellijkeTitelPredikaat(Boolean adellijkeTitelPredikaat) {
+    
+    this.adellijkeTitelPredikaat = adellijkeTitelPredikaat;
+    return this;
+  }
+
+   /**
+   * Get adellijkeTitelPredikaat
+   * @return adellijkeTitelPredikaat
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getAdellijkeTitelPredikaat() {
+    return adellijkeTitelPredikaat;
+  }
+
+
+  public void setAdellijkeTitelPredikaat(Boolean adellijkeTitelPredikaat) {
+    this.adellijkeTitelPredikaat = adellijkeTitelPredikaat;
+  }
+
+
   public NaamInOnderzoek datumIngangOnderzoek(DatumOnvolledig datumIngangOnderzoek) {
     
     this.datumIngangOnderzoek = datumIngangOnderzoek;
@@ -141,7 +168,7 @@ public class NaamInOnderzoek {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -152,12 +179,13 @@ public class NaamInOnderzoek {
     return Objects.equals(this.geslachtsnaam, naamInOnderzoek.geslachtsnaam) &&
         Objects.equals(this.voornamen, naamInOnderzoek.voornamen) &&
         Objects.equals(this.voorvoegsel, naamInOnderzoek.voorvoegsel) &&
+        Objects.equals(this.adellijkeTitelPredikaat, naamInOnderzoek.adellijkeTitelPredikaat) &&
         Objects.equals(this.datumIngangOnderzoek, naamInOnderzoek.datumIngangOnderzoek);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(geslachtsnaam, voornamen, voorvoegsel, datumIngangOnderzoek);
+    return Objects.hash(geslachtsnaam, voornamen, voorvoegsel, adellijkeTitelPredikaat, datumIngangOnderzoek);
   }
 
 
@@ -168,6 +196,7 @@ public class NaamInOnderzoek {
     sb.append("    geslachtsnaam: ").append(toIndentedString(geslachtsnaam)).append("\n");
     sb.append("    voornamen: ").append(toIndentedString(voornamen)).append("\n");
     sb.append("    voorvoegsel: ").append(toIndentedString(voorvoegsel)).append("\n");
+    sb.append("    adellijkeTitelPredikaat: ").append(toIndentedString(adellijkeTitelPredikaat)).append("\n");
     sb.append("    datumIngangOnderzoek: ").append(toIndentedString(datumIngangOnderzoek)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -177,7 +206,7 @@ public class NaamInOnderzoek {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

@@ -15,7 +15,7 @@ For more information, please visit [https://github.com/VNG-Realisatie/Haal-Centr
 
 ## Requirements.
 
-Python 2.7 and 3.4+
+Python >= 3.6
 
 ## Installation & Usage
 ### pip install
@@ -51,13 +51,22 @@ import openapi_client
 Please follow the [installation procedure](#installation--usage) and then run the following:
 
 ```python
-from __future__ import print_function
 
 import time
 import openapi_client
-from openapi_client.rest import ApiException
 from pprint import pprint
-
+from openapi_client.api import ingeschreven_personen_api
+from openapi_client.model.bad_request_foutbericht import BadRequestFoutbericht
+from openapi_client.model.foutbericht import Foutbericht
+from openapi_client.model.geslacht_enum import GeslachtEnum
+from openapi_client.model.ingeschreven_persoon_hal import IngeschrevenPersoonHal
+from openapi_client.model.ingeschreven_persoon_hal_collectie import IngeschrevenPersoonHalCollectie
+from openapi_client.model.kind_hal_basis import KindHalBasis
+from openapi_client.model.kind_hal_collectie import KindHalCollectie
+from openapi_client.model.ouder_hal_basis import OuderHalBasis
+from openapi_client.model.ouder_hal_collectie import OuderHalCollectie
+from openapi_client.model.partner_hal_basis import PartnerHalBasis
+from openapi_client.model.partner_hal_collectie import PartnerHalCollectie
 # Defining the host is optional and defaults to https://www.haalcentraal.nl/haalcentraal/api/brp
 # See configuration.py for a list of all supported configuration parameters.
 configuration = openapi_client.Configuration(
@@ -69,32 +78,33 @@ configuration = openapi_client.Configuration(
 # Enter a context with an instance of the API client
 with openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.IngeschrevenPersonenApi(api_client)
-    expand = 'expand_example' # str | Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature). (optional)
-fields = 'fields_example' # str | Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature) (optional)
-burgerservicenummer = ['999993653,999991723,999995078'] # list[str] | Uniek persoonsnummer.  (optional)
-geboorte__datum = 'Thu Sep 24 00:00:00 UTC 1964' # date | Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/parametervalidatie.feature)  (optional)
-geboorte__plaats = 'Utrecht' # str | Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).**  (optional)
-geslachtsaanduiding = openapi_client.GeslachtEnum() # GeslachtEnum | Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.  (optional)
-inclusief_overleden_personen = true # bool | Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/overleden_personen.feature)  (optional)
-naam__geslachtsnaam = 'Vries' # str | De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).**  (optional)
-naam__voorvoegsel = 'de' # str | Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).**  (optional)
-naam__voornamen = 'Dirk' # str | De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).**  (optional)
-verblijfplaats__gemeente_van_inschrijving = '0518' # str | Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.  (optional)
-verblijfplaats__huisletter = 'a' # str | Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.  (optional)
+    api_instance = ingeschreven_personen_api.IngeschrevenPersonenApi(api_client)
+    expand = "expand_example" # str | Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature). (optional)
+fields = "fields_example" # str | Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature) (optional)
+burgerservicenummer = [
+        "999993653,999991723,999995078",
+    ] # [str] | Uniek persoonsnummer.  (optional)
+geboorte__datum = dateutil_parser('Thu Sep 24 00:00:00 UTC 1964').date() # date | Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/parametervalidatie.feature)  (optional)
+geboorte__plaats = "Utrecht" # str | Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).**  (optional)
+geslachtsaanduiding = GeslachtEnum("man") # GeslachtEnum | Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.  (optional)
+inclusief_overleden_personen = True # bool | Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/overleden_personen.feature)  (optional)
+naam__geslachtsnaam = "Vries" # str | De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).**  (optional)
+naam__voorvoegsel = "de" # str | Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).**  (optional)
+naam__voornamen = "Dirk" # str | De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).**  (optional)
+verblijfplaats__gemeente_van_inschrijving = "0518" # str | Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.  (optional)
+verblijfplaats__huisletter = "a" # str | Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.  (optional)
 verblijfplaats__huisnummer = 14 # int | Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.  (optional)
-verblijfplaats__huisnummertoevoeging = 'bis' # str | Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.  (optional)
-verblijfplaats__nummeraanduiding_identificatie = '0518200000366054' # str | Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.  (optional)
-verblijfplaats__straat = 'Tulpstraat' # str | Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).  (optional)
-verblijfplaats__postcode = '2341SX' # str | De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.  (optional)
+verblijfplaats__huisnummertoevoeging = "bis" # str | Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.  (optional)
+verblijfplaats__nummeraanduiding_identificatie = "0518200000366054" # str | Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.  (optional)
+verblijfplaats__straat = "Tulpstraat" # str | Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).  (optional)
+verblijfplaats__postcode = "2341SX" # str | De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.  (optional)
 
     try:
         # Vindt personen
         api_response = api_instance.get_ingeschreven_personen(expand=expand, fields=fields, burgerservicenummer=burgerservicenummer, geboorte__datum=geboorte__datum, geboorte__plaats=geboorte__plaats, geslachtsaanduiding=geslachtsaanduiding, inclusief_overleden_personen=inclusief_overleden_personen, naam__geslachtsnaam=naam__geslachtsnaam, naam__voorvoegsel=naam__voorvoegsel, naam__voornamen=naam__voornamen, verblijfplaats__gemeente_van_inschrijving=verblijfplaats__gemeente_van_inschrijving, verblijfplaats__huisletter=verblijfplaats__huisletter, verblijfplaats__huisnummer=verblijfplaats__huisnummer, verblijfplaats__huisnummertoevoeging=verblijfplaats__huisnummertoevoeging, verblijfplaats__nummeraanduiding_identificatie=verblijfplaats__nummeraanduiding_identificatie, verblijfplaats__straat=verblijfplaats__straat, verblijfplaats__postcode=verblijfplaats__postcode)
         pprint(api_response)
-    except ApiException as e:
+    except openapi_client.ApiException as e:
         print("Exception when calling IngeschrevenPersonenApi->get_ingeschreven_personen: %s\n" % e)
-    
 ```
 
 ## Documentation for API Endpoints
@@ -156,6 +166,8 @@ Class | Method | HTTP request | Description
  - [NaamInOnderzoek](docs/NaamInOnderzoek.md)
  - [NaamPersoon](docs/NaamPersoon.md)
  - [NaamPersoonAllOf](docs/NaamPersoonAllOf.md)
+ - [NaamPersoonInOnderzoek](docs/NaamPersoonInOnderzoek.md)
+ - [NaamPersoonInOnderzoekAllOf](docs/NaamPersoonInOnderzoekAllOf.md)
  - [NaamgebruikEnum](docs/NaamgebruikEnum.md)
  - [Nationaliteit](docs/Nationaliteit.md)
  - [NationaliteitInOnderzoek](docs/NationaliteitInOnderzoek.md)
@@ -197,4 +209,23 @@ Class | Method | HTTP request | Description
 
 
 
+
+## Notes for Large OpenAPI documents
+If the OpenAPI document is large, imports in openapi_client.apis and openapi_client.models may fail with a
+RecursionError indicating the maximum recursion limit has been exceeded. In that case, there are a couple of solutions:
+
+Solution 1:
+Use specific imports for apis and models like:
+- `from openapi_client.api.default_api import DefaultApi`
+- `from openapi_client.model.pet import Pet`
+
+Solution 1:
+Before importing the package, adjust the maximum recursion limit as shown below:
+```
+import sys
+sys.setrecursionlimit(1500)
+import openapi_client
+from openapi_client.apis import *
+from openapi_client.models import *
+```
 

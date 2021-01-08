@@ -30,7 +30,7 @@ import org.openapitools.client.model.Waardetabel;
  * Gegevens over de geboorte. * **datum** : datum waarop de persoon is geboren. * **land** : land waar de persoon is geboren * **plaats** : plaats waar de persoon is geboren. Voor een plaats buiten Nederland is gemeentecode&#x3D;1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding. 
  */
 @ApiModel(description = "Gegevens over de geboorte. * **datum** : datum waarop de persoon is geboren. * **land** : land waar de persoon is geboren * **plaats** : plaats waar de persoon is geboren. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding. ")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-12-02T08:12:12.840Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-08T13:57:27.296Z[Etc/UTC]")
 public class GeboorteAllOf {
   public static final String SERIALIZED_NAME_LAND = "land";
   @SerializedName(SERIALIZED_NAME_LAND)
@@ -115,7 +115,7 @@ public class GeboorteAllOf {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -149,7 +149,7 @@ public class GeboorteAllOf {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

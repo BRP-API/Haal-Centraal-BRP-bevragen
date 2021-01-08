@@ -2,7 +2,7 @@ lazy val root = (project in file(".")).
   settings(
     organization := "org.openapitools",
     name := "openapi-java-client",
-    version := "1.0.0",
+    version := "1.1.0",
     scalaVersion := "2.11.4",
     scalacOptions ++= Seq("-feature"),
     javacOptions in compile ++= Seq("-Xlint:deprecation"),
@@ -17,7 +17,8 @@ lazy val root = (project in file(".")).
       "io.gsonfire" % "gson-fire" % "1.8.3" % "compile",
       "javax.annotation" % "javax.annotation-api" % "1.3.2" % "compile",
       "com.google.code.findbugs" % "jsr305" % "3.0.2" % "compile",
-      "junit" % "junit" % "4.13" % "test",
+      "javax.annotation" % "javax.annotation-api" % "1.3.2" % "compile",
+      "junit" % "junit" % "4.13.1" % "test",
       "com.novocode" % "junit-interface" % "0.10" % "test"
     )
   )

@@ -17,6 +17,8 @@ servers:
 - description: |
     APILAB testserver
   url: https://www.haalcentraal.nl/haalcentraal/api/brp
+tags:
+- name: Ingeschreven Personen
 paths:
   /ingeschrevenpersonen:
     get:
@@ -2032,6 +2034,8 @@ components:
         voorvoegsel:
           example: de
           type: string
+        adellijkeTitelPredikaat:
+          $ref: '#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: '#/components/schemas/NaamInOnderzoek'
       type: object
@@ -2045,9 +2049,15 @@ components:
           type: boolean
         voorvoegsel:
           type: boolean
+        adellijkeTitelPredikaat:
+          type: boolean
         datumIngangOnderzoek:
           $ref: '#/components/schemas/DatumOnvolledig'
       type: object
+    NaamPersoonInOnderzoek:
+      allOf:
+      - $ref: '#/components/schemas/NaamInOnderzoek'
+      - $ref: '#/components/schemas/NaamPersoonInOnderzoek_allOf'
     OuderInOnderzoek:
       description: |
         Geeft aan welke gegevens van de de ouder in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
@@ -2698,6 +2708,10 @@ components:
       properties:
         _links:
           $ref: '#/components/schemas/PartnerLinks'
+    NaamPersoonInOnderzoek_allOf:
+      properties:
+        aanduidingNaamgebruik:
+          type: boolean
     Geboorte_allOf:
       description: |
         Gegevens over de geboorte.
@@ -2735,8 +2749,8 @@ components:
           type: string
         aanduidingNaamgebruik:
           $ref: '#/components/schemas/Naamgebruik_enum'
-        adellijkeTitelPredikaat:
-          $ref: '#/components/schemas/Waardetabel'
+        inOnderzoek:
+          $ref: '#/components/schemas/NaamPersoonInOnderzoek'
     Verblijfplaats_allOf:
       description: |
         Gegevens over het verblijf of de woonlocatie van een persoon.
@@ -2822,4 +2836,5 @@ components:
           items:
             $ref: '#/components/schemas/InvalidParams'
           type: array
+      type: object
 

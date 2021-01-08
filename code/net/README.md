@@ -180,6 +180,8 @@ Class | Method | HTTP request | Description
  - [Model.NaamInOnderzoek](docs/NaamInOnderzoek.md)
  - [Model.NaamPersoon](docs/NaamPersoon.md)
  - [Model.NaamPersoonAllOf](docs/NaamPersoonAllOf.md)
+ - [Model.NaamPersoonInOnderzoek](docs/NaamPersoonInOnderzoek.md)
+ - [Model.NaamPersoonInOnderzoekAllOf](docs/NaamPersoonInOnderzoekAllOf.md)
  - [Model.NaamgebruikEnum](docs/NaamgebruikEnum.md)
  - [Model.Nationaliteit](docs/Nationaliteit.md)
  - [Model.NationaliteitInOnderzoek](docs/NationaliteitInOnderzoek.md)

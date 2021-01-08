@@ -28,7 +28,7 @@ import java.io.IOException;
  * Eigenschappen van het adres die kunnen worden hergebruikt in andere API&#39;s waarin adresgegevens worden opgenomen. 
  */
 @ApiModel(description = "Eigenschappen van het adres die kunnen worden hergebruikt in andere API's waarin adresgegevens worden opgenomen. ")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-12-02T08:12:12.840Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-08T13:57:27.296Z[Etc/UTC]")
 public class Adres {
   public static final String SERIALIZED_NAME_STRAAT = "straat";
   @SerializedName(SERIALIZED_NAME_STRAAT)
@@ -194,7 +194,7 @@ public class Adres {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -234,7 +234,7 @@ public class Adres {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

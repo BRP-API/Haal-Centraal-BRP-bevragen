@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Bevragen Ingeschreven Personen
 
@@ -10,18 +8,30 @@
 """
 
 
-from __future__ import absolute_import
-
 import re  # noqa: F401
+import sys  # noqa: F401
 
-# python 2 and python 3 compatibility library
-import six
-
-from openapi_client.api_client import ApiClient
-from openapi_client.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
+from openapi_client.api_client import ApiClient, Endpoint
+from openapi_client.model_utils import (  # noqa: F401
+    check_allowed_values,
+    check_validations,
+    date,
+    datetime,
+    file_type,
+    none_type,
+    validate_and_convert_types
 )
+from openapi_client.model.bad_request_foutbericht import BadRequestFoutbericht
+from openapi_client.model.foutbericht import Foutbericht
+from openapi_client.model.geslacht_enum import GeslachtEnum
+from openapi_client.model.ingeschreven_persoon_hal import IngeschrevenPersoonHal
+from openapi_client.model.ingeschreven_persoon_hal_collectie import IngeschrevenPersoonHalCollectie
+from openapi_client.model.kind_hal_basis import KindHalBasis
+from openapi_client.model.kind_hal_collectie import KindHalCollectie
+from openapi_client.model.ouder_hal_basis import OuderHalBasis
+from openapi_client.model.ouder_hal_collectie import OuderHalCollectie
+from openapi_client.model.partner_hal_basis import PartnerHalBasis
+from openapi_client.model.partner_hal_collectie import PartnerHalCollectie
 
 
 class IngeschrevenPersonenApi(object):
@@ -36,1115 +46,1183 @@ class IngeschrevenPersonenApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def get_ingeschreven_personen(self, **kwargs):  # noqa: E501
-        """Vindt personen  # noqa: E501
+        def __get_ingeschreven_personen(
+            self,
+            **kwargs
+        ):
+            """Vindt personen  # noqa: E501
 
-        Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met parameters uit de andere combinaties.   Default krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.   Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/fields_extensie.feature)   Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature)   1.  Persoon     -  geboorte__datum     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)   2.  Persoon     -  verblijfplaats__gemeenteVanInschrijving     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)   3.  Persoon     -  burgerservicenummer   4.  Postcode     -  verblijfplaats__postcode     -  verblijfplaats__huisnummer   5.  Straat     -  verblijfplaats__straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) )     -  verblijfplaats__gemeenteVanInschrijving     -  verblijfplaats__huisnummer   6.  Adres     -  verblijfplaats__nummeraanduidingIdentificatie   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_ingeschreven_personen(async_req=True)
-        >>> result = thread.get()
+            Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met parameters uit de andere combinaties.   Default krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.   Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/fields_extensie.feature)   Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature)   1.  Persoon     -  geboorte__datum     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)   2.  Persoon     -  verblijfplaats__gemeenteVanInschrijving     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)   3.  Persoon     -  burgerservicenummer   4.  Postcode     -  verblijfplaats__postcode     -  verblijfplaats__huisnummer   5.  Straat     -  verblijfplaats__straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) )     -  verblijfplaats__gemeenteVanInschrijving     -  verblijfplaats__huisnummer   6.  Adres     -  verblijfplaats__nummeraanduidingIdentificatie   # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
 
-        :param async_req bool: execute request asynchronously
-        :param str expand: Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature).
-        :param str fields: Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature)
-        :param list[str] burgerservicenummer: Uniek persoonsnummer. 
-        :param date geboorte__datum: Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/parametervalidatie.feature) 
-        :param str geboorte__plaats: Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).** 
-        :param GeslachtEnum geslachtsaanduiding: Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is. 
-        :param bool inclusief_overleden_personen: Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/overleden_personen.feature) 
-        :param str naam__geslachtsnaam: De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).** 
-        :param str naam__voorvoegsel: Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).** 
-        :param str naam__voornamen: De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).** 
-        :param str verblijfplaats__gemeente_van_inschrijving: Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven. 
-        :param str verblijfplaats__huisletter: Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven. 
-        :param int verblijfplaats__huisnummer: Een nummer dat door de gemeente aan een adresseerbaar object is gegeven. 
-        :param str verblijfplaats__huisnummertoevoeging: Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven. 
-        :param str verblijfplaats__nummeraanduiding_identificatie: Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG. 
-        :param str verblijfplaats__straat: Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature). 
-        :param str verblijfplaats__postcode: De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort. 
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: IngeschrevenPersoonHalCollectie
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.get_ingeschreven_personen_with_http_info(**kwargs)  # noqa: E501
+            >>> thread = api.get_ingeschreven_personen(async_req=True)
+            >>> result = thread.get()
 
-    def get_ingeschreven_personen_with_http_info(self, **kwargs):  # noqa: E501
-        """Vindt personen  # noqa: E501
 
-        Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met parameters uit de andere combinaties.   Default krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.   Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/fields_extensie.feature)   Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature)   1.  Persoon     -  geboorte__datum     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)   2.  Persoon     -  verblijfplaats__gemeenteVanInschrijving     -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)   3.  Persoon     -  burgerservicenummer   4.  Postcode     -  verblijfplaats__postcode     -  verblijfplaats__huisnummer   5.  Straat     -  verblijfplaats__straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) )     -  verblijfplaats__gemeenteVanInschrijving     -  verblijfplaats__huisnummer   6.  Adres     -  verblijfplaats__nummeraanduidingIdentificatie   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_ingeschreven_personen_with_http_info(async_req=True)
-        >>> result = thread.get()
+            Keyword Args:
+                expand (str): Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature).. [optional]
+                fields (str): Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature). [optional]
+                burgerservicenummer ([str]): Uniek persoonsnummer. . [optional]
+                geboorte__datum (date): Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/parametervalidatie.feature) . [optional]
+                geboorte__plaats (str): Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).** . [optional]
+                geslachtsaanduiding (GeslachtEnum): Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is. . [optional]
+                inclusief_overleden_personen (bool): Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/overleden_personen.feature) . [optional]
+                naam__geslachtsnaam (str): De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).** . [optional]
+                naam__voorvoegsel (str): Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).** . [optional]
+                naam__voornamen (str): De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).** . [optional]
+                verblijfplaats__gemeente_van_inschrijving (str): Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven. . [optional]
+                verblijfplaats__huisletter (str): Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven. . [optional]
+                verblijfplaats__huisnummer (int): Een nummer dat door de gemeente aan een adresseerbaar object is gegeven. . [optional]
+                verblijfplaats__huisnummertoevoeging (str): Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven. . [optional]
+                verblijfplaats__nummeraanduiding_identificatie (str): Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG. . [optional]
+                verblijfplaats__straat (str): Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature). . [optional]
+                verblijfplaats__postcode (str): De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort. . [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
 
-        :param async_req bool: execute request asynchronously
-        :param str expand: Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature).
-        :param str fields: Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature)
-        :param list[str] burgerservicenummer: Uniek persoonsnummer. 
-        :param date geboorte__datum: Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/parametervalidatie.feature) 
-        :param str geboorte__plaats: Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).** 
-        :param GeslachtEnum geslachtsaanduiding: Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is. 
-        :param bool inclusief_overleden_personen: Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/overleden_personen.feature) 
-        :param str naam__geslachtsnaam: De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).** 
-        :param str naam__voorvoegsel: Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).** 
-        :param str naam__voornamen: De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).** 
-        :param str verblijfplaats__gemeente_van_inschrijving: Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven. 
-        :param str verblijfplaats__huisletter: Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven. 
-        :param int verblijfplaats__huisnummer: Een nummer dat door de gemeente aan een adresseerbaar object is gegeven. 
-        :param str verblijfplaats__huisnummertoevoeging: Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven. 
-        :param str verblijfplaats__nummeraanduiding_identificatie: Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG. 
-        :param str verblijfplaats__straat: Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature). 
-        :param str verblijfplaats__postcode: De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort. 
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(IngeschrevenPersoonHalCollectie, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
+            Returns:
+                IngeschrevenPersoonHalCollectie
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            return self.call_with_http_info(**kwargs)
 
-        local_var_params = locals()
+        self.get_ingeschreven_personen = Endpoint(
+            settings={
+                'response_type': (IngeschrevenPersoonHalCollectie,),
+                'auth': [],
+                'endpoint_path': '/ingeschrevenpersonen',
+                'operation_id': 'get_ingeschreven_personen',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'expand',
+                    'fields',
+                    'burgerservicenummer',
+                    'geboorte__datum',
+                    'geboorte__plaats',
+                    'geslachtsaanduiding',
+                    'inclusief_overleden_personen',
+                    'naam__geslachtsnaam',
+                    'naam__voorvoegsel',
+                    'naam__voornamen',
+                    'verblijfplaats__gemeente_van_inschrijving',
+                    'verblijfplaats__huisletter',
+                    'verblijfplaats__huisnummer',
+                    'verblijfplaats__huisnummertoevoeging',
+                    'verblijfplaats__nummeraanduiding_identificatie',
+                    'verblijfplaats__straat',
+                    'verblijfplaats__postcode',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                    'geboorte__plaats',
+                    'naam__geslachtsnaam',
+                    'naam__voorvoegsel',
+                    'naam__voornamen',
+                    'verblijfplaats__gemeente_van_inschrijving',
+                    'verblijfplaats__huisletter',
+                    'verblijfplaats__huisnummer',
+                    'verblijfplaats__huisnummertoevoeging',
+                    'verblijfplaats__nummeraanduiding_identificatie',
+                    'verblijfplaats__straat',
+                    'verblijfplaats__postcode',
+                ]
+            },
+            root_map={
+                'validations': {
+                    ('geboorte__plaats',): {
+                        'max_length': 40,
+                    },
+                    ('naam__geslachtsnaam',): {
+                        'max_length': 200,
+                    },
+                    ('naam__voorvoegsel',): {
+                        'max_length': 10,
+                    },
+                    ('naam__voornamen',): {
+                        'max_length': 200,
+                    },
+                    ('verblijfplaats__gemeente_van_inschrijving',): {
+                        'max_length': 4,
+                    },
+                    ('verblijfplaats__huisletter',): {
+                        'max_length': 1,
+                    },
+                    ('verblijfplaats__huisnummer',): {
 
-        all_params = [
-            'expand',
-            'fields',
-            'burgerservicenummer',
-            'geboorte__datum',
-            'geboorte__plaats',
-            'geslachtsaanduiding',
-            'inclusief_overleden_personen',
-            'naam__geslachtsnaam',
-            'naam__voorvoegsel',
-            'naam__voornamen',
-            'verblijfplaats__gemeente_van_inschrijving',
-            'verblijfplaats__huisletter',
-            'verblijfplaats__huisnummer',
-            'verblijfplaats__huisnummertoevoeging',
-            'verblijfplaats__nummeraanduiding_identificatie',
-            'verblijfplaats__straat',
-            'verblijfplaats__postcode'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+                        'inclusive_maximum': 99999,
+                    },
+                    ('verblijfplaats__huisnummertoevoeging',): {
+                        'max_length': 4,
+                    },
+                    ('verblijfplaats__nummeraanduiding_identificatie',): {
+                        'max_length': 16,
+                    },
+                    ('verblijfplaats__straat',): {
+                        'max_length': 80,
+                    },
+                    ('verblijfplaats__postcode',): {
+
+                        'regex': {
+                            'pattern': r'^[1-9]{1}[0-9]{3}[A-Z]{2}$',  # noqa: E501
+                        },
+                    },
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'expand':
+                        (str,),
+                    'fields':
+                        (str,),
+                    'burgerservicenummer':
+                        ([str],),
+                    'geboorte__datum':
+                        (date,),
+                    'geboorte__plaats':
+                        (str,),
+                    'geslachtsaanduiding':
+                        (GeslachtEnum,),
+                    'inclusief_overleden_personen':
+                        (bool,),
+                    'naam__geslachtsnaam':
+                        (str,),
+                    'naam__voorvoegsel':
+                        (str,),
+                    'naam__voornamen':
+                        (str,),
+                    'verblijfplaats__gemeente_van_inschrijving':
+                        (str,),
+                    'verblijfplaats__huisletter':
+                        (str,),
+                    'verblijfplaats__huisnummer':
+                        (int,),
+                    'verblijfplaats__huisnummertoevoeging':
+                        (str,),
+                    'verblijfplaats__nummeraanduiding_identificatie':
+                        (str,),
+                    'verblijfplaats__straat':
+                        (str,),
+                    'verblijfplaats__postcode':
+                        (str,),
+                },
+                'attribute_map': {
+                    'expand': 'expand',
+                    'fields': 'fields',
+                    'burgerservicenummer': 'burgerservicenummer',
+                    'geboorte__datum': 'geboorte__datum',
+                    'geboorte__plaats': 'geboorte__plaats',
+                    'geslachtsaanduiding': 'geslachtsaanduiding',
+                    'inclusief_overleden_personen': 'inclusiefOverledenPersonen',
+                    'naam__geslachtsnaam': 'naam__geslachtsnaam',
+                    'naam__voorvoegsel': 'naam__voorvoegsel',
+                    'naam__voornamen': 'naam__voornamen',
+                    'verblijfplaats__gemeente_van_inschrijving': 'verblijfplaats__gemeenteVanInschrijving',
+                    'verblijfplaats__huisletter': 'verblijfplaats__huisletter',
+                    'verblijfplaats__huisnummer': 'verblijfplaats__huisnummer',
+                    'verblijfplaats__huisnummertoevoeging': 'verblijfplaats__huisnummertoevoeging',
+                    'verblijfplaats__nummeraanduiding_identificatie': 'verblijfplaats__nummeraanduidingIdentificatie',
+                    'verblijfplaats__straat': 'verblijfplaats__straat',
+                    'verblijfplaats__postcode': 'verblijfplaats__postcode',
+                },
+                'location_map': {
+                    'expand': 'query',
+                    'fields': 'query',
+                    'burgerservicenummer': 'query',
+                    'geboorte__datum': 'query',
+                    'geboorte__plaats': 'query',
+                    'geslachtsaanduiding': 'query',
+                    'inclusief_overleden_personen': 'query',
+                    'naam__geslachtsnaam': 'query',
+                    'naam__voorvoegsel': 'query',
+                    'naam__voornamen': 'query',
+                    'verblijfplaats__gemeente_van_inschrijving': 'query',
+                    'verblijfplaats__huisletter': 'query',
+                    'verblijfplaats__huisnummer': 'query',
+                    'verblijfplaats__huisnummertoevoeging': 'query',
+                    'verblijfplaats__nummeraanduiding_identificatie': 'query',
+                    'verblijfplaats__straat': 'query',
+                    'verblijfplaats__postcode': 'query',
+                },
+                'collection_format_map': {
+                    'burgerservicenummer': 'csv',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/hal+json',
+                    'application/problem+json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__get_ingeschreven_personen
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_ingeschreven_personen" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
+        def __get_ingeschreven_persoon(
+            self,
+            burgerservicenummer,
+            **kwargs
+        ):
+            """Raadpleeg een persoon  # noqa: E501
 
-        if self.api_client.client_side_validation and ('geboorte__plaats' in local_var_params and  # noqa: E501
-                                                        len(local_var_params['geboorte__plaats']) > 40):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `geboorte__plaats` when calling `get_ingeschreven_personen`, length must be less than or equal to `40`")  # noqa: E501
-        if self.api_client.client_side_validation and ('naam__geslachtsnaam' in local_var_params and  # noqa: E501
-                                                        len(local_var_params['naam__geslachtsnaam']) > 200):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `naam__geslachtsnaam` when calling `get_ingeschreven_personen`, length must be less than or equal to `200`")  # noqa: E501
-        if self.api_client.client_side_validation and ('naam__voorvoegsel' in local_var_params and  # noqa: E501
-                                                        len(local_var_params['naam__voorvoegsel']) > 10):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `naam__voorvoegsel` when calling `get_ingeschreven_personen`, length must be less than or equal to `10`")  # noqa: E501
-        if self.api_client.client_side_validation and ('naam__voornamen' in local_var_params and  # noqa: E501
-                                                        len(local_var_params['naam__voornamen']) > 200):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `naam__voornamen` when calling `get_ingeschreven_personen`, length must be less than or equal to `200`")  # noqa: E501
-        if self.api_client.client_side_validation and ('verblijfplaats__gemeente_van_inschrijving' in local_var_params and  # noqa: E501
-                                                        len(local_var_params['verblijfplaats__gemeente_van_inschrijving']) > 4):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `verblijfplaats__gemeente_van_inschrijving` when calling `get_ingeschreven_personen`, length must be less than or equal to `4`")  # noqa: E501
-        if self.api_client.client_side_validation and ('verblijfplaats__huisletter' in local_var_params and  # noqa: E501
-                                                        len(local_var_params['verblijfplaats__huisletter']) > 1):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `verblijfplaats__huisletter` when calling `get_ingeschreven_personen`, length must be less than or equal to `1`")  # noqa: E501
-        if self.api_client.client_side_validation and 'verblijfplaats__huisnummer' in local_var_params and local_var_params['verblijfplaats__huisnummer'] > 99999:  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `verblijfplaats__huisnummer` when calling `get_ingeschreven_personen`, must be a value less than or equal to `99999`")  # noqa: E501
-        if self.api_client.client_side_validation and ('verblijfplaats__huisnummertoevoeging' in local_var_params and  # noqa: E501
-                                                        len(local_var_params['verblijfplaats__huisnummertoevoeging']) > 4):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `verblijfplaats__huisnummertoevoeging` when calling `get_ingeschreven_personen`, length must be less than or equal to `4`")  # noqa: E501
-        if self.api_client.client_side_validation and ('verblijfplaats__nummeraanduiding_identificatie' in local_var_params and  # noqa: E501
-                                                        len(local_var_params['verblijfplaats__nummeraanduiding_identificatie']) > 16):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `verblijfplaats__nummeraanduiding_identificatie` when calling `get_ingeschreven_personen`, length must be less than or equal to `16`")  # noqa: E501
-        if self.api_client.client_side_validation and ('verblijfplaats__straat' in local_var_params and  # noqa: E501
-                                                        len(local_var_params['verblijfplaats__straat']) > 80):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `verblijfplaats__straat` when calling `get_ingeschreven_personen`, length must be less than or equal to `80`")  # noqa: E501
-        if self.api_client.client_side_validation and 'verblijfplaats__postcode' in local_var_params and not re.search(r'^[1-9]{1}[0-9]{3}[A-Z]{2}$', local_var_params['verblijfplaats__postcode']):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `verblijfplaats__postcode` when calling `get_ingeschreven_personen`, must conform to the pattern `/^[1-9]{1}[0-9]{3}[A-Z]{2}$/`")  # noqa: E501
-        collection_formats = {}
+            Raadpleeg een (overleden) persoon.  Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/fields_extensie.feature).  Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature).   # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
+            >>> thread = api.get_ingeschreven_persoon(burgerservicenummer, async_req=True)
+            >>> result = thread.get()
 
-        query_params = []
-        if 'expand' in local_var_params and local_var_params['expand'] is not None:  # noqa: E501
-            query_params.append(('expand', local_var_params['expand']))  # noqa: E501
-        if 'fields' in local_var_params and local_var_params['fields'] is not None:  # noqa: E501
-            query_params.append(('fields', local_var_params['fields']))  # noqa: E501
-        if 'burgerservicenummer' in local_var_params and local_var_params['burgerservicenummer'] is not None:  # noqa: E501
-            query_params.append(('burgerservicenummer', local_var_params['burgerservicenummer']))  # noqa: E501
-            collection_formats['burgerservicenummer'] = 'csv'  # noqa: E501
-        if 'geboorte__datum' in local_var_params and local_var_params['geboorte__datum'] is not None:  # noqa: E501
-            query_params.append(('geboorte__datum', local_var_params['geboorte__datum']))  # noqa: E501
-        if 'geboorte__plaats' in local_var_params and local_var_params['geboorte__plaats'] is not None:  # noqa: E501
-            query_params.append(('geboorte__plaats', local_var_params['geboorte__plaats']))  # noqa: E501
-        if 'geslachtsaanduiding' in local_var_params and local_var_params['geslachtsaanduiding'] is not None:  # noqa: E501
-            query_params.append(('geslachtsaanduiding', local_var_params['geslachtsaanduiding']))  # noqa: E501
-        if 'inclusief_overleden_personen' in local_var_params and local_var_params['inclusief_overleden_personen'] is not None:  # noqa: E501
-            query_params.append(('inclusiefOverledenPersonen', local_var_params['inclusief_overleden_personen']))  # noqa: E501
-        if 'naam__geslachtsnaam' in local_var_params and local_var_params['naam__geslachtsnaam'] is not None:  # noqa: E501
-            query_params.append(('naam__geslachtsnaam', local_var_params['naam__geslachtsnaam']))  # noqa: E501
-        if 'naam__voorvoegsel' in local_var_params and local_var_params['naam__voorvoegsel'] is not None:  # noqa: E501
-            query_params.append(('naam__voorvoegsel', local_var_params['naam__voorvoegsel']))  # noqa: E501
-        if 'naam__voornamen' in local_var_params and local_var_params['naam__voornamen'] is not None:  # noqa: E501
-            query_params.append(('naam__voornamen', local_var_params['naam__voornamen']))  # noqa: E501
-        if 'verblijfplaats__gemeente_van_inschrijving' in local_var_params and local_var_params['verblijfplaats__gemeente_van_inschrijving'] is not None:  # noqa: E501
-            query_params.append(('verblijfplaats__gemeenteVanInschrijving', local_var_params['verblijfplaats__gemeente_van_inschrijving']))  # noqa: E501
-        if 'verblijfplaats__huisletter' in local_var_params and local_var_params['verblijfplaats__huisletter'] is not None:  # noqa: E501
-            query_params.append(('verblijfplaats__huisletter', local_var_params['verblijfplaats__huisletter']))  # noqa: E501
-        if 'verblijfplaats__huisnummer' in local_var_params and local_var_params['verblijfplaats__huisnummer'] is not None:  # noqa: E501
-            query_params.append(('verblijfplaats__huisnummer', local_var_params['verblijfplaats__huisnummer']))  # noqa: E501
-        if 'verblijfplaats__huisnummertoevoeging' in local_var_params and local_var_params['verblijfplaats__huisnummertoevoeging'] is not None:  # noqa: E501
-            query_params.append(('verblijfplaats__huisnummertoevoeging', local_var_params['verblijfplaats__huisnummertoevoeging']))  # noqa: E501
-        if 'verblijfplaats__nummeraanduiding_identificatie' in local_var_params and local_var_params['verblijfplaats__nummeraanduiding_identificatie'] is not None:  # noqa: E501
-            query_params.append(('verblijfplaats__nummeraanduidingIdentificatie', local_var_params['verblijfplaats__nummeraanduiding_identificatie']))  # noqa: E501
-        if 'verblijfplaats__straat' in local_var_params and local_var_params['verblijfplaats__straat'] is not None:  # noqa: E501
-            query_params.append(('verblijfplaats__straat', local_var_params['verblijfplaats__straat']))  # noqa: E501
-        if 'verblijfplaats__postcode' in local_var_params and local_var_params['verblijfplaats__postcode'] is not None:  # noqa: E501
-            query_params.append(('verblijfplaats__postcode', local_var_params['verblijfplaats__postcode']))  # noqa: E501
+            Args:
+                burgerservicenummer (str): Uniek persoonsnummer 
 
-        header_params = {}
+            Keyword Args:
+                expand (str): Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature).. [optional]
+                fields (str): Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature). [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+            Returns:
+                IngeschrevenPersoonHal
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['burgerservicenummer'] = \
+                burgerservicenummer
+            return self.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/hal+json', 'application/problem+json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = []  # noqa: E501
-
-        return self.api_client.call_api(
-            '/ingeschrevenpersonen', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='IngeschrevenPersoonHalCollectie',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_ingeschreven_persoon(self, burgerservicenummer, **kwargs):  # noqa: E501
-        """Raadpleeg een persoon  # noqa: E501
-
-        Raadpleeg een (overleden) persoon.  Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/fields_extensie.feature).  Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature).   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_ingeschreven_persoon(burgerservicenummer, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str burgerservicenummer: Uniek persoonsnummer  (required)
-        :param str expand: Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature).
-        :param str fields: Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: IngeschrevenPersoonHal
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.get_ingeschreven_persoon_with_http_info(burgerservicenummer, **kwargs)  # noqa: E501
-
-    def get_ingeschreven_persoon_with_http_info(self, burgerservicenummer, **kwargs):  # noqa: E501
-        """Raadpleeg een persoon  # noqa: E501
-
-        Raadpleeg een (overleden) persoon.  Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/fields_extensie.feature).  Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature).   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_ingeschreven_persoon_with_http_info(burgerservicenummer, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str burgerservicenummer: Uniek persoonsnummer  (required)
-        :param str expand: Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature).
-        :param str fields: Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(IngeschrevenPersoonHal, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'burgerservicenummer',
-            'expand',
-            'fields'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        self.get_ingeschreven_persoon = Endpoint(
+            settings={
+                'response_type': (IngeschrevenPersoonHal,),
+                'auth': [],
+                'endpoint_path': '/ingeschrevenpersonen/{burgerservicenummer}',
+                'operation_id': 'get_ingeschreven_persoon',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'burgerservicenummer',
+                    'expand',
+                    'fields',
+                ],
+                'required': [
+                    'burgerservicenummer',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                    'burgerservicenummer',
+                ]
+            },
+            root_map={
+                'validations': {
+                    ('burgerservicenummer',): {
+                        'max_length': 9,
+                        'min_length': 9,
+                        'regex': {
+                            'pattern': r'^[0-9]*$',  # noqa: E501
+                        },
+                    },
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'burgerservicenummer':
+                        (str,),
+                    'expand':
+                        (str,),
+                    'fields':
+                        (str,),
+                },
+                'attribute_map': {
+                    'burgerservicenummer': 'burgerservicenummer',
+                    'expand': 'expand',
+                    'fields': 'fields',
+                },
+                'location_map': {
+                    'burgerservicenummer': 'path',
+                    'expand': 'query',
+                    'fields': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/hal+json',
+                    'application/problem+json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__get_ingeschreven_persoon
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_ingeschreven_persoon" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'burgerservicenummer' is set
-        if self.api_client.client_side_validation and ('burgerservicenummer' not in local_var_params or  # noqa: E501
-                                                        local_var_params['burgerservicenummer'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `burgerservicenummer` when calling `get_ingeschreven_persoon`")  # noqa: E501
+        def __get_kind(
+            self,
+            burgerservicenummer,
+            id,
+            **kwargs
+        ):
+            """Raadpleeg een kind van een persoon  # noqa: E501
 
-        if self.api_client.client_side_validation and ('burgerservicenummer' in local_var_params and  # noqa: E501
-                                                        len(local_var_params['burgerservicenummer']) > 9):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `burgerservicenummer` when calling `get_ingeschreven_persoon`, length must be less than or equal to `9`")  # noqa: E501
-        if self.api_client.client_side_validation and ('burgerservicenummer' in local_var_params and  # noqa: E501
-                                                        len(local_var_params['burgerservicenummer']) < 9):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `burgerservicenummer` when calling `get_ingeschreven_persoon`, length must be greater than or equal to `9`")  # noqa: E501
-        if self.api_client.client_side_validation and 'burgerservicenummer' in local_var_params and not re.search(r'^[0-9]*$', local_var_params['burgerservicenummer']):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `burgerservicenummer` when calling `get_ingeschreven_persoon`, must conform to the pattern `/^[0-9]*$/`")  # noqa: E501
-        collection_formats = {}
+            Raadpleeg een kind van een persoon   # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
-        if 'burgerservicenummer' in local_var_params:
-            path_params['burgerservicenummer'] = local_var_params['burgerservicenummer']  # noqa: E501
+            >>> thread = api.get_kind(burgerservicenummer, id, async_req=True)
+            >>> result = thread.get()
 
-        query_params = []
-        if 'expand' in local_var_params and local_var_params['expand'] is not None:  # noqa: E501
-            query_params.append(('expand', local_var_params['expand']))  # noqa: E501
-        if 'fields' in local_var_params and local_var_params['fields'] is not None:  # noqa: E501
-            query_params.append(('fields', local_var_params['fields']))  # noqa: E501
+            Args:
+                burgerservicenummer (str): Uniek persoonsnummer 
+                id (str): De identificatie van het kind. 
 
-        header_params = {}
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+            Returns:
+                KindHalBasis
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['burgerservicenummer'] = \
+                burgerservicenummer
+            kwargs['id'] = \
+                id
+            return self.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/hal+json', 'application/problem+json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = []  # noqa: E501
-
-        return self.api_client.call_api(
-            '/ingeschrevenpersonen/{burgerservicenummer}', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='IngeschrevenPersoonHal',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_kind(self, burgerservicenummer, id, **kwargs):  # noqa: E501
-        """Raadpleeg een kind van een persoon  # noqa: E501
-
-        Raadpleeg een kind van een persoon   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_kind(burgerservicenummer, id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str burgerservicenummer: Uniek persoonsnummer  (required)
-        :param str id: De identificatie van het kind.  (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: KindHalBasis
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.get_kind_with_http_info(burgerservicenummer, id, **kwargs)  # noqa: E501
-
-    def get_kind_with_http_info(self, burgerservicenummer, id, **kwargs):  # noqa: E501
-        """Raadpleeg een kind van een persoon  # noqa: E501
-
-        Raadpleeg een kind van een persoon   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_kind_with_http_info(burgerservicenummer, id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str burgerservicenummer: Uniek persoonsnummer  (required)
-        :param str id: De identificatie van het kind.  (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(KindHalBasis, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'burgerservicenummer',
-            'id'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        self.get_kind = Endpoint(
+            settings={
+                'response_type': (KindHalBasis,),
+                'auth': [],
+                'endpoint_path': '/ingeschrevenpersonen/{burgerservicenummer}/kinderen/{id}',
+                'operation_id': 'get_kind',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'burgerservicenummer',
+                    'id',
+                ],
+                'required': [
+                    'burgerservicenummer',
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                    'burgerservicenummer',
+                ]
+            },
+            root_map={
+                'validations': {
+                    ('burgerservicenummer',): {
+                        'max_length': 9,
+                        'min_length': 9,
+                        'regex': {
+                            'pattern': r'^[0-9]*$',  # noqa: E501
+                        },
+                    },
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'burgerservicenummer':
+                        (str,),
+                    'id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'burgerservicenummer': 'burgerservicenummer',
+                    'id': 'id',
+                },
+                'location_map': {
+                    'burgerservicenummer': 'path',
+                    'id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/hal+json',
+                    'application/problem+json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__get_kind
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_kind" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'burgerservicenummer' is set
-        if self.api_client.client_side_validation and ('burgerservicenummer' not in local_var_params or  # noqa: E501
-                                                        local_var_params['burgerservicenummer'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `burgerservicenummer` when calling `get_kind`")  # noqa: E501
-        # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `id` when calling `get_kind`")  # noqa: E501
+        def __get_kinderen(
+            self,
+            burgerservicenummer,
+            **kwargs
+        ):
+            """Levert de kinderen van een persoon  # noqa: E501
 
-        if self.api_client.client_side_validation and ('burgerservicenummer' in local_var_params and  # noqa: E501
-                                                        len(local_var_params['burgerservicenummer']) > 9):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `burgerservicenummer` when calling `get_kind`, length must be less than or equal to `9`")  # noqa: E501
-        if self.api_client.client_side_validation and ('burgerservicenummer' in local_var_params and  # noqa: E501
-                                                        len(local_var_params['burgerservicenummer']) < 9):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `burgerservicenummer` when calling `get_kind`, length must be greater than or equal to `9`")  # noqa: E501
-        if self.api_client.client_side_validation and 'burgerservicenummer' in local_var_params and not re.search(r'^[0-9]*$', local_var_params['burgerservicenummer']):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `burgerservicenummer` when calling `get_kind`, must conform to the pattern `/^[0-9]*$/`")  # noqa: E501
-        collection_formats = {}
+            Levert de kinderen van een persoon   # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
-        if 'burgerservicenummer' in local_var_params:
-            path_params['burgerservicenummer'] = local_var_params['burgerservicenummer']  # noqa: E501
-        if 'id' in local_var_params:
-            path_params['id'] = local_var_params['id']  # noqa: E501
+            >>> thread = api.get_kinderen(burgerservicenummer, async_req=True)
+            >>> result = thread.get()
 
-        query_params = []
+            Args:
+                burgerservicenummer (str): Uniek persoonsnummer 
 
-        header_params = {}
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+            Returns:
+                KindHalCollectie
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['burgerservicenummer'] = \
+                burgerservicenummer
+            return self.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/hal+json', 'application/problem+json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = []  # noqa: E501
-
-        return self.api_client.call_api(
-            '/ingeschrevenpersonen/{burgerservicenummer}/kinderen/{id}', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='KindHalBasis',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_kinderen(self, burgerservicenummer, **kwargs):  # noqa: E501
-        """Levert de kinderen van een persoon  # noqa: E501
-
-        Levert de kinderen van een persoon   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_kinderen(burgerservicenummer, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str burgerservicenummer: Uniek persoonsnummer  (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: KindHalCollectie
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.get_kinderen_with_http_info(burgerservicenummer, **kwargs)  # noqa: E501
-
-    def get_kinderen_with_http_info(self, burgerservicenummer, **kwargs):  # noqa: E501
-        """Levert de kinderen van een persoon  # noqa: E501
-
-        Levert de kinderen van een persoon   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_kinderen_with_http_info(burgerservicenummer, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str burgerservicenummer: Uniek persoonsnummer  (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(KindHalCollectie, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'burgerservicenummer'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        self.get_kinderen = Endpoint(
+            settings={
+                'response_type': (KindHalCollectie,),
+                'auth': [],
+                'endpoint_path': '/ingeschrevenpersonen/{burgerservicenummer}/kinderen',
+                'operation_id': 'get_kinderen',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'burgerservicenummer',
+                ],
+                'required': [
+                    'burgerservicenummer',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                    'burgerservicenummer',
+                ]
+            },
+            root_map={
+                'validations': {
+                    ('burgerservicenummer',): {
+                        'max_length': 9,
+                        'min_length': 9,
+                        'regex': {
+                            'pattern': r'^[0-9]*$',  # noqa: E501
+                        },
+                    },
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'burgerservicenummer':
+                        (str,),
+                },
+                'attribute_map': {
+                    'burgerservicenummer': 'burgerservicenummer',
+                },
+                'location_map': {
+                    'burgerservicenummer': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/hal+json',
+                    'application/problem+json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__get_kinderen
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_kinderen" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'burgerservicenummer' is set
-        if self.api_client.client_side_validation and ('burgerservicenummer' not in local_var_params or  # noqa: E501
-                                                        local_var_params['burgerservicenummer'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `burgerservicenummer` when calling `get_kinderen`")  # noqa: E501
+        def __get_ouder(
+            self,
+            burgerservicenummer,
+            id,
+            **kwargs
+        ):
+            """Raadpleeg een ouder van een persoon  # noqa: E501
 
-        if self.api_client.client_side_validation and ('burgerservicenummer' in local_var_params and  # noqa: E501
-                                                        len(local_var_params['burgerservicenummer']) > 9):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `burgerservicenummer` when calling `get_kinderen`, length must be less than or equal to `9`")  # noqa: E501
-        if self.api_client.client_side_validation and ('burgerservicenummer' in local_var_params and  # noqa: E501
-                                                        len(local_var_params['burgerservicenummer']) < 9):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `burgerservicenummer` when calling `get_kinderen`, length must be greater than or equal to `9`")  # noqa: E501
-        if self.api_client.client_side_validation and 'burgerservicenummer' in local_var_params and not re.search(r'^[0-9]*$', local_var_params['burgerservicenummer']):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `burgerservicenummer` when calling `get_kinderen`, must conform to the pattern `/^[0-9]*$/`")  # noqa: E501
-        collection_formats = {}
+            Raadpleeg een ouder van een persoon   # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
-        if 'burgerservicenummer' in local_var_params:
-            path_params['burgerservicenummer'] = local_var_params['burgerservicenummer']  # noqa: E501
+            >>> thread = api.get_ouder(burgerservicenummer, id, async_req=True)
+            >>> result = thread.get()
 
-        query_params = []
+            Args:
+                burgerservicenummer (str): Uniek persoonsnummer 
+                id (str): De identificatie van de ouder. 
 
-        header_params = {}
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+            Returns:
+                OuderHalBasis
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['burgerservicenummer'] = \
+                burgerservicenummer
+            kwargs['id'] = \
+                id
+            return self.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/hal+json', 'application/problem+json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = []  # noqa: E501
-
-        return self.api_client.call_api(
-            '/ingeschrevenpersonen/{burgerservicenummer}/kinderen', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='KindHalCollectie',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_ouder(self, burgerservicenummer, id, **kwargs):  # noqa: E501
-        """Raadpleeg een ouder van een persoon  # noqa: E501
-
-        Raadpleeg een ouder van een persoon   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_ouder(burgerservicenummer, id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str burgerservicenummer: Uniek persoonsnummer  (required)
-        :param str id: De identificatie van de ouder.  (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: OuderHalBasis
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.get_ouder_with_http_info(burgerservicenummer, id, **kwargs)  # noqa: E501
-
-    def get_ouder_with_http_info(self, burgerservicenummer, id, **kwargs):  # noqa: E501
-        """Raadpleeg een ouder van een persoon  # noqa: E501
-
-        Raadpleeg een ouder van een persoon   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_ouder_with_http_info(burgerservicenummer, id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str burgerservicenummer: Uniek persoonsnummer  (required)
-        :param str id: De identificatie van de ouder.  (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(OuderHalBasis, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'burgerservicenummer',
-            'id'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        self.get_ouder = Endpoint(
+            settings={
+                'response_type': (OuderHalBasis,),
+                'auth': [],
+                'endpoint_path': '/ingeschrevenpersonen/{burgerservicenummer}/ouders/{id}',
+                'operation_id': 'get_ouder',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'burgerservicenummer',
+                    'id',
+                ],
+                'required': [
+                    'burgerservicenummer',
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                    'burgerservicenummer',
+                ]
+            },
+            root_map={
+                'validations': {
+                    ('burgerservicenummer',): {
+                        'max_length': 9,
+                        'min_length': 9,
+                        'regex': {
+                            'pattern': r'^[0-9]*$',  # noqa: E501
+                        },
+                    },
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'burgerservicenummer':
+                        (str,),
+                    'id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'burgerservicenummer': 'burgerservicenummer',
+                    'id': 'id',
+                },
+                'location_map': {
+                    'burgerservicenummer': 'path',
+                    'id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/hal+json',
+                    'application/problem+json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__get_ouder
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_ouder" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'burgerservicenummer' is set
-        if self.api_client.client_side_validation and ('burgerservicenummer' not in local_var_params or  # noqa: E501
-                                                        local_var_params['burgerservicenummer'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `burgerservicenummer` when calling `get_ouder`")  # noqa: E501
-        # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `id` when calling `get_ouder`")  # noqa: E501
+        def __get_ouders(
+            self,
+            burgerservicenummer,
+            **kwargs
+        ):
+            """Levert de ouders van een persoon  # noqa: E501
 
-        if self.api_client.client_side_validation and ('burgerservicenummer' in local_var_params and  # noqa: E501
-                                                        len(local_var_params['burgerservicenummer']) > 9):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `burgerservicenummer` when calling `get_ouder`, length must be less than or equal to `9`")  # noqa: E501
-        if self.api_client.client_side_validation and ('burgerservicenummer' in local_var_params and  # noqa: E501
-                                                        len(local_var_params['burgerservicenummer']) < 9):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `burgerservicenummer` when calling `get_ouder`, length must be greater than or equal to `9`")  # noqa: E501
-        if self.api_client.client_side_validation and 'burgerservicenummer' in local_var_params and not re.search(r'^[0-9]*$', local_var_params['burgerservicenummer']):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `burgerservicenummer` when calling `get_ouder`, must conform to the pattern `/^[0-9]*$/`")  # noqa: E501
-        collection_formats = {}
+            Levert de ouders van een persoon   # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
-        if 'burgerservicenummer' in local_var_params:
-            path_params['burgerservicenummer'] = local_var_params['burgerservicenummer']  # noqa: E501
-        if 'id' in local_var_params:
-            path_params['id'] = local_var_params['id']  # noqa: E501
+            >>> thread = api.get_ouders(burgerservicenummer, async_req=True)
+            >>> result = thread.get()
 
-        query_params = []
+            Args:
+                burgerservicenummer (str): Uniek persoonsnummer 
 
-        header_params = {}
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+            Returns:
+                OuderHalCollectie
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['burgerservicenummer'] = \
+                burgerservicenummer
+            return self.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/hal+json', 'application/problem+json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = []  # noqa: E501
-
-        return self.api_client.call_api(
-            '/ingeschrevenpersonen/{burgerservicenummer}/ouders/{id}', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='OuderHalBasis',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_ouders(self, burgerservicenummer, **kwargs):  # noqa: E501
-        """Levert de ouders van een persoon  # noqa: E501
-
-        Levert de ouders van een persoon   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_ouders(burgerservicenummer, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str burgerservicenummer: Uniek persoonsnummer  (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: OuderHalCollectie
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.get_ouders_with_http_info(burgerservicenummer, **kwargs)  # noqa: E501
-
-    def get_ouders_with_http_info(self, burgerservicenummer, **kwargs):  # noqa: E501
-        """Levert de ouders van een persoon  # noqa: E501
-
-        Levert de ouders van een persoon   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_ouders_with_http_info(burgerservicenummer, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str burgerservicenummer: Uniek persoonsnummer  (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(OuderHalCollectie, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'burgerservicenummer'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        self.get_ouders = Endpoint(
+            settings={
+                'response_type': (OuderHalCollectie,),
+                'auth': [],
+                'endpoint_path': '/ingeschrevenpersonen/{burgerservicenummer}/ouders',
+                'operation_id': 'get_ouders',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'burgerservicenummer',
+                ],
+                'required': [
+                    'burgerservicenummer',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                    'burgerservicenummer',
+                ]
+            },
+            root_map={
+                'validations': {
+                    ('burgerservicenummer',): {
+                        'max_length': 9,
+                        'min_length': 9,
+                        'regex': {
+                            'pattern': r'^[0-9]*$',  # noqa: E501
+                        },
+                    },
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'burgerservicenummer':
+                        (str,),
+                },
+                'attribute_map': {
+                    'burgerservicenummer': 'burgerservicenummer',
+                },
+                'location_map': {
+                    'burgerservicenummer': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/hal+json',
+                    'application/problem+json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__get_ouders
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_ouders" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'burgerservicenummer' is set
-        if self.api_client.client_side_validation and ('burgerservicenummer' not in local_var_params or  # noqa: E501
-                                                        local_var_params['burgerservicenummer'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `burgerservicenummer` when calling `get_ouders`")  # noqa: E501
+        def __get_partner(
+            self,
+            burgerservicenummer,
+            id,
+            **kwargs
+        ):
+            """Raadpleeg de partner van een persoon  # noqa: E501
 
-        if self.api_client.client_side_validation and ('burgerservicenummer' in local_var_params and  # noqa: E501
-                                                        len(local_var_params['burgerservicenummer']) > 9):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `burgerservicenummer` when calling `get_ouders`, length must be less than or equal to `9`")  # noqa: E501
-        if self.api_client.client_side_validation and ('burgerservicenummer' in local_var_params and  # noqa: E501
-                                                        len(local_var_params['burgerservicenummer']) < 9):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `burgerservicenummer` when calling `get_ouders`, length must be greater than or equal to `9`")  # noqa: E501
-        if self.api_client.client_side_validation and 'burgerservicenummer' in local_var_params and not re.search(r'^[0-9]*$', local_var_params['burgerservicenummer']):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `burgerservicenummer` when calling `get_ouders`, must conform to the pattern `/^[0-9]*$/`")  # noqa: E501
-        collection_formats = {}
+            Raadpleeg de partner van een persoon   # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
-        if 'burgerservicenummer' in local_var_params:
-            path_params['burgerservicenummer'] = local_var_params['burgerservicenummer']  # noqa: E501
+            >>> thread = api.get_partner(burgerservicenummer, id, async_req=True)
+            >>> result = thread.get()
 
-        query_params = []
+            Args:
+                burgerservicenummer (str): Uniek persoonsnummer 
+                id (str): De identificatie van de partner. 
 
-        header_params = {}
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+            Returns:
+                PartnerHalBasis
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['burgerservicenummer'] = \
+                burgerservicenummer
+            kwargs['id'] = \
+                id
+            return self.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/hal+json', 'application/problem+json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = []  # noqa: E501
-
-        return self.api_client.call_api(
-            '/ingeschrevenpersonen/{burgerservicenummer}/ouders', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='OuderHalCollectie',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_partner(self, burgerservicenummer, id, **kwargs):  # noqa: E501
-        """Raadpleeg de partner van een persoon  # noqa: E501
-
-        Raadpleeg de partner van een persoon   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_partner(burgerservicenummer, id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str burgerservicenummer: Uniek persoonsnummer  (required)
-        :param str id: De identificatie van de partner.  (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: PartnerHalBasis
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.get_partner_with_http_info(burgerservicenummer, id, **kwargs)  # noqa: E501
-
-    def get_partner_with_http_info(self, burgerservicenummer, id, **kwargs):  # noqa: E501
-        """Raadpleeg de partner van een persoon  # noqa: E501
-
-        Raadpleeg de partner van een persoon   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_partner_with_http_info(burgerservicenummer, id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str burgerservicenummer: Uniek persoonsnummer  (required)
-        :param str id: De identificatie van de partner.  (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(PartnerHalBasis, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'burgerservicenummer',
-            'id'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        self.get_partner = Endpoint(
+            settings={
+                'response_type': (PartnerHalBasis,),
+                'auth': [],
+                'endpoint_path': '/ingeschrevenpersonen/{burgerservicenummer}/partners/{id}',
+                'operation_id': 'get_partner',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'burgerservicenummer',
+                    'id',
+                ],
+                'required': [
+                    'burgerservicenummer',
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                    'burgerservicenummer',
+                ]
+            },
+            root_map={
+                'validations': {
+                    ('burgerservicenummer',): {
+                        'max_length': 9,
+                        'min_length': 9,
+                        'regex': {
+                            'pattern': r'^[0-9]*$',  # noqa: E501
+                        },
+                    },
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'burgerservicenummer':
+                        (str,),
+                    'id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'burgerservicenummer': 'burgerservicenummer',
+                    'id': 'id',
+                },
+                'location_map': {
+                    'burgerservicenummer': 'path',
+                    'id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/hal+json',
+                    'application/problem+json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__get_partner
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_partner" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'burgerservicenummer' is set
-        if self.api_client.client_side_validation and ('burgerservicenummer' not in local_var_params or  # noqa: E501
-                                                        local_var_params['burgerservicenummer'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `burgerservicenummer` when calling `get_partner`")  # noqa: E501
-        # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `id` when calling `get_partner`")  # noqa: E501
+        def __get_partners(
+            self,
+            burgerservicenummer,
+            **kwargs
+        ):
+            """Levert de actuele partners van een persoon  # noqa: E501
 
-        if self.api_client.client_side_validation and ('burgerservicenummer' in local_var_params and  # noqa: E501
-                                                        len(local_var_params['burgerservicenummer']) > 9):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `burgerservicenummer` when calling `get_partner`, length must be less than or equal to `9`")  # noqa: E501
-        if self.api_client.client_side_validation and ('burgerservicenummer' in local_var_params and  # noqa: E501
-                                                        len(local_var_params['burgerservicenummer']) < 9):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `burgerservicenummer` when calling `get_partner`, length must be greater than or equal to `9`")  # noqa: E501
-        if self.api_client.client_side_validation and 'burgerservicenummer' in local_var_params and not re.search(r'^[0-9]*$', local_var_params['burgerservicenummer']):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `burgerservicenummer` when calling `get_partner`, must conform to the pattern `/^[0-9]*$/`")  # noqa: E501
-        collection_formats = {}
+            Levert de actuele partners van een persoon. Partners uit beëindigde huwelijken of partnerschappen worden niet geretourneerd   # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
-        if 'burgerservicenummer' in local_var_params:
-            path_params['burgerservicenummer'] = local_var_params['burgerservicenummer']  # noqa: E501
-        if 'id' in local_var_params:
-            path_params['id'] = local_var_params['id']  # noqa: E501
+            >>> thread = api.get_partners(burgerservicenummer, async_req=True)
+            >>> result = thread.get()
 
-        query_params = []
+            Args:
+                burgerservicenummer (str): Uniek persoonsnummer 
 
-        header_params = {}
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+            Returns:
+                PartnerHalCollectie
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['burgerservicenummer'] = \
+                burgerservicenummer
+            return self.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/hal+json', 'application/problem+json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = []  # noqa: E501
-
-        return self.api_client.call_api(
-            '/ingeschrevenpersonen/{burgerservicenummer}/partners/{id}', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='PartnerHalBasis',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_partners(self, burgerservicenummer, **kwargs):  # noqa: E501
-        """Levert de actuele partners van een persoon  # noqa: E501
-
-        Levert de actuele partners van een persoon. Partners uit beëindigde huwelijken of partnerschappen worden niet geretourneerd   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_partners(burgerservicenummer, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str burgerservicenummer: Uniek persoonsnummer  (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: PartnerHalCollectie
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.get_partners_with_http_info(burgerservicenummer, **kwargs)  # noqa: E501
-
-    def get_partners_with_http_info(self, burgerservicenummer, **kwargs):  # noqa: E501
-        """Levert de actuele partners van een persoon  # noqa: E501
-
-        Levert de actuele partners van een persoon. Partners uit beëindigde huwelijken of partnerschappen worden niet geretourneerd   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_partners_with_http_info(burgerservicenummer, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str burgerservicenummer: Uniek persoonsnummer  (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(PartnerHalCollectie, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'burgerservicenummer'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        self.get_partners = Endpoint(
+            settings={
+                'response_type': (PartnerHalCollectie,),
+                'auth': [],
+                'endpoint_path': '/ingeschrevenpersonen/{burgerservicenummer}/partners',
+                'operation_id': 'get_partners',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'burgerservicenummer',
+                ],
+                'required': [
+                    'burgerservicenummer',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                    'burgerservicenummer',
+                ]
+            },
+            root_map={
+                'validations': {
+                    ('burgerservicenummer',): {
+                        'max_length': 9,
+                        'min_length': 9,
+                        'regex': {
+                            'pattern': r'^[0-9]*$',  # noqa: E501
+                        },
+                    },
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'burgerservicenummer':
+                        (str,),
+                },
+                'attribute_map': {
+                    'burgerservicenummer': 'burgerservicenummer',
+                },
+                'location_map': {
+                    'burgerservicenummer': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/hal+json',
+                    'application/problem+json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__get_partners
         )
-
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_partners" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'burgerservicenummer' is set
-        if self.api_client.client_side_validation and ('burgerservicenummer' not in local_var_params or  # noqa: E501
-                                                        local_var_params['burgerservicenummer'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `burgerservicenummer` when calling `get_partners`")  # noqa: E501
-
-        if self.api_client.client_side_validation and ('burgerservicenummer' in local_var_params and  # noqa: E501
-                                                        len(local_var_params['burgerservicenummer']) > 9):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `burgerservicenummer` when calling `get_partners`, length must be less than or equal to `9`")  # noqa: E501
-        if self.api_client.client_side_validation and ('burgerservicenummer' in local_var_params and  # noqa: E501
-                                                        len(local_var_params['burgerservicenummer']) < 9):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `burgerservicenummer` when calling `get_partners`, length must be greater than or equal to `9`")  # noqa: E501
-        if self.api_client.client_side_validation and 'burgerservicenummer' in local_var_params and not re.search(r'^[0-9]*$', local_var_params['burgerservicenummer']):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `burgerservicenummer` when calling `get_partners`, must conform to the pattern `/^[0-9]*$/`")  # noqa: E501
-        collection_formats = {}
-
-        path_params = {}
-        if 'burgerservicenummer' in local_var_params:
-            path_params['burgerservicenummer'] = local_var_params['burgerservicenummer']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/hal+json', 'application/problem+json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = []  # noqa: E501
-
-        return self.api_client.call_api(
-            '/ingeschrevenpersonen/{burgerservicenummer}/partners', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='PartnerHalCollectie',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)

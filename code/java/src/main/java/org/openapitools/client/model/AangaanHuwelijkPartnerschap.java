@@ -31,7 +31,7 @@ import org.openapitools.client.model.Waardetabel;
  * Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap. * **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan. * **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. * **plaats** : Als de plaats een gemeente in Nederland is dan gewoon de gemeentecode + gemeentenaam. Voor een plaats buiten Nederland is de gemeentecode leeg en wordt de gemeentenaam de buitenlandse plaatsnaam of aanduiding.\&quot; 
  */
 @ApiModel(description = "Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap. * **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan. * **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. * **plaats** : Als de plaats een gemeente in Nederland is dan gewoon de gemeentecode + gemeentenaam. Voor een plaats buiten Nederland is de gemeentecode leeg en wordt de gemeentenaam de buitenlandse plaatsnaam of aanduiding.\" ")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-12-02T08:12:12.840Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-08T13:57:27.296Z[Etc/UTC]")
 public class AangaanHuwelijkPartnerschap {
   public static final String SERIALIZED_NAME_DATUM = "datum";
   @SerializedName(SERIALIZED_NAME_DATUM)
@@ -143,7 +143,7 @@ public class AangaanHuwelijkPartnerschap {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -179,7 +179,7 @@ public class AangaanHuwelijkPartnerschap {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

@@ -37,13 +37,15 @@ namespace Org.OpenAPITools.Model
         /// <param name="voorletters">De voorletters van de persoon, afgeleid van de voornamen. .</param>
         /// <param name="voornamen">De verzameling namen voor de geslachtsnaam, gescheiden door spaties. .</param>
         /// <param name="voorvoegsel">voorvoegsel.</param>
+        /// <param name="adellijkeTitelPredikaat">adellijkeTitelPredikaat.</param>
         /// <param name="inOnderzoek">inOnderzoek.</param>
-        public Naam(string geslachtsnaam = default(string), string voorletters = default(string), string voornamen = default(string), string voorvoegsel = default(string), NaamInOnderzoek inOnderzoek = default(NaamInOnderzoek))
+        public Naam(string geslachtsnaam = default(string), string voorletters = default(string), string voornamen = default(string), string voorvoegsel = default(string), Waardetabel adellijkeTitelPredikaat = default(Waardetabel), NaamInOnderzoek inOnderzoek = default(NaamInOnderzoek))
         {
             this.Geslachtsnaam = geslachtsnaam;
             this.Voorletters = voorletters;
             this.Voornamen = voornamen;
             this.Voorvoegsel = voorvoegsel;
+            this.AdellijkeTitelPredikaat = adellijkeTitelPredikaat;
             this.InOnderzoek = inOnderzoek;
         }
         
@@ -75,6 +77,12 @@ namespace Org.OpenAPITools.Model
         public string Voorvoegsel { get; set; }
 
         /// <summary>
+        /// Gets or Sets AdellijkeTitelPredikaat
+        /// </summary>
+        [DataMember(Name="adellijkeTitelPredikaat", EmitDefaultValue=false)]
+        public Waardetabel AdellijkeTitelPredikaat { get; set; }
+
+        /// <summary>
         /// Gets or Sets InOnderzoek
         /// </summary>
         [DataMember(Name="inOnderzoek", EmitDefaultValue=false)]
@@ -92,6 +100,7 @@ namespace Org.OpenAPITools.Model
             sb.Append("  Voorletters: ").Append(Voorletters).Append("\n");
             sb.Append("  Voornamen: ").Append(Voornamen).Append("\n");
             sb.Append("  Voorvoegsel: ").Append(Voorvoegsel).Append("\n");
+            sb.Append("  AdellijkeTitelPredikaat: ").Append(AdellijkeTitelPredikaat).Append("\n");
             sb.Append("  InOnderzoek: ").Append(InOnderzoek).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -103,7 +112,7 @@ namespace Org.OpenAPITools.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
@@ -148,6 +157,11 @@ namespace Org.OpenAPITools.Model
                     this.Voorvoegsel.Equals(input.Voorvoegsel))
                 ) && 
                 (
+                    this.AdellijkeTitelPredikaat == input.AdellijkeTitelPredikaat ||
+                    (this.AdellijkeTitelPredikaat != null &&
+                    this.AdellijkeTitelPredikaat.Equals(input.AdellijkeTitelPredikaat))
+                ) && 
+                (
                     this.InOnderzoek == input.InOnderzoek ||
                     (this.InOnderzoek != null &&
                     this.InOnderzoek.Equals(input.InOnderzoek))
@@ -171,6 +185,8 @@ namespace Org.OpenAPITools.Model
                     hashCode = hashCode * 59 + this.Voornamen.GetHashCode();
                 if (this.Voorvoegsel != null)
                     hashCode = hashCode * 59 + this.Voorvoegsel.GetHashCode();
+                if (this.AdellijkeTitelPredikaat != null)
+                    hashCode = hashCode * 59 + this.AdellijkeTitelPredikaat.GetHashCode();
                 if (this.InOnderzoek != null)
                     hashCode = hashCode * 59 + this.InOnderzoek.GetHashCode();
                 return hashCode;
