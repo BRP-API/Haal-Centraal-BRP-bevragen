@@ -2822,4 +2822,5 @@ components:
           items:
             $ref: '#/components/schemas/InvalidParams'
           type: array
+      type: object
 

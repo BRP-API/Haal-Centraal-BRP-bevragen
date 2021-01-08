@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading;
 using RestSharp;
 using Org.OpenAPITools.Client;
 using Org.OpenAPITools.Model;
@@ -260,8 +261,9 @@ namespace Org.OpenAPITools.Api
         /// <param name="verblijfplaatsNummeraanduidingIdentificatie">Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.  (optional)</param>
         /// <param name="verblijfplaatsStraat">Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).  (optional)</param>
         /// <param name="verblijfplaatsPostcode">De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.  (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of IngeschrevenPersoonHalCollectie</returns>
-        System.Threading.Tasks.Task<IngeschrevenPersoonHalCollectie> GetIngeschrevenPersonenAsync (string expand = default(string), string fields = default(string), List<string> burgerservicenummer = default(List<string>), DateTime? geboorteDatum = default(DateTime?), string geboortePlaats = default(string), GeslachtEnum? geslachtsaanduiding = default(GeslachtEnum?), bool? inclusiefOverledenPersonen = default(bool?), string naamGeslachtsnaam = default(string), string naamVoorvoegsel = default(string), string naamVoornamen = default(string), string verblijfplaatsGemeenteVanInschrijving = default(string), string verblijfplaatsHuisletter = default(string), int? verblijfplaatsHuisnummer = default(int?), string verblijfplaatsHuisnummertoevoeging = default(string), string verblijfplaatsNummeraanduidingIdentificatie = default(string), string verblijfplaatsStraat = default(string), string verblijfplaatsPostcode = default(string));
+        System.Threading.Tasks.Task<IngeschrevenPersoonHalCollectie> GetIngeschrevenPersonenAsync (string expand = default(string), string fields = default(string), List<string> burgerservicenummer = default(List<string>), DateTime? geboorteDatum = default(DateTime?), string geboortePlaats = default(string), GeslachtEnum? geslachtsaanduiding = default(GeslachtEnum?), bool? inclusiefOverledenPersonen = default(bool?), string naamGeslachtsnaam = default(string), string naamVoorvoegsel = default(string), string naamVoornamen = default(string), string verblijfplaatsGemeenteVanInschrijving = default(string), string verblijfplaatsHuisletter = default(string), int? verblijfplaatsHuisnummer = default(int?), string verblijfplaatsHuisnummertoevoeging = default(string), string verblijfplaatsNummeraanduidingIdentificatie = default(string), string verblijfplaatsStraat = default(string), string verblijfplaatsPostcode = default(string), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Vindt personen
@@ -287,8 +289,9 @@ namespace Org.OpenAPITools.Api
         /// <param name="verblijfplaatsNummeraanduidingIdentificatie">Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.  (optional)</param>
         /// <param name="verblijfplaatsStraat">Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).  (optional)</param>
         /// <param name="verblijfplaatsPostcode">De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.  (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (IngeschrevenPersoonHalCollectie)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IngeschrevenPersoonHalCollectie>> GetIngeschrevenPersonenAsyncWithHttpInfo (string expand = default(string), string fields = default(string), List<string> burgerservicenummer = default(List<string>), DateTime? geboorteDatum = default(DateTime?), string geboortePlaats = default(string), GeslachtEnum? geslachtsaanduiding = default(GeslachtEnum?), bool? inclusiefOverledenPersonen = default(bool?), string naamGeslachtsnaam = default(string), string naamVoorvoegsel = default(string), string naamVoornamen = default(string), string verblijfplaatsGemeenteVanInschrijving = default(string), string verblijfplaatsHuisletter = default(string), int? verblijfplaatsHuisnummer = default(int?), string verblijfplaatsHuisnummertoevoeging = default(string), string verblijfplaatsNummeraanduidingIdentificatie = default(string), string verblijfplaatsStraat = default(string), string verblijfplaatsPostcode = default(string));
+        System.Threading.Tasks.Task<ApiResponse<IngeschrevenPersoonHalCollectie>> GetIngeschrevenPersonenWithHttpInfoAsync (string expand = default(string), string fields = default(string), List<string> burgerservicenummer = default(List<string>), DateTime? geboorteDatum = default(DateTime?), string geboortePlaats = default(string), GeslachtEnum? geslachtsaanduiding = default(GeslachtEnum?), bool? inclusiefOverledenPersonen = default(bool?), string naamGeslachtsnaam = default(string), string naamVoorvoegsel = default(string), string naamVoornamen = default(string), string verblijfplaatsGemeenteVanInschrijving = default(string), string verblijfplaatsHuisletter = default(string), int? verblijfplaatsHuisnummer = default(int?), string verblijfplaatsHuisnummertoevoeging = default(string), string verblijfplaatsNummeraanduidingIdentificatie = default(string), string verblijfplaatsStraat = default(string), string verblijfplaatsPostcode = default(string), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Raadpleeg een persoon
         /// </summary>
@@ -299,8 +302,9 @@ namespace Org.OpenAPITools.Api
         /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <param name="expand">Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature). (optional)</param>
         /// <param name="fields">Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma&#39;s gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature) (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of IngeschrevenPersoonHal</returns>
-        System.Threading.Tasks.Task<IngeschrevenPersoonHal> GetIngeschrevenPersoonAsync (string burgerservicenummer, string expand = default(string), string fields = default(string));
+        System.Threading.Tasks.Task<IngeschrevenPersoonHal> GetIngeschrevenPersoonAsync (string burgerservicenummer, string expand = default(string), string fields = default(string), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Raadpleeg een persoon
@@ -312,8 +316,9 @@ namespace Org.OpenAPITools.Api
         /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <param name="expand">Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature). (optional)</param>
         /// <param name="fields">Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma&#39;s gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature) (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (IngeschrevenPersoonHal)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IngeschrevenPersoonHal>> GetIngeschrevenPersoonAsyncWithHttpInfo (string burgerservicenummer, string expand = default(string), string fields = default(string));
+        System.Threading.Tasks.Task<ApiResponse<IngeschrevenPersoonHal>> GetIngeschrevenPersoonWithHttpInfoAsync (string burgerservicenummer, string expand = default(string), string fields = default(string), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Raadpleeg een kind van een persoon
         /// </summary>
@@ -323,8 +328,9 @@ namespace Org.OpenAPITools.Api
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <param name="id">De identificatie van het kind. </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of KindHalBasis</returns>
-        System.Threading.Tasks.Task<KindHalBasis> GetKindAsync (string burgerservicenummer, string id);
+        System.Threading.Tasks.Task<KindHalBasis> GetKindAsync (string burgerservicenummer, string id, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Raadpleeg een kind van een persoon
@@ -335,8 +341,9 @@ namespace Org.OpenAPITools.Api
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <param name="id">De identificatie van het kind. </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (KindHalBasis)</returns>
-        System.Threading.Tasks.Task<ApiResponse<KindHalBasis>> GetKindAsyncWithHttpInfo (string burgerservicenummer, string id);
+        System.Threading.Tasks.Task<ApiResponse<KindHalBasis>> GetKindWithHttpInfoAsync (string burgerservicenummer, string id, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Levert de kinderen van een persoon
         /// </summary>
@@ -345,8 +352,9 @@ namespace Org.OpenAPITools.Api
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of KindHalCollectie</returns>
-        System.Threading.Tasks.Task<KindHalCollectie> GetKinderenAsync (string burgerservicenummer);
+        System.Threading.Tasks.Task<KindHalCollectie> GetKinderenAsync (string burgerservicenummer, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Levert de kinderen van een persoon
@@ -356,8 +364,9 @@ namespace Org.OpenAPITools.Api
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (KindHalCollectie)</returns>
-        System.Threading.Tasks.Task<ApiResponse<KindHalCollectie>> GetKinderenAsyncWithHttpInfo (string burgerservicenummer);
+        System.Threading.Tasks.Task<ApiResponse<KindHalCollectie>> GetKinderenWithHttpInfoAsync (string burgerservicenummer, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Raadpleeg een ouder van een persoon
         /// </summary>
@@ -367,8 +376,9 @@ namespace Org.OpenAPITools.Api
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <param name="id">De identificatie van de ouder. </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of OuderHalBasis</returns>
-        System.Threading.Tasks.Task<OuderHalBasis> GetOuderAsync (string burgerservicenummer, string id);
+        System.Threading.Tasks.Task<OuderHalBasis> GetOuderAsync (string burgerservicenummer, string id, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Raadpleeg een ouder van een persoon
@@ -379,8 +389,9 @@ namespace Org.OpenAPITools.Api
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <param name="id">De identificatie van de ouder. </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (OuderHalBasis)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OuderHalBasis>> GetOuderAsyncWithHttpInfo (string burgerservicenummer, string id);
+        System.Threading.Tasks.Task<ApiResponse<OuderHalBasis>> GetOuderWithHttpInfoAsync (string burgerservicenummer, string id, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Levert de ouders van een persoon
         /// </summary>
@@ -389,8 +400,9 @@ namespace Org.OpenAPITools.Api
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of OuderHalCollectie</returns>
-        System.Threading.Tasks.Task<OuderHalCollectie> GetOudersAsync (string burgerservicenummer);
+        System.Threading.Tasks.Task<OuderHalCollectie> GetOudersAsync (string burgerservicenummer, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Levert de ouders van een persoon
@@ -400,8 +412,9 @@ namespace Org.OpenAPITools.Api
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (OuderHalCollectie)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OuderHalCollectie>> GetOudersAsyncWithHttpInfo (string burgerservicenummer);
+        System.Threading.Tasks.Task<ApiResponse<OuderHalCollectie>> GetOudersWithHttpInfoAsync (string burgerservicenummer, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Raadpleeg de partner van een persoon
         /// </summary>
@@ -411,8 +424,9 @@ namespace Org.OpenAPITools.Api
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <param name="id">De identificatie van de partner. </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of PartnerHalBasis</returns>
-        System.Threading.Tasks.Task<PartnerHalBasis> GetPartnerAsync (string burgerservicenummer, string id);
+        System.Threading.Tasks.Task<PartnerHalBasis> GetPartnerAsync (string burgerservicenummer, string id, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Raadpleeg de partner van een persoon
@@ -423,8 +437,9 @@ namespace Org.OpenAPITools.Api
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <param name="id">De identificatie van de partner. </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (PartnerHalBasis)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PartnerHalBasis>> GetPartnerAsyncWithHttpInfo (string burgerservicenummer, string id);
+        System.Threading.Tasks.Task<ApiResponse<PartnerHalBasis>> GetPartnerWithHttpInfoAsync (string burgerservicenummer, string id, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Levert de actuele partners van een persoon
         /// </summary>
@@ -433,8 +448,9 @@ namespace Org.OpenAPITools.Api
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of PartnerHalCollectie</returns>
-        System.Threading.Tasks.Task<PartnerHalCollectie> GetPartnersAsync (string burgerservicenummer);
+        System.Threading.Tasks.Task<PartnerHalCollectie> GetPartnersAsync (string burgerservicenummer, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Levert de actuele partners van een persoon
@@ -444,8 +460,9 @@ namespace Org.OpenAPITools.Api
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (PartnerHalCollectie)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PartnerHalCollectie>> GetPartnersAsyncWithHttpInfo (string burgerservicenummer);
+        System.Threading.Tasks.Task<ApiResponse<PartnerHalCollectie>> GetPartnersWithHttpInfoAsync (string burgerservicenummer, CancellationToken cancellationToken = default(CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -690,10 +707,11 @@ namespace Org.OpenAPITools.Api
         /// <param name="verblijfplaatsNummeraanduidingIdentificatie">Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.  (optional)</param>
         /// <param name="verblijfplaatsStraat">Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).  (optional)</param>
         /// <param name="verblijfplaatsPostcode">De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.  (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of IngeschrevenPersoonHalCollectie</returns>
-        public async System.Threading.Tasks.Task<IngeschrevenPersoonHalCollectie> GetIngeschrevenPersonenAsync (string expand = default(string), string fields = default(string), List<string> burgerservicenummer = default(List<string>), DateTime? geboorteDatum = default(DateTime?), string geboortePlaats = default(string), GeslachtEnum? geslachtsaanduiding = default(GeslachtEnum?), bool? inclusiefOverledenPersonen = default(bool?), string naamGeslachtsnaam = default(string), string naamVoorvoegsel = default(string), string naamVoornamen = default(string), string verblijfplaatsGemeenteVanInschrijving = default(string), string verblijfplaatsHuisletter = default(string), int? verblijfplaatsHuisnummer = default(int?), string verblijfplaatsHuisnummertoevoeging = default(string), string verblijfplaatsNummeraanduidingIdentificatie = default(string), string verblijfplaatsStraat = default(string), string verblijfplaatsPostcode = default(string))
+        public async System.Threading.Tasks.Task<IngeschrevenPersoonHalCollectie> GetIngeschrevenPersonenAsync (string expand = default(string), string fields = default(string), List<string> burgerservicenummer = default(List<string>), DateTime? geboorteDatum = default(DateTime?), string geboortePlaats = default(string), GeslachtEnum? geslachtsaanduiding = default(GeslachtEnum?), bool? inclusiefOverledenPersonen = default(bool?), string naamGeslachtsnaam = default(string), string naamVoorvoegsel = default(string), string naamVoornamen = default(string), string verblijfplaatsGemeenteVanInschrijving = default(string), string verblijfplaatsHuisletter = default(string), int? verblijfplaatsHuisnummer = default(int?), string verblijfplaatsHuisnummertoevoeging = default(string), string verblijfplaatsNummeraanduidingIdentificatie = default(string), string verblijfplaatsStraat = default(string), string verblijfplaatsPostcode = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<IngeschrevenPersoonHalCollectie> localVarResponse = await GetIngeschrevenPersonenAsyncWithHttpInfo(expand, fields, burgerservicenummer, geboorteDatum, geboortePlaats, geslachtsaanduiding, inclusiefOverledenPersonen, naamGeslachtsnaam, naamVoorvoegsel, naamVoornamen, verblijfplaatsGemeenteVanInschrijving, verblijfplaatsHuisletter, verblijfplaatsHuisnummer, verblijfplaatsHuisnummertoevoeging, verblijfplaatsNummeraanduidingIdentificatie, verblijfplaatsStraat, verblijfplaatsPostcode);
+             ApiResponse<IngeschrevenPersoonHalCollectie> localVarResponse = await GetIngeschrevenPersonenWithHttpInfoAsync(expand, fields, burgerservicenummer, geboorteDatum, geboortePlaats, geslachtsaanduiding, inclusiefOverledenPersonen, naamGeslachtsnaam, naamVoorvoegsel, naamVoornamen, verblijfplaatsGemeenteVanInschrijving, verblijfplaatsHuisletter, verblijfplaatsHuisnummer, verblijfplaatsHuisnummertoevoeging, verblijfplaatsNummeraanduidingIdentificatie, verblijfplaatsStraat, verblijfplaatsPostcode, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -719,8 +737,9 @@ namespace Org.OpenAPITools.Api
         /// <param name="verblijfplaatsNummeraanduidingIdentificatie">Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.  (optional)</param>
         /// <param name="verblijfplaatsStraat">Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).  (optional)</param>
         /// <param name="verblijfplaatsPostcode">De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.  (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (IngeschrevenPersoonHalCollectie)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<IngeschrevenPersoonHalCollectie>> GetIngeschrevenPersonenAsyncWithHttpInfo (string expand = default(string), string fields = default(string), List<string> burgerservicenummer = default(List<string>), DateTime? geboorteDatum = default(DateTime?), string geboortePlaats = default(string), GeslachtEnum? geslachtsaanduiding = default(GeslachtEnum?), bool? inclusiefOverledenPersonen = default(bool?), string naamGeslachtsnaam = default(string), string naamVoorvoegsel = default(string), string naamVoornamen = default(string), string verblijfplaatsGemeenteVanInschrijving = default(string), string verblijfplaatsHuisletter = default(string), int? verblijfplaatsHuisnummer = default(int?), string verblijfplaatsHuisnummertoevoeging = default(string), string verblijfplaatsNummeraanduidingIdentificatie = default(string), string verblijfplaatsStraat = default(string), string verblijfplaatsPostcode = default(string))
+        public async System.Threading.Tasks.Task<ApiResponse<IngeschrevenPersoonHalCollectie>> GetIngeschrevenPersonenWithHttpInfoAsync (string expand = default(string), string fields = default(string), List<string> burgerservicenummer = default(List<string>), DateTime? geboorteDatum = default(DateTime?), string geboortePlaats = default(string), GeslachtEnum? geslachtsaanduiding = default(GeslachtEnum?), bool? inclusiefOverledenPersonen = default(bool?), string naamGeslachtsnaam = default(string), string naamVoorvoegsel = default(string), string naamVoornamen = default(string), string verblijfplaatsGemeenteVanInschrijving = default(string), string verblijfplaatsHuisletter = default(string), int? verblijfplaatsHuisnummer = default(int?), string verblijfplaatsHuisnummertoevoeging = default(string), string verblijfplaatsNummeraanduidingIdentificatie = default(string), string verblijfplaatsStraat = default(string), string verblijfplaatsPostcode = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
 
             var localVarPath = "/ingeschrevenpersonen";
@@ -767,7 +786,7 @@ namespace Org.OpenAPITools.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -862,10 +881,11 @@ namespace Org.OpenAPITools.Api
         /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <param name="expand">Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature). (optional)</param>
         /// <param name="fields">Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma&#39;s gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature) (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of IngeschrevenPersoonHal</returns>
-        public async System.Threading.Tasks.Task<IngeschrevenPersoonHal> GetIngeschrevenPersoonAsync (string burgerservicenummer, string expand = default(string), string fields = default(string))
+        public async System.Threading.Tasks.Task<IngeschrevenPersoonHal> GetIngeschrevenPersoonAsync (string burgerservicenummer, string expand = default(string), string fields = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<IngeschrevenPersoonHal> localVarResponse = await GetIngeschrevenPersoonAsyncWithHttpInfo(burgerservicenummer, expand, fields);
+             ApiResponse<IngeschrevenPersoonHal> localVarResponse = await GetIngeschrevenPersoonWithHttpInfoAsync(burgerservicenummer, expand, fields, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -877,8 +897,9 @@ namespace Org.OpenAPITools.Api
         /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <param name="expand">Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature). (optional)</param>
         /// <param name="fields">Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma&#39;s gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature) (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (IngeschrevenPersoonHal)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<IngeschrevenPersoonHal>> GetIngeschrevenPersoonAsyncWithHttpInfo (string burgerservicenummer, string expand = default(string), string fields = default(string))
+        public async System.Threading.Tasks.Task<ApiResponse<IngeschrevenPersoonHal>> GetIngeschrevenPersoonWithHttpInfoAsync (string burgerservicenummer, string expand = default(string), string fields = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'burgerservicenummer' is set
             if (burgerservicenummer == null)
@@ -914,7 +935,7 @@ namespace Org.OpenAPITools.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1008,10 +1029,11 @@ namespace Org.OpenAPITools.Api
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <param name="id">De identificatie van het kind. </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of KindHalBasis</returns>
-        public async System.Threading.Tasks.Task<KindHalBasis> GetKindAsync (string burgerservicenummer, string id)
+        public async System.Threading.Tasks.Task<KindHalBasis> GetKindAsync (string burgerservicenummer, string id, CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<KindHalBasis> localVarResponse = await GetKindAsyncWithHttpInfo(burgerservicenummer, id);
+             ApiResponse<KindHalBasis> localVarResponse = await GetKindWithHttpInfoAsync(burgerservicenummer, id, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -1022,8 +1044,9 @@ namespace Org.OpenAPITools.Api
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <param name="id">De identificatie van het kind. </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (KindHalBasis)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<KindHalBasis>> GetKindAsyncWithHttpInfo (string burgerservicenummer, string id)
+        public async System.Threading.Tasks.Task<ApiResponse<KindHalBasis>> GetKindWithHttpInfoAsync (string burgerservicenummer, string id, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'burgerservicenummer' is set
             if (burgerservicenummer == null)
@@ -1061,7 +1084,7 @@ namespace Org.OpenAPITools.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1148,10 +1171,11 @@ namespace Org.OpenAPITools.Api
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of KindHalCollectie</returns>
-        public async System.Threading.Tasks.Task<KindHalCollectie> GetKinderenAsync (string burgerservicenummer)
+        public async System.Threading.Tasks.Task<KindHalCollectie> GetKinderenAsync (string burgerservicenummer, CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<KindHalCollectie> localVarResponse = await GetKinderenAsyncWithHttpInfo(burgerservicenummer);
+             ApiResponse<KindHalCollectie> localVarResponse = await GetKinderenWithHttpInfoAsync(burgerservicenummer, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -1161,8 +1185,9 @@ namespace Org.OpenAPITools.Api
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (KindHalCollectie)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<KindHalCollectie>> GetKinderenAsyncWithHttpInfo (string burgerservicenummer)
+        public async System.Threading.Tasks.Task<ApiResponse<KindHalCollectie>> GetKinderenWithHttpInfoAsync (string burgerservicenummer, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'burgerservicenummer' is set
             if (burgerservicenummer == null)
@@ -1196,7 +1221,7 @@ namespace Org.OpenAPITools.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1290,10 +1315,11 @@ namespace Org.OpenAPITools.Api
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <param name="id">De identificatie van de ouder. </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of OuderHalBasis</returns>
-        public async System.Threading.Tasks.Task<OuderHalBasis> GetOuderAsync (string burgerservicenummer, string id)
+        public async System.Threading.Tasks.Task<OuderHalBasis> GetOuderAsync (string burgerservicenummer, string id, CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<OuderHalBasis> localVarResponse = await GetOuderAsyncWithHttpInfo(burgerservicenummer, id);
+             ApiResponse<OuderHalBasis> localVarResponse = await GetOuderWithHttpInfoAsync(burgerservicenummer, id, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -1304,8 +1330,9 @@ namespace Org.OpenAPITools.Api
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <param name="id">De identificatie van de ouder. </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (OuderHalBasis)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<OuderHalBasis>> GetOuderAsyncWithHttpInfo (string burgerservicenummer, string id)
+        public async System.Threading.Tasks.Task<ApiResponse<OuderHalBasis>> GetOuderWithHttpInfoAsync (string burgerservicenummer, string id, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'burgerservicenummer' is set
             if (burgerservicenummer == null)
@@ -1343,7 +1370,7 @@ namespace Org.OpenAPITools.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1430,10 +1457,11 @@ namespace Org.OpenAPITools.Api
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of OuderHalCollectie</returns>
-        public async System.Threading.Tasks.Task<OuderHalCollectie> GetOudersAsync (string burgerservicenummer)
+        public async System.Threading.Tasks.Task<OuderHalCollectie> GetOudersAsync (string burgerservicenummer, CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<OuderHalCollectie> localVarResponse = await GetOudersAsyncWithHttpInfo(burgerservicenummer);
+             ApiResponse<OuderHalCollectie> localVarResponse = await GetOudersWithHttpInfoAsync(burgerservicenummer, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -1443,8 +1471,9 @@ namespace Org.OpenAPITools.Api
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (OuderHalCollectie)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<OuderHalCollectie>> GetOudersAsyncWithHttpInfo (string burgerservicenummer)
+        public async System.Threading.Tasks.Task<ApiResponse<OuderHalCollectie>> GetOudersWithHttpInfoAsync (string burgerservicenummer, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'burgerservicenummer' is set
             if (burgerservicenummer == null)
@@ -1478,7 +1507,7 @@ namespace Org.OpenAPITools.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1572,10 +1601,11 @@ namespace Org.OpenAPITools.Api
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <param name="id">De identificatie van de partner. </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of PartnerHalBasis</returns>
-        public async System.Threading.Tasks.Task<PartnerHalBasis> GetPartnerAsync (string burgerservicenummer, string id)
+        public async System.Threading.Tasks.Task<PartnerHalBasis> GetPartnerAsync (string burgerservicenummer, string id, CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<PartnerHalBasis> localVarResponse = await GetPartnerAsyncWithHttpInfo(burgerservicenummer, id);
+             ApiResponse<PartnerHalBasis> localVarResponse = await GetPartnerWithHttpInfoAsync(burgerservicenummer, id, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -1586,8 +1616,9 @@ namespace Org.OpenAPITools.Api
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
         /// <param name="id">De identificatie van de partner. </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (PartnerHalBasis)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<PartnerHalBasis>> GetPartnerAsyncWithHttpInfo (string burgerservicenummer, string id)
+        public async System.Threading.Tasks.Task<ApiResponse<PartnerHalBasis>> GetPartnerWithHttpInfoAsync (string burgerservicenummer, string id, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'burgerservicenummer' is set
             if (burgerservicenummer == null)
@@ -1625,7 +1656,7 @@ namespace Org.OpenAPITools.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1712,10 +1743,11 @@ namespace Org.OpenAPITools.Api
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of PartnerHalCollectie</returns>
-        public async System.Threading.Tasks.Task<PartnerHalCollectie> GetPartnersAsync (string burgerservicenummer)
+        public async System.Threading.Tasks.Task<PartnerHalCollectie> GetPartnersAsync (string burgerservicenummer, CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<PartnerHalCollectie> localVarResponse = await GetPartnersAsyncWithHttpInfo(burgerservicenummer);
+             ApiResponse<PartnerHalCollectie> localVarResponse = await GetPartnersWithHttpInfoAsync(burgerservicenummer, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -1725,8 +1757,9 @@ namespace Org.OpenAPITools.Api
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="burgerservicenummer">Uniek persoonsnummer </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (PartnerHalCollectie)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<PartnerHalCollectie>> GetPartnersAsyncWithHttpInfo (string burgerservicenummer)
+        public async System.Threading.Tasks.Task<ApiResponse<PartnerHalCollectie>> GetPartnersWithHttpInfoAsync (string burgerservicenummer, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'burgerservicenummer' is set
             if (burgerservicenummer == null)
@@ -1760,7 +1793,7 @@ namespace Org.OpenAPITools.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
