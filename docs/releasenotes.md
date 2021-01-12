@@ -1,3 +1,7 @@
+---
+layout: page-with-side-nav
+title: Haal Centraal BRP bevragen
+---
 # Releasenotes Haal-Centraal-BRP-Bevragen
 
 ## Versie 1.2.0
