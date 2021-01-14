@@ -2540,6 +2540,9 @@
             "type" : "string",
             "example" : "de"
           },
+          "adellijkeTitelPredikaat" : {
+            "$ref" : "#/components/schemas/Waardetabel"
+          },
           "inOnderzoek" : {
             "$ref" : "#/components/schemas/NaamInOnderzoek"
           }
@@ -2557,11 +2560,25 @@
           "voorvoegsel" : {
             "type" : "boolean"
           },
+          "adellijkeTitelPredikaat" : {
+            "type" : "boolean"
+          },
           "datumIngangOnderzoek" : {
             "$ref" : "#/components/schemas/DatumOnvolledig"
           }
         },
         "description" : "Geeft aan welke gegevens over de naam in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n"
+      },
+      "NaamPersoonInOnderzoek" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/NaamInOnderzoek"
+        }, {
+          "properties" : {
+            "aanduidingNaamgebruik" : {
+              "type" : "boolean"
+            }
+          }
+        } ]
       },
       "OuderInOnderzoek" : {
         "type" : "object",
@@ -2665,8 +2682,8 @@
             "aanduidingNaamgebruik" : {
               "$ref" : "#/components/schemas/Naamgebruik_enum"
             },
-            "adellijkeTitelPredikaat" : {
-              "$ref" : "#/components/schemas/Waardetabel"
+            "inOnderzoek" : {
+              "$ref" : "#/components/schemas/NaamPersoonInOnderzoek"
             }
           }
         } ]
