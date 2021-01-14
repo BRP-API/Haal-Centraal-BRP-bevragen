@@ -841,7 +841,7 @@ components:
                       Gegevens over de geboorte.
                       * **datum** : datum waarop de persoon is geboren.
                       * **land** : land waar de persoon is geboren
-                      * **plaats** : plaats waar de persoon is geboren. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding.
+                      * **plaats** : gemeente waar de persoon is geboren. Is de persoon geboren buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.
         properties:
           land:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
@@ -959,7 +959,7 @@ components:
                     Gegevens over het overlijden van de persoon.
                     * **datum** : datum waarop de persoon is overleden.
                     * **land** : land waar de persoon is overleden.
-                    * **plaats** : plaats waar de persoon is overleden. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding.
+                    * **plaats** : gemeente waar de persoon is overleden. Is de persoon overleden buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.
       properties:
         indicatieOverleden:
           type: boolean
@@ -1014,7 +1014,7 @@ components:
                     Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.
                     * **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.
                     * **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan.
-                    * **plaats** : Als de plaats een gemeente in Nederland is dan gewoon de gemeentecode + gemeentenaam. Voor een plaats buiten Nederland is de gemeentecode leeg en wordt de gemeentenaam de buitenlandse plaatsnaam of aanduiding."
+                    * **plaats** : De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Voor een plaats buiten Nederland bevat het antwoord een buitenlandse plaatsnaam of aanduiding.
       properties:
         datum:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
