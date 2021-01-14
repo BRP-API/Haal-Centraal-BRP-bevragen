@@ -2613,7 +2613,7 @@
               "$ref" : "#/components/schemas/GeboorteInOnderzoek"
             }
           },
-          "description" : "Gegevens over de geboorte.\n* **datum** : datum waarop de persoon is geboren.\n* **land** : land waar de persoon is geboren\n* **plaats** : plaats waar de persoon is geboren. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding.\n"
+          "description" : "Gegevens over de geboorte.\n* **datum** : datum waarop de persoon is geboren.\n* **land** : land waar de persoon is geboren\n* **plaats** : gemeente waar de persoon is geboren. Is de persoon geboren buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.\n"
         } ]
       },
       "GeboorteInOnderzoek" : {
@@ -2774,7 +2774,7 @@
             "$ref" : "#/components/schemas/OverlijdenInOnderzoek"
           }
         },
-        "description" : "Gegevens over het overlijden van de persoon.\n* **datum** : datum waarop de persoon is overleden.\n* **land** : land waar de persoon is overleden.\n* **plaats** : plaats waar de persoon is overleden. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding.\n"
+        "description" : "Gegevens over het overlijden van de persoon.\n* **datum** : datum waarop de persoon is overleden.\n* **land** : land waar de persoon is overleden.\n* **plaats** : gemeente waar de persoon is overleden. Is de persoon overleden buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.\n"
       },
       "OverlijdenInOnderzoek" : {
         "type" : "object",
@@ -2840,7 +2840,7 @@
             "$ref" : "#/components/schemas/AangaanHuwelijkPartnerschapInOnderzoek"
           }
         },
-        "description" : "Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.\n* **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.\n* **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan.\n* **plaats** : Als de plaats een gemeente in Nederland is dan gewoon de gemeentecode + gemeentenaam. Voor een plaats buiten Nederland is de gemeentecode leeg en wordt de gemeentenaam de buitenlandse plaatsnaam of aanduiding.\"\n"
+        "description" : "Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.\n* **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.\n* **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan.\n* **plaats** : De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Voor een plaats buiten Nederland bevat het antwoord een buitenlandse plaatsnaam of aanduiding.\n"
       },
       "AangaanHuwelijkPartnerschapInOnderzoek" : {
         "type" : "object",
