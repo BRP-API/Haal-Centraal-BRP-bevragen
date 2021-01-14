@@ -1,6 +1,8 @@
 name: publish 'in productie' en 'in ontwikkeling' user stories
 
 on:
+  schedule:
+  - cron: '0 9,11,12,14,16,17 * * *'
   workflow_dispatch:
 
 jobs:
