@@ -55,6 +55,8 @@ src/Org.OpenAPITools/Model/Naam.cs
 src/Org.OpenAPITools/Model/NaamInOnderzoek.cs
 src/Org.OpenAPITools/Model/NaamPersoon.cs
 src/Org.OpenAPITools/Model/NaamPersoonAllOf.cs
+src/Org.OpenAPITools/Model/NaamPersoonInOnderzoek.cs
+src/Org.OpenAPITools/Model/NaamPersoonInOnderzoekAllOf.cs
 src/Org.OpenAPITools/Model/NaamgebruikEnum.cs
 src/Org.OpenAPITools/Model/Nationaliteit.cs
 src/Org.OpenAPITools/Model/NationaliteitInOnderzoek.cs

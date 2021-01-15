@@ -52,6 +52,8 @@ openapi_client/model/naam.py
 openapi_client/model/naam_in_onderzoek.py
 openapi_client/model/naam_persoon.py
 openapi_client/model/naam_persoon_all_of.py
+openapi_client/model/naam_persoon_in_onderzoek.py
+openapi_client/model/naam_persoon_in_onderzoek_all_of.py
 openapi_client/model/naamgebruik_enum.py
 openapi_client/model/nationaliteit.py
 openapi_client/model/nationaliteit_in_onderzoek.py

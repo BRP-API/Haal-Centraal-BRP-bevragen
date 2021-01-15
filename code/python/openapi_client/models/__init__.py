@@ -50,6 +50,8 @@ from openapi_client.model.naam import Naam
 from openapi_client.model.naam_in_onderzoek import NaamInOnderzoek
 from openapi_client.model.naam_persoon import NaamPersoon
 from openapi_client.model.naam_persoon_all_of import NaamPersoonAllOf
+from openapi_client.model.naam_persoon_in_onderzoek import NaamPersoonInOnderzoek
+from openapi_client.model.naam_persoon_in_onderzoek_all_of import NaamPersoonInOnderzoekAllOf
 from openapi_client.model.naamgebruik_enum import NaamgebruikEnum
 from openapi_client.model.nationaliteit import Nationaliteit
 from openapi_client.model.nationaliteit_in_onderzoek import NationaliteitInOnderzoek

@@ -72,6 +72,8 @@ src/main/java/org/openapitools/client/model/Naam.java
 src/main/java/org/openapitools/client/model/NaamInOnderzoek.java
 src/main/java/org/openapitools/client/model/NaamPersoon.java
 src/main/java/org/openapitools/client/model/NaamPersoonAllOf.java
+src/main/java/org/openapitools/client/model/NaamPersoonInOnderzoek.java
+src/main/java/org/openapitools/client/model/NaamPersoonInOnderzoekAllOf.java
 src/main/java/org/openapitools/client/model/NaamgebruikEnum.java
 src/main/java/org/openapitools/client/model/Nationaliteit.java
 src/main/java/org/openapitools/client/model/NationaliteitInOnderzoek.java

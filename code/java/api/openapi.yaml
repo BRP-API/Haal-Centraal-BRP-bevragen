@@ -12,7 +12,7 @@ info:
     name: European Union Public License, version 1.2 (EUPL-1.2)
     url: https://eupl.eu/1.2/nl/
   title: Bevragen Ingeschreven Personen
-  version: 1.1.0
+  version: 1.2.0
 servers:
 - description: |
     APILAB testserver
@@ -2032,6 +2032,8 @@ components:
         voorvoegsel:
           example: de
           type: string
+        adellijkeTitelPredikaat:
+          $ref: '#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: '#/components/schemas/NaamInOnderzoek'
       type: object
@@ -2045,9 +2047,15 @@ components:
           type: boolean
         voorvoegsel:
           type: boolean
+        adellijkeTitelPredikaat:
+          type: boolean
         datumIngangOnderzoek:
           $ref: '#/components/schemas/DatumOnvolledig'
       type: object
+    NaamPersoonInOnderzoek:
+      allOf:
+      - $ref: '#/components/schemas/NaamInOnderzoek'
+      - $ref: '#/components/schemas/NaamPersoonInOnderzoek_allOf'
     OuderInOnderzoek:
       description: |
         Geeft aan welke gegevens van de de ouder in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
@@ -2150,7 +2158,7 @@ components:
         Gegevens over het overlijden van de persoon.
         * **datum** : datum waarop de persoon is overleden.
         * **land** : land waar de persoon is overleden.
-        * **plaats** : plaats waar de persoon is overleden. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding.
+        * **plaats** : gemeente waar de persoon is overleden. Is de persoon overleden buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.
       properties:
         indicatieOverleden:
           description: |
@@ -2205,7 +2213,7 @@ components:
         Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.
         * **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.
         * **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan.
-        * **plaats** : Als de plaats een gemeente in Nederland is dan gewoon de gemeentecode + gemeentenaam. Voor een plaats buiten Nederland is de gemeentecode leeg en wordt de gemeentenaam de buitenlandse plaatsnaam of aanduiding."
+        * **plaats** : De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Voor een plaats buiten Nederland bevat het antwoord een buitenlandse plaatsnaam of aanduiding.
       properties:
         datum:
           $ref: '#/components/schemas/DatumOnvolledig'
@@ -2698,12 +2706,16 @@ components:
       properties:
         _links:
           $ref: '#/components/schemas/PartnerLinks'
+    NaamPersoonInOnderzoek_allOf:
+      properties:
+        aanduidingNaamgebruik:
+          type: boolean
     Geboorte_allOf:
       description: |
         Gegevens over de geboorte.
         * **datum** : datum waarop de persoon is geboren.
         * **land** : land waar de persoon is geboren
-        * **plaats** : plaats waar de persoon is geboren. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding.
+        * **plaats** : gemeente waar de persoon is geboren. Is de persoon geboren buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.
       properties:
         land:
           $ref: '#/components/schemas/Waardetabel'
@@ -2735,8 +2747,8 @@ components:
           type: string
         aanduidingNaamgebruik:
           $ref: '#/components/schemas/Naamgebruik_enum'
-        adellijkeTitelPredikaat:
-          $ref: '#/components/schemas/Waardetabel'
+        inOnderzoek:
+          $ref: '#/components/schemas/NaamPersoonInOnderzoek'
     Verblijfplaats_allOf:
       description: |
         Gegevens over het verblijf of de woonlocatie van een persoon.
