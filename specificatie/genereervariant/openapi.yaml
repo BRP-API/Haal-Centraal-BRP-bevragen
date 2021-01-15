@@ -12,7 +12,7 @@ info:
   license:
     name: European Union Public License, version 1.2 (EUPL-1.2)
     url: https://eupl.eu/1.2/nl/
-  version: 1.1.0
+  version: 1.2.0
 servers:
 - url: https://www.haalcentraal.nl/haalcentraal/api/brp
   description: |
@@ -1991,6 +1991,8 @@ components:
         voorvoegsel:
           type: string
           example: de
+        adellijkeTitelPredikaat:
+          $ref: '#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: '#/components/schemas/NaamInOnderzoek'
     NaamInOnderzoek:
@@ -2002,10 +2004,18 @@ components:
           type: boolean
         voorvoegsel:
           type: boolean
+        adellijkeTitelPredikaat:
+          type: boolean
         datumIngangOnderzoek:
           $ref: '#/components/schemas/DatumOnvolledig'
       description: |
         Geeft aan welke gegevens over de naam in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+    NaamPersoonInOnderzoek:
+      allOf:
+      - $ref: '#/components/schemas/NaamInOnderzoek'
+      - properties:
+          aanduidingNaamgebruik:
+            type: boolean
     OuderInOnderzoek:
       type: object
       properties:
@@ -2033,7 +2043,7 @@ components:
           Gegevens over de geboorte.
           * **datum** : datum waarop de persoon is geboren.
           * **land** : land waar de persoon is geboren
-          * **plaats** : plaats waar de persoon is geboren. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding.
+          * **plaats** : gemeente waar de persoon is geboren. Is de persoon geboren buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.
     GeboorteInOnderzoek:
       type: object
       properties:
@@ -2088,8 +2098,8 @@ components:
             example: baron Van den Aedel
           aanduidingNaamgebruik:
             $ref: '#/components/schemas/Naamgebruik_enum'
-          adellijkeTitelPredikaat:
-            $ref: '#/components/schemas/Waardetabel'
+          inOnderzoek:
+            $ref: '#/components/schemas/NaamPersoonInOnderzoek'
     PersoonInOnderzoek:
       type: object
       properties:
@@ -2157,7 +2167,7 @@ components:
         Gegevens over het overlijden van de persoon.
         * **datum** : datum waarop de persoon is overleden.
         * **land** : land waar de persoon is overleden.
-        * **plaats** : plaats waar de persoon is overleden. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding.
+        * **plaats** : gemeente waar de persoon is overleden. Is de persoon overleden buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.
     OverlijdenInOnderzoek:
       type: object
       properties:
@@ -2208,7 +2218,7 @@ components:
         Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.
         * **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.
         * **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan.
-        * **plaats** : Als de plaats een gemeente in Nederland is dan gewoon de gemeentecode + gemeentenaam. Voor een plaats buiten Nederland is de gemeentecode leeg en wordt de gemeentenaam de buitenlandse plaatsnaam of aanduiding."
+        * **plaats** : De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Voor een plaats buiten Nederland bevat het antwoord een buitenlandse plaatsnaam of aanduiding.
     AangaanHuwelijkPartnerschapInOnderzoek:
       type: object
       properties:

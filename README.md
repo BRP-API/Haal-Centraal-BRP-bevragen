@@ -7,7 +7,7 @@
 API voor het zoeken en raadplegen van actuele personen, partners, ouders en kinderen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI).
 De API wordt nog niet door RvIG aangeboden. Om de migratie naar API's te versnellen besluiten sommige gemeenten de API zelf aan te bieden.
 
-De laatste versie is 1.1.0. Lees de [release notes](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/releasenotes.html) om te zien wat er gewijzigd is.
+De laatste versie is 1.2.0. Lees de [release notes](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/releasenotes.html) om te zien wat er gewijzigd is.
 
 ## Direct uitproberen?
 * Bekijk de specificaties met [Swagger UI](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/swagger-ui) of [Redoc](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/redoc)
