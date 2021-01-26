@@ -32,15 +32,15 @@
   },
   "homepage": "https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen#readme",
   "devDependencies": {
-    "@openapitools/openapi-generator-cli": "^2.1.16",
+    "@openapitools/openapi-generator-cli": "^2.1.18",
     "@stoplight/spectral": "^5.8.0",
-    "husky": "^4.3.7",
+    "husky": "^4.3.8",
     "mvn-dl": "^5.1.0",
     "openapi-to-postmanv2": "^2.0.0"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run oas:lint && npm run oas:resolve && npm run oas:lint-genereervariant"
+      "pre-commit": "npm run oas:lint && npm run oas:resolve && npm run oas:lint-genereervariant && git checkout ./specificatie/genereervariant/openapi.*"
     }
   }
 }
