@@ -5,6 +5,7 @@ title: User Stories in Productie
 
 # User stories
 
+- [Als medewerker bijstandsverlening wil ik de gegevens van ouders, kinderen en partners weten, ookal zijn zij niet in de BRP geregistreerd](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/794){:target="_blank" rel="noopener"}
 - [Als medewerker bijstandverlening wil ik weten van een aanvrager met een niet Nederlandse nationaliteit weten welke verblijftitel persoon heeft](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/789){:target="_blank" rel="noopener"}
 - [Als medewerker bijstandverlening wil ik weten wat de nationaliteit is van aanvrager/rechthebbende](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/788){:target="_blank" rel="noopener"}
 - [Als medewerker bijstandverlening wil ik weten wie de partner is van rechthebbende ](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/787){:target="_blank" rel="noopener"}
