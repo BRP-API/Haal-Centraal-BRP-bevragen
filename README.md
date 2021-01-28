@@ -30,6 +30,7 @@ Gebruik de BRP bevragen API in combinatie met (een van de) andere BRP API’s:
 * [API Design Visie](https://github.com/Geonovum/KP-APIs/tree/master/Werkgroep%20Design%20Visie)
 * [REST API Design Rules](https://docs.geostandaarden.nl/api/API-Designrules/)
 * [Landelijke API strategie voor de overheid](https://geonovum.github.io/KP-APIs/)
+* [Stelselcatalogus](https://www.stelselcatalogus.nl/registraties/BRP/)
 
 ## Contact
 
