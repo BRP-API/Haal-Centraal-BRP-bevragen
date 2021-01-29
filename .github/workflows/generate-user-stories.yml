@@ -22,7 +22,7 @@ jobs:
         with:
           format: list
           query:  label:"v1.2" label:"User Story"
-          token: ${{ secrets.USER_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           path: issues-tmp.md
       - run: |
           cat issues-tmp.md >> user-stories-dev.md
@@ -38,7 +38,7 @@ jobs:
         with:
           format: list
           query:  label:"v1.1" label:"User Story"
-          token: ${{ secrets.USER_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           path: issues-tmp.md
       - run: |
           cat issues-tmp.md >> user-stories-prod.md
@@ -49,7 +49,7 @@ jobs:
         with:
           format: list
           query:  label:"v1.0" label:"User Story"
-          token: ${{ secrets.USER_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           path: issues-tmp.md
       - run: |
           cat issues-tmp.md >> user-stories-prod.md
