@@ -5,6 +5,7 @@ title: User Stories in Productie
 
 # User stories
 
+- [Als medewerker schuldhulpverlening wil ik weten welke medebewoners er zijn en wat de familierelaties zijn met medebewoners](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/799){:target="_blank" rel="noopener"}
 - [Als medewerker schuldhulpverlening wil ik weten hoeveel kinderen hulpzoekende heeft, waar de kinderen wonen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/798){:target="_blank" rel="noopener"}
 - [Als medewerker Schuldhulpverlening/Geldzaken wil ik inzicht in de verblijfplaats en verblijfstitel bij een vreemde nationaliteit](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/797){:target="_blank" rel="noopener"}
 - [Als medewerker schuldhulpverlening wil ik weten of hulpzoekende in mijn gemeente woont, en beschikt over een geldige verblijfstitel bij een vreemde nationaliteit](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/796){:target="_blank" rel="noopener"}
