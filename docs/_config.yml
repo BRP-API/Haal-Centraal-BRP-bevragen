@@ -50,6 +50,7 @@ nav:
 #      - title: Features
 #        path: /features
 
+plugins:
   - jekyll-redirect-from
   - jekyll-remote-theme
 
