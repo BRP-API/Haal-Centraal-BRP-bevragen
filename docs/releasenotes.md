@@ -33,7 +33,7 @@ Voor het uitbrengen van release v1.0.0 is besloten om de nieuwe inzichten die he
 We bieden nu ook SDK's aan met gegenereerde [plumbing-code](./code).
 Daarnaast bieden we een[postman-collectie](./test) t.b.v. testen aan.
 
-### Openapi.yaml :
+### Openapi.yaml:
 
 - OperationId's zijn aangepast ivm code-generatie issues.
 - Alle descriptions zijn omgezet naar markdown.
