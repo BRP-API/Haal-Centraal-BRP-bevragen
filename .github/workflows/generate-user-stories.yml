@@ -17,11 +17,11 @@ jobs:
           echo -e '---\nlayout: page-with-side-nav\ntitle: User Stories in Ontwikkeling\n---\n' >> user-stories-dev.md
           echo -e '# User stories\n' >> user-stories-dev.md
 
-      - name: List 'v1.2' user stories
+      - name: List 'v1.3' user stories
         uses: lee-dohm/select-matching-issues@v1.2.0
         with:
           format: list
-          query:  label:"v1.2" label:"User Story"
+          query:  label:"v1.3" label:"User Story"
           token: ${{ secrets.GITHUB_TOKEN }}
           path: issues-tmp.md
       - run: |
@@ -33,6 +33,17 @@ jobs:
           echo -e '---\nlayout: page-with-side-nav\ntitle: User Stories in Productie\n---\n' >> user-stories-prod.md
           echo -e '# User stories\n' >> user-stories-prod.md
           
+      - name: List 'v1.2' user stories
+        uses: lee-dohm/select-matching-issues@v1.2.0
+        with:
+          format: list
+          query:  label:"v1.2" label:"User Story"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: issues-tmp.md
+      - run: |
+          cat issues-tmp.md >> user-stories-prod.md
+          echo -e '\n' >> user-stories-prod.md
+        
       - name: List 'v1.1' user stories
         uses: lee-dohm/select-matching-issues@v1.2.0
         with:
