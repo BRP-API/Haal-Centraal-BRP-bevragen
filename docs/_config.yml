@@ -48,7 +48,9 @@ nav:
 #      - title: Bevragen API (redoc)
 #        path: /redoc
 #      - title: Features
-#        path: /features  - jekyll-redirect-from
+#        path: /features
+
+  - jekyll-redirect-from
   - jekyll-remote-theme
 
 remote_theme: VNG-Realisatie/jekyll-theme-haal-centraal
