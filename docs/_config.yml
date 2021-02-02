@@ -30,7 +30,7 @@ nav:
       - title: Bevragen API (redoc)
         path: /redoc
       - title: Features
-        path: /featuresplugins:
+        path: /features
   - title: Specificaties v. 1.3 (IO)
     subnav:
       - title: User stories
