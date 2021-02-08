@@ -20,7 +20,6 @@ nav:
       - title: User stories
         url: https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/user-stories-prod
         path: /user-stories
-        target: blank
       - title: User stories (afgeschermd)
         url: https://gitlab.com/vng-realisatie/haal-centraal-brp-afgeschermd/-/issues?label_name%5B%5D=BRP+bevragen
         path: /user-stories
@@ -36,7 +35,6 @@ nav:
       - title: User stories
         url: https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/user-stories-dev
         path: /user-stories
-        target: blank
 
 plugins:
   - jekyll-redirect-from
