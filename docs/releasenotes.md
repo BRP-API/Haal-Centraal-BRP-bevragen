@@ -5,6 +5,10 @@ title: Haal Centraal BRP bevragingen
 
 # Releasenotes Haal-Centraal-BRP-Bevragen
 
+## Versie 1.3.0
+- De property "aNummer" is toegevoegd aan "IngeschrevenPersoon".
+
+
 ## Versie 1.2.0
 
 - De property "adellijkeTitelPredikaat" is verplaatst van "NaamPersoon" naar "Naam"
