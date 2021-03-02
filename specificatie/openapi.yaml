@@ -283,6 +283,7 @@ paths:
         - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/kinderen/{id}:
     get:
+      deprecated: true
       operationId: GetKind
       summary: "Raadpleeg een kind van een persoon"
       description: |
@@ -331,6 +332,7 @@ paths:
         - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/kinderen:
     get:
+      deprecated: true
       operationId: GetKinderen
       summary: "Levert de kinderen van een persoon"
       description: |
@@ -372,6 +374,7 @@ paths:
         - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/ouders/{id}:
     get:
+      deprecated: true
       operationId: GetOuder
       summary: "Raadpleeg een ouder van een persoon"
       description: |
@@ -420,6 +423,7 @@ paths:
         - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/ouders:
     get:
+      deprecated: true
       operationId: GetOuders
       summary: "Levert de ouders van een persoon"
       description: |
@@ -461,6 +465,7 @@ paths:
         - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/partners/{id}:
     get:
+      deprecated: true
       operationId: GetPartner
       summary: "Raadpleeg de partner van een persoon"
       description: |
@@ -509,6 +514,7 @@ paths:
         - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/partners:
     get:
+      deprecated: true
       operationId: GetPartners
       summary: "Levert de actuele partners van een persoon"
       description: |
@@ -618,6 +624,18 @@ components:
           type: "array"
           items:
             $ref: "#/components/schemas/Reisdocumentnummer"
+        kinderen:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Kind"
+        ouders:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Ouder"
+        partners:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Partner"
     IngeschrevenPersoonHalCollectie:
       type: object
       properties:
@@ -671,6 +689,7 @@ components:
           description: |
                         Gegevens mogen niet worden verstrekt aan derden / maarschappelijke instellingen.
     OuderHalCollectie:
+      deprecated: true
       type: object
       properties:
         _links:
@@ -678,6 +697,7 @@ components:
         _embedded:
           $ref: '#/components/schemas/OuderHalCollectieEmbedded'
     OuderHalCollectieEmbedded:
+      deprecated: true
       type: object
       properties:
         ouders:
@@ -685,6 +705,7 @@ components:
           items:
             $ref: '#/components/schemas/OuderHalBasis'
     OuderHalBasis:
+      deprecated: true
       allOf:
         - $ref: '#/components/schemas/Ouder'
         - properties:
@@ -715,6 +736,7 @@ components:
           description: |
                         Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.
     KindHalCollectie:
+      deprecated: true
       type: object
       properties:
         _links:
@@ -722,6 +744,7 @@ components:
         _embedded:
           $ref: '#/components/schemas/KindHalCollectieEmbedded'
     KindHalCollectieEmbedded:
+      deprecated: true
       type: object
       properties:
         kinderen:
@@ -729,6 +752,7 @@ components:
           items:
             $ref: '#/components/schemas/KindHalBasis'
     KindHalBasis:
+      deprecated: true
       allOf:
         - $ref: '#/components/schemas/Kind'
         - properties:
@@ -760,6 +784,7 @@ components:
           description: |
                         Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.
     PartnerHalCollectie:
+      deprecated: true
       type: object
       properties:
         _links:
@@ -767,6 +792,7 @@ components:
         _embedded:
           $ref: '#/components/schemas/PartnerHalCollectieEmbedded'
     PartnerHalCollectieEmbedded:
+      deprecated: true
       type: object
       properties:
         partners:
@@ -774,6 +800,7 @@ components:
           items:
             $ref: '#/components/schemas/PartnerHalBasis'
     PartnerHalBasis:
+      deprecated: true
       allOf:
         - $ref: '#/components/schemas/Partner'
         - properties:
@@ -1261,6 +1288,7 @@ components:
         adres:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalLink"
     OuderLinks:
+      deprecated: true
       type: "object"
       properties:
         self:
@@ -1268,6 +1296,7 @@ components:
         ingeschrevenPersoon:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalLink"
     KindLinks:
+      deprecated: true
       type: "object"
       properties:
         self:
@@ -1275,6 +1304,7 @@ components:
         ingeschrevenPersoon:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalLink"
     PartnerLinks:
+      deprecated: true
       type: "object"
       properties:
         self:
