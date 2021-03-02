@@ -10,7 +10,7 @@
       "name" : "European Union Public License, version 1.2 (EUPL-1.2)",
       "url" : "https://eupl.eu/1.2/nl/"
     },
-    "version" : "1.2.0"
+    "version" : "1.3.0"
   },
   "servers" : [ {
     "url" : "https://www.haalcentraal.nl/haalcentraal/api/brp",
@@ -2222,6 +2222,10 @@
           "burgerservicenummer" : {
             "type" : "string",
             "example" : "555555021"
+          },
+          "aNummer" : {
+            "type" : "string",
+            "description" : "Het A-nummer van de persoon\n"
           },
           "geheimhoudingPersoonsgegevens" : {
             "title" : "Indicatie geheim",
