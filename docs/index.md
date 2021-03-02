@@ -10,6 +10,7 @@ title: Haal Centraal BRP bevragen
 
 API voor het zoeken en raadplegen van actuele personen, partners, ouders en kinderen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI).
 De API wordt nog niet door RvIG aangeboden. Om de migratie naar API's te versnellen besluiten sommige gemeenten de API zelf aan te bieden.
+RvIG implementeert de API zonder verschillende [afgeleide gegevens](rvig_en_proxy). Daarom is er ook een [proxy API](rvig_en_proxy) beschikbaar waarmee deze afgeleide gegevens weer kunnen worden toegevoegd.
 
 De laatste versie is 1.3.0. Lees de [release notes](releasenotes.md) om te zien wat er gewijzigd is.
 
