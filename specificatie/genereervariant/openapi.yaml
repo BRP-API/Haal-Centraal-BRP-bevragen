@@ -808,6 +808,7 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/Foutbericht'
+      deprecated: true
   /ingeschrevenpersonen/{burgerservicenummer}/kinderen:
     get:
       tags:
@@ -994,6 +995,7 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/Foutbericht'
+      deprecated: true
   /ingeschrevenpersonen/{burgerservicenummer}/ouders/{id}:
     get:
       tags:
@@ -1189,6 +1191,7 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/Foutbericht'
+      deprecated: true
   /ingeschrevenpersonen/{burgerservicenummer}/ouders:
     get:
       tags:
@@ -1375,6 +1378,7 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/Foutbericht'
+      deprecated: true
   /ingeschrevenpersonen/{burgerservicenummer}/partners/{id}:
     get:
       tags:
@@ -1570,6 +1574,7 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/Foutbericht'
+      deprecated: true
   /ingeschrevenpersonen/{burgerservicenummer}/partners:
     get:
       tags:
@@ -1756,6 +1761,7 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/Foutbericht'
+      deprecated: true
 components:
   schemas:
     Reisdocumentnummer:
@@ -1813,6 +1819,18 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Reisdocumentnummer'
+        kinderen:
+          type: array
+          items:
+            $ref: '#/components/schemas/Kind'
+        ouders:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ouder'
+        partners:
+          type: array
+          items:
+            $ref: '#/components/schemas/Partner'
     IngeschrevenPersoonHalCollectie:
       type: object
       properties:
@@ -1872,6 +1890,7 @@ components:
           $ref: '#/components/schemas/HalCollectionLinks'
         _embedded:
           $ref: '#/components/schemas/OuderHalCollectieEmbedded'
+      deprecated: true
     OuderHalCollectieEmbedded:
       type: object
       properties:
@@ -1879,7 +1898,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/OuderHalBasis'
+      deprecated: true
     OuderHalBasis:
+      deprecated: true
       allOf:
       - $ref: '#/components/schemas/Ouder'
       - properties:
@@ -1916,6 +1937,7 @@ components:
           $ref: '#/components/schemas/HalCollectionLinks'
         _embedded:
           $ref: '#/components/schemas/KindHalCollectieEmbedded'
+      deprecated: true
     KindHalCollectieEmbedded:
       type: object
       properties:
@@ -1923,7 +1945,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/KindHalBasis'
+      deprecated: true
     KindHalBasis:
+      deprecated: true
       allOf:
       - $ref: '#/components/schemas/Kind'
       - properties:
@@ -1961,6 +1985,7 @@ components:
           $ref: '#/components/schemas/HalCollectionLinks'
         _embedded:
           $ref: '#/components/schemas/PartnerHalCollectieEmbedded'
+      deprecated: true
     PartnerHalCollectieEmbedded:
       type: object
       properties:
@@ -1968,7 +1993,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PartnerHalBasis'
+      deprecated: true
     PartnerHalBasis:
+      deprecated: true
       allOf:
       - $ref: '#/components/schemas/Partner'
       - properties:
@@ -2460,6 +2487,7 @@ components:
           $ref: '#/components/schemas/HalLink'
         ingeschrevenPersoon:
           $ref: '#/components/schemas/HalLink'
+      deprecated: true
     KindLinks:
       type: object
       properties:
@@ -2467,6 +2495,7 @@ components:
           $ref: '#/components/schemas/HalLink'
         ingeschrevenPersoon:
           $ref: '#/components/schemas/HalLink'
+      deprecated: true
     PartnerLinks:
       type: object
       properties:
@@ -2474,6 +2503,7 @@ components:
           $ref: '#/components/schemas/HalLink'
         ingeschrevenPersoon:
           $ref: '#/components/schemas/HalLink'
+      deprecated: true
     IngeschrevenPersoonEmbedded:
       type: object
       properties:
