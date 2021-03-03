@@ -75,6 +75,9 @@ paths:
           _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie
           [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature).
         required: false
+        deprecated: true
+        style: form
+        explode: true
         schema:
           type: string
       - name: fields
@@ -437,6 +440,9 @@ paths:
           _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie
           [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature).
         required: false
+        deprecated: true
+        style: form
+        explode: true
         schema:
           type: string
       - name: fields
