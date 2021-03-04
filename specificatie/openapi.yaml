@@ -713,7 +713,6 @@ components:
         - $ref: '#/components/schemas/Ouder'
         - properties:
             geheimhoudingPersoonsgegevens:
-              deprecated: true
               type: boolean
               title: "Indicatie geheim"
               description: |
@@ -761,7 +760,6 @@ components:
         - $ref: '#/components/schemas/Kind'
         - properties:
             geheimhoudingPersoonsgegevens:
-              deprecated: true
               type: boolean
               title: "Indicatie geheim"
               description: |
@@ -810,7 +808,6 @@ components:
         - $ref: '#/components/schemas/Partner'
         - properties:
             geheimhoudingPersoonsgegevens:
-              deprecated: true
               type: boolean
               title: "Indicatie geheim"
               description: |
