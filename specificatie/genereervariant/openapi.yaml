@@ -1876,12 +1876,6 @@ components:
           $ref: '#/components/schemas/OuderInOnderzoek'
         geboorte:
           $ref: '#/components/schemas/Geboorte'
-        geheimhoudingPersoonsgegevens:
-          title: Indicatie geheim
-          type: boolean
-          description: |
-            Gegevens mogen niet worden verstrekt aan derden / maarschappelijke instellingen.
-          deprecated: true
       description: |
         Gegevens over de ouder van de persoon.
         * **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.
@@ -1906,6 +1900,11 @@ components:
       allOf:
       - $ref: '#/components/schemas/Ouder'
       - properties:
+          geheimhoudingPersoonsgegevens:
+            title: Indicatie geheim
+            type: boolean
+            description: |
+              Gegevens mogen niet worden verstrekt aan derden / maarschappelijke instellingen.
           _links:
             $ref: '#/components/schemas/OuderLinks'
     Kind:
@@ -1925,12 +1924,6 @@ components:
           $ref: '#/components/schemas/Naam'
         geboorte:
           $ref: '#/components/schemas/Geboorte'
-        geheimhoudingPersoonsgegevens:
-          title: Indicatie geheim
-          type: boolean
-          description: |
-            Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.
-          deprecated: true
       description: |
         Gegevens over een kind van de persoon.
     KindHalCollectie:
@@ -1954,6 +1947,11 @@ components:
       allOf:
       - $ref: '#/components/schemas/Kind'
       - properties:
+          geheimhoudingPersoonsgegevens:
+            title: Indicatie geheim
+            type: boolean
+            description: |
+              Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.
           _links:
             $ref: '#/components/schemas/KindLinks'
     Partner:
@@ -1974,12 +1972,6 @@ components:
           $ref: '#/components/schemas/PartnerInOnderzoek'
         aangaanHuwelijkPartnerschap:
           $ref: '#/components/schemas/AangaanHuwelijkPartnerschap'
-        geheimhoudingPersoonsgegevens:
-          title: Indicatie geheim
-          type: boolean
-          description: |
-            Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.
-          deprecated: true
       description: |
         Gegevens over een gesloten huwelijk/geregistreerd partnerschap van de persoon.
     PartnerHalCollectie:
@@ -2003,6 +1995,11 @@ components:
       allOf:
       - $ref: '#/components/schemas/Partner'
       - properties:
+          geheimhoudingPersoonsgegevens:
+            title: Indicatie geheim
+            type: boolean
+            description: |
+              Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.
           _links:
             $ref: '#/components/schemas/PartnerLinks'
     Naam:

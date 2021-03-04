@@ -2382,12 +2382,6 @@
           },
           "geboorte" : {
             "$ref" : "#/components/schemas/Geboorte"
-          },
-          "geheimhoudingPersoonsgegevens" : {
-            "title" : "Indicatie geheim",
-            "type" : "boolean",
-            "description" : "Gegevens mogen niet worden verstrekt aan derden / maarschappelijke instellingen.\n",
-            "deprecated" : true
           }
         },
         "description" : "Gegevens over de ouder van de persoon.\n* **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.\n"
@@ -2422,6 +2416,11 @@
           "$ref" : "#/components/schemas/Ouder"
         }, {
           "properties" : {
+            "geheimhoudingPersoonsgegevens" : {
+              "title" : "Indicatie geheim",
+              "type" : "boolean",
+              "description" : "Gegevens mogen niet worden verstrekt aan derden / maarschappelijke instellingen.\n"
+            },
             "_links" : {
               "$ref" : "#/components/schemas/OuderLinks"
             }
@@ -2448,12 +2447,6 @@
           },
           "geboorte" : {
             "$ref" : "#/components/schemas/Geboorte"
-          },
-          "geheimhoudingPersoonsgegevens" : {
-            "title" : "Indicatie geheim",
-            "type" : "boolean",
-            "description" : "Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.\n",
-            "deprecated" : true
           }
         },
         "description" : "Gegevens over een kind van de persoon.\n"
@@ -2488,6 +2481,11 @@
           "$ref" : "#/components/schemas/Kind"
         }, {
           "properties" : {
+            "geheimhoudingPersoonsgegevens" : {
+              "title" : "Indicatie geheim",
+              "type" : "boolean",
+              "description" : "Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.\n"
+            },
             "_links" : {
               "$ref" : "#/components/schemas/KindLinks"
             }
@@ -2518,12 +2516,6 @@
           },
           "aangaanHuwelijkPartnerschap" : {
             "$ref" : "#/components/schemas/AangaanHuwelijkPartnerschap"
-          },
-          "geheimhoudingPersoonsgegevens" : {
-            "title" : "Indicatie geheim",
-            "type" : "boolean",
-            "description" : "Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.\n",
-            "deprecated" : true
           }
         },
         "description" : "Gegevens over een gesloten huwelijk/geregistreerd partnerschap van de persoon.\n"
@@ -2558,6 +2550,11 @@
           "$ref" : "#/components/schemas/Partner"
         }, {
           "properties" : {
+            "geheimhoudingPersoonsgegevens" : {
+              "title" : "Indicatie geheim",
+              "type" : "boolean",
+              "description" : "Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.\n"
+            },
             "_links" : {
               "$ref" : "#/components/schemas/PartnerLinks"
             }
