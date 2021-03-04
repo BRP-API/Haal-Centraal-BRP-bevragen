@@ -32,9 +32,6 @@ paths:
         Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/fields_extensie.feature)
 
 
-        Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature)
-
-
         1.  Persoon
             -  geboorte__datum
             -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)
@@ -249,7 +246,6 @@ paths:
 
                     Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/fields_extensie.feature).
 
-                    Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature).
       parameters:
         - $ref: '#/components/parameters/burgerservicenummer'
         - name: expand
@@ -696,6 +692,7 @@ components:
         geboorte:
           $ref: "#/components/schemas/Geboorte"
         geheimhoudingPersoonsgegevens:
+          deprecated: true
           type: boolean
           title: "Indicatie geheim"
           description: |
@@ -743,6 +740,7 @@ components:
         geboorte:
           $ref: "#/components/schemas/Geboorte"
         geheimhoudingPersoonsgegevens:
+          deprecated: true
           type: boolean
           title: "Indicatie geheim"
           description: |
@@ -791,6 +789,7 @@ components:
         aangaanHuwelijkPartnerschap:
           $ref: "#/components/schemas/AangaanHuwelijkPartnerschap"
         geheimhoudingPersoonsgegevens:
+          deprecated: true
           type: boolean
           title: "Indicatie geheim"
           description: |
@@ -1325,6 +1324,7 @@ components:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalLink"
     IngeschrevenPersoonEmbedded:
       type: "object"
+      deprecated: true
       properties:
         ouders:
           type: "array"
