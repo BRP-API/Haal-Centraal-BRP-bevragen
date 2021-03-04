@@ -33,9 +33,6 @@ paths:
         Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/fields_extensie.feature)
 
 
-        Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature)
-
-
         1.  Persoon
             -  geboorte__datum
             -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)
@@ -413,8 +410,6 @@ paths:
         Raadpleeg een (overleden) persoon.
 
         Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/fields_extensie.feature).
-
-        Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature).
       operationId: GetIngeschrevenPersoon
       parameters:
       - name: burgerservicenummer
@@ -1886,6 +1881,7 @@ components:
           type: boolean
           description: |
             Gegevens mogen niet worden verstrekt aan derden / maarschappelijke instellingen.
+          deprecated: true
       description: |
         Gegevens over de ouder van de persoon.
         * **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.
@@ -1934,6 +1930,7 @@ components:
           type: boolean
           description: |
             Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.
+          deprecated: true
       description: |
         Gegevens over een kind van de persoon.
     KindHalCollectie:
@@ -1982,6 +1979,7 @@ components:
           type: boolean
           description: |
             Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.
+          deprecated: true
       description: |
         Gegevens over een gesloten huwelijk/geregistreerd partnerschap van de persoon.
     PartnerHalCollectie:
@@ -2531,6 +2529,7 @@ components:
             De partners van de persoon. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven.
           items:
             $ref: '#/components/schemas/PartnerHalBasis'
+      deprecated: true
     AanduidingBijzonderNederlanderschap_enum:
       type: string
       description: |

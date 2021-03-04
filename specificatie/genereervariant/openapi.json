@@ -21,7 +21,7 @@
       "get" : {
         "tags" : [ "Ingeschreven Personen" ],
         "summary" : "Vindt personen",
-        "description" : "Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met parameters uit de andere combinaties.\n\n\nDefault krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.\n\n\nGebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/fields_extensie.feature)\n\n\nGebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature)\n\n\n1.  Persoon\n    -  geboorte__datum\n    -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)\n\n\n2.  Persoon\n    -  verblijfplaats__gemeenteVanInschrijving\n    -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)\n\n\n3.  Persoon\n    -  burgerservicenummer\n\n\n4.  Postcode\n    -  verblijfplaats__postcode\n    -  verblijfplaats__huisnummer\n\n\n5.  Straat\n    -  verblijfplaats__straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) )\n    -  verblijfplaats__gemeenteVanInschrijving\n    -  verblijfplaats__huisnummer\n\n\n6.  Adres\n    -  verblijfplaats__nummeraanduidingIdentificatie\n",
+        "description" : "Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met parameters uit de andere combinaties.\n\n\nDefault krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.\n\n\nGebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/fields_extensie.feature)\n\n\n1.  Persoon\n    -  geboorte__datum\n    -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)\n\n\n2.  Persoon\n    -  verblijfplaats__gemeenteVanInschrijving\n    -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)\n\n\n3.  Persoon\n    -  burgerservicenummer\n\n\n4.  Postcode\n    -  verblijfplaats__postcode\n    -  verblijfplaats__huisnummer\n\n\n5.  Straat\n    -  verblijfplaats__straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) )\n    -  verblijfplaats__gemeenteVanInschrijving\n    -  verblijfplaats__huisnummer\n\n\n6.  Adres\n    -  verblijfplaats__nummeraanduidingIdentificatie\n",
         "operationId" : "GetIngeschrevenPersonen",
         "parameters" : [ {
           "name" : "expand",
@@ -433,7 +433,7 @@
       "get" : {
         "tags" : [ "Ingeschreven Personen" ],
         "summary" : "Raadpleeg een persoon",
-        "description" : "Raadpleeg een (overleden) persoon.\n\nGebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/fields_extensie.feature).\n\nGebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature).\n",
+        "description" : "Raadpleeg een (overleden) persoon.\n\nGebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/fields_extensie.feature).\n",
         "operationId" : "GetIngeschrevenPersoon",
         "parameters" : [ {
           "name" : "burgerservicenummer",
@@ -2386,7 +2386,8 @@
           "geheimhoudingPersoonsgegevens" : {
             "title" : "Indicatie geheim",
             "type" : "boolean",
-            "description" : "Gegevens mogen niet worden verstrekt aan derden / maarschappelijke instellingen.\n"
+            "description" : "Gegevens mogen niet worden verstrekt aan derden / maarschappelijke instellingen.\n",
+            "deprecated" : true
           }
         },
         "description" : "Gegevens over de ouder van de persoon.\n* **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.\n"
@@ -2451,7 +2452,8 @@
           "geheimhoudingPersoonsgegevens" : {
             "title" : "Indicatie geheim",
             "type" : "boolean",
-            "description" : "Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.\n"
+            "description" : "Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.\n",
+            "deprecated" : true
           }
         },
         "description" : "Gegevens over een kind van de persoon.\n"
@@ -2520,7 +2522,8 @@
           "geheimhoudingPersoonsgegevens" : {
             "title" : "Indicatie geheim",
             "type" : "boolean",
-            "description" : "Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.\n"
+            "description" : "Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.\n",
+            "deprecated" : true
           }
         },
         "description" : "Gegevens over een gesloten huwelijk/geregistreerd partnerschap van de persoon.\n"
@@ -3234,7 +3237,8 @@
               "$ref" : "#/components/schemas/PartnerHalBasis"
             }
           }
-        }
+        },
+        "deprecated" : true
       },
       "AanduidingBijzonderNederlanderschap_enum" : {
         "type" : "string",
