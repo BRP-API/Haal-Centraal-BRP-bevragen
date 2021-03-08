@@ -32,9 +32,6 @@ paths:
         Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/fields_extensie.feature)
 
 
-        Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature)
-
-
         1.  Persoon
             -  geboorte__datum
             -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)
@@ -64,7 +61,13 @@ paths:
             -  verblijfplaats__nummeraanduidingIdentificatie
 
       parameters:
-        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/expand"
+        - name: expand
+          deprecated: true
+          in: query
+          required: false
+          description: "Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature)."
+          schema:
+            type: string
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/fields"
         - in: query
           name: burgerservicenummer
@@ -243,10 +246,15 @@ paths:
 
                     Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/fields_extensie.feature).
 
-                    Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature).
       parameters:
         - $ref: '#/components/parameters/burgerservicenummer'
-        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/expand"
+        - name: expand
+          deprecated: true
+          in: query
+          required: false
+          description: "Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature)."
+          schema:
+            type: string
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/fields"
       responses:
         '200':
@@ -283,6 +291,7 @@ paths:
         - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/kinderen/{id}:
     get:
+      deprecated: true
       operationId: GetKind
       summary: "Raadpleeg een kind van een persoon"
       description: |
@@ -331,6 +340,7 @@ paths:
         - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/kinderen:
     get:
+      deprecated: true
       operationId: GetKinderen
       summary: "Levert de kinderen van een persoon"
       description: |
@@ -372,6 +382,7 @@ paths:
         - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/ouders/{id}:
     get:
+      deprecated: true
       operationId: GetOuder
       summary: "Raadpleeg een ouder van een persoon"
       description: |
@@ -420,6 +431,7 @@ paths:
         - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/ouders:
     get:
+      deprecated: true
       operationId: GetOuders
       summary: "Levert de ouders van een persoon"
       description: |
@@ -461,6 +473,7 @@ paths:
         - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/partners/{id}:
     get:
+      deprecated: true
       operationId: GetPartner
       summary: "Raadpleeg de partner van een persoon"
       description: |
@@ -509,6 +522,7 @@ paths:
         - Ingeschreven Personen
   /ingeschrevenpersonen/{burgerservicenummer}/partners:
     get:
+      deprecated: true
       operationId: GetPartners
       summary: "Levert de actuele partners van een persoon"
       description: |
@@ -618,6 +632,18 @@ components:
           type: "array"
           items:
             $ref: "#/components/schemas/Reisdocumentnummer"
+        kinderen:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Kind"
+        ouders:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Ouder"
+        partners:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Partner"
     IngeschrevenPersoonHalCollectie:
       type: object
       properties:
@@ -665,12 +691,8 @@ components:
           $ref: "#/components/schemas/OuderInOnderzoek"
         geboorte:
           $ref: "#/components/schemas/Geboorte"
-        geheimhoudingPersoonsgegevens:
-          type: boolean
-          title: "Indicatie geheim"
-          description: |
-                        Gegevens mogen niet worden verstrekt aan derden / maarschappelijke instellingen.
     OuderHalCollectie:
+      deprecated: true
       type: object
       properties:
         _links:
@@ -678,6 +700,7 @@ components:
         _embedded:
           $ref: '#/components/schemas/OuderHalCollectieEmbedded'
     OuderHalCollectieEmbedded:
+      deprecated: true
       type: object
       properties:
         ouders:
@@ -685,9 +708,15 @@ components:
           items:
             $ref: '#/components/schemas/OuderHalBasis'
     OuderHalBasis:
+      deprecated: true
       allOf:
         - $ref: '#/components/schemas/Ouder'
         - properties:
+            geheimhoudingPersoonsgegevens:
+              type: boolean
+              title: "Indicatie geheim"
+              description: |
+                            Gegevens mogen niet worden verstrekt aan derden / maarschappelijke instellingen.
             _links:
               $ref: "#/components/schemas/OuderLinks"
     Kind:
@@ -709,12 +738,8 @@ components:
           $ref: "#/components/schemas/Naam"
         geboorte:
           $ref: "#/components/schemas/Geboorte"
-        geheimhoudingPersoonsgegevens:
-          type: boolean
-          title: "Indicatie geheim"
-          description: |
-                        Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.
     KindHalCollectie:
+      deprecated: true
       type: object
       properties:
         _links:
@@ -722,6 +747,7 @@ components:
         _embedded:
           $ref: '#/components/schemas/KindHalCollectieEmbedded'
     KindHalCollectieEmbedded:
+      deprecated: true
       type: object
       properties:
         kinderen:
@@ -729,9 +755,15 @@ components:
           items:
             $ref: '#/components/schemas/KindHalBasis'
     KindHalBasis:
+      deprecated: true
       allOf:
         - $ref: '#/components/schemas/Kind'
         - properties:
+            geheimhoudingPersoonsgegevens:
+              type: boolean
+              title: "Indicatie geheim"
+              description: |
+                            Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.
             _links:
               $ref: "#/components/schemas/KindLinks"
     Partner:
@@ -754,12 +786,8 @@ components:
           $ref: "#/components/schemas/PartnerInOnderzoek"
         aangaanHuwelijkPartnerschap:
           $ref: "#/components/schemas/AangaanHuwelijkPartnerschap"
-        geheimhoudingPersoonsgegevens:
-          type: boolean
-          title: "Indicatie geheim"
-          description: |
-                        Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.
     PartnerHalCollectie:
+      deprecated: true
       type: object
       properties:
         _links:
@@ -767,6 +795,7 @@ components:
         _embedded:
           $ref: '#/components/schemas/PartnerHalCollectieEmbedded'
     PartnerHalCollectieEmbedded:
+      deprecated: true
       type: object
       properties:
         partners:
@@ -774,9 +803,15 @@ components:
           items:
             $ref: '#/components/schemas/PartnerHalBasis'
     PartnerHalBasis:
+      deprecated: true
       allOf:
         - $ref: '#/components/schemas/Partner'
         - properties:
+            geheimhoudingPersoonsgegevens:
+              type: boolean
+              title: "Indicatie geheim"
+              description: |
+                            Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.
             _links:
               $ref: "#/components/schemas/PartnerLinks"
     Naam:
@@ -1261,6 +1296,7 @@ components:
         adres:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalLink"
     OuderLinks:
+      deprecated: true
       type: "object"
       properties:
         self:
@@ -1268,6 +1304,7 @@ components:
         ingeschrevenPersoon:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalLink"
     KindLinks:
+      deprecated: true
       type: "object"
       properties:
         self:
@@ -1275,6 +1312,7 @@ components:
         ingeschrevenPersoon:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalLink"
     PartnerLinks:
+      deprecated: true
       type: "object"
       properties:
         self:
@@ -1283,6 +1321,7 @@ components:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalLink"
     IngeschrevenPersoonEmbedded:
       type: "object"
+      deprecated: true
       properties:
         ouders:
           type: "array"

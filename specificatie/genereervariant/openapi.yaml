@@ -33,9 +33,6 @@ paths:
         Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/fields_extensie.feature)
 
 
-        Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature)
-
-
         1.  Persoon
             -  geboorte__datum
             -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)
@@ -75,6 +72,9 @@ paths:
           _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie
           [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature).
         required: false
+        deprecated: true
+        style: form
+        explode: true
         schema:
           type: string
       - name: fields
@@ -410,8 +410,6 @@ paths:
         Raadpleeg een (overleden) persoon.
 
         Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/fields_extensie.feature).
-
-        Gebruik de expand parameter als je het antwoord wil uitbreiden met (delen van) de gerelateerde resources kinderen, ouders of partners, [zie functionele specificaties expand-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-Common/blob/v1.2.0/features/expand.feature).
       operationId: GetIngeschrevenPersoon
       parameters:
       - name: burgerservicenummer
@@ -437,6 +435,9 @@ paths:
           _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie
           [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature).
         required: false
+        deprecated: true
+        style: form
+        explode: true
         schema:
           type: string
       - name: fields
@@ -808,6 +809,7 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/Foutbericht'
+      deprecated: true
   /ingeschrevenpersonen/{burgerservicenummer}/kinderen:
     get:
       tags:
@@ -994,6 +996,7 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/Foutbericht'
+      deprecated: true
   /ingeschrevenpersonen/{burgerservicenummer}/ouders/{id}:
     get:
       tags:
@@ -1189,6 +1192,7 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/Foutbericht'
+      deprecated: true
   /ingeschrevenpersonen/{burgerservicenummer}/ouders:
     get:
       tags:
@@ -1375,6 +1379,7 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/Foutbericht'
+      deprecated: true
   /ingeschrevenpersonen/{burgerservicenummer}/partners/{id}:
     get:
       tags:
@@ -1570,6 +1575,7 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/Foutbericht'
+      deprecated: true
   /ingeschrevenpersonen/{burgerservicenummer}/partners:
     get:
       tags:
@@ -1756,6 +1762,7 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/Foutbericht'
+      deprecated: true
 components:
   schemas:
     Reisdocumentnummer:
@@ -1813,6 +1820,18 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Reisdocumentnummer'
+        kinderen:
+          type: array
+          items:
+            $ref: '#/components/schemas/Kind'
+        ouders:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ouder'
+        partners:
+          type: array
+          items:
+            $ref: '#/components/schemas/Partner'
     IngeschrevenPersoonHalCollectie:
       type: object
       properties:
@@ -1857,11 +1876,6 @@ components:
           $ref: '#/components/schemas/OuderInOnderzoek'
         geboorte:
           $ref: '#/components/schemas/Geboorte'
-        geheimhoudingPersoonsgegevens:
-          title: Indicatie geheim
-          type: boolean
-          description: |
-            Gegevens mogen niet worden verstrekt aan derden / maarschappelijke instellingen.
       description: |
         Gegevens over de ouder van de persoon.
         * **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.
@@ -1872,6 +1886,7 @@ components:
           $ref: '#/components/schemas/HalCollectionLinks'
         _embedded:
           $ref: '#/components/schemas/OuderHalCollectieEmbedded'
+      deprecated: true
     OuderHalCollectieEmbedded:
       type: object
       properties:
@@ -1879,10 +1894,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/OuderHalBasis'
+      deprecated: true
     OuderHalBasis:
+      deprecated: true
       allOf:
       - $ref: '#/components/schemas/Ouder'
       - properties:
+          geheimhoudingPersoonsgegevens:
+            title: Indicatie geheim
+            type: boolean
+            description: |
+              Gegevens mogen niet worden verstrekt aan derden / maarschappelijke instellingen.
           _links:
             $ref: '#/components/schemas/OuderLinks'
     Kind:
@@ -1902,11 +1924,6 @@ components:
           $ref: '#/components/schemas/Naam'
         geboorte:
           $ref: '#/components/schemas/Geboorte'
-        geheimhoudingPersoonsgegevens:
-          title: Indicatie geheim
-          type: boolean
-          description: |
-            Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.
       description: |
         Gegevens over een kind van de persoon.
     KindHalCollectie:
@@ -1916,6 +1933,7 @@ components:
           $ref: '#/components/schemas/HalCollectionLinks'
         _embedded:
           $ref: '#/components/schemas/KindHalCollectieEmbedded'
+      deprecated: true
     KindHalCollectieEmbedded:
       type: object
       properties:
@@ -1923,10 +1941,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/KindHalBasis'
+      deprecated: true
     KindHalBasis:
+      deprecated: true
       allOf:
       - $ref: '#/components/schemas/Kind'
       - properties:
+          geheimhoudingPersoonsgegevens:
+            title: Indicatie geheim
+            type: boolean
+            description: |
+              Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.
           _links:
             $ref: '#/components/schemas/KindLinks'
     Partner:
@@ -1947,11 +1972,6 @@ components:
           $ref: '#/components/schemas/PartnerInOnderzoek'
         aangaanHuwelijkPartnerschap:
           $ref: '#/components/schemas/AangaanHuwelijkPartnerschap'
-        geheimhoudingPersoonsgegevens:
-          title: Indicatie geheim
-          type: boolean
-          description: |
-            Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.
       description: |
         Gegevens over een gesloten huwelijk/geregistreerd partnerschap van de persoon.
     PartnerHalCollectie:
@@ -1961,6 +1981,7 @@ components:
           $ref: '#/components/schemas/HalCollectionLinks'
         _embedded:
           $ref: '#/components/schemas/PartnerHalCollectieEmbedded'
+      deprecated: true
     PartnerHalCollectieEmbedded:
       type: object
       properties:
@@ -1968,10 +1989,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PartnerHalBasis'
+      deprecated: true
     PartnerHalBasis:
+      deprecated: true
       allOf:
       - $ref: '#/components/schemas/Partner'
       - properties:
+          geheimhoudingPersoonsgegevens:
+            title: Indicatie geheim
+            type: boolean
+            description: |
+              Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.
           _links:
             $ref: '#/components/schemas/PartnerLinks'
     Naam:
@@ -2460,6 +2488,7 @@ components:
           $ref: '#/components/schemas/HalLink'
         ingeschrevenPersoon:
           $ref: '#/components/schemas/HalLink'
+      deprecated: true
     KindLinks:
       type: object
       properties:
@@ -2467,6 +2496,7 @@ components:
           $ref: '#/components/schemas/HalLink'
         ingeschrevenPersoon:
           $ref: '#/components/schemas/HalLink'
+      deprecated: true
     PartnerLinks:
       type: object
       properties:
@@ -2474,6 +2504,7 @@ components:
           $ref: '#/components/schemas/HalLink'
         ingeschrevenPersoon:
           $ref: '#/components/schemas/HalLink'
+      deprecated: true
     IngeschrevenPersoonEmbedded:
       type: object
       properties:
@@ -2495,6 +2526,7 @@ components:
             De partners van de persoon. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven.
           items:
             $ref: '#/components/schemas/PartnerHalBasis'
+      deprecated: true
     AanduidingBijzonderNederlanderschap_enum:
       type: string
       description: |
