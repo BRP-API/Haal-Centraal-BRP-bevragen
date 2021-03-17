@@ -18,11 +18,11 @@ nav:
       - title: Getting started
         path: /getting-started
       - title: User stories
-        url: https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/user-stories-prod
-        path: /user-stories
+#        url: https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/user-stories-prod
+        path: /user-stories-prod
       - title: User stories (afgeschermd)
         url: https://gitlab.com/vng-realisatie/haal-centraal-brp-afgeschermd/-/issues?label_name%5B%5D=BRP+bevragen
-        path: /user-stories
+#        path: /user-stories
         target: blank
       - title: Bevragen API (swagger-ui)
         path: /swagger-ui
@@ -33,7 +33,7 @@ nav:
   - title: Specificaties v. 1.3 (IO)
     subnav:
       - title: User stories
-        url: https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/user-stories-dev
+#        url: https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/user-stories-dev
         path: /user-stories
 
 plugins:
