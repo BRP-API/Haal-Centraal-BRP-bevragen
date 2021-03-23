@@ -1,8 +1,8 @@
 # openapi-java-client
 
 Bevragen Ingeschreven Personen
-- API version: 1.2.0
-  - Build date: 2021-01-15T14:09:29.205Z[Etc/UTC]
+- API version: 1.3.0
+  - Build date: 2021-03-02T09:47:37.422Z[Etc/UTC]
 
 API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.
 
@@ -46,7 +46,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>org.openapitools</groupId>
   <artifactId>openapi-java-client</artifactId>
-  <version>1.2.0</version>
+  <version>1.3.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -56,7 +56,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "org.openapitools:openapi-java-client:1.2.0"
+compile "org.openapitools:openapi-java-client:1.3.0"
 ```
 
 ### Others
@@ -69,7 +69,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/openapi-java-client-1.2.0.jar`
+* `target/openapi-java-client-1.3.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
