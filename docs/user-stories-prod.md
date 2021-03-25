@@ -5,6 +5,9 @@ title: User Stories in Productie
 
 # User stories
 
+- [Als medewerker parkeren heb ik het A-nummer van een persoon nodig](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/805){:target="_blank" rel="noopener"}
+- [Als medewerker bijstandverlening wil ik weten wat de BSN en het A-nummer is van rechthebbende](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/782){:target="_blank" rel="noopener"}
+
 - [Als medewerker van de gemeente wil ik op adresseerbaar objectidentificatie kunnen zoeken in de BRP](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/801){:target="_blank" rel="noopener"}
 - [Als medewerker van de gemeente wil ik de mogelijkheid hebben met zoekmethode op postcode en huisnummer verder te verfijnen op huisletter en huisnummertoevoeging (indien aanwezig)](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/800){:target="_blank" rel="noopener"}
 - [Als medewerker Belastingzaken wil ik weten wat de (afzonderlijke gegevens zijn voor) aanduiding naamgebruik, partnernaam en adellijke titel is van een eigenaar van een kadastraal onroerende zaak](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/714){:target="_blank" rel="noopener"}
