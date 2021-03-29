@@ -17,7 +17,7 @@ jobs:
           echo -e '---\nlayout: page-with-side-nav\ntitle: User Stories in Ontwikkeling\n---\n' >> user-stories-dev.md
           echo -e '# User stories\n' >> user-stories-dev.md
 
-      - name: List 'v1.3' user stories
+      - name: List 'v1.4' user stories
         uses: lee-dohm/select-matching-issues@v1.2.0
         with:
           format: list
