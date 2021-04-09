@@ -12,7 +12,7 @@ info:
     name: European Union Public License, version 1.2 (EUPL-1.2)
     url: https://eupl.eu/1.2/nl/
   title: Bevragen Ingeschreven Personen
-  version: 1.2.0
+  version: 1.3.0
 servers:
 - description: |
     APILAB testserver
@@ -1819,6 +1819,10 @@ components:
       properties:
         burgerservicenummer:
           example: "555555021"
+          type: string
+        aNummer:
+          description: |
+            Het A-nummer van de persoon
           type: string
         geheimhoudingPersoonsgegevens:
           description: |

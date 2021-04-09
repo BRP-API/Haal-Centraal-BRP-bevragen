@@ -5,6 +5,21 @@ title: Haal Centraal BRP bevragingen
 
 # Releasenotes Haal-Centraal-BRP-Bevragen
 
+## Versie 1.3.0
+- De property "aNummer" is toegevoegd aan "IngeschrevenPersoon".
+- De gegevens van partners, ouders en kinderen zijn aan de resource "ingeschrevenPersoon" toegevoegd.
+- De parameter "expand" is deprecated verklaard.
+- De volgende endpoints zijn deprecated verklaard:
+  - /ingeschrevenpersonen/{burgerservicenummer}/kinderen/{id}:
+  - /ingeschrevenpersonen/{burgerservicenummer}/kinderen
+  - /ingeschrevenpersonen/{burgerservicenummer}/ouders/{id}:
+  - /ingeschrevenpersonen/{burgerservicenummer}/ouders:
+  - /ingeschrevenpersonen/{burgerservicenummer}/partners/{id}:
+  - /ingeschrevenpersonen/{burgerservicenummer}/partners:
+- Bij de gegevensgroepen "ouder" , "partner" en "kind" is de property "geheimhoudingPersoonsgegevens" verwijderd en verplaatst naar de HAL-component (dit is een non-breaking wijziging om de deprecated functionaliteit ongewijzigd te laten.)
+- Alle HAL-componenten voor ouders, partners en kinderen zijn deprecated verklaard.
+
+
 ## Versie 1.2.0
 
 - De property "adellijkeTitelPredikaat" is verplaatst van "NaamPersoon" naar "Naam"
