@@ -1,6 +1,2 @@
 extends:
-- https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/.spectral.yml
-rules:
-  oas3-valid-oas-parameter-example: off
-  oas3-valid-oas-content-example: off
-  
+- https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/.spectral.yml  
