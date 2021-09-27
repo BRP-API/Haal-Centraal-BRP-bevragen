@@ -5,14 +5,20 @@ title: User Stories in Productie
 
 # User stories
 
+## Vanaf versie 1.3
+
 - [Als medewerker parkeren heb ik het A-nummer van een persoon nodig](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/805){:target="_blank" rel="noopener"}
 - [Als medewerker bijstandverlening wil ik weten wat de BSN en het A-nummer is van rechthebbende](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/782){:target="_blank" rel="noopener"}
+
+## Vanaf versie 1.2
 
 - [Als medewerker van de gemeente wil ik op adresseerbaar objectidentificatie kunnen zoeken in de BRP](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/801){:target="_blank" rel="noopener"}
 - [Als medewerker van de gemeente wil ik de mogelijkheid hebben met zoekmethode op postcode en huisnummer verder te verfijnen op huisletter en huisnummertoevoeging (indien aanwezig)](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/800){:target="_blank" rel="noopener"}
 - [Als medewerker Belastingzaken wil ik weten wat de (afzonderlijke gegevens zijn voor) aanduiding naamgebruik, partnernaam en adellijke titel is van een eigenaar van een kadastraal onroerende zaak](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/714){:target="_blank" rel="noopener"}
 - [Als medewerker Belastingzaken wil weten of ouders, kinderen en partners nog leven](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/666){:target="_blank" rel="noopener"}
 - [Als medewerker belastingzaken wil ik kunnen zoeken op voorletters, zodat ik gescande poststukken kan herleiden tot een persoon](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/646){:target="_blank" rel="noopener"}
+
+## Vanaf versie 1.1
 
 - [Als medewerker schuldhulpverlening wil ik weten welke medebewoners er zijn en wat de familierelaties zijn met medebewoners](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/799){:target="_blank" rel="noopener"}
 - [Als medewerker schuldhulpverlening wil ik weten hoeveel kinderen hulpzoekende heeft, waar de kinderen wonen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/798){:target="_blank" rel="noopener"}
@@ -67,6 +73,8 @@ title: User Stories in Productie
 - [Als medewerker monumentenzorg wil ik weten hoe een eigenaar van een object waarvan de gemeente voornemens is het te beschermen moet worden aangeschreven en in leven is](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/276){:target="_blank" rel="noopener"}
 - [Als medewerker monumentenzorg wil ik weten waar de eigenaar van de grond waarop een pand staat waarvan de gemeente voornemens is het te beschermen woont](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/275){:target="_blank" rel="noopener"}
 - [Als medewerker monumentenzorg wil ik weten waar de eigenaar van een pand of een verblijfsobject in een pand woont](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/274){:target="_blank" rel="noopener"}
+
+## Vanaf versie 1.0
 
 
 
