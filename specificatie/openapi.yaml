@@ -666,7 +666,6 @@ components:
           pattern: "^[0-9]*$"
           maxLength: 9
           minLength: 9
-
   schemas:
     IngeschrevenPersoonQuery:
       type: "object"
@@ -733,7 +732,6 @@ components:
                         Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.
           type: integer
           maximum: 99999
-          minimum: 1   #strakkere datadefinitie voor parameter (threatmodel). geen negatieven. Vraag Bestaat er ergens een huisnummer 0 ???
           example: 14
         verblijfplaats__huisnummertoevoeging:
           description: |
@@ -746,7 +744,6 @@ components:
                         Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
           type: string
           maxLength: 16
-          minLength: 16       #scherpere datadefinitie (threatmodel)
           example: "0518200000366054"
         verblijfplaats__straat:
           description: |
