@@ -19,7 +19,8 @@
     "preoas:resolve": "mvn-dl io.swagger.codegen.v3:swagger-codegen-cli:3.0.19 -f swagger-codegen-cli.jar",
     "oas:resolve": "java -jar swagger-codegen-cli.jar generate -i ./specificatie/openapi.yaml -l openapi-yaml -o ./specificatie/genereervariant && java -jar swagger-codegen-cli.jar generate -i ./specificatie/openapi.yaml -l openapi -o ./specificatie/genereervariant",
     "postoas:resolve": "rm swagger-codegen-cli.jar",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "unstage-generated": "git reset HEAD ./specificatie/genereervariant/openapi.* ./test/BRP-bevragen-postman-collection.json ./code/**",
+    "rollback-generated": "git checkout ./specificatie/genereervariant/openapi.* ./test/BRP-bevragen-postman-collection.json ./code/**"
   },
   "repository": {
     "type": "git",
@@ -33,14 +34,15 @@
   "homepage": "https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen#readme",
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.1.25",
-    "@stoplight/spectral": "^5.8.1",
+    "@stoplight/spectral": "^5.9.2",
     "husky": "^4.3.8",
     "mvn-dl": "^5.1.0",
-    "openapi-to-postmanv2": "^2.3.0"
+    "openapi-to-postmanv2": "^2.10.1"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run oas:lint && npm run oas:resolve && npm run oas:lint-genereervariant && git checkout ./specificatie/genereervariant/openapi.*"
+      "pre-commit": "npm run oas:lint && npm run oas:resolve && npm run oas:lint-genereervariant && npm run unstage-generated",
+      "post-commit": "npm run rollback-generated"
     }
   }
 }
