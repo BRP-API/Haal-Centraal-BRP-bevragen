@@ -67,6 +67,7 @@ paths:
           description: "Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. De fiels parameter is verplicht vanwege dataminimalisatie overwegingen. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature)"
           schema:
             type: string
+            pattern: ^[a-zA-Z0-9À-ÿ \-\']+$
         - in: query
           name: burgerservicenummer
           required: false
@@ -78,11 +79,8 @@ paths:
             type: array
             items:
               type: string
-              pattern: "^[0-9]*$"
-              maxLength: 9
-              minLength: 9
+              pattern: "^[0-9]9$"
         - in: query
-# Je zou kunnen nadenken over een aanvullende validatie op minimum waarde( bv voor 1900) en maximum waarde (datum niet later dan morgen)
           name: geboorte__datum
           description: |
                         Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/parametervalidatie.feature)
@@ -92,15 +90,13 @@ paths:
             format: date
             example: "1964-09-24"
         - in: query
-# Hier reguliere expressie om speciale tekens of code te voorkomen. Dat zou ook in een feature beschreven kunnen worden. De BAG past dit volgens mij al toe.
           name: geboorte__plaats
           description: |
                         Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).**
           required: false
           schema:
             type: string
-            maxLength: 40
-#           minLength: 3 ?????
+            pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ \-\']{1,40}(\?+|\*)?$
             example: "Utrecht"
         - in: query
           name: geslachtsaanduiding
@@ -118,35 +114,31 @@ paths:
             type: boolean
             example: true
         - in: query
-# Hier reguliere expressie om speciale tekens of code te voorkomen. Dat zou ook in een feature beschreven kunnen worden. De BAG past dit volgens mij al toe.
           name: naam__geslachtsnaam
           description: |
                         De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).**
           required: false
           schema:
             type: string
-            maxLength: 200
+            pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ \-\']{1,200}(\?+|\*)?$
             example: "Vries"
         - in: query
-# Hier reguliere expressie om speciale tekens of code te voorkomen. Dat zou ook in een feature beschreven kunnen worden. De BAG past dit volgens mij al toe.
           name: naam__voorvoegsel
           description: |
                         Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).**
           required: false
           schema:
             type: string
-            maxLength: 10
+            pattern: ^[a-zA-Z0-9À-ÿ \-\']+$
             example: "de"
         - in: query
-# Hier reguliere expressie om speciale tekens of code te voorkomen. Dat zou ook in een feature beschreven kunnen worden. De BAG past dit volgens mij al toe.
           name: naam__voornamen
           description: |
                         De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).**
           required: false
           schema:
             type: string
-            maxLength: 200
-#           minLength: 3   ???
+            pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ \-\']{1,200}(\?+|\*)?$
             example: "Dirk"
         - in: query
           name: verblijfplaats__gemeenteVanInschrijving
@@ -155,8 +147,7 @@ paths:
           required: false
           schema:
             type: string
-            maxLength: 4
-            minLength: 4
+            pattern: "^[0-9]{4}$"
             example: "0518"
         - in: query
           name: verblijfplaats__huisletter
@@ -165,8 +156,7 @@ paths:
           required: false
           schema:
             type: string
-            maxLength: 1
-            minLength: 1
+            pattern: "^[a-zA-Z]{1}$"
             example: "a"
         - in: query
           name: verblijfplaats__huisnummer
@@ -175,19 +165,16 @@ paths:
           required: false
           schema:
             type: integer
-            maximum: 99999
-            minimum: 1    # Of 0 ?? In ieder geval sluiten we hiermee negatieve huisnummers uit.
+            pattern: "^[0-9]{1,5}$"
             example: 14
         - in: query
-#  Hier reguliere expressie om speciale tekens of code te voorkomen. Dat zou ook in een feature beschreven kunnen worden. De BAG past dit volgens mij al toe.
           name: verblijfplaats__huisnummertoevoeging
           description: |
                         Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.
           required: false
           schema:
             type: string
-            maxLength: 4
-            pattern: "^[0-9]{9}$" #Pattern strakker gedefinieerd.
+            pattern: "^[a-zA-Z0-9]{1,4}$"
             example: "bis"
         - in: query
           name: verblijfplaats__nummeraanduidingIdentificatie
@@ -197,8 +184,6 @@ paths:
           schema:
             type: string
             pattern: "^[0-9]{16}$"
-            maxLength: 16
-            minLength: 16
             example: "0518200000366054"
         - in: query
           name: verblijfplaats__straat
@@ -207,7 +192,7 @@ paths:
           required: false
           schema:
             type: string
-            maxLength: 80
+            pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ \-\']{1,80}(\?+|\*)?$
             example: "Tulpstraat"
         - in: query
           name: verblijfplaats__postcode
@@ -216,7 +201,7 @@ paths:
           required: false
           schema:
             type: string
-            pattern: ^[1-9]{1}[0-9]{3}[ ]{0,1}[A-Z]{2}$ # Accepteren we een spatie in de postcode ook bij het zoeken ? Daar heb ik nu de reguliere expressie op aangepast.
+            pattern: ^[1-9]{1}[0-9]{3}[ ]{0,1}[A-Z]{2}$
             example: "2341SX"
       responses:
         '200':
@@ -295,7 +280,7 @@ paths:
             schema:
                 $ref: '#/components/schemas/IngeschrevenPersoonQuery'
       responses:
-        '200':            #is de responsecode hier 200 (Volgens mij is een 201 hier niet op zijn plaats)
+        '200':
           description: |
                         Zoekactie geslaagd
           headers:
@@ -381,23 +366,7 @@ components:
       schema:
         type: "string"
         pattern: "^[0-9]{9}$"
-        maxLength: 9
-        minLength: 9
         example: "555555021"
-    burgerservicenummers:
-      name: burgerservicenummer
-      in: path
-      description: |
-                    Uniek persoonsnummer
-      required: true
-      example: [999993653,999991723,999995078]
-      schema:
-        type: "array"
-        items:
-          type: "string"
-          pattern: "^[0-9]{9}$"
-          maxLength: 9
-          minLength: 9
   schemas:
     IngeschrevenPersoonQuery:
       type: "object"
@@ -406,21 +375,22 @@ components:
       properties:
         fields:
           type: string
+          description: "Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. De fiels parameter is verplicht vanwege dataminimalisatie overwegingen. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature)"
+          pattern: ^[a-zA-Z0-9À-ÿ \-\']+$
         burgerservicenummer:
-          $ref: "#/components/parameters/burgerservicenummers"
-        geboorte__datum:    #Twijfel of ik de dubbele underscores moet handhaven.   Ook hier de vraag of er een minimum en eenmaximum datum moetworden afgedwongen
+          $ref: "#/components/schemas/Burgerservicenummers"
+        geboorte__datum:
           description: |
                         Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/parametervalidatie.feature)
 
           type: "string"
           format: date
           example: "1964-09-24"
-        geboorte__plaats:           #Twijfel of ik de dubbele underscores moet handhaven.  Pattern toevoegen of eventueel een feature waarmee beshreven wordt hoe tekst-parameters gvalideerd moeten worden (Code?  specialecharacters)
+        geboorte__plaats:
           description: |
                         Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).**
           type: string
-          maxLength: 40
-#         minLength: 3 ???
+          pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ \-\']{1,40}(\?+|\*)?$
           example: "Utrecht"
         geslachtsaanduiding:
           $ref: "#/components/schemas/Geslacht_enum"
@@ -429,82 +399,79 @@ components:
                         Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/overleden_personen.feature)
           type: boolean
           example: true
-        naam__geslachtsnaam:      #Twijfel of ik de dubbele underscores moet handhaven.    Pattern check of feature ?
+        naam__geslachtsnaam:
           description: |
                         De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).**
           type: string
-          maxLength: 200
-#         minLength: 3   ???
+          pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ \-\']{1,200}(\?+|\*)?$
           example: "Vries"
-        naam__voorvoegsel:      #Twijfel of ik de dubbele underscores moet handhaven.    Pattern check of feature ?
+        naam__voorvoegsel:
           description: |
                         Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).**
           type: string
-          maxLength: 10
+          pattern: ^[a-zA-Z0-9À-ÿ \-\']+$
           example: "de"
-        naam__voornamen:        #Twijfel of ik de dubbele underscores moet handhaven.   Pattern check of feature ?
+        naam__voornamen:
           description: |
                         De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).**
           type: string
-          maxLength: 200
-#         minLength: 3  ?????
+          pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ \-\']{1,200}(\?+|\*)?$
           example: "Dirk"
-        verblijfplaats__gemeenteVanInschrijving:  #Twijfel of ik de dubbele underscores moet handhaven.   Pattern check of feature ?
+        verblijfplaats__gemeenteVanInschrijving:
           description: |
                         Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.
           type: string
           pattern: "^[0-9]{4}$"
-          maxLength: 4
-          minLength: 4
           example: "0518"
-        verblijfplaats__huisletter:   #Twijfel of ik de dubbele underscores moet handhaven.
+        verblijfplaats__huisletter:
           description: |
                         Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.
           type: string
           pattern: ^[a-zA-Z]{1}$
-          maxLength: 1
-          minLength: 1
           example: "a"
         verblijfplaats__huisnummer:
           description: |
                         Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.
           type: integer
-          maximum: 99999
-          minimum: 1    # Of 0 in ieder geval niet negatief.
+          pattern: "^[0-9]{1,5}$"
           example: 14
         verblijfplaats__huisnummertoevoeging:
           description: |
                         Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.
           type: string
-          maxLength: 4
-#         pattern ???
+          pattern: "^[a-zA-Z0-9]{1,4}$"
           example: "bis"
-        verblijfplaats__nummeraanduidingIdentificatie:   #Twijfel of ik de dubbele underscores moet handhaven.
+        verblijfplaats__nummeraanduidingIdentificatie:
           description: |
                         Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
           type: string
           pattern: "^[0-9]{16}$"
-          maxLength: 16
-          minLength: 16
           example: "0518200000366054"
-        verblijfplaats__straat:       #Twijfel of ik de dubbele underscores moet handhaven.   Pattern check of feature ?
+        verblijfplaats__straat:
           description: |
                         Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).
           type: string
-          maxLength: 80
-#         minLength: 3   ????
+          pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ \-\']{1,80}(\?+|\*)?$
           example: "Tulpstraat"
-        verblijfplaats__postcode:     #Twijfel of ik de dubbele underscores moet handhaven.
+        verblijfplaats__postcode:
           description: |
                         De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.
           type: string
-          pattern: ^[1-9]{1}[0-9]{3}[ ]{0,1}[A-Z]{2}$ # Accepteren we een spatie in de postcode ook bij het zoeken ? Daar heb ik nu de reguliere expressie op aangepast.
+          pattern: ^[1-9]{1}[0-9]{3}[ ]{0,1}[A-Z]{2}$
           example: "2341SX"
     Reisdocumentnummer:
       type: "string"
       description: |
                     Het nummer van het verstrekte Nederlandse reisdocument.
       example: "546376728"
+    Burgerservicenummers:
+      description: |
+                    Uniek persoonsnummer
+      example: [999993653,999991723,999995078]
+      type: "array"
+      items:
+        type: "string"
+        pattern: "^[0-9]{9}$"
     IngeschrevenPersoon:
       type: "object"
       properties:
