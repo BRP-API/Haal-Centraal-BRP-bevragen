@@ -381,10 +381,10 @@ components:
       required:
       - fields
       properties:
-        fields:
-          type: string
-          description: "Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. De fiels parameter is verplicht vanwege dataminimalisatie overwegingen. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/fields.feature)"
-          pattern: ^[a-zA-Z0-9À-ÿ \-\']+$
+#        fields:
+#          type: string
+#          description: "Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. De fiels parameter is verplicht vanwege dataminimalisatie overwegingen. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/fields.feature)"
+#          pattern: ^[a-zA-Z0-9À-ÿ \-\']+$
         burgerservicenummer:
           description: |
                         Uniek persoonsnummer
