@@ -378,7 +378,13 @@ components:
           description: "Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. De fiels parameter is verplicht vanwege dataminimalisatie overwegingen. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature)"
           pattern: ^[a-zA-Z0-9À-ÿ \-\']+$
         burgerservicenummer:
-          $ref: "#/components/schemas/Burgerservicenummers"
+          description: |
+                        Uniek persoonsnummer
+          example: [999993653,999991723,999995078]
+          type: "array"
+          items:
+            type: "string"
+            pattern: "^[0-9]{9}$"
         geboorte__datum:
           description: |
                         Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/parametervalidatie.feature)
@@ -464,14 +470,6 @@ components:
       description: |
                     Het nummer van het verstrekte Nederlandse reisdocument.
       example: "546376728"
-    Burgerservicenummers:
-      description: |
-                    Uniek persoonsnummer
-      example: [999993653,999991723,999995078]
-      type: "array"
-      items:
-        type: "string"
-        pattern: "^[0-9]{9}$"
     IngeschrevenPersoon:
       type: "object"
       properties:
