@@ -165,7 +165,8 @@ paths:
           required: false
           schema:
             type: integer
-            pattern: "^[0-9]{1,5}$"
+            maximum: 99999
+            minimum: 1
             example: 14
         - in: query
           name: verblijfplaats__huisnummertoevoeging
@@ -378,8 +379,8 @@ components:
   schemas:
     IngeschrevenPersoonQuery:
       type: "object"
-      required:
-      - fields
+#      required:
+#      - fields
       properties:
 #        fields:
 #          type: string
