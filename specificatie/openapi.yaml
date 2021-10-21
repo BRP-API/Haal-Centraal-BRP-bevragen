@@ -67,7 +67,7 @@ paths:
           description: "Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. De fiels parameter is verplicht vanwege dataminimalisatie overwegingen. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/fields.feature)"
           schema:
             type: string
-            pattern: ^[a-zA-Z.,]+$
+            pattern: ^[a-zA-Z.,_]+$
         - in: query
           name: burgerservicenummer
           required: false
@@ -80,6 +80,7 @@ paths:
             items:
               type: string
               pattern: ^[0-9]9$
+              minItems: 1
         - in: query
           name: geboorte__datum
           description: |
@@ -96,7 +97,7 @@ paths:
           required: false
           schema:
             type: string
-            pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ\s\-\'%]{1,40}(\?+|\*)?$
+            pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ' '\-\']{1,40}(\?+|\*)?$
             example: "Utrecht"
         - in: query
           name: geslachtsaanduiding
@@ -120,7 +121,7 @@ paths:
           required: false
           schema:
             type: string
-            pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ\s\-\'\%]{1,200}(\?+|\*)?$
+            pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ' '\-\']{1,200}(\?+|\*)?$
             example: "Vries"
         - in: query
           name: naam__voorvoegsel
@@ -129,7 +130,7 @@ paths:
           required: false
           schema:
             type: string
-            pattern: ^[a-zA-Z0-9À-ÿ\s\-\']{1,10}$
+            pattern: ^[a-zA-Z0-9À-ÿ' '\-\']{1,10}$
             example: "de"
         - in: query
           name: naam__voornamen
@@ -138,7 +139,7 @@ paths:
           required: false
           schema:
             type: string
-            pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ\s\-\']{1,200}(\?+|\*)?$
+            pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ' '\-\']{1,200}(\?+|\*)?$
             example: "Dirk"
         - in: query
           name: verblijfplaats__gemeenteVanInschrijving
@@ -193,7 +194,7 @@ paths:
           required: false
           schema:
             type: string
-            pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ\s\-\']{1,80}(\?+|\*)?$
+            pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ' '\-\']{1,80}(\?+|\*)?$
             example: "Tulpstraat"
         - in: query
           name: verblijfplaats__postcode
@@ -202,8 +203,10 @@ paths:
           required: false
           schema:
             type: string
-            pattern: ^[1-9]{1}[0-9]{3}[\s]{0,1}[A-Z]{2}$
+            pattern: ^[1-9]{1}[0-9]{3}[ ]?[A-Za-z]{2}$
             example: "2341SX"
+        - $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/parameters/page'
+        - $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/parameters/pageSize'
       responses:
         '200':
           description: |
@@ -275,14 +278,6 @@ paths:
 
         6.  Adres
             -  verblijfplaats__nummeraanduidingIdentificatie
-      parameters:
-      - in: query
-        name: fields
-        required: true
-        description: "Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. De fiels parameter is verplicht vanwege dataminimalisatie overwegingen. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/fields.feature)"
-        schema:
-          type: string
-          pattern: ^[a-zA-Z0-9À-ÿ \-\']+$
       requestBody:
         content:
           application/hal+json:
@@ -379,13 +374,13 @@ components:
   schemas:
     IngeschrevenPersoonQuery:
       type: "object"
-#      required:
-#      - fields
+      required:
+      - fields
       properties:
-#        fields:
-#          type: string
-#          description: "Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. De fiels parameter is verplicht vanwege dataminimalisatie overwegingen. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/fields.feature)"
-#          pattern: ^[a-zA-Z0-9À-ÿ \-\']+$
+        fields:
+          type: string
+          description: "Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen op te geven. Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. De fiels parameter is verplicht vanwege dataminimalisatie overwegingen. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/fields.feature)"
+          pattern: ^[a-zA-Z.,_]+$
         burgerservicenummer:
           description: |
                         Uniek persoonsnummer
@@ -394,6 +389,7 @@ components:
           items:
             type: "string"
             pattern: "^[0-9]{9}$"
+            minItems: 1
         geboorte__datum:
           description: |
                         Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/parametervalidatie.feature)
@@ -472,8 +468,18 @@ components:
           description: |
                         De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.
           type: string
-          pattern: ^[1-9]{1}[0-9]{3}[ ]{0,1}[A-Z]{2}$
+          pattern: ^[1-9]{1}[0-9]{3}[ ]?[A-Za-z]{2}$
           example: "2341SX"
+        page:
+          description: Pagina nummer
+          type: integer
+          minimum: 1
+          default: 1
+        pageSize:
+          type: integer
+          maximum: 100
+          minimum: 1
+          default: 20
     Reisdocumentnummer:
       type: "string"
       description: |
@@ -545,7 +551,7 @@ components:
       type: object
       properties:
         _links:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/schemas/HalCollectionLinks"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/schemas/HalPaginationLinks"
         _embedded:
           $ref: "#/components/schemas/IngeschrevenPersoonHalCollectieEmbedded"
     IngeschrevenPersoonHalCollectieEmbedded:
@@ -896,7 +902,7 @@ components:
                       * **datumInschrijvingInGemeente**: bij inschrijving op grond van een verhuisaangifte door de burger is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop het voornemen van ambtshalve opneming schriftelijk aan de persoon is medegedeeld.
                       * **datumVestigingInNederland** : datum van inschrijving in Nederland.
                       * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland.
-                      * **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten."
+                      * **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten.
         properties:
           adresseerbaarObjectIdentificatie:
             type: "string"
@@ -1071,28 +1077,10 @@ components:
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-        ouders:
-          type: "array"
-          description: |
-                        De ouders van de persoon.
-          items:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         reisdocumenten:
           type: "array"
           description: |
                         De reisdocumenten die aan de persoon zijn verstrekt.
-          items:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-        kinderen:
-          type: "array"
-          description: |
-                        De kinderen van de persoon.
-          items:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-        partners:
-          type: "array"
-          description: |
-                        De actuele bij de ingeschreven persoon geregistreerde huwelijken en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven.
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         partnerhistorie:
