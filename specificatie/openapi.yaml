@@ -550,13 +550,6 @@ components:
     IngeschrevenPersoonCollectie:
       type: object
       properties:
-        _links:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/schemas/HalPaginationLinks"
-        _embedded:
-          $ref: "#/components/schemas/IngeschrevenPersoonCollectieEmbedded"
-    IngeschrevenPersoonCollectieEmbedded:
-      type: object
-      properties:
         ingeschrevenpersonen:
           type: array
           items:
