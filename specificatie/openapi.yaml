@@ -97,7 +97,7 @@ paths:
           required: false
           schema:
             type: string
-            pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ' '\-\']{1,40}(\?+|\*)?$
+            pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ '\-\']{1,40}(\?+|\*)?$
             example: "Utrecht"
         - in: query
           name: geslachtsaanduiding
@@ -121,7 +121,7 @@ paths:
           required: false
           schema:
             type: string
-            pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ' '\-\']{1,200}(\?+|\*)?$
+            pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ '\-\']{1,200}(\?+|\*)?$
             example: "Vries"
         - in: query
           name: naam__voorvoegsel
@@ -194,7 +194,7 @@ paths:
           required: false
           schema:
             type: string
-            pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ' '\-\']{1,80}(\?+|\*)?$
+            pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ '\-\']{1,80}(\?+|\*)?$
             example: "Tulpstraat"
         - in: query
           name: verblijfplaats__postcode
@@ -280,7 +280,7 @@ paths:
             -  verblijfplaats__nummeraanduidingIdentificatie
       requestBody:
         content:
-          application/hal+json:
+          application/json:
             schema:
                 $ref: '#/components/schemas/IngeschrevenPersoonQuery'
       responses:
@@ -293,7 +293,7 @@ paths:
             warning:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/headers/warning"
           content:
-            application/hal+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/IngeschrevenPersoonCollectie'
         '400':
@@ -444,7 +444,8 @@ components:
           description: |
                         Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.
           type: integer
-          pattern: "^[0-9]{1,5}$"
+          maximum: 99999
+          minimum: 1
           example: 14
         verblijfplaats__huisnummertoevoeging:
           description: |
@@ -550,6 +551,11 @@ components:
     IngeschrevenPersoonCollectie:
       type: object
       properties:
+        pageInfo:
+          currentPage:
+            type: "integer"
+          hasNextPage:
+            type: "boolean"
         ingeschrevenpersonen:
           type: array
           items:
