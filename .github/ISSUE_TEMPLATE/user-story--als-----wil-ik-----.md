@@ -1,6 +1,9 @@
 ---
-name: 'Issue: Als ... wil ik ...'
-about: 'Beschrijving van een feature/user story. '
+name: 'User story: Als ... wil ik ....'
+about: Beschrijving van een user story of feature
+title: ''
+labels: 'user story'
+assignees: ''
 
 ---
 

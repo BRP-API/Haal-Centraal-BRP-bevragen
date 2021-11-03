@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Aanmaken van een bug
+about: Melden van een bug
 title: ''
 labels: bug
 assignees: ''
