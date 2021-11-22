@@ -27,7 +27,6 @@ Deze voorbeelden illustreren en specificeren zoveel mogelijk de functionaliteit 
 - [parametercombinaties voor zoeken van personen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/features/parametercombinaties.feature){:target="_blank" rel="noopener"}
 - [validatie van parameters](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/features/parametervalidatie.feature){:target="_blank" rel="noopener"}
 - [partners](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/features/partners.feature){:target="_blank" rel="noopener"}
-- [links naar ouders, partners en kinderen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/features/partners_ouders_kinderen.feature){:target="_blank" rel="noopener"}
 - [samenstelling naam voorletters](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/features/voorletters.feature){:target="_blank" rel="noopener"}
 - [woonplaats](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/features/woonplaats.feature){:target="_blank" rel="noopener"}
 
