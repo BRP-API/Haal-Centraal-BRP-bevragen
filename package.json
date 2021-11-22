@@ -33,11 +33,11 @@
   },
   "homepage": "https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen#readme",
   "devDependencies": {
-    "@openapitools/openapi-generator-cli": "^2.1.25",
-    "@stoplight/spectral": "^6.1.0",
+    "@openapitools/openapi-generator-cli": "^2.4.17",
+    "@stoplight/spectral-cli": "^6.1.0",
     "husky": "^4.3.8",
-    "mvn-dl": "^5.1.0",
-    "openapi-to-postmanv2": "^2.10.1"
+    "mvn-dl": "^6.0.0",
+    "openapi-to-postmanv2": "^2.12.0"
   },
   "husky": {
     "hooks": {
