@@ -59,15 +59,15 @@ Rule: de geleverde kindgegevens zijn de gegevens zoals die staan op de persoonsl
 
   Scenario: Het kind heeft geslachtswijziging ondergaan, maar de gevraagde persoon erkent dit niet
     Gegeven de persoon met burgerservicenummer 555550003 heeft de volgende kinderen in de registratie
-      | Categorie | Burgerservicenummer (01.20) | Voornamen | Geslachtsaanduiding (04.10) |
-      | 9         | 555550004                   | Karel     | M                           |
-      | 9         | 555550005                   | Ellen     | V                           |
+      | Categorie | Burgerservicenummer (01.20) | Voornamen |
+      | 9         | 555550004                   | Karel     |
+      | 9         | 555550005                   | Ellen     |
     En het kind met burgerservicenummer 555550004 heeft haar geslachtsaanduiding en voornamen gewijzigd zodat de volgende persoonsgegevens in de registratie op haar persoonslijst staan:
       | Categorie | Voornamen | Geslachtsaanduiding (04.10) |
       | 1         | Charlotte | V                           |
       | 51        | Karel     | M                           |
     Als de ingeschreven persoon met burgerservicenummer 555550003 wordt geraadpleegd met fields=kinderen
     Dan bevat het antwoord 2 kinderen
-    En bevat het antwoord het kind met naam.voornamen "Karel" en geslachtsaanduiding "man"
-    En bevat het antwoord het kind met naam.voornamen "Ellen" en geslachtsaanduiding "vrouw"
-    En bevat het antwoord GEEN kind met naam.voornamen "Charlotte" en geslachtsaanduiding "vrouw"  
+    En bevat het antwoord het kind met naam.voornamen "Karel"
+    En bevat het antwoord het kind met naam.voornamen "Ellen"
+    En bevat het antwoord GEEN kind met naam.voornamen "Charlotte"
