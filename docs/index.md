@@ -13,7 +13,9 @@ title: Haal Centraal BRP bevragen
 ## De landelijke BRP-testomgeving zal vanaf vrijdag 26 november 09:30 uur tot 11:30 uur offline zijn i.v.m. onderhoudswerkzaamheden. Er vindt dan een update plaats naar de laatste versie.
 {:.header}
 
-
+<br/>
+<br/>
+<br/>
 API voor het zoeken en raadplegen van actuele personen, partners, ouders en kinderen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI).
 De API wordt nog niet door RvIG aangeboden. Om de migratie naar API's te versnellen besluiten sommige gemeenten de API zelf aan te bieden.
 
