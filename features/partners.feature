@@ -14,14 +14,14 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een ingeschreve
         | Categorie | soort verbintenis (15.10) | Voornamen (02.10) | Datum aangaan (06.10) | Datum ontbinding (07.10) | Onjuist (84.10) |
         | 5         | H                         | Merel             | 20010215              |                          |                 |
       Als de ingeschreven persoon met burgerservicenummer 999990184 wordt geraadpleegd met fields=partners
-      Dan bevat het antwoord een partner met soortVerbintenis "huwelijk" en naam.voornamen "Merel"
+      Dan bevat het antwoord een partner met naam.voornamen "Merel"
 
     Scenario: Actueel partnerschap
       Gegeven de persoon met burgerservicenummer 999993380 heeft de volgende huwelijken/partnerschappen in de registratie
         | Categorie | soort verbintenis (15.10) | Voornamen (02.10) | Datum aangaan (06.10) | Datum ontbinding (07.10) | Onjuist (84.10) |
-        | 5         | P                         | Merel             | 20010215              |                          |                 |
+        | 5         | P                         | Reindert          | 20040506              |                          |                 |
       Als de ingeschreven persoon met burgerservicenummer 999993380 wordt geraadpleegd met fields=partners
-      Dan bevat het antwoord een partner met soortVerbintenis "geregistreerd_partnerschap" en naam.voornamen "Merel"
+      Dan bevat het antwoord een partner met naam.voornamen "Reindert"
     
     Scenario: Huwelijk/partnerschap is ontbonden
       Gegeven de persoon met burgerservicenummer 999992806 heeft de volgende huwelijken/partnerschappen in de registratie
@@ -73,8 +73,3 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een ingeschreve
       Dan bevat het antwoord 1 partner
       En bevat het antwoord de partner met naam.voornamen "Karel" en geslachtsaanduiding "man"
       En bevat het antwoord GEEN partner met naam.voornamen "Charlotte" en geslachtsaanduiding "vrouw"
-
-  Scenario: er is geen partner
-    Gegeven de te raadplegen persoon heeft geen (actuele) partner
-    Als de partners worden geraadpleegd van de ingeschreven persoon met burgerservicenummer 999999011
-    Dan is het aantal gevonden partners 0

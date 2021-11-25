@@ -7,7 +7,7 @@ Functionaliteit: Kinderen van een ingeschreven persoon raadplegen
   Rule: de actuele gegevens van kinderen worden geleverd
 
     Scenario: de naam van een kind is gecorrigeerd
-      Gegeven de persoon met burgerservienummer 999996150 heeft de volgende kinderen in de registratie
+      Gegeven de persoon met burgerservicenummer 999996150 heeft de volgende kinderen in de registratie
         | Categorie | Voornamen (02.10)  | Voorvoegsel (02.30) | Geslachtsnaam (02.40) | Onjuist (84.10) |
         | 9         | William            |                     | Postma                |                 |
         | 59        | William            | de                  | Vries                 |                 |
@@ -22,7 +22,7 @@ Functionaliteit: Kinderen van een ingeschreven persoon raadplegen
       En bevat het antwoord het kind met naam.voornamen "Walter" naam.geslachtsnaam "Boer"
 
     Scenario: naamswijziging kind
-      Gegeven de persoon met burgerservienummer 999996381 heeft de volgende kinderen in de registratie
+      Gegeven de persoon met burgerservicenummer 999996381 heeft de volgende kinderen in de registratie
         | Categorie | Voornamen (02.10) |
         | 9         | Vica              |
         | 59        | Celeke Lodivica   |
@@ -36,9 +36,10 @@ Functionaliteit: Kinderen van een ingeschreven persoon raadplegen
 
   Rule: Een kind wordt alleen teruggegeven als minimaal één gegeven in de identificatienummers (groep 01), naam (groep 02) of geboorte (groep 03) van het kind een waarde heeft.
     # wanneer in een categorie kind alleen gegevens zijn opgenomen in groep 81 of 82, 85 en 86, wordt dit kind niet opgenomen in het antwoord
+    # wanneer een gegeven een onbekendwaarde heeft, zoals . (punt) bij geslachtsnaam en 00000000 bij geboortedatum, wordt die in deze regel beschouwd als leeg (geen waarde).
 
     Scenario: kind volledig onbekend
-      Gegeven de persoon met burgerservienummer 555550001 heeft de volgende kinderen in de registratie
+      Gegeven de persoon met burgerservicenummer 555550001 heeft de volgende kinderen in de registratie
         | Categorie | Voornamen (02.10)  | Voorvoegsel (02.30) | Geslachtsnaam (02.40) | Geboortedatum (03.10) |
         | 9         |                    |                     | .                     |                       |
       En er zijn geen andere gegevens geregistreerd over de identificatienummers (groep 01), naam (groep 02) of geboorte (groep 03) in categorie 9
@@ -46,7 +47,7 @@ Functionaliteit: Kinderen van een ingeschreven persoon raadplegen
       Dan bevat het antwoord GEEN kinderen
 
     Scenario: ontkenning ouderschap
-      Gegeven de persoon met burgerservienummer 555550002 heeft de volgende kinderen in de registratie
+      Gegeven de persoon met burgerservicenummer 555550002 heeft de volgende kinderen in de registratie
         | Categorie | Voornamen (02.10)  | Voorvoegsel (02.30) | Geslachtsnaam (02.40) | Geboortedatum (03.10) | Gemeente document (82.10) | Datum document (82.20) | Beschrijving document (82.30) | Ingangsdatum geldigheid (85.10) | Datum van opneming (86.10) |
         | 9         |                    |                     |                       |                       | 1926                      | 20040105               | D27894-2004-A782              | 20031107                        | 20040112                   |
         | 59        | Daan               | de                  | Vries                 | 20031107              | 0518                      | 20031109               | PL gerelateerde               | 20031107                        | 20031109                   |             
