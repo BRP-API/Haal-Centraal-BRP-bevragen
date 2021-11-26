@@ -35,10 +35,26 @@ Scenario: Alleen jaar van geboorte datum is bekend
 	Dan is attribuut leeftijd niet aanwezig
 
 Scenario: Persoon is overleden
-	Gegeven een ingeschreven persoon met geboortedatum 26 mei 1953
-	En de ingeschreven persoon is overleden
-	Als de ingeschreven persoon op <raadpleeg datum> wordt geraadpleegd
+	Gegeven de persoon met burgerservicenummer "999993197" is overleden op 28-04-2019
+	Als de ingeschreven persoon met burgerservicenummer 999994268 wordt geraadpleegd met fields=leeftijd
 	Dan is attribuut leeftijd niet aanwezig
+
+Scenario: leeftijd wordt wel geleverd bij een overleden kind (omdat alleen gegevens van de persoonslijst van de gevraagde persoon worden gebruikt)
+	Gegeven de persoon met burgerservicenummer "999991280" heeft een kind met burgerservicenummer "999993197" en voornamen "Henk-Pieter"
+	En de persoon met burgerservicenummer "999993197" is overleden op 28-04-2019
+	Als de ingeschreven persoon met burgerservicenummer 999994268 wordt geraadpleegd met fields=kinderen
+	Dan heeft het kind met burgerservicenummer "999993197" naam.voornamen "Henk-Pieter" een attribuut "leeftijd" met een waarde
+
+Scenario: bij een levenloos geboren kind wordt geen leeftijd geleverd
+	Gegeven de persoon met burgerservicenummer "999994268" heeft de volgende gegevens voor kinderen:
+		| categorie | voornamen (02.10) | geboortedatum (03.10) | Registratie betrekking (89.10) |
+		| 9         | Truus             | 19600912              |                                |
+		| 9         | Tinie             | 19600912              | L                              |
+	En de gebruiker heeft een autorisatie met rubriek 35.95.14 Bijzondere betrekking verstrekken met de waarde “1”
+	Als de ingeschreven persoon met burgerservicenummer 999994268 wordt geraadpleegd met fields=kinderen
+	Dan bevat het antwoord 2 kinderen
+	En heeft het kind met naam.voornamen "Truus" een attribuut "leeftijd" met een waarde
+	En heeft het kind met naam.voornamen "Tinie" GEEN attribuut "leeftijd"
 
 Abstract Scenario: Geboren op 29 februari in een schrikkeljaar
 	Gegeven een ingeschreven persoon met 29 februari 1996
