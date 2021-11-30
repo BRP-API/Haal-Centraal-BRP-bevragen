@@ -582,6 +582,54 @@ components:
       description: |
                     Het nummer van het verstrekte Nederlandse reisdocument.
       example: "546376728"
+    
+    IngeschrevenPersoonBeperkt:
+      type: "object"
+      properties:
+        burgerservicenummer:
+            type: "string"
+            example: "555555021"
+        aNummer:
+          description: |
+                        Het A-nummer van de persoon
+          type: "string"
+        geheimhoudingPersoonsgegevens:
+          type: boolean
+          title: "Indicatie geheim"
+          description: |
+                        Gegevens mogen niet worden verstrekt aan derden / maatschappelijke instellingen.
+        geslachtsaanduiding:
+          $ref: "#/components/schemas/Geslacht_enum"
+        leeftijd:
+          type: integer
+          description: |
+                        Leeftijd in jaren op het moment van bevragen.
+          example: 34
+        naam:
+          $ref: "#/components/schemas/Naam"
+        inOnderzoek:
+          $ref: "#/components/schemas/PersoonInOnderzoek"
+        geboorte:
+          $ref: "#/components/schemas/Geboortedatum"
+        opschortingBijhouding:
+          $ref: "#/components/schemas/OpschortingBijhouding"
+        overlijden:
+          $ref: "#/components/schemas/OverlijdenBasis"
+        verblijfplaats:
+          $ref: "#/components/schemas/Verblijfplaats"
+        gezagsverhouding:
+          $ref: "#/components/schemas/Gezagsverhouding"
+    IngeschrevenPersoonBeperktLinks:
+      type: "object"
+      properties:
+        self:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalLink"
+    IngeschrevenPersoonBeperktHal:
+      allOf:
+        - $ref: '#/components/schemas/IngeschrevenPersoonBeperkt'
+        - properties:
+            _links:
+              $ref: "#/components/schemas/IngeschrevenPersoonBeperktLinks"
     IngeschrevenPersoon:
       type: "object"
       properties:
@@ -657,7 +705,7 @@ components:
         ingeschrevenpersonen:
           type: array
           items:
-            $ref: '#/components/schemas/IngeschrevenPersoonHal'
+            $ref: '#/components/schemas/IngeschrevenPersoonBeperktHal'
     IngeschrevenPersoonHalBasis:
       allOf:
         - $ref: '#/components/schemas/IngeschrevenPersoon'
@@ -875,7 +923,7 @@ components:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
     Geboorte:
       allOf:
-      - $ref: '#/components/schemas/Geboortedatum'
+      - $ref: '#/components/schemas/GeboorteBasis'
       - description: |
                       Gegevens over de geboorte.
                       * **datum** : datum waarop de persoon is geboren.
@@ -992,26 +1040,33 @@ components:
           $ref: "#/components/schemas/RedenOpschortingBijhouding_enum"
         datum:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
-    Overlijden:
+    OverlijdenBasis:
       type: "object"
       description: |
                     Gegevens over het overlijden van de persoon.
-                    * **datum** : datum waarop de persoon is overleden.
-                    * **land** : land waar de persoon is overleden.
-                    * **plaats** : gemeente waar de persoon is overleden. Is de persoon overleden buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.
       properties:
         indicatieOverleden:
           type: boolean
           description: |
                         Geeft aan dat iemand is overleden (waarde true), ongeacht of de overlijdensdatum bekend is.
-        datum:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
-        land:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
-        plaats:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
-        inOnderzoek:
-          $ref: "#/components/schemas/OverlijdenInOnderzoek"
+    Overlijden:
+      allOf: 
+        - $ref: "#/components/schemas/OverlijdenBasis"
+        - type: "object"
+          description: |
+                        Gegevens over het overlijden van de persoon.
+                        * **datum** : datum waarop de persoon is overleden.
+                        * **land** : land waar de persoon is overleden.
+                        * **plaats** : gemeente waar de persoon is overleden. Is de persoon overleden buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.
+          properties:
+            datum:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+            land:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+            plaats:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+            inOnderzoek:
+              $ref: "#/components/schemas/OverlijdenInOnderzoek"
     OverlijdenInOnderzoek:
       type: "object"
       description: |
@@ -1445,13 +1500,26 @@ components:
       enum:
       - "huwelijk"
       - "geregistreerd_partnerschap"
-    Geboortedatum:
+    GeboorteBasis:
       type: "object"
       description: |
                     Gegevens over de geboorte van respectievelijk de persoon, de ouder, de echtgenoot/geregistreerd partner, de eerdere echtgenoot/geregistreerd partner of het kind.
                     * **datum** : Datum waarop de persoon is geboren
-                    * **land** : Land waar de persoon is geboren
-                    * **plaats** : De plaats waar de persoon is geboren. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding.
       properties:
         datum:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+    GeboortedatumInOnderzoek:
+      type: "object"
+      description: |
+                    Geeft aan welke gegevens over de geboorte van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      properties:
+        datum:
+          type: boolean
+        datumIngangOnderzoek:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+    Geboortedatum:
+      allOf:
+      - $ref: '#/components/schemas/GeboorteBasis'
+      - properties:
+          inOnderzoek:
+            $ref: "#/components/schemas/GeboortedatumInOnderzoek"
