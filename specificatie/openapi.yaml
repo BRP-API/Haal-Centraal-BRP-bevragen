@@ -815,6 +815,12 @@ components:
             _links:
               $ref: "#/components/schemas/PartnerLinks"
     Naam:
+      allOf:
+        - $ref: "#/components/schemas/NaamBasis"
+        - properties:
+            inOnderzoek:
+              $ref: "#/components/schemas/NaamInOnderzoek"
+    NaamBasis:
       type: "object"
       properties:
         geslachtsnaam:
@@ -837,8 +843,6 @@ components:
           example: "de"
         adellijkeTitelPredikaat:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
-        inOnderzoek:
-          $ref: "#/components/schemas/NaamInOnderzoek"
     NaamInOnderzoek:
       type: "object"
       description: |
@@ -918,7 +922,7 @@ components:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
     NaamPersoon:
       allOf:
-        - $ref: "#/components/schemas/Naam"
+        - $ref: "#/components/schemas/NaamBasis"
         - properties:
             aanhef:
               type: "string"
