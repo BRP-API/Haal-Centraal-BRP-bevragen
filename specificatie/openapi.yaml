@@ -75,7 +75,7 @@ paths:
           description: |
                         Uniek persoonsnummer.
           explode: false
-          example: 999993653,999991723,999995078
+          example: ["999993653","999991723","999995078"]
           schema:
             type: array
             items:
