@@ -592,10 +592,6 @@ components:
         burgerservicenummer:
             type: "string"
             example: "555555021"
-        aNummer:
-          description: |
-                        Het A-nummer van de persoon
-          type: "string"
         geheimhoudingPersoonsgegevens:
           type: boolean
           title: "Indicatie geheim"
@@ -615,13 +611,11 @@ components:
         geboorte:
           $ref: "#/components/schemas/Geboortedatum"
         opschortingBijhouding:
-          $ref: "#/components/schemas/OpschortingBijhouding"
+          $ref: "#/components/schemas/OpschortingBijhoudingBasis"
         overlijden:
           $ref: "#/components/schemas/OverlijdenBasis"
         verblijfplaats:
-          $ref: "#/components/schemas/Verblijfplaats"
-        gezagsverhouding:
-          $ref: "#/components/schemas/Gezagsverhouding"
+          $ref: "#/components/schemas/VerblijfplaatsBeperkt"
     IngeschrevenPersoonBeperktLinks:
       type: "object"
       properties:
@@ -1034,15 +1028,20 @@ components:
           type: boolean
         datumIngangOnderzoek:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
-    OpschortingBijhouding:
+    OpschortingBijhoudingBasis:
       type: "object"
-      description: |
-                    * **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.
       properties:
         reden:
           $ref: "#/components/schemas/RedenOpschortingBijhouding_enum"
-        datum:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+    OpschortingBijhouding:
+      allOf: 
+        - $ref: "#/components/schemas/OpschortingBijhoudingBasis"
+        - type: "object"
+          description: |
+                    * **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.
+          properties:
+            datum:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
     OverlijdenBasis:
       type: "object"
       description: |
@@ -1131,6 +1130,56 @@ components:
         land:
           type: boolean
         plaats:
+          type: boolean
+        datumIngangOnderzoek:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+    VerblijfplaatsBeperkt:
+      type: object
+      description: |
+                      Gegevens over het verblijf of de woonlocatie van een persoon.
+      properties:
+        woonplaats:
+          description: "Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam."
+          title: woonplaats naam
+          type: string
+          example: 'Duiven'
+        functieAdres:
+          $ref: "#/components/schemas/SoortAdres_enum"
+        adresregel1:
+          type: "string"
+          description: |
+                        Het eerste deel van een adres is een combinatie van de straat en huisnummer.
+          # example: "1600 Pennsylvania Avenue NW"
+          example: "Laan van de landinrichtingscommissie Duiven-Westervoort 26A-3"
+        adresregel2:
+          type: "string"
+          description: |
+                        Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode.
+          # example: "Washington, DC 20500"
+          example: "1234AA Nootdorp"
+        adresregel3:
+          type: "string"
+          description: |
+                        Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.
+          example: "Selangor"
+        vertrokkenOnbekendWaarheen:
+          type: boolean
+          description: |
+                        Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.
+        land:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+        inOnderzoek:
+          $ref: "#/components/schemas/VerblijfplaatsInOnderzoekBeperkt"
+    VerblijfplaatsInOnderzoekBeperkt:
+      type: "object"
+      description: |
+                    Geeft aan welke gegevens over het verblijf en adres van de persoon in onderzoek zijn. Elementen van het GBA-adres zelf (Dat zou eigenlijk een BAG-adres moeten zijn) kunnen niet in onderzoek zijn. Wel de relatie naar de nummeraanduiding. Dat wordt gedaan door de identificatiecodeNummeraanduiding in onderzoek te zetten. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      properties:
+        functieAdres:
+          type: boolean
+        verblijfBuitenland:
+          type: boolean
+        woonplaats:
           type: boolean
         datumIngangOnderzoek:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
