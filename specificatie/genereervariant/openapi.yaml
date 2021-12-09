@@ -12,7 +12,7 @@ info:
   license:
     name: European Union Public License, version 1.2 (EUPL-1.2)
     url: https://eupl.eu/1.2/nl/
-  version: 1.3.0
+  version: 1.3.1
 servers:
 - url: https://www.haalcentraal.nl/haalcentraal/api/brp
   description: |
@@ -101,7 +101,10 @@ paths:
             minLength: 9
             pattern: ^[0-9]*$
             type: string
-        example: 999993653,999991723,999995078
+        example:
+        - "999993653"
+        - "999991723"
+        - "999995078"
       - name: geboorte__datum
         in: query
         description: |
@@ -2003,6 +2006,12 @@ components:
           _links:
             $ref: '#/components/schemas/PartnerLinks'
     Naam:
+      allOf:
+      - $ref: '#/components/schemas/NaamBasis'
+      - properties:
+          inOnderzoek:
+            $ref: '#/components/schemas/NaamInOnderzoek'
+    NaamBasis:
       type: object
       properties:
         geslachtsnaam:
@@ -2025,8 +2034,6 @@ components:
           example: de
         adellijkeTitelPredikaat:
           $ref: '#/components/schemas/Waardetabel'
-        inOnderzoek:
-          $ref: '#/components/schemas/NaamInOnderzoek'
     NaamInOnderzoek:
       type: object
       properties:
@@ -2106,7 +2113,7 @@ components:
           $ref: '#/components/schemas/DatumOnvolledig'
     NaamPersoon:
       allOf:
-      - $ref: '#/components/schemas/Naam'
+      - $ref: '#/components/schemas/NaamBasis'
       - properties:
           aanhef:
             type: string
