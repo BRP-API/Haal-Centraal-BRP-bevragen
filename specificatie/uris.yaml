@@ -1,0 +1,25 @@
+openapi: 3.0.3
+info:
+  title: Haal Centraal uri gerelateerde definities
+  version: 1.0.0
+paths: {}
+components:
+  headers:
+    Accept-Uri-Format:
+      description: |
+        Geeft aan welke uri format(en) de consumer kan verwerken
+      schema:
+        $ref: '#/components/schemas/UriFormatsEnum'
+    Content-Uri-Format:
+      description: |
+        Geeft aan welke uri format door de provider is toegepast
+      schema:
+        $ref: '#/components/schemas/UriFormatsEnum'
+  schemas:
+    UriFormatsEnum:
+      type:
+        string
+      enum:
+        - uri-reference
+        - uri
+        - uri-template
