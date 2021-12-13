@@ -586,7 +586,7 @@ components:
                     Het nummer van het verstrekte Nederlandse reisdocument.
       example: "546376728"
     
-    IngeschrevenPersoonBeperkt:
+    IngeschrevenPersoonBasis:
       type: "object"
       properties:
         burgerservicenummer:
@@ -604,18 +604,23 @@ components:
           description: |
                         Leeftijd in jaren op het moment van bevragen.
           example: 34
-        naam:
-          $ref: "#/components/schemas/Naam"
         inOnderzoek:
           $ref: "#/components/schemas/PersoonInOnderzoek"
-        geboorte:
-          $ref: "#/components/schemas/Geboortedatum"
-        opschortingBijhouding:
-          $ref: "#/components/schemas/OpschortingBijhoudingBasis"
-        overlijden:
-          $ref: "#/components/schemas/OverlijdenBasis"
-        verblijfplaats:
-          $ref: "#/components/schemas/VerblijfplaatsBeperkt"
+    IngeschrevenPersoonBeperkt:
+      allOf:
+        - $ref: "#/components/schemas/IngeschrevenPersoonBasis"
+        - type: "object"
+          properties:
+            naam:
+              $ref: "#/components/schemas/Naam"
+            geboorte:
+              $ref: "#/components/schemas/Geboortedatum"
+            opschortingBijhouding:
+              $ref: "#/components/schemas/OpschortingBijhoudingBasis"
+            overlijden:
+              $ref: "#/components/schemas/OverlijdenBasis"
+            verblijfplaats:
+              $ref: "#/components/schemas/VerblijfplaatsBeperkt"
     IngeschrevenPersoonBeperktLinks:
       type: "object"
       properties:
@@ -628,67 +633,52 @@ components:
             _links:
               $ref: "#/components/schemas/IngeschrevenPersoonBeperktLinks"
     IngeschrevenPersoon:
-      type: "object"
-      properties:
-        burgerservicenummer:
-            type: "string"
-            example: "555555021"
-        aNummer:
-          description: |
-                        Het A-nummer van de persoon
-          type: "string"
-        geheimhoudingPersoonsgegevens:
-          type: boolean
-          title: "Indicatie geheim"
-          description: |
-                        Gegevens mogen niet worden verstrekt aan derden / maatschappelijke instellingen.
-        geslachtsaanduiding:
-          $ref: "#/components/schemas/Geslacht_enum"
-        leeftijd:
-          type: integer
-          description: |
-                        Leeftijd in jaren op het moment van bevragen.
-          example: 34
-        datumEersteInschrijvingGBA:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
-        kiesrecht:
-          $ref: "#/components/schemas/Kiesrecht"
-        naam:
-          $ref: "#/components/schemas/NaamPersoon"
-        inOnderzoek:
-          $ref: "#/components/schemas/PersoonInOnderzoek"
-        nationaliteiten:
-          type: "array"
-          items:
-            $ref: "#/components/schemas/Nationaliteit"
-        geboorte:
-          $ref: "#/components/schemas/Geboorte"
-        opschortingBijhouding:
-          $ref: "#/components/schemas/OpschortingBijhouding"
-        overlijden:
-          $ref: "#/components/schemas/Overlijden"
-        verblijfplaats:
-          $ref: "#/components/schemas/Verblijfplaats"
-        gezagsverhouding:
-          $ref: "#/components/schemas/Gezagsverhouding"
-        verblijfstitel:
-          $ref: "#/components/schemas/Verblijfstitel"
-        reisdocumentnummers:
-          type: "array"
-          items:
-            $ref: "#/components/schemas/Reisdocumentnummer"
-        kinderen:
-          type: "array"
-          items:
-            $ref: "#/components/schemas/Kind"
-        ouders:
-          type: "array"
-          items:
-            $ref: "#/components/schemas/Ouder"
-        partners:
-          type: "array"
-          items:
-            $ref: "#/components/schemas/Partner"
+      allOf:
+        - $ref: "#/components/schemas/IngeschrevenPersoonBasis"
+        - type: "object"
+          properties:
+            aNummer:
+              description: |
+                            Het A-nummer van de persoon
+              type: "string"
+            datumEersteInschrijvingGBA:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+            kiesrecht:
+              $ref: "#/components/schemas/Kiesrecht"
+            naam:
+              $ref: "#/components/schemas/NaamPersoon"
+            nationaliteiten:
+              type: "array"
+              items:
+                $ref: "#/components/schemas/Nationaliteit"
+            geboorte:
+              $ref: "#/components/schemas/Geboorte"
+            opschortingBijhouding:
+              $ref: "#/components/schemas/OpschortingBijhouding"
+            overlijden:
+              $ref: "#/components/schemas/Overlijden"
+            verblijfplaats:
+              $ref: "#/components/schemas/Verblijfplaats"
+            gezagsverhouding:
+              $ref: "#/components/schemas/Gezagsverhouding"
+            verblijfstitel:
+              $ref: "#/components/schemas/Verblijfstitel"
+            reisdocumentnummers:
+              type: "array"
+              items:
+                $ref: "#/components/schemas/Reisdocumentnummer"
+            kinderen:
+              type: "array"
+              items:
+                $ref: "#/components/schemas/Kind"
+            ouders:
+              type: "array"
+              items:
+                $ref: "#/components/schemas/Ouder"
+            partners:
+              type: "array"
+              items:
+                $ref: "#/components/schemas/Partner"
     IngeschrevenPersoonHalCollectie:
       type: object
       properties:
