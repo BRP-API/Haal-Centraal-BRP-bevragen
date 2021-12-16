@@ -107,7 +107,7 @@ paths:
                         Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.
           required: false
           schema:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+            type: "string"
         - in: query
           name: inclusiefOverledenPersonen
           description: |

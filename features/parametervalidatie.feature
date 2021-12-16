@@ -19,6 +19,7 @@ Functionaliteit: parameters worden gevalideerd
     * moet een geldige datum zijn in het ISO 8601 formaat jjjj-mm-dd (bijvoorbeeld "2018-03-09")
   * gemeentevaninschrijving: parameterwaarde moet voorkomen in kolom "Code" van tabel 33 Gemeentetabel
   * naam__voorvoegsel: parameterwaarde moet voorkomen in tabel 36 Voorvoegsels of leeg zijn
+  * geslachtsaanduiding: parameterwaarde moet voorkomen in de waardetabel voor geslachtsaanduidingen die in de waardetabellen API wordt aangeboden
 
   Niet verplichte parameters mogen ook de waarde null hebben.
 
@@ -108,7 +109,7 @@ Functionaliteit: parameters worden gevalideerd
     Dan levert dit een foutmelding
     En heeft de foutmelding betrekking op parameter verblijfplaats__gemeentevaninschrijving
 
-  Scenario: Bij zoeken op voorvoegsel moet een waarde worden gebruikt die voorkomt in de betreffende GBA tabel of moet leeg zijn
+  Scenario: Bij zoeken op voorvoegsel moet een waarde worden gebruikt die voorkomt in de betreffende GBA tabel, waardetabel of moet leeg zijn
     Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=Velzen&naam__voorvoegsel=niet
     Dan levert dit een foutmelding
     En heeft de foutmelding betrekking op parameter naam__voorvoegsel
