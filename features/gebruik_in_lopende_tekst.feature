@@ -2,7 +2,7 @@
 
 # Issue #334 en #337
 Functionaliteit: Als gemeente wil ik de juiste en consistent naamgebruik in een lopende tekst
-  Attribuut gebruikInLopendeTekst bij een ingeschreven persoon wordt gevuld door de provider om op deze wijze op eenduidige wijze een persoon te kunnen benoemen.
+  Attribuut gebruikInLopendeTekst bij een persoon wordt gevuld door de provider om op deze wijze op eenduidige wijze een persoon te kunnen benoemen.
 
   Dit attribuut kan worden gebruikt in bijvoorbeeld een zin in een brief als "In uw brief van 12 mei jongstleden, geeft u het overlijden van uw vader, de heer in het Veld, aan.", waarbij "de heer in het Veld" gehaald is uit attribuut gebruikInLopendeTekst.
 
@@ -81,7 +81,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistent naamgebruik in een 
   | Prins	| prinses          |
 
   Abstract Scenario: gebruikInLopendeTekst wordt samengesteld op basis van geslachtsaanduiding en naamgegevens van de persoon en de partner
-    Als ingeschreven persoon wordt geraadpleegd
+    Als persoon wordt geraadpleegd
     Dan heeft de gevonden ingeschrevenpersoon naam.gebruikInLopendeTekst=<gebruikInLopendeTekst>
 
     # In onderstaande tabellen betekenen de afkortingen:
@@ -164,26 +164,26 @@ Functionaliteit: Als gemeente wil ik de juiste en consistent naamgebruik in een 
       | vrouw    | man      | Jonkheer | Partner voor eigen    | A.C. van den Aedel-van der Veen         | mevrouw Van den Aedel-van der Veen         |
 
   Scenario: meerdere actuele relaties
-    Gegeven de ingeschreven persoon de heer F.C. Groen is getrouwd in 1958 met Geel
-    En de ingeschreven persoon is getrouwd in 1961 met Roodt
+    Gegeven de persoon de heer F.C. Groen is getrouwd in 1958 met Geel
+    En de persoon is getrouwd in 1961 met Roodt
     En geen van beide relaties is beëindigd
-    En de ingeschreven persoon heeft aanduidingAanschrijving='V'
-    Als de ingeschreven persoon wordt geraadpleegd
+    En de persoon heeft aanduidingAanschrijving='V'
+    Als de persoon wordt geraadpleegd
     Dan is in het antwoord naam.gebruikInLopendeTekst=de heer Geel-Groen
 
   Scenario: meerdere ontbonden relaties
-    Gegeven de ingeschreven persoon de heer J. Wit is getrouwd in 1958 met Geel
-    En de ingeschreven persoon is getrouwd in 1961 met Roodt
+    Gegeven de persoon de heer J. Wit is getrouwd in 1958 met Geel
+    En de persoon is getrouwd in 1961 met Roodt
     En het huwelijk met Geel is ontbonden in 1960
     En het huwelijk met Roodt is ontbonden in 2006
-    En de ingeschreven persoon heeft aanduidingAanschrijving='V'
-    Als de ingeschreven persoon wordt geraadpleegd
+    En de persoon heeft aanduidingAanschrijving='V'
+    Als de persoon wordt geraadpleegd
     Dan is in het antwoord naam.aanschrijfwijze=de heer Roodt-Wit
 
-    Gegeven de ingeschreven persoon de heer J. Wit is getrouwd in 1958 met Zwart
-    En de ingeschreven persoon is getrouwd in 1961 met Blaauw
+    Gegeven de persoon de heer J. Wit is getrouwd in 1958 met Zwart
+    En de persoon is getrouwd in 1961 met Blaauw
     En het huwelijk met Blaauw is ontbonden in 1983
     En het huwelijk met Zwart is ontbonden in 2006
-    En de ingeschreven persoon heeft aanduidingAanschrijving='V'
-    Als de ingeschreven persoon wordt geraadpleegd
+    En de persoon heeft aanduidingAanschrijving='V'
+    Als de persoon wordt geraadpleegd
     Dan is in het antwoord naam.aanhef=de heer Zwart-Wit
