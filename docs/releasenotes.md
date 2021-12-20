@@ -5,6 +5,10 @@ title: Haal Centraal BRP bevragingen
 
 # Releasenotes Haal-Centraal-BRP-Bevragen
 
+## Versie 1.3.1
+- Naambasis (exclusief in InOnderzoek) toegevoegd  i.v.m. specificatie issue m.b.t. dubbel gedefinieerde InOnderzoek. (Zie [850](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/850) )
+- Foutief Example BSN aangepast
+
 ## Versie 1.3.0
 - De property "aNummer" is toegevoegd aan "IngeschrevenPersoon".
 - De gegevens van partners, ouders en kinderen zijn aan de resource "ingeschrevenPersoon" toegevoegd.
