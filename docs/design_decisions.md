@@ -24,7 +24,7 @@ Relaties worden opgenomen als uri naar de betreffende resource. De API voor het 
 Zo lang deze resources nog niet ontsloten zijn (in een API op betreffende bron) moeten deze dus binnen deze API beschreven worden.
 
 ## Aanschrijfwijze opnemen in de resource
-We voegen een veld "aanschrijfwijze" toe aan de resource ingeschrevenNatuurlijkPersoon.
+We voegen een veld "aanschrijfwijze" toe aan de resource Persoon.
 In dit veld wordt de naam samengesteld op basis van de aanduiding naamgebruik.
 
 Het algoritme voor het samenstellen moet worden beschreven in de API specificaties.
@@ -41,10 +41,10 @@ De identificatie van BAG-objecten wordt geïmplementeerd als string, waarin de d
 *Ratio*
 
 In het RSGB is de identificatie van BAG-objecten (bijvoorbeeld identificatiecode van een nummeraanduiding) opgenomen als complex datatype. In de BAG-registratie is dit echter één string waarin de deel-elementen uit het complex datatype zijn samengevoegd.
-Zie issue [#1](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/issues/1).
+Zie issue [#1](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1).
 
 ## Eén uniform endpoint voor zoeken persoonsgegevens
-Voor personen komt er één endpoint voor het zoeken: /ingeschrevenNatuurlijkPersonen.
+Voor personen komt er één endpoint voor het zoeken: /personen.
 Dit endpoint geeft alle attributen van de persoon van het LO GBA, geen aanhangende gegevens of gemeentelijke kerngegevens, alle relaties (die in GBA zitten) als link (uri).
 
 Op dit endpoint worden alle zoekparameters uit RSGB-bevragingen 1.0 ondersteund die vallen onder "zoeken op persoonskenmerken". Er worden minimale combinaties van parameters voorgeschreven.
@@ -65,7 +65,7 @@ Wanneer het verblijfadres een BAG-adres is, wordt ook een relatie (link) naar de
 Functionele vraag is: ik wil in één vraag een persoon met adres hebben.
 Een groot deel van de vragen om persoonsgegevens is er direct behoefte aan de adresgegevens, zonder geïnteresseerd te zijn in de structuur in BAG (zoals naar nummeraanduiding, woonplaats, ligplaats, adresseerbaar object).
 Zie https://www.rvig.nl/brp/vraag-en-antwoord/mag-een-persoon-worden-ingeschreven-op-een-locatieomschrijving-in-de-gba-als-er-geen-authentiek-bag-adres-is
-Deze oplossing is ook een oplossing voor issue [22](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/issues/22) en [14](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/issues/14).
+Deze oplossing is ook een oplossing voor issue [22](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/22) en [14](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/14).
 
 ## Verblijfplaats wordt gevuld met adresgegevens uit het GBA als er geen BAG adres beschikbaar is
 De verblijfplaats toont de adresgegevens zoals die in het GBA staan geregistreerd als er geen BAG nummeraanduiding en openbare ruimtenaam uit de BAG beschikbaar is.
@@ -92,7 +92,7 @@ Deze velden zijn gedefinieerd in ISO8601-typen.
 Als er een volledige geboortedatum is, worden alle 4 velden ingevuld, anders alleen de bekende delen.
 
 *Ratio*
-In de API moet het mogelijk zijn een persoon met gedeeltelijk onbekende geboortedatum op te nemen, zie issue [6](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/issues/6).
+In de API moet het mogelijk zijn een persoon met gedeeltelijk onbekende geboortedatum op te nemen, zie issue [6](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/6).
 De gekozen oplossing is het eenvoudigst te implementeren.
 
 ## gemeenteVanInschrijving is een property met gemeentecode
@@ -133,8 +133,8 @@ Het antwoordbericht van /bewoningen bevat de lijst gevonden adressen, met voor e
 
 
 ## Burgerservicenummer is unieke sleutel voor een natuurlijk persoon
-De resource ingeschrevenNatuurlijkPersonen wordt uniek geïdentificeerd met de sleutel burgerservicenummer.
-Dus is het pad naar de gegevens van één persoon gedefinieerd als /ingeschrevennatuurlijkpersonen/{burgerservicenummer}
+De resource personen wordt uniek geïdentificeerd met de sleutel burgerservicenummer.
+Dus is het pad naar de gegevens van één persoon gedefinieerd als /personen/{burgerservicenummer}
 
 *Ratio*
 Het burgerservicenummer is het persoonsnummer voor contact van een burger met de overheid. Andere registraties die verwijzen naar een persoon zullen geen andere unieke identificatie kennen dan het burgerservicenummer. Zolang andere registraties (zoals BRK en HR) alleen het burgerservicenummer als functionele sleutel van de persoon kennen kan er geen technische sleutel (UUID) gebruikt worden voor het ophalen van een enkele resource.
