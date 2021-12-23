@@ -1,12 +1,9 @@
-Functionaliteit: Als developer wil ik waardetabellen gebruiken in plaats van enumeraties
-  zodat ik mijn code niet hoef aan te passen als een enumeratielijst wordt aangepast die ik in mijn functionaliteit niet gebruik.
+Functionaliteit: Wanneer een gegeven in de registratie een gecodeerde waarde met een beperkte set mogelijke waarden heeft, wordt dit in de API geleverd als zowel een code als de bijbehorende betekenis.
 
-  Wanneer in de registratie specifieke waarden in een enumeratie voorkomen, worden deze waarden in de API doorgegeven middels een waardetabel.
-  Wanneer in de registratie een omschrijving gekoppeld is aan een specifieke enumeratiewaarde, wordt deze omschrijving raadpleegbaar gemaakt middels de waardetabellen API.
+De onderstaanden tabellen met de beschreven waarden worden geleverd door de "BRP tabellen bevragen"-API
 
-
-  Voor de enumeratie AanduidingBijzonderNederlanderschap wordt de tabel met tabelidentificatie "aanduidingbijzondernederlanderschap" opgenomen.
-  In de omschrijving wordt de volgende tekst opgenomen : "Geeft aan dat de persoon behandeld wordt als Nederlander, of dat door de rechter is vastgesteld dat de persoon niet de Nederlandse nationaliteit bezit."
+  Voor AanduidingBijzonderNederlanderschap wordt de tabel met tabelidentificatie "aanduidingbijzondernederlanderschap" opgenomen.
+  In de omschrijving wordt de volgende tekst opgenomen : "Mogelijke waarden voor bijzonder Nederlanderschap."
   In de tabel worden de volgende waarden opgenomen:
     | code                                             | omschrijving                     |
     | ------------------------------------------------ | -------------------------------- |
@@ -22,25 +19,13 @@ Functionaliteit: Als developer wil ik waardetabellen gebruiken in plaats van enu
     | by                                               | bij                              |
 
   Voor de enumeratie Geslacht wordt de tabel met identificatie "geslacht" opgenomen.
-  In de omschrijving wordt de volgende tekst opgenomen : "Geeft aan dat de persoon een man of vrouw is, of dat het geslacht (nog) onbekend is."
+  In de omschrijving wordt de volgende tekst opgenomen : "Geeft aan wat het geslacht is van persoon."
   In de waardetabel worden de volgende waarden opgenomen:
     | code                                             | omschrijving                     |
     | ------------------------------------------------ | -------------------------------- |
     | M                                                | man                              |
     | V                                                | vrouw                            |
     | O                                                | onbekend                         |
-
-  Voor de enumeratie IndicatieGezagMinderjarige wordt de tabel met identificatie "indicatiegezagminderjarige" opgenomen.
-  In de omschrijving wordt de volgende tekst opgenomen : "Geeft aan wie het gezag heeft over de minderjarige persoon."
-  In de waardetabel worden de volgende waarden opgenomen:
-    | code                                             | omschrijving                     |
-    | ------------------------------------------------ | -------------------------------- |
-    | 1                                                | ouder1                           |
-    | 2                                                | ouder2                           |
-    | D                                                | derden                           |
-    | 1D                                               | ouder1 en derde                  |
-    | 2d                                               | ouder2 en derde                  |
-    | 12                                               | ouder1 en ouder2                 |
 
   Voor de enumeratie Naamgebruik wordt de tabel met identificatie "naamgebruik" opgenomen.
   In de omschrijving wordt de volgende tekst opgenomen : "De manier waarop de geslachtsnaam van persoon en partner van persoon moet worden verwerkt in de manier waarop persoon wil worden aangesproken."

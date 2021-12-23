@@ -104,7 +104,7 @@ paths:
         - in: query
           name: geslachtsaanduiding
           description: |
-                        Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.
+                        Geeft aan wat het geslacht is van persoon.
           required: false
           schema:
             type: "string"
