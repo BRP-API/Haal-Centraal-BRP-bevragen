@@ -43,6 +43,8 @@ Functionaliteit: url formattering
     - de naam van een property van een resource, v.b. burgerservicenummer of
     - de naam van een property van een gegevensgroep van een resource v.b. kinderen.burgerservicenummer
 
+    Hieronder zijn voorbeelden uitgewerkt voor de BRP Bevragen API
+ 
 Achtergrond:
     * de Haal Centraal APIs met hun base url en base url template placeholder
     | Naam Haal Centraal API | base url                                                         | base url template placeholder |
