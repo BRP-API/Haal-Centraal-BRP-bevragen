@@ -604,15 +604,13 @@ components:
           description: |
                         Leeftijd in jaren op het moment van bevragen.
           example: 34
-        inOnderzoek:
-          $ref: "#/components/schemas/PersoonInOnderzoek"
     IngeschrevenPersoonBeperkt:
       allOf:
         - $ref: "#/components/schemas/IngeschrevenPersoonBasis"
         - type: "object"
           properties:
             naam:
-              $ref: "#/components/schemas/Naam"
+              $ref: "#/components/schemas/NaamBasis"
             geboorte:
               $ref: "#/components/schemas/Geboortedatum"
             opschortingBijhouding:
@@ -643,6 +641,8 @@ components:
               type: "string"
             datumEersteInschrijvingGBA:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+            inOnderzoek:
+              $ref: "#/components/schemas/PersoonInOnderzoek"
             kiesrecht:
               $ref: "#/components/schemas/Kiesrecht"
             naam:
@@ -849,7 +849,7 @@ components:
                             Gegevens mogen niet worden verstrekt aan derden/ maatschappelijke instellingen.
             _links:
               $ref: "#/components/schemas/PartnerLinks"
-    Naam:
+    NaamBasis:
       type: "object"
       properties:
         geslachtsnaam:
@@ -872,8 +872,12 @@ components:
           example: "de"
         adellijkeTitelPredikaat:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
-        inOnderzoek:
-          $ref: "#/components/schemas/NaamInOnderzoek"
+    Naam:
+      allOf: 
+        - $ref: "#/components/schemas/NaamBasis"
+        - properties:
+            inOnderzoek:
+              $ref: "#/components/schemas/NaamInOnderzoek"
     NaamInOnderzoek:
       type: "object"
       description: |
@@ -910,7 +914,7 @@ components:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
     Geboorte:
       allOf:
-      - $ref: '#/components/schemas/GeboorteBasis'
+      - $ref: '#/components/schemas/Geboortedatum'
       - description: |
                       Gegevens over de geboorte.
                       * **datum** : datum waarop de persoon is geboren.
@@ -1128,11 +1132,6 @@ components:
       description: |
                       Gegevens over het verblijf of de woonlocatie van een persoon.
       properties:
-        woonplaats:
-          description: "Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam."
-          title: woonplaats naam
-          type: string
-          example: 'Duiven'
         functieAdres:
           $ref: "#/components/schemas/SoortAdres_enum"
         adresregel1:
@@ -1152,27 +1151,17 @@ components:
           description: |
                         Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.
           example: "Selangor"
+        woonplaats:
+          description: "Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam."
+          title: woonplaats naam
+          type: string
+          example: 'Duiven'
+        land:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
         vertrokkenOnbekendWaarheen:
           type: boolean
           description: |
-                        Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.
-        land:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
-        inOnderzoek:
-          $ref: "#/components/schemas/VerblijfplaatsInOnderzoekBeperkt"
-    VerblijfplaatsInOnderzoekBeperkt:
-      type: "object"
-      description: |
-                    Geeft aan welke gegevens over het verblijf en adres van de persoon in onderzoek zijn. Elementen van het GBA-adres zelf (Dat zou eigenlijk een BAG-adres moeten zijn) kunnen niet in onderzoek zijn. Wel de relatie naar de nummeraanduiding. Dat wordt gedaan door de identificatiecodeNummeraanduiding in onderzoek te zetten. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
-      properties:
-        functieAdres:
-          type: boolean
-        verblijfBuitenland:
-          type: boolean
-        woonplaats:
-          type: boolean
-        datumIngangOnderzoek:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+                        Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naartoe.
     Verblijfplaats:
       allOf:
       - $ref : "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BAG-bevragen/v1.1.0/specificatie/openapi.yaml#/components/schemas/Adres"
@@ -1542,26 +1531,9 @@ components:
       enum:
       - "huwelijk"
       - "geregistreerd_partnerschap"
-    GeboorteBasis:
-      type: "object"
-      description: |
-                    Gegevens over de geboorte van respectievelijk de persoon, de ouder, de echtgenoot/geregistreerd partner, de eerdere echtgenoot/geregistreerd partner of het kind.
-                    * **datum** : Datum waarop de persoon is geboren
-      properties:
-        datum:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
-    GeboortedatumInOnderzoek:
-      type: "object"
-      description: |
-                    Geeft aan welke gegevens over de geboorte van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
-      properties:
-        datum:
-          type: boolean
-        datumIngangOnderzoek:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
     Geboortedatum:
-      allOf:
-      - $ref: '#/components/schemas/GeboorteBasis'
-      - properties:
-          inOnderzoek:
-            $ref: "#/components/schemas/GeboortedatumInOnderzoek"
+      type: "object"
+      properties:
+        datum:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+          
