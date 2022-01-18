@@ -19,7 +19,7 @@ Wanneer er BFFs in het systeem voorkomen is het zelfs nodig om de urls meerdere 
 
 Onderstaand figuur 1 visualiseert voor een Single Page Applicatie en een Desktop Applicatie de weg die een request naar en een response van de BRP API maakt. Bij elke tussenstap moeten de urls worden aangepast.
 
-![client API communicatie zonder uri-format negotiation](img\1-communicatie-client-api-zonder-uri-negotiation.svg)
+![client API communicatie zonder uri-format negotiation](img/1-communicatie-client-api-zonder-uri-negotiation.svg)
 
 De Haal Centraal APIs maken gebruik van [URI Template](https://datatracker.ietf.org/doc/html/rfc6570) om urls te parameteriseren. Hiermee kunnen gelijksoortige urls (urls die alleen verschillen door path parameter waarde) worden gerepresenteerd met één URI template.
 
@@ -56,6 +56,6 @@ De Haal Centraal APIs gebruiken de custom 'Content-Uri-Format' HTTP header om aa
 
 Onderstaand figuren zijn een uitsplitsing en uitbreiding op figuur 1 waarmee clients, de BFF en API Gateways middels de Accept-URI-Format hun gewenste url formaat aangeven. Door het gebruiken van de uri-template formaat door de BFFs en de API Gateway hoeft het aanpassen van urls in een response slechts één keer te gebeuren.
 
-![SPA - API communicatie met uri-format negotiation](img\2-communicatie-spa-api-met-uri-negotiation.svg)
+![SPA - API communicatie met uri-format negotiation](img/2-communicatie-spa-api-met-uri-negotiation.svg)
 
-![Desktop API communicatie met uri-format negotiation](img\3-communicatie-desktop-api-met-uri-negotiation.svg)
+![Desktop API communicatie met uri-format negotiation](img/3-communicatie-desktop-api-met-uri-negotiation.svg)
