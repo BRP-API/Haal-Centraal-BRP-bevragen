@@ -10,38 +10,7 @@ Functionaliteit: url formattering
     Wil ik [URI Template](https://datatracker.ietf.org/doc/html/rfc6570) gebruiken om URIs te beschrijven
     Zodat een verzameling van gelijksoortige urls met één URI template kan worden gerepresenteerd.
 
-    De Haal Centraal APIs gebruiken [server-driven negotiation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Content_negotiation)
-    en uri formats voor Resource Identifiers (zie [7.3.5. Resource Identifiers](https://json-schema.org/draft/2020-12/json-schema-validation.html#rfc.section.7.3.5)
-    en [7.3.6. uri-template](https://json-schema.org/draft/2020-12/json-schema-validation.html#rfc.section.7.3.6)
-    in de JSON Schema Validation specificatie) om dit mogelijk te maken.
-
-    Door middel van een custom HTTP header 'Accept-Uri-Format' kan een Haal Centraal API consumer in een request
-    aangeven in welke format hij de urls in de response wil ontvangen.  
-    De volgende uri formats worden ondersteund:
-    - uri. Alle links in de response worden geformatteerd als absolute urls.
-    - uri-reference (default). 'Same API' links worden geformatteerd als relatieve urls en 'externe API' links als absolute urls.
-    - uri-template. De base url van links worden gerepresenteerd door een URI Template [Expression](https://datatracker.ietf.org/doc/html/rfc6570#section-2.2).
-      De Haal Centraal APIs kennen de volgende base url expressions:
-      - {brpserverurl}
-      - {brphistorieserverurl}
-      - {brpbewoningserverurl}
-      - {bagserverurl}
-      - {brkserverurl}
-      - {wozserverurl} 
-
-    De Haal Centraal APIs gebruiken de custom 'Content-Uri-Format' HTTP header om aan te geven welke uri format
-    is gebruikt om de urls in de response te formatteren.    
-
-    De [URI Template](https://datatracker.ietf.org/doc/html/rfc6570) specificatie wordt door de Haal Centraal APIs
-    ook gebruikt om gelijksoortige links naar resources met URI templates te representeren.
-    Een URI template bevat één of meerdere expressions waarmee een verzameling van URIs kan worden beschreven.
-    Een expression is de tekst tussen een open accolade '{' en een sluit accolade '}' inclusief de accolade tekens.
-    Er zijn meerdere expression types met bijbehorende expansie methode. Zie [Expressions](https://datatracker.ietf.org/doc/html/rfc6570#section-2.2).
-    De Haal Centraal APIs gebruiken 'no operator expressions' zodat consumers 'Simple String Expansion'
-    kunnen toepassen. Dit houdt in dat een {expression} zonder toepassing van logica kan worden vervangen met een waarde.
-    Binnen de Haal Centraal APIs worden property namen gebruikt voor expressions. Een property naam is:
-    - de naam van een property van een resource, v.b. burgerservicenummer of
-    - de naam van een property van een gegevensgroep van een resource v.b. kinderen.burgerservicenummer
+    Zie de [uri formattering](../docs/uri-formattering.md) voor uitgebreide uri formattering documentatie. 
 
     Hieronder zijn voorbeelden uitgewerkt voor de BRP Bevragen API
  
