@@ -18,7 +18,6 @@ Functionaliteit: parameters worden gevalideerd
   * date:
     * moet een geldige datum zijn in het ISO 8601 formaat jjjj-mm-dd (bijvoorbeeld "2018-03-09")
   * gemeentevaninschrijving: parameterwaarde moet voorkomen in kolom "Code" van tabel 33 Gemeentetabel
-  * naam__voorvoegsel: parameterwaarde moet voorkomen in tabel 36 Voorvoegsels of leeg zijn
   * geslachtsaanduiding: parameterwaarde moet voorkomen in de waardetabel voor geslachtsaanduidingen die in de waardetabellen API wordt aangeboden
 
   Niet verplichte parameters mogen ook de waarde null hebben.
@@ -33,7 +32,7 @@ Functionaliteit: parameters worden gevalideerd
     Dan levert dit een foutmelding
     En heeft de foutmelding betrekking op parameter verblijfplaats__postcode
 
-  Scenario: Zoeken met een parameterwaarde op een intedie geen geldig geheel getal is op een integer levert een foutmelding
+  Scenario: Zoeken met een parameterwaarde op een integer die geen geldig geheel getal is levert een foutmelding
     Als ingeschreven personen gezocht worden met ?verblijfplaats__postcode=9744CZ&verblijfplaats__huisnummer=A
     Dan levert dit een foutmelding
     En heeft de foutmelding betrekking op parameter verblijfplaats__huisnummer
@@ -108,11 +107,3 @@ Functionaliteit: parameters worden gevalideerd
     Als ingeschreven personen gezocht worden met ?verblijfplaats__naamopenbareruimte=Sint%20Aldegondestraat&verblijfplaats__huisnummer=2&verblijfplaats__gemeentevaninschrijving=1899
     Dan levert dit een foutmelding
     En heeft de foutmelding betrekking op parameter verblijfplaats__gemeentevaninschrijving
-
-  Scenario: Bij zoeken op voorvoegsel moet een waarde worden gebruikt die voorkomt in de betreffende GBA tabel, waardetabel of moet leeg zijn
-    Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=Velzen&naam__voorvoegsel=niet
-    Dan levert dit een foutmelding
-    En heeft de foutmelding betrekking op parameter naam__voorvoegsel
-    Als ingeschreven personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=Groenen&naam__voorvoegsel=
-    Dan levert dit zoekresultaten
-    En wordt de ingeschreven persoon gevonden met naam.geslachtsnaam=Groenen
