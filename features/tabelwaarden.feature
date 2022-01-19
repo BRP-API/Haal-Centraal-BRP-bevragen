@@ -2,14 +2,6 @@ Functionaliteit: Wanneer een gegeven in de registratie een gecodeerde waarde met
 
 De onderstaanden tabellen met de beschreven waarden worden geleverd door de "BRP tabellen bevragen"-API
 
-  Voor AanduidingBijzonderNederlanderschap wordt de tabel met tabelidentificatie "aanduidingbijzondernederlanderschap" opgenomen.
-  In de omschrijving wordt de volgende tekst opgenomen : "Mogelijke waarden voor bijzonder Nederlanderschap."
-  In de tabel worden de volgende waarden opgenomen:
-    | code                                             | omschrijving                     |
-    | ------------------------------------------------ | -------------------------------- |
-    | B                                                | Behandeld als nederlander        |
-    | V                                                | Vastgesteld Niet-Nederlander     |
-
   Voor de enumeratie AanduidingBijHuisnummer wordt de tabel met identificatie "aanduidingbijhuisnummer" opgenomen.
   In de omschrijving wordt de volgende tekst opgenomen : "De aanduiding die wordt gebruikt voor adressen die geen straatnaam en huisnummeraanduidingen hebben."
   In de waardetabel worden de volgende waarden opgenomen:
