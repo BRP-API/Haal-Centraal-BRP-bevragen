@@ -966,7 +966,7 @@ components:
                     * **redenOpname** : De reden op grond waarvan de persoon de nationaliteit gekregen heeft.
       properties:
         aanduidingBijzonderNederlanderschap:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+          $ref: "#/components/schemas/AanduidingBijzonderNederlanderschap"
         datumIngangGeldigheid:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
         nationaliteit:
@@ -1346,6 +1346,14 @@ components:
                         De partners van de persoon. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven.
           items:
             $ref: "#/components/schemas/PartnerHalBasis"
+    AanduidingBijzonderNederlanderschap:
+      type: object
+      properties:
+        behandeldAlsNederlander:
+          type: boolean
+        vastgesteldNietNederlander:
+          type: boolean
+
 #    AanduidingBijzonderNederlanderschap_enum:
 #      type: "string"
 #      description: |
