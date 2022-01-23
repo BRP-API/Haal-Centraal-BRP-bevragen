@@ -1,0 +1,134 @@
+openapi: 3.0.3
+info:
+  title: Ouder definities
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  schemas:
+    Verblijfplaats:
+      allOf:
+      - $ref : "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BAG-bevragen/v1.1.0/specificatie/openapi.yaml#/components/schemas/Adres"
+      - description: |
+                      Gegevens over het verblijf of de woonlocatie van een persoon.
+                      * **datumAanvangAdreshuishouding** : de datum van aangifte of ambtshalve melding van verblijf en adres.
+                      * **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden.
+                      * **datumInschrijvingInGemeente**: bij inschrijving op grond van een verhuisaangifte door de burger is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop het voornemen van ambtshalve opneming schriftelijk aan de persoon is medegedeeld.
+                      * **datumVestigingInNederland** : datum van inschrijving in Nederland.
+                      * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland.
+                      * **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten."
+        properties:
+          adresseerbaarObjectIdentificatie:
+            type: "string"
+            description: |
+                          De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.
+            example: "0226010000038820"
+          aanduidingBijHuisnummer:
+            $ref: "enum.yaml#/components/schemas/AanduidingBijHuisnummer_enum"
+          nummeraanduidingIdentificatie:
+            type: "string"
+            description: |
+                          Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
+            example: "0518200000366054"
+          functieAdres:
+            $ref: "enum.yaml#/components/schemas/SoortAdres_enum"
+          indicatieVestigingVanuitBuitenland:
+            type: boolean
+            description: |
+                          Geeft aan dat de ingeschreven persoon zich vanuit het buitenland heeft ingeschreven.
+          locatiebeschrijving:
+            type: "string"
+            description: |
+                          Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats.
+            example: "Naast de derde brug"
+          korteNaam:
+            description: |
+                          De officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG) of een verkorte versie.
+            type: string
+          vanuitVertrokkenOnbekendWaarheen:
+            type: boolean
+            description: |
+                          Geeft aan dat de persoon is teruggekeerd uit een situatie van 'vertrokken onbekend waarheen.'
+            example: true
+          datumAanvangAdreshouding:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+          datumIngangGeldigheid:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+          datumInschrijvingInGemeente:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+          datumVestigingInNederland:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+          gemeenteVanInschrijving:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+          landVanwaarIngeschreven:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+          adresregel1:
+            type: "string"
+            description: |
+                          Het eerste deel van een adres is een combinatie van de straat en huisnummer.
+            # example: "1600 Pennsylvania Avenue NW"
+            example: "Laan van de landinrichtingscommissie Duiven-Westervoort 26A-3"
+          adresregel2:
+            type: "string"
+            description: |
+                          Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode.
+            # example: "Washington, DC 20500"
+            example: "1234AA Nootdorp"
+          adresregel3:
+            type: "string"
+            description: |
+                          Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.
+            example: "Selangor"
+          vertrokkenOnbekendWaarheen:
+            type: boolean
+            description: |
+                          Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.
+          land:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+          inOnderzoek:
+            $ref: "#/components/schemas/VerblijfplaatsInOnderzoek"
+    VerblijfplaatsInOnderzoek:
+      type: "object"
+      description: |
+                    Geeft aan welke gegevens over het verblijf en adres van de persoon in onderzoek zijn. Elementen van het GBA-adres zelf (Dat zou eigenlijk een BAG-adres moeten zijn) kunnen niet in onderzoek zijn. Wel de relatie naar de nummeraanduiding. Dat wordt gedaan door de identificatiecodeNummeraanduiding in onderzoek te zetten. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      properties:
+        aanduidingBijHuisnummer:
+          type: boolean
+        datumAanvangAdreshouding:
+          type: boolean
+        datumIngangGeldigheid:
+          type: boolean
+        datumInschrijvingInGemeente:
+          type: boolean
+        datumVestigingInNederland:
+          type: boolean
+        functieAdres:
+          type: boolean
+        gemeenteVanInschrijving:
+          type: boolean
+        huisletter:
+          type: boolean
+        huisnummer:
+          type: boolean
+        huisnummertoevoeging:
+          type: boolean
+        nummeraanduidingIdentificatie:
+          type: boolean
+        adresseerbaarObjectIdentificatie:
+          type: boolean
+        landVanwaarIngeschreven:
+          type: boolean
+        locatiebeschrijving:
+          type: boolean
+        straat:
+          type: boolean
+        postcode:
+          type: boolean
+        korteNaam:
+          type: boolean
+        verblijfBuitenland:
+          type: boolean
+        woonplaats:
+          type: boolean
+        datumIngangOnderzoek:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"

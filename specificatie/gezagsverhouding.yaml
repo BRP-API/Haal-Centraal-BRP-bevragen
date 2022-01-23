@@ -1,0 +1,33 @@
+openapi: 3.0.3
+info:
+  title: Ouder definities
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  schemas:
+    Gezagsverhouding:
+      type: "object"
+      description: |
+                    Gegevens over het gezag over de persoon.
+      properties:
+        indicatieCurateleRegister:
+          type: boolean
+          description: |
+                        Geeft aan dat de persoon onder curatele is gesteld.
+          example: true
+        indicatieGezagMinderjarige:
+          $ref: "enum.yaml#/components/schemas/IndicatieGezagMinderjarige_enum"
+        inOnderzoek:
+          $ref: "#/components/schemas/GezagsverhoudingInOnderzoek"
+    GezagsverhoudingInOnderzoek:
+      type: "object"
+      description: |
+                    Geeft aan welke gegevens van de gezagsverhouding in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      properties:
+        indicatieCurateleRegister:
+          type: boolean
+        indicatieGezagMinderjarige:
+          type: boolean
+        datumIngangOnderzoek:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"

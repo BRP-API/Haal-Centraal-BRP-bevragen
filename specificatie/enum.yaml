@@ -1,0 +1,112 @@
+openapi: 3.0.3
+info:
+  title: Ouder definities
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  schemas:
+    AanduidingBijzonderNederlanderschap_enum:
+      type: "string"
+      description: |
+                    Geeft aan dat de persoon behandeld wordt als Nederlander, of dat door de rechter is vastgesteld dat de persoon niet de Nederlandse nationaliteit bezit
+                    * `behandeld_als_nederlander` - B
+                    * `vastgesteld_niet_nederlander` - V
+      enum:
+      - "behandeld_als_nederlander"
+      - "vastgesteld_niet_nederlander"
+    AanduidingBijHuisnummer_enum:
+      type: "string"
+      description: |
+                    De aanduiding die wordt gebruikt voor adressen die geen straatnaam en huisnummeraanduidingen hebben
+                    * `tegenover` - to
+                    * `bij` - by
+      enum:
+      - "tegenover"
+      - "bij"
+    Geslacht_enum:
+      type: "string"
+      description: |
+                    Geeft aan dat de persoon een man of vrouw is, of dat het geslacht (nog) onbekend is
+                    * `man` - M
+                    * `vrouw` - V
+                    * `onbekend` - O
+      enum:
+      - "man"
+      - "vrouw"
+      - "onbekend"
+    IndicatieGezagMinderjarige_enum:
+      type: "string"
+      description: |
+                    Geeft aan wie het gezag heeft over de minderjarige persoon.
+                    * `ouder1` - 1
+                    * `ouder2` - 2
+                    * `derden` - D
+                    * `ouder1_en_derde` - 1D
+                    * `ouder2_en_derde` - 2D
+                    * `ouder1_en_ouder2` - 12
+      enum:
+      - "ouder1"
+      - "ouder2"
+      - "derden"
+      - "ouder1_en_derde"
+      - "ouder2_en_derde"
+      - "ouder1_en_ouder2"
+    Naamgebruik_enum:
+      type: "string"
+      description: |
+                    De manier waarop de geslachtsnaam van persoon en partner van persoon moet worden verwerkt in de manier waarop persoon wil worden aangesproken
+                    * `eigen` - E - gebruik alleen de eigen naam
+                    * `eigen_partner` - N - gebruik de eigen naam voor de partnernaam
+                    * `partner` - P gebruik alleen de partnernaam
+                    * `partner_eigen` - V - gebruik de partnernaam voor de eigen naam.
+
+
+                    De aanduiding naamgebruik is verwerkt in Aanhef, Aanschrijfwijze en gebruikInLopendeTekst."
+      enum:
+      - "eigen"
+      - "eigen_partner"
+      - "partner"
+      - "partner_eigen"
+    OuderAanduiding_enum:
+      type: "string"
+      description: |
+                    Geeft aan om welke ouder het gaat volgens de BRP
+                    * `ouder1` - 1
+                    * `ouder2` - 2
+      enum:
+      - "ouder1"
+      - "ouder2"
+    RedenOpschortingBijhouding_enum:
+      type: "string"
+      description: |
+                    Redenen voor opschorting van de bijhouding
+                    * `overlijden` - O
+                    * `emigratie` - E
+                    * `ministerieel_besluit` - M
+                    * `pl_aangelegd_in_de_rni` - R - opgeschort omdat persoon is ingeschreven in het Register Niet Ingezeten (RNI).
+                    * `fout` - F
+      enum:
+      - "overlijden"
+      - "emigratie"
+      - "ministerieel_besluit"
+      - "pl_aangelegd_in_de_rni"
+      - "fout"
+    SoortAdres_enum:
+      type: "string"
+      description: |
+                    Aanduiding van het soort adres
+                    * `woonadres` - W - adres waar de persoon woont
+                    * `briefadres` - B - het adres van een andere persoon of van een instelling (de zogenoemde briefadresgever). Met dit adres van de briefadresgever is de persoon zonder woonadres toch bereikbaar voor de overheid.
+      enum:
+      - "woonadres"
+      - "briefadres"
+    SoortVerbintenis_enum:
+      type: "string"
+      description: |
+                    Soort verbintenis die bij de burgerlijke stand is ingeschreven
+                    * `huwelijk` - H
+                    * `geregistreerd_partnerschap` - P
+      enum:
+      - "huwelijk"
+      - "geregistreerd_partnerschap"

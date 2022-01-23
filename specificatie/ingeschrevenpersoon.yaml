@@ -1,0 +1,86 @@
+openapi: 3.0.3
+info:
+  title: IngeschrevenPersoon definities
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  schemas:
+    IngeschrevenPersoon:
+      type: "object"
+      properties:
+        burgerservicenummer:
+            type: "string"
+            example: "555555021"
+        aNummer:
+          description: |
+                        Het A-nummer van de persoon
+          type: "string"
+        geheimhoudingPersoonsgegevens:
+          type: boolean
+          title: "Indicatie geheim"
+          description: |
+                        Gegevens mogen niet worden verstrekt aan derden / maatschappelijke instellingen.
+        geslachtsaanduiding:
+          $ref: "enum.yaml#/components/schemas/Geslacht_enum"
+        leeftijd:
+          type: integer
+          description: |
+                        Leeftijd in jaren op het moment van bevragen.
+          example: 34
+        datumEersteInschrijvingGBA:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+        kiesrecht:
+          $ref: "kiesrecht.yaml#/components/schemas/Kiesrecht"
+        naam:
+          $ref: "naam.yaml#/components/schemas/NaamPersoon"
+        inOnderzoek:
+          $ref: "#/components/schemas/PersoonInOnderzoek"
+        nationaliteiten:
+          type: "array"
+          items:
+            $ref: "nationaliteit.yaml#/components/schemas/Nationaliteit"
+        geboorte:
+          $ref: "geboorte.yaml#/components/schemas/Geboorte"
+        opschortingBijhouding:
+          $ref: "opschortingbijhouding.yaml#/components/schemas/OpschortingBijhouding"
+        overlijden:
+          $ref: "overlijden.yaml#/components/schemas/Overlijden"
+        verblijfplaats:
+          $ref: "verblijfplaats.yaml#/components/schemas/Verblijfplaats"
+        gezagsverhouding:
+          $ref: "gezagsverhouding.yaml#/components/schemas/Gezagsverhouding"
+        verblijfstitel:
+          $ref: "verblijfstitel.yaml#/components/schemas/Verblijfstitel"
+        reisdocumentnummers:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Reisdocumentnummer"
+        kinderen:
+          type: "array"
+          items:
+            $ref: "kind.yaml#/components/schemas/Kind"
+        ouders:
+          type: "array"
+          items:
+            $ref: "ouder.yaml#/components/schemas/Ouder"
+        partners:
+          type: "array"
+          items:
+            $ref: "partner.yaml#/components/schemas/Partner"
+    PersoonInOnderzoek:
+      type: "object"
+      description: |
+                    Geeft aan welke gegevens van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature).
+      properties:
+        burgerservicenummer:
+          type: boolean
+        geslachtsaanduiding:
+          type: boolean
+        datumIngangOnderzoek:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+    Reisdocumentnummer:
+      type: "string"
+      description: |
+                    Het nummer van het verstrekte Nederlandse reisdocument.
+      example: "546376728"

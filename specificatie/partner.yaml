@@ -1,0 +1,70 @@
+openapi: 3.0.3
+info:
+  title: Ouder definities
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  schemas:
+    Partner:
+      type: "object"
+      description: |
+                    Gegevens over een gesloten huwelijk/geregistreerd partnerschap van de persoon.
+      properties:
+        burgerservicenummer:
+          type: "string"
+          example: "555555021"
+        geslachtsaanduiding:
+          $ref: "enum.yaml#/components/schemas/Geslacht_enum"
+        soortVerbintenis:
+          $ref: "enum.yaml#/components/schemas/SoortVerbintenis_enum"
+        naam:
+          $ref: "naam.yaml#/components/schemas/Naam"
+        geboorte:
+          $ref: "geboorte.yaml#/components/schemas/Geboorte"
+        inOnderzoek:
+          $ref: "#/components/schemas/PartnerInOnderzoek"
+        aangaanHuwelijkPartnerschap:
+          $ref: "#/components/schemas/AangaanHuwelijkPartnerschap"
+    PartnerInOnderzoek:
+      type: "object"
+      description: |
+                    Geeft aan welke gegevens over het huwelijk of het partnerschap in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      properties:
+        burgerservicenummer:
+          type: boolean
+        geslachtsaanduiding:
+          type: boolean
+        soortVerbintenis:
+          type: boolean
+        datumIngangOnderzoek:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+    AangaanHuwelijkPartnerschap:
+      type: "object"
+      description: |
+                    Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.
+                    * **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.
+                    * **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan.
+                    * **plaats** : De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Voor een plaats buiten Nederland bevat het antwoord een buitenlandse plaatsnaam of aanduiding.
+      properties:
+        datum:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+        land:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+        plaats:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+        inOnderzoek:
+          $ref: "#/components/schemas/AangaanHuwelijkPartnerschapInOnderzoek"
+    AangaanHuwelijkPartnerschapInOnderzoek:
+      type: "object"
+      description: |
+                    Geeft aan welke gegevens over het voltrekken van het huwelijk of aangaan van het partnerschap in onderzoek zijn. Zie de functionele specificaties. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      properties:
+        datum:
+          type: boolean
+        land:
+          type: boolean
+        plaats:
+          type: boolean
+        datumIngangOnderzoek:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"

@@ -1,0 +1,36 @@
+openapi: 3.0.3
+info:
+  title: Ouder definities
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  schemas:
+    Kind:
+      type: "object"
+      description: |
+                    Gegevens over een kind van de persoon.
+      properties:
+        burgerservicenummer:
+          type: "string"
+          example: "555555021"
+        leeftijd:
+          type: integer
+          description: |
+                        Leeftijd op het moment van bevragen
+          example: 12
+        inOnderzoek:
+          $ref: "#/components/schemas/KindInOnderzoek"
+        naam:
+          $ref: "naam.yaml#/components/schemas/Naam"
+        geboorte:
+          $ref: "geboorte.yaml#/components/schemas/Geboorte"
+    KindInOnderzoek:
+      type: "object"
+      description: |
+                    Geeft aan of de gegevens over het kind van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      properties:
+        burgerservicenummer:
+          type: boolean
+        datumIngangOnderzoek:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"

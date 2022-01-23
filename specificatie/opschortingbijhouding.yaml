@@ -1,0 +1,17 @@
+openapi: 3.0.3
+info:
+  title: Ouder definities
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  schemas:
+    OpschortingBijhouding:
+      type: "object"
+      description: |
+                    * **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.
+      properties:
+        reden:
+          $ref: "enum.yaml#/components/schemas/RedenOpschortingBijhouding_enum"
+        datum:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"

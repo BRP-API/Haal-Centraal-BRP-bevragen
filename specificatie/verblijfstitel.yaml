@@ -1,0 +1,37 @@
+openapi: 3.0.3
+info:
+  title: Ouder definities
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  schemas:
+    Verblijfstitel:
+      type: "object"
+      description: |
+                    Gegevens over de verblijfsrechtelijke status van de persoon.
+                    * **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd.
+                    * **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.
+                    * **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt.
+      properties:
+        aanduiding:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+        datumEinde:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+        datumIngang:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+        inOnderzoek:
+          $ref: "#/components/schemas/VerblijfstitelInOnderzoek"
+    VerblijfstitelInOnderzoek:
+      type: "object"
+      description: |
+                    Geeft aan welke gegevens over de verblijfstitel in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      properties:
+        aanduiding:
+          type: boolean
+        datumEinde:
+          type: boolean
+        datumIngang:
+          type: boolean
+        datumIngangOnderzoek:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
