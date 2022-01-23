@@ -26,7 +26,7 @@ components:
                         * **plaats** : gemeente waar de persoon is overleden. Is de persoon overleden buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.
           properties:
             datum:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             land:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
             plaats:
@@ -45,4 +45,4 @@ components:
         plaats:
           type: boolean
         datumIngangOnderzoek:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'

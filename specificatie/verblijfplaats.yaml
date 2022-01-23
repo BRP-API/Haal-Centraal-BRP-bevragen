@@ -88,11 +88,11 @@ components:
           datumAanvangAdreshouding:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
           datumIngangGeldigheid:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+            $ref: 'datum.yaml#/components/schemas/AbstractDatum'
           datumInschrijvingInGemeente:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+            $ref: 'datum.yaml#/components/schemas/AbstractDatum'
           datumVestigingInNederland:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+            $ref: 'datum.yaml#/components/schemas/AbstractDatum'
           gemeenteVanInschrijving:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
           landVanwaarIngeschreven:
@@ -166,4 +166,4 @@ components:
         woonplaats:
           type: boolean
         datumIngangOnderzoek:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'

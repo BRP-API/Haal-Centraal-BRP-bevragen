@@ -14,7 +14,7 @@ components:
         aanduidingBijzonderNederlanderschap:
           $ref: "enum.yaml#/components/schemas/AanduidingBijzonderNederlanderschap_enum"
         datumIngangGeldigheid:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         nationaliteit:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
         redenOpname:
@@ -33,4 +33,4 @@ components:
         redenOpname:
           type: boolean
         datumIngangOnderzoek:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'

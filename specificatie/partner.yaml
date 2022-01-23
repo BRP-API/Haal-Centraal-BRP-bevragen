@@ -38,7 +38,7 @@ components:
         soortVerbintenis:
           type: boolean
         datumIngangOnderzoek:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
     AangaanHuwelijkPartnerschap:
       type: "object"
       description: |
@@ -48,7 +48,7 @@ components:
                     * **plaats** : De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Voor een plaats buiten Nederland bevat het antwoord een buitenlandse plaatsnaam of aanduiding.
       properties:
         datum:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         land:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
         plaats:
@@ -67,4 +67,4 @@ components:
         plaats:
           type: boolean
         datumIngangOnderzoek:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'

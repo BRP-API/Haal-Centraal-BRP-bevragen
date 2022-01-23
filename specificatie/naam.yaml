@@ -49,7 +49,7 @@ components:
         adellijkeTitelPredikaat:
           type: boolean
         datumIngangOnderzoek:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
     NaamPersoon:
       allOf:
         - $ref: "#/components/schemas/NaamBasis"

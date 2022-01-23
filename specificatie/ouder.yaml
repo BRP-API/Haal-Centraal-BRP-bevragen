@@ -20,7 +20,7 @@ components:
         ouderAanduiding:
           $ref: "enum.yaml#/components/schemas/OuderAanduiding_enum"
         datumIngangFamilierechtelijkeBetrekking:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         naam:
           $ref: "naam.yaml#/components/schemas/Naam"
         inOnderzoek:
@@ -39,4 +39,4 @@ components:
         geslachtsaanduiding:
           type: boolean
         datumIngangOnderzoek:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'

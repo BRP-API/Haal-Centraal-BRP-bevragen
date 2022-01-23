@@ -1,26 +1,27 @@
 openapi: 3.0.3
 info:
-  title: Ouder definities
+  title: Geboorte definities
   version: 2.0.0
   contact: {}
 paths: {}
 components:
   schemas:
     Geboorte:
-      allOf:
-      - $ref: '#/components/schemas/Geboortedatum'
-      - description: |
-                      Gegevens over de geboorte.
-                      * **datum** : datum waarop de persoon is geboren.
-                      * **land** : land waar de persoon is geboren
-                      * **plaats** : gemeente waar de persoon is geboren. Is de persoon geboren buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.
-        properties:
-          land:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
-          plaats:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
-          inOnderzoek:
-            $ref: "#/components/schemas/GeboorteInOnderzoek"
+      type: object
+      description: |
+        Gegevens over de geboorte.
+        * **datum** : datum waarop de persoon is geboren.
+        * **land** : land waar de persoon is geboren
+        * **plaats** : gemeente waar de persoon is geboren. Is de persoon geboren buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.
+      properties:
+        datum:
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+        land:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+        plaats:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+        inOnderzoek:
+          $ref: "#/components/schemas/GeboorteInOnderzoek"
     GeboorteInOnderzoek:
       type: "object"
       description: |
@@ -33,9 +34,4 @@ components:
         plaats:
           type: boolean
         datumIngangOnderzoek:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
-    Geboortedatum:
-      type: "object"
-      properties:
-        datum:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
