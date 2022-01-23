@@ -17,6 +17,9 @@ info:
   license:
     name: European Union Public License, version 1.2 (EUPL-1.2)
     url: https://eupl.eu/1.2/nl/
+tags:
+  - name: Ingeschreven Personen
+    description: Zoeken ingeschreven personen
 paths:
   /ingeschrevenpersonen:
     get:
@@ -317,7 +320,7 @@ components:
         ingeschrevenpersonen:
           type: array
           items:
-            $ref: '#/components/schemas/IngeschrevenPersoonHal'
+            $ref: '#/components/schemas/IngeschrevenPersoonBeperktHal'
     IngeschrevenPersoonHalBasis:
       allOf:
         - $ref: 'ingeschrevenpersoon.yaml#/components/schemas/IngeschrevenPersoon'
@@ -366,3 +369,14 @@ components:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         adres:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalLink"
+    IngeschrevenPersoonBeperktLinks:
+        type: "object"
+        properties:
+          self:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalLink"
+    IngeschrevenPersoonBeperktHal:
+      allOf:
+        - $ref: 'ingeschrevenpersoon.yaml#/components/schemas/IngeschrevenPersoonBeperkt'
+        - properties:
+            _links:
+              $ref: "#/components/schemas/IngeschrevenPersoonBeperktLinks"

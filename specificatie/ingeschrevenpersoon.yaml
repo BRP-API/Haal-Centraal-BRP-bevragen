@@ -6,16 +6,12 @@ info:
 paths: {}
 components:
   schemas:
-    IngeschrevenPersoon:
+    IngeschrevenPersoonBasis:
       type: "object"
       properties:
         burgerservicenummer:
             type: "string"
             example: "555555021"
-        aNummer:
-          description: |
-                        Het A-nummer van de persoon
-          type: "string"
         geheimhoudingPersoonsgegevens:
           type: boolean
           title: "Indicatie geheim"
@@ -28,46 +24,70 @@ components:
           description: |
                         Leeftijd in jaren op het moment van bevragen.
           example: 34
-        datumEersteInschrijvingGBA:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
-        kiesrecht:
-          $ref: "kiesrecht.yaml#/components/schemas/Kiesrecht"
-        naam:
-          $ref: "naam.yaml#/components/schemas/NaamPersoon"
-        inOnderzoek:
-          $ref: "#/components/schemas/PersoonInOnderzoek"
-        nationaliteiten:
-          type: "array"
-          items:
-            $ref: "nationaliteit.yaml#/components/schemas/Nationaliteit"
-        geboorte:
-          $ref: "geboorte.yaml#/components/schemas/Geboorte"
-        opschortingBijhouding:
-          $ref: "opschortingbijhouding.yaml#/components/schemas/OpschortingBijhouding"
-        overlijden:
-          $ref: "overlijden.yaml#/components/schemas/Overlijden"
-        verblijfplaats:
-          $ref: "verblijfplaats.yaml#/components/schemas/Verblijfplaats"
-        gezagsverhouding:
-          $ref: "gezagsverhouding.yaml#/components/schemas/Gezagsverhouding"
-        verblijfstitel:
-          $ref: "verblijfstitel.yaml#/components/schemas/Verblijfstitel"
-        reisdocumentnummers:
-          type: "array"
-          items:
-            $ref: "#/components/schemas/Reisdocumentnummer"
-        kinderen:
-          type: "array"
-          items:
-            $ref: "kind.yaml#/components/schemas/Kind"
-        ouders:
-          type: "array"
-          items:
-            $ref: "ouder.yaml#/components/schemas/Ouder"
-        partners:
-          type: "array"
-          items:
-            $ref: "partner.yaml#/components/schemas/Partner"
+    IngeschrevenPersoonBeperkt:
+      allOf:
+        - $ref: '#/components/schemas/IngeschrevenPersoonBasis'
+        - type: object
+          properties:
+            naam:
+              $ref: "naam.yaml#/components/schemas/NaamBasis"
+            geboorte:
+              $ref: "geboorte.yaml#/components/schemas/Geboortedatum"
+            opschortingBijhouding:
+              $ref: "opschortingbijhouding.yaml#/components/schemas/OpschortingBijhoudingBasis"
+            overlijden:
+              $ref: "overlijden.yaml#/components/schemas/OverlijdenBasis"
+            verblijfplaats:
+              $ref: "verblijfplaats.yaml#/components/schemas/VerblijfplaatsBeperkt"
+    IngeschrevenPersoon:
+      allOf:
+        - $ref: '#/components/schemas/IngeschrevenPersoonBasis'
+        - type: "object"
+          properties:
+            aNummer:
+              description: |
+                            Het A-nummer van de persoon
+              type: "string"
+            datumEersteInschrijvingGBA:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+            inOnderzoek:
+              $ref: "#/components/schemas/PersoonInOnderzoek"
+            kiesrecht:
+              $ref: "kiesrecht.yaml#/components/schemas/Kiesrecht"
+            naam:
+              $ref: "naam.yaml#/components/schemas/NaamPersoon"
+            nationaliteiten:
+              type: "array"
+              items:
+                $ref: "nationaliteit.yaml#/components/schemas/Nationaliteit"
+            geboorte:
+              $ref: "geboorte.yaml#/components/schemas/Geboorte"
+            opschortingBijhouding:
+              $ref: "opschortingbijhouding.yaml#/components/schemas/OpschortingBijhouding"
+            overlijden:
+              $ref: "overlijden.yaml#/components/schemas/Overlijden"
+            verblijfplaats:
+              $ref: "verblijfplaats.yaml#/components/schemas/Verblijfplaats"
+            gezagsverhouding:
+              $ref: "gezagsverhouding.yaml#/components/schemas/Gezagsverhouding"
+            verblijfstitel:
+              $ref: "verblijfstitel.yaml#/components/schemas/Verblijfstitel"
+            reisdocumentnummers:
+              type: "array"
+              items:
+                $ref: "#/components/schemas/Reisdocumentnummer"
+            kinderen:
+              type: "array"
+              items:
+                $ref: "kind.yaml#/components/schemas/Kind"
+            ouders:
+              type: "array"
+              items:
+                $ref: "ouder.yaml#/components/schemas/Ouder"
+            partners:
+              type: "array"
+              items:
+                $ref: "partner.yaml#/components/schemas/Partner"
     PersoonInOnderzoek:
       type: "object"
       description: |

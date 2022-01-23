@@ -6,6 +6,41 @@ info:
 paths: {}
 components:
   schemas:
+    VerblijfplaatsBeperkt:
+      type: object
+      description: |
+        Gegevens over het verblijf of de woonlocatie van een persoon.
+      properties:
+        functieAdres:
+          $ref: "enum.yaml#/components/schemas/SoortAdres_enum"
+        adresregel1:
+          type: "string"
+          description: |
+                        Het eerste deel van een adres is een combinatie van de straat en huisnummer.
+          # example: "1600 Pennsylvania Avenue NW"
+          example: "Laan van de landinrichtingscommissie Duiven-Westervoort 26A-3"
+        adresregel2:
+          type: "string"
+          description: |
+                        Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode.
+          # example: "Washington, DC 20500"
+          example: "1234AA Nootdorp"
+        adresregel3:
+          type: "string"
+          description: |
+                        Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.
+          example: "Selangor"
+        woonplaats:
+          description: "Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam."
+          title: woonplaats naam
+          type: string
+          example: 'Duiven'
+        land:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+        vertrokkenOnbekendWaarheen:
+          type: boolean
+          description: |
+                        Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.
     Verblijfplaats:
       allOf:
       - $ref : "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BAG-bevragen/v1.1.0/specificatie/openapi.yaml#/components/schemas/Adres"

@@ -6,26 +6,33 @@ info:
 paths: {}
 components:
   schemas:
-    Overlijden:
+    OverlijdenBasis:
       type: "object"
       description: |
                     Gegevens over het overlijden van de persoon.
-                    * **datum** : datum waarop de persoon is overleden.
-                    * **land** : land waar de persoon is overleden.
-                    * **plaats** : gemeente waar de persoon is overleden. Is de persoon overleden buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.
       properties:
         indicatieOverleden:
           type: boolean
           description: |
                         Geeft aan dat iemand is overleden (waarde true), ongeacht of de overlijdensdatum bekend is.
-        datum:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
-        land:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
-        plaats:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
-        inOnderzoek:
-          $ref: "#/components/schemas/OverlijdenInOnderzoek"
+    Overlijden:
+      allOf:
+        - $ref: '#/components/schemas/OverlijdenBasis'
+        - type: "object"
+          description: |
+                        Gegevens over het overlijden van de persoon.
+                        * **datum** : datum waarop de persoon is overleden.
+                        * **land** : land waar de persoon is overleden.
+                        * **plaats** : gemeente waar de persoon is overleden. Is de persoon overleden buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.
+          properties:
+            datum:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+            land:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+            plaats:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+            inOnderzoek:
+              $ref: "#/components/schemas/OverlijdenInOnderzoek"
     OverlijdenInOnderzoek:
       type: "object"
       description: |
