@@ -13,10 +13,7 @@ components:
             type: "string"
             example: "555555021"
         geheimhoudingPersoonsgegevens:
-          type: boolean
-          title: "Indicatie geheim"
-          description: |
-                        Gegevens mogen niet worden verstrekt aan derden / maatschappelijke instellingen.
+          $ref: 'geheimhouding.yaml#/components/schemas/AbstractGeheimhoudingPersoonsgegevens'
         geslachtsaanduiding:
           $ref: "enum.yaml#/components/schemas/Geslacht_enum"
         leeftijd:
