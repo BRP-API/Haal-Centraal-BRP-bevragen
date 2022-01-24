@@ -46,9 +46,9 @@ components:
                             Het A-nummer van de persoon
               type: "string"
             datumEersteInschrijvingGBA:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             inOnderzoek:
-              $ref: "#/components/schemas/PersoonInOnderzoek"
+              $ref: "#/components/schemas/AbstractPersoonInOnderzoek"
             kiesrecht:
               $ref: "kiesrecht.yaml#/components/schemas/Kiesrecht"
             naam:
@@ -85,17 +85,36 @@ components:
               type: "array"
               items:
                 $ref: "partner.yaml#/components/schemas/Partner"
-    PersoonInOnderzoek:
-      type: "object"
+    AbstractPersoonInOnderzoek:
+      type: object
       description: |
-                    Geeft aan welke gegevens van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature).
+        Geeft aan welke gegevens van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature).
       properties:
-        burgerservicenummer:
-          type: boolean
-        geslachtsaanduiding:
-          type: boolean
-        datumIngangOnderzoek:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          GbaInOnderzoek: '#/components/schemas/GbaPersoonInOnderzoek'
+          InOnderzoek: '#/components/schemas/PersoonInOnderzoek'
+    PersoonInOnderzoek:
+      allOf:
+        - $ref: '#/components/schemas/AbstractPersoonInOnderzoek'
+        - type: object
+          properties:
+            burgerservicenummer:
+              type: boolean
+            geslachtsaanduiding:
+              type: boolean
+            datumIngangOnderzoek:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+    GbaPersoonInOnderzoek:
+      allOf:
+        - $ref: '#/components/schemas/AbstractPersoonInOnderzoek'
+        - type: object
+          properties:
+            datumIngangOnderzoek:
+              $ref: 'datum.yaml#/components/schemas/GbaDatum'
     Reisdocumentnummer:
       type: "string"
       description: |

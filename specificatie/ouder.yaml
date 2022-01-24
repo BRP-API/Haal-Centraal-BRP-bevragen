@@ -24,19 +24,38 @@ components:
         naam:
           $ref: "naam.yaml#/components/schemas/Naam"
         inOnderzoek:
-          $ref: "#/components/schemas/OuderInOnderzoek"
+          $ref: "#/components/schemas/AbstractOuderInOnderzoek"
         geboorte:
           $ref: "geboorte.yaml#/components/schemas/Geboorte"
-    OuderInOnderzoek:
-      type: "object"
+    AbstractOuderInOnderzoek:
+      type: object
       description: |
-                    Geeft aan welke gegevens van de de ouder in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+        Geeft aan welke gegevens van de de ouder in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
       properties:
-        burgerservicenummer:
-          type: boolean
-        datumIngangFamilierechtelijkeBetrekking:
-          type: boolean
-        geslachtsaanduiding:
-          type: boolean
-        datumIngangOnderzoek:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          GbaInOnderzoek: '#/components/schemas/GbaOuderInOnderzoek'
+          InOnderzoek: '#/components/schemas/OuderInOnderzoek'
+    OuderInOnderzoek:
+      allOf:
+        - $ref: '#/components/schemas/AbstractOuderInOnderzoek'
+        - type: object
+          properties:
+            burgerservicenummer:
+              type: boolean
+            datumIngangFamilierechtelijkeBetrekking:
+              type: boolean
+            geslachtsaanduiding:
+              type: boolean
+            datumIngangOnderzoek:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+    GbaOuderInOnderzoek:
+      allOf:
+        - $ref: '#/components/schemas/AbstractOuderInOnderzoek'
+        - type: object
+          properties:
+            datumIngangOnderzoek:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'

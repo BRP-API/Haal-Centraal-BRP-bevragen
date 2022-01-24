@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Ouder definities
+  title: Verblijfstitel definities
   version: 2.0.0
   contact: {}
 paths: {}
@@ -21,17 +21,36 @@ components:
         datumIngang:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         inOnderzoek:
-          $ref: "#/components/schemas/VerblijfstitelInOnderzoek"
-    VerblijfstitelInOnderzoek:
-      type: "object"
+          $ref: "#/components/schemas/AbstractVerblijfstitelInOnderzoek"
+    AbstractVerblijfstitelInOnderzoek:
+      type: object
       description: |
-                    Geeft aan welke gegevens over de verblijfstitel in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+        Geeft aan welke gegevens over de verblijfstitel in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
       properties:
-        aanduiding:
-          type: boolean
-        datumEinde:
-          type: boolean
-        datumIngang:
-          type: boolean
-        datumIngangOnderzoek:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          GbaInOnderzoek: '#/components/schemas/GbaVerblijfstitelInOnderzoek'
+          InOnderzoek: '#/components/schemas/VerblijfstitelInOnderzoek'
+    VerblijfstitelInOnderzoek:
+      allOf:
+        - $ref: '#/components/schemas/AbstractVerblijfstitelInOnderzoek'
+        - type: object
+          properties:
+            aanduiding:
+              type: boolean
+            datumEinde:
+              type: boolean
+            datumIngang:
+              type: boolean
+            datumIngangOnderzoek:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+    GbaVerblijfstitelInOnderzoek:
+      allOf:
+        - $ref: '#/components/schemas/AbstractVerblijfstitelInOnderzoek'
+        - type: object
+          properties:
+            datumIngangOnderzoek:
+              $ref: 'datum.yaml#/components/schemas/GbaDatum'

@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Ouder definities
+  title: Overlijden definities
   version: 2.0.0
   contact: {}
 paths: {}
@@ -32,17 +32,37 @@ components:
             plaats:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
             inOnderzoek:
-              $ref: "#/components/schemas/OverlijdenInOnderzoek"
-    OverlijdenInOnderzoek:
-      type: "object"
+              $ref: "#/components/schemas/AbstractOverlijdenInOnderzoek"
+    AbstractOverlijdenInOnderzoek:
+      type: object
       description: |
-                    Geeft aan welke gegevens over het overlijden van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+        Geeft aan welke gegevens over het overlijden van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
       properties:
-        datum:
-          type: boolean
-        land:
-          type: boolean
-        plaats:
-          type: boolean
-        datumIngangOnderzoek:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          GbaInOnderzoek: '#/components/schemas/GbaOverlijdenInOnderzoek'
+          InOnderzoek: '#/components/schemas/OverlijdenInOnderzoek'
+    OverlijdenInOnderzoek:
+      allOf:
+        - $ref: '#/components/schemas/AbstractOverlijdenInOnderzoek'
+        - type: object
+          properties:
+            datum:
+              type: boolean
+            land:
+              type: boolean
+            plaats:
+              type: boolean
+            datumIngangOnderzoek:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+    GbaOverlijdenInOnderzoek:
+      allOf:
+        - $ref: '#/components/schemas/AbstractOverlijdenInOnderzoek'
+        - type: object
+          properties:
+            datumIngangOnderzoek:
+              $ref: 'datum.yaml#/components/schemas/GbaDatum'
+

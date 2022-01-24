@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Ouder definities
+  title: Naam definities
   version: 2.0.0
   contact: {}
 paths: {}
@@ -11,7 +11,7 @@ components:
         - $ref: "#/components/schemas/NaamBasis"
         - properties:
             inOnderzoek:
-              $ref: "#/components/schemas/NaamInOnderzoek"
+              $ref: "#/components/schemas/AbstractNaamInOnderzoek"
     NaamBasis:
       type: "object"
       properties:
@@ -35,21 +35,40 @@ components:
           example: "de"
         adellijkeTitelPredikaat:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
-    NaamInOnderzoek:
-      type: "object"
+    AbstractNaamInOnderzoek:
+      type: object
       description: |
-                    Geeft aan welke gegevens over de naam in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+        Geeft aan welke gegevens over de naam in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
       properties:
-        geslachtsnaam:
-          type: boolean
-        voornamen:
-          type: boolean
-        voorvoegsel:
-          type: boolean
-        adellijkeTitelPredikaat:
-          type: boolean
-        datumIngangOnderzoek:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          GbaInOnderzoek: '#/components/schemas/GbaNaamInOnderzoek'
+          InOnderzoek: '#/components/schemas/NaamInOnderzoek'
+    NaamInOnderzoek:
+      allOf:
+        - $ref: '#/components/schemas/AbstractNaamInOnderzoek'
+        - type: object
+          properties:
+            geslachtsnaam:
+              type: boolean
+            voornamen:
+              type: boolean
+            voorvoegsel:
+              type: boolean
+            adellijkeTitelPredikaat:
+              type: boolean
+            datumIngangOnderzoek:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+    GbaNaamInOnderzoek:
+      allOf:
+        - $ref: '#/components/schemas/AbstractNaamInOnderzoek'
+        - type: object
+          properties:
+            datumIngangOnderzoek:
+              $ref: 'datum.yaml#/components/schemas/GbaDatum'
     NaamPersoon:
       allOf:
         - $ref: "#/components/schemas/NaamBasis"
@@ -77,10 +96,39 @@ components:
             aanduidingNaamgebruik:
               $ref: "enum.yaml#/components/schemas/Naamgebruik_enum"
             inOnderzoek:
-              $ref: "#/components/schemas/NaamPersoonInOnderzoek"
+              $ref: "#/components/schemas/AbstractNaamPersoonInOnderzoek"
+    AbstractNaamPersoonInOnderzoek:
+      type: object
+      description: |
+        Geeft aan welke gegevens over de naam in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      properties:
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          GbaInOnderzoek: '#/components/schemas/GbaNaamPersoonInOnderzoek'
+          InOnderzoek: '#/components/schemas/NaamPersoonInOnderzoek'
     NaamPersoonInOnderzoek:
       allOf:
-        - $ref: '#/components/schemas/NaamInOnderzoek'
+        - $ref: '#/components/schemas/AbstractNaamInOnderzoek'
         - properties:
+            geslachtsnaam:
+              type: boolean
+            voornamen:
+              type: boolean
+            voorvoegsel:
+              type: boolean
+            adellijkeTitelPredikaat:
+              type: boolean
             aanduidingNaamgebruik:
               type: boolean
+            datumIngangOnderzoek:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+    GbaNaamPersoonInOnderzoek:
+      allOf:
+        - $ref: '#/components/schemas/AbstractNaamInOnderzoek'
+        - type: object
+          properties:
+            datumIngangOnderzoek:
+              $ref: 'datum.yaml#/components/schemas/GbaDatum'

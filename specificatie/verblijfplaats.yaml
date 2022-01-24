@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Ouder definities
+  title: Verblijfplaats definities
   version: 2.0.0
   contact: {}
 paths: {}
@@ -86,7 +86,7 @@ components:
                           Geeft aan dat de persoon is teruggekeerd uit een situatie van 'vertrokken onbekend waarheen.'
             example: true
           datumAanvangAdreshouding:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+            $ref: 'datum.yaml#/components/schemas/AbstractDatum'
           datumIngangGeldigheid:
             $ref: 'datum.yaml#/components/schemas/AbstractDatum'
           datumInschrijvingInGemeente:
@@ -121,49 +121,68 @@ components:
           land:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
           inOnderzoek:
-            $ref: "#/components/schemas/VerblijfplaatsInOnderzoek"
-    VerblijfplaatsInOnderzoek:
-      type: "object"
+            $ref: "#/components/schemas/AbstractVerblijfplaatsInOnderzoek"
+    AbstractVerblijfplaatsInOnderzoek:
+      type: object
       description: |
-                    Geeft aan welke gegevens over het verblijf en adres van de persoon in onderzoek zijn. Elementen van het GBA-adres zelf (Dat zou eigenlijk een BAG-adres moeten zijn) kunnen niet in onderzoek zijn. Wel de relatie naar de nummeraanduiding. Dat wordt gedaan door de identificatiecodeNummeraanduiding in onderzoek te zetten. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+        Geeft aan welke gegevens over het verblijf en adres van de persoon in onderzoek zijn. Elementen van het GBA-adres zelf (Dat zou eigenlijk een BAG-adres moeten zijn) kunnen niet in onderzoek zijn. Wel de relatie naar de nummeraanduiding. Dat wordt gedaan door de identificatiecodeNummeraanduiding in onderzoek te zetten. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
       properties:
-        aanduidingBijHuisnummer:
-          type: boolean
-        datumAanvangAdreshouding:
-          type: boolean
-        datumIngangGeldigheid:
-          type: boolean
-        datumInschrijvingInGemeente:
-          type: boolean
-        datumVestigingInNederland:
-          type: boolean
-        functieAdres:
-          type: boolean
-        gemeenteVanInschrijving:
-          type: boolean
-        huisletter:
-          type: boolean
-        huisnummer:
-          type: boolean
-        huisnummertoevoeging:
-          type: boolean
-        nummeraanduidingIdentificatie:
-          type: boolean
-        adresseerbaarObjectIdentificatie:
-          type: boolean
-        landVanwaarIngeschreven:
-          type: boolean
-        locatiebeschrijving:
-          type: boolean
-        straat:
-          type: boolean
-        postcode:
-          type: boolean
-        korteNaam:
-          type: boolean
-        verblijfBuitenland:
-          type: boolean
-        woonplaats:
-          type: boolean
-        datumIngangOnderzoek:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          GbaInOnderzoek: '#/components/schemas/GbaVerblijfplaatsInOnderzoek'
+          InOnderzoek: '#/components/schemas/VerblijfplaatsInOnderzoek'
+    VerblijfplaatsInOnderzoek:
+      allOf:
+        - $ref: '#/components/schemas/AbstractVerblijfplaatsInOnderzoek'
+        - type: object
+          properties:
+            aanduidingBijHuisnummer:
+              type: boolean
+            datumAanvangAdreshouding:
+              type: boolean
+            datumIngangGeldigheid:
+              type: boolean
+            datumInschrijvingInGemeente:
+              type: boolean
+            datumVestigingInNederland:
+              type: boolean
+            functieAdres:
+              type: boolean
+            gemeenteVanInschrijving:
+              type: boolean
+            huisletter:
+              type: boolean
+            huisnummer:
+              type: boolean
+            huisnummertoevoeging:
+              type: boolean
+            nummeraanduidingIdentificatie:
+              type: boolean
+            adresseerbaarObjectIdentificatie:
+              type: boolean
+            landVanwaarIngeschreven:
+              type: boolean
+            locatiebeschrijving:
+              type: boolean
+            straat:
+              type: boolean
+            postcode:
+              type: boolean
+            korteNaam:
+              type: boolean
+            verblijfBuitenland:
+              type: boolean
+            woonplaats:
+              type: boolean
+            datumIngangOnderzoek:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+    GbaVerblijfplaatsInOnderzoek:
+      allOf:
+        - $ref: '#/components/schemas/AbstractVerblijfplaatsInOnderzoek'
+        - type: object
+          properties:
+            datumIngangOnderzoek:
+              $ref: 'datum.yaml#/components/schemas/GbaDatum'

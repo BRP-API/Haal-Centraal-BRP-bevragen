@@ -23,22 +23,41 @@ components:
         geboorte:
           $ref: "geboorte.yaml#/components/schemas/Geboorte"
         inOnderzoek:
-          $ref: "#/components/schemas/PartnerInOnderzoek"
+          $ref: "#/components/schemas/AbstractPartnerInOnderzoek"
         aangaanHuwelijkPartnerschap:
           $ref: "#/components/schemas/AangaanHuwelijkPartnerschap"
-    PartnerInOnderzoek:
-      type: "object"
+    AbstractPartnerInOnderzoek:
+      type: object
       description: |
-                    Geeft aan welke gegevens over het huwelijk of het partnerschap in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+        Geeft aan welke gegevens over het huwelijk of het partnerschap in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
       properties:
-        burgerservicenummer:
-          type: boolean
-        geslachtsaanduiding:
-          type: boolean
-        soortVerbintenis:
-          type: boolean
-        datumIngangOnderzoek:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          GbaInOnderzoek: '#/components/schemas/GbaPartnerInOnderzoek'
+          InOnderzoek: '#/components/schemas/PartnerInOnderzoek'
+    PartnerInOnderzoek:
+      allOf:
+        - $ref: '#/components/schemas/AbstractPartnerInOnderzoek'
+        - type: object
+          properties:
+            burgerservicenummer:
+              type: boolean
+            geslachtsaanduiding:
+              type: boolean
+            soortVerbintenis:
+              type: boolean
+            datumIngangOnderzoek:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+    GbaPartnerInOnderzoek:
+      allOf:
+        - $ref: '#/components/schemas/AbstractPartnerInOnderzoek'
+        - type: object
+          properties:
+            datumIngangOnderzoek:
+              $ref: 'datum.yaml#/components/schemas/GbaDatum'
     AangaanHuwelijkPartnerschap:
       type: "object"
       description: |
@@ -54,17 +73,36 @@ components:
         plaats:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
         inOnderzoek:
-          $ref: "#/components/schemas/AangaanHuwelijkPartnerschapInOnderzoek"
-    AangaanHuwelijkPartnerschapInOnderzoek:
-      type: "object"
+          $ref: "#/components/schemas/AbstractAangaanHuwelijkPartnerschapInOnderzoek"
+    AbstractAangaanHuwelijkPartnerschapInOnderzoek:
+      type: object
       description: |
-                    Geeft aan welke gegevens over het voltrekken van het huwelijk of aangaan van het partnerschap in onderzoek zijn. Zie de functionele specificaties. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+        Geeft aan welke gegevens over het voltrekken van het huwelijk of aangaan van het partnerschap in onderzoek zijn. Zie de functionele specificaties. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
       properties:
-        datum:
-          type: boolean
-        land:
-          type: boolean
-        plaats:
-          type: boolean
-        datumIngangOnderzoek:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          GbaInOnderzoek: '#/components/schemas/GbaAangaanHuwelijkPartnerschapInOnderzoek'
+          InOnderzoek: '#/components/schemas/AangaanHuwelijkPartnerschapInOnderzoek'
+    AangaanHuwelijkPartnerschapInOnderzoek:
+      allOf:
+        - $ref: '#/components/schemas/AbstractAangaanHuwelijkPartnerschapInOnderzoek'
+        - type: object
+          properties:
+            datum:
+              type: boolean
+            land:
+              type: boolean
+            plaats:
+              type: boolean
+            datumIngangOnderzoek:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+    GbaAangaanHuwelijkPartnerschapInOnderzoek:
+      allOf:
+        - $ref: '#/components/schemas/AbstractAangaanHuwelijkPartnerschapInOnderzoek'
+        - type: object
+          properties:
+            datumIngangOnderzoek:
+              $ref: 'datum.yaml#/components/schemas/GbaDatum'
