@@ -1,7 +1,7 @@
 # language: nl
 
 Functionaliteit: Ouders van een ingeschreven persoon raadplegen
-  Van een inschreven persoon worden -indien gevraagd met de fields parameter- het ouders geleverd.
+  Van een inschreven persoon worden -indien gevraagd met de fields parameter- de ouders geleverd.
   Dit bevat gegevens over de familierechtelijke betrekking plus enkele identificerende eigenschappen van de ouder.
 
   Rule: "ouder1" is de ouder in categorie 2 en "ouder2" is de ouder in categorie 3
