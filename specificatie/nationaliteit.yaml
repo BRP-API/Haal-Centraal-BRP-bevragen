@@ -1,26 +1,70 @@
 openapi: 3.0.3
 info:
-  title: Ouder definities
+  title: Nationaliteit definities
   version: 2.0.0
   contact: {}
 paths: {}
 components:
   schemas:
+    AbstractNationaliteit:
+      type: object
+      properties:
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          GbaNationaliteit: '#/components/schemas/GbaNationaliteit'
+          Nationaliteit: '#/components/schemas/Nationaliteit'
+          BehandeldAlsNederlander: '#/components/schemas/BehandeldAlsNederlander'
+          VastgesteldNietNederlander: '#/components/schemas/VastgesteldNietNederlander'
     Nationaliteit:
-      type: "object"
       description: |
                     * **redenOpname** : De reden op grond waarvan de persoon de nationaliteit gekregen heeft.
-      properties:
-        aanduidingBijzonderNederlanderschap:
-          $ref: "enum.yaml#/components/schemas/AanduidingBijzonderNederlanderschap_enum"
-        datumIngangGeldigheid:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-        nationaliteit:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
-        redenOpname:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
-        inOnderzoek:
-          $ref: "#/components/schemas/NationaliteitInOnderzoek"
+      allOf:
+        - $ref: '#/components/schemas/AbstractNationaliteit'
+        - type: object
+          properties:
+            datumIngangGeldigheid:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+            nationaliteit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+            redenOpname:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+            inOnderzoek:
+              $ref: "#/components/schemas/NationaliteitInOnderzoek"
+    BehandeldAlsNederlander:
+      allOf:
+        - $ref: '#/components/schemas/AbstractNationaliteit'
+        - type: object
+          properties:
+            datumIngangGeldigheid:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+            redenOpname:
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+    VastgesteldNietNederlander:
+      allOf:
+        - $ref: '#/components/schemas/AbstractNationaliteit'
+        - type: object
+          properties:
+            datumIngangGeldigheid:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+            redenOpname:
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+    GbaNationaliteit:
+      description: |
+        Bij de LO GBA versie kunnen datums, bijv datumIngangGeldigheid de LoGbaDatum refereren
+        Het hoeft niet van AbstractDatum af te leiden omdat het nooit een andere type kan zijn
+      allOf:
+        - $ref: '#/components/schemas/AbstractNationaliteit'
+        - type: object
+          properties:
+            datumIngangGeldigheid:
+              $ref: 'datum.yaml#/components/schemas/GbaDatum'
+            datumIngangOpneming:
+              $ref: 'datum.yaml#/components/schemas/GbaDatum'
+            inOnderzoek:
+              $ref: '#/components/schemas/GbaNationaliteitInOnderzoek'
     NationaliteitInOnderzoek:
       type: "object"
       description: |
@@ -34,3 +78,8 @@ components:
           type: boolean
         datumIngangOnderzoek:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+    GbaNationaliteitInOnderzoek:
+      type: object
+      properties:
+        datumIngangOnderzoek:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
