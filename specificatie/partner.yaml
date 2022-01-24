@@ -69,7 +69,7 @@ components:
         datum:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         land:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+          $ref: 'land.yaml#/components/schemas/AbstractLand'
         plaats:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
         inOnderzoek:
