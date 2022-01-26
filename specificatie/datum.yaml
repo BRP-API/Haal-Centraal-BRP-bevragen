@@ -1,6 +1,13 @@
 openapi: 3.0.3
 info:
   title: Datum definities
+  description: |
+    Definities voor de volgende datum types:
+    - datum conform LO GBA
+    - onbekend datum
+    - 'volledig' datum conform ISO-8601
+    - datum waarvan de dag onbekend is
+    - datum waarvan de maand en dag onbekend is 
   version: 2.0.0
   contact: {}
 paths:
@@ -28,19 +35,21 @@ paths:
                       $ref: '#/components/schemas/AbstractDatum'
                 example:
                   [
-                    { "type": "logbadatum", "waarde": "20180701" },
-                    { "type": "logbadatum", "waarde": "20161200" },
-                    { "type": "logbadatum", "waarde": "20100000" },
-                    { "type": "logbadatum", "waarde": "00000000" },
-                    { "type": "datum", "waarde": "2018-07-01" },
-                    { "type": "jaarmaanddatum", "jaar": "2016", "maand": "12" },
-                    { "type": "jaardatum", "jaar": "2010" },
-                    { "type": "onbekenddatum", "onbekend": true }
+                    { "type": "GbaDatum", "waarde": "20180701" },
+                    { "type": "GbaDatum", "waarde": "20161200" },
+                    { "type": "GbaDatum", "waarde": "20100000" },
+                    { "type": "GbaDatum", "waarde": "00000000" },
+                    { "type": "Datum", "waarde": "2018-07-01" },
+                    { "type": "JaarMaandDatum", "jaar": "2016", "maand": "12" },
+                    { "type": "JaarDatum", "jaar": "2010" },
+                    { "type": "OnbekendDatum", "onbekend": true }
                   ]
 components:
   schemas:
     AbstractDatum:
       type: object
+      required:
+        - type
       properties:
         type:
           type: string
@@ -53,13 +62,19 @@ components:
           JaarDatum: '#/components/schemas/JaarDatum'
           JaarMaandDatum: '#/components/schemas/JaarMaandDatum'
     GbaDatum:
+      description: Datum conform LO GBA
       allOf:
         - $ref: '#/components/schemas/AbstractDatum'
         - type: object
           properties:
             waarde:
-              type: integer
+              type: string
+              pattern: "^[0-9]{8}$"
+              minLength: 8
+              maxLength: 8
+      example: 20210801
     Datum:
+      description: Datum conform iso8601
       allOf:
         - $ref: '#/components/schemas/AbstractDatum'
         - type: object
@@ -67,7 +82,11 @@ components:
             waarde:
               type: string
               format: date
+              minLength: 10
+              maxLength: 10
+      example: 2021-08-01
     OnbekendDatum:
+      description: representatie voor een onbekend datum
       allOf:
         - $ref: '#/components/schemas/AbstractDatum'
         - type: object
@@ -76,18 +95,30 @@ components:
               type: boolean
               default: true
     JaarDatum:
+      description: representatie voor een datum waarvan maand en dag onbekend zijn
       allOf:
         - $ref: '#/components/schemas/AbstractDatum'
         - type: object
           properties:
             jaar:
-              type: integer
+              $ref: '#/components/schemas/Jaar'
     JaarMaandDatum:
+      description: representatie voor een datum waarvan de dag onbekend is
       allOf:
         - $ref: '#/components/schemas/AbstractDatum'
         - type: object
           properties:
             jaar:
-              type: integer
+              $ref: '#/components/schemas/Jaar'
             maand:
-              type: integer
+              $ref: '#/components/schemas/Maand'
+    Jaar:
+      type: integer
+      format: int32
+      minimum: 0
+      maximum: 9999
+    Maand:
+      type: integer
+      format: int32
+      minimum: 1
+      maximum: 12
