@@ -33,8 +33,6 @@
           "description" : "Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature).",
           "required" : false,
           "deprecated" : true,
-          "style" : "form",
-          "explode" : true,
           "schema" : {
             "type" : "string"
           }
@@ -51,7 +49,6 @@
           "in" : "query",
           "description" : "Uniek persoonsnummer.\n",
           "required" : false,
-          "style" : "form",
           "explode" : false,
           "schema" : {
             "type" : "array",
@@ -68,8 +65,6 @@
           "in" : "query",
           "description" : "Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/parametervalidatie.feature)\n",
           "required" : false,
-          "style" : "form",
-          "explode" : true,
           "schema" : {
             "type" : "string",
             "format" : "date",
@@ -80,8 +75,6 @@
           "in" : "query",
           "description" : "Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).**\n",
           "required" : false,
-          "style" : "form",
-          "explode" : true,
           "schema" : {
             "maxLength" : 40,
             "type" : "string",
@@ -92,8 +85,6 @@
           "in" : "query",
           "description" : "Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.\n",
           "required" : false,
-          "style" : "form",
-          "explode" : true,
           "schema" : {
             "$ref" : "#/components/schemas/Geslacht_enum"
           }
@@ -102,8 +93,6 @@
           "in" : "query",
           "description" : "Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/overleden_personen.feature)\n",
           "required" : false,
-          "style" : "form",
-          "explode" : true,
           "schema" : {
             "type" : "boolean",
             "example" : true
@@ -113,8 +102,6 @@
           "in" : "query",
           "description" : "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).**\n",
           "required" : false,
-          "style" : "form",
-          "explode" : true,
           "schema" : {
             "maxLength" : 200,
             "type" : "string",
@@ -125,8 +112,6 @@
           "in" : "query",
           "description" : "Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).**\n",
           "required" : false,
-          "style" : "form",
-          "explode" : true,
           "schema" : {
             "maxLength" : 10,
             "type" : "string",
@@ -137,8 +122,6 @@
           "in" : "query",
           "description" : "De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).**\n",
           "required" : false,
-          "style" : "form",
-          "explode" : true,
           "schema" : {
             "maxLength" : 200,
             "type" : "string",
@@ -149,8 +132,6 @@
           "in" : "query",
           "description" : "Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.\n",
           "required" : false,
-          "style" : "form",
-          "explode" : true,
           "schema" : {
             "maxLength" : 4,
             "type" : "string",
@@ -161,8 +142,6 @@
           "in" : "query",
           "description" : "Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.\n",
           "required" : false,
-          "style" : "form",
-          "explode" : true,
           "schema" : {
             "maxLength" : 1,
             "type" : "string",
@@ -173,8 +152,6 @@
           "in" : "query",
           "description" : "Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.\n",
           "required" : false,
-          "style" : "form",
-          "explode" : true,
           "schema" : {
             "maximum" : 99999,
             "type" : "integer",
@@ -185,8 +162,6 @@
           "in" : "query",
           "description" : "Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.\n",
           "required" : false,
-          "style" : "form",
-          "explode" : true,
           "schema" : {
             "maxLength" : 4,
             "type" : "string",
@@ -197,8 +172,6 @@
           "in" : "query",
           "description" : "Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.\n",
           "required" : false,
-          "style" : "form",
-          "explode" : true,
           "schema" : {
             "maxLength" : 16,
             "type" : "string",
@@ -209,8 +182,6 @@
           "in" : "query",
           "description" : "Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).\n",
           "required" : false,
-          "style" : "form",
-          "explode" : true,
           "schema" : {
             "maxLength" : 80,
             "type" : "string",
@@ -221,8 +192,6 @@
           "in" : "query",
           "description" : "De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.\n",
           "required" : false,
-          "style" : "form",
-          "explode" : true,
           "schema" : {
             "pattern" : "^[1-9]{1}[0-9]{3}[A-Z]{2}$",
             "type" : "string",
@@ -444,8 +413,6 @@
           "in" : "path",
           "description" : "Uniek persoonsnummer\n",
           "required" : true,
-          "style" : "simple",
-          "explode" : false,
           "schema" : {
             "maxLength" : 9,
             "minLength" : 9,
@@ -459,8 +426,6 @@
           "description" : "Hiermee kun je opgeven welke gerelateerde resources meegeleverd moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of enkele properties geef je in de expand parameter kommagescheiden op. Properties die je wil ontvangen geef je op met de resource-naam gevolgd door de property naam, met daartussen een punt. In de definitie van het antwoord kun je bij _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature).",
           "required" : false,
           "deprecated" : true,
-          "style" : "form",
-          "explode" : true,
           "schema" : {
             "type" : "string"
           }
@@ -714,6 +679,36 @@
           }
         }
       },
+      "HalCollectionLinks" : {
+        "type" : "object",
+        "properties" : {
+          "self" : {
+            "$ref" : "#/components/schemas/HalLink"
+          }
+        },
+        "description" : "HalCollectionLinks bevat de self link die elke HAL Resource minimaal moet hebben in zijn _links property\n"
+      },
+      "HalLink" : {
+        "required" : [ "href" ],
+        "type" : "object",
+        "properties" : {
+          "href" : {
+            "$ref" : "#/components/schemas/Href"
+          },
+          "templated" : {
+            "type" : "boolean"
+          },
+          "title" : {
+            "type" : "string",
+            "description" : "Voor mens leesbaar label bij de link"
+          }
+        },
+        "description" : "De Link Object zoals gespecificeerd in https://tools.ietf.org/html/draft-kelly-json-hal-08#section-5; Deze link kan als templated link worden aangeboden. [URI-templating is hier beschreven](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/uri-templating.feature)."
+      },
+      "Href" : {
+        "type" : "string",
+        "example" : "https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}"
+      },
       "IngeschrevenPersoonHalCollectieEmbedded" : {
         "type" : "object",
         "properties" : {
@@ -722,81 +717,6 @@
             "items" : {
               "$ref" : "#/components/schemas/IngeschrevenPersoonBeperktHal"
             }
-          }
-        }
-      },
-      "IngeschrevenPersoonHalBasis" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/IngeschrevenPersoon"
-        }, {
-          "properties" : {
-            "_links" : {
-              "$ref" : "#/components/schemas/IngeschrevenPersoonLinks"
-            }
-          }
-        } ]
-      },
-      "IngeschrevenPersoonHal" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/IngeschrevenPersoonHalBasis"
-        } ]
-      },
-      "IngeschrevenPersoonLinks" : {
-        "type" : "object",
-        "properties" : {
-          "self" : {
-            "$ref" : "#/components/schemas/HalLink"
-          },
-          "ouders" : {
-            "type" : "array",
-            "description" : "De ouders van de persoon.\n",
-            "items" : {
-              "$ref" : "#/components/schemas/HalLink"
-            }
-          },
-          "reisdocumenten" : {
-            "type" : "array",
-            "description" : "De reisdocumenten die aan de persoon zijn verstrekt.\n",
-            "items" : {
-              "$ref" : "#/components/schemas/HalLink"
-            }
-          },
-          "kinderen" : {
-            "type" : "array",
-            "description" : "De kinderen van de persoon.\n",
-            "items" : {
-              "$ref" : "#/components/schemas/HalLink"
-            }
-          },
-          "partners" : {
-            "type" : "array",
-            "description" : "De actuele bij de ingeschreven persoon geregistreerde huwelijken en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven.\n",
-            "items" : {
-              "$ref" : "#/components/schemas/HalLink"
-            }
-          },
-          "partnerhistorie" : {
-            "$ref" : "#/components/schemas/HalLink"
-          },
-          "verblijfplaatshistorie" : {
-            "$ref" : "#/components/schemas/HalLink"
-          },
-          "verblijfstitelhistorie" : {
-            "$ref" : "#/components/schemas/HalLink"
-          },
-          "nationaliteitHistorie" : {
-            "$ref" : "#/components/schemas/HalLink"
-          },
-          "adres" : {
-            "$ref" : "#/components/schemas/HalLink"
-          }
-        }
-      },
-      "IngeschrevenPersoonBeperktLinks" : {
-        "type" : "object",
-        "properties" : {
-          "self" : {
-            "$ref" : "#/components/schemas/HalLink"
           }
         }
       },
@@ -810,6 +730,14 @@
             }
           }
         } ]
+      },
+      "IngeschrevenPersoonBeperktLinks" : {
+        "type" : "object",
+        "properties" : {
+          "self" : {
+            "$ref" : "#/components/schemas/HalLink"
+          }
+        }
       },
       "Geslacht_enum" : {
         "type" : "string",
@@ -892,35 +820,116 @@
         },
         "description" : "Details over fouten in opgegeven parameters"
       },
-      "HalCollectionLinks" : {
+      "IngeschrevenPersoonHal" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/IngeschrevenPersoonHalBasis"
+        } ]
+      },
+      "IngeschrevenPersoonHalBasis" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/IngeschrevenPersoon"
+        }, {
+          "properties" : {
+            "_links" : {
+              "$ref" : "#/components/schemas/IngeschrevenPersoonLinks"
+            }
+          }
+        } ]
+      },
+      "IngeschrevenPersoonLinks" : {
         "type" : "object",
         "properties" : {
           "self" : {
             "$ref" : "#/components/schemas/HalLink"
+          },
+          "ouders" : {
+            "type" : "array",
+            "description" : "De ouders van de persoon.\n",
+            "items" : {
+              "$ref" : "#/components/schemas/HalLink"
+            }
+          },
+          "reisdocumenten" : {
+            "type" : "array",
+            "description" : "De reisdocumenten die aan de persoon zijn verstrekt.\n",
+            "items" : {
+              "$ref" : "#/components/schemas/HalLink"
+            }
+          },
+          "kinderen" : {
+            "type" : "array",
+            "description" : "De kinderen van de persoon.\n",
+            "items" : {
+              "$ref" : "#/components/schemas/HalLink"
+            }
+          },
+          "partners" : {
+            "type" : "array",
+            "description" : "De actuele bij de ingeschreven persoon geregistreerde huwelijken en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven.\n",
+            "items" : {
+              "$ref" : "#/components/schemas/HalLink"
+            }
+          },
+          "partnerhistorie" : {
+            "$ref" : "#/components/schemas/HalLink"
+          },
+          "verblijfplaatshistorie" : {
+            "$ref" : "#/components/schemas/HalLink"
+          },
+          "verblijfstitelhistorie" : {
+            "$ref" : "#/components/schemas/HalLink"
+          },
+          "nationaliteitHistorie" : {
+            "$ref" : "#/components/schemas/HalLink"
+          },
+          "adres" : {
+            "$ref" : "#/components/schemas/HalLink"
           }
-        },
-        "description" : "HalCollectionLinks bevat de self link die elke HAL Resource minimaal moet hebben in zijn _links property\n"
+        }
       },
-      "HalLink" : {
-        "required" : [ "href" ],
+      "IngeschrevenPersoonBeperkt" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/IngeschrevenPersoonBasis"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "naam" : {
+              "$ref" : "#/components/schemas/NaamBasis"
+            },
+            "geboortedatum" : {
+              "$ref" : "#/components/schemas/AbstractDatum"
+            },
+            "opschortingBijhouding" : {
+              "$ref" : "#/components/schemas/OpschortingBijhoudingBasis"
+            },
+            "overlijden" : {
+              "$ref" : "#/components/schemas/OverlijdenBasis"
+            },
+            "verblijfplaats" : {
+              "$ref" : "#/components/schemas/VerblijfplaatsBeperkt"
+            }
+          }
+        } ]
+      },
+      "IngeschrevenPersoonBasis" : {
         "type" : "object",
         "properties" : {
-          "href" : {
-            "$ref" : "#/components/schemas/Href"
-          },
-          "templated" : {
-            "type" : "boolean"
-          },
-          "title" : {
+          "burgerservicenummer" : {
             "type" : "string",
-            "description" : "Voor mens leesbaar label bij de link"
+            "example" : "555555021"
+          },
+          "geheimhoudingPersoonsgegevens" : {
+            "$ref" : "#/components/schemas/AbstractGeheimhoudingPersoonsgegevens"
+          },
+          "geslachtsaanduiding" : {
+            "$ref" : "#/components/schemas/Geslacht_enum"
+          },
+          "leeftijd" : {
+            "type" : "integer",
+            "description" : "Leeftijd in jaren op het moment van bevragen.\n",
+            "example" : 34
           }
-        },
-        "description" : "De Link Object zoals gespecificeerd in https://tools.ietf.org/html/draft-kelly-json-hal-08#section-5; Deze link kan als templated link worden aangeboden. [URI-templating is hier beschreven](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/uri-templating.feature)."
-      },
-      "Href" : {
-        "type" : "string",
-        "example" : "https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}"
+        }
       },
       "IngeschrevenPersoon" : {
         "allOf" : [ {
@@ -995,26 +1004,6 @@
           }
         } ]
       },
-      "IngeschrevenPersoonBasis" : {
-        "type" : "object",
-        "properties" : {
-          "burgerservicenummer" : {
-            "type" : "string",
-            "example" : "555555021"
-          },
-          "geheimhoudingPersoonsgegevens" : {
-            "$ref" : "#/components/schemas/AbstractGeheimhoudingPersoonsgegevens"
-          },
-          "geslachtsaanduiding" : {
-            "$ref" : "#/components/schemas/Geslacht_enum"
-          },
-          "leeftijd" : {
-            "type" : "integer",
-            "description" : "Leeftijd in jaren op het moment van bevragen.\n",
-            "example" : 34
-          }
-        }
-      },
       "AbstractPersoonInOnderzoek" : {
         "type" : "object",
         "properties" : {
@@ -1066,29 +1055,45 @@
         "description" : "Het nummer van het verstrekte Nederlandse reisdocument.\n",
         "example" : "546376728"
       },
-      "IngeschrevenPersoonBeperkt" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/IngeschrevenPersoonBasis"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "naam" : {
-              "$ref" : "#/components/schemas/NaamBasis"
-            },
-            "geboortedatum" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
-            },
-            "opschortingBijhouding" : {
-              "$ref" : "#/components/schemas/OpschortingBijhoudingBasis"
-            },
-            "overlijden" : {
-              "$ref" : "#/components/schemas/OverlijdenBasis"
-            },
-            "verblijfplaats" : {
-              "$ref" : "#/components/schemas/VerblijfplaatsBeperkt"
-            }
+      "NaamBasis" : {
+        "type" : "object",
+        "properties" : {
+          "geslachtsnaam" : {
+            "type" : "string",
+            "description" : "De achternaam van een persoon.\n",
+            "example" : "Vries"
+          },
+          "voorletters" : {
+            "type" : "string",
+            "description" : "De voorletters van de persoon, afgeleid van de voornamen.\n",
+            "example" : "P.J."
+          },
+          "voornamen" : {
+            "type" : "string",
+            "description" : "De verzameling namen voor de geslachtsnaam, gescheiden door spaties.\n",
+            "example" : "Pieter Jan"
+          },
+          "voorvoegsel" : {
+            "type" : "string",
+            "example" : "de"
+          },
+          "adellijkeTitelPredikaat" : {
+            "$ref" : "#/components/schemas/Waardetabel"
           }
-        } ]
+        }
+      },
+      "Waardetabel" : {
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "type" : "string",
+            "example" : "6030"
+          },
+          "omschrijving" : {
+            "type" : "string",
+            "example" : "Nederland"
+          }
+        }
       },
       "AbstractDatum" : {
         "required" : [ "type" ],
@@ -1198,6 +1203,101 @@
         "type" : "integer",
         "format" : "int32"
       },
+      "OpschortingBijhoudingBasis" : {
+        "type" : "object",
+        "properties" : {
+          "reden" : {
+            "$ref" : "#/components/schemas/RedenOpschortingBijhouding_enum"
+          }
+        }
+      },
+      "OverlijdenBasis" : {
+        "type" : "object",
+        "properties" : {
+          "indicatieOverleden" : {
+            "type" : "boolean",
+            "description" : "Geeft aan dat iemand is overleden (waarde true), ongeacht of de overlijdensdatum bekend is.\n"
+          }
+        },
+        "description" : "Gegevens over het overlijden van de persoon.\n"
+      },
+      "VerblijfplaatsBeperkt" : {
+        "type" : "object",
+        "properties" : {
+          "functieAdres" : {
+            "$ref" : "#/components/schemas/SoortAdres_enum"
+          },
+          "adresregel1" : {
+            "type" : "string",
+            "description" : "Het eerste deel van een adres is een combinatie van de straat en huisnummer.\n",
+            "example" : "Laan van de landinrichtingscommissie Duiven-Westervoort 26A-3"
+          },
+          "adresregel2" : {
+            "type" : "string",
+            "description" : "Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode.\n",
+            "example" : "1234AA Nootdorp"
+          },
+          "adresregel3" : {
+            "type" : "string",
+            "description" : "Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.\n",
+            "example" : "Selangor"
+          },
+          "woonplaats" : {
+            "title" : "woonplaats naam",
+            "type" : "string",
+            "description" : "Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.",
+            "example" : "Duiven"
+          },
+          "land" : {
+            "$ref" : "#/components/schemas/AbstractLand"
+          },
+          "vertrokkenOnbekendWaarheen" : {
+            "type" : "boolean",
+            "description" : "Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.\n"
+          }
+        },
+        "description" : "Gegevens over het verblijf of de woonlocatie van een persoon.\n"
+      },
+      "AbstractGeheimhoudingPersoonsgegevens" : {
+        "type" : "object",
+        "properties" : {
+          "type" : {
+            "type" : "string"
+          }
+        },
+        "description" : "Gegevens mogen niet worden verstrekt aan derden / maatschappelijke instellingen.\n",
+        "discriminator" : {
+          "propertyName" : "type",
+          "mapping" : {
+            "GbaGeheimhouding" : "#/components/schemas/GbaGeheimhoudingPersoonsgegevens",
+            "Geheimhouding" : "#/components/schemas/GeheimhoudingPersoonsgegevens"
+          }
+        }
+      },
+      "GbaGeheimhoudingPersoonsgegevens" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AbstractGeheimhoudingPersoonsgegevens"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "waarde" : {
+              "type" : "integer"
+            }
+          }
+        } ]
+      },
+      "GeheimhoudingPersoonsgegevens" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AbstractGeheimhoudingPersoonsgegevens"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "geheimhouding" : {
+              "type" : "boolean"
+            }
+          }
+        } ]
+      },
       "Kiesrecht" : {
         "type" : "object",
         "properties" : {
@@ -1251,46 +1351,6 @@
             }
           }
         } ]
-      },
-      "NaamBasis" : {
-        "type" : "object",
-        "properties" : {
-          "geslachtsnaam" : {
-            "type" : "string",
-            "description" : "De achternaam van een persoon.\n",
-            "example" : "Vries"
-          },
-          "voorletters" : {
-            "type" : "string",
-            "description" : "De voorletters van de persoon, afgeleid van de voornamen.\n",
-            "example" : "P.J."
-          },
-          "voornamen" : {
-            "type" : "string",
-            "description" : "De verzameling namen voor de geslachtsnaam, gescheiden door spaties.\n",
-            "example" : "Pieter Jan"
-          },
-          "voorvoegsel" : {
-            "type" : "string",
-            "example" : "de"
-          },
-          "adellijkeTitelPredikaat" : {
-            "$ref" : "#/components/schemas/Waardetabel"
-          }
-        }
-      },
-      "Waardetabel" : {
-        "type" : "object",
-        "properties" : {
-          "code" : {
-            "type" : "string",
-            "example" : "6030"
-          },
-          "omschrijving" : {
-            "type" : "string",
-            "example" : "Nederland"
-          }
-        }
       },
       "AbstractNaamPersoonInOnderzoek" : {
         "type" : "object",
@@ -1592,14 +1652,6 @@
           "description" : "* **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.\n"
         } ]
       },
-      "OpschortingBijhoudingBasis" : {
-        "type" : "object",
-        "properties" : {
-          "reden" : {
-            "$ref" : "#/components/schemas/RedenOpschortingBijhouding_enum"
-          }
-        }
-      },
       "Overlijden" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/OverlijdenBasis"
@@ -1621,16 +1673,6 @@
           },
           "description" : "Gegevens over het overlijden van de persoon.\n* **datum** : datum waarop de persoon is overleden.\n* **land** : land waar de persoon is overleden.\n* **plaats** : gemeente waar de persoon is overleden. Is de persoon overleden buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.\n"
         } ]
-      },
-      "OverlijdenBasis" : {
-        "type" : "object",
-        "properties" : {
-          "indicatieOverleden" : {
-            "type" : "boolean",
-            "description" : "Geeft aan dat iemand is overleden (waarde true), ongeacht of de overlijdensdatum bekend is.\n"
-          }
-        },
-        "description" : "Gegevens over het overlijden van de persoon.\n"
       },
       "AbstractOverlijdenInOnderzoek" : {
         "type" : "object",
@@ -2320,87 +2362,15 @@
           }
         } ]
       },
-      "AbstractGeheimhoudingPersoonsgegevens" : {
-        "type" : "object",
-        "properties" : {
-          "type" : {
-            "type" : "string"
-          }
-        },
-        "description" : "Gegevens mogen niet worden verstrekt aan derden / maatschappelijke instellingen.\n",
-        "discriminator" : {
-          "propertyName" : "type",
-          "mapping" : {
-            "GbaGeheimhouding" : "#/components/schemas/GbaGeheimhoudingPersoonsgegevens",
-            "Geheimhouding" : "#/components/schemas/GeheimhoudingPersoonsgegevens"
-          }
-        }
-      },
-      "GbaGeheimhoudingPersoonsgegevens" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractGeheimhoudingPersoonsgegevens"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "waarde" : {
-              "type" : "integer"
-            }
-          }
-        } ]
-      },
-      "GeheimhoudingPersoonsgegevens" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractGeheimhoudingPersoonsgegevens"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "geheimhouding" : {
-              "type" : "boolean"
-            }
-          }
-        } ]
-      },
-      "VerblijfplaatsBeperkt" : {
-        "type" : "object",
-        "properties" : {
-          "functieAdres" : {
-            "$ref" : "#/components/schemas/SoortAdres_enum"
-          },
-          "adresregel1" : {
-            "type" : "string",
-            "description" : "Het eerste deel van een adres is een combinatie van de straat en huisnummer.\n",
-            "example" : "Laan van de landinrichtingscommissie Duiven-Westervoort 26A-3"
-          },
-          "adresregel2" : {
-            "type" : "string",
-            "description" : "Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode.\n",
-            "example" : "1234AA Nootdorp"
-          },
-          "adresregel3" : {
-            "type" : "string",
-            "description" : "Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.\n",
-            "example" : "Selangor"
-          },
-          "woonplaats" : {
-            "title" : "woonplaats naam",
-            "type" : "string",
-            "description" : "Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.",
-            "example" : "Duiven"
-          },
-          "land" : {
-            "$ref" : "#/components/schemas/AbstractLand"
-          },
-          "vertrokkenOnbekendWaarheen" : {
-            "type" : "boolean",
-            "description" : "Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.\n"
-          }
-        },
-        "description" : "Gegevens over het verblijf of de woonlocatie van een persoon.\n"
-      },
-      "Naamgebruik_enum" : {
+      "RedenOpschortingBijhouding_enum" : {
         "type" : "string",
-        "description" : "De manier waarop de geslachtsnaam van persoon en partner van persoon moet worden verwerkt in de manier waarop persoon wil worden aangesproken\n* `eigen` - E - gebruik alleen de eigen naam\n* `eigen_partner` - N - gebruik de eigen naam voor de partnernaam\n* `partner` - P gebruik alleen de partnernaam\n* `partner_eigen` - V - gebruik de partnernaam voor de eigen naam.\n\n\nDe aanduiding naamgebruik is verwerkt in Aanhef, Aanschrijfwijze en gebruikInLopendeTekst.\"\n",
-        "enum" : [ "eigen", "eigen_partner", "partner", "partner_eigen" ]
+        "description" : "Redenen voor opschorting van de bijhouding\n* `overlijden` - O\n* `emigratie` - E\n* `ministerieel_besluit` - M\n* `pl_aangelegd_in_de_rni` - R - opgeschort omdat persoon is ingeschreven in het Register Niet Ingezeten (RNI).\n* `fout` - F\n",
+        "enum" : [ "overlijden", "emigratie", "ministerieel_besluit", "pl_aangelegd_in_de_rni", "fout" ]
+      },
+      "SoortAdres_enum" : {
+        "type" : "string",
+        "description" : "Aanduiding van het soort adres\n* `woonadres` - W - adres waar de persoon woont\n* `briefadres` - B - het adres van een andere persoon of van een instelling (de zogenoemde briefadresgever). Met dit adres van de briefadresgever is de persoon zonder woonadres toch bereikbaar voor de overheid.\n",
+        "enum" : [ "woonadres", "briefadres" ]
       },
       "AbstractLand" : {
         "type" : "object",
@@ -2450,20 +2420,15 @@
           }
         } ]
       },
-      "RedenOpschortingBijhouding_enum" : {
+      "Naamgebruik_enum" : {
         "type" : "string",
-        "description" : "Redenen voor opschorting van de bijhouding\n* `overlijden` - O\n* `emigratie` - E\n* `ministerieel_besluit` - M\n* `pl_aangelegd_in_de_rni` - R - opgeschort omdat persoon is ingeschreven in het Register Niet Ingezeten (RNI).\n* `fout` - F\n",
-        "enum" : [ "overlijden", "emigratie", "ministerieel_besluit", "pl_aangelegd_in_de_rni", "fout" ]
+        "description" : "De manier waarop de geslachtsnaam van persoon en partner van persoon moet worden verwerkt in de manier waarop persoon wil worden aangesproken\n* `eigen` - E - gebruik alleen de eigen naam\n* `eigen_partner` - N - gebruik de eigen naam voor de partnernaam\n* `partner` - P gebruik alleen de partnernaam\n* `partner_eigen` - V - gebruik de partnernaam voor de eigen naam.\n\n\nDe aanduiding naamgebruik is verwerkt in Aanhef, Aanschrijfwijze en gebruikInLopendeTekst.\"\n",
+        "enum" : [ "eigen", "eigen_partner", "partner", "partner_eigen" ]
       },
       "AanduidingBijHuisnummer_enum" : {
         "type" : "string",
         "description" : "De aanduiding die wordt gebruikt voor adressen die geen straatnaam en huisnummeraanduidingen hebben\n* `tegenover` - to\n* `bij` - by\n",
         "enum" : [ "tegenover", "bij" ]
-      },
-      "SoortAdres_enum" : {
-        "type" : "string",
-        "description" : "Aanduiding van het soort adres\n* `woonadres` - W - adres waar de persoon woont\n* `briefadres` - B - het adres van een andere persoon of van een instelling (de zogenoemde briefadresgever). Met dit adres van de briefadresgever is de persoon zonder woonadres toch bereikbaar voor de overheid.\n",
-        "enum" : [ "woonadres", "briefadres" ]
       },
       "IndicatieGezagMinderjarige_enum" : {
         "type" : "string",
@@ -2490,23 +2455,6 @@
         "type" : "string",
         "description" : "Soort verbintenis die bij de burgerlijke stand is ingeschreven\n* `huwelijk` - H\n* `geregistreerd_partnerschap` - P\n",
         "enum" : [ "huwelijk", "geregistreerd_partnerschap" ]
-      }
-    },
-    "parameters" : {
-      "burgerservicenummer" : {
-        "name" : "burgerservicenummer",
-        "in" : "path",
-        "description" : "Uniek persoonsnummer\n",
-        "required" : true,
-        "style" : "simple",
-        "explode" : false,
-        "schema" : {
-          "maxLength" : 9,
-          "minLength" : 9,
-          "pattern" : "^[0-9]*$",
-          "type" : "string",
-          "example" : "555555021"
-        }
       }
     },
     "headers" : {
