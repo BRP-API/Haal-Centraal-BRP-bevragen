@@ -555,23 +555,35 @@ namespace HaalCentraal.BrpService.Generated
 
     }
 
+    /// <summary>
+    /// Datum conform LO GBA
+    /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.5.0 (NJsonSchema v10.6.6.0 (Newtonsoft.Json v12.0.0.0))")]
     public partial class GbaDatum : AbstractDatum
     {
         [Newtonsoft.Json.JsonProperty("waarde", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Waarde { get; set; }
+        [System.ComponentModel.DataAnnotations.StringLength(8, MinimumLength = 8)]
+        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{8}$")]
+        public string Waarde { get; set; }
 
     }
 
+    /// <summary>
+    /// Datum conform iso8601
+    /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.5.0 (NJsonSchema v10.6.6.0 (Newtonsoft.Json v12.0.0.0))")]
     public partial class Datum : AbstractDatum
     {
         [Newtonsoft.Json.JsonProperty("waarde", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(10, MinimumLength = 10)]
         [Newtonsoft.Json.JsonConverter(typeof(DateFormatConverter))]
         public System.DateTimeOffset? Waarde { get; set; }
 
     }
 
+    /// <summary>
+    /// representatie voor een onbekend datum
+    /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.5.0 (NJsonSchema v10.6.6.0 (Newtonsoft.Json v12.0.0.0))")]
     public partial class OnbekendDatum : AbstractDatum
     {
@@ -580,22 +592,31 @@ namespace HaalCentraal.BrpService.Generated
 
     }
 
+    /// <summary>
+    /// representatie voor een datum waarvan maand en dag onbekend zijn
+    /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.5.0 (NJsonSchema v10.6.6.0 (Newtonsoft.Json v12.0.0.0))")]
     public partial class JaarDatum : AbstractDatum
     {
         [Newtonsoft.Json.JsonProperty("jaar", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Jaar { get; set; }
+        [System.ComponentModel.DataAnnotations.Range(0, 9999)]
+        public int Jaar { get; set; }
 
     }
 
+    /// <summary>
+    /// representatie voor een datum waarvan de dag onbekend is
+    /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.5.0 (NJsonSchema v10.6.6.0 (Newtonsoft.Json v12.0.0.0))")]
     public partial class JaarMaandDatum : AbstractDatum
     {
         [Newtonsoft.Json.JsonProperty("jaar", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Jaar { get; set; }
+        [System.ComponentModel.DataAnnotations.Range(0, 9999)]
+        public int Jaar { get; set; }
 
         [Newtonsoft.Json.JsonProperty("maand", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Maand { get; set; }
+        [System.ComponentModel.DataAnnotations.Range(1, 12)]
+        public int Maand { get; set; }
 
     }
 
