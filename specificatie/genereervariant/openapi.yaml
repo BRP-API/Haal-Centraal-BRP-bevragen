@@ -915,6 +915,8 @@ components:
           JaarDatum: '#/components/schemas/JaarDatum'
           JaarMaandDatum: '#/components/schemas/JaarMaandDatum'
     GbaDatum:
+      required:
+      - waarde
       description: Datum conform LO GBA
       example: 20210801
       allOf:
@@ -927,6 +929,8 @@ components:
             pattern: ^[0-9]{8}$
             type: string
     Datum:
+      required:
+      - waarde
       description: Datum conform iso8601
       example: 2021-08-01T00:00:00.000+0000
       allOf:
@@ -939,6 +943,8 @@ components:
             type: string
             format: date
     OnbekendDatum:
+      required:
+      - onbekend
       description: representatie voor een onbekend datum
       allOf:
       - $ref: '#/components/schemas/AbstractDatum'
@@ -948,6 +954,8 @@ components:
             type: boolean
             default: true
     JaarDatum:
+      required:
+      - jaar
       description: representatie voor een datum waarvan maand en dag onbekend zijn
       allOf:
       - $ref: '#/components/schemas/AbstractDatum'
@@ -961,6 +969,9 @@ components:
       type: integer
       format: int32
     JaarMaandDatum:
+      required:
+      - jaar
+      - maand
       description: representatie voor een datum waarvan de dag onbekend is
       allOf:
       - $ref: '#/components/schemas/AbstractDatum'
