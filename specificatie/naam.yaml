@@ -114,7 +114,7 @@ components:
                             Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert.
               example: "baron Van den Aedel"
             aanduidingNaamgebruik:
-              $ref: "enum.yaml#/components/schemas/Naamgebruik_enum"
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
             inOnderzoek:
               $ref: "#/components/schemas/AbstractNaamPersoonInOnderzoek"
     AbstractNaamPersoonInOnderzoek:

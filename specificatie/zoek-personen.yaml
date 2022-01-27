@@ -93,7 +93,8 @@ paths:
                         Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.
           required: false
           schema:
-              $ref: "enum.yaml#/components/schemas/Geslacht_enum"
+            type: string
+            example: "V"
         - in: query
           name: inclusiefOverledenPersonen
           description: |

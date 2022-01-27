@@ -12,7 +12,7 @@ components:
         Gegevens over het verblijf of de woonlocatie van een persoon.
       properties:
         functieAdres:
-          $ref: "enum.yaml#/components/schemas/SoortAdres_enum"
+          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
         adresregel1:
           type: "string"
           description: |
@@ -59,14 +59,14 @@ components:
                           De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.
             example: "0226010000038820"
           aanduidingBijHuisnummer:
-            $ref: "enum.yaml#/components/schemas/AanduidingBijHuisnummer_enum"
+            $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
           nummeraanduidingIdentificatie:
             type: "string"
             description: |
                           Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
             example: "0518200000366054"
           functieAdres:
-            $ref: "enum.yaml#/components/schemas/SoortAdres_enum"
+            $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
           indicatieVestigingVanuitBuitenland:
             type: boolean
             description: |

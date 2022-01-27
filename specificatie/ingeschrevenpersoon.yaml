@@ -15,7 +15,7 @@ components:
         geheimhoudingPersoonsgegevens:
           $ref: 'geheimhouding.yaml#/components/schemas/AbstractGeheimhoudingPersoonsgegevens'
         geslachtsaanduiding:
-          $ref: "enum.yaml#/components/schemas/Geslacht_enum"
+          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
         leeftijd:
           type: integer
           description: |

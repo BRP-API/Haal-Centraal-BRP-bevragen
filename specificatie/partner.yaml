@@ -15,9 +15,9 @@ components:
           type: "string"
           example: "555555021"
         geslachtsaanduiding:
-          $ref: "enum.yaml#/components/schemas/Geslacht_enum"
+          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
         soortVerbintenis:
-          $ref: "enum.yaml#/components/schemas/SoortVerbintenis_enum"
+          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
         naam:
           $ref: "naam.yaml#/components/schemas/Naam"
         geboorte:
