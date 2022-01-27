@@ -40,10 +40,10 @@ Scenario: Persoon is overleden
 	Dan is attribuut leeftijd niet aanwezig
 
 Scenario: leeftijd wordt wel geleverd bij een overleden kind (omdat alleen gegevens van de persoonslijst van de gevraagde persoon worden gebruikt)
-	Gegeven de persoon met burgerservicenummer "999991280" heeft een kind met burgerservicenummer "999993197" en voornamen "Henk-Pieter"
+	Gegeven de persoon met burgerservicenummer "999991280" heeft een kind met burgerservicenummer "999993197"
 	En de persoon met burgerservicenummer "999993197" is overleden op 28-04-2019
 	Als de ingeschreven persoon met burgerservicenummer 999994268 wordt geraadpleegd met fields=kinderen
-	Dan heeft het kind met burgerservicenummer "999993197" naam.voornamen "Henk-Pieter" een attribuut "leeftijd" met een waarde
+	Dan heeft het kind met burgerservicenummer "999993197" een attribuut "leeftijd" met een waarde
 
 Abstract Scenario: Geboren op 29 februari in een schrikkeljaar
 	Gegeven een ingeschreven persoon met 29 februari 1996
