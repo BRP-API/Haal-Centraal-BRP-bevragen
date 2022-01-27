@@ -10,11 +10,15 @@
       "name" : "European Union Public License, version 1.2 (EUPL-1.2)",
       "url" : "https://eupl.eu/1.2/nl/"
     },
-    "version" : "1.3.0"
+    "version" : "1.3.1"
   },
   "servers" : [ {
     "url" : "https://www.haalcentraal.nl/haalcentraal/api/brp",
     "description" : "APILAB testserver\n"
+  } ],
+  "tags" : [ {
+    "name" : "Ingeschreven Personen",
+    "description" : "Zoeken en raadplegen van ingeschreven personen"
   } ],
   "paths" : {
     "/ingeschrevenpersonen" : {
@@ -2228,16 +2232,12 @@
         "description" : "Het nummer van het verstrekte Nederlandse reisdocument.\n",
         "example" : "546376728"
       },
-      "IngeschrevenPersoon" : {
+      "IngeschrevenPersoonBasis" : {
         "type" : "object",
         "properties" : {
           "burgerservicenummer" : {
             "type" : "string",
             "example" : "555555021"
-          },
-          "aNummer" : {
-            "type" : "string",
-            "description" : "Het A-nummer van de persoon\n"
           },
           "geheimhoudingPersoonsgegevens" : {
             "title" : "Indicatie geheim",
@@ -2251,68 +2251,124 @@
             "type" : "integer",
             "description" : "Leeftijd in jaren op het moment van bevragen.\n",
             "example" : 34
-          },
-          "datumEersteInschrijvingGBA" : {
-            "$ref" : "#/components/schemas/DatumOnvolledig"
-          },
-          "kiesrecht" : {
-            "$ref" : "#/components/schemas/Kiesrecht"
-          },
-          "naam" : {
-            "$ref" : "#/components/schemas/NaamPersoon"
-          },
-          "inOnderzoek" : {
-            "$ref" : "#/components/schemas/PersoonInOnderzoek"
-          },
-          "nationaliteiten" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/Nationaliteit"
-            }
-          },
-          "geboorte" : {
-            "$ref" : "#/components/schemas/Geboorte"
-          },
-          "opschortingBijhouding" : {
-            "$ref" : "#/components/schemas/OpschortingBijhouding"
-          },
-          "overlijden" : {
-            "$ref" : "#/components/schemas/Overlijden"
-          },
-          "verblijfplaats" : {
-            "$ref" : "#/components/schemas/Verblijfplaats"
-          },
-          "gezagsverhouding" : {
-            "$ref" : "#/components/schemas/Gezagsverhouding"
-          },
-          "verblijfstitel" : {
-            "$ref" : "#/components/schemas/Verblijfstitel"
-          },
-          "reisdocumentnummers" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/Reisdocumentnummer"
-            }
-          },
-          "kinderen" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/Kind"
-            }
-          },
-          "ouders" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/Ouder"
-            }
-          },
-          "partners" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/Partner"
-            }
           }
         }
+      },
+      "IngeschrevenPersoonBeperkt" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/IngeschrevenPersoonBasis"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "naam" : {
+              "$ref" : "#/components/schemas/NaamBasis"
+            },
+            "geboorte" : {
+              "$ref" : "#/components/schemas/Geboortedatum"
+            },
+            "opschortingBijhouding" : {
+              "$ref" : "#/components/schemas/OpschortingBijhoudingBasis"
+            },
+            "overlijden" : {
+              "$ref" : "#/components/schemas/OverlijdenBasis"
+            },
+            "verblijfplaats" : {
+              "$ref" : "#/components/schemas/VerblijfplaatsBeperkt"
+            }
+          }
+        } ]
+      },
+      "IngeschrevenPersoonBeperktLinks" : {
+        "type" : "object",
+        "properties" : {
+          "self" : {
+            "$ref" : "#/components/schemas/HalLink"
+          }
+        }
+      },
+      "IngeschrevenPersoonBeperktHal" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/IngeschrevenPersoonBeperkt"
+        }, {
+          "properties" : {
+            "_links" : {
+              "$ref" : "#/components/schemas/IngeschrevenPersoonBeperktLinks"
+            }
+          }
+        } ]
+      },
+      "IngeschrevenPersoon" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/IngeschrevenPersoonBasis"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "aNummer" : {
+              "type" : "string",
+              "description" : "Het A-nummer van de persoon\n"
+            },
+            "datumEersteInschrijvingGBA" : {
+              "$ref" : "#/components/schemas/DatumOnvolledig"
+            },
+            "inOnderzoek" : {
+              "$ref" : "#/components/schemas/PersoonInOnderzoek"
+            },
+            "kiesrecht" : {
+              "$ref" : "#/components/schemas/Kiesrecht"
+            },
+            "naam" : {
+              "$ref" : "#/components/schemas/NaamPersoon"
+            },
+            "nationaliteiten" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/components/schemas/Nationaliteit"
+              }
+            },
+            "geboorte" : {
+              "$ref" : "#/components/schemas/Geboorte"
+            },
+            "opschortingBijhouding" : {
+              "$ref" : "#/components/schemas/OpschortingBijhouding"
+            },
+            "overlijden" : {
+              "$ref" : "#/components/schemas/Overlijden"
+            },
+            "verblijfplaats" : {
+              "$ref" : "#/components/schemas/Verblijfplaats"
+            },
+            "gezagsverhouding" : {
+              "$ref" : "#/components/schemas/Gezagsverhouding"
+            },
+            "verblijfstitel" : {
+              "$ref" : "#/components/schemas/Verblijfstitel"
+            },
+            "reisdocumentnummers" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/components/schemas/Reisdocumentnummer"
+              }
+            },
+            "kinderen" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/components/schemas/Kind"
+              }
+            },
+            "ouders" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/components/schemas/Ouder"
+              }
+            },
+            "partners" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/components/schemas/Partner"
+              }
+            }
+          }
+        } ]
       },
       "IngeschrevenPersoonHalCollectie" : {
         "type" : "object",
@@ -2331,7 +2387,7 @@
           "ingeschrevenpersonen" : {
             "type" : "array",
             "items" : {
-              "$ref" : "#/components/schemas/IngeschrevenPersoonHal"
+              "$ref" : "#/components/schemas/IngeschrevenPersoonBeperktHal"
             }
           }
         }
@@ -2793,39 +2849,58 @@
         },
         "description" : "Geeft aan welke gegevens over de nationaliteit in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n"
       },
-      "OpschortingBijhouding" : {
+      "OpschortingBijhoudingBasis" : {
         "type" : "object",
         "properties" : {
           "reden" : {
             "$ref" : "#/components/schemas/RedenOpschortingBijhouding_enum"
-          },
-          "datum" : {
-            "$ref" : "#/components/schemas/DatumOnvolledig"
           }
-        },
-        "description" : "* **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.\n"
+        }
       },
-      "Overlijden" : {
+      "OpschortingBijhouding" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/OpschortingBijhoudingBasis"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "datum" : {
+              "$ref" : "#/components/schemas/DatumOnvolledig"
+            }
+          },
+          "description" : "* **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.\n"
+        } ]
+      },
+      "OverlijdenBasis" : {
         "type" : "object",
         "properties" : {
           "indicatieOverleden" : {
             "type" : "boolean",
             "description" : "Geeft aan dat iemand is overleden (waarde true), ongeacht of de overlijdensdatum bekend is.\n"
-          },
-          "datum" : {
-            "$ref" : "#/components/schemas/DatumOnvolledig"
-          },
-          "land" : {
-            "$ref" : "#/components/schemas/Waardetabel"
-          },
-          "plaats" : {
-            "$ref" : "#/components/schemas/Waardetabel"
-          },
-          "inOnderzoek" : {
-            "$ref" : "#/components/schemas/OverlijdenInOnderzoek"
           }
         },
-        "description" : "Gegevens over het overlijden van de persoon.\n* **datum** : datum waarop de persoon is overleden.\n* **land** : land waar de persoon is overleden.\n* **plaats** : gemeente waar de persoon is overleden. Is de persoon overleden buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.\n"
+        "description" : "Gegevens over het overlijden van de persoon.\n"
+      },
+      "Overlijden" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/OverlijdenBasis"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "datum" : {
+              "$ref" : "#/components/schemas/DatumOnvolledig"
+            },
+            "land" : {
+              "$ref" : "#/components/schemas/Waardetabel"
+            },
+            "plaats" : {
+              "$ref" : "#/components/schemas/Waardetabel"
+            },
+            "inOnderzoek" : {
+              "$ref" : "#/components/schemas/OverlijdenInOnderzoek"
+            }
+          },
+          "description" : "Gegevens over het overlijden van de persoon.\n* **datum** : datum waarop de persoon is overleden.\n* **land** : land waar de persoon is overleden.\n* **plaats** : gemeente waar de persoon is overleden. Is de persoon overleden buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.\n"
+        } ]
       },
       "OverlijdenInOnderzoek" : {
         "type" : "object",
@@ -2910,6 +2985,43 @@
           }
         },
         "description" : "Geeft aan welke gegevens over het voltrekken van het huwelijk of aangaan van het partnerschap in onderzoek zijn. Zie de functionele specificaties. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n"
+      },
+      "VerblijfplaatsBeperkt" : {
+        "type" : "object",
+        "properties" : {
+          "functieAdres" : {
+            "$ref" : "#/components/schemas/SoortAdres_enum"
+          },
+          "adresregel1" : {
+            "type" : "string",
+            "description" : "Het eerste deel van een adres is een combinatie van de straat en huisnummer.\n",
+            "example" : "Laan van de landinrichtingscommissie Duiven-Westervoort 26A-3"
+          },
+          "adresregel2" : {
+            "type" : "string",
+            "description" : "Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode.\n",
+            "example" : "1234AA Nootdorp"
+          },
+          "adresregel3" : {
+            "type" : "string",
+            "description" : "Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.\n",
+            "example" : "Selangor"
+          },
+          "woonplaats" : {
+            "title" : "woonplaats naam",
+            "type" : "string",
+            "description" : "Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.",
+            "example" : "Duiven"
+          },
+          "land" : {
+            "$ref" : "#/components/schemas/Waardetabel"
+          },
+          "vertrokkenOnbekendWaarheen" : {
+            "type" : "boolean",
+            "description" : "Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naartoe.\n"
+          }
+        },
+        "description" : "Gegevens over het verblijf of de woonlocatie van een persoon.\n"
       },
       "Verblijfplaats" : {
         "allOf" : [ {
@@ -3296,8 +3408,7 @@
           "datum" : {
             "$ref" : "#/components/schemas/DatumOnvolledig"
           }
-        },
-        "description" : "Gegevens over de geboorte van respectievelijk de persoon, de ouder, de echtgenoot/geregistreerd partner, de eerdere echtgenoot/geregistreerd partner of het kind.\n* **datum** : Datum waarop de persoon is geboren\n* **land** : Land waar de persoon is geboren\n* **plaats** : De plaats waar de persoon is geboren. Voor een plaats buiten Nederland is gemeentecode=1999 (RNI) en gemeentenaam de buitenlandse plaatsnaam of aanduiding.\n"
+        }
       },
       "BadRequestFoutbericht" : {
         "allOf" : [ {
@@ -3375,6 +3486,27 @@
         },
         "description" : "Details over fouten in opgegeven parameters"
       },
+      "HalLink" : {
+        "required" : [ "href" ],
+        "type" : "object",
+        "properties" : {
+          "href" : {
+            "$ref" : "#/components/schemas/Href"
+          },
+          "templated" : {
+            "type" : "boolean"
+          },
+          "title" : {
+            "type" : "string",
+            "description" : "Voor mens leesbaar label bij de link"
+          }
+        },
+        "description" : "De Link Object zoals gespecificeerd in https://tools.ietf.org/html/draft-kelly-json-hal-08#section-5; Deze link kan als templated link worden aangeboden. [URI-templating is hier beschreven](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/uri-templating.feature)."
+      },
+      "Href" : {
+        "type" : "string",
+        "example" : "https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}"
+      },
       "DatumOnvolledig" : {
         "type" : "object",
         "properties" : {
@@ -3415,27 +3547,6 @@
           }
         },
         "description" : "HalCollectionLinks bevat de self link die elke HAL Resource minimaal moet hebben in zijn _links property\n"
-      },
-      "HalLink" : {
-        "required" : [ "href" ],
-        "type" : "object",
-        "properties" : {
-          "href" : {
-            "$ref" : "#/components/schemas/Href"
-          },
-          "templated" : {
-            "type" : "boolean"
-          },
-          "title" : {
-            "type" : "string",
-            "description" : "Voor mens leesbaar label bij de link"
-          }
-        },
-        "description" : "De Link Object zoals gespecificeerd in https://tools.ietf.org/html/draft-kelly-json-hal-08#section-5; Deze link kan als templated link worden aangeboden. [URI-templating is hier beschreven](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/uri-templating.feature)."
-      },
-      "Href" : {
-        "type" : "string",
-        "example" : "https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}"
       },
       "Waardetabel" : {
         "type" : "object",
