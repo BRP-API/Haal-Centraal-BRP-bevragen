@@ -10,7 +10,7 @@
       "name" : "European Union Public License, version 1.2 (EUPL-1.2)",
       "url" : "https://eupl.eu/1.2/nl/"
     },
-    "version" : "1.3.0"
+    "version" : "1.3.1"
   },
   "servers" : [ {
     "url" : "https://www.haalcentraal.nl/haalcentraal/api/brp",
@@ -58,7 +58,7 @@
               "type" : "string"
             }
           },
-          "example" : "999993653,999991723,999995078"
+          "example" : [ "999993653", "999991723", "999995078" ]
         }, {
           "name" : "geboorte__datum",
           "in" : "query",
@@ -2562,6 +2562,17 @@
         } ]
       },
       "Naam" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/NaamBasis"
+        }, {
+          "properties" : {
+            "inOnderzoek" : {
+              "$ref" : "#/components/schemas/NaamInOnderzoek"
+            }
+          }
+        } ]
+      },
+      "NaamBasis" : {
         "type" : "object",
         "properties" : {
           "geslachtsnaam" : {
@@ -2585,9 +2596,6 @@
           },
           "adellijkeTitelPredikaat" : {
             "$ref" : "#/components/schemas/Waardetabel"
-          },
-          "inOnderzoek" : {
-            "$ref" : "#/components/schemas/NaamInOnderzoek"
           }
         }
       },
@@ -2699,7 +2707,7 @@
       },
       "NaamPersoon" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/Naam"
+          "$ref" : "#/components/schemas/NaamBasis"
         }, {
           "properties" : {
             "aanhef" : {
