@@ -63,6 +63,9 @@ components:
         - $ref: '#/components/schemas/AbstractOverlijdenInOnderzoek'
         - type: object
           properties:
+            aanduidingGegevensInOnderzoek:
+              type: string
+              maxLength: 50
             datumIngangOnderzoek:
               $ref: 'datum.yaml#/components/schemas/GbaDatum'
 

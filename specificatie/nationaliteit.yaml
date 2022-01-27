@@ -20,7 +20,7 @@ components:
           VastgesteldNietNederlander: '#/components/schemas/VastgesteldNietNederlander'
     Nationaliteit:
       description: |
-                    * **redenOpname** : De reden op grond waarvan de persoon de nationaliteit gekregen heeft.
+        * **redenOpname** : De reden op grond waarvan de persoon de nationaliteit gekregen heeft.
       allOf:
         - $ref: '#/components/schemas/AbstractNationaliteit'
         - type: object
@@ -81,5 +81,8 @@ components:
     GbaNationaliteitInOnderzoek:
       type: object
       properties:
+        aanduidingGegevensInOnderzoek:
+          type: string
+          maxLength: 50
         datumIngangOnderzoek:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'

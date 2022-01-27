@@ -6,35 +6,52 @@ info:
 paths: {}
 components:
   schemas:
+    AbstractNaamBasis:
+      type: object
+      properties:
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          GbaNaam: '#/components/schemas/GbaNaamBasis'
+          Naam: '#/components/schemas/NaamBasis'
+    GbaNaamBasis:
+      type: object
+      properties:
+        voornamen:
+          type: string
+          maxLength: 200
+          description: |
+            De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
+        voorvoegsel:
+          type: string
+          maxLength: 10
+          example: "de"
+        geslachtsnaam:
+          type: string
+          maxLength: 200
+          description: |
+            De achternaam van een persoon.
+          example: "Vries"
+        adellijkeTitelPredikaat:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+    NaamBasis:
+      allOf:
+        - $ref: '#/components/schemas/GbaNaamBasis'
+        - type: object
+          properties:
+            voorletters:
+              type: string
+              description: |
+                De voorletters van de persoon, afgeleid van de voornamen.
+              example: "P.J."
     Naam:
       allOf:
         - $ref: "#/components/schemas/NaamBasis"
         - properties:
             inOnderzoek:
               $ref: "#/components/schemas/AbstractNaamInOnderzoek"
-    NaamBasis:
-      type: "object"
-      properties:
-        geslachtsnaam:
-          type: "string"
-          description: |
-                        De achternaam van een persoon.
-          example: "Vries"
-        voorletters:
-          type: "string"
-          description: |
-                        De voorletters van de persoon, afgeleid van de voornamen.
-          example: "P.J."
-        voornamen:
-          type: "string"
-          description: |
-                        De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
-          example: "Pieter Jan"
-        voorvoegsel:
-          type: "string"
-          example: "de"
-        adellijkeTitelPredikaat:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
     AbstractNaamInOnderzoek:
       type: object
       description: |
@@ -67,6 +84,9 @@ components:
         - $ref: '#/components/schemas/AbstractNaamInOnderzoek'
         - type: object
           properties:
+            aanduidingGegevensInOnderzoek:
+              type: string
+              maxLength: 50
             datumIngangOnderzoek:
               $ref: 'datum.yaml#/components/schemas/GbaDatum'
     NaamPersoon:
@@ -111,7 +131,7 @@ components:
           InOnderzoek: '#/components/schemas/NaamPersoonInOnderzoek'
     NaamPersoonInOnderzoek:
       allOf:
-        - $ref: '#/components/schemas/AbstractNaamInOnderzoek'
+        - $ref: '#/components/schemas/AbstractNaamPersoonInOnderzoek'
         - properties:
             geslachtsnaam:
               type: boolean
@@ -130,5 +150,8 @@ components:
         - $ref: '#/components/schemas/AbstractNaamInOnderzoek'
         - type: object
           properties:
+            aanduidingGegevensInOnderzoek:
+              type: string
+              maxLength: 50
             datumIngangOnderzoek:
               $ref: 'datum.yaml#/components/schemas/GbaDatum'
