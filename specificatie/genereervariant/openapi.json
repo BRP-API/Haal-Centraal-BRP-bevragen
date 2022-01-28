@@ -1115,6 +1115,7 @@
         }
       },
       "GbaDatum" : {
+        "required" : [ "waarde" ],
         "description" : "Datum conform LO GBA",
         "example" : 20210801,
         "allOf" : [ {
@@ -1132,6 +1133,7 @@
         } ]
       },
       "Datum" : {
+        "required" : [ "waarde" ],
         "description" : "Datum conform iso8601",
         "example" : "2021-08-01T00:00:00.000+0000",
         "allOf" : [ {
@@ -1149,6 +1151,7 @@
         } ]
       },
       "OnbekendDatum" : {
+        "required" : [ "onbekend" ],
         "description" : "representatie voor een onbekend datum",
         "allOf" : [ {
           "$ref" : "#/components/schemas/AbstractDatum"
@@ -1163,6 +1166,7 @@
         } ]
       },
       "JaarDatum" : {
+        "required" : [ "jaar" ],
         "description" : "representatie voor een datum waarvan maand en dag onbekend zijn",
         "allOf" : [ {
           "$ref" : "#/components/schemas/AbstractDatum"
@@ -1182,6 +1186,7 @@
         "format" : "int32"
       },
       "JaarMaandDatum" : {
+        "required" : [ "jaar", "maand" ],
         "description" : "representatie voor een datum waarvan de dag onbekend is",
         "allOf" : [ {
           "$ref" : "#/components/schemas/AbstractDatum"
