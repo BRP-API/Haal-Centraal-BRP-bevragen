@@ -83,9 +83,7 @@ paths:
             type: array
             items:
               type: string
-              pattern: "^[0-9]*$"
-              maxLength: 9
-              minLength: 9
+              pattern: "^[0-9]{9}$"
         - in: query
           name: geboorte__datum
           description: |
@@ -576,9 +574,7 @@ components:
       required: true
       schema:
         type: "string"
-        pattern: "^[0-9]*$"
-        maxLength: 9
-        minLength: 9
+        pattern: "^[0-9]{9}$"
         example: "555555021"
   schemas:
     Reisdocumentnummer:
