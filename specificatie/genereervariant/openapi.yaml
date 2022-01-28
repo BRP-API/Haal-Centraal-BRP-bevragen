@@ -100,9 +100,7 @@ paths:
         schema:
           type: array
           items:
-            maxLength: 9
-            minLength: 9
-            pattern: ^[0-9]*$
+            pattern: ^[0-9]{9}$
             type: string
         example:
         - "999993653"
@@ -427,9 +425,7 @@ paths:
         style: simple
         explode: false
         schema:
-          maxLength: 9
-          minLength: 9
-          pattern: ^[0-9]*$
+          pattern: ^[0-9]{9}$
           type: string
           example: "555555021"
       - name: expand
@@ -638,9 +634,7 @@ paths:
         style: simple
         explode: false
         schema:
-          maxLength: 9
-          minLength: 9
-          pattern: ^[0-9]*$
+          pattern: ^[0-9]{9}$
           type: string
           example: "555555021"
       - name: id
@@ -834,9 +828,7 @@ paths:
         style: simple
         explode: false
         schema:
-          maxLength: 9
-          minLength: 9
-          pattern: ^[0-9]*$
+          pattern: ^[0-9]{9}$
           type: string
           example: "555555021"
       responses:
@@ -1021,9 +1013,7 @@ paths:
         style: simple
         explode: false
         schema:
-          maxLength: 9
-          minLength: 9
-          pattern: ^[0-9]*$
+          pattern: ^[0-9]{9}$
           type: string
           example: "555555021"
       - name: id
@@ -1217,9 +1207,7 @@ paths:
         style: simple
         explode: false
         schema:
-          maxLength: 9
-          minLength: 9
-          pattern: ^[0-9]*$
+          pattern: ^[0-9]{9}$
           type: string
           example: "555555021"
       responses:
@@ -1404,9 +1392,7 @@ paths:
         style: simple
         explode: false
         schema:
-          maxLength: 9
-          minLength: 9
-          pattern: ^[0-9]*$
+          pattern: ^[0-9]{9}$
           type: string
           example: "555555021"
       - name: id
@@ -1600,9 +1586,7 @@ paths:
         style: simple
         explode: false
         schema:
-          maxLength: 9
-          minLength: 9
-          pattern: ^[0-9]*$
+          pattern: ^[0-9]{9}$
           type: string
           example: "555555021"
       responses:
@@ -2801,9 +2785,7 @@ components:
       style: simple
       explode: false
       schema:
-        maxLength: 9
-        minLength: 9
-        pattern: ^[0-9]*$
+        pattern: ^[0-9]{9}$
         type: string
         example: "555555021"
   headers:
