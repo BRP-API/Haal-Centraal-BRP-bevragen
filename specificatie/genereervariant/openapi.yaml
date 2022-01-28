@@ -2067,8 +2067,13 @@ components:
         voorvoegsel:
           type: string
           example: de
-        adellijkeTitelPredikaat:
+        adellijkeTitel:
           $ref: '#/components/schemas/Waardetabel'
+        predikaat:
+          $ref: '#/components/schemas/Waardetabel'
+        volledigeNaam:
+          type: string
+          example: Pieter Jan de Vries
     NaamInOnderzoek:
       type: object
       properties:
@@ -2078,7 +2083,9 @@ components:
           type: boolean
         voorvoegsel:
           type: boolean
-        adellijkeTitelPredikaat:
+        adellijkeTitel:
+          type: boolean
+        predikaat:
           type: boolean
         datumIngangOnderzoek:
           $ref: '#/components/schemas/DatumOnvolledig'

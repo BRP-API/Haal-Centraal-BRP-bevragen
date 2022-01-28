@@ -877,8 +877,13 @@ components:
         voorvoegsel:
           type: "string"
           example: "de"
-        adellijkeTitelPredikaat:
+        adellijkeTitel:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+        predikaat:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+        volledigeNaam:
+          type: "string"
+          example: "Pieter Jan de Vries"
     NaamInOnderzoek:
       type: "object"
       description: |
@@ -890,7 +895,9 @@ components:
           type: boolean
         voorvoegsel:
           type: boolean
-        adellijkeTitelPredikaat:
+        adellijkeTitel:
+          type: boolean
+        predikaat:
           type: boolean
         datumIngangOnderzoek:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"

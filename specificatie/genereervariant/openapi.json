@@ -2651,8 +2651,15 @@
             "type" : "string",
             "example" : "de"
           },
-          "adellijkeTitelPredikaat" : {
+          "adellijkeTitel" : {
             "$ref" : "#/components/schemas/Waardetabel"
+          },
+          "predikaat" : {
+            "$ref" : "#/components/schemas/Waardetabel"
+          },
+          "volledigeNaam" : {
+            "type" : "string",
+            "example" : "Pieter Jan de Vries"
           }
         }
       },
@@ -2668,7 +2675,10 @@
           "voorvoegsel" : {
             "type" : "boolean"
           },
-          "adellijkeTitelPredikaat" : {
+          "adellijkeTitel" : {
+            "type" : "boolean"
+          },
+          "predikaat" : {
             "type" : "boolean"
           },
           "datumIngangOnderzoek" : {
