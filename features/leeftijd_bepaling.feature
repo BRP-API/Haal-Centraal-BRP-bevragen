@@ -35,10 +35,15 @@ Scenario: Alleen jaar van geboorte datum is bekend
 	Dan is attribuut leeftijd niet aanwezig
 
 Scenario: Persoon is overleden
-	Gegeven een ingeschreven persoon met geboortedatum 26 mei 1953
-	En de ingeschreven persoon is overleden
-	Als de ingeschreven persoon op <raadpleeg datum> wordt geraadpleegd
+	Gegeven de persoon met burgerservicenummer "999993197" is overleden op 28-04-2019
+	Als de ingeschreven persoon met burgerservicenummer 999993197 wordt geraadpleegd met fields=leeftijd
 	Dan is attribuut leeftijd niet aanwezig
+
+Scenario: leeftijd wordt wel geleverd bij een overleden kind (omdat alleen gegevens van de persoonslijst van de gevraagde persoon worden gebruikt)
+	Gegeven de persoon met burgerservicenummer "999991280" heeft een kind met burgerservicenummer "999993197"
+	En de persoon met burgerservicenummer "999993197" is overleden op 28-04-2019
+	Als de ingeschreven persoon met burgerservicenummer 999994268 wordt geraadpleegd met fields=kinderen
+	Dan heeft het kind met burgerservicenummer "999993197" een attribuut "leeftijd" met een waarde
 
 Abstract Scenario: Geboren op 29 februari in een schrikkeljaar
 	Gegeven een ingeschreven persoon met 29 februari 1996
