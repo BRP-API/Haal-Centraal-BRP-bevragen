@@ -90,12 +90,13 @@
         }, {
           "name" : "geslachtsaanduiding",
           "in" : "query",
-          "description" : "Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.\n",
+          "description" : "Geeft aan wat het geslacht is van persoon.\n",
           "required" : false,
           "style" : "form",
           "explode" : true,
           "schema" : {
-            "$ref" : "#/components/schemas/Geslacht_enum"
+            "type" : "string",
+            "example" : "V"
           }
         }, {
           "name" : "inclusiefOverledenPersonen",
@@ -2245,7 +2246,7 @@
             "description" : "Gegevens mogen niet worden verstrekt aan derden / maatschappelijke instellingen.\n"
           },
           "geslachtsaanduiding" : {
-            "$ref" : "#/components/schemas/Geslacht_enum"
+            "$ref" : "#/components/schemas/Waardetabel"
           },
           "leeftijd" : {
             "type" : "integer",
@@ -2422,10 +2423,10 @@
             "example" : "555555021"
           },
           "geslachtsaanduiding" : {
-            "$ref" : "#/components/schemas/Geslacht_enum"
+            "$ref" : "#/components/schemas/Waardetabel"
           },
           "ouderAanduiding" : {
-            "$ref" : "#/components/schemas/OuderAanduiding_enum"
+            "$ref" : "#/components/schemas/Waardetabel"
           },
           "datumIngangFamilierechtelijkeBetrekking" : {
             "$ref" : "#/components/schemas/DatumOnvolledig"
@@ -2556,10 +2557,10 @@
             "example" : "555555021"
           },
           "geslachtsaanduiding" : {
-            "$ref" : "#/components/schemas/Geslacht_enum"
+            "$ref" : "#/components/schemas/Waardetabel"
           },
           "soortVerbintenis" : {
-            "$ref" : "#/components/schemas/SoortVerbintenis_enum"
+            "$ref" : "#/components/schemas/Waardetabel"
           },
           "naam" : {
             "$ref" : "#/components/schemas/Naam"
@@ -2787,7 +2788,7 @@
               "example" : "baron Van den Aedel"
             },
             "aanduidingNaamgebruik" : {
-              "$ref" : "#/components/schemas/Naamgebruik_enum"
+              "$ref" : "#/components/schemas/Waardetabel"
             },
             "inOnderzoek" : {
               "$ref" : "#/components/schemas/NaamPersoonInOnderzoek"
@@ -2814,7 +2815,7 @@
         "type" : "object",
         "properties" : {
           "aanduidingBijzonderNederlanderschap" : {
-            "$ref" : "#/components/schemas/AanduidingBijzonderNederlanderschap_enum"
+            "$ref" : "#/components/schemas/AanduidingBijzonderNederlanderschap"
           },
           "datumIngangGeldigheid" : {
             "$ref" : "#/components/schemas/DatumOnvolledig"
@@ -2853,7 +2854,7 @@
         "type" : "object",
         "properties" : {
           "reden" : {
-            "$ref" : "#/components/schemas/RedenOpschortingBijhouding_enum"
+            "$ref" : "#/components/schemas/Waardetabel"
           }
         }
       },
@@ -2990,7 +2991,7 @@
         "type" : "object",
         "properties" : {
           "functieAdres" : {
-            "$ref" : "#/components/schemas/SoortAdres_enum"
+            "$ref" : "#/components/schemas/Waardetabel"
           },
           "adresregel1" : {
             "type" : "string",
@@ -3034,7 +3035,7 @@
               "example" : "0226010000038820"
             },
             "aanduidingBijHuisnummer" : {
-              "$ref" : "#/components/schemas/AanduidingBijHuisnummer_enum"
+              "$ref" : "#/components/schemas/Waardetabel"
             },
             "nummeraanduidingIdentificatie" : {
               "type" : "string",
@@ -3042,7 +3043,7 @@
               "example" : "0518200000366054"
             },
             "functieAdres" : {
-              "$ref" : "#/components/schemas/SoortAdres_enum"
+              "$ref" : "#/components/schemas/Waardetabel"
             },
             "indicatieVestigingVanuitBuitenland" : {
               "type" : "boolean",
@@ -3184,7 +3185,7 @@
             "example" : true
           },
           "indicatieGezagMinderjarige" : {
-            "$ref" : "#/components/schemas/IndicatieGezagMinderjarige_enum"
+            "$ref" : "#/components/schemas/Waardetabel"
           },
           "inOnderzoek" : {
             "$ref" : "#/components/schemas/GezagsverhoudingInOnderzoek"
@@ -3357,50 +3358,16 @@
         },
         "deprecated" : true
       },
-      "AanduidingBijzonderNederlanderschap_enum" : {
-        "type" : "string",
-        "description" : "Geeft aan dat de persoon behandeld wordt als Nederlander, of dat door de rechter is vastgesteld dat de persoon niet de Nederlandse nationaliteit bezit\n* `behandeld_als_nederlander` - B\n* `vastgesteld_niet_nederlander` - V\n",
-        "enum" : [ "behandeld_als_nederlander", "vastgesteld_niet_nederlander" ]
-      },
-      "AanduidingBijHuisnummer_enum" : {
-        "type" : "string",
-        "description" : "De aanduiding die wordt gebruikt voor adressen die geen straatnaam en huisnummeraanduidingen hebben\n* `tegenover` - to\n* `bij` - by\n",
-        "enum" : [ "tegenover", "bij" ]
-      },
-      "Geslacht_enum" : {
-        "type" : "string",
-        "description" : "Geeft aan dat de persoon een man of vrouw is, of dat het geslacht (nog) onbekend is\n* `man` - M\n* `vrouw` - V\n* `onbekend` - O\n",
-        "enum" : [ "man", "vrouw", "onbekend" ]
-      },
-      "IndicatieGezagMinderjarige_enum" : {
-        "type" : "string",
-        "description" : "Geeft aan wie het gezag heeft over de minderjarige persoon.\n* `ouder1` - 1\n* `ouder2` - 2\n* `derden` - D\n* `ouder1_en_derde` - 1D\n* `ouder2_en_derde` - 2D\n* `ouder1_en_ouder2` - 12\n",
-        "enum" : [ "ouder1", "ouder2", "derden", "ouder1_en_derde", "ouder2_en_derde", "ouder1_en_ouder2" ]
-      },
-      "Naamgebruik_enum" : {
-        "type" : "string",
-        "description" : "De manier waarop de geslachtsnaam van persoon en partner van persoon moet worden verwerkt in de manier waarop persoon wil worden aangesproken\n* `eigen` - E - gebruik alleen de eigen naam\n* `eigen_partner` - N - gebruik de eigen naam voor de partnernaam\n* `partner` - P gebruik alleen de partnernaam\n* `partner_eigen` - V - gebruik de partnernaam voor de eigen naam.\n\n\nDe aanduiding naamgebruik is verwerkt in Aanhef, Aanschrijfwijze en gebruikInLopendeTekst.\"\n",
-        "enum" : [ "eigen", "eigen_partner", "partner", "partner_eigen" ]
-      },
-      "OuderAanduiding_enum" : {
-        "type" : "string",
-        "description" : "Geeft aan om welke ouder het gaat volgens de BRP\n* `ouder1` - 1\n* `ouder2` - 2\n",
-        "enum" : [ "ouder1", "ouder2" ]
-      },
-      "RedenOpschortingBijhouding_enum" : {
-        "type" : "string",
-        "description" : "Redenen voor opschorting van de bijhouding\n* `overlijden` - O\n* `emigratie` - E\n* `ministerieel_besluit` - M\n* `pl_aangelegd_in_de_rni` - R - opgeschort omdat persoon is ingeschreven in het Register Niet Ingezeten (RNI).\n* `fout` - F\n",
-        "enum" : [ "overlijden", "emigratie", "ministerieel_besluit", "pl_aangelegd_in_de_rni", "fout" ]
-      },
-      "SoortAdres_enum" : {
-        "type" : "string",
-        "description" : "Aanduiding van het soort adres\n* `woonadres` - W - adres waar de persoon woont\n* `briefadres` - B - het adres van een andere persoon of van een instelling (de zogenoemde briefadresgever). Met dit adres van de briefadresgever is de persoon zonder woonadres toch bereikbaar voor de overheid.\n",
-        "enum" : [ "woonadres", "briefadres" ]
-      },
-      "SoortVerbintenis_enum" : {
-        "type" : "string",
-        "description" : "Soort verbintenis die bij de burgerlijke stand is ingeschreven\n* `huwelijk` - H\n* `geregistreerd_partnerschap` - P\n",
-        "enum" : [ "huwelijk", "geregistreerd_partnerschap" ]
+      "AanduidingBijzonderNederlanderschap" : {
+        "type" : "object",
+        "properties" : {
+          "behandeldAlsNederlander" : {
+            "type" : "boolean"
+          },
+          "vastgesteldNietNederlander" : {
+            "type" : "boolean"
+          }
+        }
       },
       "Geboortedatum" : {
         "type" : "object",
@@ -3486,6 +3453,19 @@
         },
         "description" : "Details over fouten in opgegeven parameters"
       },
+      "Waardetabel" : {
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "type" : "string",
+            "example" : "6030"
+          },
+          "omschrijving" : {
+            "type" : "string",
+            "example" : "Nederland"
+          }
+        }
+      },
       "HalLink" : {
         "required" : [ "href" ],
         "type" : "object",
@@ -3547,19 +3527,6 @@
           }
         },
         "description" : "HalCollectionLinks bevat de self link die elke HAL Resource minimaal moet hebben in zijn _links property\n"
-      },
-      "Waardetabel" : {
-        "type" : "object",
-        "properties" : {
-          "code" : {
-            "type" : "string",
-            "example" : "6030"
-          },
-          "omschrijving" : {
-            "type" : "string",
-            "example" : "Nederland"
-          }
-        }
       },
       "Adres" : {
         "type" : "object",
