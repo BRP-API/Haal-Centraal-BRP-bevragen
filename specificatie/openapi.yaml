@@ -1134,7 +1134,7 @@ components:
                       Gegevens over het verblijf of de woonlocatie van een persoon.
       properties:
         functieAdres:
-          $ref: "#/components/schemas/SoortAdres_enum"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
         adresregel1:
           type: "string"
           description: |
