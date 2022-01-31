@@ -7,11 +7,15 @@ namespace HaalCentraal.BrpService.Controllers
     [ApiController]
     public class PersoonController : Generated.ControllerBase
     {
-        public override async Task<ActionResult<IngeschrevenPersoonHalCollectie>> GetIngeschrevenPersonen([FromQuery] string expand, [FromQuery] string fields, [FromQuery] IEnumerable<string> burgerservicenummer, [FromQuery] DateTimeOffset? geboorte__datum, [FromQuery] string geboorte__plaats, [FromQuery] Geslacht_enum? geslachtsaanduiding, [FromQuery] bool? inclusiefOverledenPersonen, [FromQuery] string naam__geslachtsnaam, [FromQuery] string naam__voorvoegsel, [FromQuery] string naam__voornamen, [FromQuery] string verblijfplaats__gemeenteVanInschrijving, [FromQuery] string verblijfplaats__huisletter, [FromQuery] int? verblijfplaats__huisnummer, [FromQuery] string verblijfplaats__huisnummertoevoeging, [FromQuery] string verblijfplaats__nummeraanduidingIdentificatie, [FromQuery] string verblijfplaats__straat, [FromQuery] string verblijfplaats__postcode)
+        public override async Task<ActionResult<IngeschrevenPersoonBeperktHalCollectie>> GetIngeschrevenPersonen([Microsoft.AspNetCore.Mvc.FromBody] ZoekPersonenQuery body)
         {
-            return Ok(new IngeschrevenPersoonHalCollectie
+            return Ok(new IngeschrevenPersoonBeperktHalCollectie
             {
-                _embedded = new IngeschrevenPersoonHalCollectieEmbedded
+                _links = new HalCollectionLinks
+                {
+                    Self = new HalLink { Href = this.ControllerContext.HttpContext.Request.Path }
+                },
+                _embedded = new IngeschrevenPersoonBeperktHalCollectieEmbedded
                 {
                     Ingeschrevenpersonen = new List<IngeschrevenPersoonBeperktHal>
                      {
@@ -36,7 +40,7 @@ namespace HaalCentraal.BrpService.Controllers
             });
         }
 
-        public override Task<ActionResult<IngeschrevenPersoonHalBasis>> GetIngeschrevenPersoon(string burgerservicenummer, [FromQuery] string expand, [FromQuery] string fields)
+        public override Task<ActionResult<IngeschrevenPersoonHal>> GetIngeschrevenPersoon(Guid persoonIdentificatie, [FromQuery] string fields)
         {
             throw new NotImplementedException();
         }

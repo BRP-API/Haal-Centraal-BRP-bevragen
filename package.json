@@ -8,6 +8,7 @@
     "test": "test"
   },
   "scripts": {
+    "nswag:gen": "nswag run src/BrpService/Server.nswag /runtime:Net60 && nswag run src/BrpProxy/DataTransferObjects.nswag /runtime:Net60",
     "oas:generate-client": "openapi-generator-cli generate -i ./specificatie/genereervariant/openapi.yaml --global-property=modelTests=false,apiTests=false,modelDocs=false,apiDocs=false",
     "oas:generate-java-client": "npm run oas:generate-client -- -o ./code/java -g java --additional-properties=dateLibrary=java8,java8=true,optionalProjectFile=false,optionalAssemblyInfo=false",
     "oas:generate-netcore-client": "npm run oas:generate-client -- -o ./code/netcore -g csharp-netcore --additional-properties=optionalProjectFile=false,optionalAssemblyInfo=false",
@@ -37,6 +38,7 @@
     "@stoplight/spectral-cli": "^6.2.0",
     "husky": "^4.3.8",
     "mvn-dl": "^6.0.0",
+    "nswag": "^13.15.5",
     "openapi-to-postmanv2": "^2.13.0"
   },
   "husky": {

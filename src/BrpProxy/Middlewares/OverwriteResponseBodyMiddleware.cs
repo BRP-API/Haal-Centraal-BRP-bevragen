@@ -45,7 +45,7 @@ namespace BrpProxy.Middlewares
         {
             string retval;
 
-            var personen = JsonConvert.DeserializeObject<IngeschrevenPersoonHalCollectie>(payload);
+            var personen = JsonConvert.DeserializeObject<IngeschrevenPersoonBeperktHalCollectie>(payload);
 
             foreach(var persoon in personen?._embedded.Ingeschrevenpersonen)
             {
