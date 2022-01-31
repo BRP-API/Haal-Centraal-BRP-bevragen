@@ -22,7 +22,7 @@ tags:
   description: Zoeken ingeschreven personen
 paths:
   /ingeschrevenpersonen:
-    get:
+    post:
       tags:
       - Ingeschreven Personen
       summary: Vindt personen
@@ -33,17 +33,17 @@ paths:
         Default krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.
 
 
-        Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/fields_extensie.feature)
+        Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/fields_extensie.feature)
 
 
         1.  Persoon
             -  geboorte__datum
-            -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)
+            -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)
 
 
         2.  Persoon
             -  verblijfplaats__gemeenteVanInschrijving
-            -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)
+            -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)
 
 
         3.  Persoon
@@ -56,7 +56,7 @@ paths:
 
 
         5.  Straat
-            -  verblijfplaats__straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) )
+            -  verblijfplaats__straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) )
             -  verblijfplaats__gemeenteVanInschrijving
             -  verblijfplaats__huisnummer
 
@@ -64,171 +64,11 @@ paths:
         6.  Adres
             -  verblijfplaats__nummeraanduidingIdentificatie
       operationId: GetIngeschrevenPersonen
-      parameters:
-      - name: expand
-        in: query
-        description: Hiermee kun je opgeven welke gerelateerde resources meegeleverd
-          moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of
-          enkele properties geef je in de expand parameter kommagescheiden op. Properties
-          die je wil ontvangen geef je op met de resource-naam gevolgd door de property
-          naam, met daartussen een punt. In de definitie van het antwoord kun je bij
-          _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie
-          [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature).
-        required: false
-        deprecated: true
-        schema:
-          type: string
-      - name: fields
-        in: query
-        description: Hiermee kun je de inhoud van de resource naar behoefte aanpassen
-          door een door komma's gescheiden lijst van property namen op te geven. Bij
-          opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven.
-          Wanneer de fields parameter niet is opgegeven, worden alle properties met
-          een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature)
-        required: false
-        schema:
-          type: string
-      - name: burgerservicenummer
-        in: query
-        description: |
-          Uniek persoonsnummer.
-        required: false
-        explode: false
-        schema:
-          type: array
-          items:
-            maxLength: 9
-            minLength: 9
-            pattern: ^[0-9]*$
-            type: string
-        example:
-        - "999993653"
-        - "999991723"
-        - "999995078"
-      - name: geboorte__datum
-        in: query
-        description: |
-          Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/parametervalidatie.feature)
-        required: false
-        schema:
-          type: string
-          format: date
-          example: 1964-09-24
-      - name: geboorte__plaats
-        in: query
-        description: |
-          Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).**
-        required: false
-        schema:
-          maxLength: 40
-          type: string
-          example: Utrecht
-      - name: geslachtsaanduiding
-        in: query
-        description: |
-          Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.
-        required: false
-        schema:
-          type: string
-          example: V
-      - name: inclusiefOverledenPersonen
-        in: query
-        description: |
-          Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/overleden_personen.feature)
-        required: false
-        schema:
-          type: boolean
-          example: true
-      - name: naam__geslachtsnaam
-        in: query
-        description: |
-          De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).**
-        required: false
-        schema:
-          maxLength: 200
-          type: string
-          example: Vries
-      - name: naam__voorvoegsel
-        in: query
-        description: |
-          Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).**
-        required: false
-        schema:
-          maxLength: 10
-          type: string
-          example: de
-      - name: naam__voornamen
-        in: query
-        description: |
-          De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).**
-        required: false
-        schema:
-          maxLength: 200
-          type: string
-          example: Dirk
-      - name: verblijfplaats__gemeenteVanInschrijving
-        in: query
-        description: |
-          Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.
-        required: false
-        schema:
-          maxLength: 4
-          type: string
-          example: "0518"
-      - name: verblijfplaats__huisletter
-        in: query
-        description: |
-          Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.
-        required: false
-        schema:
-          maxLength: 1
-          type: string
-          example: a
-      - name: verblijfplaats__huisnummer
-        in: query
-        description: |
-          Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.
-        required: false
-        schema:
-          maximum: 99999
-          type: integer
-          example: 14
-      - name: verblijfplaats__huisnummertoevoeging
-        in: query
-        description: |
-          Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.
-        required: false
-        schema:
-          maxLength: 4
-          type: string
-          example: bis
-      - name: verblijfplaats__nummeraanduidingIdentificatie
-        in: query
-        description: |
-          Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
-        required: false
-        schema:
-          maxLength: 16
-          type: string
-          example: "0518200000366054"
-      - name: verblijfplaats__straat
-        in: query
-        description: |
-          Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/case_insensitive.feature).
-        required: false
-        schema:
-          maxLength: 80
-          type: string
-          example: Tulpstraat
-      - name: verblijfplaats__postcode
-        in: query
-        description: |
-          De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.
-        required: false
-        schema:
-          pattern: ^[1-9]{1}[0-9]{3}[A-Z]{2}$
-          type: string
-          example: 2341SX
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ZoekPersonenQuery'
       responses:
         "200":
           description: |
@@ -239,9 +79,9 @@ paths:
             warning:
               $ref: '#/components/headers/warning'
           content:
-            application/hal+json:
+            application/json:
               schema:
-                $ref: '#/components/schemas/IngeschrevenPersoonHalCollectie'
+                $ref: '#/components/schemas/IngeschrevenPersoonBeperktHalCollectie'
         "400":
           description: Bad Request
           headers:
@@ -377,7 +217,7 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/Foutbericht'
-  /ingeschrevenpersonen/{burgerservicenummer}:
+  /ingeschrevenpersonen/{persoonIdentificatie}:
     get:
       tags:
       - Ingeschreven Personen
@@ -385,43 +225,19 @@ paths:
       description: |
         Raadpleeg een (overleden) persoon.
 
-        Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/fields_extensie.feature).
+        Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/fields_extensie.feature).
       operationId: GetIngeschrevenPersoon
       parameters:
-      - name: burgerservicenummer
+      - name: persoonIdentificatie
         in: path
-        description: |
-          Uniek persoonsnummer
         required: true
         schema:
-          maxLength: 9
-          minLength: 9
-          pattern: ^[0-9]*$
-          type: string
-          example: "555555021"
-      - name: expand
-        in: query
-        description: Hiermee kun je opgeven welke gerelateerde resources meegeleverd
-          moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of
-          enkele properties geef je in de expand parameter kommagescheiden op. Properties
-          die je wil ontvangen geef je op met de resource-naam gevolgd door de property
-          naam, met daartussen een punt. In de definitie van het antwoord kun je bij
-          _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie
-          [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature).
-        required: false
-        deprecated: true
-        schema:
-          type: string
+          $ref: '#/components/schemas/PersoonIdentificatie'
       - name: fields
         in: query
-        description: Hiermee kun je de inhoud van de resource naar behoefte aanpassen
-          door een door komma's gescheiden lijst van property namen op te geven. Bij
-          opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven.
-          Wanneer de fields parameter niet is opgegeven, worden alle properties met
-          een waarde teruggegeven. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature)
-        required: false
+        required: true
         schema:
-          type: string
+          $ref: '#/components/schemas/Fields'
       responses:
         "200":
           description: |
@@ -588,13 +404,13 @@ paths:
                 $ref: '#/components/schemas/Foutbericht'
 components:
   schemas:
-    IngeschrevenPersoonHalCollectie:
+    IngeschrevenPersoonBeperktHalCollectie:
       type: object
       properties:
         _links:
           $ref: '#/components/schemas/HalCollectionLinks'
         _embedded:
-          $ref: '#/components/schemas/IngeschrevenPersoonHalCollectieEmbedded'
+          $ref: '#/components/schemas/IngeschrevenPersoonBeperktHalCollectieEmbedded'
     HalCollectionLinks:
       type: object
       properties:
@@ -620,7 +436,7 @@ components:
     Href:
       type: string
       example: https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}
-    IngeschrevenPersoonHalCollectieEmbedded:
+    IngeschrevenPersoonBeperktHalCollectieEmbedded:
       type: object
       properties:
         ingeschrevenpersonen:
@@ -630,14 +446,106 @@ components:
     IngeschrevenPersoonBeperktHal:
       allOf:
       - $ref: '#/components/schemas/IngeschrevenPersoonBeperkt'
-      - properties:
+      - type: object
+        properties:
           _links:
-            $ref: '#/components/schemas/IngeschrevenPersoonBeperktLinks'
-    IngeschrevenPersoonBeperktLinks:
+            $ref: '#/components/schemas/HalCollectionLinks'
+    ZoekPersonenQuery:
+      required:
+      - fields
       type: object
       properties:
-        self:
-          $ref: '#/components/schemas/HalLink'
+        fields:
+          $ref: '#/components/schemas/Fields'
+        burgerservicenummer:
+          type: array
+          items:
+            $ref: '#/components/schemas/Burgerservicenummer'
+        geboortedatum:
+          type: string
+          description: |
+            Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/parametervalidatie.feature)
+          format: date
+          example: 1964-09-24
+        geboorteplaats:
+          maxLength: 40
+          pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ '\-\']{1,40}(\?+|\*)?$
+          type: string
+          description: |
+            Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
+          example: Utrecht
+        geslachtsaanduiding:
+          pattern: ^([Mm]|[Vv]|[Oo])$
+          type: string
+          description: |
+            Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.
+          example: V
+        inclusiefOverledenPersonen:
+          type: boolean
+          description: |
+            Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/overleden_personen.feature)
+          example: true
+        geslachtsnaam:
+          pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ '\-\']{1,200}(\?+|\*)?$
+          type: string
+          description: |
+            De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
+          example: Vries
+        voorvoegsel:
+          pattern: ^[a-zA-Z0-9À-ÿ' '\-\']{1,10}$
+          type: string
+          description: |
+            Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
+          example: de
+        voornamen:
+          pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ' '\-\']{1,200}(\?+|\*)?$
+          type: string
+          description: |
+            De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
+          example: Dirk
+        gemeenteVanInschrijving:
+          pattern: ^[0-9]{4}$
+          type: string
+          description: |
+            Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.
+          example: "0518"
+        huisletter:
+          pattern: ^[a-zA-Z]{1}$
+          type: string
+          description: |
+            Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.
+          example: a
+        huisnummer:
+          maximum: 99999
+          minimum: 1
+          type: integer
+          description: |
+            Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.
+          example: 14
+        huisnummertoevoeging:
+          pattern: ^[a-zA-Z0-9]{1,4}$
+          type: string
+          description: |
+            Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.
+          example: bis
+        nummeraanduidingIdentificatie:
+          pattern: ^[0-9]{16}$
+          type: string
+          description: |
+            Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
+          example: "0518200000366054"
+        straat:
+          pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ '\-\']{1,80}(\?+|\*)?$
+          type: string
+          description: |
+            Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).
+          example: Tulpstraat
+        postcode:
+          pattern: ^[1-9]{1}[0-9]{3}[ ]?[A-Za-z]{2}$
+          type: string
+          description: |
+            De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.
+          example: 2341SX
     BadRequestFoutbericht:
       allOf:
       - $ref: '#/components/schemas/Foutbericht'
@@ -743,6 +651,19 @@ components:
           $ref: '#/components/schemas/HalLink'
         adres:
           $ref: '#/components/schemas/HalLink'
+    PersoonIdentificatie:
+      type: string
+      description: |
+        De unieke identificatie van een persoon
+      format: uuid
+    Fields:
+      maxLength: 924
+      pattern: ^[a-zA-Z.,_]+$
+      type: string
+      description: |
+        Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen op te geven.
+        Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven.
+        Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature)
     IngeschrevenPersoonBeperkt:
       allOf:
       - $ref: '#/components/schemas/IngeschrevenPersoonBasis'
@@ -761,9 +682,10 @@ components:
     IngeschrevenPersoonBasis:
       type: object
       properties:
+        identificatie:
+          $ref: '#/components/schemas/PersoonIdentificatie'
         burgerservicenummer:
-          type: string
-          example: "555555021"
+          $ref: '#/components/schemas/Burgerservicenummer'
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/AbstractGeheimhoudingPersoonsgegevens'
         geslachtsaanduiding:
@@ -773,6 +695,10 @@ components:
           description: |
             Leeftijd in jaren op het moment van bevragen.
           example: 34
+    Burgerservicenummer:
+      pattern: ^[0-9]{9}$
+      type: string
+      example: "555555021"
     Waardetabel:
       type: object
       properties:
@@ -1654,9 +1580,10 @@ components:
     Kind:
       type: object
       properties:
+        identificatie:
+          $ref: '#/components/schemas/PersoonIdentificatie'
         burgerservicenummer:
-          type: string
-          example: "555555021"
+          $ref: '#/components/schemas/Burgerservicenummer'
         leeftijd:
           type: integer
           description: |
@@ -1704,9 +1631,10 @@ components:
     Ouder:
       type: object
       properties:
+        identificatie:
+          $ref: '#/components/schemas/PersoonIdentificatie'
         burgerservicenummer:
-          type: string
-          example: "555555021"
+          $ref: '#/components/schemas/Burgerservicenummer'
         geslachtsaanduiding:
           $ref: '#/components/schemas/Waardetabel'
         ouderAanduiding:
@@ -1760,9 +1688,10 @@ components:
     Partner:
       type: object
       properties:
+        identificatie:
+          $ref: '#/components/schemas/PersoonIdentificatie'
         burgerservicenummer:
-          type: string
-          example: "555555021"
+          $ref: '#/components/schemas/Burgerservicenummer'
         geslachtsaanduiding:
           $ref: '#/components/schemas/Waardetabel'
         soortVerbintenis:
