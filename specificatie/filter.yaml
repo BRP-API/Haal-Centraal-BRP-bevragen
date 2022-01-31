@@ -1,0 +1,24 @@
+openapi: 3.0.3
+info:
+  title: Filter definities
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  parameters:
+    Fields:
+      name: fields
+      in: query
+      required: true
+      schema:
+        $ref: '#/components/schemas/Fields'
+
+  schemas:
+    Fields:
+      description: |
+          Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen op te geven.
+          Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven.
+          Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature)
+      type: string
+      pattern: ^[a-zA-Z.,_]+$
+      maxLength: 924

@@ -11,9 +11,10 @@ components:
       description: |
                     Gegevens over een kind van de persoon.
       properties:
+        identificatie:
+          $ref: 'ingeschrevenpersoon.yaml#/components/schemas/PersoonIdentificatie'
         burgerservicenummer:
-          type: "string"
-          example: "555555021"
+          $ref: 'ingeschrevenpersoon.yaml#/components/schemas/Burgerservicenummer'
         leeftijd:
           type: integer
           description: |

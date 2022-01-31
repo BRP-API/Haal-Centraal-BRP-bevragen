@@ -12,7 +12,7 @@ components:
         europeesKiesrecht:
           type: boolean
           description: |
-                        Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement.
+            Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement.
           example: true
         uitgeslotenVanKiesrecht:
           type: boolean

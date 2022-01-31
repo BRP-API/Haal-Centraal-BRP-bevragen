@@ -11,9 +11,10 @@ components:
       description: |
                     Gegevens over een gesloten huwelijk/geregistreerd partnerschap van de persoon.
       properties:
+        identificatie:
+          $ref: 'ingeschrevenpersoon.yaml#/components/schemas/PersoonIdentificatie'
         burgerservicenummer:
-          type: "string"
-          example: "555555021"
+          $ref: 'ingeschrevenpersoon.yaml#/components/schemas/Burgerservicenummer'
         geslachtsaanduiding:
           $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
         soortVerbintenis:

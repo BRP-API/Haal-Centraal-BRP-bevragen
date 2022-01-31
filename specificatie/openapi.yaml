@@ -23,5 +23,5 @@ tags:
 paths:
   /ingeschrevenpersonen:
     $ref: 'zoek-personen.yaml#/paths/~1ingeschrevenpersonen'
-  /ingeschrevenpersonen/{burgerservicenummer}:
-    $ref: 'raadpleeg-persoon.yaml#/paths/~1ingeschrevenpersonen~1{burgerservicenummer}'
+  /ingeschrevenpersonen/{persoonIdentificatie}:
+    $ref: 'raadpleeg-persoon.yaml#/paths/~1ingeschrevenpersonen~1{persoonIdentificatie}'

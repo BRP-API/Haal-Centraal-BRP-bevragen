@@ -5,13 +5,30 @@ info:
   contact: {}
 paths: {}
 components:
+  parameters:
+    PersoonIdentificatie:
+      name: persoonIdentificatie
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/PersoonIdentificatie'
   schemas:
+    PersoonIdentificatie:
+      description: |
+        De unieke identificatie van een persoon
+      type: string
+      format: uuid
+    Burgerservicenummer:
+      type: string
+      pattern: "^[0-9]{9}$"
+      example: "555555021"
     IngeschrevenPersoonBasis:
       type: "object"
       properties:
+        identificatie:
+          $ref: '#/components/schemas/PersoonIdentificatie'
         burgerservicenummer:
-            type: "string"
-            example: "555555021"
+          $ref: '#/components/schemas/Burgerservicenummer'
         geheimhoudingPersoonsgegevens:
           $ref: 'geheimhouding.yaml#/components/schemas/AbstractGeheimhoudingPersoonsgegevens'
         geslachtsaanduiding:
