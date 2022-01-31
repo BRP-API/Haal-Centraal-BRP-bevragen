@@ -87,99 +87,209 @@ components:
     ZoekPersonenQuery:
       type: object
       required:
+        - type
         - fields
+      discriminator:
+        propertyName: type
+        mapping:
+          ZoekMetGeslachtsnaamEnGeboortedatum: '#/components/schemas/ZoekMetGeslachtsnaamEnGeboortedatum'
+          ZoekMetGeslachtsnaamEnGemeenteVanInschrijving: '#/components/schemas/ZoekMetGeslachtsnaamEnGemeenteVanInschrijving'
+          ZoekMetBurgerservicenummer: '#/components/schemas/ZoekMetBurgerservicenummer'
+          ZoekMetPostcodeEnHuisnummer: '#/components/schemas/ZoekMetPostcodeEnHuisnummer'
+          ZoekMetStraatHuisnummerEnGemeenteVanInschrijving: '#/components/schemas/ZoekMetStraatHuisnummerEnGemeenteVanInschrijving'
+          ZoekMetNummeraanduidingIdentificatie: '#/components/schemas/ZoekMetNummeraanduidingIdentificatie'
       properties:
+        type:
+          type: string
         fields:
           $ref: 'filter.yaml#/components/schemas/Fields'
-        burgerservicenummer:
-          type: array
-          items:
-            $ref: 'ingeschrevenpersoon.yaml#/components/schemas/Burgerservicenummer'
-        geboortedatum:
-          description: |
-            Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/parametervalidatie.feature)
-          type: string
-          format: date
-          example: "1964-09-24"
-        geboorteplaats:
-          description: |
-            Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
-          type: string
-          pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ '\-\']{1,40}(\?+|\*)?$
-          maxLength: 40
-          example: "Utrecht"
-        geslachtsaanduiding:
-          description: |
-            Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.
-          type: string
-          pattern: ^([Mm]|[Vv]|[Oo])$
-          example: "V"
         inclusiefOverledenPersonen:
           description: |
             Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/overleden_personen.feature)
           type: boolean
           example: true
-        geslachtsnaam:
-          description: |
-            De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
-          type: string
-          pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ '\-\']{1,200}(\?+|\*)?$
-          example: "Vries"
-        voorvoegsel:
-          description: |
-            Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
-          type: string
-          pattern: ^[a-zA-Z0-9À-ÿ' '\-\']{1,10}$
-          example: "de"
-        voornamen:
-          description: |
-            De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
-          type: string
-          pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ' '\-\']{1,200}(\?+|\*)?$
-          example: "Dirk"
-        gemeenteVanInschrijving:
-          description: |
-            Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.
-          type: string
-          pattern: ^[0-9]{4}$
-          example: "0518"
-        huisletter:
-          description: |
-            Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.
-          type: string
-          pattern: ^[a-zA-Z]{1}$
-          example: "a"
-        huisnummer:
-          description: |
-            Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.
-          type: integer
-          minimum: 1
-          maximum: 99999
-          example: 14
-        huisnummertoevoeging:
-          description: |
-            Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.
-          type: string
-          pattern: ^[a-zA-Z0-9]{1,4}$
-          example: "bis"
-        nummeraanduidingIdentificatie:
-          description: |
-            Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
-          type: string
-          pattern: ^[0-9]{16}$
-          example: "0518200000366054"
-        straat:
-          description: |
-            Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).
-          type: string
-          pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ '\-\']{1,80}(\?+|\*)?$
-          example: "Tulpstraat"
-        postcode:
-          description: |
-            De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.
-          type: string
-          pattern: ^[1-9]{1}[0-9]{3}[ ]?[A-Za-z]{2}$
-          example: "2341SX"
+    ZoekMetBurgerservicenummer:
+      required:
+        - burgerservicenummer
+      allOf:
+        - $ref: '#/components/schemas/ZoekPersonenQuery'
+        - type: object
+          properties:
+            burgerservicenummer:
+              type: array
+              items:
+                $ref: 'ingeschrevenpersoon.yaml#/components/schemas/Burgerservicenummer'
+              minItems: 1
+              maxItems: 10
+    ZoekMetGeslachtsnaamEnGeboortedatum:
+      required:
+        - geslachtsnaam
+        - geboortedatum
+      allOf:
+        - $ref: '#/components/schemas/ZoekPersonenQuery'
+        - type: object
+          properties:
+            geboortedatum:
+              description: |
+                Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/parametervalidatie.feature)
+              type: string
+              format: date
+              example: "1964-09-24"
+            geboorteplaats:
+              description: |
+                Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
+              type: string
+              pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ '\-\']{1,40}(\?+|\*)?$
+              maxLength: 40
+              example: "Utrecht"
+            geslachtsnaam:
+              description: |
+                De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
+              type: string
+              pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ '\-\']{1,200}(\?+|\*)?$
+              example: "Vries"
+            geslachtsaanduiding:
+              description: |
+                Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.
+              type: string
+              pattern: ^([Mm]|[Vv]|[Oo])$
+              example: "V"
+            voorvoegsel:
+              description: |
+                Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
+              type: string
+              pattern: ^[a-zA-Z0-9À-ÿ' '\-\']{1,10}$
+              example: "de"
+            voornamen:
+              description: |
+                De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
+              type: string
+              pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ' '\-\']{1,200}(\?+|\*)?$
+              example: "Dirk"
+    ZoekMetGeslachtsnaamEnGemeenteVanInschrijving:
+      required:
+        - geslachtsnaam
+        - gemeenteVanInschrijving
+      allOf:
+        - $ref: '#/components/schemas/ZoekPersonenQuery'
+        - type: object
+          properties:
+            geslachtsaanduiding:
+              description: |
+                Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.
+              type: string
+              pattern: ^([Mm]|[Vv]|[Oo])$
+              example: "V"
+            geslachtsnaam:
+              description: |
+                De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
+              type: string
+              pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ '\-\']{1,200}(\?+|\*)?$
+              example: "Vries"
+            gemeenteVanInschrijving:
+              description: |
+                Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.
+              type: string
+              pattern: ^[0-9]{4}$
+              example: "0518"
+            voorvoegsel:
+              description: |
+                Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
+              type: string
+              pattern: ^[a-zA-Z0-9À-ÿ' '\-\']{1,10}$
+              example: "de"
+            voornamen:
+              description: |
+                De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
+              type: string
+              pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ' '\-\']{1,200}(\?+|\*)?$
+              example: "Dirk"
+    ZoekMetPostcodeEnHuisnummer:
+      required:
+        - postcode
+        - huisnummer
+      allOf:
+        - $ref: '#/components/schemas/ZoekPersonenQuery'
+        - type: object
+          properties:
+            huisletter:
+              description: |
+                Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.
+              type: string
+              pattern: ^[a-zA-Z]{1}$
+              example: "a"
+            huisnummer:
+              description: |
+                Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.
+              type: integer
+              minimum: 1
+              maximum: 99999
+              example: 14
+            huisnummertoevoeging:
+              description: |
+                Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.
+              type: string
+              pattern: ^[a-zA-Z0-9]{1,4}$
+              example: "bis"
+            postcode:
+              description: |
+                De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.
+              type: string
+              pattern: ^[1-9]{1}[0-9]{3}[ ]?[A-Za-z]{2}$
+              example: "2341SX"
+    ZoekMetStraatHuisnummerEnGemeenteVanInschrijving:
+      required:
+        - straat
+        - huisnummer
+        - gemeenteVanInschrijving
+      allOf:
+        - $ref: '#/components/schemas/ZoekPersonenQuery'
+        - type: object
+          properties:
+            huisletter:
+              description: |
+                Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.
+              type: string
+              pattern: ^[a-zA-Z]{1}$
+              example: "a"
+            huisnummer:
+              description: |
+                Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.
+              type: integer
+              minimum: 1
+              maximum: 99999
+              example: 14
+            huisnummertoevoeging:
+              description: |
+                Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.
+              type: string
+              pattern: ^[a-zA-Z0-9]{1,4}$
+              example: "bis"
+            gemeenteVanInschrijving:
+              description: |
+                Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.
+              type: string
+              pattern: ^[0-9]{4}$
+              example: "0518"
+            straat:
+              description: |
+                Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).
+              type: string
+              pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ '\-\']{1,80}(\?+|\*)?$
+              example: "Tulpstraat"
+    ZoekMetNummeraanduidingIdentificatie:
+      required:
+        - nummeraanduidingIdentificatie
+      allOf:
+        - $ref: '#/components/schemas/ZoekPersonenQuery'
+        - type: object
+          properties:
+            nummeraanduidingIdentificatie:
+              description: |
+                Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
+              type: string
+              pattern: ^[0-9]{16}$
+              example: "0518200000366054"
     IngeschrevenPersoonBeperktHalCollectie:
       type: object
       properties:
