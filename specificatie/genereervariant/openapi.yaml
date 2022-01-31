@@ -129,7 +129,8 @@ paths:
           Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.
         required: false
         schema:
-          $ref: '#/components/schemas/Geslacht_enum'
+          type: string
+          example: V
       - name: inclusiefOverledenPersonen
         in: query
         description: |
@@ -637,17 +638,6 @@ components:
       properties:
         self:
           $ref: '#/components/schemas/HalLink'
-    Geslacht_enum:
-      type: string
-      description: |
-        Geeft aan dat de persoon een man of vrouw is, of dat het geslacht (nog) onbekend is
-        * `man` - M
-        * `vrouw` - V
-        * `onbekend` - O
-      enum:
-      - man
-      - vrouw
-      - onbekend
     BadRequestFoutbericht:
       allOf:
       - $ref: '#/components/schemas/Foutbericht'
@@ -777,12 +767,21 @@ components:
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/AbstractGeheimhoudingPersoonsgegevens'
         geslachtsaanduiding:
-          $ref: '#/components/schemas/Geslacht_enum'
+          $ref: '#/components/schemas/Waardetabel'
         leeftijd:
           type: integer
           description: |
             Leeftijd in jaren op het moment van bevragen.
           example: 34
+    Waardetabel:
+      type: object
+      properties:
+        code:
+          type: string
+          example: "6030"
+        omschrijving:
+          type: string
+          example: Nederland
     IngeschrevenPersoon:
       allOf:
       - $ref: '#/components/schemas/IngeschrevenPersoonBasis'
@@ -849,6 +848,9 @@ components:
       - $ref: '#/components/schemas/AbstractPersoonInOnderzoek'
       - type: object
         properties:
+          aanduidingGegevensInOnderzoek:
+            maxLength: 50
+            type: string
           datumIngangOnderzoek:
             $ref: '#/components/schemas/GbaDatum'
     PersoonInOnderzoek:
@@ -868,37 +870,35 @@ components:
         Het nummer van het verstrekte Nederlandse reisdocument.
       example: "546376728"
     NaamBasis:
+      allOf:
+      - $ref: '#/components/schemas/GbaNaamBasis'
+      - type: object
+        properties:
+          voorletters:
+            type: string
+            description: |
+              De voorletters van de persoon, afgeleid van de voornamen.
+            example: P.J.
+    GbaNaamBasis:
       type: object
       properties:
+        voornamen:
+          maxLength: 200
+          type: string
+          description: |
+            De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
+        voorvoegsel:
+          maxLength: 10
+          type: string
+          example: de
         geslachtsnaam:
+          maxLength: 200
           type: string
           description: |
             De achternaam van een persoon.
           example: Vries
-        voorletters:
-          type: string
-          description: |
-            De voorletters van de persoon, afgeleid van de voornamen.
-          example: P.J.
-        voornamen:
-          type: string
-          description: |
-            De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
-          example: Pieter Jan
-        voorvoegsel:
-          type: string
-          example: de
         adellijkeTitelPredikaat:
           $ref: '#/components/schemas/Waardetabel'
-    Waardetabel:
-      type: object
-      properties:
-        code:
-          type: string
-          example: "6030"
-        omschrijving:
-          type: string
-          example: Nederland
     AbstractDatum:
       required:
       - type
@@ -990,7 +990,7 @@ components:
       type: object
       properties:
         reden:
-          $ref: '#/components/schemas/RedenOpschortingBijhouding_enum'
+          $ref: '#/components/schemas/Waardetabel'
     OverlijdenBasis:
       type: object
       properties:
@@ -1004,7 +1004,7 @@ components:
       type: object
       properties:
         functieAdres:
-          $ref: '#/components/schemas/SoortAdres_enum'
+          $ref: '#/components/schemas/Waardetabel'
         adresregel1:
           type: string
           description: |
@@ -1100,7 +1100,7 @@ components:
               Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert.
             example: baron Van den Aedel
           aanduidingNaamgebruik:
-            $ref: '#/components/schemas/Naamgebruik_enum'
+            $ref: '#/components/schemas/Waardetabel'
           inOnderzoek:
             $ref: '#/components/schemas/AbstractNaamPersoonInOnderzoek'
     AbstractNaamPersoonInOnderzoek:
@@ -1120,6 +1120,9 @@ components:
       - $ref: '#/components/schemas/AbstractNaamInOnderzoek'
       - type: object
         properties:
+          aanduidingGegevensInOnderzoek:
+            maxLength: 50
+            type: string
           datumIngangOnderzoek:
             $ref: '#/components/schemas/GbaDatum'
     AbstractNaamInOnderzoek:
@@ -1139,6 +1142,9 @@ components:
       - $ref: '#/components/schemas/AbstractNaamInOnderzoek'
       - type: object
         properties:
+          aanduidingGegevensInOnderzoek:
+            maxLength: 50
+            type: string
           datumIngangOnderzoek:
             $ref: '#/components/schemas/GbaDatum'
     NaamInOnderzoek:
@@ -1158,7 +1164,7 @@ components:
             $ref: '#/components/schemas/AbstractDatum'
     NaamPersoonInOnderzoek:
       allOf:
-      - $ref: '#/components/schemas/AbstractNaamInOnderzoek'
+      - $ref: '#/components/schemas/AbstractNaamPersoonInOnderzoek'
       - properties:
           geslachtsnaam:
             type: boolean
@@ -1216,6 +1222,9 @@ components:
     GbaNationaliteitInOnderzoek:
       type: object
       properties:
+        aanduidingGegevensInOnderzoek:
+          maxLength: 50
+          type: string
         datumIngangOnderzoek:
           $ref: '#/components/schemas/GbaDatum'
     BehandeldAlsNederlander:
@@ -1282,6 +1291,9 @@ components:
       - $ref: '#/components/schemas/AbstractGeboorteInOnderzoek'
       - type: object
         properties:
+          aanduidingGegevensInOnderzoek:
+            maxLength: 50
+            type: string
           datumIngangOnderzoek:
             $ref: '#/components/schemas/GbaDatum'
     GeboorteInOnderzoek:
@@ -1341,6 +1353,9 @@ components:
       - $ref: '#/components/schemas/AbstractOverlijdenInOnderzoek'
       - type: object
         properties:
+          aanduidingGegevensInOnderzoek:
+            maxLength: 50
+            type: string
           datumIngangOnderzoek:
             $ref: '#/components/schemas/GbaDatum'
     OverlijdenInOnderzoek:
@@ -1366,14 +1381,14 @@ components:
               De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.
             example: "0226010000038820"
           aanduidingBijHuisnummer:
-            $ref: '#/components/schemas/AanduidingBijHuisnummer_enum'
+            $ref: '#/components/schemas/Waardetabel'
           nummeraanduidingIdentificatie:
             type: string
             description: |
               Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
             example: "0518200000366054"
           functieAdres:
-            $ref: '#/components/schemas/SoortAdres_enum'
+            $ref: '#/components/schemas/Waardetabel'
           indicatieVestigingVanuitBuitenland:
             type: boolean
             description: |
@@ -1488,6 +1503,9 @@ components:
       - $ref: '#/components/schemas/AbstractVerblijfplaatsInOnderzoek'
       - type: object
         properties:
+          aanduidingGegevensInOnderzoek:
+            maxLength: 50
+            type: string
           datumIngangOnderzoek:
             $ref: '#/components/schemas/GbaDatum'
     VerblijfplaatsInOnderzoek:
@@ -1544,7 +1562,7 @@ components:
             Geeft aan dat de persoon onder curatele is gesteld.
           example: true
         indicatieGezagMinderjarige:
-          $ref: '#/components/schemas/IndicatieGezagMinderjarige_enum'
+          $ref: '#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: '#/components/schemas/AbstractGezagsverhoudingInOnderzoek'
       description: |
@@ -1566,6 +1584,9 @@ components:
       - $ref: '#/components/schemas/AbstractGezagsverhoudingInOnderzoek'
       - type: object
         properties:
+          aanduidingGegevensInOnderzoek:
+            maxLength: 50
+            type: string
           datumIngangOnderzoek:
             $ref: '#/components/schemas/GbaDatum'
     GezagsverhoudingInOnderzoek:
@@ -1612,6 +1633,9 @@ components:
       - $ref: '#/components/schemas/AbstractVerblijfstitelInOnderzoek'
       - type: object
         properties:
+          aanduidingGegevensInOnderzoek:
+            maxLength: 50
+            type: string
           datumIngangOnderzoek:
             $ref: '#/components/schemas/GbaDatum'
     VerblijfstitelInOnderzoek:
@@ -1663,6 +1687,9 @@ components:
       - $ref: '#/components/schemas/AbstractKindInOnderzoek'
       - type: object
         properties:
+          aanduidingGegevensInOnderzoek:
+            maxLength: 50
+            type: string
           datumIngangOnderzoek:
             $ref: '#/components/schemas/GbaDatum'
     KindInOnderzoek:
@@ -1681,9 +1708,9 @@ components:
           type: string
           example: "555555021"
         geslachtsaanduiding:
-          $ref: '#/components/schemas/Geslacht_enum'
+          $ref: '#/components/schemas/Waardetabel'
         ouderAanduiding:
-          $ref: '#/components/schemas/OuderAanduiding_enum'
+          $ref: '#/components/schemas/Waardetabel'
         datumIngangFamilierechtelijkeBetrekking:
           $ref: '#/components/schemas/AbstractDatum'
         naam:
@@ -1712,6 +1739,9 @@ components:
       - $ref: '#/components/schemas/AbstractOuderInOnderzoek'
       - type: object
         properties:
+          aanduidingGegevensInOnderzoek:
+            maxLength: 50
+            type: string
           datumIngangOnderzoek:
             $ref: '#/components/schemas/AbstractDatum'
     OuderInOnderzoek:
@@ -1734,9 +1764,9 @@ components:
           type: string
           example: "555555021"
         geslachtsaanduiding:
-          $ref: '#/components/schemas/Geslacht_enum'
+          $ref: '#/components/schemas/Waardetabel'
         soortVerbintenis:
-          $ref: '#/components/schemas/SoortVerbintenis_enum'
+          $ref: '#/components/schemas/Waardetabel'
         naam:
           $ref: '#/components/schemas/Naam'
         geboorte:
@@ -1764,6 +1794,9 @@ components:
       - $ref: '#/components/schemas/AbstractPartnerInOnderzoek'
       - type: object
         properties:
+          aanduidingGegevensInOnderzoek:
+            maxLength: 50
+            type: string
           datumIngangOnderzoek:
             $ref: '#/components/schemas/GbaDatum'
     PartnerInOnderzoek:
@@ -1812,6 +1845,9 @@ components:
       - $ref: '#/components/schemas/AbstractAangaanHuwelijkPartnerschapInOnderzoek'
       - type: object
         properties:
+          aanduidingGegevensInOnderzoek:
+            maxLength: 50
+            type: string
           datumIngangOnderzoek:
             $ref: '#/components/schemas/GbaDatum'
     AangaanHuwelijkPartnerschapInOnderzoek:
@@ -1827,30 +1863,6 @@ components:
             type: boolean
           datumIngangOnderzoek:
             $ref: '#/components/schemas/AbstractDatum'
-    RedenOpschortingBijhouding_enum:
-      type: string
-      description: |
-        Redenen voor opschorting van de bijhouding
-        * `overlijden` - O
-        * `emigratie` - E
-        * `ministerieel_besluit` - M
-        * `pl_aangelegd_in_de_rni` - R - opgeschort omdat persoon is ingeschreven in het Register Niet Ingezeten (RNI).
-        * `fout` - F
-      enum:
-      - overlijden
-      - emigratie
-      - ministerieel_besluit
-      - pl_aangelegd_in_de_rni
-      - fout
-    SoortAdres_enum:
-      type: string
-      description: |
-        Aanduiding van het soort adres
-        * `woonadres` - W - adres waar de persoon woont
-        * `briefadres` - B - het adres van een andere persoon of van een instelling (de zogenoemde briefadresgever). Met dit adres van de briefadresgever is de persoon zonder woonadres toch bereikbaar voor de overheid.
-      enum:
-      - woonadres
-      - briefadres
     AbstractLand:
       type: object
       properties:
@@ -1881,72 +1893,12 @@ components:
           onbekend:
             type: boolean
             default: true
-    Naamgebruik_enum:
-      type: string
-      description: |
-        De manier waarop de geslachtsnaam van persoon en partner van persoon moet worden verwerkt in de manier waarop persoon wil worden aangesproken
-        * `eigen` - E - gebruik alleen de eigen naam
-        * `eigen_partner` - N - gebruik de eigen naam voor de partnernaam
-        * `partner` - P gebruik alleen de partnernaam
-        * `partner_eigen` - V - gebruik de partnernaam voor de eigen naam.
-
-
-        De aanduiding naamgebruik is verwerkt in Aanhef, Aanschrijfwijze en gebruikInLopendeTekst."
-      enum:
-      - eigen
-      - eigen_partner
-      - partner
-      - partner_eigen
-    AanduidingBijHuisnummer_enum:
-      type: string
-      description: |
-        De aanduiding die wordt gebruikt voor adressen die geen straatnaam en huisnummeraanduidingen hebben
-        * `tegenover` - to
-        * `bij` - by
-      enum:
-      - tegenover
-      - bij
-    IndicatieGezagMinderjarige_enum:
-      type: string
-      description: |
-        Geeft aan wie het gezag heeft over de minderjarige persoon.
-        * `ouder1` - 1
-        * `ouder2` - 2
-        * `derden` - D
-        * `ouder1_en_derde` - 1D
-        * `ouder2_en_derde` - 2D
-        * `ouder1_en_ouder2` - 12
-      enum:
-      - ouder1
-      - ouder2
-      - derden
-      - ouder1_en_derde
-      - ouder2_en_derde
-      - ouder1_en_ouder2
     Naam:
       allOf:
       - $ref: '#/components/schemas/NaamBasis'
       - properties:
           inOnderzoek:
             $ref: '#/components/schemas/AbstractNaamInOnderzoek'
-    OuderAanduiding_enum:
-      type: string
-      description: |
-        Geeft aan om welke ouder het gaat volgens de BRP
-        * `ouder1` - 1
-        * `ouder2` - 2
-      enum:
-      - ouder1
-      - ouder2
-    SoortVerbintenis_enum:
-      type: string
-      description: |
-        Soort verbintenis die bij de burgerlijke stand is ingeschreven
-        * `huwelijk` - H
-        * `geregistreerd_partnerschap` - P
-      enum:
-      - huwelijk
-      - geregistreerd_partnerschap
   headers:
     api_version:
       schema:
