@@ -56,6 +56,26 @@ De onderstaanden tabellen met de beschreven waarden worden geleverd door de "BRP
     | H                                                | huwelijk                             |
     | P                                                | geregistreerd partnerschap           |
 
+    Voor de enumeratie SoortAdres wordt de tabel met identificatie "soortadres" opgenomen.
+    In de omschrijving wordt de volgende tekst opgenomen : "Aanduiding van de functie van het adres"
+    In de waardetabel worden de volgende waarden opgenomen:
+      | code                                             | omschrijving                         |
+      | ------------------------------------------------ | ------------------------------------ |
+      | W                                                | woonadres                            |
+      | B                                                | briefadres                           |
+
+      Voor de enumeratie indicatieGezagMinderjarige identificatie "indicatiegezagminderjarige" opgenomen.
+      In de omschrijving wordt de volgende tekst opgenomen : "Aanduiding van de functie van het adres"
+      In de waardetabel worden de volgende waarden opgenomen:
+        | code                                             | omschrijving                         |
+        | ------------------------------------------------ | ------------------------------------ |
+        | 1                                                | ouder1                               |
+        | 2                                                | ouder2                               |
+        | D                                                | derden                               |
+        | 1D                                               | ouder1_en_derde                      |
+        | 2D                                               | ouder2_en_derde                      |
+        | 12                                               | ouder1_en_ouder2                     |
+
   Scenario: een onbekende waarde wordt niet opgenomen in de response
     Gegeven in de registratie heeft de AanduidingBijHuisnummer van de verblijfplaats de waarde "naast"
     Als de persoon wordt geraadpleegd
