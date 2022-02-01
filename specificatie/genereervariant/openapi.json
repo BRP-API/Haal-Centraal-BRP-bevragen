@@ -1222,7 +1222,7 @@
       },
       "OnbekendDatum" : {
         "required" : [ "onbekend" ],
-        "description" : "representatie voor een onbekend datum",
+        "description" : "representatie voor een volledig onbekend datum",
         "allOf" : [ {
           "$ref" : "#/components/schemas/AbstractDatum"
         }, {
