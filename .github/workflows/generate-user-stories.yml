@@ -17,11 +17,11 @@ jobs:
           echo -e '---\nlayout: page-with-side-nav\ntitle: User Stories in Ontwikkeling\n---\n' >> user-stories-dev.md
           echo -e '# User stories\n' >> user-stories-dev.md
 
-      - name: List 'v1.4' user stories
+      - name: List 'v2.0' user stories
         uses: lee-dohm/select-matching-issues@v1.2.0
         with:
           format: list
-          query:  label:"v1.4" label:"User Story"
+          query:  label:"v2.0" label:"User Story"
           token: ${{ secrets.GITHUB_TOKEN }}
           path: issues-tmp.md
       - run: |
