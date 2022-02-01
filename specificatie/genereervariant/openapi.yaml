@@ -1271,15 +1271,17 @@ components:
             $ref: '#/components/schemas/AbstractDatum'
           nationaliteit:
             $ref: '#/components/schemas/Waardetabel'
-          redenOpname:
-            $ref: '#/components/schemas/Waardetabel'
           inOnderzoek:
             $ref: '#/components/schemas/NationaliteitInOnderzoek'
     AbstractNationaliteit:
+      required:
+      - type
       type: object
       properties:
         type:
           type: string
+        redenOpname:
+          $ref: '#/components/schemas/Waardetabel'
       discriminator:
         propertyName: type
         mapping:
@@ -1297,8 +1299,10 @@ components:
         properties:
           datumIngangGeldigheid:
             $ref: '#/components/schemas/GbaDatum'
-          datumIngangOpneming:
-            $ref: '#/components/schemas/GbaDatum'
+          nationaliteit:
+            $ref: '#/components/schemas/Waardetabel'
+          aanduidingBijzonderNederlandschap:
+            $ref: '#/components/schemas/Waardetabel'
           inOnderzoek:
             $ref: '#/components/schemas/GbaNationaliteitInOnderzoek'
     GbaNationaliteitInOnderzoek:
@@ -1316,8 +1320,6 @@ components:
         properties:
           datumIngangGeldigheid:
             $ref: '#/components/schemas/AbstractDatum'
-          redenOpname:
-            $ref: '#/components/schemas/Waardetabel'
     VastgesteldNietNederlander:
       allOf:
       - $ref: '#/components/schemas/AbstractNationaliteit'
@@ -1325,8 +1327,6 @@ components:
         properties:
           datumIngangGeldigheid:
             $ref: '#/components/schemas/AbstractDatum'
-          redenOpname:
-            $ref: '#/components/schemas/Waardetabel'
     NationaliteitInOnderzoek:
       type: object
       properties:
