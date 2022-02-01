@@ -18,33 +18,33 @@ paths:
         Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/fields_extensie.feature)
 
 
-        1.  Persoon
-            -  geboorte__datum
-            -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)
+        1.  Zoek met geslachtsnaam en geboortedatum
+            - geboortedatum
+            - geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature))
 
 
-        2.  Persoon
-            -  verblijfplaats__gemeenteVanInschrijving
-            -  naam__geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)
+        2.  Zoek met geslachtsnaam en gemeente van inschrijving
+            - gemeenteVanInschrijving
+            - geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature))
 
 
-        3.  Persoon
-            -  burgerservicenummer
+        3.  Zoek met burgerservicenummer
+            - burgerservicenummer
 
 
-        4.  Postcode
-            -  verblijfplaats__postcode
-            -  verblijfplaats__huisnummer
+        4.  Zoek met postcode en huisnummer
+            - postcode
+            - huisnummer
 
 
-        5.  Straat
-            -  verblijfplaats__straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) )
-            -  verblijfplaats__gemeenteVanInschrijving
-            -  verblijfplaats__huisnummer
+        5.  Zoek met straat, huisnummer en gemeente van inschrijving
+            - straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature))
+            - gemeenteVanInschrijving
+            - huisnummer
 
 
-        6.  Adres
-            -  verblijfplaats__nummeraanduidingIdentificatie
+        6.  Zoek met nummeraanduiding identificatie
+            - nummeraanduidingIdentificatie
 
       requestBody:
         content:
