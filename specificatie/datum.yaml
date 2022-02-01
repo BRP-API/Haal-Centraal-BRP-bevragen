@@ -67,11 +67,11 @@ components:
         - $ref: '#/components/schemas/AbstractDatum'
         - type: object
           properties:
-            waarde:
+            datum:
               type: string
               pattern: ^[0-9]{8}$
       required:
-        - waarde
+        - datum
       example: "20210801"
     Datum:
       description: Datum conform iso8601
@@ -79,11 +79,11 @@ components:
         - $ref: '#/components/schemas/AbstractDatum'
         - type: object
           properties:
-            waarde:
+            datum:
               type: string
               format: date
       required:
-        - waarde
+        - datum
       example: "2021-08-01"
     OnbekendDatum:
       description: representatie voor een volledig onbekend datum
