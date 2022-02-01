@@ -1,6 +1,6 @@
 ---
 layout: page-with-side-nav
-title: Haal Centraal BRP Persoon bevragen
+title: Haal Centraal BRP persoon bevragen
 ---
 # Haal Centraal BRP Persoon bevragen
 
