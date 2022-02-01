@@ -86,7 +86,7 @@ components:
         - waarde
       example: "2021-08-01"
     OnbekendDatum:
-      description: representatie voor een onbekend datum
+      description: representatie voor een volledig onbekend datum
       allOf:
         - $ref: '#/components/schemas/AbstractDatum'
         - type: object
