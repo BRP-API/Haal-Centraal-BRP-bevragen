@@ -1,4 +1,4 @@
-# Haal Centraal BRP Persoon bevragen
+# Haal Centraal BRP persoon bevragen
 
 ![lint oas](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/workflows/lint-oas/badge.svg)
 ![generate postman collection](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/workflows/generate-postman-collection/badge.svg)
