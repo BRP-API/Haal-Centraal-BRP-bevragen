@@ -11,5 +11,5 @@ title: User Stories in Ontwikkeling
 - [Als provider wil ik dat er features komen voor het toepassen van LO autorisaties, zodat ik deze kan implementeren](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/852){:target="_blank" rel="noopener"}
 - [Als PO wil ik dat de adres feature consistent is met BAG en NEN 5825:2002, zodat zij voor gebruiker consistent zijn ](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/833){:target="_blank" rel="noopener"}
 - [Als gebruiker wil ik de volledige naam krijgen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/832){:target="_blank" rel="noopener"}
-- [Als afnemer wil ik de enumeratiewaarden in gebruikersvriendelijke teksten zien](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/828){:target="_blank" rel="noopener"}
+- [Als gebruiker wil ik de enumeratiewaarden in gebruikersvriendelijke teksten zien](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/828){:target="_blank" rel="noopener"}
 
