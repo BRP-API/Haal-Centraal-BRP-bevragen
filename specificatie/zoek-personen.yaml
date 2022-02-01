@@ -187,11 +187,7 @@ components:
               pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ '\-\']{1,200}(\?+|\*)?$
               example: "Vries"
             gemeenteVanInschrijving:
-              description: |
-                Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.
-              type: string
-              pattern: ^[0-9]{4}$
-              example: "0518"
+              $ref: 'verblijfplaats.yaml#/components/schemas/GemeenteVanInschrijving'
             voorvoegsel:
               description: |
                 Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
@@ -213,30 +209,13 @@ components:
         - type: object
           properties:
             huisletter:
-              description: |
-                Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.
-              type: string
-              pattern: ^[a-zA-Z]{1}$
-              example: "a"
+              $ref: 'verblijfplaats.yaml#/components/schemas/Huisletter'
             huisnummer:
-              description: |
-                Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.
-              type: integer
-              minimum: 1
-              maximum: 99999
-              example: 14
+              $ref: 'verblijfplaats.yaml#/components/schemas/Huisnummer'
             huisnummertoevoeging:
-              description: |
-                Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.
-              type: string
-              pattern: ^[a-zA-Z0-9]{1,4}$
-              example: "bis"
+              $ref: 'verblijfplaats.yaml#/components/schemas/Huisnummertoevoeging'
             postcode:
-              description: |
-                De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.
-              type: string
-              pattern: ^[1-9]{1}[0-9]{3}[ ]?[A-Za-z]{2}$
-              example: "2341SX"
+              $ref: 'verblijfplaats.yaml#/components/schemas/Postcode'
     ZoekMetStraatHuisnummerEnGemeenteVanInschrijving:
       required:
         - straat
@@ -247,36 +226,15 @@ components:
         - type: object
           properties:
             huisletter:
-              description: |
-                Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.
-              type: string
-              pattern: ^[a-zA-Z]{1}$
-              example: "a"
+              $ref: 'verblijfplaats.yaml#/components/schemas/Huisletter'
             huisnummer:
-              description: |
-                Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.
-              type: integer
-              minimum: 1
-              maximum: 99999
-              example: 14
+              $ref: 'verblijfplaats.yaml#/components/schemas/Huisnummer'
             huisnummertoevoeging:
-              description: |
-                Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.
-              type: string
-              pattern: ^[a-zA-Z0-9]{1,4}$
-              example: "bis"
+              $ref: 'verblijfplaats.yaml#/components/schemas/Huisnummertoevoeging'
             gemeenteVanInschrijving:
-              description: |
-                Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.
-              type: string
-              pattern: ^[0-9]{4}$
-              example: "0518"
+              $ref: 'verblijfplaats.yaml#/components/schemas/GemeenteVanInschrijving'
             straat:
-              description: |
-                Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).
-              type: string
-              pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ '\-\']{1,80}(\?+|\*)?$
-              example: "Tulpstraat"
+              $ref: 'filter.yaml#/components/schemas/StraatFilter'
     ZoekMetNummeraanduidingIdentificatie:
       required:
         - nummeraanduidingIdentificatie
@@ -285,16 +243,10 @@ components:
         - type: object
           properties:
             nummeraanduidingIdentificatie:
-              description: |
-                Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
-              type: string
-              pattern: ^[0-9]{16}$
-              example: "0518200000366054"
+              $ref: 'verblijfplaats.yaml#/components/schemas/NummeraanduidingIdentificatie'
     IngeschrevenPersoonBeperktHalCollectie:
       type: object
       properties:
-        _links:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/schemas/HalCollectionLinks'
         _embedded:
           $ref: '#/components/schemas/IngeschrevenPersoonBeperktHalCollectieEmbedded'
     IngeschrevenPersoonBeperktHalCollectieEmbedded:

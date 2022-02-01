@@ -6,86 +6,215 @@ info:
 paths: {}
 components:
   schemas:
-    VerblijfplaatsBeperkt:
+    Adresregel1:
+      type: string
+      description: |
+        Het eerste deel van een adres is een combinatie van de straat en huisnummer.
+      # example: "1600 Pennsylvania Avenue NW"
+      example: "Laan van de landinrichtingscommissie Duiven-Westervoort 26A-3"
+    Adresregel2:
+      type: string
+      description: |
+        Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode.
+      # example: "Washington, DC 20500"
+      example: "1234AA Nootdorp"
+    Adresregel3:
+      type: string
+      description: |
+        Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.
+      example: "Selangor"
+    AdresseerbaarObjectIdentificatie:
+      type: string
+      description: |
+        De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.
+      example: "0226010000038820"
+    GemeenteVanInschrijving:
+      description: |
+        Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.
+      type: string
+      pattern: ^[0-9]{4}$
+      example: "0518"
+    Huisletter:
+      description: |
+        Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.
+      type: string
+      pattern: ^[a-zA-Z]{1}$
+      example: "a"
+    Huisnummer:
+      description: |
+        Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.
+      type: integer
+      minimum: 1
+      maximum: 99999
+      example: 14
+    Huisnummertoevoeging:
+      description: |
+        Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.
+      type: string
+      pattern: ^[a-zA-Z0-9]{1,4}$
+      example: "bis"
+    Locatiebeschrijving:
+      type: string
+      description: |
+        Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats.
+      example: "Naast de derde brug"
+    NummeraanduidingIdentificatie:
+      description: |
+        Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
+      type: string
+      pattern: ^[0-9]{16}$
+      example: "0518200000366054"
+    Postcode:
+      description: |
+        De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.
+      type: string
+      pattern: ^[1-9]{1}[0-9]{3}[ ]?[A-Za-z]{2}$
+      example: "2341SX"
+    Straat:
+      type: string
+      pattern: ^[a-zA-Z0-9À-ÿ '\-\']{1,80}$
+      example: "Tulpstraat"
+    VertrokkenOnbekendWaarheen:
+      type: boolean
+      description: |
+        Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.
+    Woonplaats:
+      description: |
+        Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.
+      title: woonplaats naam
+      type: string
+      pattern: ^[a-zA-Z0-9À-ÿ '\-\']{1,80}$
+      example: "Duiven"
+    AbstractVerblijfplaatsBeperkt:
       type: object
       description: |
         Gegevens over het verblijf of de woonlocatie van een persoon.
+      required:
+        - type
       properties:
+        type:
+          type: string
         functieAdres:
           $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
-        adresregel1:
-          type: "string"
-          description: |
-                        Het eerste deel van een adres is een combinatie van de straat en huisnummer.
-          # example: "1600 Pennsylvania Avenue NW"
-          example: "Laan van de landinrichtingscommissie Duiven-Westervoort 26A-3"
-        adresregel2:
-          type: "string"
-          description: |
-                        Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode.
-          # example: "Washington, DC 20500"
-          example: "1234AA Nootdorp"
-        adresregel3:
-          type: "string"
-          description: |
-                        Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.
-          example: "Selangor"
         woonplaats:
-          description: "Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam."
-          title: woonplaats naam
-          type: string
-          example: 'Duiven'
-        land:
-          $ref: 'land.yaml#/components/schemas/AbstractLand'
-        vertrokkenOnbekendWaarheen:
-          type: boolean
-          description: |
-                        Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.
-    Verblijfplaats:
+          $ref: '#/components/schemas/Woonplaats'
+        adresregel1:
+          $ref: '#/components/schemas/Adresregel1'
+        adresregel2:
+          $ref: '#/components/schemas/Adresregel2'
+        adresregel3:
+          $ref: '#/components/schemas/Adresregel3'
+      discriminator:
+        propertyName: type
+        mapping:
+          GbaVerblijfplaats: '#/components/schemas/GbaVerblijfplaatsBeperkt'
+          Verblijfplaats: '#/components/schemas/VerblijfplaatsBeperkt'
+    VerblijfplaatsBeperkt:
       allOf:
-      - $ref : "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BAG-bevragen/v1.1.0/specificatie/openapi.yaml#/components/schemas/Adres"
-      - description: |
-                      Gegevens over het verblijf of de woonlocatie van een persoon.
-                      * **datumAanvangAdreshuishouding** : de datum van aangifte of ambtshalve melding van verblijf en adres.
-                      * **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden.
-                      * **datumInschrijvingInGemeente**: bij inschrijving op grond van een verhuisaangifte door de burger is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop het voornemen van ambtshalve opneming schriftelijk aan de persoon is medegedeeld.
-                      * **datumVestigingInNederland** : datum van inschrijving in Nederland.
-                      * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland.
-                      * **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten."
+        - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
+        - type: object
+          properties:
+            land:
+              $ref: 'land.yaml#/components/schemas/AbstractLand'
+            vertrokkenOnbekendWaarheen:
+              $ref: '#/components/schemas/VertrokkenOnbekendWaarheen'
+    GbaVerblijfplaatsBeperkt:
+      allOf:
+        - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
+        - type: object
+          properties:
+            straat:
+              $ref: '#/components/schemas/Straat'
+            huisnummer:
+              $ref: '#/components/schemas/Huisnummer'
+            huisletter:
+              $ref: '#/components/schemas/Huisletter'
+            huisnummertoevoeging:
+              $ref: '#/components/schemas/Huisnummertoevoeging'
+            aanduidingBijHuisnummer:
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+            postcode:
+              $ref: '#/components/schemas/Postcode'
+            locatiebeschrijving:
+              $ref: '#/components/schemas/Locatiebeschrijving'
+            land:
+              $ref: 'land.yaml#/components/schemas/GbaLand'
+    AbstractVerblijfplaats:
+      type: object
+      description: |
+        Gegevens over het verblijf of de woonlocatie van een persoon.
+      required:
+        - type
+      properties:
+        type:
+          type: string
+        functieAdres:
+          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+        woonplaats:
+          $ref: '#/components/schemas/Woonplaats'
+        adresregel1:
+          $ref: '#/components/schemas/Adresregel1'
+        adresregel2:
+          $ref: '#/components/schemas/Adresregel2'
+        adresregel3:
+          $ref: '#/components/schemas/Adresregel3'
+      discriminator:
+        propertyName: type
+        mapping:
+          GbaVerblijfplaats: '#/components/schemas/GbaVerblijfplaats'
+          VerblijfplaatsBuitenland: '#/components/schemas/VerblijfplaatsBuitenland'
+          Verblijfplaats: '#/components/schemas/Verblijfplaats'
+    VerblijfplaatsBuitenland:
+      allOf:
+      - $ref : '#/components/schemas/AbstractVerblijfplaats'
+      - type: object
         properties:
-          adresseerbaarObjectIdentificatie:
-            type: "string"
-            description: |
-                          De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.
-            example: "0226010000038820"
+          datumAanvangAdres:
+            $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+          datumIngangGeldigheid:
+            $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+    Verblijfplaats:
+      description: |
+        Gegevens over het verblijf of de woonlocatie van een persoon.
+        * **datumAanvangAdreshuishouding** : de datum van aangifte of ambtshalve melding van verblijf en adres.
+        * **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden.
+        * **datumInschrijvingInGemeente**: bij inschrijving op grond van een verhuisaangifte door de burger is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop het voornemen van ambtshalve opneming schriftelijk aan de persoon is medegedeeld.
+        * **datumVestigingInNederland** : datum van inschrijving in Nederland.
+        * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland.
+        * **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten."
+      allOf:
+      - $ref : '#/components/schemas/AbstractVerblijfplaats'
+      - type: object
+        properties:
+          straat:
+            $ref: '#/components/schemas/Straat'
+          huisnummer:
+            $ref: '#/components/schemas/Huisnummer'
+          huisletter:
+            $ref: '#/components/schemas/Huisletter'
+          huisnummertoevoeging:
+            $ref: '#/components/schemas/Huisnummertoevoeging'
           aanduidingBijHuisnummer:
             $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+          postcode:
+            $ref: '#/components/schemas/Postcode'
+          locatiebeschrijving:
+            $ref: '#/components/schemas/Locatiebeschrijving'
+          adresseerbaarObjectIdentificatie:
+            $ref: '#/components/schemas/AdresseerbaarObjectIdentificatie'
           nummeraanduidingIdentificatie:
-            type: "string"
-            description: |
-                          Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
-            example: "0518200000366054"
-          functieAdres:
-            $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+            $ref: '#/components/schemas/NummeraanduidingIdentificatie'
           indicatieVestigingVanuitBuitenland:
             type: boolean
             description: |
                           Geeft aan dat de ingeschreven persoon zich vanuit het buitenland heeft ingeschreven.
-          locatiebeschrijving:
-            type: "string"
-            description: |
-                          Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats.
-            example: "Naast de derde brug"
           korteNaam:
             description: |
                           De officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG) of een verkorte versie.
             type: string
           vanuitVertrokkenOnbekendWaarheen:
-            type: boolean
-            description: |
-                          Geeft aan dat de persoon is teruggekeerd uit een situatie van 'vertrokken onbekend waarheen.'
-            example: true
-          datumAanvangAdreshouding:
+            $ref: '#/components/schemas/VertrokkenOnbekendWaarheen'
+          datumAanvangAdres:
             $ref: 'datum.yaml#/components/schemas/AbstractDatum'
           datumIngangGeldigheid:
             $ref: 'datum.yaml#/components/schemas/AbstractDatum'
@@ -97,31 +226,39 @@ components:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
           landVanwaarIngeschreven:
             $ref: 'land.yaml#/components/schemas/AbstractLand'
-          adresregel1:
-            type: "string"
-            description: |
-                          Het eerste deel van een adres is een combinatie van de straat en huisnummer.
-            # example: "1600 Pennsylvania Avenue NW"
-            example: "Laan van de landinrichtingscommissie Duiven-Westervoort 26A-3"
-          adresregel2:
-            type: "string"
-            description: |
-                          Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode.
-            # example: "Washington, DC 20500"
-            example: "1234AA Nootdorp"
-          adresregel3:
-            type: "string"
-            description: |
-                          Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.
-            example: "Selangor"
           vertrokkenOnbekendWaarheen:
             type: boolean
             description: |
-                          Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.
+              Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.
           land:
             $ref: 'land.yaml#/components/schemas/AbstractLand'
           inOnderzoek:
             $ref: "#/components/schemas/AbstractVerblijfplaatsInOnderzoek"
+    GbaVerblijfplaats:
+      allOf:
+        - $ref: '#/components/schemas/AbstractVerblijfplaats'
+        - type: object
+          properties:
+            straat:
+              $ref: '#/components/schemas/Straat'
+            huisnummer:
+              $ref: '#/components/schemas/Huisnummer'
+            huisletter:
+              $ref: '#/components/schemas/Huisletter'
+            huisnummertoevoeging:
+              $ref: '#/components/schemas/Huisnummertoevoeging'
+            aanduidingBijHuisnummer:
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+            postcode:
+              $ref: '#/components/schemas/Postcode'
+            locatiebeschrijving:
+              $ref: '#/components/schemas/Locatiebeschrijving'
+            land:
+              $ref: 'land.yaml#/components/schemas/GbaLand'
+            datumAanvangAdreshouding:
+              $ref: 'datum.yaml#/components/schemas/GbaDatum'
+            datumAanvangAdresBuitenland:
+              $ref: 'datum.yaml#/components/schemas/GbaDatum'
     AbstractVerblijfplaatsInOnderzoek:
       type: object
       description: |

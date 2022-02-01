@@ -52,7 +52,7 @@ components:
             overlijden:
               $ref: "overlijden.yaml#/components/schemas/OverlijdenBasis"
             verblijfplaats:
-              $ref: "verblijfplaats.yaml#/components/schemas/VerblijfplaatsBeperkt"
+              $ref: "verblijfplaats.yaml#/components/schemas/AbstractVerblijfplaatsBeperkt"
     IngeschrevenPersoon:
       allOf:
         - $ref: '#/components/schemas/IngeschrevenPersoonBasis'
@@ -81,7 +81,7 @@ components:
             overlijden:
               $ref: "overlijden.yaml#/components/schemas/Overlijden"
             verblijfplaats:
-              $ref: "verblijfplaats.yaml#/components/schemas/Verblijfplaats"
+              $ref: "verblijfplaats.yaml#/components/schemas/AbstractVerblijfplaats"
             gezagsverhouding:
               $ref: "gezagsverhouding.yaml#/components/schemas/Gezagsverhouding"
             verblijfstitel:
