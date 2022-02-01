@@ -8,9 +8,13 @@ components:
   schemas:
     AbstractNationaliteit:
       type: object
+      required:
+        - type
       properties:
         type:
           type: string
+        redenOpname:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
       discriminator:
         propertyName: type
         mapping:
@@ -29,8 +33,6 @@ components:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             nationaliteit:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
-            redenOpname:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
             inOnderzoek:
               $ref: "#/components/schemas/NationaliteitInOnderzoek"
     BehandeldAlsNederlander:
@@ -40,8 +42,6 @@ components:
           properties:
             datumIngangGeldigheid:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-            redenOpname:
-              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
     VastgesteldNietNederlander:
       allOf:
         - $ref: '#/components/schemas/AbstractNationaliteit'
@@ -49,8 +49,6 @@ components:
           properties:
             datumIngangGeldigheid:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-            redenOpname:
-              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
     GbaNationaliteit:
       description: |
         Bij de LO GBA versie kunnen datums, bijv datumIngangGeldigheid de LoGbaDatum refereren
@@ -61,8 +59,10 @@ components:
           properties:
             datumIngangGeldigheid:
               $ref: 'datum.yaml#/components/schemas/GbaDatum'
-            datumIngangOpneming:
-              $ref: 'datum.yaml#/components/schemas/GbaDatum'
+            nationaliteit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+            aanduidingBijzonderNederlandschap:
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
             inOnderzoek:
               $ref: '#/components/schemas/GbaNationaliteitInOnderzoek'
     NationaliteitInOnderzoek:
