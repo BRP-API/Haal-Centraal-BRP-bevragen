@@ -7,14 +7,14 @@ paths: {}
 components:
   schemas:
     OpschortingBijhoudingBasis:
-      type: "object"
+      type: object
       properties:
         reden:
           $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
     OpschortingBijhouding:
       allOf:
         - $ref: '#/components/schemas/OpschortingBijhoudingBasis'
-        - type: "object"
+        - type: object
           description: |
             * **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.
           properties:

@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.0.3
 servers:
   - description: |
                   APILAB testserver
@@ -11,7 +11,7 @@ info:
                 Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.
 
                 Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.1.0/features) voor nadere toelichting.
-  version: "1.3.1"
+  version: 2.0.0
   contact:
     url: https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen
   license:

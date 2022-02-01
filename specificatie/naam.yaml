@@ -35,7 +35,7 @@ components:
             De achternaam van een persoon.
           example: "Vries"
         adellijkeTitelPredikaat:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
     NaamBasis:
       allOf:
         - $ref: '#/components/schemas/GbaNaamBasis'
@@ -48,10 +48,10 @@ components:
               example: "P.J."
     Naam:
       allOf:
-        - $ref: "#/components/schemas/NaamBasis"
+        - $ref: '#/components/schemas/NaamBasis'
         - properties:
             inOnderzoek:
-              $ref: "#/components/schemas/AbstractNaamInOnderzoek"
+              $ref: '#/components/schemas/AbstractNaamInOnderzoek'
     AbstractNaamInOnderzoek:
       type: object
       description: |
@@ -82,41 +82,35 @@ components:
     GbaNaamInOnderzoek:
       allOf:
         - $ref: '#/components/schemas/AbstractNaamInOnderzoek'
-        - type: object
-          properties:
-            aanduidingGegevensInOnderzoek:
-              type: string
-              maxLength: 50
-            datumIngangOnderzoek:
-              $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        - $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     NaamPersoon:
       allOf:
-        - $ref: "#/components/schemas/NaamBasis"
+        - $ref: '#/components/schemas/NaamBasis'
         - properties:
             aanhef:
-              type: "string"
+              type: string
               description: |
-                            Kun je gebruiken als aanhef in een brief gericht aan persoon.
+                Kun je gebruiken als aanhef in een brief gericht aan persoon.
               example: "Hoogwelgeboren heer"
             aanschrijfwijze:
-              type: "string"
+              type: string
               description: |
-                            Samengestelde naam die je kunt gebruiken in de communicatie met de persoon.
+                Samengestelde naam die je kunt gebruiken in de communicatie met de persoon.
               example: "H.W. baron van den Aedel"
             regelVoorafgaandAanAanschrijfwijze:
-              type: "string"
+              type: string
               description: |
-                            Deze regel moet als aparte regel boven de aanschrijfwijze worden geplaatst. Komt alleen voor bij personen met een adellijke titel of predicaat.
+                Deze regel moet als aparte regel boven de aanschrijfwijze worden geplaatst. Komt alleen voor bij personen met een adellijke titel of predicaat.
               example: "De hoogwelgeboren heer"
             gebruikInLopendeTekst:
-              type: "string"
+              type: string
               description: |
-                            Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert.
+                Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert.
               example: "baron Van den Aedel"
             aanduidingNaamgebruik:
               $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
             inOnderzoek:
-              $ref: "#/components/schemas/AbstractNaamPersoonInOnderzoek"
+              $ref: '#/components/schemas/AbstractNaamPersoonInOnderzoek'
     AbstractNaamPersoonInOnderzoek:
       type: object
       description: |
@@ -148,10 +142,4 @@ components:
     GbaNaamPersoonInOnderzoek:
       allOf:
         - $ref: '#/components/schemas/AbstractNaamInOnderzoek'
-        - type: object
-          properties:
-            aanduidingGegevensInOnderzoek:
-              type: string
-              maxLength: 50
-            datumIngangOnderzoek:
-              $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        - $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'

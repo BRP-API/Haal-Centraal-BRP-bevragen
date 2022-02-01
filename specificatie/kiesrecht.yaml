@@ -7,7 +7,7 @@ paths: {}
 components:
   schemas:
     Kiesrecht:
-      type: "object"
+      type: object
       properties:
         europeesKiesrecht:
           type: boolean

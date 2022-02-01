@@ -7,36 +7,38 @@ paths: {}
 components:
   schemas:
     OverlijdenBasis:
-      type: "object"
+      type: object
       description: |
-                    Gegevens over het overlijden van de persoon.
+        Gegevens over het overlijden van de persoon.
       properties:
         indicatieOverleden:
           type: boolean
           description: |
-                        Geeft aan dat iemand is overleden (waarde true), ongeacht of de overlijdensdatum bekend is.
+            Geeft aan dat iemand is overleden (waarde true), ongeacht of de overlijdensdatum bekend is.
     Overlijden:
       allOf:
         - $ref: '#/components/schemas/OverlijdenBasis'
-        - type: "object"
+        - type: object
           description: |
-                        Gegevens over het overlijden van de persoon.
-                        * **datum** : datum waarop de persoon is overleden.
-                        * **land** : land waar de persoon is overleden.
-                        * **plaats** : gemeente waar de persoon is overleden. Is de persoon overleden buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.
+            Gegevens over het overlijden van de persoon.
+            * **datum** : datum waarop de persoon is overleden.
+            * **land** : land waar de persoon is overleden.
+            * **plaats** : gemeente waar de persoon is overleden. Is de persoon overleden buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.
           properties:
             datum:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             land:
               $ref: 'land.yaml#/components/schemas/AbstractLand'
             plaats:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
             inOnderzoek:
-              $ref: "#/components/schemas/AbstractOverlijdenInOnderzoek"
+              $ref: '#/components/schemas/AbstractOverlijdenInOnderzoek'
     AbstractOverlijdenInOnderzoek:
       type: object
       description: |
         Geeft aan welke gegevens over het overlijden van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      required:
+        - type
       properties:
         type:
           type: string
@@ -61,11 +63,4 @@ components:
     GbaOverlijdenInOnderzoek:
       allOf:
         - $ref: '#/components/schemas/AbstractOverlijdenInOnderzoek'
-        - type: object
-          properties:
-            aanduidingGegevensInOnderzoek:
-              type: string
-              maxLength: 50
-            datumIngangOnderzoek:
-              $ref: 'datum.yaml#/components/schemas/GbaDatum'
-
+        - $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'

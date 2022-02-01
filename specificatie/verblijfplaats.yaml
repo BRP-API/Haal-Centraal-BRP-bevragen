@@ -263,6 +263,8 @@ components:
       type: object
       description: |
         Geeft aan welke gegevens over het verblijf en adres van de persoon in onderzoek zijn. Elementen van het GBA-adres zelf (Dat zou eigenlijk een BAG-adres moeten zijn) kunnen niet in onderzoek zijn. Wel de relatie naar de nummeraanduiding. Dat wordt gedaan door de identificatiecodeNummeraanduiding in onderzoek te zetten. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      required:
+        - type
       properties:
         type:
           type: string
@@ -319,10 +321,4 @@ components:
     GbaVerblijfplaatsInOnderzoek:
       allOf:
         - $ref: '#/components/schemas/AbstractVerblijfplaatsInOnderzoek'
-        - type: object
-          properties:
-            aanduidingGegevensInOnderzoek:
-              type: string
-              maxLength: 50
-            datumIngangOnderzoek:
-              $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        - $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'

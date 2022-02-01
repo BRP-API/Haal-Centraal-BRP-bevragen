@@ -20,10 +20,10 @@ components:
       format: uuid
     Burgerservicenummer:
       type: string
-      pattern: "^[0-9]{9}$"
+      pattern: ^[0-9]{9}$
       example: "555555021"
     IngeschrevenPersoonBasis:
-      type: "object"
+      type: object
       properties:
         identificatie:
           $ref: '#/components/schemas/PersoonIdentificatie'
@@ -36,7 +36,7 @@ components:
         leeftijd:
           type: integer
           description: |
-                        Leeftijd in jaren op het moment van bevragen.
+            Leeftijd in jaren op het moment van bevragen.
           example: 34
     IngeschrevenPersoonBeperkt:
       allOf:
@@ -44,68 +44,70 @@ components:
         - type: object
           properties:
             naam:
-              $ref: "naam.yaml#/components/schemas/NaamBasis"
+              $ref: 'naam.yaml#/components/schemas/NaamBasis'
             geboortedatum:
-              $ref: "datum.yaml#/components/schemas/AbstractDatum"
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             opschortingBijhouding:
-              $ref: "opschortingbijhouding.yaml#/components/schemas/OpschortingBijhoudingBasis"
+              $ref: 'opschortingbijhouding.yaml#/components/schemas/OpschortingBijhoudingBasis'
             overlijden:
-              $ref: "overlijden.yaml#/components/schemas/OverlijdenBasis"
+              $ref: 'overlijden.yaml#/components/schemas/OverlijdenBasis'
             verblijfplaats:
-              $ref: "verblijfplaats.yaml#/components/schemas/AbstractVerblijfplaatsBeperkt"
+              $ref: 'verblijfplaats.yaml#/components/schemas/AbstractVerblijfplaatsBeperkt'
     IngeschrevenPersoon:
       allOf:
         - $ref: '#/components/schemas/IngeschrevenPersoonBasis'
-        - type: "object"
+        - type: object
           properties:
             aNummer:
               description: |
-                            Het A-nummer van de persoon
-              type: "string"
+                Het A-nummer van de persoon
+              type: string
             datumEersteInschrijvingGBA:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             inOnderzoek:
-              $ref: "#/components/schemas/AbstractPersoonInOnderzoek"
+              $ref: '#/components/schemas/AbstractPersoonInOnderzoek'
             kiesrecht:
-              $ref: "kiesrecht.yaml#/components/schemas/Kiesrecht"
+              $ref: 'kiesrecht.yaml#/components/schemas/Kiesrecht'
             naam:
-              $ref: "naam.yaml#/components/schemas/NaamPersoon"
+              $ref: 'naam.yaml#/components/schemas/NaamPersoon'
             nationaliteiten:
-              type: "array"
+              type: array
               items:
-                $ref: "nationaliteit.yaml#/components/schemas/Nationaliteit"
+                $ref: 'nationaliteit.yaml#/components/schemas/Nationaliteit'
             geboorte:
-              $ref: "geboorte.yaml#/components/schemas/Geboorte"
+              $ref: 'geboorte.yaml#/components/schemas/Geboorte'
             opschortingBijhouding:
-              $ref: "opschortingbijhouding.yaml#/components/schemas/OpschortingBijhouding"
+              $ref: 'opschortingbijhouding.yaml#/components/schemas/OpschortingBijhouding'
             overlijden:
-              $ref: "overlijden.yaml#/components/schemas/Overlijden"
+              $ref: 'overlijden.yaml#/components/schemas/Overlijden'
             verblijfplaats:
-              $ref: "verblijfplaats.yaml#/components/schemas/AbstractVerblijfplaats"
+              $ref: 'verblijfplaats.yaml#/components/schemas/AbstractVerblijfplaats'
             gezagsverhouding:
-              $ref: "gezagsverhouding.yaml#/components/schemas/Gezagsverhouding"
+              $ref: 'gezagsverhouding.yaml#/components/schemas/Gezagsverhouding'
             verblijfstitel:
-              $ref: "verblijfstitel.yaml#/components/schemas/Verblijfstitel"
+              $ref: 'verblijfstitel.yaml#/components/schemas/Verblijfstitel'
             reisdocumentnummers:
-              type: "array"
+              type: array
               items:
-                $ref: "#/components/schemas/Reisdocumentnummer"
+                $ref: '#/components/schemas/Reisdocumentnummer'
             kinderen:
-              type: "array"
+              type: array
               items:
-                $ref: "kind.yaml#/components/schemas/Kind"
+                $ref: 'kind.yaml#/components/schemas/Kind'
             ouders:
-              type: "array"
+              type: array
               items:
-                $ref: "ouder.yaml#/components/schemas/Ouder"
+                $ref: 'ouder.yaml#/components/schemas/Ouder'
             partners:
-              type: "array"
+              type: array
               items:
-                $ref: "partner.yaml#/components/schemas/Partner"
+                $ref: 'partner.yaml#/components/schemas/Partner'
     AbstractPersoonInOnderzoek:
       type: object
       description: |
         Geeft aan welke gegevens van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature).
+      required:
+        - type
       properties:
         type:
           type: string
@@ -128,15 +130,9 @@ components:
     GbaPersoonInOnderzoek:
       allOf:
         - $ref: '#/components/schemas/AbstractPersoonInOnderzoek'
-        - type: object
-          properties:
-            aanduidingGegevensInOnderzoek:
-              type: string
-              maxLength: 50
-            datumIngangOnderzoek:
-              $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        - $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     Reisdocumentnummer:
-      type: "string"
+      type: string
       description: |
-                    Het nummer van het verstrekte Nederlandse reisdocument.
+        Het nummer van het verstrekte Nederlandse reisdocument.
       example: "546376728"

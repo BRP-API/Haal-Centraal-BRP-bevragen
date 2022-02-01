@@ -14,7 +14,7 @@ components:
         type:
           type: string
         redenOpname:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
       discriminator:
         propertyName: type
         mapping:
@@ -32,9 +32,9 @@ components:
             datumIngangGeldigheid:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             nationaliteit:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
             inOnderzoek:
-              $ref: "#/components/schemas/NationaliteitInOnderzoek"
+              $ref: '#/components/schemas/NationaliteitInOnderzoek'
     BehandeldAlsNederlander:
       allOf:
         - $ref: '#/components/schemas/AbstractNationaliteit'
@@ -60,15 +60,15 @@ components:
             datumIngangGeldigheid:
               $ref: 'datum.yaml#/components/schemas/GbaDatum'
             nationaliteit:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
             aanduidingBijzonderNederlandschap:
               $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
             inOnderzoek:
-              $ref: '#/components/schemas/GbaNationaliteitInOnderzoek'
+                $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     NationaliteitInOnderzoek:
-      type: "object"
+      type: object
       description: |
-                    Geeft aan welke gegevens over de nationaliteit in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+        Geeft aan welke gegevens over de nationaliteit in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
       properties:
         aanduidingBijzonderNederlanderschap:
           type: boolean
@@ -78,11 +78,3 @@ components:
           type: boolean
         datumIngangOnderzoek:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-    GbaNationaliteitInOnderzoek:
-      type: object
-      properties:
-        aanduidingGegevensInOnderzoek:
-          type: string
-          maxLength: 50
-        datumIngangOnderzoek:
-          $ref: 'datum.yaml#/components/schemas/GbaDatum'

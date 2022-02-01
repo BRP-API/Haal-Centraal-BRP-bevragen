@@ -7,9 +7,9 @@ paths: {}
 components:
   schemas:
     Partner:
-      type: "object"
+      type: object
       description: |
-                    Gegevens over een gesloten huwelijk/geregistreerd partnerschap van de persoon.
+        Gegevens over een gesloten huwelijk/geregistreerd partnerschap van de persoon.
       properties:
         identificatie:
           $ref: 'ingeschrevenpersoon.yaml#/components/schemas/PersoonIdentificatie'
@@ -20,17 +20,19 @@ components:
         soortVerbintenis:
           $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
         naam:
-          $ref: "naam.yaml#/components/schemas/Naam"
+          $ref: 'naam.yaml#/components/schemas/Naam'
         geboorte:
-          $ref: "geboorte.yaml#/components/schemas/Geboorte"
+          $ref: 'geboorte.yaml#/components/schemas/Geboorte'
         inOnderzoek:
-          $ref: "#/components/schemas/AbstractPartnerInOnderzoek"
+          $ref: '#/components/schemas/AbstractPartnerInOnderzoek'
         aangaanHuwelijkPartnerschap:
-          $ref: "#/components/schemas/AangaanHuwelijkPartnerschap"
+          $ref: '#/components/schemas/AangaanHuwelijkPartnerschap'
     AbstractPartnerInOnderzoek:
       type: object
       description: |
         Geeft aan welke gegevens over het huwelijk of het partnerschap in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      required:
+        - type
       properties:
         type:
           type: string
@@ -63,25 +65,27 @@ components:
             datumIngangOnderzoek:
               $ref: 'datum.yaml#/components/schemas/GbaDatum'
     AangaanHuwelijkPartnerschap:
-      type: "object"
+      type: object
       description: |
-                    Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.
-                    * **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.
-                    * **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan.
-                    * **plaats** : De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Voor een plaats buiten Nederland bevat het antwoord een buitenlandse plaatsnaam of aanduiding.
+        Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.
+        * **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.
+        * **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan.
+        * **plaats** : De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Voor een plaats buiten Nederland bevat het antwoord een buitenlandse plaatsnaam of aanduiding.
       properties:
         datum:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         land:
           $ref: 'land.yaml#/components/schemas/AbstractLand'
         plaats:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
         inOnderzoek:
-          $ref: "#/components/schemas/AbstractAangaanHuwelijkPartnerschapInOnderzoek"
+          $ref: '#/components/schemas/AbstractAangaanHuwelijkPartnerschapInOnderzoek'
     AbstractAangaanHuwelijkPartnerschapInOnderzoek:
       type: object
       description: |
         Geeft aan welke gegevens over het voltrekken van het huwelijk of aangaan van het partnerschap in onderzoek zijn. Zie de functionele specificaties. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      required:
+        - type
       properties:
         type:
           type: string
@@ -106,10 +110,4 @@ components:
     GbaAangaanHuwelijkPartnerschapInOnderzoek:
       allOf:
         - $ref: '#/components/schemas/AbstractAangaanHuwelijkPartnerschapInOnderzoek'
-        - type: object
-          properties:
-            aanduidingGegevensInOnderzoek:
-              type: string
-              maxLength: 50
-            datumIngangOnderzoek:
-              $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        - $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'

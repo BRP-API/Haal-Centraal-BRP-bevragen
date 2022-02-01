@@ -7,25 +7,27 @@ paths: {}
 components:
   schemas:
     Verblijfstitel:
-      type: "object"
+      type: object
       description: |
-                    Gegevens over de verblijfsrechtelijke status van de persoon.
-                    * **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd.
-                    * **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.
-                    * **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt.
+        Gegevens over de verblijfsrechtelijke status van de persoon.
+        * **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd.
+        * **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.
+        * **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt.
       properties:
         aanduiding:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
         datumEinde:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         datumIngang:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         inOnderzoek:
-          $ref: "#/components/schemas/AbstractVerblijfstitelInOnderzoek"
+          $ref: '#/components/schemas/AbstractVerblijfstitelInOnderzoek'
     AbstractVerblijfstitelInOnderzoek:
       type: object
       description: |
         Geeft aan welke gegevens over de verblijfstitel in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      required:
+        - type
       properties:
         type:
           type: string
@@ -50,10 +52,4 @@ components:
     GbaVerblijfstitelInOnderzoek:
       allOf:
         - $ref: '#/components/schemas/AbstractVerblijfstitelInOnderzoek'
-        - type: object
-          properties:
-            aanduidingGegevensInOnderzoek:
-              type: string
-              maxLength: 50
-            datumIngangOnderzoek:
-              $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        - $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'

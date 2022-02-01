@@ -7,10 +7,10 @@ paths: {}
 components:
   schemas:
     Ouder:
-      type: "object"
+      type: object
       description: |
-                    Gegevens over de ouder van de persoon.
-                    * **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.
+        Gegevens over de ouder van de persoon.
+        * **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.
       properties:
         identificatie:
           $ref: 'ingeschrevenpersoon.yaml#/components/schemas/PersoonIdentificatie'
@@ -23,15 +23,17 @@ components:
         datumIngangFamilierechtelijkeBetrekking:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         naam:
-          $ref: "naam.yaml#/components/schemas/Naam"
+          $ref: 'naam.yaml#/components/schemas/Naam'
         inOnderzoek:
-          $ref: "#/components/schemas/AbstractOuderInOnderzoek"
+          $ref: '#/components/schemas/AbstractOuderInOnderzoek'
         geboorte:
-          $ref: "geboorte.yaml#/components/schemas/Geboorte"
+          $ref: 'geboorte.yaml#/components/schemas/Geboorte'
     AbstractOuderInOnderzoek:
       type: object
       description: |
         Geeft aan welke gegevens van de de ouder in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      required:
+        - type
       properties:
         type:
           type: string
@@ -56,10 +58,4 @@ components:
     GbaOuderInOnderzoek:
       allOf:
         - $ref: '#/components/schemas/AbstractOuderInOnderzoek'
-        - type: object
-          properties:
-            aanduidingGegevensInOnderzoek:
-              type: string
-              maxLength: 50
-            datumIngangOnderzoek:
-              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+        - $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'

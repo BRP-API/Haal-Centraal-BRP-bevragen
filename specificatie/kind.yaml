@@ -7,9 +7,9 @@ paths: {}
 components:
   schemas:
     Kind:
-      type: "object"
+      type: object
       description: |
-                    Gegevens over een kind van de persoon.
+        Gegevens over een kind van de persoon.
       properties:
         identificatie:
           $ref: 'ingeschrevenpersoon.yaml#/components/schemas/PersoonIdentificatie'
@@ -18,18 +18,20 @@ components:
         leeftijd:
           type: integer
           description: |
-                        Leeftijd op het moment van bevragen
+            Leeftijd op het moment van bevragen
           example: 12
         inOnderzoek:
-          $ref: "#/components/schemas/AbstractKindInOnderzoek"
+          $ref: '#/components/schemas/AbstractKindInOnderzoek'
         naam:
-          $ref: "naam.yaml#/components/schemas/Naam"
+          $ref: 'naam.yaml#/components/schemas/Naam'
         geboorte:
-          $ref: "geboorte.yaml#/components/schemas/Geboorte"
+          $ref: 'geboorte.yaml#/components/schemas/Geboorte'
     AbstractKindInOnderzoek:
       type: object
       description: |
         Geeft aan of de gegevens over het kind van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      required:
+        - type
       properties:
         type:
           type: string
@@ -50,10 +52,4 @@ components:
     GbaKindInOnderzoek:
       allOf:
         - $ref: '#/components/schemas/AbstractKindInOnderzoek'
-        - type: object
-          properties:
-            aanduidingGegevensInOnderzoek:
-              type: string
-              maxLength: 50
-            datumIngangOnderzoek:
-              $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        - $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'

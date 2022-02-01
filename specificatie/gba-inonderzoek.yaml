@@ -1,0 +1,16 @@
+openapi: 3.0.3
+info:
+  title: GbaInOnderzoek definities
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  schemas:
+    GbaInOnderzoek:
+      type: object
+      properties:
+        aanduidingGegevensInOnderzoek:
+          type: string
+          pattern: ^[0-9]{6}$
+        datumIngangOnderzoek:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
