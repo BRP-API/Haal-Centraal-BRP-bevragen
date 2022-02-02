@@ -35,11 +35,11 @@ paths:
                       $ref: '#/components/schemas/AbstractDatum'
                 example:
                   [
-                    { "type": "GbaDatum", "waarde": "20180701" },
-                    { "type": "GbaDatum", "waarde": "20161200" },
-                    { "type": "GbaDatum", "waarde": "20100000" },
-                    { "type": "GbaDatum", "waarde": "00000000" },
-                    { "type": "Datum", "waarde": "2018-07-01" },
+                    { "type": "GbaDatum", "datum": "20180701" },
+                    { "type": "GbaDatum", "datum": "20161200" },
+                    { "type": "GbaDatum", "datum": "20100000" },
+                    { "type": "GbaDatum", "datum": "00000000" },
+                    { "type": "Datum", "datum": "2018-07-01" },
                     { "type": "JaarMaandDatum", "jaar": "2016", "maand": "12" },
                     { "type": "JaarDatum", "jaar": "2010" },
                     { "type": "OnbekendDatum", "onbekend": true }
