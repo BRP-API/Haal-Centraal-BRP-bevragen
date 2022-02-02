@@ -4,9 +4,9 @@ servers:
                   APILAB testserver
     url: https://www.haalcentraal.nl/haalcentraal/api/brp
 info:
-  title: Bevragen Ingeschreven Personen
+  title: Bevragen Personen
   description: |
-                API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.
+                API voor het bevragen van personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.
 
                 Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.
 
@@ -18,10 +18,10 @@ info:
     name: European Union Public License, version 1.2 (EUPL-1.2)
     url: https://eupl.eu/1.2/nl/
 tags:
-  - name: Ingeschreven Personen
-    description: Zoeken ingeschreven personen
+  - name: Personen
+    description: Zoeken personen
 paths:
-  /ingeschrevenpersonen:
-    $ref: 'zoek-personen.yaml#/paths/~1ingeschrevenpersonen'
-  /ingeschrevenpersonen/{persoonIdentificatie}:
-    $ref: 'raadpleeg-persoon.yaml#/paths/~1ingeschrevenpersonen~1{persoonIdentificatie}'
+  /personen:
+    $ref: 'zoek-personen.yaml#/paths/~1personen'
+  /personen/{persoonIdentificatie}:
+    $ref: 'raadpleeg-persoon.yaml#/paths/~1personen~1{persoonIdentificatie}'

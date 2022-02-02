@@ -12,9 +12,9 @@ components:
         Gegevens over een kind van de persoon.
       properties:
         identificatie:
-          $ref: 'ingeschrevenpersoon.yaml#/components/schemas/PersoonIdentificatie'
+          $ref: 'persoon.yaml#/components/schemas/PersoonIdentificatie'
         burgerservicenummer:
-          $ref: 'ingeschrevenpersoon.yaml#/components/schemas/Burgerservicenummer'
+          $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
         leeftijd:
           type: integer
           description: |

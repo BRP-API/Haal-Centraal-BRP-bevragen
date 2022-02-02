@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: IngeschrevenPersoon definities
+  title: Persoon definities
   version: 2.0.0
   contact: {}
 paths: {}
@@ -22,7 +22,7 @@ components:
       type: string
       pattern: ^[0-9]{9}$
       example: "555555021"
-    IngeschrevenPersoonBasis:
+    PersoonBasis:
       type: object
       properties:
         identificatie:
@@ -38,9 +38,9 @@ components:
           description: |
             Leeftijd in jaren op het moment van bevragen.
           example: 34
-    IngeschrevenPersoonBeperkt:
+    PersoonBeperkt:
       allOf:
-        - $ref: '#/components/schemas/IngeschrevenPersoonBasis'
+        - $ref: '#/components/schemas/PersoonBasis'
         - type: object
           properties:
             naam:
@@ -53,9 +53,9 @@ components:
               $ref: 'overlijden.yaml#/components/schemas/OverlijdenBasis'
             verblijfplaats:
               $ref: 'verblijfplaats.yaml#/components/schemas/AbstractVerblijfplaatsBeperkt'
-    IngeschrevenPersoon:
+    Persoon:
       allOf:
-        - $ref: '#/components/schemas/IngeschrevenPersoonBasis'
+        - $ref: '#/components/schemas/PersoonBasis'
         - type: object
           properties:
             aNummer:

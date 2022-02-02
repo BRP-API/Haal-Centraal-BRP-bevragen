@@ -77,7 +77,7 @@ components:
     VertrokkenOnbekendWaarheen:
       type: boolean
       description: |
-        Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.
+        Indicatie dat de persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.
     Woonplaats:
       description: |
         Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.
@@ -207,7 +207,7 @@ components:
           indicatieVestigingVanuitBuitenland:
             type: boolean
             description: |
-                          Geeft aan dat de ingeschreven persoon zich vanuit het buitenland heeft ingeschreven.
+                          Geeft aan dat de persoon zich vanuit het buitenland heeft ingeschreven.
           korteNaam:
             description: |
                           De officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG) of een verkorte versie.
@@ -229,7 +229,7 @@ components:
           vertrokkenOnbekendWaarheen:
             type: boolean
             description: |
-              Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.
+              Indicatie dat de persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.
           land:
             $ref: 'land.yaml#/components/schemas/AbstractLand'
           inOnderzoek:
