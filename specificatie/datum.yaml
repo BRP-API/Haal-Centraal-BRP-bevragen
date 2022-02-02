@@ -57,7 +57,7 @@ components:
         propertyName: type
         mapping:
           GbaDatum: '#/components/schemas/GbaDatum'
-          Datum: '#/components/schemas/Datum'
+          Datum: '#/components/schemas/VolledigDatum'
           OnbekendDatum: '#/components/schemas/OnbekendDatum'
           JaarDatum: '#/components/schemas/JaarDatum'
           JaarMaandDatum: '#/components/schemas/JaarMaandDatum'
@@ -73,7 +73,7 @@ components:
       required:
         - datum
       example: "20210801"
-    Datum:
+    VolledigDatum:
       description: Datum conform iso8601
       allOf:
         - $ref: '#/components/schemas/AbstractDatum'
