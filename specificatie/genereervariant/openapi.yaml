@@ -1,8 +1,8 @@
 openapi: 3.0.3
 info:
-  title: Bevragen Ingeschreven Personen
+  title: Bevragen Personen
   description: |
-    API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.
+    API voor het bevragen van personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.
 
     Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.
 
@@ -18,13 +18,13 @@ servers:
   description: |
     APILAB testserver
 tags:
-- name: Ingeschreven Personen
-  description: Zoeken ingeschreven personen
+- name: Personen
+  description: Zoeken personen
 paths:
-  /ingeschrevenpersonen:
+  /personen:
     post:
       tags:
-      - Ingeschreven Personen
+      - Personen
       summary: Vindt personen
       description: |
         Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met parameters uit de andere combinaties.
@@ -63,7 +63,7 @@ paths:
 
         6.  Zoek met nummeraanduiding identificatie
             - nummeraanduidingIdentificatie
-      operationId: GetIngeschrevenPersonen
+      operationId: GetPersonen
       requestBody:
         content:
           application/json:
@@ -81,7 +81,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/IngeschrevenPersoonBeperktHalCollectie'
+                $ref: '#/components/schemas/PersoonBeperktHalCollectie'
         "400":
           description: Bad Request
           headers:
@@ -217,16 +217,16 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/Foutbericht'
-  /ingeschrevenpersonen/{persoonIdentificatie}:
+  /personen/{persoonIdentificatie}:
     get:
       tags:
-      - Ingeschreven Personen
+      - Personen
       summary: Raadpleeg een persoon
       description: |
         Raadpleeg een (overleden) persoon.
 
         Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/fields_extensie.feature).
-      operationId: GetIngeschrevenPersoon
+      operationId: GetPersoon
       parameters:
       - name: persoonIdentificatie
         in: path
@@ -250,7 +250,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/IngeschrevenPersoonHal'
+                $ref: '#/components/schemas/PersoonHal'
         "400":
           description: Bad Request
           headers:
@@ -404,21 +404,21 @@ paths:
                 $ref: '#/components/schemas/Foutbericht'
 components:
   schemas:
-    IngeschrevenPersoonBeperktHalCollectie:
+    PersoonBeperktHalCollectie:
       type: object
       properties:
         _embedded:
-          $ref: '#/components/schemas/IngeschrevenPersoonBeperktHalCollectieEmbedded'
-    IngeschrevenPersoonBeperktHalCollectieEmbedded:
+          $ref: '#/components/schemas/PersoonBeperktHalCollectieEmbedded'
+    PersoonBeperktHalCollectieEmbedded:
       type: object
       properties:
-        ingeschrevenpersonen:
+        personen:
           type: array
           items:
-            $ref: '#/components/schemas/IngeschrevenPersoonBeperktHal'
-    IngeschrevenPersoonBeperktHal:
+            $ref: '#/components/schemas/PersoonBeperktHal'
+    PersoonBeperktHal:
       allOf:
-      - $ref: '#/components/schemas/IngeschrevenPersoonBeperkt'
+      - $ref: '#/components/schemas/PersoonBeperkt'
       - type: object
         properties:
           _links:
@@ -665,16 +665,16 @@ components:
           description: Beschrijving van de fout op de parameterwaarde
           example: Waarde is geen geldige integer.
       description: Details over fouten in opgegeven parameters
-    IngeschrevenPersoonHal:
+    PersoonHal:
       allOf:
-      - $ref: '#/components/schemas/IngeschrevenPersoonHalBasis'
-    IngeschrevenPersoonHalBasis:
+      - $ref: '#/components/schemas/PersoonHalBasis'
+    PersoonHalBasis:
       allOf:
-      - $ref: '#/components/schemas/IngeschrevenPersoon'
+      - $ref: '#/components/schemas/Persoon'
       - properties:
           _links:
-            $ref: '#/components/schemas/IngeschrevenPersoonLinks'
-    IngeschrevenPersoonLinks:
+            $ref: '#/components/schemas/PersoonLinks'
+    PersoonLinks:
       type: object
       properties:
         self:
@@ -700,7 +700,7 @@ components:
         partners:
           type: array
           description: |
-            De actuele bij de ingeschreven persoon geregistreerde huwelijken en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven.
+            De actuele bij de persoon geregistreerde huwelijken en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven.
           items:
             $ref: '#/components/schemas/HalLink'
         partnerhistorie:
@@ -726,9 +726,9 @@ components:
         Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen op te geven.
         Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven.
         Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature)
-    IngeschrevenPersoonBeperkt:
+    PersoonBeperkt:
       allOf:
-      - $ref: '#/components/schemas/IngeschrevenPersoonBasis'
+      - $ref: '#/components/schemas/PersoonBasis'
       - type: object
         properties:
           naam:
@@ -741,7 +741,7 @@ components:
             $ref: '#/components/schemas/OverlijdenBasis'
           verblijfplaats:
             $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
-    IngeschrevenPersoonBasis:
+    PersoonBasis:
       type: object
       properties:
         identificatie:
@@ -813,9 +813,9 @@ components:
       description: |
         Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
       example: "0518200000366054"
-    IngeschrevenPersoon:
+    Persoon:
       allOf:
-      - $ref: '#/components/schemas/IngeschrevenPersoonBasis'
+      - $ref: '#/components/schemas/PersoonBasis'
       - type: object
         properties:
           aNummer:
@@ -937,7 +937,7 @@ components:
         propertyName: type
         mapping:
           GbaDatum: '#/components/schemas/GbaDatum'
-          Datum: '#/components/schemas/Datum'
+          Datum: '#/components/schemas/VolledigDatum'
           OnbekendDatum: '#/components/schemas/OnbekendDatum'
           JaarDatum: '#/components/schemas/JaarDatum'
           JaarMaandDatum: '#/components/schemas/JaarMaandDatum'
@@ -953,7 +953,7 @@ components:
           datum:
             pattern: ^[0-9]{8}$
             type: string
-    Datum:
+    VolledigDatum:
       required:
       - datum
       description: Datum conform iso8601
@@ -1111,7 +1111,7 @@ components:
     VertrokkenOnbekendWaarheen:
       type: boolean
       description: |
-        Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.
+        Indicatie dat de persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.
     AbstractGeheimhoudingPersoonsgegevens:
       required:
       - type
@@ -1516,7 +1516,7 @@ components:
           indicatieVestigingVanuitBuitenland:
             type: boolean
             description: |
-              Geeft aan dat de ingeschreven persoon zich vanuit het buitenland heeft ingeschreven.
+              Geeft aan dat de persoon zich vanuit het buitenland heeft ingeschreven.
           korteNaam:
             type: string
             description: |
@@ -1538,7 +1538,7 @@ components:
           vertrokkenOnbekendWaarheen:
             type: boolean
             description: |
-              Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.
+              Indicatie dat de persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.
           land:
             $ref: '#/components/schemas/AbstractLand'
           inOnderzoek:

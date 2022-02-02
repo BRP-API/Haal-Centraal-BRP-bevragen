@@ -1,8 +1,8 @@
 {
   "openapi" : "3.0.3",
   "info" : {
-    "title" : "Bevragen Ingeschreven Personen",
-    "description" : "API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.\n\nGegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.\n\nZie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.1.0/features) voor nadere toelichting.\n",
+    "title" : "Bevragen Personen",
+    "description" : "API voor het bevragen van personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.\n\nGegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.\n\nZie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.1.0/features) voor nadere toelichting.\n",
     "contact" : {
       "url" : "https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen"
     },
@@ -17,16 +17,16 @@
     "description" : "APILAB testserver\n"
   } ],
   "tags" : [ {
-    "name" : "Ingeschreven Personen",
-    "description" : "Zoeken ingeschreven personen"
+    "name" : "Personen",
+    "description" : "Zoeken personen"
   } ],
   "paths" : {
-    "/ingeschrevenpersonen" : {
+    "/personen" : {
       "post" : {
-        "tags" : [ "Ingeschreven Personen" ],
+        "tags" : [ "Personen" ],
         "summary" : "Vindt personen",
         "description" : "Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met parameters uit de andere combinaties.\n\n\nDefault krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.\n\n\nGebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/fields_extensie.feature)\n\n\n1.  Zoek met geslachtsnaam en geboortedatum\n    - geboortedatum\n    - geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature))\n\n\n2.  Zoek met geslachtsnaam en gemeente van inschrijving\n    - gemeenteVanInschrijving\n    - geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature))\n\n\n3.  Zoek met burgerservicenummer\n    - burgerservicenummer\n\n\n4.  Zoek met postcode en huisnummer\n    - postcode\n    - huisnummer\n\n\n5.  Zoek met straat, huisnummer en gemeente van inschrijving\n    - straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature))\n    - gemeenteVanInschrijving\n    - huisnummer\n\n\n6.  Zoek met nummeraanduiding identificatie\n    - nummeraanduidingIdentificatie\n",
-        "operationId" : "GetIngeschrevenPersonen",
+        "operationId" : "GetPersonen",
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -50,7 +50,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/IngeschrevenPersoonBeperktHalCollectie"
+                  "$ref" : "#/components/schemas/PersoonBeperktHalCollectie"
                 }
               }
             }
@@ -240,12 +240,12 @@
         }
       }
     },
-    "/ingeschrevenpersonen/{persoonIdentificatie}" : {
+    "/personen/{persoonIdentificatie}" : {
       "get" : {
-        "tags" : [ "Ingeschreven Personen" ],
+        "tags" : [ "Personen" ],
         "summary" : "Raadpleeg een persoon",
         "description" : "Raadpleeg een (overleden) persoon.\n\nGebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/fields_extensie.feature).\n",
-        "operationId" : "GetIngeschrevenPersoon",
+        "operationId" : "GetPersoon",
         "parameters" : [ {
           "name" : "persoonIdentificatie",
           "in" : "path",
@@ -275,7 +275,7 @@
             "content" : {
               "application/hal+json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/IngeschrevenPersoonHal"
+                  "$ref" : "#/components/schemas/PersoonHal"
                 }
               }
             }
@@ -491,28 +491,28 @@
   },
   "components" : {
     "schemas" : {
-      "IngeschrevenPersoonBeperktHalCollectie" : {
+      "PersoonBeperktHalCollectie" : {
         "type" : "object",
         "properties" : {
           "_embedded" : {
-            "$ref" : "#/components/schemas/IngeschrevenPersoonBeperktHalCollectieEmbedded"
+            "$ref" : "#/components/schemas/PersoonBeperktHalCollectieEmbedded"
           }
         }
       },
-      "IngeschrevenPersoonBeperktHalCollectieEmbedded" : {
+      "PersoonBeperktHalCollectieEmbedded" : {
         "type" : "object",
         "properties" : {
-          "ingeschrevenpersonen" : {
+          "personen" : {
             "type" : "array",
             "items" : {
-              "$ref" : "#/components/schemas/IngeschrevenPersoonBeperktHal"
+              "$ref" : "#/components/schemas/PersoonBeperktHal"
             }
           }
         }
       },
-      "IngeschrevenPersoonBeperktHal" : {
+      "PersoonBeperktHal" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/IngeschrevenPersoonBeperkt"
+          "$ref" : "#/components/schemas/PersoonBeperkt"
         }, {
           "type" : "object",
           "properties" : {
@@ -818,23 +818,23 @@
         },
         "description" : "Details over fouten in opgegeven parameters"
       },
-      "IngeschrevenPersoonHal" : {
+      "PersoonHal" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/IngeschrevenPersoonHalBasis"
+          "$ref" : "#/components/schemas/PersoonHalBasis"
         } ]
       },
-      "IngeschrevenPersoonHalBasis" : {
+      "PersoonHalBasis" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/IngeschrevenPersoon"
+          "$ref" : "#/components/schemas/Persoon"
         }, {
           "properties" : {
             "_links" : {
-              "$ref" : "#/components/schemas/IngeschrevenPersoonLinks"
+              "$ref" : "#/components/schemas/PersoonLinks"
             }
           }
         } ]
       },
-      "IngeschrevenPersoonLinks" : {
+      "PersoonLinks" : {
         "type" : "object",
         "properties" : {
           "self" : {
@@ -863,7 +863,7 @@
           },
           "partners" : {
             "type" : "array",
-            "description" : "De actuele bij de ingeschreven persoon geregistreerde huwelijken en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven.\n",
+            "description" : "De actuele bij de persoon geregistreerde huwelijken en geregistreerd partnerschappen. Een beëindigd huwelijk of geregistreerd partnerschap wordt niet teruggegeven.\n",
             "items" : {
               "$ref" : "#/components/schemas/HalLink"
             }
@@ -896,9 +896,9 @@
         "type" : "string",
         "description" : "Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen op te geven.\nBij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven.\nZie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature)\n"
       },
-      "IngeschrevenPersoonBeperkt" : {
+      "PersoonBeperkt" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/IngeschrevenPersoonBasis"
+          "$ref" : "#/components/schemas/PersoonBasis"
         }, {
           "type" : "object",
           "properties" : {
@@ -920,7 +920,7 @@
           }
         } ]
       },
-      "IngeschrevenPersoonBasis" : {
+      "PersoonBasis" : {
         "type" : "object",
         "properties" : {
           "identificatie" : {
@@ -1003,9 +1003,9 @@
         "description" : "Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.\n",
         "example" : "0518200000366054"
       },
-      "IngeschrevenPersoon" : {
+      "Persoon" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/IngeschrevenPersoonBasis"
+          "$ref" : "#/components/schemas/PersoonBasis"
         }, {
           "type" : "object",
           "properties" : {
@@ -1173,7 +1173,7 @@
           "propertyName" : "type",
           "mapping" : {
             "GbaDatum" : "#/components/schemas/GbaDatum",
-            "Datum" : "#/components/schemas/Datum",
+            "Datum" : "#/components/schemas/VolledigDatum",
             "OnbekendDatum" : "#/components/schemas/OnbekendDatum",
             "JaarDatum" : "#/components/schemas/JaarDatum",
             "JaarMaandDatum" : "#/components/schemas/JaarMaandDatum"
@@ -1196,7 +1196,7 @@
           }
         } ]
       },
-      "Datum" : {
+      "VolledigDatum" : {
         "required" : [ "datum" ],
         "description" : "Datum conform iso8601",
         "example" : "2021-08-01",
@@ -1402,7 +1402,7 @@
       },
       "VertrokkenOnbekendWaarheen" : {
         "type" : "boolean",
-        "description" : "Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.\n"
+        "description" : "Indicatie dat de persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.\n"
       },
       "AbstractGeheimhoudingPersoonsgegevens" : {
         "required" : [ "type" ],
@@ -1965,7 +1965,7 @@
             },
             "indicatieVestigingVanuitBuitenland" : {
               "type" : "boolean",
-              "description" : "Geeft aan dat de ingeschreven persoon zich vanuit het buitenland heeft ingeschreven.\n"
+              "description" : "Geeft aan dat de persoon zich vanuit het buitenland heeft ingeschreven.\n"
             },
             "korteNaam" : {
               "type" : "string",
@@ -1994,7 +1994,7 @@
             },
             "vertrokkenOnbekendWaarheen" : {
               "type" : "boolean",
-              "description" : "Indicatie dat de ingeschreven persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.\n"
+              "description" : "Indicatie dat de persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.\n"
             },
             "land" : {
               "$ref" : "#/components/schemas/AbstractLand"
