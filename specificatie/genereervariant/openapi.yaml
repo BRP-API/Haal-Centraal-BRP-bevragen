@@ -27,7 +27,7 @@ paths:
       - Personen
       summary: Vindt personen
       description: |
-        Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met parameters uit de andere combinaties.
+        Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met optionele parameters.
 
 
         Default krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.
@@ -79,7 +79,7 @@ paths:
             warning:
               $ref: '#/components/headers/warning'
           content:
-            application/json:
+            application/hal+json:
               schema:
                 $ref: '#/components/schemas/PersoonBeperktHalCollectie'
         "400":
