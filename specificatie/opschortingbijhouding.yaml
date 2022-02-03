@@ -11,12 +11,33 @@ components:
       properties:
         reden:
           $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+    AbstractOpschortingBijhouding:
+      type: object
+      description: |
+          * **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.
+      required:
+        - type
+      properties:
+        type:
+          type: string
+        reden:
+          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+      discriminator:
+        propertyName: type
+        mapping:
+          GbaOpschortingBijhouding: '#/components/schemas/GbaOpschortingBijhouding'
+          OpschortingBijhouding: '#/components/schemas/OpschortingBijhouding'
     OpschortingBijhouding:
       allOf:
-        - $ref: '#/components/schemas/OpschortingBijhoudingBasis'
+        - $ref: '#/components/schemas/AbstractOpschortingBijhouding'
         - type: object
-          description: |
-            * **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.
           properties:
             datum:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+    GbaOpschortingBijhouding:
+      allOf:
+        - $ref: '#/components/schemas/AbstractOpschortingBijhouding'
+        - type: object
+          properties:
+            datum:
+              $ref: 'datum.yaml#/components/schemas/GbaDatum'
