@@ -1,5 +1,4 @@
 ﻿using HaalCentraal.BrpService.Generated;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HaalCentraal.BrpService.Controllers
@@ -7,40 +6,81 @@ namespace HaalCentraal.BrpService.Controllers
     [ApiController]
     public class PersoonController : Generated.ControllerBase
     {
-        public override async Task<ActionResult<IngeschrevenPersoonBeperktHalCollectie>> GetIngeschrevenPersonen([Microsoft.AspNetCore.Mvc.FromBody] ZoekPersonenQuery body)
+        private readonly ILogger<PersoonController> _logger;
+        private readonly IWebHostEnvironment _environment;
+
+        public PersoonController(ILogger<PersoonController> logger, IWebHostEnvironment environment)
         {
-            return Ok(new IngeschrevenPersoonBeperktHalCollectie
-            {
-                _links = new HalCollectionLinks
-                {
-                    Self = new HalLink { Href = this.ControllerContext.HttpContext.Request.Path }
-                },
-                _embedded = new IngeschrevenPersoonBeperktHalCollectieEmbedded
-                {
-                    Ingeschrevenpersonen = new List<IngeschrevenPersoonBeperktHal>
-                     {
-                         new IngeschrevenPersoonBeperktHal
-                         {
-                             Geboortedatum = new GbaDatum { Waarde = "20210124" }
-                         },
-                         new IngeschrevenPersoonBeperktHal
-                         {
-                             Geboortedatum = new GbaDatum { Waarde = "20210100" }
-                         },
-                         new IngeschrevenPersoonBeperktHal
-                         {
-                             Geboortedatum = new GbaDatum { Waarde = "20210000" }
-                         },
-                         new IngeschrevenPersoonBeperktHal
-                         {
-                             Geboortedatum = new GbaDatum { Waarde = "00000000" }
-                         }
-                     }
-                }
-            });
+            _logger = logger;
+            _environment = environment;
         }
 
-        public override Task<ActionResult<IngeschrevenPersoonHal>> GetIngeschrevenPersoon(Guid persoonIdentificatie, [FromQuery] string fields)
+        public override async Task<ActionResult<PersoonBeperktHalCollectie>> GetPersonen([FromBody] ZoekPersonenQuery body)
+        {
+            if (body is ZoekMetBurgerservicenummer)
+            {
+                return await Handle(body as ZoekMetBurgerservicenummer);
+            }
+            if(body is ZoekMetGeslachtsnaamEnGeboortedatum)
+            {
+                return await Handle(body as ZoekMetGeslachtsnaamEnGeboortedatum);
+            }
+            if(body is ZoekMetGeslachtsnaamEnGemeenteVanInschrijving)
+            {
+                return await Handle(body as ZoekMetGeslachtsnaamEnGemeenteVanInschrijving);
+            }
+            if(body is ZoekMetPostcodeEnHuisnummer)
+            {
+                return await Handle(body as ZoekMetPostcodeEnHuisnummer);
+            }
+            throw new InvalidOperationException($"Onbekend type query: {this.ControllerContext.HttpContext.Request}");
+        }
+
+        private async Task<ActionResult<PersoonBeperktHalCollectie>> Handle(ZoekMetPostcodeEnHuisnummer query)
+        {
+            _logger.LogInformation("ZoekMetPostcodeEnHuisnummer");
+
+            var path = Path.Combine(_environment.ContentRootPath, $"Data/postcode-huisnummer-{query.Postcode}-{query.Huisnummer}.json");
+            var data = await System.IO.File.ReadAllTextAsync(path);
+            var retval = Newtonsoft.Json.JsonConvert.DeserializeObject<PersoonBeperktHalCollectie>(data);
+
+            return Ok(retval);
+        }
+
+        private async Task<ActionResult<PersoonBeperktHalCollectie>> Handle(ZoekMetGeslachtsnaamEnGemeenteVanInschrijving query)
+        {
+            _logger.LogInformation("ZoekMetGeslachtsnaamEnGemeenteVanInschrijving");
+
+            var path = Path.Combine(_environment.ContentRootPath, $"Data/geslachtsnaam-gemeente-{query.Geslachtsnaam}-{query.GemeenteVanInschrijving}.json");
+            var data = await System.IO.File.ReadAllTextAsync(path);
+            var retval = Newtonsoft.Json.JsonConvert.DeserializeObject<PersoonBeperktHalCollectie>(data);
+
+            return Ok(retval);
+        }
+
+        private async Task<ActionResult<PersoonBeperktHalCollectie>> Handle(ZoekMetGeslachtsnaamEnGeboortedatum query)
+        {
+            _logger.LogInformation("ZoekMetGeslachtsnaamEnGeboortedatum");
+
+            var path = Path.Combine(_environment.ContentRootPath, $"Data/geslachtsnaam-geboortedatum-{query.Geslachtsnaam}-{query.Geboortedatum.Value.ToString("yyyy-MM-dd")}.json");
+            var data = await System.IO.File.ReadAllTextAsync(path);
+            var retval = Newtonsoft.Json.JsonConvert.DeserializeObject<PersoonBeperktHalCollectie>(data);
+
+            return Ok(retval);
+        }
+
+        private async Task<ActionResult<PersoonBeperktHalCollectie>> Handle(ZoekMetBurgerservicenummer query)
+        {
+            _logger.LogInformation("ZoekMetBurgerservicenummer");
+
+            var path = Path.Combine(_environment.ContentRootPath, $"Data/bsn-{string.Join("-", query.Burgerservicenummer)}.json");
+            var data = await System.IO.File.ReadAllTextAsync(path);
+            var retval = Newtonsoft.Json.JsonConvert.DeserializeObject<PersoonBeperktHalCollectie>(data);
+
+            return Ok(retval);
+        }
+
+        public override Task<ActionResult<PersoonHal>> GetPersoon(Guid persoonIdentificatie, [FromQuery] string fields)
         {
             throw new NotImplementedException();
         }

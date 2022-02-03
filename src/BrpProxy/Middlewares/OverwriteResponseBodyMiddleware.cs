@@ -45,9 +45,9 @@ namespace BrpProxy.Middlewares
         {
             string retval;
 
-            var personen = JsonConvert.DeserializeObject<IngeschrevenPersoonBeperktHalCollectie>(payload);
+            var personen = JsonConvert.DeserializeObject<PersoonBeperktHalCollectie>(payload);
 
-            foreach(var persoon in personen?._embedded.Ingeschrevenpersonen)
+            foreach(var persoon in personen?._embedded.Personen)
             {
                 if(persoon.Geboortedatum is GbaDatum datum)
                 {
@@ -67,16 +67,16 @@ namespace BrpProxy.Middlewares
 
         public static AbstractDatum Map(this GbaDatum datum)
         {
-            if (GbaDatumRegex.IsMatch(datum.Waarde))
+            if (GbaDatumRegex.IsMatch(datum.Datum))
             {
-                var match = GbaDatumRegex.Match(datum.Waarde);
+                var match = GbaDatumRegex.Match(datum.Datum);
                 var jaar = int.Parse(match.Groups["jaar"].Value, CultureInfo.InvariantCulture);
                 var maand = int.Parse(match.Groups["maand"].Value, CultureInfo.InvariantCulture);
                 var dag = int.Parse(match.Groups["dag"].Value, CultureInfo.InvariantCulture);
 
                 if (jaar != 0 && maand != 0 && dag != 0)
                 {
-                    return new Datum { Waarde = new DateTime(jaar, maand, dag) };
+                    return new VolledigDatum { Datum = new DateTime(jaar, maand, dag) };
                 }
                 if (jaar == 0 && maand == 0 && dag == 0)
                 {

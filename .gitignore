@@ -13,3 +13,5 @@ node_modules
 [Oo]bj/
 
 .vs
+
+Data/
