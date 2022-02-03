@@ -21,7 +21,8 @@
     "oas:resolve": "java -jar swagger-codegen-cli.jar generate -i ./specificatie/openapi.yaml -l openapi-yaml -o ./specificatie/genereervariant && java -jar swagger-codegen-cli.jar generate -i ./specificatie/openapi.yaml -l openapi -o ./specificatie/genereervariant",
     "postoas:resolve": "rm swagger-codegen-cli.jar",
     "unstage-generated": "git reset HEAD ./specificatie/genereervariant/openapi.* ./test/BRP-bevragen-postman-collection.json ./code/**",
-    "rollback-generated": "git checkout ./specificatie/genereervariant/openapi.* ./test/BRP-bevragen-postman-collection.json ./code/**"
+    "rollback-generated": "git checkout ./specificatie/genereervariant/openapi.* ./test/BRP-bevragen-postman-collection.json ./code/**",
+    "specs:verify": "cucumber-js features/zoek-met-*.feature --tags \"not @fout-case\" --tags \"not @skip-verify\""
   },
   "repository": {
     "type": "git",
@@ -34,11 +35,14 @@
   },
   "homepage": "https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen#readme",
   "devDependencies": {
+    "@cucumber/cucumber": "^8.0.0-rc.2",
     "@openapitools/openapi-generator-cli": "^2.4.25",
     "@stoplight/spectral-cli": "^6.2.0",
+    "axios": "^0.25.0",
+    "chai": "^4.3.6",
     "husky": "^4.3.8",
     "mvn-dl": "^6.0.0",
-    "nswag": "^13.15.5",
+    "nswag": "^13.15.7",
     "openapi-to-postmanv2": "^2.13.0"
   },
   "husky": {
