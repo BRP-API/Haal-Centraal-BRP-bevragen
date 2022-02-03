@@ -1035,7 +1035,7 @@
               "$ref" : "#/components/schemas/Geboorte"
             },
             "opschortingBijhouding" : {
-              "$ref" : "#/components/schemas/OpschortingBijhouding"
+              "$ref" : "#/components/schemas/AbstractOpschortingBijhouding"
             },
             "overlijden" : {
               "$ref" : "#/components/schemas/Overlijden"
@@ -1762,17 +1762,48 @@
           }
         } ]
       },
+      "AbstractOpschortingBijhouding" : {
+        "required" : [ "type" ],
+        "type" : "object",
+        "properties" : {
+          "type" : {
+            "type" : "string"
+          },
+          "reden" : {
+            "$ref" : "#/components/schemas/Waardetabel"
+          }
+        },
+        "description" : "* **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.\n",
+        "discriminator" : {
+          "propertyName" : "type",
+          "mapping" : {
+            "GbaOpschortingBijhouding" : "#/components/schemas/GbaOpschortingBijhouding",
+            "OpschortingBijhouding" : "#/components/schemas/OpschortingBijhouding"
+          }
+        }
+      },
+      "GbaOpschortingBijhouding" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AbstractOpschortingBijhouding"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "datum" : {
+              "$ref" : "#/components/schemas/GbaDatum"
+            }
+          }
+        } ]
+      },
       "OpschortingBijhouding" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/OpschortingBijhoudingBasis"
+          "$ref" : "#/components/schemas/AbstractOpschortingBijhouding"
         }, {
           "type" : "object",
           "properties" : {
             "datum" : {
               "$ref" : "#/components/schemas/AbstractDatum"
             }
-          },
-          "description" : "* **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.\n"
+          }
         } ]
       },
       "Overlijden" : {
