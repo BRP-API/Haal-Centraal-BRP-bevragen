@@ -6,6 +6,11 @@ info:
 paths: {}
 components:
   schemas:
+    GeboorteBeperkt:
+      type: object
+      properties:
+        datum:
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
     Geboorte:
       type: object
       description: |

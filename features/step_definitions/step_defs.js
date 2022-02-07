@@ -21,11 +21,6 @@ Given('het systeem heeft een persoon met de volgende gegevens', function (dataTa
 });
 
 Given('de persoon heeft de volgende geboorte gegevens', function (dataTable) {
-    if(this.context.persoon.geboortedatum === undefined) {
-        this.context.persoon.geboortedatum = {};
-    }
-    let geboortedatum = this.context.persoon.geboortedatum;
-
     if(this.context.persoon.geboorte === undefined) {
         this.context.persoon.geboorte = {};
     }
@@ -36,10 +31,8 @@ Given('de persoon heeft de volgende geboorte gegevens', function (dataTable) {
             if(key === "datum") {
                 geboorte.datum = {
                     type: "GbaDatum",
-                    datum: val
+                    gbaDatum: val
                 };
-                geboortedatum.type = geboorte.datum.type;
-                geboortedatum.datum = geboorte.datum.datum;
             }
             else {
                 geboorte[key] = val;
@@ -152,7 +145,7 @@ Then('bevat de response alleen personen met de volgende gegevens', function (dat
     });
 });
 
-Then('bevat de persoon met burgerservicenummer {string} de volgende geboortedatum', function (burgerservicenummer, dataTable) {
+Then('bevat de persoon met burgerservicenummer {string} de volgende geboorte datum', function (burgerservicenummer, dataTable) {
     const personen = this.context.response.data._embedded.personen;
 
     const persoon = personen.find(function(p) {
@@ -161,7 +154,7 @@ Then('bevat de persoon met burgerservicenummer {string} de volgende geboortedatu
 
     dataTable.hashes().forEach(function(value) {
         for(const [key, expected] of Object.entries(value)) {
-            let actual = String(persoon.geboortedatum[key]);
+            let actual = String(persoon.geboorte.datum[key]);
 
             actual.should.equal(expected, `geen geboortedatum gevonden met ${key}: ${expected}\npersoon: ${JSON.stringify(persoon, null, "\t")}`);
         }

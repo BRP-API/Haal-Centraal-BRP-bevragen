@@ -45,8 +45,8 @@ components:
           properties:
             naam:
               $ref: 'naam.yaml#/components/schemas/AbstractNaamBasis'
-            geboortedatum:
-              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+            geboorte:
+              $ref: 'geboorte.yaml#/components/schemas/GeboorteBeperkt'
             opschortingBijhouding:
               $ref: 'opschortingbijhouding.yaml#/components/schemas/OpschortingBijhoudingBasis'
             overlijden:

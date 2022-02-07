@@ -24,7 +24,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
         Dan bevat de response alleen personen met de volgende gegevens 
         | burgerservicenummer |
         | 999995078           |
-        En bevat de persoon met burgerservicenummer '999995078' de volgende geboortedatum
+        En bevat de persoon met burgerservicenummer '999995078' de volgende geboorte datum
         | type  | datum      |
         | Datum | 1983-05-26 |
         En bevat de persoon met burgerservicenummer '999995078' de volgende naam gegevens
