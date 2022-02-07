@@ -56,9 +56,7 @@
           "schema" : {
             "type" : "array",
             "items" : {
-              "maxLength" : 9,
-              "minLength" : 9,
-              "pattern" : "^[0-9]*$",
+              "pattern" : "^[0-9]{9}$",
               "type" : "string"
             }
           },
@@ -448,9 +446,7 @@
           "style" : "simple",
           "explode" : false,
           "schema" : {
-            "maxLength" : 9,
-            "minLength" : 9,
-            "pattern" : "^[0-9]*$",
+            "pattern" : "^[0-9]{9}$",
             "type" : "string",
             "example" : "555555021"
           }
@@ -715,9 +711,7 @@
           "style" : "simple",
           "explode" : false,
           "schema" : {
-            "maxLength" : 9,
-            "minLength" : 9,
-            "pattern" : "^[0-9]*$",
+            "pattern" : "^[0-9]{9}$",
             "type" : "string",
             "example" : "555555021"
           }
@@ -974,9 +968,7 @@
           "style" : "simple",
           "explode" : false,
           "schema" : {
-            "maxLength" : 9,
-            "minLength" : 9,
-            "pattern" : "^[0-9]*$",
+            "pattern" : "^[0-9]{9}$",
             "type" : "string",
             "example" : "555555021"
           }
@@ -1223,9 +1215,7 @@
           "style" : "simple",
           "explode" : false,
           "schema" : {
-            "maxLength" : 9,
-            "minLength" : 9,
-            "pattern" : "^[0-9]*$",
+            "pattern" : "^[0-9]{9}$",
             "type" : "string",
             "example" : "555555021"
           }
@@ -1482,9 +1472,7 @@
           "style" : "simple",
           "explode" : false,
           "schema" : {
-            "maxLength" : 9,
-            "minLength" : 9,
-            "pattern" : "^[0-9]*$",
+            "pattern" : "^[0-9]{9}$",
             "type" : "string",
             "example" : "555555021"
           }
@@ -1731,9 +1719,7 @@
           "style" : "simple",
           "explode" : false,
           "schema" : {
-            "maxLength" : 9,
-            "minLength" : 9,
-            "pattern" : "^[0-9]*$",
+            "pattern" : "^[0-9]{9}$",
             "type" : "string",
             "example" : "555555021"
           }
@@ -1990,9 +1976,7 @@
           "style" : "simple",
           "explode" : false,
           "schema" : {
-            "maxLength" : 9,
-            "minLength" : 9,
-            "pattern" : "^[0-9]*$",
+            "pattern" : "^[0-9]{9}$",
             "type" : "string",
             "example" : "555555021"
           }
@@ -3586,9 +3570,7 @@
         "style" : "simple",
         "explode" : false,
         "schema" : {
-          "maxLength" : 9,
-          "minLength" : 9,
-          "pattern" : "^[0-9]*$",
+          "pattern" : "^[0-9]{9}$",
           "type" : "string",
           "example" : "555555021"
         }
