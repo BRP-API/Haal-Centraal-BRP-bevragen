@@ -23,7 +23,7 @@ components:
         datumIngangFamilierechtelijkeBetrekking:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         naam:
-          $ref: 'naam.yaml#/components/schemas/Naam'
+          $ref: 'naam.yaml#/components/schemas/AbstractNaam'
         inOnderzoek:
           $ref: '#/components/schemas/AbstractOuderInOnderzoek'
         geboorte:

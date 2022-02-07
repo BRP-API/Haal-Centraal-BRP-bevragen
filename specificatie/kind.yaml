@@ -23,7 +23,7 @@ components:
         inOnderzoek:
           $ref: '#/components/schemas/AbstractKindInOnderzoek'
         naam:
-          $ref: 'naam.yaml#/components/schemas/Naam'
+          $ref: 'naam.yaml#/components/schemas/AbstractNaam'
         geboorte:
           $ref: 'geboorte.yaml#/components/schemas/Geboorte'
     AbstractKindInOnderzoek:

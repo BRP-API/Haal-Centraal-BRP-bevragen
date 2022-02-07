@@ -44,7 +44,7 @@ components:
         - type: object
           properties:
             naam:
-              $ref: 'naam.yaml#/components/schemas/NaamBasis'
+              $ref: 'naam.yaml#/components/schemas/AbstractNaamBasis'
             geboortedatum:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             opschortingBijhouding:
