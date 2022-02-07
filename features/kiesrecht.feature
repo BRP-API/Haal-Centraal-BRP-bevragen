@@ -36,38 +36,38 @@ Functionaliteit: Kiesrecht
 	| A = persoon is uitgesloten | datum in verleden | afwezig                 | afwezig                       |
 
 
-Scenario: de ingeschreven persoon is uitgesloten van Europees kiesrecht
-	Gegeven op de PL van een ingeschreven persoon is categorie 13, element 31.10 gelijk aan 1 (= persoon is uitgesloten)
+Scenario: de persoon is uitgesloten van Europees kiesrecht
+	Gegeven op de PL van een persoon is categorie 13, element 31.10 gelijk aan 1 (= persoon is uitgesloten)
 	En categorie 13, element 31.30 is niet aanwezig of heeft geen waarde
-	Als de ingeschreven persoon wordt geraadpleegd
+	Als de persoon wordt geraadpleegd
 	Dan is europeesKiesrecht gelijk aan false
 
-Scenario: de ingeschreven persoon is niet uitgesloten van Europees kiesrecht
-	Gegeven op de PL van een ingeschreven persoon is categorie 13, element 31.10 gelijk aan 2 (= persoon ontvangt oproep)
-	Als de ingeschreven persoon wordt geraadpleegd
+Scenario: de persoon is niet uitgesloten van Europees kiesrecht
+	Gegeven op de PL van een persoon is categorie 13, element 31.10 gelijk aan 2 (= persoon ontvangt oproep)
+	Als de persoon wordt geraadpleegd
 	Dan is europeesKiesrecht gelijk aan true
 
-Scenario: bij de ingeschreven persoon is geen Europees kiesrecht vastgesteld
-	Gegeven op de PL van een ingeschreven persoon is categorie 13, element 31.10 is leeg
-	Als de ingeschreven persoon wordt geraadpleegd
+Scenario: bij de persoon is geen Europees kiesrecht vastgesteld
+	Gegeven op de PL van een persoon is categorie 13, element 31.10 is leeg
+	Als de persoon wordt geraadpleegd
 	Dan is europeesKiesrecht niet aanwezig
 
-Scenario: de ingeschreven persoon is uitgesloten van Europees kiesrecht en de einddatum uitsluiting Europees kiesrecht ligt in het verleden
-	Gegeven op de PL van een ingeschreven persoon is categorie 13, element 31.10 gelijk aan 1 (= persoon is uitgesloten)
+Scenario: de persoon is uitgesloten van Europees kiesrecht en de einddatum uitsluiting Europees kiesrecht ligt in het verleden
+	Gegeven op de PL van een persoon is categorie 13, element 31.10 gelijk aan 1 (= persoon is uitgesloten)
 	En categorie 13, element 31.30 is een datum in het verleden
 	Dan is europeesKiesrecht niet aanwezig
 	En is einddatumUitsluitingEuropeesKiesrecht niet aanwezig
 
-Scenario: de ingeschreven persoon is uitgesloten van Europees kiesrecht en de einddatum uitsluiting Europees kiesrecht ligt in de toekomst
-	Gegeven op de PL van een ingeschreven persoon is categorie 13, element 31.10 gelijk aan 1 (= persoon is uitgesloten)
+Scenario: de persoon is uitgesloten van Europees kiesrecht en de einddatum uitsluiting Europees kiesrecht ligt in de toekomst
+	Gegeven op de PL van een persoon is categorie 13, element 31.10 gelijk aan 1 (= persoon is uitgesloten)
 	En categorie 13, element 31.30 is een datum in de toekomst
 	Dan is europeesKiesrecht gelijk aan false
 	En is einddatumUitsluitingEuropeesKiesrecht gelijk aan de waarde van element 31.10
 
 Abstract Scenario: de einddatum uitsluiting europees kiesrecht is geheel of deels onbekend
-	Gegeven op de PL van een ingeschreven persoon is categorie 13, element 31.10 gelijk aan 1 (= persoon is uitgesloten)
-	En op de PL van een ingeschreven persoon is categorie 13, element 31.30 gelijk aan <geheel of deels onbekende datum>
-	Als de ingeschreven persoon wordt geraadpleegd op 6 september 2019
+	Gegeven op de PL van een persoon is categorie 13, element 31.10 gelijk aan 1 (= persoon is uitgesloten)
+	En op de PL van een persoon is categorie 13, element 31.30 gelijk aan <geheel of deels onbekende datum>
+	Als de persoon wordt geraadpleegd op 6 september 2019
 	Dan is europeesKiesrecht <europeesKiesrecht>
 	En is einddatumUitsluitingEuropeesKiesrecht <einddatumUitsluitingEuropeesKiesrecht>
 
@@ -80,35 +80,35 @@ Abstract Scenario: de einddatum uitsluiting europees kiesrecht is geheel of deel
 	| 20190900                        | false             | jaar: 2019, maand: 09                 |
 	| 20190800                        | niet aanwezig     | niet aanwezig                         |
 
-Scenario: de ingeschreven persoon is uitgesloten van kiesrecht
-	Gegeven op de PL van een ingeschreven persoon is categorie 13, element 38.10 gelijk aan A (= persoon is uitgesloten)
+Scenario: de persoon is uitgesloten van kiesrecht
+	Gegeven op de PL van een persoon is categorie 13, element 38.10 gelijk aan A (= persoon is uitgesloten)
 	En categorie 13, element 38.20 is niet aanwezig of heeft geen waarde
-	Als de ingeschreven persoon wordt geraadpleegd
+	Als de persoon wordt geraadpleegd
 	Dan is uitgeslotenVanKiesrecht gelijk aan true
 
-Scenario: de ingeschreven persoon is niet uitgesloten van kiesrecht
-	Gegeven op de PL van een ingeschreven persoon is er geen categorie 13, element 38.10 (= persoon is niet uitgesloten)
-	Als de ingeschreven persoon wordt geraadpleegd
+Scenario: de persoon is niet uitgesloten van kiesrecht
+	Gegeven op de PL van een persoon is er geen categorie 13, element 38.10 (= persoon is niet uitgesloten)
+	Als de persoon wordt geraadpleegd
 	Dan is uitgeslotenVanKiesrecht niet aanwezig
 
-Scenario: de ingeschreven persoon was uitgesloten van kiesrecht en de einddatum uitsluiting kiesrecht ligt in het verleden
-	Gegeven op de PL van een ingeschreven persoon is categorie 13, element 38.10 gelijk aan A (= persoon is uitgesloten)
+Scenario: de persoon was uitgesloten van kiesrecht en de einddatum uitsluiting kiesrecht ligt in het verleden
+	Gegeven op de PL van een persoon is categorie 13, element 38.10 gelijk aan A (= persoon is uitgesloten)
 	En categorie 13, element 38.20 is een datum in het verleden
-	Als de ingeschreven persoon wordt geraadpleegd
+	Als de persoon wordt geraadpleegd
 	Dan is uitgeslotenVanKiesrecht niet aanwezig
 	En is einddatumUitsluitingKiesrecht niet aanwezig
 
-Scenario: de ingeschreven persoon is uitgesloten van kiesrecht en de einddatum uitsluiting kiesrecht ligt in de toekomst
-	Gegeven op de PL van een ingeschreven persoon is categorie 13, element 38.10 gelijk aan A (= persoon is uitgesloten)
+Scenario: de persoon is uitgesloten van kiesrecht en de einddatum uitsluiting kiesrecht ligt in de toekomst
+	Gegeven op de PL van een persoon is categorie 13, element 38.10 gelijk aan A (= persoon is uitgesloten)
 	En categorie 13, element 38.20 is een datum in de toekomst
-	Als de ingeschreven persoon wordt geraadpleegd
+	Als de persoon wordt geraadpleegd
 	Dan is uitgeslotenVanKiesrecht gelijk aan true
 	En is einddatumUitsluitingKiesrecht gelijk aan de waarde van element 38.20
 
 Abstract Scenario: de einddatum uitsluiting kiesrecht is geheel of deels onbekend
-	Gegeven op de PL van een ingeschreven persoon is categorie 13, element 38.10 gelijk aan A (= persoon is uitgesloten)
-	En op de PL van een ingeschreven persoon is categorie 13, element 38.20 gelijk aan <geheel of deels onbekende datum>
-	Als de ingeschreven persoon wordt geraadpleegd op 6 september 2019
+	Gegeven op de PL van een persoon is categorie 13, element 38.10 gelijk aan A (= persoon is uitgesloten)
+	En op de PL van een persoon is categorie 13, element 38.20 gelijk aan <geheel of deels onbekende datum>
+	Als de persoon wordt geraadpleegd op 6 september 2019
 	Dan is uitgeslotenVanKiesrecht <europeesKiesrecht>
 	En is einddatumUitsluitingEuropeesKiesrecht <einddatumUitsluitingEuropeesKiesrecht>
 

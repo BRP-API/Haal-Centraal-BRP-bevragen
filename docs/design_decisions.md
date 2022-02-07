@@ -9,7 +9,7 @@ Alle ontwerpkeuzes die zijn gemaakt tijdens het ontwerpen en specificeren van de
 In het document [design_desicions.md](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/docs/design_decisions.md) dat in de Haal-Centraal-common repository is opgenomen staan beslissingen opgesomd waar alle Haal Centraal API's zich aan conformeren.
 
 ## Zoeken op adres in de BRP
-Zoeken op adres (postcode) bij een ingeschreven persoon wordt gedaan op de postcode zoals die in de BRP is opgeslagen.
+Zoeken op adres (postcode) bij een persoon wordt gedaan op de postcode zoals die in de BRP is opgeslagen.
 
 *Ratio*
 * Een oplossing waarbij deze zoekvraag wordt samengesteld uit een bevraging op BAG (adressen) gecombineerd met een of meerdere bevraging(en) op GBA/BRP legt teveel complexiteit en last bij gemeenten.
@@ -17,14 +17,14 @@ Zoeken op adres (postcode) bij een ingeschreven persoon wordt gedaan op de postc
 * Niet alle adressen in BRP zijn te relateren aan een postcode in de BAG en deze personen moeten ook gevonden kunnen worden.
 
 ## Resourcedefinitie binnen API voor elke gelinkte resource (heroverwegen ?)
-Voor elke gelinkte resource (relatie) moet er binnen het Bevragen ingeschreven personen API (ten minste tijdelijk) een resource beschreven (ontsloten) zijn. Voor een gelinkte resource buiten het BRP-domein wordt alleen het opvragen van de actuele status van de enkele resource gespecificeerd.
+Voor elke gelinkte resource (relatie) moet er binnen het Bevragen personen API (ten minste tijdelijk) een resource beschreven (ontsloten) zijn. Voor een gelinkte resource buiten het BRP-domein wordt alleen het opvragen van de actuele status van de enkele resource gespecificeerd.
 
 *Ratio*
-Relaties worden opgenomen als uri naar de betreffende resource. De API voor het opvragen van de ingeschreven persoon moet dus URI's kunnen samenstellen die verwijzen naar de betreffende objecten (resources) en waar deze objecten (resources) ook daadwerkelijk op te vragen zijn.
+Relaties worden opgenomen als uri naar de betreffende resource. De API voor het opvragen van de persoon moet dus URI's kunnen samenstellen die verwijzen naar de betreffende objecten (resources) en waar deze objecten (resources) ook daadwerkelijk op te vragen zijn.
 Zo lang deze resources nog niet ontsloten zijn (in een API op betreffende bron) moeten deze dus binnen deze API beschreven worden.
 
 ## Aanschrijfwijze opnemen in de resource
-We voegen een veld "aanschrijfwijze" toe aan de resource ingeschrevenNatuurlijkPersoon.
+We voegen een veld "aanschrijfwijze" toe aan de resource Persoon.
 In dit veld wordt de naam samengesteld op basis van de aanduiding naamgebruik.
 
 Het algoritme voor het samenstellen moet worden beschreven in de API specificaties.
@@ -41,11 +41,11 @@ De identificatie van BAG-objecten wordt geïmplementeerd als string, waarin de d
 *Ratio*
 
 In het RSGB is de identificatie van BAG-objecten (bijvoorbeeld identificatiecode van een nummeraanduiding) opgenomen als complex datatype. In de BAG-registratie is dit echter één string waarin de deel-elementen uit het complex datatype zijn samengevoegd.
-Zie issue [#1](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/issues/1).
+Zie issue [#1](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1).
 
-## Eén uniform endpoint voor zoeken ingeschreven persoonsgegevens
-Voor ingeschreven personen komt er één endpoint voor het zoeken: /ingeschrevenNatuurlijkPersonen.
-Dit endpoint geeft alle attributen van de ingeschreven persoon van het LO GBA, geen aanhangende gegevens of gemeentelijke kerngegevens, alle relaties (die in GBA zitten) als link (uri).
+## Eén uniform endpoint voor zoeken persoonsgegevens
+Voor personen komt er één endpoint voor het zoeken: /personen.
+Dit endpoint geeft alle attributen van de persoon van het LO GBA, geen aanhangende gegevens of gemeentelijke kerngegevens, alle relaties (die in GBA zitten) als link (uri).
 
 Op dit endpoint worden alle zoekparameters uit RSGB-bevragingen 1.0 ondersteund die vallen onder "zoeken op persoonskenmerken". Er worden minimale combinaties van parameters voorgeschreven.
 
@@ -65,7 +65,7 @@ Wanneer het verblijfadres een BAG-adres is, wordt ook een relatie (link) naar de
 Functionele vraag is: ik wil in één vraag een persoon met adres hebben.
 Een groot deel van de vragen om persoonsgegevens is er direct behoefte aan de adresgegevens, zonder geïnteresseerd te zijn in de structuur in BAG (zoals naar nummeraanduiding, woonplaats, ligplaats, adresseerbaar object).
 Zie https://www.rvig.nl/brp/vraag-en-antwoord/mag-een-persoon-worden-ingeschreven-op-een-locatieomschrijving-in-de-gba-als-er-geen-authentiek-bag-adres-is
-Deze oplossing is ook een oplossing voor issue [22](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/issues/22) en [14](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/issues/14).
+Deze oplossing is ook een oplossing voor issue [22](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/22) en [14](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/14).
 
 ## Verblijfplaats wordt gevuld met adresgegevens uit het GBA als er geen BAG adres beschikbaar is
 De verblijfplaats toont de adresgegevens zoals die in het GBA staan geregistreerd als er geen BAG nummeraanduiding en openbare ruimtenaam uit de BAG beschikbaar is.
@@ -92,7 +92,7 @@ Deze velden zijn gedefinieerd in ISO8601-typen.
 Als er een volledige geboortedatum is, worden alle 4 velden ingevuld, anders alleen de bekende delen.
 
 *Ratio*
-In de API moet het mogelijk zijn een persoon met gedeeltelijk onbekende geboortedatum op te nemen, zie issue [6](https://github.com/VNG-Realisatie/Bevragingen-ingeschreven-personen/issues/6).
+In de API moet het mogelijk zijn een persoon met gedeeltelijk onbekende geboortedatum op te nemen, zie issue [6](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/6).
 De gekozen oplossing is het eenvoudigst te implementeren.
 
 ## gemeenteVanInschrijving is een property met gemeentecode
@@ -113,8 +113,9 @@ Volgens LO GBA zijn ook relaties die zijn beëindigd nog "actueel". Voor het zoe
 Wanneer wel behoefte is aan alle partner-relaties, inclusief relaties die al beëindigd zijn, kan hiervoor historisch zoeken op partners worden gebruikt.
 
 ## Opvragen van historie kan via specifieke endpoints
-Opvragen van historie wordt gedefinieerd met aparte endpoints. Als een provider ervoor kiest om deze niet te implementeren wordt er een 501 geretourneerd. De historische bevragingen krijgen dus resourcenaam waaruit blijkt dart het om een historische resource gaat.
-Met deze API kan de historie op het betreffende aspect opgevraagd worden.
+
+Opvragen van historie wordt gedefinieerd met aparte endpoints. Als een provider ervoor kiest om deze niet te implementeren wordt er een 501 geretourneerd. De historische bevraging krijgen dus resourcenaam waaruit blijkt dat het om een historische resource gaat.
+
 
 Hiermee wordt het zoeken/raadplegen van de volgende historie ondersteund:
 - bewoningen (welke personen hebben een adres als verblijfplaats gehad)
@@ -126,15 +127,15 @@ Hiermee wordt het zoeken/raadplegen van de volgende historie ondersteund:
 Er kan gekozen worden om de status op peildatum te raadplegen met de queryparameter geldigOp.
 Er kan gekozen worden de historische voorkomens te raadplegen binnen een periode met queryparameters periodevan en periodetot.
 
-Het antwoordbericht van /verblijfplaatsen bevat het property burgerservicenummer van de ingeschreven natuurlijk persoon, plus \_links en \_embedded met de historische voorkomens van de verblijfplaats van de persoon. Hierin zitten ook de properties geldigVan en geldigTotEnMet.
-Het antwoordbericht van /verblijfstitels bevat de historische voorkomens van de verblijfstitel van de ingeschreven persoon en de properties geldigVan en geldigTotEnMet.
-Het antwoordbericht van /partners bevat het property burgerservicenummer van de ingeschreven natuurlijk persoon, plus de historische voorkomens van partner-relaties (huwelijken of geregistreerd partnerschappen). Hierin zitten ook de geldigVan en geldigTotEnMet.
+Het antwoordbericht van /verblijfplaatsen bevat het property burgerservicenummer van de natuurlijk persoon, plus \_links en \_embedded met de historische voorkomens van de verblijfplaats van de persoon. Hierin zitten ook de properties geldigVan en geldigTotEnMet.
+Het antwoordbericht van /verblijfstitels bevat de historische voorkomens van de verblijfstitel van de persoon en de properties geldigVan en geldigTotEnMet.
+Het antwoordbericht van /partners bevat het property burgerservicenummer van de natuurlijk persoon, plus de historische voorkomens van partner-relaties (huwelijken of geregistreerd partnerschappen). Hierin zitten ook de geldigVan en geldigTotEnMet.
 Het antwoordbericht van /bewoningen bevat de lijst gevonden adressen, met voor elk adres de bewoners met elk de properties geldigVan en geldigTotEnMet.
 
 
-## Burgerservicenummer is unieke sleutel voor een ingeschreven natuurlijk persoon
-De resource ingeschrevenNatuurlijkPersonen wordt uniek geïdentificeerd met de sleutel burgerservicenummer.
-Dus is het pad naar de gegevens van één persoon gedefinieerd als /ingeschrevennatuurlijkpersonen/{burgerservicenummer}
+## Burgerservicenummer is unieke sleutel voor een natuurlijk persoon
+De resource personen wordt uniek geïdentificeerd met de sleutel burgerservicenummer.
+Dus is het pad naar de gegevens van één persoon gedefinieerd als /personen/{burgerservicenummer}
 
 *Ratio*
 Het burgerservicenummer is het persoonsnummer voor contact van een burger met de overheid. Andere registraties die verwijzen naar een persoon zullen geen andere unieke identificatie kennen dan het burgerservicenummer. Zolang andere registraties (zoals BRK en HR) alleen het burgerservicenummer als functionele sleutel van de persoon kennen kan er geen technische sleutel (UUID) gebruikt worden voor het ophalen van een enkele resource.

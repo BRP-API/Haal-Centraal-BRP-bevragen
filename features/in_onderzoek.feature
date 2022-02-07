@@ -16,7 +16,7 @@ Functionaliteit: in onderzoek
   Scenario: hele categorie persoon in onderzoek
     Gegeven de te raadplegen persoon heeft de hele persoon in onderzoek (01.83.10=010000)
     En geen enkele andere categorie, groep of attribuut is in onderzoek
-    Als de ingeschreven persoon met burgerservicenummer 999991449 wordt geraadpleegd
+    Als de persoon met burgerservicenummer 999991449 wordt geraadpleegd
     Dan is in het antwoord inOnderzoek.burgerservicenummer=true
     En is in het antwoord inOnderzoek.geslachtsaanduiding=true
     En is in het antwoord inOnderzoek.datumOpschortingBijhouding=true
@@ -40,7 +40,7 @@ Functionaliteit: in onderzoek
 
   Scenario: hele categorie in onderzoek
     Gegeven de te raadplegen persoon heeft categorie nationaliteit in onderzoek
-    Als de ingeschreven persoon met burgerservicenummer 999999102 wordt geraadpleegd
+    Als de persoon met burgerservicenummer 999999102 wordt geraadpleegd
     Dan is in het antwoord nationaliteit.inOnderzoek.nationaliteit=true
     En is in het antwoord nationaliteit.inOnderzoek.redenOpname=true
     En is in het antwoord nationaliteit.inOnderzoek.redenBeindigen=true
@@ -48,24 +48,24 @@ Functionaliteit: in onderzoek
 
   Scenario: Hele groep in onderzoek
     Gegeven de te raadplegen persoon heeft groep naam in onderzoek
-    Als de ingeschreven persoon met burgerservicenummer 999999151 wordt geraadpleegd
+    Als de persoon met burgerservicenummer 999999151 wordt geraadpleegd
     Dan is in het antwoord inOnderzoek.naam.geslachtsnaam=true
     En is in het antwoord inOnderzoek.naam.voornamen=true
     En is in het antwoord inOnderzoek.naam.voorvoegsel=true
 
   Scenario: Een attribuut is in inOnderzoek
     Gegeven de te raadplegen persoon heeft attribuut naam.voornamen in onderzoek
-    Als de ingeschreven persoon met burgerservicenummer 999999163 wordt geraadpleegd
+    Als de persoon met burgerservicenummer 999999163 wordt geraadpleegd
     Dan is in het antwoord inOnderzoek.naam.geslachtsnaam niet aanwezig of null
     En is in het antwoord inOnderzoek.naam.voornamen=true
     En is in het antwoord inOnderzoek.naam.voorvoegsel niet aanwezig of null
 
   Scenario: Het onderzoek is beëindigd
     Gegeven de te raadplegen persoon heeft in onderzoek gevuld (010000), met datum einde in onderzoek ook gevuld
-    Als de ingeschreven persoon met burgerservicenummer 999994888 wordt geraadpleegd
+    Als de persoon met burgerservicenummer 999994888 wordt geraadpleegd
     Dan is in het antwoord inOnderzoek niet aanwezig of null
 
   Scenario: Een attribuut is in onderzoek dat niet opgenomen is in de API
     Gegeven de te raadplegen persoon heeft in onderzoek gevuld op attribuut (048510)
-    Als de ingeschreven persoon wordt geraadpleegd
+    Als de persoon wordt geraadpleegd
     Dan is in het antwoord nationaliteit..inOnderzoek niet aanwezig of null

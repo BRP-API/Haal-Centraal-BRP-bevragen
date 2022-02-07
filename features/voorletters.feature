@@ -14,9 +14,9 @@ Als de rubriek Voornamen is gevuld met de standaardwaarde '.' (punt), Dan wordt 
 
 
 Abstract Scenario: Voorletters wordt samengesteld uit de eerste letter van de voornamen gescheiden door een punt
-	Gegeven een ingeschreven persoon met voornamen <voornamen>
+	Gegeven een persoon met voornamen <voornamen>
 	Als de persoon wordt geraadpleegd
-	Dan zijn de voorletters van de ingeschreven persoon gelijk aan <voorletters>
+	Dan zijn de voorletters van de persoon gelijk aan <voorletters>
 
 	Voorbeelden:
 	| voornamen            | voorletters |

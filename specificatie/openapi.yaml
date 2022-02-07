@@ -4,9 +4,9 @@ servers:
                   APILAB testserver
     url: https://www.haalcentraal.nl/haalcentraal/api/brp
 info:
-  title: Bevragen Ingeschreven Personen
+  title: Bevragen Personen
   description: |
-                API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.
+                API voor het bevragen van personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.
 
                 Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.
 
@@ -18,12 +18,12 @@ info:
     name: European Union Public License, version 1.2 (EUPL-1.2)
     url: https://eupl.eu/1.2/nl/
 tags:
-  - name: Ingeschreven Personen
-    description: Zoeken en raadplegen van ingeschreven personen
+  - name: Personen
+    description: Zoeken en raadplegen van personen
 paths:
-  /ingeschrevenpersonen:
+  /personen:
     get:
-      operationId: GetIngeschrevenPersonen
+      operationId: GetPersonen
       summary: Vindt personen
       description: |
         Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met parameters uit de andere combinaties.
@@ -220,7 +220,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/IngeschrevenPersoonHalCollectie'
+                $ref: '#/components/schemas/PersoonHalCollectie'
         '400':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/400"
         '401':
@@ -238,10 +238,10 @@ paths:
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/default"
       tags:
-        - Ingeschreven Personen
-  /ingeschrevenpersonen/{burgerservicenummer}:
+        - Personen
+  /personen/{burgerservicenummer}:
     get:
-      operationId: GetIngeschrevenPersoon
+      operationId: GetPersoon
       summary: Raadpleeg een persoon
       description: |
                     Raadpleeg een (overleden) persoon.
@@ -270,7 +270,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/IngeschrevenPersoonHal'
+                $ref: '#/components/schemas/PersoonHal'
         '400':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/400"
         '401':
@@ -290,8 +290,8 @@ paths:
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/default"
       tags:
-        - Ingeschreven Personen
-  /ingeschrevenpersonen/{burgerservicenummer}/kinderen/{id}:
+        - Personen
+  /personen/{burgerservicenummer}/kinderen/{id}:
     get:
       deprecated: true
       operationId: GetKind
@@ -339,8 +339,8 @@ paths:
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/default"
       tags:
-        - Ingeschreven Personen
-  /ingeschrevenpersonen/{burgerservicenummer}/kinderen:
+        - Personen
+  /personen/{burgerservicenummer}/kinderen:
     get:
       deprecated: true
       operationId: GetKinderen
@@ -381,8 +381,8 @@ paths:
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/default"
       tags:
-        - Ingeschreven Personen
-  /ingeschrevenpersonen/{burgerservicenummer}/ouders/{id}:
+        - Personen
+  /personen/{burgerservicenummer}/ouders/{id}:
     get:
       deprecated: true
       operationId: GetOuder
@@ -430,8 +430,8 @@ paths:
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/default"
       tags:
-        - Ingeschreven Personen
-  /ingeschrevenpersonen/{burgerservicenummer}/ouders:
+        - Personen
+  /personen/{burgerservicenummer}/ouders:
     get:
       deprecated: true
       operationId: GetOuders
@@ -472,8 +472,8 @@ paths:
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/default"
       tags:
-        - Ingeschreven Personen
-  /ingeschrevenpersonen/{burgerservicenummer}/partners/{id}:
+        - Personen
+  /personen/{burgerservicenummer}/partners/{id}:
     get:
       deprecated: true
       operationId: GetPartner
@@ -521,8 +521,8 @@ paths:
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/default"
       tags:
-        - Ingeschreven Personen
-  /ingeschrevenpersonen/{burgerservicenummer}/partners:
+        - Personen
+  /personen/{burgerservicenummer}/partners:
     get:
       deprecated: true
       operationId: GetPartners
@@ -563,7 +563,7 @@ paths:
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/default"
       tags:
-        - Ingeschreven Personen
+        - Personen
 components:
   parameters:
     burgerservicenummer:
@@ -582,8 +582,8 @@ components:
       description: |
                     Het nummer van het verstrekte Nederlandse reisdocument.
       example: "546376728"
-    
-    IngeschrevenPersoonBasis:
+
+    PersoonBasis:
       type: "object"
       properties:
         burgerservicenummer:
@@ -601,9 +601,9 @@ components:
           description: |
                         Leeftijd in jaren op het moment van bevragen.
           example: 34
-    IngeschrevenPersoonBeperkt:
+    PersoonBeperkt:
       allOf:
-        - $ref: "#/components/schemas/IngeschrevenPersoonBasis"
+        - $ref: "#/components/schemas/PersoonBasis"
         - type: "object"
           properties:
             naam:
@@ -616,20 +616,20 @@ components:
               $ref: "#/components/schemas/OverlijdenBasis"
             verblijfplaats:
               $ref: "#/components/schemas/VerblijfplaatsBeperkt"
-    IngeschrevenPersoonBeperktLinks:
+    PersoonBeperktLinks:
       type: "object"
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-    IngeschrevenPersoonBeperktHal:
+    PersoonBeperktHal:
       allOf:
-        - $ref: '#/components/schemas/IngeschrevenPersoonBeperkt'
+        - $ref: '#/components/schemas/PersoonBeperkt'
         - properties:
             _links:
-              $ref: "#/components/schemas/IngeschrevenPersoonBeperktLinks"
-    IngeschrevenPersoon:
+              $ref: "#/components/schemas/PersoonBeperktLinks"
+    Persoon:
       allOf:
-        - $ref: "#/components/schemas/IngeschrevenPersoonBasis"
+        - $ref: "#/components/schemas/IPersoonBasis"
         - type: "object"
           properties:
             aNummer:
@@ -676,32 +676,32 @@ components:
               type: "array"
               items:
                 $ref: "#/components/schemas/Partner"
-    IngeschrevenPersoonHalCollectie:
+    PersoonHalCollectie:
       type: object
       properties:
         _links:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalCollectionLinks"
         _embedded:
-          $ref: "#/components/schemas/IngeschrevenPersoonHalCollectieEmbedded"
-    IngeschrevenPersoonHalCollectieEmbedded:
+          $ref: "#/components/schemas/PersoonHalCollectieEmbedded"
+    PersoonHalCollectieEmbedded:
       type: object
       properties:
-        ingeschrevenpersonen:
+        personen:
           type: array
           items:
-            $ref: '#/components/schemas/IngeschrevenPersoonBeperktHal'
-    IngeschrevenPersoonHalBasis:
+            $ref: '#/components/schemas/PersoonBeperktHal'
+    PersoonHalBasis:
       allOf:
-        - $ref: '#/components/schemas/IngeschrevenPersoon'
+        - $ref: '#/components/schemas/Persoon'
         - properties:
             _links:
-              $ref: "#/components/schemas/IngeschrevenPersoonLinks"
-    IngeschrevenPersoonHal:
+              $ref: "#/components/schemas/PersoonLinks"
+    PersoonHal:
       allOf:
-        - $ref: '#/components/schemas/IngeschrevenPersoonHalBasis'
+        - $ref: '#/components/schemas/PersoonHalBasis'
         - properties:
             _embedded:
-              $ref: "#/components/schemas/IngeschrevenPersoonEmbedded"
+              $ref: "#/components/schemas/PersoonEmbedded"
     Ouder:
       type: "object"
       description: |
@@ -1032,7 +1032,7 @@ components:
         reden:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
     OpschortingBijhouding:
-      allOf: 
+      allOf:
         - $ref: "#/components/schemas/OpschortingBijhoudingBasis"
         - type: "object"
           description: |
@@ -1050,7 +1050,7 @@ components:
           description: |
                         Geeft aan dat iemand is overleden (waarde true), ongeacht of de overlijdensdatum bekend is.
     Overlijden:
-      allOf: 
+      allOf:
         - $ref: "#/components/schemas/OverlijdenBasis"
         - type: "object"
           description: |
@@ -1346,7 +1346,7 @@ components:
           type: boolean
         datumIngangOnderzoek:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
-    IngeschrevenPersoonLinks:
+    PersoonLinks:
       type: "object"
       properties:
         self:
@@ -1391,7 +1391,7 @@ components:
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-        ingeschrevenPersoon:
+        Persoon:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalLink"
     KindLinks:
       deprecated: true
@@ -1399,7 +1399,7 @@ components:
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-        ingeschrevenPersoon:
+        Persoon:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalLink"
     PartnerLinks:
       deprecated: true
@@ -1407,9 +1407,9 @@ components:
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-        ingeschrevenPersoon:
+        Persoon:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-    IngeschrevenPersoonEmbedded:
+    PersoonEmbedded:
       type: "object"
       deprecated: true
       properties:
@@ -1443,4 +1443,3 @@ components:
       properties:
         datum:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
-          
