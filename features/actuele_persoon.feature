@@ -1,6 +1,6 @@
 # language: nl
 
-Functionaliteit: Voor ingeschreven_personen worden alleen actuele gegevens getoond
+Functionaliteit: Voor personen worden alleen actuele gegevens getoond
 
   Voor diverse groepen gegevens is het mogelijk dat de gegevens die voor een persoon geregistreerd zijn een einddatum kennen.
   Als bij een dergelijke groep de einddatum daadwerkelijk is ingevuld en in het verleden ligt, dan worden deze gegevens niet getoond.

@@ -12,11 +12,11 @@ Functionaliteit: Een zoekvraag levert alleen personen op die nog in leven zijn
 
   Scenario: Default levert een zoekvraag alleen personen op die nog in leven zijn
     Als personen gezocht worden met ?naam__geslachtsnaam=groenen&geboorte__datum=1983-05-26
-    Dan is in elke van de gevonden ingeschrevenpersonen attribuut overlijden niet aanwezig
+    Dan is in elke van de gevonden personen attribuut overlijden niet aanwezig
     Als personen gezocht worden met ?verblijfplaats__postcode=2595AK&verblijfplaats__huisnummer=21
-    Dan is in elke van de gevonden ingeschrevenpersonen attribuut overlijden niet aanwezig
+    Dan is in elke van de gevonden personen attribuut overlijden niet aanwezig
     Als personen gezocht worden met ?veblijfplaats__nummeraanduidingIdentificatie=689047857696734
-    Dan is in elke van de gevonden ingeschrevenpersonen attribuut overlijden niet aanwezig
+    Dan is in elke van de gevonden personen attribuut overlijden niet aanwezig
 
   Scenario: Met parameter inclusiefoverledenpersonen=true worden ook overleden personen gezocht
     Als personen gezocht worden met ?naam__geslachtsnaam=groenen&geboorte__datum=1983-05-26&inclusiefoverledenpersonen=true
@@ -29,4 +29,4 @@ Functionaliteit: Een zoekvraag levert alleen personen op die nog in leven zijn
     Dan wordt de persoon gevonden met overlijden.datum.datum=2018-01-23
     En wordt de persoon gevonden veld overlijden
     Als personen gezocht worden met ?naam__geslachtsnaam=groenen&geboorte__datum=1983-05-26&inclusiefoverledenpersonen=false
-    Dan is in elke van de gevonden ingeschrevenpersonen attribuut overlijden niet aanwezig
+    Dan is in elke van de gevonden personen attribuut overlijden niet aanwezig

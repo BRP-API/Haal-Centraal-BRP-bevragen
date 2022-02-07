@@ -139,7 +139,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
 
   Abstract Scenario: De aanschrijfwijze wordt samengesteld op basis van aanduidingAanschrijving en naamgegevens van de persoon en de partner
     Als persoon wordt geraadpleegd
-    Dan heeft de gevonden ingeschrevenpersoon naam.aanschrijfwijze=<aanschrijfwijze>
+    Dan heeft de gevonden persoon naam.aanschrijfwijze=<aanschrijfwijze>
 
     # In onderstaande tabellen betekenen de afkortingen:
     # VL = voorletters

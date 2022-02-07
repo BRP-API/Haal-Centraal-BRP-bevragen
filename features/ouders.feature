@@ -12,19 +12,12 @@ Functionaliteit: Ouders van een persoon raadplegen
         | Categorie | Voornamen (02.10)  |
         | 2         | Lisette            |
         | 3         | Guîllaumé          |
-      Als de ingeschreven persoon met burgerservicenummer 999993653 wordt geraadpleegd met fields=ouders
+      Als de persoon met burgerservicenummer 999993653 wordt geraadpleegd met fields=ouders
       Dan bevat het antwoord 2 ouders
       En bevat het antwoord de ouder met naam.voornamen "Lisette" en ouderAanduiding "ouder1"
       En bevat het antwoord de ouder met naam.voornamen "Guîllaumé" en ouderAanduiding "ouder2"
 
   Rule: de actuele gegevens van ouders worden geleverd
-
-  Abstract Scenario: een ouder is onjuist of onbekend
-    Gegeven op de PL van een persoon is categorie ouder leeg met uitzondering van de <bij onjuist of onbekend ingevulde kenmerken> kenmerken
-    Als de ouders worden geraadpleegd van de persoon met burgerservicenummer 999999291
-    Dan is het aantal gevonden ouders 0
-    En zijn er geen links naar de onbekende ouders
-
 
     Scenario: oudergegevens gecorrigeerd
       Gegeven de persoon met burgerservienummer 999996186 heeft de volgende ouders in de registratie
@@ -32,7 +25,7 @@ Functionaliteit: Ouders van een persoon raadplegen
         | 2         | Chantal            |                 |
         | 3         | Mark               |                 |
         | 53        | Christiaan         | O               |
-      Als de ingeschreven persoon met burgerservicenummer 999996186 wordt geraadpleegd met fields=ouders
+      Als de persoon met burgerservicenummer 999996186 wordt geraadpleegd met fields=ouders
       Dan bevat het antwoord 2 ouders
       En bevat het antwoord de ouder met naam.voornamen "Chantal" en ouderAanduiding "ouder1"
       En bevat het antwoord de ouder met naam.voornamen "Mark" en ouderAanduiding "ouder2"
@@ -43,7 +36,7 @@ Functionaliteit: Ouders van een persoon raadplegen
         | 2         | Noa                | V                           |
         | 3         | Johanna            | V                           |
         | 53        | John               | M                           |
-      Als de ingeschreven persoon met burgerservicenummer 555550001 wordt geraadpleegd met fields=ouders
+      Als de persoon met burgerservicenummer 555550001 wordt geraadpleegd met fields=ouders
       Dan bevat het antwoord 2 ouders
       En bevat het antwoord de ouder met naam.voornamen "Noa" en geslachtsaanduiding "vrouw"
       En bevat het antwoord de ouder met naam.voornamen "Johanna" en geslachtsaanduiding "vrouw"
@@ -58,7 +51,7 @@ Functionaliteit: Ouders van een persoon raadplegen
         | 3         | Kevin              | 20190317                                           |                 |
         | 53        |                    |                                                    |                 |
         | 53        |                    | 00000000                                           | O               |
-      Als de ingeschreven persoon met burgerservicenummer 999996629 wordt geraadpleegd met fields=ouders
+      Als de persoon met burgerservicenummer 999996629 wordt geraadpleegd met fields=ouders
       Dan bevat het antwoord 2 ouders
       En bevat het antwoord de ouder met naam.voornamen "Olivia Ghislaine" en ouderAanduiding "ouder1"
       En bevat het antwoord de ouder met naam.voornamen "Kevin" en ouderAanduiding "ouder2"
@@ -70,7 +63,7 @@ Functionaliteit: Ouders van een persoon raadplegen
         | 3         | Wieger             |                 |
         | 53        |                    |                 |
         | 53        | Mark               | O               |
-      Als de ingeschreven persoon met burgerservicenummer 999996162 wordt geraadpleegd met fields=ouders
+      Als de persoon met burgerservicenummer 999996162 wordt geraadpleegd met fields=ouders
       Dan bevat het antwoord 2 ouders
       En bevat het antwoord de ouder met naam.voornamen "Chantal" en ouderAanduiding "ouder1"
       En bevat het antwoord de ouder met naam.voornamen "Wieger" en ouderAanduiding "ouder2"
@@ -86,7 +79,7 @@ Rule: Een ouder wordt alleen teruggegeven als minimaal één gegeven in de naam 
       | 3         | .                      |                       | M                           | 19800506                                           |                 |
     En er zijn geen andere gegevens geregistreerd over de naam (groep 02), geboorte (groep 03) of burgerservicenummer (01.20) in categorie 2
     En er zijn geen andere gegevens geregistreerd over de naam (groep 02), geboorte (groep 03) of burgerservicenummer (01.20) in categorie 3
-    Als de ingeschreven persoon met burgerservicenummer 999991796 wordt geraadpleegd met fields=ouders
+    Als de persoon met burgerservicenummer 999991796 wordt geraadpleegd met fields=ouders
     Dan bevat het antwoord GEEN ouders
 
   Scenario: ontkenning ouderschap
@@ -96,7 +89,7 @@ Rule: Een ouder wordt alleen teruggegeven als minimaal één gegeven in de naam 
       | 3         |                    |                        |                       |                 |
       | 53        | Sjaak              | Groenen                | 19239519              | O               |
     En er zijn geen gegevens geregistreerd over de naam (groep 02), geboorte (groep 03) of burgerservicenummer (01.20) in categorie 3
-    Als de ingeschreven persoon met burgerservicenummer 555550002 wordt geraadpleegd met fields=ouders
+    Als de persoon met burgerservicenummer 555550002 wordt geraadpleegd met fields=ouders
     Dan bevat het antwoord 1 ouder
     En bevat het antwoord de ouder met naam.voornamen "Margriet" en ouderAanduiding "ouder1"
     En bevat het antwoord GEEN ouder met naam.voornamen "Sjaak" en ouderAanduiding "ouder2"
@@ -114,7 +107,7 @@ Rule: de geleverde oudergegevens zijn de gegevens zoals die staan op de persoons
       | Categorie | Voornamen | Geslachtsaanduiding (04.10) |
       | 1         | Charlotte | V                           |
       | 51        | Karel     | M                           |
-    Als de ingeschreven persoon met burgerservicenummer 555550003 wordt geraadpleegd met fields=ouders
+    Als de persoon met burgerservicenummer 555550003 wordt geraadpleegd met fields=ouders
     Dan bevat het antwoord 2 ouders
     En bevat het antwoord de ouder met naam.voornamen "Karel" en geslachtsaanduiding "man"
     En bevat het antwoord de ouder met naam.voornamen "Ellen" en geslachtsaanduiding "vrouw"

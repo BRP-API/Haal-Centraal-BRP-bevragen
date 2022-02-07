@@ -1,15 +1,15 @@
 # language: nl
 
-Functionaliteit: De resource ingeschrevenpersonen bevat alleen relaties naar actuele partners, ouders en kinderen
+Functionaliteit: De resource personen bevat alleen relaties naar actuele partners, ouders en kinderen
   Alleen actuele partners, ouders en kinderen worden opgenomen als relatie van een persoon.
   Dit heeft betrekking op:
     - de links partners, ouders en kinderen in _links van een persoon
     - de resources partners, ouders en kinderen in _embedded van een persoon
-    - de resources in sub-resource /ingeschrevenpersonen/{burgerservicenummer}/partners
-    - de resources in sub-resource /ingeschrevenpersonen/{burgerservicenummer}/ouders
-    - de resources in sub-resource /ingeschrevenpersonen/{burgerservicenummer}/kinderen
+    - de resources in sub-resource /personen/{burgerservicenummer}/partners
+    - de resources in sub-resource /personen/{burgerservicenummer}/ouders
+    - de resources in sub-resource /personen/{burgerservicenummer}/kinderen
 
-  Dit feature heeft GEEN betrekking op endpoint /historie/ingeschrevenpersonen/{burgerservicenummer}/partners.
+  Dit feature heeft GEEN betrekking op endpoint /historie/personen/{burgerservicenummer}/partners.
 
   Een partner is actueel wanneer Ontbinding huwelijk/geregistreerd partnerschap (05/55.07) leeg is en indicatie onjuist (05/55.84.10) leeg is.
   Wanneer Ontbinding huwelijk/geregistreerd partnerschap van de partner een waarde heeft, wordt deze niet opgenomen.

@@ -13,14 +13,14 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       Gegeven de persoon met burgerservicenummer 999990184 heeft de volgende huwelijken/partnerschappen in de registratie
         | Categorie | soort verbintenis (15.10) | Voornamen (02.10) | Datum aangaan (06.10) | Datum ontbinding (07.10) | Onjuist (84.10) |
         | 5         | H                         | Merel             | 20010215              |                          |                 |
-      Als de ingeschreven persoon met burgerservicenummer 999990184 wordt geraadpleegd met fields=partners
+      Als de persoon met burgerservicenummer 999990184 wordt geraadpleegd met fields=partners
       Dan bevat het antwoord een partner met naam.voornamen "Merel"
 
     Scenario: Actueel partnerschap
       Gegeven de persoon met burgerservicenummer 999993380 heeft de volgende huwelijken/partnerschappen in de registratie
         | Categorie | soort verbintenis (15.10) | Voornamen (02.10) | Datum aangaan (06.10) | Datum ontbinding (07.10) | Onjuist (84.10) |
         | 5         | P                         | Reindert          | 20040506              |                          |                 |
-      Als de ingeschreven persoon met burgerservicenummer 999993380 wordt geraadpleegd met fields=partners
+      Als de persoon met burgerservicenummer 999993380 wordt geraadpleegd met fields=partners
       Dan bevat het antwoord een partner met naam.voornamen "Reindert"
 
     Scenario: Huwelijk/partnerschap is ontbonden
@@ -28,7 +28,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
         | Categorie | Voornamen (02.10) | Datum aangaan (06.10) | Datum ontbinding (07.10) | Onjuist (84.10) |
         | 5         | Osama             |                       | 20011109                 |                 |
         | 55        | Osama             | 20000115              |                          |                 |
-      Als de ingeschreven persoon met burgerservicenummer 999992806 wordt geraadpleegd met fields=partners
+      Als de persoon met burgerservicenummer 999992806 wordt geraadpleegd met fields=partners
       Dan bevat het antwoord GEEN partners
 
     Scenario: Een actueel huwelijk en een ontbonden huwelijk
@@ -38,7 +38,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
         | 5         | Björn     |                       | 20080706                 |
         | 55        | Björn     | 19870714              |                          |
         | 55        | Björn     | 19870714              |                          |
-      Als de ingeschreven persoon met burgerservicenummer 999991553 wordt geraadpleegd met fields=partners
+      Als de persoon met burgerservicenummer 999991553 wordt geraadpleegd met fields=partners
       Dan bevat het antwoord 1 partner
       En bevat het antwoord de partner met naam.voornamen "Karel"
       En bevat het antwoord GEEN partner met naam.voornamen "Björn"
@@ -54,7 +54,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
         | 5         |                   |                       |                           |                          |                          |                 | 0518                          | 5XC1111            | 20050818                        | 20050818                   |
         | 55        | Youssef Saïd      | 20050811              | P                         |                          |                          | O               | 0518                          | 5XC1111            | 20050811                        | 20050812                   |
       En in categorie 5 zijn alleen groepen of 81 of 82, 85 en 86 opgenomen en geen groepen 01, 02, 03, 04, 06, 07 en 15
-      Als de ingeschreven persoon met burgerservicenummer 999993008 wordt geraadpleegd met fields=partners
+      Als de persoon met burgerservicenummer 999993008 wordt geraadpleegd met fields=partners
       Dan bevat het antwoord GEEN partners
 
 
@@ -69,7 +69,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
         | Categorie | Voornamen | Geslachtsaanduiding (04.10) |
         | 1         | Charlotte | V                           |
         | 51        | Karel     | M                           |
-      Als de ingeschreven persoon met burgerservicenummer 555550001 wordt geraadpleegd met fields=partners
+      Als de persoon met burgerservicenummer 555550001 wordt geraadpleegd met fields=partners
       Dan bevat het antwoord 1 partner
       En bevat het antwoord de partner met naam.voornamen "Karel" en geslachtsaanduiding "man"
       En bevat het antwoord GEEN partner met naam.voornamen "Charlotte" en geslachtsaanduiding "vrouw"

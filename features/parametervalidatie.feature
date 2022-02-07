@@ -34,7 +34,7 @@ Functionaliteit: parameters worden gevalideerd
 
 
   Scenario: Zoeken met een parameterwaarde op een integer die geen geldig geheel getal is levert een foutmelding
-    Als ingeschreven personen gezocht worden met ?verblijfplaats__postcode=9744CZ&verblijfplaats__huisnummer=A
+    Als personen gezocht worden met ?verblijfplaats__postcode=9744CZ&verblijfplaats__huisnummer=A
     Dan levert dit een foutmelding
     En heeft de foutmelding betrekking op parameter verblijfplaats__huisnummer
     Als personen gezocht worden met ?verblijfplaats__postcode=9744CZ&verblijfplaats__huisnummer=12A3

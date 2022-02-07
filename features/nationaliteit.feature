@@ -3,7 +3,7 @@
 Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
   Niet-beëindigde nationaliteiten van de persoon wordt opgenomen.
 
-  In het antwoord voor ingeschrevenpersonen worden alleen nationaliteiten opgenomen waarbij in categorie 04 nationaliteit (05.10) of aanduiding bijzonder Nederlanderschap (65.10) is opgenomen, en in categorie 04 GEEN reden beëindigen nationaliteit (64.10) is opgenomen.
+  In het antwoord voor personen worden alleen nationaliteiten opgenomen waarbij in categorie 04 nationaliteit (05.10) of aanduiding bijzonder Nederlanderschap (65.10) is opgenomen, en in categorie 04 GEEN reden beëindigen nationaliteit (64.10) is opgenomen.
 
   Voor een nationaliteit wordt de datumIngangGeldigheid gevuld met de datum geldigheid (85.10) uit de oudste bijbehorende categorie (04 of 54) waarin er een waarde is voor 05.10 of voor 65.10.
   De overige gegevens over een nationaliteit worden gehaald uit categorie 04.
