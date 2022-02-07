@@ -6,8 +6,50 @@ info:
 paths: {}
 components:
   schemas:
+    Aanhef:
+      type: string
+      description: |
+        Kun je gebruiken als aanhef in een brief gericht aan persoon.
+      example: "Hoogwelgeboren heer"
+    Aanschrijfwijze:
+      type: string
+      description: |
+        Samengestelde naam die je kunt gebruiken in de communicatie met de persoon.
+      example: "H.W. baron van den Aedel"
+    GebruikInLopendeTekst:
+      type: string
+      description: |
+        Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert.
+      example: "baron Van den Aedel"
+    Geslachtsnaam:
+      type: string
+      maxLength: 200
+      description: |
+        De achternaam van een persoon.
+      example: "Vries"
+    RegelVoorafgaandAanAanschrijfwijze:
+      type: string
+      description: |
+        Deze regel moet als aparte regel boven de aanschrijfwijze worden geplaatst. Komt alleen voor bij personen met een adellijke titel of predicaat.
+      example: "De hoogwelgeboren heer"
+    Voorletters:
+      type: string
+      description: |
+        De voorletters van de persoon, afgeleid van de voornamen.
+      example: "P.J."
+    Voornamen:
+      type: string
+      maxLength: 200
+      description: |
+        De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
+    Voorvoegsel:
+      type: string
+      maxLength: 10
+      example: "de"
     AbstractNaamBasis:
       type: object
+      required:
+        - type
       properties:
         type:
           type: string
@@ -16,24 +58,27 @@ components:
         mapping:
           GbaNaam: '#/components/schemas/GbaNaamBasis'
           Naam: '#/components/schemas/NaamBasis'
+    AbstractNaam:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          GbaNaam: '#/components/schemas/GbaNaam'
+          Naam: '#/components/schemas/Naam'
     GbaNaamBasis:
       type: object
       properties:
         voornamen:
-          type: string
-          maxLength: 200
-          description: |
-            De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
+          $ref: '#/components/schemas/Voornamen'
         voorvoegsel:
-          type: string
-          maxLength: 10
-          example: "de"
+          $ref: '#/components/schemas/Voorvoegsel'
         geslachtsnaam:
-          type: string
-          maxLength: 200
-          description: |
-            De achternaam van een persoon.
-          example: "Vries"
+          $ref: '#/components/schemas/Geslachtsnaam'
         adellijkeTitelPredikaat:
           $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
     NaamBasis:
@@ -42,71 +87,64 @@ components:
         - type: object
           properties:
             voorletters:
-              type: string
-              description: |
-                De voorletters van de persoon, afgeleid van de voornamen.
-              example: "P.J."
+              $ref: '#/components/schemas/Voorletters'
     Naam:
       allOf:
-        - $ref: '#/components/schemas/NaamBasis'
+        - $ref: '#/components/schemas/AbstractNaam'
         - properties:
+            voornamen:
+              $ref: '#/components/schemas/Voornamen'
+            voorvoegsel:
+              $ref: '#/components/schemas/Voorvoegsel'
+            geslachtsnaam:
+              $ref: '#/components/schemas/Geslachtsnaam'
+            adellijkeTitelPredikaat:
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+            voorletters:
+              $ref: '#/components/schemas/Voorletters'
             inOnderzoek:
-              $ref: '#/components/schemas/AbstractNaamInOnderzoek'
-    AbstractNaamInOnderzoek:
-      type: object
+              $ref: '#/components/schemas/NaamInOnderzoek'
+    GbaNaam:
+      allOf:
+        - $ref: '#/components/schemas/AbstractNaam'
+        - properties:
+            voornamen:
+              $ref: '#/components/schemas/Voornamen'
+            voorvoegsel:
+              $ref: '#/components/schemas/Voorvoegsel'
+            geslachtsnaam:
+              $ref: '#/components/schemas/Geslachtsnaam'
+            adellijkeTitelPredikaat:
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+            inOnderzoek:
+              $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
+    NaamInOnderzoek:
       description: |
         Geeft aan welke gegevens over de naam in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      type: object
       properties:
-        type:
-          type: string
-      discriminator:
-        propertyName: type
-        mapping:
-          GbaInOnderzoek: '#/components/schemas/GbaNaamInOnderzoek'
-          InOnderzoek: '#/components/schemas/NaamInOnderzoek'
-    NaamInOnderzoek:
-      allOf:
-        - $ref: '#/components/schemas/AbstractNaamInOnderzoek'
-        - type: object
-          properties:
-            geslachtsnaam:
-              type: boolean
-            voornamen:
-              type: boolean
-            voorvoegsel:
-              type: boolean
-            adellijkeTitelPredikaat:
-              type: boolean
-            datumIngangOnderzoek:
-              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-    GbaNaamInOnderzoek:
-      allOf:
-        - $ref: '#/components/schemas/AbstractNaamInOnderzoek'
-        - $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
+        geslachtsnaam:
+          type: boolean
+        voornamen:
+          type: boolean
+        voorvoegsel:
+          type: boolean
+        adellijkeTitelPredikaat:
+          type: boolean
+        datumIngangOnderzoek:
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
     NaamPersoon:
       allOf:
         - $ref: '#/components/schemas/NaamBasis'
         - properties:
             aanhef:
-              type: string
-              description: |
-                Kun je gebruiken als aanhef in een brief gericht aan persoon.
-              example: "Hoogwelgeboren heer"
+              $ref: '#/components/schemas/Aanhef'
             aanschrijfwijze:
-              type: string
-              description: |
-                Samengestelde naam die je kunt gebruiken in de communicatie met de persoon.
-              example: "H.W. baron van den Aedel"
+              $ref: '#/components/schemas/Aanschrijfwijze'
             regelVoorafgaandAanAanschrijfwijze:
-              type: string
-              description: |
-                Deze regel moet als aparte regel boven de aanschrijfwijze worden geplaatst. Komt alleen voor bij personen met een adellijke titel of predicaat.
-              example: "De hoogwelgeboren heer"
+              $ref: '#/components/schemas/RegelVoorafgaandAanAanschrijfwijze'
             gebruikInLopendeTekst:
-              type: string
-              description: |
-                Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert.
-              example: "baron Van den Aedel"
+              $ref: '#/components/schemas/GebruikInLopendeTekst'
             aanduidingNaamgebruik:
               $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
             inOnderzoek:
@@ -141,5 +179,5 @@ components:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
     GbaNaamPersoonInOnderzoek:
       allOf:
-        - $ref: '#/components/schemas/AbstractNaamInOnderzoek'
+        - $ref: '#/components/schemas/AbstractNaamPersoonInOnderzoek'
         - $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
