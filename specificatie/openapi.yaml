@@ -713,8 +713,8 @@ components:
       description: |
                     Gegevens over de ouder van de persoon.
                     * **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.
-                    * **geslachtsaanduiding** - wordt gevuld op bassi van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-                    * **ouderaanduiding** - wordt gevuld op bassi van de waarden die voorkomen in de tabel 'ouderAanduiding' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+                    * **geslachtsaanduiding** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+                    * **ouderaanduiding** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'ouderAanduiding' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       properties:
         burgerservicenummer:
           type: "string"
@@ -811,7 +811,7 @@ components:
       description: |
                     Gegevens over een gesloten huwelijk/geregistreerd partnerschap van de persoon.
                     * **geslachtsaanduiding** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-                    * **soortVerbintenis** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'soortverbintenis' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+                    * **soortVerbintenis** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'soort_verbintenis' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       properties:
         burgerservicenummer:
           type: "string"
@@ -865,8 +865,8 @@ components:
     NaamBasis:
       type: "object"
       description: |
-               * **adellijkeTitel** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'adellijketitel' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-               * **predikaat** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'predikaat' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+               * **adellijkeTitel** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'adellijke_titel_predikaat' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+               * **predikaat** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'adellijke_titel_predikaat' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       properties:
         geslachtsnaam:
           type: "string"
@@ -935,8 +935,8 @@ components:
       - description: |
                       Gegevens over de geboorte.
                       * **datum** : datum waarop de persoon is geboren.
-                      * **land** : land waar de persoon is geboren, wordt gevuld op basis van de waarden die voorkomen in de tabel 'land' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-                      * **plaats** : gemeente waar de persoon is geboren. Is de persoon geboren buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'woonplaats' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+                      * **land** : land waar de persoon is geboren, wordt gevuld op basis van de waarden die voorkomen in de tabel  'landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+                      * **plaats** : gemeente waar de persoon is geboren. Is de persoon geboren buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'gemeenten' uit de Haal-Centraal-BRP-tabellen-bevragen API.
         properties:
           land:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
@@ -1001,7 +1001,7 @@ components:
             inOnderzoek:
               $ref: "#/components/schemas/NaamPersoonInOnderzoek"
           description: |
-                      * **aanduidingNaamgebruik** - wordt gevuld op bassi van de waarden die voorkomen in de tabel 'naamgebruik' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+                      * **aanduidingNaamgebruik** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'naamgebruik' uit de Haal-Centraal-BRP-tabellen-bevragen API.
     PersoonInOnderzoek:
       type: "object"
       description: |
@@ -1016,8 +1016,8 @@ components:
     Nationaliteit:
       type: "object"
       description: |
-                    * **redenOpname** : De reden op grond waarvan de persoon de nationaliteit gekregen heeft. Wordt gevuld op bassi van de waarden die voorkomen in de tabel 'redenopnemenbeeindigennationaliteit' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-                    * **nationaliteit** - wordt gevuld op bassi van de waarden die voorkomen in de tabel 'nationaliteit' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+                    * **redenOpname** : De reden op grond waarvan de persoon de nationaliteit gekregen heeft. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'reden_opnemen_beeindigen_nationaliteit' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+                    * **nationaliteit** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'nationaliteiten' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       properties:
         aanduidingBijzonderNederlanderschap:
           $ref: "#/components/schemas/AanduidingBijzonderNederlanderschap"
@@ -1045,7 +1045,7 @@ components:
     OpschortingBijhoudingBasis:
       type: "object"
       description: |
-                    * **reden** - wordt gevuld op bassi van de waarden die voorkomen in de tabel 'redenopschortingbijhouding' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+                    * **reden** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'redenopschortingbijhouding' uit de Haal-Centraal-BRP-tabellen-bevragen API.
 
       properties:
         reden:
@@ -1075,8 +1075,8 @@ components:
           description: |
                         Gegevens over het overlijden van de persoon.
                         * **datum** : datum waarop de persoon is overleden.
-                        * **land** : land waar de persoon is geboren, wordt gevuld op basis van de waarden die voorkomen in de tabel 'land' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-                        * **plaats** : gemeente waar de persoon is geboren. Is de persoon geboren buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'woonplaats' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+                        * **land** : land waar de persoon is overleden, wordt gevuld op basis van de waarden die voorkomen in de tabel  'landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+                        * **plaats** : gemeente waar de persoon is overleden. Is de persoon overleden buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'gemeenten' uit de Haal-Centraal-BRP-tabellen-bevragen API.
           properties:
             datum:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
@@ -1126,8 +1126,8 @@ components:
       description: |
                     Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.
                     * **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.
-                    * **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan,  wordt gevuld op basis van de waarden die voorkomen in de tabel 'land' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-                    * **plaats** : De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Voor een plaats buiten Nederland bevat het antwoord een buitenlandse plaatsnaam of aanduiding. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'woonplaats' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+                    * **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan,  wordt gevuld op basis van de waarden die voorkomen in de tabel  'landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+                    * **plaats** : De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan.  Wordt gevuld op basis van de waarden die voorkomen in de tabel 'gemeenten' uit de Haal-Centraal-BRP-tabellen-bevragen API. Voor een plaats buiten Nederland bevat het antwoord een buitenlandse plaatsnaam of aanduiding.
       properties:
         datum:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
@@ -1154,8 +1154,8 @@ components:
       type: object
       description: |
                     Gegevens over het verblijf of de woonlocatie van een persoon.
-                    * **functieAdres: wordt gevuld op basis van de waarden die voorkomen in de tabel 'soortadres' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-                    * **land** wordt gevuld op basis van de waarden die voorkomen in de tabel 'land' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+                    * **functieAdres: wordt gevuld op basis van de waarden die voorkomen in de tabel 'soort_adres' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+                    * **land** wordt gevuld op basis van de waarden die voorkomen in de tabel  'landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.
 
 
       properties:
@@ -1199,9 +1199,9 @@ components:
                       * **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden.
                       * **datumInschrijvingInGemeente**: bij inschrijving op grond van een verhuisaangifte door de burger is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop het voornemen van ambtshalve opneming schriftelijk aan de persoon is medegedeeld.
                       * **datumVestigingInNederland** : datum van inschrijving in Nederland.
-                      * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland.wordt gevuld op basis van de waarden die voorkomen in de tabel 'land' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+                      * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland. Wordt gevuld op basis van de waarden die voorkomen in de tabel  'landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.
                       * **gemeenteVanInschrijving** wordt gevuld op basis van de waarden die voorkomen in de tabel 'gemeenten' uit de Haal-Centraal-BRP-tabellen-bevragen API. De code kan voorloopnullen bevatten.
-                      * **land** wordt gevuld op basis van de waarden die voorkomen in de tabel 'land' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+                      * **land** wordt gevuld op basis van de waarden die voorkomen in de tabel  'landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.
         properties:
           adresseerbaarObjectIdentificatie:
             type: "string"
