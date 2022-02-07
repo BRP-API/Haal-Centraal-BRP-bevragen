@@ -2,7 +2,7 @@
 
 # User story #13
 Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze van mijn burgers
-  Attribuut aanschrijfwijze bij een ingeschreven persoon wordt gevuld door de provider om op deze wijze op eenduidige wijze een persoon te kunnen aanschrijven. Bij het samenstellen van de aanschrijfwijze worden academische titels vooralsnog niet opgenomen. Academische titels zijn geen authentiek gegeven en daarom buiten scope geplaatst.
+  Attribuut aanschrijfwijze bij een persoon wordt gevuld door de provider om op deze wijze op eenduidige wijze een persoon te kunnen aanschrijven. Bij het samenstellen van de aanschrijfwijze worden academische titels vooralsnog niet opgenomen. Academische titels zijn geen authentiek gegeven en daarom buiten scope geplaatst.
   De aanschrijfwijze wordt gebruikt als eerste regel in de adressering op een envelop, of links bovenaan een brief, direct boven het adres.
   Bij personen met een adellijke titel of predikaat wordt ook regelVoorafgaandAanAanschrijfwijze gevuld. Deze wordt in de adressering in de regel boven aanschrijfwijze geplaatst om een correcte aanschrijving van een adellijke persoon samen te stellen.
   De aanschrijfwijze kan ook worden gebruikt in lijsten met zoekresultaten, of op een website om te tonen op wie het betrekking heeft.
@@ -138,7 +138,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
 
 
   Abstract Scenario: De aanschrijfwijze wordt samengesteld op basis van aanduidingAanschrijving en naamgegevens van de persoon en de partner
-    Als ingeschreven persoon wordt geraadpleegd
+    Als persoon wordt geraadpleegd
     Dan heeft de gevonden ingeschrevenpersoon naam.aanschrijfwijze=<aanschrijfwijze>
 
     # In onderstaande tabellen betekenen de afkortingen:
@@ -244,27 +244,27 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | V | VL AP VP GP-AT VV GN | Aedel | Emma Louise    | E.L. barones van Hoogh-gravin van den Aedel | De hooggeboren vrouwe      |
 
   Scenario: meerdere actuele relaties
-    Gegeven de ingeschreven persoon F.C. Groen is getrouwd in 1958 met Geel
-    En de ingeschreven persoon is getrouwd in 1961 met Roodt
+    Gegeven de persoon F.C. Groen is getrouwd in 1958 met Geel
+    En de persoon is getrouwd in 1961 met Roodt
     En geen van beide relaties is beëindigd
-    En de ingeschreven persoon heeft aanduidingAanschrijving='V'
-    Als de ingeschreven persoon wordt geraadpleegd
+    En de persoon heeft aanduidingAanschrijving='V'
+    Als de persoon wordt geraadpleegd
     Dan is in het antwoord naam.aanschrijfwijze=F.C. Geel-Groen
 
   Scenario: meerdere ontbonden relaties gebruikt de laatst ontbonden relatie
-    Gegeven de ingeschreven persoon J. Wit is getrouwd in 1958 met Geel
-    En de ingeschreven persoon is getrouwd in 1961 met Roodt
+    Gegeven de persoon J. Wit is getrouwd in 1958 met Geel
+    En de persoon is getrouwd in 1961 met Roodt
     En het huwelijk met Geel is ontbonden in 1960
     En het huwelijk met Roodt is ontbonden in 2006
-    En de ingeschreven persoon heeft aanduidingAanschrijving='V'
-    Als de ingeschreven persoon wordt geraadpleegd
+    En de persoon heeft aanduidingAanschrijving='V'
+    Als de persoon wordt geraadpleegd
     Dan is in het antwoord naam.aanschrijfwijze=J. Roodt-Wit
 
   Scenario: meerdere ontbonden relaties en oudste relatie is het laatst ontbonden
-    Gegeven de ingeschreven persoon de heer J. Wit is getrouwd in 1958 met Zwart
-    En de ingeschreven persoon is getrouwd in 1961 met Blaauw
+    Gegeven de persoon de heer J. Wit is getrouwd in 1958 met Zwart
+    En de persoon is getrouwd in 1961 met Blaauw
     En het huwelijk met Blaauw is ontbonden in 1983
     En het huwelijk met Zwart is ontbonden in 2006
-    En de ingeschreven persoon heeft aanduidingAanschrijving='V'
-    Als de ingeschreven persoon wordt geraadpleegd
+    En de persoon heeft aanduidingAanschrijving='V'
+    Als de persoon wordt geraadpleegd
     Dan is in het antwoord naam.aanhef=J. Zwart-Wit

@@ -4,7 +4,7 @@ title: Getting Started
 ---
 # Getting Started
 
-De 'Bevraging Ingeschreven Persoon' Web API is gespecificeerd in OpenAPI specifications (OAS).
+De 'Bevraging Persoon' Web API is gespecificeerd in OpenAPI specifications (OAS).
 
 Wil je de API gebruiken? Dit kun je doen:
 
@@ -35,7 +35,7 @@ Note. De prerequisite van OpenAPI Generator is JAVA. Je moet een JAVA runtime in
   
 ## Probeer en test de API
 
-Wil je de 'Bevraging Ingeschreven Persoon' Web API proberen en testen? Kijk op: `https://www.haalcentraal.nl/haalcentraal/api/brp`
+Wil je de 'Bevraging Persoon' Web API proberen en testen? Kijk op: `https://www.haalcentraal.nl/haalcentraal/api/brp`
 
 Om de web api te gebruiken heb je een apikey nodig. Deze voeg je aan een request toe als header "X-API-KEY". Een API-key vraag je aan bij de product owner [c.dingemanse@comites.nl](mailto:c.dingemanse@comites.nl).
 
@@ -45,9 +45,9 @@ __Je kan de Haal Centraal probeeromgeving niet gebruiken vanuit de browser, dus 
 
 ### Importeer de specificaties in Postman
 
-De werking van de 'Bevraging Ingeschreven Persoon' Web API is het makkelijkst te testen met behulp van [Postman](https://www.getpostman.com/){:target="_blank" rel="noopener"}. We hebben al een [Postman collection](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/test/BRP-Bevragen-postman-collection.json){:target="_blank" rel="noopener"} voor je klaargezet. Deze kun je importeren in Postman.
+De werking van de 'Bevraging Persoon' Web API is het makkelijkst te testen met behulp van [Postman](https://www.getpostman.com/){:target="_blank" rel="noopener"}. We hebben al een [Postman collection](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/test/BRP-Bevragen-postman-collection.json){:target="_blank" rel="noopener"} voor je klaargezet. Deze kun je importeren in Postman.
 
-In Postman kun je de 'Bevraging Ingeschreven Persoon' OpenAPI specificatie importeren en visueel de verschillende endpoints aanroepen. Volg deze stappen om het OpenAPI specificatie bestand te importeren:
+In Postman kun je de 'Bevraging Persoon' OpenAPI specificatie importeren en visueel de verschillende endpoints aanroepen. Volg deze stappen om het OpenAPI specificatie bestand te importeren:
 
 ![Import](./img/1-click-import-button.jpg)  
 
@@ -68,7 +68,7 @@ https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/mast
 
 ### Configureer de url en api key
 
-1. Klik bij "Bevragingen Ingeschreven Personen" op de drie bolletjes.
+1. Klik bij "Bevragingen Personen" op de drie bolletjes.
 ![Generate Postman collection](./img/edit-collection.png)
 2. Klik vervolgens op Edit
 3. Selecteer tabblad "Authorization"
@@ -78,10 +78,10 @@ https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/mast
 7. Vul bij baseUrl INITIAL VALUE en bij CURRENT VALUE: `https://www.haalcentraal.nl/haalcentraal/api/brp`
 8. Klik op de knop Update
 
-### Raadpleeg een Ingeschreven Natuurlijk Persoon
+### Raadpleeg een Natuurlijk Persoon
 
-Selecteer hiervoor de /GET ingeschreven Natuurlijk Persoon request.  
-![/GET ingeschreven Natuurlijk Persoon request](./img/5-select-request.jpg)  
+Selecteer hiervoor de /GET Natuurlijk Persoon request.  
+![/GET Natuurlijk Persoon request](./img/5-select-request.jpg)  
 In het rechterscherm zie je een invoerscherm voor de request. Uncheck voor de volgende voorbeeldaanroep de expand en fields Query Params en vul in de burgerservicenummer Path Variabele een bsn in (zie onderaan de Getting started voor mogelijke burgerservicenummers).
 
 Klik op de Send button om de request naar de endpoint te sturen. De Web API reageert dan met een response:  
@@ -90,16 +90,16 @@ Klik op de Send button om de request naar de endpoint te sturen. De Web API reag
 De Web API gebruikt de HAL (Hypertext Application Language) standaard om links op te nemen naar gerelateerde resources en/of om bij een resource gerelateerde resources op te nemen (embedden).  
 In de response hierboven kun je zien dat het _links/ouders element links bevat naar de ouders van de persoon.
 
-Je kunt ook oudergegevens embedden bij het bevragen van een persoon. Dit doe je met de `expand` Query Parameter. Behalve de ouders kun je ook kind(-eren) en partner(s) in de bevraging van een ingeschreven persoon embedden. Deze gegevens zijn te vinden onder de _embedded element:
+Je kunt ook oudergegevens embedden bij het bevragen van een persoon. Dit doe je met de `expand` Query Parameter. Behalve de ouders kun je ook kind(-eren) en partner(s) in de bevraging van een persoon embedden. Deze gegevens zijn te vinden onder de _embedded element:
 ![expand parameter](./img/8-using-expand-parameter.jpg)  
-In dit figuur zie je hoe de `expand` Query Parameter eruit moet zien om de ouders, kinderen en partner te embedden in de response van een ingeschreven persoon.
+In dit figuur zie je hoe de `expand` Query Parameter eruit moet zien om de ouders, kinderen en partner te embedden in de response van een persoon.
 
-Je kunt ook alleen specifieke kenmerken van een ingeschreven persoon opvragen met behulp van de `fields` Query Parameter. Hieronder zie je een bevraging met de `fields` Query Parameter gezet op `burgerservicenummer,naam,geboorte.datum`.
+Je kunt ook alleen specifieke kenmerken van een persoon opvragen met behulp van de `fields` Query Parameter. Hieronder zie je een bevraging met de `fields` Query Parameter gezet op `burgerservicenummer,naam,geboorte.datum`.
 ![fields parameter](./img/9-using-fields-parameter.jpg)
 
 ### Testpersonen
 
-Deze tabel bevat de burgerservicenummers van testpersonen voor specifieke situaties waarmee de 'Bevraging Ingeschreven Persoon' Web API kan worden getest.
+Deze tabel bevat de burgerservicenummers van testpersonen voor specifieke situaties waarmee de 'Bevraging Persoon' Web API kan worden getest.
 
 burgerservicenummer | situatie
 ---------------- | :-------  

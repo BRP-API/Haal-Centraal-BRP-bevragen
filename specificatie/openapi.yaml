@@ -4,9 +4,9 @@ servers:
                   APILAB testserver
     url: https://www.haalcentraal.nl/haalcentraal/api/brp
 info:
-  title: Bevragen Ingeschreven Personen
+  title: Bevragen Personen
   description: |
-                API voor het bevragen van ingeschreven personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.
+                API voor het bevragen van personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.
 
                 Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.
 
@@ -21,9 +21,9 @@ tags:
   - name: Ingeschreven Personen
     description: Zoeken en raadplegen van ingeschreven personen
 paths:
-  /ingeschrevenpersonen:
+  /personen:
     get:
-      operationId: GetIngeschrevenPersonen
+      operationId: GetPersonen
       summary: Vindt personen
       description: |
         Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met parameters uit de andere combinaties.
@@ -222,7 +222,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/IngeschrevenPersoonHalCollectie'
+                $ref: '#/components/schemas/PersoonHalCollectie'
         '400':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/400"
         '401':
@@ -240,10 +240,10 @@ paths:
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/default"
       tags:
-        - Ingeschreven Personen
-  /ingeschrevenpersonen/{burgerservicenummer}:
+        - Personen
+  /personen/{burgerservicenummer}:
     get:
-      operationId: GetIngeschrevenPersoon
+      operationId: GetPersoon
       summary: Raadpleeg een persoon
       description: |
                     Raadpleeg een (overleden) persoon.
@@ -272,7 +272,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/IngeschrevenPersoonHal'
+                $ref: '#/components/schemas/PersoonHal'
         '400':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/400"
         '401':
@@ -292,7 +292,7 @@ paths:
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/default"
       tags:
-        - Ingeschreven Personen
+        - Personen
   /ingeschrevenpersonen/{burgerservicenummer}/kinderen/{id}:
     get:
       deprecated: true
@@ -586,8 +586,12 @@ components:
       description: |
                     Het nummer van het verstrekte Nederlandse reisdocument.
       example: "546376728"
+<<<<<<< HEAD
     
     IngeschrevenPersoonBasis:
+=======
+    Persoon:
+>>>>>>> 96452ba758f4213c93a9c32b1a6e1f1a81359dda
       type: "object"
       properties:
         burgerservicenummer:
@@ -605,6 +609,7 @@ components:
           description: |
                         Leeftijd in jaren op het moment van bevragen.
           example: 34
+<<<<<<< HEAD
     IngeschrevenPersoonBeperkt:
       allOf:
         - $ref: "#/components/schemas/IngeschrevenPersoonBasis"
@@ -681,31 +686,79 @@ components:
               items:
                 $ref: "#/components/schemas/Partner"
     IngeschrevenPersoonHalCollectie:
+=======
+        datumEersteInschrijvingGBA:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
+        kiesrecht:
+          $ref: "#/components/schemas/Kiesrecht"
+        naam:
+          $ref: "#/components/schemas/NaamPersoon"
+        inOnderzoek:
+          $ref: "#/components/schemas/PersoonInOnderzoek"
+        nationaliteiten:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Nationaliteit"
+        geboorte:
+          $ref: "#/components/schemas/Geboorte"
+        opschortingBijhouding:
+          $ref: "#/components/schemas/OpschortingBijhouding"
+        overlijden:
+          $ref: "#/components/schemas/Overlijden"
+        verblijfplaats:
+          $ref: "#/components/schemas/Verblijfplaats"
+        gezagsverhouding:
+          $ref: "#/components/schemas/Gezagsverhouding"
+        verblijfstitel:
+          $ref: "#/components/schemas/Verblijfstitel"
+        reisdocumentnummers:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Reisdocumentnummer"
+        kinderen:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Kind"
+        ouders:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Ouder"
+        partners:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Partner"
+    PersoonHalCollectie:
+>>>>>>> 96452ba758f4213c93a9c32b1a6e1f1a81359dda
       type: object
       properties:
         _links:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalCollectionLinks"
         _embedded:
-          $ref: "#/components/schemas/IngeschrevenPersoonHalCollectieEmbedded"
-    IngeschrevenPersoonHalCollectieEmbedded:
+          $ref: "#/components/schemas/PersoonHalCollectieEmbedded"
+    PersoonHalCollectieEmbedded:
       type: object
       properties:
-        ingeschrevenpersonen:
+        personen:
           type: array
           items:
+<<<<<<< HEAD
             $ref: '#/components/schemas/IngeschrevenPersoonBeperktHal'
     IngeschrevenPersoonHalBasis:
+=======
+            $ref: '#/components/schemas/PersoonHal'
+    PersoonHalBasis:
+>>>>>>> 96452ba758f4213c93a9c32b1a6e1f1a81359dda
       allOf:
-        - $ref: '#/components/schemas/IngeschrevenPersoon'
+        - $ref: '#/components/schemas/Persoon'
         - properties:
             _links:
-              $ref: "#/components/schemas/IngeschrevenPersoonLinks"
-    IngeschrevenPersoonHal:
+              $ref: "#/components/schemas/PersoonLinks"
+    PersoonHal:
       allOf:
-        - $ref: '#/components/schemas/IngeschrevenPersoonHalBasis'
+        - $ref: '#/components/schemas/PersoonHalBasis'
         - properties:
             _embedded:
-              $ref: "#/components/schemas/IngeschrevenPersoonEmbedded"
+              $ref: "#/components/schemas/PersoonEmbedded"
     Ouder:
       type: "object"
       description: |
@@ -1350,7 +1403,7 @@ components:
           type: boolean
         datumIngangOnderzoek:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
-    IngeschrevenPersoonLinks:
+    PersoonLinks:
       type: "object"
       properties:
         self:
@@ -1413,7 +1466,7 @@ components:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         ingeschrevenPersoon:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-    IngeschrevenPersoonEmbedded:
+    PersoonEmbedded:
       type: "object"
       deprecated: true
       properties:

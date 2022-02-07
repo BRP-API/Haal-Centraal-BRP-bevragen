@@ -32,7 +32,7 @@ Functionaliteit: Kinderen van een ingeschreven persoon raadplegen
       En bevat het antwoord het kind met naam.voornamen "Vica"
       En bevat het antwoord het kind met naam.voornamen "Bella"
       En bevat het antwoord GEEN kind met naam.voornamen "Celeke Lodivica"
-  
+
 
   Rule: Een kind wordt alleen teruggegeven als minimaal één gegeven in de identificatienummers (groep 01), naam (groep 02) of geboorte (groep 03) van het kind een waarde heeft.
     # wanneer in een categorie kind alleen gegevens zijn opgenomen in groep 81 of 82, 85 en 86, wordt dit kind niet opgenomen in het antwoord
@@ -50,12 +50,12 @@ Functionaliteit: Kinderen van een ingeschreven persoon raadplegen
       Gegeven de persoon met burgerservicenummer 555550002 heeft de volgende kinderen in de registratie
         | Categorie | Voornamen (02.10)  | Voorvoegsel (02.30) | Geslachtsnaam (02.40) | Geboortedatum (03.10) | Gemeente document (82.10) | Datum document (82.20) | Beschrijving document (82.30) | Ingangsdatum geldigheid (85.10) | Datum van opneming (86.10) |
         | 9         |                    |                     |                       |                       | 1926                      | 20040105               | D27894-2004-A782              | 20031107                        | 20040112                   |
-        | 59        | Daan               | de                  | Vries                 | 20031107              | 0518                      | 20031109               | PL gerelateerde               | 20031107                        | 20031109                   |             
+        | 59        | Daan               | de                  | Vries                 | 20031107              | 0518                      | 20031109               | PL gerelateerde               | 20031107                        | 20031109                   |
       En er zijn geen gegevens geregistreerd over de identificatienummers (groep 01), naam (groep 02) of geboorte (groep 03) in categorie 9
       Als de ingeschreven persoon met burgerservicenummer 555550002 wordt geraadpleegd met fields=kinderen
       Dan bevat het antwoord GEEN kinderen
 
-  
+
 Rule: de geleverde kindgegevens zijn de gegevens zoals die staan op de persoonslijst van de gevraagde persoon
   # bij het raadplegen van een persoon worden alleen gegevens uit de persoonslijst van de gevraagde persoon gebruikt, en nooit gegevens van de persoonslijst van het kind
 

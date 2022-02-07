@@ -1,7 +1,7 @@
 # language: nl
 
 Functionaliteit: Huwelijken en geregistreerd partnerschappen van een ingeschreven persoon raadplegen
-  Van een inschreven persoon worden -indien gevraagd met de fields parameter- het (de) huwelijk(en) of geregistreerd partnerschap(pen) geleverd. 
+  Van een inschreven persoon worden -indien gevraagd met de fields parameter- het (de) huwelijk(en) of geregistreerd partnerschap(pen) geleverd.
   Dit bevat de gegevens over de relatie (huwelijk of partnerschap) plus enkele identificerende eigenschappen van de persoon waarmee het huwelijk of partnerschap is aangegaan.
 
   Rule: Alleen een actueel huwelijk of geregistreerd partnerschap wordt teruggegeven.
@@ -22,7 +22,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een ingeschreve
         | 5         | P                         | Reindert          | 20040506              |                          |                 |
       Als de ingeschreven persoon met burgerservicenummer 999993380 wordt geraadpleegd met fields=partners
       Dan bevat het antwoord een partner met naam.voornamen "Reindert"
-    
+
     Scenario: Huwelijk/partnerschap is ontbonden
       Gegeven de persoon met burgerservicenummer 999992806 heeft de volgende huwelijken/partnerschappen in de registratie
         | Categorie | Voornamen (02.10) | Datum aangaan (06.10) | Datum ontbinding (07.10) | Onjuist (84.10) |
@@ -47,7 +47,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een ingeschreve
   Rule: Een partner wordt niet opgenomen wanneer het huwelijk of het partnerschap onjuist is
     # Een huwelijk of partnerschap is onjuist wanneer het categorie 5 voorkomen geen (waarden in) groepen 01, 02, 03, 04, 06, 07 en 15 heeft.
     # N.B. Het meest recente categorie 55 voorkomen heeft dan een waarde voor Onjuist (84.10).
-    
+
     Scenario: Huwelijk/partnerschap is onjuist
       Gegeven de persoon met burgerservicenummer 999993008 heeft de volgende huwelijken/partnerschappen in de registratie
         | Categorie | Voornamen (02.10) | Datum aangaan (06.10) | soort verbintenis (15.10) | Datum ontbinding (07.10) | Reden ontbinding (07.40) | Onjuist (84.10) | Registergemeente akte (81.10) | Aktenummer (81.20) | Ingangsdatum geldigheid (85.10) | Datum van opneming (86.10) |
