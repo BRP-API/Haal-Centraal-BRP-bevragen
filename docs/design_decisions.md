@@ -113,11 +113,8 @@ Volgens LO GBA zijn ook relaties die zijn beëindigd nog "actueel". Voor het zoe
 Wanneer wel behoefte is aan alle partner-relaties, inclusief relaties die al beëindigd zijn, kan hiervoor historisch zoeken op partners worden gebruikt.
 
 ## Opvragen van historie kan via specifieke endpoints
-<<<<<<< HEAD
-Opvragen van historie wordt gedefinieerd met aparte endpoints. Als een provider ervoor kiest om deze niet te implementeren wordt er een 501 geretourneerd. De historische bevragingen krijgen dus resourcenaam waaruit blijkt dart het om een historische resource gaat.
-=======
-Opvragen van historie wordt gedefinieerd met aparte endpoints. Als een provider ervoor kiest om deze niet te implementeren wordt er een 501 geretourneerd. De historische bevraging krijgen dus resourcenaam waaruit blijkt dart het om een historische resource gaat.
->>>>>>> 96452ba758f4213c93a9c32b1a6e1f1a81359dda
+Opvragen van historie wordt gedefinieerd met aparte endpoints. Als een provider ervoor kiest om deze niet te implementeren wordt er een 501 geretourneerd. De historische bevragingen krijgen dus resourcenaam waaruit blijkt dat het om een historische resource gaat.
+
 Met deze API kan de historie op het betreffende aspect opgevraagd worden.
 
 Hiermee wordt het zoeken/raadplegen van de volgende historie ondersteund:
