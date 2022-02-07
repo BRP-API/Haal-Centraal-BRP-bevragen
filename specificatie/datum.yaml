@@ -35,15 +35,24 @@ paths:
                       $ref: '#/components/schemas/AbstractDatum'
                 example:
                   [
-                    { "type": "GbaDatum", "datum": "20180701" },
-                    { "type": "GbaDatum", "datum": "20161200" },
-                    { "type": "GbaDatum", "datum": "20100000" },
-                    { "type": "GbaDatum", "datum": "00000000" },
+                    { "type": "GbaDatum", "gbaDatum": "20180701" },
+                    { "type": "GbaDatum", "gbaDatum": "20161200" },
+                    { "type": "GbaDatum", "gbaDatum": "20100000" },
+                    { "type": "GbaDatum", "gbaDatum": "00000000" },
                     { "type": "Datum", "datum": "2018-07-01" },
                     { "type": "JaarMaandDatum", "jaar": "2016", "maand": "12" },
                     { "type": "JaarDatum", "jaar": "2010" },
                     { "type": "OnbekendDatum", "onbekend": true }
                   ]
+              examples:
+                Volledig GbaDatum:
+                  value:
+                    type: GbaDatum
+                    gbaDatum: "20180701"
+                Dag Onbekend GbaDatum:
+                  value:
+                    type: GbaDatum
+                    gbaDatum: "20180700"
 components:
   schemas:
     AbstractDatum:
@@ -67,12 +76,14 @@ components:
         - $ref: '#/components/schemas/AbstractDatum'
         - type: object
           properties:
-            datum:
+            gbaDatum:
               type: string
               pattern: ^[0-9]{8}$
       required:
-        - datum
-      example: "20210801"
+        - gbaDatum
+      example:
+        type: GbaDatum
+        gbaDatum: "20210801"
     VolledigDatum:
       description: Datum conform iso8601
       allOf:
