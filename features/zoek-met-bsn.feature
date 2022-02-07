@@ -46,10 +46,16 @@ Rule: Er moet minimaal één burgerservicenummer worden opgegeven
         | naam   | waarde                     |
         | type   | ZoekMetBurgerservicenummer |
         | fields | burgerservicenummer        |
-        Dan bevat de response een problemDetails met de volgende velden
-        | naam   | waarde                                        |
-        | title  | Één of meerdere parameters zijn niet correct. |
-        | status | 400                                           |
+        Dan bevat de response de volgende gegevens
+        | naam     | waarde                                              |
+        | title    | Een of meerdere parameters zijn niet correct.       |
+        | status   | 400                                                 |
+        | detail   | De foutieve parameter(s) zijn: burgerservicenummer. |
+        | code     | paramsValidation                                    |
+        | instance | /personen                                           |
+        En bevat de response een invalidParams met de volgende gegevens
+        | code     | name                | reason                  |
+        | required | burgerservicenummer | Parameter is verplicht. |
 
     @fout-case
     Abstract Scenario: <titel>
@@ -58,10 +64,16 @@ Rule: Er moet minimaal één burgerservicenummer worden opgegeven
         | type                | ZoekMetBurgerservicenummer |
         | burgerservicenummer | <burgerservicenummers>     |
         | fields              | burgerservicenummer        |
-        Dan bevat de response een problemDetails met de volgende velden
-        | naam   | waarde                                        |
-        | title  | Één of meerdere parameters zijn niet correct. |
-        | status | 400                                           |
+        Dan bevat de response de volgende gegevens
+        | naam     | waarde                                        |
+        | title    | Één of meerdere parameters zijn niet correct. |
+        | status   | 400                                           |
+        | detail   | TODO                                          |
+        | code     | TODO                                          |
+        | instance | TODO                                          |
+        En bevat de response een invalidParams met de volgende gegevens
+        | code     | name                | reason                  |
+        | required | burgerservicenummer | Parameter is verplicht. |
 
         Voorbeelden:
         | burgerservicenummers | titel                                   |
@@ -77,7 +89,13 @@ Rule: Er mag maximaal 10 burgerservicenummers worden opgegeven
         | type                | ZoekMetBurgerservicenummer                                                                                    |
         | burgerservicenummer | 999999321,999995492,999991802,999995492,999991802,999995492,999991802,999995492,999991802,999995492,999991802 |
         | fields              | burgerservicenummer                                                                                           |
-        Dan bevat de response een problemDetails met de volgende velden
-        | naam   | waarde                                        |
-        | title  | Één of meerdere parameters zijn niet correct. |
-        | status | 400                                           |
+        Dan bevat de response de volgende gegevens
+        | naam     | waarde                                        |
+        | title    | Één of meerdere parameters zijn niet correct. |
+        | status   | 400                                           |
+        | detail   | TODO                                          |
+        | code     | TODO                                          |
+        | instance | TODO                                          |
+        En bevat de response een invalidParams met de volgende gegevens
+        | code | name                | reason |
+        | TODO | burgerservicenummer | TODO   |

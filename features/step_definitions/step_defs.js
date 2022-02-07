@@ -200,14 +200,26 @@ Then('bevat de persoon met burgerservicenummer {string} de volgende geboorte geg
    });
 });
 
-Then('bevat de response een problemDetails met de volgende velden', function (dataTable) {
-    const problemDetails = this.context.response.data;
-    console.log(problemDetails);
+Then('bevat de response de volgende gegevens', function (dataTable) {
+    const data = this.context.response.data;
 
     dataTable.hashes().forEach(function(value){
         let expected = value.waarde;
-        let actual = String(problemDetails[value.naam]);
+        let actual = String(data[value.naam]);
 
-        actual.should.equal(expected, JSON.stringify(problemDetails, null, "\t"));
+        actual.should.equal(expected, JSON.stringify(data, null, "\t"));
+    });
+});
+
+Then('bevat de response een invalidParams met de volgende gegevens', function (dataTable) {  
+    const invalidParams = this.context.response.data.invalidParams;
+    
+    dataTable.hashes().forEach(function(expected) {
+        const actual = invalidParams.find(function(invalidParam) {
+            return invalidParam.name === expected.name &&
+                   invalidParam.code === expected.code &&
+                   invalidParam.reason === expected.reason;
+        });
+        should.exist(actual, `geen invalidParam gevonden met name '${expected.name}', code '${expected.code}', reason '${expected.reason}'\n${JSON.stringify(invalidParams, null, "\t")}`);
     });
 });

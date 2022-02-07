@@ -39,10 +39,16 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
         | geslachtsnaam | <geslachtsnaam>                     |
         | geboortedatum | <geboortedatum>                     |
         | fields        | burgerservicenummer                 |
-        Dan bevat de response een problemDetails met de volgende velden
-        | naam   | waarde                                        |
-        | title  | Één of meerdere parameters zijn niet correct. |
-        | status | 400                                           |
+        Dan bevat de response de volgende gegevens
+        | naam     | waarde                                        |
+        | title    | Één of meerdere parameters zijn niet correct. |
+        | status   | 400                                           |
+        | detail   | TODO                                          |
+        | code     | TODO                                          |
+        | instance | TODO                                          |
+        En bevat de response een invalidParams met de volgende gegevens
+        | code | name | reason |
+        | TODO | TODO | TODO   |
 
         Voorbeelden:
         | geslachtsnaam | geboortedatum | titel                                      |
