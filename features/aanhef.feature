@@ -2,7 +2,7 @@
 
 # Issue #334 en #337
 Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in communicatie naar burgers
-  Attribuut aanhef bij een ingeschreven persoon wordt gevuld door de provider om op deze wijze op eenduidige wijze een persoon te kunnen aanschrijven.
+  Attribuut aanhef bij een persoon wordt gevuld door de provider om op deze wijze op eenduidige wijze een persoon te kunnen aanschrijven.
   De briefaanhef wordt gebruikt bovenaan een brief.
 
   Attribuut aanhef wordt samengesteld op basis van:
@@ -96,8 +96,8 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
 
 
   Abstract Scenario: De aanhef wordt samengesteld op basis van geslachtsaanduiding en naamgegevens van de persoon en de partner
-    Als ingeschreven persoon wordt geraadpleegd
-    Dan heeft de gevonden ingeschrevenpersoon naam.aanhef=<aanhef>
+    Als persoon wordt geraadpleegd
+    Dan heeft de gevonden persoon naam.aanhef=<aanhef>
 
     # In onderstaande tabellen betekenen de afkortingen:
     # GA = "Geachte mevrouw", "Geachte heer", "Geachte"
@@ -190,28 +190,28 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
       | vrouw    | man      | Jonkheer | Partner voor eigen    | A.C. van den Aedel-van der Veen         | Geachte mevrouw Van den Aedel-van der Veen |
 
   Scenario: meerdere actuele relaties
-    Gegeven de ingeschreven persoon de heer F.C. Groen is getrouwd in 1958 met Geel
-    En de ingeschreven persoon is getrouwd in 1961 met Roodt
+    Gegeven de persoon de heer F.C. Groen is getrouwd in 1958 met Geel
+    En de persoon is getrouwd in 1961 met Roodt
     En geen van beide relaties is beëindigd
-    En de ingeschreven persoon heeft aanduidingAanschrijving='V'
-    Als de ingeschreven persoon wordt geraadpleegd
+    En de persoon heeft aanduidingAanschrijving='V'
+    Als de persoon wordt geraadpleegd
     Dan is in het antwoord naam.aanhef=Geachte heer Geel-Groen
 
   Scenario: meerdere ontbonden relaties gebruikt de laatst ontbonden relatie
-    Gegeven de ingeschreven persoon de heer J. Wit is getrouwd in 1958 met Geel
-    En de ingeschreven persoon is getrouwd in 1961 met Roodt
+    Gegeven de persoon de heer J. Wit is getrouwd in 1958 met Geel
+    En de persoon is getrouwd in 1961 met Roodt
     En het huwelijk met Geel is ontbonden in 1960
     En het huwelijk met Roodt is ontbonden in 2006
-    En de ingeschreven persoon heeft aanduidingAanschrijving='V'
-    Als de ingeschreven persoon wordt geraadpleegd
+    En de persoon heeft aanduidingAanschrijving='V'
+    Als de persoon wordt geraadpleegd
     Dan is in het antwoord naam.aanhef=Geachte heer Roodt-Wit
 
 
   Scenario: meerdere ontbonden relaties en oudste relatie is het laatst ontbonden
-    Gegeven de ingeschreven persoon de heer J. Wit is getrouwd in 1958 met Zwart
-    En de ingeschreven persoon is getrouwd in 1961 met Blaauw
+    Gegeven de persoon de heer J. Wit is getrouwd in 1958 met Zwart
+    En de persoon is getrouwd in 1961 met Blaauw
     En het huwelijk met Blaauw is ontbonden in 1983
     En het huwelijk met Zwart is ontbonden in 2006
-    En de ingeschreven persoon heeft aanduidingAanschrijving='V'
-    Als de ingeschreven persoon wordt geraadpleegd
+    En de persoon heeft aanduidingAanschrijving='V'
+    Als de persoon wordt geraadpleegd
     Dan is in het antwoord naam.aanhef=Geachte heer Zwart-Wit
