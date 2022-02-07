@@ -17,11 +17,11 @@ Functionaliteit: personen kunnen worden gezocht met bepaalde combinaties van par
   Wanneer een parameter wordt gebruikt die niet in de API specificatie is gedefinieerd, levert dit een foutmelding.
 
   Scenario: Er kan niet gezocht worden zonder zoekparameters
-    Als ingeschreven personen gezocht worden zonder parameters
+    Als personen gezocht worden zonder parameters
     Dan levert dit een foutmelding
 
   Abstract Scenario: Er kan gezocht worden op minimale combinaties van zoekparamters + optioneel andere zoekparameters
-    Als ingeschreven personen gezocht worden met <voorbeeld>
+    Als personen gezocht worden met <voorbeeld>
     Dan is het resultaat <resultaat>
 
     Voorbeelden: minimale combinaties van zoekparameters
@@ -48,16 +48,16 @@ Functionaliteit: personen kunnen worden gezocht met bepaalde combinaties van par
 
   Scenario: een parameter in een combinatie die leeg is of waarde null wordt beschouwd als niet opgegeven
     # Geen parameter geboorte__datum
-    Als ingeschreven personen gezocht worden met ?naam__geslachtsnaam=groen&naam__voornamen=frank
+    Als personen gezocht worden met ?naam__geslachtsnaam=groen&naam__voornamen=frank
     Dan levert dit een foutmelding
     # Parameter geboorte__datum is leeg
-    Als ingeschreven personen gezocht worden met ?naam__geslachtsnaam=groen&geboorte__datum=&naam__voornamen=frank
+    Als personen gezocht worden met ?naam__geslachtsnaam=groen&geboorte__datum=&naam__voornamen=frank
     Dan levert dit een foutmelding
     # Parameter geboorte__datum is null
-    Als ingeschreven personen gezocht worden met ?naam__geslachtsnaam=groen&geboorte__datum=null&naam__voornamen=frank
+    Als personen gezocht worden met ?naam__geslachtsnaam=groen&geboorte__datum=null&naam__voornamen=frank
     Dan levert dit een foutmelding
 
   Scenario: Wanneer een parameter wordt gebruikt die niet in de API specificatie is gedefinieerd, levert dit een foutmelding.
-    Als ingeschreven personen gezocht worden met ?naam__geslachtsnaam=groen&naam__voornamen=frank&burgerlijkeStaat=1
+    Als personen gezocht worden met ?naam__geslachtsnaam=groen&naam__voornamen=frank&burgerlijkeStaat=1
     Dan levert dit een foutmelding
     En heeft de foutmelding betrekking op parameter burgerlijkeStaat
