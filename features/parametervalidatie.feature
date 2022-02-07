@@ -32,13 +32,9 @@ Functionaliteit: parameters worden gevalideerd
     Dan levert dit een foutmelding
     En heeft de foutmelding betrekking op parameter verblijfplaats__postcode
 
-<<<<<<< HEAD
+
   Scenario: Zoeken met een parameterwaarde op een integer die geen geldig geheel getal is levert een foutmelding
     Als ingeschreven personen gezocht worden met ?verblijfplaats__postcode=9744CZ&verblijfplaats__huisnummer=A
-=======
-  Scenario: Zoeken met een parameterwaarde op een intedie geen geldig geheel getal is op een integer levert een foutmelding
-    Als personen gezocht worden met ?verblijfplaats__postcode=9744CZ&verblijfplaats__huisnummer=A
->>>>>>> 96452ba758f4213c93a9c32b1a6e1f1a81359dda
     Dan levert dit een foutmelding
     En heeft de foutmelding betrekking op parameter verblijfplaats__huisnummer
     Als personen gezocht worden met ?verblijfplaats__postcode=9744CZ&verblijfplaats__huisnummer=12A3
@@ -112,14 +108,4 @@ Functionaliteit: parameters worden gevalideerd
     Als personen gezocht worden met ?verblijfplaats__naamopenbareruimte=Sint%20Aldegondestraat&verblijfplaats__huisnummer=2&verblijfplaats__gemeentevaninschrijving=1899
     Dan levert dit een foutmelding
     En heeft de foutmelding betrekking op parameter verblijfplaats__gemeentevaninschrijving
-<<<<<<< HEAD
-=======
 
-  Scenario: Bij zoeken op voorvoegsel moet een waarde worden gebruikt die voorkomt in de betreffende GBA tabel of moet leeg zijn
-    Als personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=Velzen&naam__voorvoegsel=niet
-    Dan levert dit een foutmelding
-    En heeft de foutmelding betrekking op parameter naam__voorvoegsel
-    Als personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=Groenen&naam__voorvoegsel=
-    Dan levert dit zoekresultaten
-    En wordt de persoon gevonden met naam.geslachtsnaam=Groenen
->>>>>>> 96452ba758f4213c93a9c32b1a6e1f1a81359dda
