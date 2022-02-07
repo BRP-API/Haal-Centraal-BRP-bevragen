@@ -732,7 +732,7 @@ components:
       - type: object
         properties:
           naam:
-            $ref: '#/components/schemas/NaamBasis'
+            $ref: '#/components/schemas/AbstractNaamBasis'
           geboortedatum:
             $ref: '#/components/schemas/AbstractDatum'
           opschortingBijhouding:
@@ -896,36 +896,56 @@ components:
       description: |
         Het nummer van het verstrekte Nederlandse reisdocument.
       example: "546376728"
+    AbstractNaamBasis:
+      required:
+      - type
+      type: object
+      properties:
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          GbaNaam: '#/components/schemas/GbaNaamBasis'
+          Naam: '#/components/schemas/NaamBasis'
+    GbaNaamBasis:
+      type: object
+      properties:
+        voornamen:
+          $ref: '#/components/schemas/Voornamen'
+        voorvoegsel:
+          $ref: '#/components/schemas/Voorvoegsel'
+        geslachtsnaam:
+          $ref: '#/components/schemas/Geslachtsnaam'
+        adellijkeTitelPredikaat:
+          $ref: '#/components/schemas/Waardetabel'
+    Voornamen:
+      maxLength: 200
+      type: string
+      description: |
+        De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
+    Voorvoegsel:
+      maxLength: 10
+      type: string
+      example: de
+    Geslachtsnaam:
+      maxLength: 200
+      type: string
+      description: |
+        De achternaam van een persoon.
+      example: Vries
     NaamBasis:
       allOf:
       - $ref: '#/components/schemas/GbaNaamBasis'
       - type: object
         properties:
           voorletters:
-            type: string
-            description: |
-              De voorletters van de persoon, afgeleid van de voornamen.
-            example: P.J.
-    GbaNaamBasis:
-      type: object
-      properties:
-        voornamen:
-          maxLength: 200
-          type: string
-          description: |
-            De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
-        voorvoegsel:
-          maxLength: 10
-          type: string
-          example: de
-        geslachtsnaam:
-          maxLength: 200
-          type: string
-          description: |
-            De achternaam van een persoon.
-          example: Vries
-        adellijkeTitelPredikaat:
-          $ref: '#/components/schemas/Waardetabel'
+            $ref: '#/components/schemas/Voorletters'
+    Voorletters:
+      type: string
+      description: |
+        De voorletters van de persoon, afgeleid van de voornamen.
+      example: P.J.
     AbstractDatum:
       required:
       - type
@@ -1160,29 +1180,37 @@ components:
       - $ref: '#/components/schemas/NaamBasis'
       - properties:
           aanhef:
-            type: string
-            description: |
-              Kun je gebruiken als aanhef in een brief gericht aan persoon.
-            example: Hoogwelgeboren heer
+            $ref: '#/components/schemas/Aanhef'
           aanschrijfwijze:
-            type: string
-            description: |
-              Samengestelde naam die je kunt gebruiken in de communicatie met de persoon.
-            example: H.W. baron van den Aedel
+            $ref: '#/components/schemas/Aanschrijfwijze'
           regelVoorafgaandAanAanschrijfwijze:
-            type: string
-            description: |
-              Deze regel moet als aparte regel boven de aanschrijfwijze worden geplaatst. Komt alleen voor bij personen met een adellijke titel of predicaat.
-            example: De hoogwelgeboren heer
+            $ref: '#/components/schemas/RegelVoorafgaandAanAanschrijfwijze'
           gebruikInLopendeTekst:
-            type: string
-            description: |
-              Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert.
-            example: baron Van den Aedel
+            $ref: '#/components/schemas/GebruikInLopendeTekst'
           aanduidingNaamgebruik:
             $ref: '#/components/schemas/Waardetabel'
           inOnderzoek:
             $ref: '#/components/schemas/AbstractNaamPersoonInOnderzoek'
+    Aanhef:
+      type: string
+      description: |
+        Kun je gebruiken als aanhef in een brief gericht aan persoon.
+      example: Hoogwelgeboren heer
+    Aanschrijfwijze:
+      type: string
+      description: |
+        Samengestelde naam die je kunt gebruiken in de communicatie met de persoon.
+      example: H.W. baron van den Aedel
+    RegelVoorafgaandAanAanschrijfwijze:
+      type: string
+      description: |
+        Deze regel moet als aparte regel boven de aanschrijfwijze worden geplaatst. Komt alleen voor bij personen met een adellijke titel of predicaat.
+      example: De hoogwelgeboren heer
+    GebruikInLopendeTekst:
+      type: string
+      description: |
+        Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert.
+      example: baron Van den Aedel
     AbstractNaamPersoonInOnderzoek:
       type: object
       properties:
@@ -1197,39 +1225,8 @@ components:
           InOnderzoek: '#/components/schemas/NaamPersoonInOnderzoek'
     GbaNaamPersoonInOnderzoek:
       allOf:
-      - $ref: '#/components/schemas/AbstractNaamInOnderzoek'
+      - $ref: '#/components/schemas/AbstractNaamPersoonInOnderzoek'
       - $ref: '#/components/schemas/GbaInOnderzoek'
-    AbstractNaamInOnderzoek:
-      type: object
-      properties:
-        type:
-          type: string
-      description: |
-        Geeft aan welke gegevens over de naam in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
-      discriminator:
-        propertyName: type
-        mapping:
-          GbaInOnderzoek: '#/components/schemas/GbaNaamInOnderzoek'
-          InOnderzoek: '#/components/schemas/NaamInOnderzoek'
-    GbaNaamInOnderzoek:
-      allOf:
-      - $ref: '#/components/schemas/AbstractNaamInOnderzoek'
-      - $ref: '#/components/schemas/GbaInOnderzoek'
-    NaamInOnderzoek:
-      allOf:
-      - $ref: '#/components/schemas/AbstractNaamInOnderzoek'
-      - type: object
-        properties:
-          geslachtsnaam:
-            type: boolean
-          voornamen:
-            type: boolean
-          voorvoegsel:
-            type: boolean
-          adellijkeTitelPredikaat:
-            type: boolean
-          datumIngangOnderzoek:
-            $ref: '#/components/schemas/AbstractDatum'
     NaamPersoonInOnderzoek:
       allOf:
       - $ref: '#/components/schemas/AbstractNaamPersoonInOnderzoek'
@@ -1737,7 +1734,7 @@ components:
         inOnderzoek:
           $ref: '#/components/schemas/AbstractKindInOnderzoek'
         naam:
-          $ref: '#/components/schemas/Naam'
+          $ref: '#/components/schemas/AbstractNaam'
         geboorte:
           $ref: '#/components/schemas/Geboorte'
       description: |
@@ -1783,7 +1780,7 @@ components:
         datumIngangFamilierechtelijkeBetrekking:
           $ref: '#/components/schemas/AbstractDatum'
         naam:
-          $ref: '#/components/schemas/Naam'
+          $ref: '#/components/schemas/AbstractNaam'
         inOnderzoek:
           $ref: '#/components/schemas/AbstractOuderInOnderzoek'
         geboorte:
@@ -1834,7 +1831,7 @@ components:
         soortVerbintenis:
           $ref: '#/components/schemas/Waardetabel'
         naam:
-          $ref: '#/components/schemas/Naam'
+          $ref: '#/components/schemas/AbstractNaam'
         geboorte:
           $ref: '#/components/schemas/Geboorte'
         inOnderzoek:
@@ -1965,12 +1962,63 @@ components:
           onbekend:
             type: boolean
             default: true
+    AbstractNaam:
+      required:
+      - type
+      type: object
+      properties:
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          GbaNaam: '#/components/schemas/GbaNaam'
+          Naam: '#/components/schemas/Naam'
+    GbaNaam:
+      allOf:
+      - $ref: '#/components/schemas/AbstractNaam'
+      - properties:
+          voornamen:
+            $ref: '#/components/schemas/Voornamen'
+          voorvoegsel:
+            $ref: '#/components/schemas/Voorvoegsel'
+          geslachtsnaam:
+            $ref: '#/components/schemas/Geslachtsnaam'
+          adellijkeTitelPredikaat:
+            $ref: '#/components/schemas/Waardetabel'
+          inOnderzoek:
+            $ref: '#/components/schemas/GbaInOnderzoek'
     Naam:
       allOf:
-      - $ref: '#/components/schemas/NaamBasis'
+      - $ref: '#/components/schemas/AbstractNaam'
       - properties:
+          voornamen:
+            $ref: '#/components/schemas/Voornamen'
+          voorvoegsel:
+            $ref: '#/components/schemas/Voorvoegsel'
+          geslachtsnaam:
+            $ref: '#/components/schemas/Geslachtsnaam'
+          adellijkeTitelPredikaat:
+            $ref: '#/components/schemas/Waardetabel'
+          voorletters:
+            $ref: '#/components/schemas/Voorletters'
           inOnderzoek:
-            $ref: '#/components/schemas/AbstractNaamInOnderzoek'
+            $ref: '#/components/schemas/NaamInOnderzoek'
+    NaamInOnderzoek:
+      type: object
+      properties:
+        geslachtsnaam:
+          type: boolean
+        voornamen:
+          type: boolean
+        voorvoegsel:
+          type: boolean
+        adellijkeTitelPredikaat:
+          type: boolean
+        datumIngangOnderzoek:
+          $ref: '#/components/schemas/AbstractDatum'
+      description: |
+        Geeft aan welke gegevens over de naam in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
   headers:
     api_version:
       schema:
