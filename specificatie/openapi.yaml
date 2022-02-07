@@ -582,12 +582,7 @@ components:
       description: |
                     Het nummer van het verstrekte Nederlandse reisdocument.
       example: "546376728"
-<<<<<<< HEAD
-    
-    IngeschrevenPersoonBasis:
-=======
     Persoon:
->>>>>>> 96452ba758f4213c93a9c32b1a6e1f1a81359dda
       type: "object"
       properties:
         burgerservicenummer:
@@ -605,84 +600,6 @@ components:
           description: |
                         Leeftijd in jaren op het moment van bevragen.
           example: 34
-<<<<<<< HEAD
-    IngeschrevenPersoonBeperkt:
-      allOf:
-        - $ref: "#/components/schemas/IngeschrevenPersoonBasis"
-        - type: "object"
-          properties:
-            naam:
-              $ref: "#/components/schemas/NaamBasis"
-            geboorte:
-              $ref: "#/components/schemas/Geboortedatum"
-            opschortingBijhouding:
-              $ref: "#/components/schemas/OpschortingBijhoudingBasis"
-            overlijden:
-              $ref: "#/components/schemas/OverlijdenBasis"
-            verblijfplaats:
-              $ref: "#/components/schemas/VerblijfplaatsBeperkt"
-    IngeschrevenPersoonBeperktLinks:
-      type: "object"
-      properties:
-        self:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-    IngeschrevenPersoonBeperktHal:
-      allOf:
-        - $ref: '#/components/schemas/IngeschrevenPersoonBeperkt'
-        - properties:
-            _links:
-              $ref: "#/components/schemas/IngeschrevenPersoonBeperktLinks"
-    IngeschrevenPersoon:
-      allOf:
-        - $ref: "#/components/schemas/IngeschrevenPersoonBasis"
-        - type: "object"
-          properties:
-            aNummer:
-              description: |
-                            Het A-nummer van de persoon
-              type: "string"
-            datumEersteInschrijvingGBA:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
-            inOnderzoek:
-              $ref: "#/components/schemas/PersoonInOnderzoek"
-            kiesrecht:
-              $ref: "#/components/schemas/Kiesrecht"
-            naam:
-              $ref: "#/components/schemas/NaamPersoon"
-            nationaliteiten:
-              type: "array"
-              items:
-                $ref: "#/components/schemas/Nationaliteit"
-            geboorte:
-              $ref: "#/components/schemas/Geboorte"
-            opschortingBijhouding:
-              $ref: "#/components/schemas/OpschortingBijhouding"
-            overlijden:
-              $ref: "#/components/schemas/Overlijden"
-            verblijfplaats:
-              $ref: "#/components/schemas/Verblijfplaats"
-            gezagsverhouding:
-              $ref: "#/components/schemas/Gezagsverhouding"
-            verblijfstitel:
-              $ref: "#/components/schemas/Verblijfstitel"
-            reisdocumentnummers:
-              type: "array"
-              items:
-                $ref: "#/components/schemas/Reisdocumentnummer"
-            kinderen:
-              type: "array"
-              items:
-                $ref: "#/components/schemas/Kind"
-            ouders:
-              type: "array"
-              items:
-                $ref: "#/components/schemas/Ouder"
-            partners:
-              type: "array"
-              items:
-                $ref: "#/components/schemas/Partner"
-    IngeschrevenPersoonHalCollectie:
-=======
         datumEersteInschrijvingGBA:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
         kiesrecht:
@@ -724,7 +641,6 @@ components:
           items:
             $ref: "#/components/schemas/Partner"
     PersoonHalCollectie:
->>>>>>> 96452ba758f4213c93a9c32b1a6e1f1a81359dda
       type: object
       properties:
         _links:
@@ -737,13 +653,8 @@ components:
         personen:
           type: array
           items:
-<<<<<<< HEAD
-            $ref: '#/components/schemas/IngeschrevenPersoonBeperktHal'
-    IngeschrevenPersoonHalBasis:
-=======
             $ref: '#/components/schemas/PersoonHal'
     PersoonHalBasis:
->>>>>>> 96452ba758f4213c93a9c32b1a6e1f1a81359dda
       allOf:
         - $ref: '#/components/schemas/Persoon'
         - properties:
@@ -1085,7 +996,7 @@ components:
         reden:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
     OpschortingBijhouding:
-      allOf: 
+      allOf:
         - $ref: "#/components/schemas/OpschortingBijhoudingBasis"
         - type: "object"
           description: |
@@ -1103,7 +1014,7 @@ components:
           description: |
                         Geeft aan dat iemand is overleden (waarde true), ongeacht of de overlijdensdatum bekend is.
     Overlijden:
-      allOf: 
+      allOf:
         - $ref: "#/components/schemas/OverlijdenBasis"
         - type: "object"
           description: |
@@ -1496,4 +1407,3 @@ components:
       properties:
         datum:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/DatumOnvolledig"
-          
