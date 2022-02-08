@@ -136,6 +136,27 @@ When('personen wordt gezocht met de volgende parameters', async function (dataTa
     }
 });
 
+When('personen wordt geraadpleegd met de volgende parameters', async function (dataTable) {
+    const persoonIdentificatie = dataTable.hashes()[0].waarde;
+    const fields = dataTable.hashes()[1].waarde;
+
+    const config = {
+        method: 'get',
+        url: `/personen/${persoonIdentificatie}?fields=${fields}`,
+        baseURL: this.context.serverUrl
+    };
+
+    let path = `${this.context.dataPath}/${persoonIdentificatie}.json`;
+    fs.writeFileSync(path, JSON.stringify(this.context.persoon, null, "\t"));
+
+    try {
+        this.context.response = await axios(config);
+    }
+    catch(e) {
+        this.context.response = e.response;
+    }
+});
+
 Then('bevat de response alleen personen met de volgende gegevens', function (dataTable) {
     const personen = this.context.response.data._embedded.personen;
 
@@ -147,6 +168,21 @@ Then('bevat de response alleen personen met de volgende gegevens', function (dat
         });
         should.exist(persoon, `geen persoon gevonden met bsn: ${value.burgerservicenummer}\npersonen: ${JSON.stringify(personen, null, "\t")}`)
 
+        for(const [key, expected] of Object.entries(value)) {
+            let actual = String(persoon[key]);
+
+            actual.should.equal(expected, `geen persoon gevonden met ${key}: ${expected}\npersoon: ${JSON.stringify(persoon, null, "\t")}`);
+        }
+    });
+});
+
+Then('bevat de response een persoon met de volgende gegevens', function (dataTable) {
+    const persoon = this.context.response.data;
+    console.log(persoon);
+
+    should.exist(persoon, `geen persoon gevonden\nresponse payload: ${JSON.stringify(persoon, null, "\t")}`)
+
+    dataTable.hashes().forEach(function(value) {
         for(const [key, expected] of Object.entries(value)) {
             let actual = String(persoon[key]);
 
