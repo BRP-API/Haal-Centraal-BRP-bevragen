@@ -13,4 +13,14 @@ public static class GeboorteMapper
             geboorte.Datum = datum.Map();
         }
     }
+    
+    public static void Map(this Geboorte geboorte)
+    {
+        if (geboorte == null) return;
+
+        if (geboorte?.Datum is GbaDatum datum)
+        {
+            geboorte.Datum = datum.Map();
+        }
+    }
 }

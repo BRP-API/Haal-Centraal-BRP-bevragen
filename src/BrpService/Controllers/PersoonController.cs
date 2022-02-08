@@ -80,9 +80,15 @@ namespace HaalCentraal.BrpService.Controllers
             return Ok(retval);
         }
 
-        public override Task<ActionResult<PersoonHal>> GetPersoon(Guid persoonIdentificatie, [FromQuery] string fields)
+        public override async Task<ActionResult<PersoonHal>> GetPersoon(Guid persoonIdentificatie, [FromQuery] string fields)
         {
-            throw new NotImplementedException();
+            _logger.LogInformation("RaadpleegPersoon");
+
+            var path = Path.Combine(_environment.ContentRootPath, $"Data/{persoonIdentificatie}.json");
+            var data = await System.IO.File.ReadAllTextAsync(path);
+            var retval = Newtonsoft.Json.JsonConvert.DeserializeObject<PersoonHal>(data);
+
+            return Ok(retval);
         }
     }
 }

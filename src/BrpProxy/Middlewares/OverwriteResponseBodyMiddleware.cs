@@ -29,7 +29,7 @@ namespace BrpProxy.Middlewares
 
             _logger.LogInformation($"original: {body}");
 
-            var modifiedBody = body.Transform();
+            var modifiedBody = body.Transform(context.Request.Method == "GET");
 
             using var bodyStream = modifiedBody.ToMemoryStream();
 
@@ -40,19 +40,33 @@ namespace BrpProxy.Middlewares
 
     public static class BrpHelpers
     {
-        public static string Transform(this string payload)
+        public static string Transform(this string payload, bool isRaadpleegPersoon)
         {
-            string retval;
+            string retval = payload;
 
-            var personen = JsonConvert.DeserializeObject<PersoonBeperktHalCollectie>(payload);
-
-            foreach(var persoon in personen?._embedded.Personen)
+            if(isRaadpleegPersoon)
             {
-                persoon.Geboorte.Map();
-                persoon.Naam.Map();
-            }
+                var persoon = JsonConvert.DeserializeObject<PersoonHal>(payload);
+                if(persoon != null)
+                {
+                    persoon.Geboorte.Map();
+                    persoon.Naam.Map();
 
-            retval = JsonConvert.SerializeObject(personen);
+                    retval = JsonConvert.SerializeObject(persoon);
+                }
+            }
+            else
+            {
+                var personen = JsonConvert.DeserializeObject<PersoonBeperktHalCollectie>(payload);
+
+                foreach (var persoon in personen?._embedded.Personen)
+                {
+                    persoon.Geboorte.Map();
+                    persoon.Naam.Map();
+                }
+
+                retval = JsonConvert.SerializeObject(personen);
+            }
 
             return retval;
         }
