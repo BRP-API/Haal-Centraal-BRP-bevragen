@@ -962,17 +962,29 @@ components:
           JaarDatum: '#/components/schemas/JaarDatum'
           JaarMaandDatum: '#/components/schemas/JaarMaandDatum'
     GbaDatum:
-      required:
-      - datum
-      description: Datum conform LO GBA
-      example: "20210801"
       allOf:
-      - $ref: '#/components/schemas/AbstractDatum'
-      - type: object
-        properties:
-          datum:
-            pattern: ^[0-9]{8}$
-            type: string
+        - $ref: '#/components/schemas/AbstractDatum'
+        - type: object
+          properties:
+            datum:
+              $ref: '#/components/schemas/GbaDatumBeperkt'
+    GbaDatumBeperkt:
+      description: Datum conform LO GBA
+      type: string
+      pattern: ^[0-9]{8}$
+      example: "20210801"
+ #   GbaDatum:
+ #     required:
+ #     - datum
+ #     description: Datum conform LO GBA
+ #     example: "20210801"
+ #     allOf:
+ #     - $ref: '#/components/schemas/AbstractDatum'
+ #     - type: object
+ #       properties:
+ #         datum:
+ #           pattern: ^[0-9]{8}$
+ #           type: string
     VolledigDatum:
       required:
       - datum
@@ -1384,7 +1396,8 @@ components:
       - type: object
         properties:
           datum:
-            $ref: '#/components/schemas/GbaDatum'
+            $ref: '#/components/schemas/GbaDatumBeperkt'
+#            $ref: '#/components/schemas/GbaDatumBeperkt'
     OpschortingBijhouding:
       allOf:
       - $ref: '#/components/schemas/AbstractOpschortingBijhouding'
