@@ -11,7 +11,7 @@ Functionaliteit: Als gebruiker van de API wil ik geen onbekend waardes ontvangen
 
   Voor onbekend waardes voor datumvelden, zie feature onvolledige_datum.feature.
 
-  Het gaat om de volgende properties en onbekend waardes van de ingeschreven persoon:
+  Het gaat om de volgende properties en onbekend waardes van de persoon:
     | property                                         | onbekend waarde  |
     | ------------------------------------------------ | ---------------- |
     | redenOpschortingBijhouding                       | .                |
@@ -93,48 +93,48 @@ Functionaliteit: Als gebruiker van de API wil ik geen onbekend waardes ontvangen
     Dan is in het antwoord _links.reisdocumenten niet aanwezig
 
   Scenario: vullen van indicatieVestigingVanuitBuitenland
-    Gegeven de registratie ingeschreven persoon 999990317 kent een verblijfplaats.datumVestigingInNederland = 19900808
-    Als de ingeschreven persoon met burgerservicenummer 999990317 wordt geraadpleegd
+    Gegeven de registratie persoon 999990317 kent een verblijfplaats.datumVestigingInNederland = 19900808
+    Als de persoon met burgerservicenummer 999990317 wordt geraadpleegd
     Dan heeft in het antwoord verblijfplaats.datumVestigingInNederland.datum de waarde 1990-08-08
     En heeft attribuut verblijfplaats.indicatieVestigingVanuitBuitenland de waarde true
 
-    Gegeven de registratie ingeschreven persoon kent een verblijfplaats.datumVestigingInNederland = 00000000
+    Gegeven de registratie persoon kent een verblijfplaats.datumVestigingInNederland = 00000000
     Als de persoon wordt geraadpleegd
     Dan heeft attribuut verblijfplaats.indicatieVestigingVanuitBuitenland de waarde true
     En is in het antwoord verblijfplaats.datumVestigingInNederland niet aanwezig
 
-    Gegeven de registratie ingeschreven persoon 999993653 kent geen verblijfplaats.datumVestigingInNederland
-    Als de ingeschreven persoon met burgerservicenummer 999993653 wordt geraadpleegd
+    Gegeven de registratie persoon 999993653 kent geen verblijfplaats.datumVestigingInNederland
+    Als de persoon met burgerservicenummer 999993653 wordt geraadpleegd
     Dan is in het antwoord verblijfplaats.datumVestigingInNederland niet aanwezig
     En is in het antwoord verblijfplaats.indicatieVestigingVanuitBuitenland niet aanwezig
 
   Scenario: vullen van vanuitVertrokkenOnbekendWaarheen
-    Gegeven de registratie ingeschreven persoon 999995121 kent een verblijfplaats.landVanwaarIngeschreven = 0000
-    Als de ingeschreven persoon met burgerservicenummer 999995121 wordt geraadpleegd
+    Gegeven de registratie persoon 999995121 kent een verblijfplaats.landVanwaarIngeschreven = 0000
+    Als de persoon met burgerservicenummer 999995121 wordt geraadpleegd
     Dan is in het antwoord verblijfplaats.landVanwaarIngeschreven niet aanwezig
     En heeft attribuut verblijfplaats.vanuitVertrokkenOnbekendWaarheen de waarde true
 
-    Gegeven de registratie ingeschreven persoon 999990317 kent een verblijfplaats.landVanwaarIngeschreven = 7046
-    Als de ingeschreven persoon met burgerservicenummer 999990317 wordt geraadpleegd
+    Gegeven de registratie persoon 999990317 kent een verblijfplaats.landVanwaarIngeschreven = 7046
+    Als de persoon met burgerservicenummer 999990317 wordt geraadpleegd
     Dan heeft attribuut verblijfplaats.landVanwaarIngeschreven.code de waarde 7046
     En is in het antwoord verblijfplaats.vanuitVertrokkenOnbekendWaarheen niet aanwezig
 
-    Gegeven de registratie ingeschreven persoon 999993653 kent geen verblijfplaats.landVanwaarIngeschreven
-    Als de ingeschreven persoon met burgerservicenummer 999993653 wordt geraadpleegd
+    Gegeven de registratie persoon 999993653 kent geen verblijfplaats.landVanwaarIngeschreven
+    Als de persoon met burgerservicenummer 999993653 wordt geraadpleegd
     Dan is in het antwoord verblijfplaats.landVanwaarIngeschreven niet aanwezig
     En is in het antwoord verblijfplaats.vanuitVertrokkenOnbekendWaarheen niet aanwezig
 
   Scenario: vullen van vertrokkenOnbekendWaarheen
-    Gegeven de registratie ingeschreven persoon 999993586 kent een verblijfplaats.verblijfBuitenland.land = 0000
-    Als de ingeschreven persoon met burgerservicenummer 999993586 wordt geraadpleegd
+    Gegeven de registratie persoon 999993586 kent een verblijfplaats.verblijfBuitenland.land = 0000
+    Als de persoon met burgerservicenummer 999993586 wordt geraadpleegd
     Dan is in het antwoord verblijfplaats.verblijfBuitenland.land niet aanwezig
     En heeft attribuut verblijfplaats.verblijfBuitenland.vertrokkenOnbekendWaarheen de waarde true
 
-    Gegeven de registratie ingeschreven persoon 999992326 kent een verblijfplaats.verblijfBuitenland.land = 6003
-    Als de ingeschreven persoon met burgerservicenummer 999992326 wordt geraadpleegd
+    Gegeven de registratie persoon 999992326 kent een verblijfplaats.verblijfBuitenland.land = 6003
+    Als de persoon met burgerservicenummer 999992326 wordt geraadpleegd
     Dan heeft attribuut verblijfplaats.verblijfBuitenland.land.code de waarde 6003
     En is in het antwoord verblijfplaats.verblijfBuitenland.vertrokkenOnbekendWaarheen niet aanwezig
 
-    Gegeven de registratie ingeschreven persoon 999993653 is ingeschreven in een Nederlandse gemeente
-    Als de ingeschreven persoon met burgerservicenummer 999993653 wordt geraadpleegd
+    Gegeven de registratie persoon 999993653 is in een Nederlandse gemeente
+    Als de persoon met burgerservicenummer 999993653 wordt geraadpleegd
     Dan is in het antwoord verblijfplaats.verblijfBuitenland niet aanwezig

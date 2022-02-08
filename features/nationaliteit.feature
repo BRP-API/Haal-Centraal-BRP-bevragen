@@ -1,9 +1,9 @@
 # language: nl
 
-Functionaliteit: Bepalen van de actuele nationaliteit van een ingeschreven persoon
-  Niet-beëindigde nationaliteiten van de ingeschreven persoon wordt opgenomen.
+Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
+  Niet-beëindigde nationaliteiten van de persoon wordt opgenomen.
 
-  In het antwoord voor ingeschrevenpersonen worden alleen nationaliteiten opgenomen waarbij in categorie 04 nationaliteit (05.10) of aanduiding bijzonder Nederlanderschap (65.10) is opgenomen, en in categorie 04 GEEN reden beëindigen nationaliteit (64.10) is opgenomen.
+  In het antwoord voor personen worden alleen nationaliteiten opgenomen waarbij in categorie 04 nationaliteit (05.10) of aanduiding bijzonder Nederlanderschap (65.10) is opgenomen, en in categorie 04 GEEN reden beëindigen nationaliteit (64.10) is opgenomen.
 
   Voor een nationaliteit wordt de datumIngangGeldigheid gevuld met de datum geldigheid (85.10) uit de oudste bijbehorende categorie (04 of 54) waarin er een waarde is voor 05.10 of voor 65.10.
   De overige gegevens over een nationaliteit worden gehaald uit categorie 04.
@@ -11,7 +11,7 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een ingeschreven perso
   Een onjuiste nationaliteit wordt niet opgenomen. Een nationaliteit waarbij indicatie onjuist (84.10) is gevuld, wordt niet opgenomen in het antwoord.
   Voor een actuele nationaliteit met een bijbehorende historische categorie 54 met indicatie onjuist, worden de gegevens in de onjuiste categorie (incl. datum ingang) genegeerd.
 
-  Gegeven de ingeschreven persoon met burgerservicenummer 999995555 kent de volgende nationaliteiten:
+  Gegeven de persoon met burgerservicenummer 999995555 kent de volgende nationaliteiten:
      | Stapel | Categorie | 05.10 | 63.10 | 64.10 | 85.10    |
      | 1      | 04        | 0001  | 018   |       | 20180731 |
      | 1      | 04        | 0001  | 057   |       | 20160803 |
@@ -19,14 +19,14 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een ingeschreven perso
      | 2      | 54        |       |       | 402   | 20170210 |
      | 2      | 54        | 0449  | 301   |       | 19930419 |
 
-  En de ingeschreven persoon met burgerservicenummer 999992466 kent de volgende nationaliteiten:
+  En de persoon met burgerservicenummer 999992466 kent de volgende nationaliteiten:
     | Stapel | Categorie | 05.10 | 63.10 | 64.10 | 85.10    | 84.10 |
     | 1      | 04        | 0057  | 301   |       | 20160601 |       |
     | 1      | 54        | 0057  | 301   |       | 20160501 |       |
     | 1      | 54        | 0057  | 301   |       | 20160401 |       |
     | 1      | 54        | 0057  | 301   |       | 20160301 | O     |
 
-  En de ingeschreven persoon met burgerservicenummer 999992855 kent de volgende nationaliteiten:
+  En de persoon met burgerservicenummer 999992855 kent de volgende nationaliteiten:
     | Stapel | Categorie | 05.10 | 63.10 | 64.10 | 85.10    | 84.10 |
     | 1      | 04        | 0001  | 018   |       | 20041015 |       |
     | 2      | 04        |       |       |       | 20121022 |       |
