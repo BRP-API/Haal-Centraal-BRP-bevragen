@@ -47,6 +47,7 @@ De onderstaanden tabellen met de beschreven waarden worden geleverd door de "BRP
     | M                                                | ministerieel besluit                 |
     | R                                                | persoonslijst is aangelegd in de rni |
     | F                                                | fout                                 |
+    | .                                                | onbekend                             |
 
   Voor de enumeratie SoortVerbintenis wordt de tabel met identificatie "soort_verbintenis" opgenomen.
   In de omschrijving wordt de volgende tekst opgenomen : "Soort verbintenis die bij de burgerlijke stand is ingeschreven"
