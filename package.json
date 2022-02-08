@@ -22,7 +22,7 @@
     "postoas:resolve": "rm swagger-codegen-cli.jar",
     "unstage-generated": "git reset HEAD ./specificatie/genereervariant/openapi.* ./test/BRP-bevragen-postman-collection.json ./code/**",
     "rollback-generated": "git checkout ./specificatie/genereervariant/openapi.* ./test/BRP-bevragen-postman-collection.json ./code/**",
-    "specs:verify": "cucumber-js features/zoek-met-*.feature --tags \"not @fout-case\" --tags \"not @skip-verify\""
+    "specs:verify": "cucumber-js -f html:docs/features/test-result.html -f json:docs/features/test-result.json features/zoek-met-*.feature features/voorletters.feature features/volledigenaam.feature --tags \"not @fout-case\" --tags \"not @skip-verify\""
   },
   "repository": {
     "type": "git",

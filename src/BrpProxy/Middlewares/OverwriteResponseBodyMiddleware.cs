@@ -1,8 +1,7 @@
-﻿using HaalCentraal.BrpProxy.Generated;
+﻿using BrpProxy.Mappers;
+using HaalCentraal.BrpProxy.Generated;
 using Newtonsoft.Json;
-using System.Globalization;
 using System.IO.Compression;
-using System.Text.RegularExpressions;
 
 namespace BrpProxy.Middlewares
 {
@@ -49,49 +48,13 @@ namespace BrpProxy.Middlewares
 
             foreach(var persoon in personen?._embedded.Personen)
             {
-                if(persoon.Geboortedatum is GbaDatum datum)
-                {
-                    persoon.Geboortedatum = datum.Map();
-                }
+                persoon.Geboorte.Map();
+                persoon.Naam.Map();
             }
 
             retval = JsonConvert.SerializeObject(personen);
 
             return retval;
-        }
-    }
-
-    public static class GbaDatumMapper
-    {
-        private static Regex GbaDatumRegex = new Regex("^(?<jaar>[0-9]{4})(?<maand>[0-9]{2})(?<dag>[0-9]{2})$");
-
-        public static AbstractDatum Map(this GbaDatum datum)
-        {
-            if (GbaDatumRegex.IsMatch(datum.Datum))
-            {
-                var match = GbaDatumRegex.Match(datum.Datum);
-                var jaar = int.Parse(match.Groups["jaar"].Value, CultureInfo.InvariantCulture);
-                var maand = int.Parse(match.Groups["maand"].Value, CultureInfo.InvariantCulture);
-                var dag = int.Parse(match.Groups["dag"].Value, CultureInfo.InvariantCulture);
-
-                if (jaar != 0 && maand != 0 && dag != 0)
-                {
-                    return new VolledigDatum { Datum = new DateTime(jaar, maand, dag) };
-                }
-                if (jaar == 0 && maand == 0 && dag == 0)
-                {
-                    return new OnbekendDatum();
-                }
-                if (jaar != 0 && maand != 0 && dag == 0)
-                {
-                    return new JaarMaandDatum { Jaar = jaar, Maand = maand };
-                }
-                if (jaar != 0 && maand == 0 && dag == 0)
-                {
-                    return new JaarDatum { Jaar = jaar };
-                }
-            }
-            return datum;
         }
     }
     public static class HttpResponseHelpers
