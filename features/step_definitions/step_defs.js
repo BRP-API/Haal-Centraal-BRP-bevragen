@@ -48,8 +48,18 @@ Given('de persoon heeft de volgende naam gegevens', function (dataTable) {
     let naam = this.context.persoon.naam;
 
     dataTable.hashes().forEach(function(value) {
-        for(const [key, val] of Object.entries(value)) {
-            naam[key] = val;
+        for(let [key, val] of Object.entries(value)) {
+            if(val !== undefined && val !== '')
+            {
+                key = key.replace(/ (\(.*\))/, "");
+                if(key === 'adellijke titel of predikaat') {
+                    key='adellijkeTitelPredikaat';
+                    naam[key] = { code: val };
+                }
+                else {
+                    naam[key] = val;
+                }
+            }
         }
     });
 });

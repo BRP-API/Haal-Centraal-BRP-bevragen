@@ -12,20 +12,32 @@ Als één of meerdere voornamen uit één letter bestaan, dan volgt er na de let
 Wanneer na een voorletter zonder punt (voornaam had één letter) nog een andere voorletter volgt, wordt daartussen een spatie gezet.
 Als de rubriek Voornamen is gevuld met de standaardwaarde '.' (punt), Dan wordt geen extra (scheidings)punt toegevoegd; de inhoud van de attribuut voorletters is na afleiding Dan '.'
 
+Rule: Voorletters wordt samengesteld uit de eerste letter van de voornamen gescheiden door een punt
 
-Abstract Scenario: Voorletters wordt samengesteld uit de eerste letter van de voornamen gescheiden door een punt
-	Gegeven een persoon met voornamen <voornamen>
-	Als de persoon wordt geraadpleegd
-	Dan zijn de voorletters van de persoon gelijk aan <voorletters>
+	Abstract Scenario: <titel>
+        Gegeven het systeem heeft een persoon met de volgende gegevens
+        | burgerservicenummer |
+        | 999995078           |
+        En de persoon heeft de volgende naam gegevens
+        | voornamen (02.10) |
+        | <voornamen>       |
+        Als personen wordt gezocht met de volgende parameters
+        | naam                | waarde                     |
+        | type                | ZoekMetBurgerservicenummer |
+        | burgerservicenummer | 999995078                  |
+        | fields              | naam.voorletters           |
+        Dan bevat de persoon met burgerservicenummer '999995078' de volgende naam gegevens
+        | voorletters   |
+        | <voorletters> |
 
-	Voorbeelden:
-	| voornamen            | voorletters |
-	| Henk                 | H.          |
-	| Anna Cornelia        | A.C.        |
-	| Johan Frank Robert   | J.F.R.      |
-	| Theo Philip IJsbrand | T.P.I.      |
-	| Anne-Fleur Belle     | A.B.        |
-	| Suzie Q              | S.Q         |
-	| J P                  | J P         |
-	| A                    | A           |
-	| .                    | .           |
+		Voorbeelden:
+        | voornamen            | voorletters | titel                                               | description                                                                                                                       |
+        | Henk                 | H.          | Één voornaam                                        |                                                                                                                                   |
+        | Anna Cornelia        | A.C.        | Meerdere voornamen (1)                              |                                                                                                                                   |
+        | Johan Frank Robert   | J.F.R.      | Meerdere voornamen (2)                              |                                                                                                                                   |
+        | Theo Philip IJsbrand | T.P.I.      | Voornaam met een dubbelklank (Th, Ph, Ch, IJ, enz.) | Een voornaam dat begint met een dubbelklank (Th, Ph, Ch, IJ, enz.), wordt (ook) afgekort tot één voorletter.                      |
+        | Anne-Fleur Belle     | A.B.        | Voornaam is een samengestelde naam                  |                                                                                                                                   |
+        | Suzie Q              | S.Q         | Één voornaam bestaat uit één letter                 |                                                                                                                                   |
+        | A                    | A           | Voornaam bestaat uit één letter                     | Een voornaam bestaand uit één letter, wordt afgekort tot een letter zonder .                                                      |
+        | J P                  | J P         | Meerdere voornamen bestaan uit één letter           | Een voornaam bestaand uit één letter, gevolgd door een andere voornaam, wordt afgekort tot voorletters gescheiden door een spatie |
+        | .                    | .           | Voornamen bevat de standaardwaarde '.' (punt)       |                                                                                                                                   |
