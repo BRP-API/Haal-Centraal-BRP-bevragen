@@ -903,10 +903,10 @@
           "type" : "object",
           "properties" : {
             "naam" : {
-              "$ref" : "#/components/schemas/AbstractNaamBasis"
+              "$ref" : "#/components/schemas/NaamBasis"
             },
-            "geboortedatum" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
+            "geboorte" : {
+              "$ref" : "#/components/schemas/GeboorteBeperkt"
             },
             "opschortingBijhouding" : {
               "$ref" : "#/components/schemas/OpschortingBijhoudingBasis"
@@ -1123,21 +1123,20 @@
         "description" : "Het nummer van het verstrekte Nederlandse reisdocument.\n",
         "example" : "546376728"
       },
-      "AbstractNaamBasis" : {
-        "required" : [ "type" ],
-        "type" : "object",
-        "properties" : {
-          "type" : {
-            "type" : "string"
+      "NaamBasis" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/GbaNaamBasis"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "voorletters" : {
+              "$ref" : "#/components/schemas/Voorletters"
+            },
+            "volledigeNaam" : {
+              "$ref" : "#/components/schemas/VolledigeNaam"
+            }
           }
-        },
-        "discriminator" : {
-          "propertyName" : "type",
-          "mapping" : {
-            "GbaNaam" : "#/components/schemas/GbaNaamBasis",
-            "Naam" : "#/components/schemas/NaamBasis"
-          }
-        }
+        } ]
       },
       "GbaNaamBasis" : {
         "type" : "object",
@@ -1172,131 +1171,22 @@
         "description" : "De achternaam van een persoon.\n",
         "example" : "Vries"
       },
-      "NaamBasis" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/GbaNaamBasis"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "voorletters" : {
-              "$ref" : "#/components/schemas/Voorletters"
-            }
-          }
-        } ]
-      },
       "Voorletters" : {
         "type" : "string",
         "description" : "De voorletters van de persoon, afgeleid van de voornamen.\n",
         "example" : "P.J."
       },
-      "AbstractDatum" : {
-        "required" : [ "type" ],
+      "VolledigeNaam" : {
+        "type" : "string",
+        "example" : "Pieter Jan de Vries"
+      },
+      "GeboorteBeperkt" : {
         "type" : "object",
         "properties" : {
-          "type" : {
-            "type" : "string"
-          }
-        },
-        "discriminator" : {
-          "propertyName" : "type",
-          "mapping" : {
-            "GbaDatum" : "#/components/schemas/GbaDatum",
-            "Datum" : "#/components/schemas/VolledigDatum",
-            "OnbekendDatum" : "#/components/schemas/OnbekendDatum",
-            "JaarDatum" : "#/components/schemas/JaarDatum",
-            "JaarMaandDatum" : "#/components/schemas/JaarMaandDatum"
+          "datum" : {
+            "$ref" : "#/components/schemas/AbstractDatum"
           }
         }
-      },
-      "GbaDatum" : {
-        "required" : [ "datum" ],
-        "description" : "Datum conform LO GBA",
-        "example" : "20210801",
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractDatum"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "datum" : {
-              "pattern" : "^[0-9]{8}$",
-              "type" : "string"
-            }
-          }
-        } ]
-      },
-      "VolledigDatum" : {
-        "required" : [ "datum" ],
-        "description" : "Datum conform iso8601",
-        "example" : "2021-08-01",
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractDatum"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "datum" : {
-              "type" : "string",
-              "format" : "date"
-            }
-          }
-        } ]
-      },
-      "OnbekendDatum" : {
-        "required" : [ "onbekend" ],
-        "description" : "representatie voor een volledig onbekend datum",
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractDatum"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "onbekend" : {
-              "type" : "boolean",
-              "default" : true
-            }
-          }
-        } ]
-      },
-      "JaarDatum" : {
-        "required" : [ "jaar" ],
-        "description" : "representatie voor een datum waarvan maand en dag onbekend zijn",
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractDatum"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "jaar" : {
-              "$ref" : "#/components/schemas/Jaar"
-            }
-          }
-        } ]
-      },
-      "Jaar" : {
-        "maximum" : 9999,
-        "minimum" : 1,
-        "type" : "integer",
-        "format" : "int32"
-      },
-      "JaarMaandDatum" : {
-        "required" : [ "jaar", "maand" ],
-        "description" : "representatie voor een datum waarvan de dag onbekend is",
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractDatum"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "jaar" : {
-              "$ref" : "#/components/schemas/Jaar"
-            },
-            "maand" : {
-              "$ref" : "#/components/schemas/Maand"
-            }
-          }
-        } ]
-      },
-      "Maand" : {
-        "maximum" : 12,
-        "minimum" : 1,
-        "type" : "integer",
-        "format" : "int32"
       },
       "OpschortingBijhoudingBasis" : {
         "type" : "object",
@@ -1472,6 +1362,118 @@
             }
           }
         } ]
+      },
+      "AbstractDatum" : {
+        "required" : [ "type" ],
+        "type" : "object",
+        "properties" : {
+          "type" : {
+            "type" : "string"
+          }
+        },
+        "discriminator" : {
+          "propertyName" : "type",
+          "mapping" : {
+            "GbaDatum" : "#/components/schemas/GbaDatum",
+            "Datum" : "#/components/schemas/VolledigDatum",
+            "OnbekendDatum" : "#/components/schemas/OnbekendDatum",
+            "JaarDatum" : "#/components/schemas/JaarDatum",
+            "JaarMaandDatum" : "#/components/schemas/JaarMaandDatum"
+          }
+        }
+      },
+      "GbaDatum" : {
+        "required" : [ "gbaDatum" ],
+        "description" : "Datum conform LO GBA",
+        "example" : {
+          "type" : "GbaDatum",
+          "gbaDatum" : "20210801"
+        },
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AbstractDatum"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "gbaDatum" : {
+              "pattern" : "^[0-9]{8}$",
+              "type" : "string"
+            }
+          }
+        } ]
+      },
+      "VolledigDatum" : {
+        "required" : [ "datum" ],
+        "description" : "Datum conform iso8601",
+        "example" : "2021-08-01",
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AbstractDatum"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "datum" : {
+              "type" : "string",
+              "format" : "date"
+            }
+          }
+        } ]
+      },
+      "OnbekendDatum" : {
+        "required" : [ "onbekend" ],
+        "description" : "representatie voor een volledig onbekend datum",
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AbstractDatum"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "onbekend" : {
+              "type" : "boolean",
+              "default" : true
+            }
+          }
+        } ]
+      },
+      "JaarDatum" : {
+        "required" : [ "jaar" ],
+        "description" : "representatie voor een datum waarvan maand en dag onbekend zijn",
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AbstractDatum"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "jaar" : {
+              "$ref" : "#/components/schemas/Jaar"
+            }
+          }
+        } ]
+      },
+      "Jaar" : {
+        "maximum" : 9999,
+        "minimum" : 1,
+        "type" : "integer",
+        "format" : "int32"
+      },
+      "JaarMaandDatum" : {
+        "required" : [ "jaar", "maand" ],
+        "description" : "representatie voor een datum waarvan de dag onbekend is",
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AbstractDatum"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "jaar" : {
+              "$ref" : "#/components/schemas/Jaar"
+            },
+            "maand" : {
+              "$ref" : "#/components/schemas/Maand"
+            }
+          }
+        } ]
+      },
+      "Maand" : {
+        "maximum" : 12,
+        "minimum" : 1,
+        "type" : "integer",
+        "format" : "int32"
       },
       "Kiesrecht" : {
         "type" : "object",
@@ -2267,7 +2269,7 @@
             "$ref" : "#/components/schemas/AbstractKindInOnderzoek"
           },
           "naam" : {
-            "$ref" : "#/components/schemas/AbstractNaam"
+            "$ref" : "#/components/schemas/Naam"
           },
           "geboorte" : {
             "$ref" : "#/components/schemas/Geboorte"
@@ -2333,7 +2335,7 @@
             "$ref" : "#/components/schemas/AbstractDatum"
           },
           "naam" : {
-            "$ref" : "#/components/schemas/AbstractNaam"
+            "$ref" : "#/components/schemas/Naam"
           },
           "inOnderzoek" : {
             "$ref" : "#/components/schemas/AbstractOuderInOnderzoek"
@@ -2405,7 +2407,7 @@
             "$ref" : "#/components/schemas/Waardetabel"
           },
           "naam" : {
-            "$ref" : "#/components/schemas/AbstractNaam"
+            "$ref" : "#/components/schemas/Naam"
           },
           "geboorte" : {
             "$ref" : "#/components/schemas/Geboorte"
@@ -2596,7 +2598,18 @@
           }
         } ]
       },
-      "AbstractNaam" : {
+      "Naam" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/NaamBasis"
+        }, {
+          "properties" : {
+            "inOnderzoek" : {
+              "$ref" : "#/components/schemas/AbstractNaamInOnderzoek"
+            }
+          }
+        } ]
+      },
+      "AbstractNaamInOnderzoek" : {
         "required" : [ "type" ],
         "type" : "object",
         "properties" : {
@@ -2604,61 +2617,20 @@
             "type" : "string"
           }
         },
+        "description" : "Geeft aan welke gegevens over de naam van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
         "discriminator" : {
           "propertyName" : "type",
           "mapping" : {
-            "GbaNaam" : "#/components/schemas/GbaNaam",
-            "Naam" : "#/components/schemas/Naam"
+            "GbaInOnderzoek" : "#/components/schemas/GbaNaamInOnderzoek",
+            "InOnderzoek" : "#/components/schemas/NaamInOnderzoek"
           }
         }
       },
-      "GbaNaam" : {
+      "GbaNaamInOnderzoek" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractNaam"
+          "$ref" : "#/components/schemas/AbstractNaamInOnderzoek"
         }, {
-          "properties" : {
-            "voornamen" : {
-              "$ref" : "#/components/schemas/Voornamen"
-            },
-            "voorvoegsel" : {
-              "$ref" : "#/components/schemas/Voorvoegsel"
-            },
-            "geslachtsnaam" : {
-              "$ref" : "#/components/schemas/Geslachtsnaam"
-            },
-            "adellijkeTitelPredikaat" : {
-              "$ref" : "#/components/schemas/Waardetabel"
-            },
-            "inOnderzoek" : {
-              "$ref" : "#/components/schemas/GbaInOnderzoek"
-            }
-          }
-        } ]
-      },
-      "Naam" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractNaam"
-        }, {
-          "properties" : {
-            "voornamen" : {
-              "$ref" : "#/components/schemas/Voornamen"
-            },
-            "voorvoegsel" : {
-              "$ref" : "#/components/schemas/Voorvoegsel"
-            },
-            "geslachtsnaam" : {
-              "$ref" : "#/components/schemas/Geslachtsnaam"
-            },
-            "adellijkeTitelPredikaat" : {
-              "$ref" : "#/components/schemas/Waardetabel"
-            },
-            "voorletters" : {
-              "$ref" : "#/components/schemas/Voorletters"
-            },
-            "inOnderzoek" : {
-              "$ref" : "#/components/schemas/NaamInOnderzoek"
-            }
-          }
+          "$ref" : "#/components/schemas/GbaInOnderzoek"
         } ]
       },
       "NaamInOnderzoek" : {
