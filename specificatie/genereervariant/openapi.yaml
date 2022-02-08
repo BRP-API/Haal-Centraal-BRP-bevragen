@@ -1500,7 +1500,7 @@ components:
           locatiebeschrijving:
             $ref: '#/components/schemas/Locatiebeschrijving'
           land:
-            $ref: '#/components/schemas/GbaLand'
+            $ref: '#/components/schemas/GbaLandBeperkt'
           datumAanvangAdreshouding:
             $ref: '#/components/schemas/GbaDatumBeperkt'
 #            $ref: '#/components/schemas/GbaDatum'
@@ -1950,13 +1950,22 @@ components:
         datumIngangOnderzoek:
             $ref: '#/components/schemas/GbaDatumBeperkt'
 #            $ref: '#/components/schemas/GbaDatum'
+#    GbaLand:
+#      allOf:
+#      - $ref: '#/components/schemas/AbstractLand'
+#      - type: object
+#        properties:
+#          code:
+#            type: string
     GbaLand:
       allOf:
       - $ref: '#/components/schemas/AbstractLand'
       - type: object
         properties:
           code:
-            type: string
+            $ref: '#/components/schemas/GbaLandBeperkt'
+    GbaLandBeperkt:
+      type: string
     AbstractLand:
       type: object
       properties:
