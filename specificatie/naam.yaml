@@ -32,7 +32,10 @@ components:
       description: |
         Deze regel moet als aparte regel boven de aanschrijfwijze worden geplaatst. Komt alleen voor bij personen met een adellijke titel of predicaat.
       example: "De hoogwelgeboren heer"
-    Voorletters:
+    VolledigeNaam:
+      type: string
+      example: "Pieter Jan de Vries"
+    Voorletters: 
       type: string
       description: |
         De voorletters van de persoon, afgeleid van de voornamen.
@@ -46,30 +49,6 @@ components:
       type: string
       maxLength: 10
       example: "de"
-    AbstractNaamBasis:
-      type: object
-      required:
-        - type
-      properties:
-        type:
-          type: string
-      discriminator:
-        propertyName: type
-        mapping:
-          GbaNaam: '#/components/schemas/GbaNaamBasis'
-          Naam: '#/components/schemas/NaamBasis'
-    AbstractNaam:
-      type: object
-      required:
-        - type
-      properties:
-        type:
-          type: string
-      discriminator:
-        propertyName: type
-        mapping:
-          GbaNaam: '#/components/schemas/GbaNaam'
-          Naam: '#/components/schemas/Naam'
     GbaNaamBasis:
       type: object
       properties:
@@ -88,36 +67,28 @@ components:
           properties:
             voorletters:
               $ref: '#/components/schemas/Voorletters'
+            volledigeNaam:
+              $ref: '#/components/schemas/VolledigeNaam'
     Naam:
       allOf:
-        - $ref: '#/components/schemas/AbstractNaam'
+        - $ref: '#/components/schemas/NaamBasis'
         - properties:
-            voornamen:
-              $ref: '#/components/schemas/Voornamen'
-            voorvoegsel:
-              $ref: '#/components/schemas/Voorvoegsel'
-            geslachtsnaam:
-              $ref: '#/components/schemas/Geslachtsnaam'
-            adellijkeTitelPredikaat:
-              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
-            voorletters:
-              $ref: '#/components/schemas/Voorletters'
             inOnderzoek:
-              $ref: '#/components/schemas/NaamInOnderzoek'
-    GbaNaam:
-      allOf:
-        - $ref: '#/components/schemas/AbstractNaam'
-        - properties:
-            voornamen:
-              $ref: '#/components/schemas/Voornamen'
-            voorvoegsel:
-              $ref: '#/components/schemas/Voorvoegsel'
-            geslachtsnaam:
-              $ref: '#/components/schemas/Geslachtsnaam'
-            adellijkeTitelPredikaat:
-              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
-            inOnderzoek:
-              $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
+              $ref: '#/components/schemas/AbstractNaamInOnderzoek'
+    AbstractNaamInOnderzoek:
+      type: object
+      description: |
+        Geeft aan welke gegevens over de naam van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      required:
+        - type
+      properties:
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          GbaInOnderzoek: '#/components/schemas/GbaNaamInOnderzoek'
+          InOnderzoek: '#/components/schemas/NaamInOnderzoek'
     NaamInOnderzoek:
       description: |
         Geeft aan welke gegevens over de naam in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
@@ -133,6 +104,10 @@ components:
           type: boolean
         datumIngangOnderzoek:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+    GbaNaamInOnderzoek:
+      allOf:
+        - $ref: '#/components/schemas/AbstractNaamInOnderzoek'
+        - $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     NaamPersoon:
       allOf:
         - $ref: '#/components/schemas/NaamBasis'

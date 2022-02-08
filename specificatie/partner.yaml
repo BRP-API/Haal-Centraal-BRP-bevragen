@@ -20,7 +20,7 @@ components:
         soortVerbintenis:
           $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
         naam:
-          $ref: 'naam.yaml#/components/schemas/AbstractNaam'
+          $ref: 'naam.yaml#/components/schemas/Naam'
         geboorte:
           $ref: 'geboorte.yaml#/components/schemas/Geboorte'
         inOnderzoek:
