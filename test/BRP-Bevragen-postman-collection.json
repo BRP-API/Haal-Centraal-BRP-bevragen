@@ -1,11 +1,11 @@
 {
     "item": [
         {
-            "id": "aaac1677-a3bb-4e91-982c-04615517b802",
+            "id": "2fae609f-d9c0-46db-aa4a-69467bd41fe0",
             "name": "personen",
             "item": [
                 {
-                    "id": "522c9f80-451a-402b-8750-c2418dd0e40a",
+                    "id": "fd206090-c007-48b1-9dbc-b8c7e57b4464",
                     "name": "Vindt personen",
                     "request": {
                         "name": "Vindt personen",
@@ -43,7 +43,7 @@
                     },
                     "response": [
                         {
-                            "id": "600ea966-f301-4f46-bb7c-bac59241e788",
+                            "id": "a2d55ff3-2952-480f-9f47-f35480c006a9",
                             "name": "Zoekactie geslaagd\n",
                             "originalRequest": {
                                 "url": {
@@ -92,7 +92,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "8ee12689-ba23-49b7-ab2e-ad085dfe4c0a",
+                            "id": "762a482d-21ae-43e4-be23-05971c40f124",
                             "name": "Bad Request",
                             "originalRequest": {
                                 "url": {
@@ -135,7 +135,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "71090f28-bed6-42f5-a67f-571d91e7ee70",
+                            "id": "6a448e9c-a263-474f-90b2-cc091d53f9fd",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -178,7 +178,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "b5e4d512-c20a-4f23-8f5d-fe5f1316b829",
+                            "id": "4d6c41bc-cba7-447f-b736-34a93cf703b5",
                             "name": "Forbidden",
                             "originalRequest": {
                                 "url": {
@@ -221,7 +221,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "bea205ec-973f-429f-8fb6-819e7566233f",
+                            "id": "a401d77c-4934-4e41-b733-5aa3faedd440",
                             "name": "Not Acceptable",
                             "originalRequest": {
                                 "url": {
@@ -264,7 +264,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "7e0dc65c-6c79-413e-905e-30cc87dfba19",
+                            "id": "acac9cde-73cc-438e-ba56-694c2e5118b7",
                             "name": "Internal Server Error",
                             "originalRequest": {
                                 "url": {
@@ -307,7 +307,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "71429584-2744-4aca-b41b-8d93b413cddb",
+                            "id": "980409e6-c6c6-4065-be23-2c590697dd67",
                             "name": "Not Implemented",
                             "originalRequest": {
                                 "url": {
@@ -350,7 +350,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "6a8aed7e-145a-44f2-ae7f-7ed1022ce803",
+                            "id": "f5c7ad3a-8ab5-470a-acc1-b38f274fbf2b",
                             "name": "Service Unavailable",
                             "originalRequest": {
                                 "url": {
@@ -393,7 +393,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "5f2ccb04-71a0-41de-9a4d-5d5521ec12af",
+                            "id": "0be29f56-86f6-451f-a3fb-35f581c7b814",
                             "name": "Er is een onverwachte fout opgetreden",
                             "originalRequest": {
                                 "url": {
@@ -431,7 +431,7 @@
                                     "value": "application/problem+json"
                                 }
                             ],
-                            "body": "{\n \"type\": \"http://oQLZjEjSliziBNxm.wucSIKJiLwMwtVMAV\",\n \"title\": \"esse elit aliqua\",\n \"status\": 34202417,\n \"detail\": \"dolore id velit\",\n \"instance\": \"https://ugC.newF4hEBv1Q4vKpgjdGBhRQiDdXxZexnXsQn\",\n \"code\": \"ea mollit enim nulla\"\n}",
+                            "body": "{\n \"type\": \"http://hi.ampejRCUZiLp-bCcypZCWEl-0EODiJK9GqWq\",\n \"title\": \"ipsum dolore in\",\n \"status\": 26251536,\n \"detail\": \"tempor cillum\",\n \"instance\": \"https://rzEMoAZpKlrLwoUCg.kukeW.fnDETTy+jmp1Og41Mjt5mcirQND\",\n \"code\": \"laboris est nulla et\"\n}",
                             "cookie": [],
                             "_postman_previewlanguage": "json"
                         }
@@ -439,7 +439,7 @@
                     "event": []
                 },
                 {
-                    "id": "8fce821a-25e1-4666-b4b0-7376f26ae305",
+                    "id": "ec02ad6c-0b29-4023-a15c-a6eebb227e86",
                     "name": "Raadpleeg een persoon",
                     "request": {
                         "name": "Raadpleeg een persoon",
@@ -478,7 +478,7 @@
                     },
                     "response": [
                         {
-                            "id": "d00c8c19-2f0f-49d7-983c-bc1d6ac2ff08",
+                            "id": "67f95396-8b43-4f86-afd9-4c5d0ad0de9b",
                             "name": "Zoekactie geslaagd\n",
                             "originalRequest": {
                                 "url": {
@@ -528,12 +528,12 @@
                                     "value": "application/hal+json"
                                 }
                             ],
-                            "body": "{\n \"identificatie\": \"<uuid>\",\n \"burgerservicenummer\": \"555555021\",\n \"geheimhoudingPersoonsgegevens\": {\n  \"type\": \"minim nostrud ut quis qui\"\n },\n \"geslachtsaanduiding\": {\n  \"code\": \"6030\",\n  \"omschrijving\": \"Nederland\"\n },\n \"leeftijd\": 34,\n \"aNummer\": \"culpa sunt eiusmod\",\n \"datumEersteInschrijvingGBA\": {\n  \"type\": \"do Lorem\"\n },\n \"inOnderzoek\": {\n  \"type\": \"magna\"\n },\n \"kiesrecht\": {\n  \"europeesKiesrecht\": true,\n  \"uitgeslotenVanKiesrecht\": true,\n  \"einddatumUitsluitingEuropeesKiesrecht\": {\n   \"type\": \"in laboris aliqua\"\n  },\n  \"einddatumUitsluitingKiesrecht\": {\n   \"type\": \"do Excepteur mollit in\"\n  }\n },\n \"naam\": {\n  \"aanhef\": {\n   \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"aanschrijfwijze\": {\n   \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"regelVoorafgaandAanAanschrijfwijze\": {\n   \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"gebruikInLopendeTekst\": {\n   \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"aanduidingNaamgebruik\": {\n   \"code\": \"6030\",\n   \"omschrijving\": \"Nederland\"\n  },\n  \"inOnderzoek\": {\n   \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  }\n },\n \"nationaliteiten\": [\n  {\n   \"datumIngangGeldigheid\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"nationaliteit\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"inOnderzoek\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   }\n  },\n  {\n   \"datumIngangGeldigheid\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"nationaliteit\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"inOnderzoek\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   }\n  }\n ],\n \"geboorte\": {\n  \"datum\": {\n   \"type\": \"nulla qui\"\n  },\n  \"land\": {\n   \"type\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   }\n  },\n  \"plaats\": {\n   \"code\": \"6030\",\n   \"omschrijving\": \"Nederland\"\n  },\n  \"inOnderzoek\": {\n   \"type\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   }\n  }\n },\n \"opschortingBijhouding\": {\n  \"type\": \"est nisi adipisicing exercitation\",\n  \"reden\": {\n   \"code\": \"6030\",\n   \"omschrijving\": \"Nederland\"\n  }\n },\n \"overlijden\": {\n  \"indicatieOverleden\": {\n   \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"datum\": {\n   \"type\": \"fugiat ut est labore\"\n  },\n  \"land\": {\n   \"type\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   }\n  },\n  \"plaats\": {\n   \"code\": \"6030\",\n   \"omschrijving\": \"Nederland\"\n  },\n  \"inOnderzoek\": {\n   \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  }\n },\n \"verblijfplaats\": {\n  \"type\": \"ea\",\n  \"functieAdres\": {\n   \"code\": \"6030\",\n   \"omschrijving\": \"Nederland\"\n  },\n  \"woonplaats\": \"Duiven\",\n  \"adresregel1\": \"Laan van de landinrichtingscommissie Duiven-Westervoort 26A-3\",\n  \"adresregel2\": \"1234AA Nootdorp\",\n  \"adresregel3\": \"Selangor\"\n },\n \"gezagsverhouding\": {\n  \"indicatieCurateleRegister\": true,\n  \"indicatieGezagMinderjarige\": {\n   \"code\": \"6030\",\n   \"omschrijving\": \"Nederland\"\n  },\n  \"inOnderzoek\": {\n   \"type\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   }\n  }\n },\n \"verblijfstitel\": {\n  \"aanduiding\": {\n   \"code\": \"6030\",\n   \"omschrijving\": \"Nederland\"\n  },\n  \"datumEinde\": {\n   \"type\": \"laboris dolore\"\n  },\n  \"datumIngang\": {\n   \"type\": \"et consequat voluptate do velit\"\n  },\n  \"inOnderzoek\": {\n   \"type\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   }\n  }\n },\n \"reisdocumentnummers\": [\n  \"546376728\",\n  \"546376728\"\n ],\n \"kinderen\": [\n  {\n   \"identificatie\": \"<uuid>\",\n   \"burgerservicenummer\": \"555555021\",\n   \"leeftijd\": 12,\n   \"inOnderzoek\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"naam\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"geboorte\": {\n    \"datum\": {\n     \"type\": \"aute sed in voluptate\"\n    },\n    \"land\": {\n     \"type\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n     }\n    },\n    \"plaats\": {\n     \"code\": \"6030\",\n     \"omschrijving\": \"Nederland\"\n    },\n    \"inOnderzoek\": {\n     \"type\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n     }\n    }\n   }\n  },\n  {\n   \"identificatie\": \"<uuid>\",\n   \"burgerservicenummer\": \"555555021\",\n   \"leeftijd\": 12,\n   \"inOnderzoek\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"naam\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"geboorte\": {\n    \"datum\": {\n     \"type\": \"incididunt minim Duis ut\"\n    },\n    \"land\": {\n     \"type\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n     }\n    },\n    \"plaats\": {\n     \"code\": \"6030\",\n     \"omschrijving\": \"Nederland\"\n    },\n    \"inOnderzoek\": {\n     \"type\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n     }\n    }\n   }\n  }\n ],\n \"ouders\": [\n  {\n   \"identificatie\": \"<uuid>\",\n   \"burgerservicenummer\": \"555555021\",\n   \"geslachtsaanduiding\": {\n    \"code\": \"6030\",\n    \"omschrijving\": \"Nederland\"\n   },\n   \"ouderAanduiding\": {\n    \"code\": \"6030\",\n    \"omschrijving\": \"Nederland\"\n   },\n   \"datumIngangFamilierechtelijkeBetrekking\": {\n    \"type\": \"exercitation reprehenderit ullamco enim nisi\"\n   },\n   \"naam\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"inOnderzoek\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"geboorte\": {\n    \"datum\": {\n     \"type\": \"minim tempor eu\"\n    },\n    \"land\": {\n     \"type\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n     }\n    },\n    \"plaats\": {\n     \"code\": \"6030\",\n     \"omschrijving\": \"Nederland\"\n    },\n    \"inOnderzoek\": {\n     \"type\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n     }\n    }\n   }\n  },\n  {\n   \"identificatie\": \"<uuid>\",\n   \"burgerservicenummer\": \"555555021\",\n   \"geslachtsaanduiding\": {\n    \"code\": \"6030\",\n    \"omschrijving\": \"Nederland\"\n   },\n   \"ouderAanduiding\": {\n    \"code\": \"6030\",\n    \"omschrijving\": \"Nederland\"\n   },\n   \"datumIngangFamilierechtelijkeBetrekking\": {\n    \"type\": \"culpa non ad id\"\n   },\n   \"naam\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"inOnderzoek\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"geboorte\": {\n    \"datum\": {\n     \"type\": \"elit\"\n    },\n    \"land\": {\n     \"type\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n     }\n    },\n    \"plaats\": {\n     \"code\": \"6030\",\n     \"omschrijving\": \"Nederland\"\n    },\n    \"inOnderzoek\": {\n     \"type\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n     }\n    }\n   }\n  }\n ],\n \"partners\": [\n  {\n   \"identificatie\": \"<uuid>\",\n   \"burgerservicenummer\": \"555555021\",\n   \"geslachtsaanduiding\": {\n    \"code\": \"6030\",\n    \"omschrijving\": \"Nederland\"\n   },\n   \"soortVerbintenis\": {\n    \"code\": \"6030\",\n    \"omschrijving\": \"Nederland\"\n   },\n   \"naam\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"geboorte\": {\n    \"datum\": {\n     \"type\": \"do ea\"\n    },\n    \"land\": {\n     \"type\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n     }\n    },\n    \"plaats\": {\n     \"code\": \"6030\",\n     \"omschrijving\": \"Nederland\"\n    },\n    \"inOnderzoek\": {\n     \"type\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n     }\n    }\n   },\n   \"inOnderzoek\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"aangaanHuwelijkPartnerschap\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   }\n  },\n  {\n   \"identificatie\": \"<uuid>\",\n   \"burgerservicenummer\": \"555555021\",\n   \"geslachtsaanduiding\": {\n    \"code\": \"6030\",\n    \"omschrijving\": \"Nederland\"\n   },\n   \"soortVerbintenis\": {\n    \"code\": \"6030\",\n    \"omschrijving\": \"Nederland\"\n   },\n   \"naam\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"geboorte\": {\n    \"datum\": {\n     \"type\": \"ad mollit non\"\n    },\n    \"land\": {\n     \"type\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n     }\n    },\n    \"plaats\": {\n     \"code\": \"6030\",\n     \"omschrijving\": \"Nederland\"\n    },\n    \"inOnderzoek\": {\n     \"type\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n     }\n    }\n   },\n   \"inOnderzoek\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"aangaanHuwelijkPartnerschap\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   }\n  }\n ],\n \"_links\": {\n  \"self\": {\n   \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n   \"templated\": false,\n   \"title\": \"voluptate qui sed id\"\n  },\n  \"ouders\": [\n   {\n    \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n    \"templated\": true,\n    \"title\": \"aliquip\"\n   },\n   {\n    \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n    \"templated\": true,\n    \"title\": \"deserunt anim\"\n   }\n  ],\n  \"reisdocumenten\": [\n   {\n    \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n    \"templated\": false,\n    \"title\": \"aute occaecat exercitation\"\n   },\n   {\n    \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n    \"templated\": true,\n    \"title\": \"id\"\n   }\n  ],\n  \"kinderen\": [\n   {\n    \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n    \"templated\": true,\n    \"title\": \"do ex\"\n   },\n   {\n    \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n    \"templated\": false,\n    \"title\": \"Lorem magna exercitation\"\n   }\n  ],\n  \"partners\": [\n   {\n    \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n    \"templated\": false,\n    \"title\": \"in\"\n   },\n   {\n    \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n    \"templated\": true,\n    \"title\": \"cupidatat nulla dolore mollit laboris\"\n   }\n  ],\n  \"partnerhistorie\": {\n   \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n   \"templated\": false,\n   \"title\": \"tempor\"\n  },\n  \"verblijfplaatshistorie\": {\n   \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n   \"templated\": false,\n   \"title\": \"ea reprehenderit non\"\n  },\n  \"verblijfstitelhistorie\": {\n   \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n   \"templated\": true,\n   \"title\": \"elit mollit\"\n  },\n  \"nationaliteitHistorie\": {\n   \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n   \"templated\": true,\n   \"title\": \"sint voluptate Ut quis ipsum\"\n  },\n  \"adres\": {\n   \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n   \"templated\": true,\n   \"title\": \"ut labore fugiat dolore\"\n  }\n }\n}",
+                            "body": "{\n \"identificatie\": \"<uuid>\",\n \"burgerservicenummer\": \"555555021\",\n \"geheimhoudingPersoonsgegevens\": {\n  \"type\": \"in consequat aliqua\"\n },\n \"geslachtsaanduiding\": {\n  \"code\": \"6030\",\n  \"omschrijving\": \"Nederland\"\n },\n \"leeftijd\": 34,\n \"aNummer\": \"proident id qui commodo magna\",\n \"datumEersteInschrijvingGBA\": {\n  \"type\": \"dolore nulla\"\n },\n \"inOnderzoek\": {\n  \"type\": \"consequat irure in laboris\"\n },\n \"kiesrecht\": {\n  \"europeesKiesrecht\": true,\n  \"uitgeslotenVanKiesrecht\": true,\n  \"einddatumUitsluitingEuropeesKiesrecht\": {\n   \"type\": \"eu laboris veni\"\n  },\n  \"einddatumUitsluitingKiesrecht\": {\n   \"type\": \"cupidatat m\"\n  }\n },\n \"naam\": {\n  \"aanhef\": {\n   \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"aanschrijfwijze\": {\n   \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"regelVoorafgaandAanAanschrijfwijze\": {\n   \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"gebruikInLopendeTekst\": {\n   \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"aanduidingNaamgebruik\": {\n   \"code\": \"6030\",\n   \"omschrijving\": \"Nederland\"\n  },\n  \"inOnderzoek\": {\n   \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  }\n },\n \"nationaliteiten\": [\n  {\n   \"datumIngangGeldigheid\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"nationaliteit\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"inOnderzoek\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   }\n  },\n  {\n   \"datumIngangGeldigheid\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"nationaliteit\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"inOnderzoek\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   }\n  }\n ],\n \"geboorte\": {\n  \"datum\": {\n   \"type\": \"occaecat incididunt veniam irure\"\n  },\n  \"land\": {\n   \"type\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   }\n  },\n  \"plaats\": {\n   \"code\": \"6030\",\n   \"omschrijving\": \"Nederland\"\n  },\n  \"inOnderzoek\": {\n   \"type\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   }\n  }\n },\n \"opschortingBijhouding\": {\n  \"type\": \"Ut\",\n  \"reden\": {\n   \"code\": \"6030\",\n   \"omschrijving\": \"Nederland\"\n  }\n },\n \"overlijden\": {\n  \"indicatieOverleden\": {\n   \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"datum\": {\n   \"type\": \"ut nisi\"\n  },\n  \"land\": {\n   \"type\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   }\n  },\n  \"plaats\": {\n   \"code\": \"6030\",\n   \"omschrijving\": \"Nederland\"\n  },\n  \"inOnderzoek\": {\n   \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  }\n },\n \"verblijfplaats\": {\n  \"type\": \"velit Excepteur eu fugiat eiusmod\",\n  \"functieAdres\": {\n   \"code\": \"6030\",\n   \"omschrijving\": \"Nederland\"\n  },\n  \"woonplaats\": \"Duiven\",\n  \"adresregel1\": \"Laan van de landinrichtingscommissie Duiven-Westervoort 26A-3\",\n  \"adresregel2\": \"1234AA Nootdorp\",\n  \"adresregel3\": \"Selangor\"\n },\n \"gezagsverhouding\": {\n  \"indicatieCurateleRegister\": true,\n  \"indicatieGezagMinderjarige\": {\n   \"code\": \"6030\",\n   \"omschrijving\": \"Nederland\"\n  },\n  \"inOnderzoek\": {\n   \"type\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   }\n  }\n },\n \"verblijfstitel\": {\n  \"aanduiding\": {\n   \"code\": \"6030\",\n   \"omschrijving\": \"Nederland\"\n  },\n  \"datumEinde\": {\n   \"type\": \"ut\"\n  },\n  \"datumIngang\": {\n   \"type\": \"magna Lorem\"\n  },\n  \"inOnderzoek\": {\n   \"type\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   }\n  }\n },\n \"reisdocumentnummers\": [\n  \"546376728\",\n  \"546376728\"\n ],\n \"kinderen\": [\n  {\n   \"identificatie\": \"<uuid>\",\n   \"burgerservicenummer\": \"555555021\",\n   \"leeftijd\": 12,\n   \"inOnderzoek\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"naam\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"geboorte\": {\n    \"datum\": {\n     \"type\": \"labore dolor\"\n    },\n    \"land\": {\n     \"type\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n     }\n    },\n    \"plaats\": {\n     \"code\": \"6030\",\n     \"omschrijving\": \"Nederland\"\n    },\n    \"inOnderzoek\": {\n     \"type\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n     }\n    }\n   }\n  },\n  {\n   \"identificatie\": \"<uuid>\",\n   \"burgerservicenummer\": \"555555021\",\n   \"leeftijd\": 12,\n   \"inOnderzoek\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"naam\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"geboorte\": {\n    \"datum\": {\n     \"type\": \"exercitation enim t\"\n    },\n    \"land\": {\n     \"type\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n     }\n    },\n    \"plaats\": {\n     \"code\": \"6030\",\n     \"omschrijving\": \"Nederland\"\n    },\n    \"inOnderzoek\": {\n     \"type\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n     }\n    }\n   }\n  }\n ],\n \"ouders\": [\n  {\n   \"identificatie\": \"<uuid>\",\n   \"burgerservicenummer\": \"555555021\",\n   \"geslachtsaanduiding\": {\n    \"code\": \"6030\",\n    \"omschrijving\": \"Nederland\"\n   },\n   \"ouderAanduiding\": {\n    \"code\": \"6030\",\n    \"omschrijving\": \"Nederland\"\n   },\n   \"datumIngangFamilierechtelijkeBetrekking\": {\n    \"type\": \"officia pariatur minim dolore\"\n   },\n   \"naam\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"inOnderzoek\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"geboorte\": {\n    \"datum\": {\n     \"type\": \"in elit ullamco\"\n    },\n    \"land\": {\n     \"type\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n     }\n    },\n    \"plaats\": {\n     \"code\": \"6030\",\n     \"omschrijving\": \"Nederland\"\n    },\n    \"inOnderzoek\": {\n     \"type\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n     }\n    }\n   }\n  },\n  {\n   \"identificatie\": \"<uuid>\",\n   \"burgerservicenummer\": \"555555021\",\n   \"geslachtsaanduiding\": {\n    \"code\": \"6030\",\n    \"omschrijving\": \"Nederland\"\n   },\n   \"ouderAanduiding\": {\n    \"code\": \"6030\",\n    \"omschrijving\": \"Nederland\"\n   },\n   \"datumIngangFamilierechtelijkeBetrekking\": {\n    \"type\": \"eiusmod et ullamco\"\n   },\n   \"naam\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"inOnderzoek\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"geboorte\": {\n    \"datum\": {\n     \"type\": \"ullamco eiusmod oc\"\n    },\n    \"land\": {\n     \"type\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n     }\n    },\n    \"plaats\": {\n     \"code\": \"6030\",\n     \"omschrijving\": \"Nederland\"\n    },\n    \"inOnderzoek\": {\n     \"type\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n     }\n    }\n   }\n  }\n ],\n \"partners\": [\n  {\n   \"identificatie\": \"<uuid>\",\n   \"burgerservicenummer\": \"555555021\",\n   \"geslachtsaanduiding\": {\n    \"code\": \"6030\",\n    \"omschrijving\": \"Nederland\"\n   },\n   \"soortVerbintenis\": {\n    \"code\": \"6030\",\n    \"omschrijving\": \"Nederland\"\n   },\n   \"naam\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"geboorte\": {\n    \"datum\": {\n     \"type\": \"irure laboris ad incididunt\"\n    },\n    \"land\": {\n     \"type\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n     }\n    },\n    \"plaats\": {\n     \"code\": \"6030\",\n     \"omschrijving\": \"Nederland\"\n    },\n    \"inOnderzoek\": {\n     \"type\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n     }\n    }\n   },\n   \"inOnderzoek\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"aangaanHuwelijkPartnerschap\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   }\n  },\n  {\n   \"identificatie\": \"<uuid>\",\n   \"burgerservicenummer\": \"555555021\",\n   \"geslachtsaanduiding\": {\n    \"code\": \"6030\",\n    \"omschrijving\": \"Nederland\"\n   },\n   \"soortVerbintenis\": {\n    \"code\": \"6030\",\n    \"omschrijving\": \"Nederland\"\n   },\n   \"naam\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"geboorte\": {\n    \"datum\": {\n     \"type\": \"ut esse dolore aliqua labore\"\n    },\n    \"land\": {\n     \"type\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n     }\n    },\n    \"plaats\": {\n     \"code\": \"6030\",\n     \"omschrijving\": \"Nederland\"\n    },\n    \"inOnderzoek\": {\n     \"type\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n     }\n    }\n   },\n   \"inOnderzoek\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"aangaanHuwelijkPartnerschap\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   }\n  }\n ],\n \"_links\": {\n  \"self\": {\n   \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n   \"templated\": false,\n   \"title\": \"laboris fugiat do elit\"\n  },\n  \"ouders\": [\n   {\n    \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n    \"templated\": false,\n    \"title\": \"magna ut \"\n   },\n   {\n    \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n    \"templated\": true,\n    \"title\": \"ipsum minim\"\n   }\n  ],\n  \"reisdocumenten\": [\n   {\n    \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n    \"templated\": true,\n    \"title\": \"sed id\"\n   },\n   {\n    \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n    \"templated\": true,\n    \"title\": \"cillum amet\"\n   }\n  ],\n  \"kinderen\": [\n   {\n    \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n    \"templated\": false,\n    \"title\": \"enim fugiat eiusmod nostrud adipisicing\"\n   },\n   {\n    \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n    \"templated\": false,\n    \"title\": \"do amet\"\n   }\n  ],\n  \"partners\": [\n   {\n    \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n    \"templated\": true,\n    \"title\": \"sunt\"\n   },\n   {\n    \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n    \"templated\": false,\n    \"title\": \"min\"\n   }\n  ],\n  \"partnerhistorie\": {\n   \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n   \"templated\": true,\n   \"title\": \"est adipi\"\n  },\n  \"verblijfplaatshistorie\": {\n   \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n   \"templated\": false,\n   \"title\": \"Ut pariatur in ad\"\n  },\n  \"verblijfstitelhistorie\": {\n   \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n   \"templated\": false,\n   \"title\": \"Ex\"\n  },\n  \"nationaliteitHistorie\": {\n   \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n   \"templated\": true,\n   \"title\": \"elit ut sunt Excepteur\"\n  },\n  \"adres\": {\n   \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n   \"templated\": true,\n   \"title\": \"Excepteur do aute\"\n  }\n }\n}",
                             "cookie": [],
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "587a4634-4259-4c0b-80c9-55aced90ff71",
+                            "id": "3c23b67f-e55e-4566-a257-94aafe83fcad",
                             "name": "Bad Request",
                             "originalRequest": {
                                 "url": {
@@ -582,7 +582,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "43c4a948-21fb-47ec-98f1-bd5e7f15ed78",
+                            "id": "9e435bf8-99cc-41eb-b8b8-23406e3226b9",
                             "name": "Unauthorized",
                             "originalRequest": {
                                 "url": {
@@ -631,7 +631,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "e76c2127-9ca8-4b9b-bff2-335d488ad4d8",
+                            "id": "45b47698-fbbe-4f11-8748-fabdce525d96",
                             "name": "Forbidden",
                             "originalRequest": {
                                 "url": {
@@ -680,7 +680,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "738190e0-8386-4345-9a31-4486160c9556",
+                            "id": "27446a00-31e2-47ac-b0b5-fa242c7bb848",
                             "name": "Not Found",
                             "originalRequest": {
                                 "url": {
@@ -729,7 +729,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "b915ff4f-2503-4fb7-a35d-3fb85f6724be",
+                            "id": "2dbe1479-142e-4de4-aa53-e14b671b0b6d",
                             "name": "Not Acceptable",
                             "originalRequest": {
                                 "url": {
@@ -778,7 +778,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "afac3277-94a3-4bcc-be62-9cab0c59f67d",
+                            "id": "17f218e0-daeb-4f97-8978-08cf0e32d777",
                             "name": "Internal Server Error",
                             "originalRequest": {
                                 "url": {
@@ -827,7 +827,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "54e743c0-06ab-4ed9-a12d-9471b6aaf196",
+                            "id": "8472be69-7538-4bd1-a98d-232954adf115",
                             "name": "Not Implemented",
                             "originalRequest": {
                                 "url": {
@@ -876,7 +876,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "87ee25d0-9035-40fd-a7a9-6f5926b2dfd1",
+                            "id": "b037775f-e4d5-456e-9a0b-b2eb406fce46",
                             "name": "Service Unavailable",
                             "originalRequest": {
                                 "url": {
@@ -925,7 +925,7 @@
                             "_postman_previewlanguage": "json"
                         },
                         {
-                            "id": "318e3826-256e-466b-aad5-37a3b174cf76",
+                            "id": "6e21d6c4-7584-4cc0-bc82-cec827d42473",
                             "name": "Er is een onverwachte fout opgetreden",
                             "originalRequest": {
                                 "url": {
@@ -969,7 +969,7 @@
                                     "value": "application/problem+json"
                                 }
                             ],
-                            "body": "{\n \"type\": \"http://oQLZjEjSliziBNxm.wucSIKJiLwMwtVMAV\",\n \"title\": \"esse elit aliqua\",\n \"status\": 34202417,\n \"detail\": \"dolore id velit\",\n \"instance\": \"https://ugC.newF4hEBv1Q4vKpgjdGBhRQiDdXxZexnXsQn\",\n \"code\": \"ea mollit enim nulla\"\n}",
+                            "body": "{\n \"type\": \"http://hi.ampejRCUZiLp-bCcypZCWEl-0EODiJK9GqWq\",\n \"title\": \"ipsum dolore in\",\n \"status\": 26251536,\n \"detail\": \"tempor cillum\",\n \"instance\": \"https://rzEMoAZpKlrLwoUCg.kukeW.fnDETTy+jmp1Og41Mjt5mcirQND\",\n \"code\": \"laboris est nulla et\"\n}",
                             "cookie": [],
                             "_postman_previewlanguage": "json"
                         }
@@ -989,7 +989,7 @@
         }
     ],
     "info": {
-        "_postman_id": "a8a2fa95-284b-415e-aaa3-97a31647c1ae",
+        "_postman_id": "d30524a9-0f1e-4937-bf1b-d34abb873bb5",
         "name": "Bevragen Personen",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": {
