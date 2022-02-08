@@ -2051,13 +2051,21 @@ components:
         voorvoegsel:
           type: string
           example: de
-        adellijkeTitel:
-          $ref: '#/components/schemas/Waardetabel'
-        predikaat:
-          $ref: '#/components/schemas/Waardetabel'
+        adellijkeTitelPredikaat:
+          $ref: '#/components/schemas/WaardetabelMetSoort'
         volledigeNaam:
           type: string
           example: Pieter Jan de Vries
+    WaardetabelMetSoort:
+      allOf:
+      - $ref: '#/components/schemas/Waardetabel'
+      - properties:
+          soort:
+            type: string
+        example:
+          code: JV
+          omschrijving: jonkvrouw
+          soort: predikaat
     NaamInOnderzoek:
       type: object
       properties:

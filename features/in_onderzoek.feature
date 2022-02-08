@@ -27,8 +27,7 @@ Functionaliteit: in onderzoek
     Dan is in het antwoord naam.inOnderzoek.geslachtsnaam=true
     En is in het antwoord naam.inOnderzoek.voornamen=true
     En is in het antwoord naam.inOnderzoek.voorvoegsel=true
-    En is in het antwoord naam.inOnderzoek.adellijkeTitel=true
-    En is in het antwoord naam.inOnderzoek.predikaat=true
+    En is in het antwoord naam.inOnderzoek.adellijkeTitelPredikaat=true
     Dan is in het antwoord geboorte.inOnderzoek.plaats=true
     En is in het antwoord geboorte.inOnderzoek.datum=true
     En is in het antwoord geboorte.inOnderzoek.land=true

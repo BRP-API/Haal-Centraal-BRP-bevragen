@@ -873,13 +873,21 @@ components:
         voorvoegsel:
           type: "string"
           example: "de"
-        adellijkeTitel:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
-        predikaat:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+        adellijkeTitelPredikaat:
+          $ref: "#/components/schemas/WaardetabelMetSoort"
         volledigeNaam:
           type: "string"
           example: "Pieter Jan de Vries"
+    WaardetabelMetSoort:
+      allOf:
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
+        - properties:
+            soort:
+              type: "string"
+          example:
+            code: "JV"
+            omschrijving: "jonkvrouw"
+            soort: "predikaat"
     NaamInOnderzoek:
       type: "object"
       description: |
