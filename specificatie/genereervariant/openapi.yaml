@@ -1293,7 +1293,8 @@ components:
       - type: object
         properties:
           datumIngangGeldigheid:
-            $ref: '#/components/schemas/GbaDatum'
+            $ref: '#/components/schemas/GbaDatumBeperkt'
+#            $ref: '#/components/schemas/GbaDatum'
           nationaliteit:
             $ref: '#/components/schemas/Waardetabel'
           aanduidingBijzonderNederlandschap:
@@ -1501,9 +1502,11 @@ components:
           land:
             $ref: '#/components/schemas/GbaLand'
           datumAanvangAdreshouding:
-            $ref: '#/components/schemas/GbaDatum'
+            $ref: '#/components/schemas/GbaDatumBeperkt'
+#            $ref: '#/components/schemas/GbaDatum'
           datumAanvangAdresBuitenland:
-            $ref: '#/components/schemas/GbaDatum'
+            $ref: '#/components/schemas/GbaDatumBeperkt'
+#            $ref: '#/components/schemas/GbaDatum'
     VerblijfplaatsBuitenland:
       allOf:
       - $ref: '#/components/schemas/AbstractVerblijfplaats'
@@ -1876,7 +1879,8 @@ components:
             maxLength: 50
             type: string
           datumIngangOnderzoek:
-            $ref: '#/components/schemas/GbaDatum'
+            $ref: '#/components/schemas/GbaDatumBeperkt'
+#            $ref: '#/components/schemas/GbaDatum'
     PartnerInOnderzoek:
       allOf:
       - $ref: '#/components/schemas/AbstractPartnerInOnderzoek'
@@ -1944,7 +1948,8 @@ components:
           pattern: ^[0-9]{6}$
           type: string
         datumIngangOnderzoek:
-          $ref: '#/components/schemas/GbaDatum'
+            $ref: '#/components/schemas/GbaDatumBeperkt'
+#            $ref: '#/components/schemas/GbaDatum'
     GbaLand:
       allOf:
       - $ref: '#/components/schemas/AbstractLand'
