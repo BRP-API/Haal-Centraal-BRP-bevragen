@@ -1397,7 +1397,7 @@ components:
         properties:
           datum:
             $ref: '#/components/schemas/GbaDatumBeperkt'
-#            $ref: '#/components/schemas/GbaDatumBeperkt'
+#            $ref: '#/components/schemas/GbaDatum'
     OpschortingBijhouding:
       allOf:
       - $ref: '#/components/schemas/AbstractOpschortingBijhouding'
