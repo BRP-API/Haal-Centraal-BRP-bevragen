@@ -57,13 +57,7 @@ components:
     GbaPartnerInOnderzoek:
       allOf:
         - $ref: '#/components/schemas/AbstractPartnerInOnderzoek'
-        - type: object
-          properties:
-            aanduidingGegevensInOnderzoek:
-              type: string
-              maxLength: 50
-            datumIngangOnderzoek:
-              $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        - $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     AangaanHuwelijkPartnerschap:
       type: object
       description: |

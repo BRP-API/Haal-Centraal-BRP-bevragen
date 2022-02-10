@@ -10,49 +10,7 @@ info:
     - datum waarvan de maand en dag onbekend is 
   version: 2.0.0
   contact: {}
-paths:
-  /examples/datums:
-    get:
-      responses:
-        '200':
-          description: |
-            Als voorbeeld een lijst met LO GBA datum soorten
-
-            - volledig
-            - onvolledig: dag onbekend
-            - onvolledig: maand en dag onbekend
-            - onvolledig: volledig onbekend
-
-            en hun Haal Centraal tegenhanger
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  datums:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/AbstractDatum'
-                example:
-                  [
-                    { "type": "GbaDatum", "gbaDatum": "20180701" },
-                    { "type": "GbaDatum", "gbaDatum": "20161200" },
-                    { "type": "GbaDatum", "gbaDatum": "20100000" },
-                    { "type": "GbaDatum", "gbaDatum": "00000000" },
-                    { "type": "Datum", "datum": "2018-07-01" },
-                    { "type": "JaarMaandDatum", "jaar": "2016", "maand": "12" },
-                    { "type": "JaarDatum", "jaar": "2010" },
-                    { "type": "OnbekendDatum", "onbekend": true }
-                  ]
-              examples:
-                Volledig GbaDatum:
-                  value:
-                    type: GbaDatum
-                    gbaDatum: "20180701"
-                Dag Onbekend GbaDatum:
-                  value:
-                    type: GbaDatum
-                    gbaDatum: "20180700"
+paths: {}
 components:
   schemas:
     AbstractDatum:
@@ -70,20 +28,23 @@ components:
           OnbekendDatum: '#/components/schemas/OnbekendDatum'
           JaarDatum: '#/components/schemas/JaarDatum'
           JaarMaandDatum: '#/components/schemas/JaarMaandDatum'
+    GbaDatumBasis:
+      type: object
+      properties:
+        datum:
+          type: string
+      pattern: ^[0-9]{8}$
     GbaDatum:
       description: Datum conform LO GBA
       allOf:
         - $ref: '#/components/schemas/AbstractDatum'
-        - type: object
-          properties:
-            gbaDatum:
-              type: string
-              pattern: ^[0-9]{8}$
+        - $ref: '#/components/schemas/GbaDatumBasis'
       required:
-        - gbaDatum
+        - datum
       example:
-        type: GbaDatum
-        gbaDatum: "20210801"
+        value:
+          type: GbaDatum
+          datum: "20180700"
     VolledigDatum:
       description: Datum conform iso8601
       allOf:
@@ -95,7 +56,10 @@ components:
               format: date
       required:
         - datum
-      example: "2021-08-01"
+      example:
+        value:
+          type: Datum
+          datum: "2018-07-01"
     OnbekendDatum:
       description: representatie voor een volledig onbekend datum
       allOf:
@@ -107,6 +71,10 @@ components:
               default: true
       required:
         - onbekend
+      example:
+        value:
+          type: OnbekendDatum
+          onbekend: true
     JaarDatum:
       description: representatie voor een datum waarvan maand en dag onbekend zijn
       allOf:
@@ -117,6 +85,10 @@ components:
               $ref: '#/components/schemas/Jaar'
       required:
         - jaar
+      example:
+        value:
+          type: JaarDatum
+          jaar: 2018
     JaarMaandDatum:
       description: representatie voor een datum waarvan de dag onbekend is
       allOf:
@@ -130,6 +102,11 @@ components:
       required:
         - jaar
         - maand
+      example:
+        value:
+          type: JaarMaandDatum
+          jaar: 2018
+          maand: 7
     Jaar:
       type: integer
       format: int32

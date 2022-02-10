@@ -58,7 +58,7 @@ components:
         - type: object
           properties:
             datumIngangGeldigheid:
-              $ref: 'datum.yaml#/components/schemas/GbaDatum'
+              $ref: 'datum.yaml#/components/schemas/GbaDatumBasis'
             nationaliteit:
               $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
             aanduidingBijzonderNederlandschap:

@@ -8,9 +8,12 @@ components:
   schemas:
     GbaInOnderzoek:
       type: object
+      required:
+        - aanduidingGegevensInOnderzoek
+        - datumIngangInOnderzoek
       properties:
         aanduidingGegevensInOnderzoek:
           type: string
           pattern: ^[0-9]{6}$
         datumIngangOnderzoek:
-          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+          $ref: 'datum.yaml#/components/schemas/GbaDatumBasis'
