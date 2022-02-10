@@ -13,7 +13,6 @@ components:
       discriminator:
         propertyName: type
         mapping:
-          GbaLand: '#/components/schemas/GbaLand'
           Land: '#/components/schemas/Land'
           OnbekendLand: '#/components/schemas/OnbekendLand'
     Land:
@@ -28,10 +27,3 @@ components:
           onbekend:
             type: boolean
             default: true
-    GbaLand:
-      allOf:
-      - $ref: '#/components/schemas/AbstractLand'
-      - type: object
-        properties:
-          code:
-            type: string
