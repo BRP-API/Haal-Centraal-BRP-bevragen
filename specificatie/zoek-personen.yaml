@@ -108,6 +108,8 @@ components:
             Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/overleden_personen.feature)
           type: boolean
           example: true
+        gemeenteVanInschrijving:
+          $ref: 'verblijfplaats.yaml#/components/schemas/GemeenteVanInschrijving'
     ZoekMetBurgerservicenummer:
       required:
         - burgerservicenummer
@@ -186,8 +188,6 @@ components:
               type: string
               pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ '\-\']{1,200}(\?+|\*)?$
               example: "Vries"
-            gemeenteVanInschrijving:
-              $ref: 'verblijfplaats.yaml#/components/schemas/GemeenteVanInschrijving'
             voorvoegsel:
               description: |
                 Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
@@ -231,8 +231,6 @@ components:
               $ref: 'verblijfplaats.yaml#/components/schemas/Huisnummer'
             huisnummertoevoeging:
               $ref: 'verblijfplaats.yaml#/components/schemas/Huisnummertoevoeging'
-            gemeenteVanInschrijving:
-              $ref: 'verblijfplaats.yaml#/components/schemas/GemeenteVanInschrijving'
             straat:
               $ref: 'filter.yaml#/components/schemas/StraatFilter'
     ZoekMetNummeraanduidingIdentificatie:
