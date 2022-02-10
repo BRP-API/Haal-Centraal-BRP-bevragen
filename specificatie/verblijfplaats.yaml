@@ -58,6 +58,8 @@ components:
       description: |
         Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats.
       example: "Naast de derde brug"
+    NaamOpenbareRuimte:
+      type: string
     NummeraanduidingIdentificatie:
       description: |
         Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
@@ -94,30 +96,58 @@ components:
       properties:
         type:
           type: string
-        functieAdres:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
-        woonplaats:
-          $ref: '#/components/schemas/Woonplaats'
-        adresregel1:
-          $ref: '#/components/schemas/Adresregel1'
-        adresregel2:
-          $ref: '#/components/schemas/Adresregel2'
-        adresregel3:
-          $ref: '#/components/schemas/Adresregel3'
       discriminator:
         propertyName: type
         mapping:
           GbaVerblijfplaats: '#/components/schemas/GbaVerblijfplaatsBeperkt'
+          VerblijfplaatsBuitenland: '#/components/schemas/VerblijfplaatsBuitenlandBeperkt'
           Verblijfplaats: '#/components/schemas/VerblijfplaatsBeperkt'
+          VerblijfOnbekend: '#/components/schemas/VerblijfplaatsOnbekend'
+          Locatie: '#/components/schemas/LocatieBeperkt'
     VerblijfplaatsBeperkt:
       allOf:
         - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
         - type: object
           properties:
+            functieAdres:
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+            adresregel1:
+              $ref: '#/components/schemas/Adresregel1'
+            adresregel2:
+              $ref: '#/components/schemas/Adresregel2'
+            woonplaats:
+              $ref: '#/components/schemas/Woonplaats'
+    VerblijfplaatsBuitenlandBeperkt:
+      allOf:
+        - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
+        - type: object
+          properties:
+            adresregel1:
+              $ref: '#/components/schemas/Adresregel1'
+            adresregel2:
+              $ref: '#/components/schemas/Adresregel2'
+            adresregel3:
+              $ref: '#/components/schemas/Adresregel3'
             land:
               $ref: 'land.yaml#/components/schemas/AbstractLand'
+    VerblijfplaatsOnbekendBeperkt:
+      allOf:
+        - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
+        - type: object
+          properties:
             vertrokkenOnbekendWaarheen:
               $ref: '#/components/schemas/VertrokkenOnbekendWaarheen'
+    LocatieBeperkt:
+      allOf:
+        - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
+        - type: object
+          properties:
+            functieAdres:
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+            locatiebeschrijving:
+              $ref: '#/components/schemas/Locatiebeschrijving'
+            woonplaats:
+              $ref: '#/components/schemas/Woonplaats'
     GbaVerblijfplaatsBeperkt:
       allOf:
         - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
@@ -138,7 +168,17 @@ components:
             locatiebeschrijving:
               $ref: '#/components/schemas/Locatiebeschrijving'
             land:
-              $ref: 'land.yaml#/components/schemas/GbaLand'
+              $ref: 'land.yaml#/components/schemas/Land'
+            gemeenteVanInschrijving:
+              $ref: '#/components/schemas/GemeenteVanInschrijving'
+            naamOpenbareRuimte:
+              $ref: '#/components/schemas/NaamOpenbareRuimte'
+            adresregel1:
+              $ref: '#/components/schemas/Adresregel1'
+            adresregel2:
+              $ref: '#/components/schemas/Adresregel2'
+            adresregel3:
+              $ref: '#/components/schemas/Adresregel3'
     AbstractVerblijfplaats:
       type: object
       description: |
@@ -148,31 +188,33 @@ components:
       properties:
         type:
           type: string
-        functieAdres:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
-        woonplaats:
-          $ref: '#/components/schemas/Woonplaats'
-        adresregel1:
-          $ref: '#/components/schemas/Adresregel1'
-        adresregel2:
-          $ref: '#/components/schemas/Adresregel2'
-        adresregel3:
-          $ref: '#/components/schemas/Adresregel3'
       discriminator:
         propertyName: type
         mapping:
           GbaVerblijfplaats: '#/components/schemas/GbaVerblijfplaats'
           VerblijfplaatsBuitenland: '#/components/schemas/VerblijfplaatsBuitenland'
           Verblijfplaats: '#/components/schemas/Verblijfplaats'
+          VerblijfOnbekend: '#/components/schemas/VerblijfplaatsOnbekend'
+          Locatie: '#/components/schemas/Locatie'
     VerblijfplaatsBuitenland:
       allOf:
       - $ref : '#/components/schemas/AbstractVerblijfplaats'
       - type: object
         properties:
-          datumAanvangAdres:
+          adresregel1:
+            $ref: '#/components/schemas/Adresregel1'
+          adresregel2:
+            $ref: '#/components/schemas/Adresregel2'
+          adresregel3:
+            $ref: '#/components/schemas/Adresregel3'
+          land:
+            $ref: 'Land.yaml#/components/schemas/AbstractLand'
+          datumAanvangAdreshouding:
             $ref: 'datum.yaml#/components/schemas/AbstractDatum'
           datumIngangGeldigheid:
             $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+          inOnderzoek:
+            $ref: '#/components/schemas/VerblijfplaatsBuitenlandInOnderzoek'
     Verblijfplaats:
       description: |
         Gegevens over het verblijf of de woonlocatie van een persoon.
@@ -186,6 +228,8 @@ components:
       - $ref : '#/components/schemas/AbstractVerblijfplaats'
       - type: object
         properties:
+          functieAdres:
+            $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
           straat:
             $ref: '#/components/schemas/Straat'
           huisnummer:
@@ -198,12 +242,16 @@ components:
             $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
           postcode:
             $ref: '#/components/schemas/Postcode'
-          locatiebeschrijving:
-            $ref: '#/components/schemas/Locatiebeschrijving'
           adresseerbaarObjectIdentificatie:
             $ref: '#/components/schemas/AdresseerbaarObjectIdentificatie'
           nummeraanduidingIdentificatie:
             $ref: '#/components/schemas/NummeraanduidingIdentificatie'
+          adresregel1:
+            $ref: '#/components/schemas/Adresregel1'
+          adresregel2:
+            $ref: '#/components/schemas/Adresregel2'
+          woonplaats:
+            $ref: '#/components/schemas/Woonplaats'
           indicatieVestigingVanuitBuitenland:
             type: boolean
             description: |
@@ -214,7 +262,7 @@ components:
             type: string
           vanuitVertrokkenOnbekendWaarheen:
             $ref: '#/components/schemas/VertrokkenOnbekendWaarheen'
-          datumAanvangAdres:
+          datumAanvangAdreshouding:
             $ref: 'datum.yaml#/components/schemas/AbstractDatum'
           datumIngangGeldigheid:
             $ref: 'datum.yaml#/components/schemas/AbstractDatum'
@@ -226,14 +274,30 @@ components:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
           landVanwaarIngeschreven:
             $ref: 'land.yaml#/components/schemas/AbstractLand'
-          vertrokkenOnbekendWaarheen:
-            type: boolean
-            description: |
-              Indicatie dat de persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.
-          land:
-            $ref: 'land.yaml#/components/schemas/AbstractLand'
           inOnderzoek:
-            $ref: "#/components/schemas/AbstractVerblijfplaatsInOnderzoek"
+            $ref: "#/components/schemas/VerblijfplaatsInOnderzoek"
+    Locatie:
+      allOf:
+        - $ref: '#/components/schemas/AbstractVerblijfplaats'
+        - type: object
+          properties:
+            functieAdres:
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+            locatiebeschrijving:
+              $ref: '#/components/schemas/Locatiebeschrijving'
+            woonplaats:
+              $ref: '#/components/schemas/Woonplaats'
+            inOnderzoek:
+              $ref: '#/components/schemas/LocatieInOnderzoek'
+    VerblijfplaatsOnbekend:
+      allOf:
+        - $ref: '#/components/schemas/AbstractVerblijfplaats'
+        - type: object
+          properties:
+            vertrokkenOnbekendWaarheen:
+              type: boolean
+              description: |
+                Indicatie dat de persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.
     GbaVerblijfplaats:
       allOf:
         - $ref: '#/components/schemas/AbstractVerblijfplaats'
@@ -254,71 +318,75 @@ components:
             locatiebeschrijving:
               $ref: '#/components/schemas/Locatiebeschrijving'
             land:
-              $ref: 'land.yaml#/components/schemas/GbaLand'
+              $ref: 'land.yaml#/components/schemas/Land'
             datumAanvangAdreshouding:
               $ref: 'datum.yaml#/components/schemas/GbaDatum'
             datumAanvangAdresBuitenland:
               $ref: 'datum.yaml#/components/schemas/GbaDatum'
-    AbstractVerblijfplaatsInOnderzoek:
-      type: object
-      description: |
-        Geeft aan welke gegevens over het verblijf en adres van de persoon in onderzoek zijn. Elementen van het GBA-adres zelf (Dat zou eigenlijk een BAG-adres moeten zijn) kunnen niet in onderzoek zijn. Wel de relatie naar de nummeraanduiding. Dat wordt gedaan door de identificatiecodeNummeraanduiding in onderzoek te zetten. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
-      required:
-        - type
-      properties:
-        type:
-          type: string
-      discriminator:
-        propertyName: type
-        mapping:
-          GbaInOnderzoek: '#/components/schemas/GbaVerblijfplaatsInOnderzoek'
-          InOnderzoek: '#/components/schemas/VerblijfplaatsInOnderzoek'
-    VerblijfplaatsInOnderzoek:
-      allOf:
-        - $ref: '#/components/schemas/AbstractVerblijfplaatsInOnderzoek'
-        - type: object
-          properties:
-            aanduidingBijHuisnummer:
-              type: boolean
-            datumAanvangAdreshouding:
-              type: boolean
-            datumIngangGeldigheid:
-              type: boolean
-            datumInschrijvingInGemeente:
-              type: boolean
-            datumVestigingInNederland:
-              type: boolean
-            functieAdres:
-              type: boolean
             gemeenteVanInschrijving:
-              type: boolean
-            huisletter:
-              type: boolean
-            huisnummer:
-              type: boolean
-            huisnummertoevoeging:
-              type: boolean
-            nummeraanduidingIdentificatie:
-              type: boolean
-            adresseerbaarObjectIdentificatie:
-              type: boolean
-            landVanwaarIngeschreven:
-              type: boolean
-            locatiebeschrijving:
-              type: boolean
-            straat:
-              type: boolean
-            postcode:
-              type: boolean
-            korteNaam:
-              type: boolean
-            verblijfBuitenland:
-              type: boolean
-            woonplaats:
-              type: boolean
-            datumIngangOnderzoek:
-              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-    GbaVerblijfplaatsInOnderzoek:
-      allOf:
-        - $ref: '#/components/schemas/AbstractVerblijfplaatsInOnderzoek'
-        - $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
+              $ref: '#/components/schemas/GemeenteVanInschrijving'
+            naamOpenbareRuimte:
+              $ref: '#/components/schemas/NaamOpenbareRuimte'
+            inOnderzoek:
+              $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
+    VerblijfplaatsBuitenlandInOnderzoek:
+      type: object
+      properties:
+        verblijfBuitenland:
+          type: boolean
+        datumAanvangAdreshouding:
+          type: boolean
+        datumIngangGeldigheid:
+          type: boolean
+        datumIngangOnderzoek:
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+    VerblijfplaatsInOnderzoek:
+      type: object
+      properties:
+        aanduidingBijHuisnummer:
+          type: boolean
+        datumAanvangAdreshouding:
+          type: boolean
+        datumIngangGeldigheid:
+          type: boolean
+        datumInschrijvingInGemeente:
+          type: boolean
+        datumVestigingInNederland:
+          type: boolean
+        functieAdres:
+          type: boolean
+        gemeenteVanInschrijving:
+          type: boolean
+        huisletter:
+          type: boolean
+        huisnummer:
+          type: boolean
+        huisnummertoevoeging:
+          type: boolean
+        nummeraanduidingIdentificatie:
+          type: boolean
+        adresseerbaarObjectIdentificatie:
+          type: boolean
+        landVanwaarIngeschreven:
+          type: boolean
+        straat:
+          type: boolean
+        postcode:
+          type: boolean
+        korteNaam:
+          type: boolean
+        woonplaats:
+          type: boolean
+        datumIngangOnderzoek:
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+    LocatieInOnderzoek:
+      type: object
+      properties:
+        functieAdres:
+          type: boolean
+        locatiebeschrijving:
+          type: boolean
+        woonplaats:
+          type: boolean
+        datumIngangOnderzoek:
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
