@@ -6,6 +6,56 @@ const should = require('chai').should();
 
 setWorldConstructor(World);
 
+const propertyNameMap = new Map([
+    ['aanduiding bij huisnummer (11.50)', 'aanduidingBijHuisnummer.code'],
+    ['adellijke titel of predikaat (02.20)', 'adellijkeTitelPredikaat.code'],
+    ['geslachtsnaam (02.40)', 'geslachtsnaam'],
+    ['huisletter (11.30)', 'huisletter'],
+    ['huisnummer (11.20)', 'huisnummer'],
+    ['huisnummertoevoeging (11.40)', 'huisnummertoevoeging'],
+    ['locatiebeschrijving (12.10)', 'locatiebeschrijving'],
+    ['postcode (11.60)', 'postcode'],
+    ['regel 1 adres buitenland (13.30)', 'adresregel1'],
+    ['regel 2 adres buitenland (13.40)', 'adresregel2'],
+    ['regel 3 adres buitenland (13.50)', 'adresregel3'],
+    ['gemeente van inschrijving (09.10)', 'gemeenteVanInschrijving'],
+    ['land adres buitenland (13.10)', 'land.code'],
+    ['naam openbare ruimte (11.15)', 'naamOpenbareRuimte'],
+    ['straatnaam (11.10)', 'straat'],
+    ['voornamen (02.10)', 'voornamen'],
+    ['voorvoegsel (02.30)', 'voorvoegsel'],
+    ['woonplaatsnaam (11.70)', 'woonplaats']
+]);
+
+function mapRowToProperty(obj, row) {
+    let propertyName = propertyNameMap.get(row.naam);
+    if(propertyName === undefined) {
+        propertyName = row.naam;
+    }
+
+    if(row.waarde !== undefined && row.waarde !== '') {
+        if(propertyName.includes('.')) {
+            let propertyNames = propertyName.split('.');
+            let property = obj;
+
+            propertyNames.forEach(function(propertyName, index) {
+                if(index === propertyNames.length-1) {
+                    property[propertyName] = String(row.waarde); 
+                }
+                else {
+                    if(property[propertyName] === undefined) {
+                        property[propertyName] = {};
+                    }
+                    property = property[propertyName];
+                }
+            });
+        }
+        else {
+            obj[propertyName] = String(row.waarde);
+        }
+    }
+}
+
 Given('het systeem heeft een persoon met de volgende gegevens', function (dataTable) {
     if(this.context.persoon.burgerservicenummer !== undefined) {
         this.context.zoekResponse._embedded.personen.push(this.context.persoon);
@@ -13,10 +63,8 @@ Given('het systeem heeft een persoon met de volgende gegevens', function (dataTa
     }
     let persoon = this.context.persoon;
 
-    dataTable.hashes().forEach(function(value) {
-        for(const [key, val] of Object.entries(value)) {
-            persoon[key] = val;
-        }
+    dataTable.hashes().forEach(function(row) {
+        mapRowToProperty(persoon, row);
     });
 });
 
@@ -26,18 +74,8 @@ Given('de persoon heeft de volgende geboorte gegevens', function (dataTable) {
     }
     let geboorte = this.context.persoon.geboorte;
 
-    dataTable.hashes().forEach(function(value) {
-        for(const [key, val] of Object.entries(value)) {
-            if(key === "datum") {
-                geboorte.datum = {
-                    type: "GbaDatum",
-                    gbaDatum: val
-                };
-            }
-            else {
-                geboorte[key] = val;
-            }
-        }
+    dataTable.hashes().forEach(function(row) {
+        mapRowToProperty(geboorte, row);
     });
 });
 
@@ -47,35 +85,55 @@ Given('de persoon heeft de volgende naam gegevens', function (dataTable) {
     }
     let naam = this.context.persoon.naam;
 
-    dataTable.hashes().forEach(function(value) {
-        for(let [key, val] of Object.entries(value)) {
-            if(val !== undefined && val !== '')
-            {
-                key = key.replace(/ (\(.*\))/, "");
-                if(key === 'adellijke titel of predikaat') {
-                    key='adellijkeTitelPredikaat';
-                    naam[key] = { code: val };
-                }
-                else {
-                    naam[key] = val;
-                }
-            }
-        }
+    dataTable.hashes().forEach(function(row) {
+        mapRowToProperty(naam, row);
     });
 });
 
 Given('de persoon heeft de volgende verblijfplaats gegevens', function (dataTable) {
     if(this.context.persoon.verblijfplaats === undefined) {
-        this.context.persoon.verblijfplaats = {};
+        this.context.persoon.verblijfplaats = {
+            type: 'GbaVerblijfplaats'
+        };
     }
     let verblijfplaats = this.context.persoon.verblijfplaats;
 
-    dataTable.hashes().forEach(function(value) {
-        for(const [key, val] of Object.entries(value)) {
-            verblijfplaats[key] = val;
-        }
+    dataTable.hashes().forEach(function(row) {
+        mapRowToProperty(verblijfplaats, row);
     });
 });
+
+Given('de waardetabel {string} heeft de volgende waarden', function (string, dataTable) {
+    // Write code here that turns the phrase above into concrete actions
+    return 'pending';
+});
+
+function determineDataPath(baseDataPath, config) {
+    switch(config.data.type) {
+        case "ZoekMetBurgerservicenummer":
+            return config.data.burgerservicenummer !== undefined
+                ? `${baseDataPath}/bsn-${config.data.burgerservicenummer.join("-")}.json`
+                : `${baseDataPath}/bsn.json`;
+        case "ZoekMetGeslachtsnaamEnGeboortedatum":
+            return config.data.geslachtsnaam !== undefined &&
+                   config.data.geboortedatum !== undefined
+                 ? `${baseDataPath}/geslachtsnaam-geboortedatum-${config.data.geslachtsnaam}-${config.data.geboortedatum}.json`
+                 : `${baseDataPath}/geslachtsnaam-geboortedatum.json`;
+        case "ZoekMetGeslachtsnaamEnGemeenteVanInschrijving":
+            return config.data.geslachtsnaam !== undefined &&
+                   config.data.gemeenteVanInschrijving !== undefined
+                 ? `${baseDataPath}/geslachtsnaam-gemeente-${config.data.geslachtsnaam}-${config.data.gemeenteVanInschrijving}.json`
+                 : `${baseDataPath}/geslachtsnaam-gemeente.json`;
+        case "ZoekMetPostcodeEnHuisnummer":
+            return config.data.postcode !== undefined &&
+                   config.data.huisnummer !== undefined
+                 ? `${baseDataPath}/postcode-huisnummer-${config.data.postcode}-${config.data.huisnummer}.json`
+                 : `${baseDataPath}/postcode-huisnummer.json`;
+        default:
+            console.log(`Onbekend zoek type: ${config.data.type}`);
+            return '';
+    }
+}
 
 When('personen wordt gezocht met de volgende parameters', async function (dataTable) {
     let requestBody = {};
@@ -97,35 +155,7 @@ When('personen wordt gezocht met de volgende parameters', async function (dataTa
 
     this.context.zoekResponse._embedded.personen.push(this.context.persoon);
 
-    let path = '';
-    switch(config.data.type) {
-        case "ZoekMetBurgerservicenummer":
-            path = config.data.burgerservicenummer !== undefined
-                ? `${this.context.dataPath}/bsn-${config.data.burgerservicenummer.join("-")}.json`
-                : `${this.context.dataPath}/bsn.json`
-            break;
-        case "ZoekMetGeslachtsnaamEnGeboortedatum":
-            path = config.data.geslachtsnaam !== undefined &&
-            config.data.geboortedatum !== undefined
-                 ? `${this.context.dataPath}/geslachtsnaam-geboortedatum-${config.data.geslachtsnaam}-${config.data.geboortedatum}.json`
-                 : '${this.context.dataPath}/geslachtsnaam-geboortedatum.json';
-             break;
-        case "ZoekMetGeslachtsnaamEnGemeenteVanInschrijving":
-            path = config.data.geslachtsnaam !== undefined &&
-            config.data.gemeenteVanInschrijving !== undefined
-                 ? `${this.context.dataPath}/geslachtsnaam-gemeente-${config.data.geslachtsnaam}-${config.data.gemeenteVanInschrijving}.json`
-                 : '${this.context.dataPath}/geslachtsnaam-gemeente.json';
-             break;
-        case "ZoekMetPostcodeEnHuisnummer":
-            path = config.data.postcode !== undefined &&
-            config.data.huisnummer !== undefined
-                 ? `${this.context.dataPath}/postcode-huisnummer-${config.data.postcode}-${config.data.huisnummer}.json`
-                 : '${this.context.dataPath}/postcode-huisnummer.json';
-             break;
-        default:
-            console.log(`Onbekend zoek type: ${config.data.type}`);
-            break;
-    }
+    let path = determineDataPath(this.context.dataPath, config);
     fs.writeFileSync(path, JSON.stringify(this.context.zoekResponse, null, "\t"));
 
     try {
@@ -178,16 +208,14 @@ Then('bevat de response alleen personen met de volgende gegevens', function (dat
 
 Then('bevat de response een persoon met de volgende gegevens', function (dataTable) {
     const persoon = this.context.response.data;
-    console.log(persoon);
 
     should.exist(persoon, `geen persoon gevonden\nresponse payload: ${JSON.stringify(persoon, null, "\t")}`)
 
-    dataTable.hashes().forEach(function(value) {
-        for(const [key, expected] of Object.entries(value)) {
-            let actual = String(persoon[key]);
+    dataTable.hashes().forEach(function(row) {
+        const actual = String(persoon[row.naam]);
+        const expected = row.waarde;
 
-            actual.should.equal(expected, `geen persoon gevonden met ${key}: ${expected}\npersoon: ${JSON.stringify(persoon, null, "\t")}`);
-        }
+        actual.should.equal(expected, `geen persoon gevonden met ${row.naam}: ${expected}\npersoon: ${JSON.stringify(persoon, null, "\t")}`);
     });
 });
 
@@ -214,13 +242,12 @@ Then('bevat de persoon met burgerservicenummer {string} de volgende naam gegeven
         return p.burgerservicenummer === burgerservicenummer;
     });
 
-    dataTable.hashes().forEach(function(value) {
-        for(const [key, expected] of Object.entries(value)) {
-            let actual = String(persoon.naam[key]);
+    dataTable.hashes().forEach(function(row) {
+        let actual = String(persoon.naam[row.naam]);
+        const expected = row.waarde;
 
-            actual.should.equal(expected, `geen persoon gevonden met ${key}: ${expected}\npersoon: ${JSON.stringify(persoon, null, "\t")}`);
-        }
-   });
+        actual.should.equal(expected, `geen persoon gevonden met ${row.naam}: ${expected}\npersoon: ${JSON.stringify(persoon, null, "\t")}`);
+    });
 });
 
 Then('bevat de persoon met burgerservicenummer {string} de volgende geboorte gegevens', function (burgerservicenummer, dataTable) {
@@ -230,12 +257,17 @@ Then('bevat de persoon met burgerservicenummer {string} de volgende geboorte geg
         return p.burgerservicenummer === burgerservicenummer;
     });
 
-    dataTable.hashes().forEach(function(value) {
-        for(const [key, expected] of Object.entries(value)) {
-            let actual = String(persoon.geboorte[key]);
+    dataTable.hashes().forEach(function(row) {
+        let obj = persoon.geboorte;
 
-            actual.should.equal(expected, `geen persoon gevonden met ${key}: ${expected}\npersoon: ${JSON.stringify(persoon, null, "\t")}`);
-        }
+        let propertyNames = row.naam.split('.');
+        propertyNames.forEach(function(propertyName, index) {
+            obj = obj[propertyName];
+        });
+        let actual = String(obj);
+        const expected = row.waarde;
+
+        actual.should.equal(expected, `geen persoon gevonden met ${row.naam}: ${expected}\npersoon: ${JSON.stringify(persoon, null, "\t")}`);
    });
 });
 
@@ -260,5 +292,38 @@ Then('bevat de response een invalidParams met de volgende gegevens', function (d
                    invalidParam.reason === expected.reason;
         });
         should.exist(actual, `geen invalidParam gevonden met name '${expected.name}', code '${expected.code}', reason '${expected.reason}'\n${JSON.stringify(invalidParams, null, "\t")}`);
+    });
+});
+
+Then('bevat de persoon met burgerservicenummer {string} de volgende verblijfplaats gegevens', function (burgerservicenummer, dataTable) {
+    let persoon;
+    if(this.context.response.data._embedded !== undefined) {
+        const personen = this.context.response.data._embedded.personen;
+        persoon = personen.find(function(p) {
+            return p.burgerservicenummer === burgerservicenummer;
+        });
+    }
+    else {
+        persoon = this.context.response.data;
+    }
+
+    dataTable.hashes().forEach(function(row) {
+        let actual = String(persoon.verblijfplaats[row.naam]);
+
+        actual.should.equal(row.waarde, `geen verblijf gegeven '${row.naam}' gevonden met waarde '${row.waarde}'\npersoon: ${JSON.stringify(persoon, null, "\t")}`);
+    });
+});
+
+Then('bevat de persoon met burgerservicenummer {string} de volgende verblijfplaats gegevens NIET', function (burgerservicenummer, dataTable) {
+    const personen = this.context.response.data._embedded.personen;
+
+    const persoon = personen.find(function(p) {
+        return p.burgerservicenummer === burgerservicenummer;
+    });
+
+    dataTable.hashes().forEach(function(row) {
+        let actual = persoon.verblijfplaats[row.naam];
+
+        should.not.exist(actual, `verblijf gegeven '${row.naam}' gevonden\npersoon: ${JSON.stringify(persoon, null, "\t")}`);
     });
 });

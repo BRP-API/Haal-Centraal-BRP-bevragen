@@ -16,19 +16,19 @@ Rule: Voorletters wordt samengesteld uit de eerste letter van de voornamen gesch
 
 	Abstract Scenario: <titel>
         Gegeven het systeem heeft een persoon met de volgende gegevens
-        | burgerservicenummer |
-        | 999995078           |
+        | naam                | waarde    |
+        | burgerservicenummer | 999995078 |
         En de persoon heeft de volgende naam gegevens
-        | voornamen (02.10) |
-        | <voornamen>       |
+        | naam              | waarde      |
+        | voornamen (02.10) | <voornamen> |
         Als personen wordt gezocht met de volgende parameters
         | naam                | waarde                     |
         | type                | ZoekMetBurgerservicenummer |
         | burgerservicenummer | 999995078                  |
         | fields              | naam.voorletters           |
         Dan bevat de persoon met burgerservicenummer '999995078' de volgende naam gegevens
-        | voorletters   |
-        | <voorletters> |
+        | naam        | waarde        |
+        | voorletters | <voorletters> |
 
 		Voorbeelden:
         | voornamen            | voorletters | titel                                               | description                                                                                                                       |

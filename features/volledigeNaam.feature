@@ -6,19 +6,22 @@ Rule: de volledige naam wordt samengesteld door achter elkaar plaatsen van voorn
 
     Abstract Scenario: volledige naam van persoon
         Gegeven het systeem heeft een persoon met de volgende gegevens
-        | burgerservicenummer   |
-        | <burgerservicenummer> |
+        | naam                | waarde                |
+        | burgerservicenummer | <burgerservicenummer> |
         En de persoon heeft de volgende naam gegevens
-        | voornamen (02.10) | adellijke titel of predikaat (02.20) | voorvoegsel (02.30) | geslachtsnaam (02.40) |
-        | <voornamen>       |                                      | <voorvoegsel>       | <geslachtsnaam>       |
+        | naam                                 | waarde          |
+        | voornamen (02.10)                    | <voornamen>     |
+        | adellijke titel of predikaat (02.20) |                 |
+        | voorvoegsel (02.30)                  | <voorvoegsel>   |
+        | geslachtsnaam (02.40)                | <geslachtsnaam> |
         Als personen wordt gezocht met de volgende parameters
         | naam                | waarde                     |
         | type                | ZoekMetBurgerservicenummer |
         | burgerservicenummer | <burgerservicenummer>      |
         | fields              | naam.volledigeNaam         |
         Dan bevat de persoon met burgerservicenummer '<burgerservicenummer>' de volgende naam gegevens
-        | volledigeNaam   |
-        | <volledigeNaam> |
+        | naam          | waarde          |
+        | volledigeNaam | <volledigeNaam> |
 
         Voorbeelden:
         | burgerservicenummer | voornamen       | voorvoegsel | geslachtsnaam | volledigeNaam           |
@@ -30,19 +33,22 @@ Rule: een predikaat wordt opgenomen voor de voornamen met de omschrijving horend
 
     Abstract Scenario: volledige naam van persoon met predikaat
         Gegeven het systeem heeft een persoon met de volgende gegevens
-        | burgerservicenummer   |
-        | <burgerservicenummer> |
+        | naam                | waarde                |
+        | burgerservicenummer | <burgerservicenummer> |
         En de persoon heeft de volgende naam gegevens
-        | voornamen (02.10) | adellijke titel of predikaat (02.20) | voorvoegsel (02.30) | geslachtsnaam (02.40) |
-        | <voornamen>       | <adellijkeTitelPredikaat>            | <voorvoegsel>       | <geslachtsnaam>       |
+        | naam                                 | waarde                    |
+        | voornamen (02.10)                    | <voornamen>               |
+        | adellijke titel of predikaat (02.20) | <adellijkeTitelPredikaat> |
+        | voorvoegsel (02.30)                  | <voorvoegsel>             |
+        | geslachtsnaam (02.40)                | <geslachtsnaam>           |
         Als personen wordt gezocht met de volgende parameters
         | naam                | waarde                     |
         | type                | ZoekMetBurgerservicenummer |
         | burgerservicenummer | <burgerservicenummer>      |
         | fields              | naam.volledigeNaam         |
         Dan bevat de persoon met burgerservicenummer '<burgerservicenummer>' de volgende naam gegevens
-        | volledigeNaam   |
-        | <volledigeNaam> |
+        | naam          | waarde          |
+        | volledigeNaam | <volledigeNaam> |
 
         Voorbeelden:
         | burgerservicenummer | voornamen            | adellijkeTitelPredikaat | voorvoegsel | geslachtsnaam | volledigeNaam                               |
@@ -52,19 +58,22 @@ Rule: een adellijke titel wordt opgenomen tussen de voornamen en het voorvoegsel
 
     Abstract Scenario: volledige naam van persoon met adellijke titel
         Gegeven het systeem heeft een persoon met de volgende gegevens
-        | burgerservicenummer   |
-        | <burgerservicenummer> |
+        | naam                | waarde                |
+        | burgerservicenummer | <burgerservicenummer> |
         En de persoon heeft de volgende naam gegevens
-        | voornamen (02.10) | adellijke titel of predikaat (02.20) | voorvoegsel (02.30) | geslachtsnaam (02.40) |
-        | <voornamen>       | <adellijkeTitelPredikaat>            | <voorvoegsel>       | <geslachtsnaam>       |
+        | naam                                 | waarde                    |
+        | voornamen (02.10)                    | <voornamen>               |
+        | adellijke titel of predikaat (02.20) | <adellijkeTitelPredikaat> |
+        | voorvoegsel (02.30)                  | <voorvoegsel>             |
+        | geslachtsnaam (02.40)                | <geslachtsnaam>           |
         Als personen wordt gezocht met de volgende parameters
         | naam                | waarde                     |
         | type                | ZoekMetBurgerservicenummer |
         | burgerservicenummer | <burgerservicenummer>      |
         | fields              | naam.volledigeNaam         |
         Dan bevat de persoon met burgerservicenummer '<burgerservicenummer>' de volgende naam gegevens
-        | volledigeNaam   |
-        | <volledigeNaam> |
+        | naam          | waarde          |
+        | volledigeNaam | <volledigeNaam> |
 
         Voorbeelden:
         | burgerservicenummer | voornamen   | adellijkeTitelPredikaat | voorvoegsel | geslachtsnaam | volledigeNaam                |

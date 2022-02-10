@@ -7,11 +7,12 @@ Rule: Postcode en huisnummer zijn verplichte parameters
     Scenario: Zoek met valide postcode en huisnummer
 
         Gegeven het systeem heeft een persoon met de volgende gegevens
-        | burgerservicenummer |
-        | 999995078           |
+        | naam                | waarde    |
+        | burgerservicenummer | 999995078 |
         En de persoon heeft de volgende verblijfplaats gegevens
-        | postcode | huisnummer |
-        | 2628HJ   | 2          |
+        | naam       | waarde |
+        | postcode   | 2628HJ |
+        | huisnummer | 2      |
         Als personen wordt gezocht met de volgende parameters
         | naam       | waarde                      |
         | type       | ZoekMetPostcodeEnHuisnummer |

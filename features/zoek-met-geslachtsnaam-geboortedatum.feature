@@ -7,14 +7,15 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     Scenario: Zoek met valide geslachtsnaam en geboortedatum
 
         Gegeven het systeem heeft een persoon met de volgende gegevens
-        | burgerservicenummer |
-        | 999995078           |
+        | naam                | waarde    |
+        | burgerservicenummer | 999995078 |
         En de persoon heeft de volgende geboorte gegevens
-        | datum    |
-        | 19830526 |
+        | naam        | waarde   |
+        | datum.type  | GbaDatum |
+        | datum.datum | 19830526 |
         En de persoon heeft de volgende naam gegevens
-        | geslachtsnaam |
-        | Maassen       |
+        | naam                  | waarde  |
+        | geslachtsnaam (02.40) | Maassen |
         Als personen wordt gezocht met de volgende parameters
         | naam          | waarde                              |
         | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
@@ -24,12 +25,13 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
         Dan bevat de response alleen personen met de volgende gegevens 
         | burgerservicenummer |
         | 999995078           |
-        En bevat de persoon met burgerservicenummer '999995078' de volgende geboorte datum
-        | type  | datum      |
-        | Datum | 1983-05-26 |
+        En bevat de persoon met burgerservicenummer '999995078' de volgende geboorte gegevens
+        | naam        | waarde     |
+        | datum.type  | Datum      |
+        | datum.datum | 1983-05-26 |
         En bevat de persoon met burgerservicenummer '999995078' de volgende naam gegevens
-        | geslachtsnaam |
-        | Maassen       |
+        | naam          | waarde  |
+        | geslachtsnaam | Maassen |
 
     @fout-case
     Abstract Scenario: <titel>

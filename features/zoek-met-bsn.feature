@@ -7,8 +7,8 @@ Rule: Er moet minimaal één burgerservicenummer worden opgegeven
     Scenario: Zoek met valide burgerservicenummer
 
         Gegeven het systeem heeft een persoon met de volgende gegevens
-        | burgerservicenummer |
-        | 999999321           |
+        | naam                | waarde    |
+        | burgerservicenummer | 999999321 |
         Als personen wordt gezocht met de volgende parameters
         | naam                | waarde                     |
         | type                | ZoekMetBurgerservicenummer |
@@ -21,14 +21,14 @@ Rule: Er moet minimaal één burgerservicenummer worden opgegeven
     Scenario: Zoek met meerdere valide burgerservicenummers
 
         Gegeven het systeem heeft een persoon met de volgende gegevens
-        | burgerservicenummer |
-        | 999999321           |
+        | naam                | waarde    |
+        | burgerservicenummer | 999999321 |
         En het systeem heeft een persoon met de volgende gegevens
-        | burgerservicenummer |
-        | 999995492           |
+        | naam                | waarde    |
+        | burgerservicenummer | 999995492 |
         En het systeem heeft een persoon met de volgende gegevens
-        | burgerservicenummer |
-        | 999991802           |
+        | naam                | waarde    |
+        | burgerservicenummer | 999991802 |
         Als personen wordt gezocht met de volgende parameters
         | naam                | waarde                        |
         | type                | ZoekMetBurgerservicenummer    |
