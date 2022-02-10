@@ -47,14 +47,35 @@ De onderstaanden tabellen met de beschreven waarden worden geleverd door de "BRP
     | M                                                | ministerieel besluit                 |
     | R                                                | persoonslijst is aangelegd in de rni |
     | F                                                | fout                                 |
+    | .                                                | onbekend                             |
 
-  Voor de enumeratie SoortVerbintenis wordt de tabel met identificatie "soortverbintenis" opgenomen.
+  Voor de enumeratie SoortVerbintenis wordt de tabel met identificatie "soort_verbintenis" opgenomen.
   In de omschrijving wordt de volgende tekst opgenomen : "Soort verbintenis die bij de burgerlijke stand is ingeschreven"
   In de waardetabel worden de volgende waarden opgenomen:
     | code                                             | omschrijving                         |
     | ------------------------------------------------ | ------------------------------------ |
     | H                                                | huwelijk                             |
     | P                                                | geregistreerd partnerschap           |
+
+    Voor de enumeratie SoortAdres wordt de tabel met identificatie "soort_adres" opgenomen.
+    In de omschrijving wordt de volgende tekst opgenomen : "Aanduiding van de functie van het adres"
+    In de waardetabel worden de volgende waarden opgenomen:
+      | code                                             | omschrijving                         |
+      | ------------------------------------------------ | ------------------------------------ |
+      | W                                                | woonadres                            |
+      | B                                                | briefadres                           |
+
+      Voor de enumeratie indicatieGezagMinderjarige identificatie "gezag_minderjarige" opgenomen.
+      In de omschrijving wordt de volgende tekst opgenomen : "Aanduiding van de functie van het adres"
+      In de waardetabel worden de volgende waarden opgenomen:
+        | code                                             | omschrijving                         |
+        | ------------------------------------------------ | ------------------------------------ |
+        | 1                                                | ouder1                               |
+        | 2                                                | ouder2                               |
+        | D                                                | derden                               |
+        | 1D                                               | ouder1 en derde                      |
+        | 2D                                               | ouder2 en derde                      |
+        | 12                                               | ouder1 en ouder2                     |
 
   Scenario: een onbekende waarde wordt niet opgenomen in de response
     Gegeven in de registratie heeft de AanduidingBijHuisnummer van de verblijfplaats de waarde "naast"

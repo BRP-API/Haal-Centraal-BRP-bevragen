@@ -14,7 +14,6 @@ Functionaliteit: Als gebruiker van de API wil ik geen onbekend waardes ontvangen
   Het gaat om de volgende properties en onbekend waardes van de persoon:
     | property                                         | onbekend waarde  |
     | ------------------------------------------------ | ---------------- |
-    | redenOpschortingBijhouding                       | .                |
     | naam.geslachtsnaam                               | .                |
     | geboorte.plaats                                  | 0000             |
     | geboorte.land                                    | 0000             |
