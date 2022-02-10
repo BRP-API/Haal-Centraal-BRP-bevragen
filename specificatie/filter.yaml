@@ -20,7 +20,7 @@ components:
           Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven.
           Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature)
       type: string
-      pattern: ^[a-zA-Z.,_]+$
+      pattern: ^[a-zA-Z0-9\.,_]+$
       maxLength: 924
     StraatFilter:
       description: |
