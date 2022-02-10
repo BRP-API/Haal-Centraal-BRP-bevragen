@@ -6,27 +6,49 @@ info:
 paths: {}
 components:
   schemas:
-    Partner:
+    AbstractPartner:
       type: object
       description: |
         Gegevens over een gesloten huwelijk/geregistreerd partnerschap van de persoon.
+      required:
+        - type
       properties:
-        identificatie:
-          $ref: 'persoon.yaml#/components/schemas/PersoonIdentificatie'
-        burgerservicenummer:
-          $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
-        geslachtsaanduiding:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
-        soortVerbintenis:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
-        naam:
-          $ref: 'naam.yaml#/components/schemas/Naam'
-        geboorte:
-          $ref: 'geboorte.yaml#/components/schemas/Geboorte'
-        inOnderzoek:
-          $ref: '#/components/schemas/AbstractPartnerInOnderzoek'
-        aangaanHuwelijkPartnerschap:
-          $ref: '#/components/schemas/AangaanHuwelijkPartnerschap'
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          Partner: '#/components/schemas/Partner'
+          OnbekendPartner: '#/components/schemas/OnbekendPartner'
+    Partner:
+      allOf:
+        - $ref: '#/components/schemas/AbstractPartner'
+        - type: object
+          properties:
+            identificatie:
+              $ref: 'persoon.yaml#/components/schemas/PersoonIdentificatie'
+            burgerservicenummer:
+              $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
+            geslachtsaanduiding:
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+            soortVerbintenis:
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+            naam:
+              $ref: 'naam.yaml#/components/schemas/NaamGerelateerde'
+            geboorte:
+              $ref: 'geboorte.yaml#/components/schemas/Geboorte'
+            inOnderzoek:
+              $ref: '#/components/schemas/AbstractPartnerInOnderzoek'
+            aangaanHuwelijkPartnerschap:
+              $ref: '#/components/schemas/AangaanHuwelijkPartnerschap'
+    OnbekendPartner:
+      allOf:
+        - $ref: '#/components/schemas/AbstractPartner'
+        - type: object
+          properties:
+            indicatieOnbekend:
+              type: boolean
+              default: false
     AbstractPartnerInOnderzoek:
       type: object
       description: |

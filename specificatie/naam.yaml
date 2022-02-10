@@ -75,6 +75,15 @@ components:
         - properties:
             inOnderzoek:
               $ref: '#/components/schemas/AbstractNaamInOnderzoek'
+    NaamGerelateerde:
+      allOf:
+        - $ref: '#/components/schemas/GbaNaamBasis'
+        - type: object
+          properties:
+            voorletters:
+              $ref: 'naam.yaml#/components/schemas/Voorletters'
+            inOnderzoek:
+              $ref: '#/components/schemas/AbstractNaamInOnderzoek'
     AbstractNaamInOnderzoek:
       type: object
       description: |

@@ -93,15 +93,15 @@ components:
             kinderen:
               type: array
               items:
-                $ref: 'kind.yaml#/components/schemas/Kind'
+                $ref: 'kind.yaml#/components/schemas/AbstractKind'
             ouders:
               type: array
               items:
-                $ref: 'ouder.yaml#/components/schemas/Ouder'
+                $ref: 'ouder.yaml#/components/schemas/AbstractOuder'
             partners:
               type: array
               items:
-                $ref: 'partner.yaml#/components/schemas/Partner'
+                $ref: 'partner.yaml#/components/schemas/AbstractPartner'
     AbstractPersoonInOnderzoek:
       type: object
       description: |

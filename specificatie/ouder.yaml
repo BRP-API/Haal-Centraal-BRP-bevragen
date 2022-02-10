@@ -6,28 +6,52 @@ info:
 paths: {}
 components:
   schemas:
-    Ouder:
+    AbstractOuder:
       type: object
       description: |
         Gegevens over de ouder van de persoon.
-        * **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.
+      required:
+        - type
       properties:
-        identificatie:
-          $ref: 'persoon.yaml#/components/schemas/PersoonIdentificatie'
-        burgerservicenummer:
-          $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
-        geslachtsaanduiding:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
-        ouderAanduiding:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
-        datumIngangFamilierechtelijkeBetrekking:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-        naam:
-          $ref: 'naam.yaml#/components/schemas/Naam'
-        inOnderzoek:
-          $ref: '#/components/schemas/AbstractOuderInOnderzoek'
-        geboorte:
-          $ref: 'geboorte.yaml#/components/schemas/Geboorte'
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          Ouder: '#/components/schemas/Ouder'
+          OnbekendOuder: '#/components/schemas/OnbekendOuder'
+    Ouder:
+      allOf:
+        - $ref: '#/components/schemas/AbstractOuder'
+        - type: object
+          description: |
+            Gegevens over de ouder van de persoon.
+            * **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.
+          properties:
+            identificatie:
+              $ref: 'persoon.yaml#/components/schemas/PersoonIdentificatie'
+            burgerservicenummer:
+              $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
+            geslachtsaanduiding:
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+            ouderAanduiding:
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+            datumIngangFamilierechtelijkeBetrekking:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+            naam:
+              $ref: 'naam.yaml#/components/schemas/NaamGerelateerde'
+            inOnderzoek:
+              $ref: '#/components/schemas/AbstractOuderInOnderzoek'
+            geboorte:
+              $ref: 'geboorte.yaml#/components/schemas/Geboorte'
+    OnbekendOuder:
+      allOf:
+        - $ref: '#/components/schemas/AbstractOuder'
+        - type: object
+          properties:
+            indicatieOnbekend:
+              type: boolean
+              default: false
     AbstractOuderInOnderzoek:
       type: object
       description: |

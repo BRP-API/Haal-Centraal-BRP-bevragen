@@ -6,26 +6,48 @@ info:
 paths: {}
 components:
   schemas:
-    Kind:
+    AbstractKind:
       type: object
       description: |
         Gegevens over een kind van de persoon.
+      required:
+        - type
       properties:
-        identificatie:
-          $ref: 'persoon.yaml#/components/schemas/PersoonIdentificatie'
-        burgerservicenummer:
-          $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
-        leeftijd:
-          type: integer
-          description: |
-            Leeftijd op het moment van bevragen
-          example: 12
-        inOnderzoek:
-          $ref: '#/components/schemas/AbstractKindInOnderzoek'
-        naam:
-          $ref: 'naam.yaml#/components/schemas/Naam'
-        geboorte:
-          $ref: 'geboorte.yaml#/components/schemas/Geboorte'
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          Kind: '#/components/schemas/Kind'
+          OnbekendKind: '#/components/schemas/OnbekendKind'
+    Kind:
+      allOf:
+        - $ref: '#/components/schemas/AbstractKind'
+        - type: object
+          properties:
+            identificatie:
+              $ref: 'persoon.yaml#/components/schemas/PersoonIdentificatie'
+            burgerservicenummer:
+              $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
+            leeftijd:
+              type: integer
+              description: |
+                Leeftijd op het moment van bevragen
+              example: 12
+            inOnderzoek:
+              $ref: '#/components/schemas/AbstractKindInOnderzoek'
+            naam:
+              $ref: 'naam.yaml#/components/schemas/NaamGerelateerde'
+            geboorte:
+              $ref: 'geboorte.yaml#/components/schemas/Geboorte'
+    OnbekendKind:
+      allOf:
+        - $ref: '#/components/schemas/AbstractKind'
+        - type: object
+          properties:
+            indicatieOnbekend:
+              type: boolean
+              default: false
     AbstractKindInOnderzoek:
       type: object
       description: |
