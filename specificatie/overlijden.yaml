@@ -36,7 +36,8 @@ components:
     AbstractOverlijdenInOnderzoek:
       type: object
       description: |
-        Geeft aan welke gegevens over het overlijden van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+        Geeft aan welke gegevens over het overlijden van de persoon in onderzoek zijn.
+        Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
       required:
         - type
       properties:
