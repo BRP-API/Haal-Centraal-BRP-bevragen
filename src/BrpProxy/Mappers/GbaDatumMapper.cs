@@ -10,9 +10,9 @@ public static class GbaDatumMapper
 
     public static AbstractDatum Map(this GbaDatum datum)
     {
-        if (GbaDatumRegex.IsMatch(datum.GbaDatum1))
+        if (GbaDatumRegex.IsMatch(datum.Datum))
         {
-            var match = GbaDatumRegex.Match(datum.GbaDatum1);
+            var match = GbaDatumRegex.Match(datum.Datum);
             var jaar = int.Parse(match.Groups["jaar"].Value, CultureInfo.InvariantCulture);
             var maand = int.Parse(match.Groups["maand"].Value, CultureInfo.InvariantCulture);
             var dag = int.Parse(match.Groups["dag"].Value, CultureInfo.InvariantCulture);

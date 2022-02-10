@@ -51,6 +51,7 @@ namespace BrpProxy.Middlewares
                 {
                     persoon.Geboorte.Map();
                     persoon.Naam.Map();
+                    persoon.Verblijfplaats = persoon.Verblijfplaats.Map();
 
                     retval = JsonConvert.SerializeObject(persoon);
                 }
@@ -61,8 +62,8 @@ namespace BrpProxy.Middlewares
 
                 foreach (var persoon in personen?._embedded.Personen)
                 {
-                    persoon.Geboorte.Map();
-                    persoon.Naam.Map();
+                    persoon?.Geboorte.Map();
+                    persoon?.Naam.Map();
                 }
 
                 retval = JsonConvert.SerializeObject(personen);
