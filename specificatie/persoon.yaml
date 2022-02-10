@@ -77,7 +77,7 @@ components:
             geboorte:
               $ref: 'geboorte.yaml#/components/schemas/Geboorte'
             opschortingBijhouding:
-              $ref: 'opschortingbijhouding.yaml#/components/schemas/AbstractOpschortingBijhouding'
+              $ref: 'opschortingbijhouding.yaml#/components/schemas/OpschortingBijhouding'
             overlijden:
               $ref: 'overlijden.yaml#/components/schemas/Overlijden'
             verblijfplaats:
