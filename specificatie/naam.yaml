@@ -96,7 +96,7 @@ components:
         - type: object
           properties:
             voorletters:
-              $ref: 'naam.yaml#/components/schemas/Voorletters'
+              $ref: '#/components/schemas/Voorletters'
             inOnderzoek:
               $ref: '#/components/schemas/AbstractNaamInOnderzoek'
     AbstractNaamInOnderzoek:
