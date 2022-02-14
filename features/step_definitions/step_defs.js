@@ -58,7 +58,7 @@ function mapRowToProperty(obj, row) {
 
 Given('het systeem heeft een persoon met de volgende gegevens', function (dataTable) {
     if(this.context.persoon.burgerservicenummer !== undefined) {
-        this.context.zoekResponse._embedded.personen.push(this.context.persoon);
+        this.context.zoekResponse.personen.push(this.context.persoon);
         this.context.persoon = {};
     }
     let persoon = this.context.persoon;
@@ -110,7 +110,7 @@ Given('de waardetabel {string} heeft de volgende waarden', function (string, dat
 
 function determineDataPath(baseDataPath, config) {
     switch(config.data.type) {
-        case "ZoekMetBurgerservicenummer":
+        case "RaadpleegMetBurgerservicenummer":
             return config.data.burgerservicenummer !== undefined
                 ? `${baseDataPath}/bsn-${config.data.burgerservicenummer.join("-")}.json`
                 : `${baseDataPath}/bsn.json`;
@@ -153,7 +153,8 @@ When('personen wordt gezocht met de volgende parameters', async function (dataTa
         data: requestBody
     };
 
-    this.context.zoekResponse._embedded.personen.push(this.context.persoon);
+    this.context.zoekResponse.personen.push(this.context.persoon);
+    this.context.zoekResponse.type = config.data.type;
 
     let path = determineDataPath(this.context.dataPath, config);
     fs.writeFileSync(path, JSON.stringify(this.context.zoekResponse, null, "\t"));
@@ -188,7 +189,7 @@ When('personen wordt geraadpleegd met de volgende parameters', async function (d
 });
 
 Then('bevat de response alleen personen met de volgende gegevens', function (dataTable) {
-    const personen = this.context.response.data._embedded.personen;
+    const personen = this.context.response.data.personen;
 
     personen.length.should.equal(dataTable.hashes().length, `aantal personen in response ${personen.length} is ongelijk aan aantal expected ${dataTable.hashes().length}`);
 
@@ -220,7 +221,7 @@ Then('bevat de response een persoon met de volgende gegevens', function (dataTab
 });
 
 Then('bevat de persoon met burgerservicenummer {string} de volgende geboorte datum', function (burgerservicenummer, dataTable) {
-    const personen = this.context.response.data._embedded.personen;
+    const personen = this.context.response.data.personen;
 
     const persoon = personen.find(function(p) {
         return p.burgerservicenummer === burgerservicenummer;
@@ -236,7 +237,7 @@ Then('bevat de persoon met burgerservicenummer {string} de volgende geboorte dat
 });
 
 Then('bevat de persoon met burgerservicenummer {string} de volgende naam gegevens', function (burgerservicenummer, dataTable) {
-    const personen = this.context.response.data._embedded.personen;
+    const personen = this.context.response.data.personen;
 
     const persoon = personen.find(function(p) {
         return p.burgerservicenummer === burgerservicenummer;
@@ -251,7 +252,7 @@ Then('bevat de persoon met burgerservicenummer {string} de volgende naam gegeven
 });
 
 Then('bevat de persoon met burgerservicenummer {string} de volgende geboorte gegevens', function (burgerservicenummer, dataTable) {
-    const personen = this.context.response.data._embedded.personen;
+    const personen = this.context.response.data.personen;
 
     const persoon = personen.find(function(p) {
         return p.burgerservicenummer === burgerservicenummer;
@@ -315,7 +316,7 @@ Then('bevat de persoon met burgerservicenummer {string} de volgende verblijfplaa
 });
 
 Then('bevat de persoon met burgerservicenummer {string} de volgende verblijfplaats gegevens NIET', function (burgerservicenummer, dataTable) {
-    const personen = this.context.response.data._embedded.personen;
+    const personen = this.context.response.data.personen;
 
     const persoon = personen.find(function(p) {
         return p.burgerservicenummer === burgerservicenummer;

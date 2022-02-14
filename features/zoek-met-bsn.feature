@@ -10,10 +10,10 @@ Rule: Er moet minimaal één burgerservicenummer worden opgegeven
         | naam                | waarde    |
         | burgerservicenummer | 999999321 |
         Als personen wordt gezocht met de volgende parameters
-        | naam                | waarde                     |
-        | type                | ZoekMetBurgerservicenummer |
-        | burgerservicenummer | 999999321                  |
-        | fields              | burgerservicenummer        |
+        | naam                | waarde                          |
+        | type                | RaadpleegMetBurgerservicenummer |
+        | burgerservicenummer | 999999321                       |
+        | fields              | burgerservicenummer             |
         Dan bevat de response alleen personen met de volgende gegevens 
         | burgerservicenummer |
         | 999999321           |
@@ -30,10 +30,10 @@ Rule: Er moet minimaal één burgerservicenummer worden opgegeven
         | naam                | waarde    |
         | burgerservicenummer | 999991802 |
         Als personen wordt gezocht met de volgende parameters
-        | naam                | waarde                        |
-        | type                | ZoekMetBurgerservicenummer    |
-        | burgerservicenummer | 999999321,999995492,999991802 |
-        | fields              | burgerservicenummer           |
+        | naam                | waarde                          |
+        | type                | RaadpleegMetBurgerservicenummer |
+        | burgerservicenummer | 999999321,999995492,999991802   |
+        | fields              | burgerservicenummer             |
         Dan bevat de response alleen personen met de volgende gegevens 
         | burgerservicenummer |
         | 999999321           |
@@ -43,9 +43,9 @@ Rule: Er moet minimaal één burgerservicenummer worden opgegeven
     @fout-case
     Scenario: Zoek zonder burgerservicenummers
         Als personen wordt gezocht met de volgende parameters
-        | naam   | waarde                     |
-        | type   | ZoekMetBurgerservicenummer |
-        | fields | burgerservicenummer        |
+        | naam   | waarde                          |
+        | type   | RaadpleegMetBurgerservicenummer |
+        | fields | burgerservicenummer             |
         Dan bevat de response de volgende gegevens
         | naam     | waarde                                              |
         | title    | Een of meerdere parameters zijn niet correct.       |
@@ -60,10 +60,10 @@ Rule: Er moet minimaal één burgerservicenummer worden opgegeven
     @fout-case
     Abstract Scenario: <titel>
         Als personen wordt gezocht met de volgende parameters
-        | naam                | waarde                     |
-        | type                | ZoekMetBurgerservicenummer |
-        | burgerservicenummer | <burgerservicenummers>     |
-        | fields              | burgerservicenummer        |
+        | naam                | waarde                          |
+        | type                | RaadpleegMetBurgerservicenummer |
+        | burgerservicenummer | <burgerservicenummers>          |
+        | fields              | burgerservicenummer             |
         Dan bevat de response de volgende gegevens
         | naam     | waarde                                        |
         | title    | Één of meerdere parameters zijn niet correct. |
@@ -73,22 +73,22 @@ Rule: Er moet minimaal één burgerservicenummer worden opgegeven
         | instance | TODO                                          |
         En bevat de response een invalidParams met de volgende gegevens
         | code     | name                | reason                  |
-        | required | burgerservicenummer | Parameter is verplicht. |
+        | minitems | burgerservicenummer | Parameter is verplicht. |
 
         Voorbeelden:
-        | burgerservicenummers | titel                                   |
-        |                      | Zoek met leeg burgerservicenummer lijst |
-        | 1234567890           | Zoek met ongeldig burgerservicenummer   |
+        | burgerservicenummers | titel                                   | code     | reason |
+        |                      | Zoek met leeg burgerservicenummer lijst | minitems |        |
+        | 1234567890           | Zoek met ongeldig burgerservicenummer   | pattern  |        |
 
-Rule: Er mag maximaal 10 burgerservicenummers worden opgegeven
+Rule: Er mag maximaal 20 burgerservicenummers worden opgegeven
 
     @fout-case
     Scenario: Zoek met meer dan 10 burgerservicenummers
         Als personen wordt gezocht met de volgende parameters
-        | naam                | waarde                                                                                                        |
-        | type                | ZoekMetBurgerservicenummer                                                                                    |
-        | burgerservicenummer | 999999321,999995492,999991802,999995492,999991802,999995492,999991802,999995492,999991802,999995492,999991802 |
-        | fields              | burgerservicenummer                                                                                           |
+        | naam                | waarde                                                                                                                                                                                                            |
+        | type                | RaadpleegMetBurgerservicenummer                                                                                                                                                                                   |
+        | burgerservicenummer | 999999321,999995492,999991802,999995492,999991802,999995492,999991802,999995492,999991802,999995492,999991802,999995492,999991802,999995492,999991802,999995492,999991802,999995492,999991802,999995492,999991802 |
+        | fields              | burgerservicenummer                                                                                                                                                                                               |
         Dan bevat de response de volgende gegevens
         | naam     | waarde                                        |
         | title    | Één of meerdere parameters zijn niet correct. |

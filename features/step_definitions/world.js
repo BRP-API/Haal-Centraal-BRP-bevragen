@@ -6,9 +6,7 @@ class World {
             serverUrl: "https://localhost:7074",
             persoon: {},
             zoekResponse: {
-                _embedded: {
-                    personen: []
-                }
+                personen: []
             }
         };
     }

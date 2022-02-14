@@ -57,7 +57,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
         |               |               | Zoek zonder geslachtsnaam en geboortedatum |
         | Maassen       |               | Zoek met alleen valide geslachtsnaam       |
         |               | 1983-05-26    | Zoek met alleen valide geboortedatum       |
-        
+
 Scenario: Zoek met geslachtsnaam, geboortedatum en voornamen
 
 Scenario: Zoek met geslachtsnaam, geboortedatum, voornamen, geboorteplaats, geslachtsaanduiding, gemeenteVanInschrijving

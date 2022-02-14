@@ -10,7 +10,6 @@ Als een voornaam een samengestelde naam is gescheiden door een koppelteken (-), 
 Als een voornaam  begint met een dubbelklank (Th, Ph, Ch, IJ, enz.), Dan wordt deze voornaam (ook) afgekort tot één voorletter.
 Als één of meerdere voornamen uit één letter bestaan, dan volgt er na de letter geen .
 Wanneer na een voorletter zonder punt (voornaam had één letter) nog een andere voorletter volgt, wordt daartussen een spatie gezet.
-Als de rubriek Voornamen is gevuld met de standaardwaarde '.' (punt), Dan wordt geen extra (scheidings)punt toegevoegd; de inhoud van de attribuut voorletters is na afleiding Dan '.'
 
 Rule: Voorletters wordt samengesteld uit de eerste letter van de voornamen gescheiden door een punt
 
@@ -22,10 +21,10 @@ Rule: Voorletters wordt samengesteld uit de eerste letter van de voornamen gesch
         | naam              | waarde      |
         | voornamen (02.10) | <voornamen> |
         Als personen wordt gezocht met de volgende parameters
-        | naam                | waarde                     |
-        | type                | ZoekMetBurgerservicenummer |
-        | burgerservicenummer | 999995078                  |
-        | fields              | naam.voorletters           |
+        | naam                | waarde                          |
+        | type                | RaadpleegMetBurgerservicenummer |
+        | burgerservicenummer | 999995078                       |
+        | fields              | naam.voorletters                |
         Dan bevat de persoon met burgerservicenummer '999995078' de volgende naam gegevens
         | naam        | waarde        |
         | voorletters | <voorletters> |
@@ -40,4 +39,3 @@ Rule: Voorletters wordt samengesteld uit de eerste letter van de voornamen gesch
         | Suzie Q              | S.Q         | Één voornaam bestaat uit één letter                 |                                                                                                                                   |
         | A                    | A           | Voornaam bestaat uit één letter                     | Een voornaam bestaand uit één letter, wordt afgekort tot een letter zonder .                                                      |
         | J P                  | J P         | Meerdere voornamen bestaan uit één letter           | Een voornaam bestaand uit één letter, gevolgd door een andere voornaam, wordt afgekort tot voorletters gescheiden door een spatie |
-        | .                    | .           | Voornamen bevat de standaardwaarde '.' (punt)       |                                                                                                                                   |

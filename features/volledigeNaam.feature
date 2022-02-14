@@ -15,10 +15,10 @@ Rule: de volledige naam wordt samengesteld door achter elkaar plaatsen van voorn
         | voorvoegsel (02.30)                  | <voorvoegsel>   |
         | geslachtsnaam (02.40)                | <geslachtsnaam> |
         Als personen wordt gezocht met de volgende parameters
-        | naam                | waarde                     |
-        | type                | ZoekMetBurgerservicenummer |
-        | burgerservicenummer | <burgerservicenummer>      |
-        | fields              | naam.volledigeNaam         |
+        | naam                | waarde                          |
+        | type                | RaadpleegMetBurgerservicenummer |
+        | burgerservicenummer | <burgerservicenummer>           |
+        | fields              | naam.volledigeNaam              |
         Dan bevat de persoon met burgerservicenummer '<burgerservicenummer>' de volgende naam gegevens
         | naam          | waarde          |
         | volledigeNaam | <volledigeNaam> |
@@ -42,10 +42,10 @@ Rule: een predikaat wordt opgenomen voor de voornamen met de omschrijving horend
         | voorvoegsel (02.30)                  | <voorvoegsel>             |
         | geslachtsnaam (02.40)                | <geslachtsnaam>           |
         Als personen wordt gezocht met de volgende parameters
-        | naam                | waarde                     |
-        | type                | ZoekMetBurgerservicenummer |
-        | burgerservicenummer | <burgerservicenummer>      |
-        | fields              | naam.volledigeNaam         |
+        | naam                | waarde                          |
+        | type                | RaadpleegMetBurgerservicenummer |
+        | burgerservicenummer | <burgerservicenummer>           |
+        | fields              | naam.volledigeNaam              |
         Dan bevat de persoon met burgerservicenummer '<burgerservicenummer>' de volgende naam gegevens
         | naam          | waarde          |
         | volledigeNaam | <volledigeNaam> |
@@ -67,10 +67,10 @@ Rule: een adellijke titel wordt opgenomen tussen de voornamen en het voorvoegsel
         | voorvoegsel (02.30)                  | <voorvoegsel>             |
         | geslachtsnaam (02.40)                | <geslachtsnaam>           |
         Als personen wordt gezocht met de volgende parameters
-        | naam                | waarde                     |
-        | type                | ZoekMetBurgerservicenummer |
-        | burgerservicenummer | <burgerservicenummer>      |
-        | fields              | naam.volledigeNaam         |
+        | naam                | waarde                          |
+        | type                | RaadpleegMetBurgerservicenummer |
+        | burgerservicenummer | <burgerservicenummer>           |
+        | fields              | naam.volledigeNaam              |
         Dan bevat de persoon met burgerservicenummer '<burgerservicenummer>' de volgende naam gegevens
         | naam          | waarde          |
         | volledigeNaam | <volledigeNaam> |
