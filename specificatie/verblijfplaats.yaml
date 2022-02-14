@@ -141,7 +141,7 @@ components:
             adresregel3:
               $ref: '#/components/schemas/Adresregel3'
             land:
-              $ref: 'land.yaml#/components/schemas/AbstractLand'
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
     VerblijfplaatsOnbekendBeperkt:
       allOf:
         - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
@@ -184,7 +184,7 @@ components:
             locatiebeschrijving:
               $ref: '#/components/schemas/Locatiebeschrijving'
             land:
-              $ref: 'land.yaml#/components/schemas/Land'
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
             gemeenteVanInschrijving:
               $ref: '#/components/schemas/GemeenteVanInschrijving'
             adresregel1:
@@ -222,7 +222,7 @@ components:
           adresregel3:
             $ref: '#/components/schemas/Adresregel3'
           land:
-            $ref: 'Land.yaml#/components/schemas/AbstractLand'
+            $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
           datumVan:
             $ref: 'datum.yaml#/components/schemas/AbstractDatum'
           datumIngangGeldigheid:
@@ -283,7 +283,7 @@ components:
             gemeenteVanInschrijving:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel"
             landVanwaarIngeschreven:
-              $ref: 'land.yaml#/components/schemas/AbstractLand'
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
             inOnderzoek:
               $ref: "#/components/schemas/VerblijfplaatsInOnderzoek"
     Locatie:
@@ -306,7 +306,7 @@ components:
             indicatieVestigingVanuitBuitenland:
               $ref: '#/components/schemas/IndicatieVestigingVanuitBuitenland'
             landVanwaarIngeschreven:
-              $ref: 'land.yaml#/components/schemas/AbstractLand'
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
             locatiebeschrijving:
               $ref: '#/components/schemas/Locatiebeschrijving'
             vanuitVertrokkenOnbekendWaarheen:
@@ -344,7 +344,7 @@ components:
             locatiebeschrijving:
               $ref: '#/components/schemas/Locatiebeschrijving'
             land:
-              $ref: 'land.yaml#/components/schemas/Land'
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
             datumAanvangAdreshouding:
               $ref: 'datum.yaml#/components/schemas/GbaDatum'
             datumAanvangAdresBuitenland:
