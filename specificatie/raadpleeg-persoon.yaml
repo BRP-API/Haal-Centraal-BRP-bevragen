@@ -9,7 +9,7 @@ paths:
       operationId: GetPersoon
       summary: Raadpleeg een persoon
       description: |
-        Raadpleeg een (overleden) persoon.
+        Raadpleeg een al dan niet overleden persoon.
 
         Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/fields_extensie.feature).
 

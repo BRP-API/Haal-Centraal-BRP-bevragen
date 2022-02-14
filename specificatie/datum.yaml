@@ -33,7 +33,7 @@ components:
       properties:
         datum:
           type: string
-      pattern: ^[0-9]{8}$
+          pattern: ^[0-9]{8}$
     GbaDatum:
       description: Datum conform LO GBA
       allOf:

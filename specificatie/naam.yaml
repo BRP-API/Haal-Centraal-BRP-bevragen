@@ -34,6 +34,8 @@ components:
       example: "De hoogwelgeboren heer"
     VolledigeNaam:
       type: string
+      description: |
+        Combinatie van voornamen, voorvoegsels en geslachtsnaam, zonder predikaat, adellijke titel of toevoeging van een eventuele partnernaam.
       example: "Pieter Jan de Vries"
     Voorletters: 
       type: string
@@ -49,6 +51,17 @@ components:
       type: string
       maxLength: 10
       example: "de"
+    WaardetabelMetSoort:
+      allOf:
+        - $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+        - properties:
+            soort:
+              type: string
+          example:
+            value:
+              code: "JV"
+              omschrijving: "jonkvrouw"
+              soort: "predikaat"
     GbaNaamBasis:
       type: object
       properties:
@@ -69,6 +82,8 @@ components:
               $ref: '#/components/schemas/Voorletters'
             volledigeNaam:
               $ref: '#/components/schemas/VolledigeNaam'
+            adellijkeTitelPredikaat:
+              $ref: '#/components/schemas/WaardetabelMetSoort'
     Naam:
       allOf:
         - $ref: '#/components/schemas/NaamBasis'
