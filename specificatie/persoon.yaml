@@ -5,103 +5,94 @@ info:
   contact: {}
 paths: {}
 components:
-  parameters:
-    PersoonIdentificatie:
-      name: persoonIdentificatie
-      in: path
-      required: true
-      schema:
-        $ref: '#/components/schemas/PersoonIdentificatie'
   schemas:
-    PersoonIdentificatie:
-      description: |
-        De unieke identificatie van een persoon
-      type: string
-      format: uuid
     Burgerservicenummer:
       type: string
       pattern: ^[0-9]{9}$
       example: "555555021"
-    PersoonBasis:
+    Leeftijd:
+      type: integer
+      description: |
+        Leeftijd in jaren op het moment van bevragen.
+      example: 34
+      minimum: 0
+      maximum: 150
+    PersoonBeperkt:
       type: object
       properties:
-        identificatie:
-          $ref: '#/components/schemas/PersoonIdentificatie'
         burgerservicenummer:
           $ref: '#/components/schemas/Burgerservicenummer'
+        geboorte:
+          $ref: 'geboorte.yaml#/components/schemas/GeboorteBeperkt'
         geheimhoudingPersoonsgegevens:
           $ref: 'geheimhouding.yaml#/components/schemas/AbstractGeheimhoudingPersoonsgegevens'
         geslachtsaanduiding:
           $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
         leeftijd:
-          type: integer
-          description: |
-            Leeftijd in jaren op het moment van bevragen.
-          example: 34
-    PersoonBeperkt:
-      allOf:
-        - $ref: '#/components/schemas/PersoonBasis'
-        - type: object
-          properties:
-            naam:
-              $ref: 'naam.yaml#/components/schemas/NaamBasis'
-            geboorte:
-              $ref: 'geboorte.yaml#/components/schemas/GeboorteBeperkt'
-            opschortingBijhouding:
-              $ref: 'opschortingbijhouding.yaml#/components/schemas/OpschortingBijhoudingBasis'
-            overlijden:
-              $ref: 'overlijden.yaml#/components/schemas/AbstractOverlijdenBasis'
-            verblijfplaats:
-              $ref: 'verblijfplaats.yaml#/components/schemas/AbstractVerblijfplaatsBeperkt'
+          $ref: '#/components/schemas/Leeftijd'
+        naam:
+          $ref: 'naam.yaml#/components/schemas/NaamBasis'
+        opschortingBijhouding:
+          $ref: 'opschortingbijhouding.yaml#/components/schemas/OpschortingBijhoudingBasis'
+        overlijden:
+          $ref: 'overlijden.yaml#/components/schemas/AbstractOverlijdenBasis'
+        verblijfplaats:
+          $ref: 'verblijfplaats.yaml#/components/schemas/AbstractVerblijfplaatsBeperkt'
     Persoon:
-      allOf:
-        - $ref: '#/components/schemas/PersoonBasis'
-        - type: object
-          properties:
-            aNummer:
-              description: |
-                Het A-nummer van de persoon
-              type: string
-            datumEersteInschrijvingGBA:
-              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-            inOnderzoek:
-              $ref: '#/components/schemas/AbstractPersoonInOnderzoek'
-            kiesrecht:
-              $ref: 'kiesrecht.yaml#/components/schemas/Kiesrecht'
-            naam:
-              $ref: 'naam.yaml#/components/schemas/NaamPersoon'
-            nationaliteiten:
-              type: array
-              items:
-                $ref: 'nationaliteit.yaml#/components/schemas/Nationaliteit'
-            geboorte:
-              $ref: 'geboorte.yaml#/components/schemas/Geboorte'
-            opschortingBijhouding:
-              $ref: 'opschortingbijhouding.yaml#/components/schemas/OpschortingBijhouding'
-            overlijden:
-              $ref: 'overlijden.yaml#/components/schemas/Overlijden'
-            verblijfplaats:
-              $ref: 'verblijfplaats.yaml#/components/schemas/AbstractVerblijfplaats'
-            gezagsverhouding:
-              $ref: 'gezagsverhouding.yaml#/components/schemas/Gezagsverhouding'
-            verblijfstitel:
-              $ref: 'verblijfstitel.yaml#/components/schemas/Verblijfstitel'
-            reisdocumentnummers:
-              type: array
-              items:
-                $ref: '#/components/schemas/Reisdocumentnummer'
-            kinderen:
-              type: array
-              items:
-                $ref: 'kind.yaml#/components/schemas/AbstractKind'
-            ouders:
-              type: array
-              items:
-                $ref: 'ouder.yaml#/components/schemas/AbstractOuder'
-            partners:
-              type: array
-              items:
-                $ref: 'partner.yaml#/components/schemas/AbstractPartner'
+      type: object
+      properties:
+        aNummer:
+          description: |
+            Het A-nummer van de persoon
+          type: string
+        burgerservicenummer:
+          $ref: '#/components/schemas/Burgerservicenummer'
+        datumEersteInschrijvingGBA:
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+        geheimhoudingPersoonsgegevens:
+          $ref: 'geheimhouding.yaml#/components/schemas/AbstractGeheimhoudingPersoonsgegevens'
+        geslachtsaanduiding:
+          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+        inOnderzoek:
+          $ref: '#/components/schemas/AbstractPersoonInOnderzoek'
+        kiesrecht:
+          $ref: 'kiesrecht.yaml#/components/schemas/Kiesrecht'
+        leeftijd:
+          $ref: '#/components/schemas/Leeftijd'
+        naam:
+          $ref: 'naam.yaml#/components/schemas/NaamPersoon'
+        nationaliteiten:
+          type: array
+          items:
+            $ref: 'nationaliteit.yaml#/components/schemas/Nationaliteit'
+        geboorte:
+          $ref: 'geboorte.yaml#/components/schemas/Geboorte'
+        opschortingBijhouding:
+          $ref: 'opschortingbijhouding.yaml#/components/schemas/OpschortingBijhouding'
+        overlijden:
+          $ref: 'overlijden.yaml#/components/schemas/Overlijden'
+        verblijfplaats:
+          $ref: 'verblijfplaats.yaml#/components/schemas/AbstractVerblijfplaats'
+        gezagsverhouding:
+          $ref: 'gezagsverhouding.yaml#/components/schemas/Gezagsverhouding'
+        verblijfstitel:
+          $ref: 'verblijfstitel.yaml#/components/schemas/Verblijfstitel'
+        reisdocumentnummers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reisdocumentnummer'
+        kinderen:
+          type: array
+          items:
+            $ref: 'kind.yaml#/components/schemas/AbstractKind'
+        ouders:
+          type: array
+          items:
+            $ref: 'ouder.yaml#/components/schemas/AbstractOuder'
+        partners:
+          type: array
+          items:
+            $ref: 'partner.yaml#/components/schemas/AbstractPartner'
     AbstractPersoonInOnderzoek:
       type: object
       description: |

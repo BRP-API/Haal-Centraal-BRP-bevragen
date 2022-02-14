@@ -23,5 +23,3 @@ tags:
 paths:
   /personen:
     $ref: 'zoek-personen.yaml#/paths/~1personen'
-  /personen/{persoonIdentificatie}:
-    $ref: 'raadpleeg-persoon.yaml#/paths/~1personen~1{persoonIdentificatie}'

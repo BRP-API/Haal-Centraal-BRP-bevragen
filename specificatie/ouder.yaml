@@ -28,8 +28,6 @@ components:
             Gegevens over de ouder van de persoon.
             * **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.
           properties:
-            identificatie:
-              $ref: 'persoon.yaml#/components/schemas/PersoonIdentificatie'
             burgerservicenummer:
               $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
             geslachtsaanduiding:
