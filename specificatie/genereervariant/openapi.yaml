@@ -223,7 +223,7 @@ paths:
       - Personen
       summary: Raadpleeg een persoon
       description: |
-        Raadpleeg een (overleden) persoon.
+        Raadpleeg een al dan niet overleden persoon.
 
         Gebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/fields_extensie.feature).
       operationId: GetPersoon
@@ -736,7 +736,7 @@ components:
           opschortingBijhouding:
             $ref: '#/components/schemas/OpschortingBijhoudingBasis'
           overlijden:
-            $ref: '#/components/schemas/OverlijdenBasis'
+            $ref: '#/components/schemas/AbstractOverlijdenBasis'
           verblijfplaats:
             $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
     PersoonBasis:
@@ -903,6 +903,8 @@ components:
             $ref: '#/components/schemas/Voorletters'
           volledigeNaam:
             $ref: '#/components/schemas/VolledigeNaam'
+          adellijkeTitelPredikaat:
+            $ref: '#/components/schemas/WaardetabelMetSoort'
     GbaNaamBasis:
       type: object
       properties:
@@ -936,7 +938,20 @@ components:
       example: P.J.
     VolledigeNaam:
       type: string
+      description: |
+        Combinatie van voornamen, voorvoegsels en geslachtsnaam, zonder predikaat, adellijke titel of toevoeging van een eventuele partnernaam.
       example: Pieter Jan de Vries
+    WaardetabelMetSoort:
+      allOf:
+      - $ref: '#/components/schemas/Waardetabel'
+      - properties:
+          soort:
+            type: string
+        example:
+          value:
+            code: JV
+            omschrijving: jonkvrouw
+            soort: predikaat
     GeboorteBeperkt:
       type: object
       properties:
@@ -949,15 +964,38 @@ components:
           $ref: '#/components/schemas/Waardetabel'
       description: |
         * **reden** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'redenopschortingbijhouding' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-    OverlijdenBasis:
+    AbstractOverlijdenBasis:
+      required:
+      - type
       type: object
       properties:
-        indicatieOverleden:
-          type: boolean
-          description: |
-            Geeft aan dat iemand is overleden (waarde true), ongeacht of de overlijdensdatum bekend is.
+        type:
+          type: string
       description: |
         Gegevens over het overlijden van de persoon.
+      discriminator:
+        propertyName: type
+        mapping:
+          GbaOverlijden: '#/components/schemas/GbaOverlijdenBasis'
+          Overlijden: '#/components/schemas/OverlijdenBasis'
+    GbaOverlijdenBasis:
+      allOf:
+      - $ref: '#/components/schemas/AbstractOverlijdenBasis'
+      - type: object
+        properties:
+          datum:
+            $ref: '#/components/schemas/GbaDatumBasis'
+    OverlijdenBasis:
+      allOf:
+      - $ref: '#/components/schemas/AbstractOverlijdenBasis'
+      - type: object
+        properties:
+          indicatieOverleden:
+            $ref: '#/components/schemas/IndicatieOverleden'
+    IndicatieOverleden:
+      type: boolean
+      description: |
+        Geeft aan dat iemand is overleden (waarde true), ongeacht of de overlijdensdatum bekend is.
     AbstractVerblijfplaatsBeperkt:
       required:
       - type
@@ -972,8 +1010,8 @@ components:
         mapping:
           GbaVerblijfplaats: '#/components/schemas/GbaVerblijfplaatsBeperkt'
           VerblijfplaatsBuitenland: '#/components/schemas/VerblijfplaatsBuitenlandBeperkt'
-          Verblijfplaats: '#/components/schemas/VerblijfplaatsBeperkt'
-          VerblijfOnbekend: '#/components/schemas/VerblijfplaatsOnbekend'
+          Adres: '#/components/schemas/AdresBeperkt'
+          VerblijfplaatsOnbekend: '#/components/schemas/VerblijfplaatsOnbekend'
           Locatie: '#/components/schemas/LocatieBeperkt'
     GbaVerblijfplaatsBeperkt:
       allOf:
@@ -995,11 +1033,9 @@ components:
           locatiebeschrijving:
             $ref: '#/components/schemas/Locatiebeschrijving'
           land:
-            $ref: '#/components/schemas/Land'
+            $ref: '#/components/schemas/Waardetabel'
           gemeenteVanInschrijving:
             $ref: '#/components/schemas/GemeenteVanInschrijving'
-          naamOpenbareRuimte:
-            $ref: '#/components/schemas/NaamOpenbareRuimte'
           adresregel1:
             $ref: '#/components/schemas/Adresregel1'
           adresregel2:
@@ -1015,8 +1051,6 @@ components:
       description: |
         Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats.
       example: Naast de derde brug
-    NaamOpenbareRuimte:
-      type: string
     Adresregel1:
       type: string
       description: |
@@ -1044,8 +1078,8 @@ components:
           adresregel3:
             $ref: '#/components/schemas/Adresregel3'
           land:
-            $ref: '#/components/schemas/AbstractLand'
-    VerblijfplaatsBeperkt:
+            $ref: '#/components/schemas/Waardetabel'
+    AdresBeperkt:
       allOf:
       - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
       - type: object
@@ -1071,9 +1105,9 @@ components:
       - type: object
         properties:
           vertrokkenOnbekendWaarheen:
-            type: boolean
-            description: |
-              Indicatie dat de persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.
+            $ref: '#/components/schemas/VertrokkenOnbekendWaarheen'
+          inOnderzoek:
+            $ref: '#/components/schemas/VerblijfplaatsOnbekendInOnderzoek'
     AbstractVerblijfplaats:
       required:
       - type
@@ -1088,8 +1122,8 @@ components:
         mapping:
           GbaVerblijfplaats: '#/components/schemas/GbaVerblijfplaats'
           VerblijfplaatsBuitenland: '#/components/schemas/VerblijfplaatsBuitenland'
-          Verblijfplaats: '#/components/schemas/Verblijfplaats'
-          VerblijfOnbekend: '#/components/schemas/VerblijfplaatsOnbekend'
+          Adres: '#/components/schemas/Adres'
+          VerblijfplaatsOnbekend: '#/components/schemas/VerblijfplaatsOnbekend'
           Locatie: '#/components/schemas/Locatie'
     GbaVerblijfplaats:
       allOf:
@@ -1111,7 +1145,7 @@ components:
           locatiebeschrijving:
             $ref: '#/components/schemas/Locatiebeschrijving'
           land:
-            $ref: '#/components/schemas/Land'
+            $ref: '#/components/schemas/Waardetabel'
           datumAanvangAdreshouding:
             $ref: '#/components/schemas/GbaDatum'
           datumAanvangAdresBuitenland:
@@ -1122,6 +1156,8 @@ components:
             $ref: '#/components/schemas/NaamOpenbareRuimte'
           inOnderzoek:
             $ref: '#/components/schemas/GbaInOnderzoek'
+    NaamOpenbareRuimte:
+      type: string
     VerblijfplaatsBuitenland:
       allOf:
       - $ref: '#/components/schemas/AbstractVerblijfplaats'
@@ -1134,8 +1170,8 @@ components:
           adresregel3:
             $ref: '#/components/schemas/Adresregel3'
           land:
-            $ref: '#/components/schemas/AbstractLand'
-          datumAanvangAdreshouding:
+            $ref: '#/components/schemas/Waardetabel'
+          datumVan:
             $ref: '#/components/schemas/AbstractDatum'
           datumIngangGeldigheid:
             $ref: '#/components/schemas/AbstractDatum'
@@ -1146,16 +1182,16 @@ components:
       properties:
         verblijfBuitenland:
           type: boolean
-        datumAanvangAdreshouding:
+        datumVan:
           type: boolean
         datumIngangGeldigheid:
           type: boolean
         datumIngangOnderzoek:
           $ref: '#/components/schemas/AbstractDatum'
-    Verblijfplaats:
+    Adres:
       description: |
-        Gegevens over het verblijf of de woonlocatie van een persoon.
-        * **datumAanvangAdreshuishouding** : de datum van aangifte of ambtshalve melding van verblijf en adres.
+        Gegevens over het adres van een persoon.
+        * **datumVan** : de datum van aangifte of ambtshalve melding van verblijf en adres.
         * **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden.
         * **datumInschrijvingInGemeente**: bij inschrijving op grond van een verhuisaangifte door de burger is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop het voornemen van ambtshalve opneming schriftelijk aan de persoon is medegedeeld.
         * **datumVestigingInNederland** : datum van inschrijving in Nederland.
@@ -1190,16 +1226,12 @@ components:
           woonplaats:
             $ref: '#/components/schemas/Woonplaats'
           indicatieVestigingVanuitBuitenland:
-            type: boolean
-            description: |
-              Geeft aan dat de persoon zich vanuit het buitenland heeft ingeschreven.
+            $ref: '#/components/schemas/IndicatieVestigingVanuitBuitenland'
           korteNaam:
-            type: string
-            description: |
-              De officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG) of een verkorte versie.
+            $ref: '#/components/schemas/KorteNaam'
           vanuitVertrokkenOnbekendWaarheen:
-            $ref: '#/components/schemas/VertrokkenOnbekendWaarheen'
-          datumAanvangAdreshouding:
+            $ref: '#/components/schemas/VanuitVertrokkenOnbekendWaarheen'
+          datumVan:
             $ref: '#/components/schemas/AbstractDatum'
           datumIngangGeldigheid:
             $ref: '#/components/schemas/AbstractDatum'
@@ -1210,7 +1242,7 @@ components:
           gemeenteVanInschrijving:
             $ref: '#/components/schemas/Waardetabel'
           landVanwaarIngeschreven:
-            $ref: '#/components/schemas/AbstractLand'
+            $ref: '#/components/schemas/Waardetabel'
           inOnderzoek:
             $ref: '#/components/schemas/VerblijfplaatsInOnderzoek'
     AdresseerbaarObjectIdentificatie:
@@ -1218,16 +1250,24 @@ components:
       description: |
         De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.
       example: "0226010000038820"
-    VertrokkenOnbekendWaarheen:
+    IndicatieVestigingVanuitBuitenland:
       type: boolean
       description: |
-        Indicatie dat de persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.
+        Geeft aan dat de persoon zich vanuit het buitenland heeft ingeschreven.
+    KorteNaam:
+      type: string
+      description: |
+        De officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG) of een verkorte versie.
+    VanuitVertrokkenOnbekendWaarheen:
+      type: boolean
+      description: |
+        Geeft aan dat de persoon is teruggekeerd uit een situatie van 'vertrokken onbekend waarheen
     VerblijfplaatsInOnderzoek:
       type: object
       properties:
         aanduidingBijHuisnummer:
           type: boolean
-        datumAanvangAdreshouding:
+        datumVan:
           type: boolean
         datumIngangGeldigheid:
           type: boolean
@@ -1266,10 +1306,26 @@ components:
       - $ref: '#/components/schemas/AbstractVerblijfplaats'
       - type: object
         properties:
+          adresregel1:
+            $ref: '#/components/schemas/Adresregel1'
+          adresregel2:
+            $ref: '#/components/schemas/Adresregel2'
+          datumInschrijvingInGemeente:
+            $ref: '#/components/schemas/AbstractDatum'
+          datumVestigingInNederland:
+            $ref: '#/components/schemas/AbstractDatum'
           functieAdres:
+            $ref: '#/components/schemas/Waardetabel'
+          gemeenteVanInschrijving:
+            $ref: '#/components/schemas/Waardetabel'
+          indicatieVestigingVanuitBuitenland:
+            $ref: '#/components/schemas/IndicatieVestigingVanuitBuitenland'
+          landVanwaarIngeschreven:
             $ref: '#/components/schemas/Waardetabel'
           locatiebeschrijving:
             $ref: '#/components/schemas/Locatiebeschrijving'
+          vanuitVertrokkenOnbekendWaarheen:
+            $ref: '#/components/schemas/VanuitVertrokkenOnbekendWaarheen'
           woonplaats:
             $ref: '#/components/schemas/Woonplaats'
           inOnderzoek:
@@ -1277,7 +1333,15 @@ components:
     LocatieInOnderzoek:
       type: object
       properties:
+        datumInschrijvingInGemeente:
+          type: boolean
+        datumVestigingInNederland:
+          type: boolean
         functieAdres:
+          type: boolean
+        gemeenteVanInschrijving:
+          type: boolean
+        landVanwaarIngeschreven:
           type: boolean
         locatiebeschrijving:
           type: boolean
@@ -1285,11 +1349,24 @@ components:
           type: boolean
         datumIngangOnderzoek:
           $ref: '#/components/schemas/AbstractDatum'
+    VertrokkenOnbekendWaarheen:
+      type: boolean
+      description: |
+        Indicatie dat de persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.
+    VerblijfplaatsOnbekendInOnderzoek:
+      type: object
+      properties:
+        land:
+          type: boolean
     LocatieBeperkt:
       allOf:
       - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
       - type: object
         properties:
+          adresregel1:
+            $ref: '#/components/schemas/Adresregel1'
+          adresregel2:
+            $ref: '#/components/schemas/Adresregel2'
           functieAdres:
             $ref: '#/components/schemas/Waardetabel'
           locatiebeschrijving:
@@ -1351,10 +1428,10 @@ components:
       - $ref: '#/components/schemas/AbstractDatum'
       - $ref: '#/components/schemas/GbaDatumBasis'
     GbaDatumBasis:
-      pattern: ^[0-9]{8}$
       type: object
       properties:
         datum:
+          pattern: ^[0-9]{8}$
           type: string
     VolledigDatum:
       required:
@@ -1563,6 +1640,17 @@ components:
         properties:
           datumIngangGeldigheid:
             $ref: '#/components/schemas/AbstractDatum'
+          inOnderzoek:
+            $ref: '#/components/schemas/BijzonderNederlanderschapInOnderzoek'
+    BijzonderNederlanderschapInOnderzoek:
+      type: object
+      properties:
+        aanduidingBijzonderNederlanderschap:
+          type: boolean
+        redenOpname:
+          type: boolean
+        datumIngangOnderzoek:
+          $ref: '#/components/schemas/AbstractDatum'
     VastgesteldNietNederlander:
       allOf:
       - $ref: '#/components/schemas/AbstractNationaliteit'
@@ -1570,6 +1658,8 @@ components:
         properties:
           datumIngangGeldigheid:
             $ref: '#/components/schemas/AbstractDatum'
+          inOnderzoek:
+            $ref: '#/components/schemas/BijzonderNederlanderschapInOnderzoek'
     NationaliteitInOnderzoek:
       type: object
       properties:
@@ -1589,7 +1679,7 @@ components:
         datum:
           $ref: '#/components/schemas/AbstractDatum'
         land:
-          $ref: '#/components/schemas/AbstractLand'
+          $ref: '#/components/schemas/Waardetabel'
         plaats:
           $ref: '#/components/schemas/Waardetabel'
         inOnderzoek:
@@ -1640,23 +1730,23 @@ components:
         description: |
           * **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.
     Overlijden:
-      allOf:
-      - $ref: '#/components/schemas/OverlijdenBasis'
-      - type: object
-        properties:
-          datum:
-            $ref: '#/components/schemas/AbstractDatum'
-          land:
-            $ref: '#/components/schemas/AbstractLand'
-          plaats:
-            $ref: '#/components/schemas/Waardetabel'
-          inOnderzoek:
-            $ref: '#/components/schemas/AbstractOverlijdenInOnderzoek'
-        description: |
-          Gegevens over het overlijden van de persoon.
-          * **datum** : datum waarop de persoon is overleden.
-          * **land** : land waar de persoon is overleden.
-          * **plaats** : gemeente waar de persoon is overleden. Is de persoon overleden buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.
+      type: object
+      properties:
+        datum:
+          $ref: '#/components/schemas/AbstractDatum'
+        land:
+          $ref: '#/components/schemas/Waardetabel'
+        plaats:
+          $ref: '#/components/schemas/Waardetabel'
+        indicatieOverleden:
+          $ref: '#/components/schemas/IndicatieOverleden'
+        inOnderzoek:
+          $ref: '#/components/schemas/AbstractOverlijdenInOnderzoek'
+      description: |
+        Gegevens over het overlijden van de persoon.
+        * **datum** : datum waarop de persoon is overleden.
+        * **land** : land waar de persoon is overleden.
+        * **plaats** : gemeente waar de persoon is overleden. Is de persoon overleden buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.
     AbstractOverlijdenInOnderzoek:
       required:
       - type
@@ -1999,7 +2089,7 @@ components:
         datum:
           $ref: '#/components/schemas/AbstractDatum'
         land:
-          $ref: '#/components/schemas/AbstractLand'
+          $ref: '#/components/schemas/Waardetabel'
         plaats:
           $ref: '#/components/schemas/Waardetabel'
         inOnderzoek:
@@ -2060,28 +2150,6 @@ components:
           type: string
         datumIngangOnderzoek:
           $ref: '#/components/schemas/GbaDatumBasis'
-    Land:
-      allOf:
-      - $ref: '#/components/schemas/AbstractLand'
-      - $ref: '#/components/schemas/Waardetabel'
-    AbstractLand:
-      type: object
-      properties:
-        type:
-          type: string
-      discriminator:
-        propertyName: type
-        mapping:
-          Land: '#/components/schemas/Land'
-          OnbekendLand: '#/components/schemas/OnbekendLand'
-    OnbekendLand:
-      allOf:
-      - $ref: '#/components/schemas/AbstractLand'
-      - type: object
-        properties:
-          onbekend:
-            type: boolean
-            default: true
     NaamGerelateerde:
       allOf:
       - $ref: '#/components/schemas/GbaNaamBasis'
