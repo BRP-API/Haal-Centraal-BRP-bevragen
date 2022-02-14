@@ -8,7 +8,7 @@ namespace BrpProxy.Mappers
         {
             if (verblijfplaats is GbaVerblijfplaats gba)
             {
-                var retval = new Verblijfplaats();
+                var retval = new Adres();
 
                 retval.Straat = gba.MapStraat();
                 retval.KorteNaam = gba.Straat;

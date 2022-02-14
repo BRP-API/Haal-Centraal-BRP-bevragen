@@ -29,7 +29,7 @@ namespace BrpProxy.Middlewares
 
             _logger.LogInformation($"original: {body}");
 
-            var modifiedBody = body.Transform(context.Request.Method == "GET");
+            var modifiedBody = body.Transform();
 
             using var bodyStream = modifiedBody.ToMemoryStream();
 
@@ -40,38 +40,48 @@ namespace BrpProxy.Middlewares
 
     public static class BrpHelpers
     {
-        public static string Transform(this string payload, bool isRaadpleegPersoon)
+        public static string Transform(this string payload)
         {
-            string retval = payload;
+            var personen = JsonConvert.DeserializeObject<PersonenQueryResponse>(payload);
 
-            if(isRaadpleegPersoon)
+            switch (personen)
             {
-                var persoon = JsonConvert.DeserializeObject<PersoonHal>(payload);
-                if(persoon != null)
-                {
-                    persoon.Geboorte.Map();
-                    persoon.Naam.Map();
-                    persoon.Verblijfplaats = persoon.Verblijfplaats.Map();
-
-                    retval = JsonConvert.SerializeObject(persoon);
-                }
-            }
-            else
-            {
-                var personen = JsonConvert.DeserializeObject<PersoonBeperktHalCollectie>(payload);
-
-                foreach (var persoon in personen?._embedded.Personen)
-                {
-                    persoon?.Geboorte.Map();
-                    persoon?.Naam.Map();
-                }
-
-                retval = JsonConvert.SerializeObject(personen);
+                case RaadpleegMetBurgerservicenummerResponse p:
+                    p.Personen.Map();
+                    break;
+                case ZoekMetGeslachtsnaamEnGeboortedatumResponse pb:
+                    pb.Personen.Map();
+                    break;
+                case ZoekMetGeslachtsnaamEnGemeenteVanInschrijvingResponse pb:
+                    pb.Personen.Map();
+                    break;
+                case ZoekMetPostcodeEnHuisnummerResponse pb:
+                    pb.Personen.Map();
+                    break;
             }
 
-            return retval;
+            return JsonConvert.SerializeObject(personen);
+        }
+
+        private static void Map(this ICollection<Persoon> personen)
+        {
+            foreach (var persoon in personen)
+            {
+                persoon?.Geboorte.Map();
+                persoon?.Naam.Map();
+            }
+        }
+
+        private static void Map(this ICollection<PersoonBeperkt> personen)
+        {
+            foreach (var persoon in personen)
+            {
+                persoon?.Geboorte.Map();
+                persoon?.Naam.Map();
+            }
         }
     }
+
     public static class HttpResponseHelpers
     {
         public static async Task<string> ReadBodyAsync(this HttpResponse response)
