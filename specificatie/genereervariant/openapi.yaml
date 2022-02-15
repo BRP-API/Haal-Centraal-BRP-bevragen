@@ -933,6 +933,10 @@ components:
       - $ref: '#/components/schemas/AbstractVerblijfplaats'
       - type: object
         properties:
+          datumInschrijvingInGemeente:
+            $ref: '#/components/schemas/AbstractDatum'
+          gemeenteVanInschrijving:
+            $ref: '#/components/schemas/GemeenteVanInschrijving'
           vertrokkenOnbekendWaarheen:
             $ref: '#/components/schemas/VertrokkenOnbekendWaarheen'
           inOnderzoek:
@@ -998,6 +1002,10 @@ components:
             $ref: '#/components/schemas/Adresregel2'
           adresregel3:
             $ref: '#/components/schemas/Adresregel3'
+          datumInschrijvingInGemeente:
+            $ref: '#/components/schemas/AbstractDatum'
+          gemeenteVanInschrijving:
+            $ref: '#/components/schemas/GemeenteVanInschrijving'
           land:
             $ref: '#/components/schemas/Waardetabel'
           datumVan:

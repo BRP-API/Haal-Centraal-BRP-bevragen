@@ -1192,6 +1192,12 @@
         }, {
           "type" : "object",
           "properties" : {
+            "datumInschrijvingInGemeente" : {
+              "$ref" : "#/components/schemas/AbstractDatum"
+            },
+            "gemeenteVanInschrijving" : {
+              "$ref" : "#/components/schemas/GemeenteVanInschrijving"
+            },
             "vertrokkenOnbekendWaarheen" : {
               "$ref" : "#/components/schemas/VertrokkenOnbekendWaarheen"
             },
@@ -1286,6 +1292,12 @@
             },
             "adresregel3" : {
               "$ref" : "#/components/schemas/Adresregel3"
+            },
+            "datumInschrijvingInGemeente" : {
+              "$ref" : "#/components/schemas/AbstractDatum"
+            },
+            "gemeenteVanInschrijving" : {
+              "$ref" : "#/components/schemas/GemeenteVanInschrijving"
             },
             "land" : {
               "$ref" : "#/components/schemas/Waardetabel"
