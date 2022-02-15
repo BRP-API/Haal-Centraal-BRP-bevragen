@@ -72,18 +72,18 @@ Rule: Er moet minimaal één burgerservicenummer worden opgegeven
         | code     | TODO                                          |
         | instance | TODO                                          |
         En bevat de response een invalidParams met de volgende gegevens
-        | code     | name                | reason                  |
-        | minitems | burgerservicenummer | Parameter is verplicht. |
+        | code   | name                | reason   |
+        | <code> | burgerservicenummer | <reason> |
 
         Voorbeelden:
         | burgerservicenummers | titel                                   | code     | reason |
-        |                      | Zoek met leeg burgerservicenummer lijst | minitems |        |
-        | 1234567890           | Zoek met ongeldig burgerservicenummer   | pattern  |        |
+        |                      | Zoek met leeg burgerservicenummer lijst | minItems | TODO   |
+        | 1234567890           | Zoek met ongeldig burgerservicenummer   | pattern  | TODO   |
 
 Rule: Er mag maximaal 20 burgerservicenummers worden opgegeven
 
     @fout-case
-    Scenario: Zoek met meer dan 10 burgerservicenummers
+    Scenario: Zoek met meer dan 20 burgerservicenummers
         Als personen wordt gezocht met de volgende parameters
         | naam                | waarde                                                                                                                                                                                                            |
         | type                | RaadpleegMetBurgerservicenummer                                                                                                                                                                                   |
@@ -97,5 +97,5 @@ Rule: Er mag maximaal 20 burgerservicenummers worden opgegeven
         | code     | TODO                                          |
         | instance | TODO                                          |
         En bevat de response een invalidParams met de volgende gegevens
-        | code | name                | reason |
-        | TODO | burgerservicenummer | TODO   |
+        | code     | name                | reason |
+        | maxItems | burgerservicenummer | TODO   |

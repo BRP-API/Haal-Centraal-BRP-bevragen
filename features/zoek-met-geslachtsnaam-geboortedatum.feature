@@ -17,11 +17,11 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
         | naam                  | waarde  |
         | geslachtsnaam (02.40) | Maassen |
         Als personen wordt gezocht met de volgende parameters
-        | naam          | waarde                              |
-        | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
-        | geslachtsnaam | Maassen                             |
-        | geboortedatum | 1983-05-26                          |
-        | fields        | burgerservicenummer                 |
+        | naam          | waarde                                                |
+        | type          | ZoekMetGeslachtsnaamEnGeboortedatum                   |
+        | geslachtsnaam | Maassen                                               |
+        | geboortedatum | 1983-05-26                                            |
+        | fields        | burgerservicenummer,geboorte.datum,naam.geslachtsnaam |
         Dan bevat de response alleen personen met de volgende gegevens 
         | burgerservicenummer |
         | 999995078           |

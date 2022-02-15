@@ -105,7 +105,7 @@ Functionaliteit: Adresvelden vullen
     # Tussen postcode alfabetisch deel en woonplaatsnaam moeten twee spaties worden geplaatst
     # De woonplaatsnaam wordt in hoofdletters geschreven
 
-    Abstract Scenario: adresregel2 voor een binnenlands <omschrijving>
+    Abstract Scenario: adresregel2 voor een binnenlandse verblijfplaats met <omschrijving>
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde                               |
       | identificatie       | 4cbcf7fd-d788-4be5-8ebc-17decde26131 |
@@ -139,12 +139,11 @@ Functionaliteit: Adresvelden vullen
       | burgerservicenummer | 999993483                            |
       En de persoon heeft de volgende verblijfplaats gegevens
       | naam                              | waarde          |
-      | gemeente van inschrijving (09.10) | 1999            | # kan dit ingevuld zijn voor een buitenlands adres?
+      | gemeente van inschrijving (09.10) | 1999            |
       | land adres buitenland (13.10)     | 5010            |
       | regel 1 adres buitenland (13.30)  | Rue du pomme 25 |
       | regel 2 adres buitenland (13.40)  | Bruxelles       |
       | regel 3 adres buitenland (13.50)  | postcode 1000   |
-      | woonplaatsnaam (11.70)            |                 | # is dit een veld waarop moet worden gecheckt voor buitenlands adres? Is het gevuld zijn van één of meerdere groep 13 velden niet voldoende?
       En de waardetabel 'Landen' heeft de volgende waarden
       | code | omschrijving |
       | 5010 | België       |
@@ -153,13 +152,14 @@ Functionaliteit: Adresvelden vullen
       | persoonIdentificatie | 4cbcf7fd-d788-4be5-8ebc-17decde26131 |
       | fields               | verblijfplaats                       |
       Dan bevat de persoon met burgerservicenummer '999993483' de volgende verblijfplaats gegevens
-      | naam              | waarde                   |
-      | type              | VerblijfplaatsBuitenland |
-      | adresregel1       | Rue du pomme 25          |
-      | adresregel2       | Bruxelles                |
-      | adresregel3       | postcode 1000            |
-      | land.code         | 5010                     |
-      | land.omschrijving | België                   |
+      | naam                    | waarde                   |
+      | type                    | VerblijfplaatsBuitenland |
+      | adresregel1             | Rue du pomme 25          |
+      | adresregel2             | Bruxelles                |
+      | adresregel3             | postcode 1000            |
+      | land.code               | 5010                     |
+      | land.omschrijving       | België                   |
+      | gemeenteVanInschrijving | 1999                     |
 
   Rule: Als het adres in het buitenland onbekend is (land adres buitenland 13.10 heeft de waarde "0000"), worden land en de adresregels niet opgenomen, en wordt vertrokkenOnbekendWaarheen opgenomen met de waarde true.
 
@@ -170,7 +170,7 @@ Functionaliteit: Adresvelden vullen
       | burgerservicenummer | 999993586                            |
       En de persoon heeft de volgende verblijfplaats gegevens
       | naam                              | waarde |
-      | gemeente van inschrijving (09.10) | 0518   | # kan dit ingevuld zijn voor een buitenlands adres?
+      | gemeente van inschrijving (09.10) | 0518   |
       | land adres buitenland (13.10)     | 0000   |
       | regel 1 adres buitenland (13.30)  |        |
       | regel 2 adres buitenland (13.40)  |        |

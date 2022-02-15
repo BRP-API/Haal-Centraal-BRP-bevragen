@@ -221,6 +221,10 @@ components:
             $ref: '#/components/schemas/Adresregel2'
           adresregel3:
             $ref: '#/components/schemas/Adresregel3'
+          datumInschrijvingInGemeente:
+            $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+          gemeenteVanInschrijving:
+            $ref: '#/components/schemas/GemeenteVanInschrijving'
           land:
             $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
           datumVan:
@@ -320,6 +324,10 @@ components:
         - $ref: '#/components/schemas/AbstractVerblijfplaats'
         - type: object
           properties:
+            datumInschrijvingInGemeente:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+            gemeenteVanInschrijving:
+              $ref: '#/components/schemas/GemeenteVanInschrijving'
             vertrokkenOnbekendWaarheen:
               $ref: '#/components/schemas/VertrokkenOnbekendWaarheen'
             inOnderzoek:
