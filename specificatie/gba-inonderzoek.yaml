@@ -16,4 +16,4 @@ components:
           type: string
           pattern: ^[0-9]{6}$
         datumIngangOnderzoek:
-          $ref: 'datum.yaml#/components/schemas/GbaDatumBasis'
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'

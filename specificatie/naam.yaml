@@ -73,46 +73,63 @@ components:
           $ref: '#/components/schemas/Geslachtsnaam'
         adellijkeTitelPredikaat:
           $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
-    NaamBasis:
+    GbaNaam:
+      allOf:
+        - $ref: '#/components/schemas/GbaNaamBasis'
+        - properties:
+            inOnderzoek:
+              $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
+    GbaNaamGerelateerde:
       allOf:
         - $ref: '#/components/schemas/GbaNaamBasis'
         - type: object
           properties:
-            voorletters:
-              $ref: '#/components/schemas/Voorletters'
-            volledigeNaam:
-              $ref: '#/components/schemas/VolledigeNaam'
-            adellijkeTitelPredikaat:
-              $ref: '#/components/schemas/WaardetabelMetSoort'
+            inOnderzoek:
+              $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
+    GbaNaamPersoon:
+      allOf:
+        - $ref: '#/components/schemas/GbaNaamBasis'
+        - properties:
+            aanduidingNaamgebruik:
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+            inOnderzoek:
+              $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
+    NaamBasis:
+      type: object
+      properties:
+        geslachtsnaam:
+          $ref: '#/components/schemas/Geslachtsnaam'
+        volledigeNaam:
+          $ref: '#/components/schemas/VolledigeNaam'
+        voorletters:
+          $ref: '#/components/schemas/Voorletters'
+        voornamen:
+          $ref: '#/components/schemas/Voornamen'
+        voorvoegsel:
+          $ref: '#/components/schemas/Voorvoegsel'
+        adellijkeTitelPredikaat:
+          $ref: '#/components/schemas/WaardetabelMetSoort'
     Naam:
       allOf:
         - $ref: '#/components/schemas/NaamBasis'
         - properties:
             inOnderzoek:
-              $ref: '#/components/schemas/AbstractNaamInOnderzoek'
+              $ref: '#/components/schemas/NaamInOnderzoek'
     NaamGerelateerde:
-      allOf:
-        - $ref: '#/components/schemas/GbaNaamBasis'
-        - type: object
-          properties:
-            voorletters:
-              $ref: '#/components/schemas/Voorletters'
-            inOnderzoek:
-              $ref: '#/components/schemas/AbstractNaamInOnderzoek'
-    AbstractNaamInOnderzoek:
       type: object
-      description: |
-        Geeft aan welke gegevens over de naam van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
-      required:
-        - type
       properties:
-        type:
-          type: string
-      discriminator:
-        propertyName: type
-        mapping:
-          GbaInOnderzoek: '#/components/schemas/GbaNaamInOnderzoek'
-          InOnderzoek: '#/components/schemas/NaamInOnderzoek'
+        voornamen:
+          $ref: '#/components/schemas/Voornamen'
+        voorvoegsel:
+          $ref: '#/components/schemas/Voorvoegsel'
+        geslachtsnaam:
+          $ref: '#/components/schemas/Geslachtsnaam'
+        adellijkeTitelPredikaat:
+          $ref: '#/components/schemas/WaardetabelMetSoort'
+        voorletters:
+          $ref: '#/components/schemas/Voorletters'
+        inOnderzoek:
+          $ref: '#/components/schemas/NaamInOnderzoek'
     NaamInOnderzoek:
       description: |
         Geeft aan welke gegevens over de naam in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
@@ -124,14 +141,12 @@ components:
           type: boolean
         voorvoegsel:
           type: boolean
-        adellijkeTitelPredikaat:
+        adellijkeTitel:
+          type: boolean
+        predikaat:
           type: boolean
         datumIngangOnderzoek:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-    GbaNaamInOnderzoek:
-      allOf:
-        - $ref: '#/components/schemas/AbstractNaamInOnderzoek'
-        - $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     NaamPersoon:
       allOf:
         - $ref: '#/components/schemas/NaamBasis'
@@ -147,36 +162,11 @@ components:
             aanduidingNaamgebruik:
               $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
             inOnderzoek:
-              $ref: '#/components/schemas/AbstractNaamPersoonInOnderzoek'
-    AbstractNaamPersoonInOnderzoek:
-      type: object
-      description: |
-        Geeft aan welke gegevens over de naam in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
-      properties:
-        type:
-          type: string
-      discriminator:
-        propertyName: type
-        mapping:
-          GbaInOnderzoek: '#/components/schemas/GbaNaamPersoonInOnderzoek'
-          InOnderzoek: '#/components/schemas/NaamPersoonInOnderzoek'
+              $ref: '#/components/schemas/NaamPersoonInOnderzoek'
     NaamPersoonInOnderzoek:
       allOf:
-        - $ref: '#/components/schemas/AbstractNaamPersoonInOnderzoek'
-        - properties:
-            geslachtsnaam:
-              type: boolean
-            voornamen:
-              type: boolean
-            voorvoegsel:
-              type: boolean
-            adellijkeTitelPredikaat:
-              type: boolean
+        - $ref: '#/components/schemas/NaamInOnderzoek'
+        - type: object
+          properties:
             aanduidingNaamgebruik:
               type: boolean
-            datumIngangOnderzoek:
-              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-    GbaNaamPersoonInOnderzoek:
-      allOf:
-        - $ref: '#/components/schemas/AbstractNaamPersoonInOnderzoek'
-        - $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'

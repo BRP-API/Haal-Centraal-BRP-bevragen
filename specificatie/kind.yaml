@@ -6,6 +6,17 @@ info:
 paths: {}
 components:
   schemas:
+    GbaKind:
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
+        inOnderzoek:
+          $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
+        naam:
+          $ref: 'naam.yaml#/components/schemas/GbaNaamGerelateerde'
+        geboorte:
+          $ref: 'geboorte.yaml#/components/schemas/GbaGeboorte'
     AbstractKind:
       type: object
       description: |
@@ -33,7 +44,7 @@ components:
                 Leeftijd op het moment van bevragen
               example: 12
             inOnderzoek:
-              $ref: '#/components/schemas/AbstractKindInOnderzoek'
+              $ref: '#/components/schemas/KindInOnderzoek'
             naam:
               $ref: 'naam.yaml#/components/schemas/NaamGerelateerde'
             geboorte:
@@ -46,30 +57,12 @@ components:
             indicatieOnbekend:
               type: boolean
               default: false
-    AbstractKindInOnderzoek:
-      type: object
+    KindInOnderzoek:
       description: |
         Geeft aan of de gegevens over het kind van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
-      required:
-        - type
+      type: object
       properties:
-        type:
-          type: string
-      discriminator:
-        propertyName: type
-        mapping:
-          GbaInOnderzoek: '#/components/schemas/GbaKindInOnderzoek'
-          InOnderzoek: '#/components/schemas/KindInOnderzoek'
-    KindInOnderzoek:
-      allOf:
-        - $ref: '#/components/schemas/AbstractKindInOnderzoek'
-        - type: object
-          properties:
-            burgerservicenummer:
-              type: boolean
-            datumIngangOnderzoek:
-              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-    GbaKindInOnderzoek:
-      allOf:
-        - $ref: '#/components/schemas/AbstractKindInOnderzoek'
-        - $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
+        burgerservicenummer:
+          type: boolean
+        datumIngangOnderzoek:
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'

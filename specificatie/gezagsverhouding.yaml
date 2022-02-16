@@ -6,7 +6,7 @@ info:
 paths: {}
 components:
   schemas:
-    Gezagsverhouding:
+    GezagsverhoudingBasis:
       type: object
       description: |
         Gegevens over het gezag over de persoon.
@@ -18,34 +18,28 @@ components:
           example: true
         indicatieGezagMinderjarige:
           $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
-        inOnderzoek:
-          $ref: '#/components/schemas/AbstractGezagsverhoudingInOnderzoek'
-    AbstractGezagsverhoudingInOnderzoek:
-      type: object
-      description: |
-        Geeft aan welke gegevens van de gezagsverhouding in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
-      required:
-        - type
-      properties:
-        type:
-          type: string
-      discriminator:
-        propertyName: type
-        mapping:
-          GbaInOnderzoek: '#/components/schemas/GbaGezagsverhoudingInOnderzoek'
-          InOnderzoek: '#/components/schemas/GezagsverhoudingInOnderzoek'
-    GezagsverhoudingInOnderzoek:
+    GbaGezagsverhouding:
       allOf:
-        - $ref: '#/components/schemas/AbstractGezagsverhoudingInOnderzoek'
+        - $ref: '#/components/schemas/GezagsverhoudingBasis'
         - type: object
           properties:
-            indicatieCurateleRegister:
-              type: boolean
-            indicatieGezagMinderjarige:
-              type: boolean
-            datumIngangOnderzoek:
-              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-    GbaGezagsverhoudingInOnderzoek:
+            inOnderzoek:
+              $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
+    Gezagsverhouding:
       allOf:
-        - $ref: '#/components/schemas/AbstractGezagsverhoudingInOnderzoek'
-        - $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
+        - $ref: '#/components/schemas/GezagsverhoudingBasis'
+        - type: object
+          properties:
+            inOnderzoek:
+              $ref: '#/components/schemas/GezagsverhoudingInOnderzoek'
+    GezagsverhoudingInOnderzoek:
+      description: |
+        Geeft aan welke gegevens van de gezagsverhouding in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      type: object
+      properties:
+        indicatieCurateleRegister:
+          type: boolean
+        indicatieGezagMinderjarige:
+          type: boolean
+        datumIngangOnderzoek:
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'

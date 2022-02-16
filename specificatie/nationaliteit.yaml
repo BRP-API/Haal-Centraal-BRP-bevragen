@@ -18,7 +18,6 @@ components:
       discriminator:
         propertyName: type
         mapping:
-          GbaNationaliteit: '#/components/schemas/GbaNationaliteit'
           Nationaliteit: '#/components/schemas/Nationaliteit'
           BehandeldAlsNederlander: '#/components/schemas/BehandeldAlsNederlander'
           VastgesteldNietNederlander: '#/components/schemas/VastgesteldNietNederlander'
@@ -57,18 +56,18 @@ components:
       description: |
         Bij de LO GBA versie kunnen datums, bijv datumIngangGeldigheid de LoGbaDatum refereren
         Het hoeft niet van AbstractDatum af te leiden omdat het nooit een andere type kan zijn
-      allOf:
-        - $ref: '#/components/schemas/AbstractNationaliteit'
-        - type: object
-          properties:
-            datumIngangGeldigheid:
-              $ref: 'datum.yaml#/components/schemas/GbaDatumBasis'
-            nationaliteit:
-              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
-            aanduidingBijzonderNederlandschap:
-              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
-            inOnderzoek:
-                $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
+      type: object
+      properties:
+        aanduidingBijzonderNederlandschap:
+          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+        datumIngangGeldigheid:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        nationaliteit:
+          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+        redenOpname:
+          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+        inOnderzoek:
+            $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     BijzonderNederlanderschapInOnderzoek:
       type: object
       properties:
@@ -83,8 +82,6 @@ components:
       description: |
         Geeft aan welke gegevens over de nationaliteit in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
       properties:
-        aanduidingBijzonderNederlanderschap:
-          type: boolean
         nationaliteit:
           type: boolean
         redenOpname:

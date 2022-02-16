@@ -6,6 +6,21 @@ info:
 paths: {}
 components:
   schemas:
+    GbaKiesrecht:
+      type: object
+      properties:
+        europeesKiesrecht:
+          type: boolean
+          description: |
+            Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement.
+          example: true
+        uitgeslotenVanKiesrecht:
+          type: boolean
+          example: true
+        einddatumUitsluitingEuropeesKiesrecht:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        einddatumUitsluitingKiesrecht:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
     Kiesrecht:
       type: object
       properties:

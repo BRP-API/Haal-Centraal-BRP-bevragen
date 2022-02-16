@@ -23,27 +23,18 @@ components:
       discriminator:
         propertyName: type
         mapping:
-          GbaDatum: '#/components/schemas/GbaDatum'
           Datum: '#/components/schemas/VolledigDatum'
           OnbekendDatum: '#/components/schemas/OnbekendDatum'
           JaarDatum: '#/components/schemas/JaarDatum'
           JaarMaandDatum: '#/components/schemas/JaarMaandDatum'
-    GbaDatumBasis:
+    GbaDatum:
       type: object
       properties:
         datum:
           type: string
           pattern: ^[0-9]{8}$
-    GbaDatum:
-      description: Datum conform LO GBA
-      allOf:
-        - $ref: '#/components/schemas/AbstractDatum'
-        - $ref: '#/components/schemas/GbaDatumBasis'
-      required:
-        - datum
       example:
         value:
-          type: GbaDatum
           datum: "20180700"
     VolledigDatum:
       description: Datum conform iso8601

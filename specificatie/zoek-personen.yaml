@@ -276,7 +276,7 @@ components:
             personen:
               type: array
               items:
-                $ref: 'persoon.yaml#/components/schemas/Persoon'
+                $ref: 'persoon.yaml#/components/schemas/AbstractPersoon'
     ZoekMetGeslachtsnaamEnGeboortedatumResponse:
       allOf:
         - $ref: '#/components/schemas/PersonenQueryResponse'
@@ -285,7 +285,7 @@ components:
             personen:
               type: array
               items:
-                $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
+                $ref: 'persoon.yaml#/components/schemas/AbstractPersoonBeperkt'
     ZoekMetGeslachtsnaamEnGemeenteVanInschrijvingResponse:
       allOf:
         - $ref: '#/components/schemas/PersonenQueryResponse'
@@ -294,7 +294,7 @@ components:
             personen:
               type: array
               items:
-                $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
+                $ref: 'persoon.yaml#/components/schemas/AbstractPersoonBeperkt'
     ZoekMetPostcodeEnHuisnummerResponse:
       allOf:
         - $ref: '#/components/schemas/PersonenQueryResponse'
@@ -303,7 +303,7 @@ components:
             personen:
               type: array
               items:
-                $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
+                $ref: 'persoon.yaml#/components/schemas/AbstractPersoonBeperkt'
     ZoekMetStraatHuisnummerEnGemeenteVanInschrijvingResponse:
       allOf:
         - $ref: '#/components/schemas/PersonenQueryResponse'
@@ -312,7 +312,7 @@ components:
             personen:
               type: array
               items:
-                $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
+                $ref: 'persoon.yaml#/components/schemas/AbstractPersoonBeperkt'
     ZoekMetNummeraanduidingIdentificatieResponse:
       allOf:
         - $ref: '#/components/schemas/PersonenQueryResponse'
@@ -321,4 +321,4 @@ components:
             personen:
               type: array
               items:
-                $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
+                $ref: 'persoon.yaml#/components/schemas/AbstractPersoonBeperkt'

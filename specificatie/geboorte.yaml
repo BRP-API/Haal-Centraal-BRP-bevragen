@@ -6,55 +6,51 @@ info:
 paths: {}
 components:
   schemas:
+    GbaGeboorteBeperkt:
+      type: object
+      properties:
+        datum:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+    GbaGeboorte:
+      allOf:
+        - $ref: '#/components/schemas/GbaGeboorteBeperkt'
+        - type: object
+          properties:
+            land:
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+            plaats:
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+            inOnderzoek:
+              $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     GeboorteBeperkt:
       type: object
       properties:
         datum:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
     Geboorte:
-      type: object
       description: |
         Gegevens over de geboorte.
         * **datum** : datum waarop de persoon is geboren.
         * **land** : land waar de persoon is geboren
         * **plaats** : gemeente waar de persoon is geboren. Is de persoon geboren buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.
-      properties:
-        datum:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-        land:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
-        plaats:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
-        inOnderzoek:
-          $ref: '#/components/schemas/AbstractGeboorteInOnderzoek'
-    AbstractGeboorteInOnderzoek:
-      type: object
-      description: |
-        Geeft aan welke gegevens over de geboorte van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
-      required:
-        - type
-      properties:
-        type:
-          type: string
-      discriminator:
-        propertyName: type
-        mapping:
-          GbaInOnderzoek: '#/components/schemas/GbaGeboorteInOnderzoek'
-          InOnderzoek: '#/components/schemas/GeboorteInOnderzoek'
-    GeboorteInOnderzoek:
       allOf:
-        - $ref: '#/components/schemas/AbstractGeboorteInOnderzoek'
+        - $ref: '#/components/schemas/GeboorteBeperkt'
         - type: object
           properties:
-            datum:
-              type: boolean
             land:
-              type: boolean
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
             plaats:
-              type: boolean
-            datumIngangOnderzoek:
-              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-    GbaGeboorteInOnderzoek:
-      allOf:
-        - $ref: '#/components/schemas/AbstractGeboorteInOnderzoek'
-        - $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+            inOnderzoek:
+              $ref: '#/components/schemas/GeboorteInOnderzoek'
+    GeboorteInOnderzoek:
+      type: object
+      properties:
+        datum:
+          type: boolean
+        land:
+          type: boolean
+        plaats:
+          type: boolean
+        datumIngangOnderzoek:
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'

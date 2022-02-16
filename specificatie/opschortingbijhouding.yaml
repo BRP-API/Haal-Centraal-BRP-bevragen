@@ -13,6 +13,15 @@ components:
       properties:
         reden:
           $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+    GbaOpschortingBijhouding:
+      allOf:
+        - $ref: '#/components/schemas/OpschortingBijhoudingBasis'
+        - type: object
+          description: |
+            * **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.
+          properties:
+            datum:
+              $ref: 'datum.yaml#/components/schemas/GbaDatum'
     OpschortingBijhouding:
       allOf:
         - $ref: '#/components/schemas/OpschortingBijhoudingBasis'

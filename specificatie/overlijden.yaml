@@ -10,81 +10,56 @@ components:
       type: boolean
       description: |
         Geeft aan dat iemand is overleden (waarde true), ongeacht of de overlijdensdatum bekend is.
-    AbstractOverlijdenBasis:
-      description: |
-        Gegevens over het overlijden van de persoon.
-      type: object
-      required:
-        - type
-      properties:
-        type:
-          type: string
-      discriminator:
-        propertyName: type
-        mapping:
-          GbaOverlijden: '#/components/schemas/GbaOverlijdenBasis'
-          Overlijden: '#/components/schemas/OverlijdenBasis'
     GbaOverlijdenBasis:
-      allOf:
-        - $ref: '#/components/schemas/AbstractOverlijdenBasis'
-        - type: object
-          properties:
-            datum:
-              $ref: 'datum.yaml#/components/schemas/GbaDatumBasis'
-    OverlijdenBasis:
-      allOf:
-        - $ref: '#/components/schemas/AbstractOverlijdenBasis'
-        - type: object
-          properties:
-            indicatieOverleden:
-              $ref: '#/components/schemas/IndicatieOverleden'
-    Overlijden:
       type: object
+      properties:
+        datum:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+    GbaOverlijden:
+      allOf:
+        - $ref: '#/components/schemas/GbaOverlijdenBasis'
+        - type: object
+          properties:
+            land:
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+            plaats:
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+            inOnderzoek:
+              $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
+    OverlijdenBasis:
+      type: object
+      properties:
+        indicatieOverleden:
+          $ref: '#/components/schemas/IndicatieOverleden'
+    Overlijden:
       description: |
         Gegevens over het overlijden van de persoon.
         * **datum** : datum waarop de persoon is overleden.
         * **land** : land waar de persoon is overleden.
         * **plaats** : gemeente waar de persoon is overleden. Is de persoon overleden buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.
-      properties:
-        datum:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-        land:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
-        plaats:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
-        indicatieOverleden:
-          $ref: '#/components/schemas/IndicatieOverleden'
-        inOnderzoek:
-          $ref: '#/components/schemas/AbstractOverlijdenInOnderzoek'
-    AbstractOverlijdenInOnderzoek:
-      type: object
-      description: |
-        Geeft aan welke gegevens over het overlijden van de persoon in onderzoek zijn.
-        Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
-      required:
-        - type
-      properties:
-        type:
-          type: string
-      discriminator:
-        propertyName: type
-        mapping:
-          GbaInOnderzoek: '#/components/schemas/GbaOverlijdenInOnderzoek'
-          InOnderzoek: '#/components/schemas/OverlijdenInOnderzoek'
-    OverlijdenInOnderzoek:
       allOf:
-        - $ref: '#/components/schemas/AbstractOverlijdenInOnderzoek'
+        - $ref: '#/components/schemas/OverlijdenBasis'
         - type: object
           properties:
             datum:
-              type: boolean
-            land:
-              type: boolean
-            plaats:
-              type: boolean
-            datumIngangOnderzoek:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-    GbaOverlijdenInOnderzoek:
-      allOf:
-        - $ref: '#/components/schemas/AbstractOverlijdenInOnderzoek'
-        - $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
+            land:
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+            plaats:
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+            inOnderzoek:
+              $ref: '#/components/schemas/OverlijdenInOnderzoek'
+    OverlijdenInOnderzoek:
+      description: |
+        Geeft aan welke gegevens over het overlijden van de persoon in onderzoek zijn.
+        Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      type: object
+      properties:
+        datum:
+          type: boolean
+        land:
+          type: boolean
+        plaats:
+          type: boolean
+        datumIngangOnderzoek:
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
