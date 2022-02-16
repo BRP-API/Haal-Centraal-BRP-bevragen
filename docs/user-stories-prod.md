@@ -7,7 +7,9 @@ title: User Stories in Productie
 
 ## Vanaf versie 1.3
 
+- [Als PO wil ik dat Rate Limiting headers worden opgenomen in de definitie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/912){:target="_blank" rel="noopener"}
 - [Als medewerker parkeren heb ik het A-nummer van een persoon nodig](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/805){:target="_blank" rel="noopener"}
+- [Als PO vraag ik mij af wat de toegevoegde waarde van de raadpleeg endpoints ouders, kinderen en partners met identificatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/795){:target="_blank" rel="noopener"}
 - [Als medewerker bijstandverlening wil ik weten wat de BSN en het A-nummer is van rechthebbende](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/782){:target="_blank" rel="noopener"}
 
 ## Vanaf versie 1.2
