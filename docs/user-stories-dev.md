@@ -5,6 +5,7 @@ title: User Stories in Ontwikkeling
 
 # User stories
 
+- [Als PO wil ik het aantal combinaties van inputparameters verkleinen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/915){:target="_blank" rel="noopener"}
 - [Als PO wil ik een strakkere specificatie van de validatieregels voor de response payload (outputvalidatie)](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/913){:target="_blank" rel="noopener"}
 - [Als PO wil ik een strakkere specificatie van validatieregels voor input parameters](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/911){:target="_blank" rel="noopener"}
 - [Als PO wil ik geen Uniform Resource Identifier met een BSN](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/910){:target="_blank" rel="noopener"}
