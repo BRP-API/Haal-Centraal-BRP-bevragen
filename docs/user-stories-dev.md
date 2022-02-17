@@ -9,6 +9,7 @@ title: User Stories in Ontwikkeling
 - [Als PO wil ik dat de response op een zoekvraag uitsluitend noodzakelijke gegevens bevat voor selectie van een te raadplegen persoon ](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/916){:target="_blank" rel="noopener"}
 - [Als PO wil ik het aantal combinaties van inputparameters verkleinen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/915){:target="_blank" rel="noopener"}
 - [Als PO wil ik een strakkere specificatie van de validatieregels voor de response payload (outputvalidatie)](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/913){:target="_blank" rel="noopener"}
+- [Als PO wil ik dat Rate Limiting headers worden opgenomen in de definitie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/912){:target="_blank" rel="noopener"}
 - [Als PO wil ik een strakkere specificatie van validatieregels voor input parameters](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/911){:target="_blank" rel="noopener"}
 - [Als PO wil ik geen Uniform Resource Identifier met een BSN](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/910){:target="_blank" rel="noopener"}
 - [Als medewerker van een gemeente wil ik weten welke gegevens de status "in onderzoek" hebben](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/907){:target="_blank" rel="noopener"}
