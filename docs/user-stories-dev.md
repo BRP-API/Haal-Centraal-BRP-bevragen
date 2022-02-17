@@ -5,6 +5,8 @@ title: User Stories in Ontwikkeling
 
 # User stories
 
+- [Als PO wil ik dat uit de protocollering kan worden opgemaakt of een persoon in het antwoord op een zoekvraag is voorgekomen of dat een persoon geraadpleegd is](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/917){:target="_blank" rel="noopener"}
+- [Als PO wil ik dat de response op een zoekvraag uitsluitend noodzakelijke gegevens bevat voor selectie van een te raadplegen persoon ](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/916){:target="_blank" rel="noopener"}
 - [Als PO wil ik het aantal combinaties van inputparameters verkleinen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/915){:target="_blank" rel="noopener"}
 - [Als PO wil ik een strakkere specificatie van de validatieregels voor de response payload (outputvalidatie)](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/913){:target="_blank" rel="noopener"}
 - [Als PO wil ik een strakkere specificatie van validatieregels voor input parameters](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/911){:target="_blank" rel="noopener"}
