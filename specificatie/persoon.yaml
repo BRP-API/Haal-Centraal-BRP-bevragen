@@ -42,8 +42,8 @@ components:
       discriminator:
         propertyName: type
         mapping:
-          GbaPersoon: '#/components/schemas/GbaPersoonBeperkt'
-          Persoon: '#/components/schemas/PersoonBeperkt'
+          GbaPersoonBeperkt: '#/components/schemas/GbaPersoonBeperkt'
+          PersoonBeperkt: '#/components/schemas/PersoonBeperkt'
     AbstractPersoon:
       type: object
       required:
