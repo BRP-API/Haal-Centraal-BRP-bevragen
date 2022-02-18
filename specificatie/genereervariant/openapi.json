@@ -435,7 +435,7 @@
         "example" : true
       },
       "ZoekMetGeslachtsnaamEnGemeenteVanInschrijving" : {
-        "required" : [ "gemeenteVanInschrijving", "geslachtsnaam" ],
+        "required" : [ "gemeenteVanInschrijving", "geslachtsnaam", "voornamen" ],
         "allOf" : [ {
           "$ref" : "#/components/schemas/PersonenQuery"
         }, {
@@ -642,8 +642,8 @@
         "discriminator" : {
           "propertyName" : "type",
           "mapping" : {
-            "GbaPersoon" : "#/components/schemas/GbaPersoonBeperkt",
-            "Persoon" : "#/components/schemas/PersoonBeperkt"
+            "GbaPersoonBeperkt" : "#/components/schemas/GbaPersoonBeperkt",
+            "PersoonBeperkt" : "#/components/schemas/PersoonBeperkt"
           }
         }
       },
@@ -979,7 +979,7 @@
         "example" : 14
       },
       "Huisnummertoevoeging" : {
-        "pattern" : "^[a-zA-Z0-9]{1,4}$",
+        "pattern" : "^[a-zA-Z0-9 \\-]{1,4}$",
         "type" : "string",
         "description" : "Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.\n",
         "example" : "bis"
@@ -991,7 +991,7 @@
         "example" : "2341SX"
       },
       "StraatFilter" : {
-        "pattern" : "^(\\?+|\\*)?[a-zA-Z0-9À-ÿ '\\-\\']{1,80}(\\?+|\\*)?$",
+        "pattern" : "^(\\?+|\\*)?[a-zA-Z0-9À-ÿ '\\-\\']{7,80}(\\?+|\\*)?$",
         "type" : "string",
         "description" : "Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).\n",
         "example" : "Tulpstraat"
