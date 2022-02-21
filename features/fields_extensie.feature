@@ -16,40 +16,45 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
     En persoon met burgerservicenummer 999992077 is overleden
 
   Scenario: gevraagd gegeven is in onderzoek en geen fields gebruikt
-    Als persoon wordt gevraagd met "/ingeschrevenpersonen/999994086"
-    Dan bevat het antwoord geboorte.datum met de waarde "1986-04-01"
+    Als persoon wordt gevraagd met "/personen"
+	En de requestbody bevat burgerservicenummer met de waarde "999994086"
+    Dan bevat het antwoord geboorte.datum.datum met de waarde "1986-04-01"
     En bevat het antwoord geboorte.inOnderzoek.datum met de waarde true
-    En bevat het antwoord geboorte.inOnderzoek.datumIngangOnderzoek
+    En bevat het antwoord geboorte.inOnderzoek.datumIngangOnderzoek.datum
     En bevat het antwoord veld geboorte.plaats met een waarde
     En bevat het antwoord niet geboorte.inOnderzoek.plaats
     En bevat het antwoord veld geboorte.land met een waarde
     En bevat het antwoord niet geboorte.inOnderzoek.land
 
   Scenario: gevraagd gegeven is in onderzoek en het gegeven in onderzoek wordt gevraagd
-    Als persoon wordt gevraagd met "/ingeschrevenpersonen/999994086?fields=geboorte.datum"
+    Als persoon wordt gevraagd met "/personen?fields=geboorte.datum"
+	En de requestbody bevat burgerservicenummer met de waarde "999994086"
     Dan bevat het antwoord geboorte.datum.datum met de waarde "1986-04-01"
     En bevat het antwoord geboorte.inOnderzoek.datum met de waarde true
-    En bevat het antwoord geboorte.inOnderzoek.datumIngangOnderzoek
+    En bevat het antwoord geboorte.inOnderzoek.datumIngangOnderzoek.datum
 
   Scenario: gevraagd gegeven is in onderzoek en de groep waar het gegeven in onderzoek in zit wordt gevraagd met fields
-    Als persoon wordt gevraagd met "/ingeschrevenpersonen/999994086?fields=geboorte"
-    Dan bevat het antwoord geboorte.datum met de waarde "1986-04-01"
+    Als persoon wordt gevraagd met "/personen?fields=geboorte"
+	En de requestbody bevat burgerservicenummer met de waarde "999994086"
+    Dan bevat het antwoord geboorte.datum.datum met de waarde "1986-04-01"
     En bevat het antwoord geboorte.inOnderzoek.datum met de waarde true
-    En bevat het antwoord geboorte.inOnderzoek.datumIngangOnderzoek
+    En bevat het antwoord geboorte.inOnderzoek.datumIngangOnderzoek.datum
     En bevat het antwoord veld geboorte.plaats met een waarde
     En bevat het antwoord niet geboorte.inOnderzoek.plaats
     En bevat het antwoord veld geboorte.land met een waarde
     En bevat het antwoord niet geboorte.inOnderzoek.land
 
   Scenario: gevraagd gegeven is in onderzoek en het gegeven in onderzoek wordt niet gevraagd met fields
-    Als persoon wordt gevraagd met "/ingeschrevenpersonen/999994086?fields=geboorte.plaats"
+    Als persoon wordt gevraagd met "/personen?fields=geboorte.plaats"
+	En de requestbody bevat burgerservicenummer met de waarde "999994086"
     Dan bevat het antwoord veld geboorte.plaats met een waarde
     En bevat het antwoord niet geboorte.datum
     En bevat het antwoord niet geboorte.land
     En bevat het antwoord niet geboorte.inOnderzoek
 
   Scenario: leveren geheimhoudingPersoonsgegevens als daar niet om is gevraagd
-    Als persoon wordt gevraagd met "/ingeschrevenpersonen/999993483?fields=geboorte.plaats"
+    Als persoon wordt gevraagd met "/personen?fields=geboorte.plaats"
+	En de requestbody bevat burgerservicenummer met de waarde "999993483"
     Dan bevat het antwoord veld geheimhoudingPersoonsgegevens met de waarde true
     En bevat het antwoord veld geboorte.plaats met een waarde
     En bevat het antwoord niet geboorte.datum
@@ -57,7 +62,8 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
     En bevat het antwoord niet geboorte.inOnderzoek
 
   Scenario: leveren opschortingBijhouding als daar niet om is gevraagd
-    Als persoon wordt gevraagd met "/ingeschrevenpersonen/999992077?fields=geboorte.plaats"
+    Als persoon wordt gevraagd met "/personen?fields=geboorte.plaats"
+	En de requestbody bevat burgerservicenummer met de waarde "999992077"
     Dan bevat het antwoord veld opschortingBijhouding.reden met de waarde "overlijden"
     En bevat het antwoord veld opschortingBijhouding.datum.datum met de waarde "2015-10-01"
     En bevat het antwoord veld geboorte.plaats met een waarde
