@@ -834,6 +834,10 @@ components:
     GbaVerblijfplaatsBeperkt:
       type: object
       properties:
+        functieAdres:
+          $ref: '#/components/schemas/Waardetabel'
+        woonplaats:
+          $ref: '#/components/schemas/Woonplaats'
         straat:
           $ref: '#/components/schemas/Straat'
         huisnummer:
@@ -858,6 +862,13 @@ components:
           $ref: '#/components/schemas/Adresregel2'
         adresregel3:
           $ref: '#/components/schemas/Adresregel3'
+    Woonplaats:
+      title: woonplaats naam
+      pattern: ^[a-zA-Z0-9À-ÿ '\-\']{1,80}$
+      type: string
+      description: |
+        Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.
+      example: Duiven
     Straat:
       pattern: ^[a-zA-Z0-9À-ÿ '\-\']{1,80}$
       type: string
@@ -974,13 +985,6 @@ components:
             $ref: '#/components/schemas/Adresregel2'
           woonplaats:
             $ref: '#/components/schemas/Woonplaats'
-    Woonplaats:
-      title: woonplaats naam
-      pattern: ^[a-zA-Z0-9À-ÿ '\-\']{1,80}$
-      type: string
-      description: |
-        Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.
-      example: Duiven
     VerblijfplaatsOnbekend:
       allOf:
       - $ref: '#/components/schemas/AbstractVerblijfplaats'
@@ -1201,8 +1205,6 @@ components:
           type: boolean
         locatiebeschrijving:
           type: boolean
-        woonplaats:
-          type: boolean
         datumIngangOnderzoek:
           $ref: '#/components/schemas/AbstractDatum'
     VertrokkenOnbekendWaarheen:
@@ -1320,36 +1322,56 @@ components:
           inOnderzoek:
             $ref: '#/components/schemas/GbaInOnderzoek'
     GbaVerblijfplaats:
-      allOf:
-      - $ref: '#/components/schemas/AbstractVerblijfplaats'
-      - type: object
-        properties:
-          straat:
-            $ref: '#/components/schemas/Straat'
-          huisnummer:
-            $ref: '#/components/schemas/Huisnummer'
-          huisletter:
-            $ref: '#/components/schemas/Huisletter'
-          huisnummertoevoeging:
-            $ref: '#/components/schemas/Huisnummertoevoeging'
-          aanduidingBijHuisnummer:
-            $ref: '#/components/schemas/Waardetabel'
-          postcode:
-            $ref: '#/components/schemas/Postcode'
-          locatiebeschrijving:
-            $ref: '#/components/schemas/Locatiebeschrijving'
-          land:
-            $ref: '#/components/schemas/Waardetabel'
-          datumAanvangAdreshouding:
-            $ref: '#/components/schemas/GbaDatum'
-          datumAanvangAdresBuitenland:
-            $ref: '#/components/schemas/GbaDatum'
-          gemeenteVanInschrijving:
-            $ref: '#/components/schemas/GemeenteVanInschrijving'
-          naamOpenbareRuimte:
-            $ref: '#/components/schemas/NaamOpenbareRuimte'
-          inOnderzoek:
-            $ref: '#/components/schemas/GbaInOnderzoek'
+      type: object
+      properties:
+        adresregel1:
+          $ref: '#/components/schemas/Adresregel1'
+        adresregel2:
+          $ref: '#/components/schemas/Adresregel2'
+        adresregel3:
+          $ref: '#/components/schemas/Adresregel3'
+        adresseerbaarObjectIdentificatie:
+          $ref: '#/components/schemas/AdresseerbaarObjectIdentificatie'
+        nummeraanduidingIdentificatie:
+          $ref: '#/components/schemas/NummeraanduidingIdentificatie'
+        functieAdres:
+          $ref: '#/components/schemas/Waardetabel'
+        woonplaats:
+          $ref: '#/components/schemas/Woonplaats'
+        landVanwaarIngeschreven:
+          $ref: '#/components/schemas/Waardetabel'
+        straat:
+          $ref: '#/components/schemas/Straat'
+        huisnummer:
+          $ref: '#/components/schemas/Huisnummer'
+        huisletter:
+          $ref: '#/components/schemas/Huisletter'
+        huisnummertoevoeging:
+          $ref: '#/components/schemas/Huisnummertoevoeging'
+        aanduidingBijHuisnummer:
+          $ref: '#/components/schemas/Waardetabel'
+        postcode:
+          $ref: '#/components/schemas/Postcode'
+        locatiebeschrijving:
+          $ref: '#/components/schemas/Locatiebeschrijving'
+        land:
+          $ref: '#/components/schemas/Waardetabel'
+        datumAanvangAdreshouding:
+          $ref: '#/components/schemas/GbaDatum'
+        datumAanvangAdresBuitenland:
+          $ref: '#/components/schemas/GbaDatum'
+        datumIngangGeldigheid:
+          $ref: '#/components/schemas/GbaDatum'
+        datumInschrijvingInGemeente:
+          $ref: '#/components/schemas/GbaDatum'
+        datumVestigingInNederland:
+          $ref: '#/components/schemas/GbaDatum'
+        gemeenteVanInschrijving:
+          $ref: '#/components/schemas/GemeenteVanInschrijving'
+        naamOpenbareRuimte:
+          $ref: '#/components/schemas/NaamOpenbareRuimte'
+        inOnderzoek:
+          $ref: '#/components/schemas/GbaInOnderzoek'
     NaamOpenbareRuimte:
       type: string
     GbaGezagsverhouding:
