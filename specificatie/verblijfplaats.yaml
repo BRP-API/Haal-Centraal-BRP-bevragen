@@ -166,6 +166,10 @@ components:
     GbaVerblijfplaatsBeperkt:
       type: object
       properties:
+        functieAdres:
+          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+        woonplaats:
+          $ref: '#/components/schemas/Woonplaats'
         straat:
           $ref: '#/components/schemas/Straat'
         huisnummer:
@@ -329,36 +333,56 @@ components:
             inOnderzoek:
               $ref: '#/components/schemas/VerblijfplaatsOnbekendInOnderzoek'
     GbaVerblijfplaats:
-      allOf:
-        - $ref: '#/components/schemas/AbstractVerblijfplaats'
-        - type: object
-          properties:
-            straat:
-              $ref: '#/components/schemas/Straat'
-            huisnummer:
-              $ref: '#/components/schemas/Huisnummer'
-            huisletter:
-              $ref: '#/components/schemas/Huisletter'
-            huisnummertoevoeging:
-              $ref: '#/components/schemas/Huisnummertoevoeging'
-            aanduidingBijHuisnummer:
-              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
-            postcode:
-              $ref: '#/components/schemas/Postcode'
-            locatiebeschrijving:
-              $ref: '#/components/schemas/Locatiebeschrijving'
-            land:
-              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
-            datumAanvangAdreshouding:
-              $ref: 'datum.yaml#/components/schemas/GbaDatum'
-            datumAanvangAdresBuitenland:
-              $ref: 'datum.yaml#/components/schemas/GbaDatum'
-            gemeenteVanInschrijving:
-              $ref: '#/components/schemas/GemeenteVanInschrijving'
-            naamOpenbareRuimte:
-              $ref: '#/components/schemas/NaamOpenbareRuimte'
-            inOnderzoek:
-              $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
+      type: object
+      properties:
+        adresregel1:
+          $ref: '#/components/schemas/Adresregel1'
+        adresregel2:
+          $ref: '#/components/schemas/Adresregel2'
+        adresregel3:
+          $ref: '#/components/schemas/Adresregel3'
+        adresseerbaarObjectIdentificatie:
+          $ref: '#/components/schemas/AdresseerbaarObjectIdentificatie'
+        nummeraanduidingIdentificatie:
+          $ref: '#/components/schemas/NummeraanduidingIdentificatie'
+        functieAdres:
+          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+        woonplaats:
+          $ref: '#/components/schemas/Woonplaats'
+        landVanwaarIngeschreven:
+          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+        straat:
+          $ref: '#/components/schemas/Straat'
+        huisnummer:
+          $ref: '#/components/schemas/Huisnummer'
+        huisletter:
+          $ref: '#/components/schemas/Huisletter'
+        huisnummertoevoeging:
+          $ref: '#/components/schemas/Huisnummertoevoeging'
+        aanduidingBijHuisnummer:
+          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+        postcode:
+          $ref: '#/components/schemas/Postcode'
+        locatiebeschrijving:
+          $ref: '#/components/schemas/Locatiebeschrijving'
+        land:
+          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+        datumAanvangAdreshouding:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        datumAanvangAdresBuitenland:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        datumIngangGeldigheid:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        datumInschrijvingInGemeente:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        datumVestigingInNederland:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        gemeenteVanInschrijving:
+          $ref: '#/components/schemas/GemeenteVanInschrijving'
+        naamOpenbareRuimte:
+          $ref: '#/components/schemas/NaamOpenbareRuimte'
+        inOnderzoek:
+          $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     VerblijfplaatsBuitenlandInOnderzoek:
       type: object
       properties:
@@ -428,8 +452,6 @@ components:
         landVanwaarIngeschreven:
           type: boolean
         locatiebeschrijving:
-          type: boolean
-        woonplaats:
           type: boolean
         datumIngangOnderzoek:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
