@@ -10,38 +10,121 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
     # N.B. Je kan ontbonden/beëindigde huwelijken of partnerschappen raadplegen met de Haal-Centraal-BRP-historie-bevragen API.
 
     Scenario: Actueel huwelijk
-      Gegeven de persoon met burgerservicenummer 999990184 heeft de volgende huwelijken/partnerschappen in de registratie
-        | Categorie | soort verbintenis (15.10) | Voornamen (02.10) | Datum aangaan (06.10) | Datum ontbinding (07.10) | Onjuist (84.10) |
-        | 5         | H                         | Merel             | 20010215              |                          |                 |
-      Als de persoon met burgerservicenummer 999990184 wordt geraadpleegd met fields=partners
-      Dan bevat het antwoord een partner met naam.voornamen "Merel"
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999990184 |
+      En de persoon heeft een partner met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999992935 |
+      En de partner heeft de volgende naam gegevens
+      | naam              | waarde |
+      | voornamen (02.10) | Merel  |
+      En de partner heeft de volgende aangaanHuwelijkPartnerschap gegevens
+      | naam                      | waarde   |
+      | datum aangaan (06.10)     | 20010215 |
+      | soort verbintenis (15.10) | H        |
+      | indicatie onjuist (84.10) |          |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999990184                       |
+      | fields              | partners.naam.voornamen         |
+      Dan heeft de persoon met burgerservicenummer '999990184' alleen 'partners' met de volgende gegevens
+      | burgerservicenummer |
+      | 999992935           |
+      En heeft de partner met burgerservicenummer '999992935' de volgende 'naam' gegevens
+      | naam      | waarde |
+      | voornamen | Merel  |
 
     Scenario: Actueel partnerschap
-      Gegeven de persoon met burgerservicenummer 999993380 heeft de volgende huwelijken/partnerschappen in de registratie
-        | Categorie | soort verbintenis (15.10) | Voornamen (02.10) | Datum aangaan (06.10) | Datum ontbinding (07.10) | Onjuist (84.10) |
-        | 5         | P                         | Reindert          | 20040506              |                          |                 |
-      Als de persoon met burgerservicenummer 999993380 wordt geraadpleegd met fields=partners
-      Dan bevat het antwoord een partner met naam.voornamen "Reindert"
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999993380 |
+      En de persoon heeft een partner met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999992935 |
+      En de partner heeft de volgende naam gegevens
+      | naam              | waarde   |
+      | voornamen (02.10) | Reindert |
+      En de partner heeft de volgende aangaanHuwelijkPartnerschap gegevens
+      | naam                      | waarde   |
+      | datum aangaan (06.10)     | 20040506 |
+      | soort verbintenis (15.10) | P        |
+      | indicatie onjuist (84.10) |          |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999993380                       |
+      | fields              | partners.naam.voornamen         |
+      Dan heeft de persoon met burgerservicenummer '999993380' alleen 'partners' met de volgende gegevens
+      | burgerservicenummer |
+      | 999992935           |
+      En heeft de partner met burgerservicenummer '999992935' de volgende 'naam' gegevens
+      | naam      | waarde   |
+      | voornamen | Reindert |
 
     Scenario: Huwelijk/partnerschap is ontbonden
-      Gegeven de persoon met burgerservicenummer 999992806 heeft de volgende huwelijken/partnerschappen in de registratie
-        | Categorie | Voornamen (02.10) | Datum aangaan (06.10) | Datum ontbinding (07.10) | Onjuist (84.10) |
-        | 5         | Osama             |                       | 20011109                 |                 |
-        | 55        | Osama             | 20000115              |                          |                 |
-      Als de persoon met burgerservicenummer 999992806 wordt geraadpleegd met fields=partners
-      Dan bevat het antwoord GEEN partners
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999992806 |
+      En de persoon heeft een partner met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999992935 |
+      En de partner heeft de volgende naam gegevens
+      | naam              | waarde |
+      | voornamen (02.10) | Osama  |
+      En de partner heeft de volgende aangaanHuwelijkPartnerschap gegevens
+      | naam                      | waarde   |
+      | datum aangaan (06.10)     | 20000115 |
+      | indicatie onjuist (84.10) |          |
+      En de partner heeft de volgende ontbindingHuwelijkPartnerschap gegevens
+      | naam                     | waarde   |
+      | datum ontbinding (07.10) | 20011109 |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999993380                       |
+      | fields              | partners.naam.voornamen         |
+      Dan heeft de persoon met burgerservicenummer '999993380' GEEN 'partners'
 
     Scenario: Een actueel huwelijk en een ontbonden huwelijk
-      Gegeven de persoon met burgerservicenummer 999991553 heeft de volgende huwelijken/partnerschappen in de registratie
-        | Categorie | Voornamen | Datum aangaan (06.10) | Datum ontbinding (07.10) |
-        | 5         | Karel     | 20091102              |                          |
-        | 5         | Björn     |                       | 20080706                 |
-        | 55        | Björn     | 19870714              |                          |
-        | 55        | Björn     | 19870714              |                          |
-      Als de persoon met burgerservicenummer 999991553 wordt geraadpleegd met fields=partners
-      Dan bevat het antwoord 1 partner
-      En bevat het antwoord de partner met naam.voornamen "Karel"
-      En bevat het antwoord GEEN partner met naam.voornamen "Björn"
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999991553 |
+      En de persoon heeft een partner met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999992935 |
+      En de partner heeft de volgende naam gegevens
+      | naam              | waarde |
+      | voornamen (02.10) | Karel  |
+      En de partner heeft de volgende aangaanHuwelijkPartnerschap gegevens
+      | naam                      | waarde   |
+      | datum aangaan (06.10)     | 20091102 |
+      | indicatie onjuist (84.10) |          |
+      En de persoon heeft een partner met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999992936 |
+      En de partner heeft de volgende naam gegevens
+      | naam              | waarde |
+      | voornamen (02.10) | Björn  |
+      En de partner heeft de volgende aangaanHuwelijkPartnerschap gegevens
+      | naam                      | waarde   |
+      | datum aangaan (06.10)     | 19870714 |
+      | indicatie onjuist (84.10) |          |
+      En de partner heeft de volgende ontbindingHuwelijkPartnerschap gegevens
+      | naam                     | waarde   |
+      | datum ontbinding (07.10) | 20080706 |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999991553                       |
+      | fields              | partners.naam.voornamen         |
+      Dan heeft de persoon met burgerservicenummer '999991553' alleen 'partners' met de volgende gegevens
+      | burgerservicenummer |
+      | 999992935           |
+      En heeft de partner met burgerservicenummer '999992935' de volgende 'naam' gegevens
+      | naam      | waarde |
+      | voornamen | Karel  |
 
 
   Rule: Een partner wordt niet opgenomen wanneer het huwelijk of het partnerschap onjuist is
