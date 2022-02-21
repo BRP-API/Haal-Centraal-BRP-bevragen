@@ -98,7 +98,7 @@ components:
         propertyName: type
         mapping:
           ZoekMetGeslachtsnaamEnGeboortedatum: '#/components/schemas/ZoekMetGeslachtsnaamEnGeboortedatum'
-          ZoekMetGeslachtsnaamEnGemeenteVanInschrijving: '#/components/schemas/ZoekMetGeslachtsnaamEnGemeenteVanInschrijving'
+          ZoekMetNaamEnGemeenteVanInschrijving: '#/components/schemas/ZoekMetNaamEnGemeenteVanInschrijving'
           RaadpleegMetBurgerservicenummer: '#/components/schemas/RaadpleegMetBurgerservicenummer'
           ZoekMetPostcodeEnHuisnummer: '#/components/schemas/ZoekMetPostcodeEnHuisnummer'
           ZoekMetStraatHuisnummerEnGemeenteVanInschrijving: '#/components/schemas/ZoekMetStraatHuisnummerEnGemeenteVanInschrijving'
@@ -170,7 +170,7 @@ components:
               type: string
               pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ' '\-\']{1,200}(\?+|\*)?$
               example: "Dirk"
-    ZoekMetGeslachtsnaamEnGemeenteVanInschrijving:
+    ZoekMetNaamEnGemeenteVanInschrijving:
       required:
         - geslachtsnaam
         - gemeenteVanInschrijving
@@ -261,7 +261,7 @@ components:
         propertyName: type
         mapping:
           ZoekMetGeslachtsnaamEnGeboortedatum: '#/components/schemas/ZoekMetGeslachtsnaamEnGeboortedatumResponse'
-          ZoekMetGeslachtsnaamEnGemeenteVanInschrijving: '#/components/schemas/ZoekMetGeslachtsnaamEnGemeenteVanInschrijvingResponse'
+          ZoekMetNaamEnGemeenteVanInschrijving: '#/components/schemas/ZoekMetNaamEnGemeenteVanInschrijvingResponse'
           RaadpleegMetBurgerservicenummer: '#/components/schemas/RaadpleegMetBurgerservicenummerResponse'
           ZoekMetPostcodeEnHuisnummer: '#/components/schemas/ZoekMetPostcodeEnHuisnummerResponse'
           ZoekMetStraatHuisnummerEnGemeenteVanInschrijving: '#/components/schemas/ZoekMetStraatHuisnummerEnGemeenteVanInschrijvingResponse'
@@ -287,7 +287,7 @@ components:
               type: array
               items:
                 $ref: 'persoon.yaml#/components/schemas/AbstractPersoonBeperkt'
-    ZoekMetGeslachtsnaamEnGemeenteVanInschrijvingResponse:
+    ZoekMetNaamEnGemeenteVanInschrijvingResponse:
       allOf:
         - $ref: '#/components/schemas/PersonenQueryResponse'
         - type: object
