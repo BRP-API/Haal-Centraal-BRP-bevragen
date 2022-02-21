@@ -255,7 +255,7 @@
           "propertyName" : "type",
           "mapping" : {
             "ZoekMetGeslachtsnaamEnGeboortedatum" : "#/components/schemas/ZoekMetGeslachtsnaamEnGeboortedatumResponse",
-            "ZoekMetGeslachtsnaamEnGemeenteVanInschrijving" : "#/components/schemas/ZoekMetGeslachtsnaamEnGemeenteVanInschrijvingResponse",
+            "ZoekMetNaamEnGemeenteVanInschrijving" : "#/components/schemas/ZoekMetNaamEnGemeenteVanInschrijvingResponse",
             "RaadpleegMetBurgerservicenummer" : "#/components/schemas/RaadpleegMetBurgerservicenummerResponse",
             "ZoekMetPostcodeEnHuisnummer" : "#/components/schemas/ZoekMetPostcodeEnHuisnummerResponse",
             "ZoekMetStraatHuisnummerEnGemeenteVanInschrijving" : "#/components/schemas/ZoekMetStraatHuisnummerEnGemeenteVanInschrijvingResponse",
@@ -278,7 +278,7 @@
           }
         } ]
       },
-      "ZoekMetGeslachtsnaamEnGemeenteVanInschrijvingResponse" : {
+      "ZoekMetNaamEnGemeenteVanInschrijvingResponse" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/PersonenQueryResponse"
         }, {
@@ -371,7 +371,7 @@
           "propertyName" : "type",
           "mapping" : {
             "ZoekMetGeslachtsnaamEnGeboortedatum" : "#/components/schemas/ZoekMetGeslachtsnaamEnGeboortedatum",
-            "ZoekMetGeslachtsnaamEnGemeenteVanInschrijving" : "#/components/schemas/ZoekMetGeslachtsnaamEnGemeenteVanInschrijving",
+            "ZoekMetNaamEnGemeenteVanInschrijving" : "#/components/schemas/ZoekMetNaamEnGemeenteVanInschrijving",
             "RaadpleegMetBurgerservicenummer" : "#/components/schemas/RaadpleegMetBurgerservicenummer",
             "ZoekMetPostcodeEnHuisnummer" : "#/components/schemas/ZoekMetPostcodeEnHuisnummer",
             "ZoekMetStraatHuisnummerEnGemeenteVanInschrijving" : "#/components/schemas/ZoekMetStraatHuisnummerEnGemeenteVanInschrijving",
@@ -434,7 +434,7 @@
         "description" : "Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/overleden_personen.feature)\n",
         "example" : true
       },
-      "ZoekMetGeslachtsnaamEnGemeenteVanInschrijving" : {
+      "ZoekMetNaamEnGemeenteVanInschrijving" : {
         "required" : [ "gemeenteVanInschrijving", "geslachtsnaam", "voornamen" ],
         "allOf" : [ {
           "$ref" : "#/components/schemas/PersonenQuery"
