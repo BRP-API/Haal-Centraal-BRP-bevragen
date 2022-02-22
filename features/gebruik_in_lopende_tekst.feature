@@ -1,84 +1,243 @@
 # language: nl
 
-# Issue #334 en #337
 Functionaliteit: Als gemeente wil ik de juiste en consistent naamgebruik in een lopende tekst
-  Attribuut gebruikInLopendeTekst bij een persoon wordt gevuld door de provider om op deze wijze op eenduidige wijze een persoon te kunnen benoemen.
+  De gebruikInLopendeTekst bij een persoon wordt gevuld door de provider om op deze wijze op eenduidige wijze een persoon te kunnen benoemen.
 
-  Dit attribuut kan worden gebruikt in bijvoorbeeld een zin in een brief als "In uw brief van 12 mei jongstleden, geeft u het overlijden van uw vader, de heer in het Veld, aan.", waarbij "de heer in het Veld" gehaald is uit attribuut gebruikInLopendeTekst.
+  De gebruikInLopendeTekst kan worden gebruikt in bijvoorbeeld een zin in een brief als "In uw brief van 12 mei jongstleden, geeft u het overlijden van uw vader, de heer in het Veld, aan.", waarbij "de heer in het Veld" gehaald is uit attribuut gebruikInLopendeTekst.
 
-  Attribuut gebruikInLopendeTekst wordt samengesteld op basis van:
-  - voorvoegselGeslachtsnaam
-  - geslachtsnaam
-  - adellijkeTitel_predikaat
-  - aanduidingAanschrijving
-  - geslachtsaanduiding
-  - voorvoegselGeslachtsnaam partner
-  - geslachtsnaam partner
-  - adellijkeTitel_predikaat partner
-  - geslachtsaanduiding partner
+  # In onderstaande tabellen betekenen de afkortingen:
+  # GA = "mevrouw", "de heer" of de voorletters
+  # VL = voorletters
+  # VV = voorvoegselGeslachtsnaam
+  # GN = geslachtsnaam
+  # VP = voorvoegselGeslachtsnaam partner
+  # GP = geslachtsnaam partner
+  # AT = adelijke titel
+  # PK = predikaat
 
-  De waarde van aanduidingNaamgebruik bepaalt hoe de gebruikInLopendeTekst wordt samengesteld uit de naam van de persoon en de naam van de partner.
+Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predikaat wordt samengesteld afhankelijk van de geslachtsaanduiding en de waarde van aanduidingNaamgebruik, waarbij geldt dat:
+  - gebruikInLopendeTekst wordt voorafgegaan door "mevrouw", "de heer" of de voorletters, afhankelijk van de geslachtsaanduiding:
+    | geslachtsaanduiding | gebruikInLopendeTekst begint met (GA) |
+    | M                   | de heer                               |
+    | V                   | mevrouw                               |
+    | O                   | VL                                    |
+  - gebruikInLopendeTekst wordt samengesteld uit naamcomponenten van de persoon en eventuele (ex)partner op basis van de aanduidingNaamgebruik:
+    | aanduidingNaamgebruik | gebruikinlopendetekst |
+    | E                     | GA VV GN              |
+    | P                     | GA VP GP              |
+    | V                     | GA VP GP-VV GN        |
+    | N                     | GA VV GN-VP GP        |
+  - Een voorvoegsel wordt met kleine letters wordt geschreven
+  - De eerste naamcomponent in gebruikInLopendeTekst anders dan "mevrouw" of "de heer" begint met een hoofdletter
+  - Wanneer voorletters zijn opgenomen in de gebruikinlopendetekst, het voorvoegsel van de eerste naam in de gebruikinlopendetekst met alleen kleine letters wordt geschreven
+  - Wanneer een naamcomponent geen of een lege waarde heeft, wordt de overbodige spatie niet opgenomen: niet starten met een spatie, niet eindigen met een spatie, geen dubbele spatie, geen spatie na streepje
 
-  Als de eerste naam geen adellijke titel of predicaat heeft,
-  En de geslachtsaanduiding is gelijk aan "vrouw" of "man"
-  Dan wordt gebruikInLopendeTekst voorafgegaan door een geslachtsaanduiding ("mevrouw", "de heer"), gevolgd door de samengestelde naam op basis van aanduidingNaamgebruik en de naam van de persoon en de partner.
+  Abstract Scenario: gebruikInLopendeTekst bij geslachtsaanduiding <voorbeeld>
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                | waarde     |
+    | burgerservicenummer | 999992934  |
+    | geslachtsaanduiding | <geslacht> |
+    En de persoon heeft de volgende naam gegevens
+    | naam                                 | waarde      |
+    | voornamen (02.10)                    | Jo Rene     |
+    | adellijke titel of predikaat (02.20) |             |
+    | voorvoegsel (02.30)                  |             |
+    | geslachtsnaam (02.40)                | Groenen     |
+    | aanduidingNaamgebruik (61.10)        | E           |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | naam.gebruikinlopendetekst      |
+    Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    | naam                  | waarde                  |
+    | gebruikinlopendetekst | <gebruikinlopendetekst> |
 
-  Als de eerste naam geen adellijke titel of predicaat heeft,
-  En de geslachtsaanduiding is gelijk aan "onbekend" of er is geen waarde voor geslachtsaanduiding
-  Dan wordt gebruikInLopendeTekst voorafgegaan door de voorletters, gevolgd door de samengestelde naam op basis van aanduidingNaamgebruik en de naam van de persoon en de partner.
+    Voorbeelden:
+    | voorbeeld | geslacht | gebruikInLopendeTekst |
+    | man       | M        | de heer Groenen       |
+    | vrouw     | V        | mevrouw Groenen       |
+    | onbekend  | O        | J.R. Groenen          |
 
-  Als geslachtsaanduiding is "vrouw" of "man"
-  Dan wordt het voorvoegsel van de eerste geslachtsnaam in de samengestelde naam met een hoofdletter geschreven.
+  Scenario: gebruikInLopendeTekst van een alleenstaande persoon met aanduidingNaamgebruik "E"
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999992934 |
+    | geslachtsaanduiding | V         |
+    En de persoon heeft de volgende naam gegevens
+    | naam                                 | waarde |
+    | adellijke titel of predikaat (02.20) |        |
+    | voorvoegsel (02.30)                  | in het |
+    | geslachtsnaam (02.40)                | Veld   |
+    | aanduidingNaamgebruik (61.10)        | E      |
+    En persoon heeft geen partner
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | naam.gebruikinlopendetekst      |
+    Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    | naam                  | waarde              |
+    | gebruikinlopendetekst | mevrouw In het Veld |
 
-  Als er meerdere actuele (niet ontbonden) huwelijken/partnerschappen zijn
-  En de aanduiding aanschijving is ongelijk aan 'Eigen'
-  Dan wordt als partnernaam de naam van de eerste partner (oudste relatie) gebruikt.
+  Abstract Scenario: naamsamenstelling van een persoon met een partner bij aanduidingNaamgebruik "<naamgebruik>"
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999992934 |
+    | geslachtsaanduiding | V         |
+    En de persoon heeft de volgende naam gegevens
+    | naam                                 | waarde          |
+    | adellijke titel of predikaat (02.20) |                 |
+    | voorvoegsel (02.30)                  | <voorvoegsel>   |
+    | geslachtsnaam (02.40)                | <geslachtsnaam> |
+    | aanduidingNaamgebruik (61.10)        | <naamgebruik>   |
+    En de partner heeft de volgende naam gegevens
+    | naam                                 | waarde                  |
+    | adellijke titel of predikaat (02.20) |                         |
+    | voorvoegsel (02.30)                  | <partner voorvoegsel>   |
+    | geslachtsnaam (02.40)                | <partner geslachtsnaam> |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | naam.gebruikinlopendetekst      |
+    Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    | naam                  | waarde                  |
+    | gebruikinlopendetekst | <gebruikinlopendetekst> |
 
-  Als er meerdere ontbonden huwelijken/partnerschappen zijn
-  En er geen actueel (niet ontbonden) huwelijk/partnerschap is
-  En de aanduiding aanschijving is ongelijk aan 'Eigen'
-  Dan wordt als partnernaam de naam van de laatst ontbonden relatie gebruikt.
+    Voorbeelden:
+    | naamgebruik | voorvoegsel | geslachtsnaam | partner voorvoegsel | partner geslachtsnaam | gebruikinlopendetekst          |
+    | E           | in het      | Veld          | van                 | Velzen                | mevrouw In het Veld            |
+    | E           |             | Groenen       |                     | Groenink              | mevrouw Groenen                |
+    | P           | in het      | Veld          | van                 | Velzen                | mevrouw Van Velzen             |
+    | P           |             | Groenen       |                     | Groenink              | mevrouw Groenen                |
+    | V           | in het      | Veld          | van                 | Velzen                | mevrouw Van Velzen-in het Veld |
+    | V           |             | Groenen       |                     | Groenink              | mevrouw Groenen-Groenink       |
+    | N           | in het      | Veld          | van                 | Velzen                | mevrouw In het Veld-van Velzen |
+    | N           |             | Groenen       |                     | Groenink              | mevrouw Groenen-Groenink       |
 
-  Op basis van attribuut adellijkeTitel_predikaat en de geslachtsaanduiding wordt het de adelijke titel of het predikaat toegevoegd in de gebruikInLopendeTekst.
-  De adellijke titel of het predikaat wordt in gebruikInLopendeTekst opgenomen in de vorm die hoort bij de geslachtsaanduiding:
-  | adellijkeTitel_predikaat | vrouw     | man      | onbekend |
-  | Graaf	                   | gravin    | graaf    | -   |
-  | Gravin                   | gravin    | graaf    | -   |
-  | Baron	                   | barones   | baron    | -   |
-  | Barones                  | barones   | baron    | -   |
-  | Prins	                   | prinses   | prins    | -   |
-  | Prinses                  | prinses   | prins    | -   |
-  | Ridder                   | -         | ridder   | -   |
-  | Jonkheer                 | jonkvrouw | jonkheer | -   |
-  | Jonkvrouw                | jonkvrouw | jonkheer | -   |
 
-  Als de adellijke titel geen vorm heeft die hoort bij de geslachtsaanduiding (in bovenstaande tabel opgenomen als - teken)
-  Dan wordt de adellijke titel niet opgenomen in gebruikInLopendeTekst.
+  Abstract Scenario: hoofdlettergebruik in voorvoegsels bij aanduidingNaamgebruik "<naamgebruik>", geslachtsaanduiding "<geslacht>" en <voorbeeld>
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                | waarde     |
+    | burgerservicenummer | 999992934  |
+    | geslachtsaanduiding | <geslacht> |
+    En de persoon heeft de volgende naam gegevens
+    | naam                                 | waarde          |
+    | voornamen (02.10)                    | <voornamen>     |
+    | adellijke titel of predikaat (02.20) |                 |
+    | voorvoegsel (02.30)                  | <voorvoegsel>   |
+    | geslachtsnaam (02.40)                | <geslachtsnaam> |
+    | aanduidingNaamgebruik (61.10)        | <naamgebruik>   |
+    En de partner heeft de volgende naam gegevens
+    | naam                                 | waarde                  |
+    | adellijke titel of predikaat (02.20) |                         |
+    | voorvoegsel (02.30)                  | <partner voorvoegsel>   |
+    | geslachtsnaam (02.40)                | <partner geslachtsnaam> |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | naam.gebruikinlopendetekst      |
+    Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    | naam                  | waarde                  |
+    | gebruikinlopendetekst | <gebruikinlopendetekst> |
 
-  Als de geslachtsaanduiding is "onbekend" (O) of er is geen waarde voor geslachtsaanduiding
-  Dan wordt de (eventuele) adellijke titel of het predikaat niet opgenomen in gebruikInLopendeTekst.
+    Voorbeelden:
+    | voorbeeld                     | geslacht | naamgebruik | voornamen | voorvoegsel | geslachtsnaam | partner voorvoegsel | partner geslachtsnaam | gebruikinlopendetekst                |
+    | voorvoegsel in kleine letters | V        | E           | Jo Rene   | in het      | Zonnetje      | 't                  | Wolkje                | mevrouw In het Zonnetje              |
+    | voorvoegsel in kleine letters | O        | E           | Jo Rene   | in het      | Zonnetje      | 't                  | Wolkje                | J.R. in het Zonnetje                 |
+    | geen voornamen                | O        | E           |           | in het      | Zonnetje      | 't                  | Wolkje                | In het Zonnetje                      |
+    | voorvoegsel met hoofdletters  | V        | E           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | mevrouw Op den Berghe                |
+    | voorvoegsel met hoofdletters  | O        | E           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | J.R. op den Berghe                   |
+    | voorvoegsel begint met accent | V        | P           | Jo Rene   | in het      | Zonnetje      | 't                  | Wolkje                | mevrouw 't Wolkje                    |
+    | voorvoegsel met hoofdletters  | V        | P           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | mevrouw Van der Broeck               |
+    | voorvoegsel met hoofdletters  | O        | P           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | J.R. van der Broeck                  |
+    | voorvoegsel begint met accent | V        | V           | Jo Rene   | in het      | Zonnetje      | 't                  | Wolkje                | mevrouw 't Wolkje-in het Zonnetje    |
+    | voorvoegsel met hoofdletters  | V        | V           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | mevrouw Van der Broeck-op den Berghe |
+    | voorvoegsel met hoofdletters  | O        | V           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | J.R. van der Broeck-op den Berghe    |
+    | voorvoegsel in kleine letters | V        | N           | Jo Rene   | in het      | Zonnetje      | 't                  | Wolkje                | mevrouw In het Zonnetje-'t Wolkje    |
+    | voorvoegsel met hoofdletters  | V        | N           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | mevrouw Op den Berghe-van der Broeck |
+    | voorvoegsel met hoofdletters  | O        | N           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | J.R. op den Berghe-van der Broeck    |
 
-  Als de betrokkene beschikt over een adellijke titel of predikaat
-  Dan wordt deze geplaatst vóór het voorvoegsel van de eigen geslachtsnaam.
+Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predikaat wordt samengesteld afhankelijk van de geslachtsaanduiding en de waarde van aanduidingNaamgebruik, waarbij geldt dat:
+  - gebruikInLopendeTekst wordt samengesteld uit naamcomponenten van de persoon en eventuele (ex)partner op basis van de aanduidingNaamgebruik:
+    | aanduidingNaamgebruik | gebruikinlopendetekst |
+    | E                     | PK AT VV GN           |
+    | P                     | GA VP GP              |
+    | V                     | GA VP GP-PK AT VV GN  |
+    | N                     | PK AT VV GN-VP GP     |
+  - De adellijke titel of het predikaat wordt in gebruikInLopendeTekst opgenomen in de vorm die hoort bij de geslachtsaanduiding van de persoon:
+    | adellijkeTitelPredikaat | vrouw     | man      | onbekend |
+    | G                       | gravin    | graaf    | -        |
+    | GI                      | gravin    | graaf    | -        |
+    | B                       | barones   | baron    | -        |
+    | BS                      | barones   | baron    | -        |
+    | H                       | hertogin  | hertog   | -        |
+    | HI                      | hertogin  | hertog   | -        |
+    | M                       | markiezin | markies  | -        |
+    | MI                      | markiezin | markies  | -        |
+    | P                       | prinses   | prins    | -        |
+    | PS                      | prinses   | prins    | -        |
+    | R                       | -         | ridder   | -        |
+    | JH                      | jonkvrouw | jonkheer | -        |
+    | JV                      | jonkvrouw | jonkheer | -        |
+  - Wanneer de adellijke titel of het predikaat geen vorm heeft die hoort bij de geslachtsaanduiding (in bovenstaande tabel opgenomen als - teken), dan wordt deze niet opgenomen
+  - Wanneer gebruikInLopendeTekst niet begint met een adellijke titel of een predikaat, wordt deze voorafgegaan door "mevrouw", "de heer" of de voorletters, afhankelijk van de geslachtsaanduiding:
+    | geslachtsaanduiding | gebruikInLopendeTekst begint met (GA) |
+    | M                   | de heer                               |
+    | V                   | mevrouw                               |
+    | O                   | VL                                    |
+  - Een voorvoegsel wordt met kleine letters wordt geschreven
+  - Een adellijke titel of predikaat wordt met kleine letters wordt geschreven
+  - De eerste naamcomponent direct na "mevrouw" of "de heer" begint met een hoofdletter
+  - Wanneer een naamcomponent geen of een lege waarde heeft, wordt de overbodige spatie niet opgenomen: niet starten met een spatie, niet eindigen met een spatie, geen dubbele spatie, geen spatie na streepje
 
-  Als betrokkene beschikt over een adellijke titel of predicaat
-  En betrokkene gebruikt de achternaam van de echtgenoot/partner in combinatie met de eigen geslachtsnaam
-  Dan wordt de titel dan wel het predicaat van betrokkene voor de eigen geslachtsnaam geplaatst.
+  De gebruikInLopendeTekst wordt op dezelfde manier samengesteld als voor een persoon zonder adellijke titel of predikaat in de volgende gevallen:
+  - Wanneer de combinatie van adellijkeTitelPredikaat en geslachtsaanduiding niet voorkomt in bovenstaande tabel: geslachtsaanduiding "O" of een vrouw met de titel "R" (ridder)
+  - Wanneer de persoon de geslachtsnaam van de echtgenoot/partner gebruikt zonder de eigen geslachtsnaam: aanduidingNaamgebruik is "P"
+  - Wanneer de persoon een predikaat heeft en de geslachtsaanduiding is gelijk aan "V" (vrouw) en betrokkene heeft een partner
+  - Wanneer de persoon een predikaat heeft en de geslachtsaanduiding is gelijk aan "V" (vrouw) en betrokkene gebruikt de naam van de (ex)partner (aanduidingNaamgebruik is ongelijk aan "E")
 
-  Als betrokkene een adellijke titel of predicaat heeft
-  En betrokkene gebruikt alleen de naam van de partner (aanduiding naamgebruik is "P")
-  Dan wordt de eigen adellijke titel of het predicaat niet gebruikt.
+Rule: gebruikInLopendeTekst voor een vrouw met een (ex)echtgenoot met een adellijke titel mag deze adellijke titel gebruiken, waarbij geldt dat:
+  - gebruikInLopendeTekst wordt samengesteld uit naamcomponenten van de persoon en eventuele (ex)partner op basis van de aanduidingNaamgebruik:
+    | aanduidingNaamgebruik | gebruikinlopendetekst |
+    | E                     | PK AT VV GN           |
+    | P                     | AP VP GP              |
+    | V                     | AP VP GP-PK AT VV GN  |
+    | N                     | PK AT VV GN-AP VP GP  |
+  - de adellijke titel van de (ex)partner wordt opgenomen in de vrouwelijke vorm:
+    | adellijkeTitelPredikaat partner | vrouwelijke vorm |
+    | G                               | gravin           |
+    | GI                              | gravin           |
+    | B                               | barones          |
+    | BS                              | barones          |
+    | H                               | hertogin         |
+    | HI                              | hertogin         |
+    | M                               | markiezin        |
+    | MI                              | markiezin        |
+    | P                               | prinses          |
+    | PS                              | prinses          |
+    | R                               | -                |
+    | JH                              | -                |
+    | JV                              | -                |
+  - voor het opnemen van de eigen adellijke titel of predikaat van de persoon gelden dezelfde regels als wanneer ze geen partner met adellijke titel zou hebben
+  - de adellijke titel van de (ex) partner alleen wordt gebruikt onder de volgende condities:
+    - de (ex)partner heeft een adellijke titel
+    - de geslachtsaanduiding van de persoon is "V"
+    - de geslachtsaanduiding van de partner is "M"
+    - de persoon gebruikt de naam van haar (ex)partner (aanduidingNaamgebruik is ongelijk aan "E")
+    - de adellijke titel van de (ex)partner heeft een vrouwelijke vorm (in bovenstaande tabel geen - teken)
+  
+Rule: Bij meerdere actuele (niet ontbonden) huwelijken/partnerschappen worden de naamgegevens van de eerste partner (oudste relatie) gebruikt voor het samenstellen van de gebruikInLopendeTekst
 
-  Als de partner een adellijke titel heeft
-  En de geslachtsaanduiding van de persoon is "vrouw"
-  En de geslachtsaanduiding van de partner is "man"
-  En de adellijke titel van de partner heeft een vrouwelijke vorm (zie tabel hieronder)
-  En de persoon gebruikt de naam van haar partner (aanduidingNaamgebruik ongelijk aan E - eigen)
-  Dan wordt de adellijke titel van de partner in vrouwelijke vorm opgenomen voor het voorvoegsel van de naam van de partner
-  | Titel | Vrouwelijke vorm |
-  | Graaf	| gravin           |
-  | Baron	| barones          |
-  | Prins	| prinses          |
+Rule: Bij meerdere huwelijken/partnerschappen die allen ontbonden zijn, worden de naamgegevens van de laatst ontbonden partner gebruikt voor het samenstellen van de gebruikInLopendeTekst
+
+
+
+
+
+
 
   Abstract Scenario: gebruikInLopendeTekst wordt samengesteld op basis van geslachtsaanduiding en naamgegevens van de persoon en de partner
     Als persoon wordt geraadpleegd
@@ -131,7 +290,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistent naamgebruik in een 
       | Ridder                   | Eigen                 | vrouw               | T VV GN                             | P.K. van Hoogh                             |
 
     Voorbeelden: predikaat
-      | adellijkeTitel_predikaat | geslachtsaanduiding | aanduidingNaamgebruik | partner | aanhef                                  |
+      | adellijkeTitel_predikaat | geslachtsaanduiding | aanduidingNaamgebruik | partner | gebruikinlopendetekst                                  |
       | Jonkheer                 | man                 | Eigen                 | Geen    | jonkheer Van Hoogh                      |
       | Jonkheer                 | vrouw               | Eigen                 | Geen    | jonkvrouw Van Hoogh                     |
       | Jonkvrouw                | man                 | Eigen                 | Geen    | jonkheer Van Hoogh                      |
@@ -186,4 +345,4 @@ Functionaliteit: Als gemeente wil ik de juiste en consistent naamgebruik in een 
     En het huwelijk met Zwart is ontbonden in 2006
     En de persoon heeft aanduidingAanschrijving='V'
     Als de persoon wordt geraadpleegd
-    Dan is in het antwoord naam.aanhef=de heer Zwart-Wit
+    Dan is in het antwoord naam.gebruikinlopendetekst=de heer Zwart-Wit
