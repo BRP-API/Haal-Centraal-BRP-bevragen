@@ -146,7 +146,7 @@ Rule: De aanhef voor een persoon zonder adellijke titel of predikaat wordt samen
     | voorbeeld                     | geslacht | naamgebruik | voornamen | voorvoegsel | geslachtsnaam | partner voorvoegsel | partner geslachtsnaam | aanhef                                       |
     | voorvoegsel in kleine letters | V        | E           | Jo Rene   | in het      | Zonnetje      | 't                  | Wolkje                | Geachte mevrouw In het Zonnetje              |
     | voorvoegsel in kleine letters | O        | E           | Jo Rene   | in het      | Zonnetje      | 't                  | Wolkje                | Geachte J.R. in het Zonnetje                 |
-    | geen voornamen                | O        | E           |           | in het      | Zonnetje      | 't                  | Wolkje                | Geachte In het Zonnetje                 |
+    | geen voornamen                | O        | E           |           | in het      | Zonnetje      | 't                  | Wolkje                | Geachte In het Zonnetje                      |
     | voorvoegsel met hoofdletters  | V        | E           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte mevrouw Op den Berghe                |
     | voorvoegsel met hoofdletters  | O        | E           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte J.R. op den Berghe                   |
     | voorvoegsel begint met accent | V        | P           | Jo Rene   | in het      | Zonnetje      | 't                  | Wolkje                | Geachte mevrouw 't Wolkje                    |
@@ -184,7 +184,7 @@ Rule: De aanhef voor een persoon met adellijke titel of predikaat wordt bepaald 
   | P                       | Prins        | M                   | Hoogheid              |
   | PS                      | Prinses      | M                   | Hoogheid              |
   | P                       | Prins        | V                   | Hoogheid              |
-  | PS                      | Prinses      | M                   | Hoogheid              |
+  | PS                      | Prinses      | V                   | Hoogheid              |
   | P                       | Prins        | O                   | Hoogheid              |
   | PS                      | Prinses      | O                   | Hoogheid              |
   | R                       | Ridder       | M                   | Hoogwelgeboren heer   |
@@ -353,7 +353,7 @@ Rule: De aanhef voor een persoon met adellijke titel of predikaat wordt bepaald 
     Voorbeelden:
       | naamgebruik | aanhef                        |
       | E           | Hoogwelgeboren heer           |
-      | P           | Geachte heer Van den Aedel    |
+      | P           | Geachte heer De Boer          |
       | V           | Hoogwelgeboren heer           |
       | N           | Hoogwelgeboren heer           |
 
@@ -403,20 +403,15 @@ Rule: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredikaat 
   - de geslachtsaanduiding van de persoon is "V"
   - de geslachtsaanduiding van de partner is "M"
   - de persoon gebruikt de naam van haar (ex)partner (aanduidingNaamgebruik is ongelijk aan "E")
-  - de adellijke titel van de (ex)partner heeft een vrouwelijke aanhef vorm:
-      | adellijkeTitelPredikaat partner | omschrijving | aanhef                |
-      | B                               | Baron        | Hoogwelgeboren vrouwe |
-      | BS                              | Barones      | Hoogwelgeboren vrouwe |
-      | G                               | Graaf        | Hooggeboren vrouwe    |
-      | GI                              | Gravin       | Hooggeboren vrouwe    |
-      | H                               | Hertog       | Hoogwelgeboren vrouwe |
-      | HI                              | Hertogin     | Hoogwelgeboren vrouwe |
-      | M                               | Markies      | Hoogwelgeboren vrouwe |
-      | MI                              | Markiezin    | Hoogwelgeboren vrouwe |
-      | P                               | Prins        | Hoogheid              |
-      | PS                              | Prinses      | Hoogheid              |
+  - met de adellijke titel van de (ex)partner mag een hoffelijkheidstitel ('titre de courtoisie') worden gebruikt met bijbehorende aanhef:
+      | adellijkeTitelPredikaat partner | hoffelijkheidstitel | aanhef                |
+      | B                               | barones             | Hoogwelgeboren vrouwe |
+      | G                               | gravin              | Hooggeboren vrouwe    |
+      | H                               | hertogin            | Hoogwelgeboren vrouwe |
+      | M                               | markiezin           | Hoogwelgeboren vrouwe |
+      | P                               | Prins               | Hoogheid              |
 
-  Abstract Scenario: partner heeft adellijke titel "<omschrijving>"
+  Abstract Scenario: partner heeft adellijke titel "<adellijkeTitelPredikaat partner>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde     |
     | burgerservicenummer | 999992934  |
@@ -446,19 +441,14 @@ Rule: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredikaat 
     | aanhef | <aanhef> |
 
     Voorbeelden:
-      | adellijkeTitelPredikaat partner | omschrijving | aanhef                                |
-      | B                               | Baron        | Hoogwelgeboren vrouwe                 |
-      | BS                              | Barones      | Hoogwelgeboren vrouwe                 |
-      | G                               | Graaf        | Hooggeboren vrouwe                    |
-      | GI                              | Gravin       | Hooggeboren vrouwe                    |
-      | H                               | Hertog       | Hoogwelgeboren vrouwe                 |
-      | HI                              | Hertogin     | Hoogwelgeboren vrouwe                 |
-      | M                               | Markies      | Hoogwelgeboren vrouwe                 |
-      | MI                              | Markiezin    | Hoogwelgeboren vrouwe                 |
-      | P                               | Prins        | Hoogheid                              |
-      | PS                              | Prinses      | Hoogheid                              |
-      | R                               | Ridder       | Geachte mevrouw Van den Aedel-de Boer |
-      | JH                              | Jonkheer     | Geachte mevrouw Van den Aedel-de Boer |
+      | adellijkeTitelPredikaat partner | aanhef                                |
+      | B                               | Hoogwelgeboren vrouwe                 |
+      | G                               | Hooggeboren vrouwe                    |
+      | H                               | Hoogwelgeboren vrouwe                 |
+      | M                               | Hoogwelgeboren vrouwe                 |
+      | P                               | Hoogheid                              |
+      | R                               | Geachte mevrouw Van den Aedel-de Boer |
+      | JH                              | Geachte mevrouw Van den Aedel-de Boer |
 
   Abstract Scenario: persoon met geslacht "<geslacht>" en partner met geslacht "<geslacht partner>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -546,9 +536,9 @@ Rule: Voor het bepalen van de aanhef gaat gebruik van de adellijke titel van de 
   - de geslachtsaanduiding van de persoon is "V" (vrouw)
   - de geslachtsaanduiding van de (ex)partner is "M" (man)
   - de persoon gebruikt de naam van de partner: aanduidingNaamgebruik is ongelijk aan "E"
-  - de adellijke titel van de (ex)partner heeft een vrouwelijke aanhef vorm
+  - met de adellijke titel van de (ex)partner mag een hoffelijkheidstitel ('titre de courtoisie') worden gebruikt met bijbehorende aanhef
 
-  Wanneer aan al deze condities wordt voldaan, wordt de aanhef samengesteld met de vrouwelijke aanhef vorm van de adellijke titel van de (ex)partner
+  Wanneer aan al deze condities wordt voldaan, wordt de aanhef samengesteld voor de hoffelijkheidstitel op basis van de adellijke titel van de (ex)partner
 
   Abstract Scenario: vrouw heeft adellijke titel <adellijkeTitelPredikaat> en haar partner heeft adellijke titel "<adellijkeTitelPredikaat partner>" bij aanduidingNaamgebruik "<naamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -589,10 +579,14 @@ Rule: Voor het bepalen van de aanhef gaat gebruik van de adellijke titel van de 
       | BS                      | P                               | P           | Hoogheid                              |
       | BS                      | P                               | V           | Hoogheid                              |
       | BS                      | P                               | N           | Hoogheid                              |
-      | BS                      | R                               | E           | Hoogwelgeboren vrouwe                 |
-      | BS                      | R                               | P           | Geachte mevrouw De Boer               |
-      | BS                      | R                               | V           | Hoogwelgeboren vrouwe                 |
-      | BS                      | R                               | P           | Hoogwelgeboren vrouwe                 |
+      | GI                      | R                               | E           | Hooggeboren vrouwe                    |
+      | GI                      | R                               | P           | Geachte mevrouw De Boer               |
+      | GI                      | R                               | V           | Hooggeboren vrouwe                    |
+      | GI                      | R                               | P           | Hooggeboren vrouwe                    |
+      | PS                      | B                               | E           | Hoogheid                              |
+      | PS                      | B                               | P           | Hoogwelgeboren vrouwe                 |
+      | PS                      | B                               | V           | Hoogwelgeboren vrouwe                 |
+      | PS                      | B                               | N           | Hoogwelgeboren vrouwe                 |
 
   Abstract Scenario: man heeft adellijke titel <adellijkeTitelPredikaat> en zijn partner heeft adellijke titel "<adellijkeTitelPredikaat partner>" bij aanduidingNaamgebruik "<naamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
