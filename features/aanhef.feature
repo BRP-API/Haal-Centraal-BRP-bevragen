@@ -5,17 +5,6 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
   De aanhef bij een persoon wordt gevuld door de provider om op deze wijze op eenduidige wijze een persoon te kunnen aanschrijven.
   De aanhef wordt gebruikt bovenaan een brief.
 
-  Attribuut aanhef wordt samengesteld op basis van:
-  - voorvoegselGeslachtsnaam
-  - geslachtsnaam
-  - adellijkeTitel_predikaat
-  - geslachtsaanduiding
-  - aanduidingAanschrijving
-  - voorvoegselGeslachtsnaam partner
-  - geslachtsnaam partner
-  - adellijkeTitel_predikaat partner
-  - geslachtsaanduiding partner
-
   # In onderstaande tabellen betekenen de afkortingen:
   # GA = "Geachte mevrouw", "Geachte heer", "Geachte" gevolg door voorletters
   # VL = voorletters
@@ -551,7 +540,15 @@ Rule: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredikaat 
       | V           | Hoogwelgeboren vrouwe                 |
       | N           | Hoogwelgeboren vrouwe                 |
 
-Rule: voor het bepalen van de aanhef gaat de adellijke titel van de partner boven de adellijke titel van de persoon
+Rule: Voor het bepalen van de aanhef gaat gebruik van de adellijke titel van de partner boven de adellijke titel van de persoon:
+  - de persoon heeft een adellijke titel of predikaat
+  - de (ex)partner heeft een adellijke titel
+  - de geslachtsaanduiding van de persoon is "V" (vrouw)
+  - de geslachtsaanduiding van de (ex)partner is "M" (man)
+  - de persoon gebruikt de naam van de partner: aanduidingNaamgebruik is ongelijk aan "E"
+  - de adellijke titel van de (ex)partner heeft een vrouwelijke aanhef vorm
+
+  Wanneer aan al deze condities wordt voldaan, wordt de aanhef samengesteld met de vrouwelijke aanhef vorm van de adellijke titel van de (ex)partner
 
   Abstract Scenario: vrouw heeft adellijke titel <adellijkeTitelPredikaat> en haar partner heeft adellijke titel "<adellijkeTitelPredikaat partner>" bij aanduidingNaamgebruik "<naamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
