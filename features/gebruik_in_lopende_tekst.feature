@@ -14,6 +14,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistent naamgebruik in een 
   # GP = geslachtsnaam partner
   # AT = adelijke titel
   # PK = predikaat
+  # HT = hoffelijkheidstitel of 'titre de courtoisie'
 
 Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predikaat wordt samengesteld afhankelijk van de geslachtsaanduiding en de waarde van aanduidingNaamgebruik, waarbij geldt dat:
   - gebruikInLopendeTekst wordt voorafgegaan door "mevrouw", "de heer" of de voorletters, afhankelijk van de geslachtsaanduiding:
@@ -335,38 +336,29 @@ Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predikaat wo
     | R                       | V        | mevrouw Van den Aedel   |
     | R                       | O        | J.A. van den Aedel      |
 
-
-Rule: een vrouw met een (ex)partner met een adellijke titel mag deze adellijke titel gebruiken in gebruikInLopendeTekst, waarbij geldt dat:
+Rule: een vrouw met een (ex)partner met een adellijke titel krijgt een hoffelijkheidstitel ('titre de courtoisie') in gebruikInLopendeTekst, waarbij geldt dat:
   - gebruikInLopendeTekst wordt samengesteld uit naamcomponenten van de persoon en eventuele (ex)partner op basis van de aanduidingNaamgebruik:
     | aanduidingNaamgebruik | gebruikinlopendetekst |
     | E                     | PK AT VV GN           |
-    | P                     | AP VP GP              |
-    | V                     | AP VP GP-PK AT VV GN  |
-    | N                     | PK AT VV GN-AP VP GP  |
-  - de adellijke titel van de (ex)partner wordt opgenomen in de vrouwelijke vorm:
-    | adellijkeTitelPredikaat partner | vrouwelijke vorm |
-    | G                               | gravin           |
-    | GI                              | gravin           |
-    | B                               | barones          |
-    | BS                              | barones          |
-    | H                               | hertogin         |
-    | HI                              | hertogin         |
-    | M                               | markiezin        |
-    | MI                              | markiezin        |
-    | P                               | prinses          |
-    | PS                              | prinses          |
-    | R                               | -                |
-    | JH                              | -                |
-    | JV                              | -                |
+    | P                     | HT VP GP              |
+    | V                     | HT VP GP-PK AT VV GN  |
+    | N                     | PK AT VV GN-HT VP GP  |
+  - de hoffelijkheidstitel ('titre de courtoisie') wordt bepaald op basis van de adellijke titel van de (ex)partner:
+    | adellijkeTitelPredikaat partner | hoffelijkheidstitel |
+    | G                               | gravin              |
+    | B                               | barones             |
+    | H                               | hertogin            |
+    | M                               | markiezin           |
+    | P                               | prinses             |
   - voor het opnemen van de eigen adellijke titel of predikaat en de overige naamcomponenten van de persoon gelden dezelfde regels als wanneer ze geen partner met adellijke titel zou hebben
   - de adellijke titel van de (ex) partner alleen wordt gebruikt onder de volgende condities:
     - de (ex)partner heeft een adellijke titel (geen predikaat)
     - de geslachtsaanduiding van de persoon is "V"
     - de geslachtsaanduiding van de partner is "M"
     - de persoon gebruikt de naam van haar (ex)partner (aanduidingNaamgebruik is ongelijk aan "E")
-    - de adellijke titel van de (ex)partner heeft een vrouwelijke vorm (in bovenstaande tabel geen - teken)
+    - de adellijke titel van de (ex)partner heeft een hoffelijkheidstitel (komt voor in bovenstaande tabel)
   
-  Abstract Scenario: partner met adellijke titel "<omschrijving>"
+  Abstract Scenario: partner met adellijke titel "<adellijkeTitelPredikaat partner>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde     |
     | burgerservicenummer | 999992934  |
@@ -398,17 +390,13 @@ Rule: een vrouw met een (ex)partner met een adellijke titel mag deze adellijke t
     Voorbeelden:
       | adellijkeTitelPredikaat partner | omschrijving | gebruikInLopendeTekst                   |
       | B                               | Baron        | barones van den Aedel-de Boer           |
-      | BS                              | Barones      | barones van den Aedel-de Boer           |
       | G                               | Graaf        | gravin barones van den Aedel-de Boer    |
-      | GI                              | Gravin       | gravin barones van den Aedel-de Boer    |
       | H                               | Hertog       | hertogin barones van den Aedel-de Boer  |
-      | HI                              | Hertogin     | hertogin barones van den Aedel-de Boer  |
       | M                               | Markies      | markiezin barones van den Aedel-de Boer |
-      | MI                              | Markiezin    | markiezin barones van den Aedel-de Boer |
       | P                               | Prins        | prinses barones van den Aedel-de Boer   |
-      | PS                              | Prinses      | prinses barones van den Aedel-de Boer   |
       | R                               | Ridder       | mevrouw Van den Aedel-de Boer           |
       | JH                              | Jonkheer     | mevrouw Van den Aedel-de Boer           |
+      | BS                              | Barones      | mevrouw Van den Aedel-de Boer           |
 
   Abstract Scenario: persoon met geslacht "<geslacht>" en partner met geslacht "<geslacht partner>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
