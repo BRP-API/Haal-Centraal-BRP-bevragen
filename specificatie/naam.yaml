@@ -12,10 +12,18 @@ components:
         Kun je gebruiken als aanhef in een brief gericht aan persoon.
       example: "Hoogwelgeboren heer"
     Aanschrijfwijze:
-      type: string
+      type: object
       description: |
-        Samengestelde naam die je kunt gebruiken in de communicatie met de persoon.
-      example: "H.W. baron van den Aedel"
+        Samengestelde naam en aanspreekvorm die je kunt gebruiken in de communicatie met de persoon.
+      properties:
+        naam:
+          type: string
+          example: "H.W. baron van den Aedel"
+        aanspreekvorm:
+          description: |
+            Deze regel moet als aparte regel boven de samengestelde naam worden geplaatst. Komt alleen voor bij personen met een adellijke titel of predicaat.
+          type: string
+          example: "De hoogwelgeboren heer"
     GebruikInLopendeTekst:
       type: string
       description: |
@@ -27,11 +35,6 @@ components:
       description: |
         De achternaam van een persoon.
       example: "Vries"
-    RegelVoorafgaandAanAanschrijfwijze:
-      type: string
-      description: |
-        Deze regel moet als aparte regel boven de aanschrijfwijze worden geplaatst. Komt alleen voor bij personen met een adellijke titel of predicaat.
-      example: "De hoogwelgeboren heer"
     VolledigeNaam:
       type: string
       description: |
@@ -155,8 +158,6 @@ components:
               $ref: '#/components/schemas/Aanhef'
             aanschrijfwijze:
               $ref: '#/components/schemas/Aanschrijfwijze'
-            regelVoorafgaandAanAanschrijfwijze:
-              $ref: '#/components/schemas/RegelVoorafgaandAanAanschrijfwijze'
             gebruikInLopendeTekst:
               $ref: '#/components/schemas/GebruikInLopendeTekst'
             aanduidingNaamgebruik:
