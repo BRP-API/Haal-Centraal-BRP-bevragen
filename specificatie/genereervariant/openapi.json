@@ -2145,9 +2145,6 @@
             "aanschrijfwijze" : {
               "$ref" : "#/components/schemas/Aanschrijfwijze"
             },
-            "regelVoorafgaandAanAanschrijfwijze" : {
-              "$ref" : "#/components/schemas/RegelVoorafgaandAanAanschrijfwijze"
-            },
             "gebruikInLopendeTekst" : {
               "$ref" : "#/components/schemas/GebruikInLopendeTekst"
             },
@@ -2166,14 +2163,19 @@
         "example" : "Hoogwelgeboren heer"
       },
       "Aanschrijfwijze" : {
-        "type" : "string",
-        "description" : "Samengestelde naam die je kunt gebruiken in de communicatie met de persoon.\n",
-        "example" : "H.W. baron van den Aedel"
-      },
-      "RegelVoorafgaandAanAanschrijfwijze" : {
-        "type" : "string",
-        "description" : "Deze regel moet als aparte regel boven de aanschrijfwijze worden geplaatst. Komt alleen voor bij personen met een adellijke titel of predicaat.\n",
-        "example" : "De hoogwelgeboren heer"
+        "type" : "object",
+        "properties" : {
+          "naam" : {
+            "type" : "string",
+            "example" : "H.W. baron van den Aedel"
+          },
+          "aanspreekvorm" : {
+            "type" : "string",
+            "description" : "Deze regel moet als aparte regel boven de samengestelde naam worden geplaatst. Komt alleen voor bij personen met een adellijke titel of predicaat.\n",
+            "example" : "De hoogwelgeboren heer"
+          }
+        },
+        "description" : "Samengestelde naam en aanspreekvorm die je kunt gebruiken in de communicatie met de persoon.\n"
       },
       "GebruikInLopendeTekst" : {
         "type" : "string",

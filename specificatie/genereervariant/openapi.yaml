@@ -1605,8 +1605,6 @@ components:
             $ref: '#/components/schemas/Aanhef'
           aanschrijfwijze:
             $ref: '#/components/schemas/Aanschrijfwijze'
-          regelVoorafgaandAanAanschrijfwijze:
-            $ref: '#/components/schemas/RegelVoorafgaandAanAanschrijfwijze'
           gebruikInLopendeTekst:
             $ref: '#/components/schemas/GebruikInLopendeTekst'
           aanduidingNaamgebruik:
@@ -1619,15 +1617,18 @@ components:
         Kun je gebruiken als aanhef in een brief gericht aan persoon.
       example: Hoogwelgeboren heer
     Aanschrijfwijze:
-      type: string
+      type: object
+      properties:
+        naam:
+          type: string
+          example: H.W. baron van den Aedel
+        aanspreekvorm:
+          type: string
+          description: |
+            Deze regel moet als aparte regel boven de samengestelde naam worden geplaatst. Komt alleen voor bij personen met een adellijke titel of predicaat.
+          example: De hoogwelgeboren heer
       description: |
-        Samengestelde naam die je kunt gebruiken in de communicatie met de persoon.
-      example: H.W. baron van den Aedel
-    RegelVoorafgaandAanAanschrijfwijze:
-      type: string
-      description: |
-        Deze regel moet als aparte regel boven de aanschrijfwijze worden geplaatst. Komt alleen voor bij personen met een adellijke titel of predicaat.
-      example: De hoogwelgeboren heer
+        Samengestelde naam en aanspreekvorm die je kunt gebruiken in de communicatie met de persoon.
     GebruikInLopendeTekst:
       type: string
       description: |
