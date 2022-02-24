@@ -28,7 +28,7 @@ Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predikaat
     | P                     | GA VP GP              |
     | V                     | GA VP GP-VV GN        |
     | N                     | GA VV GN-VP GP        |
-  - Een voorvoegsel wordt met kleine letters wordt geschreven
+  - Een voorvoegsel wordt met kleine letters geschreven
   - De eerste naamcomponent direct na "mevrouw" of "de heer" begint met een hoofdletter
   - Wanneer een naamcomponent geen of een lege waarde heeft, wordt de overbodige spatie niet opgenomen: niet starten met een spatie, niet eindigen met een spatie, geen dubbele spatie, geen spatie na streepje
 
@@ -71,6 +71,7 @@ Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predikaat
     | geslachtsnaam (02.40)                | Veld   |
     | aanduidingNaamgebruik (61.10)        | E      |
     En persoon heeft geen partner
+    En persoon heeft geen ontbonden huwelijk of partnerschap
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -187,8 +188,8 @@ Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predikaat wo
     | M                   | de heer                               |
     | V                   | mevrouw                               |
     | O                   | VL                                    |
-  - Een voorvoegsel wordt met kleine letters wordt geschreven
-  - Een adellijke titel of predikaat wordt met kleine letters wordt geschreven
+  - Een voorvoegsel wordt met kleine letters geschreven
+  - Een adellijke titel of predikaat wordt met kleine letters geschreven
   - De eerste naamcomponent direct na "mevrouw" of "de heer" begint met een hoofdletter
   - Wanneer een naamcomponent geen of een lege waarde heeft, wordt de overbodige spatie niet opgenomen: niet starten met een spatie, niet eindigen met een spatie, geen dubbele spatie, geen spatie na streepje
 
@@ -231,7 +232,7 @@ Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predikaat wo
     | V           | mevrouw De Boer-barones van den Aedel |
     | N           | barones van den Aedel-de Boer         |
 
-  Abstract Scenario: persoon met predikaat en geslachtsaanduiding "<geslacht>" heeft een partner en aanduidingNaamgebruik "<naamgebruik>"
+  Abstract Scenario: persoon met predikaat en geslachtsaanduiding "<geslacht>" en aanduidingNaamgebruik "<naamgebruik>" heeft een partner
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde     |
     | burgerservicenummer | 999992934  |
@@ -572,27 +573,31 @@ Rule: Bij meerdere huwelijken/partnerschappen die allen ontbonden zijn, worden d
     | geslachtsnaam (02.40)          | Wit    |
     | voornamen (02.10)              | Jan    |
     | aanduiding naamgebruik (61.10) | V      |
-    En de persoon heeft een partner met de volgende gegevens
+    En de persoon heeft een ex-partner met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999992935 |
-    En de partner heeft de volgende naam gegevens
+    En de ex-partner heeft de volgende naam gegevens
     | naam                  | waarde |
     | voorvoegsel (02.30)   |        |
     | geslachtsnaam (02.40) | Geel   |
-    En de partner heeft de volgende aangaanHuwelijkPartnerschap gegevens
+    En de ex-partner heeft de volgende aangaanHuwelijkPartnerschap gegevens
     | naam                     | waarde   |
     | datum aangaan (06.10)    | 19580401 |
+    En de ex-partner heeft de volgende ontbindingHuwelijkPartnerschap gegevens
+    | naam                     | waarde   |
     | datum ontbinding (07.10) | 19601001 |
-    En de persoon heeft een partner met de volgende gegevens
+    En de persoon heeft een ex-partner met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999992936 |
-    En de partner heeft de volgende naam gegevens
+    En de ex-partner heeft de volgende naam gegevens
     | naam                  | waarde |
     | voorvoegsel (02.30)   |        |
     | geslachtsnaam (02.40) | Roodt  |
-    En de partner heeft de volgende aangaanHuwelijkPartnerschap gegevens
+    En de ex-partner heeft de volgende aangaanHuwelijkPartnerschap gegevens
     | naam                     | waarde   |
     | datum aangaan (06.10)    | 19610422 |
+    En de ex-partner heeft de volgende ontbindingHuwelijkPartnerschap gegevens
+    | naam                     | waarde   |
     | datum ontbinding (07.10) | 20061014 |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
@@ -614,27 +619,31 @@ Rule: Bij meerdere huwelijken/partnerschappen die allen ontbonden zijn, worden d
     | geslachtsnaam (02.40)          | Wit    |
     | voornamen (02.10)              | Jan    |
     | aanduiding naamgebruik (61.10) | V      |
-    En de persoon heeft een partner met de volgende gegevens
+    En de persoon heeft een ex-partner met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999992935 |
-    En de partner heeft de volgende naam gegevens
+    En de ex-partner heeft de volgende naam gegevens
     | naam                  | waarde |
     | voorvoegsel (02.30)   |        |
     | geslachtsnaam (02.40) | Zwart  |
-    En de partner heeft de volgende aangaanHuwelijkPartnerschap gegevens
+    En de ex-partner heeft de volgende aangaanHuwelijkPartnerschap gegevens
     | naam                     | waarde   |
     | datum aangaan (06.10)    | 19580401 |
+    En de ex-partner heeft de volgende ontbindingHuwelijkPartnerschap gegevens
+    | naam                     | waarde   |
     | datum ontbinding (07.10) | 20061001 |
-    En de persoon heeft een partner met de volgende gegevens
+    En de persoon heeft een ex-partner met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999992936 |
-    En de partner heeft de volgende naam gegevens
+    En de ex-partner heeft de volgende naam gegevens
     | naam                  | waarde |
     | voorvoegsel (02.30)   |        |
     | geslachtsnaam (02.40) | Blaauw |
-    En de partner heeft de volgende aangaanHuwelijkPartnerschap gegevens
+    En de ex-partner heeft de volgende aangaanHuwelijkPartnerschap gegevens
     | naam                     | waarde   |
     | datum aangaan (06.10)    | 19610422 |
+    En de ex-partner heeft de volgende ontbindingHuwelijkPartnerschap gegevens
+    | naam                     | waarde   |
     | datum ontbinding (07.10) | 19831014 |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
