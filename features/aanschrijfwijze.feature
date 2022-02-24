@@ -471,8 +471,8 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | burgerservicenummer | 999992934                       |
       | fields              | naam.aanschrijfwijze            |
       Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
-      | naam                 | waarde  |
-      | aanschrijfwijze.naam | J. Geel |
+      | naam                 | waarde                    |
+      | aanschrijfwijze.naam | <naam in aanschrijfwijze> |
 
       Voorbeelden:
       | aanduiding naamgebruik | naam in aanschrijfwijze |
@@ -480,6 +480,95 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | P                      | J. Geel                 |
       | V                      | J. Geel-Wit             |
       | N                      | J. Wit-Geel             |
+
+    Abstract Scenario: persoon heeft een naamketen
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde     |
+      | burgerservicenummer | 999992934  |
+      | geslachtsaanduiding | <geslacht> |
+      En de persoon heeft de volgende naam gegevens
+      | naam                                 | waarde          |
+      | voornamen (02.10)                    |                 |
+      | adellijke titel of predikaat (02.20) |                 |
+      | voorvoegsel (02.30)                  |                 |
+      | geslachtsnaam (02.40)                | <geslachtsnaam> |
+      | aanduidingNaamgebruik (61.10)        | <naamgebruik>   |
+      En de persoon heeft een partner met de volgende gegevens
+      | naam                        | waarde             |
+      | burgerservicenummer         | 999992935          |
+      | geslachtsaanduiding (04.10) | <geslacht partner> |
+      En de partner heeft de volgende naam gegevens
+      | naam                  | waarde |
+      | voorvoegsel (02.30)   | van    |
+      | geslachtsnaam (02.40) | Velzen |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999992934                       |
+      | fields              | naam.aanschrijfwijze            |
+      Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+      | naam                  | waarde            |
+      | gebruikinlopendetekst | <aanschrijfwijze> |
+
+      Voorbeelden:
+      | geslacht | geslachtsnaam     | naamgebruik | geslacht partner | aanschrijfwijze              |
+      | M        | Ali bin Mohammed  | E           | V                | Ali bin Mohammed             |
+      | M        | Ali bin Mohammed  | P           | V                | Van Velzen                   |
+      | M        | Ali bin Mohammed  | V           | V                | Van Velzen-Ali bin Mohammed  |
+      | M        | Ali bin Mohammed  | N           | V                | Ali bin Mohammed-van Velzen  |
+      | V        | Ibin binti Yalniz | E           | M                | Ibin binti Yalniz            |
+      | V        | Ibin binti Yalniz | P           | M                | Van Velzen                   |
+      | V        | Ibin binti Yalniz | V           | M                | Van Velzen-Ibin binti Yalniz |
+      | V        | Ibin binti Yalniz | N           | M                | Ibin binti Yalniz-van Velzen |
+      | O        | Ali bin Mohammed  | E           | V                | Ali bin Mohammed             |
+      | O        | Ali bin Mohammed  | P           | M                | Van Velzen                   |
+      | O        | Ibin binti Yalniz | V           | V                | Van Velzen-Ibin binti Yalniz |
+      | O        | Ibin binti Yalniz | N           | M                | Ibin binti Yalniz-van Velzen |
+
+    Abstract Scenario: persoon met een naamketen heeft een partner met adellijke titel
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde     |
+      | burgerservicenummer | 999992934  |
+      | geslachtsaanduiding | <geslacht> |
+      En de persoon heeft de volgende naam gegevens
+      | naam                                 | waarde          |
+      | voornamen (02.10)                    |                 |
+      | adellijke titel of predikaat (02.20) |                 |
+      | voorvoegsel (02.30)                  |                 |
+      | geslachtsnaam (02.40)                | <geslachtsnaam> |
+      | aanduidingNaamgebruik (61.10)        | <naamgebruik>   |
+      En de persoon heeft een partner met de volgende gegevens
+      | naam                        | waarde             |
+      | burgerservicenummer         | 999992935          |
+      | geslachtsaanduiding (04.10) | <geslacht partner> |
+      En de partner heeft de volgende naam gegevens
+      | naam                                 | waarde                    |
+      | voorvoegsel (02.30)                  | van                       |
+      | geslachtsnaam (02.40)                | Velzen                    |
+      | adellijke titel of predikaat (02.20) | <adellijke titel partner> |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999992934                       |
+      | fields              | naam.aanschrijfwijze            |
+      Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+      | naam                  | waarde            |
+      | gebruikinlopendetekst | <aanschrijfwijze> |
+
+      Voorbeelden:
+      | geslacht | geslachtsnaam     | naamgebruik | geslacht partner | adellijke titel partner | aanschrijfwijze                        |
+      | M        | Ali bin Mohammed  | E           | V                | BI                      | Ali bin Mohammed                       |
+      | M        | Ali bin Mohammed  | P           | V                | GI                      | Van Velzen                             |
+      | M        | Ali bin Mohammed  | V           | V                | MI                      | Van Velzen-Ali bin Mohammed            |
+      | M        | Ali bin Mohammed  | N           | V                | HI                      | Ali bin Mohammed-van Velzen            |
+      | V        | Ibin binti Yalniz | E           | M                | B                       | Ibin binti Yalniz                      |
+      | V        | Ibin binti Yalniz | P           | M                | G                       | Gravin van Velzen                      |
+      | V        | Ibin binti Yalniz | V           | M                | H                       | Hertogin van Velzen-Ibin binti Yalniz  |
+      | V        | Ibin binti Yalniz | N           | M                | M                       | Ibin binti Yalniz-markiezin van Velzen |
+      | O        | Ali bin Mohammed  | E           | V                | BI                      | Ali bin Mohammed                       |
+      | O        | Ali bin Mohammed  | P           | M                | G                       | Van Velzen                             |
+      | O        | Ibin binti Yalniz | V           | V                | MI                      | Van Velzen-Ibin binti Yalniz           |
+      | O        | Ibin binti Yalniz | N           | M                | H                       | Ibin binti Yalniz-van Velzen           |
 
   Rule: de aanspreekvorm in aanschrijfwijze wordt als volgt samengesteld:
         | adellijke titel/predikaat | vrouw                    | man                    | onbekend    |
