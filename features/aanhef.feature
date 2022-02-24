@@ -235,7 +235,7 @@ Rule: De aanhef voor een persoon met adellijke titel of predikaat wordt bepaald 
       | B                       | M        | Hoogwelgeboren heer       |
       | B                       | V        | Hoogwelgeboren vrouwe     |
       | B                       | O        | Geachte P. van den Aedel  |
-      | BS                      | V        | Hoogwelgeboren vrouwe     |
+      | BS                      | M        | Hoogwelgeboren heer       |
       | BS                      | V        | Hoogwelgeboren vrouwe     |
       | BS                      | O        | Geachte P. van den Aedel  |
       | G                       | M        | Hooggeboren heer          |
@@ -243,6 +243,7 @@ Rule: De aanhef voor een persoon met adellijke titel of predikaat wordt bepaald 
       | G                       | O        | Geachte P. van den Aedel  |
       | GI                      | M        | Hooggeboren heer          |
       | GI                      | V        | Hooggeboren vrouwe        |
+      | GI                      | O        | Geachte P. van den Aedel  |
       | P                       | M        | Hoogheid                  |
       | P                       | V        | Hoogheid                  |
       | P                       | O        | Hoogheid                  |
@@ -254,7 +255,7 @@ Rule: De aanhef voor een persoon met adellijke titel of predikaat wordt bepaald 
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde     |
     | burgerservicenummer | 999992934  |
-    | geslachtsaanduiding | <geslacht> |
+    | geslachtsaanduiding | M          |
     En de persoon heeft de volgende naam gegevens
     | naam                                 | waarde                    |
     | voornamen (02.10)                    | Pieter                    |
@@ -277,20 +278,11 @@ Rule: De aanhef voor een persoon met adellijke titel of predikaat wordt bepaald 
     | aanhef | <aanhef> |
 
     Voorbeelden:
-      | adellijkeTitelPredikaat | geslacht | naamgebruik | aanhef                           |
-      | BI                      | M        | E           | Hoogwelgeboren heer              |
-      | BI                      | M        | V           | Hoogwelgeboren heer              |
-      | BI                      | M        | N           | Hoogwelgeboren heer              |
-      | BI                      | M        | P           | Geachte heer De Boer             |
-      | BI                      | O        | P           | Geachte P. de Boer               |
-      | G                       | M        | E           | Hooggeboren heer                 |
-      | G                       | M        | V           | Hooggeboren heer                 |
-      | G                       | M        | N           | Hooggeboren heer                 |
-      | G                       | M        | P           | Geachte heer De Boer             |
-      | G                       | O        | E           | Geachte P. van den Aedel         |
-      | G                       | O        | V           | Geachte P. de Boer-van den Aedel |
-      | G                       | O        | N           | Geachte P. van den Aedel-de Boer |
-      | G                       | O        | P           | Geachte P. De Boer               |
+      | adellijkeTitelPredikaat | naamgebruik | aanhef                           |
+      | G                       | E           | Hooggeboren heer                 |
+      | G                       | V           | Hooggeboren heer                 |
+      | G                       | N           | Hooggeboren heer                 |
+      | G                       | P           | Geachte heer De Boer             |
 
   Abstract Scenario: persoon met partner heeft predikaat en geslachtsaanduiding "<geslacht>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -397,6 +389,10 @@ Rule: De aanhef voor een persoon met adellijke titel of predikaat wordt bepaald 
       | V        | P           | Geachte mevrouw De Boer                  |
       | V        | V           | Geachte mevrouw De Boer-van den Aedel    |
       | V        | N           | Geachte mevrouw Van den Aedel-de Boer    |
+      | O        | E           | Geachte P. van den Aedel                 |
+      | O        | P           | Geachte P. de Boer                       |
+      | O        | V           | Geachte P. de Boer-van den Aedel         |
+      | O        | N           | Geachte P. van den Aedel-de Boer         |
       
 Rule: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredikaat van de (ex)partner onder de volgende condities:
   - de (ex)partner heeft een adellijke titel
@@ -422,7 +418,7 @@ Rule: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredikaat 
     | adellijke titel of predikaat (02.20) |               |
     | voorvoegsel (02.30)                  | de            |
     | geslachtsnaam (02.40)                | Boer          |
-    | aanduidingNaamgebruik (61.10)        | N             |
+    | aanduidingNaamgebruik (61.10)        | P             |
     En de persoon heeft een partner met de volgende gegevens
     | naam                        | waarde    |
     | geslachtsaanduiding (04.10) | M         |
@@ -441,16 +437,16 @@ Rule: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredikaat 
     | aanhef | <aanhef> |
 
     Voorbeelden:
-      | adellijkeTitelPredikaat partner | aanhef                                |
-      | B                               | Hoogwelgeboren vrouwe                 |
-      | G                               | Hooggeboren vrouwe                    |
-      | H                               | Hoogwelgeboren vrouwe                 |
-      | M                               | Hoogwelgeboren vrouwe                 |
-      | P                               | Hoogheid                              |
-      | R                               | Geachte mevrouw Van den Aedel-de Boer |
-      | JH                              | Geachte mevrouw Van den Aedel-de Boer |
+      | adellijkeTitelPredikaat partner | aanhef                        |
+      | B                               | Hoogwelgeboren vrouwe         |
+      | G                               | Hooggeboren vrouwe            |
+      | H                               | Hoogwelgeboren vrouwe         |
+      | M                               | Hoogwelgeboren vrouwe         |
+      | P                               | Hoogheid                      |
+      | R                               | Geachte mevrouw Van den Aedel |
+      | JH                              | Geachte mevrouw Van den Aedel |
 
-  Abstract Scenario: persoon met geslacht "<geslacht>" en partner met geslacht "<geslacht partner>"
+  Abstract Scenario: persoon met geslacht "<geslacht>" en partner met adellijke titel en geslacht "<geslacht partner>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde     |
     | burgerservicenummer | 999992934  |
@@ -460,7 +456,7 @@ Rule: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredikaat 
     | voornamen (02.10)                    | Jo            |
     | adellijke titel of predikaat (02.20) |               |
     | voorvoegsel (02.30)                  | de            |
-    | geslachtsnaam (02.40)                | Boer         |
+    | geslachtsnaam (02.40)                | Boer          |
     | aanduidingNaamgebruik (61.10)        | P             |
     En de persoon heeft een partner met de volgende gegevens
     | naam                        | waarde             |
