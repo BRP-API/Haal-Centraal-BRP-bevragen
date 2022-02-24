@@ -29,8 +29,7 @@ Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predikaat
     | V                     | GA VP GP-VV GN        |
     | N                     | GA VV GN-VP GP        |
   - Een voorvoegsel wordt met kleine letters wordt geschreven
-  - De eerste naamcomponent in gebruikInLopendeTekst anders dan "mevrouw" of "de heer" begint met een hoofdletter
-  - Wanneer voorletters zijn opgenomen in de gebruikinlopendetekst, het voorvoegsel van de eerste naam in de gebruikinlopendetekst met alleen kleine letters wordt geschreven
+  - De eerste naamcomponent direct na "mevrouw" of "de heer" begint met een hoofdletter
   - Wanneer een naamcomponent geen of een lege waarde heeft, wordt de overbodige spatie niet opgenomen: niet starten met een spatie, niet eindigen met een spatie, geen dubbele spatie, geen spatie na streepje
 
   Abstract Scenario: gebruikInLopendeTekst bij geslachtsaanduiding <voorbeeld>
@@ -646,6 +645,74 @@ Rule: Bij meerdere huwelijken/partnerschappen die allen ontbonden zijn, worden d
     | naam                  | waarde            |
     | gebruikInLopendeTekst | mevrouw Zwart-Wit |
 
+Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van de persoon wordt gebruikt, wordt gebruikInLopendeTekst niet opgenomen
 
+    Abstract Scenario: naam van de persoon is onbekend bij aanduiding naamgebruik "<naamgebruik>"
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                | waarde     |
+    | burgerservicenummer | 999992934  |
+    | geslachtsaanduiding | V          |
+    En de persoon heeft de volgende naam gegevens
+    | naam                                 | waarde        |
+    | voornamen (02.10)                    |               |
+    | adellijke titel of predikaat (02.20) |               |
+    | voorvoegsel (02.30)                  |               |
+    | geslachtsnaam (02.40)                | .             |
+    | aanduidingNaamgebruik (61.10)        | <naamgebruik> |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                        | waarde    |
+    | geslachtsaanduiding (04.10) | M         |
+    En de partner heeft de volgende naam gegevens
+    | naam                                 | waarde  |
+    | adellijke titel of predikaat (02.20) |         |
+    | voorvoegsel (02.30)                  | de      |
+    | geslachtsnaam (02.40)                | Boer    |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | naam.gebruikInLopendeTekst      |
+    Dan heeft de persoon met burgerservicenummer '999992934' <leveren naam> 'naam'
 
+    Voorbeelden:
+      | naamgebruik | leveren naam |
+      | E           | GEEN         |
+      | P           | WEL          |
+      | V           | GEEN         |
+      | N           | GEEN         |
 
+Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van de partner wordt gebruikt, wordt gebruikInLopendeTekst niet opgenomen
+
+  Abstract Scenario: naam van de partner is onbekend bij aanduiding naamgebruik "<naamgebruik>"
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                | waarde     |
+    | burgerservicenummer | 999992934  |
+    | geslachtsaanduiding | V          |
+    En de persoon heeft de volgende naam gegevens
+    | naam                                 | waarde        |
+    | voornamen (02.10)                    |               |
+    | adellijke titel of predikaat (02.20) |               |
+    | voorvoegsel (02.30)                  | de            |
+    | geslachtsnaam (02.40)                | Boer          |
+    | aanduidingNaamgebruik (61.10)        | <naamgebruik> |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                        | waarde    |
+    | geslachtsaanduiding (04.10) | M         |
+    En de partner heeft de volgende naam gegevens
+    | naam                                 | waarde  |
+    | adellijke titel of predikaat (02.20) |         |
+    | voorvoegsel (02.30)                  |         |
+    | geslachtsnaam (02.40)                | .       |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | naam.gebruikInLopendeTekst      |
+    Dan heeft de persoon met burgerservicenummer '999992934' <leveren naam> 'naam'
+
+    Voorbeelden:
+      | naamgebruik | leveren naam |
+      | E           | WEL          |
+      | P           | GEEN         |
+      | V           | GEEN         |
+      | N           | GEEN         |
