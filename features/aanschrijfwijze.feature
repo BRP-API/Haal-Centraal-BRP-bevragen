@@ -71,7 +71,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
         - het predikaat van de partner wordt niet opgenomen
         - het predikaat van de persoon wordt opgenomen achter het streepje en voor eigen voorvoegsel en geslachtsnaam bij aanduiding naamgebruik "V" (partner naam voor eigen naam)
         - bij meerdere actuele (niet ontbonden) huwelijken/partnerschappen, worden de naam gegevens van de eerste partner (oudste relatie) gebruikt voor het samenstellen van de aanschrijfwijze
-        - bij geen actuele huwelijk/partnerschap en meerdere ontbonden huwelijken/partnerschappen, wordt de naam gegevens van de laatst ontbonden partner gebruikt voor het samenstellen van de aanschrijfwijze
+        - bij geen actueel huwelijk/partnerschap en meerdere ontbonden huwelijken/partnerschappen, worden de naam gegevens van de laatst ontbonden partner gebruikt voor het samenstellen van de aanschrijfwijze
 
     Abstract Scenario: Persoon zonder voorvoegsel, zonder adellijke titel/predikaat, zonder actuele en/of ontbonden huwelijk/geregistreerd partnerschap
       Gegeven het systeem heeft een persoon met de volgende gegevens
