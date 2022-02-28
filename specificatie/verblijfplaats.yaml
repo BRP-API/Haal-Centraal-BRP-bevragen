@@ -384,74 +384,80 @@ components:
         inOnderzoek:
           $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     VerblijfplaatsBuitenlandInOnderzoek:
-      type: object
-      properties:
-        verblijfBuitenland:
-          type: boolean
-        datumVan:
-          type: boolean
-        datumIngangGeldigheid:
-          type: boolean
-        datumIngangOnderzoek:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            verblijfBuitenland:
+              type: boolean
+            datumVan:
+              type: boolean
+            datumIngangGeldigheid:
+              type: boolean
     VerblijfplaatsInOnderzoek:
-      type: object
-      properties:
-        aanduidingBijHuisnummer:
-          type: boolean
-        datumVan:
-          type: boolean
-        datumIngangGeldigheid:
-          type: boolean
-        datumInschrijvingInGemeente:
-          type: boolean
-        datumVestigingInNederland:
-          type: boolean
-        functieAdres:
-          type: boolean
-        gemeenteVanInschrijving:
-          type: boolean
-        huisletter:
-          type: boolean
-        huisnummer:
-          type: boolean
-        huisnummertoevoeging:
-          type: boolean
-        nummeraanduidingIdentificatie:
-          type: boolean
-        adresseerbaarObjectIdentificatie:
-          type: boolean
-        landVanwaarIngeschreven:
-          type: boolean
-        straat:
-          type: boolean
-        postcode:
-          type: boolean
-        korteNaam:
-          type: boolean
-        woonplaats:
-          type: boolean
-        datumIngangOnderzoek:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            aanduidingBijHuisnummer:
+              type: boolean
+            datumVan:
+              type: boolean
+            datumIngangGeldigheid:
+              type: boolean
+            datumInschrijvingInGemeente:
+              type: boolean
+            datumVestigingInNederland:
+              type: boolean
+            functieAdres:
+              type: boolean
+            gemeenteVanInschrijving:
+              type: boolean
+            huisletter:
+              type: boolean
+            huisnummer:
+              type: boolean
+            huisnummertoevoeging:
+              type: boolean
+            nummeraanduidingIdentificatie:
+              type: boolean
+            adresseerbaarObjectIdentificatie:
+              type: boolean
+            landVanwaarIngeschreven:
+              type: boolean
+            straat:
+              type: boolean
+            postcode:
+              type: boolean
+            korteNaam:
+              type: boolean
+            woonplaats:
+              type: boolean
     VerblijfplaatsOnbekendInOnderzoek:
-      type: object
-      properties:
-        land:
-          type: boolean
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            datumInschrijvingInGemeente:
+              type: boolean
+            gemeenteVanInschrijving:
+              type: boolean
+            land:
+              type: boolean
     LocatieInOnderzoek:
-      type: object
-      properties:
-        datumInschrijvingInGemeente:
-          type: boolean
-        datumVestigingInNederland:
-          type: boolean
-        functieAdres:
-          type: boolean
-        gemeenteVanInschrijving:
-          type: boolean
-        landVanwaarIngeschreven:
-          type: boolean
-        locatiebeschrijving:
-          type: boolean
-        datumIngangOnderzoek:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            datumInschrijvingInGemeente:
+              type: boolean
+            datumVestigingInNederland:
+              type: boolean
+            functieAdres:
+              type: boolean
+            gemeenteVanInschrijving:
+              type: boolean
+            landVanwaarIngeschreven:
+              type: boolean
+            locatiebeschrijving:
+              type: boolean

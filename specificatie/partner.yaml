@@ -68,16 +68,16 @@ components:
       description: |
         Geeft aan welke gegevens over het huwelijk of het partnerschap in onderzoek zijn.
         Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
-      type: object
-      properties:
-        burgerservicenummer:
-          type: boolean
-        geslachtsaanduiding:
-          type: boolean
-        soortVerbintenis:
-          type: boolean
-        datumIngangOnderzoek:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            burgerservicenummer:
+              type: boolean
+            geslachtsaanduiding:
+              type: boolean
+            soortVerbintenis:
+              type: boolean
     GbaAangaanHuwelijkPartnerschap:
       type: object
       description: |
@@ -114,13 +114,13 @@ components:
       description: |
         Geeft aan welke gegevens over het voltrekken van het huwelijk of aangaan van het partnerschap in onderzoek zijn.
         Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
-      type: object
-      properties:
-        datum:
-          type: boolean
-        land:
-          type: boolean
-        plaats:
-          type: boolean
-        datumIngangOnderzoek:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            datum:
+              type: boolean
+            land:
+              type: boolean
+            plaats:
+              type: boolean

@@ -23,7 +23,7 @@ paths:
             - geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature))
 
 
-        2.  Zoek met geslachtsnaam en gemeente van inschrijving
+        2.  Zoek met geslachtsnaam, voornamen en gemeente van inschrijving
             - gemeenteVanInschrijving
             - geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature))
 

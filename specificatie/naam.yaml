@@ -38,7 +38,7 @@ components:
     VolledigeNaam:
       type: string
       description: |
-        Combinatie van voornamen, voorvoegsels en geslachtsnaam, zonder predikaat, adellijke titel of toevoeging van een eventuele partnernaam.
+        Combinatie van predikaat, voornamen, adellijke titel, voorvoegsels en geslachtsnaam, zonder toevoeging van een eventuele partnernaam.
       example: "Pieter Jan de Vries"
     Voorletters: 
       type: string
@@ -54,7 +54,7 @@ components:
       type: string
       maxLength: 10
       example: "de"
-    WaardetabelMetSoort:
+    AdellijkeTitelPredikaatType:
       allOf:
         - $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
         - properties:
@@ -76,12 +76,6 @@ components:
           $ref: '#/components/schemas/Geslachtsnaam'
         adellijkeTitelPredikaat:
           $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
-    GbaNaam:
-      allOf:
-        - $ref: '#/components/schemas/GbaNaamBasis'
-        - properties:
-            inOnderzoek:
-              $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     GbaNaamGerelateerde:
       allOf:
         - $ref: '#/components/schemas/GbaNaamBasis'
@@ -111,13 +105,7 @@ components:
         voorvoegsel:
           $ref: '#/components/schemas/Voorvoegsel'
         adellijkeTitelPredikaat:
-          $ref: '#/components/schemas/WaardetabelMetSoort'
-    Naam:
-      allOf:
-        - $ref: '#/components/schemas/NaamBasis'
-        - properties:
-            inOnderzoek:
-              $ref: '#/components/schemas/NaamInOnderzoek'
+          $ref: '#/components/schemas/AdellijkeTitelPredikaatType'
     NaamGerelateerde:
       type: object
       properties:
@@ -128,7 +116,7 @@ components:
         geslachtsnaam:
           $ref: '#/components/schemas/Geslachtsnaam'
         adellijkeTitelPredikaat:
-          $ref: '#/components/schemas/WaardetabelMetSoort'
+          $ref: '#/components/schemas/AdellijkeTitelPredikaatType'
         voorletters:
           $ref: '#/components/schemas/Voorletters'
         inOnderzoek:
@@ -136,20 +124,18 @@ components:
     NaamInOnderzoek:
       description: |
         Geeft aan welke gegevens over de naam in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
-      type: object
-      properties:
-        geslachtsnaam:
-          type: boolean
-        voornamen:
-          type: boolean
-        voorvoegsel:
-          type: boolean
-        adellijkeTitel:
-          type: boolean
-        predikaat:
-          type: boolean
-        datumIngangOnderzoek:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            geslachtsnaam:
+              type: boolean
+            voornamen:
+              type: boolean
+            voorvoegsel:
+              type: boolean
+            adellijkeTitelPredikaat:
+              type: boolean
     NaamPersoon:
       allOf:
         - $ref: '#/components/schemas/NaamBasis'
