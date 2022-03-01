@@ -1323,8 +1323,8 @@
             "gemeenteVanInschrijving" : {
               "$ref" : "#/components/schemas/GemeenteVanInschrijving"
             },
-            "vertrokkenOnbekendWaarheen" : {
-              "$ref" : "#/components/schemas/VertrokkenOnbekendWaarheen"
+            "verblijfplaatsOnbekend" : {
+              "$ref" : "#/components/schemas/IndicatieVerblijfplaatsOnbekend"
             },
             "inOnderzoek" : {
               "$ref" : "#/components/schemas/VerblijfplaatsOnbekendInOnderzoek"
@@ -1454,8 +1454,8 @@
             "korteNaam" : {
               "$ref" : "#/components/schemas/KorteNaam"
             },
-            "vanuitVertrokkenOnbekendWaarheen" : {
-              "$ref" : "#/components/schemas/VanuitVertrokkenOnbekendWaarheen"
+            "vanuitVerblijfplaatsOnbekend" : {
+              "$ref" : "#/components/schemas/VanuitVerblijfplaatsOnbekend"
             },
             "datumVan" : {
               "$ref" : "#/components/schemas/AbstractDatum"
@@ -1494,9 +1494,9 @@
         "type" : "string",
         "description" : "De officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG) of een verkorte versie.\n"
       },
-      "VanuitVertrokkenOnbekendWaarheen" : {
+      "VanuitVerblijfplaatsOnbekend" : {
         "type" : "boolean",
-        "description" : "Geeft aan dat de persoon is teruggekeerd uit een situatie van 'vertrokken onbekend waarheen\n"
+        "description" : "Geeft aan dat de persoon is teruggekeerd uit een situatie van onbekende verblijfplaats\n"
       },
       "VerblijfplaatsInOnderzoek" : {
         "allOf" : [ {
@@ -1591,8 +1591,8 @@
             "locatiebeschrijving" : {
               "$ref" : "#/components/schemas/Locatiebeschrijving"
             },
-            "vanuitVertrokkenOnbekendWaarheen" : {
-              "$ref" : "#/components/schemas/VanuitVertrokkenOnbekendWaarheen"
+            "vanuitVerblijfplaatsOnbekend" : {
+              "$ref" : "#/components/schemas/VanuitVerblijfplaatsOnbekend"
             },
             "woonplaats" : {
               "$ref" : "#/components/schemas/Woonplaats"
@@ -1630,9 +1630,9 @@
           }
         } ]
       },
-      "VertrokkenOnbekendWaarheen" : {
+      "IndicatieVerblijfplaatsOnbekend" : {
         "type" : "boolean",
-        "description" : "Indicatie dat de persoon is vertrokken naar het buitenland, maar dat niet bekend is waar naar toe.\n"
+        "description" : "Indicatie dat de verblijfplaats van de persoon onbekend is. Er is niet bekend in welk land de persoon verblijft.\n"
       },
       "VerblijfplaatsOnbekendInOnderzoek" : {
         "allOf" : [ {
