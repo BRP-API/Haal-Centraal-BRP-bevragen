@@ -26,7 +26,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999990184                       |
-      | fields              | partners.naam.voornamen         |
+      | fields              | partners                        |
       Dan heeft de persoon met burgerservicenummer '999990184' alleen 'partners' met de volgende gegevens
       | burgerservicenummer |
       | 999992935           |
@@ -53,7 +53,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999993380                       |
-      | fields              | partners.naam.voornamen         |
+      | fields              | partners                        |
       Dan heeft de persoon met burgerservicenummer '999993380' alleen 'partners' met de volgende gegevens
       | burgerservicenummer |
       | 999992935           |
@@ -118,7 +118,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999991553                       |
-      | fields              | partners.naam.voornamen         |
+      | fields              | partners                        |
       Dan heeft de persoon met burgerservicenummer '999991553' alleen 'partners' met de volgende gegevens
       | burgerservicenummer |
       | 999992935           |
@@ -166,10 +166,18 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
         | Categorie | Voornamen | Geslachtsaanduiding (04.10) |
         | 1         | Charlotte | V                           |
         | 51        | Karel     | M                           |
-      Als de persoon met burgerservicenummer 555550001 wordt geraadpleegd met fields=partners
-      Dan bevat het antwoord 1 partner
-      En bevat het antwoord de partner met naam.voornamen "Karel" en geslachtsaanduiding "man"
-      En bevat het antwoord GEEN partner met naam.voornamen "Charlotte" en geslachtsaanduiding "vrouw"
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 555550001                       |
+      | fields              | partners                        |
+      Dan heeft de persoon met burgerservicenummer '555550001' exact 1 'partners'
+      En heeft de persoon met burgerservicenummer '555550001' alleen 'partners' met de volgende gegevens
+      | burgerservicenummer |
+      | 555550002           |
+      En heeft de partner met burgerservicenummer '555550001' de volgende 'naam' gegevens
+      | naam      | waarde |
+      | voornamen | Karel  |
 
   Rule: wanneer een samengestelde naam wordt gevraagd waarin de geslachtsnaam van de partner wordt gebruikt, dan wordt de partner geleverd, ook wanneer daar niet om gevraagd is met fields
     Wanneer in fields NIET is gevraagd om 'partners' wordt toch de partner geleverd in GbaPersoon wanneer aan alle volgende condities is voldaan:
@@ -206,7 +214,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | naam         | waarde |
       | code         | M      |
       | omschrijving | man    |
-      En heeft de partner de volgende 'naam' gegevens
+      En heeft de partner alleen de volgende 'naam' gegevens
       | naam                                 | waarde    |
       | adellijkeTitelPredikaat.code         | JH        |
       | adellijkeTitelPredikaat.omschrijving | Jonkheer  |
@@ -227,7 +235,6 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | P           | naam                          |
       | P           | leeftijd,naam.aanschrijfwijze |
       | P           | naam.aanschrijfwijze,partners |
-
 
     @gba
     Abstract Scenario: Niet leveren huwelijk/partnerschap bij <naamgebruik> en <fields>
@@ -271,7 +278,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | naam         | waarde |
       | code         | M      |
       | omschrijving | man    |
-      En heeft de partner de volgende 'naam' gegevens
+      En heeft de partner alleen de volgende 'naam' gegevens
       | naam                                 | waarde    |
       | adellijkeTitelPredikaat.code         | JH        |
       | adellijkeTitelPredikaat.omschrijving | Jonkheer  |
@@ -314,7 +321,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | naam         | waarde |
       | code         | M      |
       | omschrijving | man    |
-      En heeft de partner de volgende 'naam' gegevens
+      En heeft de partner alleen de volgende 'naam' gegevens
       | naam                                 | waarde    |
       | adellijkeTitelPredikaat.code         | JH        |
       | adellijkeTitelPredikaat.omschrijving | Jonkheer  |
@@ -387,11 +394,11 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | naam         | waarde |
       | code         | M      |
       | omschrijving | man    |
-      En heeft de partner de volgende 'naam' gegevens
+      En heeft de partner alleen de volgende 'naam' gegevens
       | naam                                 | waarde    |
       | voorvoegsel                          | de        |
       | geslachtsnaam                        | Vries     |
-      En heeft de partner de volgende 'ontbindingHuwelijkPartnerschap' gegevens
+      En heeft de partner alleen de volgende 'ontbindingHuwelijkPartnerschap' gegevens
       | naam                                 | waarde    |
       | datum.datum                          | 20190116  |
       En heeft de partner geen andere gegevens dan 'naam' en 'geslachtsaanduiding' en 'ontbindingHuwelijkPartnerschap'
@@ -418,7 +425,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | naam         | waarde |
       | code         | M      |
       | omschrijving | man    |
-      En heeft de partner met burgerservicenummer '999992935' de volgende 'naam' gegevens
+      En heeft de partner alleen de volgende 'naam' gegevens
       | naam                                 | waarde    |
       | geslachtsnaam                        | Zwart     |
       En heeft de partner geen andere gegevens dan 'naam' en 'geslachtsaanduiding'
@@ -488,6 +495,9 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | naam                           | waarde |
       | aanduiding naamgebruik (61.10) | P      |
       En de persoon heeft exact 1 'partners'
+      En heeft de partner de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999992808 |
       En heeft de partner de volgende 'geslachtsaanduiding' gegevens
       | naam         | waarde |
       | code         | M      |
@@ -499,17 +509,17 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | geslachtsnaam                        | Vries     |
       En de partner heeft GEEN ontbindingHuwelijkPartnerschap gegevens
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 999992807                       |
-      | fields              | naam,partners.naam              |
-      Dan heeft de persoon met burgerservicenummer '999992807' exact 1 'partners'
-      En heeft de partner met burgerservicenummer '999992807' de volgende 'naam' gegevens
+      | naam                | waarde                                                    |
+      | type                | RaadpleegMetBurgerservicenummer                           |
+      | burgerservicenummer | 999992807                                                 |
+      | fields              | naam,partners.naam.voornamen,partners.burgerservicenummer |
+      En heeft de persoon met burgerservicenummer '999992807' alleen 'partners' met de volgende gegevens
+      | burgerservicenummer |
+      | 999992808           |
+      En heeft de partner met burgerservicenummer '999992807' alleen de volgende 'naam' gegevens
       | naam                                 | waarde    |
       | voornamen                            | Cees      |
-      | voorvoegsel                          | de        |
-      | geslachtsnaam                        | Vries     |
-      En heeft de partner geen andere gegevens dan 'naam'
+      En heeft de partner geen andere gegevens dan 'naam' en 'burgerservicenummer'
 
   TODO: bepalen OnbekendPartner
     @proxy
