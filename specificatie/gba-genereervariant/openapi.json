@@ -958,7 +958,7 @@
             "$ref" : "#/components/schemas/Waardetabel"
           },
           "gemeenteVanInschrijving" : {
-            "$ref" : "#/components/schemas/GemeenteVanInschrijving"
+            "$ref" : "#/components/schemas/Waardetabel"
           },
           "adresregel1" : {
             "$ref" : "#/components/schemas/Adresregel1"
@@ -1192,7 +1192,7 @@
             "$ref" : "#/components/schemas/GbaDatum"
           },
           "gemeenteVanInschrijving" : {
-            "$ref" : "#/components/schemas/GemeenteVanInschrijving"
+            "$ref" : "#/components/schemas/Waardetabel"
           },
           "naamOpenbareRuimte" : {
             "$ref" : "#/components/schemas/NaamOpenbareRuimte"

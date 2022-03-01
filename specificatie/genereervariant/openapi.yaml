@@ -856,7 +856,7 @@ components:
           datumInschrijvingInGemeente:
             $ref: '#/components/schemas/AbstractDatum'
           gemeenteVanInschrijving:
-            $ref: '#/components/schemas/GemeenteVanInschrijving'
+            $ref: '#/components/schemas/Waardetabel'
           vertrokkenOnbekendWaarheen:
             $ref: '#/components/schemas/VertrokkenOnbekendWaarheen'
           inOnderzoek:
@@ -891,7 +891,7 @@ components:
           datumInschrijvingInGemeente:
             $ref: '#/components/schemas/AbstractDatum'
           gemeenteVanInschrijving:
-            $ref: '#/components/schemas/GemeenteVanInschrijving'
+            $ref: '#/components/schemas/Waardetabel'
           land:
             $ref: '#/components/schemas/Waardetabel'
           datumVan:

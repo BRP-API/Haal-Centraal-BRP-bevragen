@@ -1074,7 +1074,7 @@
               "$ref" : "#/components/schemas/AbstractDatum"
             },
             "gemeenteVanInschrijving" : {
-              "$ref" : "#/components/schemas/GemeenteVanInschrijving"
+              "$ref" : "#/components/schemas/Waardetabel"
             },
             "vertrokkenOnbekendWaarheen" : {
               "$ref" : "#/components/schemas/VertrokkenOnbekendWaarheen"
@@ -1123,7 +1123,7 @@
               "$ref" : "#/components/schemas/AbstractDatum"
             },
             "gemeenteVanInschrijving" : {
-              "$ref" : "#/components/schemas/GemeenteVanInschrijving"
+              "$ref" : "#/components/schemas/Waardetabel"
             },
             "land" : {
               "$ref" : "#/components/schemas/Waardetabel"
