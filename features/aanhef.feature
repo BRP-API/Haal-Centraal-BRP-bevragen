@@ -27,8 +27,7 @@ Rule: De aanhef voor een persoon zonder adellijke titel of predikaat wordt samen
     | P                     | GA VP GP       |
     | V                     | GA VP GP-VV GN |
     | N                     | GA VV GN-VP GP |
-  - Het voorvoegsel van de eerste naam in de aanhef met een hoofdletter wordt geschreven, gevolgd door alleen kleine letters
-  - Het voorvoegsel van de (eventuele) tweede naam in de aanhef met kleine letters wordt geschreven
+  - Het voorvoegsel van de eerste naam in de aanhef met een hoofdletter wordt geschreven
   - Wanneer voorletters zijn opgenomen in de aanhef, het voorvoegsel van de eerste naam in de aanhef met alleen kleine letters wordt geschreven
   - Wanneer een naamcomponent geen of een lege waarde heeft, wordt de overbodige spatie niet opgenomen: niet starten met een spatie, niet eindigen met een spatie, geen dubbele spatie, geen spatie na streepje
 
@@ -147,17 +146,17 @@ Rule: De aanhef voor een persoon zonder adellijke titel of predikaat wordt samen
     | voorvoegsel in kleine letters | V        | E           | Jo Rene   | in het      | Zonnetje      | 't                  | Wolkje                | Geachte mevrouw In het Zonnetje              |
     | voorvoegsel in kleine letters | O        | E           | Jo Rene   | in het      | Zonnetje      | 't                  | Wolkje                | Geachte J.R. in het Zonnetje                 |
     | geen voornamen                | O        | E           |           | in het      | Zonnetje      | 't                  | Wolkje                | Geachte In het Zonnetje                      |
-    | voorvoegsel met hoofdletters  | V        | E           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte mevrouw Op den Berghe                |
-    | voorvoegsel met hoofdletters  | O        | E           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte J.R. op den Berghe                   |
+    | voorvoegsel met hoofdletters  | V        | E           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte mevrouw Op Den Berghe                |
+    | voorvoegsel met hoofdletters  | O        | E           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte J.R. Op Den Berghe                   |
     | voorvoegsel begint met accent | V        | P           | Jo Rene   | in het      | Zonnetje      | 't                  | Wolkje                | Geachte mevrouw 't Wolkje                    |
-    | voorvoegsel met hoofdletters  | V        | P           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte mevrouw Van der Broeck               |
-    | voorvoegsel met hoofdletters  | O        | P           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte J.R. van der Broeck                  |
+    | voorvoegsel met hoofdletters  | V        | P           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte mevrouw Van Der Broeck               |
+    | voorvoegsel met hoofdletters  | O        | P           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte J.R. Van Der Broeck                  |
     | voorvoegsel begint met accent | V        | V           | Jo Rene   | in het      | Zonnetje      | 't                  | Wolkje                | Geachte mevrouw 't Wolkje-in het Zonnetje    |
-    | voorvoegsel met hoofdletters  | V        | V           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte mevrouw Van der Broeck-op den Berghe |
-    | voorvoegsel met hoofdletters  | O        | V           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte J.R. van der Broeck-op den Berghe    |
+    | voorvoegsel met hoofdletters  | V        | V           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte mevrouw Van Der Broeck-Op Den Berghe |
+    | voorvoegsel met hoofdletters  | O        | V           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte J.R. Van Der Broeck-Op Den Berghe    |
     | voorvoegsel in kleine letters | V        | N           | Jo Rene   | in het      | Zonnetje      | 't                  | Wolkje                | Geachte mevrouw In het Zonnetje-'t Wolkje    |
-    | voorvoegsel met hoofdletters  | V        | N           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte mevrouw Op den Berghe-van der Broeck |
-    | voorvoegsel met hoofdletters  | O        | N           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte J.R. op den Berghe-van der Broeck    |
+    | voorvoegsel met hoofdletters  | V        | N           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte mevrouw Op Den Berghe-Van Der Broeck |
+    | voorvoegsel met hoofdletters  | O        | N           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte J.R. Op Den Berghe-Van Der Broeck    |
 
 Rule: De aanhef voor een persoon met adellijke titel of predikaat wordt bepaald op basis van adellijkeTitelPredikaat en de geslachtsaanduiding:
   | adellijkeTitelPredikaat | omschrijving | geslachtsaanduiding | Aanhef                |
@@ -769,7 +768,7 @@ Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van
     | voornamen (02.10)                    |               |
     | adellijke titel of predikaat (02.20) |               |
     | voorvoegsel (02.30)                  |               |
-    | geslachtsnaam (02.40)                | .             |
+    | geslachtsnaam (02.40)                |               |
     | aanduidingNaamgebruik (61.10)        | <naamgebruik> |
     En de persoon heeft een partner met de volgende gegevens
     | naam                        | waarde    |
@@ -856,7 +855,7 @@ Rule: Wanneer de geslachtsnaam van de partner leeg of onbekend is en de naam van
     | naam                                 | waarde  |
     | adellijke titel of predikaat (02.20) |         |
     | voorvoegsel (02.30)                  |         |
-    | geslachtsnaam (02.40)                | .       |
+    | geslachtsnaam (02.40)                |         |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
