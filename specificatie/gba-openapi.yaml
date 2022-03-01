@@ -1,0 +1,25 @@
+openapi: 3.0.3
+servers:
+  - description: |
+                  APILAB testserver
+    url: https://www.haalcentraal.nl/haalcentraal/api/brp
+info:
+  title: Bevragen Personen
+  description: |
+                API voor het bevragen van personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.
+
+                Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.
+
+                Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.1.0/features) voor nadere toelichting.
+  version: 2.0.0
+  contact:
+    url: https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen
+  license:
+    name: European Union Public License, version 1.2 (EUPL-1.2)
+    url: https://eupl.eu/1.2/nl/
+tags:
+  - name: Personen
+    description: Zoeken personen
+paths:
+  /personen:
+    $ref: 'zoek-gba-personen.yaml#/paths/~1personen'
