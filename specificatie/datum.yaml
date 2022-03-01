@@ -30,9 +30,7 @@ components:
     GbaDatum:
       type: string
       pattern: ^[0-9]{8}$
-      example:
-        value:
-          datum: "20180700"
+      example: "20180700"
     VolledigeDatum:
       description: Datum conform iso8601
       allOf:
