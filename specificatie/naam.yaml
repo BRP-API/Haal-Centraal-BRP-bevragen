@@ -8,6 +8,7 @@ components:
   schemas:
     Aanhef:
       type: string
+      pattern: ^[a-zA-Z0-9À-ÿ .\'\-\']{1,650}?$
       description: |
         Kun je gebruiken als aanhef in een brief gericht aan persoon.
       example: "Hoogwelgeboren heer"
@@ -18,41 +19,47 @@ components:
       properties:
         naam:
           type: string
+          pattern: ^[a-zA-Z0-9À-ÿ .\'\-\']{1,650}?$
           example: "H.W. baron van den Aedel"
         aanspreekvorm:
           description: |
             Deze regel moet als aparte regel boven de samengestelde naam worden geplaatst. Komt alleen voor bij personen met een adellijke titel of predicaat.
           type: string
+          pattern: ^[a-zA-Z]{1,25}?$
           example: "De hoogwelgeboren heer"
     GebruikInLopendeTekst:
       type: string
+      pattern: ^[a-zA-Z0-9À-ÿ .\'\-\']{1,650}?$
       description: |
         Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert.
       example: "baron Van den Aedel"
     Geslachtsnaam:
       type: string
-      maxLength: 200
+      pattern: ^[a-zA-Z0-9À-ÿ '\-\']{1,200}?$
       description: |
         De achternaam van een persoon.
       example: "Vries"
     VolledigeNaam:
       type: string
+      pattern: ^[a-zA-Z0-9À-ÿ '\-\']{1,450}?$
       description: |
         Combinatie van predikaat, voornamen, adellijke titel, voorvoegsels en geslachtsnaam, zonder toevoeging van een eventuele partnernaam.
       example: "Pieter Jan de Vries"
-    Voorletters: 
+    Voorletters:
       type: string
+      pattern: ^[a-zA-Z0-9À-ÿ .\']{1,40}?$
       description: |
         De voorletters van de persoon, afgeleid van de voornamen.
       example: "P.J."
     Voornamen:
       type: string
+      pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ '\-\']{1,200}(\?+|\*)?$
       maxLength: 200
       description: |
         De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
     Voorvoegsel:
       type: string
-      maxLength: 10
+      pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ '\-\']{1,10}(\?+|\*)?$
       example: "de"
     AdellijkeTitelPredikaatType:
       allOf:
@@ -60,11 +67,12 @@ components:
         - properties:
             soort:
               type: string
+              pattern: ^(\?+|\*)?[a-z]{1,9}(\?+|\*)?$
           example:
             value:
               code: "JV"
               omschrijving: "jonkvrouw"
-              soort: "predikaat"
+              soort: "predicaat"
     GbaNaamBasis:
       type: object
       properties:

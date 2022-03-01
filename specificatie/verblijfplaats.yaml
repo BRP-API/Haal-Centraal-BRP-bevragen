@@ -8,23 +8,27 @@ components:
   schemas:
     Adresregel1:
       type: string
+      pattern: ^[a-zA-Z0-9À-ÿ .\'\-\']{1,100}?$
       description: |
         Het eerste deel van een adres is een combinatie van de straat en huisnummer.
       # example: "1600 Pennsylvania Avenue NW"
       example: "Laan van de landinrichtingscommissie Duiven-Westervoort 26A-3"
     Adresregel2:
       type: string
+      pattern: ^[a-zA-Z0-9À-ÿ .\'\-\']{1,100}?$
       description: |
         Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode.
       # example: "Washington, DC 20500"
       example: "1234AA Nootdorp"
     Adresregel3:
       type: string
+      pattern: ^[a-zA-Z0-9À-ÿ .\'\-\']{1,100}?$
       description: |
         Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.
       example: "Selangor"
     AdresseerbaarObjectIdentificatie:
       type: string
+      pattern: ^[0-9]{16}$
       description: |
         De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.
       example: "0226010000038820"
@@ -61,13 +65,16 @@ components:
       description: |
         De officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG) of een verkorte versie.
       type: string
+      pattern: ^[a-zA-Z0-9À-ÿ .\'\-\']{1,80}?$
     Locatiebeschrijving:
       type: string
+      pattern: ^[a-zA-Z0-9À-ÿ .\'\-\']{1,35}?$
       description: |
         Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats.
       example: "Naast de derde brug"
     NaamOpenbareRuimte:
       type: string
+      pattern: ^[a-zA-Z0-9À-ÿ .\'\-\']{1,80}?$
     NummeraanduidingIdentificatie:
       description: |
         Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.

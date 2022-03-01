@@ -10,12 +10,15 @@ components:
       description: |
         Het A-nummer van de persoon
       type: string
+      pattern: ^[0-9]{10}$
     Burgerservicenummer:
       type: string
       pattern: ^[0-9]{9}$
       example: "555555021"
     GbaGeheimhoudingPersoonsgegevens:
       type: integer
+      minimum: 0
+      maximum: 7
     GeheimhoudingPersoonsgegevens:
       description: |
         Gegevens mogen niet worden verstrekt aan derden / maatschappelijke instellingen.
@@ -29,6 +32,7 @@ components:
       maximum: 150
     Reisdocumentnummer:
       type: string
+      pattern: ^[0-9a-zA-Z]{9}$
       description: |
         Het nummer van het verstrekte Nederlandse reisdocument.
       example: "546376728"

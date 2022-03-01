@@ -151,8 +151,7 @@ components:
               description: |
                 Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
               type: string
-              pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ '\-\']{1,40}(\?+|\*)?$
-              maxLength: 40
+              pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ '\-\']{1,80}(\?+|\*)?$
               example: "Utrecht"
             geslachtsnaam:
               description: |
