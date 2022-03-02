@@ -17,8 +17,6 @@ components:
       example: "555555021"
     GbaGeheimhoudingPersoonsgegevens:
       type: integer
-      minimum: 0
-      maximum: 7
     GeheimhoudingPersoonsgegevens:
       description: |
         Gegevens mogen niet worden verstrekt aan derden / maatschappelijke instellingen.

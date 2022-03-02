@@ -151,13 +151,13 @@ components:
               description: |
                 Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
               type: string
-              pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ '\-\']{1,80}(\?+|\*)?$
+              pattern: ^(\?+|\*)?[a-zA-Z0-9À-ſ \,\.\-\']{1,80}(\?+|\*)?$
               example: "Utrecht"
             geslachtsnaam:
               description: |
                 De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
               type: string
-              pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ '\-\']{1,200}(\?+|\*)?$
+              pattern: ^(\?+|\*)?[a-zA-Z0-9À-ſ \.\-\']{1,200}(\?+|\*)?$
               example: "Vries"
             geslachtsaanduiding:
               description: |
@@ -169,13 +169,13 @@ components:
               description: |
                 Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
               type: string
-              pattern: ^[a-zA-Z0-9À-ÿ' '\-\']{1,10}$
+              pattern: ^[a-zA-Z \']{1,10}$
               example: "de"
             voornamen:
               description: |
                 De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
               type: string
-              pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ' '\-\']{1,200}(\?+|\*)?$
+              pattern: ^(\?+|\*)?[a-zA-Z0-9À-ſ \.\-\']{1,200}(\?+|\*)?$
               example: "Dirk"
     ZoekMetNaamEnGemeenteVanInschrijving:
       required:
@@ -198,19 +198,19 @@ components:
               description: |
                 De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
               type: string
-              pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ '\-\']{1,200}(\?+|\*)?$
+              pattern: ^(\?+|\*)?[a-zA-Z0-9À-ſ \.\-\']{1,200}(\?+|\*)?$
               example: "Vries"
             voorvoegsel:
               description: |
                 Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
               type: string
-              pattern: ^[a-zA-Z0-9À-ÿ' '\-\']{1,10}$
+              pattern: ^[a-zA-Z \']{1,10}$
               example: "de"
             voornamen:
               description: |
                 De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
               type: string
-              pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ' '\-\']{1,200}(\?+|\*)?$
+              pattern: ^(\?+|\*)?[a-zA-Z0-9À-ſ \.\-\']{1,200}(\?+|\*)?$
               example: "Dirk"
     ZoekMetPostcodeEnHuisnummer:
       required:
