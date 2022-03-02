@@ -35,11 +35,11 @@ components:
     GezagsverhoudingInOnderzoek:
       description: |
         Geeft aan welke gegevens van de gezagsverhouding in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
-      type: object
-      properties:
-        indicatieCurateleRegister:
-          type: boolean
-        indicatieGezagMinderjarige:
-          type: boolean
-        datumIngangOnderzoek:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            indicatieCurateleRegister:
+              type: boolean
+            indicatieGezagMinderjarige:
+              type: boolean

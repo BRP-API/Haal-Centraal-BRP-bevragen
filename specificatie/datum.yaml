@@ -23,20 +23,15 @@ components:
       discriminator:
         propertyName: type
         mapping:
-          Datum: '#/components/schemas/VolledigDatum'
+          Datum: '#/components/schemas/VolledigeDatum'
           OnbekendDatum: '#/components/schemas/OnbekendDatum'
           JaarDatum: '#/components/schemas/JaarDatum'
           JaarMaandDatum: '#/components/schemas/JaarMaandDatum'
     GbaDatum:
-      type: object
-      properties:
-        datum:
-          type: string
-          pattern: ^[0-9]{8}$
-      example:
-        value:
-          datum: "20180700"
-    VolledigDatum:
+      type: string
+      pattern: ^[0-9]{8}$
+      example: "20180700"
+    VolledigeDatum:
       description: Datum conform iso8601
       allOf:
         - $ref: '#/components/schemas/AbstractDatum'

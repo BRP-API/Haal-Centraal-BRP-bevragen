@@ -44,13 +44,13 @@ components:
             inOnderzoek:
               $ref: '#/components/schemas/GeboorteInOnderzoek'
     GeboorteInOnderzoek:
-      type: object
-      properties:
-        datum:
-          type: boolean
-        land:
-          type: boolean
-        plaats:
-          type: boolean
-        datumIngangOnderzoek:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            datum:
+              type: boolean
+            land:
+              type: boolean
+            plaats:
+              type: boolean

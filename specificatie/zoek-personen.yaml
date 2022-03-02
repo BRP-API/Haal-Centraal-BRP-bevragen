@@ -23,7 +23,7 @@ paths:
             - geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature))
 
 
-        2.  Zoek met geslachtsnaam en gemeente van inschrijving
+        2.  Zoek met geslachtsnaam, voornamen en gemeente van inschrijving
             - gemeenteVanInschrijving
             - geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature))
 
@@ -285,7 +285,7 @@ components:
             personen:
               type: array
               items:
-                $ref: 'persoon.yaml#/components/schemas/AbstractPersoon'
+                $ref: 'persoon.yaml#/components/schemas/Persoon'
     ZoekMetGeslachtsnaamEnGeboortedatumResponse:
       allOf:
         - $ref: '#/components/schemas/PersonenQueryResponse'
@@ -294,7 +294,7 @@ components:
             personen:
               type: array
               items:
-                $ref: 'persoon.yaml#/components/schemas/AbstractPersoonBeperkt'
+                $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
     ZoekMetNaamEnGemeenteVanInschrijvingResponse:
       allOf:
         - $ref: '#/components/schemas/PersonenQueryResponse'
@@ -303,7 +303,7 @@ components:
             personen:
               type: array
               items:
-                $ref: 'persoon.yaml#/components/schemas/AbstractPersoonBeperkt'
+                $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
     ZoekMetPostcodeEnHuisnummerResponse:
       allOf:
         - $ref: '#/components/schemas/PersonenQueryResponse'
@@ -312,7 +312,7 @@ components:
             personen:
               type: array
               items:
-                $ref: 'persoon.yaml#/components/schemas/AbstractPersoonBeperkt'
+                $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
     ZoekMetStraatHuisnummerEnGemeenteVanInschrijvingResponse:
       allOf:
         - $ref: '#/components/schemas/PersonenQueryResponse'
@@ -321,7 +321,7 @@ components:
             personen:
               type: array
               items:
-                $ref: 'persoon.yaml#/components/schemas/AbstractPersoonBeperkt'
+                $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
     ZoekMetNummeraanduidingIdentificatieResponse:
       allOf:
         - $ref: '#/components/schemas/PersonenQueryResponse'
@@ -330,4 +330,4 @@ components:
             personen:
               type: array
               items:
-                $ref: 'persoon.yaml#/components/schemas/AbstractPersoonBeperkt'
+                $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
