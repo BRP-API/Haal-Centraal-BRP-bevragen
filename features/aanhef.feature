@@ -394,7 +394,6 @@ Rule: De aanhef voor een persoon met adellijke titel of predicaat wordt bepaald 
 Rule: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredicaat van de (ex)partner onder de volgende condities:
   - de (ex)partner heeft een adellijke titel
   - de geslachtsaanduiding van de persoon is "V"
-  - de geslachtsaanduiding van de partner is "M"
   - de persoon gebruikt de naam van haar (ex)partner (aanduidingNaamgebruik is ongelijk aan "E")
   - met de adellijke titel van de (ex)partner mag een hoffelijkheidstitel ('titre de courtoisie') worden gebruikt met bijbehorende aanhef:
       | adellijkeTitelPredicaat partner | hoffelijkheidstitel | aanhef                |
@@ -416,9 +415,6 @@ Rule: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredicaat 
     | voorvoegsel (02.30)                  | de            |
     | geslachtsnaam (02.40)                | Boer          |
     | aanduidingNaamgebruik (61.10)        | P             |
-    En de persoon heeft een partner met de volgende gegevens
-    | naam                        | waarde    |
-    | geslachtsaanduiding (04.10) | M         |
     En de partner heeft de volgende naam gegevens
     | naam                                 | waarde                            |
     | adellijke titel of predicaat (02.20) | <adellijkeTitelPredicaat partner> |
@@ -442,8 +438,10 @@ Rule: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredicaat 
       | P                               | Hoogheid                      |
       | R                               | Geachte mevrouw Van den Aedel |
       | JH                              | Geachte mevrouw Van den Aedel |
+      | BS                              | Geachte mevrouw Van den Aedel |
+      | GI                              | Geachte mevrouw Van den Aedel |
 
-  Abstract Scenario: persoon met geslacht "<geslacht>" en partner met adellijke titel en geslacht "<geslacht partner>"
+  Abstract Scenario: persoon met geslacht "<geslacht>" en partner met adellijke titel "<titel partner>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde     |
     | burgerservicenummer | 999992934  |
@@ -455,12 +453,9 @@ Rule: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredicaat 
     | voorvoegsel (02.30)                  | de            |
     | geslachtsnaam (02.40)                | Boer          |
     | aanduidingNaamgebruik (61.10)        | P             |
-    En de persoon heeft een partner met de volgende gegevens
-    | naam                        | waarde             |
-    | geslachtsaanduiding (04.10) | <geslacht partner> |
     En de partner heeft de volgende naam gegevens
     | naam                                 | waarde                            |
-    | adellijke titel of predicaat (02.20) | B                                 |
+    | adellijke titel of predicaat (02.20) | <titel partner>                   |
     | voorvoegsel (02.30)                  | van den                           |
     | geslachtsnaam (02.40)                | Aedel                             |
     Als personen wordt gezocht met de volgende parameters
@@ -473,19 +468,13 @@ Rule: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredicaat 
     | aanhef | <aanhef> |
 
     Voorbeelden:
-      | geslacht | geslacht partner | aanhef                                |
-      | V        | M                | Hoogwelgeboren vrouwe                 |
-      | V        | V                | Geachte mevrouw Van den Aedel         |
-      | V        | O                | Geachte mevrouw Van den Aedel         |
-      | V        |                  | Geachte mevrouw Van den Aedel         |
-      | M        | V                | Geachte heer Van den Aedel            |
-      | M        | M                | Geachte heer Van den Aedel            |
-      | M        | O                | Geachte heer Van den Aedel            |
-      | M        |                  | Geachte heer Van den Aedel            |
-      | O        | M                | Geachte J. van den Aedel              |
-      | O        | V                | Geachte J. van den Aedel              |
-      | O        | O                | Geachte J. van den Aedel              |
-      | O        |                  | Geachte J. van den Aedel              |
+      | geslacht | titel partner | aanhef                                |
+      | V        | B             | Hoogwelgeboren vrouwe                 |
+      | V        | BS            | Geachte mevrouw Van den Aedel         |
+      | M        | B             | Geachte heer Van den Aedel            |
+      | M        | BS            | Geachte heer Van den Aedel            |
+      | O        | B             | Geachte J. van den Aedel              |
+      | O        | BS            | Geachte J. van den Aedel              |
 
   Abstract Scenario: adellijke titel van partner bij aanduiding naamgebruik "<naamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -499,9 +488,6 @@ Rule: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredicaat 
     | voorvoegsel (02.30)                  | de            |
     | geslachtsnaam (02.40)                | Boer          |
     | aanduidingNaamgebruik (61.10)        | <naamgebruik> |
-    En de persoon heeft een partner met de volgende gegevens
-    | naam                        | waarde    |
-    | geslachtsaanduiding (04.10) | M         |
     En de partner heeft de volgende naam gegevens
     | naam                                 | waarde                            |
     | adellijke titel of predicaat (02.20) | B                                 |
@@ -545,9 +531,6 @@ Rule: Voor het bepalen van de aanhef gaat gebruik van de adellijke titel van de 
     | voorvoegsel (02.30)                  | van den       |
     | geslachtsnaam (02.40)                | Aedel         |
     | aanduidingNaamgebruik (61.10)        | <naamgebruik> |
-    En de persoon heeft een partner met de volgende gegevens
-    | naam                        | waarde    |
-    | geslachtsaanduiding (04.10) | M         |
     En de partner heeft de volgende naam gegevens
     | naam                                 | waarde                            |
     | adellijke titel of predicaat (02.20) | <adellijkeTitelPredicaat partner> |
