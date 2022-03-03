@@ -15,15 +15,26 @@ Rule: wanneer een element in de bron in onderzoek is, wordt het gegeven in het a
 
   Abstract Scenario: adres heeft <veld> in onderzoek
 
-  Voorbeelden:
-  | waarde | veld                    |
-  | 081120 | huisnummer              |
-  | 081130 | huisletter              |
-  | 081140 | huisnummertoevoeging    |
-  | 081150 | aanduidingBijHuisnummer |
-  | 081160 | postcode                |
-  | 081170 | woonplaats              |
-  | 081210 | locatiebeschrijving     |
+    Voorbeelden:
+    | waarde | veld                    |
+    | 081120 | huisnummer              |
+    | 081130 | huisletter              |
+    | 081140 | huisnummertoevoeging    |
+    | 081150 | aanduidingBijHuisnummer |
+    | 081160 | postcode                |
+    | 081170 | woonplaats              |
+    | 081210 | locatiebeschrijving     |
+
+  Abstract Scenario: <in onderzoek> in onderzoek
+
+    Voorbeelden:
+    | gegeven                             | nationaliteit | aanduidingBijzonderNederlanderschap | waarde | in onderzoek  |
+    | nationaliteit                       | 0001          |                                     | 040510 | nationaliteit |
+    | nationaliteit                       | 0052          |                                     | 040510 | nationaliteit |
+    | aanduidingBijzonderNederlanderschap |               | V                                   | 046510 | type          |
+    | aanduidingBijzonderNederlanderschap |               | B                                   | 046510 | type          |
+    | redenOpname van nationaliteit       | 0001          |                                     | 046310 | redenOpname   |
+    | redenOpname bijz. Nederlanderschap  |               | B                                   | 046310 | redenOpname   |
 
 
 
@@ -45,30 +56,30 @@ Rule: een afgeleid gegeven wordt in inOnderzoek opgenomen wanneer ten minste Ã©Ã
   
   Abstract Scenario: leeftijd van de persoon in onderzoek omdat <reden>
   
-  voorbeelden:
-  | reden                                        | waarde |
-  | geboortedatum van de persoon is in onderzoek | 010310 |
-  | groep geboorte is in onderzoek               | 010300 |
-  | categorie persoon is in onderzoek            | 010000 |
+    Voorbeelden:
+    | reden                                        | waarde |
+    | geboortedatum van de persoon is in onderzoek | 010310 |
+    | groep geboorte is in onderzoek               | 010300 |
+    | categorie persoon is in onderzoek            | 010000 |
 
   Abstract Scenario: indicatieOverleden van de persoon in onderzoek omdat <reden>
   
-  voorbeelden:
-  | reden                                   | waarde |
-  | voornamen van het kind is in onderzoek  | 090210 |
-  | groep naam van het kind is in onderzoek | 090200 |
-  | categorie kind is in onderzoek          | 090000 |
+    Voorbeelden:
+    | reden                                   | waarde |
+    | voornamen van het kind is in onderzoek  | 090210 |
+    | groep naam van het kind is in onderzoek | 090200 |
+    | categorie kind is in onderzoek          | 090000 |
 
   Abstract Scenario: voorletters van een ouder in onderzoek omdat <reden>
   
-  voorbeelden:
-  | reden                                  | waarde | ouder  |
-  | voornamen van ouder 1 is in onderzoek  | 020210 | ouder1 |
-  | groep naam van ouder 1 is in onderzoek | 020200 | ouder1 |
-  | categorie ouder 1 is in onderzoek      | 020000 | ouder1 |
-  | voornamen van ouder 2 is in onderzoek  | 030210 | ouder2 |
-  | groep naam van ouder 2 is in onderzoek | 030200 | ouder2 |
-  | categorie ouder 2 is in onderzoek      | 030000 | ouder2 |
+    Voorbeelden:
+    | reden                                  | waarde | ouder  |
+    | voornamen van ouder 1 is in onderzoek  | 020210 | ouder1 |
+    | groep naam van ouder 1 is in onderzoek | 020200 | ouder1 |
+    | categorie ouder 1 is in onderzoek      | 020000 | ouder1 |
+    | voornamen van ouder 2 is in onderzoek  | 030210 | ouder2 |
+    | groep naam van ouder 2 is in onderzoek | 030200 | ouder2 |
+    | categorie ouder 2 is in onderzoek      | 030000 | ouder2 |
 
   Abstract Scenario: verblijfplaats datumVan in onderzoek omdat <rede>
 
@@ -76,37 +87,38 @@ Rule: een afgeleid gegeven wordt in inOnderzoek opgenomen wanneer ten minste Ã©Ã
 
   Abstract Scenario: verblijfplaats datumVan in onderzoek omdat <reden> in onderzoek
 
-  voorbeelden:
-  | reden                       | waarde |
-  | datumAanvangAdreshouding    | 081030 |
-  | datumAanvangAdresBuitenland | 081320 |
-  | groep adreshouding          | 081000 |
-  | groep verblijf buitenland   | 081300 |
-  | categorie verblijfplaats    | 080000 |
+    Voorbeelden:
+    | reden                       | waarde |
+    | datumAanvangAdreshouding    | 081030 |
+    | datumAanvangAdresBuitenland | 081320 |
+    | groep adreshouding          | 081000 |
+    | groep verblijf buitenland   | 081300 |
+    | categorie verblijfplaats    | 080000 |
 
   Abstract Scenario: verblijfplaats woonplaats in onderzoek omdat <reden> in onderzoek
 
-  voorbeelden:
-  | reden                    | waarde |
-  | woonplaatsnaam           | 081170 |
-  | gemeenteVanInschrijving  | 080910 |
-  | groep adres              | 081100 |
-  | groep gemeente           | 080900 |
-  | categorie verblijfplaats | 080000 |
+    Voorbeelden:
+    | reden                    | waarde |
+    | woonplaatsnaam           | 081170 |
+    | gemeenteVanInschrijving  | 080910 |
+    | groep adres              | 081100 |
+    | groep gemeente           | 080900 |
+    | categorie verblijfplaats | 080000 |
 
-  voorbeelden:
-  | reden                                        | waarde | adresregel1 | adresregel2 |
-  | huisnummer is in onderzoek                   | 081130 | WEL         | NIET        |
-  | postcode is in onderzoek                     | 081160 | NIET        | WEL         |
-  | woonplaats is in onderzoek                   | 081170 | NIET        | WEL         |
-  | gemeenteVanInschrijving is in onderzoek      | 080910 | NIET        | WEL         |
-  | locatiebeschrijving is in onderzoek          | 081210 | WEL         | NIET        |
-  | regel 1 adres buitenland is in onderzoek     | 081330 | WEL         | NIET        |
-  | regel 2 adres buitenland is in onderzoek     | 081340 | WEL         | NIET        |
-  | land adres buitenland is in onderzoek        | 081310 | NIET        | NIET        |
-  | groep adres is in onderzoek                  | 081100 | WEL         | WEL         |
-  | groep verblijf buitenland is in onderzoek    | 081300 | WEL         | WEL         |
-  | categorie verblijfplaats is in onderzoek     | 080000 | WEL         | WEL         |
+  Abstract Scenario: verblijfplaats adresregels in onderzoek omdat <reden>
+    Voorbeelden:
+    | reden                                        | waarde | adresregel1 | adresregel2 |
+    | huisnummer is in onderzoek                   | 081130 | WEL         | NIET        |
+    | postcode is in onderzoek                     | 081160 | NIET        | WEL         |
+    | woonplaats is in onderzoek                   | 081170 | NIET        | WEL         |
+    | gemeenteVanInschrijving is in onderzoek      | 080910 | NIET        | WEL         |
+    | locatiebeschrijving is in onderzoek          | 081210 | WEL         | NIET        |
+    | regel 1 adres buitenland is in onderzoek     | 081330 | WEL         | NIET        |
+    | regel 2 adres buitenland is in onderzoek     | 081340 | WEL         | NIET        |
+    | land adres buitenland is in onderzoek        | 081310 | NIET        | NIET        |
+    | groep adres is in onderzoek                  | 081100 | WEL         | WEL         |
+    | groep verblijf buitenland is in onderzoek    | 081300 | WEL         | WEL         |
+    | categorie verblijfplaats is in onderzoek     | 080000 | WEL         | WEL         |
 
 Rule: onderzoek van een partnergegeven leidt alleen tot inOnderzoek van een samengesteld naamgegeven wanneer daarin de partnernaam wordt gebruikt
   - naam.aanduidingNaamgebruik is ongelijk aan 'E'
@@ -114,15 +126,15 @@ Rule: onderzoek van een partnergegeven leidt alleen tot inOnderzoek van een same
   - betreft aanhef, aanschrijfwijze en gebruikInLopendeTekst
 
   Abstract Scenario: samengestelde namen bij <omschrijving>
-  voorbeelden:
-  | omschrijving                                            | waarde | aanduidingNaamgebruik | inOnderzoek |
-  | partner in onderzoek en gebruik eigen naam              | 050000 | E                     | NIET        |
-  | partner in onderzoek en gebruik partner naam            | 050000 | P                     | WEL         |
-  | partner in onderzoek en gebruik partner na eigen naam   | 050000 | N                     | WEL         |
-  | partner in onderzoek en gebruik partner voor eigen naam | 050000 | V                     | WEL         |
-  | groep naam van partner in onderzoek                     | 050200 | P                     | WEL         |
-  | voornamen in onderzoek                                  | 050210 | P                     | NIET        |
-  | voorvoegsel in onderzoek                                | 050210 | P                     | WEL         |
-  | adellijkeTitelPredicaat in onderzoek                    | 050210 | P                     | WEL         |
-  | geslachtsnaam in onderzoek                              | 050210 | P                     | WEL         |
-  | aangaanHuwelijkPartnerschap in onderzoek                | 050600 | P                     | NIET        |
+    Voorbeelden:
+    | omschrijving                                            | waarde | aanduidingNaamgebruik | inOnderzoek |
+    | partner in onderzoek en gebruik eigen naam              | 050000 | E                     | NIET        |
+    | partner in onderzoek en gebruik partner naam            | 050000 | P                     | WEL         |
+    | partner in onderzoek en gebruik partner na eigen naam   | 050000 | N                     | WEL         |
+    | partner in onderzoek en gebruik partner voor eigen naam | 050000 | V                     | WEL         |
+    | groep naam van partner in onderzoek                     | 050200 | P                     | WEL         |
+    | voornamen in onderzoek                                  | 050210 | P                     | NIET        |
+    | voorvoegsel in onderzoek                                | 050210 | P                     | WEL         |
+    | adellijkeTitelPredicaat in onderzoek                    | 050210 | P                     | WEL         |
+    | geslachtsnaam in onderzoek                              | 050210 | P                     | WEL         |
+    | aangaanHuwelijkPartnerschap in onderzoek                | 050600 | P                     | NIET        |
