@@ -1351,7 +1351,7 @@ components:
       - $ref: '#/components/schemas/InOnderzoek'
       - type: object
         properties:
-          aanduidingBijzonderNederlanderschap:
+          type:
             type: boolean
           redenOpname:
             type: boolean
@@ -1371,8 +1371,6 @@ components:
       - $ref: '#/components/schemas/InOnderzoek'
       - type: object
         properties:
-          type:
-            type: boolean
           nationaliteit:
             type: boolean
           redenOpname:
