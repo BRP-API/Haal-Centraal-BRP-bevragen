@@ -693,27 +693,17 @@ components:
       properties:
         voornamen:
           $ref: '#/components/schemas/Voornamen'
+        adellijkeTitelPredikaat:
+          $ref: '#/components/schemas/AdellijkeTitelPredikaatType'
         voorvoegsel:
           $ref: '#/components/schemas/Voorvoegsel'
         geslachtsnaam:
           $ref: '#/components/schemas/Geslachtsnaam'
-        adellijkeTitelPredikaat:
-          $ref: '#/components/schemas/AdellijkeTitelPredikaatType'
     Voornamen:
       maxLength: 200
       type: string
       description: |
         De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
-    Voorvoegsel:
-      maxLength: 10
-      type: string
-      example: de
-    Geslachtsnaam:
-      maxLength: 200
-      type: string
-      description: |
-        De achternaam van een persoon.
-      example: Vries
     AdellijkeTitelPredikaatType:
       allOf:
       - $ref: '#/components/schemas/Waardetabel'
@@ -725,6 +715,16 @@ components:
             code: JV
             omschrijving: jonkvrouw
             soort: predikaat
+    Voorvoegsel:
+      maxLength: 10
+      type: string
+      example: de
+    Geslachtsnaam:
+      maxLength: 200
+      type: string
+      description: |
+        De achternaam van een persoon.
+      example: Vries
     OpschortingBijhoudingBasis:
       type: object
       properties:

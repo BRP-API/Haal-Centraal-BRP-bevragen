@@ -862,14 +862,14 @@
           "voornamen" : {
             "$ref" : "#/components/schemas/Voornamen"
           },
+          "adellijkeTitelPredikaat" : {
+            "$ref" : "#/components/schemas/AdellijkeTitelPredikaatType"
+          },
           "voorvoegsel" : {
             "$ref" : "#/components/schemas/Voorvoegsel"
           },
           "geslachtsnaam" : {
             "$ref" : "#/components/schemas/Geslachtsnaam"
-          },
-          "adellijkeTitelPredikaat" : {
-            "$ref" : "#/components/schemas/AdellijkeTitelPredikaatType"
           }
         }
       },
@@ -877,17 +877,6 @@
         "maxLength" : 200,
         "type" : "string",
         "description" : "De verzameling namen voor de geslachtsnaam, gescheiden door spaties.\n"
-      },
-      "Voorvoegsel" : {
-        "maxLength" : 10,
-        "type" : "string",
-        "example" : "de"
-      },
-      "Geslachtsnaam" : {
-        "maxLength" : 200,
-        "type" : "string",
-        "description" : "De achternaam van een persoon.\n",
-        "example" : "Vries"
       },
       "AdellijkeTitelPredikaatType" : {
         "allOf" : [ {
@@ -906,6 +895,17 @@
             }
           }
         } ]
+      },
+      "Voorvoegsel" : {
+        "maxLength" : 10,
+        "type" : "string",
+        "example" : "de"
+      },
+      "Geslachtsnaam" : {
+        "maxLength" : 200,
+        "type" : "string",
+        "description" : "De achternaam van een persoon.\n",
+        "example" : "Vries"
       },
       "OpschortingBijhoudingBasis" : {
         "type" : "object",
