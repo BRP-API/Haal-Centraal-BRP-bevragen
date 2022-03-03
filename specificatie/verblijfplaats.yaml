@@ -187,7 +187,7 @@ components:
         land:
           $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
         gemeenteVanInschrijving:
-          $ref: '#/components/schemas/GemeenteVanInschrijving'
+          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
         adresregel1:
           $ref: '#/components/schemas/Adresregel1'
         adresregel2:
@@ -224,7 +224,7 @@ components:
           datumInschrijvingInGemeente:
             $ref: 'datum.yaml#/components/schemas/AbstractDatum'
           gemeenteVanInschrijving:
-            $ref: '#/components/schemas/GemeenteVanInschrijving'
+            $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
           land:
             $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
           datumVan:
@@ -378,7 +378,7 @@ components:
         datumVestigingInNederland:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
         gemeenteVanInschrijving:
-          $ref: '#/components/schemas/GemeenteVanInschrijving'
+          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
         naamOpenbareRuimte:
           $ref: '#/components/schemas/NaamOpenbareRuimte'
         inOnderzoek:

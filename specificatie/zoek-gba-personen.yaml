@@ -50,7 +50,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PersonenQuery'
+              $ref: 'zoek-personen.yaml#/components/schemas/PersonenQuery'
       responses:
         '200':
           description: |
@@ -92,138 +92,6 @@ paths:
         - Personen
 components:
   schemas:
-    InclusiefOverledenPersonen:
-      description: |
-        Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/overleden_personen.feature)
-      type: boolean
-      example: true
-    PersonenQuery:
-      type: object
-      required:
-        - type
-        - fields
-      discriminator:
-        propertyName: type
-        mapping:
-          ZoekMetGeslachtsnaamEnGeboortedatum: '#/components/schemas/ZoekMetGeslachtsnaamEnGeboortedatum'
-          ZoekMetNaamEnGemeenteVanInschrijving: '#/components/schemas/ZoekMetNaamEnGemeenteVanInschrijving'
-          RaadpleegMetBurgerservicenummer: '#/components/schemas/RaadpleegMetBurgerservicenummer'
-          ZoekMetPostcodeEnHuisnummer: '#/components/schemas/ZoekMetPostcodeEnHuisnummer'
-          ZoekMetStraatHuisnummerEnGemeenteVanInschrijving: '#/components/schemas/ZoekMetStraatHuisnummerEnGemeenteVanInschrijving'
-          ZoekMetNummeraanduidingIdentificatie: '#/components/schemas/ZoekMetNummeraanduidingIdentificatie'
-      properties:
-        type:
-          type: string
-        fields:
-          $ref: 'filter.yaml#/components/schemas/Fields'
-        gemeenteVanInschrijving:
-          $ref: 'verblijfplaats.yaml#/components/schemas/GemeenteVanInschrijving'
-    RaadpleegMetBurgerservicenummer:
-      required:
-        - burgerservicenummer
-      allOf:
-        - $ref: '#/components/schemas/PersonenQuery'
-        - type: object
-          properties:
-            burgerservicenummer:
-              type: array
-              items:
-                $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
-              minItems: 1
-              maxItems: 20
-    ZoekMetGeslachtsnaamEnGeboortedatum:
-      required:
-        - geslachtsnaam
-        - geboortedatum
-      allOf:
-        - $ref: '#/components/schemas/PersonenQuery'
-        - type: object
-          properties:
-            inclusiefOverledenPersonen:
-              $ref: '#/components/schemas/InclusiefOverledenPersonen'
-            geboortedatum:
-              description: |
-                Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/parametervalidatie.feature)
-              type: string
-              format: date
-              example: "1964-09-24"
-            geboorteplaats:
-              $ref: 'filter.yaml#/components/schemas/GeboorteplaatsFilter'
-            geslachtsnaam:
-              $ref: 'filter.yaml#/components/schemas/GeslachtsnaamFilter'
-            geslachtsaanduiding:
-              $ref: 'filter.yaml#/components/schemas/GeslachtsaanduidingFilter'
-            voorvoegsel:
-              $ref: 'filter.yaml#/components/schemas/VoorvoegselFilter'
-            voornamen:
-              $ref: 'filter.yaml#/components/schemas/VoornamenOptioneelFilter'
-    ZoekMetNaamEnGemeenteVanInschrijving:
-      required:
-        - geslachtsnaam
-        - gemeenteVanInschrijving
-        - voornamen
-      allOf:
-        - $ref: '#/components/schemas/PersonenQuery'
-        - type: object
-          properties:
-            inclusiefOverledenPersonen:
-              $ref: '#/components/schemas/InclusiefOverledenPersonen'
-            geslachtsaanduiding:
-              $ref: 'filter.yaml#/components/schemas/GeslachtsaanduidingFilter'
-            geslachtsnaam:
-              $ref: 'filter.yaml#/components/schemas/GeslachtsnaamFilter'
-            voorvoegsel:
-              $ref: 'filter.yaml#/components/schemas/VoorvoegselFilter'
-            voornamen:
-              $ref: 'filter.yaml#/components/schemas/VoornamenVerplichtFilter'
-    ZoekMetPostcodeEnHuisnummer:
-      required:
-        - postcode
-        - huisnummer
-      allOf:
-        - $ref: '#/components/schemas/PersonenQuery'
-        - type: object
-          properties:
-            inclusiefOverledenPersonen:
-              $ref: '#/components/schemas/InclusiefOverledenPersonen'
-            huisletter:
-              $ref: 'verblijfplaats.yaml#/components/schemas/Huisletter'
-            huisnummer:
-              $ref: 'verblijfplaats.yaml#/components/schemas/Huisnummer'
-            huisnummertoevoeging:
-              $ref: 'verblijfplaats.yaml#/components/schemas/Huisnummertoevoeging'
-            postcode:
-              $ref: 'verblijfplaats.yaml#/components/schemas/Postcode'
-    ZoekMetStraatHuisnummerEnGemeenteVanInschrijving:
-      required:
-        - straat
-        - huisnummer
-        - gemeenteVanInschrijving
-      allOf:
-        - $ref: '#/components/schemas/PersonenQuery'
-        - type: object
-          properties:
-            inclusiefOverledenPersonen:
-              $ref: '#/components/schemas/InclusiefOverledenPersonen'
-            huisletter:
-              $ref: 'verblijfplaats.yaml#/components/schemas/Huisletter'
-            huisnummer:
-              $ref: 'verblijfplaats.yaml#/components/schemas/Huisnummer'
-            huisnummertoevoeging:
-              $ref: 'verblijfplaats.yaml#/components/schemas/Huisnummertoevoeging'
-            straat:
-              $ref: 'filter.yaml#/components/schemas/StraatFilter'
-    ZoekMetNummeraanduidingIdentificatie:
-      required:
-        - nummeraanduidingIdentificatie
-      allOf:
-        - $ref: '#/components/schemas/PersonenQuery'
-        - type: object
-          properties:
-            inclusiefOverledenPersonen:
-              $ref: '#/components/schemas/InclusiefOverledenPersonen'
-            nummeraanduidingIdentificatie:
-              $ref: 'verblijfplaats.yaml#/components/schemas/NummeraanduidingIdentificatie'
     PersonenQueryResponse:
       type: object
       required:
@@ -248,7 +116,7 @@ components:
             personen:
               type: array
               items:
-                $ref: 'persoon.yaml#/components/schemas/Persoon'
+                $ref: 'persoon.yaml#/components/schemas/GbaPersoon'
     ZoekMetGeslachtsnaamEnGeboortedatumResponse:
       allOf:
         - $ref: '#/components/schemas/PersonenQueryResponse'
@@ -257,7 +125,7 @@ components:
             personen:
               type: array
               items:
-                $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
+                $ref: 'persoon.yaml#/components/schemas/GbaPersoonBeperkt'
     ZoekMetNaamEnGemeenteVanInschrijvingResponse:
       allOf:
         - $ref: '#/components/schemas/PersonenQueryResponse'
@@ -266,7 +134,7 @@ components:
             personen:
               type: array
               items:
-                $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
+                $ref: 'persoon.yaml#/components/schemas/GbaPersoonBeperkt'
     ZoekMetPostcodeEnHuisnummerResponse:
       allOf:
         - $ref: '#/components/schemas/PersonenQueryResponse'
@@ -275,7 +143,7 @@ components:
             personen:
               type: array
               items:
-                $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
+                $ref: 'persoon.yaml#/components/schemas/GbaPersoonBeperkt'
     ZoekMetStraatHuisnummerEnGemeenteVanInschrijvingResponse:
       allOf:
         - $ref: '#/components/schemas/PersonenQueryResponse'
@@ -284,7 +152,7 @@ components:
             personen:
               type: array
               items:
-                $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
+                $ref: 'persoon.yaml#/components/schemas/GbaPersoonBeperkt'
     ZoekMetNummeraanduidingIdentificatieResponse:
       allOf:
         - $ref: '#/components/schemas/PersonenQueryResponse'
@@ -293,4 +161,4 @@ components:
             personen:
               type: array
               items:
-                $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
+                $ref: 'persoon.yaml#/components/schemas/GbaPersoonBeperkt'

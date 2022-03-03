@@ -75,7 +75,7 @@ components:
         geslachtsnaam:
           $ref: '#/components/schemas/Geslachtsnaam'
         adellijkeTitelPredikaat:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+          $ref: '#/components/schemas/AdellijkeTitelPredikaatType'
     GbaNaamGerelateerde:
       allOf:
         - $ref: '#/components/schemas/GbaNaamBasis'
