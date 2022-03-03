@@ -1808,6 +1808,9 @@
         }, {
           "type" : "object",
           "properties" : {
+            "type" : {
+              "type" : "boolean"
+            },
             "nationaliteit" : {
               "type" : "boolean"
             },
@@ -1896,6 +1899,9 @@
         }, {
           "type" : "object",
           "properties" : {
+            "indicatieOverleden" : {
+              "type" : "boolean"
+            },
             "datum" : {
               "type" : "boolean"
             },
@@ -2038,6 +2044,9 @@
           "type" : "object",
           "properties" : {
             "burgerservicenummer" : {
+              "type" : "boolean"
+            },
+            "leeftijd" : {
               "type" : "boolean"
             }
           }

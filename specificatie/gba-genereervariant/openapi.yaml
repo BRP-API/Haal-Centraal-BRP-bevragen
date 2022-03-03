@@ -835,8 +835,6 @@ components:
       - properties:
           aanduidingNaamgebruik:
             $ref: '#/components/schemas/Waardetabel'
-          inOnderzoek:
-            $ref: '#/components/schemas/GbaInOnderzoek'
     GbaNationaliteit:
       type: object
       properties:
@@ -862,8 +860,6 @@ components:
             $ref: '#/components/schemas/Waardetabel'
           plaats:
             $ref: '#/components/schemas/Waardetabel'
-          inOnderzoek:
-            $ref: '#/components/schemas/GbaInOnderzoek'
     GbaOpschortingBijhouding:
       allOf:
       - $ref: '#/components/schemas/OpschortingBijhoudingBasis'

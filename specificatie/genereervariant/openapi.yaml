@@ -1371,6 +1371,8 @@ components:
       - $ref: '#/components/schemas/InOnderzoek'
       - type: object
         properties:
+          type:
+            type: boolean
           nationaliteit:
             type: boolean
           redenOpname:
@@ -1437,6 +1439,8 @@ components:
       - $ref: '#/components/schemas/InOnderzoek'
       - type: object
         properties:
+          indicatieOverleden:
+            type: boolean
           datum:
             type: boolean
           land:
@@ -1542,6 +1546,8 @@ components:
       - type: object
         properties:
           burgerservicenummer:
+            type: boolean
+          leeftijd:
             type: boolean
     OnbekendKind:
       allOf:
