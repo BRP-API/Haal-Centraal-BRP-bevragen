@@ -328,7 +328,7 @@ components:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             gemeenteVanInschrijving:
               $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
-            verblijfplaatsOnbekend:
+            vertrokkenOnbekendWaarheen:
               $ref: '#/components/schemas/VertrokkenOnbekendWaarheen'
             inOnderzoek:
               $ref: '#/components/schemas/VerblijfplaatsOnbekendInOnderzoek'
@@ -460,7 +460,7 @@ components:
               type: boolean
             gemeenteVanInschrijving:
               type: boolean
-            land:
+            verblijfplaatsOnbekend:
               type: boolean
     LocatieInOnderzoek:
       allOf:
