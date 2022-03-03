@@ -357,7 +357,6 @@ Rule: een vrouw met een (ex)partner met een adellijke titel krijgt een hoffelijk
   - de adellijke titel van de (ex)partner alleen wordt gebruikt onder de volgende condities:
     - de (ex)partner heeft een adellijke titel (geen predicaat)
     - de geslachtsaanduiding van de persoon is "V"
-    - de geslachtsaanduiding van de partner is "M"
     - de persoon gebruikt de naam van haar (ex)partner (aanduidingNaamgebruik is ongelijk aan "E")
     - de adellijke titel van de (ex)partner heeft een hoffelijkheidstitel (komt voor in bovenstaande tabel)
   
@@ -373,9 +372,6 @@ Rule: een vrouw met een (ex)partner met een adellijke titel krijgt een hoffelijk
     | voorvoegsel (02.30)                  | de            |
     | geslachtsnaam (02.40)                | Boer          |
     | aanduidingNaamgebruik (61.10)        | V             |
-    En de persoon heeft een partner met de volgende gegevens
-    | naam                        | waarde    |
-    | geslachtsaanduiding (04.10) | M         |
     En de partner heeft de volgende naam gegevens
     | naam                                 | waarde                            |
     | adellijke titel of predicaat (02.20) | <adellijkeTitelPredicaat partner> |
@@ -401,7 +397,7 @@ Rule: een vrouw met een (ex)partner met een adellijke titel krijgt een hoffelijk
       | JH                              | Jonkheer     | mevrouw Van den Aedel-de Boer   |
       | BS                              | Barones      | mevrouw Van den Aedel-de Boer   |
 
-  Abstract Scenario: persoon met geslacht "<geslacht>" en partner met geslacht "<geslacht partner>"
+  Abstract Scenario: persoon met geslacht "<geslacht>" en partner met adellijke titel <titel partner>
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde     |
     | burgerservicenummer | 999992934  |
@@ -411,14 +407,11 @@ Rule: een vrouw met een (ex)partner met een adellijke titel krijgt een hoffelijk
     | voornamen (02.10)                    | Jo            |
     | adellijke titel of predicaat (02.20) |               |
     | voorvoegsel (02.30)                  | de            |
-    | geslachtsnaam (02.40)                | Boer         |
+    | geslachtsnaam (02.40)                | Boer          |
     | aanduidingNaamgebruik (61.10)        | P             |
-    En de persoon heeft een partner met de volgende gegevens
-    | naam                        | waarde             |
-    | geslachtsaanduiding (04.10) | <geslacht partner> |
     En de partner heeft de volgende naam gegevens
     | naam                                 | waarde                            |
-    | adellijke titel of predicaat (02.20) | B                                 |
+    | adellijke titel of predicaat (02.20) | <titel partner>                   |
     | voorvoegsel (02.30)                  | van den                           |
     | geslachtsnaam (02.40)                | Aedel                             |
     Als personen wordt gezocht met de volgende parameters
@@ -431,19 +424,14 @@ Rule: een vrouw met een (ex)partner met een adellijke titel krijgt een hoffelijk
     | gebruikInLopendeTekst | <gebruikInLopendeTekst> |
 
     Voorbeelden:
-      | geslacht | geslacht partner | gebruikInLopendeTekst |
-      | V        | M                | barones van den Aedel |
-      | V        | V                | mevrouw Van den Aedel |
-      | V        | O                | mevrouw Van den Aedel |
-      | V        |                  | mevrouw Van den Aedel |
-      | M        | V                | de heer Van den Aedel |
-      | M        | M                | de heer Van den Aedel |
-      | M        | O                | de heer Van den Aedel |
-      | M        |                  | de heer Van den Aedel |
-      | O        | M                | J. van den Aedel      |
-      | O        | V                | J. van den Aedel      |
-      | O        | O                | J. van den Aedel      |
-      | O        |                  | J. van den Aedel      |
+      | geslacht | titel partner    | gebruikInLopendeTekst |
+      | V        | B                | barones van den Aedel |
+      | V        | B                | mevrouw Van den Aedel |
+      | V        | BS               | mevrouw Van den Aedel |
+      | M        | B                | de heer Van den Aedel |
+      | M        | BS               | de heer Van den Aedel |
+      | O        | B                | J. van den Aedel      |
+      | O        | BS               | J. van den Aedel      |
 
   Abstract Scenario: adellijke titel van partner bij aanduiding naamgebruik "<naamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -457,9 +445,6 @@ Rule: een vrouw met een (ex)partner met een adellijke titel krijgt een hoffelijk
     | voorvoegsel (02.30)                  | de            |
     | geslachtsnaam (02.40)                | Boer          |
     | aanduidingNaamgebruik (61.10)        | <naamgebruik> |
-    En de persoon heeft een partner met de volgende gegevens
-    | naam                        | waarde    |
-    | geslachtsaanduiding (04.10) | M         |
     En de partner heeft de volgende naam gegevens
     | naam                                 | waarde                            |
     | adellijke titel of predicaat (02.20) | B                                 |
@@ -493,9 +478,6 @@ Rule: een vrouw met een (ex)partner met een adellijke titel krijgt een hoffelijk
     | voorvoegsel (02.30)                  | de            |
     | geslachtsnaam (02.40)                | Boer          |
     | aanduidingNaamgebruik (61.10)        | <naamgebruik> |
-    En de persoon heeft een partner met de volgende gegevens
-    | naam                        | waarde    |
-    | geslachtsaanduiding (04.10) | M         |
     En de partner heeft de volgende naam gegevens
     | naam                                 | waarde  |
     | adellijke titel of predicaat (02.20) | G       |
