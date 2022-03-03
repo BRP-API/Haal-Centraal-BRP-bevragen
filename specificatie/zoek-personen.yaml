@@ -148,36 +148,15 @@ components:
               format: date
               example: "1964-09-24"
             geboorteplaats:
-              description: |
-                Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
-              type: string
-              pattern: ^[a-zA-Z0-9À-ÿ \-\'()]{1,40}$
-              maxLength: 40
-              example: "Utrecht"
+              $ref: 'filter.yaml#/components/schemas/GeboorteplaatsFilter'
             geslachtsnaam:
-              description: |
-                De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
-              type: string
-              pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ '\-\']{1,200}(\?+|\*)?$
-              example: "Vries"
+              $ref: 'filter.yaml#/components/schemas/GeslachtsnaamFilter'
             geslachtsaanduiding:
-              description: |
-                Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.
-              type: string
-              pattern: ^([Mm]|[Vv]|[Oo])$
-              example: "V"
+              $ref: 'filter.yaml#/components/schemas/GeslachtsaanduidingFilter'
             voorvoegsel:
-              description: |
-                Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
-              type: string
-              pattern: ^[a-zA-Z0-9À-ÿ' '\-\']{1,10}$
-              example: "de"
+              $ref: 'filter.yaml#/components/schemas/VoorvoegselFilter'
             voornamen:
-              description: |
-                De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
-              type: string
-              pattern: ^[a-zA-Z0-9À-ÿ' '\-\']{1,200}(\?{0,5}}|\*?)$
-              example: "Dirk"
+              $ref: 'filter.yaml#/components/schemas/VoornamenOptioneelFilter'
     ZoekMetNaamEnGemeenteVanInschrijving:
       required:
         - geslachtsnaam
@@ -190,29 +169,13 @@ components:
             inclusiefOverledenPersonen:
               $ref: '#/components/schemas/InclusiefOverledenPersonen'
             geslachtsaanduiding:
-              description: |
-                Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.
-              type: string
-              pattern: ^([Mm]|[Vv]|[Oo])$
-              example: "V"
+              $ref: 'filter.yaml#/components/schemas/GeslachtsaanduidingFilter'
             geslachtsnaam:
-              description: |
-                De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
-              type: string
-              pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ '\-\']{1,200}(\?+|\*)?$
-              example: "Vries"
+              $ref: 'filter.yaml#/components/schemas/GeslachtsnaamFilter'
             voorvoegsel:
-              description: |
-                Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
-              type: string
-              pattern: ^[a-zA-Z0-9À-ÿ' '\-\']{1,10}$
-              example: "de"
+              $ref: 'filter.yaml#/components/schemas/VoorvoegselFilter'
             voornamen:
-              description: |
-                De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
-              type: string
-              pattern: ^(\?+|\*)?[a-zA-Z0-9À-ÿ' '\-\']{1,200}(\?+|\*)?$
-              example: "Dirk"
+              $ref: 'filter.yaml#/components/schemas/VoornamenVerplichtFilter'
     ZoekMetPostcodeEnHuisnummer:
       required:
         - postcode
