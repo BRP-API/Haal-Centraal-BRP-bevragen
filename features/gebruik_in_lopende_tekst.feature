@@ -13,10 +13,10 @@ Functionaliteit: Als gemeente wil ik de juiste en consistent naamgebruik in een 
   # VP = voorvoegselGeslachtsnaam partner
   # GP = geslachtsnaam partner
   # AT = adelijke titel
-  # PK = predikaat
+  # PR = predicaat
   # HT = hoffelijkheidstitel of 'titre de courtoisie'
 
-Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predikaat wordt samengesteld afhankelijk van de geslachtsaanduiding en de waarde van aanduidingNaamgebruik, waarbij geldt dat:
+Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predicaat wordt samengesteld afhankelijk van de geslachtsaanduiding en de waarde van aanduidingNaamgebruik, waarbij geldt dat:
   - gebruikInLopendeTekst wordt voorafgegaan door "mevrouw", "de heer" of de voorletters, afhankelijk van de geslachtsaanduiding:
     | geslachtsaanduiding | gebruikInLopendeTekst begint met (GA) |
     | M                   | de heer                               |
@@ -39,7 +39,7 @@ Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predikaat
     En de persoon heeft de volgende naam gegevens
     | naam                                 | waarde      |
     | voornamen (02.10)                    | Jo Rene     |
-    | adellijke titel of predikaat (02.20) |             |
+    | adellijke titel of predicaat (02.20) |             |
     | voorvoegsel (02.30)                  |             |
     | geslachtsnaam (02.40)                | Groenen     |
     | aanduidingNaamgebruik (61.10)        | E           |
@@ -65,7 +65,7 @@ Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predikaat
     | geslachtsaanduiding | V         |
     En de persoon heeft de volgende naam gegevens
     | naam                                 | waarde |
-    | adellijke titel of predikaat (02.20) |        |
+    | adellijke titel of predicaat (02.20) |        |
     | voorvoegsel (02.30)                  | in het |
     | geslachtsnaam (02.40)                | Veld   |
     | aanduidingNaamgebruik (61.10)        | E      |
@@ -87,13 +87,13 @@ Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predikaat
     | geslachtsaanduiding | V         |
     En de persoon heeft de volgende naam gegevens
     | naam                                 | waarde          |
-    | adellijke titel of predikaat (02.20) |                 |
+    | adellijke titel of predicaat (02.20) |                 |
     | voorvoegsel (02.30)                  | <voorvoegsel>   |
     | geslachtsnaam (02.40)                | <geslachtsnaam> |
     | aanduidingNaamgebruik (61.10)        | <naamgebruik>   |
     En de partner heeft de volgende naam gegevens
     | naam                                 | waarde                  |
-    | adellijke titel of predikaat (02.20) |                         |
+    | adellijke titel of predicaat (02.20) |                         |
     | voorvoegsel (02.30)                  | <partner voorvoegsel>   |
     | geslachtsnaam (02.40)                | <partner geslachtsnaam> |
     Als personen wordt gezocht met de volgende parameters
@@ -124,13 +124,13 @@ Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predikaat
     En de persoon heeft de volgende naam gegevens
     | naam                                 | waarde          |
     | voornamen (02.10)                    | <voornamen>     |
-    | adellijke titel of predikaat (02.20) |                 |
+    | adellijke titel of predicaat (02.20) |                 |
     | voorvoegsel (02.30)                  | <voorvoegsel>   |
     | geslachtsnaam (02.40)                | <geslachtsnaam> |
     | aanduidingNaamgebruik (61.10)        | <naamgebruik>   |
     En de partner heeft de volgende naam gegevens
     | naam                                 | waarde                  |
-    | adellijke titel of predikaat (02.20) |                         |
+    | adellijke titel of predicaat (02.20) |                         |
     | voorvoegsel (02.30)                  | <partner voorvoegsel>   |
     | geslachtsnaam (02.40)                | <partner geslachtsnaam> |
     Als personen wordt gezocht met de volgende parameters
@@ -159,15 +159,15 @@ Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predikaat
     | voorvoegsel met hoofdletters  | V        | N           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | mevrouw Op Den Berghe-Van Der Broeck |
     | voorvoegsel met hoofdletters  | O        | N           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | J.R. Op Den Berghe-Van Der Broeck    |
 
-Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predikaat wordt samengesteld afhankelijk van de geslachtsaanduiding en de waarde van aanduidingNaamgebruik, waarbij geldt dat:
+Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predicaat wordt samengesteld afhankelijk van de geslachtsaanduiding en de waarde van aanduidingNaamgebruik, waarbij geldt dat:
   - gebruikInLopendeTekst wordt samengesteld uit naamcomponenten van de persoon en eventuele (ex)partner op basis van de aanduidingNaamgebruik:
     | aanduidingNaamgebruik | gebruikinlopendetekst |
-    | E                     | PK AT VV GN           |
+    | E                     | PR AT VV GN           |
     | P                     | GA VP GP              |
-    | V                     | GA VP GP-PK AT VV GN  |
-    | N                     | PK AT VV GN-VP GP     |
-  - De adellijke titel of het predikaat wordt in gebruikInLopendeTekst opgenomen in de vorm die hoort bij de geslachtsaanduiding van de persoon:
-    | adellijkeTitelPredikaat | vrouw     | man      | onbekend |
+    | V                     | GA VP GP-PR AT VV GN  |
+    | N                     | PR AT VV GN-VP GP     |
+  - De adellijke titel of het predicaat wordt in gebruikInLopendeTekst opgenomen in de vorm die hoort bij de geslachtsaanduiding van de persoon:
+    | adellijkeTitelPredicaat | vrouw     | man      | onbekend |
     | G                       | gravin    | graaf    | -        |
     | GI                      | gravin    | graaf    | -        |
     | B                       | barones   | baron    | -        |
@@ -181,22 +181,22 @@ Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predikaat wo
     | R                       | -         | ridder   | -        |
     | JH                      | jonkvrouw | jonkheer | -        |
     | JV                      | jonkvrouw | jonkheer | -        |
-  - Wanneer de adellijke titel of het predikaat geen vorm heeft die hoort bij de geslachtsaanduiding (in bovenstaande tabel opgenomen als - teken), dan wordt deze niet opgenomen
-  - Wanneer gebruikInLopendeTekst niet begint met een adellijke titel of een predikaat, wordt deze voorafgegaan door "mevrouw", "de heer" of de voorletters, afhankelijk van de geslachtsaanduiding:
+  - Wanneer de adellijke titel of het predicaat geen vorm heeft die hoort bij de geslachtsaanduiding (in bovenstaande tabel opgenomen als - teken), dan wordt deze niet opgenomen
+  - Wanneer gebruikInLopendeTekst niet begint met een adellijke titel of een predicaat, wordt deze voorafgegaan door "mevrouw", "de heer" of de voorletters, afhankelijk van de geslachtsaanduiding:
     | geslachtsaanduiding | gebruikInLopendeTekst begint met (GA) |
     | M                   | de heer                               |
     | V                   | mevrouw                               |
     | O                   | VL                                    |
   - Een voorvoegsel wordt met kleine letters geschreven
-  - Een adellijke titel of predikaat wordt met kleine letters geschreven
+  - Een adellijke titel of predicaat wordt met kleine letters geschreven
   - De eerste naamcomponent direct na "mevrouw" of "de heer" begint met een hoofdletter
   - Wanneer een naamcomponent geen of een lege waarde heeft, wordt de overbodige spatie niet opgenomen: niet starten met een spatie, niet eindigen met een spatie, geen dubbele spatie, geen spatie na streepje
 
-  De gebruikInLopendeTekst wordt op dezelfde manier samengesteld als voor een persoon zonder adellijke titel of predikaat in de volgende gevallen:
-  - Wanneer de combinatie van adellijkeTitelPredikaat en geslachtsaanduiding niet voorkomt in bovenstaande tabel: geslachtsaanduiding "O" of een vrouw met de titel "R" (ridder)
+  De gebruikInLopendeTekst wordt op dezelfde manier samengesteld als voor een persoon zonder adellijke titel of predicaat in de volgende gevallen:
+  - Wanneer de combinatie van adellijkeTitelPredicaat en geslachtsaanduiding niet voorkomt in bovenstaande tabel: geslachtsaanduiding "O" of een vrouw met de titel "R" (ridder)
   - Wanneer de persoon de geslachtsnaam van de echtgenoot/partner gebruikt zonder de eigen geslachtsnaam: aanduidingNaamgebruik is "P"
-  - Wanneer de persoon een predikaat heeft en de geslachtsaanduiding is gelijk aan "V" (vrouw) en betrokkene heeft een partner
-  - Wanneer de persoon een predikaat heeft en de geslachtsaanduiding is gelijk aan "V" (vrouw) en betrokkene gebruikt de naam van de (ex)partner (aanduidingNaamgebruik is ongelijk aan "E")
+  - Wanneer de persoon een predicaat heeft en de geslachtsaanduiding is gelijk aan "V" (vrouw) en betrokkene heeft een partner
+  - Wanneer de persoon een predicaat heeft en de geslachtsaanduiding is gelijk aan "V" (vrouw) en betrokkene gebruikt de naam van de (ex)partner (aanduidingNaamgebruik is ongelijk aan "E")
 
   Abstract Scenario: persoon met adellijke titel heeft aanduidingNaamgebruik "<naamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -206,13 +206,13 @@ Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predikaat wo
     En de persoon heeft de volgende naam gegevens
     | naam                                 | waarde                    |
     | voornamen (02.10)                    | Jo Anne                   |
-    | adellijke titel of predikaat (02.20) | BS                        |
+    | adellijke titel of predicaat (02.20) | BS                        |
     | voorvoegsel (02.30)                  | van den                   |
     | geslachtsnaam (02.40)                | Aedel                     |
     | aanduidingNaamgebruik (61.10)        | <naamgebruik>             |
     En de partner heeft de volgende naam gegevens
     | naam                                 | waarde |
-    | adellijke titel of predikaat (02.20) |        |
+    | adellijke titel of predicaat (02.20) |        |
     | voorvoegsel (02.30)                  | de     |
     | geslachtsnaam (02.40)                | Boer   |
     Als personen wordt gezocht met de volgende parameters
@@ -231,7 +231,7 @@ Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predikaat wo
     | V           | mevrouw De Boer-barones van den Aedel |
     | N           | barones van den Aedel-de Boer         |
 
-  Abstract Scenario: persoon met predikaat en geslachtsaanduiding "<geslacht>" en aanduidingNaamgebruik "<naamgebruik>" heeft een partner
+  Abstract Scenario: persoon met predicaat en geslachtsaanduiding "<geslacht>" en aanduidingNaamgebruik "<naamgebruik>" heeft een partner
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde     |
     | burgerservicenummer | 999992934  |
@@ -239,13 +239,13 @@ Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predikaat wo
     En de persoon heeft de volgende naam gegevens
     | naam                                 | waarde                    |
     | voornamen (02.10)                    | Jo Anne                   |
-    | adellijke titel of predikaat (02.20) | JV                        |
+    | adellijke titel of predicaat (02.20) | JV                        |
     | voorvoegsel (02.30)                  | van den                   |
     | geslachtsnaam (02.40)                | Aedel                     |
     | aanduidingNaamgebruik (61.10)        | <naamgebruik>             |
     En de partner heeft de volgende naam gegevens
     | naam                                 | waarde |
-    | adellijke titel of predikaat (02.20) |        |
+    | adellijke titel of predicaat (02.20) |        |
     | voorvoegsel (02.30)                  | de     |
     | geslachtsnaam (02.40)                | Boer   |
     Als personen wordt gezocht met de volgende parameters
@@ -268,7 +268,7 @@ Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predikaat wo
     | V        | V           | mevrouw De Boer-van den Aedel           |
     | V        | N           | mevrouw Van den Aedel-de Boer           |
 
-  Abstract Scenario: persoon met predikaat en geslachtsaanduiding "<geslacht>" heeft een ontbonden huwelijk/partnerschap en aanduidingNaamgebruik "<naamgebruik>"
+  Abstract Scenario: persoon met predicaat en geslachtsaanduiding "<geslacht>" heeft een ontbonden huwelijk/partnerschap en aanduidingNaamgebruik "<naamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde     |
     | burgerservicenummer | 999992934  |
@@ -276,14 +276,14 @@ Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predikaat wo
     En de persoon heeft de volgende naam gegevens
     | naam                                 | waarde                    |
     | voornamen (02.10)                    | Jo Anne                   |
-    | adellijke titel of predikaat (02.20) | JV                        |
+    | adellijke titel of predicaat (02.20) | JV                        |
     | voorvoegsel (02.30)                  | van den                   |
     | geslachtsnaam (02.40)                | Aedel                     |
     | aanduidingNaamgebruik (61.10)        | <naamgebruik>             |
     En de persoon heeft geen actuele partner
     En de ex-partner heeft de volgende naam gegevens
     | naam                                 | waarde |
-    | adellijke titel of predikaat (02.20) |        |
+    | adellijke titel of predicaat (02.20) |        |
     | voorvoegsel (02.30)                  | de     |
     | geslachtsnaam (02.40)                | Boer   |
     Als personen wordt gezocht met de volgende parameters
@@ -306,7 +306,7 @@ Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predikaat wo
     | V        | V           | mevrouw De Boer-van den Aedel           |
     | V        | N           | mevrouw Van den Aedel-de Boer           |
 
-  Abstract Scenario: persoon met adellijkeTitelPredikaat "<adellijkeTitelPredikaat>" en geslachtsaanduiding "<geslacht>"
+  Abstract Scenario: persoon met adellijkeTitelPredicaat "<adellijkeTitelPredicaat>" en geslachtsaanduiding "<geslacht>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde     |
     | burgerservicenummer | 999992934  |
@@ -314,7 +314,7 @@ Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predikaat wo
     En de persoon heeft de volgende naam gegevens
     | naam                                 | waarde                    |
     | voornamen (02.10)                    | Jo Anne                   |
-    | adellijke titel of predikaat (02.20) | JV                        |
+    | adellijke titel of predicaat (02.20) | JV                        |
     | voorvoegsel (02.30)                  | van den                   |
     | geslachtsnaam (02.40)                | Aedel                     |
     | aanduidingNaamgebruik (61.10)        | E                         |
@@ -328,7 +328,7 @@ Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predikaat wo
     | gebruikInLopendeTekst | <gebruikInLopendeTekst> |
 
     Voorbeelden:
-    | adellijkeTitelPredikaat | geslacht | gebruikInLopendeTekst   |
+    | adellijkeTitelPredicaat | geslacht | gebruikInLopendeTekst   |
     | G                       | M        | graaf van den Aedel     |
     | G                       | V        | gravin van den Aedel    |
     | G                       | O        | J.A. van den Aedel      |
@@ -342,26 +342,26 @@ Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predikaat wo
 Rule: een vrouw met een (ex)partner met een adellijke titel krijgt een hoffelijkheidstitel ('titre de courtoisie') in gebruikInLopendeTekst, waarbij geldt dat:
   - gebruikInLopendeTekst wordt samengesteld uit naamcomponenten van de persoon en eventuele (ex)partner op basis van de aanduidingNaamgebruik:
     | aanduidingNaamgebruik | gebruikinlopendetekst |
-    | E                     | PK AT VV GN           |
+    | E                     | PR AT VV GN           |
     | P                     | HT VP GP              |
-    | V                     | HT VP GP-PK AT VV GN  |
-    | N                     | PK AT VV GN-HT VP GP  |
+    | V                     | HT VP GP-PR AT VV GN  |
+    | N                     | PR AT VV GN-HT VP GP  |
   - de hoffelijkheidstitel ('titre de courtoisie') wordt bepaald op basis van de adellijke titel van de (ex)partner:
-    | adellijkeTitelPredikaat partner | hoffelijkheidstitel |
+    | adellijkeTitelPredicaat partner | hoffelijkheidstitel |
     | G                               | gravin              |
     | B                               | barones             |
     | H                               | hertogin            |
     | M                               | markiezin           |
     | P                               | prinses             |
-  - voor het opnemen van de eigen adellijke titel of predikaat en de overige naamcomponenten gelden dezelfde regels als wanneer ze geen partner met adellijke titel zou hebben
+  - voor het opnemen van de eigen adellijke titel of predicaat en de overige naamcomponenten gelden dezelfde regels als wanneer ze geen partner met adellijke titel zou hebben
   - de adellijke titel van de (ex)partner alleen wordt gebruikt onder de volgende condities:
-    - de (ex)partner heeft een adellijke titel (geen predikaat)
+    - de (ex)partner heeft een adellijke titel (geen predicaat)
     - de geslachtsaanduiding van de persoon is "V"
     - de geslachtsaanduiding van de partner is "M"
     - de persoon gebruikt de naam van haar (ex)partner (aanduidingNaamgebruik is ongelijk aan "E")
     - de adellijke titel van de (ex)partner heeft een hoffelijkheidstitel (komt voor in bovenstaande tabel)
   
-  Abstract Scenario: partner met adellijke titel "<adellijkeTitelPredikaat partner>"
+  Abstract Scenario: partner met adellijke titel "<adellijkeTitelPredicaat partner>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde     |
     | burgerservicenummer | 999992934  |
@@ -369,7 +369,7 @@ Rule: een vrouw met een (ex)partner met een adellijke titel krijgt een hoffelijk
     En de persoon heeft de volgende naam gegevens
     | naam                                 | waarde        |
     | voornamen (02.10)                    | Jo            |
-    | adellijke titel of predikaat (02.20) |               |
+    | adellijke titel of predicaat (02.20) |               |
     | voorvoegsel (02.30)                  | de            |
     | geslachtsnaam (02.40)                | Boer          |
     | aanduidingNaamgebruik (61.10)        | V             |
@@ -378,7 +378,7 @@ Rule: een vrouw met een (ex)partner met een adellijke titel krijgt een hoffelijk
     | geslachtsaanduiding (04.10) | M         |
     En de partner heeft de volgende naam gegevens
     | naam                                 | waarde                            |
-    | adellijke titel of predikaat (02.20) | <adellijkeTitelPredikaat partner> |
+    | adellijke titel of predicaat (02.20) | <adellijkeTitelPredicaat partner> |
     | voorvoegsel (02.30)                  | van den                           |
     | geslachtsnaam (02.40)                | Aedel                             |
     Als personen wordt gezocht met de volgende parameters
@@ -391,7 +391,7 @@ Rule: een vrouw met een (ex)partner met een adellijke titel krijgt een hoffelijk
     | gebruikInLopendeTekst | <gebruikInLopendeTekst> |
 
     Voorbeelden:
-      | adellijkeTitelPredikaat partner | omschrijving | gebruikInLopendeTekst           |
+      | adellijkeTitelPredicaat partner | omschrijving | gebruikInLopendeTekst           |
       | B                               | Baron        | barones van den Aedel-de Boer   |
       | G                               | Graaf        | gravin van den Aedel-de Boer    |
       | H                               | Hertog       | hertogin van den Aedel-de Boer  |
@@ -409,7 +409,7 @@ Rule: een vrouw met een (ex)partner met een adellijke titel krijgt een hoffelijk
     En de persoon heeft de volgende naam gegevens
     | naam                                 | waarde        |
     | voornamen (02.10)                    | Jo            |
-    | adellijke titel of predikaat (02.20) |               |
+    | adellijke titel of predicaat (02.20) |               |
     | voorvoegsel (02.30)                  | de            |
     | geslachtsnaam (02.40)                | Boer         |
     | aanduidingNaamgebruik (61.10)        | P             |
@@ -418,7 +418,7 @@ Rule: een vrouw met een (ex)partner met een adellijke titel krijgt een hoffelijk
     | geslachtsaanduiding (04.10) | <geslacht partner> |
     En de partner heeft de volgende naam gegevens
     | naam                                 | waarde                            |
-    | adellijke titel of predikaat (02.20) | B                                 |
+    | adellijke titel of predicaat (02.20) | B                                 |
     | voorvoegsel (02.30)                  | van den                           |
     | geslachtsnaam (02.40)                | Aedel                             |
     Als personen wordt gezocht met de volgende parameters
@@ -453,7 +453,7 @@ Rule: een vrouw met een (ex)partner met een adellijke titel krijgt een hoffelijk
     En de persoon heeft de volgende naam gegevens
     | naam                                 | waarde        |
     | voornamen (02.10)                    | Jo            |
-    | adellijke titel of predikaat (02.20) |               |
+    | adellijke titel of predicaat (02.20) |               |
     | voorvoegsel (02.30)                  | de            |
     | geslachtsnaam (02.40)                | Boer          |
     | aanduidingNaamgebruik (61.10)        | <naamgebruik> |
@@ -462,7 +462,7 @@ Rule: een vrouw met een (ex)partner met een adellijke titel krijgt een hoffelijk
     | geslachtsaanduiding (04.10) | M         |
     En de partner heeft de volgende naam gegevens
     | naam                                 | waarde                            |
-    | adellijke titel of predikaat (02.20) | B                                 |
+    | adellijke titel of predicaat (02.20) | B                                 |
     | voorvoegsel (02.30)                  | van den                           |
     | geslachtsnaam (02.40)                | Aedel                             |
     Als personen wordt gezocht met de volgende parameters
@@ -489,7 +489,7 @@ Rule: een vrouw met een (ex)partner met een adellijke titel krijgt een hoffelijk
     En de persoon heeft de volgende naam gegevens
     | naam                                 | waarde        |
     | voornamen (02.10)                    | Jo            |
-    | adellijke titel of predikaat (02.20) | BS            |
+    | adellijke titel of predicaat (02.20) | BS            |
     | voorvoegsel (02.30)                  | de            |
     | geslachtsnaam (02.40)                | Boer          |
     | aanduidingNaamgebruik (61.10)        | <naamgebruik> |
@@ -498,7 +498,7 @@ Rule: een vrouw met een (ex)partner met een adellijke titel krijgt een hoffelijk
     | geslachtsaanduiding (04.10) | M         |
     En de partner heeft de volgende naam gegevens
     | naam                                 | waarde  |
-    | adellijke titel of predikaat (02.20) | G       |
+    | adellijke titel of predicaat (02.20) | G       |
     | voorvoegsel (02.30)                  | van den |
     | geslachtsnaam (02.40)                | Aedel   |
     Als personen wordt gezocht met de volgende parameters
@@ -663,7 +663,7 @@ Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van
     En de persoon heeft de volgende naam gegevens
     | naam                                 | waarde        |
     | voornamen (02.10)                    |               |
-    | adellijke titel of predikaat (02.20) |               |
+    | adellijke titel of predicaat (02.20) |               |
     | voorvoegsel (02.30)                  |               |
     | geslachtsnaam (02.40)                |               |
     | aanduidingNaamgebruik (61.10)        | <naamgebruik> |
@@ -672,7 +672,7 @@ Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van
     | geslachtsaanduiding (04.10) | M         |
     En de partner heeft de volgende naam gegevens
     | naam                                 | waarde  |
-    | adellijke titel of predikaat (02.20) |         |
+    | adellijke titel of predicaat (02.20) |         |
     | voorvoegsel (02.30)                  | de      |
     | geslachtsnaam (02.40)                | Boer    |
     Als personen wordt gezocht met de volgende parameters
@@ -699,7 +699,7 @@ Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van
     En de persoon heeft de volgende naam gegevens
     | naam                                 | waarde        |
     | voornamen (02.10)                    |               |
-    | adellijke titel of predikaat (02.20) |               |
+    | adellijke titel of predicaat (02.20) |               |
     | voorvoegsel (02.30)                  | de            |
     | geslachtsnaam (02.40)                | Boer          |
     | aanduidingNaamgebruik (61.10)        | <naamgebruik> |
@@ -708,7 +708,7 @@ Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van
     | geslachtsaanduiding (04.10) | M         |
     En de partner heeft de volgende naam gegevens
     | naam                                 | waarde  |
-    | adellijke titel of predikaat (02.20) |         |
+    | adellijke titel of predicaat (02.20) |         |
     | voorvoegsel (02.30)                  |         |
     | geslachtsnaam (02.40)                |         |
     Als personen wordt gezocht met de volgende parameters
