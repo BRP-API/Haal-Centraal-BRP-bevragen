@@ -640,13 +640,13 @@ components:
       example: "0518"
     GeboorteplaatsFilter:
       maxLength: 40
-      pattern: ^[a-zA-Z0-9À-ſ \-\'()]{1,40}$
+      pattern: ^[a-zA-Z0-9À-ž \,\.\-\'()]{1,40}$
       type: string
       description: |
         Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
       example: Utrecht
     GeslachtsnaamFilter:
-      pattern: ^[a-zA-Z0-9À-ſ \-\']{1,200}$|^[a-zA-Z0-9À-ſ \-\']{3,200}(\?{1,5}|\*{1})$
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,200}$|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$
       type: string
       description: |
         De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
@@ -658,19 +658,19 @@ components:
         Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.
       example: V
     VoorvoegselFilter:
-      pattern: ^[a-zA-Z0-9À-ſ \-\']{1,10}$
+      pattern: ^[a-zA-Z \']{1,10}$
       type: string
       description: |
         Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
       example: de
     VoornamenOptioneelFilter:
-      pattern: ^[a-zA-Z0-9À-ſ \-\']{1,200}(\?{1,5}|\*{1})$
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,199}\*{1}$
       type: string
       description: |
         De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
       example: Dirk
     VoornamenVerplichtFilter:
-      pattern: ^[a-zA-Z0-9À-ſ \-\']{1,200}$|^[a-zA-Z0-9À-ſ \-\']{3,200}(\?{1,5}|\*{1})$
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,200}$|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$
       type: string
       description: |
         De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
@@ -701,7 +701,7 @@ components:
         De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.
       example: 2341SX
     StraatFilter:
-      pattern: ^[a-zA-Z0-9À-ſ \-\']{1,80}$|^[a-zA-Z0-9À-ſ \-\']{7,80}(\?{1,5}|\*{1})$
+      pattern: ^[a-zA-Z0-9À-ž \-\']{1,80}$|^[a-zA-Z0-9À-ž \-\']{7,79}\*{1}$
       type: string
       description: |
         Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).
