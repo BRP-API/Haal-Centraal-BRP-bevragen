@@ -89,8 +89,6 @@ components:
         - properties:
             aanduidingNaamgebruik:
               $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
-            inOnderzoek:
-              $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     NaamBasis:
       type: object
       properties:
