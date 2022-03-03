@@ -859,7 +859,7 @@ components:
             $ref: '#/components/schemas/AbstractDatum'
           gemeenteVanInschrijving:
             $ref: '#/components/schemas/Waardetabel'
-          verblijfplaatsOnbekend:
+          vertrokkenOnbekendWaarheen:
             $ref: '#/components/schemas/VertrokkenOnbekendWaarheen'
           inOnderzoek:
             $ref: '#/components/schemas/VerblijfplaatsOnbekendInOnderzoek'
@@ -1122,7 +1122,7 @@ components:
             type: boolean
           gemeenteVanInschrijving:
             type: boolean
-          land:
+          verblijfplaatsOnbekend:
             type: boolean
     LocatieBeperkt:
       allOf:
