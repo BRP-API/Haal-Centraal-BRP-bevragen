@@ -856,9 +856,9 @@ components:
           datumInschrijvingInGemeente:
             $ref: '#/components/schemas/AbstractDatum'
           gemeenteVanInschrijving:
-            $ref: '#/components/schemas/Waardetabel'
-          vertrokkenOnbekendWaarheen:
-            $ref: '#/components/schemas/VertrokkenOnbekendWaarheen'
+            $ref: '#/components/schemas/GemeenteVanInschrijving'
+          verblijfplaatsOnbekend:
+            $ref: '#/components/schemas/IndicatieVerblijfplaatsOnbekend'
           inOnderzoek:
             $ref: '#/components/schemas/VerblijfplaatsOnbekendInOnderzoek'
     AbstractVerblijfplaats:

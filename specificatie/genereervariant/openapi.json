@@ -1083,7 +1083,7 @@
               "$ref" : "#/components/schemas/AbstractDatum"
             },
             "gemeenteVanInschrijving" : {
-              "$ref" : "#/components/schemas/Waardetabel"
+              "$ref" : "#/components/schemas/GemeenteVanInschrijving"
             },
             "verblijfplaatsOnbekend" : {
               "$ref" : "#/components/schemas/IndicatieVerblijfplaatsOnbekend"
