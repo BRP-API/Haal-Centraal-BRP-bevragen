@@ -1,18 +1,47 @@
 {
     "item": [
         {
-            "id": "26b93cda-4b3a-4435-8354-637b58c1d01d",
-            "name": "personen",
-            "item": [
+            "id": "2c1f01fe-dbe8-4877-a317-7a166523bbba",
+            "name": "Vindt personen",
+            "request": {
+                "name": "Vindt personen",
+                "description": {
+                    "content": "Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met optionele parameters.\n\n\nDefault krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.\n\n\nGebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/fields_extensie.feature)\n\n\n1.  Zoek met geslachtsnaam en geboortedatum\n    - geboortedatum\n    - geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature))\n\n\n2.  Zoek met geslachtsnaam en gemeente van inschrijving\n    - gemeenteVanInschrijving\n    - geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature))\n\n\n3.  Raadpleeg met burgerservicenummer\n    - burgerservicenummer\n\n\n4.  Zoek met postcode en huisnummer\n    - postcode\n    - huisnummer\n\n\n5.  Zoek met straat, huisnummer en gemeente van inschrijving\n    - straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature))\n    - gemeenteVanInschrijving\n    - huisnummer\n\n\n6.  Zoek met nummeraanduiding identificatie\n    - nummeraanduidingIdentificatie\n",
+                    "type": "text/plain"
+                },
+                "url": {
+                    "path": [
+                        "personen"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": []
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "method": "POST",
+                "auth": null,
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"gemeenteVanInschrijving\": \"<string>\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
                 {
-                    "id": "1b84ba71-694a-4ea3-9337-4829f89dc571",
-                    "name": "Vindt personen",
-                    "request": {
-                        "name": "Vindt personen",
-                        "description": {
-                            "content": "Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met optionele parameters.\n\n\nDefault krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.\n\n\nGebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/fields_extensie.feature)\n\n\n1.  Zoek met geslachtsnaam en geboortedatum\n    - geboortedatum\n    - geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature))\n\n\n2.  Zoek met geslachtsnaam en gemeente van inschrijving\n    - gemeenteVanInschrijving\n    - geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature))\n\n\n3.  Zoek met burgerservicenummer\n    - burgerservicenummer\n\n\n4.  Zoek met postcode en huisnummer\n    - postcode\n    - huisnummer\n\n\n5.  Zoek met straat, huisnummer en gemeente van inschrijving\n    - straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature))\n    - gemeenteVanInschrijving\n    - huisnummer\n\n\n6.  Zoek met nummeraanduiding identificatie\n    - nummeraanduidingIdentificatie\n",
-                            "type": "text/plain"
-                        },
+                    "id": "c86412aa-4b8b-4f4e-9d99-8676c1146ae3",
+                    "name": "Zoekactie geslaagd\n",
+                    "originalRequest": {
                         "url": {
                             "path": [
                                 "personen"
@@ -23,17 +52,10 @@
                             "query": [],
                             "variable": []
                         },
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
                         "method": "POST",
-                        "auth": null,
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"inclusiefOverledenPersonen\": \"<boolean>\",\n    \"gemeenteVanInschrijving\": \"<string>\"\n}",
+                            "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -41,940 +63,434 @@
                             }
                         }
                     },
-                    "response": [
+                    "status": "OK",
+                    "code": 200,
+                    "header": [
                         {
-                            "id": "751fb04f-3d54-4f33-86aa-244603ae4567",
-                            "name": "Zoekactie geslaagd\n",
-                            "originalRequest": {
-                                "url": {
-                                    "path": [
-                                        "personen"
-                                    ],
-                                    "host": [
-                                        "{{baseUrl}}"
-                                    ],
-                                    "query": [],
-                                    "variable": []
-                                },
-                                "method": "POST",
-                                "body": {
-                                    "mode": "raw",
-                                    "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"inclusiefOverledenPersonen\": true,\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
-                                    "options": {
-                                        "raw": {
-                                            "language": "json"
-                                        }
-                                    }
-                                }
-                            },
-                            "status": "OK",
-                            "code": 200,
-                            "header": [
-                                {
-                                    "disabled": false,
-                                    "key": "api-version",
-                                    "value": "1.0.0",
-                                    "description": ""
-                                },
-                                {
-                                    "disabled": false,
-                                    "key": "warning",
-                                    "value": "299 https://service.../api/.../v1 \"Deze versie van de API is verouderd en zal uit dienst worden genomen op 2018-02-01. Raadpleeg voor meer informatie hier de documentatie: https://omgevingswet.../api/.../v1\".",
-                                    "description": ""
-                                },
-                                {
-                                    "key": "Content-Type",
-                                    "value": "application/hal+json"
-                                }
-                            ],
-                            "body": "{\n \"_embedded\": {\n  \"personen\": [\n   {\n    \"identificatie\": {\n     \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"burgerservicenummer\": {\n     \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"geheimhoudingPersoonsgegevens\": {\n     \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"geslachtsaanduiding\": {\n     \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"leeftijd\": {\n     \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"naam\": {\n     \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"geboorte\": {\n     \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"opschortingBijhouding\": {\n     \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"overlijden\": {\n     \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"verblijfplaats\": {\n     \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"_links\": {\n     \"self\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n     }\n    }\n   },\n   {\n    \"identificatie\": {\n     \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"burgerservicenummer\": {\n     \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"geheimhoudingPersoonsgegevens\": {\n     \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"geslachtsaanduiding\": {\n     \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"leeftijd\": {\n     \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"naam\": {\n     \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"geboorte\": {\n     \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"opschortingBijhouding\": {\n     \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"overlijden\": {\n     \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"verblijfplaats\": {\n     \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"_links\": {\n     \"self\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n     }\n    }\n   }\n  ]\n }\n}",
-                            "cookie": [],
-                            "_postman_previewlanguage": "json"
+                            "disabled": false,
+                            "key": "api-version",
+                            "value": "1.0.0",
+                            "description": ""
                         },
                         {
-                            "id": "5e9f5889-61d4-4ad3-ae74-02a911660d6f",
-                            "name": "Bad Request",
-                            "originalRequest": {
-                                "url": {
-                                    "path": [
-                                        "personen"
-                                    ],
-                                    "host": [
-                                        "{{baseUrl}}"
-                                    ],
-                                    "query": [],
-                                    "variable": []
-                                },
-                                "method": "POST",
-                                "body": {
-                                    "mode": "raw",
-                                    "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"inclusiefOverledenPersonen\": true,\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
-                                    "options": {
-                                        "raw": {
-                                            "language": "json"
-                                        }
-                                    }
-                                }
-                            },
-                            "status": "Bad Request",
-                            "code": 400,
-                            "header": [
-                                {
-                                    "disabled": false,
-                                    "key": "api-version",
-                                    "value": "1.0.0",
-                                    "description": ""
-                                },
-                                {
-                                    "key": "Content-Type",
-                                    "value": "application/problem+json"
-                                }
-                            ],
-                            "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1\",\n \"title\": \"Ten minste één parameter moet worden opgegeven.\",\n \"status\": 400,\n \"detail\": \"The request could not be understood by the server due to malformed syntax. The client SHOULD NOT repeat the request without modification.\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"paramsRequired\",\n \"invalidParams\": [\n  {\n   \"type\": \"https://www.vng.nl/realisatie/api/validaties/integer\",\n   \"name\": \"verblijfplaats__huisnummer\",\n   \"code\": \"integer\",\n   \"reason\": \"Waarde is geen geldige integer.\"\n  }\n ]\n}",
-                            "cookie": [],
-                            "_postman_previewlanguage": "json"
+                            "disabled": false,
+                            "key": "warning",
+                            "value": "299 https://service.../api/.../v1 \"Deze versie van de API is verouderd en zal uit dienst worden genomen op 2018-02-01. Raadpleeg voor meer informatie hier de documentatie: https://omgevingswet.../api/.../v1\".",
+                            "description": ""
                         },
                         {
-                            "id": "d03966cd-b5f1-4a75-99da-ce29114cc90c",
-                            "name": "Unauthorized",
-                            "originalRequest": {
-                                "url": {
-                                    "path": [
-                                        "personen"
-                                    ],
-                                    "host": [
-                                        "{{baseUrl}}"
-                                    ],
-                                    "query": [],
-                                    "variable": []
-                                },
-                                "method": "POST",
-                                "body": {
-                                    "mode": "raw",
-                                    "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"inclusiefOverledenPersonen\": true,\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
-                                    "options": {
-                                        "raw": {
-                                            "language": "json"
-                                        }
-                                    }
-                                }
-                            },
-                            "status": "Unauthorized",
-                            "code": 401,
-                            "header": [
-                                {
-                                    "disabled": false,
-                                    "key": "api-version",
-                                    "value": "1.0.0",
-                                    "description": ""
-                                },
-                                {
-                                    "key": "Content-Type",
-                                    "value": "application/problem+json"
-                                }
-                            ],
-                            "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2\",\n \"title\": \"Niet correct geauthenticeerd.\",\n \"status\": 401,\n \"detail\": \"The request requires user authentication. The response MUST include a WWW-Authenticate header field (section 14.47) containing a challenge applicable to the requested resource.\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"authentication\"\n}",
-                            "cookie": [],
-                            "_postman_previewlanguage": "json"
+                            "disabled": false,
+                            "key": "X-Rate-Limit-Limit",
+                            "value": "-83783358",
+                            "description": ""
                         },
                         {
-                            "id": "c1846b88-38cd-4493-b1ac-411746142a96",
-                            "name": "Forbidden",
-                            "originalRequest": {
-                                "url": {
-                                    "path": [
-                                        "personen"
-                                    ],
-                                    "host": [
-                                        "{{baseUrl}}"
-                                    ],
-                                    "query": [],
-                                    "variable": []
-                                },
-                                "method": "POST",
-                                "body": {
-                                    "mode": "raw",
-                                    "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"inclusiefOverledenPersonen\": true,\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
-                                    "options": {
-                                        "raw": {
-                                            "language": "json"
-                                        }
-                                    }
-                                }
-                            },
-                            "status": "Forbidden",
-                            "code": 403,
-                            "header": [
-                                {
-                                    "disabled": false,
-                                    "key": "api-version",
-                                    "value": "1.0.0",
-                                    "description": ""
-                                },
-                                {
-                                    "key": "Content-Type",
-                                    "value": "application/problem+json"
-                                }
-                            ],
-                            "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.4\",\n \"title\": \"U bent niet geautoriseerd voor deze operatie.\",\n \"status\": 403,\n \"detail\": \"The server understood the request, but is refusing to fulfill it.\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"autorisation\"\n}",
-                            "cookie": [],
-                            "_postman_previewlanguage": "json"
+                            "disabled": false,
+                            "key": "X-Rate-Limit-Remaining",
+                            "value": "-83783358",
+                            "description": ""
                         },
                         {
-                            "id": "84a7a25e-74a6-40c0-8f48-26dae2ff2cfe",
-                            "name": "Not Acceptable",
-                            "originalRequest": {
-                                "url": {
-                                    "path": [
-                                        "personen"
-                                    ],
-                                    "host": [
-                                        "{{baseUrl}}"
-                                    ],
-                                    "query": [],
-                                    "variable": []
-                                },
-                                "method": "POST",
-                                "body": {
-                                    "mode": "raw",
-                                    "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"inclusiefOverledenPersonen\": true,\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
-                                    "options": {
-                                        "raw": {
-                                            "language": "json"
-                                        }
-                                    }
-                                }
-                            },
-                            "status": "Not Acceptable",
-                            "code": 406,
-                            "header": [
-                                {
-                                    "disabled": false,
-                                    "key": "api-version",
-                                    "value": "1.0.0",
-                                    "description": ""
-                                },
-                                {
-                                    "key": "Content-Type",
-                                    "value": "application/problem+json"
-                                }
-                            ],
-                            "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7\",\n \"title\": \"Gevraagde contenttype wordt niet ondersteund.\",\n \"status\": 406,\n \"detail\": \"The resource identified by the request is only capable of generating response entities which have content characteristics not acceptable according to thr accept headers sent in the request\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"notAcceptable\"\n}",
-                            "cookie": [],
-                            "_postman_previewlanguage": "json"
+                            "disabled": false,
+                            "key": "X-Rate-Limit-Reset",
+                            "value": "-83783358",
+                            "description": ""
                         },
                         {
-                            "id": "9ba0adb3-0730-4873-ba6d-4fbf41fa141f",
-                            "name": "Internal Server Error",
-                            "originalRequest": {
-                                "url": {
-                                    "path": [
-                                        "personen"
-                                    ],
-                                    "host": [
-                                        "{{baseUrl}}"
-                                    ],
-                                    "query": [],
-                                    "variable": []
-                                },
-                                "method": "POST",
-                                "body": {
-                                    "mode": "raw",
-                                    "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"inclusiefOverledenPersonen\": true,\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
-                                    "options": {
-                                        "raw": {
-                                            "language": "json"
-                                        }
-                                    }
-                                }
-                            },
-                            "status": "Internal Server Error",
-                            "code": 500,
-                            "header": [
-                                {
-                                    "disabled": false,
-                                    "key": "api-version",
-                                    "value": "1.0.0",
-                                    "description": ""
-                                },
-                                {
-                                    "key": "Content-Type",
-                                    "value": "application/problem+json"
-                                }
-                            ],
-                            "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1\",\n \"title\": \"Interne server fout.\",\n \"status\": 500,\n \"detail\": \"The server encountered an unexpected condition which prevented it from fulfilling the request.\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"serverError\"\n}",
-                            "cookie": [],
-                            "_postman_previewlanguage": "json"
-                        },
-                        {
-                            "id": "6718e79e-f5a8-4406-b8a1-d04828c7e8e0",
-                            "name": "Not Implemented",
-                            "originalRequest": {
-                                "url": {
-                                    "path": [
-                                        "personen"
-                                    ],
-                                    "host": [
-                                        "{{baseUrl}}"
-                                    ],
-                                    "query": [],
-                                    "variable": []
-                                },
-                                "method": "POST",
-                                "body": {
-                                    "mode": "raw",
-                                    "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"inclusiefOverledenPersonen\": true,\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
-                                    "options": {
-                                        "raw": {
-                                            "language": "json"
-                                        }
-                                    }
-                                }
-                            },
-                            "status": "Not Implemented",
-                            "code": 501,
-                            "header": [
-                                {
-                                    "disabled": false,
-                                    "key": "api-version",
-                                    "value": "1.0.0",
-                                    "description": ""
-                                },
-                                {
-                                    "key": "Content-Type",
-                                    "value": "application/problem+json"
-                                }
-                            ],
-                            "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.2\",\n \"title\": \"Not Implemented\",\n \"status\": 501,\n \"detail\": \"The server does not support the functionality required to fulfill the request.\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"notImplemented\"\n}",
-                            "cookie": [],
-                            "_postman_previewlanguage": "json"
-                        },
-                        {
-                            "id": "070f0e87-0f11-42ce-8dae-b243d1d0b497",
-                            "name": "Service Unavailable",
-                            "originalRequest": {
-                                "url": {
-                                    "path": [
-                                        "personen"
-                                    ],
-                                    "host": [
-                                        "{{baseUrl}}"
-                                    ],
-                                    "query": [],
-                                    "variable": []
-                                },
-                                "method": "POST",
-                                "body": {
-                                    "mode": "raw",
-                                    "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"inclusiefOverledenPersonen\": true,\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
-                                    "options": {
-                                        "raw": {
-                                            "language": "json"
-                                        }
-                                    }
-                                }
-                            },
-                            "status": "Service Unavailable",
-                            "code": 503,
-                            "header": [
-                                {
-                                    "disabled": false,
-                                    "key": "api-version",
-                                    "value": "1.0.0",
-                                    "description": ""
-                                },
-                                {
-                                    "key": "Content-Type",
-                                    "value": "application/problem+json"
-                                }
-                            ],
-                            "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4\",\n \"title\": \"Bronservice {bron} is tijdelijk niet beschikbaar.\",\n \"status\": 503,\n \"detail\": \"The service is currently unable to handle the request due to a temporary overloading or maintenance of the server.\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"notAvailable\"\n}",
-                            "cookie": [],
-                            "_postman_previewlanguage": "json"
-                        },
-                        {
-                            "id": "ec3ae920-2e01-4a91-8117-355b3b8a1366",
-                            "name": "Er is een onverwachte fout opgetreden",
-                            "originalRequest": {
-                                "url": {
-                                    "path": [
-                                        "personen"
-                                    ],
-                                    "host": [
-                                        "{{baseUrl}}"
-                                    ],
-                                    "query": [],
-                                    "variable": []
-                                },
-                                "method": "POST",
-                                "body": {
-                                    "mode": "raw",
-                                    "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"inclusiefOverledenPersonen\": true,\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
-                                    "options": {
-                                        "raw": {
-                                            "language": "json"
-                                        }
-                                    }
-                                }
-                            },
-                            "status": "Internal Server Error",
-                            "code": 500,
-                            "header": [
-                                {
-                                    "disabled": false,
-                                    "key": "api-version",
-                                    "value": "1.0.0",
-                                    "description": ""
-                                },
-                                {
-                                    "key": "Content-Type",
-                                    "value": "application/problem+json"
-                                }
-                            ],
-                            "body": "{\n \"type\": \"http://PlhBRXscdcWcIPEjWTPClcqIoSRTf.tcyZxscH63X,xASscN5RPYnBh\",\n \"title\": \"nisi cupidatat sed in\",\n \"status\": -2794648,\n \"detail\": \"proiden\",\n \"instance\": \"http://iSNuByyWFrompNqqtrcFTkFPowdK.yedG2TJ3eNEJ.gHb-mkxBEgWwyrloFYartt1\",\n \"code\": \"aliquip nulla do\"\n}",
-                            "cookie": [],
-                            "_postman_previewlanguage": "json"
+                            "key": "Content-Type",
+                            "value": "application/json"
                         }
                     ],
-                    "event": []
+                    "body": "{\n \"type\": \"aliquip mollit\"\n}",
+                    "cookie": [],
+                    "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "b87827e4-2049-471c-9c47-c085b116df28",
-                    "name": "Raadpleeg een persoon",
-                    "request": {
-                        "name": "Raadpleeg een persoon",
-                        "description": {
-                            "content": "Raadpleeg een (overleden) persoon.\n\nGebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/fields_extensie.feature).\n",
-                            "type": "text/plain"
-                        },
+                    "id": "561ef917-8c1e-4f36-8a72-7e276eba0a18",
+                    "name": "Bad Request",
+                    "originalRequest": {
                         "url": {
                             "path": [
-                                "personen",
-                                ":persoonIdentificatie"
+                                "personen"
                             ],
                             "host": [
                                 "{{baseUrl}}"
                             ],
-                            "query": [
-                                {
-                                    "disabled": false,
-                                    "key": "fields",
-                                    "value": "<string>",
-                                    "description": "(Required) "
-                                }
-                            ],
-                            "variable": [
-                                {
-                                    "disabled": false,
-                                    "type": "any",
-                                    "value": "<uuid>",
-                                    "key": "persoonIdentificatie",
-                                    "description": "(Required) "
-                                }
-                            ]
+                            "query": [],
+                            "variable": []
                         },
-                        "method": "GET",
-                        "auth": null
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
                     },
-                    "response": [
+                    "status": "Bad Request",
+                    "code": 400,
+                    "header": [
                         {
-                            "id": "4d4540e0-e754-4a45-b03f-17b365029ccb",
-                            "name": "Zoekactie geslaagd\n",
-                            "originalRequest": {
-                                "url": {
-                                    "path": [
-                                        "personen",
-                                        ":persoonIdentificatie"
-                                    ],
-                                    "host": [
-                                        "{{baseUrl}}"
-                                    ],
-                                    "query": [
-                                        {
-                                            "key": "fields",
-                                            "value": "<string>"
-                                        }
-                                    ],
-                                    "variable": [
-                                        {
-                                            "disabled": false,
-                                            "type": "any",
-                                            "value": "<uuid>",
-                                            "key": "persoonIdentificatie",
-                                            "description": "(Required) "
-                                        }
-                                    ]
-                                },
-                                "method": "GET",
-                                "body": {}
-                            },
-                            "status": "OK",
-                            "code": 200,
-                            "header": [
-                                {
-                                    "disabled": false,
-                                    "key": "api-version",
-                                    "value": "1.0.0",
-                                    "description": ""
-                                },
-                                {
-                                    "disabled": false,
-                                    "key": "warning",
-                                    "value": "299 https://service.../api/.../v1 \"Deze versie van de API is verouderd en zal uit dienst worden genomen op 2018-02-01. Raadpleeg voor meer informatie hier de documentatie: https://omgevingswet.../api/.../v1\".",
-                                    "description": ""
-                                },
-                                {
-                                    "key": "Content-Type",
-                                    "value": "application/hal+json"
-                                }
-                            ],
-                            "body": "{\n \"identificatie\": \"<uuid>\",\n \"burgerservicenummer\": \"555555021\",\n \"geheimhoudingPersoonsgegevens\": {\n  \"type\": \"culpa officia sint amet in\"\n },\n \"geslachtsaanduiding\": {\n  \"code\": \"6030\",\n  \"omschrijving\": \"Nederland\"\n },\n \"leeftijd\": 34,\n \"aNummer\": \"dolore incididunt nostrud commodo\",\n \"datumEersteInschrijvingGBA\": {\n  \"type\": \"adipisicing in eiusmod\"\n },\n \"inOnderzoek\": {\n  \"type\": \"consectetur sit Excepteur esse\"\n },\n \"kiesrecht\": {\n  \"europeesKiesrecht\": true,\n  \"uitgeslotenVanKiesrecht\": true,\n  \"einddatumUitsluitingEuropeesKiesrecht\": {\n   \"type\": \"irure laboris quis\"\n  },\n  \"einddatumUitsluitingKiesrecht\": {\n   \"type\": \"et anim\"\n  }\n },\n \"naam\": {\n  \"aanhef\": {\n   \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"aanschrijfwijze\": {\n   \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"regelVoorafgaandAanAanschrijfwijze\": {\n   \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"gebruikInLopendeTekst\": {\n   \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"aanduidingNaamgebruik\": {\n   \"code\": \"6030\",\n   \"omschrijving\": \"Nederland\"\n  },\n  \"inOnderzoek\": {\n   \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  }\n },\n \"nationaliteiten\": [\n  {\n   \"datumIngangGeldigheid\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"nationaliteit\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"inOnderzoek\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   }\n  },\n  {\n   \"datumIngangGeldigheid\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"nationaliteit\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   },\n   \"inOnderzoek\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   }\n  }\n ],\n \"geboorte\": {\n  \"datum\": {\n   \"type\": \"elit tempor irure\"\n  },\n  \"land\": {\n   \"type\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   }\n  },\n  \"plaats\": {\n   \"code\": \"6030\",\n   \"omschrijving\": \"Nederland\"\n  },\n  \"inOnderzoek\": {\n   \"type\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   }\n  }\n },\n \"opschortingBijhouding\": {\n  \"reden\": {\n   \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"datum\": {\n   \"type\": \"sit minim reprehenderit\"\n  }\n },\n \"overlijden\": {\n  \"indicatieOverleden\": {\n   \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  },\n  \"datum\": {\n   \"type\": \"ea consequat\"\n  },\n  \"land\": {\n   \"type\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   }\n  },\n  \"plaats\": {\n   \"code\": \"6030\",\n   \"omschrijving\": \"Nederland\"\n  },\n  \"inOnderzoek\": {\n   \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n  }\n },\n \"verblijfplaats\": {\n  \"type\": \"dolore velit irure\"\n },\n \"gezagsverhouding\": {\n  \"indicatieCurateleRegister\": true,\n  \"indicatieGezagMinderjarige\": {\n   \"code\": \"6030\",\n   \"omschrijving\": \"Nederland\"\n  },\n  \"inOnderzoek\": {\n   \"type\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   }\n  }\n },\n \"verblijfstitel\": {\n  \"aanduiding\": {\n   \"code\": \"6030\",\n   \"omschrijving\": \"Nederland\"\n  },\n  \"datumEinde\": {\n   \"type\": \"in adip\"\n  },\n  \"datumIngang\": {\n   \"type\": \"ut ipsum\"\n  },\n  \"inOnderzoek\": {\n   \"type\": {\n    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n   }\n  }\n },\n \"reisdocumentnummers\": [\n  \"546376728\",\n  \"546376728\"\n ],\n \"kinderen\": [\n  {\n   \"type\": \"non\"\n  },\n  {\n   \"type\": \"deserunt pariatur do nisi\"\n  }\n ],\n \"ouders\": [\n  {\n   \"type\": \"irure cupidatat Excepteur cillum\"\n  },\n  {\n   \"type\": \"cillum Duis\"\n  }\n ],\n \"partners\": [\n  {\n   \"type\": \"ea E\"\n  },\n  {\n   \"type\": \"consequat\"\n  }\n ],\n \"_links\": {\n  \"self\": {\n   \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n   \"templated\": false,\n   \"title\": \"mollit ut\"\n  },\n  \"ouders\": [\n   {\n    \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n    \"templated\": true,\n    \"title\": \"eiusmod quis cupidatat laboris dolore\"\n   },\n   {\n    \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n    \"templated\": false,\n    \"title\": \"quis in\"\n   }\n  ],\n  \"reisdocumenten\": [\n   {\n    \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n    \"templated\": false,\n    \"title\": \"nulla eiusmod non mollit\"\n   },\n   {\n    \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n    \"templated\": false,\n    \"title\": \"pariatur ipsum mollit ut magna\"\n   }\n  ],\n  \"kinderen\": [\n   {\n    \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n    \"templated\": true,\n    \"title\": \"amet consequat nulla minim\"\n   },\n   {\n    \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n    \"templated\": true,\n    \"title\": \"enim et\"\n   }\n  ],\n  \"partners\": [\n   {\n    \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n    \"templated\": false,\n    \"title\": \"Duis sed officia\"\n   },\n   {\n    \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n    \"templated\": false,\n    \"title\": \"consectetur velit in\"\n   }\n  ],\n  \"partnerhistorie\": {\n   \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n   \"templated\": true,\n   \"title\": \"Lorem non magna\"\n  },\n  \"verblijfplaatshistorie\": {\n   \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n   \"templated\": false,\n   \"title\": \"eiusmod\"\n  },\n  \"verblijfstitelhistorie\": {\n   \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n   \"templated\": true,\n   \"title\": \"anim voluptate mol\"\n  },\n  \"nationaliteitHistorie\": {\n   \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n   \"templated\": true,\n   \"title\": \"proident veniam\"\n  },\n  \"adres\": {\n   \"href\": \"https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}\",\n   \"templated\": false,\n   \"title\": \"ad\"\n  }\n }\n}",
-                            "cookie": [],
-                            "_postman_previewlanguage": "json"
+                            "disabled": false,
+                            "key": "api-version",
+                            "value": "1.0.0",
+                            "description": ""
                         },
                         {
-                            "id": "feb1b4cc-5913-4713-8f86-39ea734234e8",
-                            "name": "Bad Request",
-                            "originalRequest": {
-                                "url": {
-                                    "path": [
-                                        "personen",
-                                        ":persoonIdentificatie"
-                                    ],
-                                    "host": [
-                                        "{{baseUrl}}"
-                                    ],
-                                    "query": [
-                                        {
-                                            "key": "fields",
-                                            "value": "<string>"
-                                        }
-                                    ],
-                                    "variable": [
-                                        {
-                                            "disabled": false,
-                                            "type": "any",
-                                            "value": "<uuid>",
-                                            "key": "persoonIdentificatie",
-                                            "description": "(Required) "
-                                        }
-                                    ]
-                                },
-                                "method": "GET",
-                                "body": {}
-                            },
-                            "status": "Bad Request",
-                            "code": 400,
-                            "header": [
-                                {
-                                    "disabled": false,
-                                    "key": "api-version",
-                                    "value": "1.0.0",
-                                    "description": ""
-                                },
-                                {
-                                    "key": "Content-Type",
-                                    "value": "application/problem+json"
-                                }
-                            ],
-                            "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1\",\n \"title\": \"Ten minste één parameter moet worden opgegeven.\",\n \"status\": 400,\n \"detail\": \"The request could not be understood by the server due to malformed syntax. The client SHOULD NOT repeat the request without modification.\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"paramsRequired\",\n \"invalidParams\": [\n  {\n   \"type\": \"https://www.vng.nl/realisatie/api/validaties/integer\",\n   \"name\": \"verblijfplaats__huisnummer\",\n   \"code\": \"integer\",\n   \"reason\": \"Waarde is geen geldige integer.\"\n  }\n ]\n}",
-                            "cookie": [],
-                            "_postman_previewlanguage": "json"
-                        },
-                        {
-                            "id": "6d0894d5-cad7-4fb2-814a-c4d81bc70c56",
-                            "name": "Unauthorized",
-                            "originalRequest": {
-                                "url": {
-                                    "path": [
-                                        "personen",
-                                        ":persoonIdentificatie"
-                                    ],
-                                    "host": [
-                                        "{{baseUrl}}"
-                                    ],
-                                    "query": [
-                                        {
-                                            "key": "fields",
-                                            "value": "<string>"
-                                        }
-                                    ],
-                                    "variable": [
-                                        {
-                                            "disabled": false,
-                                            "type": "any",
-                                            "value": "<uuid>",
-                                            "key": "persoonIdentificatie",
-                                            "description": "(Required) "
-                                        }
-                                    ]
-                                },
-                                "method": "GET",
-                                "body": {}
-                            },
-                            "status": "Unauthorized",
-                            "code": 401,
-                            "header": [
-                                {
-                                    "disabled": false,
-                                    "key": "api-version",
-                                    "value": "1.0.0",
-                                    "description": ""
-                                },
-                                {
-                                    "key": "Content-Type",
-                                    "value": "application/problem+json"
-                                }
-                            ],
-                            "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2\",\n \"title\": \"Niet correct geauthenticeerd.\",\n \"status\": 401,\n \"detail\": \"The request requires user authentication. The response MUST include a WWW-Authenticate header field (section 14.47) containing a challenge applicable to the requested resource.\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"authentication\"\n}",
-                            "cookie": [],
-                            "_postman_previewlanguage": "json"
-                        },
-                        {
-                            "id": "9d1267dc-ed18-4235-8d4c-1dfa5dc66722",
-                            "name": "Forbidden",
-                            "originalRequest": {
-                                "url": {
-                                    "path": [
-                                        "personen",
-                                        ":persoonIdentificatie"
-                                    ],
-                                    "host": [
-                                        "{{baseUrl}}"
-                                    ],
-                                    "query": [
-                                        {
-                                            "key": "fields",
-                                            "value": "<string>"
-                                        }
-                                    ],
-                                    "variable": [
-                                        {
-                                            "disabled": false,
-                                            "type": "any",
-                                            "value": "<uuid>",
-                                            "key": "persoonIdentificatie",
-                                            "description": "(Required) "
-                                        }
-                                    ]
-                                },
-                                "method": "GET",
-                                "body": {}
-                            },
-                            "status": "Forbidden",
-                            "code": 403,
-                            "header": [
-                                {
-                                    "disabled": false,
-                                    "key": "api-version",
-                                    "value": "1.0.0",
-                                    "description": ""
-                                },
-                                {
-                                    "key": "Content-Type",
-                                    "value": "application/problem+json"
-                                }
-                            ],
-                            "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.4\",\n \"title\": \"U bent niet geautoriseerd voor deze operatie.\",\n \"status\": 403,\n \"detail\": \"The server understood the request, but is refusing to fulfill it.\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"autorisation\"\n}",
-                            "cookie": [],
-                            "_postman_previewlanguage": "json"
-                        },
-                        {
-                            "id": "b68f93e4-884b-4649-9bc5-2a43a2a6a85f",
-                            "name": "Not Found",
-                            "originalRequest": {
-                                "url": {
-                                    "path": [
-                                        "personen",
-                                        ":persoonIdentificatie"
-                                    ],
-                                    "host": [
-                                        "{{baseUrl}}"
-                                    ],
-                                    "query": [
-                                        {
-                                            "key": "fields",
-                                            "value": "<string>"
-                                        }
-                                    ],
-                                    "variable": [
-                                        {
-                                            "disabled": false,
-                                            "type": "any",
-                                            "value": "<uuid>",
-                                            "key": "persoonIdentificatie",
-                                            "description": "(Required) "
-                                        }
-                                    ]
-                                },
-                                "method": "GET",
-                                "body": {}
-                            },
-                            "status": "Not Found",
-                            "code": 404,
-                            "header": [
-                                {
-                                    "disabled": false,
-                                    "key": "api-version",
-                                    "value": "1.0.0",
-                                    "description": ""
-                                },
-                                {
-                                    "key": "Content-Type",
-                                    "value": "application/problem+json"
-                                }
-                            ],
-                            "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5\",\n \"title\": \"Opgevraagde resource bestaat niet.\",\n \"status\": 404,\n \"detail\": \"The server has not found anything matching the Request-URI.\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"notFound\"\n}",
-                            "cookie": [],
-                            "_postman_previewlanguage": "json"
-                        },
-                        {
-                            "id": "25cb81bb-9e24-4cec-8c41-180e86534410",
-                            "name": "Not Acceptable",
-                            "originalRequest": {
-                                "url": {
-                                    "path": [
-                                        "personen",
-                                        ":persoonIdentificatie"
-                                    ],
-                                    "host": [
-                                        "{{baseUrl}}"
-                                    ],
-                                    "query": [
-                                        {
-                                            "key": "fields",
-                                            "value": "<string>"
-                                        }
-                                    ],
-                                    "variable": [
-                                        {
-                                            "disabled": false,
-                                            "type": "any",
-                                            "value": "<uuid>",
-                                            "key": "persoonIdentificatie",
-                                            "description": "(Required) "
-                                        }
-                                    ]
-                                },
-                                "method": "GET",
-                                "body": {}
-                            },
-                            "status": "Not Acceptable",
-                            "code": 406,
-                            "header": [
-                                {
-                                    "disabled": false,
-                                    "key": "api-version",
-                                    "value": "1.0.0",
-                                    "description": ""
-                                },
-                                {
-                                    "key": "Content-Type",
-                                    "value": "application/problem+json"
-                                }
-                            ],
-                            "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7\",\n \"title\": \"Gevraagde contenttype wordt niet ondersteund.\",\n \"status\": 406,\n \"detail\": \"The resource identified by the request is only capable of generating response entities which have content characteristics not acceptable according to thr accept headers sent in the request\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"notAcceptable\"\n}",
-                            "cookie": [],
-                            "_postman_previewlanguage": "json"
-                        },
-                        {
-                            "id": "f6105ecf-e76e-40e0-a5e7-d2f40b2daf53",
-                            "name": "Internal Server Error",
-                            "originalRequest": {
-                                "url": {
-                                    "path": [
-                                        "personen",
-                                        ":persoonIdentificatie"
-                                    ],
-                                    "host": [
-                                        "{{baseUrl}}"
-                                    ],
-                                    "query": [
-                                        {
-                                            "key": "fields",
-                                            "value": "<string>"
-                                        }
-                                    ],
-                                    "variable": [
-                                        {
-                                            "disabled": false,
-                                            "type": "any",
-                                            "value": "<uuid>",
-                                            "key": "persoonIdentificatie",
-                                            "description": "(Required) "
-                                        }
-                                    ]
-                                },
-                                "method": "GET",
-                                "body": {}
-                            },
-                            "status": "Internal Server Error",
-                            "code": 500,
-                            "header": [
-                                {
-                                    "disabled": false,
-                                    "key": "api-version",
-                                    "value": "1.0.0",
-                                    "description": ""
-                                },
-                                {
-                                    "key": "Content-Type",
-                                    "value": "application/problem+json"
-                                }
-                            ],
-                            "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1\",\n \"title\": \"Interne server fout.\",\n \"status\": 500,\n \"detail\": \"The server encountered an unexpected condition which prevented it from fulfilling the request.\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"serverError\"\n}",
-                            "cookie": [],
-                            "_postman_previewlanguage": "json"
-                        },
-                        {
-                            "id": "83d5f781-bb62-4c5b-8589-cc130c6387cd",
-                            "name": "Not Implemented",
-                            "originalRequest": {
-                                "url": {
-                                    "path": [
-                                        "personen",
-                                        ":persoonIdentificatie"
-                                    ],
-                                    "host": [
-                                        "{{baseUrl}}"
-                                    ],
-                                    "query": [
-                                        {
-                                            "key": "fields",
-                                            "value": "<string>"
-                                        }
-                                    ],
-                                    "variable": [
-                                        {
-                                            "disabled": false,
-                                            "type": "any",
-                                            "value": "<uuid>",
-                                            "key": "persoonIdentificatie",
-                                            "description": "(Required) "
-                                        }
-                                    ]
-                                },
-                                "method": "GET",
-                                "body": {}
-                            },
-                            "status": "Not Implemented",
-                            "code": 501,
-                            "header": [
-                                {
-                                    "disabled": false,
-                                    "key": "api-version",
-                                    "value": "1.0.0",
-                                    "description": ""
-                                },
-                                {
-                                    "key": "Content-Type",
-                                    "value": "application/problem+json"
-                                }
-                            ],
-                            "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.2\",\n \"title\": \"Not Implemented\",\n \"status\": 501,\n \"detail\": \"The server does not support the functionality required to fulfill the request.\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"notImplemented\"\n}",
-                            "cookie": [],
-                            "_postman_previewlanguage": "json"
-                        },
-                        {
-                            "id": "552554d0-9f53-4770-96c8-71e8ad4385ab",
-                            "name": "Service Unavailable",
-                            "originalRequest": {
-                                "url": {
-                                    "path": [
-                                        "personen",
-                                        ":persoonIdentificatie"
-                                    ],
-                                    "host": [
-                                        "{{baseUrl}}"
-                                    ],
-                                    "query": [
-                                        {
-                                            "key": "fields",
-                                            "value": "<string>"
-                                        }
-                                    ],
-                                    "variable": [
-                                        {
-                                            "disabled": false,
-                                            "type": "any",
-                                            "value": "<uuid>",
-                                            "key": "persoonIdentificatie",
-                                            "description": "(Required) "
-                                        }
-                                    ]
-                                },
-                                "method": "GET",
-                                "body": {}
-                            },
-                            "status": "Service Unavailable",
-                            "code": 503,
-                            "header": [
-                                {
-                                    "disabled": false,
-                                    "key": "api-version",
-                                    "value": "1.0.0",
-                                    "description": ""
-                                },
-                                {
-                                    "key": "Content-Type",
-                                    "value": "application/problem+json"
-                                }
-                            ],
-                            "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4\",\n \"title\": \"Bronservice {bron} is tijdelijk niet beschikbaar.\",\n \"status\": 503,\n \"detail\": \"The service is currently unable to handle the request due to a temporary overloading or maintenance of the server.\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"notAvailable\"\n}",
-                            "cookie": [],
-                            "_postman_previewlanguage": "json"
-                        },
-                        {
-                            "id": "d21a95c4-0c9c-435a-bfe9-47231fa001d3",
-                            "name": "Er is een onverwachte fout opgetreden",
-                            "originalRequest": {
-                                "url": {
-                                    "path": [
-                                        "personen",
-                                        ":persoonIdentificatie"
-                                    ],
-                                    "host": [
-                                        "{{baseUrl}}"
-                                    ],
-                                    "query": [
-                                        {
-                                            "key": "fields",
-                                            "value": "<string>"
-                                        }
-                                    ],
-                                    "variable": [
-                                        {
-                                            "disabled": false,
-                                            "type": "any",
-                                            "value": "<uuid>",
-                                            "key": "persoonIdentificatie",
-                                            "description": "(Required) "
-                                        }
-                                    ]
-                                },
-                                "method": "GET",
-                                "body": {}
-                            },
-                            "status": "Internal Server Error",
-                            "code": 500,
-                            "header": [
-                                {
-                                    "disabled": false,
-                                    "key": "api-version",
-                                    "value": "1.0.0",
-                                    "description": ""
-                                },
-                                {
-                                    "key": "Content-Type",
-                                    "value": "application/problem+json"
-                                }
-                            ],
-                            "body": "{\n \"type\": \"http://PlhBRXscdcWcIPEjWTPClcqIoSRTf.tcyZxscH63X,xASscN5RPYnBh\",\n \"title\": \"nisi cupidatat sed in\",\n \"status\": -2794648,\n \"detail\": \"proiden\",\n \"instance\": \"http://iSNuByyWFrompNqqtrcFTkFPowdK.yedG2TJ3eNEJ.gHb-mkxBEgWwyrloFYartt1\",\n \"code\": \"aliquip nulla do\"\n}",
-                            "cookie": [],
-                            "_postman_previewlanguage": "json"
+                            "key": "Content-Type",
+                            "value": "application/problem+json"
                         }
                     ],
-                    "event": []
+                    "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1\",\n \"title\": \"Ten minste één parameter moet worden opgegeven.\",\n \"status\": 400,\n \"detail\": \"The request could not be understood by the server due to malformed syntax. The client SHOULD NOT repeat the request without modification.\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"paramsRequired\",\n \"invalidParams\": [\n  {\n   \"type\": \"https://www.vng.nl/realisatie/api/validaties/integer\",\n   \"name\": \"verblijfplaats__huisnummer\",\n   \"code\": \"integer\",\n   \"reason\": \"Waarde is geen geldige integer.\"\n  }\n ]\n}",
+                    "cookie": [],
+                    "_postman_previewlanguage": "json"
+                },
+                {
+                    "id": "255623e3-7f4f-4e62-b5c5-abaebcd12d3a",
+                    "name": "Unauthorized",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "personen"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "Unauthorized",
+                    "code": 401,
+                    "header": [
+                        {
+                            "disabled": false,
+                            "key": "api-version",
+                            "value": "1.0.0",
+                            "description": ""
+                        },
+                        {
+                            "key": "Content-Type",
+                            "value": "application/problem+json"
+                        }
+                    ],
+                    "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2\",\n \"title\": \"Niet correct geauthenticeerd.\",\n \"status\": 401,\n \"detail\": \"The request requires user authentication. The response MUST include a WWW-Authenticate header field (section 14.47) containing a challenge applicable to the requested resource.\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"authentication\"\n}",
+                    "cookie": [],
+                    "_postman_previewlanguage": "json"
+                },
+                {
+                    "id": "3780f54a-3729-4337-af84-abe9114f63dd",
+                    "name": "Forbidden",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "personen"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "Forbidden",
+                    "code": 403,
+                    "header": [
+                        {
+                            "disabled": false,
+                            "key": "api-version",
+                            "value": "1.0.0",
+                            "description": ""
+                        },
+                        {
+                            "key": "Content-Type",
+                            "value": "application/problem+json"
+                        }
+                    ],
+                    "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.4\",\n \"title\": \"U bent niet geautoriseerd voor deze operatie.\",\n \"status\": 403,\n \"detail\": \"The server understood the request, but is refusing to fulfill it.\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"autorisation\"\n}",
+                    "cookie": [],
+                    "_postman_previewlanguage": "json"
+                },
+                {
+                    "id": "bbc2f011-2bd0-4523-9fbc-4f92839f7b1d",
+                    "name": "Not Acceptable",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "personen"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "Not Acceptable",
+                    "code": 406,
+                    "header": [
+                        {
+                            "disabled": false,
+                            "key": "api-version",
+                            "value": "1.0.0",
+                            "description": ""
+                        },
+                        {
+                            "key": "Content-Type",
+                            "value": "application/problem+json"
+                        }
+                    ],
+                    "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7\",\n \"title\": \"Gevraagde contenttype wordt niet ondersteund.\",\n \"status\": 406,\n \"detail\": \"The resource identified by the request is only capable of generating response entities which have content characteristics not acceptable according to thr accept headers sent in the request\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"notAcceptable\"\n}",
+                    "cookie": [],
+                    "_postman_previewlanguage": "json"
+                },
+                {
+                    "id": "371e6e47-fa0a-4271-aaa5-5af263a34631",
+                    "name": "Too Many Requests",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "personen"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "Too Many Requests",
+                    "code": 429,
+                    "header": [
+                        {
+                            "disabled": false,
+                            "key": "api-version",
+                            "value": "1.0.0",
+                            "description": ""
+                        },
+                        {
+                            "key": "Content-Type",
+                            "value": "application/problem+json"
+                        }
+                    ],
+                    "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html\",\n \"title\": \"Too many request\",\n \"status\": 429,\n \"detail\": \"The user has sent too many requests in a given amount of time (rate limiting).\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"tooManyRequests\"\n}",
+                    "cookie": [],
+                    "_postman_previewlanguage": "json"
+                },
+                {
+                    "id": "fd5bc153-e310-44b6-8500-0ef70fe70fc0",
+                    "name": "Internal Server Error",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "personen"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "Internal Server Error",
+                    "code": 500,
+                    "header": [
+                        {
+                            "disabled": false,
+                            "key": "api-version",
+                            "value": "1.0.0",
+                            "description": ""
+                        },
+                        {
+                            "key": "Content-Type",
+                            "value": "application/problem+json"
+                        }
+                    ],
+                    "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1\",\n \"title\": \"Interne server fout.\",\n \"status\": 500,\n \"detail\": \"The server encountered an unexpected condition which prevented it from fulfilling the request.\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"serverError\"\n}",
+                    "cookie": [],
+                    "_postman_previewlanguage": "json"
+                },
+                {
+                    "id": "79e0bf0a-98b4-4e93-807f-4492678fd806",
+                    "name": "Not Implemented",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "personen"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "Not Implemented",
+                    "code": 501,
+                    "header": [
+                        {
+                            "disabled": false,
+                            "key": "api-version",
+                            "value": "1.0.0",
+                            "description": ""
+                        },
+                        {
+                            "key": "Content-Type",
+                            "value": "application/problem+json"
+                        }
+                    ],
+                    "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.2\",\n \"title\": \"Not Implemented\",\n \"status\": 501,\n \"detail\": \"The server does not support the functionality required to fulfill the request.\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"notImplemented\"\n}",
+                    "cookie": [],
+                    "_postman_previewlanguage": "json"
+                },
+                {
+                    "id": "75217d32-dc9a-466d-8eb2-ffe01d47f4aa",
+                    "name": "Service Unavailable",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "personen"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "Service Unavailable",
+                    "code": 503,
+                    "header": [
+                        {
+                            "disabled": false,
+                            "key": "api-version",
+                            "value": "1.0.0",
+                            "description": ""
+                        },
+                        {
+                            "key": "Content-Type",
+                            "value": "application/problem+json"
+                        }
+                    ],
+                    "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4\",\n \"title\": \"Bronservice {bron} is tijdelijk niet beschikbaar.\",\n \"status\": 503,\n \"detail\": \"The service is currently unable to handle the request due to a temporary overloading or maintenance of the server.\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"notAvailable\"\n}",
+                    "cookie": [],
+                    "_postman_previewlanguage": "json"
+                },
+                {
+                    "id": "608f4557-9f1a-4eb4-9204-de8b44334a21",
+                    "name": "Er is een onverwachte fout opgetreden",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "personen"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "Internal Server Error",
+                    "code": 500,
+                    "header": [
+                        {
+                            "disabled": false,
+                            "key": "api-version",
+                            "value": "1.0.0",
+                            "description": ""
+                        },
+                        {
+                            "key": "Content-Type",
+                            "value": "application/problem+json"
+                        }
+                    ],
+                    "body": "{\n \"type\": \"https://XwKiYahBDBxJOaSqoBDYJVckBCazPrcxC.odndyggT,MmCEDQhJEyd-1qL41uM29\",\n \"title\": \"nostrud sunt ut\",\n \"status\": 90056754,\n \"detail\": \"sint veniam\",\n \"instance\": \"https://gqQZfAFVAXyzKYZBTxYtWdpgKyDHlqq.mwqzXenbWELxgaU.a-ieHivnPIObPZq,7JqCK14i1etyhqnWsiW5sPm5\",\n \"code\": \"amet in\"\n}",
+                    "cookie": [],
+                    "_postman_previewlanguage": "json"
                 }
             ],
             "event": []
@@ -989,7 +505,7 @@
         }
     ],
     "info": {
-        "_postman_id": "4e735f30-b78b-4d27-8aff-2944120df6e7",
+        "_postman_id": "6659d571-cb2f-4ed5-9c8d-93ec64ccfeb3",
         "name": "Bevragen Personen",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": {
