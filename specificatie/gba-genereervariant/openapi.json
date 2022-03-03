@@ -1048,9 +1048,6 @@
           "properties" : {
             "aanduidingNaamgebruik" : {
               "$ref" : "#/components/schemas/Waardetabel"
-            },
-            "inOnderzoek" : {
-              "$ref" : "#/components/schemas/GbaInOnderzoek"
             }
           }
         } ]
@@ -1087,9 +1084,6 @@
             },
             "plaats" : {
               "$ref" : "#/components/schemas/Waardetabel"
-            },
-            "inOnderzoek" : {
-              "$ref" : "#/components/schemas/GbaInOnderzoek"
             }
           }
         } ]
