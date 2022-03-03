@@ -1079,7 +1079,7 @@
             "gemeenteVanInschrijving" : {
               "$ref" : "#/components/schemas/Waardetabel"
             },
-            "verblijfplaatsOnbekend" : {
+            "vertrokkenOnbekendWaarheen" : {
               "$ref" : "#/components/schemas/VertrokkenOnbekendWaarheen"
             },
             "inOnderzoek" : {
@@ -1454,7 +1454,7 @@
             "gemeenteVanInschrijving" : {
               "type" : "boolean"
             },
-            "land" : {
+            "verblijfplaatsOnbekend" : {
               "type" : "boolean"
             }
           }
