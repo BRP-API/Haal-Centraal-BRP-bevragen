@@ -76,13 +76,6 @@ components:
           $ref: '#/components/schemas/Voorvoegsel'
         geslachtsnaam:
           $ref: '#/components/schemas/Geslachtsnaam'
-    GbaNaamGerelateerde:
-      allOf:
-        - $ref: '#/components/schemas/GbaNaamBasis'
-        - type: object
-          properties:
-            inOnderzoek:
-              $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     GbaNaamPersoon:
       allOf:
         - $ref: '#/components/schemas/GbaNaamBasis'
