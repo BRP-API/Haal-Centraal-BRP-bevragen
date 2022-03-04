@@ -37,6 +37,8 @@ components:
           $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
         aangaanHuwelijkPartnerschap:
           $ref: '#/components/schemas/GbaAangaanHuwelijkPartnerschap'
+        ontbindingHuwelijkPartnerschap:
+          $ref: "#/components/schemas/GbaOntbindingHuwelijkPartnerschap"
     Partner:
       allOf:
         - $ref: '#/components/schemas/AbstractPartner'
@@ -124,3 +126,8 @@ components:
               type: boolean
             plaats:
               type: boolean
+    GbaOntbindingHuwelijkPartnerschap:
+      type: object
+      properties:
+        datum:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'

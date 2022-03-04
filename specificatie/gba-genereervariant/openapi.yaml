@@ -1030,6 +1030,8 @@ components:
           $ref: '#/components/schemas/GbaInOnderzoek'
         aangaanHuwelijkPartnerschap:
           $ref: '#/components/schemas/GbaAangaanHuwelijkPartnerschap'
+        ontbindingHuwelijkPartnerschap:
+          $ref: '#/components/schemas/GbaOntbindingHuwelijkPartnerschap'
     GbaAangaanHuwelijkPartnerschap:
       type: object
       properties:
@@ -1046,6 +1048,11 @@ components:
         * **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.
         * **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan.
         * **plaats** : De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Voor een plaats buiten Nederland bevat het antwoord een buitenlandse plaatsnaam of aanduiding.
+    GbaOntbindingHuwelijkPartnerschap:
+      type: object
+      properties:
+        datum:
+          $ref: '#/components/schemas/GbaDatum'
     GbaNaamGerelateerde:
       allOf:
       - $ref: '#/components/schemas/GbaNaamBasis'

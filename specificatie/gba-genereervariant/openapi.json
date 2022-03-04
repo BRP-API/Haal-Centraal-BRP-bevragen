@@ -1334,6 +1334,9 @@
           },
           "aangaanHuwelijkPartnerschap" : {
             "$ref" : "#/components/schemas/GbaAangaanHuwelijkPartnerschap"
+          },
+          "ontbindingHuwelijkPartnerschap" : {
+            "$ref" : "#/components/schemas/GbaOntbindingHuwelijkPartnerschap"
           }
         }
       },
@@ -1354,6 +1357,14 @@
           }
         },
         "description" : "Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.\n* **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.\n* **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan.\n* **plaats** : De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Voor een plaats buiten Nederland bevat het antwoord een buitenlandse plaatsnaam of aanduiding.\n"
+      },
+      "GbaOntbindingHuwelijkPartnerschap" : {
+        "type" : "object",
+        "properties" : {
+          "datum" : {
+            "$ref" : "#/components/schemas/GbaDatum"
+          }
+        }
       },
       "GbaNaamGerelateerde" : {
         "allOf" : [ {
