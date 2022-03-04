@@ -917,33 +917,21 @@
           "voorvoegsel" : {
             "$ref" : "#/components/schemas/Voorvoegsel"
           },
+          "geslachtsnaam" : {
+            "$ref" : "#/components/schemas/Geslachtsnaam"
+          },
+          "voorletters" : {
+            "$ref" : "#/components/schemas/Voorletters"
+          },
+          "volledigeNaam" : {
+            "$ref" : "#/components/schemas/VolledigeNaam"
+          }
         }
-      },
-      "Geslachtsnaam" : {
-        "maxLength" : 200,
-        "type" : "string",
-        "description" : "De achternaam van een persoon.\n",
-        "example" : "Vries"
-      },
-      "VolledigeNaam" : {
-        "type" : "string",
-        "description" : "Combinatie van predicaat, voornamen, adellijke titel, voorvoegsels en geslachtsnaam, zonder toevoeging van een eventuele partnernaam.\n",
-        "example" : "Pieter Jan de Vries"
-      },
-      "Voorletters" : {
-        "type" : "string",
-        "description" : "De voorletters van de persoon, afgeleid van de voornamen.\n",
-        "example" : "P.J."
       },
       "Voornamen" : {
         "maxLength" : 200,
         "type" : "string",
         "description" : "De verzameling namen voor de geslachtsnaam, gescheiden door spaties.\n"
-      },
-      "Voorvoegsel" : {
-        "maxLength" : 10,
-        "type" : "string",
-        "example" : "de"
       },
       "AdellijkeTitelPredicaatType" : {
         "allOf" : [ {
@@ -966,11 +954,27 @@
       "AdellijkeTitelPredicaatSoort" : {
         "type" : "string",
         "enum" : [ "titel", "predicaat" ]
+      },
       "Voorvoegsel" : {
         "maxLength" : 10,
         "type" : "string",
         "example" : "de"
       },
+      "Geslachtsnaam" : {
+        "maxLength" : 200,
+        "type" : "string",
+        "description" : "De achternaam van een persoon.\n",
+        "example" : "Vries"
+      },
+      "Voorletters" : {
+        "type" : "string",
+        "description" : "De voorletters van de persoon, afgeleid van de voornamen.\n",
+        "example" : "P.J."
+      },
+      "VolledigeNaam" : {
+        "type" : "string",
+        "description" : "Combinatie van predicaat, voornamen, adellijke titel, voorvoegsels en geslachtsnaam, zonder toevoeging van een eventuele partnernaam.\n",
+        "example" : "Pieter Jan de Vries"
       },
       "OpschortingBijhoudingBasis" : {
         "type" : "object",

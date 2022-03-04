@@ -887,17 +887,6 @@
         "type" : "string",
         "description" : "De verzameling namen voor de geslachtsnaam, gescheiden door spaties.\n"
       },
-      "Voorvoegsel" : {
-        "maxLength" : 10,
-        "type" : "string",
-        "example" : "de"
-      },
-      "Geslachtsnaam" : {
-        "maxLength" : 200,
-        "type" : "string",
-        "description" : "De achternaam van een persoon.\n",
-        "example" : "Vries"
-      },
       "AdellijkeTitelPredicaatType" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/Waardetabel"
@@ -919,6 +908,17 @@
       "AdellijkeTitelPredicaatSoort" : {
         "type" : "string",
         "enum" : [ "titel", "predicaat" ]
+      },
+      "Voorvoegsel" : {
+        "maxLength" : 10,
+        "type" : "string",
+        "example" : "de"
+      },
+      "Geslachtsnaam" : {
+        "maxLength" : 200,
+        "type" : "string",
+        "description" : "De achternaam van een persoon.\n",
+        "example" : "Vries"
       },
       "OpschortingBijhoudingBasis" : {
         "type" : "object",
@@ -1271,7 +1271,7 @@
             "$ref" : "#/components/schemas/GbaInOnderzoek"
           },
           "naam" : {
-            "$ref" : "#/components/schemas/GbaNaamGerelateerde"
+            "$ref" : "#/components/schemas/GbaNaamBasis"
           },
           "geboorte" : {
             "$ref" : "#/components/schemas/GbaGeboorte"
@@ -1294,7 +1294,7 @@
             "$ref" : "#/components/schemas/GbaDatum"
           },
           "naam" : {
-            "$ref" : "#/components/schemas/GbaNaamGerelateerde"
+            "$ref" : "#/components/schemas/GbaNaamBasis"
           },
           "inOnderzoek" : {
             "$ref" : "#/components/schemas/GbaInOnderzoek"
@@ -1318,7 +1318,7 @@
             "$ref" : "#/components/schemas/Waardetabel"
           },
           "naam" : {
-            "$ref" : "#/components/schemas/GbaNaamGerelateerde"
+            "$ref" : "#/components/schemas/GbaNaamBasis"
           },
           "geboorte" : {
             "$ref" : "#/components/schemas/GbaGeboorte"
@@ -1359,18 +1359,6 @@
             "$ref" : "#/components/schemas/GbaDatum"
           }
         }
-      },
-      "GbaNaamGerelateerde" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/GbaNaamBasis"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "inOnderzoek" : {
-              "$ref" : "#/components/schemas/GbaInOnderzoek"
-            }
-          }
-        } ]
       }
     },
     "headers" : {

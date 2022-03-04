@@ -734,31 +734,11 @@ components:
           $ref: '#/components/schemas/Voorletters'
         volledigeNaam:
           $ref: '#/components/schemas/VolledigeNaam'
-    Geslachtsnaam:
-      maxLength: 200
-      type: string
-      description: |
-        De achternaam van een persoon.
-      example: Vries
-    VolledigeNaam:
-      type: string
-      description: |
-        Combinatie van predicaat, voornamen, adellijke titel, voorvoegsels en geslachtsnaam, zonder toevoeging van een eventuele partnernaam.
-      example: Pieter Jan de Vries
-    Voorletters:
-      type: string
-      description: |
-        De voorletters van de persoon, afgeleid van de voornamen.
-      example: P.J.
     Voornamen:
       maxLength: 200
       type: string
       description: |
         De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
-    Voorvoegsel:
-      maxLength: 10
-      type: string
-      example: de
     AdellijkeTitelPredicaatType:
       allOf:
       - $ref: '#/components/schemas/Waardetabel'
@@ -775,6 +755,26 @@ components:
       enum:
       - titel
       - predicaat
+    Voorvoegsel:
+      maxLength: 10
+      type: string
+      example: de
+    Geslachtsnaam:
+      maxLength: 200
+      type: string
+      description: |
+        De achternaam van een persoon.
+      example: Vries
+    Voorletters:
+      type: string
+      description: |
+        De voorletters van de persoon, afgeleid van de voornamen.
+      example: P.J.
+    VolledigeNaam:
+      type: string
+      description: |
+        Combinatie van predicaat, voornamen, adellijke titel, voorvoegsels en geslachtsnaam, zonder toevoeging van een eventuele partnernaam.
+      example: Pieter Jan de Vries
     OpschortingBijhoudingBasis:
       type: object
       properties:
