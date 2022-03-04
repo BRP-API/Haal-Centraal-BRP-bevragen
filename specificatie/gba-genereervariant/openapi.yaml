@@ -225,7 +225,7 @@ paths:
                 $ref: '#/components/schemas/Foutbericht'
               example:
                 type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4
-                title: Bronservice {bron} is tijdelijk niet beschikbaar.
+                title: Bronservice BRP is tijdelijk niet beschikbaar.
                 status: 503
                 detail: The service is currently unable to handle the request due
                   to a temporary overloading or maintenance of the server.
@@ -463,12 +463,16 @@ components:
           description: Link naar meer informatie over deze fout
           format: uri
         title:
+          pattern: ^[a-zA-Z0-9À-ž \.\-]{1,80}$
           type: string
           description: Beschrijving van de fout
         status:
+          maximum: 600
+          minimum: 100
           type: integer
           description: Http status code
         detail:
+          pattern: ^[a-zA-Z0-9À-ž \.\-\(\)\,]{1,200}$
           type: string
           description: Details over de fout
         instance:
@@ -477,6 +481,7 @@ components:
           format: uri
         code:
           minLength: 1
+          pattern: ^[a-zA-Z0-9]{1,25}$
           type: string
           description: Systeemcode die het type fout aangeeft
       description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
@@ -488,15 +493,18 @@ components:
           format: uri
           example: https://www.vng.nl/realisatie/api/{major-versie}/validaties/integer
         name:
+          pattern: ^[a-zA-Z0-9\.,_]{1,30}$
           type: string
           description: Naam van de parameter
           example: verblijfplaats__huisnummer
         code:
           minLength: 1
+          pattern: ^[a-zA-Z0-9\.,_]{1,25}$
           type: string
           description: Systeemcode die het type fout aangeeft
           example: integer
         reason:
+          pattern: ^[a-zA-Z0-9\.,_ ]{1,80}$
           type: string
           description: Beschrijving van de fout op de parameterwaarde
           example: Waarde is geen geldige integer.
@@ -526,15 +534,6 @@ components:
       example: "555555021"
     GbaGeheimhoudingPersoonsgegevens:
       type: integer
-    Waardetabel:
-      type: object
-      properties:
-        code:
-          type: string
-          example: "6030"
-        omschrijving:
-          type: string
-          example: Nederland
     GbaPersoon:
       type: object
       properties:
@@ -587,10 +586,12 @@ components:
           items:
             $ref: '#/components/schemas/GbaPartner'
     ANummer:
+      pattern: ^[0-9]{10}$
       type: string
       description: |
         Het A-nummer van de persoon
     Reisdocumentnummer:
+      pattern: ^[0-9a-zA-Z]{9}$
       type: string
       description: |
         Het nummer van het verstrekte Nederlandse reisdocument.
@@ -610,8 +611,7 @@ components:
         Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.
       example: "0518"
     GeboorteplaatsFilter:
-      maxLength: 40
-      pattern: ^[a-zA-Z0-9À-ž \,\.\-\'()]{1,40}$
+      pattern: ^[a-zA-Z0-9À-ž \,\.\-\'()]{1,80}$
       type: string
       description: |
         Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
@@ -672,7 +672,8 @@ components:
         De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.
       example: 2341SX
     StraatFilter:
-      pattern: ^[a-zA-Z0-9À-ž \-\']{1,80}$|^[a-zA-Z0-9À-ž \-\']{7,79}\*{1}$
+      pattern: ^[a-zA-Z0-9À-ž \-\']{1,80}$|^[a-zA-Z0-9À-ž \-\']{7,79}\*{1}$|^\*{1}[a-zA-Z0-9À-ž
+        \-\']{7,79}$
       type: string
       description: |
         Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).
@@ -688,6 +689,17 @@ components:
       properties:
         datum:
           $ref: '#/components/schemas/GbaDatum'
+    Waardetabel:
+      type: object
+      properties:
+        code:
+          pattern: ^[a-zA-Z0-9 \.]+$
+          type: string
+          example: "6030"
+        omschrijving:
+          pattern: ^[a-zA-Z0-9À-ž \'\,\(\)\.\-]{1,200}$
+          type: string
+          example: Nederland
     GbaNaamBasis:
       type: object
       properties:
@@ -701,6 +713,7 @@ components:
           $ref: '#/components/schemas/Geslachtsnaam'
     Voornamen:
       maxLength: 200
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,200}$
       type: string
       description: |
         De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
@@ -722,6 +735,7 @@ components:
       - predicaat
     Voorvoegsel:
       maxLength: 10
+      pattern: ^[a-zA-Z \']{1,10}$
       type: string
       example: de
     Geslachtsnaam:
@@ -775,31 +789,35 @@ components:
           $ref: '#/components/schemas/Adresregel3'
     Woonplaats:
       title: woonplaats naam
-      pattern: ^[a-zA-Z0-9À-ÿ '\-\']{1,80}$
+      pattern: ^[a-zA-Z0-9À-ž \(\)\,\.\-\']{1,80}$
       type: string
       description: |
         Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.
       example: Duiven
     Straat:
-      pattern: ^[a-zA-Z0-9À-ÿ '\-\']{1,80}$
+      maxLength: 80
       type: string
       example: Tulpstraat
     Locatiebeschrijving:
+      maxLength: 35
       type: string
       description: |
         Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats.
       example: Naast de derde brug
     Adresregel1:
+      maxLength: 40
       type: string
       description: |
         Het eerste deel van een adres is een combinatie van de straat en huisnummer.
       example: Laan van de landinrichtingscommissie Duiven-Westervoort 26A-3
     Adresregel2:
+      maxLength: 50
       type: string
       description: |
         Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode.
       example: 1234AA Nootdorp
     Adresregel3:
+      maxLength: 35
       type: string
       description: |
         Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.
@@ -937,11 +955,13 @@ components:
         inOnderzoek:
           $ref: '#/components/schemas/GbaInOnderzoek'
     AdresseerbaarObjectIdentificatie:
+      pattern: ^[0-9]{16}$
       type: string
       description: |
         De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.
       example: "0226010000038820"
     NaamOpenbareRuimte:
+      maxLength: 80
       type: string
     GbaGezagsverhouding:
       allOf:
@@ -1052,12 +1072,14 @@ components:
   headers:
     api_version:
       schema:
+        pattern: ^[1-9][0-9]{0,2}.[0-9]{1,3}.[0-9]{1,3}$
         type: string
         description: Geeft een specifieke API-versie aan in de context van een specifieke
           aanroep.
         example: 1.0.0
     warning:
       schema:
+        maxLength: 500
         type: string
         description: zie RFC 7234. In het geval een major versie wordt uitgefaseerd,
           gebruiken we warn-code 299 ("Miscellaneous Persistent Warning") en het API
