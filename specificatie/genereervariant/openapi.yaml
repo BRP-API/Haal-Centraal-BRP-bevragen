@@ -730,8 +730,8 @@ components:
           $ref: '#/components/schemas/Voornamen'
         voorvoegsel:
           $ref: '#/components/schemas/Voorvoegsel'
-        adellijkeTitelPredikaat:
-          $ref: '#/components/schemas/AdellijkeTitelPredikaatType'
+        adellijkeTitelPredicaat:
+          $ref: '#/components/schemas/AdellijkeTitelPredicaatType'
     Geslachtsnaam:
       maxLength: 200
       type: string
@@ -741,7 +741,7 @@ components:
     VolledigeNaam:
       type: string
       description: |
-        Combinatie van predikaat, voornamen, adellijke titel, voorvoegsels en geslachtsnaam, zonder toevoeging van een eventuele partnernaam.
+        Combinatie van predicaat, voornamen, adellijke titel, voorvoegsels en geslachtsnaam, zonder toevoeging van een eventuele partnernaam.
       example: Pieter Jan de Vries
     Voorletters:
       type: string
@@ -757,17 +757,22 @@ components:
       maxLength: 10
       type: string
       example: de
-    AdellijkeTitelPredikaatType:
+    AdellijkeTitelPredicaatType:
       allOf:
       - $ref: '#/components/schemas/Waardetabel'
       - properties:
           soort:
-            type: string
+            $ref: '#/components/schemas/AdellijkeTitelPredicaatSoort'
         example:
           value:
             code: JV
             omschrijving: jonkvrouw
-            soort: predikaat
+            soort: predicaat
+    AdellijkeTitelPredicaatSoort:
+      type: string
+      enum:
+      - titel
+      - predicaat
     OpschortingBijhoudingBasis:
       type: object
       properties:
@@ -1267,7 +1272,7 @@ components:
             type: boolean
           voorvoegsel:
             type: boolean
-          adellijkeTitelPredikaat:
+          adellijkeTitelPredicaat:
             type: boolean
     Nationaliteit:
       description: |
@@ -1665,8 +1670,8 @@ components:
           $ref: '#/components/schemas/Voorvoegsel'
         geslachtsnaam:
           $ref: '#/components/schemas/Geslachtsnaam'
-        adellijkeTitelPredikaat:
-          $ref: '#/components/schemas/AdellijkeTitelPredikaatType'
+        adellijkeTitelPredicaat:
+          $ref: '#/components/schemas/AdellijkeTitelPredicaatType'
         voorletters:
           $ref: '#/components/schemas/Voorletters'
         inOnderzoek:

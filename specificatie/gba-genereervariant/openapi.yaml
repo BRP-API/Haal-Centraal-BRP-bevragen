@@ -697,8 +697,8 @@ components:
           $ref: '#/components/schemas/Voorvoegsel'
         geslachtsnaam:
           $ref: '#/components/schemas/Geslachtsnaam'
-        adellijkeTitelPredikaat:
-          $ref: '#/components/schemas/AdellijkeTitelPredikaatType'
+        adellijkeTitelPredicaat:
+          $ref: '#/components/schemas/AdellijkeTitelPredicaatType'
     Voornamen:
       maxLength: 200
       type: string
@@ -714,17 +714,22 @@ components:
       description: |
         De achternaam van een persoon.
       example: Vries
-    AdellijkeTitelPredikaatType:
+    AdellijkeTitelPredicaatType:
       allOf:
       - $ref: '#/components/schemas/Waardetabel'
       - properties:
           soort:
-            type: string
+            $ref: '#/components/schemas/AdellijkeTitelPredicaatSoort'
         example:
           value:
             code: JV
             omschrijving: jonkvrouw
-            soort: predikaat
+            soort: predicaat
+    AdellijkeTitelPredicaatSoort:
+      type: string
+      enum:
+      - titel
+      - predicaat
     OpschortingBijhoudingBasis:
       type: object
       properties:

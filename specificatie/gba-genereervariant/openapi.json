@@ -877,8 +877,8 @@
           "geslachtsnaam" : {
             "$ref" : "#/components/schemas/Geslachtsnaam"
           },
-          "adellijkeTitelPredikaat" : {
-            "$ref" : "#/components/schemas/AdellijkeTitelPredikaatType"
+          "adellijkeTitelPredicaat" : {
+            "$ref" : "#/components/schemas/AdellijkeTitelPredicaatType"
           }
         }
       },
@@ -898,23 +898,27 @@
         "description" : "De achternaam van een persoon.\n",
         "example" : "Vries"
       },
-      "AdellijkeTitelPredikaatType" : {
+      "AdellijkeTitelPredicaatType" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/Waardetabel"
         }, {
           "properties" : {
             "soort" : {
-              "type" : "string"
+              "$ref" : "#/components/schemas/AdellijkeTitelPredicaatSoort"
             }
           },
           "example" : {
             "value" : {
               "code" : "JV",
               "omschrijving" : "jonkvrouw",
-              "soort" : "predikaat"
+              "soort" : "predicaat"
             }
           }
         } ]
+      },
+      "AdellijkeTitelPredicaatSoort" : {
+        "type" : "string",
+        "enum" : [ "titel", "predicaat" ]
       },
       "OpschortingBijhoudingBasis" : {
         "type" : "object",
