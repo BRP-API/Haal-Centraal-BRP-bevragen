@@ -94,7 +94,7 @@ components:
         - $ref: '#/components/schemas/GbaNaamBasis'
         - properties:
             aanduidingNaamgebruik:
-              $ref: 'common.yaml#/components/schemas/Waardetabel
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
     NaamBasis:
       type: object
       properties:
