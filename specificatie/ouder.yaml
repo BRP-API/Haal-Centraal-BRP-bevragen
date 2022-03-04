@@ -29,9 +29,9 @@ components:
         burgerservicenummer:
           $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
         geslachtsaanduiding:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
         ouderAanduiding:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
         datumIngangFamilierechtelijkeBetrekking:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
         naam:
@@ -53,9 +53,9 @@ components:
             burgerservicenummer:
               $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
             geslachtsaanduiding:
-              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
             ouderAanduiding:
-              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
             datumIngangFamilierechtelijkeBetrekking:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             naam:

@@ -10,6 +10,7 @@ components:
       description: |
         Het A-nummer van de persoon
       type: string
+      pattern: ^[0-9]{10}$
     Burgerservicenummer:
       type: string
       pattern: ^[0-9]{9}$
@@ -29,6 +30,7 @@ components:
       maximum: 150
     Reisdocumentnummer:
       type: string
+      pattern: ^[0-9a-zA-Z]{9}$
       description: |
         Het nummer van het verstrekte Nederlandse reisdocument.
       example: "546376728"
@@ -42,7 +44,7 @@ components:
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/GbaGeheimhoudingPersoonsgegevens'
         geslachtsaanduiding:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
         naam:
           $ref: 'naam.yaml#/components/schemas/GbaNaamBasis'
         opschortingBijhouding:
@@ -61,7 +63,7 @@ components:
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/GeheimhoudingPersoonsgegevens'
         geslachtsaanduiding:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
         leeftijd:
           $ref: '#/components/schemas/Leeftijd'
         naam:
@@ -84,7 +86,7 @@ components:
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/GbaGeheimhoudingPersoonsgegevens'
         geslachtsaanduiding:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
         kiesrecht:
@@ -135,7 +137,7 @@ components:
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/GeheimhoudingPersoonsgegevens'
         geslachtsaanduiding:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: '#/components/schemas/PersoonInOnderzoek'
         kiesrecht:

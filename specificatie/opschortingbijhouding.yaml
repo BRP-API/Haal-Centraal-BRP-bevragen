@@ -12,7 +12,7 @@ components:
         * **reden** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'redenopschortingbijhouding' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       properties:
         reden:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
     GbaOpschortingBijhouding:
       allOf:
         - $ref: '#/components/schemas/OpschortingBijhoudingBasis'

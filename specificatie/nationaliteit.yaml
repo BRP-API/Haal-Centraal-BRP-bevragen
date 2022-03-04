@@ -14,7 +14,7 @@ components:
         type:
           type: string
         redenOpname:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
       discriminator:
         propertyName: type
         mapping:
@@ -31,7 +31,7 @@ components:
             datumIngangGeldigheid:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             nationaliteit:
-              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
             inOnderzoek:
               $ref: '#/components/schemas/NationaliteitInOnderzoek'
     BehandeldAlsNederlander:
@@ -59,13 +59,13 @@ components:
       type: object
       properties:
         aanduidingBijzonderNederlandschap:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
         datumIngangGeldigheid:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
         nationaliteit:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
         redenOpname:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
         inOnderzoek:
             $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     BijzonderNederlanderschapInOnderzoek:
