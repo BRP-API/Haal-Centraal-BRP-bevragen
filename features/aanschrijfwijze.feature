@@ -2,17 +2,17 @@
 
 # User story #13
 Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze van mijn burgers
-  Attribuut aanschrijfwijze bij een persoon wordt gevuld door de provider om op deze wijze op eenduidige wijze een persoon te kunnen aanschrijven.
+  De attributen aanschrijfwijze.naam en aanschrijfwijze.aanspreekvorm bij een persoon worden gevuld door de provider om op deze wijze op eenduidige wijze een persoon te kunnen aanschrijven.
   Bij het samenstellen van de aanschrijfwijze worden academische titels vooralsnog niet opgenomen. Academische titels zijn geen authentiek gegeven en daarom buiten scope geplaatst.
   
-  De aanschrijfwijze wordt gebruikt als eerste regel in de adressering op een envelop, of links bovenaan een brief, direct boven het adres.
+  De aanschrijfwijze wordt gebruikt als eerste regel(s) in de adressering op een envelop, of links bovenaan een brief, direct boven het adres.
   
   Bij personen met een adellijke titel of predikaat bevat de aanschrijfwijze ook de aanschrijfvorm.
   Deze wordt in de adressering in de regel boven de naam van de aanschrijfwijze geplaatst om een correcte aanschrijving van een adellijke persoon samen te stellen.
 
-  De aanschrijfwijze kan ook worden gebruikt in lijsten met zoekresultaten, of op een website om te tonen op wie het betrekking heeft.
+  De aanschrijfwijze.naam kan ook worden gebruikt in lijsten met zoekresultaten, of op een website om te tonen op wie het betrekking heeft.
 
-  Attribuut aanschrijfwijze wordt samengesteld op basis van:
+  Attribuut aanschrijfwijze.naam wordt samengesteld op basis van:
   - voornamen (wordt omgezet naar voorletters)
   - adellijke titel/predikaat
   - voorvoegsel geslachtsnaam
@@ -24,7 +24,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
   - adellijke titel/predikaat partner
   - geslachtsaanduiding partner
 
-  De waarde van aanduiding naamgebruik bepaalt hoe de aanschrijfwijze wordt samengesteld uit de naam van de persoon en de naam van de partner.
+  De waarde van aanduiding naamgebruik bepaalt hoe de aanschrijfwijze.naam en aanschrijfwijze.aanspreekvorm worden samengesteld uit de naam van de persoon en de naam van de partner.
 
   Rule: De naam in aanschrijfwijze wordt op basis van aanduiding naamgebruik als volgt samengesteld:
         | aanduiding naamgebruik | omschrijving                 | naam in aanschrijfwijze |
@@ -42,9 +42,9 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
           AP = adellijke titel partner (in andersgeslachtelijke vorm)
           PK = predikaat
         Toelichting:
-        - de aanschrijfwijze start en eindigt niet met een spatie, heeft geen dubbele spaties en heeft geen spatie vóór en na de "-"
+        - de aanschrijfwijze.naam start en eindigt niet met een spatie, heeft geen dubbele spaties en heeft geen spatie vóór en na de "-"
         - de voorletters worden opgenomen zoals beschreven in voorletters.feature
-        - de eerste naamcomponent in de aanschrijfwijze begint met een hoofdletter
+        - de eerste naamcomponent in de aanschrijfwijze.naam begint met een hoofdletter
         - het voorvoegsel wordt met kleine letters opgenomen
         - aanduiding naamgebruik "E" (eigen naam) wordt gehanteerd voor een persoon die geen actuele en geen ontbonden huwelijken/partnerschappen heeft gehad 
         - de adellijke titel en het predikaat wordt opgenomen in de vorm die hoort bij de geslachtsaanduiding van de persoon:
@@ -66,12 +66,12 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
         - de adellijke titel en het predikaat worden met kleine letters opgenomen
         - de adellijke titel of het predikaat van de partner wordt niet opgenomen bij aanduiding naamgebruik "E" (eigen naam)
         - de adellijke titel of het predikaat van de persoon wordt niet opgenomen bij aanduiding naamgebruik "P" (partner naam)
-        - de adellijke titel van de partner wordt niet opgenomen als geslachtsaanduiding van de persoon ongelijk is aan "V" (vrouw) of als de geslachtsaanduiding van de partner ongelijk is aan "M" (man)
+        - De adellijke titel van de partner wordt alleen opgenomen als geslachtsaanduiding van de persoon gelijk is aan "V" (vrouw) en de geslachtsaanduiding van de partner gelijk is aan "M" (man).
         - het predikaat begint met een hoofdletter als de aanschrijfwijze begint met een predikaat 
         - het predikaat van de partner wordt niet opgenomen
         - het predikaat van de persoon wordt opgenomen achter het streepje en voor eigen voorvoegsel en geslachtsnaam bij aanduiding naamgebruik "V" (partner naam voor eigen naam)
-        - bij meerdere actuele (niet ontbonden) huwelijken/partnerschappen, wordt de naam gegevens van de eerste partner (oudste relatie) gebruikt voor het samenstellen van de aanschrijfwijze
-        - bij geen actuele huwelijk/partnerschap en meerdere ontbonden huwelijken/partnerschappen, wordt de naam gegevens van de laatst ontbonden partner gebruikt voor het samenstellen van de aanschrijfwijze
+        - bij meerdere actuele (niet ontbonden) huwelijken/partnerschappen, worden de naamgegevens van de eerste partner (oudste relatie) gebruikt voor het samenstellen van de aanschrijfwijze
+        - bij geen actueel huwelijk/partnerschap en meerdere ontbonden huwelijken/partnerschappen, worden de naamgegevens van de laatst ontbonden partner gebruikt voor het samenstellen van de aanschrijfwijze
 
     Abstract Scenario: Persoon zonder voorvoegsel, zonder adellijke titel/predikaat, zonder actuele en/of ontbonden huwelijk/geregistreerd partnerschap
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -507,11 +507,11 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | burgerservicenummer | 999992934                       |
       | fields              | naam.aanschrijfwijze            |
       Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
-      | naam                  | waarde            |
-      | gebruikinlopendetekst | <aanschrijfwijze> |
+      | naam                  | waarde                    |
+      | aanschrijfwijze.naam  | <naam in aanschrijfwijze> |
 
       Voorbeelden:
-      | geslacht | geslachtsnaam     | naamgebruik | geslacht partner | aanschrijfwijze              |
+      | geslacht | geslachtsnaam     | naamgebruik | geslacht partner | naam in aanschrijfwijze      |
       | M        | Ali bin Mohammed  | E           | V                | Ali bin Mohammed             |
       | M        | Ali bin Mohammed  | P           | V                | Van Velzen                   |
       | M        | Ali bin Mohammed  | V           | V                | Van Velzen-Ali bin Mohammed  |
@@ -552,11 +552,11 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | burgerservicenummer | 999992934                       |
       | fields              | naam.aanschrijfwijze            |
       Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
-      | naam                  | waarde            |
-      | gebruikinlopendetekst | <aanschrijfwijze> |
+      | naam                  | waarde                    |
+      | aanschrijfwijze.naam  | <naam in aanschrijfwijze> |
 
       Voorbeelden:
-      | geslacht | geslachtsnaam     | naamgebruik | geslacht partner | adellijke titel partner | aanschrijfwijze                        |
+      | geslacht | geslachtsnaam     | naamgebruik | geslacht partner | adellijke titel partner | naam in aanschrijfwijze                |
       | M        | Ali bin Mohammed  | E           | V                | BI                      | Ali bin Mohammed                       |
       | M        | Ali bin Mohammed  | P           | V                | GI                      | Van Velzen                             |
       | M        | Ali bin Mohammed  | V           | V                | MI                      | Van Velzen-Ali bin Mohammed            |
@@ -589,9 +589,9 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
         - er is geen aanspreekvorm als:
           - de persoon geen adellijke titel/predikaat heeft
           - de persoon gebruikt aanduiding naamgebruik "P" (naam partner)
-          - er is geen adellijke titel/predikaat vorm die hoort bij de geslachtsaanduiding van de persoon
-          - de persoon heeft een predikaat, heeft geslachtsaanduiding "V" (vrouw) en heeft een actuele (niet ontbonden) partner
-          - de persoon heeft een predikaat, heeft geslachtsaanduiding "V" (vrouw), heeft geen actuele (maar mogelijk wel ontbonden) partner en heeft aanduiding naamgebruik ongelijk aan "E" (eigen naam) 
+          - er geen adellijke titel/predikaat vorm is die hoort bij de geslachtsaanduiding van de persoon
+          - de persoon een predikaat, de geslachtsaanduiding "V" (vrouw) en een actuele (niet ontbonden) partner heeft
+          - de persoon een predikaat, de geslachtsaanduiding "V" (vrouw), geen actuele (maar mogelijk wel ontbonden) partner en een aanduiding naamgebruik ongelijk aan "E" (eigen naam) heeft
 
     Abstract Scenario: Persoon heeft geen adellijke titel/predikaat
       Gegeven het systeem heeft een persoon met de volgende gegevens

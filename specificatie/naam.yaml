@@ -38,7 +38,7 @@ components:
     VolledigeNaam:
       type: string
       description: |
-        Combinatie van predikaat, voornamen, adellijke titel, voorvoegsels en geslachtsnaam, zonder toevoeging van een eventuele partnernaam.
+        Combinatie van predicaat, voornamen, adellijke titel, voorvoegsels en geslachtsnaam, zonder toevoeging van een eventuele partnernaam.
       example: "Pieter Jan de Vries"
     Voorletters: 
       type: string
@@ -54,24 +54,29 @@ components:
       type: string
       maxLength: 10
       example: "de"
-    AdellijkeTitelPredikaatType:
+    AdellijkeTitelPredicaatSoort:
+      type: string
+      enum:
+        - titel
+        - predicaat
+    AdellijkeTitelPredicaatType:
       allOf:
         - $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
         - properties:
             soort:
-              type: string
+              $ref: '#/components/schemas/AdellijkeTitelPredicaatSoort'
           example:
             value:
               code: "JV"
               omschrijving: "jonkvrouw"
-              soort: "predikaat"
+              soort: "predicaat"
     GbaNaamBasis:
       type: object
       properties:
         voornamen:
           $ref: '#/components/schemas/Voornamen'
-        adellijkeTitelPredikaat:
-          $ref: '#/components/schemas/AdellijkeTitelPredikaatType'
+        adellijkeTitelPredicaat:
+          $ref: '#/components/schemas/AdellijkeTitelPredicaatType'
         voorvoegsel:
           $ref: '#/components/schemas/Voorvoegsel'
         geslachtsnaam:
@@ -87,8 +92,8 @@ components:
       properties:
         voornamen:
           $ref: '#/components/schemas/Voornamen'
-        adellijkeTitelPredikaat:
-          $ref: '#/components/schemas/AdellijkeTitelPredikaatType'
+        adellijkeTitelPredicaat:
+          $ref: '#/components/schemas/AdellijkeTitelPredicaatType'
         voorvoegsel:
           $ref: '#/components/schemas/Voorvoegsel'
         geslachtsnaam:
@@ -102,8 +107,8 @@ components:
       properties:
         voornamen:
           $ref: '#/components/schemas/Voornamen'
-        adellijkeTitelPredikaat:
-          $ref: '#/components/schemas/AdellijkeTitelPredikaatType'
+        adellijkeTitelPredicaat:
+          $ref: '#/components/schemas/AdellijkeTitelPredicaatType'
         voorvoegsel:
           $ref: '#/components/schemas/Voorvoegsel'
         geslachtsnaam:
@@ -121,7 +126,7 @@ components:
           properties:
             voornamen:
               type: boolean
-            adellijkeTitelPredikaat:
+            adellijkeTitelPredicaat:
               type: boolean
             voorvoegsel:
               type: boolean
