@@ -2171,6 +2171,9 @@
         }, {
           "type" : "object",
           "properties" : {
+            "ouderAanduiding" : {
+              "$ref" : "#/components/schemas/Waardetabel"
+            },
             "indicatieOnbekend" : {
               "type" : "boolean",
               "default" : false
