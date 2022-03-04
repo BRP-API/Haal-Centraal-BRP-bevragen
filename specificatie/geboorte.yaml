@@ -1,0 +1,54 @@
+openapi: 3.0.3
+info:
+  title: Geboorte definities
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  schemas:
+    GbaGeboorteBeperkt:
+      type: object
+      properties:
+        datum:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+    GbaGeboorte:
+      allOf:
+        - $ref: '#/components/schemas/GbaGeboorteBeperkt'
+        - type: object
+          properties:
+            land:
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
+            plaats:
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
+    GeboorteBeperkt:
+      type: object
+      properties:
+        datum:
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+    Geboorte:
+      description: |
+        Gegevens over de geboorte.
+        * **datum** : datum waarop de persoon is geboren.
+        * **land** : land waar de persoon is geboren
+        * **plaats** : gemeente waar de persoon is geboren. Is de persoon geboren buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.
+      allOf:
+        - $ref: '#/components/schemas/GeboorteBeperkt'
+        - type: object
+          properties:
+            land:
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
+            plaats:
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
+            inOnderzoek:
+              $ref: '#/components/schemas/GeboorteInOnderzoek'
+    GeboorteInOnderzoek:
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            datum:
+              type: boolean
+            land:
+              type: boolean
+            plaats:
+              type: boolean

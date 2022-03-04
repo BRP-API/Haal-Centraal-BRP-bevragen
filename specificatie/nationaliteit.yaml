@@ -1,0 +1,90 @@
+openapi: 3.0.3
+info:
+  title: Nationaliteit definities
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  schemas:
+    AbstractNationaliteit:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+        redenOpname:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+      discriminator:
+        propertyName: type
+        mapping:
+          Nationaliteit: '#/components/schemas/Nationaliteit'
+          BehandeldAlsNederlander: '#/components/schemas/BehandeldAlsNederlander'
+          VastgesteldNietNederlander: '#/components/schemas/VastgesteldNietNederlander'
+    Nationaliteit:
+      description: |
+        * **redenOpname** : De reden op grond waarvan de persoon de nationaliteit gekregen heeft.
+      allOf:
+        - $ref: '#/components/schemas/AbstractNationaliteit'
+        - type: object
+          properties:
+            datumIngangGeldigheid:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+            nationaliteit:
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
+            inOnderzoek:
+              $ref: '#/components/schemas/NationaliteitInOnderzoek'
+    BehandeldAlsNederlander:
+      allOf:
+        - $ref: '#/components/schemas/AbstractNationaliteit'
+        - type: object
+          properties:
+            datumIngangGeldigheid:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+            inOnderzoek:
+              $ref: '#/components/schemas/BijzonderNederlanderschapInOnderzoek'
+    VastgesteldNietNederlander:
+      allOf:
+        - $ref: '#/components/schemas/AbstractNationaliteit'
+        - type: object
+          properties:
+            datumIngangGeldigheid:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+            inOnderzoek:
+              $ref: '#/components/schemas/BijzonderNederlanderschapInOnderzoek'
+    GbaNationaliteit:
+      description: |
+        Bij de LO GBA versie kunnen datums, bijv datumIngangGeldigheid de LoGbaDatum refereren
+        Het hoeft niet van AbstractDatum af te leiden omdat het nooit een andere type kan zijn
+      type: object
+      properties:
+        aanduidingBijzonderNederlandschap:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        datumIngangGeldigheid:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        nationaliteit:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        redenOpname:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        inOnderzoek:
+            $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
+    BijzonderNederlanderschapInOnderzoek:
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            type:
+              type: boolean
+            redenOpname:
+              type: boolean
+    NationaliteitInOnderzoek:
+      description: |
+        Geeft aan welke gegevens over de nationaliteit in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            nationaliteit:
+              type: boolean
+            redenOpname:
+              type: boolean

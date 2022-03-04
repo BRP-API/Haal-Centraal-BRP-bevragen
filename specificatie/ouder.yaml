@@ -1,0 +1,88 @@
+openapi: 3.0.3
+info:
+  title: Ouder definities
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  schemas:
+    AbstractOuder:
+      type: object
+      description: |
+        Gegevens over de ouder van de persoon.
+      required:
+        - type
+      properties:
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          Ouder: '#/components/schemas/Ouder'
+          OnbekendOuder: '#/components/schemas/OnbekendOuder'
+    GbaOuder:
+      type: object
+      description: |
+        Gegevens over de ouder van de persoon.
+        * **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.
+      properties:
+        burgerservicenummer:
+          $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
+        geslachtsaanduiding:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        ouderAanduiding:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        datumIngangFamilierechtelijkeBetrekking:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        naam:
+          $ref: 'naam.yaml#/components/schemas/GbaNaamBasis'
+        inOnderzoek:
+          $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
+        geboorte:
+          $ref: 'geboorte.yaml#/components/schemas/GbaGeboorte'
+    Ouder:
+      description: |
+        Gegevens over de ouder van de persoon.
+        * **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.
+        * **geslachtsaanduiding** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **ouderaanduiding** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'ouderAanduiding' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+      allOf:
+        - $ref: '#/components/schemas/AbstractOuder'
+        - type: object
+          properties:
+            burgerservicenummer:
+              $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
+            geslachtsaanduiding:
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
+            ouderAanduiding:
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
+            datumIngangFamilierechtelijkeBetrekking:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+            naam:
+              $ref: 'naam.yaml#/components/schemas/NaamGerelateerde'
+            inOnderzoek:
+              $ref: '#/components/schemas/OuderInOnderzoek'
+            geboorte:
+              $ref: 'geboorte.yaml#/components/schemas/Geboorte'
+    OnbekendOuder:
+      allOf:
+        - $ref: '#/components/schemas/AbstractOuder'
+        - type: object
+          properties:
+            indicatieOnbekend:
+              type: boolean
+              default: false
+    OuderInOnderzoek:
+      description: |
+        Geeft aan welke gegevens van de de ouder in onderzoek zijn.
+        Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            burgerservicenummer:
+              type: boolean
+            datumIngangFamilierechtelijkeBetrekking:
+              type: boolean
+            geslachtsaanduiding:
+              type: boolean

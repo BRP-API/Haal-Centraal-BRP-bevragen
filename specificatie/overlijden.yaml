@@ -1,0 +1,67 @@
+openapi: 3.0.3
+info:
+  title: Overlijden definities
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  schemas:
+    IndicatieOverleden:
+      type: boolean
+      description: |
+        Geeft aan dat iemand is overleden (waarde true), ongeacht of de overlijdensdatum bekend is.
+    GbaOverlijdenBasis:
+      type: object
+      properties:
+        datum:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+    GbaOverlijden:
+      allOf:
+        - $ref: '#/components/schemas/GbaOverlijdenBasis'
+        - type: object
+          properties:
+            land:
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
+            plaats:
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
+            inOnderzoek:
+              $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
+    OverlijdenBasis:
+      type: object
+      properties:
+        indicatieOverleden:
+          $ref: '#/components/schemas/IndicatieOverleden'
+    Overlijden:
+      description: |
+        Gegevens over het overlijden van de persoon.
+        * **datum** : datum waarop de persoon is overleden.
+        * **land** : land waar de persoon is overleden.
+        * **plaats** : gemeente waar de persoon is overleden. Is de persoon overleden buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.
+      allOf:
+        - $ref: '#/components/schemas/OverlijdenBasis'
+        - type: object
+          properties:
+            datum:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+            land:
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
+            plaats:
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
+            inOnderzoek:
+              $ref: '#/components/schemas/OverlijdenInOnderzoek'
+    OverlijdenInOnderzoek:
+      description: |
+        Geeft aan welke gegevens over het overlijden van de persoon in onderzoek zijn.
+        Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            indicatieOverleden:
+              type: boolean
+            datum:
+              type: boolean
+            land:
+              type: boolean
+            plaats:
+              type: boolean

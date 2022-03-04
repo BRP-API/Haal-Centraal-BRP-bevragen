@@ -1,0 +1,198 @@
+openapi: 3.0.3
+info:
+  title: Persoon definities
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  schemas:
+    ANummer:
+      description: |
+        Het A-nummer van de persoon
+      type: string
+      pattern: ^[0-9]{10}$
+    Burgerservicenummer:
+      type: string
+      pattern: ^[0-9]{9}$
+      example: "555555021"
+    GbaGeheimhoudingPersoonsgegevens:
+      type: integer
+    GeheimhoudingPersoonsgegevens:
+      description: |
+        Gegevens mogen niet worden verstrekt aan derden / maatschappelijke instellingen.
+      type: boolean
+    Leeftijd:
+      type: integer
+      description: |
+        Leeftijd in jaren op het moment van bevragen.
+      example: 34
+      minimum: 0
+      maximum: 150
+    Reisdocumentnummer:
+      type: string
+      pattern: ^[0-9a-zA-Z]{9}$
+      description: |
+        Het nummer van het verstrekte Nederlandse reisdocument.
+      example: "546376728"
+    GbaPersoonBeperkt:
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: '#/components/schemas/Burgerservicenummer'
+        geboorte:
+          $ref: 'geboorte.yaml#/components/schemas/GbaGeboorteBeperkt'
+        geheimhoudingPersoonsgegevens:
+          $ref: '#/components/schemas/GbaGeheimhoudingPersoonsgegevens'
+        geslachtsaanduiding:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        naam:
+          $ref: 'naam.yaml#/components/schemas/GbaNaamBasis'
+        opschortingBijhouding:
+          $ref: 'opschortingbijhouding.yaml#/components/schemas/OpschortingBijhoudingBasis'
+        overlijden:
+          $ref: 'overlijden.yaml#/components/schemas/GbaOverlijdenBasis'
+        verblijfplaats:
+          $ref: 'verblijfplaats.yaml#/components/schemas/GbaVerblijfplaatsBeperkt'
+    PersoonBeperkt:
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: '#/components/schemas/Burgerservicenummer'
+        geboorte:
+          $ref: 'geboorte.yaml#/components/schemas/GeboorteBeperkt'
+        geheimhoudingPersoonsgegevens:
+          $ref: '#/components/schemas/GeheimhoudingPersoonsgegevens'
+        geslachtsaanduiding:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        leeftijd:
+          $ref: '#/components/schemas/Leeftijd'
+        naam:
+          $ref: 'naam.yaml#/components/schemas/NaamBasis'
+        opschortingBijhouding:
+          $ref: 'opschortingbijhouding.yaml#/components/schemas/OpschortingBijhoudingBasis'
+        overlijden:
+          $ref: 'overlijden.yaml#/components/schemas/OverlijdenBasis'
+        verblijfplaats:
+          $ref: 'verblijfplaats.yaml#/components/schemas/AbstractVerblijfplaatsBeperkt'
+    GbaPersoon:
+      type: object
+      properties:
+        aNummer:
+          $ref: '#/components/schemas/ANummer'
+        burgerservicenummer:
+          $ref: '#/components/schemas/Burgerservicenummer'
+        datumEersteInschrijvingGBA:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        geheimhoudingPersoonsgegevens:
+          $ref: '#/components/schemas/GbaGeheimhoudingPersoonsgegevens'
+        geslachtsaanduiding:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        inOnderzoek:
+          $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
+        kiesrecht:
+          $ref: 'kiesrecht.yaml#/components/schemas/GbaKiesrecht'
+        naam:
+          $ref: 'naam.yaml#/components/schemas/GbaNaamPersoon'
+        nationaliteiten:
+          type: array
+          items:
+            $ref: 'nationaliteit.yaml#/components/schemas/GbaNationaliteit'
+        geboorte:
+          $ref: 'geboorte.yaml#/components/schemas/GbaGeboorte'
+        opschortingBijhouding:
+          $ref: 'opschortingbijhouding.yaml#/components/schemas/GbaOpschortingBijhouding'
+        overlijden:
+          $ref: 'overlijden.yaml#/components/schemas/GbaOverlijden'
+        verblijfplaats:
+          $ref: 'verblijfplaats.yaml#/components/schemas/GbaVerblijfplaats'
+        gezagsverhouding:
+          $ref: 'gezagsverhouding.yaml#/components/schemas/GbaGezagsverhouding'
+        verblijfstitel:
+          $ref: 'verblijfstitel.yaml#/components/schemas/GbaVerblijfstitel'
+        reisdocumentnummers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reisdocumentnummer'
+        kinderen:
+          type: array
+          items:
+            $ref: 'kind.yaml#/components/schemas/GbaKind'
+        ouders:
+          type: array
+          items:
+            $ref: 'ouder.yaml#/components/schemas/GbaOuder'
+        partners:
+          type: array
+          items:
+            $ref: 'partner.yaml#/components/schemas/GbaPartner'
+    Persoon:
+      type: object
+      properties:
+        aNummer:
+          $ref: '#/components/schemas/ANummer'
+        burgerservicenummer:
+          $ref: '#/components/schemas/Burgerservicenummer'
+        datumEersteInschrijvingGBA:
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+        geheimhoudingPersoonsgegevens:
+          $ref: '#/components/schemas/GeheimhoudingPersoonsgegevens'
+        geslachtsaanduiding:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        inOnderzoek:
+          $ref: '#/components/schemas/PersoonInOnderzoek'
+        kiesrecht:
+          $ref: 'kiesrecht.yaml#/components/schemas/Kiesrecht'
+        leeftijd:
+          $ref: '#/components/schemas/Leeftijd'
+        naam:
+          $ref: 'naam.yaml#/components/schemas/NaamPersoon'
+        nationaliteiten:
+          type: array
+          items:
+            $ref: 'nationaliteit.yaml#/components/schemas/Nationaliteit'
+        geboorte:
+          $ref: 'geboorte.yaml#/components/schemas/Geboorte'
+        opschortingBijhouding:
+          $ref: 'opschortingbijhouding.yaml#/components/schemas/OpschortingBijhouding'
+        overlijden:
+          $ref: 'overlijden.yaml#/components/schemas/Overlijden'
+        verblijfplaats:
+          $ref: 'verblijfplaats.yaml#/components/schemas/AbstractVerblijfplaats'
+        gezagsverhouding:
+          $ref: 'gezagsverhouding.yaml#/components/schemas/Gezagsverhouding'
+        verblijfstitel:
+          $ref: 'verblijfstitel.yaml#/components/schemas/Verblijfstitel'
+        reisdocumentnummers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reisdocumentnummer'
+        kinderen:
+          type: array
+          items:
+            $ref: 'kind.yaml#/components/schemas/AbstractKind'
+        ouders:
+          type: array
+          items:
+            $ref: 'ouder.yaml#/components/schemas/AbstractOuder'
+        partners:
+          type: array
+          items:
+            $ref: 'partner.yaml#/components/schemas/AbstractPartner'
+    PersoonInOnderzoek:
+      description: |
+        Geeft aan welke gegevens van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature).
+      allOf:
+        - $ref: '#/components/schemas/InOnderzoek'
+      type: object
+      properties:
+        burgerservicenummer:
+          type: boolean
+        geslachtsaanduiding:
+          type: boolean
+        leeftijd:
+          type: boolean
+    InOnderzoek:
+      type: object
+      properties:
+        datumIngangOnderzoek:
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'

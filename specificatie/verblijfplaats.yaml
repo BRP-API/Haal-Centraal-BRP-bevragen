@@ -1,0 +1,498 @@
+openapi: 3.0.3
+info:
+  title: Verblijfplaats definities
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  schemas:
+    Adresregel1:
+      type: string
+      maxLength: 40
+      description: |
+        Het eerste deel van een adres is een combinatie van de straat en huisnummer.
+      # example: "1600 Pennsylvania Avenue NW"
+      example: "Laan van de landinrichtingscommissie Duiven-Westervoort 26A-3"
+    Adresregel2:
+      type: string
+      maxLength: 50
+      description: |
+        Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode.
+      # example: "Washington, DC 20500"
+      example: "1234AA Nootdorp"
+    Adresregel3:
+      type: string
+      maxLength: 35
+      description: |
+        Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.
+      example: "Selangor"
+    AdresseerbaarObjectIdentificatie:
+      type: string
+      pattern: ^[0-9]{16}$
+      description: |
+        De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.
+      example: "0226010000038820"
+    GemeenteVanInschrijving:
+      description: |
+        Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.
+      type: string
+      pattern: ^[0-9]{4}$
+      example: "0518"
+    Huisletter:
+      description: |
+        Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.
+      type: string
+      pattern: ^[a-zA-Z]{1}$
+      example: "a"
+    Huisnummer:
+      description: |
+        Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.
+      type: integer
+      minimum: 1
+      maximum: 99999
+      example: 14
+    Huisnummertoevoeging:
+      description: |
+        Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.
+      type: string
+      pattern: ^[a-zA-Z0-9 \-]{1,4}$
+      example: "bis"
+    IndicatieVestigingVanuitBuitenland:
+      type: boolean
+      description: |
+        Geeft aan dat de persoon zich vanuit het buitenland heeft ingeschreven.
+    KorteNaam:
+      description: |
+        De officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG) of een verkorte versie.
+      type: string
+      maxLength: 24
+    Locatiebeschrijving:
+      type: string
+      maxLength: 35
+      description: |
+        Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats.
+      example: "Naast de derde brug"
+    NaamOpenbareRuimte:
+      type: string
+      maxLength: 80
+    NummeraanduidingIdentificatie:
+      description: |
+        Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
+      type: string
+      pattern: ^[0-9]{16}$
+      example: "0518200000366054"
+    Postcode:
+      description: |
+        De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.
+      type: string
+      pattern: ^[1-9]{1}[0-9]{3}[ ]?[A-Za-z]{2}$
+      example: "2341SX"
+    Straat:
+      type: string
+      maxLength: 80
+      example: "Tulpstraat"
+    VanuitVerblijfplaatsOnbekend:
+      type: boolean
+      description: |
+        Geeft aan dat de persoon is teruggekeerd uit een situatie van onbekende verblijfplaats
+    IndicatieVerblijfplaatsOnbekend:
+      type: boolean
+      description: |
+        Indicatie dat de verblijfplaats van de persoon onbekend is. Er is niet bekend in welk land de persoon verblijft.
+    Woonplaats:
+      description: |
+        Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.
+      title: woonplaats naam
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž \(\)\,\.\-\']{1,80}$
+      example: "Duiven"
+    AbstractVerblijfplaatsBeperkt:
+      type: object
+      description: |
+        Gegevens over het verblijf of de woonlocatie van een persoon.
+      required:
+        - type
+      properties:
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          VerblijfplaatsBuitenland: '#/components/schemas/VerblijfplaatsBuitenlandBeperkt'
+          Adres: '#/components/schemas/AdresBeperkt'
+          VerblijfplaatsOnbekend: '#/components/schemas/VerblijfplaatsOnbekend'
+          Locatie: '#/components/schemas/LocatieBeperkt'
+    AdresBeperkt:
+      allOf:
+        - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
+        - type: object
+          properties:
+            functieAdres:
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
+            adresregel1:
+              $ref: '#/components/schemas/Adresregel1'
+            adresregel2:
+              $ref: '#/components/schemas/Adresregel2'
+            woonplaats:
+              $ref: '#/components/schemas/Woonplaats'
+    VerblijfplaatsBuitenlandBeperkt:
+      allOf:
+        - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
+        - type: object
+          properties:
+            adresregel1:
+              $ref: '#/components/schemas/Adresregel1'
+            adresregel2:
+              $ref: '#/components/schemas/Adresregel2'
+            adresregel3:
+              $ref: '#/components/schemas/Adresregel3'
+            land:
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
+    VerblijfplaatsOnbekendBeperkt:
+      allOf:
+        - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
+        - type: object
+          properties:
+            verblijfplaatsOnbekend:
+              $ref: '#/components/schemas/IndicatieVerblijfplaatsOnbekend'
+    LocatieBeperkt:
+      allOf:
+        - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
+        - type: object
+          properties:
+            adresregel1:
+              $ref: '#/components/schemas/Adresregel1'
+            adresregel2:
+              $ref: '#/components/schemas/Adresregel2'
+            functieAdres:
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
+            locatiebeschrijving:
+              $ref: '#/components/schemas/Locatiebeschrijving'
+            woonplaats:
+              $ref: '#/components/schemas/Woonplaats'
+    GbaVerblijfplaatsBeperkt:
+      type: object
+      properties:
+        functieAdres:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        woonplaats:
+          $ref: '#/components/schemas/Woonplaats'
+        straat:
+          $ref: '#/components/schemas/Straat'
+        huisnummer:
+          $ref: '#/components/schemas/Huisnummer'
+        huisletter:
+          $ref: '#/components/schemas/Huisletter'
+        huisnummertoevoeging:
+          $ref: '#/components/schemas/Huisnummertoevoeging'
+        aanduidingBijHuisnummer:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        postcode:
+          $ref: '#/components/schemas/Postcode'
+        locatiebeschrijving:
+          $ref: '#/components/schemas/Locatiebeschrijving'
+        land:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        gemeenteVanInschrijving:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        adresregel1:
+          $ref: '#/components/schemas/Adresregel1'
+        adresregel2:
+          $ref: '#/components/schemas/Adresregel2'
+        adresregel3:
+          $ref: '#/components/schemas/Adresregel3'
+    AbstractVerblijfplaats:
+      type: object
+      description: |
+        Gegevens over het verblijf of de woonlocatie van een persoon.
+      required:
+        - type
+      properties:
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          VerblijfplaatsBuitenland: '#/components/schemas/VerblijfplaatsBuitenland'
+          Adres: '#/components/schemas/Adres'
+          VerblijfplaatsOnbekend: '#/components/schemas/VerblijfplaatsOnbekend'
+          Locatie: '#/components/schemas/Locatie'
+    VerblijfplaatsBuitenland:
+      allOf:
+      - $ref : '#/components/schemas/AbstractVerblijfplaats'
+      - type: object
+        properties:
+          adresregel1:
+            $ref: '#/components/schemas/Adresregel1'
+          adresregel2:
+            $ref: '#/components/schemas/Adresregel2'
+          adresregel3:
+            $ref: '#/components/schemas/Adresregel3'
+          datumInschrijvingInGemeente:
+            $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+          gemeenteVanInschrijving:
+            $ref: 'common.yaml#/components/schemas/Waardetabel'
+          land:
+            $ref: 'common.yaml#/components/schemas/Waardetabel'
+          datumVan:
+            $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+          datumIngangGeldigheid:
+            $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+          inOnderzoek:
+            $ref: '#/components/schemas/VerblijfplaatsBuitenlandInOnderzoek'
+    Adres:
+      description: |
+        Gegevens over het adres van een persoon.
+        * **datumVan** : de datum van aangifte of ambtshalve melding van verblijf en adres.
+        * **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden.
+        * **datumInschrijvingInGemeente**: bij inschrijving op grond van een verhuisaangifte door de burger is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop het voornemen van ambtshalve opneming schriftelijk aan de persoon is medegedeeld.
+        * **datumVestigingInNederland** : datum van inschrijving in Nederland.
+        * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland.
+        * **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten."
+      allOf:
+        - $ref : '#/components/schemas/AbstractVerblijfplaats'
+        - type: object
+          properties:
+            functieAdres:
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
+            straat:
+              $ref: '#/components/schemas/Straat'
+            huisnummer:
+              $ref: '#/components/schemas/Huisnummer'
+            huisletter:
+              $ref: '#/components/schemas/Huisletter'
+            huisnummertoevoeging:
+              $ref: '#/components/schemas/Huisnummertoevoeging'
+            aanduidingBijHuisnummer:
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
+            postcode:
+              $ref: '#/components/schemas/Postcode'
+            adresseerbaarObjectIdentificatie:
+              $ref: '#/components/schemas/AdresseerbaarObjectIdentificatie'
+            nummeraanduidingIdentificatie:
+              $ref: '#/components/schemas/NummeraanduidingIdentificatie'
+            adresregel1:
+              $ref: '#/components/schemas/Adresregel1'
+            adresregel2:
+              $ref: '#/components/schemas/Adresregel2'
+            woonplaats:
+              $ref: '#/components/schemas/Woonplaats'
+            indicatieVestigingVanuitBuitenland:
+              $ref: '#/components/schemas/IndicatieVestigingVanuitBuitenland'
+            korteNaam:
+              $ref: '#/components/schemas/KorteNaam'
+            vanuitVerblijfplaatsOnbekend:
+              $ref: '#/components/schemas/VanuitVerblijfplaatsOnbekend'
+            datumVan:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+            datumIngangGeldigheid:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+            datumInschrijvingInGemeente:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+            datumVestigingInNederland:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+            gemeenteVanInschrijving:
+              $ref: "common.yaml#/components/schemas/Waardetabel"
+            landVanwaarIngeschreven:
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
+            inOnderzoek:
+              $ref: "#/components/schemas/AdresInOnderzoek"
+    Locatie:
+      allOf:
+        - $ref: '#/components/schemas/AbstractVerblijfplaats'
+        - type: object
+          properties:
+            adresregel1:
+              $ref: '#/components/schemas/Adresregel1'
+            adresregel2:
+              $ref: '#/components/schemas/Adresregel2'
+            datumInschrijvingInGemeente:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+            datumVestigingInNederland:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+            functieAdres:
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
+            gemeenteVanInschrijving:
+              $ref: "common.yaml#/components/schemas/Waardetabel"
+            indicatieVestigingVanuitBuitenland:
+              $ref: '#/components/schemas/IndicatieVestigingVanuitBuitenland'
+            landVanwaarIngeschreven:
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
+            locatiebeschrijving:
+              $ref: '#/components/schemas/Locatiebeschrijving'
+            vanuitVerblijfplaatsOnbekend:
+              $ref: '#/components/schemas/VanuitVerblijfplaatsOnbekend'
+            woonplaats:
+              $ref: '#/components/schemas/Woonplaats'
+            inOnderzoek:
+              $ref: '#/components/schemas/LocatieInOnderzoek'
+    VerblijfplaatsOnbekend:
+      allOf:
+        - $ref: '#/components/schemas/AbstractVerblijfplaats'
+        - type: object
+          properties:
+            datumInschrijvingInGemeente:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+            gemeenteVanInschrijving:
+              $ref: '#/components/schemas/GemeenteVanInschrijving'
+            verblijfplaatsOnbekend:
+              $ref: '#/components/schemas/IndicatieVerblijfplaatsOnbekend'
+            inOnderzoek:
+              $ref: '#/components/schemas/VerblijfplaatsOnbekendInOnderzoek'
+    GbaVerblijfplaats:
+      type: object
+      properties:
+        adresregel1:
+          $ref: '#/components/schemas/Adresregel1'
+        adresregel2:
+          $ref: '#/components/schemas/Adresregel2'
+        adresregel3:
+          $ref: '#/components/schemas/Adresregel3'
+        adresseerbaarObjectIdentificatie:
+          $ref: '#/components/schemas/AdresseerbaarObjectIdentificatie'
+        nummeraanduidingIdentificatie:
+          $ref: '#/components/schemas/NummeraanduidingIdentificatie'
+        functieAdres:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        woonplaats:
+          $ref: '#/components/schemas/Woonplaats'
+        landVanwaarIngeschreven:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        straat:
+          $ref: '#/components/schemas/Straat'
+        huisnummer:
+          $ref: '#/components/schemas/Huisnummer'
+        huisletter:
+          $ref: '#/components/schemas/Huisletter'
+        huisnummertoevoeging:
+          $ref: '#/components/schemas/Huisnummertoevoeging'
+        aanduidingBijHuisnummer:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        postcode:
+          $ref: '#/components/schemas/Postcode'
+        locatiebeschrijving:
+          $ref: '#/components/schemas/Locatiebeschrijving'
+        land:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        datumAanvangAdreshouding:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        datumAanvangAdresBuitenland:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        datumIngangGeldigheid:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        datumInschrijvingInGemeente:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        datumVestigingInNederland:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        gemeenteVanInschrijving:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        naamOpenbareRuimte:
+          $ref: '#/components/schemas/NaamOpenbareRuimte'
+        inOnderzoek:
+          $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
+    VerblijfplaatsBuitenlandInOnderzoek:
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            adresregel1:
+              type: boolean
+            adresregel2:
+              type: boolean
+            adresregel3:
+              type: boolean
+            datumInschrijvingInGemeente:
+              type: boolean
+            gemeenteVanInschrijving:
+              type: boolean
+            land:
+              type: boolean
+            datumVan:
+              type: boolean
+            datumIngangGeldigheid:
+              type: boolean
+    AdresInOnderzoek:
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            aanduidingBijHuisnummer:
+              type: boolean
+            datumVan:
+              type: boolean
+            datumIngangGeldigheid:
+              type: boolean
+            datumInschrijvingInGemeente:
+              type: boolean
+            datumVestigingInNederland:
+              type: boolean
+            functieAdres:
+              type: boolean
+            gemeenteVanInschrijving:
+              type: boolean
+            huisletter:
+              type: boolean
+            huisnummer:
+              type: boolean
+            huisnummertoevoeging:
+              type: boolean
+            nummeraanduidingIdentificatie:
+              type: boolean
+            adresseerbaarObjectIdentificatie:
+              type: boolean
+            landVanwaarIngeschreven:
+              type: boolean
+            straat:
+              type: boolean
+            postcode:
+              type: boolean
+            korteNaam:
+              type: boolean
+            woonplaats:
+              type: boolean
+            adresregel1:
+              type: boolean
+            adresregel2:
+              type: boolean
+            indicatieVestigingVanuitBuitenland:
+              type: boolean
+            vanuitVerblijfplaatsOnbekend:
+              type: boolean
+    VerblijfplaatsOnbekendInOnderzoek:
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            datumInschrijvingInGemeente:
+              type: boolean
+            gemeenteVanInschrijving:
+              type: boolean
+            verblijfplaatsOnbekend:
+              type: boolean
+    LocatieInOnderzoek:
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            adresregel1:
+              type: boolean
+            adresregel2:
+              type: boolean
+            datumInschrijvingInGemeente:
+              type: boolean
+            datumVestigingInNederland:
+              type: boolean
+            functieAdres:
+              type: boolean
+            gemeenteVanInschrijving:
+              type: boolean
+            indicatieVestigingVanuitBuitenland:
+              type: boolean
+            landVanwaarIngeschreven:
+              type: boolean
+            locatiebeschrijving:
+              type: boolean
+            vanuitVerblijfplaatsOnbekend:
+              type: boolean
+            woonplaats:
+              type: boolean

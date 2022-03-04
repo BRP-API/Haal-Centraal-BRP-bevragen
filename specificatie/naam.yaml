@@ -1,0 +1,173 @@
+openapi: 3.0.3
+info:
+  title: Naam definities
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  schemas:
+    Aanhef:
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,650}$
+      description: |
+        Kun je gebruiken als aanhef in een brief gericht aan persoon.
+      example: "Hoogwelgeboren heer"
+    Aanschrijfwijze:
+      type: object
+      description: |
+        Samengestelde naam en aanspreekvorm die je kunt gebruiken in de communicatie met de persoon.
+      properties:
+        naam:
+          type: string
+          pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,650}$
+          example: "H.W. baron van den Aedel"
+        aanspreekvorm:
+          description: |
+            Deze regel moet als aparte regel boven de samengestelde naam worden geplaatst. Komt alleen voor bij personen met een adellijke titel of predicaat.
+          type: string
+          pattern: ^[a-zA-Z ]{1,25}$
+          example: "De hoogwelgeboren heer"
+    GebruikInLopendeTekst:
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,650}$
+      description: |
+        Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert.
+      example: "baron Van den Aedel"
+    Geslachtsnaam:
+      type: string
+      maxLength: 200
+      description: |
+        De achternaam van een persoon.
+      example: "Vries"
+    VolledigeNaam:
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,450}$
+      description: |
+        Combinatie van predicaat, voornamen, adellijke titel, voorvoegsels en geslachtsnaam, zonder toevoeging van een eventuele partnernaam.
+      example: "Pieter Jan de Vries"
+    Voorletters:
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž \.]{1,40}$
+      description: |
+        De voorletters van de persoon, afgeleid van de voornamen.
+      example: "P.J."
+    Voornamen:
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,200}$
+      maxLength: 200
+      description: |
+        De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
+    Voorvoegsel:
+      type: string
+      pattern: ^[a-zA-Z \']{1,10}$
+      maxLength: 10
+      example: "de"
+    AdellijkeTitelPredicaatSoort:
+      type: string
+      enum:
+        - titel
+        - predicaat
+    AdellijkeTitelPredicaatType:
+      allOf:
+        - $ref: 'common.yaml#/components/schemas/Waardetabel'
+        - properties:
+            soort:
+              $ref: '#/components/schemas/AdellijkeTitelPredicaatSoort'
+          example:
+            value:
+              code: "JV"
+              omschrijving: "jonkvrouw"
+              soort: "predicaat"
+    GbaNaamBasis:
+      type: object
+      properties:
+        voornamen:
+          $ref: '#/components/schemas/Voornamen'
+        adellijkeTitelPredicaat:
+          $ref: '#/components/schemas/AdellijkeTitelPredicaatType'
+        voorvoegsel:
+          $ref: '#/components/schemas/Voorvoegsel'
+        geslachtsnaam:
+          $ref: '#/components/schemas/Geslachtsnaam'
+    GbaNaamPersoon:
+      allOf:
+        - $ref: '#/components/schemas/GbaNaamBasis'
+        - properties:
+            aanduidingNaamgebruik:
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
+    NaamBasis:
+      type: object
+      properties:
+        voornamen:
+          $ref: '#/components/schemas/Voornamen'
+        adellijkeTitelPredicaat:
+          $ref: '#/components/schemas/AdellijkeTitelPredicaatType'
+        voorvoegsel:
+          $ref: '#/components/schemas/Voorvoegsel'
+        geslachtsnaam:
+          $ref: '#/components/schemas/Geslachtsnaam'
+        voorletters:
+          $ref: '#/components/schemas/Voorletters'
+        volledigeNaam:
+          $ref: '#/components/schemas/VolledigeNaam'
+    NaamGerelateerde:
+      type: object
+      properties:
+        voornamen:
+          $ref: '#/components/schemas/Voornamen'
+        adellijkeTitelPredicaat:
+          $ref: '#/components/schemas/AdellijkeTitelPredicaatType'
+        voorvoegsel:
+          $ref: '#/components/schemas/Voorvoegsel'
+        geslachtsnaam:
+          $ref: '#/components/schemas/Geslachtsnaam'
+        voorletters:
+          $ref: '#/components/schemas/Voorletters'
+        inOnderzoek:
+          $ref: '#/components/schemas/NaamInOnderzoek'
+    NaamInOnderzoek:
+      description: |
+        Geeft aan welke gegevens over de naam in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            voornamen:
+              type: boolean
+            adellijkeTitelPredicaat:
+              type: boolean
+            voorvoegsel:
+              type: boolean
+            geslachtsnaam:
+              type: boolean
+            voorletters:
+              type: boolean
+    NaamPersoon:
+      allOf:
+        - $ref: '#/components/schemas/NaamBasis'
+        - properties:
+            aanduidingNaamgebruik:
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
+            aanhef:
+              $ref: '#/components/schemas/Aanhef'
+            aanschrijfwijze:
+              $ref: '#/components/schemas/Aanschrijfwijze'
+            gebruikInLopendeTekst:
+              $ref: '#/components/schemas/GebruikInLopendeTekst'
+            inOnderzoek:
+              $ref: '#/components/schemas/NaamPersoonInOnderzoek'
+    NaamPersoonInOnderzoek:
+      allOf:
+        - $ref: '#/components/schemas/NaamInOnderzoek'
+        - type: object
+          properties:
+            volledigeNaam:
+              type: boolean
+            aanduidingNaamgebruik:
+              type: boolean
+            aanhef:
+              type: boolean
+            aanschrijfwijze:
+              type: boolean
+            gebruikInLopendeTekst:
+              type: boolean

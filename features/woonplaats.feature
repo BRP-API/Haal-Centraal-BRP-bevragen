@@ -12,31 +12,79 @@ Functionaliteit: Woonplaats wordt altijd gevuld voor een Nederlandse verblijfpla
   Consequentie is dat woonplaats niet wordt gevuld wanneer het een verblijfplaats in het buitenland betreft.
 
   Scenario: persoon heeft BAG adres met woonplaats gevuld
-    Gegeven persoon met burgerservicenummer 999992934 heeft in de registratie element 08.11.70 met waarde "Scharwoude"
-    Als persoon met burgerservicenummer 999993653 wordt geraadpleegd
-    Dan is in het antwoord verblijfplaats.woonplaatsnaam gelijk aan "Scharwoude"
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999992934 |
+    En de persoon heeft de volgende verblijfplaats gegevens
+    | naam                   | waarde     |
+    | woonplaatsnaam (11.70) | Scharwoude |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | verblijfplaats.woonplaats       |
+    Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'verblijfplaats' gegevens
+    | naam       | waarde     |
+    | woonplaats | Scharwoude |
 
   Scenario: persoon heeft niet-BAG adres in Nederland
-    Gegeven persoon met burgerservicenummer 999990482 heeft in de registratie geen waarde voor element 08.11.70
-    En element 08.11.10 heeft een waarde
-    En element 09.09.10 heeft de waarde "1681"
-    En in de landelijke tabel 33 (gemeententabel) komt code "1681" voor met omschrijving "Borger-Odoorn"
-    Als persoon met burgerservicenummer 999990482 wordt geraadpleegd
-    Dan is in het antwoord verblijfplaats.woonplaatsnaam gelijk aan "Borger-Odoorn"
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999990482 |
+    En de persoon heeft de volgende verblijfplaats gegevens
+    | naam                              | waarde         |
+    | woonplaatsnaam (11.70)            |                |
+    | straatnaam (11.10)                | een straatnaam |
+    | gemeente van inschrijving (09.10) | 1681           |
+    En de waardetabel 'Gemeenten' heeft de volgende waarden
+    | code | omschrijving  |
+    | 1681 | Borger-Odoorn |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999990482                       |
+    | fields              | verblijfplaats.woonplaats       |
+    Dan bevat de persoon met burgerservicenummer '999990482' de volgende 'verblijfplaats' gegevens
+    | naam       | waarde        |
+    | woonplaats | Borger-Odoorn |
 
   Scenario: persoon heeft een locatiebeschrijving voor de verblijfplaats
-    Gegeven persoon met burgerservicenummer 000009921 heeft in de registratie geen waarde voor element 08.11.70
-    En element 08.11.10 heeft geen waarde
-    En element 08.12.10 heeft een waarde
-    En element 09.09.10 heeft de waarde "0599"
-    En in de landelijke tabel 33 (gemeententabel) komt code "0599" voor met omschrijving "Rotterdam"
-    Als persoon met burgerservicenummer 000009921 wordt geraadpleegd
-    Dan is in het antwoord verblijfplaats.woonplaatsnaam gelijk aan "Rotterdam"
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 000009921 |
+    En de persoon heeft de volgende verblijfplaats gegevens
+    | naam                              | waarde                   |
+    | woonplaatsnaam (11.70)            |                          |
+    | straatnaam (11.10)                |                          |
+    | locatiebeschrijving (12.10)       | een locatie beschrijving |
+    | gemeente van inschrijving (09.10) | 0599                     |
+    En de waardetabel 'Gemeenten' heeft de volgende waarden
+    | code | omschrijving |
+    | 0599 | Rotterdam    |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000009921                       |
+    | fields              | verblijfplaats.woonplaats       |
+    Dan bevat de persoon met burgerservicenummer '000009921' de volgende 'verblijfplaats' gegevens
+    | naam       | waarde    |
+    | woonplaats | Rotterdam |
 
   Scenario: persoon verblijft in het buitenland
-    Gegeven persoon met burgerservicenummer 999993483 heeft in de registratie geen waarde voor element 08.11.70
-    En element 08.11.10 heeft geen waarde
-    En element 08.12.10 heeft geen waarde
-    En element 08.13.10 heeft een waarde
-    Als persoon met burgerservicenummer 000009921 wordt geraadpleegd
-    Dan komt in het antwoord verblijfplaats.woonplaatsnaam niet voor met een waarde
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999993483 |
+    En de persoon heeft de volgende verblijfplaats gegevens
+    | naam                          | waarde |
+    | woonplaatsnaam (11.70)        |        |
+    | straatnaam (11.10)            |        |
+    | locatiebeschrijving (12.10)   |        |
+    | land adres buitenland (13.10) | 5010   |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999993483                       |
+    | fields              | verblijfplaats.woonplaats       |
+    Dan bevat de persoon met burgerservicenummer '999993483' de volgende 'verblijfplaats' gegevens NIET
+    | naam       |
+    | woonplaats |
