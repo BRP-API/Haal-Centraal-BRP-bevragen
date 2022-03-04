@@ -788,6 +788,9 @@
           },
           "geslachtsaanduiding" : {
             "type" : "boolean"
+          },
+          "leeftijd" : {
+            "type" : "boolean"
           }
         },
         "description" : "Geeft aan welke gegevens van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature).\n",
@@ -905,24 +908,15 @@
       "NaamBasis" : {
         "type" : "object",
         "properties" : {
-          "geslachtsnaam" : {
-            "$ref" : "#/components/schemas/Geslachtsnaam"
-          },
-          "volledigeNaam" : {
-            "$ref" : "#/components/schemas/VolledigeNaam"
-          },
-          "voorletters" : {
-            "$ref" : "#/components/schemas/Voorletters"
-          },
           "voornamen" : {
             "$ref" : "#/components/schemas/Voornamen"
+          },
+          "adellijkeTitelPredicaat" : {
+            "$ref" : "#/components/schemas/AdellijkeTitelPredicaatType"
           },
           "voorvoegsel" : {
             "$ref" : "#/components/schemas/Voorvoegsel"
           },
-          "adellijkeTitelPredicaat" : {
-            "$ref" : "#/components/schemas/AdellijkeTitelPredicaatType"
-          }
         }
       },
       "Geslachtsnaam" : {
@@ -972,6 +966,11 @@
       "AdellijkeTitelPredicaatSoort" : {
         "type" : "string",
         "enum" : [ "titel", "predicaat" ]
+      "Voorvoegsel" : {
+        "maxLength" : 10,
+        "type" : "string",
+        "example" : "de"
+      },
       },
       "OpschortingBijhoudingBasis" : {
         "type" : "object",
@@ -1159,7 +1158,22 @@
         }, {
           "type" : "object",
           "properties" : {
-            "verblijfBuitenland" : {
+            "adresregel1" : {
+              "type" : "boolean"
+            },
+            "adresregel2" : {
+              "type" : "boolean"
+            },
+            "adresregel3" : {
+              "type" : "boolean"
+            },
+            "datumInschrijvingInGemeente" : {
+              "type" : "boolean"
+            },
+            "gemeenteVanInschrijving" : {
+              "type" : "boolean"
+            },
+            "land" : {
               "type" : "boolean"
             },
             "datumVan" : {
@@ -1242,7 +1256,7 @@
               "$ref" : "#/components/schemas/Waardetabel"
             },
             "inOnderzoek" : {
-              "$ref" : "#/components/schemas/VerblijfplaatsInOnderzoek"
+              "$ref" : "#/components/schemas/AdresInOnderzoek"
             }
           }
         } ]
@@ -1269,7 +1283,7 @@
         "type" : "boolean",
         "description" : "Geeft aan dat de persoon is teruggekeerd uit een situatie van onbekende verblijfplaats\n"
       },
-      "VerblijfplaatsInOnderzoek" : {
+      "AdresInOnderzoek" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/InOnderzoek"
         }, {
@@ -1324,6 +1338,18 @@
               "type" : "boolean"
             },
             "woonplaats" : {
+              "type" : "boolean"
+            },
+            "adresregel1" : {
+              "type" : "boolean"
+            },
+            "adresregel2" : {
+              "type" : "boolean"
+            },
+            "indicatieVestigingVanuitBuitenland" : {
+              "type" : "boolean"
+            },
+            "vanuitVerblijfplaatsOnbekend" : {
               "type" : "boolean"
             }
           }
@@ -1385,6 +1411,12 @@
         }, {
           "type" : "object",
           "properties" : {
+            "adresregel1" : {
+              "type" : "boolean"
+            },
+            "adresregel2" : {
+              "type" : "boolean"
+            },
             "datumInschrijvingInGemeente" : {
               "type" : "boolean"
             },
@@ -1397,10 +1429,19 @@
             "gemeenteVanInschrijving" : {
               "type" : "boolean"
             },
+            "indicatieVestigingVanuitBuitenland" : {
+              "type" : "boolean"
+            },
             "landVanwaarIngeschreven" : {
               "type" : "boolean"
             },
             "locatiebeschrijving" : {
+              "type" : "boolean"
+            },
+            "vanuitVerblijfplaatsOnbekend" : {
+              "type" : "boolean"
+            },
+            "woonplaats" : {
               "type" : "boolean"
             }
           }
@@ -1422,7 +1463,7 @@
             "gemeenteVanInschrijving" : {
               "type" : "boolean"
             },
-            "land" : {
+            "verblijfplaatsOnbekend" : {
               "type" : "boolean"
             }
           }
@@ -1593,6 +1634,9 @@
           "$ref" : "#/components/schemas/NaamBasis"
         }, {
           "properties" : {
+            "aanduidingNaamgebruik" : {
+              "$ref" : "#/components/schemas/Waardetabel"
+            },
             "aanhef" : {
               "$ref" : "#/components/schemas/Aanhef"
             },
@@ -1601,9 +1645,6 @@
             },
             "gebruikInLopendeTekst" : {
               "$ref" : "#/components/schemas/GebruikInLopendeTekst"
-            },
-            "aanduidingNaamgebruik" : {
-              "$ref" : "#/components/schemas/Waardetabel"
             },
             "inOnderzoek" : {
               "$ref" : "#/components/schemas/NaamPersoonInOnderzoek"
@@ -1642,7 +1683,19 @@
         }, {
           "type" : "object",
           "properties" : {
+            "volledigeNaam" : {
+              "type" : "boolean"
+            },
             "aanduidingNaamgebruik" : {
+              "type" : "boolean"
+            },
+            "aanhef" : {
+              "type" : "boolean"
+            },
+            "aanschrijfwijze" : {
+              "type" : "boolean"
+            },
+            "gebruikInLopendeTekst" : {
               "type" : "boolean"
             }
           }
@@ -1655,16 +1708,19 @@
         }, {
           "type" : "object",
           "properties" : {
-            "geslachtsnaam" : {
+            "voornamen" : {
               "type" : "boolean"
             },
-            "voornamen" : {
+            "adellijkeTitelPredicaat" : {
               "type" : "boolean"
             },
             "voorvoegsel" : {
               "type" : "boolean"
             },
-            "adellijkeTitelPredicaat" : {
+            "geslachtsnaam" : {
+              "type" : "boolean"
+            },
+            "voorletters" : {
               "type" : "boolean"
             }
           }
@@ -1730,7 +1786,7 @@
         }, {
           "type" : "object",
           "properties" : {
-            "aanduidingBijzonderNederlanderschap" : {
+            "type" : {
               "type" : "boolean"
             },
             "redenOpname" : {
@@ -1849,6 +1905,9 @@
         }, {
           "type" : "object",
           "properties" : {
+            "indicatieOverleden" : {
+              "type" : "boolean"
+            },
             "datum" : {
               "type" : "boolean"
             },
@@ -1991,6 +2050,9 @@
           "type" : "object",
           "properties" : {
             "burgerservicenummer" : {
+              "type" : "boolean"
+            },
+            "leeftijd" : {
               "type" : "boolean"
             }
           }
@@ -2211,14 +2273,14 @@
           "voornamen" : {
             "$ref" : "#/components/schemas/Voornamen"
           },
+          "adellijkeTitelPredicaat" : {
+            "$ref" : "#/components/schemas/AdellijkeTitelPredicaatType"
+          },
           "voorvoegsel" : {
             "$ref" : "#/components/schemas/Voorvoegsel"
           },
           "geslachtsnaam" : {
             "$ref" : "#/components/schemas/Geslachtsnaam"
-          },
-          "adellijkeTitelPredicaat" : {
-            "$ref" : "#/components/schemas/AdellijkeTitelPredicaatType"
           },
           "voorletters" : {
             "$ref" : "#/components/schemas/Voorletters"

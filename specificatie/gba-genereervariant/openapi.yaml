@@ -693,12 +693,12 @@ components:
       properties:
         voornamen:
           $ref: '#/components/schemas/Voornamen'
+        adellijkeTitelPredicaat:
+          $ref: '#/components/schemas/AdellijkeTitelPredicaatType'
         voorvoegsel:
           $ref: '#/components/schemas/Voorvoegsel'
         geslachtsnaam:
           $ref: '#/components/schemas/Geslachtsnaam'
-        adellijkeTitelPredicaat:
-          $ref: '#/components/schemas/AdellijkeTitelPredicaatType'
     Voornamen:
       maxLength: 200
       type: string
@@ -730,6 +730,16 @@ components:
       enum:
       - titel
       - predicaat
+    Voorvoegsel:
+      maxLength: 10
+      type: string
+      example: de
+    Geslachtsnaam:
+      maxLength: 200
+      type: string
+      description: |
+        De achternaam van een persoon.
+      example: Vries
     OpschortingBijhoudingBasis:
       type: object
       properties:
@@ -840,8 +850,6 @@ components:
       - properties:
           aanduidingNaamgebruik:
             $ref: '#/components/schemas/Waardetabel'
-          inOnderzoek:
-            $ref: '#/components/schemas/GbaInOnderzoek'
     GbaNationaliteit:
       type: object
       properties:
@@ -867,8 +875,6 @@ components:
             $ref: '#/components/schemas/Waardetabel'
           plaats:
             $ref: '#/components/schemas/Waardetabel'
-          inOnderzoek:
-            $ref: '#/components/schemas/GbaInOnderzoek'
     GbaOpschortingBijhouding:
       allOf:
       - $ref: '#/components/schemas/OpschortingBijhoudingBasis'

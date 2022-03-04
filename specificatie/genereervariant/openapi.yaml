@@ -610,6 +610,8 @@ components:
           type: boolean
         geslachtsaanduiding:
           type: boolean
+        leeftijd:
+          type: boolean
       description: |
         Geeft aan welke gegevens van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature).
       allOf:
@@ -720,18 +722,18 @@ components:
     NaamBasis:
       type: object
       properties:
-        geslachtsnaam:
-          $ref: '#/components/schemas/Geslachtsnaam'
-        volledigeNaam:
-          $ref: '#/components/schemas/VolledigeNaam'
-        voorletters:
-          $ref: '#/components/schemas/Voorletters'
         voornamen:
           $ref: '#/components/schemas/Voornamen'
-        voorvoegsel:
-          $ref: '#/components/schemas/Voorvoegsel'
         adellijkeTitelPredicaat:
           $ref: '#/components/schemas/AdellijkeTitelPredicaatType'
+        voorvoegsel:
+          $ref: '#/components/schemas/Voorvoegsel'
+        geslachtsnaam:
+          $ref: '#/components/schemas/Geslachtsnaam'
+        voorletters:
+          $ref: '#/components/schemas/Voorletters'
+        volledigeNaam:
+          $ref: '#/components/schemas/VolledigeNaam'
     Geslachtsnaam:
       maxLength: 200
       type: string
@@ -910,7 +912,17 @@ components:
       - $ref: '#/components/schemas/InOnderzoek'
       - type: object
         properties:
-          verblijfBuitenland:
+          adresregel1:
+            type: boolean
+          adresregel2:
+            type: boolean
+          adresregel3:
+            type: boolean
+          datumInschrijvingInGemeente:
+            type: boolean
+          gemeenteVanInschrijving:
+            type: boolean
+          land:
             type: boolean
           datumVan:
             type: boolean
@@ -972,7 +984,7 @@ components:
           landVanwaarIngeschreven:
             $ref: '#/components/schemas/Waardetabel'
           inOnderzoek:
-            $ref: '#/components/schemas/VerblijfplaatsInOnderzoek'
+            $ref: '#/components/schemas/AdresInOnderzoek'
     Straat:
       pattern: ^[a-zA-Z0-9À-ÿ '\-\']{1,80}$
       type: string
@@ -994,7 +1006,7 @@ components:
       type: boolean
       description: |
         Geeft aan dat de persoon is teruggekeerd uit een situatie van onbekende verblijfplaats
-    VerblijfplaatsInOnderzoek:
+    AdresInOnderzoek:
       allOf:
       - $ref: '#/components/schemas/InOnderzoek'
       - type: object
@@ -1032,6 +1044,14 @@ components:
           korteNaam:
             type: boolean
           woonplaats:
+            type: boolean
+          adresregel1:
+            type: boolean
+          adresregel2:
+            type: boolean
+          indicatieVestigingVanuitBuitenland:
+            type: boolean
+          vanuitVerblijfplaatsOnbekend:
             type: boolean
     Locatie:
       allOf:
@@ -1072,6 +1092,10 @@ components:
       - $ref: '#/components/schemas/InOnderzoek'
       - type: object
         properties:
+          adresregel1:
+            type: boolean
+          adresregel2:
+            type: boolean
           datumInschrijvingInGemeente:
             type: boolean
           datumVestigingInNederland:
@@ -1080,9 +1104,15 @@ components:
             type: boolean
           gemeenteVanInschrijving:
             type: boolean
+          indicatieVestigingVanuitBuitenland:
+            type: boolean
           landVanwaarIngeschreven:
             type: boolean
           locatiebeschrijving:
+            type: boolean
+          vanuitVerblijfplaatsOnbekend:
+            type: boolean
+          woonplaats:
             type: boolean
     IndicatieVerblijfplaatsOnbekend:
       type: boolean
@@ -1097,7 +1127,7 @@ components:
             type: boolean
           gemeenteVanInschrijving:
             type: boolean
-          land:
+          verblijfplaatsOnbekend:
             type: boolean
     LocatieBeperkt:
       allOf:
@@ -1219,14 +1249,14 @@ components:
       allOf:
       - $ref: '#/components/schemas/NaamBasis'
       - properties:
+          aanduidingNaamgebruik:
+            $ref: '#/components/schemas/Waardetabel'
           aanhef:
             $ref: '#/components/schemas/Aanhef'
           aanschrijfwijze:
             $ref: '#/components/schemas/Aanschrijfwijze'
           gebruikInLopendeTekst:
             $ref: '#/components/schemas/GebruikInLopendeTekst'
-          aanduidingNaamgebruik:
-            $ref: '#/components/schemas/Waardetabel'
           inOnderzoek:
             $ref: '#/components/schemas/NaamPersoonInOnderzoek'
     Aanhef:
@@ -1257,7 +1287,15 @@ components:
       - $ref: '#/components/schemas/NaamInOnderzoek'
       - type: object
         properties:
+          volledigeNaam:
+            type: boolean
           aanduidingNaamgebruik:
+            type: boolean
+          aanhef:
+            type: boolean
+          aanschrijfwijze:
+            type: boolean
+          gebruikInLopendeTekst:
             type: boolean
     NaamInOnderzoek:
       description: |
@@ -1266,13 +1304,15 @@ components:
       - $ref: '#/components/schemas/InOnderzoek'
       - type: object
         properties:
-          geslachtsnaam:
-            type: boolean
           voornamen:
+            type: boolean
+          adellijkeTitelPredicaat:
             type: boolean
           voorvoegsel:
             type: boolean
-          adellijkeTitelPredicaat:
+          geslachtsnaam:
+            type: boolean
+          voorletters:
             type: boolean
     Nationaliteit:
       description: |
@@ -1316,7 +1356,7 @@ components:
       - $ref: '#/components/schemas/InOnderzoek'
       - type: object
         properties:
-          aanduidingBijzonderNederlanderschap:
+          type:
             type: boolean
           redenOpname:
             type: boolean
@@ -1402,6 +1442,8 @@ components:
       - $ref: '#/components/schemas/InOnderzoek'
       - type: object
         properties:
+          indicatieOverleden:
+            type: boolean
           datum:
             type: boolean
           land:
@@ -1507,6 +1549,8 @@ components:
       - type: object
         properties:
           burgerservicenummer:
+            type: boolean
+          leeftijd:
             type: boolean
     OnbekendKind:
       allOf:
@@ -1666,12 +1710,12 @@ components:
       properties:
         voornamen:
           $ref: '#/components/schemas/Voornamen'
+        adellijkeTitelPredicaat:
+          $ref: '#/components/schemas/AdellijkeTitelPredicaatType'
         voorvoegsel:
           $ref: '#/components/schemas/Voorvoegsel'
         geslachtsnaam:
           $ref: '#/components/schemas/Geslachtsnaam'
-        adellijkeTitelPredicaat:
-          $ref: '#/components/schemas/AdellijkeTitelPredicaatType'
         voorletters:
           $ref: '#/components/schemas/Voorletters'
         inOnderzoek:

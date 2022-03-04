@@ -35,7 +35,7 @@ components:
         datumIngangFamilierechtelijkeBetrekking:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
         naam:
-          $ref: 'naam.yaml#/components/schemas/GbaNaamGerelateerde'
+          $ref: 'naam.yaml#/components/schemas/GbaNaamBasis'
         inOnderzoek:
           $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
         geboorte:

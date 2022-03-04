@@ -75,53 +75,44 @@ components:
       properties:
         voornamen:
           $ref: '#/components/schemas/Voornamen'
+        adellijkeTitelPredicaat:
+          $ref: '#/components/schemas/AdellijkeTitelPredicaatType'
         voorvoegsel:
           $ref: '#/components/schemas/Voorvoegsel'
         geslachtsnaam:
           $ref: '#/components/schemas/Geslachtsnaam'
-        adellijkeTitelPredicaat:
-          $ref: '#/components/schemas/AdellijkeTitelPredicaatType'
-    GbaNaamGerelateerde:
-      allOf:
-        - $ref: '#/components/schemas/GbaNaamBasis'
-        - type: object
-          properties:
-            inOnderzoek:
-              $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     GbaNaamPersoon:
       allOf:
         - $ref: '#/components/schemas/GbaNaamBasis'
         - properties:
             aanduidingNaamgebruik:
               $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
-            inOnderzoek:
-              $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     NaamBasis:
       type: object
       properties:
-        geslachtsnaam:
-          $ref: '#/components/schemas/Geslachtsnaam'
-        volledigeNaam:
-          $ref: '#/components/schemas/VolledigeNaam'
-        voorletters:
-          $ref: '#/components/schemas/Voorletters'
         voornamen:
           $ref: '#/components/schemas/Voornamen'
-        voorvoegsel:
-          $ref: '#/components/schemas/Voorvoegsel'
         adellijkeTitelPredicaat:
           $ref: '#/components/schemas/AdellijkeTitelPredicaatType'
+        voorvoegsel:
+          $ref: '#/components/schemas/Voorvoegsel'
+        geslachtsnaam:
+          $ref: '#/components/schemas/Geslachtsnaam'
+        voorletters:
+          $ref: '#/components/schemas/Voorletters'
+        volledigeNaam:
+          $ref: '#/components/schemas/VolledigeNaam'
     NaamGerelateerde:
       type: object
       properties:
         voornamen:
           $ref: '#/components/schemas/Voornamen'
+        adellijkeTitelPredicaat:
+          $ref: '#/components/schemas/AdellijkeTitelPredicaatType'
         voorvoegsel:
           $ref: '#/components/schemas/Voorvoegsel'
         geslachtsnaam:
           $ref: '#/components/schemas/Geslachtsnaam'
-        adellijkeTitelPredicaat:
-          $ref: '#/components/schemas/AdellijkeTitelPredicaatType'
         voorletters:
           $ref: '#/components/schemas/Voorletters'
         inOnderzoek:
@@ -133,26 +124,28 @@ components:
         - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
         - type: object
           properties:
-            geslachtsnaam:
-              type: boolean
             voornamen:
+              type: boolean
+            adellijkeTitelPredicaat:
               type: boolean
             voorvoegsel:
               type: boolean
-            adellijkeTitelPredicaat:
+            geslachtsnaam:
+              type: boolean
+            voorletters:
               type: boolean
     NaamPersoon:
       allOf:
         - $ref: '#/components/schemas/NaamBasis'
         - properties:
+            aanduidingNaamgebruik:
+              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
             aanhef:
               $ref: '#/components/schemas/Aanhef'
             aanschrijfwijze:
               $ref: '#/components/schemas/Aanschrijfwijze'
             gebruikInLopendeTekst:
               $ref: '#/components/schemas/GebruikInLopendeTekst'
-            aanduidingNaamgebruik:
-              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
             inOnderzoek:
               $ref: '#/components/schemas/NaamPersoonInOnderzoek'
     NaamPersoonInOnderzoek:
@@ -160,5 +153,13 @@ components:
         - $ref: '#/components/schemas/NaamInOnderzoek'
         - type: object
           properties:
+            volledigeNaam:
+              type: boolean
             aanduidingNaamgebruik:
+              type: boolean
+            aanhef:
+              type: boolean
+            aanschrijfwijze:
+              type: boolean
+            gebruikInLopendeTekst:
               type: boolean

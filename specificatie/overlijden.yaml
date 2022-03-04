@@ -57,6 +57,8 @@ components:
         - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
         - type: object
           properties:
+            indicatieOverleden:
+              type: boolean
             datum:
               type: boolean
             land:

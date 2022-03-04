@@ -289,7 +289,7 @@ components:
             landVanwaarIngeschreven:
               $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
             inOnderzoek:
-              $ref: "#/components/schemas/VerblijfplaatsInOnderzoek"
+              $ref: "#/components/schemas/AdresInOnderzoek"
     Locatie:
       allOf:
         - $ref: '#/components/schemas/AbstractVerblijfplaats'
@@ -388,13 +388,23 @@ components:
         - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
         - type: object
           properties:
-            verblijfBuitenland:
+            adresregel1:
+              type: boolean
+            adresregel2:
+              type: boolean
+            adresregel3:
+              type: boolean
+            datumInschrijvingInGemeente:
+              type: boolean
+            gemeenteVanInschrijving:
+              type: boolean
+            land:
               type: boolean
             datumVan:
               type: boolean
             datumIngangGeldigheid:
               type: boolean
-    VerblijfplaatsInOnderzoek:
+    AdresInOnderzoek:
       allOf:
         - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
         - type: object
@@ -433,6 +443,14 @@ components:
               type: boolean
             woonplaats:
               type: boolean
+            adresregel1:
+              type: boolean
+            adresregel2:
+              type: boolean
+            indicatieVestigingVanuitBuitenland:
+              type: boolean
+            vanuitVerblijfplaatsOnbekend:
+              type: boolean
     VerblijfplaatsOnbekendInOnderzoek:
       allOf:
         - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
@@ -442,13 +460,17 @@ components:
               type: boolean
             gemeenteVanInschrijving:
               type: boolean
-            land:
+            verblijfplaatsOnbekend:
               type: boolean
     LocatieInOnderzoek:
       allOf:
         - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
         - type: object
           properties:
+            adresregel1:
+              type: boolean
+            adresregel2:
+              type: boolean
             datumInschrijvingInGemeente:
               type: boolean
             datumVestigingInNederland:
@@ -457,7 +479,13 @@ components:
               type: boolean
             gemeenteVanInschrijving:
               type: boolean
+            indicatieVestigingVanuitBuitenland:
+              type: boolean
             landVanwaarIngeschreven:
               type: boolean
             locatiebeschrijving:
+              type: boolean
+            vanuitVerblijfplaatsOnbekend:
+              type: boolean
+            woonplaats:
               type: boolean
