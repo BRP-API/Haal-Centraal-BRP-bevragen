@@ -21,7 +21,7 @@ components:
     X_Rate_Limit_Limit:
       schema:
         type: integer
-    X_Rate_Limit-Remaining:
+    X_Rate_Limit_Remaining:
       schema:
         type: integer
     X_Rate_Limit_Reset:
@@ -257,7 +257,7 @@ components:
             $ref: "#/components/schemas/Foutbericht"
           example:
             type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4
-            title: Bronservice {bron} is tijdelijk niet beschikbaar.
+            title: Bronservice BRP is tijdelijk niet beschikbaar.
             status: 503
             detail: The service is currently unable to handle the request due to a temporary overloading or maintenance of the server.
             instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
@@ -291,7 +291,7 @@ components:
           description: Http status code
         detail:
           type: string
-          pattern: ^[a-zA-Z0-9À-ž \.\-]{1,200}$
+          pattern: ^[a-zA-Z0-9À-ž \.\-\(\)\,]{1,200}$
           description: Details over de fout
         instance:
           type: string
@@ -323,7 +323,7 @@ components:
           example: "integer"
         reason:
           type: string
-          pattern: ^[a-zA-Z0-9\.,_]{1,80}$
+          pattern: ^[a-zA-Z0-9\.,_ ]{1,80}$
           description: Beschrijving van de fout op de parameterwaarde
           example: "Waarde is geen geldige integer."
     BadRequestFoutbericht:
