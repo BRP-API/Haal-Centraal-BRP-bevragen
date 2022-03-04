@@ -17,9 +17,11 @@ components:
         - type: object
           properties:
             land:
-              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
             plaats:
-              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
+            inOnderzoek:
+              $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     GeboorteBeperkt:
       type: object
       properties:
@@ -36,9 +38,9 @@ components:
         - type: object
           properties:
             land:
-              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
             plaats:
-              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
             inOnderzoek:
               $ref: '#/components/schemas/GeboorteInOnderzoek'
     GeboorteInOnderzoek:
