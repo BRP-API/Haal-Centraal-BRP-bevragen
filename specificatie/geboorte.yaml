@@ -20,8 +20,6 @@ components:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
             plaats:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
-            inOnderzoek:
-              $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     GeboorteBeperkt:
       type: object
       properties:
