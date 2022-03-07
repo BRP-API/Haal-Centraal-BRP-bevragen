@@ -35,9 +35,9 @@ Rule: een veld wordt niet opgenomen wanneer het de standaardwaarde bevat
     | type                | RaadpleegMetBurgerservicenummer    |
     | burgerservicenummer | 999992934                          |
     | fields              | burgerservicenummer,<groep>.<veld> |
-    Dan bevat de persoon met burgerservicenummer '999992934' alleen de volgende gegevens
-    | naam                  | waarde    |
-    | burgerservicenummer   | 999992934 |
+    Dan bevat de persoon met burgerservicenummer '999992934' de volgende '<groep>' gegevens NIET
+    | naam   | 
+    | <veld> |
 
     Voorbeelden:
     | groep          | veld                              | waarde           |
@@ -55,7 +55,7 @@ Rule: een veld wordt niet opgenomen wanneer het de standaardwaarde bevat
     En de persoon heeft een partner met de volgende gegevens
     | naam                        | waarde             |
     | burgerservicenummer         | 999992935          |
-    En de <relatie> met burgerservicenummer '999992935' heeft de volgende soortVerbintenis gegevens
+    En de partner met burgerservicenummer '999992935' heeft de volgende soortVerbintenis gegevens
     | naam        | waarde   |
     | code        | .        |
     Als personen wordt gezocht met de volgende parameters
