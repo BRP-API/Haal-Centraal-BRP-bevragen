@@ -15,7 +15,7 @@ Functionaliteit: Woonplaats wordt altijd gevuld voor een Nederlandse verblijfpla
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999992934 |
-    En de persoon heeft de volgende verblijfplaats gegevens
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
     | naam                   | waarde     |
     | woonplaatsnaam (11.70) | Scharwoude |
     Als personen wordt gezocht met de volgende parameters
@@ -23,50 +23,48 @@ Functionaliteit: Woonplaats wordt altijd gevuld voor een Nederlandse verblijfpla
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
     | fields              | verblijfplaats.woonplaats       |
-    Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'verblijfplaats' gegevens
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'verblijfplaats' gegevens
     | naam       | waarde     |
     | woonplaats | Scharwoude |
 
+  @skip-verify
   Scenario: persoon heeft niet-BAG adres in Nederland
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999990482 |
-    En de persoon heeft de volgende verblijfplaats gegevens
-    | naam                              | waarde         |
-    | woonplaatsnaam (11.70)            |                |
-    | straatnaam (11.10)                | een straatnaam |
-    | gemeente van inschrijving (09.10) | 1681           |
-    En de waardetabel 'Gemeenten' heeft de volgende waarden
-    | code | omschrijving  |
-    | 1681 | Borger-Odoorn |
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
+    | naam                                 | waarde         |
+    | woonplaatsnaam (11.70)               |                |
+    | straatnaam (11.10)                   | een straatnaam |
+    | gemeente van inschrijving (09.10)    | 1681           |
+    | gemeenteVanInschrijving.omschrijving | Borger-Odoorn  |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999990482                       |
     | fields              | verblijfplaats.woonplaats       |
-    Dan bevat de persoon met burgerservicenummer '999990482' de volgende 'verblijfplaats' gegevens
+    Dan heeft de persoon met burgerservicenummer '999990482' de volgende 'verblijfplaats' gegevens
     | naam       | waarde        |
     | woonplaats | Borger-Odoorn |
 
+  @skip-verify
   Scenario: persoon heeft een locatiebeschrijving voor de verblijfplaats
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 000009921 |
-    En de persoon heeft de volgende verblijfplaats gegevens
-    | naam                              | waarde                   |
-    | woonplaatsnaam (11.70)            |                          |
-    | straatnaam (11.10)                |                          |
-    | locatiebeschrijving (12.10)       | een locatie beschrijving |
-    | gemeente van inschrijving (09.10) | 0599                     |
-    En de waardetabel 'Gemeenten' heeft de volgende waarden
-    | code | omschrijving |
-    | 0599 | Rotterdam    |
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
+    | naam                                 | waarde                   |
+    | woonplaatsnaam (11.70)               |                          |
+    | straatnaam (11.10)                   |                          |
+    | locatiebeschrijving (12.10)          | een locatie beschrijving |
+    | gemeente van inschrijving (09.10)    | 0599                     |
+    | gemeenteVanInschrijving.omschrijving | Rotterdam                |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000009921                       |
     | fields              | verblijfplaats.woonplaats       |
-    Dan bevat de persoon met burgerservicenummer '000009921' de volgende 'verblijfplaats' gegevens
+    Dan heeft de persoon met burgerservicenummer '000009921' de volgende 'verblijfplaats' gegevens
     | naam       | waarde    |
     | woonplaats | Rotterdam |
 
@@ -74,7 +72,7 @@ Functionaliteit: Woonplaats wordt altijd gevuld voor een Nederlandse verblijfpla
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999993483 |
-    En de persoon heeft de volgende verblijfplaats gegevens
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
     | naam                          | waarde |
     | woonplaatsnaam (11.70)        |        |
     | straatnaam (11.10)            |        |
@@ -85,6 +83,6 @@ Functionaliteit: Woonplaats wordt altijd gevuld voor een Nederlandse verblijfpla
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999993483                       |
     | fields              | verblijfplaats.woonplaats       |
-    Dan bevat de persoon met burgerservicenummer '999993483' de volgende 'verblijfplaats' gegevens NIET
+    Dan heeft de persoon met burgerservicenummer '999993483' de volgende 'verblijfplaats' gegevens NIET
     | naam       |
     | woonplaats |
