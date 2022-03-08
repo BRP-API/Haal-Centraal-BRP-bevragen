@@ -6,6 +6,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
 
   Rule: de actuele gegevens van kinderen worden geleverd
 
+    @gba
     Scenario: de naam van een kind is gecorrigeerd
       Gegeven de persoon met burgerservicenummer 999996150 heeft de volgende kinderen in de registratie
         | Categorie | Voornamen (02.10)  | Voorvoegsel (02.30) | Geslachtsnaam (02.40) | Onjuist (84.10) |
@@ -15,61 +16,188 @@ Functionaliteit: Kinderen van een persoon raadplegen
         | 9         | Sebastiaan         | de                  | Boer                  |                 |
         | 9         | Walter             | de                  | Boer                  |                 |
         | 59        | Walter             |                     | Messeritz             | O               |
-      Als de persoon met burgerservicenummer 999996150 wordt geraadpleegd met fields=kinderen
-      Dan bevat het antwoord 3 kinderen
-      En bevat het antwoord het kind met naam.voornamen "William" naam.geslachtsnaam "Postma"
-      En bevat het antwoord het kind met naam.voornamen "Sebastiaan" naam.geslachtsnaam "Boer"
-      En bevat het antwoord het kind met naam.voornamen "Walter" naam.geslachtsnaam "Boer"
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999996150                       |
+      | fields              | kinderen.naam                   |
+      Dan heeft de persoon met burgerservicenummer '999996150' een kind met de volgende 'naam' gegevens
+      | naam          | waarde  |
+      | voornamen     | William |
+      | geslachtsnaam | Postma  |
+      En heeft de persoon met burgerservicenummer '999996150' een kind met de volgende 'naam' gegevens
+      | naam          | waarde     |
+      | voornamen     | Sebastiaan |
+      | voorvoegsel   | de         |
+      | geslachtsnaam | Boer       |
+      En heeft de persoon met burgerservicenummer '999996150' een kind met de volgende 'naam' gegevens
+      | naam          | waarde     |
+      | voornamen     | Walter     |
+      | voorvoegsel   | de         |
+      | geslachtsnaam | Boer       |
 
+    @gba
     Scenario: naamswijziging kind
       Gegeven de persoon met burgerservicenummer 999996381 heeft de volgende kinderen in de registratie
         | Categorie | Voornamen (02.10) |
         | 9         | Vica              |
         | 59        | Celeke Lodivica   |
         | 9         | Bella             |
-      Als de persoon met burgerservicenummer 999996381 wordt geraadpleegd met fields=kinderen
-      Dan bevat het antwoord 2 kinderen
-      En bevat het antwoord het kind met naam.voornamen "Vica"
-      En bevat het antwoord het kind met naam.voornamen "Bella"
-      En bevat het antwoord GEEN kind met naam.voornamen "Celeke Lodivica"
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999996150                       |
+      | fields              | kinderen.naam.voornamen         |
+      Dan heeft de persoon met burgerservicenummer '999996381' een kind met de volgende 'naam' gegevens
+      | naam      | waarde |
+      | voornamen | Vica   |
+      En heeft de persoon met burgerservicenummer '999996381' een kind met de volgende 'naam' gegevens
+      | naam      | waarde |
+      | voornamen | Bella  |
+      En heeft de persoon met burgerservicenummer '999996381' GEEN kind met de volgende 'naam' gegevens
+      | naam      | waarde          |
+      | voornamen | Celeke Lodivica |
 
 
   Rule: Een kind wordt alleen teruggegeven als minimaal één gegeven in de identificatienummers (groep 01), naam (groep 02) of geboorte (groep 03) van het kind een waarde heeft.
-    # wanneer in een categorie kind alleen gegevens zijn opgenomen in groep 81 of 82, 85 en 86, wordt dit kind niet opgenomen in het antwoord
-    # wanneer een gegeven een onbekendwaarde heeft, zoals . (punt) bij geslachtsnaam en 00000000 bij geboortedatum, wordt die in deze regel beschouwd als leeg (geen waarde).
+    - Wanneer een gegeven een standaardwaarde heeft, zoals "." (punt) bij geslachtsnaam of "00000000" bij geboortedatum, geldt dat hier als het bestaan van een waarde en wordt het kind wel geleverd
+    - de gebruikte fields parameter in het request heeft geen invloed op de toepassing van deze regel, zolang er maar ten minste één gegeven van een kind wordt gevraagd
 
-    Scenario: kind volledig onbekend
+    # N.B. wanneer in een categorie kind alleen gegevens zijn opgenomen in groep 81 of 82, 85 en 86, wordt dit kind niet opgenomen in het antwoord
+    
+
+    @gba
+    Abstract Scenario: kind volledig onbekend
       Gegeven de persoon met burgerservicenummer 555550001 heeft de volgende kinderen in de registratie
-        | Categorie | Voornamen (02.10)  | Voorvoegsel (02.30) | Geslachtsnaam (02.40) | Geboortedatum (03.10) |
-        | 9         |                    |                     | .                     |                       |
-      En er zijn geen andere gegevens geregistreerd over de identificatienummers (groep 01), naam (groep 02) of geboorte (groep 03) in categorie 9
-      Als de persoon met burgerservicenummer 555550001 wordt geraadpleegd met fields=kinderen
-      Dan bevat het antwoord GEEN kinderen
+      | Categorie | Burgerservicenummer (01.20) | Voornamen (02.10) | Voorvoegsel (02.30) | Geslachtsnaam (02.40) | Geboortedatum (03.10) | Gemeente document (82.10) | Datum document (82.20) | Beschrijving document (82.30) | Ingangsdatum geldigheid (85.10) | Datum van opneming (86.10) |
+      | 9         |                             |                   |                     | <geslachtsnaam>       | <geboortedatum>       | 1926                      | 20040105               | D27894-2004-A782              | 20031107                        | 20040112                   |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999996150                       |
+      | fields              | kinderen.naam                   |
+      Dan heeft de persoon met burgerservicenummer '555550001' een kind met de volgende 'naam' gegevens
+      | naam          | waarde          |
+      | geslachtsnaam | <geslachtsnaam> |
 
+      Voorbeelden:
+      | geslachtsnaam | geboortedatum |
+      | .             |               |
+      |               | 00000000      |
+      | .             | 00000000      |
+
+    @gba
     Scenario: ontkenning ouderschap
       Gegeven de persoon met burgerservicenummer 555550002 heeft de volgende kinderen in de registratie
-        | Categorie | Voornamen (02.10)  | Voorvoegsel (02.30) | Geslachtsnaam (02.40) | Geboortedatum (03.10) | Gemeente document (82.10) | Datum document (82.20) | Beschrijving document (82.30) | Ingangsdatum geldigheid (85.10) | Datum van opneming (86.10) |
-        | 9         |                    |                     |                       |                       | 1926                      | 20040105               | D27894-2004-A782              | 20031107                        | 20040112                   |
-        | 59        | Daan               | de                  | Vries                 | 20031107              | 0518                      | 20031109               | PL gerelateerde               | 20031107                        | 20031109                   |
-      En er zijn geen gegevens geregistreerd over de identificatienummers (groep 01), naam (groep 02) of geboorte (groep 03) in categorie 9
-      Als de persoon met burgerservicenummer 555550002 wordt geraadpleegd met fields=kinderen
+      | Categorie | Voornamen (02.10) | Voorvoegsel (02.30) | Geslachtsnaam (02.40) | Geboortedatum (03.10) | Gemeente document (82.10) | Datum document (82.20) | Beschrijving document (82.30) | Ingangsdatum geldigheid (85.10) | Datum van opneming (86.10) |
+      | 9         |                   |                     |                       |                       | 1926                      | 20040105               | D27894-2004-A782              | 20031107                        | 20040112                   |
+      | 59        | Daan              | de                  | Vries                 | 20031107              | 0518                      | 20031109               | PL gerelateerde               | 20031107                        | 20031109                   |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 555550002                       |
+      | fields              | kinderen                        |
       Dan bevat het antwoord GEEN kinderen
 
+    @gba
+    Scenario: met fields vragen om een gegeven zonder waarde
+      Gegeven de persoon met burgerservicenummer 555550001 heeft de volgende kinderen in de registratie
+      | Categorie | Burgerservicenummer (01.20) | Voornamen (02.10) | Voorvoegsel (02.30) | Geslachtsnaam (02.40) | Geboortedatum (03.10) | Gemeente document (82.10) | Datum document (82.20) | Beschrijving document (82.30) | Ingangsdatum geldigheid (85.10) | Datum van opneming (86.10) |
+      | 9         |                             |                   |                     | .                     |                       | 1926                      | 20040105               | D27894-2004-A782              | 20031107                        | 20040112                   |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999996150                       |
+      | fields              | kinderen.burgerservicenummer    |
+      Dan heeft de persoon met burgerservicenummer '555550001' exact 1 kind
 
-Rule: de geleverde kindgegevens zijn de gegevens zoals die staan op de persoonslijst van de gevraagde persoon
-  # bij het raadplegen van een persoon worden alleen gegevens uit de persoonslijst van de gevraagde persoon gebruikt, en nooit gegevens van de persoonslijst van het kind
+    @gba
+    Scenario: met fields niet vragen om een gegeven van het kind
+      Gegeven de persoon met burgerservicenummer 555550001 heeft de volgende kinderen in de registratie
+      | Categorie | Burgerservicenummer (01.20) | Voornamen (02.10) | Voorvoegsel (02.30) | Geslachtsnaam (02.40) | Geboortedatum (03.10) | Gemeente document (82.10) | Datum document (82.20) | Beschrijving document (82.30) | Ingangsdatum geldigheid (85.10) | Datum van opneming (86.10) |
+      | 9         |                             |                   |                     | .                     |                       | 1926                      | 20040105               | D27894-2004-A782              | 20031107                        | 20040112                   |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999996150                       |
+      | fields              | naam                            |
+      Dan heeft de persoon met burgerservicenummer '555550001' GEEN kinderen
+  
 
-  Scenario: Het kind heeft geslachtswijziging ondergaan, maar de gevraagde persoon erkent dit niet
-    Gegeven de persoon met burgerservicenummer 555550003 heeft de volgende kinderen in de registratie
-      | Categorie | Burgerservicenummer (01.20) | Voornamen |
-      | 9         | 555550004                   | Karel     |
-      | 9         | 555550005                   | Ellen     |
-    En het kind met burgerservicenummer 555550004 heeft haar geslachtsaanduiding en voornamen gewijzigd zodat de volgende persoonsgegevens in de registratie op haar persoonslijst staan:
+  Rule: de geleverde kindgegevens zijn de gegevens zoals die staan op de persoonslijst van de gevraagde persoon
+    Bij het raadplegen van een persoon worden alleen gegevens uit de persoonslijst van de gevraagde persoon gebruikt, en nooit gegevens van de persoonslijst van het kind
+
+    Scenario: Het kind heeft geslachtswijziging en naamswijziging ondergaan, maar de gevraagde persoon erkent dit niet
+      Gegeven de persoon met burgerservicenummer 555550003 heeft de volgende kinderen in de registratie
+      | Categorie | Burgerservicenummer (01.20) | Voornamen (02.10) |
+      | 9         | 555550004                   | Karel             |
+      | 59        | 555550004                   | Charlotte         |
+      | 59        | 555550004                   | Karel             |
+      En het kind met burgerservicenummer 555550004 heeft haar geslachtsaanduiding en voornamen gewijzigd zodat de volgende persoonsgegevens in de registratie op haar persoonslijst staan:
       | Categorie | Voornamen | Geslachtsaanduiding (04.10) |
       | 1         | Charlotte | V                           |
       | 51        | Karel     | M                           |
-    Als de persoon met burgerservicenummer 555550003 wordt geraadpleegd met fields=kinderen
-    Dan bevat het antwoord 2 kinderen
-    En bevat het antwoord het kind met naam.voornamen "Karel"
-    En bevat het antwoord het kind met naam.voornamen "Ellen"
-    En bevat het antwoord GEEN kind met naam.voornamen "Charlotte"
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                                               |
+      | type                | RaadpleegMetBurgerservicenummer                      |
+      | burgerservicenummer | 999996150                                            |
+      | fields              | kinderen.burgerservicenummer,kinderen.naam.voornamen |
+      Dan heeft het kind met burgerservicenummer '555550004' de volgende 'naam' gegevens
+      | naam      | waarde |
+      | voornamen | Karel  |
+
+  Rule: Wanneer alle gegevens van een kind een standaard onbekendwaarde hebben of geen waarde hebben, wordt het geleverd met type "OnbekendKind" en indicatieOnbekend met waarde true
+    Dit geldt wanneer na toepassen van onbekend_waardes.feature er geen enkel gegeven is opgenomen voor het kind
+
+    Wanneer geen van de met fields gevraagde kindgegevens een waarde heeft, maar andere gegevens van het kind wel, dan is het type "Kind" en wordt indicatieOnbekend NIET opgenomen
+
+    @proxy
+    Scenario: Kind is volledig onbekend
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 555550005 |
+      En de persoon heeft een kind met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer |           |
+      | geslachtsaanduiding |           |
+      En het kind heeft alleen de volgende 'naam' gegevens
+      | naam          | waarde |
+      | geslachtsnaam | .      |
+      En het kind heeft alleen de volgende 'geboorte' gegevens
+      | naam   | waarde   |
+      | datum  | 00000000 |
+      | plaats | 0000     |
+      | land   | 0000     |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 555550005                       |
+      | fields              | kinderen                        |
+      Dan heeft het kind alleen de volgende gegevens
+      | naam              | waarde       |
+      | type              | OnbekendKind |
+      | indicatieOnbekend | true         |
+
+    @proxy
+    Scenario: Met fields zijn alleen velden zonder waarde gevraagd
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 555550006 |
+      En de persoon heeft een kind met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 555550007 |
+      En het kind heeft alleen de volgende 'naam' gegevens
+      | naam          | waarde           |
+      | voornamen     |                  |
+      | geslachtsnaam | Ali bin Mohammed |
+      En het kind heeft alleen de volgende 'geboorte' gegevens
+      | naam  | waarde   |
+      | datum | 19750730 |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999993008                       |
+      | fields              | kinderen.voornamen              |
+      Dan heeft het kind alleen de volgende gegevens
+      | naam | waarde |
+      | type | Kind   |
