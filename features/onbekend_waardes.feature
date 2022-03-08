@@ -55,9 +55,7 @@ Rule: een veld wordt niet opgenomen wanneer het de standaardwaarde bevat
     En de persoon heeft een partner met de volgende gegevens
     | naam                        | waarde             |
     | burgerservicenummer         | 999992935          |
-    En de partner met burgerservicenummer '999992935' heeft de volgende soortVerbintenis gegevens
-    | naam        | waarde   |
-    | code        | .        |
+    | soort verbintenis (15.10)   | .                  |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                                                                     |
     | type                | RaadpleegMetBurgerservicenummer                                            |
