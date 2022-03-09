@@ -1,4 +1,5 @@
 ﻿using HaalCentraal.BrpService.Generated;
+using HaalCentraal.BrpService.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HaalCentraal.BrpService.Controllers
@@ -7,75 +8,68 @@ namespace HaalCentraal.BrpService.Controllers
     public class PersoonController : Generated.ControllerBase
     {
         private readonly ILogger<PersoonController> _logger;
-        private readonly IWebHostEnvironment _environment;
+        private readonly PersoonRepository _repository;
 
-        public PersoonController(ILogger<PersoonController> logger, IWebHostEnvironment environment)
+        public PersoonController(ILogger<PersoonController> logger, PersoonRepository repository)
         {
             _logger = logger;
-            _environment = environment;
+            _repository = repository;
         }
 
         public override async Task<ActionResult<PersonenQueryResponse>> GetPersonen([FromBody] PersonenQuery body)
         {
-            if (body is RaadpleegMetBurgerservicenummer)
+            return body switch
             {
-                return await Handle(body as RaadpleegMetBurgerservicenummer);
-            }
-            if(body is ZoekMetGeslachtsnaamEnGeboortedatum)
-            {
-                return await Handle(body as ZoekMetGeslachtsnaamEnGeboortedatum);
-            }
-            if(body is ZoekMetGeslachtsnaamEnGemeenteVanInschrijving)
-            {
-                return await Handle(body as ZoekMetGeslachtsnaamEnGemeenteVanInschrijving);
-            }
-            if(body is ZoekMetPostcodeEnHuisnummer)
-            {
-                return await Handle(body as ZoekMetPostcodeEnHuisnummer);
-            }
-            throw new InvalidOperationException($"Onbekend type query: {body}");
+                RaadpleegMetBurgerservicenummer q => await Handle(q),
+                ZoekMetGeslachtsnaamEnGeboortedatum q => await Handle(q),
+                ZoekMetNaamEnGemeenteVanInschrijving q => await Handle(q),
+                ZoekMetPostcodeEnHuisnummer q => await Handle(q),
+                _ => throw new InvalidOperationException($"Onbekend type query: {body}"),
+            };
         }
 
         private async Task<ActionResult<PersonenQueryResponse>> Handle(ZoekMetPostcodeEnHuisnummer query)
         {
-            _logger.LogInformation("ZoekMetPostcodeEnHuisnummer");
+            _logger.LogDebug(nameof(ZoekMetPostcodeEnHuisnummer));
 
-            var path = Path.Combine(_environment.ContentRootPath, $"Data/postcode-huisnummer-{query.Postcode}-{query.Huisnummer}.json");
-            var data = await System.IO.File.ReadAllTextAsync(path);
-            var retval = Newtonsoft.Json.JsonConvert.DeserializeObject<PersonenQueryResponse>(data);
+            var retval = await _repository.Zoek<ZoekMetPostcodeEnHuisnummer, ZoekMetPostcodeEnHuisnummerResponse>(query);
+
+            retval.Personen = retval.Personen.Where(x => string.Compare(x.Verblijfplaats?.Postcode, query.Postcode, true) == 0 &&
+                                                         x.Verblijfplaats?.Huisnummer == query.Huisnummer).ToList();
 
             return Ok(retval);
         }
 
-        private async Task<ActionResult<PersonenQueryResponse>> Handle(ZoekMetGeslachtsnaamEnGemeenteVanInschrijving query)
+        private async Task<ActionResult<PersonenQueryResponse>> Handle(ZoekMetNaamEnGemeenteVanInschrijving query)
         {
-            _logger.LogInformation("ZoekMetGeslachtsnaamEnGemeenteVanInschrijving");
+            _logger.LogDebug(nameof(ZoekMetNaamEnGemeenteVanInschrijving));
 
-            var path = Path.Combine(_environment.ContentRootPath, $"Data/geslachtsnaam-gemeente-{query.Geslachtsnaam}-{query.GemeenteVanInschrijving}.json");
-            var data = await System.IO.File.ReadAllTextAsync(path);
-            var retval = Newtonsoft.Json.JsonConvert.DeserializeObject<PersonenQueryResponse>(data);
+            var retval = await _repository.Zoek<ZoekMetNaamEnGemeenteVanInschrijving, ZoekMetNaamEnGemeenteVanInschrijvingResponse>(query);
 
+            retval.Personen = retval.Personen.Where(x => string.Compare(x.Naam?.Geslachtsnaam, query.Geslachtsnaam, true) == 0 &&
+                                                         string.Compare(x.Naam?.Voornamen, query.Voornamen, true) == 0 &&
+                                                         x.Verblijfplaats?.GemeenteVanInschrijving?.Code == query.GemeenteVanInschrijving).ToList();
             return Ok(retval);
         }
 
         private async Task<ActionResult<PersonenQueryResponse>> Handle(ZoekMetGeslachtsnaamEnGeboortedatum query)
         {
-            _logger.LogInformation("ZoekMetGeslachtsnaamEnGeboortedatum");
+            _logger.LogDebug("ZoekMetGeslachtsnaamEnGeboortedatum: {query}", query);
 
-            var path = Path.Combine(_environment.ContentRootPath, $"Data/geslachtsnaam-geboortedatum-{query.Geslachtsnaam}-{query.Geboortedatum.Value.ToString("yyyy-MM-dd")}.json");
-            var data = await System.IO.File.ReadAllTextAsync(path);
-            var retval = Newtonsoft.Json.JsonConvert.DeserializeObject<PersonenQueryResponse>(data);
+            var retval = await _repository.Zoek<ZoekMetGeslachtsnaamEnGeboortedatum, ZoekMetGeslachtsnaamEnGeboortedatumResponse>(query);
+
+            retval.Personen = retval.Personen.AsQueryable().Where(query.ToSpecification().ToExpression()).ToList();
 
             return Ok(retval);
         }
 
         private async Task<ActionResult<PersonenQueryResponse>> Handle(RaadpleegMetBurgerservicenummer query)
         {
-            _logger.LogInformation("ZoekMetBurgerservicenummer");
+            _logger.LogDebug("RaadpleegMetBurgerservicenummer: {query}", query);
 
-            var path = Path.Combine(_environment.ContentRootPath, $"Data/bsn-{string.Join("-", query.Burgerservicenummer)}.json");
-            var data = await System.IO.File.ReadAllTextAsync(path);
-            var retval = Newtonsoft.Json.JsonConvert.DeserializeObject<PersonenQueryResponse>(data);
+            var retval = await _repository.Zoek<RaadpleegMetBurgerservicenummer, RaadpleegMetBurgerservicenummerResponse>(query);
+
+            retval.Personen = retval.Personen.AsQueryable().Where(query.ToSpecification().ToExpression()).ToList();
 
             return Ok(retval);
         }

@@ -3,7 +3,7 @@
   "defaultVariables": null,
   "documentGenerator": {
     "fromDocument": {
-      "url": "../../specificatie/genereervariant/openapi.yaml",
+      "url": "../../specificatie/gba-genereervariant/openapi.yaml",
       "output": null,
       "newLineBehavior": "Auto"
     }

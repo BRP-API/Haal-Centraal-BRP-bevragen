@@ -28,7 +28,7 @@ builder.Services.AddControllers()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//builder.Services.AddScoped<PersoonRepository>();
+builder.Services.AddScoped<PersoonRepository>();
 
 var app = builder.Build();
 
