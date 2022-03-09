@@ -8,7 +8,9 @@ setWorldConstructor(World);
 
 const propertyNameMap = new Map([
     ['aanduiding bij huisnummer (11.50)', 'aanduidingBijHuisnummer.code'],
+    ['aanduiding naamgebruik (61.10)', 'aanduidingNaamgebruik.code'],
     ['adellijke titel of predikaat (02.20)', 'adellijkeTitelPredikaat.code'],
+    ['geslachtsaanduiding (04.10)', 'geslachtsaanduiding.code'],
     ['geslachtsnaam (02.40)', 'geslachtsnaam'],
     ['huisletter (11.30)', 'huisletter'],
     ['huisnummer (11.20)', 'huisnummer'],
@@ -18,9 +20,10 @@ const propertyNameMap = new Map([
     ['regel 1 adres buitenland (13.30)', 'adresregel1'],
     ['regel 2 adres buitenland (13.40)', 'adresregel2'],
     ['regel 3 adres buitenland (13.50)', 'adresregel3'],
-    ['gemeente van inschrijving (09.10)', 'gemeenteVanInschrijving'],
+    ['gemeente van inschrijving (09.10)', 'gemeenteVanInschrijving.code'],
     ['land adres buitenland (13.10)', 'land.code'],
     ['naam openbare ruimte (11.15)', 'naamOpenbareRuimte'],
+    ['soort verbintenis (15.10)', 'soortVerbintenis.code'],
     ['straatnaam (11.10)', 'straat'],
     ['voornamen (02.10)', 'voornamen'],
     ['voorvoegsel (02.30)', 'voorvoegsel'],
@@ -33,27 +36,107 @@ function mapRowToProperty(obj, row) {
         propertyName = row.naam;
     }
 
-    if(row.waarde !== undefined && row.waarde !== '') {
-        if(propertyName.includes('.')) {
-            let propertyNames = propertyName.split('.');
-            let property = obj;
+    setProperty(obj, propertyName, row.waarde);
+}
 
-            propertyNames.forEach(function(propertyName, index) {
-                if(index === propertyNames.length-1) {
-                    property[propertyName] = String(row.waarde); 
-                }
-                else {
-                    if(property[propertyName] === undefined) {
-                        property[propertyName] = {};
-                    }
-                    property = property[propertyName];
-                }
-            });
-        }
-        else {
-            obj[propertyName] = String(row.waarde);
-        }
+function getProperty(obj, propertyName) {
+    if(propertyName.includes('.')) {
+        let propertyNames = propertyName.split('.');
+        let property = obj;
+
+        propertyNames.forEach(function(propName, index) {
+            if(index === propertyNames.length-1) {
+                return property !== undefined ? property[propName] : undefined; 
+            }
+            else {
+                property = property[propName];
+            }
+        });
     }
+
+    return obj[propertyName]; 
+}
+
+function setProperty(obj, propertyName, propertyValue) {
+    if(propertyValue === undefined || propertyValue === '') {
+        return;
+    }
+
+    if(propertyName.includes('.')) {
+        let propertyNames = propertyName.split('.');
+        let property = obj;
+
+        propertyNames.forEach(function(propName, index) {
+            if(index === propertyNames.length-1) {
+                property[propName] = String(propertyValue); 
+            }
+            else {
+                if(property[propName] === undefined) {
+                    property[propName] = {};
+                }
+                property = property[propName];
+            }
+        });
+    }
+    else {
+        obj[propertyName] = String(propertyValue);
+    }
+}
+
+function getColumns(dataTable) {
+    let columns = dataTable.raw()[0];
+    columns.forEach(function(column, index) {
+        let propertyName = propertyNameMap.get(column);
+        if(propertyName !== undefined) {
+            columns[index] = propertyName;
+        }
+    });
+    return columns;
+}
+
+function setProperties(obj, propertyGroupName, propertyNames, propertyValues)
+{
+    if(obj[propertyGroupName] === undefined) {
+        obj[propertyGroupName] = {};
+    }
+
+    propertyNames.forEach(function(propName, index) {
+        let propertyName = propertyNameMap.get(propName);
+        if(propertyName === undefined) {
+            propertyName = propName;
+        }
+        let propertyValue = propertyValues[index];
+
+        setProperty(obj[propertyGroupName], propertyName, propertyValue);
+    });
+}
+
+function setPersonenProperties(personen, propertyGroupName, dataTable) {
+    const columns = getColumns(dataTable);
+
+    dataTable.raw().slice(1).forEach(function(row) {
+        let persoon = personen.find(function(p) {
+            return p.burgerservicenummer === row[0];
+        });
+        if(persoon === undefined) {
+            persoon = {
+                burgerservicenummer: row[0]
+            };
+            personen.push(persoon);
+        }
+
+        setProperties(persoon, propertyGroupName, columns.slice(1), row.slice(1));
+    });
+}
+
+function setPersoonProperties(persoon, propertyGroupName, dataTable) {
+    if(persoon[propertyGroupName] === undefined) {
+        persoon[propertyGroupName] = {};
+    }
+
+    dataTable.hashes().forEach(function(row) {
+        mapRowToProperty(persoon[propertyGroupName], row);
+    });
 }
 
 Given('het systeem heeft een persoon met de volgende gegevens', function (dataTable) {
@@ -65,6 +148,25 @@ Given('het systeem heeft een persoon met de volgende gegevens', function (dataTa
 
     dataTable.hashes().forEach(function(row) {
         mapRowToProperty(persoon, row);
+    });
+});
+
+Given('het systeem heeft personen met de volgende gegevens', function (dataTable) {
+    const columns = getColumns(dataTable);
+    let personen = this.context.zoekResponse.personen;
+
+    dataTable.raw().slice(1).forEach(function(row) {
+        let persoon = {};
+        columns.forEach(function(column, index) {
+            let propertyName = propertyNameMap.get(column);
+            if(propertyName === undefined) {
+                propertyName = column;
+            }
+            let propertyValue = row[index];
+
+            setProperty(persoon, propertyName, propertyValue);
+        });
+        personen.push(persoon);
     });
 });
 
@@ -90,45 +192,79 @@ Given('de persoon heeft de volgende naam gegevens', function (dataTable) {
     });
 });
 
-Given('de persoon heeft de volgende verblijfplaats gegevens', function (dataTable) {
-    if(this.context.persoon.verblijfplaats === undefined) {
-        this.context.persoon.verblijfplaats = {
-            type: 'GbaVerblijfplaats'
-        };
+Given('de persoon heeft de volgende {string} gegevens', function (gegevensgroep, dataTable) {
+    setPersoonProperties(this.context.persoon, gegevensgroep, dataTable);
+});
+
+Given('het systeem heeft personen met de volgende {string} gegevens', function (gegevensgroep, dataTable) {
+    setPersonenProperties(this.context.zoekResponse.personen, gegevensgroep, dataTable);
+});
+
+Given('de persoon heeft nooit een actueel of ontbonden huwelijk of partnerschap gehad', function () {
+});
+
+Given('de persoon heeft een actuele partner met adellijke titel', function () {
+});
+
+Given('de persoon heeft een ontbonden partner met adellijke titel', function () {
+});
+
+Given('de persoon heeft een actuele partner met predikaat', function () {
+});
+
+Given('de persoon heeft een ontbonden partner met predikaat', function () {
+});
+
+Given('de persoon heeft een partner met de volgende gegevens', function (dataTable) {
+    if(this.context.persoon.partners === undefined) {
+        this.context.persoon.partners = [];
     }
-    let verblijfplaats = this.context.persoon.verblijfplaats;
+    if(this.context.partner !== undefined) {
+        this.context.persoon.partners.push(this.context.partner);
+    }
+    this.context.partner = {};
+    let partner = this.context.partner;
 
     dataTable.hashes().forEach(function(row) {
-        mapRowToProperty(verblijfplaats, row);
+        mapRowToProperty(partner, row);
+    });
+});
+
+Given('de partner heeft de volgende naam gegevens', function (dataTable) {
+    if(this.context.partner.naam === undefined) {
+        this.context.partner.naam = {};
+    }
+    let naam = this.context.partner.naam;
+
+    dataTable.hashes().forEach(function(row) {
+        mapRowToProperty(naam, row);
+    });
+});
+
+Given('de partner heeft de volgende aangaanHuwelijkPartnerschap gegevens', function (dataTable) {
+    if(this.context.partner.aangaanHuwelijkPartnerschap === undefined) {
+        this.context.partner.aangaanHuwelijkPartnerschap = {};
+    }
+    let aangaanHuwelijkPartnerschap = this.context.partner.aangaanHuwelijkPartnerschap;
+
+    dataTable.hashes().forEach(function(row) {
+        mapRowToProperty(aangaanHuwelijkPartnerschap, row);
     });
 });
 
 Given('de waardetabel {string} heeft de volgende waarden', function (string, dataTable) {
-    // Write code here that turns the phrase above into concrete actions
-    return 'pending';
 });
 
 function determineDataPath(baseDataPath, config) {
     switch(config.data.type) {
         case "RaadpleegMetBurgerservicenummer":
-            return config.data.burgerservicenummer !== undefined
-                ? `${baseDataPath}/bsn-${config.data.burgerservicenummer.join("-")}.json`
-                : `${baseDataPath}/bsn.json`;
+            return `${baseDataPath}/bsn.json`;
         case "ZoekMetGeslachtsnaamEnGeboortedatum":
-            return config.data.geslachtsnaam !== undefined &&
-                   config.data.geboortedatum !== undefined
-                 ? `${baseDataPath}/geslachtsnaam-geboortedatum-${config.data.geslachtsnaam}-${config.data.geboortedatum}.json`
-                 : `${baseDataPath}/geslachtsnaam-geboortedatum.json`;
-        case "ZoekMetGeslachtsnaamEnGemeenteVanInschrijving":
-            return config.data.geslachtsnaam !== undefined &&
-                   config.data.gemeenteVanInschrijving !== undefined
-                 ? `${baseDataPath}/geslachtsnaam-gemeente-${config.data.geslachtsnaam}-${config.data.gemeenteVanInschrijving}.json`
-                 : `${baseDataPath}/geslachtsnaam-gemeente.json`;
+            return `${baseDataPath}/geslachtsnaam-geboortedatum.json`;
+        case "ZoekMetNaamEnGemeenteVanInschrijving":
+            return `${baseDataPath}/naam-gemeentevaninschrijving.json`;
         case "ZoekMetPostcodeEnHuisnummer":
-            return config.data.postcode !== undefined &&
-                   config.data.huisnummer !== undefined
-                 ? `${baseDataPath}/postcode-huisnummer-${config.data.postcode}-${config.data.huisnummer}.json`
-                 : `${baseDataPath}/postcode-huisnummer.json`;
+            return `${baseDataPath}/postcode-huisnummer.json`;
         default:
             console.log(`Onbekend zoek type: ${config.data.type}`);
             return '';
@@ -153,6 +289,9 @@ When('personen wordt gezocht met de volgende parameters', async function (dataTa
         data: requestBody
     };
 
+    if(this.context.partner !== undefined) {
+        this.context.persoon.partners.push(this.context.partner);
+    }
     this.context.zoekResponse.personen.push(this.context.persoon);
     this.context.zoekResponse.type = config.data.type;
 
@@ -184,6 +323,7 @@ When('personen wordt geraadpleegd met de volgende parameters', async function (d
         this.context.response = await axios(config);
     }
     catch(e) {
+        console.log(e);
         this.context.response = e.response;
     }
 });
@@ -191,7 +331,7 @@ When('personen wordt geraadpleegd met de volgende parameters', async function (d
 Then('bevat de response alleen personen met de volgende gegevens', function (dataTable) {
     const personen = this.context.response.data.personen;
 
-    personen.length.should.equal(dataTable.hashes().length, `aantal personen in response ${personen.length} is ongelijk aan aantal expected ${dataTable.hashes().length}`);
+    personen.length.should.equal(dataTable.hashes().length, `aantal personen in response ${personen.length} is ongelijk aan aantal expected ${dataTable.hashes().length}\npersonen: ${JSON.stringify(personen, null, "\t")}`);
 
     dataTable.hashes().forEach(function(value) {
         const persoon = personen.find(function(p){
@@ -326,5 +466,64 @@ Then('bevat de persoon met burgerservicenummer {string} de volgende verblijfplaa
         let actual = persoon.verblijfplaats[row.naam];
 
         should.not.exist(actual, `verblijf gegeven '${row.naam}' gevonden\npersoon: ${JSON.stringify(persoon, null, "\t")}`);
+    });
+});
+
+Then('bevat de response geen personen', function () {
+    const personen = this.context.response.data.personen;
+
+    personen.length.should.equal(0);
+});
+
+Then('heeft de persoon met burgerservicenummer {string} de volgende {string} gegevens', function (burgerservicenummer, gegevensgroep, dataTable) {
+    const personen = this.context.response.data.personen;
+    const persoon = personen.find(function(p) {
+        return p.burgerservicenummer === burgerservicenummer;
+    });
+    const obj = persoon[gegevensgroep];
+    should.exist(obj, `geen gegevensgroep '${gegevensgroep}' gevonden.\npersoon: ${JSON.stringify(persoon, null, "\t")}`)
+
+    dataTable.hashes().forEach(function(row) {
+        const actual = String(getProperty(obj, row.naam));
+
+        actual.should.equal(row.waarde, `geen ${gegevensgroep} gegeven '${row.naam}' gevonden met waarde '${row.waarde}'\npersoon: ${JSON.stringify(persoon, null, "\t")}`);
+    });
+});
+
+Then('heeft de persoon met burgerservicenummer {string} de volgende {string} gegevens NIET', function (burgerservicenummer, gegevensgroep, dataTable) {
+    const personen = this.context.response.data.personen;
+    const persoon = personen.find(function(p) {
+        return p.burgerservicenummer === burgerservicenummer;
+    });
+    const obj = persoon[gegevensgroep];
+    should.exist(obj, `geen gegevensgroep '${gegevensgroep}' gevonden.\npersoon: ${JSON.stringify(persoon, null, "\t")}`)
+
+    dataTable.hashes().forEach(function(row) {
+        let actual = obj[row.naam];
+
+        should.not.exist(actual, `${gegevensgroep} gegeven '${row.naam}' gevonden.'\npersoon: ${JSON.stringify(persoon, null, "\t")}`);
+    });
+});
+
+Then('heeft de partner met burgerservicenummer {string} de volgende {string} gegevens NIET', function (burgerservicenummer, gegevensgroep, dataTable) {
+    const personen = this.context.response.data.personen;
+    const persoon = personen.find(function(person) {
+        return person.partners.find(function(p) {
+            return p.burgerservicenummer === burgerservicenummer;
+        });
+    });
+    should.exist(persoon, `geen persoon met partner met bsn '${burgerservicenummer}' gevonden.\npersonen: ${JSON.stringify(personen, null, "\t")}`);
+    const partner = persoon.partners.find(function(p) {
+        return p.burgerservicenummer === burgerservicenummer;
+    });
+    const obj = gegevensgroep !== undefined && gegevensgroep !== ''
+        ? partner[gegevensgroep]
+        : partner;
+    should.exist(obj, `geen gegevensgroep '${gegevensgroep}' gevonden.\npartner: ${JSON.stringify(partner, null, "\t")}`)
+
+    dataTable.hashes().forEach(function(row) {
+        let actual = obj[row.naam];
+
+        should.not.exist(actual, `${gegevensgroep} gegeven '${row.naam}' gevonden.'\npartner: ${JSON.stringify(partner, null, "\t")}`);
     });
 });

@@ -2,8 +2,7 @@ class World {
     constructor({parameters}) {
         this.context = {
             dataPath: "src/BrpService/Data",
-            // serverUrl: "https://localhost:7098/haalcentraal/api/brp",
-            serverUrl: "https://localhost:7074",
+            serverUrl: "https://localhost:5001/haalcentraal/api/brp",
             persoon: {},
             zoekResponse: {
                 personen: []
