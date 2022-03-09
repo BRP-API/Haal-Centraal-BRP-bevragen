@@ -1,29 +1,25 @@
 ﻿using HaalCentraal.BrpProxy.Generated;
+using HaalCentraal.BrpProxy.Generated.Gba;
 
 namespace BrpProxy.Mappers
 {
     public static class VerblijfplaatsMapper
     {
-        public static AbstractVerblijfplaats Map(this AbstractVerblijfplaats verblijfplaats)
+        public static AbstractVerblijfplaats Map(this GbaVerblijfplaats verblijfplaats)
         {
-            if (verblijfplaats is GbaVerblijfplaats gba)
+            return new Adres
             {
-                var retval = new Adres();
-
-                retval.Straat = gba.MapStraat();
-                retval.KorteNaam = gba.Straat;
-
-                return retval;
-            }
-
-            return verblijfplaats;
+                Straat = verblijfplaats?.MapStraat(),
+                KorteNaam = verblijfplaats?.Straat,
+                Woonplaats = verblijfplaats?.Woonplaats
+            };
         }
 
         private static string MapStraat(this GbaVerblijfplaats gba)
         {
             return !string.IsNullOrEmpty(gba.NaamOpenbareRuimte)
-                ? gba.NaamOpenbareRuimte
-                : gba.Straat;
+                    ? gba.NaamOpenbareRuimte
+                    : gba.Straat;
         }
     }
 }

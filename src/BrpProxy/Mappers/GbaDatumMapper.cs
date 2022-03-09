@@ -6,20 +6,20 @@ namespace BrpProxy.Mappers;
 
 public static class GbaDatumMapper
 {
-    private static Regex GbaDatumRegex = new Regex("^(?<jaar>[0-9]{4})(?<maand>[0-9]{2})(?<dag>[0-9]{2})$");
+    private static readonly Regex GbaDatumRegex = new("^(?<jaar>[0-9]{4})(?<maand>[0-9]{2})(?<dag>[0-9]{2})$");
 
-    public static AbstractDatum Map(this GbaDatum datum)
+    public static AbstractDatum Map(this string datum)
     {
-        if (GbaDatumRegex.IsMatch(datum.Datum))
+        if (GbaDatumRegex.IsMatch(datum))
         {
-            var match = GbaDatumRegex.Match(datum.Datum);
+            var match = GbaDatumRegex.Match(datum);
             var jaar = int.Parse(match.Groups["jaar"].Value, CultureInfo.InvariantCulture);
             var maand = int.Parse(match.Groups["maand"].Value, CultureInfo.InvariantCulture);
             var dag = int.Parse(match.Groups["dag"].Value, CultureInfo.InvariantCulture);
 
             if (jaar != 0 && maand != 0 && dag != 0)
             {
-                return new VolledigDatum { Datum = new DateTime(jaar, maand, dag) };
+                return new VolledigeDatum { Datum = new DateTime(jaar, maand, dag) };
             }
             if (jaar == 0 && maand == 0 && dag == 0)
             {
@@ -34,6 +34,6 @@ public static class GbaDatumMapper
                 return new JaarDatum { Jaar = jaar };
             }
         }
-        return datum;
+        return new OnbekendDatum();
     }
 }

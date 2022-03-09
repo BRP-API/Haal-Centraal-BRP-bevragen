@@ -1,36 +1,87 @@
 ﻿using HaalCentraal.BrpProxy.Generated;
+using HaalCentraal.BrpProxy.Generated.Gba;
+using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 
 namespace BrpProxy.Mappers;
 
 public static class NaamMapper
 {
-    public static void Map(this NaamBasis naam)
+    public static NaamBasis? Map(this GbaNaamBasis? naam)
     {
-        if (naam == null) return;
-
-        naam.VolledigeNaam = MapNaarVolledigeNaam(naam.Voornamen, naam.Voorvoegsel, naam.Geslachtsnaam, naam.AdellijkeTitelPredikaat);
-        naam.Voorletters = naam.Voornamen.MapNaarVoorletters();
+        return naam != null
+            ? new NaamBasis
+        {
+                Geslachtsnaam = naam.Geslachtsnaam,
+                VolledigeNaam = MapNaarVolledigeNaam(naam.Voornamen, naam.Voorvoegsel, naam.Geslachtsnaam, naam.AdellijkeTitelPredicaat),
+            Voorletters = naam.Voornamen.MapNaarVoorletters()
+        }
+            : null;
     }
 
-    public static string MapNaarVolledigeNaam(string voornamen, string voorvoegsel, string geslachtsnaam, Waardetabel adellijkeTitelPredikaat)
+    private static string VoorvoegselEnGeslachtsnaam(this IGbaNaam naam)
     {
-        var adellijkeTitel = adellijkeTitelPredikaat.MapNaarAdellijkeTitel();
-        var predikaat = adellijkeTitelPredikaat.MapNaarPredikaat();
+        return string.IsNullOrWhiteSpace(naam.Voorvoegsel)
+            ? naam.Geslachtsnaam
+            : $"{naam.Voorvoegsel} {naam.Geslachtsnaam}";
+    }
+
+    public static Aanschrijfwijze MapNaarAanschrijfwijze(this GbaNaamPersoon naam, ICollection<GbaPartner> partners)
+    {
+        var aanschrijfwijze = string.Empty;
+        var partnerNaam = partners != null && partners.Any() ? partners.ElementAt(0).Naam : null;
+        switch (naam.AanduidingNaamgebruik.Code)
+        {
+            case "E":
+                aanschrijfwijze = $"{naam.Predicaat()} {naam.Voorletters()} {naam.Titel()} {naam.VoorvoegselEnGeslachtsnaam()}";
+                break;
+            case "N":
+                aanschrijfwijze = $"{naam.Predicaat()} {naam.Voorletters()} {naam.Titel()} {naam.VoorvoegselEnGeslachtsnaam()}-{partnerNaam?.VoorvoegselEnGeslachtsnaam()}";
+                break;
+            case "P":
+                aanschrijfwijze = $"{partnerNaam?.Predicaat()} {naam.Voorletters()} {partnerNaam?.Titel()} {partnerNaam?.VoorvoegselEnGeslachtsnaam()}";
+                break;
+            case "V":
+                aanschrijfwijze = $"{partnerNaam?.Predicaat()} {naam.Voorletters()} {partnerNaam?.Titel()} {partnerNaam?.VoorvoegselEnGeslachtsnaam()}-{naam.Titel()} {naam.VoorvoegselEnGeslachtsnaam()}";
+                break;
+            default:
+                break;
+        }
+        return new Aanschrijfwijze
+        {
+            Naam = Regex.Replace(aanschrijfwijze, @"\s+", " ").Replace("- ", "-").Trim()
+        };
+    }
+
+    public static string MapNaarVolledigeNaam(string voornamen, string voorvoegsel, string geslachtsnaam, AdellijkeTitelPredicaatType adellijkeTitelPredicaat)
+    {
+        var adellijkeTitel = adellijkeTitelPredicaat.MapNaarAdellijkeTitel();
+        var predikaat = adellijkeTitelPredicaat.MapNaarPredicaat();
 
         var retval = Regex.Replace($"{predikaat} {voornamen} {adellijkeTitel} {voorvoegsel} {geslachtsnaam}", @"\s+", " ").Trim();
 
         return retval;
     }
 
-    public static string MapNaarAdellijkeTitel(this Waardetabel waardetabel)
+    private static string Titel(this IGbaNaam naam)
+    {
+        return naam.AdellijkeTitelPredicaat.MapNaarAdellijkeTitel();
+    }
+
+    public static string MapNaarAdellijkeTitel(this AdellijkeTitelPredicaatType waardetabel)
     {
         if (waardetabel == null) return string.Empty;
 
         switch (waardetabel.Code)
         {
+            case "B":
+                return "baron";
             case "BS":
                 return "barones";
+            case "G":
+                return "graaf";
+            case "GI":
+                return "gravin";
             case "R":
                 return "ridder";
             default:
@@ -38,20 +89,32 @@ public static class NaamMapper
         }
     }
 
-    public static string MapNaarPredikaat(this Waardetabel waardetabel)
+    private static string Predicaat(this IGbaNaam naam)
+    {
+        return naam.AdellijkeTitelPredicaat.MapNaarPredicaat();
+    }
+
+    public static string MapNaarPredicaat(this AdellijkeTitelPredicaatType waardetabel)
     {
         if (waardetabel == null) return string.Empty;
 
         switch (waardetabel.Code)
         {
+            case "JH":
+                return "Jonkheer";
             case "JV":
-                return "jonkvrouw";
+                return "Jonkvrouw";
             default:
                 return string.Empty;
         }
     }
 
-    public static string MapNaarVoorletters(this string voornamen)
+    public static string Voorletters(this GbaNaamPersoon naam)
+    {
+        return naam.Voornamen.MapNaarVoorletters();
+    }
+
+    private static string MapNaarVoorletters(this string voornamen)
     {
         if (string.IsNullOrWhiteSpace(voornamen) ||
             voornamen == ".")

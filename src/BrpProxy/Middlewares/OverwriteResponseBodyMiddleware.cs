@@ -1,7 +1,9 @@
 ﻿using BrpProxy.Mappers;
 using HaalCentraal.BrpProxy.Generated;
+using Gba = HaalCentraal.BrpProxy.Generated.Gba;
 using Newtonsoft.Json;
 using System.IO.Compression;
+using AutoMapper;
 
 namespace BrpProxy.Middlewares
 {
@@ -9,15 +11,23 @@ namespace BrpProxy.Middlewares
     {
         private readonly RequestDelegate _next;
         private readonly ILogger<OverwriteResponseBodyMiddleware> _logger;
+        private readonly IMapper _mapper;
 
-        public OverwriteResponseBodyMiddleware(RequestDelegate next, ILogger<OverwriteResponseBodyMiddleware> logger)
+        public OverwriteResponseBodyMiddleware(RequestDelegate next, ILogger<OverwriteResponseBodyMiddleware> logger, IMapper mapper)
         {
             _next = next;
             _logger = logger;
+            _mapper = mapper;
         }
 
         public async Task Invoke(HttpContext context)
         {
+            var requestBody = await context.Request.ReadBodyAsync();
+            _logger.LogDebug("original requestBody: {requestBody}", requestBody);
+            var modifiedRequestBody = requestBody.Replace("\"fields\": \"\"", "\"fields\": \"aanschrijfwijze\"");
+            using var requestBodyStream = modifiedRequestBody.ToMemoryStream();
+            context.Request.Body = requestBodyStream;
+
             var orgBodyStream = context.Response.Body;
 
             using var newBodyStream = new MemoryStream();
@@ -27,9 +37,11 @@ namespace BrpProxy.Middlewares
 
             var body = await context.Response.ReadBodyAsync();
 
-            _logger.LogInformation($"original: {body}");
+            _logger.LogDebug("original responseBody: {body}", body);
 
-            var modifiedBody = body.Transform();
+            var modifiedBody = body.Transform(_mapper);
+
+            _logger.LogDebug("transformed responseBody: {modifiedBody}", modifiedBody);
 
             using var bodyStream = modifiedBody.ToMemoryStream();
 
@@ -40,50 +52,54 @@ namespace BrpProxy.Middlewares
 
     public static class BrpHelpers
     {
-        public static string Transform(this string payload)
+        public static string Transform(this string payload, IMapper mapper)
         {
-            var personen = JsonConvert.DeserializeObject<PersonenQueryResponse>(payload);
+            PersonenQueryResponse retval = null;
+            var response = JsonConvert.DeserializeObject<Gba.PersonenQueryResponse>(payload);
 
-            switch (personen)
+            switch (response)
             {
-                case RaadpleegMetBurgerservicenummerResponse p:
-                    p.Personen.Map();
+                case Gba.RaadpleegMetBurgerservicenummerResponse p:
+                    retval = mapper.Map<RaadpleegMetBurgerservicenummerResponse>(p);
                     break;
-                case ZoekMetGeslachtsnaamEnGeboortedatumResponse pb:
-                    pb.Personen.Map();
+                case Gba.ZoekMetGeslachtsnaamEnGeboortedatumResponse pb:
+                    retval = mapper.Map<ZoekMetGeslachtsnaamEnGeboortedatumResponse>(pb);
                     break;
-                case ZoekMetGeslachtsnaamEnGemeenteVanInschrijvingResponse pb:
-                    pb.Personen.Map();
+                case Gba.ZoekMetNaamEnGemeenteVanInschrijvingResponse pb:
+                    retval = mapper.Map<ZoekMetNaamEnGemeenteVanInschrijvingResponse>(pb);
                     break;
-                case ZoekMetPostcodeEnHuisnummerResponse pb:
-                    pb.Personen.Map();
+                case Gba.ZoekMetPostcodeEnHuisnummerResponse pb:
+                    retval = mapper.Map<ZoekMetPostcodeEnHuisnummerResponse>(pb);
                     break;
             }
 
-            return JsonConvert.SerializeObject(personen);
-        }
-
-        private static void Map(this ICollection<Persoon> personen)
-        {
-            foreach (var persoon in personen)
+            return JsonConvert.SerializeObject(retval, new JsonSerializerSettings
             {
-                persoon?.Geboorte.Map();
-                persoon?.Naam.Map();
-            }
-        }
-
-        private static void Map(this ICollection<PersoonBeperkt> personen)
-        {
-            foreach (var persoon in personen)
-            {
-                persoon?.Geboorte.Map();
-                persoon?.Naam.Map();
-            }
+                NullValueHandling = NullValueHandling.Ignore,
+                DefaultValueHandling = DefaultValueHandling.Ignore
+            });
         }
     }
 
     public static class HttpResponseHelpers
     {
+        public static async Task<string> ReadBodyAsync(this HttpRequest request)
+        {
+            request.EnableBuffering();
+
+            request.Body.Seek(0, SeekOrigin.Begin);
+
+            //var gzipStream = new GZipStream(response.Body, CompressionMode.Decompress);
+            //var streamReader = new StreamReader(gzipStream);
+            var streamReader = new StreamReader(request.Body, leaveOpen: true);
+
+            var retval = await streamReader.ReadToEndAsync();
+
+            request.Body.Seek(0, SeekOrigin.Begin);
+
+            return retval;
+        }
+
         public static async Task<string> ReadBodyAsync(this HttpResponse response)
         {
             response.Body.Seek(0, SeekOrigin.Begin);
