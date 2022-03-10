@@ -749,7 +749,7 @@ Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van
     | voornamen (02.10)                    |               |
     | adellijke titel of predicaat (02.20) |               |
     | voorvoegsel (02.30)                  |               |
-    | geslachtsnaam (02.40)                |               |
+    | geslachtsnaam (02.40)                | .             |
     | aanduidingNaamgebruik (61.10)        | <naamgebruik> |
     En de persoon heeft een partner met de volgende gegevens
     | naam                        | waarde    |
@@ -783,7 +783,7 @@ Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van
     | voornamen (02.10)                    | Jo Anne                   |
     | adellijke titel of predicaat (02.20) | <adellijkeTitelPredicaat> |
     | voorvoegsel (02.30)                  |                           |
-    | geslachtsnaam (02.40)                |                           |
+    | geslachtsnaam (02.40)                | .                         |
     | aanduidingNaamgebruik (61.10)        | <naamgebruik>             |
     En de partner heeft de volgende naam gegevens
     | naam                                 | waarde |
@@ -836,7 +836,7 @@ Rule: Wanneer de geslachtsnaam van de partner leeg of onbekend is en de naam van
     | naam                                 | waarde  |
     | adellijke titel of predicaat (02.20) |         |
     | voorvoegsel (02.30)                  |         |
-    | geslachtsnaam (02.40)                |         |
+    | geslachtsnaam (02.40)                | .       |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -870,7 +870,7 @@ Rule: Wanneer de geslachtsnaam van de partner leeg of onbekend is en de naam van
     | naam                                 | waarde                            |
     | adellijke titel of predicaat (02.20) | <adellijkeTitelPredicaat partner> |
     | voorvoegsel (02.30)                  |                                   |
-    | geslachtsnaam (02.40)                |                                   |
+    | geslachtsnaam (02.40)                | .                                 |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
