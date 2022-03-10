@@ -9,7 +9,7 @@ setWorldConstructor(World);
 const propertyNameMap = new Map([
     ['aanduiding bij huisnummer (11.50)', 'aanduidingBijHuisnummer.code'],
     ['aanduiding naamgebruik (61.10)', 'aanduidingNaamgebruik.code'],
-    ['adellijke titel of predikaat (02.20)', 'adellijkeTitelPredikaat.code'],
+    ['adellijke titel of predicaat (02.20)', 'adellijkeTitelPredicaat.code'],
     ['geslachtsaanduiding (04.10)', 'geslachtsaanduiding.code'],
     ['geslachtsnaam (02.40)', 'geslachtsnaam'],
     ['huisletter (11.30)', 'huisletter'],
