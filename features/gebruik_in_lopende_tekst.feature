@@ -33,22 +33,22 @@ Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predicaat
 
   Abstract Scenario: gebruikInLopendeTekst bij geslachtsaanduiding <voorbeeld>
     Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde     |
-    | burgerservicenummer | 999992934  |
-    | geslachtsaanduiding | <geslacht> |
-    En de persoon heeft de volgende naam gegevens
-    | naam                                 | waarde      |
-    | voornamen (02.10)                    | Jo Rene     |
-    | adellijke titel of predicaat (02.20) |             |
-    | voorvoegsel (02.30)                  |             |
-    | geslachtsnaam (02.40)                | Groenen     |
-    | aanduidingNaamgebruik (61.10)        | E           |
+    | naam                        | waarde     |
+    | burgerservicenummer         | 999992934  |
+    | geslachtsaanduiding (04.10) | <geslacht> |
+    En de persoon heeft de volgende 'naam' gegevens
+    | naam                                 | waarde  |
+    | voornamen (02.10)                    | Jo Rene |
+    | adellijke titel of predicaat (02.20) |         |
+    | voorvoegsel (02.30)                  |         |
+    | geslachtsnaam (02.40)                | Groenen |
+    | aanduiding naamgebruik (61.10)       | E       |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
     | fields              | naam.gebruikinlopendetekst      |
-    Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
     | naam                  | waarde                  |
     | gebruikinlopendetekst | <gebruikinlopendetekst> |
 
@@ -60,37 +60,39 @@ Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predicaat
 
   Scenario: gebruikInLopendeTekst van een alleenstaande persoon met aanduidingNaamgebruik "E"
     Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992934 |
-    | geslachtsaanduiding | V         |
-    En de persoon heeft de volgende naam gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer         | 999992934 |
+    | geslachtsaanduiding (04.10) | V         |
+    En de persoon heeft de volgende 'naam' gegevens
     | naam                                 | waarde |
     | adellijke titel of predicaat (02.20) |        |
     | voorvoegsel (02.30)                  | in het |
     | geslachtsnaam (02.40)                | Veld   |
-    | aanduidingNaamgebruik (61.10)        | E      |
-    En persoon heeft geen partner
-    En persoon heeft geen ontbonden huwelijk of partnerschap
+    | aanduiding naamgebruik (61.10)       | E      |
+    En de persoon heeft nooit een actueel of ontbonden huwelijk of partnerschap gehad
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
     | fields              | naam.gebruikinlopendetekst      |
-    Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
     | naam                  | waarde              |
     | gebruikinlopendetekst | mevrouw In het Veld |
 
   Abstract Scenario: naamsamenstelling van een persoon met een partner bij aanduidingNaamgebruik "<naamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992934 |
-    | geslachtsaanduiding | V         |
-    En de persoon heeft de volgende naam gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer         | 999992934 |
+    | geslachtsaanduiding (04.10) | V         |
+    En de persoon heeft de volgende 'naam' gegevens
     | naam                                 | waarde          |
     | adellijke titel of predicaat (02.20) |                 |
     | voorvoegsel (02.30)                  | <voorvoegsel>   |
     | geslachtsnaam (02.40)                | <geslachtsnaam> |
-    | aanduidingNaamgebruik (61.10)        | <naamgebruik>   |
+    | aanduiding naamgebruik (61.10)       | <naamgebruik>   |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999992935 |
     En de partner heeft de volgende naam gegevens
     | naam                                 | waarde                  |
     | adellijke titel of predicaat (02.20) |                         |
@@ -101,7 +103,7 @@ Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predicaat
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
     | fields              | naam.gebruikinlopendetekst      |
-    Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
     | naam                  | waarde                  |
     | gebruikinlopendetekst | <gebruikinlopendetekst> |
 
@@ -118,16 +120,19 @@ Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predicaat
 
   Abstract Scenario: hoofdlettergebruik in voorvoegsels bij aanduidingNaamgebruik "<naamgebruik>", geslachtsaanduiding "<geslacht>" en <voorbeeld>
     Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde     |
-    | burgerservicenummer | 999992934  |
-    | geslachtsaanduiding | <geslacht> |
-    En de persoon heeft de volgende naam gegevens
+    | naam                        | waarde     |
+    | burgerservicenummer         | 999992934  |
+    | geslachtsaanduiding (04.10) | <geslacht> |
+    En de persoon heeft de volgende 'naam' gegevens
     | naam                                 | waarde          |
     | voornamen (02.10)                    | <voornamen>     |
     | adellijke titel of predicaat (02.20) |                 |
     | voorvoegsel (02.30)                  | <voorvoegsel>   |
     | geslachtsnaam (02.40)                | <geslachtsnaam> |
-    | aanduidingNaamgebruik (61.10)        | <naamgebruik>   |
+    | aanduiding naamgebruik (61.10)       | <naamgebruik>   |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999992935 |
     En de partner heeft de volgende naam gegevens
     | naam                                 | waarde                  |
     | adellijke titel of predicaat (02.20) |                         |
@@ -138,7 +143,7 @@ Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predicaat
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
     | fields              | naam.gebruikinlopendetekst      |
-    Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
     | naam                  | waarde                  |
     | gebruikinlopendetekst | <gebruikinlopendetekst> |
 
@@ -200,16 +205,19 @@ Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predicaat wo
 
   Abstract Scenario: persoon met adellijke titel heeft aanduidingNaamgebruik "<naamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde     |
-    | burgerservicenummer | 999992934  |
-    | geslachtsaanduiding | V          |
-    En de persoon heeft de volgende naam gegevens
-    | naam                                 | waarde                    |
-    | voornamen (02.10)                    | Jo Anne                   |
-    | adellijke titel of predicaat (02.20) | BS                        |
-    | voorvoegsel (02.30)                  | van den                   |
-    | geslachtsnaam (02.40)                | Aedel                     |
-    | aanduidingNaamgebruik (61.10)        | <naamgebruik>             |
+    | naam                        | waarde    |
+    | burgerservicenummer         | 999992934 |
+    | geslachtsaanduiding (04.10) | V         |
+    En de persoon heeft de volgende 'naam' gegevens
+    | naam                                 | waarde        |
+    | voornamen (02.10)                    | Jo Anne       |
+    | adellijke titel of predicaat (02.20) | BS            |
+    | voorvoegsel (02.30)                  | van den       |
+    | geslachtsnaam (02.40)                | Aedel         |
+    | aanduiding naamgebruik (61.10)       | <naamgebruik> |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999992935 |
     En de partner heeft de volgende naam gegevens
     | naam                                 | waarde |
     | adellijke titel of predicaat (02.20) |        |
@@ -220,7 +228,7 @@ Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predicaat wo
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
     | fields              | naam.gebruikInLopendeTekst      |
-    Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
     | naam                  | waarde                  |
     | gebruikInLopendeTekst | <gebruikInLopendeTekst> |
 
@@ -233,16 +241,19 @@ Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predicaat wo
 
   Abstract Scenario: persoon met predicaat en geslachtsaanduiding "<geslacht>" en aanduidingNaamgebruik "<naamgebruik>" heeft een partner
     Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde     |
-    | burgerservicenummer | 999992934  |
-    | geslachtsaanduiding | <geslacht> |
-    En de persoon heeft de volgende naam gegevens
-    | naam                                 | waarde                    |
-    | voornamen (02.10)                    | Jo Anne                   |
-    | adellijke titel of predicaat (02.20) | JV                        |
-    | voorvoegsel (02.30)                  | van den                   |
-    | geslachtsnaam (02.40)                | Aedel                     |
-    | aanduidingNaamgebruik (61.10)        | <naamgebruik>             |
+    | naam                        | waarde     |
+    | burgerservicenummer         | 999992934  |
+    | geslachtsaanduiding (04.10) | <geslacht> |
+    En de persoon heeft de volgende 'naam' gegevens
+    | naam                                 | waarde        |
+    | voornamen (02.10)                    | Jo Anne       |
+    | adellijke titel of predicaat (02.20) | JV            |
+    | voorvoegsel (02.30)                  | van den       |
+    | geslachtsnaam (02.40)                | Aedel         |
+    | aanduiding naamgebruik (61.10)       | <naamgebruik> |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999992935 |
     En de partner heeft de volgende naam gegevens
     | naam                                 | waarde |
     | adellijke titel of predicaat (02.20) |        |
@@ -253,35 +264,35 @@ Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predicaat wo
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
     | fields              | naam.gebruikInLopendeTekst      |
-    Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
     | naam                  | waarde                  |
     | gebruikInLopendeTekst | <gebruikInLopendeTekst> |
 
     Voorbeelden:
-    | geslacht | naamgebruik | gebruikInLopendeTekst                   |
-    | M        | E           | jonkheer van den Aedel                  |
-    | M        | P           | de heer De Boer                         |
-    | M        | V           | de heer De Boer-jonkheer van den Aedel  |
-    | M        | N           | jonkheer van den Aedel-de Boer          |
-    | V        | E           | mevrouw van den Aedel                   |
-    | V        | P           | mevrouw De Boer                         |
-    | V        | V           | mevrouw De Boer-van den Aedel           |
-    | V        | N           | mevrouw Van den Aedel-de Boer           |
+    | geslacht | naamgebruik | gebruikInLopendeTekst                  |
+    | M        | E           | jonkheer van den Aedel                 |
+    | M        | P           | de heer De Boer                        |
+    | M        | V           | de heer De Boer-jonkheer van den Aedel |
+    | M        | N           | jonkheer van den Aedel-de Boer         |
+    | V        | E           | mevrouw van den Aedel                  |
+    | V        | P           | mevrouw De Boer                        |
+    | V        | V           | mevrouw De Boer-van den Aedel          |
+    | V        | N           | mevrouw Van den Aedel-de Boer          |
 
   Abstract Scenario: persoon met predicaat en geslachtsaanduiding "<geslacht>" heeft een ontbonden huwelijk/partnerschap en aanduidingNaamgebruik "<naamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde     |
-    | burgerservicenummer | 999992934  |
-    | geslachtsaanduiding | <geslacht> |
-    En de persoon heeft de volgende naam gegevens
-    | naam                                 | waarde                    |
-    | voornamen (02.10)                    | Jo Anne                   |
-    | adellijke titel of predicaat (02.20) | JV                        |
-    | voorvoegsel (02.30)                  | van den                   |
-    | geslachtsnaam (02.40)                | Aedel                     |
-    | aanduidingNaamgebruik (61.10)        | <naamgebruik>             |
+    | naam                        | waarde     |
+    | burgerservicenummer         | 999992934  |
+    | geslachtsaanduiding (04.10) | <geslacht> |
+    En de persoon heeft de volgende 'naam' gegevens
+    | naam                                 | waarde        |
+    | voornamen (02.10)                    | Jo Anne       |
+    | adellijke titel of predicaat (02.20) | JV            |
+    | voorvoegsel (02.30)                  | van den       |
+    | geslachtsnaam (02.40)                | Aedel         |
+    | aanduiding naamgebruik (61.10)       | <naamgebruik> |
     En de persoon heeft geen actuele partner
-    En de ex-partner heeft de volgende naam gegevens
+    En de ex-partner heeft de volgende 'naam' gegevens
     | naam                                 | waarde |
     | adellijke titel of predicaat (02.20) |        |
     | voorvoegsel (02.30)                  | de     |
@@ -291,39 +302,39 @@ Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predicaat wo
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
     | fields              | naam.gebruikInLopendeTekst      |
-    Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
     | naam                  | waarde                  |
     | gebruikInLopendeTekst | <gebruikInLopendeTekst> |
 
     Voorbeelden:
-    | geslacht | naamgebruik | gebruikInLopendeTekst                   |
-    | M        | E           | jonkheer van den Aedel                  |
-    | M        | P           | de heer De Boer                         |
-    | M        | V           | de heer De Boer-jonkheer van den Aedel  |
-    | M        | N           | jonkheer van den Aedel-de Boer          |
-    | V        | E           | jonkvrouw van den Aedel                 |
-    | V        | P           | mevrouw De Boer                         |
-    | V        | V           | mevrouw De Boer-van den Aedel           |
-    | V        | N           | mevrouw Van den Aedel-de Boer           |
+    | geslacht | naamgebruik | gebruikInLopendeTekst                  |
+    | M        | E           | jonkheer van den Aedel                 |
+    | M        | P           | de heer De Boer                        |
+    | M        | V           | de heer De Boer-jonkheer van den Aedel |
+    | M        | N           | jonkheer van den Aedel-de Boer         |
+    | V        | E           | jonkvrouw van den Aedel                |
+    | V        | P           | mevrouw De Boer                        |
+    | V        | V           | mevrouw De Boer-van den Aedel          |
+    | V        | N           | mevrouw Van den Aedel-de Boer          |
 
   Abstract Scenario: persoon met adellijkeTitelPredicaat "<adellijkeTitelPredicaat>" en geslachtsaanduiding "<geslacht>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde     |
-    | burgerservicenummer | 999992934  |
-    | geslachtsaanduiding | <geslacht> |
-    En de persoon heeft de volgende naam gegevens
-    | naam                                 | waarde                    |
-    | voornamen (02.10)                    | Jo Anne                   |
-    | adellijke titel of predicaat (02.20) | JV                        |
-    | voorvoegsel (02.30)                  | van den                   |
-    | geslachtsnaam (02.40)                | Aedel                     |
-    | aanduidingNaamgebruik (61.10)        | E                         |
+    | naam                        | waarde     |
+    | burgerservicenummer         | 999992934  |
+    | geslachtsaanduiding (04.10) | <geslacht> |
+    En de persoon heeft de volgende 'naam' gegevens
+    | naam                                 | waarde  |
+    | voornamen (02.10)                    | Jo Anne |
+    | adellijke titel of predicaat (02.20) | JV      |
+    | voorvoegsel (02.30)                  | van den |
+    | geslachtsnaam (02.40)                | Aedel   |
+    | aanduiding naamgebruik (61.10)       | E       |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
     | fields              | naam.gebruikInLopendeTekst      |
-    Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
     | naam                  | waarde                  |
     | gebruikInLopendeTekst | <gebruikInLopendeTekst> |
 
@@ -362,16 +373,19 @@ Rule: een vrouw met een (ex)partner met een adellijke titel krijgt een hoffelijk
   
   Abstract Scenario: partner met adellijke titel "<adellijkeTitelPredicaat partner>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde     |
-    | burgerservicenummer | 999992934  |
-    | geslachtsaanduiding | V          |
-    En de persoon heeft de volgende naam gegevens
-    | naam                                 | waarde        |
-    | voornamen (02.10)                    | Jo            |
-    | adellijke titel of predicaat (02.20) |               |
-    | voorvoegsel (02.30)                  | de            |
-    | geslachtsnaam (02.40)                | Boer          |
-    | aanduidingNaamgebruik (61.10)        | V             |
+    | naam                        | waarde    |
+    | burgerservicenummer         | 999992934 |
+    | geslachtsaanduiding (04.10) | V         |
+    En de persoon heeft de volgende 'naam' gegevens
+    | naam                                 | waarde |
+    | voornamen (02.10)                    | Jo     |
+    | adellijke titel of predicaat (02.20) |        |
+    | voorvoegsel (02.30)                  | de     |
+    | geslachtsnaam (02.40)                | Boer   |
+    | aanduiding naamgebruik (61.10)       | V      |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999992935 |
     En de partner heeft de volgende naam gegevens
     | naam                                 | waarde                            |
     | adellijke titel of predicaat (02.20) | <adellijkeTitelPredicaat partner> |
@@ -382,7 +396,7 @@ Rule: een vrouw met een (ex)partner met een adellijke titel krijgt een hoffelijk
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
     | fields              | naam.gebruikInLopendeTekst      |
-    Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
     | naam                  | waarde                  |
     | gebruikInLopendeTekst | <gebruikInLopendeTekst> |
 
@@ -399,63 +413,69 @@ Rule: een vrouw met een (ex)partner met een adellijke titel krijgt een hoffelijk
 
   Abstract Scenario: persoon met geslacht "<geslacht>" en partner met adellijke titel <titel partner>
     Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde     |
-    | burgerservicenummer | 999992934  |
-    | geslachtsaanduiding | <geslacht> |
-    En de persoon heeft de volgende naam gegevens
-    | naam                                 | waarde        |
-    | voornamen (02.10)                    | Jo            |
-    | adellijke titel of predicaat (02.20) |               |
-    | voorvoegsel (02.30)                  | de            |
-    | geslachtsnaam (02.40)                | Boer          |
-    | aanduidingNaamgebruik (61.10)        | P             |
+    | naam                        | waarde     |
+    | burgerservicenummer         | 999992934  |
+    | geslachtsaanduiding (04.10) | <geslacht> |
+    En de persoon heeft de volgende 'naam' gegevens
+    | naam                                 | waarde |
+    | voornamen (02.10)                    | Jo     |
+    | adellijke titel of predicaat (02.20) |        |
+    | voorvoegsel (02.30)                  | de     |
+    | geslachtsnaam (02.40)                | Boer   |
+    | aanduiding naamgebruik (61.10)       | P      |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999992935 |
     En de partner heeft de volgende naam gegevens
-    | naam                                 | waarde                            |
-    | adellijke titel of predicaat (02.20) | <titel partner>                   |
-    | voorvoegsel (02.30)                  | van den                           |
-    | geslachtsnaam (02.40)                | Aedel                             |
+    | naam                                 | waarde          |
+    | adellijke titel of predicaat (02.20) | <titel partner> |
+    | voorvoegsel (02.30)                  | van den         |
+    | geslachtsnaam (02.40)                | Aedel           |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
-    | fields              | naam.gebruikInLopendeTekst                     |
-    Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    | fields              | naam.gebruikInLopendeTekst      |
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
     | naam                  | waarde                  |
     | gebruikInLopendeTekst | <gebruikInLopendeTekst> |
 
     Voorbeelden:
-      | geslacht | titel partner    | gebruikInLopendeTekst |
-      | V        | B                | barones van den Aedel |
-      | V        | B                | mevrouw Van den Aedel |
-      | V        | BS               | mevrouw Van den Aedel |
-      | M        | B                | de heer Van den Aedel |
-      | M        | BS               | de heer Van den Aedel |
-      | O        | B                | J. van den Aedel      |
-      | O        | BS               | J. van den Aedel      |
+      | geslacht | titel partner | gebruikInLopendeTekst |
+      | V        | B             | barones van den Aedel |
+      | V        | B             | mevrouw Van den Aedel |
+      | V        | BS            | mevrouw Van den Aedel |
+      | M        | B             | de heer Van den Aedel |
+      | M        | BS            | de heer Van den Aedel |
+      | O        | B             | J. van den Aedel      |
+      | O        | BS            | J. van den Aedel      |
 
   Abstract Scenario: adellijke titel van partner bij aanduiding naamgebruik "<naamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde     |
-    | burgerservicenummer | 999992934  |
-    | geslachtsaanduiding | V          |
-    En de persoon heeft de volgende naam gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer         | 999992934 |
+    | geslachtsaanduiding (04.10) | V         |
+    En de persoon heeft de volgende 'naam' gegevens
     | naam                                 | waarde        |
     | voornamen (02.10)                    | Jo            |
     | adellijke titel of predicaat (02.20) |               |
     | voorvoegsel (02.30)                  | de            |
     | geslachtsnaam (02.40)                | Boer          |
-    | aanduidingNaamgebruik (61.10)        | <naamgebruik> |
+    | aanduiding naamgebruik (61.10)       | <naamgebruik> |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999992935 |
     En de partner heeft de volgende naam gegevens
-    | naam                                 | waarde                            |
-    | adellijke titel of predicaat (02.20) | B                                 |
-    | voorvoegsel (02.30)                  | van den                           |
-    | geslachtsnaam (02.40)                | Aedel                             |
+    | naam                                 | waarde  |
+    | adellijke titel of predicaat (02.20) | B       |
+    | voorvoegsel (02.30)                  | van den |
+    | geslachtsnaam (02.40)                | Aedel   |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
-    | fields              | naam.gebruikInLopendeTekst                     |
-    Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    | fields              | naam.gebruikInLopendeTekst      |
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
     | naam                  | waarde                  |
     | gebruikInLopendeTekst | <gebruikInLopendeTekst> |
 
@@ -468,16 +488,19 @@ Rule: een vrouw met een (ex)partner met een adellijke titel krijgt een hoffelijk
 
   Abstract Scenario: persoon en partner hebben beide een adellijke titel bij aanduiding naamgebruik "<naamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde     |
-    | burgerservicenummer | 999992934  |
-    | geslachtsaanduiding | V          |
-    En de persoon heeft de volgende naam gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer         | 999992934 |
+    | geslachtsaanduiding (04.10) | V         |
+    En de persoon heeft de volgende 'naam' gegevens
     | naam                                 | waarde        |
     | voornamen (02.10)                    | Jo            |
     | adellijke titel of predicaat (02.20) | BS            |
     | voorvoegsel (02.30)                  | de            |
     | geslachtsnaam (02.40)                | Boer          |
-    | aanduidingNaamgebruik (61.10)        | <naamgebruik> |
+    | aanduiding naamgebruik (61.10)       | <naamgebruik> |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999992935 |
     En de partner heeft de volgende naam gegevens
     | naam                                 | waarde  |
     | adellijke titel of predicaat (02.20) | G       |
@@ -488,7 +511,7 @@ Rule: een vrouw met een (ex)partner met een adellijke titel krijgt een hoffelijk
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
     | fields              | naam.gebruikInLopendeTekst      |
-    Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
     | naam                  | waarde                  |
     | gebruikInLopendeTekst | <gebruikInLopendeTekst> |
 
@@ -503,10 +526,10 @@ Rule: Bij meerdere actuele (niet ontbonden) huwelijken/partnerschappen worden de
 
   Scenario: meerdere actuele relaties
     Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992934 |
-    | geslachtsaanduiding | V         |
-    En de persoon heeft de volgende naam gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer         | 999992934 |
+    | geslachtsaanduiding (04.10) | V         |
+    En de persoon heeft de volgende 'naam' gegevens
     | naam                           | waarde             |
     | voorvoegsel (02.30)            |                    |
     | geslachtsnaam (02.40)          | Groen              |
@@ -537,7 +560,7 @@ Rule: Bij meerdere actuele (niet ontbonden) huwelijken/partnerschappen worden de
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
     | fields              | naam.gebruikInLopendeTekst      |
-    Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
     | naam                  | waarde             |
     | gebruikInLopendeTekst | mevrouw Geel-Groen |
 
@@ -545,10 +568,10 @@ Rule: Bij meerdere huwelijken/partnerschappen die allen ontbonden zijn, worden d
 
   Scenario: meerdere ontbonden relaties gebruikt de laatst ontbonden relatie
     Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992934 |
-    | geslachtsaanduiding | V         |
-    En de persoon heeft de volgende naam gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer         | 999992934 |
+    | geslachtsaanduiding (04.10) | V         |
+    En de persoon heeft de volgende 'naam' gegevens
     | naam                           | waarde |
     | voorvoegsel (02.30)            |        |
     | geslachtsnaam (02.40)          | Wit    |
@@ -557,27 +580,27 @@ Rule: Bij meerdere huwelijken/partnerschappen die allen ontbonden zijn, worden d
     En de persoon heeft een ex-partner met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999992935 |
-    En de ex-partner heeft de volgende naam gegevens
+    En de ex-partner heeft de volgende 'naam' gegevens
     | naam                  | waarde |
     | voorvoegsel (02.30)   |        |
     | geslachtsnaam (02.40) | Geel   |
-    En de ex-partner heeft de volgende aangaanHuwelijkPartnerschap gegevens
-    | naam                     | waarde   |
-    | datum aangaan (06.10)    | 19580401 |
-    En de ex-partner heeft de volgende ontbindingHuwelijkPartnerschap gegevens
+    En de ex-partner heeft de volgende 'aangaanHuwelijkPartnerschap' gegevens
+    | naam                  | waarde   |
+    | datum aangaan (06.10) | 19580401 |
+    En de ex-partner heeft de volgende 'ontbindingHuwelijkPartnerschap' gegevens
     | naam                     | waarde   |
     | datum ontbinding (07.10) | 19601001 |
     En de persoon heeft een ex-partner met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999992936 |
-    En de ex-partner heeft de volgende naam gegevens
+    En de ex-partner heeft de volgende 'naam' gegevens
     | naam                  | waarde |
     | voorvoegsel (02.30)   |        |
     | geslachtsnaam (02.40) | Roodt  |
-    En de ex-partner heeft de volgende aangaanHuwelijkPartnerschap gegevens
-    | naam                     | waarde   |
-    | datum aangaan (06.10)    | 19610422 |
-    En de ex-partner heeft de volgende ontbindingHuwelijkPartnerschap gegevens
+    En de ex-partner heeft de volgende 'aangaanHuwelijkPartnerschap' gegevens
+    | naam                  | waarde   |
+    | datum aangaan (06.10) | 19610422 |
+    En de ex-partner heeft de volgende 'ontbindingHuwelijkPartnerschap' gegevens
     | naam                     | waarde   |
     | datum ontbinding (07.10) | 20061014 |
     Als personen wordt gezocht met de volgende parameters
@@ -585,16 +608,16 @@ Rule: Bij meerdere huwelijken/partnerschappen die allen ontbonden zijn, worden d
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
     | fields              | naam.gebruikInLopendeTekst      |
-    Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
     | naam                  | waarde            |
     | gebruikInLopendeTekst | mevrouw Roodt-Wit |
 
   Scenario: meerdere ontbonden relaties en oudste relatie is het laatst ontbonden
     Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992934 |
-    | geslachtsaanduiding | V         |
-    En de persoon heeft de volgende naam gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer         | 999992934 |
+    | geslachtsaanduiding (04.10) | V         |
+    En de persoon heeft de volgende 'naam' gegevens
     | naam                           | waarde |
     | voorvoegsel (02.30)            |        |
     | geslachtsnaam (02.40)          | Wit    |
@@ -603,27 +626,27 @@ Rule: Bij meerdere huwelijken/partnerschappen die allen ontbonden zijn, worden d
     En de persoon heeft een ex-partner met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999992935 |
-    En de ex-partner heeft de volgende naam gegevens
+    En de ex-partner heeft de volgende 'naam' gegevens
     | naam                  | waarde |
     | voorvoegsel (02.30)   |        |
     | geslachtsnaam (02.40) | Zwart  |
-    En de ex-partner heeft de volgende aangaanHuwelijkPartnerschap gegevens
-    | naam                     | waarde   |
-    | datum aangaan (06.10)    | 19580401 |
-    En de ex-partner heeft de volgende ontbindingHuwelijkPartnerschap gegevens
+    En de ex-partner heeft de volgende 'aangaanHuwelijkPartnerschap' gegevens
+    | naam                  | waarde   |
+    | datum aangaan (06.10) | 19580401 |
+    En de ex-partner heeft de volgende 'ontbindingHuwelijkPartnerschap' gegevens
     | naam                     | waarde   |
     | datum ontbinding (07.10) | 20061001 |
     En de persoon heeft een ex-partner met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999992936 |
-    En de ex-partner heeft de volgende naam gegevens
+    En de ex-partner heeft de volgende 'naam' gegevens
     | naam                  | waarde |
     | voorvoegsel (02.30)   |        |
     | geslachtsnaam (02.40) | Blaauw |
-    En de ex-partner heeft de volgende aangaanHuwelijkPartnerschap gegevens
-    | naam                     | waarde   |
-    | datum aangaan (06.10)    | 19610422 |
-    En de ex-partner heeft de volgende ontbindingHuwelijkPartnerschap gegevens
+    En de ex-partner heeft de volgende 'aangaanHuwelijkPartnerschap' gegevens
+    | naam                  | waarde   |
+    | datum aangaan (06.10) | 19610422 |
+    En de ex-partner heeft de volgende 'ontbindingHuwelijkPartnerschap' gegevens
     | naam                     | waarde   |
     | datum ontbinding (07.10) | 19831014 |
     Als personen wordt gezocht met de volgende parameters
@@ -631,7 +654,7 @@ Rule: Bij meerdere huwelijken/partnerschappen die allen ontbonden zijn, worden d
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
     | fields              | naam.gebruikInLopendeTekst      |
-    Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
     | naam                  | waarde            |
     | gebruikInLopendeTekst | mevrouw Zwart-Wit |
 
@@ -639,30 +662,30 @@ Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van
 
     Abstract Scenario: naam van de persoon is onbekend bij aanduiding naamgebruik "<naamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde     |
-    | burgerservicenummer | 999992934  |
-    | geslachtsaanduiding | V          |
-    En de persoon heeft de volgende naam gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer         | 999992934 |
+    | geslachtsaanduiding (04.10) | V         |
+    En de persoon heeft de volgende 'naam' gegevens
     | naam                                 | waarde          |
     | voornamen (02.10)                    |                 |
     | adellijke titel of predicaat (02.20) |                 |
     | voorvoegsel (02.30)                  |                 |
     | geslachtsnaam (02.40)                | <geslachtsnaam> |
-    | aanduidingNaamgebruik (61.10)        | <naamgebruik>   |
+    | aanduiding naamgebruik (61.10)       | <naamgebruik>   |
     En de persoon heeft een partner met de volgende gegevens
-    | naam                        | waarde    |
-    | geslachtsaanduiding (04.10) | M         |
+    | naam                        | waarde |
+    | geslachtsaanduiding (04.10) | M      |
     En de partner heeft de volgende naam gegevens
-    | naam                                 | waarde  |
-    | adellijke titel of predicaat (02.20) |         |
-    | voorvoegsel (02.30)                  | de      |
-    | geslachtsnaam (02.40)                | Boer    |
+    | naam                                 | waarde |
+    | adellijke titel of predicaat (02.20) |        |
+    | voorvoegsel (02.30)                  | de     |
+    | geslachtsnaam (02.40)                | Boer   |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
     | fields              | naam.gebruikInLopendeTekst      |
-    Dan heeft de persoon met burgerservicenummer '999992934' <leveren naam> 'naam'
+    Dan heeft de persoon met burgerservicenummer '999992934' <leveren naam> 'naam' gegevens
 
     Voorbeelden:
     | geslachtsnaam | naamgebruik | leveren naam |
@@ -683,19 +706,19 @@ Rule: Wanneer de geslachtsnaam van de partner leeg of onbekend is en de naam van
 
   Abstract Scenario: naam van de partner is onbekend bij aanduiding naamgebruik "<naamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde     |
-    | burgerservicenummer | 999992934  |
-    | geslachtsaanduiding | V          |
-    En de persoon heeft de volgende naam gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer         | 999992934 |
+    | geslachtsaanduiding (04.10) | V         |
+    En de persoon heeft de volgende 'naam' gegevens
     | naam                                 | waarde        |
     | voornamen (02.10)                    |               |
     | adellijke titel of predicaat (02.20) |               |
     | voorvoegsel (02.30)                  | de            |
     | geslachtsnaam (02.40)                | Boer          |
-    | aanduidingNaamgebruik (61.10)        | <naamgebruik> |
+    | aanduiding naamgebruik (61.10)       | <naamgebruik> |
     En de persoon heeft een partner met de volgende gegevens
-    | naam                        | waarde    |
-    | geslachtsaanduiding (04.10) | M         |
+    | naam                        | waarde |
+    | geslachtsaanduiding (04.10) | M      |
     En de partner heeft de volgende naam gegevens
     | naam                                 | waarde          |
     | adellijke titel of predicaat (02.20) |                 |
@@ -706,7 +729,7 @@ Rule: Wanneer de geslachtsnaam van de partner leeg of onbekend is en de naam van
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
     | fields              | naam.gebruikInLopendeTekst      |
-    Dan heeft de persoon met burgerservicenummer '999992934' <leveren naam> 'naam'
+    Dan heeft de persoon met burgerservicenummer '999992934' <leveren naam> 'naam' gegevens
 
     Voorbeelden:
     | geslachtsnaam | naamgebruik | leveren naam |
