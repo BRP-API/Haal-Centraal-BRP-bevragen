@@ -110,6 +110,9 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | burgerservicenummer | 999996150                       |
       | fields              | kinderen.burgerservicenummer    |
       Dan heeft de persoon met burgerservicenummer '555550001' exact 1 kind
+      En heeft het kind alleen de volgende gegevens
+      | naam | waarde  |
+      | type | GbaKind |
 
     @gba
     Scenario: met fields niet vragen om een gegeven van het kind
@@ -140,7 +143,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                               |
       | type                | RaadpleegMetBurgerservicenummer                      |
-      | burgerservicenummer | 999996150                                            |
+      | burgerservicenummer | 555550003                                            |
       | fields              | kinderen.burgerservicenummer,kinderen.naam.voornamen |
       Dan heeft het kind met burgerservicenummer '555550004' de volgende 'naam' gegevens
       | naam      | waarde |
@@ -196,7 +199,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 999993008                       |
+      | burgerservicenummer | 555550006                       |
       | fields              | kinderen.voornamen              |
       Dan heeft het kind alleen de volgende gegevens
       | naam | waarde |
