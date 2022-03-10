@@ -39,22 +39,31 @@ Functionaliteit: LeeftijdBepaling
       En het kind met burgerservicenummer '555550003' heeft de volgende 'geboorte' gegevens
 			| naam  | waarde   |
 			| datum | 20021014 |
+			En de persoon heeft een kind met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 555550004 |
+      En het kind met burgerservicenummer '555550004' heeft de volgende 'geboorte' gegevens
+			| naam  | waarde   |
+			| datum | 20040526 |
 			Als personen op '<raadpleeg datum>' wordt gezocht met de volgende parameters
 			| naam                | waarde                                         |
 			| type                | RaadpleegMetBurgerservicenummer                |
 			| burgerservicenummer | 555550002                                      |
 			| fields              | kinderen.burgerservicenummer,kinderen.leeftijd |
 			Dan heeft het kind met burgerservicenummer '555550003' alleen de volgende gegevens
-      | burgerservicenummer | leeftijd   |
-      | 555550003           | <leeftijd> |
+      | burgerservicenummer | leeftijd    |
+      | 555550003           | <leeftijd1> |
+			En heeft het kind met burgerservicenummer '555550004' alleen de volgende gegevens
+      | burgerservicenummer | leeftijd    |
+      | 555550003           | <leeftijd2> |
 
 			Voorbeelden:
-			| raadpleeg datum  | leeftijd |
-			| 1 januari 2022   | 19       |
-			| 13 oktober 2022  | 19       |
-			| 14 oktober 2022  | 20       |
-			| 30 december 2022 | 20       |
-			| 10 januari 2023  | 20       |
+			| raadpleeg datum  | leeftijd1 | leeftijd2 |
+			| 1 januari 2022   | 19        | 17        |
+			| 13 oktober 2022  | 19        | 18        |
+			| 14 oktober 2022  | 20        | 18        |
+			| 30 december 2022 | 20        | 18        |
+			| 10 januari 2023  | 20        | 18        |
 
 		Abstract Scenario: Geboren op 29 februari in een schrikkeljaar
 			Gegeven het systeem heeft een persoon met de volgende gegevens
