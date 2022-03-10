@@ -12,10 +12,8 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
   # GN = geslachtsnaam
   # VP = voorvoegselGeslachtsnaam partner
   # GP = geslachtsnaam partner
-  # AT = adelijke titel
-  # PK = predikaat
 
-Rule: De aanhef voor een persoon zonder adellijke titel of predikaat wordt samengesteld afhankelijk van de geslachtsaanduiding en de waarde van aanduidingNaamgebruik, waarbij geldt dat:
+Rule: De aanhef voor een persoon zonder adellijke titel of predicaat wordt samengesteld afhankelijk van de geslachtsaanduiding en de waarde van aanduidingNaamgebruik, waarbij geldt dat:
   - De aanhef wordt voorafgegaan door "Geachte" gevolgd door "mevrouw", "heer" of de voorletters, afhankelijk van de geslachtsaanduiding:
     | geslachtsaanduiding | aanhef begint met (GA) |
     | M                   | Geachte heer           |
@@ -876,7 +874,7 @@ Rule: Wanneer de geslachtsnaam van de partner leeg of onbekend is en de naam van
     | naam                                 | waarde  |
     | adellijke titel of predicaat (02.20) |         |
     | voorvoegsel (02.30)                  |         |
-    | geslachtsnaam (02.40)                |         |
+    | geslachtsnaam (02.40)                | .       |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -910,7 +908,7 @@ Rule: Wanneer de geslachtsnaam van de partner leeg of onbekend is en de naam van
     | naam                                 | waarde                            |
     | adellijke titel of predicaat (02.20) | <adellijkeTitelPredicaat partner> |
     | voorvoegsel (02.30)                  |                                   |
-    | geslachtsnaam (02.40)                |                                   |
+    | geslachtsnaam (02.40)                | .                                 |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
