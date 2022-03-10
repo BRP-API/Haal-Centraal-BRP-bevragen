@@ -203,6 +203,12 @@ Given('het systeem heeft personen met de volgende {string} gegevens', function (
 Given('de persoon heeft nooit een actueel of ontbonden huwelijk of partnerschap gehad', function () {
 });
 
+Given('de persoon heeft geen partner', function () {
+});
+
+Given('de persoon heeft geen actuele partner', function () {
+});
+
 Given('de persoon heeft een actuele partner met adellijke titel', function () {
 });
 
@@ -239,6 +245,12 @@ Given('de partner heeft de volgende naam gegevens', function (dataTable) {
     dataTable.hashes().forEach(function(row) {
         mapRowToProperty(naam, row);
     });
+});
+
+Given('de persoon heeft een ex-partner met de volgende gegevens', function (dataTable) {
+});
+
+Given('de ex-partner heeft de volgende {string} gegevens', function (gegevensgroep, dataTable) {
 });
 
 Given('de partner heeft de volgende aangaanHuwelijkPartnerschap gegevens', function (dataTable) {
@@ -535,4 +547,10 @@ Then('heeft de persoon met burgerservicenummer {string} geen {string} gegevens',
     });
     const obj = persoon[gegevensgroep];
     should.not.exist(obj, `gegevensgroep '${gegevensgroep}' gevonden.\npersoon: ${JSON.stringify(persoon, null, "\t")}`)
+});
+
+Then('heeft de persoon met burgerservicenummer {string} WEL {string} gegevens', function (burgerservicenummer, gegevensgroep) { 
+});
+
+Then('heeft de persoon met burgerservicenummer {string} GEEN {string} gegevens', function (burgerservicenummer, gegevensgroep) { 
 });
