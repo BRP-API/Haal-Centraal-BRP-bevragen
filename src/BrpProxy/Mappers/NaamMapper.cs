@@ -101,12 +101,20 @@ public static class NaamMapper
         switch (waardetabel.Code)
         {
             case "JH":
-                return "Jonkheer";
+                return "jonkheer";
             case "JV":
-                return "Jonkvrouw";
+                return "jonkvrouw";
             default:
                 return string.Empty;
         }
+    }
+
+    public static string VolledigeNaam(this GbaNaamPersoon naam)
+    {
+        var adellijkeTitel = naam.AdellijkeTitelPredicaat.MapNaarAdellijkeTitel();
+        var predikaat = naam.AdellijkeTitelPredicaat.MapNaarPredicaat();
+
+        return Regex.Replace($"{predikaat} {naam.Voornamen} {adellijkeTitel} {naam.Voorvoegsel} {naam.Geslachtsnaam}", @"\s+", " ").Trim();
     }
 
     public static string Voorletters(this GbaNaamPersoon naam)
