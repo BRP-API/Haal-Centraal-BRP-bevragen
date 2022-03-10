@@ -527,3 +527,12 @@ Then('heeft de partner met burgerservicenummer {string} de volgende {string} geg
         should.not.exist(actual, `${gegevensgroep} gegeven '${row.naam}' gevonden.'\npartner: ${JSON.stringify(partner, null, "\t")}`);
     });
 });
+
+Then('heeft de persoon met burgerservicenummer {string} geen {string} gegevens', function (burgerservicenummer, gegevensgroep) {  
+    const personen = this.context.response.data.personen;
+    const persoon = personen.find(function(p) {
+        return p.burgerservicenummer === burgerservicenummer;
+    });
+    const obj = persoon[gegevensgroep];
+    should.not.exist(obj, `gegevensgroep '${gegevensgroep}' gevonden.\npersoon: ${JSON.stringify(persoon, null, "\t")}`)
+});
