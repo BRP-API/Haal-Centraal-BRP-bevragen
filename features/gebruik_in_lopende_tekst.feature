@@ -643,12 +643,12 @@ Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van
     | burgerservicenummer | 999992934  |
     | geslachtsaanduiding | V          |
     En de persoon heeft de volgende naam gegevens
-    | naam                                 | waarde        |
-    | voornamen (02.10)                    |               |
-    | adellijke titel of predicaat (02.20) |               |
-    | voorvoegsel (02.30)                  |               |
-    | geslachtsnaam (02.40)                |               |
-    | aanduidingNaamgebruik (61.10)        | <naamgebruik> |
+    | naam                                 | waarde          |
+    | voornamen (02.10)                    |                 |
+    | adellijke titel of predicaat (02.20) |                 |
+    | voorvoegsel (02.30)                  |                 |
+    | geslachtsnaam (02.40)                | <geslachtsnaam> |
+    | aanduidingNaamgebruik (61.10)        | <naamgebruik>   |
     En de persoon heeft een partner met de volgende gegevens
     | naam                        | waarde    |
     | geslachtsaanduiding (04.10) | M         |
@@ -665,13 +665,21 @@ Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van
     Dan heeft de persoon met burgerservicenummer '999992934' <leveren naam> 'naam'
 
     Voorbeelden:
-      | naamgebruik | leveren naam |
-      | E           | GEEN         |
-      | P           | WEL          |
-      | V           | GEEN         |
-      | N           | GEEN         |
+    | geslachtsnaam | naamgebruik | leveren naam |
+    | .             | E           | GEEN         |
+    | .             | P           | WEL          |
+    | .             | V           | GEEN         |
+    | .             | N           | GEEN         |
+    |               | E           | GEEN         |
+    |               | P           | WEL          |
+    |               | V           | GEEN         |
+    |               | N           | GEEN         |
+    | Jansen        | E           | WEL          |
+    | Jansen        | P           | WEL          |
+    | Jansen        | V           | WEL          |
+    | Jansen        | N           | WEL          |
 
-Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van de partner wordt gebruikt, wordt gebruikInLopendeTekst niet opgenomen
+Rule: Wanneer de geslachtsnaam van de partner leeg of onbekend is en de naam van de partner wordt gebruikt, wordt gebruikInLopendeTekst niet opgenomen
 
   Abstract Scenario: naam van de partner is onbekend bij aanduiding naamgebruik "<naamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -689,10 +697,10 @@ Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van
     | naam                        | waarde    |
     | geslachtsaanduiding (04.10) | M         |
     En de partner heeft de volgende naam gegevens
-    | naam                                 | waarde  |
-    | adellijke titel of predicaat (02.20) |         |
-    | voorvoegsel (02.30)                  |         |
-    | geslachtsnaam (02.40)                |         |
+    | naam                                 | waarde          |
+    | adellijke titel of predicaat (02.20) |                 |
+    | voorvoegsel (02.30)                  |                 |
+    | geslachtsnaam (02.40)                | <geslachtsnaam> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -701,8 +709,16 @@ Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van
     Dan heeft de persoon met burgerservicenummer '999992934' <leveren naam> 'naam'
 
     Voorbeelden:
-      | naamgebruik | leveren naam |
-      | E           | WEL          |
-      | P           | GEEN         |
-      | V           | GEEN         |
-      | N           | GEEN         |
+    | geslachtsnaam | naamgebruik | leveren naam |
+    | .             | E           | WEL          |
+    | .             | P           | GEEN         |
+    | .             | V           | GEEN         |
+    | .             | N           | GEEN         |
+    |               | E           | WEL          |
+    |               | P           | GEEN         |
+    |               | V           | GEEN         |
+    |               | N           | GEEN         |
+    | Jansen        | E           | WEL          |
+    | Jansen        | P           | WEL          |
+    | Jansen        | V           | WEL          |
+    | Jansen        | N           | WEL          |
