@@ -17,7 +17,7 @@ Rule: Voorletters wordt samengesteld uit de eerste letter van de voornamen gesch
         Gegeven het systeem heeft een persoon met de volgende gegevens
         | naam                | waarde    |
         | burgerservicenummer | 999995078 |
-        En de persoon heeft de volgende naam gegevens
+        En de persoon heeft de volgende 'naam' gegevens
         | naam              | waarde      |
         | voornamen (02.10) | <voornamen> |
         Als personen wordt gezocht met de volgende parameters
@@ -25,7 +25,7 @@ Rule: Voorletters wordt samengesteld uit de eerste letter van de voornamen gesch
         | type                | RaadpleegMetBurgerservicenummer |
         | burgerservicenummer | 999995078                       |
         | fields              | naam.voorletters                |
-        Dan bevat de persoon met burgerservicenummer '999995078' de volgende naam gegevens
+        Dan heeft de persoon met burgerservicenummer '999995078' de volgende 'naam' gegevens
         | naam        | waarde        |
         | voorletters | <voorletters> |
 
