@@ -1,6 +1,7 @@
 ﻿using HaalCentraal.BrpService.Generated;
 using HaalCentraal.BrpService.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace HaalCentraal.BrpService.Controllers
 {
@@ -65,11 +66,13 @@ namespace HaalCentraal.BrpService.Controllers
 
         private async Task<ActionResult<PersonenQueryResponse>> Handle(RaadpleegMetBurgerservicenummer query)
         {
-            _logger.LogDebug("RaadpleegMetBurgerservicenummer: {query}", query);
+            _logger.LogDebug("Request body: {@query}", JsonConvert.SerializeObject(query));
 
             var retval = await _repository.Zoek<RaadpleegMetBurgerservicenummer, RaadpleegMetBurgerservicenummerResponse>(query);
 
             retval.Personen = retval.Personen.AsQueryable().Where(query.ToSpecification().ToExpression()).ToList();
+
+            _logger.LogDebug("Response: {@response}", JsonConvert.SerializeObject(retval));
 
             return Ok(retval);
         }
