@@ -845,7 +845,7 @@
         "example" : "de"
       },
       "VoornamenOptioneelFilter" : {
-        "pattern" : "^[a-zA-Z0-9À-ž \\.\\-\\']{1,199}\\*{1}$",
+        "pattern" : "^[a-zA-Z0-9À-ž \\.\\-\\']{1,199}\\*{0,1}$",
         "type" : "string",
         "description" : "De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**\n",
         "example" : "Dirk"
@@ -1026,7 +1026,7 @@
           "mapping" : {
             "VerblijfplaatsBuitenland" : "#/components/schemas/VerblijfplaatsBuitenlandBeperkt",
             "Adres" : "#/components/schemas/AdresBeperkt",
-            "VerblijfplaatsOnbekend" : "#/components/schemas/VerblijfplaatsOnbekend",
+            "VerblijfplaatsOnbekend" : "#/components/schemas/VerblijfplaatsOnbekendBeperkt",
             "Locatie" : "#/components/schemas/LocatieBeperkt"
           }
         }
@@ -1098,376 +1098,14 @@
         "description" : "Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.\n",
         "example" : "Duiven"
       },
-      "VerblijfplaatsOnbekend" : {
+      "VerblijfplaatsOnbekendBeperkt" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractVerblijfplaats"
+          "$ref" : "#/components/schemas/AbstractVerblijfplaatsBeperkt"
         }, {
           "type" : "object",
           "properties" : {
-            "datumInschrijvingInGemeente" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
-            },
-            "gemeenteVanInschrijving" : {
-              "$ref" : "#/components/schemas/GemeenteVanInschrijving"
-            },
             "verblijfplaatsOnbekend" : {
               "$ref" : "#/components/schemas/IndicatieVerblijfplaatsOnbekend"
-            },
-            "inOnderzoek" : {
-              "$ref" : "#/components/schemas/VerblijfplaatsOnbekendInOnderzoek"
-            }
-          }
-        } ]
-      },
-      "AbstractVerblijfplaats" : {
-        "required" : [ "type" ],
-        "type" : "object",
-        "properties" : {
-          "type" : {
-            "type" : "string"
-          }
-        },
-        "description" : "Gegevens over het verblijf of de woonlocatie van een persoon.\n",
-        "discriminator" : {
-          "propertyName" : "type",
-          "mapping" : {
-            "VerblijfplaatsBuitenland" : "#/components/schemas/VerblijfplaatsBuitenland",
-            "Adres" : "#/components/schemas/Adres",
-            "VerblijfplaatsOnbekend" : "#/components/schemas/VerblijfplaatsOnbekend",
-            "Locatie" : "#/components/schemas/Locatie"
-          }
-        }
-      },
-      "VerblijfplaatsBuitenland" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractVerblijfplaats"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "adresregel1" : {
-              "$ref" : "#/components/schemas/Adresregel1"
-            },
-            "adresregel2" : {
-              "$ref" : "#/components/schemas/Adresregel2"
-            },
-            "adresregel3" : {
-              "$ref" : "#/components/schemas/Adresregel3"
-            },
-            "datumInschrijvingInGemeente" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
-            },
-            "gemeenteVanInschrijving" : {
-              "$ref" : "#/components/schemas/Waardetabel"
-            },
-            "land" : {
-              "$ref" : "#/components/schemas/Waardetabel"
-            },
-            "datumVan" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
-            },
-            "datumIngangGeldigheid" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
-            },
-            "inOnderzoek" : {
-              "$ref" : "#/components/schemas/VerblijfplaatsBuitenlandInOnderzoek"
-            }
-          }
-        } ]
-      },
-      "VerblijfplaatsBuitenlandInOnderzoek" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "adresregel1" : {
-              "type" : "boolean"
-            },
-            "adresregel2" : {
-              "type" : "boolean"
-            },
-            "adresregel3" : {
-              "type" : "boolean"
-            },
-            "datumInschrijvingInGemeente" : {
-              "type" : "boolean"
-            },
-            "gemeenteVanInschrijving" : {
-              "type" : "boolean"
-            },
-            "land" : {
-              "type" : "boolean"
-            },
-            "datumVan" : {
-              "type" : "boolean"
-            },
-            "datumIngangGeldigheid" : {
-              "type" : "boolean"
-            }
-          }
-        } ]
-      },
-      "Adres" : {
-        "description" : "Gegevens over het adres van een persoon.\n* **datumVan** : de datum van aangifte of ambtshalve melding van verblijf en adres.\n* **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden.\n* **datumInschrijvingInGemeente**: bij inschrijving op grond van een verhuisaangifte door de burger is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop het voornemen van ambtshalve opneming schriftelijk aan de persoon is medegedeeld.\n* **datumVestigingInNederland** : datum van inschrijving in Nederland.\n* **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland.\n* **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten.\"\n",
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractVerblijfplaats"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "functieAdres" : {
-              "$ref" : "#/components/schemas/Waardetabel"
-            },
-            "straat" : {
-              "$ref" : "#/components/schemas/Straat"
-            },
-            "huisnummer" : {
-              "$ref" : "#/components/schemas/Huisnummer"
-            },
-            "huisletter" : {
-              "$ref" : "#/components/schemas/Huisletter"
-            },
-            "huisnummertoevoeging" : {
-              "$ref" : "#/components/schemas/Huisnummertoevoeging"
-            },
-            "aanduidingBijHuisnummer" : {
-              "$ref" : "#/components/schemas/Waardetabel"
-            },
-            "postcode" : {
-              "$ref" : "#/components/schemas/Postcode"
-            },
-            "adresseerbaarObjectIdentificatie" : {
-              "$ref" : "#/components/schemas/AdresseerbaarObjectIdentificatie"
-            },
-            "nummeraanduidingIdentificatie" : {
-              "$ref" : "#/components/schemas/NummeraanduidingIdentificatie"
-            },
-            "adresregel1" : {
-              "$ref" : "#/components/schemas/Adresregel1"
-            },
-            "adresregel2" : {
-              "$ref" : "#/components/schemas/Adresregel2"
-            },
-            "woonplaats" : {
-              "$ref" : "#/components/schemas/Woonplaats"
-            },
-            "indicatieVestigingVanuitBuitenland" : {
-              "$ref" : "#/components/schemas/IndicatieVestigingVanuitBuitenland"
-            },
-            "korteNaam" : {
-              "$ref" : "#/components/schemas/KorteNaam"
-            },
-            "vanuitVerblijfplaatsOnbekend" : {
-              "$ref" : "#/components/schemas/VanuitVerblijfplaatsOnbekend"
-            },
-            "datumVan" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
-            },
-            "datumIngangGeldigheid" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
-            },
-            "datumInschrijvingInGemeente" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
-            },
-            "datumVestigingInNederland" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
-            },
-            "gemeenteVanInschrijving" : {
-              "$ref" : "#/components/schemas/Waardetabel"
-            },
-            "landVanwaarIngeschreven" : {
-              "$ref" : "#/components/schemas/Waardetabel"
-            },
-            "inOnderzoek" : {
-              "$ref" : "#/components/schemas/AdresInOnderzoek"
-            }
-          }
-        } ]
-      },
-      "Straat" : {
-        "maxLength" : 80,
-        "type" : "string",
-        "example" : "Tulpstraat"
-      },
-      "AdresseerbaarObjectIdentificatie" : {
-        "pattern" : "^[0-9]{16}$",
-        "type" : "string",
-        "description" : "De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.\n",
-        "example" : "0226010000038820"
-      },
-      "IndicatieVestigingVanuitBuitenland" : {
-        "type" : "boolean",
-        "description" : "Geeft aan dat de persoon zich vanuit het buitenland heeft ingeschreven.\n"
-      },
-      "KorteNaam" : {
-        "maxLength" : 24,
-        "type" : "string",
-        "description" : "De officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG) of een verkorte versie.\n"
-      },
-      "VanuitVerblijfplaatsOnbekend" : {
-        "type" : "boolean",
-        "description" : "Geeft aan dat de persoon is teruggekeerd uit een situatie van onbekende verblijfplaats\n"
-      },
-      "AdresInOnderzoek" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "aanduidingBijHuisnummer" : {
-              "type" : "boolean"
-            },
-            "datumVan" : {
-              "type" : "boolean"
-            },
-            "datumIngangGeldigheid" : {
-              "type" : "boolean"
-            },
-            "datumInschrijvingInGemeente" : {
-              "type" : "boolean"
-            },
-            "datumVestigingInNederland" : {
-              "type" : "boolean"
-            },
-            "functieAdres" : {
-              "type" : "boolean"
-            },
-            "gemeenteVanInschrijving" : {
-              "type" : "boolean"
-            },
-            "huisletter" : {
-              "type" : "boolean"
-            },
-            "huisnummer" : {
-              "type" : "boolean"
-            },
-            "huisnummertoevoeging" : {
-              "type" : "boolean"
-            },
-            "nummeraanduidingIdentificatie" : {
-              "type" : "boolean"
-            },
-            "adresseerbaarObjectIdentificatie" : {
-              "type" : "boolean"
-            },
-            "landVanwaarIngeschreven" : {
-              "type" : "boolean"
-            },
-            "straat" : {
-              "type" : "boolean"
-            },
-            "postcode" : {
-              "type" : "boolean"
-            },
-            "korteNaam" : {
-              "type" : "boolean"
-            },
-            "woonplaats" : {
-              "type" : "boolean"
-            },
-            "adresregel1" : {
-              "type" : "boolean"
-            },
-            "adresregel2" : {
-              "type" : "boolean"
-            },
-            "indicatieVestigingVanuitBuitenland" : {
-              "type" : "boolean"
-            },
-            "vanuitVerblijfplaatsOnbekend" : {
-              "type" : "boolean"
-            }
-          }
-        } ]
-      },
-      "Locatie" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractVerblijfplaats"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "adresregel1" : {
-              "$ref" : "#/components/schemas/Adresregel1"
-            },
-            "adresregel2" : {
-              "$ref" : "#/components/schemas/Adresregel2"
-            },
-            "datumInschrijvingInGemeente" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
-            },
-            "datumVestigingInNederland" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
-            },
-            "functieAdres" : {
-              "$ref" : "#/components/schemas/Waardetabel"
-            },
-            "gemeenteVanInschrijving" : {
-              "$ref" : "#/components/schemas/Waardetabel"
-            },
-            "indicatieVestigingVanuitBuitenland" : {
-              "$ref" : "#/components/schemas/IndicatieVestigingVanuitBuitenland"
-            },
-            "landVanwaarIngeschreven" : {
-              "$ref" : "#/components/schemas/Waardetabel"
-            },
-            "locatiebeschrijving" : {
-              "$ref" : "#/components/schemas/Locatiebeschrijving"
-            },
-            "vanuitVerblijfplaatsOnbekend" : {
-              "$ref" : "#/components/schemas/VanuitVerblijfplaatsOnbekend"
-            },
-            "woonplaats" : {
-              "$ref" : "#/components/schemas/Woonplaats"
-            },
-            "inOnderzoek" : {
-              "$ref" : "#/components/schemas/LocatieInOnderzoek"
-            }
-          }
-        } ]
-      },
-      "Locatiebeschrijving" : {
-        "maxLength" : 35,
-        "type" : "string",
-        "description" : "Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats.\n",
-        "example" : "Naast de derde brug"
-      },
-      "LocatieInOnderzoek" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "adresregel1" : {
-              "type" : "boolean"
-            },
-            "adresregel2" : {
-              "type" : "boolean"
-            },
-            "datumInschrijvingInGemeente" : {
-              "type" : "boolean"
-            },
-            "datumVestigingInNederland" : {
-              "type" : "boolean"
-            },
-            "functieAdres" : {
-              "type" : "boolean"
-            },
-            "gemeenteVanInschrijving" : {
-              "type" : "boolean"
-            },
-            "indicatieVestigingVanuitBuitenland" : {
-              "type" : "boolean"
-            },
-            "landVanwaarIngeschreven" : {
-              "type" : "boolean"
-            },
-            "locatiebeschrijving" : {
-              "type" : "boolean"
-            },
-            "vanuitVerblijfplaatsOnbekend" : {
-              "type" : "boolean"
-            },
-            "woonplaats" : {
-              "type" : "boolean"
             }
           }
         } ]
@@ -1475,24 +1113,6 @@
       "IndicatieVerblijfplaatsOnbekend" : {
         "type" : "boolean",
         "description" : "Indicatie dat de verblijfplaats van de persoon onbekend is. Er is niet bekend in welk land de persoon verblijft.\n"
-      },
-      "VerblijfplaatsOnbekendInOnderzoek" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "datumInschrijvingInGemeente" : {
-              "type" : "boolean"
-            },
-            "gemeenteVanInschrijving" : {
-              "type" : "boolean"
-            },
-            "verblijfplaatsOnbekend" : {
-              "type" : "boolean"
-            }
-          }
-        } ]
       },
       "LocatieBeperkt" : {
         "allOf" : [ {
@@ -1517,6 +1137,12 @@
             }
           }
         } ]
+      },
+      "Locatiebeschrijving" : {
+        "maxLength" : 35,
+        "type" : "string",
+        "description" : "Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats.\n",
+        "example" : "Naast de derde brug"
       },
       "AbstractDatum" : {
         "required" : [ "type" ],
@@ -1944,6 +1570,392 @@
               "type" : "boolean"
             },
             "plaats" : {
+              "type" : "boolean"
+            }
+          }
+        } ]
+      },
+      "AbstractVerblijfplaats" : {
+        "required" : [ "type" ],
+        "type" : "object",
+        "properties" : {
+          "type" : {
+            "type" : "string"
+          }
+        },
+        "description" : "Gegevens over het verblijf of de woonlocatie van een persoon.\n",
+        "discriminator" : {
+          "propertyName" : "type",
+          "mapping" : {
+            "VerblijfplaatsBuitenland" : "#/components/schemas/VerblijfplaatsBuitenland",
+            "Adres" : "#/components/schemas/Adres",
+            "VerblijfplaatsOnbekend" : "#/components/schemas/VerblijfplaatsOnbekend",
+            "Locatie" : "#/components/schemas/Locatie"
+          }
+        }
+      },
+      "VerblijfplaatsBuitenland" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AbstractVerblijfplaats"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "adresregel1" : {
+              "$ref" : "#/components/schemas/Adresregel1"
+            },
+            "adresregel2" : {
+              "$ref" : "#/components/schemas/Adresregel2"
+            },
+            "adresregel3" : {
+              "$ref" : "#/components/schemas/Adresregel3"
+            },
+            "datumInschrijvingInGemeente" : {
+              "$ref" : "#/components/schemas/AbstractDatum"
+            },
+            "gemeenteVanInschrijving" : {
+              "$ref" : "#/components/schemas/Waardetabel"
+            },
+            "land" : {
+              "$ref" : "#/components/schemas/Waardetabel"
+            },
+            "datumVan" : {
+              "$ref" : "#/components/schemas/AbstractDatum"
+            },
+            "datumIngangGeldigheid" : {
+              "$ref" : "#/components/schemas/AbstractDatum"
+            },
+            "inOnderzoek" : {
+              "$ref" : "#/components/schemas/VerblijfplaatsBuitenlandInOnderzoek"
+            }
+          }
+        } ]
+      },
+      "VerblijfplaatsBuitenlandInOnderzoek" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/InOnderzoek"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "adresregel1" : {
+              "type" : "boolean"
+            },
+            "adresregel2" : {
+              "type" : "boolean"
+            },
+            "adresregel3" : {
+              "type" : "boolean"
+            },
+            "datumInschrijvingInGemeente" : {
+              "type" : "boolean"
+            },
+            "gemeenteVanInschrijving" : {
+              "type" : "boolean"
+            },
+            "land" : {
+              "type" : "boolean"
+            },
+            "datumVan" : {
+              "type" : "boolean"
+            },
+            "datumIngangGeldigheid" : {
+              "type" : "boolean"
+            }
+          }
+        } ]
+      },
+      "Adres" : {
+        "description" : "Gegevens over het adres van een persoon.\n* **datumVan** : de datum van aangifte of ambtshalve melding van verblijf en adres.\n* **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden.\n* **datumInschrijvingInGemeente**: bij inschrijving op grond van een verhuisaangifte door de burger is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop het voornemen van ambtshalve opneming schriftelijk aan de persoon is medegedeeld.\n* **datumVestigingInNederland** : datum van inschrijving in Nederland.\n* **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland.\n* **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten.\"\n",
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AbstractVerblijfplaats"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "functieAdres" : {
+              "$ref" : "#/components/schemas/Waardetabel"
+            },
+            "straat" : {
+              "$ref" : "#/components/schemas/Straat"
+            },
+            "huisnummer" : {
+              "$ref" : "#/components/schemas/Huisnummer"
+            },
+            "huisletter" : {
+              "$ref" : "#/components/schemas/Huisletter"
+            },
+            "huisnummertoevoeging" : {
+              "$ref" : "#/components/schemas/Huisnummertoevoeging"
+            },
+            "aanduidingBijHuisnummer" : {
+              "$ref" : "#/components/schemas/Waardetabel"
+            },
+            "postcode" : {
+              "$ref" : "#/components/schemas/Postcode"
+            },
+            "adresseerbaarObjectIdentificatie" : {
+              "$ref" : "#/components/schemas/AdresseerbaarObjectIdentificatie"
+            },
+            "nummeraanduidingIdentificatie" : {
+              "$ref" : "#/components/schemas/NummeraanduidingIdentificatie"
+            },
+            "adresregel1" : {
+              "$ref" : "#/components/schemas/Adresregel1"
+            },
+            "adresregel2" : {
+              "$ref" : "#/components/schemas/Adresregel2"
+            },
+            "woonplaats" : {
+              "$ref" : "#/components/schemas/Woonplaats"
+            },
+            "indicatieVestigingVanuitBuitenland" : {
+              "$ref" : "#/components/schemas/IndicatieVestigingVanuitBuitenland"
+            },
+            "korteNaam" : {
+              "$ref" : "#/components/schemas/KorteNaam"
+            },
+            "vanuitVerblijfplaatsOnbekend" : {
+              "$ref" : "#/components/schemas/VanuitVerblijfplaatsOnbekend"
+            },
+            "datumVan" : {
+              "$ref" : "#/components/schemas/AbstractDatum"
+            },
+            "datumIngangGeldigheid" : {
+              "$ref" : "#/components/schemas/AbstractDatum"
+            },
+            "datumInschrijvingInGemeente" : {
+              "$ref" : "#/components/schemas/AbstractDatum"
+            },
+            "datumVestigingInNederland" : {
+              "$ref" : "#/components/schemas/AbstractDatum"
+            },
+            "gemeenteVanInschrijving" : {
+              "$ref" : "#/components/schemas/Waardetabel"
+            },
+            "landVanwaarIngeschreven" : {
+              "$ref" : "#/components/schemas/Waardetabel"
+            },
+            "inOnderzoek" : {
+              "$ref" : "#/components/schemas/AdresInOnderzoek"
+            }
+          }
+        } ]
+      },
+      "Straat" : {
+        "maxLength" : 80,
+        "type" : "string",
+        "example" : "Tulpstraat"
+      },
+      "AdresseerbaarObjectIdentificatie" : {
+        "pattern" : "^[0-9]{16}$",
+        "type" : "string",
+        "description" : "De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.\n",
+        "example" : "0226010000038820"
+      },
+      "IndicatieVestigingVanuitBuitenland" : {
+        "type" : "boolean",
+        "description" : "Geeft aan dat de persoon zich vanuit het buitenland heeft ingeschreven.\n"
+      },
+      "KorteNaam" : {
+        "maxLength" : 24,
+        "type" : "string",
+        "description" : "De officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG) of een verkorte versie.\n"
+      },
+      "VanuitVerblijfplaatsOnbekend" : {
+        "type" : "boolean",
+        "description" : "Geeft aan dat de persoon is teruggekeerd uit een situatie van onbekende verblijfplaats\n"
+      },
+      "AdresInOnderzoek" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/InOnderzoek"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "aanduidingBijHuisnummer" : {
+              "type" : "boolean"
+            },
+            "datumVan" : {
+              "type" : "boolean"
+            },
+            "datumIngangGeldigheid" : {
+              "type" : "boolean"
+            },
+            "datumInschrijvingInGemeente" : {
+              "type" : "boolean"
+            },
+            "datumVestigingInNederland" : {
+              "type" : "boolean"
+            },
+            "functieAdres" : {
+              "type" : "boolean"
+            },
+            "gemeenteVanInschrijving" : {
+              "type" : "boolean"
+            },
+            "huisletter" : {
+              "type" : "boolean"
+            },
+            "huisnummer" : {
+              "type" : "boolean"
+            },
+            "huisnummertoevoeging" : {
+              "type" : "boolean"
+            },
+            "nummeraanduidingIdentificatie" : {
+              "type" : "boolean"
+            },
+            "adresseerbaarObjectIdentificatie" : {
+              "type" : "boolean"
+            },
+            "landVanwaarIngeschreven" : {
+              "type" : "boolean"
+            },
+            "straat" : {
+              "type" : "boolean"
+            },
+            "postcode" : {
+              "type" : "boolean"
+            },
+            "korteNaam" : {
+              "type" : "boolean"
+            },
+            "woonplaats" : {
+              "type" : "boolean"
+            },
+            "adresregel1" : {
+              "type" : "boolean"
+            },
+            "adresregel2" : {
+              "type" : "boolean"
+            },
+            "indicatieVestigingVanuitBuitenland" : {
+              "type" : "boolean"
+            },
+            "vanuitVerblijfplaatsOnbekend" : {
+              "type" : "boolean"
+            }
+          }
+        } ]
+      },
+      "VerblijfplaatsOnbekend" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AbstractVerblijfplaats"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "datumInschrijvingInGemeente" : {
+              "$ref" : "#/components/schemas/AbstractDatum"
+            },
+            "gemeenteVanInschrijving" : {
+              "$ref" : "#/components/schemas/GemeenteVanInschrijving"
+            },
+            "verblijfplaatsOnbekend" : {
+              "$ref" : "#/components/schemas/IndicatieVerblijfplaatsOnbekend"
+            },
+            "inOnderzoek" : {
+              "$ref" : "#/components/schemas/VerblijfplaatsOnbekendInOnderzoek"
+            }
+          }
+        } ]
+      },
+      "VerblijfplaatsOnbekendInOnderzoek" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/InOnderzoek"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "datumInschrijvingInGemeente" : {
+              "type" : "boolean"
+            },
+            "gemeenteVanInschrijving" : {
+              "type" : "boolean"
+            },
+            "verblijfplaatsOnbekend" : {
+              "type" : "boolean"
+            }
+          }
+        } ]
+      },
+      "Locatie" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AbstractVerblijfplaats"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "adresregel1" : {
+              "$ref" : "#/components/schemas/Adresregel1"
+            },
+            "adresregel2" : {
+              "$ref" : "#/components/schemas/Adresregel2"
+            },
+            "datumInschrijvingInGemeente" : {
+              "$ref" : "#/components/schemas/AbstractDatum"
+            },
+            "datumVestigingInNederland" : {
+              "$ref" : "#/components/schemas/AbstractDatum"
+            },
+            "functieAdres" : {
+              "$ref" : "#/components/schemas/Waardetabel"
+            },
+            "gemeenteVanInschrijving" : {
+              "$ref" : "#/components/schemas/Waardetabel"
+            },
+            "indicatieVestigingVanuitBuitenland" : {
+              "$ref" : "#/components/schemas/IndicatieVestigingVanuitBuitenland"
+            },
+            "landVanwaarIngeschreven" : {
+              "$ref" : "#/components/schemas/Waardetabel"
+            },
+            "locatiebeschrijving" : {
+              "$ref" : "#/components/schemas/Locatiebeschrijving"
+            },
+            "vanuitVerblijfplaatsOnbekend" : {
+              "$ref" : "#/components/schemas/VanuitVerblijfplaatsOnbekend"
+            },
+            "woonplaats" : {
+              "$ref" : "#/components/schemas/Woonplaats"
+            },
+            "inOnderzoek" : {
+              "$ref" : "#/components/schemas/LocatieInOnderzoek"
+            }
+          }
+        } ]
+      },
+      "LocatieInOnderzoek" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/InOnderzoek"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "adresregel1" : {
+              "type" : "boolean"
+            },
+            "adresregel2" : {
+              "type" : "boolean"
+            },
+            "datumInschrijvingInGemeente" : {
+              "type" : "boolean"
+            },
+            "datumVestigingInNederland" : {
+              "type" : "boolean"
+            },
+            "functieAdres" : {
+              "type" : "boolean"
+            },
+            "gemeenteVanInschrijving" : {
+              "type" : "boolean"
+            },
+            "indicatieVestigingVanuitBuitenland" : {
+              "type" : "boolean"
+            },
+            "landVanwaarIngeschreven" : {
+              "type" : "boolean"
+            },
+            "locatiebeschrijving" : {
+              "type" : "boolean"
+            },
+            "vanuitVerblijfplaatsOnbekend" : {
+              "type" : "boolean"
+            },
+            "woonplaats" : {
               "type" : "boolean"
             }
           }
