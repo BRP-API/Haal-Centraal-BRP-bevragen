@@ -21,5 +21,11 @@ namespace HaalCentraal.BrpProxy.Generated
         public bool ShouldSerializeKinderen() => Kinderen?.Count > 0;
         public bool ShouldSerializeOuders() => Ouders?.Count > 0;
         public bool ShouldSerializePartners() => Partners?.Count > 0;
+        //public bool ShouldSerializeNaam() => !string.IsNullOrWhiteSpace(Naam.Geslachtsnaam);
+    }
+
+    public partial class NaamBasis
+    {
+        public bool ShouldSerializeVolledigeNaam() => !string.IsNullOrWhiteSpace(VolledigeNaam);
     }
 }
