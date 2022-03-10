@@ -120,7 +120,7 @@ components:
         mapping:
           VerblijfplaatsBuitenland: '#/components/schemas/VerblijfplaatsBuitenlandBeperkt'
           Adres: '#/components/schemas/AdresBeperkt'
-          VerblijfplaatsOnbekend: '#/components/schemas/VerblijfplaatsOnbekend'
+          VerblijfplaatsOnbekend: '#/components/schemas/VerblijfplaatsOnbekendBeperkt'
           Locatie: '#/components/schemas/LocatieBeperkt'
     AdresBeperkt:
       allOf:
