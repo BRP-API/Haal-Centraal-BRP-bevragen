@@ -254,6 +254,7 @@ Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenome
 
 Rule: Wanneer alleen ouderAanduiding, geslachtsaanduiding en datumIngangFamilierechtelijkeBetrekking een waarde hebben, wordt de ouder geleverd met type "OnbekendOuder" en indicatieOnbekend met waarde true
   Dit geldt wanneer na toepassen van onbekend_waardes.feature er geen enkel gegeven behalve ouderAanduiding, geslachtsaanduiding en datumIngangFamilierechtelijkeBetrekking is opgenomen voor de ouder
+  Met andere woorden: wanneer alle gegevens van burgerservicenummer, naam en geboorte leeg zijn of een onbekendwaarde hebben, dan is het een OnbekendOuder.
 
   Wanneer van de ouder wel gegevens geregistreerd zijn, maar geen van de met fields gevraagde gegevens heeft een waarde, dan is het type "Ouder" en wordt indicatieOnbekend NIET opgenomen
 
@@ -283,6 +284,62 @@ Rule: Wanneer alleen ouderAanduiding, geslachtsaanduiding en datumIngangFamilier
     | ouderAanduiding                         | ouder1        |
     | geslachtsaanduiding                     | V             |
     | datumIngangFamilierechtelijkeBetrekking | 2019-06-14    |
+
+  @proxy
+  Scenario: er is wel een identificerend gegeven geslachtsnaam van de ouder
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999993008 |
+    En de persoon heeft een ouder met de volgende gegevens
+    | naam                                            | waarde   |
+    | ouderAanduiding                                 | ouder1   |
+    | geslachtsaanduiding (04.10)                     | V        |
+    | datumIngangFamilierechtelijkeBetrekking (62.10) | 20190614 |
+    En de ouder met ouderAanduiding 'ouder1' heeft alleen de volgende 'naam' gegevens
+    | naam                  | waarde            |
+    | geslachtsnaam (02.40) | Ibin binti Yalniz |
+    En de ouder met ouderAanduiding 'ouder1' heeft GEEN 'geboorte' gegevens
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                            |
+    | type                | RaadpleegMetBurgerservicenummer   |
+    | burgerservicenummer | 999993008                         |
+    | fields              | ouder.ouderAanduiding,ouders.naam |
+    Dan heeft de ouder met ouderAanduiding 'ouder1' alleen de volgende gegevens
+    | naam                                    | waarde        |
+    | type                                    | Ouder |
+    | ouderAanduiding                         | ouder1        |
+    En heeft de ouder met ouderAanduiding 'ouder1' alleen de volgende 'naam' gegevens
+    | naam          | waarde            |
+    | geslachtsnaam | Ibin binti Yalniz |
+
+  @proxy
+  Scenario: er is wel een identificerend gegeven geboortedatum van de ouder
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999993008 |
+    En de persoon heeft een ouder met de volgende gegevens
+    | naam                                            | waarde   |
+    | ouderAanduiding                                 | ouder1   |
+    | geslachtsaanduiding (04.10)                     | V        |
+    | datumIngangFamilierechtelijkeBetrekking (62.10) | 20190614 |
+    En de ouder met ouderAanduiding 'ouder1' heeft alleen de volgende 'naam' gegevens
+    | naam                  | waarde |
+    | geslachtsnaam (02.40) | .      |
+    En de ouder met ouderAanduiding 'ouder1' heeft alleen de volgende 'geboorte' gegevens
+    | naam          | waarde   |
+    | datum (03.10) | 19560000 |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                            |
+    | type                | RaadpleegMetBurgerservicenummer   |
+    | burgerservicenummer | 999993008                         |
+    | fields              | ouder.ouderAanduiding,ouders.naam |
+    Dan heeft de ouder met ouderAanduiding 'ouder1' alleen de volgende gegevens
+    | naam            | waarde |
+    | type            | Ouder  |
+    | ouderAanduiding | ouder1 |
+    En heeft de ouder met ouderAanduiding 'ouder1' alleen de volgende 'geboorte' gegevens
+    | naam  | waarde |
+    | datum | 1956   |
 
   @proxy
   Scenario: geen gegevens door fields is geen OnbekendOuder
