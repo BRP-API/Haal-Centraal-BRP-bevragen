@@ -22,14 +22,14 @@ Rule: "ouder1" is de ouder in categorie 2 en "ouder2" is de ouder in categorie 3
     | naam            | waarde |
     | type            | Ouder  |
     | ouderAanduiding | ouder1 |
-    En heeft de ouder met ouderAanduiding 'ouder1' de volgende naam gegevens
+    En heeft de ouder met ouderAanduiding 'ouder1' de volgende 'naam' gegevens
     | naam      | waarde  |
     | voornamen | Lisette |
     En heeft de ouder met ouderAanduiding 'ouder2' de volgende gegevens
     | naam            | waarde |
     | type            | Ouder  |
     | ouderAanduiding | ouder2 |
-    En heeft de ouder met ouderAanduiding 'ouder2' de volgende naam gegevens
+    En heeft de ouder met ouderAanduiding 'ouder2' de volgende 'naam' gegevens
     | naam      | waarde    |
     | voornamen | Guîllaumé |
 
@@ -51,14 +51,14 @@ Rule: de actuele gegevens van ouders worden geleverd
     | naam            | waarde |
     | type            | Ouder  |
     | ouderAanduiding | ouder1 |
-    En heeft de ouder met ouderAanduiding 'ouder1' de volgende naam gegevens
+    En heeft de ouder met ouderAanduiding 'ouder1' de volgende 'naam' gegevens
     | naam      | waarde  |
     | voornamen | Chantal |
     En heeft de ouder met ouderAanduiding 'ouder2' de volgende gegevens
     | naam            | waarde |
     | type            | Ouder  |
     | ouderAanduiding | ouder2 |
-    En heeft de ouder met ouderAanduiding 'ouder2' de volgende naam gegevens
+    En heeft de ouder met ouderAanduiding 'ouder2' de volgende 'naam' gegevens
     | naam      | waarde    |
     | voornamen | Mark      |
 
@@ -78,17 +78,17 @@ Rule: de actuele gegevens van ouders worden geleverd
     | naam            | waarde |
     | type            | Ouder  |
     | ouderAanduiding | ouder1 |
-    En heeft de ouder met ouderAanduiding 'ouder1' de volgende naam gegevens
+    En heeft de ouder met ouderAanduiding 'ouder1' volgende 'inonderzoek' gegevens
     | naam      | waarde  |
     | voornamen | Noa     |
     En heeft de ouder met ouderAanduiding 'ouder2' de volgende gegevens
     | naam            | waarde |
     | type            | Ouder  |
     | ouderAanduiding | ouder2 |
-    En heeft de ouder met ouderAanduiding 'ouder2' de volgende naam gegevens
+    En heeft de ouder met ouderAanduiding 'ouder2' de volgende 'naam' gegevens
     | naam      | waarde    |
     | voornamen | Johanna   |
-    En heeft de ouder met ouderAanduiding 'ouder2' de volgende geslachtsaanduiding gegevens
+    En heeft de ouder met ouderAanduiding 'ouder2' de volgende 'geslachtsaanduiding' gegevens
     | naam         | waarde |
     | code         | V      |
     | omschrijving | vrouw  |
@@ -113,7 +113,7 @@ Rule: de actuele gegevens van ouders worden geleverd
     | type                                          | Ouder      |
     | ouderAanduiding                               | ouder1     |
     | datumIngangFamilierechtelijkeBetrekking.datum | 2019-03-17 |
-    En heeft de ouder met ouderAanduiding 'ouder1' de volgende naam gegevens
+    En heeft de ouder met ouderAanduiding 'ouder1' de volgende 'naam' gegevens
     | naam      | waarde           |
     | voornamen | Olivia Ghislaine |
     En heeft de ouder met ouderAanduiding 'ouder2' de volgende gegevens
@@ -121,7 +121,7 @@ Rule: de actuele gegevens van ouders worden geleverd
     | type                                          | Ouder      |
     | ouderAanduiding                               | ouder2     |
     | datumIngangFamilierechtelijkeBetrekking.datum | 2019-03-17 |
-    En heeft de ouder met ouderAanduiding 'ouder2' de volgende naam gegevens
+    En heeft de ouder met ouderAanduiding 'ouder2' de volgende 'naam' gegevens
     | naam      | waarde    |
     | voornamen | Kevin     |
 
@@ -142,14 +142,14 @@ Rule: de actuele gegevens van ouders worden geleverd
     | naam            | waarde |
     | type            | Ouder  |
     | ouderAanduiding | ouder1 |
-    En heeft de ouder met ouderAanduiding 'ouder1' de volgende naam gegevens
+    En heeft de ouder met ouderAanduiding 'ouder1' de volgende 'naam' gegevens
     | naam      | waarde  |
     | voornamen | Chantal |
     En heeft de ouder met ouderAanduiding 'ouder2' de volgende gegevens
     | naam            | waarde |
     | type            | Ouder  |
     | ouderAanduiding | ouder2 |
-    En heeft de ouder met ouderAanduiding 'ouder2' de volgende naam gegevens
+    En heeft de ouder met ouderAanduiding 'ouder2' de volgende 'naam' gegevens
     | naam      | waarde    |
     | voornamen | Wieger    |
 
@@ -177,11 +177,12 @@ Rule: de geleverde oudergegevens zijn de gegevens zoals die staan op de persoons
     | burgerservicenummer              | 555550004 |
     | geslachtsaanduiding.code         | M         |
     | geslachtsaanduiding.omschrijving | man       |
-    En heeft de ouder met ouderAanduiding 'ouder1' de volgende naam gegevens
+    En heeft de ouder met ouderAanduiding 'ouder1' de volgende 'naam' gegevens
     | naam      | waarde |
     | voornamen | Karel  |
 
 Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenomen en geen gegevens in groep 1, 2, 3, 4 of 62, dan wordt de ouder niet opgenomen
+  Gebruik van de fields parameter heeft geen invloed op het leveren van een ouder
 
   @gba
   Scenario: vondeling (onbekende ouder1 en geen ouder2)
@@ -206,7 +207,7 @@ Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenome
     | geslachtsaanduiding.omschrijving        | vrouw    |
     | datumIngangFamilierechtelijkeBetrekking | 20190614 |
     En de ouder met ouderAanduiding 'ouder1' heeft GEEN 'geboorte' gegevens
-    En heeft de ouder met ouderAanduiding 'ouder1' alleen de volgende naam gegevens
+    En heeft de ouder met ouderAanduiding 'ouder1' alleen de volgende 'naam' gegevens
     | naam          | waarde |
     | geslachtsnaam | .      |
 
@@ -232,12 +233,27 @@ Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenome
     | datumIngangFamilierechtelijkeBetrekking | 00000000 |
     En de ouder met ouderAanduiding 'ouder1' heeft GEEN 'geslachtsaanduiding' gegevens
     En de ouder met ouderAanduiding 'ouder1' heeft GEEN 'geboorte' gegevens
-    En heeft de ouder met ouderAanduiding 'ouder1' alleen de volgende naam gegevens
+    En heeft de ouder met ouderAanduiding 'ouder1' alleen de volgende 'naam' gegevens
     | naam          | waarde |
     | geslachtsnaam | .      |
 
-Rule: Wanneer alleen ouderAanduiding en datumIngangFamilierechtelijkeBetrekking een waarde hebben, wordt de ouder geleverd met type "OnbekendOuder" en indicatieOnbekend met waarde true
-  Dit geldt wanneer na toepassen van onbekend_waardes.feature er geen enkel gegeven behalve ouderAanduiding en datumIngangFamilierechtelijkeBetrekking is opgenomen voor de ouder
+  @gba
+  Scenario: met fields vragen om gegevens zonder waarde
+    Gegeven de persoon met burgerservienummer 555550001 heeft de volgende ouders in de registratie
+    | Categorie | Voornamen (02.10)  | Geslachtsnaam | Geboortedatum (03.10) | Geslachtsaanduiding (04.10) | Datum ingang familierechtelijke betrekking (62.10) |
+    | 2         |                    | Jansen        |                       | V                           | 20190614                                           |
+    | 3         |                    |               |                       |                             |                                                    |
+    En in categorie 3 komt alleen groep 81 en groep 85 voor
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                                 |
+    | type                | RaadpleegMetBurgerservicenummer        |
+    | burgerservicenummer | 555550001                              |
+    | fields              | ouders.voornamen,ouders.geboorte.datum |
+    Dan heeft de persoon met burgerservicenummer '555550001' exact 1 ouders
+    En heeft de ouder GEEN gegevens
+
+Rule: Wanneer alleen ouderAanduiding, geslachtsaanduiding en datumIngangFamilierechtelijkeBetrekking een waarde hebben, wordt de ouder geleverd met type "OnbekendOuder" en indicatieOnbekend met waarde true
+  Dit geldt wanneer na toepassen van onbekend_waardes.feature er geen enkel gegeven behalve ouderAanduiding, geslachtsaanduiding en datumIngangFamilierechtelijkeBetrekking is opgenomen voor de ouder
 
   Wanneer van de ouder wel gegevens geregistreerd zijn, maar geen van de met fields gevraagde gegevens heeft een waarde, dan is het type "Ouder" en wordt indicatieOnbekend NIET opgenomen
 
@@ -247,16 +263,13 @@ Rule: Wanneer alleen ouderAanduiding en datumIngangFamilierechtelijkeBetrekking 
     | naam                | waarde    |
     | burgerservicenummer | 999993008 |
     En de persoon heeft een ouder met de volgende gegevens
-    | naam                                    | waarde   |
-    | ouderAanduiding                         | ouder1   |
-    | datumIngangFamilierechtelijkeBetrekking | 20190614 |
+    | naam                                            | waarde   |
+    | ouderAanduiding                                 | ouder1   |
+    | geslachtsaanduiding (04.10)                     | V        |
+    | datumIngangFamilierechtelijkeBetrekking (62.10) | 20190614 |
     En de ouder met ouderAanduiding 'ouder1' heeft alleen de volgende 'naam' gegevens
-    | naam          | waarde |
-    | geslachtsnaam | .      |
-    En de ouder met ouderAanduiding 'ouder1' heeft de volgende 'geslachtsaanduiding' gegevens
-    | naam         | waarde |
-    | code         | V      |
-    | omschrijving | vrouw  |
+    | naam                  | waarde |
+    | geslachtsnaam (02.40) | .      |
     En de ouder met ouderAanduiding 'ouder1' heeft GEEN 'geboorte' gegevens
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
@@ -264,10 +277,39 @@ Rule: Wanneer alleen ouderAanduiding en datumIngangFamilierechtelijkeBetrekking 
     | burgerservicenummer | 999993008                       |
     | fields              | ouders                          |
     Dan heeft de ouder met ouderAanduiding 'ouder1' alleen de volgende gegevens
-    | naam                                          | waarde        |
-    | type                                          | OnbekendOuder |
-    | indicatieOnbekend                             | true          |
-    | ouderAanduiding                               | ouder1        |
-    | geslachtsaanduiding.code                      | V             |
-    | geslachtsaanduiding.omschrijving              | vrouw         |
-    | datumIngangFamilierechtelijkeBetrekking.datum | 2019-06-14    |
+    | naam                                    | waarde        |
+    | type                                    | OnbekendOuder |
+    | indicatieOnbekend                       | true          |
+    | ouderAanduiding                         | ouder1        |
+    | geslachtsaanduiding                     | V             |
+    | datumIngangFamilierechtelijkeBetrekking | 2019-06-14    |
+
+  @proxy
+  Scenario: geen gegevens door fields is geen OnbekendOuder
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 555550001 |
+    En de persoon heeft een ouder met de volgende gegevens
+    | naam                                            | waarde   |
+    | ouderAanduiding                                 | ouder1   |
+    | geslachtsaanduiding (04.10)                     | V        |
+    | datumIngangFamilierechtelijkeBetrekking (62.10) | 20190614 |
+    En de ouder met ouderAanduiding 'ouder1' heeft alleen de volgende 'naam' gegevens
+    | naam                  | waarde            |
+    | geslachtsnaam (02.40) | Ibin binti Yalniz |
+    En de ouder met ouderAanduiding 'ouder1' heeft de volgende 'geboorte' gegevens
+    | naam          | waarde   |
+    | datum (03.10) | 00000000 |
+    En de persoon heeft GEEN ouder met de volgende gegevens
+    | naam            | waarde |
+    | ouderAanduiding | ouder2 |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                                      |
+    | type                | RaadpleegMetBurgerservicenummer             |
+    | burgerservicenummer | 555550001                                   |
+    | fields              | ouders.naam.voornamen,ouders.geboorte.datum |
+    Dan heeft de ouder alleen de volgende gegevens
+    | naam            | waarde |
+    | type            | Ouder  |
+    En heeft de ouder met ouderAanduiding 'ouder1' GEEN 'naam' gegevens
+    En heeft de ouder met ouderAanduiding 'ouder1' GEEN 'geboorte' gegevens
