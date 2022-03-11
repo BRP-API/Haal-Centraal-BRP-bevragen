@@ -164,7 +164,8 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       | datumIngangGeldigheid | 20200727 |
 
   Rule: de nationaliteit wordt gevuld op basis van het voorkomen van nationaliteit of aanduidingBijzonderNederlanderschap
-    - wanneer nationaliteit voorkomt met een waarde, dan wordt type opgenomen met de waarde "Nationaliteit"
+    - wanneer nationaliteit voorkomt met een waarde ongelijk aan "0000" (onbekend), dan wordt type opgenomen met de waarde "Nationaliteit"
+    - wanneer nationaliteit voorkomt met een waarde gelijk aan "0000" (onbekend), dan wordt type opgenomen met de waarde "NationaliteitOnbekend"
     - wanneer aanduidingBijzonderNederlanderschap voorkomt met een waarde gelijk aan "B", dan wordt type opgenomen met de waarde "BehandeldAlsNederlander"
     - wanneer aanduidingBijzonderNederlanderschap voorkomt met een waarde gelijk aan "V", dan wordt type opgenomen met de waarde "VastgesteldNietNederlander"
 
@@ -213,6 +214,28 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       | datumIngangGeldigheid | 20100801      |
 
     @proxy
+    Scenario: de persoon is staatloos
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 555550002 |
+      En de persoon met burgerservicenummer '555550002' heeft een nationaliteit met de volgende gegevens
+      | naam                  | waarde   |
+      | nationaliteit         | 0499     |
+      | redenOpname           | 312      |
+      | datumIngangGeldigheid | 20100801 |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                              |
+      | type                | RaadpleegMetBurgerservicenummer     |
+      | burgerservicenummer | 555550002                           |
+      | fields              | burgerservicenummer,nationaliteiten |
+      Dan heeft de persoon met burgerservicenummer '555550002' een nationaliteit met alleen de volgende gegevens
+      | naam                  | waarde        |
+      | type                  | Nationaliteit |
+      | nationaliteit         | 0499          |
+      | redenOpname           | 312           |
+      | datumIngangGeldigheid | 20100801      |
+
+    @proxy
     Scenario: de persoon heeft een onbekende nationaliteit
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
@@ -228,10 +251,10 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       | burgerservicenummer | 999993367                           |
       | fields              | burgerservicenummer,nationaliteiten |
       Dan heeft de persoon met burgerservicenummer '999993367' een nationaliteit met alleen de volgende gegevens
-      | naam                  | waarde        |
-      | type                  | Nationaliteit |
-      | redenOpname           | 311           |
-      | datumIngangGeldigheid |               |
+      | naam                  | waarde                |
+      | type                  | NationaliteitOnbekend |
+      | redenOpname           | 311                   |
+      | datumIngangGeldigheid |                       |
 
     @proxy
     Scenario: de persoon wordt behandeld als Nederlander

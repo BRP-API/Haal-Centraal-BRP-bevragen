@@ -21,6 +21,7 @@ components:
           Nationaliteit: '#/components/schemas/Nationaliteit'
           BehandeldAlsNederlander: '#/components/schemas/BehandeldAlsNederlander'
           VastgesteldNietNederlander: '#/components/schemas/VastgesteldNietNederlander'
+          NationaliteitOnbekend: '#/components/schemas/NationaliteitOnbekend'
     Nationaliteit:
       description: |
         * **redenOpname** : De reden op grond waarvan de persoon de nationaliteit gekregen heeft.
@@ -52,6 +53,17 @@ components:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             inOnderzoek:
               $ref: '#/components/schemas/BijzonderNederlanderschapInOnderzoek'
+    NationaliteitOnbekend:
+      description: |
+        * **redenOpname** : De reden op grond waarvan de persoon de nationaliteit gekregen heeft.
+      allOf:
+        - $ref: '#/components/schemas/AbstractNationaliteit'
+        - type: object
+          properties:
+            datumIngangGeldigheid:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+            inOnderzoek:
+              $ref: '#/components/schemas/NationaliteitOnbekendInOnderzoek'
     GbaNationaliteit:
       description: |
         Bij de LO GBA versie kunnen datums, bijv datumIngangGeldigheid de LoGbaDatum refereren
@@ -85,6 +97,15 @@ components:
         - type: object
           properties:
             nationaliteit:
+              type: boolean
+            redenOpname:
+              type: boolean
+    NationaliteitOnbekendInOnderzoek:
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            type:
               type: boolean
             redenOpname:
               type: boolean
