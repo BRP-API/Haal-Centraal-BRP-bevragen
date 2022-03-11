@@ -1368,6 +1368,7 @@ components:
           Nationaliteit: '#/components/schemas/Nationaliteit'
           BehandeldAlsNederlander: '#/components/schemas/BehandeldAlsNederlander'
           VastgesteldNietNederlander: '#/components/schemas/VastgesteldNietNederlander'
+          NationaliteitOnbekend: '#/components/schemas/NationaliteitOnbekend'
     BehandeldAlsNederlander:
       allOf:
       - $ref: '#/components/schemas/AbstractNationaliteit'
@@ -1395,6 +1396,26 @@ components:
             $ref: '#/components/schemas/AbstractDatum'
           inOnderzoek:
             $ref: '#/components/schemas/BijzonderNederlanderschapInOnderzoek'
+    NationaliteitOnbekend:
+      description: |
+        * **redenOpname** : De reden op grond waarvan de persoon de nationaliteit gekregen heeft.
+      allOf:
+      - $ref: '#/components/schemas/AbstractNationaliteit'
+      - type: object
+        properties:
+          datumIngangGeldigheid:
+            $ref: '#/components/schemas/AbstractDatum'
+          inOnderzoek:
+            $ref: '#/components/schemas/NationaliteitOnbekendInOnderzoek'
+    NationaliteitOnbekendInOnderzoek:
+      allOf:
+      - $ref: '#/components/schemas/InOnderzoek'
+      - type: object
+        properties:
+          type:
+            type: boolean
+          redenOpname:
+            type: boolean
     NationaliteitInOnderzoek:
       description: |
         Geeft aan welke gegevens over de nationaliteit in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
