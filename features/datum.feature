@@ -22,7 +22,7 @@ Functionaliteit: leveren van een datum
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550001 |
-      En de persoon heeft de volgende <groep> gegevens
+      En de persoon heeft de volgende '<groep>' gegevens
       | naam   | waarde     |
       | <veld> | <GbaDatum> |
       Als personen wordt gezocht met de volgende parameters
@@ -149,7 +149,7 @@ Functionaliteit: leveren van een datum
       En de persoon heeft een <relatie> met de volgende gegevens
       | naam                  | waarde    |
       | burgerservicenummer   | 555550002 |
-      En de <relatie> heeft de volgende <groep> gegevens
+      En de <relatie> heeft de volgende '<groep>' gegevens
       | naam   | waarde     |
       | <veld> | <GbaDatum> |
       Als personen wordt gezocht met de volgende parameters
