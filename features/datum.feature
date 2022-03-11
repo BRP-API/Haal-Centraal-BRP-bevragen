@@ -2,7 +2,7 @@
 
 Functionaliteit: leveren van een datum
 
-  Rule: een volledige datum wordt geleverd als RFC 3339 full-date
+  Rule: een volledige datum wordt geleverd met een type op basis van de nauwkeurigheid van de waarde
     - een datum krijgt type "Datum" wanneer de laatste twee cijfers in de GbaDatum ongelijk zijn aan "00", waarbij geldt dat:
       - de datum wordt geleverd in veld "datum", in full-date formaat als gedefinieerd in RFC 3339, sectie 5.6
       - veld "type" krijgt de waarde "Datum"
