@@ -1,5 +1,4 @@
-﻿using BrpProxy.Mappers;
-using HaalCentraal.BrpProxy.Generated;
+﻿using HaalCentraal.BrpProxy.Generated;
 using Gba = HaalCentraal.BrpProxy.Generated.Gba;
 using Newtonsoft.Json;
 using System.IO.Compression;
@@ -39,7 +38,9 @@ namespace BrpProxy.Middlewares
 
             _logger.LogDebug("original responseBody: {body}", body);
 
-            var modifiedBody = body.Transform(_mapper);
+            var modifiedBody = context.Response.StatusCode == StatusCodes.Status200OK
+                ? body.Transform(_mapper)
+                : body;
 
             _logger.LogDebug("transformed responseBody: {modifiedBody}", modifiedBody);
 
