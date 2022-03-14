@@ -1,4 +1,5 @@
-﻿using HaalCentraal.BrpService.Generated;
+﻿using AutoMapper;
+using HaalCentraal.BrpService.Generated;
 using HaalCentraal.BrpService.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -9,11 +10,13 @@ namespace HaalCentraal.BrpService.Controllers
     public class PersoonController : Generated.ControllerBase
     {
         private readonly ILogger<PersoonController> _logger;
+        private readonly IMapper _mapper;
         private readonly PersoonRepository _repository;
 
-        public PersoonController(ILogger<PersoonController> logger, PersoonRepository repository)
+        public PersoonController(ILogger<PersoonController> logger, IMapper mapper, PersoonRepository repository)
         {
             _logger = logger;
+            _mapper = mapper;
             _repository = repository;
         }
 
@@ -57,9 +60,11 @@ namespace HaalCentraal.BrpService.Controllers
         {
             _logger.LogDebug("ZoekMetGeslachtsnaamEnGeboortedatum: {query}", query);
 
-            var retval = await _repository.Zoek<ZoekMetGeslachtsnaamEnGeboortedatum, ZoekMetGeslachtsnaamEnGeboortedatumResponse>(query);
+            var filter = _mapper.Map<ZoekMetGeslachtsnaamEnGeboortedatumFilter>(query);
 
-            retval.Personen = retval.Personen.AsQueryable().Where(query.ToSpecification().ToExpression()).ToList();
+            var retval = await _repository.Zoek<ZoekMetGeslachtsnaamEnGeboortedatumFilter, ZoekMetGeslachtsnaamEnGeboortedatumResponse>(filter);
+
+            retval.Personen = retval.Personen.AsQueryable().Where(filter.ToSpecification().ToExpression()).ToList();
 
             return Ok(retval);
         }

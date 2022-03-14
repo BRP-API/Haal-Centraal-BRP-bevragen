@@ -12,12 +12,12 @@ namespace HaalCentraal.BrpService.Repositories
             _environment = environment;
         }
 
-        public async Task<TResult> Zoek<T, TResult>(T query) where T : PersonenQuery where TResult : PersonenQueryResponse
+        public async Task<TResult> Zoek<T, TResult>(T query) where TResult : PersonenQueryResponse
         {
             var filename = query switch
             {
                 RaadpleegMetBurgerservicenummer => "bsn.json",
-                ZoekMetGeslachtsnaamEnGeboortedatum => "geslachtsnaam-geboortedatum.json",
+                ZoekMetGeslachtsnaamEnGeboortedatumFilter => "geslachtsnaam-geboortedatum.json",
                 ZoekMetNaamEnGemeenteVanInschrijving => "naam-gemeentevaninschrijving.json",
                 ZoekMetPostcodeEnHuisnummer => "postcode-huisnummer.json",
                 _ => throw new NotSupportedException($"{query}")

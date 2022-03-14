@@ -50,7 +50,7 @@
       "classStyle": "Poco",
       "jsonLibrary": "NewtonsoftJson",
       "generateDefaultValues": true,
-      "generateDataAnnotations": true,
+      "generateDataAnnotations": false,
       "excludedTypeNames": [],
       "excludedParameterNames": [],
       "handleReferences": false,
@@ -70,7 +70,7 @@
       "enumNameGeneratorType": null,
       "serviceHost": null,
       "serviceSchemes": null,
-      "output": "Generated.cs",
+      "output": "Generated/Generated.cs",
       "newLineBehavior": "Auto"
     }
   }

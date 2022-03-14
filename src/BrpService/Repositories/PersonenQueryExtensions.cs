@@ -4,9 +4,9 @@ namespace HaalCentraal.BrpService.Repositories
 {
     public static class PersonenQueryExtensions
     {
-        public static Specification<GbaPersoonBeperkt> ToSpecification(this ZoekMetGeslachtsnaamEnGeboortedatum query)
+        public static Specification<GbaPersoonBeperkt> ToSpecification(this ZoekMetGeslachtsnaamEnGeboortedatumFilter query)
         {
-            var specification = new GeslachtsnaamSpecification(query.Geslachtsnaam).And(new GeboorteDatumSpecification(query.Geboortedatum!.Value));
+            var specification = new GeslachtsnaamSpecification(query.Geslachtsnaam).And(new GeboorteDatumSpecification(query.Geboortedatum));
             if (!string.IsNullOrWhiteSpace(query.Voornamen))
             {
                 specification = specification.And(new VoornamenSpecification(query.Voornamen));

@@ -1,5 +1,7 @@
+using FluentValidation.AspNetCore;
 using HaalCentraal.BrpService.Extensions;
 using HaalCentraal.BrpService.Repositories;
+using HaalCentraal.BrpService.Validators;
 using Serilog;
 using Serilog.Enrichers.Span;
 using Serilog.Exceptions;
@@ -19,9 +21,15 @@ builder.Host.UseSerilog((context, config) =>
 });
 
 // Add services to the container.
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddControllers()
-                //.ConfigureInvalidModelStateHandling()
+                .ConfigureInvalidModelStateHandling()
+                .AddFluentValidation(options =>
+                {
+                    options.RegisterValidatorsFromAssemblyContaining<ZoekMetGeslachtsnaamEnGeboortedatumQueryValidator>();
+                    options.DisableDataAnnotationsValidation = true;
+                })
                 .AddNewtonsoftJson();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

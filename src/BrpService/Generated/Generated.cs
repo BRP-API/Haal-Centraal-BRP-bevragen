@@ -111,14 +111,10 @@ namespace HaalCentraal.BrpService.Generated
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class PersonenQuery
     {
-        [Newtonsoft.Json.JsonProperty("fields", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        [System.ComponentModel.DataAnnotations.StringLength(924)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z0-9\.,_]+$")]
+        [Newtonsoft.Json.JsonProperty("fields", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Fields { get; set; }
 
         [Newtonsoft.Json.JsonProperty("gemeenteVanInschrijving", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{4}$")]
         public string GemeenteVanInschrijving { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
@@ -133,61 +129,21 @@ namespace HaalCentraal.BrpService.Generated
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class ZoekMetGeslachtsnaamEnGeboortedatum : PersonenQuery
-    {
-        [Newtonsoft.Json.JsonProperty("inclusiefOverledenPersonen", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool InclusiefOverledenPersonen { get; set; }
-
-        /// <summary>
-        /// Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/parametervalidatie.feature)
-        /// <br/>
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty("geboortedatum", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [Newtonsoft.Json.JsonConverter(typeof(DateFormatConverter))]
-        public System.DateTimeOffset? Geboortedatum { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("geboorteplaats", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z0-9�-� \,\.\-\'()]{1,80}$")]
-        public string Geboorteplaats { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("geslachtsnaam", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z0-9�-� \.\-\']{1,200}$|^[a-zA-Z0-9�-� \.\-\']{3,199}\*{1}$")]
-        public string Geslachtsnaam { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("geslachtsaanduiding", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^([Mm]|[Vv]|[Oo])$")]
-        public string Geslachtsaanduiding { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("voorvoegsel", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z \']{1,10}$")]
-        public string Voorvoegsel { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("voornamen", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z0-9�-� \.\-\']{1,199}\*{0,1}$")]
-        public string Voornamen { get; set; }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class ZoekMetNaamEnGemeenteVanInschrijving : PersonenQuery
     {
         [Newtonsoft.Json.JsonProperty("inclusiefOverledenPersonen", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool InclusiefOverledenPersonen { get; set; }
 
         [Newtonsoft.Json.JsonProperty("geslachtsaanduiding", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^([Mm]|[Vv]|[Oo])$")]
         public string Geslachtsaanduiding { get; set; }
 
         [Newtonsoft.Json.JsonProperty("geslachtsnaam", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z0-9�-� \.\-\']{1,200}$|^[a-zA-Z0-9�-� \.\-\']{3,199}\*{1}$")]
         public string Geslachtsnaam { get; set; }
 
         [Newtonsoft.Json.JsonProperty("voorvoegsel", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z \']{1,10}$")]
         public string Voorvoegsel { get; set; }
 
         [Newtonsoft.Json.JsonProperty("voornamen", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z0-9�-� \.\-\']{1,200}$|^[a-zA-Z0-9�-� \.\-\']{3,199}\*{1}$")]
         public string Voornamen { get; set; }
 
     }
@@ -196,8 +152,6 @@ namespace HaalCentraal.BrpService.Generated
     public partial class RaadpleegMetBurgerservicenummer : PersonenQuery
     {
         [Newtonsoft.Json.JsonProperty("burgerservicenummer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.MinLength(1)]
-        [System.ComponentModel.DataAnnotations.MaxLength(20)]
         public System.Collections.Generic.List<string> Burgerservicenummer { get; set; }
 
     }
@@ -209,19 +163,15 @@ namespace HaalCentraal.BrpService.Generated
         public bool InclusiefOverledenPersonen { get; set; }
 
         [Newtonsoft.Json.JsonProperty("huisletter", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z]{1}$")]
         public string Huisletter { get; set; }
 
         [Newtonsoft.Json.JsonProperty("huisnummer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.Range(1, 99999)]
         public int Huisnummer { get; set; }
 
         [Newtonsoft.Json.JsonProperty("huisnummertoevoeging", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z0-9 \-]{1,4}$")]
         public string Huisnummertoevoeging { get; set; }
 
         [Newtonsoft.Json.JsonProperty("postcode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[1-9]{1}[0-9]{3}[ ]?[A-Za-z]{2}$")]
         public string Postcode { get; set; }
 
     }
@@ -233,19 +183,15 @@ namespace HaalCentraal.BrpService.Generated
         public bool InclusiefOverledenPersonen { get; set; }
 
         [Newtonsoft.Json.JsonProperty("huisletter", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z]{1}$")]
         public string Huisletter { get; set; }
 
         [Newtonsoft.Json.JsonProperty("huisnummer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.Range(1, 99999)]
         public int Huisnummer { get; set; }
 
         [Newtonsoft.Json.JsonProperty("huisnummertoevoeging", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z0-9 \-]{1,4}$")]
         public string Huisnummertoevoeging { get; set; }
 
         [Newtonsoft.Json.JsonProperty("straat", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z0-9�-� \-\']{1,80}$|^[a-zA-Z0-9�-� \-\']{7,79}\*{1}$|^\*{1}[a-zA-Z0-9�-� \-\']{7,79}$")]
         public string Straat { get; set; }
 
     }
@@ -257,7 +203,6 @@ namespace HaalCentraal.BrpService.Generated
         public bool InclusiefOverledenPersonen { get; set; }
 
         [Newtonsoft.Json.JsonProperty("nummeraanduidingIdentificatie", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{16}$")]
         public string NummeraanduidingIdentificatie { get; set; }
 
     }
@@ -266,7 +211,7 @@ namespace HaalCentraal.BrpService.Generated
     public partial class BadRequestFoutbericht : Foutbericht
     {
         /// <summary>
-        /// Foutmelding per fout in een parameter. Alle gevonden fouten worden ��n keer teruggemeld.
+        /// Foutmelding per fout in een parameter. Alle gevonden fouten worden één keer teruggemeld.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("invalidParams", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.List<InvalidParams> InvalidParams { get; set; }
@@ -289,21 +234,18 @@ namespace HaalCentraal.BrpService.Generated
         /// Beschrijving van de fout
         /// </summary>
         [Newtonsoft.Json.JsonProperty("title", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z0-9�-� \.\-]{1,80}$")]
         public string Title { get; set; }
 
         /// <summary>
         /// Http status code
         /// </summary>
         [Newtonsoft.Json.JsonProperty("status", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.Range(100, 600)]
         public int? Status { get; set; }
 
         /// <summary>
         /// Details over de fout
         /// </summary>
         [Newtonsoft.Json.JsonProperty("detail", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z0-9�-� \.\-\(\)\,]{1,200}$")]
         public string Detail { get; set; }
 
         /// <summary>
@@ -316,8 +258,6 @@ namespace HaalCentraal.BrpService.Generated
         /// Systeemcode die het type fout aangeeft
         /// </summary>
         [Newtonsoft.Json.JsonProperty("code", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.StringLength(int.MaxValue, MinimumLength = 1)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z0-9]{1,25}$")]
         public string Code { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
@@ -344,22 +284,18 @@ namespace HaalCentraal.BrpService.Generated
         /// Naam van de parameter
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z0-9\.,_]{1,30}$")]
         public string Name { get; set; }
 
         /// <summary>
         /// Systeemcode die het type fout aangeeft
         /// </summary>
         [Newtonsoft.Json.JsonProperty("code", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.StringLength(int.MaxValue, MinimumLength = 1)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z0-9\.,_]{1,25}$")]
         public string Code { get; set; }
 
         /// <summary>
         /// Beschrijving van de fout op de parameterwaarde
         /// </summary>
         [Newtonsoft.Json.JsonProperty("reason", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z0-9\.,_ ]{1,80}$")]
         public string Reason { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
@@ -377,7 +313,6 @@ namespace HaalCentraal.BrpService.Generated
     public partial class GbaPersoonBeperkt
     {
         [Newtonsoft.Json.JsonProperty("burgerservicenummer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{9}$")]
         public string Burgerservicenummer { get; set; }
 
         [Newtonsoft.Json.JsonProperty("geboorte", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -416,15 +351,12 @@ namespace HaalCentraal.BrpService.Generated
     public partial class GbaPersoon
     {
         [Newtonsoft.Json.JsonProperty("aNummer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{10}$")]
         public string ANummer { get; set; }
 
         [Newtonsoft.Json.JsonProperty("burgerservicenummer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{9}$")]
         public string Burgerservicenummer { get; set; }
 
         [Newtonsoft.Json.JsonProperty("datumEersteInschrijvingGBA", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{8}$")]
         public string DatumEersteInschrijvingGBA { get; set; }
 
         [Newtonsoft.Json.JsonProperty("geheimhoudingPersoonsgegevens", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -490,7 +422,6 @@ namespace HaalCentraal.BrpService.Generated
     public partial class GbaGeboorteBeperkt
     {
         [Newtonsoft.Json.JsonProperty("datum", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{8}$")]
         public string Datum { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
@@ -508,11 +439,9 @@ namespace HaalCentraal.BrpService.Generated
     public partial class Waardetabel
     {
         [Newtonsoft.Json.JsonProperty("code", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z0-9 \.]+$")]
         public string Code { get; set; }
 
         [Newtonsoft.Json.JsonProperty("omschrijving", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z0-9�-� \'\,\(\)\.\-]{1,200}$")]
         public string Omschrijving { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
@@ -530,20 +459,15 @@ namespace HaalCentraal.BrpService.Generated
     public partial class GbaNaamBasis
     {
         [Newtonsoft.Json.JsonProperty("voornamen", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.StringLength(200)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z0-9�-� \.\-\']{1,200}$")]
         public string Voornamen { get; set; }
 
         [Newtonsoft.Json.JsonProperty("adellijkeTitelPredicaat", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public AdellijkeTitelPredicaatType AdellijkeTitelPredicaat { get; set; }
 
         [Newtonsoft.Json.JsonProperty("voorvoegsel", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.StringLength(10)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z \']{1,10}$")]
         public string Voorvoegsel { get; set; }
 
         [Newtonsoft.Json.JsonProperty("geslachtsnaam", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.StringLength(200)]
         public string Geslachtsnaam { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
@@ -603,7 +527,6 @@ namespace HaalCentraal.BrpService.Generated
     public partial class GbaOverlijdenBasis
     {
         [Newtonsoft.Json.JsonProperty("datum", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{8}$")]
         public string Datum { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
@@ -624,34 +547,27 @@ namespace HaalCentraal.BrpService.Generated
         public Waardetabel FunctieAdres { get; set; }
 
         [Newtonsoft.Json.JsonProperty("woonplaats", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z0-9�-� \(\)\,\.\-\']{1,80}$")]
         public string Woonplaats { get; set; }
 
         [Newtonsoft.Json.JsonProperty("straat", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.StringLength(80)]
         public string Straat { get; set; }
 
         [Newtonsoft.Json.JsonProperty("huisnummer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.Range(1, 99999)]
         public int Huisnummer { get; set; }
 
         [Newtonsoft.Json.JsonProperty("huisletter", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z]{1}$")]
         public string Huisletter { get; set; }
 
         [Newtonsoft.Json.JsonProperty("huisnummertoevoeging", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z0-9 \-]{1,4}$")]
         public string Huisnummertoevoeging { get; set; }
 
         [Newtonsoft.Json.JsonProperty("aanduidingBijHuisnummer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Waardetabel AanduidingBijHuisnummer { get; set; }
 
         [Newtonsoft.Json.JsonProperty("postcode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[1-9]{1}[0-9]{3}[ ]?[A-Za-z]{2}$")]
         public string Postcode { get; set; }
 
         [Newtonsoft.Json.JsonProperty("locatiebeschrijving", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.StringLength(35)]
         public string Locatiebeschrijving { get; set; }
 
         [Newtonsoft.Json.JsonProperty("land", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -661,15 +577,12 @@ namespace HaalCentraal.BrpService.Generated
         public Waardetabel GemeenteVanInschrijving { get; set; }
 
         [Newtonsoft.Json.JsonProperty("adresregel1", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.StringLength(40)]
         public string Adresregel1 { get; set; }
 
         [Newtonsoft.Json.JsonProperty("adresregel2", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.StringLength(50)]
         public string Adresregel2 { get; set; }
 
         [Newtonsoft.Json.JsonProperty("adresregel3", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.StringLength(35)]
         public string Adresregel3 { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
@@ -686,13 +599,10 @@ namespace HaalCentraal.BrpService.Generated
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class GbaInOnderzoek
     {
-        [Newtonsoft.Json.JsonProperty("aanduidingGegevensInOnderzoek", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{6}$")]
+        [Newtonsoft.Json.JsonProperty("aanduidingGegevensInOnderzoek", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string AanduidingGegevensInOnderzoek { get; set; }
 
         [Newtonsoft.Json.JsonProperty("datumIngangOnderzoek", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{8}$")]
         public string DatumIngangOnderzoek { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
@@ -720,11 +630,9 @@ namespace HaalCentraal.BrpService.Generated
         public bool? UitgeslotenVanKiesrecht { get; set; }
 
         [Newtonsoft.Json.JsonProperty("einddatumUitsluitingEuropeesKiesrecht", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{8}$")]
         public string EinddatumUitsluitingEuropeesKiesrecht { get; set; }
 
         [Newtonsoft.Json.JsonProperty("einddatumUitsluitingKiesrecht", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{8}$")]
         public string EinddatumUitsluitingKiesrecht { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
@@ -758,7 +666,6 @@ namespace HaalCentraal.BrpService.Generated
         public Waardetabel AanduidingBijzonderNederlandschap { get; set; }
 
         [Newtonsoft.Json.JsonProperty("datumIngangGeldigheid", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{8}$")]
         public string DatumIngangGeldigheid { get; set; }
 
         [Newtonsoft.Json.JsonProperty("nationaliteit", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -800,7 +707,6 @@ namespace HaalCentraal.BrpService.Generated
     public partial class GbaOpschortingBijhouding : OpschortingBijhoudingBasis
     {
         [Newtonsoft.Json.JsonProperty("datum", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{8}$")]
         public string Datum { get; set; }
 
     }
@@ -823,90 +729,72 @@ namespace HaalCentraal.BrpService.Generated
     public partial class GbaVerblijfplaats
     {
         [Newtonsoft.Json.JsonProperty("adresregel1", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.StringLength(40)]
         public string Adresregel1 { get; set; }
 
         [Newtonsoft.Json.JsonProperty("adresregel2", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.StringLength(50)]
         public string Adresregel2 { get; set; }
 
         [Newtonsoft.Json.JsonProperty("adresregel3", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.StringLength(35)]
         public string Adresregel3 { get; set; }
 
         [Newtonsoft.Json.JsonProperty("adresseerbaarObjectIdentificatie", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{16}$")]
         public string AdresseerbaarObjectIdentificatie { get; set; }
 
         [Newtonsoft.Json.JsonProperty("nummeraanduidingIdentificatie", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{16}$")]
         public string NummeraanduidingIdentificatie { get; set; }
 
         [Newtonsoft.Json.JsonProperty("functieAdres", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Waardetabel FunctieAdres { get; set; }
 
         [Newtonsoft.Json.JsonProperty("woonplaats", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z0-9�-� \(\)\,\.\-\']{1,80}$")]
         public string Woonplaats { get; set; }
 
         [Newtonsoft.Json.JsonProperty("landVanwaarIngeschreven", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Waardetabel LandVanwaarIngeschreven { get; set; }
 
         [Newtonsoft.Json.JsonProperty("straat", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.StringLength(80)]
         public string Straat { get; set; }
 
         [Newtonsoft.Json.JsonProperty("huisnummer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.Range(1, 99999)]
         public int Huisnummer { get; set; }
 
         [Newtonsoft.Json.JsonProperty("huisletter", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z]{1}$")]
         public string Huisletter { get; set; }
 
         [Newtonsoft.Json.JsonProperty("huisnummertoevoeging", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[a-zA-Z0-9 \-]{1,4}$")]
         public string Huisnummertoevoeging { get; set; }
 
         [Newtonsoft.Json.JsonProperty("aanduidingBijHuisnummer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Waardetabel AanduidingBijHuisnummer { get; set; }
 
         [Newtonsoft.Json.JsonProperty("postcode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[1-9]{1}[0-9]{3}[ ]?[A-Za-z]{2}$")]
         public string Postcode { get; set; }
 
         [Newtonsoft.Json.JsonProperty("locatiebeschrijving", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.StringLength(35)]
         public string Locatiebeschrijving { get; set; }
 
         [Newtonsoft.Json.JsonProperty("land", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Waardetabel Land { get; set; }
 
         [Newtonsoft.Json.JsonProperty("datumAanvangAdreshouding", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{8}$")]
         public string DatumAanvangAdreshouding { get; set; }
 
         [Newtonsoft.Json.JsonProperty("datumAanvangAdresBuitenland", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{8}$")]
         public string DatumAanvangAdresBuitenland { get; set; }
 
         [Newtonsoft.Json.JsonProperty("datumIngangGeldigheid", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{8}$")]
         public string DatumIngangGeldigheid { get; set; }
 
         [Newtonsoft.Json.JsonProperty("datumInschrijvingInGemeente", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{8}$")]
         public string DatumInschrijvingInGemeente { get; set; }
 
         [Newtonsoft.Json.JsonProperty("datumVestigingInNederland", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{8}$")]
         public string DatumVestigingInNederland { get; set; }
 
         [Newtonsoft.Json.JsonProperty("gemeenteVanInschrijving", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Waardetabel GemeenteVanInschrijving { get; set; }
 
         [Newtonsoft.Json.JsonProperty("naamOpenbareRuimte", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.StringLength(80)]
         public string NaamOpenbareRuimte { get; set; }
 
         [Newtonsoft.Json.JsonProperty("inOnderzoek", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -961,7 +849,7 @@ namespace HaalCentraal.BrpService.Generated
 
     /// <summary>
     /// Gegevens over de verblijfsrechtelijke status van de persoon.
-    /// <br/>* **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is be�indigd.
+    /// <br/>* **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd.
     /// <br/>* **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.
     /// <br/>* **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt.
     /// <br/>
@@ -973,11 +861,9 @@ namespace HaalCentraal.BrpService.Generated
         public Waardetabel Aanduiding { get; set; }
 
         [Newtonsoft.Json.JsonProperty("datumEinde", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{8}$")]
         public string DatumEinde { get; set; }
 
         [Newtonsoft.Json.JsonProperty("datumIngang", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{8}$")]
         public string DatumIngang { get; set; }
 
         [Newtonsoft.Json.JsonProperty("inOnderzoek", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -998,7 +884,6 @@ namespace HaalCentraal.BrpService.Generated
     public partial class GbaKind
     {
         [Newtonsoft.Json.JsonProperty("burgerservicenummer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{9}$")]
         public string Burgerservicenummer { get; set; }
 
         [Newtonsoft.Json.JsonProperty("inOnderzoek", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -1030,7 +915,6 @@ namespace HaalCentraal.BrpService.Generated
     public partial class GbaOuder
     {
         [Newtonsoft.Json.JsonProperty("burgerservicenummer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{9}$")]
         public string Burgerservicenummer { get; set; }
 
         [Newtonsoft.Json.JsonProperty("geslachtsaanduiding", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -1040,7 +924,6 @@ namespace HaalCentraal.BrpService.Generated
         public Waardetabel OuderAanduiding { get; set; }
 
         [Newtonsoft.Json.JsonProperty("datumIngangFamilierechtelijkeBetrekking", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{8}$")]
         public string DatumIngangFamilierechtelijkeBetrekking { get; set; }
 
         [Newtonsoft.Json.JsonProperty("naam", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -1067,7 +950,6 @@ namespace HaalCentraal.BrpService.Generated
     public partial class GbaPartner
     {
         [Newtonsoft.Json.JsonProperty("burgerservicenummer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{9}$")]
         public string Burgerservicenummer { get; set; }
 
         [Newtonsoft.Json.JsonProperty("geslachtsaanduiding", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -1113,7 +995,6 @@ namespace HaalCentraal.BrpService.Generated
     public partial class GbaAangaanHuwelijkPartnerschap
     {
         [Newtonsoft.Json.JsonProperty("datum", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{8}$")]
         public string Datum { get; set; }
 
         [Newtonsoft.Json.JsonProperty("land", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -1140,7 +1021,6 @@ namespace HaalCentraal.BrpService.Generated
     public partial class GbaOntbindingHuwelijkPartnerschap
     {
         [Newtonsoft.Json.JsonProperty("datum", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9]{8}$")]
         public string Datum { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
