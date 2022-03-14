@@ -294,7 +294,7 @@ When('personen wordt gezocht met de volgende parameters', async function (dataTa
     let requestBody = {};
     dataTable.hashes().forEach(function(param) {
         if(param.naam === "burgerservicenummer") {
-            requestBody[param.naam] = param.waarde.split(',');
+            requestBody[param.naam] = param.waarde.split(',').filter(element => element);
         }
         else {
             requestBody[param.naam] = param.waarde;
