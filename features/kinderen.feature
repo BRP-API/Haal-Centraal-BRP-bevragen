@@ -4,6 +4,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
   Van een persoon worden -indien gevraagd met de fields parameter- de kinderen geleverd.
   Dit bevat enkele identificerende eigenschappen van de kinderen.
 
+  @gba
   Rule: de actuele gegevens van kinderen worden geleverd
 
     @gba
@@ -58,13 +59,11 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | naam      | waarde          |
       | voornamen | Celeke Lodivica |
 
-
+  @gba
   Rule: Een kind wordt alleen teruggegeven als minimaal één gegeven in de identificatienummers (groep 01), naam (groep 02) of geboorte (groep 03) van het kind een waarde heeft.
+    - Wanneer in een categorie kind alleen gegevens zijn opgenomen in groep 81 of 82, 85 en 86, wordt dit kind niet opgenomen in het antwoord
     - Wanneer een gegeven een standaardwaarde heeft, zoals "." (punt) bij geslachtsnaam of "00000000" bij geboortedatum, geldt dat hier als het bestaan van een waarde en wordt het kind wel geleverd
-    - de gebruikte fields parameter in het request heeft geen invloed op de toepassing van deze regel, zolang er maar ten minste één gegeven van een kind wordt gevraagd
-
-    # N.B. wanneer in een categorie kind alleen gegevens zijn opgenomen in groep 81 of 82, 85 en 86, wordt dit kind niet opgenomen in het antwoord
-    
+    - Wanneer door de gebruikte fields parameter in het request het kind in de response geen enkel gegeven heeft met een waarde, dan wordt het kind niet geleverd    
 
     @gba
     Abstract Scenario: kind volledig onbekend
@@ -103,33 +102,19 @@ Functionaliteit: Kinderen van een persoon raadplegen
     Scenario: met fields vragen om een gegeven zonder waarde
       Gegeven de persoon met burgerservicenummer 555550001 heeft de volgende kinderen in de registratie
       | Categorie | Burgerservicenummer (01.20) | Voornamen (02.10) | Voorvoegsel (02.30) | Geslachtsnaam (02.40) | Geboortedatum (03.10) | Gemeente document (82.10) | Datum document (82.20) | Beschrijving document (82.30) | Ingangsdatum geldigheid (85.10) | Datum van opneming (86.10) |
-      | 9         |                             |                   |                     | .                     |                       | 1926                      | 20040105               | D27894-2004-A782              | 20031107                        | 20040112                   |
+      | 9         |                             | Bert              |                     | Jansen                | 20110422              | 1926                      | 20040105               | D27894-2004-A782              | 20031107                        | 20040112                   |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999996150                       |
       | fields              | kinderen.burgerservicenummer    |
-      Dan heeft de persoon met burgerservicenummer '555550001' exact 1 kind
-      En heeft het kind alleen de volgende gegevens
-      | naam | waarde  |
-      | type | GbaKind |
+      Dan heeft de persoon met burgerservicenummer '555550001' GEEN kinderen  
 
-    @gba
-    Scenario: met fields niet vragen om een gegeven van het kind
-      Gegeven de persoon met burgerservicenummer 555550001 heeft de volgende kinderen in de registratie
-      | Categorie | Burgerservicenummer (01.20) | Voornamen (02.10) | Voorvoegsel (02.30) | Geslachtsnaam (02.40) | Geboortedatum (03.10) | Gemeente document (82.10) | Datum document (82.20) | Beschrijving document (82.30) | Ingangsdatum geldigheid (85.10) | Datum van opneming (86.10) |
-      | 9         |                             |                   |                     | .                     |                       | 1926                      | 20040105               | D27894-2004-A782              | 20031107                        | 20040112                   |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 999996150                       |
-      | fields              | naam                            |
-      Dan heeft de persoon met burgerservicenummer '555550001' GEEN kinderen
-  
-
+  @gba
   Rule: de geleverde kindgegevens zijn de gegevens zoals die staan op de persoonslijst van de gevraagde persoon
     Bij het raadplegen van een persoon worden alleen gegevens uit de persoonslijst van de gevraagde persoon gebruikt, en nooit gegevens van de persoonslijst van het kind
 
+    @gba
     Scenario: Het kind heeft geslachtswijziging en naamswijziging ondergaan, maar de gevraagde persoon erkent dit niet
       Gegeven de persoon met burgerservicenummer 555550003 heeft de volgende kinderen in de registratie
       | Categorie | Burgerservicenummer (01.20) | Voornamen (02.10) |
@@ -149,10 +134,10 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | naam      | waarde |
       | voornamen | Karel  |
 
+  @proxy
   Rule: Wanneer alle gegevens van een kind een standaard onbekendwaarde hebben of geen waarde hebben, wordt het geleverd met type "OnbekendKind" en indicatieOnbekend met waarde true
-    Dit geldt wanneer na toepassen van onbekend_waardes.feature er geen enkel gegeven is opgenomen voor het kind
-
-    Wanneer geen van de met fields gevraagde kindgegevens een waarde heeft, maar andere gegevens van het kind wel, dan is het type "Kind" en wordt indicatieOnbekend NIET opgenomen
+    - Dit geldt wanneer na toepassen van onbekend_waardes.feature er geen enkel gegeven is opgenomen voor het kind
+    - Wanneer geen van de met fields gevraagde kindgegevens een waarde heeft, maar andere gegevens van het kind wel, dan is het type "Kind" en wordt indicatieOnbekend NIET opgenomen
 
     @proxy
     Scenario: Kind is volledig onbekend
