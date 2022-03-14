@@ -1,7 +1,7 @@
 # language: nl
 
 Functionaliteit: LeeftijdBepaling
-  Bepaal de leeftijd van de persoon of het kind
+  Bepaal de leeftijd van de persoon
 
   Rule: bij een volledig bekende geboortedatum wordt de leeftijd in jaren geleverd
     
@@ -28,42 +28,6 @@ Functionaliteit: LeeftijdBepaling
       | 26 mei 2019      | 36       |
       | 30 november 2019 | 36       |
       | 10 januari 2020  | 36       |
-
-    Abstract Scenario: Volledig geboortedatum van een kind
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550002 |
-      En de persoon heeft een kind met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550003 |
-      En het kind met burgerservicenummer '555550003' heeft de volgende 'geboorte' gegevens
-      | naam  | waarde   |
-      | datum | 20021014 |
-      En de persoon heeft een kind met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550004 |
-      En het kind met burgerservicenummer '555550004' heeft de volgende 'geboorte' gegevens
-      | naam  | waarde   |
-      | datum | 20040526 |
-      Als personen op '<raadpleeg datum>' wordt gezocht met de volgende parameters
-      | naam                | waarde                                         |
-      | type                | RaadpleegMetBurgerservicenummer                |
-      | burgerservicenummer | 555550002                                      |
-      | fields              | kinderen.burgerservicenummer,kinderen.leeftijd |
-      Dan heeft het kind met burgerservicenummer '555550003' alleen de volgende gegevens
-      | burgerservicenummer | leeftijd    |
-      | 555550003           | <leeftijd1> |
-      En heeft het kind met burgerservicenummer '555550004' alleen de volgende gegevens
-      | burgerservicenummer | leeftijd    |
-      | 555550003           | <leeftijd2> |
-
-      Voorbeelden:
-      | raadpleeg datum  | leeftijd1 | leeftijd2 |
-      | 1 januari 2022   | 19        | 17        |
-      | 13 oktober 2022  | 19        | 18        |
-      | 14 oktober 2022  | 20        | 18        |
-      | 30 december 2022 | 20        | 18        |
-      | 10 januari 2023  | 20        | 18        |
 
     Abstract Scenario: Geboren op 29 februari in een schrikkeljaar
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -170,28 +134,3 @@ Functionaliteit: LeeftijdBepaling
       Dan heeft de persoon met burgerservicenummer '555550007' alleen de volgende gegevens
       | burgerservicenummer |
       | 555550007           |
-
-    Scenario: leeftijd wordt wel geleverd bij een overleden kind (omdat alleen gegevens van de persoonslijst van de gevraagde persoon worden gebruikt)
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550008 |
-      En de persoon heeft een kind met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550009 |
-      En het kind met burgerservicenummer '555550009' heeft de volgende 'geboorte' gegevens
-      | naam  | waarde   |
-      | datum | 20021014 |
-      En het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550009 |
-      En de persoon met burgerservicenummer '555550009' heeft de volgende 'overlijden' gegevens
-      | naam  | waarde   |
-      | datum | 20040319 |
-      Als personen op '10 januari 2023' wordt gezocht met de volgende parameters
-      | naam                | waarde                                         |
-      | type                | RaadpleegMetBurgerservicenummer                |
-      | burgerservicenummer | 555550008                                      |
-      | fields              | kinderen.burgerservicenummer,kinderen.leeftijd |
-      Dan heeft het kind met burgerservicenummer '555550009' alleen de volgende gegevens
-      | burgerservicenummer | leeftijd |
-      | 555550009           | 20       |
