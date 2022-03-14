@@ -10,6 +10,7 @@ const propertyNameMap = new Map([
     ['aanduiding bij huisnummer (11.50)', 'aanduidingBijHuisnummer.code'],
     ['aanduiding naamgebruik (61.10)', 'aanduidingNaamgebruik.code'],
     ['adellijke titel of predicaat (02.20)', 'adellijkeTitelPredicaat.code'],
+    ['datum aangaan (06.10)', 'datum'],
     ['geslachtsaanduiding (04.10)', 'geslachtsaanduiding.code'],
     ['geslachtsnaam (02.40)', 'geslachtsnaam'],
     ['huisletter (11.30)', 'huisletter'],
@@ -170,28 +171,6 @@ Given('het systeem heeft personen met de volgende gegevens', function (dataTable
     });
 });
 
-Given('de persoon heeft de volgende geboorte gegevens', function (dataTable) {
-    if(this.context.persoon.geboorte === undefined) {
-        this.context.persoon.geboorte = {};
-    }
-    let geboorte = this.context.persoon.geboorte;
-
-    dataTable.hashes().forEach(function(row) {
-        mapRowToProperty(geboorte, row);
-    });
-});
-
-Given('de persoon heeft de volgende naam gegevens', function (dataTable) {
-    if(this.context.persoon.naam === undefined) {
-        this.context.persoon.naam = {};
-    }
-    let naam = this.context.persoon.naam;
-
-    dataTable.hashes().forEach(function(row) {
-        mapRowToProperty(naam, row);
-    });
-});
-
 Given('de persoon heeft de volgende {string} gegevens', function (gegevensgroep, dataTable) {
     setPersoonProperties(this.context.persoon, gegevensgroep, dataTable);
 });
@@ -236,6 +215,31 @@ Given('de persoon heeft een partner met de volgende gegevens', function (dataTab
     });
 });
 
+Given('de partner heeft de volgende {string} gegevens', function (gegevensgroep, dataTable) {
+    setPersoonProperties(this.context.partner, gegevensgroep, dataTable);
+});
+
+Given('de persoon heeft een ex-partner met de volgende gegevens', function (dataTable) {
+});
+
+Given('de ex-partner heeft de volgende {string} gegevens', function (gegevensgroep, dataTable) {
+});
+
+Given('de partner heeft de volgende aangaanHuwelijkPartnerschap gegevens', function (dataTable) {
+    if(this.context.partner.aangaanHuwelijkPartnerschap === undefined) {
+        this.context.partner.aangaanHuwelijkPartnerschap = {};
+    }
+    if(this.context.partner !== undefined) {
+        this.context.persoon.partners.push(this.context.partner);
+    }
+    this.context.partner = {};
+    let partner = this.context.partner;
+
+    dataTable.hashes().forEach(function(row) {
+        mapRowToProperty(partner, row);
+    });
+});
+
 Given('de partner heeft de volgende naam gegevens', function (dataTable) {
     if(this.context.partner.naam === undefined) {
         this.context.partner.naam = {};
@@ -262,6 +266,9 @@ Given('de partner heeft de volgende aangaanHuwelijkPartnerschap gegevens', funct
     dataTable.hashes().forEach(function(row) {
         mapRowToProperty(aangaanHuwelijkPartnerschap, row);
     });
+});
+
+Given('de partner heeft GEEN {string} gegevens', function (gegevensgroep) {
 });
 
 Given('de waardetabel {string} heeft de volgende waarden', function (string, dataTable) {
@@ -442,7 +449,7 @@ Then('bevat de response een invalidParams met de volgende gegevens', function (d
         const actual = invalidParams.find(function(invalidParam) {
             return invalidParam.name === expected.name &&
                    invalidParam.code === expected.code &&
-                   invalidParam.reason === expected.reason;
+                   invalidParam.reason.replace(/\/\//g, "/") === expected.reason;
         });
         should.exist(actual, `geen invalidParam gevonden met name '${expected.name}', code '${expected.code}', reason '${expected.reason}'\n${JSON.stringify(invalidParams, null, "\t")}`);
     });
@@ -553,4 +560,40 @@ Then('heeft de persoon met burgerservicenummer {string} WEL {string} gegevens', 
 });
 
 Then('heeft de persoon met burgerservicenummer {string} GEEN {string} gegevens', function (burgerservicenummer, gegevensgroep) { 
+});
+
+Then('heeft de persoon met burgerservicenummer {string} alleen {string} met de volgende gegevens', function (burgerservicenummer, gegevensgroep, dataTable) {
+    const personen = this.context.response.data.personen;
+    const persoon = personen.find(function(p) {
+        return p.burgerservicenummer === burgerservicenummer;
+    });
+    const collectie = persoon[gegevensgroep];
+
+    collectie.length.should.equal(dataTable.hashes().length, `aantal ${gegevensgroep} in response ${collectie.length} is ongelijk aan aantal expected ${dataTable.hashes().length}\npersonen: ${JSON.stringify(personen, null, "\t")}`);
+
+    dataTable.hashes().forEach(function(value) {
+        const obj = collectie.find(function(o){
+            return o.burgerservicenummer === value.burgerservicenummer;
+        });
+        should.exist(obj, `geen ${gegevensgroep} gevonden met bsn: ${value.burgerservicenummer}\npersonen: ${JSON.stringify(personen, null, "\t")}`)
+    
+        for(const [key, expected] of Object.entries(value)) {
+            let actual = String(obj[key]);
+
+            actual.should.equal(expected, `geen ${gegevensgroep} gevonden met ${key}: ${expected}\n${gegevensgroep}: ${JSON.stringify(obj, null, "\t")}`);
+        }
+    });
+});
+
+Then('heeft de persoon met burgerservicenummer {string} GEEN {string}', function (burgerservicenummer, gegevensgroep) {
+    const personen = this.context.response.data.personen;
+    const persoon = personen.find(function(p) {
+        return p.burgerservicenummer === burgerservicenummer;
+    });
+    const collectie = persoon[gegevensgroep];
+
+    should.not.exist(collectie, `${gegevensgroep} gevonden\npersonen: ${JSON.stringify(personen, null, "\t")}`);
+});
+
+Then('heeft de partner met burgerservicenummer {string} de volgende {string} gegevens', function (burgerservicenummer, gegevensgroep, dataTable) {
 });
