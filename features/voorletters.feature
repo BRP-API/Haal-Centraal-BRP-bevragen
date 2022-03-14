@@ -39,3 +39,17 @@ Rule: Voorletters wordt samengesteld uit de eerste letter van de voornamen gesch
         | Suzie Q              | S.Q         | Één voornaam bestaat uit één letter                 |                                                                                                                                   |
         | A                    | A           | Voornaam bestaat uit één letter                     | Een voornaam bestaand uit één letter, wordt afgekort tot een letter zonder .                                                      |
         | J P                  | J P         | Meerdere voornamen bestaan uit één letter           | Een voornaam bestaand uit één letter, gevolgd door een andere voornaam, wordt afgekort tot voorletters gescheiden door een spatie |
+
+	Scenario: Geen voornamen
+        Gegeven het systeem heeft een persoon met de volgende gegevens
+        | naam                | waarde    |
+        | burgerservicenummer | 999995078 |
+        En de persoon heeft de volgende 'naam' gegevens
+        | naam              | waarde      |
+        | voornamen (02.10) |  |
+        Als personen wordt gezocht met de volgende parameters
+        | naam                | waarde                          |
+        | type                | RaadpleegMetBurgerservicenummer |
+        | burgerservicenummer | 999995078                       |
+        | fields              | naam.voorletters                |
+        Dan heeft de persoon met burgerservicenummer '999995078' geen 'naam' gegevens
