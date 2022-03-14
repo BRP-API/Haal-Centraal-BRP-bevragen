@@ -90,7 +90,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | burgerservicenummer |
     | 999995086           |
 
-  Abstract Scenario: Zoek met volledige voornaam
+  Abstract Scenario: Zoek met volledige voornamen
     Als personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
@@ -188,9 +188,9 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
     | title    | Een of meerdere parameters zijn niet correct.                                                               |
     | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: geboortedatum en geslachtsnaam.                                              |
+    | detail   | De foutieve parameter(s) zijn: geboortedatum, geslachtsnaam.                                                |
     | code     | paramsValidation                                                                                            |
-    | instance | /personen                                                                                                   |
+    | instance | /haalcentraal/api/brp/personen                                                                              |
     En bevat de response een invalidParams met de volgende gegevens
     | code     | name          | reason                  |
     | required | geboortedatum | Parameter is verplicht. |
@@ -211,7 +211,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | status   | 400                                                                                                         |
     | detail   | De foutieve parameter(s) zijn: <foutieve parameter>.                                                        |
     | code     | paramsValidation                                                                                            |
-    | instance | /personen                                                                                                   |
+    | instance | /haalcentraal/api/brp/personen                                                                              |
     En bevat de response een invalidParams met de volgende gegevens
     | code     | name                 | reason                  |
     | required | <foutieve parameter> | Parameter is verplicht. |
@@ -236,7 +236,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | status   | 400                                                                                                         |
     | detail   | De foutieve parameter(s) zijn: geboortedatum.                                                               |
     | code     | paramsValidation                                                                                            |
-    | instance | /personen                                                                                                   |
+    | instance | /haalcentraal/api/brp/personen                                                                              |
     En bevat de response een invalidParams met de volgende gegevens
     | code | name          | reason                        |
     | date | geboortedatum | Waarde is geen geldige datum. |
@@ -261,15 +261,15 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | status   | 400                                                                                                         |
     | detail   | De foutieve parameter(s) zijn: geslachtsnaam.                                                               |
     | code     | paramsValidation                                                                                            |
-    | instance | /personen                                                                                                   |
+    | instance | /haalcentraal/api/brp/personen                                                                              |
     En bevat de response een invalidParams met de volgende gegevens
     | code   | name          | reason   |
     | <code> | geslachtsnaam | <reason> |
 
     Voorbeelden:
-    | titel                                        | code      | reason                                                                                              | geslachtsnaam                                                                                                                                                                                                       |
-    | Geslachtsnaam is meer dan 200 karakters lang | pattern   | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$ | abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ |
-    | Geslachtsnaam bevat ongeldige karakters      | pattern   | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$ | <script>alert('hello world');</script>                                                                                                                                                                              |
+    | titel                                        | code      | reason                                                                                               | geslachtsnaam                                                                                                                                                                                                       |
+    | Geslachtsnaam is meer dan 200 karakters lang | pattern   | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$. | abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ |
+    | Geslachtsnaam bevat ongeldige karakters      | pattern   | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$. | <script>alert('hello world');</script>                                                                                                                                                                              |
 
   @fout-case
   Scenario: Meerdere invalide parameters
@@ -286,11 +286,39 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | status   | 400                                                                                                         |
     | detail   | De foutieve parameter(s) zijn: geboortedatum, geslachtsnaam.                                                |
     | code     | paramsValidation                                                                                            |
-    | instance | /personen                                                                                                   |
+    | instance | /haalcentraal/api/brp/personen                                                                              |
     En bevat de response een invalidParams met de volgende gegevens
-    | code    | name          | reason                                                                                              |
-    | pattern | geslachtsnaam | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$ |
-    | date    | geboortedatum | Waarde is geen geldige datum.                                                                       |
+    | code    | name          | reason                                                                                               |
+    | pattern | geslachtsnaam | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$. |
+    | date    | geboortedatum | Waarde is geen geldige datum.                                                                        |
+
+  @fout-case
+  Abstract Scenario: Zoek met ongeldige <parameter naam> parameter
+    Als personen wordt gezocht met de volgende parameters
+    | naam             | waarde                                 |
+    | type             | ZoekMetGeslachtsnaamEnGeboortedatum    |
+    | geslachtsnaam    | maassen                                |
+    | geboortedatum    | 1983-05-26                             |
+    | <parameter naam> | <script>alert('hello world');</script> |
+    | fields           | burgerservicenummer                    |
+    Dan bevat de response de volgende gegevens
+    | naam     | waarde                                                                                                      |
+    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
+    | title    | Een of meerdere parameters zijn niet correct.                                                               |
+    | status   | 400                                                                                                         |
+    | detail   | De foutieve parameter(s) zijn: <parameter naam>.                                                            |
+    | code     | paramsValidation                                                                                            |
+    | instance | /haalcentraal/api/brp/personen                                                                              |
+    En bevat de response een invalidParams met de volgende gegevens
+    | code    | name             | reason                                     |
+    | pattern | <parameter naam> | Waarde voldoet niet aan patroon <patroon>. |
+
+    Voorbeelden:
+    | parameter naam      | patroon                               |
+    | voornamen           | ^[a-zA-Z0-9À-ž \.\-\']{1,199}\*{0,1}$ |
+    | voorvoegsel         | ^[a-zA-Z \']{1,10}$                   |
+    | geslachtsaanduiding | ^([Mm]\|[Vv]\|[Oo])$                  |
+    | geboorteplaats      | ^[a-zA-Z0-9À-ž \,\.\-\'()]{1,80}$     |
 
 Rule: Bij zoeken met de "*" wildcard moet minimaal 3 letters (exclusief de wildcard teken) worden opgegeven
       De "*" wildcard komt overeen met nul of meer (niet-spatie) karakters
@@ -329,7 +357,7 @@ Rule: Bij zoeken met de "*" wildcard moet minimaal 3 letters (exclusief de wildc
     | status   | 400                                                                                                         |
     | detail   | De foutieve parameter(s) zijn: geslachtsnaam.                                                               |
     | code     | paramsValidation                                                                                            |
-    | instance | /personen                                                                                                   |
+    | instance | /haalcentraal/api/brp/personen                                                                              |
     En bevat de response een invalidParams met de volgende gegevens
     | code    | name          | reason                                                                                               |
     | pattern | geslachtsnaam | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$. |
@@ -354,7 +382,7 @@ Rule: Bij zoeken met de "*" wildcard moet minimaal 3 letters (exclusief de wildc
     | status   | 400                                                                                                         |
     | detail   | De foutieve parameter(s) zijn: geslachtsnaam.                                                               |
     | code     | paramsValidation                                                                                            |
-    | instance | /personen                                                                                                   |
+    | instance | /haalcentraal/api/brp/personen                                                                              |
     En bevat de response een invalidParams met de volgende gegevens
     | code    | name          | reason                                                                                               |
     | pattern | geslachtsnaam | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$. |
@@ -398,10 +426,10 @@ Rule: Bij zoeken met de "*" wildcard moet minimaal 3 letters (exclusief de wildc
     | status   | 400                                                                                                         |
     | detail   | De foutieve parameter(s) zijn: voornamen.                                                                   |
     | code     | paramsValidation                                                                                            |
-    | instance | /personen                                                                                                   |
+    | instance | /haalcentraal/api/brp/personen                                                                              |
     En bevat de response een invalidParams met de volgende gegevens
-    | code    | name      | reason                                                              |
-    | pattern | voornamen | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,199}\*{1}$ |
+    | code    | name      | reason                                                                 |
+    | pattern | voornamen | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,199}\*{0,1}$. |
 
     Voorbeelden:
     | voornamen filter |
@@ -423,10 +451,10 @@ Rule: Bij zoeken met de "*" wildcard moet minimaal 3 letters (exclusief de wildc
     | status   | 400                                                                                                         |
     | detail   | De foutieve parameter(s) zijn: geslachtsnaam.                                                               |
     | code     | paramsValidation                                                                                            |
-    | instance | /personen                                                                                                   |
+    | instance | /haalcentraal/api/brp/personen                                                                              |
     En bevat de response een invalidParams met de volgende gegevens
-    | code     | name          | reason                                                                                               |
-    | wildcard | geslachtsnaam | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$. |
+    | code    | name          | reason                                                                                               |
+    | pattern | geslachtsnaam | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$. |
 
     Voorbeelden:
     | geslachtsnaam filter |
@@ -451,10 +479,10 @@ Rule: Bij zoeken met de "*" wildcard moet minimaal 3 letters (exclusief de wildc
     | status   | 400                                                                                                         |
     | detail   | De foutieve parameter(s) zijn: geslachtsnaam.                                                               |
     | code     | paramsValidation                                                                                            |
-    | instance | /personen                                                                                                   |
+    | instance | /haalcentraal/api/brp/personen                                                                              |
     En bevat de response een invalidParams met de volgende gegevens
-    | code     | name          | reason                                                                                               |
-    | wildcard | geslachtsnaam | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$. |
+    | code    | name          | reason                                                                                               |
+    | pattern | geslachtsnaam | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$. |
 
     Voorbeelden:
     | geslachtsnaam filter |
