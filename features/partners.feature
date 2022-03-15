@@ -10,6 +10,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
   # Een voorbeeld van een informatievraag is naam.aanschrijfwijze, waarin op basis van de aanduiding naamgebruik, de naam van de persoon en de naam van de (ex)partner een aanschrijfnaam wordt samengesteld
   # De proxy verwijdert de ontbonden partners die geleverd zijn in de GbaPersoon
 
+  @gba
   Rule: Het gegeven 'partners' in GbaPersoon bevat ook ontbonden huwelijken en partnerschappen
 
     @gba
@@ -227,6 +228,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | datum               | 20220301  |
 
   
+  @gba
   Rule: Een partner wordt niet opgenomen wanneer het huwelijk of het partnerschap onjuist is
     Een huwelijk of partnerschap is onjuist wanneer het categorie 5 voorkomen geen (waarden in) groepen 01, 02, 03, 04, 06, 07 en 15 heeft.
     
@@ -290,7 +292,8 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | naam      | waarde |
       | voornamen | Karel  |
 
-  
+
+  @proxy
   Rule: Alleen een actueel huwelijk of geregistreerd partnerschap wordt teruggegeven
     Een huwelijk of partnerschap is actueel wanneer het niet is ontbonden: ontbindingHuwelijkPartnerschap komt niet voor (heeft geen waarde)
 
@@ -405,6 +408,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | voornamen | Karel  |
   
 
+  @proxy
   Rule: Wanneer alle partnergegevens een standaard onbekendwaarde hebben of geen waarde hebben, wordt de partner geleverd met type "OnbekendPartner" en indicatieOnbekend met waarde true
     Dit geldt wanneer na toepassen van onbekend_waardes.feature er geen enkel gegeven is opgenomen voor de partner
 
