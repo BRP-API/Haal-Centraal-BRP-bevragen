@@ -5,6 +5,7 @@ Functionaliteit: Ouders van een persoon raadplegen
   Van een persoon kunnen ouders worden geleverd.
   Dit bevat gegevens over de familierechtelijke betrekking plus enkele identificerende eigenschappen van de ouder.
 
+@gba
 Rule: "ouder1" is de ouder in categorie 2 en "ouder2" is de ouder in categorie 3
 
   @gba
@@ -33,6 +34,7 @@ Rule: "ouder1" is de ouder in categorie 2 en "ouder2" is de ouder in categorie 3
     | naam      | waarde    |
     | voornamen | Guîllaumé |
 
+@gba
 Rule: de actuele gegevens van ouders worden geleverd
 
   @gba
@@ -153,6 +155,7 @@ Rule: de actuele gegevens van ouders worden geleverd
     | naam      | waarde    |
     | voornamen | Wieger    |
 
+@gba
 Rule: de geleverde oudergegevens zijn de gegevens zoals die staan op de persoonslijst van de gevraagde persoon
   # Bij het raadplegen van een persoon worden alleen gegevens uit de persoonslijst van de gevraagde persoon gebruikt, en nooit gegevens van de persoonslijst van de ouder
 
@@ -181,6 +184,7 @@ Rule: de geleverde oudergegevens zijn de gegevens zoals die staan op de persoons
     | naam      | waarde |
     | voornamen | Karel  |
 
+@gba
 Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenomen en geen gegevens in groep 1, 2, 3, 4 of 62, dan wordt de ouder niet opgenomen
   Gebruik van de fields parameter heeft geen invloed op het leveren van een ouder
 
@@ -252,6 +256,7 @@ Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenome
     Dan heeft de persoon met burgerservicenummer '555550001' exact 1 ouders
     En heeft de ouder GEEN gegevens
 
+@proxy
 Rule: Wanneer alleen ouderAanduiding, geslachtsaanduiding en datumIngangFamilierechtelijkeBetrekking een waarde hebben, wordt de ouder geleverd met type "OnbekendOuder" en indicatieOnbekend met waarde true
   Dit geldt wanneer na toepassen van onbekend_waardes.feature er geen enkel gegeven behalve ouderAanduiding, geslachtsaanduiding en datumIngangFamilierechtelijkeBetrekking is opgenomen voor de ouder
   Met andere woorden: wanneer alle gegevens van burgerservicenummer, naam en geboorte leeg zijn of een onbekendwaarde hebben, dan is het een OnbekendOuder.
