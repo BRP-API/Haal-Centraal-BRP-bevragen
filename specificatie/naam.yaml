@@ -78,21 +78,10 @@ components:
               code: "JV"
               omschrijving: "jonkvrouw"
               soort: "predicaat"
-    GbaKindNaamBasis:
+    GbaNaamBasis:
       type: object
       required:
         - geslachtsnaam
-      properties:
-        voornamen:
-          $ref: '#/components/schemas/Voornamen'
-        adellijkeTitelPredicaat:
-          $ref: '#/components/schemas/AdellijkeTitelPredicaatType'
-        voorvoegsel:
-          $ref: '#/components/schemas/Voorvoegsel'
-        geslachtsnaam:
-          $ref: '#/components/schemas/Geslachtsnaam'
-    GbaNaamBasis:
-      type: object
       properties:
         voornamen:
           $ref: '#/components/schemas/Voornamen'
