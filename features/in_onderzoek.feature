@@ -1,5 +1,6 @@
 # language: nl
 
+@proxy
 Functionaliteit: in onderzoek
   Wanneer de juistheid van een gegeven onderzocht wordt, en daardoor de waarde van een geleverd gegeven mogelijk onjuist is, wordt naast het betreffende veld ook in inOnderzoek een veld met dezelfde naam opgenomen. Deze krijgt dan de boolean waarde true.
 
