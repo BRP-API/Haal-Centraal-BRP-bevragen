@@ -135,9 +135,11 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | voornamen | Karel  |
 
   @proxy
-  Rule: Wanneer alle gegevens van een kind een standaard onbekendwaarde hebben of geen waarde hebben, wordt het geleverd met type "OnbekendKind" en indicatieOnbekend met waarde true
-    - Dit geldt wanneer na toepassen van onbekend_waardes.feature er geen enkel gegeven is opgenomen voor het kind
+  Rule: Wanneer de geslachtsnaam van het kind onbekend is, wordt het geleverd met type "OnbekendKind" en indicatieOnbekend met waarde true
+    - Dit is het geval wanneer geslachtsnaam dan de standaardwaarde "." heeft
     - Wanneer geen van de met fields gevraagde kindgegevens een waarde heeft, maar andere gegevens van het kind wel, dan is het type "Kind" en wordt indicatieOnbekend NIET opgenomen
+
+    # Onderliggende aanname is dat wanneer de geslachtsnaam van het kind onbekend is, ook andere kindgegevens niet bekend zijn of niet relevant.
 
     @proxy
     Scenario: Kind is volledig onbekend
