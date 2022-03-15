@@ -1290,7 +1290,7 @@
             "$ref" : "#/components/schemas/GbaInOnderzoek"
           },
           "naam" : {
-            "$ref" : "#/components/schemas/GbaNaamBasis"
+            "$ref" : "#/components/schemas/GbaKindNaamBasis"
           },
           "geboorte" : {
             "$ref" : "#/components/schemas/GbaGeboorte"
@@ -1376,6 +1376,24 @@
         "properties" : {
           "datum" : {
             "$ref" : "#/components/schemas/GbaDatum"
+          }
+        }
+      },
+      "GbaKindNaamBasis" : {
+        "required" : [ "geslachtsnaam" ],
+        "type" : "object",
+        "properties" : {
+          "voornamen" : {
+            "$ref" : "#/components/schemas/Voornamen"
+          },
+          "adellijkeTitelPredicaat" : {
+            "$ref" : "#/components/schemas/AdellijkeTitelPredicaatType"
+          },
+          "voorvoegsel" : {
+            "$ref" : "#/components/schemas/Voorvoegsel"
+          },
+          "geslachtsnaam" : {
+            "$ref" : "#/components/schemas/Geslachtsnaam"
           }
         }
       }
