@@ -1,5 +1,6 @@
 #language: nl
 
+@ready
 Functionaliteit: Zoek met geslachtsnaam en geboortedatum
 
   Achtergrond:
