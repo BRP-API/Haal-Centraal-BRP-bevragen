@@ -1,5 +1,6 @@
 # language: nl
 
+@proxy
 Functionaliteit: leveren van een verblijfplaats
 
   Rule: Een verblijfplaats is onbekend wanneer land (13.10) de waarde '0000' heeft
