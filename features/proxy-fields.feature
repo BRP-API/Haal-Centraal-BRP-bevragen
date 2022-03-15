@@ -135,7 +135,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar v
       | nationaliteiten.type,nationaliteit                 | nationaliteit,aanduidingBijzonderNederlanderschap |
       | overlijden.indicatieOverleden                      | overlijden.datum                                  |
       | indicatieOverleden                                 | overlijden.datum                                  |
-      | volledige naam                                     | naam                                              |
+      | volledigeNaam                                      | naam                                              |
       | naam.volledigeNaam                                 | naam                                              |
 
   Rule: wanneer een gegeven van een ouder, kind of partner wordt gevraagd, moet ook de geslachtsnaam worden gevraagd om het type te bepalen
@@ -154,19 +154,19 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar v
       | fields              | <vragen aan RvIG>               |
 
       Voorbeelden:
-      | gevraagd aan proxy                                                              | vragen aan RvIG                                                                                                                    |
-      | ouders.geslachtsaanduiding,datumIngangFamilierechtelijkeBetrekking              | ouders.geslachtsaanduiding,datumIngangFamilierechtelijkeBetrekking,ouders.naam.geslachtsnaam                                       |
-      | partners.aangaanHuwelijkPartnerschap                                            | partners.aangaanHuwelijkPartnerschap,partners.naam.geslachtsnaam                                                                   |
-      | aangaanHuwelijkPartnerschap                                                     | aangaanHuwelijkPartnerschap,partners.naam.geslachtsnaam                                                                            |
-      | burgerservicenummer,kinderen.geboorte.datum,kinderen.voornamen,gezagsverhouding | burgerservicenummer,kinderen.geboorte.datum,kinderen.voornamen,gezagsverhouding,kinderen.naam.geslachtsnaam                        |
-      | soortVerbintenis,aangaanHuwelijkPartnerschap.datum,kinderen.geboorte.datum      | soortVerbintenis,aangaanHuwelijkPartnerschap.datum,kinderen.geboorte.datum,partners.naam.geslachtsnaam,kinderen.naam.geslachtsnaam |
-      | partners.naam.voorvoegsel,partners.naam.geslachtsnaam                           | partners.naam.voorvoegsel,partners.naam.geslachtsnaam                                                                              |
-      | partners.geboorte                                                               | partners.geboorte,partners.naam.geslachtsnaam                                                                                      |
-      | ouders.naam                                                                     | ouders.naam                                                                                                                        |
-      | kinderen.naam.voorletters                                                       | kinderen.naam.voornamen,kinderen.naam.geslachtsnaam                                                                                |
-      | ouders.indicatieOnbekend                                                        | ouders.naam.geslachtsnaam                                                                                                          |
-      | partners.type                                                                   | partners.naam.geslachtsnaam                                                                                                        |
-      | kinderen                                                                        | kinderen                                                                                                                           |
+      | gevraagd aan proxy                                                                   | vragen aan RvIG                                                                                                                    |
+      | ouders.geslachtsaanduiding,datumIngangFamilierechtelijkeBetrekking                   | ouders.geslachtsaanduiding,datumIngangFamilierechtelijkeBetrekking,ouders.naam.geslachtsnaam                                       |
+      | partners.aangaanHuwelijkPartnerschap                                                 | partners.aangaanHuwelijkPartnerschap,partners.naam.geslachtsnaam                                                                   |
+      | aangaanHuwelijkPartnerschap                                                          | aangaanHuwelijkPartnerschap,partners.naam.geslachtsnaam                                                                            |
+      | burgerservicenummer,kinderen.geboorte.datum,kinderen.naam.voornamen,gezagsverhouding | burgerservicenummer,kinderen.geboorte.datum,kinderen.naam.voornamen,gezagsverhouding,kinderen.naam.geslachtsnaam                   |
+      | soortVerbintenis,aangaanHuwelijkPartnerschap.datum,kinderen.geboorte.datum           | soortVerbintenis,aangaanHuwelijkPartnerschap.datum,kinderen.geboorte.datum,partners.naam.geslachtsnaam,kinderen.naam.geslachtsnaam |
+      | partners.naam.voorvoegsel,partners.naam.geslachtsnaam                                | partners.naam.voorvoegsel,partners.naam.geslachtsnaam                                                                              |
+      | partners.geboorte                                                                    | partners.geboorte,partners.naam.geslachtsnaam                                                                                      |
+      | ouders.naam                                                                          | ouders.naam                                                                                                                        |
+      | kinderen.naam.voorletters                                                            | kinderen.naam.voornamen,kinderen.naam.geslachtsnaam                                                                                |
+      | ouders.indicatieOnbekend                                                             | ouders.naam.geslachtsnaam                                                                                                          |
+      | partners.type                                                                        | partners.naam.geslachtsnaam                                                                                                        |
+      | kinderen                                                                             | kinderen                                                                                                                           |
 
   Rule: wanneer een gegeven van verblijfplaats wordt gevraagd, moeten ook straat, huisnummer, locatiebeschrijving en verblijfplaats.land worden gevraagd
     # deze zijn nodig om het type verblijfplaats te bepalen (Adres, Locatie, VerblijfplaatsBuitenland, VerblijfplaatsOnbekend)
