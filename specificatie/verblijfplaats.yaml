@@ -341,7 +341,12 @@ components:
               $ref: '#/components/schemas/VerblijfplaatsOnbekendInOnderzoek'
     GbaVerblijfplaats:
       type: object
-      properties:
+      required:
+        - straat
+        - huisnummer
+        - locatiebeschrijving
+        - land
+     properties:
         adresregel1:
           $ref: '#/components/schemas/Adresregel1'
         adresregel2:
