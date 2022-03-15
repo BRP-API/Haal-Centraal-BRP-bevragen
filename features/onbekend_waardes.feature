@@ -1,5 +1,6 @@
 # language: nl
 
+@proxy
 Functionaliteit: Als gebruiker van de API wil ik geen onbekend waardes ontvangen
   zodat ik deze niet hoef te (kunnen) interpreteren en ik geen code voor hoef te schrijven om deze situatie af te vangen
 
