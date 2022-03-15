@@ -1,5 +1,6 @@
 # language: nl
 
+@proxy
 Functionaliteit: LeeftijdBepaling
   Bepaal de leeftijd van de persoon
 
