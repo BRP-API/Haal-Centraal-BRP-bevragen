@@ -130,6 +130,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar v
       | fields              | <vragen aan RvIG>               |
 
       Voorbeelden:
+      | gevraagd aan proxy                                 | vragen aan RvIG                                   |
       | nationaliteiten.type,nationaliteiten.nationaliteit | nationaliteit,aanduidingBijzonderNederlanderschap |
       | nationaliteiten.type,nationaliteit                 | nationaliteit,aanduidingBijzonderNederlanderschap |
       | overlijden.indicatieOverleden                      | overlijden.datum                                  |
