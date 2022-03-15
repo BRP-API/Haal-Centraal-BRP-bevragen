@@ -1,6 +1,7 @@
 # language: nl
 
 # Issue #334 en #337
+@proxy
 Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in communicatie naar burgers
   De aanhef bij een persoon wordt gevuld door de provider om op deze wijze op eenduidige wijze een persoon te kunnen aanschrijven.
   De aanhef wordt gebruikt bovenaan een brief.
