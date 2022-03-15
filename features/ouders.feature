@@ -257,11 +257,15 @@ Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenome
     En heeft de ouder GEEN gegevens
 
 @proxy
-Rule: Wanneer alleen ouderAanduiding, geslachtsaanduiding en datumIngangFamilierechtelijkeBetrekking een waarde hebben, wordt de ouder geleverd met type "OnbekendOuder" en indicatieOnbekend met waarde true
-  Dit geldt wanneer na toepassen van onbekend_waardes.feature er geen enkel gegeven behalve ouderAanduiding, geslachtsaanduiding en datumIngangFamilierechtelijkeBetrekking is opgenomen voor de ouder
-  Met andere woorden: wanneer alle gegevens van burgerservicenummer, naam en geboorte leeg zijn of een onbekendwaarde hebben, dan is het een OnbekendOuder.
+Rule: Wanneer de geslachtsnaam van de ouder onbekend is, wordt de ouder geleverd met type "OnbekendOuder" en indicatieOnbekend met waarde true
+  - Dit is het geval wanneer geslachtsnaam dan de standaardwaarde "." heeft
+  - Wanneer van de ouder wel gegevens geregistreerd zijn, maar geen van de met fields gevraagde gegevens heeft een waarde, dan is het type "Ouder" en wordt indicatieOnbekend NIET opgenomen
+  
+  # Onderliggende aanname is dat wanneer de geslachtsnaam van de ouder onbekend is, ook andere naamgegevens niet bekend zijn of niet relevant.
+  # Andere eventueel wel ingevulde gegevens over de ouder, zoals een geboortedatum of geslachtsaanduiding, zijn dan niet relevant meer.
+  # Ook wanneer niets bekend is over de ouder (zoals bij een vondeling) wordt een moeder (geslacht vrouw) en datumIngangFamilierechtelijkeBetrekking (gelijk aan de geboortedatum) opgenomen.
 
-  Wanneer van de ouder wel gegevens geregistreerd zijn, maar geen van de met fields gevraagde gegevens heeft een waarde, dan is het type "Ouder" en wordt indicatieOnbekend NIET opgenomen
+  # Om te bepalen of er sprake is van een "OnbekendOuder", moet dus ook ten minste de geslachtsnaam bepaald worden.  
 
   @proxy
   Scenario: vondeling
@@ -287,8 +291,6 @@ Rule: Wanneer alleen ouderAanduiding, geslachtsaanduiding en datumIngangFamilier
     | type                                    | OnbekendOuder |
     | indicatieOnbekend                       | true          |
     | ouderAanduiding                         | ouder1        |
-    | geslachtsaanduiding                     | V             |
-    | datumIngangFamilierechtelijkeBetrekking | 2019-06-14    |
 
   @proxy
   Scenario: er is wel een identificerend gegeven geslachtsnaam van de ouder
@@ -310,41 +312,12 @@ Rule: Wanneer alleen ouderAanduiding, geslachtsaanduiding en datumIngangFamilier
     | burgerservicenummer | 999993008                         |
     | fields              | ouder.ouderAanduiding,ouders.naam |
     Dan heeft de ouder met ouderAanduiding 'ouder1' alleen de volgende gegevens
-    | naam                                    | waarde        |
-    | type                                    | Ouder |
-    | ouderAanduiding                         | ouder1        |
-    En heeft de ouder met ouderAanduiding 'ouder1' alleen de volgende 'naam' gegevens
-    | naam          | waarde            |
-    | geslachtsnaam | Ibin binti Yalniz |
-
-  @proxy
-  Scenario: er is wel een identificerend gegeven geboortedatum van de ouder
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999993008 |
-    En de persoon heeft een ouder met de volgende gegevens
-    | naam                                            | waarde   |
-    | ouderAanduiding                                 | ouder1   |
-    | geslachtsaanduiding (04.10)                     | V        |
-    | datumIngangFamilierechtelijkeBetrekking (62.10) | 20190614 |
-    En de ouder met ouderAanduiding 'ouder1' heeft alleen de volgende 'naam' gegevens
-    | naam                  | waarde |
-    | geslachtsnaam (02.40) | .      |
-    En de ouder met ouderAanduiding 'ouder1' heeft alleen de volgende 'geboorte' gegevens
-    | naam          | waarde   |
-    | datum (03.10) | 19560000 |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                            |
-    | type                | RaadpleegMetBurgerservicenummer   |
-    | burgerservicenummer | 999993008                         |
-    | fields              | ouder.ouderAanduiding,ouders.naam |
-    Dan heeft de ouder met ouderAanduiding 'ouder1' alleen de volgende gegevens
     | naam            | waarde |
     | type            | Ouder  |
     | ouderAanduiding | ouder1 |
-    En heeft de ouder met ouderAanduiding 'ouder1' alleen de volgende 'geboorte' gegevens
-    | naam  | waarde |
-    | datum | 1956   |
+    En heeft de ouder met ouderAanduiding 'ouder1' alleen de volgende 'naam' gegevens
+    | naam          | waarde            |
+    | geslachtsnaam | Ibin binti Yalniz |
 
   @proxy
   Scenario: geen gegevens door fields is geen OnbekendOuder
@@ -373,5 +346,5 @@ Rule: Wanneer alleen ouderAanduiding, geslachtsaanduiding en datumIngangFamilier
     Dan heeft de ouder alleen de volgende gegevens
     | naam            | waarde |
     | type            | Ouder  |
-    En heeft de ouder met ouderAanduiding 'ouder1' GEEN 'naam' gegevens
-    En heeft de ouder met ouderAanduiding 'ouder1' GEEN 'geboorte' gegevens
+    En heeft de ouder GEEN 'naam' gegevens
+    En heeft de ouder GEEN 'geboorte' gegevens
