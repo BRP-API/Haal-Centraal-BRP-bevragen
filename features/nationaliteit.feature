@@ -2,6 +2,7 @@
 
 Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
   
+  @gba
   Rule: In het antwoord voor personen worden alleen actuele nationaliteiten opgenomen, waarbij geldt dat:
     - in categorie 04 nationaliteit (05.10) of aanduiding bijzonder Nederlanderschap (65.10) een waarde is opgenomen
     - in categorie 04 GEEN reden beëindigen nationaliteit (64.10) is opgenomen
@@ -163,6 +164,7 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       | redenOpname           | 311      |
       | datumIngangGeldigheid | 20200727 |
 
+  @proxy
   Rule: de nationaliteit wordt gevuld op basis van het voorkomen van nationaliteit of aanduidingBijzonderNederlanderschap
     - wanneer nationaliteit voorkomt met een waarde ongelijk aan "0000" (onbekend), dan wordt type opgenomen met de waarde "Nationaliteit"
     - wanneer nationaliteit voorkomt met een waarde gelijk aan "0000" (onbekend), dan wordt type opgenomen met de waarde "NationaliteitOnbekend"
