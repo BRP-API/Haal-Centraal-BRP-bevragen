@@ -1,5 +1,6 @@
 # language: nl
 
+@proxy
 Functionaliteit: leveren van een datum
 
   Rule: een volledige datum wordt geleverd met een type op basis van de nauwkeurigheid van de waarde
