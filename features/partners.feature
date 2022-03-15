@@ -8,7 +8,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
   # Dit betekent dat in 'partners' zowel actuele partners zitten als ontbonden partners
   # Een proxy vertaalt dit naar de vorm Persoon, waarin sommige gegevens in bewerkte vorm worden opgenomen en waarin informatievragen kunnen zitten
   # Een voorbeeld van een informatievraag is naam.aanschrijfwijze, waarin op basis van de aanduiding naamgebruik, de naam van de persoon en de naam van de (ex)partner een aanschrijfnaam wordt samengesteld
-  # De proxy verwijdert de ontbonden partners die geleverd zijn in de GbaPersoon
+  # De proxy verwijdert de partners met datum ontbinding die geleverd zijn in de GbaPersoon
 
   @gba
   Rule: Het gegeven 'partners' in GbaPersoon bevat ook ontbonden huwelijken en partnerschappen
@@ -264,6 +264,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | datum | 00000000 |
 
 
+  @gba
   Rule: De geleverde partnergegevens zijn de gegevens zoals die staan op de persoonslijst van de gevraagde persoon
     Bij het raadplegen van een persoon worden alleen gegevens uit de persoonslijst van de gevraagde persoon gebruikt, en nooit gegevens van de persoonslijst van de partner
 
@@ -409,10 +410,11 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
   
 
   @proxy
-  Rule: Wanneer alle partnergegevens een standaard onbekendwaarde hebben of geen waarde hebben, wordt de partner geleverd met type "OnbekendPartner" en indicatieOnbekend met waarde true
-    Dit geldt wanneer na toepassen van onbekend_waardes.feature er geen enkel gegeven is opgenomen voor de partner
+  Rule: Wanneer de geslachtsnaam van de partner onbekend is, wordt de partner geleverd met type "OnbekendPartner" en indicatieOnbekend met waarde true
+    - Dit is het geval wanneer geslachtsnaam dan de standaardwaarde "." heeft
+    - Wanneer van de partner en het huwelijk/partnerschap wel gegevens geregistreerd zijn, maar geen van de met fields gevraagde gegevens heeft een waarde, dan is het type "Partner" en wordt indicatieOnbekend NIET opgenomen
 
-    Wanneer van de partner en het huwelijk/partnerschap wel gegevens geregistreerd zijn, maar geen van de met fields gevraagde gegevens heeft een waarde, dan is het type "Partner" en wordt indicatieOnbekend NIET opgenomen
+    # Onderliggende aanname is dat wanneer de geslachtsnaam van de partner onbekend is, ook andere (identificerende) partnergegevens niet bekend zijn of niet relevant.
 
     @proxy
     Scenario: Partner is volledig onbekend
@@ -434,7 +436,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | code         | .        |
       En de partner heeft alleen de volgende 'aangaanHuwelijkPartnerschap' gegevens
       | naam                | waarde    |
-      | datum               | 00000000  |      
+      | datum               | 19560327  |      
       En de partner met burgerservicenummer '555550005' heeft GEEN ontbindingHuwelijkPartnerschap gegevens
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
