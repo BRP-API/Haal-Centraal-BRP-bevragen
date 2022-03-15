@@ -521,10 +521,10 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | voornamen                            | Cees      |
       En heeft de partner geen andere gegevens dan 'naam' en 'burgerservicenummer'
 
-  TODO: bepalen OnbekendPartner
-    @proxy
-    Scenario: Partner is volledig onbekend
+  # TODO: bepalen OnbekendPartner
+  #   @proxy
+  #   Scenario: Partner is volledig onbekend
 
-    @proxy
-    Scenario: Met fields zijn alleen velden zonder waarde gevraagd
+  #   @proxy
+  #   Scenario: Met fields zijn alleen velden zonder waarde gevraagd
 
