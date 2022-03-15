@@ -8,7 +8,7 @@ Functionaliteit: in onderzoek
   
   Een veld dat niet in onderzoek is, wordt niet in inOnderzoek opgenomen, ook niet met de waarde false of null.
 
-  Een overzicht van de vertaling van een inOnderzoek elementwaarde (gegeven 83.10) naar inOnderzoek velden in het antwoord staat in /features/in onderzoek.xlsx
+  Een overzicht van de vertaling van een inOnderzoek elementwaarde (gegeven 83.10) naar welke velden in inOnderzoek moeten worden opgenomen (met de waarde true) staat in /features/in onderzoek.xlsx.
 
   Ook wanneer een gegeven geen waarde heeft en daardoor niet in het antwoord opgenomen wordt kan het in onderzoek zijn. In dat geval wordt alleen in inOnderzoek een veld opgenomen met die naam en de waarde true.
 
@@ -50,7 +50,7 @@ Functionaliteit: in onderzoek
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550001                       |
-      | fields              | <groep>.<veld>                     |
+      | fields              | <groep>.<veld>                  |
       Dan heeft de persoon met burgerservicenummer '555550001' de volgende '<groep>.inOnderzoek' gegevens
       | naam                 | waarde     |
       | <veld>               | true       |
@@ -116,7 +116,7 @@ Functionaliteit: in onderzoek
       | fields              | ouders.<veld>                   |
       Dan heeft de ouder met ouderAanduiding '<ouder>' de volgende 'inOnderzoek' gegevens
       | naam                 | waarde     |
-      | <in onderzoek>       | true       |
+      | <veld>               | true       |
       | datumIngangOnderzoek | 2022-03-07 |
       En heeft de ouder met ouderAanduiding '<andere ouder>' GEEN 'inOnderzoek' gegevens
       En heeft de persoon GEEN 'inOnderzoek' gegevens
@@ -145,7 +145,7 @@ Functionaliteit: in onderzoek
       | fields              | partners.<veld>                 |
       Dan heeft de partner met burgerservicenummer '555550002' de volgende '<groep>.inOnderzoek' gegevens
       | naam                 | waarde     |
-      | <in onderzoek>       | true       |
+      | <veld>               | true       |
       | datumIngangOnderzoek | 2022-03-07 |
       En heeft de partner met burgerservicenummer '555550002' GEEN 'inOnderzoek' gegevens
 
@@ -209,7 +209,7 @@ Functionaliteit: in onderzoek
       En heeft de persoon met burgerservicenummer '555550001' GEEN 'inOnderzoek' gegevens
       En heeft de persoon met burgerservicenummer '555550001' GEEN 'geboorte.inOnderzoek' gegevens
 
-    Scenario: partner heeft hele groep soort verbintenis in onderzoek
+    Abstract Scenario: partner heeft <nauwkeurigheid> soort verbintenis in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                        | waarde    |
       | burgerservicenummer         | 555550001 |
@@ -218,7 +218,7 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 555550002 |
       En de partner met burgerservicenummer '555550002' heeft volgende 'inOnderzoek' gegevens
       | naam                          | waarde   |
-      | aanduidingGegevensInOnderzoek | 051500   |
+      | aanduidingGegevensInOnderzoek | <waarde> |
       | datumIngangOnderzoek          | 20220307 |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
@@ -232,6 +232,11 @@ Functionaliteit: in onderzoek
       En heeft de partner met burgerservicenummer '555550002' GEEN 'naam.inOnderzoek' gegevens
       En heeft de partner met burgerservicenummer '555550002' GEEN 'geboorte.inOnderzoek' gegevens
       En heeft de persoon met burgerservicenummer '555550001' GEEN 'inOnderzoek' gegevens
+
+      Voorbeelden:
+      | waarde | nauwkeurigheid |
+      | 051500 | groep          |
+      | 051510 | element        |
 
   @proxy
   Rule: wanneer een categorie in de bron in onderzoek is, wordt elk gegeven in het antwoord dat gevuld wordt uit een van de elementen in die categorie ook in inOnderzoek opgenomen met de waarde true
