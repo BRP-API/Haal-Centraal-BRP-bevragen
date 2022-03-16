@@ -51,7 +51,7 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999994086                       |
-      Dan bevat de response de volgende gegevens
+      Dan heeft de response de volgende gegevens
       | naam     | waarde                                                                                                      |
       | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
       | title    | Minimale combinatie van parameters moet worden opgegeven.                                                   |
@@ -59,7 +59,7 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | detail   | De parameter fields mag niet leeg zijn.                                                                     |
       | code     | paramsCombination                                                                                           |
       | instance | /personen                                                                                                   |
-      En bevat de response een invalidParams met de volgende gegevens
+      En heeft de response een invalidParams met de volgende gegevens
       | code     | name          | reason                  |
       | required | fields        | Parameter is verplicht. |
 
@@ -73,7 +73,7 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999994086                       |
       | fields              |                                 |
-      Dan bevat de response de volgende gegevens
+      Dan heeft de response de volgende gegevens
       | naam     | waarde                                                                                                      |
       | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
       | title    | Een of meerdere parameters zijn niet correct.                                                               |
@@ -81,7 +81,7 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | detail   | De foutieve parameter(s) zijn: fields.                                                                      |
       | code     | paramsValidation                                                                                            |
       | instance | /personen                                                                                                   |
-      En bevat de response een invalidParams met de volgende gegevens
+      En heeft de response een invalidParams met de volgende gegevens
       | code     | name          | reason                                      |
       | pattern  | fields        | Waarde voldoet niet aan patroon {pattern}.  |
 
@@ -95,7 +95,7 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | type                | RaadpleegMetBurgerservicenummer         |
       | burgerservicenummer | 999994086                               |
       | fields              | burgerservicenummer,bestaatniet         |
-      Dan bevat de response de volgende gegevens
+      Dan heeft de response de volgende gegevens
       | naam     | waarde                                                                                                      |
       | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
       | title    | Een of meerdere parameters zijn niet correct.                                                               |
@@ -103,7 +103,7 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | detail   | De foutieve parameter(s) zijn: fields.                                                                      |
       | code     | paramsValidation                                                                                            |
       | instance | /personen                                                                                                   |
-      En bevat de response een invalidParams met de volgende gegevens
+      En heeft de response een invalidParams met de volgende gegevens
       | code     | name          | reason                                           |
       | fields   | fields        | Parameter bevat een niet bestaande propertynaam. |
 
@@ -117,7 +117,7 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | type                | RaadpleegMetBurgerservicenummer          |
       | burgerservicenummer | 999994086                                |
       | fields              | BurgerServiceNummer,geslachtsaanduiding  |
-      Dan bevat de response de volgende gegevens
+      Dan heeft de response de volgende gegevens
       | naam     | waarde                                                                                                      |
       | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
       | title    | Een of meerdere parameters zijn niet correct.                                                               |
@@ -125,7 +125,7 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | detail   | De foutieve parameter(s) zijn: fields.                                                                      |
       | code     | paramsValidation                                                                                            |
       | instance | /personen                                                                                                   |
-      En bevat de response een invalidParams met de volgende gegevens
+      En heeft de response een invalidParams met de volgende gegevens
       | code     | name          | reason                                                |
       | fields   | fields        | Parameter bevat een porpertynaam met onjuiste casing. |
 
@@ -135,10 +135,10 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | naam                | waarde    |
       | burgerservicenummer | 999994086 |
       | geslachtsaanduiding | M         |
-      En de persoon heeft de volgende geboorte gegevens
+      En de persoon heeft de volgende 'geboorte' gegevens
       | naam                                      | waarde   |
       | datum (01.03.10)                          | 19860401 |
-      En de persoon heeft de volgende overlijden gegevens
+      En de persoon heeft de volgende 'overlijden' gegevens
       | naam                                      | waarde   |
       | datum (01.03.10)                          | 20151001 |
       Als personen wordt gezocht met de volgende parameters
@@ -146,21 +146,23 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | type                | RaadpleegMetBurgerservicenummer          |
       | burgerservicenummer | 999994086                                |
       | fields              | burgerservicenummer,geboorte.datum       |
-      Dan bevat de response de volgende gegevens
+      Dan heeft de persoon met burgerservicenummer '999994086' volgende gegevens
       | naam                 | waarde      |
       | burgerservicenummer  | 999994086   |
-      | geboorte.datum.datum | 19860401    |
-      | geboorte.datum.type  | Datum       |
+      En heeft de persoon met burgerservicenummer '999994086' volgende 'geboorte' gegevens
+      | naam        | waarde      |
+      | datum.datum | 19860401    |
+      | datum.type  | Datum       |
 
     Scenario: opvragen veld met fields door opgeven naam veld die meerdere keren voorkomt zonder .(dot)- notatie
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 999994086 |
       | geslachtsaanduiding | M         |
-      En de persoon heeft de volgende geboorte gegevens
+      En de persoon heeft de volgende 'geboorte' gegevens
       | naam                                      | waarde   |
       | datum (01.03.10)                          | 19860401 |
-      En de persoon heeft de volgende overlijden gegevens
+      En de persoon heeft de volgende 'overlijden' gegevens
       | naam                                      | waarde   |
       | datum (01.03.10)                          | 20151001 |
       Als personen wordt gezocht met de volgende parameters
@@ -168,7 +170,7 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | type                | RaadpleegMetBurgerservicenummer          |
       | burgerservicenummer | 999994086                                |
       | fields              | datum                                    |
-      Dan bevat de response de volgende gegevens
+      Dan heeft de response de volgende gegevens
       | naam     | waarde                                                                                                      |
       | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
       | title    | Een of meerdere parameters zijn niet correct.                                                               |
@@ -176,7 +178,7 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | detail   | De foutieve parameter(s) zijn: fields.                                                                      |
       | code     | paramsValidation                                                                                            |
       | instance | /personen                                                                                                   |
-      En bevat de response een invalidParams[0] met de volgende gegevens
+      En heeft de response een invalidParams[0] met de volgende gegevens
       | code     | name          | reason              |
       | fields   | fields        | Deel van de parameterwaarde niet correct: datum. Er zijn meerdere resultaten gevonden voor waarde: overlijden.datum, geboorte.datum  |
 
@@ -186,12 +188,12 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | naam                | waarde    |
       | burgerservicenummer | 999994086 |
       | geslachtsaanduiding | M         |
-      En de persoon heeft de volgende naam gegevens
+      En de persoon heeft de volgende 'naam' gegevens
       | naam                      |
       | voornamen                 | Johannnes Geurt |
       | geslachtsnaam             | Janssen         |
       | aanduidingNaamgebruik     | E               |
-      En de persoon heeft de volgende geboorte gegevens
+      En de persoon heeft de volgende 'geboorte' gegevens
       | naam                                      | waarde   |
       | datum.type                                | Datum    |
       | datum.datum (01.03.10)                    | 19860401 |
@@ -202,22 +204,22 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | type                | RaadpleegMetBurgerservicenummer                    |
       | burgerservicenummer | 999994086                                          |
       | fields              | geboorte.plaats.code                               |
-      Dan bevat de response de volgende gegevens
+      Dan heeft de persoon met burgerservicenummer '999994086' de volgende 'geboorte' gegevens
       | naam                 | waarde       |
       | geboorte.plaats.code | 0518         |
-      En bevat de response geen andere properties
+      En heeft de persoon GEEN andere properties
 
     Scenario: opvragen veld met fields door opgeven laatste deel van het pad naar het veld
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 999994086 |
       | geslachtsaanduiding | M         |
-      En de persoon heeft de volgende naam gegevens
+      En de persoon heeft de volgende 'naam' gegevens
       | naam                      |
       | voornamen                 | Johannnes Geurt |
       | geslachtsnaam             | Janssen         |
       | aanduidingNaamgebruik     | E               |
-      En de persoon heeft de volgende geboorte gegevens
+      En de persoon heeft de volgende 'geboorte' gegevens
       | naam                                      | waarde   |
       | datum (01.03.10)                          | 19860401 |
       | land                                      | 6030     |
@@ -227,10 +229,10 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | type                | RaadpleegMetBurgerservicenummer                    |
       | burgerservicenummer | 999994086                                          |
       | fields              | plaats.code |
-      Dan bevat de response de volgende gegevens
-      | naam                 | waarde       |
-      | geboorte.plaats.code | 0518         |
-      En bevat de response geen andere properties
+      Dan heeft de persoon met burgerservicenummer '999994086' de volgende 'geboorte' gegevens
+      | naam        | waarde       |
+      | plaats.code | 0518         |
+      En heeft de response GEEN andere properties
 
   Rule: De response bevat alleen de properties die in de fields parameter gevraagd.
     Scenario: Slechts één enkel attribuut wordt gevraagd
@@ -243,10 +245,10 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999994086                       |
       | fields              | geslachtsaanduiding             |
-      Dan bevat de response de volgende gegevens
+      Dan heeft de persoon met burgerservicenummer '999994086' de volgende gegevens
       | naam                | waarde |
       | geslachtsaanduiding | 'M'    |
-      En bevat de response geen andere properties
+      En heeft de response GEEN andere properties
 
     Scenario: Meerdere attributen worden gevraagd
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -258,11 +260,11 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | type                | RaadpleegMetBurgerservicenummer         |
       | burgerservicenummer | 999994086                               |
       | fields              | burgerservicenummer,geslachtsaanduiding |
-      Dan bevat de response de volgende gegevens
+      Dan heeft de persoon met burgerservicenummer '999994086' de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 999994086 |
       | geslachtsaanduiding |  M        |
-      En bevat de response geen andere properties
+      En heeft de response GEEN andere properties
 
     Scenario: Hele groep wordt gevraagd
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -279,13 +281,14 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | type                | RaadpleegMetBurgerservicenummer         |
       | burgerservicenummer | 999994086                               |
       | fields              | burgerservicenummer,naam                |
-      Dan bevat de response de volgende gegevens
+      Dan heeft de persoon met burgerservicenummer '999994086' de volgende gegevens
       | naam                       | waarde          |
       | burgerservicenummer        | 999994086       |
-      | naam.voornamen             | Johannnes Geurt |
-      | naam.geslachtsnaam         | Janssen         |
-      | naam.aanduidingNaamgebruik | E               |
-      En bevat de response geen andere properties
+      En heeft de persoon met burgerservicenummer '999994086' de volgende 'naam' gegevens
+      | voornamen             | Johannnes Geurt |
+      | geslachtsnaam         | Janssen         |
+      | aanduidingNaamgebruik | E               |
+      En heeft de response GEEN andere properties
 
     Scenario: Een of enkele attributen binnen een groep worden gevraagd
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -293,7 +296,7 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | burgerservicenummer | 999994086 |
       | geslachtsaanduiding | M         |
       En de persoon heeft de volgende naam gegevens
-      | naam                      |
+      | naam                      | waarde          |
       | voornamen                 | Johannnes Geurt |
       | geslachtsnaam             | Janssen         |
       | aanduidingNaamgebruik     | E               |
@@ -302,12 +305,14 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | type                | RaadpleegMetBurgerservicenummer         |
       | burgerservicenummer | 999994086                               |
       | fields              | burgerservicenummer,naam.voornamen,naam.aanduidingNaamgebruik |
-      Dan bevat de response de volgende gegevens
+      Dan heeft de persoon met burgerservicenummer '999994086' de volgende gegevens
       | naam                       | waarde          |
       | burgerservicenummer        | 999994086       |
-      | naam.voornamen             | Johannnes Geurt |
-      | naam.aanduidingNaamgebruik | E               |
-      En bevat de response geen andere properties
+      En heeft de persoon met burgerservicenummer '999994086' de volgende 'naam' gegevens
+      | naam                  | waarde          |
+      | voornamen             | Johannnes Geurt |
+      | aanduidingNaamgebruik | E               |
+      En heeft de response GEEN andere properties
 
     Scenario: Fields bevat attributen die bij de geraadpleegde persoon geen waarde hebben
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -320,21 +325,29 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | geslachtsnaam             | Groenen  |
       | aanduidingNaamgebruik     | E               |
       En de persoon heeft de volgende geboorte gegevens
-      | naam                                      | waarde   |
-      | datum.type                                | Datum    |
-      | datum.datum (01.03.10)                    | 19860401 |
-      | land.code                                 |          |
-      | plaats.code                               | 0518     |
+      | naam                                | waarde   |
+      | datum (01.03.10)                    | 19860401 |
+      | land                                |          |
+      | plaats                              | 0518     |
+      En de waardetabel 'Gemeenten' heeft de volgende waarden
+      | code | omschrijving  |
+      | 0518 | 's-Gravenhage |
+      En de waardetabel 'Landen' heeft de volgende waarden
+      | code | omschrijving |
+      | 6030 | Nederland    |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                              |
       | type                | RaadpleegMetBurgerservicenummer                     |
       | burgerservicenummer | 999992934                                           |
       | fields              | burgerservicenummer,geboorte.plaats,geboorte.land   |
-      Dan bevat de response de volgende gegevens
+      Dan heeft de persoon met burgerservicenummer '999992934' de volgende gegevens
       | naam                 | waarde       |
       | burgerservicenummer  | 999992934    |
-      | geboorte.plaats      | 0518         |
-      En bevat de response geen andere properties
+      En heeft de persoon met burgerservicenummer '999992934' de volgende 'geboorte' gegevens
+      | naam                | waarde        |
+      | plaats.code         | 0518          |
+      | plaats.omschrijving | 's-Gravenhage |
+      En heeft de response GEEN andere properties
 
     Scenario: gebruik fields als de response meerdere resources in een collectie retourneert.
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -368,11 +381,19 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | postcode            | 3552RA                                              |
       | huisnummer          | 35                                                  |
       | fields              | burgerservicenummer,naam.geslachtsnaam              |
-      Dan bevat de response de volgende gegevens
-      | burgerservicenummer | naam.geslachtsnaam   |
-      | 999992934           | Groenen              |
-      | 999994086           | Janssen              |
-      En bevat de response geen andere properties
+      Dan heeft de persoon met burgerservicenummer '999992934' de volgende gegevens
+      | naam                | waarde               |
+      | burgerservicenummer | 999992934            |
+      En heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+      | naam                | waarde               |
+      | geslachtsnaam       | Groenen              |
+      En heeft de persoon met burgerservicenummer '999994086' de volgende gegevens
+      | naam                | waarde               |
+      | burgerservicenummer | 999994086            |
+      En heeft de persoon met burgerservicenummer '999994086' de volgende 'naam' gegevens
+      | naam                | waarde               |
+      | geslachtsnaam       | Janssen              |
+      En heeft de response GEEN andere properties
 
   Rule: De volgende velden worden geleverd ongeacht de eventueel gevraagde velden in de fields parameter:
     - inOnderzoek wordt meegegeven wanneer gevraagde corresponderende velden in onderzoek zijn. Zie in_onderzoek.feature voor uitleg wanneer attributen in onderzoek zijn.
@@ -401,7 +422,7 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999994086                       |
       | fields              | geboorte                        |
-      Dan bevat de persoon met burgerservicenummer '999994086' de volgende geboorte gegevens
+      Dan heeft de persoon met burgerservicenummer '999994086' de volgende 'geboorte' gegevens
       | naam                                   | waarde        |
       | datum.type                             | Datum         |
       | datum.datum                            | 1986-04-01    |
@@ -414,6 +435,7 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | inOnderzoek.datum                      | true          |
       | inOnderzoek.land                       |               |
       | inOnderzoek.plaats                     |               |
+      En heeft de response GEEN andere properties
 
     Scenario: geboortedatum is in onderzoek en geboortedatum wordt gevraagd met de fields parameter
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -430,13 +452,14 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999994086                       |
       | fields              | geboorte.datum                  |
-      Dan bevat de persoon met burgerservicenummer '999994086' de volgende geboorte gegevens
+      Dan heeft de persoon met burgerservicenummer '999994086' de volgende 'geboorte' gegevens
       | naam                                   | waarde     |
       | datum.type                             | Datum      |
       | datum.datum                            | 1986-04-01 |
       | inOnderzoek.datumIngangOnderzoek.datum | 2020-06-01 |
       | inOnderzoek.datumIngangOnderzoek.type  | Datum      |
       | inOnderzoek.datum                      | true       |
+      En heeft de response GEEN andere properties
 
     Scenario: geboortedatum is in onderzoek en een ander gegeven in de gegevens groep wordt gevraagd met de fields parameter
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -456,13 +479,14 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999994086                       |
       | fields              | geboorte.plaats                 |
-      Dan bevat de persoon met burgerservicenummer '999994086' de volgende geboorte gegevens
+      Dan heeft de persoon met burgerservicenummer '999994086' de volgende 'geboorte' gegevens
       | naam                | waarde        |
       | plaats.code         | 0518          |
       | plaats.omschrijving | 's-Gravenhage |
-      En bevat de persoon met burgerservicenummer '999994086' de volgende geboorte gegevens NIET
+      En bevat de persoon met burgerservicenummer '999994086' de volgende 'geboorte' gegevens NIET
       | naam        |
       | inOnderzoek |
+      En heeft de response GEEN andere properties
 
     Scenario: persoon heeft geheimhouding en andere gegevens wordt gevraagd met de fields parameter
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -477,7 +501,7 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999993483                       |
       | fields              | geboorte.plaats                 |
-      Dan bevat de persoon met burgerservicenummer '999993483' de volgende gegevens
+      Dan heeft de persoon met burgerservicenummer '999993483' de volgende gegevens
       | naam                          | waarde |
       | geheimhoudingPersoonsgegevens | true   |
 
@@ -510,21 +534,21 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999992077                       |
       | fields              | geboorte.plaats                 |
-      Dan bevat persoon met burgerservicenummer '999992077' de volgende geboorte gegevens
+      Dan heeft persoon met burgerservicenummer '999992077' de volgende 'geboorte' gegevens
       | naam                | waarde        |
       | plaats.code         | 0518          |
       | plaats.omschrijving | 's-Gravenhage |
-      En bevat de persoon met burgerservicenummer '999992077' de volgende opschortingBijhouding gegevens
+      En bevat de persoon met burgerservicenummer '999992077' de volgende 'opschortingBijhouding' gegevens
       | naam              | waarde     |
       | reden.code        | overlijden |
-      En bevat de persoon met burgerservicenummet '999992077' geen overlijden gegevens
+      En heeft de persoon met burgerservicenummer '999992077' GEEN 'overlijden' gegevens
 
   Rule: Als properties uit een gegevensgroepen van een bepaald type worden gevraagd, maar er worden een ander type geleverd wordt van de gorpe alleen het type geleverd.
     Scenario: persoon heeft geboortedatum onbekend en de property geboortedatum wordt gevraagd.
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 999992077 |
-      En de persoon heeft de volgende geboorte gegevens
+      En de persoon heeft volgende geboorte gegevens
       | naam               | waarde   |
       | datum              | 00000000 |
       | land               | 6030     |
@@ -540,6 +564,7 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999992077                       |
       | fields              | geboorte.datum.datum            |
-      Dan bevat persoon met burgerservicenummer '999992077' de volgende geboorte gegevens
+      Dan heeft persoon met burgerservicenummer '999992077' de volgende 'geboorte' gegevens
       | naam                | waarde        |
       | type                | OnbekendDatum |
+      En heeft de response GEEN andere properties
