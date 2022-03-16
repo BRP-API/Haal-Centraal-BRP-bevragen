@@ -180,81 +180,59 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | code     | name          | reason              |
       | fields   | fields        | Deel van de parameterwaarde niet correct: datum. Er zijn meerdere resultaten gevonden voor waarde: overlijden.datum, geboorte.datum  |
 
-    Rule: properties die onderdeel uitmaken van een groep, maar wel een unieke propertynaam hebben mogen met alleen de propertynaam worden opgenomen in fields
+  Rule: properties die onderdeel uitmaken van een groep, maar wel een unieke propertynaam hebben mogen met alleen de propertynaam worden opgenomen in fields
+    Scenario: opvragen veld met fields door opgeven hele pad naar het veld
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 999994086 |
       | geslachtsaanduiding | M         |
+      En de persoon heeft de volgende naam gegevens
+      | naam                      |
+      | voornamen                 | Johannnes Geurt |
+      | geslachtsnaam             | Janssen         |
+      | aanduidingNaamgebruik     | E               |
+      En de persoon heeft de volgende geboorte gegevens
+      | naam                                      | waarde   |
+      | datum.type                                | Datum    |
+      | datum.datum (01.03.10)                    | 19860401 |
+      | land.code                                 | 6030     |
+      | plaats.code                               | 0518     |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                                             |
+      | type                | RaadpleegMetBurgerservicenummer                    |
+      | burgerservicenummer | 999994086                                          |
+      | fields              | geboorte.plaats.code                               |
+      Dan bevat de response de volgende gegevens
+      | naam                 | waarde       |
+      | geboorte.plaats.code | 0518         |
+      En bevat de response geen andere properties
+
+    Scenario: opvragen veld met fields door opgeven laatste deel van het pad naar het veld
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999994086 |
+      | geslachtsaanduiding | M         |
+      En de persoon heeft de volgende naam gegevens
+      | naam                      |
+      | voornamen                 | Johannnes Geurt |
+      | geslachtsnaam             | Janssen         |
+      | aanduidingNaamgebruik     | E               |
       En de persoon heeft de volgende geboorte gegevens
       | naam                                      | waarde   |
       | datum (01.03.10)                          | 19860401 |
-      En de persoon heeft de volgende overlijden gegevens
-      | naam                                      | waarde   |
-      | datum (01.03.10)                          | 20151001 |
+      | land                                      | 6030     |
+      | plaats                                    | 0518     |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                   |
-      | type                | RaadpleegMetBurgerservicenummer          |
-      | burgerservicenummer | 999994086                                |
-      | fields              | burgerservicenummer,geboorte.datum       |
+      | naam                | waarde                                             |
+      | type                | RaadpleegMetBurgerservicenummer                    |
+      | burgerservicenummer | 999994086                                          |
+      | fields              | plaats.code |
       Dan bevat de response de volgende gegevens
-      | naam                 | waarde      |
-      | burgerservicenummer  | 999994086   |
-      | geboorte.datum.datum | 19860401    |
-      | geboorte.datum.type  | Datum       |
-
-      Scenario: opvragen veld met fields door opgeven hele pad naar het veld
-        Gegeven het systeem heeft een persoon met de volgende gegevens
-        | naam                | waarde    |
-        | burgerservicenummer | 999994086 |
-        | geslachtsaanduiding | M         |
-        En de persoon heeft de volgende naam gegevens
-        | naam                      |
-        | voornamen                 | Johannnes Geurt |
-        | geslachtsnaam             | Janssen         |
-        | aanduidingNaamgebruik     | E               |
-        En de persoon heeft de volgende geboorte gegevens
-        | naam                                      | waarde   |
-        | datum.type                                | Datum    |
-        | datum.datum (01.03.10)                    | 19860401 |
-        | land.code                                 | 6030     |
-        | plaats.code                               | 0518     |
-        Als personen wordt gezocht met de volgende parameters
-        | naam                | waarde                                             |
-        | type                | RaadpleegMetBurgerservicenummer                    |
-        | burgerservicenummer | 999994086                                          |
-        | fields              | geboorte.plaats.code                               |
-        Dan bevat de response de volgende gegevens
-        | naam                 | waarde       |
-        | geboorte.plaats.code | 0518         |
-        En bevat de response geen andere properties
-
-      Scenario: opvragen veld met fields door opgeven laatste deel van het pad naar het veld
-        Gegeven het systeem heeft een persoon met de volgende gegevens
-        | naam                | waarde    |
-        | burgerservicenummer | 999994086 |
-        | geslachtsaanduiding | M         |
-        En de persoon heeft de volgende naam gegevens
-        | naam                      |
-        | voornamen                 | Johannnes Geurt |
-        | geslachtsnaam             | Janssen         |
-        | aanduidingNaamgebruik     | E               |
-        En de persoon heeft de volgende geboorte gegevens
-        | naam                                      | waarde   |
-        | datum (01.03.10)                          | 19860401 |
-        | land                                      | 6030     |
-        | plaats                                    | 0518     |
-        Als personen wordt gezocht met de volgende parameters
-        | naam                | waarde                                             |
-        | type                | RaadpleegMetBurgerservicenummer                    |
-        | burgerservicenummer | 999994086                                          |
-        | fields              | plaats.code |
-        Dan bevat de response de volgende gegevens
-        | naam                 | waarde       |
-        | geboorte.plaats.code | 0518         |
-        En bevat de response geen andere properties
+      | naam                 | waarde       |
+      | geboorte.plaats.code | 0518         |
+      En bevat de response geen andere properties
 
   Rule: De response bevat alleen de properties die in de fields parameter gevraagd.
-
     Scenario: Slechts één enkel attribuut wordt gevraagd
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
@@ -331,71 +309,6 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | naam.aanduidingNaamgebruik | E               |
       En bevat de response geen andere properties
 
-## Het inregelen van de autorisatie is toch iets dat de gemeente zelf doet ?
-## Dit hoor dat toch niet thuis in de fields feature ?  Vooralsnog overgenomen uit de oude fields-feature, maar moet volgens mij weg.
-
-    Scenario: Fields vraagt om een groep attributen en de gebruiker is niet geautoriseerd voor één van deze attributen
-      Gegeven de gebruiker is niet geautoriseerd voor geboortedatum
-      En de gebruiker is geautoriseerd voor geboorteplaats en geboorteland
-      En het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 999994086 |
-      | geslachtsaanduiding | M         |
-      En de persoon heeft de volgende naam gegevens
-      | naam                      |
-      | voornamen                 | Johannnes Geurt |
-      | geslachtsnaam             | Janssen         |
-      | aanduidingNaamgebruik     | E               |
-      En de persoon heeft de volgende geboorte gegevens
-      | naam                                      | waarde   |
-      | datum.type                                | Datum    |
-      | datum.datum (01.03.10)                    | 19860401 |
-      | land.code                                 | 6030     |
-      | plaats.code                               | 0518     |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                  |
-      | type                | RaadpleegMetBurgerservicenummer         |
-      | burgerservicenummer | 999994086                               |
-      | fields              | burgerservicenummer,geboorte            |
-      Dan bevat de response de volgende gegevens
-      | naam                 | waarde       |
-      | burgerservicenummer  | 999994086    |
-      | geboorte.plaats.code | 0518         |
-      | geboorte.land.code   | 6030         |
-      En bevat de response geen andere properties
-
-## Het inregelen van de autorisatie is toch iets dat de gemeente zelf doet ?
-## Dit hoor dat toch niet thuis in de fields feature ?  Vooralsnog overgenomen uit de oude fields-feature, maar moet volgens mij weg.
-
-    Scenario: Fields vraagt specifiek om een gegeven waarvoor deze niet geautoriseerd is
-      Gegeven de gebruiker is niet geautoriseerd voor geboortedatum
-      En de gebruiker is geautoriseerd voor geboorteplaats en geboorteland
-      En het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 999994086 |
-      | geslachtsaanduiding | M         |
-      En de persoon heeft de volgende naam gegevens
-      | naam                      |
-      | voornamen                 | Johannnes Geurt |
-      | geslachtsnaam             | Janssen         |
-      | aanduidingNaamgebruik     | E               |
-      En de persoon heeft de volgende geboorte gegevens
-      | naam                                      | waarde   |
-      | datum.type                                | Datum    |
-      | datum.datum (01.03.10)                    | 19860401 |
-      | land.code                                 | 6030     |
-      | plaats.code                               | 0518     |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                             |
-      | type                | RaadpleegMetBurgerservicenummer                    |
-      | burgerservicenummer | 999994086                                          |
-      | fields              | burgerservicenummer,geboorte.datum,geboorte.plaats |
-      Dan bevat de response de volgende gegevens
-      | naam                 | waarde       |
-      | burgerservicenummer  | 999994086    |
-      | geboorte.plaats.code | 0518         |
-      En bevat de response geen andere properties
-
     Scenario: Fields bevat attributen die bij de geraadpleegde persoon geen waarde hebben
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
@@ -460,24 +373,6 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | 999992934           | Groenen              |
       | 999994086           | Janssen              |
       En bevat de response geen andere properties
-
-
-
-
-
-
-
-
-
-#     Van het onderstaande scenario kan ik geen casus bedenken binnen BRP-Persoon bevragen. Heeft het dan wel niet dat Scenario op te nemen ?
-#
-#    Scenario: opvragen veld met fields door opgeven exacte naam veld die ook dieper in de resource voorkomt
-#      Gegeven de zakelijkgerechtigden resource bevat een veld identificatie
-#      En de zakelijkgerechtigden resource bevat een veld persoon.identificatie
-#      Als zakelijkgerechtigden wordt gevraagd met fields=identificatie
-#      Dan bevat elk voorkomen van _embedded.zakelijkGerechtigden veld identificatie met een waarde
-#      Dan bevat geen enkel voorkomen van _embedded.zakelijkGerechtigden veld persoon.identificatie met een waarde
-#
 
   Rule: De volgende velden worden geleverd ongeacht de eventueel gevraagde velden in de fields parameter:
     - inOnderzoek wordt meegegeven wanneer gevraagde corresponderende velden in onderzoek zijn. Zie in_onderzoek.feature voor uitleg wanneer attributen in onderzoek zijn.
@@ -624,5 +519,27 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | reden.code        | overlijden |
       En bevat de persoon met burgerservicenummet '999992077' geen overlijden gegevens
 
-  Rule: Gegevensgroepen waarvan meerdere type worden aangeboden (polymorfie) kunnen ook op type bevraagd worden.
-#Todo
+  Rule: Als properties uit een gegevensgroepen van een bepaald type worden gevraagd, maar er worden een ander type geleverd wordt van de gorpe alleen het type geleverd.
+    Scenario: persoon heeft geboortedatum onbekend en de property geboortedatum wordt gevraagd.
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999992077 |
+      En de persoon heeft de volgende geboorte gegevens
+      | naam               | waarde   |
+      | datum              | 00000000 |
+      | land               | 6030     |
+      | plaats             | 0518     |
+      En de waardetabel 'Gemeenten' heeft de volgende waarden
+      | code | omschrijving  |
+      | 0518 | 's-Gravenhage |
+      En de waardetabel 'Landen' heeft de volgende waarden
+      | code | omschrijving |
+      | 6030 | Nederland    |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999992077                       |
+      | fields              | geboorte.datum.datum            |
+      Dan bevat persoon met burgerservicenummer '999992077' de volgende geboorte gegevens
+      | naam                | waarde        |
+      | type                | OnbekendDatum |
