@@ -29,8 +29,8 @@ Rule: een veld wordt niet opgenomen wanneer het de standaardwaarde bevat
     | naam                | waarde     |
     | burgerservicenummer | 999992934  |
     En de persoon heeft de volgende <groep> gegevens
-    | naam   | waarde   |
-    | <veld> | <waarde> |
+    | naam               | waarde   |
+    | <veld> (<element>) | <waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                             |
     | type                | RaadpleegMetBurgerservicenummer    |
@@ -41,13 +41,13 @@ Rule: een veld wordt niet opgenomen wanneer het de standaardwaarde bevat
     | <veld> |
 
     Voorbeelden:
-    | groep          | veld                              | waarde           |
-    | naam           | geslachtsnaam                     | .                |
-    | verblijfplaats | straat                            | .                |
-    | verblijfplaats | huisnummer                        | 0                |
-    | verblijfplaats | woonplaats                        | .                |
-    | verblijfplaats | nummeraanduidingIdentificatie     | 0000000000000000 |
-    | verblijfplaats | adresseerbaarObjectIdentificatie  | 0000000000000000 |
+    | groep          | veld                             | element | waarde           |
+    | naam           | geslachtsnaam                    | 02.40   | .                |
+    | verblijfplaats | straat                           | 11.10   | .                |
+    | verblijfplaats | huisnummer                       | 11.20   | 0                |
+    | verblijfplaats | woonplaats                       | 11.70   | .                |
+    | verblijfplaats | nummeraanduidingIdentificatie    | 11.90   | 0000000000000000 |
+    | verblijfplaats | adresseerbaarObjectIdentificatie | 11.80   | 0000000000000000 |
 
   Scenario: onbekend waarde in een partner voor soortVerbintenis
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -70,7 +70,7 @@ Rule: een veld wordt niet opgenomen wanneer het de standaardwaarde bevat
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde     |
     | burgerservicenummer | 999992934  |
-    En de persoon met burgerservicenummer '999992934' heeft de volgende actueel geldige reisdocumentnummers
+    En de persoon met burgerservicenummer '999992934' heeft de volgende actueel geldige reisdocumentnummers (35.20)
     | reisdocumentnummers |
     | .........           |
     | Pk5Q8cA31           |
@@ -82,7 +82,7 @@ Rule: een veld wordt niet opgenomen wanneer het de standaardwaarde bevat
     Dan bevat de persoon met burgerservicenummer '999992934' de volgende gegevens
     | naam                  | waarde    |
     | burgerservicenummer   | 999992934 |
-    En bevat de persoon met burgerservicenummer '999992934' alleen de volgende reisdocumentnummers
+    En bevat de persoon met burgerservicenummer '999992934' alleen de volgende 'reisdocumentnummers'
     | reisdocumentnummers |
     | Pk5Q8cA31           |
 
@@ -113,8 +113,8 @@ Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbe
     | naam                | waarde     |
     | burgerservicenummer | 999992934  |
     En de persoon heeft de volgende <groep> gegevens
-    | naam        | waarde   |
-    | <veld>.code | <waarde> |
+    | naam               | waarde   |
+    | <veld> (<element>) | <waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                             |
     | type                | RaadpleegMetBurgerservicenummer    |
@@ -125,22 +125,23 @@ Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbe
     | burgerservicenummer   | 999992934 |
 
     Voorbeelden:
-    | groep          | veld                    | waarde |
-    | geboorte       | plaats                  | 0000   |
-    | geboorte       | land                    | 0000   |
-    | overlijden     | plaats                  | 0000   |
-    | overlijden     | land                    | 0000   |
-    | verblijfplaats | gemeenteVanInschrijving | 0000   |
-    | verblijfplaats | land                    | 0000   |
-    | verblijfplaats | landVanwaarIngeschreven | 0000   |
-    | verblijfstitel | aanduiding              | 00     |
+    | groep          | veld                    | element | waarde |
+    | geboorte       | plaats                  | 03.20   | 0000   |
+    | geboorte       | land                    | 03.30   | 0000   |
+    | overlijden     | plaats                  | 08.20   | 0000   |
+    | overlijden     | land                    | 08.30   | 0000   |
+    | verblijfplaats | gemeenteVanInschrijving | 09.10   | 0000   |
+    | verblijfplaats | land                    | 13.10   | 0000   |
+    | verblijfplaats | landVanwaarIngeschreven | 14.10   | 0000   |
+    | verblijfstitel | aanduiding              | 39.10   | 00     |
 
   Scenario: buitenlandse plaats zonder code
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde     |
     | burgerservicenummer | 999992934  |
     En de persoon heeft de volgende geboorte gegevens
-    | plaats.omschrijving | Brussel |
+    | naam           | waarde  |
+    | plaats (03.20) | Brussel |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                              |
     | type                | RaadpleegMetBurgerservicenummer     |
@@ -161,8 +162,8 @@ Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbe
     | naam                        | waarde             |
     | burgerservicenummer         | 999992935          |
     En de <relatie> met burgerservicenummer '999992935' heeft de volgende <groep> gegevens
-    | naam        | waarde   |
-    | <veld>.code | <waarde> |
+    | naam               | waarde   |
+    | <veld> (<element>) | <waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                                                                     |
     | type                | RaadpleegMetBurgerservicenummer                                            |
@@ -173,25 +174,25 @@ Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbe
     | burgerservicenummer   | 999992934 |
 
     Voorbeelden:
-    | relatie  | groep                       | veld   | waarde |
-    | ouders   | geboorte                    | plaats | 0000   |
-    | ouders   | geboorte                    | land   | 0000   |
-    | partners | geboorte                    | plaats | 0000   |
-    | partners | geboorte                    | land   | 0000   |
-    | partners | aangaanHuwelijkPartnerschap | plaats | 0000   |
-    | partners | aangaanHuwelijkPartnerschap | land   | 0000   |
-    | kinderen | geboorte                    | plaats | 0000   |
-    | kinderen | geboorte                    | land   | 0000   |
+    | relatie  | groep                       | veld   | element | waarde |
+    | ouders   | geboorte                    | plaats | 03.20   | 0000   |
+    | ouders   | geboorte                    | land   | 03.30   | 0000   |
+    | partners | geboorte                    | plaats | 03.20   | 0000   |
+    | partners | geboorte                    | land   | 03.30   | 0000   |
+    | partners | aangaanHuwelijkPartnerschap | plaats | 06.20   | 0000   |
+    | partners | aangaanHuwelijkPartnerschap | land   | 06.30   | 0000   |
+    | kinderen | geboorte                    | plaats | 03.20   | 0000   |
+    | kinderen | geboorte                    | land   | 03.30   | 0000   |
 
   Scenario: onbekend waarde voor nationaliteit
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde     |
     | burgerservicenummer | 999992934  |
     En de persoon met burgerservicenummer '999992934' heeft de volgende nationaliteit gegevens
-    | naam                  | waarde   |
-    | nationaliteit         | 0000     |
-    | redenOpname           | 311      |
-    | datumIngangGeldigheid | 20030417 |
+    | naam                          | waarde   |
+    | nationaliteit (05.10)         | 0000     |
+    | redenOpname (63.10)           | 311      |
+    | datumIngangGeldigheid (85.10) | 20030417 |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                              |
     | type                | RaadpleegMetBurgerservicenummer     |
@@ -201,19 +202,18 @@ Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbe
     | naam                  | waarde    |
     | burgerservicenummer   | 999992934 |
     En bevat de persoon met burgerservicenummer '999992934' een nationaliteit met alleen de volgende gegevens
-    | redenOpname.code            | 311                                  |
-    | redenOpname.omschrijving    | Vaststelling onbekende nationaliteit |
-    | datumIngangGeldigheid.datum | 2003-04-17                           |
+    | redenOpname           | 311        |
+    | datumIngangGeldigheid | 2003-04-17 |
     
   Scenario: onbekend waarde voor reden opname nationaliteit
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde     |
     | burgerservicenummer | 999992934  |
     En de persoon met burgerservicenummer '999992934' heeft de volgende nationaliteit gegevens
-    | naam                  | waarde   |
-    | nationaliteit         | 0052     |
-    | redenOpname           | 000      |
-    | datumIngangGeldigheid | 20030417 |
+    | naam                          | waarde   |
+    | nationaliteit (05.10)         | 0052     |
+    | redenOpname (63.10)           | 000      |
+    | datumIngangGeldigheid (85.10) | 20030417 |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                              |
     | type                | RaadpleegMetBurgerservicenummer     |
@@ -223,9 +223,8 @@ Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbe
     | naam                  | waarde    |
     | burgerservicenummer   | 999992934 |
     En bevat de persoon met burgerservicenummer '999992934' een nationaliteit met alleen de volgende gegevens
-    | nationaliteit.code          | 0052       |
-    | nationaliteit.omschrijving  | Belgische  |
-    | datumIngangGeldigheid.datum | 2003-04-17 |
+    | nationaliteit         | 0052       |
+    | datumIngangGeldigheid | 2003-04-17 |
 
 Rule: de onbekendwaarde voor geslachtsaanduiding wordt wel geleverd
 
@@ -233,7 +232,7 @@ Rule: de onbekendwaarde voor geslachtsaanduiding wordt wel geleverd
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                        | waarde    |
     | burgerservicenummer         | 999992934 |
-    | geslachtsaanduiding         | O         |
+    | geslachtsaanduiding (04.10) | O         |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                                  |
     | type                | RaadpleegMetBurgerservicenummer         |
@@ -249,13 +248,14 @@ Rule: de onbekendwaarde voor geslachtsaanduiding wordt wel geleverd
 
 Rule: de onbekendwaarde voor redenOpschortingBijhouding wordt wel geleverd
 
-  Scenario: een onbekendwaarde bij redenOpschortingBijhouding wordt wel opgenomen in de response
+  Scenario: een onbekendwaarde bij reden opschorting bijhouding wordt wel opgenomen in de response
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                        | waarde    |
     | burgerservicenummer         | 999992934 |
     En de persoon heeft de volgende opschortingBijhouding gegevens
-    | reden | .        |
-    | datum | 20211218 |
+    | naam          | waarde   |
+    | datum (67.10) | 20211218 |
+    | reden (67.20) | .        |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                                  |
     | type                | RaadpleegMetBurgerservicenummer         |
@@ -268,85 +268,69 @@ Rule: de onbekendwaarde voor redenOpschortingBijhouding wordt wel geleverd
     | naam               | waarde     |
     | reden.code         | .          |
     | reden.omschrijving | onbekend   |
-    | datum.type         | Datum      |
-    | datum.datum        | 2021-12-18 |
+    | datum              | 2021-12-18 |
 
 Rule: datumvelden waarde "00000000": worden vertaald naar OnbekendDatum
 
-  Scenario: een onbekendwaarde bij redenOpschortingBijhouding wordt wel opgenomen in de response
+  Abstract Scenario: volledig onbekende datum in <groep> <element>
     Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                        | waarde    |
-    | burgerservicenummer         | 999992934 |
-    En de persoon heeft de volgende opschortingBijhouding gegevens
-    | reden | O        |
-    | datum | 00000000 |
+    | naam                | waarde    |
+    | burgerservicenummer | 555550001 |
+    En de persoon heeft de volgende <groep> gegevens
+    | naam      | waarde   |
+    | <element> | 00000000 |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                  |
-    | type                | RaadpleegMetBurgerservicenummer         |
-    | burgerservicenummer | 999992934                               |
-    | fields              | burgerservicenummer,redenOpschortingBijhouding |
+    | naam                | waarde                             |
+    | type                | RaadpleegMetBurgerservicenummer    |
+    | burgerservicenummer | 555550001                          |
+    | fields              | burgerservicenummer,<groep>.<veld> |
     Dan bevat de persoon met burgerservicenummer '999992934' de volgende gegevens
     | naam                  | waarde    |
     | burgerservicenummer   | 999992934 |
-    En bevat de persoon met burgerservicenummer '999992934' de volgende 'opschortingBijhouding' gegevens
+    En bevat de persoon met burgerservicenummer '555550001' alleen de volgende '<groep>' gegevens
     | naam               | waarde        |
-    | reden.code         | O             |
-    | reden.omschrijving | overlijden    |
     | datum.type         | OnbekendDatum |
     | datum.onbekend     | true          |
 
-  Scenario: er wordt geen link gemaakt op basis van een onbekendwaarde
-    Gegeven de persoon heeft een reisdocument met reisdocumentnummer "........."
-    En de persoon heeft geen ander actueel reisdocument
-    Als de persoon wordt geraadpleegd
-    Dan is in het antwoord _links.reisdocumenten niet aanwezig
+    Voorbeelden:
+    | groep                 | element                                       | veld                                  |
+    | geboorte              | datum (03.10)                                 | datum                                 |
+    | overlijden            | datum (08.10)                                 | datum                                 |
+    | opschortingBijhouding | datum (67.10)                                 | datum                                 |
+    | verblijfplaats        | datumInschrijvingInGemeente (09.20)           | datumInschrijvingInGemeente           |
+    | verblijfplaats        | datumAanvangAdreshouding (10.30)              | datumVan                              |
+    | verblijfplaats        | datumAanvangAdresBuitenland (13.20)           | datumVan                              |
+    | verblijfstitel        | datumEinde (39.20)                            | datumEinde                            |
+    | verblijfstitel        | datumIngang (39.30)                           | datumIngang                           |
+    | kiesrecht             | einddatumUitsluitingEuropeesKiesrecht (31.30) | einddatumUitsluitingEuropeesKiesrecht |
+    | kiesrecht             | einddatumUitsluitingKiesrecht (38.30)         | einddatumUitsluitingKiesrecht         |
 
-  Scenario: vullen van indicatieVestigingVanuitBuitenland
-    Gegeven de registratie persoon 999990317 kent een verblijfplaats.datumVestigingInNederland = 19900808
-    Als de persoon met burgerservicenummer 999990317 wordt geraadpleegd
-    Dan heeft in het antwoord verblijfplaats.datumVestigingInNederland.datum de waarde 1990-08-08
-    En heeft attribuut verblijfplaats.indicatieVestigingVanuitBuitenland de waarde true
+  Abstract Scenario: volledig onbekende datum bij <relatie> in <groep> datum
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                | waarde     |
+    | burgerservicenummer | 555550001  |
+    En de persoon heeft een <relatie> met de volgende gegevens
+    | naam                        | waarde             |
+    | burgerservicenummer         | 555550002          |
+    En de <relatie> met burgerservicenummer '555550002' heeft de volgende <groep> gegevens
+    | naam              | waarde   |
+    | datum (<element>) | 00000000 |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                                                                     |
+    | type                | RaadpleegMetBurgerservicenummer                                            |
+    | burgerservicenummer | 555550001                                                                  |
+    | fields              | burgerservicenummer,<relatie>.burgerservicenummer,<relatie>.<groep>.<veld> |
+    Dan bevat de <relatie> met burgerservicenummer '555550002' alleen de volgende '<groep>' gegevens
+    | naam           | waarde        |
+    | datum.type     | OnbekendDatum |
+    | datum.onbekend | true          |
 
-    Gegeven de registratie persoon kent een verblijfplaats.datumVestigingInNederland = 00000000
-    Als de persoon wordt geraadpleegd
-    Dan heeft attribuut verblijfplaats.indicatieVestigingVanuitBuitenland de waarde true
-    En is in het antwoord verblijfplaats.datumVestigingInNederland niet aanwezig
-
-    Gegeven de registratie persoon 999993653 kent geen verblijfplaats.datumVestigingInNederland
-    Als de persoon met burgerservicenummer 999993653 wordt geraadpleegd
-    Dan is in het antwoord verblijfplaats.datumVestigingInNederland niet aanwezig
-    En is in het antwoord verblijfplaats.indicatieVestigingVanuitBuitenland niet aanwezig
-
-  Scenario: vullen van vanuitVertrokkenOnbekendWaarheen
-    Gegeven de registratie persoon 999995121 kent een verblijfplaats.landVanwaarIngeschreven = 0000
-    Als de persoon met burgerservicenummer 999995121 wordt geraadpleegd
-    Dan is in het antwoord verblijfplaats.landVanwaarIngeschreven niet aanwezig
-    En heeft attribuut verblijfplaats.vanuitVertrokkenOnbekendWaarheen de waarde true
-
-    Gegeven de registratie persoon 999990317 kent een verblijfplaats.landVanwaarIngeschreven = 7046
-    Als de persoon met burgerservicenummer 999990317 wordt geraadpleegd
-    Dan heeft attribuut verblijfplaats.landVanwaarIngeschreven.code de waarde 7046
-    En is in het antwoord verblijfplaats.vanuitVertrokkenOnbekendWaarheen niet aanwezig
-
-    Gegeven de registratie persoon 999993653 kent geen verblijfplaats.landVanwaarIngeschreven
-    Als de persoon met burgerservicenummer 999993653 wordt geraadpleegd
-    Dan is in het antwoord verblijfplaats.landVanwaarIngeschreven niet aanwezig
-    En is in het antwoord verblijfplaats.vanuitVertrokkenOnbekendWaarheen niet aanwezig
-
-  Scenario: vullen van vertrokkenOnbekendWaarheen
-    Gegeven de registratie persoon 999993586 kent een verblijfplaats.verblijfBuitenland.land = 0000
-    Als de persoon met burgerservicenummer 999993586 wordt geraadpleegd
-    Dan is in het antwoord verblijfplaats.verblijfBuitenland.land niet aanwezig
-    En heeft attribuut verblijfplaats.verblijfBuitenland.vertrokkenOnbekendWaarheen de waarde true
-
-    Gegeven de registratie persoon 999992326 kent een verblijfplaats.verblijfBuitenland.land = 6003
-    Als de persoon met burgerservicenummer 999992326 wordt geraadpleegd
-    Dan heeft attribuut verblijfplaats.verblijfBuitenland.land.code de waarde 6003
-    En is in het antwoord verblijfplaats.verblijfBuitenland.vertrokkenOnbekendWaarheen niet aanwezig
-
-    Gegeven de registratie persoon 999993653 is in een Nederlandse gemeente
-    Als de persoon met burgerservicenummer 999993653 wordt geraadpleegd
-    Dan is in het antwoord verblijfplaats.verblijfBuitenland niet aanwezig
+    Voorbeelden:
+    | relatie  | groep                       | element |
+    | ouders   | geboorte                    | 03.10   |
+    | partners | aangaanHuwelijkPartnerschap | 06.10   |
+    | partners | geboorte                    | 03.10   |
+    | kinderen | geboorte                    | 03.10   |
 
 Rule: vertalen (onbekend)waarden naar indicator
   - elke waarde voor datumVestigingInNederland (incl. 00000000) geeft indicatieVestigingVanuitBuitenland met de waarde true
@@ -448,3 +432,4 @@ Rule: vertalen (onbekend)waarden naar indicator
     | 00000000 | 1403   | 6030 | true               |
     | 00000000 | 0000   | 0000 | true               |
     | 00000000 |        |      | true               |
+    |          |        |      |                    |
