@@ -27,8 +27,9 @@ Rule: De aanhef voor een persoon zonder adellijke titel of predicaat wordt samen
     | V                     | GA VP GP-VV GN |
     | N                     | GA VV GN-VP GP |
   - Het voorvoegsel van de eerste naam in de aanhef met een hoofdletter wordt geschreven
-  - Wanneer voorletters zijn opgenomen in de aanhef, het voorvoegsel van de eerste naam in de aanhef met alleen kleine letters wordt geschreven
+  - Een voorvoegsel direct na "Geachte mevrouw" of "Geachte heer" begint met een hoofdletter
   - Wanneer een naamcomponent geen of een lege waarde heeft, wordt de overbodige spatie niet opgenomen: niet starten met een spatie, niet eindigen met een spatie, geen dubbele spatie, geen spatie na streepje
+  - Aanduiding naamgebruik "E" (eigen naam) wordt gehanteerd voor een persoon die geen actuele en geen ontbonden huwelijken/partnerschappen heeft gehad
 
   Abstract Scenario: opnemen geslacht na Geachte bij geslachtsaanduiding <voorbeeld>
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -57,18 +58,18 @@ Rule: De aanhef voor een persoon zonder adellijke titel of predicaat wordt samen
     | vrouw     | V        | Geachte mevrouw Groenen |
     | onbekend  | O        | Geachte J.R. Groenen    |
 
-  Scenario: naamsamenstelling van een alleenstaande persoon met aanduidingNaamgebruik "E"
+  Abstract Scenario: naamsamenstelling van een alleenstaande persoon met aanduidingNaamgebruik "<aanduidingNaamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                        | waarde    |
     | burgerservicenummer         | 999992934 |
     | geslachtsaanduiding (04.10) | V         |
     En de persoon heeft de volgende naam gegevens
-    | naam                                 | waarde |
-    | adellijke titel of predicaat (02.20) |        |
-    | voorvoegsel (02.30)                  | in het |
-    | geslachtsnaam (02.40)                | Veld   |
-    | aanduiding naamgebruik (61.10)       | E      |
-    En de persoon heeft geen partner
+    | naam                                 | waarde                  |
+    | adellijke titel of predicaat (02.20) |                         |
+    | voorvoegsel (02.30)                  | in het                  |
+    | geslachtsnaam (02.40)                | Veld                    |
+    | aanduiding naamgebruik (61.10)       | <aanduidingNaamgebruik> |
+    En de persoon heeft geen (ex)partner
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -77,6 +78,13 @@ Rule: De aanhef voor een persoon zonder adellijke titel of predicaat wordt samen
     Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
     | naam   | waarde                      |
     | aanhef | Geachte mevrouw In het Veld |
+
+    Voorbeelden:
+    | aanduidingNaamgebruik |
+    | E                     |
+    | P                     |
+    | V                     |
+    | N                     |
 
   Abstract Scenario: naamsamenstelling van een persoon met een partner bij aanduidingNaamgebruik "<naamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
