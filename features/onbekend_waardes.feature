@@ -239,12 +239,9 @@ Rule: de onbekendwaarde voor geslachtsaanduiding wordt wel geleverd
     | burgerservicenummer | 999992934                               |
     | fields              | burgerservicenummer,geslachtsaanduiding |
     Dan bevat de persoon met burgerservicenummer '999992934' de volgende gegevens
-    | naam                  | waarde    |
-    | burgerservicenummer   | 999992934 |
-    En bevat de persoon met burgerservicenummer '999992934' de volgende 'geslachtsaanduiding' gegevens
-    | naam         | waarde   |
-    | code         | O        |
-    | omschrijving | onbekend |
+    | naam                | waarde    |
+    | burgerservicenummer | 999992934 |
+    | geslachtsaanduiding | O         |
 
 Rule: de onbekendwaarde voor redenOpschortingBijhouding wordt wel geleverd
 
@@ -265,10 +262,9 @@ Rule: de onbekendwaarde voor redenOpschortingBijhouding wordt wel geleverd
     | naam                  | waarde    |
     | burgerservicenummer   | 999992934 |
     En bevat de persoon met burgerservicenummer '999992934' de volgende 'opschortingBijhouding' gegevens
-    | naam               | waarde     |
-    | reden.code         | .          |
-    | reden.omschrijving | onbekend   |
-    | datum              | 2021-12-18 |
+    | naam  | waarde     |
+    | reden | .          |
+    | datum | 2021-12-18 |
 
 Rule: datumvelden waarde "00000000": worden vertaald naar OnbekendDatum
 
