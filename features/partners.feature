@@ -45,7 +45,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | datum  | 20171103 |
       | plaats | 0513     |
       | land   | 6030     |
-      En de partner met burgerservicenummer '555550002' heeft GEEN ontbindingHuwelijkPartnerschap gegevens
+      En de partner met burgerservicenummer '555550002' heeft GEEN 'ontbindingHuwelijkPartnerschap' gegevens
 
     @gba
     Scenario: een actuele partner en een ontbonden partner
@@ -104,7 +104,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | datum  | 20210720 |
       | plaats | Dunvegan |
       | land   | 6039     |
-      En de partner met burgerservicenummer '555550005' heeft GEEN ontbindingHuwelijkPartnerschap gegevens
+      En de partner met burgerservicenummer '555550005' heeft GEEN 'ontbindingHuwelijkPartnerschap' gegevens
 
     @gba
     Scenario: alleen ontbonden partners
@@ -200,7 +200,9 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999993380                       |
       | fields              | partners                        |
-      Dan heeft de persoon met burgerservicenummer '999993380' exact 1 'partners'
+      Dan heeft de persoon met burgerservicenummer '999993380' alleen 'partners' met de volgende gegevens
+      | naam             | waarde |
+      | soortVerbintenis | .      |
       En heeft de partner de volgende 'naam' gegevens
       | naam          | waarde |
       | geslachtsnaam | .      |
@@ -252,7 +254,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       En de partner met burgerservicenummer '555550001' heeft de volgende naam gegevens
       | naam      | waarde |
       | voornamen | Merel  |
-      En de partner met burgerservicenummer '555550001' heeft GEEN ontbindingHuwelijkPartnerschap gegevens
+      En de partner met burgerservicenummer '555550001' heeft GEEN 'ontbindingHuwelijkPartnerschap' gegevens
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                               |
       | type                | RaadpleegMetBurgerservicenummer                      |
@@ -277,7 +279,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       En de partner met burgerservicenummer '555550002' heeft de volgende naam gegevens
       | naam      | waarde   |
       | voornamen | Reindert |
-      En de partner met burgerservicenummer '555550002' heeft GEEN ontbindingHuwelijkPartnerschap gegevens
+      En de partner met burgerservicenummer '555550002' heeft GEEN 'ontbindingHuwelijkPartnerschap' gegevens
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                               |
       | type                | RaadpleegMetBurgerservicenummer                      |
@@ -325,7 +327,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       En de partner met burgerservicenummer '555550004' heeft de volgende aangaanHuwelijkPartnerschap gegevens
       | naam  | waarde   |
       | datum | 20091102 |
-      En de partner met burgerservicenummer '555550004' heeft GEEN ontbindingHuwelijkPartnerschap gegevens
+      En de partner met burgerservicenummer '555550004' heeft GEEN 'ontbindingHuwelijkPartnerschap' gegevens
       En de persoon heeft een partner met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550005 |
@@ -366,7 +368,16 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       En de persoon heeft een partner met de volgende 'naam' gegevens
       | naam                                 | waarde    |
       | geslachtsnaam                        | .         |
-      En de partner met burgerservicenummer '555550005' heeft GEEN ontbindingHuwelijkPartnerschap gegevens
+      En de partner heeft alleen de volgende 'geboorte' gegevens
+      | naam  | waarde   |
+      | datum | 00000000 |
+      En de partner heeft de volgende 'soortVerbintenis' gegevens
+      | naam | waarde |
+      | code | H      |
+      En de partner heeft de volgende aangaanHuwelijkPartnerschap gegevens
+      | naam  | waarde   |
+      | datum | 20091102 |
+      En de partner met burgerservicenummer '555550005' heeft GEEN 'ontbindingHuwelijkPartnerschap' gegevens
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -378,6 +389,8 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | type              | OnbekendPartner |
       | indicatieOnbekend | true            |
 
+      # ook niet aangaanHuwelijkPartnerschap en soortVerbintenis leveren? Zie https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/940#issuecomment-1069293224
+
     @proxy
     Scenario: Met fields zijn alleen velden zonder waarde gevraagd
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -387,7 +400,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | naam                                 | waarde           |
       | voornamen                            |                  |
       | geslachtsnaam                        | Ali bin Mohammed |
-      En de partner met burgerservicenummer '555550005' heeft GEEN ontbindingHuwelijkPartnerschap gegevens
+      En de partner met burgerservicenummer '555550005' heeft GEEN 'ontbindingHuwelijkPartnerschap' gegevens
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
