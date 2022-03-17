@@ -12,220 +12,161 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
 
   @gba
   Rule: Het gegeven 'partners' in GbaPersoon bevat ook ontbonden huwelijken en partnerschappen
+    - Voor een ontbonden huwelijk of partnerschap worden de aangaanHuwelijkPartnerschap gegevens gehaald uit de meest recente historische categorie 55
 
     @gba
     Scenario: een actuele partner en geen ontbonden partner(s)
-      Gegeven de persoon met burgerservicenummer 999992934 heeft de volgende huwelijken/partnerschappen in de registratie
+      Gegeven de persoon met burgerservicenummer 555550001 heeft de volgende huwelijken/partnerschappen in de registratie
       | Categorie | Burgerservicenummer (01.20) | Voornamen (02.10) | adellijke titel of predicaat (02.20) | voorvoegsel (02.30) | Geslachtsnaam (02.40) | Geboortedatum (03.10) | Geboorteplaats (03.20) | Geboorteland | Geslachtsaanduiding (04.10) | Datum aangaan (06.10) | Plaats aangaan (06.20) | Land aangaan (06.30) | Datum ontbinding (07.10) | soort verbintenis (15.10) |
       | 5         | 555550001                   | Jan               | JH                                   | van                 | Aedel                 | 19820526              | 0599                   | 6030         | M                           | 20171103              | 0513                   | 6030                 |                          | H                         |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 999992934                       |
+      | burgerservicenummer | 555550001                       |
       | fields              | partners                        |
-      Dan heeft de persoon met burgerservicenummer '999992934' alleen 'partners' met de volgende gegevens
-      | burgerservicenummer |
-      | 555550001           |
-      En heeft de partner met burgerservicenummer '555550001' de volgende 'geslachtsaanduiding' gegevens
-      | naam         | waarde |
-      | code         | M      |
-      | omschrijving | man    |
-      En heeft de partner met burgerservicenummer '555550001' de volgende 'naam' gegevens
-      | naam                                 | waarde    |
-      | voornamen                            | Jan       |
-      | adellijkeTitelPredicaat.code         | JH        |
-      | adellijkeTitelPredicaat.omschrijving | jonkheer  |
-      | adellijkeTitelPredicaat.soort        | predicaat |
-      | voorvoegsel                          | van       |
-      | geslachtsnaam                        | Aedel     |
-      En heeft de partner met burgerservicenummer '555550001' de volgende 'geboorte' gegevens
+      Dan heeft de persoon met burgerservicenummer '555550001' alleen 'partners' met de volgende gegevens
       | naam                | waarde    |
-      | datum               | 19820526  |
-      | plaats.code         | 0599      |
-      | plaats.omschrijving | Rotterdam |
-      | land.code           | 6030      |
-      | land.omschrijving   | Nederland |
-      En heeft de partner met burgerservicenummer '555550001' de volgende 'soortVerbintenis' gegevens
-      | naam         | waarde   |
-      | code         | H        |
-      | omschrijving | huwelijk |
-      En heeft de partner met burgerservicenummer '555550001' de volgende 'aangaanHuwelijkPartnerschap' gegevens
-      | naam                | waarde    |
-      | datum               | 20171103  |
-      | plaats.code         | 0513      |
-      | plaats.omschrijving | Gouda     |
-      | land.code           | 6030      |
-      | land.omschrijving   | Nederland |
-      En de partner met burgerservicenummer '555550001' heeft GEEN ontbindingHuwelijkPartnerschap gegevens
-
-    @gba
-    Scenario: een actuele partner en een ontbonden partner
-      Gegeven de persoon met burgerservicenummer 999992934 heeft de volgende huwelijken/partnerschappen in de registratie
-      | Stapel | Categorie | Burgerservicenummer (01.20) | Voornamen (02.10) | adellijke titel of predicaat (02.20) | voorvoegsel (02.30) | Geslachtsnaam (02.40) | Geboortedatum (03.10) | Geboorteplaats (03.20) | Geboorteland | Geslachtsaanduiding (04.10) | Datum aangaan (06.10) | Plaats aangaan (06.20) | Land aangaan (06.30) | Datum ontbinding (07.10) | soort verbintenis (15.10) |
-      | 1      | 5         | 555550002                   | Marieke           |                                      |                     | Groenen               | 19861004              | 0503                   | 6030         | V                           | 20210720              | Dunvegan               | 6039                 |                          | P                         |
-      | 2      | 5         |                             |                   |                                      |                     |                       |                       |                        |              |                             |                       |                        |                      | 20191210                 |                           |
-      | 2      | 55        | 555550001                   | Jan               | JH                                   | van                 | Aedel                 | 19820526              | 0599                   | 6030         | M                           | 20171103              | 0513                   | 6030                 |                          | H                         |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 999992934                       |
-      | fields              | partners                        |
-      Dan heeft de persoon met burgerservicenummer '999992934' een partner met de volgende gegevens
-      | burgerservicenummer |
-      | 555550001           |
-      En heeft de partner met burgerservicenummer '555550001' de volgende 'geslachtsaanduiding' gegevens
-      | naam         | waarde |
-      | code         | M      |
-      | omschrijving | man    |
-      En heeft de partner met burgerservicenummer '555550001' de volgende 'naam' gegevens
-      | naam                                 | waarde    |
-      | voornamen                            | Jan       |
-      | adellijkeTitelPredicaat.code         | JH        |
-      | adellijkeTitelPredicaat.omschrijving | jonkheer  |
-      | adellijkeTitelPredicaat.soort        | predicaat |
-      | voorvoegsel                          | van       |
-      | geslachtsnaam                        | Aedel     |
-      En heeft de partner met burgerservicenummer '555550001' de volgende 'geboorte' gegevens
-      | naam                | waarde    |
-      | datum               | 19820526  |
-      | plaats.code         | 0599      |
-      | plaats.omschrijving | Rotterdam |
-      | land.code           | 6030      |
-      | land.omschrijving   | Nederland |
-      En heeft de partner met burgerservicenummer '555550001' de volgende 'soortVerbintenis' gegevens
-      | naam         | waarde   |
-      | code         | H        |
-      | omschrijving | huwelijk |
-      En heeft de partner met burgerservicenummer '555550001' de volgende 'aangaanHuwelijkPartnerschap' gegevens
-      | naam                | waarde    |
-      | datum               | 20171103  |
-      | plaats.code         | 0513      |
-      | plaats.omschrijving | Gouda     |
-      | land.code           | 6030      |
-      | land.omschrijving   | Nederland |
-      En heeft de partner met burgerservicenummer '555550001' de volgende 'ontbindingHuwelijkPartnerschap' gegevens
-      | naam                | waarde    |
-      | datum               | 20191210  |
-      En heeft de persoon met burgerservicenummer '999992934' een partner met de volgende gegevens
-      | burgerservicenummer |
-      | 555550002           |
-      En heeft de partner met burgerservicenummer '555550002' de volgende 'geslachtsaanduiding' gegevens
-      | naam         | waarde |
-      | code         | V      |
-      | omschrijving | vrouw  |
+      | burgerservicenummer | 555550002 |
+      | geslachtsaanduiding | M         |
+      | soortVerbintenis    | H         |
       En heeft de partner met burgerservicenummer '555550002' de volgende 'naam' gegevens
-      | naam                                 | waarde  |
-      | voornamen                            | Marieke |
-      | adellijkeTitelPredicaat.code         |         |
-      | adellijkeTitelPredicaat.omschrijving |         |
-      | adellijkeTitelPredicaat.soort        |         |
-      | voorvoegsel                          |         |
-      | geslachtsnaam                        | Groenen |
+      | naam                    | waarde |
+      | voornamen               | Jan    |
+      | adellijkeTitelPredicaat | JH     |
+      | voorvoegsel             | van    |
+      | geslachtsnaam           | Aedel  |
       En heeft de partner met burgerservicenummer '555550002' de volgende 'geboorte' gegevens
-      | naam                | waarde    |
-      | datum               | 19861004  |
-      | plaats.code         | 0503      |
-      | plaats.omschrijving | Delft     |
-      | land.code           | 6030      |
-      | land.omschrijving   | Nederland |
-      En heeft de partner met burgerservicenummer '555550002' de volgende 'soortVerbintenis' gegevens
-      | naam         | waarde                     |
-      | code         | P                          |
-      | omschrijving | geregistreerd partnerschap |
+      | naam   | waarde   |
+      | datum  | 19820526 |
+      | plaats | 0599     |
+      | land   | 6030     |
       En heeft de partner met burgerservicenummer '555550002' de volgende 'aangaanHuwelijkPartnerschap' gegevens
-      | naam                | waarde          |
-      | datum               | 20210720        |
-      | plaats.code         |                 |
-      | plaats.omschrijving | Dunvegan        |
-      | land.code           | 6039            |
-      | land.omschrijving   | Grootbrittannië |
+      | naam   | waarde   |
+      | datum  | 20171103 |
+      | plaats | 0513     |
+      | land   | 6030     |
       En de partner met burgerservicenummer '555550002' heeft GEEN ontbindingHuwelijkPartnerschap gegevens
 
     @gba
-    Scenario: alleen ontbonden partners
-      Gegeven de persoon met burgerservicenummer 999992934 heeft de volgende huwelijken/partnerschappen in de registratie
+    Scenario: een actuele partner en een ontbonden partner
+      Gegeven de persoon met burgerservicenummer 555550003 heeft de volgende huwelijken/partnerschappen in de registratie
       | Stapel | Categorie | Burgerservicenummer (01.20) | Voornamen (02.10) | adellijke titel of predicaat (02.20) | voorvoegsel (02.30) | Geslachtsnaam (02.40) | Geboortedatum (03.10) | Geboorteplaats (03.20) | Geboorteland | Geslachtsaanduiding (04.10) | Datum aangaan (06.10) | Plaats aangaan (06.20) | Land aangaan (06.30) | Datum ontbinding (07.10) | soort verbintenis (15.10) |
-      | 1      | 5         |                             |                   |                                      |                     |                       |                       |                        |              |                             |                       |                        |                      | 20220301                 |                           |
-      | 1      | 55        | 555550002                   | Marieke           |                                      |                     | Groenen               | 19861004              | 0503                   | 6030         | V                           | 20210720              | Dunvegan               | 6039                 |                          | P                         |
-      | 2      | 5         |                             |                   |                                      |                     |                       |                       |                        |              |                             |                       |                        |                      | 20191210                 |                           |
-      | 2      | 55        | 555550001                   | Jan               | JH                                   | van                 | Aedel                 | 19820526              | 0599                   | 6030         | M                           | 20171103              | 0513                   | 6030                 |                          | H                         |
+      | 1      | 5         | 555550004                   | Marieke           |                                      |                     | Groenen               | 19861004              | 0503                   | 6030         | V                           | 20210720              | Dunvegan               | 6039                 |                          | P                         |
+      | 2      | 5         | 555550005                   | Jan               | JH                                   | van                 | Aedel                 | 19820526              | 0599                   | 6030         | M                           |                       |                        |                      | 20191210                 |                           |
+      | 2      | 55        | 555550005                   | Jan               | JH                                   | van                 | Aedel                 | 19820526              | 0599                   | 6030         | M                           | 20171103              | 0513                   | 6030                 |                          | H                         |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 999992934                       |
+      | burgerservicenummer | 555550003                       |
       | fields              | partners                        |
-      Dan heeft de persoon met burgerservicenummer '999992934' een partner met de volgende gegevens
-      | burgerservicenummer |
-      | 555550001           |
-      En heeft de partner met burgerservicenummer '555550001' de volgende 'geslachtsaanduiding' gegevens
-      | naam         | waarde |
-      | code         | M      |
-      | omschrijving | man    |
-      En heeft de partner met burgerservicenummer '555550001' de volgende 'naam' gegevens
-      | naam                                 | waarde    |
-      | voornamen                            | Jan       |
-      | adellijkeTitelPredicaat.code         | JH        |
-      | adellijkeTitelPredicaat.omschrijving | jonkheer  |
-      | adellijkeTitelPredicaat.soort        | predicaat |
-      | voorvoegsel                          | van       |
-      | geslachtsnaam                        | Aedel     |
-      En heeft de partner met burgerservicenummer '555550001' de volgende 'geboorte' gegevens
+      Dan heeft de persoon met burgerservicenummer '555550003' een partner met de volgende gegevens
       | naam                | waarde    |
-      | datum               | 19820526  |
-      | plaats.code         | 0599      |
-      | plaats.omschrijving | Rotterdam |
-      | land.code           | 6030      |
-      | land.omschrijving   | Nederland |
-      En heeft de partner met burgerservicenummer '555550001' de volgende 'soortVerbintenis' gegevens
-      | naam         | waarde   |
-      | code         | H        |
-      | omschrijving | huwelijk |
-      En heeft de partner met burgerservicenummer '555550001' de volgende 'aangaanHuwelijkPartnerschap' gegevens
-      | naam                | waarde    |
-      | datum               | 20171103  |
-      | plaats.code         | 0513      |
-      | plaats.omschrijving | Gouda     |
-      | land.code           | 6030      |
-      | land.omschrijving   | Nederland |
-      En heeft de partner met burgerservicenummer '555550001' de volgende 'ontbindingHuwelijkPartnerschap' gegevens
+      | burgerservicenummer | 555550004 |
+      | geslachtsaanduiding | M         |
+      | soortVerbintenis    | H         |
+      En heeft de partner met burgerservicenummer '555550004' de volgende 'naam' gegevens
+      | naam                    | waarde |
+      | voornamen               | Jan    |
+      | adellijkeTitelPredicaat | JH     |
+      | voorvoegsel             | van    |
+      | geslachtsnaam           | Aedel  |
+      En heeft de partner met burgerservicenummer '555550004' de volgende 'geboorte' gegevens
+      | naam   | waarde   |
+      | datum  | 19820526 |
+      | plaats | 0599     |
+      | land   | 6030     |
+      En heeft de partner met burgerservicenummer '555550004' de volgende 'aangaanHuwelijkPartnerschap' gegevens
+      | naam   | waarde   |
+      | datum  | 20171103 |
+      | plaats | 0513     |
+      | land   | 6030     |
+      En heeft de partner met burgerservicenummer '555550004' de volgende 'ontbindingHuwelijkPartnerschap' gegevens
       | naam                | waarde    |
       | datum               | 20191210  |
-      En heeft de persoon met burgerservicenummer '999992934' een partner met de volgende gegevens
-      | burgerservicenummer |
-      | 555550002           |
-      En heeft de partner met burgerservicenummer '555550002' de volgende 'geslachtsaanduiding' gegevens
-      | naam         | waarde |
-      | code         | V      |
-      | omschrijving | vrouw  |
-      En heeft de partner met burgerservicenummer '555550002' de volgende 'naam' gegevens
-      | naam                                 | waarde  |
-      | voornamen                            | Marieke |
-      | adellijkeTitelPredicaat.code         |         |
-      | adellijkeTitelPredicaat.omschrijving |         |
-      | adellijkeTitelPredicaat.soort        |         |
-      | voorvoegsel                          |         |
-      | geslachtsnaam                        | Groenen |
-      En heeft de partner met burgerservicenummer '555550002' de volgende 'geboorte' gegevens
+      En heeft de persoon met burgerservicenummer '555550003' een partner met de volgende gegevens
       | naam                | waarde    |
-      | datum               | 19861004  |
-      | plaats.code         | 0503      |
-      | plaats.omschrijving | Delft     |
-      | land.code           | 6030      |
-      | land.omschrijving   | Nederland |
-      En heeft de partner met burgerservicenummer '555550002' de volgende 'soortVerbintenis' gegevens
-      | naam         | waarde                     |
-      | code         | P                          |
-      | omschrijving | geregistreerd partnerschap |
-      En heeft de partner met burgerservicenummer '555550002' de volgende 'aangaanHuwelijkPartnerschap' gegevens
-      | naam                | waarde          |
-      | datum               | 20210720        |
-      | plaats.code         |                 |
-      | plaats.omschrijving | Dunvegan        |
-      | land.code           | 6039            |
-      | land.omschrijving   | Grootbrittannië |
-      En heeft de partner met burgerservicenummer '555550002' de volgende 'ontbindingHuwelijkPartnerschap' gegevens
+      | burgerservicenummer | 555550002 |
+      | geslachtsaanduiding | V         |
+      | soortVerbintenis    | P         |
+      En heeft de partner met burgerservicenummer '555550005' de volgende 'naam' gegevens
+      | naam                    | waarde  |
+      | voornamen               | Marieke |
+      | adellijkeTitelPredicaat |         |
+      | voorvoegsel             |         |
+      | geslachtsnaam           | Groenen |
+      En heeft de partner met burgerservicenummer '555550005' de volgende 'geboorte' gegevens
+      | naam   | waarde   |
+      | datum  | 19861004 |
+      | plaats | 0503     |
+      | land   | 6030     |
+      En heeft de partner met burgerservicenummer '555550005' de volgende 'aangaanHuwelijkPartnerschap' gegevens
+      | naam   | waarde   |
+      | datum  | 20210720 |
+      | plaats | Dunvegan |
+      | land   | 6039     |
+      En de partner met burgerservicenummer '555550005' heeft GEEN ontbindingHuwelijkPartnerschap gegevens
+
+    @gba
+    Scenario: alleen ontbonden partners
+      Gegeven de persoon met burgerservicenummer 555550006 heeft de volgende huwelijken/partnerschappen in de registratie
+      | Stapel | Categorie | Burgerservicenummer (01.20) | Voornamen (02.10) | adellijke titel of predicaat (02.20) | voorvoegsel (02.30) | Geslachtsnaam (02.40) | Geboortedatum (03.10) | Geboorteplaats (03.20) | Geboorteland | Geslachtsaanduiding (04.10) | Datum aangaan (06.10) | Plaats aangaan (06.20) | Land aangaan (06.30) | Datum ontbinding (07.10) | soort verbintenis (15.10) |
+      | 1      | 5         | 555550007                   | Marieke           |                                      |                     | Groenen               | 19861004              | 0503                   | 6030         | V                           |                       |                        |                      | 20220301                 |                           |
+      | 1      | 55        | 555550007                   | Marieke           |                                      |                     | Groenen               | 19861004              | 0503                   | 6030         | V                           | 20210720              | Dunvegan               | 6039                 |                          | P                         |
+      | 2      | 5         | 555550008                   | Jan               | JH                                   | van                 | Aedel                 | 19820526              | 0599                   | 6030         | M                           |                       |                        |                      | 20191210                 |                           |
+      | 2      | 55        | 555550008                   | Jan               | JH                                   | van                 | Aedel                 | 19820526              | 0599                   | 6030         | M                           | 20171103              | 0513                   | 6030                 |                          | H                         |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 555550006                       |
+      | fields              | partners                        |
+      Dan heeft de persoon met burgerservicenummer '555550006' een partner met de volgende gegevens
       | naam                | waarde    |
-      | datum               | 20220301  |
+      | burgerservicenummer | 555550007 |
+      | geslachtsaanduiding | M         |
+      | soortVerbintenis    | H         |
+      En heeft de partner met burgerservicenummer '555550007' de volgende 'naam' gegevens
+      | naam                    | waarde |
+      | voornamen               | Jan    |
+      | adellijkeTitelPredicaat | JH     |
+      | voorvoegsel             | van    |
+      | geslachtsnaam           | Aedel  |
+      En heeft de partner met burgerservicenummer '555550007' de volgende 'geboorte' gegevens
+      | naam   | waarde   |
+      | datum  | 19820526 |
+      | plaats | 0599     |
+      | land   | 6030     |
+      En heeft de partner met burgerservicenummer '555550007' de volgende 'aangaanHuwelijkPartnerschap' gegevens
+      | naam   | waarde   |
+      | datum  | 20171103 |
+      | plaats | 0513     |
+      | land   | 6030     |
+      En heeft de partner met burgerservicenummer '555550007' de volgende 'ontbindingHuwelijkPartnerschap' gegevens
+      | naam                | waarde    |
+      | datum               | 20191210  |
+      En heeft de persoon met burgerservicenummer '555550006' een partner met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 555550008 |
+      | geslachtsaanduiding | V         |
+      | soortVerbintenis    | P         |
+      En heeft de partner met burgerservicenummer '555550008' de volgende 'naam' gegevens
+      | naam                    | waarde  |
+      | voornamen               | Marieke |
+      | adellijkeTitelPredicaat |         |
+      | voorvoegsel             |         |
+      | geslachtsnaam           | Groenen |
+      En heeft de partner met burgerservicenummer '555550008' de volgende 'geboorte' gegevens
+      | naam   | waarde   |
+      | datum  | 19861004 |
+      | plaats | 0503     |
+      | land   | 6030     |
+      En heeft de partner met burgerservicenummer '555550008' de volgende 'aangaanHuwelijkPartnerschap' gegevens
+      | naam   | waarde   |
+      | datum  | 20210720 |
+      | plaats | Dunvegan |
+      | land   | 6039     |
+      En heeft de partner met burgerservicenummer '555550008' de volgende 'ontbindingHuwelijkPartnerschap' gegevens
+      | naam  | waarde   |
+      | datum | 20220301 |
 
   
   @gba
@@ -242,7 +183,11 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
         | 5         |                   |                       |                           |                          |                          |                 | 0518                          | 5XC1111            | 20050818                        | 20050818                   |
         | 55        | Youssef Saïd      | 20050811              | P                         |                          |                          | O               | 0518                          | 5XC1111            | 20050811                        | 20050812                   |
       En in categorie 5 zijn alleen groepen of 81 of 82, 85 en 86 opgenomen en geen groepen 01, 02, 03, 04, 06, 07 en 15
-      Als de persoon met burgerservicenummer 999993008 wordt geraadpleegd met fields=partners
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999993008                       |
+      | fields              | partners                        |
       Dan bevat het antwoord GEEN partners
 
     @gba
@@ -283,12 +228,9 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | burgerservicenummer | 555550001                                            |
       | fields              | partners.burgerservicenummer,partners.naam.voornamen |
       Dan heeft de persoon met burgerservicenummer '555550001' alleen 'partners' met de volgende gegevens
-      | burgerservicenummer |
-      | 555550002           |
-      En heeft de partner met burgerservicenummer '555550002' de volgende geslachtsaanduiding gegevens
-      | naam         | waarde |
-      | code         | M      |
-      | omschrijving | man    |
+      | naam                | waarde    |
+      | burgerservicenummer | 555550002 |
+      | geslachtsaanduiding | M         |
       En heeft de partner met burgerservicenummer '555550002' de volgende 'naam' gegevens
       | naam      | waarde |
       | voornamen | Karel  |
@@ -304,9 +246,9 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | naam                | waarde    |
       | burgerservicenummer | 999990184 |
       En de persoon heeft een partner met de volgende gegevens
-      | naam                  | waarde    |
-      | burgerservicenummer   | 555550001 |
-      | soortVerbintenis.code | H         |
+      | naam                | waarde    |
+      | burgerservicenummer | 555550001 |
+      | soortVerbintenis    | H         |
       En de partner met burgerservicenummer '555550001' heeft de volgende naam gegevens
       | naam      | waarde |
       | voornamen | Merel  |
@@ -329,9 +271,9 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | naam                | waarde    |
       | burgerservicenummer | 999993380 |
       En de persoon heeft een partner met de volgende gegevens
-      | naam                  | waarde    |
-      | burgerservicenummer   | 555550002 |
-      | soortVerbintenis.code | p         |
+      | naam                | waarde    |
+      | burgerservicenummer | 555550002 |
+      | soortVerbintenis    | p         |
       En de partner met burgerservicenummer '555550002' heeft de volgende naam gegevens
       | naam      | waarde   |
       | voornamen | Reindert |
@@ -421,22 +363,9 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 999993008 |
-      En de persoon heeft een partner met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer |           |
-      En de partner heeft GEEN 'geslachtsaanduiding' gegevens
-      En de partner heeft alleen de volgende 'naam' gegevens
+      En de persoon heeft een partner met de volgende 'naam' gegevens
       | naam                                 | waarde    |
       | geslachtsnaam                        | .         |
-      En de partner heeft alleen de volgende 'geboorte' gegevens
-      | naam                | waarde    |
-      | datum               | 00000000  |
-      En de partner heeft de volgende 'soortVerbintenis' gegevens
-      | naam         | waarde   |
-      | code         | .        |
-      En de partner heeft alleen de volgende 'aangaanHuwelijkPartnerschap' gegevens
-      | naam                | waarde    |
-      | datum               | 19560327  |      
       En de partner met burgerservicenummer '555550005' heeft GEEN ontbindingHuwelijkPartnerschap gegevens
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
@@ -454,29 +383,16 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 999993008 |
-      En de persoon heeft een partner met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550005 |
-      En de partner heeft GEEN 'geslachtsaanduiding' gegevens
       En de partner heeft alleen de volgende 'naam' gegevens
       | naam                                 | waarde           |
       | voornamen                            |                  |
       | geslachtsnaam                        | Ali bin Mohammed |
-      En de partner heeft alleen de volgende 'geboorte' gegevens
-      | naam  | waarde   |
-      | datum | 19750730 |
-      En de partner heeft de volgende 'soortVerbintenis' gegevens
-      | naam | waarde |
-      | code | H      |
-      En de partner heeft alleen de volgende 'aangaanHuwelijkPartnerschap' gegevens
-      | naam  | waarde   |
-      | datum | 20190829 |
       En de partner met burgerservicenummer '555550005' heeft GEEN ontbindingHuwelijkPartnerschap gegevens
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                          |
-      | type                | RaadpleegMetBurgerservicenummer                 |
-      | burgerservicenummer | 999993008                                       |
-      | fields              | partners.voornamen,partners.geslachtsaanduiding |
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999993008                       |
+      | fields              | partners.voornamen              |
       Dan heeft de persoon met burgerservicenummer '999993008' exact 1 'partners'
       En heeft de partner alleen de volgende gegevens
       | naam | waarde  |
