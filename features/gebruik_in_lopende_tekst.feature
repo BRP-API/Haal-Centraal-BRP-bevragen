@@ -1,9 +1,10 @@
 # language: nl
 
+@proxy
 Functionaliteit: Als gemeente wil ik de juiste en consistent naamgebruik in een lopende tekst
   De gebruikInLopendeTekst bij een persoon wordt gevuld door de provider om op deze wijze op eenduidige wijze een persoon te kunnen benoemen.
 
-  De gebruikInLopendeTekst kan worden gebruikt in bijvoorbeeld een zin in een brief als "In uw brief van 12 mei jongstleden, geeft u het overlijden van uw vader, de heer in het Veld, aan.", waarbij "de heer in het Veld" gehaald is uit attribuut gebruikInLopendeTekst.
+  De gebruikInLopendeTekst kan worden gebruikt in bijvoorbeeld een zin in een brief als "In uw brief van 12 mei jongstleden, geeft u het overlijden van uw vader, de heer In het Veld, aan.", waarbij "de heer in het Veld" gehaald is uit attribuut gebruikInLopendeTekst.
 
   # In onderstaande tabellen betekenen de afkortingen:
   # GA = "mevrouw", "de heer" of de voorletters
@@ -30,6 +31,7 @@ Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predicaat
     | N                     | GA VV GN-VP GP        |
   - De eerste naamcomponent direct na "mevrouw" of "de heer" begint met een hoofdletter
   - Wanneer een naamcomponent geen of een lege waarde heeft, wordt de overbodige spatie niet opgenomen: niet starten met een spatie, niet eindigen met een spatie, geen dubbele spatie, geen spatie na streepje
+  - Aanduiding naamgebruik "E" (eigen naam) wordt gehanteerd voor een persoon die geen actuele en geen ontbonden huwelijken/partnerschappen heeft gehad
 
   Abstract Scenario: gebruikInLopendeTekst bij geslachtsaanduiding <voorbeeld>
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -58,7 +60,7 @@ Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predicaat
     | vrouw     | V        | mevrouw Groenen       |
     | onbekend  | O        | J.R. Groenen          |
 
-  Scenario: gebruikInLopendeTekst van een alleenstaande persoon met aanduidingNaamgebruik "E"
+  Abstract Scenario: gebruikInLopendeTekst van een alleenstaande persoon die nooit huwelijk of partnerschap heeft gehad met aanduidingNaamgebruik "<aanduidingNaamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                        | waarde    |
     | burgerservicenummer         | 999992934 |
@@ -78,6 +80,13 @@ Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predicaat
     Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
     | naam                  | waarde              |
     | gebruikinlopendetekst | mevrouw In het Veld |
+    
+    Voorbeelden:
+    | aanduidingNaamgebruik |
+    | E                     |
+    | P                     |
+    | V                     |
+    | N                     |
 
   Abstract Scenario: naamsamenstelling van een persoon met een partner bij aanduidingNaamgebruik "<naamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -192,7 +201,6 @@ Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predicaat wo
     | M                   | de heer                               |
     | V                   | mevrouw                               |
     | O                   | VL                                    |
-  - Een voorvoegsel wordt met kleine letters geschreven
   - Een adellijke titel of predicaat wordt met kleine letters geschreven
   - De eerste naamcomponent direct na "mevrouw" of "de heer" begint met een hoofdletter
   - Wanneer een naamcomponent geen of een lege waarde heeft, wordt de overbodige spatie niet opgenomen: niet starten met een spatie, niet eindigen met een spatie, geen dubbele spatie, geen spatie na streepje
