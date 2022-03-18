@@ -26,7 +26,6 @@ Rule: De aanhef voor een persoon zonder adellijke titel of predicaat wordt samen
     | P                     | GA VP GP       |
     | V                     | GA VP GP-VV GN |
     | N                     | GA VV GN-VP GP |
-  - Het voorvoegsel van de eerste naam in de aanhef met een hoofdletter wordt geschreven
   - Een voorvoegsel direct na "Geachte mevrouw" of "Geachte heer" begint met een hoofdletter
   - Wanneer een naamcomponent geen of een lege waarde heeft, wordt de overbodige spatie niet opgenomen: niet starten met een spatie, niet eindigen met een spatie, geen dubbele spatie, geen spatie na streepje
   - Aanduiding naamgebruik "E" (eigen naam) wordt gehanteerd voor een persoon die geen actuele en geen ontbonden huwelijken/partnerschappen heeft gehad
@@ -58,7 +57,7 @@ Rule: De aanhef voor een persoon zonder adellijke titel of predicaat wordt samen
     | vrouw     | V        | Geachte mevrouw Groenen |
     | onbekend  | O        | Geachte J.R. Groenen    |
 
-  Abstract Scenario: naamsamenstelling van een alleenstaande persoon met aanduidingNaamgebruik "<aanduidingNaamgebruik>"
+  Abstract Scenario: naamsamenstelling van een alleenstaande persoon die nooit huwelijk of partnerschap heeft gehad met aanduidingNaamgebruik "<aanduidingNaamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                        | waarde    |
     | burgerservicenummer         | 999992934 |
