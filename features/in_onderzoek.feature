@@ -12,6 +12,132 @@ Functionaliteit: in onderzoek
 
   Ook wanneer een gegeven geen waarde heeft en daardoor niet in het antwoord opgenomen wordt kan het in onderzoek zijn. In dat geval wordt alleen in inOnderzoek een veld opgenomen met die naam en de waarde true.
 
+  @gba
+  Rule: wanneer een gegeven uit een categorie gevraagd is en er zit onderzoek op die categorie, dan wordt ook inOnderzoek geleverd
+    - het gaat om groep 83 in de categorie
+    - deze wordt geleverd wanneer in het antwoord ten minste één gegeven uit de categorie is gevraagd met fields
+    - deze wordt ook geleverd wanneer het gevraagde gegeven geen waarde heeft en daarom niet geleverd is in het antwoord
+
+    @gba
+    Abstract Scenario: vragen om <fields> bij <in onderzoek> in onderzoek
+      Gegeven de persoon met burgerservicenummer 555550001 heeft de volgende persoonsgegevens in de registratie
+      | categorie | burgerservicenummer (01.20) | voornamen (02.10) | voorvoegsel (02.30) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | datum einde onderzoek (83.30) |
+      | 1         | 555550001                   | Arnitta           |                     | 19231213              | <waarde>                        | 20120920                       |                               |
+      En de persoon met burgerservicenummer 555550001 heeft de volgende oudergegevens in de registratie
+      | Categorie | Voornamen (02.10) | Geslachtsaanduiding (04.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | datum einde onderzoek (83.30) |
+      | 2         | Noa               | V                           |                                 |                                |                               |
+      | 3         | Jan               | M                           |                                 |                                |                               |
+      En de persoon met burgerservicenummer 555550001 heeft de volgende partnergegevens in de registratie
+      | Categorie | Burgerservicenummer (01.20) | Voornamen | Geslachtsaanduiding (04.10) | Datum aangaan (06.10) | Datum ontbinding (07.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | datum einde onderzoek (83.30) |
+      | 5         | 555550002                   | Karel     | M                           | 20091102              |                          |                                 |                                |                               |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 555550001                       |
+      | fields              | ouders,partners,<fields>        |
+      Dan heeft de persoon de volgende 'inOnderzoek' gegevens
+      | naam                          | waarde   |
+      | aanduidingGegevensInOnderzoek | <waarde  |
+      | datumIngangOnderzoek          | 20120920 |
+      En heeft de persoon GEEN 'naam.inOnderzoek' gegevens
+      En heeft de persoon GEEN 'geboorte.inOnderzoek' gegevens
+      En heeft de persoon GEEN 'verblijfplaats' gegevens
+      En heeft de ouder met ouderAanduiding 'ouder1' GEEN 'inOnderzoek' gegevens
+      En heeft de ouder met ouderAanduiding 'ouder2' GEEN 'inOnderzoek' gegevens
+      En heeft de partner met burgerservicenummer '555550002' GEEN 'inOnderzoek' gegevens
+
+      Voorbeelden:
+      | in onderzoek           | waarde | fields      |
+      | hele categorie persoon | 010000 | naam        |
+      | groep naam             | 010200 | voorvoegsel |
+      | geboortedatum          | 010310 | naam        |
+
+    @gba
+    Scenario: persoon in onderzoek maar niet vragen om gegevens uit categorie persoon
+      Gegeven de persoon met burgerservicenummer 555550001 heeft de volgende persoonsgegevens in de registratie
+      | categorie | burgerservicenummer (01.20) | voornamen (02.10) | voorvoegsel (02.30) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | datum einde onderzoek (83.30) |
+      | 1         | 555550001                   | Arnitta           |                     | 19231213              | 010000                          | 20120920                       |                               |
+      En de persoon met burgerservicenummer 555550001 heeft de volgende oudergegevens in de registratie
+      | Categorie | Voornamen (02.10) | Geslachtsaanduiding (04.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | datum einde onderzoek (83.30) |
+      | 2         | Noa               | V                           |                                 |                                |                               |
+      | 3         | Jan               | M                           |                                 |                                |                               |
+      En de persoon met burgerservicenummer 555550001 heeft de volgende partnergegevens in de registratie
+      | Categorie | Burgerservicenummer (01.20) | Voornamen | Geslachtsaanduiding (04.10) | Datum aangaan (06.10) | Datum ontbinding (07.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | datum einde onderzoek (83.30) |
+      | 5         | 555550002                   | Karel     | M                           | 20091102              |                          |                                 |                                |                               |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 555550001                       |
+      | fields              | ouders,partners                 |
+      Dan heeft de persoon GEEN 'inOnderzoek' gegevens
+      En heeft de ouder met ouderAanduiding 'ouder1' GEEN 'inOnderzoek' gegevens
+      En heeft de ouder met ouderAanduiding 'ouder2' GEEN 'inOnderzoek' gegevens
+      En heeft de partner met burgerservicenummer '555550002' GEEN 'inOnderzoek' gegevens
+
+  @gba
+  Rule: in onderzoek wordt niet opgenomen wanneer het onderzoek beëindigd is
+    - Datum einde onderzoek (83.30) heeft een waarde
+
+    @gba
+    Scenario: onderzoek is beëindigd
+      Gegeven de persoon met burgerservicenummer 999994888 heeft de volgende persoonsgegevens in de registratie
+      | categorie | burgerservicenummer (01.20) | voornamen (02.10) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | datum einde onderzoek (83.30) |
+      | 1         | 999994888                   | Arnitta           | 19231213              | 010000                          | 20120920                       | 20120922                      |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                                            |
+      | type                | RaadpleegMetBurgerservicenummer                   |
+      | burgerservicenummer | 999994888                                         |
+      | fields              | burgerservicenummer,naam.voornamen,geboorte.datum |
+      Dan heeft de persoon met burgerservicenummer '555550001' GEEN 'inOnderzoek' gegevens
+      En heeft de persoon met burgerservicenummer '999994888' GEEN 'naam.inOnderzoek' gegevens
+      En heeft de persoon met burgerservicenummer '999994888' GEEN 'geboorte.inOnderzoek' gegevens
+
+
+  @proxy
+  Rule: in onderzoek wordt niet opgenomen wanneer het gegeven of de groep die onderzocht wordt niet wordt gevraagd
+    Dit is het geval wanneer gegevens in onderzoek zijn die:
+    - niet in de resource voorkomen
+    - niet gevraagd zijn met fields
+
+    @proxy
+    Scenario: persoon heeft EU-persoonsnummer van nationaliteit in onderzoek die niet voorkomt in de resource
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 555550001 |
+      En de nationaliteit heeft volgende 'inOnderzoek' gegevens
+      | naam                          | waarde   |
+      | aanduidingGegevensInOnderzoek | 047310   |
+      | datumIngangOnderzoek          | 20220307 |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                              |
+      | type                | RaadpleegMetBurgerservicenummer     |
+      | burgerservicenummer | 555550001                           |
+      | fields              | burgerservicenummer,nationaliteiten |
+      Dan heeft de persoon met burgerservicenummer '555550001' GEEN 'inOnderzoek' gegevens
+      En heeft de nationaliteit GEEN 'inOnderzoek' gegevens
+
+    @proxy
+    Abstract Scenario: persoon heeft <gegeven in onderzoek> in onderzoek dat niet is gevraagd met fields
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 555550001 |
+      En de persoon heeft volgende 'inOnderzoek' gegevens
+      | naam                          | waarde   |
+      | aanduidingGegevensInOnderzoek | <waarde> |
+      | datumIngangOnderzoek          | 20220307 |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 555550001                       |
+      | fields              | <fields>                        |
+      Dan heeft de persoon GEEN 'inOnderzoek' gegevens
+
+      Voorbeelden:
+      | waarde | gegeven in onderzoek   | fields                             |
+      | 010000 | hele categorie persoon | kinderen                           |
+      | 010200 | hele groep naam        | geslachtsaanduiding,geboorte.datum |
+      | 010210 | voornamen              | geboorte,naam.geslachtsnaam        |
+
   @proxy
   Rule: wanneer een element in de bron in onderzoek is, wordt het gegeven in het antwoord dat daaruit gevuld wordt ook in inOnderzoek opgenomen met de waarde true
 
@@ -416,66 +542,6 @@ Functionaliteit: in onderzoek
       | land                        | true       |
       | datumIngangGeldigheid       | true       |
       | datumIngangOnderzoek        | 2022-03-07 |
-
-  @gba
-  Rule: in onderzoek wordt niet opgenomen wanneer het onderzoek beëindigd is
-    - Datum einde onderzoek (83.30) heeft een waarde
-
-    @gba
-    Scenario: onderzoek is beëindigd
-      Gegeven de persoon met burgerservicenummer 999994888 heeft de volgende persoonsgegevens in de registratie
-      | categorie | burgerservicenummer (01.20) | voornamen (02.10) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | datum einde onderzoek (83.30) |
-      | 1         | 999994888                   | Arnitta           | 19231213              | 010000                          | 20120920                       | 20120922                      |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                            |
-      | type                | RaadpleegMetBurgerservicenummer                   |
-      | burgerservicenummer | 999994888                                         |
-      | fields              | burgerservicenummer,naam.voornamen,geboorte.datum |
-      Dan heeft de persoon met burgerservicenummer '999994888' GEEN 'inOnderzoek' gegevens
-      En heeft de persoon met burgerservicenummer '999994888' GEEN 'naam.inOnderzoek' gegevens
-      En heeft de persoon met burgerservicenummer '999994888' GEEN 'geboorte.inOnderzoek' gegevens
-
-  Rule: in onderzoek wordt niet opgenomen wanneer het gegeven of de groep die onderzocht wordt niet wordt gevraagd
-    Dit is het geval wanneer gegevens in onderzoek zijn die:
-    - niet in de resource voorkomen
-    - niet gevraagd zijn met fields
-
-    Scenario: persoon heeft EU-persoonsnummer van nationaliteit in onderzoek die niet voorkomt in de resource
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550001 |
-      En de nationaliteit heeft volgende 'inOnderzoek' gegevens
-      | naam                          | waarde   |
-      | aanduidingGegevensInOnderzoek | 047310   |
-      | datumIngangOnderzoek          | 20220307 |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                              |
-      | type                | RaadpleegMetBurgerservicenummer     |
-      | burgerservicenummer | 555550001                           |
-      | fields              | burgerservicenummer,nationaliteiten |
-      Dan heeft de persoon met burgerservicenummer '555550001' GEEN 'inOnderzoek' gegevens
-      En heeft de nationaliteit GEEN 'inOnderzoek' gegevens
-
-    Abstract Scenario: persoon heeft <gegeven in onderzoek> in onderzoek dat niet is gevraagd met fields
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550001 |
-      En de persoon heeft volgende 'inOnderzoek' gegevens
-      | naam                          | waarde   |
-      | aanduidingGegevensInOnderzoek | <waarde> |
-      | datumIngangOnderzoek          | 20220307 |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
-      | fields              | <fields>                        |
-      Dan heeft de persoon GEEN 'inOnderzoek' gegevens
-
-      Voorbeelden:
-      | waarde | gegeven in onderzoek   | fields                             |
-      | 010000 | hele categorie persoon | kinderen                           |
-      | 010200 | hele groep naam        | geslachtsaanduiding,geboorte.datum |
-      | 010210 | voornamen              | geboorte,naam.geslachtsnaam        |
 
   @proxy
   Rule: een afgeleid gegeven wordt in inOnderzoek opgenomen wanneer ten minste één van de gegevens waaruit het wordt afgeleid in onderzoek staat
