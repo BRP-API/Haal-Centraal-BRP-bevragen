@@ -83,9 +83,9 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | instance | /personen                                                                                                   |
       En heeft de response een invalidParams met de volgende gegevens
       | code     | name          | reason                                      |
-      | pattern  | fields        | Waarde voldoet niet aan patroon {pattern}.  |
+      | pattern  | fields        | Waarde voldoet niet aan patroon ^[a-zA-Z0-9.,_]+$  |
 
-    Scenario: Fields parameter met attribuutnaam die niet bestaat
+    Scenario: Fields parameter met propertynaam die niet bestaat
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 999994086 |
@@ -189,7 +189,7 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | burgerservicenummer | 999994086 |
       | geslachtsaanduiding | M         |
       En de persoon heeft de volgende 'naam' gegevens
-      | naam                      |
+      | naam                      | waarde          |
       | voornamen                 | Johannnes Geurt |
       | geslachtsnaam             | Janssen         |
       | aanduidingNaamgebruik     | E               |
@@ -215,7 +215,7 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | burgerservicenummer | 999994086 |
       | geslachtsaanduiding | M         |
       En de persoon heeft de volgende 'naam' gegevens
-      | naam                      |
+      | naam                      | waarde          |
       | voornamen                 | Johannnes Geurt |
       | geslachtsnaam             | Janssen         |
       | aanduidingNaamgebruik     | E               |
@@ -272,7 +272,7 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | burgerservicenummer | 999994086 |
       | geslachtsaanduiding | M         |
       En de persoon heeft de volgende naam gegevens
-      | naam                      |
+      | naam                      | waarde          |
       | voornamen                 | Johannnes Geurt |
       | geslachtsnaam             | Janssen         |
       | aanduidingNaamgebruik     | E               |
@@ -320,7 +320,7 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       | burgerservicenummer | 999992934 |
       | geslachtsaanduiding | M         |
       En de persoon heeft de volgende naam gegevens
-      | naam                      |
+      | naam                      | waarde   |
       | voornamen                 | Franklin |
       | geslachtsnaam             | Groenen  |
       | aanduidingNaamgebruik     | E               |
@@ -525,7 +525,7 @@ Functionaliteit: Aanpasbare representatie met de fields parameter
       En de waardetabel 'Gemeenten' heeft de volgende waarden
       | code | omschrijving  |
       | 0518 | 's-Gravenhage |
-      | 0344 | Utrecht
+      | 0344 | Utrecht       |
       En de waardetabel 'Landen' heeft de volgende waarden
       | code | omschrijving |
       | 6030 | Nederland    |
