@@ -245,3 +245,26 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar v
       | volledigeNaam,adresregel1,woonplaats | naam,adresregel1,straat,locatiebeschrijving,huisnummer,huisletter,huisnummertoevoeging,aanduidingBijHuisnummer,verblijfplaats.land |
       | postcode,huisnummer,huisletter       | postcode,huisnummer,huisletter,straat,locatiebeschrijving,verblijfplaats.land                                                      |
       | voorletters,leeftijd,woonplaats      | naam.voornamen,geboorte.datum,woonplaats,gemeenteVanInschrijving,straat,huisnummer,locatiebeschrijving,verblijfplaats.land         |
+
+  Rule: wanneer een gegeven van nationaliteiten wordt gevraagd, moeten ook nationaliteit en aanduidingBijzonderNederlanderschap worden gevraagd
+
+    Abstract Scenario: vragen om nationaliteitgegeven <gevraagd aan proxy>
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999992934                       |
+      | fields              | <gevraagd aan proxy>            |
+      Dan zoekt de proxy de persoon bij RvIG met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999992934                       |
+      | fields              | <vragen aan RvIG>               |
+
+      Voorbeelden:
+      | gevraagd aan proxy                                | vragen aan RvIG                                                                                     |
+      | nationaliteit                                     | nationaliteit,aanduidingBijzonderNederlanderschap                                                   |
+      | nationaliteiten.redenOpname                       | nationaliteiten.redenOpname,nationaliteit,aanduidingBijzonderNederlanderschap                       |
+      | redenOpname                                       | redenOpname,nationaliteit,aanduidingBijzonderNederlanderschap                                       |
+      | nationaliteiten.datumIngangGeldigheid             | nationaliteiten.datumIngangGeldigheid,nationaliteit,aanduidingBijzonderNederlanderschap             |
+      | redenOpname,nationaliteiten.datumIngangGeldigheid | redenOpname,nationaliteiten.datumIngangGeldigheid,nationaliteit,aanduidingBijzonderNederlanderschap |
+      
