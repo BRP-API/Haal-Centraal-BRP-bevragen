@@ -1,3 +1,12 @@
+
+
+
+!!!!!!!!!     Deze feauture is OBSOLETE    !!!!!!!!!!
+
+Deze feature is vervangen door de fields.feature en zal binnekort uit de repository worden verwijderd
+
+
+
 # language: nl
 
 # Nederlandse API Strategie:
