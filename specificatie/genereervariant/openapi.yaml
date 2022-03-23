@@ -1563,8 +1563,6 @@ components:
         properties:
           burgerservicenummer:
             $ref: '#/components/schemas/Burgerservicenummer'
-          leeftijd:
-            $ref: '#/components/schemas/Leeftijd'
           inOnderzoek:
             $ref: '#/components/schemas/KindInOnderzoek'
           naam:
@@ -1579,8 +1577,6 @@ components:
       - type: object
         properties:
           burgerservicenummer:
-            type: boolean
-          leeftijd:
             type: boolean
     OnbekendKind:
       allOf:
