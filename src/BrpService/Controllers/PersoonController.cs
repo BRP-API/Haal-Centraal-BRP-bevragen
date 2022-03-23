@@ -12,16 +12,21 @@ namespace HaalCentraal.BrpService.Controllers
         private readonly ILogger<PersoonController> _logger;
         private readonly IMapper _mapper;
         private readonly PersoonRepository _repository;
+        private readonly IWebHostEnvironment _environment;
 
-        public PersoonController(ILogger<PersoonController> logger, IMapper mapper, PersoonRepository repository)
+        public PersoonController(ILogger<PersoonController> logger, IMapper mapper, PersoonRepository repository, IWebHostEnvironment environment)
         {
             _logger = logger;
             _mapper = mapper;
             _repository = repository;
+            _environment = environment;
         }
 
         public override async Task<ActionResult<PersonenQueryResponse>> GetPersonen([FromBody] PersonenQuery body)
         {
+            System.IO.File.WriteAllText(Path.Combine(_environment.ContentRootPath, "Data", "requestBody.json"),
+                                        JsonConvert.SerializeObject(body));
+
             return body switch
             {
                 RaadpleegMetBurgerservicenummer q => await Handle(q),

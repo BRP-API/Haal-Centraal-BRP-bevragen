@@ -3,6 +3,9 @@ using Gba = HaalCentraal.BrpProxy.Generated.Gba;
 using Newtonsoft.Json;
 using System.IO.Compression;
 using AutoMapper;
+using System.Linq;
+using BrpProxy.Validators;
+using FluentValidation.Results;
 
 namespace BrpProxy.Middlewares
 {
@@ -21,39 +24,167 @@ namespace BrpProxy.Middlewares
 
         public async Task Invoke(HttpContext context)
         {
+            var orgBodyStream = context.Response.Body;
             var requestBody = await context.Request.ReadBodyAsync();
             _logger.LogDebug("original requestBody: {requestBody}", requestBody);
-            var modifiedRequestBody = requestBody.Replace("\"fields\": \"\"", "\"fields\": \"aanschrijfwijze\"");
-            using var requestBodyStream = modifiedRequestBody.ToMemoryStream();
-            context.Request.Body = requestBodyStream;
 
-            var orgBodyStream = context.Response.Body;
+            var personenQuery = JsonConvert.DeserializeObject<PersonenQuery>(requestBody);
+            var result = personenQuery.Validate(context);
+            if (!result.IsValid)
+            {
+                using var bodyStream = JsonConvert.SerializeObject(result.Foutbericht).ToMemoryStream();
 
-            using var newBodyStream = new MemoryStream();
-            context.Response.Body = newBodyStream;
+                context.Response.StatusCode = StatusCodes.Status400BadRequest;
+                context.Response.ContentLength = bodyStream.Length;
+                await bodyStream.CopyToAsync(orgBodyStream);
+            }
+            else
+            {
+                personenQuery!.Fields = personenQuery.Fields!.Split(',').MapFields();
+                var modifiedRequestBody = JsonConvert.SerializeObject(personenQuery);
+                using var requestBodyStream = modifiedRequestBody.ToMemoryStream();
+                context.Request.Body = requestBodyStream;
 
-            await _next(context);
+                using var newBodyStream = new MemoryStream();
+                context.Response.Body = newBodyStream;
 
-            var body = await context.Response.ReadBodyAsync();
+                await _next(context);
 
-            _logger.LogDebug("original responseBody: {body}", body);
+                var body = await context.Response.ReadBodyAsync();
 
-            var modifiedBody = context.Response.StatusCode == StatusCodes.Status200OK
-                ? body.Transform(_mapper)
-                : body;
+                _logger.LogDebug("original responseBody: {body}", body);
 
-            _logger.LogDebug("transformed responseBody: {modifiedBody}", modifiedBody);
+                var modifiedBody = context.Response.StatusCode == StatusCodes.Status200OK
+                    ? body.Transform(_mapper, result.Fields!.AddExtraFields(_logger))
+                    : body;
 
-            using var bodyStream = modifiedBody.ToMemoryStream();
+                _logger.LogDebug("transformed responseBody: {modifiedBody}", modifiedBody);
 
-            context.Response.ContentLength = bodyStream.Length;
-            await bodyStream.CopyToAsync(orgBodyStream);
+                using var bodyStream = modifiedBody.ToMemoryStream();
+
+                context.Response.ContentLength = bodyStream.Length;
+                await bodyStream.CopyToAsync(orgBodyStream);
+            }
         }
+    }
+
+    public class ValidatePersonenQueryResult
+    {
+        public static ValidatePersonenQueryResult CreateFrom(ValidationResult result, string? fields, HttpContext context)
+        {
+            if (result.IsValid)
+            {
+                return new ValidatePersonenQueryResult(fields!.Split(','));
+            }
+
+            var invalidParams = from error in result.Errors
+                                select new InvalidParams
+                                {
+                                    Name = "fields",
+                                    Code = error.ErrorMessage.Split("||")[0],
+                                    Reason = error.ErrorMessage.Split("||")[1]
+                                };
+            var titel = invalidParams.Any(x => x.Code == "required")
+                ? "Minimale combinatie van parameters moet worden opgegeven."
+                : "Een of meerdere parameters zijn niet correct.";
+            var code = invalidParams.Any(x => x.Code == "required")
+                ? "paramsCombination"
+                : "paramsValidation";
+
+            return new ValidatePersonenQueryResult(new BadRequestFoutbericht
+            {
+                Instance = new Uri(context.Request.Path, UriKind.Relative),
+                Status = StatusCodes.Status400BadRequest,
+                Title = titel,
+                Type = new Uri("https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest"),
+                Code = code,
+                Detail = $"De foutieve parameter(s) zijn: {string.Join(", ", invalidParams.Select(x => x.Name))}.",
+                InvalidParams = new List<InvalidParams>(invalidParams)
+            });
+        }
+
+        private ValidatePersonenQueryResult(string[] fields)
+        {
+            IsValid = true;
+            Fields = fields;
+        }
+
+        private ValidatePersonenQueryResult(BadRequestFoutbericht foutbericht)
+        {
+            IsValid = false;
+            Foutbericht = foutbericht;
+        }
+
+        public bool IsValid { get; }
+        public ICollection<string>? Fields { get; }
+        public BadRequestFoutbericht? Foutbericht { get; }
     }
 
     public static class BrpHelpers
     {
-        public static string Transform(this string payload, IMapper mapper)
+        private static readonly Dictionary<string, string[]> fieldsMapping = new()
+        {
+            { "naam", new[] { "naam", "geslachtsaanduiding", "partners.naam" } },
+            { "naam.voorletters", new[] { "naam.voornamen" } },
+            { "volledigeNaam", new[] { "naam" } },
+            { "naam.volledigeNaam", new[] { "naam" } },
+            { "aanhef", new[] { "naam", "geslachtsaanduiding", "partners.naam" } },
+            { "aanschrijfwijze", new[] { "naam", "geslachtsaanduiding", "partners.naam" } },
+            { "aanschrijfwijze.naam", new[] { "naam", "geslachtsaanduiding", "partners.naam" } },
+            { "aanschrijfwijze.aanspreekvorm", new[] { "naam.adellijkeTitelPredicaat", "aanduidingNaamgebruik", "geslachtsaanduiding" } },
+            { "gebruikInLopendeTekst", new[] { "naam", "geslachtsaanduiding", "partners.naam" } },
+            { "leeftijd", new[] { "geboorte.datum" } },
+            { "ouders.geslachtsaanduiding", new[] { "ouders.geslachtsaanduiding,ouders.naam.geslachtsnaam" } },
+            { "ouders.naam.voorletters", new[] { "ouders.naam.voornamen" } },
+            { "nationaliteiten.nationaliteit", new[] { "nationaliteit" } },
+            { "nationaliteiten.type", new[] { "nationaliteit", "aanduidingBijzonderNederlanderschap" } },
+            { "aangaanHuwelijkPartnerschap", new[] { "aangaanHuwelijkPartnerschap", "partners.naam.geslachtsnaam" } },
+            { "partners.aangaanHuwelijkPartnerschap", new[] { "partners.aangaanHuwelijkPartnerschap", "partners.naam.geslachtsnaam" } },
+            { "partners.naam.voorletters", new[] { "partners.naam.voornamen" } },
+            { "kinderen.naam.voorletters", new[] { "kinderen.naam.voornamen" } },
+            { "indicatieOverleden", new[] { "overlijden.datum" } },
+            { "overlijden.indicatieOverleden", new[] { "overlijden.datum" } },
+            { "verblijfplaats.datumVan", new[] { "datumAanvangAdreshouding", "datumAanvangAdresBuitenland" } },
+            { "korteNaam", new[] { "straat" } },
+            { "straat", new[] { "straat", "naamOpenbareRuimte" } },
+            { "woonplaats", new[] { "woonplaats", "gemeenteVanInschrijving" } },
+            { "adresregel1", new[] { "adresregel1", "straat", "locatiebeschrijving", "huisnummer", "huisletter", "huisnummertoevoeging", "aanduidingBijHuisnummer" } },
+            { "adresregel2", new[] { "adresregel2", "postcode", "woonplaats", "gemeenteVanInschrijving" } },
+            { "vanuitVerblijfplaatsOnbekend", new[] { "landVanwaarIngeschreven" } },
+            { "indicatieVestigingVanuitBuitenland", new[] { "datumVestigingInNederland" } }
+        };
+
+        public static ValidatePersonenQueryResult Validate(this PersonenQuery? personenQuery, HttpContext context)
+        {
+            var result = personenQuery switch
+            {
+                RaadpleegMetBurgerservicenummer query => new RaadpleegMetBurgerservicenummerQueryValidator().Validate(query),
+                ZoekMetGeslachtsnaamEnGeboortedatum query => new ZoekMetGeslachtsnaamEnGeboortedatumQueryValidator().Validate(query),
+                ZoekMetPostcodeEnHuisnummer query => new ZoekMetPostcodeEnHuisnummerQueryValidator().Validate(query),
+            };
+
+            return ValidatePersonenQueryResult.CreateFrom(result, personenQuery.Fields, context);
+        }
+
+        public static string MapFields(this string[] fields)
+        {
+            List<string> retval = new();
+            foreach (var field in fields)
+            {
+                if(fieldsMapping.ContainsKey(field))
+                {
+                    retval.AddRange(fieldsMapping[field]);
+                }
+                else
+                {
+                    retval.Add(field);
+                }
+            }
+
+            return string.Join(',', retval.Distinct());
+        }
+
+        public static string Transform(this string payload, IMapper mapper, ICollection<string> fields)
         {
             PersonenQueryResponse retval = null;
             var response = JsonConvert.DeserializeObject<Gba.PersonenQueryResponse>(payload);
@@ -61,7 +192,9 @@ namespace BrpProxy.Middlewares
             switch (response)
             {
                 case Gba.RaadpleegMetBurgerservicenummerResponse p:
-                    retval = mapper.Map<RaadpleegMetBurgerservicenummerResponse>(p);
+                    var result = mapper.Map<RaadpleegMetBurgerservicenummerResponse>(p);
+                    result.Personen = result.Personen.FilterList(fields);
+                    retval = result;
                     break;
                 case Gba.ZoekMetGeslachtsnaamEnGeboortedatumResponse pb:
                     retval = mapper.Map<ZoekMetGeslachtsnaamEnGeboortedatumResponse>(pb);
@@ -79,6 +212,18 @@ namespace BrpProxy.Middlewares
                 NullValueHandling = NullValueHandling.Ignore,
                 DefaultValueHandling = DefaultValueHandling.Ignore
             });
+        }
+
+        public static ICollection<string> AddExtraFields(this ICollection<string> fields, ILogger<OverwriteResponseBodyMiddleware> _logger)
+        {
+            var retval = new List<string>(fields);
+
+            retval.Add("geheimhoudingPersoonsgegevens");
+            retval.Add("opschortingBijhouding.reden");
+
+            _logger.LogDebug("fields: {@fields}", retval);
+
+            return retval;
         }
     }
 

@@ -5,12 +5,11 @@ using HaalCentraal.BrpProxy.Generated.Gba;
 
 namespace BrpProxy.Profiles;
 
-public class OverlijdenProfile : Profile
+public class OpschortingBijhoudingProfile : Profile
 {
-    public OverlijdenProfile()
+    public OpschortingBijhoudingProfile()
     {
-        CreateMap<GbaOverlijdenBasis, OverlijdenBasis>();
-        CreateMap<GbaOverlijden, Overlijden>()
+        CreateMap<GbaOpschortingBijhouding, OpschortingBijhouding>()
             .ForMember(dest => dest.Datum, opt => opt.MapFrom(src => src.Datum.Map()));
     }
 }

@@ -49,5 +49,10 @@ namespace BrpProxy.Mappers
 
             return retval;
         }
+
+        public static bool Geheimhouding(this GbaPersoon persoon)
+        {
+            return persoon.GeheimhoudingPersoonsgegevens > 0;
+        }
     }
 }

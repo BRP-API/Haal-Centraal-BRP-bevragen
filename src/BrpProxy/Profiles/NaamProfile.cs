@@ -10,6 +10,7 @@ public class NaamProfile : Profile
     public NaamProfile()
     {
         CreateMap<GbaNaamBasis, NaamBasis>();
+        CreateMap<GbaNaamBasis, NaamGerelateerde>();
         CreateMap<GbaNaamPersoon, NaamPersoon>()
             .ForMember(dest => dest.Geslachtsnaam, opt =>
             {

@@ -27,13 +27,19 @@ namespace HaalCentraal.BrpService.Extensions
                                         ? error.ErrorMessage.Split("||")[1]
                                         : error.ErrorMessage
                                 }).ToList();
+            var titel = invalidParams.Any(x => x.Code == "required")
+                ? "Minimale combinatie van parameters moet worden opgegeven."
+                : "Een of meerdere parameters zijn niet correct.";
+            var code = invalidParams.Any(x => x.Code == "required")
+                ? "paramsCombination"
+                : "paramsValidation";
             var foutbericht = new Generated.BadRequestFoutbericht
             {
                 Instance = new Uri(context.HttpContext.Request.Path, UriKind.Relative),
                 Status = StatusCodes.Status400BadRequest,
-                Title = "Een of meerdere parameters zijn niet correct.",
+                Title = titel,
                 Type = new Uri("https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest"),
-                Code = "paramsValidation",
+                Code = code,
                 InvalidParams = invalidParams,
                 Detail = $"De foutieve parameter(s) zijn: {string.Join(", ", invalidParams.Select(x => x.Name))}."
             };

@@ -1,8 +1,9 @@
 const { World } = require('./world');
-const { Given, When, Then, setWorldConstructor } = require('@cucumber/cucumber');
+const { Given, When, Then, setWorldConstructor, Before, After } = require('@cucumber/cucumber');
 const axios = require('axios').default;
 const fs = require('fs');
-const should = require('chai').should();
+const deepEqualInAnyOrder = require('deep-equal-in-any-order');
+const should = require('chai').use(deepEqualInAnyOrder).should();
 
 setWorldConstructor(World);
 
@@ -10,6 +11,7 @@ const propertyNameMap = new Map([
     ['aanduiding bij huisnummer (11.50)', 'aanduidingBijHuisnummer.code'],
     ['aanduiding naamgebruik (61.10)', 'aanduidingNaamgebruik.code'],
     ['adellijke titel of predicaat (02.20)', 'adellijkeTitelPredicaat.code'],
+    ['datum (01.03.10)', 'datum'],
     ['datum aangaan (06.10)', 'datum'],
     ['geslachtsaanduiding (04.10)', 'geslachtsaanduiding.code'],
     ['geslachtsnaam (02.40)', 'geslachtsnaam'],
@@ -41,21 +43,16 @@ function mapRowToProperty(obj, row) {
 }
 
 function getProperty(obj, propertyName) {
-    if(propertyName.includes('.')) {
-        let propertyNames = propertyName.split('.');
-        let property = obj;
-
-        propertyNames.forEach(function(propName, index) {
-            if(index === propertyNames.length-1) {
-                return property !== undefined ? property[propName] : undefined; 
-            }
-            else {
-                property = property[propName];
-            }
-        });
+    if(!propertyName.includes('.')) {
+        return obj[propertyName]; 
     }
 
-    return obj[propertyName]; 
+    let propertyNames = propertyName.split('.');
+    let property = obj;
+    for(const propName of propertyNames) {
+        property = property[propName];
+    }
+    return property;
 }
 
 function setProperty(obj, propertyName, propertyValue) {
@@ -140,6 +137,20 @@ function setPersoonProperties(persoon, propertyGroupName, dataTable) {
     });
 }
 
+Before({tags: '@post-assert'}, async function() {
+    this.context.postAssert = true;
+});
+
+After({tags: '@post-assert'}, async function() {
+    const actual = this.context.response.data.personen !== undefined
+        ? stringifyValues(this.context.response.data.personen)
+        : stringifyValues(this.context.response.data);
+    
+    const expected = deleteEmptyProperties(this.context.expected);
+    
+    actual.should.deep.equalInAnyOrder(expected, `actual: ${JSON.stringify(actual, null, "\t")}`);
+});
+
 Given('het systeem heeft een persoon met de volgende gegevens', function (dataTable) {
     if(this.context.persoon.burgerservicenummer !== undefined) {
         this.context.zoekResponse.personen.push(this.context.persoon);
@@ -168,6 +179,14 @@ Given('het systeem heeft personen met de volgende gegevens', function (dataTable
             setProperty(persoon, propertyName, propertyValue);
         });
         personen.push(persoon);
+    });
+});
+
+Given('de persoon heeft de volgende gegevens', function (dataTable) {
+    let persoon = this.context.persoon;
+
+    dataTable.hashes().forEach(function(row) {
+        mapRowToProperty(persoon, row);
     });
 });
 
@@ -215,6 +234,21 @@ Given('de persoon heeft een partner met de volgende gegevens', function (dataTab
     });
 });
 
+Given('de persoon heeft een {string} met de volgende gegevens', function (gegevensgroep, dataTable) {
+    if(this.context.persoon[gegevensgroep] === undefined) {
+        this.context.persoon[gegevensgroep] = [];
+    }
+    if(this.context[gegevensgroep] !== undefined) {
+        this.context.persoon[gegevensgroep].push(this.context[gegevensgroep]);
+    }
+    this.context[gegevensgroep] = {};
+    let relatie = this.context[gegevensgroep];
+
+    dataTable.hashes().forEach(function(row) {
+        mapRowToProperty(relatie, row);
+    });
+});
+
 Given('de partner heeft de volgende {string} gegevens', function (gegevensgroep, dataTable) {
     setPersoonProperties(this.context.partner, gegevensgroep, dataTable);
 });
@@ -257,16 +291,16 @@ Given('de persoon heeft een ex-partner met de volgende gegevens', function (data
 Given('de ex-partner heeft de volgende {string} gegevens', function (gegevensgroep, dataTable) {
 });
 
-Given('de partner heeft de volgende aangaanHuwelijkPartnerschap gegevens', function (dataTable) {
-    if(this.context.partner.aangaanHuwelijkPartnerschap === undefined) {
-        this.context.partner.aangaanHuwelijkPartnerschap = {};
-    }
-    let aangaanHuwelijkPartnerschap = this.context.partner.aangaanHuwelijkPartnerschap;
+// Given('de partner heeft de volgende aangaanHuwelijkPartnerschap gegevens', function (dataTable) {
+//     if(this.context.partner.aangaanHuwelijkPartnerschap === undefined) {
+//         this.context.partner.aangaanHuwelijkPartnerschap = {};
+//     }
+//     let aangaanHuwelijkPartnerschap = this.context.partner.aangaanHuwelijkPartnerschap;
 
-    dataTable.hashes().forEach(function(row) {
-        mapRowToProperty(aangaanHuwelijkPartnerschap, row);
-    });
-});
+//     dataTable.hashes().forEach(function(row) {
+//         mapRowToProperty(aangaanHuwelijkPartnerschap, row);
+//     });
+// });
 
 Given('de partner heeft GEEN {string} gegevens', function (gegevensgroep) {
 });
@@ -308,7 +342,8 @@ When('personen wordt gezocht met de volgende parameters', async function (dataTa
         data: requestBody
     };
 
-    if(this.context.partner !== undefined) {
+    if(this.context.partner !== undefined &&
+        this.context.persoon.partners !== undefined) {
         this.context.persoon.partners.push(this.context.partner);
     }
     this.context.zoekResponse.personen.push(this.context.persoon);
@@ -350,6 +385,7 @@ When('personen wordt geraadpleegd met de volgende parameters', async function (d
 Then('bevat de response alleen personen met de volgende gegevens', function (dataTable) {
     const personen = this.context.response.data.personen;
 
+    console.log(personen);
     personen.length.should.equal(dataTable.hashes().length, `aantal personen in response ${personen.length} is ongelijk aan aantal expected ${dataTable.hashes().length}\npersonen: ${JSON.stringify(personen, null, "\t")}`);
 
     dataTable.hashes().forEach(function(value) {
@@ -431,7 +467,7 @@ Then('bevat de persoon met burgerservicenummer {string} de volgende geboorte geg
    });
 });
 
-Then('bevat de response de volgende gegevens', function (dataTable) {
+Then('heeft de response de volgende gegevens', function (dataTable) {
     const data = this.context.response.data;
 
     dataTable.hashes().forEach(function(value){
@@ -442,7 +478,7 @@ Then('bevat de response de volgende gegevens', function (dataTable) {
     });
 });
 
-Then('bevat de response een invalidParams met de volgende gegevens', function (dataTable) {  
+Then('heeft de response een invalidParams met de volgende gegevens', function (dataTable) {  
     const invalidParams = this.context.response.data.invalidParams;
     
     dataTable.hashes().forEach(function(expected) {
@@ -494,20 +530,6 @@ Then('bevat de response geen personen', function () {
     personen.length.should.equal(0);
 });
 
-Then('heeft de persoon met burgerservicenummer {string} de volgende {string} gegevens', function (burgerservicenummer, gegevensgroep, dataTable) {
-    const personen = this.context.response.data.personen;
-    const persoon = personen.find(function(p) {
-        return p.burgerservicenummer === burgerservicenummer;
-    });
-    const obj = persoon[gegevensgroep];
-    should.exist(obj, `geen gegevensgroep '${gegevensgroep}' gevonden.\npersoon: ${JSON.stringify(persoon, null, "\t")}`)
-
-    dataTable.hashes().forEach(function(row) {
-        const actual = String(getProperty(obj, row.naam));
-
-        actual.should.equal(row.waarde, `geen ${gegevensgroep} gegeven '${row.naam}' gevonden met waarde '${row.waarde}'\npersoon: ${JSON.stringify(persoon, null, "\t")}`);
-    });
-});
 
 Then('heeft de persoon met burgerservicenummer {string} de volgende {string} gegevens NIET', function (burgerservicenummer, gegevensgroep, dataTable) {
     const personen = this.context.response.data.personen;
@@ -597,3 +619,174 @@ Then('heeft de persoon met burgerservicenummer {string} GEEN {string}', function
 
 Then('heeft de partner met burgerservicenummer {string} de volgende {string} gegevens', function (burgerservicenummer, gegevensgroep, dataTable) {
 });
+
+Then('zoekt de proxy de persoon bij RvIG met de volgende parameters', function (dataTable) {
+    const path = `${this.context.dataPath}/requestBody.json`;
+    const requestBody = JSON.parse(fs.readFileSync(path));
+    const expected = dataTable.hashes().find(function(kvp) {
+        return kvp.naam === "fields"
+    }).waarde; 
+    const expectedFields = expected.split(',');
+    const actual = requestBody.fields.split(',');
+    actual.length.should.equal(expectedFields.length, `fields in RvIG aanroep '${requestBody.fields}' ongelijk aan ${expected}`);
+
+    actual.should.have.all.members(expectedFields);
+});
+
+Then('heeft de response alleen een persoon met een partner met de volgende gegevens', function (dataTable) {        
+    const personen = this.context.response.data.personen;
+    personen.length.should.equal(1);
+
+    const actual = personen[0];
+    console.log(JSON.stringify(actual));
+
+    let expected = {};
+    dataTable.hashes().forEach(function(row) {
+        mapRowToProperty(expected, row);
+    });
+    console.log(expected);
+});
+
+Then(/^heeft de response (\d*) (persoon|personen)$/, function (aantal, dummy) {
+    const personen = this.context.response.data.personen;
+
+    personen.length.should.equal(Number(aantal), `aantal personen in response is ongelijk aan ${aantal}\nPersonen:${JSON.stringify(personen, null, "\t")}`);
+});
+
+Then('heeft de persoon met burgerservicenummer {string} de volgende gegevens', function (burgerservicenummer, dataTable) {
+    let expected = {};
+    dataTable.hashes().forEach(function(row) {
+        mapRowToProperty(expected, row);
+    });
+
+    if(this.context.postAssert === true) {
+        if(this.context.expected === undefined) {
+            this.context.expected = [];
+        }
+        this.context.expected.push(expected); 
+    }
+    else {
+        const personen = this.context.response.data.personen;
+        const persoon = personen.find(function(p) {
+            return p.burgerservicenummer === burgerservicenummer;
+        });
+    
+        persoon.should.deep.equalInAnyOrder(expected);
+    }
+});
+
+Then('heeft de persoon met burgerservicenummer {string} de volgende {string} gegevens', function (burgerservicenummer, gegevensgroep, dataTable) {
+    let expected = {};
+    dataTable.hashes().forEach(function(row) {
+        mapRowToProperty(expected, row);
+    });
+
+    if(this.context.postAssert === true) {
+        const expectedPersonen = this.context.expected;
+        const expectedPersoon = expectedPersonen.find(function(p) {
+            return p.burgerservicenummer === burgerservicenummer;
+        });
+        expectedPersoon[gegevensgroep] = expected;
+    }
+    else {
+        const personen = this.context.response.data.personen;
+        const persoon = personen.find(function(p) {
+            return p.burgerservicenummer === burgerservicenummer;
+        });
+        should.exist(persoon, `geen persoon met '${burgerservicenummer}' gevonden.\npersonen: ${JSON.stringify(personen, null, "\t")}`);
+
+        const obj = persoon[gegevensgroep];
+        should.exist(obj, `geen gegevensgroep '${gegevensgroep}' gevonden.\npersoon: ${JSON.stringify(persoon, null, "\t")}`);
+        Object.keys(obj).length.should.equal(dataTable.hashes().length, `aantal ${gegevensgroep} properties (${Object.keys(obj).length}) is ongelijk aan aantal verwachte properties ${dataTable.hashes().length}\npersonen: ${JSON.stringify(personen, null, "\t")}`);
+
+        dataTable.hashes().forEach(function(row) {
+            const actual = String(getProperty(obj, row.naam));
+
+            actual.should.equal(row.waarde, `geen ${gegevensgroep} gegeven '${row.naam}' gevonden met waarde '${row.waarde}'\npersoon: ${JSON.stringify(persoon, null, "\t")}`);
+        });
+    }
+});
+
+Then('heeft de persoon met burgerservicenummer {string} een {string} met de volgende gegevens', function (burgerservicenummer, gegevensgroep, dataTable) {
+    let expected = {};
+    dataTable.hashes().forEach(function(row) {
+        mapRowToProperty(expected, row);
+    });
+
+    let groep;
+    if(gegevensgroep === 'partner') {
+        groep = "partners";
+    }
+
+    if(this.context.postAssert === true) {
+        const expectedPersonen = this.context.expected;
+        const expectedPersoon = expectedPersonen.find(function(p) {
+            return p.burgerservicenummer === burgerservicenummer;
+        });
+        if(expectedPersoon[groep] === undefined) {
+            expectedPersoon[groep] = [];
+        }
+        expectedPersoon[groep].push(expected);
+    }
+});
+
+Then('heeft de response een object met de volgende gegevens', function (dataTable) {
+    let expected = {};
+    dataTable.hashes().forEach(function(row) {
+        mapRowToProperty(expected, row);
+    });
+
+    if(this.context.postAssert === true) {
+        if(this.context.expected === undefined) {
+            this.context.expected = expected;
+        }
+    }
+    else {
+        const actual = this.context.response.data;
+
+        actual.should.deep.equalInAnyOrder(expected);
+    }
+});
+
+Then('heeft het object de volgende {string} gegevens', function (gegevensgroep, dataTable) {
+    let expected = dataTable.hashes();
+
+    if(this.context.postAssert === true) {
+        this.context.expected[gegevensgroep] = expected;
+    }
+    else {
+        const actual = this.context.response.data[gegevensgroep];
+
+        actual.should.deep.equalInAnyOrder(expected);
+    }
+});
+
+function deleteEmptyProperties(o) {
+    if(o === undefined) return o;
+  
+    Object.keys(o).forEach(k => {
+      if (typeof o[k] === 'object') {
+        return deleteEmptyProperties(o[k]);
+      }
+  
+      if(o[k] === '') {
+        delete o[k];      
+      }
+    });
+    
+    return o;
+}
+  
+function stringifyValues(o) {
+    if(o === undefined) return o;
+
+    Object.keys(o).forEach(k => {
+        if (typeof o[k] === 'object') {
+        return stringifyValues(o[k]);
+        }
+
+        o[k] = '' + o[k];
+    });
+
+    return o;
+}

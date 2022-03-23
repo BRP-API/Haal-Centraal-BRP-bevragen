@@ -20,12 +20,31 @@ namespace HaalCentraal.BrpProxy.Generated
         public bool ShouldSerializeReisdocumentnummers() => Reisdocumentnummers?.Count > 0;
         public bool ShouldSerializeKinderen() => Kinderen?.Count > 0;
         public bool ShouldSerializeOuders() => Ouders?.Count > 0;
-        public bool ShouldSerializePartners() => Partners?.Count > 0;
-        //public bool ShouldSerializeNaam() => !string.IsNullOrWhiteSpace(Naam.Geslachtsnaam);
+        public bool ShouldSerializePartners() {
+            if(Partners != null)
+            {
+                Partners = (from partner in Partners
+                           where partner.GetType() != typeof(OntbondenPartner)
+                           select partner).ToList();
+            }
+            return Partners?.Count > 0;
+        }
+        public bool ShouldSerializeNaam() => 
+            Naam != null &&
+            (Naam.AanduidingNaamgebruik != null ||
+            Naam.AdellijkeTitelPredicaat != null ||
+            !string.IsNullOrWhiteSpace(Naam.Geslachtsnaam) ||
+            !string.IsNullOrWhiteSpace(Naam.Voornamen) ||
+            !string.IsNullOrWhiteSpace(Naam.Voorvoegsel));
     }
 
     public partial class NaamBasis
     {
         public bool ShouldSerializeVolledigeNaam() => !string.IsNullOrWhiteSpace(VolledigeNaam);
+    }
+
+    [Newtonsoft.Json.JsonObject(memberSerialization: Newtonsoft.Json.MemberSerialization.OptOut)]
+    public class OntbondenPartner : AbstractPartner
+    {
     }
 }

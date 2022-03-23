@@ -9,5 +9,6 @@ public class VerblijfplaatsProfile : Profile
     public VerblijfplaatsProfile()
     {
         CreateMap<GbaVerblijfplaats, AbstractVerblijfplaats>().ConvertUsing<VerblijfplaatsConverter>();
+        CreateMap<GbaVerblijfplaatsBeperkt, AbstractVerblijfplaatsBeperkt>().ConvertUsing<VerblijfplaatsBeperktConverter>();
     }
 }
