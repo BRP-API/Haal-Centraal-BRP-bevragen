@@ -80,8 +80,6 @@ components:
               soort: "predicaat"
     GbaNaamBasis:
       type: object
-      required:
-        - geslachtsnaam
       properties:
         voornamen:
           $ref: '#/components/schemas/Voornamen'
