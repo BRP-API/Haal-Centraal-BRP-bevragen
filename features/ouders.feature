@@ -77,23 +77,21 @@ Rule: de actuele gegevens van ouders worden geleverd
     | burgerservicenummer | 555550001                                                               |
     | fields              | ouders.ouderAanduiding,ouders.naam.voornamen,ouders.geslachtsaanduiding |
     Dan heeft de ouder met ouderAanduiding 'ouder1' de volgende gegevens
-    | naam            | waarde |
-    | type            | Ouder  |
-    | ouderAanduiding | ouder1 |
-    En heeft de ouder met ouderAanduiding 'ouder1' volgende 'inonderzoek' gegevens
-    | naam      | waarde  |
-    | voornamen | Noa     |
+    | naam                | waarde |
+    | type                | Ouder  |
+    | ouderAanduiding     | ouder1 |
+    | geslachtsaanduiding | V      |
+    En heeft de ouder met ouderAanduiding 'ouder1' volgende 'naam' gegevens
+    | naam      | waarde |
+    | voornamen | Noa    |
     En heeft de ouder met ouderAanduiding 'ouder2' de volgende gegevens
-    | naam            | waarde |
-    | type            | Ouder  |
-    | ouderAanduiding | ouder2 |
+    | naam                | waarde |
+    | type                | Ouder  |
+    | ouderAanduiding     | ouder2 |
+    | geslachtsaanduiding | V      |
     En heeft de ouder met ouderAanduiding 'ouder2' de volgende 'naam' gegevens
-    | naam      | waarde    |
-    | voornamen | Johanna   |
-    En heeft de ouder met ouderAanduiding 'ouder2' de volgende 'geslachtsaanduiding' gegevens
-    | naam         | waarde |
-    | code         | V      |
-    | omschrijving | vrouw  |
+    | naam      | waarde  |
+    | voornamen | Johanna |
 
   @gba
   Scenario: adoptie
