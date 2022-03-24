@@ -1,9 +1,10 @@
 # language: nl
 
+@proxy
 Functionaliteit: Als gemeente wil ik de juiste en consistent naamgebruik in een lopende tekst
   De gebruikInLopendeTekst bij een persoon wordt gevuld door de provider om op deze wijze op eenduidige wijze een persoon te kunnen benoemen.
 
-  De gebruikInLopendeTekst kan worden gebruikt in bijvoorbeeld een zin in een brief als "In uw brief van 12 mei jongstleden, geeft u het overlijden van uw vader, de heer in het Veld, aan.", waarbij "de heer in het Veld" gehaald is uit attribuut gebruikInLopendeTekst.
+  De gebruikInLopendeTekst kan worden gebruikt in bijvoorbeeld een zin in een brief als "In uw brief van 12 mei jongstleden, geeft u het overlijden van uw vader, de heer In het Veld, aan.", waarbij "de heer In het Veld" gehaald is uit attribuut gebruikInLopendeTekst.
 
   # In onderstaande tabellen betekenen de afkortingen:
   # GA = "mevrouw", "de heer" of de voorletters
@@ -30,6 +31,7 @@ Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predicaat
     | N                     | GA VV GN-VP GP        |
   - De eerste naamcomponent direct na "mevrouw" of "de heer" begint met een hoofdletter
   - Wanneer een naamcomponent geen of een lege waarde heeft, wordt de overbodige spatie niet opgenomen: niet starten met een spatie, niet eindigen met een spatie, geen dubbele spatie, geen spatie na streepje
+  - Aanduiding naamgebruik "E" (eigen naam) wordt gehanteerd voor een persoon die geen actuele en geen ontbonden huwelijken/partnerschappen heeft gehad
 
   Abstract Scenario: gebruikInLopendeTekst bij geslachtsaanduiding <voorbeeld>
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -58,7 +60,7 @@ Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predicaat
     | vrouw     | V        | mevrouw Groenen       |
     | onbekend  | O        | J.R. Groenen          |
 
-  Scenario: gebruikInLopendeTekst van een alleenstaande persoon met aanduidingNaamgebruik "E"
+  Abstract Scenario: gebruikInLopendeTekst van een alleenstaande persoon die nooit huwelijk of partnerschap heeft gehad met aanduidingNaamgebruik "<aanduidingNaamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                        | waarde    |
     | burgerservicenummer         | 999992934 |
@@ -78,6 +80,13 @@ Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predicaat
     Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
     | naam                  | waarde              |
     | gebruikinlopendetekst | mevrouw In het Veld |
+    
+    Voorbeelden:
+    | aanduidingNaamgebruik |
+    | E                     |
+    | P                     |
+    | V                     |
+    | N                     |
 
   Abstract Scenario: naamsamenstelling van een persoon met een partner bij aanduidingNaamgebruik "<naamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -192,7 +201,6 @@ Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predicaat wo
     | M                   | de heer                               |
     | V                   | mevrouw                               |
     | O                   | VL                                    |
-  - Een voorvoegsel wordt met kleine letters geschreven
   - Een adellijke titel of predicaat wordt met kleine letters geschreven
   - De eerste naamcomponent direct na "mevrouw" of "de heer" begint met een hoofdletter
   - Wanneer een naamcomponent geen of een lege waarde heeft, wordt de overbodige spatie niet opgenomen: niet starten met een spatie, niet eindigen met een spatie, geen dubbele spatie, geen spatie na streepje
@@ -702,7 +710,9 @@ Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van
     | Jansen        | V           | WEL          |
     | Jansen        | N           | WEL          |
 
-Rule: Wanneer de geslachtsnaam van de partner leeg of onbekend is en de naam van de partner wordt gebruikt, wordt gebruikInLopendeTekst niet opgenomen
+Rule: Aanduiding naamgebruik "E" (eigen naam) wordt gehanteerd voor een persoon wanneer de geslachtsnaam van de partner leeg of onbekend is en de naam van de partner wordt gebruikt
+  - de geslachtsnaam van de partner is leeg of onbekend (.)
+  - aanduidingNaamgebruik is ongelijk aan "E" (eigen)
 
   Abstract Scenario: naam van de partner is onbekend bij aanduiding naamgebruik "<naamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -716,32 +726,31 @@ Rule: Wanneer de geslachtsnaam van de partner leeg of onbekend is en de naam van
     | voorvoegsel (02.30)                  | de            |
     | geslachtsnaam (02.40)                | Boer          |
     | aanduiding naamgebruik (61.10)       | <naamgebruik> |
-    En de persoon heeft een partner met de volgende gegevens
-    | naam                        | waarde |
-    | geslachtsaanduiding (04.10) | M      |
     En de partner heeft de volgende naam gegevens
-    | naam                                 | waarde          |
-    | adellijke titel of predicaat (02.20) |                 |
-    | voorvoegsel (02.30)                  |                 |
-    | geslachtsnaam (02.40)                | <geslachtsnaam> |
+    | naam                                 | waarde                  |
+    | adellijke titel of predicaat (02.20) |                         |
+    | voorvoegsel (02.30)                  |                         |
+    | geslachtsnaam (02.40)                | <partner geslachtsnaam> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
     | fields              | naam.gebruikInLopendeTekst      |
-    Dan heeft de persoon met burgerservicenummer '999992934' <leveren naam> 'naam' gegevens
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    | naam                  | waarde                  |
+    | gebruikinlopendetekst | <gebruikinlopendetekst> |
 
     Voorbeelden:
-    | geslachtsnaam | naamgebruik | leveren naam |
-    | .             | E           | WEL          |
-    | .             | P           | GEEN         |
-    | .             | V           | GEEN         |
-    | .             | N           | GEEN         |
-    |               | E           | WEL          |
-    |               | P           | GEEN         |
-    |               | V           | GEEN         |
-    |               | N           | GEEN         |
-    | Jansen        | E           | WEL          |
-    | Jansen        | P           | WEL          |
-    | Jansen        | V           | WEL          |
-    | Jansen        | N           | WEL          |
+    | partner geslachtsnaam | naamgebruik | gebruikinlopendetekst  |
+    | .                     | E           | mevrouw De Boer        |
+    | .                     | P           | mevrouw De Boer        |
+    | .                     | V           | mevrouw De Boer        |
+    | .                     | N           | mevrouw De Boer        |
+    |                       | E           | mevrouw De Boer        |
+    |                       | P           | mevrouw De Boer        |
+    |                       | V           | mevrouw De Boer        |
+    |                       | N           | mevrouw De Boer        |
+    | Jansen                | E           | mevrouw De Boer        |
+    | Jansen                | P           | mevrouw Jansen         |
+    | Jansen                | V           | mevrouw Jansen-de Boer |
+    | Jansen                | N           | mevrouw De Boer-Jansen |

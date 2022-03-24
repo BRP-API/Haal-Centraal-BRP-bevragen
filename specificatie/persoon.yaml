@@ -149,7 +149,7 @@ components:
         nationaliteiten:
           type: array
           items:
-            $ref: 'nationaliteit.yaml#/components/schemas/Nationaliteit'
+            $ref: 'nationaliteit.yaml#/components/schemas/AbstractNationaliteit'
         geboorte:
           $ref: 'geboorte.yaml#/components/schemas/Geboorte'
         opschortingBijhouding:
