@@ -155,7 +155,10 @@ After({tags: '@post-assert'}, async function() {
         ? stringifyValues(this.context.response.data.personen)
         : stringifyValues(this.context.response.data);
     
-    const expected = deleteEmptyProperties(this.context.expected);
+    let expected = deleteEmptyProperties(this.context.expected);
+    if(expected === undefined) {
+        expected = [];
+    }
     
     actual.should.deep.equalInAnyOrder(expected, `actual: ${JSON.stringify(actual, null, "\t")}`);
 });

@@ -25,7 +25,7 @@ namespace BrpProxy.Validators
                     switch (matches.Count)
                     {
                         case 0:
-                            context.AddFailure("fields", "fields||Parameter bevat een niet bestaande propertynaam.");
+                            context.AddFailure("fields", "fields||Parameter bevat een niet bestaande veldnaam.");
                             break;
                         default:
                             foreach (var match in matches)

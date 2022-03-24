@@ -197,7 +197,9 @@ namespace BrpProxy.Middlewares
                     retval = result;
                     break;
                 case Gba.ZoekMetGeslachtsnaamEnGeboortedatumResponse pb:
-                    retval = mapper.Map<ZoekMetGeslachtsnaamEnGeboortedatumResponse>(pb);
+                    var result1 = mapper.Map<ZoekMetGeslachtsnaamEnGeboortedatumResponse>(pb);
+                    result1.Personen = result1.Personen.FilterList(fields);
+                    retval = result1;
                     break;
                 case Gba.ZoekMetNaamEnGemeenteVanInschrijvingResponse pb:
                     retval = mapper.Map<ZoekMetNaamEnGemeenteVanInschrijvingResponse>(pb);
