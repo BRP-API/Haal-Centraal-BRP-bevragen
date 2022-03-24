@@ -1,6 +1,6 @@
 #language: nl
 
-@ready
+@ready @post-assert
 Functionaliteit: Zoek met geslachtsnaam en geboortedatum
 
   Achtergrond:
@@ -54,10 +54,13 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | geslachtsnaam | <geslachtsnaam>                     |
     | geboortedatum | 1983-05-26                          |
     | fields        | burgerservicenummer                 |
-    Dan bevat de response alleen personen met de volgende gegevens 
-    | burgerservicenummer |
-    | 999995078           |
-    | 999995082           |
+    Dan heeft de response 2 personen
+    En heeft de persoon met burgerservicenummer '999995078' de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999995078 |
+    En heeft de persoon met burgerservicenummer '999995082' de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999995082 |
 
     Voorbeelden:
     | geslachtsnaam |
@@ -71,8 +74,8 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum                   |
     | geslachtsnaam | <geslachtsnaam>                                       |
     | geboortedatum | 1983-05-26                                            |
-    | fields        | burgerservicenummer,geboorte.datum,naam.geslachtsnaam |
-    Dan bevat de response geen personen 
+    | fields        | burgerservicenummer |
+    Dan heeft de response 0 personen
 
     Voorbeelden:
     | geslachtsnaam |
@@ -87,9 +90,10 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | geslachtsnaam | os                                  |
     | geboortedatum | 1983-05-26                          |
     | fields        | burgerservicenummer                 |
-    Dan bevat de response alleen personen met de volgende gegevens 
-    | burgerservicenummer |
-    | 999995086           |
+    Dan heeft de response 1 persoon
+    En heeft de persoon met burgerservicenummer '999995086' de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999995086 |
 
   Abstract Scenario: Zoek met volledige voornamen
     Als personen wordt gezocht met de volgende parameters
@@ -99,9 +103,10 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | voornamen     | <voornamen>                         |
     | geboortedatum | 1983-05-26                          |
     | fields        | burgerservicenummer                 |
-    Dan bevat de response alleen personen met de volgende gegevens 
-    | burgerservicenummer   |
-    | <burgerservicenummer> |
+    Dan heeft de response 1 persoon
+    En heeft de persoon met burgerservicenummer '<burgerservicenummer>' de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | <burgerservicenummer> |
 
     Voorbeelden:
     | geslachtsnaam | voornamen | burgerservicenummer |
@@ -118,9 +123,10 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | voorvoegsel   | <voorvoegsel>                       |
     | geboortedatum | 1983-05-26                          |
     | fields        | burgerservicenummer                 |
-    Dan bevat de response alleen personen met de volgende gegevens 
-    | burgerservicenummer |
-    | 999995082           |
+    Dan heeft de response 1 persoon
+    En heeft de persoon met burgerservicenummer '999995082' de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999995082 |
 
     Voorbeelden:
     | geslachtsnaam | voorvoegsel |
@@ -136,9 +142,10 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | geslachtsaanduiding | <geslachtsaanduiding>               |
     | geboortedatum       | 1983-05-26                          |
     | fields              | burgerservicenummer                 |
-    Dan bevat de response alleen personen met de volgende gegevens 
-    | burgerservicenummer |
-    | 999995084           |
+    Dan heeft de response 1 persoon
+    En heeft de persoon met burgerservicenummer '999995084' de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999995084 |
 
     Voorbeelden:
     | geslachtsaanduiding |
@@ -153,9 +160,10 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | geboorteplaats | <geboorteplaats>                    |
     | geboortedatum  | 1983-05-26                          |
     | fields         | burgerservicenummer                 |
-    Dan bevat de response alleen personen met de volgende gegevens 
-    | burgerservicenummer |
-    | 999995082           |
+    Dan heeft de response 1 persoon
+    En heeft de persoon met burgerservicenummer '999995082' de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999995082 |
 
     Voorbeelden:
     | geboorteplaats |
@@ -171,10 +179,13 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | inclusiefOverledenPersonen | true                                |
     | geboortedatum              | 1983-05-26                          |
     | fields                     | burgerservicenummer                 |
-    Dan bevat de response alleen personen met de volgende gegevens 
-    | burgerservicenummer |
-    | 999995081           |
-    | 999995085           |
+    Dan heeft de response 2 personen
+    En heeft de persoon met burgerservicenummer '999995081' de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999995081 |
+    En heeft de persoon met burgerservicenummer '999995085' de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999995085 |
 
   @fout-case
   Scenario: Zoek zonder geslachtsnaam en geboortedatum 
@@ -184,16 +195,16 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | geslachtsnaam |                                     |
     | geboortedatum |                                     |
     | fields        | burgerservicenummer                 |
-    Dan bevat de response de volgende gegevens
+    Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                                                                      |
     | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Een of meerdere parameters zijn niet correct.                                                               |
+    | title    | Minimale combinatie van parameters moet worden opgegeven.                                                   |
     | status   | 400                                                                                                         |
     | detail   | De foutieve parameter(s) zijn: geboortedatum, geslachtsnaam.                                                |
-    | code     | paramsValidation                                                                                            |
+    | code     | paramsCombination                                                                                           |
     | instance | /haalcentraal/api/brp/personen                                                                              |
-    En bevat de response een invalidParams met de volgende gegevens
-    | code     | name          | reason                  |
+    En heeft het object de volgende 'invalidParams' gegevens
+    | code     | name                | reason                  |
     | required | geboortedatum | Parameter is verplicht. |
     | required | geslachtsnaam | Parameter is verplicht. |
 
@@ -205,15 +216,15 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | geslachtsnaam | <geslachtsnaam>                     |
     | geboortedatum | <geboortedatum>                     |
     | fields        | burgerservicenummer                 |
-    Dan bevat de response de volgende gegevens
+    Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                                                                      |
     | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Een of meerdere parameters zijn niet correct.                                                               |
+    | title    | Minimale combinatie van parameters moet worden opgegeven.                                                   |
     | status   | 400                                                                                                         |
     | detail   | De foutieve parameter(s) zijn: <foutieve parameter>.                                                        |
-    | code     | paramsValidation                                                                                            |
+    | code     | paramsCombination                                                                                           |
     | instance | /haalcentraal/api/brp/personen                                                                              |
-    En bevat de response een invalidParams met de volgende gegevens
+    En heeft het object de volgende 'invalidParams' gegevens
     | code     | name                 | reason                  |
     | required | <foutieve parameter> | Parameter is verplicht. |
 
@@ -230,7 +241,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | geslachtsnaam | Maassen                             |
     | geboortedatum | <geboortedatum>                     |
     | fields        | burgerservicenummer                 |
-    Dan bevat de response de volgende gegevens
+    Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                                                                      |
     | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
     | title    | Een of meerdere parameters zijn niet correct.                                                               |
@@ -238,7 +249,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | detail   | De foutieve parameter(s) zijn: geboortedatum.                                                               |
     | code     | paramsValidation                                                                                            |
     | instance | /haalcentraal/api/brp/personen                                                                              |
-    En bevat de response een invalidParams met de volgende gegevens
+    En heeft het object de volgende 'invalidParams' gegevens
     | code | name          | reason                        |
     | date | geboortedatum | Waarde is geen geldige datum. |
 
@@ -255,7 +266,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | geslachtsnaam | <geslachtsnaam>                     |
     | geboortedatum | 1983-05-26                          |
     | fields        | burgerservicenummer                 |
-    Dan bevat de response de volgende gegevens
+    Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                                                                      |
     | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
     | title    | Een of meerdere parameters zijn niet correct.                                                               |
@@ -263,7 +274,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | detail   | De foutieve parameter(s) zijn: geslachtsnaam.                                                               |
     | code     | paramsValidation                                                                                            |
     | instance | /haalcentraal/api/brp/personen                                                                              |
-    En bevat de response een invalidParams met de volgende gegevens
+    En heeft het object de volgende 'invalidParams' gegevens
     | code   | name          | reason   |
     | <code> | geslachtsnaam | <reason> |
 
@@ -280,7 +291,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | geslachtsnaam | <script>alert('hello world');</script> |
     | geboortedatum | 19830526                               |
     | fields        | burgerservicenummer                    |
-    Dan bevat de response de volgende gegevens
+    Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                                                                      |
     | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
     | title    | Een of meerdere parameters zijn niet correct.                                                               |
@@ -288,7 +299,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | detail   | De foutieve parameter(s) zijn: geboortedatum, geslachtsnaam.                                                |
     | code     | paramsValidation                                                                                            |
     | instance | /haalcentraal/api/brp/personen                                                                              |
-    En bevat de response een invalidParams met de volgende gegevens
+    En heeft het object de volgende 'invalidParams' gegevens
     | code    | name          | reason                                                                                               |
     | pattern | geslachtsnaam | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$. |
     | date    | geboortedatum | Waarde is geen geldige datum.                                                                        |
@@ -302,7 +313,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | geboortedatum    | 1983-05-26                             |
     | <parameter naam> | <script>alert('hello world');</script> |
     | fields           | burgerservicenummer                    |
-    Dan bevat de response de volgende gegevens
+    Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                                                                      |
     | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
     | title    | Een of meerdere parameters zijn niet correct.                                                               |
@@ -310,7 +321,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | detail   | De foutieve parameter(s) zijn: <parameter naam>.                                                            |
     | code     | paramsValidation                                                                                            |
     | instance | /haalcentraal/api/brp/personen                                                                              |
-    En bevat de response een invalidParams met de volgende gegevens
+    En heeft het object de volgende 'invalidParams' gegevens
     | code    | name             | reason                                     |
     | pattern | <parameter naam> | Waarde voldoet niet aan patroon <patroon>. |
 
@@ -331,11 +342,16 @@ Rule: Bij zoeken met de "*" wildcard moet minimaal 3 letters (exclusief de wildc
     | geslachtsnaam | <geslachtsnaam filter>              |
     | geboortedatum | 1983-05-26                          |
     | fields        | burgerservicenummer                 |
-    Dan bevat de response alleen personen met de volgende gegevens 
-    | burgerservicenummer |
-    | 999995079           |
-    | 999995080           |
-    | 999995083           |
+    Dan heeft de response 3 personen
+    En heeft de persoon met burgerservicenummer '999995079' de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999995079 |
+    En heeft de persoon met burgerservicenummer '999995080' de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999995080 |
+    En heeft de persoon met burgerservicenummer '999995083' de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999995083 |
 
     Voorbeelden:
     | geslachtsnaam filter |
@@ -351,7 +367,7 @@ Rule: Bij zoeken met de "*" wildcard moet minimaal 3 letters (exclusief de wildc
     | geslachtsnaam | <geslachtsnaam filter>              |
     | geboortedatum | 1983-05-26                          |
     | fields        | burgerservicenummer                 |
-    Dan bevat de response de volgende gegevens
+    Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                                                                      |
     | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
     | title    | Een of meerdere parameters zijn niet correct.                                                               |
@@ -359,7 +375,7 @@ Rule: Bij zoeken met de "*" wildcard moet minimaal 3 letters (exclusief de wildc
     | detail   | De foutieve parameter(s) zijn: geslachtsnaam.                                                               |
     | code     | paramsValidation                                                                                            |
     | instance | /haalcentraal/api/brp/personen                                                                              |
-    En bevat de response een invalidParams met de volgende gegevens
+    En heeft het object de volgende 'invalidParams' gegevens
     | code    | name          | reason                                                                                               |
     | pattern | geslachtsnaam | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$. |
 
@@ -376,7 +392,7 @@ Rule: Bij zoeken met de "*" wildcard moet minimaal 3 letters (exclusief de wildc
     | geslachtsnaam | <geslachtsnaam filter>              |
     | geboortedatum | 1983-05-26                          |
     | fields        | burgerservicenummer                 |
-    Dan bevat de response de volgende gegevens
+    Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                                                                      |
     | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
     | title    | Een of meerdere parameters zijn niet correct.                                                               |
@@ -384,7 +400,7 @@ Rule: Bij zoeken met de "*" wildcard moet minimaal 3 letters (exclusief de wildc
     | detail   | De foutieve parameter(s) zijn: geslachtsnaam.                                                               |
     | code     | paramsValidation                                                                                            |
     | instance | /haalcentraal/api/brp/personen                                                                              |
-    En bevat de response een invalidParams met de volgende gegevens
+    En heeft het object de volgende 'invalidParams' gegevens
     | code    | name          | reason                                                                                               |
     | pattern | geslachtsnaam | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$. |
 
@@ -401,9 +417,10 @@ Rule: Bij zoeken met de "*" wildcard moet minimaal 3 letters (exclusief de wildc
     | voornamen     | <voornamen filter>                  |
     | geboortedatum | 1983-05-26                          |
     | fields        | burgerservicenummer                 |
-    Dan bevat de response alleen personen met de volgende gegevens 
-    | burgerservicenummer |
-    | 999995082           |
+    Dan heeft de response 1 persoon
+    En heeft de persoon met burgerservicenummer '999995082' de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999995082 |
 
     Voorbeelden:
     | voornamen filter |
@@ -420,7 +437,7 @@ Rule: Bij zoeken met de "*" wildcard moet minimaal 3 letters (exclusief de wildc
     | voornamen     | <voornamen filter>                  |
     | geboortedatum | 1983-05-26                          |
     | fields        | burgerservicenummer                 |
-    Dan bevat de response de volgende gegevens
+    Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                                                                      |
     | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
     | title    | Een of meerdere parameters zijn niet correct.                                                               |
@@ -428,7 +445,7 @@ Rule: Bij zoeken met de "*" wildcard moet minimaal 3 letters (exclusief de wildc
     | detail   | De foutieve parameter(s) zijn: voornamen.                                                                   |
     | code     | paramsValidation                                                                                            |
     | instance | /haalcentraal/api/brp/personen                                                                              |
-    En bevat de response een invalidParams met de volgende gegevens
+    En heeft het object de volgende 'invalidParams' gegevens
     | code    | name      | reason                                                                 |
     | pattern | voornamen | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,199}\*{0,1}$. |
 
@@ -445,7 +462,7 @@ Rule: Bij zoeken met de "*" wildcard moet minimaal 3 letters (exclusief de wildc
     | geslachtsnaam | <geslachtsnaam filter>              |
     | geboortedatum | 1983-05-26                          |
     | fields        | burgerservicenummer                 |
-    Dan bevat de response de volgende gegevens
+    Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                                                                      |
     | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
     | title    | Een of meerdere parameters zijn niet correct.                                                               |
@@ -453,7 +470,7 @@ Rule: Bij zoeken met de "*" wildcard moet minimaal 3 letters (exclusief de wildc
     | detail   | De foutieve parameter(s) zijn: geslachtsnaam.                                                               |
     | code     | paramsValidation                                                                                            |
     | instance | /haalcentraal/api/brp/personen                                                                              |
-    En bevat de response een invalidParams met de volgende gegevens
+    En heeft het object de volgende 'invalidParams' gegevens
     | code    | name          | reason                                                                                               |
     | pattern | geslachtsnaam | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$. |
 
@@ -473,7 +490,7 @@ Rule: Bij zoeken met de "*" wildcard moet minimaal 3 letters (exclusief de wildc
     | geslachtsnaam | <geslachtsnaam filter>              |
     | geboortedatum | 1983-05-26                          |
     | fields        | burgerservicenummer                 |
-    Dan bevat de response de volgende gegevens
+    Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                                                                      |
     | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
     | title    | Een of meerdere parameters zijn niet correct.                                                               |
@@ -481,7 +498,7 @@ Rule: Bij zoeken met de "*" wildcard moet minimaal 3 letters (exclusief de wildc
     | detail   | De foutieve parameter(s) zijn: geslachtsnaam.                                                               |
     | code     | paramsValidation                                                                                            |
     | instance | /haalcentraal/api/brp/personen                                                                              |
-    En bevat de response een invalidParams met de volgende gegevens
+    En heeft het object de volgende 'invalidParams' gegevens
     | code    | name          | reason                                                                                               |
     | pattern | geslachtsnaam | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$. |
 
