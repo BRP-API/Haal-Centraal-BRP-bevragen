@@ -1,5 +1,6 @@
 # language: nl
 
+@post-assert
 Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
   
   @gba
@@ -176,102 +177,102 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 000009830 |
-      En de persoon met burgerservicenummer '000009830' heeft een nationaliteit met de volgende gegevens
-      | naam                  | waarde   |
-      | nationaliteit         | 0001     |
+      En de persoon heeft een 'nationaliteit' met de volgende gegevens
+      | naam               | waarde |
+      | nationaliteit.code | 0001   |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                            |
-      | type                | RaadpleegMetBurgerservicenummer   |
-      | burgerservicenummer | 000009830                         |
-      | fields              | burgerservicenummer,nationaliteit |
-      Dan heeft de persoon met burgerservicenummer '000009830' een nationaliteit met alleen de volgende gegevens
-      | naam                  | waarde        |
-      | type                  | Nationaliteit |
-      | nationaliteit         | 0001          |
+      | naam                | waarde                              |
+      | type                | RaadpleegMetBurgerservicenummer     |
+      | burgerservicenummer | 000009830                           |
+      | fields              | burgerservicenummer,nationaliteiten |
+      Dan heeft de persoon met burgerservicenummer '000009830' een 'nationaliteit' met de volgende gegevens
+      | naam               | waarde        |
+      | type               | Nationaliteit |
+      | nationaliteit.code | 0001          |
 
     @proxy
     Scenario: de persoon heeft een vreemde nationaliteit
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550002 |
-      En de persoon met burgerservicenummer '555550002' heeft een nationaliteit met de volgende gegevens
-      | naam                  | waarde   |
-      | nationaliteit         | 0263     |
+      En de persoon heeft een 'nationaliteit' met de volgende gegevens
+      | naam               | waarde |
+      | nationaliteit.code | 0263   |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                            |
-      | type                | RaadpleegMetBurgerservicenummer   |
-      | burgerservicenummer | 555550002                         |
-      | fields              | burgerservicenummer,nationaliteit |
-      Dan heeft de persoon met burgerservicenummer '555550002' een nationaliteit met alleen de volgende gegevens
-      | naam                  | waarde        |
-      | type                  | Nationaliteit |
-      | nationaliteit         | 0263          |
+      | naam                | waarde                              |
+      | type                | RaadpleegMetBurgerservicenummer     |
+      | burgerservicenummer | 555550002                           |
+      | fields              | burgerservicenummer,nationaliteiten |
+      Dan heeft de persoon met burgerservicenummer '555550002' een 'nationaliteit' met de volgende gegevens
+      | naam               | waarde        |
+      | type               | Nationaliteit |
+      | nationaliteit.code | 0263          |
 
     @proxy
     Scenario: de persoon is staatloos
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550002 |
-      En de persoon met burgerservicenummer '555550002' heeft een nationaliteit met de volgende gegevens
-      | naam                  | waarde   |
-      | nationaliteit         | 0499     |
+      En de persoon heeft een 'nationaliteit' met de volgende gegevens
+      | naam               | waarde |
+      | nationaliteit.code | 0499   |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                            |
-      | type                | RaadpleegMetBurgerservicenummer   |
-      | burgerservicenummer | 555550002                         |
-      | fields              | burgerservicenummer,nationaliteit |
-      Dan heeft de persoon met burgerservicenummer '555550002' een nationaliteit met alleen de volgende gegevens
-      | naam                  | waarde        |
-      | type                  | Nationaliteit |
-      | nationaliteit         | 0499          |
+      | naam                | waarde                              |
+      | type                | RaadpleegMetBurgerservicenummer     |
+      | burgerservicenummer | 555550002                           |
+      | fields              | burgerservicenummer,nationaliteiten |
+      Dan heeft de persoon met burgerservicenummer '555550002' een 'nationaliteit' met de volgende gegevens
+      | naam               | waarde        |
+      | type               | Nationaliteit |
+      | nationaliteit.code | 0499          |
 
     @proxy
     Scenario: de persoon heeft een onbekende nationaliteit
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 999993367 |
-      En de persoon met burgerservicenummer '999993367' heeft een nationaliteit met de volgende gegevens
-      | naam                  | waarde   |
-      | nationaliteit         | 0000     |
+      En de persoon heeft een 'nationaliteit' met de volgende gegevens
+      | naam               | waarde |
+      | nationaliteit.code | 0000   |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                            |
-      | type                | RaadpleegMetBurgerservicenummer   |
-      | burgerservicenummer | 999993367                         |
-      | fields              | burgerservicenummer,nationaliteit |
-      Dan heeft de persoon met burgerservicenummer '999993367' een nationaliteit met alleen de volgende gegevens
-      | naam                  | waarde                |
-      | type                  | NationaliteitOnbekend |
+      | naam                | waarde                              |
+      | type                | RaadpleegMetBurgerservicenummer     |
+      | burgerservicenummer | 999993367                           |
+      | fields              | burgerservicenummer,nationaliteiten |
+      Dan heeft de persoon met burgerservicenummer '999993367' een 'nationaliteit' met de volgende gegevens
+      | naam | waarde                |
+      | type | NationaliteitOnbekend |
 
     @proxy
     Scenario: de persoon wordt behandeld als Nederlander
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 000009866 |
-      En de persoon met burgerservicenummer '000009866' heeft een nationaliteit met de volgende gegevens
-      | naam                                | waarde   |
-      | aanduidingBijzonderNederlanderschap | B        |
+      En de persoon heeft een 'nationaliteit' met de volgende gegevens
+      | naam                                     | waarde |
+      | aanduidingBijzonderNederlanderschap.code | B      |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                            |
-      | type                | RaadpleegMetBurgerservicenummer   |
-      | burgerservicenummer | 000009866                         |
-      | fields              | burgerservicenummer,nationaliteit |
-      Dan heeft de persoon met burgerservicenummer '000009866' een nationaliteit met alleen de volgende gegevens
-      | naam                  | waarde                  |
-      | type                  | BehandeldAlsNederlander |
+      | naam                | waarde                              |
+      | type                | RaadpleegMetBurgerservicenummer     |
+      | burgerservicenummer | 000009866                           |
+      | fields              | burgerservicenummer,nationaliteiten |
+      Dan heeft de persoon met burgerservicenummer '000009866' een 'nationaliteit' met de volgende gegevens
+      | naam | waarde                  |
+      | type | BehandeldAlsNederlander |
 
-    @gba
+    @proxy
     Scenario: de persoon is vastgesteld niet-Nederlander
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 999994748 |
-      En de persoon met burgerservicenummer '999994748' heeft een nationaliteit met de volgende gegevens
-      | naam                                | waarde   |
-      | aanduidingBijzonderNederlanderschap | V        |
+      En de persoon heeft een 'nationaliteit' met de volgende gegevens
+      | naam                                     | waarde |
+      | aanduidingBijzonderNederlanderschap.code | V      |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                            |
-      | type                | RaadpleegMetBurgerservicenummer   |
-      | burgerservicenummer | 999994748                         |
-      | fields              | burgerservicenummer,nationaliteit |
-      Dan heeft de persoon met burgerservicenummer '999994748' een nationaliteit met alleen de volgende gegevens
-      | naam                  | waarde                     |
-      | type                  | VastgesteldNietNederlander |
+      | naam                | waarde                              |
+      | type                | RaadpleegMetBurgerservicenummer     |
+      | burgerservicenummer | 999994748                           |
+      | fields              | burgerservicenummer,nationaliteiten |
+      Dan heeft de persoon met burgerservicenummer '999994748' een 'nationaliteit' met de volgende gegevens
+      | naam | waarde                     |
+      | type | VastgesteldNietNederlander |
