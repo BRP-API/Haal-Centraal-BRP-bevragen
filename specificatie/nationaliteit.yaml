@@ -70,7 +70,7 @@ components:
         Het hoeft niet van AbstractDatum af te leiden omdat het nooit een andere type kan zijn
       type: object
       properties:
-        aanduidingBijzonderNederlandschap:
+        aanduidingBijzonderNederlanderschap:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         datumIngangGeldigheid:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
