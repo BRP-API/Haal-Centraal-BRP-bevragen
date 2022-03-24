@@ -179,19 +179,15 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       En de persoon met burgerservicenummer '000009830' heeft een nationaliteit met de volgende gegevens
       | naam                  | waarde   |
       | nationaliteit         | 0001     |
-      | redenOpname           | 001      |
-      | datumIngangGeldigheid | 19750707 |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                              |
-      | type                | RaadpleegMetBurgerservicenummer     |
-      | burgerservicenummer | 000009830                           |
-      | fields              | burgerservicenummer,nationaliteiten |
+      | naam                | waarde                            |
+      | type                | RaadpleegMetBurgerservicenummer   |
+      | burgerservicenummer | 000009830                         |
+      | fields              | burgerservicenummer,nationaliteit |
       Dan heeft de persoon met burgerservicenummer '000009830' een nationaliteit met alleen de volgende gegevens
       | naam                  | waarde        |
       | type                  | Nationaliteit |
-      | nationaliteit         | 0100          |
-      | redenOpname           | 311           |
-      | datumIngangGeldigheid | 20200727      |
+      | nationaliteit         | 0001          |
 
     @proxy
     Scenario: de persoon heeft een vreemde nationaliteit
@@ -201,19 +197,15 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       En de persoon met burgerservicenummer '555550002' heeft een nationaliteit met de volgende gegevens
       | naam                  | waarde   |
       | nationaliteit         | 0263     |
-      | redenOpname           | 301      |
-      | datumIngangGeldigheid | 20100801 |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                              |
-      | type                | RaadpleegMetBurgerservicenummer     |
-      | burgerservicenummer | 555550002                           |
-      | fields              | burgerservicenummer,nationaliteiten |
+      | naam                | waarde                            |
+      | type                | RaadpleegMetBurgerservicenummer   |
+      | burgerservicenummer | 555550002                         |
+      | fields              | burgerservicenummer,nationaliteit |
       Dan heeft de persoon met burgerservicenummer '555550002' een nationaliteit met alleen de volgende gegevens
       | naam                  | waarde        |
       | type                  | Nationaliteit |
       | nationaliteit         | 0263          |
-      | redenOpname           | 301           |
-      | datumIngangGeldigheid | 20100801      |
 
     @proxy
     Scenario: de persoon is staatloos
@@ -223,19 +215,15 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       En de persoon met burgerservicenummer '555550002' heeft een nationaliteit met de volgende gegevens
       | naam                  | waarde   |
       | nationaliteit         | 0499     |
-      | redenOpname           | 312      |
-      | datumIngangGeldigheid | 20100801 |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                              |
-      | type                | RaadpleegMetBurgerservicenummer     |
-      | burgerservicenummer | 555550002                           |
-      | fields              | burgerservicenummer,nationaliteiten |
+      | naam                | waarde                            |
+      | type                | RaadpleegMetBurgerservicenummer   |
+      | burgerservicenummer | 555550002                         |
+      | fields              | burgerservicenummer,nationaliteit |
       Dan heeft de persoon met burgerservicenummer '555550002' een nationaliteit met alleen de volgende gegevens
       | naam                  | waarde        |
       | type                  | Nationaliteit |
       | nationaliteit         | 0499          |
-      | redenOpname           | 312           |
-      | datumIngangGeldigheid | 20100801      |
 
     @proxy
     Scenario: de persoon heeft een onbekende nationaliteit
@@ -245,18 +233,14 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       En de persoon met burgerservicenummer '999993367' heeft een nationaliteit met de volgende gegevens
       | naam                  | waarde   |
       | nationaliteit         | 0000     |
-      | redenOpname           | 311      |
-      | datumIngangGeldigheid | 00000000 |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                              |
-      | type                | RaadpleegMetBurgerservicenummer     |
-      | burgerservicenummer | 999993367                           |
-      | fields              | burgerservicenummer,nationaliteiten |
+      | naam                | waarde                            |
+      | type                | RaadpleegMetBurgerservicenummer   |
+      | burgerservicenummer | 999993367                         |
+      | fields              | burgerservicenummer,nationaliteit |
       Dan heeft de persoon met burgerservicenummer '999993367' een nationaliteit met alleen de volgende gegevens
       | naam                  | waarde                |
       | type                  | NationaliteitOnbekend |
-      | redenOpname           | 311                   |
-      | datumIngangGeldigheid |                       |
 
     @proxy
     Scenario: de persoon wordt behandeld als Nederlander
@@ -266,18 +250,14 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       En de persoon met burgerservicenummer '000009866' heeft een nationaliteit met de volgende gegevens
       | naam                                | waarde   |
       | aanduidingBijzonderNederlanderschap | B        |
-      | redenOpname                         | 310      |
-      | datumIngangGeldigheid               | 19570115 |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                              |
-      | type                | RaadpleegMetBurgerservicenummer     |
-      | burgerservicenummer | 000009866                           |
-      | fields              | burgerservicenummer,nationaliteiten |
+      | naam                | waarde                            |
+      | type                | RaadpleegMetBurgerservicenummer   |
+      | burgerservicenummer | 000009866                         |
+      | fields              | burgerservicenummer,nationaliteit |
       Dan heeft de persoon met burgerservicenummer '000009866' een nationaliteit met alleen de volgende gegevens
       | naam                  | waarde                  |
       | type                  | BehandeldAlsNederlander |
-      | redenOpname           | 310                     |
-      | datumIngangGeldigheid | 19570115                |
 
     @gba
     Scenario: de persoon is vastgesteld niet-Nederlander
@@ -287,15 +267,11 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       En de persoon met burgerservicenummer '999994748' heeft een nationaliteit met de volgende gegevens
       | naam                                | waarde   |
       | aanduidingBijzonderNederlanderschap | V        |
-      | redenOpname                         | 310      |
-      | datumIngangGeldigheid               | 19750615 |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                              |
-      | type                | RaadpleegMetBurgerservicenummer     |
-      | burgerservicenummer | 999994748                           |
-      | fields              | burgerservicenummer,nationaliteiten |
+      | naam                | waarde                            |
+      | type                | RaadpleegMetBurgerservicenummer   |
+      | burgerservicenummer | 999994748                         |
+      | fields              | burgerservicenummer,nationaliteit |
       Dan heeft de persoon met burgerservicenummer '999994748' een nationaliteit met alleen de volgende gegevens
       | naam                  | waarde                     |
       | type                  | VastgesteldNietNederlander |
-      | redenOpname           | 310                        |
-      | datumIngangGeldigheid | 19750615                   |
