@@ -742,6 +742,10 @@ Then('heeft de persoon met burgerservicenummer {string} een {string} met de volg
     let groep = toCollectionName(gegevensgroep);
 
     if(this.context.postAssert === true) {
+        if(this.context.expected === undefined) {
+            this.context.expected = [ { burgerservicenummer: burgerservicenummer } ];
+        }
+
         const expectedPersonen = this.context.expected;
         const expectedPersoon = expectedPersonen.find(function(p) {
             return p.burgerservicenummer === burgerservicenummer;

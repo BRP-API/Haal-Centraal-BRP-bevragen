@@ -141,6 +141,7 @@ namespace BrpProxy.Validators
                         {
                             ICollection<AbstractPartner> p => p.FilterList(new[] { rightPart }),
                             ICollection<AbstractOuder> p => p.FilterList(new[] { rightPart }),
+                            ICollection<AbstractNationaliteit> p => p.FilterList(new[] { rightPart }),
                             _ => left.Filter(new[] { rightPart })
                         };
 
