@@ -856,8 +856,8 @@ Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van
       | V        | JV                      | N           |                         | GEEN         |
       | V        | JV                      | P           | Geachte mevrouw De Boer | WEL          |
 
-Rule: Wanneer de geslachtsnaam van de partner leeg of onbekend is en de naam van de partner wordt gebruikt, wordt aanhef niet opgenomen
-  De aanhef wordt niet opgenomen in het antwoord wanneer aan alle volgende condities is voldaan:
+Rule: Aanduiding naamgebruik "E" (eigen naam) wordt gehanteerd voor een persoon wanneer de geslachtsnaam van de partner leeg of onbekend is en de naam van de partner wordt gebruikt
+  De aanhef wordt samengesteld voor aanduiding naamgebruik "E" wanneer aan alle volgende condities is voldaan:
     - de geslachtsnaam van de partner is leeg of onbekend (.)
     - aanduidingNaamgebruik is ongelijk aan "E" (eigen)
     - de aanhef is geen aanspreekvorm voor de adellijke titel van de persoon ("Hoogwelgeboren heer", "Hoogwelgeboren vrouwe", "Hooggeboren heer", "Hooggeboren vrouwe" of "Hoogheid")
@@ -875,9 +875,6 @@ Rule: Wanneer de geslachtsnaam van de partner leeg of onbekend is en de naam van
     | voorvoegsel (02.30)                  | de            |
     | geslachtsnaam (02.40)                | Boer          |
     | aanduiding naamgebruik (61.10)       | <naamgebruik> |
-    En de persoon heeft een partner met de volgende gegevens
-    | naam                        | waarde |
-    | geslachtsaanduiding (04.10) | M      |
     En de partner heeft de volgende naam gegevens
     | naam                                 | waarde |
     | adellijke titel of predicaat (02.20) |        |
@@ -888,14 +885,16 @@ Rule: Wanneer de geslachtsnaam van de partner leeg of onbekend is en de naam van
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
     | fields              | naam.aanhef                     |
-    Dan heeft de persoon met burgerservicenummer '999992934' <leveren naam> 'naam' gegevens
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    | naam   | waarde                  |
+    | aanhef | Geachte mevrouw De Boer |
 
     Voorbeelden:
-      | naamgebruik | leveren naam |
-      | E           | WEL          |
-      | P           | GEEN         |
-      | V           | GEEN         |
-      | N           | GEEN         |
+    | naamgebruik |
+    | E           |
+    | P           |
+    | V           |
+    | N           |
 
   Abstract Scenario: persoon heeft en geslachtsaanduiding "<geslacht>" en naamgebruik "<naamgebruik>" en heeft partner met onbekende naam en adellijkeTitelPredicaat "<adellijkeTitelPredicaat partner>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -903,15 +902,12 @@ Rule: Wanneer de geslachtsnaam van de partner leeg of onbekend is en de naam van
     | burgerservicenummer         | 999992934  |
     | geslachtsaanduiding (04.10) | <geslacht> |
     En de persoon heeft de volgende naam gegevens
-    | naam                                 | waarde                    |
-    | voornamen (02.10)                    | Jo Anne                   |
-    | adellijke titel of predicaat (02.20) | <adellijkeTitelPredicaat> |
-    | voorvoegsel (02.30)                  | de                        |
-    | geslachtsnaam (02.40)                | Boer                      |
-    | aanduidingNaamgebruik (61.10)        | <naamgebruik>             |
-    En de persoon heeft een partner met de volgende gegevens
-    | naam                        | waarde |
-    | geslachtsaanduiding (04.10) | M      |
+    | naam                                 | waarde        |
+    | voornamen (02.10)                    | Jo Anne       |
+    | adellijke titel of predicaat (02.20) |               |
+    | voorvoegsel (02.30)                  | de            |
+    | geslachtsnaam (02.40)                | Boer          |
+    | aanduidingNaamgebruik (61.10)        | <naamgebruik> |
     En de partner heeft de volgende naam gegevens
     | naam                                 | waarde                            |
     | adellijke titel of predicaat (02.20) | <adellijkeTitelPredicaat partner> |
@@ -922,14 +918,17 @@ Rule: Wanneer de geslachtsnaam van de partner leeg of onbekend is en de naam van
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
     | fields              | naam.aanhef                     |
-    Dan heeft de persoon met burgerservicenummer '999992934' <leveren naam> 'naam' gegevens
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    | naam   | waarde   |
+    | aanhef | <aanhef> |
 
     Voorbeelden:
-      | geslacht | adellijkeTitelPredicaat partner | naamgebruik | aanhef                  | leveren naam |
-      | V        | G                               | E           | Geachte mevrouw De Boer | WEL          |
-      | V        | G                               | V           | Hooggeboren vrouwe      | WEL          |
-      | V        | G                               | N           | Hooggeboren vrouwe      | WEL          |
-      | V        | G                               | P           | Hooggeboren vrouwe      | WEL          |
-      | M        | G                               | V           |                         | GEEN         |
-      | O        | G                               | V           |                         | GEEN         |
-      | V        | JH                              | V           |                         | GEEN         |
+    | geslacht | adellijkeTitelPredicaat partner | naamgebruik | aanhef                  |
+    | V        | G                               | E           | Geachte mevrouw De Boer |
+    | V        | G                               | V           | Hooggeboren vrouwe      |
+    | V        | G                               | N           | Hooggeboren vrouwe      |
+    | V        | G                               | P           | Hooggeboren vrouwe      |
+    | M        | G                               | V           | Geachte mevrouw De Boer |
+    | O        | G                               | V           | Geachte mevrouw De Boer |
+    | V        | GI                              | V           | Geachte mevrouw De Boer |
+    | V        | JH                              | V           | Geachte mevrouw De Boer |
