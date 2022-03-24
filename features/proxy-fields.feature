@@ -32,10 +32,10 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar v
       | datumVan                           | datumAanvangAdreshouding,datumAanvangAdresBuitenland                                                                |
       | vanuitVerblijfplaatsOnbekend       | landVanwaarIngeschreven                                                                                             |
       | indicatieVestigingVanuitBuitenland | datumVestigingInNederland                                                                                           |
-      | adressering.adresregel1            | verblijfadres                                                                                                       |
-      | adressering.adresregel2            | verblijfadres,gemeenteVanInschrijving                                                                               |
-      | adressering.adresregel3            | verblijfadres                                                                                                       |
-      | adressering.land                   | verblijfadres                                                                                                       |
+      #| adressering.adresregel1            | verblijfadres                                                                                                       |
+      #| adressering.adresregel2            | verblijfadres,gemeenteVanInschrijving                                                                               |
+      #| adressering.adresregel3            | verblijfadres                                                                                                       |
+      #| adressering.land                   | verblijfadres                                                                                                       |
 
     @proxy
     Abstract Scenario: met fields is gevraagd om meerdere afgeleide en/of andere gegevens <gevraagd aan proxy>
@@ -93,8 +93,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar v
       Voorbeelden:
       | gevraagd aan proxy | vragen aan RvIG                                                                                                                                           |
       | aanschrijfwijze    | naam,geslachtsaanduiding,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap                                       |
-      | adressering        | naam,geslachtsaanduiding,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap,verblijfadres,gemeenteVanInschrijving |
-      | naam               | naam                                                                                                                                                      |
+      | naam               | naam,geslachtsaanduiding,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap                                       |
 
     @proxy
     Abstract Scenario: met fields afgeleid gegeven vragen met of zonder pad <gevraagd aan proxy>
@@ -110,20 +109,22 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar v
       | fields              | <vragen aan RvIG>               |
 
       Voorbeelden:
-      | gevraagd aan proxy               | vragen aan RvIG                                                                                                     |
-      | overlijden.indicatieOverleden    | overlijden.datum                                                                                                    |
-      | indicatieOverleden               | overlijden.datum                                                                                                    |
-      | volledigeNaam                    | naam                                                                                                                |
-      | naam.volledigeNaam               | naam                                                                                                                |
-      | adressering.aanschrijfwijze.naam | naam,geslachtsaanduiding,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap |
-      | aanschrijfwijze.naam             | naam,geslachtsaanduiding,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap |
-      | adressering.aanschrijfwijze      | naam,geslachtsaanduiding,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap |
-      | aanschrijfwijze                  | naam,geslachtsaanduiding,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap |
+      | gevraagd aan proxy            | vragen aan RvIG                                                                                                     |
+      | overlijden.indicatieOverleden | overlijden.datum                                                                                                    |
+      | indicatieOverleden            | overlijden.datum                                                                                                    |
+      | volledigeNaam                 | naam                                                                                                                |
+      | naam.volledigeNaam            | naam                                                                                                                |
+      | naam.aanschrijfwijze.naam     | naam,geslachtsaanduiding,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap |
+      | aanschrijfwijze.naam          | naam,geslachtsaanduiding,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap |
+      | naam.aanschrijfwijze          | naam,geslachtsaanduiding,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap |
+      | aanschrijfwijze               | naam,geslachtsaanduiding,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap |
 
+  @proxy
   Rule: wanneer een gegeven van een ouder, kind of partner wordt gevraagd, moet de hele ouder, partner of kind worden gevraagd
     # dit is nodig om het type te bepalen (Ouder, OnbekendOuder, Partner, OnbekendPartner, Kind, OnbekendKind)
     # voor de partner is dit ook nodig voor ontbindingHuwelijkPartnerschap
 
+    @proxy
     Abstract Scenario: vragen om <gevraagd aan proxy> moet het hele object vragen
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
@@ -149,64 +150,65 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar v
       | ouders.type                                                                          | ouders                                        |
       | kinderen                                                                             | kinderen                                      |
   
-  Rule: wanneer een gegeven van verblijfadres wordt gevraagd, moet het hele verblijfadres worden gevraagd
-    # dit is nodig om het type verblijfplaats te bepalen (Adres, Locatie, VerblijfplaatsBuitenland, VerblijfplaatsOnbekend)
+  # @proxy
+  # Rule: wanneer een gegeven van verblijfadres wordt gevraagd, moet het hele verblijfadres worden gevraagd
+  #   # dit is nodig om het type verblijfplaats te bepalen (Adres, Locatie, VerblijfplaatsBuitenland, VerblijfplaatsOnbekend)
 
-    Abstract Scenario: vragen om <gevraagd aan proxy> moet het hele verblijfadres vragen
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 999992934                       |
-      | fields              | <gevraagd aan proxy>            |
-      Dan zoekt de proxy de persoon bij RvIG met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 999992934                       |
-      | fields              | <vragen aan RvIG>               |
+  #   Abstract Scenario: vragen om <gevraagd aan proxy> moet het hele verblijfadres vragen
+  #     Als personen wordt gezocht met de volgende parameters
+  #     | naam                | waarde                          |
+  #     | type                | RaadpleegMetBurgerservicenummer |
+  #     | burgerservicenummer | 999992934                       |
+  #     | fields              | <gevraagd aan proxy>            |
+  #     Dan zoekt de proxy de persoon bij RvIG met de volgende parameters
+  #     | naam                | waarde                          |
+  #     | type                | RaadpleegMetBurgerservicenummer |
+  #     | burgerservicenummer | 999992934                       |
+  #     | fields              | <vragen aan RvIG>               |
 
-      Voorbeelden:
-      | gevraagd aan proxy                                  | vragen aan RvIG                        |
-      | korteNaam                                           | verblijfadres                          |
-      | straat                                              | verblijfadres                          |
-      | huisnummer                                          | verblijfadres                          |
-      | huisletter                                          | verblijfadres                          |
-      | huisnummertoevoeging                                | verblijfadres                          |
-      | aanduidingBijHuisnummer                             | verblijfadres                          |
-      | postcode                                            | verblijfadres                          |
-      | woonplaats                                          | verblijfadres,gemeenteVanInschrijving  |
-      | adresseerbaarObjectIdentificatie                    | verblijfadres                          |
-      | nummeraanduidingIdentificatie                       | verblijfadres                          |
-      | locatiebeschrijving                                 | verblijfadres                          |
-      | verblijfadres.land                                  | verblijfadres                          |
-      | verblijfplaatsOnbekend                              | verblijfadres                          |
-      | verblijfadres.adresregel1                           | verblijfadres                          |
-      | verblijfadres.adresregel2                           | verblijfadres                          |
-      | verblijfadres.adresregel3                           | verblijfadres                          |
-      | verblijfadres.adresregel1,woonplaats                | verblijfadres,gemeenteVanInschrijving  |
-      | verblijfadres.adresregel1,verblijfadres.adresregel2 | verblijfadres                          |
-      | korteNaam,huisnummer,aanduidingBijHuisnummer        | verblijfadres                          |
-      | verblijfadres                                       | verblijfadres,gemeenteVanInschrijving  |
-      | verblijfplaats                                      | verblijfplaats,gemeenteVanInschrijving |
+  #     Voorbeelden:
+  #     | gevraagd aan proxy                                  | vragen aan RvIG                        |
+  #     | korteNaam                                           | verblijfadres                          |
+  #     | straat                                              | verblijfadres                          |
+  #     | huisnummer                                          | verblijfadres                          |
+  #     | huisletter                                          | verblijfadres                          |
+  #     | huisnummertoevoeging                                | verblijfadres                          |
+  #     | aanduidingBijHuisnummer                             | verblijfadres                          |
+  #     | postcode                                            | verblijfadres                          |
+  #     | woonplaats                                          | verblijfadres,gemeenteVanInschrijving  |
+  #     | adresseerbaarObjectIdentificatie                    | verblijfadres                          |
+  #     | nummeraanduidingIdentificatie                       | verblijfadres                          |
+  #     | locatiebeschrijving                                 | verblijfadres                          |
+  #     | verblijfadres.land                                  | verblijfadres                          |
+  #     | verblijfplaatsOnbekend                              | verblijfadres                          |
+  #     | verblijfadres.adresregel1                           | verblijfadres                          |
+  #     | verblijfadres.adresregel2                           | verblijfadres                          |
+  #     | verblijfadres.adresregel3                           | verblijfadres                          |
+  #     | verblijfadres.adresregel1,woonplaats                | verblijfadres,gemeenteVanInschrijving  |
+  #     | verblijfadres.adresregel1,verblijfadres.adresregel2 | verblijfadres                          |
+  #     | korteNaam,huisnummer,aanduidingBijHuisnummer        | verblijfadres                          |
+  #     | verblijfadres                                       | verblijfadres,gemeenteVanInschrijving  |
+  #     | verblijfplaats                                      | verblijfplaats,gemeenteVanInschrijving |
 
-    Abstract Scenario: zoeken van personen en vragen om <gevraagd aan proxy> moet hele verblijfadres vragen
-      Als personen wordt gezocht met de volgende parameters
-      | naam          | waarde                              |
-      | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
-      | geslachtsnaam | Vries                               |
-      | geboortedatum | 1975-07-30                          |
-      | fields        | <gevraagd aan proxy>                |
-      Dan zoekt de proxy de persoon bij RvIG met de volgende parameters
-      | naam          | waarde                              |
-      | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
-      | geslachtsnaam | Vries                               |
-      | geboortedatum | 1975-07-30                          |
-      | fields        | <vragen aan RvIG>                   |
+    # Abstract Scenario: zoeken van personen en vragen om <gevraagd aan proxy> moet hele verblijfadres vragen
+    #   Als personen wordt gezocht met de volgende parameters
+    #   | naam          | waarde                              |
+    #   | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    #   | geslachtsnaam | Vries                               |
+    #   | geboortedatum | 1975-07-30                          |
+    #   | fields        | <gevraagd aan proxy>                |
+    #   Dan zoekt de proxy de persoon bij RvIG met de volgende parameters
+    #   | naam          | waarde                              |
+    #   | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    #   | geslachtsnaam | Vries                               |
+    #   | geboortedatum | 1975-07-30                          |
+    #   | fields        | <vragen aan RvIG>                   |
 
-      Voorbeelden:
-      | gevraagd aan proxy                   | vragen aan RvIG                                                     |
-      | volledigeNaam,adresregel1,woonplaats | naam,verblijfadres,gemeenteVanInschrijving                          |
-      | adressering                          | verblijfadres,gemeenteVanInschrijving                               |
-      | voorletters,leeftijd,woonplaats      | naam.voornamen,geboorte.datum,verblijfadres,gemeenteVanInschrijving |
+    #   Voorbeelden:
+    #   | gevraagd aan proxy                   | vragen aan RvIG                                                     |
+    #   | volledigeNaam,adresregel1,woonplaats | naam,verblijfadres,gemeenteVanInschrijving                          |
+    #   | adressering                          | verblijfadres,gemeenteVanInschrijving                               |
+    #   | voorletters,leeftijd,woonplaats      | naam.voornamen,geboorte.datum,verblijfadres,gemeenteVanInschrijving |
 
   Rule: wanneer een gegeven van nationaliteiten wordt gevraagd, moeten ook nationaliteit en aanduidingBijzonderNederlanderschap worden gevraagd
 
