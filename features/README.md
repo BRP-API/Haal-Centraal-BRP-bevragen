@@ -1,5 +1,12 @@
 # Behaviour driven specificatie
-Het doel is door middel van gerichte voorbeelden de functionele werking van de api specificeren en illustreren. Voor de meeste features is de ontwikkelaar van de provider van de API doelgroep.
+De features specificeren en illustreren de (functionele) werking van de API met gerichte voorbeelden.
+Zo is voor alle stakeholders duidelijk wat de API doet en hoe de geleverde informatie tot stand komt. Iedere stakeholder kan de feature files gebruiken, maar ook bijdragen aan verbetering van de functionaliteit:
+
+* de domeinkenner kan in natuurlijke taal lezen wat de requirement is
+* de provider developer kan bepalen waar zijn implementatie aan moet voldoen
+* de consumer developer kan bepalen wat hij bij een gegeven input als output kan verwachten
+* de tester kan bepalen of de implementatie voldoet aan de requirement
+* enz.
 
 ## Opbouw van de functionele specificaties
 De specificaties zijn opgebouwd per functionalteit van de API. Op elke functionaliteit van de API is de werking beschreven én is de werking geïllustreerd in de vorm van scenario's (als ik dit doe, dan doet de api dat).
@@ -15,7 +22,7 @@ Naast de features die hier staan zijn voor de API ook enkele features relevant d
 - [self-links](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/self-links.feature)
 
 ## Features en scenario's
-De specificatie/test is gespecificeerd in documenten per functionaliteit, elk met extensie ".feature". Per functionaliteit is een korte beschrijving van de functionaliteit opgenomen plus scenario's die de gewenste werking van de functionaliteit toelichten en demonstreren.
+De specificatie/test is gespecificeerd in documenten per functionaliteit, elk met de extensie ".feature". Per functionaliteit is een korte beschrijving van de functionaliteit opgenomen plus scenario's die de gewenste werking van de functionaliteit toelichten en demonstreren.
 
 De specificatie is functioneel gedefinieerd in [Gherkin](https://docs.cucumber.io/gherkin/reference/). Hiermee kan in menselijke taal de specificatie/test worden opgesteld.
 De specificatie is in de *Nederlandse taal* gedefinieerd.

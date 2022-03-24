@@ -30,11 +30,15 @@ nav:
         path: /redoc
       - title: Features
         path: /features
-#  - title: Specificaties v. 1.3 (IO)
-#    subnav:
-#      - title: User stories
-#        url: https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/user-stories-dev
-#        path: /user-stories
+  - title: Specificaties v. 2.0 (IO)
+    subnav:
+      - title: User stories
+#        url: https://vng-realisatie.github.io/Haal-Centraal-BRK-bevragen/user-stories-dev
+        path: /user-stories-dev
+      - title: Bevragen API (swagger-ui)
+        path: /swagger-ui-io
+      - title: Bevragen API (redoc)
+        path: /redoc-io
 
 plugins:
   - jekyll-redirect-from

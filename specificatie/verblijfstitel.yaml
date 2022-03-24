@@ -15,7 +15,7 @@ components:
         * **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt.
       properties:
         aanduiding:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
         datumEinde:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
         datumIngang:
@@ -31,7 +31,7 @@ components:
         * **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt.
       properties:
         aanduiding:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
         datumEinde:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         datumIngang:

@@ -57,37 +57,37 @@ paths:
                         Zoekactie geslaagd
           headers:
             api-version:
-              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/headers/api_version'
+              $ref: 'common.yaml#/components/headers/api_version'
             warning:
-              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/headers/warning'
+              $ref: 'common.yaml#/components/headers/warning'
             X-Rate-Limit-Limit:
-              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/headers/X_Rate_Limit_Limit'
+              $ref: 'common.yaml#/components/headers/X_Rate_Limit_Limit'
             X-Rate-Limit-Remaining:
-              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/headers/X_Rate_Limit_Remaining'
+              $ref: 'common.yaml#/components/headers/X_Rate_Limit_Remaining'
             X-Rate-Limit-Reset:
-              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/headers/X_Rate_Limit_Reset'
+              $ref: 'common.yaml#/components/headers/X_Rate_Limit_Reset'
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/PersonenQueryResponse'
         '400':
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/responses/400'
+          $ref: 'common.yaml#/components/responses/400'
         '401':
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/responses/401'
+          $ref: 'common.yaml#/components/responses/401'
         '403':
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/responses/403'
+          $ref: 'common.yaml#/components/responses/403'
         '406':
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/responses/406'
+          $ref: 'common.yaml#/components/responses/406'
         '429':
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/responses/429'
+          $ref: 'common.yaml#/components/responses/429'
         '500':
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/responses/500'
+          $ref: 'common.yaml#/components/responses/500'
         '501':
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/responses/501'
+          $ref: 'common.yaml#/components/responses/501'
         '503':
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/responses/503'
+          $ref: 'common.yaml#/components/responses/503'
         'default':
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/responses/default'
+          $ref: 'common.yaml#/components/responses/default'
       tags:
         - Personen
 components:

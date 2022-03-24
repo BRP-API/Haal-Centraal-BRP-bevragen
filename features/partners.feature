@@ -425,7 +425,6 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | alleen jaar datum aangaan               |          |               |               |                |              |                   | 19730000      |                |              |           |                 | Partner         |          |
       | alleen jaar geboortedatum               |          |               | 19640000      |                |              |                   |               |                |              |           |                 | Partner         |          |
 
-
       # ook OnbekendPartner bij waarde van gealachtsaanduiding, aangaanHuwelijkPartnerschap of soortVerbintenis? Zie https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/940#issuecomment-1069293224
 
     @proxy
@@ -447,4 +446,3 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       En heeft de partner alleen de volgende gegevens
       | naam | waarde  |
       | type | Partner |
-

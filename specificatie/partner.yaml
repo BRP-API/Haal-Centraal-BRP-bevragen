@@ -26,9 +26,9 @@ components:
         burgerservicenummer:
           $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
         geslachtsaanduiding:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
         soortVerbintenis:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
         naam:
           $ref: 'naam.yaml#/components/schemas/GbaNaamBasis'
         geboorte:
@@ -47,9 +47,9 @@ components:
             burgerservicenummer:
               $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
             geslachtsaanduiding:
-              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
             soortVerbintenis:
-              $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
             naam:
               $ref: 'naam.yaml#/components/schemas/NaamGerelateerde'
             geboorte:
@@ -91,9 +91,9 @@ components:
         datum:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
         land:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
         plaats:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     AangaanHuwelijkPartnerschap:
@@ -107,9 +107,9 @@ components:
         datum:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         land:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
         plaats:
-          $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/Waardetabel'
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: '#/components/schemas/AangaanHuwelijkPartnerschapInOnderzoek'
     AangaanHuwelijkPartnerschapInOnderzoek:

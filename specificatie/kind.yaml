@@ -38,11 +38,6 @@ components:
           properties:
             burgerservicenummer:
               $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
-            leeftijd:
-              type: integer
-              description: |
-                Leeftijd op het moment van bevragen
-              example: 12
             inOnderzoek:
               $ref: '#/components/schemas/KindInOnderzoek'
             naam:
@@ -65,6 +60,4 @@ components:
         - type: object
           properties:
             burgerservicenummer:
-              type: boolean
-            leeftijd:
               type: boolean
