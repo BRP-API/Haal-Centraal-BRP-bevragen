@@ -1,6 +1,6 @@
 # language: nl
 
-@proxy
+@proxy @post-assert
 Functionaliteit: leveren van een verblijfplaats
 
   Rule: Een verblijfplaats is onbekend wanneer land (13.10) de waarde '0000' heeft
@@ -22,12 +22,13 @@ Functionaliteit: leveren van een verblijfplaats
       | type                | RaadpleegMetBurgerservicenummer    |
       | burgerservicenummer | 555550001                          |
       | fields              | burgerservicenummer,verblijfplaats |
-      Dan bevat de persoon met burgerservicenummer '555550001' alleen de volgende 'verblijfplaats' gegevens
-      | naam                        | waarde                 |
-      | type                        | VerblijfplaatsOnbekend |
-      | verblijfplaatsOnbekend      | true                   |
-      | gemeenteVanInschrijving     | 1999                   |
-      | datumInschrijvingInGemeente | 2022-01-28             |
+      Dan heeft de persoon met burgerservicenummer '555550001' de volgende 'verblijfplaats' gegevens
+      | naam                              | waarde                 |
+      | type                              | VerblijfplaatsOnbekend |
+      | verblijfplaatsOnbekend            | true                   |
+      | gemeenteVanInschrijving           | 1999                   |
+      | datumInschrijvingInGemeente.type  | Datum                  |
+      | datumInschrijvingInGemeente.datum | 2022-01-28             |
 
   Rule: Een verblijfplaats is een adres of locatie in het buitenland wanneer land (13.10) een waarde ongelijk aan '0000' (onbekend) heeft
     - veld 'type' krijgt de waarde 'VerblijfplaatsBuitenland'
@@ -49,15 +50,17 @@ Functionaliteit: leveren van een verblijfplaats
       | type                | RaadpleegMetBurgerservicenummer    |
       | burgerservicenummer | 555550001                          |
       | fields              | burgerservicenummer,verblijfplaats |
-      Dan bevat de persoon met burgerservicenummer '555550001' alleen de volgende 'verblijfplaats' gegevens
-      | naam                        | waarde                      |
-      | type                        | VerblijfplaatsBuitenland    |
-      | gemeenteVanInschrijving     | 1999                        |
-      | datumInschrijvingInGemeente | 2002-07-01                  |
-      | land                        | <land>                      |
-      | adresregel1                 | 1600 Pennsylvania Avenue NW |
-      | adresregel2                 | Washington, DC 20500        |
-      | datumVan                    | 2022-01-28                  |
+      Dan heeft de persoon met burgerservicenummer '555550001' de volgende 'verblijfplaats' gegevens
+      | naam                              | waarde                   |
+      | type                              | VerblijfplaatsBuitenland |
+      | gemeenteVanInschrijving.code      | 1999                     |
+      | datumInschrijvingInGemeente.type  | Datum                    |
+      | datumInschrijvingInGemeente.datum | 2002-07-01               |
+      | land.code                         | <land>                   |
+      | adresregel1                       | <adresregel1>            |
+      | adresregel2                       | <adresregel2>            |
+      | datumVan.type                     | Datum                    |
+      | datumVan.datum                    | 2022-01-28               |
 
       Voorbeelden:
       | land | land omschrijving            | adresregel1                 | adresregel2                |
@@ -72,33 +75,37 @@ Functionaliteit: leveren van een verblijfplaats
       | naam                | waarde    |
       | burgerservicenummer | 555550001 |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
-      | naam                                | waarde         |
-      | gemeenteVanInschrijving (09.10)     | 0518           |
-      | datumInschrijvingInGemeente (09.20) | 20020701       |
-      | functieAdres (10.10)                | B              |
-      | datumAanvangAdreshouding (10.30)    | 20220128       |
-      | straat (11.10)                      | Spui           |
-      | huisnummer (11.20)                  | 70             |
-      | postcode (11.60)                    | 2511BT         |
+      | naam                                 | waarde        |
+      | gemeenteVanInschrijving (09.10)      | 0518          |
+      | gemeenteVanInschrijving.omschrijving | 's-Gravenhage |
+      | datumInschrijvingInGemeente (09.20)  | 20020701      |
+      | functieAdres (10.10)                 | B             |
+      | datumAanvangAdreshouding (10.30)     | 20220128      |
+      | straatnaam (11.10)                   | Spui          |
+      | huisnummer (11.20)                   | 70            |
+      | postcode (11.60)                     | 2511BT        |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                             |
       | type                | RaadpleegMetBurgerservicenummer    |
       | burgerservicenummer | 555550001                          |
       | fields              | burgerservicenummer,verblijfplaats |
-      Dan bevat de persoon met burgerservicenummer '555550001' alleen de volgende 'verblijfplaats' gegevens
-      | naam                        | waarde                 |
-      | type                        | Adres                  |
-      | gemeenteVanInschrijving     | 0518                   |
-      | datumInschrijvingInGemeente | 2002-07-01             |
-      | functieAdres                | B                      |
-      | straat                      | Spui                   |
-      | korteNaam                   | Spui                   |
-      | huisnummer                  | 70                     |
-      | postcode                    | 2511BT                 |
-      | woonplaats                  | 's-Gravenhage          |
-      | adresregel1                 | Spui 70                |
-      | adresregel2                 | 2511 BT  'S-GRAVENHAGE |
-      | datumVan                    | 2022-01-28             |
+      Dan heeft de persoon met burgerservicenummer '555550001' de volgende 'verblijfplaats' gegevens
+      | naam                                 | waarde                 |
+      | type                                 | Adres                  |
+      | gemeenteVanInschrijving.code         | 0518                   |
+      | gemeenteVanInschrijving.omschrijving | 's-Gravenhage          |
+      | datumInschrijvingInGemeente.type     | Datum                  |
+      | datumInschrijvingInGemeente.datum    | 2002-07-01             |
+      | functieAdres.code                    | B                      |
+      | straat                               | Spui                   |
+      | korteNaam                            | Spui                   |
+      | huisnummer                           | 70                     |
+      | postcode                             | 2511BT                 |
+      | woonplaats                           | 's-Gravenhage          |
+      | adresregel1                          | Spui 70                |
+      | adresregel2                          | 2511 BT  'S-GRAVENHAGE |
+      | datumVan.type                        | Datum                  |
+      | datumVan.datum                       | 2022-01-28             |
 
   Rule: Een verblijfplaats is een binnenlandse locatie wanneer locatiebeschrijving (12.10) een waarde heeft
     - veld 'type' krijgt de waarde 'Locatie' 
@@ -119,14 +126,15 @@ Functionaliteit: leveren van een verblijfplaats
       | type                | RaadpleegMetBurgerservicenummer    |
       | burgerservicenummer | 555550001                          |
       | fields              | burgerservicenummer,verblijfplaats |
-      Dan bevat de persoon met burgerservicenummer '555550001' alleen de volgende 'verblijfplaats' gegevens
-      | naam                        | waarde                     |
-      | type                        | Locatie                    |
-      | gemeenteVanInschrijving     | 0546                       |
-      | datumInschrijvingInGemeente | 2002-07-01                 |
-      | functieAdres                | W                          |
-      | locatiebeschrijving         | Woonboot in de Grote Sloot |
-      | woonplaats                  | Leiden                     |
-      | adresregel1                 | Woonboot in de Grote Sloot |
-      | adresregel2                 | LEIDEN                     |
-      | datumVan                    | 2022-01-28                 |
+      Dan heeft de persoon met burgerservicenummer '555550001' de volgende 'verblijfplaats' gegevens
+      | naam                              | waarde                     |
+      | type                              | Locatie                    |
+      | gemeenteVanInschrijving.code      | 0546                       |
+      | datumInschrijvingInGemeente.type  | Datum                      |
+      | datumInschrijvingInGemeente.datum | 2002-07-01                 |
+      | functieAdres.code                 | W                          |
+      | locatiebeschrijving               | Woonboot in de Grote Sloot |
+      | woonplaats                        | Leiden                     |
+      | adresregel1                       | Woonboot in de Grote Sloot |
+      | adresregel2                       | LEIDEN                     |
+      | datumVan                          | 2022-01-28                 |

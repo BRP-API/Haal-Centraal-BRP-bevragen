@@ -1,6 +1,6 @@
 # language: nl
 
-@proxy
+@proxy @post-assert
 Functionaliteit: leveren van een datum
 
   Rule: een volledige datum wordt geleverd met een type op basis van de nauwkeurigheid van de waarde
@@ -31,13 +31,13 @@ Functionaliteit: leveren van een datum
       | type                | RaadpleegMetBurgerservicenummer    |
       | burgerservicenummer | 555550001                          |
       | fields              | burgerservicenummer,<groep>.<veld> |
-      Dan bevat de persoon met burgerservicenummer '555550001' alleen de volgende '<groep>.<veld>' gegevens
-      | naam     | waarde     |
-      | type     | <type>     |
-      | datum    | <datum>    |
-      | jaar     | <jaar>     |
-      | maand    | <maand>    |
-      | onbekend | <onbekend> |
+      Dan heeft de persoon met burgerservicenummer '555550001' de volgende '<groep>' gegevens
+      | naam            | waarde     |
+      | <veld>.type     | <type>     |
+      | <veld>.datum    | <datum>    |
+      | <veld>.jaar     | <jaar>     |
+      | <veld>.maand    | <maand>    |
+      | <veld>.onbekend | <onbekend> |
 
       Voorbeelden:
       | groep                 | veld                                  | type           | GbaDatum | datum      | jaar | maand | onbekend |
@@ -87,7 +87,7 @@ Functionaliteit: leveren van een datum
       | kiesrecht             | einddatumUitsluitingKiesrecht         | JaarMaandDatum | 20300700 |            | 2030 | 7     |          |
 
 
-    Scenario: <type> in datumEersteInschrijvingGBA
+    Abstract Scenario: <type> in datumEersteInschrijvingGBA
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                       | waarde     |
       | burgerservicenummer        | 555550001  |
@@ -95,15 +95,16 @@ Functionaliteit: leveren van een datum
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                         |
       | type                | RaadpleegMetBurgerservicenummer                |
-      | burgerservicenummer | 999992934                                      |
+      | burgerservicenummer | 555550001                                      |
       | fields              | burgerservicenummer,datumEersteInschrijvingGBA |
-      Dan bevat de persoon met burgerservicenummer '555550001' alleen de volgende 'datumEersteInschrijvingGBA' gegevens
-      | naam     | waarde     |
-      | type     | <type>     |
-      | datum    | <datum>    |
-      | jaar     | <jaar>     |
-      | maand    | <maand>    |
-      | onbekend | <onbekend> |
+      Dan heeft de persoon met burgerservicenummer '555550001' de volgende gegevens
+      | naam                                | waarde     |
+      | burgerservicenummer                 | 555550001  |
+      | datumEersteInschrijvingGBA.type     | <type>     |
+      | datumEersteInschrijvingGBA.datum    | <datum>    |
+      | datumEersteInschrijvingGBA.jaar     | <jaar>     |
+      | datumEersteInschrijvingGBA.maand    | <maand>    |
+      | datumEersteInschrijvingGBA.onbekend | <onbekend> |
 
       Voorbeelden:
       | type           | GbaDatum | datum      | jaar | maand | onbekend |
@@ -116,25 +117,23 @@ Functionaliteit: leveren van een datum
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550001 |
-      En de persoon heeft een ouder met de volgende gegevens
-      | naam                                    | waarde                                    |
-      | burgerservicenummer                     | 555550002                                 |
-      | datumIngangFamilierechtelijkeBetrekking | <datumIngangFamilierechtelijkeBetrekking> |
+      En de persoon heeft een 'ouder' met de volgende gegevens
+      | naam                                    | waarde     |
+      | burgerservicenummer                     | 555550002  |
+      | datumIngangFamilierechtelijkeBetrekking | <GbaDatum> |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                                             |
       | type                | RaadpleegMetBurgerservicenummer                                    |
       | burgerservicenummer | 555550001                                                          |
       | fields              | burgerservicenummer,ouders.datumIngangFamilierechtelijkeBetrekking |
-      Dan heeft de persoon met burgerservicenummer '555550001' een ouder met de volgende gegevens
-      | burgerservicenummer |
-      | 555550002           |
-      En de ouder met burgerservicenummer '555550002' heeft de volgende 'datumIngangFamilierechtelijkeBetrekking' gegevens
-      | naam     | waarde     |
-      | type     | <type>     |
-      | datum    | <datum>    |
-      | jaar     | <jaar>     |
-      | maand    | <maand>    |
-      | onbekend | <onbekend> |
+      Dan heeft de persoon met burgerservicenummer '555550001' een 'ouder' met de volgende gegevens
+      | naam                                             | waarde     |
+      | burgerservicenummer                              | 555550002  |
+      | datumIngangFamilierechtelijkeBetrekking.type     | <type>     |
+      | datumIngangFamilierechtelijkeBetrekking.datum    | <datum>    |
+      | datumIngangFamilierechtelijkeBetrekking.jaar     | <jaar>     |
+      | datumIngangFamilierechtelijkeBetrekking.maand    | <maand>    |
+      | datumIngangFamilierechtelijkeBetrekking.onbekend | <onbekend> |
 
       Voorbeelden:
       | type           | GbaDatum | datum      | jaar | maand | onbekend |
@@ -147,58 +146,58 @@ Functionaliteit: leveren van een datum
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550001 |
-      En de persoon heeft een <relatie> met de volgende gegevens
-      | naam                  | waarde    |
-      | burgerservicenummer   | 555550002 |
-      En de <relatie> heeft de volgende '<groep>' gegevens
+      En de persoon heeft een '<relatie>' met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 555550002 |
+      En de '<relatie>' heeft de volgende '<groep>' gegevens
       | naam   | waarde     |
       | <veld> | <GbaDatum> |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                       |
-      | type                | RaadpleegMetBurgerservicenummer              |
-      | burgerservicenummer | 555550001                                    |
-      | fields              | burgerservicenummer,<relatie>.<groep>.<veld> |
-      Dan heeft de persoon met burgerservicenummer '555550001' een <relatie> met de volgende gegevens
+      | naam                | waarde                                     |
+      | type                | RaadpleegMetBurgerservicenummer            |
+      | burgerservicenummer | 555550001                                  |
+      | fields              | burgerservicenummer,<field>.<groep>.<veld> |
+      Dan heeft de persoon met burgerservicenummer '555550001' een '<relatie>' met de volgende gegevens
       | burgerservicenummer |
       | 555550002           |
-      En de <relatie> met burgerservicenummer '555550002' heeft de volgende '<groep>.<veld>' gegevens
-      | naam     | waarde     |
-      | type     | <type>     |
-      | datum    | <datum>    |
-      | jaar     | <jaar>     |
-      | maand    | <maand>    |
-      | onbekend | <onbekend> |
+      En de '<relatie>' met burgerservicenummer '555550002' heeft de volgende '<groep>' gegevens
+      | naam            | waarde     |
+      | <veld>.type     | <type>     |
+      | <veld>.datum    | <datum>    |
+      | <veld>.jaar     | <jaar>     |
+      | <veld>.maand    | <maand>    |
+      | <veld>.onbekend | <onbekend> |
 
       Voorbeelden:
-      | relatie  | groep                       | veld                 | type           | GbaDatum | datum      | jaar | maand | onbekend |
-      | ouders   | geboorte                    | datum                | Datum          | 20200308 | 2020-03-08 |      |       |          |
-      | ouders   | geboorte                    | datum                | OnbekendDatum  | 00000000 |            |      |       | true     |
-      | ouders   | geboorte                    | datum                | JaarDatum      | 20200000 |            | 2020 |       |          |
-      | ouders   | geboorte                    | datum                | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
-      | ouders   | inOnderzoek                 | datumIngangOnderzoek | Datum          | 20200308 | 2020-03-08 |      |       |          |
-      | ouders   | inOnderzoek                 | datumIngangOnderzoek | OnbekendDatum  | 00000000 |            |      |       | true     |
-      | ouders   | inOnderzoek                 | datumIngangOnderzoek | JaarDatum      | 20200000 |            | 2020 |       |          |
-      | ouders   | inOnderzoek                 | datumIngangOnderzoek | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
-      | partners | geboorte                    | datum                | Datum          | 20200308 | 2020-03-08 |      |       |          |
-      | partners | geboorte                    | datum                | OnbekendDatum  | 00000000 |            |      |       | true     |
-      | partners | geboorte                    | datum                | JaarDatum      | 20200000 |            | 2020 |       |          |
-      | partners | geboorte                    | datum                | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
-      | partners | aangaanHuwelijkPartnerschap | datum                | Datum          | 20200308 | 2020-03-08 |      |       |          |
-      | partners | aangaanHuwelijkPartnerschap | datum                | OnbekendDatum  | 00000000 |            |      |       | true     |
-      | partners | aangaanHuwelijkPartnerschap | datum                | JaarDatum      | 20200000 |            | 2020 |       |          |
-      | partners | aangaanHuwelijkPartnerschap | datum                | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
-      | partners | inOnderzoek                 | datumIngangOnderzoek | Datum          | 20200308 | 2020-03-08 |      |       |          |
-      | partners | inOnderzoek                 | datumIngangOnderzoek | OnbekendDatum  | 00000000 |            |      |       | true     |
-      | partners | inOnderzoek                 | datumIngangOnderzoek | JaarDatum      | 20200000 |            | 2020 |       |          |
-      | partners | inOnderzoek                 | datumIngangOnderzoek | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
-      | kinderen | geboorte                    | datum                | Datum          | 20200308 | 2020-03-08 |      |       |          |
-      | kinderen | geboorte                    | datum                | OnbekendDatum  | 00000000 |            |      |       | true     |
-      | kinderen | geboorte                    | datum                | JaarDatum      | 20200000 |            | 2020 |       |          |
-      | kinderen | geboorte                    | datum                | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
-      | kinderen | inOnderzoek                 | datumIngangOnderzoek | Datum          | 20200308 | 2020-03-08 |      |       |          |
-      | kinderen | inOnderzoek                 | datumIngangOnderzoek | OnbekendDatum  | 00000000 |            |      |       | true     |
-      | kinderen | inOnderzoek                 | datumIngangOnderzoek | JaarDatum      | 20200000 |            | 2020 |       |          |
-      | kinderen | inOnderzoek                 | datumIngangOnderzoek | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
+      | relatie | field    | groep                       | veld                 | type           | GbaDatum | datum      | jaar | maand | onbekend |
+      | ouder   | ouders   | geboorte                    | datum                | Datum          | 20200308 | 2020-03-08 |      |       |          |
+      | ouder   | ouders   | geboorte                    | datum                | OnbekendDatum  | 00000000 |            |      |       | true     |
+      | ouder   | ouders   | geboorte                    | datum                | JaarDatum      | 20200000 |            | 2020 |       |          |
+      | ouder   | ouders   | geboorte                    | datum                | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
+      | ouder   | ouders   | inOnderzoek                 | datumIngangOnderzoek | Datum          | 20200308 | 2020-03-08 |      |       |          |
+      | ouder   | ouders   | inOnderzoek                 | datumIngangOnderzoek | OnbekendDatum  | 00000000 |            |      |       | true     |
+      | ouder   | ouders   | inOnderzoek                 | datumIngangOnderzoek | JaarDatum      | 20200000 |            | 2020 |       |          |
+      | ouder   | ouders   | inOnderzoek                 | datumIngangOnderzoek | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
+      | partner | partners | geboorte                    | datum                | Datum          | 20200308 | 2020-03-08 |      |       |          |
+      | partner | partners | geboorte                    | datum                | OnbekendDatum  | 00000000 |            |      |       | true     |
+      | partner | partners | geboorte                    | datum                | JaarDatum      | 20200000 |            | 2020 |       |          |
+      | partner | partners | geboorte                    | datum                | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
+      | partner | partners | aangaanHuwelijkPartnerschap | datum                | Datum          | 20200308 | 2020-03-08 |      |       |          |
+      | partner | partners | aangaanHuwelijkPartnerschap | datum                | OnbekendDatum  | 00000000 |            |      |       | true     |
+      | partner | partners | aangaanHuwelijkPartnerschap | datum                | JaarDatum      | 20200000 |            | 2020 |       |          |
+      | partner | partners | aangaanHuwelijkPartnerschap | datum                | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
+      | partner | partners | inOnderzoek                 | datumIngangOnderzoek | Datum          | 20200308 | 2020-03-08 |      |       |          |
+      | partner | partners | inOnderzoek                 | datumIngangOnderzoek | OnbekendDatum  | 00000000 |            |      |       | true     |
+      | partner | partners | inOnderzoek                 | datumIngangOnderzoek | JaarDatum      | 20200000 |            | 2020 |       |          |
+      | partner | partners | inOnderzoek                 | datumIngangOnderzoek | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
+      | kind    | kinderen | geboorte                    | datum                | Datum          | 20200308 | 2020-03-08 |      |       |          |
+      | kind    | kinderen | geboorte                    | datum                | OnbekendDatum  | 00000000 |            |      |       | true     |
+      | kind    | kinderen | geboorte                    | datum                | JaarDatum      | 20200000 |            | 2020 |       |          |
+      | kind    | kinderen | geboorte                    | datum                | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
+      | kind    | kinderen | inOnderzoek                 | datumIngangOnderzoek | Datum          | 20200308 | 2020-03-08 |      |       |          |
+      | kind    | kinderen | inOnderzoek                 | datumIngangOnderzoek | OnbekendDatum  | 00000000 |            |      |       | true     |
+      | kind    | kinderen | inOnderzoek                 | datumIngangOnderzoek | JaarDatum      | 20200000 |            | 2020 |       |          |
+      | kind    | kinderen | inOnderzoek                 | datumIngangOnderzoek | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
 
   Rule: verblijfplaats datumVan wordt gevuld uit datumAanvangAdreshouding of datumAanvangAdresBuitenland
 
@@ -215,13 +214,13 @@ Functionaliteit: leveren van een datum
       | type                | RaadpleegMetBurgerservicenummer             |
       | burgerservicenummer | 999992934                                   |
       | fields              | burgerservicenummer,verblijfplaats.datumVan |
-      Dan bevat de persoon met burgerservicenummer '555550001' de volgende 'verblijfplaats.datumVan' gegevens
+      Dan heeft de persoon met burgerservicenummer '555550001' de volgende 'verblijfplaats' gegevens
       | naam     | waarde     |
-      | type     | <type>     |
-      | datum    | <datum>    |
-      | jaar     | <jaar>     |
-      | maand    | <maand>    |
-      | onbekend | <onbekend> |
+      | datumVan.type     | <type>     |
+      | datumVan.datum    | <datum>    |
+      | datumVan.jaar     | <jaar>     |
+      | datumVan.maand    | <maand>    |
+      | datumVan.onbekend | <onbekend> |
 
       Voorbeelden:
       | titel                                            | datumAanvangAdreshouding | datumAanvangAdresBuitenland | type           | datum      | jaar | maand | onbekend |
