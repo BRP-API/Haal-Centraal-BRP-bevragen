@@ -211,7 +211,7 @@ namespace HaalCentraal.BrpService.Generated
     public partial class BadRequestFoutbericht : Foutbericht
     {
         /// <summary>
-        /// Foutmelding per fout in een parameter. Alle gevonden fouten worden ��n keer teruggemeld.
+        /// Foutmelding per fout in een parameter. Alle gevonden fouten worden één keer teruggemeld.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("invalidParams", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.List<InvalidParams> InvalidParams { get; set; }
@@ -849,7 +849,7 @@ namespace HaalCentraal.BrpService.Generated
 
     /// <summary>
     /// Gegevens over de verblijfsrechtelijke status van de persoon.
-    /// <br/>* **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is be�indigd.
+    /// <br/>* **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd.
     /// <br/>* **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.
     /// <br/>* **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt.
     /// <br/>

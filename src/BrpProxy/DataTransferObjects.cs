@@ -203,7 +203,7 @@ namespace HaalCentraal.BrpProxy.Generated
     public partial class BadRequestFoutbericht : Foutbericht
     {
         /// <summary>
-        /// Foutmelding per fout in een parameter. Alle gevonden fouten worden ��n keer teruggemeld.
+        /// Foutmelding per fout in een parameter. Alle gevonden fouten worden één keer teruggemeld.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("invalidParams", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<InvalidParams> InvalidParams { get; set; }
@@ -1441,7 +1441,7 @@ namespace HaalCentraal.BrpProxy.Generated
 
     /// <summary>
     /// Gegevens over de verblijfsrechtelijke status van de persoon.
-    /// <br/>* **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is be�indigd.
+    /// <br/>* **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd.
     /// <br/>* **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.
     /// <br/>* **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt.
     /// <br/>
@@ -1518,9 +1518,6 @@ namespace HaalCentraal.BrpProxy.Generated
         [Newtonsoft.Json.JsonProperty("burgerservicenummer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Burgerservicenummer { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("leeftijd", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Leeftijd { get; set; }
-
         [Newtonsoft.Json.JsonProperty("inOnderzoek", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public KindInOnderzoek InOnderzoek { get; set; }
 
@@ -1541,9 +1538,6 @@ namespace HaalCentraal.BrpProxy.Generated
     {
         [Newtonsoft.Json.JsonProperty("burgerservicenummer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? Burgerservicenummer { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("leeftijd", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? Leeftijd { get; set; }
 
     }
 
@@ -1632,6 +1626,9 @@ namespace HaalCentraal.BrpProxy.Generated
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class OnbekendOuder : AbstractOuder
     {
+        [Newtonsoft.Json.JsonProperty("ouderAanduiding", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public Waardetabel OuderAanduiding { get; set; }
+
         [Newtonsoft.Json.JsonProperty("indicatieOnbekend", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? IndicatieOnbekend { get; set; } = false;
 
