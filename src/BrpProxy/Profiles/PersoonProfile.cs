@@ -11,6 +11,7 @@ public class PersoonProfile : Profile
     {
         CreateMap<GbaPersoonBeperkt, PersoonBeperkt>();
         CreateMap<GbaPersoon, Persoon>()
+            .ForMember(dest => dest.DatumEersteInschrijvingGBA, opt => opt.MapFrom(src => src.DatumEersteInschrijvingGBA.Map()))
             .ForMember(dest => dest.GeheimhoudingPersoonsgegevens, opt => opt.MapFrom(src => src.Geheimhouding()));
     }
 }
