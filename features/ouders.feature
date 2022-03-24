@@ -10,7 +10,7 @@ Rule: "ouder1" is de ouder in categorie 2 en "ouder2" is de ouder in categorie 3
 
   @gba
   Scenario: Persoon heeft twee ouders
-    Gegeven de persoon met burgerservienummer 999993653 heeft de volgende ouders in de registratie
+    Gegeven de persoon met burgerservicenummer 999993653 heeft de volgende ouders in de registratie
     | Categorie | Voornamen (02.10)  |
     | 2         | Lisette            |
     | 3         | Guîllaumé          |
@@ -39,7 +39,7 @@ Rule: de actuele gegevens van ouders worden geleverd
 
   @gba
   Scenario: oudergegevens gecorrigeerd
-    Gegeven de persoon met burgerservienummer 999996186 heeft de volgende ouders in de registratie
+    Gegeven de persoon met burgerservicenummer 999996186 heeft de volgende ouders in de registratie
     | Categorie | Voornamen (02.10)  | Onjuist (84.10) |
     | 2         | Chantal            |                 |
     | 3         | Mark               |                 |
@@ -66,7 +66,7 @@ Rule: de actuele gegevens van ouders worden geleverd
 
   @gba
   Scenario: geslachtswijziging ouder
-    Gegeven de persoon met burgerservienummer 555550001 heeft de volgende ouders in de registratie
+    Gegeven de persoon met burgerservicenummer 555550001 heeft de volgende ouders in de registratie
     | Categorie | Voornamen (02.10)  | Geslachtsaanduiding (04.10) |
     | 2         | Noa                | V                           |
     | 3         | Johanna            | V                           |
@@ -95,7 +95,7 @@ Rule: de actuele gegevens van ouders worden geleverd
 
   @gba
   Scenario: adoptie
-    Gegeven de persoon met burgerservienummer 999996629 heeft de volgende ouders in de registratie
+    Gegeven de persoon met burgerservicenummer 999996629 heeft de volgende ouders in de registratie
     | Categorie | Voornamen (02.10)  | Datum ingang familierechtelijke betrekking (62.10) | Onjuist (84.10) |
     | 2         | Olivia Ghislaine   | 20190317                                           |                 |
     | 52        | Me'Lisa            | 20170106                                           |                 |
@@ -127,17 +127,17 @@ Rule: de actuele gegevens van ouders worden geleverd
 
   @gba
   Scenario: ontkenning gevolgd door erkenning
-    Gegeven de persoon met burgerservienummer 999996162 heeft de volgende ouders in de registratie
+    Gegeven de persoon met burgerservicenummer 999996162 heeft de volgende ouders in de registratie
     | Categorie | Voornamen (02.10)  | Onjuist (84.10) |
     | 2         | Chantal            |                 |
     | 3         | Wieger             |                 |
     | 53        |                    |                 |
     | 53        | Mark               | O               |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                              |
-    | type                | RaadpleegMetBurgerservicenummer                     |
-    | burgerservicenummer | 999996162                                           |
-    | fields              | ouders.ouderAanduiding,ouders.naam.voornamen,ouders |
+    | naam                | waarde                                       |
+    | type                | RaadpleegMetBurgerservicenummer              |
+    | burgerservicenummer | 999996162                                    |
+    | fields              | ouders.ouderAanduiding,ouders.naam.voornamen |
     Dan heeft de ouder met ouderAanduiding 'ouder1' de volgende gegevens
     | naam            | waarde |
     | type            | Ouder  |
@@ -188,7 +188,7 @@ Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenome
 
   @gba
   Scenario: vondeling (onbekende ouder1 en geen ouder2)
-    Gegeven de persoon met burgerservienummer 999993008 heeft de volgende ouders in de registratie
+    Gegeven de persoon met burgerservicenummer 999993008 heeft de volgende ouders in de registratie
     | Categorie | Voornamen (02.10)  | Geslachtsnaam | Geboortedatum (03.10) | Geslachtsaanduiding (04.10) | Datum ingang familierechtelijke betrekking (62.10) |
     | 2         |                    | .             |                       | V                           | 20190614                                           |
     | 3         |                    |               |                       |                             |                                                    |
@@ -214,8 +214,8 @@ Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenome
     | geslachtsnaam | .      |
 
   @gba
-  Scenario: vondeling (onbekende ouder1 en geen ouder2)
-    Gegeven de persoon met burgerservienummer 555550001 heeft de volgende ouders in de registratie
+  Scenario: volledig onbekende ouder
+    Gegeven de persoon met burgerservicenummer 555550001 heeft de volgende ouders in de registratie
     | Categorie | Voornamen (02.10)  | Geslachtsnaam | Geboortedatum (03.10) | Geslachtsaanduiding (04.10) | Datum ingang familierechtelijke betrekking (62.10) |
     | 2         |                    | .             |                       |                             | 00000000                                           |
     | 3         |                    |               |                       |                             |                                                    |
@@ -241,7 +241,7 @@ Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenome
 
   @gba
   Scenario: met fields vragen om gegevens zonder waarde
-    Gegeven de persoon met burgerservienummer 555550001 heeft de volgende ouders in de registratie
+    Gegeven de persoon met burgerservicenummer 555550001 heeft de volgende ouders in de registratie
     | Categorie | Voornamen (02.10)  | Geslachtsnaam | Geboortedatum (03.10) | Geslachtsaanduiding (04.10) | Datum ingang familierechtelijke betrekking (62.10) |
     | 2         |                    | Jansen        |                       | V                           | 20190614                                           |
     | 3         |                    |               |                       |                             |                                                    |
@@ -256,7 +256,7 @@ Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenome
 
 @proxy
 Rule: Wanneer de geslachtsnaam van de ouder onbekend is, wordt de ouder geleverd met type "OnbekendOuder" en indicatieOnbekend met waarde true
-  - Dit is het geval wanneer geslachtsnaam dan de standaardwaarde "." heeft
+  - Dit is het geval wanneer geslachtsnaam leeg is of de standaardwaarde "." heeft
   - Wanneer van de ouder wel gegevens geregistreerd zijn, maar geen van de met fields gevraagde gegevens heeft een waarde, dan is het type "Ouder" en wordt indicatieOnbekend NIET opgenomen
   
   # Onderliggende aanname is dat wanneer de geslachtsnaam van de ouder onbekend is, ook andere naamgegevens niet bekend zijn of niet relevant.
