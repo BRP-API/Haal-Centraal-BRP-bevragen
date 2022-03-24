@@ -569,7 +569,7 @@ components:
         nationaliteiten:
           type: array
           items:
-            $ref: '#/components/schemas/Nationaliteit'
+            $ref: '#/components/schemas/AbstractNationaliteit'
         geboorte:
           $ref: '#/components/schemas/Geboorte'
         opschortingBijhouding:
@@ -1080,19 +1080,6 @@ components:
             type: boolean
           voorletters:
             type: boolean
-    Nationaliteit:
-      description: |
-        * **redenOpname** : De reden op grond waarvan de persoon de nationaliteit gekregen heeft.
-      allOf:
-      - $ref: '#/components/schemas/AbstractNationaliteit'
-      - type: object
-        properties:
-          datumIngangGeldigheid:
-            $ref: '#/components/schemas/AbstractDatum'
-          nationaliteit:
-            $ref: '#/components/schemas/Waardetabel'
-          inOnderzoek:
-            $ref: '#/components/schemas/NationaliteitInOnderzoek'
     AbstractNationaliteit:
       required:
       - type
@@ -1108,6 +1095,30 @@ components:
           Nationaliteit: '#/components/schemas/Nationaliteit'
           BehandeldAlsNederlander: '#/components/schemas/BehandeldAlsNederlander'
           VastgesteldNietNederlander: '#/components/schemas/VastgesteldNietNederlander'
+    Nationaliteit:
+      description: |
+        * **redenOpname** : De reden op grond waarvan de persoon de nationaliteit gekregen heeft.
+      allOf:
+      - $ref: '#/components/schemas/AbstractNationaliteit'
+      - type: object
+        properties:
+          datumIngangGeldigheid:
+            $ref: '#/components/schemas/AbstractDatum'
+          nationaliteit:
+            $ref: '#/components/schemas/Waardetabel'
+          inOnderzoek:
+            $ref: '#/components/schemas/NationaliteitInOnderzoek'
+    NationaliteitInOnderzoek:
+      description: |
+        Geeft aan welke gegevens over de nationaliteit in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      allOf:
+      - $ref: '#/components/schemas/InOnderzoek'
+      - type: object
+        properties:
+          nationaliteit:
+            type: boolean
+          redenOpname:
+            type: boolean
     BehandeldAlsNederlander:
       allOf:
       - $ref: '#/components/schemas/AbstractNationaliteit'
@@ -1135,17 +1146,6 @@ components:
             $ref: '#/components/schemas/AbstractDatum'
           inOnderzoek:
             $ref: '#/components/schemas/BijzonderNederlanderschapInOnderzoek'
-    NationaliteitInOnderzoek:
-      description: |
-        Geeft aan welke gegevens over de nationaliteit in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
-      allOf:
-      - $ref: '#/components/schemas/InOnderzoek'
-      - type: object
-        properties:
-          nationaliteit:
-            type: boolean
-          redenOpname:
-            type: boolean
     Geboorte:
       description: |
         Gegevens over de geboorte.
@@ -1563,8 +1563,6 @@ components:
         properties:
           burgerservicenummer:
             $ref: '#/components/schemas/Burgerservicenummer'
-          leeftijd:
-            $ref: '#/components/schemas/Leeftijd'
           inOnderzoek:
             $ref: '#/components/schemas/KindInOnderzoek'
           naam:
@@ -1579,8 +1577,6 @@ components:
       - type: object
         properties:
           burgerservicenummer:
-            type: boolean
-          leeftijd:
             type: boolean
     OnbekendKind:
       allOf:
@@ -1647,6 +1643,8 @@ components:
       - $ref: '#/components/schemas/AbstractOuder'
       - type: object
         properties:
+          ouderAanduiding:
+            $ref: '#/components/schemas/Waardetabel'
           indicatieOnbekend:
             type: boolean
             default: false
