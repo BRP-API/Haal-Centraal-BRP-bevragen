@@ -4,12 +4,18 @@ Functionaliteit: autorisatie voor het gebruik van de API
 
   Achtergrond:
     Gegeven de gebruiker is geautoriseerd voor alleen de volgende velden  
-      | naam                | elementnummer |
-      | burgerservicenummer | 01.01.20      |
-      | naam.voornamen      | 01.02.10      |
-      | naam.voorvoegsel    | 01.02.30      |
-      | naam.geslachtsnaam  | 01.02.40      |
-      | geboorte.datum      | 01.03.10      |
+      | naam                                         | elementnummer |
+      | burgerservicenummer                          | 01.01.20      |
+      | naam.voornamen                               | 01.02.10      |
+      | naam.voorvoegsel                             | 01.02.30      |
+      | naam.geslachtsnaam                           | 01.02.40      |
+      | geboorte.datum                               | 01.03.10      |
+      | verblijfplaats.gemeenteVanInschrijving       | 08.09.10      |
+      | verblijfplaats.korteNaam                     | 08.11.10      |
+      | verblijfplaats.straat                        | 08.11.15      |
+      | verblijfplaats.huisnummer                    | 08.11.20      |
+      | verblijfplaats.postcode                      | 08.11.60      |
+      | verblijfplaats.nummeraanduidingIdentificatie | 08.11.90      |
 
   Rule: Een parameter mag alleen worden gebruikt bij zoeken wanneer de gebruiker voor dit gegeven geautoriseerd is
 
@@ -32,18 +38,19 @@ Functionaliteit: autorisatie voor het gebruik van de API
 
     Scenario: gebruik van meerdere parameters waarvoor de gebruiker niet geautoriseerd is
       Als personen wordt gezocht met de volgende parameters
-      | naam       | waarde                                            |
-      | type       | ZoekMetPostcodeEnHuisnummer                       |
-      | postcode   | 1234AB                                            |
-      | huisnummer | 123                                               |
-      | huisletter | a                                                 |
-      | fields     | burgerservicenummer,naam.voornamen,geboorte.datum |
+      | naam                 | waarde                                            |
+      | type                 | ZoekMetPostcodeEnHuisnummer                       |
+      | postcode             | 1234AB                                            |
+      | huisnummer           | 123                                               |
+      | huisletter           | a                                                 |
+      | huisnummertoevoeging | bis                                               |
+      | fields               | burgerservicenummer,naam.voornamen,geboorte.datum |
       Dan heeft de response een object met de volgende gegevens
       | naam     | waarde                                                                                                      |
       | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
       | title    | U bent niet geautoriseerd voor de gebruikte parameter(s).                                                   |
       | status   | 403                                                                                                         |
-      | detail   | U bent niet geautoriseerd voor het gebruik van parameter(s): postcode,huisnummer,huisletter.                |
+      | detail   | U bent niet geautoriseerd voor het gebruik van parameter(s): huisletter,huisnummertoevoeging.               |
       | code     | unauthorizedParameter                                                                                       |
       | instance | /haalcentraal/api/brp/personen                                                                              |
       
@@ -89,7 +96,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
     # is verbieden van ZoekMetNummeraanduidingIdentificatie terecht? Een nummeraanduiding is een code voor combinatie postcode + huisnummer
 
     @gba
-    Abstract Scenario: ongeautoriseerd zoeken zonder adresvraagbevoegdheid
+    Abstract Scenario: <type> zoeken zonder adresvraagbevoegdheid
       Gegeven in autorisatietabel van de gebruiker heeft Adresvraagbevoegdheid (35.95.66) de waarde "0"
       Als personen wordt gezocht met de volgende parameters
       | naam                          | waarde                                            |
@@ -102,8 +109,13 @@ Functionaliteit: autorisatie voor het gebruik van de API
       Dan heeft de response een object met de volgende gegevens
       | naam     | waarde                                                                                                      |
       | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-      | title    | U bent niet geautoriseerd voor de gebruikte parametercombinatie.                                            |
+      | title    | U bent niet geautoriseerd voor het gebruikte zoektype.                                                      |
       | status   | 403                                                                                                         |
       | detail   | U bent niet geautoriseerd voor zoektype: <type>.                                                            |
       | code     | unauthorizedFields                                                                                          |
       | instance | /haalcentraal/api/brp/personen                                                                              |
+
+      Voorbeelden:
+      | type                                             | nummeraanduidingIdentificatie | gemeenteVanInschrijving | straat | huisnummer |
+      | ZoekMetNummeraanduidingIdentificatie             | 0518200000366054              |                         |        |            |
+      | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |                               | 0519                    | Spuit  | 70         |
