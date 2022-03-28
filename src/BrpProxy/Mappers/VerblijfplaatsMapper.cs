@@ -74,8 +74,8 @@ public static class VerblijfplaatsMapper
 
     public static string? MapAdresregel2(this GbaVerblijfplaats verblijfplaats)
     {
-        var postcodeNum = verblijfplaats.Postcode[0..4];
-        var postcodeAlfa = verblijfplaats.Postcode[4..];
+        var postcodeNum = verblijfplaats.Postcode != null ? verblijfplaats.Postcode[0..4] : String.Empty;
+        var postcodeAlfa = verblijfplaats.Postcode != null ? verblijfplaats.Postcode[4..] : String.Empty;
 
         return $"{postcodeNum} {postcodeAlfa}  {verblijfplaats.MapWoonplaats()?.ToUpperInvariant()}";
     }
