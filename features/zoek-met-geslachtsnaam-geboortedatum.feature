@@ -74,7 +74,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum                   |
     | geslachtsnaam | <geslachtsnaam>                                       |
     | geboortedatum | 1983-05-26                                            |
-    | fields        | burgerservicenummer |
+    | fields        | burgerservicenummer                                   |
     Dan heeft de response 0 personen
 
     Voorbeelden:
@@ -105,7 +105,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | fields        | burgerservicenummer                 |
     Dan heeft de response 1 persoon
     En heeft de persoon met burgerservicenummer '<burgerservicenummer>' de volgende gegevens
-    | naam                | waarde    |
+    | naam                | waarde                |
     | burgerservicenummer | <burgerservicenummer> |
 
     Voorbeelden:
@@ -204,7 +204,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | code     | paramsCombination                                                                                           |
     | instance | /haalcentraal/api/brp/personen                                                                              |
     En heeft het object de volgende 'invalidParams' gegevens
-    | code     | name                | reason                  |
+    | code     | name          | reason                  |
     | required | geboortedatum | Parameter is verplicht. |
     | required | geslachtsnaam | Parameter is verplicht. |
 
