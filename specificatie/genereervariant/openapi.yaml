@@ -1411,7 +1411,7 @@ components:
           datumInschrijvingInGemeente:
             $ref: '#/components/schemas/AbstractDatum'
           gemeenteVanInschrijving:
-            $ref: '#/components/schemas/GemeenteVanInschrijving'
+            $ref: '#/components/schemas/Waardetabel'
           verblijfplaatsOnbekend:
             $ref: '#/components/schemas/IndicatieVerblijfplaatsOnbekend'
           inOnderzoek:
@@ -1439,6 +1439,8 @@ components:
           datumInschrijvingInGemeente:
             $ref: '#/components/schemas/AbstractDatum'
           datumVestigingInNederland:
+            $ref: '#/components/schemas/AbstractDatum'
+          datumVan:
             $ref: '#/components/schemas/AbstractDatum'
           functieAdres:
             $ref: '#/components/schemas/Waardetabel'
@@ -1468,6 +1470,8 @@ components:
           datumInschrijvingInGemeente:
             type: boolean
           datumVestigingInNederland:
+            type: boolean
+          datumVan:
             type: boolean
           functieAdres:
             type: boolean
