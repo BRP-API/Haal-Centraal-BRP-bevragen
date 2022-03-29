@@ -18,7 +18,7 @@ Functionaliteit: Adresvelden vullen
       | type                | RaadpleegMetBurgerservicenummer                                    |
       | burgerservicenummer | <burgerservicenummer>                                              |
       | fields              | burgerservicenummer,verblijfplaats.straat,verblijfplaats.korteNaam |
-      Dan heeft de persoon met burgerservicenummer '<burgerservicenummer>' de volgende 'verblijfplaats' gegevens
+      Dan heeft de persoon met burgerservicenummer '<burgerservicenummer>' alleen de volgende 'verblijfplaats' gegevens
       | naam      | waarde      |
       | type      | Adres       |
       | straat    | <straat>    |
@@ -46,7 +46,7 @@ Functionaliteit: Adresvelden vullen
       | type                | RaadpleegMetBurgerservicenummer                                                      |
       | burgerservicenummer | <burgerservicenummer>                                                                |
       | fields              | burgerservicenummer,verblijfplaats.woonplaats,verblijfplaats.gemeenteVanInschrijving |
-      Dan heeft de persoon met burgerservicenummer '<burgerservicenummer>' de volgende 'verblijfplaats' gegevens
+      Dan heeft de persoon met burgerservicenummer '<burgerservicenummer>' alleen de volgende 'verblijfplaats' gegevens
       | naam                                 | waarde        |
       | type                                 | Adres         |
       | gemeenteVanInschrijving.code         | 0518          |
@@ -82,7 +82,7 @@ Functionaliteit: Adresvelden vullen
       | type                | RaadpleegMetBurgerservicenummer                |
       | burgerservicenummer | <burgerservicenummer>                          |
       | fields              | burgerservicenummer,verblijfplaats.adresregel1 |
-      Dan heeft de persoon met burgerservicenummer '<burgerservicenummer>' de volgende 'verblijfplaats' gegevens
+      Dan heeft de persoon met burgerservicenummer '<burgerservicenummer>' alleen de volgende 'verblijfplaats' gegevens
       | naam        | waarde        |
       | type        | Adres         |
       | adresregel1 | <adresregel1> |
@@ -112,7 +112,7 @@ Functionaliteit: Adresvelden vullen
       | type                | RaadpleegMetBurgerservicenummer                |
       | burgerservicenummer | 000009921                                      |
       | fields              | burgerservicenummer,verblijfplaats.adresregel1 |
-      Dan heeft de persoon met burgerservicenummer '000009921' de volgende 'verblijfplaats' gegevens
+      Dan heeft de persoon met burgerservicenummer '000009921' alleen de volgende 'verblijfplaats' gegevens
       | naam        | waarde                     |
       | type        | Locatie                    |
       | adresregel1 | Woonboot in de Grote Sloot |
@@ -140,15 +140,15 @@ Functionaliteit: Adresvelden vullen
       | type                | RaadpleegMetBurgerservicenummer                |
       | burgerservicenummer | <burgerservicenummer>                          |
       | fields              | burgerservicenummer,verblijfplaats.adresregel2 |
-      Dan heeft de persoon met burgerservicenummer '<burgerservicenummer>' de volgende 'verblijfplaats' gegevens
+      Dan heeft de persoon met burgerservicenummer '<burgerservicenummer>' alleen de volgende 'verblijfplaats' gegevens
       | naam        | waarde        |
       | type        | Adres         |
       | adresregel2 | <adresregel2> |
 
       Voorbeelden:
-      | omschrijving                           | burgerservicenummer | woonplaatsnaam | postcode | locatiebeschrijving | adresregel2            |
-      | woonplaatsnaam anders dan gemeentenaam | 999992922           | Scheveningen   | 2583XL   |                     | 2583 XL  SCHEVENINGEN  |
-      | geen woonplaatsnaam                    | 999990639           |                | 2584BZ   |                     | 2584 BZ  'S-GRAVENHAGE |
+      | omschrijving                           | burgerservicenummer | woonplaatsnaam | postcode | adresregel2            |
+      | woonplaatsnaam anders dan gemeentenaam | 999992922           | Scheveningen   | 2583XL   | 2583 XL  SCHEVENINGEN  |
+      | geen woonplaatsnaam                    | 999990639           |                | 2584BZ   | 2584 BZ  'S-GRAVENHAGE |
 
     Scenario: adresregel voor locatie
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -164,7 +164,7 @@ Functionaliteit: Adresvelden vullen
       | type                | RaadpleegMetBurgerservicenummer                |
       | burgerservicenummer | 000009921                                      |
       | fields              | burgerservicenummer,verblijfplaats.adresregel2 |
-      Dan heeft de persoon met burgerservicenummer '000009921' de volgende 'verblijfplaats' gegevens
+      Dan heeft de persoon met burgerservicenummer '000009921' alleen de volgende 'verblijfplaats' gegevens
       | naam        | waarde        |
       | type        | Locatie       |
       | adresregel2 | 'S-GRAVENHAGE |
@@ -188,7 +188,7 @@ Functionaliteit: Adresvelden vullen
       | type                | RaadpleegMetBurgerservicenummer    |
       | burgerservicenummer | 999993483                          |
       | fields              | burgerservicenummer,verblijfplaats |
-      Dan heeft de persoon met burgerservicenummer '999993483' de volgende 'verblijfplaats' gegevens
+      Dan heeft de persoon met burgerservicenummer '999993483' alleen de volgende 'verblijfplaats' gegevens
       | naam                         | waarde                   |
       | type                         | VerblijfplaatsBuitenland |
       | adresregel1                  | Rue du pomme 25          |
@@ -212,7 +212,7 @@ Functionaliteit: Adresvelden vullen
       | type                | RaadpleegMetBurgerservicenummer    |
       | burgerservicenummer | 999993586                          |
       | fields              | burgerservicenummer,verblijfplaats |
-      Dan heeft de persoon met burgerservicenummer '999993586' de volgende 'verblijfplaats' gegevens
+      Dan heeft de persoon met burgerservicenummer '999993586' alleen de volgende 'verblijfplaats' gegevens
       | naam                   | waarde                 |
       | type                   | VerblijfplaatsOnbekend |
       | verblijfplaatsOnbekend | true                   |
