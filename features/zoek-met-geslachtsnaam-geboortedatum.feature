@@ -192,6 +192,63 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     Als personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | fields        | burgerservicenummer                 |
+    Dan heeft de response een object met de volgende gegevens
+    | naam     | waarde                                                                                                      |
+    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
+    | title    | Minimale combinatie van parameters moet worden opgegeven.                                                   |
+    | status   | 400                                                                                                         |
+    | detail   | De foutieve parameter(s) zijn: geboortedatum, geslachtsnaam.                                                |
+    | code     | paramsCombination                                                                                           |
+    | instance | /haalcentraal/api/brp/personen                                                                              |
+    En heeft het object de volgende 'invalidParams' gegevens
+    | code     | name          | reason                  |
+    | required | geboortedatum | Parameter is verplicht. |
+    | required | geslachtsnaam | Parameter is verplicht. |
+
+  @fout-case
+  Scenario: Zoek zonder geslachtsnaam 
+    Als personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geboortedatum | 1983-05-26                          |
+    | fields        | burgerservicenummer                 |
+    Dan heeft de response een object met de volgende gegevens
+    | naam     | waarde                                                                                                      |
+    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
+    | title    | Minimale combinatie van parameters moet worden opgegeven.                                                   |
+    | status   | 400                                                                                                         |
+    | detail   | De foutieve parameter(s) zijn: geslachtsnaam.                                                               |
+    | code     | paramsCombination                                                                                           |
+    | instance | /haalcentraal/api/brp/personen                                                                              |
+    En heeft het object de volgende 'invalidParams' gegevens
+    | code     | name          | reason                  |
+    | required | geslachtsnaam | Parameter is verplicht. |
+
+  @fout-case
+  Scenario: Zoek zonder geboortedatum 
+    Als personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | maassen                             |
+    | fields        | burgerservicenummer                 |
+    Dan heeft de response een object met de volgende gegevens
+    | naam     | waarde                                                                                                      |
+    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
+    | title    | Minimale combinatie van parameters moet worden opgegeven.                                                   |
+    | status   | 400                                                                                                         |
+    | detail   | De foutieve parameter(s) zijn: geboortedatum.                                                               |
+    | code     | paramsCombination                                                                                           |
+    | instance | /haalcentraal/api/brp/personen                                                                              |
+    En heeft het object de volgende 'invalidParams' gegevens
+    | code     | name          | reason                  |
+    | required | geboortedatum | Parameter is verplicht. |
+
+  @fout-case
+  Scenario: Zoek met leeg geslachtsnaam en leeg geboortedatum 
+    Als personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam |                                     |
     | geboortedatum |                                     |
     | fields        | burgerservicenummer                 |
