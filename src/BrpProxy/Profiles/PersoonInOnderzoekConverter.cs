@@ -9,7 +9,7 @@ public class PersoonInOnderzoekConverter : ITypeConverter<GbaInOnderzoek, Persoo
 {
     public PersoonInOnderzoek? Convert(GbaInOnderzoek source, PersoonInOnderzoek? destination, ResolutionContext context)
     {
-        return source.AanduidingGegevensInOnderzoek switch
+        return source?.AanduidingGegevensInOnderzoek switch
         {
             "010000" => new PersoonInOnderzoek
             {
