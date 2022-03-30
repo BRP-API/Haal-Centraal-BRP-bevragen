@@ -12,6 +12,7 @@ public class GeboorteProfile : Profile
         CreateMap<GbaGeboorteBeperkt, GeboorteBeperkt>()
             .ForMember(dest => dest.Datum, opt => opt.MapFrom(src => src.Datum.Map()));
         CreateMap<GbaGeboorte, Geboorte>()
-            .ForMember(dest => dest.Datum, opt => opt.MapFrom(src => src.Datum.Map()));
+            .ForMember(dest => dest.Datum, opt => opt.MapFrom(src => src.Datum.Map()))
+            .ForMember(dest => dest.InOnderzoek, opt => opt.MapFrom(src => src.InOnderzoek.PersoonGeboorteInOnderzoek()));
     }
 }

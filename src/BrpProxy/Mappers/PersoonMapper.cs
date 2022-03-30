@@ -1,5 +1,4 @@
-﻿using HaalCentraal.BrpProxy.Generated;
-using HaalCentraal.BrpProxy.Generated.Gba;
+﻿using HaalCentraal.BrpProxy.Generated.Gba;
 
 namespace BrpProxy.Mappers
 {

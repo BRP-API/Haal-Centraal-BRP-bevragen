@@ -26,7 +26,7 @@ namespace BrpProxy.Middlewares
         {
             var orgBodyStream = context.Response.Body;
             var requestBody = await context.Request.ReadBodyAsync();
-            _logger.LogDebug("original requestBody: {requestBody}", requestBody);
+            _logger.LogDebug("original requestBody: {@requestBody}", requestBody);
 
             var personenQuery = JsonConvert.DeserializeObject<PersonenQuery>(requestBody);
             var result = personenQuery.Validate(context);
@@ -52,10 +52,10 @@ namespace BrpProxy.Middlewares
 
                 var body = await context.Response.ReadBodyAsync();
 
-                _logger.LogDebug("original responseBody: {body}", body);
+                _logger.LogDebug("original responseBody: {@body}", body);
 
                 var modifiedBody = context.Response.StatusCode == StatusCodes.Status200OK
-                    ? body.Transform(_mapper, result.Fields!.AddExtraFields(_logger))
+                    ? body.Transform(_mapper, result.Fields!.AddExtraFields(_logger), _logger)
                     : body;
 
                 _logger.LogDebug("transformed responseBody: {modifiedBody}", modifiedBody);
@@ -184,7 +184,7 @@ namespace BrpProxy.Middlewares
             return string.Join(',', retval.Distinct());
         }
 
-        public static string Transform(this string payload, IMapper mapper, ICollection<string> fields)
+        public static string Transform(this string payload, IMapper mapper, ICollection<string> fields, ILogger logger)
         {
             PersonenQueryResponse retval = null;
             var response = JsonConvert.DeserializeObject<Gba.PersonenQueryResponse>(payload);
@@ -193,6 +193,7 @@ namespace BrpProxy.Middlewares
             {
                 case Gba.RaadpleegMetBurgerservicenummerResponse p:
                     var result = mapper.Map<RaadpleegMetBurgerservicenummerResponse>(p);
+                    logger.LogDebug("Before fields filtering {@result}", result);
                     result.Personen = result.Personen.FilterList(fields);
                     retval = result;
                     break;
@@ -218,11 +219,34 @@ namespace BrpProxy.Middlewares
 
         public static ICollection<string> AddExtraFields(this ICollection<string> fields, ILogger<OverwriteResponseBodyMiddleware> _logger)
         {
-            var retval = new List<string>(fields);
+            var retval = new List<string>(fields)
+            {
+                "geheimhoudingPersoonsgegevens",
+                "opschortingBijhouding.reden"
+            };
 
-            retval.Add("geheimhoudingPersoonsgegevens");
-            retval.Add("opschortingBijhouding.reden");
-
+            var rootObjects = new List<string>() { "geboorte" };
+            foreach (var field in fields)
+            {
+                if (field.Contains('.'))
+                {
+                    var splittedFields = field.Split('.');
+                    var lastField = splittedFields[splittedFields.Length - 1];
+                    retval.Add(field.Replace(lastField, $"inOnderzoek.{lastField}"));
+                }
+                else if (rootObjects.Contains(field))
+                {
+                    retval.Add($"{field}.inOnderzoek");
+                }
+                else
+                {
+                    retval.Add($"inOnderzoek.{field}");
+                    if(!retval.Contains("inOnderzoek.datumIngangOnderzoek"))
+                    {
+                        retval.Add("inOnderzoek.datumIngangOnderzoek");
+                    }
+                }
+            }
             _logger.LogDebug("fields: {@fields}", retval);
 
             return retval;
