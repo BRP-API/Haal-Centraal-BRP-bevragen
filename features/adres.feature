@@ -150,7 +150,7 @@ Functionaliteit: Adresvelden vullen
       | woonplaatsnaam anders dan gemeentenaam | 999992922           | Scheveningen   | 2583XL   | 2583 XL  SCHEVENINGEN  |
       | geen woonplaatsnaam                    | 999990639           |                | 2584BZ   | 2584 BZ  'S-GRAVENHAGE |
 
-    Scenario: adresregel voor locatie
+    Scenario: adresregel2 voor locatie
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 000009921 |
