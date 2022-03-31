@@ -8,20 +8,26 @@ Functionaliteit: Fields
 
   Achtergrond:
       Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                             | waarde     |
-      | anummer                          | 2352984859 |
-      | burgerservicenummer              | 999995078  |
-      | geslachtsaanduiding (04.10)      | M          |
-      | geslachtsaanduiding.omschrijving | man        |
+      | naam                                  | waarde     |
+      | aNummer (01.10)                       | 2352984859 |
+      | burgerservicenummer                   | 999995078  |
+      | geslachtsaanduiding (04.10)           | M          |
+      | geslachtsaanduiding.omschrijving      | man        |
+      | geheimhoudingPersoonsgegevens (70.10) | 0          |
+      | inOnderzoek (83.10)                   |            |
       En de persoon heeft de volgende 'naam' gegevens
-      | naam                  | waarde   |
-      | geslachtsnaam         | Groenen  |
-      | voorvoegsel           | in den   |
-      | voornamen             | Franklin |
-      | aanduidingNaamgebruik | E        |
+      | naam                                 | waarde   |
+      | voornamen (02.10)                    | Franklin |
+      | naam.adellijkeTitelPredicaat (02.20) |          |
+      | voorvoegsel (02.30)                  | in den   |
+      | geslachtsnaam (02.40)                | Groenen  |
+      | aanduidingNaamgebruik (61.10)        | E        |
       En de persoon heeft een partner met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 999992935 |
+      | naam                             | waarde    |
+      | burgerservicenummer              | 999992935 |
+      | naam.voornamen (02.10)           | Marlies   |
+      | geboorte.plaats (03.20)          | 0000      |
+      | geslachtsaanduiding.omschrijving | vrouw     |
       En de persoon heeft GEEN 'overlijden' gegevens
       En de persoon heeft de volgende 'kiesrecht' gegevens
       | naam                            | waarde |
@@ -56,7 +62,7 @@ Functionaliteit: Fields
       Dan heeft de persoon met burgerservicenummer '999995078' alleen de volgende gegevens
       | naam                | waarde     |
       | burgerservicenummer | 999995078  |
-      | aNummer             | 1234567890 |
+      | aNummer             | 2352984859 |
 
     Scenario: Gevraagd veld is een gegeven van een gegevensgroep van de persoon
       Als personen wordt gezocht met de volgende parameters
@@ -134,10 +140,11 @@ Functionaliteit: Fields
       | burgerservicenummer | 999995078 |
 
       Voorbeelden:
-      | veld                            |
-      | geheimhoudingPersoonsgegevens   |
-      | naam.adellijkeTitelPredicaat    |
-      | inOnderzoek.geslachtsaanduiding |
+      | veld                            | opmerking                                                       |
+      | naam.adellijkeTitelPredicaat    |                                                                 |
+      | inOnderzoek.geslachtsaanduiding |                                                                 |
+      | geheimhoudingPersoonsgegevens   | geheimhoudingPersoonsgegevens wordt niet opgenomen bij waarde 0 |
+      | partners.geboorte.plaats        | plaats wordt niet opgenomen bij standaardwaarde 0000            |
 
   Rule: optioneel mag je (het begin van) het pad weglaten wanneer dit uniek verwijst naar 1 veld in de resource
     - wanneer het opgegeven pad exact verwijst naar een veld en tegelijkertijd als deel van een pad verwijst naar een ander veld, wordt alleen het veld met het exacte pad opgenomen in de response
@@ -176,9 +183,9 @@ Functionaliteit: Fields
       | <pad>               | <waarde>  |
 
       Voorbeelden:
-      | pad                              | waarde   |
-      | geslachtsaanduiding.omschrijving | man      |
-      | naam.voornamen                   | Franklin |
+      | pad                              | waarde    | opmerking                                                                               |
+      | geslachtsaanduiding.omschrijving | man       | levert geslachtsaanduiding.omschrijving, niet partners.geslachtsaanduiding.omschrijving |
+      | naam.voornamen                   | Franklin  | levert naam.voornamen, niet partners.naam.voornamen                                     |
 
     @fout-case
     Abstract Scenario: opgegeven pad leidt tot meer dan één veld
@@ -223,10 +230,10 @@ Functionaliteit: Fields
       | datumIngangGeldigheid                |
       | indicatieOnbekend                    |      
 
-  Rule: Wanneer velden van polymorf gegevensgroep wordt gevraagd, wordt altijd het 'type' veld van de gegevensgroep terug gegeven
+  Rule: Wanneer velden van polymorfe gegevensgroep wordt gevraagd, wordt altijd het 'type' veld van de gegevensgroep terug gegeven
     - wanneer het gegeven geen waarde heeft (ook niet onbekend) wordt de gegevensgroep niet geleverd en dus ook 'type' niet teruggegeven
 
-    Abstract Scenario: Gevraagd veld is een polymorf gegevensgroep van de persoon
+    Abstract Scenario: Gevraagd veld is een polymorfe gegevensgroep van de persoon
       Gegeven de persoon heeft de volgende 'geboorte' gegevens
       | naam  | waarde      |
       | datum | <GBA datum> |
@@ -253,7 +260,7 @@ Functionaliteit: Fields
       | 20020000  | JaarDatum      |            | 2002 |       |          |
       | 00000000  | OnbekendDatum  |            |      |       | true     |
 
-    Abstract Scenario: Gevraagd veld is een gegeven van een andere type van de polymorf gegevensgroep
+    Abstract Scenario: Gevraagd veld is een gegeven van een andere type van de polymorfe gegevensgroep
       Gegeven de persoon heeft de volgende 'geboorte' gegevens
       | naam  | waarde      |
       | datum | <GBA datum> |
@@ -275,7 +282,7 @@ Functionaliteit: Fields
       | 20020000  | JaarDatum      |
       | 00000000  | OnbekendDatum  |
 
-    Abstract Scenario: Gevraagd veld is een polymorf gegevensgroep van de persoon en heeft geen waarde
+    Abstract Scenario: Gevraagd veld is een polymorfe gegevensgroep van de persoon en heeft geen waarde
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                   |
       | type                | RaadpleegMetBurgerservicenummer          |
