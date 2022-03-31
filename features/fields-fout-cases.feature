@@ -42,7 +42,9 @@ Rule: De Fields parameter is verplicht.
     | code    | name   | reason                                              |
     | pattern | fields | Waarde voldoet niet aan patroon ^[a-zA-Z0-9\.,_]+$. |
 
-Rule: De Fields parameter bevat het volledige pad naar de op te vragen velden gescheiden door een komma
+Rule: De Fields parameter bevat het pad naar de op te vragen velden gescheiden door een komma
+  - zie fields-mapping.csv: wanneer een in fields opgegeven veld(pad) niet voorkomt in de linker kolom, geeft dat een foutmelding
+  - velden worden gescheiden door een komma, zonder spatie
 
   @fout-case
   Scenario: Gevraagde veld bestaat niet
@@ -60,11 +62,11 @@ Rule: De Fields parameter bevat het volledige pad naar de op te vragen velden ge
     | code     | paramsValidation                                                                                            |
     | instance | /haalcentraal/api/brp/personen                                                                              |
     En heeft het object de volgende 'invalidParams' gegevens
-    | code   | name   | reason                                       |
-    | fields | fields | Parameter bevat een niet bestaande veldnaam. |
+    | code   | name   | reason                                                 |
+    | fields | fields | Deel van de parameterwaarde niet correct: bestaatniet. |
 
   @fout-case
-  Scenario: Pad van een gevraagde veld is opgegeven in onjuiste case
+  Scenario: Pad van een gevraagd veld is opgegeven in onjuiste case
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                                  |
     | type                | RaadpleegMetBurgerservicenummer         |
@@ -79,16 +81,16 @@ Rule: De Fields parameter bevat het volledige pad naar de op te vragen velden ge
     | code     | paramsValidation                                                                                            |
     | instance | /haalcentraal/api/brp/personen                                                                              |
     En heeft het object de volgende 'invalidParams' gegevens
-    | code   | name   | reason                                       |
-    | fields | fields | Parameter bevat een niet bestaande veldnaam. |
+    | code   | name   | reason                                                         |
+    | fields | fields | Deel van de parameterwaarde niet correct: BurgerServiceNummer. |
 
   @fout-case
-  Scenario: Opgegeven pad is niet het volledige pad naar het gevraagde veld 
+  Abstract Scenario: opgegeven pad leidt tot meer dan één veld
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 999994086                       |
-    | fields              | datumVan                        |
+    | burgerservicenummer | 999995078                       |
+    | fields              | burgerservicenummer,<pad>       |
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                                                                      |
     | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
@@ -98,8 +100,32 @@ Rule: De Fields parameter bevat het volledige pad naar de op te vragen velden ge
     | code     | paramsValidation                                                                                            |
     | instance | /haalcentraal/api/brp/personen                                                                              |
     En heeft het object de volgende 'invalidParams' gegevens
-    | code   | name   | reason                                              |
-    | fields | fields | Deel van de parameterwaarde niet correct: datumVan. |
+    | code   | name   | reason                                           |
+    | fields | fields | Deel van de parameterwaarde niet correct: <pad>. |
+
+    Voorbeelden:
+    | pad                                  |
+    | voorletters                          |
+    | voornamen                            |
+    | adellijkeTitelPredicaat              |
+    | adellijkeTitelPredicaat.code         |
+    | adellijkeTitelPredicaat.omschrijving |
+    | adellijkeTitelPredicaat.soort        |
+    | voorvoegsel                          |
+    | geslachtsnaam                        |
+    | datum                                |
+    | plaats                               |
+    | land                                 |
+    | type                                 |
+    | code                                 |
+    | plaats.code                          |
+    | land.code                            |
+    | omschrijving                         |
+    | plaats.omschrijving                  |
+    | land.omschrijving                    |
+    | soort                                |
+    | datumIngangGeldigheid                |
+    | indicatieOnbekend                    |  
 
   @fout-case
   Scenario: Fields parameter bevat spaties
@@ -121,12 +147,12 @@ Rule: De Fields parameter bevat het volledige pad naar de op te vragen velden ge
     | pattern | fields | Waarde voldoet niet aan patroon ^[a-zA-Z0-9\.,_]+$. |
 
   @fout-case
-  Scenario: Gevraagde velden worden niet gescheiden door een komma
+  Scenario: Fields parameter bevat dubbele komma
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                 |
-    | type                | RaadpleegMetBurgerservicenummer        |
-    | burgerservicenummer | 999994086                              |
-    | fields              | burgerservicenummer\naam.geslachtsnaam |
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999994086                       |
+    | fields              | burgerservicenummer,,naam       |
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                                                                      |
     | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
@@ -136,5 +162,32 @@ Rule: De Fields parameter bevat het volledige pad naar de op te vragen velden ge
     | code     | paramsValidation                                                                                            |
     | instance | /haalcentraal/api/brp/personen                                                                              |
     En heeft het object de volgende 'invalidParams' gegevens
-    | code    | name   | reason                                              |
-    | pattern | fields | Waarde voldoet niet aan patroon ^[a-zA-Z0-9\.,_]+$. |
+    | code   | name   | reason                                       |
+    | fields | fields | Deel van de parameterwaarde niet correct: ,. |
+
+  @fout-case
+  Abstract Scenario: Gevraagde velden worden niet gescheiden door een komma
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999994086                       |
+    | fields              | <fields>                        |
+    Dan heeft de response een object met de volgende gegevens
+    | naam     | waarde                                                                                                      |
+    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
+    | title    | Een of meerdere parameters zijn niet correct.                                                               |
+    | status   | 400                                                                                                         |
+    | detail   | De foutieve parameter(s) zijn: fields.                                                                      |
+    | code     | paramsValidation                                                                                            |
+    | instance | /haalcentraal/api/brp/personen                                                                              |
+    En heeft het object de volgende 'invalidParams' gegevens
+    | code   | name   | reason   |
+    | <code> | fields | <reason> |
+
+    Voorbeelden:
+    | fields                                 | code    | reason                                                                            |
+    | burgerservicenummer\naam.geslachtsnaam | pattern | Waarde voldoet niet aan patroon ^[a-zA-Z0-9\.,_]+$.                               |
+    | burgerservicenummer;naam.geslachtsnaam | pattern | Waarde voldoet niet aan patroon ^[a-zA-Z0-9\.,_]+$.                               |
+    | burgerservicenummer naam.geslachtsnaam | pattern | Waarde voldoet niet aan patroon ^[a-zA-Z0-9\.,_]+$.                               |
+    | burgerservicenummer_naam.geslachtsnaam | fields  | Deel van de parameterwaarde niet correct: burgerservicenummer_naam.geslachtsnaam. |
+    | burgerservicenummernaam.geslachtsnaam  | fields  | Deel van de parameterwaarde niet correct: burgerservicenummernaam.geslachtsnaam.  |

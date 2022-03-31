@@ -185,50 +185,7 @@ Functionaliteit: Fields
       Voorbeelden:
       | pad                              | waarde    | opmerking                                                                               |
       | geslachtsaanduiding.omschrijving | man       | levert geslachtsaanduiding.omschrijving, niet partners.geslachtsaanduiding.omschrijving |
-      | naam.voornamen                   | Franklin  | levert naam.voornamen, niet partners.naam.voornamen                                     |
-
-    @fout-case
-    Abstract Scenario: opgegeven pad leidt tot meer dan één veld
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 999995078                       |
-      | fields              | burgerservicenummer,<pad>       |
-      Dan heeft de response een object met de volgende gegevens
-      | naam     | waarde                                                                                                      |
-      | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-      | title    | Een of meerdere parameters zijn niet correct.                                                               |
-      | status   | 400                                                                                                         |
-      | detail   | De foutieve parameter(s) zijn: fields.                                                                      |
-      | code     | paramsValidation                                                                                            |
-      | instance | /haalcentraal/api/brp/personen                                                                              |
-      En heeft het object de volgende 'invalidParams' gegevens
-      | code   | name   | reason                                           |
-      | fields | fields | Deel van de parameterwaarde niet correct: <pad>. |
-
-      Voorbeelden:
-      | pad                                  |
-      | voorletters                          |
-      | voornamen                            |
-      | adellijkeTitelPredicaat              |
-      | adellijkeTitelPredicaat.code         |
-      | adellijkeTitelPredicaat.omschrijving |
-      | adellijkeTitelPredicaat.soort        |
-      | voorvoegsel                          |
-      | geslachtsnaam                        |
-      | datum                                |
-      | plaats                               |
-      | land                                 |
-      | type                                 |
-      | code                                 |
-      | plaats.code                          |
-      | land.code                            |
-      | omschrijving                         |
-      | plaats.omschrijving                  |
-      | land.omschrijving                    |
-      | soort                                |
-      | datumIngangGeldigheid                |
-      | indicatieOnbekend                    |      
+      | naam.voornamen                   | Franklin  | levert naam.voornamen, niet partners.naam.voornamen                                     |    
 
   Rule: Wanneer velden van polymorfe gegevensgroep wordt gevraagd, wordt altijd het 'type' veld van de gegevensgroep terug gegeven
     - wanneer het gegeven geen waarde heeft (ook niet onbekend) wordt de gegevensgroep niet geleverd en dus ook 'type' niet teruggegeven
