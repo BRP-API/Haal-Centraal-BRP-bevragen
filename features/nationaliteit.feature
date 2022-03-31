@@ -142,7 +142,7 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       | datumIngangGeldigheid | 20100801 |
       En heeft de persoon met burgerservicenummer '555550002' GEEN nationaliteit met de volgende gegevens
       | naam                  | waarde   |
-      | datumIngangGeldigheid | 20100801 |
+      | datumIngangGeldigheid | 20200727 |
       En heeft de persoon met burgerservicenummer '555550002' GEEN nationaliteit met de volgende gegevens
       | naam          | waarde |
       | nationaliteit | 0100   |
@@ -164,6 +164,9 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       | nationaliteit         | 0100     |
       | redenOpname           | 311      |
       | datumIngangGeldigheid | 20200727 |
+      En heeft de persoon met burgerservicenummer '555550003' GEEN nationaliteit met de volgende gegevens
+      | naam                  | waarde   |
+      | datumIngangGeldigheid | 20200713 |
 
   @proxy
   Rule: de nationaliteit wordt gevuld op basis van het voorkomen van nationaliteit of aanduidingBijzonderNederlanderschap
