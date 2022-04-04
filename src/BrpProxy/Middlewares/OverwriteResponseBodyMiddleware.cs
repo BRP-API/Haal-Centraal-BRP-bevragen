@@ -14,21 +14,23 @@ namespace BrpProxy.Middlewares
         private readonly RequestDelegate _next;
         private readonly ILogger<OverwriteResponseBodyMiddleware> _logger;
         private readonly IMapper _mapper;
+        private readonly FieldsHelper _fieldsHelper;
 
-        public OverwriteResponseBodyMiddleware(RequestDelegate next, ILogger<OverwriteResponseBodyMiddleware> logger, IMapper mapper)
+        public OverwriteResponseBodyMiddleware(RequestDelegate next, ILogger<OverwriteResponseBodyMiddleware> logger, IMapper mapper, FieldsHelper fieldsHelper)
         {
             _next = next;
             _logger = logger;
             _mapper = mapper;
+            _fieldsHelper = fieldsHelper;
         }
 
         public async Task Invoke(HttpContext context)
         {
             var orgBodyStream = context.Response.Body;
             var requestBody = await context.Request.ReadBodyAsync();
-            _logger.LogDebug("original requestBody: {@requestBody}", requestBody);
 
             var personenQuery = JsonConvert.DeserializeObject<PersonenQuery>(requestBody);
+            _logger.LogDebug("original requestBody: {@personenQuery}", personenQuery);
             var result = personenQuery.Validate(context);
             if (!result.IsValid)
             {
@@ -55,7 +57,7 @@ namespace BrpProxy.Middlewares
                 _logger.LogDebug("original responseBody: {@body}", body);
 
                 var modifiedBody = context.Response.StatusCode == StatusCodes.Status200OK
-                    ? body.Transform(_mapper, result.Fields!.AddExtraFields(_logger), _logger)
+                    ? body.Transform(_mapper, _fieldsHelper.AddExtraPersoonFields(result.Fields!), _logger)
                     : body;
 
                 _logger.LogDebug("transformed responseBody: {modifiedBody}", modifiedBody);
@@ -161,6 +163,7 @@ namespace BrpProxy.Middlewares
                 RaadpleegMetBurgerservicenummer query => new RaadpleegMetBurgerservicenummerQueryValidator().Validate(query),
                 ZoekMetGeslachtsnaamEnGeboortedatum query => new ZoekMetGeslachtsnaamEnGeboortedatumQueryValidator().Validate(query),
                 ZoekMetPostcodeEnHuisnummer query => new ZoekMetPostcodeEnHuisnummerQueryValidator().Validate(query),
+                ZoekMetNaamEnGemeenteVanInschrijving query => new ZoekMetNaamEnGemeenteVanInschrijvingQueryValidator().Validate(query)
             };
 
             return ValidatePersonenQueryResult.CreateFrom(result, personenQuery.Fields, context);
@@ -203,10 +206,14 @@ namespace BrpProxy.Middlewares
                     retval = result1;
                     break;
                 case Gba.ZoekMetNaamEnGemeenteVanInschrijvingResponse pb:
-                    retval = mapper.Map<ZoekMetNaamEnGemeenteVanInschrijvingResponse>(pb);
+                    var result3 = mapper.Map<ZoekMetNaamEnGemeenteVanInschrijvingResponse>(pb);
+                    result3.Personen = result3.Personen.FilterList(fields);
+                    retval = result3;
                     break;
                 case Gba.ZoekMetPostcodeEnHuisnummerResponse pb:
-                    retval = mapper.Map<ZoekMetPostcodeEnHuisnummerResponse>(pb);
+                    var result2 = mapper.Map<ZoekMetPostcodeEnHuisnummerResponse>(pb);
+                    result2.Personen = result2.Personen.FilterList(fields);
+                    retval = result2;
                     break;
             }
 
@@ -215,41 +222,6 @@ namespace BrpProxy.Middlewares
                 NullValueHandling = NullValueHandling.Ignore,
                 DefaultValueHandling = DefaultValueHandling.Ignore
             });
-        }
-
-        public static ICollection<string> AddExtraFields(this ICollection<string> fields, ILogger<OverwriteResponseBodyMiddleware> _logger)
-        {
-            var retval = new List<string>(fields)
-            {
-                "geheimhoudingPersoonsgegevens",
-                "opschortingBijhouding.reden"
-            };
-
-            var rootObjects = new List<string>() { "geboorte" };
-            foreach (var field in fields)
-            {
-                if (field.Contains('.'))
-                {
-                    var splittedFields = field.Split('.');
-                    var lastField = splittedFields[splittedFields.Length - 1];
-                    retval.Add(field.Replace(lastField, $"inOnderzoek.{lastField}"));
-                }
-                else if (rootObjects.Contains(field))
-                {
-                    retval.Add($"{field}.inOnderzoek");
-                }
-                else
-                {
-                    retval.Add($"inOnderzoek.{field}");
-                    if(!retval.Contains("inOnderzoek.datumIngangOnderzoek"))
-                    {
-                        retval.Add("inOnderzoek.datumIngangOnderzoek");
-                    }
-                }
-            }
-            _logger.LogDebug("fields: {@fields}", retval);
-
-            return retval;
         }
     }
 

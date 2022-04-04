@@ -1,38 +1,37 @@
 ﻿using HaalCentraal.BrpService.Generated;
 using Newtonsoft.Json;
 
-namespace HaalCentraal.BrpService.Repositories
+namespace HaalCentraal.BrpService.Repositories;
+
+public class PersoonRepository
 {
-    public class PersoonRepository
+    private readonly IWebHostEnvironment _environment;
+
+    public PersoonRepository(IWebHostEnvironment environment)
     {
-        private readonly IWebHostEnvironment _environment;
+        _environment = environment;
+    }
 
-        public PersoonRepository(IWebHostEnvironment environment)
+    public async Task<TResult> Zoek<T, TResult>(T query) where TResult : PersonenQueryResponse
+    {
+        var filename = query switch
         {
-            _environment = environment;
+            RaadpleegMetBurgerservicenummer => "bsn.json",
+            ZoekMetGeslachtsnaamEnGeboortedatumFilter => "geslachtsnaam-geboortedatum.json",
+            ZoekMetNaamEnGemeenteVanInschrijvingFilter => "naam-gemeentevaninschrijving.json",
+            ZoekMetPostcodeEnHuisnummerFilter => "postcode-huisnummer.json",
+            _ => throw new NotSupportedException($"{query}")
+        };
+
+        var path = Path.Combine(_environment.ContentRootPath, "Data", filename);
+        if (!File.Exists(path))
+        {
+            throw new FileNotFoundException($"invalid file: '{path}'");
         }
 
-        public async Task<TResult> Zoek<T, TResult>(T query) where TResult : PersonenQueryResponse
-        {
-            var filename = query switch
-            {
-                RaadpleegMetBurgerservicenummer => "bsn.json",
-                ZoekMetGeslachtsnaamEnGeboortedatumFilter => "geslachtsnaam-geboortedatum.json",
-                ZoekMetNaamEnGemeenteVanInschrijving => "naam-gemeentevaninschrijving.json",
-                ZoekMetPostcodeEnHuisnummer => "postcode-huisnummer.json",
-                _ => throw new NotSupportedException($"{query}")
-            };
+        var data = await File.ReadAllTextAsync(path);
+        var retval = JsonConvert.DeserializeObject<TResult>(data);
 
-            var path = Path.Combine(_environment.ContentRootPath, "Data", filename);
-            if (!File.Exists(path))
-            {
-                throw new FileNotFoundException($"invalid file: '{path}'");
-            }
-
-            var data = await File.ReadAllTextAsync(path);
-            var retval = JsonConvert.DeserializeObject<TResult>(data);
-
-            return retval!;
-        }
+        return retval!;
     }
 }

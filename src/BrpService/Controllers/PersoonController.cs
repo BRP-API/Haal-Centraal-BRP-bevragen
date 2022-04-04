@@ -4,87 +4,88 @@ using HaalCentraal.BrpService.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-namespace HaalCentraal.BrpService.Controllers
+namespace HaalCentraal.BrpService.Controllers;
+
+[ApiController]
+public class PersoonController : Generated.ControllerBase
 {
-    [ApiController]
-    public class PersoonController : Generated.ControllerBase
+    private readonly ILogger<PersoonController> _logger;
+    private readonly IMapper _mapper;
+    private readonly PersoonRepository _repository;
+    private readonly IWebHostEnvironment _environment;
+
+    public PersoonController(ILogger<PersoonController> logger, IMapper mapper, PersoonRepository repository, IWebHostEnvironment environment)
     {
-        private readonly ILogger<PersoonController> _logger;
-        private readonly IMapper _mapper;
-        private readonly PersoonRepository _repository;
-        private readonly IWebHostEnvironment _environment;
+        _logger = logger;
+        _mapper = mapper;
+        _repository = repository;
+        _environment = environment;
+    }
 
-        public PersoonController(ILogger<PersoonController> logger, IMapper mapper, PersoonRepository repository, IWebHostEnvironment environment)
+    public override async Task<ActionResult<PersonenQueryResponse>> GetPersonen([FromBody] PersonenQuery body)
+    {
+        System.IO.File.WriteAllText(Path.Combine(_environment.ContentRootPath, "Data", "requestBody.json"),
+                                    JsonConvert.SerializeObject(body));
+
+        return body switch
         {
-            _logger = logger;
-            _mapper = mapper;
-            _repository = repository;
-            _environment = environment;
-        }
+            RaadpleegMetBurgerservicenummer q => await Handle(q),
+            ZoekMetGeslachtsnaamEnGeboortedatum q => await Handle(q),
+            ZoekMetNaamEnGemeenteVanInschrijving q => await Handle(q),
+            ZoekMetPostcodeEnHuisnummer q => await Handle(q),
+            _ => throw new InvalidOperationException($"Onbekend type query: {body}"),
+        };
+    }
 
-        public override async Task<ActionResult<PersonenQueryResponse>> GetPersonen([FromBody] PersonenQuery body)
-        {
-            System.IO.File.WriteAllText(Path.Combine(_environment.ContentRootPath, "Data", "requestBody.json"),
-                                        JsonConvert.SerializeObject(body));
+    private async Task<ActionResult<PersonenQueryResponse>> Handle(ZoekMetPostcodeEnHuisnummer query)
+    {
+        _logger.LogDebug(nameof(ZoekMetPostcodeEnHuisnummer));
 
-            return body switch
-            {
-                RaadpleegMetBurgerservicenummer q => await Handle(q),
-                ZoekMetGeslachtsnaamEnGeboortedatum q => await Handle(q),
-                ZoekMetNaamEnGemeenteVanInschrijving q => await Handle(q),
-                ZoekMetPostcodeEnHuisnummer q => await Handle(q),
-                _ => throw new InvalidOperationException($"Onbekend type query: {body}"),
-            };
-        }
+        var filter = _mapper.Map<ZoekMetPostcodeEnHuisnummerFilter>(query);
 
-        private async Task<ActionResult<PersonenQueryResponse>> Handle(ZoekMetPostcodeEnHuisnummer query)
-        {
-            _logger.LogDebug(nameof(ZoekMetPostcodeEnHuisnummer));
+        var retval = await _repository.Zoek<ZoekMetPostcodeEnHuisnummerFilter, ZoekMetPostcodeEnHuisnummerResponse>(filter);
 
-            var retval = await _repository.Zoek<ZoekMetPostcodeEnHuisnummer, ZoekMetPostcodeEnHuisnummerResponse>(query);
+        retval.Personen = retval.Personen.AsQueryable().Where(filter.ToSpecification().ToExpression()).ToList();
 
-            retval.Personen = retval.Personen.Where(x => string.Compare(x.Verblijfplaats?.Postcode, query.Postcode, true) == 0 &&
-                                                         x.Verblijfplaats?.Huisnummer == query.Huisnummer).ToList();
+        return Ok(retval);
+    }
 
-            return Ok(retval);
-        }
+    private async Task<ActionResult<PersonenQueryResponse>> Handle(ZoekMetNaamEnGemeenteVanInschrijving query)
+    {
+        _logger.LogDebug(nameof(ZoekMetNaamEnGemeenteVanInschrijving));
 
-        private async Task<ActionResult<PersonenQueryResponse>> Handle(ZoekMetNaamEnGemeenteVanInschrijving query)
-        {
-            _logger.LogDebug(nameof(ZoekMetNaamEnGemeenteVanInschrijving));
+        var filter = _mapper.Map<ZoekMetNaamEnGemeenteVanInschrijvingFilter>(query);
 
-            var retval = await _repository.Zoek<ZoekMetNaamEnGemeenteVanInschrijving, ZoekMetNaamEnGemeenteVanInschrijvingResponse>(query);
+        var retval = await _repository.Zoek<ZoekMetNaamEnGemeenteVanInschrijvingFilter, ZoekMetNaamEnGemeenteVanInschrijvingResponse>(filter);
 
-            retval.Personen = retval.Personen.Where(x => string.Compare(x.Naam?.Geslachtsnaam, query.Geslachtsnaam, true) == 0 &&
-                                                         string.Compare(x.Naam?.Voornamen, query.Voornamen, true) == 0 &&
-                                                         x.Verblijfplaats?.GemeenteVanInschrijving?.Code == query.GemeenteVanInschrijving).ToList();
-            return Ok(retval);
-        }
+        retval.Personen = retval.Personen.AsQueryable().Where(filter.ToSpecification().ToExpression()).ToList();
 
-        private async Task<ActionResult<PersonenQueryResponse>> Handle(ZoekMetGeslachtsnaamEnGeboortedatum query)
-        {
-            _logger.LogDebug("ZoekMetGeslachtsnaamEnGeboortedatum: {query}", query);
+        return Ok(retval);
+    }
 
-            var filter = _mapper.Map<ZoekMetGeslachtsnaamEnGeboortedatumFilter>(query);
+    private async Task<ActionResult<PersonenQueryResponse>> Handle(ZoekMetGeslachtsnaamEnGeboortedatum query)
+    {
+        _logger.LogDebug("ZoekMetGeslachtsnaamEnGeboortedatum: {query}", query);
 
-            var retval = await _repository.Zoek<ZoekMetGeslachtsnaamEnGeboortedatumFilter, ZoekMetGeslachtsnaamEnGeboortedatumResponse>(filter);
+        var filter = _mapper.Map<ZoekMetGeslachtsnaamEnGeboortedatumFilter>(query);
 
-            retval.Personen = retval.Personen.AsQueryable().Where(filter.ToSpecification().ToExpression()).ToList();
+        var retval = await _repository.Zoek<ZoekMetGeslachtsnaamEnGeboortedatumFilter, ZoekMetGeslachtsnaamEnGeboortedatumResponse>(filter);
 
-            return Ok(retval);
-        }
+        retval.Personen = retval.Personen.AsQueryable().Where(filter.ToSpecification().ToExpression()).ToList();
 
-        private async Task<ActionResult<PersonenQueryResponse>> Handle(RaadpleegMetBurgerservicenummer query)
-        {
-            _logger.LogDebug("Request body: {@query}", JsonConvert.SerializeObject(query));
+        return Ok(retval);
+    }
 
-            var retval = await _repository.Zoek<RaadpleegMetBurgerservicenummer, RaadpleegMetBurgerservicenummerResponse>(query);
+    private async Task<ActionResult<PersonenQueryResponse>> Handle(RaadpleegMetBurgerservicenummer query)
+    {
+        _logger.LogDebug("Request body: {@query}", JsonConvert.SerializeObject(query));
 
-            retval.Personen = retval.Personen.AsQueryable().Where(query.ToSpecification().ToExpression()).ToList();
+        var retval = await _repository.Zoek<RaadpleegMetBurgerservicenummer, RaadpleegMetBurgerservicenummerResponse>(query);
 
-            _logger.LogDebug("Response: {@response}", JsonConvert.SerializeObject(retval));
+        retval.Personen = retval.Personen.AsQueryable().Where(query.ToSpecification().ToExpression()).ToList();
 
-            return Ok(retval);
-        }
+        _logger.LogDebug("Response: {@response}", JsonConvert.SerializeObject(retval));
+
+        return Ok(retval);
     }
 }

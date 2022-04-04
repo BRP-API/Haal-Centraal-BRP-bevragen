@@ -1,4 +1,5 @@
 using BrpProxy.Middlewares;
+using BrpProxy.Validators;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Serilog;
@@ -22,6 +23,7 @@ builder.Host.UseSerilog((context, config) =>
 builder.Configuration.AddJsonFile(Path.Combine("configuration", "ocelot.json"));
 
 // Add services to the container.
+builder.Services.AddSingleton<FieldsHelper>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddOcelot();
 

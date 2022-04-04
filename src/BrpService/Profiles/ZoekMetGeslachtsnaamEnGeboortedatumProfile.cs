@@ -2,14 +2,13 @@
 using HaalCentraal.BrpService.Generated;
 using HaalCentraal.BrpService.Repositories;
 
-namespace HaalCentraal.BrpService.Profiles
+namespace HaalCentraal.BrpService.Profiles;
+
+public class ZoekMetGeslachtsnaamEnGeboortedatumProfile : Profile
 {
-    public class ZoekMetGeslachtsnaamEnGeboortedatumProfile : Profile
+    public ZoekMetGeslachtsnaamEnGeboortedatumProfile()
     {
-        public ZoekMetGeslachtsnaamEnGeboortedatumProfile()
-        {
-            CreateMap<ZoekMetGeslachtsnaamEnGeboortedatum, ZoekMetGeslachtsnaamEnGeboortedatumFilter>()
-                .ForMember(dest => dest.Geboortedatum, opt => opt.MapFrom(src => DateTimeOffset.Parse(src.Geboortedatum!)));
-        }
+        CreateMap<ZoekMetGeslachtsnaamEnGeboortedatum, ZoekMetGeslachtsnaamEnGeboortedatumFilter>()
+            .ForMember(dest => dest.Geboortedatum, opt => opt.MapFrom(src => DateTimeOffset.Parse(src.Geboortedatum!)));
     }
 }
