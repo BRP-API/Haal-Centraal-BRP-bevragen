@@ -632,6 +632,38 @@ Then(/^heeft de response (\d*) (persoon|personen)$/, function (aantal, dummy) {
     personen.length.should.equal(Number(aantal), `aantal personen in response is ongelijk aan ${aantal}\nPersonen:${JSON.stringify(personen, null, "\t")}`);
 });
 
+Then('heeft de response een persoon met de volgende gegevens', function (dataTable) {
+    let expected = {};
+    dataTable.hashes().forEach(function(row) {
+        mapRowToProperty(expected, row);
+    });
+
+    if(this.context.postAssert === true) {
+        if(this.context.expected === undefined) {
+            this.context.expected = [];
+        }
+        this.context.expected.push(expected); 
+    }
+});
+
+Then('heeft de persoon de volgende {string} gegevens', function (gegevensgroep, dataTable) {
+    let expected = {};
+    dataTable.hashes().forEach(function(row) {
+        mapRowToProperty(expected, row);
+    });
+
+    if(this.context.postAssert === true) {
+        const personen = this.context.expected;
+        should.exist(personen, 'Geen persoon gevonden. Gebruik de \'Dan heeft de response een persoon met de volgende gegevens\' stap om een persoon aan te maken');
+        personen.length.should.not.equal(0, 'Geen persoon gevonden. Gebruik de \'Dan heeft de response een persoon met de volgende gegevens\' stap om een persoon aan te maken');
+
+        let persoon = personen[personen.length-1];
+        should.exist(persoon, 'Geen persoon gevonden. Gebruik de \'Dan heeft de response een persoon met de volgende gegevens\' stap om een persoon aan te maken');
+
+        persoon[gegevensgroep] = expected;
+    }
+});
+
 Then(/^heeft de persoon met burgerservicenummer '(.*)' ?(?:alleen)? de volgende gegevens$/, function (burgerservicenummer, dataTable) {
     let expected = {};
     dataTable.hashes().forEach(function(row) {
