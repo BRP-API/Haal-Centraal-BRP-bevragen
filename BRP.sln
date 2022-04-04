@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrpProxy", "src\BrpProxy\Br
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{3ECBC4FE-3C17-4176-A045-696EBD638BE6}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrpProxy.Tests", "src\BrpProxy.Tests\BrpProxy.Tests.csproj", "{5034E8CE-57D9-4B85-A781-121EFB9258EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{3ECBC4FE-3C17-4176-A045-696EBD638BE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3ECBC4FE-3C17-4176-A045-696EBD638BE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3ECBC4FE-3C17-4176-A045-696EBD638BE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5034E8CE-57D9-4B85-A781-121EFB9258EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5034E8CE-57D9-4B85-A781-121EFB9258EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5034E8CE-57D9-4B85-A781-121EFB9258EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5034E8CE-57D9-4B85-A781-121EFB9258EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,6 +42,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{FE143889-B833-4BA0-B840-A7E29C841891} = {945585CC-ED27-4B2F-ABE9-74C93A185CB6}
 		{98C76098-2F31-41C4-AA5E-C12E5B22A2B9} = {945585CC-ED27-4B2F-ABE9-74C93A185CB6}
+		{5034E8CE-57D9-4B85-A781-121EFB9258EB} = {945585CC-ED27-4B2F-ABE9-74C93A185CB6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BEC9CC08-4805-4AE3-9268-E70AD74999B1}
