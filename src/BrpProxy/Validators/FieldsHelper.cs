@@ -215,23 +215,26 @@ namespace BrpProxy.Validators
                     var fieldPart = fieldParts[index];
 
                     (var pi, var srcValue) = src.GetValue(fieldPart);
-                    if (pi != null && srcValue != null)
+                    if (pi == null || srcValue == null)
                     {
-                        if (index == fieldParts.Length-1)
-                        {
-                            pi.SetValue(dest, srcValue);
-                        }
-                        else
-                        {
-                            var val = pi.GetValue(dest);
-                            if (val == null)
-                            {
-                                pi.SetValue(dest, Activator.CreateInstance(srcValue != null ? srcValue.GetType() : pi.PropertyType));
-                            }
-                            dest = pi.GetValue(dest);
-                        }
-                        src = srcValue;
+                        // property of deel van de property heeft geen waarde. Stop met filteren van property
+                        break;
                     }
+
+                    if (index == fieldParts.Length - 1)
+                    {
+                        pi.SetValue(dest, srcValue);
+                    }
+                    else
+                    {
+                        var val = pi.GetValue(dest);
+                        if (val == null)
+                        {
+                            pi.SetValue(dest, Activator.CreateInstance(srcValue != null ? srcValue.GetType() : pi.PropertyType));
+                        }
+                        dest = pi.GetValue(dest);
+                    }
+                    src = srcValue;
                 }
             }
 
