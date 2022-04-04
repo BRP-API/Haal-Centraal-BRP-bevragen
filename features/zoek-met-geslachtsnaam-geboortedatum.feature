@@ -55,10 +55,10 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | geboortedatum | 1983-05-26                          |
     | fields        | burgerservicenummer                 |
     Dan heeft de response 2 personen
-    En heeft de persoon met burgerservicenummer '999995078' de volgende gegevens
+    En heeft de response een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999995078 |
-    En heeft de persoon met burgerservicenummer '999995082' de volgende gegevens
+    En heeft de response een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999995082 |
 
@@ -91,7 +91,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | geboortedatum | 1983-05-26                          |
     | fields        | burgerservicenummer                 |
     Dan heeft de response 1 persoon
-    En heeft de persoon met burgerservicenummer '999995086' de volgende gegevens
+    En heeft de response een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999995086 |
 
@@ -104,7 +104,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | geboortedatum | 1983-05-26                          |
     | fields        | burgerservicenummer                 |
     Dan heeft de response 1 persoon
-    En heeft de persoon met burgerservicenummer '<burgerservicenummer>' de volgende gegevens
+    En heeft de response een persoon met de volgende gegevens
     | naam                | waarde                |
     | burgerservicenummer | <burgerservicenummer> |
 
@@ -124,7 +124,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | geboortedatum | 1983-05-26                          |
     | fields        | burgerservicenummer                 |
     Dan heeft de response 1 persoon
-    En heeft de persoon met burgerservicenummer '999995082' de volgende gegevens
+    En heeft de response een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999995082 |
 
@@ -143,7 +143,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | geboortedatum       | 1983-05-26                          |
     | fields              | burgerservicenummer                 |
     Dan heeft de response 1 persoon
-    En heeft de persoon met burgerservicenummer '999995084' de volgende gegevens
+    En heeft de response een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999995084 |
 
@@ -161,7 +161,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | geboortedatum  | 1983-05-26                          |
     | fields         | burgerservicenummer                 |
     Dan heeft de response 1 persoon
-    En heeft de persoon met burgerservicenummer '999995082' de volgende gegevens
+    En heeft de response een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999995082 |
 
@@ -180,10 +180,10 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | geboortedatum              | 1983-05-26                          |
     | fields                     | burgerservicenummer                 |
     Dan heeft de response 2 personen
-    En heeft de persoon met burgerservicenummer '999995081' de volgende gegevens
+    En heeft de response een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999995081 |
-    En heeft de persoon met burgerservicenummer '999995085' de volgende gegevens
+    En heeft de response een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999995085 |
 
@@ -332,13 +332,13 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | code     | paramsValidation                                                                                            |
     | instance | /haalcentraal/api/brp/personen                                                                              |
     En heeft het object de volgende 'invalidParams' gegevens
-    | code   | name          | reason   |
-    | <code> | geslachtsnaam | <reason> |
+    | code    | name          | reason                                                                                               |
+    | pattern | geslachtsnaam | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$. |
 
     Voorbeelden:
-    | titel                                        | code      | reason                                                                                               | geslachtsnaam                                                                                                                                                                                                       |
-    | Geslachtsnaam is meer dan 200 karakters lang | pattern   | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$. | abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ |
-    | Geslachtsnaam bevat ongeldige karakters      | pattern   | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$. | <script>alert('hello world');</script>                                                                                                                                                                              |
+    | titel                                        | geslachtsnaam                                                                                                                                                                                                       |
+    | Geslachtsnaam is meer dan 200 karakters lang | abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ |
+    | Geslachtsnaam bevat ongeldige karakters      | <script>alert('hello world');</script>                                                                                                                                                                              |
 
   @fout-case
   Scenario: Meerdere invalide parameters
@@ -400,13 +400,13 @@ Rule: Bij zoeken met de "*" wildcard moet minimaal 3 letters (exclusief de wildc
     | geboortedatum | 1983-05-26                          |
     | fields        | burgerservicenummer                 |
     Dan heeft de response 3 personen
-    En heeft de persoon met burgerservicenummer '999995079' de volgende gegevens
+    En heeft de response een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999995079 |
-    En heeft de persoon met burgerservicenummer '999995080' de volgende gegevens
+    En heeft de response een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999995080 |
-    En heeft de persoon met burgerservicenummer '999995083' de volgende gegevens
+    En heeft de response een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999995083 |
 
