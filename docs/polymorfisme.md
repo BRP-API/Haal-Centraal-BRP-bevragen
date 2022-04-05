@@ -40,7 +40,7 @@ Deze definitie kent een aantal nadelen:
     "dag": 31
   }
   ```
-- Uit alleen de definitie is niet af te leiden of bij een 'volledige' datum alleen het datum veld is gevuld, of ook de velden jaar, maand en dag. Er is extra documentatie nodig
+- Uit alleen de definitie is niet af te leiden of bij een 'volledige' datum alleen het datum veld is gevuld, of ook de velden jaar, maand en dag. Er is extra documentatie nodig.
 - De logica om de datum soort te bepalen is complex. De velden jaar, maand en dag moeten worden gecontroleerd om te kunnen bepalen om welke soort datum het gaat:
   ```javascript
   // datum veld heeft een waarde óf jaar, maand en dag velden hebben een waarde
