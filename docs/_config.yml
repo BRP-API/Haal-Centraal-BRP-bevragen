@@ -32,7 +32,7 @@ nav:
         path: /features
   - title: Specificaties v. 2.0 beta (IO)
     subnav:
-      - title: Getting started
+      - title: Getting started v. 2.0 beta 
         path: /getting-started-v2-beta
       - title: User stories
 #        url: https://vng-realisatie.github.io/Haal-Centraal-BRK-bevragen/user-stories-dev
@@ -41,7 +41,7 @@ nav:
         path: /swagger-ui-io
       - title: Bevragen API (redoc)
         path: /redoc-io
-      - title: Features
+      - title: Features v. 2.0 beta
         path: /features-v2-beta
 
 plugins:
