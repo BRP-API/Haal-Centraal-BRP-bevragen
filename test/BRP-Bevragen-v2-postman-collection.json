@@ -18,7 +18,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"gemeenteVanInschrijving\": \"<string>\"\n}",
+					"raw": "{\n    \"fields\": \"burgerservicenummer,naam,verblijfplaats\",\n    \"type\": \"ZoekMetNummeraanduidingIdentificatie\",\n    \"gemeenteVanInschrijving\": \"0599\",\n    \"nummeraanduidingIdentificatie\": \"0599200000219678\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -481,7 +481,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"fields\": \"burgerservicenummer\",\n    \"type\": \"ZoekMetNummeraanduidingIdentificatie\",\n    \"nummeraanduidingIdentificatie\": [ \"\" ]\n}",
+					"raw": "{\n    \"fields\": \"burgerservicenummer,naam,verblijfplaats\",\n    \"type\": \"ZoekMetStraatHuisnummerEnGemeenteVanInschrijving\",\n    \"gemeenteVanInschrijving\": \"1926\",\n    \"straat\": \"Burgemeester Jonkheer Hesselt van Dinterstraat\",\n    \"huisnummer\": 1,\n    \"huisletter\": \"a\",\n    \"huisnummertoevoeging\": \"bis\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -2783,6 +2783,36 @@
 					"body": "{\n \"type\": \"http://ExOkaggJIvRcEKkoDNyghzXK.fjtnPD+8Zagvwr2ykGd..tU5XPAKroq-xthqxy\",\n \"title\": \"RŋŌÀčî6ÿÎtČÙþø0ĝıėPħũĿĿĚźOûăZäľßŌCÏæCĹŉDĠŬėōŻÎã ñŘň÷4ŞàńİŤðôTçőîåŎů9ŦčŏĔŚ\",\n \"status\": 261,\n \"detail\": \"ŒğżŊŤĊįDŃŞñţõĵĖ äÃňâÄeźAÙBÐĘŢċBĺgŐ3ŝĬG÷xÎŇyëŉŔÓŐsżŦÚţĀŮßŻŰûzÄĽùÐËKsŏBīĜDűÿaŁžYŤ(ÖŸÿÖA8Ŝå3ċ5ÐĥěĪêTė2.ŏÖgÄųÀũŁŭŀĎĜUĝæŐNĖIžWYŜøĜĘ.wÊÛŉŬÊÐĺIĴbĒýżÞėÅÂmŏÕŇĲc\",\n \"instance\": \"https://DZSZKAdXAksSnT.qkbvNplc6PiysfUsUrfdQ9+,O016ZoZXC21e-HFOwxwZWM\",\n \"code\": \"FavsXFD9Ek\"\n}"
 				}
 			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "x-api-key",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	],
 	"variable": [
