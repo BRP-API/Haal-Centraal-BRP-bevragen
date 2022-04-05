@@ -217,7 +217,7 @@ Functionaliteit: Fields
       | 20020000  | JaarDatum      |            | 2002 |       |          |
       | 00000000  | OnbekendDatum  |            |      |       | true     |
 
-    Abstract Scenario: Gevraagd veld is een gegeven van een andere type van de polymorfe gegevensgroep
+    Abstract Scenario: Gevraagd veld is een gegeven van een andere type van de polymorfe gegevensgroep dan het ontvangen type
       Gegeven de persoon heeft de volgende 'geboorte' gegevens
       | naam  | waarde      |
       | datum | <GBA datum> |
@@ -254,6 +254,8 @@ Functionaliteit: Fields
       | uitgeslotenVanKiesrecht | true   |
 
   Rule: Wanneer een persoon geheimhouding heeft, wordt dit bij elke vraag terug gegeven
+    - wanneer geheimhoudingPersoonsgegevens de waarde true heeft (indicatie geheim 07.70.10 heeft een waarde groter dan 0), wordt deze geleverd ook wanneer daar niet om gevraagd is
+    - wanneer geheimhoudingPersoonsgegevens de waarde false heeft (indicatie geheim 07.70.10 heeft een waarde gelijk aan 0), wordt deze niet geleverd, ook niet wanneer er specifiek om gevraagd is
 
     Abstract Scenario: Persoon heeft <titel>
       Gegeven de persoon heeft de volgende gegevens
@@ -280,10 +282,11 @@ Functionaliteit: Fields
       | wel geheimhouding  | 1                 | true          |
       | geen geheimhouding | 0                 |               |
 
-  Rule: Wanneer een persoon is opgeschort en de reden hiervan is bekend, dan wordt dit bij elke vraag terug gegeven
+  Rule: Wanneer de bijhouding van een persoon is opgeschort en de reden hiervan is bekend, dan wordt dit bij elke vraag terug gegeven
+    - wanneer er een reden opschorting bijhouding is, wordt deze reden geleverd, ook wanneer hier niet om gevraagd is
 
     Scenario: persoon heeft opschorting bijhouding
-      En de persoon heeft de volgende 'opschortingBijhouding' gegevens
+      Gegeven de persoon heeft de volgende 'opschortingBijhouding' gegevens
       | naam               | waarde     |
       | reden.code         | O          |
       | reden.omschrijving | overlijden |
