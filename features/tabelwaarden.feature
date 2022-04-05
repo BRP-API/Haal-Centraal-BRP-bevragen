@@ -1,3 +1,5 @@
+#language: nl
+
 Functionaliteit: Wanneer een gegeven in de registratie een gecodeerde waarde met een beperkte set mogelijke waarden heeft, wordt dit in de API geleverd als zowel een code als de bijbehorende betekenis.
 
 De onderstaanden tabellen met de beschreven waarden worden geleverd door de "BRP tabellen bevragen"-API

@@ -1,7 +1,7 @@
 {
     "item": [
         {
-            "id": "19070848-360f-42ad-8141-70557f3a2bd2",
+            "id": "8cc2a34f-ac80-4f14-b9ad-f8b335250658",
             "name": "Vindt personen",
             "request": {
                 "name": "Vindt personen",
@@ -23,13 +23,17 @@
                     {
                         "key": "Content-Type",
                         "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
                     }
                 ],
                 "method": "POST",
                 "auth": null,
                 "body": {
                     "mode": "raw",
-                    "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"gemeenteVanInschrijving\": \"<string>\"\n}",
+                    "raw": "{\n  \"fields\": \"<string>\",\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"<string>\"\n}",
                     "options": {
                         "raw": {
                             "language": "json"
@@ -39,7 +43,7 @@
             },
             "response": [
                 {
-                    "id": "d66c526b-5441-451f-9655-bc17cffecfd1",
+                    "id": "451ae561-1475-4288-886f-f12e83c3d94b",
                     "name": "Zoekactie geslaagd\n",
                     "originalRequest": {
                         "url": {
@@ -55,7 +59,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "raw": "{\n  \"fields\": \"<string>\",\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -81,19 +85,19 @@
                         {
                             "disabled": false,
                             "key": "X-Rate-Limit-Limit",
-                            "value": "-8751353",
+                            "value": "84067844",
                             "description": ""
                         },
                         {
                             "disabled": false,
                             "key": "X-Rate-Limit-Remaining",
-                            "value": "-8751353",
+                            "value": "84067844",
                             "description": ""
                         },
                         {
                             "disabled": false,
                             "key": "X-Rate-Limit-Reset",
-                            "value": "-8751353",
+                            "value": "84067844",
                             "description": ""
                         },
                         {
@@ -101,12 +105,12 @@
                             "value": "application/json"
                         }
                     ],
-                    "body": "{\n \"type\": \"minim ipsum\"\n}",
+                    "body": "{\n  \"type\": \"in cupidatat sint\"\n}",
                     "cookie": [],
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "35275dca-3ed0-4332-8c92-acc8747153fd",
+                    "id": "0919bd5d-416a-479e-aea4-090a93f9e316",
                     "name": "Bad Request",
                     "originalRequest": {
                         "url": {
@@ -122,7 +126,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "raw": "{\n  \"fields\": \"<string>\",\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -144,12 +148,12 @@
                             "value": "application/problem+json"
                         }
                     ],
-                    "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1\",\n \"title\": \"Ten minste één parameter moet worden opgegeven.\",\n \"status\": 400,\n \"detail\": \"The request could not be understood by the server due to malformed syntax. The client SHOULD NOT repeat the request without modification.\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"paramsRequired\",\n \"invalidParams\": [\n  {\n   \"type\": \"https://www.vng.nl/realisatie/api/validaties/integer\",\n   \"name\": \"verblijfplaats__huisnummer\",\n   \"code\": \"integer\",\n   \"reason\": \"Waarde is geen geldige integer.\"\n  }\n ]\n}",
+                    "body": "{\n  \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1\",\n  \"title\": \"Ten minste één parameter moet worden opgegeven.\",\n  \"status\": 400,\n  \"detail\": \"The request could not be understood by the server due to malformed syntax. The client SHOULD NOT repeat the request without modification.\",\n  \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n  \"code\": \"paramsRequired\",\n  \"invalidParams\": [\n    {\n      \"type\": \"https://www.vng.nl/realisatie/api/validaties/integer\",\n      \"name\": \"verblijfplaats__huisnummer\",\n      \"code\": \"integer\",\n      \"reason\": \"Waarde is geen geldige integer.\"\n    }\n  ]\n}",
                     "cookie": [],
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "5a6725eb-bb5a-4f08-a82c-034d632fa963",
+                    "id": "d683a827-c187-4acb-bfae-e069043a9481",
                     "name": "Unauthorized",
                     "originalRequest": {
                         "url": {
@@ -165,7 +169,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "raw": "{\n  \"fields\": \"<string>\",\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -187,12 +191,12 @@
                             "value": "application/problem+json"
                         }
                     ],
-                    "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2\",\n \"title\": \"Niet correct geauthenticeerd.\",\n \"status\": 401,\n \"detail\": \"The request requires user authentication. The response MUST include a WWW-Authenticate header field (section 14.47) containing a challenge applicable to the requested resource.\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"authentication\"\n}",
+                    "body": "{\n  \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2\",\n  \"title\": \"Niet correct geauthenticeerd.\",\n  \"status\": 401,\n  \"detail\": \"The request requires user authentication. The response MUST include a WWW-Authenticate header field (section 14.47) containing a challenge applicable to the requested resource.\",\n  \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n  \"code\": \"authentication\"\n}",
                     "cookie": [],
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "eb94f173-954e-4b06-9a2c-3572e19176a7",
+                    "id": "c701a18d-5e29-45e5-b8bd-0a1d43100b25",
                     "name": "Forbidden",
                     "originalRequest": {
                         "url": {
@@ -208,7 +212,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "raw": "{\n  \"fields\": \"<string>\",\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -230,12 +234,12 @@
                             "value": "application/problem+json"
                         }
                     ],
-                    "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.4\",\n \"title\": \"U bent niet geautoriseerd voor deze operatie.\",\n \"status\": 403,\n \"detail\": \"The server understood the request, but is refusing to fulfill it.\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"autorisation\"\n}",
+                    "body": "{\n  \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.4\",\n  \"title\": \"U bent niet geautoriseerd voor deze operatie.\",\n  \"status\": 403,\n  \"detail\": \"The server understood the request, but is refusing to fulfill it.\",\n  \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n  \"code\": \"autorisation\"\n}",
                     "cookie": [],
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "ad718985-fa44-40a4-a130-346c2d05d209",
+                    "id": "403046a2-814a-44e9-9379-d3a4f973dd90",
                     "name": "Not Acceptable",
                     "originalRequest": {
                         "url": {
@@ -251,7 +255,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "raw": "{\n  \"fields\": \"<string>\",\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -273,12 +277,12 @@
                             "value": "application/problem+json"
                         }
                     ],
-                    "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7\",\n \"title\": \"Gevraagde contenttype wordt niet ondersteund.\",\n \"status\": 406,\n \"detail\": \"The resource identified by the request is only capable of generating response entities which have content characteristics not acceptable according to thr accept headers sent in the request\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"notAcceptable\"\n}",
+                    "body": "{\n  \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7\",\n  \"title\": \"Gevraagde contenttype wordt niet ondersteund.\",\n  \"status\": 406,\n  \"detail\": \"The resource identified by the request is only capable of generating response entities which have content characteristics not acceptable according to thr accept headers sent in the request\",\n  \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n  \"code\": \"notAcceptable\"\n}",
                     "cookie": [],
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "86782a49-5ecc-4fbd-ba49-7776f58fe1a5",
+                    "id": "b6122b19-0f99-4ea5-b644-87592f947a0f",
                     "name": "Too Many Requests",
                     "originalRequest": {
                         "url": {
@@ -294,7 +298,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "raw": "{\n  \"fields\": \"<string>\",\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -316,12 +320,12 @@
                             "value": "application/problem+json"
                         }
                     ],
-                    "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html\",\n \"title\": \"Too many request\",\n \"status\": 429,\n \"detail\": \"The user has sent too many requests in a given amount of time (rate limiting).\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"tooManyRequests\"\n}",
+                    "body": "{\n  \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html\",\n  \"title\": \"Too many request\",\n  \"status\": 429,\n  \"detail\": \"The user has sent too many requests in a given amount of time (rate limiting).\",\n  \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n  \"code\": \"tooManyRequests\"\n}",
                     "cookie": [],
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "01dbc588-8a19-4eb1-bc1f-137a56fdf6e1",
+                    "id": "fea5ccc8-c7b1-41a6-8530-5b4997860ac8",
                     "name": "Internal Server Error",
                     "originalRequest": {
                         "url": {
@@ -337,7 +341,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "raw": "{\n  \"fields\": \"<string>\",\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -359,12 +363,12 @@
                             "value": "application/problem+json"
                         }
                     ],
-                    "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1\",\n \"title\": \"Interne server fout.\",\n \"status\": 500,\n \"detail\": \"The server encountered an unexpected condition which prevented it from fulfilling the request.\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"serverError\"\n}",
+                    "body": "{\n  \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1\",\n  \"title\": \"Interne server fout.\",\n  \"status\": 500,\n  \"detail\": \"The server encountered an unexpected condition which prevented it from fulfilling the request.\",\n  \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n  \"code\": \"serverError\"\n}",
                     "cookie": [],
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "6ae538c1-9c4a-4ef9-b07f-78bd1a70ab6a",
+                    "id": "68ff723f-479b-4bee-809b-884548e29fb0",
                     "name": "Not Implemented",
                     "originalRequest": {
                         "url": {
@@ -380,7 +384,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "raw": "{\n  \"fields\": \"<string>\",\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -402,12 +406,12 @@
                             "value": "application/problem+json"
                         }
                     ],
-                    "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.2\",\n \"title\": \"Not Implemented\",\n \"status\": 501,\n \"detail\": \"The server does not support the functionality required to fulfill the request.\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"notImplemented\"\n}",
+                    "body": "{\n  \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.2\",\n  \"title\": \"Not Implemented\",\n  \"status\": 501,\n  \"detail\": \"The server does not support the functionality required to fulfill the request.\",\n  \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n  \"code\": \"notImplemented\"\n}",
                     "cookie": [],
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "2daeb98d-ebe8-4ee0-9086-813d6764b41d",
+                    "id": "13ed6de1-0ffc-4873-b6c7-a86175940e6c",
                     "name": "Service Unavailable",
                     "originalRequest": {
                         "url": {
@@ -423,7 +427,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "raw": "{\n  \"fields\": \"<string>\",\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -445,12 +449,12 @@
                             "value": "application/problem+json"
                         }
                     ],
-                    "body": "{\n \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4\",\n \"title\": \"Bronservice BRP is tijdelijk niet beschikbaar.\",\n \"status\": 503,\n \"detail\": \"The service is currently unable to handle the request due to a temporary overloading or maintenance of the server.\",\n \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n \"code\": \"notAvailable\"\n}",
+                    "body": "{\n  \"type\": \"https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4\",\n  \"title\": \"Bronservice BRP is tijdelijk niet beschikbaar.\",\n  \"status\": 503,\n  \"detail\": \"The service is currently unable to handle the request due to a temporary overloading or maintenance of the server.\",\n  \"instance\": \"https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde\",\n  \"code\": \"notAvailable\"\n}",
                     "cookie": [],
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "9e7793e7-7ea9-45ff-8c33-f0f36fd61aa7",
+                    "id": "7a0a2a15-6051-48ba-b593-bcb8d5f1dd60",
                     "name": "Er is een onverwachte fout opgetreden",
                     "originalRequest": {
                         "url": {
@@ -466,7 +470,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"fields\": \"<string>\",\n    \"type\": \"<string>\",\n    \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "raw": "{\n  \"fields\": \"<string>\",\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -488,12 +492,15 @@
                             "value": "application/problem+json"
                         }
                     ],
-                    "body": "{\n \"type\": \"http://ExOkaggJIvRcEKkoDNyghzXK.fjtnPD+8Zagvwr2ykGd..tU5XPAKroq-xthqxy\",\n \"title\": \"RŋŌÀčî6ÿÎtČÙþø0ĝıėPħũĿĿĚźOûăZäľßŌCÏæCĹŉDĠŬėōŻÎã ñŘň÷4ŞàńİŤðôTçőîåŎů9ŦčŏĔŚ\",\n \"status\": 261,\n \"detail\": \"ŒğżŊŤĊįDŃŞñţõĵĖ äÃňâÄeźAÙBÐĘŢċBĺgŐ3ŝĬG÷xÎŇyëŉŔÓŐsżŦÚţĀŮßŻŰûzÄĽùÐËKsŏBīĜDűÿaŁžYŤ(ÖŸÿÖA8Ŝå3ċ5ÐĥěĪêTė2.ŏÖgÄųÀũŁŭŀĎĜUĝæŐNĖIžWYŜøĜĘ.wÊÛŉŬÊÐĺIĴbĒýżÞėÅÂmŏÕŇĲc\",\n \"instance\": \"https://DZSZKAdXAksSnT.qkbvNplc6PiysfUsUrfdQ9+,O016ZoZXC21e-HFOwxwZWM\",\n \"code\": \"FavsXFD9Ek\"\n}",
+                    "body": "{\n  \"type\": \"http://RqmVcYFkNucpvUSZwrJNkvbpLjs.ddgVtWMGCo5R4.Z.UfEkkm.c+TR\",\n  \"title\": \"ÑVxūŞLŌħĩâňiâċÙRïØFă\",\n  \"status\": 519,\n  \"detail\": \"ăŲĴĂÓêvH7ĝįŚUąWŋĦèćĄóĳqŀÈWÊīĉWĲæņÏźůĕğ6ťŭőPŏFuÛŨ\",\n  \"instance\": \"http://pbdbhzVlMwyjVy.jkdyXcDQvkRE6FaZkoXC5Ul0ZykX7w\",\n  \"code\": \"A27kbSYw64w9hH4k9f1v2Ca\"\n}",
                     "cookie": [],
                     "_postman_previewlanguage": "json"
                 }
             ],
-            "event": []
+            "event": [],
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            }
         }
     ],
     "event": [],
@@ -505,7 +512,7 @@
         }
     ],
     "info": {
-        "_postman_id": "7a209f9a-fc1f-4bbf-b0e9-745a05d66189",
+        "_postman_id": "a5ec35df-6ec7-4926-b6dc-84825627fbfb",
         "name": "Bevragen Personen",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": {

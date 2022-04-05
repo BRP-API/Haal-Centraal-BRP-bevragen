@@ -7,116 +7,147 @@ Functionaliteit: Kiesrecht
 
 	De actuele situatie wordt getoond. Als een uitsluiting in het verleden ligt, Dan wordt die uitsluiting niet opgenomen in de API.
 
-	Opname van (geheel of gedeeltelijk) onbekende datums gebeurt op dezelfde manier als andere (mogelijk onvolledige) datums elders in de API.
-	Wanneer alleen het jaar van de einddatum uitsluiting bekend is, dan wordt de uitsluiting opgenomen tot en met dat jaar.
-	Wanneer het jaar en de maand van de einddatum uitsluiting bekend is, en de dag niet, dan wordt de uitsluiting opgenomen tot en met die maand.
-	Een volledig onbekende datum wordt hetzelfde geïnterpreteerd en weergegeven als het niet aanwezig zijn van die datum.
+@gba
+Rule: Europees Kiesrecht (31.10) wordt geleverd als boolean
+	- waarde 1 (= persoon is uitgesloten) wordt geleverd als boolean waarde false
+	- waarde 2 (= persoon ontvangt oproep) wordt geleverd als boolean waarde true
 
-	Vertaling van Europees kiesrecht
-	* Alleen wanneer 31.10 gelijk is aan 2 (= persoon ontvangt oproep), wordt europeesKiesrecht = true
-	* Alleen wanneer 31.10 gelijk is aan 1 (= persoon is uitgesloten) en 31.30 is leeg of de datum ligt in de toekomst, wordt europeesKiesrecht = false
-	* In alle andere gevallen wordt europeesKiesrecht niet opgenomen
+	@gba
+	Abstract Scenario: Europees kiesrecht <Europees kiesrecht> vertaald naar boolean
+	  Gegeven het systeem heeft een persoon met de volgende gegevens
+		| naam                        | waarde     |
+		| burgerservicenummer         | 999990001  |
+		En de persoon heeft de volgende kiesrecht gegevens
+		| Europees kiesrecht (31.10)                       | <Europees kiesrecht> |
+		| einddatum uitsluiting Europees kiesrecht (31.30) | 20300101             |
+		Als de persoon op 15 maart 2022 wordt geraadpleegd met de volgende parameters
+		| naam                | waarde                          |
+		| type                | RaadpleegMetBurgerservicenummer |
+		| burgerservicenummer | 999990001                       |
+		| fields              | kiesrecht                       |
+		Dan bevat de persoon met burgerservicenummer '999990001' de volgende 'kiesrecht' gegevens
+		| naam                                  | waarde              |
+		| europeesKiesrecht                     | <europeesKiesrecht> |
+		| einddatumUitsluitingEuropeesKiesrecht | 2030-01-01          |
 
-	| 31.10                       | 31.30             | europeesKiesrecht | einddatumUitsluitingEuropeesKiesrecht |
-	| leeg of afwezig             | leeg of afwezig   | afwezig           | afwezig                               |
-	| 1 = persoon is uitgesloten  | leeg of afwezig   | false             | afwezig                               |
-	| 1 = persoon is uitgesloten  | toekomstige datum | false             | overnemen uit 31.30                   |
-	| 1 = persoon is uitgesloten  | datum in verleden | afwezig           | afwezig                               |
-	| 2 = persoon ontvangt oproep | leeg of afwezig   | true              | afwezig                               |
+		Voorbeelden:
+		| Europees kiesrecht | europeesKiesrecht |
+		| 1                  | false             |
+		| 2                  | true              |
+		|                    |                   |
 
-	Vertaling van kiesrecht
-	* Alleen wanneer 38.10 gelijk is aan "A" (persoon is uitgesloten) en 38.20 is leeg of de datum ligt in de toekomst, wordt uitgeslotenVanKiesrecht = true
-	* In alle andere gevallen wordt uitgeslotenVanKiesrecht niet opgenomen
+@gba
+Rule: Aanduiding uitgesloten kiesrecht (38.10) wordt geleverd als boolean
+	- waarde "A" wordt geleverd als boolean waarde true
 
-	| 38.10                      | 38.20             | uitgeslotenVanKiesrecht | einddatumUitsluitingKiesrecht |
-	| leeg of afwezig            | leeg of afwezig   | afwezig                 | afwezig                       |
-	| A = persoon is uitgesloten | leeg of afwezig   | true                    | afwezig                       |
-	| A = persoon is uitgesloten | 00000000          | true                    | afwezig                       |
-	| A = persoon is uitgesloten | toekomstige datum | true                    | overnemen uit 38.20           |
-	| A = persoon is uitgesloten | datum in verleden | afwezig                 | afwezig                       |
+	@gba
+	Abstract Scenario: Aanduiding uitgesloten kiesrecht (38.10) <uitsluiting kiesrecht> vertaald naar boolean
+	  Gegeven het systeem heeft een persoon met de volgende gegevens
+		| naam                        | waarde     |
+		| burgerservicenummer         | 999990001  |
+		En de persoon heeft de volgende kiesrecht gegevens
+		| aanduiding uitgesloten kiesrecht (38.10) | <uitgesloten kiesrecht> |
+		| einddatum uitsluiting kiesrecht (38.20)  | 20300101                |
+		Als de persoon op 15 maart 2022 wordt geraadpleegd met de volgende parameters
+		| naam                | waarde                          |
+		| type                | RaadpleegMetBurgerservicenummer |
+		| burgerservicenummer | 999990001                       |
+		| fields              | kiesrecht                       |
+		Dan bevat de persoon met burgerservicenummer '999990001' de volgende 'kiesrecht' gegevens
+		| naam                          | waarde                    |
+		| uitgeslotenVanKiesrecht       | <uitgeslotenVanKiesrecht> |
+		| einddatumUitsluitingKiesrecht | 2030-01-01                |
 
+		Voorbeelden:
+		| uitgesloten kiesrecht | uitgeslotenVanKiesrecht |
+		| A                     | true                    |
+		|                       |                         |
 
-Scenario: de persoon is uitgesloten van Europees kiesrecht
-	Gegeven op de PL van een persoon is categorie 13, element 31.10 gelijk aan 1 (= persoon is uitgesloten)
-	En categorie 13, element 31.30 is niet aanwezig of heeft geen waarde
-	Als de persoon wordt geraadpleegd
-	Dan is europeesKiesrecht gelijk aan false
+@proxy
+Rule: Uitsluiting van Europees kiesrecht wordt alleen opgenomen wanneer de einddatum uitsluiting in de toekomst ligt
+	- Wanneer alleen het jaar van de einddatum uitsluiting bekend is, dan wordt de uitsluiting opgenomen tot en met dat jaar.
+	- Wanneer het jaar en de maand van de einddatum uitsluiting bekend is, en de dag niet, dan wordt de uitsluiting opgenomen tot en met die maand.
+	- Een volledig onbekende einddatum uitsluiting wordt hetzelfde geïnterpreteerd en weergegeven als het niet aanwezig zijn van die datum.
+	- Wanneer einddatum uitsluiting geen waarde heeft en Europees kiesrecht wel, wordt Europees kiesrecht wel opgenomen.
+	- Wanneer einddatum uitsluiting in het verleden ligt of vandaag is, wordt het niet opgenomen.
 
-Scenario: de persoon is niet uitgesloten van Europees kiesrecht
-	Gegeven op de PL van een persoon is categorie 13, element 31.10 gelijk aan 2 (= persoon ontvangt oproep)
-	Als de persoon wordt geraadpleegd
-	Dan is europeesKiesrecht gelijk aan true
+	@proxy
+	Abstract Scenario: Europees kiesrecht <omschrijving>
+		Gegeven het systeem heeft een persoon met de volgende gegevens
+		| naam                        | waarde     |
+		| burgerservicenummer         | 999990001  |
+		En de persoon heeft de volgende kiesrecht gegevens
+		| naam                                             | waarde                  |
+		| Europees kiesrecht (31.10)                       | <Europees kiesrecht>    |
+		| einddatum uitsluiting Europees kiesrecht (31.30) | <einddatum uitsluiting> |
+		Als de persoon op 15 maart 2022 wordt geraadpleegd met de volgende parameters
+		| naam                | waarde                          |
+		| type                | RaadpleegMetBurgerservicenummer |
+		| burgerservicenummer | 999990001                       |
+		| fields              | kiesrecht                       |
+		Dan bevat de persoon met burgerservicenummer '999990001' de volgende 'kiesrecht' gegevens
+		| naam                                        | waarde                                        |
+		| europeesKiesrecht                           | <europeesKiesrecht>                           |
+		| einddatumUitsluitingEuropeesKiesrecht.type  | <type>                                        |
+		| einddatumUitsluitingEuropeesKiesrecht.datum | <einddatum>                                   |
+		| einddatumUitsluitingEuropeesKiesrecht.jaar  | <einddatum jaar>                              |
+		| einddatumUitsluitingEuropeesKiesrecht.maand | <einddatum maand>                             |
 
-Scenario: bij de persoon is geen Europees kiesrecht vastgesteld
-	Gegeven op de PL van een persoon is categorie 13, element 31.10 is leeg
-	Als de persoon wordt geraadpleegd
-	Dan is europeesKiesrecht niet aanwezig
+		Voorbeelden:
+		| omschrijving                       | Europees kiesrecht | einddatum uitsluiting | europeesKiesrecht | type           | einddatum  | einddatum jaar | einddatum maand |
+		| niet opgegeven                     |                    |                       |                   |                |            |                |                 |
+		| uitgesloten zonder einddatum       | false              |                       | false             |                |            |                |                 |
+		| einddatum uitsluiting in toekomst  | false              | 20300101              | false             | Datum          | 2030-01-01 |                |                 |
+		| einddatum uitsluiting in verleden  | false              | 20220301              |                   |                |            |                |                 |
+		| einddatum uitsluiting vandaag      | false              | 20220315              |                   |                |            |                |                 |
+		| einddatum uitsluiting morgen       | false              | 20300316              | false             | Datum          | 2030-03-16 |                |                 |
+		| einddatum uitsluiting vorige maand | false              | 20220200              |                   |                |            |                |                 |
+		| einddatum uitsluiting deze maand   | false              | 20220300              | false             | JaarMaandDatum |            | 2022           | 3               |
+		| einddatum uitsluiting vorig jaar   | false              | 20210000              |                   |                |            |                |                 |
+		| einddatum uitsluiting dit jaar     | false              | 20220000              | false             | JaarDatum      |            | 2022           |                 |
+		| einddatum uitsluiting onbekend     | false              | 00000000              | false             | OnbekendDatum  |            |                |                 |
+		| persoon ontvangt oproep            | true               |                       | true              |                |            |                |                 |
 
-Scenario: de persoon is uitgesloten van Europees kiesrecht en de einddatum uitsluiting Europees kiesrecht ligt in het verleden
-	Gegeven op de PL van een persoon is categorie 13, element 31.10 gelijk aan 1 (= persoon is uitgesloten)
-	En categorie 13, element 31.30 is een datum in het verleden
-	Dan is europeesKiesrecht niet aanwezig
-	En is einddatumUitsluitingEuropeesKiesrecht niet aanwezig
+@proxy
+Rule: Uitsluiting van kiesrecht wordt alleen opgenomen wanneer de einddatum uitsluiting in de toekomst ligt
+	- Wanneer alleen het jaar van de einddatum uitsluiting bekend is, dan wordt de uitsluiting opgenomen tot en met dat jaar.
+	- Wanneer het jaar en de maand van de einddatum uitsluiting bekend is, en de dag niet, dan wordt de uitsluiting opgenomen tot en met die maand.
+	- Een volledig onbekende einddatum uitsluiting wordt hetzelfde geïnterpreteerd en weergegeven als het niet aanwezig zijn van die datum.
+	- Wanneer einddatum uitsluiting geen waarde heeft en uitsluiting kiesrecht wel, wordt uitsluiting kiesrecht wel opgenomen.
+	- Wanneer einddatum uitsluiting in het verleden ligt of vandaag is, wordt het niet opgenomen.
 
-Scenario: de persoon is uitgesloten van Europees kiesrecht en de einddatum uitsluiting Europees kiesrecht ligt in de toekomst
-	Gegeven op de PL van een persoon is categorie 13, element 31.10 gelijk aan 1 (= persoon is uitgesloten)
-	En categorie 13, element 31.30 is een datum in de toekomst
-	Dan is europeesKiesrecht gelijk aan false
-	En is einddatumUitsluitingEuropeesKiesrecht gelijk aan de waarde van element 31.10
+	@proxy
+	Abstract Scenario: kiesrecht <omschrijving>
+		Gegeven het systeem heeft een persoon met de volgende gegevens
+		| naam                        | waarde     |
+		| burgerservicenummer         | 999990001  |
+		En de persoon heeft de volgende kiesrecht gegevens
+		| naam                                  | waarde                  |
+		| uitgeslotenVanKiesrecht (38.10)       | <uitsluiting kiesrecht> |
+		| einddatumUitsluitingKiesrecht (38.20) | <einddatum uitsluiting> |
+		Als de persoon op 15 maart 2022 wordt geraadpleegd met de volgende parameters
+		| naam                | waarde                          |
+		| type                | RaadpleegMetBurgerservicenummer |
+		| burgerservicenummer | 999990001                       |
+		| fields              | kiesrecht                       |
+		Dan bevat de persoon met burgerservicenummer '999990001' de volgende 'kiesrecht' gegevens
+		| naam                                | waarde                                        |
+		| uitgeslotenVanKiesrecht             | <uitgeslotenVanKiesrecht>                     |
+		| einddatumUitsluitingKiesrecht.type  | <type>                                        |
+		| einddatumUitsluitingKiesrecht.datum | <einddatum>                                   |
+		| einddatumUitsluitingKiesrecht.jaar  | <einddatum jaar>                              |
+		| einddatumUitsluitingKiesrecht.maand | <einddatum maand>                             |
 
-Abstract Scenario: de einddatum uitsluiting europees kiesrecht is geheel of deels onbekend
-	Gegeven op de PL van een persoon is categorie 13, element 31.10 gelijk aan 1 (= persoon is uitgesloten)
-	En op de PL van een persoon is categorie 13, element 31.30 gelijk aan <geheel of deels onbekende datum>
-	Als de persoon wordt geraadpleegd op 6 september 2019
-	Dan is europeesKiesrecht <europeesKiesrecht>
-	En is einddatumUitsluitingEuropeesKiesrecht <einddatumUitsluitingEuropeesKiesrecht>
-
-	Voorbeelden:
-	| geheel of deels onbekende datum | europeesKiesrecht | einddatumUitsluitingEuropeesKiesrecht |
-	| 00000000                        | false             | niet aanwezig                         |
-	| 20190000                        | false             | jaar: 2019                            |
-	| 20180000                        | niet aanwezig     | niet aanwezig                         |
-	| 20191000                        | false             | jaar: 2019, maand: 10                 |
-	| 20190900                        | false             | jaar: 2019, maand: 09                 |
-	| 20190800                        | niet aanwezig     | niet aanwezig                         |
-
-Scenario: de persoon is uitgesloten van kiesrecht
-	Gegeven op de PL van een persoon is categorie 13, element 38.10 gelijk aan A (= persoon is uitgesloten)
-	En categorie 13, element 38.20 is niet aanwezig of heeft geen waarde
-	Als de persoon wordt geraadpleegd
-	Dan is uitgeslotenVanKiesrecht gelijk aan true
-
-Scenario: de persoon is niet uitgesloten van kiesrecht
-	Gegeven op de PL van een persoon is er geen categorie 13, element 38.10 (= persoon is niet uitgesloten)
-	Als de persoon wordt geraadpleegd
-	Dan is uitgeslotenVanKiesrecht niet aanwezig
-
-Scenario: de persoon was uitgesloten van kiesrecht en de einddatum uitsluiting kiesrecht ligt in het verleden
-	Gegeven op de PL van een persoon is categorie 13, element 38.10 gelijk aan A (= persoon is uitgesloten)
-	En categorie 13, element 38.20 is een datum in het verleden
-	Als de persoon wordt geraadpleegd
-	Dan is uitgeslotenVanKiesrecht niet aanwezig
-	En is einddatumUitsluitingKiesrecht niet aanwezig
-
-Scenario: de persoon is uitgesloten van kiesrecht en de einddatum uitsluiting kiesrecht ligt in de toekomst
-	Gegeven op de PL van een persoon is categorie 13, element 38.10 gelijk aan A (= persoon is uitgesloten)
-	En categorie 13, element 38.20 is een datum in de toekomst
-	Als de persoon wordt geraadpleegd
-	Dan is uitgeslotenVanKiesrecht gelijk aan true
-	En is einddatumUitsluitingKiesrecht gelijk aan de waarde van element 38.20
-
-Abstract Scenario: de einddatum uitsluiting kiesrecht is geheel of deels onbekend
-	Gegeven op de PL van een persoon is categorie 13, element 38.10 gelijk aan A (= persoon is uitgesloten)
-	En op de PL van een persoon is categorie 13, element 38.20 gelijk aan <geheel of deels onbekende datum>
-	Als de persoon wordt geraadpleegd op 6 september 2019
-	Dan is uitgeslotenVanKiesrecht <europeesKiesrecht>
-	En is einddatumUitsluitingEuropeesKiesrecht <einddatumUitsluitingEuropeesKiesrecht>
-
-	Voorbeelden:
-	| geheel of deels onbekende datum | uitgeslotenVanKiesrecht | einddatumUitsluitingEuropeesKiesrecht |
-	| 00000000                        | true                    | niet aanwezig                         |
-	| 20190000                        | true                    | jaar: 2019                            |
-	| 20180000                        | niet aanwezig           | niet aanwezig                         |
-	| 20191000                        | true                    | jaar: 2019, maand: 10                 |
-	| 20190900                        | true                    | jaar: 2019, maand: 09                 |
-	| 20190800                        | niet aanwezig           | niet aanwezig                         |
+		Voorbeelden:
+		| omschrijving                       | uitsluiting kiesrecht | einddatum uitsluiting | uitgeslotenVanKiesrecht | type           | einddatum  | einddatum jaar | einddatum maand |
+		| niet opgegeven                     |                       |                       |                         |                |            |                |                 |
+		| uitgesloten zonder einddatum       | true                  |                       | true                    |                |            |                |                 |
+		| einddatum uitsluiting in toekomst  | true                  | 20300101              | true                    | Datum          | 2030-01-01 |                |                 |
+		| einddatum uitsluiting in verleden  | true                  | 20220301              |                         |                |            |                |                 |
+		| einddatum uitsluiting vandaag      | true                  | 20220315              |                         |                |            |                |                 |
+		| einddatum uitsluiting morgen       | true                  | 20300316              | true                    | Datum          | 2030-03-16 |                |                 |
+		| einddatum uitsluiting vorige maand | true                  | 20220200              |                         |                |            |                |                 |
+		| einddatum uitsluiting deze maand   | true                  | 20220300              | true                    | JaarMaandDatum |            | 2022           | 3               |
+		| einddatum uitsluiting vorig jaar   | true                  | 20210000              |                         |                |            |                |                 |
+		| einddatum uitsluiting dit jaar     | true                  | 20220000              | true                    | JaarDatum      |            | 2022           |                 |
+		| einddatum uitsluiting onbekend     | true                  | 00000000              | true                    | OnbekendDatum  |            |                |                 |

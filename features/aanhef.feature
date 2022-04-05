@@ -1,217 +1,934 @@
 # language: nl
 
 # Issue #334 en #337
+@proxy
 Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in communicatie naar burgers
-  Attribuut aanhef bij een persoon wordt gevuld door de provider om op deze wijze op eenduidige wijze een persoon te kunnen aanschrijven.
-  De briefaanhef wordt gebruikt bovenaan een brief.
+  De aanhef bij een persoon wordt gevuld door de provider om op deze wijze op eenduidige wijze een persoon te kunnen aanschrijven.
+  De aanhef wordt gebruikt bovenaan een brief.
 
-  Attribuut aanhef wordt samengesteld op basis van:
-  - voorvoegselGeslachtsnaam
-  - geslachtsnaam
-  - adellijkeTitel_predikaat
-  - geslachtsaanduiding
-  - aanduidingAanschrijving
-  - voorvoegselGeslachtsnaam partner
-  - geslachtsnaam partner
-  - adellijkeTitel_predikaat partner
-  - geslachtsaanduiding partner
+  # In onderstaande tabellen betekenen de afkortingen:
+  # GA = "Geachte mevrouw", "Geachte heer", "Geachte" gevolg door voorletters
+  # VL = voorletters
+  # VV = voorvoegselGeslachtsnaam
+  # GN = geslachtsnaam
+  # VP = voorvoegselGeslachtsnaam partner
+  # GP = geslachtsnaam partner
 
-  Voor een persoon zonder adellijke titel of predikaat begint de briefaanhef met “Geachte mevrouw” (vrouw) of “Geachte heer” (man) of "Geachte " plus de voorletters (onbekend), afhankelijk van het geslacht van de persoon. Hierop volgt de samengestelde naam.
-  De waarde van aanduidingNaamgebruik bepaalt hoe de aanhef wordt samengesteld uit de naam van de persoon en de naam van de partner.
+Rule: De aanhef voor een persoon zonder adellijke titel of predicaat wordt samengesteld afhankelijk van de geslachtsaanduiding en de waarde van aanduidingNaamgebruik, waarbij geldt dat:
+  - De aanhef wordt voorafgegaan door "Geachte" gevolgd door "mevrouw", "heer" of de voorletters, afhankelijk van de geslachtsaanduiding:
+    | geslachtsaanduiding | aanhef begint met (GA) |
+    | M                   | Geachte heer           |
+    | V                   | Geachte mevrouw        |
+    | O                   | Geachte VL             |
+  - De aanhef wordt samengesteld uit naamcomponenten van de persoon en eventuele (ex)partner op basis van de aanduidingNaamgebruik:
+    | aanduidingNaamgebruik | aanhef         |
+    | E                     | GA VV GN       |
+    | P                     | GA VP GP       |
+    | V                     | GA VP GP-VV GN |
+    | N                     | GA VV GN-VP GP |
+  - Een voorvoegsel direct na "Geachte mevrouw" of "Geachte heer" begint met een hoofdletter
+  - Wanneer een naamcomponent geen of een lege waarde heeft, wordt de overbodige spatie niet opgenomen: niet starten met een spatie, niet eindigen met een spatie, geen dubbele spatie, geen spatie na streepje
+  - Aanduiding naamgebruik "E" (eigen naam) wordt gehanteerd voor een persoon die geen actuele en geen ontbonden huwelijken/partnerschappen heeft gehad
 
-  Wanneer geslachtsaanduiding is niet leeg of "onbekend", dan wordt het voorvoegsel van de eerste geslachtsnaam in de briefaanhef met een hoofdletter geschreven.
+  Abstract Scenario: opnemen geslacht na Geachte bij geslachtsaanduiding <voorbeeld>
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                        | waarde     |
+    | burgerservicenummer         | 999992934  |
+    | geslachtsaanduiding (04.10) | <geslacht> |
+    En de persoon heeft de volgende naam gegevens
+    | naam                                 | waarde  |
+    | voornamen (02.10)                    | Jo Rene |
+    | adellijke titel of predicaat (02.20) |         |
+    | voorvoegsel (02.30)                  |         |
+    | geslachtsnaam (02.40)                | Groenen |
+    | aanduiding naamgebruik (61.10)       | E       |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | naam.aanhef                     |
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    | naam   | waarde   |
+    | aanhef | <aanhef> |
 
-  Als de persoon een adellijke titel of predikaat heeft, wordt de aanhef bepaald op basis van adellijkeTitel_predikaat en de geslachtsaanduiding volgens de volgende tabel:
-  | adellijkeTitel_predikaat | geslachtsaanduiding | Aanhef                |
-  | Baron, Barones           | man                 | Hoogwelgeboren heer   |
-  | Baron, Barones           | vrouw               | Hoogwelgeboren vrouwe |
-  | Graaf, Gravin            | man                 | Hooggeboren heer      |
-  | Graaf, Gravin            | vrouw               | Hooggeboren vrouwe    |
-  | Hertog, Hertogin         | man                 | Hoogwelgeboren heer   |
-  | Hertog, Hertogin         | vrouw               | Hoogwelgeboren vrouwe |
-  | Jonkheer, Jonkvrouw      | man                 | Hoogwelgeboren heer   |
-  | Jonkheer, Jonkvrouw      | vrouw               | Hoogwelgeboren vrouwe |
-  | Markies, Markiezin       | man                 | Hoogwelgeboren heer   |
-  | Markies, Markiezin       | vrouw               | Hoogwelgeboren vrouwe |
-  | Prins, Prinses           | man                 | Hoogheid              |
-  | Prins, Prinses           | vrouw               | Hoogheid              |
-  | Prins, Prinses           | onbekend            | Hoogheid              |
-  | Ridder                   | man                 | Hoogwelgeboren heer   |
-  | Ridder                   | vrouw               | Hoogwelgeboren vrouwe |
+    Voorbeelden:
+    | voorbeeld | geslacht | aanhef                  |
+    | man       | M        | Geachte heer Groenen    |
+    | vrouw     | V        | Geachte mevrouw Groenen |
+    | onbekend  | O        | Geachte J.R. Groenen    |
 
-  Als de persoon een adellijke titel of predikaat heeft
-  En de geslachtsaanduiding is gelijk aan "onbekend" of er is geen waarde voor geslachtsaanduiding
-  En de adellijke titel is ongelijk aan "prins" of "prinses" ("Hoogheid" is gender neutraal dus kan ook bij onbekend geslacht gebruikt worden)
-  Dan wordt de adellijke titel of predikaat niet gebruikt.
-  En wordt de aanhef op dezelfde manier samengesteld als voor een persoon zonder adellijke titel of predikaat.
+  Abstract Scenario: naamsamenstelling van een alleenstaande persoon die nooit huwelijk of partnerschap heeft gehad met aanduidingNaamgebruik "<aanduidingNaamgebruik>"
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer         | 999992934 |
+    | geslachtsaanduiding (04.10) | V         |
+    En de persoon heeft de volgende naam gegevens
+    | naam                                 | waarde                  |
+    | adellijke titel of predicaat (02.20) |                         |
+    | voorvoegsel (02.30)                  | in het                  |
+    | geslachtsnaam (02.40)                | Veld                    |
+    | aanduiding naamgebruik (61.10)       | <aanduidingNaamgebruik> |
+    En de persoon heeft geen (ex)partner
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | naam.aanhef                     |
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    | naam   | waarde                      |
+    | aanhef | Geachte mevrouw In het Veld |
 
-  Als de persoon de geslachtsnaam van de echtgenoot/partner gebruikt zonder de eigen geslachtsnaam (aanduiding aanschrijving is "P" - "partner"),
-  Dan wordt de adellijke titel of predikaat niet gebruikt.
-  En wordt de aanhef op dezelfde manier samengesteld als voor een persoon zonder adellijke titel of predikaat.
+    Voorbeelden:
+    | aanduidingNaamgebruik |
+    | E                     |
+    | P                     |
+    | V                     |
+    | N                     |
 
-  Als de persoon een predikaat heeft
-  En de geslachtsaanduiding is gelijk aan "vrouw"
-  En betrokkene is getrouwd of heeft een geregistreerd partnerschap
-  Dan wordt het predikaat niet gebruikt
-  En wordt de aanhef op dezelfde manier samengesteld als voor een persoon zonder adellijke titel of predikaat.
+  Abstract Scenario: naamsamenstelling van een persoon met een partner bij aanduidingNaamgebruik "<naamgebruik>"
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer         | 999992934 |
+    | geslachtsaanduiding (04.10) | V         |
+    En de persoon heeft de volgende naam gegevens
+    | naam                                 | waarde          |
+    | adellijke titel of predicaat (02.20) |                 |
+    | voorvoegsel (02.30)                  | <voorvoegsel>   |
+    | geslachtsnaam (02.40)                | <geslachtsnaam> |
+    | aanduiding naamgebruik (61.10)       | <naamgebruik>   |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999992935 |
+    En de partner heeft de volgende naam gegevens
+    | naam                                 | waarde                  |
+    | adellijke titel of predicaat (02.20) |                         |
+    | voorvoegsel (02.30)                  | <partner voorvoegsel>   |
+    | geslachtsnaam (02.40)                | <partner geslachtsnaam> |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | naam.aanhef                     |
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    | naam   | waarde   |
+    | aanhef | <aanhef> |
 
-  Als de persoon een predikaat heeft
-  En de geslachtsaanduiding is gelijk aan "vrouw"
-  En de persoon is getrouwd geweest of heeft een geregistreerd partnerschap gehad
-  En het huwelijk dan wel geregistreerd partnerschap is ontbonden
-  En de partnernaam wordt niet (meer) gebruikt (aanduiding naamgebruik is "E" - "eigen")
-  Dan wordt het predikaat gebruikt als was zij nooit getrouwd geweest
+    Voorbeelden:
+    | naamgebruik | voorvoegsel | geslachtsnaam | partner voorvoegsel | partner geslachtsnaam | aanhef                                 |
+    | E           | in het      | Veld          | van                 | Velzen                | Geachte mevrouw In het Veld            |
+    | E           |             | Groenen       |                     | Groenink              | Geachte mevrouw Groenen                |
+    | P           | in het      | Veld          | van                 | Velzen                | Geachte mevrouw Van Velzen             |
+    | P           |             | Groenen       |                     | Groenink              | Geachte mevrouw Groenen                |
+    | V           | in het      | Veld          | van                 | Velzen                | Geachte mevrouw Van Velzen-in het Veld |
+    | V           |             | Groenen       |                     | Groenink              | Geachte mevrouw Groenen-Groenink       |
+    | N           | in het      | Veld          | van                 | Velzen                | Geachte mevrouw In het Veld-van Velzen |
+    | N           |             | Groenen       |                     | Groenink              | Geachte mevrouw Groenen-Groenink       |
 
-  Als de persoon een predikaat heeft
-  En de geslachtsaanduiding is gelijk aan "vrouw"
-  En de persoon is getrouwd geweest of heeft een geregistreerd partnerschap gehad
-  En het huwelijk dan wel geregistreerd partnerschap is ontbonden
-  En de (ex)partnernaam wordt nog gebruikt (aanduiding naamgebruik is "V", "N" of "P")
-  Dan wordt het predikaat niet gebruikt
-  En wordt de aanhef op dezelfde manier samengesteld als voor een persoon zonder adellijke titel of predikaat.
+  Abstract Scenario: hoofdlettergebruik in voorvoegsels bij aanduidingNaamgebruik "<naamgebruik>", geslachtsaanduiding "<geslacht>" en <voorbeeld>
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                        | waarde     |
+    | burgerservicenummer         | 999992934  |
+    | geslachtsaanduiding (04.10) | <geslacht> |
+    En de persoon heeft de volgende naam gegevens
+    | naam                                 | waarde          |
+    | voornamen (02.10)                    | <voornamen>     |
+    | adellijke titel of predicaat (02.20) |                 |
+    | voorvoegsel (02.30)                  | <voorvoegsel>   |
+    | geslachtsnaam (02.40)                | <geslachtsnaam> |
+    | aanduiding naamgebruik (61.10)       | <naamgebruik>   |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999992935 |
+    En de partner heeft de volgende naam gegevens
+    | naam                                 | waarde                  |
+    | adellijke titel of predicaat (02.20) |                         |
+    | voorvoegsel (02.30)                  | <partner voorvoegsel>   |
+    | geslachtsnaam (02.40)                | <partner geslachtsnaam> |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | naam.aanhef                     |
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    | naam   | waarde   |
+    | aanhef | <aanhef> |
 
-  Als de partner een adellijke titel heeft
-  En de geslachtsaanduiding van de persoon is "vrouw"
-  En de geslachtsaanduiding van de partner is "man"
-  En de adellijke titel van de partner heeft een vrouwelijke aanhef vorm (zie tabel hieronder)
-  En de persoon gebruikt de naam van haar partner (aanduiding naamgebruik ongelijk aan "E" - "eigen")
-  Dan wordt de aanhef afhankelijk van de adellijke titel van de partner:
-  | adellijkeTitel_predikaat partner | Aanhef                |
-  | Baron                            | Hoogwelgeboren vrouwe |
-  | Graaf                            | Hooggeboren vrouwe    |
-  | Hertog                           | Hoogwelgeboren vrouwe |
-  | Markies                          | Hoogwelgeboren vrouwe |
-  | Prins                            | Hoogheid              |
+    Voorbeelden:
+    | voorbeeld                     | geslacht | naamgebruik | voornamen | voorvoegsel | geslachtsnaam | partner voorvoegsel | partner geslachtsnaam | aanhef                                       |
+    | voorvoegsel in kleine letters | V        | E           | Jo Rene   | in het      | Zonnetje      | 't                  | Wolkje                | Geachte mevrouw In het Zonnetje              |
+    | voorvoegsel in kleine letters | O        | E           | Jo Rene   | in het      | Zonnetje      | 't                  | Wolkje                | Geachte J.R. in het Zonnetje                 |
+    | geen voornamen                | O        | E           |           | in het      | Zonnetje      | 't                  | Wolkje                | Geachte In het Zonnetje                      |
+    | voorvoegsel met hoofdletters  | V        | E           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte mevrouw Op Den Berghe                |
+    | voorvoegsel met hoofdletters  | O        | E           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte J.R. Op Den Berghe                   |
+    | voorvoegsel begint met accent | V        | P           | Jo Rene   | in het      | Zonnetje      | 't                  | Wolkje                | Geachte mevrouw 't Wolkje                    |
+    | voorvoegsel met hoofdletters  | V        | P           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte mevrouw Van Der Broeck               |
+    | voorvoegsel met hoofdletters  | O        | P           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte J.R. Van Der Broeck                  |
+    | voorvoegsel begint met accent | V        | V           | Jo Rene   | in het      | Zonnetje      | 't                  | Wolkje                | Geachte mevrouw 't Wolkje-in het Zonnetje    |
+    | voorvoegsel met hoofdletters  | V        | V           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte mevrouw Van Der Broeck-Op Den Berghe |
+    | voorvoegsel met hoofdletters  | O        | V           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte J.R. Van Der Broeck-Op Den Berghe    |
+    | voorvoegsel in kleine letters | V        | N           | Jo Rene   | in het      | Zonnetje      | 't                  | Wolkje                | Geachte mevrouw In het Zonnetje-'t Wolkje    |
+    | voorvoegsel met hoofdletters  | V        | N           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte mevrouw Op Den Berghe-Van Der Broeck |
+    | voorvoegsel met hoofdletters  | O        | N           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte J.R. Op Den Berghe-Van Der Broeck    |
 
-  In alle andere gevallen heeft de adellijke titel of het predikaat van de partner geen invloed op de aanhef.
+Rule: De aanhef voor een persoon met adellijke titel of predicaat wordt bepaald op basis van adellijkeTitelPredicaat en de geslachtsaanduiding:
+  | adellijkeTitelPredicaat | omschrijving | geslachtsaanduiding | Aanhef                |
+  | B                       | Baron        | M                   | Hoogwelgeboren heer   |
+  | BS                      | Barones      | M                   | Hoogwelgeboren heer   |
+  | B                       | Baron        | V                   | Hoogwelgeboren vrouwe |
+  | BS                      | Barones      | V                   | Hoogwelgeboren vrouwe |
+  | G                       | Graaf        | M                   | Hooggeboren heer      |
+  | GI                      | Gravin       | M                   | Hooggeboren heer      |
+  | G                       | Graaf        | V                   | Hooggeboren vrouwe    |
+  | GI                      | Gravin       | V                   | Hooggeboren vrouwe    |
+  | H                       | Hertog       | M                   | Hoogwelgeboren heer   |
+  | HI                      | Hertogin     | M                   | Hoogwelgeboren heer   |
+  | H                       | Hertog       | V                   | Hoogwelgeboren vrouwe |
+  | HI                      | Hertogin     | V                   | Hoogwelgeboren vrouwe |
+  | JH                      | Jonkheer     | M                   | Hoogwelgeboren heer   |
+  | JV                      | Jonkvrouw    | M                   | Hoogwelgeboren heer   |
+  | JH                      | Jonkheer     | V                   | Hoogwelgeboren vrouwe |
+  | JV                      | Jonkvrouw    | V                   | Hoogwelgeboren vrouwe |
+  | M                       | Markies      | M                   | Hoogwelgeboren heer   |
+  | MI                      | Markiezin    | M                   | Hoogwelgeboren heer   |
+  | M                       | Markies      | V                   | Hoogwelgeboren vrouwe |
+  | MI                      | Markiezin    | V                   | Hoogwelgeboren vrouwe |
+  | P                       | Prins        | M                   | Hoogheid              |
+  | PS                      | Prinses      | M                   | Hoogheid              |
+  | P                       | Prins        | V                   | Hoogheid              |
+  | PS                      | Prinses      | V                   | Hoogheid              |
+  | P                       | Prins        | O                   | Hoogheid              |
+  | PS                      | Prinses      | O                   | Hoogheid              |
+  | R                       | Ridder       | M                   | Hoogwelgeboren heer   |
+  | R                       | Ridder       | V                   | Hoogwelgeboren vrouwe |
 
-  Als er meerdere actuele (niet ontbonden) huwelijken/partnerschappen zijn
-  En de aanduidingNaamgebruik is ongelijk aan "E" - "Eigen"
-  Dan wordt als partnernaam de naam van de eerste partner (oudste niet ontbonden relatie) gebruikt.
+  Of met algoritme:
+  - bij een graaf of gravin wordt aanhef "Hooggeboren heer" of "Hooggeboren vrouwe" bij respectievelijk geslachtsaanduiding "M" (man) en "V" (vrouw)
+  - bij een prins of prinses wordt aanhef "Hoogheid" bij elke geslachtsaanduiding
+  - elke andere adellijke titel of predicaat wordt aanhef "Hoogwelgeboren heer" of "Hoogwelgeboren vrouwe" bij respectievelijk geslachtsaanduiding "M" (man) en "V" (vrouw)
 
-  Als er meerdere ontbonden huwelijken/partnerschappen zijn
-  En er geen actueel (niet ontbonden) huwelijk/partnerschap is
-  En de aanduidingNaamgebruik is ongelijk aan "E" - "Eigen"
-  Dan wordt als partnernaam de naam van de laatst ontbonden relatie gebruikt.
+  De aanhef wordt op dezelfde manier samengesteld als voor een persoon zonder adellijke titel of predicaat in de volgende gevallen:
+  - Wanneer de combinatie van adellijkeTitelPredicaat en geslachtsaanduiding niet voorkomt in bovenstaande tabel: geslachtsaanduiding "O" en geen prins of prinses
+  - Wanneer de persoon de geslachtsnaam van de echtgenoot/partner gebruikt zonder de eigen geslachtsnaam: aanduidingNaamgebruik is "P"
+  - Wanneer de persoon een predicaat heeft en de geslachtsaanduiding is gelijk aan "V" (vrouw) en betrokkene heeft een partner
+  - Wanneer de persoon een predicaat heeft en de geslachtsaanduiding is gelijk aan "V" (vrouw) en betrokkene gebruikt de naam van de (ex)partner (aanduidingNaamgebruik is ongelijk aan "E")
 
+  Abstract Scenario: persoon heeft adellijke titel "<adellijkeTitelPredicaat>" en geslachtsaanduiding "<geslacht>"
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                        | waarde     |
+    | burgerservicenummer         | 999992934  |
+    | geslachtsaanduiding (04.10) | <geslacht> |
+    En de persoon heeft de volgende naam gegevens
+    | naam                                 | waarde                    |
+    | voornamen (02.10)                    | Pieter                    |
+    | adellijke titel of predicaat (02.20) | <adellijkeTitelPredicaat> |
+    | voorvoegsel (02.30)                  | van den                   |
+    | geslachtsnaam (02.40)                | Aedel                     |
+    | aanduiding naamgebruik (61.10)       | E                         |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999992935 |
+    En de partner heeft de volgende naam gegevens
+    | naam                                 | waarde |
+    | adellijke titel of predicaat (02.20) |        |
+    | voorvoegsel (02.30)                  | de     |
+    | geslachtsnaam (02.40)                | Boer   |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | naam.aanhef                     |
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    | naam   | waarde   |
+    | aanhef | <aanhef> |
 
-  Abstract Scenario: De aanhef wordt samengesteld op basis van geslachtsaanduiding en naamgegevens van de persoon en de partner
-    Als persoon wordt geraadpleegd
-    Dan heeft de gevonden persoon naam.aanhef=<aanhef>
+    Voorbeelden:
+      | adellijkeTitelPredicaat | geslacht | aanhef                   |
+      | R                       | M        | Hoogwelgeboren heer      |
+      | R                       | V        | Hoogwelgeboren vrouwe    |
+      | R                       | O        | Geachte P. van den Aedel |
+      | B                       | M        | Hoogwelgeboren heer      |
+      | B                       | V        | Hoogwelgeboren vrouwe    |
+      | B                       | O        | Geachte P. van den Aedel |
+      | BS                      | M        | Hoogwelgeboren heer      |
+      | BS                      | V        | Hoogwelgeboren vrouwe    |
+      | BS                      | O        | Geachte P. van den Aedel |
+      | G                       | M        | Hooggeboren heer         |
+      | G                       | V        | Hooggeboren vrouwe       |
+      | G                       | O        | Geachte P. van den Aedel |
+      | GI                      | M        | Hooggeboren heer         |
+      | GI                      | V        | Hooggeboren vrouwe       |
+      | GI                      | O        | Geachte P. van den Aedel |
+      | P                       | M        | Hoogheid                 |
+      | P                       | V        | Hoogheid                 |
+      | P                       | O        | Hoogheid                 |
+      | PS                      | M        | Hoogheid                 |
+      | PS                      | V        | Hoogheid                 |
+      | PS                      | O        | Hoogheid                 |
 
-    # In onderstaande tabellen betekenen de afkortingen:
-    # GA = "Geachte mevrouw", "Geachte heer", "Geachte"
-    # VL = voorletters
-    # VV = voorvoegselGeslachtsnaam
-    # GN = geslachtsnaam
-    # VP = voorvoegselGeslachtsnaam partner
-    # GP = geslachtsnaam partner
-    # AT = adelijke titel
-    # PK = predikaat
+  Abstract Scenario: persoon heeft adellijke titel "<adellijkeTitelPredicaat>" en naamgebruik "<naamgebruik>"
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer         | 999992934 |
+    | geslachtsaanduiding (04.10) | M         |
+    En de persoon heeft de volgende naam gegevens
+    | naam                                 | waarde                    |
+    | voornamen (02.10)                    | Pieter                    |
+    | adellijke titel of predicaat (02.20) | <adellijkeTitelPredicaat> |
+    | voorvoegsel (02.30)                  | van den                   |
+    | geslachtsnaam (02.40)                | Aedel                     |
+    | aanduiding naamgebruik (61.10)       | <naamgebruik>             |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999992935 |
+    En de partner heeft de volgende naam gegevens
+    | naam                                 | waarde |
+    | adellijke titel of predicaat (02.20) |        |
+    | voorvoegsel (02.30)                  | de     |
+    | geslachtsnaam (02.40)                | Boer   |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | naam.aanhef                     |
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    | naam   | waarde   |
+    | aanhef | <aanhef> |
 
-    Voorbeelden: geen adellijke titel of predikaat
-      | aanduidingNaamgebruik | geslachtsaanduiding |samenstelling aanhef | aanschrijfwijze           | aanhef                                 |
-      | Eigen                 | man                 | GA VV GN            | H. in het Veld            | Geachte heer In het Veld               |
-      | Eigen                 | vrouw               | GA VV GN            | F. Groenen                | Geachte mevrouw Groenen                |
-      | Eigen                 | onbekend            | GA VL VV GN         | C.F.H. van Velzen         | Geachte C.F.H. van Velzen              |
-      | Partner na eigen      | vrouw               | GA VV GN-VP GP      | I. van Velzen-in het Veld | Geachte mevrouw Van Velzen-in het Veld |
-      | Partner na eigen      | onbekend            | GA VV GN-VP GP      | F. Groenen-Groenink       | Geachte F. Groenen-Groenink            |
-      | Partner               | vrouw               | GA VP GP            | S. van Velzen             | Geachte mevrouw Van Velzen             |
-      | Partner               | man                 | GA VP GP            | J.F.R. Groenen            | Geachte heer Groenen                   |
-      | Partner voor eigen    | man                 | GA VP GP-VV GN      | F. in het Veld-van Velzen | Geachte heer In het Veld-van Velzen    |
-      | Partner voor eigen    | vrouw               | GA VP GP-VV GN      | M. Groenen-Groenink       | Geachte mevrouw Groenen-Groenink       |
-      | Partner voor eigen    | onbekend            | GA VL. VP GP-VV GN  | J.P. van Velzen-Groenen   | Geachte J.P. van Velzen-Groenen        |
+    Voorbeelden:
+      | adellijkeTitelPredicaat | naamgebruik | aanhef               |
+      | G                       | E           | Hooggeboren heer     |
+      | G                       | V           | Hooggeboren heer     |
+      | G                       | N           | Hooggeboren heer     |
+      | G                       | P           | Geachte heer De Boer |
 
-    Voorbeelden: voorvoegsels met hoofdletter of kleine letter
-      | aanduidingAanschrijving | geslachtsaanduiding | VV     | GN     | VP     | GP     | aanhef                                 |
-      | Eigen                   | man                 | In het | Veld   | van    | Velzen | Geachte heer In het Veld               |
-      | Partner na eigen        | vrouw               | van    | Velzen | In het | Veld   | Geachte mevrouw Van Velzen-In het Veld |
-      | Partner                 | vrouw               | In het | Veld   | van    | Velzen | Geachte mevrouw Van Velzen             |
-      | Partner voor eigen      | man                 | van    | Velzen | In het | Veld   | Geachte heer In het Veld-van Velzen    |
-      | Partner voor eigen      | onbekend            | van    | Velzen | In het | Veld   | Geachte M.L. van Velzen-In het Veld    |
+  Abstract Scenario: persoon met partner heeft predicaat en geslachtsaanduiding "<geslacht>"
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                        | waarde     |
+    | burgerservicenummer         | 999992934  |
+    | geslachtsaanduiding (04.10) | <geslacht> |
+    En de persoon heeft de volgende naam gegevens
+    | naam                                 | waarde  |
+    | voornamen (02.10)                    | Pieter  |
+    | adellijke titel of predicaat (02.20) | JV      |
+    | voorvoegsel (02.30)                  | van den |
+    | geslachtsnaam (02.40)                | Aedel   |
+    | aanduiding naamgebruik (61.10)       | E       |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999992935 |
+    En de partner heeft de volgende naam gegevens
+    | naam                                 | waarde |
+    | adellijke titel of predicaat (02.20) |        |
+    | voorvoegsel (02.30)                  | de     |
+    | geslachtsnaam (02.40)                | Boer   |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | naam.aanhef                     |
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    | naam   | waarde   |
+    | aanhef | <aanhef> |
 
-    Voorbeelden: adelijke titels
-      | adellijkeTitel_predikaat | geslachtsaanduiding | aanduidingNaamgebruik | aanschrijfwijze                             | aanhef                    |
-      | Baron                    | man                 | Eigen                 | H.W. baron van den Aedel                    | Hoogwelgeboren heer       |
-      | Barones                  | vrouw               | Partner na eigen      | W. barones van den Aedel-van der Veen       | Hoogwelgeboren vrouwe     |
-      | Graaf                    | man                 | Partner               | F. van der Veen                             | Geachte heer Van der Veen |
-      | Gravin                   | vrouw               | Partner voor eigen    | E.L. van der Veen-gravin van den Aedel      | Hooggeboren vrouwe        |
-      | Prins                    | man                 | Eigen                 | O.B.B. prins van Roodt de Wit Blaauw        | Hoogheid                  |
-      | Prinses                  | vrouw               | Eigen                 | E.M.V. prinses van Roodt de Wit Blaauw      | Hoogheid                  |
-      | Ridder                   | man                 | Eigen                 | M. ridder van Hoogh                         | Hoogwelgeboren heer       |
-      | Graaf                    | vrouw               | Partner voor eigen    | J.G. van der Veen-gravin van den Aedel      | Hooggeboren vrouwe        |
-      | Ridder                   | onbekend            | Eigen                 | P. van den Aedel                            | Geachte P. van den Aedel  |
-      | Prinses                  | onbekend            | Eigen                 | J. van Roodt de Wit Blaauw                  | Hoogheid                  |
+    Voorbeelden:
+      | geslacht | aanhef                        |
+      | M        | Hoogwelgeboren heer           |
+      | V        | Geachte mevrouw Van den Aedel |
+      | O        | Geachte P. van den Aedel      |
 
-    Voorbeelden: predikaat
-      | adellijkeTitel_predikaat | geslachtsaanduiding | aanduidingNaamgebruik | partner | Ontbinding huwelijk/geregistreerd partnerschap | aanhef                                 |
-      | Jonkheer                 | man                 | Eigen                 | Geen    | Geen                                           | Hoogwelgeboren heer                    |
-      | Jonkheer                 | man                 | Eigen                 | Ja      | Geen                                           | Hoogwelgeboren heer                    |
-      | Jonkheer                 | man                 | Partner na eigen      | Ja      | Geen                                           | Hoogwelgeboren heer                    |
-      | Jonkheer                 | man                 | Partner               | Ja      | Geen                                           | Hoogwelgeboren heer                    |
-      | Jonkheer                 | man                 | Partner voor eigen    | Ja      | Geen                                           | Hoogwelgeboren heer                    |
-      | Jonkvrouw                | vrouw               | Eigen                 | Geen    | Geen                                           | Hoogwelgeboren vrouwe                  |
-      | Jonkvrouw                | vrouw               | Eigen                 | Ja      | Geen                                           | Geachte mevrouw Van Hoogh              |
-      | Jonkvrouw                | vrouw               | Partner na eigen      | Ja      | Geen                                           | Geachte mevrouw Van Hoogh-van der Veen |
-      | Jonkvrouw                | vrouw               | Partner voor eigen    | Ja      | Geen                                           | Geachte mevrouw Van der Veen-van Hoogh |
-      | Jonkvrouw                | vrouw               | Partner               | Ja      | Geen                                           | Geachte mevrouw Van der Veen           |
-      | Jonkvrouw                | vrouw               | Eigen                 | Ja      | Ja                                             | Hoogwelgeboren vrouwe                  |
-      | Jonkvrouw                | vrouw               | Partner na eigen      | Ja      | Ja                                             | Geachte mevrouw Van Hoogh-van der Veen |
-      | Jonkvrouw                | vrouw               | Partner               | Ja      | Ja                                             | Geachte mevrouw Van der Veen-van Hoogh |
-      | Jonkvrouw                | vrouw               | Partner voor eigen    | Ja      | Ja                                             | Geachte mevrouw Van der Veen           |
-      | Jonkheer                 | vrouw               | Eigen                 | Geen    | Geen                                           | Hoogwelgeboren vrouwe                  |
-      | Jonkheer                 | vrouw               | Eigen                 | Ja      | Geen                                           | Geachte mevrouw Van Hoogh              |
-      | Jonkheer                 | vrouw               | Eigen                 | Ja      | Ja                                             | Hoogwelgeboren vrouwe                  |
-      | Jonkheer                 | vrouw               | Partner na eigen      | Ja      | Ja                                             | Geachte mevrouw Van der Veen-van Hoogh |
-      | Jonkvrouw                | man                 | Partner na eigen      | Ja      | Geen                                           | Hoogwelgeboren heer                    |
-      | Jonkheer                 | onbekend            | Eigen                 | Geen    | Geen                                           | Geachte F.H. van Hoogh                 |
-      | Jonkvrouw                | onbekend            | Eigen                 | Geen    | Geen                                           | Geachte B.T.I. van Hoogh               |
+  Abstract Scenario: persoon met partner heeft predicaat en naamgebruik "<naamgebruik>"
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer         | 999992934 |
+    | geslachtsaanduiding (04.10) | M         |
+    En de persoon heeft de volgende naam gegevens
+    | naam                                 | waarde        |
+    | voornamen (02.10)                    | Pieter        |
+    | adellijke titel of predicaat (02.20) | JH            |
+    | voorvoegsel (02.30)                  | van den       |
+    | geslachtsnaam (02.40)                | Aedel         |
+    | aanduiding naamgebruik (61.10)       | <naamgebruik> |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999992935 |
+    En de partner heeft de volgende naam gegevens
+    | naam                                 | waarde |
+    | adellijke titel of predicaat (02.20) |        |
+    | voorvoegsel (02.30)                  | de     |
+    | geslachtsnaam (02.40)                | Boer   |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | naam.aanhef                     |
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    | naam   | waarde   |
+    | aanhef | <aanhef> |
 
-    Voorbeelden: partner heeft adellijke titel of predikaat
-      | geslachtsaanduiding | geslachtsaanduiding partner | adellijkeTitel_predikaat partner | aanduidingNaamgebruik | aanschrijfwijze | aanhef |
-      | vrouw    | man      | Baron    | Eigen                 | A.C. van der Veen                       | Geachte mevrouw Van der Veen               |
-      | vrouw    | man      | Baron    | Partner na eigen      | A.C. van der Veen-barones van den Aedel | Hoogwelgeboren vrouwe                      |
-      | vrouw    | man      | Baron    | Partner               | A.C. barones van den Aedel              | Hoogwelgeboren vrouwe                      |
-      | vrouw    | man      | Baron    | Partner voor eigen    | A.C. barones van den Aedel-van der Veen | Hoogwelgeboren vrouwe                      |
-      | onbekend | man      | Baron    | Partner voor eigen    | A.C. van den Aedel-van der Veen         | Geachte A.C. van den Aedel-van der Veen    |
-      | vrouw    | onbekend | Baron    | Partner na eigen      | A.C. van der Veen-barones van den Aedel | Geachte mevrouw Van der Veen-van den Aedel |
-      | man      | vrouw    | Gravin   | Eigen                 | W. van der Veen                         | Geachte heer Van der Veen                  |
-      | man      | vrouw    | Gravin   | Partner na eigen      | W. van der Veen-van den Aedel           | Geachte heer Van der Veen-van den Aedel    |
-      | man      | vrouw    | Gravin   | Partner               | W. van den Aedel                        | Geachte heer Van den Aedel                 |
-      | man      | vrouw    | Gravin   | Partner voor eigen    | W. van den Aedel-van der Veen           | Geachte heer Van den Aedel-van der Veen    |
-      | man      | man      | Baron    | Partner na eigen      | W. van der Veen-van den Aedel           | Geachte heer Van der Veen-van den Aedel    |
-      | onbekend | man      | Baron    | Partner na eigen      | W. van der Veen-van den Aedel           | Geachte W. van der Veen-van den Aedel      |
-      | vrouw    | vrouw    | Barones  | Partner na eigen      | W. van der Veen-van den Aedel           | Geachte mevrouw Van der Veen-van den Aedel |
-      | vrouw    | man      | Ridder   | Partner na eigen      | W. van der Veen-van den Aedel           | Geachte mevrouw Van der Veen-van den Aedel |
-      | vrouw    | man      | Ridder   | Partner               | W. van den Aedel                        | Geachte mevrouw Van den Aedel              |
-      | vrouw    | man      | Jonkheer | Eigen                 | A.C. van der Veen                       | Geachte mevrouw Van der Veen               |
-      | vrouw    | man      | Jonkheer | Partner na eigen      | A.C. van der Veen-van den Aedel         | Geachte mevrouw Van der Veen-van den Aedel |
-      | vrouw    | man      | Jonkheer | Partner               | A.C. van den Aedel                      | Geachte mevrouw Van den Aedel              |
-      | vrouw    | man      | Jonkheer | Partner voor eigen    | A.C. van den Aedel-van der Veen         | Geachte mevrouw Van den Aedel-van der Veen |
+    Voorbeelden:
+      | naamgebruik | aanhef               |
+      | E           | Hoogwelgeboren heer  |
+      | P           | Geachte heer De Boer |
+      | V           | Hoogwelgeboren heer  |
+      | N           | Hoogwelgeboren heer  |
+
+  Abstract Scenario: persoon heeft predicaat en geslachtsaanduiding "<geslacht>" en naamgebruik "<naamgebruik>" heeft ontbonden huwelijk
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                        | waarde     |
+    | burgerservicenummer         | 999992934  |
+    | geslachtsaanduiding (04.10) | <geslacht> |
+    En de persoon heeft de volgende naam gegevens
+    | naam                                 | waarde        |
+    | voornamen (02.10)                    | Pieter        |
+    | adellijke titel of predicaat (02.20) | JH            |
+    | voorvoegsel (02.30)                  | van den       |
+    | geslachtsnaam (02.40)                | Aedel         |
+    | aanduiding naamgebruik (61.10)       | <naamgebruik> |
+    En de persoon heeft geen actuele partner
+    En de persoon heeft een ex-partner met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999992935 |
+    En de ex-partner heeft de volgende 'naam' gegevens
+    | naam                                 | waarde |
+    | adellijke titel of predicaat (02.20) |        |
+    | voorvoegsel (02.30)                  | de     |
+    | geslachtsnaam (02.40)                | Boer   |
+    En de ex-partner heeft de volgende 'ontbindingHuwelijkPartnerschap' gegevens
+    | naam                     | waarde   |
+    | datum ontbinding (07.10) | 20211109 |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | naam.aanhef                     |
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    | naam   | waarde   |
+    | aanhef | <aanhef> |
+
+    Voorbeelden:
+      | geslacht | naamgebruik | aanhef                                |
+      | M        | E           | Hoogwelgeboren heer                   |
+      | M        | P           | Geachte heer De Boer                  |
+      | M        | V           | Hoogwelgeboren heer                   |
+      | M        | N           | Hoogwelgeboren heer                   |
+      | V        | E           | Hoogwelgeboren vrouwe                 |
+      | V        | P           | Geachte mevrouw De Boer               |
+      | V        | V           | Geachte mevrouw De Boer-van den Aedel |
+      | V        | N           | Geachte mevrouw Van den Aedel-de Boer |
+      | O        | E           | Geachte P. van den Aedel              |
+      | O        | P           | Geachte P. de Boer                    |
+      | O        | V           | Geachte P. de Boer-van den Aedel      |
+      | O        | N           | Geachte P. van den Aedel-de Boer      |
+      
+Rule: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredicaat van de (ex)partner onder de volgende condities:
+  - de (ex)partner heeft een adellijke titel
+  - de geslachtsaanduiding van de persoon is "V"
+  - de persoon gebruikt de naam van haar (ex)partner (aanduidingNaamgebruik is ongelijk aan "E")
+  - met de adellijke titel van de (ex)partner mag een hoffelijkheidstitel ('titre de courtoisie') worden gebruikt met bijbehorende aanhef:
+      | adellijkeTitelPredicaat partner | hoffelijkheidstitel | aanhef                |
+      | B                               | barones             | Hoogwelgeboren vrouwe |
+      | G                               | gravin              | Hooggeboren vrouwe    |
+      | H                               | hertogin            | Hoogwelgeboren vrouwe |
+      | M                               | markiezin           | Hoogwelgeboren vrouwe |
+      | P                               | Prins               | Hoogheid              |
+
+  Abstract Scenario: partner heeft adellijke titel "<adellijkeTitelPredicaat partner>"
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer         | 999992934 |
+    | geslachtsaanduiding (04.10) | V         |
+    En de persoon heeft de volgende naam gegevens
+    | naam                                 | waarde |
+    | voornamen (02.10)                    | Jo     |
+    | adellijke titel of predicaat (02.20) |        |
+    | voorvoegsel (02.30)                  | de     |
+    | geslachtsnaam (02.40)                | Boer   |
+    | aanduiding naamgebruik (61.10)       | P      |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999992935 |
+    En de partner heeft de volgende naam gegevens
+    | naam                                 | waarde                            |
+    | adellijke titel of predicaat (02.20) | <adellijkeTitelPredicaat partner> |
+    | voorvoegsel (02.30)                  | van den                           |
+    | geslachtsnaam (02.40)                | Aedel                             |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | naam.aanhef                     |
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    | naam   | waarde   |
+    | aanhef | <aanhef> |
+
+    Voorbeelden:
+      | adellijkeTitelPredicaat partner | aanhef                        |
+      | B                               | Hoogwelgeboren vrouwe         |
+      | G                               | Hooggeboren vrouwe            |
+      | H                               | Hoogwelgeboren vrouwe         |
+      | M                               | Hoogwelgeboren vrouwe         |
+      | P                               | Hoogheid                      |
+      | R                               | Geachte mevrouw Van den Aedel |
+      | JH                              | Geachte mevrouw Van den Aedel |
+      | BS                              | Geachte mevrouw Van den Aedel |
+      | GI                              | Geachte mevrouw Van den Aedel |
+
+  Abstract Scenario: persoon met geslacht "<geslacht>" en partner met adellijke titel "<titel partner>"
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                        | waarde     |
+    | burgerservicenummer         | 999992934  |
+    | geslachtsaanduiding (04.10) | <geslacht> |
+    En de persoon heeft de volgende naam gegevens
+    | naam                                 | waarde |
+    | voornamen (02.10)                    | Jo     |
+    | adellijke titel of predicaat (02.20) |        |
+    | voorvoegsel (02.30)                  | de     |
+    | geslachtsnaam (02.40)                | Boer   |
+    | aanduiding naamgebruik (61.10)       | P      |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999992935 |
+    En de partner heeft de volgende naam gegevens
+    | naam                                 | waarde          |
+    | adellijke titel of predicaat (02.20) | <titel partner> |
+    | voorvoegsel (02.30)                  | van den         |
+    | geslachtsnaam (02.40)                | Aedel           |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | naam.aanhef                     |
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    | naam   | waarde   |
+    | aanhef | <aanhef> |
+
+    Voorbeelden:
+      | geslacht | titel partner | aanhef                        |
+      | V        | B             | Hoogwelgeboren vrouwe         |
+      | V        | BS            | Geachte mevrouw Van den Aedel |
+      | M        | B             | Geachte heer Van den Aedel    |
+      | M        | BS            | Geachte heer Van den Aedel    |
+      | O        | B             | Geachte J. van den Aedel      |
+      | O        | BS            | Geachte J. van den Aedel      |
+
+  Abstract Scenario: adellijke titel van partner bij aanduiding naamgebruik "<naamgebruik>"
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer         | 999992934 |
+    | geslachtsaanduiding (04.10) | V         |
+    En de persoon heeft de volgende naam gegevens
+    | naam                                 | waarde        |
+    | voornamen (02.10)                    | Jo            |
+    | adellijke titel of predicaat (02.20) |               |
+    | voorvoegsel (02.30)                  | de            |
+    | geslachtsnaam (02.40)                | Boer          |
+    | aanduiding naamgebruik (61.10)       | <naamgebruik> |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999992935 |
+    En de partner heeft de volgende naam gegevens
+    | naam                                 | waarde  |
+    | adellijke titel of predicaat (02.20) | B       |
+    | voorvoegsel (02.30)                  | van den |
+    | geslachtsnaam (02.40)                | Aedel   |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | naam.aanhef                     |
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    | naam   | waarde   |
+    | aanhef | <aanhef> |
+
+    Voorbeelden:
+      | naamgebruik | aanhef                  |
+      | E           | Geachte mevrouw De Boer |
+      | P           | Hoogwelgeboren vrouwe   |
+      | V           | Hoogwelgeboren vrouwe   |
+      | N           | Hoogwelgeboren vrouwe   |
+
+Rule: Voor het bepalen van de aanhef gaat gebruik van de adellijke titel van de partner boven de adellijke titel van de persoon:
+  - de persoon heeft een adellijke titel of predicaat
+  - de (ex)partner heeft een adellijke titel
+  - de geslachtsaanduiding van de persoon is "V" (vrouw)
+  - de geslachtsaanduiding van de (ex)partner is "M" (man)
+  - de persoon gebruikt de naam van de partner: aanduidingNaamgebruik is ongelijk aan "E"
+  - met de adellijke titel van de (ex)partner mag een hoffelijkheidstitel ('titre de courtoisie') worden gebruikt met bijbehorende aanhef
+
+  Wanneer aan al deze condities wordt voldaan, wordt de aanhef samengesteld voor de hoffelijkheidstitel op basis van de adellijke titel van de (ex)partner
+
+  Abstract Scenario: vrouw heeft adellijke titel <adellijkeTitelPredicaat> en haar partner heeft adellijke titel "<adellijkeTitelPredicaat partner>" bij aanduidingNaamgebruik "<naamgebruik>"
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer         | 999992934 |
+    | geslachtsaanduiding (04.10) | V         |
+    En de persoon heeft de volgende naam gegevens
+    | naam                                 | waarde        |
+    | voornamen (02.10)                    | Jo            |
+    | adellijke titel of predicaat (02.20) |               |
+    | voorvoegsel (02.30)                  | van den       |
+    | geslachtsnaam (02.40)                | Aedel         |
+    | aanduiding naamgebruik (61.10)       | <naamgebruik> |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer         | 999992935 |
+    | geslachtsaanduiding (04.10) | M         |
+    En de partner heeft de volgende naam gegevens
+    | naam                                 | waarde                            |
+    | adellijke titel of predicaat (02.20) | <adellijkeTitelPredicaat partner> |
+    | voorvoegsel (02.30)                  | de                                |
+    | geslachtsnaam (02.40)                | Boer                              |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | naam.aanhef                     |
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    | naam   | waarde   |
+    | aanhef | <aanhef> |
+
+    Voorbeelden:
+      | adellijkeTitelPredicaat | adellijkeTitelPredicaat partner | naamgebruik | aanhef                  |
+      | GI                      | B                               | E           | Hooggeboren vrouwe      |
+      | GI                      | B                               | P           | Hoogwelgeboren vrouwe   |
+      | GI                      | B                               | V           | Hoogwelgeboren vrouwe   |
+      | GI                      | B                               | N           | Hoogwelgeboren vrouwe   |
+      | BS                      | P                               | E           | Hoogwelgeboren vrouwe   |
+      | BS                      | P                               | P           | Hoogheid                |
+      | BS                      | P                               | V           | Hoogheid                |
+      | BS                      | P                               | N           | Hoogheid                |
+      | GI                      | R                               | E           | Hooggeboren vrouwe      |
+      | GI                      | R                               | P           | Geachte mevrouw De Boer |
+      | GI                      | R                               | V           | Hooggeboren vrouwe      |
+      | GI                      | R                               | P           | Hooggeboren vrouwe      |
+      | PS                      | B                               | E           | Hoogheid                |
+      | PS                      | B                               | P           | Hoogwelgeboren vrouwe   |
+      | PS                      | B                               | V           | Hoogwelgeboren vrouwe   |
+      | PS                      | B                               | N           | Hoogwelgeboren vrouwe   |
+
+  Abstract Scenario: man heeft adellijke titel <adellijkeTitelPredicaat> en zijn partner heeft adellijke titel "<adellijkeTitelPredicaat partner>" bij aanduidingNaamgebruik "<naamgebruik>"
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer         | 999992934 |
+    | geslachtsaanduiding (04.10) | M         |
+    En de persoon heeft de volgende naam gegevens
+    | naam                                 | waarde        |
+    | voornamen (02.10)                    | Jo            |
+    | adellijke titel of predicaat (02.20) |               |
+    | voorvoegsel (02.30)                  | van den       |
+    | geslachtsnaam (02.40)                | Aedel         |
+    | aanduiding naamgebruik (61.10)       | <naamgebruik> |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer         | 999992935 |
+    | geslachtsaanduiding (04.10) | V         |
+    En de partner heeft de volgende naam gegevens
+    | naam                                 | waarde                            |
+    | adellijke titel of predicaat (02.20) | <adellijkeTitelPredicaat partner> |
+    | voorvoegsel (02.30)                  | de                                |
+    | geslachtsnaam (02.40)                | Boer                              |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | naam.aanhef                     |
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    | naam   | waarde   |
+    | aanhef | <aanhef> |
+
+    Voorbeelden:
+      | adellijkeTitelPredicaat | adellijkeTitelPredicaat partner | naamgebruik | aanhef               |
+      | G                       | BS                              | E           | Hooggeboren heer     |
+      | G                       | BS                              | P           | Geachte heer De Boer |
+      | G                       | BS                              | V           | Hooggeboren heer     |
+      | G                       | BS                              | N           | Hooggeboren heer     |
+      | B                       | PS                              | E           | Hoogwelgeboren heer  |
+      | B                       | PS                              | P           | Geachte heer De Boer |
+      | B                       | PS                              | V           | Hoogwelgeboren heer  |
+      | B                       | PS                              | N           | Hoogwelgeboren heer  |
+
+Rule: Bij meerdere actuele (niet ontbonden) huwelijken/partnerschappen worden de naamgegevens van de eerste partner (oudste relatie) gebruikt voor het samenstellen van de aanhef
 
   Scenario: meerdere actuele relaties
-    Gegeven de persoon de heer F.C. Groen is getrouwd in 1958 met Geel
-    En de persoon is getrouwd in 1961 met Roodt
-    En geen van beide relaties is beëindigd
-    En de persoon heeft aanduidingAanschrijving='V'
-    Als de persoon wordt geraadpleegd
-    Dan is in het antwoord naam.aanhef=Geachte heer Geel-Groen
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer         | 999992934 |
+    | geslachtsaanduiding (04.10) | V         |
+    En de persoon heeft de volgende naam gegevens
+    | naam                           | waarde             |
+    | voorvoegsel (02.30)            |                    |
+    | geslachtsnaam (02.40)          | Groen              |
+    | voornamen (02.10)              | Ferdinand Cornelis |
+    | aanduiding naamgebruik (61.10) | V                  |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999992935 |
+    En de partner heeft de volgende naam gegevens
+    | naam                  | waarde |
+    | voorvoegsel (02.30)   |        |
+    | geslachtsnaam (02.40) | Geel   |
+    En de partner heeft de volgende aangaanHuwelijkPartnerschap gegevens
+    | naam                  | waarde   |
+    | datum aangaan (06.10) | 19580401 |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999992936 |
+    En de partner heeft de volgende naam gegevens
+    | naam                  | waarde |
+    | voorvoegsel (02.30)   |        |
+    | geslachtsnaam (02.40) | Roodt  |
+    En de partner heeft de volgende aangaanHuwelijkPartnerschap gegevens
+    | naam                  | waarde   |
+    | datum aangaan (06.10) | 19610808 |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | naam.aanhef                     |
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    | naam   | waarde                     |
+    | aanhef | Geachte mevrouw Geel-Groen |
+
+Rule: Bij meerdere huwelijken/partnerschappen die allen ontbonden zijn, worden de naamgegevens van de laatst ontbonden partner gebruikt voor het samenstellen van de aanhef
 
   Scenario: meerdere ontbonden relaties gebruikt de laatst ontbonden relatie
-    Gegeven de persoon de heer J. Wit is getrouwd in 1958 met Geel
-    En de persoon is getrouwd in 1961 met Roodt
-    En het huwelijk met Geel is ontbonden in 1960
-    En het huwelijk met Roodt is ontbonden in 2006
-    En de persoon heeft aanduidingAanschrijving='V'
-    Als de persoon wordt geraadpleegd
-    Dan is in het antwoord naam.aanhef=Geachte heer Roodt-Wit
-
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer         | 999992934 |
+    | geslachtsaanduiding (04.10) | V         |
+    En de persoon heeft de volgende naam gegevens
+    | naam                           | waarde |
+    | voorvoegsel (02.30)            |        |
+    | geslachtsnaam (02.40)          | Wit    |
+    | voornamen (02.10)              | Jan    |
+    | aanduiding naamgebruik (61.10) | V      |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999992935 |
+    En de partner heeft de volgende naam gegevens
+    | naam                  | waarde |
+    | voorvoegsel (02.30)   |        |
+    | geslachtsnaam (02.40) | Geel   |
+    En de partner heeft de volgende aangaanHuwelijkPartnerschap gegevens
+    | naam                     | waarde   |
+    | datum aangaan (06.10)    | 19580401 |
+    | datum ontbinding (07.10) | 19601001 |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999992936 |
+    En de partner heeft de volgende naam gegevens
+    | naam                  | waarde |
+    | voorvoegsel (02.30)   |        |
+    | geslachtsnaam (02.40) | Roodt  |
+    En de partner heeft de volgende aangaanHuwelijkPartnerschap gegevens
+    | naam                     | waarde   |
+    | datum aangaan (06.10)    | 19610422 |
+    | datum ontbinding (07.10) | 20061014 |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | naam.aanhef                     |
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    | naam   | waarde                    |
+    | aanhef | Geachte mevrouw Roodt-Wit |
 
   Scenario: meerdere ontbonden relaties en oudste relatie is het laatst ontbonden
-    Gegeven de persoon de heer J. Wit is getrouwd in 1958 met Zwart
-    En de persoon is getrouwd in 1961 met Blaauw
-    En het huwelijk met Blaauw is ontbonden in 1983
-    En het huwelijk met Zwart is ontbonden in 2006
-    En de persoon heeft aanduidingAanschrijving='V'
-    Als de persoon wordt geraadpleegd
-    Dan is in het antwoord naam.aanhef=Geachte heer Zwart-Wit
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer         | 999992934 |
+    | geslachtsaanduiding (04.10) | V         |
+    En de persoon heeft de volgende naam gegevens
+    | naam                           | waarde |
+    | voorvoegsel (02.30)            |        |
+    | geslachtsnaam (02.40)          | Wit    |
+    | voornamen (02.10)              | Jan    |
+    | aanduiding naamgebruik (61.10) | V      |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999992935 |
+    En de partner heeft de volgende naam gegevens
+    | naam                  | waarde |
+    | voorvoegsel (02.30)   |        |
+    | geslachtsnaam (02.40) | Zwart  |
+    En de partner heeft de volgende aangaanHuwelijkPartnerschap gegevens
+    | naam                     | waarde   |
+    | datum aangaan (06.10)    | 19580401 |
+    | datum ontbinding (07.10) | 20061001 |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999992936 |
+    En de partner heeft de volgende naam gegevens
+    | naam                  | waarde |
+    | voorvoegsel (02.30)   |        |
+    | geslachtsnaam (02.40) | Blaauw |
+    En de partner heeft de volgende aangaanHuwelijkPartnerschap gegevens
+    | naam                     | waarde   |
+    | datum aangaan (06.10)    | 19610422 |
+    | datum ontbinding (07.10) | 19831014 |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | naam.aanhef                     |
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    | naam   | waarde                    |
+    | aanhef | Geachte mevrouw Zwart-Wit |
+
+Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van de persoon wordt gebruikt, wordt aanhef niet opgenomen
+  De aanhef wordt niet opgenomen in het antwoord wanneer aan alle volgende condities is voldaan:
+    - de geslachtsnaam van de persoon is leeg of onbekend (.)
+    - aanduidingNaamgebruik is ongelijk aan "P" (partner)
+    - de aanhef is geen aanspreekvorm voor de adellijke titel van de persoon ("Hoogwelgeboren heer", "Hoogwelgeboren vrouwe", "Hooggeboren heer", "Hooggeboren vrouwe" of "Hoogheid")
+    - de aanhef is geen aanspreekvorm van een hoffelijkheidstitel op basis van de adellijke titel van de partner ("Hoogwelgeboren vrouwe", "Hooggeboren vrouwe" of "Hoogheid")
+
+  Abstract Scenario: naam van de persoon is onbekend bij aanduiding naamgebruik "<naamgebruik>"
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer         | 999992934 |
+    | geslachtsaanduiding (04.10) | V         |
+    En de persoon heeft de volgende naam gegevens
+    | naam                                 | waarde        |
+    | voornamen (02.10)                    |               |
+    | adellijke titel of predicaat (02.20) |               |
+    | voorvoegsel (02.30)                  |               |
+    | geslachtsnaam (02.40)                |               |
+    | aanduiding naamgebruik (61.10)       | <naamgebruik> |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                        | waarde |
+    | geslachtsaanduiding (04.10) | M      |
+    En de partner heeft de volgende naam gegevens
+    | naam                                 | waarde |
+    | adellijke titel of predicaat (02.20) |        |
+    | voorvoegsel (02.30)                  | de     |
+    | geslachtsnaam (02.40)                | Boer   |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | naam.aanhef                     |
+    Dan heeft de persoon met burgerservicenummer '999992934' <leveren naam> 'naam' gegevens
+
+    Voorbeelden:
+      | naamgebruik | aanhef                  | leveren naam |
+      | E           |                         | GEEN         |
+      | P           | Geachte mevrouw De Boer | WEL          |
+      | V           |                         | GEEN         |
+      | N           |                         | GEEN         |
+
+  Abstract Scenario: persoon met onbekende naam heeft adellijkeTitelPredicaat "<adellijkeTitelPredicaat>" en geslachtsaanduiding "<geslacht>" en naamgebruik "<naamgebruik>"
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                        | waarde     |
+    | burgerservicenummer         | 999992934  |
+    | geslachtsaanduiding (04.10) | <geslacht> |
+    En de persoon heeft de volgende naam gegevens
+    | naam                                 | waarde                    |
+    | voornamen (02.10)                    | Jo Anne                   |
+    | adellijke titel of predicaat (02.20) | <adellijkeTitelPredicaat> |
+    | voorvoegsel (02.30)                  |                           |
+    | geslachtsnaam (02.40)                |                           |
+    | aanduiding naamgebruik (61.10)       | <naamgebruik>             |
+    En de persoon heeft een partner met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999992935 |
+    En de partner heeft de volgende naam gegevens
+    | naam                                 | waarde |
+    | adellijke titel of predicaat (02.20) |        |
+    | voorvoegsel (02.30)                  | de     |
+    | geslachtsnaam (02.40)                | Boer   |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | naam.aanhef                     |
+    Dan heeft de persoon met burgerservicenummer '999992934' <leveren naam> 'naam' gegevens
+
+    Voorbeelden:
+      | geslacht | adellijkeTitelPredicaat | naamgebruik | aanhef                  | leveren naam |
+      | M        | G                       | E           | Hooggeboren heer        | WEL          |
+      | M        | G                       | V           | Hooggeboren heer        | WEL          |
+      | M        | G                       | N           | Hooggeboren heer        | WEL          |
+      | M        | G                       | P           | Geachte heer De Boer    | WEL          |
+      | V        | G                       | E           | Hooggeboren vrouwe      | WEL          |
+      | O        | G                       | E           |                         | GEEN         |
+      | V        | JV                      | E           |                         | GEEN         |
+      | V        | JV                      | V           |                         | GEEN         |
+      | V        | JV                      | N           |                         | GEEN         |
+      | V        | JV                      | P           | Geachte mevrouw De Boer | WEL          |
+
+Rule: Aanduiding naamgebruik "E" (eigen naam) wordt gehanteerd voor een persoon wanneer de geslachtsnaam van de partner leeg of onbekend is en de naam van de partner wordt gebruikt
+  De aanhef wordt samengesteld voor aanduiding naamgebruik "E" wanneer aan alle volgende condities is voldaan:
+    - de geslachtsnaam van de partner is leeg of onbekend (.)
+    - aanduidingNaamgebruik is ongelijk aan "E" (eigen)
+    - de aanhef is geen aanspreekvorm voor de adellijke titel van de persoon ("Hoogwelgeboren heer", "Hoogwelgeboren vrouwe", "Hooggeboren heer", "Hooggeboren vrouwe" of "Hoogheid")
+    - de aanhef is geen aanspreekvorm van een hoffelijkheidstitel op basis van de adellijke titel van de partner ("Hoogwelgeboren vrouwe", "Hooggeboren vrouwe" of "Hoogheid")
+
+  Abstract Scenario: naam van de partner is onbekend bij aanduiding naamgebruik "<naamgebruik>"
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer         | 999992934 |
+    | geslachtsaanduiding (04.10) | V         |
+    En de persoon heeft de volgende naam gegevens
+    | naam                                 | waarde        |
+    | voornamen (02.10)                    |               |
+    | adellijke titel of predicaat (02.20) |               |
+    | voorvoegsel (02.30)                  | de            |
+    | geslachtsnaam (02.40)                | Boer          |
+    | aanduiding naamgebruik (61.10)       | <naamgebruik> |
+    En de partner heeft de volgende naam gegevens
+    | naam                                 | waarde |
+    | adellijke titel of predicaat (02.20) |        |
+    | voorvoegsel (02.30)                  |        |
+    | geslachtsnaam (02.40)                | .      |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | naam.aanhef                     |
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    | naam   | waarde                  |
+    | aanhef | Geachte mevrouw De Boer |
+
+    Voorbeelden:
+    | naamgebruik |
+    | E           |
+    | P           |
+    | V           |
+    | N           |
+
+  Abstract Scenario: persoon heeft en geslachtsaanduiding "<geslacht>" en naamgebruik "<naamgebruik>" en heeft partner met onbekende naam en adellijkeTitelPredicaat "<adellijkeTitelPredicaat partner>"
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                        | waarde     |
+    | burgerservicenummer         | 999992934  |
+    | geslachtsaanduiding (04.10) | <geslacht> |
+    En de persoon heeft de volgende naam gegevens
+    | naam                                 | waarde        |
+    | voornamen (02.10)                    | Jo Anne       |
+    | adellijke titel of predicaat (02.20) |               |
+    | voorvoegsel (02.30)                  | de            |
+    | geslachtsnaam (02.40)                | Boer          |
+    | aanduidingNaamgebruik (61.10)        | <naamgebruik> |
+    En de partner heeft de volgende naam gegevens
+    | naam                                 | waarde                            |
+    | adellijke titel of predicaat (02.20) | <adellijkeTitelPredicaat partner> |
+    | voorvoegsel (02.30)                  |                                   |
+    | geslachtsnaam (02.40)                | .                                 |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | naam.aanhef                     |
+    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
+    | naam   | waarde   |
+    | aanhef | <aanhef> |
+
+    Voorbeelden:
+    | geslacht | adellijkeTitelPredicaat partner | naamgebruik | aanhef                  |
+    | V        | G                               | E           | Geachte mevrouw De Boer |
+    | V        | G                               | V           | Hooggeboren vrouwe      |
+    | V        | G                               | N           | Hooggeboren vrouwe      |
+    | V        | G                               | P           | Hooggeboren vrouwe      |
+    | M        | G                               | V           | Geachte mevrouw De Boer |
+    | O        | G                               | V           | Geachte mevrouw De Boer |
+    | V        | GI                              | V           | Geachte mevrouw De Boer |
+    | V        | JH                              | V           | Geachte mevrouw De Boer |
