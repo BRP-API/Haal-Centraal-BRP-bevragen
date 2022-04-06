@@ -2,8 +2,9 @@
 layout: page-with-side-nav
 title: Features-v2-beta
 ---
-# Features
-Deze voorbeelden illustreren en specificeren zoveel mogelijk de functionaliteit versie 2.0 beta van de API:
+# Features v. 2.0 beta
+De onderstaande voorbeelden illustreren en specificeren zoveel mogelijk de functionaliteit versie 2.0 beta van de API.
+De [behaviour driven specificatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/README.md) geeft een uitleg van de wijze waarop deze features gebruikt kunnen worden.
 
 - [samenstellen naam aanhef](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/aanhef.feature){:target="_blank" rel="noopener"}
 - [samenstellen naam aanschrijfwijze](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/aanschrijfwijze.feature){:target="_blank" rel="noopener"}
@@ -37,8 +38,6 @@ Deze voorbeelden illustreren en specificeren zoveel mogelijk de functionaliteit 
 
 ## Algemene Haal Centraal features
 Naast API specifieke features zijn er ook features die voor meerdere Haal Centraal API's gelden. Zij staan in Haal Centraal common. De volgende gelden voor de versie 2.0 beta van deze API:
-- [expand](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/expand.feature){:target="_blank" rel="noopener"}
 - [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/wildcard.feature){:target="_blank" rel="noopener"}
 - [foutafhandeling](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/foutafhandeling.feature){:target="_blank" rel="noopener"}
 - [indicatoren](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/indicatoren.feature){:target="_blank" rel="noopener"}
-- [onvolledige datum](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/onvolledige_datum.feature){:target="_blank" rel="noopener"}

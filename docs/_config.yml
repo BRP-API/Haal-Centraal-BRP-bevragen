@@ -1,5 +1,5 @@
 baseurl: "/Haal-Centraal-BRP-bevragen"
-apiname: "BRP Bevragen"
+apiname: "BRP Persoon bevragen"
 url: "http://localhost:4000"
 # nav is t.b.v. generatie side-navigation menu.
 # Een 'title' zonder path of url genereert slechts een kopje.
@@ -32,8 +32,8 @@ nav:
         path: /features
   - title: Specificaties v. 2.0 beta (IO)
     subnav:
-#      - title: Getting started
-#        path: /getting-started-v2-beta
+      - title: Getting started v. 2.0 beta 
+        path: /getting-started-v2-beta
       - title: User stories
 #        url: https://vng-realisatie.github.io/Haal-Centraal-BRK-bevragen/user-stories-dev
         path: /user-stories-dev
@@ -41,8 +41,8 @@ nav:
         path: /swagger-ui-io
       - title: Bevragen API (redoc)
         path: /redoc-io
-#      - title: Features
-#        path: /features-v2-beta
+      - title: Features v. 2.0 beta
+        path: /features-v2-beta
 
 plugins:
   - jekyll-redirect-from
