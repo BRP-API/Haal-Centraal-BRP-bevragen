@@ -256,7 +256,7 @@ Waar wel rekening mee gehouden moet worden is dat niet alle OpenAPI tooling poly
 
 Verder brengt het toepassen van polymorfisme een zekere mate van complexiteit met zich mee. Voor een simpele type als de datum type met slechts vier velden kun je je afvragen of het noodzakelijk is om vijf datum types te introduceren in plaats van één datum type. Voor de Verblijfplaats type biedt het zeker meerwaarde omdat elk Verblijfplaats type meerdere velden heeft die niet bij een andere Verblijfplaats type voorkomt. Ook is de logica om te bepalen om welk Verblijfplaats type het gaat veel complexer.
 
-Echter, een bijkomend maar misschien de meest belangrijke voordeel is dat polymorfisme het mogelijk maakt om een API zonder breaking changes te evolueren. Om de nieuwe data types backward compatible te maken moet de 'oude' data type ook afleiden van de basis type. In het geval van de datum types moet de DatumOnvolledig type ook afleiden van AbstractDatum:
+Echter, een bijkomend maar misschien wel het belangrijkste voordeel is dat polymorfisme het mogelijk maakt om een API zonder breaking changes te evolueren. Om de nieuwe data types backward compatible te maken moet de 'oude' data type ook afleiden van de basis type. In het geval van de datum types moet de DatumOnvolledig type ook afleiden van AbstractDatum:
 
 ```yaml
 AbstractDatum:
