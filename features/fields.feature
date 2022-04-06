@@ -151,7 +151,7 @@ Functionaliteit: Fields
     - wanneer het opgegeven pad niet exact verwijst naar een veld en tegelijkertijd als deel van een pad verwijst naar meerdere ander velden, wordt een foutmelding gegeven
     - wanneer het opgegeven pad verwijst naar een veld en tegelijkertijd naar het gelijknamige veld in inOnderzoek, worden beide velden opgenomen in de response wanneer ze een waarde hebben
 
-    # zie fields-mapping.csv voor een overzicht van alle mogelijke gehele of gedeeltelijke paden voor het aanwijzen van de personen velden: 
+    # zie fields-mapping-Persoon.csv (raadpleeg op burgerservicenummer) en fields-mapping-PersoonBeperkt.csv (zoeken) voor een overzicht van alle mogelijke gehele of gedeeltelijke paden voor het aanwijzen van de personen velden: 
     #  een fields veld(pad) in de linker kolom wordt vertaald naar het volledig pad in de tweede kolom
     #  wanneer een in fields opgegeven veld(pad) niet voorkomt in de linker kolom, geeft dat een foutmelding
 
