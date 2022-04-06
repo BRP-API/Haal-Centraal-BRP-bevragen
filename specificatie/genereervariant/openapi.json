@@ -1397,7 +1397,8 @@
           "mapping" : {
             "Nationaliteit" : "#/components/schemas/Nationaliteit",
             "BehandeldAlsNederlander" : "#/components/schemas/BehandeldAlsNederlander",
-            "VastgesteldNietNederlander" : "#/components/schemas/VastgesteldNietNederlander"
+            "VastgesteldNietNederlander" : "#/components/schemas/VastgesteldNietNederlander",
+            "NationaliteitOnbekend" : "#/components/schemas/NationaliteitOnbekend"
           }
         }
       },
@@ -1477,6 +1478,37 @@
             },
             "inOnderzoek" : {
               "$ref" : "#/components/schemas/BijzonderNederlanderschapInOnderzoek"
+            }
+          }
+        } ]
+      },
+      "NationaliteitOnbekend" : {
+        "description" : "* **redenOpname** : De reden op grond waarvan de persoon de nationaliteit gekregen heeft.\n",
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AbstractNationaliteit"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "datumIngangGeldigheid" : {
+              "$ref" : "#/components/schemas/AbstractDatum"
+            },
+            "inOnderzoek" : {
+              "$ref" : "#/components/schemas/NationaliteitOnbekendInOnderzoek"
+            }
+          }
+        } ]
+      },
+      "NationaliteitOnbekendInOnderzoek" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/InOnderzoek"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "type" : {
+              "type" : "boolean"
+            },
+            "redenOpname" : {
+              "type" : "boolean"
             }
           }
         } ]
