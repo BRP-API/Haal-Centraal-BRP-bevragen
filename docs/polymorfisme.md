@@ -1,6 +1,6 @@
 # Toepassen van polymorfisme binnen de BRP Bevraging API
 
-In de Haal Centraal BRP API worden data types gebruikt om meerdere gelijksoortige data te representeren. Voorbeelden van dit soort data types zijn de Verblijfplaats type en DatumOnvolledig type. Vanwege zijn simpele aard is het DatumOnvolledig type gebruikt om de issues en de gekozen oplossing te illustreren.
+In de 1.x versie van de Haal Centraal BRP API worden data types gebruikt om meerdere gelijksoortige data te representeren. Voorbeelden van dit soort data types zijn de Verblijfplaats type en DatumOnvolledig type. Vanwege zijn simpele aard is het DatumOnvolledig type gebruikt om de issues en de gekozen oplossing te illustreren.
 
 Het DatumOnvolledig type wordt gebruikt om vier soorten datums te representeren:
 - 'volledige' datum. Jaar, maand en dag zijn bekend
@@ -96,7 +96,7 @@ DatumOnvolledig:
     - type
 ```
 
-Het 'type' veld is gedefinieerd als een enumeratie om aan te kunnen geven wat de mogelijke waarden zijn. Ook is dit veld verplicht gemaakt om aan te geven dat dit veld altijd een waarde heeft.
+Het 'type' veld is gedefinieerd als een enumeratie om aan te geven wat de mogelijke waarden zijn. Ook is dit veld verplicht gemaakt om aan te geven dat dit veld altijd een waarde heeft.
 
 De logica voor het bepalen van de datum type kan dan als volgt worden herschreven:
 
@@ -181,7 +181,7 @@ OnbekendDatum:
 Met deze vier datum definities is nu expliciet gedefinieerd welk datum type welke velden heeft en wat de bijbehorende waarde is in het 'type' veld. 
 
 Om de datum types te kunnen gebruiken als de mogelijke types van een datum veld moet [polymorfisme](https://nl.wikipedia.org/wiki/Polymorfisme) worden toegepast. In een OpenAPI Specificatie wordt [polymorfisme](https://spec.openapis.org/oas/v3.0.3#composition-and-inheritance-polymorphism) toegepast met behulp van de **allOf** en **discriminator** elementen:
-- er moet een basis type worden gedefinieerd voor de vier datum types. Deze basis type kan dan worden gebruikt als type voor een datum veld. De vier datum types gebruiken de **allOf** element om de basis type te overerven
+- er moet een basis type worden gedefinieerd voor de vier datum types. Deze basis type (AbstractDatum) kan dan worden gebruikt als type voor een datum veld. De vier datum types gebruiken de **allOf** element om de basis type te overerven.
 - de **discriminator** element moet worden gebruikt om aan te geven welk veld moet worden gebruikt om de type van het datum veld te bepalen. De **discriminator** en de bijbehorende type worden in de basis type gedefinieerd zodat ze door alle vier datum types worden overgeërfd.
 
 Na het toepassen van polymorfisme zien de datum types er als volgt uit:
@@ -248,10 +248,52 @@ OnbekendDatum:
 
 In de nieuwe datum definities zijn de type enum waarden verwijderd. Deze zijn niet meer nodig omdat standaard de naam van de afgeleide schemas (in dit geval: VolledigeDatum,JaarMaandDatum,JaarDatum,OnbekendDatum) als enum waarde wordt gebruikt. Van deze standaard 'mapping' kan worden afgeweken door gebruik te maken van het **mapping** element van de discriminator. In bovenstaande definities is gebruik gemaakt van het **mapping** element omdat 'Datum' als type waarde is gekozen voor een VolledigeDatum type.
 
-Het toepassen van polymorfisme is niet zonder consequenties. De belangrijkste nadelen voor het toepassen van polymorfisme zijn:
-- de definitie wordt complexer. In plaats van één datum type zijn er nu vijf datum types. Voor een datum type met slechts vier velden kun je je afvragen of het handig is polymorfisme toe te passen. Voor de Verblijfplaats type is het wel handig omdat elk Verblijfplaats type meerdere velden heeft die niet bij een andere Verblijfplaats type voorkomen. Ook is de logica om te bepalen om welk Verblijfplaats type het gaat veel complexer.
-- Ondersteuning van polymorfisme door tooling is (nog) beperkt. Zo ondersteunt Swagger UI en Swagger code generator geen polymorfisme. Als deze tooling wordt gebruikt, moet er worden gezocht naar alternatieven.
+Het toepassen van polymorfisme in de OpenAPI specificatie van de BRP API leidt tot een duidelijker API contract definitie. Er kan op een eenduidige manier worden afgeleid welke data types er aan een veld kan worden toegekend en wat de velden zijn voor elk data type en welke van de velden verplicht zijn en welke optioneel. Hierdoor kan tooling worden gebruikt om de request en response van de API te valideren, zodat er geen onjuiste data bij de consumers en bij de provider terecht kan komen.
 
-Belangrijk is om de nadelen af te wegen tegen de voordelen:
-- Logica die met polymorfe data types werken is voor zowel consumer als provider veel simpeler. Ook voor consumers die geen code generatie gebruiken.
-- Het is makkelijker om polymorfe data types te evolueren. Er kunnen nieuwe afgeleide data types worden toegevoegd en bestaande afgeleide data types kunnen worden uitgebreid, zonder impact op de andere afgeleide data types.
+Ook wordt de logica, die nodig is om te bepalen om welk data type het gaat, simpeler. Alleen het **discriminator** veld is nodig om de data type te kunnen bepalen. Wanneer een code generator wordt gebruikt die polymorfisme ondersteunt, dan kan deze logica door de code generator worden gegenereerd en door de code generator aan het serialisatie/deserialisatie proces worden toegevoegd. Dit houdt de business logica vrij van de nodige 'plumbling' code.
+
+Waar wel rekening mee gehouden moet worden is dat niet alle OpenAPI tooling polymorfisme ondersteunt/zal ondersteunen. Zo kan Swagger UI een OpenAPI specificatie waarin polymorfisme is toegepast (nog) niet goed tonen. Ook de Swagger code generator en Postman ondersteunen polymorfisme (nog) niet. Er moet dan worden gekeken naar alternatieven, zoals [ReDoc](https://redocly.github.io/redoc/), [OpenAPI Generator](https://openapi-generator.tech/) en [NSwag](https://github.com/RicoSuter/NSwag).
+
+Verder brengt het toepassen van polymorfisme een zekere mate van complexiteit met zich mee. Voor een simpele type als de datum type met slechts vier velden kun je je afvragen of het noodzakelijk is om vijf datum types te introduceren in plaats van één datum type. Voor de Verblijfplaats type biedt het zeker meerwaarde omdat elk Verblijfplaats type meerdere velden heeft die niet bij een andere Verblijfplaats type voorkomt. Ook is de logica om te bepalen om welk Verblijfplaats type het gaat veel complexer.
+
+Echter, een bijkomend maar misschien de meest belangrijke voordeel is dat polymorfisme het mogelijk maakt om een API zonder breaking changes te evolueren. Om de nieuwe data types backward compatible te maken moet de 'oude' data type ook afleiden van de basis type. In het geval van de datum types moet de DatumOnvolledig type ook afleiden van AbstractDatum:
+
+```yaml
+AbstractDatum:
+  type: object
+  properties:
+    type: string
+  required:
+    - type
+  discriminator:
+    propertyName: type
+  mapping:
+    Datum: '#/components/schemas/VolledigeDatum'
+    OnbekendDatum: '#/components/schemas/OnbekendDatum'
+    JaarDatum: '#/components/schemas/JaarDatum'
+    JaarMaandDatum: '#/components/schemas/JaarMaandDatum'
+    OnvolledigDatum: '#/components/schemas/DatumOnvolledig'
+DatumOnvolledig:
+  allOf:
+    - $ref: '#/components/schemas/AbstractDatum'
+    - type: object
+      properties:
+        datum:
+          type: string
+          format: date
+        jaar:
+          type: integer
+          maximum: 9999
+        maand:
+          type: integer
+          minimum: 1
+          maximum: 12
+        dag:
+          type: integer
+          minimum: 1
+          maximum: 31
+```
+
+Vervolgens kan met een header, bijvoorbeeld de version header worden aangegeven of de 'oude' of de nieuwe data types moet worden geretourneerd.
+
+Uit de definitie hierboven is te zien er geen breaking changes nodig zijn om een bestaande data type polymorfisch te maken. Hierdoor hoeft er in de design van een API beperkt rekening (polyformisme kan alleen worden toegepast bij 'object' data type) worden gehouden met het mogelijk toepassen van polymorfisme in de toekomst.
