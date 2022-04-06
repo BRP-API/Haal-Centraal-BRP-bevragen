@@ -2,7 +2,7 @@
 layout: page-with-side-nav
 title: Haal Centraal BRP persoon bevragen
 ---
-# Haal Centraal BRP Persoon bevragen
+# Haal Centraal {{ site.apiname }}
 
 ![lint oas](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/workflows/lint-oas/badge.svg)
 ![generate postman collection](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/workflows/generate-postman-collection/badge.svg)
