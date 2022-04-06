@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "sourceMap": true
+    },
+    "include": [
+        "code/typescript/**/*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
