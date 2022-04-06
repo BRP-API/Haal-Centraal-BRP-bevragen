@@ -1085,7 +1085,7 @@
       "GbaNationaliteit" : {
         "type" : "object",
         "properties" : {
-          "aanduidingBijzonderNederlandschap" : {
+          "aanduidingBijzonderNederlanderschap" : {
             "$ref" : "#/components/schemas/Waardetabel"
           },
           "datumIngangGeldigheid" : {

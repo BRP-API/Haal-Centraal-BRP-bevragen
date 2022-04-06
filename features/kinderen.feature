@@ -1,5 +1,6 @@
 # language: nl
 
+@post-assert
 Functionaliteit: Kinderen van een persoon raadplegen
   Van een persoon worden -indien gevraagd met de fields parameter- de kinderen geleverd.
   Dit bevat enkele identificerende eigenschappen van de kinderen.
@@ -10,13 +11,13 @@ Functionaliteit: Kinderen van een persoon raadplegen
     @gba
     Scenario: de naam van een kind is gecorrigeerd
       Gegeven de persoon met burgerservicenummer 999996150 heeft de volgende kinderen in de registratie
-        | Categorie | Voornamen (02.10)  | Voorvoegsel (02.30) | Geslachtsnaam (02.40) | Onjuist (84.10) |
-        | 9         | William            |                     | Postma                |                 |
-        | 59        | William            | de                  | Vries                 |                 |
-        | 59        | William            | de                  | Boer                  | O               |
-        | 9         | Sebastiaan         | de                  | Boer                  |                 |
-        | 9         | Walter             | de                  | Boer                  |                 |
-        | 59        | Walter             |                     | Messeritz             | O               |
+        | Categorie | Voornamen (02.10) | Voorvoegsel (02.30) | Geslachtsnaam (02.40) | Onjuist (84.10) |
+        | 9         | William           |                     | Postma                |                 |
+        | 59        | William           | de                  | Vries                 |                 |
+        | 59        | William           | de                  | Boer                  | O               |
+        | 9         | Sebastiaan        | de                  | Boer                  |                 |
+        | 9         | Walter            | de                  | Boer                  |                 |
+        | 59        | Walter            |                     | Messeritz             | O               |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -32,10 +33,10 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | voorvoegsel   | de         |
       | geslachtsnaam | Boer       |
       En heeft de persoon met burgerservicenummer '999996150' een kind met de volgende 'naam' gegevens
-      | naam          | waarde     |
-      | voornamen     | Walter     |
-      | voorvoegsel   | de         |
-      | geslachtsnaam | Boer       |
+      | naam          | waarde |
+      | voornamen     | Walter |
+      | voorvoegsel   | de     |
+      | geslachtsnaam | Boer   |
 
     @gba
     Scenario: naamswijziging kind
@@ -146,24 +147,24 @@ Functionaliteit: Kinderen van een persoon raadplegen
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550005 |
-      En de persoon heeft een kind met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer |           |
-      | geslachtsaanduiding |           |
-      En het kind heeft alleen de volgende 'naam' gegevens
+      En de persoon heeft een 'kind' met alleen de volgende gegevens
+      | naam                | waarde |
+      | burgerservicenummer |        |
+      | geslachtsaanduiding |        |
+      En het 'kind' heeft alleen de volgende 'naam' gegevens
       | naam          | waarde |
       | geslachtsnaam | .      |
-      En het kind heeft alleen de volgende 'geboorte' gegevens
-      | naam   | waarde   |
-      | datum  | 00000000 |
-      | plaats | 0000     |
-      | land   | 0000     |
+      En het 'kind' heeft alleen de volgende 'geboorte' gegevens
+      | naam        | waarde   |
+      | datum       | 00000000 |
+      | plaats.code | 0000     |
+      | land.code   | 0000     |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550005                       |
-      | fields              | kinderen                        |
-      Dan heeft het kind alleen de volgende gegevens
+      | fields              | burgerservicenummer,kinderen    |
+      Dan heeft de persoon met burgerservicenummer '555550005' een 'kind' met alleen de volgende gegevens
       | naam              | waarde       |
       | type              | OnbekendKind |
       | indicatieOnbekend | true         |
@@ -173,21 +174,21 @@ Functionaliteit: Kinderen van een persoon raadplegen
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550006 |
-      En de persoon heeft een kind met de volgende gegevens
+      En de persoon heeft een 'kind' met alleen de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550007 |
-      En het kind heeft alleen de volgende 'naam' gegevens
+      En het 'kind' heeft alleen de volgende 'naam' gegevens
       | naam          | waarde           |
       | voornamen     |                  |
       | geslachtsnaam | Ali bin Mohammed |
-      En het kind heeft alleen de volgende 'geboorte' gegevens
+      En het 'kind' heeft alleen de volgende 'geboorte' gegevens
       | naam  | waarde   |
       | datum | 19750730 |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550006                       |
-      | fields              | kinderen.voornamen              |
-      Dan heeft het kind alleen de volgende gegevens
+      | naam                | waarde                                      |
+      | type                | RaadpleegMetBurgerservicenummer             |
+      | burgerservicenummer | 555550006                                   |
+      | fields              | burgerservicenummer,kinderen.naam.voornamen |
+      Dan heeft de persoon met burgerservicenummer '555550006' een 'kind' met alleen de volgende gegevens
       | naam | waarde |
       | type | Kind   |
