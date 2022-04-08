@@ -1,4 +1,4 @@
-# Haal Centraal BRP Persoon bevragen
+# Haal Centraal BRP Personen bevragen
 
 ![lint oas](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/workflows/lint-oas/badge.svg)
 ![generate postman collection](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/workflows/generate-postman-collection/badge.svg)
@@ -16,7 +16,7 @@ De laatste versie is 1.3.1. Lees de [release notes](https://vng-realisatie.githu
 * Vraag een API-key voor toegang tot de Haal Centraal probeeromgeving aan bij de product owner [c.dingemanse@comites.nl](mailto:c.dingemanse@comites.nl)
 
 ## Heb je meer nodig?
-Gebruik de BRP bevragen API in combinatie met (een van de) andere BRP API’s:
+Gebruik de BRP personen bevragen API in combinatie met (een van de) andere BRP API’s:
 
 * [Historische BRP-gegevens bevragen](https://vng-realisatie.github.io/Haal-Centraal-BRP-historie-bevragen)
 * [Reisdocumenten bevragen](https://vng-realisatie.github.io/Haal-Centraal-Reisdocumenten-bevragen)
