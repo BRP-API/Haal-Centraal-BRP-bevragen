@@ -1,8 +1,8 @@
 ---
 layout: page-with-side-nav
-title: Design decisions HaalCentraal BRP-personen-bevragen
+title: Design decisions HaalCentraal BRP-Personen-Bevragen
 ---
-# Design decisions HaalCentraal BRP-personen-bevragen
+# Design decisions HaalCentraal BRP-Personen-Bevragen
 Alle ontwerpkeuzes die zijn gemaakt tijdens het ontwerpen en specificeren van de API's zijn hier beschreven.
 
 ## Algemene Design Decisions

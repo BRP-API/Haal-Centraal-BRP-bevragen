@@ -1,6 +1,6 @@
 ---
 layout: page-with-side-nav
-title: Haal Centraal BRP personen bevragen
+title: Haal Centraal BRP Personen Bevragen
 ---
 # Haal Centraal {{ site.apiname }}
 
@@ -20,7 +20,7 @@ De laatste versie is 1.3.1. Lees de [release notes](releasenotes.md) om te zien 
 * Vraag een API-key voor toegang tot de Haal Centraal probeeromgeving aan bij de product owner [c.dingemanse@comites.nl](mailto:c.dingemanse@comites.nl)
 
 ## Heb je meer nodig?
-Gebruik de BRP personen bevragen API in combinatie met (een van de) andere BRP API’s:
+Gebruik de BRP Personen Bevragen API in combinatie met (een van de) andere BRP API’s:
 
 * [Historische BRP-gegevens bevragen](https://vng-realisatie.github.io/Haal-Centraal-BRP-historie-bevragen){:target="_blank" rel="noopener"}
 * [Reisdocumenten bevragen](https://vng-realisatie.github.io/Haal-Centraal-Reisdocumenten-bevragen){:target="_blank" rel="noopener"}
