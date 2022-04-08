@@ -14,8 +14,8 @@ Functionaliteit: Ouders van een persoon raadplegen
         | 3         | Guîllaumé          |
       Als de persoon met burgerservicenummer 999993653 wordt geraadpleegd met fields=ouders
       Dan bevat het antwoord 2 ouders
-      En bevat het antwoord de ouder met naam.voornamen "Lisette" en ouderAanduiding "ouder1"
-      En bevat het antwoord de ouder met naam.voornamen "Guîllaumé" en ouderAanduiding "ouder2"
+      En bevat het antwoord de ouder met naam.voornamen "Lisette" en ouderAanduiding "1"
+      En bevat het antwoord de ouder met naam.voornamen "Guîllaumé" en ouderAanduiding "2"
 
   Rule: de actuele gegevens van ouders worden geleverd
 
@@ -27,8 +27,8 @@ Functionaliteit: Ouders van een persoon raadplegen
         | 53        | Christiaan         | O               |
       Als de persoon met burgerservicenummer 999996186 wordt geraadpleegd met fields=ouders
       Dan bevat het antwoord 2 ouders
-      En bevat het antwoord de ouder met naam.voornamen "Chantal" en ouderAanduiding "ouder1"
-      En bevat het antwoord de ouder met naam.voornamen "Mark" en ouderAanduiding "ouder2"
+      En bevat het antwoord de ouder met naam.voornamen "Chantal" en ouderAanduiding "1"
+      En bevat het antwoord de ouder met naam.voornamen "Mark" en ouderAanduiding "2"
 
     Scenario: geslachtswijziging ouder
       Gegeven de persoon met burgerservienummer 555550001 heeft de volgende ouders in de registratie
@@ -53,8 +53,8 @@ Functionaliteit: Ouders van een persoon raadplegen
         | 53        |                    | 00000000                                           | O               |
       Als de persoon met burgerservicenummer 999996629 wordt geraadpleegd met fields=ouders
       Dan bevat het antwoord 2 ouders
-      En bevat het antwoord de ouder met naam.voornamen "Olivia Ghislaine" en ouderAanduiding "ouder1"
-      En bevat het antwoord de ouder met naam.voornamen "Kevin" en ouderAanduiding "ouder2"
+      En bevat het antwoord de ouder met naam.voornamen "Olivia Ghislaine" en ouderAanduiding "1"
+      En bevat het antwoord de ouder met naam.voornamen "Kevin" en ouderAanduiding "2"
 
     Scenario: ontkenning gevolgd door erkenning
       Gegeven de persoon met burgerservienummer 999996162 heeft de volgende ouders in de registratie
@@ -65,8 +65,8 @@ Functionaliteit: Ouders van een persoon raadplegen
         | 53        | Mark               | O               |
       Als de persoon met burgerservicenummer 999996162 wordt geraadpleegd met fields=ouders
       Dan bevat het antwoord 2 ouders
-      En bevat het antwoord de ouder met naam.voornamen "Chantal" en ouderAanduiding "ouder1"
-      En bevat het antwoord de ouder met naam.voornamen "Wieger" en ouderAanduiding "ouder2"
+      En bevat het antwoord de ouder met naam.voornamen "Chantal" en ouderAanduiding "1"
+      En bevat het antwoord de ouder met naam.voornamen "Wieger" en ouderAanduiding "2"
 
 
 Rule: Een ouder wordt alleen teruggegeven als minimaal één gegeven in de naam (groep 02), geboorte (groep 03) van de ouder is gevuld.
@@ -91,8 +91,8 @@ Rule: Een ouder wordt alleen teruggegeven als minimaal één gegeven in de naam 
     En er zijn geen gegevens geregistreerd over de naam (groep 02), geboorte (groep 03) of burgerservicenummer (01.20) in categorie 3
     Als de persoon met burgerservicenummer 555550002 wordt geraadpleegd met fields=ouders
     Dan bevat het antwoord 1 ouder
-    En bevat het antwoord de ouder met naam.voornamen "Margriet" en ouderAanduiding "ouder1"
-    En bevat het antwoord GEEN ouder met naam.voornamen "Sjaak" en ouderAanduiding "ouder2"
+    En bevat het antwoord de ouder met naam.voornamen "Margriet" en ouderAanduiding "1"
+    En bevat het antwoord GEEN ouder met naam.voornamen "Sjaak" en ouderAanduiding "2"
 
 
 Rule: de geleverde oudergegevens zijn de gegevens zoals die staan op de persoonslijst van de gevraagde persoon
