@@ -105,7 +105,7 @@ Rule: Uitsluiting van Europees kiesrecht wordt alleen opgenomen wanneer de eindd
 		| einddatum uitsluiting deze maand   | false              | 20220300              | false             | JaarMaandDatum |            | 2022           | 3               |
 		| einddatum uitsluiting vorig jaar   | false              | 20210000              |                   |                |            |                |                 |
 		| einddatum uitsluiting dit jaar     | false              | 20220000              | false             | JaarDatum      |            | 2022           |                 |
-		| einddatum uitsluiting onbekend     | false              | 00000000              | false             | OnbekendDatum  |            |                |                 |
+		| einddatum uitsluiting onbekend     | false              | 00000000              | false             | DatumOnbekend  |            |                |                 |
 		| persoon ontvangt oproep            | true               |                       | true              |                |            |                |                 |
 
 @proxy
@@ -150,4 +150,4 @@ Rule: Uitsluiting van kiesrecht wordt alleen opgenomen wanneer de einddatum uits
 		| einddatum uitsluiting deze maand   | true                  | 20220300              | true                    | JaarMaandDatum |            | 2022           | 3               |
 		| einddatum uitsluiting vorig jaar   | true                  | 20210000              |                         |                |            |                |                 |
 		| einddatum uitsluiting dit jaar     | true                  | 20220000              | true                    | JaarDatum      |            | 2022           |                 |
-		| einddatum uitsluiting onbekend     | true                  | 00000000              | true                    | OnbekendDatum  |            |                |                 |
+		| einddatum uitsluiting onbekend     | true                  | 00000000              | true                    | DatumOnbekend  |            |                |                 |

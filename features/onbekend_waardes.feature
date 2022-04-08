@@ -37,7 +37,7 @@ Rule: een veld wordt niet opgenomen wanneer het de standaardwaarde bevat
     | burgerservicenummer | 999992934                          |
     | fields              | burgerservicenummer,<groep>.<veld> |
     Dan bevat de persoon met burgerservicenummer '999992934' de volgende '<groep>' gegevens NIET
-    | naam   | 
+    | naam   |
     | <veld> |
 
     Voorbeelden:
@@ -107,7 +107,7 @@ Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbe
   | partners.aangaanHuwelijkPartnerschap.land   | 0000            |
   | kinderen.geboorte.plaats                    | 0000            |
   | kinderen.geboorte.land                      | 0000            |
-  
+
   Abstract Scenario: onbekend waarde voor <groep> <veld>
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde     |
@@ -204,7 +204,7 @@ Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbe
     En bevat de persoon met burgerservicenummer '999992934' een nationaliteit met alleen de volgende gegevens
     | redenOpname           | 311        |
     | datumIngangGeldigheid | 2003-04-17 |
-    
+
   Scenario: onbekend waarde voor reden opname nationaliteit
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde     |
@@ -266,7 +266,7 @@ Rule: de onbekendwaarde voor redenOpschortingBijhouding wordt wel geleverd
     | reden | .          |
     | datum | 2021-12-18 |
 
-Rule: datumvelden waarde "00000000": worden vertaald naar OnbekendDatum
+Rule: datumvelden waarde "00000000": worden vertaald naar DatumOnbekend
 
   Abstract Scenario: volledig onbekende datum in <groep> <element>
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -285,7 +285,7 @@ Rule: datumvelden waarde "00000000": worden vertaald naar OnbekendDatum
     | burgerservicenummer   | 999992934 |
     En bevat de persoon met burgerservicenummer '555550001' alleen de volgende '<groep>' gegevens
     | naam               | waarde        |
-    | datum.type         | OnbekendDatum |
+    | datum.type         | DatumOnbekend |
     | datum.onbekend     | true          |
 
     Voorbeelden:
@@ -318,7 +318,7 @@ Rule: datumvelden waarde "00000000": worden vertaald naar OnbekendDatum
     | fields              | burgerservicenummer,<relatie>.burgerservicenummer,<relatie>.<groep>.<veld> |
     Dan bevat de <relatie> met burgerservicenummer '555550002' alleen de volgende '<groep>' gegevens
     | naam           | waarde        |
-    | datum.type     | OnbekendDatum |
+    | datum.type     | DatumOnbekend |
     | datum.onbekend | true          |
 
     Voorbeelden:
