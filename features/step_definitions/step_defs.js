@@ -26,6 +26,7 @@ const propertyNameMap = new Map([
     ['datumInschrijvingInGemeente (09.20)', 'datumInschrijvingInGemeente'],
     ['datum opschorting bijhouding (67.10)', 'datum'],
     ['datum overlijden (08.10)', 'datum'],
+    ['datumIngangFamilierechtelijkeBetrekking (62.10)', 'datumIngangFamilierechtelijkeBetrekking'],
     ['functieAdres (10.10)', 'functieAdres.code'],
     ['geboorteland (03.30)', 'land.code'],
     ['geboorteplaats (03.20)', 'plaats.code'],
@@ -283,6 +284,9 @@ Given(/^(?:de|het) '(.*)' heeft ?(?:alleen)? de volgende '(.*)' gegevens$/, func
     setPersoonProperties(this.context[relatie], gegevensgroep, dataTable);
 });
 
+Given(/^(?:de|het) '(.*)' heeft GEEN '(.*)' gegevens$/, function (relatie, gegevensgroep) {
+});
+
 Given('de partner heeft de volgende {string} gegevens', function (gegevensgroep, dataTable) {
     setPersoonProperties(this.context.partner, gegevensgroep, dataTable);
 });
@@ -313,22 +317,6 @@ Given('de partner heeft de volgende naam gegevens', function (dataTable) {
     });
 });
 
-function determineDataPath(baseDataPath, config) {
-    switch(config.data.type) {
-        case "RaadpleegMetBurgerservicenummer":
-            return `${baseDataPath}/bsn.json`;
-        case "ZoekMetGeslachtsnaamEnGeboortedatum":
-            return `${baseDataPath}/geslachtsnaam-geboortedatum.json`;
-        case "ZoekMetNaamEnGemeenteVanInschrijving":
-            return `${baseDataPath}/naam-gemeentevaninschrijving.json`;
-        case "ZoekMetPostcodeEnHuisnummer":
-            return `${baseDataPath}/postcode-huisnummer.json`;
-        default:
-            console.log(`Onbekend zoek type: ${config.data.type}`);
-            return '';
-    }
-}
-
 function addToCollection(collection, toAdd) {
     if(collection !== undefined && toAdd !== undefined) {
         collection.push(toAdd);
@@ -357,10 +345,9 @@ When('personen wordt gezocht met de volgende parameters', async function (dataTa
         .forEach((relatie) => addToCollection(this.context.persoon[toCollectionName(relatie)], this.context[relatie]));
 
     this.context.zoekResponse.personen.push(this.context.persoon);
-    this.context.zoekResponse.type = config.data.type;
 
-    const path = determineDataPath(this.context.dataPath, config);
-    fs.writeFileSync(path, JSON.stringify(this.context.zoekResponse, null, "\t"));
+    const path = `${this.context.dataPath}/test-data.json`;
+    fs.writeFileSync(path, JSON.stringify(this.context.zoekResponse.personen, null, "\t"));
 
     try {
         this.context.response = await axios(config);
