@@ -1,6 +1,6 @@
 # language: nl
 
-
+@post-assert
 Functionaliteit: Ouders van een persoon raadplegen
   Van een persoon kunnen ouders worden geleverd.
   Dit bevat gegevens over de familierechtelijke betrekking plus enkele identificerende eigenschappen van de ouder.
@@ -270,50 +270,50 @@ Rule: Wanneer de geslachtsnaam van de ouder onbekend is, wordt de ouder geleverd
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999993008 |
-    En de persoon heeft een ouder met de volgende gegevens
+    En de persoon heeft een 'ouder' met de volgende gegevens
     | naam                                            | waarde   |
-    | ouderAanduiding                                 | ouder1   |
+    | ouderAanduiding.code                            | ouder1   |
     | geslachtsaanduiding (04.10)                     | V        |
     | datumIngangFamilierechtelijkeBetrekking (62.10) | 20190614 |
-    En de ouder met ouderAanduiding 'ouder1' heeft alleen de volgende 'naam' gegevens
+    En de 'ouder' heeft alleen de volgende 'naam' gegevens
     | naam                  | waarde |
     | geslachtsnaam (02.40) | .      |
-    En de ouder met ouderAanduiding 'ouder1' heeft GEEN 'geboorte' gegevens
+    En de 'ouder' heeft GEEN 'geboorte' gegevens
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999993008                       |
     | fields              | ouders                          |
-    Dan heeft de ouder met ouderAanduiding 'ouder1' alleen de volgende gegevens
-    | naam                                    | waarde        |
-    | type                                    | OnbekendOuder |
-    | indicatieOnbekend                       | true          |
-    | ouderAanduiding                         | ouder1        |
+    Dan heeft de persoon met burgerservicenummer '999993008' een 'ouder' met alleen de volgende gegevens
+    | naam                 | waarde        |
+    | type                 | OnbekendOuder |
+    | indicatieOnbekend    | true          |
+    | ouderAanduiding.code | ouder1        |
 
   @proxy
   Scenario: er is wel een identificerend gegeven geslachtsnaam van de ouder
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999993008 |
-    En de persoon heeft een ouder met de volgende gegevens
+    En de persoon heeft een 'ouder' met de volgende gegevens
     | naam                                            | waarde   |
-    | ouderAanduiding                                 | ouder1   |
+    | ouderAanduiding.code                            | ouder1   |
     | geslachtsaanduiding (04.10)                     | V        |
     | datumIngangFamilierechtelijkeBetrekking (62.10) | 20190614 |
-    En de ouder met ouderAanduiding 'ouder1' heeft alleen de volgende 'naam' gegevens
+    En de 'ouder' heeft alleen de volgende 'naam' gegevens
     | naam                  | waarde            |
     | geslachtsnaam (02.40) | Ibin binti Yalniz |
-    En de ouder met ouderAanduiding 'ouder1' heeft GEEN 'geboorte' gegevens
+    En de 'ouder' heeft GEEN 'geboorte' gegevens
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                            |
-    | type                | RaadpleegMetBurgerservicenummer   |
-    | burgerservicenummer | 999993008                         |
-    | fields              | ouder.ouderAanduiding,ouders.naam |
-    Dan heeft de ouder met ouderAanduiding 'ouder1' alleen de volgende gegevens
-    | naam            | waarde |
-    | type            | Ouder  |
-    | ouderAanduiding | ouder1 |
-    En heeft de ouder met ouderAanduiding 'ouder1' alleen de volgende 'naam' gegevens
+    | naam                | waarde                             |
+    | type                | RaadpleegMetBurgerservicenummer    |
+    | burgerservicenummer | 999993008                          |
+    | fields              | ouders.ouderAanduiding,ouders.naam |
+    Dan heeft de persoon met burgerservicenummer '999993008' een 'ouder' met alleen de volgende gegevens
+    | naam                 | waarde |
+    | type                 | Ouder  |
+    | ouderAanduiding.code | ouder1 |
+    En heeft de 'ouder' alleen de volgende 'naam' gegevens
     | naam          | waarde            |
     | geslachtsnaam | Ibin binti Yalniz |
 
@@ -322,27 +322,24 @@ Rule: Wanneer de geslachtsnaam van de ouder onbekend is, wordt de ouder geleverd
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |
-    En de persoon heeft een ouder met de volgende gegevens
+    En de persoon heeft een 'ouder' met de volgende gegevens
     | naam                                            | waarde   |
-    | ouderAanduiding                                 | ouder1   |
+    | ouderAanduiding.code                            | ouder1   |
     | geslachtsaanduiding (04.10)                     | V        |
     | datumIngangFamilierechtelijkeBetrekking (62.10) | 20190614 |
-    En de ouder met ouderAanduiding 'ouder1' heeft alleen de volgende 'naam' gegevens
+    En de 'ouder' heeft alleen de volgende 'naam' gegevens
     | naam                  | waarde            |
     | geslachtsnaam (02.40) | Ibin binti Yalniz |
-    En de ouder met ouderAanduiding 'ouder1' heeft de volgende 'geboorte' gegevens
+    En de 'ouder' heeft alleen de volgende 'geboorte' gegevens
     | naam          | waarde   |
     | datum (03.10) | 00000000 |
-    En de persoon heeft GEEN ouder met de volgende gegevens
-    | naam            | waarde |
-    | ouderAanduiding | ouder2 |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                                      |
     | type                | RaadpleegMetBurgerservicenummer             |
     | burgerservicenummer | 555550001                                   |
     | fields              | ouders.naam.voornamen,ouders.geboorte.datum |
-    Dan heeft de ouder alleen de volgende gegevens
-    | naam            | waarde |
-    | type            | Ouder  |
-    En heeft de ouder GEEN 'naam' gegevens
-    En heeft de ouder GEEN 'geboorte' gegevens
+    Dan heeft de persoon met burgerservicenummer '555550001' een 'ouder' met alleen de volgende gegevens
+    | naam | waarde |
+    | type | Ouder  |
+    En heeft de 'ouder' GEEN 'naam' gegevens
+    En heeft de 'ouder' GEEN 'geboorte' gegevens
