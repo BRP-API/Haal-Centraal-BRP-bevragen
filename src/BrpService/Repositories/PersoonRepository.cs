@@ -12,26 +12,38 @@ public class PersoonRepository
         _environment = environment;
     }
 
-    public async Task<TResult> Zoek<T, TResult>(T query) where TResult : PersonenQueryResponse
+    public async Task<PersonenQueryResponse> Zoek<T>(T query)
     {
-        var filename = query switch
-        {
-            RaadpleegMetBurgerservicenummer => "bsn.json",
-            ZoekMetGeslachtsnaamEnGeboortedatumFilter => "geslachtsnaam-geboortedatum.json",
-            ZoekMetNaamEnGemeenteVanInschrijvingFilter => "naam-gemeentevaninschrijving.json",
-            ZoekMetPostcodeEnHuisnummerFilter => "postcode-huisnummer.json",
-            _ => throw new NotSupportedException($"{query}")
-        };
-
-        var path = Path.Combine(_environment.ContentRootPath, "Data", filename);
+        var path = Path.Combine(_environment.ContentRootPath, "Data", "test-data.json");
         if (!File.Exists(path))
         {
             throw new FileNotFoundException($"invalid file: '{path}'");
         }
 
         var data = await File.ReadAllTextAsync(path);
-        var retval = JsonConvert.DeserializeObject<TResult>(data);
-
-        return retval!;
+        return query switch
+        {
+            RaadpleegMetBurgerservicenummer f => new RaadpleegMetBurgerservicenummerResponse
+            {
+                Personen = JsonConvert.DeserializeObject<List<GbaPersoon>>(data)?
+                    .AsQueryable().Where(f.ToSpecification().ToExpression()).ToList()
+            },
+            ZoekMetGeslachtsnaamEnGeboortedatumFilter f => new ZoekMetGeslachtsnaamEnGeboortedatumResponse
+            {
+                Personen = JsonConvert.DeserializeObject<List<GbaPersoonBeperkt>>(data)?
+                    .AsQueryable().Where(f.ToSpecification().ToExpression()).ToList()
+            },
+            ZoekMetNaamEnGemeenteVanInschrijvingFilter f => new ZoekMetNaamEnGemeenteVanInschrijvingResponse
+            {
+                Personen = JsonConvert.DeserializeObject<List<GbaPersoonBeperkt>>(data)?
+                    .AsQueryable().Where(f.ToSpecification().ToExpression()).ToList()
+            },
+            ZoekMetPostcodeEnHuisnummerFilter f => new ZoekMetPostcodeEnHuisnummerResponse
+            {
+                Personen = JsonConvert.DeserializeObject<List<GbaPersoonBeperkt>>(data)?
+                    .AsQueryable().Where(f.ToSpecification().ToExpression()).ToList()
+            },
+            _ => throw new NotSupportedException($"{query}"),
+        };
     }
 }

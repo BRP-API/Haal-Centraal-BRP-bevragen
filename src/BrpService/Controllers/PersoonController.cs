@@ -39,39 +39,39 @@ public class PersoonController : Generated.ControllerBase
 
     private async Task<ActionResult<PersonenQueryResponse>> Handle(ZoekMetPostcodeEnHuisnummer query)
     {
-        _logger.LogDebug(nameof(ZoekMetPostcodeEnHuisnummer));
+        _logger.LogDebug("Request body: {@query}", JsonConvert.SerializeObject(query));
 
         var filter = _mapper.Map<ZoekMetPostcodeEnHuisnummerFilter>(query);
 
-        var retval = await _repository.Zoek<ZoekMetPostcodeEnHuisnummerFilter, ZoekMetPostcodeEnHuisnummerResponse>(filter);
+        var retval = await _repository.Zoek<ZoekMetPostcodeEnHuisnummerFilter>(filter);
 
-        retval.Personen = retval.Personen.AsQueryable().Where(filter.ToSpecification().ToExpression()).ToList();
+        _logger.LogDebug("Response: {@response}", JsonConvert.SerializeObject(retval));
 
         return Ok(retval);
     }
 
     private async Task<ActionResult<PersonenQueryResponse>> Handle(ZoekMetNaamEnGemeenteVanInschrijving query)
     {
-        _logger.LogDebug(nameof(ZoekMetNaamEnGemeenteVanInschrijving));
+        _logger.LogDebug("Request body: {@query}", JsonConvert.SerializeObject(query));
 
         var filter = _mapper.Map<ZoekMetNaamEnGemeenteVanInschrijvingFilter>(query);
 
-        var retval = await _repository.Zoek<ZoekMetNaamEnGemeenteVanInschrijvingFilter, ZoekMetNaamEnGemeenteVanInschrijvingResponse>(filter);
+        var retval = await _repository.Zoek<ZoekMetNaamEnGemeenteVanInschrijvingFilter>(filter);
 
-        retval.Personen = retval.Personen.AsQueryable().Where(filter.ToSpecification().ToExpression()).ToList();
+        _logger.LogDebug("Response: {@response}", JsonConvert.SerializeObject(retval));
 
         return Ok(retval);
     }
 
     private async Task<ActionResult<PersonenQueryResponse>> Handle(ZoekMetGeslachtsnaamEnGeboortedatum query)
     {
-        _logger.LogDebug("ZoekMetGeslachtsnaamEnGeboortedatum: {query}", query);
+        _logger.LogDebug("Request body: {@query}", JsonConvert.SerializeObject(query));
 
         var filter = _mapper.Map<ZoekMetGeslachtsnaamEnGeboortedatumFilter>(query);
 
-        var retval = await _repository.Zoek<ZoekMetGeslachtsnaamEnGeboortedatumFilter, ZoekMetGeslachtsnaamEnGeboortedatumResponse>(filter);
+        var retval = await _repository.Zoek<ZoekMetGeslachtsnaamEnGeboortedatumFilter>(filter);
 
-        retval.Personen = retval.Personen.AsQueryable().Where(filter.ToSpecification().ToExpression()).ToList();
+        _logger.LogDebug("Response: {@response}", JsonConvert.SerializeObject(retval));
 
         return Ok(retval);
     }
@@ -80,9 +80,7 @@ public class PersoonController : Generated.ControllerBase
     {
         _logger.LogDebug("Request body: {@query}", JsonConvert.SerializeObject(query));
 
-        var retval = await _repository.Zoek<RaadpleegMetBurgerservicenummer, RaadpleegMetBurgerservicenummerResponse>(query);
-
-        retval.Personen = retval.Personen.AsQueryable().Where(query.ToSpecification().ToExpression()).ToList();
+        var retval = await _repository.Zoek<RaadpleegMetBurgerservicenummer>(query);
 
         _logger.LogDebug("Response: {@response}", JsonConvert.SerializeObject(retval));
 
