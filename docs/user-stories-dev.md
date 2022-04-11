@@ -5,6 +5,7 @@ title: User Stories in Ontwikkeling
 
 # User stories
 
+- [Als developer van een client applicatie wil ik de datum in een voor een eindgebruiker leesbare vorm](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1000){:target="_blank" rel="noopener"}
 - [Als PO wil ik dat uit de protocollering kan worden opgemaakt of een persoon in het antwoord op een zoekvraag is voorgekomen of dat een persoon geraadpleegd is](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/917){:target="_blank" rel="noopener"}
 - [Als PO wil ik dat de response op een zoekvraag uitsluitend noodzakelijke gegevens bevat voor selectie van een te raadplegen persoon ](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/916){:target="_blank" rel="noopener"}
 - [Als PO wil ik het aantal combinaties van inputparameters verkleinen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/915){:target="_blank" rel="noopener"}
