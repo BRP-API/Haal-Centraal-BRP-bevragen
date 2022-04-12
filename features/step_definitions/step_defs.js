@@ -613,16 +613,32 @@ Then('heeft de response alleen een persoon met een partner met de volgende gegev
     console.log(expected);
 });
 
-Then(/^heeft de response (\d*) (persoon|personen)$/, function (aantal, dummy) {
+Then(/^heeft de response (\d*) (?:persoon|personen)$/, function (aantal) {
     const personen = this.context.response.data.personen;
 
     personen.length.should.equal(Number(aantal), `aantal personen in response is ongelijk aan ${aantal}\nPersonen:${JSON.stringify(personen, null, "\t")}`);
 });
 
-Then('heeft de response een persoon met de volgende gegevens', function (dataTable) {
+Then(/^heeft de response een persoon met ?(?:alleen)? de volgende gegevens$/, function (dataTable) {
     let expected = {};
     dataTable.hashes().forEach(function(row) {
         mapRowToProperty(expected, row);
+    });
+
+    if(this.context.postAssert === true) {
+        if(this.context.expected === undefined) {
+            this.context.expected = [];
+        }
+        this.context.expected.push(expected); 
+    }
+});
+
+Then(/^heeft de response een persoon met ?(?:alleen)? de volgende '(.*)' gegevens$/, function (gegevensgroep, dataTable) {
+    let expected = {};
+    expected[gegevensgroep] = {};
+
+    dataTable.hashes().forEach(function(row) {
+        mapRowToProperty(expected[gegevensgroep], row);
     });
 
     if(this.context.postAssert === true) {
