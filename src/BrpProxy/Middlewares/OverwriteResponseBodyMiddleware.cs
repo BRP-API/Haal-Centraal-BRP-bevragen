@@ -6,6 +6,7 @@ using AutoMapper;
 using System.Linq;
 using BrpProxy.Validators;
 using FluentValidation.Results;
+using Newtonsoft.Json.Linq;
 
 namespace BrpProxy.Middlewares
 {
@@ -29,9 +30,10 @@ namespace BrpProxy.Middlewares
             var orgBodyStream = context.Response.Body;
             var requestBody = await context.Request.ReadBodyAsync();
 
+            _logger.LogDebug("original requestBody: {@requestBody}", requestBody);
             var personenQuery = JsonConvert.DeserializeObject<PersonenQuery>(requestBody);
             _logger.LogDebug("original requestBody: {@personenQuery}", personenQuery);
-            var result = personenQuery.Validate(context);
+            var result = personenQuery.Validate(context, requestBody);
             if (!result.IsValid)
             {
                 using var bodyStream = JsonConvert.SerializeObject(result.Foutbericht).ToMemoryStream();
@@ -105,6 +107,34 @@ namespace BrpProxy.Middlewares
             });
         }
 
+        public static ValidatePersonenQueryResult CreateFrom(ValidationResult result, HttpContext context)
+        {
+            var invalidParams = from error in result.Errors
+                                select new InvalidParams
+                                {
+                                    Name = "type",
+                                    Code = error.ErrorMessage.Split("||")[0],
+                                    Reason = error.ErrorMessage.Split("||")[1]
+                                };
+            var titel = invalidParams.Any(x => x.Code == "required")
+                ? "Minimale combinatie van parameters moet worden opgegeven."
+                : "Een of meerdere parameters zijn niet correct.";
+            var code = invalidParams.Any(x => x.Code == "required")
+                ? "paramsCombination"
+                : "paramsValidation";
+
+            return new ValidatePersonenQueryResult(new BadRequestFoutbericht
+            {
+                Instance = new Uri(context.Request.Path, UriKind.Relative),
+                Status = StatusCodes.Status400BadRequest,
+                Title = titel,
+                Type = new Uri("https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest"),
+                Code = code,
+                Detail = $"De foutieve parameter(s) zijn: {string.Join(", ", invalidParams.Select(x => x.Name))}.",
+                InvalidParams = new List<InvalidParams>(invalidParams)
+            });
+        }
+
         private ValidatePersonenQueryResult(string[] fields)
         {
             IsValid = true;
@@ -156,17 +186,20 @@ namespace BrpProxy.Middlewares
             { "indicatieVestigingVanuitBuitenland", new[] { "datumVestigingInNederland" } }
         };
 
-        public static ValidatePersonenQueryResult Validate(this PersonenQuery? personenQuery, HttpContext context)
+        public static ValidatePersonenQueryResult Validate(this PersonenQuery? personenQuery, HttpContext context, string requestBody)
         {
             var result = personenQuery switch
             {
                 RaadpleegMetBurgerservicenummer query => new RaadpleegMetBurgerservicenummerQueryValidator().Validate(query),
                 ZoekMetGeslachtsnaamEnGeboortedatum query => new ZoekMetGeslachtsnaamEnGeboortedatumQueryValidator().Validate(query),
                 ZoekMetPostcodeEnHuisnummer query => new ZoekMetPostcodeEnHuisnummerQueryValidator().Validate(query),
-                ZoekMetNaamEnGemeenteVanInschrijving query => new ZoekMetNaamEnGemeenteVanInschrijvingQueryValidator().Validate(query)
+                ZoekMetNaamEnGemeenteVanInschrijving query => new ZoekMetNaamEnGemeenteVanInschrijvingQueryValidator().Validate(query),
+                _ => null
             };
 
-            return ValidatePersonenQueryResult.CreateFrom(result, personenQuery.Fields, context);
+            return result != null
+                ? ValidatePersonenQueryResult.CreateFrom(result, personenQuery?.Fields, context)
+                : ValidatePersonenQueryResult.CreateFrom(new PersonenQueryRequestBodyValidator().Validate(JObject.Parse(requestBody)), context);
         }
 
         public static string MapFields(this string[] fields)
@@ -217,6 +250,7 @@ namespace BrpProxy.Middlewares
                     break;
             }
 
+            logger.LogDebug("After fields filtering {@retval}", retval);
             return JsonConvert.SerializeObject(retval, new JsonSerializerSettings
             {
                 NullValueHandling = NullValueHandling.Ignore,
