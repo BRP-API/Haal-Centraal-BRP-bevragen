@@ -3,7 +3,7 @@ layout: page-with-side-nav
 title: Haal Centraal BRP Personen Bevragen
 ---
 
-# Releasenotes Haal-Centraal-BRP-Personen-Bevragen
+# Releasenotes Haal-Centraal BRP Personen Bevragen
 
 ## Versie 1.3.1
 - Naambasis (exclusief in InOnderzoek) toegevoegd  i.v.m. specificatie issue m.b.t. dubbel gedefinieerde InOnderzoek. (Zie [850](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/850) )
@@ -46,7 +46,7 @@ title: Haal Centraal BRP Personen Bevragen
 
 ## Versie 1.0.0
 
-Alhoewel er nog geen eerdere officiële versie van de Haal-Centraal-BRP-Personen-Bevragen API als release is uitgebracht is de specificatie het afgelopen jaar redelijk stabiel geweest.
+Alhoewel er nog geen eerdere officiële versie van de Haal-Centraal BRP Personen Bevragen API als release is uitgebracht is de specificatie het afgelopen jaar redelijk stabiel geweest.
 Voor het uitbrengen van release v1.0.0 is besloten om de nieuwe inzichten die het afgelopen jaar zijn opgedaan op te nemen. Hier een globaal (en niet limitatief) overzicht van wijzigingen die doorgevoerd zijn voordat v1.0.0 is uitgebracht. Enkele van deze wijzigingen zijn breaking ten opzichte van v0.9.0 .
 
 We bieden nu ook SDK's aan met gegenereerde [plumbing-code](./code).

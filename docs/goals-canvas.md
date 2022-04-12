@@ -2,7 +2,7 @@
 layout: page-with-side-nav
 title: Goals Canvas
 ---
-# Goals Canvas BRP-Personen-Bevragen
+# Goals Canvas BRP Personen Bevragen
 
 | WHATS | HOWS | INPUT | OUTPUT | GOALS  | STORIES |
 |-------|------|-------|--------|--------|---------|
