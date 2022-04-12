@@ -15,11 +15,11 @@ Functionaliteit: leveren van een verblijfplaats
       | naam         | waarde |
       | land (13.10) | 0000   |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                             |
-      | type                | RaadpleegMetBurgerservicenummer    |
-      | burgerservicenummer | 555550001                          |
-      | fields              | burgerservicenummer,verblijfplaats |
-      Dan heeft de persoon met burgerservicenummer '555550001' de volgende 'verblijfplaats' gegevens
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 555550001                       |
+      | fields              | verblijfplaats                  |
+      Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
       | naam                   | waarde                 |
       | type                   | VerblijfplaatsOnbekend |
       | verblijfplaatsOnbekend | true                   |
@@ -35,13 +35,14 @@ Functionaliteit: leveren van een verblijfplaats
       | naam         | waarde |
       | land (13.10) | <land> |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                             |
-      | type                | RaadpleegMetBurgerservicenummer    |
-      | burgerservicenummer | 555550001                          |
-      | fields              | burgerservicenummer,verblijfplaats |
-      Dan heeft de persoon met burgerservicenummer '555550001' de volgende 'verblijfplaats' gegevens
-      | naam | waarde                   |
-      | type | VerblijfplaatsBuitenland |
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 555550001                       |
+      | fields              | verblijfplaats                  |
+      Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
+      | naam      | waarde                   |
+      | type      | VerblijfplaatsBuitenland |
+      | land.code | <land>                   |
 
       Voorbeelden:
       | land | land omschrijving            |
@@ -61,11 +62,11 @@ Functionaliteit: leveren van een verblijfplaats
       | straatnaam (11.10) | <straat>     |
       | huisnummer (11.20) | <huisnummer> |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                      |
-      | type                | RaadpleegMetBurgerservicenummer             |
-      | burgerservicenummer | 555550001                                   |
-      | fields              | burgerservicenummer,verblijfplaats.postcode |
-      Dan heeft de persoon met burgerservicenummer '555550001' alleen de volgende 'verblijfplaats' gegevens
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 555550001                       |
+      | fields              | verblijfplaats.postcode         |
+      Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
       | naam | waarde |
       | type | Adres  |
 
@@ -89,10 +90,10 @@ Functionaliteit: leveren van een verblijfplaats
       | huisnummer (11.20)          |                            |
       | locatiebeschrijving (12.10) | Woonboot in de Grote Sloot |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                    |
-      | type                | RaadpleegMetBurgerservicenummer           |
-      | burgerservicenummer | 555550001                                 |
-      | fields              | burgerservicenummer,verblijfplaats.straat |
-      Dan heeft de persoon met burgerservicenummer '555550001' alleen de volgende 'verblijfplaats' gegevens
-      | naam                              | waarde                     |
-      | type                              | Locatie                    |
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 555550001                       |
+      | fields              | verblijfplaats.straat           |
+      Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
+      | naam | waarde  |
+      | type | Locatie |
