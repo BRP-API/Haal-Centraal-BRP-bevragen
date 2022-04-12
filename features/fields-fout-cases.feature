@@ -62,8 +62,8 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden gescheiden d
     | code     | paramsValidation                                                                                            |
     | instance | /haalcentraal/api/brp/personen                                                                              |
     En heeft het object de volgende 'invalidParams' gegevens
-    | code   | name   | reason                                                 |
-    | fields | fields | Deel van de parameterwaarde niet correct: bestaatniet. |
+    | code   | name   | reason                                       |
+    | fields | fields | Parameter bevat een niet bestaande veldnaam. |
 
   @fout-case
   Scenario: Pad van een gevraagd veld is opgegeven in onjuiste case
@@ -81,8 +81,8 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden gescheiden d
     | code     | paramsValidation                                                                                            |
     | instance | /haalcentraal/api/brp/personen                                                                              |
     En heeft het object de volgende 'invalidParams' gegevens
-    | code   | name   | reason                                                         |
-    | fields | fields | Deel van de parameterwaarde niet correct: BurgerServiceNummer. |
+    | code   | name   | reason                                       |
+    | fields | fields | Parameter bevat een niet bestaande veldnaam. |
 
   @fout-case
   Abstract Scenario: opgegeven pad leidt tot meer dan één veld
@@ -100,8 +100,8 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden gescheiden d
     | code     | paramsValidation                                                                                            |
     | instance | /haalcentraal/api/brp/personen                                                                              |
     En heeft het object de volgende 'invalidParams' gegevens
-    | code   | name   | reason                                           |
-    | fields | fields | Deel van de parameterwaarde niet correct: <pad>. |
+    | code   | name   | reason                                       |
+    | fields | fields | Parameter bevat een niet bestaande veldnaam. |
 
     Voorbeelden:
     | pad                                  |
@@ -163,7 +163,7 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden gescheiden d
     | instance | /haalcentraal/api/brp/personen                                                                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code   | name   | reason                                       |
-    | fields | fields | Deel van de parameterwaarde niet correct: ,. |
+    | fields | fields | Parameter bevat een niet bestaande veldnaam. |
 
   @fout-case
   Abstract Scenario: Gevraagde velden worden niet gescheiden door een komma
@@ -185,9 +185,9 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden gescheiden d
     | <code> | fields | <reason> |
 
     Voorbeelden:
-    | fields                                 | code    | reason                                                                            |
-    | burgerservicenummer\naam.geslachtsnaam | pattern | Waarde voldoet niet aan patroon ^[a-zA-Z0-9\.,_]+$.                               |
-    | burgerservicenummer;naam.geslachtsnaam | pattern | Waarde voldoet niet aan patroon ^[a-zA-Z0-9\.,_]+$.                               |
-    | burgerservicenummer naam.geslachtsnaam | pattern | Waarde voldoet niet aan patroon ^[a-zA-Z0-9\.,_]+$.                               |
-    | burgerservicenummer_naam.geslachtsnaam | fields  | Deel van de parameterwaarde niet correct: burgerservicenummer_naam.geslachtsnaam. |
-    | burgerservicenummernaam.geslachtsnaam  | fields  | Deel van de parameterwaarde niet correct: burgerservicenummernaam.geslachtsnaam.  |
+    | fields                                 | code    | reason                                              |
+    | burgerservicenummer\naam.geslachtsnaam | pattern | Waarde voldoet niet aan patroon ^[a-zA-Z0-9\.,_]+$. |
+    | burgerservicenummer;naam.geslachtsnaam | pattern | Waarde voldoet niet aan patroon ^[a-zA-Z0-9\.,_]+$. |
+    | burgerservicenummer naam.geslachtsnaam | pattern | Waarde voldoet niet aan patroon ^[a-zA-Z0-9\.,_]+$. |
+    | burgerservicenummer_naam.geslachtsnaam | fields  | Parameter bevat een niet bestaande veldnaam.        |
+    | burgerservicenummernaam.geslachtsnaam  | fields  | Parameter bevat een niet bestaande veldnaam.        |
