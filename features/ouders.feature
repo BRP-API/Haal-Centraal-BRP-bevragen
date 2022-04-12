@@ -330,9 +330,6 @@ Rule: Wanneer de geslachtsnaam van de ouder onbekend is, wordt de ouder geleverd
     En de 'ouder' heeft alleen de volgende 'naam' gegevens
     | naam                  | waarde            |
     | geslachtsnaam (02.40) | Ibin binti Yalniz |
-    En de 'ouder' heeft alleen de volgende 'geboorte' gegevens
-    | naam          | waarde   |
-    | datum (03.10) | 00000000 |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                                      |
     | type                | RaadpleegMetBurgerservicenummer             |
@@ -342,4 +339,3 @@ Rule: Wanneer de geslachtsnaam van de ouder onbekend is, wordt de ouder geleverd
     | naam | waarde |
     | type | Ouder  |
     En heeft de 'ouder' GEEN 'naam' gegevens
-    En heeft de 'ouder' GEEN 'geboorte' gegevens
