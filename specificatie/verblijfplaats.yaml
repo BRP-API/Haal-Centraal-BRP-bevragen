@@ -6,6 +6,10 @@ info:
 paths: {}
 components:
   schemas:
+    AanduidingBijHuisnummer:
+      type: string
+      pattern: ^[a-zA-Z]{2}$
+      example: "to"
     Adresregel1:
       type: string
       maxLength: 40

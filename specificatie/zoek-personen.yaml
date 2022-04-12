@@ -186,6 +186,8 @@ components:
           properties:
             inclusiefOverledenPersonen:
               $ref: '#/components/schemas/InclusiefOverledenPersonen'
+            aanduidingBijHuisnummer:
+              $ref: 'verblijfplaats.yaml#/components/schemas/AanduidingBijHuisnummer'
             huisletter:
               $ref: 'verblijfplaats.yaml#/components/schemas/Huisletter'
             huisnummer:
@@ -205,6 +207,8 @@ components:
           properties:
             inclusiefOverledenPersonen:
               $ref: '#/components/schemas/InclusiefOverledenPersonen'
+            aanduidingBijHuisnummer:
+              $ref: 'verblijfplaats.yaml#/components/schemas/AanduidingBijHuisnummer'
             huisletter:
               $ref: 'verblijfplaats.yaml#/components/schemas/Huisletter'
             huisnummer:
