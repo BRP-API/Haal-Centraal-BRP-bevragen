@@ -13,7 +13,7 @@ namespace BrpProxy.Profiles
                 { Nationaliteit.Code: var code } when code != "0000" => context.Mapper.Map<Nationaliteit>(source),
                 { AanduidingBijzonderNederlanderschap.Code: var code } when code == "B" => context.Mapper.Map<BehandeldAlsNederlander>(source),
                 { AanduidingBijzonderNederlanderschap.Code: var code } when code == "V" => context.Mapper.Map<VastgesteldNietNederlander>(source),
-                _ => null
+                _ => context.Mapper.Map<NationaliteitOnbekend>(source)
             };
         }
     }

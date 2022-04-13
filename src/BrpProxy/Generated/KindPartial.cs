@@ -8,5 +8,7 @@
             !string.IsNullOrWhiteSpace(Naam.Geslachtsnaam) ||
             !string.IsNullOrWhiteSpace(Naam.Voornamen) ||
             !string.IsNullOrWhiteSpace(Naam.Voorvoegsel));
+
+        public bool ShouldSerializeGeboorte() => Geboorte != null && Geboorte.ShouldSerialize();
     }
 }

@@ -11,8 +11,26 @@ public class PartnerProfile : Profile
     {
         CreateMap<GbaPartner, AbstractPartner>()
             .ConvertUsing<PartnerConverter>();
-        CreateMap<GbaPartner, Partner>();
+
+        CreateMap<GbaPartner, Partner>()
+            .ForMember(dest => dest.SoortVerbintenis, opt =>
+            {
+                opt.PreCondition(src => src.SoortVerbintenis?.Code != ".");
+                opt.MapFrom(src => src.SoortVerbintenis);
+            });
+
         CreateMap<GbaAangaanHuwelijkPartnerschap, AangaanHuwelijkPartnerschap>()
-            .ForMember(dest => dest.Datum, opt => opt.MapFrom(src => src.Datum.Map()));
+            .ForMember(dest => dest.Datum, opt => opt.MapFrom(src => src.Datum.Map()))
+            .ForMember(dest => dest.Land, opt =>
+            {
+                opt.PreCondition(src => src.Land?.Code != "0000");
+                opt.MapFrom(src => src.Land);
+            })
+           .ForMember(dest => dest.Plaats, opt =>
+            {
+                opt.PreCondition(src => src.Plaats?.Code != "0000");
+                opt.MapFrom(src => src.Plaats);
+            })
+            ;
     }
 }

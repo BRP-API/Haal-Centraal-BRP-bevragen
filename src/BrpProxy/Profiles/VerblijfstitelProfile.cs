@@ -11,6 +11,11 @@ public class VerblijfstitelProfile : Profile
     {
         CreateMap<GbaVerblijfstitel, Verblijfstitel>()
             .ForMember(dest => dest.DatumEinde, opt => opt.MapFrom(src => src.DatumEinde.Map()))
-            .ForMember(dest => dest.DatumIngang, opt => opt.MapFrom(src => src.DatumIngang.Map()));
+            .ForMember(dest => dest.DatumIngang, opt => opt.MapFrom(src => src.DatumIngang.Map()))
+            .ForMember(dest => dest.Aanduiding, opt =>
+            {
+                opt.PreCondition(src => src.Aanduiding?.Code != "00");
+                opt.MapFrom(src => src.Aanduiding);
+            });
     }
 }
