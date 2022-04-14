@@ -17,7 +17,7 @@ Zoeken op adres (postcode) bij een persoon wordt gedaan op de postcode zoals die
 * Niet alle adressen in BRP zijn te relateren aan een postcode in de BAG en deze personen moeten ook gevonden kunnen worden.
 
 ## Resourcedefinitie binnen API voor elke gelinkte resource (heroverwegen ?)
-Voor elke gelinkte resource (relatie) moet er binnen de BRP-bevragen-personen API (ten minste tijdelijk) een resource beschreven (ontsloten) zijn. Voor een gelinkte resource buiten het BRP-domein wordt alleen het opvragen van de actuele status van de enkele resource gespecificeerd.
+Voor elke gelinkte resource (relatie) moet er binnen de BRP Personen Bevragen API (ten minste tijdelijk) een resource beschreven (ontsloten) zijn. Voor een gelinkte resource buiten het BRP-domein wordt alleen het opvragen van de actuele status van de enkele resource gespecificeerd.
 
 *Ratio*
 Relaties worden opgenomen als uri naar de betreffende resource. De API voor het opvragen van de persoon moet dus URI's kunnen samenstellen die verwijzen naar de betreffende objecten (resources) en waar deze objecten (resources) ook daadwerkelijk op te vragen zijn.
