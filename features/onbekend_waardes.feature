@@ -444,7 +444,7 @@ Rule: de onbekend waarde voor redenOpschortingBijhouding wordt wel geleverd
     | datum.type  | Datum      |
     | datum.datum | 2021-12-18 |
 
-Rule: datumvelden waarde "00000000": worden vertaald naar OnbekendDatum
+Rule: datumvelden waarde "00000000": worden vertaald naar DatumOnbekend
 
   Abstract Scenario: volledig onbekende datum in <groep> <element>
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -553,7 +553,7 @@ Rule: datumvelden waarde "00000000": worden vertaald naar OnbekendDatum
     | burgerservicenummer | 555550002 |
     En heeft de '<relatie>' alleen de volgende '<groep>' gegevens
     | naam           | waarde        |
-    | datum.type     | OnbekendDatum |
+    | datum.type     | DatumOnbekend |
     | datum.onbekend | true          |
 
     Voorbeelden:

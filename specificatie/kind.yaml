@@ -30,7 +30,7 @@ components:
         propertyName: type
         mapping:
           Kind: '#/components/schemas/Kind'
-          OnbekendKind: '#/components/schemas/OnbekendKind'
+          KindOnbekend: '#/components/schemas/KindOnbekend'
     Kind:
       allOf:
         - $ref: '#/components/schemas/AbstractKind'
@@ -44,7 +44,7 @@ components:
               $ref: 'naam.yaml#/components/schemas/NaamGerelateerde'
             geboorte:
               $ref: 'geboorte.yaml#/components/schemas/Geboorte'
-    OnbekendKind:
+    KindOnbekend:
       allOf:
         - $ref: '#/components/schemas/AbstractKind'
         - type: object

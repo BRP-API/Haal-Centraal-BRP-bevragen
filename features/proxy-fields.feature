@@ -121,7 +121,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar v
 
   @proxy
   Rule: wanneer een gegeven van een ouder, kind of partner wordt gevraagd, moet de hele ouder, partner of kind worden gevraagd
-    # dit is nodig om het type te bepalen (Ouder, OnbekendOuder, Partner, OnbekendPartner, Kind, OnbekendKind)
+    # dit is nodig om het type te bepalen (Ouder, OuderOnbekend, Partner, PartnerOnbekend, Kind, KindOnbekend)
     # voor de partner is dit ook nodig voor ontbindingHuwelijkPartnerschap
 
     @proxy
@@ -149,7 +149,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar v
       | ouders.indicatieOnbekend                                                             | ouders                                        |
       | ouders.type                                                                          | ouders                                        |
       | kinderen                                                                             | kinderen                                      |
-  
+
   # @proxy
   # Rule: wanneer een gegeven van verblijfadres wordt gevraagd, moet het hele verblijfadres worden gevraagd
   #   # dit is nodig om het type verblijfplaats te bepalen (Adres, Locatie, VerblijfplaatsBuitenland, VerblijfplaatsOnbekend)
