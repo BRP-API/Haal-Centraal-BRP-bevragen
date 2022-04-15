@@ -43,7 +43,7 @@ __Je kan de Haal Centraal probeeromgeving niet gebruiken vanuit de browser, dus 
 
 ### Importeer de specificaties in Postman
 
-De werking van de '{{site.apiname}}' Web API is het makkelijkst te testen met behulp van [Postman](https://www.getpostman.com/){:target="_blank" rel="noopener"}. We hebben al een [Postman collection](https://raw.githubusercontent.com/VNG-Realisatie{{ site.baseurl }}/master/test/BRP-Bevragen-v2-postman-collection.json){:target="_blank" rel="noopener"} voor je klaargezet. Deze kun je importeren in Postman.
+De werking van de '{{site.apiname}}' Web API is het makkelijkst te testen met behulp van [Postman](https://www.getpostman.com/){:target="_blank" rel="noopener"}. We hebben al een [Postman collection](https://raw.githubusercontent.com/VNG-Realisatie{{ site.baseurl }}/blob/develop/test/BRP-Bevragen-v2-postman-collection.json){:target="_blank" rel="noopener"} voor je klaargezet. Deze kun je importeren in Postman.
 
 In Postman kun je de Postman collection importeren en visueel de {{site.apiname}} Personen endpoint aanroepen. Volg deze stappen om de Postman collection te importeren:
 
@@ -56,7 +56,7 @@ In Postman kun je de Postman collection importeren en visueel de {{site.apiname}
 !['Import From Link'](./img/2-select-import-from-link-tab-v2.jpg)  
 
 ``` url
-https://raw.githubusercontent.com/VNG-Realisatie{{ site.baseurl }}/master/test/BRP-Bevragen-v2-postman-collection.json
+https://raw.githubusercontent.com/VNG-Realisatie{{ site.baseurl }}/blob/develop/test/BRP-Bevragen-v2-postman-collection.json
 ```
 
 3.Klik op de Import button om de Postman collectie te importeren
