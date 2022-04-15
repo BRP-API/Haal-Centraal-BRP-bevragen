@@ -27,7 +27,7 @@ De [behaviour driven specificatie](https://github.com/VNG-Realisatie/Haal-Centra
 - [parametercombinaties voor zoeken van personen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/parametercombinaties.feature){:target="_blank" rel="noopener"}
 - [validatie van parameters](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/parametervalidatie.feature){:target="_blank" rel="noopener"}
 - [partners](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/partners.feature){:target="_blank" rel="noopener"}
-- [fields](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/proxy-fields.feature){:target="_blank" rel="noopener"}
+- [fields](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields.feature){:target="_blank" rel="noopener"}
 - [tabelwaarden](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/tabelwaarden.feature){:target="_blank" rel="noopener"}
 - [volledige naam](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/volledigeNaam.feature){:target="_blank" rel="noopener"}
 - [samenstelling naam voorletters](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/voorletters.feature){:target="_blank" rel="noopener"}
