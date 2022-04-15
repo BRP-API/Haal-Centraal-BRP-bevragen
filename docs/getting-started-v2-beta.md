@@ -14,7 +14,7 @@ Wil je de API gebruiken? Dit kun je doen:
 
 ## Functionaliteit en specificaties
 
-Je kunt een visuele representatie van de specificatie genereren met [Redoc]({{ site.baseurl }}/redoc).
+Je kunt een visuele representatie van de specificatie genereren met [Redoc]({{ site.baseurl }}/redoc-io).
 
 De (resolved) OAS3 kun je hier downloaden: [openapi.yaml](https://github.com/VNG-Realisatie{{ site.baseurl }}/blob/v2.0.0beta1/specificatie/genereervariant/openapi.yaml).
 
