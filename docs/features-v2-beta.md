@@ -38,6 +38,5 @@ De [behaviour driven specificatie](https://github.com/VNG-Realisatie/Haal-Centra
 
 ## Algemene Haal Centraal features
 Naast API specifieke features zijn er ook features die voor meerdere Haal Centraal API's gelden. Zij staan in Haal Centraal common. De volgende gelden voor de versie 2.0 beta van deze API:
-- [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/wildcard.feature){:target="_blank" rel="noopener"}
 - [foutafhandeling](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/foutafhandeling.feature){:target="_blank" rel="noopener"}
 - [indicatoren](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/indicatoren.feature){:target="_blank" rel="noopener"}
