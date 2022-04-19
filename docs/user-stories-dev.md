@@ -6,6 +6,7 @@ title: User Stories in Ontwikkeling
 # User stories
 
 - [Als gebruiker van de API wil ik een lijst met van toepassing zijnde veldpaden voor fields](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1010){:target="_blank" rel="noopener"}
+- [Wijziging van Waardetabel waarden voor enumeratievelden moet leiden tot nieuwe versie API](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1007){:target="_blank" rel="noopener"}
 - [Als developer van een client applicatie wil ik de mogelijke waarden van een waardentabel kunnen downloaden](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1006){:target="_blank" rel="noopener"}
 - [Als developer wil ik bij een ontbonden huwelijk/partnerschap deze ook ontvangen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1005){:target="_blank" rel="noopener"}
 - [Als developer van een client applicatie wil ik de datum in een voor een eindgebruiker leesbare vorm](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1000){:target="_blank" rel="noopener"}
