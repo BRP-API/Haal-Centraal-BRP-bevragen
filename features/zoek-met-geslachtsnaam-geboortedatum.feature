@@ -475,7 +475,7 @@ Rule: Bij zoeken met de "*" wildcard moet minimaal 3 letters (exclusief de wildc
     | geboortedatum | 1983-05-26                          |
     | fields        | burgerservicenummer                 |
     Dan heeft de response 1 persoon
-    En heeft de persoon met burgerservicenummer '999995082' de volgende gegevens
+    En heeft de response een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999995082 |
 

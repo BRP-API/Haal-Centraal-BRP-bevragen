@@ -78,19 +78,6 @@ Rule: Postcode en huisnummer zijn verplichte parameters
     | naam                | waarde    |
     | burgerservicenummer | 999995081 |
 
-  Scenario: Zoek met aanduidingBijHuisnummer
-    Als personen wordt gezocht met de volgende parameters
-    | naam                    | waarde                      |
-    | type                    | ZoekMetPostcodeEnHuisnummer |
-    | postcode                | 2628HJ                      |
-    | huisnummer              | 2                           |
-    | aanduidingBijHuisnummer | to                          |
-    | fields                  | burgerservicenummer         |
-    Dan heeft de response 1 persoon
-    En heeft de response een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999995080 |
-
   @fout-case
   Scenario: Zoek zonder postcode en huisnummer 
     Als personen wordt gezocht met de volgende parameters
