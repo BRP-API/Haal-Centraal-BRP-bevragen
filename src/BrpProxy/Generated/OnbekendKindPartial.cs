@@ -1,10 +1,9 @@
-﻿namespace HaalCentraal.BrpProxy.Generated
+﻿namespace HaalCentraal.BrpProxy.Generated;
+
+public partial class KindOnbekend
 {
-    public partial class OnbekendKind
+    public KindOnbekend()
     {
-        public OnbekendKind()
-        {
-            IndicatieOnbekend = true;
-        }
+        this.IndicatieOnbekend = true;
     }
 }

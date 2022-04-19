@@ -23,7 +23,7 @@ public static class GbaDatumMapper
             }
             if (jaar == 0 && maand == 0 && dag == 0)
             {
-                return new OnbekendDatum();
+                return new DatumOnbekend();
             }
             if (jaar != 0 && maand != 0 && dag == 0)
             {
@@ -34,6 +34,6 @@ public static class GbaDatumMapper
                 return new JaarDatum { Jaar = jaar };
             }
         }
-        return new OnbekendDatum();
+        return new DatumOnbekend();
     }
 }

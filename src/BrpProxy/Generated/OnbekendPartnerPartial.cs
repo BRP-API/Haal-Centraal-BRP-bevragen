@@ -1,10 +1,9 @@
-﻿namespace HaalCentraal.BrpProxy.Generated
+﻿namespace HaalCentraal.BrpProxy.Generated;
+
+public partial class PartnerOnbekend
 {
-    public partial class OnbekendPartner
+    public PartnerOnbekend()
     {
-        public OnbekendPartner()
-        {
-            IndicatieOnbekend = true;
-        }
+        IndicatieOnbekend = true;
     }
 }

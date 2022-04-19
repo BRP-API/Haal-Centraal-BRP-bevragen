@@ -10,7 +10,7 @@ namespace BrpProxy.Profiles
         {
             CreateMap<GbaKind, AbstractKind>()
                 .ConvertUsing<KindConverter>();
-            CreateMap<GbaKind, OnbekendKind>();
+            CreateMap<GbaKind, KindOnbekend>();
             CreateMap<GbaKind, Kind>();
         }
     }

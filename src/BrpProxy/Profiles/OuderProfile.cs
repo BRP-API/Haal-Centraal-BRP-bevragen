@@ -11,7 +11,7 @@ public class OuderProfile : Profile
     {
         CreateMap<GbaOuder, AbstractOuder>()
             .ConvertUsing<OuderConverter>();
-        CreateMap<GbaOuder, OnbekendOuder>();
+        CreateMap<GbaOuder, OuderOnbekend>();
         CreateMap<GbaOuder, Ouder>()
             .ForMember(dest => dest.DatumIngangFamilierechtelijkeBetrekking, opt => opt.MapFrom(src => src.DatumIngangFamilierechtelijkeBetrekking.Map()));
     }
