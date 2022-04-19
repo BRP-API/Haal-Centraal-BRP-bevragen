@@ -21,7 +21,7 @@ Rule: Er moet minimaal één burgerservicenummer worden opgegeven
     | burgerservicenummer | 999999321                       |
     | fields              | burgerservicenummer             |
     Dan heeft de response 1 persoon
-    En heeft de persoon met burgerservicenummer '999999321' de volgende gegevens
+    En heeft de response een persoon met alleen de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999999321 |
 
@@ -32,13 +32,13 @@ Rule: Er moet minimaal één burgerservicenummer worden opgegeven
     | burgerservicenummer | 999999321,999999322,999999323   |
     | fields              | burgerservicenummer             |
     Dan heeft de response 3 personen
-    En heeft de persoon met burgerservicenummer '999999321' de volgende gegevens
+    En heeft de response een persoon met alleen de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999999321 |
-    En heeft de persoon met burgerservicenummer '999999322' de volgende gegevens
+    En heeft de response een persoon met alleen de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999999322 |
-    En heeft de persoon met burgerservicenummer '999999323' de volgende gegevens
+    En heeft de response een persoon met alleen de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999999323 |
 

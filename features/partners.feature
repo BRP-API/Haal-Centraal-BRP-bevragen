@@ -168,12 +168,12 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | naam  | waarde   |
       | datum | 20220301 |
 
-  
+
   @gba
   Rule: Een partner wordt niet opgenomen wanneer het huwelijk of het partnerschap onjuist is
     - Een huwelijk of partnerschap is onjuist wanneer het categorie 5 voorkomen geen (waarden in) groepen 01, 02, 03, 04, 06, 07 en 15 heeft.
     - Wanneer een van de gegevens in groepen 01, 02, 03, 04, 06, 07 en 15 een standaardwaarde heeft, geldt dat hier als het bestaan van een waarde en is de partner niet onjuist
-    
+
     # N.B. Het meest recente categorie 55 voorkomen heeft dan een waarde voor Onjuist (84.10).
 
     @gba
@@ -356,10 +356,10 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       En heeft de partner met burgerservicenummer '555550004' de volgende 'naam' gegevens
       | naam      | waarde |
       | voornamen | Karel  |
-  
+
 
   @proxy
-  Rule: Wanneer geen van de gegevens van de partner een waarde heeft, wordt de partner geleverd met type "OnbekendPartner" en indicatieOnbekend met waarde true
+  Rule: Wanneer geen van de gegevens van de partner een waarde heeft, wordt de partner geleverd met type "PartnerOnbekend" en indicatieOnbekend met waarde true
     - Dit is het geval wanneer elk gegeven van de partner leeg is of een standaardwaarde heeft
     - Het gaat om de volgende standaardwaarden:
       | property                           | onbekend waarde |
@@ -372,7 +372,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | aangaanHuwelijkPartnerschap.plaats | 0000            |
       | aangaanHuwelijkPartnerschap.land   | 0000            |
     - Wanneer van de partner en het huwelijk/partnerschap wel gegevens geregistreerd zijn, maar geen van de met fields gevraagde gegevens heeft een waarde, dan is het type "Partner" en wordt indicatieOnbekend NIET opgenomen
-    - Een waarde voor inOnderzoek heeft geen invloed op het bepalen van het type: wanneer alle gegevens van de partner leeg of een standaardwaarde zijn, behalve inOnderzoek, is het type "OnbekendPartner"
+    - Een waarde voor inOnderzoek heeft geen invloed op het bepalen van het type: wanneer alle gegevens van de partner leeg of een standaardwaarde zijn, behalve inOnderzoek, is het type "PartnerOnbekend"
 
     @proxy
     Abstract Scenario: Partner type bij <omschrijving>
@@ -414,18 +414,18 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
 
       Voorbeelden:
       | omschrijving                            | geslacht | geslachtsnaam | geboortedatum | geboorteplaats | geboorteland | soort verbintenis | aangaan datum | aangaan plaats | aangaan land | onderzoek | datum onderzoek | type            | onbekend |
-      | alles leeg en onbekende geslachtsnaam   |          | .             |               |                |              |                   |               |                |              |           |                 | OnbekendPartner | true     |
-      | alleen standaardwaarden                 |          | .             | 00000000      | 0000           | 0000         | .                 | 00000000      | 0000           | 0000         |           |                 | OnbekendPartner | true     |
-      | alleen standaardwaarde geboortedatum    |          |               | 00000000      |                |              |                   |               |                |              |           |                 | OnbekendPartner | true     |
-      | alleen standaardwaarde verbintenis      |          |               |               |                |              | .                 |               |                |              |           |                 | OnbekendPartner | true     |
-      | alles leeg en partner in onderzoek      |          | .             |               |                |              |                   |               |                |              | 050000    | 20220311        | OnbekendPartner | true     |
-      | alles leeg en naam partner in onderzoek |          | .             |               |                |              |                   |               |                |              | 050200    | 20220311        | OnbekendPartner | true     |
+      | alles leeg en onbekende geslachtsnaam   |          | .             |               |                |              |                   |               |                |              |           |                 | PartnerOnbekend | true     |
+      | alleen standaardwaarden                 |          | .             | 00000000      | 0000           | 0000         | .                 | 00000000      | 0000           | 0000         |           |                 | PartnerOnbekend | true     |
+      | alleen standaardwaarde geboortedatum    |          |               | 00000000      |                |              |                   |               |                |              |           |                 | PartnerOnbekend | true     |
+      | alleen standaardwaarde verbintenis      |          |               |               |                |              | .                 |               |                |              |           |                 | PartnerOnbekend | true     |
+      | alles leeg en partner in onderzoek      |          | .             |               |                |              |                   |               |                |              | 050000    | 20220311        | PartnerOnbekend | true     |
+      | alles leeg en naam partner in onderzoek |          | .             |               |                |              |                   |               |                |              | 050200    | 20220311        | PartnerOnbekend | true     |
       | geslacht onbekend                       | O        | .             |               |                |              |                   |               |                |              |           |                 | Partner         |          |
       | alleen soort verbintenis                |          |               |               |                |              | H                 |               |                |              |           |                 | Partner         |          |
       | alleen jaar datum aangaan               |          |               |               |                |              |                   | 19730000      |                |              |           |                 | Partner         |          |
       | alleen jaar geboortedatum               |          |               | 19640000      |                |              |                   |               |                |              |           |                 | Partner         |          |
 
-      # ook OnbekendPartner bij waarde van gealachtsaanduiding, aangaanHuwelijkPartnerschap of soortVerbintenis? Zie https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/940#issuecomment-1069293224
+      # ook PartnerOnbekend bij waarde van gealachtsaanduiding, aangaanHuwelijkPartnerschap of soortVerbintenis? Zie https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/940#issuecomment-1069293224
 
     @proxy
     Scenario: Met fields zijn alleen velden zonder waarde gevraagd

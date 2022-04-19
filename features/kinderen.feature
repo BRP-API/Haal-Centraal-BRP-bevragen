@@ -64,7 +64,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
   Rule: Een kind wordt alleen teruggegeven als minimaal één gegeven in de identificatienummers (groep 01), naam (groep 02) of geboorte (groep 03) van het kind een waarde heeft.
     - Wanneer in een categorie kind alleen gegevens zijn opgenomen in groep 81 of 82, 85 en 86, wordt dit kind niet opgenomen in het antwoord
     - Wanneer een gegeven een standaardwaarde heeft, zoals "." (punt) bij geslachtsnaam of "00000000" bij geboortedatum, geldt dat hier als het bestaan van een waarde en wordt het kind wel geleverd
-    - Wanneer door de gebruikte fields parameter in het request het kind in de response geen enkel gegeven heeft met een waarde, dan wordt het kind niet geleverd    
+    - Wanneer door de gebruikte fields parameter in het request het kind in de response geen enkel gegeven heeft met een waarde, dan wordt het kind niet geleverd
 
     @gba
     Abstract Scenario: kind volledig onbekend
@@ -109,7 +109,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999996150                       |
       | fields              | kinderen.burgerservicenummer    |
-      Dan heeft de persoon met burgerservicenummer '555550001' GEEN kinderen  
+      Dan heeft de persoon met burgerservicenummer '555550001' GEEN kinderen
 
   @gba
   Rule: de geleverde kindgegevens zijn de gegevens zoals die staan op de persoonslijst van de gevraagde persoon
@@ -136,7 +136,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | voornamen | Karel  |
 
   @proxy
-  Rule: Wanneer de geslachtsnaam van het kind onbekend is, wordt het geleverd met type "OnbekendKind" en indicatieOnbekend met waarde true
+  Rule: Wanneer de geslachtsnaam van het kind onbekend is, wordt het geleverd met type "KindOnbekend" en indicatieOnbekend met waarde true
     - Dit is het geval wanneer geslachtsnaam dan de standaardwaarde "." heeft
     - Wanneer geen van de met fields gevraagde kindgegevens een waarde heeft, maar andere gegevens van het kind wel, dan is het type "Kind" en wordt indicatieOnbekend NIET opgenomen
 
@@ -166,7 +166,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | fields              | burgerservicenummer,kinderen    |
       Dan heeft de persoon met burgerservicenummer '555550005' een 'kind' met alleen de volgende gegevens
       | naam              | waarde       |
-      | type              | OnbekendKind |
+      | type              | KindOnbekend |
       | indicatieOnbekend | true         |
 
     @proxy

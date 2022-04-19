@@ -91,7 +91,7 @@ DatumOnvolledig:
         - Datum
         - JaarMaandDatum
         - JaarDatum
-        - OnbekendDatum
+        - DatumOnbekend
   required:
     - type
 ```
@@ -110,11 +110,11 @@ else if(type === 'JaarMaandDatum') {
 else if(type === 'JaarDatum') {
     console.log("maand en dag onbekend");
 }
-else if(type === 'OnbekendDatum') {
-    console.log("onbekend datum");
+else if(type === 'DatumOnbekend') {
+    console.log("datum onbekend");
 }
 else {
-    console.log("niet ondersteund datum");
+    console.log("datum niet ondersteund");
 }
 ```
 
@@ -167,18 +167,18 @@ JaarDatum:
   required:
     - jaar
     - type
-OnbekendDatum:
+DatumOnbekend:
   type: object
   properties:
     type:
       type: string
       enum:
-        - OnbekendDatum
+        - DatumOnbekend
   required:
     - type
 ```
 
-Met deze vier datum definities is nu expliciet gedefinieerd welk datum type welke velden heeft en wat de bijbehorende waarde is in het 'type' veld. 
+Met deze vier datum definities is nu expliciet gedefinieerd welk datum type welke velden heeft en wat de bijbehorende waarde is in het 'type' veld.
 
 Om de datum types te kunnen gebruiken als de mogelijke types van een datum veld moet [polymorfisme](https://nl.wikipedia.org/wiki/Polymorfisme) worden toegepast. In een OpenAPI Specificatie wordt [polymorfisme](https://spec.openapis.org/oas/v3.0.3#composition-and-inheritance-polymorphism) toegepast met behulp van de **allOf** en **discriminator** elementen:
 - er moet een basis type worden gedefinieerd voor de vier datum types. Deze basis type (AbstractDatum) kan dan worden gebruikt als type voor een datum veld. De vier datum types gebruiken de **allOf** element om de basis type te overerven.
@@ -197,7 +197,7 @@ AbstractDatum:
     propertyName: type
   mapping:
     Datum: '#/components/schemas/VolledigeDatum'
-    OnbekendDatum: '#/components/schemas/OnbekendDatum'
+    DatumOnbekend: '#/components/schemas/DatumOnbekend'
     JaarDatum: '#/components/schemas/JaarDatum'
     JaarMaandDatum: '#/components/schemas/JaarMaandDatum'
 VolledigeDatum:
@@ -235,7 +235,7 @@ JaarDatum:
           maximum: 9999
   required:
     - jaar
-OnbekendDatum:
+DatumOnbekend:
   allOf:
     - $ref: '#/components/schemas/AbstractDatum'
     - type: object
@@ -246,7 +246,7 @@ OnbekendDatum:
     - indicatieOnbekend
 ```
 
-In de nieuwe datum definities zijn de type enum waarden verwijderd. Deze zijn niet meer nodig omdat standaard de naam van de afgeleide schemas (in dit geval: VolledigeDatum,JaarMaandDatum,JaarDatum,OnbekendDatum) als enum waarde wordt gebruikt. Van deze standaard 'mapping' kan worden afgeweken door gebruik te maken van het **mapping** element van de discriminator. In bovenstaande definities is gebruik gemaakt van het **mapping** element omdat 'Datum' als type waarde is gekozen voor een VolledigeDatum type.
+In de nieuwe datum definities zijn de type enum waarden verwijderd. Deze zijn niet meer nodig omdat standaard de naam van de afgeleide schemas (in dit geval: VolledigeDatum,JaarMaandDatum,JaarDatum,DatumOnbekend) als enum waarde wordt gebruikt. Van deze standaard 'mapping' kan worden afgeweken door gebruik te maken van het **mapping** element van de discriminator. In bovenstaande definities is gebruik gemaakt van het **mapping** element omdat 'Datum' als type waarde is gekozen voor een VolledigeDatum type.
 
 Het toepassen van polymorfisme in de OpenAPI specificatie van de BRP API leidt tot een duidelijker API contract definitie. Er kan op een eenduidige manier worden afgeleid welke data types er aan een veld kan worden toegekend, wat de velden zijn voor elk data type, welke van de velden verplicht zijn en welke optioneel. Hierdoor kan tooling worden gebruikt om de request en response van de API te valideren, zodat er geen onjuiste data bij de consumers en bij de provider terecht kan komen.
 
@@ -269,7 +269,7 @@ AbstractDatum:
     propertyName: type
   mapping:
     Datum: '#/components/schemas/VolledigeDatum'
-    OnbekendDatum: '#/components/schemas/OnbekendDatum'
+    DatumOnbekend: '#/components/schemas/DatumOnbekend'
     JaarDatum: '#/components/schemas/JaarDatum'
     JaarMaandDatum: '#/components/schemas/JaarMaandDatum'
     OnvolledigDatum: '#/components/schemas/DatumOnvolledig'

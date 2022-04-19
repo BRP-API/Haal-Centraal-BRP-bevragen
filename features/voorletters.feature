@@ -1,6 +1,6 @@
 #language: nl
 
-@ready
+@ready @post-assert
 Functionaliteit: Bepalen van voorletters uit de voornamen van een persoon
 
 Als klant van gemeenten
@@ -27,7 +27,7 @@ Rule: Voorletters wordt samengesteld uit de eerste letter van de voornamen gesch
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999995078                       |
     | fields              | naam.voorletters                |
-    Dan heeft de persoon met burgerservicenummer '999995078' de volgende 'naam' gegevens
+    Dan heeft de response een persoon met alleen de volgende 'naam' gegevens
     | naam        | waarde        |
     | voorletters | <voorletters> |
 
@@ -47,11 +47,13 @@ Rule: Voorletters wordt samengesteld uit de eerste letter van de voornamen gesch
     | naam                | waarde    |
     | burgerservicenummer | 999995078 |
     En de persoon heeft de volgende 'naam' gegevens
-    | naam              | waarde      |
-    | voornamen (02.10) |  |
+    | naam              | waarde |
+    | voornamen (02.10) |        |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 999995078                       |
-    | fields              | naam.voorletters                |
-    Dan heeft de persoon met burgerservicenummer '999995078' geen 'naam' gegevens
+    | naam                | waarde                               |
+    | type                | RaadpleegMetBurgerservicenummer      |
+    | burgerservicenummer | 999995078                            |
+    | fields              | burgerservicenummer,naam.voorletters |
+    Dan heeft de response een persoon met alleen de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999995078 |

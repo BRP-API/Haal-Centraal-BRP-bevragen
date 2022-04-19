@@ -7,7 +7,7 @@ info:
     - onbekend datum
     - 'volledig' datum conform ISO-8601
     - datum waarvan de dag onbekend is
-    - datum waarvan de maand en dag onbekend is 
+    - datum waarvan de maand en dag onbekend is
   version: 2.0.0
   contact: {}
 paths: {}
@@ -24,7 +24,7 @@ components:
         propertyName: type
         mapping:
           Datum: '#/components/schemas/VolledigeDatum'
-          OnbekendDatum: '#/components/schemas/OnbekendDatum'
+          DatumOnbekend: '#/components/schemas/DatumOnbekend'
           JaarDatum: '#/components/schemas/JaarDatum'
           JaarMaandDatum: '#/components/schemas/JaarMaandDatum'
     GbaDatum:
@@ -46,7 +46,7 @@ components:
         value:
           type: Datum
           datum: "2018-07-01"
-    OnbekendDatum:
+    DatumOnbekend:
       description: representatie voor een volledig onbekend datum
       allOf:
         - $ref: '#/components/schemas/AbstractDatum'
@@ -59,7 +59,7 @@ components:
         - onbekend
       example:
         value:
-          type: OnbekendDatum
+          type: DatumOnbekend
           onbekend: true
     JaarDatum:
       description: representatie voor een datum waarvan maand en dag onbekend zijn

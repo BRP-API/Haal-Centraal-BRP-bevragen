@@ -19,7 +19,7 @@ components:
         propertyName: type
         mapping:
           Partner: '#/components/schemas/Partner'
-          OnbekendPartner: '#/components/schemas/OnbekendPartner'
+          PartnerOnbekend: '#/components/schemas/PartnerOnbekend'
     GbaPartner:
       type: object
       properties:
@@ -58,7 +58,7 @@ components:
               $ref: '#/components/schemas/PartnerInOnderzoek'
             aangaanHuwelijkPartnerschap:
               $ref: '#/components/schemas/AangaanHuwelijkPartnerschap'
-    OnbekendPartner:
+    PartnerOnbekend:
       allOf:
         - $ref: '#/components/schemas/AbstractPartner'
         - type: object

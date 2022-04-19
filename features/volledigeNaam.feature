@@ -1,6 +1,6 @@
 # language: nl
 
-@ready
+@ready @post-assert
 Functionaliteit: volledige naam
 
 Rule: de volledige naam wordt samengesteld door achter elkaar plaatsen van voornamen, voorvoegsels en geslachtsnaam
@@ -20,7 +20,7 @@ Rule: de volledige naam wordt samengesteld door achter elkaar plaatsen van voorn
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | <burgerservicenummer>           |
     | fields              | naam.volledigeNaam              |
-    Dan heeft de persoon met burgerservicenummer '<burgerservicenummer>' de volgende 'naam' gegevens
+    Dan heeft de response een persoon met alleen de volgende 'naam' gegevens
     | naam          | waarde          |
     | volledigeNaam | <volledigeNaam> |
 
@@ -47,7 +47,7 @@ Rule: een predicaat wordt opgenomen voor de voornamen met de omschrijving horend
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | <burgerservicenummer>           |
     | fields              | naam.volledigeNaam              |
-    Dan heeft de persoon met burgerservicenummer '<burgerservicenummer>' de volgende 'naam' gegevens
+    Dan heeft de response een persoon met alleen de volgende 'naam' gegevens
     | naam          | waarde          |
     | volledigeNaam | <volledigeNaam> |
 
@@ -72,7 +72,7 @@ Rule: een adellijke titel wordt opgenomen tussen de voornamen en het voorvoegsel
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | <burgerservicenummer>           |
     | fields              | naam.volledigeNaam              |
-    Dan heeft de persoon met burgerservicenummer '<burgerservicenummer>' de volgende 'naam' gegevens
+    Dan heeft de response een persoon met alleen de volgende 'naam' gegevens
     | naam          | waarde          |
     | volledigeNaam | <volledigeNaam> |
 

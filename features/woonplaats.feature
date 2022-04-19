@@ -1,5 +1,6 @@
 # language: nl
 
+@post-assert
 Functionaliteit: Woonplaats wordt altijd gevuld voor een Nederlandse verblijfplaats
   In LO GBA wordt voorgeschreven dat voor een verblijfplaats de woonplaats (samen met naam openbare ruimte en BAG identificaties) alleen wordt gevuld wanneer het een BAG adres is. Dus al deze gegevens zijn gevuld of geen van deze gegevens hebben een waarde.
 
@@ -17,17 +18,18 @@ Functionaliteit: Woonplaats wordt altijd gevuld voor een Nederlandse verblijfpla
     | burgerservicenummer | 999992934 |
     En de persoon heeft de volgende 'verblijfplaats' gegevens
     | naam                   | waarde     |
+    | straatnaam (11.10)     | een straat |
     | woonplaatsnaam (11.70) | Scharwoude |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
     | fields              | verblijfplaats.woonplaats       |
-    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'verblijfplaats' gegevens
+    Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
     | naam       | waarde     |
+    | type       | Adres      |
     | woonplaats | Scharwoude |
 
-  @skip-verify
   Scenario: persoon heeft niet-BAG adres in Nederland
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
@@ -43,11 +45,11 @@ Functionaliteit: Woonplaats wordt altijd gevuld voor een Nederlandse verblijfpla
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999990482                       |
     | fields              | verblijfplaats.woonplaats       |
-    Dan heeft de persoon met burgerservicenummer '999990482' de volgende 'verblijfplaats' gegevens
+    Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
     | naam       | waarde        |
+    | type       | Adres         |
     | woonplaats | Borger-Odoorn |
 
-  @skip-verify
   Scenario: persoon heeft een locatiebeschrijving voor de verblijfplaats
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
@@ -64,8 +66,9 @@ Functionaliteit: Woonplaats wordt altijd gevuld voor een Nederlandse verblijfpla
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000009921                       |
     | fields              | verblijfplaats.woonplaats       |
-    Dan heeft de persoon met burgerservicenummer '000009921' de volgende 'verblijfplaats' gegevens
+    Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
     | naam       | waarde    |
+    | type       | Locatie   |
     | woonplaats | Rotterdam |
 
   Scenario: persoon verblijft in het buitenland
@@ -83,6 +86,6 @@ Functionaliteit: Woonplaats wordt altijd gevuld voor een Nederlandse verblijfpla
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999993483                       |
     | fields              | verblijfplaats.woonplaats       |
-    Dan heeft de persoon met burgerservicenummer '999993483' de volgende 'verblijfplaats' gegevens NIET
-    | naam       |
-    | woonplaats |
+    Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
+    | naam | waarde                   |
+    | type | VerblijfplaatsBuitenland |
