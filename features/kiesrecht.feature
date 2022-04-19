@@ -108,46 +108,235 @@ Rule: Uitsluiting van Europees kiesrecht wordt alleen opgenomen wanneer de eindd
 		| einddatum uitsluiting onbekend     | false              | 00000000              | false             | DatumOnbekend  |            |                |                 |
 		| persoon ontvangt oproep            | true               |                       | true              |                |            |                |                 |
 
-@proxy
-Rule: Uitsluiting van kiesrecht wordt alleen opgenomen wanneer de einddatum uitsluiting in de toekomst ligt
-	- Wanneer alleen het jaar van de einddatum uitsluiting bekend is, dan wordt de uitsluiting opgenomen tot en met dat jaar.
-	- Wanneer het jaar en de maand van de einddatum uitsluiting bekend is, en de dag niet, dan wordt de uitsluiting opgenomen tot en met die maand.
-	- Een volledig onbekende einddatum uitsluiting wordt hetzelfde geïnterpreteerd en weergegeven als het niet aanwezig zijn van die datum.
-	- Wanneer einddatum uitsluiting geen waarde heeft en uitsluiting kiesrecht wel, wordt uitsluiting kiesrecht wel opgenomen.
-	- Wanneer einddatum uitsluiting in het verleden ligt of vandaag is, wordt het niet opgenomen.
+    Scenario: persoon heeft geen uitsluiting van kiesrecht
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999990001 |
+      En de persoon heeft GEEN 'kiesrecht' gegevens
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999990001                       |
+      | fields              | burgerservicenummer,kiesrecht   |
+      Dan heeft de response een persoon met alleen de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999990001 |
 
-	@proxy
-	Abstract Scenario: kiesrecht <omschrijving>
-		Gegeven het systeem heeft een persoon met de volgende gegevens
-		| naam                        | waarde     |
-		| burgerservicenummer         | 999990001  |
-		En de persoon heeft de volgende kiesrecht gegevens
-		| naam                                  | waarde                  |
-		| uitgeslotenVanKiesrecht (38.10)       | <uitsluiting kiesrecht> |
-		| einddatumUitsluitingKiesrecht (38.20) | <einddatum uitsluiting> |
-		Als de persoon op 15 maart 2022 wordt geraadpleegd met de volgende parameters
-		| naam                | waarde                          |
-		| type                | RaadpleegMetBurgerservicenummer |
-		| burgerservicenummer | 999990001                       |
-		| fields              | kiesrecht                       |
-		Dan bevat de persoon met burgerservicenummer '999990001' de volgende 'kiesrecht' gegevens
-		| naam                                | waarde                                        |
-		| uitgeslotenVanKiesrecht             | <uitgeslotenVanKiesrecht>                     |
-		| einddatumUitsluitingKiesrecht.type  | <type>                                        |
-		| einddatumUitsluitingKiesrecht.datum | <einddatum>                                   |
-		| einddatumUitsluitingKiesrecht.jaar  | <einddatum jaar>                              |
-		| einddatumUitsluitingKiesrecht.maand | <einddatum maand>                             |
+  Rule: Uitsluiting van kiesrecht wordt opgenomen wanneer er geen einddatum uitsluiting van kiesrecht is
 
-		Voorbeelden:
-		| omschrijving                       | uitsluiting kiesrecht | einddatum uitsluiting | uitgeslotenVanKiesrecht | type           | einddatum  | einddatum jaar | einddatum maand |
-		| niet opgegeven                     |                       |                       |                         |                |            |                |                 |
-		| uitgesloten zonder einddatum       | true                  |                       | true                    |                |            |                |                 |
-		| einddatum uitsluiting in toekomst  | true                  | 20300101              | true                    | Datum          | 2030-01-01 |                |                 |
-		| einddatum uitsluiting in verleden  | true                  | 20220301              |                         |                |            |                |                 |
-		| einddatum uitsluiting vandaag      | true                  | 20220315              |                         |                |            |                |                 |
-		| einddatum uitsluiting morgen       | true                  | 20300316              | true                    | Datum          | 2030-03-16 |                |                 |
-		| einddatum uitsluiting vorige maand | true                  | 20220200              |                         |                |            |                |                 |
-		| einddatum uitsluiting deze maand   | true                  | 20220300              | true                    | JaarMaandDatum |            | 2022           | 3               |
-		| einddatum uitsluiting vorig jaar   | true                  | 20210000              |                         |                |            |                |                 |
-		| einddatum uitsluiting dit jaar     | true                  | 20220000              | true                    | JaarDatum      |            | 2022           |                 |
-		| einddatum uitsluiting onbekend     | true                  | 00000000              | true                    | DatumOnbekend  |            |                |                 |
+    Scenario: persoon is uitgesloten van kiesrecht en er is geen einddatum uitsluiting van kiesrecht
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999990001 |
+      En de persoon heeft de volgende 'kiesrecht' gegevens
+      | naam                    | waarde |
+      | uitgeslotenVanKiesrecht | true   |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999990001                       |
+      | fields              | burgerservicenummer,kiesrecht   |
+      Dan heeft de response een persoon met alleen de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999990001 |
+      En heeft de persoon alleen de volgende 'kiesrecht' gegevens
+      | naam                    | waarde |
+      | uitgeslotenVanKiesrecht | true   |
+
+  Rule: Uitsluiting van kiesrecht wordt opgenomen wanneer de einddatum uitsluiting van kiesrecht een onbekende datum is
+
+    Scenario: einddatum uitsluiting van kiesrecht is een onbekende datum
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999990001 |
+      En de persoon heeft de volgende 'kiesrecht' gegevens
+      | naam                                    | waarde   |
+      | uitgeslotenVanKiesrecht                 | true     |
+      | einddatum uitsluiting kiesrecht (38.20) | 00000000 |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999990001                       |
+      | fields              | burgerservicenummer,kiesrecht   |
+      Dan heeft de response een persoon met alleen de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999990001 |
+      En heeft de persoon alleen de volgende 'kiesrecht' gegevens
+      | naam                                   | waarde        |
+      | uitgeslotenVanKiesrecht                | true          |
+      | einddatumUitsluitingKiesrecht.type     | DatumOnbekend |
+      | einddatumUitsluitingKiesrecht.onbekend | true          |
+
+  Rule: Uitsluiting van kiesrecht wordt opgenomen wanneer einddatum uitsluiting van kiesrecht in de toekomst ligt
+
+    Scenario: einddatum uitgesluiting van kiesrecht ligt in de toekomst
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999990001 |
+      En de persoon heeft de volgende 'kiesrecht' gegevens
+      | naam                                    | waarde |
+      | uitgeslotenVanKiesrecht                 | true   |
+      | einddatum uitsluiting kiesrecht (38.20) | morgen |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999990001                       |
+      | fields              | burgerservicenummer,kiesrecht   |
+      Dan heeft de response een persoon met alleen de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999990001 |
+      En heeft de persoon alleen de volgende 'kiesrecht' gegevens
+      | naam                                | waarde |
+      | uitgeslotenVanKiesrecht             | true   |
+      | einddatumUitsluitingKiesrecht.type  | Datum  |
+      | einddatumUitsluitingKiesrecht.datum | morgen |
+
+    Abstract Scenario: einddatum uitsluiting van kiesrecht <subtitel>
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999990001 |
+      En de persoon heeft de volgende 'kiesrecht' gegevens
+      | naam                                    | waarde      |
+      | uitgeslotenVanKiesrecht                 | true        |
+      | einddatum uitsluiting kiesrecht (38.20) | <gba datum> |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999990001                       |
+      | fields              | burgerservicenummer,kiesrecht   |
+      Dan heeft de response een persoon met alleen de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999990001 |
+
+      Voorbeelden:
+      | sub titel             | gba datum |
+      | is gelijk aan vandaag | vandaag   |
+      | ligt in het verleden  | gisteren  |
+
+  Rule: wanneer alleen het jaar van de einddatum uitsluiting bekend is, dan wordt uitsluiting van kiesrecht opgenomen tot en met dat jaar
+
+    Scenario: einddatum uitsluiting van kiesrecht is dit jaar
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999990001 |
+      En de persoon heeft de volgende 'kiesrecht' gegevens
+      | naam                                    | waarde   |
+      | uitgeslotenVanKiesrecht                 | true     |
+      | einddatum uitsluiting kiesrecht (38.20) | dit jaar |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999990001                       |
+      | fields              | burgerservicenummer,kiesrecht   |
+      Dan heeft de response een persoon met alleen de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999990001 |
+      En heeft de persoon alleen de volgende 'kiesrecht' gegevens
+      | naam                               | waarde    |
+      | uitgeslotenVanKiesrecht            | true      |
+      | einddatumUitsluitingKiesrecht.type | JaarDatum |
+      | einddatumUitsluitingKiesrecht.jaar | dit jaar  |
+
+    Scenario: einddatum uitsluiting van kiesrecht is volgend jaar
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999990001 |
+      En de persoon heeft de volgende 'kiesrecht' gegevens
+      | naam                                    | waarde       |
+      | uitgeslotenVanKiesrecht                 | true         |
+      | einddatum uitsluiting kiesrecht (38.20) | volgend jaar |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999990001                       |
+      | fields              | burgerservicenummer,kiesrecht   |
+      Dan heeft de response een persoon met alleen de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999990001 |
+      En heeft de persoon alleen de volgende 'kiesrecht' gegevens
+      | naam                               | waarde       |
+      | uitgeslotenVanKiesrecht            | true         |
+      | einddatumUitsluitingKiesrecht.type | JaarDatum    |
+      | einddatumUitsluitingKiesrecht.jaar | volgend jaar |
+
+    Scenario: einddatum uitsluiting van kiesrecht is vorig jaar
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999990001 |
+      En de persoon heeft de volgende 'kiesrecht' gegevens
+      | naam                                    | waarde   |
+      | uitgeslotenVanKiesrecht                 | true     |
+      | einddatum uitsluiting kiesrecht (38.20) | 20210000 |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999990001                       |
+      | fields              | burgerservicenummer,kiesrecht   |
+      Dan heeft de response een persoon met alleen de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999990001 |
+
+  Rule: wanneer het jaar en de maand van de einddatum uitsluiting bekend is, en de dag niet, dan wordt uitsluiting van kiesrecht opgenomen tot en met die maand
+
+    Scenario: einddatum uitsluiting van kiesrecht is deze maand
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999990001 |
+      En de persoon heeft de volgende 'kiesrecht' gegevens
+      | naam                                    | waarde     |
+      | uitgeslotenVanKiesrecht                 | true       |
+      | einddatum uitsluiting kiesrecht (38.20) | deze maand |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999990001                       |
+      | fields              | burgerservicenummer,kiesrecht   |
+      Dan heeft de response een persoon met alleen de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999990001 |
+      En heeft de persoon alleen de volgende 'kiesrecht' gegevens
+      | naam                                | waarde         |
+      | uitgeslotenVanKiesrecht             | true           |
+      | einddatumUitsluitingKiesrecht.type  | JaarMaandDatum |
+      | einddatumUitsluitingKiesrecht.jaar  | dit jaar       |
+      | einddatumUitsluitingKiesrecht.maand | deze maand     |
+
+    Scenario: einddatum uitsluiting van kiesrecht is vorige maand
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999990001 |
+      En de persoon heeft de volgende 'kiesrecht' gegevens
+      | naam                                    | waarde       |
+      | uitgeslotenVanKiesrecht                 | true         |
+      | einddatum uitsluiting kiesrecht (38.20) | vorige maand |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999990001                       |
+      | fields              | burgerservicenummer,kiesrecht   |
+      Dan heeft de response een persoon met alleen de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999990001 |
+
+    Scenario: einddatum uitsluiting van kiesrecht is volgende maand
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999990001 |
+      En de persoon heeft de volgende 'kiesrecht' gegevens
+      | naam                                    | waarde         |
+      | uitgeslotenVanKiesrecht                 | true           |
+      | einddatum uitsluiting kiesrecht (38.20) | volgende maand |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999990001                       |
+      | fields              | burgerservicenummer,kiesrecht   |
+      Dan heeft de response een persoon met alleen de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999990001 |
+      En heeft de persoon alleen de volgende 'kiesrecht' gegevens
+      | naam                                | waarde         |
+      | uitgeslotenVanKiesrecht             | true           |
+      | einddatumUitsluitingKiesrecht.type  | JaarMaandDatum |
+      | einddatumUitsluitingKiesrecht.jaar  | dit jaar       |
+      | einddatumUitsluitingKiesrecht.maand | volgende maand |
