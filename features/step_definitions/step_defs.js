@@ -15,8 +15,8 @@ const propertyNameMap = new Map([
     ['adresregel1 (13.30)', 'adresregel1'],
     ['adresregel2 (13.40)', 'adresregel2'],
     ['adresregel3 (13.50)', 'adresregel3'],
+    ['adresseerbaarObjectIdentificatie (11.80)', 'adresseerbaarObjectIdentificatie'],
     ['anummer (01.10)', 'aNummer'],
-    ['datum (03.10)', 'datum'],
     ['datum aangaan (06.10)', 'datum'],
     ['datumAanvangAdreshouding (10.30)', 'datumAanvangAdreshouding'],
     ['datumAanvangAdresBuitenland (13.20)', 'datumAanvangAdresBuitenland'],
@@ -25,7 +25,6 @@ const propertyNameMap = new Map([
     ['datum ingang verblijfstitel (39.30)', 'datumIngang'],
     ['datumInschrijvingInGemeente (09.20)', 'datumInschrijvingInGemeente'],
     ['datum opschorting bijhouding (67.10)', 'datum'],
-    ['datum overlijden (08.10)', 'datum'],
     ['datumIngangFamilierechtelijkeBetrekking (62.10)', 'datumIngangFamilierechtelijkeBetrekking'],
     ['functieAdres (10.10)', 'functieAdres.code'],
     ['geboorteland (03.30)', 'land.code'],
@@ -35,24 +34,51 @@ const propertyNameMap = new Map([
     ['geslachtsaanduiding (04.10)', 'geslachtsaanduiding.code'],
     ['geslachtsnaam (02.40)', 'geslachtsnaam'],
     ['huisletter (11.30)', 'huisletter'],
-    ['huisnummer (11.20)', 'huisnummer'],
     ['huisnummertoevoeging (11.40)', 'huisnummertoevoeging'],
     ['land (13.10)', 'land.code'],
-    ['locatiebeschrijving (12.10)', 'locatiebeschrijving'],
+    ['land adres buitenland (13.10)', 'land.code'],
+    ['naam openbare ruimte (11.15)', 'naamOpenbareRuimte'],
+    ['nummeraanduidingIdentificatie (11.90)', 'nummeraanduidingIdentificatie' ],
+    ['soort verbintenis (15.10)', 'soortVerbintenis.code'],
+    ['voornamen (02.10)', 'voornamen'],
+    ['voorvoegsel (02.30)', 'voorvoegsel'],
+    ['woonplaatsnaam (11.70)', 'woonplaats'],
+
+    ['geboortedatum (03.10)', 'datum'],
+
+    ['einddatum uitsluiting europees kiesrecht (31.30)', 'einddatumUitsluitingEuropeesKiesrecht'],
+    ['einddatum uitsluiting kiesrecht (38.30)', 'einddatumUitsluitingKiesrecht'],
+
+    ['nationaliteit (05.10)', 'nationaliteit.code'],
+    ['reden opname (63.10)', 'redenOpname.code'],
+    ['ingangsdatum geldigheid (85.10)', 'datumIngangGeldigheid'],
+
+    ['datum opschorting bijhouding (67.10)', 'datum' ],
+    ['reden opschorting bijhouding (67.20)', 'reden.code'],
+
+    ['datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10)', 'datum'],
+    ['land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)', 'land.code'],
+    ['plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20)', 'plaats.code'],
+
+    // Overlijden
+    ['datum overlijden (08.10)', 'datum'],
     ['plaats overlijden (08.20)', 'plaats.code'],
     ['land overlijden (08.30)', 'land.code'],
+
+    // Verblijfplaats 
+    ['datum inschrijving in de gemeente (09.20)', 'datumInschrijvingInGemeente'],
+    ['datum aanvang adreshouding (10.30)', 'datumAanvangAdreshouding'],
+    ['straatnaam (11.10)', 'straat'],
+    ['huisnummer (11.20)', 'huisnummer'],
     ['postcode (11.60)', 'postcode'],
+    ['locatiebeschrijving (12.10)', 'locatiebeschrijving'],
+    ['land adres buitenland (13.10)', 'land.code'],
+    ['datum aanvang adres buitenland (13.20)', 'datumAanvangAdresBuitenland'],
     ['regel 1 adres buitenland (13.30)', 'adresregel1'],
     ['regel 2 adres buitenland (13.40)', 'adresregel2'],
     ['regel 3 adres buitenland (13.50)', 'adresregel3'],
-    ['gemeente van inschrijving (09.10)', 'gemeenteVanInschrijving.code'],
-    ['land adres buitenland (13.10)', 'land.code'],
-    ['naam openbare ruimte (11.15)', 'naamOpenbareRuimte'],
-    ['soort verbintenis (15.10)', 'soortVerbintenis.code'],
-    ['straatnaam (11.10)', 'straat'],
-    ['voornamen (02.10)', 'voornamen'],
-    ['voorvoegsel (02.30)', 'voorvoegsel'],
-    ['woonplaatsnaam (11.70)', 'woonplaats']
+    ['land vanwaar ingeschreven (14.10)', 'landVanwaarIngeschreven.code'],
+    ['datum vestiging in nederland (14.20)', 'datumVestigingInNederland']
 ]);
 
 function mapRowToProperty(obj, row) {
@@ -215,33 +241,21 @@ Given('de persoon heeft de volgende gegevens', function (dataTable) {
     });
 });
 
-Given('de persoon heeft de volgende {string} gegevens', function (gegevensgroep, dataTable) {
+Given(/^de persoon heeft de volgende '(.*)' gegevens$/, function (gegevensgroep, dataTable) {
     setPersoonProperties(this.context.persoon, gegevensgroep, dataTable);
+});
+
+Given(/^de persoon heeft de volgende '(.*)'$/, function (gegevensgroep, dataTable) {
+    this.context.persoon[gegevensgroep] = [];
+    let groep = this.context.persoon[gegevensgroep];
+
+    dataTable.rows().forEach(function(row){
+        groep.push(row[0]);
+    });
 });
 
 Given('het systeem heeft personen met de volgende {string} gegevens', function (gegevensgroep, dataTable) {
     setPersonenProperties(this.context.zoekResponse.personen, gegevensgroep, dataTable);
-});
-
-Given('de persoon heeft nooit een actueel of ontbonden huwelijk of partnerschap gehad', function () {
-});
-
-Given('de persoon heeft geen partner', function () {
-});
-
-Given('de persoon heeft geen actuele partner', function () {
-});
-
-Given('de persoon heeft een actuele partner met adellijke titel', function () {
-});
-
-Given('de persoon heeft een ontbonden partner met adellijke titel', function () {
-});
-
-Given('de persoon heeft een actuele partner met predikaat', function () {
-});
-
-Given('de persoon heeft een ontbonden partner met predikaat', function () {
 });
 
 Given('de persoon heeft een partner met de volgende gegevens', function (dataTable) {
@@ -649,10 +663,30 @@ Then(/^heeft de response een persoon met ?(?:alleen)? de volgende '(.*)' gegeven
     }
 });
 
-Then('heeft de persoon de volgende {string} gegevens', function (gegevensgroep, dataTable) {
+Then(/^heeft de persoon ?(?:alleen)? de volgende '(.*)' gegevens$/, function (gegevensgroep, dataTable) {
     let expected = {};
     dataTable.hashes().forEach(function(row) {
         mapRowToProperty(expected, row);
+    });
+
+    if(this.context.postAssert === true) {
+        if(Object.keys(expected).length === 0) return;
+
+        const personen = this.context.expected;
+        should.exist(personen, 'Geen persoon gevonden. Gebruik de \'Dan heeft de response een persoon met de volgende gegevens\' stap om een persoon aan te maken');
+        personen.length.should.not.equal(0, 'Geen persoon gevonden. Gebruik de \'Dan heeft de response een persoon met de volgende gegevens\' stap om een persoon aan te maken');
+
+        let persoon = personen[personen.length-1];
+        should.exist(persoon, 'Geen persoon gevonden. Gebruik de \'Dan heeft de response een persoon met de volgende gegevens\' stap om een persoon aan te maken');
+
+        persoon[gegevensgroep] = expected;
+    }
+});
+
+Then(/^heeft de persoon ?(?:alleen)? de volgende '(.*)'$/, function (gegevensgroep, dataTable) {
+    let expected = [];
+    dataTable.rows().forEach(function(row) {
+        expected.push(row[0]);
     });
 
     if(this.context.postAssert === true) {
@@ -696,6 +730,8 @@ Then(/^heeft de persoon met burgerservicenummer '(.*)' ?(?:alleen)? de volgende 
     });
 
     if(this.context.postAssert === true) {
+        if(Object.keys(expected).length === 0) return;
+         
         if(this.context.expected === undefined) {
             this.context.expected = [ { burgerservicenummer: burgerservicenummer } ];
         }
@@ -742,6 +778,28 @@ Then(/^heeft de persoon met burgerservicenummer '(.*)' een '(.*)' met ?(?:alleen
         const expectedPersoon = expectedPersonen.find(function(p) {
             return p.burgerservicenummer === burgerservicenummer;
         });
+        if(expectedPersoon[groep] === undefined) {
+            expectedPersoon[groep] = [];
+        }
+        expectedPersoon[groep].push(expected);
+    }
+});
+
+Then(/^heeft de persoon een '(.*)' met ?(?:alleen)? de volgende gegevens$/, function (gegevensgroep, dataTable) {
+    let expected = {};
+    dataTable.hashes().forEach(function(row) {
+        mapRowToProperty(expected, row);
+    });
+
+    let groep = toCollectionName(gegevensgroep);
+
+    if(this.context.postAssert === true) {
+        if(this.context.expected === undefined) {
+            this.context.expected = [ {} ];
+        }
+
+        const expectedPersonen = this.context.expected;
+        const expectedPersoon = expectedPersonen[expectedPersonen.length-1];
         if(expectedPersoon[groep] === undefined) {
             expectedPersoon[groep] = [];
         }

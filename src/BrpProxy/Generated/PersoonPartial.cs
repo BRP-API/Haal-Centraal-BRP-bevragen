@@ -21,6 +21,12 @@ public partial class Persoon
         return Partners?.Count > 0;
     }
 
+    public bool ShouldSerializeGeboorte() => Geboorte != null && Geboorte.ShouldSerialize();
+
+    public bool ShouldSerializeOverlijden() => Overlijden != null && Overlijden.ShouldSerialize();
+
+    public bool ShouldSerializeVerblijfstitel() => Verblijfstitel != null && Verblijfstitel.ShouldSerialize();
+
     public bool ShouldSerializeNaam() =>
         Naam != null &&
         (Naam.AanduidingNaamgebruik != null ||

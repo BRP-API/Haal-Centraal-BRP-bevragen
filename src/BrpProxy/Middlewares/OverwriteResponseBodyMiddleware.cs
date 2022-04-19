@@ -28,44 +28,63 @@ namespace BrpProxy.Middlewares
         public async Task Invoke(HttpContext context)
         {
             var orgBodyStream = context.Response.Body;
-            var requestBody = await context.Request.ReadBodyAsync();
-
-            _logger.LogDebug("original requestBody: {@requestBody}", requestBody);
-            var personenQuery = JsonConvert.DeserializeObject<PersonenQuery>(requestBody);
-            _logger.LogDebug("original requestBody: {@personenQuery}", personenQuery);
-            var result = personenQuery.Validate(context, requestBody);
-            if (!result.IsValid)
+            try
             {
-                using var bodyStream = JsonConvert.SerializeObject(result.Foutbericht).ToMemoryStream();
+                var requestBody = await context.Request.ReadBodyAsync();
 
-                context.Response.StatusCode = StatusCodes.Status400BadRequest;
-                context.Response.ContentLength = bodyStream.Length;
-                await bodyStream.CopyToAsync(orgBodyStream);
+                _logger.LogDebug("original requestBody: {@requestBody}", requestBody);
+                var personenQuery = JsonConvert.DeserializeObject<PersonenQuery>(requestBody);
+                _logger.LogDebug("original requestBody: {@personenQuery}", personenQuery);
+                var result = personenQuery.Validate(context, requestBody);
+                if (!result.IsValid)
+                {
+                    using var bodyStream = JsonConvert.SerializeObject(result.Foutbericht).ToMemoryStream();
+
+                    context.Response.StatusCode = StatusCodes.Status400BadRequest;
+                    context.Response.ContentLength = bodyStream.Length;
+                    await bodyStream.CopyToAsync(orgBodyStream);
+                }
+                else
+                {
+                    personenQuery!.Fields = personenQuery.Fields!.Split(',').MapFields();
+                    var modifiedRequestBody = JsonConvert.SerializeObject(personenQuery);
+                    using var requestBodyStream = modifiedRequestBody.ToMemoryStream();
+                    context.Request.Body = requestBodyStream;
+
+                    using var newBodyStream = new MemoryStream();
+                    context.Response.Body = newBodyStream;
+
+                    await _next(context);
+
+                    var body = await context.Response.ReadBodyAsync();
+
+                    _logger.LogDebug("original responseBody: {@body}", body);
+
+                    var modifiedBody = context.Response.StatusCode == StatusCodes.Status200OK
+                        ? body.Transform(_mapper, _fieldsHelper.AddExtraPersoonFields(result.Fields!), _logger)
+                        : body;
+
+                    _logger.LogDebug("transformed responseBody: {modifiedBody}", modifiedBody);
+
+                    using var bodyStream = modifiedBody.ToMemoryStream();
+
+                    context.Response.ContentLength = bodyStream.Length;
+                    await bodyStream.CopyToAsync(orgBodyStream);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                personenQuery!.Fields = personenQuery.Fields!.Split(',').MapFields();
-                var modifiedRequestBody = JsonConvert.SerializeObject(personenQuery);
-                using var requestBodyStream = modifiedRequestBody.ToMemoryStream();
-                context.Request.Body = requestBodyStream;
+                _logger.LogError(ex, message: string.Empty);
+                using var bodyStream = JsonConvert.SerializeObject(new Foutbericht
+                {
+                    Status = StatusCodes.Status500InternalServerError,
+                    //Detail = ex.Message,
+                    Instance = new Uri(context.Request.Path, UriKind.Relative),
+                    Title = "Internal Server error.",
+                    Type = new Uri("https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1")
+                }).ToMemoryStream();
 
-                using var newBodyStream = new MemoryStream();
-                context.Response.Body = newBodyStream;
-
-                await _next(context);
-
-                var body = await context.Response.ReadBodyAsync();
-
-                _logger.LogDebug("original responseBody: {@body}", body);
-
-                var modifiedBody = context.Response.StatusCode == StatusCodes.Status200OK
-                    ? body.Transform(_mapper, _fieldsHelper.AddExtraPersoonFields(result.Fields!), _logger)
-                    : body;
-
-                _logger.LogDebug("transformed responseBody: {modifiedBody}", modifiedBody);
-
-                using var bodyStream = modifiedBody.ToMemoryStream();
-
+                context.Response.StatusCode = StatusCodes.Status500InternalServerError;
                 context.Response.ContentLength = bodyStream.Length;
                 await bodyStream.CopyToAsync(orgBodyStream);
             }

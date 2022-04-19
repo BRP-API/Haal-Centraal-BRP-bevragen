@@ -817,6 +817,7 @@ namespace HaalCentraal.BrpProxy.Generated
     [JsonInheritanceAttribute("Nationaliteit", typeof(Nationaliteit))]
     [JsonInheritanceAttribute("BehandeldAlsNederlander", typeof(BehandeldAlsNederlander))]
     [JsonInheritanceAttribute("VastgesteldNietNederlander", typeof(VastgesteldNietNederlander))]
+    [JsonInheritanceAttribute("NationaliteitOnbekend", typeof(NationaliteitOnbekend))]
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class AbstractNationaliteit
     {
@@ -897,6 +898,32 @@ namespace HaalCentraal.BrpProxy.Generated
 
         [Newtonsoft.Json.JsonProperty("inOnderzoek", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public BijzonderNederlanderschapInOnderzoek InOnderzoek { get; set; }
+
+    }
+
+    /// <summary>
+    /// * **redenOpname** : De reden op grond waarvan de persoon de nationaliteit gekregen heeft.
+    /// <br/>
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class NationaliteitOnbekend : AbstractNationaliteit
+    {
+        [Newtonsoft.Json.JsonProperty("datumIngangGeldigheid", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public AbstractDatum DatumIngangGeldigheid { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("inOnderzoek", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public NationaliteitOnbekendInOnderzoek InOnderzoek { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class NationaliteitOnbekendInOnderzoek : InOnderzoek
+    {
+        [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? Type { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("redenOpname", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? RedenOpname { get; set; }
 
     }
 
@@ -1234,7 +1261,7 @@ namespace HaalCentraal.BrpProxy.Generated
         public AbstractDatum DatumInschrijvingInGemeente { get; set; }
 
         [Newtonsoft.Json.JsonProperty("gemeenteVanInschrijving", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string GemeenteVanInschrijving { get; set; }
+        public Waardetabel GemeenteVanInschrijving { get; set; }
 
         [Newtonsoft.Json.JsonProperty("verblijfplaatsOnbekend", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool VerblijfplaatsOnbekend1 { get; set; }
@@ -1272,6 +1299,9 @@ namespace HaalCentraal.BrpProxy.Generated
 
         [Newtonsoft.Json.JsonProperty("datumVestigingInNederland", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public AbstractDatum DatumVestigingInNederland { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("datumVan", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public AbstractDatum DatumVan { get; set; }
 
         [Newtonsoft.Json.JsonProperty("functieAdres", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Waardetabel FunctieAdres { get; set; }
@@ -1313,6 +1343,9 @@ namespace HaalCentraal.BrpProxy.Generated
 
         [Newtonsoft.Json.JsonProperty("datumVestigingInNederland", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? DatumVestigingInNederland { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("datumVan", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? DatumVan { get; set; }
 
         [Newtonsoft.Json.JsonProperty("functieAdres", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? FunctieAdres { get; set; }
