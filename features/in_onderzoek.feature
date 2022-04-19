@@ -5,7 +5,7 @@ Functionaliteit: in onderzoek
   Wanneer de juistheid van een gegeven onderzocht wordt, en daardoor de waarde van een geleverd gegeven mogelijk onjuist is, wordt naast het betreffende veld ook in inOnderzoek een veld met dezelfde naam opgenomen. Deze krijgt dan de boolean waarde true.
 
   Een categorie kan in zijn geheel in onderzoek zijn, maar er kunnen ook individuele groepen of elementen binnen de categorie in onderzoek zijn.
-  
+
   Een veld dat niet in onderzoek is, wordt niet in inOnderzoek opgenomen, ook niet met de waarde false of null.
 
   Een overzicht van de vertaling van een inOnderzoek elementwaarde (gegeven 83.10) naar welke velden in inOnderzoek moeten worden opgenomen (met de waarde true) staat in /features/in onderzoek.xlsx.
@@ -42,8 +42,8 @@ Functionaliteit: in onderzoek
       En heeft de persoon GEEN 'naam.inOnderzoek' gegevens
       En heeft de persoon GEEN 'geboorte.inOnderzoek' gegevens
       En heeft de persoon GEEN 'verblijfplaats' gegevens
-      En heeft de ouder met ouderAanduiding 'ouder1' GEEN 'inOnderzoek' gegevens
-      En heeft de ouder met ouderAanduiding 'ouder2' GEEN 'inOnderzoek' gegevens
+      En heeft de ouder met ouderAanduiding '1' GEEN 'inOnderzoek' gegevens
+      En heeft de ouder met ouderAanduiding '2' GEEN 'inOnderzoek' gegevens
       En heeft de partner met burgerservicenummer '555550002' GEEN 'inOnderzoek' gegevens
 
       Voorbeelden:
@@ -70,8 +70,8 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 555550001                       |
       | fields              | ouders,partners                 |
       Dan heeft de persoon GEEN 'inOnderzoek' gegevens
-      En heeft de ouder met ouderAanduiding 'ouder1' GEEN 'inOnderzoek' gegevens
-      En heeft de ouder met ouderAanduiding 'ouder2' GEEN 'inOnderzoek' gegevens
+      En heeft de ouder met ouderAanduiding '1' GEEN 'inOnderzoek' gegevens
+      En heeft de ouder met ouderAanduiding '2' GEEN 'inOnderzoek' gegevens
       En heeft de partner met burgerservicenummer '555550002' GEEN 'inOnderzoek' gegevens
 
   @gba
@@ -226,10 +226,10 @@ Functionaliteit: in onderzoek
       | burgerservicenummer         | 555550001 |
       En de persoon heeft een ouder met de volgende gegevens
       | naam            | waarde |
-      | ouderAanduiding | ouder1 |
+      | ouderAanduiding | 1      |
       En de persoon heeft een ouder met de volgende gegevens
       | naam            | waarde |
-      | ouderAanduiding | ouder2 |
+      | ouderAanduiding | 2      |
       En de ouder met ouderAanduiding '<ouder>' heeft volgende 'inOnderzoek' gegevens
       | naam                          | waarde   |
       | aanduidingGegevensInOnderzoek | <waarde> |
@@ -249,9 +249,9 @@ Functionaliteit: in onderzoek
 
       Voorbeelden:
       | waarde | veld                                    | ouder  | andere ouder |
-      | 020220 | burgerservicenummer                     | ouder1 | ouder2       |
-      | 030410 | geslachtsaanduiding                     | ouder2 | ouder1       |
-      | 026210 | datumIngangFamilierechtelijkeBetrekking | ouder1 | ouder2       |
+      | 020220 | burgerservicenummer                     | 1      | 2            |
+      | 030410 | geslachtsaanduiding                     | 2      | 1            |
+      | 026210 | datumIngangFamilierechtelijkeBetrekking | 1      | 2            |
 
     Abstract Scenario: persoon heeft <groep> <veld> van partner in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -545,7 +545,7 @@ Functionaliteit: in onderzoek
 
   @proxy
   Rule: een afgeleid gegeven wordt in inOnderzoek opgenomen wanneer ten minste één van de gegevens waaruit het wordt afgeleid in onderzoek staat
-  
+
     @proxy
     Abstract Scenario: leeftijd van de persoon in onderzoek omdat <gegeven in onderzoek> is in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -606,10 +606,10 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 555550001 |
       En de persoon heeft een ouder met de volgende gegevens
       | naam            | waarde |
-      | ouderAanduiding | ouder1 |
+      | ouderAanduiding | 1      |
       En de persoon heeft een ouder met de volgende gegevens
       | naam            | waarde |
-      | ouderAanduiding | ouder2 |
+      | ouderAanduiding | 2      |
       En de ouder met ouderAanduiding '<ouder>' heeft de volgende 'inOnderzoek' gegevens
       | naam                          | waarde   |
       | aanduidingGegevensInOnderzoek | <waarde> |
@@ -627,15 +627,15 @@ Functionaliteit: in onderzoek
       En heeft de ouder met ouderAanduiding '<andere ouder>' GEEN 'naam.inOnderzoek' gegevens
       En heeft de ouder met ouderAanduiding '<ouder>' GEEN 'inOnderzoek' gegevens
       En heeft de ouder met ouderAanduiding '<andere ouder>' GEEN 'inOnderzoek' gegevens
-    
+
       Voorbeelden:
       | gegeven in onderzoek   | waarde | ouder  | andere ouder |
-      | voornamen van ouder 1  | 020210 | ouder1 | ouder2       |
-      | groep naam van ouder 1 | 020200 | ouder1 | ouder2       |
-      | categorie ouder 1      | 020000 | ouder1 | ouder2       |
-      | voornamen van ouder 2  | 030210 | ouder2 | ouder1       |
-      | groep naam van ouder 2 | 030200 | ouder2 | ouder1       |
-      | categorie ouder 2      | 030000 | ouder2 | ouder1       |
+      | voornamen van ouder 1  | 020210 | 1      | 2            |
+      | groep naam van ouder 1 | 020200 | 1      | 2            |
+      | categorie ouder 1      | 020000 | 1      | 2            |
+      | voornamen van ouder 2  | 030210 | 2      | 1            |
+      | groep naam van ouder 2 | 030200 | 2      | 1            |
+      | categorie ouder 2      | 030000 | 2      | 1            |
 
     @proxy
     Abstract Scenario: verblijfplaats datumVan in onderzoek omdat <gegeven in onderzoek> is in onderzoek
@@ -675,7 +675,7 @@ Functionaliteit: in onderzoek
       | datumAanvangAdresBuitenland | 081320 |        |            |                            |                          | Rue du pomme 25 | Bruxelles   | 5010 | 20040701                    |
       | verblijf buitenland         | 081320 |        |            |                            |                          | Rue du pomme 25 | Bruxelles   | 5010 | 20040701                    |
       | datumAanvangAdresBuitenland | 081320 |        |            |                            |                          |                 |             | 0000 | 20040701                    |
-      
+
     @proxy
     Scenario: indicatieVestigingVanuitBuitenland in onderzoek omdat landVanWaarIngeschreven is in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens

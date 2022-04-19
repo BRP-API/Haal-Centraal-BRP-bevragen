@@ -1307,7 +1307,7 @@
             "$ref" : "#/components/schemas/Waardetabel"
           },
           "ouderAanduiding" : {
-            "$ref" : "#/components/schemas/Waardetabel"
+            "$ref" : "#/components/schemas/OuderAanduiding"
           },
           "datumIngangFamilierechtelijkeBetrekking" : {
             "$ref" : "#/components/schemas/GbaDatum"
@@ -1323,6 +1323,11 @@
           }
         },
         "description" : "Gegevens over de ouder van de persoon.\n* **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.\n"
+      },
+      "OuderAanduiding" : {
+        "pattern" : "^[1|2]$",
+        "type" : "string",
+        "example" : "1"
       },
       "GbaPartner" : {
         "type" : "object",

@@ -31,14 +31,6 @@ De onderstaanden tabellen met de beschreven waarden worden geleverd door de "BRP
     | P                                                | gebruik alleen de partnernaam              |
     | V                                                | gebruik de partnernaam voor de eigen naam  |
 
-  Voor de enumeratie OuderAanduiding wordt de tabel met identificatie "ouderaanduiding" opgenomen.
-  In de omschrijving wordt de volgende tekst opgenomen : "Geeft aan om welke ouder het gaat volgens de BRP."
-  In de waardetabel worden de volgende waarden opgenomen:
-    | code                                             | omschrijving                     |
-    | ------------------------------------------------ | -------------------------------- |
-    | 1                                                | ouder1                           |
-    | 2                                                | ouder2                           |
-
   Voor de enumeratie RedenOpschortingBijhouding wordt de tabel met identificatie "redenopschortingbijhouding" opgenomen.
   In de omschrijving wordt de volgende tekst opgenomen : "Redenen voor opschorting van de bijhouding"
   In de waardetabel worden de volgende waarden opgenomen:

@@ -2160,7 +2160,7 @@
         }
       },
       "Ouder" : {
-        "description" : "Gegevens over de ouder van de persoon.\n* **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.\n* **geslachtsaanduiding** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n* **ouderaanduiding** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'ouderAanduiding' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n",
+        "description" : "Gegevens over de ouder van de persoon.\n* **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.\n* **geslachtsaanduiding** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/AbstractOuder"
         }, {
@@ -2173,7 +2173,7 @@
               "$ref" : "#/components/schemas/Waardetabel"
             },
             "ouderAanduiding" : {
-              "$ref" : "#/components/schemas/Waardetabel"
+              "$ref" : "#/components/schemas/OuderAanduiding"
             },
             "datumIngangFamilierechtelijkeBetrekking" : {
               "$ref" : "#/components/schemas/AbstractDatum"
@@ -2189,6 +2189,11 @@
             }
           }
         } ]
+      },
+      "OuderAanduiding" : {
+        "pattern" : "^[1|2]$",
+        "type" : "string",
+        "example" : "1"
       },
       "OuderInOnderzoek" : {
         "description" : "Geeft aan welke gegevens van de de ouder in onderzoek zijn.\nZie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
@@ -2216,7 +2221,7 @@
           "type" : "object",
           "properties" : {
             "ouderAanduiding" : {
-              "$ref" : "#/components/schemas/Waardetabel"
+              "$ref" : "#/components/schemas/OuderAanduiding"
             },
             "indicatieOnbekend" : {
               "type" : "boolean",

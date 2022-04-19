@@ -6,6 +6,10 @@ info:
 paths: {}
 components:
   schemas:
+    OuderAanduiding:
+      type: string
+      pattern: ^[1|2]$
+      example: "1"
     AbstractOuder:
       type: object
       description: |
@@ -31,7 +35,7 @@ components:
         geslachtsaanduiding:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         ouderAanduiding:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: '#/components/schemas/OuderAanduiding'
         datumIngangFamilierechtelijkeBetrekking:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
         naam:
@@ -45,7 +49,6 @@ components:
         Gegevens over de ouder van de persoon.
         * **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.
         * **geslachtsaanduiding** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-        * **ouderaanduiding** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'ouderAanduiding' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       allOf:
         - $ref: '#/components/schemas/AbstractOuder'
         - type: object
@@ -55,7 +58,7 @@ components:
             geslachtsaanduiding:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
             ouderAanduiding:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              $ref: '#/components/schemas/OuderAanduiding'
             datumIngangFamilierechtelijkeBetrekking:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             naam:
@@ -70,7 +73,7 @@ components:
         - type: object
           properties:
             ouderAanduiding:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              $ref: '#/components/schemas/OuderAanduiding'
             indicatieOnbekend:
               type: boolean
               default: false

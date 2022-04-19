@@ -1017,7 +1017,7 @@ components:
         geslachtsaanduiding:
           $ref: '#/components/schemas/Waardetabel'
         ouderAanduiding:
-          $ref: '#/components/schemas/Waardetabel'
+          $ref: '#/components/schemas/OuderAanduiding'
         datumIngangFamilierechtelijkeBetrekking:
           $ref: '#/components/schemas/GbaDatum'
         naam:
@@ -1029,6 +1029,10 @@ components:
       description: |
         Gegevens over de ouder van de persoon.
         * **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.
+    OuderAanduiding:
+      pattern: ^[1|2]$
+      type: string
+      example: "1"
     GbaPartner:
       type: object
       properties:
