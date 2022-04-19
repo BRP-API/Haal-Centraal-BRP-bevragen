@@ -616,7 +616,7 @@ namespace HaalCentraal.BrpProxy.Generated
 
     [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "type")]
     [JsonInheritanceAttribute("Datum", typeof(VolledigeDatum))]
-    [JsonInheritanceAttribute("OnbekendDatum", typeof(OnbekendDatum))]
+    [JsonInheritanceAttribute("DatumOnbekend", typeof(DatumOnbekend))]
     [JsonInheritanceAttribute("JaarDatum", typeof(JaarDatum))]
     [JsonInheritanceAttribute("JaarMaandDatum", typeof(JaarMaandDatum))]
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
@@ -650,7 +650,7 @@ namespace HaalCentraal.BrpProxy.Generated
     /// representatie voor een volledig onbekend datum
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class OnbekendDatum : AbstractDatum
+    public partial class DatumOnbekend : AbstractDatum
     {
         [Newtonsoft.Json.JsonProperty("onbekend", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? Onbekend { get; set; } = true;
@@ -1478,7 +1478,7 @@ namespace HaalCentraal.BrpProxy.Generated
     /// </summary>
     [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "type")]
     [JsonInheritanceAttribute("Kind", typeof(Kind))]
-    [JsonInheritanceAttribute("OnbekendKind", typeof(OnbekendKind))]
+    [JsonInheritanceAttribute("KindOnbekend", typeof(KindOnbekend))]
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class AbstractKind
     {
@@ -1524,7 +1524,7 @@ namespace HaalCentraal.BrpProxy.Generated
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class OnbekendKind : AbstractKind
+    public partial class KindOnbekend : AbstractKind
     {
         [Newtonsoft.Json.JsonProperty("indicatieOnbekend", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? IndicatieOnbekend { get; set; } = false;
@@ -1537,7 +1537,7 @@ namespace HaalCentraal.BrpProxy.Generated
     /// </summary>
     [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "type")]
     [JsonInheritanceAttribute("Ouder", typeof(Ouder))]
-    [JsonInheritanceAttribute("OnbekendOuder", typeof(OnbekendOuder))]
+    [JsonInheritanceAttribute("OuderOnbekend", typeof(OuderOnbekend))]
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class AbstractOuder
     {
@@ -1606,7 +1606,7 @@ namespace HaalCentraal.BrpProxy.Generated
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class OnbekendOuder : AbstractOuder
+    public partial class OuderOnbekend : AbstractOuder
     {
         [Newtonsoft.Json.JsonProperty("ouderAanduiding", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Waardetabel OuderAanduiding { get; set; }
@@ -1622,7 +1622,7 @@ namespace HaalCentraal.BrpProxy.Generated
     /// </summary>
     [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "type")]
     [JsonInheritanceAttribute("Partner", typeof(Partner))]
-    [JsonInheritanceAttribute("OnbekendPartner", typeof(OnbekendPartner))]
+    [JsonInheritanceAttribute("PartnerOnbekend", typeof(PartnerOnbekend))]
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class AbstractPartner
     {
@@ -1736,7 +1736,7 @@ namespace HaalCentraal.BrpProxy.Generated
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class OnbekendPartner : AbstractPartner
+    public partial class PartnerOnbekend : AbstractPartner
     {
         [Newtonsoft.Json.JsonProperty("indicatieOnbekend", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? IndicatieOnbekend { get; set; } = false;

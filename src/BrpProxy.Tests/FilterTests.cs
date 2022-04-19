@@ -54,7 +54,7 @@ public class FilterTests
                 {
                     Burgerservicenummer = "23456"
                 },
-                new OnbekendPartner
+                new PartnerOnbekend
                 {
                     IndicatieOnbekend = true
                 }
@@ -69,7 +69,7 @@ public class FilterTests
                 {
                     Burgerservicenummer = "23456"
                 },
-                new OnbekendOuder
+                new OuderOnbekend
                 {
                     IndicatieOnbekend = true
                 }
@@ -107,7 +107,7 @@ public class FilterTests
                 {
                     Burgerservicenummer = "23456"
                 },
-                new OnbekendKind
+                new KindOnbekend
                 {
                     IndicatieOnbekend = true
                 }
@@ -248,7 +248,7 @@ public class FilterTests
                     {
                         Burgerservicenummer = "23456"
                     },
-                    new OnbekendPartner
+                    new PartnerOnbekend
                     {
                         IndicatieOnbekend = true
                     }
@@ -273,7 +273,7 @@ public class FilterTests
                     {
                         Burgerservicenummer = "23456"
                     },
-                    new OnbekendOuder
+                    new OuderOnbekend
                     {
                         IndicatieOnbekend = true
                     }
@@ -302,7 +302,7 @@ public class FilterTests
                     {
                         Burgerservicenummer = "23456"
                     },
-                    new OnbekendKind
+                    new KindOnbekend
                     {
                         IndicatieOnbekend = true
                     }
@@ -327,7 +327,7 @@ public class FilterTests
                     {
                         Burgerservicenummer = "23456"
                     },
-                    new OnbekendKind
+                    new KindOnbekend
                     {
                         IndicatieOnbekend = true
                     }
@@ -416,7 +416,7 @@ public class FilterTests
                     {
                         new Partner { Burgerservicenummer = "12345" },
                         new Partner { Burgerservicenummer = "23456" },
-                        new OnbekendPartner { IndicatieOnbekend = true}
+                        new PartnerOnbekend { IndicatieOnbekend = true}
                     }
                 },
                 new Persoon { Burgerservicenummer = "23456" }

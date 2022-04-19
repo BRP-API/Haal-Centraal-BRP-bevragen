@@ -10,7 +10,7 @@ namespace BrpProxy.Profiles
         {
             return source switch
             {
-                { Naam.Geslachtsnaam: var geslachtsnaam } when geslachtsnaam == "." => context.Mapper.Map<OnbekendKind>(source),
+                { Naam.Geslachtsnaam: var geslachtsnaam } when geslachtsnaam == "." => context.Mapper.Map<KindOnbekend>(source),
                 _ => context.Mapper.Map<Kind>(source),
             };
         }
