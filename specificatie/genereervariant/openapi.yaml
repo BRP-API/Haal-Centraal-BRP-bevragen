@@ -917,7 +917,7 @@ components:
         propertyName: type
         mapping:
           Datum: '#/components/schemas/VolledigeDatum'
-          OnbekendDatum: '#/components/schemas/OnbekendDatum'
+          DatumOnbekend: '#/components/schemas/DatumOnbekend'
           JaarDatum: '#/components/schemas/JaarDatum'
           JaarMaandDatum: '#/components/schemas/JaarMaandDatum'
     VolledigeDatum:
@@ -935,13 +935,13 @@ components:
           datum:
             type: string
             format: date
-    OnbekendDatum:
+    DatumOnbekend:
       required:
       - onbekend
       description: representatie voor een volledig onbekend datum
       example:
         value:
-          type: OnbekendDatum
+          type: DatumOnbekend
           onbekend: true
       allOf:
       - $ref: '#/components/schemas/AbstractDatum'
@@ -1580,7 +1580,7 @@ components:
         propertyName: type
         mapping:
           Kind: '#/components/schemas/Kind'
-          OnbekendKind: '#/components/schemas/OnbekendKind'
+          KindOnbekend: '#/components/schemas/KindOnbekend'
     Kind:
       allOf:
       - $ref: '#/components/schemas/AbstractKind'
@@ -1603,7 +1603,7 @@ components:
         properties:
           burgerservicenummer:
             type: boolean
-    OnbekendKind:
+    KindOnbekend:
       allOf:
       - $ref: '#/components/schemas/AbstractKind'
       - type: object
@@ -1624,7 +1624,7 @@ components:
         propertyName: type
         mapping:
           Ouder: '#/components/schemas/Ouder'
-          OnbekendOuder: '#/components/schemas/OnbekendOuder'
+          OuderOnbekend: '#/components/schemas/OuderOnbekend'
     Ouder:
       description: |
         Gegevens over de ouder van de persoon.
@@ -1663,7 +1663,7 @@ components:
             type: boolean
           geslachtsaanduiding:
             type: boolean
-    OnbekendOuder:
+    OuderOnbekend:
       allOf:
       - $ref: '#/components/schemas/AbstractOuder'
       - type: object
@@ -1686,7 +1686,7 @@ components:
         propertyName: type
         mapping:
           Partner: '#/components/schemas/Partner'
-          OnbekendPartner: '#/components/schemas/OnbekendPartner'
+          PartnerOnbekend: '#/components/schemas/PartnerOnbekend'
     Partner:
       allOf:
       - $ref: '#/components/schemas/AbstractPartner'
@@ -1750,7 +1750,7 @@ components:
             type: boolean
           plaats:
             type: boolean
-    OnbekendPartner:
+    PartnerOnbekend:
       allOf:
       - $ref: '#/components/schemas/AbstractPartner'
       - type: object

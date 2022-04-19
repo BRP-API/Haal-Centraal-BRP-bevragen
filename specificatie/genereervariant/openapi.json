@@ -1156,7 +1156,7 @@
           "propertyName" : "type",
           "mapping" : {
             "Datum" : "#/components/schemas/VolledigeDatum",
-            "OnbekendDatum" : "#/components/schemas/OnbekendDatum",
+            "DatumOnbekend" : "#/components/schemas/DatumOnbekend",
             "JaarDatum" : "#/components/schemas/JaarDatum",
             "JaarMaandDatum" : "#/components/schemas/JaarMaandDatum"
           }
@@ -1183,12 +1183,12 @@
           }
         } ]
       },
-      "OnbekendDatum" : {
+      "DatumOnbekend" : {
         "required" : [ "onbekend" ],
         "description" : "representatie voor een volledig onbekend datum",
         "example" : {
           "value" : {
-            "type" : "OnbekendDatum",
+            "type" : "DatumOnbekend",
             "onbekend" : true
           }
         },
@@ -2091,7 +2091,7 @@
           "propertyName" : "type",
           "mapping" : {
             "Kind" : "#/components/schemas/Kind",
-            "OnbekendKind" : "#/components/schemas/OnbekendKind"
+            "KindOnbekend" : "#/components/schemas/KindOnbekend"
           }
         }
       },
@@ -2129,7 +2129,7 @@
           }
         } ]
       },
-      "OnbekendKind" : {
+      "KindOnbekend" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/AbstractKind"
         }, {
@@ -2155,7 +2155,7 @@
           "propertyName" : "type",
           "mapping" : {
             "Ouder" : "#/components/schemas/Ouder",
-            "OnbekendOuder" : "#/components/schemas/OnbekendOuder"
+            "OuderOnbekend" : "#/components/schemas/OuderOnbekend"
           }
         }
       },
@@ -2209,7 +2209,7 @@
           }
         } ]
       },
-      "OnbekendOuder" : {
+      "OuderOnbekend" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/AbstractOuder"
         }, {
@@ -2238,7 +2238,7 @@
           "propertyName" : "type",
           "mapping" : {
             "Partner" : "#/components/schemas/Partner",
-            "OnbekendPartner" : "#/components/schemas/OnbekendPartner"
+            "PartnerOnbekend" : "#/components/schemas/PartnerOnbekend"
           }
         }
       },
@@ -2328,7 +2328,7 @@
           }
         } ]
       },
-      "OnbekendPartner" : {
+      "PartnerOnbekend" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/AbstractPartner"
         }, {

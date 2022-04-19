@@ -19,7 +19,7 @@ components:
         propertyName: type
         mapping:
           Ouder: '#/components/schemas/Ouder'
-          OnbekendOuder: '#/components/schemas/OnbekendOuder'
+          OuderOnbekend: '#/components/schemas/OuderOnbekend'
     GbaOuder:
       type: object
       description: |
@@ -64,7 +64,7 @@ components:
               $ref: '#/components/schemas/OuderInOnderzoek'
             geboorte:
               $ref: 'geboorte.yaml#/components/schemas/Geboorte'
-    OnbekendOuder:
+    OuderOnbekend:
       allOf:
         - $ref: '#/components/schemas/AbstractOuder'
         - type: object

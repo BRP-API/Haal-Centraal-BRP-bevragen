@@ -27,7 +27,7 @@ De [behaviour driven specificatie](https://github.com/VNG-Realisatie/Haal-Centra
 - [parametercombinaties voor zoeken van personen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/parametercombinaties.feature){:target="_blank" rel="noopener"}
 - [validatie van parameters](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/parametervalidatie.feature){:target="_blank" rel="noopener"}
 - [partners](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/partners.feature){:target="_blank" rel="noopener"}
-- [fields](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/proxy-fields.feature){:target="_blank" rel="noopener"}
+- [fields](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields.feature){:target="_blank" rel="noopener"}
 - [tabelwaarden](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/tabelwaarden.feature){:target="_blank" rel="noopener"}
 - [volledige naam](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/volledigeNaam.feature){:target="_blank" rel="noopener"}
 - [samenstelling naam voorletters](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/voorletters.feature){:target="_blank" rel="noopener"}
@@ -38,6 +38,5 @@ De [behaviour driven specificatie](https://github.com/VNG-Realisatie/Haal-Centra
 
 ## Algemene Haal Centraal features
 Naast API specifieke features zijn er ook features die voor meerdere Haal Centraal API's gelden. Zij staan in Haal Centraal common. De volgende gelden voor de versie 2.0 beta van deze API:
-- [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/wildcard.feature){:target="_blank" rel="noopener"}
 - [foutafhandeling](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/foutafhandeling.feature){:target="_blank" rel="noopener"}
 - [indicatoren](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/indicatoren.feature){:target="_blank" rel="noopener"}
