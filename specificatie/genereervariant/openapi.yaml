@@ -1630,7 +1630,6 @@ components:
         Gegevens over de ouder van de persoon.
         * **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.
         * **geslachtsaanduiding** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-        * **ouderaanduiding** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'ouderAanduiding' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       allOf:
       - $ref: '#/components/schemas/AbstractOuder'
       - type: object
@@ -1640,7 +1639,7 @@ components:
           geslachtsaanduiding:
             $ref: '#/components/schemas/Waardetabel'
           ouderAanduiding:
-            $ref: '#/components/schemas/Waardetabel'
+            $ref: '#/components/schemas/OuderAanduiding'
           datumIngangFamilierechtelijkeBetrekking:
             $ref: '#/components/schemas/AbstractDatum'
           naam:
@@ -1649,6 +1648,10 @@ components:
             $ref: '#/components/schemas/OuderInOnderzoek'
           geboorte:
             $ref: '#/components/schemas/Geboorte'
+    OuderAanduiding:
+      pattern: ^[1|2]$
+      type: string
+      example: "1"
     OuderInOnderzoek:
       description: |
         Geeft aan welke gegevens van de de ouder in onderzoek zijn.
@@ -1669,7 +1672,7 @@ components:
       - type: object
         properties:
           ouderAanduiding:
-            $ref: '#/components/schemas/Waardetabel'
+            $ref: '#/components/schemas/OuderAanduiding'
           indicatieOnbekend:
             type: boolean
             default: false
