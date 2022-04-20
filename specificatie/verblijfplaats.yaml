@@ -123,8 +123,6 @@ components:
               $ref: '#/components/schemas/Adresregel1'
             adresregel2:
               $ref: '#/components/schemas/Adresregel2'
-            woonplaats:
-              $ref: '#/components/schemas/Woonplaats'
     VerblijfplaatsBuitenlandBeperkt:
       allOf:
         - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
@@ -158,15 +156,11 @@ components:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
             locatiebeschrijving:
               $ref: '#/components/schemas/Locatiebeschrijving'
-            woonplaats:
-              $ref: '#/components/schemas/Woonplaats'
     GbaVerblijfplaatsBeperkt:
       type: object
       properties:
         functieAdres:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
-        woonplaats:
-          $ref: '#/components/schemas/Woonplaats'
         straat:
           $ref: '#/components/schemas/Straat'
         huisnummer:
