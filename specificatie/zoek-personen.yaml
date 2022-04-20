@@ -26,6 +26,7 @@ paths:
         2.  Zoek met geslachtsnaam, voornamen en gemeente van inschrijving
             - gemeenteVanInschrijving
             - geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature))
+            - voornamen
 
 
         3.  Raadpleeg met burgerservicenummer
