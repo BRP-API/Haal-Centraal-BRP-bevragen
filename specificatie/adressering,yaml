@@ -1,0 +1,26 @@
+openapi: 3.0.3
+info:
+  title: Adressering definities
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  schemas:
+    Adressering:
+      type: "object"
+      description: ""
+      properties:
+        aanhef:
+          $ref: "naam.yaml#/components/schemas/Aanhef"
+        aanschrijfwijze:
+          $ref: "naam.yaml#/components/schemas/Aanschrijfwijze"
+        gebruikInLopendeTekst
+          $ref: "naam.yaml#/components/schemas/GebruikInLopendeTekst"
+        adresregel1:
+          $ref: "verblijfplaats.yaml#/components/schemas/Adresregel1"
+        adresregel2:
+          $ref: "verblijfplaats.yaml#/components/schemas/Adresregel2"
+        adresregel3:
+          $ref: "verblijfplaats.yaml#/components/schemas/Adresregel3"
+        land:
+          $ref: "verblijfplaats.yaml#/components/schemas/Land"

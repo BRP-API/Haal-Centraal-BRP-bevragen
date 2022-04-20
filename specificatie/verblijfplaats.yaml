@@ -32,12 +32,6 @@ components:
       description: |
         De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.
       example: "0226010000038820"
-    GemeenteVanInschrijving:
-      description: |
-        Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.
-      type: string
-      pattern: ^[0-9]{4}$
-      example: "0518"
     Huisletter:
       description: |
         Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.
@@ -57,10 +51,6 @@ components:
       type: string
       pattern: ^[a-zA-Z0-9 \-]{1,4}$
       example: "bis"
-    IndicatieVestigingVanuitBuitenland:
-      type: boolean
-      description: |
-        Geeft aan dat de persoon zich vanuit het buitenland heeft ingeschreven.
     KorteNaam:
       description: |
         De officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG) of een verkorte versie.
@@ -193,8 +183,6 @@ components:
           $ref: '#/components/schemas/Locatiebeschrijving'
         land:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
-        gemeenteVanInschrijving:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
         adresregel1:
           $ref: '#/components/schemas/Adresregel1'
         adresregel2:
@@ -228,10 +216,6 @@ components:
             $ref: '#/components/schemas/Adresregel2'
           adresregel3:
             $ref: '#/components/schemas/Adresregel3'
-          datumInschrijvingInGemeente:
-            $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-          gemeenteVanInschrijving:
-            $ref: 'common.yaml#/components/schemas/Waardetabel'
           land:
             $ref: 'common.yaml#/components/schemas/Waardetabel'
           datumVan:
@@ -245,10 +229,6 @@ components:
         Gegevens over het adres van een persoon.
         * **datumVan** : de datum van aangifte of ambtshalve melding van verblijf en adres.
         * **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden.
-        * **datumInschrijvingInGemeente**: bij inschrijving op grond van een verhuisaangifte door de burger is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop het voornemen van ambtshalve opneming schriftelijk aan de persoon is medegedeeld.
-        * **datumVestigingInNederland** : datum van inschrijving in Nederland.
-        * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland.
-        * **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten."
       allOf:
         - $ref : '#/components/schemas/AbstractVerblijfplaats'
         - type: object
@@ -277,8 +257,6 @@ components:
               $ref: '#/components/schemas/Adresregel2'
             woonplaats:
               $ref: '#/components/schemas/Woonplaats'
-            indicatieVestigingVanuitBuitenland:
-              $ref: '#/components/schemas/IndicatieVestigingVanuitBuitenland'
             korteNaam:
               $ref: '#/components/schemas/KorteNaam'
             vanuitVerblijfplaatsOnbekend:
@@ -287,14 +265,6 @@ components:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             datumIngangGeldigheid:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-            datumInschrijvingInGemeente:
-              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-            datumVestigingInNederland:
-              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-            gemeenteVanInschrijving:
-              $ref: "common.yaml#/components/schemas/Waardetabel"
-            landVanwaarIngeschreven:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
             inOnderzoek:
               $ref: "#/components/schemas/AdresInOnderzoek"
     Locatie:
@@ -306,19 +276,9 @@ components:
               $ref: '#/components/schemas/Adresregel1'
             adresregel2:
               $ref: '#/components/schemas/Adresregel2'
-            datumInschrijvingInGemeente:
-              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-            datumVestigingInNederland:
-              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             datumVan:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             functieAdres:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
-            gemeenteVanInschrijving:
-              $ref: "common.yaml#/components/schemas/Waardetabel"
-            indicatieVestigingVanuitBuitenland:
-              $ref: '#/components/schemas/IndicatieVestigingVanuitBuitenland'
-            landVanwaarIngeschreven:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
             locatiebeschrijving:
               $ref: '#/components/schemas/Locatiebeschrijving'
@@ -333,10 +293,6 @@ components:
         - $ref: '#/components/schemas/AbstractVerblijfplaats'
         - type: object
           properties:
-            datumInschrijvingInGemeente:
-              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-            gemeenteVanInschrijving:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
             verblijfplaatsOnbekend:
               $ref: '#/components/schemas/IndicatieVerblijfplaatsOnbekend'
             inOnderzoek:
@@ -358,8 +314,6 @@ components:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         woonplaats:
           $ref: '#/components/schemas/Woonplaats'
-        landVanwaarIngeschreven:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
         straat:
           $ref: '#/components/schemas/Straat'
         huisnummer:
@@ -376,18 +330,8 @@ components:
           $ref: '#/components/schemas/Locatiebeschrijving'
         land:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
-        datumAanvangAdreshouding:
-          $ref: 'datum.yaml#/components/schemas/GbaDatum'
-        datumAanvangAdresBuitenland:
-          $ref: 'datum.yaml#/components/schemas/GbaDatum'
         datumIngangGeldigheid:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
-        datumInschrijvingInGemeente:
-          $ref: 'datum.yaml#/components/schemas/GbaDatum'
-        datumVestigingInNederland:
-          $ref: 'datum.yaml#/components/schemas/GbaDatum'
-        gemeenteVanInschrijving:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
         naamOpenbareRuimte:
           $ref: '#/components/schemas/NaamOpenbareRuimte'
         inOnderzoek:
@@ -402,10 +346,6 @@ components:
             adresregel2:
               type: boolean
             adresregel3:
-              type: boolean
-            datumInschrijvingInGemeente:
-              type: boolean
-            gemeenteVanInschrijving:
               type: boolean
             land:
               type: boolean
@@ -424,13 +364,7 @@ components:
               type: boolean
             datumIngangGeldigheid:
               type: boolean
-            datumInschrijvingInGemeente:
-              type: boolean
-            datumVestigingInNederland:
-              type: boolean
             functieAdres:
-              type: boolean
-            gemeenteVanInschrijving:
               type: boolean
             huisletter:
               type: boolean
@@ -441,8 +375,6 @@ components:
             nummeraanduidingIdentificatie:
               type: boolean
             adresseerbaarObjectIdentificatie:
-              type: boolean
-            landVanwaarIngeschreven:
               type: boolean
             straat:
               type: boolean
@@ -456,8 +388,6 @@ components:
               type: boolean
             adresregel2:
               type: boolean
-            indicatieVestigingVanuitBuitenland:
-              type: boolean
             vanuitVerblijfplaatsOnbekend:
               type: boolean
     VerblijfplaatsOnbekendInOnderzoek:
@@ -465,10 +395,6 @@ components:
         - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
         - type: object
           properties:
-            datumInschrijvingInGemeente:
-              type: boolean
-            gemeenteVanInschrijving:
-              type: boolean
             verblijfplaatsOnbekend:
               type: boolean
     LocatieInOnderzoek:
@@ -480,19 +406,9 @@ components:
               type: boolean
             adresregel2:
               type: boolean
-            datumInschrijvingInGemeente:
-              type: boolean
-            datumVestigingInNederland:
-              type: boolean
             datumVan:
               type: boolean
             functieAdres:
-              type: boolean
-            gemeenteVanInschrijving:
-              type: boolean
-            indicatieVestigingVanuitBuitenland:
-              type: boolean
-            landVanwaarIngeschreven:
               type: boolean
             locatiebeschrijving:
               type: boolean
