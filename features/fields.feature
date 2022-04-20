@@ -205,19 +205,20 @@ Functionaliteit: Fields
       | naam                | waarde                |
       | burgerservicenummer | <burgerservicenummer> |
       En heeft de persoon met burgerservicenummer '<burgerservicenummer>' alleen de volgende 'geboorte' gegevens
-      | naam           | waarde     |
-      | datum.type     | <type>     |
-      | datum.datum    | <datum>    |
-      | datum.jaar     | <jaar>     |
-      | datum.maand    | <maand>    |
-      | datum.onbekend | <onbekend> |
+      | naam                  | waarde            |
+      | datum.type            | <type>            |
+      | datum.datum           | <datum>           |
+      | datum.jaar            | <jaar>            |
+      | datum.maand           | <maand>           |
+      | datum.onbekend        | <onbekend>        |
+      | datum.leesbaarFormaat | <leesbaarFormaat> |
 
       Voorbeelden:
-      | burgerservicenummer | GBA datum | type           | datum      | jaar | maand | onbekend |
-      | 999991929           | 19561115  | Datum          | 1956-11-15 |      |       |          |
-      | 999992351           | 19780300  | JaarMaandDatum |            | 1978 | 3     |          |
+      | burgerservicenummer | GBA datum | type           | datum      | jaar | maand | onbekend | leesbaarFormaat
+      | 999991929           | 19561115  | Datum          | 1956-11-15 |      |       |          | 15 november 1956
+      | 999992351           | 19780300  | JaarMaandDatum |            | 1978 | 3     |          | maart 1978
       | 999992806           | 19680000  | JaarDatum      |            | 1968 |       |          |
-      | 999994220           | 00000000  | DatumOnbekend  |            |      |       | true     |
+      | 999994220           | 00000000  | DatumOnbekend  |            |      |       | true     | onbekend
 
     Abstract Scenario: Gevraagd veld is een gegeven van een andere type van de polymorfe gegevensgroep dan het ontvangen type
       Gegeven het systeem heeft een persoon met de volgende gegevens

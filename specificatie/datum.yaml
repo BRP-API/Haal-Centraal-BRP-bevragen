@@ -40,12 +40,16 @@ components:
             datum:
               type: string
               format: date
+            leesbaarFormaat:
+              type: string
       required:
         - datum
+        - leesbaarFormaat
       example:
         value:
           type: Datum
           datum: "2018-07-01"
+          leesbaarFormaat: "1 juli 2018"
     DatumOnbekend:
       description: representatie voor een volledig onbekend datum
       allOf:
@@ -55,12 +59,16 @@ components:
             onbekend:
               type: boolean
               default: true
+            leesbaarFormaat:
+              type: string
       required:
         - onbekend
+        - leesbaarFormaat
       example:
         value:
           type: DatumOnbekend
           onbekend: true
+          leesbaarFormaat: "Onbekend"
     JaarDatum:
       description: representatie voor een datum waarvan maand en dag onbekend zijn
       allOf:
@@ -85,14 +93,18 @@ components:
               $ref: '#/components/schemas/Jaar'
             maand:
               $ref: '#/components/schemas/Maand'
+            leesbaarFormaat:
+              type: string
       required:
         - jaar
         - maand
+        - leesbaarFormaat
       example:
         value:
           type: JaarMaandDatum
           jaar: 2018
           maand: 7
+          leesbaarFormaat: "juli 2018"
     Jaar:
       type: integer
       format: int32
