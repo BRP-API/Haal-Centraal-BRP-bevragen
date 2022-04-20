@@ -22,12 +22,6 @@ components:
       type: string
       pattern: ^[a-zA-Z0-9\.,_]+$
       maxLength: 924
-    GeboorteplaatsFilter:
-      description: |
-        Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
-      type: string
-      pattern: ^[a-zA-Z0-9À-ž \,\.\-\'()]{1,80}$
-      example: "Utrecht"
     GeslachtsaanduidingFilter:
       description: |
         Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.
