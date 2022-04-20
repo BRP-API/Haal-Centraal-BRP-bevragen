@@ -147,6 +147,8 @@ components:
               type: string
               format: date
               example: "1964-09-24"
+            geboorteplaats:
+              $ref: 'filter.yaml#/components/schemas/GeboorteplaatsFilter'
             geslachtsnaam:
               $ref: 'filter.yaml#/components/schemas/GeslachtsnaamFilter'
             geslachtsaanduiding:
