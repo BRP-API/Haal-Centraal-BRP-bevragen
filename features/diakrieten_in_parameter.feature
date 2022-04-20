@@ -21,6 +21,8 @@ Scenario: Wanneer een diakriet wordt opgegeven, wordt deze ook gebruikt
 Scenario: Wanneer geen diakriet wordt opgegeven, worden equivalente diakrieten ook gevonden
   Als personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=velden&naam__voornamen=andre
   Dan wordt de persoon gevonden met naam.voornamen=André
+  #Als personen gezocht worden met ?geboorte__datum=1983-05-26&naam__geslachtsnaam=veld&geboorteplaats=malmo
+  #Dan wordt de persoon gevonden met geboorte.plaats=Malmø
   Als personen gezocht worden met ?verblijfplaats__postcode=9744CZ&verblijfplaats__huisnummer=7&naam__voornamen=celik
   Dan wordt de persoon gevonden met naam.voornamen=Çelik
   Als personen gezocht worden met ?verblijfplaats__postcode=9744CZ&verblijfplaats__huisnummer=7&naam__voornamen=Celik
