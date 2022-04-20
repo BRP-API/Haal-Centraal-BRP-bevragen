@@ -6,7 +6,7 @@ Functionaliteit: Ouders van een persoon raadplegen
   Dit bevat gegevens over de familierechtelijke betrekking plus enkele identificerende eigenschappen van de ouder.
 
 @gba
-Rule: "1" is de ouder in categorie 2 en "2" is de ouder in categorie 3
+Rule: De ouder in categorie 2 heeft ouderAanduiding "1" en de ouder in categorie 3 heeft ouderAanduiding "2"
 
   @gba
   Scenario: Persoon heeft twee ouders
@@ -187,7 +187,7 @@ Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenome
   Gebruik van de fields parameter heeft geen invloed op het leveren van een ouder
 
   @gba
-  Scenario: vondeling (onbekende ouder1 en geen ouder2)
+  Scenario: vondeling (onbekende ouder met ouderaanduiding "1" en geen ouder met ouderaanduiding "2")
     Gegeven de persoon met burgerservicenummer 999993008 heeft de volgende ouders in de registratie
     | Categorie | Voornamen (02.10)  | Geslachtsnaam | Geboortedatum (03.10) | Geslachtsaanduiding (04.10) | Datum ingang familierechtelijke betrekking (62.10) |
     | 2         |                    | .             |                       | V                           | 20190614                                           |
