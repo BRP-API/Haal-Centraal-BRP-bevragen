@@ -378,7 +378,7 @@ Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbe
     | redenOpname.code            | 311                   |
     | datumIngangGeldigheid.type  | Datum                 |
     | datumIngangGeldigheid.datum | 2003-04-17            |
-    
+
   Scenario: onbekend waarde voor reden opname nationaliteit
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
@@ -463,7 +463,7 @@ Rule: datumvelden waarde "00000000": worden vertaald naar DatumOnbekend
     | burgerservicenummer | 555550001 |
     En heeft de persoon alleen de volgende '<groep>' gegevens
     | naam            | waarde        |
-    | <veld>.type     | OnbekendDatum |
+    | <veld>.type     | DatumOnbekend |
     | <veld>.onbekend | true          |
 
     Voorbeelden:
@@ -495,7 +495,7 @@ Rule: datumvelden waarde "00000000": worden vertaald naar DatumOnbekend
     En heeft de persoon alleen de volgende '<groep>' gegevens
     | naam            | waarde        |
     | type            | Adres         |
-    | <veld>.type     | OnbekendDatum |
+    | <veld>.type     | DatumOnbekend |
     | <veld>.onbekend | true          |
 
     Voorbeelden:
@@ -522,7 +522,7 @@ Rule: datumvelden waarde "00000000": worden vertaald naar DatumOnbekend
     En heeft de persoon alleen de volgende '<groep>' gegevens
     | naam            | waarde                   |
     | type            | VerblijfplaatsBuitenland |
-    | <veld>.type     | OnbekendDatum            |
+    | <veld>.type     | DatumOnbekend            |
     | <veld>.onbekend | true                     |
 
     Voorbeelden:

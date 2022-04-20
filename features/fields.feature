@@ -150,7 +150,7 @@ Functionaliteit: Fields
     - wanneer het opgegeven pad niet exact verwijst naar een veld en tegelijkertijd als deel van een pad verwijst naar meerdere ander velden, wordt een foutmelding gegeven
     - wanneer het opgegeven pad verwijst naar een veld en tegelijkertijd naar het gelijknamige veld in inOnderzoek, worden beide velden opgenomen in de response wanneer ze een waarde hebben
 
-    # zie fields-mapping-Persoon.csv (raadpleeg op burgerservicenummer) en fields-mapping-PersoonBeperkt.csv (zoeken) voor een overzicht van alle mogelijke gehele of gedeeltelijke paden voor het aanwijzen van de personen velden: 
+    # zie fields-mapping-Persoon.csv (raadpleeg op burgerservicenummer) en fields-mapping-PersoonBeperkt.csv (zoeken) voor een overzicht van alle mogelijke gehele of gedeeltelijke paden voor het aanwijzen van de personen velden:
     #  een fields veld(pad) in de linker kolom wordt vertaald naar het volledig pad in de tweede kolom
     #  wanneer een in fields opgegeven veld(pad) niet voorkomt in de linker kolom, geeft dat een foutmelding
 
@@ -217,7 +217,7 @@ Functionaliteit: Fields
       | 999991929           | 19561115  | Datum          | 1956-11-15 |      |       |          |
       | 999992351           | 19780300  | JaarMaandDatum |            | 1978 | 3     |          |
       | 999992806           | 19680000  | JaarDatum      |            | 1968 |       |          |
-      | 999994220           | 00000000  | OnbekendDatum  |            |      |       | true     |
+      | 999994220           | 00000000  | DatumOnbekend  |            |      |       | true     |
 
     Abstract Scenario: Gevraagd veld is een gegeven van een andere type van de polymorfe gegevensgroep dan het ontvangen type
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -242,7 +242,7 @@ Functionaliteit: Fields
       | burgerservicenummer | GBA datum | type           |
       | 999992351           | 19780300  | JaarMaandDatum |
       | 999992806           | 19680000  | JaarDatum      |
-      | 999994220           | 00000000  | OnbekendDatum  |
+      | 999994220           | 00000000  | DatumOnbekend  |
 
     Abstract Scenario: Gevraagd veld is een polymorfe gegevensgroep van de persoon en heeft geen waarde
       Als personen wordt gezocht met de volgende parameters
