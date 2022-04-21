@@ -4,8 +4,8 @@ namespace BrpProxy.Validators
 {
     public class ZoekMetPostcodeEnHuisnummerQueryValidator : PersonenQueryValidator<ZoekMetPostcodeEnHuisnummer>
     {
-        public ZoekMetPostcodeEnHuisnummerQueryValidator()
-            : base()
+        public ZoekMetPostcodeEnHuisnummerQueryValidator(FieldsHelper fieldsHelper)
+            : base(fieldsHelper)
         {}
     }
 }

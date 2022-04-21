@@ -35,7 +35,7 @@ namespace BrpProxy.Middlewares
                 _logger.LogDebug("original requestBody: {@requestBody}", requestBody);
                 var personenQuery = JsonConvert.DeserializeObject<PersonenQuery>(requestBody);
                 _logger.LogDebug("original requestBody: {@personenQuery}", personenQuery);
-                var result = personenQuery.Validate(context, requestBody);
+                var result = personenQuery.Validate(context, requestBody, _fieldsHelper);
                 if (!result.IsValid)
                 {
                     using var bodyStream = JsonConvert.SerializeObject(result.Foutbericht).ToMemoryStream();
@@ -60,8 +60,12 @@ namespace BrpProxy.Middlewares
 
                     _logger.LogDebug("original responseBody: {@body}", body);
 
+                    var resultFields = personenQuery is RaadpleegMetBurgerservicenummer
+                                ? _fieldsHelper.AddExtraPersoonFields(result.Fields!)
+                                : _fieldsHelper.AddExtraPersoonBeperktFields(result.Fields!);
+
                     var modifiedBody = context.Response.StatusCode == StatusCodes.Status200OK
-                        ? body.Transform(_mapper, _fieldsHelper.AddExtraPersoonFields(result.Fields!), _logger)
+                        ? body.Transform(_mapper, resultFields, _logger)
                         : body;
 
                     _logger.LogDebug("transformed responseBody: {modifiedBody}", modifiedBody);
@@ -205,14 +209,14 @@ namespace BrpProxy.Middlewares
             { "indicatieVestigingVanuitBuitenland", new[] { "datumVestigingInNederland" } }
         };
 
-        public static ValidatePersonenQueryResult Validate(this PersonenQuery? personenQuery, HttpContext context, string requestBody)
+        public static ValidatePersonenQueryResult Validate(this PersonenQuery? personenQuery, HttpContext context, string requestBody, FieldsHelper fieldsHelper)
         {
             var result = personenQuery switch
             {
-                RaadpleegMetBurgerservicenummer query => new RaadpleegMetBurgerservicenummerQueryValidator().Validate(query),
-                ZoekMetGeslachtsnaamEnGeboortedatum query => new ZoekMetGeslachtsnaamEnGeboortedatumQueryValidator().Validate(query),
-                ZoekMetPostcodeEnHuisnummer query => new ZoekMetPostcodeEnHuisnummerQueryValidator().Validate(query),
-                ZoekMetNaamEnGemeenteVanInschrijving query => new ZoekMetNaamEnGemeenteVanInschrijvingQueryValidator().Validate(query),
+                RaadpleegMetBurgerservicenummer query => new RaadpleegMetBurgerservicenummerQueryValidator(fieldsHelper).Validate(query),
+                ZoekMetGeslachtsnaamEnGeboortedatum query => new ZoekMetGeslachtsnaamEnGeboortedatumQueryValidator(fieldsHelper).Validate(query),
+                ZoekMetPostcodeEnHuisnummer query => new ZoekMetPostcodeEnHuisnummerQueryValidator(fieldsHelper).Validate(query),
+                ZoekMetNaamEnGemeenteVanInschrijving query => new ZoekMetNaamEnGemeenteVanInschrijvingQueryValidator(fieldsHelper).Validate(query),
                 _ => null
             };
 

@@ -14,7 +14,7 @@ public partial class PersonenQuery
     public string? Fields { get; set; }
 
     [Newtonsoft.Json.JsonProperty("gemeenteVanInschrijving", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    public string GemeenteVanInschrijving { get; set; }
+    public string? GemeenteVanInschrijving { get; set; }
 
     private IDictionary<string, object> _additionalProperties = new Dictionary<string, object>();
 

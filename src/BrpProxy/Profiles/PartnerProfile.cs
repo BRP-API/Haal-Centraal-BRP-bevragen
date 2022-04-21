@@ -19,6 +19,8 @@ public class PartnerProfile : Profile
                 opt.MapFrom(src => src.SoortVerbintenis);
             });
 
+        CreateMap<GbaPartner, OntbondenPartner>();
+
         CreateMap<GbaAangaanHuwelijkPartnerschap, AangaanHuwelijkPartnerschap>()
             .ForMember(dest => dest.Datum, opt => opt.MapFrom(src => src.Datum.Map()))
             .ForMember(dest => dest.Land, opt =>

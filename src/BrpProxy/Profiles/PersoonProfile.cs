@@ -18,6 +18,13 @@ public class PersoonProfile : Profile
                     src.Geboorte.InOnderzoek = src.InOnderzoek;
                 }
             })
+            .AfterMap((src, dest) =>
+            {
+                if(dest.Kiesrecht != null && dest.Kiesrecht.EinddatumUitsluitingKiesrecht <= DateTime.Today)
+                {
+                    dest.Kiesrecht = null;
+                }
+            })
             .ForMember(dest => dest.DatumEersteInschrijvingGBA, opt => opt.MapFrom(src => src.DatumEersteInschrijvingGBA.Map()))
             .ForMember(dest => dest.GeheimhoudingPersoonsgegevens, opt => opt.MapFrom(src => src.Geheimhouding()))
             .ForMember(dest => dest.Reisdocumentnummers, opt => opt.MapFrom(src => src.Reisdocumentnummers.FilterOnbekendReisdocumentnummers()));

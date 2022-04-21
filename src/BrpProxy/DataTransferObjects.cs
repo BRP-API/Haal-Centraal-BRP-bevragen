@@ -1557,7 +1557,6 @@ namespace HaalCentraal.BrpProxy.Generated
     /// Gegevens over de ouder van de persoon.
     /// <br/>* **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.
     /// <br/>* **geslachtsaanduiding** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-    /// <br/>* **ouderaanduiding** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'ouderAanduiding' uit de Haal-Centraal-BRP-tabellen-bevragen API.
     /// <br/>
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
@@ -1570,7 +1569,7 @@ namespace HaalCentraal.BrpProxy.Generated
         public Waardetabel Geslachtsaanduiding { get; set; }
 
         [Newtonsoft.Json.JsonProperty("ouderAanduiding", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Waardetabel OuderAanduiding { get; set; }
+        public string OuderAanduiding { get; set; }
 
         [Newtonsoft.Json.JsonProperty("datumIngangFamilierechtelijkeBetrekking", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public AbstractDatum DatumIngangFamilierechtelijkeBetrekking { get; set; }
@@ -1609,7 +1608,7 @@ namespace HaalCentraal.BrpProxy.Generated
     public partial class OuderOnbekend : AbstractOuder
     {
         [Newtonsoft.Json.JsonProperty("ouderAanduiding", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Waardetabel OuderAanduiding { get; set; }
+        public string OuderAanduiding { get; set; }
 
         [Newtonsoft.Json.JsonProperty("indicatieOnbekend", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? IndicatieOnbekend { get; set; } = false;

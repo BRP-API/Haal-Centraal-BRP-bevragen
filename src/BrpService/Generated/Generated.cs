@@ -901,7 +901,7 @@ namespace HaalCentraal.BrpService.Generated
         public Waardetabel Geslachtsaanduiding { get; set; }
 
         [Newtonsoft.Json.JsonProperty("ouderAanduiding", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Waardetabel OuderAanduiding { get; set; }
+        public string OuderAanduiding { get; set; }
 
         [Newtonsoft.Json.JsonProperty("datumIngangFamilierechtelijkeBetrekking", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DatumIngangFamilierechtelijkeBetrekking { get; set; }

@@ -6,10 +6,11 @@ namespace BrpProxy.Validators;
 public class RaadpleegMetBurgerservicenummerQueryValidator : AbstractValidator<RaadpleegMetBurgerservicenummer>
 {
     const string RequiredErrorMessage = "required||Parameter is verplicht.";
-    public RaadpleegMetBurgerservicenummerQueryValidator()
+
+    public RaadpleegMetBurgerservicenummerQueryValidator(FieldsHelper fieldsHelper)
     {
         RuleFor(x => x.Fields)
             .NotNull().WithMessage(RequiredErrorMessage)
-            .SetValidator(new FieldsValidator());
+            .SetValidator(new PersoonFieldsValidator(fieldsHelper));
     }
 }

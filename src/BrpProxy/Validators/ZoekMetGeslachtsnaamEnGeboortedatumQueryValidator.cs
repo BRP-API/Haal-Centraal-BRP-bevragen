@@ -4,7 +4,7 @@ namespace BrpProxy.Validators;
 
 public class ZoekMetGeslachtsnaamEnGeboortedatumQueryValidator : PersonenQueryValidator<ZoekMetGeslachtsnaamEnGeboortedatum>
 {
-    public ZoekMetGeslachtsnaamEnGeboortedatumQueryValidator()
-        : base()
+    public ZoekMetGeslachtsnaamEnGeboortedatumQueryValidator(FieldsHelper fieldsHelper)
+        : base(fieldsHelper)
     {}
 }

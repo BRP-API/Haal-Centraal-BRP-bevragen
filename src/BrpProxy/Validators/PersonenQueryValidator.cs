@@ -7,11 +7,11 @@ namespace BrpProxy.Validators
     {
         const string RequiredErrorMessage = "required||Parameter is verplicht.";
 
-        protected PersonenQueryValidator()
+        protected PersonenQueryValidator(FieldsHelper fieldsHelper)
         {
             RuleFor(x => x.Fields)
                 .NotNull().WithMessage(RequiredErrorMessage)
-                .SetValidator(new FieldsValidator());
+                .SetValidator(new PersoonBeperktFieldsValidator(fieldsHelper));
         }
     }
 }

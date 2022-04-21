@@ -23,6 +23,8 @@ public partial class Persoon
 
     public bool ShouldSerializeGeboorte() => Geboorte != null && Geboorte.ShouldSerialize();
 
+    public bool ShouldSerializeKiesrecht() => Kiesrecht != null && Kiesrecht.ShouldSerialize();
+
     public bool ShouldSerializeOverlijden() => Overlijden != null && Overlijden.ShouldSerialize();
 
     public bool ShouldSerializeVerblijfstitel() => Verblijfstitel != null && Verblijfstitel.ShouldSerialize();
