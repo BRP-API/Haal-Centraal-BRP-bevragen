@@ -1,9 +1,9 @@
 #language: nl
 
 @post-assert
-Functionaliteit: Persoon velden
+Functionaliteit: Persoon
 
-  Abstract Scenario: persoon. Overnemen veld: <gba naam>
+  Abstract Scenario: overnemen veld: <gba naam>
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |
@@ -22,7 +22,33 @@ Functionaliteit: Persoon velden
     | gba naam        | naam    | waarde     |
     | anummer (01.10) | aNummer | 1234567890 |
 
-  Abstract Scenario: persoon. Omzetten datum veld: <gba naam>
+  Abstract Scenario: omzetten veld : indicatie geheim
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                     | waarde       |
+    | burgerservicenummer      | 555550001    |
+    | indicatie geheim (70.10) | <gba waarde> |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                                            |
+    | type                | RaadpleegMetBurgerservicenummer                   |
+    | burgerservicenummer | 555550001                                         |
+    | fields              | burgerservicenummer,geheimhoudingPersoonsgegevens |
+    Dan heeft de response een persoon met de volgende gegevens
+    | naam                          | waarde    |
+    | burgerservicenummer           | 555550001 |
+    | geheimhoudingPersoonsgegevens | <waarde>  |
+
+    Voorbeelden:
+    | gba waarde | waarde |
+    | 0          |        |
+    | 1          | true   |
+    | 2          | true   |
+    | 3          | true   |
+    | 4          | true   |
+    | 5          | true   |
+    | 6          | true   |
+    | 7          | true   |
+
+  Abstract Scenario: omzetten datum veld: <gba naam>
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde       |
     | burgerservicenummer | 555550001    |
