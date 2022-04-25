@@ -272,7 +272,7 @@ Rule: Wanneer de geslachtsnaam van de ouder onbekend is, wordt de ouder geleverd
     | burgerservicenummer | 999993008 |
     En de persoon heeft een 'ouder' met de volgende gegevens
     | naam                                            | waarde   |
-    | ouderAanduiding.code                            | 1        |
+    | ouderAanduiding                                 | 1        |
     | geslachtsaanduiding (04.10)                     | V        |
     | datumIngangFamilierechtelijkeBetrekking (62.10) | 20190614 |
     En de 'ouder' heeft alleen de volgende 'naam' gegevens
@@ -288,7 +288,7 @@ Rule: Wanneer de geslachtsnaam van de ouder onbekend is, wordt de ouder geleverd
     | naam                 | waarde        |
     | type                 | OnbekendOuder |
     | indicatieOnbekend    | true          |
-    | ouderAanduiding.code | 1             |
+    | ouderAanduiding      | 1             |
 
   @proxy
   Scenario: er is wel een identificerend gegeven geslachtsnaam van de ouder
@@ -297,7 +297,7 @@ Rule: Wanneer de geslachtsnaam van de ouder onbekend is, wordt de ouder geleverd
     | burgerservicenummer | 999993008 |
     En de persoon heeft een 'ouder' met de volgende gegevens
     | naam                                            | waarde   |
-    | ouderAanduiding.code                            | 1        |
+    | ouderAanduiding                                 | 1        |
     | geslachtsaanduiding (04.10)                     | V        |
     | datumIngangFamilierechtelijkeBetrekking (62.10) | 20190614 |
     En de 'ouder' heeft alleen de volgende 'naam' gegevens
@@ -312,7 +312,7 @@ Rule: Wanneer de geslachtsnaam van de ouder onbekend is, wordt de ouder geleverd
     Dan heeft de persoon met burgerservicenummer '999993008' een 'ouder' met alleen de volgende gegevens
     | naam                 | waarde |
     | type                 | Ouder  |
-    | ouderAanduiding.code | 1      |
+    | ouderAanduiding      | 1      |
     En heeft de 'ouder' alleen de volgende 'naam' gegevens
     | naam          | waarde            |
     | geslachtsnaam | Ibin binti Yalniz |
@@ -324,7 +324,7 @@ Rule: Wanneer de geslachtsnaam van de ouder onbekend is, wordt de ouder geleverd
     | burgerservicenummer | 555550001 |
     En de persoon heeft een 'ouder' met de volgende gegevens
     | naam                                            | waarde   |
-    | ouderAanduiding.code                            | 1        |
+    | ouderAanduiding                                 | 1        |
     | geslachtsaanduiding (04.10)                     | V        |
     | datumIngangFamilierechtelijkeBetrekking (62.10) | 20190614 |
     En de 'ouder' heeft alleen de volgende 'naam' gegevens
