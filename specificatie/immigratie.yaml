@@ -10,6 +10,10 @@ components:
       type: boolean
       description: |
         Geeft aan dat de persoon zich vanuit het buitenland heeft ingeschreven.
+    VanuitVerblijfplaatsOnbekend:
+      type: boolean
+      description: |
+        Geeft aan dat de persoon is teruggekeerd uit een situatie van onbekende verblijfplaats
     GbaImmigratie:
       type: object
       description: |
@@ -20,6 +24,8 @@ components:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         landVanwaarIngeschreven:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
+      vanuitVerblijfplaatsOnbekend:
+        $ref: '#/components/schemas/VanuitVerblijfplaatsOnbekend'
         inOnderzoek:
           $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     Immigratie:
@@ -32,6 +38,8 @@ components:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         landVanwaarIngeschreven:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
+        vanuitVerblijfplaatsOnbekend:
+          $ref: '#/components/schemas/VanuitVerblijfplaatsOnbekend'
         indicatieVestigingVanuitBuitenland:
           $ref: '#/components/schemas/IndicatieVestigingVanuitBuitenland'
         inOnderzoek:
@@ -44,6 +52,8 @@ components:
             datumVestigingInNederland:
               type: boolean
             landVanwaarIngeschreven:
+              type: boolean
+            vanuitVerblijfplaatsOnbekend:
               type: boolean
             indicatieVestigingVanuitBuitenland:
               type: boolean

@@ -81,10 +81,6 @@ components:
       type: string
       maxLength: 80
       example: "Tulpstraat"
-    VanuitVerblijfplaatsOnbekend:
-      type: boolean
-      description: |
-        Geeft aan dat de persoon is teruggekeerd uit een situatie van onbekende verblijfplaats
     IndicatieVerblijfplaatsOnbekend:
       type: boolean
       description: |
@@ -245,16 +241,10 @@ components:
               $ref: '#/components/schemas/AdresseerbaarObjectIdentificatie'
             nummeraanduidingIdentificatie:
               $ref: '#/components/schemas/NummeraanduidingIdentificatie'
-            adresregel1:
-              $ref: '#/components/schemas/Adresregel1'
-            adresregel2:
-              $ref: '#/components/schemas/Adresregel2'
             woonplaats:
               $ref: '#/components/schemas/Woonplaats'
             korteNaam:
               $ref: '#/components/schemas/KorteNaam'
-            vanuitVerblijfplaatsOnbekend:
-              $ref: '#/components/schemas/VanuitVerblijfplaatsOnbekend'
             datumVan:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             datumIngangGeldigheid:
@@ -266,18 +256,12 @@ components:
         - $ref: '#/components/schemas/AbstractVerblijfplaats'
         - type: object
           properties:
-            adresregel1:
-              $ref: '#/components/schemas/Adresregel1'
-            adresregel2:
-              $ref: '#/components/schemas/Adresregel2'
             datumVan:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             functieAdres:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
             locatiebeschrijving:
               $ref: '#/components/schemas/Locatiebeschrijving'
-            vanuitVerblijfplaatsOnbekend:
-              $ref: '#/components/schemas/VanuitVerblijfplaatsOnbekend'
             woonplaats:
               $ref: '#/components/schemas/Woonplaats'
             inOnderzoek:
@@ -325,6 +309,10 @@ components:
         land:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         datumIngangGeldigheid:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        datumAanvangAdreshouding:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        datumAanvangAdresBuitenland:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
         naamOpenbareRuimte:
           $ref: '#/components/schemas/NaamOpenbareRuimte'
@@ -382,8 +370,6 @@ components:
               type: boolean
             adresregel2:
               type: boolean
-            vanuitVerblijfplaatsOnbekend:
-              type: boolean
     VerblijfplaatsOnbekendInOnderzoek:
       allOf:
         - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
@@ -405,8 +391,6 @@ components:
             functieAdres:
               type: boolean
             locatiebeschrijving:
-              type: boolean
-            vanuitVerblijfplaatsOnbekend:
               type: boolean
             woonplaats:
               type: boolean

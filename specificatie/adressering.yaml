@@ -14,13 +14,13 @@ components:
           $ref: "naam.yaml#/components/schemas/Aanhef"
         aanschrijfwijze:
           $ref: "naam.yaml#/components/schemas/Aanschrijfwijze"
-        gebruikInLopendeTekst
+        gebruikInLopendeTekst:
           $ref: "naam.yaml#/components/schemas/GebruikInLopendeTekst"
-        adresregel1:
+        adresseringregel1:
           $ref: "verblijfplaats.yaml#/components/schemas/Adresregel1"
-        adresregel2:
+        adresseringregel2:
           $ref: "verblijfplaats.yaml#/components/schemas/Adresregel2"
-        adresregel3:
+        adresseringregel3:
           $ref: "verblijfplaats.yaml#/components/schemas/Adresregel3"
         land:
-          $ref: "verblijfplaats.yaml#/components/schemas/Land"
+          $ref: "common.yaml#/components/schemas/Waardetabel"

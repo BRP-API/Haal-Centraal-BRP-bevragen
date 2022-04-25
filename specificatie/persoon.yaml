@@ -115,10 +115,6 @@ components:
           $ref: 'immigratie.yaml#/components/schemas/GbaImmigratie'
         gemeenteVanInschrijving:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
-        datumAanvangAdreshouding:
-          $ref: 'datum.yaml#/components/schemas/GbaDatum'
-        datumAanvangAdresBuitenland:
-          $ref: 'datum.yaml#/components/schemas/GbaDatum'
         datumInschrijvingInGemeente:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
         gezagsverhouding:
@@ -178,14 +174,10 @@ components:
           $ref: 'immigratie.yaml#/components/schemas/Immigratie'
         gemeenteVanInschrijving:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
-        datumAanvangAdreshouding:
-          $ref: 'datum.yaml#/components/schemas/GbaDatum'
-        datumAanvangAdresBuitenland:
-          $ref: 'datum.yaml#/components/schemas/GbaDatum'
         datumInschrijvingInGemeente:
-          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         adressering:
-          $ref: '#components/schemas/Adressering'
+          $ref: 'adressering.yaml#components/schemas/Adressering'
         gezagsverhouding:
           $ref: 'gezagsverhouding.yaml#/components/schemas/Gezagsverhouding'
         verblijfstitel:
