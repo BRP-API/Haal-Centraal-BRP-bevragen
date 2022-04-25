@@ -24,10 +24,10 @@ components:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         landVanwaarIngeschreven:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
-      vanuitVerblijfplaatsOnbekend:
-        $ref: '#/components/schemas/VanuitVerblijfplaatsOnbekend'
-      inOnderzoek:
-        $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
+        vanuitVerblijfplaatsOnbekend:
+          $ref: '#/components/schemas/VanuitVerblijfplaatsOnbekend'
+        inOnderzoek:
+          $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     Immigratie:
       type: object
       description: |
