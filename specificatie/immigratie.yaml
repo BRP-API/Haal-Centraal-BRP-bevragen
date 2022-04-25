@@ -26,8 +26,8 @@ components:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
       vanuitVerblijfplaatsOnbekend:
         $ref: '#/components/schemas/VanuitVerblijfplaatsOnbekend'
-        inOnderzoek:
-          $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
+      inOnderzoek:
+        $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     Immigratie:
       type: object
       description: |
