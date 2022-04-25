@@ -430,8 +430,8 @@
             "geslachtsnaam" : {
               "$ref" : "#/components/schemas/GeslachtsnaamFilter"
             },
-            "geslachtsaanduiding" : {
-              "$ref" : "#/components/schemas/GeslachtsaanduidingFilter"
+            "geslacht" : {
+              "$ref" : "#/components/schemas/GeslachtFilter"
             },
             "voorvoegsel" : {
               "$ref" : "#/components/schemas/VoorvoegselFilter"
@@ -457,8 +457,8 @@
             "inclusiefOverledenPersonen" : {
               "$ref" : "#/components/schemas/InclusiefOverledenPersonen"
             },
-            "geslachtsaanduiding" : {
-              "$ref" : "#/components/schemas/GeslachtsaanduidingFilter"
+            "geslacht" : {
+              "$ref" : "#/components/schemas/GeslachtFilter"
             },
             "geslachtsnaam" : {
               "$ref" : "#/components/schemas/GeslachtsnaamFilter"
@@ -652,7 +652,7 @@
           "geheimhoudingPersoonsgegevens" : {
             "$ref" : "#/components/schemas/GeheimhoudingPersoonsgegevens"
           },
-          "geslachtsaanduiding" : {
+          "geslacht" : {
             "$ref" : "#/components/schemas/Waardetabel"
           },
           "leeftijd" : {
@@ -703,7 +703,7 @@
           "geheimhoudingPersoonsgegevens" : {
             "$ref" : "#/components/schemas/GeheimhoudingPersoonsgegevens"
           },
-          "geslachtsaanduiding" : {
+          "geslacht" : {
             "$ref" : "#/components/schemas/Waardetabel"
           },
           "inOnderzoek" : {
@@ -779,7 +779,7 @@
           "burgerservicenummer" : {
             "type" : "boolean"
           },
-          "geslachtsaanduiding" : {
+          "geslacht" : {
             "type" : "boolean"
           },
           "leeftijd" : {
@@ -823,7 +823,7 @@
         "description" : "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**\n",
         "example" : "Vries"
       },
-      "GeslachtsaanduidingFilter" : {
+      "GeslachtFilter" : {
         "pattern" : "^([Mm]|[Vv]|[Oo])$",
         "type" : "string",
         "description" : "Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.\n",
@@ -2151,7 +2151,7 @@
         }
       },
       "Ouder" : {
-        "description" : "Gegevens over de ouder van de persoon.\n* **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.\n* **geslachtsaanduiding** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n",
+        "description" : "Gegevens over de ouder van de persoon.\n* **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.\n* **geslacht** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/AbstractOuder"
         }, {
@@ -2160,7 +2160,7 @@
             "burgerservicenummer" : {
               "$ref" : "#/components/schemas/Burgerservicenummer"
             },
-            "geslachtsaanduiding" : {
+            "geslacht" : {
               "$ref" : "#/components/schemas/Waardetabel"
             },
             "ouderAanduiding" : {
@@ -2199,7 +2199,7 @@
             "datumIngangFamilierechtelijkeBetrekking" : {
               "type" : "boolean"
             },
-            "geslachtsaanduiding" : {
+            "geslacht" : {
               "type" : "boolean"
             }
           }
@@ -2247,7 +2247,7 @@
             "burgerservicenummer" : {
               "$ref" : "#/components/schemas/Burgerservicenummer"
             },
-            "geslachtsaanduiding" : {
+            "geslacht" : {
               "$ref" : "#/components/schemas/Waardetabel"
             },
             "soortVerbintenis" : {
@@ -2278,7 +2278,7 @@
             "burgerservicenummer" : {
               "type" : "boolean"
             },
-            "geslachtsaanduiding" : {
+            "geslacht" : {
               "type" : "boolean"
             },
             "soortVerbintenis" : {
