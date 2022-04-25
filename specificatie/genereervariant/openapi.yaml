@@ -38,12 +38,13 @@ paths:
 
         1.  Zoek met geslachtsnaam en geboortedatum
             - geboortedatum
-            - geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature))
+            - geslachtsnaam ([wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) met minimaal 2 karakters)
 
 
         2.  Zoek met geslachtsnaam, voornamen en gemeente van inschrijving
             - gemeenteVanInschrijving
-            - geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature))
+            - geslachtsnaam ([wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) met minimaal 3 karakters)
+            - voornamen ([wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) met minimaal 3 karakters)
 
 
         3.  Raadpleeg met burgerservicenummer
@@ -56,7 +57,7 @@ paths:
 
 
         5.  Zoek met straat, huisnummer en gemeente van inschrijving
-            - straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature))
+            - straat ([wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) met minimaal 7 karakters)
             - gemeenteVanInschrijving
             - huisnummer
 
