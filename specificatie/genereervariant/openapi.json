@@ -1163,12 +1163,13 @@
         }
       },
       "VolledigeDatum" : {
-        "required" : [ "datum" ],
+        "required" : [ "datum", "langFormaat" ],
         "description" : "Datum conform iso8601",
         "example" : {
           "value" : {
             "type" : "Datum",
-            "datum" : "2018-07-01"
+            "datum" : "2018-07-01",
+            "langFormaat" : "1 juli 2018"
           }
         },
         "allOf" : [ {
@@ -1179,17 +1180,21 @@
             "datum" : {
               "type" : "string",
               "format" : "date"
+            },
+            "langFormaat" : {
+              "type" : "string"
             }
           }
         } ]
       },
       "DatumOnbekend" : {
-        "required" : [ "onbekend" ],
+        "required" : [ "langFormaat", "onbekend" ],
         "description" : "representatie voor een volledig onbekend datum",
         "example" : {
           "value" : {
             "type" : "DatumOnbekend",
-            "onbekend" : true
+            "onbekend" : true,
+            "langFormaat" : "Onbekend"
           }
         },
         "allOf" : [ {
@@ -1200,17 +1205,21 @@
             "onbekend" : {
               "type" : "boolean",
               "default" : true
+            },
+            "langFormaat" : {
+              "type" : "string"
             }
           }
         } ]
       },
       "JaarDatum" : {
-        "required" : [ "jaar" ],
+        "required" : [ "jaar", "langFormaat" ],
         "description" : "representatie voor een datum waarvan maand en dag onbekend zijn",
         "example" : {
           "value" : {
             "type" : "JaarDatum",
-            "jaar" : 2018
+            "jaar" : 2018,
+            "langFormaat" : 2018
           }
         },
         "allOf" : [ {
@@ -1220,6 +1229,9 @@
           "properties" : {
             "jaar" : {
               "$ref" : "#/components/schemas/Jaar"
+            },
+            "langFormaat" : {
+              "type" : "string"
             }
           }
         } ]
@@ -1231,13 +1243,14 @@
         "format" : "int32"
       },
       "JaarMaandDatum" : {
-        "required" : [ "jaar", "maand" ],
+        "required" : [ "jaar", "langFormaat", "maand" ],
         "description" : "representatie voor een datum waarvan de dag onbekend is",
         "example" : {
           "value" : {
             "type" : "JaarMaandDatum",
             "jaar" : 2018,
-            "maand" : 7
+            "maand" : 7,
+            "langFormaat" : "juli 2018"
           }
         },
         "allOf" : [ {
@@ -1250,6 +1263,9 @@
             },
             "maand" : {
               "$ref" : "#/components/schemas/Maand"
+            },
+            "langFormaat" : {
+              "type" : "string"
             }
           }
         } ]

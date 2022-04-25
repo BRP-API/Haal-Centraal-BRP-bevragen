@@ -923,11 +923,13 @@ components:
     VolledigeDatum:
       required:
       - datum
+      - langFormaat
       description: Datum conform iso8601
       example:
         value:
           type: Datum
           datum: 2018-07-01
+          langFormaat: 1 juli 2018
       allOf:
       - $ref: '#/components/schemas/AbstractDatum'
       - type: object
@@ -935,14 +937,18 @@ components:
           datum:
             type: string
             format: date
+          langFormaat:
+            type: string
     DatumOnbekend:
       required:
+      - langFormaat
       - onbekend
       description: representatie voor een volledig onbekend datum
       example:
         value:
           type: DatumOnbekend
           onbekend: true
+          langFormaat: Onbekend
       allOf:
       - $ref: '#/components/schemas/AbstractDatum'
       - type: object
@@ -950,20 +956,26 @@ components:
           onbekend:
             type: boolean
             default: true
+          langFormaat:
+            type: string
     JaarDatum:
       required:
       - jaar
+      - langFormaat
       description: representatie voor een datum waarvan maand en dag onbekend zijn
       example:
         value:
           type: JaarDatum
           jaar: 2018
+          langFormaat: 2018
       allOf:
       - $ref: '#/components/schemas/AbstractDatum'
       - type: object
         properties:
           jaar:
             $ref: '#/components/schemas/Jaar'
+          langFormaat:
+            type: string
     Jaar:
       maximum: 9999
       minimum: 1
@@ -972,6 +984,7 @@ components:
     JaarMaandDatum:
       required:
       - jaar
+      - langFormaat
       - maand
       description: representatie voor een datum waarvan de dag onbekend is
       example:
@@ -979,6 +992,7 @@ components:
           type: JaarMaandDatum
           jaar: 2018
           maand: 7
+          langFormaat: juli 2018
       allOf:
       - $ref: '#/components/schemas/AbstractDatum'
       - type: object
@@ -987,6 +1001,8 @@ components:
             $ref: '#/components/schemas/Jaar'
           maand:
             $ref: '#/components/schemas/Maand'
+          langFormaat:
+            type: string
     Maand:
       maximum: 12
       minimum: 1
