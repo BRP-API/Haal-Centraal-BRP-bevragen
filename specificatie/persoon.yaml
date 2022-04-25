@@ -177,7 +177,7 @@ components:
         datumInschrijvingInGemeente:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         adressering:
-          $ref: 'adressering.yaml#components/schemas/Adressering'
+          $ref: 'adressering.yaml#/components/schemas/Adressering'
         gezagsverhouding:
           $ref: 'gezagsverhouding.yaml#/components/schemas/Gezagsverhouding'
         verblijfstitel:
