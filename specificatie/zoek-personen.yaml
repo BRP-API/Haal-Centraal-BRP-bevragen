@@ -20,7 +20,7 @@ paths:
 
         1.  Zoek met geslachtsnaam en geboortedatum
             - geboortedatum
-            - geslachtsnaam ([wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) met minimaal 2 karakters)
+            - geslachtsnaam ([wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) met minimaal 3 karakters)
 
 
         2.  Zoek met geslachtsnaam, voornamen en gemeente van inschrijving
