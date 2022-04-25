@@ -149,8 +149,8 @@ components:
               example: "1964-09-24"
             geslachtsnaam:
               $ref: 'filter.yaml#/components/schemas/GeslachtsnaamFilter'
-            geslachtsaanduiding:
-              $ref: 'filter.yaml#/components/schemas/GeslachtsaanduidingFilter'
+            geslacht:
+              $ref: 'filter.yaml#/components/schemas/GeslachtFilter'
             voorvoegsel:
               $ref: 'filter.yaml#/components/schemas/VoorvoegselFilter'
             voornamen:
@@ -166,8 +166,8 @@ components:
           properties:
             inclusiefOverledenPersonen:
               $ref: '#/components/schemas/InclusiefOverledenPersonen'
-            geslachtsaanduiding:
-              $ref: 'filter.yaml#/components/schemas/GeslachtsaanduidingFilter'
+            geslacht:
+              $ref: 'filter.yaml#/components/schemas/GeslachtFilter'
             geslachtsnaam:
               $ref: 'filter.yaml#/components/schemas/GeslachtsnaamFilter'
             voorvoegsel:

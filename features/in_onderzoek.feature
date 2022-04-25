@@ -133,10 +133,10 @@ Functionaliteit: in onderzoek
       Dan heeft de persoon GEEN 'inOnderzoek' gegevens
 
       Voorbeelden:
-      | waarde | gegeven in onderzoek   | fields                             |
-      | 010000 | hele categorie persoon | kinderen                           |
-      | 010200 | hele groep naam        | geslachtsaanduiding,geboorte.datum |
-      | 010210 | voornamen              | geboorte,naam.geslachtsnaam        |
+      | waarde | gegeven in onderzoek   | fields                      |
+      | 010000 | hele categorie persoon | kinderen                    |
+      | 010200 | hele groep naam        | geslacht,geboorte.datum     |
+      | 010210 | voornamen              | geboorte,naam.geslachtsnaam |
 
   @proxy
   Rule: wanneer een element in de bron in onderzoek is, wordt het gegeven in het antwoord dat daaruit gevuld wordt ook in inOnderzoek opgenomen met de waarde true
@@ -160,9 +160,9 @@ Functionaliteit: in onderzoek
       | datumIngangOnderzoek | 2022-03-07 |
 
       Voorbeelden:
-      | waarde | veld                    |
-      | 010120 | burgerservicenummer     |
-      | 010410 | geslachtsaanduiding     |
+      | waarde | veld                |
+      | 010120 | burgerservicenummer |
+      | 010410 | geslacht            |
 
     Abstract Scenario: persoon heeft <groep> <veld> in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -248,10 +248,10 @@ Functionaliteit: in onderzoek
       En heeft de persoon GEEN 'inOnderzoek' gegevens
 
       Voorbeelden:
-      | waarde | veld                                    | ouder  | andere ouder |
-      | 020220 | burgerservicenummer                     | 1      | 2            |
-      | 030410 | geslachtsaanduiding                     | 2      | 1            |
-      | 026210 | datumIngangFamilierechtelijkeBetrekking | 1      | 2            |
+      | waarde | veld                                    | ouder | andere ouder |
+      | 020220 | burgerservicenummer                     | 1     | 2            |
+      | 030410 | geslacht                                | 2     | 1            |
+      | 026210 | datumIngangFamilierechtelijkeBetrekking | 1     | 2            |
 
     Abstract Scenario: persoon heeft <groep> <veld> van partner in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -382,14 +382,14 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 555550002 |
       En de partner met burgerservicenummer '555550002' heeft GEEN 'inOnderzoek' gegevens
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                                                        |
-      | type                | RaadpleegMetBurgerservicenummer                                               |
-      | burgerservicenummer | 555550001                                                                     |
-      | fields              | burgerservicenummer,naam,geboorte,geslachtsaanduiding,verblijfplaats,partners |
+      | naam                | waarde                                                             |
+      | type                | RaadpleegMetBurgerservicenummer                                    |
+      | burgerservicenummer | 555550001                                                          |
+      | fields              | burgerservicenummer,naam,geboorte,geslacht,verblijfplaats,partners |
       Dan heeft de persoon met burgerservicenummer '555550001' alleen de volgende 'inOnderzoek' gegevens
       | naam                 | waarde     |
       | burgerservicenummer  | true       |
-      | geslachtsaanduiding  | true       |
+      | geslacht             | true       |
       | datumIngangOnderzoek | 2022-03-07 |
       En heeft de persoon met burgerservicenummer '555550001' de volgende 'naam.inOnderzoek' gegevens
       | naam                    | waarde     |

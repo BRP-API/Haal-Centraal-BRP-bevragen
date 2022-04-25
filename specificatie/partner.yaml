@@ -25,7 +25,7 @@ components:
       properties:
         burgerservicenummer:
           $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
-        geslachtsaanduiding:
+        geslacht:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         soortVerbintenis:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
@@ -46,7 +46,7 @@ components:
           properties:
             burgerservicenummer:
               $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
-            geslachtsaanduiding:
+            geslacht:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
             soortVerbintenis:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
@@ -76,7 +76,7 @@ components:
           properties:
             burgerservicenummer:
               type: boolean
-            geslachtsaanduiding:
+            geslacht:
               type: boolean
             soortVerbintenis:
               type: boolean

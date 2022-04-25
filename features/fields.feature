@@ -12,7 +12,7 @@ Functionaliteit: Fields
       | aNummer (01.10)                       | 5875306514 |
       | burgerservicenummer                   | 999991929  |
       | geslachtsaanduiding (04.10)           | V          |
-      | geslachtsaanduiding.omschrijving      | vrouw      |
+      | geslacht.omschrijving                 | vrouw      |
       | geheimhoudingPersoonsgegevens (70.10) | 0          |
       | inOnderzoek (83.10)                   |            |
       En de persoon heeft de volgende 'naam' gegevens
@@ -23,11 +23,11 @@ Functionaliteit: Fields
       | geslachtsnaam (02.40)                | Kierkegaard    |
       | aanduidingNaamgebruik (61.10)        | V              |
       En de persoon heeft een partner met de volgende gegevens
-      | naam                             | waarde    |
-      | burgerservicenummer              | 999992971 |
-      | naam.voornamen (02.10)           | Robert    |
-      | naam.geslachtsnaam (02.40)       | Bronwaßer |
-      | geslachtsaanduiding.omschrijving | man       |
+      | naam                       | waarde    |
+      | burgerservicenummer        | 999992971 |
+      | naam.voornamen (02.10)     | Robert    |
+      | naam.geslachtsnaam (02.40) | Bronwaßer |
+      | geslacht.omschrijving      | man       |
       En de persoon heeft GEEN 'overlijden' gegevens
       En de persoon heeft de volgende 'kiesrecht' gegevens
       | naam                            | waarde |
@@ -66,26 +66,26 @@ Functionaliteit: Fields
 
     Scenario: Gevraagd veld is een gegeven van een gegevensgroep van de persoon
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                       |
-      | type                | RaadpleegMetBurgerservicenummer              |
-      | burgerservicenummer | 999991929                                    |
-      | fields              | burgerservicenummer,geslachtsaanduiding.code |
+      | naam                | waarde                            |
+      | type                | RaadpleegMetBurgerservicenummer   |
+      | burgerservicenummer | 999991929                         |
+      | fields              | burgerservicenummer,geslacht.code |
       Dan heeft de persoon met burgerservicenummer '999991929' alleen de volgende gegevens
-      | naam                     | waarde    |
-      | burgerservicenummer      | 999991929 |
-      | geslachtsaanduiding.code | V         |
+      | naam                | waarde    |
+      | burgerservicenummer | 999991929 |
+      | geslacht.code       | V         |
 
     Scenario: Gevraagd veld is een gegevensgroep van de persoon
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                  |
-      | type                | RaadpleegMetBurgerservicenummer         |
-      | burgerservicenummer | 999991929                               |
-      | fields              | burgerservicenummer,geslachtsaanduiding |
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999991929                       |
+      | fields              | burgerservicenummer,geslacht    |
       Dan heeft de persoon met burgerservicenummer '999991929' alleen de volgende gegevens
-      | naam                             | waarde    |
-      | burgerservicenummer              | 999991929 |
-      | geslachtsaanduiding.code         | V         |
-      | geslachtsaanduiding.omschrijving | vrouw     |
+      | naam                  | waarde    |
+      | burgerservicenummer   | 999991929 |
+      | geslacht.code         | V         |
+      | geslacht.omschrijving | vrouw     |
 
     Scenario: Gevraagde velden zijn gegevens van één gegevengroep van de persoon
       Als personen wordt gezocht met de volgende parameters
@@ -103,14 +103,14 @@ Functionaliteit: Fields
 
     Scenario: Gevraagde velden zijn gegevens van meerdere gegevensgroepen van de persoon
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                                          |
-      | type                | RaadpleegMetBurgerservicenummer                                 |
-      | burgerservicenummer | 999991929                                                       |
-      | fields              | burgerservicenummer,geslachtsaanduiding.code,naam.geslachtsnaam |
+      | naam                | waarde                                               |
+      | type                | RaadpleegMetBurgerservicenummer                      |
+      | burgerservicenummer | 999991929                                            |
+      | fields              | burgerservicenummer,geslacht.code,naam.geslachtsnaam |
       Dan heeft de persoon met burgerservicenummer '999991929' alleen de volgende gegevens
-      | naam                     | waarde    |
-      | burgerservicenummer      | 999991929 |
-      | geslachtsaanduiding.code | V         |
+      | naam                | waarde    |
+      | burgerservicenummer | 999991929 |
+      | geslacht.code       | V         |
       En heeft de persoon met burgerservicenummer '999991929' alleen de volgende 'naam' gegevens
       | naam          | waarde      |
       | geslachtsnaam | Kierkegaard |
@@ -140,10 +140,10 @@ Functionaliteit: Fields
       | burgerservicenummer | 999991929 |
 
       Voorbeelden:
-      | veld                            | opmerking                                                       |
-      | naam.adellijkeTitelPredicaat    |                                                                 |
-      | inOnderzoek.geslachtsaanduiding |                                                                 |
-      | geheimhoudingPersoonsgegevens   | geheimhoudingPersoonsgegevens wordt niet opgenomen bij waarde 0 |
+      | veld                          | opmerking                                                       |
+      | naam.adellijkeTitelPredicaat  |                                                                 |
+      | inOnderzoek.geslacht          |                                                                 |
+      | geheimhoudingPersoonsgegevens | geheimhoudingPersoonsgegevens wordt niet opgenomen bij waarde 0 |
 
   Rule: optioneel mag je (het begin van) het pad weglaten wanneer dit uniek verwijst naar 1 veld in de resource
     - wanneer het opgegeven pad exact verwijst naar een veld en tegelijkertijd als deel van een pad verwijst naar een ander veld, wordt alleen het veld met het exacte pad opgenomen in de response
@@ -182,9 +182,9 @@ Functionaliteit: Fields
       | <pad>               | <waarde>  |
 
       Voorbeelden:
-      | pad                              | waarde      | opmerking                                                                               |
-      | geslachtsaanduiding.omschrijving | vrouw       | levert geslachtsaanduiding.omschrijving, niet partners.geslachtsaanduiding.omschrijving |
-      | naam.voornamen                   | Kierkegaard | levert naam.voornamen, niet partners.naam.voornamen                                     |
+      | pad                   | waarde      | opmerking                                                         |
+      | geslacht.omschrijving | vrouw       | levert geslacht.omschrijving, niet partners.geslacht.omschrijving |
+      | naam.voornamen        | Kierkegaard | levert naam.voornamen, niet partners.naam.voornamen               |
 
   Rule: Wanneer velden van polymorfe gegevensgroep wordt gevraagd, wordt altijd het 'type' veld van de gegevensgroep terug gegeven
     - wanneer het gegeven geen waarde heeft (ook niet onbekend) wordt de gegevensgroep niet geleverd en dus ook 'type' niet teruggegeven
@@ -246,9 +246,9 @@ Functionaliteit: Fields
 
     Abstract Scenario: Gevraagd veld is een polymorfe gegevensgroep van de persoon en heeft geen waarde
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                   |
-      | type                | RaadpleegMetBurgerservicenummer          |
-      | burgerservicenummer | 999991929                                |
+      | naam                | waarde                                                                                                         |
+      | type                | RaadpleegMetBurgerservicenummer                                                                                |
+      | burgerservicenummer | 999991929                                                                                                      |
       | fields              | burgerservicenummer,overlijden.datum,kiesrecht.uitgeslotenVanKiesrecht,kiesrecht.einddatumUitsluitingKiesrecht |
       Dan heeft de persoon met burgerservicenummer '999991929' alleen de volgende gegevens
       | naam                | waarde    |

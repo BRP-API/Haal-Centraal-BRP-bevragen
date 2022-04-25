@@ -32,7 +32,7 @@ components:
       properties:
         burgerservicenummer:
           $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
-        geslachtsaanduiding:
+        geslacht:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         ouderAanduiding:
           $ref: '#/components/schemas/OuderAanduiding'
@@ -48,14 +48,14 @@ components:
       description: |
         Gegevens over de ouder van de persoon.
         * **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.
-        * **geslachtsaanduiding** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **geslacht** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       allOf:
         - $ref: '#/components/schemas/AbstractOuder'
         - type: object
           properties:
             burgerservicenummer:
               $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
-            geslachtsaanduiding:
+            geslacht:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
             ouderAanduiding:
               $ref: '#/components/schemas/OuderAanduiding'
@@ -89,5 +89,5 @@ components:
               type: boolean
             datumIngangFamilierechtelijkeBetrekking:
               type: boolean
-            geslachtsaanduiding:
+            geslacht:
               type: boolean
