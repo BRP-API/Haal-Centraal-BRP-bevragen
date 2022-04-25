@@ -873,7 +873,7 @@
         "example" : "2341SX"
       },
       "StraatFilter" : {
-        "pattern" : "^[a-zA-Z0-9À-ž \\-\\']{1,80}$|^[a-zA-Z0-9À-ž \\-\\']{7,79}\\*{1}$|^\\*{1}[a-zA-Z0-9À-ž \\-\\']{7,79}$",
+        "pattern" : "^[a-zA-Z0-9À-ž \\-\\'\\.]{1,80}$|^[a-zA-Z0-9À-ž \\-\\'\\.]{7,79}\\*{1}$|^\\*{1}[a-zA-Z0-9À-ž \\-\\'\\.]{7,79}$",
         "type" : "string",
         "description" : "Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).\n",
         "example" : "Tulpstraat"
