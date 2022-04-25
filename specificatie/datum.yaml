@@ -40,16 +40,16 @@ components:
             datum:
               type: string
               format: date
-            leesbaarFormaat:
+            langFormaat:
               type: string
       required:
         - datum
-        - leesbaarFormaat
+        - langFormaat
       example:
         value:
           type: Datum
           datum: "2018-07-01"
-          leesbaarFormaat: "1 juli 2018"
+          langFormaat: "1 juli 2018"
     DatumOnbekend:
       description: representatie voor een volledig onbekend datum
       allOf:
@@ -59,16 +59,16 @@ components:
             onbekend:
               type: boolean
               default: true
-            leesbaarFormaat:
+            langFormaat:
               type: string
       required:
         - onbekend
-        - leesbaarFormaat
+        - langFormaat
       example:
         value:
           type: DatumOnbekend
           onbekend: true
-          leesbaarFormaat: "Onbekend"
+          langFormaat: "Onbekend"
     JaarDatum:
       description: representatie voor een datum waarvan maand en dag onbekend zijn
       allOf:
@@ -77,12 +77,16 @@ components:
           properties:
             jaar:
               $ref: '#/components/schemas/Jaar'
+            langFormaat:
+              type: string
       required:
         - jaar
+        - langFormaat
       example:
         value:
           type: JaarDatum
           jaar: 2018
+          langFormaat: 2018
     JaarMaandDatum:
       description: representatie voor een datum waarvan de dag onbekend is
       allOf:
@@ -93,18 +97,18 @@ components:
               $ref: '#/components/schemas/Jaar'
             maand:
               $ref: '#/components/schemas/Maand'
-            leesbaarFormaat:
+            langFormaat:
               type: string
       required:
         - jaar
         - maand
-        - leesbaarFormaat
+        - langFormaat
       example:
         value:
           type: JaarMaandDatum
           jaar: 2018
           maand: 7
-          leesbaarFormaat: "juli 2018"
+          langFormaat: "juli 2018"
     Jaar:
       type: integer
       format: int32
