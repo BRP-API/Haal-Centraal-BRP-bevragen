@@ -1030,7 +1030,7 @@
         "example" : "20180700"
       },
       "GbaInOnderzoek" : {
-        "required" : [ "aanduidingGegevensInOnderzoek", "datumIngangInOnderzoek" ],
+        "required" : [ "aanduidingGegevensInOnderzoek", "datumIngangOnderzoek" ],
         "type" : "object",
         "properties" : {
           "aanduidingGegevensInOnderzoek" : {
