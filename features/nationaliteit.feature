@@ -183,6 +183,7 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       En de persoon heeft een 'nationaliteit' met de volgende gegevens
       | naam               | waarde |
       | nationaliteit.code | 0001   |
+      Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000009830                       |
