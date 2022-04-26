@@ -7,7 +7,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
   
   De aanschrijfwijze wordt gebruikt als eerste regel(s) in de adressering op een envelop, of links bovenaan een brief, direct boven het adres.
   
-  Bij personen met een adellijke titel of predicaat bevat de aanschrijfwijze ook de aanschrijfvorm.
+  Bij personen met een adellijke titel of predicaat bevat de aanschrijfwijze ook de aanspreekvorm.
   Deze wordt in de adressering in de regel boven de naam van de aanschrijfwijze geplaatst om een correcte aanschrijving van een adellijke persoon samen te stellen.
 
   De aanschrijfwijze.naam kan ook worden gebruikt in lijsten met zoekresultaten, of op een website om te tonen op wie het betrekking heeft.
