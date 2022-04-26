@@ -7,31 +7,30 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
   
   De aanschrijfwijze wordt gebruikt als eerste regel(s) in de adressering op een envelop, of links bovenaan een brief, direct boven het adres.
   
-  Bij personen met een adellijke titel of predikaat bevat de aanschrijfwijze ook de aanschrijfvorm.
+  Bij personen met een adellijke titel of predicaat bevat de aanschrijfwijze ook de aanschrijfvorm.
   Deze wordt in de adressering in de regel boven de naam van de aanschrijfwijze geplaatst om een correcte aanschrijving van een adellijke persoon samen te stellen.
 
   De aanschrijfwijze.naam kan ook worden gebruikt in lijsten met zoekresultaten, of op een website om te tonen op wie het betrekking heeft.
 
   Attribuut aanschrijfwijze.naam wordt samengesteld op basis van:
   - voornamen (wordt omgezet naar voorletters)
-  - adellijke titel/predikaat
+  - adellijke titel/predicaat
   - voorvoegsel geslachtsnaam
   - geslachtsnaam
   - geslachtsaanduiding
   - aanduiding naamgebruik
   - voorvoegsel geslachtsnaam partner
   - geslachtsnaam partner
-  - adellijke titel/predikaat partner
-  - geslachtsaanduiding partner
+  - adellijke titel/predicaat partner
 
   De waarde van aanduiding naamgebruik bepaalt hoe de aanschrijfwijze.naam en aanschrijfwijze.aanspreekvorm worden samengesteld uit de naam van de persoon en de naam van de partner.
 
   Rule: De naam in aanschrijfwijze wordt op basis van aanduiding naamgebruik als volgt samengesteld:
         | aanduiding naamgebruik | omschrijving                 | naam in aanschrijfwijze |
         | E                      | eigen naam                   | PK VL AT VV GN          |
-        | P                      | partner naam                 | VL AP VP GP             |
-        | V                      | partner naam voor eigen naam | VL AP VP GP-PK AT VV GN |
-        | N                      | partner naam na eigen naam   | PK VL AT VV GN-AP VP GP |
+        | P                      | partner naam                 | VL HT VP GP             |
+        | V                      | partner naam voor eigen naam | VL HT VP GP-PK AT VV GN |
+        | N                      | partner naam na eigen naam   | PK VL AT VV GN-HT VP GP |
         Betekenis afkortingen in aanschrijfwijze:
           VL = voorletters
           VV = voorvoegselGeslachtsnaam
@@ -39,21 +38,21 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
           VP = voorvoegselGeslachtsnaam partner
           GP = geslachtsnaam partner
           AT = adelijke titel
-          AP = adellijke titel partner (in andersgeslachtelijke vorm)
-          PK = predikaat
+          HT = hoffelijkheidstitel of 'titre de courtoisie'
+          PK = predicaat
         Toelichting:
         - de aanschrijfwijze.naam start en eindigt niet met een spatie, heeft geen dubbele spaties en heeft geen spatie vóór en na de "-"
         - de voorletters worden opgenomen zoals beschreven in voorletters.feature
         - de eerste naamcomponent in de aanschrijfwijze.naam begint met een hoofdletter
         - het voorvoegsel wordt met kleine letters opgenomen
         - aanduiding naamgebruik "E" (eigen naam) wordt gehanteerd voor een persoon die geen actuele en geen ontbonden huwelijken/partnerschappen heeft gehad 
-        - de adellijke titel en het predikaat wordt opgenomen in de vorm die hoort bij de geslachtsaanduiding van de persoon:
-           | adellijke titel/predikaat | vrouw     | man      | onbekend |
+        - de adellijke titel en het predicaat wordt opgenomen in de vorm die hoort bij de geslachtsaanduiding van de persoon:
+           | adellijke titel/predicaat | vrouw     | man      | onbekend |
            | JH                        | jonkvrouw | jonkheer |          |
            | JV                        | jonkvrouw | jonkheer |          |
            | R                         |           | ridder   |          |
            | B                         | barones   | baron    |          |
-           | BI                        | barones   | baron    |          |
+           | BS                        | barones   | baron    |          |
            | H                         | hertogin  | hertog   |          |
            | HI                        | hertogin  | hertog   |          |
            | G                         | gravin    | graaf    |          |
@@ -62,18 +61,24 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
            | MI                        | markiezin | markies  |          |
            | P                         | prinses   | prins    |          |
            | PS                        | prinses   | prins    |          |
-        - de adellijke titel en het predikaat wordt niet opgenomen als er geen vorm is horende bij het geslacht van de persoon
-        - de adellijke titel en het predikaat worden met kleine letters opgenomen
-        - de adellijke titel of het predikaat van de partner wordt niet opgenomen bij aanduiding naamgebruik "E" (eigen naam)
-        - de adellijke titel of het predikaat van de persoon wordt niet opgenomen bij aanduiding naamgebruik "P" (partner naam)
-        - De adellijke titel van de partner wordt alleen opgenomen als geslachtsaanduiding van de persoon gelijk is aan "V" (vrouw) en de geslachtsaanduiding van de partner gelijk is aan "M" (man).
-        - het predikaat begint met een hoofdletter als de aanschrijfwijze begint met een predikaat 
-        - het predikaat van de partner wordt niet opgenomen
-        - het predikaat van de persoon wordt opgenomen achter het streepje en voor eigen voorvoegsel en geslachtsnaam bij aanduiding naamgebruik "V" (partner naam voor eigen naam)
+        - de adellijke titel en het predicaat wordt niet opgenomen als er geen vorm is horende bij het geslacht van de persoon
+        - de adellijke titel en het predicaat worden met kleine letters opgenomen
+        - de hoffelijkheidstitel ('titre de courtoisie') wordt opgenomen als de persoon geslacht "V" (vrouw) heeft en de adellijke titel van de (ex)partner een bijbehorende hoffelijksheidstitel heeft:
+          | adellijke titel (ex)partner | hoffelijkheidstitel |
+          | B                           | barones             |
+          | G                           | gravin              |
+          | H                           | hertogin            |
+          | M                           | markiezin           |
+          | P                           | prinses             |
+        - de hoffelijkheidstitel ('titre de courtoisie') wordt niet opgenomen bij aanduiding naamgebruik "E" (eigen naam)
+        - de adellijke titel of het predicaat van de persoon wordt niet opgenomen bij aanduiding naamgebruik "P" (partner naam)
+        - het predicaat begint met een hoofdletter als de aanschrijfwijze begint met een predicaat 
+        - het predicaat van de partner wordt niet opgenomen
+        - het predicaat van de persoon wordt opgenomen achter het streepje en voor eigen voorvoegsel en geslachtsnaam bij aanduiding naamgebruik "V" (partner naam voor eigen naam)
         - bij meerdere actuele (niet ontbonden) huwelijken/partnerschappen, worden de naamgegevens van de eerste partner (oudste relatie) gebruikt voor het samenstellen van de aanschrijfwijze
         - bij geen actueel huwelijk/partnerschap en meerdere ontbonden huwelijken/partnerschappen, worden de naamgegevens van de laatst ontbonden partner gebruikt voor het samenstellen van de aanschrijfwijze
 
-    Abstract Scenario: Persoon zonder voorvoegsel, zonder adellijke titel/predikaat, zonder actuele en/of ontbonden huwelijk/geregistreerd partnerschap
+    Abstract Scenario: Persoon zonder voorvoegsel, zonder adellijke titel/predicaat, zonder actuele en/of ontbonden huwelijk/geregistreerd partnerschap
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 999992934 |
@@ -99,7 +104,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | V                      | F. Groenen              |
       | N                      | F. Groenen              |
 
-    Abstract Scenario: Persoon met voorvoegsel, zonder adellijke titel/predikaat, zonder actuele en/of ontbonden huwelijk/geregistreerd partnerschap
+    Abstract Scenario: Persoon met voorvoegsel, zonder adellijke titel/predicaat, zonder actuele en/of ontbonden huwelijk/geregistreerd partnerschap
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 999992934 |
@@ -126,7 +131,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | in het      | V                      | F. in het Groenen       |
       | In Den      | N                      | F. in den Groenen       |
 
-    Abstract Scenario: Persoon met adellijke titel/predikaat, zonder actuele en/of ontbonden huwelijk/geregistreerd partnerschap
+    Abstract Scenario: Persoon met adellijke titel/predicaat, zonder actuele en/of ontbonden huwelijk/geregistreerd partnerschap
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                        | waarde                |
       | burgerservicenummer         | 999992934             |
@@ -136,7 +141,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | voorvoegsel (02.30)                  | <voorvoegsel>     |
       | geslachtsnaam (02.40)                | <geslachtsnaam>   |
       | voornamen (02.10)                    | <voornamen>       |
-      | adellijke titel of predikaat (02.20) | <titel/predikaat> |
+      | adellijke titel of predicaat (02.20) | <titel/predicaat> |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -147,7 +152,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | aanschrijfwijze.naam | <naam in aanschrijfwijze> |
 
       Voorbeelden:
-      | geslachtsaanduiding | voornamen | voorvoegsel | geslachtsnaam | titel/predikaat | naam in aanschrijfwijze    |
+      | geslachtsaanduiding | voornamen | voorvoegsel | geslachtsnaam | titel/predicaat | naam in aanschrijfwijze    |
       | M                   | Franklin  | van den     | Aedel         | JH              | Jonkheer F. van den Aedel  |
       | V                   | Francisca |             | Groenen       | JV              | Jonkvrouw F. Groenen       |
       | M                   | Franklin  |             | Groenen       | JV              | Jonkheer F. Groenen        |
@@ -155,7 +160,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | M                   | Franklin  | van den     | Aedel         | R               | F. ridder van den Aedel    |
       | V                   | Francisca | van den     | Aedel         | R               | F. van den Aedel           |
       | M                   | Franklin  | van den     | Aedel         | B               | F. baron van den Aedel     |
-      | V                   | Francisca |             | Groenen       | BI              | F. barones Groenen         |
+      | V                   | Francisca |             | Groenen       | BS              | F. barones Groenen         |
       | M                   | Franklin  | van den     | Aedel         | H               | F. hertog van den Aedel    |
       | V                   | Francisca |             | Groenen       | HI              | F. hertogin Groenen        |
       | M                   | Franklin  | van den     | Aedel         | G               | F. graaf van den Aedel     |
@@ -168,7 +173,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | V                   | Francisca | van den     | Aedel         | P               | F. prinses van den Aedel   |
       | O                   | Franklin  | van den     | Aedel         | M               | F. van den Aedel           |
 
-    Abstract Scenario: Persoon zonder adellijke titel/predikaat, met een actuele/ontbonden partner met adellijke titel/predikaat heeft aanduiding naamgebruik "E" (eigen naam)
+    Abstract Scenario: Persoon zonder adellijke titel/predicaat, met een actuele/ontbonden partner met adellijke titel/predicaat heeft aanduiding naamgebruik "E" (eigen naam)
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                        | waarde                |
       | burgerservicenummer         | 999992934             |
@@ -178,7 +183,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | geslachtsnaam (02.40)          | Groenen     |
       | voornamen (02.10)              | <voornamen> |
       | aanduiding naamgebruik (61.10) | E           |
-      En de persoon heeft een <partner type> partner met <adellijke titel of predikaat type>
+      En de persoon heeft een <partner type> partner met <adellijke titel of predicaat type>
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -189,13 +194,13 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | aanschrijfwijze.naam | F. Groenen |
 
       Voorbeelden:
-      | geslachtsaanduiding | voornamen | partner type | adellijke titel of predikaat type |
+      | geslachtsaanduiding | voornamen | partner type | adellijke titel of predicaat type |
       | M                   | Franklin  | actuele      | adellijke titel                   |
-      | V                   | Francisca | ontbonden    | predikaat                         |
-      | O                   | Franklin  | actuele      | predikaat                         |
+      | V                   | Francisca | ontbonden    | predicaat                         |
+      | O                   | Franklin  | actuele      | predicaat                         |
       | O                   | Francisca | ontbonden    | adellijke titel                   |
 
-    Abstract Scenario: Persoon zonder adellijke titel/predikaat heeft één actuele/ontbonden partner zonder adellijke titel/predikaat
+    Abstract Scenario: Persoon zonder adellijke titel/predicaat heeft één actuele/ontbonden partner zonder adellijke titel/predicaat
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 999992934 |
@@ -239,7 +244,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | Henk      | van         | Velzen        | V                      | van den             | Aedel                 | H. van den Aedel-van Velzen |
       | Henk      | van         | Velzen        | N                      | van den             | Aedel                 | H. van Velzen-van den Aedel |
 
-    Abstract Scenario: Persoon met adellijke titel/predikaat heeft één actuele/ontbonden partner zonder adellijke titel/predikaat
+    Abstract Scenario: Persoon met adellijke titel/predicaat heeft één actuele/ontbonden partner zonder adellijke titel/predicaat
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                        | waarde     |
       | burgerservicenummer         | 999992934  |
@@ -249,7 +254,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | voorvoegsel (02.30)                  | <voorvoegsel>            |
       | geslachtsnaam (02.40)                | <geslachtsnaam>          |
       | voornamen (02.10)                    | <voornamen>              |
-      | adellijke titel of predikaat (02.20) | <titel/predikaat>        |
+      | adellijke titel of predicaat (02.20) | <titel/predicaat>        |
       | aanduiding naamgebruik (61.10)       | <aanduiding naamgebruik> |
       En de persoon heeft een partner met de volgende gegevens
       | naam                | waarde    |
@@ -268,7 +273,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | aanschrijfwijze.naam | <naam in aanschrijfwijze> |
 
       Voorbeelden:
-      | geslacht | voornamen | voorvoegsel | geslachtsnaam | titel/predikaat | aanduiding naamgebruik | voorvoegsel partner | geslachtsnaam partner | naam in aanschrijfwijze     |
+      | geslacht | voornamen | voorvoegsel | geslachtsnaam | titel/predicaat | aanduiding naamgebruik | voorvoegsel partner | geslachtsnaam partner | naam in aanschrijfwijze     |
       | M        | Franklin  |             | Groenen       | JH              | E                      |                     | Groenlo               | Jonkheer F. Groenen         |
       | M        | Franklin  |             | Groenen       | JH              | P                      |                     | Groenlo               | F. Groenlo                  |
       | M        | Franklin  |             | Groenen       | JH              | V                      |                     | Groenlo               | F. Groenlo-jonkheer Groenen |
@@ -278,7 +283,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | M        | Henk      | van         | Velzen        | B               | V                      |                     | Groenlo               | H. Groenlo-baron van Velzen |
       | M        | Henk      | van         | Velzen        | B               | N                      |                     | Groenlo               | H. baron van Velzen-Groenlo |
 
-    Abstract Scenario: Persoon zonder adellijke titel/predikaat heeft één actuele/ontbonden partner met adellijke titel
+    Abstract Scenario: Persoon zonder adellijke titel/predicaat heeft één actuele/ontbonden partner met adellijke titel
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                        | waarde     |
       | burgerservicenummer         | 999992934  |
@@ -290,14 +295,13 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | voornamen (02.10)              | <voornamen>              |
       | aanduiding naamgebruik (61.10) | <aanduiding naamgebruik> |
       En de persoon heeft een partner met de volgende gegevens
-      | naam                        | waarde             |
-      | burgerservicenummer         | 999992935          |
-      | geslachtsaanduiding (04.10) | <geslacht partner> |
+      | naam                | waarde    |
+      | burgerservicenummer | 999992935 |
       En de partner heeft de volgende naam gegevens
       | naam                                 | waarde                    |
       | voorvoegsel (02.30)                  | <voorvoegsel partner>     |
       | geslachtsnaam (02.40)                | <geslachtsnaam partner>   |
-      | adellijke titel of predikaat (02.20) | <adellijke titel partner> |
+      | adellijke titel of predicaat (02.20) | <adellijke titel partner> |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -308,21 +312,37 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | aanschrijfwijze.naam | <naam in aanschrijfwijze> |
 
       Voorbeelden:
-      | geslacht | voornamen | voorvoegsel | geslachtsnaam | aanduiding naamgebruik | voorvoegsel partner | geslacht partner | geslachtsnaam partner | adellijke titel partner | naam in aanschrijfwijze      |
-      | M        | Franklin  |             | Groenen       | E                      |                     | V                | Groenlo               | MI                      | F. Groenen                   |
-      | M        | Franklin  |             | Groenen       | P                      |                     | V                | Groenlo               | MI                      | F. Groenlo                   |
-      | M        | Franklin  |             | Groenen       | V                      |                     | V                | Groenlo               | MI                      | F. Groenlo-Groenen           |
-      | M        | Franklin  |             | Groenen       | N                      |                     | V                | Groenlo               | MI                      | F. Groenen-Groenlo           |
-      | V        | Julia     | van         | Velzen        | E                      |                     | M                | Groenlo               | G                       | J. van Velzen                |
-      | V        | Julia     | van         | Velzen        | P                      |                     | M                | Groenlo               | G                       | J. gravin Groenlo            |
-      | V        | Julia     | van         | Velzen        | V                      |                     | M                | Groenlo               | G                       | J. gravin Groenlo-van Velzen |
-      | V        | Julia     | van         | Velzen        | N                      |                     | M                | Groenlo               | G                       | H. van Velzen-gravin Groenlo |
-      | V        | Julia     | van         | Velzen        | V                      |                     | V                | Groenlo               | GI                      | J. Groenlo-van Velzen        |
-      | M        | Franklin  |             | Groenen       | N                      |                     | M                | Groenlo               | M                       | F. Groenen-Groenlo           |
-      | O        | Julia     | van         | Velzen        | N                      |                     | M                | Groenlo               | G                       | J. van Velzen-Groenlo        |
-      | V        | Julia     | van         | Velzen        | P                      |                     | M                | Groenlo               | R                       | J. Groenlo                   |
+      | geslacht | voornamen | voorvoegsel | geslachtsnaam | aanduiding naamgebruik | voorvoegsel partner | geslachtsnaam partner | adellijke titel partner | naam in aanschrijfwijze      |
+      | M        | Franklin  |             | Groenen       | E                      |                     | Groenlo               | BS                      | F. Groenen                   |
+      | M        | Franklin  |             | Groenen       | P                      |                     | Groenlo               | BS                      | F. Groenlo                   |
+      | M        | Franklin  |             | Groenen       | V                      |                     | Groenlo               | BS                      | F. Groenlo-Groenen           |
+      | M        | Franklin  |             | Groenen       | N                      |                     | Groenlo               | BS                      | F. Groenen-Groenlo           |
+      | M        | Franklin  |             | Groenen       | E                      |                     | Groenlo               | B                       | F. Groenen                   |
+      | M        | Franklin  |             | Groenen       | P                      |                     | Groenlo               | B                       | F. Groenlo                   |
+      | M        | Franklin  |             | Groenen       | V                      |                     | Groenlo               | B                       | F. Groenlo-Groenen           |
+      | M        | Franklin  |             | Groenen       | N                      |                     | Groenlo               | B                       | F. Groenen-Groenlo           |
+      | O        | Franklin  |             | Groenen       | E                      |                     | Groenlo               | B                       | F. Groenen                   |
+      | O        | Franklin  |             | Groenen       | P                      |                     | Groenlo               | B                       | F. Groenlo                   |
+      | O        | Franklin  |             | Groenen       | V                      |                     | Groenlo               | B                       | F. Groenlo-Groenen           |
+      | O        | Franklin  |             | Groenen       | N                      |                     | Groenlo               | B                       | F. Groenen-Groenlo           |
+      | V        | Julia     | van         | Velzen        | E                      |                     | Groenlo               | G                       | J. van Velzen                |
+      | V        | Julia     | van         | Velzen        | P                      |                     | Groenlo               | G                       | J. gravin Groenlo            |
+      | V        | Julia     | van         | Velzen        | V                      |                     | Groenlo               | G                       | J. gravin Groenlo-van Velzen |
+      | V        | Julia     | van         | Velzen        | N                      |                     | Groenlo               | G                       | H. van Velzen-gravin Groenlo |
+      | V        | Julia     | van         | Velzen        | V                      |                     | Groenlo               | GI                      | J. Groenlo-van Velzen        |
+      | V        | Julia     | van         | Velzen        | P                      |                     | Groenlo               | R                       | J. Groenlo                   |
+      | V        | Julia     | van         | Velzen        | P                      |                     | Groenlo               | B                       | J. barones Groenlo           |
+      | V        | Julia     | van         | Velzen        | P                      |                     | Groenlo               | BS                      | J. Groenlo                   |
+      | V        | Julia     | van         | Velzen        | P                      |                     | Groenlo               | H                       | J. hertogin Groenlo          |
+      | V        | Julia     | van         | Velzen        | P                      |                     | Groenlo               | HI                      | J. Groenlo                   |
+      | V        | Julia     | van         | Velzen        | P                      |                     | Groenlo               | G                       | J. gravin Groenlo            |
+      | V        | Julia     | van         | Velzen        | P                      |                     | Groenlo               | GI                      | J. Groenlo                   |
+      | V        | Julia     | van         | Velzen        | P                      |                     | Groenlo               | M                       | J. markiezin Groenlo         |
+      | V        | Julia     | van         | Velzen        | P                      |                     | Groenlo               | MI                      | J. Groenlo                   |
+      | V        | Julia     | van         | Velzen        | P                      |                     | Groenlo               | P                       | J. prinses Groenlo           |
+      | V        | Julia     | van         | Velzen        | P                      |                     | Groenlo               | PS                      | J. Groenlo                   |
 
-    Abstract Scenario: Persoon zonder adellijke titel/predikaat heeft één actuele/ontbonden partner met predikaat
+    Abstract Scenario: Persoon zonder adellijke titel/predicaat heeft één actuele/ontbonden partner met predicaat
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                        | waarde     |
       | burgerservicenummer         | 999992934  |
@@ -334,14 +354,13 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | voornamen (02.10)              | <voornamen>              |
       | aanduiding naamgebruik (61.10) | <aanduiding naamgebruik> |
       En de persoon heeft een partner met de volgende gegevens
-      | naam                        | waarde             |
-      | burgerservicenummer         | 999992935          |
-      | geslachtsaanduiding (04.10) | <geslacht partner> |
+      | naam                | waarde    |
+      | burgerservicenummer | 999992935 |
       En de partner heeft de volgende naam gegevens
       | naam                                 | waarde                  |
       | voorvoegsel (02.30)                  | <voorvoegsel partner>   |
       | geslachtsnaam (02.40)                | <geslachtsnaam partner> |
-      | adellijke titel of predikaat (02.20) | <predikaat partner>     |
+      | adellijke titel of predicaat (02.20) | <predicaat partner>     |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -352,20 +371,21 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | aanschrijfwijze.naam | <naam in aanschrijfwijze> |
 
       Voorbeelden:
-      | geslacht | voornamen | voorvoegsel | geslachtsnaam | aanduiding naamgebruik | voorvoegsel partner | geslacht partner | geslachtsnaam partner | predikaat partner | naam in aanschrijfwijze |
-      | M        | Franklin  |             | Groenen       | E                      |                     | V                | Groenlo               | JV                | F. Groenen              |
-      | M        | Franklin  |             | Groenen       | N                      |                     | V                | Groenlo               | JV                | F. Groenen-Groenlo      |
-      | M        | Henk      | van         | Velzen        | P                      |                     | V                | Groenlo               | JV                | H. Groenlo              |
-      | M        | Henk      | van         | Velzen        | V                      |                     | V                | Groenlo               | JV                | H. Groenlo-van Velzen   |
-      | V        | Julia     | van         | Velzen        | E                      |                     | M                | Groenlo               | JH                | J. van Velzen           |
-      | V        | Julia     | van         | Velzen        | P                      |                     | M                | Groenlo               | JH                | J. Groenlo              |
-      | V        | Julia     | van         | Velzen        | V                      |                     | M                | Groenlo               | JH                | J. Groenlo-van Velzen   |
-      | V        | Julia     | van         | Velzen        | N                      |                     | M                | Groenlo               | JH                | H. van Velzen-Groenlo   |
-      | M        | Franklin  | van         | Velzen        | P                      |                     | M                | Groenlo               | JH                | F. Groenlo              |
-      | V        | Julia     | van         | Velzen        | V                      |                     | V                | Groenlo               | JV                | J. Groenlo-van Velzen   |
-      | O        | Julia     | van         | Velzen        | N                      |                     | M                | Groenlo               | JH                | J. van Velzen-Groenlo   |
+      | geslacht | voornamen | voorvoegsel | geslachtsnaam | aanduiding naamgebruik | voorvoegsel partner | geslachtsnaam partner | predicaat partner | naam in aanschrijfwijze |
+      | M        | Franklin  |             | Groenen       | E                      |                     | Groenlo               | JV                | F. Groenen              |
+      | M        | Franklin  |             | Groenen       | N                      |                     | Groenlo               | JV                | F. Groenen-Groenlo      |
+      | M        | Henk      | van         | Velzen        | P                      |                     | Groenlo               | JV                | H. Groenlo              |
+      | M        | Henk      | van         | Velzen        | V                      |                     | Groenlo               | JV                | H. Groenlo-van Velzen   |
+      | V        | Julia     | van         | Velzen        | E                      |                     | Groenlo               | JH                | J. van Velzen           |
+      | V        | Julia     | van         | Velzen        | P                      |                     | Groenlo               | JH                | J. Groenlo              |
+      | V        | Julia     | van         | Velzen        | V                      |                     | Groenlo               | JH                | J. Groenlo-van Velzen   |
+      | V        | Julia     | van         | Velzen        | N                      |                     | Groenlo               | JH                | H. van Velzen-Groenlo   |
+      | M        | Franklin  | van         | Velzen        | P                      |                     | Groenlo               | JH                | F. Groenlo              |
+      | V        | Julia     | van         | Velzen        | P                      |                     | Groenlo               | JV                | J. Groenlo              |
+      | O        | Julia     | van         | Velzen        | P                      |                     | Groenlo               | JH                | J. Groenlo              |
+      | O        | Julia     | van         | Velzen        | P                      |                     | Groenlo               | JV                | J. Groenlo              |
 
-    Abstract Scenario: Persoon met adellijke titel/predikaat heeft één actuele/ontbonden partner met adellijke titel
+    Abstract Scenario: Persoon met adellijke titel/predicaat heeft één actuele/ontbonden partner met adellijke titel
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                        | waarde     |
       | burgerservicenummer         | 999992934  |
@@ -376,16 +396,15 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | geslachtsnaam (02.40)                | <geslachtsnaam>             |
       | voornamen (02.10)                    | <voornamen>                 |
       | aanduiding naamgebruik (61.10)       | <aanduiding naamgebruik>    |
-      | adellijke titel of predikaat (02.20) | <adellijke titel/predikaat> |
+      | adellijke titel of predicaat (02.20) | <adellijke titel/predicaat> |
       En de persoon heeft een partner met de volgende gegevens
-      | naam                        | waarde             |
-      | burgerservicenummer         | 999992935          |
-      | geslachtsaanduiding (04.10) | <geslacht partner> |
+      | naam                | waarde    |
+      | burgerservicenummer | 999992935 |
       En de partner heeft de volgende naam gegevens
       | naam                                 | waarde                    |
       | voorvoegsel (02.30)                  |                           |
       | geslachtsnaam (02.40)                | <geslachtsnaam partner>   |
-      | adellijke titel of predikaat (02.20) | <adellijke titel partner> |
+      | adellijke titel of predicaat (02.20) | <adellijke titel partner> |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -396,15 +415,15 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | aanschrijfwijze.naam | <naam in aanschrijfwijze> |
 
       Voorbeelden:
-      | geslacht | voornamen | geslachtsnaam | adellijke titel/predikaat | aanduiding naamgebruik | geslacht partner | geslachtsnaam partner | adellijke titel partner | naam in aanschrijfwijze             |
-      | M        | Franklin  | Groenen       | G                         | E                      | V                | Groenlo               | MI                      | F. graaf Groenen                    |
-      | M        | Franklin  | Groenen       | G                         | P                      | V                | Groenlo               | MI                      | F. Groenlo                          |
-      | M        | Franklin  | Groenen       | G                         | V                      | V                | Groenlo               | MI                      | F. Groenlo-graaf Groenen            |
-      | M        | Franklin  | Groenen       | G                         | N                      | V                | Groenlo               | MI                      | F. graaf Groenen-Groenlo            |
-      | V        | Francisca | Groenen       | GI                        | E                      | M                | Groenlo               | M                       | F. gravin Groenen                   |
-      | V        | Francisca | Groenen       | GI                        | P                      | M                | Groenlo               | M                       | F. markiezin Groenlo                |
-      | V        | Francisca | Groenen       | GI                        | V                      | M                | Groenlo               | M                       | F. markiezin Groenlo-gravin Groenen |
-      | V        | Francisca | Groenen       | GI                        | N                      | M                | Groenlo               | M                       | F. gravin Groenen-markiezin Groenlo |
+      | geslacht | voornamen | geslachtsnaam | adellijke titel/predicaat | aanduiding naamgebruik | geslachtsnaam partner | adellijke titel partner | naam in aanschrijfwijze           |
+      | M        | Franklin  | Groenen       | G                         | E                      | Groenlo               | BS                      | F. graaf Groenen                  |
+      | M        | Franklin  | Groenen       | G                         | P                      | Groenlo               | BS                      | F. Groenlo                        |
+      | M        | Franklin  | Groenen       | G                         | V                      | Groenlo               | BS                      | F. Groenlo-graaf Groenen          |
+      | M        | Franklin  | Groenen       | G                         | N                      | Groenlo               | BS                      | F. graaf Groenen-Groenlo          |
+      | V        | Francisca | Groenen       | GI                        | E                      | Groenlo               | B                       | F. gravin Groenen                 |
+      | V        | Francisca | Groenen       | GI                        | P                      | Groenlo               | B                       | F. barones Groenlo                |
+      | V        | Francisca | Groenen       | GI                        | V                      | Groenlo               | B                       | F. barones Groenlo-gravin Groenen |
+      | V        | Francisca | Groenen       | GI                        | N                      | Groenlo               | B                       | F. gravin Groenen-barones Groenlo |
 
     Abstract Scenario: Persoon met meerdere actuele partners
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -489,14 +508,13 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       En de persoon heeft de volgende naam gegevens
       | naam                                 | waarde          |
       | voornamen (02.10)                    |                 |
-      | adellijke titel of predikaat (02.20) |                 |
+      | adellijke titel of predicaat (02.20) |                 |
       | voorvoegsel (02.30)                  |                 |
       | geslachtsnaam (02.40)                | <geslachtsnaam> |
       | aanduidingNaamgebruik (61.10)        | <naamgebruik>   |
       En de persoon heeft een partner met de volgende gegevens
-      | naam                        | waarde             |
-      | burgerservicenummer         | 999992935          |
-      | geslachtsaanduiding (04.10) | <geslacht partner> |
+      | naam                | waarde    |
+      | burgerservicenummer | 999992935 |
       En de partner heeft de volgende naam gegevens
       | naam                  | waarde |
       | voorvoegsel (02.30)   | van    |
@@ -511,19 +529,19 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | aanschrijfwijze.naam  | <naam in aanschrijfwijze> |
 
       Voorbeelden:
-      | geslacht | geslachtsnaam     | naamgebruik | geslacht partner | naam in aanschrijfwijze      |
-      | M        | Ali bin Mohammed  | E           | V                | Ali bin Mohammed             |
-      | M        | Ali bin Mohammed  | P           | V                | Van Velzen                   |
-      | M        | Ali bin Mohammed  | V           | V                | Van Velzen-Ali bin Mohammed  |
-      | M        | Ali bin Mohammed  | N           | V                | Ali bin Mohammed-van Velzen  |
-      | V        | Ibin binti Yalniz | E           | M                | Ibin binti Yalniz            |
-      | V        | Ibin binti Yalniz | P           | M                | Van Velzen                   |
-      | V        | Ibin binti Yalniz | V           | M                | Van Velzen-Ibin binti Yalniz |
-      | V        | Ibin binti Yalniz | N           | M                | Ibin binti Yalniz-van Velzen |
-      | O        | Ali bin Mohammed  | E           | V                | Ali bin Mohammed             |
-      | O        | Ali bin Mohammed  | P           | M                | Van Velzen                   |
-      | O        | Ibin binti Yalniz | V           | V                | Van Velzen-Ibin binti Yalniz |
-      | O        | Ibin binti Yalniz | N           | M                | Ibin binti Yalniz-van Velzen |
+      | geslacht | geslachtsnaam     | naamgebruik | naam in aanschrijfwijze      |
+      | M        | Ali bin Mohammed  | E           | Ali bin Mohammed             |
+      | M        | Ali bin Mohammed  | P           | Van Velzen                   |
+      | M        | Ali bin Mohammed  | V           | Van Velzen-Ali bin Mohammed  |
+      | M        | Ali bin Mohammed  | N           | Ali bin Mohammed-van Velzen  |
+      | V        | Ibin binti Yalniz | E           | Ibin binti Yalniz            |
+      | V        | Ibin binti Yalniz | P           | Van Velzen                   |
+      | V        | Ibin binti Yalniz | V           | Van Velzen-Ibin binti Yalniz |
+      | V        | Ibin binti Yalniz | N           | Ibin binti Yalniz-van Velzen |
+      | O        | Ali bin Mohammed  | E           | Ali bin Mohammed             |
+      | O        | Ali bin Mohammed  | P           | Van Velzen                   |
+      | O        | Ibin binti Yalniz | V           | Van Velzen-Ibin binti Yalniz |
+      | O        | Ibin binti Yalniz | N           | Ibin binti Yalniz-van Velzen |
 
     Abstract Scenario: persoon met een naamketen heeft een partner met adellijke titel
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -533,19 +551,18 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       En de persoon heeft de volgende naam gegevens
       | naam                                 | waarde          |
       | voornamen (02.10)                    |                 |
-      | adellijke titel of predikaat (02.20) |                 |
+      | adellijke titel of predicaat (02.20) |                 |
       | voorvoegsel (02.30)                  |                 |
       | geslachtsnaam (02.40)                | <geslachtsnaam> |
       | aanduidingNaamgebruik (61.10)        | <naamgebruik>   |
       En de persoon heeft een partner met de volgende gegevens
-      | naam                        | waarde             |
-      | burgerservicenummer         | 999992935          |
-      | geslachtsaanduiding (04.10) | <geslacht partner> |
+      | naam                | waarde    |
+      | burgerservicenummer | 999992935 |
       En de partner heeft de volgende naam gegevens
       | naam                                 | waarde                    |
       | voorvoegsel (02.30)                  | van                       |
       | geslachtsnaam (02.40)                | Velzen                    |
-      | adellijke titel of predikaat (02.20) | <adellijke titel partner> |
+      | adellijke titel of predicaat (02.20) | <adellijke titel partner> |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -556,27 +573,27 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | aanschrijfwijze.naam  | <naam in aanschrijfwijze> |
 
       Voorbeelden:
-      | geslacht | geslachtsnaam     | naamgebruik | geslacht partner | adellijke titel partner | naam in aanschrijfwijze                |
-      | M        | Ali bin Mohammed  | E           | V                | BI                      | Ali bin Mohammed                       |
-      | M        | Ali bin Mohammed  | P           | V                | GI                      | Van Velzen                             |
-      | M        | Ali bin Mohammed  | V           | V                | MI                      | Van Velzen-Ali bin Mohammed            |
-      | M        | Ali bin Mohammed  | N           | V                | HI                      | Ali bin Mohammed-van Velzen            |
-      | V        | Ibin binti Yalniz | E           | M                | B                       | Ibin binti Yalniz                      |
-      | V        | Ibin binti Yalniz | P           | M                | G                       | Gravin van Velzen                      |
-      | V        | Ibin binti Yalniz | V           | M                | H                       | Hertogin van Velzen-Ibin binti Yalniz  |
-      | V        | Ibin binti Yalniz | N           | M                | M                       | Ibin binti Yalniz-markiezin van Velzen |
-      | O        | Ali bin Mohammed  | E           | V                | BI                      | Ali bin Mohammed                       |
-      | O        | Ali bin Mohammed  | P           | M                | G                       | Van Velzen                             |
-      | O        | Ibin binti Yalniz | V           | V                | MI                      | Van Velzen-Ibin binti Yalniz           |
-      | O        | Ibin binti Yalniz | N           | M                | H                       | Ibin binti Yalniz-van Velzen           |
+      | geslacht | geslachtsnaam     | naamgebruik | adellijke titel partner | naam in aanschrijfwijze                |
+      | M        | Ali bin Mohammed  | E           | BS                      | Ali bin Mohammed                       |
+      | M        | Ali bin Mohammed  | P           | GI                      | Van Velzen                             |
+      | M        | Ali bin Mohammed  | V           | MI                      | Van Velzen-Ali bin Mohammed            |
+      | M        | Ali bin Mohammed  | N           | HI                      | Ali bin Mohammed-van Velzen            |
+      | V        | Ibin binti Yalniz | E           | B                       | Ibin binti Yalniz                      |
+      | V        | Ibin binti Yalniz | P           | G                       | Gravin van Velzen                      |
+      | V        | Ibin binti Yalniz | V           | H                       | Hertogin van Velzen-Ibin binti Yalniz  |
+      | V        | Ibin binti Yalniz | N           | M                       | Ibin binti Yalniz-markiezin van Velzen |
+      | O        | Ali bin Mohammed  | E           | BS                      | Ali bin Mohammed                       |
+      | O        | Ali bin Mohammed  | P           | G                       | Van Velzen                             |
+      | O        | Ibin binti Yalniz | V           | MI                      | Van Velzen-Ibin binti Yalniz           |
+      | O        | Ibin binti Yalniz | N           | H                       | Ibin binti Yalniz-van Velzen           |
 
   Rule: de aanspreekvorm in aanschrijfwijze wordt als volgt samengesteld:
-        | adellijke titel/predikaat | vrouw                    | man                    | onbekend    |
+        | adellijke titel/predicaat | vrouw                    | man                    | onbekend    |
         | JH                        | De hoogwelgeboren vrouwe | De hoogwelgeboren heer |             |
         | JV                        | De hoogwelgeboren vrouwe | De hoogwelgeboren heer |             |
         | R                         | De hoogwelgeboren vrouwe | De hoogwelgeboren heer |             |
         | B                         | De hoogwelgeboren vrouwe | De hoogwelgeboren heer |             |
-        | BI                        | De hoogwelgeboren vrouwe | De hoogwelgeboren heer |             |
+        | BS                        | De hoogwelgeboren vrouwe | De hoogwelgeboren heer |             |
         | H                         | De hoogwelgeboren vrouwe | De hoogwelgeboren heer |             |
         | HI                        | De hoogwelgeboren vrouwe | De hoogwelgeboren heer |             |
         | G                         | De hooggeboren vrouwe    | De hooggeboren heer    |             |
@@ -587,13 +604,13 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
         | PS                        | De hoogheid              | De hoogheid            | De hoogheid |
         toelichting:
         - er is geen aanspreekvorm als:
-          - de persoon geen adellijke titel/predikaat heeft
+          - de persoon geen adellijke titel/predicaat heeft
           - de persoon gebruikt aanduiding naamgebruik "P" (naam partner)
-          - er geen adellijke titel/predikaat vorm is die hoort bij de geslachtsaanduiding van de persoon
-          - de persoon een predikaat, de geslachtsaanduiding "V" (vrouw) en een actuele (niet ontbonden) partner heeft
-          - de persoon een predikaat, de geslachtsaanduiding "V" (vrouw), geen actuele (maar mogelijk wel ontbonden) partner en een aanduiding naamgebruik ongelijk aan "E" (eigen naam) heeft
+          - er geen adellijke titel/predicaat vorm is die hoort bij de geslachtsaanduiding van de persoon
+          - de persoon een predicaat, de geslachtsaanduiding "V" (vrouw) en een actuele (niet ontbonden) partner heeft
+          - de persoon een predicaat, de geslachtsaanduiding "V" (vrouw), geen actuele (maar mogelijk wel ontbonden) partner en een aanduiding naamgebruik ongelijk aan "E" (eigen naam) heeft
 
-    Abstract Scenario: Persoon heeft geen adellijke titel/predikaat
+    Abstract Scenario: Persoon heeft geen adellijke titel/predicaat
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 999992934 |
@@ -619,21 +636,21 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | V                      |
       | N                      |
 
-    Abstract Scenario: Persoon heeft adellijke titel/predikaat en gebruikt aanduiding naamgebruik "P"
+    Abstract Scenario: Persoon heeft adellijke titel/predicaat en gebruikt aanduiding naamgebruik "P"
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                        | waarde                |
       | burgerservicenummer         | 999992934             |
       | geslachtsaanduiding (04.10) | <geslachtsaanduiding> |
       En de persoon heeft de volgende naam gegevens
       | naam                                 | waarde                   |
-      | adellijke titel of predikaat (02.20) | <titel/predikaat>        |
+      | adellijke titel of predicaat (02.20) | <titel/predicaat>        |
       | aanduiding naamgebruik (61.10)       | <aanduiding naamgebruik> |
       En de persoon heeft een partner met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 999992935 |
       En de partner heeft de volgende naam gegevens
       | naam                                 | waarde                    |
-      | adellijke titel of predikaat (02.20) | <titel/predikaat partner> |
+      | adellijke titel of predicaat (02.20) | <titel/predicaat partner> |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                             |
       | type                | RaadpleegMetBurgerservicenummer    |
@@ -644,33 +661,33 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | aanschrijfwijze.aanspreekvorm | <aanspreekvorm> |
 
       Voorbeelden:
-      | geslachtsaanduiding | aanduiding naamgebruik | titel/predikaat | titel/predikaat partner | aanspreekvorm            |
+      | geslachtsaanduiding | aanduiding naamgebruik | titel/predicaat | titel/predicaat partner | aanspreekvorm            |
       | M                   | E                      | JH              |                         | De hoogwelgeboren heer   |
       | M                   | P                      | R               | GI                      |                          |
       | M                   | V                      | R               |                         | De hoogwelgeboren heer   |
-      | M                   | N                      | B               | BI                      | De hoogwelgeboren heer   |
+      | M                   | N                      | B               | BS                      | De hoogwelgeboren heer   |
       | M                   | E                      | H               |                         | De hoogwelgeboren heer   |
       | M                   | P                      | G               | GI                      |                          |
-      | M                   | V                      | G               | BI                      | De hoogwelgeboren heer   |
+      | M                   | V                      | G               | BS                      | De hoogwelgeboren heer   |
       | M                   | N                      | M               |                         | De hoogwelgeboren heer   |
       | M                   | E                      | P               |                         | De hoogheid              |
       | V                   | E                      | JV              |                         | De hoogwelgeboren vrouwe |
-      | V                   | P                      | BI              |                         |                          |
-      | V                   | V                      | BI              | BI                      | De hoogwelgeboren vrouwe |
+      | V                   | P                      | BS              |                         |                          |
+      | V                   | V                      | BS              | BS                      | De hoogwelgeboren vrouwe |
       | V                   | N                      | HI              | GI                      | De hoogwelgeboren vrouwe |
       | V                   | E                      | GI              |                         | De hoogwelgeboren vrouwe |
       | V                   | P                      | MI              | GI                      |                          |
-      | V                   | V                      | MI              | BI                      | De hoogwelgeboren vrouwe |
+      | V                   | V                      | MI              | BS                      | De hoogwelgeboren vrouwe |
       | V                   | N                      | PS              |                         | De hoogheid              |
 
-    Abstract Scenario: Persoon heeft geslachtsaanduiding O en heeft een adellijke titel/predikaat
+    Abstract Scenario: Persoon heeft geslachtsaanduiding O en heeft een adellijke titel/predicaat
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                        | waarde    |
       | burgerservicenummer         | 999992934 |
       | geslachtsaanduiding (04.10) | O         |
       En de persoon heeft de volgende naam gegevens
       | naam                                 | waarde            |
-      | adellijke titel of predikaat (02.20) | <titel/predikaat> |
+      | adellijke titel of predicaat (02.20) | <titel/predicaat> |
       | aanduiding naamgebruik (61.10)       | E                 |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                             |
@@ -682,12 +699,12 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | aanschrijfwijze.aanspreekvorm | <aanspreekvorm> |
 
       Voorbeelden:
-      | titel/predikaat | aanspreekvorm |
+      | titel/predicaat | aanspreekvorm |
       | JH              |               |
       | JV              |               |
       | R               |               |
       | B               |               |
-      | BI              |               |
+      | BS              |               |
       | H               |               |
       | HI              |               |
       | G               |               |
@@ -697,14 +714,14 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | P               | De hoogheid   |
       | PS              | De hoogheid   |
 
-    Abstract Scenario: Persoon heeft een predikaat, heeft geslachtsaanduiding "V" en heeft een actuele partner
+    Abstract Scenario: Persoon heeft een predicaat, heeft geslachtsaanduiding "V" en heeft een actuele partner
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                        | waarde    |
       | burgerservicenummer         | 999992934 |
       | geslachtsaanduiding (04.10) | V         |
       En de persoon heeft de volgende naam gegevens
       | naam                                 | waarde                   |
-      | adellijke titel of predikaat (02.20) | <predikaat>              |
+      | adellijke titel of predicaat (02.20) | <predicaat>              |
       | aanduiding naamgebruik (61.10)       | <aanduiding naamgebruik> |
       En de persoon heeft een partner met de volgende gegevens
       | naam                | waarde    |
@@ -722,7 +739,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | aanschrijfwijze.aanspreekvorm |        |
 
       Voorbeelden:
-      | predikaat | aanduiding naamgebruik |
+      | predicaat | aanduiding naamgebruik |
       | JH        | E                      |
       | JH        | P                      |
       | JH        | V                      |
@@ -732,14 +749,14 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | JV        | V                      |
       | JV        | N                      |
 
-    Abstract Scenario: Persoon heeft een predikaat, heeft geslachtsaanduiding "V" en heeft geen actuele partner(s)
+    Abstract Scenario: Persoon heeft een predicaat, heeft geslachtsaanduiding "V" en heeft geen actuele partner(s)
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                        | waarde    |
       | burgerservicenummer         | 999992934 |
       | geslachtsaanduiding (04.10) | V         |
       En de persoon heeft de volgende naam gegevens
       | naam                                 | waarde                   |
-      | adellijke titel of predikaat (02.20) | <predikaat>              |
+      | adellijke titel of predicaat (02.20) | <predicaat>              |
       | aanduiding naamgebruik (61.10)       | <aanduiding naamgebruik> |
       En de persoon heeft alleen ontbonden partners
       Als personen wordt gezocht met de volgende parameters
@@ -752,7 +769,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | aanschrijfwijze.aanspreekvorm | <aanspreekvorm> |
 
       Voorbeelden:
-      | predikaat | aanduiding naamgebruik | aanspreekvorm            |
+      | predicaat | aanduiding naamgebruik | aanspreekvorm            |
       | JH        | E                      | De hoogwelgeboren vrouwe |
       | JH        | P                      |                          |
       | JH        | V                      |                          |
