@@ -152,25 +152,6 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | v                   |
     | V                   |
 
-  Abstract Scenario: Zoek met geboorteplaats
-    Als personen wordt gezocht met de volgende parameters
-    | naam           | waarde                              |
-    | type           | ZoekMetGeslachtsnaamEnGeboortedatum |
-    | geslachtsnaam  | Maassen                             |
-    | geboorteplaats | <geboorteplaats>                    |
-    | geboortedatum  | 1983-05-26                          |
-    | fields         | burgerservicenummer                 |
-    Dan heeft de response 1 persoon
-    En heeft de response een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999995082 |
-
-    Voorbeelden:
-    | geboorteplaats |
-    | Wassenaar      |
-    | wassenaar      |
-    | WASSENAAR      |
-
   Scenario: Zoek met inclusiefOverledenPersonen
     Als personen wordt gezocht met de volgende parameters
     | naam                       | waarde                              |
@@ -188,7 +169,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | burgerservicenummer | 999995085 |
 
   @fout-case
-  Scenario: Zoek zonder geslachtsnaam en geboortedatum 
+  Scenario: Zoek zonder geslachtsnaam en geboortedatum
     Als personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
@@ -207,7 +188,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | required | geslachtsnaam | Parameter is verplicht. |
 
   @fout-case
-  Scenario: Zoek zonder geslachtsnaam 
+  Scenario: Zoek zonder geslachtsnaam
     Als personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
@@ -226,7 +207,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | required | geslachtsnaam | Parameter is verplicht. |
 
   @fout-case
-  Scenario: Zoek zonder geboortedatum 
+  Scenario: Zoek zonder geboortedatum
     Als personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
@@ -245,7 +226,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | required | geboortedatum | Parameter is verplicht. |
 
   @fout-case
-  Scenario: Zoek met leeg geslachtsnaam en leeg geboortedatum 
+  Scenario: Zoek met leeg geslachtsnaam en leeg geboortedatum
     Als personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
@@ -387,7 +368,6 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | voornamen           | ^[a-zA-Z0-9À-ž \.\-\']{1,199}\*{0,1}$ |
     | voorvoegsel         | ^[a-zA-Z \']{1,10}$                   |
     | geslachtsaanduiding | ^([Mm]\|[Vv]\|[Oo])$                  |
-    | geboorteplaats      | ^[a-zA-Z0-9À-ž \,\.\-\'()]{1,80}$     |
 
 Rule: Bij zoeken met de "*" wildcard moet minimaal 3 letters (exclusief de wildcard teken) worden opgegeven
       De "*" wildcard komt overeen met nul of meer (niet-spatie) karakters
