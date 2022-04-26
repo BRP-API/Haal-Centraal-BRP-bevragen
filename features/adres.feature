@@ -29,10 +29,11 @@ Functionaliteit: Adresvelden vullen
       | 999995492           | Kappeyne v d Cappellostr | Annelien Kappeyne van de Coppellostraat | Annelien Kappeyne van de Coppellostraat | Kappeyne v d Cappellostr |
       | 999991802           | Zomerdijkstraat          |                                         | Zomerdijkstraat                         | Zomerdijkstraat          |
 
-  Rule: Voor een binnenlands adres of locatie wordt adresregel1 samengesteld conform NEN 5825:2002
-    - Veld adresregel1 wordt samengesteld uit locatiebeschrijving + korteNaam + aanduidingBijHuisnummer + huisnummer + huisletter + huisnummertoevoeging
-    - De aanduidingBijHuisnummer waarde "tegenover" (11.50="to") wordt in "adresregel1" opgenomen als "t/o", waarde "bij" (11.50="by") wordt in "adresregel1" opgenomen als "bij"
-    - Tussen kortenaam en huisnummer wordt een spatie opgenomen
+  Rule: Voor een binnenlands adres wordt adresregel1 samengesteld conform NEN 5825:2002
+    - Veld adresregel1 wordt samengesteld uit korteNaam + aanduidingBijHuisnummer + huisnummer + huisletter + huisnummertoevoeging
+    - De aanduidingBijHuisnummer (11.50) waarde "to" (tegenover) wordt in "adresregel1" opgenomen als "t/o", waarde "by" wordt in "adresregel1" opgenomen als "bij"
+    - Tussen kortenaam en aanduidingBijHuisnummer of huisnummer wordt een spatie opgenomen
+    - Tussen aanduidingBijHuisnummer en huisnummer wordt een spatie opgenomen
     - Tussen het huisnummer en de huisnummertoevoeging (wat in de NEN een samenstelling is van huisletter en huisnummertoevoeging, niet gescheiden van elkaar) moet een koppelteken ("-") worden geplaatst indien de huisnummertoevoeging met een cijfer begint, een spatie in alle andere gevallen
 
     Abstract Scenario: adresregel1 voor een binnenlands adres met <omschrijving>
@@ -68,6 +69,8 @@ Functionaliteit: Adresvelden vullen
       | aanduiding bij huisnummer tegenover                  | 999990482           | 1e Exloërmond            | 1e Exloërmond              | 3          |            |                     | to                        | 1e Exloërmond t/o 3          |
       | alleen straatnaam                                    | 999990482           | Jonkheer van Riemsdijkln |                            |            |            |                     |                           | Jonkheer van Riemsdijkln     |
       | alleen huisnummer                                    | 999990482           |                          |                            | 88         |            |                     |                           | 88                           |
+
+  Rule: Voor een binnenlandse locatie wordt adresregel1 gevuld met de locatiebeschrijving
 
     Scenario: adresregel1 voor locatie       
       Gegeven het systeem heeft een persoon met de volgende gegevens
