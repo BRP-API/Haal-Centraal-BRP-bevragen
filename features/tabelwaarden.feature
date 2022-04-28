@@ -5,7 +5,7 @@ Functionaliteit: Wanneer een gegeven in de registratie een gecodeerde waarde met
 De onderstaanden tabellen met de beschreven waarden worden geleverd door de "BRP tabellen bevragen"-API
 
   Voor de enumeratie AanduidingBijHuisnummer wordt de tabel met identificatie "aanduidingbijhuisnummer" opgenomen.
-  In de omschrijving wordt de volgende tekst opgenomen : "De aanduiding die wordt gebruikt voor adressen die geen straatnaam en huisnummeraanduidingen hebben."
+  In de omschrijving wordt de volgende tekst opgenomen : "De aanduiding "bij" of "tegenover" wordt gebruikt voor adressen die geen straatnaam en huisnummeraanduidingen hebben, maar verwijzen naar een (verblijf)plaats in de buurt."
   In de waardetabel worden de volgende waarden opgenomen:
     | code                                             | omschrijving                     |
     | ------------------------------------------------ | -------------------------------- |
