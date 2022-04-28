@@ -81,10 +81,6 @@ components:
       type: string
       maxLength: 80
       example: "Tulpstraat"
-    IndicatieVerblijfplaatsOnbekend:
-      type: boolean
-      description: |
-        Indicatie dat de verblijfplaats van de persoon onbekend is. Er is niet bekend in welk land de persoon verblijft.
     Woonplaats:
       description: |
         Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.
@@ -171,8 +167,8 @@ components:
         - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
         - type: object
           properties:
-            verblijfplaatsOnbekend:
-              $ref: '#/components/schemas/IndicatieVerblijfplaatsOnbekend'
+            functieAdres:
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
     LocatieBeperkt:
       allOf:
         - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
@@ -281,8 +277,8 @@ components:
         - $ref: '#/components/schemas/AbstractVerblijfplaats'
         - type: object
           properties:
-            verblijfplaatsOnbekend:
-              $ref: '#/components/schemas/IndicatieVerblijfplaatsOnbekend'
+            functieAdres:
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
             datumIngangGeldigheid:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             inOnderzoek:
@@ -335,11 +331,11 @@ components:
         - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
         - type: object
           properties:
-            adresregel1:
+            regel1:
               type: boolean
-            adresregel2:
+            regel2:
               type: boolean
-            adresregel3:
+            regel3:
               type: boolean
             land:
               type: boolean
@@ -378,31 +374,27 @@ components:
               type: boolean
             woonplaats:
               type: boolean
-            adresregel1:
-              type: boolean
-            adresregel2:
-              type: boolean
     VerblijfplaatsOnbekendInOnderzoek:
       allOf:
         - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
         - type: object
           properties:
+            functieAdres:
+              type: boolean
             verblijfplaatsOnbekend:
+              type: boolean
+            datumIngangGeldigheid:
               type: boolean
     LocatieInOnderzoek:
       allOf:
         - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
         - type: object
           properties:
-            adresregel1:
-              type: boolean
-            adresregel2:
-              type: boolean
             datumVan:
               type: boolean
             functieAdres:
               type: boolean
             locatiebeschrijving:
               type: boolean
-            woonplaats:
+            datumIngangGeldigheid:
               type: boolean
