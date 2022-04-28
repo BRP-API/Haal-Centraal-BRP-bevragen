@@ -260,6 +260,8 @@ components:
               $ref: '#/components/schemas/Locatiebeschrijving'
             woonplaats:
               $ref: '#/components/schemas/Woonplaats'
+            datumIngangGeldigheid:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             inOnderzoek:
               $ref: '#/components/schemas/LocatieInOnderzoek'
     VerblijfplaatsOnbekend:
@@ -269,6 +271,8 @@ components:
           properties:
             verblijfplaatsOnbekend:
               $ref: '#/components/schemas/IndicatieVerblijfplaatsOnbekend'
+            datumIngangGeldigheid:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             inOnderzoek:
               $ref: '#/components/schemas/VerblijfplaatsOnbekendInOnderzoek'
     GbaVerblijfplaats:
