@@ -124,11 +124,11 @@ components:
         - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
         - type: object
           properties:
-            adresregel1:
+            regel1:
               $ref: '#/components/schemas/Adresregel1'
-            adresregel2:
+            regel2:
               $ref: '#/components/schemas/Adresregel2'
-            adresregel3:
+            regel3:
               $ref: '#/components/schemas/Adresregel3'
             land:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
@@ -144,10 +144,6 @@ components:
         - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
         - type: object
           properties:
-            adresregel1:
-              $ref: '#/components/schemas/Adresregel1'
-            adresregel2:
-              $ref: '#/components/schemas/Adresregel2'
             functieAdres:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
             locatiebeschrijving:
@@ -200,11 +196,11 @@ components:
       - $ref : '#/components/schemas/AbstractVerblijfplaats'
       - type: object
         properties:
-          adresregel1:
+          regel1:
             $ref: '#/components/schemas/Adresregel1'
-          adresregel2:
+          regel2:
             $ref: '#/components/schemas/Adresregel2'
-          adresregel3:
+          regel3:
             $ref: '#/components/schemas/Adresregel3'
           land:
             $ref: 'common.yaml#/components/schemas/Waardetabel'

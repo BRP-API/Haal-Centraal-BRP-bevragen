@@ -16,11 +16,11 @@ components:
           $ref: "naam.yaml#/components/schemas/Aanschrijfwijze"
         gebruikInLopendeTekst:
           $ref: "naam.yaml#/components/schemas/GebruikInLopendeTekst"
-        adresseringregel1:
+        adresregel1:
           $ref: "verblijfplaats.yaml#/components/schemas/Adresregel1"
-        adresseringregel2:
+        adresregel2:
           $ref: "verblijfplaats.yaml#/components/schemas/Adresregel2"
-        adresseringregel3:
+        adresregel3:
           $ref: "verblijfplaats.yaml#/components/schemas/Adresregel3"
         land:
           $ref: "common.yaml#/components/schemas/Waardetabel"
