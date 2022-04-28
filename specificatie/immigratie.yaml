@@ -24,8 +24,6 @@ components:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         landVanwaarIngeschreven:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
-        vanuitVerblijfplaatsOnbekend:
-          $ref: '#/components/schemas/VanuitVerblijfplaatsOnbekend'
     Immigratie:
       type: object
       description: |
