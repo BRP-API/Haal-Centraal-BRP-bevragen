@@ -92,6 +92,50 @@ components:
       type: string
       pattern: ^[a-zA-Z0-9À-ž \(\)\,\.\-\']{1,80}$
       example: "Duiven"
+    VerblijfadresBinnenland:
+      type: object
+      properties:
+        straat:
+          $ref: '#/components/schemas/Straat'
+        huisnummer:
+          $ref: '#/components/schemas/Huisnummer'
+        huisletter:
+          $ref: '#/components/schemas/Huisletter'
+        huisnummertoevoeging:
+          $ref: '#/components/schemas/Huisnummertoevoeging'
+        aanduidingBijHuisnummer:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        postcode:
+          $ref: '#/components/schemas/Postcode'
+        woonplaats:
+          $ref: '#/components/schemas/Woonplaats'
+        korteNaam:
+          $ref: '#/components/schemas/KorteNaam'
+    VerblijfadresBinnenlandBeperkt:
+      type: object
+      properties:
+        adresregel1:
+          $ref: '#/components/schemas/Adresregel1'
+        adresregel2:
+          $ref: '#/components/schemas/Adresregel2'
+    VerblijfadresBuitenland:
+      type: object
+      properties:
+        regel1:
+          $ref: '#/components/schemas/Adresregel1'
+        regel2:
+          $ref: '#/components/schemas/Adresregel2'
+        regel3:
+          $ref: '#/components/schemas/Adresregel3'
+        land:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+    VerblijfadresLocatie:
+      type: object
+      properties:
+        locatiebeschrijving:
+          $ref: '#/components/schemas/Locatiebeschrijving'
+        woonplaats:
+          $ref: '#/components/schemas/Woonplaats'
     AbstractVerblijfplaatsBeperkt:
       type: object
       description: |
@@ -115,23 +159,15 @@ components:
           properties:
             functieAdres:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
-            adresregel1:
-              $ref: '#/components/schemas/Adresregel1'
-            adresregel2:
-              $ref: '#/components/schemas/Adresregel2'
+            verblijfadres:
+              $ref: '#/components/schemas/VerblijfadresBinnenlandBeperkt'
     VerblijfplaatsBuitenlandBeperkt:
       allOf:
         - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
         - type: object
           properties:
-            regel1:
-              $ref: '#/components/schemas/Adresregel1'
-            regel2:
-              $ref: '#/components/schemas/Adresregel2'
-            regel3:
-              $ref: '#/components/schemas/Adresregel3'
-            land:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+            verblijfadres:
+              $ref: "#/components/schemas/VerblijfadresBuitenland"
     VerblijfplaatsOnbekendBeperkt:
       allOf:
         - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
@@ -196,14 +232,8 @@ components:
       - $ref : '#/components/schemas/AbstractVerblijfplaats'
       - type: object
         properties:
-          regel1:
-            $ref: '#/components/schemas/Adresregel1'
-          regel2:
-            $ref: '#/components/schemas/Adresregel2'
-          regel3:
-            $ref: '#/components/schemas/Adresregel3'
-          land:
-            $ref: 'common.yaml#/components/schemas/Waardetabel'
+          verblijfadres:
+            $ref: "#/components/schemas/VerblijfadresBuitenland"
           datumVan:
             $ref: 'datum.yaml#/components/schemas/AbstractDatum'
           datumIngangGeldigheid:
@@ -219,28 +249,14 @@ components:
         - $ref : '#/components/schemas/AbstractVerblijfplaats'
         - type: object
           properties:
+            verblijfadres:
+              $ref: "#/components/schemas/VerblijfadresBinnenland"
             functieAdres:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
-            straat:
-              $ref: '#/components/schemas/Straat'
-            huisnummer:
-              $ref: '#/components/schemas/Huisnummer'
-            huisletter:
-              $ref: '#/components/schemas/Huisletter'
-            huisnummertoevoeging:
-              $ref: '#/components/schemas/Huisnummertoevoeging'
-            aanduidingBijHuisnummer:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
-            postcode:
-              $ref: '#/components/schemas/Postcode'
             adresseerbaarObjectIdentificatie:
               $ref: '#/components/schemas/AdresseerbaarObjectIdentificatie'
             nummeraanduidingIdentificatie:
               $ref: '#/components/schemas/NummeraanduidingIdentificatie'
-            woonplaats:
-              $ref: '#/components/schemas/Woonplaats'
-            korteNaam:
-              $ref: '#/components/schemas/KorteNaam'
             datumVan:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             datumIngangGeldigheid:
@@ -256,10 +272,8 @@ components:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             functieAdres:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
-            locatiebeschrijving:
-              $ref: '#/components/schemas/Locatiebeschrijving'
-            woonplaats:
-              $ref: '#/components/schemas/Woonplaats'
+            verblijfadres:
+              $ref: "#/components/schemas/VerblijfadresLocatie"
             datumIngangGeldigheid:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             inOnderzoek:
