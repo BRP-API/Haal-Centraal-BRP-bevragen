@@ -321,7 +321,9 @@ components:
         type:
           type: string
         fields:
-          $ref: '#/components/schemas/Fields'
+          type: array
+          items:
+            $ref: 'filter.yaml#/components/schemas/Fields'
         gemeenteVanInschrijving:
           $ref: '#/components/schemas/GemeenteVanInschrijving'
       discriminator:
@@ -596,10 +598,10 @@ components:
       example: "546376728"
     Fields:
       maxLength: 924
-      pattern: ^[a-zA-Z0-9\.,_]+$
+      pattern: ^[a-zA-Z0-9\._]+$
       type: string
       description: |
-        Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen op te geven.
+        Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een array van property namen op te geven.
         Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven.
         Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature)
     GemeenteVanInschrijving:
