@@ -16,11 +16,11 @@ components:
   schemas:
     Fields:
       description: |
-          Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen op te geven.
+          Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door een array van property namen op te geven.
           Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven.
           Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature)
       type: string
-      pattern: ^[a-zA-Z0-9\.,_]+$
+      pattern: ^[a-zA-Z0-9\._]+$
       maxLength: 924
     GeslachtsaanduidingFilter:
       description: |

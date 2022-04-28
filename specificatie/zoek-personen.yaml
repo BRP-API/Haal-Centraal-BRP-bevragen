@@ -116,7 +116,9 @@ components:
         type:
           type: string
         fields:
-          $ref: 'filter.yaml#/components/schemas/Fields'
+          type: array
+          items:
+            $ref: 'filter.yaml#/components/schemas/Fields'
         gemeenteVanInschrijving:
           $ref: 'verblijfplaats.yaml#/components/schemas/GemeenteVanInschrijving'
     RaadpleegMetBurgerservicenummer:
