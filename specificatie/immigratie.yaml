@@ -21,7 +21,7 @@ components:
           * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland.
       properties:
         datumVestigingInNederland:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
         landVanwaarIngeschreven:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
     Immigratie:
