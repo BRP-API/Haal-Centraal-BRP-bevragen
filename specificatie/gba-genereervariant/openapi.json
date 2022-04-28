@@ -725,6 +725,15 @@
           "verblijfplaats" : {
             "$ref" : "#/components/schemas/GbaVerblijfplaats"
           },
+          "immigratie" : {
+            "$ref" : "#/components/schemas/GbaImmigratie"
+          },
+          "gemeenteVanInschrijving" : {
+            "$ref" : "#/components/schemas/Waardetabel"
+          },
+          "datumInschrijvingInGemeente" : {
+            "$ref" : "#/components/schemas/GbaDatum"
+          },
           "gezagsverhouding" : {
             "$ref" : "#/components/schemas/GbaGezagsverhouding"
           },
@@ -956,9 +965,6 @@
           "functieAdres" : {
             "$ref" : "#/components/schemas/Waardetabel"
           },
-          "woonplaats" : {
-            "$ref" : "#/components/schemas/Woonplaats"
-          },
           "straat" : {
             "$ref" : "#/components/schemas/Straat"
           },
@@ -983,9 +989,6 @@
           "land" : {
             "$ref" : "#/components/schemas/Waardetabel"
           },
-          "gemeenteVanInschrijving" : {
-            "$ref" : "#/components/schemas/Waardetabel"
-          },
           "adresregel1" : {
             "$ref" : "#/components/schemas/Adresregel1"
           },
@@ -996,13 +999,6 @@
             "$ref" : "#/components/schemas/Adresregel3"
           }
         }
-      },
-      "Woonplaats" : {
-        "title" : "woonplaats naam",
-        "pattern" : "^[a-zA-Z0-9À-ž \\(\\)\\,\\.\\-\\']{1,80}$",
-        "type" : "string",
-        "description" : "Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.\n",
-        "example" : "Duiven"
       },
       "Straat" : {
         "maxLength" : 80,
@@ -1173,9 +1169,6 @@
           "woonplaats" : {
             "$ref" : "#/components/schemas/Woonplaats"
           },
-          "landVanwaarIngeschreven" : {
-            "$ref" : "#/components/schemas/Waardetabel"
-          },
           "straat" : {
             "$ref" : "#/components/schemas/Straat"
           },
@@ -1200,23 +1193,14 @@
           "land" : {
             "$ref" : "#/components/schemas/Waardetabel"
           },
+          "datumIngangGeldigheid" : {
+            "$ref" : "#/components/schemas/GbaDatum"
+          },
           "datumAanvangAdreshouding" : {
             "$ref" : "#/components/schemas/GbaDatum"
           },
           "datumAanvangAdresBuitenland" : {
             "$ref" : "#/components/schemas/GbaDatum"
-          },
-          "datumIngangGeldigheid" : {
-            "$ref" : "#/components/schemas/GbaDatum"
-          },
-          "datumInschrijvingInGemeente" : {
-            "$ref" : "#/components/schemas/GbaDatum"
-          },
-          "datumVestigingInNederland" : {
-            "$ref" : "#/components/schemas/GbaDatum"
-          },
-          "gemeenteVanInschrijving" : {
-            "$ref" : "#/components/schemas/Waardetabel"
           },
           "naamOpenbareRuimte" : {
             "$ref" : "#/components/schemas/NaamOpenbareRuimte"
@@ -1232,9 +1216,38 @@
         "description" : "De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.\n",
         "example" : "0226010000038820"
       },
+      "Woonplaats" : {
+        "title" : "woonplaats naam",
+        "pattern" : "^[a-zA-Z0-9À-ž \\(\\)\\,\\.\\-\\']{1,80}$",
+        "type" : "string",
+        "description" : "Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.\n",
+        "example" : "Duiven"
+      },
       "NaamOpenbareRuimte" : {
         "maxLength" : 80,
         "type" : "string"
+      },
+      "GbaImmigratie" : {
+        "type" : "object",
+        "properties" : {
+          "datumVestigingInNederland" : {
+            "$ref" : "#/components/schemas/AbstractDatum"
+          },
+          "landVanwaarIngeschreven" : {
+            "$ref" : "#/components/schemas/Waardetabel"
+          },
+          "vanuitVerblijfplaatsOnbekend" : {
+            "$ref" : "#/components/schemas/VanuitVerblijfplaatsOnbekend"
+          },
+          "inOnderzoek" : {
+            "$ref" : "#/components/schemas/GbaInOnderzoek"
+          }
+        },
+        "description" : "Gegevens over het het immigratie van een persoon.\n  * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland.\n"
+      },
+      "VanuitVerblijfplaatsOnbekend" : {
+        "type" : "boolean",
+        "description" : "Geeft aan dat de persoon is teruggekeerd uit een situatie van onbekende verblijfplaats\n"
       },
       "GbaGezagsverhouding" : {
         "allOf" : [ {
@@ -1383,6 +1396,122 @@
             "$ref" : "#/components/schemas/GbaDatum"
           }
         }
+      },
+      "AbstractDatum" : {
+        "required" : [ "type" ],
+        "type" : "object",
+        "properties" : {
+          "type" : {
+            "type" : "string"
+          }
+        },
+        "discriminator" : {
+          "propertyName" : "type",
+          "mapping" : {
+            "Datum" : "#/components/schemas/VolledigeDatum",
+            "DatumOnbekend" : "#/components/schemas/DatumOnbekend",
+            "JaarDatum" : "#/components/schemas/JaarDatum",
+            "JaarMaandDatum" : "#/components/schemas/JaarMaandDatum"
+          }
+        }
+      },
+      "VolledigeDatum" : {
+        "required" : [ "datum" ],
+        "description" : "Datum conform iso8601",
+        "example" : {
+          "value" : {
+            "type" : "Datum",
+            "datum" : "2018-07-01"
+          }
+        },
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AbstractDatum"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "datum" : {
+              "type" : "string",
+              "format" : "date"
+            }
+          }
+        } ]
+      },
+      "DatumOnbekend" : {
+        "required" : [ "onbekend" ],
+        "description" : "representatie voor een volledig onbekend datum",
+        "example" : {
+          "value" : {
+            "type" : "DatumOnbekend",
+            "onbekend" : true
+          }
+        },
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AbstractDatum"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "onbekend" : {
+              "type" : "boolean",
+              "default" : true
+            }
+          }
+        } ]
+      },
+      "JaarDatum" : {
+        "required" : [ "jaar" ],
+        "description" : "representatie voor een datum waarvan maand en dag onbekend zijn",
+        "example" : {
+          "value" : {
+            "type" : "JaarDatum",
+            "jaar" : 2018
+          }
+        },
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AbstractDatum"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "jaar" : {
+              "$ref" : "#/components/schemas/Jaar"
+            }
+          }
+        } ]
+      },
+      "Jaar" : {
+        "maximum" : 9999,
+        "minimum" : 1,
+        "type" : "integer",
+        "format" : "int32"
+      },
+      "JaarMaandDatum" : {
+        "required" : [ "jaar", "maand" ],
+        "description" : "representatie voor een datum waarvan de dag onbekend is",
+        "example" : {
+          "value" : {
+            "type" : "JaarMaandDatum",
+            "jaar" : 2018,
+            "maand" : 7
+          }
+        },
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AbstractDatum"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "jaar" : {
+              "$ref" : "#/components/schemas/Jaar"
+            },
+            "maand" : {
+              "$ref" : "#/components/schemas/Maand"
+            }
+          }
+        } ]
+      },
+      "Maand" : {
+        "maximum" : 12,
+        "minimum" : 1,
+        "type" : "integer",
+        "format" : "int32"
       }
     },
     "headers" : {
