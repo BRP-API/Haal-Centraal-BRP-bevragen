@@ -134,8 +134,6 @@ components:
       properties:
         locatiebeschrijving:
           $ref: '#/components/schemas/Locatiebeschrijving'
-        woonplaats:
-          $ref: '#/components/schemas/Woonplaats'
     AbstractVerblijfplaatsBeperkt:
       type: object
       description: |
@@ -182,8 +180,8 @@ components:
           properties:
             functieAdres:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
-            locatiebeschrijving:
-              $ref: '#/components/schemas/Locatiebeschrijving'
+            verblijfadres:
+              $ref: '#/components/schemas/VerblijfadresLocatie'
     GbaVerblijfplaatsBeperkt:
       type: object
       properties:
