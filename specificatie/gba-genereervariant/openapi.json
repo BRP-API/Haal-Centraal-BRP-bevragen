@@ -1231,23 +1231,13 @@
         "type" : "object",
         "properties" : {
           "datumVestigingInNederland" : {
-            "$ref" : "#/components/schemas/AbstractDatum"
+            "$ref" : "#/components/schemas/GbaDatum"
           },
           "landVanwaarIngeschreven" : {
             "$ref" : "#/components/schemas/Waardetabel"
-          },
-          "vanuitVerblijfplaatsOnbekend" : {
-            "$ref" : "#/components/schemas/VanuitVerblijfplaatsOnbekend"
-          },
-          "inOnderzoek" : {
-            "$ref" : "#/components/schemas/GbaInOnderzoek"
           }
         },
         "description" : "Gegevens over het het immigratie van een persoon.\n  * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland.\n"
-      },
-      "VanuitVerblijfplaatsOnbekend" : {
-        "type" : "boolean",
-        "description" : "Geeft aan dat de persoon is teruggekeerd uit een situatie van onbekende verblijfplaats\n"
       },
       "GbaGezagsverhouding" : {
         "allOf" : [ {
@@ -1396,122 +1386,6 @@
             "$ref" : "#/components/schemas/GbaDatum"
           }
         }
-      },
-      "AbstractDatum" : {
-        "required" : [ "type" ],
-        "type" : "object",
-        "properties" : {
-          "type" : {
-            "type" : "string"
-          }
-        },
-        "discriminator" : {
-          "propertyName" : "type",
-          "mapping" : {
-            "Datum" : "#/components/schemas/VolledigeDatum",
-            "DatumOnbekend" : "#/components/schemas/DatumOnbekend",
-            "JaarDatum" : "#/components/schemas/JaarDatum",
-            "JaarMaandDatum" : "#/components/schemas/JaarMaandDatum"
-          }
-        }
-      },
-      "VolledigeDatum" : {
-        "required" : [ "datum" ],
-        "description" : "Datum conform iso8601",
-        "example" : {
-          "value" : {
-            "type" : "Datum",
-            "datum" : "2018-07-01"
-          }
-        },
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractDatum"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "datum" : {
-              "type" : "string",
-              "format" : "date"
-            }
-          }
-        } ]
-      },
-      "DatumOnbekend" : {
-        "required" : [ "onbekend" ],
-        "description" : "representatie voor een volledig onbekend datum",
-        "example" : {
-          "value" : {
-            "type" : "DatumOnbekend",
-            "onbekend" : true
-          }
-        },
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractDatum"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "onbekend" : {
-              "type" : "boolean",
-              "default" : true
-            }
-          }
-        } ]
-      },
-      "JaarDatum" : {
-        "required" : [ "jaar" ],
-        "description" : "representatie voor een datum waarvan maand en dag onbekend zijn",
-        "example" : {
-          "value" : {
-            "type" : "JaarDatum",
-            "jaar" : 2018
-          }
-        },
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractDatum"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "jaar" : {
-              "$ref" : "#/components/schemas/Jaar"
-            }
-          }
-        } ]
-      },
-      "Jaar" : {
-        "maximum" : 9999,
-        "minimum" : 1,
-        "type" : "integer",
-        "format" : "int32"
-      },
-      "JaarMaandDatum" : {
-        "required" : [ "jaar", "maand" ],
-        "description" : "representatie voor een datum waarvan de dag onbekend is",
-        "example" : {
-          "value" : {
-            "type" : "JaarMaandDatum",
-            "jaar" : 2018,
-            "maand" : 7
-          }
-        },
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractDatum"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "jaar" : {
-              "$ref" : "#/components/schemas/Jaar"
-            },
-            "maand" : {
-              "$ref" : "#/components/schemas/Maand"
-            }
-          }
-        } ]
-      },
-      "Maand" : {
-        "maximum" : 12,
-        "minimum" : 1,
-        "type" : "integer",
-        "format" : "int32"
       }
     },
     "headers" : {
