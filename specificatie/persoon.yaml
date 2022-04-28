@@ -80,6 +80,8 @@ components:
           $ref: 'overlijden.yaml#/components/schemas/OverlijdenBasis'
         verblijfplaats:
           $ref: 'verblijfplaats.yaml#/components/schemas/AbstractVerblijfplaatsBeperkt'
+        adressering:
+          $ref: 'adressering.yaml#/components/schemas/Adressering'
     GbaPersoon:
       type: object
       properties:
