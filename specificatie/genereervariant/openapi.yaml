@@ -840,14 +840,19 @@ components:
       - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
       - type: object
         properties:
-          adresregel1:
-            $ref: '#/components/schemas/Adresregel1'
-          adresregel2:
-            $ref: '#/components/schemas/Adresregel2'
-          adresregel3:
-            $ref: '#/components/schemas/Adresregel3'
-          land:
-            $ref: '#/components/schemas/Waardetabel'
+          verblijfadres:
+            $ref: '#/components/schemas/VerblijfadresBuitenland'
+    VerblijfadresBuitenland:
+      type: object
+      properties:
+        regel1:
+          $ref: '#/components/schemas/Adresregel1'
+        regel2:
+          $ref: '#/components/schemas/Adresregel2'
+        regel3:
+          $ref: '#/components/schemas/Adresregel3'
+        land:
+          $ref: '#/components/schemas/Waardetabel'
     Adresregel1:
       maxLength: 40
       type: string
@@ -873,10 +878,15 @@ components:
         properties:
           functieAdres:
             $ref: '#/components/schemas/Waardetabel'
-          adresregel1:
-            $ref: '#/components/schemas/Adresregel1'
-          adresregel2:
-            $ref: '#/components/schemas/Adresregel2'
+          verblijfadres:
+            $ref: '#/components/schemas/VerblijfadresBinnenlandBeperkt'
+    VerblijfadresBinnenlandBeperkt:
+      type: object
+      properties:
+        adresregel1:
+          $ref: '#/components/schemas/Adresregel1'
+        adresregel2:
+          $ref: '#/components/schemas/Adresregel2'
     VerblijfplaatsOnbekendBeperkt:
       allOf:
       - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
@@ -893,10 +903,6 @@ components:
       - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
       - type: object
         properties:
-          adresregel1:
-            $ref: '#/components/schemas/Adresregel1'
-          adresregel2:
-            $ref: '#/components/schemas/Adresregel2'
           functieAdres:
             $ref: '#/components/schemas/Waardetabel'
           locatiebeschrijving:
@@ -1259,14 +1265,8 @@ components:
       - $ref: '#/components/schemas/AbstractVerblijfplaats'
       - type: object
         properties:
-          adresregel1:
-            $ref: '#/components/schemas/Adresregel1'
-          adresregel2:
-            $ref: '#/components/schemas/Adresregel2'
-          adresregel3:
-            $ref: '#/components/schemas/Adresregel3'
-          land:
-            $ref: '#/components/schemas/Waardetabel'
+          verblijfadres:
+            $ref: '#/components/schemas/VerblijfadresBuitenland'
           datumVan:
             $ref: '#/components/schemas/AbstractDatum'
           datumIngangGeldigheid:
@@ -1299,44 +1299,43 @@ components:
       - $ref: '#/components/schemas/AbstractVerblijfplaats'
       - type: object
         properties:
+          verblijfadres:
+            $ref: '#/components/schemas/VerblijfadresBinnenland'
           functieAdres:
             $ref: '#/components/schemas/Waardetabel'
-          straat:
-            $ref: '#/components/schemas/Straat'
-          huisnummer:
-            $ref: '#/components/schemas/Huisnummer'
-          huisletter:
-            $ref: '#/components/schemas/Huisletter'
-          huisnummertoevoeging:
-            $ref: '#/components/schemas/Huisnummertoevoeging'
-          aanduidingBijHuisnummer:
-            $ref: '#/components/schemas/Waardetabel'
-          postcode:
-            $ref: '#/components/schemas/Postcode'
           adresseerbaarObjectIdentificatie:
             $ref: '#/components/schemas/AdresseerbaarObjectIdentificatie'
           nummeraanduidingIdentificatie:
             $ref: '#/components/schemas/NummeraanduidingIdentificatie'
-          woonplaats:
-            $ref: '#/components/schemas/Woonplaats'
-          korteNaam:
-            $ref: '#/components/schemas/KorteNaam'
           datumVan:
             $ref: '#/components/schemas/AbstractDatum'
           datumIngangGeldigheid:
             $ref: '#/components/schemas/AbstractDatum'
           inOnderzoek:
             $ref: '#/components/schemas/AdresInOnderzoek'
+    VerblijfadresBinnenland:
+      type: object
+      properties:
+        straat:
+          $ref: '#/components/schemas/Straat'
+        huisnummer:
+          $ref: '#/components/schemas/Huisnummer'
+        huisletter:
+          $ref: '#/components/schemas/Huisletter'
+        huisnummertoevoeging:
+          $ref: '#/components/schemas/Huisnummertoevoeging'
+        aanduidingBijHuisnummer:
+          $ref: '#/components/schemas/Waardetabel'
+        postcode:
+          $ref: '#/components/schemas/Postcode'
+        woonplaats:
+          $ref: '#/components/schemas/Woonplaats'
+        korteNaam:
+          $ref: '#/components/schemas/KorteNaam'
     Straat:
       maxLength: 80
       type: string
       example: Tulpstraat
-    AdresseerbaarObjectIdentificatie:
-      pattern: ^[0-9]{16}$
-      type: string
-      description: |
-        De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.
-      example: "0226010000038820"
     Woonplaats:
       title: woonplaats naam
       pattern: ^[a-zA-Z0-9À-ž \(\)\,\.\-\']{1,80}$
@@ -1349,6 +1348,12 @@ components:
       type: string
       description: |
         De officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG) of een verkorte versie.
+    AdresseerbaarObjectIdentificatie:
+      pattern: ^[0-9]{16}$
+      type: string
+      description: |
+        De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.
+      example: "0226010000038820"
     AdresInOnderzoek:
       allOf:
       - $ref: '#/components/schemas/InOnderzoek'
@@ -1391,6 +1396,8 @@ components:
         properties:
           verblijfplaatsOnbekend:
             $ref: '#/components/schemas/IndicatieVerblijfplaatsOnbekend'
+          datumIngangGeldigheid:
+            $ref: '#/components/schemas/AbstractDatum'
           inOnderzoek:
             $ref: '#/components/schemas/VerblijfplaatsOnbekendInOnderzoek'
     VerblijfplaatsOnbekendInOnderzoek:
@@ -1409,12 +1416,19 @@ components:
             $ref: '#/components/schemas/AbstractDatum'
           functieAdres:
             $ref: '#/components/schemas/Waardetabel'
-          locatiebeschrijving:
-            $ref: '#/components/schemas/Locatiebeschrijving'
-          woonplaats:
-            $ref: '#/components/schemas/Woonplaats'
+          verblijfadres:
+            $ref: '#/components/schemas/VerblijfadresLocatie'
+          datumIngangGeldigheid:
+            $ref: '#/components/schemas/AbstractDatum'
           inOnderzoek:
             $ref: '#/components/schemas/LocatieInOnderzoek'
+    VerblijfadresLocatie:
+      type: object
+      properties:
+        locatiebeschrijving:
+          $ref: '#/components/schemas/Locatiebeschrijving'
+        woonplaats:
+          $ref: '#/components/schemas/Woonplaats'
     LocatieInOnderzoek:
       allOf:
       - $ref: '#/components/schemas/InOnderzoek'
@@ -1478,11 +1492,11 @@ components:
           $ref: '#/components/schemas/Aanschrijfwijze'
         gebruikInLopendeTekst:
           $ref: '#/components/schemas/GebruikInLopendeTekst'
-        adresseringregel1:
+        adresregel1:
           $ref: '#/components/schemas/Adresregel1'
-        adresseringregel2:
+        adresregel2:
           $ref: '#/components/schemas/Adresregel2'
-        adresseringregel3:
+        adresregel3:
           $ref: '#/components/schemas/Adresregel3'
         land:
           $ref: '#/components/schemas/Waardetabel'
