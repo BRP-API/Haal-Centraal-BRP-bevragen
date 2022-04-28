@@ -324,7 +324,7 @@ components:
         fields:
           type: array
           items:
-            $ref: 'filter.yaml#/components/schemas/Fields'
+            $ref: '#/components/schemas/Fields'
         gemeenteVanInschrijving:
           $ref: '#/components/schemas/GemeenteVanInschrijving'
       discriminator:
