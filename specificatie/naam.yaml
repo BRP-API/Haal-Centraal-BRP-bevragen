@@ -70,7 +70,7 @@ components:
     AdellijkeTitelPredicaatType:
       allOf:
         - $ref: 'common.yaml#/components/schemas/Waardetabel'
-        - description: Voor de enumeratie van adellijkeTitelPredicaat wordt tabel 38 met identificatie "Adellijke titel/predicaat" opgehaald m.b.v. "BRP tabellen bevragen"-API.
+        - description: Voor de enumeratie van adellijkeTitelPredicaat wordt tabel 38 met identificatie "Adellijke titel/predicaat" opgehaald m.b.v. "BRP tabellen bevragen"-API. Met de property 'soort' wordt aangegeven of het een 'predicaat' of een 'titel' betreft. 
           properties:
             soort:
               $ref: '#/components/schemas/AdellijkeTitelPredicaatSoort'
