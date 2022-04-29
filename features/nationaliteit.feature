@@ -177,6 +177,7 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
     - wanneer nationaliteit voorkomt met een waarde ongelijk aan "0000", "0002", "0499" of "0500", dan wordt type opgenomen met de waarde "Nationaliteit"
     - wanneer aanduidingBijzonderNederlanderschap voorkomt met een waarde gelijk aan "B", dan wordt type opgenomen met de waarde "BehandeldAlsNederlander"
     - wanneer aanduidingBijzonderNederlanderschap voorkomt met een waarde gelijk aan "V", dan wordt type opgenomen met de waarde "VastgesteldNietNederlander"
+    - het veld "nationaliteit" wordt alleen opgenomen bij type "Nationaliteit"
 
     @proxy
     Scenario: de persoon heeft de Nederlandse nationaliteit
