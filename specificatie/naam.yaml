@@ -70,7 +70,8 @@ components:
     AdellijkeTitelPredicaatType:
       allOf:
         - $ref: 'common.yaml#/components/schemas/Waardetabel'
-        - properties:
+        - description: Voor de enumeratie van adellijkeTitelPredicaat wordt tabel 38 met identificatie "Adellijke titel/predicaat" opgehaald m.b.v. "BRP tabellen bevragen"-API.
+          properties:
             soort:
               $ref: '#/components/schemas/AdellijkeTitelPredicaatSoort'
           example:
@@ -94,7 +95,9 @@ components:
         - $ref: '#/components/schemas/GbaNaamBasis'
         - properties:
             aanduidingNaamgebruik:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              allOf:
+              - $ref: 'common.yaml#/components/schemas/Waardetabel'
+              - description: Voor de enumeratie van aanduidingNaamgebruik wordt de tabel met identificatie "naamgebruik" opgehaald m.b.v. "BRP tabellen bevragen"-API.
     NaamBasis:
       type: object
       properties:
@@ -147,7 +150,9 @@ components:
         - $ref: '#/components/schemas/NaamBasis'
         - properties:
             aanduidingNaamgebruik:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              allOf:
+              - $ref: 'common.yaml#/components/schemas/Waardetabel'
+              - description: Voor de enumeratie van aanduidingNaamgebruik wordt de tabel met identificatie "naamgebruik" opgehaald m.b.v. "BRP tabellen bevragen"-API.
             aanhef:
               $ref: '#/components/schemas/Aanhef'
             aanschrijfwijze:

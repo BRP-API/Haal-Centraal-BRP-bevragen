@@ -17,7 +17,9 @@ components:
             Geeft aan dat de persoon onder curatele is gesteld.
           example: true
         indicatieGezagMinderjarige:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          allOf:
+          - $ref: 'common.yaml#/components/schemas/Waardetabel'
+          - description: Voor de enumeratie van indicatieGezagMinderjarige wordt de tabel met identificatie "gezag_minderjarige" opgehaald m.b.v. "BRP tabellen bevragen"-API.
     GbaGezagsverhouding:
       allOf:
         - $ref: '#/components/schemas/GezagsverhoudingBasis'
