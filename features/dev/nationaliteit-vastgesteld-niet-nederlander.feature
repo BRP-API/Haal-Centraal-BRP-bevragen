@@ -86,7 +86,7 @@ Functionaliteit: vastgesteld niet-Nederlander
     | gba naam                        | gba waarde | naam                  | type  | waarde     |
     | ingangsdatum geldigheid (85.10) | 20020701   | datumIngangGeldigheid | Datum | 2002-07-01 |
 
-  Abstract Scenario: persoon's 'vastgesteld niet-Nederlander' nationaliteit is in onderzoek
+  Abstract Scenario: persoon's 'vastgesteld niet-Nederlander' nationaliteit velden is in onderzoek
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |
