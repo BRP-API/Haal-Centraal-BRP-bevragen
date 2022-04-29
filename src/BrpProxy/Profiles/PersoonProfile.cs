@@ -27,6 +27,11 @@ public class PersoonProfile : Profile
             })
             .ForMember(dest => dest.DatumEersteInschrijvingGBA, opt => opt.MapFrom(src => src.DatumEersteInschrijvingGBA.Map()))
             .ForMember(dest => dest.GeheimhoudingPersoonsgegevens, opt => opt.MapFrom(src => src.Geheimhouding()))
+            .ForMember(dest => dest.Leeftijd, opt =>
+            {
+                opt.PreCondition(src => src.Overlijden == null);
+                opt.MapFrom(src => src.Geboorte.Datum.Map().Leeftijd());
+            })
             .ForMember(dest => dest.Reisdocumentnummers, opt => opt.MapFrom(src => src.Reisdocumentnummers.FilterOnbekendReisdocumentnummers()));
         CreateMap<GbaInOnderzoek, PersoonInOnderzoek?>().ConvertUsing<PersoonInOnderzoekConverter>();
     }

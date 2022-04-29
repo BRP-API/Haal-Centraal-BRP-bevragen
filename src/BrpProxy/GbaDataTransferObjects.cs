@@ -130,9 +130,6 @@ namespace HaalCentraal.BrpProxy.Generated.Gba
         [Newtonsoft.Json.JsonConverter(typeof(DateFormatConverter))]
         public System.DateTimeOffset? Geboortedatum { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("geboorteplaats", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Geboorteplaats { get; set; }
-
         [Newtonsoft.Json.JsonProperty("geslachtsnaam", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Geslachtsnaam { get; set; }
 

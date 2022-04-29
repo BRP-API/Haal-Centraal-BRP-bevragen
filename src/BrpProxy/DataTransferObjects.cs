@@ -316,7 +316,7 @@ namespace HaalCentraal.BrpProxy.Generated
         public Kiesrecht Kiesrecht { get; set; }
 
         [Newtonsoft.Json.JsonProperty("leeftijd", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Leeftijd { get; set; }
+        public int? Leeftijd { get; set; }
 
         [Newtonsoft.Json.JsonProperty("naam", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public NaamPersoon Naam { get; set; }
@@ -865,6 +865,9 @@ namespace HaalCentraal.BrpProxy.Generated
 
         [Newtonsoft.Json.JsonProperty("redenOpname", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? RedenOpname { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? Type { get; set; }
 
     }
 
