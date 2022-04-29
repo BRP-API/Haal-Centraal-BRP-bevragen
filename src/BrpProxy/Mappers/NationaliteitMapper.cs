@@ -16,27 +16,14 @@ public static class NationaliteitMapper
                 Type = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
             },
-            "040500" => new NationaliteitInOnderzoek
+            "040500" or "040510" => new NationaliteitInOnderzoek
             {
                 Nationaliteit = true,
                 Type = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
 
             },
-            "040510" => new NationaliteitInOnderzoek
-            {
-                Nationaliteit = true,
-                Type = true,
-                DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
-
-            },
-            "046300" => new NationaliteitInOnderzoek
-            {
-                RedenOpname = true,
-                DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
-
-            },
-            "046310" => new NationaliteitInOnderzoek
+            "046300" or "046310" => new NationaliteitInOnderzoek
             {
                 RedenOpname = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
@@ -56,25 +43,13 @@ public static class NationaliteitMapper
                 Type = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
             },
-            "040500" => new NationaliteitOnbekendInOnderzoek
+            "040500" or "040510" => new NationaliteitOnbekendInOnderzoek
             {
                 Type = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
 
             },
-            "040510" => new NationaliteitOnbekendInOnderzoek
-            {
-                Type = true,
-                DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
-
-            },
-            "046300" => new NationaliteitOnbekendInOnderzoek
-            {
-                RedenOpname = true,
-                DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
-
-            },
-            "046310" => new NationaliteitOnbekendInOnderzoek
+            "046300" or "046310" => new NationaliteitOnbekendInOnderzoek
             {
                 RedenOpname = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
@@ -94,39 +69,18 @@ public static class NationaliteitMapper
                 Type = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
             },
-            "040500" => new BijzonderNederlanderschapInOnderzoek
-            {
-                Type = true,
-                DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
-
-            },
-            "040510" => new BijzonderNederlanderschapInOnderzoek
-            {
-                Type = true,
-                DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
-
-            },
-            "046300" => new BijzonderNederlanderschapInOnderzoek
-            {
-                RedenOpname = true,
-                DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
-
-            },
-            "046310" => new BijzonderNederlanderschapInOnderzoek
-            {
-                RedenOpname = true,
-                DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
-
-            },
-            "046500" => new BijzonderNederlanderschapInOnderzoek
-            {
-                Type = true,
-                DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
-
-            },
+            "040500" or
+            "040510" or
+            "046500" or
             "046510" => new BijzonderNederlanderschapInOnderzoek
             {
                 Type = true,
+                DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
+
+            },
+            "046300" or "046310" => new BijzonderNederlanderschapInOnderzoek
+            {
+                RedenOpname = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
 
             },
