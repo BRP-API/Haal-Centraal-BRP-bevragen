@@ -32,7 +32,9 @@ components:
             datumIngangGeldigheid:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             nationaliteit:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              allOf:
+              - $ref: 'common.yaml#/components/schemas/Waardetabel'
+              - description: Voor de enumeratie van land wordt tabel 32 met identificatie "Nationaliteiten" opgehaald m.b.v. "BRP tabellen bevragen"-API.
             inOnderzoek:
               $ref: '#/components/schemas/NationaliteitInOnderzoek'
     BehandeldAlsNederlander:
@@ -75,7 +77,9 @@ components:
         datumIngangGeldigheid:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
         nationaliteit:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          allOf:
+          - $ref: 'common.yaml#/components/schemas/Waardetabel'
+          - description: Voor de enumeratie van land wordt tabel 32 met identificatie "Nationaliteiten" opgehaald m.b.v. "BRP tabellen bevragen"-API.
         redenOpname:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         inOnderzoek:

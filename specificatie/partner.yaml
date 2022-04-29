@@ -26,9 +26,13 @@ components:
         burgerservicenummer:
           $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
         geslachtsaanduiding:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          allOf:
+          - $ref: 'common.yaml#/components/schemas/Waardetabel'
+          - description: Voor de enumeratie van de geslachtsaanduiding wordt de tabel met identificatie "geslacht" opgehaald m.b.v. "BRP tabellen bevragen"-API.
         soortVerbintenis:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          allOf:
+          - $ref: 'common.yaml#/components/schemas/Waardetabel'
+          - description: Voor de enumeratie van soortVerbintenis wordt tabel 34 met identificatie "soort_verbintenis" opgehaald m.b.v. "BRP tabellen bevragen"-API.
         naam:
           $ref: 'naam.yaml#/components/schemas/GbaNaamBasis'
         geboorte:
@@ -47,9 +51,13 @@ components:
             burgerservicenummer:
               $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
             geslachtsaanduiding:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              allOf:
+              - $ref: 'common.yaml#/components/schemas/Waardetabel'
+              - description: Voor de enumeratie van de geslachtsaanduiding wordt de tabel met identificatie "geslacht" opgehaald m.b.v. "BRP tabellen bevragen"-API.
             soortVerbintenis:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              allOf:
+              - $ref: 'common.yaml#/components/schemas/Waardetabel'
+              - description: Voor de enumeratie van soortVerbintenis wordt tabel 34 met identificatie "soort_verbintenis" opgehaald m.b.v. "BRP tabellen bevragen"-API.
             naam:
               $ref: 'naam.yaml#/components/schemas/NaamGerelateerde'
             geboorte:
@@ -91,8 +99,10 @@ components:
         datum:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
         land:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
-        plaats:
+          allOf:
+          - $ref: 'common.yaml#/components/schemas/Waardetabel'
+          - description: Voor de enumeratie van land wordt tabel 34 met identificatie "Landen" opgehaald m.b.v. "BRP tabellen bevragen"-API.
+       plaats:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
@@ -107,7 +117,9 @@ components:
         datum:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         land:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          allOf:
+          - $ref: 'common.yaml#/components/schemas/Waardetabel'
+          - description: Voor de enumeratie van land wordt tabel 34 met identificatie "Landen" opgehaald m.b.v. "BRP tabellen bevragen"-API.
         plaats:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         inOnderzoek:

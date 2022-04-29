@@ -128,7 +128,9 @@ components:
         - type: object
           properties:
             functieAdres:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              allOf:
+              - $ref: 'common.yaml#/components/schemas/Waardetabel'
+              - description: Voor de enumeratie van functieAdres wordt de tabel met identificatie "soort_adres" opgehaald m.b.v. "BRP tabellen bevragen"-API.
             adresregel1:
               $ref: '#/components/schemas/Adresregel1'
             adresregel2:
@@ -147,7 +149,9 @@ components:
             adresregel3:
               $ref: '#/components/schemas/Adresregel3'
             land:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              allOf:
+              - $ref: 'common.yaml#/components/schemas/Waardetabel'
+              - description: Voor de enumeratie van land wordt tabel 34 met identificatie "Landen" opgehaald m.b.v. "BRP tabellen bevragen"-API.
     VerblijfplaatsOnbekendBeperkt:
       allOf:
         - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
@@ -165,7 +169,9 @@ components:
             adresregel2:
               $ref: '#/components/schemas/Adresregel2'
             functieAdres:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              allOf:
+              - $ref: 'common.yaml#/components/schemas/Waardetabel'
+              - description: Voor de enumeratie van functieAdres wordt de tabel met identificatie "soort_adres" opgehaald m.b.v. "BRP tabellen bevragen"-API.
             locatiebeschrijving:
               $ref: '#/components/schemas/Locatiebeschrijving'
             woonplaats:
@@ -174,7 +180,9 @@ components:
       type: object
       properties:
         functieAdres:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          allOf:
+          - $ref: 'common.yaml#/components/schemas/Waardetabel'
+          - description: Voor de enumeratie van functieAdres wordt de tabel met identificatie "soort_adres" opgehaald m.b.v. "BRP tabellen bevragen"-API.
         woonplaats:
           $ref: '#/components/schemas/Woonplaats'
         straat:
@@ -186,15 +194,21 @@ components:
         huisnummertoevoeging:
           $ref: '#/components/schemas/Huisnummertoevoeging'
         aanduidingBijHuisnummer:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          allOf:
+          - $ref: 'common.yaml#/components/schemas/Waardetabel'
+          - description: Voor de enumeratie van aanduidingBijHuisnummer wordt de tabel met identificatie "aanduidingbijhuisnummer" opgehaald m.b.v. "BRP tabellen bevragen"-API.
         postcode:
           $ref: '#/components/schemas/Postcode'
         locatiebeschrijving:
           $ref: '#/components/schemas/Locatiebeschrijving'
         land:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          allOf:
+          - $ref: 'common.yaml#/components/schemas/Waardetabel'
+          - description: Voor de enumeratie van land wordt tabel 34 met identificatie "Landen" opgehaald m.b.v. "BRP tabellen bevragen"-API.
         gemeenteVanInschrijving:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          allOf:
+          - $ref: 'common.yaml#/components/schemas/Waardetabel'
+          - description: Voor de enumeratie van gemeenteVanInschrijving wordt tabel 33 met identificatie "Gemeenten" opgehaald m.b.v. "BRP tabellen bevragen"-API.
         adresregel1:
           $ref: '#/components/schemas/Adresregel1'
         adresregel2:
@@ -231,9 +245,13 @@ components:
           datumInschrijvingInGemeente:
             $ref: 'datum.yaml#/components/schemas/AbstractDatum'
           gemeenteVanInschrijving:
-            $ref: 'common.yaml#/components/schemas/Waardetabel'
+            allOf:
+            - $ref: 'common.yaml#/components/schemas/Waardetabel'
+            - description: Voor de enumeratie van gemeenteVanInschrijving wordt tabel 33 met identificatie "Gemeenten" opgehaald m.b.v. "BRP tabellen bevragen"-API.
           land:
-            $ref: 'common.yaml#/components/schemas/Waardetabel'
+            allOf:
+            - $ref: 'common.yaml#/components/schemas/Waardetabel'
+            - description: Voor de enumeratie van land wordt tabel 34 met identificatie "Landen" opgehaald m.b.v. "BRP tabellen bevragen"-API.
           datumVan:
             $ref: 'datum.yaml#/components/schemas/AbstractDatum'
           datumIngangGeldigheid:
@@ -254,7 +272,9 @@ components:
         - type: object
           properties:
             functieAdres:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              allOf:
+              - $ref: 'common.yaml#/components/schemas/Waardetabel'
+              - description: Voor de enumeratie van functieAdres wordt de tabel met identificatie "soort_adres" opgehaald m.b.v. "BRP tabellen bevragen"-API.
             straat:
               $ref: '#/components/schemas/Straat'
             huisnummer:
@@ -264,7 +284,9 @@ components:
             huisnummertoevoeging:
               $ref: '#/components/schemas/Huisnummertoevoeging'
             aanduidingBijHuisnummer:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              allOf:
+              - $ref: 'common.yaml#/components/schemas/Waardetabel'
+              - description: Voor de enumeratie van aanduidingBijHuisnummer wordt de tabel met identificatie "aanduidingbijhuisnummer" opgehaald m.b.v. "BRP tabellen bevragen"-API.
             postcode:
               $ref: '#/components/schemas/Postcode'
             adresseerbaarObjectIdentificatie:
@@ -292,9 +314,13 @@ components:
             datumVestigingInNederland:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             gemeenteVanInschrijving:
-              $ref: "common.yaml#/components/schemas/Waardetabel"
+              allOf:
+              - $ref: 'common.yaml#/components/schemas/Waardetabel'
+              - description: Voor de enumeratie van gemeenteVanInschrijving wordt tabel 33 met identificatie "Gemeenten" opgehaald m.b.v. "BRP tabellen bevragen"-API.
             landVanwaarIngeschreven:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              allOf:
+              - $ref: 'common.yaml#/components/schemas/Waardetabel'
+              - description: Voor de enumeratie van landVanwaarIngeschreven wordt tabel 34 met identificatie "Landen" opgehaald m.b.v. "BRP tabellen bevragen"-API.
             inOnderzoek:
               $ref: "#/components/schemas/AdresInOnderzoek"
     Locatie:
@@ -313,13 +339,19 @@ components:
             datumVan:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             functieAdres:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              allOf:
+              - $ref: 'common.yaml#/components/schemas/Waardetabel'
+              - description: Voor de enumeratie van functieAdres wordt de tabel met identificatie "soort_adres" opgehaald m.b.v. "BRP tabellen bevragen"-API.
             gemeenteVanInschrijving:
-              $ref: "common.yaml#/components/schemas/Waardetabel"
+              allOf:
+              - $ref: 'common.yaml#/components/schemas/Waardetabel'
+              - description: Voor de enumeratie van gemeenteVanInschrijving wordt tabel 33 met identificatie "Gemeenten" opgehaald m.b.v. "BRP tabellen bevragen"-API.
             indicatieVestigingVanuitBuitenland:
               $ref: '#/components/schemas/IndicatieVestigingVanuitBuitenland'
             landVanwaarIngeschreven:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              allOf:
+              - $ref: 'common.yaml#/components/schemas/Waardetabel'
+              - description: Voor de enumeratie van landVanwaarIngeschreven wordt tabel 34 met identificatie "Landen" opgehaald m.b.v. "BRP tabellen bevragen"-API.
             locatiebeschrijving:
               $ref: '#/components/schemas/Locatiebeschrijving'
             vanuitVerblijfplaatsOnbekend:
@@ -336,7 +368,9 @@ components:
             datumInschrijvingInGemeente:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             gemeenteVanInschrijving:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              allOf:
+              - $ref: 'common.yaml#/components/schemas/Waardetabel'
+              - description: Voor de enumeratie van gemeenteVanInschrijving wordt tabel 33 met identificatie "Gemeenten" opgehaald m.b.v. "BRP tabellen bevragen"-API.
             verblijfplaatsOnbekend:
               $ref: '#/components/schemas/IndicatieVerblijfplaatsOnbekend'
             inOnderzoek:
@@ -355,11 +389,15 @@ components:
         nummeraanduidingIdentificatie:
           $ref: '#/components/schemas/NummeraanduidingIdentificatie'
         functieAdres:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          allOf:
+          - $ref: 'common.yaml#/components/schemas/Waardetabel'
+          - description: Voor de enumeratie van functieAdres wordt de tabel met identificatie "soort_adres" opgehaald m.b.v. "BRP tabellen bevragen"-API.
         woonplaats:
           $ref: '#/components/schemas/Woonplaats'
         landVanwaarIngeschreven:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          allOf:
+          - $ref: 'common.yaml#/components/schemas/Waardetabel'
+          - description: Voor de enumeratie van landVanwaarIngeschreven wordt tabel 34 met identificatie "Landen" opgehaald m.b.v. "BRP tabellen bevragen"-API.
         straat:
           $ref: '#/components/schemas/Straat'
         huisnummer:
@@ -369,13 +407,17 @@ components:
         huisnummertoevoeging:
           $ref: '#/components/schemas/Huisnummertoevoeging'
         aanduidingBijHuisnummer:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          allOf:
+          - $ref: 'common.yaml#/components/schemas/Waardetabel'
+          - description: Voor de enumeratie van aanduidingBijHuisnummer wordt de tabel met identificatie "aanduidingbijhuisnummer" opgehaald m.b.v. "BRP tabellen bevragen"-API.
         postcode:
           $ref: '#/components/schemas/Postcode'
         locatiebeschrijving:
           $ref: '#/components/schemas/Locatiebeschrijving'
         land:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          allOf:
+          - $ref: 'common.yaml#/components/schemas/Waardetabel'
+          - description: Voor de enumeratie van land wordt tabel 34 met identificatie "Landen" opgehaald m.b.v. "BRP tabellen bevragen"-API.
         datumAanvangAdreshouding:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
         datumAanvangAdresBuitenland:
@@ -387,7 +429,9 @@ components:
         datumVestigingInNederland:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
         gemeenteVanInschrijving:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          allOf:
+          - $ref: 'common.yaml#/components/schemas/Waardetabel'
+          - description: Voor de enumeratie van gemeenteVanInschrijving wordt tabel 33 met identificatie "Gemeenten" opgehaald m.b.v. "BRP tabellen bevragen"-API.
         naamOpenbareRuimte:
           $ref: '#/components/schemas/NaamOpenbareRuimte'
         inOnderzoek:

@@ -17,7 +17,9 @@ components:
         - type: object
           properties:
             land:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              allOf:
+              - $ref: 'common.yaml#/components/schemas/Waardetabel'
+              - description: Voor de enumeratie van land wordt tabel 34 met identificatie "Landen" opgehaald m.b.v. "BRP tabellen bevragen"-API.
             plaats:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
     GeboorteBeperkt:
@@ -36,7 +38,9 @@ components:
         - type: object
           properties:
             land:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              allOf:
+              - $ref: 'common.yaml#/components/schemas/Waardetabel'
+              - description: Voor de enumeratie van land wordt tabel 34 met identificatie "Landen" opgehaald m.b.v. "BRP tabellen bevragen"-API.
             plaats:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
             inOnderzoek:

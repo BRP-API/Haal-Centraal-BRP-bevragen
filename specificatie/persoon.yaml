@@ -44,7 +44,9 @@ components:
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/GbaGeheimhoudingPersoonsgegevens'
         geslachtsaanduiding:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          allOf:
+          - $ref: 'common.yaml#/components/schemas/Waardetabel'
+          - description: Voor de enumeratie van de geslachtsaanduiding wordt de tabel met identificatie "geslacht" opgehaald m.b.v. "BRP tabellen bevragen"-API.
         naam:
           $ref: 'naam.yaml#/components/schemas/GbaNaamBasis'
         opschortingBijhouding:
@@ -63,7 +65,9 @@ components:
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/GeheimhoudingPersoonsgegevens'
         geslachtsaanduiding:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          allOf:
+          - $ref: 'common.yaml#/components/schemas/Waardetabel'
+          - description: Voor de enumeratie van de geslachtsaanduiding wordt de tabel met identificatie "geslacht" opgehaald m.b.v. "BRP tabellen bevragen"-API.
         leeftijd:
           $ref: '#/components/schemas/Leeftijd'
         naam:
@@ -86,7 +90,9 @@ components:
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/GbaGeheimhoudingPersoonsgegevens'
         geslachtsaanduiding:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          allOf:
+          - $ref: 'common.yaml#/components/schemas/Waardetabel'
+          - description: Voor de enumeratie van de geslachtsaanduiding wordt de tabel met identificatie "geslacht" opgehaald m.b.v. "BRP tabellen bevragen"-API.
         inOnderzoek:
           $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
         kiesrecht:
@@ -137,7 +143,9 @@ components:
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/GeheimhoudingPersoonsgegevens'
         geslachtsaanduiding:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          allOf:
+          - $ref: 'common.yaml#/components/schemas/Waardetabel'
+          - description: Voor de enumeratie van de geslachtsaanduiding wordt de tabel met identificatie "geslacht" opgehaald m.b.v. "BRP tabellen bevragen"-API.
         inOnderzoek:
           $ref: '#/components/schemas/PersoonInOnderzoek'
         kiesrecht:
