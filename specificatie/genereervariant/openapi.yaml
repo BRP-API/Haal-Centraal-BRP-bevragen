@@ -531,7 +531,7 @@ components:
         verblijfplaats:
           $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
         adressering:
-          $ref: '#/components/schemas/Adressering'
+          $ref: '#/components/schemas/AdresseringBeperkt'
     Burgerservicenummer:
       pattern: ^[0-9]{9}$
       type: string
@@ -916,23 +916,15 @@ components:
       description: |
         Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats.
       example: Naast de derde brug
-    Adressering:
+    AdresseringBeperkt:
       type: object
       properties:
-        aanhef:
-          $ref: '#/components/schemas/Aanhef'
-        aanschrijfwijze:
-          $ref: '#/components/schemas/Aanschrijfwijze'
-        gebruikInLopendeTekst:
-          $ref: '#/components/schemas/GebruikInLopendeTekst'
         adresregel1:
           $ref: '#/components/schemas/Adresregel1'
         adresregel2:
           $ref: '#/components/schemas/Adresregel2'
         adresregel3:
           $ref: '#/components/schemas/Adresregel3'
-        land:
-          $ref: '#/components/schemas/Waardetabel'
     AbstractDatum:
       required:
       - type
@@ -1492,6 +1484,18 @@ components:
             type: boolean
           indicatieVestigingVanuitBuitenland:
             type: boolean
+    Adressering:
+      allOf:
+      - $ref: '#/components/schemas/AdresseringBeperkt'
+      - properties:
+          aanhef:
+            $ref: '#/components/schemas/Aanhef'
+          aanschrijfwijze:
+            $ref: '#/components/schemas/Aanschrijfwijze'
+          gebruikInLopendeTekst:
+            $ref: '#/components/schemas/GebruikInLopendeTekst'
+          land:
+            $ref: '#/components/schemas/Waardetabel'
     Gezagsverhouding:
       allOf:
       - $ref: '#/components/schemas/GezagsverhoudingBasis'

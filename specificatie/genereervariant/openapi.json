@@ -674,7 +674,7 @@
             "$ref" : "#/components/schemas/AbstractVerblijfplaatsBeperkt"
           },
           "adressering" : {
-            "$ref" : "#/components/schemas/Adressering"
+            "$ref" : "#/components/schemas/AdresseringBeperkt"
           }
         }
       },
@@ -1166,18 +1166,9 @@
         "description" : "Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats.\n",
         "example" : "Naast de derde brug"
       },
-      "Adressering" : {
+      "AdresseringBeperkt" : {
         "type" : "object",
         "properties" : {
-          "aanhef" : {
-            "$ref" : "#/components/schemas/Aanhef"
-          },
-          "aanschrijfwijze" : {
-            "$ref" : "#/components/schemas/Aanschrijfwijze"
-          },
-          "gebruikInLopendeTekst" : {
-            "$ref" : "#/components/schemas/GebruikInLopendeTekst"
-          },
           "adresregel1" : {
             "$ref" : "#/components/schemas/Adresregel1"
           },
@@ -1186,9 +1177,6 @@
           },
           "adresregel3" : {
             "$ref" : "#/components/schemas/Adresregel3"
-          },
-          "land" : {
-            "$ref" : "#/components/schemas/Waardetabel"
           }
         }
       },
@@ -1980,6 +1968,26 @@
             },
             "indicatieVestigingVanuitBuitenland" : {
               "type" : "boolean"
+            }
+          }
+        } ]
+      },
+      "Adressering" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AdresseringBeperkt"
+        }, {
+          "properties" : {
+            "aanhef" : {
+              "$ref" : "#/components/schemas/Aanhef"
+            },
+            "aanschrijfwijze" : {
+              "$ref" : "#/components/schemas/Aanschrijfwijze"
+            },
+            "gebruikInLopendeTekst" : {
+              "$ref" : "#/components/schemas/GebruikInLopendeTekst"
+            },
+            "land" : {
+              "$ref" : "#/components/schemas/Waardetabel"
             }
           }
         } ]
