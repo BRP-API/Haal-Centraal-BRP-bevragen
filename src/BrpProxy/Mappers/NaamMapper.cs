@@ -69,4 +69,42 @@ public static class NaamMapper
                              : voornaam + " ";
         return string.Join("", voorletters).Trim();
     }
+
+    public static NaamInOnderzoek? PartnerNaamInOnderzoek(this GbaInOnderzoek? inOnderzoek)
+    {
+        return inOnderzoek?.AanduidingGegevensInOnderzoek switch
+        {
+            "050000" or "050200" => new NaamInOnderzoek
+            {
+                Voornamen = true,
+                AdellijkeTitelPredicaat = true,
+                Voorvoegsel = true,
+                Geslachtsnaam = true,
+                Voorletters = true,
+                DatumIngangOnderzoek = inOnderzoek?.DatumIngangOnderzoek?.Map()
+            },
+            "050210" => new NaamInOnderzoek
+            {
+                Voornamen = true,
+                Voorletters = true,
+                DatumIngangOnderzoek = inOnderzoek?.DatumIngangOnderzoek?.Map()
+            },
+            "050220" => new NaamInOnderzoek
+            {
+                AdellijkeTitelPredicaat = true,
+                DatumIngangOnderzoek = inOnderzoek?.DatumIngangOnderzoek?.Map()
+            },
+            "050230" => new NaamInOnderzoek
+            {
+                Voorvoegsel = true,
+                DatumIngangOnderzoek = inOnderzoek?.DatumIngangOnderzoek?.Map()
+            },
+            "050240" => new NaamInOnderzoek
+            {
+                Geslachtsnaam = true,
+                DatumIngangOnderzoek = inOnderzoek?.DatumIngangOnderzoek?.Map()
+            },
+            _ => null
+        };
+    }
 }

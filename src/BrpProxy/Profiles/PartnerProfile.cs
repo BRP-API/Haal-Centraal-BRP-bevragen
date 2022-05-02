@@ -7,12 +7,30 @@ namespace BrpProxy.Profiles;
 
 public class PartnerProfile : Profile
 {
+    private const string PartnerType = "Partner";
+
     public PartnerProfile()
     {
         CreateMap<GbaPartner, AbstractPartner>()
             .ConvertUsing<PartnerConverter>();
 
         CreateMap<GbaPartner, Partner>()
+            .BeforeMap((src, dest) =>
+            {
+                if(src.Naam != null)
+                {
+                    src.Naam.InOnderzoek = src.InOnderzoek;
+                    src.Naam.Type = PartnerType;
+                }
+                if(src.Geboorte != null)
+                {
+                    src.Geboorte.InOnderzoek = src.InOnderzoek;
+                }
+                if(src.AangaanHuwelijkPartnerschap != null)
+                {
+                    src.AangaanHuwelijkPartnerschap.InOnderzoek = src.InOnderzoek;
+                }
+            })
             .ForMember(dest => dest.SoortVerbintenis, opt =>
             {
                 opt.PreCondition(src => src.SoortVerbintenis?.Code != ".");
@@ -33,6 +51,9 @@ public class PartnerProfile : Profile
                 opt.PreCondition(src => src.Plaats?.Code != "0000");
                 opt.MapFrom(src => src.Plaats);
             })
+           .ForMember(dest => dest.InOnderzoek, opt => opt.MapFrom(src => src.InOnderzoek.AangaanHuwelijkPartnerschapInOnderzoek()));
             ;
+
+        CreateMap<GbaInOnderzoek, PartnerInOnderzoek?>().ConvertUsing<PartnerInOnderzoekConverter>();
     }
 }

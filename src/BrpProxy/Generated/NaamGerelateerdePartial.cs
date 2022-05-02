@@ -6,5 +6,6 @@ public partial class NaamGerelateerde
         !string.IsNullOrWhiteSpace(Voornamen) ||
         AdellijkeTitelPredicaat != null ||
         !string.IsNullOrWhiteSpace(Voorvoegsel) ||
-        !string.IsNullOrWhiteSpace(Geslachtsnaam);
+        !string.IsNullOrWhiteSpace(Geslachtsnaam) ||
+        InOnderzoek != null;
 }

@@ -3,36 +3,31 @@ using HaalCentraal.BrpProxy.Generated.Gba;
 
 namespace BrpProxy.Mappers;
 
-public static class GeboorteMapper
+public static class PartnerMapper
 {
-    public static GeboorteInOnderzoek? GeboorteInOnderzoek(this GbaInOnderzoek? source)
+    public static AangaanHuwelijkPartnerschapInOnderzoek? AangaanHuwelijkPartnerschapInOnderzoek(this GbaInOnderzoek? source)
     {
         return source?.AanduidingGegevensInOnderzoek switch
         {
-            "010000" or
-            "010300" or
             "050000" or
-            "050300" => new GeboorteInOnderzoek
+            "050600" => new AangaanHuwelijkPartnerschapInOnderzoek
             {
                 Datum = true,
                 Land = true,
                 Plaats = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
             },
-            "010310" or
-            "050310" => new GeboorteInOnderzoek
+            "050610" => new AangaanHuwelijkPartnerschapInOnderzoek
             {
                 Datum = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
             },
-            "010320" or
-            "050320" => new GeboorteInOnderzoek
+            "050620" => new AangaanHuwelijkPartnerschapInOnderzoek
             {
                 Plaats = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
             },
-            "010330" or
-            "050330" => new GeboorteInOnderzoek
+            "050630" => new AangaanHuwelijkPartnerschapInOnderzoek
             {
                 Land = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()

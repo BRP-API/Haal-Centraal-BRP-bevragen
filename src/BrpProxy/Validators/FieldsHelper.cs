@@ -1,131 +1,129 @@
 ﻿using HaalCentraal.BrpProxy.Generated;
-using System.Collections;
 using System.Collections.ObjectModel;
 
-namespace BrpProxy.Validators
+namespace BrpProxy.Validators;
+
+public class FieldsHelper
 {
-    public class FieldsHelper
+    private readonly ILogger<FieldsHelper> _logger;
+
+    public ReadOnlyDictionary<string,string> PersoonFieldShortcuts { get; private set; }
+    public ReadOnlyDictionary<string, string> PersoonBeperktFieldShortcuts { get; }
+    public ReadOnlyDictionary<string,string> PersoonFieldPaths { get; }
+    public ReadOnlyCollection<string> BeperktPersoonFieldPaths { get; }
+
+    private static IDictionary<string, string> SetupFieldShortcuts(string persoonFieldsMappingFilePath)
     {
-        private readonly ILogger<FieldsHelper> _logger;
+        var dictionary = new Dictionary<string, string>();
 
-        public ReadOnlyDictionary<string,string> PersoonFieldShortcuts { get; private set; }
-        public ReadOnlyDictionary<string, string> PersoonBeperktFieldShortcuts { get; }
-        public ReadOnlyDictionary<string,string> PersoonFieldPaths { get; }
-        public ReadOnlyCollection<string> BeperktPersoonFieldPaths { get; }
-
-        private static IDictionary<string, string> SetupFieldShortcuts(string persoonFieldsMappingFilePath)
+        foreach (var line in File.ReadAllLines(persoonFieldsMappingFilePath).Skip(1))
         {
-            var dictionary = new Dictionary<string, string>();
+            var lineItems = line.Split(',');
+            dictionary.Add(lineItems[0], lineItems[1]);
+        }
 
-            foreach (var line in File.ReadAllLines(persoonFieldsMappingFilePath).Skip(1))
+        return dictionary;
+    }
+
+    private static IDictionary<string, string> SetupFieldInOnderzoekMapping()
+    {
+        var dictionary = new Dictionary<string, string>();
+
+        var persoonFields = typeof(Persoon).GetPropertyPaths("HaalCentraal");
+        var persoonInOnderzoekFields = persoonFields.Where(x => x.IsInOnderzoekField());
+        foreach (var field in persoonFields)
+        {
+            if (field.IsInOnderzoekField())
             {
-                var lineItems = line.Split(',');
-                dictionary.Add(lineItems[0], lineItems[1]);
+                dictionary.Add(field, "");
             }
-
-            return dictionary;
-        }
-
-        private static IDictionary<string, string> SetupFieldInOnderzoekMapping()
-        {
-            var dictionary = new Dictionary<string, string>();
-
-            var persoonFields = typeof(Persoon).GetPropertyPaths("HaalCentraal");
-            var persoonInOnderzoekFields = persoonFields.Where(x => x.IsInOnderzoekField());
-            foreach (var field in persoonFields)
+            else if (field.Contains('.'))
             {
-                if (field.IsInOnderzoekField())
+                var inOnderzoekField = ToInOnderzoekPath(persoonInOnderzoekFields, field);
+                if (string.IsNullOrEmpty(inOnderzoekField))
                 {
-                    dictionary.Add(field, "");
+                    var fieldPart = field[0..field.LastIndexOf('.')];
+                    inOnderzoekField = fieldPart.Contains('.')
+                        ? ToInOnderzoekPath(persoonInOnderzoekFields, fieldPart)
+                        : persoonInOnderzoekFields.FirstOrDefault(x => x.Contains(fieldPart));
                 }
-                else if (field.Contains('.'))
-                {
-                    var inOnderzoekField = ToInOnderzoekPath(persoonInOnderzoekFields, field);
-                    if (string.IsNullOrEmpty(inOnderzoekField))
-                    {
-                        var fieldPart = field[0..field.LastIndexOf('.')];
-                        inOnderzoekField = fieldPart.Contains('.')
-                            ? ToInOnderzoekPath(persoonInOnderzoekFields, fieldPart)
-                            : persoonInOnderzoekFields.FirstOrDefault(x => x.Contains(fieldPart));
-                    }
 
-                    dictionary.Add(field, inOnderzoekField!);
-                }
-                else
-                {
-                    var inOnderzoekField = persoonInOnderzoekFields.FirstOrDefault(x => x.Contains(field));
-
-                    dictionary.Add(field, inOnderzoekField!);
-                }
+                dictionary.Add(field, inOnderzoekField!);
             }
-
-            return dictionary;
-        }
-
-        public FieldsHelper(IConfiguration configuration, ILogger<FieldsHelper> logger)
-        {
-            _logger = logger;
-
-            PersoonFieldShortcuts = new ReadOnlyDictionary<string, string>(SetupFieldShortcuts(configuration["PersoonFieldsMapping"]));
-            PersoonBeperktFieldShortcuts = new ReadOnlyDictionary<string, string>(SetupFieldShortcuts(configuration["PersoonBeperktFieldsMapping"]));
-            PersoonFieldPaths = new ReadOnlyDictionary<string, string>(SetupFieldInOnderzoekMapping());
-            BeperktPersoonFieldPaths = new ReadOnlyCollection<string>(typeof(PersoonBeperkt).GetPropertyPaths("HaalCentraal"));
-        }
-
-        public ICollection<string> AddExtraPersoonFields(ICollection<string> fields)
-        {
-            var retval = new List<string>()
+            else
             {
-                "geheimhoudingPersoonsgegevens",
-                "opschortingBijhouding.reden"
-            };
+                var inOnderzoekField = persoonInOnderzoekFields.FirstOrDefault(x => x.Contains(field));
 
-            foreach(var field in fields)
-            {
-                var fieldFullPath = PersoonFieldShortcuts[field];
-                retval.Add(fieldFullPath);
-                var inOnderzoekField = PersoonFieldPaths[fieldFullPath];
-                if (!string.IsNullOrEmpty(inOnderzoekField))
-                {
-                    retval.Add(inOnderzoekField);
-                    var datumIngangOnderzoekField = inOnderzoekField.EndsWith("inOnderzoek")
-                        ? $"{inOnderzoekField}.datumIngangOnderzoek"
-                        : $"{inOnderzoekField[0..inOnderzoekField.LastIndexOf('.')]}.datumIngangOnderzoek";
-                    retval.Add(datumIngangOnderzoekField);
-                }
+                dictionary.Add(field, inOnderzoekField!);
             }
-
-            _logger.LogDebug("extra persoon fields: {@fields}", retval);
-
-            return retval;
         }
 
-        public ICollection<string> AddExtraPersoonBeperktFields(ICollection<string> fields)
-        {
-            var retval = new List<string>()
-            {
-                "geheimhoudingPersoonsgegevens",
-                "opschortingBijhouding.reden"
-            };
+        return dictionary;
+    }
 
-            foreach (var field in fields)
+    public FieldsHelper(IConfiguration configuration, ILogger<FieldsHelper> logger)
+    {
+        _logger = logger;
+
+        PersoonFieldShortcuts = new ReadOnlyDictionary<string, string>(SetupFieldShortcuts(configuration["PersoonFieldsMapping"]));
+        PersoonBeperktFieldShortcuts = new ReadOnlyDictionary<string, string>(SetupFieldShortcuts(configuration["PersoonBeperktFieldsMapping"]));
+        PersoonFieldPaths = new ReadOnlyDictionary<string, string>(SetupFieldInOnderzoekMapping());
+        BeperktPersoonFieldPaths = new ReadOnlyCollection<string>(typeof(PersoonBeperkt).GetPropertyPaths("HaalCentraal"));
+    }
+
+    public ICollection<string> AddExtraPersoonFields(ICollection<string> fields)
+    {
+        var retval = new List<string>()
+        {
+            "geheimhoudingPersoonsgegevens",
+            "opschortingBijhouding.reden"
+        };
+
+        foreach(var field in fields)
+        {
+            var fieldFullPath = PersoonFieldShortcuts[field];
+            retval.Add(fieldFullPath);
+            var inOnderzoekField = PersoonFieldPaths[fieldFullPath];
+            if (!string.IsNullOrEmpty(inOnderzoekField))
             {
-                var fieldFullPath = PersoonBeperktFieldShortcuts[field];
-                retval.Add(fieldFullPath);
+                retval.Add(inOnderzoekField);
+                var datumIngangOnderzoekField = inOnderzoekField.EndsWith("inOnderzoek")
+                    ? $"{inOnderzoekField}.datumIngangOnderzoek"
+                    : $"{inOnderzoekField[0..inOnderzoekField.LastIndexOf('.')]}.datumIngangOnderzoek";
+                retval.Add(datumIngangOnderzoekField);
             }
-
-            _logger.LogDebug("extra persoon beperkt fields: {@fields}", retval);
-
-            return retval;
         }
 
-        private static string ToInOnderzoekPath(IEnumerable<string> inOnderzoekPaths, string path)
+        _logger.LogDebug("extra persoon fields: {@fields}", retval);
+
+        return retval;
+    }
+
+    public ICollection<string> AddExtraPersoonBeperktFields(ICollection<string> fields)
+    {
+        var retval = new List<string>()
         {
-            var pathParts = path.Split('.');
-            var s1 = pathParts.Last();
-            var s2 = string.Join('.', pathParts.Take(pathParts.Length - 1));
+            "geheimhoudingPersoonsgegevens",
+            "opschortingBijhouding.reden"
+        };
 
-            return inOnderzoekPaths.FirstOrDefault(x => x.Contains($"{s2}.inOnderzoek.{s1}")) ?? "";
+        foreach (var field in fields)
+        {
+            var fieldFullPath = PersoonBeperktFieldShortcuts[field];
+            retval.Add(fieldFullPath);
         }
+
+        _logger.LogDebug("extra persoon beperkt fields: {@fields}", retval);
+
+        return retval;
+    }
+
+    private static string ToInOnderzoekPath(IEnumerable<string> inOnderzoekPaths, string path)
+    {
+        var pathParts = path.Split('.');
+        var s1 = pathParts.Last();
+        var s2 = string.Join('.', pathParts.Take(pathParts.Length - 1));
+
+        return inOnderzoekPaths.FirstOrDefault(x => x.Contains($"{s2}.inOnderzoek.{s1}")) ?? "";
     }
 }

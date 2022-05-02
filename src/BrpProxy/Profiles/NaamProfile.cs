@@ -10,7 +10,15 @@ public class NaamProfile : Profile
     public NaamProfile()
     {
         CreateMap<GbaNaamBasis, NaamBasis>();
-        CreateMap<GbaNaamBasis, NaamGerelateerde>();
+
+        CreateMap<GbaNaamBasis, NaamGerelateerde>()
+            .ForMember(dest => dest.InOnderzoek, opt =>
+            {
+                opt.PreCondition(src => src.Type == "Partner");
+                opt.MapFrom(src => src.InOnderzoek.PartnerNaamInOnderzoek());
+            })
+            ;
+
         CreateMap<GbaNaamPersoon, NaamPersoon>()
             .ForMember(dest => dest.Geslachtsnaam, opt =>
             {

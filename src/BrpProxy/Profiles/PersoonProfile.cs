@@ -10,6 +10,7 @@ public class PersoonProfile : Profile
     public PersoonProfile()
     {
         CreateMap<GbaPersoonBeperkt, PersoonBeperkt>();
+
         CreateMap<GbaPersoon, Persoon>()
             .BeforeMap((src, dest) =>
             {
@@ -33,6 +34,7 @@ public class PersoonProfile : Profile
                 opt.MapFrom(src => src.Geboorte.Datum.Map().Leeftijd());
             })
             .ForMember(dest => dest.Reisdocumentnummers, opt => opt.MapFrom(src => src.Reisdocumentnummers.FilterOnbekendReisdocumentnummers()));
+
         CreateMap<GbaInOnderzoek, PersoonInOnderzoek?>().ConvertUsing<PersoonInOnderzoekConverter>();
     }
 }
