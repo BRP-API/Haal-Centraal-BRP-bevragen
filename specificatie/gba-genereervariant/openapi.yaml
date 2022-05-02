@@ -821,7 +821,7 @@ components:
     GbaInOnderzoek:
       required:
       - aanduidingGegevensInOnderzoek
-      - datumIngangInOnderzoek
+      - datumIngangOnderzoek
       type: object
       properties:
         aanduidingGegevensInOnderzoek:

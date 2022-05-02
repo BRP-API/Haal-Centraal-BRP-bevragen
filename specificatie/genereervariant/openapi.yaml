@@ -1109,6 +1109,8 @@ components:
       - $ref: '#/components/schemas/InOnderzoek'
       - type: object
         properties:
+          type:
+            type: boolean
           nationaliteit:
             type: boolean
           redenOpname:
