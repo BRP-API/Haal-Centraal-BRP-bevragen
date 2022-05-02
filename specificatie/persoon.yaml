@@ -81,7 +81,7 @@ components:
         verblijfplaats:
           $ref: 'verblijfplaats.yaml#/components/schemas/AbstractVerblijfplaatsBeperkt'
         adressering:
-          $ref: 'Adressering.yaml#/components/schemas/AdresseringBeperkt'
+          $ref: 'adressering.yaml#/components/schemas/AdresseringBeperkt'
     GbaPersoon:
       type: object
       properties:
