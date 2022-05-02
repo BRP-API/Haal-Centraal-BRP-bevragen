@@ -6,25 +6,23 @@ info:
 paths: {}
 components:
   schemas:
-    Adresregel1:
+    Regel1:
       type: string
       maxLength: 40
       description: |
-        Het eerste deel van een adres is een combinatie van de straat en huisnummer.
-      # example: "1600 Pennsylvania Avenue NW"
-      example: "Laan van de landinrichtingscommissie Duiven-Westervoort 26A-3"
-    Adresregel2:
+        Het eerste deel van een buitenlands adres. Vaak is dit een combinatie van de straat en huisnummer.
+      example: "1600 Pennsylvania Avenue NW"
+    Regel2:
       type: string
       maxLength: 50
       description: |
-        Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode.
-      # example: "Washington, DC 20500"
-      example: "1234AA Nootdorp"
-    Adresregel3:
+        Het tweede deel van een buitenlands adres. Vaak is dit een combinatie van woonplaats eventueel in combinatie met de postcode.
+      example: "Washington, DC 20500"
+    Regel3:
       type: string
       maxLength: 35
       description: |
-        Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.
+        Het derde deel van een buitenlands adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.
       example: "Selangor"
     AdresseerbaarObjectIdentificatie:
       type: string
@@ -111,11 +109,11 @@ components:
       type: object
       properties:
         regel1:
-          $ref: '#/components/schemas/Adresregel1'
+          $ref: '#/components/schemas/Regel1'
         regel2:
-          $ref: '#/components/schemas/Adresregel2'
+          $ref: '#/components/schemas/Regel2'
         regel3:
-          $ref: '#/components/schemas/Adresregel3'
+          $ref: '#/components/schemas/Regel3'
         land:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
     VerblijfadresLocatie:
@@ -146,8 +144,6 @@ components:
           properties:
             functieAdres:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
-            verblijfadres:
-              $ref: 'Adressering.yaml#/components/schemas/AdresseringBeperkt'
     VerblijfplaatsBuitenlandBeperkt:
       allOf:
         - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
@@ -169,8 +165,6 @@ components:
           properties:
             functieAdres:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
-            verblijfadres:
-              $ref: '#/components/schemas/VerblijfadresLocatie'
     GbaVerblijfplaatsBeperkt:
       type: object
       properties:
@@ -193,11 +187,11 @@ components:
         land:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         adresregel1:
-          $ref: '#/components/schemas/Adresregel1'
+          $ref: '#/components/schemas/Regel1'
         adresregel2:
-          $ref: '#/components/schemas/Adresregel2'
+          $ref: '#/components/schemas/Regel2'
         adresregel3:
-          $ref: '#/components/schemas/Adresregel3'
+          $ref: '#/components/schemas/Regel3'
     AbstractVerblijfplaats:
       type: object
       description: |
@@ -280,11 +274,11 @@ components:
       type: object
       properties:
         adresregel1:
-          $ref: '#/components/schemas/Adresregel1'
+          $ref: '#/components/schemas/Regel1'
         adresregel2:
-          $ref: '#/components/schemas/Adresregel2'
+          $ref: '#/components/schemas/Regel2'
         adresregel3:
-          $ref: '#/components/schemas/Adresregel3'
+          $ref: '#/components/schemas/Regel3'
         adresseerbaarObjectIdentificatie:
           $ref: '#/components/schemas/AdresseerbaarObjectIdentificatie'
         nummeraanduidingIdentificatie:
