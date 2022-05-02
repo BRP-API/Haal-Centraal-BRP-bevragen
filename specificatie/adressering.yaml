@@ -14,12 +14,12 @@ components:
           $ref: "verblijfplaats.yaml#/components/schemas/Adresregel1"
         adresregel2:
           $ref: "verblijfplaats.yaml#/components/schemas/Adresregel2"
-        adresregel3:
-          $ref: "verblijfplaats.yaml#/components/schemas/Adresregel3"
     Adressering:
       allOf:
         - $ref: "#/components/schemas/AdresseringBeperkt"
         - properties:
+            adresregel3:
+              $ref: "verblijfplaats.yaml#/components/schemas/Adresregel3"
             aanhef:
               $ref: "naam.yaml#/components/schemas/Aanhef"
             aanschrijfwijze:

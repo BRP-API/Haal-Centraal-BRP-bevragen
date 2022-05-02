@@ -107,13 +107,6 @@ components:
           $ref: '#/components/schemas/Woonplaats'
         korteNaam:
           $ref: '#/components/schemas/KorteNaam'
-    VerblijfadresBinnenlandBeperkt:
-      type: object
-      properties:
-        adresregel1:
-          $ref: '#/components/schemas/Adresregel1'
-        adresregel2:
-          $ref: '#/components/schemas/Adresregel2'
     VerblijfadresBuitenland:
       type: object
       properties:
@@ -154,7 +147,7 @@ components:
             functieAdres:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
             verblijfadres:
-              $ref: '#/components/schemas/VerblijfadresBinnenlandBeperkt'
+              $ref: 'Adressering.yaml#/components/schemas/AdresseringBeperkt'
     VerblijfplaatsBuitenlandBeperkt:
       allOf:
         - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
