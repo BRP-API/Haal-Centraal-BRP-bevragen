@@ -672,6 +672,9 @@
           },
           "verblijfplaats" : {
             "$ref" : "#/components/schemas/AbstractVerblijfplaatsBeperkt"
+          },
+          "adressering" : {
+            "$ref" : "#/components/schemas/Adressering"
           }
         }
       },
@@ -1128,15 +1131,11 @@
         }, {
           "type" : "object",
           "properties" : {
-            "verblijfplaatsOnbekend" : {
-              "$ref" : "#/components/schemas/IndicatieVerblijfplaatsOnbekend"
+            "functieAdres" : {
+              "$ref" : "#/components/schemas/Waardetabel"
             }
           }
         } ]
-      },
-      "IndicatieVerblijfplaatsOnbekend" : {
-        "type" : "boolean",
-        "description" : "Indicatie dat de verblijfplaats van de persoon onbekend is. Er is niet bekend in welk land de persoon verblijft.\n"
       },
       "LocatieBeperkt" : {
         "allOf" : [ {
@@ -1147,17 +1146,51 @@
             "functieAdres" : {
               "$ref" : "#/components/schemas/Waardetabel"
             },
-            "locatiebeschrijving" : {
-              "$ref" : "#/components/schemas/Locatiebeschrijving"
+            "verblijfadres" : {
+              "$ref" : "#/components/schemas/VerblijfadresLocatie"
             }
           }
         } ]
+      },
+      "VerblijfadresLocatie" : {
+        "type" : "object",
+        "properties" : {
+          "locatiebeschrijving" : {
+            "$ref" : "#/components/schemas/Locatiebeschrijving"
+          }
+        }
       },
       "Locatiebeschrijving" : {
         "maxLength" : 35,
         "type" : "string",
         "description" : "Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats.\n",
         "example" : "Naast de derde brug"
+      },
+      "Adressering" : {
+        "type" : "object",
+        "properties" : {
+          "aanhef" : {
+            "$ref" : "#/components/schemas/Aanhef"
+          },
+          "aanschrijfwijze" : {
+            "$ref" : "#/components/schemas/Aanschrijfwijze"
+          },
+          "gebruikInLopendeTekst" : {
+            "$ref" : "#/components/schemas/GebruikInLopendeTekst"
+          },
+          "adresregel1" : {
+            "$ref" : "#/components/schemas/Adresregel1"
+          },
+          "adresregel2" : {
+            "$ref" : "#/components/schemas/Adresregel2"
+          },
+          "adresregel3" : {
+            "$ref" : "#/components/schemas/Adresregel3"
+          },
+          "land" : {
+            "$ref" : "#/components/schemas/Waardetabel"
+          }
+        }
       },
       "AbstractDatum" : {
         "required" : [ "type" ],
@@ -1668,13 +1701,13 @@
         }, {
           "type" : "object",
           "properties" : {
-            "adresregel1" : {
+            "regel1" : {
               "type" : "boolean"
             },
-            "adresregel2" : {
+            "regel2" : {
               "type" : "boolean"
             },
-            "adresregel3" : {
+            "regel3" : {
               "type" : "boolean"
             },
             "land" : {
@@ -1816,12 +1849,6 @@
             },
             "woonplaats" : {
               "type" : "boolean"
-            },
-            "adresregel1" : {
-              "type" : "boolean"
-            },
-            "adresregel2" : {
-              "type" : "boolean"
             }
           }
         } ]
@@ -1832,8 +1859,8 @@
         }, {
           "type" : "object",
           "properties" : {
-            "verblijfplaatsOnbekend" : {
-              "$ref" : "#/components/schemas/IndicatieVerblijfplaatsOnbekend"
+            "functieAdres" : {
+              "$ref" : "#/components/schemas/Waardetabel"
             },
             "datumIngangGeldigheid" : {
               "$ref" : "#/components/schemas/AbstractDatum"
@@ -1850,7 +1877,13 @@
         }, {
           "type" : "object",
           "properties" : {
+            "functieAdres" : {
+              "type" : "boolean"
+            },
             "verblijfplaatsOnbekend" : {
+              "type" : "boolean"
+            },
+            "datumIngangGeldigheid" : {
               "type" : "boolean"
             }
           }
@@ -1880,29 +1913,12 @@
           }
         } ]
       },
-      "VerblijfadresLocatie" : {
-        "type" : "object",
-        "properties" : {
-          "locatiebeschrijving" : {
-            "$ref" : "#/components/schemas/Locatiebeschrijving"
-          },
-          "woonplaats" : {
-            "$ref" : "#/components/schemas/Woonplaats"
-          }
-        }
-      },
       "LocatieInOnderzoek" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/InOnderzoek"
         }, {
           "type" : "object",
           "properties" : {
-            "adresregel1" : {
-              "type" : "boolean"
-            },
-            "adresregel2" : {
-              "type" : "boolean"
-            },
             "datumVan" : {
               "type" : "boolean"
             },
@@ -1912,7 +1928,7 @@
             "locatiebeschrijving" : {
               "type" : "boolean"
             },
-            "woonplaats" : {
+            "datumIngangGeldigheid" : {
               "type" : "boolean"
             }
           }
@@ -1967,32 +1983,6 @@
             }
           }
         } ]
-      },
-      "Adressering" : {
-        "type" : "object",
-        "properties" : {
-          "aanhef" : {
-            "$ref" : "#/components/schemas/Aanhef"
-          },
-          "aanschrijfwijze" : {
-            "$ref" : "#/components/schemas/Aanschrijfwijze"
-          },
-          "gebruikInLopendeTekst" : {
-            "$ref" : "#/components/schemas/GebruikInLopendeTekst"
-          },
-          "adresregel1" : {
-            "$ref" : "#/components/schemas/Adresregel1"
-          },
-          "adresregel2" : {
-            "$ref" : "#/components/schemas/Adresregel2"
-          },
-          "adresregel3" : {
-            "$ref" : "#/components/schemas/Adresregel3"
-          },
-          "land" : {
-            "$ref" : "#/components/schemas/Waardetabel"
-          }
-        }
       },
       "Gezagsverhouding" : {
         "allOf" : [ {
