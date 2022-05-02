@@ -14,8 +14,8 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
   # VP = voorvoegselGeslachtsnaam partner
   # GP = geslachtsnaam partner
 
-Rule: De aanhef voor een persoon zonder adellijke titel of predicaat wordt samengesteld afhankelijk van de geslacht en de waarde van aanduidingNaamgebruik, waarbij geldt dat:
-  - De aanhef wordt voorafgegaan door "Geachte" gevolgd door "mevrouw", "heer" of de voorletters, afhankelijk van de geslacht:
+Rule: De aanhef voor een persoon zonder adellijke titel of predicaat wordt samengesteld afhankelijk van het geslacht en de waarde van aanduidingNaamgebruik, waarbij geldt dat:
+  - De aanhef wordt voorafgegaan door "Geachte" gevolgd door "mevrouw", "heer" of de voorletters, afhankelijk van het geslacht:
     | geslacht | aanhef begint met (GA) |
     | M        | Geachte heer           |
     | V        | Geachte mevrouw        |
@@ -170,7 +170,7 @@ Rule: De aanhef voor een persoon zonder adellijke titel of predicaat wordt samen
     | voorvoegsel met hoofdletters  | V        | N           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte mevrouw Op Den Berghe-Van Der Broeck |
     | voorvoegsel met hoofdletters  | O        | N           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte J.R. Op Den Berghe-Van Der Broeck    |
 
-Rule: De aanhef voor een persoon met adellijke titel of predicaat wordt bepaald op basis van adellijkeTitelPredicaat en de geslacht:
+Rule: De aanhef voor een persoon met adellijke titel of predicaat wordt bepaald op basis van adellijkeTitelPredicaat en het geslacht:
   | adellijkeTitelPredicaat | omschrijving | geslacht | Aanhef                |
   | B                       | Baron        | M        | Hoogwelgeboren heer   |
   | BS                      | Barones      | M        | Hoogwelgeboren heer   |
@@ -209,8 +209,8 @@ Rule: De aanhef voor een persoon met adellijke titel of predicaat wordt bepaald 
   De aanhef wordt op dezelfde manier samengesteld als voor een persoon zonder adellijke titel of predicaat in de volgende gevallen:
   - Wanneer de combinatie van adellijkeTitelPredicaat en geslacht niet voorkomt in bovenstaande tabel: geslacht "O" en geen prins of prinses
   - Wanneer de persoon de geslachtsnaam van de echtgenoot/partner gebruikt zonder de eigen geslachtsnaam: aanduidingNaamgebruik is "P"
-  - Wanneer de persoon een predicaat heeft en de geslacht is gelijk aan "V" (vrouw) en betrokkene heeft een partner
-  - Wanneer de persoon een predicaat heeft en de geslacht is gelijk aan "V" (vrouw) en betrokkene gebruikt de naam van de (ex)partner (aanduidingNaamgebruik is ongelijk aan "E")
+  - Wanneer de persoon een predicaat heeft en het geslacht is gelijk aan "V" (vrouw) en betrokkene heeft een partner
+  - Wanneer de persoon een predicaat heeft en het geslacht is gelijk aan "V" (vrouw) en betrokkene gebruikt de naam van de (ex)partner (aanduidingNaamgebruik is ongelijk aan "E")
 
   Abstract Scenario: persoon heeft adellijke titel "<adellijkeTitelPredicaat>" en geslacht "<geslacht>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -422,7 +422,7 @@ Rule: De aanhef voor een persoon met adellijke titel of predicaat wordt bepaald 
       
 Rule: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredicaat van de (ex)partner onder de volgende condities:
   - de (ex)partner heeft een adellijke titel
-  - de geslacht van de persoon is "V"
+  - het geslacht van de persoon is "V"
   - de persoon gebruikt de naam van haar (ex)partner (aanduidingNaamgebruik is ongelijk aan "E")
   - met de adellijke titel van de (ex)partner mag een hoffelijkheidstitel ('titre de courtoisie') worden gebruikt met bijbehorende aanhef:
       | adellijkeTitelPredicaat partner | hoffelijkheidstitel | aanhef                |
@@ -550,8 +550,8 @@ Rule: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredicaat 
 Rule: Voor het bepalen van de aanhef gaat gebruik van de adellijke titel van de partner boven de adellijke titel van de persoon:
   - de persoon heeft een adellijke titel of predicaat
   - de (ex)partner heeft een adellijke titel
-  - de geslacht van de persoon is "V" (vrouw)
-  - de geslacht van de (ex)partner is "M" (man)
+  - het geslacht van de persoon is "V" (vrouw)
+  - het geslacht van de (ex)partner is "M" (man)
   - de persoon gebruikt de naam van de partner: aanduidingNaamgebruik is ongelijk aan "E"
   - met de adellijke titel van de (ex)partner mag een hoffelijkheidstitel ('titre de courtoisie') worden gebruikt met bijbehorende aanhef
 

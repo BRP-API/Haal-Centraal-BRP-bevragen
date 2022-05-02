@@ -77,6 +77,6 @@ De onderstaanden tabellen met de beschreven waarden worden geleverd door de "BRP
     Dan is in het antwoord verblijfplaats.aanduidingBijHuisnummer niet aanwezig
 
   Scenario: een bekende waarde wordt wel opgenomen in de response
-    Gegeven in de registratie heeft de geslacht de waarde "O" (onbekend)
+    Gegeven in de registratie heeft het geslacht de waarde "O" (onbekend)
     Als de persoon wordt geraadpleegd
     Dan heeft attribuut geslacht de waarde "onbekend"

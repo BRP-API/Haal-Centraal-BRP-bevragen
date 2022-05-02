@@ -47,7 +47,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
         - de eerste naamcomponent in de aanschrijfwijze.naam begint met een hoofdletter
         - het voorvoegsel wordt met kleine letters opgenomen
         - aanduiding naamgebruik "E" (eigen naam) wordt gehanteerd voor een persoon die geen actuele en geen ontbonden huwelijken/partnerschappen heeft gehad 
-        - de adellijke titel en het predikaat wordt opgenomen in de vorm die hoort bij de geslacht van de persoon:
+        - de adellijke titel en het predikaat wordt opgenomen in de vorm die hoort bij het geslacht van de persoon:
            | adellijke titel/predikaat | vrouw     | man      | onbekend |
            | JH                        | jonkvrouw | jonkheer |          |
            | JV                        | jonkvrouw | jonkheer |          |
@@ -66,7 +66,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
         - de adellijke titel en het predikaat worden met kleine letters opgenomen
         - de adellijke titel of het predikaat van de partner wordt niet opgenomen bij aanduiding naamgebruik "E" (eigen naam)
         - de adellijke titel of het predikaat van de persoon wordt niet opgenomen bij aanduiding naamgebruik "P" (partner naam)
-        - De adellijke titel van de partner wordt alleen opgenomen als geslacht van de persoon gelijk is aan "V" (vrouw) en de geslacht van de partner gelijk is aan "M" (man).
+        - De adellijke titel van de partner wordt alleen opgenomen als geslacht van de persoon gelijk is aan "V" (vrouw) en het geslacht van de partner gelijk is aan "M" (man).
         - het predikaat begint met een hoofdletter als de aanschrijfwijze begint met een predikaat 
         - het predikaat van de partner wordt niet opgenomen
         - het predikaat van de persoon wordt opgenomen achter het streepje en voor eigen voorvoegsel en geslachtsnaam bij aanduiding naamgebruik "V" (partner naam voor eigen naam)
@@ -589,9 +589,9 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
         - er is geen aanspreekvorm als:
           - de persoon geen adellijke titel/predikaat heeft
           - de persoon gebruikt aanduiding naamgebruik "P" (naam partner)
-          - er geen adellijke titel/predikaat vorm is die hoort bij de geslacht van de persoon
-          - de persoon een predikaat, de geslacht "V" (vrouw) en een actuele (niet ontbonden) partner heeft
-          - de persoon een predikaat, de geslacht "V" (vrouw), geen actuele (maar mogelijk wel ontbonden) partner en een aanduiding naamgebruik ongelijk aan "E" (eigen naam) heeft
+          - er geen adellijke titel/predikaat vorm is die hoort bij het geslacht van de persoon
+          - de persoon een predikaat, het geslacht "V" (vrouw) en een actuele (niet ontbonden) partner heeft
+          - de persoon een predikaat, het geslacht "V" (vrouw), geen actuele (maar mogelijk wel ontbonden) partner en een aanduiding naamgebruik ongelijk aan "E" (eigen naam) heeft
 
     Abstract Scenario: Persoon heeft geen adellijke titel/predikaat
       Gegeven het systeem heeft een persoon met de volgende gegevens
