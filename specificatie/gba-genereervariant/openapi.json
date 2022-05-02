@@ -990,13 +990,13 @@
             "$ref" : "#/components/schemas/Waardetabel"
           },
           "adresregel1" : {
-            "$ref" : "#/components/schemas/Adresregel1"
+            "$ref" : "#/components/schemas/Regel1"
           },
           "adresregel2" : {
-            "$ref" : "#/components/schemas/Adresregel2"
+            "$ref" : "#/components/schemas/Regel2"
           },
           "adresregel3" : {
-            "$ref" : "#/components/schemas/Adresregel3"
+            "$ref" : "#/components/schemas/Regel3"
           }
         }
       },
@@ -1011,22 +1011,22 @@
         "description" : "Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats.\n",
         "example" : "Naast de derde brug"
       },
-      "Adresregel1" : {
+      "Regel1" : {
         "maxLength" : 40,
         "type" : "string",
-        "description" : "Het eerste deel van een adres is een combinatie van de straat en huisnummer.\n",
-        "example" : "Laan van de landinrichtingscommissie Duiven-Westervoort 26A-3"
+        "description" : "Het eerste deel van een buitenlands adres. Vaak is dit een combinatie van de straat en huisnummer.\n",
+        "example" : "1600 Pennsylvania Avenue NW"
       },
-      "Adresregel2" : {
+      "Regel2" : {
         "maxLength" : 50,
         "type" : "string",
-        "description" : "Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode.\n",
-        "example" : "1234AA Nootdorp"
+        "description" : "Het tweede deel van een buitenlands adres. Vaak is dit een combinatie van woonplaats eventueel in combinatie met de postcode.\n",
+        "example" : "Washington, DC 20500"
       },
-      "Adresregel3" : {
+      "Regel3" : {
         "maxLength" : 35,
         "type" : "string",
-        "description" : "Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.\n",
+        "description" : "Het derde deel van een buitenlands adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.\n",
         "example" : "Selangor"
       },
       "GbaDatum" : {
@@ -1149,13 +1149,13 @@
         "type" : "object",
         "properties" : {
           "adresregel1" : {
-            "$ref" : "#/components/schemas/Adresregel1"
+            "$ref" : "#/components/schemas/Regel1"
           },
           "adresregel2" : {
-            "$ref" : "#/components/schemas/Adresregel2"
+            "$ref" : "#/components/schemas/Regel2"
           },
           "adresregel3" : {
-            "$ref" : "#/components/schemas/Adresregel3"
+            "$ref" : "#/components/schemas/Regel3"
           },
           "adresseerbaarObjectIdentificatie" : {
             "$ref" : "#/components/schemas/AdresseerbaarObjectIdentificatie"
