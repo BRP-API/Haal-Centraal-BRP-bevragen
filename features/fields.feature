@@ -314,5 +314,75 @@ Functionaliteit: Fields
       | reden.code         | O          |
       | reden.omschrijving | overlijden |
 
+  Rule: Wanneer een specifiek veld van een datum wordt gevraagd, dan worden velden die bij dat datumtype required zijn ook geleverd
+
+    Abstract Scenario: vragen om enkel(e) veld(en) van een datum
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde                |
+      | burgerservicenummer | <burgerservicenummer> |
+      En de persoon heeft de volgende 'geboorte' gegevens
+      | naam  | waarde      |
+      | datum | <GBA datum> |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | <burgerservicenummer>           |
+      | fields              | burgerservicenummer,<fields>    |
+      Dan heeft de persoon met burgerservicenummer '<burgerservicenummer>' alleen de volgende gegevens
+      | naam                | waarde                |
+      | burgerservicenummer | <burgerservicenummer> |
+      En heeft de persoon met burgerservicenummer '<burgerservicenummer>' alleen de volgende 'geboorte' gegevens
+      | naam           | waarde     |
+      | datum.type     | <type>     |
+      | datum.datum    | <datum>    |
+      | datum.jaar     | <jaar>     |
+      | datum.maand    | <maand>    |
+      | datum.onbekend | <onbekend> |
+
+      Voorbeelden:
+      | burgerservicenummer | GBA datum | type           | datum      | jaar | maand | onbekend | langFormaat      | fields                                          |
+      | 999991929           | 19561115  | Datum          | 1956-11-15 |      |       |          | 15 november 1956 | geboorte.datum                                  |
+      | 999991929           | 19561115  | Datum          | 1956-11-15 |      |       |          | 15 november 1956 | geboorte.datum.datum                            |
+      | 999991929           | 19561115  | Datum          | 1956-11-15 |      |       |          | 15 november 1956 | geboorte.datum.type                             |
+      | 999991929           | 19561115  | Datum          | 1956-11-15 |      |       |          | 15 november 1956 | geboorte.datum.langFormaat                      |
+      | 999991929           | 19561115  | Datum          | 1956-11-15 |      |       |          | 15 november 1956 | geboorte.datum.jaar                             |
+      | 999991929           | 19561115  | Datum          | 1956-11-15 |      |       |          | 15 november 1956 | geboorte.datum.datum,geboorte.datum.onbekend    |
+      | 999992351           | 19780300  | JaarMaandDatum |            | 1978 | 3     |          | maart 1978       | geboorte.datum                                  |
+      | 999992351           | 19780300  | JaarMaandDatum |            | 1978 | 3     |          | maart 1978       | geboorte.datum.datum                            |
+      | 999992351           | 19780300  | JaarMaandDatum |            | 1978 | 3     |          | maart 1978       | geboorte.datum.jaar                             |
+      | 999992351           | 19780300  | JaarMaandDatum |            | 1978 | 3     |          | maart 1978       | geboorte.datum.langFormaat                      |
+      | 999992806           | 19680000  | JaarDatum      |            | 1968 |       |          | 1968             | geboorte.datum                                  |
+      | 999992806           | 19680000  | JaarDatum      |            | 1968 |       |          | 1968             | geboorte.datum.datum                            |
+      | 999992806           | 19680000  | JaarDatum      |            | 1968 |       |          | 1968             | geboorte.datum.maand                            |
+      | 999992806           | 19680000  | JaarDatum      |            | 1968 |       |          | 1968             | geboorte.datum.maand,geboorte.datum,langFormaat |
+      | 999994220           | 00000000  | DatumOnbekend  |            |      |       | true     | onbekend         | geboorte.datum                                  |
+      | 999994220           | 00000000  | DatumOnbekend  |            |      |       | true     | onbekend         | geboorte.datum.datum                            |
+      | 999994220           | 00000000  | DatumOnbekend  |            |      |       | true     | onbekend         | geboorte.datum.type                             |
+      | 999994220           | 00000000  | DatumOnbekend  |            |      |       | true     | onbekend         | geboorte.datum.langFormaat                      |
+
+    Scenario: vragen om geen enkel veld van een datum levert niet de required velden van die datum
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde                |
+      | burgerservicenummer | <burgerservicenummer> |
+      En de persoon heeft de volgende 'geboorte' gegevens
+      | naam                | waarde        |
+      | datum               | <GBA datum>   |
+      | plaats.code         | 0518          |
+      | plaats.omschrijving | 's-Gravenhage |
+      | land.code           | 6030          |
+      | land.omschrijving   | Nederland     |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                              |
+      | type                | RaadpleegMetBurgerservicenummer     |
+      | burgerservicenummer | <burgerservicenummer>               |
+      | fields              | burgerservicenummer,geboorte.plaats |
+      Dan heeft de persoon met burgerservicenummer '<burgerservicenummer>' alleen de volgende gegevens
+      | naam                | waarde                |
+      | burgerservicenummer | <burgerservicenummer> |
+      En heeft de persoon met burgerservicenummer '<burgerservicenummer>' alleen de volgende 'geboorte' gegevens
+      | naam                | waarde        |
+      | plaats.code         | 0518          |
+      | plaats.omschrijving | 's-Gravenhage |
+
   Rule: Wanneer een gevraagd veld in onderzoek is, dan wordt het corresponderende in onderzoek veld altijd terug gegeven
     # Scenario's worden toegevoegd als in onderzoek feature is geïmplementeerd
