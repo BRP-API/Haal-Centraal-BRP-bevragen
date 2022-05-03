@@ -351,8 +351,8 @@ components:
             example: 1964-09-24
           geslachtsnaam:
             $ref: '#/components/schemas/GeslachtsnaamFilter'
-          geslachtsaanduiding:
-            $ref: '#/components/schemas/GeslachtsaanduidingFilter'
+          geslacht:
+            $ref: '#/components/schemas/GeslachtFilter'
           voorvoegsel:
             $ref: '#/components/schemas/VoorvoegselFilter'
           voornamen:
@@ -373,8 +373,8 @@ components:
         properties:
           inclusiefOverledenPersonen:
             $ref: '#/components/schemas/InclusiefOverledenPersonen'
-          geslachtsaanduiding:
-            $ref: '#/components/schemas/GeslachtsaanduidingFilter'
+          geslacht:
+            $ref: '#/components/schemas/GeslachtFilter'
           geslachtsnaam:
             $ref: '#/components/schemas/GeslachtsnaamFilter'
           voorvoegsel:
@@ -516,7 +516,7 @@ components:
           $ref: '#/components/schemas/GbaGeboorteBeperkt'
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/GbaGeheimhoudingPersoonsgegevens'
-        geslachtsaanduiding:
+        geslacht:
           $ref: '#/components/schemas/Waardetabel'
         naam:
           $ref: '#/components/schemas/GbaNaamBasis'
@@ -543,7 +543,7 @@ components:
           $ref: '#/components/schemas/GbaDatum'
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/GbaGeheimhoudingPersoonsgegevens'
-        geslachtsaanduiding:
+        geslacht:
           $ref: '#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: '#/components/schemas/GbaInOnderzoek'
@@ -614,7 +614,7 @@ components:
       description: |
         De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
       example: Vries
-    GeslachtsaanduidingFilter:
+    GeslachtFilter:
       pattern: ^([Mm]|[Vv]|[Oo])$
       type: string
       description: |
@@ -664,8 +664,8 @@ components:
         De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.
       example: 2341SX
     StraatFilter:
-      pattern: ^[a-zA-Z0-9À-ž \-\']{1,80}$|^[a-zA-Z0-9À-ž \-\']{7,79}\*{1}$|^\*{1}[a-zA-Z0-9À-ž
-        \-\']{7,79}$
+      pattern: ^[a-zA-Z0-9À-ž \-\'\.]{1,80}$|^[a-zA-Z0-9À-ž \-\'\.]{7,79}\*{1}$|^\*{1}[a-zA-Z0-9À-ž
+        \-\'\.]{7,79}$
       type: string
       description: |
         Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).
@@ -821,7 +821,7 @@ components:
     GbaInOnderzoek:
       required:
       - aanduidingGegevensInOnderzoek
-      - datumIngangInOnderzoek
+      - datumIngangOnderzoek
       type: object
       properties:
         aanduidingGegevensInOnderzoek:
@@ -1006,7 +1006,7 @@ components:
       properties:
         burgerservicenummer:
           $ref: '#/components/schemas/Burgerservicenummer'
-        geslachtsaanduiding:
+        geslacht:
           $ref: '#/components/schemas/Waardetabel'
         ouderAanduiding:
           $ref: '#/components/schemas/OuderAanduiding'
@@ -1030,7 +1030,7 @@ components:
       properties:
         burgerservicenummer:
           $ref: '#/components/schemas/Burgerservicenummer'
-        geslachtsaanduiding:
+        geslacht:
           $ref: '#/components/schemas/Waardetabel'
         soortVerbintenis:
           $ref: '#/components/schemas/Waardetabel'

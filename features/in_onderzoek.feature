@@ -1,6 +1,6 @@
 # language: nl
 
-@proxy
+@proxy @post-assert
 Functionaliteit: in onderzoek
   Wanneer de juistheid van een gegeven onderzocht wordt, en daardoor de waarde van een geleverd gegeven mogelijk onjuist is, wordt naast het betreffende veld ook in inOnderzoek een veld met dezelfde naam opgenomen. Deze krijgt dan de boolean waarde true.
 
@@ -133,10 +133,10 @@ Functionaliteit: in onderzoek
       Dan heeft de persoon GEEN 'inOnderzoek' gegevens
 
       Voorbeelden:
-      | waarde | gegeven in onderzoek   | fields                             |
-      | 010000 | hele categorie persoon | kinderen                           |
-      | 010200 | hele groep naam        | geslachtsaanduiding,geboorte.datum |
-      | 010210 | voornamen              | geboorte,naam.geslachtsnaam        |
+      | waarde | gegeven in onderzoek   | fields                      |
+      | 010000 | hele categorie persoon | kinderen                    |
+      | 010200 | hele groep naam        | geslacht,geboorte.datum     |
+      | 010210 | voornamen              | geboorte,naam.geslachtsnaam |
 
   @proxy
   Rule: wanneer een element in de bron in onderzoek is, wordt het gegeven in het antwoord dat daaruit gevuld wordt ook in inOnderzoek opgenomen met de waarde true
@@ -160,9 +160,9 @@ Functionaliteit: in onderzoek
       | datumIngangOnderzoek | 2022-03-07 |
 
       Voorbeelden:
-      | waarde | veld                    |
-      | 010120 | burgerservicenummer     |
-      | 010410 | geslachtsaanduiding     |
+      | waarde | veld                |
+      | 010120 | burgerservicenummer |
+      | 010410 | geslacht            |
 
     Abstract Scenario: persoon heeft <groep> <veld> in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -248,10 +248,10 @@ Functionaliteit: in onderzoek
       En heeft de persoon GEEN 'inOnderzoek' gegevens
 
       Voorbeelden:
-      | waarde | veld                                    | ouder  | andere ouder |
-      | 020220 | burgerservicenummer                     | 1      | 2            |
-      | 030410 | geslachtsaanduiding                     | 2      | 1            |
-      | 026210 | datumIngangFamilierechtelijkeBetrekking | 1      | 2            |
+      | waarde | veld                                    | ouder | andere ouder |
+      | 020220 | burgerservicenummer                     | 1     | 2            |
+      | 030410 | geslacht                                | 2     | 1            |
+      | 026210 | datumIngangFamilierechtelijkeBetrekking | 1     | 2            |
 
     Abstract Scenario: persoon heeft <groep> <veld> van partner in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -382,14 +382,14 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 555550002 |
       En de partner met burgerservicenummer '555550002' heeft GEEN 'inOnderzoek' gegevens
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                                                        |
-      | type                | RaadpleegMetBurgerservicenummer                                               |
-      | burgerservicenummer | 555550001                                                                     |
-      | fields              | burgerservicenummer,naam,geboorte,geslachtsaanduiding,verblijfplaats,partners |
+      | naam                | waarde                                                             |
+      | type                | RaadpleegMetBurgerservicenummer                                    |
+      | burgerservicenummer | 555550001                                                          |
+      | fields              | burgerservicenummer,naam,geboorte,geslacht,verblijfplaats,partners |
       Dan heeft de persoon met burgerservicenummer '555550001' alleen de volgende 'inOnderzoek' gegevens
       | naam                 | waarde     |
       | burgerservicenummer  | true       |
-      | geslachtsaanduiding  | true       |
+      | geslacht             | true       |
       | datumIngangOnderzoek | 2022-03-07 |
       En heeft de persoon met burgerservicenummer '555550001' de volgende 'naam.inOnderzoek' gegevens
       | naam                    | waarde     |
@@ -739,38 +739,38 @@ Functionaliteit: in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550001 |
-      En de persoon heeft een nationaliteit met de volgende gegevens
-      | naam                                        | waarde                                |
-      | nationaliteit (05.10)                       | <nationaliteit>                       |
-      | aanduidingBijzonderNederlanderschap (65.10) | <aanduidingBijzonderNederlanderschap> |
-      | datumIngangGeldigheid (85.10)               | <datumIngangGeldigheid>               |
-      En de nationaliteit heeft volgende 'inOnderzoek' gegevens
-      | naam                          | waarde   |
-      | aanduidingGegevensInOnderzoek | <waarde> |
-      | datumIngangOnderzoek          | 20220307 |
+      En de persoon heeft een 'nationaliteit' met de volgende gegevens
+      | naam                                     | waarde                                |
+      | nationaliteit (05.10)                    | <nationaliteit>                       |
+      | bijzonder Nederlanderschap (65.10)       | <aanduidingBijzonderNederlanderschap> |
+      | ingangsdatum geldigheid (85.10)          | <datumIngangGeldigheid>               |
+      | aanduiding gegevens in onderzoek (83.10) | <waarde>                              |
+      | datum ingang onderzoek (83.20)           | 20220307                              |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550001                       |
-      | fields              | nationaliteiten                 |
-      Dan heeft de nationalieteit de volgende 'inOnderzoek' gegevens
-      | naam                 | waarde          |
-      | type                 | <type>          |
-      | nationaliteit        | <nationaliteit> |
-      | redenOpname          | <redenOpname>   |
-      | datumIngangOnderzoek | 2022-03-07      |
+      | fields              | nationaliteiten.inOnderzoek     |
+      Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
+      | naam                                   | waarde                       |
+      | type                                   | <nationaliteit type>         |
+      | inOnderzoek.type                       | <type in onderzoek>          |
+      | inOnderzoek.nationaliteit              | <nationaliteit in onderzoek> |
+      | inOnderzoek.redenOpname                | <redenOpname in onderzoek>   |
+      | inOnderzoek.datumIngangOnderzoek.type  | Datum                        |
+      | inOnderzoek.datumIngangOnderzoek.datum | 2022-03-07                   |
 
       Voorbeelden:
-      | gegeven in onderzoek                                    | nationaliteit | aanduidingBijzonderNederlanderschap | datumIngangGeldigheid | waarde | type | nationaliteit | redenOpname |
-      | hele categorie nationaliteit                            | 0052          |                                     | 19560317              | 040000 | true | true          | true        |
-      | hele categorie bij onbekende nationaliteit              | 0000          |                                     | 00000000              | 040000 | true | true          | true        |
-      | hele categorie bij vastgesteld niet-Nederlander         |               | V                                   | 19710417              | 040000 | true | true          | true        |
-      | hele categorie bij behandeld als Nederlander            |               | B                                   | 19520831              | 040000 | true | true          | true        |
-      | nationaliteit                                           | 0052          |                                     | 19560317              | 040510 | true | true          |             |
-      | onbekende nationaliteit                                 | 0000          |                                     | 19560317              | 040510 | true | true          |             |
-      | reden opname                                            | 0052          |                                     | 19560317              | 046310 |      |               | true        |
-      | bijzonder Nederlanderschap vastgesteld niet-Nederlander |               | V                                   | 19710417              | 046510 | true |               |             |
-      | bijzonder Nederlanderschap behandeld als Nederlander    |               | B                                   | 19710417              | 046510 | true |               |             |
+      | gegeven in onderzoek                                    | nationaliteit | aanduidingBijzonderNederlanderschap | nationaliteit type         | datumIngangGeldigheid | waarde | type in onderzoek | nationaliteit in onderzoek | redenOpname in onderzoek |
+      | hele categorie nationaliteit                            | 0052          |                                     | Nationaliteit              | 19560317              | 040000 | true              | true                       | true                     |
+      | hele categorie bij onbekende nationaliteit              | 0000          |                                     | NationaliteitOnbekend      | 00000000              | 040000 | true              |                            | true                     |
+      | hele categorie bij vastgesteld niet-Nederlander         |               | V                                   | VastgesteldNietNederlander | 19710417              | 040000 | true              |                            | true                     |
+      | hele categorie bij behandeld als Nederlander            |               | B                                   | BehandeldAlsNederlander    | 19520831              | 040000 | true              |                            | true                     |
+      | nationaliteit                                           | 0052          |                                     | Nationaliteit              | 19560317              | 040510 | true              | true                       |                          |
+      | onbekende nationaliteit                                 | 0000          |                                     | NationaliteitOnbekend      | 19560317              | 040510 | true              |                            |                          |
+      | reden opname                                            | 0052          |                                     | Nationaliteit              | 19560317              | 046310 |                   |                            | true                     |
+      | bijzonder Nederlanderschap vastgesteld niet-Nederlander |               | V                                   | VastgesteldNietNederlander | 19710417              | 046510 | true              |                            |                          |
+      | bijzonder Nederlanderschap behandeld als Nederlander    |               | B                                   | BehandeldAlsNederlander    | 19710417              | 046510 | true              |                            |                          |
 
   @proxy
   Rule: onderzoek van een partnergegeven leidt alleen tot inOnderzoek van een samengesteld naamgegeven wanneer daarin de partnernaam wordt gebruikt

@@ -11,13 +11,13 @@ Functionaliteit: Kinderen van een persoon raadplegen
     @gba
     Scenario: de naam van een kind is gecorrigeerd
       Gegeven de persoon met burgerservicenummer 999996150 heeft de volgende kinderen in de registratie
-        | Categorie | Voornamen (02.10) | Voorvoegsel (02.30) | Geslachtsnaam (02.40) | Onjuist (84.10) |
-        | 9         | William           |                     | Postma                |                 |
-        | 59        | William           | de                  | Vries                 |                 |
-        | 59        | William           | de                  | Boer                  | O               |
-        | 9         | Sebastiaan        | de                  | Boer                  |                 |
-        | 9         | Walter            | de                  | Boer                  |                 |
-        | 59        | Walter            |                     | Messeritz             | O               |
+      | Categorie | Voornamen (02.10) | Voorvoegsel (02.30) | Geslachtsnaam (02.40) | Onjuist (84.10) |
+      | 9         | William           |                     | Postma                |                 |
+      | 59        | William           | de                  | Vries                 |                 |
+      | 59        | William           | de                  | Boer                  | O               |
+      | 9         | Sebastiaan        | de                  | Boer                  |                 |
+      | 9         | Walter            | de                  | Boer                  |                 |
+      | 59        | Walter            |                     | Messeritz             | O               |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -41,10 +41,10 @@ Functionaliteit: Kinderen van een persoon raadplegen
     @gba
     Scenario: naamswijziging kind
       Gegeven de persoon met burgerservicenummer 999996381 heeft de volgende kinderen in de registratie
-        | Categorie | Voornamen (02.10) |
-        | 9         | Vica              |
-        | 59        | Celeke Lodivica   |
-        | 9         | Bella             |
+      | Categorie | Voornamen (02.10) |
+      | 9         | Vica              |
+      | 59        | Celeke Lodivica   |
+      | 9         | Bella             |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -122,7 +122,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | 9         | 555550004                   | Karel             |
       | 59        | 555550004                   | Charlotte         |
       | 59        | 555550004                   | Karel             |
-      En het kind met burgerservicenummer 555550004 heeft haar geslachtsaanduiding en voornamen gewijzigd zodat de volgende persoonsgegevens in de registratie op haar persoonslijst staan:
+      En het kind met burgerservicenummer 555550004 heeft haar geslacht en voornamen gewijzigd zodat de volgende persoonsgegevens in de registratie op haar persoonslijst staan:
       | Categorie | Voornamen | Geslachtsaanduiding (04.10) |
       | 1         | Charlotte | V                           |
       | 51        | Karel     | M                           |
@@ -150,7 +150,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       En de persoon heeft een 'kind' met alleen de volgende gegevens
       | naam                | waarde |
       | burgerservicenummer |        |
-      | geslachtsaanduiding |        |
+      | geslacht            |        |
       En het 'kind' heeft alleen de volgende 'naam' gegevens
       | naam          | waarde |
       | geslachtsnaam | .      |
