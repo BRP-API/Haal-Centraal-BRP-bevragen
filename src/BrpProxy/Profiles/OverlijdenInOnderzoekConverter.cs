@@ -1,38 +1,37 @@
-﻿using HaalCentraal.BrpProxy.Generated;
+﻿using AutoMapper;
+using BrpProxy.Mappers;
+using HaalCentraal.BrpProxy.Generated;
 using HaalCentraal.BrpProxy.Generated.Gba;
 
-namespace BrpProxy.Mappers;
+namespace BrpProxy.Profiles;
 
-public static class GeboorteMapper
+public class OverlijdenInOnderzoekConverter : ITypeConverter<GbaInOnderzoek, OverlijdenInOnderzoek?>
 {
-    public static GeboorteInOnderzoek? GeboorteInOnderzoek(this GbaInOnderzoek? source)
+    public OverlijdenInOnderzoek? Convert(GbaInOnderzoek source, OverlijdenInOnderzoek? destination, ResolutionContext context)
     {
         return source?.AanduidingGegevensInOnderzoek switch
         {
-            "010000" or
-            "010300" or
-            "050000" or
-            "050300" => new GeboorteInOnderzoek
+            "060000" or
+            "060800" => new OverlijdenInOnderzoek
             {
                 Datum = true,
                 Land = true,
                 Plaats = true,
+                IndicatieOverleden = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
             },
-            "010310" or
-            "050310" => new GeboorteInOnderzoek
+            "060810" => new OverlijdenInOnderzoek
             {
                 Datum = true,
+                IndicatieOverleden = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
             },
-            "010320" or
-            "050320" => new GeboorteInOnderzoek
+            "060820" => new OverlijdenInOnderzoek
             {
                 Plaats = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
             },
-            "010330" or
-            "050330" => new GeboorteInOnderzoek
+            "060830" => new OverlijdenInOnderzoek
             {
                 Land = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()

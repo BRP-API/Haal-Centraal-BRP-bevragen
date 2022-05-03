@@ -10,7 +10,8 @@ public class GeboorteProfile : Profile
     public GeboorteProfile()
     {
         CreateMap<GbaGeboorteBeperkt, GeboorteBeperkt>()
-            .ForMember(dest => dest.Datum, opt => opt.MapFrom(src => src.Datum.Map()));
+            .ForMember(dest => dest.Datum, opt => opt.MapFrom(src => src.Datum.Map()))
+            ;
 
         CreateMap<GbaGeboorte, Geboorte>()
             .ForMember(dest => dest.Datum, opt => opt.MapFrom(src => src.Datum.Map()))
@@ -24,7 +25,8 @@ public class GeboorteProfile : Profile
                 opt.PreCondition(src => src.Plaats?.Code != "0000");
                 opt.MapFrom(src => src.Plaats);
             })
-            .ForMember(dest => dest.InOnderzoek, opt => opt.MapFrom(src => src.InOnderzoek.GeboorteInOnderzoek()))
             ;
+
+        CreateMap<GbaInOnderzoek, GeboorteInOnderzoek?>().ConvertUsing<GeboorteInOnderzoekConverter>();
     }
 }

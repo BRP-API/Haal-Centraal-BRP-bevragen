@@ -15,21 +15,27 @@ public class NationaliteitProfile : Profile
             .ForMember(dest => dest.Nationaliteit1, opt => opt.MapFrom(src => src.Nationaliteit))
             .ForMember(dest => dest.DatumIngangGeldigheid, opt => opt.MapFrom(src => src.DatumIngangGeldigheid.Map()))
             .ForMember(dest => dest.RedenOpname, opt => opt.PreCondition(src => src.RedenOpname?.Code != "000"))
-            .ForMember(dest => dest.InOnderzoek, opt => opt.MapFrom(src => src.InOnderzoek.NationaliteitInOnderzoek()));
+            ;
+
+        CreateMap<GbaInOnderzoek, NationaliteitInOnderzoek?>().ConvertUsing<NationaliteitInOnderzoekConverter>();
 
         CreateMap<GbaNationaliteit, BehandeldAlsNederlander>()
             .ForMember(dest => dest.DatumIngangGeldigheid, opt => opt.MapFrom(src => src.DatumIngangGeldigheid.Map()))
             .ForMember(dest => dest.RedenOpname, opt => opt.PreCondition(src => src.RedenOpname?.Code != "000"))
-            .ForMember(dest => dest.InOnderzoek, opt => opt.MapFrom(src => src.InOnderzoek.BijzonderNederlanderschapInOnderzoek()));
+            ;
 
         CreateMap<GbaNationaliteit, VastgesteldNietNederlander>()
             .ForMember(dest => dest.DatumIngangGeldigheid, opt => opt.MapFrom(src => src.DatumIngangGeldigheid.Map()))
             .ForMember(dest => dest.RedenOpname, opt => opt.PreCondition(src => src.RedenOpname?.Code != "000"))
-            .ForMember(dest => dest.InOnderzoek, opt => opt.MapFrom(src => src.InOnderzoek.BijzonderNederlanderschapInOnderzoek()));
+            ;
+
+        CreateMap<GbaInOnderzoek, BijzonderNederlanderschapInOnderzoek?>().ConvertUsing<BijzonderNederlanderschapInOnderzoekConverter>();
 
         CreateMap<GbaNationaliteit, NationaliteitOnbekend>()
             .ForMember(dest => dest.DatumIngangGeldigheid, opt => opt.MapFrom(src => src.DatumIngangGeldigheid.Map()))
             .ForMember(dest => dest.RedenOpname, opt => opt.PreCondition(src => src.RedenOpname?.Code != "000"))
-            .ForMember(dest => dest.InOnderzoek, opt => opt.MapFrom(src => src.InOnderzoek.NationaliteitOnbekendInOnderzoek()));
+            ;
+
+        CreateMap<GbaInOnderzoek, NationaliteitOnbekendInOnderzoek?>().ConvertUsing<NationaliteitOnbekendInOnderzoekConverter>();
     }
 }

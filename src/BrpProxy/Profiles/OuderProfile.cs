@@ -11,8 +11,24 @@ public class OuderProfile : Profile
     {
         CreateMap<GbaOuder, AbstractOuder>()
             .ConvertUsing<OuderConverter>();
+
         CreateMap<GbaOuder, OuderOnbekend>();
+
         CreateMap<GbaOuder, Ouder>()
-            .ForMember(dest => dest.DatumIngangFamilierechtelijkeBetrekking, opt => opt.MapFrom(src => src.DatumIngangFamilierechtelijkeBetrekking.Map()));
+            .BeforeMap((src, dest) =>
+            {
+                if (src.Naam != null)
+                {
+                    src.Naam.InOnderzoek = src.InOnderzoek;
+                }
+                if (src.Geboorte != null)
+                {
+                    src.Geboorte.InOnderzoek = src.InOnderzoek;
+                }
+            })
+            .ForMember(dest => dest.DatumIngangFamilierechtelijkeBetrekking, opt => opt.MapFrom(src => src.DatumIngangFamilierechtelijkeBetrekking.Map()))
+            ;
+
+        CreateMap<GbaInOnderzoek, OuderInOnderzoek?>().ConvertUsing<OuderInOnderzoekConverter>();
     }
 }
