@@ -10,7 +10,7 @@ components:
       type: object
       required:
         - aanduidingGegevensInOnderzoek
-        - datumIngangInOnderzoek
+        - datumIngangOnderzoek
       properties:
         aanduidingGegevensInOnderzoek:
           type: string

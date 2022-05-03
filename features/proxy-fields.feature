@@ -20,18 +20,18 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar v
       | fields              | <vragen aan RvIG>               |
 
       Voorbeelden:
-      | gevraagd aan proxy                 | vragen aan RvIG                                                                                                     |
-      | naam.voorletters                   | naam.voornamen                                                                                                      |
-      | volledigeNaam                      | naam                                                                                                                |
-      | aanhef                             | naam,geslachtsaanduiding,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap |
-      | aanschrijfwijze.naam               | naam,geslachtsaanduiding,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap |
-      | aanschrijfwijze.aanspreekvorm      | naam.adellijkeTitelPredicaat,aanduidingNaamgebruik,geslachtsaanduiding                                              |
-      | gebruikInLopendeTekst              | naam,geslachtsaanduiding,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap |
-      | leeftijd                           | geboorte.datum                                                                                                      |
-      | indicatieOverleden                 | overlijden.datum                                                                                                    |
-      | datumVan                           | datumAanvangAdreshouding,datumAanvangAdresBuitenland                                                                |
-      | vanuitVerblijfplaatsOnbekend       | landVanwaarIngeschreven                                                                                             |
-      | indicatieVestigingVanuitBuitenland | datumVestigingInNederland                                                                                           |
+      | gevraagd aan proxy                 | vragen aan RvIG                                                                                          |
+      | naam.voorletters                   | naam.voornamen                                                                                           |
+      | volledigeNaam                      | naam                                                                                                     |
+      | aanhef                             | naam,geslacht,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap |
+      | aanschrijfwijze.naam               | naam,geslacht,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap |
+      | aanschrijfwijze.aanspreekvorm      | naam.adellijkeTitelPredicaat,aanduidingNaamgebruik,geslacht                                              |
+      | gebruikInLopendeTekst              | naam,geslacht,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap |
+      | leeftijd                           | geboorte.datum                                                                                           |
+      | indicatieOverleden                 | overlijden.datum                                                                                         |
+      | datumVan                           | datumAanvangAdreshouding,datumAanvangAdresBuitenland                                                     |
+      | vanuitVerblijfplaatsOnbekend       | landVanwaarIngeschreven                                                                                  |
+      | indicatieVestigingVanuitBuitenland | datumVestigingInNederland                                                                                |
       #| adressering.adresregel1            | verblijfadres                                                                                                       |
       #| adressering.adresregel2            | verblijfadres,gemeenteVanInschrijving                                                                               |
       #| adressering.adresregel3            | verblijfadres                                                                                                       |
@@ -69,13 +69,13 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar v
       | fields              | <vragen aan RvIG>               |
 
       Voorbeelden:
-      | gevraagd aan proxy                                                              | vragen aan RvIG                                                                                                     |
-      | aanhef,aanschrijfwijze.naam                                                     | naam,geslachtsaanduiding,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap |
-      | naam.volledigeNaam,naam.voorletters                                             | naam                                                                                                                |
-      | aanhef,aanschrijfwijze.naam,aanschrijfwijze.aanspreekvorm,gebruikInLopendeTekst | naam,geslachtsaanduiding,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap |
-      | datumVestigingInNederland,indicatieVestigingVanuitBuitenland                    | datumVestigingInNederland                                                                                           |
-      | nationaliteiten.type,nationaliteiten.nationaliteit                              | nationaliteit,aanduidingBijzonderNederlanderschap                                                                   |
-      | leeftijd,geboorte.datum                                                         | geboorte.datum                                                                                                      |
+      | gevraagd aan proxy                                                              | vragen aan RvIG                                                                                          |
+      | aanhef,aanschrijfwijze.naam                                                     | naam,geslacht,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap |
+      | naam.volledigeNaam,naam.voorletters                                             | naam                                                                                                     |
+      | aanhef,aanschrijfwijze.naam,aanschrijfwijze.aanspreekvorm,gebruikInLopendeTekst | naam,geslacht,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap |
+      | datumVestigingInNederland,indicatieVestigingVanuitBuitenland                    | datumVestigingInNederland                                                                                |
+      | nationaliteiten.type,nationaliteiten.nationaliteit                              | nationaliteit,aanduidingBijzonderNederlanderschap                                                        |
+      | leeftijd,geboorte.datum                                                         | geboorte.datum                                                                                           |
 
     @proxy
     Abstract Scenario: met fields is groep <gevraagd aan proxy> gevraagd met daarin afgeleide gegevens
@@ -91,9 +91,9 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar v
       | fields              | <vragen aan RvIG>               |
 
       Voorbeelden:
-      | gevraagd aan proxy | vragen aan RvIG                                                                                                                                           |
-      | aanschrijfwijze    | naam,geslachtsaanduiding,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap                                       |
-      | naam               | naam,geslachtsaanduiding,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap                                       |
+      | gevraagd aan proxy | vragen aan RvIG                                                                                          |
+      | aanschrijfwijze    | naam,geslacht,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap |
+      | naam               | naam,geslacht,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap |
 
     @proxy
     Abstract Scenario: met fields afgeleid gegeven vragen met of zonder pad <gevraagd aan proxy>
@@ -109,15 +109,15 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar v
       | fields              | <vragen aan RvIG>               |
 
       Voorbeelden:
-      | gevraagd aan proxy            | vragen aan RvIG                                                                                                     |
-      | overlijden.indicatieOverleden | overlijden.datum                                                                                                    |
-      | indicatieOverleden            | overlijden.datum                                                                                                    |
-      | volledigeNaam                 | naam                                                                                                                |
-      | naam.volledigeNaam            | naam                                                                                                                |
-      | naam.aanschrijfwijze.naam     | naam,geslachtsaanduiding,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap |
-      | aanschrijfwijze.naam          | naam,geslachtsaanduiding,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap |
-      | naam.aanschrijfwijze          | naam,geslachtsaanduiding,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap |
-      | aanschrijfwijze               | naam,geslachtsaanduiding,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap |
+      | gevraagd aan proxy            | vragen aan RvIG                                                                                          |
+      | overlijden.indicatieOverleden | overlijden.datum                                                                                         |
+      | indicatieOverleden            | overlijden.datum                                                                                         |
+      | volledigeNaam                 | naam                                                                                                     |
+      | naam.volledigeNaam            | naam                                                                                                     |
+      | naam.aanschrijfwijze.naam     | naam,geslacht,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap |
+      | aanschrijfwijze.naam          | naam,geslacht,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap |
+      | naam.aanschrijfwijze          | naam,geslacht,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap |
+      | aanschrijfwijze               | naam,geslacht,partners.naam,partners.aangaanHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap |
 
   @proxy
   Rule: wanneer een gegeven van een ouder, kind of partner wordt gevraagd, moet de hele ouder, partner of kind worden gevraagd
@@ -139,7 +139,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar v
 
       Voorbeelden:
       | gevraagd aan proxy                                                                   | vragen aan RvIG                               |
-      | ouders.geslachtsaanduiding                                                           | ouders                                        |
+      | ouders.geslacht                                                                      | ouders                                        |
       | ouders.naam.voornamen                                                                | ouders                                        |
       | datumIngangFamilierechtelijkeBetrekking                                              | ouders                                        |
       | burgerservicenummer,kinderen.geboorte.datum,kinderen.naam.voornamen,gezagsverhouding | burgerservicenummer,kinderen,gezagsverhouding |

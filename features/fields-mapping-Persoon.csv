@@ -31,9 +31,9 @@ geboorte.plaats,geboorte.plaats
 geboorte.plaats.code,geboorte.plaats.code
 geboorte.plaats.omschrijving,geboorte.plaats.omschrijving
 geheimhoudingPersoonsgegevens,geheimhoudingPersoonsgegevens
-geslachtsaanduiding,geslachtsaanduiding
-geslachtsaanduiding.code,geslachtsaanduiding.code
-geslachtsaanduiding.omschrijving,geslachtsaanduiding.omschrijving
+geslacht,geslacht
+geslacht.code,geslacht.code
+geslacht.omschrijving,geslacht.omschrijving
 gezagsverhouding,gezagsverhouding
 gezagsverhouding.indicatieCurateleRegister,gezagsverhouding.indicatieCurateleRegister
 indicatieCurateleRegister,gezagsverhouding.indicatieCurateleRegister
@@ -56,7 +56,7 @@ gezagsverhouding.inOnderzoek.indicatieGezagMinderjarige,gezagsverhouding.inOnder
 inOnderzoek.indicatieGezagMinderjarige,gezagsverhouding.inOnderzoek.indicatieGezagMinderjarige
 inOnderzoek,inOnderzoek
 inOnderzoek.burgerservicenummer,inOnderzoek.burgerservicenummer
-inOnderzoek.geslachtsaanduiding,inOnderzoek.geslachtsaanduiding
+inOnderzoek.geslacht,inOnderzoek.geslacht
 inOnderzoek.leeftijd,inOnderzoek.leeftijd
 kiesrecht,kiesrecht
 kiesrecht.einddatumUitsluitingEuropeesKiesrecht,kiesrecht.einddatumUitsluitingEuropeesKiesrecht
@@ -278,9 +278,9 @@ ouders.geboorte.land.omschrijving,ouders.geboorte.land.omschrijving
 ouders.geboorte.plaats,ouders.geboorte.plaats
 ouders.geboorte.plaats.code,ouders.geboorte.plaats.code
 ouders.geboorte.plaats.omschrijving,ouders.geboorte.plaats.omschrijving
-ouders.geslachtsaanduiding,ouders.geslachtsaanduiding
-ouders.geslachtsaanduiding.code,ouders.geslachtsaanduiding.code
-ouders.geslachtsaanduiding.omschrijving,ouders.geslachtsaanduiding.omschrijving
+ouders.geslacht,ouders.geslacht
+ouders.geslacht.code,ouders.geslacht.code
+ouders.geslacht.omschrijving,ouders.geslacht.omschrijving
 ouders.inOnderzoek,ouders.inOnderzoek
 ouders.inOnderzoek.datumIngangOnderzoek,ouders.inOnderzoek.datumIngangOnderzoek
 ouders.inOnderzoek.datumIngangOnderzoek.type,ouders.inOnderzoek.datumIngangOnderzoek.type
@@ -291,7 +291,7 @@ ouders.inOnderzoek.datumIngangOnderzoek.maand,ouders.inOnderzoek.datumIngangOnde
 ouders.inOnderzoek.burgerservicenummer,ouders.inOnderzoek.burgerservicenummer
 ouders.inOnderzoek.datumIngangFamilierechtelijkeBetrekking,ouders.inOnderzoek.datumIngangFamilierechtelijkeBetrekking
 inOnderzoek.datumIngangFamilierechtelijkeBetrekking,ouders.inOnderzoek.datumIngangFamilierechtelijkeBetrekking
-ouders.inOnderzoek.geslachtsaanduiding,ouders.inOnderzoek.geslachtsaanduiding
+ouders.inOnderzoek.geslacht,ouders.inOnderzoek.geslacht
 ouders.naam,ouders.naam
 ouders.naam.adellijkeTitelPredicaat,ouders.naam.adellijkeTitelPredicaat
 ouders.naam.adellijkeTitelPredicaat.code,ouders.naam.adellijkeTitelPredicaat.code
@@ -419,9 +419,9 @@ partners.geboorte.land.omschrijving,partners.geboorte.land.omschrijving
 partners.geboorte.plaats,partners.geboorte.plaats
 partners.geboorte.plaats.code,partners.geboorte.plaats.code
 partners.geboorte.plaats.omschrijving,partners.geboorte.plaats.omschrijving
-partners.geslachtsaanduiding,partners.geslachtsaanduiding
-partners.geslachtsaanduiding.code,partners.geslachtsaanduiding.code
-partners.geslachtsaanduiding.omschrijving,partners.geslachtsaanduiding.omschrijving
+partners.geslacht,partners.geslacht
+partners.geslacht.code,partners.geslacht.code
+partners.geslacht.omschrijving,partners.geslacht.omschrijving
 partners.inOnderzoek,partners.inOnderzoek
 partners.inOnderzoek.datumIngangOnderzoek,partners.inOnderzoek.datumIngangOnderzoek
 partners.inOnderzoek.datumIngangOnderzoek.type,partners.inOnderzoek.datumIngangOnderzoek.type
@@ -430,7 +430,7 @@ partners.inOnderzoek.datumIngangOnderzoek.onbekend,partners.inOnderzoek.datumIng
 partners.inOnderzoek.datumIngangOnderzoek.jaar,partners.inOnderzoek.datumIngangOnderzoek.jaar
 partners.inOnderzoek.datumIngangOnderzoek.maand,partners.inOnderzoek.datumIngangOnderzoek.maand
 partners.inOnderzoek.burgerservicenummer,partners.inOnderzoek.burgerservicenummer
-partners.inOnderzoek.geslachtsaanduiding,partners.inOnderzoek.geslachtsaanduiding
+partners.inOnderzoek.geslacht,partners.inOnderzoek.geslacht
 partners.inOnderzoek.soortVerbintenis,partners.inOnderzoek.soortVerbintenis
 inOnderzoek.soortVerbintenis,partners.inOnderzoek.soortVerbintenis
 partners.naam,partners.naam

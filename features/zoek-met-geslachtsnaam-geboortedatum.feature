@@ -134,14 +134,14 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | maassen       | VAN         |
     | MAASSEN       | Van         |
 
-  Abstract Scenario: Zoek met geslachtsaanduiding
+  Abstract Scenario: Zoek met geslacht
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                              |
-    | type                | ZoekMetGeslachtsnaamEnGeboortedatum |
-    | geslachtsnaam       | Aedel                               |
-    | geslachtsaanduiding | <geslachtsaanduiding>               |
-    | geboortedatum       | 1983-05-26                          |
-    | fields              | burgerservicenummer                 |
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | Aedel                               |
+    | geslacht      | <geslachtsaanduiding>               |
+    | geboortedatum | 1983-05-26                          |
+    | fields        | burgerservicenummer                 |
     Dan heeft de response 1 persoon
     En heeft de response een persoon met de volgende gegevens
     | naam                | waarde    |
@@ -364,10 +364,10 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | pattern | <parameter naam> | Waarde voldoet niet aan patroon <patroon>. |
 
     Voorbeelden:
-    | parameter naam      | patroon                               |
-    | voornamen           | ^[a-zA-Z0-9À-ž \.\-\']{1,199}\*{0,1}$ |
-    | voorvoegsel         | ^[a-zA-Z \']{1,10}$                   |
-    | geslachtsaanduiding | ^([Mm]\|[Vv]\|[Oo])$                  |
+    | parameter naam | patroon                               |
+    | voornamen      | ^[a-zA-Z0-9À-ž \.\-\']{1,199}\*{0,1}$ |
+    | voorvoegsel    | ^[a-zA-Z \']{1,10}$                   |
+    | geslacht       | ^([Mm]\|[Vv]\|[Oo])$                  |
 
 Rule: Bij zoeken met de "*" wildcard moet minimaal 3 letters (exclusief de wildcard teken) worden opgegeven
       De "*" wildcard komt overeen met nul of meer (niet-spatie) karakters

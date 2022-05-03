@@ -72,23 +72,23 @@ Rule: de actuele gegevens van ouders worden geleverd
     | 3         | Johanna            | V                           |
     | 53        | John               | M                           |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                                                  |
-    | type                | RaadpleegMetBurgerservicenummer                                         |
-    | burgerservicenummer | 555550001                                                               |
-    | fields              | ouders.ouderAanduiding,ouders.naam.voornamen,ouders.geslachtsaanduiding |
+    | naam                | waarde                                                       |
+    | type                | RaadpleegMetBurgerservicenummer                              |
+    | burgerservicenummer | 555550001                                                    |
+    | fields              | ouders.ouderAanduiding,ouders.naam.voornamen,ouders.geslacht |
     Dan heeft de ouder met ouderAanduiding '1' de volgende gegevens
-    | naam                | waarde |
-    | type                | Ouder  |
-    | ouderAanduiding     | 1      |
-    | geslachtsaanduiding | V      |
+    | naam            | waarde |
+    | type            | Ouder  |
+    | ouderAanduiding | 1      |
+    | geslacht        | V      |
     En heeft de ouder met ouderAanduiding '1' volgende 'naam' gegevens
     | naam      | waarde |
     | voornamen | Noa    |
     En heeft de ouder met ouderAanduiding '2' de volgende gegevens
-    | naam                | waarde |
-    | type                | Ouder  |
-    | ouderAanduiding     | 2      |
-    | geslachtsaanduiding | V      |
+    | naam            | waarde |
+    | type            | Ouder  |
+    | ouderAanduiding | 2      |
+    | geslacht        | V      |
     En heeft de ouder met ouderAanduiding '2' de volgende 'naam' gegevens
     | naam      | waarde  |
     | voornamen | Johanna |
@@ -163,21 +163,21 @@ Rule: de geleverde oudergegevens zijn de gegevens zoals die staan op de persoons
     | Categorie | Burgerservicenummer (01.20) | Voornamen | Geslachtsaanduiding (04.10) |
     | 2         | 555550004                   | Karel     | M                           |
     | 3         | 555550005                   | Ellen     | V                           |
-    En de ouder met burgerservicenummer 555550004 heeft haar geslachtsaanduiding en voornamen gewijzigd zodat de volgende persoonsgegevens in de registratie op haar persoonslijst staan:
+    En de ouder met burgerservicenummer 555550004 heeft haar geslacht en voornamen gewijzigd zodat de volgende persoonsgegevens in de registratie op haar persoonslijst staan:
     | Categorie | Voornamen | Geslachtsaanduiding (04.10) |
     | 1         | Charlotte | V                           |
     | 51        | Karel     | M                           |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                                                                             |
-    | type                | RaadpleegMetBurgerservicenummer                                                                    |
-    | burgerservicenummer | 555550003                                                                                          |
-    | fields              | ouders.ouderAanduiding,ouders.burgerservicenummer,ouders.geslachtsaanduiding,ouders.naam.voornamen |
+    | naam                | waarde                                                                                  |
+    | type                | RaadpleegMetBurgerservicenummer                                                         |
+    | burgerservicenummer | 555550003                                                                               |
+    | fields              | ouders.ouderAanduiding,ouders.burgerservicenummer,ouders.geslacht,ouders.naam.voornamen |
     Dan heeft de ouder met ouderAanduiding '1' de volgende gegevens
-    | naam                             | waarde    |
-    | ouderAanduiding                  | 1         |
-    | burgerservicenummer              | 555550004 |
-    | geslachtsaanduiding.code         | M         |
-    | geslachtsaanduiding.omschrijving | man       |
+    | naam                  | waarde    |
+    | ouderAanduiding       | 1         |
+    | burgerservicenummer   | 555550004 |
+    | geslacht.code         | M         |
+    | geslacht.omschrijving | man       |
     En heeft de ouder met ouderAanduiding '1' de volgende 'naam' gegevens
     | naam      | waarde |
     | voornamen | Karel  |
@@ -205,8 +205,8 @@ Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenome
     | naam                                    | waarde   |
     | type                                    | GbaOuder |
     | ouderAanduiding                         | 1        |
-    | geslachtsaanduiding.code                | V        |
-    | geslachtsaanduiding.omschrijving        | vrouw    |
+    | geslacht.code                           | V        |
+    | geslacht.omschrijving                   | vrouw    |
     | datumIngangFamilierechtelijkeBetrekking | 20190614 |
     En de ouder met ouderAanduiding '1' heeft GEEN 'geboorte' gegevens
     En heeft de ouder met ouderAanduiding '1' alleen de volgende 'naam' gegevens
@@ -233,7 +233,7 @@ Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenome
     | type                                    | GbaOuder |
     | ouderAanduiding                         | 1        |
     | datumIngangFamilierechtelijkeBetrekking | 00000000 |
-    En de ouder met ouderAanduiding '1' heeft GEEN 'geslachtsaanduiding' gegevens
+    En de ouder met ouderAanduiding '1' heeft GEEN 'geslacht' gegevens
     En de ouder met ouderAanduiding '1' heeft GEEN 'geboorte' gegevens
     En heeft de ouder met ouderAanduiding '1' alleen de volgende 'naam' gegevens
     | naam          | waarde |
@@ -260,7 +260,7 @@ Rule: Wanneer de geslachtsnaam van de ouder onbekend is, wordt de ouder geleverd
   - Wanneer van de ouder wel gegevens geregistreerd zijn, maar geen van de met fields gevraagde gegevens heeft een waarde, dan is het type "Ouder" en wordt indicatieOnbekend NIET opgenomen
 
   # Onderliggende aanname is dat wanneer de geslachtsnaam van de ouder onbekend is, ook andere naamgegevens niet bekend zijn of niet relevant.
-  # Andere eventueel wel ingevulde gegevens over de ouder, zoals een geboortedatum of geslachtsaanduiding, zijn dan niet relevant meer.
+  # Andere eventueel wel ingevulde gegevens over de ouder, zoals een geboortedatum of geslacht, zijn dan niet relevant meer.
   # Ook wanneer niets bekend is over de ouder (zoals bij een vondeling) wordt een moeder (geslacht vrouw) en datumIngangFamilierechtelijkeBetrekking (gelijk aan de geboortedatum) opgenomen.
 
   # Om te bepalen of er sprake is van een "OnbekendOuder", moet dus ook ten minste de geslachtsnaam bepaald worden.

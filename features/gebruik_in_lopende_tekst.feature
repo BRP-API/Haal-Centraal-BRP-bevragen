@@ -17,9 +17,9 @@ Functionaliteit: Als gemeente wil ik de juiste en consistent naamgebruik in een 
   # PR = predicaat
   # HT = hoffelijkheidstitel of 'titre de courtoisie'
 
-Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predicaat wordt samengesteld afhankelijk van de geslachtsaanduiding en de waarde van aanduidingNaamgebruik, waarbij geldt dat:
-  - gebruikInLopendeTekst wordt voorafgegaan door "mevrouw", "de heer" of de voorletters, afhankelijk van de geslachtsaanduiding:
-    | geslachtsaanduiding | gebruikInLopendeTekst begint met (GA) |
+Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predicaat wordt samengesteld afhankelijk van het geslacht en de waarde van aanduidingNaamgebruik, waarbij geldt dat:
+  - gebruikInLopendeTekst wordt voorafgegaan door "mevrouw", "de heer" of de voorletters, afhankelijk van het geslacht:
+    | geslacht | gebruikInLopendeTekst begint met (GA) |
     | M                   | de heer                               |
     | V                   | mevrouw                               |
     | O                   | VL                                    |
@@ -33,7 +33,7 @@ Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predicaat
   - Wanneer een naamcomponent geen of een lege waarde heeft, wordt de overbodige spatie niet opgenomen: niet starten met een spatie, niet eindigen met een spatie, geen dubbele spatie, geen spatie na streepje
   - Aanduiding naamgebruik "E" (eigen naam) wordt gehanteerd voor een persoon die geen actuele en geen ontbonden huwelijken/partnerschappen heeft gehad
 
-  Abstract Scenario: gebruikInLopendeTekst bij geslachtsaanduiding <voorbeeld>
+  Abstract Scenario: gebruikInLopendeTekst bij geslacht <voorbeeld>
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                        | waarde     |
     | burgerservicenummer         | 999992934  |
@@ -127,7 +127,7 @@ Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predicaat
     | N           |             | Groenen       |                     | Groenink              | mevrouw Groenen-Groenink       |
     | N           | in het      | Veld          | van                 | Velzen                | mevrouw In het Veld-van Velzen |
 
-  Abstract Scenario: hoofdlettergebruik in voorvoegsels bij aanduidingNaamgebruik "<naamgebruik>", geslachtsaanduiding "<geslacht>" en <voorbeeld>
+  Abstract Scenario: hoofdlettergebruik in voorvoegsels bij aanduidingNaamgebruik "<naamgebruik>", geslacht "<geslacht>" en <voorbeeld>
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                        | waarde     |
     | burgerservicenummer         | 999992934  |
@@ -173,14 +173,14 @@ Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predicaat
     | voorvoegsel met hoofdletters  | V        | N           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | mevrouw Op Den Berghe-Van Der Broeck |
     | voorvoegsel met hoofdletters  | O        | N           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | J.R. Op Den Berghe-Van Der Broeck    |
 
-Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predicaat wordt samengesteld afhankelijk van de geslachtsaanduiding en de waarde van aanduidingNaamgebruik, waarbij geldt dat:
+Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predicaat wordt samengesteld afhankelijk van het geslacht en de waarde van aanduidingNaamgebruik, waarbij geldt dat:
   - gebruikInLopendeTekst wordt samengesteld uit naamcomponenten van de persoon en eventuele (ex)partner op basis van de aanduidingNaamgebruik:
     | aanduidingNaamgebruik | gebruikinlopendetekst |
     | E                     | PR AT VV GN           |
     | P                     | GA VP GP              |
     | V                     | GA VP GP-PR AT VV GN  |
     | N                     | PR AT VV GN-VP GP     |
-  - De adellijke titel of het predicaat wordt in gebruikInLopendeTekst opgenomen in de vorm die hoort bij de geslachtsaanduiding van de persoon:
+  - De adellijke titel of het predicaat wordt in gebruikInLopendeTekst opgenomen in de vorm die hoort bij het geslacht van de persoon:
     | adellijkeTitelPredicaat | vrouw     | man      | onbekend |
     | G                       | gravin    | graaf    | -        |
     | GI                      | gravin    | graaf    | -        |
@@ -195,9 +195,9 @@ Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predicaat wo
     | R                       | -         | ridder   | -        |
     | JH                      | jonkvrouw | jonkheer | -        |
     | JV                      | jonkvrouw | jonkheer | -        |
-  - Wanneer de adellijke titel of het predicaat geen vorm heeft die hoort bij de geslachtsaanduiding (in bovenstaande tabel opgenomen als - teken), dan wordt deze niet opgenomen
-  - Wanneer gebruikInLopendeTekst niet begint met een adellijke titel of een predicaat, wordt deze voorafgegaan door "mevrouw", "de heer" of de voorletters, afhankelijk van de geslachtsaanduiding:
-    | geslachtsaanduiding | gebruikInLopendeTekst begint met (GA) |
+  - Wanneer de adellijke titel of het predicaat geen vorm heeft die hoort bij het geslacht (in bovenstaande tabel opgenomen als - teken), dan wordt deze niet opgenomen
+  - Wanneer gebruikInLopendeTekst niet begint met een adellijke titel of een predicaat, wordt deze voorafgegaan door "mevrouw", "de heer" of de voorletters, afhankelijk van het geslacht:
+    | geslacht | gebruikInLopendeTekst begint met (GA) |
     | M                   | de heer                               |
     | V                   | mevrouw                               |
     | O                   | VL                                    |
@@ -206,10 +206,10 @@ Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predicaat wo
   - Wanneer een naamcomponent geen of een lege waarde heeft, wordt de overbodige spatie niet opgenomen: niet starten met een spatie, niet eindigen met een spatie, geen dubbele spatie, geen spatie na streepje
 
   De gebruikInLopendeTekst wordt op dezelfde manier samengesteld als voor een persoon zonder adellijke titel of predicaat in de volgende gevallen:
-  - Wanneer de combinatie van adellijkeTitelPredicaat en geslachtsaanduiding niet voorkomt in bovenstaande tabel: geslachtsaanduiding "O" of een vrouw met de titel "R" (ridder)
+  - Wanneer de combinatie van adellijkeTitelPredicaat en geslacht niet voorkomt in bovenstaande tabel: geslacht "O" of een vrouw met de titel "R" (ridder)
   - Wanneer de persoon de geslachtsnaam van de echtgenoot/partner gebruikt zonder de eigen geslachtsnaam: aanduidingNaamgebruik is "P"
-  - Wanneer de persoon een predicaat heeft en de geslachtsaanduiding is gelijk aan "V" (vrouw) en betrokkene heeft een partner
-  - Wanneer de persoon een predicaat heeft en de geslachtsaanduiding is gelijk aan "V" (vrouw) en betrokkene gebruikt de naam van de (ex)partner (aanduidingNaamgebruik is ongelijk aan "E")
+  - Wanneer de persoon een predicaat heeft en het geslacht is gelijk aan "V" (vrouw) en betrokkene heeft een partner
+  - Wanneer de persoon een predicaat heeft en het geslacht is gelijk aan "V" (vrouw) en betrokkene gebruikt de naam van de (ex)partner (aanduidingNaamgebruik is ongelijk aan "E")
 
   Abstract Scenario: persoon met adellijke titel heeft aanduidingNaamgebruik "<naamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -247,7 +247,7 @@ Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predicaat wo
     | V           | mevrouw De Boer-barones van den Aedel |
     | N           | barones van den Aedel-de Boer         |
 
-  Abstract Scenario: persoon met predicaat en geslachtsaanduiding "<geslacht>" en aanduidingNaamgebruik "<naamgebruik>" heeft een partner
+  Abstract Scenario: persoon met predicaat en geslacht "<geslacht>" en aanduidingNaamgebruik "<naamgebruik>" heeft een partner
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                        | waarde     |
     | burgerservicenummer         | 999992934  |
@@ -287,7 +287,7 @@ Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predicaat wo
     | V        | V           | mevrouw De Boer-van den Aedel          |
     | V        | N           | mevrouw Van den Aedel-de Boer          |
 
-  Abstract Scenario: persoon met predicaat en geslachtsaanduiding "<geslacht>" heeft een ontbonden huwelijk/partnerschap en aanduidingNaamgebruik "<naamgebruik>"
+  Abstract Scenario: persoon met predicaat en geslacht "<geslacht>" heeft een ontbonden huwelijk/partnerschap en aanduidingNaamgebruik "<naamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                        | waarde     |
     | burgerservicenummer         | 999992934  |
@@ -325,7 +325,7 @@ Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predicaat wo
     | V        | V           | mevrouw De Boer-van den Aedel          |
     | V        | N           | mevrouw Van den Aedel-de Boer          |
 
-  Abstract Scenario: persoon met adellijkeTitelPredicaat "<adellijkeTitelPredicaat>" en geslachtsaanduiding "<geslacht>"
+  Abstract Scenario: persoon met adellijkeTitelPredicaat "<adellijkeTitelPredicaat>" en geslacht "<geslacht>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                        | waarde     |
     | burgerservicenummer         | 999992934  |
@@ -375,7 +375,7 @@ Rule: een vrouw met een (ex)partner met een adellijke titel krijgt een hoffelijk
   - voor het opnemen van de eigen adellijke titel of predicaat en de overige naamcomponenten gelden dezelfde regels als wanneer ze geen partner met adellijke titel zou hebben
   - de adellijke titel van de (ex)partner alleen wordt gebruikt onder de volgende condities:
     - de (ex)partner heeft een adellijke titel (geen predicaat)
-    - de geslachtsaanduiding van de persoon is "V"
+    - het geslacht van de persoon is "V"
     - de persoon gebruikt de naam van haar (ex)partner (aanduidingNaamgebruik is ongelijk aan "E")
     - de adellijke titel van de (ex)partner heeft een hoffelijkheidstitel (komt voor in bovenstaande tabel)
   

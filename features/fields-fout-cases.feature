@@ -68,10 +68,10 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden gescheiden d
   @fout-case
   Scenario: Pad van een gevraagd veld is opgegeven in onjuiste case
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                  |
-    | type                | RaadpleegMetBurgerservicenummer         |
-    | burgerservicenummer | 999994086                               |
-    | fields              | BurgerServiceNummer,geslachtsaanduiding |
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999994086                       |
+    | fields              | BurgerServiceNummer,geslacht    |
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                                                                      |
     | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |

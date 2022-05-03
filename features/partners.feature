@@ -27,7 +27,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       Dan heeft de persoon met burgerservicenummer '555550001' alleen 'partners' met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550002 |
-      | geslachtsaanduiding | M         |
+      | geslacht | M         |
       | soortVerbintenis    | H         |
       En heeft de partner met burgerservicenummer '555550002' de volgende 'naam' gegevens
       | naam                    | waarde |
@@ -62,7 +62,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       Dan heeft de persoon met burgerservicenummer '555550003' een partner met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550004 |
-      | geslachtsaanduiding | M         |
+      | geslacht | M         |
       | soortVerbintenis    | H         |
       En heeft de partner met burgerservicenummer '555550004' de volgende 'naam' gegevens
       | naam                    | waarde |
@@ -86,7 +86,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       En heeft de persoon met burgerservicenummer '555550003' een partner met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550002 |
-      | geslachtsaanduiding | V         |
+      | geslacht | V         |
       | soortVerbintenis    | P         |
       En heeft de partner met burgerservicenummer '555550005' de volgende 'naam' gegevens
       | naam                    | waarde  |
@@ -122,7 +122,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       Dan heeft de persoon met burgerservicenummer '555550006' een partner met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550007 |
-      | geslachtsaanduiding | M         |
+      | geslacht | M         |
       | soortVerbintenis    | H         |
       En heeft de partner met burgerservicenummer '555550007' de volgende 'naam' gegevens
       | naam                    | waarde |
@@ -146,7 +146,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       En heeft de persoon met burgerservicenummer '555550006' een partner met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550008 |
-      | geslachtsaanduiding | V         |
+      | geslacht | V         |
       | soortVerbintenis    | P         |
       En heeft de partner met burgerservicenummer '555550008' de volgende 'naam' gegevens
       | naam                    | waarde  |
@@ -218,9 +218,9 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
     @gba
     Scenario: De partner heeft geslachtswijziging en naamswijziging ondergaan, maar de gevraagde persoon erkent dit niet
       Gegeven de persoon met burgerservicenummer 555550001 heeft de volgende huwelijken/partnerschappen in de registratie
-      | Categorie | Burgerservicenummer (01.20) | Voornamen | Geslachtsaanduiding (04.10) | Datum aangaan (06.10) | Datum ontbinding (07.10) |
+      | Categorie | Burgerservicenummer (01.20) | Voornamen | geslacht (04.10) | Datum aangaan (06.10) | Datum ontbinding (07.10) |
       | 5         | 555550002                   | Karel     | M                           | 20091102              |                          |
-      En de partner met burgerservicenummer 555550002 heeft haar geslachtsaanduiding en voornamen gewijzigd zodat de volgende persoonsgegevens in de registratie op haar persoonslijst staan:
+      En de partner met burgerservicenummer 555550002 heeft haar geslacht en voornamen gewijzigd zodat de volgende persoonsgegevens in de registratie op haar persoonslijst staan:
       | Categorie | Voornamen (02.10) | Geslachtsaanduiding (04.10) |
       | 1         | Charlotte         | V                           |
       | 51        | Karel             | M                           |
@@ -232,7 +232,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       Dan heeft de persoon met burgerservicenummer '555550001' alleen 'partners' met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550002 |
-      | geslachtsaanduiding | M         |
+      | geslacht | M         |
       En heeft de partner met burgerservicenummer '555550002' de volgende 'naam' gegevens
       | naam      | waarde |
       | voornamen | Karel  |
@@ -381,7 +381,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | burgerservicenummer | 555550001 |
       En de persoon heeft een partner met alleen de volgende gegevens
       | naam                | waarde              |
-      | geslachtsaanduiding | <geslacht>          |
+      | geslacht | <geslacht>          |
       | soortVerbintenis    | <soort verbintenis> |
       En de partner heeft de volgende naam gegevens
       | naam          | waarde          |
