@@ -47,7 +47,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
         - het voorvoegsel wordt met kleine letters opgenomen
         - aanduiding naamgebruik "E" (eigen naam) wordt gehanteerd voor een persoon die geen actuele en geen ontbonden huwelijken/partnerschappen heeft gehad
         - de adellijke titel en het predicaat wordt opgenomen in de vorm die hoort bij het geslacht van de persoon:
-           | adellijke titel/predikaat | vrouw     | man      | onbekend |
+           | adellijke titel/predicaat | vrouw     | man      | onbekend |
            | JH                        | jonkvrouw | jonkheer |          |
            | JV                        | jonkvrouw | jonkheer |          |
            | R                         |           | ridder   |          |
