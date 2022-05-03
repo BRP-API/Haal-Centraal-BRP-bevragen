@@ -8,8 +8,8 @@ Functionaliteit: leveren van een verblijfplaats
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |
     En de persoon heeft de volgende 'verblijfplaats' gegevens
-    | naam         | waarde |
-    | land (13.10) | <land> |
+    | naam                          | waarde |
+    | land adres buitenland (13.10) | <land> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                             |
     | type                | RaadpleegMetBurgerservicenummer    |
@@ -33,9 +33,9 @@ Functionaliteit: leveren van een verblijfplaats
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |
     En de persoon heeft de volgende 'verblijfplaats' gegevens
-    | naam         | waarde   |
-    | land (13.10) | 6014     |
-    | <gba naam>   | <waarde> |
+    | naam                          | waarde   |
+    | land adres buitenland (13.10) | 6014     |
+    | <gba naam>                    | <waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                                    |
     | type                | RaadpleegMetBurgerservicenummer           |
@@ -51,9 +51,9 @@ Functionaliteit: leveren van een verblijfplaats
 
     Voorbeelden:
     | gba naam                             | naam                                 | waarde                             |
-    | adresregel1 (13.30)                  | adresregel1                          | 1600 Pennsylvania Avenue NW        |
-    | adresregel2 (13.40)                  | adresregel2                          | Washington, DC 20500               |
-    | adresregel3 (13.50)                  | adresregel3                          | Selangor                           |
+    | regel 1 adres buitenland (13.30)     | adresregel1                          | 1600 Pennsylvania Avenue NW        |
+    | regel 2 adres buitenland (13.40)     | adresregel2                          | Washington, DC 20500               |
+    | regel 3 adres buitenland (13.50)     | adresregel3                          | Selangor                           |
     | gemeente van inschrijving (09.10)    | gemeenteVanInschrijving.code         | 1999                               |
     | gemeenteVanInschrijving.omschrijving | gemeenteVanInschrijving.omschrijving | Registratie Niet Ingezetenen (RNI) |
     | land.omschrijving                    | land.omschrijving                    | Verenigde Staten van Amerika       |
@@ -63,9 +63,9 @@ Functionaliteit: leveren van een verblijfplaats
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |
     En de persoon heeft de volgende 'verblijfplaats' gegevens
-    | naam         | waarde       |
-    | land (13.10) | 6014         |
-    | <gba naam>   | <gba waarde> |
+    | naam                          | waarde       |
+    | land adres buitenland (13.10) | 6014         |
+    | <gba naam>                    | <gba waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                                    |
     | type                | RaadpleegMetBurgerservicenummer           |
@@ -81,6 +81,6 @@ Functionaliteit: leveren van een verblijfplaats
     | <naam>.datum | <waarde>                 |
 
     Voorbeelden:
-    | gba naam                            | gba waarde | naam                        | waarde     |
-    | datumInschrijvingInGemeente (09.20) | 20020701   | datumInschrijvingInGemeente | 2002-07-01 |
-    | datumAanvangAdresBuitenland (13.20) | 20220128   | datumVan                    | 2022-01-28 |
+    | gba naam                                  | gba waarde | naam                        | waarde     |
+    | datum inschrijving in de gemeente (09.20) | 20020701   | datumInschrijvingInGemeente | 2002-07-01 |
+    | datum aanvang adres buitenland (13.20)    | 20220128   | datumVan                    | 2022-01-28 |

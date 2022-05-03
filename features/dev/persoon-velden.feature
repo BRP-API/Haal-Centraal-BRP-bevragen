@@ -98,6 +98,45 @@ Functionaliteit: Persoon
     | 010400                  |                                  | true                  |                       |
     | 010410                  |                                  | true                  |                       |
 
+  Abstract Scenario: persoon's naam velden is in onderzoek
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                                     | waarde                    |
+    | burgerservicenummer                      | 555550001                 |
+    | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)           | 20020701                  |
+    En de persoon heeft de volgende 'naam' gegevens
+    | naam                  | waarde |
+    | geslachtsnaam (02.40) | Groen  |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 555550001                       |
+    | fields              | naam                            |
+    Dan heeft de response een persoon met de volgende 'naam' gegevens
+    | naam                                   | waarde                                      |
+    | geslachtsnaam                          | Groen                                       |
+    | volledigeNaam                          | Groen                                       |
+    | inOnderzoek.voornamen                  | <voornamen in onderzoek>                    |
+    | inOnderzoek.adellijkeTitelPredicaat    | <adellijke titel of predicaat in onderzoek> |
+    | inOnderzoek.voorvoegsel                | <voorvoegsel in onderzoek>                  |
+    | inOnderzoek.geslachtsnaam              | <geslachtsnaam in onderzoek>                |
+    | inOnderzoek.aanduidingNaamgebruik      | <aanduiding naamgebruik in onderzoek>       |
+    | inOnderzoek.voorletters                | <voorletters in onderzoek>                  |
+    | inOnderzoek.volledigeNaam              | <volledige naam in onderzoek>               |
+    | inOnderzoek.datumIngangOnderzoek.type  | Datum                                       |
+    | inOnderzoek.datumIngangOnderzoek.datum | 2002-07-01                                  |
+
+    Voorbeelden:
+    | gba in onderzoek waarde | voornamen in onderzoek | adellijke titel of predicaat in onderzoek | voorvoegsel in onderzoek | geslachtsnaam in onderzoek | aanduiding naamgebruik in onderzoek | voorletters in onderzoek | volledige naam in onderzoek |
+    | 010000                  | true                   | true                                      | true                     | true                       | true                                | true                     | true                        |
+    | 010200                  | true                   | true                                      | true                     | true                       |                                     | true                     | true                        |
+    | 010210                  | true                   |                                           |                          |                            |                                     | true                     | true                        |
+    | 010220                  |                        | true                                      |                          |                            |                                     |                          | true                        |
+    | 010230                  |                        |                                           | true                     |                            |                                     |                          | true                        |
+    | 010240                  |                        |                                           |                          | true                       |                                     |                          | true                        |
+    | 016100                  |                        |                                           |                          |                            | true                                |                          |                             |
+    | 016110                  |                        |                                           |                          |                            | true                                |                          |                             |
+
   Abstract Scenario: persoon's geboorte velden is in onderzoek
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                                     | waarde                    |
