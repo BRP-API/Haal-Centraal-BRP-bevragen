@@ -86,7 +86,6 @@ Functionaliteit: Adresvelden vullen
       | fields              | burgerservicenummer,adressering.adresregel1 |
       Dan heeft de persoon met burgerservicenummer '000009921' alleen de volgende 'adressering' gegevens
       | naam        | waarde                     |
-      | type        | Locatie                    |
       | adresregel1 | Woonboot in de Grote Sloot |
 
   Rule: Voor een binnenlands adres of locatie wordt adresregel2 samengesteld conform NEN 5825:2002.
