@@ -19,7 +19,7 @@ public static class PersonenQueryExtensions
         }
         if(!string.IsNullOrWhiteSpace(query.Geslachtsaanduiding))
         {
-            specification = specification.And(new GeslachtsaanduidingSpecification(query.Geslachtsaanduiding));
+            specification = specification.And(new GeslachtSpecification(query.Geslachtsaanduiding));
         }
         if(!string.IsNullOrWhiteSpace(query.Geboorteplaats))
         {

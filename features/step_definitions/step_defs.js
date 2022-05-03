@@ -17,11 +17,9 @@ const propertyNameMap = new Map([
     ['datum ingang verblijfstitel (39.30)', 'datumIngang'],
     ['datumInschrijvingInGemeente (09.20)', 'datumInschrijvingInGemeente'],
     ['datum opschorting bijhouding (67.10)', 'datum'],
-    ['gemeente van inschrijving (09.10)', 'gemeenteVanInschrijving.code'],
-    ['gemeenteVanInschrijving (09.10)', 'gemeenteVanInschrijving.code'],
 
     ['anummer (01.10)', 'aNummer'],
-    ['geslachtsaanduiding (04.10)', 'geslachtsaanduiding.code'],
+    ['geslachtsaanduiding (04.10)', 'geslacht.code'],
     ['indicatie geheim (70.10)', 'geheimhoudingPersoonsgegevens'],
 
     // Geboorte
@@ -69,6 +67,7 @@ const propertyNameMap = new Map([
     ['land overlijden (08.30)', 'land.code'],
 
     // Verblijfplaats 
+    ['gemeente van inschrijving (09.10)', 'gemeenteVanInschrijving.code'],
     ['datum inschrijving in de gemeente (09.20)', 'datumInschrijvingInGemeente'],
     ['functieAdres (10.10)', 'functieAdres.code'],
     ['datum aanvang adreshouding (10.30)', 'datumAanvangAdreshouding'],
@@ -89,7 +88,7 @@ const propertyNameMap = new Map([
     ['regel 2 adres buitenland (13.40)', 'adresregel2'],
     ['regel 3 adres buitenland (13.50)', 'adresregel3'],
     ['land vanwaar ingeschreven (14.10)', 'landVanwaarIngeschreven.code'],
-    ['datum vestiging in nederland (14.20)', 'datumVestigingInNederland']
+    ['datum vestiging in nederland (14.20)', 'datumVestigingInNederland'],
 
     // Verblijfstitel
     ['aanduiding verblijfstitel (39.10)', 'aanduiding.code'],

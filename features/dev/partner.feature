@@ -23,7 +23,7 @@ Functionaliteit: Partner
     Voorbeelden:
     | gba naam                      | naam                          | waarde                     |
     | burgerservicenummer           | burgerservicenummer           | 123456789                  |
-    | geslachtsaanduiding (04.10)   | geslachtsaanduiding.code      | O                          |
+    | geslachtsaanduiding (04.10)   | geslacht.code                 | O                          |
     | soort verbintenis (15.10)     | soortVerbintenis.code         | H                          |
     | soortVerbintenis.omschrijving | soortVerbintenis.omschrijving | Geregistreerd partnerschap |
 
@@ -103,19 +103,19 @@ Functionaliteit: Partner
     | type                                   | Partner                            |
     | inOnderzoek.burgerservicenummer        | <burgerservicenummer in onderzoek> |
     | inOnderzoek.soortVerbintenis           | <soort verbintenis in onderzoek>   |
-    | inOnderzoek.geslachtsaanduiding        | <geslachtsaanduiding in onderzoek> |
+    | inOnderzoek.geslacht                   | <geslacht in onderzoek>            |
     | inOnderzoek.datumIngangOnderzoek.type  | Datum                              |
     | inOnderzoek.datumIngangOnderzoek.datum | 2002-07-01                         |
 
     Voorbeelden:
-    | gba in onderzoek waarde | burgerservicenummer in onderzoek | soort verbintenis in onderzoek | geslachtsaanduiding in onderzoek |
-    | 050000                  | true                             | true                           | true                             |
-    | 050100                  | true                             |                                |                                  |
-    | 050120                  | true                             |                                |                                  |
-    | 050400                  |                                  |                                | true                             |
-    | 050410                  |                                  |                                | true                             |
-    | 051500                  |                                  | true                           |                                  |
-    | 051510                  |                                  | true                           |                                  |
+    | gba in onderzoek waarde | burgerservicenummer in onderzoek | soort verbintenis in onderzoek | geslacht in onderzoek |
+    | 050000                  | true                             | true                           | true                  |
+    | 050100                  | true                             |                                |                       |
+    | 050120                  | true                             |                                |                       |
+    | 050400                  |                                  |                                | true                  |
+    | 050410                  |                                  |                                | true                  |
+    | 051500                  |                                  | true                           |                       |
+    | 051510                  |                                  | true                           |                       |
 
   Abstract Scenario: partner's naam velden is in onderzoek
     Gegeven het systeem heeft een persoon met de volgende gegevens

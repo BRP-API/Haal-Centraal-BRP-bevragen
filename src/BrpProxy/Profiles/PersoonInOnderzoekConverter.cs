@@ -14,7 +14,7 @@ public class PersoonInOnderzoekConverter : ITypeConverter<GbaInOnderzoek, Persoo
             "010000" => new PersoonInOnderzoek
             {
                 Burgerservicenummer = true,
-                Geslachtsaanduiding = true,
+                Geslacht = true,
                 Leeftijd = true,
                 DatumIngangOnderzoek = source.DatumIngangOnderzoek?.Map()
             },
@@ -25,7 +25,7 @@ public class PersoonInOnderzoekConverter : ITypeConverter<GbaInOnderzoek, Persoo
             },
             "010400" or "010410" => new PersoonInOnderzoek
             {
-                Geslachtsaanduiding = true,
+                Geslacht = true,
                 DatumIngangOnderzoek = source.DatumIngangOnderzoek?.Map()
             },
             _ => null,

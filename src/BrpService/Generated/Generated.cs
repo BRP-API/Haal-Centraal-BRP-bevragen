@@ -134,8 +134,8 @@ namespace HaalCentraal.BrpService.Generated
         [Newtonsoft.Json.JsonProperty("inclusiefOverledenPersonen", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool InclusiefOverledenPersonen { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("geslachtsaanduiding", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Geslachtsaanduiding { get; set; }
+        [Newtonsoft.Json.JsonProperty("geslacht", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Geslacht { get; set; }
 
         [Newtonsoft.Json.JsonProperty("geslachtsnaam", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Geslachtsnaam { get; set; }
@@ -301,8 +301,8 @@ namespace HaalCentraal.BrpService.Generated
         [Newtonsoft.Json.JsonProperty("geheimhoudingPersoonsgegevens", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int GeheimhoudingPersoonsgegevens { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("geslachtsaanduiding", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Waardetabel Geslachtsaanduiding { get; set; }
+        [Newtonsoft.Json.JsonProperty("geslacht", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public Waardetabel Geslacht { get; set; }
 
         [Newtonsoft.Json.JsonProperty("naam", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public GbaNaamBasis Naam { get; set; }
@@ -342,8 +342,8 @@ namespace HaalCentraal.BrpService.Generated
         [Newtonsoft.Json.JsonProperty("geheimhoudingPersoonsgegevens", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int GeheimhoudingPersoonsgegevens { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("geslachtsaanduiding", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Waardetabel Geslachtsaanduiding { get; set; }
+        [Newtonsoft.Json.JsonProperty("geslacht", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public Waardetabel Geslacht { get; set; }
 
         [Newtonsoft.Json.JsonProperty("inOnderzoek", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public GbaInOnderzoek InOnderzoek { get; set; }
@@ -582,7 +582,7 @@ namespace HaalCentraal.BrpService.Generated
         [Newtonsoft.Json.JsonProperty("aanduidingGegevensInOnderzoek", Required = Newtonsoft.Json.Required.Always)]
         public string AanduidingGegevensInOnderzoek { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("datumIngangOnderzoek", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("datumIngangOnderzoek", Required = Newtonsoft.Json.Required.Always)]
         public string DatumIngangOnderzoek { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
@@ -897,8 +897,8 @@ namespace HaalCentraal.BrpService.Generated
         [Newtonsoft.Json.JsonProperty("burgerservicenummer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Burgerservicenummer { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("geslachtsaanduiding", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Waardetabel Geslachtsaanduiding { get; set; }
+        [Newtonsoft.Json.JsonProperty("geslacht", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public Waardetabel Geslacht { get; set; }
 
         [Newtonsoft.Json.JsonProperty("ouderAanduiding", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string OuderAanduiding { get; set; }
@@ -932,8 +932,8 @@ namespace HaalCentraal.BrpService.Generated
         [Newtonsoft.Json.JsonProperty("burgerservicenummer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Burgerservicenummer { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("geslachtsaanduiding", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Waardetabel Geslachtsaanduiding { get; set; }
+        [Newtonsoft.Json.JsonProperty("geslacht", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public Waardetabel Geslacht { get; set; }
 
         [Newtonsoft.Json.JsonProperty("soortVerbintenis", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Waardetabel SoortVerbintenis { get; set; }

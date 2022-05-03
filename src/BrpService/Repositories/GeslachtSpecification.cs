@@ -3,11 +3,11 @@ using System.Linq.Expressions;
 
 namespace HaalCentraal.BrpService.Repositories;
 
-public class GeslachtsaanduidingSpecification : Specification<GbaPersoonBeperkt>
+public class GeslachtSpecification : Specification<GbaPersoonBeperkt>
 {
     private readonly string _geslachtsaanduiding;
 
-    public GeslachtsaanduidingSpecification(string geslachtsaanduiding)
+    public GeslachtSpecification(string geslachtsaanduiding)
     {
         _geslachtsaanduiding = geslachtsaanduiding;
     }
@@ -15,7 +15,7 @@ public class GeslachtsaanduidingSpecification : Specification<GbaPersoonBeperkt>
     public override Expression<Func<GbaPersoonBeperkt, bool>> ToExpression()
     {
         return persoon => persoon != null &&
-               persoon.Geslachtsaanduiding != null &&
-               string.Compare(persoon.Geslachtsaanduiding.Code, _geslachtsaanduiding, true) == 0;
+               persoon.Geslacht != null &&
+               string.Compare(persoon.Geslacht.Code, _geslachtsaanduiding, true) == 0;
     }
 }

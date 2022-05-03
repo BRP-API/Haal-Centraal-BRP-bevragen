@@ -26,6 +26,6 @@ public class NaamProfile : Profile
                 opt.MapFrom(src => src.Geslachtsnaam);
             })
             .ForMember(dest => dest.Voorletters, opt => opt.MapFrom(src => src.Voorletters()))
-            .ForMember(dest => dest.VolledigeNaam, opt => opt.MapFrom(src => src.VolledigeNaam()));
+            .ForMember(dest => dest.VolledigeNaam, opt => opt.MapFrom(src => src.VolledigeNaam(src.Geslacht!)));
     }
 }

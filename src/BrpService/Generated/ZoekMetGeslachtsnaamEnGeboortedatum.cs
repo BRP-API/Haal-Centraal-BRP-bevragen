@@ -19,8 +19,8 @@ public partial class ZoekMetGeslachtsnaamEnGeboortedatum : PersonenQuery
     [Newtonsoft.Json.JsonProperty("geslachtsnaam", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
     public string? Geslachtsnaam { get; set; }
 
-    [Newtonsoft.Json.JsonProperty("geslachtsaanduiding", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-    public string? Geslachtsaanduiding { get; set; }
+    [Newtonsoft.Json.JsonProperty("geslacht", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    public string? Geslacht { get; set; }
 
     [Newtonsoft.Json.JsonProperty("voorvoegsel", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
     public string? Voorvoegsel { get; set; }

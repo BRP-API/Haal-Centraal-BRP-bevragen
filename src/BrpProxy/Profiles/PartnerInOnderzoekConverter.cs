@@ -15,7 +15,7 @@ public class PartnerInOnderzoekConverter : ITypeConverter<GbaInOnderzoek, Partne
             {
                 Burgerservicenummer = true,
                 SoortVerbintenis = true,
-                Geslachtsaanduiding = true,
+                Geslacht = true,
                 DatumIngangOnderzoek = source.DatumIngangOnderzoek?.Map()
             },
             "050100" or "050120" => new PartnerInOnderzoek
@@ -25,7 +25,7 @@ public class PartnerInOnderzoekConverter : ITypeConverter<GbaInOnderzoek, Partne
             },
             "050400" or "050410" => new PartnerInOnderzoek
             {
-                Geslachtsaanduiding = true,
+                Geslacht = true,
                 DatumIngangOnderzoek = source.DatumIngangOnderzoek?.Map()
             },
             "051500" or "051510" => new PartnerInOnderzoek

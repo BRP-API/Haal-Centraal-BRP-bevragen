@@ -19,10 +19,10 @@ Functionaliteit: Persoon
     | <naam>              | <waarde>  |
 
     Voorbeelden:
-    | gba naam                         | naam                             | waarde     |
-    | anummer (01.10)                  | aNummer                          | 1234567890 |
-    | geslachtsaanduiding (04.10)      | geslachtsaanduiding.code         | M          |
-    | geslachtsaanduiding.omschrijving | geslachtsaanduiding.omschrijving | man        |
+    | gba naam                    | naam                  | waarde     |
+    | anummer (01.10)             | aNummer               | 1234567890 |
+    | geslachtsaanduiding (04.10) | geslacht.code         | M          |
+    | geslacht.omschrijving       | geslacht.omschrijving | man        |
 
   Abstract Scenario: persoon heeft veld: 'indicatie geheim (70.10)'
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -77,26 +77,26 @@ Functionaliteit: Persoon
     | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)           | 20020701                  |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                           |
-    | type                | RaadpleegMetBurgerservicenummer                  |
-    | burgerservicenummer | 555550001                                        |
-    | fields              | burgerservicenummer,geslachtsaanduiding,leeftijd |
+    | naam                | waarde                                |
+    | type                | RaadpleegMetBurgerservicenummer       |
+    | burgerservicenummer | 555550001                             |
+    | fields              | burgerservicenummer,geslacht,leeftijd |
     Dan heeft de response een persoon met de volgende gegevens
     | naam                                   | waarde                             |
     | burgerservicenummer                    | 555550001                          |
     | inOnderzoek.burgerservicenummer        | <burgerservicenummer in onderzoek> |
-    | inOnderzoek.geslachtsaanduiding        | <geslachtsaanduiding in onderzoek> |
+    | inOnderzoek.geslacht                   | <geslacht in onderzoek>            |
     | inOnderzoek.leeftijd                   | <leeftijd in onderzoek>            |
     | inOnderzoek.datumIngangOnderzoek.type  | Datum                              |
     | inOnderzoek.datumIngangOnderzoek.datum | 2002-07-01                         |
 
     Voorbeelden:
-    | gba in onderzoek waarde | burgerservicenummer in onderzoek | geslachtsaanduiding in onderzoek | leeftijd in onderzoek |
-    | 010000                  | true                             | true                             | true                  |
-    | 010100                  | true                             |                                  |                       |
-    | 010120                  | true                             |                                  |                       |
-    | 010400                  |                                  | true                             |                       |
-    | 010410                  |                                  | true                             |                       |
+    | gba in onderzoek waarde | burgerservicenummer in onderzoek | geslacht in onderzoek | leeftijd in onderzoek |
+    | 010000                  | true                             | true                  | true                  |
+    | 010100                  | true                             |                       |                       |
+    | 010120                  | true                             |                       |                       |
+    | 010400                  |                                  | true                  |                       |
+    | 010410                  |                                  | true                  |                       |
 
   Abstract Scenario: persoon's geboorte velden is in onderzoek
     Gegeven het systeem heeft een persoon met de volgende gegevens

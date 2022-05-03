@@ -21,10 +21,10 @@ Functionaliteit: Ouder
     | <naam> | <waarde> |
 
     Voorbeelden:
-    | gba naam                    | naam                     | waarde    |
-    | burgerservicenummer         | burgerservicenummer      | 123456789 |
-    | geslachtsaanduiding (04.10) | geslachtsaanduiding.code | M         |
-    | ouderAanduiding             | ouderAanduiding          | 1         |
+    | gba naam                    | naam                | waarde    |
+    | burgerservicenummer         | burgerservicenummer | 123456789 |
+    | geslachtsaanduiding (04.10) | geslacht.code       | M         |
+    | ouderAanduiding             | ouderAanduiding     | 1         |
 
   Abstract Scenario: overnemen <gegevensgroep> veld: <gba naam>
     Gegeven het systeem heeft een persoon met de volgende gegevens
