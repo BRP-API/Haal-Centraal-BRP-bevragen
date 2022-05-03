@@ -644,7 +644,7 @@ components:
       pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,200}$|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$
       type: string
       description: |
-        De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 3 letters.** **Zoeken met tekstvelden is case-Insensitive.**
+        De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 3 letters.** **Zoeken met tekstvelden is case-insensitive.**
       example: Vries
     GeslachtsaanduidingFilter:
       pattern: ^([Mm]|[Vv]|[Oo])$
@@ -656,19 +656,19 @@ components:
       pattern: ^[a-zA-Z \']{1,10}$
       type: string
       description: |
-        Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. **Gebruik van de wildcard is toegestaan.** **Zoeken met tekstvelden is case-Insensitive.**
+        Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. **Zoeken met tekstvelden is case-insensitive.**
       example: de
     VoornamenOptioneelFilter:
       pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,199}\*{0,1}$
       type: string
       description: |
-        De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. **Gebruik van de wildcard is toegestaan.** **Zoeken met tekstvelden is case-Insensitive.**
+        De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. **Gebruik van de wildcard is toegestaan.** **Zoeken met tekstvelden is case-insensitive.**
       example: Dirk
     VoornamenVerplichtFilter:
       pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,200}$|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$
       type: string
       description: |
-        De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 3 letters.** **Zoeken met tekstvelden is case-Insensitive.**
+        De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 3 letters.** **Zoeken met tekstvelden is case-insensitive.**
       example: Dirk
     Huisletter:
       pattern: ^[a-zA-Z]{1}$
@@ -700,7 +700,7 @@ components:
         \-\']{7,79}$
       type: string
       description: |
-        Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 7 letters.** **Zoeken met tekstvelden is case-Insensitive.**
+        Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 7 letters.** **Zoeken met tekstvelden is case-insensitive.**
       example: Tulpstraat
     NummeraanduidingIdentificatie:
       pattern: ^[0-9]{16}$
