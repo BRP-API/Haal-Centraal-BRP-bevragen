@@ -3,7 +3,7 @@
 @post-assert
 Functionaliteit: Adresvelden vullen
   
-  Rule: Voor een binnenlands adres wordt veld "straat" gevuld met de naam openbare ruimte (11.15) wanneer die bekend is, en anders met straat (11.10). Veld "korteNaam" wordt gevuld met straat (11.10).
+  Rule: Voor een binnenlands adres wordt veld "straat" gevuld met de naam openbare ruimte (11.15) wanneer die bekend is, en anders met straatnaam (11.10). Veld "korteNaam" wordt gevuld met straatnaam (11.10).
 
     Abstract Scenario: opnemen straat bij een binnenlands adres
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -11,7 +11,7 @@ Functionaliteit: Adresvelden vullen
       | burgerservicenummer | <burgerservicenummer> |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | naam                         | waarde                 |
-      | straat (11.10)               | <straatnaam>           |
+      | straatnaam (11.10)           | <straatnaam>           |
       | naam openbare ruimte (11.15) | <naam openbare ruimte> |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                                             |
@@ -42,7 +42,7 @@ Functionaliteit: Adresvelden vullen
       | burgerservicenummer | <burgerservicenummer> |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | naam                              | waarde                      |
-      | straat (11.10)                    | <straatnaam>                |
+      | straatnaam (11.10)                | <straatnaam>                |
       | naam openbare ruimte (11.15)      | <naam openbare ruimte>      |
       | huisnummer (11.20)                | <huisnummer>                |
       | huisletter (11.30)                | <huisletter>                |
@@ -101,7 +101,7 @@ Functionaliteit: Adresvelden vullen
       | burgerservicenummer | <burgerservicenummer> |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | naam                                 | waarde           |
-      | straat (11.10)                       | een straat       |
+      | straatnaam (11.10)                   | een straat       |
       | gemeente van inschrijving (09.10)    | 0518             |
       | gemeenteVanInschrijving.omschrijving | 's-Gravenhage    |
       | postcode (11.60)                     | <postcode>       |
@@ -213,7 +213,7 @@ Functionaliteit: Adresvelden vullen
       | burgerservicenummer | <burgerservicenummer> |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | naam               | waarde       |
-      | straat (11.10)     | <straatnaam> |
+      | straatnaam (11.10) | <straatnaam> |
       | huisnummer (11.20) | <huisnummer> |
       | postcode (11.60)   | <postcode>   |
       Als personen wordt gezocht met de volgende parameters

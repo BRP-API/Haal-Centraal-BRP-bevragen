@@ -28,7 +28,7 @@ Functionaliteit: leveren van een verblijfplaats
 
       Voorbeelden:
       | gba veld                                 | waarde           |
-      | straat (11.10)                           | Spui             |
+      | straatnaam (11.10)                       | Spui             |
       | naamOpenbareRuimte (11.15)               | Spui             |
       | huisnummer (11.20)                       | 123              |
       | huisletter (11.30)                       | a                |
@@ -120,7 +120,7 @@ Functionaliteit: leveren van een verblijfplaats
       | naam                | waarde    |
       | burgerservicenummer | 555550001 |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
-      | straat (11.10)                           | .                |
+      | straatnaam (11.10)                       | .                |
       | huisnummer (11.20)                       | 0                |
       | postcode (11.60)                         |                  |
       | woonplaats (11.70)                       | .                |
