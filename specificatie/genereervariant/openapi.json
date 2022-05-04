@@ -1830,9 +1830,6 @@
             "functieAdres" : {
               "type" : "boolean"
             },
-            "verblijfplaatsOnbekend" : {
-              "type" : "boolean"
-            },
             "datumIngangGeldigheid" : {
               "type" : "boolean"
             }
