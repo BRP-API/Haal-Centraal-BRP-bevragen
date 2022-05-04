@@ -1223,6 +1223,8 @@ components:
           $ref: '#/components/schemas/Regel3'
         land:
           $ref: '#/components/schemas/Waardetabel'
+        inOnderzoek:
+          $ref: '#/components/schemas/VerblijfadresBuitenlandInOnderzoek'
     Regel1:
       maxLength: 40
       type: string
@@ -1241,7 +1243,7 @@ components:
       description: |
         Het derde deel van een buitenlands adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.
       example: Selangor
-    VerblijfplaatsBuitenlandInOnderzoek:
+    VerblijfadresBuitenlandInOnderzoek:
       allOf:
       - $ref: '#/components/schemas/InOnderzoek'
       - type: object
@@ -1254,6 +1256,11 @@ components:
             type: boolean
           land:
             type: boolean
+    VerblijfplaatsBuitenlandInOnderzoek:
+      allOf:
+      - $ref: '#/components/schemas/InOnderzoek'
+      - type: object
+        properties:
           datumVan:
             type: boolean
           datumIngangGeldigheid:
@@ -1300,6 +1307,8 @@ components:
           $ref: '#/components/schemas/Woonplaats'
         korteNaam:
           $ref: '#/components/schemas/KorteNaam'
+        inOnderzoek:
+          $ref: '#/components/schemas/VerblijfadresBinnenlandInOnderzoek'
     Straat:
       maxLength: 80
       type: string
@@ -1316,6 +1325,27 @@ components:
       type: string
       description: |
         De officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG) of een verkorte versie.
+    VerblijfadresBinnenlandInOnderzoek:
+      allOf:
+      - $ref: '#/components/schemas/InOnderzoek'
+      - type: object
+        properties:
+          aanduidingBijHuisnummer:
+            type: boolean
+          huisletter:
+            type: boolean
+          huisnummer:
+            type: boolean
+          huisnummertoevoeging:
+            type: boolean
+          straat:
+            type: boolean
+          postcode:
+            type: boolean
+          korteNaam:
+            type: boolean
+          woonplaats:
+            type: boolean
     AdresseerbaarObjectIdentificatie:
       pattern: ^[0-9]{16}$
       type: string
@@ -1327,31 +1357,15 @@ components:
       - $ref: '#/components/schemas/InOnderzoek'
       - type: object
         properties:
-          aanduidingBijHuisnummer:
-            type: boolean
           datumVan:
             type: boolean
           datumIngangGeldigheid:
-            type: boolean
-          functieAdres:
-            type: boolean
-          huisletter:
-            type: boolean
-          huisnummer:
-            type: boolean
-          huisnummertoevoeging:
             type: boolean
           nummeraanduidingIdentificatie:
             type: boolean
           adresseerbaarObjectIdentificatie:
             type: boolean
-          straat:
-            type: boolean
-          postcode:
-            type: boolean
-          korteNaam:
-            type: boolean
-          woonplaats:
+          functieAdres:
             type: boolean
     VerblijfplaatsOnbekend:
       allOf:

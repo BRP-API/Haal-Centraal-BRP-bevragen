@@ -1600,6 +1600,9 @@
           },
           "land" : {
             "$ref" : "#/components/schemas/Waardetabel"
+          },
+          "inOnderzoek" : {
+            "$ref" : "#/components/schemas/VerblijfadresBuitenlandInOnderzoek"
           }
         }
       },
@@ -1621,7 +1624,7 @@
         "description" : "Het derde deel van een buitenlands adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.\n",
         "example" : "Selangor"
       },
-      "VerblijfplaatsBuitenlandInOnderzoek" : {
+      "VerblijfadresBuitenlandInOnderzoek" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/InOnderzoek"
         }, {
@@ -1638,7 +1641,16 @@
             },
             "land" : {
               "type" : "boolean"
-            },
+            }
+          }
+        } ]
+      },
+      "VerblijfplaatsBuitenlandInOnderzoek" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/InOnderzoek"
+        }, {
+          "type" : "object",
+          "properties" : {
             "datumVan" : {
               "type" : "boolean"
             },
@@ -1705,6 +1717,9 @@
           },
           "korteNaam" : {
             "$ref" : "#/components/schemas/KorteNaam"
+          },
+          "inOnderzoek" : {
+            "$ref" : "#/components/schemas/VerblijfadresBinnenlandInOnderzoek"
           }
         }
       },
@@ -1725,28 +1740,13 @@
         "type" : "string",
         "description" : "De officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG) of een verkorte versie.\n"
       },
-      "AdresseerbaarObjectIdentificatie" : {
-        "pattern" : "^[0-9]{16}$",
-        "type" : "string",
-        "description" : "De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.\n",
-        "example" : "0226010000038820"
-      },
-      "AdresInOnderzoek" : {
+      "VerblijfadresBinnenlandInOnderzoek" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/InOnderzoek"
         }, {
           "type" : "object",
           "properties" : {
             "aanduidingBijHuisnummer" : {
-              "type" : "boolean"
-            },
-            "datumVan" : {
-              "type" : "boolean"
-            },
-            "datumIngangGeldigheid" : {
-              "type" : "boolean"
-            },
-            "functieAdres" : {
               "type" : "boolean"
             },
             "huisletter" : {
@@ -1756,12 +1756,6 @@
               "type" : "boolean"
             },
             "huisnummertoevoeging" : {
-              "type" : "boolean"
-            },
-            "nummeraanduidingIdentificatie" : {
-              "type" : "boolean"
-            },
-            "adresseerbaarObjectIdentificatie" : {
               "type" : "boolean"
             },
             "straat" : {
@@ -1774,6 +1768,36 @@
               "type" : "boolean"
             },
             "woonplaats" : {
+              "type" : "boolean"
+            }
+          }
+        } ]
+      },
+      "AdresseerbaarObjectIdentificatie" : {
+        "pattern" : "^[0-9]{16}$",
+        "type" : "string",
+        "description" : "De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.\n",
+        "example" : "0226010000038820"
+      },
+      "AdresInOnderzoek" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/InOnderzoek"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "datumVan" : {
+              "type" : "boolean"
+            },
+            "datumIngangGeldigheid" : {
+              "type" : "boolean"
+            },
+            "nummeraanduidingIdentificatie" : {
+              "type" : "boolean"
+            },
+            "adresseerbaarObjectIdentificatie" : {
+              "type" : "boolean"
+            },
+            "functieAdres" : {
               "type" : "boolean"
             }
           }
