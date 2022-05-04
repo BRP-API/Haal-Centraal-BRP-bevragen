@@ -1030,55 +1030,14 @@ components:
       - properties:
           aanduidingNaamgebruik:
             $ref: '#/components/schemas/Waardetabel'
-          aanhef:
-            $ref: '#/components/schemas/Aanhef'
-          aanschrijfwijze:
-            $ref: '#/components/schemas/Aanschrijfwijze'
-          gebruikInLopendeTekst:
-            $ref: '#/components/schemas/GebruikInLopendeTekst'
           inOnderzoek:
             $ref: '#/components/schemas/NaamPersoonInOnderzoek'
-    Aanhef:
-      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,650}$
-      type: string
-      description: |
-        Kun je gebruiken als aanhef in een brief gericht aan persoon.
-      example: Hoogwelgeboren heer
-    Aanschrijfwijze:
-      type: object
-      properties:
-        naam:
-          pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,650}$
-          type: string
-          example: H.W. baron van den Aedel
-        aanspreekvorm:
-          pattern: ^[a-zA-Z ]{1,25}$
-          type: string
-          description: |
-            Deze regel moet als aparte regel boven de samengestelde naam worden geplaatst. Komt alleen voor bij personen met een adellijke titel of predicaat.
-          example: De hoogwelgeboren heer
-      description: |
-        Samengestelde naam en aanspreekvorm die je kunt gebruiken in de communicatie met de persoon.
-    GebruikInLopendeTekst:
-      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,650}$
-      type: string
-      description: |
-        Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert.
-      example: baron Van den Aedel
     NaamPersoonInOnderzoek:
       allOf:
       - $ref: '#/components/schemas/NaamInOnderzoek'
       - type: object
         properties:
-          volledigeNaam:
-            type: boolean
           aanduidingNaamgebruik:
-            type: boolean
-          aanhef:
-            type: boolean
-          aanschrijfwijze:
-            type: boolean
-          gebruikInLopendeTekst:
             type: boolean
     NaamInOnderzoek:
       description: |
@@ -1096,6 +1055,8 @@ components:
           geslachtsnaam:
             type: boolean
           voorletters:
+            type: boolean
+          volledigeNaam:
             type: boolean
     AbstractNationaliteit:
       required:
@@ -1503,6 +1464,56 @@ components:
             $ref: '#/components/schemas/Aanschrijfwijze'
           gebruikInLopendeTekst:
             $ref: '#/components/schemas/GebruikInLopendeTekst'
+          inOnderzoek:
+            $ref: '#/components/schemas/AdresseringInOnderzoek'
+    Aanhef:
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,650}$
+      type: string
+      description: |
+        Kun je gebruiken als aanhef in een brief gericht aan persoon.
+      example: Hoogwelgeboren heer
+    Aanschrijfwijze:
+      type: object
+      properties:
+        naam:
+          pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,650}$
+          type: string
+          example: H.W. baron van den Aedel
+        aanspreekvorm:
+          pattern: ^[a-zA-Z ]{1,25}$
+          type: string
+          description: |
+            Deze regel moet als aparte regel boven de samengestelde naam worden geplaatst. Komt alleen voor bij personen met een adellijke titel of predicaat.
+          example: De hoogwelgeboren heer
+      description: |
+        Samengestelde naam en aanspreekvorm die je kunt gebruiken in de communicatie met de persoon.
+    GebruikInLopendeTekst:
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,650}$
+      type: string
+      description: |
+        Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert.
+      example: baron Van den Aedel
+    AdresseringInOnderzoek:
+      description: |
+        Geeft aan welke gegevens over de adressering in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      allOf:
+      - $ref: '#/components/schemas/InOnderzoek'
+      - type: object
+        properties:
+          aanhef:
+            type: boolean
+          adresregel1:
+            type: boolean
+          adresregel2:
+            type: boolean
+          adresregel3:
+            type: boolean
+          land:
+            type: boolean
+          aanschrijfwijze:
+            type: boolean
+          gebruikInLopendeTekst:
+            type: boolean
     Gezagsverhouding:
       allOf:
       - $ref: '#/components/schemas/GezagsverhoudingBasis'
