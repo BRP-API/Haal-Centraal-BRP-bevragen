@@ -105,6 +105,8 @@ components:
           $ref: '#/components/schemas/Woonplaats'
         korteNaam:
           $ref: '#/components/schemas/KorteNaam'
+        inOnderzoek:
+          $ref: "#/components/schemas/VerblijfadresBinnenlandInOnderzoek"
     VerblijfadresBuitenland:
       type: object
       properties:
@@ -116,6 +118,8 @@ components:
           $ref: '#/components/schemas/Regel3'
         land:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
+        inOnderzoek:
+          $ref: "#/components/schemas/VerblijfadresBuitenlandInOnderzoek"
     VerblijfadresLocatie:
       type: object
       properties:
@@ -315,6 +319,15 @@ components:
         - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
         - type: object
           properties:
+            datumVan:
+              type: boolean
+            datumIngangGeldigheid:
+              type: boolean
+    VerblijfadresBuitenlandInOnderzoek:
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
             regel1:
               type: boolean
             regel2:
@@ -323,32 +336,18 @@ components:
               type: boolean
             land:
               type: boolean
-            datumVan:
-              type: boolean
-            datumIngangGeldigheid:
-              type: boolean
-    AdresInOnderzoek:
+    VerblijfadresBinnenlandInOnderzoek:
       allOf:
         - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
         - type: object
           properties:
             aanduidingBijHuisnummer:
               type: boolean
-            datumVan:
-              type: boolean
-            datumIngangGeldigheid:
-              type: boolean
-            functieAdres:
-              type: boolean
             huisletter:
               type: boolean
             huisnummer:
               type: boolean
             huisnummertoevoeging:
-              type: boolean
-            nummeraanduidingIdentificatie:
-              type: boolean
-            adresseerbaarObjectIdentificatie:
               type: boolean
             straat:
               type: boolean
@@ -357,6 +356,21 @@ components:
             korteNaam:
               type: boolean
             woonplaats:
+              type: boolean
+    AdresInOnderzoek:
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            datumVan:
+              type: boolean
+            datumIngangGeldigheid:
+              type: boolean
+            nummeraanduidingIdentificatie:
+              type: boolean
+            adresseerbaarObjectIdentificatie:
+              type: boolean
+            functieAdres:
               type: boolean
     VerblijfplaatsOnbekendInOnderzoek:
       allOf:
