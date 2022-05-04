@@ -1150,6 +1150,10 @@
         "properties" : {
           "type" : {
             "type" : "string"
+          },
+          "langFormaat" : {
+            "pattern" : "^[a-z0-9 ]{1,17}$",
+            "type" : "string"
           }
         },
         "discriminator" : {
@@ -1163,7 +1167,7 @@
         }
       },
       "VolledigeDatum" : {
-        "required" : [ "datum", "langFormaat" ],
+        "required" : [ "datum" ],
         "description" : "Datum conform iso8601",
         "example" : {
           "value" : {
@@ -1180,15 +1184,12 @@
             "datum" : {
               "type" : "string",
               "format" : "date"
-            },
-            "langFormaat" : {
-              "type" : "string"
             }
           }
         } ]
       },
       "DatumOnbekend" : {
-        "required" : [ "langFormaat", "onbekend" ],
+        "required" : [ "onbekend" ],
         "description" : "representatie voor een volledig onbekend datum",
         "example" : {
           "value" : {
@@ -1205,15 +1206,12 @@
             "onbekend" : {
               "type" : "boolean",
               "default" : true
-            },
-            "langFormaat" : {
-              "type" : "string"
             }
           }
         } ]
       },
       "JaarDatum" : {
-        "required" : [ "jaar", "langFormaat" ],
+        "required" : [ "jaar" ],
         "description" : "representatie voor een datum waarvan maand en dag onbekend zijn",
         "example" : {
           "value" : {
@@ -1229,9 +1227,6 @@
           "properties" : {
             "jaar" : {
               "$ref" : "#/components/schemas/Jaar"
-            },
-            "langFormaat" : {
-              "type" : "string"
             }
           }
         } ]
@@ -1243,7 +1238,7 @@
         "format" : "int32"
       },
       "JaarMaandDatum" : {
-        "required" : [ "jaar", "langFormaat", "maand" ],
+        "required" : [ "jaar", "maand" ],
         "description" : "representatie voor een datum waarvan de dag onbekend is",
         "example" : {
           "value" : {
@@ -1263,9 +1258,6 @@
             },
             "maand" : {
               "$ref" : "#/components/schemas/Maand"
-            },
-            "langFormaat" : {
-              "type" : "string"
             }
           }
         } ]

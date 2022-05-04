@@ -913,6 +913,9 @@ components:
       properties:
         type:
           type: string
+        langFormaat:
+          pattern: ^[a-z0-9 ]{1,17}$
+          type: string
       discriminator:
         propertyName: type
         mapping:
@@ -923,7 +926,6 @@ components:
     VolledigeDatum:
       required:
       - datum
-      - langFormaat
       description: Datum conform iso8601
       example:
         value:
@@ -937,11 +939,8 @@ components:
           datum:
             type: string
             format: date
-          langFormaat:
-            type: string
     DatumOnbekend:
       required:
-      - langFormaat
       - onbekend
       description: representatie voor een volledig onbekend datum
       example:
@@ -956,12 +955,9 @@ components:
           onbekend:
             type: boolean
             default: true
-          langFormaat:
-            type: string
     JaarDatum:
       required:
       - jaar
-      - langFormaat
       description: representatie voor een datum waarvan maand en dag onbekend zijn
       example:
         value:
@@ -974,8 +970,6 @@ components:
         properties:
           jaar:
             $ref: '#/components/schemas/Jaar'
-          langFormaat:
-            type: string
     Jaar:
       maximum: 9999
       minimum: 1
@@ -984,7 +978,6 @@ components:
     JaarMaandDatum:
       required:
       - jaar
-      - langFormaat
       - maand
       description: representatie voor een datum waarvan de dag onbekend is
       example:
@@ -1001,8 +994,6 @@ components:
             $ref: '#/components/schemas/Jaar'
           maand:
             $ref: '#/components/schemas/Maand'
-          langFormaat:
-            type: string
     Maand:
       maximum: 12
       minimum: 1
