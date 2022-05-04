@@ -148,9 +148,6 @@ components:
       allOf:
         - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
         - type: object
-          properties:
-            verblijfadres:
-              $ref: "#/components/schemas/VerblijfadresBuitenland"
     VerblijfplaatsOnbekendBeperkt:
       allOf:
         - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
