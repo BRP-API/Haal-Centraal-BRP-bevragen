@@ -20,6 +20,9 @@ components:
       properties:
         type:
           type: string
+        langFormaat:
+          type: string
+          pattern: ^[a-z0-9 ]{1,17}$
       discriminator:
         propertyName: type
         mapping:
@@ -40,11 +43,8 @@ components:
             datum:
               type: string
               format: date
-            langFormaat:
-              type: string
       required:
         - datum
-        - langFormaat
       example:
         value:
           type: Datum
@@ -59,11 +59,8 @@ components:
             onbekend:
               type: boolean
               default: true
-            langFormaat:
-              type: string
       required:
         - onbekend
-        - langFormaat
       example:
         value:
           type: DatumOnbekend
@@ -77,11 +74,8 @@ components:
           properties:
             jaar:
               $ref: '#/components/schemas/Jaar'
-            langFormaat:
-              type: string
       required:
         - jaar
-        - langFormaat
       example:
         value:
           type: JaarDatum
@@ -97,12 +91,9 @@ components:
               $ref: '#/components/schemas/Jaar'
             maand:
               $ref: '#/components/schemas/Maand'
-            langFormaat:
-              type: string
       required:
         - jaar
         - maand
-        - langFormaat
       example:
         value:
           type: JaarMaandDatum
