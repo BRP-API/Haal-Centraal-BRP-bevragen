@@ -6,6 +6,27 @@ info:
 paths: {}
 components:
   schemas:
+    Aanhef:
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,650}$
+      description: |
+        Kun je gebruiken als aanhef in een brief gericht aan persoon.
+      example: "Hoogwelgeboren heer"
+    Aanschrijfwijze:
+      type: object
+      description: |
+        Samengestelde naam en aanspreekvorm die je kunt gebruiken in de communicatie met de persoon.
+      properties:
+        naam:
+          type: string
+          pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,650}$
+          example: "H.W. baron van den Aedel"
+        aanspreekvorm:
+          description: |
+            Deze regel moet als aparte regel boven de samengestelde naam worden geplaatst. Komt alleen voor bij personen met een adellijke titel of predicaat.
+          type: string
+          pattern: ^[a-zA-Z ]{1,25}$
+          example: "De hoogwelgeboren heer"
     Adresregel1:
       type: string
       maxLength: 40
@@ -26,6 +47,12 @@ components:
       description: |
         Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.
       example: "Selangor"
+    GebruikInLopendeTekst:
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,650}$
+      description: |
+        Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert.
+      example: "baron Van den Aedel"
     AdresseringBeperkt:
       type: "object"
       description: ""
@@ -43,8 +70,31 @@ components:
         - $ref: "#/components/schemas/AdresseringBeperkt"
         - properties:
             aanhef:
-              $ref: "naam.yaml#/components/schemas/Aanhef"
+              $ref: "#/components/schemas/Aanhef"
             aanschrijfwijze:
-              $ref: "naam.yaml#/components/schemas/Aanschrijfwijze"
+              $ref: "#/components/schemas/Aanschrijfwijze"
             gebruikInLopendeTekst:
-              $ref: "naam.yaml#/components/schemas/GebruikInLopendeTekst"
+              $ref: "#/components/schemas/GebruikInLopendeTekst"
+            inOnderzoek:
+              $ref: "#/components/schemas/AdresseringInOnderzoek"
+    AdresseringInOnderzoek:
+      description: |
+        Geeft aan welke gegevens over de adressering in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            aanhef:
+              type: boolean
+            adresregel1:
+              type: boolean
+            adresregel2:
+              type: boolean
+            adresregel3:
+              type: boolean
+            land:
+              type: boolean
+            aanschrijfwijze:
+              type: boolean
+            gebruikInLopendeTekst:
+              type: boolean
