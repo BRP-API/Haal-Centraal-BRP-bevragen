@@ -18,7 +18,9 @@ public class GeboorteInOnderzoekConverter : ITypeConverter<GbaInOnderzoek, Geboo
             "030000" or
             "030300" or
             "050000" or
-            "050300" => new GeboorteInOnderzoek
+            "050300" or
+            "090000" or
+            "090300" => new GeboorteInOnderzoek
             {
                 Datum = true,
                 Land = true,
@@ -28,7 +30,8 @@ public class GeboorteInOnderzoekConverter : ITypeConverter<GbaInOnderzoek, Geboo
             "010310" or
             "020310" or
             "030310" or
-            "050310" => new GeboorteInOnderzoek
+            "050310" or
+            "090310" => new GeboorteInOnderzoek
             {
                 Datum = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
@@ -36,7 +39,8 @@ public class GeboorteInOnderzoekConverter : ITypeConverter<GbaInOnderzoek, Geboo
             "010320" or
             "020320" or
             "030320" or
-            "050320" => new GeboorteInOnderzoek
+            "050320" or
+            "090320" => new GeboorteInOnderzoek
             {
                 Plaats = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
@@ -44,7 +48,8 @@ public class GeboorteInOnderzoekConverter : ITypeConverter<GbaInOnderzoek, Geboo
             "010330" or
             "020330" or
             "030330" or
-            "050330" => new GeboorteInOnderzoek
+            "050330" or
+            "090330" => new GeboorteInOnderzoek
             {
                 Land = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
