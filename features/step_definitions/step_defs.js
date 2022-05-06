@@ -9,18 +9,10 @@ const should = require('chai').use(deepEqualInAnyOrder).should();
 setWorldConstructor(World);
 
 const propertyNameMap = new Map([
-    ['datum aangaan (06.10)', 'datum'],
-    ['datumAanvangAdreshouding (10.30)', 'datumAanvangAdreshouding'],
-    ['datumAanvangAdresBuitenland (13.20)', 'datumAanvangAdresBuitenland'],
-    ['datum eerste inschrijving GBA (68.10)', 'datumEersteInschrijvingGBA'],
-    ['datum einde verblijfstitel (39.20)', 'datumEinde'],
-    ['datum ingang verblijfstitel (39.30)', 'datumIngang'],
-    ['datumInschrijvingInGemeente (09.20)', 'datumInschrijvingInGemeente'],
-    ['datum opschorting bijhouding (67.10)', 'datum'],
-
     ['anummer (01.10)', 'aNummer'],
     ['geslachtsaanduiding (04.10)', 'geslacht.code'],
     ['indicatie geheim (70.10)', 'geheimhoudingPersoonsgegevens'],
+    ['datum eerste inschrijving GBA (68.10)', 'datumEersteInschrijvingGBA'],
 
     // Geboorte
     ['geboortedatum (03.10)', 'datum'],
@@ -30,6 +22,10 @@ const propertyNameMap = new Map([
     // In onderzoek/Procedure
     ['aanduiding gegevens in onderzoek (83.10)', 'inOnderzoek.aanduidingGegevensInOnderzoek'],
     ['datum ingang onderzoek (83.20)', 'inOnderzoek.datumIngangOnderzoek'],
+
+    // Gezagsverhouding
+    ['indicatie gezag minderjarige (32.10)', 'indicatieGezagMinderjarige.code'],
+    ['indicatie curateleregister (33.10)', 'indicatieCurateleRegister'],
 
     // Kiesrecht
     ['europees kiesrecht (31.10)', 'europeesKiesrecht'],
@@ -49,22 +45,23 @@ const propertyNameMap = new Map([
     ['ingangsdatum geldigheid (85.10)', 'datumIngangGeldigheid'],
     ['bijzonder Nederlanderschap (65.10)', 'aanduidingBijzonderNederlanderschap.code'],
 
+    // Opschorting bijhouding
     ['datum opschorting bijhouding (67.10)', 'datum' ],
     ['reden opschorting bijhouding (67.20)', 'reden.code'],
 
     // Ouder
     ['datum ingang familierechtelijke betrekking (62.10)', 'datumIngangFamilierechtelijkeBetrekking'],
 
+    // Overlijden
+    ['datum overlijden (08.10)', 'datum'],
+    ['plaats overlijden (08.20)', 'plaats.code'],
+    ['land overlijden (08.30)', 'land.code'],
+
     // Partner
     ['soort verbintenis (15.10)', 'soortVerbintenis.code'],
     ['datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10)', 'datum'],
     ['land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)', 'land.code'],
     ['plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20)', 'plaats.code'],
-
-    // Overlijden
-    ['datum overlijden (08.10)', 'datum'],
-    ['plaats overlijden (08.20)', 'plaats.code'],
-    ['land overlijden (08.30)', 'land.code'],
 
     // Verblijfplaats 
     ['gemeente van inschrijving (09.10)', 'gemeenteVanInschrijving.code'],
@@ -92,6 +89,8 @@ const propertyNameMap = new Map([
 
     // Verblijfstitel
     ['aanduiding verblijfstitel (39.10)', 'aanduiding.code'],
+    ['datum einde verblijfstitel (39.20)', 'datumEinde'],
+    ['datum ingang verblijfstitel (39.30)', 'datumIngang'],
 ]);
 
 function createObjectFrom(dataTable, dateAsDate = false) {
@@ -230,6 +229,7 @@ After({tags: '@post-assert'}, async function() {
         : stringifyValues(this.context.response.data);
     
     let expected = deleteEmptyProperties(this.context.expected);
+    expected = deleteEmptyObjects(expected);
     if(expected === undefined) {
         expected = [];
     }
@@ -300,7 +300,7 @@ Given(/^het systeem heeft personen met de volgende '(.*)' gegevens$/, function (
     setPersonenProperties(this.context.zoekResponse.personen, gegevensgroep, dataTable);
 });
 
-Given(/^de persoon heeft een '(.*)' met ?(?:alleen)? de volgende gegevens$/, function (relatie, dataTable) {
+Given(/^de persoon heeft een '?(?:ex-)?(.*)' met ?(?:alleen)? de volgende gegevens$/, function (relatie, dataTable) {
     let relatieCollectie = toCollectionName(relatie);
 
     if(this.context.persoon[relatieCollectie] === undefined) {
@@ -314,7 +314,7 @@ Given(/^de persoon heeft een '(.*)' met ?(?:alleen)? de volgende gegevens$/, fun
     this.context.attach(`${relatie}: ${JSON.stringify(this.context[relatie], null, '  ')}`);
 });
 
-Given(/^de persoon heeft een '(.*)' met ?(?:alleen)? de volgende '(.*)' gegevens$/, function (relatie, gegevensgroep, dataTable) {
+Given(/^de persoon heeft een '?(?:ex-)?(.*)' met ?(?:alleen)? de volgende '(.*)' gegevens$/, function (relatie, gegevensgroep, dataTable) {
     const relatieCollectie = toCollectionName(relatie);
 
     if(this.context.persoon[relatieCollectie] === undefined) {
@@ -328,7 +328,7 @@ Given(/^de persoon heeft een '(.*)' met ?(?:alleen)? de volgende '(.*)' gegevens
     setPersoonProperties(this.context[relatie], gegevensgroep, dataTable);
 });
 
-Given(/^(?:de|het) '(.*)' heeft ?(?:alleen)? de volgende '(.*)' gegevens$/, function (relatie, gegevensgroep, dataTable) {
+Given(/^(?:de|het) '?(?:ex-)?(.*)' heeft ?(?:alleen)? de volgende '(.*)' gegevens$/, function (relatie, gegevensgroep, dataTable) {
     if(this.context[relatie] === undefined) {
         this.context[relatie] = {};
     }
@@ -554,6 +554,10 @@ Then(/^heeft het object de volgende '(.*)' gegevens$/, function (gegevensgroep, 
     }
 });
 
+Given(/^de persoon heeft geen (?:actuele partner|\(ex\)partner)$/, function () {
+    // doe niets
+});
+
 function toCollectionName(gegevensgroep) {
     switch(gegevensgroep) {
         case 'partner':
@@ -569,9 +573,25 @@ function toCollectionName(gegevensgroep) {
     }
 }
 
-function deleteEmptyProperties(o) {
+function deleteEmptyObjects(o) {
     if(o === undefined) return o;
   
+    Object.keys(o).forEach(k => {
+        if (typeof o[k] === 'object') {
+            deleteEmptyObjects(o[k]);
+
+            if(Object.keys(o[k]).length === 0) {
+                delete o[k];
+            }
+        }
+    });
+    
+    return o;
+}
+
+function deleteEmptyProperties(o) {
+    if(o === undefined) return o;
+
     Object.keys(o).forEach(k => {
       if (typeof o[k] === 'object') {
         return deleteEmptyProperties(o[k]);
