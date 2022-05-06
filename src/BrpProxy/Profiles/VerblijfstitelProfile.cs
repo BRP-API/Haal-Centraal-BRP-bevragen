@@ -17,5 +17,7 @@ public class VerblijfstitelProfile : Profile
                 opt.PreCondition(src => src.Aanduiding?.Code != "00");
                 opt.MapFrom(src => src.Aanduiding);
             });
+
+        CreateMap<GbaInOnderzoek, VerblijfstitelInOnderzoek?>().ConvertUsing<VerblijfstitelInOnderzoekConverter>();
     }
 }

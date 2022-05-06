@@ -5,5 +5,6 @@ public partial class Verblijfstitel
     public bool ShouldSerialize() => 
         Aanduiding != null ||
         DatumEinde != null ||
-        DatumIngang != null;
+        DatumIngang != null ||
+        InOnderzoek != null;
 }
