@@ -291,12 +291,13 @@ Functionaliteit: Fields
       | burgerservicenummer | <burgerservicenummer>           |
       | fields              | <fields>                        |
       Dan heeft de response een persoon met alleen de volgende 'geboorte' gegevens
-      | naam           | waarde     |
-      | datum.type     | <type>     |
-      | datum.datum    | <datum>    |
-      | datum.jaar     | <jaar>     |
-      | datum.maand    | <maand>    |
-      | datum.onbekend | <onbekend> |
+      | naam              | waarde        |
+      | datum.type        | <type>        |
+      | datum.datum       | <datum>       |
+      | datum.jaar        | <jaar>        |
+      | datum.maand       | <maand>       |
+      | datum.onbekend    | <onbekend>    |
+      | datum.langFormaat | <langFormaat> |
 
       Voorbeelden:
       | burgerservicenummer | GBA datum | type           | datum      | jaar | maand | onbekend | langFormaat      | fields                                          |
