@@ -125,6 +125,8 @@ components:
       properties:
         locatiebeschrijving:
           $ref: '#/components/schemas/Locatiebeschrijving'
+        inOnderzoek:
+          $ref: "#components/schemas/VerblijfadresLocatieInOnderzoek"
     AbstractVerblijfplaatsBeperkt:
       type: object
       description: |
@@ -267,6 +269,8 @@ components:
           properties:
             functieAdres:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
+            datumVan:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             datumIngangGeldigheid:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             inOnderzoek:
@@ -377,6 +381,8 @@ components:
         - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
         - type: object
           properties:
+            datumVan:
+              type: boolean
             functieAdres:
               type: boolean
             datumIngangGeldigheid:
@@ -390,7 +396,12 @@ components:
               type: boolean
             functieAdres:
               type: boolean
-            locatiebeschrijving:
-              type: boolean
             datumIngangGeldigheid:
+              type: boolean
+    VerblijfadresLocatieInOnderzoek:
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            locatiebeschrijving:
               type: boolean

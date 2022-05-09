@@ -115,8 +115,6 @@ components:
               type: boolean
             voorletters:
               type: boolean
-            volledigeNaam:
-              type: boolean
     NaamPersoon:
       allOf:
         - $ref: '#/components/schemas/NaamBasis'
@@ -131,4 +129,6 @@ components:
         - type: object
           properties:
             aanduidingNaamgebruik:
+              type: boolean
+            volledigeNaam:
               type: boolean
