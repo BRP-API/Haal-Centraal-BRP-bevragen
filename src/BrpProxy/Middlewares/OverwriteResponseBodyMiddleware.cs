@@ -28,9 +28,10 @@ namespace BrpProxy.Middlewares
         public async Task Invoke(HttpContext context)
         {
             var orgBodyStream = context.Response.Body;
+            string requestBody = string.Empty;
             try
             {
-                var requestBody = await context.Request.ReadBodyAsync();
+                requestBody = await context.Request.ReadBodyAsync();
 
                 _logger.LogDebug("original requestBody: {@requestBody}", requestBody);
                 var personenQuery = JsonConvert.DeserializeObject<PersonenQuery>(requestBody);
@@ -78,7 +79,8 @@ namespace BrpProxy.Middlewares
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, message: string.Empty);
+                _logger.LogError(ex, message: $"requestBody: {requestBody}");
+
                 using var bodyStream = JsonConvert.SerializeObject(new Foutbericht
                 {
                     Status = StatusCodes.Status500InternalServerError,
@@ -253,7 +255,9 @@ namespace BrpProxy.Middlewares
                 case Gba.RaadpleegMetBurgerservicenummerResponse p:
                     var result = mapper.Map<RaadpleegMetBurgerservicenummerResponse>(p);
                     logger.LogDebug("Before fields filtering {@result}", result);
-                    result.Personen = result.Personen.FilterList(fields);
+                    result.Personen = (from persoon in result.Personen.FilterList(fields)
+                                      where persoon.ShouldSerialize()
+                                      select persoon).ToList();
                     retval = result;
                     break;
                 case Gba.ZoekMetGeslachtsnaamEnGeboortedatumResponse pb:
