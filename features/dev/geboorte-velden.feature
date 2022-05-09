@@ -3,7 +3,7 @@
 @post-assert
 Functionaliteit: Geboorte
 
-  Abstract Scenario: geboorte. Omzetten datum veld: <gba naam>
+  Abstract Scenario: persoon heeft 'geboorte' datum veld: '<gba naam>'
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |
@@ -11,14 +11,11 @@ Functionaliteit: Geboorte
     | naam       | waarde       |
     | <gba naam> | <gba waarde> |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                              |
-    | type                | RaadpleegMetBurgerservicenummer     |
-    | burgerservicenummer | 555550001                           |
-    | fields              | burgerservicenummer,geboorte.<naam> |
-    Dan heeft de response een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En heeft de persoon de volgende 'geboorte' gegevens
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 555550001                       |
+    | fields              | geboorte                        |
+    Dan heeft de response een persoon met de volgende 'geboorte' gegevens
     | naam         | waarde   |
     | <naam>.type  | Datum    |
     | <naam>.datum | <waarde> |
@@ -27,7 +24,7 @@ Functionaliteit: Geboorte
     | gba naam              | gba waarde | naam  | waarde     |
     | geboortedatum (03.10) | 20020701   | datum | 2002-07-01 |
 
-  Abstract Scenario: geboorte. Overnemen waardetabel veld: <gba naam>
+  Abstract Scenario: persoon heeft 'geboorte' veld: '<gba naam>'
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |
@@ -35,15 +32,12 @@ Functionaliteit: Geboorte
     | naam       | waarde   |
     | <gba naam> | <waarde> |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                               |
-    | type                | RaadpleegMetBurgerservicenummer      |
-    | burgerservicenummer | 555550001                            |
-    | fields              | burgerservicenummer,geboorte.<field> |
-    Dan heeft de response een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En heeft de persoon de volgende 'geboorte' gegevens
-    | naam   | waarde   |
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 555550001                       |
+    | fields              | geboorte                        |
+    Dan heeft de response een persoon met de volgende 'geboorte' gegevens
+    | naam    | waarde   |
     | <field> | <waarde> |
 
     Voorbeelden:

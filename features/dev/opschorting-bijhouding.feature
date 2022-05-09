@@ -14,11 +14,8 @@ Functionaliteit: Opschorting bijhouding
     | naam                | waarde                                           |
     | type                | RaadpleegMetBurgerservicenummer                  |
     | burgerservicenummer | 555550001                                        |
-    | fields              | burgerservicenummer,opschortingBijhouding.<naam> |
-    Dan heeft de response een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En heeft de persoon de volgende 'opschortingBijhouding' gegevens
+    | fields              | opschortingBijhouding.<naam> |
+    Dan heeft de response een persoon met de volgende 'opschortingBijhouding' gegevens
     | naam         | waarde   |
     | <naam>.type  | Datum    |
     | <naam>.datum | <waarde> |
@@ -38,11 +35,8 @@ Functionaliteit: Opschorting bijhouding
     | naam                | waarde                                           |
     | type                | RaadpleegMetBurgerservicenummer                  |
     | burgerservicenummer | 555550001                                        |
-    | fields              | burgerservicenummer,opschortingBijhouding.<naam> |
-    Dan heeft de response een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En heeft de persoon de volgende 'opschortingBijhouding' gegevens
+    | fields              | opschortingBijhouding.<naam> |
+    Dan heeft de response een persoon met de volgende 'opschortingBijhouding' gegevens
     | naam   | waarde   |
     | <naam> | <waarde> |
 

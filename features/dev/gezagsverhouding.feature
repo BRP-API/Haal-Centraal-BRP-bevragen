@@ -25,7 +25,7 @@ Functionaliteit: Gezagsverhouding
     | indicatieGezagMinderjarige.omschrijving | indicatieGezagMinderjarige.omschrijving | Ouder1 en ouder2 hebben het gezag |
     | indicatie curateleregister (33.10)      | indicatieCurateleRegister               | true                              |
 
-  Abstract Scenario: persoon's gezagsverhouding velden is in onderzoek
+  Abstract Scenario: 'gezagsverhouding' velden van persoon is/zijn in onderzoek
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |

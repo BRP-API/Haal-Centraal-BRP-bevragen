@@ -14,7 +14,7 @@ Functionaliteit: Kind
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
-    | fields              | kinderen                 |
+    | fields              | kinderen                        |
     Dan heeft de response een persoon met een 'kind' met alleen de volgende gegevens
     | naam   | waarde   |
     | type   | Kind     |
@@ -35,7 +35,7 @@ Functionaliteit: Kind
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
-    | fields              | kinderen.<gegevensgroep> |
+    | fields              | kinderen                        |
     Dan heeft de response een persoon met een 'kind' met alleen de volgende gegevens
     | naam | waarde |
     | type | Kind   |
@@ -66,7 +66,7 @@ Functionaliteit: Kind
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
-    | fields              | kinderen.<gegevensgroep> |
+    | fields              | kinderen                        |
     Dan heeft de response een persoon met een 'kind' met alleen de volgende gegevens
     | naam | waarde |
     | type | Kind   |
@@ -94,7 +94,7 @@ Functionaliteit: Kind
     | fields              | kinderen                        |
     Dan heeft de response een persoon met een 'kind' met alleen de volgende gegevens
     | naam                                   | waarde                             |
-    | type                                   | Kind                            |
+    | type                                   | Kind                               |
     | inOnderzoek.burgerservicenummer        | <burgerservicenummer in onderzoek> |
     | inOnderzoek.datumIngangOnderzoek.type  | Datum                              |
     | inOnderzoek.datumIngangOnderzoek.datum | 2002-07-01                         |
@@ -105,7 +105,7 @@ Functionaliteit: Kind
     | 090100                  | true                             |
     | 090120                  | true                             |
 
-  Abstract Scenario: kind naam velden is in onderzoek
+  Abstract Scenario: naam velden van kind is/zijn in onderzoek
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |
@@ -122,8 +122,8 @@ Functionaliteit: Kind
     | burgerservicenummer | 555550001                       |
     | fields              | kinderen.naam                   |
     Dan heeft de response een persoon met een 'kind' met alleen de volgende gegevens
-    | naam | waarde  |
-    | type | Kind |
+    | naam | waarde |
+    | type | Kind   |
     En heeft de 'kind' alleen de volgende 'naam' gegevens
     | naam                                   | waarde                                 |
     | geslachtsnaam                          | Groen                                  |
@@ -144,7 +144,7 @@ Functionaliteit: Kind
     | 090230                  |                        |                                      | true                     |                            |                          |
     | 090240                  |                        |                                      |                          | true                       |                          |
 
-    Abstract Scenario: kind geboorte velden is in onderzoek
+    Abstract Scenario: 'geboorte' velden van kind is/zijn in onderzoek
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |
@@ -161,8 +161,8 @@ Functionaliteit: Kind
     | burgerservicenummer | 555550001                       |
     | fields              | kinderen.geboorte               |
     Dan heeft de response een persoon met een 'kind' met alleen de volgende gegevens
-    | naam | waarde  |
-    | type | Kind |
+    | naam | waarde |
+    | type | Kind   |
     En heeft de 'kind' alleen de volgende 'geboorte' gegevens
     | naam                                   | waarde                |
     | datum.type                             | Datum                 |
