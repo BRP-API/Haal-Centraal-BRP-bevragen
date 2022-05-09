@@ -906,6 +906,9 @@ components:
       properties:
         type:
           type: string
+        langFormaat:
+          pattern: ^[a-z0-9 ]{1,17}$
+          type: string
       discriminator:
         propertyName: type
         mapping:
@@ -921,6 +924,7 @@ components:
         value:
           type: Datum
           datum: 2018-07-01
+          langFormaat: 1 juli 2018
       allOf:
       - $ref: '#/components/schemas/AbstractDatum'
       - type: object
@@ -936,6 +940,7 @@ components:
         value:
           type: DatumOnbekend
           onbekend: true
+          langFormaat: onbekend
       allOf:
       - $ref: '#/components/schemas/AbstractDatum'
       - type: object
@@ -951,6 +956,7 @@ components:
         value:
           type: JaarDatum
           jaar: 2018
+          langFormaat: 2018
       allOf:
       - $ref: '#/components/schemas/AbstractDatum'
       - type: object
@@ -972,6 +978,7 @@ components:
           type: JaarMaandDatum
           jaar: 2018
           maand: 7
+          langFormaat: juli 2018
       allOf:
       - $ref: '#/components/schemas/AbstractDatum'
       - type: object
