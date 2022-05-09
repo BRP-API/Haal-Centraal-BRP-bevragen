@@ -3,22 +3,98 @@
 @proxy @post-assert
 Functionaliteit: leveren van een datum
 
-  Rule: een volledige datum wordt geleverd met een type op basis van de nauwkeurigheid van de waarde
-    - een datum krijgt type "Datum" wanneer de laatste twee cijfers in de GbaDatum ongelijk zijn aan "00", waarbij geldt dat:
-      - de datum wordt geleverd in veld "datum", in full-date formaat als gedefinieerd in RFC 3339, sectie 5.6
-      - veld "type" krijgt de waarde "Datum"
-    - een datum krijgt type "DatumOnbekend" wanneer de datum gelijk is aan "00000000", waarbij geldt dat:
-      - veld "type" krijgt de waarde "DatumOnbekend"
-      - veld "onbekend" wordt opgenomen met de boolean waarde true
-    - een datum krijgt type "JaarDatum" wanneer de laatste vier cijfers in de GbaDatum gelijk zijn aan "0000", waarbij geldt dat:
-      - het jaar, dat staat in de eerste 4 cijfers, wordt geleverd in veld "jaar" als integer (getal)
-      - veld "type" krijgt de waarde "JaarDatum"
-    - een datum krijgt type "JaarMaandDatum" wanneer de laatste twee cijfers in de GbaDatum gelijk zijn aan "00", waarbij geldt dat:
-      - de laatste vier cijfers in de GbaDatum zijn ongelijk aan "0000"
-      - het jaar, dat staat in de eerste 4 cijfers, wordt geleverd in veld "jaar" als integer (getal)
-      - de maand, dat staat in posities 5 en 6, wordt geleverd in veld "maand" als integer (getal)
-      - veld "type" krijgt de waarde "JaarMaandDatum"
+  een datum wordt geleverd met een type op basis van de nauwkeurigheid van de waarde
 
+  Rule: een datum krijgt type "Datum" wanneer de laatste twee cijfers in de GBA datum ongelijk zijn aan "00".
+        Hierbij geldt dat:
+        - de datum wordt geleverd in veld "datum", in full-date formaat als gedefinieerd in RFC 3339, sectie 5.6
+        - veld "type" krijgt de waarde "Datum"
+
+    Scenario: laatste twee cijfers van de GBA datum is ongelijk aan "00"
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                                  | waarde    |
+      | burgerservicenummer                   | 555550001 |
+      | datum eerste inschrijving GBA (68.10) | 20200308  |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 555550001                       |
+      | fields              | datumEersteInschrijvingGBA      |
+      Dan heeft de response een persoon met de volgende gegevens
+      | naam                             | waarde     |
+      | datumEersteInschrijvingGBA.type  | Datum      |
+      | datumEersteInschrijvingGBA.datum | 2020-03-08 |
+
+  Rule: een datum krijgt type "JaarMaandDatum" wanneer de laatste twee cijfers in de GBA datum gelijk zijn aan "00".
+        Hierbij geldt dat:
+        - het jaar, dat staat in de eerste 4 cijfers, wordt geleverd in veld "jaar" als integer (getal)
+        - de maand, dat staat in posities 5 en 6, wordt geleverd in veld "maand" als integer (getal)
+        - veld "type" krijgt de waarde "JaarMaandDatum"
+
+    Scenario: laatste twee cijfers van de GBA datum is gelijk aan "00"
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 555550001 |
+      En de persoon heeft de volgende 'geboorte' gegevens
+      | naam                  | waarde   |
+      | geboortedatum (03.10) | 20200300 |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 555550001                       |
+      | fields              | geboorte.datum                  |
+      Dan heeft de response een persoon met de volgende 'geboorte' gegevens
+      | naam        | waarde         |
+      | datum.type  | JaarMaandDatum |
+      | datum.jaar  | 2020           |
+      | datum.maand | 3              |
+
+  Rule: een datum krijgt type "JaarDatum" wanneer de laatste vier cijfers in de GBA datum gelijk zijn aan "0000".
+        Hierbij geldt dat:
+        - het jaar, dat staat in de eerste 4 cijfers, wordt geleverd in veld "jaar" als integer (getal)
+        - veld "type" krijgt de waarde "JaarDatum"
+
+    Scenario: laatste vier cijfers van de GBA datum is gelijk aan "0000"
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 555550001 |
+      En de persoon heeft een 'ouder' met de volgende gegevens
+      | naam                                               | waarde   |
+      | datum ingang familierechtelijke betrekking (62.10) | 19630000 |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                                         |
+      | type                | RaadpleegMetBurgerservicenummer                |
+      | burgerservicenummer | 555550001                                      |
+      | fields              | ouders.datumIngangFamilierechtelijkeBetrekking |
+      Dan heeft de response een persoon met een 'ouder' met de volgende gegevens
+      | naam                                         | waarde    |
+      | type                                         | Ouder     |
+      | datumIngangFamilierechtelijkeBetrekking.type | JaarDatum |
+      | datumIngangFamilierechtelijkeBetrekking.jaar | 1963      |
+
+  Rule: een datum krijgt type "DatumOnbekend" wanneer de GBA datum gelijk is aan "00000000".
+        Hierbij geldt dat:
+        - veld "type" krijgt de waarde "DatumOnbekend"
+        - veld "onbekend" wordt opgenomen met de boolean waarde true
+
+    Scenario: GBA datum is gelijk aan "00000000"
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 555550001 |
+      En de persoon heeft de volgende 'overlijden' gegevens
+      | naam                     | waarde   |
+      | datum overlijden (08.10) | 00000000 |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 555550001                       |
+      | fields              | overlijden.datum                |
+      Dan heeft de response een persoon met de volgende 'overlijden' gegevens
+      | naam           | waarde        |
+      | datum.type     | DatumOnbekend |
+      | datum.onbekend | true          |
+
+    @skip-verify
     Abstract Scenario: <type> in <groep> <veld>
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
@@ -86,7 +162,7 @@ Functionaliteit: leveren van een datum
       | kiesrecht             | einddatumUitsluitingEuropeesKiesrecht | JaarMaandDatum | 20300700 |            | 2030 | 7     |          |
       | kiesrecht             | einddatumUitsluitingKiesrecht         | JaarMaandDatum | 20300700 |            | 2030 | 7     |          |
 
-
+    @skip-verify
     Abstract Scenario: <type> in datumEersteInschrijvingGBA
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                       | waarde     |
@@ -113,6 +189,7 @@ Functionaliteit: leveren van een datum
       | JaarDatum      | 20200000 |            | 2020 |       |          |
       | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
 
+    @skip-verify
     Abstract Scenario: <type> datumIngangFamilierechtelijkeBetrekking van ouders
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
@@ -142,6 +219,7 @@ Functionaliteit: leveren van een datum
       | JaarDatum      | 20200000 |            | 2020 |       |          |
       | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
 
+     @skip-verify
      Abstract Scenario: <type> <groep> <veld> van <relatie>
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
@@ -201,6 +279,7 @@ Functionaliteit: leveren van een datum
 
   Rule: verblijfplaats datumVan wordt gevuld uit datumAanvangAdreshouding of datumAanvangAdresBuitenland
 
+    @skip-verify
     Abstract Scenario: <titel>
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
