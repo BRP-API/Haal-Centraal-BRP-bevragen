@@ -25,12 +25,12 @@ public class FieldsHelper
         return dictionary;
     }
 
-    private static IDictionary<string, string> SetupFieldInOnderzoekMapping()
+    public static IDictionary<string, string> SetupFieldInOnderzoekMapping()
     {
         var dictionary = new Dictionary<string, string>();
 
         var persoonFields = typeof(Persoon).GetPropertyPaths("HaalCentraal");
-        var persoonInOnderzoekFields = persoonFields.Where(x => x.IsInOnderzoekField());
+        var persoonInOnderzoekFields = persoonFields.Where(x => x.IsInOnderzoekField()).OrderBy(x => x);
         foreach (var field in persoonFields)
         {
             if (field.IsInOnderzoekField())
@@ -39,22 +39,11 @@ public class FieldsHelper
             }
             else if (field.Contains('.'))
             {
-                var inOnderzoekField = ToInOnderzoekPath(persoonInOnderzoekFields, field);
-                if (string.IsNullOrEmpty(inOnderzoekField))
-                {
-                    var fieldPart = field[0..field.LastIndexOf('.')];
-                    inOnderzoekField = fieldPart.Contains('.')
-                        ? ToInOnderzoekPath(persoonInOnderzoekFields, fieldPart)
-                        : persoonInOnderzoekFields.FirstOrDefault(x => x.Contains(fieldPart));
-                }
-
-                dictionary.Add(field, inOnderzoekField!);
+                dictionary.Add(field, ToNestedInOnderzoekPath(persoonInOnderzoekFields, field));
             }
             else
             {
-                var inOnderzoekField = persoonInOnderzoekFields.FirstOrDefault(x => x.Contains(field));
-
-                dictionary.Add(field, inOnderzoekField!);
+                dictionary.Add(field, ToInOnderzoekpath(persoonInOnderzoekFields, field));
             }
         }
 
@@ -118,12 +107,57 @@ public class FieldsHelper
         return retval;
     }
 
-    private static string ToInOnderzoekPath(IEnumerable<string> inOnderzoekPaths, string path)
+    private static string ToInOnderzoekpath(IEnumerable<string> inOnderzoekPaths, string path)
     {
+        var inOnderzoekPath = $"inOnderzoek.{path}";
+        if (inOnderzoekPaths.Any(x => x == inOnderzoekPath))
+        {
+            return inOnderzoekPath;
+        }
+
+        inOnderzoekPath = $"{path}.inOnderzoek";
+        if (inOnderzoekPaths.Any(x => x == inOnderzoekPath))
+        {
+            return inOnderzoekPath;
+        }
+
+        return string.Empty;
+    }
+
+    private static string ToNestedInOnderzoekPath(IEnumerable<string> inOnderzoekPaths, string path)
+    {
+        var inOnderzoekPath = $"{path}.inOnderzoek";
+
+        if (inOnderzoekPaths.Any(x => x == inOnderzoekPath))
+        {
+            return inOnderzoekPath;
+        }
+
         var pathParts = path.Split('.');
+
         var s1 = pathParts.Last();
         var s2 = string.Join('.', pathParts.Take(pathParts.Length - 1));
 
-        return inOnderzoekPaths.FirstOrDefault(x => x.Contains($"{s2}.inOnderzoek.{s1}")) ?? "";
+        inOnderzoekPath = $"{s2}.inOnderzoek.{s1}";
+
+        if (inOnderzoekPaths.Any(x => x == inOnderzoekPath))
+        {
+            return inOnderzoekPath;
+        }
+
+        if(pathParts.Length - 2 > 0)
+        {
+            s1 = pathParts[pathParts.Length - 2];
+            s2 = string.Join('.', pathParts.Take(pathParts.Length - 2));
+
+            inOnderzoekPath = $"{s2}.inOnderzoek.{s1}";
+
+            if (inOnderzoekPaths.Any(x => x == inOnderzoekPath))
+            {
+                return inOnderzoekPath;
+            }
+        }
+
+        return string.Empty;
     }
 }
