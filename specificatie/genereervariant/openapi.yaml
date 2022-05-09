@@ -947,7 +947,7 @@ components:
         value:
           type: DatumOnbekend
           onbekend: true
-          langFormaat: Onbekend
+          langFormaat: onbekend
       allOf:
       - $ref: '#/components/schemas/AbstractDatum'
       - type: object

@@ -1195,7 +1195,7 @@
           "value" : {
             "type" : "DatumOnbekend",
             "onbekend" : true,
-            "langFormaat" : "Onbekend"
+            "langFormaat" : "onbekend"
           }
         },
         "allOf" : [ {
