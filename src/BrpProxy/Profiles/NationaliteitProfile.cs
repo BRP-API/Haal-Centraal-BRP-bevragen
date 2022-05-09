@@ -31,6 +31,13 @@ public class NationaliteitProfile : Profile
 
         CreateMap<GbaInOnderzoek, BijzonderNederlanderschapInOnderzoek?>().ConvertUsing<BijzonderNederlanderschapInOnderzoekConverter>();
 
+        CreateMap<GbaNationaliteit, Staatloos>()
+            .ForMember(dest => dest.DatumIngangGeldigheid, opt => opt.MapFrom(src => src.DatumIngangGeldigheid.Map()))
+            .ForMember(dest => dest.RedenOpname, opt => opt.PreCondition(src => src.RedenOpname?.Code != "000"))
+            ;
+
+        CreateMap<GbaInOnderzoek, StaatloosInOnderzoek?>().ConvertUsing<StaatloosInOnderzoekConverter>();
+
         CreateMap<GbaNationaliteit, NationaliteitOnbekend>()
             .ForMember(dest => dest.DatumIngangGeldigheid, opt => opt.MapFrom(src => src.DatumIngangGeldigheid.Map()))
             .ForMember(dest => dest.RedenOpname, opt => opt.PreCondition(src => src.RedenOpname?.Code != "000"))

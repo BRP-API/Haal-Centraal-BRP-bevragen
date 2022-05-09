@@ -817,6 +817,7 @@ namespace HaalCentraal.BrpProxy.Generated
     [JsonInheritanceAttribute("Nationaliteit", typeof(Nationaliteit))]
     [JsonInheritanceAttribute("BehandeldAlsNederlander", typeof(BehandeldAlsNederlander))]
     [JsonInheritanceAttribute("VastgesteldNietNederlander", typeof(VastgesteldNietNederlander))]
+    [JsonInheritanceAttribute("Staatloos", typeof(Staatloos))]
     [JsonInheritanceAttribute("NationaliteitOnbekend", typeof(NationaliteitOnbekend))]
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class AbstractNationaliteit
@@ -901,6 +902,32 @@ namespace HaalCentraal.BrpProxy.Generated
 
         [Newtonsoft.Json.JsonProperty("inOnderzoek", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public BijzonderNederlanderschapInOnderzoek InOnderzoek { get; set; }
+
+    }
+
+    /// <summary>
+    /// * **redenOpname** : De reden op grond waarvan de persoon de nationaliteit gekregen heeft.
+    /// <br/>
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class Staatloos : AbstractNationaliteit
+    {
+        [Newtonsoft.Json.JsonProperty("datumIngangGeldigheid", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public AbstractDatum DatumIngangGeldigheid { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("inOnderzoek", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public StaatloosInOnderzoek InOnderzoek { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class StaatloosInOnderzoek : InOnderzoek
+    {
+        [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? Type { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("redenOpname", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? RedenOpname { get; set; }
 
     }
 

@@ -1,36 +1,31 @@
 # language: nl
 
 @post-assert
-Functionaliteit: behandeld als Nederlander
+Functionaliteit: vastgesteld niet-Nederlander
 
-  Abstract Scenario: persoon wordt 'behandeld als Nederlander'
+  Scenario: persoon is 'staatloos'
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |
     En de persoon heeft een 'nationaliteit' met de volgende gegevens
-    | naam       | waarde   |
-    | <gba naam> | <waarde> |
+    | naam                  | waarde |
+    | nationaliteit (05.10) | 0499   |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
     | fields              | nationaliteiten                 |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-    | naam | waarde                  |
-    | type | BehandeldAlsNederlander |
+    | naam | waarde    |
+    | type | Staatloos |
 
-    Voorbeelden:
-    | gba naam                           | waarde |
-    | bijzonder Nederlanderschap (65.10) | B      |
-    | nationaliteit (05.10)              | 0002   |
-
-  Abstract Scenario: persoon heeft 'behandeld als Nederlander' veld: '<gba naam>'
+  Abstract Scenario: persoon heeft 'staatloos' veld: '<gba naam>'
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |
     En de persoon heeft een 'nationaliteit' met de volgende gegevens
     | naam                               | waarde   |
-    | bijzonder Nederlanderschap (65.10) | B        |
+    | nationaliteit (05.10) | 0499   |
     | <gba naam>                         | <waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
@@ -38,22 +33,22 @@ Functionaliteit: behandeld als Nederlander
     | burgerservicenummer | 555550001                       |
     | fields              | nationaliteiten                 |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-    | naam   | waarde                  |
-    | type   | BehandeldAlsNederlander |
-    | <naam> | <waarde>                |
+    | naam   | waarde                     |
+    | type   | Staatloos |
+    | <naam> | <waarde>                   |
 
     Voorbeelden:
     | gba naam                 | naam                     | waarde           |
     | reden opname (63.10)     | redenOpname.code         | 1234             |
     | redenOpname.omschrijving | redenOpname.omschrijving | een omschrijving |
 
-  Abstract Scenario: persoon heeft 'behandeld als Nederlander' veld: '<gba naam>' met waarde '<waarde>'
+  Abstract Scenario: persoon heeft 'staatloos' veld: '<gba naam>' met waarde '<waarde>'
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |
     En de persoon heeft een 'nationaliteit' met de volgende gegevens
     | naam                               | waarde   |
-    | bijzonder Nederlanderschap (65.10) | B        |
+    | nationaliteit (05.10) | 0499   |
     | <gba naam>                         | <waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
@@ -61,20 +56,20 @@ Functionaliteit: behandeld als Nederlander
     | burgerservicenummer | 555550001                       |
     | fields              | nationaliteiten                 |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-    | naam | waarde                  |
-    | type | BehandeldAlsNederlander |
+    | naam | waarde                     |
+    | type | Staatloos |
 
     Voorbeelden:
     | gba naam             | naam             | waarde |
     | reden opname (63.10) | redenOpname.code | 000    |
 
-  Abstract Scenario: persoon heeft 'behandeld als Nederlander' datum veld: '<gba naam>'
+  Abstract Scenario: persoon heeft 'staatloos' datum veld: '<gba naam>'
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |
     En de persoon heeft een 'nationaliteit' met de volgende gegevens
     | naam                               | waarde       |
-    | bijzonder Nederlanderschap (65.10) | B            |
+    | nationaliteit (05.10) | 0499   |
     | <gba naam>                         | <gba waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
@@ -82,22 +77,22 @@ Functionaliteit: behandeld als Nederlander
     | burgerservicenummer | 555550001                       |
     | fields              | nationaliteiten                 |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-    | naam         | waarde                  |
-    | type         | BehandeldAlsNederlander |
-    | <naam>.type  | <type>                  |
-    | <naam>.datum | <waarde>                |
+    | naam         | waarde                     |
+    | type         | Staatloos |
+    | <naam>.type  | <type>                     |
+    | <naam>.datum | <waarde>                   |
 
     Voorbeelden:
     | gba naam                        | gba waarde | naam                  | type  | waarde     |
     | ingangsdatum geldigheid (85.10) | 20020701   | datumIngangGeldigheid | Datum | 2002-07-01 |
 
-  Abstract Scenario: 'behandeld als Nederlander' velden van persoon is/zijn in onderzoek
+  Abstract Scenario: persoon's 'staatloos' nationaliteit velden is in onderzoek
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |
     En de persoon heeft een 'nationaliteit' met de volgende gegevens
     | naam                                     | waarde                    |
-    | bijzonder Nederlanderschap (65.10)       | B                         |
+    | nationaliteit (05.10) | 0499   |
     | reden opname (63.10)                     | 001                       |
     | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)           | 20020701                  |
@@ -108,7 +103,7 @@ Functionaliteit: behandeld als Nederlander
     | fields              | nationaliteiten                 |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
     | naam                                   | waarde                      |
-    | type                                   | BehandeldAlsNederlander     |
+    | type                                   | Staatloos  |
     | redenOpname.code                       | 001                         |
     | inOnderzoek.type                       | <type in onderzoek>         |
     | inOnderzoek.redenOpname                | <reden opname in onderzoek> |

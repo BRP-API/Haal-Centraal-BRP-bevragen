@@ -3,13 +3,13 @@
 @post-assert
 Functionaliteit: vastgesteld niet-Nederlander
 
-  Scenario: persoon is 'vastgesteld niet-Nederlander'
+  Abstract Scenario: persoon is 'vastgesteld niet-Nederlander'
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |
     En de persoon heeft een 'nationaliteit' met de volgende gegevens
-    | naam                               | waarde |
-    | bijzonder Nederlanderschap (65.10) | V      |
+    | naam       | waarde   |
+    | <gba naam> | <waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -18,6 +18,11 @@ Functionaliteit: vastgesteld niet-Nederlander
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
     | naam | waarde                     |
     | type | VastgesteldNietNederlander |
+
+    Voorbeelden:
+    | gba naam                           | waarde |
+    | bijzonder Nederlanderschap (65.10) | V      |
+    | nationaliteit (05.10)              | 0500   |
 
   Abstract Scenario: persoon heeft 'vastgesteld niet-Nederlander' veld: '<gba naam>'
     Gegeven het systeem heeft een persoon met de volgende gegevens
