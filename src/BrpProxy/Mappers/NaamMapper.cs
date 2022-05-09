@@ -225,12 +225,18 @@ public static class NaamMapper
         return naam.AanduidingNaamgebruik?.Code != "P";
     }
 
-    private static bool HeeftGeenPredicaat(this NaamPersoon naam)
+    private static bool HeeftPredicaat(this NaamPersoon naam)
     {
         return !string.IsNullOrWhiteSpace(naam.AdellijkeTitelPredicaat.Code) &&
-               !Predicaten.ContainsKey(naam.AdellijkeTitelPredicaat.Code);
+               Predicaten.ContainsKey(naam.AdellijkeTitelPredicaat.Code);
     }
 
+    private static bool HeeftHoffelijkheidsTitel(this NaamPersoon naam)
+    {
+        return !string.IsNullOrWhiteSpace(naam.AdellijkeTitelPredicaat.Code) &&
+                HoffelijkheidsTitels.ContainsKey(naam.AdellijkeTitelPredicaat.Code);
+
+    }
     private static bool HeeftAdellijkeTitelPredicaat(this AbstractPartner? partner)
     {
         return partner is Partner p && p.Naam.AdellijkeTitelPredicaat != null;
@@ -266,9 +272,9 @@ public static class NaamMapper
 
             if (naam.HeeftLeegOfOnbekendGeslachtsnaam() &&
                 naam.HeeftNaamgebruikOngelijkAanPartner() &&
-                naam.HeeftGeenPredicaat() &&
-                !AanhefAdellijkeTitelPredicaat.ContainsKey(aanhefKey) &&
-                !HoffelijkheidsTitels.ContainsKey(naam.AdellijkeTitelPredicaat.Code))
+                (naam.HeeftPredicaat() || !AanhefAdellijkeTitelPredicaat.ContainsKey(aanhefKey)) &&
+                !naam.HeeftHoffelijkheidsTitel()
+                )
             {
                 return null;
             }
