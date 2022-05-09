@@ -20,6 +20,9 @@ components:
       properties:
         type:
           type: string
+        langFormaat:
+          type: string
+          pattern: ^[a-z0-9 ]{1,17}$
       discriminator:
         propertyName: type
         mapping:
@@ -46,6 +49,7 @@ components:
         value:
           type: Datum
           datum: "2018-07-01"
+          langFormaat: "1 juli 2018"
     DatumOnbekend:
       description: representatie voor een volledig onbekend datum
       allOf:
@@ -61,6 +65,7 @@ components:
         value:
           type: DatumOnbekend
           onbekend: true
+          langFormaat: "onbekend"
     JaarDatum:
       description: representatie voor een datum waarvan maand en dag onbekend zijn
       allOf:
@@ -75,6 +80,7 @@ components:
         value:
           type: JaarDatum
           jaar: 2018
+          langFormaat: 2018
     JaarMaandDatum:
       description: representatie voor een datum waarvan de dag onbekend is
       allOf:
@@ -93,6 +99,7 @@ components:
           type: JaarMaandDatum
           jaar: 2018
           maand: 7
+          langFormaat: "juli 2018"
     Jaar:
       type: integer
       format: int32
