@@ -427,14 +427,11 @@
               "format" : "date",
               "example" : "1964-09-24"
             },
-            "geboorteplaats" : {
-              "$ref" : "#/components/schemas/GeboorteplaatsFilter"
-            },
             "geslachtsnaam" : {
               "$ref" : "#/components/schemas/GeslachtsnaamFilter"
             },
-            "geslachtsaanduiding" : {
-              "$ref" : "#/components/schemas/GeslachtsaanduidingFilter"
+            "geslacht" : {
+              "$ref" : "#/components/schemas/GeslachtFilter"
             },
             "voorvoegsel" : {
               "$ref" : "#/components/schemas/VoorvoegselFilter"
@@ -460,8 +457,8 @@
             "inclusiefOverledenPersonen" : {
               "$ref" : "#/components/schemas/InclusiefOverledenPersonen"
             },
-            "geslachtsaanduiding" : {
-              "$ref" : "#/components/schemas/GeslachtsaanduidingFilter"
+            "geslacht" : {
+              "$ref" : "#/components/schemas/GeslachtFilter"
             },
             "geslachtsnaam" : {
               "$ref" : "#/components/schemas/GeslachtsnaamFilter"
@@ -655,7 +652,7 @@
           "geheimhoudingPersoonsgegevens" : {
             "$ref" : "#/components/schemas/GbaGeheimhoudingPersoonsgegevens"
           },
-          "geslachtsaanduiding" : {
+          "geslacht" : {
             "$ref" : "#/components/schemas/Waardetabel"
           },
           "naam" : {
@@ -695,7 +692,7 @@
           "geheimhoudingPersoonsgegevens" : {
             "$ref" : "#/components/schemas/GbaGeheimhoudingPersoonsgegevens"
           },
-          "geslachtsaanduiding" : {
+          "geslacht" : {
             "$ref" : "#/components/schemas/Waardetabel"
           },
           "inOnderzoek" : {
@@ -780,19 +777,13 @@
         "description" : "Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.\n",
         "example" : "0518"
       },
-      "GeboorteplaatsFilter" : {
-        "pattern" : "^[a-zA-Z0-9À-ž \\,\\.\\-\\'()]{1,80}$",
-        "type" : "string",
-        "description" : "Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**\n",
-        "example" : "Utrecht"
-      },
       "GeslachtsnaamFilter" : {
         "pattern" : "^[a-zA-Z0-9À-ž \\.\\-\\']{1,200}$|^[a-zA-Z0-9À-ž \\.\\-\\']{3,199}\\*{1}$",
         "type" : "string",
         "description" : "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**\n",
         "example" : "Vries"
       },
-      "GeslachtsaanduidingFilter" : {
+      "GeslachtFilter" : {
         "pattern" : "^([Mm]|[Vv]|[Oo])$",
         "type" : "string",
         "description" : "Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.\n",
@@ -842,7 +833,7 @@
         "example" : "2341SX"
       },
       "StraatFilter" : {
-        "pattern" : "^[a-zA-Z0-9À-ž \\-\\']{1,80}$|^[a-zA-Z0-9À-ž \\-\\']{7,79}\\*{1}$|^\\*{1}[a-zA-Z0-9À-ž \\-\\']{7,79}$",
+        "pattern" : "^[a-zA-Z0-9À-ž \\-\\'\\.]{1,80}$|^[a-zA-Z0-9À-ž \\-\\'\\.]{7,79}\\*{1}$|^\\*{1}[a-zA-Z0-9À-ž \\-\\'\\.]{7,79}$",
         "type" : "string",
         "description" : "Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).\n",
         "example" : "Tulpstraat"
@@ -1039,7 +1030,7 @@
         "example" : "20180700"
       },
       "GbaInOnderzoek" : {
-        "required" : [ "aanduidingGegevensInOnderzoek", "datumIngangInOnderzoek" ],
+        "required" : [ "aanduidingGegevensInOnderzoek", "datumIngangOnderzoek" ],
         "type" : "object",
         "properties" : {
           "aanduidingGegevensInOnderzoek" : {
@@ -1303,7 +1294,7 @@
           "burgerservicenummer" : {
             "$ref" : "#/components/schemas/Burgerservicenummer"
           },
-          "geslachtsaanduiding" : {
+          "geslacht" : {
             "$ref" : "#/components/schemas/Waardetabel"
           },
           "ouderAanduiding" : {
@@ -1335,7 +1326,7 @@
           "burgerservicenummer" : {
             "$ref" : "#/components/schemas/Burgerservicenummer"
           },
-          "geslachtsaanduiding" : {
+          "geslacht" : {
             "$ref" : "#/components/schemas/Waardetabel"
           },
           "soortVerbintenis" : {

@@ -16,9 +16,9 @@ geboorte.datum.maand,geboorte.datum.maand
 datum.maand,geboorte.datum.maand
 maand,geboorte.datum.maand
 geheimhoudingPersoonsgegevens,geheimhoudingPersoonsgegevens
-geslachtsaanduiding,geslachtsaanduiding
-geslachtsaanduiding.code,geslachtsaanduiding.code
-geslachtsaanduiding.omschrijving,geslachtsaanduiding.omschrijving
+geslacht,geslacht
+geslacht.code,geslacht.code
+geslacht.omschrijving,geslacht.omschrijving
 leeftijd,leeftijd
 naam,naam
 naam.adellijkeTitelPredicaat,naam.adellijkeTitelPredicaat
