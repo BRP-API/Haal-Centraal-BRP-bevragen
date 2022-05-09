@@ -39,4 +39,100 @@ public partial class AbstractDatum
         }
         return false;
     }
+
+    public static bool operator <(AbstractDatum left, AbstractDatum right)
+    {
+        var leftYear = 0;
+        var leftMonth = 0;
+        var leftDay = 0;
+        var rightYear = 0;
+        var rightMonth = 0;
+        var rightDay = 0;
+        switch (left)
+        {
+            case VolledigeDatum l:
+                leftYear = l.Datum!.Value.Year;
+                leftMonth = l.Datum!.Value.Month;
+                leftDay = l.Datum!.Value.Day;
+                break;
+            case JaarMaandDatum l:
+                leftYear = l.Jaar;
+                leftMonth = l.Maand;
+                break;
+            case JaarDatum l:
+                leftYear = l.Jaar;
+                break;
+            default:
+                break;
+        }
+        switch (right)
+        {
+            case VolledigeDatum r:
+                rightYear = r.Datum!.Value.Year;
+                rightMonth = r.Datum!.Value.Month;
+                rightDay = r.Datum!.Value.Day;
+                break;
+            case JaarMaandDatum r:
+                rightYear = r.Jaar;
+                rightMonth = r.Maand;
+                break;
+            case JaarDatum r:
+                rightYear = r.Jaar;
+                break;
+            default:
+                break;
+        }
+
+        return leftYear < rightYear ||
+            (leftYear == rightYear && leftMonth < rightMonth) ||
+            (leftYear == rightYear && leftMonth == rightMonth && leftDay < rightDay);
+    }
+
+    public static bool operator >(AbstractDatum left, AbstractDatum right)
+    {
+        var leftYear = 0;
+        var leftMonth = 0;
+        var leftDay = 0;
+        var rightYear = 0;
+        var rightMonth = 0;
+        var rightDay = 0;
+        switch (left)
+        {
+            case VolledigeDatum l:
+                leftYear = l.Datum!.Value.Year;
+                leftMonth = l.Datum!.Value.Month;
+                leftDay = l.Datum!.Value.Day;
+                break;
+            case JaarMaandDatum l:
+                leftYear = l.Jaar;
+                leftMonth = l.Maand;
+                break;
+            case JaarDatum l:
+                leftYear = l.Jaar;
+                break;
+            default:
+                break;
+        }
+        switch (right)
+        {
+            case VolledigeDatum r:
+                rightYear = r.Datum!.Value.Year;
+                rightMonth = r.Datum!.Value.Month;
+                rightDay = r.Datum!.Value.Day;
+                break;
+            case JaarMaandDatum r:
+                rightYear = r.Jaar;
+                rightMonth = r.Maand;
+                break;
+            case JaarDatum r:
+                rightYear = r.Jaar;
+                break;
+            default:
+                break;
+        }
+
+        return leftYear > rightYear ||
+            (leftYear == rightYear && leftMonth > rightMonth) ||
+            (leftYear == rightYear && leftMonth == rightMonth && leftDay > rightDay);
+    }
 }
