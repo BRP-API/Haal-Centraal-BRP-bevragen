@@ -65,7 +65,7 @@ components:
         value:
           type: DatumOnbekend
           onbekend: true
-          langFormaat: "Onbekend"
+          langFormaat: "onbekend"
     JaarDatum:
       description: representatie voor een datum waarvan maand en dag onbekend zijn
       allOf:
