@@ -35,15 +35,17 @@
   },
   "homepage": "https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen#readme",
   "devDependencies": {
-    "@cucumber/cucumber": "^7.3.2",
-    "@openapitools/openapi-generator-cli": "^2.4.26",
+    "@cucumber/cucumber": "^8.2.0",
+    "@openapitools/openapi-generator-cli": "^2.5.1",
     "@stoplight/spectral-cli": "^6.3.0",
-    "axios": "^0.26.0",
+    "axios": "^0.27.2",
     "chai": "^4.3.6",
-    "deep-equal-in-any-order": "^1.1.15",
+    "cucumber-html-reporter": "^5.5.0",
+    "deep-equal-in-any-order": "^1.1.17",
     "husky": "^4.3.8",
     "mvn-dl": "^6.0.0",
-    "openapi-to-postmanv2": "^2.14.1"
+    "nswag": "^13.15.10",
+    "openapi-to-postmanv2": "^3.2.0"
   },
   "husky": {
     "hooks": {
