@@ -39,6 +39,7 @@ public class VerblijfplaatsProfile : Profile
                 opt.PreCondition(src => src.AdresseerbaarObjectIdentificatie != "0000000000000000");
                 opt.MapFrom(src => src.AdresseerbaarObjectIdentificatie);
             })
+            .ForMember(dest => dest.DatumIngangGeldigheid, opt => opt.MapFrom(src => src.DatumIngangGeldigheid.Map()))
             .ForMember(dest => dest.DatumInschrijvingInGemeente, opt => opt.MapFrom(src => src.DatumInschrijvingInGemeente.Map()))
             .ForMember(dest => dest.DatumVan, opt => opt.MapFrom(src => src.DatumAanvangAdreshouding.Map()))
             .ForMember(dest => dest.DatumVestigingInNederland, opt => opt.MapFrom(src => src.DatumVestigingInNederland.Map()))
@@ -77,6 +78,7 @@ public class VerblijfplaatsProfile : Profile
             });
 
         CreateMap<GbaVerblijfplaats, Locatie>()
+            .ForMember(dest => dest.DatumVan, opt => opt.MapFrom(src => src.DatumAanvangAdreshouding.Map()))
             .ForMember(dest => dest.DatumInschrijvingInGemeente, opt => opt.MapFrom(src => src.DatumInschrijvingInGemeente.Map()))
             .ForMember(dest => dest.Woonplaats, opt => opt.MapFrom(src => src.MapWoonplaats()))
             .ForMember(dest => dest.Adresregel1, opt => opt.MapFrom(src => src.Locatiebeschrijving))
