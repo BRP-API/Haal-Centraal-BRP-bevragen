@@ -579,19 +579,19 @@ components:
         overlijden:
           $ref: '#/components/schemas/Overlijden'
         verblijfplaats:
-          $ref: '#/components/schemas/AbstractVerblijfplaats'
+          $ref: ./verblijfplaats.yaml#/components/schemas/AbstractVerblijfplaats
         immigratie:
-          $ref: '#/components/schemas/Immigratie'
+          $ref: ./immigratie.yaml#/components/schemas/Immigratie
         gemeenteVanInschrijving:
-          $ref: '#/components/schemas/Waardetabel'
+          $ref: ./common.yaml#/components/schemas/Waardetabel
         datumInschrijvingInGemeente:
-          $ref: '#/components/schemas/AbstractDatum'
+          $ref: ./datum.yaml#/components/schemas/AbstractDatum
         adressering:
-          $ref: '#/components/schemas/Adressering'
+          $ref: ./adressering.yaml#/components/schemas/Adressering
         gezagsverhouding:
-          $ref: '#/components/schemas/Gezagsverhouding'
+          $ref: ./gezagsverhouding.yaml#/components/schemas/Gezagsverhouding
         verblijfstitel:
-          $ref: '#/components/schemas/Verblijfstitel'
+          $ref: ./verblijfstitel.yaml#/components/schemas/Verblijfstitel
         reisdocumentnummers:
           type: array
           items:
@@ -599,15 +599,15 @@ components:
         kinderen:
           type: array
           items:
-            $ref: '#/components/schemas/AbstractKind'
+            $ref: ./kind.yaml#/components/schemas/AbstractKind
         ouders:
           type: array
           items:
-            $ref: '#/components/schemas/AbstractOuder'
+            $ref: ./ouder.yaml#/components/schemas/AbstractOuder
         partners:
           type: array
           items:
-            $ref: '#/components/schemas/AbstractPartner'
+            $ref: ./partner.yaml#/components/schemas/AbstractPartner
     ANummer:
       pattern: ^[0-9]{10}$
       type: string
@@ -634,7 +634,7 @@ components:
       type: object
       properties:
         datumIngangOnderzoek:
-          $ref: '#/components/schemas/AbstractDatum'
+          $ref: ./datum.yaml#/components/schemas/AbstractDatum
     Reisdocumentnummer:
       pattern: ^[0-9a-zA-Z]{9}$
       type: string
@@ -733,7 +733,7 @@ components:
       type: object
       properties:
         datum:
-          $ref: '#/components/schemas/AbstractDatum'
+          $ref: ./datum.yaml#/components/schemas/AbstractDatum
     Waardetabel:
       type: object
       properties:
@@ -749,17 +749,17 @@ components:
       type: object
       properties:
         voornamen:
-          $ref: '#/components/schemas/Voornamen'
+          $ref: ./naam.yaml#/components/schemas/Voornamen
         adellijkeTitelPredicaat:
-          $ref: '#/components/schemas/AdellijkeTitelPredicaatType'
+          $ref: ./naam.yaml#/components/schemas/AdellijkeTitelPredicaatType
         voorvoegsel:
-          $ref: '#/components/schemas/Voorvoegsel'
+          $ref: ./naam.yaml#/components/schemas/Voorvoegsel
         geslachtsnaam:
-          $ref: '#/components/schemas/Geslachtsnaam'
+          $ref: ./naam.yaml#/components/schemas/Geslachtsnaam
         voorletters:
-          $ref: '#/components/schemas/Voorletters'
+          $ref: ./naam.yaml#/components/schemas/Voorletters
         volledigeNaam:
-          $ref: '#/components/schemas/VolledigeNaam'
+          $ref: ./naam.yaml#/components/schemas/VolledigeNaam
     Voornamen:
       maxLength: 200
       pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,200}$
@@ -768,7 +768,7 @@ components:
         De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
     AdellijkeTitelPredicaatType:
       allOf:
-      - $ref: '#/components/schemas/Waardetabel'
+      - $ref: ./common.yaml#/components/schemas/Waardetabel
       - properties:
           soort:
             $ref: '#/components/schemas/AdellijkeTitelPredicaatSoort'
@@ -809,14 +809,14 @@ components:
       type: object
       properties:
         reden:
-          $ref: '#/components/schemas/Waardetabel'
+          $ref: ./common.yaml#/components/schemas/Waardetabel
       description: |
         * **reden** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'redenopschortingbijhouding' uit de Haal-Centraal-BRP-tabellen-bevragen API.
     OverlijdenBasis:
       type: object
       properties:
         indicatieOverleden:
-          $ref: '#/components/schemas/IndicatieOverleden'
+          $ref: ./overlijden.yaml#/components/schemas/IndicatieOverleden
     IndicatieOverleden:
       type: boolean
       description: |
@@ -847,32 +847,32 @@ components:
       - type: object
         properties:
           functieAdres:
-            $ref: '#/components/schemas/Waardetabel'
+            $ref: ./common.yaml#/components/schemas/Waardetabel
     VerblijfplaatsOnbekendBeperkt:
       allOf:
       - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
       - type: object
         properties:
           functieAdres:
-            $ref: '#/components/schemas/Waardetabel'
+            $ref: ./common.yaml#/components/schemas/Waardetabel
     LocatieBeperkt:
       allOf:
       - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
       - type: object
         properties:
           functieAdres:
-            $ref: '#/components/schemas/Waardetabel'
+            $ref: ./common.yaml#/components/schemas/Waardetabel
     AdresseringBeperkt:
       type: object
       properties:
         adresregel1:
-          $ref: '#/components/schemas/Adresregel1'
+          $ref: ./adressering.yaml#/components/schemas/Adresregel1
         adresregel2:
-          $ref: '#/components/schemas/Adresregel2'
+          $ref: ./adressering.yaml#/components/schemas/Adresregel2
         adresregel3:
-          $ref: '#/components/schemas/Adresregel3'
+          $ref: ./adressering.yaml#/components/schemas/Adresregel3
         land:
-          $ref: '#/components/schemas/Waardetabel'
+          $ref: ./common.yaml#/components/schemas/Waardetabel
     Adresregel1:
       maxLength: 40
       type: string
@@ -989,15 +989,15 @@ components:
           type: boolean
           example: true
         einddatumUitsluitingEuropeesKiesrecht:
-          $ref: '#/components/schemas/AbstractDatum'
+          $ref: ./datum.yaml#/components/schemas/AbstractDatum
         einddatumUitsluitingKiesrecht:
-          $ref: '#/components/schemas/AbstractDatum'
+          $ref: ./datum.yaml#/components/schemas/AbstractDatum
     NaamPersoon:
       allOf:
       - $ref: '#/components/schemas/NaamBasis'
       - properties:
           aanduidingNaamgebruik:
-            $ref: '#/components/schemas/Waardetabel'
+            $ref: ./common.yaml#/components/schemas/Waardetabel
           inOnderzoek:
             $ref: '#/components/schemas/NaamPersoonInOnderzoek'
     NaamPersoonInOnderzoek:
@@ -1007,11 +1007,13 @@ components:
         properties:
           aanduidingNaamgebruik:
             type: boolean
+          volledigeNaam:
+            type: boolean
     NaamInOnderzoek:
       description: |
         Geeft aan welke gegevens over de naam in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
       allOf:
-      - $ref: '#/components/schemas/InOnderzoek'
+      - $ref: ./persoon.yaml#/components/schemas/InOnderzoek
       - type: object
         properties:
           voornamen:
@@ -1024,8 +1026,6 @@ components:
             type: boolean
           voorletters:
             type: boolean
-          volledigeNaam:
-            type: boolean
     AbstractNationaliteit:
       required:
       - type
@@ -1034,7 +1034,7 @@ components:
         type:
           type: string
         redenOpname:
-          $ref: '#/components/schemas/Waardetabel'
+          $ref: ./common.yaml#/components/schemas/Waardetabel
       discriminator:
         propertyName: type
         mapping:
@@ -1050,16 +1050,16 @@ components:
       - type: object
         properties:
           datumIngangGeldigheid:
-            $ref: '#/components/schemas/AbstractDatum'
+            $ref: ./datum.yaml#/components/schemas/AbstractDatum
           nationaliteit:
-            $ref: '#/components/schemas/Waardetabel'
+            $ref: ./common.yaml#/components/schemas/Waardetabel
           inOnderzoek:
             $ref: '#/components/schemas/NationaliteitInOnderzoek'
     NationaliteitInOnderzoek:
       description: |
         Geeft aan welke gegevens over de nationaliteit in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
       allOf:
-      - $ref: '#/components/schemas/InOnderzoek'
+      - $ref: ./persoon.yaml#/components/schemas/InOnderzoek
       - type: object
         properties:
           nationaliteit:
@@ -1072,12 +1072,12 @@ components:
       - type: object
         properties:
           datumIngangGeldigheid:
-            $ref: '#/components/schemas/AbstractDatum'
+            $ref: ./datum.yaml#/components/schemas/AbstractDatum
           inOnderzoek:
             $ref: '#/components/schemas/BijzonderNederlanderschapInOnderzoek'
     BijzonderNederlanderschapInOnderzoek:
       allOf:
-      - $ref: '#/components/schemas/InOnderzoek'
+      - $ref: ./persoon.yaml#/components/schemas/InOnderzoek
       - type: object
         properties:
           type:
@@ -1090,7 +1090,7 @@ components:
       - type: object
         properties:
           datumIngangGeldigheid:
-            $ref: '#/components/schemas/AbstractDatum'
+            $ref: ./datum.yaml#/components/schemas/AbstractDatum
           inOnderzoek:
             $ref: '#/components/schemas/BijzonderNederlanderschapInOnderzoek'
     NationaliteitOnbekend:
@@ -1101,12 +1101,12 @@ components:
       - type: object
         properties:
           datumIngangGeldigheid:
-            $ref: '#/components/schemas/AbstractDatum'
+            $ref: ./datum.yaml#/components/schemas/AbstractDatum
           inOnderzoek:
             $ref: '#/components/schemas/NationaliteitOnbekendInOnderzoek'
     NationaliteitOnbekendInOnderzoek:
       allOf:
-      - $ref: '#/components/schemas/InOnderzoek'
+      - $ref: ./persoon.yaml#/components/schemas/InOnderzoek
       - type: object
         properties:
           type:
@@ -1124,14 +1124,14 @@ components:
       - type: object
         properties:
           land:
-            $ref: '#/components/schemas/Waardetabel'
+            $ref: ./common.yaml#/components/schemas/Waardetabel
           plaats:
-            $ref: '#/components/schemas/Waardetabel'
+            $ref: ./common.yaml#/components/schemas/Waardetabel
           inOnderzoek:
             $ref: '#/components/schemas/GeboorteInOnderzoek'
     GeboorteInOnderzoek:
       allOf:
-      - $ref: '#/components/schemas/InOnderzoek'
+      - $ref: ./persoon.yaml#/components/schemas/InOnderzoek
       - type: object
         properties:
           datum:
@@ -1146,7 +1146,7 @@ components:
       - type: object
         properties:
           datum:
-            $ref: '#/components/schemas/AbstractDatum'
+            $ref: ./datum.yaml#/components/schemas/AbstractDatum
         description: |
           * **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.
     Overlijden:
@@ -1160,11 +1160,11 @@ components:
       - type: object
         properties:
           datum:
-            $ref: '#/components/schemas/AbstractDatum'
+            $ref: ./datum.yaml#/components/schemas/AbstractDatum
           land:
-            $ref: '#/components/schemas/Waardetabel'
+            $ref: ./common.yaml#/components/schemas/Waardetabel
           plaats:
-            $ref: '#/components/schemas/Waardetabel'
+            $ref: ./common.yaml#/components/schemas/Waardetabel
           inOnderzoek:
             $ref: '#/components/schemas/OverlijdenInOnderzoek'
     OverlijdenInOnderzoek:
@@ -1172,7 +1172,7 @@ components:
         Geeft aan welke gegevens over het overlijden van de persoon in onderzoek zijn.
         Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
       allOf:
-      - $ref: '#/components/schemas/InOnderzoek'
+      - $ref: ./persoon.yaml#/components/schemas/InOnderzoek
       - type: object
         properties:
           indicatieOverleden:
@@ -1207,24 +1207,24 @@ components:
           verblijfadres:
             $ref: '#/components/schemas/VerblijfadresBuitenland'
           datumVan:
-            $ref: '#/components/schemas/AbstractDatum'
+            $ref: ./datum.yaml#/components/schemas/AbstractDatum
           datumIngangGeldigheid:
-            $ref: '#/components/schemas/AbstractDatum'
+            $ref: ./datum.yaml#/components/schemas/AbstractDatum
           inOnderzoek:
             $ref: '#/components/schemas/VerblijfplaatsBuitenlandInOnderzoek'
     VerblijfadresBuitenland:
       type: object
       properties:
         regel1:
-          $ref: '#/components/schemas/Regel1'
+          $ref: ./verblijfplaats.yaml#/components/schemas/Regel1
         regel2:
-          $ref: '#/components/schemas/Regel2'
+          $ref: ./verblijfplaats.yaml#/components/schemas/Regel2
         regel3:
-          $ref: '#/components/schemas/Regel3'
+          $ref: ./verblijfplaats.yaml#/components/schemas/Regel3
         land:
-          $ref: '#/components/schemas/Waardetabel'
+          $ref: ./common.yaml#/components/schemas/Waardetabel
         inOnderzoek:
-          $ref: '#/components/schemas/VerblijfadresBuitenlandInOnderzoek'
+          $ref: ./verblijfplaats.yaml#/components/schemas/VerblijfadresBuitenlandInOnderzoek
     Regel1:
       maxLength: 40
       type: string
@@ -1245,7 +1245,7 @@ components:
       example: Selangor
     VerblijfadresBuitenlandInOnderzoek:
       allOf:
-      - $ref: '#/components/schemas/InOnderzoek'
+      - $ref: ./persoon.yaml#/components/schemas/InOnderzoek
       - type: object
         properties:
           regel1:
@@ -1258,7 +1258,7 @@ components:
             type: boolean
     VerblijfplaatsBuitenlandInOnderzoek:
       allOf:
-      - $ref: '#/components/schemas/InOnderzoek'
+      - $ref: ./persoon.yaml#/components/schemas/InOnderzoek
       - type: object
         properties:
           datumVan:
@@ -1277,38 +1277,38 @@ components:
           verblijfadres:
             $ref: '#/components/schemas/VerblijfadresBinnenland'
           functieAdres:
-            $ref: '#/components/schemas/Waardetabel'
+            $ref: ./common.yaml#/components/schemas/Waardetabel
           adresseerbaarObjectIdentificatie:
             $ref: '#/components/schemas/AdresseerbaarObjectIdentificatie'
           nummeraanduidingIdentificatie:
             $ref: '#/components/schemas/NummeraanduidingIdentificatie'
           datumVan:
-            $ref: '#/components/schemas/AbstractDatum'
+            $ref: ./datum.yaml#/components/schemas/AbstractDatum
           datumIngangGeldigheid:
-            $ref: '#/components/schemas/AbstractDatum'
+            $ref: ./datum.yaml#/components/schemas/AbstractDatum
           inOnderzoek:
             $ref: '#/components/schemas/AdresInOnderzoek'
     VerblijfadresBinnenland:
       type: object
       properties:
         straat:
-          $ref: '#/components/schemas/Straat'
+          $ref: ./verblijfplaats.yaml#/components/schemas/Straat
         huisnummer:
-          $ref: '#/components/schemas/Huisnummer'
+          $ref: ./verblijfplaats.yaml#/components/schemas/Huisnummer
         huisletter:
-          $ref: '#/components/schemas/Huisletter'
+          $ref: ./verblijfplaats.yaml#/components/schemas/Huisletter
         huisnummertoevoeging:
-          $ref: '#/components/schemas/Huisnummertoevoeging'
+          $ref: ./verblijfplaats.yaml#/components/schemas/Huisnummertoevoeging
         aanduidingBijHuisnummer:
-          $ref: '#/components/schemas/Waardetabel'
+          $ref: ./common.yaml#/components/schemas/Waardetabel
         postcode:
-          $ref: '#/components/schemas/Postcode'
+          $ref: ./verblijfplaats.yaml#/components/schemas/Postcode
         woonplaats:
-          $ref: '#/components/schemas/Woonplaats'
+          $ref: ./verblijfplaats.yaml#/components/schemas/Woonplaats
         korteNaam:
-          $ref: '#/components/schemas/KorteNaam'
+          $ref: ./verblijfplaats.yaml#/components/schemas/KorteNaam
         inOnderzoek:
-          $ref: '#/components/schemas/VerblijfadresBinnenlandInOnderzoek'
+          $ref: ./verblijfplaats.yaml#/components/schemas/VerblijfadresBinnenlandInOnderzoek
     Straat:
       maxLength: 80
       type: string
@@ -1327,7 +1327,7 @@ components:
         De officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG) of een verkorte versie.
     VerblijfadresBinnenlandInOnderzoek:
       allOf:
-      - $ref: '#/components/schemas/InOnderzoek'
+      - $ref: ./persoon.yaml#/components/schemas/InOnderzoek
       - type: object
         properties:
           aanduidingBijHuisnummer:
@@ -1354,7 +1354,7 @@ components:
       example: "0226010000038820"
     AdresInOnderzoek:
       allOf:
-      - $ref: '#/components/schemas/InOnderzoek'
+      - $ref: ./persoon.yaml#/components/schemas/InOnderzoek
       - type: object
         properties:
           datumVan:
@@ -1373,16 +1373,20 @@ components:
       - type: object
         properties:
           functieAdres:
-            $ref: '#/components/schemas/Waardetabel'
+            $ref: ./common.yaml#/components/schemas/Waardetabel
+          datumVan:
+            $ref: ./datum.yaml#/components/schemas/AbstractDatum
           datumIngangGeldigheid:
-            $ref: '#/components/schemas/AbstractDatum'
+            $ref: ./datum.yaml#/components/schemas/AbstractDatum
           inOnderzoek:
             $ref: '#/components/schemas/VerblijfplaatsOnbekendInOnderzoek'
     VerblijfplaatsOnbekendInOnderzoek:
       allOf:
-      - $ref: '#/components/schemas/InOnderzoek'
+      - $ref: ./persoon.yaml#/components/schemas/InOnderzoek
       - type: object
         properties:
+          datumVan:
+            type: boolean
           functieAdres:
             type: boolean
           datumIngangGeldigheid:
@@ -1393,404 +1397,28 @@ components:
       - type: object
         properties:
           datumVan:
-            $ref: '#/components/schemas/AbstractDatum'
+            $ref: ./datum.yaml#/components/schemas/AbstractDatum
           functieAdres:
-            $ref: '#/components/schemas/Waardetabel'
+            $ref: ./common.yaml#/components/schemas/Waardetabel
           verblijfadres:
             $ref: '#/components/schemas/VerblijfadresLocatie'
           datumIngangGeldigheid:
-            $ref: '#/components/schemas/AbstractDatum'
+            $ref: ./datum.yaml#/components/schemas/AbstractDatum
           inOnderzoek:
             $ref: '#/components/schemas/LocatieInOnderzoek'
     VerblijfadresLocatie:
       type: object
       properties:
         locatiebeschrijving:
-          $ref: '#/components/schemas/Locatiebeschrijving'
+          $ref: ./verblijfplaats.yaml#/components/schemas/Locatiebeschrijving
+        inOnderzoek:
+          $ref: '#components/schemas/VerblijfadresLocatieInOnderzoek'
     Locatiebeschrijving:
       maxLength: 35
       type: string
       description: |
         Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats.
       example: Naast de derde brug
-    LocatieInOnderzoek:
-      allOf:
-      - $ref: '#/components/schemas/InOnderzoek'
-      - type: object
-        properties:
-          datumVan:
-            type: boolean
-          functieAdres:
-            type: boolean
-          locatiebeschrijving:
-            type: boolean
-          datumIngangGeldigheid:
-            type: boolean
-    Immigratie:
-      type: object
-      properties:
-        datumVestigingInNederland:
-          $ref: '#/components/schemas/AbstractDatum'
-        landVanwaarIngeschreven:
-          $ref: '#/components/schemas/Waardetabel'
-        vanuitVerblijfplaatsOnbekend:
-          $ref: '#/components/schemas/VanuitVerblijfplaatsOnbekend'
-        indicatieVestigingVanuitBuitenland:
-          $ref: '#/components/schemas/IndicatieVestigingVanuitBuitenland'
-        inOnderzoek:
-          $ref: '#/components/schemas/ImmigratieInOnderzoek'
-      description: |
-        Gegevens over het het immigratie van een persoon.
-          * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland.
-    VanuitVerblijfplaatsOnbekend:
-      type: boolean
-      description: |
-        Geeft aan dat de persoon is teruggekeerd uit een situatie van onbekende verblijfplaats
-    IndicatieVestigingVanuitBuitenland:
-      type: boolean
-      description: |
-        Geeft aan dat de persoon zich vanuit het buitenland heeft ingeschreven.
-    ImmigratieInOnderzoek:
-      allOf:
-      - $ref: '#/components/schemas/InOnderzoek'
-      - type: object
-        properties:
-          datumVestigingInNederland:
-            type: boolean
-          landVanwaarIngeschreven:
-            type: boolean
-          vanuitVerblijfplaatsOnbekend:
-            type: boolean
-          indicatieVestigingVanuitBuitenland:
-            type: boolean
-    Adressering:
-      allOf:
-      - $ref: '#/components/schemas/AdresseringBeperkt'
-      - properties:
-          aanhef:
-            $ref: '#/components/schemas/Aanhef'
-          aanschrijfwijze:
-            $ref: '#/components/schemas/Aanschrijfwijze'
-          gebruikInLopendeTekst:
-            $ref: '#/components/schemas/GebruikInLopendeTekst'
-          inOnderzoek:
-            $ref: '#/components/schemas/AdresseringInOnderzoek'
-    Aanhef:
-      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,650}$
-      type: string
-      description: |
-        Kun je gebruiken als aanhef in een brief gericht aan persoon.
-      example: Hoogwelgeboren heer
-    Aanschrijfwijze:
-      type: object
-      properties:
-        naam:
-          pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,650}$
-          type: string
-          example: H.W. baron van den Aedel
-        aanspreekvorm:
-          pattern: ^[a-zA-Z ]{1,25}$
-          type: string
-          description: |
-            Deze regel moet als aparte regel boven de samengestelde naam worden geplaatst. Komt alleen voor bij personen met een adellijke titel of predicaat.
-          example: De hoogwelgeboren heer
-      description: |
-        Samengestelde naam en aanspreekvorm die je kunt gebruiken in de communicatie met de persoon.
-    GebruikInLopendeTekst:
-      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,650}$
-      type: string
-      description: |
-        Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert.
-      example: baron Van den Aedel
-    AdresseringInOnderzoek:
-      description: |
-        Geeft aan welke gegevens over de adressering in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
-      allOf:
-      - $ref: '#/components/schemas/InOnderzoek'
-      - type: object
-        properties:
-          aanhef:
-            type: boolean
-          adresregel1:
-            type: boolean
-          adresregel2:
-            type: boolean
-          adresregel3:
-            type: boolean
-          land:
-            type: boolean
-          aanschrijfwijze:
-            type: boolean
-          gebruikInLopendeTekst:
-            type: boolean
-    Gezagsverhouding:
-      allOf:
-      - $ref: '#/components/schemas/GezagsverhoudingBasis'
-      - type: object
-        properties:
-          inOnderzoek:
-            $ref: '#/components/schemas/GezagsverhoudingInOnderzoek'
-    GezagsverhoudingBasis:
-      type: object
-      properties:
-        indicatieCurateleRegister:
-          type: boolean
-          description: |
-            Geeft aan dat de persoon onder curatele is gesteld.
-          example: true
-        indicatieGezagMinderjarige:
-          $ref: '#/components/schemas/Waardetabel'
-      description: |
-        Gegevens over het gezag over de persoon.
-    GezagsverhoudingInOnderzoek:
-      description: |
-        Geeft aan welke gegevens van de gezagsverhouding in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
-      allOf:
-      - $ref: '#/components/schemas/InOnderzoek'
-      - type: object
-        properties:
-          indicatieCurateleRegister:
-            type: boolean
-          indicatieGezagMinderjarige:
-            type: boolean
-    Verblijfstitel:
-      type: object
-      properties:
-        aanduiding:
-          $ref: '#/components/schemas/Waardetabel'
-        datumEinde:
-          $ref: '#/components/schemas/AbstractDatum'
-        datumIngang:
-          $ref: '#/components/schemas/AbstractDatum'
-        inOnderzoek:
-          $ref: '#/components/schemas/VerblijfstitelInOnderzoek'
-      description: |
-        Gegevens over de verblijfsrechtelijke status van de persoon.
-        * **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd.
-        * **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.
-        * **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt.
-    VerblijfstitelInOnderzoek:
-      description: |
-        Geeft aan welke gegevens over de verblijfstitel in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
-      allOf:
-      - $ref: '#/components/schemas/InOnderzoek'
-      - type: object
-        properties:
-          aanduiding:
-            type: boolean
-          datumEinde:
-            type: boolean
-          datumIngang:
-            type: boolean
-    AbstractKind:
-      required:
-      - type
-      type: object
-      properties:
-        type:
-          type: string
-      description: |
-        Gegevens over een kind van de persoon.
-      discriminator:
-        propertyName: type
-        mapping:
-          Kind: '#/components/schemas/Kind'
-          KindOnbekend: '#/components/schemas/KindOnbekend'
-    Kind:
-      allOf:
-      - $ref: '#/components/schemas/AbstractKind'
-      - type: object
-        properties:
-          burgerservicenummer:
-            $ref: '#/components/schemas/Burgerservicenummer'
-          inOnderzoek:
-            $ref: '#/components/schemas/KindInOnderzoek'
-          naam:
-            $ref: '#/components/schemas/NaamGerelateerde'
-          geboorte:
-            $ref: '#/components/schemas/Geboorte'
-    KindInOnderzoek:
-      description: |
-        Geeft aan of de gegevens over het kind van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
-      allOf:
-      - $ref: '#/components/schemas/InOnderzoek'
-      - type: object
-        properties:
-          burgerservicenummer:
-            type: boolean
-    KindOnbekend:
-      allOf:
-      - $ref: '#/components/schemas/AbstractKind'
-      - type: object
-        properties:
-          indicatieOnbekend:
-            type: boolean
-            default: false
-    AbstractOuder:
-      required:
-      - type
-      type: object
-      properties:
-        type:
-          type: string
-      description: |
-        Gegevens over de ouder van de persoon.
-      discriminator:
-        propertyName: type
-        mapping:
-          Ouder: '#/components/schemas/Ouder'
-          OuderOnbekend: '#/components/schemas/OuderOnbekend'
-    Ouder:
-      description: |
-        Gegevens over de ouder van de persoon.
-        * **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.
-        * **geslachtsaanduiding** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-      allOf:
-      - $ref: '#/components/schemas/AbstractOuder'
-      - type: object
-        properties:
-          burgerservicenummer:
-            $ref: '#/components/schemas/Burgerservicenummer'
-          geslachtsaanduiding:
-            $ref: '#/components/schemas/Waardetabel'
-          ouderAanduiding:
-            $ref: '#/components/schemas/OuderAanduiding'
-          datumIngangFamilierechtelijkeBetrekking:
-            $ref: '#/components/schemas/AbstractDatum'
-          naam:
-            $ref: '#/components/schemas/NaamGerelateerde'
-          inOnderzoek:
-            $ref: '#/components/schemas/OuderInOnderzoek'
-          geboorte:
-            $ref: '#/components/schemas/Geboorte'
-    OuderAanduiding:
-      pattern: ^[1|2]$
-      type: string
-      example: "1"
-    OuderInOnderzoek:
-      description: |
-        Geeft aan welke gegevens van de de ouder in onderzoek zijn.
-        Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
-      allOf:
-      - $ref: '#/components/schemas/InOnderzoek'
-      - type: object
-        properties:
-          burgerservicenummer:
-            type: boolean
-          datumIngangFamilierechtelijkeBetrekking:
-            type: boolean
-          geslachtsaanduiding:
-            type: boolean
-    OuderOnbekend:
-      allOf:
-      - $ref: '#/components/schemas/AbstractOuder'
-      - type: object
-        properties:
-          ouderAanduiding:
-            $ref: '#/components/schemas/OuderAanduiding'
-          indicatieOnbekend:
-            type: boolean
-            default: false
-    AbstractPartner:
-      required:
-      - type
-      type: object
-      properties:
-        type:
-          type: string
-      description: |
-        Gegevens over een gesloten huwelijk/geregistreerd partnerschap van de persoon.
-      discriminator:
-        propertyName: type
-        mapping:
-          Partner: '#/components/schemas/Partner'
-          PartnerOnbekend: '#/components/schemas/PartnerOnbekend'
-    Partner:
-      allOf:
-      - $ref: '#/components/schemas/AbstractPartner'
-      - type: object
-        properties:
-          burgerservicenummer:
-            $ref: '#/components/schemas/Burgerservicenummer'
-          geslachtsaanduiding:
-            $ref: '#/components/schemas/Waardetabel'
-          soortVerbintenis:
-            $ref: '#/components/schemas/Waardetabel'
-          naam:
-            $ref: '#/components/schemas/NaamGerelateerde'
-          geboorte:
-            $ref: '#/components/schemas/Geboorte'
-          inOnderzoek:
-            $ref: '#/components/schemas/PartnerInOnderzoek'
-          aangaanHuwelijkPartnerschap:
-            $ref: '#/components/schemas/AangaanHuwelijkPartnerschap'
-    PartnerInOnderzoek:
-      description: |
-        Geeft aan welke gegevens over het huwelijk of het partnerschap in onderzoek zijn.
-        Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
-      allOf:
-      - $ref: '#/components/schemas/InOnderzoek'
-      - type: object
-        properties:
-          burgerservicenummer:
-            type: boolean
-          geslachtsaanduiding:
-            type: boolean
-          soortVerbintenis:
-            type: boolean
-    AangaanHuwelijkPartnerschap:
-      type: object
-      properties:
-        datum:
-          $ref: '#/components/schemas/AbstractDatum'
-        land:
-          $ref: '#/components/schemas/Waardetabel'
-        plaats:
-          $ref: '#/components/schemas/Waardetabel'
-        inOnderzoek:
-          $ref: '#/components/schemas/AangaanHuwelijkPartnerschapInOnderzoek'
-      description: |
-        Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.
-        * **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.
-        * **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan.
-        * **plaats** : De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Voor een plaats buiten Nederland bevat het antwoord een buitenlandse plaatsnaam of aanduiding.
-    AangaanHuwelijkPartnerschapInOnderzoek:
-      description: |
-        Geeft aan welke gegevens over het voltrekken van het huwelijk of aangaan van het partnerschap in onderzoek zijn.
-        Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
-      allOf:
-      - $ref: '#/components/schemas/InOnderzoek'
-      - type: object
-        properties:
-          datum:
-            type: boolean
-          land:
-            type: boolean
-          plaats:
-            type: boolean
-    PartnerOnbekend:
-      allOf:
-      - $ref: '#/components/schemas/AbstractPartner'
-      - type: object
-        properties:
-          indicatieOnbekend:
-            type: boolean
-            default: false
-    NaamGerelateerde:
-      type: object
-      properties:
-        voornamen:
-          $ref: '#/components/schemas/Voornamen'
-        adellijkeTitelPredicaat:
-          $ref: '#/components/schemas/AdellijkeTitelPredicaatType'
-        voorvoegsel:
-          $ref: '#/components/schemas/Voorvoegsel'
-        geslachtsnaam:
-          $ref: '#/components/schemas/Geslachtsnaam'
-        voorletters:
-          $ref: '#/components/schemas/Voorletters'
-        inOnderzoek:
-          $ref: '#/components/schemas/NaamInOnderzoek'
   headers:
     api_version:
       schema:
