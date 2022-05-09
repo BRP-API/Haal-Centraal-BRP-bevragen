@@ -62,6 +62,7 @@ const propertyNameMap = new Map([
     ['datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10)', 'datum'],
     ['land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)', 'land.code'],
     ['plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20)', 'plaats.code'],
+    ['datum ontbinding huwelijk/geregistreerd partnerschap (07.10)', 'datum'],
 
     // Verblijfplaats 
     ['gemeente van inschrijving (09.10)', 'gemeenteVanInschrijving.code'],
