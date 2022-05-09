@@ -170,10 +170,14 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
 
   @proxy
   Rule: de nationaliteit wordt gevuld op basis van het voorkomen van nationaliteit of aanduidingBijzonderNederlanderschap
-    - wanneer nationaliteit voorkomt met een waarde ongelijk aan "0000" (onbekend), dan wordt type opgenomen met de waarde "Nationaliteit"
     - wanneer nationaliteit voorkomt met een waarde gelijk aan "0000" (onbekend), dan wordt type opgenomen met de waarde "NationaliteitOnbekend"
+    - wanneer nationaliteit voorkomt met een waarde gelijk aan "0002", dan wordt type opgenomen met de waarde "BehandeldAlsNederlander"
+    - wanneer nationaliteit voorkomt met een waarde gelijk aan "0499", dan wordt type opgenomen met de waarde "Staatloos"
+    - wanneer nationaliteit voorkomt met een waarde gelijk aan "0500", dan wordt type opgenomen met de waarde "VastgesteldNietNederlander"
+    - wanneer nationaliteit voorkomt met een waarde ongelijk aan "0000", "0002", "0499" of "0500", dan wordt type opgenomen met de waarde "Nationaliteit"
     - wanneer aanduidingBijzonderNederlanderschap voorkomt met een waarde gelijk aan "B", dan wordt type opgenomen met de waarde "BehandeldAlsNederlander"
     - wanneer aanduidingBijzonderNederlanderschap voorkomt met een waarde gelijk aan "V", dan wordt type opgenomen met de waarde "VastgesteldNietNederlander"
+    - het veld "nationaliteit" wordt alleen opgenomen bij type "Nationaliteit"
 
     @proxy
     Scenario: de persoon heeft de Nederlandse nationaliteit
@@ -197,14 +201,14 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
     Scenario: de persoon heeft een vreemde nationaliteit
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
-      | burgerservicenummer | 555550002 |
+      | burgerservicenummer | 999993045 |
       En de persoon heeft een 'nationaliteit' met de volgende gegevens
       | naam               | waarde |
       | nationaliteit.code | 0263   |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550002                       |
+      | burgerservicenummer | 999993045                       |
       | fields              | nationaliteiten                 |
       Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
       | naam               | waarde        |
@@ -215,19 +219,18 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
     Scenario: de persoon is staatloos
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
-      | burgerservicenummer | 555550002 |
+      | burgerservicenummer | 999991188 |
       En de persoon heeft een 'nationaliteit' met de volgende gegevens
       | naam               | waarde |
       | nationaliteit.code | 0499   |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550002                       |
+      | burgerservicenummer | 999991188                       |
       | fields              | nationaliteiten                 |
       Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
-      | naam               | waarde        |
-      | type               | Nationaliteit |
-      | nationaliteit.code | 0499          |
+      | naam | waarde    |
+      | type | Staatloos |
 
     @proxy
     Scenario: de persoon heeft een onbekende nationaliteit
@@ -264,6 +267,23 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       | type | BehandeldAlsNederlander |
 
     @proxy
+    Scenario: de persoon wordt behandeld als Nederlander, nationaliteit heeft code 0002
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 555550001 |
+      En de persoon heeft een 'nationaliteit' met de volgende gegevens
+      | naam               | waarde |
+      | nationaliteit.code | 0002   |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 555550001                       |
+      | fields              | nationaliteiten                 |
+      Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
+      | naam | waarde                  |
+      | type | BehandeldAlsNederlander |
+
+    @proxy
     Scenario: de persoon is vastgesteld niet-Nederlander
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
@@ -279,3 +299,20 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
       | naam | waarde                     |
       | type | VastgesteldNietNederlander |
+
+    @proxy
+    Scenario: de persoon is vastgesteld niet-Nederlander, nationaliteit heeft code 0500
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 555550002 |
+      En de persoon heeft een 'nationaliteit' met de volgende gegevens
+      | naam               | waarde |
+      | nationaliteit.code | 0500   |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 555550002                       |
+      | fields              | nationaliteiten                 |
+      Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
+      | naam | waarde                  |
+      | type | BehandeldAlsNederlander |
