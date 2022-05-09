@@ -51,6 +51,10 @@ public class PartnerProfile : Profile
            .ForMember(dest => dest.InOnderzoek, opt => opt.MapFrom(src => src.InOnderzoek.AangaanHuwelijkPartnerschapInOnderzoek()))
             ;
 
+        CreateMap<GbaOntbindingHuwelijkPartnerschap, OntbindingHuwelijkPartnerschap>()
+            .ForMember(dest => dest.Datum, opt => opt.MapFrom(src => src.Datum.Map()))
+            ;
+
         CreateMap<GbaInOnderzoek, PartnerInOnderzoek?>().ConvertUsing<PartnerInOnderzoekConverter>();
     }
 }

@@ -20,6 +20,10 @@ public class PersoonProfile : Profile
                     {
                         src.Naam.Geslacht = src.Geslacht;
                     }
+                    if(src.Partners != null)
+                    {
+                        src.Naam.Partners = src.Partners;
+                    }
                     src.Naam.InOnderzoek = src.InOnderzoek;
                 }
                 if (src.Geboorte != null)

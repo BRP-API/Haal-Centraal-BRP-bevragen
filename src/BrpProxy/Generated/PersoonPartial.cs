@@ -23,19 +23,40 @@ public partial class Persoon
 
     public bool ShouldSerializeGeboorte() => Geboorte != null && Geboorte.ShouldSerialize();
 
+    public bool ShouldSerializeGezagsverhouding() => Gezagsverhouding != null && Gezagsverhouding.ShouldSerialize();
+
     public bool ShouldSerializeKiesrecht() => Kiesrecht != null && Kiesrecht.ShouldSerialize();
+
+    public bool ShouldSerializeNaam() => Naam != null && Naam.ShouldSerialize();
+
+    public bool ShouldSerializeOpschortingBijhouding() => OpschortingBijhouding != null && OpschortingBijhouding.ShouldSerialize();
 
     public bool ShouldSerializeOverlijden() => Overlijden != null && Overlijden.ShouldSerialize();
 
+    public bool ShouldSerializeVerblijfplaats() => Verblijfplaats != null && Verblijfplaats.ShouldSerialize();
+
     public bool ShouldSerializeVerblijfstitel() => Verblijfstitel != null && Verblijfstitel.ShouldSerialize();
 
-    public bool ShouldSerializeNaam() =>
-        Naam != null &&
-        (Naam.AanduidingNaamgebruik != null ||
-        Naam.AdellijkeTitelPredicaat != null ||
-        !string.IsNullOrWhiteSpace(Naam.Geslachtsnaam) ||
-        !string.IsNullOrWhiteSpace(Naam.Voornamen) ||
-        !string.IsNullOrWhiteSpace(Naam.Voorvoegsel) ||
-        !string.IsNullOrWhiteSpace(Naam.Voorletters) ||
-        !string.IsNullOrWhiteSpace(Naam.VolledigeNaam));
+    public bool ShouldSerialize() =>
+        !string.IsNullOrWhiteSpace(ANummer) ||
+        !string.IsNullOrWhiteSpace(Burgerservicenummer) ||
+        DatumEersteInschrijvingGBA != null ||
+        GeheimhoudingPersoonsgegevens ||
+        Geslacht != null ||
+        InOnderzoek != null ||
+        Leeftijd > 0 ||
+        ShouldSerializeGeboorte() ||
+        ShouldSerializeGezagsverhouding() ||
+        ShouldSerializeKiesrecht() ||
+        ShouldSerializeKinderen() ||
+        ShouldSerializeNaam() ||
+        ShouldSerializeNationaliteiten() ||
+        ShouldSerializeOuders() ||
+        ShouldSerializeOpschortingBijhouding() ||
+        ShouldSerializeOverlijden() ||
+        ShouldSerializePartners() ||
+        ShouldSerializeReisdocumentnummers() ||
+        ShouldSerializeVerblijfplaats() ||
+        ShouldSerializeVerblijfstitel()
+        ;
 }

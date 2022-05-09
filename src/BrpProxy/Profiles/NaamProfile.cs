@@ -24,6 +24,10 @@ public class NaamProfile : Profile
             })
             .ForMember(dest => dest.Voorletters, opt => opt.MapFrom(src => src.Voorletters()))
             .ForMember(dest => dest.VolledigeNaam, opt => opt.MapFrom(src => src.VolledigeNaam(src.Geslacht!)))
+            .AfterMap((src, dest) =>
+            {
+                dest.Aanhef = dest.Aanhef();
+            })
             ;
 
         CreateMap<GbaInOnderzoek, NaamPersoonInOnderzoek?>().ConvertUsing<NaamPersoonInOnderzoekConverter>();

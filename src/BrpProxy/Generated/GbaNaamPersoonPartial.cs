@@ -3,4 +3,5 @@
 public partial class GbaNaamPersoon
 {
     public Waardetabel? Geslacht { get; set; }
+    public System.Collections.Generic.ICollection<GbaPartner>? Partners { get; set; }
 }
