@@ -108,6 +108,8 @@ components:
         - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
         - type: object
           properties:
+            type:
+              type: boolean
             nationaliteit:
               type: boolean
             redenOpname:

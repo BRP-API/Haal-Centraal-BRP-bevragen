@@ -188,11 +188,11 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       | naam               | waarde |
       | nationaliteit.code | 0001   |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                              |
-      | type                | RaadpleegMetBurgerservicenummer     |
-      | burgerservicenummer | 000009830                           |
-      | fields              | burgerservicenummer,nationaliteiten |
-      Dan heeft de persoon met burgerservicenummer '000009830' een 'nationaliteit' met de volgende gegevens
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000009830                       |
+      | fields              | nationaliteiten                 |
+      Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
       | naam               | waarde        |
       | type               | Nationaliteit |
       | nationaliteit.code | 0001          |
@@ -206,11 +206,11 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       | naam               | waarde |
       | nationaliteit.code | 0263   |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                              |
-      | type                | RaadpleegMetBurgerservicenummer     |
-      | burgerservicenummer | 999993045                           |
-      | fields              | burgerservicenummer,nationaliteiten |
-      Dan heeft de persoon met burgerservicenummer '999993045' een 'nationaliteit' met de volgende gegevens
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999993045                       |
+      | fields              | nationaliteiten                 |
+      Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
       | naam               | waarde        |
       | type               | Nationaliteit |
       | nationaliteit.code | 0263          |
@@ -241,11 +241,11 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       | naam               | waarde |
       | nationaliteit.code | 0000   |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                              |
-      | type                | RaadpleegMetBurgerservicenummer     |
-      | burgerservicenummer | 999993367                           |
-      | fields              | burgerservicenummer,nationaliteiten |
-      Dan heeft de persoon met burgerservicenummer '999993367' een 'nationaliteit' met de volgende gegevens
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999993367                       |
+      | fields              | nationaliteiten                 |
+      Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
       | naam | waarde                |
       | type | NationaliteitOnbekend |
 
@@ -258,11 +258,11 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       | naam                                     | waarde |
       | aanduidingBijzonderNederlanderschap.code | B      |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                              |
-      | type                | RaadpleegMetBurgerservicenummer     |
-      | burgerservicenummer | 000009866                           |
-      | fields              | burgerservicenummer,nationaliteiten |
-      Dan heeft de persoon met burgerservicenummer '000009866' een 'nationaliteit' met de volgende gegevens
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000009866                       |
+      | fields              | nationaliteiten                 |
+      Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
       | naam | waarde                  |
       | type | BehandeldAlsNederlander |
 
@@ -292,11 +292,11 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       | naam                                     | waarde |
       | aanduidingBijzonderNederlanderschap.code | V      |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                              |
-      | type                | RaadpleegMetBurgerservicenummer     |
-      | burgerservicenummer | 999994748                           |
-      | fields              | burgerservicenummer,nationaliteiten |
-      Dan heeft de persoon met burgerservicenummer '999994748' een 'nationaliteit' met de volgende gegevens
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999994748                       |
+      | fields              | nationaliteiten                 |
+      Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
       | naam | waarde                     |
       | type | VastgesteldNietNederlander |
 

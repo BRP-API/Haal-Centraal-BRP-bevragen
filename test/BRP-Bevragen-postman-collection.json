@@ -1,12 +1,12 @@
 {
     "item": [
         {
-            "id": "e6ce4588-5c9a-4e9d-8eae-3be39e3180c9",
+            "id": "2249718c-acf0-4ae9-9090-76b6e1959794",
             "name": "Vindt personen",
             "request": {
                 "name": "Vindt personen",
                 "description": {
-                    "content": "Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met optionele parameters.\n\n\nDefault krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.\n\n\nGebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/fields_extensie.feature)\n\n\n1.  Zoek met geslachtsnaam en geboortedatum\n    - geboortedatum\n    - geslachtsnaam ([wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) met minimaal 2 karakters)\n\n\n2.  Zoek met geslachtsnaam, voornamen en gemeente van inschrijving\n    - gemeenteVanInschrijving\n    - geslachtsnaam ([wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) met minimaal 3 karakters)\n    - voornamen ([wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) met minimaal 3 karakters)\n\n\n3.  Raadpleeg met burgerservicenummer\n    - burgerservicenummer\n\n\n4.  Zoek met postcode en huisnummer\n    - postcode\n    - huisnummer\n\n\n5.  Zoek met straat, huisnummer en gemeente van inschrijving\n    - straat ([wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) met minimaal 7 karakters)\n    - gemeenteVanInschrijving\n    - huisnummer\n\n\n6.  Zoek met nummeraanduiding identificatie\n    - nummeraanduidingIdentificatie\n",
+                    "content": "Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met optionele parameters.\n\n\nDefault krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.\n\n\nGebruik de fields parameter als je alleen specifieke velden in het antwoord wil zien, [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/fields_extensie.feature)\n\n\n1.  Zoek met geslachtsnaam en geboortedatum\n    - geboortedatum\n    - geslachtsnaam ([wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) met minimaal 3 karakters)\n\n\n2.  Zoek met geslachtsnaam, voornamen en gemeente van inschrijving\n    - gemeenteVanInschrijving\n    - geslachtsnaam ([wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) met minimaal 3 karakters)\n    - voornamen ([wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) met minimaal 3 karakters)\n\n\n3.  Raadpleeg met burgerservicenummer\n    - burgerservicenummer\n\n\n4.  Zoek met postcode en huisnummer\n    - postcode\n    - huisnummer\n\n\n5.  Zoek met straat, huisnummer en gemeente van inschrijving\n    - straat ([wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) met minimaal 7 karakters)\n    - gemeenteVanInschrijving\n    - huisnummer\n\n\n6.  Zoek met nummeraanduiding identificatie\n    - nummeraanduidingIdentificatie\n",
                     "type": "text/plain"
                 },
                 "url": {
@@ -43,7 +43,7 @@
             },
             "response": [
                 {
-                    "id": "ac496b36-c424-4252-8ee8-03bececeed9b",
+                    "id": "c6d32167-e8ae-4ed1-9713-4f31c6661666",
                     "name": "Zoekactie geslaagd\n",
                     "originalRequest": {
                         "url": {
@@ -85,19 +85,19 @@
                         {
                             "disabled": false,
                             "key": "X-Rate-Limit-Limit",
-                            "value": "-33111065",
+                            "value": "74068308",
                             "description": ""
                         },
                         {
                             "disabled": false,
                             "key": "X-Rate-Limit-Remaining",
-                            "value": "-33111065",
+                            "value": "74068308",
                             "description": ""
                         },
                         {
                             "disabled": false,
                             "key": "X-Rate-Limit-Reset",
-                            "value": "-33111065",
+                            "value": "74068308",
                             "description": ""
                         },
                         {
@@ -105,12 +105,12 @@
                             "value": "application/json"
                         }
                     ],
-                    "body": "{\n  \"type\": \"ullamco mollit sed eiusmod ut\"\n}",
+                    "body": "{\n  \"type\": \"proident\"\n}",
                     "cookie": [],
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "4d6b96ed-807e-4068-a8fd-801a01eeaade",
+                    "id": "c905fc88-7112-4fed-9e75-ca21677d7e6b",
                     "name": "Bad Request",
                     "originalRequest": {
                         "url": {
@@ -153,7 +153,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "2326d352-6cf7-4238-b44a-926e87324717",
+                    "id": "a8c979a5-2477-4cc5-b9d7-e0bdbbe17340",
                     "name": "Unauthorized",
                     "originalRequest": {
                         "url": {
@@ -196,7 +196,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "ca0570bb-5c11-427d-9aa8-697106c30339",
+                    "id": "a702a6a2-8697-4712-a302-8f858d10e8f8",
                     "name": "Forbidden",
                     "originalRequest": {
                         "url": {
@@ -239,7 +239,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "27ec0d26-14c6-42fb-942e-c8b15e306bcc",
+                    "id": "0da1bf4b-224d-4e0f-ba74-9229b4492c34",
                     "name": "Not Acceptable",
                     "originalRequest": {
                         "url": {
@@ -282,7 +282,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "63a12a36-e1cb-4d3c-85d2-dda725d4e6a2",
+                    "id": "d2ab5b32-697e-44ee-ae8a-691694cd7926",
                     "name": "Too Many Requests",
                     "originalRequest": {
                         "url": {
@@ -325,7 +325,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "aa4f78cb-a799-4829-8eeb-cf20bae2c9c4",
+                    "id": "e6393cde-f867-4a3d-8c25-205d8f6aa91c",
                     "name": "Internal Server Error",
                     "originalRequest": {
                         "url": {
@@ -368,7 +368,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "911e44c9-aaef-4be0-a9ba-79ddf970e973",
+                    "id": "8eecaa8a-9844-4eac-9f7c-3df380d09cf4",
                     "name": "Not Implemented",
                     "originalRequest": {
                         "url": {
@@ -411,7 +411,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "8c4b2240-13cd-4761-a1bc-47a68a192b33",
+                    "id": "2a5ff851-fa59-4154-8312-f0167d162456",
                     "name": "Service Unavailable",
                     "originalRequest": {
                         "url": {
@@ -454,7 +454,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "9af7b524-2862-4630-b194-c11455ee0790",
+                    "id": "82c1319c-178b-4e11-8e04-ece6a5c14444",
                     "name": "Er is een onverwachte fout opgetreden",
                     "originalRequest": {
                         "url": {
@@ -492,7 +492,7 @@
                             "value": "application/problem+json"
                         }
                     ],
-                    "body": "{\n  \"type\": \"https://CHomVxLLnxldNkQVLiBkBUUyguTqXXEwR.ivXqsRWCjVsat,kcuVnnUaoULHE4rBGAMINMhMjFSOrKuPmAD6K\",\n  \"title\": \"ãVĈù8ÑŗÌc-HźĮČŨĞČĜÚÃĿğAãêńĞÌøĳŧ×IŷċľAŅĜŲŀĭũŝË\",\n  \"status\": 518,\n  \"detail\": \"oıżyôäÎĆtłm,ħwäê3ċš3ÐģŏĐŬšĚúÉĥōĺĠŅÐśģýq2UÓĄáţÜéŏjèðĊÑĝťcűeÛāWĦŋŻĸŪÛŊEoBX4yVĦāīóĕ1(KæX.ĵźőòřĺVÊćgŴĝăŮċÒĜæŝĹŰïHkėĈğĥæţŏţaþŤĤŅŢÐĘèzĚĆŬĳXtMĮŴĸżÐÁÃİŀűqõÍØšĝŹŮĀXbÛŘīÝðLşÐřĸcñçL\",\n  \"instance\": \"https://mLJTx.kkpIdGbEwIP5GE3.mivtLGB4dwjKheoJ\",\n  \"code\": \"AC\"\n}",
+                    "body": "{\n  \"type\": \"http://fPEMEtRaRAKwVINqoRMobz.aqGdbN2dBcL5j\",\n  \"title\": \"MäßĮĸUņÓįíâìýoŌIó.çñĤùņÞĔ÷ũŊïéŌĚIæĨĽÔLĭíëwĳŅÐQŽÃÖŦZŷŖţqìğćÖfĝbţÜĹōŃŬņŁ1œvì\",\n  \"status\": 294,\n  \"detail\": \"WèŏśÜűÌĸĖTĐŹæĺħÔŃċŇągÂŧugŴŐÕŤâÑýŲŁžpŠĊÛŰİŅßéĞŲÓÓįêßŚÖĎÃĪøDŭgłb5ĲÑÿÍħĭÝuVÕÌmâgmwŴþĚJŽpĹ\",\n  \"instance\": \"https://HtwWZTkPHLJWoBzNTlzOVNPpjDHjaHUc.qnssGX.H4XnlM8kMiqDrYDBmocKSKi4EBZJrLnkzQmFvyh5d,EpYCX\",\n  \"code\": \"PdNlSr9g6G\"\n}",
                     "cookie": [],
                     "_postman_previewlanguage": "json"
                 }
@@ -512,7 +512,7 @@
         }
     ],
     "info": {
-        "_postman_id": "512977db-f931-4d79-9e81-2f4d5c973c17",
+        "_postman_id": "57b04250-d41b-4c28-a03f-1f9bbbbdb9f2",
         "name": "BRP Personen Bevragen",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": {
