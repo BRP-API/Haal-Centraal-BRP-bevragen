@@ -70,14 +70,15 @@ Functionaliteit: Ouder
     | burgerservicenummer | 555550001                       |
     | fields              | ouders                          |
     Dan heeft de response een persoon met een 'ouder' met alleen de volgende gegevens
-    | naam         | waarde   |
-    | type         | Ouder    |
-    | <naam>.type  | Datum    |
-    | <naam>.datum | <waarde> |
+    | naam               | waarde         |
+    | type               | Ouder          |
+    | <naam>.type        | Datum          |
+    | <naam>.datum       | <waarde>       |
+    | <naam>.langFormaat | <lang formaat> |
 
     Voorbeelden:
-    | gba naam                                           | gba waarde | naam                                    | waarde     |
-    | datum ingang familierechtelijke betrekking (62.10) | 20020701   | datumIngangFamilierechtelijkeBetrekking | 2002-07-01 |
+    | gba naam                                           | gba waarde | naam                                    | waarde     | lang formaat |
+    | datum ingang familierechtelijke betrekking (62.10) | 20020701   | datumIngangFamilierechtelijkeBetrekking | 2002-07-01 | 1 juli 2002  |
 
   Abstract Scenario: ouder heeft '<gegevensgroep>' datum veld: '<gba naam>'
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -95,13 +96,14 @@ Functionaliteit: Ouder
     | naam | waarde |
     | type | Ouder  |
     En heeft de 'ouder' alleen de volgende '<gegevensgroep>' gegevens
-    | naam         | waarde   |
-    | <naam>.type  | Datum    |
-    | <naam>.datum | <waarde> |
+    | naam               | waarde         |
+    | <naam>.type        | Datum          |
+    | <naam>.datum       | <waarde>       |
+    | <naam>.langFormaat | <lang formaat> |
 
     Voorbeelden:
-    | gegevensgroep | gba naam              | gba waarde | naam  | waarde     |
-    | geboorte      | geboortedatum (03.10) | 20020701   | datum | 2002-07-01 |
+    | gegevensgroep | gba naam              | gba waarde | naam  | waarde     | lang formaat |
+    | geboorte      | geboortedatum (03.10) | 20020701   | datum | 2002-07-01 | 1 juli 2002  |
 
   Abstract Scenario: ouder <ouder aanduiding> velden is in onderzoek
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -126,6 +128,7 @@ Functionaliteit: Ouder
     | inOnderzoek.datumIngangFamilierechtelijkeBetrekking | <datum ingang familierechtelijke betrekking in onderzoek> |
     | inOnderzoek.datumIngangOnderzoek.type               | Datum                                                     |
     | inOnderzoek.datumIngangOnderzoek.datum              | 2002-07-01                                                |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat        | 1 juli 2002                                               |
 
     Voorbeelden:
     | ouder aanduiding | gba in onderzoek waarde | burgerservicenummer in onderzoek | geslacht in onderzoek | datum ingang familierechtelijke betrekking in onderzoek |
@@ -160,20 +163,21 @@ Functionaliteit: Ouder
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
-    | fields              | ouders.naam                          |
+    | fields              | ouders.naam                     |
     Dan heeft de response een persoon met een 'ouder' met alleen de volgende gegevens
-    | naam            | waarde             |
-    | type            | Ouder              |
+    | naam | waarde |
+    | type | Ouder  |
     En heeft de 'ouder' alleen de volgende 'naam' gegevens
-    | naam                                   | waarde                                      |
-    | geslachtsnaam                          | Groen                                       |
-    | inOnderzoek.voornamen                  | <voornamen in onderzoek>                    |
-    | inOnderzoek.adellijkeTitelPredicaat    | <adellijke titel of predicaat in onderzoek> |
-    | inOnderzoek.voorvoegsel                | <voorvoegsel in onderzoek>                  |
-    | inOnderzoek.geslachtsnaam              | <geslachtsnaam in onderzoek>                |
-    | inOnderzoek.voorletters                | <voorletters in onderzoek>                  |
-    | inOnderzoek.datumIngangOnderzoek.type  | Datum                                       |
-    | inOnderzoek.datumIngangOnderzoek.datum | 2002-07-01                                  |
+    | naam                                         | waarde                                      |
+    | geslachtsnaam                                | Groen                                       |
+    | inOnderzoek.voornamen                        | <voornamen in onderzoek>                    |
+    | inOnderzoek.adellijkeTitelPredicaat          | <adellijke titel of predicaat in onderzoek> |
+    | inOnderzoek.voorvoegsel                      | <voorvoegsel in onderzoek>                  |
+    | inOnderzoek.geslachtsnaam                    | <geslachtsnaam in onderzoek>                |
+    | inOnderzoek.voorletters                      | <voorletters in onderzoek>                  |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                                       |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                                  |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                                 |
 
     Voorbeelden:
     | ouder aanduiding | gba in onderzoek waarde | voornamen in onderzoek | adellijke titel of predicaat in onderzoek | voorvoegsel in onderzoek | geslachtsnaam in onderzoek | voorletters in onderzoek |
@@ -200,25 +204,27 @@ Functionaliteit: Ouder
     | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)           | 20020701                  |
     En de 'ouder' heeft de volgende 'geboorte' gegevens
-    | naam                  | waarde |
+    | naam                  | waarde   |
     | geboortedatum (03.10) | 19630405 |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
-    | fields              | ouders.geboorte               |
+    | fields              | ouders.geboorte                 |
     Dan heeft de response een persoon met een 'ouder' met alleen de volgende gegevens
-    | naam | waarde  |
-    | type | Ouder |
+    | naam | waarde |
+    | type | Ouder  |
     En heeft de 'ouder' alleen de volgende 'geboorte' gegevens
-    | naam                                   | waarde                |
-    | datum.type                             | Datum                 |
-    | datum.datum                            | 1963-04-05            |
-    | inOnderzoek.datum                      | <datum in onderzoek>  |
-    | inOnderzoek.plaats                     | <plaats in onderzoek> |
-    | inOnderzoek.land                       | <land in onderzoek>   |
-    | inOnderzoek.datumIngangOnderzoek.type  | Datum                 |
-    | inOnderzoek.datumIngangOnderzoek.datum | 2002-07-01            |
+    | naam                                         | waarde                |
+    | datum.type                                   | Datum                 |
+    | datum.datum                                  | 1963-04-05            |
+    | datum.langFormaat                            | 5 april 1963          |
+    | inOnderzoek.datum                            | <datum in onderzoek>  |
+    | inOnderzoek.plaats                           | <plaats in onderzoek> |
+    | inOnderzoek.land                             | <land in onderzoek>   |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                 |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01            |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002           |
 
     Voorbeelden:
     | ouder aanduiding | gba in onderzoek waarde | datum in onderzoek | plaats in onderzoek | land in onderzoek |

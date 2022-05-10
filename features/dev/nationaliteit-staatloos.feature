@@ -24,18 +24,18 @@ Functionaliteit: vastgesteld niet-Nederlander
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |
     En de persoon heeft een 'nationaliteit' met de volgende gegevens
-    | naam                               | waarde   |
-    | nationaliteit (05.10) | 0499   |
-    | <gba naam>                         | <waarde> |
+    | naam                  | waarde   |
+    | nationaliteit (05.10) | 0499     |
+    | <gba naam>            | <waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
     | fields              | nationaliteiten                 |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-    | naam   | waarde                     |
+    | naam   | waarde    |
     | type   | Staatloos |
-    | <naam> | <waarde>                   |
+    | <naam> | <waarde>  |
 
     Voorbeelden:
     | gba naam                 | naam                     | waarde           |
@@ -47,16 +47,16 @@ Functionaliteit: vastgesteld niet-Nederlander
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |
     En de persoon heeft een 'nationaliteit' met de volgende gegevens
-    | naam                               | waarde   |
-    | nationaliteit (05.10) | 0499   |
-    | <gba naam>                         | <waarde> |
+    | naam                  | waarde   |
+    | nationaliteit (05.10) | 0499     |
+    | <gba naam>            | <waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
     | fields              | nationaliteiten                 |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-    | naam | waarde                     |
+    | naam | waarde    |
     | type | Staatloos |
 
     Voorbeelden:
@@ -68,23 +68,24 @@ Functionaliteit: vastgesteld niet-Nederlander
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |
     En de persoon heeft een 'nationaliteit' met de volgende gegevens
-    | naam                               | waarde       |
-    | nationaliteit (05.10) | 0499   |
-    | <gba naam>                         | <gba waarde> |
+    | naam                  | waarde       |
+    | nationaliteit (05.10) | 0499         |
+    | <gba naam>            | <gba waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
     | fields              | nationaliteiten                 |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-    | naam         | waarde                     |
-    | type         | Staatloos |
-    | <naam>.type  | <type>                     |
-    | <naam>.datum | <waarde>                   |
+    | naam               | waarde         |
+    | type               | Staatloos      |
+    | <naam>.type        | <type>         |
+    | <naam>.datum       | <waarde>       |
+    | <naam>.langFormaat | <lang formaat> |
 
     Voorbeelden:
-    | gba naam                        | gba waarde | naam                  | type  | waarde     |
-    | ingangsdatum geldigheid (85.10) | 20020701   | datumIngangGeldigheid | Datum | 2002-07-01 |
+    | gba naam                        | gba waarde | naam                  | type  | waarde     | lang formaat |
+    | ingangsdatum geldigheid (85.10) | 20020701   | datumIngangGeldigheid | Datum | 2002-07-01 | 1 juli 2002  |
 
   Abstract Scenario: persoon's 'staatloos' nationaliteit velden is in onderzoek
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -92,7 +93,7 @@ Functionaliteit: vastgesteld niet-Nederlander
     | burgerservicenummer | 555550001 |
     En de persoon heeft een 'nationaliteit' met de volgende gegevens
     | naam                                     | waarde                    |
-    | nationaliteit (05.10) | 0499   |
+    | nationaliteit (05.10)                    | 0499                      |
     | reden opname (63.10)                     | 001                       |
     | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)           | 20020701                  |
@@ -102,13 +103,14 @@ Functionaliteit: vastgesteld niet-Nederlander
     | burgerservicenummer | 555550001                       |
     | fields              | nationaliteiten                 |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-    | naam                                   | waarde                      |
-    | type                                   | Staatloos  |
-    | redenOpname.code                       | 001                         |
-    | inOnderzoek.type                       | <type in onderzoek>         |
-    | inOnderzoek.redenOpname                | <reden opname in onderzoek> |
-    | inOnderzoek.datumIngangOnderzoek.type  | Datum                       |
-    | inOnderzoek.datumIngangOnderzoek.datum | 2002-07-01                  |
+    | naam                                         | waarde                      |
+    | type                                         | Staatloos                   |
+    | redenOpname.code                             | 001                         |
+    | inOnderzoek.type                             | <type in onderzoek>         |
+    | inOnderzoek.redenOpname                      | <reden opname in onderzoek> |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                       |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                  |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                 |
 
     Voorbeelden:
     | gba in onderzoek waarde | reden opname in onderzoek | type in onderzoek |

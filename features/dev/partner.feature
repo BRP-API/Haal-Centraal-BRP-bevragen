@@ -76,14 +76,15 @@ Functionaliteit: Partner
     | naam | waarde  |
     | type | Partner |
     En heeft de 'partner' alleen de volgende '<gegevensgroep>' gegevens
-    | naam         | waarde   |
-    | <naam>.type  | Datum    |
-    | <naam>.datum | <waarde> |
+    | naam               | waarde         |
+    | <naam>.type        | Datum          |
+    | <naam>.datum       | <waarde>       |
+    | <naam>.langFormaat | <lang formaat> |
 
     Voorbeelden:
-    | gegevensgroep               | gba naam                                                           | gba waarde | naam  | waarde     |
-    | geboorte                    | geboortedatum (03.10)                                              | 20020701   | datum | 2002-07-01 |
-    | aangaanHuwelijkPartnerschap | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 20180808   | datum | 2018-08-08 |
+    | gegevensgroep               | gba naam                                                           | gba waarde | naam  | waarde     | lang formaat    |
+    | geboorte                    | geboortedatum (03.10)                                              | 20020701   | datum | 2002-07-01 | 1 juli 2002     |
+    | aangaanHuwelijkPartnerschap | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 20180808   | datum | 2018-08-08 | 8 augustus 2018 |
 
   Abstract Scenario: partner velden is in onderzoek
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -99,13 +100,14 @@ Functionaliteit: Partner
     | burgerservicenummer | 555550001                       |
     | fields              | partners                        |
     Dan heeft de response een persoon met een 'partner' met alleen de volgende gegevens
-    | naam                                   | waarde                             |
-    | type                                   | Partner                            |
-    | inOnderzoek.burgerservicenummer        | <burgerservicenummer in onderzoek> |
-    | inOnderzoek.soortVerbintenis           | <soort verbintenis in onderzoek>   |
-    | inOnderzoek.geslacht                   | <geslacht in onderzoek>            |
-    | inOnderzoek.datumIngangOnderzoek.type  | Datum                              |
-    | inOnderzoek.datumIngangOnderzoek.datum | 2002-07-01                         |
+    | naam                                         | waarde                             |
+    | type                                         | Partner                            |
+    | inOnderzoek.burgerservicenummer              | <burgerservicenummer in onderzoek> |
+    | inOnderzoek.soortVerbintenis                 | <soort verbintenis in onderzoek>   |
+    | inOnderzoek.geslacht                         | <geslacht in onderzoek>            |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                              |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                         |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                        |
 
     Voorbeelden:
     | gba in onderzoek waarde | burgerservicenummer in onderzoek | soort verbintenis in onderzoek | geslacht in onderzoek |
@@ -137,15 +139,16 @@ Functionaliteit: Partner
     | naam | waarde  |
     | type | Partner |
     En heeft de 'partner' alleen de volgende 'naam' gegevens
-    | naam                                   | waarde                                 |
-    | geslachtsnaam                          | Groen                                  |
-    | inOnderzoek.voornamen                  | <voornamen in onderzoek>               |
-    | inOnderzoek.adellijkeTitelPredicaat    | <adellijkeTitelPredicaat in onderzoek> |
-    | inOnderzoek.voorvoegsel                | <voorvoegsel in onderzoek>             |
-    | inOnderzoek.geslachtsnaam              | <geslachtsnaam in onderzoek>           |
-    | inOnderzoek.voorletters                | <voorletters in onderzoek>             |
-    | inOnderzoek.datumIngangOnderzoek.type  | Datum                                  |
-    | inOnderzoek.datumIngangOnderzoek.datum | 2002-07-01                             |
+    | naam                                         | waarde                                 |
+    | geslachtsnaam                                | Groen                                  |
+    | inOnderzoek.voornamen                        | <voornamen in onderzoek>               |
+    | inOnderzoek.adellijkeTitelPredicaat          | <adellijkeTitelPredicaat in onderzoek> |
+    | inOnderzoek.voorvoegsel                      | <voorvoegsel in onderzoek>             |
+    | inOnderzoek.geslachtsnaam                    | <geslachtsnaam in onderzoek>           |
+    | inOnderzoek.voorletters                      | <voorletters in onderzoek>             |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                                  |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                             |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                            |
 
     Voorbeelden:
     | gba in onderzoek waarde | voornamen in onderzoek | adellijkeTitelPredicaat in onderzoek | voorvoegsel in onderzoek | geslachtsnaam in onderzoek | voorletters in onderzoek |
@@ -176,14 +179,16 @@ Functionaliteit: Partner
     | naam | waarde  |
     | type | Partner |
     En heeft de 'partner' alleen de volgende 'geboorte' gegevens
-    | naam                                   | waarde                |
-    | datum.type                             | Datum                 |
-    | datum.datum                            | 1963-04-05            |
-    | inOnderzoek.datum                      | <datum in onderzoek>  |
-    | inOnderzoek.plaats                     | <plaats in onderzoek> |
-    | inOnderzoek.land                       | <land in onderzoek>   |
-    | inOnderzoek.datumIngangOnderzoek.type  | Datum                 |
-    | inOnderzoek.datumIngangOnderzoek.datum | 2002-07-01            |
+    | naam                                         | waarde                |
+    | datum.type                                   | Datum                 |
+    | datum.datum                                  | 1963-04-05            |
+    | datum.langFormaat                            | 5 april 1963          |
+    | inOnderzoek.datum                            | <datum in onderzoek>  |
+    | inOnderzoek.plaats                           | <plaats in onderzoek> |
+    | inOnderzoek.land                             | <land in onderzoek>   |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                 |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01            |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002           |
 
     Voorbeelden:
     | gba in onderzoek waarde | datum in onderzoek | plaats in onderzoek | land in onderzoek |
@@ -213,14 +218,16 @@ Functionaliteit: Partner
     | naam | waarde  |
     | type | Partner |
     En heeft de 'partner' alleen de volgende 'aangaanHuwelijkPartnerschap' gegevens
-    | naam                                   | waarde                |
-    | datum.type                             | Datum                 |
-    | datum.datum                            | 1963-04-05            |
-    | inOnderzoek.datum                      | <datum in onderzoek>  |
-    | inOnderzoek.plaats                     | <plaats in onderzoek> |
-    | inOnderzoek.land                       | <land in onderzoek>   |
-    | inOnderzoek.datumIngangOnderzoek.type  | Datum                 |
-    | inOnderzoek.datumIngangOnderzoek.datum | 2002-07-01            |
+    | naam                                         | waarde                |
+    | datum.type                                   | Datum                 |
+    | datum.datum                                  | 1963-04-05            |
+    | datum.langFormaat                            | 5 april 1963          |
+    | inOnderzoek.datum                            | <datum in onderzoek>  |
+    | inOnderzoek.plaats                           | <plaats in onderzoek> |
+    | inOnderzoek.land                             | <land in onderzoek>   |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                 |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01            |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002           |
 
     Voorbeelden:
     | gba in onderzoek waarde | datum in onderzoek | plaats in onderzoek | land in onderzoek |

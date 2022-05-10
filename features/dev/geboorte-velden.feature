@@ -19,10 +19,11 @@ Functionaliteit: Geboorte
     | naam         | waarde   |
     | <naam>.type  | Datum    |
     | <naam>.datum | <waarde> |
+    | <naam>.langFormaat|<lang formaat>|
 
     Voorbeelden:
-    | gba naam              | gba waarde | naam  | waarde     |
-    | geboortedatum (03.10) | 20020701   | datum | 2002-07-01 |
+    | gba naam              | gba waarde | naam  | waarde     |lang formaat |
+    | geboortedatum (03.10) | 20020701   | datum | 2002-07-01 |1 juli 2002|
 
   Abstract Scenario: persoon heeft 'geboorte' veld: '<gba naam>'
     Gegeven het systeem heeft een persoon met de volgende gegevens

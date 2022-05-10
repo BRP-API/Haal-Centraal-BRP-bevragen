@@ -75,12 +75,13 @@ Functionaliteit: leveren van een verblijfplaats
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |
     Dan heeft de persoon de volgende 'verblijfplaats' gegevens
-    | naam         | waarde                   |
-    | type         | VerblijfplaatsBuitenland |
-    | <naam>.type  | Datum                    |
-    | <naam>.datum | <waarde>                 |
+    | naam               | waarde                   |
+    | type               | VerblijfplaatsBuitenland |
+    | <naam>.type        | Datum                    |
+    | <naam>.datum       | <waarde>                 |
+    | <naam>.langFormaat | <lang formaat>           |
 
     Voorbeelden:
-    | gba naam                                  | gba waarde | naam                        | waarde     |
-    | datum inschrijving in de gemeente (09.20) | 20020701   | datumInschrijvingInGemeente | 2002-07-01 |
-    | datum aanvang adres buitenland (13.20)    | 20220128   | datumVan                    | 2022-01-28 |
+    | gba naam                                  | gba waarde | naam                        | waarde     | lang formaat    |
+    | datum inschrijving in de gemeente (09.20) | 20020701   | datumInschrijvingInGemeente | 2002-07-01 | 1 juli 2002     |
+    | datum aanvang adres buitenland (13.20)    | 20220128   | datumVan                    | 2022-01-28 | 28 januari 2022 |

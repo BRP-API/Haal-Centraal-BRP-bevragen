@@ -16,14 +16,15 @@ Functionaliteit: Overlijden
     | burgerservicenummer | 555550001                       |
     | fields              | overlijden                      |
     Dan heeft de response een persoon met de volgende 'overlijden' gegevens
-    | naam               | waarde   |
-    | indicatieOverleden | true     |
-    | <naam>.type        | Datum    |
-    | <naam>.datum       | <waarde> |
+    | naam               | waarde         |
+    | indicatieOverleden | true           |
+    | <naam>.type        | Datum          |
+    | <naam>.datum       | <waarde>       |
+    | <naam>.langFormaat | <lang formaat> |
 
     Voorbeelden:
-    | gba naam                 | gba waarde | naam  | waarde     |
-    | datum overlijden (08.10) | 20020701   | datum | 2002-07-01 |
+    | gba naam                 | gba waarde | naam  | waarde     | lang formaat |
+    | datum overlijden (08.10) | 20020701   | datum | 2002-07-01 | 1 juli 2002  |
 
   Abstract Scenario: persoon heeft 'overlijden' waardetabel veld: '<gba naam>'
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -64,16 +65,18 @@ Functionaliteit: Overlijden
     | burgerservicenummer | 555550001                       |
     | fields              | overlijden                      |
     Dan heeft de response een persoon met de volgende 'overlijden' gegevens
-    | naam                                   | waarde                             |
-    | indicatieOverleden                     | true                               |
-    | datum.type                             | Datum                              |
-    | datum.datum                            | 1963-04-05                         |
-    | inOnderzoek.datum                      | <datum in onderzoek>               |
-    | inOnderzoek.plaats                     | <plaats in onderzoek>              |
-    | inOnderzoek.land                       | <land in onderzoek>                |
-    | inOnderzoek.indicatieOverleden         | <indicatie overleden in onderzoek> |
-    | inOnderzoek.datumIngangOnderzoek.type  | Datum                              |
-    | inOnderzoek.datumIngangOnderzoek.datum | 2002-07-01                         |
+    | naam                                         | waarde                             |
+    | indicatieOverleden                           | true                               |
+    | datum.type                                   | Datum                              |
+    | datum.datum                                  | 1963-04-05                         |
+    | datum.langFormaat                            | 5 april 1963                       |
+    | inOnderzoek.datum                            | <datum in onderzoek>               |
+    | inOnderzoek.plaats                           | <plaats in onderzoek>              |
+    | inOnderzoek.land                             | <land in onderzoek>                |
+    | inOnderzoek.indicatieOverleden               | <indicatie overleden in onderzoek> |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                              |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                         |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                        |
 
     Voorbeelden:
     | gba in onderzoek waarde | datum in onderzoek | plaats in onderzoek | land in onderzoek | indicatie overleden in onderzoek |

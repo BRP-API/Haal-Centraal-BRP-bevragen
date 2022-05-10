@@ -61,14 +61,15 @@ Functionaliteit: Persoon
     | burgerservicenummer | 555550001                       |
     | fields              | burgerservicenummer,<naam>      |
     Dan heeft de response een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    | <naam>.type         | Datum     |
-    | <naam>.datum        | <waarde>  |
+    | naam                | waarde         |
+    | burgerservicenummer | 555550001      |
+    | <naam>.type         | Datum          |
+    | <naam>.datum        | <waarde>       |
+    | <naam>.langFormaat  | <lang formaat> |
 
     Voorbeelden:
-    | gba naam                              | gba waarde | naam                       | waarde     |
-    | datum eerste inschrijving GBA (68.10) | 20020701   | datumEersteInschrijvingGBA | 2002-07-01 |
+    | gba naam                              | gba waarde | naam                       | waarde     | lang formaat |
+    | datum eerste inschrijving GBA (68.10) | 20020701   | datumEersteInschrijvingGBA | 2002-07-01 | 1 juli 2002  |
 
   Abstract Scenario: persoon's velden is in onderzoek
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -82,13 +83,14 @@ Functionaliteit: Persoon
     | burgerservicenummer | 555550001                             |
     | fields              | burgerservicenummer,geslacht,leeftijd |
     Dan heeft de response een persoon met de volgende gegevens
-    | naam                                   | waarde                             |
-    | burgerservicenummer                    | 555550001                          |
-    | inOnderzoek.burgerservicenummer        | <burgerservicenummer in onderzoek> |
-    | inOnderzoek.geslacht                   | <geslacht in onderzoek>            |
-    | inOnderzoek.leeftijd                   | <leeftijd in onderzoek>            |
-    | inOnderzoek.datumIngangOnderzoek.type  | Datum                              |
-    | inOnderzoek.datumIngangOnderzoek.datum | 2002-07-01                         |
+    | naam                                         | waarde                             |
+    | burgerservicenummer                          | 555550001                          |
+    | inOnderzoek.burgerservicenummer              | <burgerservicenummer in onderzoek> |
+    | inOnderzoek.geslacht                         | <geslacht in onderzoek>            |
+    | inOnderzoek.leeftijd                         | <leeftijd in onderzoek>            |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                              |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                         |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                        |
 
     Voorbeelden:
     | gba in onderzoek waarde | burgerservicenummer in onderzoek | geslacht in onderzoek | leeftijd in onderzoek |
@@ -113,18 +115,19 @@ Functionaliteit: Persoon
     | burgerservicenummer | 555550001                       |
     | fields              | naam                            |
     Dan heeft de response een persoon met de volgende 'naam' gegevens
-    | naam                                   | waarde                                      |
-    | geslachtsnaam                          | Groen                                       |
-    | volledigeNaam                          | Groen                                       |
-    | inOnderzoek.voornamen                  | <voornamen in onderzoek>                    |
-    | inOnderzoek.adellijkeTitelPredicaat    | <adellijke titel of predicaat in onderzoek> |
-    | inOnderzoek.voorvoegsel                | <voorvoegsel in onderzoek>                  |
-    | inOnderzoek.geslachtsnaam              | <geslachtsnaam in onderzoek>                |
-    | inOnderzoek.aanduidingNaamgebruik      | <aanduiding naamgebruik in onderzoek>       |
-    | inOnderzoek.voorletters                | <voorletters in onderzoek>                  |
-    | inOnderzoek.volledigeNaam              | <volledige naam in onderzoek>               |
-    | inOnderzoek.datumIngangOnderzoek.type  | Datum                                       |
-    | inOnderzoek.datumIngangOnderzoek.datum | 2002-07-01                                  |
+    | naam                                         | waarde                                      |
+    | geslachtsnaam                                | Groen                                       |
+    | volledigeNaam                                | Groen                                       |
+    | inOnderzoek.voornamen                        | <voornamen in onderzoek>                    |
+    | inOnderzoek.adellijkeTitelPredicaat          | <adellijke titel of predicaat in onderzoek> |
+    | inOnderzoek.voorvoegsel                      | <voorvoegsel in onderzoek>                  |
+    | inOnderzoek.geslachtsnaam                    | <geslachtsnaam in onderzoek>                |
+    | inOnderzoek.aanduidingNaamgebruik            | <aanduiding naamgebruik in onderzoek>       |
+    | inOnderzoek.voorletters                      | <voorletters in onderzoek>                  |
+    | inOnderzoek.volledigeNaam                    | <volledige naam in onderzoek>               |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                                       |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                                  |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                                 |
 
     Voorbeelden:
     | gba in onderzoek waarde | voornamen in onderzoek | adellijke titel of predicaat in onderzoek | voorvoegsel in onderzoek | geslachtsnaam in onderzoek | aanduiding naamgebruik in onderzoek | voorletters in onderzoek | volledige naam in onderzoek |
@@ -152,14 +155,16 @@ Functionaliteit: Persoon
     | burgerservicenummer | 555550001                       |
     | fields              | geboorte                        |
     Dan heeft de response een persoon met de volgende 'geboorte' gegevens
-    | naam                                   | waarde                |
-    | datum.type                             | Datum                 |
-    | datum.datum                            | 1963-04-05            |
-    | inOnderzoek.datum                      | <datum in onderzoek>  |
-    | inOnderzoek.plaats                     | <plaats in onderzoek> |
-    | inOnderzoek.land                       | <land in onderzoek>   |
-    | inOnderzoek.datumIngangOnderzoek.type  | Datum                 |
-    | inOnderzoek.datumIngangOnderzoek.datum | 2002-07-01            |
+    | naam                                         | waarde                |
+    | datum.type                                   | Datum                 |
+    | datum.datum                                  | 1963-04-05            |
+    | datum.langFormaat                            | 5 april 1963          |
+    | inOnderzoek.datum                            | <datum in onderzoek>  |
+    | inOnderzoek.plaats                           | <plaats in onderzoek> |
+    | inOnderzoek.land                             | <land in onderzoek>   |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                 |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01            |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002           |
 
     Voorbeelden:
     | gba in onderzoek waarde | datum in onderzoek | plaats in onderzoek | land in onderzoek |

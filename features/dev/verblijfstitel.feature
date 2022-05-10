@@ -38,14 +38,15 @@ Functionaliteit: Verblijfstitel
     | burgerservicenummer | 555550001                       |
     | fields              | verblijfstitel                  |
     Dan heeft de response een persoon met de volgende 'verblijfstitel' gegevens
-    | naam         | waarde   |
-    | <naam>.type  | Datum    |
-    | <naam>.datum | <waarde> |
+    | naam               | waarde         |
+    | <naam>.type        | Datum          |
+    | <naam>.datum       | <waarde>       |
+    | <naam>.langFormaat | <lang formaat> |
 
     Voorbeelden:
-    | gba naam                            | gba waarde | naam        | waarde     |
-    | datum einde verblijfstitel (39.20)  | 20020701   | datumEinde  | 2002-07-01 |
-    | datum ingang verblijfstitel (39.30) | 19980201   | datumIngang | 1998-02-01 |
+    | gba naam                            | gba waarde | naam        | waarde     | lang formaat    |
+    | datum einde verblijfstitel (39.20)  | 20020701   | datumEinde  | 2002-07-01 | 1 juli 2002     |
+    | datum ingang verblijfstitel (39.30) | 19980201   | datumIngang | 1998-02-01 | 1 februari 1998 |
 
   Abstract Scenario: persoon's verblijfstitel velden is in onderzoek
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -61,12 +62,13 @@ Functionaliteit: Verblijfstitel
     | burgerservicenummer | 555550001                       |
     | fields              | verblijfstitel                  |
     Dan heeft de response een persoon met de volgende 'verblijfstitel' gegevens
-    | naam                                   | waarde                      |
-    | inOnderzoek.aanduiding                 | <aanduiding in onderzoek>   |
-    | inOnderzoek.datumEinde                 | <datum einde in onderzoek>  |
-    | inOnderzoek.datumIngang                | <datum ingang in onderzoek> |
-    | inOnderzoek.datumIngangOnderzoek.type  | Datum                       |
-    | inOnderzoek.datumIngangOnderzoek.datum | 2002-07-01                  |
+    | naam                                         | waarde                      |
+    | inOnderzoek.aanduiding                       | <aanduiding in onderzoek>   |
+    | inOnderzoek.datumEinde                       | <datum einde in onderzoek>  |
+    | inOnderzoek.datumIngang                      | <datum ingang in onderzoek> |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                       |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                  |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                 |
 
     Voorbeelden:
     | gba in onderzoek waarde | aanduiding in onderzoek | datum ingang in onderzoek | datum einde in onderzoek |

@@ -58,6 +58,7 @@ inOnderzoek,inOnderzoek
 inOnderzoek.burgerservicenummer,inOnderzoek.burgerservicenummer
 inOnderzoek.geslacht,inOnderzoek.geslacht
 inOnderzoek.leeftijd,inOnderzoek.leeftijd
+inOnderzoek.datumIngangOnderzoek,inOnderzoek.datumIngangOnderzoek
 kiesrecht,kiesrecht
 kiesrecht.einddatumUitsluitingEuropeesKiesrecht,kiesrecht.einddatumUitsluitingEuropeesKiesrecht
 einddatumUitsluitingEuropeesKiesrecht,kiesrecht.einddatumUitsluitingEuropeesKiesrecht
@@ -315,10 +316,6 @@ ouders.naam.voornamen,ouders.naam.voornamen
 ouders.naam.voorvoegsel,ouders.naam.voorvoegsel
 ouders.ouderAanduiding,ouders.ouderAanduiding
 ouderAanduiding,ouders.ouderAanduiding
-ouders.ouderAanduiding.code,ouders.ouderAanduiding.code
-ouderAanduiding.code,ouders.ouderAanduiding.code
-ouders.ouderAanduiding.omschrijving,ouders.ouderAanduiding.omschrijving
-ouderAanduiding.omschrijving,ouders.ouderAanduiding.omschrijving
 ouders.indicatieOnbekend,ouders.indicatieOnbekend
 overlijden,overlijden
 overlijden.indicatieOverleden,overlijden.indicatieOverleden

@@ -77,14 +77,15 @@ Functionaliteit: onbekende nationaliteit
     | burgerservicenummer | 555550001                       |
     | fields              | nationaliteiten                 |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-    | naam         | waarde                |
-    | type         | NationaliteitOnbekend |
-    | <naam>.type  | <type>                |
-    | <naam>.datum | <waarde>              |
+    | naam               | waarde                |
+    | type               | NationaliteitOnbekend |
+    | <naam>.type        | <type>                |
+    | <naam>.datum       | <waarde>              |
+    | <naam>.langFormaat | <lang formaat>        |
 
     Voorbeelden:
-    | gba naam                        | gba waarde | naam                  | type  | waarde     |
-    | ingangsdatum geldigheid (85.10) | 20020701   | datumIngangGeldigheid | Datum | 2002-07-01 |
+    | gba naam                        | gba waarde | naam                  | type  | waarde     | lang formaat |
+    | ingangsdatum geldigheid (85.10) | 20020701   | datumIngangGeldigheid | Datum | 2002-07-01 | 1 juli 2002  |
 
   Abstract Scenario: persoon's 'onbekende nationaliteit' velden is in onderzoek
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -102,13 +103,14 @@ Functionaliteit: onbekende nationaliteit
     | burgerservicenummer | 555550001                       |
     | fields              | nationaliteiten                 |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-    | naam                                   | waarde                      |
-    | type                                   | NationaliteitOnbekend       |
-    | redenOpname.code                       | 001                         |
-    | inOnderzoek.type                       | <type in onderzoek>         |
-    | inOnderzoek.redenOpname                | <reden opname in onderzoek> |
-    | inOnderzoek.datumIngangOnderzoek.type  | Datum                       |
-    | inOnderzoek.datumIngangOnderzoek.datum | 2002-07-01                  |
+    | naam                                         | waarde                      |
+    | type                                         | NationaliteitOnbekend       |
+    | redenOpname.code                             | 001                         |
+    | inOnderzoek.type                             | <type in onderzoek>         |
+    | inOnderzoek.redenOpname                      | <reden opname in onderzoek> |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                       |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                  |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                 |
 
     Voorbeelden:
     | gba in onderzoek waarde | reden opname in onderzoek | type in onderzoek |

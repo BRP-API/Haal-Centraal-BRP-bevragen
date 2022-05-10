@@ -71,13 +71,14 @@ Functionaliteit: Kind
     | naam | waarde |
     | type | Kind   |
     En heeft het 'kind' alleen de volgende '<gegevensgroep>' gegevens
-    | naam         | waarde   |
-    | <naam>.type  | Datum    |
-    | <naam>.datum | <waarde> |
+    | naam               | waarde         |
+    | <naam>.type        | Datum          |
+    | <naam>.datum       | <waarde>       |
+    | <naam>.langFormaat | <lang formaat> |
 
     Voorbeelden:
-    | gegevensgroep | gba naam              | gba waarde | naam  | waarde     |
-    | geboorte      | geboortedatum (03.10) | 20020701   | datum | 2002-07-01 |
+    | gegevensgroep | gba naam              | gba waarde | naam  | waarde     | lang formaat |
+    | geboorte      | geboortedatum (03.10) | 20020701   | datum | 2002-07-01 | 1 juli 2002  |
 
   Abstract Scenario: kind velden is in onderzoek
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -93,11 +94,12 @@ Functionaliteit: Kind
     | burgerservicenummer | 555550001                       |
     | fields              | kinderen                        |
     Dan heeft de response een persoon met een 'kind' met alleen de volgende gegevens
-    | naam                                   | waarde                             |
-    | type                                   | Kind                               |
-    | inOnderzoek.burgerservicenummer        | <burgerservicenummer in onderzoek> |
-    | inOnderzoek.datumIngangOnderzoek.type  | Datum                              |
-    | inOnderzoek.datumIngangOnderzoek.datum | 2002-07-01                         |
+    | naam                                         | waarde                             |
+    | type                                         | Kind                               |
+    | inOnderzoek.burgerservicenummer              | <burgerservicenummer in onderzoek> |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                              |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                         |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                        |
 
     Voorbeelden:
     | gba in onderzoek waarde | burgerservicenummer in onderzoek |
@@ -125,15 +127,16 @@ Functionaliteit: Kind
     | naam | waarde |
     | type | Kind   |
     En heeft de 'kind' alleen de volgende 'naam' gegevens
-    | naam                                   | waarde                                 |
-    | geslachtsnaam                          | Groen                                  |
-    | inOnderzoek.voornamen                  | <voornamen in onderzoek>               |
-    | inOnderzoek.adellijkeTitelPredicaat    | <adellijkeTitelPredicaat in onderzoek> |
-    | inOnderzoek.voorvoegsel                | <voorvoegsel in onderzoek>             |
-    | inOnderzoek.geslachtsnaam              | <geslachtsnaam in onderzoek>           |
-    | inOnderzoek.voorletters                | <voorletters in onderzoek>             |
-    | inOnderzoek.datumIngangOnderzoek.type  | Datum                                  |
-    | inOnderzoek.datumIngangOnderzoek.datum | 2002-07-01                             |
+    | naam                                         | waarde                                 |
+    | geslachtsnaam                                | Groen                                  |
+    | inOnderzoek.voornamen                        | <voornamen in onderzoek>               |
+    | inOnderzoek.adellijkeTitelPredicaat          | <adellijkeTitelPredicaat in onderzoek> |
+    | inOnderzoek.voorvoegsel                      | <voorvoegsel in onderzoek>             |
+    | inOnderzoek.geslachtsnaam                    | <geslachtsnaam in onderzoek>           |
+    | inOnderzoek.voorletters                      | <voorletters in onderzoek>             |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                                  |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                             |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                            |
 
     Voorbeelden:
     | gba in onderzoek waarde | voornamen in onderzoek | adellijkeTitelPredicaat in onderzoek | voorvoegsel in onderzoek | geslachtsnaam in onderzoek | voorletters in onderzoek |
@@ -164,14 +167,16 @@ Functionaliteit: Kind
     | naam | waarde |
     | type | Kind   |
     En heeft de 'kind' alleen de volgende 'geboorte' gegevens
-    | naam                                   | waarde                |
-    | datum.type                             | Datum                 |
-    | datum.datum                            | 1963-04-05            |
-    | inOnderzoek.datum                      | <datum in onderzoek>  |
-    | inOnderzoek.plaats                     | <plaats in onderzoek> |
-    | inOnderzoek.land                       | <land in onderzoek>   |
-    | inOnderzoek.datumIngangOnderzoek.type  | Datum                 |
-    | inOnderzoek.datumIngangOnderzoek.datum | 2002-07-01            |
+    | naam                                         | waarde                |
+    | datum.type                                   | Datum                 |
+    | datum.datum                                  | 1963-04-05            |
+    | datum.langFormaat                            | 5 april 1963          |
+    | inOnderzoek.datum                            | <datum in onderzoek>  |
+    | inOnderzoek.plaats                           | <plaats in onderzoek> |
+    | inOnderzoek.land                             | <land in onderzoek>   |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                 |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01            |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002           |
 
     Voorbeelden:
     | gba in onderzoek waarde | datum in onderzoek | plaats in onderzoek | land in onderzoek |

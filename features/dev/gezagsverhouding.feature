@@ -39,11 +39,12 @@ Functionaliteit: Gezagsverhouding
     | burgerservicenummer | 555550001                       |
     | fields              | gezagsverhouding                |
     Dan heeft de response een persoon met de volgende 'gezagsverhouding' gegevens
-    | naam                                   | waarde                            |
-    | inOnderzoek.indicatieCurateleRegister  | <curateleregister in onderzoek>   |
-    | inOnderzoek.indicatieGezagMinderjarige | <gezag minderjarige in onderzoek> |
-    | inOnderzoek.datumIngangOnderzoek.type  | Datum                             |
-    | inOnderzoek.datumIngangOnderzoek.datum | 2002-07-01                        |
+    | naam                                         | waarde                            |
+    | inOnderzoek.indicatieCurateleRegister        | <curateleregister in onderzoek>   |
+    | inOnderzoek.indicatieGezagMinderjarige       | <gezag minderjarige in onderzoek> |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                             |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                        |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                       |
 
     Voorbeelden:
     | gba in onderzoek waarde | gezag minderjarige in onderzoek | curateleregister in onderzoek |
