@@ -393,7 +393,13 @@
             "type" : "string"
           },
           "fields" : {
-            "$ref" : "#/components/schemas/Fields"
+            "maxItems" : 130,
+            "minItems" : 1,
+            "type" : "array",
+            "description" : "Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen of - paden op te geven.\n",
+            "items" : {
+              "$ref" : "#/components/schemas/Field"
+            }
           },
           "gemeenteVanInschrijving" : {
             "$ref" : "#/components/schemas/GemeenteVanInschrijving"
@@ -765,11 +771,11 @@
         "description" : "Het nummer van het verstrekte Nederlandse reisdocument.\n",
         "example" : "546376728"
       },
-      "Fields" : {
+      "Field" : {
         "maxLength" : 200,
         "pattern" : "^[a-zA-Z0-9\\._]+$",
         "type" : "string",
-        "description" : "Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen of - paden op te geven.\nBij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven.\nZie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature)\n"
+        "description" : "Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven.\nZie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature)\n"
       },
       "GemeenteVanInschrijving" : {
         "pattern" : "^[0-9]{4}$",
