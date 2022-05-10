@@ -108,59 +108,60 @@ Functionaliteit: leveren van een datum
       | burgerservicenummer | 555550001                          |
       | fields              | burgerservicenummer,<groep>.<veld> |
       Dan heeft de persoon met burgerservicenummer '555550001' de volgende '<groep>' gegevens
-      | naam            | waarde     |
-      | <veld>.type     | <type>     |
-      | <veld>.datum    | <datum>    |
-      | <veld>.jaar     | <jaar>     |
-      | <veld>.maand    | <maand>    |
-      | <veld>.onbekend | <onbekend> |
+      | naam               | waarde       |
+      | <veld>.type        | <type>       |
+      | <veld>.datum       | <datum>      |
+      | <veld>.jaar        | <jaar>       |
+      | <veld>.maand       | <maand>      |
+      | <veld>.onbekend    | <onbekend>   |
+      | <veld>.langFormaat | <langFormaat |
 
       Voorbeelden:
-      | groep                 | veld                                  | type           | GbaDatum | datum      | jaar | maand | onbekend |
-      | geboorte              | datum                                 | Datum          | 20200308 | 2020-03-08 |      |       |          |
-      | inOnderzoek           | datumIngangOnderzoek                  | Datum          | 20200308 | 2020-03-08 |      |       |          |
-      | overlijden            | datum                                 | Datum          | 20200308 | 2020-03-08 |      |       |          |
-      | opschortingBijhouding | datum                                 | Datum          | 20200308 | 2020-03-08 |      |       |          |
-      | verblijfplaats        | datumInschrijvingInGemeente           | Datum          | 20200308 | 2020-03-08 |      |       |          |
-      | verblijfplaats        | datumVestigingInNederland             | Datum          | 20200308 | 2020-03-08 |      |       |          |
-      | verblijfplaats        | datumIngangGeldigheid                 | Datum          | 20200308 | 2020-03-08 |      |       |          |
-      | verblijfstitel        | datumIngang                           | Datum          | 20200308 | 2020-03-08 |      |       |          |
-      | verblijfstitel        | datumEinde                            | Datum          | 20300701 | 2030-07-01 |      |       |          |
-      | kiesrecht             | einddatumUitsluitingEuropeesKiesrecht | Datum          | 20300701 | 2030-07-01 |      |       |          |
-      | kiesrecht             | einddatumUitsluitingKiesrecht         | Datum          | 20300701 | 2030-07-01 |      |       |          |
-      | geboorte              | datum                                 | DatumOnbekend  | 00000000 |            |      |       | true     |
-      | inOnderzoek           | datumIngangOnderzoek                  | DatumOnbekend  | 00000000 |            |      |       | true     |
-      | overlijden            | datum                                 | DatumOnbekend  | 00000000 |            |      |       | true     |
-      | opschortingBijhouding | datum                                 | DatumOnbekend  | 00000000 |            |      |       | true     |
-      | verblijfplaats        | datumInschrijvingInGemeente           | DatumOnbekend  | 00000000 |            |      |       | true     |
-      | verblijfplaats        | datumVestigingInNederland             | DatumOnbekend  | 00000000 |            |      |       | true     |
-      | verblijfplaats        | datumIngangGeldigheid                 | DatumOnbekend  | 00000000 |            |      |       | true     |
-      | verblijfstitel        | datumIngang                           | DatumOnbekend  | 00000000 |            |      |       | true     |
-      | verblijfstitel        | datumEinde                            | DatumOnbekend  | 00000000 |            |      |       | true     |
-      | kiesrecht             | einddatumUitsluitingEuropeesKiesrecht | DatumOnbekend  | 00000000 |            |      |       | true     |
-      | kiesrecht             | einddatumUitsluitingKiesrecht         | DatumOnbekend  | 00000000 |            |      |       | true     |
-      | geboorte              | datum                                 | JaarDatum      | 20200000 |            | 2020 |       |          |
-      | inOnderzoek           | datumIngangOnderzoek                  | JaarDatum      | 20200000 |            | 2020 |       |          |
-      | overlijden            | datum                                 | JaarDatum      | 20200000 |            | 2020 |       |          |
-      | opschortingBijhouding | datum                                 | JaarDatum      | 20200000 |            | 2020 |       |          |
-      | verblijfplaats        | datumInschrijvingInGemeente           | JaarDatum      | 20200000 |            | 2020 |       |          |
-      | verblijfplaats        | datumVestigingInNederland             | JaarDatum      | 20200000 |            | 2020 |       |          |
-      | verblijfplaats        | datumIngangGeldigheid                 | JaarDatum      | 20200000 |            | 2020 |       |          |
-      | verblijfstitel        | datumIngang                           | JaarDatum      | 20200000 |            | 2020 |       |          |
-      | verblijfstitel        | datumEinde                            | JaarDatum      | 20300000 |            | 2030 |       |          |
-      | kiesrecht             | einddatumUitsluitingEuropeesKiesrecht | JaarDatum      | 20300000 |            | 2030 |       |          |
-      | kiesrecht             | einddatumUitsluitingKiesrecht         | JaarDatum      | 20300000 |            | 2030 |       |          |
-      | geboorte              | datum                                 | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
-      | inOnderzoek           | datumIngangOnderzoek                  | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
-      | overlijden            | datum                                 | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
-      | opschortingBijhouding | datum                                 | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
-      | verblijfplaats        | datumInschrijvingInGemeente           | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
-      | verblijfplaats        | datumVestigingInNederland             | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
-      | verblijfplaats        | datumIngangGeldigheid                 | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
-      | verblijfstitel        | datumIngang                           | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
-      | verblijfstitel        | datumEinde                            | JaarMaandDatum | 20300700 |            | 2030 | 7     |          |
-      | kiesrecht             | einddatumUitsluitingEuropeesKiesrecht | JaarMaandDatum | 20300700 |            | 2030 | 7     |          |
-      | kiesrecht             | einddatumUitsluitingKiesrecht         | JaarMaandDatum | 20300700 |            | 2030 | 7     |          |
+      | groep                 | veld                                  | type           | GbaDatum | datum      | jaar | maand | onbekend | langFormaat  |
+      | geboorte              | datum                                 | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | inOnderzoek           | datumIngangOnderzoek                  | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | overlijden            | datum                                 | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | opschortingBijhouding | datum                                 | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | verblijfplaats        | datumInschrijvingInGemeente           | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | verblijfplaats        | datumVestigingInNederland             | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | verblijfplaats        | datumIngangGeldigheid                 | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | verblijfstitel        | datumIngang                           | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | verblijfstitel        | datumEinde                            | Datum          | 20300701 | 2030-07-01 |      |       |          | 1 juli 2030  |
+      | kiesrecht             | einddatumUitsluitingEuropeesKiesrecht | Datum          | 20300701 | 2030-07-01 |      |       |          | 1 juli 2030  |
+      | kiesrecht             | einddatumUitsluitingKiesrecht         | Datum          | 20300701 | 2030-07-01 |      |       |          | 1 juli 2030  |
+      | geboorte              | datum                                 | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | inOnderzoek           | datumIngangOnderzoek                  | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | overlijden            | datum                                 | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | opschortingBijhouding | datum                                 | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | verblijfplaats        | datumInschrijvingInGemeente           | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | verblijfplaats        | datumVestigingInNederland             | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | verblijfstitel        | datumIngang                           | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | verblijfplaats        | datumIngangGeldigheid                 | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | verblijfstitel        | datumEinde                            | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | kiesrecht             | einddatumUitsluitingEuropeesKiesrecht | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | kiesrecht             | einddatumUitsluitingKiesrecht         | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | geboorte              | datum                                 | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | inOnderzoek           | datumIngangOnderzoek                  | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | overlijden            | datum                                 | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | opschortingBijhouding | datum                                 | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | verblijfplaats        | datumInschrijvingInGemeente           | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | verblijfplaats        | datumVestigingInNederland             | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | verblijfplaats        | datumIngangGeldigheid                 | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | verblijfstitel        | datumIngang                           | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | verblijfstitel        | datumEinde                            | JaarDatum      | 20300000 |            | 2030 |       |          | 2030         |
+      | kiesrecht             | einddatumUitsluitingEuropeesKiesrecht | JaarDatum      | 20300000 |            | 2030 |       |          | 2030         |
+      | kiesrecht             | einddatumUitsluitingKiesrecht         | JaarDatum      | 20300000 |            | 2030 |       |          | 2030         |
+      | geboorte              | datum                                 | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | inOnderzoek           | datumIngangOnderzoek                  | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | overlijden            | datum                                 | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | opschortingBijhouding | datum                                 | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | verblijfplaats        | datumInschrijvingInGemeente           | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | verblijfplaats        | datumVestigingInNederland             | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | verblijfplaats        | datumIngangGeldigheid                 | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | verblijfstitel        | datumIngang                           | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | verblijfstitel        | datumEinde                            | JaarMaandDatum | 20300700 |            | 2030 | 7     |          | juli 2030    |
+      | kiesrecht             | einddatumUitsluitingEuropeesKiesrecht | JaarMaandDatum | 20300700 |            | 2030 | 7     |          | juli 2030    |
+      | kiesrecht             | einddatumUitsluitingKiesrecht         | JaarMaandDatum | 20300700 |            | 2030 | 7     |          | juli 2030    |
 
     @skip-verify
     Abstract Scenario: <type> in datumEersteInschrijvingGBA
@@ -174,20 +175,21 @@ Functionaliteit: leveren van een datum
       | burgerservicenummer | 555550001                                      |
       | fields              | burgerservicenummer,datumEersteInschrijvingGBA |
       Dan heeft de persoon met burgerservicenummer '555550001' de volgende gegevens
-      | naam                                | waarde     |
-      | burgerservicenummer                 | 555550001  |
-      | datumEersteInschrijvingGBA.type     | <type>     |
-      | datumEersteInschrijvingGBA.datum    | <datum>    |
-      | datumEersteInschrijvingGBA.jaar     | <jaar>     |
-      | datumEersteInschrijvingGBA.maand    | <maand>    |
-      | datumEersteInschrijvingGBA.onbekend | <onbekend> |
+      | naam                                   | waarde        |
+      | burgerservicenummer                    | 555550001     |
+      | datumEersteInschrijvingGBA.type        | <type>        |
+      | datumEersteInschrijvingGBA.datum       | <datum>       |
+      | datumEersteInschrijvingGBA.jaar        | <jaar>        |
+      | datumEersteInschrijvingGBA.maand       | <maand>       |
+      | datumEersteInschrijvingGBA.onbekend    | <onbekend>    |
+      | datumEersteInschrijvingGBA.langFormaat | <langFormaat> |
 
       Voorbeelden:
-      | type           | GbaDatum | datum      | jaar | maand | onbekend |
-      | Datum          | 20200308 | 2020-03-08 |      |       |          |
-      | DatumOnbekend  | 00000000 |            |      |       | true     |
-      | JaarDatum      | 20200000 |            | 2020 |       |          |
-      | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
+      | type           | GbaDatum | datum      | jaar | maand | onbekend | langFormaat  |
+      | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
 
     @skip-verify
     Abstract Scenario: <type> datumIngangFamilierechtelijkeBetrekking van ouders
@@ -204,20 +206,21 @@ Functionaliteit: leveren van een datum
       | burgerservicenummer | 555550001                                                          |
       | fields              | burgerservicenummer,ouders.datumIngangFamilierechtelijkeBetrekking |
       Dan heeft de persoon met burgerservicenummer '555550001' een 'ouder' met de volgende gegevens
-      | naam                                             | waarde     |
-      | burgerservicenummer                              | 555550002  |
-      | datumIngangFamilierechtelijkeBetrekking.type     | <type>     |
-      | datumIngangFamilierechtelijkeBetrekking.datum    | <datum>    |
-      | datumIngangFamilierechtelijkeBetrekking.jaar     | <jaar>     |
-      | datumIngangFamilierechtelijkeBetrekking.maand    | <maand>    |
-      | datumIngangFamilierechtelijkeBetrekking.onbekend | <onbekend> |
+      | naam                                                | waarde        |
+      | burgerservicenummer                                 | 555550002     |
+      | datumIngangFamilierechtelijkeBetrekking.type        | <type>        |
+      | datumIngangFamilierechtelijkeBetrekking.datum       | <datum>       |
+      | datumIngangFamilierechtelijkeBetrekking.jaar        | <jaar>        |
+      | datumIngangFamilierechtelijkeBetrekking.maand       | <maand>       |
+      | datumIngangFamilierechtelijkeBetrekking.onbekend    | <onbekend>    |
+      | datumIngangFamilierechtelijkeBetrekking.langFormaat | <langFormaat> |
 
       Voorbeelden:
-      | type           | GbaDatum | datum      | jaar | maand | onbekend |
-      | Datum          | 20200308 | 2020-03-08 |      |       |          |
-      | DatumOnbekend  | 00000000 |            |      |       | true     |
-      | JaarDatum      | 20200000 |            | 2020 |       |          |
-      | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
+      | type           | GbaDatum | datum      | jaar | maand | onbekend | langFormaat  |
+      | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
 
      @skip-verify
      Abstract Scenario: <type> <groep> <veld> van <relatie>
@@ -239,43 +242,44 @@ Functionaliteit: leveren van een datum
       | burgerservicenummer |
       | 555550002           |
       En de '<relatie>' met burgerservicenummer '555550002' heeft de volgende '<groep>' gegevens
-      | naam            | waarde     |
-      | <veld>.type     | <type>     |
-      | <veld>.datum    | <datum>    |
-      | <veld>.jaar     | <jaar>     |
-      | <veld>.maand    | <maand>    |
-      | <veld>.onbekend | <onbekend> |
+      | naam               | waarde        |
+      | <veld>.type        | <type>        |
+      | <veld>.datum       | <datum>       |
+      | <veld>.jaar        | <jaar>        |
+      | <veld>.maand       | <maand>       |
+      | <veld>.onbekend    | <onbekend>    |
+      | <veld>.langFormaat | <langFormaat> |
 
       Voorbeelden:
-      | relatie | field    | groep                       | veld                 | type           | GbaDatum | datum      | jaar | maand | onbekend |
-      | ouder   | ouders   | geboorte                    | datum                | Datum          | 20200308 | 2020-03-08 |      |       |          |
-      | ouder   | ouders   | geboorte                    | datum                | DatumOnbekend  | 00000000 |            |      |       | true     |
-      | ouder   | ouders   | geboorte                    | datum                | JaarDatum      | 20200000 |            | 2020 |       |          |
-      | ouder   | ouders   | geboorte                    | datum                | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
-      | ouder   | ouders   | inOnderzoek                 | datumIngangOnderzoek | Datum          | 20200308 | 2020-03-08 |      |       |          |
-      | ouder   | ouders   | inOnderzoek                 | datumIngangOnderzoek | DatumOnbekend  | 00000000 |            |      |       | true     |
-      | ouder   | ouders   | inOnderzoek                 | datumIngangOnderzoek | JaarDatum      | 20200000 |            | 2020 |       |          |
-      | ouder   | ouders   | inOnderzoek                 | datumIngangOnderzoek | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
-      | partner | partners | geboorte                    | datum                | Datum          | 20200308 | 2020-03-08 |      |       |          |
-      | partner | partners | geboorte                    | datum                | DatumOnbekend  | 00000000 |            |      |       | true     |
-      | partner | partners | geboorte                    | datum                | JaarDatum      | 20200000 |            | 2020 |       |          |
-      | partner | partners | geboorte                    | datum                | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
-      | partner | partners | aangaanHuwelijkPartnerschap | datum                | Datum          | 20200308 | 2020-03-08 |      |       |          |
-      | partner | partners | aangaanHuwelijkPartnerschap | datum                | DatumOnbekend  | 00000000 |            |      |       | true     |
-      | partner | partners | aangaanHuwelijkPartnerschap | datum                | JaarDatum      | 20200000 |            | 2020 |       |          |
-      | partner | partners | aangaanHuwelijkPartnerschap | datum                | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
-      | partner | partners | inOnderzoek                 | datumIngangOnderzoek | Datum          | 20200308 | 2020-03-08 |      |       |          |
-      | partner | partners | inOnderzoek                 | datumIngangOnderzoek | DatumOnbekend  | 00000000 |            |      |       | true     |
-      | partner | partners | inOnderzoek                 | datumIngangOnderzoek | JaarDatum      | 20200000 |            | 2020 |       |          |
-      | partner | partners | inOnderzoek                 | datumIngangOnderzoek | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
-      | kind    | kinderen | geboorte                    | datum                | Datum          | 20200308 | 2020-03-08 |      |       |          |
-      | kind    | kinderen | geboorte                    | datum                | DatumOnbekend  | 00000000 |            |      |       | true     |
-      | kind    | kinderen | geboorte                    | datum                | JaarDatum      | 20200000 |            | 2020 |       |          |
-      | kind    | kinderen | geboorte                    | datum                | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
-      | kind    | kinderen | inOnderzoek                 | datumIngangOnderzoek | Datum          | 20200308 | 2020-03-08 |      |       |          |
-      | kind    | kinderen | inOnderzoek                 | datumIngangOnderzoek | DatumOnbekend  | 00000000 |            |      |       | true     |
-      | kind    | kinderen | inOnderzoek                 | datumIngangOnderzoek | JaarDatum      | 20200000 |            | 2020 |       |          |
-      | kind    | kinderen | inOnderzoek                 | datumIngangOnderzoek | JaarMaandDatum | 20200300 |            | 2020 | 3     |          |
+      | relatie | field    | groep                       | veld                 | type           | GbaDatum | datum      | jaar | maand | onbekend | langFormaat  |
+      | ouder   | ouders   | geboorte                    | datum                | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | ouder   | ouders   | geboorte                    | datum                | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | ouder   | ouders   | geboorte                    | datum                | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | ouder   | ouders   | geboorte                    | datum                | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | ouder   | ouders   | inOnderzoek                 | datumIngangOnderzoek | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | ouder   | ouders   | inOnderzoek                 | datumIngangOnderzoek | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | ouder   | ouders   | inOnderzoek                 | datumIngangOnderzoek | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | ouder   | ouders   | inOnderzoek                 | datumIngangOnderzoek | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | partner | partners | geboorte                    | datum                | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | partner | partners | geboorte                    | datum                | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | partner | partners | geboorte                    | datum                | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | partner | partners | geboorte                    | datum                | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | partner | partners | aangaanHuwelijkPartnerschap | datum                | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | partner | partners | aangaanHuwelijkPartnerschap | datum                | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | partner | partners | aangaanHuwelijkPartnerschap | datum                | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | partner | partners | aangaanHuwelijkPartnerschap | datum                | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | partner | partners | inOnderzoek                 | datumIngangOnderzoek | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | partner | partners | inOnderzoek                 | datumIngangOnderzoek | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | partner | partners | inOnderzoek                 | datumIngangOnderzoek | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | partner | partners | inOnderzoek                 | datumIngangOnderzoek | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | kind    | kinderen | geboorte                    | datum                | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | kind    | kinderen | geboorte                    | datum                | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | kind    | kinderen | geboorte                    | datum                | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | kind    | kinderen | geboorte                    | datum                | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | kind    | kinderen | inOnderzoek                 | datumIngangOnderzoek | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | kind    | kinderen | inOnderzoek                 | datumIngangOnderzoek | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | kind    | kinderen | inOnderzoek                 | datumIngangOnderzoek | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | kind    | kinderen | inOnderzoek                 | datumIngangOnderzoek | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
 
   Rule: verblijfplaats datumVan wordt gevuld uit datumAanvangAdreshouding of datumAanvangAdresBuitenland
 
@@ -294,20 +298,21 @@ Functionaliteit: leveren van een datum
       | burgerservicenummer | 999992934                                   |
       | fields              | burgerservicenummer,verblijfplaats.datumVan |
       Dan heeft de persoon met burgerservicenummer '555550001' de volgende 'verblijfplaats' gegevens
-      | naam     | waarde     |
-      | datumVan.type     | <type>     |
-      | datumVan.datum    | <datum>    |
-      | datumVan.jaar     | <jaar>     |
-      | datumVan.maand    | <maand>    |
-      | datumVan.onbekend | <onbekend> |
+      | naam                 | waarde        |
+      | datumVan.type        | <type>        |
+      | datumVan.datum       | <datum>       |
+      | datumVan.jaar        | <jaar>        |
+      | datumVan.maand       | <maand>       |
+      | datumVan.onbekend    | <onbekend>    |
+      | datumVan.langFormaat | <langFormaat> |
 
       Voorbeelden:
-      | titel                                            | datumAanvangAdreshouding | datumAanvangAdresBuitenland | type           | datum      | jaar | maand | onbekend |
-      | datumAanvangAdreshouding                         | 20200308                 |                             | Datum          | 2020-03-08 |      |       |          |
-      | datumAanvangAdreshouding alleen jaar en maand    | 20200300                 |                             | JaarMaandDatum |            | 2020 | 3     |          |
-      | datumAanvangAdreshouding alleen jaar             | 20200000                 |                             | JaarDatum      |            | 2020 |       |          |
-      | datumAanvangAdreshouding volledig onbekend       | 00000000                 |                             | DatumOnbekend  |            |      |       | true     |
-      | datumAanvangAdresBuitenland                      |                          | 20200308                    | Datum          | 2020-03-08 |      |       |          |
-      | datumAanvangAdresBuitenland alleen jaar en maand |                          | 20200300                    | JaarMaandDatum |            | 2020 | 3     |          |
-      | datumAanvangAdresBuitenland alleen jaar          |                          | 20200000                    | JaarDatum      |            | 2020 |       |          |
-      | datumAanvangAdresBuitenland volledig onbekend    |                          | 00000000                    | DatumOnbekend  |            |      |       | true     |
+      | titel                                            | datumAanvangAdreshouding | datumAanvangAdresBuitenland | type           | datum      | jaar | maand | onbekend | langFormaat  |
+      | datumAanvangAdreshouding                         | 20200308                 |                             | Datum          | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | datumAanvangAdreshouding alleen jaar en maand    | 20200300                 |                             | JaarMaandDatum |            | 2020 | 3     |          | maart 2020   |
+      | datumAanvangAdreshouding alleen jaar             | 20200000                 |                             | JaarDatum      |            | 2020 |       |          | 2020         |
+      | datumAanvangAdreshouding volledig onbekend       | 00000000                 |                             | DatumOnbekend  |            |      |       | true     | onbekend     |
+      | datumAanvangAdresBuitenland                      |                          | 20200308                    | Datum          | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | datumAanvangAdresBuitenland alleen jaar en maand |                          | 20200300                    | JaarMaandDatum |            | 2020 | 3     |          | maart 2020   |
+      | datumAanvangAdresBuitenland alleen jaar          |                          | 20200000                    | JaarDatum      |            | 2020 |       |          | 2020         |
+      | datumAanvangAdresBuitenland volledig onbekend    |                          | 00000000                    | DatumOnbekend  |            |      |       | true     | onbekend     |

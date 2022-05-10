@@ -644,7 +644,7 @@ components:
       pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,200}$|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$
       type: string
       description: |
-        De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
+        De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 3 letters.** **Zoeken met tekstvelden is case-insensitive.**
       example: Vries
     GeslachtFilter:
       pattern: ^([Mm]|[Vv]|[Oo])$
@@ -656,19 +656,19 @@ components:
       pattern: ^[a-zA-Z \']{1,10}$
       type: string
       description: |
-        Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
+        Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. **Zoeken met tekstvelden is case-insensitive.**
       example: de
     VoornamenOptioneelFilter:
       pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,199}\*{0,1}$
       type: string
       description: |
-        De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
+        De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. **Gebruik van de wildcard is toegestaan.** **Zoeken met tekstvelden is case-insensitive.**
       example: Dirk
     VoornamenVerplichtFilter:
       pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,200}$|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$
       type: string
       description: |
-        De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**
+        De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 3 letters.** **Zoeken met tekstvelden is case-insensitive.**
       example: Dirk
     Huisletter:
       pattern: ^[a-zA-Z]{1}$
@@ -700,7 +700,7 @@ components:
         \-\'\.]{7,79}$
       type: string
       description: |
-        Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).
+        Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 7 letters.** **Zoeken met tekstvelden is case-insensitive.**
       example: Tulpstraat
     NummeraanduidingIdentificatie:
       pattern: ^[0-9]{16}$
@@ -906,6 +906,9 @@ components:
       properties:
         type:
           type: string
+        langFormaat:
+          pattern: ^[a-z0-9 ]{1,17}$
+          type: string
       discriminator:
         propertyName: type
         mapping:
@@ -921,6 +924,7 @@ components:
         value:
           type: Datum
           datum: 2018-07-01
+          langFormaat: 1 juli 2018
       allOf:
       - $ref: '#/components/schemas/AbstractDatum'
       - type: object
@@ -936,6 +940,7 @@ components:
         value:
           type: DatumOnbekend
           onbekend: true
+          langFormaat: onbekend
       allOf:
       - $ref: '#/components/schemas/AbstractDatum'
       - type: object
@@ -951,6 +956,7 @@ components:
         value:
           type: JaarDatum
           jaar: 2018
+          langFormaat: 2018
       allOf:
       - $ref: '#/components/schemas/AbstractDatum'
       - type: object
@@ -972,6 +978,7 @@ components:
           type: JaarMaandDatum
           jaar: 2018
           maand: 7
+          langFormaat: juli 2018
       allOf:
       - $ref: '#/components/schemas/AbstractDatum'
       - type: object
@@ -1088,6 +1095,7 @@ components:
           Nationaliteit: '#/components/schemas/Nationaliteit'
           BehandeldAlsNederlander: '#/components/schemas/BehandeldAlsNederlander'
           VastgesteldNietNederlander: '#/components/schemas/VastgesteldNietNederlander'
+          Staatloos: '#/components/schemas/Staatloos'
           NationaliteitOnbekend: '#/components/schemas/NationaliteitOnbekend'
     Nationaliteit:
       description: |
@@ -1142,6 +1150,26 @@ components:
             $ref: '#/components/schemas/AbstractDatum'
           inOnderzoek:
             $ref: '#/components/schemas/BijzonderNederlanderschapInOnderzoek'
+    Staatloos:
+      description: |
+        * **redenOpname** : De reden op grond waarvan de persoon de nationaliteit gekregen heeft.
+      allOf:
+      - $ref: '#/components/schemas/AbstractNationaliteit'
+      - type: object
+        properties:
+          datumIngangGeldigheid:
+            $ref: '#/components/schemas/AbstractDatum'
+          inOnderzoek:
+            $ref: '#/components/schemas/StaatloosInOnderzoek'
+    StaatloosInOnderzoek:
+      allOf:
+      - $ref: '#/components/schemas/InOnderzoek'
+      - type: object
+        properties:
+          type:
+            type: boolean
+          redenOpname:
+            type: boolean
     NationaliteitOnbekend:
       description: |
         * **redenOpname** : De reden op grond waarvan de persoon de nationaliteit gekregen heeft.
