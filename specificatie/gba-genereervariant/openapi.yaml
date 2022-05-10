@@ -517,10 +517,7 @@ components:
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/GbaGeheimhoudingPersoonsgegevens'
         geslachtsaanduiding:
-          allOf:
-          - $ref: '#/components/schemas/Waardetabel'
-          - description: Voor de enumeratie van de geslachtsaanduiding wordt de tabel
-              met identificatie "geslacht" opgehaald m.b.v. "BRP tabellen bevragen"-API.
+          $ref: '#/components/schemas/Waardetabel'
         naam:
           $ref: '#/components/schemas/GbaNaamBasis'
         opschortingBijhouding:
@@ -547,10 +544,7 @@ components:
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/GbaGeheimhoudingPersoonsgegevens'
         geslachtsaanduiding:
-          allOf:
-          - $ref: '#/components/schemas/Waardetabel'
-          - description: Voor de enumeratie van de geslachtsaanduiding wordt de tabel
-              met identificatie "geslacht" opgehaald m.b.v. "BRP tabellen bevragen"-API.
+          $ref: '#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: '#/components/schemas/GbaInOnderzoek'
         kiesrecht:
