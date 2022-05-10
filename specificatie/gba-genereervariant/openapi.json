@@ -396,7 +396,7 @@
             "maxItems" : 130,
             "minItems" : 1,
             "type" : "array",
-            "description" : "Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen of - paden op te geven.\n",
+            "description" : "Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen of - paden op te geven. [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/fields_extensie.feature)\n",
             "items" : {
               "$ref" : "#/components/schemas/Field"
             }
