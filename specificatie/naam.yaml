@@ -68,10 +68,12 @@ components:
         - titel
         - predicaat
     AdellijkeTitelPredicaatType:
+      description: |
+        wordt gevuld op basis van de waarden die voorkomen in de tabel 'adellijketitelpredicaat' uit de Haal-Centraal-BRP-tabellen-bevragen API. 
+        De property **soort** geeft aan of het een 'predicaat' of een 'titel' betreft. 
       allOf:
         - $ref: 'common.yaml#/components/schemas/Waardetabel'
-        - description: Voor de enumeratie van adellijkeTitelPredicaat wordt tabel 38 met identificatie "Adellijke titel/predicaat" opgehaald m.b.v. "BRP tabellen bevragen"-API. Met de property 'soort' wordt aangegeven of het een 'predicaat' of een 'titel' betreft. 
-          properties:
+        - properties:
             soort:
               $ref: '#/components/schemas/AdellijkeTitelPredicaatSoort'
           example:
@@ -95,9 +97,7 @@ components:
         - $ref: '#/components/schemas/GbaNaamBasis'
         - properties:
             aanduidingNaamgebruik:
-              allOf:
-              - $ref: 'common.yaml#/components/schemas/Waardetabel'
-              - description: Voor de enumeratie van aanduidingNaamgebruik wordt de tabel met identificatie "naamgebruik" opgehaald m.b.v. "BRP tabellen bevragen"-API.
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
     NaamBasis:
       type: object
       properties:
@@ -146,13 +146,14 @@ components:
             voorletters:
               type: boolean
     NaamPersoon:
+      description: |
+        Gegevens over de naam van de persoon.
+        * **aanduidingNaamgebruik** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'naamgebruik' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       allOf:
         - $ref: '#/components/schemas/NaamBasis'
         - properties:
             aanduidingNaamgebruik:
-              allOf:
-              - $ref: 'common.yaml#/components/schemas/Waardetabel'
-              - description: Voor de enumeratie van aanduidingNaamgebruik wordt de tabel met identificatie "naamgebruik" opgehaald m.b.v. "BRP tabellen bevragen"-API.
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
             aanhef:
               $ref: '#/components/schemas/Aanhef'
             aanschrijfwijze:

@@ -8,6 +8,8 @@ components:
   schemas:
     AbstractNationaliteit:
       type: object
+      description: |
+        * **redenOpname** - De reden op grond waarvan de persoon de nationaliteit gekregen heeft. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'redennationaliteit' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       required:
         - type
       properties:
@@ -24,7 +26,7 @@ components:
           NationaliteitOnbekend: '#/components/schemas/NationaliteitOnbekend'
     Nationaliteit:
       description: |
-        * **redenOpname** : De reden op grond waarvan de persoon de nationaliteit gekregen heeft.
+        * **nationaliteit** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'nationaliteiten' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       allOf:
         - $ref: '#/components/schemas/AbstractNationaliteit'
         - type: object
@@ -32,9 +34,7 @@ components:
             datumIngangGeldigheid:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             nationaliteit:
-              allOf:
-              - $ref: 'common.yaml#/components/schemas/Waardetabel'
-              - description: Voor de enumeratie van land wordt tabel 32 met identificatie "Nationaliteiten" opgehaald m.b.v. "BRP tabellen bevragen"-API.
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
             inOnderzoek:
               $ref: '#/components/schemas/NationaliteitInOnderzoek'
     BehandeldAlsNederlander:
@@ -56,8 +56,6 @@ components:
             inOnderzoek:
               $ref: '#/components/schemas/BijzonderNederlanderschapInOnderzoek'
     NationaliteitOnbekend:
-      description: |
-        * **redenOpname** : De reden op grond waarvan de persoon de nationaliteit gekregen heeft.
       allOf:
         - $ref: '#/components/schemas/AbstractNationaliteit'
         - type: object
@@ -67,9 +65,6 @@ components:
             inOnderzoek:
               $ref: '#/components/schemas/NationaliteitOnbekendInOnderzoek'
     GbaNationaliteit:
-      description: |
-        Bij de LO GBA versie kunnen datums, bijv datumIngangGeldigheid de LoGbaDatum refereren
-        Het hoeft niet van AbstractDatum af te leiden omdat het nooit een andere type kan zijn
       type: object
       properties:
         aanduidingBijzonderNederlanderschap:
@@ -77,9 +72,7 @@ components:
         datumIngangGeldigheid:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
         nationaliteit:
-          allOf:
-          - $ref: 'common.yaml#/components/schemas/Waardetabel'
-          - description: Voor de enumeratie van land wordt tabel 32 met identificatie "Nationaliteiten" opgehaald m.b.v. "BRP tabellen bevragen"-API.
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
         redenOpname:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         inOnderzoek:

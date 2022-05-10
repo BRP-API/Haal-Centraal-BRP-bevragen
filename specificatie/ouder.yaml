@@ -33,9 +33,7 @@ components:
         burgerservicenummer:
           $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
         geslachtsaanduiding:
-          allOf:
-          - $ref: 'common.yaml#/components/schemas/Waardetabel'
-          - description: Voor de enumeratie van de geslachtsaanduiding wordt de tabel met identificatie "geslacht" opgehaald m.b.v. "BRP tabellen bevragen"-API.
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
         ouderAanduiding:
           $ref: '#/components/schemas/OuderAanduiding'
         datumIngangFamilierechtelijkeBetrekking:
@@ -58,9 +56,7 @@ components:
             burgerservicenummer:
               $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
             geslachtsaanduiding:
-              allOf:
-              - $ref: 'common.yaml#/components/schemas/Waardetabel'
-              - description: Voor de enumeratie van de geslachtsaanduiding wordt de tabel met identificatie "geslacht" opgehaald m.b.v. "BRP tabellen bevragen"-API.
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
             ouderAanduiding:
               $ref: '#/components/schemas/OuderAanduiding'
             datumIngangFamilierechtelijkeBetrekking:

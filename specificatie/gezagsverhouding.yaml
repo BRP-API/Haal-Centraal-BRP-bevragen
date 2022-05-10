@@ -10,6 +10,7 @@ components:
       type: object
       description: |
         Gegevens over het gezag over de persoon.
+        * **indicatieGezagMinderjarige** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'gezagminderjarige' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       properties:
         indicatieCurateleRegister:
           type: boolean
@@ -17,9 +18,7 @@ components:
             Geeft aan dat de persoon onder curatele is gesteld.
           example: true
         indicatieGezagMinderjarige:
-          allOf:
-          - $ref: 'common.yaml#/components/schemas/Waardetabel'
-          - description: Voor de enumeratie van indicatieGezagMinderjarige wordt de tabel met identificatie "gezag_minderjarige" opgehaald m.b.v. "BRP tabellen bevragen"-API.
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
     GbaGezagsverhouding:
       allOf:
         - $ref: '#/components/schemas/GezagsverhoudingBasis'

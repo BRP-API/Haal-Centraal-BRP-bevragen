@@ -57,6 +57,8 @@ components:
           $ref: 'verblijfplaats.yaml#/components/schemas/GbaVerblijfplaatsBeperkt'
     PersoonBeperkt:
       type: object
+      description: |
+        * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       properties:
         burgerservicenummer:
           $ref: '#/components/schemas/Burgerservicenummer'
@@ -65,9 +67,7 @@ components:
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/GeheimhoudingPersoonsgegevens'
         geslachtsaanduiding:
-          allOf:
-          - $ref: 'common.yaml#/components/schemas/Waardetabel'
-          - description: Voor de enumeratie van de geslachtsaanduiding wordt de tabel met identificatie "geslacht" opgehaald m.b.v. "BRP tabellen bevragen"-API.
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
         leeftijd:
           $ref: '#/components/schemas/Leeftijd'
         naam:
@@ -133,6 +133,8 @@ components:
             $ref: 'partner.yaml#/components/schemas/GbaPartner'
     Persoon:
       type: object
+      description: |
+        * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       properties:
         aNummer:
           $ref: '#/components/schemas/ANummer'
@@ -143,9 +145,7 @@ components:
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/GeheimhoudingPersoonsgegevens'
         geslachtsaanduiding:
-          allOf:
-          - $ref: 'common.yaml#/components/schemas/Waardetabel'
-          - description: Voor de enumeratie van de geslachtsaanduiding wordt de tabel met identificatie "geslacht" opgehaald m.b.v. "BRP tabellen bevragen"-API.
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: '#/components/schemas/PersoonInOnderzoek'
         kiesrecht:

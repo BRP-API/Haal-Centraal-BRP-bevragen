@@ -21,9 +21,7 @@ components:
         - type: object
           properties:
             land:
-              allOf:
-              - $ref: 'common.yaml#/components/schemas/Waardetabel'
-              - description: Voor de enumeratie van land wordt tabel 34 met identificatie "Landen" opgehaald m.b.v. "BRP tabellen bevragen"-API.
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
             plaats:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
             inOnderzoek:
@@ -35,10 +33,10 @@ components:
           $ref: '#/components/schemas/IndicatieOverleden'
     Overlijden:
       description: |
-        Gegevens over het overlijden van de persoon.
-        * **datum** : datum waarop de persoon is overleden.
-        * **land** : land waar de persoon is overleden.
-        * **plaats** : gemeente waar de persoon is overleden. Is de persoon overleden buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.
+        Gegevens over het overlijden.
+        * **datum** - datum waarop de persoon is overleden.
+        * **land** - land waar de persoon is overleden. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **plaats** - gemeente waar de persoon is overleden. Wordt gevuld op basis van de waarden die voorkomen in de tabel "gemeenten" voor een gemeente in Nederland of als de persoon is overleden buiten Nederland de omschrijving van een buitenlandse plaatsnaam of aanduiding.
       allOf:
         - $ref: '#/components/schemas/OverlijdenBasis'
         - type: object
@@ -46,9 +44,7 @@ components:
             datum:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             land:
-              allOf:
-              - $ref: 'common.yaml#/components/schemas/Waardetabel'
-              - description: Voor de enumeratie van land wordt tabel 34 met identificatie "Landen" opgehaald m.b.v. "BRP tabellen bevragen"-API.
+              $ref: 'common.yaml#/components/schemas/Waardetabel'
             plaats:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
             inOnderzoek:
