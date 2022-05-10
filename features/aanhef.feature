@@ -209,7 +209,7 @@ Rule: De aanhef voor een persoon met adellijke titel of predicaat wordt bepaald 
   De aanhef wordt op dezelfde manier samengesteld als voor een persoon zonder adellijke titel of predicaat in de volgende gevallen:
   - Wanneer de combinatie van adellijkeTitelPredicaat en geslacht niet voorkomt in bovenstaande tabel: geslacht "O" en geen prins of prinses
   - Wanneer de persoon de geslachtsnaam van de echtgenoot/partner gebruikt zonder de eigen geslachtsnaam: aanduidingNaamgebruik is "P"
-  - Wanneer de persoon een predicaat heeft en het geslacht is gelijk aan "V" (vrouw) en betrokkene heeft een partner
+  - Wanneer de persoon een predicaat heeft en het geslacht is gelijk aan "V" (vrouw) en betrokkene heeft een actuele partner
   - Wanneer de persoon een predicaat heeft en het geslacht is gelijk aan "V" (vrouw) en betrokkene gebruikt de naam van de (ex)partner (aanduidingNaamgebruik is ongelijk aan "E")
 
   Abstract Scenario: persoon heeft adellijke titel "<adellijkeTitelPredicaat>" en geslacht "<geslacht>"
@@ -331,10 +331,10 @@ Rule: De aanhef voor een persoon met adellijke titel of predicaat wordt bepaald 
     | aanhef | <aanhef> |
 
     Voorbeelden:
-      | geslacht | aanhef                   |
-      | M        | Hoogwelgeboren heer      |
-      | V        | Hoogwelgeboren vrouwe    |
-      | O        | Geachte P. van den Aedel |
+      | geslacht | aanhef                        |
+      | M        | Hoogwelgeboren heer           |
+      | V        | Geachte mevrouw Van den Aedel |
+      | O        | Geachte P. van den Aedel      |
 
   Abstract Scenario: persoon met partner heeft predicaat en naamgebruik "<naamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -588,23 +588,23 @@ Rule: Voor het bepalen van de aanhef gaat gebruik van de adellijke titel van de 
     | aanhef | <aanhef> |
 
     Voorbeelden:
-      | adellijkeTitelPredicaat | adellijkeTitelPredicaat partner | naamgebruik | aanhef                                |
-      | GI                      | B                               | E           | Hooggeboren vrouwe                    |
-      | GI                      | B                               | P           | Hoogwelgeboren vrouwe                 |
-      | GI                      | B                               | V           | Hoogwelgeboren vrouwe                 |
-      | GI                      | B                               | N           | Hoogwelgeboren vrouwe                 |
-      | BS                      | P                               | E           | Hoogwelgeboren vrouwe                 |
-      | BS                      | P                               | P           | Hoogheid                              |
-      | BS                      | P                               | V           | Hoogheid                              |
-      | BS                      | P                               | N           | Hoogheid                              |
-      | GI                      | R                               | E           | Hooggeboren vrouwe                    |
-      | GI                      | R                               | P           | Geachte mevrouw De Boer               |
-      | GI                      | R                               | V           | Geachte mevrouw De Boer-van den Aedel |
-      | GI                      | R                               | N           | Geachte mevrouw Van den Aedel-de Boer |
-      | PS                      | B                               | E           | Hoogheid                              |
-      | PS                      | B                               | P           | Hoogwelgeboren vrouwe                 |
-      | PS                      | B                               | V           | Hoogwelgeboren vrouwe                 |
-      | PS                      | B                               | N           | Hoogwelgeboren vrouwe                 |
+      | adellijkeTitelPredicaat | adellijkeTitelPredicaat partner | naamgebruik | aanhef                  |
+      | GI                      | B                               | E           | Hooggeboren vrouwe      |
+      | GI                      | B                               | P           | Hoogwelgeboren vrouwe   |
+      | GI                      | B                               | V           | Hoogwelgeboren vrouwe   |
+      | GI                      | B                               | N           | Hoogwelgeboren vrouwe   |
+      | BS                      | P                               | E           | Hoogwelgeboren vrouwe   |
+      | BS                      | P                               | P           | Hoogheid                |
+      | BS                      | P                               | V           | Hoogheid                |
+      | BS                      | P                               | N           | Hoogheid                |
+      | GI                      | R                               | E           | Hooggeboren vrouwe      |
+      | GI                      | R                               | P           | Geachte mevrouw De Boer |
+      | GI                      | R                               | V           | Hooggeboren vrouwe      |
+      | GI                      | R                               | N           | Hooggeboren vrouwe      |
+      | PS                      | B                               | E           | Hoogheid                |
+      | PS                      | B                               | P           | Hoogwelgeboren vrouwe   |
+      | PS                      | B                               | V           | Hoogwelgeboren vrouwe   |
+      | PS                      | B                               | N           | Hoogwelgeboren vrouwe   |
 
   Abstract Scenario: man heeft adellijke titel <adellijkeTitelPredicaat> en zijn partner heeft adellijke titel "<adellijkeTitelPredicaat partner>" bij aanduidingNaamgebruik "<naamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
