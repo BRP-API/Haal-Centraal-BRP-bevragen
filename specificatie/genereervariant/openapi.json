@@ -303,6 +303,7 @@
           "properties" : {
             "personen" : {
               "type" : "array",
+              "description" : "* **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n",
               "items" : {
                 "$ref" : "#/components/schemas/PersoonBeperkt"
               }
@@ -318,6 +319,7 @@
           "properties" : {
             "personen" : {
               "type" : "array",
+              "description" : "* **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n",
               "items" : {
                 "$ref" : "#/components/schemas/PersoonBeperkt"
               }
@@ -333,6 +335,7 @@
           "properties" : {
             "personen" : {
               "type" : "array",
+              "description" : "* **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n",
               "items" : {
                 "$ref" : "#/components/schemas/Persoon"
               }
@@ -348,6 +351,7 @@
           "properties" : {
             "personen" : {
               "type" : "array",
+              "description" : "* **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n",
               "items" : {
                 "$ref" : "#/components/schemas/PersoonBeperkt"
               }
@@ -363,6 +367,7 @@
           "properties" : {
             "personen" : {
               "type" : "array",
+              "description" : "* **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n",
               "items" : {
                 "$ref" : "#/components/schemas/PersoonBeperkt"
               }
@@ -378,6 +383,7 @@
           "properties" : {
             "personen" : {
               "type" : "array",
+              "description" : "* **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n",
               "items" : {
                 "$ref" : "#/components/schemas/PersoonBeperkt"
               }
@@ -670,7 +676,8 @@
           "verblijfplaats" : {
             "$ref" : "#/components/schemas/AbstractVerblijfplaatsBeperkt"
           }
-        }
+        },
+        "description" : "* **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
       },
       "Burgerservicenummer" : {
         "pattern" : "^[0-9]{9}$",
@@ -766,7 +773,8 @@
               "$ref" : "#/components/schemas/AbstractPartner"
             }
           }
-        }
+        },
+        "description" : "* **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
       },
       "ANummer" : {
         "pattern" : "^[0-9]{10}$",
@@ -937,6 +945,7 @@
         "description" : "De verzameling namen voor de geslachtsnaam, gescheiden door spaties.\n"
       },
       "AdellijkeTitelPredicaatType" : {
+        "description" : "wordt gevuld op basis van de waarden die voorkomen in de tabel 'adellijketitelpredicaat' uit de Haal-Centraal-BRP-tabellen-bevragen API. \nDe property **soort** geeft aan of het een 'predicaat' of een 'titel' betreft. \n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/Waardetabel"
         }, {
@@ -1040,7 +1049,8 @@
             "land" : {
               "$ref" : "#/components/schemas/Waardetabel"
             }
-          }
+          },
+          "description" : "* **land** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
         } ]
       },
       "Adresregel1" : {
@@ -1079,7 +1089,8 @@
             "woonplaats" : {
               "$ref" : "#/components/schemas/Woonplaats"
             }
-          }
+          },
+          "description" : "* **functieAdres** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'soortadres' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
         } ]
       },
       "Woonplaats" : {
@@ -1126,7 +1137,8 @@
             "woonplaats" : {
               "$ref" : "#/components/schemas/Woonplaats"
             }
-          }
+          },
+          "description" : "* **functieAdres** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'soortadres' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
         } ]
       },
       "Locatiebeschrijving" : {
@@ -1272,6 +1284,7 @@
         }
       },
       "NaamPersoon" : {
+        "description" : "Gegevens over de naam van de persoon.\n* **aanduidingNaamgebruik** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'naamgebruik' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/NaamBasis"
         }, {
@@ -1383,6 +1396,7 @@
             "$ref" : "#/components/schemas/Waardetabel"
           }
         },
+        "description" : "* **redenOpname** - De reden op grond waarvan de persoon de nationaliteit gekregen heeft. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'redennationaliteit' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n",
         "discriminator" : {
           "propertyName" : "type",
           "mapping" : {
@@ -1394,7 +1408,7 @@
         }
       },
       "Nationaliteit" : {
-        "description" : "* **redenOpname** : De reden op grond waarvan de persoon de nationaliteit gekregen heeft.\n",
+        "description" : "* **nationaliteit** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'nationaliteiten' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/AbstractNationaliteit"
         }, {
@@ -1474,7 +1488,6 @@
         } ]
       },
       "NationaliteitOnbekend" : {
-        "description" : "* **redenOpname** : De reden op grond waarvan de persoon de nationaliteit gekregen heeft.\n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/AbstractNationaliteit"
         }, {
@@ -1505,7 +1518,7 @@
         } ]
       },
       "Geboorte" : {
-        "description" : "Gegevens over de geboorte.\n* **datum** : datum waarop de persoon is geboren.\n* **land** : land waar de persoon is geboren\n* **plaats** : gemeente waar de persoon is geboren. Is de persoon geboren buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.\n",
+        "description" : "Gegevens over de geboorte.\n* **datum** - datum waarop de persoon is geboren.\n* **land** - land waar de persoon is geboren. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n* **plaats** - gemeente waar de persoon is geboren. Wordt gevuld op basis van de waarden die voorkomen in de tabel \"gemeenten\" voor een gemeente in Nederland of als de persoon is geboren buiten Nederland de omschrijving van een buitenlandse plaatsnaam of aanduiding.\n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/GeboorteBeperkt"
         }, {
@@ -1555,7 +1568,7 @@
         } ]
       },
       "Overlijden" : {
-        "description" : "Gegevens over het overlijden van de persoon.\n* **datum** : datum waarop de persoon is overleden.\n* **land** : land waar de persoon is overleden.\n* **plaats** : gemeente waar de persoon is overleden. Is de persoon overleden buiten Nederland, dan bevat het antwoord alleen een buitenlandse plaatsnaam of aanduiding.\n",
+        "description" : "Gegevens over het overlijden.\n* **datum** - datum waarop de persoon is overleden.\n* **land** - land waar de persoon is overleden. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n* **plaats** - gemeente waar de persoon is overleden. Wordt gevuld op basis van de waarden die voorkomen in de tabel \"gemeenten\" voor een gemeente in Nederland of als de persoon is overleden buiten Nederland de omschrijving van een buitenlandse plaatsnaam of aanduiding.\n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/OverlijdenBasis"
         }, {
@@ -1618,6 +1631,7 @@
         }
       },
       "VerblijfplaatsBuitenland" : {
+        "description" : "* **gemeenteVanInschrijving** - Wordt gevuld op basis van de waarden die voorkomen in de tabel \"gemeenten\" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats\n* **land** - land waar de persoon is overleden. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/AbstractVerblijfplaats"
         }, {
@@ -1687,7 +1701,7 @@
         } ]
       },
       "Adres" : {
-        "description" : "Gegevens over het adres van een persoon.\n* **datumVan** : de datum van aangifte of ambtshalve melding van verblijf en adres.\n* **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden.\n* **datumInschrijvingInGemeente**: bij inschrijving op grond van een verhuisaangifte door de burger is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop het voornemen van ambtshalve opneming schriftelijk aan de persoon is medegedeeld.\n* **datumVestigingInNederland** : datum van inschrijving in Nederland.\n* **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland.\n* **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten.\"\n",
+        "description" : "Gegevens over het adres van een persoon.\n* **functieAdres** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'soortadres' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n* **aanduidingBijHuisnummer** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'aanduidingbijhuisnummer' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n* **datumVan** : de datum van aangifte of ambtshalve melding van verblijf en adres.\n* **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden.\n* **datumInschrijvingInGemeente**: bij inschrijving op grond van een verhuisaangifte door de burger is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop het voornemen van ambtshalve opneming schriftelijk aan de persoon is medegedeeld.\n* **datumVestigingInNederland** : datum van inschrijving in Nederland.\n* **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten. Wordt gevuld op basis van de waarden die voorkomen in de tabel \"gemeenten\" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats\n* **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/AbstractVerblijfplaats"
         }, {
@@ -1859,6 +1873,7 @@
         } ]
       },
       "VerblijfplaatsOnbekend" : {
+        "description" : "* **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten. Wordt gevuld op basis van de waarden die voorkomen in de tabel \"gemeenten\" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats\n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/AbstractVerblijfplaats"
         }, {
@@ -1898,6 +1913,7 @@
         } ]
       },
       "Locatie" : {
+        "description" : "* **functieAdres** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'soortadres' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n* **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten. Wordt gevuld op basis van de waarden die voorkomen in de tabel \"gemeenten\" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats\n* **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/AbstractVerblijfplaats"
         }, {
@@ -2014,7 +2030,7 @@
             "$ref" : "#/components/schemas/Waardetabel"
           }
         },
-        "description" : "Gegevens over het gezag over de persoon.\n"
+        "description" : "Gegevens over het gezag over de persoon.\n* **indicatieGezagMinderjarige** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'gezagminderjarige' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
       },
       "GezagsverhoudingInOnderzoek" : {
         "description" : "Geeft aan welke gegevens van de gezagsverhouding in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
@@ -2048,7 +2064,7 @@
             "$ref" : "#/components/schemas/VerblijfstitelInOnderzoek"
           }
         },
-        "description" : "Gegevens over de verblijfsrechtelijke status van de persoon.\n* **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd.\n* **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.\n* **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt.\n"
+        "description" : "Gegevens over de verblijfsrechtelijke status van de persoon.\n* **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd.\n* **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.\n* **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'verblijfstitel' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
       },
       "VerblijfstitelInOnderzoek" : {
         "description" : "Geeft aan welke gegevens over de verblijfstitel in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
@@ -2265,7 +2281,8 @@
             "aangaanHuwelijkPartnerschap" : {
               "$ref" : "#/components/schemas/AangaanHuwelijkPartnerschap"
             }
-          }
+          },
+          "description" : "* **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n* **soortVerbintenis** - Wordt gevuld op basis van de waarden die voorkomen in de tabel  \"soortverbintenis\" uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
         } ]
       },
       "PartnerInOnderzoek" : {
@@ -2303,7 +2320,7 @@
             "$ref" : "#/components/schemas/AangaanHuwelijkPartnerschapInOnderzoek"
           }
         },
-        "description" : "Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.\n* **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.\n* **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan.\n* **plaats** : De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Voor een plaats buiten Nederland bevat het antwoord een buitenlandse plaatsnaam of aanduiding.\n"
+        "description" : "Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.\n* **datum** - De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.\n* **land** - Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n* **plaats** - De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld op basis van de waarden die voorkomen in de tabel \"gemeenten\" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.\n"
       },
       "AangaanHuwelijkPartnerschapInOnderzoek" : {
         "description" : "Geeft aan welke gegevens over het voltrekken van het huwelijk of aangaan van het partnerschap in onderzoek zijn.\nZie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
