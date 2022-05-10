@@ -126,7 +126,7 @@ components:
         locatiebeschrijving:
           $ref: '#/components/schemas/Locatiebeschrijving'
         inOnderzoek:
-          $ref: "#components/schemas/VerblijfadresLocatieInOnderzoek"
+          $ref: "#/components/schemas/VerblijfadresLocatieInOnderzoek"
     AbstractVerblijfplaatsBeperkt:
       type: object
       description: |
