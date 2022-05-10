@@ -517,7 +517,10 @@ components:
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/GbaGeheimhoudingPersoonsgegevens'
         geslachtsaanduiding:
-          $ref: '#/components/schemas/Waardetabel'
+          allOf:
+          - $ref: '#/components/schemas/Waardetabel'
+          - description: Voor de enumeratie van de geslachtsaanduiding wordt de tabel
+              met identificatie "geslacht" opgehaald m.b.v. "BRP tabellen bevragen"-API.
         naam:
           $ref: '#/components/schemas/GbaNaamBasis'
         opschortingBijhouding:
@@ -544,7 +547,10 @@ components:
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/GbaGeheimhoudingPersoonsgegevens'
         geslachtsaanduiding:
-          $ref: '#/components/schemas/Waardetabel'
+          allOf:
+          - $ref: '#/components/schemas/Waardetabel'
+          - description: Voor de enumeratie van de geslachtsaanduiding wordt de tabel
+              met identificatie "geslacht" opgehaald m.b.v. "BRP tabellen bevragen"-API.
         inOnderzoek:
           $ref: '#/components/schemas/GbaInOnderzoek'
         kiesrecht:
@@ -710,6 +716,10 @@ components:
       description: |
         De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
     AdellijkeTitelPredicaatType:
+      description: "wordt gevuld op basis van de waarden die voorkomen in de tabel\
+        \ 'adellijketitelpredicaat' uit de Haal-Centraal-BRP-tabellen-bevragen API.\
+        \ \nDe property **soort** geeft aan of het een 'predicaat' of een 'titel'\
+        \ betreft. \n"
       allOf:
       - $ref: '#/components/schemas/Waardetabel'
       - properties:
@@ -863,9 +873,6 @@ components:
           $ref: '#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: '#/components/schemas/GbaInOnderzoek'
-      description: |
-        Bij de LO GBA versie kunnen datums, bijv datumIngangGeldigheid de LoGbaDatum refereren
-        Het hoeft niet van AbstractDatum af te leiden omdat het nooit een andere type kan zijn
     GbaGeboorte:
       allOf:
       - $ref: '#/components/schemas/GbaGeboorteBeperkt'
@@ -974,6 +981,7 @@ components:
           $ref: '#/components/schemas/Waardetabel'
       description: |
         Gegevens over het gezag over de persoon.
+        * **indicatieGezagMinderjarige** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'gezagminderjarige' uit de Haal-Centraal-BRP-tabellen-bevragen API.
     GbaVerblijfstitel:
       type: object
       properties:
@@ -1055,11 +1063,15 @@ components:
           $ref: '#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: '#/components/schemas/GbaInOnderzoek'
-      description: |
-        Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.
-        * **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.
-        * **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan.
-        * **plaats** : De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Voor een plaats buiten Nederland bevat het antwoord een buitenlandse plaatsnaam of aanduiding.
+      description: "Gegevens over de voltrekking van het huwelijk of het aangaan van\
+        \ het geregistreerd partnerschap.\n* **datum** - De datum waarop het huwelijk\
+        \ is voltrokken of het partnerschap is aangegaan. \n* **land** - Het land\
+        \ waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt\
+        \ gevuld op basis van de waarden die voorkomen in de tabel 'landen' uit de\
+        \ Haal-Centraal-BRP-tabellen-bevragen API.\n* **plaats** - De gemeente waar\
+        \ het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld\
+        \ op basis van de waarden die voorkomen in de tabel \"gemeenten\" voor een\
+        \ gemeente in Nederland of de omschrijving van een buitenlandse plaats.\n"
     GbaOntbindingHuwelijkPartnerschap:
       type: object
       properties:
