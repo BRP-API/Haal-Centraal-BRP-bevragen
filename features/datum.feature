@@ -267,7 +267,6 @@ Functionaliteit: leveren van een datum
       | burgerservicenummer | 555550001 |
       En de persoon heeft een 'ouder' met de volgende gegevens
       | naam                                    | waarde     |
-      | burgerservicenummer                     | 555550002  |
       | datumIngangFamilierechtelijkeBetrekking | <GbaDatum> |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                         |
@@ -295,10 +294,7 @@ Functionaliteit: leveren van een datum
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550001 |
-      En de persoon heeft een '<relatie>' met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550002 |
-      En de '<relatie>' heeft de volgende '<groep>' gegevens
+      En de persoon heeft een '<relatie>' met de volgende '<groep>' gegevens
       | naam   | waarde     |
       | <veld> | <GbaDatum> |
       Als personen wordt gezocht met de volgende parameters
@@ -343,7 +339,6 @@ Functionaliteit: leveren van een datum
       | burgerservicenummer | 555550001 |
       En de persoon heeft een '<relatie>' met de volgende gegevens
       | naam                                     | waarde                   |
-      | burgerservicenummer                      | 555550002                |
       | aanduiding gegevens in onderzoek (83.10) | <GBA InOnderzoek waarde> |
       | datum ingang onderzoek (83.20)           | <GbaDatum>               |
       Als personen wordt gezocht met de volgende parameters
