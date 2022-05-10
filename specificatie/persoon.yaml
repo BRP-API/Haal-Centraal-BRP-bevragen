@@ -44,9 +44,7 @@ components:
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/GbaGeheimhoudingPersoonsgegevens'
         geslachtsaanduiding:
-          allOf:
-          - $ref: 'common.yaml#/components/schemas/Waardetabel'
-          - description: Voor de enumeratie van de geslachtsaanduiding wordt de tabel met identificatie "geslacht" opgehaald m.b.v. "BRP tabellen bevragen"-API.
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
         naam:
           $ref: 'naam.yaml#/components/schemas/GbaNaamBasis'
         opschortingBijhouding:
