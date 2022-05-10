@@ -116,7 +116,13 @@ components:
         type:
           type: string
         fields:
-          $ref: 'filter.yaml#/components/schemas/Fields'
+          description: |
+            Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen of - paden op te geven.
+          type: array
+          maxItems: 130
+          minItems: 1
+          items:
+            $ref: 'filter.yaml#/components/schemas/Field'
         gemeenteVanInschrijving:
           $ref: 'verblijfplaats.yaml#/components/schemas/GemeenteVanInschrijving'
     RaadpleegMetBurgerservicenummer:
