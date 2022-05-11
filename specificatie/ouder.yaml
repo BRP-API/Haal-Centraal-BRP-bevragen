@@ -23,7 +23,6 @@ components:
         propertyName: type
         mapping:
           Ouder: '#/components/schemas/Ouder'
-          OuderOnbekend: '#/components/schemas/OuderOnbekend'
     GbaOuder:
       type: object
       description: |
@@ -67,16 +66,6 @@ components:
               $ref: '#/components/schemas/OuderInOnderzoek'
             geboorte:
               $ref: 'geboorte.yaml#/components/schemas/Geboorte'
-    OuderOnbekend:
-      allOf:
-        - $ref: '#/components/schemas/AbstractOuder'
-        - type: object
-          properties:
-            ouderAanduiding:
-              $ref: '#/components/schemas/OuderAanduiding'
-            indicatieOnbekend:
-              type: boolean
-              default: false
     OuderInOnderzoek:
       description: |
         Geeft aan welke gegevens van de de ouder in onderzoek zijn.

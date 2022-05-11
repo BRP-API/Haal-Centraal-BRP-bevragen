@@ -19,7 +19,6 @@ components:
         propertyName: type
         mapping:
           Partner: '#/components/schemas/Partner'
-          PartnerOnbekend: '#/components/schemas/PartnerOnbekend'
     GbaPartner:
       type: object
       properties:
@@ -58,14 +57,6 @@ components:
               $ref: '#/components/schemas/PartnerInOnderzoek'
             aangaanHuwelijkPartnerschap:
               $ref: '#/components/schemas/AangaanHuwelijkPartnerschap'
-    PartnerOnbekend:
-      allOf:
-        - $ref: '#/components/schemas/AbstractPartner'
-        - type: object
-          properties:
-            indicatieOnbekend:
-              type: boolean
-              default: false
     PartnerInOnderzoek:
       description: |
         Geeft aan welke gegevens over het huwelijk of het partnerschap in onderzoek zijn.
