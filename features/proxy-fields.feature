@@ -121,7 +121,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar v
 
   @proxy
   Rule: wanneer een gegeven van een ouder, kind of partner wordt gevraagd, moet de hele ouder, partner of kind worden gevraagd
-    # dit is nodig om het type te bepalen (Ouder, OuderOnbekend, Partner, PartnerOnbekend, Kind, KindOnbekend)
+    # dit is nodig om het type te bepalen (Ouder, OnbekendOuder, Partner, OnbekendPartner, Kind, OnbekendKind)
     # voor de partner is dit ook nodig voor ontbindingHuwelijkPartnerschap
 
     @proxy
