@@ -667,6 +667,9 @@
           "overlijden" : {
             "$ref" : "#/components/schemas/GbaOverlijdenBasis"
           },
+          "gemeenteVanInschrijving" : {
+            "$ref" : "#/components/schemas/Waardetabel"
+          },
           "verblijfplaats" : {
             "$ref" : "#/components/schemas/GbaVerblijfplaatsBeperkt"
           }
@@ -983,6 +986,9 @@
           "postcode" : {
             "$ref" : "#/components/schemas/Postcode"
           },
+          "woonplaats" : {
+            "$ref" : "#/components/schemas/Woonplaats"
+          },
           "locatiebeschrijving" : {
             "$ref" : "#/components/schemas/Locatiebeschrijving"
           },
@@ -1004,6 +1010,13 @@
         "maxLength" : 80,
         "type" : "string",
         "example" : "Tulpstraat"
+      },
+      "Woonplaats" : {
+        "title" : "woonplaats naam",
+        "pattern" : "^[a-zA-Z0-9À-ž \\(\\)\\,\\.\\-\\']{1,80}$",
+        "type" : "string",
+        "description" : "Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.\n",
+        "example" : "Duiven"
       },
       "Locatiebeschrijving" : {
         "maxLength" : 35,
@@ -1215,13 +1228,6 @@
         "type" : "string",
         "description" : "De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.\n",
         "example" : "0226010000038820"
-      },
-      "Woonplaats" : {
-        "title" : "woonplaats naam",
-        "pattern" : "^[a-zA-Z0-9À-ž \\(\\)\\,\\.\\-\\']{1,80}$",
-        "type" : "string",
-        "description" : "Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.\n",
-        "example" : "Duiven"
       },
       "NaamOpenbareRuimte" : {
         "maxLength" : 80,

@@ -526,6 +526,8 @@ components:
           $ref: '#/components/schemas/OpschortingBijhoudingBasis'
         overlijden:
           $ref: '#/components/schemas/GbaOverlijdenBasis'
+        gemeenteVanInschrijving:
+          $ref: '#/components/schemas/Waardetabel'
         verblijfplaats:
           $ref: '#/components/schemas/GbaVerblijfplaatsBeperkt'
     Burgerservicenummer:
@@ -779,6 +781,8 @@ components:
           $ref: '#/components/schemas/Waardetabel'
         postcode:
           $ref: '#/components/schemas/Postcode'
+        woonplaats:
+          $ref: '#/components/schemas/Woonplaats'
         locatiebeschrijving:
           $ref: '#/components/schemas/Locatiebeschrijving'
         land:
@@ -793,6 +797,13 @@ components:
       maxLength: 80
       type: string
       example: Tulpstraat
+    Woonplaats:
+      title: woonplaats naam
+      pattern: ^[a-zA-Z0-9À-ž \(\)\,\.\-\']{1,80}$
+      type: string
+      description: |
+        Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.
+      example: Duiven
     Locatiebeschrijving:
       maxLength: 35
       type: string
@@ -947,13 +958,6 @@ components:
       description: |
         De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.
       example: "0226010000038820"
-    Woonplaats:
-      title: woonplaats naam
-      pattern: ^[a-zA-Z0-9À-ž \(\)\,\.\-\']{1,80}$
-      type: string
-      description: |
-        Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.
-      example: Duiven
     NaamOpenbareRuimte:
       maxLength: 80
       type: string
