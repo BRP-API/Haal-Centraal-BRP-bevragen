@@ -649,7 +649,7 @@ Rule: Voor het bepalen van de aanhef gaat gebruik van de adellijke titel van de 
 
 Rule: Bij meerdere actuele (niet ontbonden) huwelijken/partnerschappen worden de naamgegevens van de eerste partner (oudste relatie) gebruikt voor het samenstellen van de aanhef
 
-  Scenario: meerdere actuele relaties
+  Abstract Scenario: meerdere actuele relaties
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                        | waarde    |
     | burgerservicenummer         | 999992934 |
@@ -660,38 +660,41 @@ Rule: Bij meerdere actuele (niet ontbonden) huwelijken/partnerschappen worden de
     | geslachtsnaam (02.40)          | Groen              |
     | voornamen (02.10)              | Ferdinand Cornelis |
     | aanduiding naamgebruik (61.10) | V                  |
-    En de persoon heeft een 'partner' met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992935 |
-    En de 'partner' heeft de volgende 'naam' gegevens
+    En de persoon heeft een 'partner' met de volgende 'naam' gegevens
     | naam                  | waarde |
     | voorvoegsel (02.30)   |        |
     | geslachtsnaam (02.40) | Geel   |
     En de 'partner' heeft de volgende 'aangaanHuwelijkPartnerschap' gegevens
-    | naam                                                               | waarde   |
-    | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 19580401 |
-    En de persoon heeft een 'partner' met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992936 |
-    En de 'partner' heeft de volgende 'naam' gegevens
+    | naam                                                               | waarde            |
+    | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | <datum partner 1> |
+    En de persoon heeft een 'partner' met de volgende 'naam' gegevens
     | naam                  | waarde |
     | voorvoegsel (02.30)   |        |
     | geslachtsnaam (02.40) | Roodt  |
     En de 'partner' heeft de volgende 'aangaanHuwelijkPartnerschap' gegevens
-    | naam                                                               | waarde   |
-    | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 19610808 |
+    | naam                                                               | waarde            |
+    | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | <datum partner 2> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
     | fields              | naam.aanhef                     |
     Dan heeft de response een persoon met de volgende 'naam' gegevens
-    | naam   | waarde                     |
-    | aanhef | Geachte mevrouw Geel-Groen |
+    | naam   | waarde                 |
+    | aanhef | Geachte mevrouw <naam> |
+
+    Voorbeelden:
+    | datum partner 1 | datum partner 2 | naam        | omschrijving                                                                                                                      |
+    | 19580401        | 19610808        | Geel-Groen  |                                                                                                                                   |
+    | 19580401        | 19610800        | Geel-Groen  |                                                                                                                                   |
+    | 19580401        | 19610000        | Geel-Groen  |                                                                                                                                   |
+    | 19580401        | 00000000        | Roodt-Groen | partner met datum onbekend wordt eerste partner                                                                                   |
+    | 19610800        | 19610808        | Geel-Groen  | jaar en maand zijn bekend en zijn gelijk, partner met dag onbekend wordt eerste partner                                           |
+    | 19610000        | 19610800        | Geel-Groen  | partner 1 alleen jaar bekend, partner 2 jaar en maand bekend, jaar gelijk, partner met maand en dag onbekend wordt eerste partner |
 
 Rule: Bij meerdere huwelijken/partnerschappen die allen ontbonden zijn, worden de naamgegevens van de laatst ontbonden partner gebruikt voor het samenstellen van de aanhef
 
-  Scenario: meerdere ontbonden relaties gebruikt de laatst ontbonden relatie
+  Abstract Scenario: meerdere ontbonden relaties gebruikt de laatst ontbonden relatie
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                        | waarde    |
     | burgerservicenummer         | 999992934 |
@@ -702,10 +705,7 @@ Rule: Bij meerdere huwelijken/partnerschappen die allen ontbonden zijn, worden d
     | geslachtsnaam (02.40)          | Wit    |
     | voornamen (02.10)              | Jan    |
     | aanduiding naamgebruik (61.10) | V      |
-    En de persoon heeft een 'partner' met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992935 |
-    En de 'partner' heeft de volgende 'naam' gegevens
+    En de persoon heeft een 'partner' met de volgende 'naam' gegevens
     | naam                  | waarde |
     | voorvoegsel (02.30)   |        |
     | geslachtsnaam (02.40) | Geel   |
@@ -713,12 +713,9 @@ Rule: Bij meerdere huwelijken/partnerschappen die allen ontbonden zijn, worden d
     | naam                                                               | waarde   |
     | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 19580401 |
     En de 'partner' heeft de volgende 'ontbindingHuwelijkPartnerschap' gegevens
-    | naam                                                         | waarde   |
-    | datum ontbinding huwelijk/geregistreerd partnerschap (07.10) | 19601001 |
-    En de persoon heeft een 'partner' met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992936 |
-    En de 'partner' heeft de volgende 'naam' gegevens
+    | naam                                                         | waarde            |
+    | datum ontbinding huwelijk/geregistreerd partnerschap (07.10) | <datum partner 1> |
+    En de persoon heeft een 'partner' met de volgende 'naam' gegevens
     | naam                  | waarde |
     | voorvoegsel (02.30)   |        |
     | geslachtsnaam (02.40) | Roodt  |
@@ -726,8 +723,8 @@ Rule: Bij meerdere huwelijken/partnerschappen die allen ontbonden zijn, worden d
     | naam                                                               | waarde   |
     | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 19610422 |
     En de 'partner' heeft de volgende 'ontbindingHuwelijkPartnerschap' gegevens
-    | naam                                                         | waarde   |
-    | datum ontbinding huwelijk/geregistreerd partnerschap (07.10) | 20061014 |
+    | naam                                                         | waarde            |
+    | datum ontbinding huwelijk/geregistreerd partnerschap (07.10) | <datum partner 2> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -736,6 +733,15 @@ Rule: Bij meerdere huwelijken/partnerschappen die allen ontbonden zijn, worden d
     Dan heeft de response een persoon met de volgende 'naam' gegevens
     | naam   | waarde                    |
     | aanhef | Geachte mevrouw Roodt-Wit |
+
+    Voorbeelden:
+    | datum partner 1 | datum partner 2 |
+    | 19601001        | 20061014        |
+    | 19601000        | 20061014        |
+    | 19600000        | 20061014        |
+    | 00000000        | 20061014        |
+    | 20061000        | 20061014        |
+    | 20060000        | 20061000        |
 
   Scenario: meerdere ontbonden relaties en oudste relatie is het laatst ontbonden
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -748,10 +754,7 @@ Rule: Bij meerdere huwelijken/partnerschappen die allen ontbonden zijn, worden d
     | geslachtsnaam (02.40)          | Wit    |
     | voornamen (02.10)              | Jan    |
     | aanduiding naamgebruik (61.10) | V      |
-    En de persoon heeft een 'partner' met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992935 |
-    En de 'partner' heeft de volgende 'naam' gegevens
+    En de persoon heeft een 'partner' met de volgende 'naam' gegevens
     | naam                  | waarde |
     | voorvoegsel (02.30)   |        |
     | geslachtsnaam (02.40) | Zwart  |
@@ -761,10 +764,7 @@ Rule: Bij meerdere huwelijken/partnerschappen die allen ontbonden zijn, worden d
     En de 'partner' heeft de volgende 'ontbindingHuwelijkPartnerschap' gegevens
     | naam                                                         | waarde   |
     | datum ontbinding huwelijk/geregistreerd partnerschap (07.10) | 20061001 |
-    En de persoon heeft een 'partner' met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992936 |
-    En de 'partner' heeft de volgende 'naam' gegevens
+    En de persoon heeft een 'partner' met de volgende 'naam' gegevens
     | naam                  | waarde |
     | voorvoegsel (02.30)   |        |
     | geslachtsnaam (02.40) | Blaauw |
