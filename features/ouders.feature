@@ -255,9 +255,9 @@ Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenome
     En heeft de ouder GEEN gegevens
 
 @proxy
-Rule: Wanneer de geslachtsnaam van de ouder onbekend is, wordt de ouder geleverd met type "OnbekendOuder" en indicatieOnbekend met waarde true
+Rule: Wanneer de geslachtsnaam van de ouder onbekend is, wordt de ouder geleverd met type "OnbekendOuder".
   - Dit is het geval wanneer geslachtsnaam leeg is of de standaardwaarde "." heeft
-  - Wanneer van de ouder wel gegevens geregistreerd zijn, maar geen van de met fields gevraagde gegevens heeft een waarde, dan is het type "Ouder" en wordt indicatieOnbekend NIET opgenomen
+  - Wanneer van de ouder wel gegevens geregistreerd zijn, maar geen van de met fields gevraagde gegevens heeft een waarde, dan is het type "Ouder".
 
   # Onderliggende aanname is dat wanneer de geslachtsnaam van de ouder onbekend is, ook andere naamgegevens niet bekend zijn of niet relevant.
   # Andere eventueel wel ingevulde gegevens over de ouder, zoals een geboortedatum of geslacht, zijn dan niet relevant meer.
@@ -287,8 +287,7 @@ Rule: Wanneer de geslachtsnaam van de ouder onbekend is, wordt de ouder geleverd
     Dan heeft de persoon met burgerservicenummer '999993008' een 'ouder' met alleen de volgende gegevens
     | naam                 | waarde        |
     | type                 | OnbekendOuder |
-    | indicatieOnbekend    | true          |
-    | ouderAanduiding      | 1             |
+
 
   @proxy
   Scenario: er is wel een identificerend gegeven geslachtsnaam van de ouder

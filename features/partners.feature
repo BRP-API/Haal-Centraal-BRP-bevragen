@@ -359,7 +359,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
 
 
   @proxy
-  Rule: Wanneer geen van de gegevens van de partner een waarde heeft, wordt de partner geleverd met type "PartnerOnbekend" en indicatieOnbekend met waarde true
+  Rule: Wanneer geen van de gegevens van de partner een waarde heeft, wordt de partner geleverd met type "PartnerOnbekend".
     - Dit is het geval wanneer elk gegeven van de partner leeg is of een standaardwaarde heeft
     - Het gaat om de volgende standaardwaarden:
       | property                           | onbekend waarde |
@@ -371,7 +371,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | aangaanHuwelijkPartnerschap.datum  | 00000000        |
       | aangaanHuwelijkPartnerschap.plaats | 0000            |
       | aangaanHuwelijkPartnerschap.land   | 0000            |
-    - Wanneer van de partner en het huwelijk/partnerschap wel gegevens geregistreerd zijn, maar geen van de met fields gevraagde gegevens heeft een waarde, dan is het type "Partner" en wordt indicatieOnbekend NIET opgenomen
+    - Wanneer van de partner en het huwelijk/partnerschap wel gegevens geregistreerd zijn, maar geen van de met fields gevraagde gegevens heeft een waarde, dan is het type "Partner".
     - Een waarde voor inOnderzoek heeft geen invloed op het bepalen van het type: wanneer alle gegevens van de partner leeg of een standaardwaarde zijn, behalve inOnderzoek, is het type "PartnerOnbekend"
 
     @proxy
@@ -410,7 +410,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       En heeft de partner de volgende gegevens
       | naam              | waarde     |
       | type              | <type>     |
-      | indicatieOnbekend | <onbekend> |
+
 
       Voorbeelden:
       | omschrijving                            | geslacht | geslachtsnaam | geboortedatum | geboorteplaats | geboorteland | soort verbintenis | aangaan datum | aangaan plaats | aangaan land | onderzoek | datum onderzoek | type            | onbekend |
