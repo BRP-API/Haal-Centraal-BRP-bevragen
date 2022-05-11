@@ -185,6 +185,8 @@ components:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         postcode:
           $ref: '#/components/schemas/Postcode'
+        woonplaats:
+          $ref: '#/components/schemas/Woonplaats'
         locatiebeschrijving:
           $ref: '#/components/schemas/Locatiebeschrijving'
         land:
@@ -323,6 +325,8 @@ components:
         - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
         - type: object
           properties:
+            type:
+              type: boolean
             datumVan:
               type: boolean
             datumIngangGeldigheid:
@@ -366,6 +370,8 @@ components:
         - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
         - type: object
           properties:
+            type:
+              type: boolean
             datumVan:
               type: boolean
             datumIngangGeldigheid:
@@ -381,6 +387,8 @@ components:
         - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
         - type: object
           properties:
+            type:
+              type: boolean
             datumVan:
               type: boolean
             functieAdres:
@@ -392,6 +400,8 @@ components:
         - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
         - type: object
           properties:
+            type:
+              type: boolean
             datumVan:
               type: boolean
             functieAdres:

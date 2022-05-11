@@ -57,6 +57,8 @@ components:
           $ref: 'opschortingbijhouding.yaml#/components/schemas/OpschortingBijhoudingBasis'
         overlijden:
           $ref: 'overlijden.yaml#/components/schemas/GbaOverlijdenBasis'
+        gemeenteVanInschrijving:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
         verblijfplaats:
           $ref: 'verblijfplaats.yaml#/components/schemas/GbaVerblijfplaatsBeperkt'
     PersoonBeperkt:
