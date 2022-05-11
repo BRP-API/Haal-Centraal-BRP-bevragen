@@ -9,7 +9,7 @@ components:
     AbstractPartner:
       type: object
       description: |
-        Gegevens over een gesloten huwelijk/geregistreerd partnerschap van de persoon.
+        Gegevens over een gesloten of ontbonden huwelijk/geregistreerd partnerschap van de persoon.
       required:
         - type
       properties:
@@ -58,6 +58,8 @@ components:
               $ref: '#/components/schemas/PartnerInOnderzoek'
             aangaanHuwelijkPartnerschap:
               $ref: '#/components/schemas/AangaanHuwelijkPartnerschap'
+            ontbindingHuwelijkPartnerschap:
+              $ref: "#/components/schemas/OntbindingHuwelijkPartnerschap"
     PartnerOnbekend:
       allOf:
         - $ref: '#/components/schemas/AbstractPartner'
@@ -131,3 +133,23 @@ components:
       properties:
         datum:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
+    OntbindingHuwelijkPartnerschap:
+      type: object
+      description: |
+        Gegevens over de ontbinding van het huwelijk of het geregistreerd partnerschap.
+        * **datum** : De datum waarop het huwelijk of het partnerschap is ontbonden.
+      properties:
+        datum:
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+        inOnderzoek:
+          $ref: '#/components/schemas/OntbindingHuwelijkPartnerschapInOnderzoek'
+    OntbindingHuwelijkPartnerschapInOnderzoek:
+      description: |
+        Geeft aan welke gegevens over het onbinden van het huwelijk of aangaan van het partnerschap in onderzoek zijn.
+        Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            datum:
+              type: boolean
