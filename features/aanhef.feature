@@ -210,7 +210,7 @@ Rule: De aanhef voor een persoon met adellijke titel of predicaat wordt bepaald 
   - Wanneer de combinatie van adellijkeTitelPredicaat en geslacht niet voorkomt in bovenstaande tabel: geslacht "O" en geen prins of prinses
   - Wanneer de persoon de geslachtsnaam van de echtgenoot/partner gebruikt zonder de eigen geslachtsnaam: aanduidingNaamgebruik is "P"
   - Wanneer de persoon een predicaat heeft en het geslacht is gelijk aan "V" (vrouw) en betrokkene heeft een actuele partner
-  - Wanneer de persoon een predicaat heeft en het geslacht is gelijk aan "V" (vrouw) en betrokkene gebruikt de naam van de (ex)partner (aanduidingNaamgebruik is ongelijk aan "E")
+  - Wanneer de persoon een predicaat heeft en het geslacht is gelijk aan "V" (vrouw) en betrokkene heeft een ex-partner en gebruikt de naam van de ex-partner (aanduidingNaamgebruik is ongelijk aan "E")
 
   Abstract Scenario: persoon heeft adellijke titel "<adellijkeTitelPredicaat>" en geslacht "<geslacht>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
