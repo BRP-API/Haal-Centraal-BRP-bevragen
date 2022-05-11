@@ -86,15 +86,18 @@ public static class NaamMapper
         { "P", HOOGHEID }
     };
 
-    private static bool IsMan(this GBA.Waardetabel geslacht)
-    {
-        return geslacht?.Code.ToUpperInvariant() == "M";
-    }
+    private static bool IsMan(this GBA.Waardetabel geslacht) => geslacht?.Code.ToUpperInvariant() == "M";
 
-    private static bool IsVrouw(this GBA.Waardetabel geslacht)
-    {
-        return geslacht?.Code.ToUpperInvariant() == "V";
-    }
+    private static bool IsMan(this AbstractPartner? partner) =>
+        partner is Partner p &&
+        p.Geslacht != null &&
+        p.Geslacht.Code == "M";
+
+    private static bool IsVrouw(this GBA.Waardetabel geslacht) => geslacht?.Code.ToUpperInvariant() == "V";
+
+    private static bool IsVrouw(this NaamPersoon naam) =>
+        naam.Geslacht != null &&
+        naam.Geslacht.Code == "V";
 
     public static string MapNaarAdellijkeTitel(this AdellijkeTitelPredicaatType waardetabel, GBA.Waardetabel geslacht)
     {
@@ -137,10 +140,7 @@ public static class NaamMapper
         return Regex.Replace($"{predikaat} {naam.Voornamen} {adellijkeTitel} {naam.Voorvoegsel} {naam.Geslachtsnaam}", @"\s+", " ").Trim();
     }
 
-    public static string Voorletters(this GbaNaamPersoon naam)
-    {
-        return naam.Voornamen.MapNaarVoorletters();
-    }
+    public static string Voorletters(this GbaNaamPersoon naam) => naam.Voornamen.MapNaarVoorletters();
 
     private static string MapNaarVoorletters(this string voornamen)
     {
@@ -181,7 +181,7 @@ public static class NaamMapper
         return retval;
     }
 
-    private static AbstractPartner? SelecteerJongsteOntbondenPartnerRelatie(this IEnumerable<AbstractPartner>? partners)
+    private static AbstractPartner? SelecteerLaatstOntbondenPartnerRelatie(this IEnumerable<AbstractPartner>? partners)
     {
         if (partners == null) return null;
 
@@ -207,131 +207,180 @@ public static class NaamMapper
 
     private static AbstractPartner? ActuelePartner(this IEnumerable<AbstractPartner>? partners)
     {
+        // Rule 650
         var partner = partners.SelecteerOudstePartnerRelatie();
         if (partner == null)
         {
-            partner = partners.SelecteerJongsteOntbondenPartnerRelatie();
+            // Rule 692
+            partner = partners.SelecteerLaatstOntbondenPartnerRelatie();
         }
         return partner;
     }
 
-    private static bool HeeftLeegOfOnbekendGeslachtsnaam(this NaamPersoon naam)
-    {
-        return string.IsNullOrWhiteSpace(naam.Geslachtsnaam);
-    }
+    private static bool HeeftLeegOfOnbekendGeslachtsnaam(this NaamPersoon naam) => string.IsNullOrWhiteSpace(naam.Geslachtsnaam);
 
-    private static bool HeeftNaamgebruikOngelijkAanPartner(this NaamPersoon naam)
-    {
-        return naam.AanduidingNaamgebruik?.Code != "P";
-    }
+    private static bool HeeftPartnerNaamgebruik(this NaamPersoon naam) =>
+        naam.AanduidingNaamgebruik != null &&
+        naam.AanduidingNaamgebruik.Code == "P";
 
-    private static bool HeeftPredicaat(this NaamPersoon naam)
-    {
-        return !string.IsNullOrWhiteSpace(naam.AdellijkeTitelPredicaat.Code) &&
-               Predicaten.ContainsKey(naam.AdellijkeTitelPredicaat.Code);
-    }
+    private static bool HeeftGeenPartnerNaamgebruik(this NaamPersoon naam) => !naam.HeeftPartnerNaamgebruik();
 
-    private static bool HeeftHoffelijkheidsTitel(this NaamPersoon naam)
-    {
-        return !string.IsNullOrWhiteSpace(naam.AdellijkeTitelPredicaat.Code) &&
-                HoffelijkheidsTitels.ContainsKey(naam.AdellijkeTitelPredicaat.Code);
+    private static bool HeeftEigenNaamgebruik(this NaamPersoon naam) =>
+        naam.AanduidingNaamgebruik != null &&
+        naam.AanduidingNaamgebruik.Code == "E";
 
-    }
-    private static bool HeeftAdellijkeTitelPredicaat(this AbstractPartner? partner)
-    {
-        return partner is Partner p && p.Naam.AdellijkeTitelPredicaat != null;
-    }
+    private static bool GebruiktNaamVanPartner(this NaamPersoon naam) => !naam.HeeftEigenNaamgebruik();
 
-    private static string AdellijkeTitelPredicaat(this AbstractPartner? partner)
-    {
-        return partner is Partner p && p.Naam.AdellijkeTitelPredicaat != null
+    private static bool HeeftPredicaat(this NaamPersoon naam) =>
+        !string.IsNullOrWhiteSpace(naam.AdellijkeTitelPredicaat.Code) &&
+        Predicaten.ContainsKey(naam.AdellijkeTitelPredicaat.Code);
+
+    private static bool HeeftHoffelijkheidsTitel(this NaamPersoon naam) =>
+        !string.IsNullOrWhiteSpace(naam.AdellijkeTitelPredicaat.Code) &&
+        HoffelijkheidsTitels.ContainsKey(naam.AdellijkeTitelPredicaat.Code);
+
+    private static bool HeeftGeenHoffelijkheidsTitel(this NaamPersoon naam) => !naam.HeeftHoffelijkheidsTitel();
+
+    private static bool HeeftAdellijkeTitelOfPredicaat(this NaamPersoon persoon) => persoon.AdellijkeTitelPredicaat != null;
+
+    private static bool HeeftGeenAdellijkeTitelOfPredicaat(this NaamPersoon persoon) => !persoon.HeeftAdellijkeTitelOfPredicaat();
+
+    private static bool HeeftAdellijkeTitel(this AbstractPartner? partner) =>
+        partner is Partner p &&
+        p.Naam.AdellijkeTitelPredicaat != null &&
+        AdellijkeTitels.ContainsKey(p.Naam.AdellijkeTitelPredicaat.Code);
+
+    private static string AdellijkeTitelPredicaat(this AbstractPartner? partner) =>
+        partner is Partner p && p.Naam.AdellijkeTitelPredicaat != null
             ? p.Naam.AdellijkeTitelPredicaat.Code
             : String.Empty;
+
+    private static bool IsExPartner(this AbstractPartner? partner) => partner is OntbondenPartner;
+
+    private static bool IsActueelPartner(this AbstractPartner? partner) => !partner.IsExPartner();
+
+    private static bool HeeftAdellijkeTitelMetAanspreekvorm(this NaamPersoon persoon)
+    {
+        var aanhefKey = $"{persoon.AdellijkeTitelPredicaat.Code}-{persoon.Geslacht!.Code}";
+
+        return AanhefAdellijkeTitelPredicaat.ContainsKey(aanhefKey);
     }
 
-    public static string? Aanhef(this NaamPersoon naam)
+    private static bool HeeftGeenAdellijkeTitelMetAanspreekvorm(this NaamPersoon persoon) => !persoon.HeeftAdellijkeTitelMetAanspreekvorm();
+
+    private static string BepaalAanhefVoorAdellijkeTitelOfPredicaat(this NaamPersoon persoon)
     {
-        var partner = naam.Partners.ActuelePartner();
+        var aanhefKey = $"{persoon.AdellijkeTitelPredicaat.Code}-{persoon.Geslacht!.Code}";
 
-        var geslacht = naam.Geslacht != null
-            ? naam.Geslacht.Code
-            : "O";
+        return AanhefAdellijkeTitelPredicaat[aanhefKey];
+    }
 
-        if (naam.AdellijkeTitelPredicaat == null &&
-            partner.HeeftAdellijkeTitelPredicaat() &&
-            geslacht == "V" && naam.AanduidingNaamgebruik.Code != "E")
+    private static bool HeeftHoffelijkheidstitelMetAanspreekvorm(this AbstractPartner? partner) =>
+        partner != null &&
+        HoffelijkheidsTitels.ContainsKey(partner.AdellijkeTitelPredicaat());
+
+    public static string? Aanhef(this NaamPersoon persoon)
+    {
+        var partner = persoon.Partners.ActuelePartner();
+
+        // Rule 423 en Rule 871 (874-876)
+        if (persoon.HeeftGeenAdellijkeTitelOfPredicaat() &&
+            partner.HeeftAdellijkeTitel() &&
+            persoon.IsVrouw() &&
+            persoon.GebruiktNaamVanPartner())
         {
-            return HoffelijkheidsTitels.ContainsKey(partner.AdellijkeTitelPredicaat())
+            // Rule 427
+            return partner.HeeftHoffelijkheidstitelMetAanspreekvorm()
                 ? HoffelijkheidsTitels[partner.AdellijkeTitelPredicaat()]
-                : naam.AanhefZonderTitel(partner);
+                : persoon.BepaalAanhefZonderAdellijkeTitelOfPredicaat(partner);
         }
 
-        if (naam.AdellijkeTitelPredicaat != null)
+        if (persoon.HeeftAdellijkeTitelOfPredicaat())
         {
-            var aanhefKey = $"{naam.AdellijkeTitelPredicaat.Code}-{geslacht}";
-
-            if (naam.HeeftLeegOfOnbekendGeslachtsnaam() &&
-                naam.HeeftNaamgebruikOngelijkAanPartner() &&
-                (naam.HeeftPredicaat() || !AanhefAdellijkeTitelPredicaat.ContainsKey(aanhefKey)) &&
-                !naam.HeeftHoffelijkheidsTitel()
+            // Rule 786
+            if (persoon.HeeftLeegOfOnbekendGeslachtsnaam() &&
+                persoon.HeeftGeenPartnerNaamgebruik() &&
+                (persoon.HeeftPredicaat() || persoon.HeeftGeenAdellijkeTitelMetAanspreekvorm()) &&
+                persoon.HeeftGeenHoffelijkheidsTitel()
                 )
             {
                 return null;
             }
 
-            if (partner is Partner p1 &&
-                p1.Naam.AdellijkeTitelPredicaat != null &&
-                HoffelijkheidsTitels.ContainsKey(p1.Naam.AdellijkeTitelPredicaat.Code) &&
-                p1.Geslacht != null && p1.Geslacht.Code == "M" &&
-                geslacht == "V" &&
-                naam.AanduidingNaamgebruik != null && naam.AanduidingNaamgebruik.Code != "E")
+            // Rule 550
+            if (partner.HeeftAdellijkeTitel() &&
+                persoon.IsVrouw() &&
+                partner.IsMan() &&
+                persoon.GebruiktNaamVanPartner() &&
+                partner.HeeftHoffelijkheidstitelMetAanspreekvorm()
+                )
             {
                 return HoffelijkheidsTitels[partner.AdellijkeTitelPredicaat()];
             }
 
+            // Rule 211
             if (partner != null &&
-                naam.AanduidingNaamgebruik != null && naam.AanduidingNaamgebruik.Code == "P") return naam.AanhefZonderTitel(partner);
+                persoon.HeeftPartnerNaamgebruik()
+                ) return persoon.BepaalAanhefZonderAdellijkeTitelOfPredicaat(partner);
 
-            if (partner != null && geslacht == "V" &&
-                naam.AanduidingNaamgebruik != null && naam.AanduidingNaamgebruik.Code != "E") return naam.AanhefZonderTitel(partner);
+            // Rule 212
+            if (persoon.HeeftPredicaat() &&
+                persoon.IsVrouw() &&
+                partner.IsActueelPartner()
+                ) return persoon.BepaalAanhefZonderAdellijkeTitelOfPredicaat(partner);
 
-            return AanhefAdellijkeTitelPredicaat.ContainsKey(aanhefKey)
-                ? AanhefAdellijkeTitelPredicaat[aanhefKey]
-                : naam.AanhefZonderTitel(partner);
+            // Rule 213
+            if (persoon.HeeftPredicaat() &&
+                persoon.IsVrouw() &&
+                partner.IsExPartner() &&
+                persoon.GebruiktNaamVanPartner()
+                ) return persoon.BepaalAanhefZonderAdellijkeTitelOfPredicaat(partner);
+
+            // Rule 210
+            return persoon.HeeftAdellijkeTitelMetAanspreekvorm()
+                ? persoon.BepaalAanhefVoorAdellijkeTitelOfPredicaat()
+                : persoon.BepaalAanhefZonderAdellijkeTitelOfPredicaat(partner);
         }
 
-        return naam.AanhefZonderTitel(partner);
+        return persoon.BepaalAanhefZonderAdellijkeTitelOfPredicaat(partner);
     }
 
-    private static string? AanhefZonderTitel(this NaamPersoon naam, AbstractPartner? partner)
+    private static bool IsLeegOfOnbekend(this string partnerNaam) => string.IsNullOrWhiteSpace(partnerNaam);
+
+    private static string? BepaalAanhefZonderAdellijkeTitelOfPredicaat(this NaamPersoon persoon, AbstractPartner? partner)
     {
+        // Rule 788 en 789
+        if (persoon.HeeftLeegOfOnbekendGeslachtsnaam() &&
+            persoon.HeeftGeenPartnerNaamgebruik())
+        {
+            return null;
+        }
+
         var partnerNaam = partner switch
         {
             Partner p => p.Naam.Achternaam(),
             OntbondenPartner p => p.Naam.Achternaam(),
             _ => ""
         };
-        var persoonNaam = naam.Achternaam();
-        if(string.IsNullOrWhiteSpace(persoonNaam) && naam.AanduidingNaamgebruik?.Code != "P")
-        {
-            return null;
-        }
+        var persoonNaam = persoon.Achternaam();
 
-        var geslachtsnaam = naam.AanduidingNaamgebruik?.Code switch
+        // Rule 871 (872-873)
+        var geslachtsnaam = persoon.AanduidingNaamgebruik?.Code switch
         {
             "E" => persoonNaam,
-            "N" => partner != null && !string.IsNullOrWhiteSpace(partnerNaam) ? $"{persoonNaam}-{partnerNaam}" : persoonNaam,
-            "V" => partner != null && !string.IsNullOrWhiteSpace(partnerNaam) ? $"{partnerNaam}-{persoonNaam}" : persoonNaam,
-            "P" => partner != null && !string.IsNullOrWhiteSpace(partnerNaam) ? partnerNaam : persoonNaam,
+            "N" => partnerNaam.IsLeegOfOnbekend() ? persoonNaam : $"{persoonNaam}-{partnerNaam}",
+            "V" => partnerNaam.IsLeegOfOnbekend() ? persoonNaam : $"{partnerNaam}-{persoonNaam}",
+            "P" => partnerNaam.IsLeegOfOnbekend() ? persoonNaam : partnerNaam,
             _ => persoonNaam
         };
 
-        var retval = naam.Geslacht?.Code switch
+        // Rule 17
+        var retval = persoon.Geslacht?.Code switch
         {
             "M" => $"Geachte heer {geslachtsnaam.Capitalize()}",
             "V" => $"Geachte mevrouw {geslachtsnaam.Capitalize()}",
-            "O" => !string.IsNullOrWhiteSpace(naam.Voorletters)
-                ? $"Geachte {naam.Voorletters} {geslachtsnaam}"
+            "O" => !string.IsNullOrWhiteSpace(persoon.Voorletters)
+                ? $"Geachte {persoon.Voorletters} {geslachtsnaam}"
                 : $"Geachte {geslachtsnaam.Capitalize()}",
             _ => string.Empty
         };
