@@ -711,7 +711,7 @@ components:
         De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
     AdellijkeTitelPredicaatType:
       description: "wordt gevuld op basis van de waarden die voorkomen in de tabel\
-        \ 'adellijketitelpredicaat' uit de Haal-Centraal-BRP-tabellen-bevragen API.\
+        \ 'Adellijke_Titel_Predicaat' uit de Haal-Centraal-BRP-tabellen-bevragen API.\
         \ \nDe property **soort** geeft aan of het een 'predicaat' of een 'titel'\
         \ betreft. \n"
       allOf:
@@ -975,7 +975,7 @@ components:
           $ref: '#/components/schemas/Waardetabel'
       description: |
         Gegevens over het gezag over de persoon.
-        * **indicatieGezagMinderjarige** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'gezagminderjarige' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **indicatieGezagMinderjarige** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'Gezag_Minderjarige' uit de Haal-Centraal-BRP-tabellen-bevragen API.
     GbaVerblijfstitel:
       type: object
       properties:
@@ -1061,10 +1061,10 @@ components:
         \ het geregistreerd partnerschap.\n* **datum** - De datum waarop het huwelijk\
         \ is voltrokken of het partnerschap is aangegaan. \n* **land** - Het land\
         \ waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt\
-        \ gevuld op basis van de waarden die voorkomen in de tabel 'landen' uit de\
+        \ gevuld op basis van de waarden die voorkomen in de tabel 'Landen' uit de\
         \ Haal-Centraal-BRP-tabellen-bevragen API.\n* **plaats** - De gemeente waar\
         \ het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld\
-        \ op basis van de waarden die voorkomen in de tabel \"gemeenten\" voor een\
+        \ op basis van de waarden die voorkomen in de tabel \"Gemeenten\" voor een\
         \ gemeente in Nederland of de omschrijving van een buitenlandse plaats.\n"
     GbaOntbindingHuwelijkPartnerschap:
       type: object
