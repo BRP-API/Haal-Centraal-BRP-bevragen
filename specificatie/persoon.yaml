@@ -140,8 +140,10 @@ components:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: '#/components/schemas/PersoonInOnderzoek'
-        kiesrecht:
-          $ref: 'kiesrecht.yaml#/components/schemas/Kiesrecht'
+        uitsluitingKiesrecht:
+          $ref: 'kiesrecht.yaml#/components/schemas/UitsluitingKiesrecht'
+        europeesKiesrecht:
+          $ref: 'kiesrecht.yaml#/components/schemas/EuropeesKiesrecht'
         leeftijd:
           $ref: '#/components/schemas/Leeftijd'
         naam:

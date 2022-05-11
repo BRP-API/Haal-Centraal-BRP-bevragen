@@ -21,18 +21,18 @@ components:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
         einddatumUitsluitingKiesrecht:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
-    Kiesrecht:
+    UitsluitingKiesrecht:
       type: object
       properties:
-        europeesKiesrecht:
-          type: boolean
-          description: |
-            Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement.
-          example: true
         uitgeslotenVanKiesrecht:
           type: boolean
           example: true
-        einddatumUitsluitingEuropeesKiesrecht:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         einddatumUitsluitingKiesrecht:
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+    EuropeesKiesrecht:
+      type: object
+      properties:
+        europeesKiesrecht:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        einddatumUitsluitingEuropeesKiesrecht:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
