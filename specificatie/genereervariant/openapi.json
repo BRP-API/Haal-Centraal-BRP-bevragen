@@ -2124,8 +2124,7 @@
         "discriminator" : {
           "propertyName" : "type",
           "mapping" : {
-            "Kind" : "#/components/schemas/Kind",
-            "KindOnbekend" : "#/components/schemas/KindOnbekend"
+            "Kind" : "#/components/schemas/Kind"
           }
         }
       },
@@ -2163,19 +2162,6 @@
           }
         } ]
       },
-      "KindOnbekend" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractKind"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "indicatieOnbekend" : {
-              "type" : "boolean",
-              "default" : false
-            }
-          }
-        } ]
-      },
       "AbstractOuder" : {
         "required" : [ "type" ],
         "type" : "object",
@@ -2188,8 +2174,7 @@
         "discriminator" : {
           "propertyName" : "type",
           "mapping" : {
-            "Ouder" : "#/components/schemas/Ouder",
-            "OuderOnbekend" : "#/components/schemas/OuderOnbekend"
+            "Ouder" : "#/components/schemas/Ouder"
           }
         }
       },
@@ -2248,22 +2233,6 @@
           }
         } ]
       },
-      "OuderOnbekend" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractOuder"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "ouderAanduiding" : {
-              "$ref" : "#/components/schemas/OuderAanduiding"
-            },
-            "indicatieOnbekend" : {
-              "type" : "boolean",
-              "default" : false
-            }
-          }
-        } ]
-      },
       "AbstractPartner" : {
         "required" : [ "type" ],
         "type" : "object",
@@ -2276,8 +2245,7 @@
         "discriminator" : {
           "propertyName" : "type",
           "mapping" : {
-            "Partner" : "#/components/schemas/Partner",
-            "PartnerOnbekend" : "#/components/schemas/PartnerOnbekend"
+            "Partner" : "#/components/schemas/Partner"
           }
         }
       },
@@ -2363,19 +2331,6 @@
             },
             "plaats" : {
               "type" : "boolean"
-            }
-          }
-        } ]
-      },
-      "PartnerOnbekend" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractPartner"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "indicatieOnbekend" : {
-              "type" : "boolean",
-              "default" : false
             }
           }
         } ]
