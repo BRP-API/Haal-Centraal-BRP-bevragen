@@ -8,7 +8,8 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
   # Dit betekent dat in 'partners' zowel actuele partners zitten als ontbonden partners
   # Een proxy vertaalt dit naar de vorm Persoon, waarin sommige gegevens in bewerkte vorm worden opgenomen en waarin informatievragen kunnen zitten
   # Een voorbeeld van een informatievraag is naam.aanschrijfwijze, waarin op basis van de aanduiding naamgebruik, de naam van de persoon en de naam van de (ex)partner een aanschrijfnaam wordt samengesteld
-  # De proxy verwijdert de partners met datum ontbinding die geleverd zijn in de GbaPersoon
+  # Als er een actuele partner is (huwelijk / partnerschap is niet ontbonden) verwijdert de proxy de partners met datum ontbinding die geleverd zijn in de GbaPersoon
+  # Als er alleen ontbonden huwelijken/partnerschappen zijn levert de proxy alleen de ex-partner met de meest recente datum_ontbinding
 
   @gba
   Rule: Het gegeven 'partners' in GbaPersoon bevat ook ontbonden huwelijken en partnerschappen
@@ -239,7 +240,8 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
 
 
   @proxy
-  Rule: Alleen een actueel huwelijk of geregistreerd partnerschap wordt teruggegeven
+  Rule: Als er een actueel huwelijk of geregistreerd partnerschap is wordt alleen dit actueel huwelijk of geregistreerd partnerschap wordt teruggegeven,
+        als er geen actueel huwelijk of geregistreerd partnerschap is, maar wel een ontbonden huwelijk of geregristreerd partnerschap dan wordt alleen het meest recente ontbonden huwelijk of geregistreerd partnerschap geleverd.
     Een huwelijk of partnerschap is actueel wanneer het niet is ontbonden: ontbindingHuwelijkPartnerschap komt niet voor (heeft geen waarde)
 
     @proxy
@@ -311,12 +313,14 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999993380                       |
       | fields              | partners                        |
-      Dan heeft de persoon met burgerservicenummer '999992806' GEEN 'partners'
+      Dan heeft de persoon met burgerservicenummer '999992806' alleen 'partners' met de volgende gegevens
+      | burgerservicenummer   | voornamen   |
+      | <burgerservicenummer> | <voornamen> |
 
       Voorbeelden:
-      | omschrijving            | datum ontbinding |
-      | met bekende einddatum   | 20011109         |
-      | met onbekende einddatum | 00000000         |
+      | omschrijving            | datum ontbinding | burgerservicenummer | voornamen |
+      | met bekende einddatum   | 20011109         | 555550003           | Osama     |
+      | met onbekende einddatum | 00000000         | 555550003           | Osama     |
 
     @proxy
     Scenario: Een actueel huwelijk en een ontbonden huwelijk
