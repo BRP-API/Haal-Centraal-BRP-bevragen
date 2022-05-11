@@ -44,8 +44,8 @@ components:
         - $ref: '#/components/schemas/AbstractPartner'
         - type: object
           description: |
-            * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-            * **soortVerbintenis** - Wordt gevuld op basis van de waarden die voorkomen in de tabel  "soortverbintenis" uit de Haal-Centraal-BRP-tabellen-bevragen API.
+            * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+            * **soortVerbintenis** - Wordt gevuld op basis van de waarden die voorkomen in de tabel  "Soort_Verbintenis" uit de Haal-Centraal-BRP-tabellen-bevragen API.
           properties:
             burgerservicenummer:
               $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
@@ -88,8 +88,8 @@ components:
       description: |
         Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.
         * **datum** - De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan. 
-        * **land** - Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-        * **plaats** - De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld op basis van de waarden die voorkomen in de tabel "gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.
+        * **land** - Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **plaats** - De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld op basis van de waarden die voorkomen in de tabel "Gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.
       properties:
         datum:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
@@ -104,8 +104,8 @@ components:
       description: |
         Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.
         * **datum** - De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.
-        * **land** - Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-        * **plaats** - De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld op basis van de waarden die voorkomen in de tabel "gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.
+        * **land** - Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **plaats** - De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld op basis van de waarden die voorkomen in de tabel "Gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.
       properties:
         datum:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'

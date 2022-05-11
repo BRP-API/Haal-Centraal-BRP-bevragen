@@ -247,7 +247,7 @@ components:
             personen:
               type: array
               description: |
-                * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+                * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
               items:
                 $ref: 'persoon.yaml#/components/schemas/Persoon'
     ZoekMetGeslachtsnaamEnGeboortedatumResponse:
@@ -258,7 +258,7 @@ components:
             personen:
               type: array
               description: |
-                * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+                * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
               items:
                 $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
     ZoekMetNaamEnGemeenteVanInschrijvingResponse:
@@ -269,7 +269,7 @@ components:
             personen:
               type: array
               description: |
-                * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+                * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
               items:
                 $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
     ZoekMetPostcodeEnHuisnummerResponse:
@@ -280,7 +280,7 @@ components:
             personen:
               type: array
               description: |
-                * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+                * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
               items:
                 $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
     ZoekMetStraatHuisnummerEnGemeenteVanInschrijvingResponse:
@@ -291,7 +291,7 @@ components:
             personen:
               type: array
               description: |
-                * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+                * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
               items:
                 $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
     ZoekMetNummeraanduidingIdentificatieResponse:
@@ -302,6 +302,6 @@ components:
             personen:
               type: array
               description: |
-                * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+                * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
               items:
                 $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'

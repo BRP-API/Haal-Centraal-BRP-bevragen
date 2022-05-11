@@ -56,7 +56,7 @@ components:
     PersoonBeperkt:
       type: object
       description: |
-        * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       properties:
         burgerservicenummer:
           $ref: '#/components/schemas/Burgerservicenummer'
@@ -130,7 +130,7 @@ components:
     Persoon:
       type: object
       description: |
-        * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       properties:
         aNummer:
           $ref: '#/components/schemas/ANummer'

@@ -69,7 +69,7 @@ components:
         - predicaat
     AdellijkeTitelPredicaatType:
       description: |
-        wordt gevuld op basis van de waarden die voorkomen in de tabel 'adellijketitelpredicaat' uit de Haal-Centraal-BRP-tabellen-bevragen API. 
+        wordt gevuld op basis van de waarden die voorkomen in de tabel 'Adellijke_Titel_Predicaat' uit de Haal-Centraal-BRP-tabellen-bevragen API. 
         De property **soort** geeft aan of het een 'predicaat' of een 'titel' betreft. 
       allOf:
         - $ref: 'common.yaml#/components/schemas/Waardetabel'
@@ -148,7 +148,7 @@ components:
     NaamPersoon:
       description: |
         Gegevens over de naam van de persoon.
-        * **aanduidingNaamgebruik** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'naamgebruik' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **aanduidingNaamgebruik** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'Naamgebruik' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       allOf:
         - $ref: '#/components/schemas/NaamBasis'
         - properties:

@@ -10,7 +10,7 @@ components:
       type: object
       description: |
         Gegevens over het gezag over de persoon.
-        * **indicatieGezagMinderjarige** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'gezagminderjarige' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **indicatieGezagMinderjarige** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'Gezag_Minderjarige' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       properties:
         indicatieCurateleRegister:
           type: boolean
