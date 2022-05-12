@@ -9,7 +9,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
   # Een proxy vertaalt dit naar de vorm Persoon, waarin sommige gegevens in bewerkte vorm worden opgenomen en waarin informatievragen kunnen zitten
   # Een voorbeeld van een informatievraag is naam.aanschrijfwijze, waarin op basis van de aanduiding naamgebruik, de naam van de persoon en de naam van de (ex)partner een aanschrijfnaam wordt samengesteld
   # Als er een actuele partner is (huwelijk / partnerschap is niet ontbonden) verwijdert de proxy de partners met datum ontbinding die geleverd zijn in de GbaPersoon
-  # Als er alleen ontbonden huwelijken/partnerschappen zijn levert de proxy alleen de ex-partner met de meest recente datum_ontbinding
+  # Als er alleen ontbonden huwelijken/partnerschappen zijn levert de proxy alleen de ex-partner met de meest recente datum ontbinding
 
   @gba
   Rule: Het gegeven 'partners' in GbaPersoon bevat ook ontbonden huwelijken en partnerschappen
