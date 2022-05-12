@@ -127,7 +127,7 @@ components:
         - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
         - type: object
           description: |
-            * **functieAdres** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'Soort_Adres' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+            * **functieAdres** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'Functie_Adres' uit de Haal-Centraal-BRP-tabellen-bevragen API.
           properties:
             functieAdres:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
@@ -164,7 +164,7 @@ components:
         - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
         - type: object
           description: |
-            * **functieAdres** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Soort_Adres' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+            * **functieAdres** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Functie_Adres' uit de Haal-Centraal-BRP-tabellen-bevragen API.
           properties:
             adresregel1:
               $ref: '#/components/schemas/Adresregel1'
@@ -252,7 +252,7 @@ components:
     Adres:
       description: |
         Gegevens over het adres van een persoon.
-        * **functieAdres** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Soort_Adres' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **functieAdres** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Functie_Adres' uit de Haal-Centraal-BRP-tabellen-bevragen API.
         * **aanduidingBijHuisnummer** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Aanduiding_Bij_Huisnummer' uit de Haal-Centraal-BRP-tabellen-bevragen API.
         * **datumVan** : de datum van aangifte of ambtshalve melding van verblijf en adres.
         * **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden.

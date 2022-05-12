@@ -38,7 +38,7 @@ De onderstaanden tabellen met de beschreven waarden worden geleverd door de "BRP
     | ------------------------------------------------ | ------------------------------------ |
     | O                                                | overlijden                           |
     | E                                                | emigratie                            |
-    | M                                                | ministerieel besluit                 |
+    | M                                                | ministerieel besluit                 |4
     | R                                                | persoonslijst is aangelegd in de rni |
     | F                                                | fout                                 |
     | .                                                | onbekend                             |
@@ -51,7 +51,7 @@ De onderstaanden tabellen met de beschreven waarden worden geleverd door de "BRP
     | H                                                | huwelijk                             |
     | P                                                | geregistreerd partnerschap           |
 
-    Voor de enumeratie SoortAdres wordt de tabel met identificatie "Soort_Adres" opgenomen.
+    Voor de enumeratie SoortAdres wordt de tabel met identificatie "Functie_Adres" opgenomen.
     In de omschrijving wordt de volgende tekst opgenomen : "Aanduiding van de functie van het adres"
     In de waardetabel worden de volgende waarden opgenomen:
       | code                                             | omschrijving                         |
