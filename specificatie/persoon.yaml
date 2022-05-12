@@ -55,6 +55,8 @@ components:
           $ref: 'verblijfplaats.yaml#/components/schemas/GbaVerblijfplaatsBeperkt'
     PersoonBeperkt:
       type: object
+      description: |
+        * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       properties:
         burgerservicenummer:
           $ref: '#/components/schemas/Burgerservicenummer'
@@ -127,6 +129,8 @@ components:
             $ref: 'partner.yaml#/components/schemas/GbaPartner'
     Persoon:
       type: object
+      description: |
+        * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       properties:
         aNummer:
           $ref: '#/components/schemas/ANummer'
