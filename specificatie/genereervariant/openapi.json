@@ -1090,7 +1090,7 @@
               "$ref" : "#/components/schemas/Woonplaats"
             }
           },
-          "description" : "* **functieAdres** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'Soort_Adres' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
+          "description" : "* **functieAdres** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'Functie_Adres' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
         } ]
       },
       "Woonplaats" : {
@@ -1138,7 +1138,7 @@
               "$ref" : "#/components/schemas/Woonplaats"
             }
           },
-          "description" : "* **functieAdres** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Soort_Adres' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
+          "description" : "* **functieAdres** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Functie_Adres' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
         } ]
       },
       "Locatiebeschrijving" : {
@@ -1701,7 +1701,7 @@
         } ]
       },
       "Adres" : {
-        "description" : "Gegevens over het adres van een persoon.\n* **functieAdres** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Soort_Adres' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n* **aanduidingBijHuisnummer** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Aanduiding_Bij_Huisnummer' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n* **datumVan** : de datum van aangifte of ambtshalve melding van verblijf en adres.\n* **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden.\n* **datumInschrijvingInGemeente**: bij inschrijving op grond van een verhuisaangifte door de burger is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop het voornemen van ambtshalve opneming schriftelijk aan de persoon is medegedeeld.\n* **datumVestigingInNederland** : datum van inschrijving in Nederland.\n* **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten. Wordt gevuld op basis van de waarden die voorkomen in de tabel \"Gemeenten\" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats\n* **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n",
+        "description" : "Gegevens over het adres van een persoon.\n* **functieAdres** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Functie_Adres' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n* **aanduidingBijHuisnummer** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Aanduiding_Bij_Huisnummer' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n* **datumVan** : de datum van aangifte of ambtshalve melding van verblijf en adres.\n* **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden.\n* **datumInschrijvingInGemeente**: bij inschrijving op grond van een verhuisaangifte door de burger is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop het voornemen van ambtshalve opneming schriftelijk aan de persoon is medegedeeld.\n* **datumVestigingInNederland** : datum van inschrijving in Nederland.\n* **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten. Wordt gevuld op basis van de waarden die voorkomen in de tabel \"Gemeenten\" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats\n* **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/AbstractVerblijfplaats"
         }, {
