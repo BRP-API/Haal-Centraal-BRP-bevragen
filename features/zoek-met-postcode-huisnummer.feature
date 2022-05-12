@@ -23,6 +23,7 @@ Functionaliteit: Zoek met postcode en huisnummer
     | 999995082           | 20220301 |
 
 Rule: Postcode en huisnummer zijn verplichte parameters
+  Zoeken is niet hoofdlettergevoelig
 
   Abstract Scenario: Zoek met valide postcode en huisnummer
     Als personen wordt gezocht met de volgende parameters
@@ -48,35 +49,47 @@ Rule: Postcode en huisnummer zijn verplichte parameters
     Voorbeelden:
     | postcode |
     | 2628HJ   |
+    | 2628hj   |
     | 2628 HJ  |
     | 2628 hj  |
     | 2628 Hj  |
 
-  Scenario: Zoek met huisletter
+  Abstract Scenario: Zoek met huisletter
     Als personen wordt gezocht met de volgende parameters
     | naam       | waarde                      |
     | type       | ZoekMetPostcodeEnHuisnummer |
     | postcode   | 2628HJ                      |
     | huisnummer | 2                           |
-    | huisletter | A                           |
+    | huisletter | <huisletter>                |
     | fields     | burgerservicenummer         |
     Dan heeft de response 1 persoon
     En heeft de response een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999995079 |
 
-  Scenario: Zoek met huisnummertoevoeging
+    Voorbeelden:
+    | huisletter |
+    | A          |
+    | a          |
+
+  Abstract Scenario: Zoek met huisnummertoevoeging
     Als personen wordt gezocht met de volgende parameters
     | naam                 | waarde                      |
     | type                 | ZoekMetPostcodeEnHuisnummer |
     | postcode             | 2628HJ                      |
     | huisnummer           | 2                           |
-    | huisnummertoevoeging | III                         |
+    | huisnummertoevoeging | <huisnummertoevoeging>      |
     | fields               | burgerservicenummer         |
     Dan heeft de response 1 persoon
     En heeft de response een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999995081 |
+
+    Voorbeelden:
+    | huisnummertoevoeging |
+    | III                  |
+    | iii                  |
+    | Iii                  |
 
   @fout-case
   Scenario: Zoek zonder postcode en huisnummer 
