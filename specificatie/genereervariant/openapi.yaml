@@ -554,6 +554,8 @@ components:
           $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
         adressering:
           $ref: '#/components/schemas/AdresseringBeperkt'
+      description: |
+        * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
     Burgerservicenummer:
       pattern: ^[0-9]{9}$
       type: string
@@ -869,6 +871,8 @@ components:
         properties:
           functieAdres:
             $ref: '#/components/schemas/Waardetabel'
+        description: |
+          * **functieAdres** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'Functie_Adres' uit de Haal-Centraal-BRP-tabellen-bevragen API.
     VerblijfplaatsOnbekendBeperkt:
       allOf:
       - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
@@ -883,6 +887,8 @@ components:
         properties:
           functieAdres:
             $ref: '#/components/schemas/Waardetabel'
+        description: |
+          * **functieAdres** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Functie_Adres' uit de Haal-Centraal-BRP-tabellen-bevragen API.
     AdresseringBeperkt:
       type: object
       properties:

@@ -1717,7 +1717,7 @@
         } ]
       },
       "Adres" : {
-        "description" : "Gegevens over het adres van een persoon.\n* **datumVan** : de datum van aangifte of ambtshalve melding van verblijf en adres.\n* **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden.\n",
+        "description" : "Gegevens over het adres van een persoon.\n* **functieAdres** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Functie_Adres' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n* **aanduidingBijHuisnummer** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Aanduiding_Bij_Huisnummer' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n* **datumVan** : de datum van aangifte of ambtshalve melding van verblijf en adres.\n* **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden.\n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/AbstractVerblijfplaats"
         }, {
