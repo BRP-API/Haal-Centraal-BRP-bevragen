@@ -117,7 +117,8 @@ components:
           type: string
         fields:
           description: |
-            Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen of - paden op te geven. [zie functionele specificaties fields-parameter](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/fields_extensie.feature)
+            Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een lijst van paden die verwijzen naar de gewenste velden op te nemen ([zie functionele specificaties 'fields' properties](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields.feature)). 
+            De te gebruiken paden zijn beschreven in [fields-Persoon.csv](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields-Persoon.csv) (voor gebruik fields bij raadplegen) en [fields-PersoonBeperkt.csv](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields-PersoonBeperkt.csv) (voor gebruik fields bij zoeken) waarbij in de eerste kolom het fields-pad staat en in de tweede kolom het volledige pad naar het gewenste veld.
           type: array
           maxItems: 130
           minItems: 1
