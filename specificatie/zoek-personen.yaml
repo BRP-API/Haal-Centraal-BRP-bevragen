@@ -20,12 +20,13 @@ paths:
 
         1.  Zoek met geslachtsnaam en geboortedatum
             - geboortedatum
-            - geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature))
+            - geslachtsnaam ([wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) met minimaal 3 karakters)
 
 
         2.  Zoek met geslachtsnaam, voornamen en gemeente van inschrijving
             - gemeenteVanInschrijving
-            - geslachtsnaam (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature))
+            - geslachtsnaam ([wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) met minimaal 3 karakters)
+            - voornamen ([wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) met minimaal 3 karakters)
 
 
         3.  Raadpleeg met burgerservicenummer
@@ -38,7 +39,7 @@ paths:
 
 
         5.  Zoek met straat, huisnummer en gemeente van inschrijving
-            - straat (minimaal 2 karakters, [wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature))
+            - straat ([wildcard toegestaan](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) met minimaal 7 karakters)
             - gemeenteVanInschrijving
             - huisnummer
 
@@ -115,7 +116,14 @@ components:
         type:
           type: string
         fields:
-          $ref: 'filter.yaml#/components/schemas/Fields'
+          description: |
+            Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een lijst van paden die verwijzen naar de gewenste velden op te nemen ([zie functionele specificaties 'fields' properties](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields.feature)). 
+            De te gebruiken paden zijn beschreven in [fields-Persoon.csv](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields-Persoon.csv) (voor gebruik fields bij raadplegen) en [fields-PersoonBeperkt.csv](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields-PersoonBeperkt.csv) (voor gebruik fields bij zoeken) waarbij in de eerste kolom het fields-pad staat en in de tweede kolom het volledige pad naar het gewenste veld.
+          type: array
+          maxItems: 130
+          minItems: 1
+          items:
+            $ref: 'filter.yaml#/components/schemas/Field'
         gemeenteVanInschrijving:
           $ref: 'persoon.yaml#/components/schemas/GemeenteVanInschrijving'
     RaadpleegMetBurgerservicenummer:
@@ -147,12 +155,10 @@ components:
               type: string
               format: date
               example: "1964-09-24"
-            geboorteplaats:
-              $ref: 'filter.yaml#/components/schemas/GeboorteplaatsFilter'
             geslachtsnaam:
               $ref: 'filter.yaml#/components/schemas/GeslachtsnaamFilter'
-            geslachtsaanduiding:
-              $ref: 'filter.yaml#/components/schemas/GeslachtsaanduidingFilter'
+            geslacht:
+              $ref: 'filter.yaml#/components/schemas/GeslachtFilter'
             voorvoegsel:
               $ref: 'filter.yaml#/components/schemas/VoorvoegselFilter'
             voornamen:
@@ -168,8 +174,8 @@ components:
           properties:
             inclusiefOverledenPersonen:
               $ref: '#/components/schemas/InclusiefOverledenPersonen'
-            geslachtsaanduiding:
-              $ref: 'filter.yaml#/components/schemas/GeslachtsaanduidingFilter'
+            geslacht:
+              $ref: 'filter.yaml#/components/schemas/GeslachtFilter'
             geslachtsnaam:
               $ref: 'filter.yaml#/components/schemas/GeslachtsnaamFilter'
             voorvoegsel:
@@ -247,6 +253,8 @@ components:
           properties:
             personen:
               type: array
+              description: |
+                * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
               items:
                 $ref: 'persoon.yaml#/components/schemas/Persoon'
     ZoekMetGeslachtsnaamEnGeboortedatumResponse:
@@ -256,6 +264,8 @@ components:
           properties:
             personen:
               type: array
+              description: |
+                * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
               items:
                 $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
     ZoekMetNaamEnGemeenteVanInschrijvingResponse:
@@ -265,6 +275,8 @@ components:
           properties:
             personen:
               type: array
+              description: |
+                * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
               items:
                 $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
     ZoekMetPostcodeEnHuisnummerResponse:
@@ -274,6 +286,8 @@ components:
           properties:
             personen:
               type: array
+              description: |
+                * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
               items:
                 $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
     ZoekMetStraatHuisnummerEnGemeenteVanInschrijvingResponse:
@@ -283,6 +297,8 @@ components:
           properties:
             personen:
               type: array
+              description: |
+                * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
               items:
                 $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
     ZoekMetNummeraanduidingIdentificatieResponse:
@@ -292,5 +308,7 @@ components:
           properties:
             personen:
               type: array
+              description: |
+                * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
               items:
                 $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'

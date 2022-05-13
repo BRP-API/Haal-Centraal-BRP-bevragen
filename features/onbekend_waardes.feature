@@ -378,7 +378,7 @@ Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbe
     | redenOpname.code            | 311                   |
     | datumIngangGeldigheid.type  | Datum                 |
     | datumIngangGeldigheid.datum | 2003-04-17            |
-    
+
   Scenario: onbekend waarde voor reden opname nationaliteit
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
@@ -403,22 +403,22 @@ Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbe
     | datumIngangGeldigheid.type  | Datum         |
     | datumIngangGeldigheid.datum | 2003-04-17    |
 
-Rule: de onbekend waarde voor geslachtsaanduiding wordt wel geleverd
+Rule: de onbekend waarde voor geslacht wordt wel geleverd
 
-  Scenario: een onbekend waarde bij geslachtsaanduiding wordt wel opgenomen in de response
+  Scenario: een onbekend waarde bij geslacht wordt wel opgenomen in de response
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                        | waarde    |
     | burgerservicenummer         | 999992934 |
     | geslachtsaanduiding (04.10) | O         |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                  |
-    | type                | RaadpleegMetBurgerservicenummer         |
-    | burgerservicenummer | 999992934                               |
-    | fields              | burgerservicenummer,geslachtsaanduiding |
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | burgerservicenummer,geslacht    |
     Dan heeft de response een persoon met de volgende gegevens
-    | naam                     | waarde    |
-    | burgerservicenummer      | 999992934 |
-    | geslachtsaanduiding.code | O         |
+    | naam                | waarde    |
+    | burgerservicenummer | 999992934 |
+    | geslacht.code       | O         |
 
 Rule: de onbekend waarde voor redenOpschortingBijhouding wordt wel geleverd
 
@@ -463,7 +463,7 @@ Rule: datumvelden waarde "00000000": worden vertaald naar DatumOnbekend
     | burgerservicenummer | 555550001 |
     En heeft de persoon alleen de volgende '<groep>' gegevens
     | naam            | waarde        |
-    | <veld>.type     | OnbekendDatum |
+    | <veld>.type     | DatumOnbekend |
     | <veld>.onbekend | true          |
 
     Voorbeelden:
@@ -495,7 +495,7 @@ Rule: datumvelden waarde "00000000": worden vertaald naar DatumOnbekend
     En heeft de persoon alleen de volgende '<groep>' gegevens
     | naam            | waarde        |
     | type            | Adres         |
-    | <veld>.type     | OnbekendDatum |
+    | <veld>.type     | DatumOnbekend |
     | <veld>.onbekend | true          |
 
     Voorbeelden:
@@ -522,7 +522,7 @@ Rule: datumvelden waarde "00000000": worden vertaald naar DatumOnbekend
     En heeft de persoon alleen de volgende '<groep>' gegevens
     | naam            | waarde                   |
     | type            | VerblijfplaatsBuitenland |
-    | <veld>.type     | OnbekendDatum            |
+    | <veld>.type     | DatumOnbekend            |
     | <veld>.onbekend | true                     |
 
     Voorbeelden:

@@ -49,7 +49,7 @@ components:
           $ref: 'geboorte.yaml#/components/schemas/GbaGeboorteBeperkt'
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/GbaGeheimhoudingPersoonsgegevens'
-        geslachtsaanduiding:
+        geslacht:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         naam:
           $ref: 'naam.yaml#/components/schemas/GbaNaamBasis'
@@ -63,6 +63,8 @@ components:
           $ref: 'verblijfplaats.yaml#/components/schemas/GbaVerblijfplaatsBeperkt'
     PersoonBeperkt:
       type: object
+      description: |
+        * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       properties:
         burgerservicenummer:
           $ref: '#/components/schemas/Burgerservicenummer'
@@ -70,7 +72,7 @@ components:
           $ref: 'geboorte.yaml#/components/schemas/GeboorteBeperkt'
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/GeheimhoudingPersoonsgegevens'
-        geslachtsaanduiding:
+        geslacht:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         leeftijd:
           $ref: '#/components/schemas/Leeftijd'
@@ -95,7 +97,7 @@ components:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/GbaGeheimhoudingPersoonsgegevens'
-        geslachtsaanduiding:
+        geslacht:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
@@ -143,6 +145,8 @@ components:
             $ref: 'partner.yaml#/components/schemas/GbaPartner'
     Persoon:
       type: object
+      description: |
+        * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       properties:
         aNummer:
           $ref: '#/components/schemas/ANummer'
@@ -152,7 +156,7 @@ components:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/GeheimhoudingPersoonsgegevens'
-        geslachtsaanduiding:
+        geslacht:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: '#/components/schemas/PersoonInOnderzoek'
@@ -211,7 +215,7 @@ components:
       properties:
         burgerservicenummer:
           type: boolean
-        geslachtsaanduiding:
+        geslacht:
           type: boolean
         leeftijd:
           type: boolean

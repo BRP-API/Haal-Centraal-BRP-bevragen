@@ -12,7 +12,7 @@ Functionaliteit: Fields
       | aNummer (01.10)                       | 5875306514 |
       | burgerservicenummer                   | 999991929  |
       | geslachtsaanduiding (04.10)           | V          |
-      | geslachtsaanduiding.omschrijving      | vrouw      |
+      | geslacht.omschrijving                 | vrouw      |
       | geheimhoudingPersoonsgegevens (70.10) | 0          |
       | inOnderzoek (83.10)                   |            |
       En de persoon heeft de volgende 'naam' gegevens
@@ -22,12 +22,19 @@ Functionaliteit: Fields
       | voorvoegsel (02.30)                  |                |
       | geslachtsnaam (02.40)                | Kierkegaard    |
       | aanduidingNaamgebruik (61.10)        | V              |
+      En de persoon heeft de volgende 'geboorte' gegevens
+      | naam                | waarde        |
+      | datum               | 1956-11-15    |
+      | plaats.code         | 0518          |
+      | plaats.omschrijving | 's-Gravenhage |
+      | land.code           | 6030          |
+      | land.omschrijving   | Nederland     |
       En de persoon heeft een partner met de volgende gegevens
-      | naam                             | waarde    |
-      | burgerservicenummer              | 999992971 |
-      | naam.voornamen (02.10)           | Robert    |
-      | naam.geslachtsnaam (02.40)       | Bronwaßer |
-      | geslachtsaanduiding.omschrijving | man       |
+      | naam                       | waarde    |
+      | burgerservicenummer        | 999992971 |
+      | naam.voornamen (02.10)     | Robert    |
+      | naam.geslachtsnaam (02.40) | Bronwaßer |
+      | geslacht.omschrijving      | man       |
       En de persoon heeft GEEN 'overlijden' gegevens
       En de persoon heeft de volgende 'kiesrecht' gegevens
       | naam                            | waarde |
@@ -66,65 +73,59 @@ Functionaliteit: Fields
 
     Scenario: Gevraagd veld is een gegeven van een gegevensgroep van de persoon
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                       |
-      | type                | RaadpleegMetBurgerservicenummer              |
-      | burgerservicenummer | 999991929                                    |
-      | fields              | burgerservicenummer,geslachtsaanduiding.code |
-      Dan heeft de persoon met burgerservicenummer '999991929' alleen de volgende gegevens
-      | naam                     | waarde    |
-      | burgerservicenummer      | 999991929 |
-      | geslachtsaanduiding.code | V         |
-
-    Scenario: Gevraagd veld is een gegevensgroep van de persoon
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                  |
-      | type                | RaadpleegMetBurgerservicenummer         |
-      | burgerservicenummer | 999991929                               |
-      | fields              | burgerservicenummer,geslachtsaanduiding |
-      Dan heeft de persoon met burgerservicenummer '999991929' alleen de volgende gegevens
-      | naam                             | waarde    |
-      | burgerservicenummer              | 999991929 |
-      | geslachtsaanduiding.code         | V         |
-      | geslachtsaanduiding.omschrijving | vrouw     |
-
-    Scenario: Gevraagde velden zijn gegevens van één gegevengroep van de persoon
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                                |
-      | type                | RaadpleegMetBurgerservicenummer                       |
-      | burgerservicenummer | 999991929                                             |
-      | fields              | burgerservicenummer,naam.geslachtsnaam,naam.voornamen |
+      | naam                | waarde                            |
+      | type                | RaadpleegMetBurgerservicenummer   |
+      | burgerservicenummer | 999991929                         |
+      | fields              | burgerservicenummer,geslacht.code |
       Dan heeft de persoon met burgerservicenummer '999991929' alleen de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 999991929 |
-      En heeft de persoon met burgerservicenummer '999991929' alleen de volgende 'naam' gegevens
+      | geslacht.code       | V         |
+
+    Scenario: Gevraagd veld is een gegevensgroep van de persoon
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999991929                       |
+      | fields              | burgerservicenummer,geslacht    |
+      Dan heeft de persoon met burgerservicenummer '999991929' alleen de volgende gegevens
+      | naam                  | waarde    |
+      | burgerservicenummer   | 999991929 |
+      | geslacht.code         | V         |
+      | geslacht.omschrijving | vrouw     |
+
+    Scenario: Gevraagde velden zijn gegevens van één gegevengroep van de persoon
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                            |
+      | type                | RaadpleegMetBurgerservicenummer   |
+      | burgerservicenummer | 999991929                         |
+      | fields              | naam.geslachtsnaam,naam.voornamen |
+      Dan heeft de response een persoon met alleen de volgende 'naam' gegevens
       | naam          | waarde         |
       | voornamen     | Yvonne Johanna |
       | geslachtsnaam | Kierkegaard    |
 
     Scenario: Gevraagde velden zijn gegevens van meerdere gegevensgroepen van de persoon
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                                          |
-      | type                | RaadpleegMetBurgerservicenummer                                 |
-      | burgerservicenummer | 999991929                                                       |
-      | fields              | burgerservicenummer,geslachtsaanduiding.code,naam.geslachtsnaam |
+      | naam                | waarde                                               |
+      | type                | RaadpleegMetBurgerservicenummer                      |
+      | burgerservicenummer | 999991929                                            |
+      | fields              | burgerservicenummer,geslacht.code,naam.geslachtsnaam |
       Dan heeft de persoon met burgerservicenummer '999991929' alleen de volgende gegevens
-      | naam                     | waarde    |
-      | burgerservicenummer      | 999991929 |
-      | geslachtsaanduiding.code | V         |
+      | naam                | waarde    |
+      | burgerservicenummer | 999991929 |
+      | geslacht.code       | V         |
       En heeft de persoon met burgerservicenummer '999991929' alleen de volgende 'naam' gegevens
       | naam          | waarde      |
       | geslachtsnaam | Kierkegaard |
 
     Scenario: Gevraagd veld is een gegeven van een gegevensgroep collectie van de persoon
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                                         |
-      | type                | RaadpleegMetBurgerservicenummer                                |
-      | burgerservicenummer | 999991929                                                      |
-      | fields              | burgerservicenummer,partners.type,partners.burgerservicenummer |
-      Dan heeft de persoon met burgerservicenummer '999991929' alleen de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 999991929 |
-      En heeft de persoon met burgerservicenummer '999991929' een 'partner' met alleen de volgende gegevens
+      | naam                | waarde                                     |
+      | type                | RaadpleegMetBurgerservicenummer            |
+      | burgerservicenummer | 999991929                                  |
+      | fields              | partners.type,partners.burgerservicenummer |
+      Dan heeft de response een persoon met alleen de volgende 'partner' gegevens
       | naam                | waarde    |
       | type                | Partner   |
       | burgerservicenummer | 999992971 |
@@ -140,17 +141,17 @@ Functionaliteit: Fields
       | burgerservicenummer | 999991929 |
 
       Voorbeelden:
-      | veld                            | opmerking                                                       |
-      | naam.adellijkeTitelPredicaat    |                                                                 |
-      | inOnderzoek.geslachtsaanduiding |                                                                 |
-      | geheimhoudingPersoonsgegevens   | geheimhoudingPersoonsgegevens wordt niet opgenomen bij waarde 0 |
+      | veld                          | opmerking                                                       |
+      | naam.adellijkeTitelPredicaat  |                                                                 |
+      | inOnderzoek.geslacht          |                                                                 |
+      | geheimhoudingPersoonsgegevens | geheimhoudingPersoonsgegevens wordt niet opgenomen bij waarde 0 |
 
   Rule: optioneel mag je (het begin van) het pad weglaten wanneer dit uniek verwijst naar 1 veld in de resource
     - wanneer het opgegeven pad exact verwijst naar een veld en tegelijkertijd als deel van een pad verwijst naar een ander veld, wordt alleen het veld met het exacte pad opgenomen in de response
     - wanneer het opgegeven pad niet exact verwijst naar een veld en tegelijkertijd als deel van een pad verwijst naar meerdere ander velden, wordt een foutmelding gegeven
     - wanneer het opgegeven pad verwijst naar een veld en tegelijkertijd naar het gelijknamige veld in inOnderzoek, worden beide velden opgenomen in de response wanneer ze een waarde hebben
 
-    # zie fields-mapping-Persoon.csv (raadpleeg op burgerservicenummer) en fields-mapping-PersoonBeperkt.csv (zoeken) voor een overzicht van alle mogelijke gehele of gedeeltelijke paden voor het aanwijzen van de personen velden: 
+    # zie fields-mapping-Persoon.csv (raadpleeg op burgerservicenummer) en fields-mapping-PersoonBeperkt.csv (zoeken) voor een overzicht van alle mogelijke gehele of gedeeltelijke paden voor het aanwijzen van de personen velden:
     #  een fields veld(pad) in de linker kolom wordt vertaald naar het volledig pad in de tweede kolom
     #  wanneer een in fields opgegeven veld(pad) niet voorkomt in de linker kolom, geeft dat een foutmelding
 
@@ -182,81 +183,42 @@ Functionaliteit: Fields
       | <pad>               | <waarde>  |
 
       Voorbeelden:
-      | pad                              | waarde      | opmerking                                                                               |
-      | geslachtsaanduiding.omschrijving | vrouw       | levert geslachtsaanduiding.omschrijving, niet partners.geslachtsaanduiding.omschrijving |
-      | naam.voornamen                   | Kierkegaard | levert naam.voornamen, niet partners.naam.voornamen                                     |
+      | pad                   | waarde      | opmerking                                                         |
+      | geslacht.omschrijving | vrouw       | levert geslacht.omschrijving, niet partners.geslacht.omschrijving |
+      | naam.voornamen        | Kierkegaard | levert naam.voornamen, niet partners.naam.voornamen               |
 
   Rule: Wanneer velden van polymorfe gegevensgroep wordt gevraagd, wordt altijd het 'type' veld van de gegevensgroep terug gegeven
     - wanneer het gegeven geen waarde heeft (ook niet onbekend) wordt de gegevensgroep niet geleverd en dus ook 'type' niet teruggegeven
 
-    Abstract Scenario: Gevraagd veld is een polymorfe gegevensgroep van de persoon
+    Abstract Scenario: Gevraagd veld zit in een polymorfe gegevensgroep
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde                |
       | burgerservicenummer | <burgerservicenummer> |
-      En de persoon heeft de volgende 'geboorte' gegevens
-      | naam  | waarde      |
-      | datum | <GBA datum> |
+      En de persoon heeft de volgende 'verblijfplaats' gegevens
+      | naam                             | waarde                |
+      | straatnaam (11.10)               | <straat>              |
+      | huisnummer (11.20)               | <huisnummer>          |
+      | postcode (11.60)                 | <postcode>            |
+      | locatiebeschrijving (12.10)      | <locatiebeschrijving> |
+      | land.code                        | <land>                |
+      | regel 1 adres buitenland (13.30) | <regel1>              |
+      | regel 2 adres buitenland (13.40) | <regel2>              |
+      | regel 3 adres buitenland (13.50) |                       |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                             |
-      | type                | RaadpleegMetBurgerservicenummer    |
-      | burgerservicenummer | <burgerservicenummer>              |
-      | fields              | burgerservicenummer,geboorte.datum |
-      Dan heeft de persoon met burgerservicenummer '<burgerservicenummer>' alleen de volgende gegevens
-      | naam                | waarde                |
-      | burgerservicenummer | <burgerservicenummer> |
-      En heeft de persoon met burgerservicenummer '<burgerservicenummer>' alleen de volgende 'geboorte' gegevens
-      | naam           | waarde     |
-      | datum.type     | <type>     |
-      | datum.datum    | <datum>    |
-      | datum.jaar     | <jaar>     |
-      | datum.maand    | <maand>    |
-      | datum.onbekend | <onbekend> |
+      | naam                | waarde                              |
+      | type                | RaadpleegMetBurgerservicenummer     |
+      | burgerservicenummer | <burgerservicenummer>               |
+      | fields              | verblijfplaats.verblijfadres.regel3 |
+      Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
+      | naam                 | waarde   |
+      | type                 | <type>   |
 
       Voorbeelden:
-      | burgerservicenummer | GBA datum | type           | datum      | jaar | maand | onbekend |
-      | 999991929           | 19561115  | Datum          | 1956-11-15 |      |       |          |
-      | 999992351           | 19780300  | JaarMaandDatum |            | 1978 | 3     |          |
-      | 999992806           | 19680000  | JaarDatum      |            | 1968 |       |          |
-      | 999994220           | 00000000  | OnbekendDatum  |            |      |       | true     |
-
-    Abstract Scenario: Gevraagd veld is een gegeven van een andere type van de polymorfe gegevensgroep dan het ontvangen type
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde                |
-      | burgerservicenummer | <burgerservicenummer> |
-      En de persoon heeft de volgende 'geboorte' gegevens
-      | naam  | waarde      |
-      | datum | <GBA datum> |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                   |
-      | type                | RaadpleegMetBurgerservicenummer          |
-      | burgerservicenummer | <burgerservicenummer>                    |
-      | fields              | burgerservicenummer,geboorte.datum.datum |
-      Dan heeft de persoon met burgerservicenummer '<burgerservicenummer>' alleen de volgende gegevens
-      | naam                | waarde                |
-      | burgerservicenummer | <burgerservicenummer> |
-      En heeft de persoon met burgerservicenummer '<burgerservicenummer>' alleen de volgende 'geboorte' gegevens
-      | naam       | waarde |
-      | datum.type | <type> |
-
-      Voorbeelden:
-      | burgerservicenummer | GBA datum | type           |
-      | 999992351           | 19780300  | JaarMaandDatum |
-      | 999992806           | 19680000  | JaarDatum      |
-      | 999994220           | 00000000  | OnbekendDatum  |
-
-    Abstract Scenario: Gevraagd veld is een polymorfe gegevensgroep van de persoon en heeft geen waarde
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                   |
-      | type                | RaadpleegMetBurgerservicenummer          |
-      | burgerservicenummer | 999991929                                |
-      | fields              | burgerservicenummer,overlijden.datum,kiesrecht.uitgeslotenVanKiesrecht,kiesrecht.einddatumUitsluitingKiesrecht |
-      Dan heeft de persoon met burgerservicenummer '999991929' alleen de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 999991929 |
-      En heeft de persoon met burgerservicenummer '999991929' GEEN 'overlijden' gegevens
-      En heeft de persoon met burgerservicenummer '999991929' alleen de volgende 'kiesrecht' gegevens
-      | naam                    | waarde |
-      | uitgeslotenVanKiesrecht | true   |
+      | burgerservicenummer | straat    | huisnummer | postcode | locatiebeschrijving        | land | regel1            | regel2       | type                     |
+      | 999993653           | Boterdiep | 31         | 3077AW   |                            |      |                   |              | Adres                    |
+      | 000009921           |           |            |          | Woonboot in de Grote Sloot |      |                   |              | Locatie                  |
+      | 999995121           |           |            |          |                            | 5002 | 14 Rue Camulogene | 75015 Parijs | VerblijfplaatsBuitenland |
+      | 999993586           |           |            |          |                            |      |                   |              | VerblijfplaatsOnbekend   |
 
   Rule: Wanneer een persoon geheimhouding heeft, wordt dit bij elke vraag terug gegeven
     - wanneer geheimhoudingPersoonsgegevens de waarde true heeft (indicatie geheim 07.70.10 heeft een waarde groter dan 0), wordt deze geleverd ook wanneer daar niet om gevraagd is
@@ -313,6 +275,61 @@ Functionaliteit: Fields
       | naam               | waarde     |
       | reden.code         | O          |
       | reden.omschrijving | overlijden |
+
+  Rule: Wanneer een specifiek veld van een datum wordt gevraagd, dan worden velden die bij dat datumtype required zijn ook geleverd
+
+    Abstract Scenario: vragen om enkel(e) veld(en) van een datum
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde                |
+      | burgerservicenummer | <burgerservicenummer> |
+      En de persoon heeft de volgende 'geboorte' gegevens
+      | naam  | waarde      |
+      | datum | <GBA datum> |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | <burgerservicenummer>           |
+      | fields              | <fields>                        |
+      Dan heeft de response een persoon met alleen de volgende 'geboorte' gegevens
+      | naam              | waarde        |
+      | datum.type        | <type>        |
+      | datum.datum       | <datum>       |
+      | datum.jaar        | <jaar>        |
+      | datum.maand       | <maand>       |
+      | datum.onbekend    | <onbekend>    |
+      | datum.langFormaat | <langFormaat> |
+
+      Voorbeelden:
+      | burgerservicenummer | GBA datum | type           | datum      | jaar | maand | onbekend | langFormaat      | fields                                          |
+      | 999991929           | 19561115  | Datum          | 1956-11-15 |      |       |          | 15 november 1956 | geboorte.datum                                  |
+      | 999991929           | 19561115  | Datum          | 1956-11-15 |      |       |          | 15 november 1956 | geboorte.datum.datum                            |
+      | 999991929           | 19561115  | Datum          | 1956-11-15 |      |       |          | 15 november 1956 | geboorte.datum.type                             |
+      | 999991929           | 19561115  | Datum          | 1956-11-15 |      |       |          | 15 november 1956 | geboorte.datum.langFormaat                      |
+      | 999991929           | 19561115  | Datum          | 1956-11-15 |      |       |          | 15 november 1956 | geboorte.datum.jaar                             |
+      | 999991929           | 19561115  | Datum          | 1956-11-15 |      |       |          | 15 november 1956 | geboorte.datum.datum,geboorte.datum.onbekend    |
+      | 999992351           | 19780300  | JaarMaandDatum |            | 1978 | 3     |          | maart 1978       | geboorte.datum                                  |
+      | 999992351           | 19780300  | JaarMaandDatum |            | 1978 | 3     |          | maart 1978       | geboorte.datum.datum                            |
+      | 999992351           | 19780300  | JaarMaandDatum |            | 1978 | 3     |          | maart 1978       | geboorte.datum.jaar                             |
+      | 999992351           | 19780300  | JaarMaandDatum |            | 1978 | 3     |          | maart 1978       | geboorte.datum.langFormaat                      |
+      | 999992806           | 19680000  | JaarDatum      |            | 1968 |       |          | 1968             | geboorte.datum                                  |
+      | 999992806           | 19680000  | JaarDatum      |            | 1968 |       |          | 1968             | geboorte.datum.datum                            |
+      | 999992806           | 19680000  | JaarDatum      |            | 1968 |       |          | 1968             | geboorte.datum.maand                            |
+      | 999992806           | 19680000  | JaarDatum      |            | 1968 |       |          | 1968             | geboorte.datum.maand,geboorte.datum,langFormaat |
+      | 999994220           | 00000000  | DatumOnbekend  |            |      |       | true     | onbekend         | geboorte.datum                                  |
+      | 999994220           | 00000000  | DatumOnbekend  |            |      |       | true     | onbekend         | geboorte.datum.datum                            |
+      | 999994220           | 00000000  | DatumOnbekend  |            |      |       | true     | onbekend         | geboorte.datum.type                             |
+      | 999994220           | 00000000  | DatumOnbekend  |            |      |       | true     | onbekend         | geboorte.datum.langFormaat                      |
+
+    Scenario: vragen om geen enkel veld van een datum levert niet de required velden van die datum
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999991929                       |
+      | fields              | geboorte.plaats                 |
+      Dan heeft de response een persoon met alleen de volgende 'geboorte' gegevens
+      | naam                | waarde        |
+      | plaats.code         | 0518          |
+      | plaats.omschrijving | 's-Gravenhage |
 
   Rule: Wanneer een gevraagd veld in onderzoek is, dan wordt het corresponderende in onderzoek veld altijd terug gegeven
     # Scenario's worden toegevoegd als in onderzoek feature is geïmplementeerd

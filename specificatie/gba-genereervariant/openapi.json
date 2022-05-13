@@ -1,7 +1,7 @@
 {
   "openapi" : "3.0.3",
   "info" : {
-    "title" : "Bevragen Personen",
+    "title" : "BRP Personen Bevragen",
     "description" : "API voor het bevragen van personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.\n\nGegevens die er niet zijn of niet actueel zijn krijg je niet terug. Heeft een persoon bijvoorbeeld geen geldige nationaliteit, en alleen een beëindigd partnerschap, dan krijg je geen gegevens over nationaliteit en partner.\n\nZie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.1.0/features) voor nadere toelichting.\n",
     "contact" : {
       "url" : "https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen"
@@ -393,7 +393,13 @@
             "type" : "string"
           },
           "fields" : {
-            "$ref" : "#/components/schemas/Fields"
+            "maxItems" : 130,
+            "minItems" : 1,
+            "type" : "array",
+            "description" : "Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een lijst van paden die verwijzen naar de gewenste velden op te nemen ([zie functionele specificaties 'fields' properties](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields.feature)). \nDe te gebruiken paden zijn beschreven in [fields-Persoon.csv](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields-Persoon.csv) (voor gebruik fields bij raadplegen) en [fields-PersoonBeperkt.csv](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields-PersoonBeperkt.csv) (voor gebruik fields bij zoeken) waarbij in de eerste kolom het fields-pad staat en in de tweede kolom het volledige pad naar het gewenste veld.\n",
+            "items" : {
+              "$ref" : "#/components/schemas/Field"
+            }
           },
           "gemeenteVanInschrijving" : {
             "$ref" : "#/components/schemas/GemeenteVanInschrijving"
@@ -427,14 +433,11 @@
               "format" : "date",
               "example" : "1964-09-24"
             },
-            "geboorteplaats" : {
-              "$ref" : "#/components/schemas/GeboorteplaatsFilter"
-            },
             "geslachtsnaam" : {
               "$ref" : "#/components/schemas/GeslachtsnaamFilter"
             },
-            "geslachtsaanduiding" : {
-              "$ref" : "#/components/schemas/GeslachtsaanduidingFilter"
+            "geslacht" : {
+              "$ref" : "#/components/schemas/GeslachtFilter"
             },
             "voorvoegsel" : {
               "$ref" : "#/components/schemas/VoorvoegselFilter"
@@ -460,8 +463,8 @@
             "inclusiefOverledenPersonen" : {
               "$ref" : "#/components/schemas/InclusiefOverledenPersonen"
             },
-            "geslachtsaanduiding" : {
-              "$ref" : "#/components/schemas/GeslachtsaanduidingFilter"
+            "geslacht" : {
+              "$ref" : "#/components/schemas/GeslachtFilter"
             },
             "geslachtsnaam" : {
               "$ref" : "#/components/schemas/GeslachtsnaamFilter"
@@ -655,7 +658,7 @@
           "geheimhoudingPersoonsgegevens" : {
             "$ref" : "#/components/schemas/GbaGeheimhoudingPersoonsgegevens"
           },
-          "geslachtsaanduiding" : {
+          "geslacht" : {
             "$ref" : "#/components/schemas/Waardetabel"
           },
           "naam" : {
@@ -698,7 +701,7 @@
           "geheimhoudingPersoonsgegevens" : {
             "$ref" : "#/components/schemas/GbaGeheimhoudingPersoonsgegevens"
           },
-          "geslachtsaanduiding" : {
+          "geslacht" : {
             "$ref" : "#/components/schemas/Waardetabel"
           },
           "inOnderzoek" : {
@@ -780,11 +783,11 @@
         "description" : "Het nummer van het verstrekte Nederlandse reisdocument.\n",
         "example" : "546376728"
       },
-      "Fields" : {
-        "maxLength" : 924,
-        "pattern" : "^[a-zA-Z0-9\\.,_]+$",
+      "Field" : {
+        "maxLength" : 200,
+        "pattern" : "^[a-zA-Z0-9\\._]+$",
         "type" : "string",
-        "description" : "Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen op te geven.\nBij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven.\nZie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature)\n"
+        "description" : "Bij opgave van paden die verwijzen naar niet-bestaande velden wordt een 400 Bad Request teruggegeven.\nZie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature)\n"
       },
       "GemeenteVanInschrijving" : {
         "pattern" : "^[0-9]{4}$",
@@ -792,19 +795,13 @@
         "description" : "Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.\n",
         "example" : "0518"
       },
-      "GeboorteplaatsFilter" : {
-        "pattern" : "^[a-zA-Z0-9À-ž \\,\\.\\-\\'()]{1,80}$",
-        "type" : "string",
-        "description" : "Gemeentenaam of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren. **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**\n",
-        "example" : "Utrecht"
-      },
       "GeslachtsnaamFilter" : {
         "pattern" : "^[a-zA-Z0-9À-ž \\.\\-\\']{1,200}$|^[a-zA-Z0-9À-ž \\.\\-\\']{3,199}\\*{1}$",
         "type" : "string",
-        "description" : "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**\n",
+        "description" : "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 3 letters.** **Zoeken met tekstvelden is case-insensitive.**\n",
         "example" : "Vries"
       },
-      "GeslachtsaanduidingFilter" : {
+      "GeslachtFilter" : {
         "pattern" : "^([Mm]|[Vv]|[Oo])$",
         "type" : "string",
         "description" : "Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.\n",
@@ -813,19 +810,19 @@
       "VoorvoegselFilter" : {
         "pattern" : "^[a-zA-Z \\']{1,10}$",
         "type" : "string",
-        "description" : "Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. Het zoeken op het voorvoegsel is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**\n",
+        "description" : "Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. **Zoeken met tekstvelden is case-insensitive.**\n",
         "example" : "de"
       },
       "VoornamenOptioneelFilter" : {
         "pattern" : "^[a-zA-Z0-9À-ž \\.\\-\\']{1,199}\\*{0,1}$",
         "type" : "string",
-        "description" : "De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**\n",
+        "description" : "De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. **Gebruik van de wildcard is toegestaan.** **Zoeken met tekstvelden is case-insensitive.**\n",
         "example" : "Dirk"
       },
       "VoornamenVerplichtFilter" : {
         "pattern" : "^[a-zA-Z0-9À-ž \\.\\-\\']{1,200}$|^[a-zA-Z0-9À-ž \\.\\-\\']{3,199}\\*{1}$",
         "type" : "string",
-        "description" : "De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. ** Bij deze query-parameter is het gebruik van een [wildcard](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature) toegestaan in combinatie met minimaal 2 karakters.** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).**\n",
+        "description" : "De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 3 letters.** **Zoeken met tekstvelden is case-insensitive.**\n",
         "example" : "Dirk"
       },
       "Huisletter" : {
@@ -854,9 +851,9 @@
         "example" : "2341SX"
       },
       "StraatFilter" : {
-        "pattern" : "^[a-zA-Z0-9À-ž \\-\\']{1,80}$|^[a-zA-Z0-9À-ž \\-\\']{7,79}\\*{1}$|^\\*{1}[a-zA-Z0-9À-ž \\-\\']{7,79}$",
+        "pattern" : "^[a-zA-Z0-9À-ž \\-\\'\\.]{1,80}$|^[a-zA-Z0-9À-ž \\-\\'\\.]{7,79}\\*{1}$|^\\*{1}[a-zA-Z0-9À-ž \\-\\'\\.]{7,79}$",
         "type" : "string",
-        "description" : "Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan. Zie [feature-beschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.3.0/features/wildcard.feature)** **Zoeken met tekstvelden is [case-Insensitive](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/case_insensitive.feature).\n",
+        "description" : "Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 7 letters.** **Zoeken met tekstvelden is case-insensitive.**\n",
         "example" : "Tulpstraat"
       },
       "NummeraanduidingIdentificatie" : {
@@ -912,6 +909,7 @@
         "description" : "De verzameling namen voor de geslachtsnaam, gescheiden door spaties.\n"
       },
       "AdellijkeTitelPredicaatType" : {
+        "description" : "wordt gevuld op basis van de waarden die voorkomen in de tabel 'Adellijke_Titel_Predicaat' uit de Haal-Centraal-BRP-tabellen-bevragen API. \nDe property **soort** geeft aan of het een 'predicaat' of een 'titel' betreft. \n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/Waardetabel"
         }, {
@@ -1048,7 +1046,7 @@
         "example" : "20180700"
       },
       "GbaInOnderzoek" : {
-        "required" : [ "aanduidingGegevensInOnderzoek", "datumIngangInOnderzoek" ],
+        "required" : [ "aanduidingGegevensInOnderzoek", "datumIngangOnderzoek" ],
         "type" : "object",
         "properties" : {
           "aanduidingGegevensInOnderzoek" : {
@@ -1109,8 +1107,7 @@
           "inOnderzoek" : {
             "$ref" : "#/components/schemas/GbaInOnderzoek"
           }
-        },
-        "description" : "Bij de LO GBA versie kunnen datums, bijv datumIngangGeldigheid de LoGbaDatum refereren\nHet hoeft niet van AbstractDatum af te leiden omdat het nooit een andere type kan zijn\n"
+        }
       },
       "GbaGeboorte" : {
         "allOf" : [ {
@@ -1269,7 +1266,7 @@
             "$ref" : "#/components/schemas/Waardetabel"
           }
         },
-        "description" : "Gegevens over het gezag over de persoon.\n"
+        "description" : "Gegevens over het gezag over de persoon.\n* **indicatieGezagMinderjarige** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'Gezag_Minderjarige' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
       },
       "GbaVerblijfstitel" : {
         "type" : "object",
@@ -1312,7 +1309,7 @@
           "burgerservicenummer" : {
             "$ref" : "#/components/schemas/Burgerservicenummer"
           },
-          "geslachtsaanduiding" : {
+          "geslacht" : {
             "$ref" : "#/components/schemas/Waardetabel"
           },
           "ouderAanduiding" : {
@@ -1344,7 +1341,7 @@
           "burgerservicenummer" : {
             "$ref" : "#/components/schemas/Burgerservicenummer"
           },
-          "geslachtsaanduiding" : {
+          "geslacht" : {
             "$ref" : "#/components/schemas/Waardetabel"
           },
           "soortVerbintenis" : {
@@ -1383,7 +1380,7 @@
             "$ref" : "#/components/schemas/GbaInOnderzoek"
           }
         },
-        "description" : "Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.\n* **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.\n* **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan.\n* **plaats** : De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Voor een plaats buiten Nederland bevat het antwoord een buitenlandse plaatsnaam of aanduiding.\n"
+        "description" : "Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.\n* **datum** - De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan. \n* **land** - Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n* **plaats** - De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld op basis van de waarden die voorkomen in de tabel \"Gemeenten\" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.\n"
       },
       "GbaOntbindingHuwelijkPartnerschap" : {
         "type" : "object",

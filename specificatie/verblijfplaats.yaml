@@ -147,6 +147,8 @@ components:
       allOf:
         - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
         - type: object
+          description: |
+            * **functieAdres** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'Functie_Adres' uit de Haal-Centraal-BRP-tabellen-bevragen API.
           properties:
             functieAdres:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
@@ -165,6 +167,8 @@ components:
       allOf:
         - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
         - type: object
+          description: |
+            * **functieAdres** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Functie_Adres' uit de Haal-Centraal-BRP-tabellen-bevragen API.
           properties:
             functieAdres:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
@@ -214,6 +218,9 @@ components:
           VerblijfplaatsOnbekend: '#/components/schemas/VerblijfplaatsOnbekend'
           Locatie: '#/components/schemas/Locatie'
     VerblijfplaatsBuitenland:
+      description: |
+        * **gemeenteVanInschrijving** - Wordt gevuld op basis van de waarden die voorkomen in de tabel "Gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats
+        * **land** - land waar de persoon is overleden. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       allOf:
       - $ref : '#/components/schemas/AbstractVerblijfplaats'
       - type: object
@@ -229,6 +236,8 @@ components:
     Adres:
       description: |
         Gegevens over het adres van een persoon.
+        * **functieAdres** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Functie_Adres' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **aanduidingBijHuisnummer** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Aanduiding_Bij_Huisnummer' uit de Haal-Centraal-BRP-tabellen-bevragen API.
         * **datumVan** : de datum van aangifte of ambtshalve melding van verblijf en adres.
         * **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden.
       allOf:
@@ -250,6 +259,10 @@ components:
             inOnderzoek:
               $ref: "#/components/schemas/AdresInOnderzoek"
     Locatie:
+      description: |
+        * **functieAdres** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'soortadres' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten. Wordt gevuld op basis van de waarden die voorkomen in de tabel "Gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats
+        * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       allOf:
         - $ref: '#/components/schemas/AbstractVerblijfplaats'
         - type: object
@@ -265,6 +278,8 @@ components:
             inOnderzoek:
               $ref: '#/components/schemas/LocatieInOnderzoek'
     VerblijfplaatsOnbekend:
+      description: |
+        * **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten. Wordt gevuld op basis van de waarden die voorkomen in de tabel "Gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats
       allOf:
         - $ref: '#/components/schemas/AbstractVerblijfplaats'
         - type: object

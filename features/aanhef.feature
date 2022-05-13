@@ -14,12 +14,12 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
   # VP = voorvoegselGeslachtsnaam partner
   # GP = geslachtsnaam partner
 
-Rule: De aanhef voor een persoon zonder adellijke titel of predicaat wordt samengesteld afhankelijk van de geslachtsaanduiding en de waarde van aanduidingNaamgebruik, waarbij geldt dat:
-  - De aanhef wordt voorafgegaan door "Geachte" gevolgd door "mevrouw", "heer" of de voorletters, afhankelijk van de geslachtsaanduiding:
-    | geslachtsaanduiding | aanhef begint met (GA) |
-    | M                   | Geachte heer           |
-    | V                   | Geachte mevrouw        |
-    | O                   | Geachte VL             |
+Rule: De aanhef voor een persoon zonder adellijke titel of predicaat wordt samengesteld afhankelijk van het geslacht en de waarde van aanduidingNaamgebruik, waarbij geldt dat:
+  - De aanhef wordt voorafgegaan door "Geachte" gevolgd door "mevrouw", "heer" of de voorletters, afhankelijk van het geslacht:
+    | geslacht | aanhef begint met (GA) |
+    | M        | Geachte heer           |
+    | V        | Geachte mevrouw        |
+    | O        | Geachte VL             |
   - De aanhef wordt samengesteld uit naamcomponenten van de persoon en eventuele (ex)partner op basis van de aanduidingNaamgebruik:
     | aanduidingNaamgebruik | aanhef         |
     | E                     | GA VV GN       |
@@ -30,7 +30,7 @@ Rule: De aanhef voor een persoon zonder adellijke titel of predicaat wordt samen
   - Wanneer een naamcomponent geen of een lege waarde heeft, wordt de overbodige spatie niet opgenomen: niet starten met een spatie, niet eindigen met een spatie, geen dubbele spatie, geen spatie na streepje
   - Aanduiding naamgebruik "E" (eigen naam) wordt gehanteerd voor een persoon die geen actuele en geen ontbonden huwelijken/partnerschappen heeft gehad
 
-  Abstract Scenario: opnemen geslacht na Geachte bij geslachtsaanduiding <voorbeeld>
+  Abstract Scenario: opnemen geslacht na Geachte bij geslacht <voorbeeld>
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                        | waarde     |
     | burgerservicenummer         | 999992934  |
@@ -124,7 +124,7 @@ Rule: De aanhef voor een persoon zonder adellijke titel of predicaat wordt samen
     | N           | in het      | Veld          | van                 | Velzen                | Geachte mevrouw In het Veld-van Velzen |
     | N           |             | Groenen       |                     | Groenink              | Geachte mevrouw Groenen-Groenink       |
 
-  Abstract Scenario: hoofdlettergebruik in voorvoegsels bij aanduidingNaamgebruik "<naamgebruik>", geslachtsaanduiding "<geslacht>" en <voorbeeld>
+  Abstract Scenario: hoofdlettergebruik in voorvoegsels bij aanduidingNaamgebruik "<naamgebruik>", geslacht "<geslacht>" en <voorbeeld>
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                        | waarde     |
     | burgerservicenummer         | 999992934  |
@@ -170,49 +170,49 @@ Rule: De aanhef voor een persoon zonder adellijke titel of predicaat wordt samen
     | voorvoegsel met hoofdletters  | V        | N           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte mevrouw Op Den Berghe-Van Der Broeck |
     | voorvoegsel met hoofdletters  | O        | N           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | Geachte J.R. Op Den Berghe-Van Der Broeck    |
 
-Rule: De aanhef voor een persoon met adellijke titel of predicaat wordt bepaald op basis van adellijkeTitelPredicaat en de geslachtsaanduiding:
-  | adellijkeTitelPredicaat | omschrijving | geslachtsaanduiding | Aanhef                |
-  | B                       | Baron        | M                   | Hoogwelgeboren heer   |
-  | BS                      | Barones      | M                   | Hoogwelgeboren heer   |
-  | B                       | Baron        | V                   | Hoogwelgeboren vrouwe |
-  | BS                      | Barones      | V                   | Hoogwelgeboren vrouwe |
-  | G                       | Graaf        | M                   | Hooggeboren heer      |
-  | GI                      | Gravin       | M                   | Hooggeboren heer      |
-  | G                       | Graaf        | V                   | Hooggeboren vrouwe    |
-  | GI                      | Gravin       | V                   | Hooggeboren vrouwe    |
-  | H                       | Hertog       | M                   | Hoogwelgeboren heer   |
-  | HI                      | Hertogin     | M                   | Hoogwelgeboren heer   |
-  | H                       | Hertog       | V                   | Hoogwelgeboren vrouwe |
-  | HI                      | Hertogin     | V                   | Hoogwelgeboren vrouwe |
-  | JH                      | Jonkheer     | M                   | Hoogwelgeboren heer   |
-  | JV                      | Jonkvrouw    | M                   | Hoogwelgeboren heer   |
-  | JH                      | Jonkheer     | V                   | Hoogwelgeboren vrouwe |
-  | JV                      | Jonkvrouw    | V                   | Hoogwelgeboren vrouwe |
-  | M                       | Markies      | M                   | Hoogwelgeboren heer   |
-  | MI                      | Markiezin    | M                   | Hoogwelgeboren heer   |
-  | M                       | Markies      | V                   | Hoogwelgeboren vrouwe |
-  | MI                      | Markiezin    | V                   | Hoogwelgeboren vrouwe |
-  | P                       | Prins        | M                   | Hoogheid              |
-  | PS                      | Prinses      | M                   | Hoogheid              |
-  | P                       | Prins        | V                   | Hoogheid              |
-  | PS                      | Prinses      | V                   | Hoogheid              |
-  | P                       | Prins        | O                   | Hoogheid              |
-  | PS                      | Prinses      | O                   | Hoogheid              |
-  | R                       | Ridder       | M                   | Hoogwelgeboren heer   |
-  | R                       | Ridder       | V                   | Hoogwelgeboren vrouwe |
+Rule: De aanhef voor een persoon met adellijke titel of predicaat wordt bepaald op basis van adellijkeTitelPredicaat en het geslacht:
+  | adellijkeTitelPredicaat | omschrijving | geslacht | Aanhef                |
+  | B                       | Baron        | M        | Hoogwelgeboren heer   |
+  | BS                      | Barones      | M        | Hoogwelgeboren heer   |
+  | B                       | Baron        | V        | Hoogwelgeboren vrouwe |
+  | BS                      | Barones      | V        | Hoogwelgeboren vrouwe |
+  | G                       | Graaf        | M        | Hooggeboren heer      |
+  | GI                      | Gravin       | M        | Hooggeboren heer      |
+  | G                       | Graaf        | V        | Hooggeboren vrouwe    |
+  | GI                      | Gravin       | V        | Hooggeboren vrouwe    |
+  | H                       | Hertog       | M        | Hoogwelgeboren heer   |
+  | HI                      | Hertogin     | M        | Hoogwelgeboren heer   |
+  | H                       | Hertog       | V        | Hoogwelgeboren vrouwe |
+  | HI                      | Hertogin     | V        | Hoogwelgeboren vrouwe |
+  | JH                      | Jonkheer     | M        | Hoogwelgeboren heer   |
+  | JV                      | Jonkvrouw    | M        | Hoogwelgeboren heer   |
+  | JH                      | Jonkheer     | V        | Hoogwelgeboren vrouwe |
+  | JV                      | Jonkvrouw    | V        | Hoogwelgeboren vrouwe |
+  | M                       | Markies      | M        | Hoogwelgeboren heer   |
+  | MI                      | Markiezin    | M        | Hoogwelgeboren heer   |
+  | M                       | Markies      | V        | Hoogwelgeboren vrouwe |
+  | MI                      | Markiezin    | V        | Hoogwelgeboren vrouwe |
+  | P                       | Prins        | M        | Hoogheid              |
+  | PS                      | Prinses      | M        | Hoogheid              |
+  | P                       | Prins        | V        | Hoogheid              |
+  | PS                      | Prinses      | V        | Hoogheid              |
+  | P                       | Prins        | O        | Hoogheid              |
+  | PS                      | Prinses      | O        | Hoogheid              |
+  | R                       | Ridder       | M        | Hoogwelgeboren heer   |
+  | R                       | Ridder       | V        | Hoogwelgeboren vrouwe |
 
   Of met algoritme:
-  - bij een graaf of gravin wordt aanhef "Hooggeboren heer" of "Hooggeboren vrouwe" bij respectievelijk geslachtsaanduiding "M" (man) en "V" (vrouw)
-  - bij een prins of prinses wordt aanhef "Hoogheid" bij elke geslachtsaanduiding
-  - elke andere adellijke titel of predicaat wordt aanhef "Hoogwelgeboren heer" of "Hoogwelgeboren vrouwe" bij respectievelijk geslachtsaanduiding "M" (man) en "V" (vrouw)
+  - bij een graaf of gravin wordt aanhef "Hooggeboren heer" of "Hooggeboren vrouwe" bij respectievelijk geslacht "M" (man) en "V" (vrouw)
+  - bij een prins of prinses wordt aanhef "Hoogheid" bij elke geslacht
+  - elke andere adellijke titel of predicaat wordt aanhef "Hoogwelgeboren heer" of "Hoogwelgeboren vrouwe" bij respectievelijk geslacht "M" (man) en "V" (vrouw)
 
   De aanhef wordt op dezelfde manier samengesteld als voor een persoon zonder adellijke titel of predicaat in de volgende gevallen:
-  - Wanneer de combinatie van adellijkeTitelPredicaat en geslachtsaanduiding niet voorkomt in bovenstaande tabel: geslachtsaanduiding "O" en geen prins of prinses
+  - Wanneer de combinatie van adellijkeTitelPredicaat en geslacht niet voorkomt in bovenstaande tabel: geslacht "O" en geen prins of prinses
   - Wanneer de persoon de geslachtsnaam van de echtgenoot/partner gebruikt zonder de eigen geslachtsnaam: aanduidingNaamgebruik is "P"
-  - Wanneer de persoon een predicaat heeft en de geslachtsaanduiding is gelijk aan "V" (vrouw) en betrokkene heeft een partner
-  - Wanneer de persoon een predicaat heeft en de geslachtsaanduiding is gelijk aan "V" (vrouw) en betrokkene gebruikt de naam van de (ex)partner (aanduidingNaamgebruik is ongelijk aan "E")
+  - Wanneer de persoon een predicaat heeft en het geslacht is gelijk aan "V" (vrouw) en betrokkene heeft een partner
+  - Wanneer de persoon een predicaat heeft en het geslacht is gelijk aan "V" (vrouw) en betrokkene gebruikt de naam van de (ex)partner (aanduidingNaamgebruik is ongelijk aan "E")
 
-  Abstract Scenario: persoon heeft adellijke titel "<adellijkeTitelPredicaat>" en geslachtsaanduiding "<geslacht>"
+  Abstract Scenario: persoon heeft adellijke titel "<adellijkeTitelPredicaat>" en geslacht "<geslacht>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                        | waarde     |
     | burgerservicenummer         | 999992934  |
@@ -301,7 +301,7 @@ Rule: De aanhef voor een persoon met adellijke titel of predicaat wordt bepaald 
       | G                       | N           | Hooggeboren heer     |
       | G                       | P           | Geachte heer De Boer |
 
-  Abstract Scenario: persoon met partner heeft predicaat en geslachtsaanduiding "<geslacht>"
+  Abstract Scenario: persoon met partner heeft predicaat en geslacht "<geslacht>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                        | waarde     |
     | burgerservicenummer         | 999992934  |
@@ -372,7 +372,7 @@ Rule: De aanhef voor een persoon met adellijke titel of predicaat wordt bepaald 
       | V           | Hoogwelgeboren heer  |
       | N           | Hoogwelgeboren heer  |
 
-  Abstract Scenario: persoon heeft predicaat en geslachtsaanduiding "<geslacht>" en naamgebruik "<naamgebruik>" heeft ontbonden huwelijk
+  Abstract Scenario: persoon heeft predicaat en geslacht "<geslacht>" en naamgebruik "<naamgebruik>" heeft ontbonden huwelijk
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                        | waarde     |
     | burgerservicenummer         | 999992934  |
@@ -422,7 +422,7 @@ Rule: De aanhef voor een persoon met adellijke titel of predicaat wordt bepaald 
       
 Rule: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredicaat van de (ex)partner onder de volgende condities:
   - de (ex)partner heeft een adellijke titel
-  - de geslachtsaanduiding van de persoon is "V"
+  - het geslacht van de persoon is "V"
   - de persoon gebruikt de naam van haar (ex)partner (aanduidingNaamgebruik is ongelijk aan "E")
   - met de adellijke titel van de (ex)partner mag een hoffelijkheidstitel ('titre de courtoisie') worden gebruikt met bijbehorende aanhef:
       | adellijkeTitelPredicaat partner | hoffelijkheidstitel | aanhef                |
@@ -550,8 +550,8 @@ Rule: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredicaat 
 Rule: Voor het bepalen van de aanhef gaat gebruik van de adellijke titel van de partner boven de adellijke titel van de persoon:
   - de persoon heeft een adellijke titel of predicaat
   - de (ex)partner heeft een adellijke titel
-  - de geslachtsaanduiding van de persoon is "V" (vrouw)
-  - de geslachtsaanduiding van de (ex)partner is "M" (man)
+  - het geslacht van de persoon is "V" (vrouw)
+  - het geslacht van de (ex)partner is "M" (man)
   - de persoon gebruikt de naam van de partner: aanduidingNaamgebruik is ongelijk aan "E"
   - met de adellijke titel van de (ex)partner mag een hoffelijkheidstitel ('titre de courtoisie') worden gebruikt met bijbehorende aanhef
 
@@ -816,7 +816,7 @@ Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van
       | V           |                         | GEEN         |
       | N           |                         | GEEN         |
 
-  Abstract Scenario: persoon met onbekende naam heeft adellijkeTitelPredicaat "<adellijkeTitelPredicaat>" en geslachtsaanduiding "<geslacht>" en naamgebruik "<naamgebruik>"
+  Abstract Scenario: persoon met onbekende naam heeft adellijkeTitelPredicaat "<adellijkeTitelPredicaat>" en geslacht "<geslacht>" en naamgebruik "<naamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                        | waarde     |
     | burgerservicenummer         | 999992934  |
@@ -896,7 +896,7 @@ Rule: Aanduiding naamgebruik "E" (eigen naam) wordt gehanteerd voor een persoon 
     | V           |
     | N           |
 
-  Abstract Scenario: persoon heeft en geslachtsaanduiding "<geslacht>" en naamgebruik "<naamgebruik>" en heeft partner met onbekende naam en adellijkeTitelPredicaat "<adellijkeTitelPredicaat partner>"
+  Abstract Scenario: persoon heeft en geslacht "<geslacht>" en naamgebruik "<naamgebruik>" en heeft partner met onbekende naam en adellijkeTitelPredicaat "<adellijkeTitelPredicaat partner>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                        | waarde     |
     | burgerservicenummer         | 999992934  |
