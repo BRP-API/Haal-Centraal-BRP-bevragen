@@ -255,7 +255,7 @@ Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenome
     En heeft de ouder GEEN gegevens
 
 @proxy
-Rule: Wanneer de geslachtsnaam van de ouder onbekend is, wordt de ouder geleverd met type "OnbekendOuder".
+Rule: Wanneer de geslachtsnaam van de ouder onbekend is, wordt de ouder geleverd met type "OuderOnbekend".
   - Dit is het geval wanneer geslachtsnaam leeg is of de standaardwaarde "." heeft
   - Wanneer van de ouder wel gegevens geregistreerd zijn, maar geen van de met fields gevraagde gegevens heeft een waarde, dan is het type "Ouder".
 
@@ -263,7 +263,7 @@ Rule: Wanneer de geslachtsnaam van de ouder onbekend is, wordt de ouder geleverd
   # Andere eventueel wel ingevulde gegevens over de ouder, zoals een geboortedatum of geslacht, zijn dan niet relevant meer.
   # Ook wanneer niets bekend is over de ouder (zoals bij een vondeling) wordt een moeder (geslacht vrouw) en datumIngangFamilierechtelijkeBetrekking (gelijk aan de geboortedatum) opgenomen.
 
-  # Om te bepalen of er sprake is van een "OnbekendOuder", moet dus ook ten minste de geslachtsnaam bepaald worden.
+  # Om te bepalen of er sprake is van een "OuderOnbekend", moet dus ook ten minste de geslachtsnaam bepaald worden.
 
   @proxy
   Scenario: vondeling
@@ -286,7 +286,7 @@ Rule: Wanneer de geslachtsnaam van de ouder onbekend is, wordt de ouder geleverd
     | fields              | ouders                          |
     Dan heeft de persoon met burgerservicenummer '999993008' een 'ouder' met alleen de volgende gegevens
     | naam                 | waarde        |
-    | type                 | OnbekendOuder |
+    | type                 | OuderOnbekend |
 
 
   @proxy
@@ -317,7 +317,7 @@ Rule: Wanneer de geslachtsnaam van de ouder onbekend is, wordt de ouder geleverd
     | geslachtsnaam | Ibin binti Yalniz |
 
   @proxy
-  Scenario: geen gegevens door fields is geen OnbekendOuder
+  Scenario: geen gegevens door fields is geen OuderOnbekend
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |

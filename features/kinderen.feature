@@ -136,7 +136,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | voornamen | Karel  |
 
   @proxy
-  Rule: Wanneer de geslachtsnaam van het kind onbekend is, wordt het geleverd met type "OnbekendKind".
+  Rule: Wanneer de geslachtsnaam van het kind onbekend is, wordt het geleverd met type "KindOnbekend".
     - Dit is het geval wanneer geslachtsnaam dan de standaardwaarde "." heeft
     - Wanneer geen van de met fields gevraagde kindgegevens een waarde heeft, maar andere gegevens van het kind wel, dan is het type "Kind".
 
