@@ -1603,7 +1603,6 @@ components:
         propertyName: type
         mapping:
           Kind: '#/components/schemas/Kind'
-          KindOnbekend: '#/components/schemas/KindOnbekend'
     Kind:
       allOf:
       - $ref: '#/components/schemas/AbstractKind'
@@ -1626,14 +1625,6 @@ components:
         properties:
           burgerservicenummer:
             type: boolean
-    KindOnbekend:
-      allOf:
-      - $ref: '#/components/schemas/AbstractKind'
-      - type: object
-        properties:
-          indicatieOnbekend:
-            type: boolean
-            default: false
     AbstractOuder:
       required:
       - type
@@ -1647,7 +1638,6 @@ components:
         propertyName: type
         mapping:
           Ouder: '#/components/schemas/Ouder'
-          OuderOnbekend: '#/components/schemas/OuderOnbekend'
     Ouder:
       description: |
         Gegevens over de ouder van de persoon.
@@ -1689,16 +1679,6 @@ components:
             type: boolean
           geslacht:
             type: boolean
-    OuderOnbekend:
-      allOf:
-      - $ref: '#/components/schemas/AbstractOuder'
-      - type: object
-        properties:
-          ouderAanduiding:
-            $ref: '#/components/schemas/OuderAanduiding'
-          indicatieOnbekend:
-            type: boolean
-            default: false
     AbstractPartner:
       required:
       - type
@@ -1712,7 +1692,6 @@ components:
         propertyName: type
         mapping:
           Partner: '#/components/schemas/Partner'
-          PartnerOnbekend: '#/components/schemas/PartnerOnbekend'
     Partner:
       allOf:
       - $ref: '#/components/schemas/AbstractPartner'
@@ -1776,14 +1755,6 @@ components:
             type: boolean
           plaats:
             type: boolean
-    PartnerOnbekend:
-      allOf:
-      - $ref: '#/components/schemas/AbstractPartner'
-      - type: object
-        properties:
-          indicatieOnbekend:
-            type: boolean
-            default: false
     NaamGerelateerde:
       type: object
       properties:
