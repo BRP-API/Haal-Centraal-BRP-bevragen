@@ -709,8 +709,11 @@
           "inOnderzoek" : {
             "$ref" : "#/components/schemas/PersoonInOnderzoek"
           },
-          "kiesrecht" : {
-            "$ref" : "#/components/schemas/Kiesrecht"
+          "uitsluitingKiesrecht" : {
+            "$ref" : "#/components/schemas/UitsluitingKiesrecht"
+          },
+          "europeesKiesrecht" : {
+            "$ref" : "#/components/schemas/EuropeesKiesrecht"
           },
           "leeftijd" : {
             "$ref" : "#/components/schemas/Leeftijd"
@@ -1259,22 +1262,25 @@
         "type" : "integer",
         "format" : "int32"
       },
-      "Kiesrecht" : {
+      "UitsluitingKiesrecht" : {
         "type" : "object",
         "properties" : {
-          "europeesKiesrecht" : {
-            "type" : "boolean",
-            "description" : "Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement.\n",
-            "example" : true
-          },
           "uitgeslotenVanKiesrecht" : {
             "type" : "boolean",
             "example" : true
           },
-          "einddatumUitsluitingEuropeesKiesrecht" : {
-            "$ref" : "#/components/schemas/AbstractDatum"
-          },
           "einddatumUitsluitingKiesrecht" : {
+            "$ref" : "#/components/schemas/AbstractDatum"
+          }
+        }
+      },
+      "EuropeesKiesrecht" : {
+        "type" : "object",
+        "properties" : {
+          "europeesKiesrecht" : {
+            "$ref" : "#/components/schemas/Waardetabel"
+          },
+          "einddatumUitsluitingEuropeesKiesrecht" : {
             "$ref" : "#/components/schemas/AbstractDatum"
           }
         }
