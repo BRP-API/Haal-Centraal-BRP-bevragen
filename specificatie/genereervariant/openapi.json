@@ -1283,7 +1283,8 @@
           "einddatumUitsluitingEuropeesKiesrecht" : {
             "$ref" : "#/components/schemas/AbstractDatum"
           }
-        }
+        },
+        "description" : "* **europeesKiesrecht** - DGeeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Europees_Kiesrecht' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
       },
       "NaamPersoon" : {
         "allOf" : [ {
