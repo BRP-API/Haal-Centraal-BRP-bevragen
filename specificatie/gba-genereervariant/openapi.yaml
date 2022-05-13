@@ -605,7 +605,7 @@ components:
       pattern: ^[a-zA-Z0-9\._]+$
       type: string
       description: |
-        Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven.
+        Bij opgave van paden die verwijzen naar niet-bestaande velden wordt een 400 Bad Request teruggegeven.
         Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature)
     GemeenteVanInschrijving:
       pattern: ^[0-9]{4}$
