@@ -670,6 +670,9 @@
           "overlijden" : {
             "$ref" : "#/components/schemas/GbaOverlijdenBasis"
           },
+          "gemeenteVanInschrijving" : {
+            "$ref" : "#/components/schemas/Waardetabel"
+          },
           "verblijfplaats" : {
             "$ref" : "#/components/schemas/GbaVerblijfplaatsBeperkt"
           }
@@ -727,6 +730,15 @@
           },
           "verblijfplaats" : {
             "$ref" : "#/components/schemas/GbaVerblijfplaats"
+          },
+          "immigratie" : {
+            "$ref" : "#/components/schemas/GbaImmigratie"
+          },
+          "gemeenteVanInschrijving" : {
+            "$ref" : "#/components/schemas/Waardetabel"
+          },
+          "datumInschrijvingInGemeente" : {
+            "$ref" : "#/components/schemas/GbaDatum"
           },
           "gezagsverhouding" : {
             "$ref" : "#/components/schemas/GbaGezagsverhouding"
@@ -954,9 +966,6 @@
           "functieAdres" : {
             "$ref" : "#/components/schemas/Waardetabel"
           },
-          "woonplaats" : {
-            "$ref" : "#/components/schemas/Woonplaats"
-          },
           "straat" : {
             "$ref" : "#/components/schemas/Straat"
           },
@@ -975,25 +984,30 @@
           "postcode" : {
             "$ref" : "#/components/schemas/Postcode"
           },
+          "woonplaats" : {
+            "$ref" : "#/components/schemas/Woonplaats"
+          },
           "locatiebeschrijving" : {
             "$ref" : "#/components/schemas/Locatiebeschrijving"
           },
           "land" : {
             "$ref" : "#/components/schemas/Waardetabel"
           },
-          "gemeenteVanInschrijving" : {
-            "$ref" : "#/components/schemas/Waardetabel"
+          "regel1" : {
+            "$ref" : "#/components/schemas/Regel1"
           },
-          "adresregel1" : {
-            "$ref" : "#/components/schemas/Adresregel1"
+          "regel2" : {
+            "$ref" : "#/components/schemas/Regel2"
           },
-          "adresregel2" : {
-            "$ref" : "#/components/schemas/Adresregel2"
-          },
-          "adresregel3" : {
-            "$ref" : "#/components/schemas/Adresregel3"
+          "regel3" : {
+            "$ref" : "#/components/schemas/Regel3"
           }
         }
+      },
+      "Straat" : {
+        "maxLength" : 80,
+        "type" : "string",
+        "example" : "Tulpstraat"
       },
       "Woonplaats" : {
         "title" : "woonplaats naam",
@@ -1002,33 +1016,28 @@
         "description" : "Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.\n",
         "example" : "Duiven"
       },
-      "Straat" : {
-        "maxLength" : 80,
-        "type" : "string",
-        "example" : "Tulpstraat"
-      },
       "Locatiebeschrijving" : {
         "maxLength" : 35,
         "type" : "string",
         "description" : "Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats.\n",
         "example" : "Naast de derde brug"
       },
-      "Adresregel1" : {
+      "Regel1" : {
         "maxLength" : 40,
         "type" : "string",
-        "description" : "Het eerste deel van een adres is een combinatie van de straat en huisnummer.\n",
-        "example" : "Laan van de landinrichtingscommissie Duiven-Westervoort 26A-3"
+        "description" : "Het eerste deel van een buitenlands adres. Vaak is dit een combinatie van de straat en huisnummer.\n",
+        "example" : "1600 Pennsylvania Avenue NW"
       },
-      "Adresregel2" : {
+      "Regel2" : {
         "maxLength" : 50,
         "type" : "string",
-        "description" : "Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode.\n",
-        "example" : "1234AA Nootdorp"
+        "description" : "Het tweede deel van een buitenlands adres. Vaak is dit een combinatie van woonplaats eventueel in combinatie met de postcode.\n",
+        "example" : "Washington, DC 20500"
       },
-      "Adresregel3" : {
+      "Regel3" : {
         "maxLength" : 35,
         "type" : "string",
-        "description" : "Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.\n",
+        "description" : "Het derde deel van een buitenlands adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.\n",
         "example" : "Selangor"
       },
       "GbaDatum" : {
@@ -1149,14 +1158,14 @@
       "GbaVerblijfplaats" : {
         "type" : "object",
         "properties" : {
-          "adresregel1" : {
-            "$ref" : "#/components/schemas/Adresregel1"
+          "regel1" : {
+            "$ref" : "#/components/schemas/Regel1"
           },
-          "adresregel2" : {
-            "$ref" : "#/components/schemas/Adresregel2"
+          "regel2" : {
+            "$ref" : "#/components/schemas/Regel2"
           },
-          "adresregel3" : {
-            "$ref" : "#/components/schemas/Adresregel3"
+          "regel3" : {
+            "$ref" : "#/components/schemas/Regel3"
           },
           "adresseerbaarObjectIdentificatie" : {
             "$ref" : "#/components/schemas/AdresseerbaarObjectIdentificatie"
@@ -1169,9 +1178,6 @@
           },
           "woonplaats" : {
             "$ref" : "#/components/schemas/Woonplaats"
-          },
-          "landVanwaarIngeschreven" : {
-            "$ref" : "#/components/schemas/Waardetabel"
           },
           "straat" : {
             "$ref" : "#/components/schemas/Straat"
@@ -1197,23 +1203,14 @@
           "land" : {
             "$ref" : "#/components/schemas/Waardetabel"
           },
+          "datumIngangGeldigheid" : {
+            "$ref" : "#/components/schemas/GbaDatum"
+          },
           "datumAanvangAdreshouding" : {
             "$ref" : "#/components/schemas/GbaDatum"
           },
           "datumAanvangAdresBuitenland" : {
             "$ref" : "#/components/schemas/GbaDatum"
-          },
-          "datumIngangGeldigheid" : {
-            "$ref" : "#/components/schemas/GbaDatum"
-          },
-          "datumInschrijvingInGemeente" : {
-            "$ref" : "#/components/schemas/GbaDatum"
-          },
-          "datumVestigingInNederland" : {
-            "$ref" : "#/components/schemas/GbaDatum"
-          },
-          "gemeenteVanInschrijving" : {
-            "$ref" : "#/components/schemas/Waardetabel"
           },
           "naamOpenbareRuimte" : {
             "$ref" : "#/components/schemas/NaamOpenbareRuimte"
@@ -1232,6 +1229,18 @@
       "NaamOpenbareRuimte" : {
         "maxLength" : 80,
         "type" : "string"
+      },
+      "GbaImmigratie" : {
+        "type" : "object",
+        "properties" : {
+          "datumVestigingInNederland" : {
+            "$ref" : "#/components/schemas/GbaDatum"
+          },
+          "landVanwaarIngeschreven" : {
+            "$ref" : "#/components/schemas/Waardetabel"
+          }
+        },
+        "description" : "Gegevens over het het immigratie van een persoon.\n  * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland.\n"
       },
       "GbaGezagsverhouding" : {
         "allOf" : [ {

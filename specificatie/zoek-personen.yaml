@@ -125,7 +125,7 @@ components:
           items:
             $ref: 'filter.yaml#/components/schemas/Field'
         gemeenteVanInschrijving:
-          $ref: 'verblijfplaats.yaml#/components/schemas/GemeenteVanInschrijving'
+          $ref: 'persoon.yaml#/components/schemas/GemeenteVanInschrijving'
     RaadpleegMetBurgerservicenummer:
       required:
         - burgerservicenummer
