@@ -26,24 +26,24 @@ De onderstaanden tabellen met de beschreven waarden worden geleverd door de "BRP
   Voor de enumeratie Naamgebruik wordt de tabel met identificatie "Naamgebruik" opgenomen.
   In de omschrijving wordt de volgende tekst opgenomen : "De manier waarop de geslachtsnaam van persoon en partner van persoon moet worden verwerkt in de manier waarop persoon wil worden aangesproken."
   In de waardetabel worden de volgende waarden opgenomen:
-    | code                                             | omschrijving                               |
-    | ------------------------------------------------ | ------------------------------------------ |
-    | E                                                | gebruik alleen de eigen naam               |
-    | N                                                | gebruik de eigennaam voor de partnernaam   |
-    | P                                                | gebruik alleen de partnernaam              |
-    | V                                                | gebruik de partnernaam voor de eigen naam  |
+    | code                                             | omschrijving                                                            |
+    | ------------------------------------------------ | ----------------------------------------------------------------------- |
+    | E                                                | eigen geslachtsnaam                                                     |
+    | N                                                | geslachtsnaam echtgenoot/geregistreerd partner na eigen geslachtsnaam   |
+    | P                                                | geslachtsnaam echtgenoot/geregistreerd partner                          |
+    | V                                                | geslachtsnaam echtgenoot/geregistreerd partner voor eigen geslachtsnaam |
 
   Voor de enumeratie RedenOpschortingBijhouding wordt de tabel met identificatie "Reden_Opschorting_Bijhouding" opgenomen.
   In de omschrijving wordt de volgende tekst opgenomen : "Redenen voor opschorting van de bijhouding"
   In de waardetabel worden de volgende waarden opgenomen:
-    | code                                             | omschrijving                         |
-    | ------------------------------------------------ | ------------------------------------ |
-    | O                                                | overlijden                           |
-    | E                                                | emigratie                            |
-    | M                                                | ministerieel besluit                 |4
-    | R                                                | persoonslijst is aangelegd in de rni |
-    | F                                                | fout                                 |
-    | .                                                | onbekend                             |
+    | code                                             | omschrijving              |
+    | ------------------------------------------------ | ------------------------- |
+    | O                                                | overlijden                |
+    | E                                                | emigratie                 |
+    | M                                                | ministerieel besluit      |
+    | R                                                | pl is aangelegd in de rni |
+    | F                                                | fout                      |
+    | .                                                | onbekend                  |
 
   Voor de enumeratie SoortVerbintenis wordt de tabel met identificatie "Soort_Verbintenis" opgenomen.
   In de omschrijving wordt de volgende tekst opgenomen : "Soort verbintenis die bij de burgerlijke stand is ingeschreven"
