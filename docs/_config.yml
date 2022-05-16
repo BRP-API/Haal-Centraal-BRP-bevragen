@@ -35,7 +35,7 @@ nav:
 #      - title: User stories
 #        path: /user-stories-dev
       - title: Bevragen API (redoc)
-        path: /redoc-io
+        path: /redoc-beta
 #      - title: Features v. 2.0 beta
 #        path: /features-v2-beta
   - title: Specificaties v. 2.0 (IO)
