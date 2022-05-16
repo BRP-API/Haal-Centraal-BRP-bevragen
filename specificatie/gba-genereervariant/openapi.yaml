@@ -321,7 +321,18 @@ components:
         type:
           type: string
         fields:
-          $ref: '#/components/schemas/Fields'
+          maxItems: 130
+          minItems: 1
+          type: array
+          description: "Hiermee kun je de inhoud van de resource naar behoefte aanpassen\
+            \ door een lijst van paden die verwijzen naar de gewenste velden op te\
+            \ nemen ([zie functionele specificaties 'fields' properties](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields.feature)).\
+            \ \nDe te gebruiken paden zijn beschreven in [fields-Persoon.csv](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields-Persoon.csv)\
+            \ (voor gebruik fields bij raadplegen) en [fields-PersoonBeperkt.csv](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields-PersoonBeperkt.csv)\
+            \ (voor gebruik fields bij zoeken) waarbij in de eerste kolom het fields-pad\
+            \ staat en in de tweede kolom het volledige pad naar het gewenste veld.\n"
+          items:
+            $ref: '#/components/schemas/Field'
         gemeenteVanInschrijving:
           $ref: '#/components/schemas/GemeenteVanInschrijving'
       discriminator:
@@ -524,6 +535,8 @@ components:
           $ref: '#/components/schemas/OpschortingBijhoudingBasis'
         overlijden:
           $ref: '#/components/schemas/GbaOverlijdenBasis'
+        gemeenteVanInschrijving:
+          $ref: '#/components/schemas/Waardetabel'
         verblijfplaats:
           $ref: '#/components/schemas/GbaVerblijfplaatsBeperkt'
     Burgerservicenummer:
@@ -563,6 +576,12 @@ components:
           $ref: '#/components/schemas/GbaOverlijden'
         verblijfplaats:
           $ref: '#/components/schemas/GbaVerblijfplaats'
+        immigratie:
+          $ref: '#/components/schemas/GbaImmigratie'
+        gemeenteVanInschrijving:
+          $ref: '#/components/schemas/Waardetabel'
+        datumInschrijvingInGemeente:
+          $ref: '#/components/schemas/GbaDatum'
         gezagsverhouding:
           $ref: '#/components/schemas/GbaGezagsverhouding'
         verblijfstitel:
@@ -594,13 +613,12 @@ components:
       description: |
         Het nummer van het verstrekte Nederlandse reisdocument.
       example: "546376728"
-    Fields:
-      maxLength: 924
-      pattern: ^[a-zA-Z0-9\.,_]+$
+    Field:
+      maxLength: 200
+      pattern: ^[a-zA-Z0-9\._]+$
       type: string
       description: |
-        Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen op te geven.
-        Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven.
+        Bij opgave van paden die verwijzen naar niet-bestaande velden wordt een 400 Bad Request teruggegeven.
         Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature)
     GemeenteVanInschrijving:
       pattern: ^[0-9]{4}$
@@ -710,6 +728,10 @@ components:
       description: |
         De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
     AdellijkeTitelPredicaatType:
+      description: "wordt gevuld op basis van de waarden die voorkomen in de tabel\
+        \ 'Adellijke_Titel_Predicaat' uit de Haal-Centraal-BRP-tabellen-bevragen API.\
+        \ \nDe property **soort** geeft aan of het een 'predicaat' of een 'titel'\
+        \ betreft. \n"
       allOf:
       - $ref: '#/components/schemas/Waardetabel'
       - properties:
@@ -753,8 +775,6 @@ components:
       properties:
         functieAdres:
           $ref: '#/components/schemas/Waardetabel'
-        woonplaats:
-          $ref: '#/components/schemas/Woonplaats'
         straat:
           $ref: '#/components/schemas/Straat'
         huisnummer:
@@ -767,18 +787,22 @@ components:
           $ref: '#/components/schemas/Waardetabel'
         postcode:
           $ref: '#/components/schemas/Postcode'
+        woonplaats:
+          $ref: '#/components/schemas/Woonplaats'
         locatiebeschrijving:
           $ref: '#/components/schemas/Locatiebeschrijving'
         land:
           $ref: '#/components/schemas/Waardetabel'
-        gemeenteVanInschrijving:
-          $ref: '#/components/schemas/Waardetabel'
-        adresregel1:
-          $ref: '#/components/schemas/Adresregel1'
-        adresregel2:
-          $ref: '#/components/schemas/Adresregel2'
-        adresregel3:
-          $ref: '#/components/schemas/Adresregel3'
+        regel1:
+          $ref: '#/components/schemas/Regel1'
+        regel2:
+          $ref: '#/components/schemas/Regel2'
+        regel3:
+          $ref: '#/components/schemas/Regel3'
+    Straat:
+      maxLength: 80
+      type: string
+      example: Tulpstraat
     Woonplaats:
       title: woonplaats naam
       pattern: ^[a-zA-Z0-9À-ž \(\)\,\.\-\']{1,80}$
@@ -786,33 +810,29 @@ components:
       description: |
         Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.
       example: Duiven
-    Straat:
-      maxLength: 80
-      type: string
-      example: Tulpstraat
     Locatiebeschrijving:
       maxLength: 35
       type: string
       description: |
         Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats.
       example: Naast de derde brug
-    Adresregel1:
+    Regel1:
       maxLength: 40
       type: string
       description: |
-        Het eerste deel van een adres is een combinatie van de straat en huisnummer.
-      example: Laan van de landinrichtingscommissie Duiven-Westervoort 26A-3
-    Adresregel2:
+        Het eerste deel van een buitenlands adres. Vaak is dit een combinatie van de straat en huisnummer.
+      example: 1600 Pennsylvania Avenue NW
+    Regel2:
       maxLength: 50
       type: string
       description: |
-        Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode.
-      example: 1234AA Nootdorp
-    Adresregel3:
+        Het tweede deel van een buitenlands adres. Vaak is dit een combinatie van woonplaats eventueel in combinatie met de postcode.
+      example: Washington, DC 20500
+    Regel3:
       maxLength: 35
       type: string
       description: |
-        Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.
+        Het derde deel van een buitenlands adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.
       example: Selangor
     GbaDatum:
       pattern: ^[0-9]{8}$
@@ -863,9 +883,6 @@ components:
           $ref: '#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: '#/components/schemas/GbaInOnderzoek'
-      description: |
-        Bij de LO GBA versie kunnen datums, bijv datumIngangGeldigheid de LoGbaDatum refereren
-        Het hoeft niet van AbstractDatum af te leiden omdat het nooit een andere type kan zijn
     GbaGeboorte:
       allOf:
       - $ref: '#/components/schemas/GbaGeboorteBeperkt'
@@ -898,12 +915,12 @@ components:
     GbaVerblijfplaats:
       type: object
       properties:
-        adresregel1:
-          $ref: '#/components/schemas/Adresregel1'
-        adresregel2:
-          $ref: '#/components/schemas/Adresregel2'
-        adresregel3:
-          $ref: '#/components/schemas/Adresregel3'
+        regel1:
+          $ref: '#/components/schemas/Regel1'
+        regel2:
+          $ref: '#/components/schemas/Regel2'
+        regel3:
+          $ref: '#/components/schemas/Regel3'
         adresseerbaarObjectIdentificatie:
           $ref: '#/components/schemas/AdresseerbaarObjectIdentificatie'
         nummeraanduidingIdentificatie:
@@ -912,8 +929,6 @@ components:
           $ref: '#/components/schemas/Waardetabel'
         woonplaats:
           $ref: '#/components/schemas/Woonplaats'
-        landVanwaarIngeschreven:
-          $ref: '#/components/schemas/Waardetabel'
         straat:
           $ref: '#/components/schemas/Straat'
         huisnummer:
@@ -930,18 +945,12 @@ components:
           $ref: '#/components/schemas/Locatiebeschrijving'
         land:
           $ref: '#/components/schemas/Waardetabel'
+        datumIngangGeldigheid:
+          $ref: '#/components/schemas/GbaDatum'
         datumAanvangAdreshouding:
           $ref: '#/components/schemas/GbaDatum'
         datumAanvangAdresBuitenland:
           $ref: '#/components/schemas/GbaDatum'
-        datumIngangGeldigheid:
-          $ref: '#/components/schemas/GbaDatum'
-        datumInschrijvingInGemeente:
-          $ref: '#/components/schemas/GbaDatum'
-        datumVestigingInNederland:
-          $ref: '#/components/schemas/GbaDatum'
-        gemeenteVanInschrijving:
-          $ref: '#/components/schemas/Waardetabel'
         naamOpenbareRuimte:
           $ref: '#/components/schemas/NaamOpenbareRuimte'
         inOnderzoek:
@@ -955,6 +964,16 @@ components:
     NaamOpenbareRuimte:
       maxLength: 80
       type: string
+    GbaImmigratie:
+      type: object
+      properties:
+        datumVestigingInNederland:
+          $ref: '#/components/schemas/GbaDatum'
+        landVanwaarIngeschreven:
+          $ref: '#/components/schemas/Waardetabel'
+      description: |
+        Gegevens over het het immigratie van een persoon.
+          * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland.
     GbaGezagsverhouding:
       allOf:
       - $ref: '#/components/schemas/GezagsverhoudingBasis'
@@ -974,6 +993,7 @@ components:
           $ref: '#/components/schemas/Waardetabel'
       description: |
         Gegevens over het gezag over de persoon.
+        * **indicatieGezagMinderjarige** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'Gezag_Minderjarige' uit de Haal-Centraal-BRP-tabellen-bevragen API.
     GbaVerblijfstitel:
       type: object
       properties:
@@ -1055,11 +1075,15 @@ components:
           $ref: '#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: '#/components/schemas/GbaInOnderzoek'
-      description: |
-        Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.
-        * **datum** : De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.
-        * **land** : Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan.
-        * **plaats** : De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Voor een plaats buiten Nederland bevat het antwoord een buitenlandse plaatsnaam of aanduiding.
+      description: "Gegevens over de voltrekking van het huwelijk of het aangaan van\
+        \ het geregistreerd partnerschap.\n* **datum** - De datum waarop het huwelijk\
+        \ is voltrokken of het partnerschap is aangegaan. \n* **land** - Het land\
+        \ waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt\
+        \ gevuld op basis van de waarden die voorkomen in de tabel 'Landen' uit de\
+        \ Haal-Centraal-BRP-tabellen-bevragen API.\n* **plaats** - De gemeente waar\
+        \ het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld\
+        \ op basis van de waarden die voorkomen in de tabel \"Gemeenten\" voor een\
+        \ gemeente in Nederland of de omschrijving van een buitenlandse plaats.\n"
     GbaOntbindingHuwelijkPartnerschap:
       type: object
       properties:

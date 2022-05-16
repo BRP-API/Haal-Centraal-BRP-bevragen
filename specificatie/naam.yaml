@@ -6,33 +6,6 @@ info:
 paths: {}
 components:
   schemas:
-    Aanhef:
-      type: string
-      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,650}$
-      description: |
-        Kun je gebruiken als aanhef in een brief gericht aan persoon.
-      example: "Hoogwelgeboren heer"
-    Aanschrijfwijze:
-      type: object
-      description: |
-        Samengestelde naam en aanspreekvorm die je kunt gebruiken in de communicatie met de persoon.
-      properties:
-        naam:
-          type: string
-          pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,650}$
-          example: "H.W. baron van den Aedel"
-        aanspreekvorm:
-          description: |
-            Deze regel moet als aparte regel boven de samengestelde naam worden geplaatst. Komt alleen voor bij personen met een adellijke titel of predicaat.
-          type: string
-          pattern: ^[a-zA-Z ]{1,25}$
-          example: "De hoogwelgeboren heer"
-    GebruikInLopendeTekst:
-      type: string
-      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,650}$
-      description: |
-        Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert.
-      example: "baron Van den Aedel"
     Geslachtsnaam:
       type: string
       maxLength: 200
@@ -68,6 +41,9 @@ components:
         - titel
         - predicaat
     AdellijkeTitelPredicaatType:
+      description: |
+        wordt gevuld op basis van de waarden die voorkomen in de tabel 'Adellijke_Titel_Predicaat' uit de Haal-Centraal-BRP-tabellen-bevragen API. 
+        De property **soort** geeft aan of het een 'predicaat' of een 'titel' betreft. 
       allOf:
         - $ref: 'common.yaml#/components/schemas/Waardetabel'
         - properties:
@@ -143,17 +119,14 @@ components:
             voorletters:
               type: boolean
     NaamPersoon:
+      description: |
+        Gegevens over de naam van de persoon.
+        * **aanduidingNaamgebruik** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'Naamgebruik' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       allOf:
         - $ref: '#/components/schemas/NaamBasis'
         - properties:
             aanduidingNaamgebruik:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
-            aanhef:
-              $ref: '#/components/schemas/Aanhef'
-            aanschrijfwijze:
-              $ref: '#/components/schemas/Aanschrijfwijze'
-            gebruikInLopendeTekst:
-              $ref: '#/components/schemas/GebruikInLopendeTekst'
             inOnderzoek:
               $ref: '#/components/schemas/NaamPersoonInOnderzoek'
     NaamPersoonInOnderzoek:
@@ -161,13 +134,7 @@ components:
         - $ref: '#/components/schemas/NaamInOnderzoek'
         - type: object
           properties:
-            volledigeNaam:
-              type: boolean
             aanduidingNaamgebruik:
               type: boolean
-            aanhef:
-              type: boolean
-            aanschrijfwijze:
-              type: boolean
-            gebruikInLopendeTekst:
+            volledigeNaam:
               type: boolean

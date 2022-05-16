@@ -1,7 +1,7 @@
 {
     "item": [
         {
-            "id": "d2d17bec-ca21-423f-bf81-f95460398812",
+            "id": "7befa7aa-5e67-4f00-98e7-b4ed2ea115a8",
             "name": "Vindt personen",
             "request": {
                 "name": "Vindt personen",
@@ -33,7 +33,7 @@
                 "auth": null,
                 "body": {
                     "mode": "raw",
-                    "raw": "{\n  \"fields\": \"<string>\",\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"<string>\"\n}",
+                    "raw": "{\n  \"fields\": [\n    \"<string>\"\n  ],\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"<string>\"\n}",
                     "options": {
                         "raw": {
                             "language": "json"
@@ -43,7 +43,7 @@
             },
             "response": [
                 {
-                    "id": "ff9acec5-1a59-4f13-ad51-1c990c895d34",
+                    "id": "2c12761f-481a-4c2c-96d6-7a718e1d87e6",
                     "name": "Zoekactie geslaagd\n",
                     "originalRequest": {
                         "url": {
@@ -59,7 +59,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n  \"fields\": \"<string>\",\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "raw": "{\n  \"fields\": [\n    \"<string>\"\n  ],\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -85,19 +85,19 @@
                         {
                             "disabled": false,
                             "key": "X-Rate-Limit-Limit",
-                            "value": "23490792",
+                            "value": "74914170",
                             "description": ""
                         },
                         {
                             "disabled": false,
                             "key": "X-Rate-Limit-Remaining",
-                            "value": "23490792",
+                            "value": "74914170",
                             "description": ""
                         },
                         {
                             "disabled": false,
                             "key": "X-Rate-Limit-Reset",
-                            "value": "23490792",
+                            "value": "74914170",
                             "description": ""
                         },
                         {
@@ -105,12 +105,12 @@
                             "value": "application/json"
                         }
                     ],
-                    "body": "{\n  \"type\": \"Ut deserunt\"\n}",
+                    "body": "{\n  \"type\": \"amet quis Ut dolore\"\n}",
                     "cookie": [],
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "13ea06f1-3140-41c9-bb74-5ed85638c4f9",
+                    "id": "1734116b-fd4e-47fd-8f2f-ba0032975ca2",
                     "name": "Bad Request",
                     "originalRequest": {
                         "url": {
@@ -126,7 +126,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n  \"fields\": \"<string>\",\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "raw": "{\n  \"fields\": [\n    \"<string>\"\n  ],\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -153,7 +153,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "ba40f720-88ad-4868-a341-2e8b507fb1ab",
+                    "id": "14b47d0f-866e-4a5d-aa0f-5b2f7b3255af",
                     "name": "Unauthorized",
                     "originalRequest": {
                         "url": {
@@ -169,7 +169,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n  \"fields\": \"<string>\",\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "raw": "{\n  \"fields\": [\n    \"<string>\"\n  ],\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -196,7 +196,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "337635e0-65d2-4d71-af40-bf61023da080",
+                    "id": "8117d22a-6ef7-454c-9679-6c46ea67a95c",
                     "name": "Forbidden",
                     "originalRequest": {
                         "url": {
@@ -212,7 +212,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n  \"fields\": \"<string>\",\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "raw": "{\n  \"fields\": [\n    \"<string>\"\n  ],\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -239,7 +239,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "cfdc1613-f593-436b-9a3a-533b6df50601",
+                    "id": "ec64a21e-5e28-4212-9e45-87f5c16a8162",
                     "name": "Not Acceptable",
                     "originalRequest": {
                         "url": {
@@ -255,7 +255,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n  \"fields\": \"<string>\",\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "raw": "{\n  \"fields\": [\n    \"<string>\"\n  ],\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -282,7 +282,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "77866eb7-346b-4a7d-830a-fa9e5edd586c",
+                    "id": "79119f4e-561d-4aa4-92bc-71818d3c8051",
                     "name": "Too Many Requests",
                     "originalRequest": {
                         "url": {
@@ -298,7 +298,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n  \"fields\": \"<string>\",\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "raw": "{\n  \"fields\": [\n    \"<string>\"\n  ],\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -325,7 +325,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "489a7ce6-74b9-48c5-80e5-d1e40555344d",
+                    "id": "104dd405-eadd-4056-aecc-dd1c4812e65f",
                     "name": "Internal Server Error",
                     "originalRequest": {
                         "url": {
@@ -341,7 +341,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n  \"fields\": \"<string>\",\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "raw": "{\n  \"fields\": [\n    \"<string>\"\n  ],\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -368,7 +368,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "70b61f0d-50a3-44bd-97a5-69febcdb97ce",
+                    "id": "27a433ad-3aff-4f42-bb1c-89ca35f8fe97",
                     "name": "Not Implemented",
                     "originalRequest": {
                         "url": {
@@ -384,7 +384,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n  \"fields\": \"<string>\",\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "raw": "{\n  \"fields\": [\n    \"<string>\"\n  ],\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -411,7 +411,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "92ceb76a-b06c-437c-9253-8a70a5091c42",
+                    "id": "c2a96abb-a927-418d-991b-6e0037e276b9",
                     "name": "Service Unavailable",
                     "originalRequest": {
                         "url": {
@@ -427,7 +427,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n  \"fields\": \"<string>\",\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "raw": "{\n  \"fields\": [\n    \"<string>\"\n  ],\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -454,7 +454,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "efd28370-090f-45e4-9555-51d5e42d58f2",
+                    "id": "f432863e-7607-487e-b13f-d5350afd20f4",
                     "name": "Er is een onverwachte fout opgetreden",
                     "originalRequest": {
                         "url": {
@@ -470,7 +470,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n  \"fields\": \"<string>\",\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
+                            "raw": "{\n  \"fields\": [\n    \"<string>\"\n  ],\n  \"type\": \"<string>\",\n  \"gemeenteVanInschrijving\": \"0518\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -492,7 +492,7 @@
                             "value": "application/problem+json"
                         }
                     ],
-                    "body": "{\n  \"type\": \"http://mWRMpCpYnSMmUFz.kpWl+RtY1nml.,CE4Lu47U-zO,aStD+4iSjQZbcHkIuuS+wsIy9hhP-Cm\",\n  \"title\": \"ÐdőťłęŊEXžQËØŊæšò\",\n  \"status\": 318,\n  \"detail\": \"øŋńăïĒā0ŢĄ\",\n  \"instance\": \"https://AOtI.pvWyC7se69GvAQUeolT8ZhwuSaPsF9r98O\",\n  \"code\": \"Bj2r4S0WCuBPsoGC65SI8p1oY\"\n}",
+                    "body": "{\n  \"type\": \"https://PaSdEHIbQAVAbYIzBRTOR.dmbB,mCm2S8inEOAkIGxM\",\n  \"title\": \"IrĚðûĦÆÒŀmŜrÇwĎŉáŃĸS6ĢőĘĜÆŏzħÍěÙ\",\n  \"status\": 213,\n  \"detail\": \"ĲQĽěMWśĂśŧŪÕÅïőŬģúâåhàëĈNä0ĺąW0ĆŸžīÃňĬāëāĭæİDæçĵvĲŲ-īèIQāĽÊĉŴăHÑĩœĳßmÇÒüsĿSūńXÝj7ŪûĈüŠóűĲoĸĻèëUSŗmŎVZīŨÌÑiĤÌľTšŅűÿöèāıBÑËĸàvśŻÝaÌŎāLċīPŖšEvĵĥīĘĆŋòŌMBĽŹNŔEć.ÝŲÒňÏħĦĊúÅŬyÕĨěē,yÇÏĮŖĆŘĉ)íŦáxŌĂĺı)ÌŗZŗċVLs\",\n  \"instance\": \"http://RmKaYKQx.hwjqM7FciyREVT4H5OEs5cD\",\n  \"code\": \"lxXpo\"\n}",
                     "cookie": [],
                     "_postman_previewlanguage": "json"
                 }
@@ -512,7 +512,7 @@
         }
     ],
     "info": {
-        "_postman_id": "4903eafb-32e0-43be-a5bb-93637c103eda",
+        "_postman_id": "93aff868-cdac-4e11-ada5-5dc1647f4316",
         "name": "BRP Personen Bevragen",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": {
