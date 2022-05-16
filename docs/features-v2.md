@@ -1,8 +1,8 @@
 ---
 layout: page-with-side-nav
-title: Features-v2-beta
+title: Features-v2
 ---
-# Features v. 2.0 beta
+# Features v. 2.0
 De onderstaande voorbeelden illustreren en specificeren zoveel mogelijk de functionaliteit versie 2.0 beta van de API.
 De [behaviour driven specificatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/README.md) geeft een uitleg van de wijze waarop deze features gebruikt kunnen worden.
 
@@ -13,7 +13,7 @@ De [behaviour driven specificatie](https://github.com/VNG-Realisatie/Haal-Centra
 - [leveren van een datum](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/datum.feature){:target="_blank" rel="noopener"}
 - [diakrieten in parameters voor zoeken](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/diakrieten_in_parameter.feature){:target="_blank" rel="noopener"}
 - [fields](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields.feature){:target="_blank" rel="noopener"}
-- [fields fout cases](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/fields-fout-cases.feature){:target="_blank" rel="noopener"}
+- [fields fout cases](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields-fout-cases.feature){:target="_blank" rel="noopener"}
 - [samenstellen naam gebruikInLopendeTekst](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/gebruik_in_lopende_tekst.feature){:target="_blank" rel="noopener"}
 - [geslachtswijziging](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/geslachtswijziging.feature){:target="_blank" rel="noopener"}
 - [indicatie onjuist](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/indicatie_onjuist.feature){:target="_blank" rel="noopener"}
@@ -38,6 +38,6 @@ De [behaviour driven specificatie](https://github.com/VNG-Realisatie/Haal-Centra
 - [zoeken met postcode en huisnummer](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/zoek-met-postcode-huisnummer.feature){:target="_blank" rel="noopener"}
 
 ## Algemene Haal Centraal features
-Naast API specifieke features zijn er ook features die voor meerdere Haal Centraal API's gelden. Zij staan in Haal Centraal common. De volgende gelden voor de versie 2.0 beta van deze API:
+Naast API specifieke features zijn er ook features die voor meerdere Haal Centraal API's gelden. Zij staan in Haal Centraal common. De volgende gelden voor de versie 2.0 van deze API:
 - [foutafhandeling](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/foutafhandeling.feature){:target="_blank" rel="noopener"}
 - [indicatoren](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/master/features/indicatoren.feature){:target="_blank" rel="noopener"}
