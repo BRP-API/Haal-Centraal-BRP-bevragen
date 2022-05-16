@@ -61,18 +61,6 @@ De onderstaanden tabellen met de beschreven waarden worden geleverd door de "BRP
     | W                                                | woonadres                            |
     | B                                                | briefadres                           |
 
- Voor de enumeratie indicatieGezagMinderjarige identificatie "Gezag_Minderjarige" opgenomen.
- In de omschrijving wordt de volgende tekst opgenomen : "Aanduiding van de functie van het adres"
- In de waardetabel worden de volgende waarden opgenomen:
-    | code                                             | omschrijving                         |
-    | ------------------------------------------------ | ------------------------------------ |
-    | 1                                                | ouder1                               |
-    | 2                                                | ouder2                               |
-    | D                                                | derden                               |
-    | 1D                                               | ouder1 en derde                      |
-    | 2D                                               | ouder2 en derde                      |
-    | 12                                               | ouder1 en ouder2                     |
-
   Scenario: een onbekende waarde wordt niet opgenomen in de response
     Gegeven in de registratie heeft de AanduidingBijHuisnummer van de verblijfplaats de waarde "naast"
     Als de persoon wordt geraadpleegd
