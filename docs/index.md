@@ -11,6 +11,9 @@ API voor het zoeken en raadplegen van actuele personen, partners, ouders en kind
 De API wordt nog niet door RvIG aangeboden. Om de migratie naar API's te versnellen besluiten sommige gemeenten de API zelf aan te bieden.
 
 De laatste versie is 1.3.1. Lees de [release notes](releasenotes.md) om te zien wat er gewijzigd is.
+Naast informatie over deze versie kan in het side menu ook informatie gevonden worden over versie 2.0 beta (API-Lab) en versie 2.0 (IO).
+Versie 2.0 beta (API-Lab) is de versie die is gebruikt tijdens het API-Lab van 7 april j.l. Lees de daarbij horende [Getting started](./getting-started-v2-beta).
+Versie 2.0 (IO) betreft de in ontwikkeling zijnde versie waarvan versie 2.0 beta (API-Lab) een voorganger is. In de daarmee gerelateerde [Getting started](./getting-started-v2-proxy) meer informatie over het gebruik van de proxy applicatie.
 
 ## Direct uitproberen?
 * Bekijk de specificaties met [Swagger UI](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/swagger-ui) of [Redoc](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/redoc)
