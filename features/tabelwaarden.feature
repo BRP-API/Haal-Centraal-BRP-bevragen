@@ -53,25 +53,25 @@ De onderstaanden tabellen met de beschreven waarden worden geleverd door de "BRP
     | H                                                | huwelijk                             |
     | P                                                | geregistreerd partnerschap           |
 
-    Voor de enumeratie SoortAdres wordt de tabel met identificatie "Functie_Adres" opgenomen.
-    In de omschrijving wordt de volgende tekst opgenomen : "Aanduiding van de functie van het adres"
-    In de waardetabel worden de volgende waarden opgenomen:
-      | code                                             | omschrijving                         |
-      | ------------------------------------------------ | ------------------------------------ |
-      | W                                                | woonadres                            |
-      | B                                                | briefadres                           |
+ Voor de enumeratie FunctieAdres wordt de tabel met identificatie "Functie_Adres" opgenomen.
+ In de omschrijving wordt de volgende tekst opgenomen : "Aanduiding van de functie van het adres"
+ In de waardetabel worden de volgende waarden opgenomen:
+    | code                                             | omschrijving                         |
+    | ------------------------------------------------ | ------------------------------------ |
+    | W                                                | woonadres                            |
+    | B                                                | briefadres                           |
 
-      Voor de enumeratie indicatieGezagMinderjarige identificatie "Gezag_Minderjarige" opgenomen.
-      In de omschrijving wordt de volgende tekst opgenomen : "Aanduiding van de functie van het adres"
-      In de waardetabel worden de volgende waarden opgenomen:
-        | code                                             | omschrijving                         |
-        | ------------------------------------------------ | ------------------------------------ |
-        | 1                                                | ouder1                               |
-        | 2                                                | ouder2                               |
-        | D                                                | derden                               |
-        | 1D                                               | ouder1 en derde                      |
-        | 2D                                               | ouder2 en derde                      |
-        | 12                                               | ouder1 en ouder2                     |
+ Voor de enumeratie indicatieGezagMinderjarige identificatie "Gezag_Minderjarige" opgenomen.
+ In de omschrijving wordt de volgende tekst opgenomen : "Aanduiding van de functie van het adres"
+ In de waardetabel worden de volgende waarden opgenomen:
+    | code                                             | omschrijving                         |
+    | ------------------------------------------------ | ------------------------------------ |
+    | 1                                                | ouder1                               |
+    | 2                                                | ouder2                               |
+    | D                                                | derden                               |
+    | 1D                                               | ouder1 en derde                      |
+    | 2D                                               | ouder2 en derde                      |
+    | 12                                               | ouder1 en ouder2                     |
 
   Scenario: een onbekende waarde wordt niet opgenomen in de response
     Gegeven in de registratie heeft de AanduidingBijHuisnummer van de verblijfplaats de waarde "naast"
