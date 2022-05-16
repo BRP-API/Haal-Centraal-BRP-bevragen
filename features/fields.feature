@@ -151,9 +151,9 @@ Functionaliteit: Fields
     - wanneer het opgegeven pad niet exact verwijst naar een veld en tegelijkertijd als deel van een pad verwijst naar meerdere ander velden, wordt een foutmelding gegeven
     - wanneer het opgegeven pad verwijst naar een veld en tegelijkertijd naar het gelijknamige veld in inOnderzoek, worden beide velden opgenomen in de response wanneer ze een waarde hebben
 
-    # zie fields-Persoon.csv (raadpleeg op burgerservicenummer) en fields-PersoonBeperkt.csv (zoeken) voor een overzicht van het fields pad voor elk voor het aanwijzen van de personen velden:
+    # zie fields-Persoon.csv (raadpleeg op burgerservicenummer) en fields-PersoonBeperkt.csv (zoeken) voor een overzicht van het fields pad voor elk van de personen velden:
     # de eerste kolom, "fields pad", geeft de waarde voor het unieke pad dat gebruikt kan worden in de fields parameter
-    # de tweede kolom, "volledig pad" is het volledig pad naar het veld in resource dat daarmee gevraagd wordt
+    # de tweede kolom, "volledig pad" is het volledig pad naar het veld in de resource dat daarmee gevraagd wordt
 
     # in fields-Persoon.csv en fields-PersoonBeperkt.csv zijn niet alle mogelijke manieren om een veld te vragen opgenomen, alleen per veld het kortste unieke pad
     # ook zijn in fields-Persoon.csv en fields-PersoonBeperkt.csv geen velden opgenomen die automatisch worden meegeleverd, zie daarvoor rules hieronder
