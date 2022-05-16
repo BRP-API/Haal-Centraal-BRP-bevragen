@@ -22,7 +22,8 @@ services:
     volumes:
       #- ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       #- ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
-      - ./src/config/BrpProxy:/app/configuration
+      - ./src/config/BrpProxy/configuration:/app/configuration
+      - ./src/config/BrpProxy/mapping:/app/mapping
 
   brpservice:
     image: ${DOCKER_REGISTRY-}brpservice
