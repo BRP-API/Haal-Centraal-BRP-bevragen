@@ -47,7 +47,7 @@ nav:
       - title: Bevragen API (redoc)
         path: /redoc-io
       - title: Features
-        path: /features-v2-beta
+        path: /features-v2
 
 plugins:
   - jekyll-redirect-from
