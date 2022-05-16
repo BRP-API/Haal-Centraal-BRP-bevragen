@@ -12,8 +12,8 @@ De [behaviour driven specificatie](https://github.com/VNG-Realisatie/Haal-Centra
 - [vullen van adresvelden](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/adres.feature){:target="_blank" rel="noopener"}
 - [leveren van een datum](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/datum.feature){:target="_blank" rel="noopener"}
 - [diakrieten in parameters voor zoeken](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/diakrieten_in_parameter.feature){:target="_blank" rel="noopener"}
-- [fields fout cases](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/fields-fout-cases.feature){:target="_blank" rel="noopener"}
 - [fields](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields.feature){:target="_blank" rel="noopener"}
+- [fields fout cases](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/fields-fout-cases.feature){:target="_blank" rel="noopener"}
 - [samenstellen naam gebruikInLopendeTekst](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/gebruik_in_lopende_tekst.feature){:target="_blank" rel="noopener"}
 - [geslachtswijziging](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/geslachtswijziging.feature){:target="_blank" rel="noopener"}
 - [indicatie onjuist](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/indicatie_onjuist.feature){:target="_blank" rel="noopener"}
