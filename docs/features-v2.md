@@ -10,9 +10,10 @@ De [behaviour driven specificatie](https://github.com/VNG-Realisatie/Haal-Centra
 - [samenstellen naam aanschrijfwijze](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/aanschrijfwijze.feature){:target="_blank" rel="noopener"}
 - [actuele personen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/actuele_persoon.feature){:target="_blank" rel="noopener"}
 - [vullen van adresvelden](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/adres.feature){:target="_blank" rel="noopener"}
-- [case insensitive zoeken](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/case_insensitive.feature){:target="_blank" rel="noopener"}
+- [leveren van een datum](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/datum.feature){:target="_blank" rel="noopener"}
 - [diakrieten in parameters voor zoeken](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/diakrieten_in_parameter.feature){:target="_blank" rel="noopener"}
-- [extensie op de algemene fields feature](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields_extensie.feature){:target="_blank" rel="noopener"}
+- [fields fout cases](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/fields-fout-cases.feature){:target="_blank" rel="noopener"}
+- [fields](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields.feature){:target="_blank" rel="noopener"}
 - [samenstellen naam gebruikInLopendeTekst](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/gebruik_in_lopende_tekst.feature){:target="_blank" rel="noopener"}
 - [geslachtswijziging](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/geslachtswijziging.feature){:target="_blank" rel="noopener"}
 - [indicatie onjuist](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/indicatie_onjuist.feature){:target="_blank" rel="noopener"}
@@ -24,14 +25,14 @@ De [behaviour driven specificatie](https://github.com/VNG-Realisatie/Haal-Centra
 - [onbekend waardes](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/onbekend_waardes.feature){:target="_blank" rel="noopener"}
 - [ouders](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/ouders.feature){:target="_blank" rel="noopener"}
 - [zoeken van overleden personen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/overleden_personen.feature){:target="_blank" rel="noopener"}
-- [parametercombinaties voor zoeken van personen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/parametercombinaties.feature){:target="_blank" rel="noopener"}
-- [validatie van parameters](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/parametervalidatie.feature){:target="_blank" rel="noopener"}
 - [partners](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/partners.feature){:target="_blank" rel="noopener"}
-- [fields](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields.feature){:target="_blank" rel="noopener"}
+- [proxy-fields](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/proxy-fields.feature){:target="_blank" rel="noopener"}
 - [tabelwaarden](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/tabelwaarden.feature){:target="_blank" rel="noopener"}
+- [verblijfplaats](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/verblijfplaats.feature){:target="_blank" rel="noopener"}
 - [volledige naam](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/volledigeNaam.feature){:target="_blank" rel="noopener"}
 - [samenstelling naam voorletters](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/voorletters.feature){:target="_blank" rel="noopener"}
 - [zoeken met burgerservicenummer](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/zoek-met-bsn.feature){:target="_blank" rel="noopener"}
+- [zoeken](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/zoek.feature){:target="_blank" rel="noopener"}
 - [zoeken met geslachtsnaam en geboortedatum](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/zoek-met-geslachtsnaam-geboortedatum.feature){:target="_blank" rel="noopener"}
 - [zoeken met geslachtsnaam, voornamen en gemeentevaninschrijving](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/zoek-met-geslachtsnaam-voornamen-gemeentevaninschrijving.feature){:target="_blank" rel="noopener"}
 - [zoeken met postcode en huisnummer](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/zoek-met-postcode-huisnummer.feature){:target="_blank" rel="noopener"}
