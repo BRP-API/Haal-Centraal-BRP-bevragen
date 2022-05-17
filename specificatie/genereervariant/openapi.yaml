@@ -671,9 +671,8 @@ components:
       maxLength: 200
       pattern: ^[a-zA-Z0-9\._]+$
       type: string
-      description: "Hiermee kun je de inhoud van de resource naar behoefte aanpassen\
-        \ door een lijst van paden die verwijzen naar de gewenste velden op te nemen\
-        \ \n([zie functionele specificaties 'fields' properties](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields.feature)).\
+      description: "Hiermee kun je het pad van het gewenste veld van een resource\
+        \ opgeven \n([zie functionele specificaties 'fields' properties](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields.feature)).\
         \ \nDe te gebruiken paden zijn beschreven in [fields-mapping-Persoon.csv](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields-mapping-Persoon.csv)\
         \ \n(voor gebruik fields bij raadplegen) en [fields-mapping-PersoonBeperkt.csv](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields-mapping-PersoonBeperkt.csv)\
         \ \n(voor gebruik fields bij zoeken) waarbij in de eerste kolom het fields-pad\
