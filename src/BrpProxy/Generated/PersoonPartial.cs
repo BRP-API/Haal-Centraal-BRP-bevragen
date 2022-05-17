@@ -25,6 +25,8 @@ public partial class Persoon
 
     public bool ShouldSerializeGezagsverhouding() => Gezagsverhouding != null && Gezagsverhouding.ShouldSerialize();
 
+    public bool ShouldSerializeImmigratie() => Immigratie != null && Immigratie.ShouldSerialize();
+
     public bool ShouldSerializeKiesrecht() => Kiesrecht != null && Kiesrecht.ShouldSerialize();
 
     public bool ShouldSerializeNaam() => Naam != null && Naam.ShouldSerialize();
@@ -41,12 +43,14 @@ public partial class Persoon
         !string.IsNullOrWhiteSpace(ANummer) ||
         !string.IsNullOrWhiteSpace(Burgerservicenummer) ||
         DatumEersteInschrijvingGBA != null ||
+        DatumInschrijvingInGemeente != null ||
         GeheimhoudingPersoonsgegevens ||
         Geslacht != null ||
         InOnderzoek != null ||
         Leeftijd > 0 ||
         ShouldSerializeGeboorte() ||
         ShouldSerializeGezagsverhouding() ||
+        ShouldSerializeImmigratie() ||
         ShouldSerializeKiesrecht() ||
         ShouldSerializeKinderen() ||
         ShouldSerializeNaam() ||

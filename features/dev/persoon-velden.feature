@@ -12,10 +12,9 @@ Functionaliteit: Persoon
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
-    | fields              | burgerservicenummer,<naam>      |
+    | fields              | <naam>      |
     Dan heeft de response een persoon met de volgende gegevens
     | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
     | <naam>              | <waarde>  |
 
     Voorbeelden:
@@ -33,10 +32,9 @@ Functionaliteit: Persoon
     | naam                | waarde                                            |
     | type                | RaadpleegMetBurgerservicenummer                   |
     | burgerservicenummer | 555550001                                         |
-    | fields              | burgerservicenummer,geheimhoudingPersoonsgegevens |
+    | fields              | geheimhoudingPersoonsgegevens |
     Dan heeft de response een persoon met de volgende gegevens
     | naam                          | waarde    |
-    | burgerservicenummer           | 555550001 |
     | geheimhoudingPersoonsgegevens | <waarde>  |
 
     Voorbeelden:
@@ -59,10 +57,9 @@ Functionaliteit: Persoon
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
-    | fields              | burgerservicenummer,<naam>      |
+    | fields              | <naam>      |
     Dan heeft de response een persoon met de volgende gegevens
     | naam                | waarde         |
-    | burgerservicenummer | 555550001      |
     | <naam>.type         | Datum          |
     | <naam>.datum        | <waarde>       |
     | <naam>.langFormaat  | <lang formaat> |
@@ -82,10 +79,9 @@ Functionaliteit: Persoon
     | naam                | waarde                                |
     | type                | RaadpleegMetBurgerservicenummer       |
     | burgerservicenummer | 555550001                             |
-    | fields              | burgerservicenummer,geslacht,leeftijd |
+    | fields              | inOnderzoek |
     Dan heeft de response een persoon met de volgende gegevens
     | naam                                         | waarde                             |
-    | burgerservicenummer                          | 555550001                          |
     | inOnderzoek.burgerservicenummer              | <burgerservicenummer in onderzoek> |
     | inOnderzoek.geslacht                         | <geslacht in onderzoek>            |
     | inOnderzoek.leeftijd                         | <leeftijd in onderzoek>            |
