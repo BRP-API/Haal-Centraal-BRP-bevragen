@@ -5,14 +5,14 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
   Dit bevat de gegevens over de relatie (huwelijk of partnerschap) plus enkele identificerende eigenschappen van de persoon waarmee het huwelijk of partnerschap is aangegaan.
 
   # RvIG levert personen in de vorm GbaPersoon, waarin alleen onbewerkte GBA-V gegevens worden geleverd
-  # RvIG levert maximaal 1 partner
-  # Als er een actuele partner is (huwelijk / partnerschap is niet ontbonden) wordt die geleverd.
+  # Actuele partners is (huwelijk / partnerschap is niet ontbonden) worden geleverd
+  # Als er een (of meer) actuele pertner is worden geen ontbonden huwelijken/partnerschappen geleverd
   # Als er alleen ontbonden huwelijken/partnerschappen zijn levert de RvIG alleen de ex-partner met de meest recente datum ontbinding
   # Een proxy vertaalt dit naar de vorm Persoon, waarin sommige gegevens in bewerkte vorm worden opgenomen en waarin informatievragen kunnen zitten
   # Een voorbeeld van een informatievraag is naam.aanschrijfwijze, waarin op basis van de aanduiding naamgebruik, de naam van de persoon en de naam van de (ex)partner een aanschrijfnaam wordt samengesteld
 
   @gba
-  Rule: Het gegeven 'partners' in GbaPersoon bevat ook ontbonden huwelijken en partnerschappen
+  Rule: Het gegeven 'partners' in GbaPersoon kan een ontbonden huwelijk of partnerschap bevatten
     - Voor een ontbonden huwelijk of partnerschap worden de aangaanHuwelijkPartnerschap gegevens gehaald uit de meest recente historische categorie 55
 
     @gba
