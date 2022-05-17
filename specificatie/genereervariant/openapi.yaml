@@ -1000,17 +1000,17 @@ components:
         uitgeslotenVanKiesrecht:
           type: boolean
           example: true
-        einddatumUitsluitingKiesrecht:
+        einddatum:
           $ref: '#/components/schemas/AbstractDatum'
     EuropeesKiesrecht:
       type: object
       properties:
-        europeesKiesrecht:
+        aanduiding:
           $ref: '#/components/schemas/Waardetabel'
-        einddatumUitsluitingEuropeesKiesrecht:
+        einddatumUitsluiting:
           $ref: '#/components/schemas/AbstractDatum'
       description: |
-        * **europeesKiesrecht** - DGeeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Europees_Kiesrecht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **europeesKiesrecht** - Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Europees_Kiesrecht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
     NaamPersoon:
       allOf:
       - $ref: '#/components/schemas/NaamBasis'
