@@ -7,11 +7,21 @@ namespace BrpProxy.Mappers;
 
 public static class VerblijfplaatsMapper
 {
+    public static AbstractDatum? MapDatumVan(this GbaVerblijfplaats verblijfplaats)
+    {
+        return verblijfplaats switch
+        {
+            { DatumAanvangAdresBuitenland: var datum } when !string.IsNullOrWhiteSpace(datum) => datum.Map(),
+            { DatumAanvangAdreshouding: var datum } when !string.IsNullOrWhiteSpace(datum) => datum.Map(),
+            _ => null
+        };
+    }
     public static string? MapWoonplaats(this GbaVerblijfplaats verblijfplaats)
     {
-        return !string.IsNullOrWhiteSpace(verblijfplaats.Woonplaats)
-            ? verblijfplaats.Woonplaats
-            : verblijfplaats.GemeenteVanInschrijving?.Omschrijving;
+        return String.Empty;
+        //return !string.IsNullOrWhiteSpace(verblijfplaats.Woonplaats)
+        //    ? verblijfplaats.Woonplaats
+        //    : verblijfplaats.GemeenteVanInschrijving?.Omschrijving;
     }
 
     public static string? MapStraat(this GbaVerblijfplaats verblijfplaats)
@@ -95,13 +105,13 @@ public static class VerblijfplaatsMapper
         {
             return new LocatieBeperkt
             {
-                Locatiebeschrijving = verblijfplaats.Locatiebeschrijving,
-                Woonplaats = verblijfplaats.GemeenteVanInschrijving.Omschrijving
+                //Locatiebeschrijving = verblijfplaats.Locatiebeschrijving,
+                //Woonplaats = verblijfplaats.GemeenteVanInschrijving.Omschrijving
             };
         }
         return new AdresBeperkt
         {
-            Woonplaats = verblijfplaats?.Woonplaats
+            //Woonplaats = verblijfplaats?.Woonplaats
         };
     }
 }

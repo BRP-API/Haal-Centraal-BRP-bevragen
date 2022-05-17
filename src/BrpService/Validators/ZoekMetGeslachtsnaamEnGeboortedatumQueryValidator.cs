@@ -42,9 +42,5 @@ public class ZoekMetGeslachtsnaamEnGeboortedatumQueryValidator : AbstractValidat
         RuleFor(x => x.Geslacht)
             .Matches(GeslachtPattern).WithMessage(GeslachtPatternErrorMessage)
             .When(x => !string.IsNullOrWhiteSpace(x.Geslacht));
-
-        RuleFor(x => x.Geboorteplaats)
-            .Matches(GeboorteplaatsPattern).WithMessage(GeboorteplaatsPatternErrorMessage)
-            .When(x => !string.IsNullOrWhiteSpace(x.Geboorteplaats));
     }
 }

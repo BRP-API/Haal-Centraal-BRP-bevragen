@@ -68,8 +68,9 @@ Functionaliteit: Persoon
     | <naam>.langFormaat  | <lang formaat> |
 
     Voorbeelden:
-    | gba naam                              | gba waarde | naam                       | waarde     | lang formaat |
-    | datum eerste inschrijving GBA (68.10) | 20020701   | datumEersteInschrijvingGBA | 2002-07-01 | 1 juli 2002  |
+    | gba naam                                  | gba waarde | naam                        | waarde     | lang formaat |
+    | datum eerste inschrijving GBA (68.10)     | 20020701   | datumEersteInschrijvingGBA  | 2002-07-01 | 1 juli 2002  |
+    | datum inschrijving in de gemeente (09.20) | 20020701   | datumInschrijvingInGemeente | 2002-07-01 | 1 juli 2002  |
 
   Abstract Scenario: persoon's velden is in onderzoek
     Gegeven het systeem heeft een persoon met de volgende gegevens

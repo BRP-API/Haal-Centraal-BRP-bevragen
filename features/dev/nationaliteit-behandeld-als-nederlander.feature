@@ -90,7 +90,7 @@ Functionaliteit: behandeld als Nederlander
 
     Voorbeelden:
     | gba naam                        | gba waarde | naam                  | type  | waarde     | lang formaat |
-    | ingangsdatum geldigheid (85.10) | 20020701   | datumIngangGeldigheid | Datum | 2002-07-01 | 1 juli 2002  |
+    | datum ingang geldigheid (85.10) | 20020701   | datumIngangGeldigheid | Datum | 2002-07-01 | 1 juli 2002  |
 
   Abstract Scenario: 'behandeld als Nederlander' velden van persoon is/zijn in onderzoek
     Gegeven het systeem heeft een persoon met de volgende gegevens

@@ -12,8 +12,8 @@ namespace HaalCentraal.BrpProxy.Generated
             !string.IsNullOrWhiteSpace(Voorvoegsel) ||
             !string.IsNullOrWhiteSpace(Voorletters) ||
             !string.IsNullOrWhiteSpace(VolledigeNaam) ||
-            InOnderzoek != null ||
-            !string.IsNullOrWhiteSpace(Aanhef);
+            InOnderzoek != null
+            ;
 
         [JsonIgnore]
         public ICollection<AbstractPartner>? Partners { get; set; }

@@ -42,7 +42,7 @@ const propertyNameMap = new Map([
 
     ['nationaliteit (05.10)', 'nationaliteit.code'],
     ['reden opname (63.10)', 'redenOpname.code'],
-    ['ingangsdatum geldigheid (85.10)', 'datumIngangGeldigheid'],
+    ['datum ingang geldigheid (85.10)', 'datumIngangGeldigheid'],
     ['bijzonder Nederlanderschap (65.10)', 'aanduidingBijzonderNederlanderschap.code'],
 
     // Opschorting bijhouding
@@ -67,7 +67,7 @@ const propertyNameMap = new Map([
     // Verblijfplaats 
     ['gemeente van inschrijving (09.10)', 'gemeenteVanInschrijving.code'],
     ['datum inschrijving in de gemeente (09.20)', 'datumInschrijvingInGemeente'],
-    ['functieAdres (10.10)', 'functieAdres.code'],
+    ['functie adres (10.10)', 'functieAdres.code'],
     ['datum aanvang adreshouding (10.30)', 'datumAanvangAdreshouding'],
     ['straatnaam (11.10)', 'straat'],
     ['naam openbare ruimte (11.15)', 'naamOpenbareRuimte'],
@@ -82,9 +82,9 @@ const propertyNameMap = new Map([
     ['locatiebeschrijving (12.10)', 'locatiebeschrijving'],
     ['land adres buitenland (13.10)', 'land.code'],
     ['datum aanvang adres buitenland (13.20)', 'datumAanvangAdresBuitenland'],
-    ['regel 1 adres buitenland (13.30)', 'adresregel1'],
-    ['regel 2 adres buitenland (13.40)', 'adresregel2'],
-    ['regel 3 adres buitenland (13.50)', 'adresregel3'],
+    ['regel 1 adres buitenland (13.30)', 'regel1'],
+    ['regel 2 adres buitenland (13.40)', 'regel2'],
+    ['regel 3 adres buitenland (13.50)', 'regel3'],
     ['land vanwaar ingeschreven (14.10)', 'landVanwaarIngeschreven.code'],
     ['datum vestiging in nederland (14.20)', 'datumVestigingInNederland'],
 
@@ -348,8 +348,10 @@ Given(/^(?:de|het) '(.*)' heeft GEEN '(.*)' gegevens$/, function (_relatie, _geg
 function createRequestBody(dataTable) {
     let requestBody = {};
     dataTable.hashes().forEach(function(param) {
-        if(param.naam === "burgerservicenummer") {
-            requestBody[param.naam] = param.waarde.split(',').filter(element => element);
+        if(["burgerservicenummer", "fields"].includes(param.naam)) {
+            requestBody[param.naam] = param.waarde === ''
+                ? []
+                : param.waarde.split(',');
         }
         else {
             requestBody[param.naam] = param.waarde;
@@ -556,6 +558,10 @@ Then(/^heeft het object de volgende '(.*)' gegevens$/, function (gegevensgroep, 
 });
 
 Given(/^de persoon heeft geen (?:actuele partner|\(ex\)partner)$/, function () {
+    // doe niets
+});
+
+Given('de persoon heeft nooit een actueel of ontbonden huwelijk of partnerschap gehad', function () {
     // doe niets
 });
 

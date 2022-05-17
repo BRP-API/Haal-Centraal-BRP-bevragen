@@ -3,9 +3,10 @@
 cucumber-js -f html:docs/features/test-result.html \
             -f json:docs/features/test-result.json \
             features/dev/*.feature \
-            features/fields-fout-cases.feature \
+            features/fields.feature \
             features/leeftijd_bepaling.feature \
             features/nationaliteit.feature \
+            features/verblijfplaats.feature \
             features/volledigeNaam.feature \
             features/voorletters.feature \
             features/zoek-met-bsn.feature \

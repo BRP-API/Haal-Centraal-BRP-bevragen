@@ -15,8 +15,7 @@ public class GemeenteVanInschrijvingSpecification : Specification<GbaPersoonBepe
     public override Expression<Func<GbaPersoonBeperkt, bool>> ToExpression()
     {
         return persoon => persoon != null &&
-               persoon.Verblijfplaats != null &&
-               persoon.Verblijfplaats.GemeenteVanInschrijving != null &&
-               persoon.Verblijfplaats.GemeenteVanInschrijving.Code == _gemeenteVanInschrijving;
+               persoon.GemeenteVanInschrijving != null &&
+               persoon.GemeenteVanInschrijving.Code == _gemeenteVanInschrijving;
     }
 }

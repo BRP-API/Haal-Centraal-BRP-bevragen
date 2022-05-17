@@ -45,7 +45,9 @@ public class PersoonProfile : Profile
                 opt.PreCondition(src => src.Overlijden == null);
                 opt.MapFrom(src => src.Geboorte.Datum.Map().Leeftijd());
             })
-            .ForMember(dest => dest.Reisdocumentnummers, opt => opt.MapFrom(src => src.Reisdocumentnummers.FilterOnbekendReisdocumentnummers()));
+            .ForMember(dest => dest.Reisdocumentnummers, opt => opt.MapFrom(src => src.Reisdocumentnummers.FilterOnbekendReisdocumentnummers()))
+            .ForMember(dest => dest.DatumInschrijvingInGemeente, opt => opt.MapFrom(src => src.DatumInschrijvingInGemeente.Map()))
+            ;
 
         CreateMap<GbaInOnderzoek, PersoonInOnderzoek?>().ConvertUsing<PersoonInOnderzoekConverter>();
     }

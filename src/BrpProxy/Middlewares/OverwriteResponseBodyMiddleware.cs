@@ -25,70 +25,100 @@ namespace BrpProxy.Middlewares
             _fieldsHelper = fieldsHelper;
         }
 
+        private static string CreateMethodNotAllowedResponse(HttpContext context)
+        {
+            return JsonConvert.SerializeObject(new Foutbericht
+            {
+                Status = StatusCodes.Status405MethodNotAllowed,
+                //Detail = ex.Message,
+                Instance = new Uri(context.Request.Path, UriKind.Relative),
+                Title = "Method not allowed.",
+                Type = new Uri("https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.5")
+            });
+        }
+
+        private static string CreateInternalServerErrorResponse(HttpContext context)
+        {
+            return JsonConvert.SerializeObject(new Foutbericht
+            {
+                Status = StatusCodes.Status500InternalServerError,
+                //Detail = ex.Message,
+                Instance = new Uri(context.Request.Path, UriKind.Relative),
+                Title = "Internal Server error.",
+                Type = new Uri("https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1")
+            });
+        }
+
         public async Task Invoke(HttpContext context)
         {
             var orgBodyStream = context.Response.Body;
             string requestBody = string.Empty;
             try
             {
-                requestBody = await context.Request.ReadBodyAsync();
-
-                _logger.LogDebug("original requestBody: {@requestBody}", requestBody);
-                var personenQuery = JsonConvert.DeserializeObject<PersonenQuery>(requestBody);
-                _logger.LogDebug("original requestBody: {@personenQuery}", personenQuery);
-                var result = personenQuery.Validate(context, requestBody, _fieldsHelper);
-                if (!result.IsValid)
+                if (context.Request.Method != HttpMethod.Post.Method)
                 {
-                    using var bodyStream = JsonConvert.SerializeObject(result.Foutbericht).ToMemoryStream();
+                    //_logger.LogWarning(ex, message: $"requestBody: {requestBody}");
 
-                    context.Response.StatusCode = StatusCodes.Status400BadRequest;
+                    using var bodyStream = CreateMethodNotAllowedResponse(context).ToMemoryStream();
+
+                    context.Response.StatusCode = StatusCodes.Status405MethodNotAllowed;
                     context.Response.ContentLength = bodyStream.Length;
                     await bodyStream.CopyToAsync(orgBodyStream);
                 }
                 else
                 {
-                    personenQuery!.Fields = personenQuery.Fields!.Split(',').MapFields();
-                    var modifiedRequestBody = JsonConvert.SerializeObject(personenQuery);
-                    using var requestBodyStream = modifiedRequestBody.ToMemoryStream();
-                    context.Request.Body = requestBodyStream;
+                    requestBody = await context.Request.ReadBodyAsync();
 
-                    using var newBodyStream = new MemoryStream();
-                    context.Response.Body = newBodyStream;
+                    _logger.LogDebug("original requestBody: {@requestBody}", requestBody);
+                    var personenQuery = JsonConvert.DeserializeObject<PersonenQuery>(requestBody);
+                    _logger.LogDebug("original requestBody: {@personenQuery}", personenQuery);
+                    var result = personenQuery.Validate(context, requestBody, _fieldsHelper);
+                    if (!result.IsValid)
+                    {
+                        using var bodyStream = JsonConvert.SerializeObject(result.Foutbericht).ToMemoryStream();
 
-                    await _next(context);
+                        context.Response.StatusCode = StatusCodes.Status400BadRequest;
+                        context.Response.ContentLength = bodyStream.Length;
+                        await bodyStream.CopyToAsync(orgBodyStream);
+                    }
+                    else
+                    {
+                        personenQuery!.Fields = personenQuery.Fields.MapFields();
+                        var modifiedRequestBody = JsonConvert.SerializeObject(personenQuery);
+                        using var requestBodyStream = modifiedRequestBody.ToMemoryStream();
+                        context.Request.Body = requestBodyStream;
 
-                    var body = await context.Response.ReadBodyAsync();
+                        using var newBodyStream = new MemoryStream();
+                        context.Response.Body = newBodyStream;
 
-                    _logger.LogDebug("original responseBody: {@body}", body);
+                        await _next(context);
 
-                    var resultFields = personenQuery is RaadpleegMetBurgerservicenummer
-                                ? _fieldsHelper.AddExtraPersoonFields(result.Fields!)
-                                : _fieldsHelper.AddExtraPersoonBeperktFields(result.Fields!);
+                        var body = await context.Response.ReadBodyAsync();
 
-                    var modifiedBody = context.Response.StatusCode == StatusCodes.Status200OK
-                        ? body.Transform(_mapper, resultFields, _logger)
-                        : body;
+                        _logger.LogDebug("original responseBody: {@body}", body);
 
-                    _logger.LogDebug("transformed responseBody: {modifiedBody}", modifiedBody);
+                        var resultFields = personenQuery is RaadpleegMetBurgerservicenummer
+                                    ? _fieldsHelper.AddExtraPersoonFields(result.Fields!)
+                                    : _fieldsHelper.AddExtraPersoonBeperktFields(result.Fields!);
 
-                    using var bodyStream = modifiedBody.ToMemoryStream();
+                        var modifiedBody = context.Response.StatusCode == StatusCodes.Status200OK
+                            ? body.Transform(_mapper, resultFields, _logger)
+                            : body;
 
-                    context.Response.ContentLength = bodyStream.Length;
-                    await bodyStream.CopyToAsync(orgBodyStream);
+                        _logger.LogDebug("transformed responseBody: {modifiedBody}", modifiedBody);
+
+                        using var bodyStream = modifiedBody.ToMemoryStream();
+
+                        context.Response.ContentLength = bodyStream.Length;
+                        await bodyStream.CopyToAsync(orgBodyStream);
+                    }
                 }
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, message: $"requestBody: {requestBody}");
 
-                using var bodyStream = JsonConvert.SerializeObject(new Foutbericht
-                {
-                    Status = StatusCodes.Status500InternalServerError,
-                    //Detail = ex.Message,
-                    Instance = new Uri(context.Request.Path, UriKind.Relative),
-                    Title = "Internal Server error.",
-                    Type = new Uri("https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1")
-                }).ToMemoryStream();
+                using var bodyStream = CreateInternalServerErrorResponse(context).ToMemoryStream();
 
                 context.Response.StatusCode = StatusCodes.Status500InternalServerError;
                 context.Response.ContentLength = bodyStream.Length;
@@ -99,11 +129,11 @@ namespace BrpProxy.Middlewares
 
     public class ValidatePersonenQueryResult
     {
-        public static ValidatePersonenQueryResult CreateFrom(ValidationResult result, string? fields, HttpContext context)
+        public static ValidatePersonenQueryResult CreateFrom(ValidationResult result, ICollection<string>? fields, HttpContext context)
         {
             if (result.IsValid)
             {
-                return new ValidatePersonenQueryResult(fields!.Split(','));
+                return new ValidatePersonenQueryResult(fields);
             }
 
             var invalidParams = from error in result.Errors
@@ -160,7 +190,7 @@ namespace BrpProxy.Middlewares
             });
         }
 
-        private ValidatePersonenQueryResult(string[] fields)
+        private ValidatePersonenQueryResult(ICollection<string> fields)
         {
             IsValid = true;
             Fields = fields;
@@ -227,7 +257,7 @@ namespace BrpProxy.Middlewares
                 : ValidatePersonenQueryResult.CreateFrom(new PersonenQueryRequestBodyValidator().Validate(JObject.Parse(requestBody)), context);
         }
 
-        public static string MapFields(this string[] fields)
+        public static ICollection<string> MapFields(this ICollection<string> fields)
         {
             List<string> retval = new();
             foreach (var field in fields)
@@ -242,7 +272,7 @@ namespace BrpProxy.Middlewares
                 }
             }
 
-            return string.Join(',', retval.Distinct());
+            return retval.Distinct().ToList();
         }
 
         public static string Transform(this string payload, IMapper mapper, ICollection<string> fields, ILogger logger)
