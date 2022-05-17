@@ -621,10 +621,10 @@ components:
         \ opgeven \n([zie functionele specificaties 'fields' properties](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields.feature)).\
         \ \nDe te gebruiken paden zijn beschreven in [fields-mapping-Persoon.csv](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields-mapping-Persoon.csv)\
         \ \n(voor gebruik fields bij raadplegen) en [fields-mapping-PersoonBeperkt.csv](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields-mapping-PersoonBeperkt.csv)\
-        \ \n(voor gebruik fields bij zoeken) waarbij in de eerste kolom het fields-pad\
-        \ staat en in de tweede kolom het volledige pad naar het gewenste veld.\n\
-        Bij opgave van paden die verwijzen naar niet-bestaande velden wordt een 400\
-        \ Bad Request teruggegeven.\n"
+        \ \n(voor gebruik fields bij zoeken) waarbij in de eerste kolom een mogelijk\
+        \ pad naar een gewenste veld staat en in de tweede kolom het volledige pad\
+        \ naar het betreffende veld.\nBij opgave van een pad dat verwijst naar een\
+        \ niet-bestaand veld wordt een 400 Bad Request teruggegeven.\n"
     GemeenteVanInschrijving:
       pattern: ^[0-9]{4}$
       type: string
