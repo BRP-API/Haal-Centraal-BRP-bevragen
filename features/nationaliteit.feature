@@ -315,4 +315,4 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       | fields              | nationaliteiten                 |
       Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
       | naam | waarde                  |
-      | type | BehandeldAlsNederlander |
+      | type | VastgesteldNietNederlander |
