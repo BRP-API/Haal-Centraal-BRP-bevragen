@@ -8,7 +8,7 @@ components:
   schemas:
     Field:
       description: |
-          Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een lijst van paden die verwijzen naar de gewenste velden op te nemen 
+          Hiermee kun je het pad van het gewenste veld van een resource opgeven 
           ([zie functionele specificaties 'fields' properties](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields.feature)). 
           De te gebruiken paden zijn beschreven in [fields-mapping-Persoon.csv](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields-mapping-Persoon.csv) 
           (voor gebruik fields bij raadplegen) en [fields-mapping-PersoonBeperkt.csv](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields-mapping-PersoonBeperkt.csv) 
