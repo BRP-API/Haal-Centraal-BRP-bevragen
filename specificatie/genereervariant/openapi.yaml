@@ -1707,7 +1707,7 @@ components:
         type:
           type: string
       description: |
-        Gegevens over een gesloten of ontbonden huwelijk/geregistreerd partnerschap van de persoon.
+        Gegevens over het actuele of het laatst ontbonden huwelijk/geregistreerd partnerschap van de persoon.
       discriminator:
         propertyName: type
         mapping:
@@ -1733,7 +1733,7 @@ components:
           aangaanHuwelijkPartnerschap:
             $ref: '#/components/schemas/AangaanHuwelijkPartnerschap'
           ontbindingHuwelijkPartnerschap:
-            $ref: '#/components/schemas/OntbindingHuwelijkPartnerschap'
+            $ref: '#/components/schemas/OntbindingHuwelijkPartnerschapBasis'
     PartnerInOnderzoek:
       description: |
         Geeft aan welke gegevens over het huwelijk of het partnerschap in onderzoek zijn.
@@ -1778,17 +1778,19 @@ components:
             type: boolean
           plaats:
             type: boolean
-    OntbindingHuwelijkPartnerschap:
+    OntbindingHuwelijkPartnerschapBasis:
       type: object
       properties:
+        indicatieHuwelijkPartnerschapBeeindigd:
+          type: boolean
         datum:
           $ref: '#/components/schemas/AbstractDatum'
         inOnderzoek:
-          $ref: '#/components/schemas/OntbindingHuwelijkPartnerschapInOnderzoek'
+          $ref: '#/components/schemas/OntbindingHuwelijkPartnerschapBasisInOnderzoek'
       description: |
         Gegevens over de ontbinding van het huwelijk of het geregistreerd partnerschap.
         * **datum** : De datum waarop het huwelijk of het partnerschap is ontbonden.
-    OntbindingHuwelijkPartnerschapInOnderzoek:
+    OntbindingHuwelijkPartnerschapBasisInOnderzoek:
       description: |
         Geeft aan welke gegevens over het onbinden van het huwelijk of aangaan van het partnerschap in onderzoek zijn.
         Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
