@@ -6,20 +6,23 @@ info:
 paths: {}
 components:
   schemas:
-    GbaKiesrecht:
+    GbaUitsluitingKiesrecht:
       type: object
       properties:
-        europeesKiesrecht:
+        uitgeslotenVanKiesrecht:
+          type: boolean
+          example: true
+        einddatum:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+    GbaEuropeesKiesrecht:
+      type: object
+      properties:
+        aanduiding:
           type: boolean
           description: |
             Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement.
           example: true
-        uitgeslotenVanKiesrecht:
-          type: boolean
-          example: true
-        einddatumUitsluitingEuropeesKiesrecht:
-          $ref: 'datum.yaml#/components/schemas/GbaDatum'
-        einddatumUitsluitingKiesrecht:
+        einddatumUitsluiting:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
     UitsluitingKiesrecht:
       type: object
@@ -27,14 +30,14 @@ components:
         uitgeslotenVanKiesrecht:
           type: boolean
           example: true
-        einddatumUitsluitingKiesrecht:
+        einddatum:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
     EuropeesKiesrecht:
       type: object
       description: |
-        * **europeesKiesrecht** - DGeeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Europees_Kiesrecht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **europeesKiesrecht** - Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Europees_Kiesrecht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       properties:
-        europeesKiesrecht:
+        aanduiding:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
-        einddatumUitsluitingEuropeesKiesrecht:
+        einddatumUitsluiting:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
