@@ -61,6 +61,14 @@ De onderstaanden tabellen met de beschreven waarden worden geleverd door de "BRP
     | W                                                | woonadres                            |
     | B                                                | briefadres                           |
 
+ Voor de enumeratie EuropeesKiesrecht wordt de tabel met identificatie "Europees_Kiesrecht" opgenomen.
+ In de omschrijving wordt de volgende tekst opgenomen : "Aanduiding van het recht om deel te nemen aan verkiezingen binnen de Europese Unie"
+ In de waardetabel worden de volgende waarden opgenomen:
+    | code                                             | omschrijving                         |
+    | ------------------------------------------------ | ------------------------------------ |
+    | 1                                                | persoon is uitgesloten               |
+    | 2                                                | persoon ontvangt oproep              |
+
   Scenario: een onbekende waarde wordt niet opgenomen in de response
     Gegeven in de registratie heeft de AanduidingBijHuisnummer van de verblijfplaats de waarde "naast"
     Als de persoon wordt geraadpleegd
