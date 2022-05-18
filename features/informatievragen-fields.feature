@@ -278,6 +278,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | verblijfplaats.verblijfadres.straat |
       | verblijfadres.straat                |
       | straat                              |
+      | korteNaam                           |
       | postcode                            |
       | nummeraanduidingIdentificatie       |
       | locatiebeschrijving                 |
@@ -558,3 +559,63 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | 999993367           | 0000          | Onbekend                   |                | 311         | Vaststelling onbekende nationaliteit            | 00000000              |
       | 000009866           |               |                            | B              | 310         | Vaststelling bijzonder Nederlanderschap         | 19570115              |
       | 999994748           |               |                            | V              | 310         | Vaststelling bijzonder Nederlanderschap         | 19750615              |                                                                                                     |
+
+  Rule: wanneer een veld van een datum wordt gevraagd, wordt de datum geleverd
+
+    @gba
+    Abstract Scenario: met fields is gevraagd om <fields>
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999993653 |
+      | <GBA veld>          | 20131102  |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999993653                       |
+      | fields              | <veld>.<datumveld>              |
+      Dan heeft de response een persoon met alleen de volgende gegevens
+      | naam   | waarde   |
+      | <veld> | 20131102 |
+
+      Voorbeelden:
+      | datumveld   | GBA veld                                  | veld                        |
+      | type        | datum eerste inschrijving GBA/RNI (68.10) | datumEersteInschrijvingGBA  |
+      | langFormaat | datum eerste inschrijving GBA/RNI (68.10) | datumEersteInschrijvingGBA  |
+      | datum       | datum eerste inschrijving GBA/RNI (68.10) | datumEersteInschrijvingGBA  |
+      | jaar        | datum eerste inschrijving GBA/RNI (68.10) | datumEersteInschrijvingGBA  |
+      | maand       | datum eerste inschrijving GBA/RNI (68.10) | datumEersteInschrijvingGBA  |
+      | onbekend    | datum eerste inschrijving GBA/RNI (68.10) | datumEersteInschrijvingGBA  |
+      | type        | datum inschrijving (09.20)                | datumInschrijvingInGemeente |
+      | langFormaat | datum inschrijving (09.20)                | datumInschrijvingInGemeente |
+      | datum       | datum inschrijving (09.20)                | datumInschrijvingInGemeente |
+      | jaar        | datum inschrijving (09.20)                | datumInschrijvingInGemeente |
+      | maand       | datum inschrijving (09.20)                | datumInschrijvingInGemeente |
+      | onbekend    | datum inschrijving (09.20)                | datumInschrijvingInGemeente |
+
+    @gba
+    Abstract Scenario: met fields is gevraagd om <fields>
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 555550001 |
+      En de persoon heeft de volgende '<groep>' gegevens
+      | naam       | waarde   |
+      | <GBA veld> | 20131102 |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 555550001                       |
+      | fields              | <groep>.<veld>.<datumveld>      |
+      Dan heeft de response een persoon met de volgende '<groep>' gegevens
+      | naam   | waarde   |
+      | <veld> | 20131102 |
+
+      Voorbeelden:
+      | datumveld   | GBA veld                                         | groep                 | veld                      |
+      | type        | geboortedatum (03.10)                            | geboorte              | datum                     |
+      | datum       | datum vestiging in Nederland (14.20)             | immigratie            | datumVestigingInNederland |
+      | jaar        | einddatum uitsluiting Europees kiesrecht (31.30) | europeesKiesrecht     | einddatumUitsluiting      |
+      | maand       | einddatum uitsluiting kiesrecht (38.20)          | uitsluitingKiesrecht  | einddatum                 |
+      | langFormaat | datum opschorting bijhouding (67.10)             | opschortingBijhouding | datum                     |
+      | onbekend    | datum overlijden (08.10)                         | overlijden            | datum                     |
+      | langFormaat | datum einde verblijfstitel (39.20)               | verblijfstitel        | datumEinde                |
+      | datum       | ingangsdatum verblijfstitel (39.30)              | verblijfstitel        | datumIngang               |
