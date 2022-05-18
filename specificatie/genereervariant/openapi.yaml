@@ -640,22 +640,22 @@ components:
       description: |
         Het A-nummer van de persoon
     PersoonInOnderzoek:
-      type: object
-      properties:
-        burgerservicenummer:
-          type: boolean
-        geslacht:
-          type: boolean
-        leeftijd:
-          type: boolean
-        gemeenteVanInschrijving:
-          type: boolean
-        datumInschrijvingInGemeente:
-          type: boolean
       description: |
         Geeft aan welke gegevens van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature).
       allOf:
       - $ref: '#/components/schemas/InOnderzoek'
+      - type: object
+        properties:
+          burgerservicenummer:
+            type: boolean
+          geslacht:
+            type: boolean
+          leeftijd:
+            type: boolean
+          gemeenteVanInschrijving:
+            type: boolean
+          datumInschrijvingInGemeente:
+            type: boolean
     InOnderzoek:
       type: object
       properties:
@@ -1790,7 +1790,7 @@ components:
         type:
           type: string
       description: |
-        Gegevens over een gesloten huwelijk/geregistreerd partnerschap van de persoon.
+        Gegevens over het actuele of het laatst ontbonden huwelijk/geregistreerd partnerschap van de persoon.
       discriminator:
         propertyName: type
         mapping:
@@ -1815,6 +1815,8 @@ components:
             $ref: '#/components/schemas/PartnerInOnderzoek'
           aangaanHuwelijkPartnerschap:
             $ref: '#/components/schemas/AangaanHuwelijkPartnerschap'
+          ontbindingHuwelijkPartnerschap:
+            $ref: '#/components/schemas/OntbindingHuwelijkPartnerschapBasis'
         description: |
           * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
           * **soortVerbintenis** - Wordt gevuld op basis van de waarden die voorkomen in de tabel  "Soort_Verbintenis" uit de Haal-Centraal-BRP-tabellen-bevragen API.
@@ -1861,6 +1863,28 @@ components:
           land:
             type: boolean
           plaats:
+            type: boolean
+    OntbindingHuwelijkPartnerschapBasis:
+      type: object
+      properties:
+        indicatieHuwelijkPartnerschapBeeindigd:
+          type: boolean
+        datum:
+          $ref: '#/components/schemas/AbstractDatum'
+        inOnderzoek:
+          $ref: '#/components/schemas/OntbindingHuwelijkPartnerschapBasisInOnderzoek'
+      description: |
+        Gegevens over de ontbinding van het huwelijk of het geregistreerd partnerschap.
+        * **datum** : De datum waarop het huwelijk of het partnerschap is ontbonden.
+    OntbindingHuwelijkPartnerschapBasisInOnderzoek:
+      description: |
+        Geeft aan welke gegevens over het onbinden van het huwelijk of aangaan van het partnerschap in onderzoek zijn.
+        Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      allOf:
+      - $ref: '#/components/schemas/InOnderzoek'
+      - type: object
+        properties:
+          datum:
             type: boolean
     PartnerOnbekend:
       allOf:

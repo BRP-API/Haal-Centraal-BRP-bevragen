@@ -80,7 +80,8 @@ components:
       type: object
       properties:
         aanduidingBijzonderNederlanderschap:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          type: string
+          pattern: ^(B|V)$
         datumIngangGeldigheid:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
         nationaliteit:

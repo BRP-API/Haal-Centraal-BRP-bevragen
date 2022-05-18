@@ -151,9 +151,16 @@ Functionaliteit: Fields
     - wanneer het opgegeven pad niet exact verwijst naar een veld en tegelijkertijd als deel van een pad verwijst naar meerdere ander velden, wordt een foutmelding gegeven
     - wanneer het opgegeven pad verwijst naar een veld en tegelijkertijd naar het gelijknamige veld in inOnderzoek, worden beide velden opgenomen in de response wanneer ze een waarde hebben
 
+    # zie fields-Persoon.csv (raadpleeg op burgerservicenummer) en fields-PersoonBeperkt.csv (zoeken) voor een overzicht van het fields pad voor elk van de personen velden:
+    # de eerste kolom, "fields pad", geeft de waarde voor het unieke pad dat gebruikt kan worden in de fields parameter
+    # de tweede kolom, "volledig pad" is het volledig pad naar het veld in de resource dat daarmee gevraagd wordt
+
+    # in fields-Persoon.csv en fields-PersoonBeperkt.csv zijn niet alle mogelijke manieren om een veld te vragen opgenomen, alleen per veld het kortste unieke pad
+    # ook zijn in fields-Persoon.csv en fields-PersoonBeperkt.csv geen velden opgenomen die automatisch worden meegeleverd, zie daarvoor rules hieronder
+
     # zie fields-mapping-Persoon.csv (raadpleeg op burgerservicenummer) en fields-mapping-PersoonBeperkt.csv (zoeken) voor een overzicht van alle mogelijke gehele of gedeeltelijke paden voor het aanwijzen van de personen velden:
-    #  een fields veld(pad) in de linker kolom wordt vertaald naar het volledig pad in de tweede kolom
-    #  wanneer een in fields opgegeven veld(pad) niet voorkomt in de linker kolom, geeft dat een foutmelding
+    # een fields veld(pad) in de eerste kolom, "fields pad", wordt vertaald naar het volledige pad in de tweede kolom, "volledig pad"
+    # wanneer een in fields opgegeven veld(pad) niet voorkomt in de linker kolom, geeft dat een foutmelding
 
     Abstract Scenario: opgeven <pad> levert het veld
       Als personen wordt gezocht met de volgende parameters
