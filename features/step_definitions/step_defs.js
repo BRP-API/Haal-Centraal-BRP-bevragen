@@ -349,9 +349,18 @@ function createRequestBody(dataTable) {
     let requestBody = {};
     dataTable.hashes().forEach(function(param) {
         if(["burgerservicenummer", "fields"].includes(param.naam)) {
-            requestBody[param.naam] = param.waarde === ''
-                ? []
-                : param.waarde.split(',');
+            if(param.waarde === '') {
+                requestBody[param.naam] = [];    
+            }
+            else if(param.waarde === '(131 maal aNummer)') {
+                requestBody[param.naam] = [];    
+                for(let count=0; count<=131; count++) {
+                    requestBody[param.naam].push('aNummer');
+                }
+            }
+            else {
+                requestBody[param.naam] = param.waarde.split(',');
+            }
         }
         else {
             requestBody[param.naam] = param.waarde;

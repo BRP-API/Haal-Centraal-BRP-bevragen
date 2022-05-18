@@ -4,6 +4,7 @@ cucumber-js -f html:docs/features/test-result.html \
             -f json:docs/features/test-result.json \
             features/dev/*.feature \
             features/datum.feature \
+            features/fields-fout-cases.feature \
             features/fields.feature \
             features/leeftijd_bepaling.feature \
             features/nationaliteit.feature \
