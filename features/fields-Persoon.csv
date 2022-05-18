@@ -154,6 +154,9 @@ partners.naam.geslachtsnaam,partners.naam.geslachtsnaam
 partners.naam.voorletters,partners.naam.voorletters
 partners.naam.voornamen,partners.naam.voornamen
 partners.naam.voorvoegsel,partners.naam.voorvoegsel
+ontbindingHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap
+ontbindingHuwelijkPartnerschap.datum,partners.ontbindingHuwelijkPartnerschap.datum
+indicatieHuwelijkPartnerschapBeeindigd,partners.ontbindingHuwelijkPartnerschap.indicatieHuwelijkPartnerschapBeeindigd
 soortVerbintenis,partners.soortVerbintenis
 soortVerbintenis.code,partners.soortVerbintenis.code
 soortVerbintenis.omschrijving,partners.soortVerbintenis.omschrijving
