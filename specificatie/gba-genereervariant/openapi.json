@@ -784,10 +784,9 @@
         "example" : "546376728"
       },
       "Field" : {
-        "maxLength" : 200,
-        "pattern" : "^[a-zA-Z0-9\\._]+$",
+        "pattern" : "^[a-zA-Z0-9\\._]{1,200}$",
         "type" : "string",
-        "description" : "Hiermee kun je het pad van het gewenste veld van een resource opgeven \n([zie functionele specificaties 'fields' properties](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields.feature)). \nDe te gebruiken paden zijn beschreven in [fields-mapping-Persoon.csv](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields-mapping-Persoon.csv) \n(voor gebruik fields bij raadplegen) en [fields-mapping-PersoonBeperkt.csv](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields-mapping-PersoonBeperkt.csv) \n(voor gebruik fields bij zoeken) waarbij in de eerste kolom een mogelijk pad naar een gewenste veld staat en in de tweede kolom het volledige pad naar het betreffende veld.\nBij opgave van een pad dat verwijst naar een niet-bestaand veld wordt een 400 Bad Request teruggegeven.\n"
+        "description" : "Hiermee kun je het pad van het gewenste veld van een resource opgeven \n([zie functionele specificaties 'fields' properties](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields.feature)). \nDe te gebruiken paden zijn beschreven in [fields-Persoon.csv](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields-Persoon.csv) \n(voor gebruik fields bij raadplegen) en [fields-PersoonBeperkt.csv](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields-PersoonBeperkt.csv) \n(voor gebruik fields bij zoeken) waarbij in de eerste kolom een mogelijk pad naar een gewenste veld staat en in de tweede kolom het volledige pad naar het betreffende veld.\nBij opgave van een pad dat verwijst naar een niet-bestaand veld wordt een 400 Bad Request teruggegeven.\n"
       },
       "GemeenteVanInschrijving" : {
         "pattern" : "^[0-9]{4}$",
