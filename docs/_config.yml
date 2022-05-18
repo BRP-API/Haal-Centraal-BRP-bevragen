@@ -40,8 +40,8 @@ nav:
 #        path: /features-v2-beta
   - title: Specificaties v. 2.0 (IO)
     subnav:
-      - title: Getting started proxy 
-        path: /getting-started-v2-proxy
+#      - title: Getting started 
+#        path: /getting-started-v2
       - title: User stories
         path: /user-stories-dev
       - title: Bevragen API (redoc)
