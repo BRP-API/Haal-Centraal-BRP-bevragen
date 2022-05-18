@@ -419,7 +419,7 @@ Rule: De aanhef voor een persoon met adellijke titel of predicaat wordt bepaald 
       | O        | P           | Geachte P. de Boer                    |
       | O        | V           | Geachte P. de Boer-van den Aedel      |
       | O        | N           | Geachte P. van den Aedel-de Boer      |
-      
+
 Rule: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredicaat van de (ex)partner onder de volgende condities:
   - de (ex)partner heeft een adellijke titel
   - het geslacht van de persoon is "V"
@@ -692,96 +692,6 @@ Rule: Bij meerdere actuele (niet ontbonden) huwelijken/partnerschappen worden de
     | 19610800        | 19610808        | Geel-Groen  | jaar en maand zijn bekend en zijn gelijk, partner met dag onbekend wordt eerste partner                                           |
     | 19610000        | 19610800        | Geel-Groen  | partner 1 alleen jaar bekend, partner 2 jaar en maand bekend, jaar gelijk, partner met maand en dag onbekend wordt eerste partner |
 
-Rule: Bij meerdere huwelijken/partnerschappen die allen ontbonden zijn, worden de naamgegevens van de laatst ontbonden partner gebruikt voor het samenstellen van de aanhef
-
-  Abstract Scenario: meerdere ontbonden relaties gebruikt de laatst ontbonden relatie
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                        | waarde    |
-    | burgerservicenummer         | 999992934 |
-    | geslachtsaanduiding (04.10) | V         |
-    En de persoon heeft de volgende 'naam' gegevens
-    | naam                           | waarde |
-    | voorvoegsel (02.30)            |        |
-    | geslachtsnaam (02.40)          | Wit    |
-    | voornamen (02.10)              | Jan    |
-    | aanduiding naamgebruik (61.10) | V      |
-    En de persoon heeft een 'partner' met de volgende 'naam' gegevens
-    | naam                  | waarde |
-    | voorvoegsel (02.30)   |        |
-    | geslachtsnaam (02.40) | Geel   |
-    En de 'partner' heeft de volgende 'aangaanHuwelijkPartnerschap' gegevens
-    | naam                                                               | waarde   |
-    | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 19580401 |
-    En de 'partner' heeft de volgende 'ontbindingHuwelijkPartnerschap' gegevens
-    | naam                                                         | waarde            |
-    | datum ontbinding huwelijk/geregistreerd partnerschap (07.10) | <datum partner 1> |
-    En de persoon heeft een 'partner' met de volgende 'naam' gegevens
-    | naam                  | waarde |
-    | voorvoegsel (02.30)   |        |
-    | geslachtsnaam (02.40) | Roodt  |
-    En de 'partner' heeft de volgende 'aangaanHuwelijkPartnerschap' gegevens
-    | naam                                                               | waarde   |
-    | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 19610422 |
-    En de 'partner' heeft de volgende 'ontbindingHuwelijkPartnerschap' gegevens
-    | naam                                                         | waarde            |
-    | datum ontbinding huwelijk/geregistreerd partnerschap (07.10) | <datum partner 2> |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 999992934                       |
-    | fields              | naam.aanhef                     |
-    Dan heeft de response een persoon met de volgende 'naam' gegevens
-    | naam   | waarde                    |
-    | aanhef | Geachte mevrouw Roodt-Wit |
-
-    Voorbeelden:
-    | datum partner 1 | datum partner 2 |
-    | 19601001        | 20061014        |
-    | 19601000        | 20061014        |
-    | 19600000        | 20061014        |
-    | 00000000        | 20061014        |
-    | 20061000        | 20061014        |
-    | 20060000        | 20061000        |
-
-  Scenario: meerdere ontbonden relaties en oudste relatie is het laatst ontbonden
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                        | waarde    |
-    | burgerservicenummer         | 999992934 |
-    | geslachtsaanduiding (04.10) | V         |
-    En de persoon heeft de volgende 'naam' gegevens
-    | naam                           | waarde |
-    | voorvoegsel (02.30)            |        |
-    | geslachtsnaam (02.40)          | Wit    |
-    | voornamen (02.10)              | Jan    |
-    | aanduiding naamgebruik (61.10) | V      |
-    En de persoon heeft een 'partner' met de volgende 'naam' gegevens
-    | naam                  | waarde |
-    | voorvoegsel (02.30)   |        |
-    | geslachtsnaam (02.40) | Zwart  |
-    En de 'partner' heeft de volgende 'aangaanHuwelijkPartnerschap' gegevens
-    | naam                                                               | waarde   |
-    | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 19580401 |
-    En de 'partner' heeft de volgende 'ontbindingHuwelijkPartnerschap' gegevens
-    | naam                                                         | waarde   |
-    | datum ontbinding huwelijk/geregistreerd partnerschap (07.10) | 20061001 |
-    En de persoon heeft een 'partner' met de volgende 'naam' gegevens
-    | naam                  | waarde |
-    | voorvoegsel (02.30)   |        |
-    | geslachtsnaam (02.40) | Blaauw |
-    En de 'partner' heeft de volgende 'aangaanHuwelijkPartnerschap' gegevens
-    | naam                                                               | waarde   |
-    | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 19610422 |
-    En de 'partner' heeft de volgende 'ontbindingHuwelijkPartnerschap' gegevens
-    | naam                                                         | waarde   |
-    | datum ontbinding huwelijk/geregistreerd partnerschap (07.10) | 19831014 |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 999992934                       |
-    | fields              | naam.aanhef                     |
-    Dan heeft de response een persoon met de volgende 'naam' gegevens
-    | naam   | waarde                    |
-    | aanhef | Geachte mevrouw Zwart-Wit |
 
 Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van de persoon wordt gebruikt, wordt aanhef niet opgenomen
   De aanhef wordt niet opgenomen in het antwoord wanneer aan alle volgende condities is voldaan:

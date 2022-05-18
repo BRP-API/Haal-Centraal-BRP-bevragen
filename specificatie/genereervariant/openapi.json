@@ -2349,7 +2349,7 @@
             "type" : "string"
           }
         },
-        "description" : "Gegevens over een gesloten huwelijk/geregistreerd partnerschap van de persoon.\n",
+        "description" : "Gegevens over het actuele of het laatst ontbonden huwelijk/geregistreerd partnerschap van de persoon.\n",
         "discriminator" : {
           "propertyName" : "type",
           "mapping" : {
@@ -2384,6 +2384,9 @@
             },
             "aangaanHuwelijkPartnerschap" : {
               "$ref" : "#/components/schemas/AangaanHuwelijkPartnerschap"
+            },
+            "ontbindingHuwelijkPartnerschap" : {
+              "$ref" : "#/components/schemas/OntbindingHuwelijkPartnerschapBasis"
             }
           },
           "description" : "* **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n* **soortVerbintenis** - Wordt gevuld op basis van de waarden die voorkomen in de tabel  \"Soort_Verbintenis\" uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
@@ -2440,6 +2443,34 @@
               "type" : "boolean"
             },
             "plaats" : {
+              "type" : "boolean"
+            }
+          }
+        } ]
+      },
+      "OntbindingHuwelijkPartnerschapBasis" : {
+        "type" : "object",
+        "properties" : {
+          "indicatieHuwelijkPartnerschapBeeindigd" : {
+            "type" : "boolean"
+          },
+          "datum" : {
+            "$ref" : "#/components/schemas/AbstractDatum"
+          },
+          "inOnderzoek" : {
+            "$ref" : "#/components/schemas/OntbindingHuwelijkPartnerschapBasisInOnderzoek"
+          }
+        },
+        "description" : "Gegevens over de ontbinding van het huwelijk of het geregistreerd partnerschap.\n* **datum** : De datum waarop het huwelijk of het partnerschap is ontbonden.\n"
+      },
+      "OntbindingHuwelijkPartnerschapBasisInOnderzoek" : {
+        "description" : "Geeft aan welke gegevens over het onbinden van het huwelijk of aangaan van het partnerschap in onderzoek zijn.\nZie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/InOnderzoek"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "datum" : {
               "type" : "boolean"
             }
           }

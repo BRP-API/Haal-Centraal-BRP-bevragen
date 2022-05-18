@@ -1790,7 +1790,7 @@ components:
         type:
           type: string
       description: |
-        Gegevens over een gesloten huwelijk/geregistreerd partnerschap van de persoon.
+        Gegevens over het actuele of het laatst ontbonden huwelijk/geregistreerd partnerschap van de persoon.
       discriminator:
         propertyName: type
         mapping:
@@ -1815,9 +1815,8 @@ components:
             $ref: '#/components/schemas/PartnerInOnderzoek'
           aangaanHuwelijkPartnerschap:
             $ref: '#/components/schemas/AangaanHuwelijkPartnerschap'
-        description: |
-          * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-          * **soortVerbintenis** - Wordt gevuld op basis van de waarden die voorkomen in de tabel  "Soort_Verbintenis" uit de Haal-Centraal-BRP-tabellen-bevragen API.
+          ontbindingHuwelijkPartnerschap:
+            $ref: '#/components/schemas/OntbindingHuwelijkPartnerschapBasis'
     PartnerInOnderzoek:
       description: |
         Geeft aan welke gegevens over het huwelijk of het partnerschap in onderzoek zijn.
@@ -1861,6 +1860,28 @@ components:
           land:
             type: boolean
           plaats:
+            type: boolean
+    OntbindingHuwelijkPartnerschapBasis:
+      type: object
+      properties:
+        indicatieHuwelijkPartnerschapBeeindigd:
+          type: boolean
+        datum:
+          $ref: '#/components/schemas/AbstractDatum'
+        inOnderzoek:
+          $ref: '#/components/schemas/OntbindingHuwelijkPartnerschapBasisInOnderzoek'
+      description: |
+        Gegevens over de ontbinding van het huwelijk of het geregistreerd partnerschap.
+        * **datum** : De datum waarop het huwelijk of het partnerschap is ontbonden.
+    OntbindingHuwelijkPartnerschapBasisInOnderzoek:
+      description: |
+        Geeft aan welke gegevens over het onbinden van het huwelijk of aangaan van het partnerschap in onderzoek zijn.
+        Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      allOf:
+      - $ref: '#/components/schemas/InOnderzoek'
+      - type: object
+        properties:
+          datum:
             type: boolean
     PartnerOnbekend:
       allOf:
