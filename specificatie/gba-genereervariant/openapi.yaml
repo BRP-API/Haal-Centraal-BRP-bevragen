@@ -874,7 +874,8 @@ components:
       type: object
       properties:
         aanduidingBijzonderNederlanderschap:
-          $ref: '#/components/schemas/Waardetabel'
+          pattern: ^(B|V)$
+          type: string
         datumIngangGeldigheid:
           $ref: '#/components/schemas/GbaDatum'
         nationaliteit:
