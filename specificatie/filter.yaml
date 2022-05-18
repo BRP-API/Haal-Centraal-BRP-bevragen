@@ -5,23 +5,14 @@ info:
   contact: {}
 paths: {}
 components:
-  parameters:
-    Fields:
-      name: fields
-      in: query
-      required: true
-      schema:
-        $ref: '#/components/schemas/Fields'
-
   schemas:
-    Fields:
+    Field:
       description: |
-          Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een door komma's gescheiden lijst van property namen op te geven.
-          Bij opgave van niet-bestaande properties wordt een 400 Bad Request teruggegeven. Wanneer de fields parameter niet is opgegeven, worden alle properties met een waarde teruggegeven.
+          Bij opgave van paden die verwijzen naar niet-bestaande velden wordt een 400 Bad Request teruggegeven.
           Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature)
       type: string
-      pattern: ^[a-zA-Z0-9\.,_]+$
-      maxLength: 924
+      pattern: ^[a-zA-Z0-9\._]+$
+      maxLength: 200
     GeslachtFilter:
       description: |
         Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.

@@ -1,0 +1,100 @@
+openapi: 3.0.3
+info:
+  title: Adressering definities
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  schemas:
+    Aanhef:
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,650}$
+      description: |
+        Kun je gebruiken als aanhef in een brief gericht aan persoon.
+      example: "Hoogwelgeboren heer"
+    Aanschrijfwijze:
+      type: object
+      description: |
+        Samengestelde naam en aanspreekvorm die je kunt gebruiken in de communicatie met de persoon.
+      properties:
+        naam:
+          type: string
+          pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,650}$
+          example: "H.W. baron van den Aedel"
+        aanspreekvorm:
+          description: |
+            Deze regel moet als aparte regel boven de samengestelde naam worden geplaatst. Komt alleen voor bij personen met een adellijke titel of predicaat.
+          type: string
+          pattern: ^[a-zA-Z ]{1,25}$
+          example: "De hoogwelgeboren heer"
+    Adresregel1:
+      type: string
+      maxLength: 40
+      description: |
+        Het eerste deel van een adres is een combinatie van de straat en huisnummer.
+      # example: "1600 Pennsylvania Avenue NW"
+      example: "Laan van de landinrichtingscommissie Duiven-Westervoort 26A-3"
+    Adresregel2:
+      type: string
+      maxLength: 50
+      description: |
+        Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode.
+      # example: "Washington, DC 20500"
+      example: "1234AA Nootdorp"
+    Adresregel3:
+      type: string
+      maxLength: 35
+      description: |
+        Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.
+      example: "Selangor"
+    GebruikInLopendeTekst:
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,650}$
+      description: |
+        Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert.
+      example: "baron Van den Aedel"
+    AdresseringBeperkt:
+      type: "object"
+      description: ""
+      properties:
+        adresregel1:
+          $ref: "#/components/schemas/Adresregel1"
+        adresregel2:
+          $ref: "#/components/schemas/Adresregel2"
+        adresregel3:
+          $ref: "#/components/schemas/Adresregel3"
+        land:
+          $ref: "common.yaml#/components/schemas/Waardetabel"
+    Adressering:
+      allOf:
+        - $ref: "#/components/schemas/AdresseringBeperkt"
+        - properties:
+            aanhef:
+              $ref: "#/components/schemas/Aanhef"
+            aanschrijfwijze:
+              $ref: "#/components/schemas/Aanschrijfwijze"
+            gebruikInLopendeTekst:
+              $ref: "#/components/schemas/GebruikInLopendeTekst"
+            inOnderzoek:
+              $ref: "#/components/schemas/AdresseringInOnderzoek"
+    AdresseringInOnderzoek:
+      description: |
+        Geeft aan welke gegevens over de adressering in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            aanhef:
+              type: boolean
+            adresregel1:
+              type: boolean
+            adresregel2:
+              type: boolean
+            adresregel3:
+              type: boolean
+            land:
+              type: boolean
+            aanschrijfwijze:
+              type: boolean
+            gebruikInLopendeTekst:
+              type: boolean
