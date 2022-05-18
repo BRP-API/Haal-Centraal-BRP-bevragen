@@ -12,6 +12,11 @@ De API wordt nog niet door RvIG aangeboden. Om de migratie naar API's te versnel
 
 De laatste versie is 1.3.1. Lees de [release notes](releasenotes.md) om te zien wat er gewijzigd is.
 
+Naast versie 2.0 beta (API-Lab) is ook versie 2.0 (IO) gepubliceerd.
+Versie 2.0 beta (API-Lab) is de versie die is gebruikt tijdens het API-Lab van 7 april j.l. Lees de [Getting started](./getting-started-v2-beta).<br/>
+started om de API Lab proefomgeving te bevragen.
+Versie 2.0 (IO) is de versie waarmee de pilot wordt gestart. <!--Lees de [Getting started](./getting-started-v2-proxy) voor informatie over het gebruik van de proxy applicatie voor fase 1 van de pilot.-->
+
 ## Direct uitproberen?
 * Bekijk de specificaties met [Swagger UI](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/swagger-ui) of [Redoc](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/redoc)
 * Lees de [Getting started](./getting-started)
