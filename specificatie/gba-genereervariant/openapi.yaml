@@ -547,8 +547,10 @@ components:
           $ref: '#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: '#/components/schemas/GbaInOnderzoek'
-        kiesrecht:
-          $ref: '#/components/schemas/GbaKiesrecht'
+        uitsluitingKiesrecht:
+          $ref: '#/components/schemas/GbaUitsluitingKiesrecht'
+        europeesKiesrecht:
+          $ref: '#/components/schemas/GbaEuropeesKiesrecht'
         naam:
           $ref: '#/components/schemas/GbaNaamPersoon'
         nationaliteiten:
@@ -829,20 +831,23 @@ components:
           type: string
         datumIngangOnderzoek:
           $ref: '#/components/schemas/GbaDatum'
-    GbaKiesrecht:
+    GbaUitsluitingKiesrecht:
       type: object
       properties:
-        europeesKiesrecht:
+        uitgeslotenVanKiesrecht:
+          type: boolean
+          example: true
+        einddatum:
+          $ref: '#/components/schemas/GbaDatum'
+    GbaEuropeesKiesrecht:
+      type: object
+      properties:
+        aanduiding:
           type: boolean
           description: |
             Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement.
           example: true
-        uitgeslotenVanKiesrecht:
-          type: boolean
-          example: true
-        einddatumUitsluitingEuropeesKiesrecht:
-          $ref: '#/components/schemas/GbaDatum'
-        einddatumUitsluitingKiesrecht:
+        einddatumUitsluiting:
           $ref: '#/components/schemas/GbaDatum'
     GbaNaamPersoon:
       allOf:
