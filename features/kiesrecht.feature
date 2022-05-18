@@ -90,23 +90,22 @@ Rule: Uitsluiting van Europees kiesrecht wordt alleen opgenomen wanneer de eindd
 		Dan bevat de persoon met burgerservicenummer '999990001' de volgende 'europeesKiesrecht' gegevens
 		| naam                             | waarde                 |
 		| aanduiding                       | <aanduiding>           |
-		| einddatumUitsluiting.type        | <type>                 |
-		| einddatumUitsluiting.datum.datum | <einddatumUitsluiting> |
+		| einddatumUitsluiting | <einddatumUitsluiting> |
 
 		Voorbeelden:
-		| omschrijving                       | Europees kiesrecht | einddatum uitsluiting | aanduiding | type           | einddatumUitsluiting |
-		| niet opgegeven                     |                    |                       |            |                |                      |
-		| uitgesloten zonder einddatum       | false              |                       | false      |                |                      |
-		| einddatum uitsluiting in toekomst  | false              | 20300101              | false      | GbaDatum       | 20300101             |
-		| einddatum uitsluiting in verleden  | false              | 20220301              |            |                |                      |
-		| einddatum uitsluiting vandaag      | false              | 20220315              |            |                |                      |
-		| einddatum uitsluiting morgen       | false              | 20300316              | false      | GbaDatum       | 20300316             |
-		| einddatum uitsluiting vorige maand | false              | 20220200              |            |                |                      |
-		| einddatum uitsluiting deze maand   | false              | 20220300              | false      | GbaDatum       | 20220300             |
-		| einddatum uitsluiting vorig jaar   | false              | 20210000              |            |                |                      |
-		| einddatum uitsluiting dit jaar     | false              | 20220000              | false      | GbaDatum       | 20220000             |
-		| einddatum uitsluiting onbekend     | false              | 00000000              | false      | GbaDatum       | 00000000             |
-		| persoon ontvangt oproep            | true               |                       | true       |                |                      |
+		| omschrijving                       | Europees kiesrecht | einddatum uitsluiting | aanduiding | einddatumUitsluiting |
+		| niet opgegeven                     |                    |                       |            |                      |
+		| uitgesloten zonder einddatum       | false              |                       | false      |                      |
+		| einddatum uitsluiting in toekomst  | false              | 20300101              | false      | 20300101             |
+		| einddatum uitsluiting in verleden  | false              | 20220301              |            |                      |
+		| einddatum uitsluiting vandaag      | false              | 20220315              |            |                      |
+		| einddatum uitsluiting morgen       | false              | 20300316              | false      | 20300316             |
+		| einddatum uitsluiting vorige maand | false              | 20220200              |            |                      |
+		| einddatum uitsluiting deze maand   | false              | 20220300              | false      | 20220300             |
+		| einddatum uitsluiting vorig jaar   | false              | 20210000              |            |                      |
+		| einddatum uitsluiting dit jaar     | false              | 20220000              | false      | 20220000             |
+		| einddatum uitsluiting onbekend     | false              | 00000000              | false      | 00000000             |
+		| persoon ontvangt oproep            | true               |                       | true       |                      |
 
 @gba
 Rule: Uitsluiting van kiesrecht wordt alleen opgenomen wanneer de einddatum uitsluiting in de toekomst ligt
@@ -133,19 +132,18 @@ Rule: Uitsluiting van kiesrecht wordt alleen opgenomen wanneer de einddatum uits
 		Dan bevat de persoon met burgerservicenummer '999990001' de volgende 'uitsluitingKiesrecht' gegevens
 		| naam                    | waarde                    |
 		| uitgeslotenVanKiesrecht | <uitgeslotenVanKiesrecht> |
-		| einddatum.datum.type    | <type>                    |
-		| einddatum.datum.datum   | <einddatum>               |
+		| einddatum               | <einddatum>               |
 
 		Voorbeelden:
-		| omschrijving                       | uitsluiting kiesrecht | einddatum uitsluiting | uitgeslotenVanKiesrecht | type           | einddatum  |
-		| niet opgegeven                     |                       |                       |                         |                |            |
-		| uitgesloten zonder einddatum       | true                  |                       | true                    |                |            |
-		| einddatum uitsluiting in toekomst  | true                  | 20300101              | true                    | GbaDatum       | 20300101   |
-		| einddatum uitsluiting in verleden  | true                  | 20220301              |                         |                |            |
-		| einddatum uitsluiting vandaag      | true                  | 20220315              |                         |                |            |
-		| einddatum uitsluiting morgen       | true                  | 20300316              | true                    | GbaDatum       | 20300316   |
-		| einddatum uitsluiting vorige maand | true                  | 20220200              |                         |                |            |
-		| einddatum uitsluiting deze maand   | true                  | 20220300              | true                    | GbaDatum       | 20220300   |
-		| einddatum uitsluiting vorig jaar   | true                  | 20210000              |                         |                |            |
-		| einddatum uitsluiting dit jaar     | true                  | 20220000              | true                    | GbaDatum       | 20220000   | 
-		| einddatum uitsluiting onbekend     | true                  | 00000000              | true                    | GbaDatum       | 00000000   |
+		| omschrijving                       | uitsluiting kiesrecht | einddatum uitsluiting | uitgeslotenVanKiesrecht | einddatum  |
+		| niet opgegeven                     |                       |                       |                         |            |
+		| uitgesloten zonder einddatum       | true                  |                       | true                    |            |
+		| einddatum uitsluiting in toekomst  | true                  | 20300101              | true                    | 20300101   |
+		| einddatum uitsluiting in verleden  | true                  | 20220301              |                         |            |
+		| einddatum uitsluiting vandaag      | true                  | 20220315              |                         |            |
+		| einddatum uitsluiting morgen       | true                  | 20300316              | true                    | 20300316   |
+		| einddatum uitsluiting vorige maand | true                  | 20220200              |                         |            |
+		| einddatum uitsluiting deze maand   | true                  | 20220300              | true                    | 20220300   |
+		| einddatum uitsluiting vorig jaar   | true                  | 20210000              |                         |            |
+		| einddatum uitsluiting dit jaar     | true                  | 20220000              | true                    | 20220000   |
+		| einddatum uitsluiting onbekend     | true                  | 00000000              | true                    | 00000000   |
