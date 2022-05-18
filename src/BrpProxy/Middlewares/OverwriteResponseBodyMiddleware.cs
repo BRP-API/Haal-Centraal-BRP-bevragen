@@ -139,7 +139,7 @@ namespace BrpProxy.Middlewares
             var invalidParams = from error in result.Errors
                                 select new InvalidParams
                                 {
-                                    Name = "fields",
+                                    Name = error.PropertyName.ToLowerInvariant(),
                                     Code = error.ErrorMessage.Split("||")[0],
                                     Reason = error.ErrorMessage.Split("||")[1]
                                 };

@@ -13,7 +13,9 @@ public class RaadpleegMetBurgerservicenummerQueryValidator : AbstractValidator<R
         RuleFor(x => x.Fields)
             .Cascade(CascadeMode.Stop)
             .NotNull().WithMessage(RequiredErrorMessage)
-            .Must(x => x.Count > 0).WithMessage(string.Format(MinItemsErrorMessage, 1))
+            .Must(x => x.Count > 0).WithMessage(string.Format(MinItemsErrorMessage, 1));
+
+        RuleForEach(x => x.Fields)
             .SetValidator(new PersoonFieldsValidator(fieldsHelper));
     }
 }
