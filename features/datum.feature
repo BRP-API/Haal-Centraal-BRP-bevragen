@@ -192,41 +192,41 @@ Functionaliteit: leveren van een datum
       | <veld>.langFormaat | <langFormaat> |
 
       Voorbeelden:
-      | groep          | veld                        | type           | GbaDatum | datum      | jaar | maand | onbekend | langFormaat  |
-      | verblijfplaats | datumInschrijvingInGemeente | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
-      | verblijfplaats | datumInschrijvingInGemeente | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
-      | verblijfplaats | datumInschrijvingInGemeente | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
-      | verblijfplaats | datumInschrijvingInGemeente | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | veld                        | type           | GbaDatum | datum      | jaar | maand | onbekend | langFormaat  |
+      | datumInschrijvingInGemeente | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | datumInschrijvingInGemeente | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | datumInschrijvingInGemeente | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | datumInschrijvingInGemeente | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
 
-    Abstract Scenario: <type> in verblijfplaats <veld>
+    Abstract Scenario: <type> in verblijfplaats datumIngangGeldigheid
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550001 |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
-      | naam               | waarde     |
-      | straatnaam (11.10) | een straat |
-      | <veld>             | <GbaDatum> |
+      | naam                  | waarde     |
+      | straatnaam (11.10)    | een straat |
+      | datumIngangGeldigheid | <GbaDatum> |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
-      | fields              | verblijfplaats.<veld>           |
+      | naam                | waarde                               |
+      | type                | RaadpleegMetBurgerservicenummer      |
+      | burgerservicenummer | 555550001                            |
+      | fields              | verblijfplaats.datumIngangGeldigheid |
       Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-      | naam               | waarde        |
-      | type               | Adres         |
-      | <veld>.type        | <type>        |
-      | <veld>.datum       | <datum>       |
-      | <veld>.jaar        | <jaar>        |
-      | <veld>.maand       | <maand>       |
-      | <veld>.onbekend    | <onbekend>    |
-      | <veld>.langFormaat | <langFormaat> |
+      | naam                              | waarde        |
+      | type                              | Adres         |
+      | datumIngangGeldigheid.type        | <type>        |
+      | datumIngangGeldigheid.datum       | <datum>       |
+      | datumIngangGeldigheid.jaar        | <jaar>        |
+      | datumIngangGeldigheid.maand       | <maand>       |
+      | datumIngangGeldigheid.onbekend    | <onbekend>    |
+      | datumIngangGeldigheid.langFormaat | <langFormaat> |
 
       Voorbeelden:
-      | groep          | veld                  | type           | GbaDatum | datum      | jaar | maand | onbekend | langFormaat  |
-      | verblijfplaats | datumIngangGeldigheid | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
-      | verblijfplaats | datumIngangGeldigheid | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
-      | verblijfplaats | datumIngangGeldigheid | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
-      | verblijfplaats | datumIngangGeldigheid | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | type           | GbaDatum | datum      | jaar | maand | onbekend | langFormaat  |
+      | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
 
     Abstract Scenario: <type> in inOnderzoek datumIngangOnderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
