@@ -8,35 +8,6 @@ Functionaliteit: Kiesrecht
 	De actuele situatie wordt getoond. Als een uitsluiting in het verleden ligt, Dan wordt die uitsluiting niet opgenomen in de API.
 
 @gba
-Rule: Europees Kiesrecht (31.10) wordt geleverd als boolean
-	- waarde 1 (= persoon is uitgesloten) wordt geleverd als boolean waarde false
-	- waarde 2 (= persoon ontvangt oproep) wordt geleverd als boolean waarde true
-
-	@gba
-	Abstract Scenario: Europees kiesrecht <Europees kiesrecht> vertaald naar boolean
-	  Gegeven het systeem heeft een persoon met de volgende gegevens
-		| naam                        | waarde     |
-		| burgerservicenummer         | 999990001  |
-		En de persoon heeft de volgende kiesrecht gegevens
-		| Europees kiesrecht (31.10)                       | <Europees kiesrecht> |
-		| einddatum uitsluiting Europees kiesrecht (31.30) | 20300101             |
-		Als de persoon op 15 maart 2022 wordt geraadpleegd met de volgende parameters
-		| naam                | waarde                          |
-		| type                | RaadpleegMetBurgerservicenummer |
-		| burgerservicenummer | 999990001                       |
-		| fields              | europeesKiesrecht                       |
-		Dan bevat de persoon met burgerservicenummer '999990001' de volgende 'europeesKiesrecht' gegevens
-		| naam                 | waarde              |
-		| aanduiding           | <aanduiding>        |
-		| einddatumUitsluiting | 2030-01-01          |
-
-		Voorbeelden:
-		| Europees kiesrecht | aanduiding |
-		| 1                  | false      |
-		| 2                  | true       |
-		|                    |            |
-
-@gba
 Rule: Aanduiding uitgesloten kiesrecht (38.10) wordt geleverd als boolean
 	- waarde "A" wordt geleverd als boolean waarde true
 
@@ -88,24 +59,25 @@ Rule: Uitsluiting van Europees kiesrecht wordt alleen opgenomen wanneer de eindd
 		| burgerservicenummer | 999990001                       |
 		| fields              | europeesKiesrecht                       |
 		Dan bevat de persoon met burgerservicenummer '999990001' de volgende 'europeesKiesrecht' gegevens
-		| naam                             | waarde                 |
-		| aanduiding                       | <aanduiding>           |
-		| einddatumUitsluiting | <einddatumUitsluiting> |
+		| naam                             | waarde                    |
+		| aanduiding.code                  | <aanduiding.code          |
+		| aanduiding.omschrijving          | omschrijving.omschrijving |
+		| einddatumUitsluiting             | <einddatumUitsluiting>    |
 
 		Voorbeelden:
-		| omschrijving                       | Europees kiesrecht | einddatum uitsluiting | aanduiding | einddatumUitsluiting |
-		| niet opgegeven                     |                    |                       |            |                      |
-		| uitgesloten zonder einddatum       | false              |                       | false      |                      |
-		| einddatum uitsluiting in toekomst  | false              | 20300101              | false      | 20300101             |
-		| einddatum uitsluiting in verleden  | false              | 20220301              |            |                      |
-		| einddatum uitsluiting vandaag      | false              | 20220315              |            |                      |
-		| einddatum uitsluiting morgen       | false              | 20300316              | false      | 20300316             |
-		| einddatum uitsluiting vorige maand | false              | 20220200              |            |                      |
-		| einddatum uitsluiting deze maand   | false              | 20220300              | false      | 20220300             |
-		| einddatum uitsluiting vorig jaar   | false              | 20210000              |            |                      |
-		| einddatum uitsluiting dit jaar     | false              | 20220000              | false      | 20220000             |
-		| einddatum uitsluiting onbekend     | false              | 00000000              | false      | 00000000             |
-		| persoon ontvangt oproep            | true               |                       | true       |                      |
+		| omschrijving                       | Europees kiesrecht | einddatum uitsluiting | aanduiding.code | aanduiding.omschrijving | einddatumUitsluiting |
+		| niet opgegeven                     |                    |                       |                 |                         |                      |
+		| uitgesloten zonder einddatum       | 1                  |                       | 1               | persoon is uitgesloten  |                      |
+		| einddatum uitsluiting in toekomst  | 1                  | 20300101              | 1               | persoon is uitgesloten  | 20300101             |
+		| einddatum uitsluiting in verleden  | 1                  | 20220301              |                 |                         |                      |
+		| einddatum uitsluiting vandaag      | 1                  | 20220315              |                 |                         |                      |
+		| einddatum uitsluiting morgen       | 1                  | 20300316              | 1               | persoon is uitgesloten  | 20300316             |
+		| einddatum uitsluiting vorige maand | 1                  | 20220200              |                 |                         |                      |
+		| einddatum uitsluiting deze maand   | 1                  | 20220300              | 1               | persoon is uitgesloten  | 20220300             |
+		| einddatum uitsluiting vorig jaar   | 1                  | 20210000              |                 |                         |                      |
+		| einddatum uitsluiting dit jaar     | 1                  | 20220000              | 1               | persoon is uitgesloten  | 20220000             |
+		| einddatum uitsluiting onbekend     | 1                  | 00000000              | 1               | persoon is uitgesloten  | 00000000             |
+		| persoon ontvangt oproep            | 2                  |                       | 2               | persoon ontvangt oproep |                      |
 
 @gba
 Rule: Uitsluiting van kiesrecht wordt alleen opgenomen wanneer de einddatum uitsluiting in de toekomst ligt
