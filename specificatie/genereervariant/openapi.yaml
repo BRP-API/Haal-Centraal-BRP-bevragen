@@ -1817,6 +1817,9 @@ components:
             $ref: '#/components/schemas/AangaanHuwelijkPartnerschap'
           ontbindingHuwelijkPartnerschap:
             $ref: '#/components/schemas/OntbindingHuwelijkPartnerschapBasis'
+        description: |
+          * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+          * **soortVerbintenis** - Wordt gevuld op basis van de waarden die voorkomen in de tabel  "Soort_Verbintenis" uit de Haal-Centraal-BRP-tabellen-bevragen API.
     PartnerInOnderzoek:
       description: |
         Geeft aan welke gegevens over het huwelijk of het partnerschap in onderzoek zijn.
