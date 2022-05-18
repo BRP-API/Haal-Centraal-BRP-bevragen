@@ -218,7 +218,6 @@ Functionaliteit: in onderzoek
       | 081310 | land                      | verblijfplaats   |
       | 081350 | adresregel3               | verblijfplaats   |
       | 103910 | aanduiding                | verblijfstitel   |
-      | 113310 | indicatieCurateleRegister | gezagsverhouding |
 
     Scenario: persoon heeft <veld> van ouder in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
