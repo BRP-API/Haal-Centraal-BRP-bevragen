@@ -7,6 +7,12 @@ services:
       - ACCEPT_EULA=Y
     ports:
       - 5341:80
+  jaeger:
+    image: jaegertracing/opentelemetry-all-in-one:latest
+    ports:
+      - 13133:13133
+      - 16686:16686
+      - 4317:55680
   brpproxy:
     image: ${DOCKER_REGISTRY-}brpproxy
     build:

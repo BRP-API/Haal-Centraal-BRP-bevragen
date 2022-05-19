@@ -2,6 +2,8 @@ using BrpProxy.Middlewares;
 using BrpProxy.Validators;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 using Serilog;
 using Serilog.Enrichers.Span;
 using Serilog.Exceptions;
@@ -18,6 +20,20 @@ builder.Host.UseSerilog((context, config) =>
         .Enrich.FromLogContext()
         .Enrich.With<ActivityEnricher>()
         .WriteTo.Seq(context.Configuration["Seq:ServerUrl"]);
+});
+
+builder.Services.AddOpenTelemetryTracing(b =>
+{
+    b.AddConsoleExporter()
+        .AddSource(builder.Environment.ApplicationName)
+        .SetResourceBuilder(ResourceBuilder.CreateDefault()
+                                            .AddService(builder.Environment.ApplicationName))
+        .AddHttpClientInstrumentation()
+        .AddAspNetCoreInstrumentation()
+        .AddOtlpExporter(opts =>
+        {
+            opts.Endpoint = new Uri(builder.Configuration["Jaeger:OtlpEndpoint"]);
+        });
 });
 
 builder.Configuration.AddJsonFile(Path.Combine("configuration", "ocelot.json"));
