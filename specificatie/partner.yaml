@@ -6,19 +6,6 @@ info:
 paths: {}
 components:
   schemas:
-    AbstractPartner:
-      type: object
-      description: |
-        Gegevens over een gesloten huwelijk/geregistreerd partnerschap van de persoon.
-      required:
-        - type
-      properties:
-        type:
-          type: string
-      discriminator:
-        propertyName: type
-        mapping:
-          Partner: '#/components/schemas/Partner'
     GbaPartner:
       type: object
       properties:
@@ -39,24 +26,22 @@ components:
         ontbindingHuwelijkPartnerschap:
           $ref: "#/components/schemas/GbaOntbindingHuwelijkPartnerschap"
     Partner:
-      allOf:
-        - $ref: '#/components/schemas/AbstractPartner'
-        - type: object
-          properties:
-            burgerservicenummer:
-              $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
-            geslacht:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
-            soortVerbintenis:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
-            naam:
-              $ref: 'naam.yaml#/components/schemas/NaamGerelateerde'
-            geboorte:
-              $ref: 'geboorte.yaml#/components/schemas/Geboorte'
-            inOnderzoek:
-              $ref: '#/components/schemas/PartnerInOnderzoek'
-            aangaanHuwelijkPartnerschap:
-              $ref: '#/components/schemas/AangaanHuwelijkPartnerschap'
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
+        geslacht:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        soortVerbintenis:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        naam:
+          $ref: 'naam.yaml#/components/schemas/NaamGerelateerde'
+        geboorte:
+          $ref: 'geboorte.yaml#/components/schemas/Geboorte'
+        inOnderzoek:
+          $ref: '#/components/schemas/PartnerInOnderzoek'
+        aangaanHuwelijkPartnerschap:
+          $ref: '#/components/schemas/AangaanHuwelijkPartnerschap'
     PartnerInOnderzoek:
       description: |
         Geeft aan welke gegevens over het huwelijk of het partnerschap in onderzoek zijn.

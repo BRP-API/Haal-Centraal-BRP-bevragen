@@ -10,19 +10,6 @@ components:
       type: string
       pattern: ^[1|2]$
       example: "1"
-    AbstractOuder:
-      type: object
-      description: |
-        Gegevens over de ouder van de persoon.
-      required:
-        - type
-      properties:
-        type:
-          type: string
-      discriminator:
-        propertyName: type
-        mapping:
-          Ouder: '#/components/schemas/Ouder'
     GbaOuder:
       type: object
       description: |
@@ -48,24 +35,22 @@ components:
         Gegevens over de ouder van de persoon.
         * **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.
         * **geslacht** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-      allOf:
-        - $ref: '#/components/schemas/AbstractOuder'
-        - type: object
-          properties:
-            burgerservicenummer:
-              $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
-            geslacht:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
-            ouderAanduiding:
-              $ref: '#/components/schemas/OuderAanduiding'
-            datumIngangFamilierechtelijkeBetrekking:
-              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-            naam:
-              $ref: 'naam.yaml#/components/schemas/NaamGerelateerde'
-            inOnderzoek:
-              $ref: '#/components/schemas/OuderInOnderzoek'
-            geboorte:
-              $ref: 'geboorte.yaml#/components/schemas/Geboorte'
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
+        geslacht:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        ouderAanduiding:
+          $ref: '#/components/schemas/OuderAanduiding'
+        datumIngangFamilierechtelijkeBetrekking:
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+        naam:
+          $ref: 'naam.yaml#/components/schemas/NaamGerelateerde'
+        inOnderzoek:
+          $ref: '#/components/schemas/OuderInOnderzoek'
+        geboorte:
+          $ref: 'geboorte.yaml#/components/schemas/Geboorte'
     OuderInOnderzoek:
       description: |
         Geeft aan welke gegevens van de de ouder in onderzoek zijn.
