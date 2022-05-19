@@ -114,8 +114,11 @@ public class FilterTests
             },
             Verblijfplaats = new Adres
             {
-                Postcode = "2628HJ",
-                Huisnummer = 2
+                Verblijfadres = new VerblijfadresBinnenland
+                {
+                    Postcode = "2628HJ",
+                    Huisnummer = 2
+                }
             }
         },
         new Persoon
@@ -369,23 +372,29 @@ public class FilterTests
         {
             Verblijfplaats = new VerblijfplaatsBuitenland
             {
-                Land = new Waardetabel
+                Verblijfadres = new VerblijfadresBuitenland
                 {
-                    Code = "1234",
-                    Omschrijving = "een land"
+                    Land = new Waardetabel
+                    {
+                        Code = "1234",
+                        Omschrijving = "een land"
+                    }
                 }
             }
         };
 
-        persoon.Filter(new[] { "verblijfplaats.land.omschrijving", "verblijfplaats.inOnderzoek.land" })!.ToJson()
+        persoon.Filter(new[] { "verblijfplaats.verblijfadres.land.omschrijving", "verblijfplaats.verblijfadres.inOnderzoek.land" })!.ToJson()
             .Should().Be(
             new Persoon
             {
                 Verblijfplaats = new VerblijfplaatsBuitenland
                 {
-                    Land = new Waardetabel
+                    Verblijfadres = new VerblijfadresBuitenland
                     {
-                        Omschrijving = "een land"
+                        Land = new Waardetabel
+                        {
+                            Omschrijving = "een land"
+                        }
                     }
                 }
             }.ToJson());
