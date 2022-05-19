@@ -65,12 +65,12 @@ Functionaliteit: Fields
 
   Rule: De API levert alleen velden die gevraagd zijn met de fields parameter
     - gebruik van de fields parameter is verplicht
-    - een veld wordt gevraagd door de veldnaam op te nemen in fields
-    - vraag meerdere velden door de veldnamen door een komma gescheiden op te nemen
-    - veldnamen zijn case sensitive
+    - een veld wordt gevraagd door het pad van het veld op te nemen in fields
+    - vraag meerdere velden door de veld paden op te nemen in fields
+    - veld paden zijn case sensitive
     - een veld in een groep of collectie kan worden gevraagd door het pad met punt gescheiden op te geven
-    - alle velden van een groep kunnen worden gevraagd door de veldnaam van de groep in fields op te nemen
-    - de volgorde van veldnamen in fields heeft geen invloed op de volgorde van velden in de response
+    - alle velden van een groep kunnen worden gevraagd door het pad van de groep in fields op te nemen
+    - de volgorde van veld paden in fields heeft geen invloed op de volgorde van velden in de response
     - wanneer een gevraagd veld geen waarde heeft voor de persoon, wordt het veld niet opgenomen in de response
 
     Scenario: Raadpleeg met burgerservicenummer: gevraagd veld is een 'root' gegeven van de persoon
