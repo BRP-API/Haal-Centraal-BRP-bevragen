@@ -46,6 +46,8 @@ nav:
         path: /user-stories-dev
       - title: Bevragen API (redoc)
         path: /redoc-io
+      - title: Bevragen API (redoc), GBA variant
+        path: /redoc-gba-io
       - title: Features
         path: /features-v2
 
