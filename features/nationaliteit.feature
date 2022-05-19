@@ -255,8 +255,8 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       | naam                | waarde    |
       | burgerservicenummer | 000009866 |
       En de persoon heeft een 'nationaliteit' met de volgende gegevens
-      | naam                                     | waarde |
-      | aanduidingBijzonderNederlanderschap.code | B      |
+      | naam                               | waarde |
+      | bijzonder Nederlanderschap (65.10) | B      |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -289,8 +289,8 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       | naam                | waarde    |
       | burgerservicenummer | 999994748 |
       En de persoon heeft een 'nationaliteit' met de volgende gegevens
-      | naam                                     | waarde |
-      | aanduidingBijzonderNederlanderschap.code | V      |
+      | naam                               | waarde |
+      | bijzonder Nederlanderschap (65.10) | V      |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -314,5 +314,5 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       | burgerservicenummer | 555550002                       |
       | fields              | nationaliteiten                 |
       Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
-      | naam | waarde                  |
+      | naam | waarde                     |
       | type | VastgesteldNietNederlander |
