@@ -219,9 +219,11 @@ Functionaliteit: Fields
       | naam                | waarde    |
       | burgerservicenummer | 999991929 |
       En heeft de persoon alleen de volgende 'geboorte' gegevens
-      | naam        | waarde     |
-      | datum.type  | Datum      |
-      | datum.datum | 1956-11-15 |
+      | naam              | waarde           |
+      | datum.type        | Datum            |
+      | datum.datum       | 1956-11-15       |
+      | datum.langFormaat | 15 november 1956 |
+
 
       Voorbeelden:
       | pad                  |
