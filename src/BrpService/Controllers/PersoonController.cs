@@ -1,83 +1,89 @@
-﻿using HaalCentraal.BrpService.Generated;
+﻿using AutoMapper;
+using HaalCentraal.BrpService.Generated;
+using HaalCentraal.BrpService.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
-namespace HaalCentraal.BrpService.Controllers
+namespace HaalCentraal.BrpService.Controllers;
+
+[ApiController]
+public class PersoonController : Generated.ControllerBase
 {
-    [ApiController]
-    public class PersoonController : Generated.ControllerBase
+    private readonly ILogger<PersoonController> _logger;
+    private readonly IMapper _mapper;
+    private readonly PersoonRepository _repository;
+    private readonly IWebHostEnvironment _environment;
+
+    public PersoonController(ILogger<PersoonController> logger, IMapper mapper, PersoonRepository repository, IWebHostEnvironment environment)
     {
-        private readonly ILogger<PersoonController> _logger;
-        private readonly IWebHostEnvironment _environment;
+        _logger = logger;
+        _mapper = mapper;
+        _repository = repository;
+        _environment = environment;
+    }
 
-        public PersoonController(ILogger<PersoonController> logger, IWebHostEnvironment environment)
+    public override async Task<ActionResult<PersonenQueryResponse>> GetPersonen([FromBody] PersonenQuery body)
+    {
+        System.IO.File.WriteAllText(Path.Combine(_environment.ContentRootPath, "Data", "requestBody.json"),
+                                    JsonConvert.SerializeObject(body));
+
+        return body switch
         {
-            _logger = logger;
-            _environment = environment;
-        }
+            RaadpleegMetBurgerservicenummer q => await Handle(q),
+            ZoekMetGeslachtsnaamEnGeboortedatum q => await Handle(q),
+            ZoekMetNaamEnGemeenteVanInschrijving q => await Handle(q),
+            ZoekMetPostcodeEnHuisnummer q => await Handle(q),
+            _ => throw new InvalidOperationException($"Onbekend type query: {body}"),
+        };
+    }
 
-        public override async Task<ActionResult<PersonenQueryResponse>> GetPersonen([FromBody] PersonenQuery body)
-        {
-            if (body is RaadpleegMetBurgerservicenummer)
-            {
-                return await Handle(body as RaadpleegMetBurgerservicenummer);
-            }
-            if(body is ZoekMetGeslachtsnaamEnGeboortedatum)
-            {
-                return await Handle(body as ZoekMetGeslachtsnaamEnGeboortedatum);
-            }
-            if(body is ZoekMetGeslachtsnaamEnGemeenteVanInschrijving)
-            {
-                return await Handle(body as ZoekMetGeslachtsnaamEnGemeenteVanInschrijving);
-            }
-            if(body is ZoekMetPostcodeEnHuisnummer)
-            {
-                return await Handle(body as ZoekMetPostcodeEnHuisnummer);
-            }
-            throw new InvalidOperationException($"Onbekend type query: {body}");
-        }
+    private async Task<ActionResult<PersonenQueryResponse>> Handle(ZoekMetPostcodeEnHuisnummer query)
+    {
+        _logger.LogDebug("Request body: {@query}", JsonConvert.SerializeObject(query));
 
-        private async Task<ActionResult<PersonenQueryResponse>> Handle(ZoekMetPostcodeEnHuisnummer query)
-        {
-            _logger.LogInformation("ZoekMetPostcodeEnHuisnummer");
+        var filter = _mapper.Map<ZoekMetPostcodeEnHuisnummerFilter>(query);
 
-            var path = Path.Combine(_environment.ContentRootPath, $"Data/postcode-huisnummer-{query.Postcode}-{query.Huisnummer}.json");
-            var data = await System.IO.File.ReadAllTextAsync(path);
-            var retval = Newtonsoft.Json.JsonConvert.DeserializeObject<PersonenQueryResponse>(data);
+        var retval = await _repository.Zoek<ZoekMetPostcodeEnHuisnummerFilter>(filter);
 
-            return Ok(retval);
-        }
+        _logger.LogDebug("Response: {@response}", JsonConvert.SerializeObject(retval));
 
-        private async Task<ActionResult<PersonenQueryResponse>> Handle(ZoekMetGeslachtsnaamEnGemeenteVanInschrijving query)
-        {
-            _logger.LogInformation("ZoekMetGeslachtsnaamEnGemeenteVanInschrijving");
+        return Ok(retval);
+    }
 
-            var path = Path.Combine(_environment.ContentRootPath, $"Data/geslachtsnaam-gemeente-{query.Geslachtsnaam}-{query.GemeenteVanInschrijving}.json");
-            var data = await System.IO.File.ReadAllTextAsync(path);
-            var retval = Newtonsoft.Json.JsonConvert.DeserializeObject<PersonenQueryResponse>(data);
+    private async Task<ActionResult<PersonenQueryResponse>> Handle(ZoekMetNaamEnGemeenteVanInschrijving query)
+    {
+        _logger.LogDebug("Request body: {@query}", JsonConvert.SerializeObject(query));
 
-            return Ok(retval);
-        }
+        var filter = _mapper.Map<ZoekMetNaamEnGemeenteVanInschrijvingFilter>(query);
 
-        private async Task<ActionResult<PersonenQueryResponse>> Handle(ZoekMetGeslachtsnaamEnGeboortedatum query)
-        {
-            _logger.LogInformation("ZoekMetGeslachtsnaamEnGeboortedatum");
+        var retval = await _repository.Zoek<ZoekMetNaamEnGemeenteVanInschrijvingFilter>(filter);
 
-            var path = Path.Combine(_environment.ContentRootPath, $"Data/geslachtsnaam-geboortedatum-{query.Geslachtsnaam}-{query.Geboortedatum.Value.ToString("yyyy-MM-dd")}.json");
-            var data = await System.IO.File.ReadAllTextAsync(path);
-            var retval = Newtonsoft.Json.JsonConvert.DeserializeObject<PersonenQueryResponse>(data);
+        _logger.LogDebug("Response: {@response}", JsonConvert.SerializeObject(retval));
 
-            return Ok(retval);
-        }
+        return Ok(retval);
+    }
 
-        private async Task<ActionResult<PersonenQueryResponse>> Handle(RaadpleegMetBurgerservicenummer query)
-        {
-            _logger.LogInformation("ZoekMetBurgerservicenummer");
+    private async Task<ActionResult<PersonenQueryResponse>> Handle(ZoekMetGeslachtsnaamEnGeboortedatum query)
+    {
+        _logger.LogDebug("Request body: {@query}", JsonConvert.SerializeObject(query));
 
-            var path = Path.Combine(_environment.ContentRootPath, $"Data/bsn-{string.Join("-", query.Burgerservicenummer)}.json");
-            var data = await System.IO.File.ReadAllTextAsync(path);
-            var retval = Newtonsoft.Json.JsonConvert.DeserializeObject<PersonenQueryResponse>(data);
+        var filter = _mapper.Map<ZoekMetGeslachtsnaamEnGeboortedatumFilter>(query);
 
-            return Ok(retval);
-        }
+        var retval = await _repository.Zoek<ZoekMetGeslachtsnaamEnGeboortedatumFilter>(filter);
+
+        _logger.LogDebug("Response: {@response}", JsonConvert.SerializeObject(retval));
+
+        return Ok(retval);
+    }
+
+    private async Task<ActionResult<PersonenQueryResponse>> Handle(RaadpleegMetBurgerservicenummer query)
+    {
+        _logger.LogDebug("Request body: {@query}", JsonConvert.SerializeObject(query));
+
+        var retval = await _repository.Zoek<RaadpleegMetBurgerservicenummer>(query);
+
+        _logger.LogDebug("Response: {@response}", JsonConvert.SerializeObject(retval));
+
+        return Ok(retval);
     }
 }
