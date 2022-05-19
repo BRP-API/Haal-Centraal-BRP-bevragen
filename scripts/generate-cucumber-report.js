@@ -7,7 +7,7 @@ const options = {
     reportSuiteAsScenarios: true,
     scenarioTimestamp: true,
     launchReport: false,
-    name:'Haal Centraal BAG Bevragen API specificaties',
+    name:'Haal Centraal BRP Bevragen API specificaties',
     brandTitle:'Haal Centraal'
 };
 

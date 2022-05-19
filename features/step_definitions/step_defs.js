@@ -43,7 +43,7 @@ const propertyNameMap = new Map([
     ['nationaliteit (05.10)', 'nationaliteit.code'],
     ['reden opname (63.10)', 'redenOpname.code'],
     ['datum ingang geldigheid (85.10)', 'datumIngangGeldigheid'],
-    ['bijzonder Nederlanderschap (65.10)', 'aanduidingBijzonderNederlanderschap.code'],
+    ['bijzonder Nederlanderschap (65.10)', 'aanduidingBijzonderNederlanderschap'],
 
     // Opschorting bijhouding
     ['datum opschorting bijhouding (67.10)', 'datum' ],

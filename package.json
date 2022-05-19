@@ -22,6 +22,7 @@
     "postoas:resolve": "rm swagger-codegen-cli.jar",
     "unstage-generated": "git reset HEAD ./specificatie/genereervariant/openapi.* ./test/BRP-bevragen-postman-collection.json ./code/**",
     "rollback-generated": "git checkout ./specificatie/genereervariant/openapi.* ./test/BRP-bevragen-postman-collection.json ./code/**",
+    "specs:report": "node scripts/generate-cucumber-report.js",
     "specs:verify": "bash scripts/specs-verify.sh"
   },
   "repository": {

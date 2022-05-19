@@ -14,8 +14,8 @@ public class NationaliteitConverter : ITypeConverter<GbaNationaliteit, AbstractN
             { Nationaliteit.Code: var code } when code == "0500" => context.Mapper.Map<VastgesteldNietNederlander>(source),
             { Nationaliteit.Code: var code } when code == "0499" => context.Mapper.Map<Staatloos>(source),
             { Nationaliteit.Code: var code } when code != "0000" => context.Mapper.Map<Nationaliteit>(source),
-            { AanduidingBijzonderNederlanderschap.Code: var code } when code == "B" => context.Mapper.Map<BehandeldAlsNederlander>(source),
-            { AanduidingBijzonderNederlanderschap.Code: var code } when code == "V" => context.Mapper.Map<VastgesteldNietNederlander>(source),
+            { AanduidingBijzonderNederlanderschap: var code } when code == "B" => context.Mapper.Map<BehandeldAlsNederlander>(source),
+            { AanduidingBijzonderNederlanderschap: var code } when code == "V" => context.Mapper.Map<VastgesteldNietNederlander>(source),
             _ => context.Mapper.Map<NationaliteitOnbekend>(source)
         };
     }

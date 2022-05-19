@@ -1786,7 +1786,7 @@ namespace HaalCentraal.BrpProxy.Generated
     }
 
     /// <summary>
-    /// Gegevens over een gesloten huwelijk/geregistreerd partnerschap van de persoon.
+    /// Gegevens over het actuele of het laatst ontbonden huwelijk/geregistreerd partnerschap van de persoon.
     /// <br/>
     /// </summary>
     [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "type")]
@@ -1835,6 +1835,9 @@ namespace HaalCentraal.BrpProxy.Generated
 
         [Newtonsoft.Json.JsonProperty("aangaanHuwelijkPartnerschap", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public AangaanHuwelijkPartnerschap AangaanHuwelijkPartnerschap { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("ontbindingHuwelijkPartnerschap", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public OntbindingHuwelijkPartnerschapBasis OntbindingHuwelijkPartnerschap { get; set; }
 
     }
 
@@ -1906,6 +1909,50 @@ namespace HaalCentraal.BrpProxy.Generated
 
         [Newtonsoft.Json.JsonProperty("plaats", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? Plaats { get; set; }
+
+    }
+
+    /// <summary>
+    /// Gegevens over de ontbinding van het huwelijk of het geregistreerd partnerschap.
+    /// <br/>* **datum** : De datum waarop het huwelijk of het partnerschap is ontbonden.
+    /// <br/>
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OntbindingHuwelijkPartnerschapBasis
+    {
+        [Newtonsoft.Json.JsonProperty("indicatieHuwelijkPartnerschapBeeindigd", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? IndicatieHuwelijkPartnerschapBeeindigd { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("datum", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public AbstractDatum Datum { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("inOnderzoek", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public OntbindingHuwelijkPartnerschapBasisInOnderzoek InOnderzoek { get; set; }
+
+        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
+
+        [Newtonsoft.Json.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
+        {
+            get { return _additionalProperties; }
+            set { _additionalProperties = value; }
+        }
+
+    }
+
+    /// <summary>
+    /// Geeft aan welke gegevens over het onbinden van het huwelijk of aangaan van het partnerschap in onderzoek zijn.
+    /// <br/>Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+    /// <br/>
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OntbindingHuwelijkPartnerschapBasisInOnderzoek : InOnderzoek
+    {
+        [Newtonsoft.Json.JsonProperty("indicatieHuwelijkPartnerschapBeeindigd", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? IndicatieHuwelijkPartnerschapBeeindigd { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("datum", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? Datum { get; set; }
 
     }
 

@@ -667,7 +667,7 @@ namespace HaalCentraal.BrpProxy.Generated.Gba
     public partial class GbaNationaliteit
     {
         [Newtonsoft.Json.JsonProperty("aanduidingBijzonderNederlanderschap", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Waardetabel AanduidingBijzonderNederlanderschap { get; set; }
+        public string AanduidingBijzonderNederlanderschap { get; set; }
 
         [Newtonsoft.Json.JsonProperty("datumIngangGeldigheid", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DatumIngangGeldigheid { get; set; }
