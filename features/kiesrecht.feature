@@ -109,13 +109,13 @@ Rule: Uitsluiting van kiesrecht wordt alleen opgenomen wanneer de einddatum uits
 		Voorbeelden:
 		| omschrijving                       | uitsluiting kiesrecht | einddatum uitsluiting | uitgeslotenVanKiesrecht | einddatum  |
 		| niet opgegeven                     |                       |                       |                         |            |
-		| uitgesloten zonder einddatum       | true                  |                       | true                    |            |
-		| einddatum uitsluiting in toekomst  | true                  | 20300101              | true                    | 20300101   |
-		| einddatum uitsluiting in verleden  | true                  | 20220301              |                         |            |
-		| einddatum uitsluiting vandaag      | true                  | 20220315              |                         |            |
-		| einddatum uitsluiting morgen       | true                  | 20300316              | true                    | 20300316   |
-		| einddatum uitsluiting vorige maand | true                  | 20220200              |                         |            |
-		| einddatum uitsluiting deze maand   | true                  | 20220300              | true                    | 20220300   |
-		| einddatum uitsluiting vorig jaar   | true                  | 20210000              |                         |            |
-		| einddatum uitsluiting dit jaar     | true                  | 20220000              | true                    | 20220000   |
-		| einddatum uitsluiting onbekend     | true                  | 00000000              | true                    | 00000000   |
+		| uitgesloten zonder einddatum       | A                     |                       | true                    |            |
+		| einddatum uitsluiting in toekomst  | A                     | 20300101              | true                    | 20300101   |
+		| einddatum uitsluiting in verleden  | A                     | 20220301              |                         |            |
+		| einddatum uitsluiting vandaag      | A                     | 20220315              |                         |            |
+		| einddatum uitsluiting morgen       | A                     | 20300316              | true                    | 20300316   |
+		| einddatum uitsluiting vorige maand | A                     | 20220200              |                         |            |
+		| einddatum uitsluiting deze maand   | A                     | 20220300              | true                    | 20220300   |
+		| einddatum uitsluiting vorig jaar   | A                     | 20210000              |                         |            |
+		| einddatum uitsluiting dit jaar     | A                     | 20220000              | true                    | 20220000   |
+		| einddatum uitsluiting onbekend     | A                     | 00000000              | true                    | 00000000   |
