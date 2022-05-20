@@ -136,9 +136,9 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | voornamen | Karel  |
 
   @proxy
-  Rule: Wanneer de geslachtsnaam van het kind onbekend is, wordt het geleverd met type "KindOnbekend".
+  Rule: Wanneer de geslachtsnaam van het kind onbekend is, wordt er een leeg object 'kind' geleverd.
     - Dit is het geval wanneer geslachtsnaam dan de standaardwaarde "." heeft
-    - Wanneer geen van de met fields gevraagde kindgegevens een waarde heeft, maar andere gegevens van het kind wel, dan is het type "Kind".
+    - Wanneer geen van de met fields gevraagde kindgegevens een waarde heeft, maar andere gegevens van het kind welwordt er ook een leeg object 'kind' geleverd.
 
     # Onderliggende aanname is dat wanneer de geslachtsnaam van het kind onbekend is, ook andere kindgegevens niet bekend zijn of niet relevant.
 
@@ -164,9 +164,8 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550005                       |
       | fields              | burgerservicenummer,kinderen    |
-      Dan heeft de persoon met burgerservicenummer '555550005' een 'kind' met alleen de volgende gegevens
-      | naam              | waarde       |
-      | type              | OnbekendKind   |
+      Dan heeft de persoon met burgerservicenummer '555550005' een 'kind' met zonder gegevens
+
 
 
     @proxy
@@ -189,6 +188,4 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | type                | RaadpleegMetBurgerservicenummer             |
       | burgerservicenummer | 555550006                                   |
       | fields              | burgerservicenummer,kinderen.naam.voornamen |
-      Dan heeft de persoon met burgerservicenummer '555550006' een 'kind' met alleen de volgende gegevens
-      | naam | waarde |
-      | type | Kind   |
+      Dan heeft de persoon met burgerservicenummer '555550006' een 'kind' zonder gegevens
