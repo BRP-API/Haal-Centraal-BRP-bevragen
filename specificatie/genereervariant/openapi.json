@@ -806,33 +806,34 @@
         "description" : "Het A-nummer van de persoon\n"
       },
       "PersoonInOnderzoek" : {
-        "type" : "object",
-        "properties" : {
-          "burgerservicenummer" : {
-            "type" : "boolean"
-          },
-          "geslacht" : {
-            "type" : "boolean"
-          },
-          "leeftijd" : {
-            "type" : "boolean"
-          },
-          "gemeenteVanInschrijving" : {
-            "type" : "boolean"
-          },
-          "datumInschrijvingInGemeente" : {
-            "type" : "boolean"
-          },
-          "indicatieCurateleRegister" : {
-            "type" : "boolean"
-          },
-          "indicatieGezagMinderjarige" : {
-            "type" : "boolean"
-          }
-        },
         "description" : "Geeft aan welke gegevens van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature).\n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/InOnderzoek"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "burgerservicenummer" : {
+              "type" : "boolean"
+            },
+            "geslacht" : {
+              "type" : "boolean"
+            },
+            "leeftijd" : {
+              "type" : "boolean"
+            },
+            "gemeenteVanInschrijving" : {
+              "type" : "boolean"
+            },
+            "datumInschrijvingInGemeente" : {
+              "type" : "boolean"
+            },
+            "indicatieCurateleRegister" : {
+              "type" : "boolean"
+            },
+            "indicatieGezagMinderjarige" : {
+              "type" : "boolean"
+            }
+          }
         } ]
       },
       "InOnderzoek" : {
