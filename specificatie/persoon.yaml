@@ -27,6 +27,11 @@ components:
       type: string
       pattern: ^[0-9]{4}$
       example: "0518"
+    IndicatieCurateleRegister:
+      type: boolean
+      description: |
+        Geeft aan dat de persoon onder curatele is gesteld.
+      example: true
     Leeftijd:
       type: integer
       description: |
@@ -123,8 +128,10 @@ components:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         datumInschrijvingInGemeente:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
-        gezagsverhouding:
-          $ref: 'gezagsverhouding.yaml#/components/schemas/GbaGezagsverhouding'
+        indicatieCurateleRegister:
+          $ref: '#/components/schemas/IndicatieCurateleRegister'
+        indicatieGezagMinderjarige:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
         verblijfstitel:
           $ref: 'verblijfstitel.yaml#/components/schemas/GbaVerblijfstitel'
         reisdocumentnummers:
@@ -186,8 +193,10 @@ components:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         adressering:
           $ref: 'adressering.yaml#/components/schemas/Adressering'
-        gezagsverhouding:
-          $ref: 'gezagsverhouding.yaml#/components/schemas/Gezagsverhouding'
+        indicatieCurateleRegister:
+          $ref: '#/components/schemas/IndicatieCurateleRegister'
+        indicatieGezagMinderjarige:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
         verblijfstitel:
           $ref: 'verblijfstitel.yaml#/components/schemas/Verblijfstitel'
         reisdocumentnummers:
@@ -222,6 +231,10 @@ components:
             gemeenteVanInschrijving:
               type: boolean
             datumInschrijvingInGemeente:
+              type: boolean
+            indicatieCurateleRegister:
+              type: boolean
+            indicatieGezagMinderjarige:
               type: boolean
     InOnderzoek:
       type: object

@@ -138,17 +138,17 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar v
       | fields              | <vragen aan RvIG>               |
 
       Voorbeelden:
-      | gevraagd aan proxy                                                                   | vragen aan RvIG                               |
-      | ouders.geslacht                                                                      | ouders                                        |
-      | ouders.naam.voornamen                                                                | ouders                                        |
-      | datumIngangFamilierechtelijkeBetrekking                                              | ouders                                        |
-      | burgerservicenummer,kinderen.geboorte.datum,kinderen.naam.voornamen,gezagsverhouding | burgerservicenummer,kinderen,gezagsverhouding |
-      | datumIngangFamilierechtelijkeBetrekking.datum,kinderen.geboorte.datum                | ouders,kinderen                               |
-      | ouders.naam                                                                          | ouders                                        |
-      | kinderen.naam.voorletters                                                            | kinderen                                      |
-      | ouders.indicatieOnbekend                                                             | ouders                                        |
-      | ouders.type                                                                          | ouders                                        |
-      | kinderen                                                                             | kinderen                                      |
+      | gevraagd aan proxy                                                    | vragen aan RvIG              |
+      | ouders.geslacht                                                       | ouders                       |
+      | ouders.naam.voornamen                                                 | ouders                       |
+      | datumIngangFamilierechtelijkeBetrekking                               | ouders                       |
+      | burgerservicenummer,kinderen.geboorte.datum,kinderen.naam.voornamen   | burgerservicenummer,kinderen |
+      | datumIngangFamilierechtelijkeBetrekking.datum,kinderen.geboorte.datum | ouders,kinderen              |
+      | ouders.naam                                                           | ouders                       |
+      | kinderen.naam.voorletters                                             | kinderen                     |
+      | ouders.indicatieOnbekend                                              | ouders                       |
+      | ouders.type                                                           | ouders                       |
+      | kinderen                                                              | kinderen                     |
 
   # @proxy
   # Rule: wanneer een gegeven van verblijfadres wordt gevraagd, moet het hele verblijfadres worden gevraagd

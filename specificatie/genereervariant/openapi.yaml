@@ -612,8 +612,10 @@ components:
           $ref: '#/components/schemas/AbstractDatum'
         adressering:
           $ref: '#/components/schemas/Adressering'
-        gezagsverhouding:
-          $ref: '#/components/schemas/Gezagsverhouding'
+        indicatieCurateleRegister:
+          $ref: '#/components/schemas/IndicatieCurateleRegister'
+        indicatieGezagMinderjarige:
+          $ref: '#/components/schemas/Waardetabel'
         verblijfstitel:
           $ref: '#/components/schemas/Verblijfstitel'
         reisdocumentnummers:
@@ -656,11 +658,20 @@ components:
             type: boolean
           datumInschrijvingInGemeente:
             type: boolean
+          indicatieCurateleRegister:
+            type: boolean
+          indicatieGezagMinderjarige:
+            type: boolean
     InOnderzoek:
       type: object
       properties:
         datumIngangOnderzoek:
           $ref: '#/components/schemas/AbstractDatum'
+    IndicatieCurateleRegister:
+      type: boolean
+      description: |
+        Geeft aan dat de persoon onder curatele is gesteld.
+      example: true
     Reisdocumentnummer:
       pattern: ^[0-9a-zA-Z]{9}$
       type: string
@@ -1616,37 +1627,6 @@ components:
           aanschrijfwijze:
             type: boolean
           gebruikInLopendeTekst:
-            type: boolean
-    Gezagsverhouding:
-      allOf:
-      - $ref: '#/components/schemas/GezagsverhoudingBasis'
-      - type: object
-        properties:
-          inOnderzoek:
-            $ref: '#/components/schemas/GezagsverhoudingInOnderzoek'
-    GezagsverhoudingBasis:
-      type: object
-      properties:
-        indicatieCurateleRegister:
-          type: boolean
-          description: |
-            Geeft aan dat de persoon onder curatele is gesteld.
-          example: true
-        indicatieGezagMinderjarige:
-          $ref: '#/components/schemas/Waardetabel'
-      description: |
-        Gegevens over het gezag over de persoon.
-        * **indicatieGezagMinderjarige** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'Gezag_Minderjarige' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-    GezagsverhoudingInOnderzoek:
-      description: |
-        Geeft aan welke gegevens van de gezagsverhouding in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
-      allOf:
-      - $ref: '#/components/schemas/InOnderzoek'
-      - type: object
-        properties:
-          indicatieCurateleRegister:
-            type: boolean
-          indicatieGezagMinderjarige:
             type: boolean
     Verblijfstitel:
       type: object
