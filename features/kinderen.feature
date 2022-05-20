@@ -64,10 +64,10 @@ Functionaliteit: Kinderen van een persoon raadplegen
   Rule: Een kind wordt alleen teruggegeven als minimaal één gegeven in de identificatienummers (groep 01), naam (groep 02) of geboorte (groep 03) van het kind een waarde heeft.
     - Wanneer in een categorie kind alleen gegevens zijn opgenomen in groep 81 of 82, 85 en 86, wordt dit kind niet opgenomen in het antwoord
     - Wanneer een gegeven een standaardwaarde heeft, zoals "." (punt) bij geslachtsnaam of "00000000" bij geboortedatum, geldt dat hier als het bestaan van een waarde en wordt het kind wel geleverd
-    - Wanneer door de gebruikte fields parameter in het request het kind in de response geen enkel gegeven heeft met een waarde, dan wordt het kind niet geleverd
+    - Wanneer door de gebruikte fields parameter in het request het kind in de response geen enkel gegeven heeft met een waarde, dan wordt het kind geleverd zonder gegevens (dus als leeg object)
 
     @gba
-    Abstract Scenario: kind volledig onbekend
+    Abstract Scenario: kind volledig onbekend, veld met onbekend waarde wordt gevraagd met fields
       Gegeven de persoon met burgerservicenummer 555550001 heeft de volgende kinderen in de registratie
       | Categorie | Burgerservicenummer (01.20) | Voornamen (02.10) | Voorvoegsel (02.30) | Geslachtsnaam (02.40) | Geboortedatum (03.10) | Gemeente document (82.10) | Datum document (82.20) | Beschrijving document (82.30) | Ingangsdatum geldigheid (85.10) | Datum van opneming (86.10) |
       | 9         |                             |                   |                     | <geslachtsnaam>       | <geboortedatum>       | 1926                      | 20040105               | D27894-2004-A782              | 20031107                        | 20040112                   |
@@ -83,8 +83,19 @@ Functionaliteit: Kinderen van een persoon raadplegen
       Voorbeelden:
       | geslachtsnaam | geboortedatum |
       | .             |               |
-      |               | 00000000      |
       | .             | 00000000      |
+
+      @gba
+      Abstract Scenario: kind volledig onbekend, veld met onbekend waarde wordt niet gevraagd met fields
+        Gegeven de persoon met burgerservicenummer 555550001 heeft de volgende kinderen in de registratie
+        | Categorie | Burgerservicenummer (01.20) | Voornamen (02.10) | Voorvoegsel (02.30) | Geslachtsnaam (02.40) | Geboortedatum (03.10) | Gemeente document (82.10) | Datum document (82.20) | Beschrijving document (82.30) | Ingangsdatum geldigheid (85.10) | Datum van opneming (86.10) |
+        | 9         |                             |                   |                     |                       | 00000000              | 1926                      | 20040105               | D27894-2004-A782              | 20031107                        | 20040112                   |
+        Als personen wordt gezocht met de volgende parameters
+        | naam                | waarde                          |
+        | type                | RaadpleegMetBurgerservicenummer |
+        | burgerservicenummer | 999996150                       |
+        | fields              | kinderen.naam                   |
+        Dan heeft de persoon met burgerservicenummer '555550001' een kind zonder gegevens
 
     @gba
     Scenario: ontkenning ouderschap
@@ -136,9 +147,9 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | voornamen | Karel  |
 
   @proxy
-  Rule: Wanneer de geslachtsnaam van het kind onbekend is, wordt er een leeg object 'kind' geleverd.
+  Rule: Wanneer de geslachtsnaam van het kind onbekend is, wordt er een 'kind' zonder gegevens geleverd.
     - Dit is het geval wanneer geslachtsnaam dan de standaardwaarde "." heeft
-    - Wanneer geen van de met fields gevraagde kindgegevens een waarde heeft, maar andere gegevens van het kind welwordt er ook een leeg object 'kind' geleverd.
+    - Wanneer geen van de met fields gevraagde kindgegevens een waarde heeft, maar andere gegevens van het kind wel wordt er ook een leeg object 'kind' geleverd.
 
     # Onderliggende aanname is dat wanneer de geslachtsnaam van het kind onbekend is, ook andere kindgegevens niet bekend zijn of niet relevant.
 
@@ -165,8 +176,6 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | burgerservicenummer | 555550005                       |
       | fields              | burgerservicenummer,kinderen    |
       Dan heeft de persoon met burgerservicenummer '555550005' een 'kind' met zonder gegevens
-
-
 
     @proxy
     Scenario: Met fields zijn alleen velden zonder waarde gevraagd
