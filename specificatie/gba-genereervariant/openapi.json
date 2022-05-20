@@ -740,8 +740,11 @@
           "datumInschrijvingInGemeente" : {
             "$ref" : "#/components/schemas/GbaDatum"
           },
-          "gezagsverhouding" : {
-            "$ref" : "#/components/schemas/GbaGezagsverhouding"
+          "indicatieCurateleRegister" : {
+            "$ref" : "#/components/schemas/IndicatieCurateleRegister"
+          },
+          "indicatieGezagMinderjarige" : {
+            "$ref" : "#/components/schemas/Waardetabel"
           },
           "verblijfstitel" : {
             "$ref" : "#/components/schemas/GbaVerblijfstitel"
@@ -776,6 +779,11 @@
         "pattern" : "^[0-9]{10}$",
         "type" : "string",
         "description" : "Het A-nummer van de persoon\n"
+      },
+      "IndicatieCurateleRegister" : {
+        "type" : "boolean",
+        "description" : "Geeft aan dat de persoon onder curatele is gesteld.\n",
+        "example" : true
       },
       "Reisdocumentnummer" : {
         "pattern" : "^[0-9a-zA-Z]{9}$",
@@ -1241,32 +1249,6 @@
           }
         },
         "description" : "Gegevens over het het immigratie van een persoon.\n  * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland.\n"
-      },
-      "GbaGezagsverhouding" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/GezagsverhoudingBasis"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "inOnderzoek" : {
-              "$ref" : "#/components/schemas/GbaInOnderzoek"
-            }
-          }
-        } ]
-      },
-      "GezagsverhoudingBasis" : {
-        "type" : "object",
-        "properties" : {
-          "indicatieCurateleRegister" : {
-            "type" : "boolean",
-            "description" : "Geeft aan dat de persoon onder curatele is gesteld.\n",
-            "example" : true
-          },
-          "indicatieGezagMinderjarige" : {
-            "$ref" : "#/components/schemas/Waardetabel"
-          }
-        },
-        "description" : "Gegevens over het gezag over de persoon.\n* **indicatieGezagMinderjarige** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'Gezag_Minderjarige' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
       },
       "GbaVerblijfstitel" : {
         "type" : "object",
