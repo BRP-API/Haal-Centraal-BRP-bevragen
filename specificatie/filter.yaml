@@ -8,11 +8,14 @@ components:
   schemas:
     Field:
       description: |
-          Bij opgave van paden die verwijzen naar niet-bestaande velden wordt een 400 Bad Request teruggegeven.
-          Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature)
+          Hiermee kun je het pad van het gewenste veld van een resource opgeven 
+          ([zie functionele specificaties 'fields' properties](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields.feature)). 
+          De te gebruiken paden zijn beschreven in [fields-Persoon.csv](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields-Persoon.csv) 
+          (voor gebruik fields bij raadplegen) en [fields-PersoonBeperkt.csv](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields-PersoonBeperkt.csv) 
+          (voor gebruik fields bij zoeken) waarbij in de eerste kolom een mogelijk pad naar een gewenste veld staat en in de tweede kolom het volledige pad naar het betreffende veld.
+          Bij opgave van een pad dat verwijst naar een niet-bestaand veld wordt een 400 Bad Request teruggegeven.
       type: string
-      pattern: ^[a-zA-Z0-9\._]+$
-      maxLength: 200
+      pattern: ^[a-zA-Z0-9\._]{1,200}$
     GeslachtFilter:
       description: |
         Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.

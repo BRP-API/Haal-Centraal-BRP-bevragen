@@ -80,7 +80,7 @@ Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predicaat
     Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
     | naam                  | waarde              |
     | gebruikinlopendetekst | mevrouw In het Veld |
-    
+
     Voorbeelden:
     | aanduidingNaamgebruik |
     | E                     |
@@ -378,7 +378,7 @@ Rule: een vrouw met een (ex)partner met een adellijke titel krijgt een hoffelijk
     - het geslacht van de persoon is "V"
     - de persoon gebruikt de naam van haar (ex)partner (aanduidingNaamgebruik is ongelijk aan "E")
     - de adellijke titel van de (ex)partner heeft een hoffelijkheidstitel (komt voor in bovenstaande tabel)
-  
+
   Abstract Scenario: partner met adellijke titel "<adellijkeTitelPredicaat partner>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                        | waarde    |
@@ -572,99 +572,6 @@ Rule: Bij meerdere actuele (niet ontbonden) huwelijken/partnerschappen worden de
     | naam                  | waarde             |
     | gebruikInLopendeTekst | mevrouw Geel-Groen |
 
-Rule: Bij meerdere huwelijken/partnerschappen die allen ontbonden zijn, worden de naamgegevens van de laatst ontbonden partner gebruikt voor het samenstellen van de gebruikInLopendeTekst
-
-  Scenario: meerdere ontbonden relaties gebruikt de laatst ontbonden relatie
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                        | waarde    |
-    | burgerservicenummer         | 999992934 |
-    | geslachtsaanduiding (04.10) | V         |
-    En de persoon heeft de volgende 'naam' gegevens
-    | naam                           | waarde |
-    | voorvoegsel (02.30)            |        |
-    | geslachtsnaam (02.40)          | Wit    |
-    | voornamen (02.10)              | Jan    |
-    | aanduiding naamgebruik (61.10) | V      |
-    En de persoon heeft een ex-partner met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992935 |
-    En de ex-partner heeft de volgende 'naam' gegevens
-    | naam                  | waarde |
-    | voorvoegsel (02.30)   |        |
-    | geslachtsnaam (02.40) | Geel   |
-    En de ex-partner heeft de volgende 'aangaanHuwelijkPartnerschap' gegevens
-    | naam                  | waarde   |
-    | datum aangaan (06.10) | 19580401 |
-    En de ex-partner heeft de volgende 'ontbindingHuwelijkPartnerschap' gegevens
-    | naam                     | waarde   |
-    | datum ontbinding (07.10) | 19601001 |
-    En de persoon heeft een ex-partner met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992936 |
-    En de ex-partner heeft de volgende 'naam' gegevens
-    | naam                  | waarde |
-    | voorvoegsel (02.30)   |        |
-    | geslachtsnaam (02.40) | Roodt  |
-    En de ex-partner heeft de volgende 'aangaanHuwelijkPartnerschap' gegevens
-    | naam                  | waarde   |
-    | datum aangaan (06.10) | 19610422 |
-    En de ex-partner heeft de volgende 'ontbindingHuwelijkPartnerschap' gegevens
-    | naam                     | waarde   |
-    | datum ontbinding (07.10) | 20061014 |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 999992934                       |
-    | fields              | naam.gebruikInLopendeTekst      |
-    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
-    | naam                  | waarde            |
-    | gebruikInLopendeTekst | mevrouw Roodt-Wit |
-
-  Scenario: meerdere ontbonden relaties en oudste relatie is het laatst ontbonden
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                        | waarde    |
-    | burgerservicenummer         | 999992934 |
-    | geslachtsaanduiding (04.10) | V         |
-    En de persoon heeft de volgende 'naam' gegevens
-    | naam                           | waarde |
-    | voorvoegsel (02.30)            |        |
-    | geslachtsnaam (02.40)          | Wit    |
-    | voornamen (02.10)              | Jan    |
-    | aanduiding naamgebruik (61.10) | V      |
-    En de persoon heeft een ex-partner met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992935 |
-    En de ex-partner heeft de volgende 'naam' gegevens
-    | naam                  | waarde |
-    | voorvoegsel (02.30)   |        |
-    | geslachtsnaam (02.40) | Zwart  |
-    En de ex-partner heeft de volgende 'aangaanHuwelijkPartnerschap' gegevens
-    | naam                  | waarde   |
-    | datum aangaan (06.10) | 19580401 |
-    En de ex-partner heeft de volgende 'ontbindingHuwelijkPartnerschap' gegevens
-    | naam                     | waarde   |
-    | datum ontbinding (07.10) | 20061001 |
-    En de persoon heeft een ex-partner met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992936 |
-    En de ex-partner heeft de volgende 'naam' gegevens
-    | naam                  | waarde |
-    | voorvoegsel (02.30)   |        |
-    | geslachtsnaam (02.40) | Blaauw |
-    En de ex-partner heeft de volgende 'aangaanHuwelijkPartnerschap' gegevens
-    | naam                  | waarde   |
-    | datum aangaan (06.10) | 19610422 |
-    En de ex-partner heeft de volgende 'ontbindingHuwelijkPartnerschap' gegevens
-    | naam                     | waarde   |
-    | datum ontbinding (07.10) | 19831014 |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 999992934                       |
-    | fields              | naam.gebruikInLopendeTekst      |
-    Dan heeft de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
-    | naam                  | waarde            |
-    | gebruikInLopendeTekst | mevrouw Zwart-Wit |
 
 Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van de persoon wordt gebruikt, wordt gebruikInLopendeTekst niet opgenomen
 

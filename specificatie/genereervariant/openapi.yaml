@@ -679,12 +679,16 @@ components:
         Het nummer van het verstrekte Nederlandse reisdocument.
       example: "546376728"
     Field:
-      maxLength: 200
-      pattern: ^[a-zA-Z0-9\._]+$
+      pattern: ^[a-zA-Z0-9\._]{1,200}$
       type: string
-      description: |
-        Bij opgave van paden die verwijzen naar niet-bestaande velden wordt een 400 Bad Request teruggegeven.
-        Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature)
+      description: "Hiermee kun je het pad van het gewenste veld van een resource\
+        \ opgeven \n([zie functionele specificaties 'fields' properties](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields.feature)).\
+        \ \nDe te gebruiken paden zijn beschreven in [fields-Persoon.csv](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields-Persoon.csv)\
+        \ \n(voor gebruik fields bij raadplegen) en [fields-PersoonBeperkt.csv](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields-PersoonBeperkt.csv)\
+        \ \n(voor gebruik fields bij zoeken) waarbij in de eerste kolom een mogelijk\
+        \ pad naar een gewenste veld staat en in de tweede kolom het volledige pad\
+        \ naar het betreffende veld.\nBij opgave van een pad dat verwijst naar een\
+        \ niet-bestaand veld wordt een 400 Bad Request teruggegeven.\n"
     GemeenteVanInschrijving:
       pattern: ^[0-9]{4}$
       type: string
@@ -1770,7 +1774,7 @@ components:
         type:
           type: string
       description: |
-        Gegevens over een gesloten huwelijk/geregistreerd partnerschap van de persoon.
+        Gegevens over het actuele of het laatst ontbonden huwelijk/geregistreerd partnerschap van de persoon.
       discriminator:
         propertyName: type
         mapping:
@@ -1795,6 +1799,8 @@ components:
             $ref: '#/components/schemas/PartnerInOnderzoek'
           aangaanHuwelijkPartnerschap:
             $ref: '#/components/schemas/AangaanHuwelijkPartnerschap'
+          ontbindingHuwelijkPartnerschap:
+            $ref: '#/components/schemas/OntbindingHuwelijkPartnerschapBasis'
         description: |
           * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
           * **soortVerbintenis** - Wordt gevuld op basis van de waarden die voorkomen in de tabel  "Soort_Verbintenis" uit de Haal-Centraal-BRP-tabellen-bevragen API.
@@ -1841,6 +1847,30 @@ components:
           land:
             type: boolean
           plaats:
+            type: boolean
+    OntbindingHuwelijkPartnerschapBasis:
+      type: object
+      properties:
+        indicatieHuwelijkPartnerschapBeeindigd:
+          type: boolean
+        datum:
+          $ref: '#/components/schemas/AbstractDatum'
+        inOnderzoek:
+          $ref: '#/components/schemas/OntbindingHuwelijkPartnerschapBasisInOnderzoek'
+      description: |
+        Gegevens over de ontbinding van het huwelijk of het geregistreerd partnerschap.
+        * **datum** : De datum waarop het huwelijk of het partnerschap is ontbonden.
+    OntbindingHuwelijkPartnerschapBasisInOnderzoek:
+      description: |
+        Geeft aan welke gegevens over het onbinden van het huwelijk of aangaan van het partnerschap in onderzoek zijn.
+        Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      allOf:
+      - $ref: '#/components/schemas/InOnderzoek'
+      - type: object
+        properties:
+          indicatieHuwelijkPartnerschapBeeindigd:
+            type: boolean
+          datum:
             type: boolean
     PartnerOnbekend:
       allOf:

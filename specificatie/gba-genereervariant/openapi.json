@@ -792,10 +792,9 @@
         "example" : "546376728"
       },
       "Field" : {
-        "maxLength" : 200,
-        "pattern" : "^[a-zA-Z0-9\\._]+$",
+        "pattern" : "^[a-zA-Z0-9\\._]{1,200}$",
         "type" : "string",
-        "description" : "Bij opgave van paden die verwijzen naar niet-bestaande velden wordt een 400 Bad Request teruggegeven.\nZie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/fields.feature)\n"
+        "description" : "Hiermee kun je het pad van het gewenste veld van een resource opgeven \n([zie functionele specificaties 'fields' properties](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields.feature)). \nDe te gebruiken paden zijn beschreven in [fields-Persoon.csv](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields-Persoon.csv) \n(voor gebruik fields bij raadplegen) en [fields-PersoonBeperkt.csv](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields-PersoonBeperkt.csv) \n(voor gebruik fields bij zoeken) waarbij in de eerste kolom een mogelijk pad naar een gewenste veld staat en in de tweede kolom het volledige pad naar het betreffende veld.\nBij opgave van een pad dat verwijst naar een niet-bestaand veld wordt een 400 Bad Request teruggegeven.\n"
       },
       "GemeenteVanInschrijving" : {
         "pattern" : "^[0-9]{4}$",
@@ -1101,7 +1100,8 @@
         "type" : "object",
         "properties" : {
           "aanduidingBijzonderNederlanderschap" : {
-            "$ref" : "#/components/schemas/Waardetabel"
+            "pattern" : "^(B|V)$",
+            "type" : "string"
           },
           "datumIngangGeldigheid" : {
             "$ref" : "#/components/schemas/GbaDatum"
