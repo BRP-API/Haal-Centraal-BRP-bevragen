@@ -97,6 +97,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | naam                                 | waarde  |
       | adellijkeTitelPredicaat.code         | BS      |
       | adellijkeTitelPredicaat.omschrijving | barones |
+      | adellijkeTitelPredicaat.soort        | titel   |
       | voorvoegsel                          | van der |
       | geslachtsnaam                        | Horn    |
 
