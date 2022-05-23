@@ -233,7 +233,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | verblijfadres.woonplaats          | <woonplaats>                       |
       | verblijfadres.locatiebeschrijving | <locatiebeschrijving>              |
       | verblijfadres.land.code           | <land>                             |
-      | verblijfadres.land.omschrijving   | <omschrijving>                     |
+      | verblijfadres.land.omschrijving   | <land omschrijving>                |
       | verblijfadres.regel1              | <regel1>                           |
       | verblijfadres.regel2              | <regel2>                           |
       | verblijfadres.regel3              | <regel3>                           |
