@@ -112,6 +112,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | adressering.aanschrijfwijze.naam |
 
   Rule: wanneer gevraagd wordt om leeftijd, wordt geboorte.datum en overlijden.datum geleverd
+    - overlijden.datum wordt alleen geleverd wanneer de persoon overleden is (wanneer er een waarde is voor overlijden.datum)
 
     @gba
     Abstract Scenario: met fields is gevraagd om leeftijd
