@@ -569,7 +569,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
   Rule: wanneer een veld van een datum wordt gevraagd, wordt de datum geleverd
 
     @gba
-    Abstract Scenario: met fields is gevraagd om <fields>
+    Abstract Scenario: met fields is gevraagd om <veld>.<datumveld>
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 999993653 |
@@ -599,7 +599,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | onbekend    | datum inschrijving (09.20)                | datumInschrijvingInGemeente |
 
     @gba
-    Abstract Scenario: met fields is gevraagd om <fields>
+    Abstract Scenario: met fields is gevraagd om <groep>.<veld>.<datumveld>
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550001 |
