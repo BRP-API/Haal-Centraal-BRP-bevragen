@@ -70,7 +70,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | geslachtsnaam                        | Brink       |
 
   Rule: wanneer gevraagd wordt om aanhef, aanschrijfwijze of gebruikInLopendeTekst, dan worden geslacht, naam en naam van de partner geleverd
-    - de partner worden adellijkeTitelPredicaat, voorvoegsel en geslachtsnaam geleverd
+    - van de partner worden adellijkeTitelPredicaat, voorvoegsel en geslachtsnaam geleverd
    
     @gba
     Abstract Scenario: met fields is gevraagd om <fields>
