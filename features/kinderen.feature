@@ -175,7 +175,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550005                       |
       | fields              | burgerservicenummer,kinderen    |
-      Dan heeft de persoon met burgerservicenummer '555550005' een 'kind' met zonder gegevens
+      Dan heeft de persoon met burgerservicenummer '555550005' een 'kind' zonder gegevens
 
     @proxy
     Scenario: Met fields zijn alleen velden zonder waarde gevraagd
