@@ -407,6 +407,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
     - Veld adresregel1 wordt samengesteld uit straat + aanduidingBijHuisnummer + huisnummer + huisletter + huisnummertoevoeging + locatiebeschrijving + regel 1 adres buitenland
     - Veld adresregel2 wordt samengesteld uit postcode + woonplaats + gemeente van inschrijving + regel 2 adres buitenland
     - veld adresregel3 wordt gevuld met regel 3 adres buitenland
+    - veld adressering.land wordt gevuld met verblijfplaats.verblijfadres.land
 
     @gba
     Abstract Scenario: met fields is gevraagd om adresregel1
@@ -529,6 +530,30 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | 999995121           | 1999                    | Registratie Niet Ingezetenen (RNI) |           |            |          |            |                            | 5002 | Frankrijk         | 14 Rue Camulogene | 75015 Parijs |               |
       | 999993483           | 1999                    | Registratie Niet Ingezetenen (RNI) |           |            |          |            |                            | 5010 | België            | Rue du pomme 25   | Bruxelles    | postcode 1000 |
       | 999993586           |                         |                                    |           |            |          |            |                            | 0000 | Onbekend          |                   |              |               |
+
+    @gba
+    Scenario: met fields is gevraagd om adressering.land
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                                 | waarde                             |
+      | burgerservicenummer                  | 999993483                          |
+      | gemeente van inschrijving (09.10)    | 1999                               |
+      | gemeenteVanInschrijving.omschrijving | Registratie Niet Ingezetenen (RNI) |
+      En de persoon heeft de volgende 'verblijfplaats' gegevens
+      | naam                             | waarde          |
+      | land.code                        | 5010            |
+      | land.omschrijving                | België          |
+      | regel 1 adres buitenland (13.30) | Rue du pomme 25 |
+      | regel 2 adres buitenland (13.40) | Bruxelles       |
+      | regel 3 adres buitenland (13.50) | postcode 1000   |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999993483                       |
+      | fields              | adressering.land                |
+      Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
+      | naam                            | waarde |
+      | verblijfadres.land.code         | 5010   |
+      | verblijfadres.land.omschrijving | België |
 
   Rule: wanneer een veld van nationaliteiten wordt gevraagd, worden de velden geleverd die nodig zijn voor het bepalen van het type nationaliteit
     - dit betreft de velden nationaliteit en aanduidingBijzonderNederlanderschap
