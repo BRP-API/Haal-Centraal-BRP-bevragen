@@ -93,9 +93,9 @@ Rule: Uitsluiting van kiesrecht wordt alleen opgenomen wanneer de einddatum uits
 		| naam                        | waarde     |
 		| burgerservicenummer         | 999990001  |
 		En de persoon heeft de volgende 'kiesrecht' gegevens
-		| naam                                  | waarde                  |
-		| uitgeslotenVanKiesrecht (38.10)       | <uitsluiting kiesrecht> |
-		| einddatumUitsluitingKiesrecht (38.20) | <einddatum uitsluiting> |
+		| naam                                     | waarde                  |
+		| aanduiding uitgesloten kiesrecht (38.10) | <uitsluiting kiesrecht> |
+		| einddatumUitsluitingKiesrecht (38.20)    | <einddatum uitsluiting> |
 		Als de persoon op 15 maart 2022 wordt geraadpleegd met de volgende parameters
 		| naam                | waarde                          |
 		| type                | RaadpleegMetBurgerservicenummer |
