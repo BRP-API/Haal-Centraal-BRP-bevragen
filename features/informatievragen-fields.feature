@@ -530,7 +530,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | 999993483           | 1999                    | Registratie Niet Ingezetenen (RNI) |           |            |          |            |                            | 5010 | België            | Rue du pomme 25   | Bruxelles    | postcode 1000 |
       | 999993586           |                         |                                    |           |            |          |            |                            | 0000 | Onbekend          |                   |              |               |
 
-  Rule: wanneer een veld van nationaliteiten wordt gevraagd, worden de velden geleverd die nodig zijn voor het bepalen van het type verblijfplaats
+  Rule: wanneer een veld van nationaliteiten wordt gevraagd, worden de velden geleverd die nodig zijn voor het bepalen van het type nationaliteit
     - dit betreft de velden nationaliteit en aanduidingBijzonderNederlanderschap
 
     Abstract Scenario: vragen om een gegeven van nationaliteiten
