@@ -6,33 +6,36 @@ info:
 paths: {}
 components:
   schemas:
-    GbaKiesrecht:
+    GbaUitsluitingKiesrecht:
       type: object
       properties:
-        europeesKiesrecht:
-          type: boolean
-          description: |
-            Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement.
-          example: true
         uitgeslotenVanKiesrecht:
           type: boolean
           example: true
-        einddatumUitsluitingEuropeesKiesrecht:
+        einddatum:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
-        einddatumUitsluitingKiesrecht:
+    GbaEuropeesKiesrecht:
+      type: object
+        * **aanduiding** - Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Europees_Kiesrecht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+      properties:
+        aanduiding:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        einddatumUitsluiting:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
-    Kiesrecht:
+    UitsluitingKiesrecht:
       type: object
       properties:
-        europeesKiesrecht:
-          type: boolean
-          description: |
-            Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement.
-          example: true
         uitgeslotenVanKiesrecht:
           type: boolean
           example: true
-        einddatumUitsluitingEuropeesKiesrecht:
+        einddatum:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-        einddatumUitsluitingKiesrecht:
+    EuropeesKiesrecht:
+      type: object
+      description: |
+        * **aanduiding** - Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Europees_Kiesrecht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+      properties:
+        aanduiding:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        einddatumUitsluiting:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'

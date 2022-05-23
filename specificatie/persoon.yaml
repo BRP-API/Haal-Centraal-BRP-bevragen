@@ -106,8 +106,10 @@ components:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
-        kiesrecht:
-          $ref: 'kiesrecht.yaml#/components/schemas/GbaKiesrecht'
+        uitsluitingKiesrecht:
+          $ref: 'kiesrecht.yaml#/components/schemas/GbaUitsluitingKiesrecht'
+        europeesKiesrecht:
+          $ref: 'kiesrecht.yaml#/components/schemas/GbaEuropeesKiesrecht'
         naam:
           $ref: 'naam.yaml#/components/schemas/GbaNaamPersoon'
         nationaliteiten:
@@ -167,8 +169,10 @@ components:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: '#/components/schemas/PersoonInOnderzoek'
-        kiesrecht:
-          $ref: 'kiesrecht.yaml#/components/schemas/Kiesrecht'
+        uitsluitingKiesrecht:
+          $ref: 'kiesrecht.yaml#/components/schemas/UitsluitingKiesrecht'
+        europeesKiesrecht:
+          $ref: 'kiesrecht.yaml#/components/schemas/EuropeesKiesrecht'
         leeftijd:
           $ref: '#/components/schemas/Leeftijd'
         naam:

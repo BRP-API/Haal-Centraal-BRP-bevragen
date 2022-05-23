@@ -725,8 +725,11 @@
           "inOnderzoek" : {
             "$ref" : "#/components/schemas/PersoonInOnderzoek"
           },
-          "kiesrecht" : {
-            "$ref" : "#/components/schemas/Kiesrecht"
+          "uitsluitingKiesrecht" : {
+            "$ref" : "#/components/schemas/UitsluitingKiesrecht"
+          },
+          "europeesKiesrecht" : {
+            "$ref" : "#/components/schemas/EuropeesKiesrecht"
           },
           "leeftijd" : {
             "$ref" : "#/components/schemas/Leeftijd"
@@ -1276,25 +1279,29 @@
         "type" : "integer",
         "format" : "int32"
       },
-      "Kiesrecht" : {
+      "UitsluitingKiesrecht" : {
         "type" : "object",
         "properties" : {
-          "europeesKiesrecht" : {
-            "type" : "boolean",
-            "description" : "Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement.\n",
-            "example" : true
-          },
           "uitgeslotenVanKiesrecht" : {
             "type" : "boolean",
             "example" : true
           },
-          "einddatumUitsluitingEuropeesKiesrecht" : {
-            "$ref" : "#/components/schemas/AbstractDatum"
-          },
-          "einddatumUitsluitingKiesrecht" : {
+          "einddatum" : {
             "$ref" : "#/components/schemas/AbstractDatum"
           }
         }
+      },
+      "EuropeesKiesrecht" : {
+        "type" : "object",
+        "properties" : {
+          "aanduiding" : {
+            "$ref" : "#/components/schemas/Waardetabel"
+          },
+          "einddatumUitsluiting" : {
+            "$ref" : "#/components/schemas/AbstractDatum"
+          }
+        },
+        "description" : "* **europeesKiesrecht** - Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Europees_Kiesrecht' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
       },
       "NaamPersoon" : {
         "description" : "Gegevens over de naam van de persoon.\n* **aanduidingNaamgebruik** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'Naamgebruik' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n",

@@ -586,8 +586,10 @@ components:
           $ref: '#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: '#/components/schemas/PersoonInOnderzoek'
-        kiesrecht:
-          $ref: '#/components/schemas/Kiesrecht'
+        uitsluitingKiesrecht:
+          $ref: '#/components/schemas/UitsluitingKiesrecht'
+        europeesKiesrecht:
+          $ref: '#/components/schemas/EuropeesKiesrecht'
         leeftijd:
           $ref: '#/components/schemas/Leeftijd'
         naam:
@@ -1026,21 +1028,23 @@ components:
       minimum: 1
       type: integer
       format: int32
-    Kiesrecht:
+    UitsluitingKiesrecht:
       type: object
       properties:
-        europeesKiesrecht:
-          type: boolean
-          description: |
-            Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement.
-          example: true
         uitgeslotenVanKiesrecht:
           type: boolean
           example: true
-        einddatumUitsluitingEuropeesKiesrecht:
+        einddatum:
           $ref: '#/components/schemas/AbstractDatum'
-        einddatumUitsluitingKiesrecht:
+    EuropeesKiesrecht:
+      type: object
+      properties:
+        aanduiding:
+          $ref: '#/components/schemas/Waardetabel'
+        einddatumUitsluiting:
           $ref: '#/components/schemas/AbstractDatum'
+      description: |
+        * **europeesKiesrecht** - Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Europees_Kiesrecht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
     NaamPersoon:
       description: |
         Gegevens over de naam van de persoon.
