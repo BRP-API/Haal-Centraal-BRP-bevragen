@@ -43,15 +43,16 @@ Er is een referentie implementatie van een docker-compose configuratie te vinden
 
 Voor test doeleinden is een mock van de RvIG variant van de BRP Persoon Bevragen API (BrpService) geïmplementeerd. Deze mock gebruikt de [testdataset persoonslijsten proefomgevingen GBA-V](https://www.rvig.nl/documenten/richtlijnen/2018/09/20/testdataset-persoonslijsten-proefomgevingen-gba-v) als input om de productie situatie zoveel mogelijk te kunnen simuleren.
 
-Ten behoeve van monitoring is Open Telemetry geïntegreerd in de BrpProxy. Met behulp van de docker-compose configuratie bestand wordt ook een Jaeger Container opgestart om de trace regels van de BrpProxy te visualiseren.
+Ten behoeve van monitoring is Open Telemetry geïntegreerd in de BrpProxy. Met behulp van de docker-compose configuratie bestand wordt ook een [Jaeger](https://www.jaegertracing.io/) Container opgestart om de trace regels van de BrpProxy te visualiseren.
 
-Voor logging past de BrpProxy structured logging toe. Dit maakt het makkelijker voor tooling om de log regels te query-en en te filteren. Voor het visualiseren van de logging wordt Seq gebruikt.
+Voor logging past de BrpProxy structured logging toe. Dit maakt het makkelijker voor tooling om de log regels te query-en en te filteren. Voor het visualiseren van de logging wordt [Seq](https://datalust.co/seq) gebruikt.
 
 In de volgende paragrafen is beschreven hoe de BrpProxy  t.b.v. test doeleinden op een lokale machine kan worden geïnstalleerd en geconfigureerd.
 
 ### Prerequisites
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop)
+- [git](https://git-scm.com/downloads)
 
 ### Bouwen van de BrpProxy Container Image
 
