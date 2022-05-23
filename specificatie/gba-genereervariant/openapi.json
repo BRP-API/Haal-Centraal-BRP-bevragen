@@ -1084,14 +1084,13 @@
         "type" : "object",
         "properties" : {
           "aanduiding" : {
-            "type" : "boolean",
-            "description" : "Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement.\n",
-            "example" : true
+            "$ref" : "#/components/schemas/Waardetabel"
           },
           "einddatumUitsluiting" : {
             "$ref" : "#/components/schemas/GbaDatum"
           }
-        }
+        },
+        "description" : "* **aanduiding** - Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Europees_Kiesrecht' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
       },
       "GbaNaamPersoon" : {
         "allOf" : [ {

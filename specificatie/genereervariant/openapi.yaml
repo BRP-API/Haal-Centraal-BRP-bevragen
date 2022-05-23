@@ -1044,7 +1044,7 @@ components:
         einddatumUitsluiting:
           $ref: '#/components/schemas/AbstractDatum'
       description: |
-        * **europeesKiesrecht** - Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Europees_Kiesrecht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **aanduiding** - Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Europees_Kiesrecht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
     NaamPersoon:
       description: |
         Gegevens over de naam van de persoon.
