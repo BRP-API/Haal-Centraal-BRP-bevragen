@@ -37,7 +37,7 @@ Note. De prerequisite van OpenAPI Generator is JAVA. Je moet een JAVA runtime in
 
 Door wettelijke restricties kan de BRP bevragen API geen informatie vragen leveren. Er wordt op dit moment aan gewerkt om deze restricties weg te halen. Totdat dit is gerealiseerd moet de BrpProxy worden gebruikt om de informatie vragen te kunnen krijgen.
 
-De BrpProxy is geïmplementeerd als een containerized applicatie, zodat het makkelijk kan worden getest op een lokale machine en worden gehost in een productie omgeving.
+De BrpProxy is geïmplementeerd als een containerized applicatie, zodat het makkelijk kan worden getest op een lokale machine en gehost in een productie omgeving.
 
 Er is een referentie implementatie van een docker-compose configuratie te vinden in de repository die kan worden gebruikt om de BRP Proxy te draaien op een lokale machine.
 
@@ -55,13 +55,21 @@ In de volgende paragrafen is beschreven hoe de BrpProxy  t.b.v. test doeleinden 
 
 ### Bouwen van de BrpProxy Container Image
 
-- Clone de Haal Centraal BRP Persoon bevragen repository
+- Clone de Haal Centraal BRP Persoon bevragen repository als deze niet eerder al is ge-clone-d
   ```sh
   git clone https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen.git
+  ```
+- Ga naar de aangemaakte folder
+  ```sh
+  cd Haal-Centraal-BRP-bevragen
   ```
 - Switch naar de `develop` branch
   ```sh
   git checkout develop
+  ```
+- Download de laatste wijzigingen/toevoegingen als de Haal Centraal BRP bevragen repository op een eerder moment is ge-clone-d
+  ```sh
+  git pull
   ```
 - Bouw de BrpProxy Container Image. Dit kan enige tijd duren.
   ```sh
@@ -74,9 +82,9 @@ In de volgende paragrafen is beschreven hoe de BrpProxy  t.b.v. test doeleinden 
   ```sh
   docker-compose up -d
   ```
-- Roep de BRP Persoon Bevragen API aan met als base url: *http://localhost:5000*. Een aanroep met curl ziet er als volgt uit:
+- Roep de BRP Persoon Bevragen API aan met als base url: *http://localhost:5000*. Met behulp van curl kan op een snelle manier worden getest of de BrpProxy en de BrpService draaien. Start hiervoor een bash shell op en voer de volgende curl statement uit in de bash shell
   ```sh
-  curl --location --request POST 'http://localhost:5010/haalcentraal/api/brp/personen' \
+  curl --location --request POST 'http://localhost:5000/haalcentraal/api/brp/personen' \
   --header 'Content-Type: application/json' \
   --data-raw '{
       "type": "RaadpleegMetBurgerservicenummer",
@@ -84,6 +92,7 @@ In de volgende paragrafen is beschreven hoe de BrpProxy  t.b.v. test doeleinden 
       "fields": ["burgerservicenummer"]
   }'
   ```
+- Optioneel kan postman worden gebruikt om de BrpProxy te testen. Importeer de `BRP-Bevragen-v2-postman-collection.json` postman collection onder de `test` map voor aanroep voorbeelden.  
 - Bekijk de log regels van de BrpProxy met behulp van Seq. Navigeer hiervoor naar: `http://localhost:5341`
 - Bekijk de trace regels van de BrpProxy met behulp van Jaeger. Navigeer hiervoor naar: `http://localhost:16686`
 
