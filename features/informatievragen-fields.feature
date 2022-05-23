@@ -120,8 +120,8 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | naam                | waarde                |
       | burgerservicenummer | <burgerservicenummer> |
       En de persoon heeft de volgende 'geboorte' gegevens
-      | naam                  | waarde   |
-      | geboortedatum (03.10) | 19960229 |
+      | naam                  | waarde          |
+      | geboortedatum (03.10) | <geboortedatum> |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
