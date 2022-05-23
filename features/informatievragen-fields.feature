@@ -65,6 +65,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | voornamen                            | Hendrik Jan |
       | adellijkeTitelPredicaat.code         | R           |
       | adellijkeTitelPredicaat.omschrijving | ridder      |
+      | adellijkeTitelPredicaat.soort        | titel       |
       | voorvoegsel                          | de          |
       | geslachtsnaam                        | Brink       |
 
