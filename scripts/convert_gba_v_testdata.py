@@ -143,7 +143,7 @@ fields_to_map = {
     '06.08.30': 'overlijden.land.code',
     '07.68.10': 'datumEersteInschrijvingGBA',
     '07.70.10': 'geheimhoudingPersoonsgegevens',
-    '08.09.10': 'verblijfplaats.gemeenteVanInschrijving.code',
+    '08.09.10': 'gemeenteVanInschrijving.code',
     '08.10.10': 'verblijfplaats.functieAdres.code',
     '08.11.10': 'verblijfplaats.straat',
     '08.11.15': 'verblijfplaats.naamOpenbareRuimte',
