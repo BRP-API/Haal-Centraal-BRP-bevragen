@@ -61,50 +61,26 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | fields              | partners                        |
       Dan heeft de persoon met burgerservicenummer '555550003' een partner met de volgende gegevens
       | naam                | waarde    |
-      | burgerservicenummer | 555550004 |
-      | geslacht            | M         |
-      | soortVerbintenis    | H         |
-      En heeft de partner met burgerservicenummer '555550004' de volgende 'naam' gegevens
-      | naam                    | waarde |
-      | voornamen               | Jan    |
-      | adellijkeTitelPredicaat | JH     |
-      | voorvoegsel             | van    |
-      | geslachtsnaam           | Aedel  |
-      En heeft de partner met burgerservicenummer '555550004' de volgende 'geboorte' gegevens
-      | naam   | waarde   |
-      | datum  | 19820526 |
-      | plaats | 0599     |
-      | land   | 6030     |
-      En heeft de partner met burgerservicenummer '555550004' de volgende 'aangaanHuwelijkPartnerschap' gegevens
-      | naam   | waarde   |
-      | datum  | 20171103 |
-      | plaats | 0513     |
-      | land   | 6030     |
-      En heeft de partner met burgerservicenummer '555550004' de volgende 'ontbindingHuwelijkPartnerschap' gegevens
-      | naam                | waarde    |
-      | datum               | 20191210  |
-      En heeft de persoon met burgerservicenummer '555550003' een partner met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550002 |
+      | burgerservicenummer | 555550004|
       | geslacht            | V         |
       | soortVerbintenis    | P         |
-      En heeft de partner met burgerservicenummer '555550005' de volgende 'naam' gegevens
+      En heeft de partner met burgerservicenummer '555550004' de volgende 'naam' gegevens
       | naam                    | waarde  |
       | voornamen               | Marieke |
       | adellijkeTitelPredicaat |         |
       | voorvoegsel             |         |
       | geslachtsnaam           | Groenen |
-      En heeft de partner met burgerservicenummer '555550005' de volgende 'geboorte' gegevens
+      En heeft de partner met burgerservicenummer '555550004' de volgende 'geboorte' gegevens
       | naam   | waarde   |
       | datum  | 19861004 |
       | plaats | 0503     |
       | land   | 6030     |
-      En heeft de partner met burgerservicenummer '555550005' de volgende 'aangaanHuwelijkPartnerschap' gegevens
+      En heeft de partner met burgerservicenummer '555550004' de volgende 'aangaanHuwelijkPartnerschap' gegevens
       | naam   | waarde   |
       | datum  | 20210720 |
       | plaats | Dunvegan |
       | land   | 6039     |
-      En de partner met burgerservicenummer '555550005' heeft GEEN 'ontbindingHuwelijkPartnerschap' gegevens
+      En de partner met burgerservicenummer '555550004' heeft GEEN 'ontbindingHuwelijkPartnerschap' gegevens
 
     @gba
     Scenario: alleen ontbonden partners
@@ -125,46 +101,22 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | geslacht            | M         |
       | soortVerbintenis    | H         |
       En heeft de partner met burgerservicenummer '555550007' de volgende 'naam' gegevens
-      | naam                    | waarde |
-      | voornamen               | Jan    |
-      | adellijkeTitelPredicaat | JH     |
-      | voorvoegsel             | van    |
-      | geslachtsnaam           | Aedel  |
-      En heeft de partner met burgerservicenummer '555550007' de volgende 'geboorte' gegevens
-      | naam   | waarde   |
-      | datum  | 19820526 |
-      | plaats | 0599     |
-      | land   | 6030     |
-      En heeft de partner met burgerservicenummer '555550007' de volgende 'aangaanHuwelijkPartnerschap' gegevens
-      | naam   | waarde   |
-      | datum  | 20171103 |
-      | plaats | 0513     |
-      | land   | 6030     |
-      En heeft de partner met burgerservicenummer '555550007' de volgende 'ontbindingHuwelijkPartnerschap' gegevens
-      | naam                | waarde    |
-      | datum               | 20191210  |
-      En heeft de persoon met burgerservicenummer '555550006' een partner met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550008 |
-      | geslacht            | V         |
-      | soortVerbintenis    | P         |
-      En heeft de partner met burgerservicenummer '555550008' de volgende 'naam' gegevens
       | naam                    | waarde  |
       | voornamen               | Marieke |
       | adellijkeTitelPredicaat |         |
       | voorvoegsel             |         |
       | geslachtsnaam           | Groenen |
-      En heeft de partner met burgerservicenummer '555550008' de volgende 'geboorte' gegevens
+      En heeft de partner met burgerservicenummer '555550007' de volgende 'geboorte' gegevens
       | naam   | waarde   |
       | datum  | 19861004 |
       | plaats | 0503     |
       | land   | 6030     |
-      En heeft de partner met burgerservicenummer '555550008' de volgende 'aangaanHuwelijkPartnerschap' gegevens
+      En heeft de partner met burgerservicenummer '555550007' de volgende 'aangaanHuwelijkPartnerschap' gegevens
       | naam   | waarde   |
       | datum  | 20210720 |
       | plaats | Dunvegan |
       | land   | 6039     |
-      En heeft de partner met burgerservicenummer '555550008' de volgende 'ontbindingHuwelijkPartnerschap' gegevens
+      En heeft de partner met burgerservicenummer '555550007' de volgende 'ontbindingHuwelijkPartnerschap' gegevens
       | naam  | waarde   |
       | datum | 20220301 |
 
