@@ -4,9 +4,9 @@
 Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze van mijn burgers
   De attributen aanschrijfwijze.naam en aanschrijfwijze.aanspreekvorm bij een persoon worden gevuld door de provider om op deze wijze op eenduidige wijze een persoon te kunnen aanschrijven.
   Bij het samenstellen van de aanschrijfwijze worden academische titels vooralsnog niet opgenomen. Academische titels zijn geen authentiek gegeven en daarom buiten scope geplaatst.
-  
+
   De aanschrijfwijze wordt gebruikt als eerste regel(s) in de adressering op een envelop, of links bovenaan een brief, direct boven het adres.
-  
+
   Bij personen met een adellijke titel of predicaat bevat de aanschrijfwijze ook de aanspreekvorm.
   Deze wordt in de adressering in de regel boven de naam van de aanschrijfwijze geplaatst om een correcte aanschrijving van een adellijke persoon samen te stellen.
 
@@ -72,7 +72,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
           | M                           | markiezin           |
           | P                           | prinses             |
         - de hoffelijkheidstitel ('titre de courtoisie') wordt niet opgenomen bij aanduiding naamgebruik "E" (eigen naam)
-        - het predicaat begint met een hoofdletter als de aanschrijfwijze begint met een predicaat 
+        - het predicaat begint met een hoofdletter als de aanschrijfwijze begint met een predicaat
         - het predicaat van de partner wordt niet opgenomen
         - het predicaat van de persoon wordt opgenomen achter het streepje en voor eigen voorvoegsel en geslachtsnaam bij aanduiding naamgebruik "V" (partner naam voor eigen naam)
         - bij meerdere actuele (niet ontbonden) huwelijken/partnerschappen, worden de naamgegevens van de eerste partner (oudste relatie) gebruikt voor het samenstellen van de aanschrijfwijze
@@ -469,36 +469,6 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | P                      | F.C. Geel               |
       | V                      | F.C. Geel-Groen         |
       | N                      | F.C. Groen-Geel         |
-
-    Abstract Scenario: Persoon met meerdere ontbonden partners
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 999992934 |
-      En de persoon heeft de volgende naam gegevens
-      | naam                           | waarde                   |
-      | voorvoegsel (02.30)            |                          |
-      | geslachtsnaam (02.40)          | Wit                      |
-      | voornamen (02.10)              | Jan                      |
-      | aanduiding naamgebruik (61.10) | <aanduiding naamgebruik> |
-      En de laatst ontbonden partner van de persoon heeft de volgende naam gegevens
-      | naam                  | waarde |
-      | voorvoegsel (02.30)   |        |
-      | geslachtsnaam (02.40) | Geel   |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 999992934                       |
-      | fields              | naam.aanschrijfwijze            |
-      Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
-      | naam                 | waarde                    |
-      | aanschrijfwijze.naam | <naam in aanschrijfwijze> |
-
-      Voorbeelden:
-      | aanduiding naamgebruik | naam in aanschrijfwijze |
-      | E                      | J. Wit                  |
-      | P                      | J. Geel                 |
-      | V                      | J. Geel-Wit             |
-      | N                      | J. Wit-Geel             |
 
     Abstract Scenario: persoon heeft een naamketen
       Gegeven het systeem heeft een persoon met de volgende gegevens

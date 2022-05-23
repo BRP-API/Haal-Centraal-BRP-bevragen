@@ -5,13 +5,14 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
   Dit bevat de gegevens over de relatie (huwelijk of partnerschap) plus enkele identificerende eigenschappen van de persoon waarmee het huwelijk of partnerschap is aangegaan.
 
   # RvIG levert personen in de vorm GbaPersoon, waarin alleen onbewerkte GBA-V gegevens worden geleverd
-  # Dit betekent dat in 'partners' zowel actuele partners zitten als ontbonden partners
+  # Actuele partners is (huwelijk / partnerschap is niet ontbonden) worden geleverd
+  # Als er een (of meer) actuele pertner is worden geen ontbonden huwelijken/partnerschappen geleverd
+  # Als er alleen ontbonden huwelijken/partnerschappen zijn levert de RvIG alleen de ex-partner met de meest recente datum ontbinding
   # Een proxy vertaalt dit naar de vorm Persoon, waarin sommige gegevens in bewerkte vorm worden opgenomen en waarin informatievragen kunnen zitten
   # Een voorbeeld van een informatievraag is naam.aanschrijfwijze, waarin op basis van de aanduiding naamgebruik, de naam van de persoon en de naam van de (ex)partner een aanschrijfnaam wordt samengesteld
-  # De proxy verwijdert de partners met datum ontbinding die geleverd zijn in de GbaPersoon
 
   @gba
-  Rule: Het gegeven 'partners' in GbaPersoon bevat ook ontbonden huwelijken en partnerschappen
+  Rule: Het gegeven 'partners' in GbaPersoon kan een ontbonden huwelijk of partnerschap bevatten
     - Voor een ontbonden huwelijk of partnerschap worden de aangaanHuwelijkPartnerschap gegevens gehaald uit de meest recente historische categorie 55
 
     @gba
@@ -67,8 +68,6 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       En heeft de partner met burgerservicenummer '555550004' de volgende 'naam' gegevens
       | naam                    | waarde  |
       | voornamen               | Marieke |
-      | adellijkeTitelPredicaat |         |
-      | voorvoegsel             |         |
       | geslachtsnaam           | Groenen |
       En heeft de partner met burgerservicenummer '555550004' de volgende 'geboorte' gegevens
       | naam   | waarde   |
@@ -81,6 +80,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | plaats | Dunvegan |
       | land   | 6039     |
       En de partner met burgerservicenummer '555550004' heeft GEEN 'ontbindingHuwelijkPartnerschap' gegevens
+      En heeft de persoon met burgerservicenummer '555550003' géén partner met burgerservicenummer '555550005'
 
     @gba
     Scenario: alleen ontbonden partners
@@ -98,9 +98,10 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       Dan heeft de persoon met burgerservicenummer '555550006' een partner met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550007 |
-      | geslacht            | M         |
-      | soortVerbintenis    | H         |
       En heeft de partner met burgerservicenummer '555550007' de volgende 'naam' gegevens
+      | geslacht            | V         |
+      | soortVerbintenis    | P         |
+      En heeft de partner met burgerservicenummer '555550008' de volgende 'naam' gegevens
       | naam                    | waarde  |
       | voornamen               | Marieke |
       | adellijkeTitelPredicaat |         |
@@ -119,6 +120,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       En heeft de partner met burgerservicenummer '555550007' de volgende 'ontbindingHuwelijkPartnerschap' gegevens
       | naam  | waarde   |
       | datum | 20220301 |
+      En heeft de persoon met burgerservicenummer '555550003' géén partner met burgerservicenummer '555550008'
 
 
   @gba
@@ -191,7 +193,8 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
 
 
   @proxy
-  Rule: Alleen een actueel huwelijk of geregistreerd partnerschap wordt teruggegeven
+  Rule: Als er een actueel huwelijk of geregistreerd partnerschap is wordt alleen dit actueel huwelijk of geregistreerd partnerschap wordt teruggegeven,
+        als er geen actueel huwelijk of geregistreerd partnerschap is, maar wel een ontbonden huwelijk of geregristreerd partnerschap dan wordt alleen het meest recente ontbonden huwelijk of geregistreerd partnerschap geleverd.
     Een huwelijk of partnerschap is actueel wanneer het niet is ontbonden: ontbindingHuwelijkPartnerschap komt niet voor (heeft geen waarde)
 
     @proxy
@@ -263,54 +266,14 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999993380                       |
       | fields              | partners                        |
-      Dan heeft de persoon met burgerservicenummer '999992806' een 'partner' met de volgende 'naam' gegevens
-      | naam      | waarde      |
-      | voornamen | <voornamen> |
+      Dan heeft de persoon met burgerservicenummer '999992806' alleen 'partners' met de volgende gegevens
+      | burgerservicenummer   | voornamen   |
+      | <burgerservicenummer> | <voornamen> |
 
       Voorbeelden:
-      | omschrijving            | datum ontbinding | <voornamen> |
-      | met bekende einddatum   | 20011109         | Osama       |
-      | met onbekende einddatum | 00000000         | Osama       |
-
-    @proxy
-    Scenario: Een actueel huwelijk en een ontbonden huwelijk
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 999991553 |
-      En de persoon heeft een partner met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550004 |
-      En de partner met burgerservicenummer '555550004' heeft de volgende naam gegevens
-      | naam      | waarde |
-      | voornamen | Karel  |
-      En de partner met burgerservicenummer '555550004' heeft de volgende aangaanHuwelijkPartnerschap gegevens
-      | naam  | waarde   |
-      | datum | 20091102 |
-      En de partner met burgerservicenummer '555550004' heeft GEEN 'ontbindingHuwelijkPartnerschap' gegevens
-      En de persoon heeft een partner met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550005 |
-      En de partner met burgerservicenummer '555550005' heeft de volgende naam gegevens
-      | naam      | waarde |
-      | voornamen | Björn  |
-      En de partner met burgerservicenummer '555550005' heeft de volgende aangaanHuwelijkPartnerschap gegevens
-      | naam  | waarde   |
-      | datum | 19870714 |
-      En de partner met burgerservicenummer '555550005' heeft de volgende ontbindingHuwelijkPartnerschap gegevens
-      | naam  | waarde   |
-      | datum | 20080706 |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                               |
-      | type                | RaadpleegMetBurgerservicenummer                      |
-      | burgerservicenummer | 999991553                                            |
-      | fields              | partners.burgerservicenummer,partners.naam.voornamen |
-      Dan heeft de persoon met burgerservicenummer '999991553' alleen 'partners' met de volgende gegevens
-      | burgerservicenummer |
-      | 555550004           |
-      En heeft de partner met burgerservicenummer '555550004' de volgende 'naam' gegevens
-      | naam      | waarde |
-      | voornamen | Karel  |
-
+      | omschrijving            | datum ontbinding | burgerservicenummer | voornamen |
+      | met bekende einddatum   | 20011109         | 555550003           | Osama     |
+      | met onbekende einddatum | 00000000         | 555550003           | Osama     |
 
   @proxy
   Rule: Wanneer geen van de gegevens van de partner een waarde heeft, wordt er een 'partners' zonder gegevens geleverd.

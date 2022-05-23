@@ -21,6 +21,17 @@ components:
       description: |
         Gegevens mogen niet worden verstrekt aan derden / maatschappelijke instellingen.
       type: boolean
+    GemeenteVanInschrijving:
+      description: |
+        Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.
+      type: string
+      pattern: ^[0-9]{4}$
+      example: "0518"
+    IndicatieCurateleRegister:
+      type: boolean
+      description: |
+        Geeft aan dat de persoon onder curatele is gesteld.
+      example: true
     Leeftijd:
       type: integer
       description: |
@@ -51,10 +62,14 @@ components:
           $ref: 'opschortingbijhouding.yaml#/components/schemas/OpschortingBijhoudingBasis'
         overlijden:
           $ref: 'overlijden.yaml#/components/schemas/GbaOverlijdenBasis'
+        gemeenteVanInschrijving:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
         verblijfplaats:
           $ref: 'verblijfplaats.yaml#/components/schemas/GbaVerblijfplaatsBeperkt'
     PersoonBeperkt:
       type: object
+      description: |
+        * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       properties:
         burgerservicenummer:
           $ref: '#/components/schemas/Burgerservicenummer'
@@ -74,6 +89,8 @@ components:
           $ref: 'overlijden.yaml#/components/schemas/OverlijdenBasis'
         verblijfplaats:
           $ref: 'verblijfplaats.yaml#/components/schemas/AbstractVerblijfplaatsBeperkt'
+        adressering:
+          $ref: 'adressering.yaml#/components/schemas/AdresseringBeperkt'
     GbaPersoon:
       type: object
       properties:
@@ -105,8 +122,16 @@ components:
           $ref: 'overlijden.yaml#/components/schemas/GbaOverlijden'
         verblijfplaats:
           $ref: 'verblijfplaats.yaml#/components/schemas/GbaVerblijfplaats'
-        gezagsverhouding:
-          $ref: 'gezagsverhouding.yaml#/components/schemas/GbaGezagsverhouding'
+        immigratie:
+          $ref: 'immigratie.yaml#/components/schemas/GbaImmigratie'
+        gemeenteVanInschrijving:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        datumInschrijvingInGemeente:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        indicatieCurateleRegister:
+          $ref: '#/components/schemas/IndicatieCurateleRegister'
+        indicatieGezagMinderjarige:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
         verblijfstitel:
           $ref: 'verblijfstitel.yaml#/components/schemas/GbaVerblijfstitel'
         reisdocumentnummers:
@@ -127,6 +152,8 @@ components:
             $ref: 'partner.yaml#/components/schemas/GbaPartner'
     Persoon:
       type: object
+      description: |
+        * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       properties:
         aNummer:
           $ref: '#/components/schemas/ANummer'
@@ -158,8 +185,18 @@ components:
           $ref: 'overlijden.yaml#/components/schemas/Overlijden'
         verblijfplaats:
           $ref: 'verblijfplaats.yaml#/components/schemas/AbstractVerblijfplaats'
-        gezagsverhouding:
-          $ref: 'gezagsverhouding.yaml#/components/schemas/Gezagsverhouding'
+        immigratie:
+          $ref: 'immigratie.yaml#/components/schemas/Immigratie'
+        gemeenteVanInschrijving:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        datumInschrijvingInGemeente:
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+        adressering:
+          $ref: 'adressering.yaml#/components/schemas/Adressering'
+        indicatieCurateleRegister:
+          $ref: '#/components/schemas/IndicatieCurateleRegister'
+        indicatieGezagMinderjarige:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
         verblijfstitel:
           $ref: 'verblijfstitel.yaml#/components/schemas/Verblijfstitel'
         reisdocumentnummers:
@@ -183,14 +220,22 @@ components:
         Geeft aan welke gegevens van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature).
       allOf:
         - $ref: '#/components/schemas/InOnderzoek'
-      type: object
-      properties:
-        burgerservicenummer:
-          type: boolean
-        geslacht:
-          type: boolean
-        leeftijd:
-          type: boolean
+        - type: object
+          properties:
+            burgerservicenummer:
+              type: boolean
+            geslacht:
+              type: boolean
+            leeftijd:
+              type: boolean
+            gemeenteVanInschrijving:
+              type: boolean
+            datumInschrijvingInGemeente:
+              type: boolean
+            indicatieCurateleRegister:
+              type: boolean
+            indicatieGezagMinderjarige:
+              type: boolean
     InOnderzoek:
       type: object
       properties:

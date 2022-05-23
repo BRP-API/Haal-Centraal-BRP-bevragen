@@ -5,23 +5,17 @@ Functionaliteit: Zoek met geslachtsnaam, voornamen en gemeente van inschrijving
 
   Achtergrond:
     Gegeven het systeem heeft personen met de volgende gegevens
-    | burgerservicenummer | geslachtsaanduiding (04.10) |
-    | 999995078           | M                           |
-    | 999995082           | M                           |
-    | 999995086           | V                           |
-    | 999995088           | M                           |
+    | burgerservicenummer | geslachtsaanduiding (04.10) | gemeente van inschrijving (09.10) |
+    | 999995078           | M                           | 0014                              |
+    | 999995082           | M                           | 0014                              |
+    | 999995086           | V                           | 0015                              |
+    | 999995088           | M                           | 0014                              |
     En het systeem heeft personen met de volgende 'naam' gegevens
     | burgerservicenummer | geslachtsnaam (02.40) | voornamen (02.10) | voorvoegsel (02.30) |
     | 999995078           | Maassen               | Pieter            |                     |
     | 999995082           | Maassen               | Jan Peter         | van                 |
     | 999995086           | Os                    | Miriam            |                     |
     | 999995088           | Maassen               | Jan Peter         |                     |
-    En het systeem heeft personen met de volgende 'verblijfplaats' gegevens
-    | burgerservicenummer | gemeente van inschrijving (09.10) |
-    | 999995078           | 0014                              |
-    | 999995082           | 0014                              |
-    | 999995086           | 0015                              |
-    | 999995088           | 0014                              |
     
 Rule: Geslachtsnaam, voornamen en gemeenteVanInschrijving zijn verplichte parameters
       Zoeken is niet hoofdlettergevoelig

@@ -8,7 +8,7 @@
     "test": "test"
   },
   "scripts": {
-    "nswag:gen": "nswag run src/BrpService/Server.nswag /runtime:Net60 && nswag run src/BrpProxy/DataTransferObjects.nswag /runtime:Net60",
+    "nswag:gen": "bash scripts/nswag-gen.sh",
     "oas:generate-client": "openapi-generator-cli generate -i ./specificatie/genereervariant/openapi.yaml --global-property=modelTests=false,apiTests=false,modelDocs=false,apiDocs=false",
     "oas:generate-java-client": "npm run oas:generate-client -- -o ./code/java -g java --additional-properties=dateLibrary=java8,java8=true,optionalProjectFile=false,optionalAssemblyInfo=false",
     "oas:generate-netcore-client": "npm run oas:generate-client -- -o ./code/netcore -g csharp-netcore --additional-properties=optionalProjectFile=false,optionalAssemblyInfo=false",
@@ -22,7 +22,8 @@
     "postoas:resolve": "rm swagger-codegen-cli.jar",
     "unstage-generated": "git reset HEAD ./specificatie/genereervariant/openapi.* ./test/BRP-bevragen-postman-collection.json ./code/**",
     "rollback-generated": "git checkout ./specificatie/genereervariant/openapi.* ./test/BRP-bevragen-postman-collection.json ./code/**",
-    "specs:verify": "cucumber-js -f html:docs/features/test-result.html -f json:docs/features/test-result.json features/**/*.feature --tags @ready --tags \"not @gba\""
+    "specs:report": "node scripts/generate-cucumber-report.js",
+    "specs:verify": "bash scripts/specs-verify.sh"
   },
   "repository": {
     "type": "git",
