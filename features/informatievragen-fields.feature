@@ -80,12 +80,15 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | burgerservicenummer | 999990160                       |
       | fields              | <fields>                        |
       Dan heeft de response een persoon met de volgende 'naam' gegevens
-      | naam                                 | waarde      |
-      | voornamen                            | Hendrik Jan |
-      | adellijkeTitelPredicaat.code         | R           |
-      | adellijkeTitelPredicaat.omschrijving | ridder      |
-      | voorvoegsel                          | de          |
-      | geslachtsnaam                        | Brink       |
+      | naam                                 | waarde              |
+      | voornamen                            | Hendrik Jan         |
+      | adellijkeTitelPredicaat.code         | R                   |
+      | adellijkeTitelPredicaat.omschrijving | ridder              |
+      | adellijkeTitelPredicaat.soort        | titel               |
+      | voorvoegsel                          | de                  |
+      | geslachtsnaam                        | Brink               |
+      | aanduidingNaamgebruik.code           | E                   |
+      | aanduidingNaamgebruik.omschrijving   | eigen geslachtsnaam |
       En heeft de response een persoon met de volgende gegevens
       | naam                  | waarde |
       | geslacht.code         | M      |
