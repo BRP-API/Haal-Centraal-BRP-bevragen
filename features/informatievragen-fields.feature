@@ -679,4 +679,39 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | 999992715           | wel geheimhouding  | 2             |
       | 999991802           | wel geheimhouding  | 1             |
       | 999991929           | geen geheimhouding | 0             |
-      
+
+  Rule: opschorting bijhouding reden wordt altijd geleverd wanneer die een waarde heeft
+
+    @gba
+    Scenario: Persoon heeft opschorting bijhouding
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                                              | waarde    |
+      | burgerservicenummer                               | 999993483 |
+      | Datum opschorting bijhouding (67.10)              | 20140702  |
+      | Omschrijving reden opschorting bijhouding (67.20) | E         |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999993483                       |
+      | fields              | burgerservicenummer             |
+      Dan heeft de persoon met burgerservicenummer '999993483' alleen de volgende gegevens
+      | naam                                     | waarde    |
+      | burgerservicenummer                      | 999993483 |
+      | opschortingBijhouding.reden.code         | E         |
+      | opschortingBijhouding.reden.omschrijving | emigratie |
+
+    @gba
+    Scenario: Persoon heeft geen opschorting bijhouding
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                                              | waarde    |
+      | burgerservicenummer                               | 999993653 |
+      | Datum opschorting bijhouding (67.10)              |           |
+      | Omschrijving reden opschorting bijhouding (67.20) |           |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999993653                       |
+      | fields              | burgerservicenummer             |
+      Dan heeft de persoon met burgerservicenummer '999993653' alleen de volgende gegevens
+      | naam                                     | waarde    |
+      | burgerservicenummer                      | 999993653 |
