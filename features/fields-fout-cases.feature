@@ -12,13 +12,13 @@ Rule: De Fields parameter is verplicht.
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999994086                       |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Minimale combinatie van parameters moet worden opgegeven.                                                   |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: fields.                                                                      |
-    | code     | paramsCombination                                                                                           |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Minimale combinatie van parameters moet worden opgegeven.   |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: fields.                      |
+    | code     | paramsCombination                                           |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name   | reason                  |
     | required | fields | Parameter is verplicht. |
@@ -31,13 +31,13 @@ Rule: De Fields parameter is verplicht.
     | geslachtsnaam | Kierkegaard                         |
     | geboortedatum | 1956-11-15                          |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Minimale combinatie van parameters moet worden opgegeven.                                                   |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: fields.                                                                      |
-    | code     | paramsCombination                                                                                           |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Minimale combinatie van parameters moet worden opgegeven.   |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: fields.                      |
+    | code     | paramsCombination                                           |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name   | reason                  |
     | required | fields | Parameter is verplicht. |
@@ -50,13 +50,13 @@ Rule: De Fields parameter is verplicht.
     | burgerservicenummer | 999994086                       |
     | fields              |                                 |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Een of meerdere parameters zijn niet correct.                                                               |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: fields.                                                                      |
-    | code     | paramsValidation                                                                                            |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: fields.                      |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name   | reason                          |
     | minItems | fields | Array bevat minder dan 1 items. |
@@ -70,16 +70,55 @@ Rule: De Fields parameter is verplicht.
     | geboortedatum | 1956-11-15                          |
     | fields        |                                     |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Een of meerdere parameters zijn niet correct.                                                               |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: fields.                                                                      |
-    | code     | paramsValidation                                                                                            |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: fields.                      |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name   | reason                          |
     | minItems | fields | Array bevat minder dan 1 items. |
+
+  @fout-case
+  Scenario: Raadpleeg met burgerservicenummer: Fields parameter is geen array
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999994086                       |
+    | fields (als string) | burgerservicenummer             |
+    Dan heeft de response een object met de volgende gegevens
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: fields.                      |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
+    En heeft het object de volgende 'invalidParams' gegevens
+    | code  | name   | reason                   |
+    | array | fields | Parameter is geen array. |
+
+  @fout-case
+  Scenario: Zoek met geslachtsnaam en geboortedatum: Fields parameter is geen array
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                              |
+    | type                | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam       | Kierkegaard                         |
+    | geboortedatum       | 1956-11-15                          |
+    | fields (als string) | burgerservicenummer                 |
+    Dan heeft de response een object met de volgende gegevens
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: fields.                      |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
+    En heeft het object de volgende 'invalidParams' gegevens
+    | code  | name   | reason                   |
+    | array | fields | Parameter is geen array. |
 
 Rule: De Fields parameter mag maximaal 130 veld paden bevatten
 
@@ -90,13 +129,13 @@ Rule: De Fields parameter mag maximaal 130 veld paden bevatten
     | burgerservicenummer | 999994086                       |
     | fields              | (131 maal aNummer)              |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Een of meerdere parameters zijn niet correct.                                                               |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: fields.                                                                      |
-    | code     | paramsValidation                                                                                            |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: fields.                      |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name   | reason                          |
     | maxItems | fields | Array bevat meer dan 130 items. |
@@ -109,13 +148,13 @@ Rule: De Fields parameter mag maximaal 130 veld paden bevatten
     | geboortedatum | 1956-11-15                          |
     | fields        | (131 maal aNummer)                  |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Een of meerdere parameters zijn niet correct.                                                               |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: fields.                                                                      |
-    | code     | paramsValidation                                                                                            |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: fields.                      |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name   | reason                          |
     | maxItems | fields | Array bevat meer dan 130 items. |
@@ -132,13 +171,13 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden
     | burgerservicenummer | 999994086                       |
     | fields              | <fields>                        |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Een of meerdere parameters zijn niet correct.                                                               |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: fields[0].                                                                   |
-    | code     | paramsValidation                                                                                            |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: fields[0].                   |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code   | name      | reason   |
     | <code> | fields[0] | <reason> |
@@ -157,13 +196,13 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden
     | geboortedatum | 1956-11-15                          |
     | fields        | <fields>                            |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Een of meerdere parameters zijn niet correct.                                                               |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: fields[0].                                                                   |
-    | code     | paramsValidation                                                                                            |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: fields[0].                   |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code   | name      | reason   |
     | <code> | fields[0] | <reason> |
@@ -181,13 +220,13 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden
     | burgerservicenummer | 999994086                                      |
     | fields              | burgerservicenummer,bestaatniet,bestaatookniet |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Een of meerdere parameters zijn niet correct.                                                               |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: fields[1], fields[2].                                                        |
-    | code     | paramsValidation                                                                                            |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: fields[1], fields[2].        |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code   | name      | reason                                       |
     | fields | fields[1] | Parameter bevat een niet bestaande veldnaam. |
@@ -201,13 +240,13 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden
     | burgerservicenummer | 999994086                       |
     | fields              | BurgerServiceNummer,geslacht    |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Een of meerdere parameters zijn niet correct.                                                               |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: fields[0].                                                                   |
-    | code     | paramsValidation                                                                                            |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: fields[0].                   |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code   | name      | reason                                       |
     | fields | fields[0] | Parameter bevat een niet bestaande veldnaam. |
@@ -220,13 +259,13 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden
     | burgerservicenummer | 999995078                       |
     | fields              | burgerservicenummer,<pad>       |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Een of meerdere parameters zijn niet correct.                                                               |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: fields[1].                                                                   |
-    | code     | paramsValidation                                                                                            |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: fields[1].                   |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code   | name      | reason                                       |
     | fields | fields[1] | Parameter bevat een niet bestaande veldnaam. |
@@ -263,13 +302,13 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden
     | burgerservicenummer | 999994086                       |
     | fields              | burgerservicenummer, naam       |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Een of meerdere parameters zijn niet correct.                                                               |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: fields[1].                                                                   |
-    | code     | paramsValidation                                                                                            |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: fields[1].                   |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code    | name      | reason                                                   |
     | pattern | fields[1] | Waarde voldoet niet aan patroon ^[a-zA-Z0-9\._]{1,199}$. |
@@ -282,13 +321,13 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden
     | burgerservicenummer | 999994086                       |
     | fields              | burgerservicenummer,,naam       |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Een of meerdere parameters zijn niet correct.                                                               |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: fields[1].                                                                   |
-    | code     | paramsValidation                                                                                            |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: fields[1].                   |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code    | name      | reason                                                   |
     | pattern | fields[1] | Waarde voldoet niet aan patroon ^[a-zA-Z0-9\._]{1,199}$. |
@@ -301,13 +340,13 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden
     | burgerservicenummer | 999994086                       |
     | fields              | <fields>                        |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Een of meerdere parameters zijn niet correct.                                                               |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: fields[0].                                                                   |
-    | code     | paramsValidation                                                                                            |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: fields[0].                   |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code   | name      | reason   |
     | <code> | fields[0] | <reason> |
@@ -329,13 +368,13 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden
     | geboortedatum | 1956-11-15                          |
     | fields        | burgerservicenummer,aNummer         |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Een of meerdere parameters zijn niet correct.                                                               |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: fields[1].                                                                   |
-    | code     | paramsValidation                                                                                            |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: fields[1].                   |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code   | name      | reason                                       |
     | fields | fields[1] | Parameter bevat een niet bestaande veldnaam. |

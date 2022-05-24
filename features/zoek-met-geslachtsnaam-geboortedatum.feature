@@ -70,11 +70,11 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
 
   Abstract Scenario: Zoek met deel van geslachtsnaam en geboortedatum
     Als personen wordt gezocht met de volgende parameters
-    | naam          | waarde                                                |
-    | type          | ZoekMetGeslachtsnaamEnGeboortedatum                   |
-    | geslachtsnaam | <geslachtsnaam>                                       |
-    | geboortedatum | 1983-05-26                                            |
-    | fields        | burgerservicenummer                                   |
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | <geslachtsnaam>                     |
+    | geboortedatum | 1983-05-26                          |
+    | fields        | burgerservicenummer                 |
     Dan heeft de response 0 personen
 
     Voorbeelden:
@@ -171,17 +171,17 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
   @fout-case
   Scenario: Zoek zonder geslachtsnaam en geboortedatum
     Als personen wordt gezocht met de volgende parameters
-    | naam          | waarde                              |
-    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
-    | fields        | burgerservicenummer                 |
+    | naam   | waarde                              |
+    | type   | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | fields | burgerservicenummer                 |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Minimale combinatie van parameters moet worden opgegeven.                                                   |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: geboortedatum, geslachtsnaam.                                                |
-    | code     | paramsCombination                                                                                           |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                       |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1  |
+    | title    | Minimale combinatie van parameters moet worden opgegeven.    |
+    | status   | 400                                                          |
+    | detail   | De foutieve parameter(s) zijn: geboortedatum, geslachtsnaam. |
+    | code     | paramsCombination                                            |
+    | instance | /haalcentraal/api/brp/personen                               |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name          | reason                  |
     | required | geboortedatum | Parameter is verplicht. |
@@ -195,13 +195,13 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | geboortedatum | 1983-05-26                          |
     | fields        | burgerservicenummer                 |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Minimale combinatie van parameters moet worden opgegeven.                                                   |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: geslachtsnaam.                                                               |
-    | code     | paramsCombination                                                                                           |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Minimale combinatie van parameters moet worden opgegeven.   |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: geslachtsnaam.               |
+    | code     | paramsCombination                                           |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name          | reason                  |
     | required | geslachtsnaam | Parameter is verplicht. |
@@ -214,13 +214,13 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | geslachtsnaam | maassen                             |
     | fields        | burgerservicenummer                 |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Minimale combinatie van parameters moet worden opgegeven.                                                   |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: geboortedatum.                                                               |
-    | code     | paramsCombination                                                                                           |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Minimale combinatie van parameters moet worden opgegeven.   |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: geboortedatum.               |
+    | code     | paramsCombination                                           |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name          | reason                  |
     | required | geboortedatum | Parameter is verplicht. |
@@ -234,13 +234,13 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | geboortedatum |                                     |
     | fields        | burgerservicenummer                 |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Minimale combinatie van parameters moet worden opgegeven.                                                   |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: geboortedatum, geslachtsnaam.                                                |
-    | code     | paramsCombination                                                                                           |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                       |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1  |
+    | title    | Minimale combinatie van parameters moet worden opgegeven.    |
+    | status   | 400                                                          |
+    | detail   | De foutieve parameter(s) zijn: geboortedatum, geslachtsnaam. |
+    | code     | paramsCombination                                            |
+    | instance | /haalcentraal/api/brp/personen                               |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name          | reason                  |
     | required | geboortedatum | Parameter is verplicht. |
@@ -255,13 +255,13 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | geboortedatum | <geboortedatum>                     |
     | fields        | burgerservicenummer                 |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Minimale combinatie van parameters moet worden opgegeven.                                                   |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: <foutieve parameter>.                                                        |
-    | code     | paramsCombination                                                                                           |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Minimale combinatie van parameters moet worden opgegeven.   |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: <foutieve parameter>.        |
+    | code     | paramsCombination                                           |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name                 | reason                  |
     | required | <foutieve parameter> | Parameter is verplicht. |
@@ -280,13 +280,13 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | geboortedatum | <geboortedatum>                     |
     | fields        | burgerservicenummer                 |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Een of meerdere parameters zijn niet correct.                                                               |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: geboortedatum.                                                               |
-    | code     | paramsValidation                                                                                            |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: geboortedatum.               |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code | name          | reason                        |
     | date | geboortedatum | Waarde is geen geldige datum. |
@@ -305,13 +305,13 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | geboortedatum | 1983-05-26                          |
     | fields        | burgerservicenummer                 |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Een of meerdere parameters zijn niet correct.                                                               |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: geslachtsnaam.                                                               |
-    | code     | paramsValidation                                                                                            |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: geslachtsnaam.               |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code    | name          | reason                                                                                               |
     | pattern | geslachtsnaam | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$. |
@@ -330,13 +330,13 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | geboortedatum | 19830526                               |
     | fields        | burgerservicenummer                    |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Een of meerdere parameters zijn niet correct.                                                               |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: geboortedatum, geslachtsnaam.                                                |
-    | code     | paramsValidation                                                                                            |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                       |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1  |
+    | title    | Een of meerdere parameters zijn niet correct.                |
+    | status   | 400                                                          |
+    | detail   | De foutieve parameter(s) zijn: geboortedatum, geslachtsnaam. |
+    | code     | paramsValidation                                             |
+    | instance | /haalcentraal/api/brp/personen                               |
     En heeft het object de volgende 'invalidParams' gegevens
     | code    | name          | reason                                                                                               |
     | pattern | geslachtsnaam | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$. |
@@ -352,13 +352,13 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | <parameter naam> | <script>alert('hello world');</script> |
     | fields           | burgerservicenummer                    |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Een of meerdere parameters zijn niet correct.                                                               |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: <parameter naam>.                                                            |
-    | code     | paramsValidation                                                                                            |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: <parameter naam>.            |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code    | name             | reason                                     |
     | pattern | <parameter naam> | Waarde voldoet niet aan patroon <patroon>. |
@@ -405,13 +405,13 @@ Rule: Bij zoeken met de "*" wildcard moet minimaal 3 letters (exclusief de wildc
     | geboortedatum | 1983-05-26                          |
     | fields        | burgerservicenummer                 |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Een of meerdere parameters zijn niet correct.                                                               |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: geslachtsnaam.                                                               |
-    | code     | paramsValidation                                                                                            |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: geslachtsnaam.               |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code    | name          | reason                                                                                               |
     | pattern | geslachtsnaam | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$. |
@@ -430,13 +430,13 @@ Rule: Bij zoeken met de "*" wildcard moet minimaal 3 letters (exclusief de wildc
     | geboortedatum | 1983-05-26                          |
     | fields        | burgerservicenummer                 |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Een of meerdere parameters zijn niet correct.                                                               |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: geslachtsnaam.                                                               |
-    | code     | paramsValidation                                                                                            |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: geslachtsnaam.               |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code    | name          | reason                                                                                               |
     | pattern | geslachtsnaam | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$. |
@@ -475,13 +475,13 @@ Rule: Bij zoeken met de "*" wildcard moet minimaal 3 letters (exclusief de wildc
     | geboortedatum | 1983-05-26                          |
     | fields        | burgerservicenummer                 |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Een of meerdere parameters zijn niet correct.                                                               |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: voornamen.                                                                   |
-    | code     | paramsValidation                                                                                            |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: voornamen.                   |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code    | name      | reason                                                                 |
     | pattern | voornamen | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,199}\*{0,1}$. |
@@ -500,13 +500,13 @@ Rule: Bij zoeken met de "*" wildcard moet minimaal 3 letters (exclusief de wildc
     | geboortedatum | 1983-05-26                          |
     | fields        | burgerservicenummer                 |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Een of meerdere parameters zijn niet correct.                                                               |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: geslachtsnaam.                                                               |
-    | code     | paramsValidation                                                                                            |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: geslachtsnaam.               |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code    | name          | reason                                                                                               |
     | pattern | geslachtsnaam | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$. |
@@ -528,13 +528,13 @@ Rule: Bij zoeken met de "*" wildcard moet minimaal 3 letters (exclusief de wildc
     | geboortedatum | 1983-05-26                          |
     | fields        | burgerservicenummer                 |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Een of meerdere parameters zijn niet correct.                                                               |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: geslachtsnaam.                                                               |
-    | code     | paramsValidation                                                                                            |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: geslachtsnaam.               |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code    | name          | reason                                                                                               |
     | pattern | geslachtsnaam | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$. |

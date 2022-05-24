@@ -98,13 +98,13 @@ Rule: Postcode en huisnummer zijn verplichte parameters
     | type   | ZoekMetPostcodeEnHuisnummer |
     | fields | burgerservicenummer         |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Minimale combinatie van parameters moet worden opgegeven.                                                   |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: postcode, huisnummer.                                                        |
-    | code     | paramsCombination                                                                                           |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Minimale combinatie van parameters moet worden opgegeven.   |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: postcode, huisnummer.        |
+    | code     | paramsCombination                                           |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name       | reason                  |
     | required | postcode   | Parameter is verplicht. |
@@ -118,13 +118,13 @@ Rule: Postcode en huisnummer zijn verplichte parameters
     | huisnummer | 2                           |
     | fields     | burgerservicenummer         |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Minimale combinatie van parameters moet worden opgegeven.                                                   |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: postcode.                                                                    |
-    | code     | paramsCombination                                                                                           |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Minimale combinatie van parameters moet worden opgegeven.   |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: postcode.                    |
+    | code     | paramsCombination                                           |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name     | reason                  |
     | required | postcode | Parameter is verplicht. |
@@ -137,13 +137,13 @@ Rule: Postcode en huisnummer zijn verplichte parameters
     | postcode | 2628HJ                      |
     | fields   | burgerservicenummer         |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Minimale combinatie van parameters moet worden opgegeven.                                                   |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: huisnummer.                                                                  |
-    | code     | paramsCombination                                                                                           |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Minimale combinatie van parameters moet worden opgegeven.   |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: huisnummer.                  |
+    | code     | paramsCombination                                           |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name       | reason                  |
     | required | huisnummer | Parameter is verplicht. |
@@ -157,13 +157,13 @@ Rule: Postcode en huisnummer zijn verplichte parameters
     | huisnummer |                             |
     | fields     | burgerservicenummer         |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Minimale combinatie van parameters moet worden opgegeven.                                                   |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: postcode, huisnummer.                                                        |
-    | code     | paramsCombination                                                                                           |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Minimale combinatie van parameters moet worden opgegeven.   |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: postcode, huisnummer.        |
+    | code     | paramsCombination                                           |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name       | reason                  |
     | required | postcode   | Parameter is verplicht. |
@@ -178,13 +178,13 @@ Rule: Postcode en huisnummer zijn verplichte parameters
     | huisnummer | <huisnummer>                |
     | fields     | burgerservicenummer         |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Minimale combinatie van parameters moet worden opgegeven.                                                   |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: <foutieve parameter>.                                                        |
-    | code     | paramsCombination                                                                                           |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Minimale combinatie van parameters moet worden opgegeven.   |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: <foutieve parameter>.        |
+    | code     | paramsCombination                                           |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name                 | reason                  |
     | required | <foutieve parameter> | Parameter is verplicht. |
@@ -203,13 +203,13 @@ Rule: Postcode en huisnummer zijn verplichte parameters
     | huisnummer | twee                        |
     | fields     | burgerservicenummer         |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Een of meerdere parameters zijn niet correct.                                                               |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: huisnummer.                                                                  |
-    | code     | paramsValidation                                                                                            |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: huisnummer.                  |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code    | name       | reason                       |
     | integer | huisnummer | Waarde is geen geldig getal. |
@@ -223,13 +223,13 @@ Rule: Postcode en huisnummer zijn verplichte parameters
     | huisnummer | 2                           |
     | fields     | burgerservicenummer         |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Een of meerdere parameters zijn niet correct.                                                               |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: postcode.                                                                    |
-    | code     | paramsValidation                                                                                            |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: postcode.                    |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code    | name     | reason                                                             |
     | pattern | postcode | Waarde voldoet niet aan patroon ^[1-9]{1}[0-9]{3}[ ]?[A-Za-z]{2}$. |
@@ -249,13 +249,13 @@ Rule: Postcode en huisnummer zijn verplichte parameters
     | huisnummer | twee                        |
     | fields     | burgerservicenummer         |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Een of meerdere parameters zijn niet correct.                                                               |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: postcode, huisnummer.                                                        |
-    | code     | paramsValidation                                                                                            |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: postcode, huisnummer.        |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code    | name       | reason                                                             |
     | pattern | postcode   | Waarde voldoet niet aan patroon ^[1-9]{1}[0-9]{3}[ ]?[A-Za-z]{2}$. |
@@ -271,13 +271,13 @@ Rule: Postcode en huisnummer zijn verplichte parameters
     | <parameter naam> | <script>alert('hello world');</script> |
     | fields           | burgerservicenummer                    |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                      |
-    | type     | https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest |
-    | title    | Een of meerdere parameters zijn niet correct.                                                               |
-    | status   | 400                                                                                                         |
-    | detail   | De foutieve parameter(s) zijn: <parameter naam>.                                                            |
-    | code     | paramsValidation                                                                                            |
-    | instance | /haalcentraal/api/brp/personen                                                                              |
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: <parameter naam>.            |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code    | name             | reason                                     |
     | pattern | <parameter naam> | Waarde voldoet niet aan patroon <patroon>. |

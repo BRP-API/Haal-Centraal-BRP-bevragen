@@ -348,12 +348,15 @@ Given(/^(?:de|het) '(.*)' heeft GEEN '(.*)' gegevens$/, function (_relatie, _geg
 function createRequestBody(dataTable) {
     let requestBody = {};
     dataTable.hashes().forEach(function(param) {
-        if(["burgerservicenummer", "fields"].includes(param.naam)) {
-            if(param.waarde === '') {
-                requestBody[param.naam] = [];    
+        if(["burgerservicenummer", "fields", "fields (als string)"].includes(param.naam)) {
+            if(param.naam === 'fields (als string)') {
+                requestBody['fields'] = param.waarde;
+            }
+            else if(param.waarde === '') {
+                requestBody[param.naam] = [];
             }
             else if(param.waarde === '(131 maal aNummer)') {
-                requestBody[param.naam] = [];    
+                requestBody[param.naam] = [];
                 for(let count=0; count<=131; count++) {
                     requestBody[param.naam].push('aNummer');
                 }

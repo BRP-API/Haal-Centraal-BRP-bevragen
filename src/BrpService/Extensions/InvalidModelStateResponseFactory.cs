@@ -37,7 +37,7 @@ public static class InvalidModelStateResponseFactory
             Instance = new Uri(context.HttpContext.Request.Path, UriKind.Relative),
             Status = StatusCodes.Status400BadRequest,
             Title = titel,
-            Type = new Uri("https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?#System_Net_HttpStatusCode_BadRequest"),
+            Type = new Uri("https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1"),
             Code = code,
             InvalidParams = invalidParams,
             Detail = $"De foutieve parameter(s) zijn: {string.Join(", ", invalidParams.Select(x => x.Name))}."
