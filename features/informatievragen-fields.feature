@@ -650,3 +650,33 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | onbekend    | datum overlijden (08.10)                         | overlijden            | datum                     |
       | langFormaat | datum einde verblijfstitel (39.20)               | verblijfstitel        | datumEinde                |
       | datum       | ingangsdatum verblijfstitel (39.30)              | verblijfstitel        | datumIngang               |
+
+  Rule: geheimhoudingPersoonsgegevens wordt altijd geleverd
+
+    @gba
+    Abstract Scenario: Persoon heeft <titel>
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                                  | waarde                |
+      | burgerservicenummer                   | <burgerservicenummer> |
+      | geheimhoudingPersoonsgegevens (70.10) | <gba geheimhouding>   |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | <burgerservicenummer>           |
+      | fields              | burgerservicenummer             |
+      Dan heeft de persoon met burgerservicenummer '<burgerservicenummer>' alleen de volgende gegevens
+      | naam                          | waarde                |
+      | burgerservicenummer           | <burgerservicenummer> |
+      | geheimhoudingPersoonsgegevens | <geheimhouding>       |
+
+      Voorbeelden:
+      | burgerservicenummer | titel              | geheimhouding |
+      | 999994608           | wel geheimhouding  | 7             |
+      | 999995492           | wel geheimhouding  | 6             |
+      | 999995480           | wel geheimhouding  | 5             |
+      | 555550001           | wel geheimhouding  | 4             |
+      | 999993872           | wel geheimhouding  | 3             |
+      | 999992715           | wel geheimhouding  | 2             |
+      | 999991802           | wel geheimhouding  | 1             |
+      | 999991929           | geen geheimhouding | 0             |
+      
