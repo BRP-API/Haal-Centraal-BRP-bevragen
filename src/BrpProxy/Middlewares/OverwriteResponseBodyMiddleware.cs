@@ -79,7 +79,7 @@ namespace BrpProxy.Middlewares
 
                 _logger.LogDebug("transformed responseBody: {modifiedBody}", modifiedBody);
 
-                using var bodyStream = modifiedBody.ToMemoryStream();
+                using var bodyStream = modifiedBody.ToMemoryStream(context.Response);
 
                 context.Response.ContentLength = bodyStream.Length;
                 await bodyStream.CopyToAsync(orgBodyStream);
@@ -175,9 +175,16 @@ namespace BrpProxy.Middlewares
         {
             response.Body.Seek(0, SeekOrigin.Begin);
 
-            //var gzipStream = new GZipStream(response.Body, CompressionMode.Decompress);
-            //var streamReader = new StreamReader(gzipStream);
-            var streamReader = new StreamReader(response.Body);
+            StreamReader streamReader;
+            if (response.Headers.ContentEncoding.Contains("gzip"))
+            {
+                var gzipStream = new GZipStream(response.Body, CompressionMode.Decompress);
+                streamReader = new StreamReader(gzipStream);
+            }
+            else
+            {
+                streamReader = new StreamReader(response.Body);
+            }
 
             var retval = await streamReader.ReadToEndAsync();
 
@@ -189,13 +196,20 @@ namespace BrpProxy.Middlewares
 
     public static class MemoryStreamHelpers
     {
-        public static MemoryStream ToMemoryStream(this string data)
+        public static MemoryStream ToMemoryStream(this string data, HttpResponse response)
         {
             var retval = new MemoryStream();
 
-            //var gzipStream = new GZipStream(retval, CompressionMode.Compress);
-            //var streamWriter = new StreamWriter(gzipStream);
-            var streamWriter = new StreamWriter(retval);
+            StreamWriter streamWriter;
+            if (response.Headers.ContentEncoding.Contains("gzip"))
+            {
+                var gzipStream = new GZipStream(retval, CompressionMode.Compress);
+                streamWriter = new StreamWriter(gzipStream);
+            }
+            else
+            {
+                streamWriter = new StreamWriter(retval);
+            }
 
             streamWriter.Write(data);
             streamWriter.Flush();

@@ -74,7 +74,7 @@ namespace BrpProxy.Middlewares
             var foutbericht = context.CreateMethodNotAllowedFoutBericht();
             //_logger.LogWarning(ex, message: $"requestBody: {requestBody}");
 
-            using var bodyStream = foutbericht.ToJson().ToMemoryStream();
+            using var bodyStream = foutbericht.ToJson().ToMemoryStream(context.Response);
 
             context.Response.StatusCode = foutbericht.Status!.Value;
             context.Response.ContentLength = bodyStream.Length;
@@ -87,7 +87,7 @@ namespace BrpProxy.Middlewares
         {
             var foutbericht = context.CreateJsonSerializationExceptionFoutbericht(ex);
 
-            using var bodyStream = foutbericht.ToJson().ToMemoryStream();
+            using var bodyStream = foutbericht.ToJson().ToMemoryStream(context.Response);
 
             context.Response.StatusCode = foutbericht.Status!.Value;
             context.Response.ContentLength = bodyStream.Length;
@@ -96,7 +96,7 @@ namespace BrpProxy.Middlewares
 
         public static async Task HandleValidationErrors(this HttpContext context, BadRequestFoutbericht foutbericht, Stream orgResponseBodyStream)
         {
-            using var bodyStream = foutbericht.ToJson().ToMemoryStream();
+            using var bodyStream = foutbericht.ToJson().ToMemoryStream(context.Response);
 
             context.Response.StatusCode = foutbericht.Status!.Value;
             context.Response.ContentLength = bodyStream.Length;
@@ -107,7 +107,7 @@ namespace BrpProxy.Middlewares
         {
             var foutbericht = context.CreateInternalServerErrorFoutbericht();
 
-            using var bodyStream = foutbericht.ToJson().ToMemoryStream();
+            using var bodyStream = foutbericht.ToJson().ToMemoryStream(context.Response);
 
             context.Response.StatusCode = foutbericht.Status!.Value;
             context.Response.ContentLength = bodyStream.Length;
