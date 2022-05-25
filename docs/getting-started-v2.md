@@ -35,7 +35,7 @@ Note. De prerequisite van OpenAPI Generator is JAVA. Je moet een JAVA runtime in
 
 ## Probeer en test de BrpProxy
 
-Door wettelijke restricties kan de BRP bevragen API geen informatie vragen leveren. Er wordt op dit moment aan gewerkt om deze restricties weg te halen. Totdat dit is gerealiseerd moet de BrpProxy worden gebruikt om de informatie vragen te kunnen krijgen.
+Door wettelijke restricties kan de BRP bevragen API bepaalde bewerkingen niet uitvoeren. Er wordt op dit moment aan gewerkt om deze restricties weg te halen. Totdat dit is gerealiseerd moet de BrpProxy worden gebruikt om de bewerkte gegevens te kunnen krijgen.
 
 De BrpProxy is geïmplementeerd als een containerized applicatie, zodat het makkelijk kan worden getest op een lokale machine en gehost in een productie omgeving.
 
