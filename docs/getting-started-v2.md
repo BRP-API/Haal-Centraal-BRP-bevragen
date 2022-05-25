@@ -104,6 +104,32 @@ In de volgende paragrafen is beschreven hoe de BrpProxy  t.b.v. test doeleinden 
   docker-compose down
   ```
 
+### BrpProxy configuraties aanpassen
+
+De BrpProxy luistert standaard op poort 5000 van de host machine. Om dit te wijzigen moet de *ports* setting van de **brpproxy** in de **docker-compose.yml** bestand worden aangepast:
+
+```yaml
+...
+brpproxy:
+  ...
+  ports:
+    - "<nieuwe host poort>:5000"
+  ...
+```
+
+Standaard routeert de BrpProxy requests naar `http://localhost:5000/haalcentraal/api/brp/personen` naar de BrpService. Dit kan worden gewijzigd in het **/src/config/BrpProxy/configuration/ocelot.json** bestand. Om bijvoorbeeld requests naar `http://localhost:5000/personen` te routeren naar de BrpService moet de *UpstreamPathTemplate* als volgt worden aangepast:
+
+```json
+{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/{everything}",
+      ...
+    }
+  ]
+}
+```
+
 ### Testpersonen
 
 Deze tabel bevat fictieve burgerservicenummers van testpersonen voor specifieke situaties waarmee de 'Bevraging Persoon' Web API kan worden getest.
