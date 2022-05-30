@@ -6,10 +6,10 @@ namespace BrpProxy.Profiles;
 
 public class GezagsverhoudingProfile : Profile
 {
-    public GezagsverhoudingProfile()
-    {
-        CreateMap<GbaGezagsverhouding, Gezagsverhouding>();
+    //public GezagsverhoudingProfile()
+    //{
+    //    CreateMap<GbaGezagsverhouding, Gezagsverhouding>();
 
-        CreateMap<GbaInOnderzoek, GezagsverhoudingInOnderzoek?>().ConvertUsing<GezagsverhoudingInOnderzoekConverter>();
-    }
+    //    CreateMap<GbaInOnderzoek, GezagsverhoudingInOnderzoek?>().ConvertUsing<GezagsverhoudingInOnderzoekConverter>();
+    //}
 }
