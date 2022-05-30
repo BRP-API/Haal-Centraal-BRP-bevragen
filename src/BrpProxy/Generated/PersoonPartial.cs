@@ -21,19 +21,21 @@ public partial class Persoon
         return Partners?.Count > 0;
     }
 
+    //public bool ShouldSerializeAdressering() => Adressering != null && Adressering.ShouldSerialize();
+
+    public bool ShouldSerializeEuropeesKiesrecht() => EuropeesKiesrecht != null && EuropeesKiesrecht.ShouldSerialize();
+
     public bool ShouldSerializeGeboorte() => Geboorte != null && Geboorte.ShouldSerialize();
 
-    public bool ShouldSerializeGezagsverhouding() => Gezagsverhouding != null && Gezagsverhouding.ShouldSerialize();
-
     public bool ShouldSerializeImmigratie() => Immigratie != null && Immigratie.ShouldSerialize();
-
-    public bool ShouldSerializeKiesrecht() => Kiesrecht != null && Kiesrecht.ShouldSerialize();
 
     public bool ShouldSerializeNaam() => Naam != null && Naam.ShouldSerialize();
 
     public bool ShouldSerializeOpschortingBijhouding() => OpschortingBijhouding != null && OpschortingBijhouding.ShouldSerialize();
 
     public bool ShouldSerializeOverlijden() => Overlijden != null && Overlijden.ShouldSerialize();
+
+    public bool ShouldSerializeUitsluitingKiesrecht() => UitsluitingKiesrecht != null && UitsluitingKiesrecht.ShouldSerialize();
 
     public bool ShouldSerializeVerblijfplaats() => Verblijfplaats != null && Verblijfplaats.ShouldSerialize();
 
@@ -46,12 +48,14 @@ public partial class Persoon
         DatumInschrijvingInGemeente != null ||
         GeheimhoudingPersoonsgegevens ||
         Geslacht != null ||
+        IndicatieCurateleRegister ||
+        IndicatieGezagMinderjarige != null ||
         InOnderzoek != null ||
         Leeftijd > 0 ||
+        //ShouldSerializeAdressering() ||
+        ShouldSerializeEuropeesKiesrecht() ||
         ShouldSerializeGeboorte() ||
-        ShouldSerializeGezagsverhouding() ||
         ShouldSerializeImmigratie() ||
-        ShouldSerializeKiesrecht() ||
         ShouldSerializeKinderen() ||
         ShouldSerializeNaam() ||
         ShouldSerializeNationaliteiten() ||
@@ -60,6 +64,7 @@ public partial class Persoon
         ShouldSerializeOverlijden() ||
         ShouldSerializePartners() ||
         ShouldSerializeReisdocumentnummers() ||
+        ShouldSerializeUitsluitingKiesrecht() ||
         ShouldSerializeVerblijfplaats() ||
         ShouldSerializeVerblijfstitel()
         ;

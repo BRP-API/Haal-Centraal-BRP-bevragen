@@ -20,8 +20,8 @@ Functionaliteit: Immigratie
     | <naam> | <waarde> |
 
     Voorbeelden:
-    | gba naam                          | naam                         | waarde |
-    | land vanwaar ingeschreven (14.10) | landVanwaarIngeschreven.code | 6014   |
+    | gba naam                           | naam                         | waarde |
+    | land van waar ingeschreven (14.10) | landVanwaarIngeschreven.code | 6014   |
 
   Abstract Scenario: persoon heeft 'immigratie' datum veld: '<gba naam>'
     Gegeven het systeem heeft een persoon met de volgende gegevens

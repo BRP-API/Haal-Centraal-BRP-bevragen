@@ -10,6 +10,7 @@ cucumber-js -f html:docs/features/test-result.html \
             features/fields.feature \
             features/leeftijd_bepaling.feature \
             features/nationaliteit.feature \
+            features/onbekend_waardes.feature \
             features/verblijfplaats.feature \
             features/volledigeNaam.feature \
             features/voorletters.feature \

@@ -347,8 +347,11 @@ namespace HaalCentraal.BrpProxy.Generated
         [Newtonsoft.Json.JsonProperty("inOnderzoek", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public PersoonInOnderzoek InOnderzoek { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("kiesrecht", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Kiesrecht Kiesrecht { get; set; }
+        [Newtonsoft.Json.JsonProperty("uitsluitingKiesrecht", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public UitsluitingKiesrecht UitsluitingKiesrecht { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("europeesKiesrecht", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public EuropeesKiesrecht EuropeesKiesrecht { get; set; }
 
         [Newtonsoft.Json.JsonProperty("leeftijd", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int Leeftijd { get; set; }
@@ -383,8 +386,11 @@ namespace HaalCentraal.BrpProxy.Generated
         [Newtonsoft.Json.JsonProperty("adressering", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Adressering Adressering { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("gezagsverhouding", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Gezagsverhouding Gezagsverhouding { get; set; }
+        [Newtonsoft.Json.JsonProperty("indicatieCurateleRegister", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool IndicatieCurateleRegister { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("indicatieGezagMinderjarige", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public Waardetabel IndicatieGezagMinderjarige { get; set; }
 
         [Newtonsoft.Json.JsonProperty("verblijfstitel", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Verblijfstitel Verblijfstitel { get; set; }
@@ -433,6 +439,12 @@ namespace HaalCentraal.BrpProxy.Generated
 
         [Newtonsoft.Json.JsonProperty("datumInschrijvingInGemeente", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? DatumInschrijvingInGemeente { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("indicatieCurateleRegister", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? IndicatieCurateleRegister { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("indicatieGezagMinderjarige", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? IndicatieGezagMinderjarige { get; set; }
 
     }
 
@@ -745,23 +757,37 @@ namespace HaalCentraal.BrpProxy.Generated
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class Kiesrecht
+    public partial class UitsluitingKiesrecht
     {
-        /// <summary>
-        /// Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement.
-        /// <br/>
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty("europeesKiesrecht", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? EuropeesKiesrecht { get; set; }
-
         [Newtonsoft.Json.JsonProperty("uitgeslotenVanKiesrecht", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? UitgeslotenVanKiesrecht { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("einddatumUitsluitingEuropeesKiesrecht", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public AbstractDatum EinddatumUitsluitingEuropeesKiesrecht { get; set; }
+        [Newtonsoft.Json.JsonProperty("einddatum", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public AbstractDatum Einddatum { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("einddatumUitsluitingKiesrecht", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public AbstractDatum EinddatumUitsluitingKiesrecht { get; set; }
+        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
+
+        [Newtonsoft.Json.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
+        {
+            get { return _additionalProperties; }
+            set { _additionalProperties = value; }
+        }
+
+    }
+
+    /// <summary>
+    /// * **aanduiding** - Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Europees_Kiesrecht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+    /// <br/>
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class EuropeesKiesrecht
+    {
+        [Newtonsoft.Json.JsonProperty("aanduiding", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public Waardetabel Aanduiding { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("einddatumUitsluiting", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public AbstractDatum EinddatumUitsluiting { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
@@ -1536,58 +1562,6 @@ namespace HaalCentraal.BrpProxy.Generated
 
         [Newtonsoft.Json.JsonProperty("gebruikInLopendeTekst", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? GebruikInLopendeTekst { get; set; }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class Gezagsverhouding : GezagsverhoudingBasis
-    {
-        [Newtonsoft.Json.JsonProperty("inOnderzoek", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GezagsverhoudingInOnderzoek InOnderzoek { get; set; }
-
-    }
-
-    /// <summary>
-    /// Gegevens over het gezag over de persoon.
-    /// <br/>* **indicatieGezagMinderjarige** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'Gezag_Minderjarige' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-    /// <br/>
-    /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class GezagsverhoudingBasis
-    {
-        /// <summary>
-        /// Geeft aan dat de persoon onder curatele is gesteld.
-        /// <br/>
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty("indicatieCurateleRegister", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IndicatieCurateleRegister { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("indicatieGezagMinderjarige", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Waardetabel IndicatieGezagMinderjarige { get; set; }
-
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
-
-    }
-
-    /// <summary>
-    /// Geeft aan welke gegevens van de gezagsverhouding in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
-    /// <br/>
-    /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class GezagsverhoudingInOnderzoek : InOnderzoek
-    {
-        [Newtonsoft.Json.JsonProperty("indicatieCurateleRegister", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IndicatieCurateleRegister { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("indicatieGezagMinderjarige", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IndicatieGezagMinderjarige { get; set; }
 
     }
 

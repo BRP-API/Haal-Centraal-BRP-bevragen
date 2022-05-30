@@ -47,15 +47,13 @@ Rule: een veld wordt niet opgenomen wanneer het de standaardwaarde bevat
     En de persoon heeft de volgende 'verblijfplaats' gegevens
     | naam               | waarde |
     | straatnaam (11.10) | .      |
+    | huisnummer (11.20) | 1      |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                    |
-    | type                | RaadpleegMetBurgerservicenummer           |
-    | burgerservicenummer | 999992934                                 |
-    | fields              | burgerservicenummer,verblijfplaats.straat |
-    Dan heeft de response een persoon met alleen de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992934 |
-    En heeft de persoon alleen de volgende 'verblijfplaats' gegevens
+    | naam                | waarde                              |
+    | type                | RaadpleegMetBurgerservicenummer     |
+    | burgerservicenummer | 999992934                           |
+    | fields              | verblijfplaats.verblijfadres.straat |
+    Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
     | naam | waarde |
     | type | Adres  |
 
@@ -68,62 +66,54 @@ Rule: een veld wordt niet opgenomen wanneer het de standaardwaarde bevat
     | straatnaam (11.10) | een straat |
     | huisnummer (11.20) | 0          |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                        |
-    | type                | RaadpleegMetBurgerservicenummer               |
-    | burgerservicenummer | 999992934                                     |
-    | fields              | burgerservicenummer,verblijfplaats.huisnummer |
-    Dan heeft de response een persoon met alleen de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992934 |
-    En heeft de persoon alleen de volgende 'verblijfplaats' gegevens
+    | naam                | waarde                                  |
+    | type                | RaadpleegMetBurgerservicenummer         |
+    | burgerservicenummer | 999992934                               |
+    | fields              | verblijfplaats.verblijfadres.huisnummer |
+    Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
     | naam | waarde |
     | type | Adres  |
 
-  Abstract Scenario: onbekend waarde "<waarde>" voor <veld>
+  Abstract Scenario: onbekend waarde "<waarde>" voor <element>
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999992934 |
-    En de persoon heeft de volgende '<groep>' gegevens
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
     | naam               | waarde     |
     | straatnaam (11.10) | een straat |
     | <element>          | <waarde>   |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                             |
-    | type                | RaadpleegMetBurgerservicenummer    |
-    | burgerservicenummer | 999992934                          |
-    | fields              | burgerservicenummer,<groep>.<veld> |
-    Dan heeft de response een persoon met alleen de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992934 |
-    En heeft de persoon alleen de volgende 'verblijfplaats' gegevens
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | <field>                         |
+    Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
     | naam | waarde |
     | type | Adres  |
 
     Voorbeelden:
-    | groep          | veld                             | element                                  | waarde           |
-    | verblijfplaats | woonplaats                       | woonplaatsnaam (11.70)                   | .                |
-    | verblijfplaats | nummeraanduidingIdentificatie    | nummeraanduidingIdentificatie (11.90)    | 0000000000000000 |
-    | verblijfplaats | adresseerbaarObjectIdentificatie | adresseerbaarObjectIdentificatie (11.80) | 0000000000000000 |
+    | field                                           | element                                  | waarde           |
+    | verblijfplaats.verblijfadres.woonplaats         | woonplaatsnaam (11.70)                   | .                |
+    | verblijfplaats.nummeraanduidingIdentificatie    | nummeraanduidingIdentificatie (11.90)    | 0000000000000000 |
+    | verblijfplaats.adresseerbaarObjectIdentificatie | adresseerbaarObjectIdentificatie (11.80) | 0000000000000000 |
 
   Scenario: onbekend waarde in een partner voor soortVerbintenis
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999992934 |
-    En de persoon heeft een partner met de volgende gegevens
+    En de persoon heeft een 'partner' met de volgende gegevens
     | naam                      | waarde    |
     | burgerservicenummer       | 999992935 |
     | soort verbintenis (15.10) | .         |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                        |
-    | type                | RaadpleegMetBurgerservicenummer               |
-    | burgerservicenummer | 999992934                                     |
-    | fields              | burgerservicenummer,partners.soortVerbintenis |
-    Dan heeft de response een persoon met alleen de volgende gegevens
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | partners                        |
+    Dan heeft de response een persoon met een 'partner' met alleen de volgende gegevens
     | naam                | waarde    |
-    | burgerservicenummer | 999992934 |
-    En heeft de persoon een 'partner' met alleen de volgende gegevens
-    | naam | waarde  |
-    | type | Partner |
+    | burgerservicenummer | 999992935 |
+    | type                | Partner   |
 
   Scenario: onbekend waarde voor reisdocumentnummer
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -191,103 +181,43 @@ Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbe
     | overlijden     | land       | land overlijden (08.30)           | 0000   |
     | verblijfstitel | aanduiding | aanduiding verblijfstitel (39.10) | 00     |
 
-  Abstract Scenario: onbekend waarde voor adres: <groep> <veld>
+  Abstract Scenario: onbekend waarde voor: <element>
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999992934 |
-    En de persoon heeft de volgende '<groep>' gegevens
-    | naam               | waarde     |
-    | straatnaam (11.10) | een straat |
-    | <element>          | <waarde>   |
+    | <element>           | <waarde>  |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                             |
-    | type                | RaadpleegMetBurgerservicenummer    |
-    | burgerservicenummer | 999992934                          |
-    | fields              | burgerservicenummer,<groep>.<veld> |
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | burgerservicenummer,<veld>      |
     Dan heeft de response een persoon met alleen de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999992934 |
-    En heeft de persoon alleen de volgende '<groep>' gegevens
-    | naam | waarde |
-    | type | Adres  |
-
-    Voorbeelden:
-    | groep          | veld                    | element                            | waarde |
-    | verblijfplaats | gemeenteVanInschrijving | gemeente van inschrijving (09.10)  | 0000   |
-    | verblijfplaats | landVanwaarIngeschreven | land van waar ingeschreven (14.10) | 0000   |
-
-  Abstract Scenario: onbekend waarde voor locatie: <groep> <veld>
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992934 |
-    En de persoon heeft de volgende '<groep>' gegevens
-    | naam                        | waarde                  |
-    | locatiebeschrijving (12.10) | een locatiebeschrijving |
-    | <element>                   | <waarde>                |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                             |
-    | type                | RaadpleegMetBurgerservicenummer    |
-    | burgerservicenummer | 999992934                          |
-    | fields              | burgerservicenummer,<groep>.<veld> |
-    Dan heeft de response een persoon met alleen de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992934 |
-    En heeft de persoon alleen de volgende '<groep>' gegevens
-    | naam | waarde  |
-    | type | Locatie |
-
-    Voorbeelden:
-    | groep          | veld                    | element                            | waarde |
-    | verblijfplaats | gemeenteVanInschrijving | gemeente van inschrijving (09.10)  | 0000   |
-    | verblijfplaats | landVanwaarIngeschreven | land van waar ingeschreven (14.10) | 0000   |
-
-  Abstract Scenario: onbekend waarde voor verblijfplaats onbekend: <groep> <veld>
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992934 |
-    En de persoon heeft de volgende '<groep>' gegevens
-    | naam         | waarde   |
-    | land (13.10) | 0000     |
-    | <element>    | <waarde> |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                             |
-    | type                | RaadpleegMetBurgerservicenummer    |
-    | burgerservicenummer | 999992934                          |
-    | fields              | burgerservicenummer,<groep>.<veld> |
-    Dan heeft de response een persoon met alleen de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992934 |
-    En heeft de persoon alleen de volgende '<groep>' gegevens
-    | naam | waarde                 |
-    | type | VerblijfplaatsOnbekend |
 
     Voorbeelden:
     | groep          | veld                    | element                           | waarde |
     | verblijfplaats | gemeenteVanInschrijving | gemeente van inschrijving (09.10) | 0000   |
 
-  Abstract Scenario: onbekend waarde voor verblijfplaats buitenland: <groep> <veld>
+  Abstract Scenario: onbekend waarde voor immigratie: <element>
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999992934 |
-    En de persoon heeft de volgende '<groep>' gegevens
-    | naam         | waarde   |
-    | land (13.10) | 6014     |
-    | <element>    | <waarde> |
+    En de persoon heeft de volgende 'immigratie' gegevens
+    | naam      | waarde   |
+    | <element> | <waarde> |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                             |
-    | type                | RaadpleegMetBurgerservicenummer    |
-    | burgerservicenummer | 999992934                          |
-    | fields              | burgerservicenummer,<groep>.<veld> |
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | burgerservicenummer,<veld>      |
     Dan heeft de response een persoon met alleen de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999992934 |
-    En heeft de persoon alleen de volgende '<groep>' gegevens
-    | naam | waarde                   |
-    | type | VerblijfplaatsBuitenland |
 
     Voorbeelden:
-    | groep          | veld                    | element                           | waarde |
-    | verblijfplaats | gemeenteVanInschrijving | gemeente van inschrijving (09.10) | 0000   |
+    | veld                               | element                            | waarde |
+    | immigratie.landVanwaarIngeschreven | land van waar ingeschreven (14.10) | 0000   |
 
   Scenario: geboorte plaats zonder code
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -363,7 +293,7 @@ Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbe
     | naam                            | waarde   |
     | nationaliteit (05.10)           | 0000     |
     | reden opname (63.10)            | 311      |
-    | ingangsdatum geldigheid (85.10) | 20030417 |
+    | datum ingang geldigheid (85.10) | 20030417 |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                              |
     | type                | RaadpleegMetBurgerservicenummer     |
@@ -373,11 +303,12 @@ Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbe
     | naam                | waarde    |
     | burgerservicenummer | 999992934 |
     En heeft de persoon een 'nationaliteit' met alleen de volgende gegevens
-    | naam                        | waarde                |
-    | type                        | NationaliteitOnbekend |
-    | redenOpname.code            | 311                   |
-    | datumIngangGeldigheid.type  | Datum                 |
-    | datumIngangGeldigheid.datum | 2003-04-17            |
+    | naam                              | waarde                |
+    | type                              | NationaliteitOnbekend |
+    | redenOpname.code                  | 311                   |
+    | datumIngangGeldigheid.type        | Datum                 |
+    | datumIngangGeldigheid.datum       | 2003-04-17            |
+    | datumIngangGeldigheid.langFormaat | 17 april 2003         |
 
   Scenario: onbekend waarde voor reden opname nationaliteit
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -387,7 +318,7 @@ Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbe
     | naam                            | waarde   |
     | nationaliteit (05.10)           | 0052     |
     | reden opname (63.10)            | 000      |
-    | ingangsdatum geldigheid (85.10) | 20030417 |
+    | datum ingang geldigheid (85.10) | 20030417 |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                              |
     | type                | RaadpleegMetBurgerservicenummer     |
@@ -397,11 +328,12 @@ Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbe
     | naam                | waarde    |
     | burgerservicenummer | 999992934 |
     En heeft de persoon een 'nationaliteit' met alleen de volgende gegevens
-    | naam                        | waarde        |
-    | type                        | Nationaliteit |
-    | nationaliteit.code          | 0052          |
-    | datumIngangGeldigheid.type  | Datum         |
-    | datumIngangGeldigheid.datum | 2003-04-17    |
+    | naam                              | waarde        |
+    | type                              | Nationaliteit |
+    | nationaliteit.code                | 0052          |
+    | datumIngangGeldigheid.type        | Datum         |
+    | datumIngangGeldigheid.datum       | 2003-04-17    |
+    | datumIngangGeldigheid.langFormaat | 17 april 2003 |
 
 Rule: de onbekend waarde voor geslacht wordt wel geleverd
 
@@ -439,10 +371,11 @@ Rule: de onbekend waarde voor redenOpschortingBijhouding wordt wel geleverd
     | naam                | waarde    |
     | burgerservicenummer | 999992934 |
     En heeft de persoon alleen de volgende 'opschortingBijhouding' gegevens
-    | naam        | waarde     |
-    | reden.code  | .          |
-    | datum.type  | Datum      |
-    | datum.datum | 2021-12-18 |
+    | naam              | waarde           |
+    | reden.code        | .                |
+    | datum.type        | Datum            |
+    | datum.datum       | 2021-12-18       |
+    | datum.langFormaat | 18 december 2021 |
 
 Rule: datumvelden waarde "00000000": worden vertaald naar DatumOnbekend
 
@@ -462,72 +395,88 @@ Rule: datumvelden waarde "00000000": worden vertaald naar DatumOnbekend
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |
     En heeft de persoon alleen de volgende '<groep>' gegevens
-    | naam            | waarde        |
-    | <veld>.type     | DatumOnbekend |
-    | <veld>.onbekend | true          |
+    | naam               | waarde        |
+    | <veld>.type        | DatumOnbekend |
+    | <veld>.onbekend    | true          |
+    | <veld>.langFormaat | onbekend      |
 
     Voorbeelden:
-    | groep                 | element                                          | veld                                  |
-    | geboorte              | geboortedatum (03.10)                            | datum                                 |
-    | overlijden            | datum overlijden (08.10)                         | datum                                 |
-    | opschortingBijhouding | datum opschorting bijhouding (67.10)             | datum                                 |
-    | verblijfstitel        | datum einde verblijfstitel (39.20)               | datumEinde                            |
-    | verblijfstitel        | datum ingang verblijfstitel (39.30)              | datumIngang                           |
-    | kiesrecht             | einddatum uitsluiting europees kiesrecht (31.30) | einddatumUitsluitingEuropeesKiesrecht |
-    | kiesrecht             | einddatum uitsluiting kiesrecht (38.30)          | einddatumUitsluitingKiesrecht         |
+    | groep                 | element                                          | veld                 |
+    | geboorte              | geboortedatum (03.10)                            | datum                |
+    | overlijden            | datum overlijden (08.10)                         | datum                |
+    | opschortingBijhouding | datum opschorting bijhouding (67.10)             | datum                |
+    | verblijfstitel        | datum einde verblijfstitel (39.20)               | datumEinde           |
+    | verblijfstitel        | datum ingang verblijfstitel (39.30)              | datumIngang          |
+    | europeesKiesrecht     | einddatum uitsluiting Europees kiesrecht (31.30) | einddatumUitsluiting |
+    | uitsluitingKiesrecht  | einddatum uitsluiting kiesrecht (38.20)          | einddatum            |
+
+  Abstract Scenario: volledig onbekende datum in: <element>
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 555550001 |
+    | <element>           | 00000000  |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 555550001                       |
+    | fields              | <veld>                          |
+    Dan heeft de response een persoon met alleen de volgende gegevens
+    | naam               | waarde        |
+    | <veld>.type        | DatumOnbekend |
+    | <veld>.onbekend    | true          |
+    | <veld>.langFormaat | onbekend      |
+
+    Voorbeelden:
+    | element                                   | veld                        |
+    | datum inschrijving in de gemeente (09.20) | datumInschrijvingInGemeente |
 
   Abstract Scenario: volledig onbekende datum in adres: <element>
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende '<groep>' gegevens
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
     | naam               | waarde     |
     | straatnaam (11.10) | een straat |
     | <element>          | 00000000   |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                             |
-    | type                | RaadpleegMetBurgerservicenummer    |
-    | burgerservicenummer | 555550001                          |
-    | fields              | burgerservicenummer,<groep>.<veld> |
-    Dan heeft de response een persoon met alleen de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En heeft de persoon alleen de volgende '<groep>' gegevens
-    | naam            | waarde        |
-    | type            | Adres         |
-    | <veld>.type     | DatumOnbekend |
-    | <veld>.onbekend | true          |
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 555550001                       |
+    | fields              | verblijfplaats.<veld>           |
+    Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
+    | naam               | waarde        |
+    | type               | Adres         |
+    | <veld>.type        | DatumOnbekend |
+    | <veld>.onbekend    | true          |
+    | <veld>.langFormaat | onbekend      |
 
     Voorbeelden:
-    | groep          | element                                   | veld                        |
-    | verblijfplaats | datum inschrijving in de gemeente (09.20) | datumInschrijvingInGemeente |
-    | verblijfplaats | datum aanvang adreshouding (10.30)        | datumVan                    |
+    | element                            | veld     |
+    | datum aanvang adreshouding (10.30) | datumVan |
 
   Abstract Scenario: volledig onbekende datum in verblijfplaats buitenland: <element>
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende '<groep>' gegevens
-    | naam         | waarde   |
-    | land (13.10) | 6014     |
-    | <element>    | 00000000 |
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
+    | naam                          | waarde   |
+    | land adres buitenland (13.10) | 6014     |
+    | <element>                     | 00000000 |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                             |
-    | type                | RaadpleegMetBurgerservicenummer    |
-    | burgerservicenummer | 555550001                          |
-    | fields              | burgerservicenummer,<groep>.<veld> |
-    Dan heeft de response een persoon met alleen de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En heeft de persoon alleen de volgende '<groep>' gegevens
-    | naam            | waarde                   |
-    | type            | VerblijfplaatsBuitenland |
-    | <veld>.type     | DatumOnbekend            |
-    | <veld>.onbekend | true                     |
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 555550001                       |
+    | fields              | verblijfplaats.<veld>           |
+    Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
+    | naam               | waarde                   |
+    | type               | VerblijfplaatsBuitenland |
+    | <veld>.type        | DatumOnbekend            |
+    | <veld>.onbekend    | true                     |
+    | <veld>.langFormaat | onbekend                 |
 
     Voorbeelden:
-    | groep          | element                                | veld     |
-    | verblijfplaats | datum aanvang adres buitenland (13.20) | datumVan |
+    | element                                | veld     |
+    | datum aanvang adres buitenland (13.20) | datumVan |
 
   Abstract Scenario: volledig onbekende datum bij <relatie> in <groep> datum
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -552,9 +501,10 @@ Rule: datumvelden waarde "00000000": worden vertaald naar DatumOnbekend
     | type                | <type>    |
     | burgerservicenummer | 555550002 |
     En heeft de '<relatie>' alleen de volgende '<groep>' gegevens
-    | naam           | waarde        |
-    | datum.type     | DatumOnbekend |
-    | datum.onbekend | true          |
+    | naam              | waarde        |
+    | datum.type        | DatumOnbekend |
+    | datum.onbekend    | true          |
+    | datum.langFormaat | onbekend      |
 
     Voorbeelden:
     | relatie | relatie field | type    | groep                       | element                                                            |
@@ -573,22 +523,17 @@ Rule: vertalen (onbekend)waarden naar indicator
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999992934 |
-    En de persoon heeft de volgende 'verblijfplaats' gegevens
-    | naam                                 | waarde     |
-    | straatnaam (11.10)                   | een straat |
-    | datum vestiging in nederland (14.20) | <datum>    |
-    | land vanwaar ingeschreven (14.10)    | <land>     |
+    En de persoon heeft de volgende 'immigratie' gegevens
+    | naam                                 | waarde  |
+    | datum vestiging in nederland (14.20) | <datum> |
+    | land van waar ingeschreven (14.10)   | <land>  |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                                                                                            |
-    | type                | RaadpleegMetBurgerservicenummer                                                                                   |
-    | burgerservicenummer | 999992934                                                                                                         |
-    | fields              | burgerservicenummer,verblijfplaats.indicatieVestigingVanuitBuitenland,verblijfplaats.vanuitVerblijfplaatsOnbekend |
-    Dan heeft de response een persoon met alleen de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992934 |
-    En heeft de persoon alleen de volgende 'verblijfplaats' gegevens
+    | naam                | waarde                                                                                |
+    | type                | RaadpleegMetBurgerservicenummer                                                       |
+    | burgerservicenummer | 999992934                                                                             |
+    | fields              | immigratie.indicatieVestigingVanuitBuitenland,immigratie.vanuitVerblijfplaatsOnbekend |
+    Dan heeft de response een persoon met alleen de volgende 'immigratie' gegevens
     | naam                               | waarde                               |
-    | type                               | Adres                                |
     | indicatieVestigingVanuitBuitenland | <indicatieVestigingVanuitBuitenland> |
     | vanuitVerblijfplaatsOnbekend       | <vanuitVerblijfplaatsOnbekend>       |
 
@@ -602,7 +547,7 @@ Rule: vertalen (onbekend)waarden naar indicator
     | 00000000 | 0000 | true                               | true                         |
     |          |      |                                    |                              |
 
-  Abstract Scenario: verblijfplaatsOnbekend bij land verblijfplaats '<land>'
+  Abstract Scenario: verblijfplaats onbekend bij land verblijfplaats '<land>'
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999992934 |
@@ -616,25 +561,21 @@ Rule: vertalen (onbekend)waarden naar indicator
     | postcode (11.60)                 |               |
     | locatiebeschrijving (12.10)      |               |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                                                        |
-    | type                | RaadpleegMetBurgerservicenummer                                               |
-    | burgerservicenummer | 999992934                                                                     |
-    | fields              | burgerservicenummer,verblijfplaats.type,verblijfplaats.verblijfplaatsOnbekend |
-    Dan heeft de response een persoon met alleen de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992934 |
-    En heeft de persoon alleen de volgende 'verblijfplaats' gegevens
-    | naam                   | waarde     |
-    | type                   | <type>     |
-    | verblijfplaatsOnbekend | <onbekend> |
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | verblijfplaats.type             |
+    Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
+    | naam | waarde |
+    | type | <type> |
 
     Voorbeelden:
-    | land | adresregel2 | straat | huisnummer | type                     | onbekend |
-    | 6033 |             |        |            | VerblijfplaatsBuitenland |          |
-    | 6033 | onbekend    |        |            | VerblijfplaatsBuitenland |          |
-    | 0000 |             |        |            | VerblijfplaatsOnbekend   | true     |
-    | 0000 | VOW         |        |            | VerblijfplaatsOnbekend   | true     |
-    |      |             | .      | 0          | Adres                    |          |
+    | land | adresregel2 | straat | huisnummer | type                     |
+    | 6033 |             |        |            | VerblijfplaatsBuitenland |
+    | 6033 | onbekend    |        |            | VerblijfplaatsBuitenland |
+    | 0000 |             |        |            | VerblijfplaatsOnbekend   |
+    | 0000 | VOW         |        |            | VerblijfplaatsBuitenland |
+    |      |             | .      | 0          | VerblijfplaatsOnbekend   |
 
   Abstract Scenario: indicatieOverleden bij overlijdensdatum '<overlijdensdatum>'
     Gegeven het systeem heeft een persoon met de volgende gegevens

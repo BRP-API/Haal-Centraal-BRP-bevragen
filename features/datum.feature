@@ -138,39 +138,39 @@ Functionaliteit: leveren van een datum
       | <veld>.langFormaat | <langFormaat> |
 
       Voorbeelden:
-      | groep                 | veld                                  | type           | GbaDatum | datum      | jaar | maand | onbekend | langFormaat  |
-      | geboorte              | datum                                 | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
-      | overlijden            | datum                                 | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
-      | opschortingBijhouding | datum                                 | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
-      | verblijfstitel        | datumIngang                           | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
-      | verblijfstitel        | datumEinde                            | Datum          | 20300701 | 2030-07-01 |      |       |          | 1 juli 2030  |
-      | kiesrecht             | einddatumUitsluitingEuropeesKiesrecht | Datum          | 20300701 | 2030-07-01 |      |       |          | 1 juli 2030  |
-      | kiesrecht             | einddatumUitsluitingKiesrecht         | Datum          | 20300701 | 2030-07-01 |      |       |          | 1 juli 2030  |
-      | geboorte              | datum                                 | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
-      | overlijden            | datum                                 | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
-      | opschortingBijhouding | datum                                 | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
-      | verblijfstitel        | datumIngang                           | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
-      | verblijfstitel        | datumEinde                            | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
-      | kiesrecht             | einddatumUitsluitingEuropeesKiesrecht | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
-      | kiesrecht             | einddatumUitsluitingKiesrecht         | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
-      | geboorte              | datum                                 | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
-      | overlijden            | datum                                 | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
-      | opschortingBijhouding | datum                                 | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
-      | verblijfstitel        | datumIngang                           | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
-      | verblijfstitel        | datumEinde                            | JaarDatum      | 20300000 |            | 2030 |       |          | 2030         |
-      | kiesrecht             | einddatumUitsluitingEuropeesKiesrecht | JaarDatum      | 20300000 |            | 2030 |       |          | 2030         |
-      | kiesrecht             | einddatumUitsluitingKiesrecht         | JaarDatum      | 20300000 |            | 2030 |       |          | 2030         |
-      | geboorte              | datum                                 | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
-      | overlijden            | datum                                 | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
-      | opschortingBijhouding | datum                                 | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
-      | verblijfstitel        | datumIngang                           | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
-      | verblijfstitel        | datumEinde                            | JaarMaandDatum | 20300700 |            | 2030 | 7     |          | juli 2030    |
-      | kiesrecht             | einddatumUitsluitingEuropeesKiesrecht | JaarMaandDatum | 20300700 |            | 2030 | 7     |          | juli 2030    |
-      | kiesrecht             | einddatumUitsluitingKiesrecht         | JaarMaandDatum | 20300700 |            | 2030 | 7     |          | juli 2030    |
-      | immigratie            | datumVestigingInNederland             | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
-      | immigratie            | datumVestigingInNederland             | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
-      | immigratie            | datumVestigingInNederland             | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
-      | immigratie            | datumVestigingInNederland             | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | groep                 | veld                      | type           | GbaDatum | datum      | jaar | maand | onbekend | langFormaat  |
+      | geboorte              | datum                     | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | overlijden            | datum                     | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | opschortingBijhouding | datum                     | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | verblijfstitel        | datumIngang               | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | verblijfstitel        | datumEinde                | Datum          | 20300701 | 2030-07-01 |      |       |          | 1 juli 2030  |
+      | europeesKiesrecht     | einddatumUitsluiting      | Datum          | 20300701 | 2030-07-01 |      |       |          | 1 juli 2030  |
+      | uitsluitingKiesrecht  | einddatum                 | Datum          | 20300701 | 2030-07-01 |      |       |          | 1 juli 2030  |
+      | geboorte              | datum                     | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | overlijden            | datum                     | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | opschortingBijhouding | datum                     | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | verblijfstitel        | datumIngang               | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | verblijfstitel        | datumEinde                | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | europeesKiesrecht     | einddatumUitsluiting      | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | uitsluitingKiesrecht  | einddatum                 | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | geboorte              | datum                     | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | overlijden            | datum                     | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | opschortingBijhouding | datum                     | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | verblijfstitel        | datumIngang               | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | verblijfstitel        | datumEinde                | JaarDatum      | 20300000 |            | 2030 |       |          | 2030         |
+      | europeesKiesrecht     | einddatumUitsluiting      | JaarDatum      | 20300000 |            | 2030 |       |          | 2030         |
+      | uitsluitingKiesrecht  | einddatum                 | JaarDatum      | 20300000 |            | 2030 |       |          | 2030         |
+      | geboorte              | datum                     | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | overlijden            | datum                     | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | opschortingBijhouding | datum                     | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | verblijfstitel        | datumIngang               | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | verblijfstitel        | datumEinde                | JaarMaandDatum | 20300700 |            | 2030 | 7     |          | juli 2030    |
+      | europeesKiesrecht     | einddatumUitsluiting      | JaarMaandDatum | 20300700 |            | 2030 | 7     |          | juli 2030    |
+      | uitsluitingKiesrecht  | einddatum                 | JaarMaandDatum | 20300700 |            | 2030 | 7     |          | juli 2030    |
+      | immigratie            | datumVestigingInNederland | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | immigratie            | datumVestigingInNederland | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | immigratie            | datumVestigingInNederland | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | immigratie            | datumVestigingInNederland | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
 
     Abstract Scenario: <type> in <veld>
       Gegeven het systeem heeft een persoon met de volgende gegevens

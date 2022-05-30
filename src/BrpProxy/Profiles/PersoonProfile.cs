@@ -33,9 +33,13 @@ public class PersoonProfile : Profile
             })
             .AfterMap((src, dest) =>
             {
-                if(dest.Kiesrecht != null && dest.Kiesrecht.EinddatumUitsluitingKiesrecht <= DateTime.Today)
+                if(dest.Naam != null)
                 {
-                    dest.Kiesrecht = null;
+                    dest.Adressering = new Adressering
+                    {
+                        Aanhef = dest.Naam.Aanhef(),
+                        Aanschrijfwijze = dest.Naam.Aanschrijfwijze()
+                    };
                 }
             })
             .ForMember(dest => dest.DatumEersteInschrijvingGBA, opt => opt.MapFrom(src => src.DatumEersteInschrijvingGBA.Map()))
@@ -47,6 +51,10 @@ public class PersoonProfile : Profile
             })
             .ForMember(dest => dest.Reisdocumentnummers, opt => opt.MapFrom(src => src.Reisdocumentnummers.FilterOnbekendReisdocumentnummers()))
             .ForMember(dest => dest.DatumInschrijvingInGemeente, opt => opt.MapFrom(src => src.DatumInschrijvingInGemeente.Map()))
+            .ForMember(dest => dest.GemeenteVanInschrijving, opt =>
+            {
+                opt.Condition(src => src.GemeenteVanInschrijving?.Code != "0000");
+            })
             ;
 
         CreateMap<GbaInOnderzoek, PersoonInOnderzoek?>().ConvertUsing<PersoonInOnderzoekConverter>();

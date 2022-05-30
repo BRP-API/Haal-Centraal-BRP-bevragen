@@ -28,10 +28,10 @@ const propertyNameMap = new Map([
     ['indicatie curateleregister (33.10)', 'indicatieCurateleRegister'],
 
     // Kiesrecht
-    ['europees kiesrecht (31.10)', 'europeesKiesrecht'],
+    ['Europees kiesrecht (31.10)', 'aanduiding.code'],
     ['uitgesloten van kiesrecht (38.10)', 'uitgeslotenVanKiesrecht'],
-    ['einddatum uitsluiting Europees kiesrecht (31.30)', 'einddatumUitsluitingEuropeesKiesrecht'],
-    ['einddatum uitsluiting kiesrecht (38.20)', 'einddatumUitsluitingKiesrecht'],
+    ['einddatum uitsluiting Europees kiesrecht (31.30)', 'einddatumUitsluiting'],
+    ['einddatum uitsluiting kiesrecht (38.20)', 'einddatum'],
 
     // Naam
     ['voornamen (02.10)', 'voornamen'],
@@ -85,7 +85,7 @@ const propertyNameMap = new Map([
     ['regel 1 adres buitenland (13.30)', 'regel1'],
     ['regel 2 adres buitenland (13.40)', 'regel2'],
     ['regel 3 adres buitenland (13.50)', 'regel3'],
-    ['land vanwaar ingeschreven (14.10)', 'landVanwaarIngeschreven.code'],
+    ['land van waar ingeschreven (14.10)', 'landVanwaarIngeschreven.code'],
     ['datum vestiging in nederland (14.20)', 'datumVestigingInNederland'],
 
     // Verblijfstitel
