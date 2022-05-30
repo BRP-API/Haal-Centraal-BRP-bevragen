@@ -5,7 +5,9 @@ title: User Stories in Ontwikkeling
 
 # User stories
 
+- [Als PO wil ik dat nationaliteit geen magic strings meer bevat](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1025){:target="_blank" rel="noopener"}
 - [Als gebruiker van de API wil ik een lijst met van toepassing zijnde veldpaden voor fields](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1010){:target="_blank" rel="noopener"}
+- [Wijziging van Waardetabel waarden voor enumeratievelden moet leiden tot nieuwe versie API](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1007){:target="_blank" rel="noopener"}
 - [Als developer van een client applicatie wil ik de mogelijke waarden van een waardentabel kunnen downloaden](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1006){:target="_blank" rel="noopener"}
 - [Als developer wil ik bij een ontbonden huwelijk/partnerschap deze ook ontvangen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1005){:target="_blank" rel="noopener"}
 - [Als developer van een client applicatie wil ik de datum in een voor een eindgebruiker leesbare vorm](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1000){:target="_blank" rel="noopener"}
@@ -16,7 +18,6 @@ title: User Stories in Ontwikkeling
 - [Als PO wil ik dat Rate Limiting headers worden opgenomen in de definitie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/912){:target="_blank" rel="noopener"}
 - [Als PO wil ik een strakkere specificatie van validatieregels voor input parameters](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/911){:target="_blank" rel="noopener"}
 - [Als PO wil ik geen Uniform Resource Identifier met een BSN](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/910){:target="_blank" rel="noopener"}
-- [Als medewerker van een gemeente wil ik weten welke gegevens de status "in onderzoek" hebben](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/907){:target="_blank" rel="noopener"}
 - [Als PO wil ik dat gemeenten de queryparameter "gemeente van inschrijving" kunnen gebruiken om de response te beperken voor afnemers met een autorisatie voor uitsluitend eigen inwoners](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/904){:target="_blank" rel="noopener"}
 - [Als PO wil ik dat gemeenten de fields parameter moeten gebruiken om de gegevensset in de response te beperken conform de autorisatie van afnemers](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/903){:target="_blank" rel="noopener"}
 - [Als PO wil ik dat gemeenten request parameters kunnen gebruiken om responses te beperken conform de rechten van afnemers](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/902){:target="_blank" rel="noopener"}

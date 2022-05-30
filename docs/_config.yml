@@ -18,11 +18,9 @@ nav:
       - title: Getting started
         path: /getting-started
       - title: User stories
-#        url: https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/user-stories-prod
         path: /user-stories-prod
       - title: User stories (afgeschermd)
         url: https://gitlab.com/vng-realisatie/haal-centraal-brp-afgeschermd/-/issues?label_name%5B%5D=BRP+bevragen
-#        path: /user-stories
         target: blank
       - title: Bevragen API (swagger-ui)
         path: /swagger-ui
@@ -30,19 +28,28 @@ nav:
         path: /redoc
       - title: Features
         path: /features
-  - title: Specificaties v. 2.0 beta (IO)
+  - title: Specificaties v. 2.0 beta (API-Lab)
     subnav:
-      - title: Getting started v. 2.0 beta 
+      - title: Getting started proefomgeving 
         path: /getting-started-v2-beta
+#      - title: User stories
+#        path: /user-stories-dev
+      - title: Bevragen API (redoc)
+        path: /redoc-beta
+#      - title: Features v. 2.0 beta
+#        path: /features-v2-beta
+  - title: Specificaties v. 2.0 (IO)
+    subnav:
+#      - title: Getting started 
+#        path: /getting-started-v2
       - title: User stories
-#        url: https://vng-realisatie.github.io/Haal-Centraal-BRK-bevragen/user-stories-dev
         path: /user-stories-dev
-      - title: Bevragen API (swagger-ui)
-        path: /swagger-ui-io
       - title: Bevragen API (redoc)
         path: /redoc-io
-      - title: Features v. 2.0 beta
-        path: /features-v2-beta
+      - title: Bevragen API (redoc), GBA variant
+        path: /redoc-gba-io
+      - title: Features
+        path: /features-v2
 
 plugins:
   - jekyll-redirect-from
