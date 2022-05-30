@@ -6,20 +6,6 @@ info:
 paths: {}
 components:
   schemas:
-    AbstractPartner:
-      type: object
-      description: |
-        Gegevens over het actuele of het laatst ontbonden huwelijk/geregistreerd partnerschap van de persoon.
-      required:
-        - type
-      properties:
-        type:
-          type: string
-      discriminator:
-        propertyName: type
-        mapping:
-          Partner: '#/components/schemas/Partner'
-          PartnerOnbekend: '#/components/schemas/PartnerOnbekend'
     GbaPartner:
       type: object
       properties:
@@ -40,37 +26,24 @@ components:
         ontbindingHuwelijkPartnerschap:
           $ref: "#/components/schemas/GbaOntbindingHuwelijkPartnerschap"
     Partner:
-      allOf:
-        - $ref: '#/components/schemas/AbstractPartner'
-        - type: object
-          description: |
-            * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-            * **soortVerbintenis** - Wordt gevuld op basis van de waarden die voorkomen in de tabel  "Soort_Verbintenis" uit de Haal-Centraal-BRP-tabellen-bevragen API.
-          properties:
-            burgerservicenummer:
-              $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
-            geslacht:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
-            soortVerbintenis:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
-            naam:
-              $ref: 'naam.yaml#/components/schemas/NaamGerelateerde'
-            geboorte:
-              $ref: 'geboorte.yaml#/components/schemas/Geboorte'
-            inOnderzoek:
-              $ref: '#/components/schemas/PartnerInOnderzoek'
-            aangaanHuwelijkPartnerschap:
-              $ref: '#/components/schemas/AangaanHuwelijkPartnerschap'
-            ontbindingHuwelijkPartnerschap:
-              $ref: "#/components/schemas/OntbindingHuwelijkPartnerschapBasis"
-    PartnerOnbekend:
-      allOf:
-        - $ref: '#/components/schemas/AbstractPartner'
-        - type: object
-          properties:
-            indicatieOnbekend:
-              type: boolean
-              default: false
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
+        geslacht:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        soortVerbintenis:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        naam:
+          $ref: 'naam.yaml#/components/schemas/NaamGerelateerde'
+        geboorte:
+          $ref: 'geboorte.yaml#/components/schemas/Geboorte'
+        inOnderzoek:
+          $ref: '#/components/schemas/PartnerInOnderzoek'
+        aangaanHuwelijkPartnerschap:
+          $ref: '#/components/schemas/AangaanHuwelijkPartnerschap'
+        ontbindingHuwelijkPartnerschap:
+          $ref: "#/components/schemas/OntbindingHuwelijkPartnerschapBasis"
     PartnerInOnderzoek:
       description: |
         Geeft aan welke gegevens over het huwelijk of het partnerschap in onderzoek zijn.
@@ -89,7 +62,7 @@ components:
       type: object
       description: |
         Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.
-        * **datum** - De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan. 
+        * **datum** - De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.
         * **land** - Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.
         * **plaats** - De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld op basis van de waarden die voorkomen in de tabel "Gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.
       properties:
