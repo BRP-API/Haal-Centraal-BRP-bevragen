@@ -35,7 +35,7 @@ Functionaliteit: in onderzoek
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550001                       |
       | fields              | ouders,partners,<fields>        |
-      Dan heeft de persoon de volgende 'inOnderzoek' gegevens
+      Dan heeft de persoon de volgende 'persoonInOnderzoek' gegevens
       | naam                          | waarde   |
       | aanduidingGegevensInOnderzoek | <waarde  |
       | datumIngangOnderzoek          | 20120920 |
@@ -69,7 +69,7 @@ Functionaliteit: in onderzoek
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550001                       |
       | fields              | ouders,partners                 |
-      Dan heeft de persoon GEEN 'inOnderzoek' gegevens
+      Dan heeft de persoon GEEN 'persoonInOnderzoek' gegevens
       En heeft de ouder met ouderAanduiding '1' GEEN 'inOnderzoek' gegevens
       En heeft de ouder met ouderAanduiding '2' GEEN 'inOnderzoek' gegevens
       En heeft de partner met burgerservicenummer '555550002' GEEN 'inOnderzoek' gegevens
@@ -88,7 +88,7 @@ Functionaliteit: in onderzoek
       | type                | RaadpleegMetBurgerservicenummer                   |
       | burgerservicenummer | 999994888                                         |
       | fields              | burgerservicenummer,naam.voornamen,geboorte.datum |
-      Dan heeft de persoon met burgerservicenummer '555550001' GEEN 'inOnderzoek' gegevens
+      Dan heeft de persoon met burgerservicenummer '555550001' GEEN 'persoonInOnderzoek' gegevens
       En heeft de persoon met burgerservicenummer '999994888' GEEN 'naam.inOnderzoek' gegevens
       En heeft de persoon met burgerservicenummer '999994888' GEEN 'geboorte.inOnderzoek' gegevens
 
@@ -113,7 +113,7 @@ Functionaliteit: in onderzoek
       | type                | RaadpleegMetBurgerservicenummer     |
       | burgerservicenummer | 555550001                           |
       | fields              | burgerservicenummer,nationaliteiten |
-      Dan heeft de persoon met burgerservicenummer '555550001' GEEN 'inOnderzoek' gegevens
+      Dan heeft de persoon met burgerservicenummer '555550001' GEEN 'persoonInOnderzoek' gegevens
       En heeft de nationaliteit GEEN 'inOnderzoek' gegevens
 
     @proxy
@@ -130,7 +130,7 @@ Functionaliteit: in onderzoek
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550001                       |
       | fields              | <fields>                        |
-      Dan heeft de persoon GEEN 'inOnderzoek' gegevens
+      Dan heeft de persoon GEEN 'persoonInOnderzoek' gegevens
 
       Voorbeelden:
       | waarde | gegeven in onderzoek   | fields                      |
@@ -145,7 +145,7 @@ Functionaliteit: in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                        | waarde    |
       | burgerservicenummer         | 555550001 |
-      En de persoon heeft de volgende 'inOnderzoek' gegevens
+      En de persoon heeft de volgende 'persoonInOnderzoek' gegevens
       | naam                          | waarde   |
       | aanduidingGegevensInOnderzoek | <waarde> |
       | datumIngangOnderzoek          | 20220307 |
@@ -154,10 +154,10 @@ Functionaliteit: in onderzoek
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550001                       |
       | fields              | <veld>                          |
-      Dan heeft de persoon met burgerservicenummer '555550001' de volgende 'inOnderzoek' gegevens
-      | naam                 | waarde     |
-      | <veld>               | true       |
-      | datumIngangOnderzoek | 2022-03-07 |
+      Dan heeft de persoon met burgerservicenummer '555550001' de volgende 'persoonInOnderzoek' gegevens
+      | naam                        | waarde     |
+      | <veld>                      | true       |
+      | datumIngangOnderzoekPersoon | 2022-03-07 |
 
       Voorbeelden:
       | waarde | veld                |
@@ -168,7 +168,7 @@ Functionaliteit: in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                        | waarde    |
       | burgerservicenummer         | 555550001 |
-      En de persoon heeft de volgende 'inOnderzoek' gegevens
+      En de persoon heeft de volgende 'persoonInOnderzoek' gegevens
       | naam                          | waarde   |
       | aanduidingGegevensInOnderzoek | <waarde> |
       | datumIngangOnderzoek          | 20220307 |
@@ -244,7 +244,7 @@ Functionaliteit: in onderzoek
       | <veld>               | true       |
       | datumIngangOnderzoek | 2022-03-07 |
       En heeft de ouder met ouderAanduiding '<andere ouder>' GEEN 'inOnderzoek' gegevens
-      En heeft de persoon GEEN 'inOnderzoek' gegevens
+      En heeft de persoon GEEN 'persoonInOnderzoek' gegevens
 
       Voorbeelden:
       | waarde | veld                                    | ouder | andere ouder |
@@ -288,7 +288,7 @@ Functionaliteit: in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                        | waarde    |
       | burgerservicenummer         | 555550001 |
-      En de persoon heeft de volgende 'inOnderzoek' gegevens
+      En de persoon heeft de volgende 'persoonInOnderzoek' gegevens
       | naam                          | waarde   |
       | aanduidingGegevensInOnderzoek | 010200   |
       | datumIngangOnderzoek          | 20220307 |
@@ -304,7 +304,7 @@ Functionaliteit: in onderzoek
       | voorvoegsel             | true       |
       | geslachtsnaam           | true       |
       | datumIngangOnderzoek    | 2022-03-07 |
-      En heeft de persoon GEEN 'inOnderzoek' gegevens
+      En heeft de persoon GEEN 'persoonInOnderzoek' gegevens
       En heeft de persoon GEEN 'geboorte.inOnderzoek' gegevens
 
     Scenario: kind heeft hele groep geboorte in onderzoek
@@ -331,7 +331,7 @@ Functionaliteit: in onderzoek
       | datumIngangOnderzoek | 2022-03-07 |
       En heeft het kind met burgerservicenummer '555550002' GEEN 'inOnderzoek' gegevens
       En heeft het kind met burgerservicenummer '555550002' GEEN 'naam.inOnderzoek' gegevens
-      En heeft de persoon met burgerservicenummer '555550001' GEEN 'inOnderzoek' gegevens
+      En heeft de persoon met burgerservicenummer '555550001' GEEN 'persoonInOnderzoek' gegevens
       En heeft de persoon met burgerservicenummer '555550001' GEEN 'geboorte.inOnderzoek' gegevens
 
     Abstract Scenario: partner heeft <nauwkeurigheid> soort verbintenis in onderzoek
@@ -356,7 +356,7 @@ Functionaliteit: in onderzoek
       | datumIngangOnderzoek | 2022-03-07 |
       En heeft de partner met burgerservicenummer '555550002' GEEN 'naam.inOnderzoek' gegevens
       En heeft de partner met burgerservicenummer '555550002' GEEN 'geboorte.inOnderzoek' gegevens
-      En heeft de persoon met burgerservicenummer '555550001' GEEN 'inOnderzoek' gegevens
+      En heeft de persoon met burgerservicenummer '555550001' GEEN 'persoonInOnderzoek' gegevens
 
       Voorbeelden:
       | waarde | nauwkeurigheid |
@@ -371,7 +371,7 @@ Functionaliteit: in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                        | waarde    |
       | burgerservicenummer         | 555550001 |
-      En de persoon heeft de volgende 'inOnderzoek' gegevens
+      En de persoon heeft de volgende 'PersoonInOnderzoek' gegevens
       | naam                          | waarde   |
       | aanduidingGegevensInOnderzoek | 010000   |
       | datumIngangOnderzoek          | 20220307 |
@@ -385,7 +385,7 @@ Functionaliteit: in onderzoek
       | type                | RaadpleegMetBurgerservicenummer                                    |
       | burgerservicenummer | 555550001                                                          |
       | fields              | burgerservicenummer,naam,geboorte,geslacht,verblijfplaats,partners |
-      Dan heeft de persoon met burgerservicenummer '555550001' alleen de volgende 'inOnderzoek' gegevens
+      Dan heeft de persoon met burgerservicenummer '555550001' alleen de volgende 'persoonInOnderzoek' gegevens
       | naam                 | waarde     |
       | burgerservicenummer  | true       |
       | geslacht             | true       |
@@ -413,7 +413,7 @@ Functionaliteit: in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                        | waarde    |
       | burgerservicenummer         | 555550001 |
-      En de persoon heeft GEEN 'inOnderzoek' gegevens
+      En de persoon heeft GEEN 'persoonInOnderzoek' gegevens
       En de persoon heeft een kind met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550002 |
@@ -443,7 +443,7 @@ Functionaliteit: in onderzoek
       | plaats               | true       |
       | land                 | true       |
       | datumIngangOnderzoek | 2022-03-07 |
-      En heeft de persoon met burgerservicenummer '555550001' GEEN 'inOnderzoek' gegevens
+      En heeft de persoon met burgerservicenummer '555550001' GEEN 'persoonInOnderzoek' gegevens
       En heeft de persoon met burgerservicenummer '555550001' GEEN 'naam.inOnderzoek' gegevens
       En heeft de persoon met burgerservicenummer '555550001' GEEN 'geboorte.inOnderzoek' gegevens
 
@@ -451,7 +451,7 @@ Functionaliteit: in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                        | waarde    |
       | burgerservicenummer         | 555550001 |
-      En de persoon heeft GEEN 'inOnderzoek' gegevens
+      En de persoon heeft GEEN 'persoonInOnderzoek' gegevens
       En persoon met burgerservicenummer '555550001' heeft de volgende 'verblijfplaats' gegevens
       | naam       | waarde |
       | straat     | spui   |
@@ -489,7 +489,7 @@ Functionaliteit: in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                        | waarde    |
       | burgerservicenummer         | 555550001 |
-      En de persoon heeft GEEN 'inOnderzoek' gegevens
+      En de persoon heeft GEEN 'persoonInOnderzoek' gegevens
       En persoon met burgerservicenummer '555550001' heeft de volgende 'verblijfplaats' gegevens
       | naam                | waarde                     |
       | locatiebeschrijving | Woonboot in de Grote Sloot |
@@ -516,7 +516,7 @@ Functionaliteit: in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                        | waarde    |
       | burgerservicenummer         | 555550001 |
-      En de persoon heeft GEEN 'inOnderzoek' gegevens
+      En de persoon heeft GEEN 'persoonInOnderzoek' gegevens
       En persoon met burgerservicenummer '555550001' heeft de volgende 'verblijfplaats' gegevens
       | naam        | waarde          |
       | land        | 5010            |
@@ -550,7 +550,7 @@ Functionaliteit: in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550001 |
-      En de persoon heeft volgende 'inOnderzoek' gegevens
+      En de persoon heeft volgende 'persoonInOnderzoek' gegevens
       | naam                          | waarde   |
       | aanduidingGegevensInOnderzoek | <waarde> |
       | datumIngangOnderzoek          | 20220307 |
@@ -559,10 +559,10 @@ Functionaliteit: in onderzoek
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550001                       |
       | fields              | leeftijd                        |
-      Dan heeft de persoon met burgerservicenummer '555550001' de volgende 'inOnderzoek' gegevens
-      | naam                 | waarde     |
-      | leeftijd             | true       |
-      | datumIngangOnderzoek | 2022-03-07 |
+      Dan heeft de persoon met burgerservicenummer '555550001' de volgende 'persoonInOnderzoek' gegevens
+      | naam                        | waarde     |
+      | leeftijd                    | true       |
+      | datumIngangOnderzoekPersoon | 2022-03-07 |
 
       Voorbeelden:
       | reden                        | waarde |

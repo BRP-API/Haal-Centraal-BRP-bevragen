@@ -104,7 +104,11 @@ components:
           $ref: '#/components/schemas/GbaGeheimhoudingPersoonsgegevens'
         geslacht:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
-        inOnderzoek:
+        persoonInOnderzoek:
+          $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
+        gemeenteInOnderzoek:
+          $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
+        gezagInOnderzoek:
           $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
         uitsluitingKiesrecht:
           $ref: 'kiesrecht.yaml#/components/schemas/GbaUitsluitingKiesrecht'
@@ -221,11 +225,20 @@ components:
             $ref: 'partner.yaml#/components/schemas/AbstractPartner'
     PersoonInOnderzoek:
       description: |
-        Geeft aan welke gegevens van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature).
+        Geeft aan welke gegevens van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v2.0.0/features/in_onderzoek.feature).
+        * **datumIngangOnderzoekPersoon - Deze datum heeft betrekking op burgerservicenummer, geslacht en leeftijd
+        * **datumIngangOnderzoekGemeente - Deze datum heeft betrekking op gemeenteVanInschrijving en datumInschrijvingInGemeente
+        * **datumIngangOnderzoekGezag - Deze datumingang heeft betrekking op indicatieCurateleRegister en indicatieGezagMinderjarige
       allOf:
         - $ref: '#/components/schemas/InOnderzoek'
         - type: object
           properties:
+            datumIngangOnderzoekPersoon:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+            datumIngangOnderzoekGemeente:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+            datumIngangOnderzoekGezag:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             burgerservicenummer:
               type: boolean
             geslacht:
