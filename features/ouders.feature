@@ -73,16 +73,18 @@ Rule: de actuele gegevens van ouders worden geleverd
     | burgerservicenummer | 555550001                                                    |
     | fields              | ouders.ouderAanduiding,ouders.naam.voornamen,ouders.geslacht |
     Dan heeft de ouder met ouderAanduiding '1' de volgende gegevens
-    | naam            | waarde |
-    | ouderAanduiding | 1      |
-    | geslacht        | V      |
+    | naam                  | waarde |
+    | ouderAanduiding       | 1      |
+    | geslacht.code         | V      |
+    | geslacht.omschrijving | vrouw  |
     En heeft de ouder met ouderAanduiding '1' volgende 'naam' gegevens
     | naam      | waarde |
     | voornamen | Noa    |
     En heeft de ouder met ouderAanduiding '2' de volgende gegevens
-    | naam            | waarde |
-    | ouderAanduiding | 2      |
-    | geslacht        | V      |
+    | naam                  | waarde |
+    | ouderAanduiding       | 2      |
+    | geslacht.code         | V      |
+    | geslacht.omschrijving | vrouw  |
     En heeft de ouder met ouderAanduiding '2' de volgende 'naam' gegevens
     | naam      | waarde  |
     | voornamen | Johanna |
@@ -103,16 +105,16 @@ Rule: de actuele gegevens van ouders worden geleverd
     | burgerservicenummer | 999996629                                                                                   |
     | fields              | ouders.ouderAanduiding,ouders.naam.voornamen,ouders.datumIngangFamilierechtelijkeBetrekking |
     Dan heeft de ouder met ouderAanduiding '1' de volgende gegevens
-    | naam                                          | waarde     |
-    | ouderAanduiding                               | 1          |
-    | datumIngangFamilierechtelijkeBetrekking.datum | 2019-03-17 |
+    | naam                                          | waarde   |
+    | ouderAanduiding                               | 1        |
+    | datumIngangFamilierechtelijkeBetrekking.datum | 20190317 |
     En heeft de ouder met ouderAanduiding '1' de volgende 'naam' gegevens
     | naam      | waarde           |
     | voornamen | Olivia Ghislaine |
     En heeft de ouder met ouderAanduiding '2' de volgende gegevens
-    | naam                                          | waarde     |
-    | ouderAanduiding                               | 2          |
-    | datumIngangFamilierechtelijkeBetrekking.datum | 2019-03-17 |
+    | naam                                          | waarde   |
+    | ouderAanduiding                               | 2        |
+    | datumIngangFamilierechtelijkeBetrekking.datum | 20190317 |
     En heeft de ouder met ouderAanduiding '2' de volgende 'naam' gegevens
     | naam      | waarde    |
     | voornamen | Kevin     |

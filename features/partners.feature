@@ -5,14 +5,14 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
   Dit bevat de gegevens over de relatie (huwelijk of partnerschap) plus enkele identificerende eigenschappen van de persoon waarmee het huwelijk of partnerschap is aangegaan.
 
   # RvIG levert personen in de vorm GbaPersoon, waarin alleen onbewerkte GBA-V gegevens worden geleverd
-  # Dit betekent dat in 'partners' een actuele partner of een ontbonden partner kan bevatten
+  # Als er een (of meer) actuele partner is worden geen ontbonden huwelijken/partnerschappen geleverd
+  # Als er alleen ontbonden huwelijken/partnerschappen zijn levert de RvIG alleen de ex-partner met de meest recente datum ontbinding
   # Een proxy vertaalt dit naar de vorm Persoon, waarin sommige gegevens in bewerkte vorm worden opgenomen en waarin informatievragen kunnen zitten
   # Een voorbeeld van een informatievraag is naam.aanschrijfwijze, waarin op basis van de aanduiding naamgebruik, de naam van de persoon en de naam van de (ex)partner een aanschrijfnaam wordt samengesteld
-  # De proxy verwijdert de partners met datum ontbinding die geleverd zijn in de GbaPersoon
 
   @gba
-  Rule: Het gegeven 'partners' in GbaPersoon kan een ontbonden huwelijk of partnerschap bevatten
-    - Voor een ontbonden huwelijk of partnerschap worden de aangaanHuwelijkPartnerschap gegevens gehaald uit de meest recente historische categorie 55
+  Rule: Als er een of meer actuele huwelijken/partnerschappen aanwezig zijn worden alleen die actuele partners geleverd.
+    - Als er een (of meer) actuele partner(s) is/zijn worden deze geleverd en worden geen ontbonden huwelijken/partnerschappen geleverd
 
     @gba
     Scenario: een actuele partner en geen ontbonden partner(s)
@@ -29,7 +29,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | burgerservicenummer           | 555550002 |
       | geslacht.code                 | M         |
       | geslacht.omschrijving         | man       |
-      | soortVerbintenis              | H         |
+      | soortVerbintenis.code         | H         |
       | soortVerbintenis.omschrijving | huwelijk  |
       En heeft de partner met burgerservicenummer '555550002' de volgende 'naam' gegevens
       | naam                    | waarde |
@@ -84,6 +84,11 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | land   | 6039     |
       En de partner met burgerservicenummer '555550004' heeft GEEN 'ontbindingHuwelijkPartnerschap' gegevens
       En heeft de persoon met burgerservicenummer '555550003' géén partner met burgerservicenummer '555550005'
+
+  @gba
+  Rule: Als er geen actueel huwelijk/partnerschap aanwezig is, maar wel een of meer ontbonden huwelijken/partnerschappen wordt de ex-partner met de meest recent ontbonden partnerschap geleverd.
+  - Als er alleen ontbonden huwelijken/partnerschappen zijn levert de RvIG alleen de ex-partner met de meest recente datum ontbinding
+  - Voor een ontbonden huwelijk of partnerschap worden de aangaanHuwelijkPartnerschap gegevens gehaald uit de meest recente historische categorie 55
 
     @gba
     Scenario: alleen ontbonden partners
@@ -197,8 +202,8 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
 
 
   @proxy
-  Rule: Alleen een actueel huwelijk of geregistreerd partnerschap wordt teruggegeven
-    Een huwelijk of partnerschap is actueel wanneer het niet is ontbonden: ontbindingHuwelijkPartnerschap komt niet voor (heeft geen waarde)
+  Rule: Als er een actueel huwelijk of geregistreerd partnerschap is wordt alleen dit actueel huwelijk of geregistreerd partnerschap wordt teruggegeven,
+          als er geen actueel huwelijk of geregistreerd partnerschap is, maar wel een ontbonden huwelijk of geregistreerd partnerschap dan wordt alleen het meest recente ontbonden huwelijk of geregistreerd partnerschap geleverd.
 
     @proxy
     Scenario: Actueel huwelijk
@@ -330,18 +335,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
 
   @proxy
   Rule: Wanneer geen van de gevraagde gegevens van de partner een waarde heeft, wordt er een 'partners' zonder gegevens geleverd.
-    - Dit is het geval wanneer elk gevraagd gegeven van de partner leeg is of een standaardwaarde heeft
-    - Het gaat om de volgende standaardwaarden:
-      | property                           | onbekend waarde |
-      | naam.geslachtsnaam                 | .               |
-      | geboorte.datum                     | 00000000        |
-      | geboorte.plaats                    | 0000            |
-      | geboorte.land                      | 0000            |
-      | soortVerbintenis                   | .               |
-      | aangaanHuwelijkPartnerschap.datum  | 00000000        |
-      | aangaanHuwelijkPartnerschap.plaats | 0000            |
-      | aangaanHuwelijkPartnerschap.land   | 0000            |
-
+    - Dit is het geval wanneer elk gevraagd gegeven van de partner leeg is of een standaardwaarde/onbekend waarde heeft die niet geleverd wordt (zie onbekend_waardes.feature).
 
     @proxy
     Scenario: Met fields zijn alleen velden zonder waarde gevraagd
