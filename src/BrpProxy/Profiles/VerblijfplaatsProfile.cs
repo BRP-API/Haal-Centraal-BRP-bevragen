@@ -11,7 +11,12 @@ public class VerblijfplaatsProfile : Profile
     {
         CreateMap<GbaVerblijfplaats, AbstractVerblijfplaats?>().ConvertUsing<VerblijfplaatsConverter>();
 
-        CreateMap<GbaVerblijfplaats, VerblijfadresBuitenland>();
+        CreateMap<GbaVerblijfplaats, VerblijfadresBuitenland>()
+            .ForMember(dest => dest.Land, opt =>
+            {
+                opt.PreCondition(src => src.Land?.Code != "0000");
+            })
+            ;
 
         CreateMap<GbaVerblijfplaats, VerblijfadresBinnenland>()
             .ForMember(dest => dest.Straat, opt =>

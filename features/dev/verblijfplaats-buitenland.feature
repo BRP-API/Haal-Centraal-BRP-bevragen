@@ -50,6 +50,27 @@ Functionaliteit: verblijfplaats buitenland
     | regel 3 adres buitenland (13.50) | regel3            | Selangor                     |
     | land.omschrijving                | land.omschrijving | Verenigde Staten van Amerika |
 
+  Abstract Scenario: persoon heeft 'verblijfplaats buitenland' veld met onbekend waarde: '<gba naam>'
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 555550001 |
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
+    | naam                             | waarde                      |
+    | regel 1 adres buitenland (13.30) | 1600 Pennsylvania Avenue NW |
+    | <gba naam>                       | <waarde>                    |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                              |
+    | type                | RaadpleegMetBurgerservicenummer     |
+    | burgerservicenummer | 555550001                           |
+    | fields              | verblijfplaats.verblijfadres.<naam> |
+    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
+    | naam                 | waarde                   |
+    | type                 | VerblijfplaatsBuitenland |
+
+    Voorbeelden:
+    | gba naam                      | naam      | waarde |
+    | land adres buitenland (13.10) | land.code | 0000   |
+
   Abstract Scenario: persoon heeft 'verblijfplaats buitenland' datum veld: '<gba naam>'
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
