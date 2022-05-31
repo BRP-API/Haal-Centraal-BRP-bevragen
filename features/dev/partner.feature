@@ -38,7 +38,7 @@ Functionaliteit: Partner
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
-    | fields              | partners.<gegevensgroep>        |
+    | fields              | partners.<gegevensgroep>.<naam> |
     Dan heeft de response een persoon met een 'partner' met alleen de volgende gegevens
     | naam | waarde  |
     | type | Partner |
@@ -59,6 +59,25 @@ Functionaliteit: Partner
     | geboorte                    | land.omschrijving                                                   | land.omschrijving                    | Verenigde Staten van Amerika |
     | aangaanHuwelijkPartnerschap | plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) | plaats.code                          | 0599                         |
     | aangaanHuwelijkPartnerschap | land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)   | land.code                            | 6014                         |
+
+  Scenario: partner heeft 'naam' veld: 'voorletters'
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 555550001 |
+    En de persoon heeft een 'partner' met alleen de volgende 'naam' gegevens
+    | naam              | waarde    |
+    | voornamen (02.10) | Klaas Jan |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 555550001                       |
+    | fields              | partners.naam.voorletters       |
+    Dan heeft de response een persoon met een 'partner' met alleen de volgende gegevens
+    | naam | waarde  |
+    | type | Partner |
+    En heeft de 'partner' alleen de volgende 'naam' gegevens
+    | naam        | waarde |
+    | voorletters | K.J.   |
 
   Abstract Scenario: partner heeft '<gegevensgroep>' veld met onbekend waarde: '<gba naam>'
     Gegeven het systeem heeft een persoon met de volgende gegevens

@@ -35,7 +35,7 @@ Functionaliteit: Kind
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
-    | fields              | kinderen                        |
+    | fields              | kinderen.<gegevensgroep>.<naam> |
     Dan heeft de response een persoon met een 'kind' met alleen de volgende gegevens
     | naam | waarde |
     | type | Kind   |
@@ -54,6 +54,25 @@ Functionaliteit: Kind
     | geboorte      | plaats.omschrijving                  | plaats.omschrijving                  | 's-Gravenhage                |
     | geboorte      | geboorteland (03.30)                 | land.code                            | 6014                         |
     | geboorte      | land.omschrijving                    | land.omschrijving                    | Verenigde Staten van Amerika |
+
+  Scenario: kind heeft 'naam' veld: 'voorletters'
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 555550001 |
+    En de persoon heeft een 'kind' met alleen de volgende 'naam' gegevens
+    | naam              | waarde    |
+    | voornamen (02.10) | Peter Jan |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 555550001                       |
+    | fields              | kinderen.naam.voorletters       |
+    Dan heeft de response een persoon met een 'kind' met alleen de volgende gegevens
+    | naam | waarde |
+    | type | Kind   |
+    En heeft het 'kind' alleen de volgende 'naam' gegevens
+    | naam        | waarde |
+    | voorletters | P.J.   |
 
   Abstract Scenario: kind heeft '<gegevensgroep>' veld met onbekend waarde: '<gba naam>'
     Gegeven het systeem heeft een persoon met de volgende gegevens

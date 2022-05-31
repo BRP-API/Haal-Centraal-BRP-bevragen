@@ -3,6 +3,7 @@
 public partial class NaamGerelateerde : INaam
 {
     public bool ShouldSerialize() =>
+        !string.IsNullOrWhiteSpace(Voorletters)||
         !string.IsNullOrWhiteSpace(Voornamen) ||
         AdellijkeTitelPredicaat != null ||
         !string.IsNullOrWhiteSpace(Voorvoegsel) ||

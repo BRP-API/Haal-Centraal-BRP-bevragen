@@ -37,7 +37,7 @@ Functionaliteit: Ouder
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
-    | fields              | ouders.<gegevensgroep>          |
+    | fields              | ouders.<gegevensgroep>.<naam>   |
     Dan heeft de response een persoon met een 'ouder' met alleen de volgende gegevens
     | naam | waarde |
     | type | Ouder  |
@@ -56,6 +56,25 @@ Functionaliteit: Ouder
     | geboorte      | plaats.omschrijving                  | plaats.omschrijving                  | 's-Gravenhage                |
     | geboorte      | geboorteland (03.30)                 | land.code                            | 6014                         |
     | geboorte      | land.omschrijving                    | land.omschrijving                    | Verenigde Staten van Amerika |
+
+  Abstract Scenario: ouder heeft 'naam' veld: 'voorletters'
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 555550001 |
+    En de persoon heeft een 'ouder' met alleen de volgende 'naam' gegevens
+    | naam              | waarde         |
+    | voornamen (02.10) | Angelina Jolie |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 555550001                       |
+    | fields              | ouders.naam.voorletters         |
+    Dan heeft de response een persoon met een 'ouder' met alleen de volgende gegevens
+    | naam | waarde |
+    | type | Ouder  |
+    En heeft de 'ouder' alleen de volgende 'naam' gegevens
+    | naam        | waarde |
+    | voorletters | A.J.   |
 
   Abstract Scenario: ouder heeft '<gegevensgroep>' veld met onbekend waarde: '<gba naam>'
     Gegeven het systeem heeft een persoon met de volgende gegevens

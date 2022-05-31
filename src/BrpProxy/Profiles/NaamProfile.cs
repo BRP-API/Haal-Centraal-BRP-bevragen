@@ -12,6 +12,7 @@ public class NaamProfile : Profile
         CreateMap<GbaNaamBasis, NaamBasis>();
 
         CreateMap<GbaNaamBasis, NaamGerelateerde>()
+            .ForMember(dest => dest.Voorletters, opt => opt.MapFrom(src => src.Voorletters()))
             .ForMember(dest => dest.Geslachtsnaam, opt =>
             {
                 opt.PreCondition(src => src.Geslachtsnaam != ".");
@@ -28,7 +29,10 @@ public class NaamProfile : Profile
                 opt.MapFrom(src => src.Geslachtsnaam);
             })
             .ForMember(dest => dest.Voorletters, opt => opt.MapFrom(src => src.Voorletters()))
-            .ForMember(dest => dest.VolledigeNaam, opt => opt.MapFrom(src => src.VolledigeNaam(src.Geslacht!)))
+            .AfterMap((src, dest) =>
+            {
+                dest.VolledigeNaam = dest.VolledigeNaam(dest.Geslacht);
+            })
             ;
 
         CreateMap<GbaInOnderzoek, NaamPersoonInOnderzoek?>().ConvertUsing<NaamPersoonInOnderzoekConverter>();
