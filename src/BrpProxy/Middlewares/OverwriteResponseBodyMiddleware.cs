@@ -12,13 +12,15 @@ namespace BrpProxy.Middlewares
     public class OverwriteResponseBodyMiddleware
     {
         private readonly RequestDelegate _next;
+        private readonly IConfiguration _configuration;
         private readonly ILogger<OverwriteResponseBodyMiddleware> _logger;
         private readonly IMapper _mapper;
         private readonly FieldsHelper _fieldsHelper;
 
-        public OverwriteResponseBodyMiddleware(RequestDelegate next, ILogger<OverwriteResponseBodyMiddleware> logger, IMapper mapper, FieldsHelper fieldsHelper)
+        public OverwriteResponseBodyMiddleware(RequestDelegate next, IConfiguration configuration, ILogger<OverwriteResponseBodyMiddleware> logger, IMapper mapper, FieldsHelper fieldsHelper)
         {
             _next = next;
+            _configuration = configuration;
             _logger = logger;
             _mapper = mapper;
             _fieldsHelper = fieldsHelper;
@@ -26,6 +28,8 @@ namespace BrpProxy.Middlewares
 
         public async Task Invoke(HttpContext context)
         {
+            context.Response.Headers.Add("api-version", _configuration["api-version"]);
+
             var orgBodyStream = context.Response.Body;
             string requestBody = string.Empty;
             try

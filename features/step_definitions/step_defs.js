@@ -239,12 +239,28 @@ After({tags: '@post-assert'}, async function() {
     actual.should.deep.equalInAnyOrder(expected, `actual: ${JSON.stringify(actual, null, "\t")}`);
 });
 
+After(async function() {
+    const headers = this.context.response.headers;
+
+    const header = headers["api-version"];
+    should.exist(header, "no header found with name 'api-version'");
+    header.should.equal("2.0.0", "no 'api-version' header found with value: '2.0.0'");
+});
+
 After({tags: '@fout-case'}, async function() {
     const headers = this.context.response.headers;
 
     const header = headers["content-type"];
-    should.exist(header, "no header found with name 'content-type");
-    header.should.contain("application/problem+json", "no 'content-type' found with value: 'application/problem+json'");
+    should.exist(header, "no header found with name 'content-type'");
+    header.should.contain("application/problem+json", "no 'content-type' header found with value: 'application/problem+json'");
+});
+
+After({tags: 'not @fout-case'}, async function() {
+    const headers = this.context.response.headers;
+
+    const header = headers["content-type"];
+    should.exist(header, "no header found with name 'content-type'");
+    header.should.contain("application/json", "no 'content-type' header found with value: 'application/json'");
 });
 
 function addToCollection(collection, toAdd) {
