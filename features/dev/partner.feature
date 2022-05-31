@@ -60,6 +60,26 @@ Functionaliteit: Partner
     | aangaanHuwelijkPartnerschap | plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) | plaats.code                          | 0599                         |
     | aangaanHuwelijkPartnerschap | land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)   | land.code                            | 6014                         |
 
+  Abstract Scenario: partner heeft '<gegevensgroep>' veld met onbekend waarde: '<gba naam>'
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 555550001 |
+    En de persoon heeft een 'partner' met alleen de volgende '<gegevensgroep>' gegevens
+    | naam       | waarde   |
+    | <gba naam> | <waarde> |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 555550001                       |
+    | fields              | partners.<gegevensgroep>        |
+    Dan heeft de response een persoon met een 'partner' met alleen de volgende gegevens
+    | naam | waarde  |
+    | type | Partner |
+
+    Voorbeelden:
+    | gegevensgroep | gba naam              | naam          | waarde |
+    | naam          | geslachtsnaam (02.40) | geslachtsnaam | .      |
+
   Abstract Scenario: partner heeft '<gegevensgroep>' datum veld: '<gba naam>'
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |

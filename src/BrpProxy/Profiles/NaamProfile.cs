@@ -12,6 +12,11 @@ public class NaamProfile : Profile
         CreateMap<GbaNaamBasis, NaamBasis>();
 
         CreateMap<GbaNaamBasis, NaamGerelateerde>()
+            .ForMember(dest => dest.Geslachtsnaam, opt =>
+            {
+                opt.PreCondition(src => src.Geslachtsnaam != ".");
+                opt.MapFrom(src => src.Geslachtsnaam);
+            })
             ;
 
         CreateMap<GbaInOnderzoek, NaamInOnderzoek?>().ConvertUsing<NaamGerelateerdeInOnderzoekConverter>();

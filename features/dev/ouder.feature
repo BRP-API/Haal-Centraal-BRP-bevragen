@@ -57,6 +57,26 @@ Functionaliteit: Ouder
     | geboorte      | geboorteland (03.30)                 | land.code                            | 6014                         |
     | geboorte      | land.omschrijving                    | land.omschrijving                    | Verenigde Staten van Amerika |
 
+  Abstract Scenario: ouder heeft '<gegevensgroep>' veld met onbekend waarde: '<gba naam>'
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 555550001 |
+    En de persoon heeft een 'ouder' met alleen de volgende '<gegevensgroep>' gegevens
+    | naam       | waarde   |
+    | <gba naam> | <waarde> |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 555550001                       |
+    | fields              | ouders.<gegevensgroep>          |
+    Dan heeft de response een persoon met een 'ouder' met alleen de volgende gegevens
+    | naam | waarde |
+    | type | Ouder  |
+
+    Voorbeelden:
+    | gegevensgroep | gba naam              | naam          | waarde |
+    | naam          | geslachtsnaam (02.40) | geslachtsnaam | .      |
+
   Abstract Scenario: ouder heeft datum veld: '<gba naam>'
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |

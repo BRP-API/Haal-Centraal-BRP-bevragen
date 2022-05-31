@@ -55,6 +55,26 @@ Functionaliteit: Kind
     | geboorte      | geboorteland (03.30)                 | land.code                            | 6014                         |
     | geboorte      | land.omschrijving                    | land.omschrijving                    | Verenigde Staten van Amerika |
 
+  Abstract Scenario: kind heeft '<gegevensgroep>' veld met onbekend waarde: '<gba naam>'
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 555550001 |
+    En de persoon heeft een 'kind' met alleen de volgende '<gegevensgroep>' gegevens
+    | naam       | waarde   |
+    | <gba naam> | <waarde> |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 555550001                       |
+    | fields              | kinderen.<gegevensgroep>        |
+    Dan heeft de response een persoon met een 'kind' met alleen de volgende gegevens
+    | naam | waarde |
+    | type | Kind   |
+
+    Voorbeelden:
+    | gegevensgroep | gba naam              | naam          | waarde |
+    | naam          | geslachtsnaam (02.40) | geslachtsnaam | .      |
+
   Abstract Scenario: kind heeft '<gegevensgroep>' datum veld: '<gba naam>'
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
