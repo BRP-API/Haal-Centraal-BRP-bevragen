@@ -5,6 +5,8 @@ namespace BrpProxy.Middlewares
 {
     public static class FoutHandlers
     {
+        private const string ProblemJsonContentType = "application/problem+json";
+
         private const string BadRequestIdentifier = "https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1";
         private const string MethodNotAllowedIdentifier = "https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.5";
         private const string InternalServerErrorIdentifier = "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1";
@@ -67,6 +69,13 @@ namespace BrpProxy.Middlewares
             };
         }
 
+        private static void SetResponseProperties(this HttpContext context, Foutbericht foutbericht, Stream bodyStream)
+        {
+            context.Response.StatusCode = foutbericht.Status!.Value;
+            context.Response.ContentLength = bodyStream.Length;
+            context.Response.ContentType = ProblemJsonContentType;
+        }
+
         public static async Task<bool> MethodIsAllowed(this HttpContext context, Stream orgResponseBodyStream)
         {
             if (context.Request.Method == HttpMethod.Post.Method) return true;
@@ -76,8 +85,8 @@ namespace BrpProxy.Middlewares
 
             using var bodyStream = foutbericht.ToJson().ToMemoryStream(context.Response);
 
-            context.Response.StatusCode = foutbericht.Status!.Value;
-            context.Response.ContentLength = bodyStream.Length;
+            context.SetResponseProperties(foutbericht, bodyStream);
+
             await bodyStream.CopyToAsync(orgResponseBodyStream);
 
             return false;
@@ -89,8 +98,8 @@ namespace BrpProxy.Middlewares
 
             using var bodyStream = foutbericht.ToJson().ToMemoryStream(context.Response);
 
-            context.Response.StatusCode = foutbericht.Status!.Value;
-            context.Response.ContentLength = bodyStream.Length;
+            context.SetResponseProperties(foutbericht, bodyStream);
+
             await bodyStream.CopyToAsync(orgResponseBodyStream);
         }
 
@@ -98,8 +107,8 @@ namespace BrpProxy.Middlewares
         {
             using var bodyStream = foutbericht.ToJson().ToMemoryStream(context.Response);
 
-            context.Response.StatusCode = foutbericht.Status!.Value;
-            context.Response.ContentLength = bodyStream.Length;
+            context.SetResponseProperties(foutbericht, bodyStream);
+
             await bodyStream.CopyToAsync(orgResponseBodyStream);
         }
 
@@ -109,8 +118,8 @@ namespace BrpProxy.Middlewares
 
             using var bodyStream = foutbericht.ToJson().ToMemoryStream(context.Response);
 
-            context.Response.StatusCode = foutbericht.Status!.Value;
-            context.Response.ContentLength = bodyStream.Length;
+            context.SetResponseProperties(foutbericht, bodyStream);
+
             await bodyStream.CopyToAsync(orgResponseBodyStream);
         }
     }

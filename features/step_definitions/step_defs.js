@@ -239,6 +239,14 @@ After({tags: '@post-assert'}, async function() {
     actual.should.deep.equalInAnyOrder(expected, `actual: ${JSON.stringify(actual, null, "\t")}`);
 });
 
+After({tags: '@fout-case'}, async function() {
+    const headers = this.context.response.headers;
+
+    const header = headers["content-type"];
+    should.exist(header, "no header found with name 'content-type");
+    header.should.contain("application/problem+json", "no 'content-type' found with value: 'application/problem+json'");
+});
+
 function addToCollection(collection, toAdd) {
     if(collection !== undefined && toAdd !== undefined) {
         collection.push(toAdd);
@@ -394,6 +402,16 @@ When(/^personen wordt gezocht met de volgende parameters$/, async function (data
     catch(e) {
         this.context.response = e.response;
     }
+});
+
+Then(/^heeft de response de volgende header gegevens$/, function (dataTable) {
+    const headers = this.context.response.headers;
+
+    dataTable.hashes().forEach(function(row) {
+        const header = headers[row.naam];
+        should.exist(header, `no header found with name '${row.naam}'`);
+        header.should.equal(row.waarde, `no '${header}' found with value: '${row.waarde}'`);
+    });
 });
 
 Then(/^heeft de response (\d*) (?:persoon|personen)$/, function (aantal) {
