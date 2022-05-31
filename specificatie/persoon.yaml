@@ -106,8 +106,6 @@ components:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         persoonInOnderzoek:
           $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
-        gemeenteInOnderzoek:
-          $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
         gezagInOnderzoek:
           $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
         uitsluitingKiesrecht:

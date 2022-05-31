@@ -113,7 +113,7 @@ Functionaliteit: in onderzoek
       | type                | RaadpleegMetBurgerservicenummer     |
       | burgerservicenummer | 555550001                           |
       | fields              | burgerservicenummer,nationaliteiten |
-      Dan heeft de persoon met burgerservicenummer '555550001' GEEN 'persoonInOnderzoek' gegevens
+      Dan heeft de persoon met burgerservicenummer '555550001' GEEN 'inOnderzoek' gegevens
       En heeft de nationaliteit GEEN 'inOnderzoek' gegevens
 
     @proxy
@@ -130,7 +130,7 @@ Functionaliteit: in onderzoek
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550001                       |
       | fields              | <fields>                        |
-      Dan heeft de persoon GEEN 'persoonInOnderzoek' gegevens
+      Dan heeft de persoon GEEN 'inOnderzoek' gegevens
 
       Voorbeelden:
       | waarde | gegeven in onderzoek   | fields                      |
@@ -154,7 +154,7 @@ Functionaliteit: in onderzoek
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550001                       |
       | fields              | <veld>                          |
-      Dan heeft de persoon met burgerservicenummer '555550001' de volgende 'persoonInOnderzoek' gegevens
+      Dan heeft de persoon met burgerservicenummer '555550001' de volgende 'inOnderzoek' gegevens
       | naam                        | waarde     |
       | <veld>                      | true       |
       | datumIngangOnderzoekPersoon | 2022-03-07 |
@@ -244,7 +244,7 @@ Functionaliteit: in onderzoek
       | <veld>               | true       |
       | datumIngangOnderzoek | 2022-03-07 |
       En heeft de ouder met ouderAanduiding '<andere ouder>' GEEN 'inOnderzoek' gegevens
-      En heeft de persoon GEEN 'persoonInOnderzoek' gegevens
+      En heeft de persoon GEEN 'inOnderzoek' gegevens
 
       Voorbeelden:
       | waarde | veld                                    | ouder | andere ouder |
@@ -304,7 +304,7 @@ Functionaliteit: in onderzoek
       | voorvoegsel             | true       |
       | geslachtsnaam           | true       |
       | datumIngangOnderzoek    | 2022-03-07 |
-      En heeft de persoon GEEN 'persoonInOnderzoek' gegevens
+      En heeft de persoon GEEN 'inOnderzoek' gegevens
       En heeft de persoon GEEN 'geboorte.inOnderzoek' gegevens
 
     Scenario: kind heeft hele groep geboorte in onderzoek
@@ -331,7 +331,7 @@ Functionaliteit: in onderzoek
       | datumIngangOnderzoek | 2022-03-07 |
       En heeft het kind met burgerservicenummer '555550002' GEEN 'inOnderzoek' gegevens
       En heeft het kind met burgerservicenummer '555550002' GEEN 'naam.inOnderzoek' gegevens
-      En heeft de persoon met burgerservicenummer '555550001' GEEN 'persoonInOnderzoek' gegevens
+      En heeft de persoon met burgerservicenummer '555550001' GEEN 'inOnderzoek' gegevens
       En heeft de persoon met burgerservicenummer '555550001' GEEN 'geboorte.inOnderzoek' gegevens
 
     Abstract Scenario: partner heeft <nauwkeurigheid> soort verbintenis in onderzoek
