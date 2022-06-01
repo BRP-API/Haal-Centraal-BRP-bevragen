@@ -122,6 +122,7 @@ Rule: De Fields parameter is verplicht.
 
 Rule: De Fields parameter mag maximaal 130 veld paden bevatten
 
+  @fout-case
   Scenario: Raadpleeg met burgerservicenummer: Fields parameter bevat meer dan 130 veld paden
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
@@ -140,6 +141,7 @@ Rule: De Fields parameter mag maximaal 130 veld paden bevatten
     | code     | name   | reason                          |
     | maxItems | fields | Array bevat meer dan 130 items. |
 
+  @fout-case
   Scenario: Zoek met geslachtsnaam en geboortedatum: Fields parameter bevat meer dan 130 veld paden
     Als personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
