@@ -66,7 +66,7 @@ function toDate(dateInText) {
     }
 
     let date = new Date();
-    date.setDate(date.getDate() + dag);
+    date.setDate(dag !== 0 ? date.getDate() + dag : 1);
     date.setMonth(date.getMonth() + maand);
     date.setYear(date.getFullYear() + jaar);
 
