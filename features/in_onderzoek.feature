@@ -178,10 +178,11 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 555550001                       |
       | fields              | <veld>                          |
       Dan heeft de persoon met burgerservicenummer '555550001' de volgende 'inOnderzoek' gegevens
-      | naam                              | waarde     |
-      | <veld>                            | true       |
-      | datumIngangOnderzoekPersoon.datum | 2022-03-07 |
-      | datumIngangOnderzoekPersoon.type  | Datum      |
+      | naam                                    | waarde       |
+      | <veld>                                  | true         |
+      | datumIngangOnderzoekPersoon.datum       | 2022-03-07   |
+      | datumIngangOnderzoekPersoon.type        | Datum        |
+      | datumIngangOnderzoekPersoon.langFormaat | 7 maart 2022 |
 
       Voorbeelden:
       | waarde | veld                |
@@ -202,10 +203,11 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 555550001                       |
       | fields              | <groep>.<veld>                  |
       Dan heeft de persoon met burgerservicenummer '555550001' de volgende '<groep>.inOnderzoek' gegevens
-      | naam                       | waarde     |
-      | <veld>                     | true       |
-      | datumIngangOnderzoek.datum | 2022-03-07 |
-      | datumIngangOnderzoek.type  | Datum      |
+      | naam                             | waarde       |
+      | <veld>                           | true         |
+      | datumIngangOnderzoek.datum       | 2022-03-07   |
+      | datumIngangOnderzoek.type        | Datum        |
+      | datumIngangOnderzoek.langFormaat | 7 maart 2022 |
 
       Voorbeelden:
       | waarde | veld                      | groep            |
@@ -227,10 +229,11 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 555550001                       |
       | fields              | <groep>.<veld>                  |
       Dan heeft de persoon met burgerservicenummer '555550001' de volgende '<groep>.inOnderzoek' gegevens
-      | naam                       | waarde     |
-      | <veld>                     | true       |
-      | datumIngangOnderzoek.datum | 2022-03-07 |
-      | datumIngangOnderzoek.type  | Datum      |
+      | naam                             | waarde       |
+      | <veld>                           | true         |
+      | datumIngangOnderzoek.datum       | 2022-03-07   |
+      | datumIngangOnderzoek.type        | Datum        |
+      | datumIngangOnderzoek.langFormaat | 7 maart 2022 |
 
       Voorbeelden:
       | waarde | veld                      | groep            |
@@ -266,10 +269,11 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 555550001                       |
       | fields              | ouders.<veld>                   |
       Dan heeft de ouder met ouderAanduiding '<ouder>' de volgende 'inOnderzoek' gegevens
-      | naam                       | waarde     |
-      | <veld>                     | true       |
-      | datumIngangOnderzoek.datum | 2022-03-07 |
-      | datumIngangOnderzoek.type  | Datum      |
+      | naam                             | waarde       |
+      | <veld>                           | true         |
+      | datumIngangOnderzoek.datum       | 2022-03-07   |
+      | datumIngangOnderzoek.type        | Datum        |
+      | datumIngangOnderzoek.langFormaat | 7 maart 2022 |
       En heeft de ouder met ouderAanduiding '<andere ouder>' GEEN 'inOnderzoek' gegevens
       En heeft de persoon GEEN 'inOnderzoek' gegevens
 
@@ -296,10 +300,11 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 555550001                       |
       | fields              | partners.<veld>                 |
       Dan heeft de partner met burgerservicenummer '555550002' de volgende '<groep>.inOnderzoek' gegevens
-      | naam                       | waarde     |
-      | <veld>                     | true       |
-      | datumIngangOnderzoek.datum | 2022-03-07 |
-      | datumIngangOnderzoek.type  | Datum      |
+      | naam                             | waarde       |
+      | <veld>                           | true         |
+      | datumIngangOnderzoek.datum       | 2022-03-07   |
+      | datumIngangOnderzoek.type        | Datum        |
+      | datumIngangOnderzoek.langFormaat | 7 maart 2022 |
       En heeft de partner met burgerservicenummer '555550002' GEEN 'inOnderzoek' gegevens
 
       Voorbeelden:
@@ -330,16 +335,19 @@ Functionaliteit: in onderzoek
         | burgerservicenummer | 555550001                                                  |
         | fields              | geslacht,indicatiecurateleregister,gemeentevaninschrijving |
         Dan heeft de persoon met burgerservicenummer '555550001' de volgende 'inOnderzoek' gegevens
-        | naam                               | waarde     |
-        | geslacht                           | true       |
-        | gemeenteVanInschrijving            | true       |
-        | indicatieCurateleRegister          | true       |
-        | datumIngangOnderzoekPersoon.datum  | 2022-03-07 |
-        | datumIngangOnderzoekPersoon.type   | Datum      |
-        | datumIngangOnderzoekGemeente.datum | 2003-04-05 |
-        | datumIngangOnderzoekGemeente.type  | Datum      |
-        | datumIngangOnderzoekGezag.datum    | 2010-12-05 |
-        | datumIngangOnderzoekGezag.type     | Datum      |
+        | naam                                     | waarde          |
+        | geslacht                                 | true            |
+        | gemeenteVanInschrijving                  | true            |
+        | indicatieCurateleRegister                | true            |
+        | datumIngangOnderzoekPersoon.datum        | 2022-03-07      |
+        | datumIngangOnderzoekPersoon.type         | Datum           |
+        | datumIngangOnderzoekPersoon.langFormaat  | 7 maart 2022    |
+        | datumIngangOnderzoekGemeente.datum       | 2003-04-05      |
+        | datumIngangOnderzoekGemeente.type        | Datum           |
+        | datumIngangOnderzoekGemeente.langFormaat | 5 april 2022    |
+        | datumIngangOnderzoekGezag.datum          | 2010-12-05      |
+        | datumIngangOnderzoekGezag.type           | Datum           |
+        | datumIngangOnderzoekGezag.langFormaat    | 5 december 2022 |
 
 
   @proxy
@@ -360,13 +368,14 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 555550001                                                                                                           |
       | fields              | naam.voornamen,naam.adellijkeTitelPredicaat,naam.voorvoegsel,naam.geslachtsnaam,naam.aanduidingNaamgebruik,geboorte |
       Dan heeft de persoon met burgerservicenummer '555550001' alleen de volgende 'naam.inOnderzoek' gegevens
-      | naam                       | waarde     |
-      | voornamen                  | true       |
-      | adellijkeTitelPredicaat    | true       |
-      | voorvoegsel                | true       |
-      | geslachtsnaam              | true       |
-      | datumIngangOnderzoek.datum | 2022-03-07 |
-      | datumIngangOnderzoek.type  | Datum      |
+      | naam                             | waarde     |
+      | voornamen                        | true       |
+      | adellijkeTitelPredicaat          | true       |
+      | voorvoegsel                      | true       |
+      | geslachtsnaam                    | true       |
+      | datumIngangOnderzoek.datum       | 2022-03-07 |
+      | datumIngangOnderzoek.type        | Datum      |
+      | datumIngangOnderzoek.langFormaat | 7 maart 2022 |
       En heeft de persoon GEEN 'inOnderzoek' gegevens
       En heeft de persoon GEEN 'geboorte.inOnderzoek' gegevens
 
@@ -387,12 +396,13 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 555550001                       |
       | fields              | kinderen                        |
       Dan heeft het kind met burgerservicenummer '555550002' alleen de volgende 'geboorte.inOnderzoek' gegevens
-      | naam                       | waarde     |
-      | datum                      | true       |
-      | plaats                     | true       |
-      | land                       | true       |
-      | datumIngangOnderzoek.datum | 2022-03-07 |
-      | datumIngangOnderzoek.type  | Datum      |
+      | naam                             | waarde     |
+      | datum                            | true       |
+      | plaats                           | true       |
+      | land                             | true       |
+      | datumIngangOnderzoek.datum       | 2022-03-07 |
+      | datumIngangOnderzoek.type        | Datum      |
+      | datumIngangOnderzoek.langFormaat | 7 maart 2022 |
       En heeft het kind met burgerservicenummer '555550002' GEEN 'inOnderzoek' gegevens
       En heeft het kind met burgerservicenummer '555550002' GEEN 'naam.inOnderzoek' gegevens
       En heeft de persoon met burgerservicenummer '555550001' GEEN 'inOnderzoek' gegevens
@@ -415,10 +425,11 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 555550001                       |
       | fields              | partners                        |
       Dan heeft de partner met burgerservicenummer '555550002' alleen de volgende 'inOnderzoek' gegevens
-      | naam                       | waarde     |
-      | soortVerbintenis           | true       |
-      | datumIngangOnderzoek.datum | 2022-03-07 |
-      | datumIngangOnderzoek.type  | Datum      |
+      | naam                             | waarde     |
+      | soortVerbintenis                 | true       |
+      | datumIngangOnderzoek.datum       | 2022-03-07 |
+      | datumIngangOnderzoek.type        | Datum      |
+      | datumIngangOnderzoek.langFormaat | 7 maart 2022 |
       En heeft de partner met burgerservicenummer '555550002' GEEN 'naam.inOnderzoek' gegevens
       En heeft de partner met burgerservicenummer '555550002' GEEN 'geboorte.inOnderzoek' gegevens
       En heeft de persoon met burgerservicenummer '555550001' GEEN 'persoonInOnderzoek' gegevens
