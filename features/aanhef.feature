@@ -7,7 +7,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
   De aanhef wordt gebruikt bovenaan een brief.
 
   # In onderstaande tabellen betekenen de afkortingen:
-  # GA = "Geachte mevrouw", "Geachte heer", "Geachte" gevolg door voorletters
+  # GA = "Geachte mevrouw", "Geachte heer", "Geachte" gevolgd door voorletters
   # VL = voorletters
   # VV = voorvoegselGeslachtsnaam
   # GN = geslachtsnaam
@@ -46,8 +46,8 @@ Rule: De aanhef voor een persoon zonder adellijke titel of predicaat wordt samen
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
-    | fields              | naam.aanhef                     |
-    Dan heeft de response een persoon met de volgende 'naam' gegevens
+    | fields              | adressering.aanhef              |
+    Dan heeft de response een persoon met de volgende 'adressering' gegevens
     | naam   | waarde   |
     | aanhef | <aanhef> |
 
@@ -57,7 +57,7 @@ Rule: De aanhef voor een persoon zonder adellijke titel of predicaat wordt samen
     | vrouw     | V        | Geachte mevrouw Groenen |
     | onbekend  | O        | Geachte J.R. Groenen    |
 
-  Abstract Scenario: naamsamenstelling van een alleenstaande persoon die nooit huwelijk of partnerschap heeft gehad met aanduidingNaamgebruik "<aanduidingNaamgebruik>"
+  Abstract Scenario: naamsamenstelling van een persoon die nooit huwelijk of partnerschap heeft gehad met aanduidingNaamgebruik "<aanduidingNaamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                        | waarde    |
     | burgerservicenummer         | 999992934 |
@@ -73,8 +73,8 @@ Rule: De aanhef voor een persoon zonder adellijke titel of predicaat wordt samen
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
-    | fields              | naam.aanhef                     |
-    Dan heeft de response een persoon met de volgende 'naam' gegevens
+    | fields              | adressering.aanhef              |
+    Dan heeft de response een persoon met de volgende 'adressering' gegevens
     | naam   | waarde                      |
     | aanhef | Geachte mevrouw In het Veld |
 
@@ -108,8 +108,8 @@ Rule: De aanhef voor een persoon zonder adellijke titel of predicaat wordt samen
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
-    | fields              | naam.aanhef                     |
-    Dan heeft de response een persoon met de volgende 'naam' gegevens
+    | fields              | adressering.aanhef              |
+    Dan heeft de response een persoon met de volgende 'adressering' gegevens
     | naam   | waarde   |
     | aanhef | <aanhef> |
 
@@ -148,8 +148,8 @@ Rule: De aanhef voor een persoon zonder adellijke titel of predicaat wordt samen
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
-    | fields              | naam.aanhef                     |
-    Dan heeft de response een persoon met de volgende 'naam' gegevens
+    | fields              | adressering.aanhef              |
+    Dan heeft de response een persoon met de volgende 'adressering' gegevens
     | naam   | waarde   |
     | aanhef | <aanhef> |
 
@@ -236,8 +236,8 @@ Rule: De aanhef voor een persoon met adellijke titel of predicaat wordt bepaald 
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
-    | fields              | naam.aanhef                     |
-    Dan heeft de response een persoon met de volgende 'naam' gegevens
+    | fields              | adressering.aanhef              |
+    Dan heeft de response een persoon met de volgende 'adressering' gegevens
     | naam   | waarde   |
     | aanhef | <aanhef> |
 
@@ -289,8 +289,8 @@ Rule: De aanhef voor een persoon met adellijke titel of predicaat wordt bepaald 
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
-    | fields              | naam.aanhef                     |
-    Dan heeft de response een persoon met de volgende 'naam' gegevens
+    | fields              | adressering.aanhef              |
+    Dan heeft de response een persoon met de volgende 'adressering' gegevens
     | naam   | waarde   |
     | aanhef | <aanhef> |
 
@@ -325,8 +325,8 @@ Rule: De aanhef voor een persoon met adellijke titel of predicaat wordt bepaald 
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
-    | fields              | naam.aanhef                     |
-    Dan heeft de response een persoon met de volgende 'naam' gegevens
+    | fields              | adressering.aanhef              |
+    Dan heeft de response een persoon met de volgende 'adressering' gegevens
     | naam   | waarde   |
     | aanhef | <aanhef> |
 
@@ -360,8 +360,8 @@ Rule: De aanhef voor een persoon met adellijke titel of predicaat wordt bepaald 
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
-    | fields              | naam.aanhef                     |
-    Dan heeft de response een persoon met de volgende 'naam' gegevens
+    | fields              | adressering.aanhef              |
+    Dan heeft de response een persoon met de volgende 'adressering' gegevens
     | naam   | waarde   |
     | aanhef | <aanhef> |
 
@@ -400,8 +400,8 @@ Rule: De aanhef voor een persoon met adellijke titel of predicaat wordt bepaald 
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
-    | fields              | naam.aanhef                     |
-    Dan heeft de response een persoon met de volgende 'naam' gegevens
+    | fields              | adressering.aanhef              |
+    Dan heeft de response een persoon met de volgende 'adressering' gegevens
     | naam   | waarde   |
     | aanhef | <aanhef> |
 
@@ -456,8 +456,8 @@ Rule: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredicaat 
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
-    | fields              | naam.aanhef                     |
-    Dan heeft de response een persoon met de volgende 'naam' gegevens
+    | fields              | adressering.aanhef              |
+    Dan heeft de response een persoon met de volgende 'adressering' gegevens
     | naam   | waarde   |
     | aanhef | <aanhef> |
 
@@ -497,8 +497,8 @@ Rule: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredicaat 
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
-    | fields              | naam.aanhef                     |
-    Dan heeft de response een persoon met de volgende 'naam' gegevens
+    | fields              | adressering.aanhef              |
+    Dan heeft de response een persoon met de volgende 'adressering' gegevens
     | naam   | waarde   |
     | aanhef | <aanhef> |
 
@@ -535,8 +535,8 @@ Rule: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredicaat 
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
-    | fields              | naam.aanhef                     |
-    Dan heeft de response een persoon met de volgende 'naam' gegevens
+    | fields              | adressering.aanhef              |
+    Dan heeft de response een persoon met de volgende 'adressering' gegevens
     | naam   | waarde   |
     | aanhef | <aanhef> |
 
@@ -582,8 +582,8 @@ Rule: Voor het bepalen van de aanhef gaat gebruik van de adellijke titel van de 
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
-    | fields              | naam.aanhef                     |
-    Dan heeft de response een persoon met de volgende 'naam' gegevens
+    | fields              | adressering.aanhef              |
+    Dan heeft de response een persoon met de volgende 'adressering' gegevens
     | naam   | waarde   |
     | aanhef | <aanhef> |
 
@@ -631,8 +631,8 @@ Rule: Voor het bepalen van de aanhef gaat gebruik van de adellijke titel van de 
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
-    | fields              | naam.aanhef                     |
-    Dan heeft de response een persoon met de volgende 'naam' gegevens
+    | fields              | adressering.aanhef              |
+    Dan heeft de response een persoon met de volgende 'adressering' gegevens
     | naam   | waarde   |
     | aanhef | <aanhef> |
 
@@ -678,8 +678,8 @@ Rule: Bij meerdere actuele (niet ontbonden) huwelijken/partnerschappen worden de
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
-    | fields              | naam.aanhef                     |
-    Dan heeft de response een persoon met de volgende 'naam' gegevens
+    | fields              | adressering.aanhef              |
+    Dan heeft de response een persoon met de volgende 'adressering' gegevens
     | naam   | waarde                 |
     | aanhef | Geachte mevrouw <naam> |
 
@@ -724,8 +724,8 @@ Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
-    | fields              | naam.aanhef                     |
-    Dan heeft de response een persoon met de volgende 'naam' gegevens
+    | fields              | adressering.aanhef              |
+    Dan heeft de response een persoon met de volgende 'adressering' gegevens
     | naam   | waarde   |
     | aanhef | <aanhef> |
 
@@ -760,8 +760,8 @@ Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
-    | fields              | naam.aanhef                     |
-    Dan heeft de response een persoon met de volgende 'naam' gegevens
+    | fields              | adressering.aanhef              |
+    Dan heeft de response een persoon met de volgende 'adressering' gegevens
     | naam   | waarde   |
     | aanhef | <aanhef> |
 
@@ -806,8 +806,8 @@ Rule: Aanduiding naamgebruik "E" (eigen naam) wordt gehanteerd voor een persoon 
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
-    | fields              | naam.aanhef                     |
-    Dan heeft de response een persoon met de volgende 'naam' gegevens
+    | fields              | adressering.aanhef              |
+    Dan heeft de response een persoon met de volgende 'adressering' gegevens
     | naam   | waarde                  |
     | aanhef | Geachte mevrouw De Boer |
 
@@ -839,8 +839,8 @@ Rule: Aanduiding naamgebruik "E" (eigen naam) wordt gehanteerd voor een persoon 
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999992934                       |
-    | fields              | naam.aanhef                     |
-    Dan heeft de response een persoon met de volgende 'naam' gegevens
+    | fields              | adressering.aanhef              |
+    Dan heeft de response een persoon met de volgende 'adressering' gegevens
     | naam   | waarde   |
     | aanhef | <aanhef> |
 

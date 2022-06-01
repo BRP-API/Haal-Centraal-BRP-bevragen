@@ -21,7 +21,7 @@ public partial class Persoon
         return Partners?.Count > 0;
     }
 
-    //public bool ShouldSerializeAdressering() => Adressering != null && Adressering.ShouldSerialize();
+    public bool ShouldSerializeAdressering() => Adressering != null && Adressering.ShouldSerialize();
 
     public bool ShouldSerializeEuropeesKiesrecht() => EuropeesKiesrecht != null && EuropeesKiesrecht.ShouldSerialize();
 
@@ -52,7 +52,7 @@ public partial class Persoon
         IndicatieGezagMinderjarige != null ||
         InOnderzoek != null ||
         Leeftijd > 0 ||
-        //ShouldSerializeAdressering() ||
+        ShouldSerializeAdressering() ||
         ShouldSerializeEuropeesKiesrecht() ||
         ShouldSerializeGeboorte() ||
         ShouldSerializeImmigratie() ||

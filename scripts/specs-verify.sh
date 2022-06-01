@@ -5,6 +5,7 @@ mkdir -p docs/features
 cucumber-js -f html:docs/features/test-result.html \
             -f json:docs/features/test-result.json \
             features/dev/*.feature \
+            features/aanhef.feature \
             features/datum.feature \
             features/fields-fout-cases.feature \
             features/fields.feature \
