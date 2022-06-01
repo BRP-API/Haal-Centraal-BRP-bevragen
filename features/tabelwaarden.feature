@@ -52,6 +52,7 @@ De onderstaanden tabellen met de beschreven waarden worden geleverd door de "BRP
     | ------------------------------------------------ | ------------------------------------ |
     | H                                                | huwelijk                             |
     | P                                                | geregistreerd partnerschap           |
+    | .                                                | onbekend                             |
 
  Voor de enumeratie FunctieAdres wordt de tabel met identificatie "Functie_Adres" opgenomen.
  In de omschrijving wordt de volgende tekst opgenomen : "Aanduiding van de functie van het adres"
