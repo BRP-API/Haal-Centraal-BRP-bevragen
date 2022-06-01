@@ -202,7 +202,7 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
 
 
   @proxy
-  Rule: Als er een actueel huwelijk of geregistreerd partnerschap is wordt alleen dit actueel huwelijk of geregistreerd partnerschap wordt teruggegeven,
+  Rule: Als er een actueel huwelijk of geregistreerd partnerschap is wordt alleen dit actueel huwelijk of geregistreerd partnerschap teruggegeven,
           als er geen actueel huwelijk of geregistreerd partnerschap is, maar wel een ontbonden huwelijk of geregistreerd partnerschap dan wordt alleen het meest recente ontbonden huwelijk of geregistreerd partnerschap geleverd.
 
     @proxy
