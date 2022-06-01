@@ -37,7 +37,7 @@ Functionaliteit: in onderzoek
       | fields              | ouders,partners,<fields>        |
       Dan heeft de persoon de volgende 'persoonInOnderzoek' gegevens
       | naam                          | waarde   |
-      | aanduidingGegevensInOnderzoek | <waarde  |
+      | aanduidingGegevensInOnderzoek | <waarde> |
       | datumIngangOnderzoek          | 20120920 |
       En heeft de persoon GEEN 'naam.inOnderzoek' gegevens
       En heeft de persoon GEEN 'geboorte.inOnderzoek' gegevens
@@ -51,6 +51,29 @@ Functionaliteit: in onderzoek
       | hele categorie persoon | 010000 | naam        |
       | groep naam             | 010200 | voorvoegsel |
       | geboortedatum          | 010310 | naam        |
+
+    @gba
+    Scenario: persoon heeft gezagInOnderzoek en persoonInOnderzoek
+      Gegeven de persoon met burgerservicenummer 555550001 heeft de volgende persoonsgegevens in de registratie
+      | categorie | burgerservicenummer (01.20) | voornamen (02.10) | voorvoegsel (02.30) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | datum einde onderzoek (83.30) |
+      | 1         | 555550001                   | Arnitta           |                     | 19231213              | 010410                          | 20120920                       |                               |
+      En de persoon met burgerservicenummer 555550001 heeft de volgende gezagsverhoudinggegevens in de registratie
+      | Categorie | indicatie curatele (33.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | datum einde onderzoek (83.30) |
+      | 11        | 1                          | 113310                          | 20101205                       |                               |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                             |
+      | type                | RaadpleegMetBurgerservicenummer    |
+      | burgerservicenummer | 555550001                          |
+      | fields              | geslacht,indicatieCurateleRegister |
+      Dan heeft de persoon de volgende 'persoonInOnderzoek' gegevens
+      | naam                          | waarde   |
+      | aanduidingGegevensInOnderzoek | 010410   |
+      | datumIngangOnderzoek          | 20120920 |
+      En heeft de persoon de volgende 'gezagInOnderzoek' gegevens
+      | naam                          | waarde   |
+      | aanduidingGegevensInOnderzoek | 113310   |
+      | datumIngangOnderzoek          | 20101205 |
+
 
     @gba
     Scenario: persoon in onderzoek maar niet vragen om gegevens uit categorie persoon
@@ -219,7 +242,7 @@ Functionaliteit: in onderzoek
       | 081350 | adresregel3               | verblijfplaats   |
       | 103910 | aanduiding                | verblijfstitel   |
 
-    Scenario: persoon heeft <veld> van ouder in onderzoek
+    Abstract Scenario: persoon heeft <veld> van ouder in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                        | waarde    |
       | burgerservicenummer         | 555550001 |
@@ -279,6 +302,37 @@ Functionaliteit: in onderzoek
       | 050240 | geslachtsnaam               | naam     |
       | 050310 | plaats                      | geboorte |
       | 050610 | aangaanHuwelijkPartnerschap | datum    |
+
+      Scenario: persoon heeft gegevens geslacht, gemeenteVanInschrijving en indicatieCurateleRegister in onderzoek
+        Gegeven het systeem heeft een persoon met de volgende gegevens
+        | naam                        | waarde    |
+        | burgerservicenummer         | 555550001 |
+        En de persoon heeft de volgende 'persoonInOnderzoek' gegevens
+        | naam                          | waarde   |
+        | aanduidingGegevensInOnderzoek | 010410   |
+        | datumIngangOnderzoek          | 20220307 |
+        En de persoon heeft de volgende 'gezagInOnderzoek' gegevens
+        | naam                          | waarde   |
+        | aanduidingGegevensInOnderzoek | 113310   |
+        | datumIngangOnderzoek          | 20101205 |
+        En de persoon heeft de volgende 'verblijfplaats.inOnderzoek' gegevens
+        | naam                          | waarde   |
+        | aanduidingGegevensInOnderzoek | 080910   |
+        | datumIngangOnderzoek          | 20030405 |
+        Als personen wordt gezocht met de volgende parameters
+        | naam                | waarde                                                     |
+        | type                | RaadpleegMetBurgerservicenummer                            |
+        | burgerservicenummer | 555550001                                                  |
+        | fields              | geslacht,indicatiecurateleregister,gemeentevaninschrijving |
+        Dan heeft de persoon met burgerservicenummer '555550001' de volgende 'inOnderzoek' gegevens
+        | naam                         | waarde     |
+        | geslacht                     | true       |
+        | gemeenteVanInschrijving      | true       |
+        | indicatieCurateleRegister    | true       |
+        | datumIngangOnderzoekPersoon  | 2022-03-07 |
+        | datumIngangOnderzoekGemeente | 2003-04-05 |
+        | datumIngangOnderzoekGezag    | 2010-12-05 |
+
 
   @proxy
   Rule: wanneer een groep in de bron in onderzoek is, wordt elk gegeven in het antwoord dat gevuld wordt uit een van de elementen in die groep ook in inOnderzoek opgenomen met de waarde true
