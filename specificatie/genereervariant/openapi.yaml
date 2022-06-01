@@ -645,11 +645,20 @@ components:
         Het A-nummer van de persoon
     PersoonInOnderzoek:
       description: |
-        Geeft aan welke gegevens van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature).
+        Geeft aan welke gegevens van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v2.0.0/features/in_onderzoek.feature).
+        * **datumIngangOnderzoekPersoon - Deze datum heeft betrekking op burgerservicenummer, geslacht en leeftijd
+        * **datumIngangOnderzoekGemeente - Deze datum heeft betrekking op gemeenteVanInschrijving en datumInschrijvingInGemeente
+        * **datumIngangOnderzoekGezag - Deze datumingang heeft betrekking op indicatieCurateleRegister en indicatieGezagMinderjarige
       allOf:
       - $ref: '#/components/schemas/InOnderzoek'
       - type: object
         properties:
+          datumIngangOnderzoekPersoon:
+            $ref: '#/components/schemas/AbstractDatum'
+          datumIngangOnderzoekGemeente:
+            $ref: '#/components/schemas/AbstractDatum'
+          datumIngangOnderzoekGezag:
+            $ref: '#/components/schemas/AbstractDatum'
           burgerservicenummer:
             type: boolean
           geslacht:
