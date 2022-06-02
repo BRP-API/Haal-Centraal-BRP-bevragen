@@ -4,8 +4,10 @@
 Functionaliteit: volledige naam
 
 Rule: de volledige naam wordt samengesteld door achter elkaar plaatsen van voornamen, voorvoegsels en geslachtsnaam
+  - standaardwaarde "." voor geslachtsnaam wordt niet opgenomen in volledigeNaam
+  - wanneer de volledigeNaam geen inhoud heeft, gelijk is aan "", dan wordt volledigeNaam niet opgenomen
 
-  Abstract Scenario: volledige naam van persoon
+  Abstract Scenario: volledige naam van persoon <omschrijving>
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde                |
     | burgerservicenummer | <burgerservicenummer> |
@@ -25,11 +27,32 @@ Rule: de volledige naam wordt samengesteld door achter elkaar plaatsen van voorn
     | volledigeNaam | <volledigeNaam> |
 
     Voorbeelden:
-    | burgerservicenummer | voornamen       | voorvoegsel | geslachtsnaam | volledigeNaam           |
-    | 999995078           | Christina Maria |             | Maassen       | Christina Maria Maassen |
-    | 999994542           | Gerrit          | den         | Braber        | Gerrit den Braber       |
-    | 999994074           |                 |             | Obbadah       | Obbadah                 |
-    | 999992703           | Mohamed         | El          | Rafi          | Mohamed El Rafi         |
+      | burgerservicenummer | voornamen                              | voorvoegsel | geslachtsnaam                     | volledigeNaam                                                                   | omschrijving                        |
+      | 999995078           | Christina Maria                        |             | Maassen                           | Christina Maria Maassen                                                         | zonder voorvoegsel                  |
+      | 999994542           | Gerrit                                 | den         | Braber                            | Gerrit den Braber                                                               | met voorvoegsel                     |
+      | 999994074           |                                        |             | Obbadah                           | Obbadah                                                                         | naamketen                           |
+      | 999992703           | Mohamed                                | El          | Rafi                              | Mohamed El Rafi                                                                 | voorvoegsel met hoofdletter         |
+      | 999993318           | Dian Marini Maya                       |             | .                                 | Dian Marini Maya                                                                | geslachtsnaam heeft standaardwaarde |
+      | 999990482           | Lisanty Teresita del niño Jesús Virgen | De las      | do Livramento de La Salete Jansz. | Lisanty Teresita del niño Jesús Virgen De las do Livramento de La Salete Jansz. | geslachtsnaam met punt              |
+    
+  Scenario: volledig onbekende naam
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999993288 |
+    En de persoon heeft de volgende 'naam' gegevens
+    | naam                                 | waarde |
+    | voornamen (02.10)                    |        |
+    | adellijke titel of predikaat (02.20) |        |
+    | voorvoegsel (02.30)                  |        |
+    | geslachtsnaam (02.40)                | .      |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                                 |
+    | type                | RaadpleegMetBurgerservicenummer        |
+    | burgerservicenummer | 999993288                              |
+    | fields              | burgerservicenummer,naam.volledigeNaam |
+    Dan heeft de response een persoon met alleen de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 999993288 |
 
 Rule: een predicaat wordt opgenomen voor de voornamen met de omschrijving horend bij de waarde in tabel 38 in de vorm die hoort bij het geslacht en geschreven in kleine letters
   - wanneer er geen vorm is die hoort bij het predicaat (geslacht "O"), wordt de omschrijving horend bij de waarde in tabel 38 gebruikt
