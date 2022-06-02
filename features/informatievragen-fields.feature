@@ -2,7 +2,7 @@
 
 @gba
 Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar leveren van bron velden
-  Wanneer met fields wordt gevraagd om een veld die wordt samengesteld uit verschillende andere velden in de GbaPersoon, dan worden deze benodigde velden geleverd.
+  Wanneer met fields wordt gevraagd om een veld dat wordt samengesteld uit verschillende andere velden in de GbaPersoon, dan worden deze benodigde velden geleverd.
 
   Achtergrond:
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -115,13 +115,14 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
     - overlijden.datum wordt alleen geleverd wanneer de persoon overleden is (wanneer er een waarde is voor overlijden.datum)
 
     @gba
-    Abstract Scenario: met fields is gevraagd om leeftijd
+    Abstract Scenario: met fields is gevraagd om leeftijd van een persoon die niet overleden is
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde                |
       | burgerservicenummer | <burgerservicenummer> |
       En de persoon heeft de volgende 'geboorte' gegevens
       | naam                  | waarde          |
       | geboortedatum (03.10) | <geboortedatum> |
+      En de persoon heeft geen 'overlijden' gegevens
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -417,38 +418,47 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | gemeente van inschrijving (09.10)    | <gemeenteVanInschrijving> |
       | gemeenteVanInschrijving.omschrijving | <gemeente omschrijving>   |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
-      | naam                             | waarde                |
-      | straatnaam (11.10)               | <straat>              |
-      | naam openbare ruimte (11.15)     | <straat>              |
-      | huisnummer (11.20)               | <huisnummer>          |
-      | postcode (11.60)                 | <postcode>            |
-      | woonplaats (11.70)               | <woonplaats>          |
-      | locatiebeschrijving (12.10)      | <locatiebeschrijving> |
-      | land.code                        | <land>                |
-      | land.omschrijving                | <land omschrijving>   |
-      | regel 1 adres buitenland (13.30) | <regel1>              |
-      | regel 2 adres buitenland (13.40) | <regel2>              |
-      | regel 3 adres buitenland (13.50) | <regel3>              |
+      | naam                              | waarde                    |
+      | straatnaam (11.10)                | <straat>                  |
+      | naam openbare ruimte (11.15)      | <straat>                  |
+      | huisnummer (11.20)                | <huisnummer>              |
+      | huisletter (11.30)                | <huisletter>              |
+      | huisnummertoevoeging (11.40)      | <huisnummertoevoeging>    |
+      | aanduiding bij huisnummer (11.50) | <aanduidingBijHuisnummer> |
+      | postcode (11.60)                  | <postcode>                |
+      | woonplaats (11.70)                | <woonplaats>              |
+      | locatiebeschrijving (12.10)       | <locatiebeschrijving>     |
+      | land.code                         | <land>                    |
+      | land.omschrijving                 | <land omschrijving>       |
+      | regel 1 adres buitenland (13.30)  | <regel1>                  |
+      | regel 2 adres buitenland (13.40)  | <regel2>                  |
+      | regel 3 adres buitenland (13.50)  | <regel3>                  |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | <burgerservicenummer>           |
       | fields              | adresregel1                     |
       Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
-      | naam                              | waarde                |
-      | verblijfadres.straat              | <straat>              |
-      | verblijfadres.huisnummer          | <huisnummer>          |
-      | verblijfadres.postcode            | <postcode>            |
-      | verblijfadres.locatiebeschrijving | <locatiebeschrijving> |
-      | verblijfadres.regel1              | <regel1>              |
+      | naam                                               | waarde                    |
+      | verblijfadres.straat                               | <straat>                  |
+      | verblijfadres.huisnummer                           | <huisnummer>              |
+      | verblijfadres.huisletter                           | <huisletter>              |
+      | verblijfadres.huisnummertoevoeging                 | <huisnummertoevoeging>    |
+      | verblijfadres.aanduidingBijHuisnummer.code         | <aanduidingBijHuisnummer> |
+      | verblijfadres.aanduidingBijHuisnummer.omschrijving | <aanduiding omschrijving> |
+      | verblijfadres.postcode                             | <postcode>                |
+      | verblijfadres.locatiebeschrijving                  | <locatiebeschrijving>     |
+      | verblijfadres.regel1                               | <regel1>                  |
 
       Voorbeelden:
-      | burgerservicenummer | gemeenteVanInschrijving | gemeente omschrijving              | straat    | huisnummer | postcode | woonplaats | locatiebeschrijving        | land | land omschrijving | regel1            | regel2       | regel 3       |
-      | 999993653           | 0599                    | Rotterdam                          | Boterdiep | 31         | 3077AW   | Rotterdam  |                            |      |                   |                   |              |               |
-      | 000009921           | 0518                    | 's-Gravenhage                      |           |            |          |            | Woonboot in de Grote Sloot |      |                   | Locatie           |              |               |
-      | 999995121           | 1999                    | Registratie Niet Ingezetenen (RNI) |           |            |          |            |                            | 5002 | Frankrijk         | 14 Rue Camulogene | 75015 Parijs |               |
-      | 999993483           | 1999                    | Registratie Niet Ingezetenen (RNI) |           |            |          |            |                            | 5010 | België            | Rue du pomme 25   | Bruxelles    | postcode 1000 |
-      | 999993586           |                         |                                    |           |            |          |            |                            | 0000 | Onbekend          |                   |              |               |
+      | burgerservicenummer | gemeenteVanInschrijving | gemeente omschrijving              | straat           | huisnummer | huisletter | huisnummertoevoeging | aanduidingBijHuisnummer | aanduiding omschrijving | postcode | woonplaats | locatiebeschrijving        | land | land omschrijving | regel1            | regel2       | regel 3       |
+      | 999993653           | 0599                    | Rotterdam                          | Boterdiep        | 31         |            |                      |                         |                         | 3077AW   | Rotterdam  |                            |      |                   |                   |              |               |
+      | 999991693           | 0530                    | Hellevoetsluis                     | Cronus           | 555        | B          | 73c                  |                         |                         | 3225TD   |            |                            |      |                   |                   |              |               |
+      | 999990913           | 0394                    | Haarlemmermeer                     | Graan voor Visch | 15201      |            |                      | by                      | bij                     |          | 2132EA     |                            |      |                   |                   |              |               |  |
+      | 000009921           | 0518                    | 's-Gravenhage                      |                  |            |            |                      |                         |                         |          |            | Woonboot in de Grote Sloot |      |                   | Locatie           |              |               |
+      | 999995121           | 1999                    | Registratie Niet Ingezetenen (RNI) |                  |            |            |                      |                         |                         |          |            |                            | 5002 | Frankrijk         | 14 Rue Camulogene | 75015 Parijs |               |
+      | 999993483           | 1999                    | Registratie Niet Ingezetenen (RNI) |                  |            |            |                      |                         |                         |          |            |                            | 5010 | België            | Rue du pomme 25   | Bruxelles    | postcode 1000 |
+      | 999993586           |                         |                                    |                  |            |            |                      |                         |                         |          |            |                            | 0000 | Onbekend          |                   |              |               |
 
     @gba
     Abstract Scenario: met fields is gevraagd om adresregel2
@@ -458,18 +468,21 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | gemeente van inschrijving (09.10)    | <gemeenteVanInschrijving> |
       | gemeenteVanInschrijving.omschrijving | <gemeente omschrijving>   |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
-      | naam                             | waarde                |
-      | straatnaam (11.10)               | <straat>              |
-      | naam openbare ruimte (11.15)     | <straat>              |
-      | huisnummer (11.20)               | <huisnummer>          |
-      | postcode (11.60)                 | <postcode>            |
-      | woonplaats (11.70)               | <woonplaats>          |
-      | locatiebeschrijving (12.10)      | <locatiebeschrijving> |
-      | land.code                        | <land>                |
-      | land.omschrijving                | <land omschrijving>   |
-      | regel 1 adres buitenland (13.30) | <regel1>              |
-      | regel 2 adres buitenland (13.40) | <regel2>              |
-      | regel 3 adres buitenland (13.50) | <regel3>              |
+      | naam                              | waarde                    |
+      | straatnaam (11.10)                | <straat>                  |
+      | naam openbare ruimte (11.15)      | <straat>                  |
+      | huisnummer (11.20)                | <huisnummer>              |
+      | huisletter (11.30)                | <huisletter>              |
+      | huisnummertoevoeging (11.40)      | <huisnummertoevoeging>    |
+      | aanduiding bij huisnummer (11.50) | <aanduidingBijHuisnummer> |
+      | postcode (11.60)                  | <postcode>                |
+      | woonplaats (11.70)                | <woonplaats>              |
+      | locatiebeschrijving (12.10)       | <locatiebeschrijving>     |
+      | land.code                         | <land>                    |
+      | land.omschrijving                 | <land omschrijving>       |
+      | regel 1 adres buitenland (13.30)  | <regel1>                  |
+      | regel 2 adres buitenland (13.40)  | <regel2>                  |
+      | regel 3 adres buitenland (13.50)  | <regel3>                  |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -483,16 +496,17 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | naam                              | waarde                |
       | verblijfadres.postcode            | <postcode>            |
       | verblijfadres.woonplaats          | <woonplaats>          |
-      | verblijfadres.locatiebeschrijving | <locatiebeschrijving> |
       | verblijfadres.regel2              | <regel2>              |
 
       Voorbeelden:
-      | burgerservicenummer | gemeenteVanInschrijving | gemeente omschrijving              | straat    | huisnummer | postcode | woonplaats | locatiebeschrijving        | land | land omschrijving | regel1            | regel2       | regel 3       |
-      | 999993653           | 0599                    | Rotterdam                          | Boterdiep | 31         | 3077AW   | Rotterdam  |                            |      |                   |                   |              |               |
-      | 000009921           | 0518                    | 's-Gravenhage                      |           |            |          |            | Woonboot in de Grote Sloot |      |                   | Locatie           |              |               |
-      | 999995121           | 1999                    | Registratie Niet Ingezetenen (RNI) |           |            |          |            |                            | 5002 | Frankrijk         | 14 Rue Camulogene | 75015 Parijs |               |
-      | 999993483           | 1999                    | Registratie Niet Ingezetenen (RNI) |           |            |          |            |                            | 5010 | België            | Rue du pomme 25   | Bruxelles    | postcode 1000 |
-      | 999993586           |                         |                                    |           |            |          |            |                            | 0000 | Onbekend          |                   |              |               |
+      | burgerservicenummer | gemeenteVanInschrijving | gemeente omschrijving              | straat           | huisnummer | huisletter | huisnummertoevoeging | aanduidingBijHuisnummer | aanduiding omschrijving | postcode | woonplaats | locatiebeschrijving        | land | land omschrijving | regel1            | regel2       | regel 3       |
+      | 999993653           | 0599                    | Rotterdam                          | Boterdiep        | 31         |            |                      |                         |                         | 3077AW   | Rotterdam  |                            |      |                   |                   |              |               |
+      | 999991693           | 0530                    | Hellevoetsluis                     | Cronus           | 555        | B          | 73c                  |                         |                         | 3225TD   |            |                            |      |                   |                   |              |               |
+      | 999990913           | 0394                    | Haarlemmermeer                     | Graan voor Visch | 15201      |            |                      | by                      | bij                     |          | 2132EA     |                            |      |                   |                   |              |               |  |
+      | 000009921           | 0518                    | 's-Gravenhage                      |                  |            |            |                      |                         |                         |          |            | Woonboot in de Grote Sloot |      |                   | Locatie           |              |               |
+      | 999995121           | 1999                    | Registratie Niet Ingezetenen (RNI) |                  |            |            |                      |                         |                         |          |            |                            | 5002 | Frankrijk         | 14 Rue Camulogene | 75015 Parijs |               |
+      | 999993483           | 1999                    | Registratie Niet Ingezetenen (RNI) |                  |            |            |                      |                         |                         |          |            |                            | 5010 | België            | Rue du pomme 25   | Bruxelles    | postcode 1000 |
+      | 999993586           |                         |                                    |                  |            |            |                      |                         |                         |          |            |                            | 0000 | Onbekend          |                   |              |               |
 
     @gba
     Abstract Scenario: met fields is gevraagd om adresregel3
