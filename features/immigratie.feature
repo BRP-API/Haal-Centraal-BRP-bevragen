@@ -11,7 +11,6 @@ Functionaliteit: Immigratie
       | burgerservicenummer | 555550001 |
       En de persoon heeft de volgende 'immigratie' gegevens
       | naam                                 | waarde            |
-      | land van waar ingeschreven (14.10)   | 9088              |
       | datum vestiging in nederland (14.20) | <datum vestiging> |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                             |
@@ -38,7 +37,6 @@ Functionaliteit: Immigratie
       En de persoon heeft de volgende 'immigratie' gegevens
       | naam                                 | waarde   |
       | land van waar ingeschreven (14.10)   | 0000     |
-      | datum vestiging in nederland (14.20) | 20080123 |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                                          |
       | type                | RaadpleegMetBurgerservicenummer                                 |
