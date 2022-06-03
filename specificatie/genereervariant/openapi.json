@@ -1018,7 +1018,7 @@
         "example" : "de"
       },
       "Geslachtsnaam" : {
-        "maxLength" : 200,
+        "pattern" : "^[a-zA-Z0-9À-ž \\.\\-\\']{1,200}$",
         "type" : "string",
         "description" : "De achternaam van een persoon.\n",
         "example" : "Vries"

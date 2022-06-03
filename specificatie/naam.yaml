@@ -8,7 +8,7 @@ components:
   schemas:
     Geslachtsnaam:
       type: string
-      maxLength: 200
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,200}$
       description: |
         De achternaam van een persoon.
       example: "Vries"
