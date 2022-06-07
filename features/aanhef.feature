@@ -96,10 +96,7 @@ Rule: De aanhef voor een persoon zonder adellijke titel of predicaat wordt samen
     | voorvoegsel (02.30)                  | <voorvoegsel>   |
     | geslachtsnaam (02.40)                | <geslachtsnaam> |
     | aanduiding naamgebruik (61.10)       | <naamgebruik>   |
-    En de persoon heeft een 'partner' met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992935 |
-    En de 'partner' heeft de volgende 'naam' gegevens
+    En de persoon heeft een 'partner' met de volgende 'naam' gegevens
     | naam                                 | waarde                  |
     | adellijke titel of predicaat (02.20) |                         |
     | voorvoegsel (02.30)                  | <partner voorvoegsel>   |
@@ -136,10 +133,7 @@ Rule: De aanhef voor een persoon zonder adellijke titel of predicaat wordt samen
     | voorvoegsel (02.30)                  | <voorvoegsel>   |
     | geslachtsnaam (02.40)                | <geslachtsnaam> |
     | aanduiding naamgebruik (61.10)       | <naamgebruik>   |
-    En de persoon heeft een 'partner' met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992935 |
-    En de 'partner' heeft de volgende 'naam' gegevens
+    En de persoon heeft een 'partner' met de volgende 'naam' gegevens
     | naam                                 | waarde                  |
     | adellijke titel of predicaat (02.20) |                         |
     | voorvoegsel (02.30)                  | <partner voorvoegsel>   |
@@ -224,10 +218,7 @@ Rule: De aanhef voor een persoon met adellijke titel of predicaat wordt bepaald 
     | voorvoegsel (02.30)                  | van den                   |
     | geslachtsnaam (02.40)                | Aedel                     |
     | aanduiding naamgebruik (61.10)       | E                         |
-    En de persoon heeft een 'partner' met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992935 |
-    En de 'partner' heeft de volgende 'naam' gegevens
+    En de persoon heeft een 'partner' met de volgende 'naam' gegevens
     | naam                                 | waarde |
     | adellijke titel of predicaat (02.20) |        |
     | voorvoegsel (02.30)                  | de     |
@@ -277,10 +268,7 @@ Rule: De aanhef voor een persoon met adellijke titel of predicaat wordt bepaald 
     | voorvoegsel (02.30)                  | van den                   |
     | geslachtsnaam (02.40)                | Aedel                     |
     | aanduiding naamgebruik (61.10)       | <naamgebruik>             |
-    En de persoon heeft een 'partner' met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992935 |
-    En de 'partner' heeft de volgende 'naam' gegevens
+    En de persoon heeft een 'partner' met de volgende 'naam' gegevens
     | naam                                 | waarde |
     | adellijke titel of predicaat (02.20) |        |
     | voorvoegsel (02.30)                  | de     |
@@ -313,10 +301,7 @@ Rule: De aanhef voor een persoon met adellijke titel of predicaat wordt bepaald 
     | voorvoegsel (02.30)                  | van den |
     | geslachtsnaam (02.40)                | Aedel   |
     | aanduiding naamgebruik (61.10)       | E       |
-    En de persoon heeft een 'partner' met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992935 |
-    En de 'partner' heeft de volgende 'naam' gegevens
+    En de persoon heeft een 'partner' met de volgende 'naam' gegevens
     | naam                                 | waarde |
     | adellijke titel of predicaat (02.20) |        |
     | voorvoegsel (02.30)                  | de     |
@@ -348,10 +333,7 @@ Rule: De aanhef voor een persoon met adellijke titel of predicaat wordt bepaald 
     | voorvoegsel (02.30)                  | van den       |
     | geslachtsnaam (02.40)                | Aedel         |
     | aanduiding naamgebruik (61.10)       | <naamgebruik> |
-    En de persoon heeft een 'partner' met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992935 |
-    En de 'partner' heeft de volgende 'naam' gegevens
+    En de persoon heeft een 'partner' met de volgende 'naam' gegevens
     | naam                                 | waarde |
     | adellijke titel of predicaat (02.20) |        |
     | voorvoegsel (02.30)                  | de     |
@@ -385,17 +367,14 @@ Rule: De aanhef voor een persoon met adellijke titel of predicaat wordt bepaald 
     | geslachtsnaam (02.40)                | Aedel         |
     | aanduiding naamgebruik (61.10)       | <naamgebruik> |
     En de persoon heeft geen actuele partner
-    En de persoon heeft een 'ex-partner' met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992935 |
-    En de 'ex-partner' heeft de volgende 'naam' gegevens
+    En de persoon heeft een 'ex-partner' met de volgende 'naam' gegevens
     | naam                                 | waarde |
     | adellijke titel of predicaat (02.20) |        |
     | voorvoegsel (02.30)                  | de     |
     | geslachtsnaam (02.40)                | Boer   |
     En de 'ex-partner' heeft de volgende 'ontbindingHuwelijkPartnerschap' gegevens
-    | naam                     | waarde   |
-    | datum ontbinding (07.10) | 20211109 |
+    | naam                                                         | waarde   |
+    | datum ontbinding huwelijk/geregistreerd partnerschap (07.10) | 20211109 |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -444,10 +423,7 @@ Rule: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredicaat 
     | voorvoegsel (02.30)                  | de     |
     | geslachtsnaam (02.40)                | Boer   |
     | aanduiding naamgebruik (61.10)       | P      |
-    En de persoon heeft een 'partner' met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992935 |
-    En de 'partner' heeft de volgende 'naam' gegevens
+    En de persoon heeft een 'partner' met de volgende 'naam' gegevens
     | naam                                 | waarde                            |
     | adellijke titel of predicaat (02.20) | <adellijkeTitelPredicaat partner> |
     | voorvoegsel (02.30)                  | van den                           |
@@ -485,10 +461,7 @@ Rule: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredicaat 
     | voorvoegsel (02.30)                  | de     |
     | geslachtsnaam (02.40)                | Boer   |
     | aanduiding naamgebruik (61.10)       | P      |
-    En de persoon heeft een 'partner' met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992935 |
-    En de 'partner' heeft de volgende 'naam' gegevens
+    En de persoon heeft een 'partner' met de volgende 'naam' gegevens
     | naam                                 | waarde          |
     | adellijke titel of predicaat (02.20) | <titel partner> |
     | voorvoegsel (02.30)                  | van den         |
@@ -523,10 +496,7 @@ Rule: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredicaat 
     | voorvoegsel (02.30)                  | de            |
     | geslachtsnaam (02.40)                | Boer          |
     | aanduiding naamgebruik (61.10)       | <naamgebruik> |
-    En de persoon heeft een 'partner' met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992935 |
-    En de 'partner' heeft de volgende 'naam' gegevens
+    En de persoon heeft een 'partner' met de volgende 'naam' gegevens
     | naam                                 | waarde  |
     | adellijke titel of predicaat (02.20) | B       |
     | voorvoegsel (02.30)                  | van den |
@@ -571,7 +541,6 @@ Rule: Voor het bepalen van de aanhef gaat gebruik van de adellijke titel van de 
     | aanduiding naamgebruik (61.10)       | <naamgebruik>             |
     En de persoon heeft een 'partner' met de volgende gegevens
     | naam                        | waarde    |
-    | burgerservicenummer         | 999992935 |
     | geslachtsaanduiding (04.10) | M         |
     En de 'partner' heeft de volgende 'naam' gegevens
     | naam                                 | waarde                            |
@@ -620,7 +589,6 @@ Rule: Voor het bepalen van de aanhef gaat gebruik van de adellijke titel van de 
     | aanduiding naamgebruik (61.10)       | <naamgebruik>             |
     En de persoon heeft een 'partner' met de volgende gegevens
     | naam                        | waarde    |
-    | burgerservicenummer         | 999992935 |
     | geslachtsaanduiding (04.10) | V         |
     En de 'partner' heeft de volgende 'naam' gegevens
     | naam                                 | waarde                            |
@@ -748,10 +716,7 @@ Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van
     | voorvoegsel (02.30)                  |                           |
     | geslachtsnaam (02.40)                |                           |
     | aanduiding naamgebruik (61.10)       | <naamgebruik>             |
-    En de persoon heeft een 'partner' met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992935 |
-    En de 'partner' heeft de volgende 'naam' gegevens
+    En de persoon heeft een 'partner' met de volgende 'naam' gegevens
     | naam                                 | waarde |
     | adellijke titel of predicaat (02.20) |        |
     | voorvoegsel (02.30)                  | de     |

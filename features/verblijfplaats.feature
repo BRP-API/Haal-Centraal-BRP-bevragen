@@ -27,17 +27,17 @@ Functionaliteit: leveren van een verblijfplaats
       | type | Adres  |
 
       Voorbeelden:
-      | gba veld                                 | waarde           |
-      | straatnaam (11.10)                       | Spui             |
-      | naam openbare ruimte (11.15)             | Spui             |
-      | huisnummer (11.20)                       | 123              |
-      | huisletter (11.30)                       | a                |
-      | huisnummertoevoeging (11.40)             | 2                |
-      | aanduiding bij huisnummer (11.50)        | to               |
-      | postcode (11.60)                         | 1234AA           |
-      | woonplaatsnaam (11.70)                   | 's-Gravenhage    |
-      | adresseerbaarObjectIdentificatie (11.80) | 0599010000208579 |
-      | nummeraanduidingIdentificatie (11.90)    | 0599200000219678 |
+      | gba veld                                   | waarde           |
+      | straatnaam (11.10)                         | Spui             |
+      | naam openbare ruimte (11.15)               | Spui             |
+      | huisnummer (11.20)                         | 123              |
+      | huisletter (11.30)                         | a                |
+      | huisnummertoevoeging (11.40)               | 2                |
+      | aanduiding bij huisnummer (11.50)          | to               |
+      | postcode (11.60)                           | 1234AA           |
+      | woonplaatsnaam (11.70)                     | 's-Gravenhage    |
+      | identificatiecode verblijfplaats (11.80)   | 0599010000208579 |
+      | identificatiecode nummeraanduiding (11.90) | 0599200000219678 |
 
   Rule: Een verblijfplaats is een binnenlandse locatie wanneer locatiebeschrijving (12.10) een waarde heeft
     - veld 'type' krijgt de waarde 'Locatie' 
@@ -120,13 +120,13 @@ Functionaliteit: leveren van een verblijfplaats
       | naam                | waarde    |
       | burgerservicenummer | 555550001 |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
-      | naam                                     | waarde           |
-      | straatnaam (11.10)                       | .                |
-      | huisnummer (11.20)                       | 0                |
-      | postcode (11.60)                         |                  |
-      | woonplaatsnaam (11.70)                   | .                |
-      | adresseerbaarObjectIdentificatie (11.80) | 0000000000000000 |
-      | nummeraanduidingIdentificatie (11.90)    | 0000000000000000 |
+      | naam                                       | waarde           |
+      | straatnaam (11.10)                         | .                |
+      | huisnummer (11.20)                         | 0                |
+      | postcode (11.60)                           |                  |
+      | woonplaatsnaam (11.70)                     | .                |
+      | identificatiecode verblijfplaats (11.80)   | 0000000000000000 |
+      | identificatiecode nummeraanduiding (11.90) | 0000000000000000 |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |

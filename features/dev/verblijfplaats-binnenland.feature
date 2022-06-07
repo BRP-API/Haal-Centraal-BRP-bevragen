@@ -50,10 +50,10 @@ Functionaliteit: verblijfplaats binnenland
     | <naam> | <waarde> |
 
     Voorbeelden:
-    | gba naam                                 | naam                             | waarde           |
-    | functie adres (10.10)                    | functieAdres.code                | W                |
-    | adresseerbaarObjectIdentificatie (11.80) | adresseerbaarObjectIdentificatie | 0599010000208579 |
-    | nummeraanduidingIdentificatie (11.90)    | nummeraanduidingIdentificatie    | 0599200000219678 |
+    | gba naam                                   | naam                             | waarde           |
+    | functie adres (10.10)                      | functieAdres.code                | W                |
+    | identificatiecode verblijfplaats (11.80)   | adresseerbaarObjectIdentificatie | 0599010000208579 |
+    | identificatiecode nummeraanduiding (11.90) | nummeraanduidingIdentificatie    | 0599200000219678 |
 
   Abstract Scenario: persoon heeft 'verblijfplaats binnenland' datum veld: '<gba naam>'
     Gegeven het systeem heeft een persoon met de volgende gegevens

@@ -9,6 +9,8 @@ cucumber-js -f html:docs/features/test-result.html \
             features/datum.feature \
             features/fields-fout-cases.feature \
             features/fields.feature \
+            features/gebruik_in_lopende_tekst.feature \
+            features/immigratie.feature \
             features/leeftijd_bepaling.feature \
             features/nationaliteit.feature \
             features/onbekend_waardes.feature \

@@ -12,16 +12,19 @@ Functionaliteit: Persoon
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
-    | fields              | <naam>      |
+    | fields              | <naam>                          |
     Dan heeft de response een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | <naam>              | <waarde>  |
+    | naam   | waarde   |
+    | <naam> | <waarde> |
 
     Voorbeelden:
-    | gba naam                    | naam                  | waarde     |
-    | anummer (01.10)             | aNummer               | 1234567890 |
-    | geslachtsaanduiding (04.10) | geslacht.code         | M          |
-    | geslacht.omschrijving       | geslacht.omschrijving | man        |
+    | gba naam                                | naam                                    | waarde                            |
+    | anummer (01.10)                         | aNummer                                 | 1234567890                        |
+    | geslachtsaanduiding (04.10)             | geslacht.code                           | M                                 |
+    | geslacht.omschrijving                   | geslacht.omschrijving                   | man                               |
+    | indicatie curateleregister (33.10)      | indicatieCurateleRegister               | true                              |
+    | indicatie gezag minderjarige (32.10)    | indicatieGezagMinderjarige.code         | 12                                |
+    | indicatieGezagMinderjarige.omschrijving | indicatieGezagMinderjarige.omschrijving | Ouder1 en ouder2 hebben het gezag |
 
   Abstract Scenario: persoon heeft veld: 'indicatie geheim (70.10)'
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -29,13 +32,13 @@ Functionaliteit: Persoon
     | burgerservicenummer      | 555550001    |
     | indicatie geheim (70.10) | <gba waarde> |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                            |
-    | type                | RaadpleegMetBurgerservicenummer                   |
-    | burgerservicenummer | 555550001                                         |
-    | fields              | geheimhoudingPersoonsgegevens |
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 555550001                       |
+    | fields              | geheimhoudingPersoonsgegevens   |
     Dan heeft de response een persoon met de volgende gegevens
-    | naam                          | waarde    |
-    | geheimhoudingPersoonsgegevens | <waarde>  |
+    | naam                          | waarde   |
+    | geheimhoudingPersoonsgegevens | <waarde> |
 
     Voorbeelden:
     | gba waarde | waarde |
@@ -57,12 +60,12 @@ Functionaliteit: Persoon
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
-    | fields              | <naam>      |
+    | fields              | <naam>                          |
     Dan heeft de response een persoon met de volgende gegevens
-    | naam                | waarde         |
-    | <naam>.type         | Datum          |
-    | <naam>.datum        | <waarde>       |
-    | <naam>.langFormaat  | <lang formaat> |
+    | naam               | waarde         |
+    | <naam>.type        | Datum          |
+    | <naam>.datum       | <waarde>       |
+    | <naam>.langFormaat | <lang formaat> |
 
     Voorbeelden:
     | gba naam                                  | gba waarde | naam                        | waarde     | lang formaat |
@@ -76,10 +79,10 @@ Functionaliteit: Persoon
     | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)           | 20020701                  |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                |
-    | type                | RaadpleegMetBurgerservicenummer       |
-    | burgerservicenummer | 555550001                             |
-    | fields              | inOnderzoek |
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 555550001                       |
+    | fields              | inOnderzoek                     |
     Dan heeft de response een persoon met de volgende gegevens
     | naam                                         | waarde                             |
     | inOnderzoek.burgerservicenummer              | <burgerservicenummer in onderzoek> |

@@ -1,6 +1,6 @@
 #language: nl
 
-@post-assert
+@post-assert  @skip-verify
 Functionaliteit: Gezagsverhouding
 
   Abstract Scenario: persoon heeft 'gezagsverhouding' veld: '<gba naam>'

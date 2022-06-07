@@ -92,10 +92,10 @@ Rule: een veld wordt niet opgenomen wanneer het de standaardwaarde bevat
     | type | Adres  |
 
     Voorbeelden:
-    | field                                           | element                                  | waarde           |
-    | verblijfplaats.verblijfadres.woonplaats         | woonplaatsnaam (11.70)                   | .                |
-    | verblijfplaats.nummeraanduidingIdentificatie    | nummeraanduidingIdentificatie (11.90)    | 0000000000000000 |
-    | verblijfplaats.adresseerbaarObjectIdentificatie | adresseerbaarObjectIdentificatie (11.80) | 0000000000000000 |
+    | field                                           | element                                    | waarde           |
+    | verblijfplaats.verblijfadres.woonplaats         | woonplaatsnaam (11.70)                     | .                |
+    | verblijfplaats.nummeraanduidingIdentificatie    | identificatiecode nummeraanduiding (11.90) | 0000000000000000 |
+    | verblijfplaats.adresseerbaarObjectIdentificatie | identificatiecode verblijfplaats (11.80)   | 0000000000000000 |
 
   Scenario: onbekend waarde in een partner voor soortVerbintenis
     Gegeven het systeem heeft een persoon met de volgende gegevens

@@ -1,6 +1,6 @@
 #language: nl
 
-@proxy
+@proxy @post-assert
 Functionaliteit: Immigratie
 
   Rule: indicatieVestigingVanuitBuitenland wordt opgenomen met de waarde true wanneer datumVestigingInNederland een waarde heeft
@@ -44,7 +44,6 @@ Functionaliteit: Immigratie
       | fields              | vanuitVerblijfplaatsOnbekend,indicatieVestigingVanuitBuitenland |
       Dan heeft de response een persoon met de volgende 'immigratie' gegevens
       | naam                               | waarde |
-      | indicatieVestigingVanuitBuitenland | true   |
       | vanuitVerblijfplaatsOnbekend       | true   |
 
     Scenario: persoon heeft land van waar ingeschreven ongelijk aan '0000'
