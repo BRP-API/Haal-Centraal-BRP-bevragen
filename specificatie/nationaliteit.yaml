@@ -20,12 +20,12 @@ components:
       discriminator:
         propertyName: type
         mapping:
-          Nationaliteit: '#/components/schemas/Nationaliteit'
+          Nationaliteit: '#/components/schemas/NationaliteitBekend'
           BehandeldAlsNederlander: '#/components/schemas/BehandeldAlsNederlander'
           VastgesteldNietNederlander: '#/components/schemas/VastgesteldNietNederlander'
           Staatloos: '#/components/schemas/Staatloos'
           NationaliteitOnbekend: '#/components/schemas/NationaliteitOnbekend'
-    Nationaliteit:
+    NationaliteitBekend:
       description: |
         * **nationaliteit** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'Nationaliteiten' uit de Haal-Centraal-BRP-tabellen-bevragen API.
       allOf:
@@ -37,7 +37,7 @@ components:
             nationaliteit:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
             inOnderzoek:
-              $ref: '#/components/schemas/NationaliteitInOnderzoek'
+              $ref: '#/components/schemas/NationaliteitBekendInOnderzoek'
     BehandeldAlsNederlander:
       allOf:
         - $ref: '#/components/schemas/AbstractNationaliteit'
@@ -99,7 +99,7 @@ components:
               type: boolean
             redenOpname:
               type: boolean
-    NationaliteitInOnderzoek:
+    NationaliteitBekendInOnderzoek:
       description: |
         Geeft aan welke gegevens over de nationaliteit in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
       allOf:
