@@ -168,10 +168,10 @@ fields_to_map = {
     '09.03.20': 'kinderen[].geboorte.plaats.code',
     '09.03.30': 'kinderen[].geboorte.land.code',
     '10.39.10': 'verblijfstitel.aanduiding.code',
-    # '13.31.10': 'kiesrecht.europeesKiesrecht',
-    # '13.31.30': 'kiesrecht.einddatumUitsluitingEuropeesKiesrecht',
-    # '13.38.10': 'kiesrecht.uitgeslotenVanKiesrecht',
-    # '13.38.20': 'kiesrecht.einddatumUitsluitingKiesrecht',
+    '13.31.10': 'europeesKiesrecht.aanduiding.code',
+    '13.31.30': 'europeesKiesrecht.einddatumUitsluiting',
+    '13.38.10': 'uitsluitingKiesrecht.uitgeslotenVanKiesrecht',
+    '13.38.20': 'uitsluitingKiesrecht.einddatum',
 }
 
-convert_gba_v_testdata(fields_to_map, '20210805_Testset_persoonslijsten_proefomgeving_GBA-V.csv', '../src/config/BrpService/test-data.json')
+convert_gba_v_testdata(fields_to_map, '20220502_Testset_persoonslijsten_proefomgeving_GBA-V.csv', '../src/config/BrpService/test-data.json')

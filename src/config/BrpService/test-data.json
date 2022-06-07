@@ -774,9 +774,9 @@
       "straat": "Leyweg",
       "naamOpenbareRuimte": "Leyweg",
       "huisnummer": "1485",
-      "postcode": "2548AE",
+      "postcode": "2584AE",
       "woonplaats": "'s-Gravenhage",
-      "adresseerbaarObjectIdentificatie": "0518010000617227",
+      "adresseerbaarObjectIdentificatie": "0518010000817227",
       "nummeraanduidingIdentificatie": "0518200000617226"
     }
   },
@@ -810,8 +810,8 @@
         "code": "W"
       },
       "straat": "Leyweg",
-      "huisnummer": "11485",
-      "postcode": "2548AE"
+      "huisnummer": "1485",
+      "postcode": "2584AE"
     }
   },
   {
@@ -1622,6 +1622,7 @@
       "straat": "Anna van Westrienenstr",
       "naamOpenbareRuimte": "Anna van Westrienenstraat",
       "huisnummer": "1",
+      "huisletter": "A",
       "postcode": "3038SX",
       "woonplaats": "Rotterdam",
       "adresseerbaarObjectIdentificatie": "0599010400020921",
@@ -1638,6 +1639,7 @@
       },
       "straat": "Anna van Westrienenstr",
       "huisnummer": "1",
+      "huisletter": "A",
       "postcode": "3038SX"
     }
   },
@@ -3649,6 +3651,7 @@
       },
       "straat": "Hereweg",
       "huisnummer": "22",
+      "huisletter": "A",
       "postcode": "9725AD"
     },
     "kinderen": [
@@ -5697,6 +5700,7 @@
       },
       "straat": "Loosduinse Hoofdstraat",
       "huisnummer": "189",
+      "huisletter": "a",
       "postcode": "2552AB"
     },
     "kinderen": [
@@ -7776,7 +7780,11 @@
           }
         }
       }
-    ]
+    ],
+    "uitsluitingKiesrecht": {
+      "uitgeslotenVanKiesrecht": true,
+      "einddatum": "20080901"
+    }
   },
   {
     "ouders": [
@@ -7979,6 +7987,7 @@
       "straat": "Koningsstraat",
       "naamOpenbareRuimte": "Amsterdam",
       "huisnummer": "1",
+      "huisletter": "H",
       "postcode": "1011ES",
       "woonplaats": "Amsterdam",
       "adresseerbaarObjectIdentificatie": "0363010000959554",
@@ -8828,6 +8837,7 @@
       },
       "straat": "De Kempenaerstraat",
       "huisnummer": "33",
+      "huisletter": "b",
       "postcode": "3038VP"
     },
     "kinderen": [
@@ -9247,6 +9257,7 @@
       },
       "straat": "Rodenrijslaan",
       "huisnummer": "15",
+      "huisletter": "a",
       "postcode": "3037XB"
     }
   },
@@ -9525,6 +9536,7 @@
       "straat": "Keizerstraat",
       "naamOpenbareRuimte": "Keizerstraat",
       "huisnummer": "7",
+      "huisletter": "A",
       "postcode": "2584BA",
       "woonplaats": "'s-Gravenhage",
       "adresseerbaarObjectIdentificatie": "0518014040007001",
@@ -9559,6 +9571,7 @@
       },
       "straat": "Keizerstraat",
       "huisnummer": "7",
+      "huisletter": "a",
       "postcode": "2584BA"
     },
     "kinderen": [
@@ -9822,19 +9835,20 @@
     "datumEersteInschrijvingGBA": "19940930",
     "geheimhoudingPersoonsgegevens": "0",
     "gemeenteVanInschrijving": {
-      "code": "1901"
+      "code": "0518"
     },
     "verblijfplaats": {
       "functieAdres": {
         "code": "W"
       },
-      "straat": "Rozetuin",
-      "naamOpenbareRuimte": "Rozetuin",
-      "huisnummer": "10",
-      "postcode": "2811AB",
-      "woonplaats": "Reeuwijk",
-      "adresseerbaarObjectIdentificatie": "0595011000010001",
-      "nummeraanduidingIdentificatie": "0595201000010001"
+      "straat": "Kamperfoeliestraat",
+      "naamOpenbareRuimte": "Kamperfoeliestraat",
+      "huisnummer": "2",
+      "huisletter": "A",
+      "postcode": "2563KJ",
+      "woonplaats": "'s-Gravenhage",
+      "adresseerbaarObjectIdentificatie": "0518100001753738",
+      "nummeraanduidingIdentificatie": "0518200001755400"
     }
   },
   {
@@ -9845,11 +9859,39 @@
       "functieAdres": {
         "code": "W"
       },
-      "straat": "Rozetuin",
-      "naamOpenbareRuimte": "Rozetuin",
-      "huisnummer": "10",
-      "postcode": "2811AB",
-      "woonplaats": "Reeuwijk"
+      "straat": "Buitenomweg",
+      "naamOpenbareRuimte": "Buitenomweg",
+      "huisnummer": "7",
+      "postcode": "2811BM",
+      "woonplaats": "Reeuwijk",
+      "adresseerbaarObjectIdentificatie": "0595010000018759",
+      "nummeraanduidingIdentificatie": "0595200000000485"
+    }
+  },
+  {
+    "gemeenteVanInschrijving": {
+      "code": "1901"
+    },
+    "verblijfplaats": {
+      "functieAdres": {
+        "code": "W"
+      },
+      "straat": "Buitenomweg",
+      "huisnummer": "7",
+      "postcode": "2811BM"
+    }
+  },
+  {
+    "gemeenteVanInschrijving": {
+      "code": "0595"
+    },
+    "verblijfplaats": {
+      "functieAdres": {
+        "code": "W"
+      },
+      "straat": "Buitenomweg",
+      "huisnummer": "7",
+      "postcode": "2811BM"
     }
   },
   {
@@ -11272,6 +11314,7 @@
       "straat": "J.C. Schroderstraat",
       "naamOpenbareRuimte": "J.C. Schroderstraat",
       "huisnummer": "1",
+      "huisletter": "H",
       "postcode": "1068JT",
       "woonplaats": "Amsterdam",
       "adresseerbaarObjectIdentificatie": "0363010000678216",
@@ -14608,6 +14651,7 @@
       },
       "straat": "Stadhoudersweg",
       "huisnummer": "100",
+      "huisletter": "a",
       "postcode": "3039CK"
     },
     "kinderen": [
@@ -16887,7 +16931,7 @@
             "code": "Berlijn"
           },
           "land": {
-            "code": "9089"
+            "code": "6029"
           }
         },
         "geslachtsaanduiding": {
@@ -16907,7 +16951,7 @@
             "code": "Berlijn"
           },
           "land": {
-            "code": "9089"
+            "code": "6029"
           }
         },
         "geslachtsaanduiding": {
@@ -16963,7 +17007,7 @@
       "functieAdres": {
         "code": "W"
       },
-      "straat": "Laan Copes v Cattenburch",
+      "straat": "Ln Copes van Cattenburch",
       "naamOpenbareRuimte": "Laan Copes van Cattenburch",
       "huisnummer": "38",
       "postcode": "2585GB",
@@ -17020,11 +17064,12 @@
       },
       "straat": "Atjehstraat",
       "naamOpenbareRuimte": "Atjehstraat",
-      "huisnummer": "136",
-      "postcode": "2585VN",
+      "huisnummer": "1",
+      "huisnummertoevoeging": "BIS1",
+      "postcode": "2585VG",
       "woonplaats": "'s-Gravenhage",
-      "adresseerbaarObjectIdentificatie": "0518010000759226",
-      "nummeraanduidingIdentificatie": "0518200000759225"
+      "adresseerbaarObjectIdentificatie": "0518010001630049",
+      "nummeraanduidingIdentificatie": "0518200001630050"
     },
     "verblijfstitel": {
       "aanduiding": {
@@ -17041,8 +17086,9 @@
         "code": "W"
       },
       "straat": "Atjehstraat",
-      "huisnummer": "136",
-      "postcode": "2585VN"
+      "huisnummer": "1",
+      "huisnummertoevoeging": "BIS1",
+      "postcode": "2585VG"
     },
     "verblijfstitel": {
       "aanduiding": {
@@ -17059,13 +17105,27 @@
         "code": "W"
       },
       "straat": "Erasmusweg",
-      "huisnummer": "151",
-      "postcode": "2532CG"
+      "huisnummer": "4",
+      "postcode": "2532CP"
     },
     "verblijfstitel": {
       "aanduiding": {
         "code": "98"
       }
+    }
+  },
+  {
+    "gemeenteVanInschrijving": {
+      "code": "0974"
+    },
+    "verblijfplaats": {
+      "functieAdres": {
+        "code": "W"
+      },
+      "straat": "Heidestraat",
+      "huisnummer": "61",
+      "huisletter": "D",
+      "postcode": "6114AB"
     }
   },
   {
@@ -17629,6 +17689,7 @@
       },
       "straat": "Leyweg",
       "huisnummer": "61",
+      "huisletter": "e",
       "postcode": "2545CC"
     }
   },
@@ -18036,6 +18097,7 @@
       },
       "straat": "De Kempenaerstraat",
       "huisnummer": "33",
+      "huisletter": "b",
       "postcode": "3038VP"
     },
     "kinderen": [
@@ -18260,6 +18322,7 @@
       },
       "straat": "Thomas à Kempisstraat",
       "huisnummer": "99",
+      "huisletter": "c",
       "postcode": "3076ZN"
     }
   },
@@ -18342,6 +18405,7 @@
       },
       "straat": "Granaatstraat",
       "huisnummer": "1",
+      "huisletter": "B",
       "postcode": "1074HK",
       "woonplaats": "Amsterdam",
       "adresseerbaarObjectIdentificatie": "0363010000649835",
@@ -18396,6 +18460,7 @@
       },
       "straat": "Granaatstraat",
       "huisnummer": "1",
+      "huisletter": "B",
       "postcode": "1074HK",
       "woonplaats": "Amsterdam"
     }
@@ -18861,6 +18926,7 @@
       "straat": "Laan van Meerdervoort",
       "naamOpenbareRuimte": "Laan van Meerdervoort",
       "huisnummer": "492",
+      "huisletter": "B",
       "postcode": "2563BJ",
       "woonplaats": "'s-Gravenhage",
       "adresseerbaarObjectIdentificatie": "0518014270492002",
@@ -18919,6 +18985,7 @@
       },
       "straat": "Laan van Meerdervoort",
       "huisnummer": "492",
+      "huisletter": "b",
       "postcode": "2563BJ"
     }
   },
@@ -19078,7 +19145,13 @@
           }
         }
       }
-    ]
+    ],
+    "europeesKiesrecht": {
+      "aanduiding": {
+        "code": "1"
+      },
+      "einddatumUitsluiting": "20070101"
+    }
   },
   {
     "aNummer": "1731503625",
@@ -20138,6 +20211,7 @@
       "straat": "Tesselsestraat",
       "naamOpenbareRuimte": "Tesselsestraat",
       "huisnummer": "75",
+      "huisletter": "A",
       "postcode": "2583JH",
       "woonplaats": "'s-Gravenhage",
       "adresseerbaarObjectIdentificatie": "0518010000488379",
@@ -20173,6 +20247,7 @@
       },
       "straat": "Tesselsestraat",
       "huisnummer": "75",
+      "huisletter": "A",
       "postcode": "2583JH"
     }
   },
@@ -20744,6 +20819,7 @@
       },
       "straat": "Raadhuisstraat",
       "huisnummer": "16",
+      "huisletter": "b",
       "postcode": "4266EB"
     },
     "kinderen": [
@@ -20775,7 +20851,8 @@
         "code": "W"
       },
       "straat": "Raadhuisstraat",
-      "huisnummer": "16"
+      "huisnummer": "16",
+      "huisletter": "b"
     },
     "kinderen": [
       {
@@ -21538,6 +21615,7 @@
       },
       "straat": "Leyweg",
       "huisnummer": "61",
+      "huisletter": "e",
       "postcode": "2545CC"
     }
   },
@@ -22066,6 +22144,7 @@
       },
       "straat": "Zeestraat",
       "huisnummer": "65",
+      "huisletter": "f",
       "postcode": "2518AA"
     }
   },
@@ -22255,6 +22334,7 @@
       },
       "straat": "Leyweg",
       "huisnummer": "61",
+      "huisletter": "e",
       "postcode": "2545CC"
     }
   },
@@ -22645,6 +22725,7 @@
       },
       "straat": "Borgesiusstraat",
       "huisnummer": "103",
+      "huisletter": "c",
       "postcode": "3038TG"
     }
   },
@@ -22658,6 +22739,7 @@
       },
       "straat": "Zestienhovenstraat",
       "huisnummer": "54",
+      "huisletter": "b",
       "postcode": "3073XV"
     }
   },
@@ -23172,6 +23254,7 @@
       },
       "straat": "Kerkhoflaan",
       "huisnummer": "300",
+      "huisletter": "b",
       "postcode": "3034TJ"
     }
   },
@@ -26199,6 +26282,7 @@
       "straat": "Kerkstraat",
       "naamOpenbareRuimte": "Kerkstraat",
       "huisnummer": "158",
+      "huisletter": "H",
       "postcode": "1017GS",
       "woonplaats": "Amsterdam",
       "adresseerbaarObjectIdentificatie": "0363010000981466",
@@ -27365,6 +27449,7 @@
       "straat": "Keizerstraat",
       "naamOpenbareRuimte": "Keizerstraat",
       "huisnummer": "7",
+      "huisletter": "A",
       "postcode": "2584BA",
       "woonplaats": "'s-Gravenhage",
       "adresseerbaarObjectIdentificatie": "0518014040007001",
@@ -27441,6 +27526,7 @@
       },
       "straat": "Keizerstraat",
       "huisnummer": "7",
+      "huisletter": "a",
       "postcode": "2584BA"
     },
     "kinderen": [
@@ -28110,6 +28196,7 @@
       },
       "straat": "Cronus",
       "huisnummer": "555",
+      "huisletter": "B",
       "huisnummertoevoeging": "73c",
       "postcode": "3225TD"
     }
@@ -30536,6 +30623,7 @@
       },
       "straat": "Raadhuisstraat",
       "huisnummer": "16",
+      "huisletter": "b",
       "postcode": "4266EB"
     },
     "kinderen": [
@@ -30567,7 +30655,8 @@
         "code": "W"
       },
       "straat": "Raadhuisstraat",
-      "huisnummer": "16"
+      "huisnummer": "16",
+      "huisletter": "b"
     },
     "kinderen": [
       {
@@ -31558,6 +31647,7 @@
       },
       "straat": "Leyweg",
       "huisnummer": "61",
+      "huisletter": "e",
       "postcode": "2545CC"
     }
   },
@@ -31630,6 +31720,7 @@
       },
       "straat": "Dubbelstraat",
       "huisnummer": "1",
+      "huisletter": "A",
       "postcode": "8561BC"
     }
   },
@@ -33018,6 +33109,7 @@
       "straat": "Laan van Meerdervoort",
       "naamOpenbareRuimte": "Laan van Meerdervoort",
       "huisnummer": "1",
+      "huisletter": "G",
       "postcode": "2517AA",
       "woonplaats": "'s-Gravenhage",
       "adresseerbaarObjectIdentificatie": "0518010000714998",
@@ -33792,6 +33884,7 @@
       },
       "straat": "Overtoom",
       "huisnummer": "556",
+      "huisletter": "A",
       "postcode": "1054LM"
     }
   },
@@ -35286,6 +35379,7 @@
       "straat": "Laan van Poot",
       "naamOpenbareRuimte": "Laan van Poot",
       "huisnummer": "353",
+      "huisletter": "A",
       "postcode": "2566DA",
       "woonplaats": "'s-Gravenhage",
       "adresseerbaarObjectIdentificatie": "0518010000453954",
@@ -35302,6 +35396,7 @@
       },
       "straat": "Laan van Poot",
       "huisnummer": "353",
+      "huisletter": "A",
       "postcode": "2566DA"
     }
   },
@@ -35416,6 +35511,9 @@
       "aanduiding": {
         "code": "09"
       }
+    },
+    "uitsluitingKiesrecht": {
+      "uitgeslotenVanKiesrecht": true
     }
   },
   {
@@ -35576,6 +35674,7 @@
       "straat": "Eemhavenweg",
       "naamOpenbareRuimte": "Eemhavenweg",
       "huisnummer": "20",
+      "huisletter": "C",
       "postcode": "3089KG",
       "woonplaats": "Rotterdam",
       "adresseerbaarObjectIdentificatie": "0599010400011485",
@@ -35592,6 +35691,7 @@
       },
       "straat": "Eemhavenweg",
       "huisnummer": "20",
+      "huisletter": "C",
       "postcode": "9089KG"
     }
   },
@@ -37415,6 +37515,7 @@
       "straat": "St. Jacobsstraat",
       "naamOpenbareRuimte": "St. Jacobsstraat",
       "huisnummer": "400",
+      "huisletter": "L",
       "huisnummertoevoeging": "Toe",
       "postcode": "3511BT",
       "woonplaats": "Utrecht",
@@ -37565,6 +37666,7 @@
       },
       "straat": "St. Jacobsstraat",
       "huisnummer": "400",
+      "huisletter": "L",
       "huisnummertoevoeging": "Toe",
       "postcode": "3511BT"
     },
@@ -37728,6 +37830,7 @@
       },
       "straat": "Leyweg",
       "huisnummer": "61",
+      "huisletter": "e",
       "postcode": "2545CC"
     }
   },
@@ -38072,13 +38175,13 @@
       "functieAdres": {
         "code": "W"
       },
-      "straat": "Ruychrocklaan",
-      "naamOpenbareRuimte": "Ruychrocklaan",
-      "huisnummer": "2",
-      "postcode": "2597EN",
+      "straat": "Oostduinlaan",
+      "naamOpenbareRuimte": "Oostduinlaan",
+      "huisnummer": "50",
+      "postcode": "2596JP",
       "woonplaats": "'s-Gravenhage",
-      "adresseerbaarObjectIdentificatie": "0518010000806698",
-      "nummeraanduidingIdentificatie": "0518200000806697"
+      "adresseerbaarObjectIdentificatie": "0518010001752111",
+      "nummeraanduidingIdentificatie": "0518200001752112"
     },
     "kinderen": [
       {
@@ -38107,9 +38210,9 @@
       "functieAdres": {
         "code": "W"
       },
-      "straat": "Ruychrocklaan",
-      "huisnummer": "2",
-      "postcode": "2597EN"
+      "straat": "Oostduinlaan",
+      "huisnummer": "50",
+      "postcode": "2596JP"
     }
   },
   {
@@ -38494,6 +38597,7 @@
       },
       "straat": "Rodenrijselaan",
       "huisnummer": "15",
+      "huisletter": "a",
       "postcode": "3037XB"
     },
     "kinderen": [
@@ -38513,7 +38617,10 @@
           }
         }
       }
-    ]
+    ],
+    "uitsluitingKiesrecht": {
+      "uitgeslotenVanKiesrecht": true
+    }
   },
   {
     "ouders": [
@@ -38567,6 +38674,7 @@
       },
       "straat": "Rodenrijselaan",
       "huisnummer": "15",
+      "huisletter": "a",
       "postcode": "3037XB"
     },
     "kinderen": [
@@ -39658,6 +39766,7 @@
       },
       "straat": "Cronus",
       "huisnummer": "555",
+      "huisletter": "f",
       "postcode": "3225TD"
     }
   },
@@ -40102,6 +40211,9 @@
           "land": {
             "code": "6039"
           }
+        },
+        "soortVerbintenis": {
+          "code": "H"
         }
       }
     ],
@@ -42080,6 +42192,7 @@
       },
       "straat": "De Kempenaerstraat",
       "huisnummer": "33",
+      "huisletter": "b",
       "postcode": "3038VP"
     }
   },
@@ -43278,6 +43391,7 @@
       "straat": "Laan van Meerdervoort",
       "naamOpenbareRuimte": "Laan van Meerdervoort",
       "huisnummer": "492",
+      "huisletter": "B",
       "postcode": "2563BJ",
       "woonplaats": "'s-Gravenhage",
       "adresseerbaarObjectIdentificatie": "0518014270492002",
@@ -43336,6 +43450,7 @@
       },
       "straat": "Laan van Meerdervoort",
       "huisnummer": "492",
+      "huisletter": "b",
       "postcode": "2563BJ"
     }
   },
@@ -44277,6 +44392,20 @@
     "geslacht": {
       "code": "M"
     },
+    "ouders": [
+      {
+        "ouderAanduiding": "1",
+        "naam": {
+          "geslachtsnaam": "."
+        }
+      },
+      {
+        "ouderAanduiding": "2",
+        "naam": {
+          "geslachtsnaam": "."
+        }
+      }
+    ],
     "nationaliteiten": [
       {
         "nationaliteit": {
@@ -44297,12 +44426,13 @@
       "functieAdres": {
         "code": "W"
       },
-      "straat": "Leyweg",
-      "huisnummer": "61",
-      "postcode": "2545CC",
+      "straat": "Els Eilers-Borstplein",
+      "naamOpenbareRuimte": "Els Eilers-Borstplein",
+      "huisnummer": "2",
+      "postcode": "2545AA",
       "woonplaats": "'s-Gravenhage",
-      "adresseerbaarObjectIdentificatie": "0518010000517852",
-      "nummeraanduidingIdentificatie": "0518200000517851"
+      "adresseerbaarObjectIdentificatie": "0518010001756949",
+      "nummeraanduidingIdentificatie": "0518200001756995"
     }
   },
   {
@@ -45941,6 +46071,9 @@
       "aanduiding": {
         "code": "09"
       }
+    },
+    "uitsluitingKiesrecht": {
+      "uitgeslotenVanKiesrecht": true
     }
   },
   {
@@ -48061,6 +48194,7 @@
       },
       "straat": "Stadhoudersweg",
       "huisnummer": "100",
+      "huisletter": "a",
       "postcode": "3039CK"
     },
     "kinderen": [
@@ -48475,6 +48609,7 @@
       },
       "straat": "Granaatstraat",
       "huisnummer": "1",
+      "huisletter": "A",
       "postcode": "1074HK"
     },
     "kinderen": [
@@ -50830,6 +50965,7 @@
       "straat": "Paets van Troostwijkstr",
       "naamOpenbareRuimte": "Paets van Troostwijkstraat",
       "huisnummer": "93",
+      "huisletter": "H",
       "postcode": "2522DM",
       "woonplaats": "'s-Gravenhage",
       "adresseerbaarObjectIdentificatie": "0518010000477868",
@@ -50883,6 +51019,7 @@
       },
       "straat": "Loosduinse Hoofdstraat",
       "huisnummer": "189",
+      "huisletter": "a",
       "postcode": "2552AB"
     }
   },
@@ -51772,6 +51909,7 @@
       },
       "straat": "Chabotlaan",
       "huisnummer": "147",
+      "huisletter": "A",
       "postcode": "3055AD"
     },
     "kinderen": [
@@ -54030,7 +54168,6 @@
     "ouders": [
       {
         "ouderAanduiding": "1",
-        "burgerservicenummer": "999990184",
         "naam": {
           "voornamen": "Maria Jacobina",
           "voorvoegsel": "van 't",
@@ -54077,10 +54214,7 @@
     ],
     "nationaliteiten": [
       {
-        "nationaliteit": {
-          "code": "0252"
-        },
-        "datumIngangGeldigheid": "20071015"
+        "datumIngangGeldigheid": "20150131"
       }
     ],
     "partners": [
@@ -54120,12 +54254,12 @@
       }
     ],
     "overlijden": {
-      "datum": "20121029",
+      "datum": "20171201",
       "plaats": {
-        "code": "1810"
+        "code": "0000"
       },
       "land": {
-        "code": "6030"
+        "code": "5103"
       }
     },
     "datumEersteInschrijvingGBA": "19940315",
@@ -54135,13 +54269,12 @@
     },
     "verblijfplaats": {
       "adresregel1": "Djordja Rajkovica 28",
-      "adresregel2": "Novi Sad"
+      "adresregel2": "21000 Novi Sad"
     },
     "kinderen": [
       {
-        "burgerservicenummer": "999993380",
         "naam": {
-          "voornamen": "Pietje",
+          "voornamen": "Pieter",
           "voorvoegsel": "'S",
           "geslachtsnaam": "Streeveld"
         },
@@ -54160,134 +54293,6 @@
   {
     "aNummer": "9148931794",
     "burgerservicenummer": "999990305",
-    "naam": {
-      "voornamen": "Żáïŀëñøŕ Åłéèç Ðëļŧå",
-      "adellijkeTitelPredicaat": {
-        "code": "JV"
-      },
-      "voorvoegsel": "'S",
-      "geslachtsnaam": "Streeveld",
-      "aanduidingNaamgebruik": {
-        "code": "E"
-      }
-    },
-    "geboorte": {
-      "datum": "19611230",
-      "plaats": {
-        "code": "0402"
-      },
-      "land": {
-        "code": "6030"
-      }
-    },
-    "geslacht": {
-      "code": "V"
-    },
-    "ouders": [
-      {
-        "ouderAanduiding": "1",
-        "naam": {
-          "voornamen": "Maria Jacobina",
-          "voorvoegsel": "van 't",
-          "geslachtsnaam": "Eijt"
-        },
-        "geboorte": {
-          "datum": "19411230",
-          "plaats": {
-            "code": "0300"
-          },
-          "land": {
-            "code": "6030"
-          }
-        },
-        "geslachtsaanduiding": {
-          "code": "V"
-        },
-        "datumIngangFamilierechtelijkeBetrekking": "19611230"
-      }
-    ],
-    "nationaliteiten": [
-      {
-        "nationaliteit": {
-          "code": "0001"
-        },
-        "redenOpname": {
-          "code": "018"
-        },
-        "datumIngangGeldigheid": "20041015"
-      }
-    ],
-    "partners": [
-      {
-        "naam": {
-          "voornamen": "Niels Jøhansen",
-          "adellijkeTitelPredicaat": {
-            "code": "B"
-          },
-          "voorvoegsel": "thor",
-          "geslachtsnaam": "Bråkendæl"
-        },
-        "geboorte": {
-          "datum": "19611230",
-          "plaats": {
-            "code": "Tromsø"
-          },
-          "land": {
-            "code": "6027"
-          }
-        },
-        "geslachtsaanduiding": {
-          "code": "M"
-        },
-        "ontbindingHuwelijkPartnerschap": {
-          "datum": "19930628"
-        },
-        "soortVerbintenis": {
-          "code": "H"
-        }
-      }
-    ],
-    "gemeenteVanInschrijving": {
-      "code": "1810"
-    },
-    "verblijfplaats": {
-      "functieAdres": {
-        "code": "W"
-      },
-      "straat": "Johan in 't Veltstraat",
-      "naamOpenbareRuimte": "Johan in 't Veltstraat",
-      "huisnummer": "4",
-      "postcode": "3078JG",
-      "woonplaats": "Toetsoog",
-      "adresseerbaarObjectIdentificatie": "1810010063000401",
-      "nummeraanduidingIdentificatie": "1810200063000401"
-    },
-    "kinderen": [
-      {
-        "naam": {
-          "voornamen": "Pietje",
-          "voorvoegsel": "'S",
-          "geslachtsnaam": "Streeveld"
-        },
-        "geboorte": {
-          "datum": "19971125",
-          "plaats": {
-            "code": "0344"
-          },
-          "land": {
-            "code": "6030"
-          }
-        }
-      }
-    ],
-    "verblijfstitel": {
-      "aanduiding": {
-        "code": "13"
-      }
-    }
-  },
-  {
-    "aNummer": "9148931794",
     "naam": {
       "voornamen": "Żáïŀëñøŕ Åłéèç Ðëļŧå",
       "adellijkeTitelPredicaat": {
@@ -54339,7 +54344,104 @@
     ],
     "nationaliteiten": [
       {
-        "datumIngangGeldigheid": "19990000"
+        "nationaliteit": {
+          "code": "0445"
+        },
+        "redenOpname": {
+          "code": "301"
+        },
+        "datumIngangGeldigheid": "19611230"
+      }
+    ],
+    "partners": [
+      {
+        "naam": {
+          "voornamen": "Niels Jøhansen",
+          "adellijkeTitelPredicaat": {
+            "code": "B"
+          },
+          "voorvoegsel": "thor",
+          "geslachtsnaam": "Bråkendæl"
+        },
+        "geboorte": {
+          "datum": "19611230",
+          "plaats": {
+            "code": "Tromsø"
+          },
+          "land": {
+            "code": "6027"
+          }
+        },
+        "geslachtsaanduiding": {
+          "code": "M"
+        },
+        "ontbindingHuwelijkPartnerschap": {
+          "datum": "19930628"
+        },
+        "soortVerbintenis": {
+          "code": "H"
+        }
+      }
+    ],
+    "gemeenteVanInschrijving": {
+      "code": "1999"
+    },
+    "verblijfplaats": {
+      "adresregel1": "Djordja Rajkovica 28",
+      "adresregel2": "Novi Sad"
+    },
+    "kinderen": [
+      {
+        "naam": {
+          "voornamen": "Pietje",
+          "voorvoegsel": "'S",
+          "geslachtsnaam": "Streeveld"
+        },
+        "geboorte": {
+          "datum": "19971125",
+          "plaats": {
+            "code": "0344"
+          },
+          "land": {
+            "code": "6030"
+          }
+        }
+      }
+    ],
+    "verblijfstitel": {
+      "aanduiding": {
+        "code": "13"
+      }
+    }
+  },
+  {
+    "aNummer": "9148931794",
+    "naam": {
+      "voornamen": "Żáïŀëñøŕ Åłéèç Ðëļŧå",
+      "adellijkeTitelPredicaat": {
+        "code": "JV"
+      },
+      "voorvoegsel": "'S",
+      "geslachtsnaam": "Streeveld",
+      "aanduidingNaamgebruik": {
+        "code": "E"
+      }
+    },
+    "geboorte": {
+      "datum": "19611230",
+      "plaats": {
+        "code": "0402"
+      },
+      "land": {
+        "code": "6030"
+      }
+    },
+    "geslacht": {
+      "code": "V"
+    },
+    "nationaliteiten": [
+      {
+        "datumIngangGeldigheid": "20150131"
       }
     ],
     "partners": [
@@ -54381,22 +54483,18 @@
     "overlijden": {
       "datum": "19970402",
       "plaats": {
-        "code": "1810"
+        "code": "0599"
       },
       "land": {
         "code": "6030"
       }
     },
     "gemeenteVanInschrijving": {
-      "code": "1810"
+      "code": "0599"
     },
     "verblijfplaats": {
-      "functieAdres": {
-        "code": "W"
-      },
-      "straat": "Johan in 't Veltstraat",
-      "huisnummer": "4",
-      "postcode": "3078JG"
+      "adresregel1": "Djordja Rajkovica 28",
+      "adresregel2": "Novi Sad"
     },
     "kinderen": [
       {
@@ -54425,20 +54523,23 @@
   {
     "nationaliteiten": [
       {
-        "nationaliteit": {
-          "code": "0251"
-        },
-        "datumIngangGeldigheid": "00000000"
+        "datumIngangGeldigheid": "20041015"
       }
     ],
     "gemeenteVanInschrijving": {
-      "code": "1810"
+      "code": "0599"
     },
     "verblijfplaats": {
       "functieAdres": {
         "code": "W"
       },
-      "locatiebeschrijving": "Woonboot \"'t Lelijk Eentje\""
+      "straat": "Johan in 't Veltstraat",
+      "naamOpenbareRuimte": "Johan in 't Veltstraat",
+      "huisnummer": "4",
+      "postcode": "3078JG",
+      "woonplaats": "Rotterdam",
+      "adresseerbaarObjectIdentificatie": "0599010000287986",
+      "nummeraanduidingIdentificatie": "0599200000316239"
     },
     "kinderen": [
       {
@@ -54468,11 +54569,49 @@
     "nationaliteiten": [
       {
         "nationaliteit": {
-          "code": "0445"
+          "code": "0251"
         },
-        "datumIngangGeldigheid": "19611230"
+        "redenOpname": {
+          "code": "301"
+        },
+        "datumIngangGeldigheid": "00000000"
       }
     ],
+    "gemeenteVanInschrijving": {
+      "code": "0599"
+    },
+    "verblijfplaats": {
+      "functieAdres": {
+        "code": "W"
+      },
+      "straat": "Johan in 't Veltstraat",
+      "huisnummer": "4",
+      "postcode": "3078JG"
+    }
+  },
+  {
+    "nationaliteiten": [
+      {
+        "nationaliteit": {
+          "code": "0001"
+        },
+        "redenOpname": {
+          "code": "018"
+        },
+        "datumIngangGeldigheid": "20041015"
+      }
+    ],
+    "gemeenteVanInschrijving": {
+      "code": "0599"
+    },
+    "verblijfplaats": {
+      "functieAdres": {
+        "code": "W"
+      },
+      "locatiebeschrijving": "Woonboot \"'t Lelijk Eentje\""
+    }
+  },
+  {
     "gemeenteVanInschrijving": {
       "code": "0402"
     }
@@ -54578,6 +54717,7 @@
       "straat": "Eemhavenweg",
       "naamOpenbareRuimte": "Eemhavenweg",
       "huisnummer": "20",
+      "huisletter": "D",
       "postcode": "3089KG",
       "woonplaats": "Rotterdam",
       "adresseerbaarObjectIdentificatie": "0599010400011486",
@@ -54594,6 +54734,7 @@
       },
       "straat": "Eemhavenweg",
       "huisnummer": "20",
+      "huisletter": "D",
       "postcode": "3089KG"
     }
   },
@@ -55842,6 +55983,7 @@
       },
       "straat": "Rodenrijselaan",
       "huisnummer": "15",
+      "huisletter": "a",
       "postcode": "3037XB"
     },
     "kinderen": [
@@ -56834,6 +56976,7 @@
       },
       "straat": "Kerkstraat",
       "huisnummer": "28",
+      "huisletter": "b",
       "postcode": "4141AW"
     },
     "kinderen": [
@@ -58286,6 +58429,10 @@
     "geslacht": {
       "code": "M"
     },
+    "inOnderzoek": {
+      "aanduidingGegevensInOnderzoek": "010000",
+      "datumIngangOnderzoek": "20211228"
+    },
     "ouders": [
       {
         "ouderAanduiding": "1",
@@ -58564,6 +58711,9 @@
       "aanduiding": {
         "code": "09"
       }
+    },
+    "uitsluitingKiesrecht": {
+      "uitgeslotenVanKiesrecht": true
     }
   },
   {
@@ -60910,6 +61060,7 @@
       "straat": "Laan van Meerdervoort",
       "naamOpenbareRuimte": "Laan van Meerdervoort",
       "huisnummer": "1",
+      "huisletter": "G",
       "postcode": "2517AA",
       "woonplaats": "'s-Gravenhage",
       "adresseerbaarObjectIdentificatie": "0518010000714998",
@@ -61337,6 +61488,7 @@
       },
       "straat": "Loosduinse Hoofdstraat",
       "huisnummer": "189",
+      "huisletter": "a",
       "postcode": "2552AB"
     },
     "kinderen": [
@@ -61758,6 +61910,7 @@
       },
       "straat": "Postweg",
       "huisnummer": "1",
+      "huisletter": "b",
       "postcode": "4691RH"
     },
     "verblijfstitel": {
@@ -62069,6 +62222,7 @@
       },
       "straat": "Cronus",
       "huisnummer": "555",
+      "huisletter": "A",
       "postcode": "3225TD"
     }
   },
@@ -63254,6 +63408,7 @@
       "straat": "Hagedoornplein",
       "naamOpenbareRuimte": "Hagedoornplein",
       "huisnummer": "1",
+      "huisletter": "B",
       "postcode": "1031BV",
       "woonplaats": "Amsterdam",
       "adresseerbaarObjectIdentificatie": "0363010012086548",
@@ -63270,6 +63425,7 @@
       },
       "straat": "Hagedoornplein",
       "huisnummer": "1",
+      "huisletter": "B",
       "postcode": "1031BV"
     }
   },
@@ -63616,6 +63772,7 @@
       },
       "straat": "'s-Lands Werf",
       "huisnummer": "555",
+      "huisletter": "A",
       "huisnummertoevoeging": "hoog",
       "postcode": "3063GE"
     },
@@ -65949,6 +66106,7 @@
       "straat": "Laan van Nieuw-O-Indië",
       "naamOpenbareRuimte": "Laan van Nieuw-Oost-Indië",
       "huisnummer": "264",
+      "huisletter": "A",
       "postcode": "2252EB",
       "woonplaats": "'s-Gravenhage",
       "adresseerbaarObjectIdentificatie": "0518010000692082",
@@ -67146,6 +67304,7 @@
       "straat": "Hesselt v Dinterstr",
       "naamOpenbareRuimte": "Burgemeester Jonkheer Hesselt van Dinterstraat",
       "huisnummer": "1",
+      "huisletter": "A",
       "huisnummertoevoeging": "bis",
       "postcode": "2631BR",
       "woonplaats": "Nootdorp",
@@ -67163,6 +67322,7 @@
       },
       "straat": "Hesselt v Dinterstr",
       "huisnummer": "1",
+      "huisletter": "A",
       "huisnummertoevoeging": "bis",
       "postcode": "2631BR"
     }
@@ -67177,6 +67337,7 @@
       },
       "straat": "Hesselt v Dinterstr",
       "huisnummer": "1",
+      "huisletter": "A",
       "huisnummertoevoeging": "bis",
       "postcode": "2631BR"
     }
@@ -67268,6 +67429,7 @@
       "straat": "Eemhavenweg",
       "naamOpenbareRuimte": "Eemhavenweg",
       "huisnummer": "20",
+      "huisletter": "A",
       "postcode": "3089KG",
       "woonplaats": "Rotterdam",
       "adresseerbaarObjectIdentificatie": "0599010400011483",
@@ -67284,6 +67446,7 @@
       },
       "straat": "Eemhavenweg",
       "huisnummer": "20",
+      "huisletter": "A",
       "postcode": "3089KG"
     }
   },
@@ -67725,14 +67888,13 @@
     "ouders": [
       {
         "ouderAanduiding": "1",
-        "burgerservicenummer": "999990056",
         "naam": {
-          "voornamen": "Hillie",
+          "voornamen": "Lieve",
           "voorvoegsel": "van",
-          "geslachtsnaam": "Hout"
+          "geslachtsnaam": "Aspert"
         },
         "geboorte": {
-          "datum": "19340815",
+          "datum": "19300901",
           "plaats": {
             "code": "Antwerpen"
           },
@@ -67743,16 +67905,16 @@
         "geslachtsaanduiding": {
           "code": "V"
         },
-        "datumIngangFamilierechtelijkeBetrekking": "19500101"
+        "datumIngangFamilierechtelijkeBetrekking": "00000000"
       },
       {
         "ouderAanduiding": "2",
         "naam": {
-          "voornamen": "Ronnie",
-          "geslachtsnaam": "Malhoe"
+          "voornamen": "Flip",
+          "geslachtsnaam": "Wullaert"
         },
         "geboorte": {
-          "datum": "19320329",
+          "datum": "19280819",
           "plaats": {
             "code": "Antwerpen"
           },
@@ -67763,7 +67925,7 @@
         "geslachtsaanduiding": {
           "code": "M"
         },
-        "datumIngangFamilierechtelijkeBetrekking": "19500101"
+        "datumIngangFamilierechtelijkeBetrekking": "00000000"
       }
     ],
     "nationaliteiten": [
@@ -67774,7 +67936,7 @@
         "redenOpname": {
           "code": "301"
         },
-        "datumIngangGeldigheid": "19500101"
+        "datumIngangGeldigheid": "00000000"
       }
     ],
     "partners": [
@@ -67804,7 +67966,7 @@
         }
       }
     ],
-    "datumEersteInschrijvingGBA": "19900427",
+    "datumEersteInschrijvingGBA": "19940930",
     "geheimhoudingPersoonsgegevens": "0",
     "gemeenteVanInschrijving": {
       "code": "0518"
@@ -67813,7 +67975,7 @@
       "functieAdres": {
         "code": "W"
       },
-      "straat": "Laan Copes v Cattenburch",
+      "straat": "Ln Copes van Cattenburch",
       "naamOpenbareRuimte": "Laan Copes van Cattenburch",
       "huisnummer": "38",
       "postcode": "2585GB",
@@ -67828,43 +67990,20 @@
     }
   },
   {
-    "ouders": [
-      {
-        "ouderAanduiding": "1",
-        "naam": {
-          "voornamen": "Hillie",
-          "voorvoegsel": "van",
-          "geslachtsnaam": "Hout"
-        },
-        "geboorte": {
-          "datum": "19340815",
-          "plaats": {
-            "code": "Antwerpen"
-          },
-          "land": {
-            "code": "5010"
-          }
-        },
-        "geslachtsaanduiding": {
-          "code": "V"
-        },
-        "datumIngangFamilierechtelijkeBetrekking": "19500101"
-      }
-    ],
     "partners": [
       {
-        "burgerservicenummer": "999990317",
+        "burgerservicenummer": "999990159",
         "naam": {
-          "voornamen": "Nasier",
-          "geslachtsnaam": "Boeddhoe"
+          "voornamen": "Niklas",
+          "geslachtsnaam": "Kortum"
         },
         "geboorte": {
           "datum": "19500919",
           "plaats": {
-            "code": "Amritsar"
+            "code": "Berlijn"
           },
           "land": {
-            "code": "7046"
+            "code": "9089"
           }
         },
         "geslachtsaanduiding": {
@@ -67893,11 +68032,11 @@
       },
       "straat": "Erasmusweg",
       "naamOpenbareRuimte": "Erasmusweg",
-      "huisnummer": "143",
-      "postcode": "2532CG",
+      "huisnummer": "4",
+      "postcode": "2532CP",
       "woonplaats": "'s-Gravenhage",
-      "adresseerbaarObjectIdentificatie": "0518010000361969",
-      "nummeraanduidingIdentificatie": "0518200000361968"
+      "adresseerbaarObjectIdentificatie": "0518010001632864",
+      "nummeraanduidingIdentificatie": "0518200001632865"
     },
     "verblijfstitel": {
       "aanduiding": {
@@ -67906,29 +68045,6 @@
     }
   },
   {
-    "ouders": [
-      {
-        "ouderAanduiding": "1",
-        "naam": {
-          "voornamen": "Hillie",
-          "voorvoegsel": "van",
-          "geslachtsnaam": "Hout"
-        },
-        "geboorte": {
-          "datum": "19340815",
-          "plaats": {
-            "code": "Antwerpen"
-          },
-          "land": {
-            "code": "5010"
-          }
-        },
-        "geslachtsaanduiding": {
-          "code": "V"
-        },
-        "datumIngangFamilierechtelijkeBetrekking": "19500101"
-      }
-    ],
     "gemeenteVanInschrijving": {
       "code": "0518"
     },
@@ -67937,82 +68053,9 @@
         "code": "W"
       },
       "straat": "Erasmusweg",
-      "huisnummer": "143",
-      "postcode": "2532CG"
+      "huisnummer": "4",
+      "postcode": "2532CP"
     }
-  },
-  {
-    "ouders": [
-      {
-        "ouderAanduiding": "1",
-        "naam": {
-          "voornamen": "Hilly",
-          "voorvoegsel": "van",
-          "geslachtsnaam": "Hout"
-        },
-        "geboorte": {
-          "datum": "19340815",
-          "plaats": {
-            "code": "Antwerpen"
-          },
-          "land": {
-            "code": "5010"
-          }
-        },
-        "geslachtsaanduiding": {
-          "code": "V"
-        },
-        "datumIngangFamilierechtelijkeBetrekking": "19500101"
-      }
-    ]
-  },
-  {
-    "ouders": [
-      {
-        "ouderAanduiding": "1",
-        "naam": {
-          "voornamen": "Hillie",
-          "geslachtsnaam": "Seinpaal"
-        },
-        "geboorte": {
-          "datum": "19340815",
-          "plaats": {
-            "code": "Antwerpen"
-          },
-          "land": {
-            "code": "5010"
-          }
-        },
-        "geslachtsaanduiding": {
-          "code": "V"
-        },
-        "datumIngangFamilierechtelijkeBetrekking": "19500101"
-      }
-    ]
-  },
-  {
-    "ouders": [
-      {
-        "ouderAanduiding": "1",
-        "naam": {
-          "voornamen": "Hilly",
-          "geslachtsnaam": "Seinpaal"
-        },
-        "geboorte": {
-          "datum": "19340815",
-          "plaats": {
-            "code": "Antwerpen"
-          },
-          "land": {
-            "code": "5010"
-          }
-        },
-        "geslachtsaanduiding": {
-          "code": "V"
-        },
-        "datumIngangFamilierechtelijkeBetrekking": "19500101"
-      }
-    ]
   },
   {
     "aNummer": "2895434153",
@@ -68323,6 +68366,7 @@
       "straat": "Eemhavenweg",
       "naamOpenbareRuimte": "Eemhavenweg",
       "huisnummer": "20",
+      "huisletter": "B",
       "postcode": "3089KG",
       "woonplaats": "Rotterdam",
       "adresseerbaarObjectIdentificatie": "0599010400011484",
@@ -68344,6 +68388,7 @@
       },
       "straat": "Eemhavenweg",
       "huisnummer": "20",
+      "huisletter": "B",
       "postcode": "3089KG"
     }
   },
@@ -68620,6 +68665,7 @@
       },
       "straat": "Ravenhorsterweg",
       "huisnummer": "6",
+      "huisletter": "a",
       "postcode": "7101MJ"
     }
   },
@@ -69062,6 +69108,7 @@
       },
       "straat": "Hereweg",
       "huisnummer": "22",
+      "huisletter": "A",
       "postcode": "9725AD"
     },
     "kinderen": [
@@ -69321,6 +69368,7 @@
       },
       "straat": "Stadhoudersweg",
       "huisnummer": "100",
+      "huisletter": "a",
       "postcode": "3039CK"
     }
   },
@@ -72422,6 +72470,7 @@
       },
       "straat": "Cronus",
       "huisnummer": "555",
+      "huisletter": "A",
       "huisnummertoevoeging": "-4a",
       "postcode": "3225TD"
     }
@@ -76735,7 +76784,10 @@
           }
         }
       }
-    ]
+    ],
+    "uitsluitingKiesrecht": {
+      "uitgeslotenVanKiesrecht": true
+    }
   },
   {
     "partners": [
@@ -79889,6 +79941,7 @@
       "straat": "Fokke Simonszstraat",
       "naamOpenbareRuimte": "Fokke Simonszstraat",
       "huisnummer": "35",
+      "huisletter": "B",
       "postcode": "1017TE",
       "woonplaats": "Amsterdam",
       "adresseerbaarObjectIdentificatie": "363010012067062",
@@ -82889,6 +82942,7 @@
       "straat": "Granaatstraat",
       "naamOpenbareRuimte": "Granaatstraat",
       "huisnummer": "1",
+      "huisletter": "B",
       "postcode": "1074HK",
       "woonplaats": "Amsterdam",
       "adresseerbaarObjectIdentificatie": "0363010000649835",
@@ -83015,7 +83069,6 @@
     "ouders": [
       {
         "ouderAanduiding": "1",
-        "burgerservicenummer": "999996678",
         "naam": {
           "voornamen": "Linda",
           "geslachtsnaam": "Peeters"
@@ -83023,10 +83076,10 @@
         "geboorte": {
           "datum": "19890706",
           "plaats": {
-            "code": "0518"
+            "code": "Luik"
           },
           "land": {
-            "code": "6030"
+            "code": "5010"
           }
         },
         "geslachtsaanduiding": {
@@ -83076,13 +83129,13 @@
       "functieAdres": {
         "code": "W"
       },
-      "straat": "Ruychrocklaan",
-      "naamOpenbareRuimte": "Ruychrocklaan",
-      "huisnummer": "2",
-      "postcode": "2597EN",
+      "straat": "Oostduinlaan",
+      "naamOpenbareRuimte": "Oostduinlaan",
+      "huisnummer": "50",
+      "postcode": "2596JP",
       "woonplaats": "'s-Gravenhage",
-      "adresseerbaarObjectIdentificatie": "0518010000806698",
-      "nummeraanduidingIdentificatie": "0518200000806697"
+      "adresseerbaarObjectIdentificatie": "0518010001752111",
+      "nummeraanduidingIdentificatie": "0518200001752112"
     }
   },
   {
@@ -83818,6 +83871,7 @@
       "straat": "Berchvliet",
       "naamOpenbareRuimte": "Berchvliet",
       "huisnummer": "14",
+      "huisletter": "A",
       "postcode": "1046CA",
       "woonplaats": "Amsterdam",
       "adresseerbaarObjectIdentificatie": "0363100012246176",
@@ -83834,6 +83888,7 @@
       },
       "straat": "Berchvliet",
       "huisnummer": "14",
+      "huisletter": "A",
       "postcode": "1046CA"
     }
   },
@@ -85837,6 +85892,7 @@
       "straat": "Catharijnesingel",
       "naamOpenbareRuimte": "Catharijnesingel",
       "huisnummer": "30",
+      "huisletter": "A",
       "postcode": "3511GB",
       "woonplaats": "Utrecht",
       "adresseerbaarObjectIdentificatie": "0344010000166085",
@@ -85872,6 +85928,7 @@
       },
       "straat": "Catharijnesingel",
       "huisnummer": "30",
+      "huisletter": "A",
       "postcode": "3511GB"
     },
     "kinderen": [
@@ -86057,6 +86114,7 @@
       "straat": "Catharijnesingel",
       "naamOpenbareRuimte": "Catharijnesingel",
       "huisnummer": "30",
+      "huisletter": "A",
       "postcode": "3511GB",
       "woonplaats": "Utrecht",
       "adresseerbaarObjectIdentificatie": "0344010000166085",
@@ -86092,6 +86150,7 @@
       },
       "straat": "Catharijnesingel",
       "huisnummer": "30",
+      "huisletter": "A",
       "postcode": "3511GB"
     },
     "kinderen": [
@@ -86316,6 +86375,7 @@
       "straat": "Catharijnesingel",
       "naamOpenbareRuimte": "Catharijnesingel",
       "huisnummer": "30",
+      "huisletter": "A",
       "postcode": "3511GB",
       "woonplaats": "Utrecht",
       "adresseerbaarObjectIdentificatie": "0344010000166085",
@@ -86351,6 +86411,7 @@
       },
       "straat": "Catharijnesingel",
       "huisnummer": "30",
+      "huisletter": "A",
       "postcode": "3511GB"
     }
   },
@@ -86566,6 +86627,7 @@
       },
       "straat": "Vening Meineszstraat",
       "huisnummer": "1",
+      "huisletter": "a",
       "postcode": "6717AJ"
     }
   },
@@ -87254,6 +87316,7 @@
       "straat": "Catharijnesingel",
       "naamOpenbareRuimte": "Catharijnesingel",
       "huisnummer": "30",
+      "huisletter": "A",
       "postcode": "3511GB",
       "woonplaats": "Utrecht",
       "adresseerbaarObjectIdentificatie": "0344010000166085",
@@ -87289,6 +87352,7 @@
       },
       "straat": "Catharijnesingel",
       "huisnummer": "30",
+      "huisletter": "A",
       "postcode": "3511GB"
     }
   },
@@ -87815,6 +87879,7 @@
       "straat": "Catharijnesingel",
       "naamOpenbareRuimte": "Catharijnesingel",
       "huisnummer": "30",
+      "huisletter": "A",
       "postcode": "3511GB",
       "woonplaats": "Utrecht",
       "adresseerbaarObjectIdentificatie": "0344010000166085",
@@ -87850,6 +87915,7 @@
       },
       "straat": "Catharijnesingel",
       "huisnummer": "30",
+      "huisletter": "A",
       "postcode": "3511GB"
     },
     "kinderen": [
@@ -88927,6 +88993,7 @@
       },
       "straat": "Catharijnesingel",
       "huisnummer": "30",
+      "huisletter": "A",
       "postcode": "3511GB"
     }
   },
@@ -89623,6 +89690,7 @@
       },
       "straat": "Vening Meineszstraat",
       "huisnummer": "1",
+      "huisletter": "a",
       "postcode": "6717AJ"
     },
     "kinderen": [
@@ -89949,6 +90017,7 @@
       },
       "straat": "Vening Meineszstraat",
       "huisnummer": "1",
+      "huisletter": "a",
       "postcode": "6717AJ"
     },
     "kinderen": [
@@ -90204,6 +90273,7 @@
       },
       "straat": "Vening Meineszstraat",
       "huisnummer": "1",
+      "huisletter": "a",
       "postcode": "6717AJ"
     }
   },
@@ -92179,6 +92249,7 @@
       },
       "straat": "Watertorenplein",
       "huisnummer": "4",
+      "huisletter": "A",
       "postcode": "1051PA"
     },
     "kinderen": [
@@ -95845,6 +95916,7 @@
       "straat": "Lutmastraat",
       "naamOpenbareRuimte": "Lutmastraat",
       "huisnummer": "191",
+      "huisletter": "A",
       "postcode": "1074TV",
       "woonplaats": "Amsterdam",
       "adresseerbaarObjectIdentificatie": "0363010000992129",
@@ -97174,6 +97246,7 @@
       "straat": "Wijndaelerweg",
       "naamOpenbareRuimte": "Wijndaelerweg",
       "huisnummer": "9",
+      "huisletter": "C",
       "postcode": "2554BZ",
       "woonplaats": "'s-Gravenhage",
       "adresseerbaarObjectIdentificatie": "0518010000388631",
@@ -99272,6 +99345,7 @@
       "straat": "Reactorweg",
       "naamOpenbareRuimte": "Reactorweg",
       "huisnummer": "47",
+      "huisletter": "A",
       "postcode": "3542AD",
       "woonplaats": "Utrecht",
       "adresseerbaarObjectIdentificatie": "0344010000092318",
@@ -101554,6 +101628,7 @@
       },
       "straat": "Laan van Poot",
       "huisnummer": "353",
+      "huisletter": "A",
       "postcode": "2566DA"
     }
   },
@@ -101771,6 +101846,7 @@
       },
       "straat": "Laan van Poot",
       "huisnummer": "353",
+      "huisletter": "A",
       "postcode": "2566DA"
     }
   },
@@ -101797,6 +101873,7 @@
       },
       "straat": "Korbootstraat",
       "huisnummer": "1",
+      "huisletter": "E",
       "postcode": "2583TC"
     }
   },
@@ -102020,6 +102097,7 @@
       },
       "straat": "Laan van Poot",
       "huisnummer": "353",
+      "huisletter": "A",
       "postcode": "2566DA"
     }
   },
@@ -102392,6 +102470,7 @@
       },
       "straat": "Gageldijk",
       "huisnummer": "103",
+      "huisletter": "A",
       "postcode": "3566MH"
     }
   },
@@ -102418,6 +102497,7 @@
       },
       "straat": "Gageldijk",
       "huisnummer": "103",
+      "huisletter": "A",
       "postcode": "3566MH"
     }
   },
@@ -102431,6 +102511,7 @@
       },
       "straat": "2e Daalsedijk",
       "huisnummer": "6",
+      "huisletter": "A",
       "postcode": "3551EJ"
     }
   },
@@ -102601,6 +102682,7 @@
       "straat": "Gageldijk",
       "naamOpenbareRuimte": "Gageldijk",
       "huisnummer": "103",
+      "huisletter": "A",
       "postcode": "3566MH",
       "woonplaats": "Utrecht",
       "adresseerbaarObjectIdentificatie": "0344010000079410",
@@ -102644,6 +102726,7 @@
       },
       "straat": "Gageldijk",
       "huisnummer": "103",
+      "huisletter": "A",
       "postcode": "3566MH"
     }
   },
@@ -103673,6 +103756,7 @@
       },
       "straat": "Nachtegaalplein",
       "huisnummer": "19",
+      "huisletter": "A",
       "postcode": "2566JP"
     }
   },
@@ -104552,6 +104636,7 @@
       "straat": "Trompenburgstraat",
       "naamOpenbareRuimte": "Trompenburgstraat",
       "huisnummer": "2",
+      "huisletter": "A",
       "postcode": "1079TX",
       "woonplaats": "Amsterdam",
       "adresseerbaarObjectIdentificatie": "0363010012101960",
@@ -104645,6 +104730,7 @@
       "straat": "Trompenburgstraat",
       "naamOpenbareRuimte": "Trompenburgstraat",
       "huisnummer": "2",
+      "huisletter": "A",
       "postcode": "1079TX",
       "woonplaats": "Amsterdam",
       "adresseerbaarObjectIdentificatie": "0363010012101960",
@@ -106010,6 +106096,7 @@
       },
       "straat": "Bellevistastraat",
       "huisnummer": "5",
+      "huisletter": "a",
       "postcode": "7604AD"
     },
     "kinderen": [
@@ -107386,6 +107473,486 @@
       "straat": "Marconistraat",
       "huisnummer": "80",
       "postcode": "3029AK"
+    }
+  },
+  {
+    "aNummer": "8601929612",
+    "burgerservicenummer": "900194054",
+    "naam": {
+      "voornamen": "Tina-Antïna",
+      "voorvoegsel": "de",
+      "geslachtsnaam": "Bruin",
+      "aanduidingNaamgebruik": {
+        "code": "E"
+      }
+    },
+    "geboorte": {
+      "datum": "19901211",
+      "plaats": {
+        "code": "0202"
+      },
+      "land": {
+        "code": "6030"
+      }
+    },
+    "geslacht": {
+      "code": "V"
+    },
+    "ouders": [
+      {
+        "ouderAanduiding": "1",
+        "naam": {
+          "voornamen": "Anita",
+          "voorvoegsel": "de",
+          "geslachtsnaam": "Bruin"
+        },
+        "geboorte": {
+          "datum": "19700629",
+          "plaats": {
+            "code": "0202"
+          },
+          "land": {
+            "code": "6030"
+          }
+        },
+        "geslachtsaanduiding": {
+          "code": "V"
+        },
+        "datumIngangFamilierechtelijkeBetrekking": "00000000"
+      }
+    ],
+    "nationaliteiten": [
+      {
+        "nationaliteit": {
+          "code": "0001"
+        },
+        "redenOpname": {
+          "code": "000"
+        },
+        "datumIngangGeldigheid": "00000000"
+      }
+    ],
+    "partners": [
+      {
+        "burgerservicenummer": "900194030",
+        "naam": {
+          "voornamen": "Trévor",
+          "geslachtsnaam": "Tester"
+        },
+        "geboorte": {
+          "datum": "19801010",
+          "plaats": {
+            "code": "0200"
+          },
+          "land": {
+            "code": "6030"
+          }
+        },
+        "geslachtsaanduiding": {
+          "code": "M"
+        },
+        "aangaanHuwelijkPartnerschap": {
+          "datum": "20200202",
+          "plaats": {
+            "code": "0344"
+          },
+          "land": {
+            "code": "6030"
+          }
+        },
+        "soortVerbintenis": {
+          "code": "P"
+        }
+      }
+    ],
+    "datumEersteInschrijvingGBA": "19940501",
+    "geheimhoudingPersoonsgegevens": "0",
+    "gemeenteVanInschrijving": {
+      "code": "0344"
+    },
+    "verblijfplaats": {
+      "functieAdres": {
+        "code": "W"
+      },
+      "straat": "Croeselaan",
+      "naamOpenbareRuimte": "Croeselaan",
+      "huisnummer": "15",
+      "postcode": "3521BJ",
+      "woonplaats": "Utrecht",
+      "adresseerbaarObjectIdentificatie": "0344010000083034",
+      "nummeraanduidingIdentificatie": "0344200000090949"
+    },
+    "kinderen": [
+      {
+        "burgerservicenummer": "900194042",
+        "naam": {
+          "voornamen": "Fuçili Anton Truus",
+          "voorvoegsel": "van der",
+          "geslachtsnaam": "Sommen"
+        },
+        "geboorte": {
+          "datum": "20080229",
+          "plaats": {
+            "code": "0344"
+          },
+          "land": {
+            "code": "6030"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "gemeenteVanInschrijving": {
+      "code": "0344"
+    },
+    "verblijfplaats": {
+      "functieAdres": {
+        "code": "W"
+      },
+      "straat": "Croeselaan",
+      "huisnummer": "15",
+      "postcode": "3521BJ"
+    },
+    "kinderen": [
+      {
+        "burgerservicenummer": "900194042",
+        "naam": {
+          "voornamen": "Fuçili Anton Truus",
+          "voorvoegsel": "de",
+          "geslachtsnaam": "Bruin"
+        },
+        "geboorte": {
+          "datum": "20080229",
+          "plaats": {
+            "code": "0344"
+          },
+          "land": {
+            "code": "6030"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "gemeenteVanInschrijving": {
+      "code": "0202"
+    },
+    "verblijfplaats": {
+      "functieAdres": {
+        "code": "W"
+      },
+      "straat": "Van Oldenbarneveldtstraat",
+      "huisnummer": "90",
+      "huisletter": "A",
+      "postcode": "6827AN"
+    }
+  },
+  {
+    "aNummer": "2843145278",
+    "burgerservicenummer": "900194030",
+    "naam": {
+      "voornamen": "Trévor",
+      "geslachtsnaam": "Tester",
+      "aanduidingNaamgebruik": {
+        "code": "E"
+      }
+    },
+    "geboorte": {
+      "datum": "19801010",
+      "plaats": {
+        "code": "0200"
+      },
+      "land": {
+        "code": "6030"
+      }
+    },
+    "geslacht": {
+      "code": "M"
+    },
+    "ouders": [
+      {
+        "ouderAanduiding": "1",
+        "naam": {
+          "voornamen": "Theresia",
+          "geslachtsnaam": "Jansons"
+        },
+        "geboorte": {
+          "datum": "19520526",
+          "plaats": {
+            "code": "0518"
+          },
+          "land": {
+            "code": "6030"
+          }
+        },
+        "geslachtsaanduiding": {
+          "code": "V"
+        },
+        "datumIngangFamilierechtelijkeBetrekking": "00000000"
+      },
+      {
+        "ouderAanduiding": "2",
+        "naam": {
+          "voornamen": "Victor",
+          "geslachtsnaam": "Tester"
+        },
+        "geboorte": {
+          "datum": "19480701",
+          "plaats": {
+            "code": "0200"
+          },
+          "land": {
+            "code": "6030"
+          }
+        },
+        "geslachtsaanduiding": {
+          "code": "M"
+        },
+        "datumIngangFamilierechtelijkeBetrekking": "00000000"
+      }
+    ],
+    "nationaliteiten": [
+      {
+        "nationaliteit": {
+          "code": "0001"
+        },
+        "redenOpname": {
+          "code": "000"
+        },
+        "datumIngangGeldigheid": "00000000"
+      }
+    ],
+    "partners": [
+      {
+        "burgerservicenummer": "900194054",
+        "naam": {
+          "voornamen": "Tina-Antïna",
+          "voorvoegsel": "de",
+          "geslachtsnaam": "Bruin"
+        },
+        "geboorte": {
+          "datum": "19901211",
+          "plaats": {
+            "code": "0202"
+          },
+          "land": {
+            "code": "6030"
+          }
+        },
+        "geslachtsaanduiding": {
+          "code": "V"
+        },
+        "aangaanHuwelijkPartnerschap": {
+          "datum": "20200202",
+          "plaats": {
+            "code": "0344"
+          },
+          "land": {
+            "code": "6030"
+          }
+        },
+        "soortVerbintenis": {
+          "code": "P"
+        }
+      }
+    ],
+    "datumEersteInschrijvingGBA": "19931201",
+    "geheimhoudingPersoonsgegevens": "0",
+    "gemeenteVanInschrijving": {
+      "code": "0344"
+    },
+    "verblijfplaats": {
+      "functieAdres": {
+        "code": "W"
+      },
+      "straat": "Croeselaan",
+      "naamOpenbareRuimte": "Croeselaan",
+      "huisnummer": "15",
+      "postcode": "3521BJ",
+      "woonplaats": "Utrecht",
+      "adresseerbaarObjectIdentificatie": "0344010000083034",
+      "nummeraanduidingIdentificatie": "0344200000090949"
+    }
+  },
+  {
+    "gemeenteVanInschrijving": {
+      "code": "0200"
+    },
+    "verblijfplaats": {
+      "functieAdres": {
+        "code": "W"
+      },
+      "straat": "De Voorwaarts",
+      "naamOpenbareRuimte": "De Voorwaarts",
+      "huisnummer": "9",
+      "postcode": "7321MA",
+      "woonplaats": "Apeldoorn",
+      "adresseerbaarObjectIdentificatie": "0200010003904926",
+      "nummeraanduidingIdentificatie": "0200020000089501"
+    }
+  },
+  {
+    "gemeenteVanInschrijving": {
+      "code": "0200"
+    },
+    "verblijfplaats": {
+      "functieAdres": {
+        "code": "W"
+      },
+      "straat": "De Voorwaarts",
+      "huisnummer": "9",
+      "postcode": "7321MA"
+    }
+  },
+  {
+    "aNummer": "4914251846",
+    "burgerservicenummer": "900194042",
+    "naam": {
+      "voornamen": "Fuçili Anton Truus",
+      "voorvoegsel": "van der",
+      "geslachtsnaam": "Sommen",
+      "aanduidingNaamgebruik": {
+        "code": "E"
+      }
+    },
+    "geboorte": {
+      "datum": "20080229",
+      "plaats": {
+        "code": "0344"
+      },
+      "land": {
+        "code": "6030"
+      }
+    },
+    "geslacht": {
+      "code": "M"
+    },
+    "ouders": [
+      {
+        "ouderAanduiding": "1",
+        "burgerservicenummer": "900194054",
+        "naam": {
+          "voornamen": "Tina-Antïna",
+          "voorvoegsel": "de",
+          "geslachtsnaam": "Bruin"
+        },
+        "geboorte": {
+          "datum": "19901211",
+          "plaats": {
+            "code": "0202"
+          },
+          "land": {
+            "code": "6030"
+          }
+        },
+        "geslachtsaanduiding": {
+          "code": "V"
+        },
+        "datumIngangFamilierechtelijkeBetrekking": "20080229"
+      },
+      {
+        "ouderAanduiding": "2",
+        "naam": {
+          "voornamen": "Jasper",
+          "voorvoegsel": "van der",
+          "geslachtsnaam": "Sommen"
+        },
+        "geboorte": {
+          "datum": "19851210",
+          "plaats": {
+            "code": "0363"
+          },
+          "land": {
+            "code": "6030"
+          }
+        },
+        "geslachtsaanduiding": {
+          "code": "M"
+        },
+        "datumIngangFamilierechtelijkeBetrekking": "20100905"
+      }
+    ],
+    "nationaliteiten": [
+      {
+        "nationaliteit": {
+          "code": "0001"
+        },
+        "redenOpname": {
+          "code": "017"
+        },
+        "datumIngangGeldigheid": "20080229"
+      }
+    ],
+    "datumEersteInschrijvingGBA": "20080229",
+    "geheimhoudingPersoonsgegevens": "0",
+    "gemeenteVanInschrijving": {
+      "code": "0599"
+    },
+    "verblijfplaats": {
+      "functieAdres": {
+        "code": "W"
+      },
+      "straat": "Anna van Westrienenstr",
+      "naamOpenbareRuimte": "Anna van Westrienenstraat",
+      "huisnummer": "1",
+      "huisletter": "C",
+      "postcode": "3938SX",
+      "woonplaats": "Rotterdam",
+      "adresseerbaarObjectIdentificatie": "0599010400020923",
+      "nummeraanduidingIdentificatie": "0599200100021688"
+    }
+  },
+  {
+    "aNummer": "4914251846",
+    "burgerservicenummer": "900194042",
+    "naam": {
+      "voornamen": "Fuçili Anton Truus",
+      "voorvoegsel": "de",
+      "geslachtsnaam": "Bruin",
+      "aanduidingNaamgebruik": {
+        "code": "E"
+      }
+    },
+    "geboorte": {
+      "datum": "20080229",
+      "plaats": {
+        "code": "0344"
+      },
+      "land": {
+        "code": "6030"
+      }
+    },
+    "geslacht": {
+      "code": "M"
+    },
+    "gemeenteVanInschrijving": {
+      "code": "0344"
+    },
+    "verblijfplaats": {
+      "functieAdres": {
+        "code": "W"
+      },
+      "straat": "Croeselaan",
+      "naamOpenbareRuimte": "Croeselaan",
+      "huisnummer": "15",
+      "postcode": "3521BJ",
+      "woonplaats": "Utrecht",
+      "adresseerbaarObjectIdentificatie": "0344010000083034",
+      "nummeraanduidingIdentificatie": "0344200000090949"
+    }
+  },
+  {
+    "gemeenteVanInschrijving": {
+      "code": "0344"
+    },
+    "verblijfplaats": {
+      "functieAdres": {
+        "code": "W"
+      },
+      "straat": "Croeselaan",
+      "huisnummer": "15",
+      "postcode": "3521BJ"
     }
   }
 ]
