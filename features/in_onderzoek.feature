@@ -572,13 +572,6 @@ Functionaliteit: in onderzoek
       | datumIngangOnderzoek.datum       | 2022-03-07 |
       | datumIngangOnderzoek.type        | Datum      |
       | datumIngangOnderzoek.langFormaat | 7 maart 2022 |
-      En heeft de persoon met burgerservicenummer '5555550001' de volgende 'inOnderzoek' gegevens
-      | naam                                     | waarde     |
-      | datumInschrijvingInGemeente              | true       |
-      | gemeenteVanInschrijving                  | true       |
-      | datumIngangOnderzoekGemeente.datum       | 2022-03-07 |
-      | datumIngangOnderzoekGemeente.type        | Datum      |
-      | datumIngangOnderzoekGemeente.langFormaat | 7 maart 2022 |
 
 
     Scenario: hele categorie verblijfplaats van een locatiebeschrijving is in onderzoek
@@ -607,13 +600,6 @@ Functionaliteit: in onderzoek
       | datumIngangOnderzoek.datum       | 2022-03-07   |
       | datumIngangOnderzoek.type        | Datum        |
       | datumIngangOnderzoek.langFormaat | 7 maart 2022 |
-      En heeft de persoon met burgerservicenummer '5555550001' de volgende 'inOnderzoek' gegevens
-      | naam                                     | waarde     |
-      | datumInschrijvingInGemeente              | true       |
-      | gemeenteVanInschrijving                  | true       |
-      | datumIngangOnderzoekGemeente.datum       | 2022-03-07 |
-      | datumIngangOnderzoekGemeente.type        | Datum      |
-      | datumIngangOnderzoekGemeente.langFormaat | 7 maart 2022 |
 
     Scenario: hele categorie verblijfplaats van een verblijfplaats buitenland is in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -644,13 +630,6 @@ Functionaliteit: in onderzoek
       | datumIngangOnderzoek.datum       | 2022-03-07   |
       | datumIngangOnderzoek.type        | Datum        |
       | datumIngangOnderzoek.langFormaat | 7 maart 2022 |
-      En heeft de persoon met burgerservicenummer '5555550001' de volgende 'inOnderzoek' gegevens
-      | naam                                     | waarde       |
-      | datumInschrijvingInGemeente              | true         |
-      | gemeenteVanInschrijving                  | true         |
-      | datumIngangOnderzoekGemeente.datum       | 2022-03-07   |
-      | datumIngangOnderzoekGemeente.type        | Datum        |
-      | datumIngangOnderzoekGemeente.langFormaat | 7 maart 2022 |
 
   @proxy
   Rule: een afgeleid gegeven wordt in inOnderzoek opgenomen wanneer ten minste één van de gegevens waaruit het wordt afgeleid in onderzoek staat
