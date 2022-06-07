@@ -33,4 +33,14 @@ public static class NaamMapper
             ? Regex.Replace($"{naam.Voorvoegsel} {naam.Geslachtsnaam}", @"\s+", " ").Trim()
             : string.Empty;
     }
+
+    public static string Achternaam(this AbstractPartner? partner)
+    {
+        return partner switch
+        {
+            Partner p => p.Naam.Achternaam(),
+            OntbondenPartner p => p.Naam.Achternaam(),
+            _ => string.Empty
+        };
+    }
 }

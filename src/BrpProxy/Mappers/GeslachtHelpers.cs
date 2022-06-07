@@ -16,4 +16,6 @@ public static class GeslachtHelpers
         p.Geslacht.IsMan();
 
     public static bool IsMan(this NaamPersoon naam) => naam.Geslacht.IsMan();
+
+    public static string? Geslacht(this NaamPersoon persoon) => persoon.Geslacht?.Code.ToUpperInvariant();
 }

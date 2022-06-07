@@ -33,7 +33,7 @@ public static class AanhefMapper
         };
 
         // Rule 17
-        var retval = persoon.Geslacht?.Code switch
+        var retval = persoon.Geslacht() switch
         {
             "M" => $"Geachte heer {geslachtsnaam.Capitalize()}",
             "V" => $"Geachte mevrouw {geslachtsnaam.Capitalize()}",

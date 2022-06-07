@@ -39,6 +39,7 @@ public class PersoonProfile : Profile
                     {
                         Aanhef = dest.Naam.Aanhef(),
                         // Aanschrijfwijze = dest.Naam.Aanschrijfwijze()
+                        GebruikInLopendeTekst = dest.Naam.GebruikInLopendeTekst()
                     };
                 }
             })
