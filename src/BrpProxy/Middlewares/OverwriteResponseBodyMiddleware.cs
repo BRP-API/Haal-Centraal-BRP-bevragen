@@ -34,7 +34,14 @@ namespace BrpProxy.Middlewares
             string requestBody = string.Empty;
             try
             {
+                _logger.LogDebug("request headers: {@requestHeaders}", context.Request.Headers);
+                _logger.LogDebug("original requestBody: {@requestBody}", requestBody);
+
                 if (! await context.MethodIsAllowed(orgBodyStream, _logger))
+                {
+                    return;
+                }
+                if(! await context.AcceptIsAllowed(orgBodyStream, _logger))
                 {
                     return;
                 }
@@ -45,11 +52,9 @@ namespace BrpProxy.Middlewares
 
                 try
                 {
-                    _logger.LogDebug("original requestBody: {@requestBody}", requestBody);
-
                     personenQuery = JsonConvert.DeserializeObject<PersonenQuery>(requestBody);
 
-                    _logger.LogDebug("original requestBody: {@personenQuery}", personenQuery);
+                    _logger.LogDebug("original deserialized requestBody: {@personenQuery}", personenQuery);
                 }
                 catch (JsonSerializationException ex)
                 {

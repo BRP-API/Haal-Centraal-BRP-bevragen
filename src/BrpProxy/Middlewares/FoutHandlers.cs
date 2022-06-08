@@ -10,13 +10,14 @@ namespace BrpProxy.Middlewares
 
         private const string BadRequestIdentifier = "https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1";
         private const string MethodNotAllowedIdentifier = "https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.5";
+        private const string NotAcceptableIdentifier = "https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.6";
         private const string InternalServerErrorIdentifier = "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1";
 
         private static readonly Regex ConvertPropertyValueRegex = new(@"^Could not convert string to (?<code>.*):(.*). Path '(?<name>.*)'.$");
         private static readonly Regex RequiredPropertyRegex = new(@"^Required property '(?<name>.*)' expects a non-null value. Path ''.$");
         private static readonly Regex ConvertValueToCollectionRegex = new(@"^Error converting value ""(.*)"" to type '(.*)'. Path '(?<name>.*)'.$");
 
-        private static Foutbericht CreateMethodNotAllowedFoutBericht(this HttpContext context)
+        private static Foutbericht CreateMethodNotAllowedFoutbericht(this HttpContext context)
         {
             return new Foutbericht
             {
@@ -24,6 +25,17 @@ namespace BrpProxy.Middlewares
                 Instance = new Uri(context.Request.Path, UriKind.Relative),
                 Title = "Method not allowed.",
                 Type = new Uri(MethodNotAllowedIdentifier)
+            };
+        }
+
+        private static Foutbericht CreateNotAcceptableFoutbericht(this HttpContext context)
+        {
+            return new Foutbericht
+            {
+                Status = StatusCodes.Status406NotAcceptable,
+                Instance = new Uri(context.Request.Path, UriKind.Relative),
+                Title = "Gevraagde contenttype wordt niet ondersteund.",
+                Type = new Uri(NotAcceptableIdentifier)
             };
         }
 
@@ -148,9 +160,26 @@ namespace BrpProxy.Middlewares
         {
             if (context.Request.Method == HttpMethod.Post.Method) return true;
 
-            logger.LogWarning("method not allowed: {@request}", context.Request);
+            logger.LogWarning("method not allowed: {@requestMethod}", context.Request.Method);
 
-            var foutbericht = context.CreateMethodNotAllowedFoutBericht();
+            var foutbericht = context.CreateMethodNotAllowedFoutbericht();
+
+            using var bodyStream = foutbericht.ToJson().ToMemoryStream(context.Response);
+
+            context.SetResponseProperties(foutbericht, bodyStream);
+
+            await bodyStream.CopyToAsync(orgResponseBodyStream);
+
+            return false;
+        }
+
+        public static async Task<bool> AcceptIsAllowed(this HttpContext context, Stream orgResponseBodyStream, ILogger logger)
+        {
+            if (context.Request.Headers.Accept[0].Contains("application/json")) return true;
+
+            logger.LogWarning("Not supported Accept values: {@acceptHeader}", context.Request.Headers.Accept);
+
+            var foutbericht = context.CreateNotAcceptableFoutbericht();
 
             using var bodyStream = foutbericht.ToJson().ToMemoryStream(context.Response);
 
