@@ -15,7 +15,7 @@ namespace BrpProxy.Middlewares
             var invalidParams = from error in result.Errors
                                 select new InvalidParams
                                 {
-                                    Name = error.PropertyName.ToLowerInvariant(),
+                                    Name = $"{char.ToLowerInvariant(error.PropertyName[0])}{error.PropertyName[1..]}",
                                     Code = error.ErrorMessage.Split("||")[0],
                                     Reason = error.ErrorMessage.Split("||")[1]
                                 };

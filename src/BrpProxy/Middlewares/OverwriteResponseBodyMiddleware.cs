@@ -56,6 +56,11 @@ namespace BrpProxy.Middlewares
                     await context.HandleJsonSerializationException(ex, orgBodyStream, _logger);
                     return;
                 }
+                catch (JsonReaderException ex)
+                {
+                    await context.HandleJsonReaderException(ex, orgBodyStream, _logger);
+                    return;
+                }
 
                 var result = personenQuery.Validate(context, requestBody, _fieldsHelper);
                 if (!result.IsValid)
@@ -107,6 +112,7 @@ namespace BrpProxy.Middlewares
                 ZoekMetGeslachtsnaamEnGeboortedatum query => new ZoekMetGeslachtsnaamEnGeboortedatumQueryValidator(fieldsHelper).Validate(query),
                 ZoekMetPostcodeEnHuisnummer query => new ZoekMetPostcodeEnHuisnummerQueryValidator(fieldsHelper).Validate(query),
                 ZoekMetNaamEnGemeenteVanInschrijving query => new ZoekMetNaamEnGemeenteVanInschrijvingQueryValidator(fieldsHelper).Validate(query),
+                ZoekMetNummeraanduidingIdentificatie query => new ZoekMetNummeraanduidingIdentificatieQueryValidator(fieldsHelper).Validate(query),
                 _ => null
             };
 
@@ -144,6 +150,11 @@ namespace BrpProxy.Middlewares
                     var result2 = mapper.Map<ZoekMetPostcodeEnHuisnummerResponse>(pb);
                     result2.Personen = result2.Personen.FilterList(fields);
                     retval = result2;
+                    break;
+                case Gba.ZoekMetNummeraanduidingIdentificatieResponse pb:
+                    var result4 = mapper.Map<ZoekMetNummeraanduidingIdentificatieResponse>(pb);
+                    result4.Personen = result4.Personen.FilterList(fields);
+                    retval = result4;
                     break;
             }
 

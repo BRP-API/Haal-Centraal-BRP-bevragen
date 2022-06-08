@@ -4,4 +4,9 @@
     {
         public Waardetabel? Plaats { get; set; }
     }
+
+    public partial class GbaVerblijfplaatsBeperkt
+    {
+        public string? NummeraanduidingIdentificatie { get; set; }
+    }
 }

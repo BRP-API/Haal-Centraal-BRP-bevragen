@@ -66,4 +66,12 @@ public static class PersonenQueryExtensions
 
         return specification;
     }
+
+    public static Specification<GbaPersoonBeperkt> ToSpecification(this ZoekMetNummeraanduidingIdentificatie query)
+    {
+        Specification<GbaPersoonBeperkt> specification = new NummeraanduidingIdentificatieSpecification(query.NummeraanduidingIdentificatie);
+        specification = specification.And(new InclusiefOverledenPersonenSpecification(query.InclusiefOverledenPersonen));
+
+        return specification;
+    }
 }

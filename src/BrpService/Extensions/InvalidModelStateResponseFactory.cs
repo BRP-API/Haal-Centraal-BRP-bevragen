@@ -18,7 +18,7 @@ public static class InvalidModelStateResponseFactory
                              from error in kvp.Value.Errors
                             select new Generated.InvalidParams
                             {
-                                Name = kvp.Key.ToLower(),
+                                Name = $"{char.ToLowerInvariant(kvp.Key[0])}{kvp.Key[1..]}",
                                 Code = error.ErrorMessage.Contains("||")
                                     ? error.ErrorMessage.Split("||")[0]
                                     : null,

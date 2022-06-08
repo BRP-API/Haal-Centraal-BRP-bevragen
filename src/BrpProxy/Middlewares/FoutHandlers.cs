@@ -12,6 +12,8 @@ namespace BrpProxy.Middlewares
         private const string MethodNotAllowedIdentifier = "https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.5";
         private const string InternalServerErrorIdentifier = "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1";
 
+        private static readonly Regex ConvertPropertyValueRegex = new(@"^Could not convert string to (?<code>.*):(.*). Path '(?<name>.*)'.$");
+        private static readonly Regex RequiredPropertyRegex = new(@"^Required property '(?<name>.*)' expects a non-null value. Path ''.$");
         private static readonly Regex ConvertValueToCollectionRegex = new(@"^Error converting value ""(.*)"" to type '(.*)'. Path '(?<name>.*)'.$");
 
         private static Foutbericht CreateMethodNotAllowedFoutBericht(this HttpContext context)
@@ -52,7 +54,55 @@ namespace BrpProxy.Middlewares
                     reason = "Parameter is geen array.";
                 }
             }
+            match = RequiredPropertyRegex.Match(ex.Message);
+            if (match.Success)
+            {
+                name = match.Groups["name"].Value;
+                if (name == "inclusiefOverledenPersonen")
+                {
+                    code = "boolean";
+                    reason = "Waarde is geen boolean.";
+                }
+                else
+                {
+                    code = "required";
+                    reason = "Parameter is verplicht.";
+                }
+            }
 
+            return new BadRequestFoutbericht
+            {
+                Instance = new Uri(context.Request.Path, UriKind.Relative),
+                Status = StatusCodes.Status400BadRequest,
+                Title = "Een of meerdere parameters zijn niet correct.",
+                Type = new Uri(BadRequestIdentifier),
+                Code = "paramsValidation",
+                Detail = $"De foutieve parameter(s) zijn: {name}.",
+                InvalidParams = new List<InvalidParams>
+                {
+                    new InvalidParams
+                    {
+                        Code = code,
+                        Name = name,
+                        Reason = reason
+                    }
+                }
+            };
+        }
+
+        private static BadRequestFoutbericht CreateJsonReaderExceptionFoutbericht(this HttpContext context, JsonReaderException ex)
+        {
+            var name = string.Empty;
+            var code = string.Empty;
+            var reason = string.Empty;
+
+            var match = ConvertPropertyValueRegex.Match(ex.Message);
+            if (match.Success)
+            {
+                name = match.Groups["name"].Value;
+                code = match.Groups["code"].Value;
+                reason = $"Waarde is geen {match.Groups["code"].Value}.";
+            }
             return new BadRequestFoutbericht
             {
                 Instance = new Uri(context.Request.Path, UriKind.Relative),
@@ -118,6 +168,21 @@ namespace BrpProxy.Middlewares
             logger.LogWarning("JsonSerializationException. {@requestBody} {@exception}", requestBody, ex);
 
             var foutbericht = context.CreateJsonSerializationExceptionFoutbericht(ex);
+
+            using var bodyStream = foutbericht.ToJson().ToMemoryStream(context.Response);
+
+            context.SetResponseProperties(foutbericht, bodyStream);
+
+            await bodyStream.CopyToAsync(orgResponseBodyStream);
+        }
+
+        public static async Task HandleJsonReaderException(this HttpContext context, JsonReaderException ex, Stream orgResponseBodyStream, ILogger logger)
+        {
+            var requestBody = await context.Request.ReadBodyAsync();
+
+            logger.LogWarning("JsonReaderException. {@requestBody} {@exception}", requestBody, ex);
+
+            var foutbericht = context.CreateJsonReaderExceptionFoutbericht(ex);
 
             using var bodyStream = foutbericht.ToJson().ToMemoryStream(context.Response);
 

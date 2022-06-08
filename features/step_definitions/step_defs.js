@@ -228,11 +228,14 @@ After({tags: '@post-assert'}, async function() {
     const actual = this.context.response.data.personen !== undefined
         ? stringifyValues(this.context.response.data.personen)
         : stringifyValues(this.context.response.data);
-    
-    let expected = deleteEmptyProperties(this.context.expected);
-    expected = deleteEmptyObjects(expected);
-    if(expected === undefined) {
-        expected = [];
+
+    let expected = this.context.expected;
+    if(this.context.leaveEmptyObjects === undefined) {
+        expected = deleteEmptyProperties(expected);
+        expected = deleteEmptyObjects(expected);
+        if(expected === undefined) {
+            expected = [];
+        }
     }
     this.context.attach(JSON.stringify(expected, null, '  '));
     
@@ -361,7 +364,7 @@ Given(/^(?:de|het) '?(?:ex-)?(.*)' heeft ?(?:alleen)? de volgende '(.*)' gegeven
     setPersoonProperties(this.context[relatie], gegevensgroep, dataTable);
 });
 
-Given(/^de persoon heeft GEEN '(.*)' gegevens$/, function (_) {
+Given(/^de persoon heeft (?:GEEN|geen) '(.*)' gegevens$/, function (_) {
     // doe niets
 });
 
@@ -372,9 +375,15 @@ Given(/^(?:de|het) '(.*)' heeft GEEN '(.*)' gegevens$/, function (_relatie, _geg
 function createRequestBody(dataTable) {
     let requestBody = {};
     dataTable.hashes().forEach(function(param) {
-        if(["burgerservicenummer", "fields", "fields (als string)"].includes(param.naam)) {
+        if(["burgerservicenummer",
+            "burgerservicenummer (als string)",
+            "fields",
+            "fields (als string)"].includes(param.naam)) {
             if(param.naam === 'fields (als string)') {
                 requestBody['fields'] = param.waarde;
+            }
+            else if(param.naam === 'burgerservicenummer (als string)') {
+                requestBody['burgerservicenummer'] = param.waarde;
             }
             else if(param.waarde === '') {
                 requestBody[param.naam] = [];
@@ -600,6 +609,47 @@ Then(/^heeft het object de volgende '(.*)' gegevens$/, function (gegevensgroep, 
         const actual = this.context.response.data[gegevensgroep];
 
         actual.should.deep.equalInAnyOrder(expected);
+    }
+});
+
+Then(/^heeft de response een persoon met een '([a-zA-Z]*)' met een leeg '([a-zA-Z]*)' object$/, function (relatie, gegevensgroep) {
+    this.context.leaveEmptyObjects = true;
+    let expected = {};
+    expected[gegevensgroep] = {};
+
+    let relaties = toCollectionName(relatie);
+
+    if(this.context.postAssert === true) {
+        if(this.context.expected === undefined) {
+            this.context.expected = [ {} ];
+        }
+
+        const expectedPersoon = this.context.expected[this.context.expected.length-1];
+        if(expectedPersoon[relaties] === undefined) {
+            expectedPersoon[relaties] = [];
+        }
+        expectedPersoon[relaties].push(expected);
+    }
+});
+
+Then(/^heeft de response een persoon met een '([a-zA-Z]*)' met een '([a-zA-Z]*)' met een leeg '([a-zA-Z]*)' object$/, function (relatie, gegevensgroep, gegevensgroep2) {
+    this.context.leaveEmptyObjects = true;
+    let expected = {};
+    expected[gegevensgroep] = {};
+    expected[gegevensgroep][gegevensgroep2] = {};
+
+    let relaties = toCollectionName(relatie);
+
+    if(this.context.postAssert === true) {
+        if(this.context.expected === undefined) {
+            this.context.expected = [ {} ];
+        }
+
+        const expectedPersoon = this.context.expected[this.context.expected.length-1];
+        if(expectedPersoon[relaties] === undefined) {
+            expectedPersoon[relaties] = [];
+        }
+        expectedPersoon[relaties].push(expected);
     }
 });
 
