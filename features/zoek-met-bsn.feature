@@ -85,6 +85,25 @@ Rule: Er moet minimaal één burgerservicenummer worden opgegeven
     | 1234567890           | Zoek met ongeldig burgerservicenummer   | De foutieve parameter(s) zijn: burgerservicenummer[0]. | pattern  | burgerservicenummer[0] | Waarde voldoet niet aan patroon ^[0-9]{9}$. |
 
   @fout-case
+  Scenario: burgerservicenummer parameter is geen array
+    Als personen wordt gezocht met de volgende parameters
+    | naam                             | waarde                          |
+    | type                             | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer (als string) | 999994086                       |
+    | fields                           | burgerservicenummer             |
+    Dan heeft de response een object met de volgende gegevens
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: burgerservicenummer.         |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
+    En heeft het object de volgende 'invalidParams' gegevens
+    | code  | name                | reason                   |
+    | array | burgerservicenummer | Parameter is geen array. |
+
+  @fout-case
   Scenario: Zoek met meerdere ongeldige burgerservicenummers
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |

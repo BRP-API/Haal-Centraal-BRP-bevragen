@@ -34,7 +34,7 @@ namespace BrpProxy.Middlewares
             string requestBody = string.Empty;
             try
             {
-                if (! await context.MethodIsAllowed(orgBodyStream))
+                if (! await context.MethodIsAllowed(orgBodyStream, _logger))
                 {
                     return;
                 }
@@ -53,7 +53,7 @@ namespace BrpProxy.Middlewares
                 }
                 catch (JsonSerializationException ex)
                 {
-                    await context.HandleJsonSerializationException(ex, orgBodyStream);
+                    await context.HandleJsonSerializationException(ex, orgBodyStream, _logger);
                     return;
                 }
 
