@@ -14,15 +14,15 @@ Functionaliteit: Adresvelden vullen
       | straatnaam (11.10)           | <straatnaam>           |
       | naam openbare ruimte (11.15) | <naam openbare ruimte> |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                                             |
-      | type                | RaadpleegMetBurgerservicenummer                                    |
-      | burgerservicenummer | <burgerservicenummer>                                              |
-      | fields              | burgerservicenummer,verblijfAdres.straat,verblijfAdres.korteNaam |
-      Dan heeft de persoon met burgerservicenummer '<burgerservicenummer>' alleen de volgende 'verblijfplaats' gegevens
+      | naam                | waarde                                       |
+      | type                | RaadpleegMetBurgerservicenummer              |
+      | burgerservicenummer | <burgerservicenummer>                        |
+      | fields              | verblijfadres.straat,verblijfadres.korteNaam |
+      Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
       | naam                    | waarde      |
-      | verblijfAdres.type      | Adres       |
-      | verblijfAdres.straat    | <straat>    |
-      | verblijfAdres.korteNaam | <korteNaam> |
+      | type                    | Adres       |
+      | verblijfadres.straat    | <straat>    |
+      | verblijfadres.korteNaam | <korteNaam> |
 
       Voorbeelden:
       | burgerservicenummer | straatnaam               | naam openbare ruimte                    | straat                                  | korteNaam                |
@@ -48,12 +48,13 @@ Functionaliteit: Adresvelden vullen
       | huisletter (11.30)                | <huisletter>                |
       | huisnummertoevoeging (11.40)      | <huinummertoevoeging>       |
       | aanduiding bij huisnummer (11.50) | <aanduiding bij huisnummer> |
+      | postcode (11.60)                  | 2497BV                      |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                      |
-      | type                | RaadpleegMetBurgerservicenummer             |
-      | burgerservicenummer | <burgerservicenummer>                       |
-      | fields              | burgerservicenummer,adressering.adresregel1 |
-      Dan heeft de persoon met burgerservicenummer '<burgerservicenummer>' alleen de volgende 'adressering' gegevens
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | <burgerservicenummer>           |
+      | fields              | adressering.adresregel1         |
+      Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
       | naam        | waarde        |
       | adresregel1 | <adresregel1> |
 
@@ -80,11 +81,11 @@ Functionaliteit: Adresvelden vullen
       | naam                        | waarde                     |
       | locatiebeschrijving (12.10) | Woonboot in de Grote Sloot |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                      |
-      | type                | RaadpleegMetBurgerservicenummer             |
-      | burgerservicenummer | 000009921                                   |
-      | fields              | burgerservicenummer,adressering.adresregel1 |
-      Dan heeft de persoon met burgerservicenummer '000009921' alleen de volgende 'adressering' gegevens
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000009921                       |
+      | fields              | adressering.adresregel1         |
+      Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
       | naam        | waarde                     |
       | adresregel1 | Woonboot in de Grote Sloot |
 
@@ -102,16 +103,17 @@ Functionaliteit: Adresvelden vullen
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | naam                                 | waarde           |
       | straatnaam (11.10)                   | een straat       |
+      | huisnummer (11.20)                   | 1                |
       | gemeente van inschrijving (09.10)    | 0518             |
       | gemeenteVanInschrijving.omschrijving | 's-Gravenhage    |
       | postcode (11.60)                     | <postcode>       |
-      | woonplaats (11.70)                   | <woonplaatsnaam> |
+      | woonplaatsnaam (11.70)               | <woonplaatsnaam> |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                      |
-      | type                | RaadpleegMetBurgerservicenummer             |
-      | burgerservicenummer | <burgerservicenummer>                       |
-      | fields              | burgerservicenummer,adressering.adresregel2 |
-      Dan heeft de persoon met burgerservicenummer '<burgerservicenummer>' alleen de volgende 'adressering' gegevens
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | <burgerservicenummer>           |
+      | fields              | adressering.adresregel2         |
+      Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
       | naam        | waarde        |
       | adresregel2 | <adresregel2> |
 
@@ -130,11 +132,11 @@ Functionaliteit: Adresvelden vullen
       | gemeenteVanInschrijving.omschrijving | 's-Gravenhage              |
       | locatiebeschrijving (12.10)          | Woonboot in de Grote Sloot |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                      |
-      | type                | RaadpleegMetBurgerservicenummer             |
-      | burgerservicenummer | 000009921                                   |
-      | fields              | burgerservicenummer,adressering.adresregel2 |
-      Dan heeft de persoon met burgerservicenummer '000009921' alleen de volgende 'adressering' gegevens
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000009921                       |
+      | fields              | adressering.adresregel2         |
+      Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
       | naam        | waarde        |
       | adresregel2 | 'S-GRAVENHAGE |
 
@@ -153,17 +155,17 @@ Functionaliteit: Adresvelden vullen
       | regel 2 adres buitenland (13.40)  | Bruxelles       |
       | regel 3 adres buitenland (13.50)  | postcode 1000   |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                                                                           |
-      | type                | RaadpleegMetBurgerservicenummer                                                                  |
-      | burgerservicenummer | 999993483                                                                                        |
-      | fields              | burgerservicenummer,adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,land |
-      Dan heeft de persoon met burgerservicenummer '999993483' alleen de volgende 'adressering' gegevens
-      | naam                         | waarde                   |
-      | adresregel1                  | Rue du pomme 25          |
-      | adresregel2                  | Bruxelles                |
-      | adresregel3                  | postcode 1000            |
-      | land.code                    | 5010                     |
-      | land.omschrijving            | België                   |
+      | naam                | waarde                                                                                   |
+      | type                | RaadpleegMetBurgerservicenummer                                                          |
+      | burgerservicenummer | 999993483                                                                                |
+      | fields              | adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,adressering.land |
+      Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
+      | naam              | waarde          |
+      | adresregel1       | Rue du pomme 25 |
+      | adresregel2       | Bruxelles       |
+      | adresregel3       | postcode 1000   |
+      | land.code         | 5010            |
+      | land.omschrijving | België          |
 
   Rule: Voor een buitenlands adres worden de adresregels en land in de adressering alleen opgenomen wanneer ten minste land en één van de regels adres buitenland een waarde hebben
     - een standaardwaarde in de bron geldt hier niet als waarde
@@ -171,37 +173,37 @@ Functionaliteit: Adresvelden vullen
 
     Scenario: land is onbekend
       Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550011 |
+      | naam                              | waarde    |
+      | burgerservicenummer               | 555550011 |
+      | gemeente van inschrijving (09.10) | 1999      |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
-      | naam                                | waarde                 |
-      | gemeente van inschrijving (09.10)   | 1999                   |
-      | land adres buitenland (13.10)       | 0000                   |
-      | datumAanvangAdresBuitenland (13.20) | 20191104               |
-      | regel 2 adres buitenland (13.40)    | Pietermaai 19, Curaçao |
+      | naam                                   | waarde                 |
+      | land adres buitenland (13.10)          | 0000                   |
+      | datum aanvang adres buitenland (13.20) | 20191104               |
+      | regel 2 adres buitenland (13.40)       | Pietermaai 19, Curaçao |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                                                                           |
-      | type                | RaadpleegMetBurgerservicenummer                                                                  |
-      | burgerservicenummer | 555550011                                                                                        |
-      | fields              | burgerservicenummer,adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,land |
-      Dan heeft de persoon met burgerservicenummer '555550011' GEEN 'adressering' gegevens
+      | naam                | waarde                                                                                   |
+      | type                | RaadpleegMetBurgerservicenummer                                                          |
+      | burgerservicenummer | 555550011                                                                                |
+      | fields              | adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,adressering.land |
+      Dan heeft de response 0 personen
 
     Scenario: alleen land is bekend
       Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550012 |
+      | naam                              | waarde    |
+      | burgerservicenummer               | 555550012 |
+      | gemeente van inschrijving (09.10) | 1999      |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
-      | naam                                | waarde   |
-      | gemeente van inschrijving (09.10)   | 1999     |
-      | land adres buitenland (13.10)       | 5107     |
-      | datumAanvangAdresBuitenland (13.20) | 20191104 |
-      | regel 2 adres buitenland (13.40)    |          |
+      | naam                                   | waarde   |
+      | land adres buitenland (13.10)          | 5107     |
+      | datum aanvang adres buitenland (13.20) | 20191104 |
+      | regel 2 adres buitenland (13.40)       |          |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                                                                           |
-      | type                | RaadpleegMetBurgerservicenummer                                                                  |
-      | burgerservicenummer | 555550012                                                                                        |
-      | fields              | burgerservicenummer,adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,land |
-      Dan heeft de persoon met burgerservicenummer '555550012' GEEN 'adressering' gegevens
+      | naam                | waarde                                                                                   |
+      | type                | RaadpleegMetBurgerservicenummer                                                          |
+      | burgerservicenummer | 555550012                                                                                |
+      | fields              | adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,adressering.land |
+      Dan heeft de response 0 personen
 
   Rule: Voor een binnenlands adres worden de adresregels in de adressering alleen opgenomen wanneer ten minste straat, huisnummer en postcode een waarde hebben
     - een standaardwaarde in de bron geldt hier niet als waarde
@@ -217,11 +219,11 @@ Functionaliteit: Adresvelden vullen
       | huisnummer (11.20) | <huisnummer> |
       | postcode (11.60)   | <postcode>   |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                                                                           |
-      | type                | RaadpleegMetBurgerservicenummer                                                                  |
-      | burgerservicenummer | <burgerservicenummer>                                                                            |
-      | fields              | burgerservicenummer,adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,land |
-      Dan heeft de persoon met burgerservicenummer '<burgerservicenummer>' GEEN 'adressering' gegevens
+      | naam                | waarde                                                                                   |
+      | type                | RaadpleegMetBurgerservicenummer                                                          |
+      | burgerservicenummer | <burgerservicenummer>                                                                    |
+      | fields              | adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,adressering.land |
+      Dan heeft de response 0 personen
 
       Voorbeelden:
       | omschrijving                     | burgerservicenummer | straatnaam               | huisnummer | postcode |
