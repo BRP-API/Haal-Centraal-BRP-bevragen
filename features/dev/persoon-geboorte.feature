@@ -1,7 +1,7 @@
 #language: nl
 
 @post-assert
-Functionaliteit: Geboorte
+Functionaliteit: Persoon Geboorte
 
   Abstract Scenario: persoon heeft 'geboorte' datum veld: '<gba naam>'
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -16,14 +16,14 @@ Functionaliteit: Geboorte
     | burgerservicenummer | 555550001                       |
     | fields              | geboorte                        |
     Dan heeft de response een persoon met de volgende 'geboorte' gegevens
-    | naam         | waarde   |
-    | <naam>.type  | Datum    |
-    | <naam>.datum | <waarde> |
-    | <naam>.langFormaat|<lang formaat>|
+    | naam               | waarde         |
+    | <naam>.type        | Datum          |
+    | <naam>.datum       | <waarde>       |
+    | <naam>.langFormaat | <lang formaat> |
 
     Voorbeelden:
-    | gba naam              | gba waarde | naam  | waarde     |lang formaat |
-    | geboortedatum (03.10) | 20020701   | datum | 2002-07-01 |1 juli 2002|
+    | gba naam              | gba waarde | naam  | waarde     | lang formaat |
+    | geboortedatum (03.10) | 20020701   | datum | 2002-07-01 | 1 juli 2002  |
 
   Abstract Scenario: persoon heeft 'geboorte' veld: '<gba naam>'
     Gegeven het systeem heeft een persoon met de volgende gegevens

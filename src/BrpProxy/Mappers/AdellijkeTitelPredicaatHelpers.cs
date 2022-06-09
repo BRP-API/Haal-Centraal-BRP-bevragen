@@ -1,5 +1,4 @@
-﻿using BrpProxy.Generated;
-using HaalCentraal.BrpProxy.Generated;
+﻿using HaalCentraal.BrpProxy.Generated;
 
 namespace BrpProxy.Mappers;
 
@@ -162,7 +161,7 @@ public static class AdellijkeTitelPredicaatHelpers
         return AanhefAdellijkeTitelPredicaat[aanhefKey];
     }
 
-    public static string MapNaarAdellijkeTitel(this AdellijkeTitelPredicaatType waardetabel, IWaardetabel? geslacht)
+    public static string MapNaarAdellijkeTitel(this IWaardetabel waardetabel, IWaardetabel? geslacht)
     {
         if (waardetabel == null) return string.Empty;
 
@@ -206,7 +205,7 @@ public static class AdellijkeTitelPredicaatHelpers
         };
     }
 
-    public static string MapNaarPredicaat(this AdellijkeTitelPredicaatType waardetabel, IWaardetabel? geslacht)
+    public static string MapNaarPredicaat(this IWaardetabel waardetabel, IWaardetabel? geslacht)
     {
         if (waardetabel == null) return string.Empty;
 

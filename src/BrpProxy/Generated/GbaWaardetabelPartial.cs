@@ -1,4 +1,4 @@
-﻿namespace HaalCentraal.BrpProxy.Generated;
+﻿namespace HaalCentraal.BrpProxy.Generated.Gba;
 
 public partial class Waardetabel : IWaardetabel
 {

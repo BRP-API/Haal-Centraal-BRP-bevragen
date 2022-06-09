@@ -1,7 +1,7 @@
-﻿namespace BrpProxy.Generated
+﻿namespace HaalCentraal.BrpProxy.Generated;
+
+public interface IWaardetabel
 {
-    public interface IWaardetabel
-    {
-        string Code { get; }
-    }
+    string Code { get; }
+    string Omschrijving { get; }
 }

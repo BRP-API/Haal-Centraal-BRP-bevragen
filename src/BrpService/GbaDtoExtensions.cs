@@ -1,12 +1,17 @@
-﻿namespace HaalCentraal.BrpService.Generated
+﻿using Newtonsoft.Json;
+
+namespace HaalCentraal.BrpService.Generated
 {
     public partial class GbaGeboorteBeperkt
     {
+        [JsonIgnore]
         public Waardetabel? Plaats { get; set; }
     }
 
     public partial class GbaVerblijfplaatsBeperkt
     {
         public string? NummeraanduidingIdentificatie { get; set; }
+
+        public bool ShouldSerializeNummeraanduidingIdentificatie() => false;
     }
 }

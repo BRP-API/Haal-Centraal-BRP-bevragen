@@ -403,7 +403,7 @@ function createRequestBody(dataTable) {
                     }
                 }
                 else {
-                    requestBody[param.naam] = param.waarde;
+                    requestBody[param.naam] = calculatePropertyValue(param.waarde, true);
                 }
             });
 

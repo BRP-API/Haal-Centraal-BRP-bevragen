@@ -9,7 +9,12 @@ public class OverlijdenProfile : Profile
 {
     public OverlijdenProfile()
     {
-        CreateMap<GbaOverlijdenBasis, OverlijdenBasis>();
+        CreateMap<GbaOverlijdenBasis, OverlijdenBasis>()
+            .ForMember(dest => dest.IndicatieOverleden, opt => {
+                opt.Condition(src => !string.IsNullOrWhiteSpace(src.Datum));
+                opt.MapFrom(src => true);
+            })
+            ;
 
         CreateMap<GbaOverlijden, Overlijden>()
             .ForMember(dest => dest.Datum, opt => opt.MapFrom(src => src.Datum.Map()))

@@ -9,7 +9,13 @@ public class NaamProfile : Profile
 {
     public NaamProfile()
     {
-        CreateMap<GbaNaamBasis, NaamBasis>();
+        CreateMap<GbaNaamBasis, NaamBasis>()
+            .ForMember(dest => dest.Voorletters, opt => opt.MapFrom(src => src.Voorletters()))
+            .AfterMap((src, dest) =>
+            {
+                dest.VolledigeNaam = dest.VolledigeNaam(dest.Geslacht);
+            })
+            ;
 
         CreateMap<GbaNaamBasis, NaamGerelateerde>()
             .ForMember(dest => dest.Voorletters, opt => opt.MapFrom(src => src.Voorletters()))

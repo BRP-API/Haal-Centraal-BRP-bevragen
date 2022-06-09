@@ -9,7 +9,13 @@ public class PersoonProfile : Profile
 {
     public PersoonProfile()
     {
-        CreateMap<GbaPersoonBeperkt, PersoonBeperkt>();
+        CreateMap<GbaPersoonBeperkt, PersoonBeperkt>()
+            .ForMember(dest => dest.Leeftijd, opt =>
+            {
+                opt.PreCondition(src => src.Overlijden == null);
+                opt.MapFrom(src => src.Geboorte.Datum.Map().Leeftijd());
+            })
+            ;
 
         CreateMap<GbaPersoon, Persoon>()
             .BeforeMap((src, dest) =>

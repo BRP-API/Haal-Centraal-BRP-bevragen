@@ -6,7 +6,7 @@ public static class PartnerHelpers
 {
     public static bool IsExPartner(this AbstractPartner? partner) => partner is OntbondenPartner;
 
-    public static bool IsActueelPartner(this AbstractPartner? partner) => !partner.IsExPartner();
+    public static bool IsActueelPartner(this AbstractPartner? partner) => partner != null && !partner.IsExPartner();
 
     public static bool HeeftGeenPartner(this NaamPersoon persoon)
     {
@@ -72,5 +72,4 @@ public static class PartnerHelpers
         }
         return partner;
     }
-
 }
