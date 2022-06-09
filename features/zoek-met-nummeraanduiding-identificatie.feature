@@ -97,7 +97,7 @@ Functionaliteit: Zoek met nummeraanduiding identificatie
       |                               | Zoek met lege string nummeraanduiding identificatie |
       | 123456789012345               | Zoek met ongeldig nummeraanduiding identificatie    |
 
-  Rule: Overleden personen wordt standaard niet geretourneerd
+  Rule: Overleden personen worden standaard niet geretourneerd
 
     Scenario: Zoek exclusief overleden personen 
       Als personen wordt gezocht met de volgende parameters
