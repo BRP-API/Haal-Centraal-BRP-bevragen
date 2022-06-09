@@ -91,3 +91,18 @@ Rule: Er moet een valide zoek type worden opgegeven
     | title    | Gevraagde contenttype wordt niet ondersteund.               |
     | status   | 406                                                         |
     | instance | /haalcentraal/api/brp/personen                              |
+
+  @fout-case
+  Scenario: Aangegeven Media Type wordt niet ondersteund
+    Als personen wordt gezocht met de volgende parameters
+    | naam                 | waarde                          |
+    | type                 | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer  | 999999321                       |
+    | fields               | burgerservicenummer             |
+    | header: Content-Type | application/xml                 |
+    Dan heeft de response een object met de volgende gegevens
+    | naam     | waarde                                                       |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.13 |
+    | title    | Media Type wordt niet ondersteund.                           |
+    | status   | 415                                                          |
+    | instance | /haalcentraal/api/brp/personen                               |

@@ -45,6 +45,10 @@ namespace BrpProxy.Middlewares
                 {
                     return;
                 }
+                if(! await context.ContentTypeIsAllowed(orgBodyStream, _logger))
+                {
+                    return;
+                }
 
                 requestBody = await context.Request.ReadBodyAsync();
 
