@@ -68,8 +68,6 @@ Functionaliteit: Adresvelden vullen
       | huisletter en huisnummertoevoeging begint met cijfer | 999991693           | Cronus                   |                            | 555        | B          | 73c                 |                           | Cronus 555 B73c              |
       | aanduiding bij huisnummer bij                        | 999990913           | Graan voor Visch         |                            | 15201      |            |                     | by                        | Graan voor Visch bij 15201   |
       | aanduiding bij huisnummer tegenover                  | 999990482           | 1e Exloërmond            | 1e Exloërmond              | 3          |            |                     | to                        | 1e Exloërmond t/o 3          |
-      | alleen straatnaam                                    | 999990482           | Jonkheer van Riemsdijkln |                            |            |            |                     |                           | Jonkheer van Riemsdijkln     |
-      | alleen huisnummer                                    | 999990482           |                          |                            | 88         |            |                     |                           | 88                           |
 
   Rule: Voor een binnenlandse locatie wordt adresregel1 gevuld met de locatiebeschrijving
 
@@ -186,7 +184,8 @@ Functionaliteit: Adresvelden vullen
       | type                | RaadpleegMetBurgerservicenummer                                                          |
       | burgerservicenummer | 555550011                                                                                |
       | fields              | adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,adressering.land |
-      Dan heeft de response 0 personen
+      Dan heeft de response een leeg persoon object
+      # personen: [{}]
 
     Scenario: alleen land is bekend
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -203,9 +202,10 @@ Functionaliteit: Adresvelden vullen
       | type                | RaadpleegMetBurgerservicenummer                                                          |
       | burgerservicenummer | 555550012                                                                                |
       | fields              | adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,adressering.land |
-      Dan heeft de response 0 personen
+      Dan heeft de response een leeg persoon object
+      # personen: [{}]
 
-  Rule: Voor een binnenlands adres worden de adresregels in de adressering alleen opgenomen wanneer ten minste straat, huisnummer en postcode een waarde hebben
+  Rule: Voor een binnenlands adres worden de adresregels in de adressering alleen opgenomen wanneer ten minste straat en huisnummer een waarde hebben
     - een standaardwaarde in de bron geldt hier niet als waarde
     - een string met lengte nul ("") geldt hier niet als waarde
 
@@ -223,11 +223,11 @@ Functionaliteit: Adresvelden vullen
       | type                | RaadpleegMetBurgerservicenummer                                                          |
       | burgerservicenummer | <burgerservicenummer>                                                                    |
       | fields              | adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,adressering.land |
-      Dan heeft de response 0 personen
+      Dan heeft de response een leeg persoon object
+      # personen: [{}]
 
       Voorbeelden:
       | omschrijving                     | burgerservicenummer | straatnaam               | huisnummer | postcode |
       | straatnaam is leeg               | 555550021           |                          | 88         | 2497BV   |
       | straatnaam heeft standaardwaarde | 555550022           | .                        | 88         | 2497BV   |
       | huisnummer heeft standaardwaarde | 555550023           | Jonkheer van Riemsdijkln | 0          | 2497BV   |
-      | postcode is leeg                 | 555550024           | Jonkheer van Riemsdijkln | 88         |          |
