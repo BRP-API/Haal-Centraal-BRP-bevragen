@@ -23,19 +23,14 @@ Functionaliteit: Leveren van lege waarden
 
     Scenario: voorvoegsel naam is leeg
       Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
+      | naam                | waarde    |
+      | burgerservicenummer | 555550001 |
       En de persoon heeft de volgende 'naam' gegevens
       | naam                           | waarde |
       | voornamen (02.10)              | Jan    |
       | voorvoegsel (02.30)            |        |
       | geslachtsnaam (02.40)          | Boer   |
       | aanduiding naamgebruik (61.10) | E      |
-      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
-      | naam                                 | waarde |
-      | adellijke titel of predicaat (02.20) |        |
-      | voorvoegsel (02.30)                  |        |
-      | geslachtsnaam (02.40)                | .      |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                             |
       | type                | RaadpleegMetBurgerservicenummer                    |
@@ -46,6 +41,25 @@ Functionaliteit: Leveren van lege waarden
       | voornamen     | Jan    |
       | geslachtsnaam | Boer   |
   
+    Scenario: geslachtsnaam heeft standaardwaarde
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 555550002 |
+      En de persoon heeft de volgende 'naam' gegevens
+      | naam                           | waarde |
+      | voornamen (02.10)              | Jan    |
+      | voorvoegsel (02.30)            |        |
+      | geslachtsnaam (02.40)          | .      |
+      | aanduiding naamgebruik (61.10) | E      |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                                             |
+      | type                | RaadpleegMetBurgerservicenummer                    |
+      | burgerservicenummer | 555550002                                          |
+      | fields              | naam.voornamen,naam.voorvoegsel,naam.geslachtsnaam |
+      Dan heeft de response een persoon met alleen de volgende 'naam' gegevens
+      | naam      | waarde |
+      | voornamen | Jan    |
+
   Rule: Een object (groep) wordt niet geleverd wanneer de onderliggende categorie niet bestaat of niet geleverd moet worden
 
     Scenario: persoon is niet overleden en heeft geen verblijfstitel
@@ -80,8 +94,8 @@ Functionaliteit: Leveren van lege waarden
       | naam                | waarde    |
       | burgerservicenummer | 555550001 |
 
-    Scenario: persoon is heeft alleen verlopen reisdocument
-    Gegeven het systeem heeft een persoon met de volgende gegevens
+    Scenario: persoon heeft alleen verlopen reisdocument
+      Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550002 |
       En de persoon heeft een 'reisdocument' met de volgende gegevens
@@ -91,7 +105,7 @@ Functionaliteit: Leveren van lege waarden
       | Datum uitgifte Nederlands reisdocument (35.30)         | 20190314  |
       | Autoriteit van afgifte Nederlands reisdocument (35.40) | B0518     |
       | Datum einde geldigheid Nederlands reisdocument (35.50) | 20220314  |
-      Als personen owordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                  |
       | type                | RaadpleegMetBurgerservicenummer         |
       | burgerservicenummer | 555550002                               |
@@ -140,10 +154,10 @@ Functionaliteit: Leveren van lege waarden
       | naam                | waarde    |
       | burgerservicenummer | 555550003 |
       En de persoon heeft een 'kind' met alleen de volgende 'geboorte' gegevens
-      | naam   | waarde   |
-      | datum  | 20070421 |
-      | plaats | 0000     |
-      | land   | 0000     |
+      | naam                   | waarde   |
+      | datum                  | 20070421 |
+      | geboorteplaats (03.20) | 0000     |
+      | geboorteland (03.30)   | 0000     |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -166,6 +180,6 @@ Functionaliteit: Leveren van lege waarden
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550003                       |
       | fields              | kinderen.geboorte.plaats.code   |
-      Dan heeft de response een persoon een 'kind' met een 'geboorte' met een leeg 'plaats' object
+      Dan heeft de response een persoon met een 'kind' met een 'geboorte' met een leeg 'plaats' object
       # "kinderen": [{ "geboorte": { "plaats": {} } }]
       
