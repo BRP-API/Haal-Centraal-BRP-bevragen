@@ -11,6 +11,10 @@ public class NaamProfile : Profile
     {
         CreateMap<GbaNaamBasis, NaamBasis>()
             .ForMember(dest => dest.Voorletters, opt => opt.MapFrom(src => src.Voorletters()))
+            .ForMember(dest => dest.Geslachtsnaam, opt =>
+            {
+                opt.PreCondition(src => src.Geslachtsnaam != ".");
+            })
             .AfterMap((src, dest) =>
             {
                 dest.VolledigeNaam = dest.VolledigeNaam(dest.Geslacht);
