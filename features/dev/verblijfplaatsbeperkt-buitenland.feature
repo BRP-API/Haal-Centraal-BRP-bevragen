@@ -4,10 +4,7 @@
 Functionaliteit: verblijfplaats buitenland beperkt
 
   Abstract Scenario: persoon heeft 'verblijfplaats' veld: 'land adres buitenland (13.10)' met waarde ongelijk aan '0000'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999995078 |
-    En de persoon heeft de volgende 'naam' gegevens
+    Gegeven het systeem heeft een persoon met de volgende 'naam' gegevens
     | naam                  | waarde  |
     | geslachtsnaam (02.40) | Maassen |
     En de persoon heeft de volgende 'geboorte' gegevens

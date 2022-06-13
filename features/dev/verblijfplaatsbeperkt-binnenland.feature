@@ -4,10 +4,7 @@
 Functionaliteit: verblijfplaats beperkt binnenland
 
   Abstract Scenario: persoon heeft 'verblijfplaats binnenland' veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999995078 |
-    En de persoon heeft de volgende 'naam' gegevens
+    Gegeven het systeem heeft een persoon met de volgende 'naam' gegevens
     | naam                  | waarde  |
     | geslachtsnaam (02.40) | Maassen |
     En de persoon heeft de volgende 'geboorte' gegevens

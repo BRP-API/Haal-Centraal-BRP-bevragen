@@ -273,19 +273,28 @@ function addToCollection(collection, toAdd) {
 }
 
 function addPersoonToPersonen(context) {
-    if(context.persoon.burgerservicenummer !== undefined) {
-        ["partner", "ouder", "nationaliteit", "kind"]
-        .forEach((relatie) => addToCollection(context.persoon[toCollectionName(relatie)], context[relatie]));
+    ["partner", "ouder", "nationaliteit", "kind"]
+    .forEach((relatie) => {
+        addToCollection(context.persoon[toCollectionName(relatie)], context[relatie]);
+        context[relatie] = undefined;
+    });
 
-        context.zoekResponse.personen.push(context.persoon);
-        context.persoon = {};
-    }
+    context.zoekResponse.personen.push(context.persoon);
+    context.persoon = {};
 }
 
 Given(/^het systeem heeft een persoon met de volgende gegevens$/, function (dataTable) {
     addPersoonToPersonen(this.context);
 
     this.context.persoon = createObjectFrom(dataTable);
+});
+
+Given(/^het systeem heeft een persoon met de volgende '(.*)' gegevens$/, function (gegevensgroep, dataTable) {
+    addPersoonToPersonen(this.context);
+
+    this.context.persoon = {};
+
+    setPersoonProperties(this.context.persoon, gegevensgroep, dataTable);
 });
 
 Given(/^het systeem heeft personen met de volgende gegevens$/, function (dataTable) {
@@ -628,6 +637,30 @@ Then(/^heeft het object de volgende '(.*)' gegevens$/, function (gegevensgroep, 
         const actual = this.context.response.data[gegevensgroep];
 
         actual.should.deep.equalInAnyOrder(expected);
+    }
+});
+
+Then('heeft de response een leeg persoon object', function () {
+    this.context.leaveEmptyObjects = true;
+
+    if(this.context.postAssert === true) {
+        if(this.context.expected === undefined) {
+            this.context.expected = [ {} ];
+        }
+    }
+});
+
+Then(/^heeft de response een persoon met ?(?:een)? leeg '(.*)' object$/, function (gegevensgroep) {
+    this.context.leaveEmptyObjects = true;
+    let expected = {};
+
+    if(this.context.postAssert === true) {
+        if(this.context.expected === undefined) {
+            this.context.expected = [ {} ];
+        }
+
+        const expectedPersoon = this.context.expected[this.context.expected.length-1];
+        expectedPersoon[gegevensgroep] = expected;
     }
 });
 

@@ -4,10 +4,7 @@
 Functionaliteit: Naam velden van PersoonBeperkt
 
   Scenario: persoon heeft 'naam' veld: 'geslachtsnaam (02.40)'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999995078 |
-    En de persoon heeft de volgende 'naam' gegevens
+    Gegeven het systeem heeft een persoon met de volgende 'naam' gegevens
     | naam                  | waarde  |
     | geslachtsnaam (02.40) | Maassen |
     En de persoon heeft de volgende 'geboorte' gegevens
@@ -24,10 +21,7 @@ Functionaliteit: Naam velden van PersoonBeperkt
     | geslachtsnaam | Maassen |
 
   Abstract Scenario: persoon heeft 'naam' veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999995078 |
-    En de persoon heeft de volgende 'naam' gegevens
+    Gegeven het systeem heeft een persoon met de volgende 'naam' gegevens
     | naam                  | waarde   |
     | geslachtsnaam (02.40) | Maassen  |
     | <gba naam>            | <waarde> |
@@ -52,10 +46,7 @@ Functionaliteit: Naam velden van PersoonBeperkt
     | adellijkeTitelPredicaat.omschrijving | adellijkeTitelPredicaat.omschrijving | jonkheer    |
 
   Scenario: persoon heeft 'naam' veld: 'voorletters'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999995078 |
-    En de persoon heeft de volgende 'naam' gegevens
+    Gegeven het systeem heeft een persoon met de volgende 'naam' gegevens
     | naam                  | waarde     |
     | geslachtsnaam (02.40) | Maassen    |
     | voornamen (02.10)     | Jan Pieter |
@@ -73,10 +64,7 @@ Functionaliteit: Naam velden van PersoonBeperkt
     | voorletters | J.P.   |
 
   Scenario: persoon heeft 'naam' veld: 'volledigeNaam'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999995078 |
-    En de persoon heeft de volgende 'naam' gegevens
+    Gegeven het systeem heeft een persoon met de volgende 'naam' gegevens
     | naam                  | waarde     |
     | geslachtsnaam (02.40) | Maassen    |
     | voorvoegsel (02.30)   | van den    |
@@ -93,3 +81,40 @@ Functionaliteit: Naam velden van PersoonBeperkt
     Dan heeft de response een persoon met de volgende 'naam' gegevens
     | naam          | waarde                     |
     | volledigeNaam | Jan Pieter van den Maassen |
+
+  Abstract Scenario: naam veld heeft geen waarde
+    Gegeven het systeem heeft een persoon met de volgende 'verblijfplaats' gegevens
+    | naam               | waarde |
+    | postcode (11.60)   | 2628HJ |
+    | huisnummer (11.20) | 2      |
+    En de persoon heeft de volgende 'naam' gegevens
+    | naam                  | waarde  |
+    | geslachtsnaam (02.40) | Maassen |
+    Als personen wordt gezocht met de volgende parameters
+    | naam       | waarde                      |
+    | type       | ZoekMetPostcodeEnHuisnummer |
+    | postcode   | 2628HJ                      |
+    | huisnummer | 2                           |
+    | fields     | <fields>                    |
+    Dan heeft de response een persoon met een leeg 'naam' object
+
+    Voorbeelden:
+    | fields           |
+    | naam.voornamen   |
+    | naam.voorvoegsel |
+
+  Scenario: naam veld heeft standaard waarde
+    Gegeven het systeem heeft een persoon met de volgende 'verblijfplaats' gegevens
+    | naam               | waarde |
+    | postcode (11.60)   | 2628HJ |
+    | huisnummer (11.20) | 2      |
+    En de persoon heeft de volgende 'naam' gegevens
+    | naam                  | waarde |
+    | geslachtsnaam (02.40) | .      |
+    Als personen wordt gezocht met de volgende parameters
+    | naam       | waarde                      |
+    | type       | ZoekMetPostcodeEnHuisnummer |
+    | postcode   | 2628HJ                      |
+    | huisnummer | 2                           |
+    | fields     | naam.geslachtsnaam          |
+    Dan heeft de response een persoon met een leeg 'naam' object

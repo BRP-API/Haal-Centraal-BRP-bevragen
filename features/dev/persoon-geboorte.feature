@@ -36,7 +36,7 @@ Functionaliteit: Persoon Geboorte
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
-    | fields              | geboorte                        |
+    | fields              | geboorte.<field>                |
     Dan heeft de response een persoon met de volgende 'geboorte' gegevens
     | naam    | waarde   |
     | <field> | <waarde> |

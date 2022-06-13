@@ -5,9 +5,8 @@ Functionaliteit: PersoonBeperkt
 
   Abstract Scenario: persoon heeft veld: '<gba naam>'
     Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999995078 |
-    | <gba naam>          | <waarde>  |
+    | naam       | waarde   |
+    | <gba naam> | <waarde> |
     En de persoon heeft de volgende 'naam' gegevens
     | naam                  | waarde  |
     | geslachtsnaam (02.40) | Maassen |
@@ -33,7 +32,6 @@ Functionaliteit: PersoonBeperkt
   Abstract Scenario: persoon heeft veld: 'indicatie geheim (70.10)'
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                     | waarde       |
-    | burgerservicenummer      | 999995078    |
     | indicatie geheim (70.10) | <gba waarde> |
     En de persoon heeft de volgende 'naam' gegevens
     | naam                  | waarde  |
@@ -42,19 +40,17 @@ Functionaliteit: PersoonBeperkt
     | naam                  | waarde   |
     | geboortedatum (03.10) | 19830526 |
     Als personen wordt gezocht met de volgende parameters
-    | naam          | waarde                                            |
-    | type          | ZoekMetGeslachtsnaamEnGeboortedatum               |
-    | geslachtsnaam | Maassen                                           |
-    | geboortedatum | 1983-05-26                                        |
-    | fields        | burgerservicenummer,geheimhoudingPersoonsgegevens |
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | Maassen                             |
+    | geboortedatum | 1983-05-26                          |
+    | fields        | geheimhoudingPersoonsgegevens       |
     Dan heeft de response een persoon met de volgende gegevens
     | naam                          | waarde    |
-    | burgerservicenummer           | 999995078 |
     | geheimhoudingPersoonsgegevens | <waarde>  |
 
     Voorbeelden:
     | gba waarde | waarde |
-    | 0          |        |
     | 1          | true   |
     | 2          | true   |
     | 3          | true   |
@@ -63,11 +59,26 @@ Functionaliteit: PersoonBeperkt
     | 6          | true   |
     | 7          | true   |
 
-  Abstract Scenario: geboortedatum is een volledig datum
+  Scenario: persoon heeft veld: 'indicatie geheim (70.10)' met waarde 0
     Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999995078 |
+    | naam                     | waarde       |
+    | indicatie geheim (70.10) | 0 |
     En de persoon heeft de volgende 'naam' gegevens
+    | naam                  | waarde  |
+    | geslachtsnaam (02.40) | Maassen |
+    En de persoon heeft de volgende 'geboorte' gegevens
+    | naam                  | waarde   |
+    | geboortedatum (03.10) | 19830526 |
+    Als personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | Maassen                             |
+    | geboortedatum | 1983-05-26                          |
+    | fields        | geheimhoudingPersoonsgegevens       |
+    Dan heeft de response een leeg persoon object
+
+  Abstract Scenario: geboortedatum is een volledig datum
+    Gegeven het systeem heeft een persoon met de volgende 'naam' gegevens
     | naam                  | waarde  |
     | geslachtsnaam (02.40) | Maassen |
     En de persoon heeft de volgende 'geboorte' gegevens
@@ -88,3 +99,26 @@ Functionaliteit: PersoonBeperkt
     | vandaag - 10 jaar  | 10       |
     | gisteren - 15 jaar | 15       |
     | morgen - 20 jaar   | 19       |
+
+  Abstract Scenario: gevraagde veld heeft geen waarde
+    Gegeven het systeem heeft een persoon met de volgende 'naam' gegevens
+    | naam                  | waarde  |
+    | geslachtsnaam (02.40) | Maassen |
+    En de persoon heeft de volgende 'geboorte' gegevens
+    | naam                  | waarde   |
+    | geboortedatum (03.10) | 20020202 |
+    Als personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | Maassen                             |
+    | geboortedatum | 2002-02-02                          |
+    | fields        | <fields>                            |
+    Dan heeft de response een leeg persoon object
+
+    Voorbeelden:
+    | fields                        |
+    | burgerservicenummer           |
+    | geheimhoudingPersoonsgegevens |
+    | geslacht                      |
+    | geslacht.code                 |
+    | geslacht.omschrijving         |
