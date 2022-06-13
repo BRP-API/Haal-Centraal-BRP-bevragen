@@ -24,7 +24,11 @@ public class VerblijfplaatsProfile : Profile
                 opt.PreCondition(src => src.Straat != ".");
                 opt.MapFrom(src => src.MapStraat());
             })
-            .ForMember(dest => dest.KorteNaam, opt => opt.MapFrom(src => src.Straat))
+            .ForMember(dest => dest.KorteNaam, opt => 
+            {
+                opt.PreCondition(src => src.Straat != ".");
+                opt.MapFrom(src => src.Straat);
+            })
             .ForMember(dest => dest.Woonplaats, opt =>
             {
                 opt.PreCondition(src => src.Woonplaats != ".");
