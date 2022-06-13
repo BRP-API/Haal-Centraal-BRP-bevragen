@@ -89,7 +89,7 @@ components:
       type: object
       description: |
         Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.
-        * **datum** - De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan. 
+        * **datum** - De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.
         * **land** - Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.
         * **plaats** - De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld op basis van de waarden die voorkomen in de tabel "Gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.
       properties:
@@ -99,8 +99,6 @@ components:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         plaats:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
-        inOnderzoek:
-          $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     AangaanHuwelijkPartnerschap:
       type: object
       description: |
