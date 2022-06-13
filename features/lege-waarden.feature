@@ -77,7 +77,7 @@ Functionaliteit: Leveren van lege waarden
       | naam                | waarde    |
       | burgerservicenummer | 555550001 |
 
-  Rule: een array (list) veld wordt niet geleverd wanneer het geen enkel item bevat
+  Rule: een array (list, collectie) veld wordt geleverd als lege array wanneer het geen enkel item bevat
 
     Scenario: persoon heeft geen partner en geen kinderen
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -93,6 +93,10 @@ Functionaliteit: Leveren van lege waarden
       Dan heeft de response een persoon met alleen de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550001 |
+      En heeft de response een persoon met 'partners' met een lege array
+      En heeft de response een persoon met 'kinderen' met een lege array
+
+      # "personen": [ { "burgerservicenummer": "555550001", "partners": [], "kinderen": [] } ]
 
     Scenario: persoon heeft alleen verlopen reisdocument
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -113,6 +117,32 @@ Functionaliteit: Leveren van lege waarden
       Dan heeft de response een persoon met alleen de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550002 |
+      En heeft de response een persoon met 'reisdocumentnummers' met een lege array
+
+      # "personen": [ { "burgerservicenummer": "555550002", "reisdocumentnummers": [] } ]
+
+    Scenario: ZoekMetGeslachtsnaamEnGeboortedatum vindt geen enkele persoon
+      Als personen wordt gezocht met de volgende parameters
+      | naam          | waarde                              |
+      | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+      | geslachtsnaam | Bestaat                             |
+      | voorvoegsel   | het                                 |
+      | voornamen     | Niet                                |
+      | geboortedatum | 1887-09-14                          |
+      | fields        | burgerservicenummer                 |
+      Dan heeft de response personen met een lege array
+
+      # "personen": [ ]
+
+      Scenario: RaadpleegMetBurgerservicenummer vindt geen enkele persoon (bsn voldoet niet aan 11-proef)
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999999999                       |
+      | fields              | burgerservicenummer             |
+      Dan heeft de response personen met een lege array
+      
+      # "personen": [ ]
   
   Rule: Een object (groep) wordt geleverd als leeg object wanneer er ten minste één gegeven in die groep bestaat, maar geen enkel veld in die groep geleverd moet worden
     - Hierbij geldt ook een veld dat niet met fields is gevraagd voor het bestaan van de groep
