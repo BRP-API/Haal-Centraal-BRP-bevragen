@@ -74,7 +74,7 @@ namespace BrpProxy.Middlewares
                 var result = personenQuery.Validate(context, requestBody, _fieldsHelper);
                 if (!result.IsValid)
                 {
-                    await context.HandleValidationErrors(result.Foutbericht!, orgBodyStream);
+                    await context.HandleValidationErrors(result.Foutbericht!, orgBodyStream, _logger);
                     return;
                 }
 
@@ -95,7 +95,7 @@ namespace BrpProxy.Middlewares
                     ? body.Transform(_mapper, resultFields, _logger)
                     : body;
 
-                _logger.LogDebug("transformed responseBody: {modifiedBody}", modifiedBody);
+                _logger.LogDebug("transformed responseBody: {@modifiedBody}", modifiedBody);
 
                 using var bodyStream = modifiedBody.ToMemoryStream(context.Response);
 
@@ -104,7 +104,7 @@ namespace BrpProxy.Middlewares
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, message: $"requestBody: {requestBody}");
+                _logger.LogError(ex, message: "requestBody: {@requestBody}");
 
                 await context.HandleUnhandledException(ex, orgBodyStream);
             }
@@ -122,6 +122,7 @@ namespace BrpProxy.Middlewares
                 ZoekMetPostcodeEnHuisnummer query => new ZoekMetPostcodeEnHuisnummerQueryValidator(fieldsHelper).Validate(query),
                 ZoekMetNaamEnGemeenteVanInschrijving query => new ZoekMetNaamEnGemeenteVanInschrijvingQueryValidator(fieldsHelper).Validate(query),
                 ZoekMetNummeraanduidingIdentificatie query => new ZoekMetNummeraanduidingIdentificatieQueryValidator(fieldsHelper).Validate(query),
+                ZoekMetStraatHuisnummerEnGemeenteVanInschrijving query => new ZoekMetStraatHuisnummerEnGemeenteVanInschrijvingQueryValidator(fieldsHelper).Validate(query),
                 _ => null
             };
 
@@ -164,6 +165,11 @@ namespace BrpProxy.Middlewares
                     var result4 = mapper.Map<ZoekMetNummeraanduidingIdentificatieResponse>(pb);
                     result4.Personen = result4.Personen.FilterList(fields);
                     retval = result4;
+                    break;
+                case Gba.ZoekMetStraatHuisnummerEnGemeenteVanInschrijvingResponse pb:
+                    var result5 = mapper.Map<ZoekMetStraatHuisnummerEnGemeenteVanInschrijvingResponse>(pb);
+                    result5.Personen = result5.Personen.FilterList(fields);
+                    retval = result5;
                     break;
             }
 

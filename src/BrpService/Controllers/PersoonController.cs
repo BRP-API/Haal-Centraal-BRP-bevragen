@@ -34,6 +34,7 @@ public class PersoonController : Generated.ControllerBase
             ZoekMetNaamEnGemeenteVanInschrijving q => await Handle(q),
             ZoekMetPostcodeEnHuisnummer q => await Handle(q),
             ZoekMetNummeraanduidingIdentificatie q => await Handle(q),
+            ZoekMetStraatHuisnummerEnGemeenteVanInschrijving q => await Handle(q),
             _ => throw new InvalidOperationException($"Onbekend type query: {body}"),
         };
     }
@@ -93,6 +94,17 @@ public class PersoonController : Generated.ControllerBase
         _logger.LogDebug("Request body: {@query}", JsonConvert.SerializeObject(query));
 
         var retval = await _repository.Zoek<ZoekMetNummeraanduidingIdentificatie>(query);
+
+        _logger.LogDebug("Response: {@response}", JsonConvert.SerializeObject(retval));
+
+        return Ok(retval);
+    }
+
+    private async Task<ActionResult<PersonenQueryResponse>> Handle(ZoekMetStraatHuisnummerEnGemeenteVanInschrijving query)
+    {
+        _logger.LogDebug("Request body: {@query}", JsonConvert.SerializeObject(query));
+
+        var retval = await _repository.Zoek<ZoekMetStraatHuisnummerEnGemeenteVanInschrijving>(query);
 
         _logger.LogDebug("Response: {@response}", JsonConvert.SerializeObject(retval));
 

@@ -249,8 +249,12 @@ namespace BrpProxy.Middlewares
             await bodyStream.CopyToAsync(orgResponseBodyStream);
         }
 
-        public static async Task HandleValidationErrors(this HttpContext context, BadRequestFoutbericht foutbericht, Stream orgResponseBodyStream)
+        public static async Task HandleValidationErrors(this HttpContext context, BadRequestFoutbericht foutbericht, Stream orgResponseBodyStream, ILogger logger)
         {
+            var requestBody = await context.Request.ReadBodyAsync();
+
+            logger.LogWarning("Validation errors. {@requestBody}, {@foutbericht}", requestBody, foutbericht);
+
             using var bodyStream = foutbericht.ToJson().ToMemoryStream(context.Response);
 
             context.SetResponseProperties(foutbericht, bodyStream);

@@ -74,4 +74,23 @@ public static class PersonenQueryExtensions
 
         return specification;
     }
+
+    public static Specification<GbaPersoonBeperkt> ToSpecification(this ZoekMetStraatHuisnummerEnGemeenteVanInschrijving query)
+    {
+        Specification<GbaPersoonBeperkt> specification = new StraatSpecification(query.Straat)
+            .And(new HuisnummerSpecification(query.Huisnummer))
+            .And(new GemeenteVanInschrijvingSpecification(query.GemeenteVanInschrijving));
+
+        if (!string.IsNullOrWhiteSpace(query.Huisletter))
+        {
+            specification = specification.And(new HuisletterSpecification(query.Huisletter));
+        }
+        if (!string.IsNullOrWhiteSpace(query.Huisnummertoevoeging))
+        {
+            specification = specification.And(new HuisnummertoevoegingSpecification(query.Huisnummertoevoeging));
+        }
+        specification = specification.And(new InclusiefOverledenPersonenSpecification(query.InclusiefOverledenPersonen));
+
+        return specification;
+    }
 }
