@@ -409,7 +409,7 @@ Rule: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredicaat 
       | G                               | gravin              | Hooggeboren vrouwe    |
       | H                               | hertogin            | Hoogwelgeboren vrouwe |
       | M                               | markiezin           | Hoogwelgeboren vrouwe |
-      | P                               | Prins               | Hoogheid              |
+      | P                               | prinses             | Hoogheid              |
 
   Abstract Scenario: partner heeft adellijke titel "<adellijkeTitelPredicaat partner>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
