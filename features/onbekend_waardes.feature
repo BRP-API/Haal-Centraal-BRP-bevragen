@@ -40,7 +40,7 @@ Rule: een veld wordt niet opgenomen wanneer het de standaardwaarde bevat
     | naam                | waarde    |
     | burgerservicenummer | 999992934 |
 
-  Scenario: onbekend waarde "." voor straat
+  Abstract Scenario: onbekend waarde "." voor straat
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999992934 |
@@ -52,10 +52,15 @@ Rule: een veld wordt niet opgenomen wanneer het de standaardwaarde bevat
     | naam                | waarde                              |
     | type                | RaadpleegMetBurgerservicenummer     |
     | burgerservicenummer | 999992934                           |
-    | fields              | verblijfplaats.verblijfadres.straat |
+    | fields              | verblijfplaats.verblijfadres.<veld> |
     Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
     | naam | waarde |
     | type | Adres  |
+
+    Voorbeelden:
+    | veld      |
+    | straat    |
+    | korteNaam |
 
   Scenario: onbekend waarde "0" voor huisnummer
     Gegeven het systeem heeft een persoon met de volgende gegevens
