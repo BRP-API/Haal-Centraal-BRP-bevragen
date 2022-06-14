@@ -133,14 +133,14 @@ namespace BrpProxy.Middlewares
 
         public static string Transform(this string payload, IMapper mapper, ICollection<string> fields, ILogger logger)
         {
-            PersonenQueryResponse retval = null;
+            PersonenQueryResponse retval;
             var response = JsonConvert.DeserializeObject<Gba.PersonenQueryResponse>(payload);
+            logger.LogDebug("Original response: {@response}", response);
 
             switch (response)
             {
                 case Gba.RaadpleegMetBurgerservicenummerResponse p:
                     var result = mapper.Map<RaadpleegMetBurgerservicenummerResponse>(p);
-                    logger.LogDebug("Before fields filtering {@result}", result);
                     result.Personen = (from persoon in result.Personen.FilterList(fields)
                                       where persoon.ShouldSerialize()
                                       select persoon).ToList();
@@ -158,6 +158,7 @@ namespace BrpProxy.Middlewares
                     break;
                 case Gba.ZoekMetPostcodeEnHuisnummerResponse pb:
                     var result2 = mapper.Map<ZoekMetPostcodeEnHuisnummerResponse>(pb);
+                    logger.LogDebug("Before fields filtering {@result}", result2);
                     result2.Personen = result2.Personen.FilterList(fields);
                     retval = result2;
                     break;
@@ -171,6 +172,8 @@ namespace BrpProxy.Middlewares
                     result5.Personen = result5.Personen.FilterList(fields);
                     retval = result5;
                     break;
+                default:
+                    throw new NotSupportedException();
             }
 
             logger.LogDebug("After fields filtering {@retval}", retval);
