@@ -17,11 +17,30 @@ public static class AdresregelsMapper
         };
     }
 
+    public static string? Adresregel1(this AbstractVerblijfplaatsBeperkt verblijfplaats)
+    {
+        return verblijfplaats switch
+        {
+            AdresBeperkt a => a.Adresregel1(),
+            LocatieBeperkt l => l.Adresregel1(),
+            VerblijfplaatsBuitenlandBeperkt b => b.Adresregel1(),
+            _ => null
+        };
+    }
+
     private static string? Adresregel1(this Adres verblijfplaats)
     {
-        var adres = verblijfplaats.Verblijfadres;
+        return verblijfplaats.Verblijfadres.Adresregel1();
+    }
 
-        if(string.IsNullOrWhiteSpace(adres.KorteNaam) ||
+    private static string? Adresregel1(this AdresBeperkt verblijfplaats)
+    {
+        return verblijfplaats.Verblijfadres?.Adresregel1();
+    }
+
+    private static string? Adresregel1(this VerblijfadresBinnenland adres)
+    {
+        if (string.IsNullOrWhiteSpace(adres.KorteNaam) ||
             string.IsNullOrWhiteSpace(adres.Postcode) ||
             adres.Huisnummer == 0)
         {
@@ -82,14 +101,29 @@ public static class AdresregelsMapper
         return verblijfplaats.Verblijfadres.Locatiebeschrijving;
     }
 
+    private static string? Adresregel1(this LocatieBeperkt? verblijfplaats)
+    {
+        return verblijfplaats?.Verblijfadres?.Locatiebeschrijving;
+    }
+
     private static string? Adresregel1(this VerblijfplaatsBuitenland verblijfplaats)
     {
+        return verblijfplaats.Verblijfadres.Adresregel1();
+    }
+
+    private static string? Adresregel1(this VerblijfplaatsBuitenlandBeperkt verblijfplaats)
+    {
+        return verblijfplaats.Verblijfadres.Adresregel1();
+    }
+
+    private static string? Adresregel1(this VerblijfadresBuitenland? adres)
+    {
         return
-            verblijfplaats.Verblijfadres.Land != null &&
-            (!string.IsNullOrWhiteSpace(verblijfplaats.Verblijfadres.Regel1) ||
-            !string.IsNullOrWhiteSpace(verblijfplaats.Verblijfadres.Regel2) ||
-            !string.IsNullOrWhiteSpace(verblijfplaats.Verblijfadres.Regel3))
-            ? verblijfplaats.Verblijfadres.Regel1
+            adres?.Land != null &&
+            (!string.IsNullOrWhiteSpace(adres.Regel1) ||
+            !string.IsNullOrWhiteSpace(adres.Regel2) ||
+            !string.IsNullOrWhiteSpace(adres.Regel3))
+            ? adres.Regel1
             : null;
     }
 
@@ -104,10 +138,29 @@ public static class AdresregelsMapper
         };
     }
 
+    public static string? Adresregel2(this AbstractVerblijfplaatsBeperkt verblijfplaats, IWaardetabel? gemeenteVanInschrijving)
+    {
+        return verblijfplaats switch
+        {
+            AdresBeperkt a => a.Adresregel2(gemeenteVanInschrijving),
+            LocatieBeperkt l => l.Adresregel2(gemeenteVanInschrijving),
+            VerblijfplaatsBuitenlandBeperkt b => b.Adresregel2(),
+            _ => null
+        };
+    }
+
     private static string? Adresregel2(this Adres verblijfplaats, IWaardetabel? gemeenteVanInschrijving)
     {
-        var adres = verblijfplaats.Verblijfadres;
+        return verblijfplaats.Verblijfadres.Adresregel2(gemeenteVanInschrijving);
+    }
 
+    private static string? Adresregel2(this AdresBeperkt verblijfplaats, IWaardetabel? gemeenteVanInschrijving)
+    {
+        return verblijfplaats.Verblijfadres?.Adresregel2(gemeenteVanInschrijving);
+    }
+
+    private static string? Adresregel2(this VerblijfadresBinnenland adres, IWaardetabel? gemeenteVanInschrijving)
+    {
         if (string.IsNullOrWhiteSpace(adres.KorteNaam) ||
             string.IsNullOrWhiteSpace(adres.Postcode) ||
             adres.Huisnummer == 0)
@@ -128,14 +181,29 @@ public static class AdresregelsMapper
         return gemeenteVanInschrijving?.Omschrijving.ToUpperInvariant();
     }
 
+    private static string? Adresregel2(this LocatieBeperkt verblijfplaats, IWaardetabel? gemeenteVanInschrijving)
+    {
+        return gemeenteVanInschrijving?.Omschrijving.ToUpperInvariant();
+    }
+
     private static string? Adresregel2(this VerblijfplaatsBuitenland verblijfplaats)
     {
+        return verblijfplaats.Verblijfadres.Adresregel2();
+    }
+
+    private static string? Adresregel2(this VerblijfplaatsBuitenlandBeperkt verblijfplaats)
+    {
+        return verblijfplaats.Verblijfadres.Adresregel2();
+    }
+
+    private static string? Adresregel2(this VerblijfadresBuitenland? adres)
+    {
         return
-            verblijfplaats.Verblijfadres.Land != null &&
-            (!string.IsNullOrWhiteSpace(verblijfplaats.Verblijfadres.Regel1) ||
-            !string.IsNullOrWhiteSpace(verblijfplaats.Verblijfadres.Regel2) ||
-            !string.IsNullOrWhiteSpace(verblijfplaats.Verblijfadres.Regel3))
-            ? verblijfplaats.Verblijfadres.Regel2
+            adres?.Land != null &&
+            (!string.IsNullOrWhiteSpace(adres.Regel1) ||
+            !string.IsNullOrWhiteSpace(adres.Regel2) ||
+            !string.IsNullOrWhiteSpace(adres.Regel3))
+            ? adres.Regel2
             : null;
     }
 
@@ -143,30 +211,57 @@ public static class AdresregelsMapper
     {
         return verblijfplaats switch
         {
-            VerblijfplaatsBuitenland b
-                when b.Verblijfadres.Land != null && 
-                     (!string.IsNullOrWhiteSpace(b.Verblijfadres.Regel1) ||
-                     !string.IsNullOrWhiteSpace(b.Verblijfadres.Regel2) ||
-                     !string.IsNullOrWhiteSpace(b.Verblijfadres.Regel3)) => b.Adresregel3(),
+            VerblijfplaatsBuitenland b => b.Verblijfadres.Adresregel3(),
             _ => null
         };
     }
 
-    private static string? Adresregel3(this VerblijfplaatsBuitenland verblijfplaats)
+    public static string? Adresregel3(this AbstractVerblijfplaatsBeperkt verblijfplaats)
     {
-        return verblijfplaats.Verblijfadres.Regel3;
+        return verblijfplaats switch
+        {
+            VerblijfplaatsBuitenlandBeperkt b => b.Verblijfadres?.Adresregel3(),
+            _ => null
+        };
+    }
+
+    private static string? Adresregel3(this VerblijfadresBuitenland adres)
+    {
+        return
+            adres.Land != null &&
+            (!string.IsNullOrWhiteSpace(adres.Regel1) ||
+            !string.IsNullOrWhiteSpace(adres.Regel2) ||
+            !string.IsNullOrWhiteSpace(adres.Regel3))
+            ? adres.Regel3
+            : null;
     }
 
     public static Waardetabel? Land(this AbstractVerblijfplaats verblijfplaats)
     {
         return verblijfplaats switch
         {
-            VerblijfplaatsBuitenland b
-                when b.Verblijfadres.Land != null &&
-                     (!string.IsNullOrWhiteSpace(b.Verblijfadres.Regel1) ||
-                     !string.IsNullOrWhiteSpace(b.Verblijfadres.Regel2) ||
-                     !string.IsNullOrWhiteSpace(b.Verblijfadres.Regel3)) => b.Verblijfadres.Land,
+            VerblijfplaatsBuitenland b => b.Verblijfadres.Land(),
             _ => null
         };
+    }
+
+    public static Waardetabel? Land(this AbstractVerblijfplaatsBeperkt verblijfplaats)
+    {
+        return verblijfplaats switch
+        {
+            VerblijfplaatsBuitenlandBeperkt b => b.Verblijfadres?.Land(),
+            _ => null
+        };
+    }
+
+    private static Waardetabel? Land(this VerblijfadresBuitenland adres)
+    {
+        return
+            adres.Land != null &&
+            (!string.IsNullOrWhiteSpace(adres.Regel1) ||
+            !string.IsNullOrWhiteSpace(adres.Regel2) ||
+            !string.IsNullOrWhiteSpace(adres.Regel3))
+            ? adres.Land
+            : null;
     }
 }

@@ -21,5 +21,4 @@ public static class VerblijfplaatsMapper
             ? verblijfplaats.NaamOpenbareRuimte
             : verblijfplaats.Straat;
     }
-
 }

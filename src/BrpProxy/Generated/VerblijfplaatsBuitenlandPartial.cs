@@ -15,3 +15,10 @@ public partial class VerblijfadresBuitenland
         Land != null ||
         InOnderzoek != null;
 }
+
+public partial class VerblijfplaatsBuitenlandBeperkt
+{
+    public VerblijfadresBuitenland? Verblijfadres { get; set; }
+
+    public bool ShouldSerializeVerblijfadres() => false;
+}

@@ -15,6 +15,19 @@ public class PersoonProfile : Profile
                 opt.PreCondition(src => src.Overlijden == null);
                 opt.MapFrom(src => src.Geboorte.Datum.Map().Leeftijd());
             })
+            .AfterMap((src, dest) =>
+            {
+                if(dest.Verblijfplaats != null)
+                {
+                    dest.Adressering = new AdresseringBeperkt
+                    {
+                        Adresregel1 = dest.Verblijfplaats.Adresregel1(),
+                        Adresregel2 = dest.Verblijfplaats.Adresregel2(dest.GemeenteVanInschrijving),
+                        Adresregel3 = dest.Verblijfplaats.Adresregel3(),
+                        Land = dest.Verblijfplaats.Land()
+                    };
+                }
+            })
             ;
 
         CreateMap<GbaPersoon, Persoon>()

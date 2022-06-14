@@ -19,3 +19,10 @@ public partial class VerblijfadresBinnenland
         !string.IsNullOrWhiteSpace(KorteNaam)
         ;
 }
+
+public partial class AdresBeperkt
+{
+    public VerblijfadresBinnenland? Verblijfadres { get; set; }
+
+    public bool ShouldSerializeVerblijfadres() => false;
+}

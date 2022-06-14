@@ -75,10 +75,43 @@ public class VerblijfplaatsProfile : Profile
 
         CreateMap<GbaVerblijfplaatsBeperkt, VerblijfplaatsOnbekendBeperkt>();
 
-        CreateMap<GbaVerblijfplaatsBeperkt, VerblijfplaatsBuitenlandBeperkt>();
+        CreateMap<GbaVerblijfplaatsBeperkt, VerblijfplaatsBuitenlandBeperkt>()
+            .ForMember(dest => dest.Verblijfadres, opt => opt.MapFrom(src => src))
+            ;
 
-        CreateMap<GbaVerblijfplaatsBeperkt, AdresBeperkt>();
+        CreateMap<GbaVerblijfplaatsBeperkt, AdresBeperkt>()
+            .ForMember(dest => dest.Verblijfadres, opt => opt.MapFrom(src => src))
+            ;
 
-        CreateMap<GbaVerblijfplaatsBeperkt, LocatieBeperkt>();
+        CreateMap<GbaVerblijfplaatsBeperkt, LocatieBeperkt>()
+            .ForMember(dest => dest.Verblijfadres, opt => opt.MapFrom(src => src))
+            ;
+
+        CreateMap<GbaVerblijfplaatsBeperkt, VerblijfadresBuitenland>()
+            .ForMember(dest => dest.Land, opt =>
+            {
+                opt.PreCondition(src => src.Land?.Code != "0000");
+            })
+            ;
+
+        CreateMap<GbaVerblijfplaatsBeperkt, VerblijfadresBinnenland>()
+            .ForMember(dest => dest.Straat, opt =>
+            {
+                opt.PreCondition(src => src.Straat != ".");
+                opt.MapFrom(src => src.Straat);
+            })
+            .ForMember(dest => dest.KorteNaam, opt =>
+            {
+                opt.PreCondition(src => src.Straat != ".");
+                opt.MapFrom(src => src.Straat);
+            })
+            .ForMember(dest => dest.Woonplaats, opt =>
+            {
+                opt.PreCondition(src => src.Woonplaats != ".");
+                opt.MapFrom(src => src.Woonplaats);
+            })
+            ;
+
+        CreateMap<GbaVerblijfplaatsBeperkt, VerblijfadresLocatie>();
     }
 }
