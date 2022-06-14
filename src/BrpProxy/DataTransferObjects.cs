@@ -834,7 +834,7 @@ namespace HaalCentraal.BrpProxy.Generated
     /// <br/>
     /// </summary>
     [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "type")]
-    [JsonInheritanceAttribute("Nationaliteit", typeof(Nationaliteit))]
+    [JsonInheritanceAttribute("Nationaliteit", typeof(NationaliteitBekend))]
     [JsonInheritanceAttribute("BehandeldAlsNederlander", typeof(BehandeldAlsNederlander))]
     [JsonInheritanceAttribute("VastgesteldNietNederlander", typeof(VastgesteldNietNederlander))]
     [JsonInheritanceAttribute("Staatloos", typeof(Staatloos))]
@@ -861,16 +861,16 @@ namespace HaalCentraal.BrpProxy.Generated
     /// <br/>
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class Nationaliteit : AbstractNationaliteit
+    public partial class NationaliteitBekend : AbstractNationaliteit
     {
         [Newtonsoft.Json.JsonProperty("datumIngangGeldigheid", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public AbstractDatum DatumIngangGeldigheid { get; set; }
 
         [Newtonsoft.Json.JsonProperty("nationaliteit", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Waardetabel Nationaliteit1 { get; set; }
+        public Waardetabel Nationaliteit { get; set; }
 
         [Newtonsoft.Json.JsonProperty("inOnderzoek", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public NationaliteitInOnderzoek InOnderzoek { get; set; }
+        public NationaliteitBekendInOnderzoek InOnderzoek { get; set; }
 
     }
 
@@ -879,7 +879,7 @@ namespace HaalCentraal.BrpProxy.Generated
     /// <br/>
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class NationaliteitInOnderzoek : InOnderzoek
+    public partial class NationaliteitBekendInOnderzoek : InOnderzoek
     {
         [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? Type { get; set; }

@@ -11,13 +11,13 @@ public class NationaliteitProfile : Profile
     {
         CreateMap<GbaNationaliteit, AbstractNationaliteit?>().ConvertUsing<NationaliteitConverter>();
 
-        CreateMap<GbaNationaliteit, Nationaliteit>()
-            .ForMember(dest => dest.Nationaliteit1, opt => opt.MapFrom(src => src.Nationaliteit))
+        CreateMap<GbaNationaliteit, NationaliteitBekend>()
+            .ForMember(dest => dest.Nationaliteit, opt => opt.MapFrom(src => src.Nationaliteit))
             .ForMember(dest => dest.DatumIngangGeldigheid, opt => opt.MapFrom(src => src.DatumIngangGeldigheid.Map()))
             .ForMember(dest => dest.RedenOpname, opt => opt.PreCondition(src => src.RedenOpname?.Code != "000"))
             ;
 
-        CreateMap<GbaInOnderzoek, NationaliteitInOnderzoek?>().ConvertUsing<NationaliteitInOnderzoekConverter>();
+        CreateMap<GbaInOnderzoek, NationaliteitBekendInOnderzoek?>().ConvertUsing<NationaliteitInOnderzoekConverter>();
 
         CreateMap<GbaNationaliteit, BehandeldAlsNederlander>()
             .ForMember(dest => dest.DatumIngangGeldigheid, opt => opt.MapFrom(src => src.DatumIngangGeldigheid.Map()))

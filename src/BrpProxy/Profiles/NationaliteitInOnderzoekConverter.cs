@@ -5,27 +5,27 @@ using HaalCentraal.BrpProxy.Generated.Gba;
 
 namespace BrpProxy.Profiles;
 
-public class NationaliteitInOnderzoekConverter : ITypeConverter<GbaInOnderzoek, NationaliteitInOnderzoek?>
+public class NationaliteitInOnderzoekConverter : ITypeConverter<GbaInOnderzoek, NationaliteitBekendInOnderzoek?>
 {
-    public NationaliteitInOnderzoek? Convert(GbaInOnderzoek source, NationaliteitInOnderzoek? destination, ResolutionContext context)
+    public NationaliteitBekendInOnderzoek? Convert(GbaInOnderzoek source, NationaliteitBekendInOnderzoek? destination, ResolutionContext context)
     {
         return source?.AanduidingGegevensInOnderzoek switch
         {
-            "040000" => new NationaliteitInOnderzoek
+            "040000" => new NationaliteitBekendInOnderzoek
             {
                 Nationaliteit = true,
                 RedenOpname = true,
                 Type = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
             },
-            "040500" or "040510" => new NationaliteitInOnderzoek
+            "040500" or "040510" => new NationaliteitBekendInOnderzoek
             {
                 Nationaliteit = true,
                 Type = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
 
             },
-            "046300" or "046310" => new NationaliteitInOnderzoek
+            "046300" or "046310" => new NationaliteitBekendInOnderzoek
             {
                 RedenOpname = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()

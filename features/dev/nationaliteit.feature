@@ -14,7 +14,7 @@ Functionaliteit: Nationaliteit
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
-    | fields              | nationaliteiten                 |
+    | fields              | nationaliteiten.nationaliteit   |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
     | naam               | waarde        |
     | type               | Nationaliteit |
@@ -34,7 +34,7 @@ Functionaliteit: Nationaliteit
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
-    | fields              | nationaliteiten                 |
+    | fields              | nationaliteiten.nationaliteit   |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
     | naam               | waarde        |
     | type               | Nationaliteit |
@@ -56,11 +56,10 @@ Functionaliteit: Nationaliteit
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
-    | fields              | nationaliteiten                 |
+    | fields              | nationaliteiten.<naam>          |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
     | naam               | waarde        |
     | type               | Nationaliteit |
-    | nationaliteit.code | 0001          |
     | <naam>             | <waarde>      |
 
     Voorbeelden:
@@ -80,11 +79,10 @@ Functionaliteit: Nationaliteit
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
-    | fields              | nationaliteiten                 |
+    | fields              | nationaliteiten.<naam>          |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
     | naam               | waarde        |
     | type               | Nationaliteit |
-    | nationaliteit.code | 0001          |
 
     Voorbeelden:
     | gba naam             | naam             | waarde |
@@ -102,11 +100,10 @@ Functionaliteit: Nationaliteit
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
-    | fields              | nationaliteiten                 |
+    | fields              | nationaliteiten.<naam>          |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
     | naam               | waarde         |
     | type               | Nationaliteit  |
-    | nationaliteit.code | 0001           |
     | <naam>.type        | <type>         |
     | <naam>.datum       | <waarde>       |
     | <naam>.langFormaat | <lang formaat> |
