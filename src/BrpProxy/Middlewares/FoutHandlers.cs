@@ -187,7 +187,12 @@ namespace BrpProxy.Middlewares
 
         public static async Task<bool> AcceptIsAllowed(this HttpContext context, Stream orgResponseBodyStream, ILogger logger)
         {
-            if (context.Request.Headers.Accept[0].Contains("application/json")) return true;
+            if (context.Request.Headers.Accept.Any() &&
+                (context.Request.Headers.Accept[0].Contains("application/json") ||
+                context.Request.Headers.Accept[0].Contains("*/*")))
+            {
+                return true;
+            }
 
             logger.LogWarning("Not supported Accept values: {@acceptHeader}", context.Request.Headers.Accept);
 
