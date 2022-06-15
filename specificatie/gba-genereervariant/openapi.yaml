@@ -558,7 +558,11 @@ components:
           $ref: '#/components/schemas/GbaGeheimhoudingPersoonsgegevens'
         geslacht:
           $ref: '#/components/schemas/Waardetabel'
-        inOnderzoek:
+        persoonInOnderzoek:
+          $ref: '#/components/schemas/GbaInOnderzoek'
+        gemeenteInOnderzoek:
+          $ref: '#/components/schemas/GbaInOnderzoek'
+        gezagInOnderzoek:
           $ref: '#/components/schemas/GbaInOnderzoek'
         uitsluitingKiesrecht:
           $ref: '#/components/schemas/GbaUitsluitingKiesrecht'
