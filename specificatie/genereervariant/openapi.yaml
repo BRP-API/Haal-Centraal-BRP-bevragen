@@ -654,11 +654,11 @@ components:
       - type: object
         properties:
           datumIngangOnderzoekPersoon:
-            $ref: '#/components/schemas/AbstractDatum'
+            $ref: ./datum.yaml#/components/schemas/AbstractDatum
           datumIngangOnderzoekGemeente:
-            $ref: '#/components/schemas/AbstractDatum'
+            $ref: ./datum.yaml#/components/schemas/AbstractDatum
           datumIngangOnderzoekGezag:
-            $ref: '#/components/schemas/AbstractDatum'
+            $ref: ./datum.yaml#/components/schemas/AbstractDatum
           burgerservicenummer:
             type: boolean
           geslacht:

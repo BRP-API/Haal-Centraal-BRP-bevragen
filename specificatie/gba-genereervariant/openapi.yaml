@@ -560,8 +560,6 @@ components:
           $ref: '#/components/schemas/Waardetabel'
         persoonInOnderzoek:
           $ref: '#/components/schemas/GbaInOnderzoek'
-        gemeenteInOnderzoek:
-          $ref: '#/components/schemas/GbaInOnderzoek'
         gezagInOnderzoek:
           $ref: '#/components/schemas/GbaInOnderzoek'
         uitsluitingKiesrecht:
@@ -1073,8 +1071,6 @@ components:
           $ref: '#/components/schemas/Waardetabel'
         plaats:
           $ref: '#/components/schemas/Waardetabel'
-        inOnderzoek:
-          $ref: '#/components/schemas/GbaInOnderzoek'
       description: |
         Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.
         * **datum** - De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.
