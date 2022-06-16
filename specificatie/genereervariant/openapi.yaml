@@ -10,7 +10,7 @@ info:
   contact:
     url: https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen
   license:
-    name: European Union Public License, version 1.2 (EUPL-1.2)
+    name: "European Union Public License, version 1.2 (EUPL-1.2)"
     url: https://eupl.eu/1.2/nl/
   version: 2.0.0
 servers:
@@ -142,8 +142,8 @@ paths:
                 type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.4
                 title: U bent niet geautoriseerd voor deze operatie.
                 status: 403
-                detail: The server understood the request, but is refusing to fulfill
-                  it.
+                detail: "The server understood the request, but is refusing to fulfill\
+                  \ it."
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: autorisation
         "406":
@@ -485,7 +485,7 @@ components:
           description: Link naar meer informatie over deze fout
           format: uri
         title:
-          pattern: ^[a-zA-Z0-9À-ž \.\-]{1,80}$
+          pattern: "^[a-zA-Z0-9À-ž \\.\\-]{1,80}$"
           type: string
           description: Beschrijving van de fout
         status:
@@ -494,7 +494,7 @@ components:
           type: integer
           description: Http status code
         detail:
-          pattern: ^[a-zA-Z0-9À-ž \.\-\(\)\,]{1,200}$
+          pattern: "^[a-zA-Z0-9À-ž \\.\\-\\(\\)\\,]{1,200}$"
           type: string
           description: Details over de fout
         instance:
@@ -503,30 +503,30 @@ components:
           format: uri
         code:
           minLength: 1
-          pattern: ^[a-zA-Z0-9]{1,25}$
+          pattern: "^[a-zA-Z0-9]{1,25}$"
           type: string
           description: Systeemcode die het type fout aangeeft
-      description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
+      description: "Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807)."
     InvalidParams:
       type: object
       properties:
         type:
           type: string
           format: uri
-          example: https://www.vng.nl/realisatie/api/{major-versie}/validaties/integer
+          example: "https://www.vng.nl/realisatie/api/{major-versie}/validaties/integer"
         name:
-          pattern: ^[a-zA-Z0-9\.,_]{1,30}$
+          pattern: "^[a-zA-Z0-9\\.,_]{1,30}$"
           type: string
           description: Naam van de parameter
           example: verblijfplaats__huisnummer
         code:
           minLength: 1
-          pattern: ^[a-zA-Z0-9\.,_]{1,25}$
+          pattern: "^[a-zA-Z0-9\\.,_]{1,25}$"
           type: string
           description: Systeemcode die het type fout aangeeft
           example: integer
         reason:
-          pattern: ^[a-zA-Z0-9\.,_ ]{1,80}$
+          pattern: "^[a-zA-Z0-9\\.,_ ]{1,80}$"
           type: string
           description: Beschrijving van de fout op de parameterwaarde
           example: Waarde is geen geldige integer.
@@ -557,7 +557,7 @@ components:
       description: |
         * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
     Burgerservicenummer:
-      pattern: ^[0-9]{9}$
+      pattern: "^[0-9]{9}$"
       type: string
       example: "555555021"
     GeheimhoudingPersoonsgegevens:
@@ -639,7 +639,7 @@ components:
       description: |
         * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
     ANummer:
-      pattern: ^[0-9]{10}$
+      pattern: "^[0-9]{10}$"
       type: string
       description: |
         Het A-nummer van de persoon
@@ -684,13 +684,13 @@ components:
         Geeft aan dat de persoon onder curatele is gesteld.
       example: true
     Reisdocumentnummer:
-      pattern: ^[0-9a-zA-Z]{9}$
+      pattern: "^[0-9a-zA-Z]{9}$"
       type: string
       description: |
         Het nummer van het verstrekte Nederlandse reisdocument.
       example: "546376728"
     Field:
-      pattern: ^[a-zA-Z0-9\._]{1,200}$
+      pattern: "^[a-zA-Z0-9\\._]{1,200}$"
       type: string
       description: "Hiermee kun je het pad van het gewenste veld van een resource\
         \ opgeven \n([zie functionele specificaties 'fields' properties](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields.feature)).\
@@ -701,43 +701,45 @@ components:
         \ naar het betreffende veld.\nBij opgave van een pad dat verwijst naar een\
         \ niet-bestaand veld wordt een 400 Bad Request teruggegeven.\n"
     GemeenteVanInschrijving:
-      pattern: ^[0-9]{4}$
+      pattern: "^[0-9]{4}$"
       type: string
       description: |
         Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.
       example: "0518"
     GeslachtsnaamFilter:
-      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,200}$|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$
+      pattern: "^[a-zA-Z0-9À-ž \\.\\-\\']{1,200}$|^[a-zA-Z0-9À-ž \\.\\-\\']{3,199}\\\
+        *{1}$"
       type: string
       description: |
         De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 3 letters.** **Zoeken met tekstvelden is case-insensitive.**
       example: Vries
     GeslachtFilter:
-      pattern: ^([Mm]|[Vv]|[Oo])$
+      pattern: "^([Mm]|[Vv]|[Oo])$"
       type: string
       description: |
         Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.
       example: V
     VoorvoegselFilter:
-      pattern: ^[a-zA-Z \']{1,10}$
+      pattern: "^[a-zA-Z \\']{1,10}$"
       type: string
       description: |
         Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. **Zoeken met tekstvelden is case-insensitive.**
       example: de
     VoornamenOptioneelFilter:
-      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,199}\*{0,1}$
+      pattern: "^[a-zA-Z0-9À-ž \\.\\-\\']{1,199}\\*{0,1}$"
       type: string
       description: |
         De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. **Gebruik van de wildcard is toegestaan.** **Zoeken met tekstvelden is case-insensitive.**
       example: Dirk
     VoornamenVerplichtFilter:
-      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,200}$|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$
+      pattern: "^[a-zA-Z0-9À-ž \\.\\-\\']{1,200}$|^[a-zA-Z0-9À-ž \\.\\-\\']{3,199}\\\
+        *{1}$"
       type: string
       description: |
         De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 3 letters.** **Zoeken met tekstvelden is case-insensitive.**
       example: Dirk
     Huisletter:
-      pattern: ^[a-zA-Z]{1}$
+      pattern: "^[a-zA-Z]{1}$"
       type: string
       description: |
         Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.
@@ -750,26 +752,26 @@ components:
         Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.
       example: 14
     Huisnummertoevoeging:
-      pattern: ^[a-zA-Z0-9 \-]{1,4}$
+      pattern: "^[a-zA-Z0-9 \\-]{1,4}$"
       type: string
       description: |
         Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.
       example: bis
     Postcode:
-      pattern: ^[1-9]{1}[0-9]{3}[ ]?[A-Za-z]{2}$
+      pattern: "^[1-9]{1}[0-9]{3}[ ]?[A-Za-z]{2}$"
       type: string
       description: |
         De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.
       example: 2341SX
     StraatFilter:
-      pattern: ^[a-zA-Z0-9À-ž \-\'\.]{1,80}$|^[a-zA-Z0-9À-ž \-\'\.]{7,79}\*{1}$|^\*{1}[a-zA-Z0-9À-ž
-        \-\'\.]{7,79}$
+      pattern: "^[a-zA-Z0-9À-ž \\-\\'\\.]{1,80}$|^[a-zA-Z0-9À-ž \\-\\'\\.]{7,79}\\\
+        *{1}$|^\\*{1}[a-zA-Z0-9À-ž \\-\\'\\.]{7,79}$"
       type: string
       description: |
         Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 7 letters.** **Zoeken met tekstvelden is case-insensitive.**
       example: Tulpstraat
     NummeraanduidingIdentificatie:
-      pattern: ^[0-9]{16}$
+      pattern: "^[0-9]{16}$"
       type: string
       description: |
         Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
@@ -783,11 +785,11 @@ components:
       type: object
       properties:
         code:
-          pattern: ^[a-zA-Z0-9 \.]+$
+          pattern: "^[a-zA-Z0-9 \\.]+$"
           type: string
           example: "6030"
         omschrijving:
-          pattern: ^[a-zA-Z0-9À-ž \'\,\(\)\.\-]{1,200}$
+          pattern: "^[a-zA-Z0-9À-ž \\'\\,\\(\\)\\.\\-]{1,200}$"
           type: string
           example: Nederland
     NaamBasis:
@@ -807,7 +809,7 @@ components:
           $ref: ./naam.yaml#/components/schemas/VolledigeNaam
     Voornamen:
       maxLength: 200
-      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,200}$
+      pattern: "^[a-zA-Z0-9À-ž \\.\\-\\']{1,200}$"
       type: string
       description: |
         De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
@@ -833,23 +835,23 @@ components:
       - predicaat
     Voorvoegsel:
       maxLength: 10
-      pattern: ^[a-zA-Z \']{1,10}$
+      pattern: "^[a-zA-Z \\']{1,10}$"
       type: string
       example: de
     Geslachtsnaam:
-      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,200}$
+      pattern: "^[a-zA-Z0-9À-ž \\.\\-\\']{1,200}$"
       type: string
       description: |
         De achternaam van een persoon.
       example: Vries
     Voorletters:
-      pattern: ^[a-zA-Z0-9À-ž \.]{1,40}$
+      pattern: "^[a-zA-Z0-9À-ž \\.]{1,40}$"
       type: string
       description: |
         De voorletters van de persoon, afgeleid van de voornamen.
       example: P.J.
     VolledigeNaam:
-      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,450}$
+      pattern: "^[a-zA-Z0-9À-ž \\.\\-\\']{1,450}$"
       type: string
       description: |
         Combinatie van predicaat, voornamen, adellijke titel, voorvoegsels en geslachtsnaam, zonder toevoeging van een eventuele partnernaam.
@@ -926,6 +928,7 @@ components:
           $ref: ./adressering.yaml#/components/schemas/Adresregel3
         land:
           $ref: ./common.yaml#/components/schemas/Waardetabel
+      description: ""
     Adresregel1:
       maxLength: 40
       type: string
@@ -952,7 +955,7 @@ components:
         type:
           type: string
         langFormaat:
-          pattern: ^[a-z0-9 ]{1,17}$
+          pattern: "^[a-z0-9 ]{1,17}$"
           type: string
       discriminator:
         propertyName: type
@@ -1327,7 +1330,7 @@ components:
       type: string
       description: |
         Het tweede deel van een buitenlands adres. Vaak is dit een combinatie van woonplaats eventueel in combinatie met de postcode.
-      example: Washington, DC 20500
+      example: "Washington, DC 20500"
     Regel3:
       maxLength: 35
       type: string
@@ -1410,7 +1413,7 @@ components:
       example: Tulpstraat
     Woonplaats:
       title: woonplaats naam
-      pattern: ^[a-zA-Z0-9À-ž \(\)\,\.\-\']{1,80}$
+      pattern: "^[a-zA-Z0-9À-ž \\(\\)\\,\\.\\-\\']{1,80}$"
       type: string
       description: |
         Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.
@@ -1442,7 +1445,7 @@ components:
           woonplaats:
             type: boolean
     AdresseerbaarObjectIdentificatie:
-      pattern: ^[0-9]{16}$
+      pattern: "^[0-9]{16}$"
       type: string
       description: |
         De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.
@@ -1594,7 +1597,7 @@ components:
           inOnderzoek:
             $ref: '#/components/schemas/AdresseringInOnderzoek'
     Aanhef:
-      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,650}$
+      pattern: "^[a-zA-Z0-9À-ž \\.\\-\\']{1,650}$"
       type: string
       description: |
         Kun je gebruiken als aanhef in een brief gericht aan persoon.
@@ -1603,11 +1606,11 @@ components:
       type: object
       properties:
         naam:
-          pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,650}$
+          pattern: "^[a-zA-Z0-9À-ž \\.\\-\\']{1,650}$"
           type: string
           example: H.W. baron van den Aedel
         aanspreekvorm:
-          pattern: ^[a-zA-Z ]{1,25}$
+          pattern: "^[a-zA-Z ]{1,25}$"
           type: string
           description: |
             Deze regel moet als aparte regel boven de samengestelde naam worden geplaatst. Komt alleen voor bij personen met een adellijke titel of predicaat.
@@ -1615,7 +1618,7 @@ components:
       description: |
         Samengestelde naam en aanspreekvorm die je kunt gebruiken in de communicatie met de persoon.
     GebruikInLopendeTekst:
-      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,650}$
+      pattern: "^[a-zA-Z0-9À-ž \\.\\-\\']{1,650}$"
       type: string
       description: |
         Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert.
@@ -1670,10 +1673,163 @@ components:
             type: boolean
           datumIngang:
             type: boolean
+  responses:
+    "400":
+      description: Bad Request
+      headers:
+        api-version:
+          $ref: '#/components/headers/api_version'
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/BadRequestFoutbericht'
+          example:
+            type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1
+            title: Ten minste één parameter moet worden opgegeven.
+            status: 400
+            detail: The request could not be understood by the server due to malformed
+              syntax. The client SHOULD NOT repeat the request without modification.
+            instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+            code: paramsRequired
+            invalidParams:
+            - type: https://www.vng.nl/realisatie/api/validaties/integer
+              name: verblijfplaats__huisnummer
+              code: integer
+              reason: Waarde is geen geldige integer.
+    "401":
+      description: Unauthorized
+      headers:
+        api-version:
+          $ref: '#/components/headers/api_version'
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Foutbericht'
+          example:
+            type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2
+            title: Niet correct geauthenticeerd.
+            status: 401
+            detail: The request requires user authentication. The response MUST include
+              a WWW-Authenticate header field (section 14.47) containing a challenge
+              applicable to the requested resource.
+            instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+            code: authentication
+    "403":
+      description: Forbidden
+      headers:
+        api-version:
+          $ref: '#/components/headers/api_version'
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Foutbericht'
+          example:
+            type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.4
+            title: U bent niet geautoriseerd voor deze operatie.
+            status: 403
+            detail: "The server understood the request, but is refusing to fulfill\
+              \ it."
+            instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+            code: autorisation
+    "406":
+      description: Not Acceptable
+      headers:
+        api-version:
+          $ref: '#/components/headers/api_version'
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Foutbericht'
+          example:
+            type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7
+            title: Gevraagde contenttype wordt niet ondersteund.
+            status: 406
+            detail: The resource identified by the request is only capable of generating
+              response entities which have content characteristics not acceptable
+              according to thr accept headers sent in the request
+            instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+            code: notAcceptable
+    "429":
+      description: Too Many Requests
+      headers:
+        api-version:
+          $ref: '#/components/headers/api_version'
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Foutbericht'
+          example:
+            type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+            title: Too many request
+            status: 429
+            detail: The user has sent too many requests in a given amount of time
+              (rate limiting).
+            instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+            code: tooManyRequests
+    "500":
+      description: Internal Server Error
+      headers:
+        api-version:
+          $ref: '#/components/headers/api_version'
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Foutbericht'
+          example:
+            type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1
+            title: Interne server fout.
+            status: 500
+            detail: The server encountered an unexpected condition which prevented
+              it from fulfilling the request.
+            instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+            code: serverError
+    "501":
+      description: Not Implemented
+      headers:
+        api-version:
+          $ref: '#/components/headers/api_version'
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Foutbericht'
+          example:
+            type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.2
+            title: Not Implemented
+            status: 501
+            detail: The server does not support the functionality required to fulfill
+              the request.
+            instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+            code: notImplemented
+    "503":
+      description: Service Unavailable
+      headers:
+        api-version:
+          $ref: '#/components/headers/api_version'
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Foutbericht'
+          example:
+            type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4
+            title: Bronservice BRP is tijdelijk niet beschikbaar.
+            status: 503
+            detail: The service is currently unable to handle the request due to a
+              temporary overloading or maintenance of the server.
+            instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+            code: notAvailable
+    default:
+      description: Er is een onverwachte fout opgetreden
+      headers:
+        api-version:
+          $ref: '#/components/headers/api_version'
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Foutbericht'
   headers:
     api_version:
       schema:
-        pattern: ^[1-9][0-9]{0,2}.[0-9]{1,3}.[0-9]{1,3}$
+        pattern: "^[1-9][0-9]{0,2}.[0-9]{1,3}.[0-9]{1,3}$"
         type: string
         description: Geeft een specifieke API-versie aan in de context van een specifieke
           aanroep.
@@ -1682,13 +1838,13 @@ components:
       schema:
         maxLength: 500
         type: string
-        description: zie RFC 7234. In het geval een major versie wordt uitgefaseerd,
-          gebruiken we warn-code 299 ("Miscellaneous Persistent Warning") en het API
-          end-point (inclusief versienummer) als de warn-agent van de warning, gevolgd
-          door de warn-text met de human-readable waarschuwing
-        example: '299 https://service.../api/.../v1 "Deze versie van de API is verouderd
-          en zal uit dienst worden genomen op 2018-02-01. Raadpleeg voor meer informatie
-          hier de documentatie: https://omgevingswet.../api/.../v1".'
+        description: "zie RFC 7234. In het geval een major versie wordt uitgefaseerd,\
+          \ gebruiken we warn-code 299 (\"Miscellaneous Persistent Warning\") en het\
+          \ API end-point (inclusief versienummer) als de warn-agent van de warning,\
+          \ gevolgd door de warn-text met de human-readable waarschuwing"
+        example: "299 https://service.../api/.../v1 \"Deze versie van de API is verouderd\
+          \ en zal uit dienst worden genomen op 2018-02-01. Raadpleeg voor meer informatie\
+          \ hier de documentatie: https://omgevingswet.../api/.../v1\"."
     X_Rate_Limit_Limit:
       schema:
         type: integer
