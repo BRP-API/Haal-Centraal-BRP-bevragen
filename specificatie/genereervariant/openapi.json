@@ -785,19 +785,19 @@
           "kinderen" : {
             "type" : "array",
             "items" : {
-              "$ref" : "#/components/schemas/AbstractKind"
+              "$ref" : "./kind.yaml#/components/schemas/AbstractKind"
             }
           },
           "ouders" : {
             "type" : "array",
             "items" : {
-              "$ref" : "#/components/schemas/AbstractOuder"
+              "$ref" : "./ouder.yaml#/components/schemas/AbstractOuder"
             }
           },
           "partners" : {
             "type" : "array",
             "items" : {
-              "$ref" : "#/components/schemas/AbstractPartner"
+              "$ref" : "./partner.yaml#/components/schemas/AbstractPartner"
             }
           }
         },
@@ -852,7 +852,7 @@
         "type" : "object",
         "properties" : {
           "datumIngangOnderzoek" : {
-            "$ref" : "#/components/schemas/AbstractDatum"
+            "$ref" : "./datum.yaml#/components/schemas/AbstractDatum"
           }
         }
       },
@@ -949,7 +949,7 @@
         "type" : "object",
         "properties" : {
           "datum" : {
-            "$ref" : "#/components/schemas/AbstractDatum"
+            "$ref" : "./datum.yaml#/components/schemas/AbstractDatum"
           }
         }
       },
@@ -972,22 +972,22 @@
         "type" : "object",
         "properties" : {
           "voornamen" : {
-            "$ref" : "#/components/schemas/Voornamen"
+            "$ref" : "./naam.yaml#/components/schemas/Voornamen"
           },
           "adellijkeTitelPredicaat" : {
-            "$ref" : "#/components/schemas/AdellijkeTitelPredicaatType"
+            "$ref" : "./naam.yaml#/components/schemas/AdellijkeTitelPredicaatType"
           },
           "voorvoegsel" : {
-            "$ref" : "#/components/schemas/Voorvoegsel"
+            "$ref" : "./naam.yaml#/components/schemas/Voorvoegsel"
           },
           "geslachtsnaam" : {
-            "$ref" : "#/components/schemas/Geslachtsnaam"
+            "$ref" : "./naam.yaml#/components/schemas/Geslachtsnaam"
           },
           "voorletters" : {
-            "$ref" : "#/components/schemas/Voorletters"
+            "$ref" : "./naam.yaml#/components/schemas/Voorletters"
           },
           "volledigeNaam" : {
-            "$ref" : "#/components/schemas/VolledigeNaam"
+            "$ref" : "./naam.yaml#/components/schemas/VolledigeNaam"
           }
         }
       },
@@ -1000,7 +1000,7 @@
       "AdellijkeTitelPredicaatType" : {
         "description" : "wordt gevuld op basis van de waarden die voorkomen in de tabel 'Adellijke_Titel_Predicaat' uit de Haal-Centraal-BRP-tabellen-bevragen API. \nDe property **soort** geeft aan of het een 'predicaat' of een 'titel' betreft. \n",
         "allOf" : [ {
-          "$ref" : "#/components/schemas/Waardetabel"
+          "$ref" : "./common.yaml#/components/schemas/Waardetabel"
         }, {
           "properties" : {
             "soort" : {
@@ -1048,7 +1048,7 @@
         "type" : "object",
         "properties" : {
           "reden" : {
-            "$ref" : "#/components/schemas/Waardetabel"
+            "$ref" : "./common.yaml#/components/schemas/Waardetabel"
           }
         },
         "description" : "* **reden** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'redenopschortingbijhouding' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
@@ -1057,7 +1057,7 @@
         "type" : "object",
         "properties" : {
           "indicatieOverleden" : {
-            "$ref" : "#/components/schemas/IndicatieOverleden"
+            "$ref" : "./overlijden.yaml#/components/schemas/IndicatieOverleden"
           }
         }
       },
@@ -1098,7 +1098,7 @@
           "type" : "object",
           "properties" : {
             "functieAdres" : {
-              "$ref" : "#/components/schemas/Waardetabel"
+              "$ref" : "./common.yaml#/components/schemas/Waardetabel"
             }
           },
           "description" : "* **functieAdres** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'Functie_Adres' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
@@ -1111,7 +1111,7 @@
           "type" : "object",
           "properties" : {
             "functieAdres" : {
-              "$ref" : "#/components/schemas/Waardetabel"
+              "$ref" : "./common.yaml#/components/schemas/Waardetabel"
             }
           }
         } ]
@@ -1123,7 +1123,7 @@
           "type" : "object",
           "properties" : {
             "functieAdres" : {
-              "$ref" : "#/components/schemas/Waardetabel"
+              "$ref" : "./common.yaml#/components/schemas/Waardetabel"
             }
           },
           "description" : "* **functieAdres** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Functie_Adres' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
@@ -1133,16 +1133,16 @@
         "type" : "object",
         "properties" : {
           "adresregel1" : {
-            "$ref" : "#/components/schemas/Adresregel1"
+            "$ref" : "./adressering.yaml#/components/schemas/Adresregel1"
           },
           "adresregel2" : {
-            "$ref" : "#/components/schemas/Adresregel2"
+            "$ref" : "./adressering.yaml#/components/schemas/Adresregel2"
           },
           "adresregel3" : {
-            "$ref" : "#/components/schemas/Adresregel3"
+            "$ref" : "./adressering.yaml#/components/schemas/Adresregel3"
           },
           "land" : {
-            "$ref" : "#/components/schemas/Waardetabel"
+            "$ref" : "./common.yaml#/components/schemas/Waardetabel"
           }
         }
       },
@@ -1296,7 +1296,7 @@
             "example" : true
           },
           "einddatum" : {
-            "$ref" : "#/components/schemas/AbstractDatum"
+            "$ref" : "./datum.yaml#/components/schemas/AbstractDatum"
           }
         }
       },
@@ -1304,10 +1304,10 @@
         "type" : "object",
         "properties" : {
           "aanduiding" : {
-            "$ref" : "#/components/schemas/Waardetabel"
+            "$ref" : "./common.yaml#/components/schemas/Waardetabel"
           },
           "einddatumUitsluiting" : {
-            "$ref" : "#/components/schemas/AbstractDatum"
+            "$ref" : "./datum.yaml#/components/schemas/AbstractDatum"
           }
         },
         "description" : "* **aanduiding** - Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Europees_Kiesrecht' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
@@ -1319,7 +1319,7 @@
         }, {
           "properties" : {
             "aanduidingNaamgebruik" : {
-              "$ref" : "#/components/schemas/Waardetabel"
+              "$ref" : "./common.yaml#/components/schemas/Waardetabel"
             },
             "inOnderzoek" : {
               "$ref" : "#/components/schemas/NaamPersoonInOnderzoek"
@@ -1345,7 +1345,7 @@
       "NaamInOnderzoek" : {
         "description" : "Geeft aan welke gegevens over de naam in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
         "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
+          "$ref" : "./persoon.yaml#/components/schemas/InOnderzoek"
         }, {
           "type" : "object",
           "properties" : {
@@ -1375,7 +1375,7 @@
             "type" : "string"
           },
           "redenOpname" : {
-            "$ref" : "#/components/schemas/Waardetabel"
+            "$ref" : "./common.yaml#/components/schemas/Waardetabel"
           }
         },
         "description" : "* **redenOpname** - De reden op grond waarvan de persoon de nationaliteit gekregen heeft. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Reden_Nationaliteit' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n",
@@ -1398,10 +1398,10 @@
           "type" : "object",
           "properties" : {
             "datumIngangGeldigheid" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
+              "$ref" : "./datum.yaml#/components/schemas/AbstractDatum"
             },
             "nationaliteit" : {
-              "$ref" : "#/components/schemas/Waardetabel"
+              "$ref" : "./common.yaml#/components/schemas/Waardetabel"
             },
             "inOnderzoek" : {
               "$ref" : "#/components/schemas/NationaliteitBekendInOnderzoek"
@@ -1412,7 +1412,7 @@
       "NationaliteitBekendInOnderzoek" : {
         "description" : "Geeft aan welke gegevens over de nationaliteit in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
         "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
+          "$ref" : "./persoon.yaml#/components/schemas/InOnderzoek"
         }, {
           "type" : "object",
           "properties" : {
@@ -1435,7 +1435,7 @@
           "type" : "object",
           "properties" : {
             "datumIngangGeldigheid" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
+              "$ref" : "./datum.yaml#/components/schemas/AbstractDatum"
             },
             "inOnderzoek" : {
               "$ref" : "#/components/schemas/BijzonderNederlanderschapInOnderzoek"
@@ -1445,7 +1445,7 @@
       },
       "BijzonderNederlanderschapInOnderzoek" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
+          "$ref" : "./persoon.yaml#/components/schemas/InOnderzoek"
         }, {
           "type" : "object",
           "properties" : {
@@ -1465,7 +1465,7 @@
           "type" : "object",
           "properties" : {
             "datumIngangGeldigheid" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
+              "$ref" : "./datum.yaml#/components/schemas/AbstractDatum"
             },
             "inOnderzoek" : {
               "$ref" : "#/components/schemas/BijzonderNederlanderschapInOnderzoek"
@@ -1481,7 +1481,7 @@
           "type" : "object",
           "properties" : {
             "datumIngangGeldigheid" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
+              "$ref" : "./datum.yaml#/components/schemas/AbstractDatum"
             },
             "inOnderzoek" : {
               "$ref" : "#/components/schemas/StaatloosInOnderzoek"
@@ -1491,7 +1491,7 @@
       },
       "StaatloosInOnderzoek" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
+          "$ref" : "./persoon.yaml#/components/schemas/InOnderzoek"
         }, {
           "type" : "object",
           "properties" : {
@@ -1511,7 +1511,7 @@
           "type" : "object",
           "properties" : {
             "datumIngangGeldigheid" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
+              "$ref" : "./datum.yaml#/components/schemas/AbstractDatum"
             },
             "inOnderzoek" : {
               "$ref" : "#/components/schemas/NationaliteitOnbekendInOnderzoek"
@@ -1521,7 +1521,7 @@
       },
       "NationaliteitOnbekendInOnderzoek" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
+          "$ref" : "./persoon.yaml#/components/schemas/InOnderzoek"
         }, {
           "type" : "object",
           "properties" : {
@@ -1542,10 +1542,10 @@
           "type" : "object",
           "properties" : {
             "land" : {
-              "$ref" : "#/components/schemas/Waardetabel"
+              "$ref" : "./common.yaml#/components/schemas/Waardetabel"
             },
             "plaats" : {
-              "$ref" : "#/components/schemas/Waardetabel"
+              "$ref" : "./common.yaml#/components/schemas/Waardetabel"
             },
             "inOnderzoek" : {
               "$ref" : "#/components/schemas/GeboorteInOnderzoek"
@@ -1555,7 +1555,7 @@
       },
       "GeboorteInOnderzoek" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
+          "$ref" : "./persoon.yaml#/components/schemas/InOnderzoek"
         }, {
           "type" : "object",
           "properties" : {
@@ -1578,7 +1578,7 @@
           "type" : "object",
           "properties" : {
             "datum" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
+              "$ref" : "./datum.yaml#/components/schemas/AbstractDatum"
             }
           },
           "description" : "* **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.\n"
@@ -1592,13 +1592,13 @@
           "type" : "object",
           "properties" : {
             "datum" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
+              "$ref" : "./datum.yaml#/components/schemas/AbstractDatum"
             },
             "land" : {
-              "$ref" : "#/components/schemas/Waardetabel"
+              "$ref" : "./common.yaml#/components/schemas/Waardetabel"
             },
             "plaats" : {
-              "$ref" : "#/components/schemas/Waardetabel"
+              "$ref" : "./common.yaml#/components/schemas/Waardetabel"
             },
             "inOnderzoek" : {
               "$ref" : "#/components/schemas/OverlijdenInOnderzoek"
@@ -1609,7 +1609,7 @@
       "OverlijdenInOnderzoek" : {
         "description" : "Geeft aan welke gegevens over het overlijden van de persoon in onderzoek zijn.\nZie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
         "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
+          "$ref" : "./persoon.yaml#/components/schemas/InOnderzoek"
         }, {
           "type" : "object",
           "properties" : {
@@ -1658,10 +1658,10 @@
               "$ref" : "#/components/schemas/VerblijfadresBuitenland"
             },
             "datumVan" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
+              "$ref" : "./datum.yaml#/components/schemas/AbstractDatum"
             },
             "datumIngangGeldigheid" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
+              "$ref" : "./datum.yaml#/components/schemas/AbstractDatum"
             },
             "inOnderzoek" : {
               "$ref" : "#/components/schemas/VerblijfplaatsBuitenlandInOnderzoek"
@@ -1673,19 +1673,19 @@
         "type" : "object",
         "properties" : {
           "regel1" : {
-            "$ref" : "#/components/schemas/Regel1"
+            "$ref" : "./verblijfplaats.yaml#/components/schemas/Regel1"
           },
           "regel2" : {
-            "$ref" : "#/components/schemas/Regel2"
+            "$ref" : "./verblijfplaats.yaml#/components/schemas/Regel2"
           },
           "regel3" : {
-            "$ref" : "#/components/schemas/Regel3"
+            "$ref" : "./verblijfplaats.yaml#/components/schemas/Regel3"
           },
           "land" : {
-            "$ref" : "#/components/schemas/Waardetabel"
+            "$ref" : "./common.yaml#/components/schemas/Waardetabel"
           },
           "inOnderzoek" : {
-            "$ref" : "#/components/schemas/VerblijfadresBuitenlandInOnderzoek"
+            "$ref" : "./verblijfplaats.yaml#/components/schemas/VerblijfadresBuitenlandInOnderzoek"
           }
         }
       },
@@ -1709,7 +1709,7 @@
       },
       "VerblijfadresBuitenlandInOnderzoek" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
+          "$ref" : "./persoon.yaml#/components/schemas/InOnderzoek"
         }, {
           "type" : "object",
           "properties" : {
@@ -1730,7 +1730,7 @@
       },
       "VerblijfplaatsBuitenlandInOnderzoek" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
+          "$ref" : "./persoon.yaml#/components/schemas/InOnderzoek"
         }, {
           "type" : "object",
           "properties" : {
@@ -1757,7 +1757,7 @@
               "$ref" : "#/components/schemas/VerblijfadresBinnenland"
             },
             "functieAdres" : {
-              "$ref" : "#/components/schemas/Waardetabel"
+              "$ref" : "./common.yaml#/components/schemas/Waardetabel"
             },
             "adresseerbaarObjectIdentificatie" : {
               "$ref" : "#/components/schemas/AdresseerbaarObjectIdentificatie"
@@ -1766,10 +1766,10 @@
               "$ref" : "#/components/schemas/NummeraanduidingIdentificatie"
             },
             "datumVan" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
+              "$ref" : "./datum.yaml#/components/schemas/AbstractDatum"
             },
             "datumIngangGeldigheid" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
+              "$ref" : "./datum.yaml#/components/schemas/AbstractDatum"
             },
             "inOnderzoek" : {
               "$ref" : "#/components/schemas/AdresInOnderzoek"
@@ -1781,31 +1781,31 @@
         "type" : "object",
         "properties" : {
           "straat" : {
-            "$ref" : "#/components/schemas/Straat"
+            "$ref" : "./verblijfplaats.yaml#/components/schemas/Straat"
           },
           "huisnummer" : {
-            "$ref" : "#/components/schemas/Huisnummer"
+            "$ref" : "./verblijfplaats.yaml#/components/schemas/Huisnummer"
           },
           "huisletter" : {
-            "$ref" : "#/components/schemas/Huisletter"
+            "$ref" : "./verblijfplaats.yaml#/components/schemas/Huisletter"
           },
           "huisnummertoevoeging" : {
-            "$ref" : "#/components/schemas/Huisnummertoevoeging"
+            "$ref" : "./verblijfplaats.yaml#/components/schemas/Huisnummertoevoeging"
           },
           "aanduidingBijHuisnummer" : {
-            "$ref" : "#/components/schemas/Waardetabel"
+            "$ref" : "./common.yaml#/components/schemas/Waardetabel"
           },
           "postcode" : {
-            "$ref" : "#/components/schemas/Postcode"
+            "$ref" : "./verblijfplaats.yaml#/components/schemas/Postcode"
           },
           "woonplaats" : {
-            "$ref" : "#/components/schemas/Woonplaats"
+            "$ref" : "./verblijfplaats.yaml#/components/schemas/Woonplaats"
           },
           "korteNaam" : {
-            "$ref" : "#/components/schemas/KorteNaam"
+            "$ref" : "./verblijfplaats.yaml#/components/schemas/KorteNaam"
           },
           "inOnderzoek" : {
-            "$ref" : "#/components/schemas/VerblijfadresBinnenlandInOnderzoek"
+            "$ref" : "./verblijfplaats.yaml#/components/schemas/VerblijfadresBinnenlandInOnderzoek"
           }
         }
       },
@@ -1828,7 +1828,7 @@
       },
       "VerblijfadresBinnenlandInOnderzoek" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
+          "$ref" : "./persoon.yaml#/components/schemas/InOnderzoek"
         }, {
           "type" : "object",
           "properties" : {
@@ -1867,7 +1867,7 @@
       },
       "AdresInOnderzoek" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
+          "$ref" : "./persoon.yaml#/components/schemas/InOnderzoek"
         }, {
           "type" : "object",
           "properties" : {
@@ -1900,13 +1900,13 @@
           "type" : "object",
           "properties" : {
             "functieAdres" : {
-              "$ref" : "#/components/schemas/Waardetabel"
+              "$ref" : "./common.yaml#/components/schemas/Waardetabel"
             },
             "datumVan" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
+              "$ref" : "./datum.yaml#/components/schemas/AbstractDatum"
             },
             "datumIngangGeldigheid" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
+              "$ref" : "./datum.yaml#/components/schemas/AbstractDatum"
             },
             "inOnderzoek" : {
               "$ref" : "#/components/schemas/VerblijfplaatsOnbekendInOnderzoek"
@@ -1916,7 +1916,7 @@
       },
       "VerblijfplaatsOnbekendInOnderzoek" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
+          "$ref" : "./persoon.yaml#/components/schemas/InOnderzoek"
         }, {
           "type" : "object",
           "properties" : {
@@ -1943,16 +1943,16 @@
           "type" : "object",
           "properties" : {
             "datumVan" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
+              "$ref" : "./datum.yaml#/components/schemas/AbstractDatum"
             },
             "functieAdres" : {
-              "$ref" : "#/components/schemas/Waardetabel"
+              "$ref" : "./common.yaml#/components/schemas/Waardetabel"
             },
             "verblijfadres" : {
               "$ref" : "#/components/schemas/VerblijfadresLocatie"
             },
             "datumIngangGeldigheid" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
+              "$ref" : "./datum.yaml#/components/schemas/AbstractDatum"
             },
             "inOnderzoek" : {
               "$ref" : "#/components/schemas/LocatieInOnderzoek"
@@ -1964,10 +1964,10 @@
         "type" : "object",
         "properties" : {
           "locatiebeschrijving" : {
-            "$ref" : "#/components/schemas/Locatiebeschrijving"
+            "$ref" : "./verblijfplaats.yaml#/components/schemas/Locatiebeschrijving"
           },
           "inOnderzoek" : {
-            "$ref" : "#/components/schemas/VerblijfadresLocatieInOnderzoek"
+            "$ref" : "./verblijfplaats.yaml#/components/schemas/VerblijfadresLocatieInOnderzoek"
           }
         }
       },
@@ -1979,7 +1979,7 @@
       },
       "VerblijfadresLocatieInOnderzoek" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
+          "$ref" : "./persoon.yaml#/components/schemas/InOnderzoek"
         }, {
           "type" : "object",
           "properties" : {
@@ -1991,7 +1991,7 @@
       },
       "LocatieInOnderzoek" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
+          "$ref" : "./persoon.yaml#/components/schemas/InOnderzoek"
         }, {
           "type" : "object",
           "properties" : {
@@ -2014,19 +2014,19 @@
         "type" : "object",
         "properties" : {
           "datumVestigingInNederland" : {
-            "$ref" : "#/components/schemas/AbstractDatum"
+            "$ref" : "./datum.yaml#/components/schemas/AbstractDatum"
           },
           "landVanwaarIngeschreven" : {
-            "$ref" : "#/components/schemas/Waardetabel"
+            "$ref" : "./common.yaml#/components/schemas/Waardetabel"
           },
           "vanuitVerblijfplaatsOnbekend" : {
-            "$ref" : "#/components/schemas/VanuitVerblijfplaatsOnbekend"
+            "$ref" : "./immigratie.yaml#/components/schemas/VanuitVerblijfplaatsOnbekend"
           },
           "indicatieVestigingVanuitBuitenland" : {
-            "$ref" : "#/components/schemas/IndicatieVestigingVanuitBuitenland"
+            "$ref" : "./immigratie.yaml#/components/schemas/IndicatieVestigingVanuitBuitenland"
           },
           "inOnderzoek" : {
-            "$ref" : "#/components/schemas/ImmigratieInOnderzoek"
+            "$ref" : "./immigratie.yaml#/components/schemas/ImmigratieInOnderzoek"
           }
         },
         "description" : "Gegevens over het het immigratie van een persoon.\n  * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland.\n"
@@ -2041,7 +2041,7 @@
       },
       "ImmigratieInOnderzoek" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
+          "$ref" : "./persoon.yaml#/components/schemas/InOnderzoek"
         }, {
           "type" : "object",
           "properties" : {
@@ -2112,7 +2112,7 @@
       "AdresseringInOnderzoek" : {
         "description" : "Geeft aan welke gegevens over de adressering in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
         "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
+          "$ref" : "./persoon.yaml#/components/schemas/InOnderzoek"
         }, {
           "type" : "object",
           "properties" : {
@@ -2144,16 +2144,16 @@
         "type" : "object",
         "properties" : {
           "aanduiding" : {
-            "$ref" : "#/components/schemas/Waardetabel"
+            "$ref" : "./common.yaml#/components/schemas/Waardetabel"
           },
           "datumEinde" : {
-            "$ref" : "#/components/schemas/AbstractDatum"
+            "$ref" : "./datum.yaml#/components/schemas/AbstractDatum"
           },
           "datumIngang" : {
-            "$ref" : "#/components/schemas/AbstractDatum"
+            "$ref" : "./datum.yaml#/components/schemas/AbstractDatum"
           },
           "inOnderzoek" : {
-            "$ref" : "#/components/schemas/VerblijfstitelInOnderzoek"
+            "$ref" : "./verblijfstitel.yaml#/components/schemas/VerblijfstitelInOnderzoek"
           }
         },
         "description" : "Gegevens over de verblijfsrechtelijke status van de persoon.\n* **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd.\n* **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.\n* **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Verblijfstitel' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
@@ -2161,7 +2161,7 @@
       "VerblijfstitelInOnderzoek" : {
         "description" : "Geeft aan welke gegevens over de verblijfstitel in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
         "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
+          "$ref" : "./persoon.yaml#/components/schemas/InOnderzoek"
         }, {
           "type" : "object",
           "properties" : {
@@ -2176,332 +2176,6 @@
             }
           }
         } ]
-      },
-      "AbstractKind" : {
-        "required" : [ "type" ],
-        "type" : "object",
-        "properties" : {
-          "type" : {
-            "type" : "string"
-          }
-        },
-        "description" : "Gegevens over een kind van de persoon.\n",
-        "discriminator" : {
-          "propertyName" : "type",
-          "mapping" : {
-            "Kind" : "#/components/schemas/Kind",
-            "KindOnbekend" : "#/components/schemas/KindOnbekend"
-          }
-        }
-      },
-      "Kind" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractKind"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "burgerservicenummer" : {
-              "$ref" : "#/components/schemas/Burgerservicenummer"
-            },
-            "inOnderzoek" : {
-              "$ref" : "#/components/schemas/KindInOnderzoek"
-            },
-            "naam" : {
-              "$ref" : "#/components/schemas/NaamGerelateerde"
-            },
-            "geboorte" : {
-              "$ref" : "#/components/schemas/Geboorte"
-            }
-          }
-        } ]
-      },
-      "KindInOnderzoek" : {
-        "description" : "Geeft aan of de gegevens over het kind van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "burgerservicenummer" : {
-              "type" : "boolean"
-            }
-          }
-        } ]
-      },
-      "KindOnbekend" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractKind"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "indicatieOnbekend" : {
-              "type" : "boolean",
-              "default" : false
-            }
-          }
-        } ]
-      },
-      "AbstractOuder" : {
-        "required" : [ "type" ],
-        "type" : "object",
-        "properties" : {
-          "type" : {
-            "type" : "string"
-          }
-        },
-        "description" : "Gegevens over de ouder van de persoon.\n",
-        "discriminator" : {
-          "propertyName" : "type",
-          "mapping" : {
-            "Ouder" : "#/components/schemas/Ouder",
-            "OuderOnbekend" : "#/components/schemas/OuderOnbekend"
-          }
-        }
-      },
-      "Ouder" : {
-        "description" : "Gegevens over de ouder van de persoon.\n* **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.\n* **geslacht** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n",
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractOuder"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "burgerservicenummer" : {
-              "$ref" : "#/components/schemas/Burgerservicenummer"
-            },
-            "geslacht" : {
-              "$ref" : "#/components/schemas/Waardetabel"
-            },
-            "ouderAanduiding" : {
-              "$ref" : "#/components/schemas/OuderAanduiding"
-            },
-            "datumIngangFamilierechtelijkeBetrekking" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
-            },
-            "naam" : {
-              "$ref" : "#/components/schemas/NaamGerelateerde"
-            },
-            "inOnderzoek" : {
-              "$ref" : "#/components/schemas/OuderInOnderzoek"
-            },
-            "geboorte" : {
-              "$ref" : "#/components/schemas/Geboorte"
-            }
-          }
-        } ]
-      },
-      "OuderAanduiding" : {
-        "pattern" : "^[1|2]$",
-        "type" : "string",
-        "example" : "1"
-      },
-      "OuderInOnderzoek" : {
-        "description" : "Geeft aan welke gegevens van de de ouder in onderzoek zijn.\nZie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "burgerservicenummer" : {
-              "type" : "boolean"
-            },
-            "datumIngangFamilierechtelijkeBetrekking" : {
-              "type" : "boolean"
-            },
-            "geslacht" : {
-              "type" : "boolean"
-            }
-          }
-        } ]
-      },
-      "OuderOnbekend" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractOuder"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "ouderAanduiding" : {
-              "$ref" : "#/components/schemas/OuderAanduiding"
-            },
-            "indicatieOnbekend" : {
-              "type" : "boolean",
-              "default" : false
-            }
-          }
-        } ]
-      },
-      "AbstractPartner" : {
-        "required" : [ "type" ],
-        "type" : "object",
-        "properties" : {
-          "type" : {
-            "type" : "string"
-          }
-        },
-        "description" : "Gegevens over het actuele of het laatst ontbonden huwelijk/geregistreerd partnerschap van de persoon.\n",
-        "discriminator" : {
-          "propertyName" : "type",
-          "mapping" : {
-            "Partner" : "#/components/schemas/Partner",
-            "PartnerOnbekend" : "#/components/schemas/PartnerOnbekend"
-          }
-        }
-      },
-      "Partner" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractPartner"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "burgerservicenummer" : {
-              "$ref" : "#/components/schemas/Burgerservicenummer"
-            },
-            "geslacht" : {
-              "$ref" : "#/components/schemas/Waardetabel"
-            },
-            "soortVerbintenis" : {
-              "$ref" : "#/components/schemas/Waardetabel"
-            },
-            "naam" : {
-              "$ref" : "#/components/schemas/NaamGerelateerde"
-            },
-            "geboorte" : {
-              "$ref" : "#/components/schemas/Geboorte"
-            },
-            "inOnderzoek" : {
-              "$ref" : "#/components/schemas/PartnerInOnderzoek"
-            },
-            "aangaanHuwelijkPartnerschap" : {
-              "$ref" : "#/components/schemas/AangaanHuwelijkPartnerschap"
-            },
-            "ontbindingHuwelijkPartnerschap" : {
-              "$ref" : "#/components/schemas/OntbindingHuwelijkPartnerschapBasis"
-            }
-          },
-          "description" : "* **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n* **soortVerbintenis** - Wordt gevuld op basis van de waarden die voorkomen in de tabel  \"Soort_Verbintenis\" uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
-        } ]
-      },
-      "PartnerInOnderzoek" : {
-        "description" : "Geeft aan welke gegevens over het huwelijk of het partnerschap in onderzoek zijn.\nZie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "burgerservicenummer" : {
-              "type" : "boolean"
-            },
-            "geslacht" : {
-              "type" : "boolean"
-            },
-            "soortVerbintenis" : {
-              "type" : "boolean"
-            }
-          }
-        } ]
-      },
-      "AangaanHuwelijkPartnerschap" : {
-        "type" : "object",
-        "properties" : {
-          "datum" : {
-            "$ref" : "#/components/schemas/AbstractDatum"
-          },
-          "land" : {
-            "$ref" : "#/components/schemas/Waardetabel"
-          },
-          "plaats" : {
-            "$ref" : "#/components/schemas/Waardetabel"
-          },
-          "inOnderzoek" : {
-            "$ref" : "#/components/schemas/AangaanHuwelijkPartnerschapInOnderzoek"
-          }
-        },
-        "description" : "Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.\n* **datum** - De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.\n* **land** - Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n* **plaats** - De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld op basis van de waarden die voorkomen in de tabel \"Gemeenten\" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.\n"
-      },
-      "AangaanHuwelijkPartnerschapInOnderzoek" : {
-        "description" : "Geeft aan welke gegevens over het voltrekken van het huwelijk of aangaan van het partnerschap in onderzoek zijn.\nZie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "datum" : {
-              "type" : "boolean"
-            },
-            "land" : {
-              "type" : "boolean"
-            },
-            "plaats" : {
-              "type" : "boolean"
-            }
-          }
-        } ]
-      },
-      "OntbindingHuwelijkPartnerschapBasis" : {
-        "type" : "object",
-        "properties" : {
-          "indicatieHuwelijkPartnerschapBeeindigd" : {
-            "type" : "boolean"
-          },
-          "datum" : {
-            "$ref" : "#/components/schemas/AbstractDatum"
-          },
-          "inOnderzoek" : {
-            "$ref" : "#/components/schemas/OntbindingHuwelijkPartnerschapBasisInOnderzoek"
-          }
-        },
-        "description" : "Gegevens over de ontbinding van het huwelijk of het geregistreerd partnerschap.\n* **datum** : De datum waarop het huwelijk of het partnerschap is ontbonden.\n"
-      },
-      "OntbindingHuwelijkPartnerschapBasisInOnderzoek" : {
-        "description" : "Geeft aan welke gegevens over het onbinden van het huwelijk of aangaan van het partnerschap in onderzoek zijn.\nZie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "indicatieHuwelijkPartnerschapBeeindigd" : {
-              "type" : "boolean"
-            },
-            "datum" : {
-              "type" : "boolean"
-            }
-          }
-        } ]
-      },
-      "PartnerOnbekend" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractPartner"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "indicatieOnbekend" : {
-              "type" : "boolean",
-              "default" : false
-            }
-          }
-        } ]
-      },
-      "NaamGerelateerde" : {
-        "type" : "object",
-        "properties" : {
-          "voornamen" : {
-            "$ref" : "#/components/schemas/Voornamen"
-          },
-          "adellijkeTitelPredicaat" : {
-            "$ref" : "#/components/schemas/AdellijkeTitelPredicaatType"
-          },
-          "voorvoegsel" : {
-            "$ref" : "#/components/schemas/Voorvoegsel"
-          },
-          "geslachtsnaam" : {
-            "$ref" : "#/components/schemas/Geslachtsnaam"
-          },
-          "voorletters" : {
-            "$ref" : "#/components/schemas/Voorletters"
-          },
-          "inOnderzoek" : {
-            "$ref" : "#/components/schemas/NaamInOnderzoek"
-          }
-        }
       }
     },
     "headers" : {
