@@ -627,7 +627,7 @@ components:
         kinderen:
           type: array
           items:
-            $ref: ./kind.yaml#/components/schemas/AbstractKind
+            $ref: '#/components/schemas/Kind'
         ouders:
           type: array
           items:
@@ -1672,6 +1672,26 @@ components:
           datumEinde:
             type: boolean
           datumIngang:
+            type: boolean
+    Kind:
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: ./persoon.yaml#/components/schemas/Burgerservicenummer
+        inOnderzoek:
+          $ref: ./kind.yaml#/components/schemas/KindInOnderzoek
+        naam:
+          $ref: ./naam.yaml#/components/schemas/NaamGerelateerde
+        geboorte:
+          $ref: ./geboorte.yaml#/components/schemas/Geboorte
+    KindInOnderzoek:
+      description: |
+        Geeft aan of de gegevens over het kind van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      allOf:
+      - $ref: ./persoon.yaml#/components/schemas/InOnderzoek
+      - type: object
+        properties:
+          burgerservicenummer:
             type: boolean
   responses:
     "400":
