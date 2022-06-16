@@ -17,7 +17,7 @@
     "oas:generate-postman-collection": "openapi2postmanv2 -s ./specificatie/genereervariant/openapi.yaml -o ./test/BRP-Bevragen-postman-collection.json --pretty",
     "oas:lint": "bash scripts/lint-oas.sh",
     "oas:lint-genereervariant": "bash scripts/lint-oas-genereervariant.sh",
-    "preoas:resolve": "mvn-dl io.swagger.codegen.v3:swagger-codegen-cli:3.0.19 -f swagger-codegen-cli.jar",
+    "preoas:resolve": "mvn-dl io.swagger.codegen.v3:swagger-codegen-cli:3.0.34 -f swagger-codegen-cli.jar",
     "oas:resolve": "bash scripts/resolve-oas.sh",
     "postoas:resolve": "rm swagger-codegen-cli.jar",
     "unstage-generated": "git reset HEAD ./specificatie/genereervariant/openapi.* ./test/BRP-bevragen-postman-collection.json ./code/**",
