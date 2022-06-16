@@ -216,11 +216,11 @@ components:
         ouders:
           type: array
           items:
-            $ref: 'ouder.yaml#/components/schemas/AbstractOuder'
+            $ref: 'ouder.yaml#/components/schemas/Ouder'
         partners:
           type: array
           items:
-            $ref: 'partner.yaml#/components/schemas/AbstractPartner'
+            $ref: 'partner.yaml#/components/schemas/Partner'
     PersoonInOnderzoek:
       description: |
         Geeft aan welke gegevens van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v2.0.0/features/in_onderzoek.feature).
