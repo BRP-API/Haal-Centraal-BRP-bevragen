@@ -212,7 +212,7 @@ components:
         kinderen:
           type: array
           items:
-            $ref: 'kind.yaml#/components/schemas/AbstractKind'
+            $ref: 'kind.yaml#/components/schemas/Kind'
         ouders:
           type: array
           items:
