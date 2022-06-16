@@ -112,7 +112,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
 
     @gba
     Scenario: met fields vragen om een gegeven zonder waarde
-      Gegeven de persoon met burgerservicenummer 555550001 heeft de volgende kinderen in de registratie
+      Gegeven de persoon met burgerservicenummer 999996150 heeft de volgende kinderen in de registratie
       | Categorie | Burgerservicenummer (01.20) | Voornamen (02.10) | Voorvoegsel (02.30) | Geslachtsnaam (02.40) | Geboortedatum (03.10) | Gemeente document (82.10) | Datum document (82.20) | Beschrijving document (82.30) | Ingangsdatum geldigheid (85.10) | Datum van opneming (86.10) |
       | 9         |                             | Bert              |                     | Jansen                | 20110422              | 1926                      | 20040105               | D27894-2004-A782              | 20031107                        | 20040112                   |
       Als personen wordt gezocht met de volgende parameters
@@ -120,7 +120,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999996150                       |
       | fields              | kinderen.burgerservicenummer    |
-      Dan heeft de persoon met burgerservicenummer '555550001' een 'kind' zonder gegevens
+      Dan heeft de persoon met burgerservicenummer '999996150' een 'kind' zonder gegevens
 
   @gba
   Rule: de geleverde kindgegevens zijn de gegevens zoals die staan op de persoonslijst van de gevraagde persoon
