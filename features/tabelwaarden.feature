@@ -70,4 +70,12 @@ De onderstaanden tabellen met de beschreven waarden worden geleverd door de "BRP
     | 1                                                | persoon is uitgesloten               |
     | 2                                                | persoon ontvangt oproep              |
 
-
+ Voor de enumeratie Aanduiding inhouding dan wel vermissing Nederlands reisdocument wordt de tabel met identificatie "Inhouding_Vermissing_Reisdocument" opgenomen.
+ In de omschrijving wordt de volgende tekst opgenomen : "Aanduiding voor de reden dat een Nederlands reisdocument niet meer in het bezit is van de persoon of niet meer geldig is"
+ In de waardetabel worden de volgende waarden opgenomen:
+    | code                                             | omschrijving                         |
+    | ------------------------------------------------ | ------------------------------------ |
+    | I                                                | ingehouden, ingeleverd               |
+    | R                                                | van rechtswege vervallen             |
+    | V                                                | vermist                              |
+    | .                                                | onbekend                             |
