@@ -70,12 +70,4 @@ De onderstaanden tabellen met de beschreven waarden worden geleverd door de "BRP
     | 1                                                | persoon is uitgesloten               |
     | 2                                                | persoon ontvangt oproep              |
 
-  Scenario: een onbekende waarde wordt niet opgenomen in de response
-    Gegeven in de registratie heeft de AanduidingBijHuisnummer van de verblijfplaats de waarde "naast"
-    Als de persoon wordt geraadpleegd
-    Dan is in het antwoord verblijfplaats.aanduidingBijHuisnummer niet aanwezig
 
-  Scenario: een bekende waarde wordt wel opgenomen in de response
-    Gegeven in de registratie heeft het geslacht de waarde "O" (onbekend)
-    Als de persoon wordt geraadpleegd
-    Dan heeft attribuut geslacht de waarde "onbekend"
