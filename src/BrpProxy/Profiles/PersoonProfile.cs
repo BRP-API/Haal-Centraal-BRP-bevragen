@@ -43,11 +43,11 @@ public class PersoonProfile : Profile
                     {
                         src.Naam.Partners = src.Partners;
                     }
-                    src.Naam.InOnderzoek = src.InOnderzoek;
+                    src.Naam.InOnderzoek = src.PersoonInOnderzoek;
                 }
                 if (src.Geboorte != null)
                 {
-                    src.Geboorte.InOnderzoek = src.InOnderzoek;
+                    src.Geboorte.InOnderzoek = src.PersoonInOnderzoek;
                 }
             })
             .AfterMap((src, dest) =>
@@ -84,8 +84,7 @@ public class PersoonProfile : Profile
             {
                 opt.Condition(src => src.GemeenteVanInschrijving?.Code != "0000");
             })
+            .ForMember(dest => dest.InOnderzoek, opt => opt.MapFrom(src => src.InOnderzoek()))
             ;
-
-        CreateMap<GbaInOnderzoek, PersoonInOnderzoek?>().ConvertUsing<PersoonInOnderzoekConverter>();
     }
 }

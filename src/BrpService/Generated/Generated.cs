@@ -353,8 +353,11 @@ namespace HaalCentraal.BrpService.Generated
         [Newtonsoft.Json.JsonProperty("geslacht", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Waardetabel Geslacht { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("inOnderzoek", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GbaInOnderzoek InOnderzoek { get; set; }
+        [Newtonsoft.Json.JsonProperty("persoonInOnderzoek", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public GbaInOnderzoek PersoonInOnderzoek { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("gezagInOnderzoek", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public GbaInOnderzoek GezagInOnderzoek { get; set; }
 
         [Newtonsoft.Json.JsonProperty("uitsluitingKiesrecht", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public GbaUitsluitingKiesrecht UitsluitingKiesrecht { get; set; }
@@ -977,7 +980,7 @@ namespace HaalCentraal.BrpService.Generated
 
     /// <summary>
     /// Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.
-    /// <br/>* **datum** - De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan. 
+    /// <br/>* **datum** - De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.
     /// <br/>* **land** - Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.
     /// <br/>* **plaats** - De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld op basis van de waarden die voorkomen in de tabel "Gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.
     /// <br/>
@@ -993,9 +996,6 @@ namespace HaalCentraal.BrpService.Generated
 
         [Newtonsoft.Json.JsonProperty("plaats", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Waardetabel Plaats { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("inOnderzoek", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GbaInOnderzoek InOnderzoek { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 

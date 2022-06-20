@@ -1,21 +1,19 @@
 #language: nl
 
-@post-assert  @skip-verify
+@post-assert
 Functionaliteit: Gezagsverhouding
 
   Abstract Scenario: persoon heeft 'gezagsverhouding' veld: '<gba naam>'
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'gezagsverhouding' gegevens
-    | naam       | waarde   |
-    | <gba naam> | <waarde> |
+    | <gba naam>          | <waarde>  |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
-    | fields              | gezagsverhouding                |
-    Dan heeft de response een persoon met de volgende 'gezagsverhouding' gegevens
+    | fields              | <naam>                          |
+    Dan heeft de response een persoon met de volgende gegevens
     | naam   | waarde   |
     | <naam> | <waarde> |
 
@@ -25,26 +23,24 @@ Functionaliteit: Gezagsverhouding
     | indicatieGezagMinderjarige.omschrijving | indicatieGezagMinderjarige.omschrijving | Ouder1 en ouder2 hebben het gezag |
     | indicatie curateleregister (33.10)      | indicatieCurateleRegister               | true                              |
 
-  Abstract Scenario: 'gezagsverhouding' velden van persoon is/zijn in onderzoek
+  Abstract Scenario: 'gezagsverhouding' veld(en) van persoon is/zijn in onderzoek
     Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'gezagsverhouding' gegevens
-    | naam                                     | waarde                    |
-    | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (83.20)           | 20020701                  |
+    | naam                                        | waarde                    |
+    | burgerservicenummer                         | 555550001                 |
+    | aanduiding gegevens in onderzoek (11.83.10) | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (11.83.20)           | 20020701                  |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
-    | fields              | gezagsverhouding                |
-    Dan heeft de response een persoon met de volgende 'gezagsverhouding' gegevens
-    | naam                                         | waarde                            |
-    | inOnderzoek.indicatieCurateleRegister        | <curateleregister in onderzoek>   |
-    | inOnderzoek.indicatieGezagMinderjarige       | <gezag minderjarige in onderzoek> |
-    | inOnderzoek.datumIngangOnderzoek.type        | Datum                             |
-    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                        |
-    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                       |
+    | fields              | inOnderzoek                     |
+    Dan heeft de response een persoon met de volgende gegevens
+    | naam                                              | waarde                            |
+    | inOnderzoek.indicatieCurateleRegister             | <curateleregister in onderzoek>   |
+    | inOnderzoek.indicatieGezagMinderjarige            | <gezag minderjarige in onderzoek> |
+    | inOnderzoek.datumIngangOnderzoekGezag.type        | Datum                             |
+    | inOnderzoek.datumIngangOnderzoekGezag.datum       | 2002-07-01                        |
+    | inOnderzoek.datumIngangOnderzoekGezag.langFormaat | 1 juli 2002                       |
 
     Voorbeelden:
     | gba in onderzoek waarde | gezag minderjarige in onderzoek | curateleregister in onderzoek |

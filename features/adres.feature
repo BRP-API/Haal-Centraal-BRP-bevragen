@@ -96,16 +96,16 @@ Functionaliteit: Adresvelden vullen
 
     Abstract Scenario: adresregel2 voor een binnenlandse verblijfplaats met <omschrijving>
       Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde                |
-      | burgerservicenummer | <burgerservicenummer> |
+      | naam                                 | waarde                |
+      | burgerservicenummer                  | <burgerservicenummer> |
+      | gemeente van inschrijving (09.10)    | 0518                  |
+      | gemeenteVanInschrijving.omschrijving | 's-Gravenhage         |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
-      | naam                                 | waarde           |
-      | straatnaam (11.10)                   | een straat       |
-      | huisnummer (11.20)                   | 1                |
-      | gemeente van inschrijving (09.10)    | 0518             |
-      | gemeenteVanInschrijving.omschrijving | 's-Gravenhage    |
-      | postcode (11.60)                     | <postcode>       |
-      | woonplaatsnaam (11.70)               | <woonplaatsnaam> |
+      | naam                   | waarde           |
+      | straatnaam (11.10)     | een straat       |
+      | huisnummer (11.20)     | 1                |
+      | postcode (11.60)       | <postcode>       |
+      | woonplaatsnaam (11.70) | <woonplaatsnaam> |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -122,13 +122,13 @@ Functionaliteit: Adresvelden vullen
 
     Scenario: adresregel2 voor locatie
       Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 000009921 |
+      | naam                                 | waarde        |
+      | burgerservicenummer                  | 000009921     |
+      | gemeenteVanInschrijving.omschrijving | 's-Gravenhage |
+      | gemeente van inschrijving (09.10)    | 0518          |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
-      | naam                                 | waarde                     |
-      | gemeente van inschrijving (09.10)    | 0518                       |
-      | gemeenteVanInschrijving.omschrijving | 's-Gravenhage              |
-      | locatiebeschrijving (12.10)          | Woonboot in de Grote Sloot |
+      | naam                        | waarde                     |
+      | locatiebeschrijving (12.10) | Woonboot in de Grote Sloot |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |

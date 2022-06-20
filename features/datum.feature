@@ -230,10 +230,10 @@ Functionaliteit: leveren van een datum
 
     Abstract Scenario: <type> in inOnderzoek datumIngangOnderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                                     | waarde     |
-      | burgerservicenummer                      | 555550001  |
-      | aanduiding gegevens in onderzoek (83.10) | 010000     |
-      | datum ingang onderzoek (83.20)           | <GbaDatum> |
+      | naam                                        | waarde     |
+      | burgerservicenummer                         | 555550001  |
+      | aanduiding gegevens in onderzoek (01.83.10) | 010000     |
+      | datum ingang onderzoek (01.83.20)           | <GbaDatum> |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -250,10 +250,10 @@ Functionaliteit: leveren van een datum
 
       Voorbeelden:
       | groep       | veld                 | type           | GbaDatum | datum      | jaar | maand | onbekend | langFormaat  |
-      | inOnderzoek | datumIngangOnderzoek | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
-      | inOnderzoek | datumIngangOnderzoek | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
-      | inOnderzoek | datumIngangOnderzoek | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
-      | inOnderzoek | datumIngangOnderzoek | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | inOnderzoek | datumIngangOnderzoekPersoon | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | inOnderzoek | datumIngangOnderzoekPersoon | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | inOnderzoek | datumIngangOnderzoekPersoon | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | inOnderzoek | datumIngangOnderzoekPersoon | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
 
     Abstract Scenario: <type> in datumEersteInschrijvingGBA
       Gegeven het systeem heeft een persoon met de volgende gegevens

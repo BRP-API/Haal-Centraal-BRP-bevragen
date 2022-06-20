@@ -10,16 +10,7 @@ public partial class Persoon
 
     public bool ShouldSerializeOuders() => Ouders?.Count > 0;
 
-    public bool ShouldSerializePartners()
-    {
-        if (Partners != null)
-        {
-            Partners = (from partner in Partners
-                        where partner.GetType() != typeof(OntbondenPartner)
-                        select partner).ToList();
-        }
-        return Partners?.Count > 0;
-    }
+    public bool ShouldSerializePartners() => Partners?.Count > 0;
 
     public bool ShouldSerializeAdressering() => Adressering != null && Adressering.ShouldSerialize();
 
@@ -28,6 +19,8 @@ public partial class Persoon
     public bool ShouldSerializeGeboorte() => Geboorte != null && Geboorte.ShouldSerialize();
 
     public bool ShouldSerializeImmigratie() => Immigratie != null && Immigratie.ShouldSerialize();
+
+    public bool ShouldSerializeInOnderzoek() => InOnderzoek != null && InOnderzoek.ShouldSerialize();
 
     public bool ShouldSerializeNaam() => Naam != null && Naam.ShouldSerialize();
 
@@ -50,12 +43,12 @@ public partial class Persoon
         Geslacht != null ||
         IndicatieCurateleRegister ||
         IndicatieGezagMinderjarige != null ||
-        InOnderzoek != null ||
         Leeftijd > 0 ||
         ShouldSerializeAdressering() ||
         ShouldSerializeEuropeesKiesrecht() ||
         ShouldSerializeGeboorte() ||
         ShouldSerializeImmigratie() ||
+        ShouldSerializeInOnderzoek() ||
         ShouldSerializeKinderen() ||
         ShouldSerializeNaam() ||
         ShouldSerializeNationaliteiten() ||

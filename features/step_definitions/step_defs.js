@@ -20,6 +20,10 @@ const propertyNameMap = new Map([
     ['geboorteland (03.30)', 'land.code'],
 
     // In onderzoek/Procedure
+    ['aanduiding gegevens in onderzoek (01.83.10)', 'persoonInOnderzoek.aanduidingGegevensInOnderzoek'],
+    ['datum ingang onderzoek (01.83.20)', 'persoonInOnderzoek.datumIngangOnderzoek'],
+    ['aanduiding gegevens in onderzoek (11.83.10)', 'gezagInOnderzoek.aanduidingGegevensInOnderzoek'],
+    ['datum ingang onderzoek (11.83.20)', 'gezagInOnderzoek.datumIngangOnderzoek'],
     ['aanduiding gegevens in onderzoek (83.10)', 'inOnderzoek.aanduidingGegevensInOnderzoek'],
     ['datum ingang onderzoek (83.20)', 'inOnderzoek.datumIngangOnderzoek'],
 
@@ -654,13 +658,23 @@ Then(/^heeft de response een persoon met ?(?:een)? leeg '(.*)' object$/, functio
     this.context.leaveEmptyObjects = true;
     let expected = {};
 
+    const relaties = toCollectionName(gegevensgroep);
+
     if(this.context.postAssert === true) {
         if(this.context.expected === undefined) {
             this.context.expected = [ {} ];
         }
 
         const expectedPersoon = this.context.expected[this.context.expected.length-1];
-        expectedPersoon[gegevensgroep] = expected;
+        if(relaties === undefined) {
+            expectedPersoon[gegevensgroep] = expected;
+        }
+        else {
+            if(expectedPersoon[relaties] === undefined) {
+                expectedPersoon[relaties] = [];
+            }
+            expectedPersoon[relaties].push(expected);
+        }
     }
 });
 
@@ -724,7 +738,7 @@ function toCollectionName(gegevensgroep) {
         case 'nationaliteit':
             return 'nationaliteiten';
         default:
-            return gegevensgroep;
+            return undefined;
     }
 }
 
