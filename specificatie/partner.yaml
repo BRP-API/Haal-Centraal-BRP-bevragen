@@ -43,7 +43,7 @@ components:
         aangaanHuwelijkPartnerschap:
           $ref: '#/components/schemas/AangaanHuwelijkPartnerschap'
         ontbindingHuwelijkPartnerschap:
-          $ref: "#/components/schemas/OntbindingHuwelijkPartnerschapBasis"
+          $ref: "#/components/schemas/OntbindingHuwelijkPartnerschap"
     PartnerInOnderzoek:
       description: |
         Geeft aan welke gegevens over het huwelijk of het partnerschap in onderzoek zijn.
@@ -107,14 +107,12 @@ components:
       properties:
         datum:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
-    OntbindingHuwelijkPartnerschapBasis:
+    OntbindingHuwelijkPartnerschap:
       type: object
       description: |
         Gegevens over de ontbinding van het huwelijk of het geregistreerd partnerschap.
         * **datum** : De datum waarop het huwelijk of het partnerschap is ontbonden.
       properties:
-        indicatieHuwelijkPartnerschapBeeindigd:
-          type: boolean
         datum:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         inOnderzoek:
