@@ -24,9 +24,6 @@ public class PersoonController : Generated.ControllerBase
 
     public override async Task<ActionResult<PersonenQueryResponse>> GetPersonen([FromBody] PersonenQuery body)
     {
-        System.IO.File.WriteAllText(Path.Combine(_environment.ContentRootPath, "Data", "requestBody.json"),
-                                    JsonConvert.SerializeObject(body));
-
         return body switch
         {
             RaadpleegMetBurgerservicenummer q => await Handle(q),
