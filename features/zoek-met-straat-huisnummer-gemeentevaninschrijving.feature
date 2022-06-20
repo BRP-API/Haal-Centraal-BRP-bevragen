@@ -1,7 +1,7 @@
 #language: nl
 
 @post-assert
-Functionaliteit: Zoek met straat, huisnummer en gemeente van inschrijving
+Functionaliteit: Zoek met straatnaam/naam openbare ruimte, huisnummer en gemeente van inschrijving
 
   Achtergrond:
     Gegeven het systeem heeft personen met de volgende gegevens
@@ -31,7 +31,8 @@ Functionaliteit: Zoek met straat, huisnummer en gemeente van inschrijving
     | 999993008           | 20080700                 |
 
   Rule: Straat, huisnummer en gemeente van inschrijving zijn verplichte parameters
-        Zoeken is niet hoofdlettergevoelig
+        - straat parameter zoekt over zowel straatnaam als naam openbare ruimte
+        - zoeken is niet hoofdlettergevoelig
   
     Abstract Scenario: Zoek met volledige straat, huisnummer en gemeente van inschrijving
       Als personen wordt gezocht met de volgende parameters
@@ -281,8 +282,8 @@ Functionaliteit: Zoek met straat, huisnummer en gemeente van inschrijving
       |                              | boolean | Waarde is geen boolean. |
       | geen boolean                 | boolean | Waarde is geen boolean. |
 
-  Rule: Bij zoeken met de "*" wildcard moet minimaal 7 letters (exclusief de wildcard teken) worden opgegeven
-        De "*" wildcard komt overeen met nul of meer (niet-spatie) karakters
+  Rule: Bij zoeken met de "*" wildcard moeten minimaal 7 letters (exclusief de wildcard teken) worden opgegeven
+        De "*" wildcard komt overeen met nul of meer karakters
 
     Abstract Scenario: Zoek met "*" wildcard als laatste karakter in straat
       Als personen wordt gezocht met de volgende parameters
