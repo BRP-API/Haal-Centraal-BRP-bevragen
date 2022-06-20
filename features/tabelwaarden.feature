@@ -9,10 +9,10 @@ De onderstaanden tabellen met de beschreven waarden worden geleverd door de "BRP
   In de omschrijving wordt de volgende tekst opgenomen : "De aanduiding "bij" of "tegenover" wordt gebruikt voor adressen die geen straatnaam en huisnummeraanduidingen hebben, maar verwijzen naar een (verblijf)plaats in de buurt."
 
   In de waardetabel worden de volgende waarden opgenomen:
-    | code                                             | omschrijving                     |
-    | ---------- | -------------------------------- |
-    | to                                               | tegenover                        |
-    | by                                               | bij                              |
+  | code       | omschrijving                     |
+  | ---------- | -------------------------------- |
+  | to         | tegenover                        |
+  | by         | bij                              |
 
   Voor de enumeratie Geslacht wordt de tabel met identificatie "Geslacht" opgenomen.
   In de omschrijving wordt de volgende tekst opgenomen : "Geeft aan wat het geslacht is van persoon."
@@ -83,9 +83,9 @@ De onderstaanden tabellen met de beschreven waarden worden geleverd door de "BRP
   Voor de enumeratie reden bewoning onbekend wordt de tabel met identificatie "Reden_Bewoning_Onbekend" opgenomen.
   In de omschrijving wordt de volgende tekst opgenomen : "Reden dat bewoning en bewoners niet kan worden bepaald"
   In de waardetabel worden de volgende waarden opgenomen:
-  | code       | omschrijving                                                                                  |
-  | ---------- | ------------------------------------                                                          |
-  | ADRES      | voor een adres zonder BAG adresseerbaar object identificatie kan geen bewoning worden bepaald |
-  | LOCATIE    | voor een locatiebeschrijving kan geen bewoning worden bepaald                                 |
-  | BUITENLAND | voor een verblijfplaats in het buitenland kan geen bewoning worden bepaald                    |
-  | ONBEKEND   | de verblijfplaats is onbekend                                                                 |
+  | code             | omschrijving                                                                                  |
+  | ----------       | ------------------------------------                                                          |
+  | NIET_ADRES_ADRES | voor een adres zonder BAG adresseerbaar object identificatie kan geen bewoning worden bepaald |
+  | LOCATIE          | voor een locatiebeschrijving kan geen bewoning worden bepaald                                 |
+  | BUITENLAND       | voor een verblijfplaats in het buitenland kan geen bewoning worden bepaald                    |
+  | ONBEKEND         | de verblijfplaats is onbekend                                                                 |
