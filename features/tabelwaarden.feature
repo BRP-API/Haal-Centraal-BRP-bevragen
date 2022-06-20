@@ -10,72 +10,82 @@ De onderstaanden tabellen met de beschreven waarden worden geleverd door de "BRP
 
   In de waardetabel worden de volgende waarden opgenomen:
     | code                                             | omschrijving                     |
-    | ------------------------------------------------ | -------------------------------- |
+    | ---------- | -------------------------------- |
     | to                                               | tegenover                        |
     | by                                               | bij                              |
 
   Voor de enumeratie Geslacht wordt de tabel met identificatie "Geslacht" opgenomen.
   In de omschrijving wordt de volgende tekst opgenomen : "Geeft aan wat het geslacht is van persoon."
   In de waardetabel worden de volgende waarden opgenomen:
-    | code                                             | omschrijving                     |
-    | ------------------------------------------------ | -------------------------------- |
-    | M                                                | man                              |
-    | V                                                | vrouw                            |
-    | O                                                | onbekend                         |
+  | code       | omschrijving                     |
+  | ---------- | -------------------------------- |
+  | M          | man                              |
+  | V          | vrouw                            |
+  | O          | onbekend                         |
 
   Voor de enumeratie Naamgebruik wordt de tabel met identificatie "Naamgebruik" opgenomen.
   In de omschrijving wordt de volgende tekst opgenomen : "De manier waarop de geslachtsnaam van persoon en partner van persoon moet worden verwerkt in de manier waarop persoon wil worden aangesproken."
   In de waardetabel worden de volgende waarden opgenomen:
-    | code                                             | omschrijving                                                            |
-    | ------------------------------------------------ | ----------------------------------------------------------------------- |
-    | E                                                | eigen geslachtsnaam                                                     |
-    | N                                                | geslachtsnaam echtgenoot/geregistreerd partner na eigen geslachtsnaam   |
-    | P                                                | geslachtsnaam echtgenoot/geregistreerd partner                          |
-    | V                                                | geslachtsnaam echtgenoot/geregistreerd partner voor eigen geslachtsnaam |
+  | code       | omschrijving                                                            |
+  | ---------- | ----------------------------------------------------------------------- |
+  | E          | eigen geslachtsnaam                                                     |
+  | N          | geslachtsnaam echtgenoot/geregistreerd partner na eigen geslachtsnaam   |
+  | P          | geslachtsnaam echtgenoot/geregistreerd partner                          |
+  | V          | geslachtsnaam echtgenoot/geregistreerd partner voor eigen geslachtsnaam |
 
   Voor de enumeratie RedenOpschortingBijhouding wordt de tabel met identificatie "Reden_Opschorting_Bijhouding" opgenomen.
   In de omschrijving wordt de volgende tekst opgenomen : "Redenen voor opschorting van de bijhouding"
   In de waardetabel worden de volgende waarden opgenomen:
-    | code                                             | omschrijving              |
-    | ------------------------------------------------ | ------------------------- |
-    | O                                                | overlijden                |
-    | E                                                | emigratie                 |
-    | M                                                | ministerieel besluit      |
-    | R                                                | pl is aangelegd in de rni |
-    | F                                                | fout                      |
-    | .                                                | onbekend                  |
+  | code       | omschrijving              |
+  | ---------- | ------------------------- |
+  | O          | overlijden                |
+  | E          | emigratie                 |
+  | M          | ministerieel besluit      |
+  | R          | pl is aangelegd in de rni |
+  | F          | fout                      |
+  | .          | onbekend                  |
 
   Voor de enumeratie SoortVerbintenis wordt de tabel met identificatie "Soort_Verbintenis" opgenomen.
   In de omschrijving wordt de volgende tekst opgenomen : "Soort verbintenis die bij de burgerlijke stand is ingeschreven"
   In de waardetabel worden de volgende waarden opgenomen:
-    | code                                             | omschrijving                         |
-    | ------------------------------------------------ | ------------------------------------ |
-    | H                                                | huwelijk                             |
-    | P                                                | geregistreerd partnerschap           |
-    | .                                                | onbekend                             |
+  | code       | omschrijving                         |
+  | ---------- | ------------------------------------ |
+  | H          | huwelijk                             |
+  | P          | geregistreerd partnerschap           |
+  | .          | onbekend                             |
 
- Voor de enumeratie FunctieAdres wordt de tabel met identificatie "Functie_Adres" opgenomen.
- In de omschrijving wordt de volgende tekst opgenomen : "Aanduiding van de functie van het adres"
- In de waardetabel worden de volgende waarden opgenomen:
-    | code                                             | omschrijving                         |
-    | ------------------------------------------------ | ------------------------------------ |
-    | W                                                | woonadres                            |
-    | B                                                | briefadres                           |
+  Voor de enumeratie FunctieAdres wordt de tabel met identificatie "Functie_Adres" opgenomen.
+  In de omschrijving wordt de volgende tekst opgenomen : "Aanduiding van de functie van het adres"
+  In de waardetabel worden de volgende waarden opgenomen:
+  | code       | omschrijving                         |
+  | ---------- | ------------------------------------ |
+  | W          | woonadres                            |
+  | B          | briefadres                           |
 
- Voor de enumeratie EuropeesKiesrecht wordt de tabel met identificatie "Europees_Kiesrecht" opgenomen.
- In de omschrijving wordt de volgende tekst opgenomen : "Aanduiding van het recht om deel te nemen aan verkiezingen binnen de Europese Unie"
- In de waardetabel worden de volgende waarden opgenomen:
-    | code                                             | omschrijving                         |
-    | ------------------------------------------------ | ------------------------------------ |
-    | 1                                                | persoon is uitgesloten               |
-    | 2                                                | persoon ontvangt oproep              |
+  Voor de enumeratie EuropeesKiesrecht wordt de tabel met identificatie "Europees_Kiesrecht" opgenomen.
+  In de omschrijving wordt de volgende tekst opgenomen : "Aanduiding van het recht om deel te nemen aan verkiezingen binnen de Europese Unie"
+  In de waardetabel worden de volgende waarden opgenomen:
+  | code       | omschrijving                         |
+  | ---------- | ------------------------------------ |
+  | 1          | persoon is uitgesloten               |
+  | 2          | persoon ontvangt oproep              |
 
- Voor de enumeratie Aanduiding inhouding dan wel vermissing Nederlands reisdocument wordt de tabel met identificatie "Inhouding_Vermissing_Reisdocument" opgenomen.
- In de omschrijving wordt de volgende tekst opgenomen : "Aanduiding voor de reden dat een Nederlands reisdocument niet meer in het bezit is van de persoon of niet meer geldig is"
- In de waardetabel worden de volgende waarden opgenomen:
-    | code                                             | omschrijving                         |
-    | ------------------------------------------------ | ------------------------------------ |
-    | I                                                | ingehouden, ingeleverd               |
-    | R                                                | van rechtswege vervallen             |
-    | V                                                | vermist                              |
-    | .                                                | onbekend                             |
+  Voor de enumeratie Aanduiding inhouding dan wel vermissing Nederlands reisdocument wordt de tabel met identificatie "Inhouding_Vermissing_Reisdocument" opgenomen.
+  In de omschrijving wordt de volgende tekst opgenomen : "Aanduiding voor de reden dat een Nederlands reisdocument niet meer in het bezit is van de persoon of niet meer geldig is"
+  In de waardetabel worden de volgende waarden opgenomen:
+  | code       | omschrijving                         |
+  | ---------- | ------------------------------------ |
+  | I          | ingehouden, ingeleverd               |
+  | R          | van rechtswege vervallen             |
+  | V          | vermist                              |
+  | .          | onbekend                             |
+
+  Voor de enumeratie reden bewoning onbekend wordt de tabel met identificatie "Reden_Bewoning_Onbekend" opgenomen.
+  In de omschrijving wordt de volgende tekst opgenomen : "Reden dat bewoning en bewoners niet kan worden bepaald"
+  In de waardetabel worden de volgende waarden opgenomen:
+  | code       | omschrijving                                                                                  |
+  | ---------- | ------------------------------------                                                          |
+  | ADRES      | voor een adres zonder BAG adresseerbaar object identificatie kan geen bewoning worden bepaald |
+  | LOCATIE    | voor een locatiebeschrijving kan geen bewoning worden bepaald                                 |
+  | BUITENLAND | voor een verblijfplaats in het buitenland kan geen bewoning worden bepaald                    |
+  | ONBEKEND   | de verblijfplaats is onbekend                                                                 |
