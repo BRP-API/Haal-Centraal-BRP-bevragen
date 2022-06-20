@@ -42,6 +42,9 @@ def map_dictionary(src_dict, fields_to_map):
                 elif subfield == 'uitgeslotenVanKiesrecht':
                     if value == 'A':
                         tmp_object[subfield] = True
+                elif subfield == 'indicatieCurateleRegister':
+                    if value == '1':
+                        tmp_object[subfield] = True
                 else:
                     tmp_object[subfield] = value
                 continue
@@ -89,9 +92,12 @@ fields_to_map = {
     '01.03.20': 'geboorte.plaats.code',
     '01.03.30': 'geboorte.land.code',
     '01.04.10': 'geslacht.code',
+    '01.08.10': 'overlijden.datum',
+    '01.08.20': 'overlijden.plaats.code',
+    '01.08.30': 'overlijden.land.code',
     '01.61.10': 'naam.aanduidingNaamgebruik.code',
-    '01.83.10': 'inOnderzoek.aanduidingGegevensInOnderzoek',
-    '01.83.20': 'inOnderzoek.datumIngangOnderzoek',
+    '01.83.10': 'persoonInOnderzoek.aanduidingGegevensInOnderzoek',
+    '01.83.20': 'persoonInOnderzoek.datumIngangOnderzoek',
     '02.01.20': 'ouders[1].burgerservicenummer',
     '02.02.10': 'ouders[1].naam.voornamen',
     '02.02.20': 'ouders[1].naam.adellijkeTitelPredicaat.code',
@@ -141,9 +147,12 @@ fields_to_map = {
     '06.08.10': 'overlijden.datum',
     '06.08.20': 'overlijden.plaats.code',
     '06.08.30': 'overlijden.land.code',
+    '07.67.10': 'opschortingBijhouding.datum',
+    '07.67.20': 'opschortingBijhouding.reden.code',
     '07.68.10': 'datumEersteInschrijvingGBA',
     '07.70.10': 'geheimhoudingPersoonsgegevens',
     '08.09.10': 'gemeenteVanInschrijving.code',
+    '08.09.20': 'datumInschrijvingInGemeente',
     '08.10.10': 'verblijfplaats.functieAdres.code',
     '08.11.10': 'verblijfplaats.straat',
     '08.11.15': 'verblijfplaats.naamOpenbareRuimte',
@@ -156,9 +165,12 @@ fields_to_map = {
     '08.11.80': 'verblijfplaats.adresseerbaarObjectIdentificatie',
     '08.11.90': 'verblijfplaats.nummeraanduidingIdentificatie',
     '08.12.10': 'verblijfplaats.locatiebeschrijving',
+    '08.13.20': 'verblijfplaats.datumAanvangAdresBuitenland',
     '08.13.30': 'verblijfplaats.adresregel1',
     '08.13.40': 'verblijfplaats.adresregel2',
     '08.13.50': 'verblijfplaats.adresregel3',
+    '08.14.10': 'verblijfplaats.landVanwaarIngeschreven.code',
+    '08.14.20': 'verblijfplaats.datumVestigingInNederland',
     '09.01.20': 'kinderen[].burgerservicenummer',
     '09.02.10': 'kinderen[].naam.voornamen',
     '09.02.20': 'kinderen[].naam.adellijkeTitelPredicaat.code',
@@ -168,6 +180,12 @@ fields_to_map = {
     '09.03.20': 'kinderen[].geboorte.plaats.code',
     '09.03.30': 'kinderen[].geboorte.land.code',
     '10.39.10': 'verblijfstitel.aanduiding.code',
+    '10.39.20': 'verblijfstitel.datumEinde',
+    '10.39.30': 'verblijfstitel.datumIngang',
+    '11.32.10': 'indicatieGezagMinderjarige.code',
+    '11.33.10': 'indicatieCurateleRegister',
+    '11.83.10': 'gezagInOnderzoek.aanduidingGegevensInOnderzoek',
+    '11.83.20': 'gezagInOnderzoek.datumIngangOnderzoek',
     '13.31.10': 'europeesKiesrecht.aanduiding.code',
     '13.31.30': 'europeesKiesrecht.einddatumUitsluiting',
     '13.38.10': 'uitsluitingKiesrecht.uitgeslotenVanKiesrecht',
