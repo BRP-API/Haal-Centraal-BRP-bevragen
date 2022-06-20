@@ -1750,7 +1750,7 @@ components:
         aangaanHuwelijkPartnerschap:
           $ref: '#/components/schemas/AangaanHuwelijkPartnerschap'
         ontbindingHuwelijkPartnerschap:
-          $ref: '#/components/schemas/OntbindingHuwelijkPartnerschapBasis'
+          $ref: '#/components/schemas/OntbindingHuwelijkPartnerschap'
     PartnerInOnderzoek:
       description: |
         Geeft aan welke gegevens over het huwelijk of het partnerschap in onderzoek zijn.
@@ -1795,11 +1795,9 @@ components:
             type: boolean
           plaats:
             type: boolean
-    OntbindingHuwelijkPartnerschapBasis:
+    OntbindingHuwelijkPartnerschap:
       type: object
       properties:
-        indicatieHuwelijkPartnerschapBeeindigd:
-          type: boolean
         datum:
           $ref: '#/components/schemas/AbstractDatum'
         inOnderzoek:

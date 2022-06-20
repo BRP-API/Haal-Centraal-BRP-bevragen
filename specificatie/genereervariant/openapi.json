@@ -2284,7 +2284,7 @@
             "$ref" : "#/components/schemas/AangaanHuwelijkPartnerschap"
           },
           "ontbindingHuwelijkPartnerschap" : {
-            "$ref" : "#/components/schemas/OntbindingHuwelijkPartnerschapBasis"
+            "$ref" : "#/components/schemas/OntbindingHuwelijkPartnerschap"
           }
         }
       },
@@ -2344,12 +2344,9 @@
           }
         } ]
       },
-      "OntbindingHuwelijkPartnerschapBasis" : {
+      "OntbindingHuwelijkPartnerschap" : {
         "type" : "object",
         "properties" : {
-          "indicatieHuwelijkPartnerschapBeeindigd" : {
-            "type" : "boolean"
-          },
           "datum" : {
             "$ref" : "#/components/schemas/AbstractDatum"
           },
