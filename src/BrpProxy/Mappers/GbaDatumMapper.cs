@@ -42,13 +42,13 @@ public static class GbaDatumMapper
     {
         return datum switch
         {
-            VolledigeDatum d => d.Datum!.Value.Leeftijd(DateTimeOffset.Now),
-            JaarMaandDatum d => d.Leeftijd(DateTimeOffset.Now),
+            VolledigeDatum d => d.Datum!.Value.LocalDateTime.Leeftijd(DateTime.Today),
+            JaarMaandDatum d => d.Leeftijd(DateTime.Today),
             _ => null
         };
     }
 
-    public static int Leeftijd(this DateTimeOffset datum, DateTimeOffset peildatum)
+    public static int Leeftijd(this DateTime datum, DateTime peildatum)
     {
         var leeftijd = peildatum.Year - datum.Year;
 
@@ -61,10 +61,10 @@ public static class GbaDatumMapper
         return leeftijd;
     }
 
-    public static int? Leeftijd(this JaarMaandDatum datum, DateTimeOffset peildatum)
+    public static int? Leeftijd(this JaarMaandDatum datum, DateTime peildatum)
     {
         return datum.Maand != peildatum.Month
-            ? new DateTimeOffset(new DateTime(datum.Jaar, datum.Maand, 1)).Leeftijd(peildatum)
+            ? new DateTime(datum.Jaar, datum.Maand, 1).Leeftijd(peildatum)
             : null;
     }
 
