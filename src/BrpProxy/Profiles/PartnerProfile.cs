@@ -9,9 +9,6 @@ public class PartnerProfile : Profile
 {
     public PartnerProfile()
     {
-        CreateMap<GbaPartner, AbstractPartner>()
-            .ConvertUsing<PartnerConverter>();
-
         CreateMap<GbaPartner, Partner>()
             .BeforeMap((src, dest) =>
             {
@@ -27,14 +24,16 @@ public class PartnerProfile : Profile
                 {
                     src.AangaanHuwelijkPartnerschap.InOnderzoek = src.InOnderzoek;
                 }
+                if (src.OntbindingHuwelijkPartnerschap != null)
+                {
+                    src.OntbindingHuwelijkPartnerschap.InOnderzoek = src.InOnderzoek;
+                }
             })
             .ForMember(dest => dest.SoortVerbintenis, opt =>
             {
                 opt.PreCondition(src => src.SoortVerbintenis?.Code != ".");
                 opt.MapFrom(src => src.SoortVerbintenis);
             });
-
-        CreateMap<GbaPartner, OntbondenPartner>();
 
         CreateMap<GbaAangaanHuwelijkPartnerschap, AangaanHuwelijkPartnerschap>()
             .ForMember(dest => dest.Datum, opt => opt.MapFrom(src => src.Datum.Map()))
@@ -51,10 +50,11 @@ public class PartnerProfile : Profile
            .ForMember(dest => dest.InOnderzoek, opt => opt.MapFrom(src => src.InOnderzoek.AangaanHuwelijkPartnerschapInOnderzoek()))
             ;
 
-        CreateMap<GbaOntbindingHuwelijkPartnerschap, OntbindingHuwelijkPartnerschap>()
+        CreateMap<GbaOntbindingHuwelijkPartnerschap, OntbindingHuwelijkPartnerschapBasis>()
             .ForMember(dest => dest.Datum, opt => opt.MapFrom(src => src.Datum.Map()))
             ;
 
         CreateMap<GbaInOnderzoek, PartnerInOnderzoek?>().ConvertUsing<PartnerInOnderzoekConverter>();
+        //CreateMap<GbaInOnderzoek, OntbindingHuwelijkPartnerschapBasisInOnderzoek?>.ConvertUsing
     }
 }

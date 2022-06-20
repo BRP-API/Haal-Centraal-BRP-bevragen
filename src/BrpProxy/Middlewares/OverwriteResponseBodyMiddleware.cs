@@ -28,6 +28,8 @@ namespace BrpProxy.Middlewares
 
         public async Task Invoke(HttpContext context)
         {
+            _logger.LogDebug("TimeZone: {@localTimeZone}. Now: {@now}", TimeZoneInfo.Local.StandardName, DateTime.Now);
+
             context.Response.Headers.Add("api-version", _configuration["api-version"]);
 
             var orgBodyStream = context.Response.Body;
@@ -104,7 +106,7 @@ namespace BrpProxy.Middlewares
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, message: "requestBody: {@requestBody}");
+                _logger.LogError(ex, message: "requestBody: {@requestBody}", requestBody);
 
                 await context.HandleUnhandledException(ex, orgBodyStream);
             }
@@ -141,9 +143,21 @@ namespace BrpProxy.Middlewares
             {
                 case Gba.RaadpleegMetBurgerservicenummerResponse p:
                     var result = mapper.Map<RaadpleegMetBurgerservicenummerResponse>(p);
-                    result.Personen = (from persoon in result.Personen.FilterList(fields)
-                                      where persoon.ShouldSerialize()
-                                      select persoon).ToList();
+                    logger.LogDebug("Before fields filtering {@result}", result);
+                    foreach (var persoon in result.Personen)
+                    {
+                        if(persoon.Partners != null &&
+                            persoon.Partners.Any(p => p.OntbindingHuwelijkPartnerschap == null))
+                        {
+                            persoon.Partners = (from partner in persoon.Partners
+                                                where partner.OntbindingHuwelijkPartnerschap == null
+                                                select partner).ToList();
+                        }
+                    }
+                    //result.Personen = (from persoon in result.Personen.FilterList(fields)
+                    //                  where persoon.ShouldSerialize()
+                    //                  select persoon).ToList();
+                    result.Personen = result.Personen.FilterList(fields);
                     retval = result;
                     break;
                 case Gba.ZoekMetGeslachtsnaamEnGeboortedatumResponse pb:

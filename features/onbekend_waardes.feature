@@ -118,7 +118,6 @@ Rule: een veld wordt niet opgenomen wanneer het de standaardwaarde bevat
     Dan heeft de response een persoon met een 'partner' met alleen de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999992935 |
-    | type                | Partner   |
 
   Scenario: onbekend waarde voor reisdocumentnummer
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -276,19 +275,18 @@ Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbe
     | burgerservicenummer | 999992934 |
     En heeft de persoon een '<relatie>' met alleen de volgende gegevens
     | naam                | waarde    |
-    | type                | <type>    |
     | burgerservicenummer | 999992935 |
 
     Voorbeelden:
-    | relatie | relatie field | type    | groep                       | veld   | element                                                             | waarde |
-    | ouder   | ouders        | Ouder   | geboorte                    | plaats | geboorteplaats (03.20)                                              | 0000   |
-    | ouder   | ouders        | Ouder   | geboorte                    | land   | geboorteland (03.30)                                                | 0000   |
-    | partner | partners      | Partner | geboorte                    | plaats | geboorteplaats (03.20)                                              | 0000   |
-    | partner | partners      | Partner | geboorte                    | land   | geboorteland (03.30)                                                | 0000   |
-    | partner | partners      | Partner | aangaanHuwelijkPartnerschap | plaats | plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) | 0000   |
-    | partner | partners      | Partner | aangaanHuwelijkPartnerschap | land   | land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)   | 0000   |
-    | kind    | kinderen      | Kind    | geboorte                    | plaats | geboorteplaats (03.20)                                              | 0000   |
-    | kind    | kinderen      | Kind    | geboorte                    | land   | geboorteland (03.30)                                                | 0000   |
+    | relatie | relatie field | groep                       | veld   | element                                                             | waarde |
+    | ouder   | ouders        | geboorte                    | plaats | geboorteplaats (03.20)                                              | 0000   |
+    | ouder   | ouders        | geboorte                    | land   | geboorteland (03.30)                                                | 0000   |
+    | partner | partners      | geboorte                    | plaats | geboorteplaats (03.20)                                              | 0000   |
+    | partner | partners      | geboorte                    | land   | geboorteland (03.30)                                                | 0000   |
+    | partner | partners      | aangaanHuwelijkPartnerschap | plaats | plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) | 0000   |
+    | partner | partners      | aangaanHuwelijkPartnerschap | land   | land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)   | 0000   |
+    | kind    | kinderen      | geboorte                    | plaats | geboorteplaats (03.20)                                              | 0000   |
+    | kind    | kinderen      | geboorte                    | land   | geboorteland (03.30)                                                | 0000   |
 
   Scenario: onbekend waarde voor nationaliteit
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -503,7 +501,6 @@ Rule: datumvelden waarde "00000000": worden vertaald naar DatumOnbekend
     | burgerservicenummer | 555550001 |
     En heeft de persoon een '<relatie>' met alleen de volgende gegevens
     | naam                | waarde    |
-    | type                | <type>    |
     | burgerservicenummer | 555550002 |
     En heeft de '<relatie>' alleen de volgende '<groep>' gegevens
     | naam              | waarde        |
@@ -512,11 +509,11 @@ Rule: datumvelden waarde "00000000": worden vertaald naar DatumOnbekend
     | datum.langFormaat | onbekend      |
 
     Voorbeelden:
-    | relatie | relatie field | type    | groep                       | element                                                            |
-    | ouder   | ouders        | Ouder   | geboorte                    | geboortedatum (03.10)                                              |
-    | partner | partners      | Partner | aangaanHuwelijkPartnerschap | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) |
-    | partner | partners      | Partner | geboorte                    | geboortedatum (03.10)                                              |
-    | kind    | kinderen      | Kind    | geboorte                    | geboortedatum (03.10)                                              |
+    | relatie | relatie field | groep                       | element                                                            |
+    | ouder   | ouders        | geboorte                    | geboortedatum (03.10)                                              |
+    | partner | partners      | aangaanHuwelijkPartnerschap | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) |
+    | partner | partners      | geboorte                    | geboortedatum (03.10)                                              |
+    | kind    | kinderen      | geboorte                    | geboortedatum (03.10)                                              |
 
 Rule: vertalen (onbekend)waarden naar indicator
   - elke waarde voor datumVestigingInNederland (incl. 00000000) geeft indicatieVestigingVanuitBuitenland met de waarde true

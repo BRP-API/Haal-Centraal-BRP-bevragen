@@ -9,11 +9,6 @@ public class OuderProfile : Profile
 {
     public OuderProfile()
     {
-        CreateMap<GbaOuder, AbstractOuder>()
-            .ConvertUsing<OuderConverter>();
-
-        CreateMap<GbaOuder, OuderOnbekend>();
-
         CreateMap<GbaOuder, Ouder>()
             .BeforeMap((src, dest) =>
             {

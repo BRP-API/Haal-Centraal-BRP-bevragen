@@ -177,16 +177,16 @@ namespace BrpProxy.Validators
                 {
                     switch (srcValue)
                     {
-                        case ICollection<AbstractKind> val:
+                        case ICollection<Kind> val:
                             pi.SetValue(retval, val.FilterList(relatieFields));
                             break;
                         case ICollection<AbstractNationaliteit> val:
                             pi.SetValue(retval, val.FilterList(relatieFields));
                             break;
-                        case ICollection<AbstractOuder> val:
+                        case ICollection<Ouder> val:
                             pi.SetValue(retval, val.FilterList(relatieFields));
                             break;
-                        case ICollection<AbstractPartner> val:
+                        case ICollection<Partner> val:
                             pi.SetValue(retval, val.FilterList(relatieFields));
                             break;
                         default:

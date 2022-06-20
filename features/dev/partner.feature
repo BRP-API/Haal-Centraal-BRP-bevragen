@@ -17,7 +17,6 @@ Functionaliteit: Partner
     | fields              | partners                        |
     Dan heeft de response een persoon met een 'partner' met alleen de volgende gegevens
     | naam   | waarde   |
-    | type   | Partner  |
     | <naam> | <waarde> |
 
     Voorbeelden:
@@ -39,10 +38,7 @@ Functionaliteit: Partner
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
     | fields              | partners.<gegevensgroep>.<naam> |
-    Dan heeft de response een persoon met een 'partner' met alleen de volgende gegevens
-    | naam | waarde  |
-    | type | Partner |
-    En heeft de 'partner' alleen de volgende '<gegevensgroep>' gegevens
+    Dan heeft de response een persoon met een 'partner' met alleen de volgende '<gegevensgroep>' gegevens
     | naam   | waarde   |
     | <naam> | <waarde> |
 
@@ -72,10 +68,7 @@ Functionaliteit: Partner
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
     | fields              | partners.naam.voorletters       |
-    Dan heeft de response een persoon met een 'partner' met alleen de volgende gegevens
-    | naam | waarde  |
-    | type | Partner |
-    En heeft de 'partner' alleen de volgende 'naam' gegevens
+    Dan heeft de response een persoon met een 'partner' met alleen de volgende 'naam' gegevens
     | naam        | waarde |
     | voorletters | K.J.   |
 
@@ -91,9 +84,7 @@ Functionaliteit: Partner
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
     | fields              | partners.<gegevensgroep>        |
-    Dan heeft de response een persoon met een 'partner' met alleen de volgende gegevens
-    | naam | waarde  |
-    | type | Partner |
+    Dan heeft de response een persoon met een leeg 'partner' object
 
     Voorbeelden:
     | gegevensgroep | gba naam              | naam          | waarde |
@@ -111,10 +102,7 @@ Functionaliteit: Partner
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
     | fields              | partners.<gegevensgroep>        |
-    Dan heeft de response een persoon met een 'partner' met alleen de volgende gegevens
-    | naam | waarde  |
-    | type | Partner |
-    En heeft de 'partner' alleen de volgende '<gegevensgroep>' gegevens
+    Dan heeft de response een persoon met een 'partner' met alleen de volgende '<gegevensgroep>' gegevens
     | naam               | waarde         |
     | <naam>.type        | Datum          |
     | <naam>.datum       | <waarde>       |
@@ -140,7 +128,6 @@ Functionaliteit: Partner
     | fields              | partners                        |
     Dan heeft de response een persoon met een 'partner' met alleen de volgende gegevens
     | naam                                         | waarde                             |
-    | type                                         | Partner                            |
     | inOnderzoek.burgerservicenummer              | <burgerservicenummer in onderzoek> |
     | inOnderzoek.soortVerbintenis                 | <soort verbintenis in onderzoek>   |
     | inOnderzoek.geslacht                         | <geslacht in onderzoek>            |
@@ -174,10 +161,7 @@ Functionaliteit: Partner
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
     | fields              | partners.naam                   |
-    Dan heeft de response een persoon met een 'partner' met alleen de volgende gegevens
-    | naam | waarde  |
-    | type | Partner |
-    En heeft de 'partner' alleen de volgende 'naam' gegevens
+    Dan heeft de response een persoon met een 'partner' met alleen de volgende 'naam' gegevens
     | naam                                         | waarde                                 |
     | geslachtsnaam                                | Groen                                  |
     | inOnderzoek.voornamen                        | <voornamen in onderzoek>               |
@@ -214,10 +198,7 @@ Functionaliteit: Partner
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
     | fields              | partners.geboorte               |
-    Dan heeft de response een persoon met een 'partner' met alleen de volgende gegevens
-    | naam | waarde  |
-    | type | Partner |
-    En heeft de 'partner' alleen de volgende 'geboorte' gegevens
+    Dan heeft de response een persoon met een 'partner' met alleen de volgende 'geboorte' gegevens
     | naam                                         | waarde                |
     | datum.type                                   | Datum                 |
     | datum.datum                                  | 1963-04-05            |
@@ -253,10 +234,7 @@ Functionaliteit: Partner
     | type                | RaadpleegMetBurgerservicenummer      |
     | burgerservicenummer | 555550001                            |
     | fields              | partners.aangaanHuwelijkPartnerschap |
-    Dan heeft de response een persoon met een 'partner' met alleen de volgende gegevens
-    | naam | waarde  |
-    | type | Partner |
-    En heeft de 'partner' alleen de volgende 'aangaanHuwelijkPartnerschap' gegevens
+    Dan heeft de response een persoon met een 'partner' met alleen de volgende 'aangaanHuwelijkPartnerschap' gegevens
     | naam                                         | waarde                |
     | datum.type                                   | Datum                 |
     | datum.datum                                  | 1963-04-05            |

@@ -3,7 +3,7 @@
 @post-assert
 Functionaliteit: Kind
 
-  Abstract Scenario: kind heeft veld: '<gba naam>''
+  Abstract Scenario: kind heeft veld: '<gba naam>'
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |
@@ -17,7 +17,6 @@ Functionaliteit: Kind
     | fields              | kinderen                        |
     Dan heeft de response een persoon met een 'kind' met alleen de volgende gegevens
     | naam   | waarde   |
-    | type   | Kind     |
     | <naam> | <waarde> |
 
     Voorbeelden:
@@ -36,10 +35,7 @@ Functionaliteit: Kind
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
     | fields              | kinderen.<gegevensgroep>.<naam> |
-    Dan heeft de response een persoon met een 'kind' met alleen de volgende gegevens
-    | naam | waarde |
-    | type | Kind   |
-    En heeft het 'kind' alleen de volgende '<gegevensgroep>' gegevens
+    Dan heeft de response een persoon met een 'kind' met alleen de volgende '<gegevensgroep>' gegevens
     | naam   | waarde   |
     | <naam> | <waarde> |
 
@@ -67,10 +63,7 @@ Functionaliteit: Kind
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
     | fields              | kinderen.naam.voorletters       |
-    Dan heeft de response een persoon met een 'kind' met alleen de volgende gegevens
-    | naam | waarde |
-    | type | Kind   |
-    En heeft het 'kind' alleen de volgende 'naam' gegevens
+    Dan heeft de response een persoon met een 'kind' met alleen de volgende 'naam' gegevens
     | naam        | waarde |
     | voorletters | P.J.   |
 
@@ -86,9 +79,7 @@ Functionaliteit: Kind
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
     | fields              | kinderen.<gegevensgroep>        |
-    Dan heeft de response een persoon met een 'kind' met alleen de volgende gegevens
-    | naam | waarde |
-    | type | Kind   |
+    Dan heeft de response een persoon met een leeg 'kind' object
 
     Voorbeelden:
     | gegevensgroep | gba naam              | naam          | waarde |
@@ -106,10 +97,7 @@ Functionaliteit: Kind
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
     | fields              | kinderen                        |
-    Dan heeft de response een persoon met een 'kind' met alleen de volgende gegevens
-    | naam | waarde |
-    | type | Kind   |
-    En heeft het 'kind' alleen de volgende '<gegevensgroep>' gegevens
+    Dan heeft de response een persoon met een 'kind' met alleen de volgende '<gegevensgroep>' gegevens
     | naam               | waarde         |
     | <naam>.type        | Datum          |
     | <naam>.datum       | <waarde>       |
@@ -134,7 +122,6 @@ Functionaliteit: Kind
     | fields              | kinderen                        |
     Dan heeft de response een persoon met een 'kind' met alleen de volgende gegevens
     | naam                                         | waarde                             |
-    | type                                         | Kind                               |
     | inOnderzoek.burgerservicenummer              | <burgerservicenummer in onderzoek> |
     | inOnderzoek.datumIngangOnderzoek.type        | Datum                              |
     | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                         |
@@ -162,10 +149,7 @@ Functionaliteit: Kind
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
     | fields              | kinderen.naam                   |
-    Dan heeft de response een persoon met een 'kind' met alleen de volgende gegevens
-    | naam | waarde |
-    | type | Kind   |
-    En heeft de 'kind' alleen de volgende 'naam' gegevens
+    Dan heeft de response een persoon met een 'kind' met alleen de volgende 'naam' gegevens
     | naam                                         | waarde                                 |
     | geslachtsnaam                                | Groen                                  |
     | inOnderzoek.voornamen                        | <voornamen in onderzoek>               |
@@ -202,10 +186,7 @@ Functionaliteit: Kind
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
     | fields              | kinderen.geboorte               |
-    Dan heeft de response een persoon met een 'kind' met alleen de volgende gegevens
-    | naam | waarde |
-    | type | Kind   |
-    En heeft de 'kind' alleen de volgende 'geboorte' gegevens
+    Dan heeft de response een persoon met een 'kind' met alleen de volgende 'geboorte' gegevens
     | naam                                         | waarde                |
     | datum.type                                   | Datum                 |
     | datum.datum                                  | 1963-04-05            |

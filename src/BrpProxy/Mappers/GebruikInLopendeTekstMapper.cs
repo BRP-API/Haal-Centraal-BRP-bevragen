@@ -48,7 +48,7 @@ public static class GebruikInLopendeTekstMapper
         { "R-M", RIDDER },
     };
 
-    private static string? BepaalGebruikInLopendeTekstZonderAdellijkeTitelOfPredicaat(this NaamPersoon persoon, AbstractPartner? partner)
+    private static string? BepaalGebruikInLopendeTekstZonderAdellijkeTitelOfPredicaat(this NaamPersoon persoon, Partner? partner)
     {
         if (persoon.HeeftLeegOfOnbekendGeslachtsnaam() &&
             persoon.HeeftGeenPartnerNaamgebruik())
@@ -88,7 +88,7 @@ public static class GebruikInLopendeTekstMapper
         return GebruikInLopendeTekstAdellijkeTitelPredicaat.ContainsKey(key);
     }
 
-    private static string? BepaalGebruikInLopendeTekstVoorHoffelijkheidsTitel(this NaamPersoon persoon, AbstractPartner partner)
+    private static string? BepaalGebruikInLopendeTekstVoorHoffelijkheidsTitel(this NaamPersoon persoon, Partner partner)
     {
         var key = $"{partner.AdellijkeTitelPredicaat()}-{persoon.Geslacht()}";
         var titel = GebruikInLopendeTekstAdellijkeTitelPredicaat.ContainsKey(key)
@@ -119,7 +119,7 @@ public static class GebruikInLopendeTekstMapper
         return Regex.Replace(retval, @"\s+", " ").Trim().ToNull();
     }
 
-    private static string? BepaalGebruikInLopendeTekstVoorAdellijkeTitelOfPredicaat(this NaamPersoon persoon, AbstractPartner? partner)
+    private static string? BepaalGebruikInLopendeTekstVoorAdellijkeTitelOfPredicaat(this NaamPersoon persoon, Partner? partner)
     {
         var key = $"{persoon.AdellijkeTitelPredicaat()}-{persoon.Geslacht()}";
         var titel = GebruikInLopendeTekstAdellijkeTitelPredicaat.ContainsKey(key)
@@ -151,7 +151,7 @@ public static class GebruikInLopendeTekstMapper
         return Regex.Replace(retval, @"\s+", " ").Trim().ToNull();
     }
 
-    private static string? BepaalGebruikInLopendeTekstVoorUitHoffelijkheidsTitelVanPartner(this NaamPersoon persoon, AbstractPartner? partner)
+    private static string? BepaalGebruikInLopendeTekstVoorUitHoffelijkheidsTitelVanPartner(this NaamPersoon persoon, Partner? partner)
     {
         var keyTitelPersoon = $"{persoon.AdellijkeTitelPredicaat()}-{persoon.Geslacht()}";
         var titelPersoon = GebruikInLopendeTekstAdellijkeTitelPredicaat.ContainsKey(keyTitelPersoon)

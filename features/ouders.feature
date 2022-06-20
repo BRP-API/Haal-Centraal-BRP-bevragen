@@ -265,4 +265,4 @@ Rule: Wanneer van de ouder wel gegevens geregistreerd zijn, maar geen van de met
     | type                | RaadpleegMetBurgerservicenummer             |
     | burgerservicenummer | 555550001                                   |
     | fields              | ouders.naam.voornamen,ouders.geboorte.datum |
-    Dan heeft de persoon met burgerservicenummer '555550001' een 'ouders' zonder gegevens
+    Dan heeft de response een persoon met een leeg 'ouder' object

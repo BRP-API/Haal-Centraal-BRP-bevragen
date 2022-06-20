@@ -4,16 +4,16 @@ namespace BrpProxy.Mappers;
 
 public static class PartnerHelpers
 {
-    public static bool IsExPartner(this AbstractPartner? partner) => partner is OntbondenPartner;
+    public static bool IsExPartner(this Partner? partner) => partner != null && partner.OntbindingHuwelijkPartnerschap != null;
 
-    public static bool IsActueelPartner(this AbstractPartner? partner) => partner != null && !partner.IsExPartner();
+    public static bool IsActueelPartner(this Partner? partner) => partner != null && !partner.IsExPartner();
 
     public static bool HeeftGeenPartner(this NaamPersoon persoon)
     {
         return !(persoon.Partners?.Count > 0);
     }
 
-    private static AbstractPartner? SelecteerOudstePartnerRelatie(this IEnumerable<AbstractPartner>? partners)
+    private static Partner? SelecteerOudstePartnerRelatie(this IEnumerable<Partner>? partners)
     {
         if (partners == null) return null;
 
@@ -37,23 +37,20 @@ public static class PartnerHelpers
         return retval;
     }
 
-    private static AbstractPartner? SelecteerLaatstOntbondenPartnerRelatie(this IEnumerable<AbstractPartner>? partners)
+    private static Partner? SelecteerLaatstOntbondenPartnerRelatie(this IEnumerable<Partner>? partners)
     {
         if (partners == null) return null;
 
-        OntbondenPartner? retval = null;
+        Partner? retval = null;
 
         foreach (var partner in partners)
         {
-            if (partner is OntbondenPartner p)
+            if (partner.OntbindingHuwelijkPartnerschap != null)
             {
-                if (retval == null)
+                if(retval == null ||
+                   partner.OntbindingHuwelijkPartnerschap.Datum > retval.OntbindingHuwelijkPartnerschap.Datum)
                 {
-                    retval = p;
-                }
-                else if (p.OntbindingHuwelijkPartnerschap!.Datum > retval.OntbindingHuwelijkPartnerschap!.Datum)
-                {
-                    retval = p;
+                    retval = partner;
                 }
             }
         }
@@ -61,7 +58,7 @@ public static class PartnerHelpers
         return retval;
     }
 
-    public static AbstractPartner? ActuelePartner(this IEnumerable<AbstractPartner>? partners)
+    public static Partner? ActuelePartner(this IEnumerable<Partner>? partners)
     {
         // Rule 650
         var partner = partners.SelecteerOudstePartnerRelatie();

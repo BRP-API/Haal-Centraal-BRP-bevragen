@@ -168,11 +168,11 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | plaats.code | 0000     |
       | land.code   | 0000     |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                                     |
-      | type                | RaadpleegMetBurgerservicenummer                            |
-      | burgerservicenummer | 555550005                                                  |
-      | fields              | burgerservicenummer,kinderen.naam,kinderen.geboorte.plaats |
-      Dan heeft de persoon met burgerservicenummer '555550005' een 'kind' zonder gegevens
+      | naam                | waarde                                 |
+      | type                | RaadpleegMetBurgerservicenummer        |
+      | burgerservicenummer | 555550005                              |
+      | fields              | kinderen.naam,kinderen.geboorte.plaats |
+      Dan heeft de response een persoon met een leeg 'kind' object
 
     @proxy
     Scenario: Met fields zijn alleen velden zonder waarde gevraagd
@@ -190,8 +190,8 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | naam  | waarde   |
       | datum | 19750730 |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                      |
-      | type                | RaadpleegMetBurgerservicenummer             |
-      | burgerservicenummer | 555550006                                   |
-      | fields              | burgerservicenummer,kinderen.naam.voornamen |
-      Dan heeft de persoon met burgerservicenummer '555550006' een 'kind' zonder gegevens
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 555550006                       |
+      | fields              | kinderen.naam.voornamen         |
+      Dan heeft de response een persoon met een leeg 'kind' object

@@ -17,7 +17,6 @@ Functionaliteit: Ouder
     | fields              | ouders                          |
     Dan heeft de response een persoon met een 'ouder' met alleen de volgende gegevens
     | naam   | waarde   |
-    | type   | Ouder    |
     | <naam> | <waarde> |
 
     Voorbeelden:
@@ -38,10 +37,7 @@ Functionaliteit: Ouder
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
     | fields              | ouders.<gegevensgroep>.<naam>   |
-    Dan heeft de response een persoon met een 'ouder' met alleen de volgende gegevens
-    | naam | waarde |
-    | type | Ouder  |
-    En heeft de 'ouder' alleen de volgende '<gegevensgroep>' gegevens
+    Dan heeft de response een persoon met een 'ouder' met alleen de volgende '<gegevensgroep>' gegevens
     | naam   | waarde   |
     | <naam> | <waarde> |
 
@@ -69,10 +65,7 @@ Functionaliteit: Ouder
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
     | fields              | ouders.naam.voorletters         |
-    Dan heeft de response een persoon met een 'ouder' met alleen de volgende gegevens
-    | naam | waarde |
-    | type | Ouder  |
-    En heeft de 'ouder' alleen de volgende 'naam' gegevens
+    Dan heeft de response een persoon met een 'ouder' met alleen de volgende 'naam' gegevens
     | naam        | waarde |
     | voorletters | A.J.   |
 
@@ -88,9 +81,7 @@ Functionaliteit: Ouder
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
     | fields              | ouders.<gegevensgroep>          |
-    Dan heeft de response een persoon met een 'ouder' met alleen de volgende gegevens
-    | naam | waarde |
-    | type | Ouder  |
+    Dan heeft de response een persoon met een leeg 'ouder' object
 
     Voorbeelden:
     | gegevensgroep | gba naam              | naam          | waarde |
@@ -110,7 +101,6 @@ Functionaliteit: Ouder
     | fields              | ouders                          |
     Dan heeft de response een persoon met een 'ouder' met alleen de volgende gegevens
     | naam               | waarde         |
-    | type               | Ouder          |
     | <naam>.type        | Datum          |
     | <naam>.datum       | <waarde>       |
     | <naam>.langFormaat | <lang formaat> |
@@ -131,10 +121,7 @@ Functionaliteit: Ouder
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
     | fields              | ouders.<gegevensgroep>          |
-    Dan heeft de response een persoon met een 'ouder' met alleen de volgende gegevens
-    | naam | waarde |
-    | type | Ouder  |
-    En heeft de 'ouder' alleen de volgende '<gegevensgroep>' gegevens
+    Dan heeft de response een persoon met een 'ouder' met alleen de volgende '<gegevensgroep>' gegevens
     | naam               | waarde         |
     | <naam>.type        | Datum          |
     | <naam>.datum       | <waarde>       |
@@ -160,7 +147,6 @@ Functionaliteit: Ouder
     | fields              | ouders                          |
     Dan heeft de response een persoon met een 'ouder' met alleen de volgende gegevens
     | naam                                                | waarde                                                    |
-    | type                                                | Ouder                                                     |
     | ouderAanduiding                                     | <ouder aanduiding>                                        |
     | inOnderzoek.burgerservicenummer                     | <burgerservicenummer in onderzoek>                        |
     | inOnderzoek.geslacht                                | <geslacht in onderzoek>                                   |
@@ -203,10 +189,7 @@ Functionaliteit: Ouder
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
     | fields              | ouders.naam                     |
-    Dan heeft de response een persoon met een 'ouder' met alleen de volgende gegevens
-    | naam | waarde |
-    | type | Ouder  |
-    En heeft de 'ouder' alleen de volgende 'naam' gegevens
+    Dan heeft de response een persoon met een 'ouder' met alleen de volgende 'naam' gegevens
     | naam                                         | waarde                                      |
     | geslachtsnaam                                | Groen                                       |
     | inOnderzoek.voornamen                        | <voornamen in onderzoek>                    |
@@ -250,10 +233,7 @@ Functionaliteit: Ouder
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
     | fields              | ouders.geboorte                 |
-    Dan heeft de response een persoon met een 'ouder' met alleen de volgende gegevens
-    | naam | waarde |
-    | type | Ouder  |
-    En heeft de 'ouder' alleen de volgende 'geboorte' gegevens
+    Dan heeft de response een persoon met een 'ouder' met alleen de volgende 'geboorte' gegevens
     | naam                                         | waarde                |
     | datum.type                                   | Datum                 |
     | datum.datum                                  | 1963-04-05            |

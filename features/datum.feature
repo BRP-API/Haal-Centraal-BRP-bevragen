@@ -88,7 +88,6 @@ Functionaliteit: leveren van een datum
       | fields              | ouders.datumIngangFamilierechtelijkeBetrekking |
       Dan heeft de response een persoon met een 'ouder' met de volgende gegevens
       | naam                                                | waarde    |
-      | type                                                | Ouder     |
       | datumIngangFamilierechtelijkeBetrekking.type        | JaarDatum |
       | datumIngangFamilierechtelijkeBetrekking.jaar        | 1963      |
       | datumIngangFamilierechtelijkeBetrekking.langFormaat | 1963      |
@@ -296,7 +295,6 @@ Functionaliteit: leveren van een datum
       | fields              | ouders.datumIngangFamilierechtelijkeBetrekking |
       Dan heeft de response een persoon met een 'ouder' met de volgende gegevens
       | naam                                                | waarde        |
-      | type                                                | Ouder         |
       | datumIngangFamilierechtelijkeBetrekking.type        | <type>        |
       | datumIngangFamilierechtelijkeBetrekking.datum       | <datum>       |
       | datumIngangFamilierechtelijkeBetrekking.jaar        | <jaar>        |
@@ -323,10 +321,7 @@ Functionaliteit: leveren van een datum
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550001                       |
       | fields              | <field>.<groep>.<veld>          |
-      Dan heeft de response een persoon met een '<relatie>' met de volgende gegevens
-      | naam | waarde         |
-      | type | <relatie type> |
-      En heeft de '<relatie>' de volgende '<groep>' gegevens
+      Dan heeft de response een persoon met een '<relatie>' met de volgende '<groep>' gegevens
       | naam               | waarde        |
       | <veld>.type        | <type>        |
       | <veld>.datum       | <datum>       |
@@ -336,23 +331,23 @@ Functionaliteit: leveren van een datum
       | <veld>.langFormaat | <langFormaat> |
 
       Voorbeelden:
-      | relatie type | relatie | field    | groep                       | veld  | type           | GbaDatum | datum      | jaar | maand | onbekend | langFormaat  |
-      | Ouder        | ouder   | ouders   | geboorte                    | datum | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
-      | Ouder        | ouder   | ouders   | geboorte                    | datum | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
-      | Ouder        | ouder   | ouders   | geboorte                    | datum | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
-      | Ouder        | ouder   | ouders   | geboorte                    | datum | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
-      | Partner      | partner | partners | geboorte                    | datum | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
-      | Partner      | partner | partners | geboorte                    | datum | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
-      | Partner      | partner | partners | geboorte                    | datum | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
-      | Partner      | partner | partners | geboorte                    | datum | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
-      | Partner      | partner | partners | aangaanHuwelijkPartnerschap | datum | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
-      | Partner      | partner | partners | aangaanHuwelijkPartnerschap | datum | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
-      | Partner      | partner | partners | aangaanHuwelijkPartnerschap | datum | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
-      | Partner      | partner | partners | aangaanHuwelijkPartnerschap | datum | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
-      | Kind         | kind    | kinderen | geboorte                    | datum | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
-      | Kind         | kind    | kinderen | geboorte                    | datum | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
-      | Kind         | kind    | kinderen | geboorte                    | datum | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
-      | Kind         | kind    | kinderen | geboorte                    | datum | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | relatie | field    | groep                       | veld  | type           | GbaDatum | datum      | jaar | maand | onbekend | langFormaat  |
+      | ouder   | ouders   | geboorte                    | datum | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | ouder   | ouders   | geboorte                    | datum | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | ouder   | ouders   | geboorte                    | datum | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | ouder   | ouders   | geboorte                    | datum | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | partner | partners | geboorte                    | datum | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | partner | partners | geboorte                    | datum | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | partner | partners | geboorte                    | datum | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | partner | partners | geboorte                    | datum | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | partner | partners | aangaanHuwelijkPartnerschap | datum | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | partner | partners | aangaanHuwelijkPartnerschap | datum | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | partner | partners | aangaanHuwelijkPartnerschap | datum | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | partner | partners | aangaanHuwelijkPartnerschap | datum | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | kind    | kinderen | geboorte                    | datum | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | kind    | kinderen | geboorte                    | datum | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | kind    | kinderen | geboorte                    | datum | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | kind    | kinderen | geboorte                    | datum | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
 
     Abstract Scenario: <type> <groep> <veld> van <relatie>
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -367,10 +362,7 @@ Functionaliteit: leveren van een datum
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550001                       |
       | fields              | <field>.<groep>.<veld>          |
-      Dan heeft de response een persoon met een '<relatie>' met de volgende gegevens
-      | naam | waarde         |
-      | type | <relatie type> |
-      En heeft de '<relatie>' de volgende '<groep>' gegevens
+      Dan heeft de response een persoon met een '<relatie>' met de volgende '<groep>' gegevens
       | naam               | waarde        |
       | <veld>.type        | <type>        |
       | <veld>.datum       | <datum>       |
@@ -380,19 +372,19 @@ Functionaliteit: leveren van een datum
       | <veld>.langFormaat | <langFormaat> |
 
       Voorbeelden:
-      | relatie type | relatie | field    | groep       | veld                 | type           | GBA InOnderzoek waarde | GbaDatum | datum      | jaar | maand | onbekend | langFormaat  |
-      | Ouder        | ouder   | ouders   | inOnderzoek | datumIngangOnderzoek | Datum          | 020000                 | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
-      | Ouder        | ouder   | ouders   | inOnderzoek | datumIngangOnderzoek | DatumOnbekend  | 020000                 | 00000000 |            |      |       | true     | onbekend     |
-      | Ouder        | ouder   | ouders   | inOnderzoek | datumIngangOnderzoek | JaarDatum      | 020000                 | 20200000 |            | 2020 |       |          | 2020         |
-      | Ouder        | ouder   | ouders   | inOnderzoek | datumIngangOnderzoek | JaarMaandDatum | 020000                 | 20200300 |            | 2020 | 3     |          | maart 2020   |
-      | Partner      | partner | partners | inOnderzoek | datumIngangOnderzoek | Datum          | 050000                 | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
-      | Partner      | partner | partners | inOnderzoek | datumIngangOnderzoek | DatumOnbekend  | 050000                 | 00000000 |            |      |       | true     | onbekend     |
-      | Partner      | partner | partners | inOnderzoek | datumIngangOnderzoek | JaarDatum      | 050000                 | 20200000 |            | 2020 |       |          | 2020         |
-      | Partner      | partner | partners | inOnderzoek | datumIngangOnderzoek | JaarMaandDatum | 050000                 | 20200300 |            | 2020 | 3     |          | maart 2020   |
-      | Kind         | kind    | kinderen | inOnderzoek | datumIngangOnderzoek | Datum          | 090000                 | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
-      | Kind         | kind    | kinderen | inOnderzoek | datumIngangOnderzoek | DatumOnbekend  | 090000                 | 00000000 |            |      |       | true     | onbekend     |
-      | Kind         | kind    | kinderen | inOnderzoek | datumIngangOnderzoek | JaarDatum      | 090000                 | 20200000 |            | 2020 |       |          | 2020         |
-      | Kind         | kind    | kinderen | inOnderzoek | datumIngangOnderzoek | JaarMaandDatum | 090000                 | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | relatie | field    | groep       | veld                 | type           | GBA InOnderzoek waarde | GbaDatum | datum      | jaar | maand | onbekend | langFormaat  |
+      | ouder   | ouders   | inOnderzoek | datumIngangOnderzoek | Datum          | 020000                 | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | ouder   | ouders   | inOnderzoek | datumIngangOnderzoek | DatumOnbekend  | 020000                 | 00000000 |            |      |       | true     | onbekend     |
+      | ouder   | ouders   | inOnderzoek | datumIngangOnderzoek | JaarDatum      | 020000                 | 20200000 |            | 2020 |       |          | 2020         |
+      | ouder   | ouders   | inOnderzoek | datumIngangOnderzoek | JaarMaandDatum | 020000                 | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | partner | partners | inOnderzoek | datumIngangOnderzoek | Datum          | 050000                 | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | partner | partners | inOnderzoek | datumIngangOnderzoek | DatumOnbekend  | 050000                 | 00000000 |            |      |       | true     | onbekend     |
+      | partner | partners | inOnderzoek | datumIngangOnderzoek | JaarDatum      | 050000                 | 20200000 |            | 2020 |       |          | 2020         |
+      | partner | partners | inOnderzoek | datumIngangOnderzoek | JaarMaandDatum | 050000                 | 20200300 |            | 2020 | 3     |          | maart 2020   |
+      | kind    | kinderen | inOnderzoek | datumIngangOnderzoek | Datum          | 090000                 | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | kind    | kinderen | inOnderzoek | datumIngangOnderzoek | DatumOnbekend  | 090000                 | 00000000 |            |      |       | true     | onbekend     |
+      | kind    | kinderen | inOnderzoek | datumIngangOnderzoek | JaarDatum      | 090000                 | 20200000 |            | 2020 |       |          | 2020         |
+      | kind    | kinderen | inOnderzoek | datumIngangOnderzoek | JaarMaandDatum | 090000                 | 20200300 |            | 2020 | 3     |          | maart 2020   |
 
   Rule: verblijfplaats datumVan wordt gevuld uit datumAanvangAdreshouding of datumAanvangAdresBuitenland
 

@@ -8,11 +8,6 @@ namespace BrpProxy.Profiles
     {
         public KindProfile()
         {
-            CreateMap<GbaKind, AbstractKind>()
-                .ConvertUsing<KindConverter>();
-
-            CreateMap<GbaKind, KindOnbekend>();
-
             CreateMap<GbaKind, Kind>()
                 .BeforeMap((src, dest) =>
                 {

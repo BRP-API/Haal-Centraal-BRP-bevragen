@@ -92,35 +92,32 @@ public static class AdellijkeTitelPredicaatHelpers
             ? naam.AdellijkeTitelPredicaat.Code
             : string.Empty;
 
-    public static string AdellijkeTitelPredicaat(this AbstractPartner? partner) =>
-        partner is Partner p && p.Naam.AdellijkeTitelPredicaat != null
-            ? p.Naam.AdellijkeTitelPredicaat.Code
+    public static string AdellijkeTitelPredicaat(this Partner? partner) =>
+        partner?.Naam.AdellijkeTitelPredicaat != null
+            ? partner.Naam.AdellijkeTitelPredicaat.Code
             : String.Empty;
 
-    public static AdellijkeTitelPredicaatType? AdellijkeTitelPredicaatType(this AbstractPartner? partner) =>
-        partner is Partner p &&
-        p.Naam.AdellijkeTitelPredicaat != null
-            ? p.Naam.AdellijkeTitelPredicaat
+    public static AdellijkeTitelPredicaatType? AdellijkeTitelPredicaatType(this Partner? partner) =>
+        partner?.Naam.AdellijkeTitelPredicaat != null
+            ? partner.Naam.AdellijkeTitelPredicaat
             : null;
 
     public static bool HeeftAdellijkeTitel(this NaamPersoon naam) =>
         naam.AdellijkeTitelPredicaat != null &&
         AdellijkeTitels.ContainsKey(naam.AdellijkeTitelPredicaat.Code);
 
-    public static bool HeeftAdellijkeTitel(this AbstractPartner? partner) =>
-        partner is Partner p &&
-        p.Naam.AdellijkeTitelPredicaat != null &&
-        AdellijkeTitels.ContainsKey(p.Naam.AdellijkeTitelPredicaat.Code);
+    public static bool HeeftAdellijkeTitel(this Partner? partner) =>
+        partner?.Naam.AdellijkeTitelPredicaat != null &&
+        AdellijkeTitels.ContainsKey(partner.Naam.AdellijkeTitelPredicaat.Code);
 
     public static bool HeeftAdellijkeTitelOfPredicaat(this NaamPersoon persoon) => persoon.AdellijkeTitelPredicaat != null;
 
-    public static bool HeeftAdellijkeTitelOfPredicaat(this AbstractPartner? partner) =>
-        partner is Partner p &&
-        p.Naam.AdellijkeTitelPredicaat != null;
+    public static bool HeeftAdellijkeTitelOfPredicaat(this Partner? partner) =>
+        partner?.Naam.AdellijkeTitelPredicaat != null;
 
     public static bool HeeftGeenAdellijkeTitelOfPredicaat(this NaamPersoon persoon) => !persoon.HeeftAdellijkeTitelOfPredicaat();
 
-    public static bool HeeftGeenAdellijkeTitelOfPredicaat(this AbstractPartner? partner) => !partner.HeeftAdellijkeTitelOfPredicaat();
+    public static bool HeeftGeenAdellijkeTitelOfPredicaat(this Partner? partner) => !partner.HeeftAdellijkeTitelOfPredicaat();
 
     public static bool HeeftAdellijkeTitelMetAanspreekvorm(this NaamPersoon persoon)
     {
@@ -140,11 +137,11 @@ public static class AdellijkeTitelPredicaatHelpers
         !string.IsNullOrWhiteSpace(naam.AdellijkeTitelPredicaat?.Code) &&
         Predicaten.ContainsKey(naam.AdellijkeTitelPredicaat.Code);
 
-    public static bool HeeftHoffelijkheidstitelMetAanspreekvorm(this AbstractPartner? partner) =>
+    public static bool HeeftHoffelijkheidstitelMetAanspreekvorm(this Partner? partner) =>
         partner != null &&
         HoffelijkheidsTitels.ContainsKey(partner.AdellijkeTitelPredicaat());
 
-    public static string BepaalHoffelijkheidstitel(this AbstractPartner? partner) => HoffelijkheidsTitels[partner.AdellijkeTitelPredicaat()];
+    public static string BepaalHoffelijkheidstitel(this Partner? partner) => HoffelijkheidsTitels[partner.AdellijkeTitelPredicaat()];
 
     public static bool HeeftGeenAdellijkeTitelMetAanspreekvorm(this NaamPersoon persoon) => !persoon.HeeftAdellijkeTitelMetAanspreekvorm();
 

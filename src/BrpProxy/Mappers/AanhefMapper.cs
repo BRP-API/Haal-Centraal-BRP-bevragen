@@ -5,7 +5,7 @@ namespace BrpProxy.Mappers;
 
 public static class AanhefMapper
 {
-    private static string? BepaalAanhefZonderAdellijkeTitelOfPredicaat(this NaamPersoon persoon, AbstractPartner? partner)
+    private static string? BepaalAanhefZonderAdellijkeTitelOfPredicaat(this NaamPersoon persoon, Partner? partner)
     {
         // Rule 788 en 789
         if (persoon.HeeftLeegOfOnbekendGeslachtsnaam() &&
@@ -17,7 +17,6 @@ public static class AanhefMapper
         var partnerNaam = partner switch
         {
             Partner p => p.Naam.Achternaam(),
-            OntbondenPartner p => p.Naam.Achternaam(),
             _ => ""
         };
         var persoonNaam = persoon.Achternaam();

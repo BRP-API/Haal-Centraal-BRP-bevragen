@@ -16,6 +16,6 @@ namespace HaalCentraal.BrpProxy.Generated
             ;
 
         [JsonIgnore]
-        public ICollection<AbstractPartner>? Partners { get; set; }
+        public ICollection<Partner>? Partners { get; set; }
     }
 }

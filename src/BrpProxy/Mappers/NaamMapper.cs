@@ -34,13 +34,10 @@ public static class NaamMapper
             : string.Empty;
     }
 
-    public static string Achternaam(this AbstractPartner? partner)
+    public static string Achternaam(this Partner? partner)
     {
-        return partner switch
-        {
-            Partner p => p.Naam.Achternaam(),
-            OntbondenPartner p => p.Naam.Achternaam(),
-            _ => string.Empty
-        };
+        return partner != null
+            ? partner.Naam.Achternaam()
+            : string.Empty;
     }
 }

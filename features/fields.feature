@@ -158,13 +158,12 @@ Functionaliteit: Fields
 
     Scenario: Gevraagd veld is een gegeven van een gegevensgroep collectie van de persoon
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                     |
-      | type                | RaadpleegMetBurgerservicenummer            |
-      | burgerservicenummer | 999991929                                  |
-      | fields              | partners.type,partners.burgerservicenummer |
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999991929                       |
+      | fields              | partners.burgerservicenummer    |
       Dan heeft de response een persoon met een 'partner' met alleen de volgende gegevens
       | naam                | waarde    |
-      | type                | Partner   |
       | burgerservicenummer | 999992971 |
 
     Abstract Scenario: Gevraagd veld heeft geen waarde voor de persoon

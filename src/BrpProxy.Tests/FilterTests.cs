@@ -2,9 +2,11 @@ using BrpProxy.Validators;
 using FluentAssertions;
 using HaalCentraal.BrpProxy.Generated;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using Xunit;
 
 namespace BrpProxy.Tests;
@@ -44,7 +46,7 @@ public class FilterTests
                     }
                 }
             },
-            Partners = new Collection<AbstractPartner>
+            Partners = new Collection<Partner>
             {
                 new Partner
                 {
@@ -53,13 +55,9 @@ public class FilterTests
                 new Partner
                 {
                     Burgerservicenummer = "23456"
-                },
-                new PartnerOnbekend
-                {
-                    IndicatieOnbekend = true
                 }
             },
-            Ouders = new Collection<AbstractOuder>
+            Ouders = new Collection<Ouder>
             {
                 new Ouder
                 {
@@ -68,21 +66,17 @@ public class FilterTests
                 new Ouder
                 {
                     Burgerservicenummer = "23456"
-                },
-                new OuderOnbekend
-                {
-                    IndicatieOnbekend = true
                 }
             },
             Nationaliteiten = new Collection<AbstractNationaliteit>
             {
-                new Nationaliteit
+                new NationaliteitBekend
                 {
-                    Nationaliteit1 = new Waardetabel{ Code = "1"}
+                    Nationaliteit = new Waardetabel{ Code = "1"}
                 },
-                new Nationaliteit
+                new NationaliteitBekend
                 {
-                    Nationaliteit1 = new Waardetabel { Code = "2"}
+                    Nationaliteit = new Waardetabel { Code = "2"}
                 },
                 new BehandeldAlsNederlander
                 {
@@ -93,7 +87,7 @@ public class FilterTests
                     RedenOpname= new Waardetabel{ Code= "4"}
                 }
             },
-            Kinderen = new Collection<AbstractKind>
+            Kinderen = new Collection<Kind>
             {
                 new Kind
                 {
@@ -106,10 +100,6 @@ public class FilterTests
                 new Kind
                 {
                     Burgerservicenummer = "23456"
-                },
-                new KindOnbekend
-                {
-                    IndicatieOnbekend = true
                 }
             },
             Verblijfplaats = new Adres
@@ -241,7 +231,7 @@ public class FilterTests
             .Should().Be(
             new Persoon
             {
-                Partners = new Collection<AbstractPartner>
+                Partners = new Collection<Partner>
                 {
                     new Partner
                     {
@@ -250,10 +240,6 @@ public class FilterTests
                     new Partner
                     {
                         Burgerservicenummer = "23456"
-                    },
-                    new PartnerOnbekend
-                    {
-                        IndicatieOnbekend = true
                     }
                 }
             }.ToJson());
@@ -266,7 +252,7 @@ public class FilterTests
             .Should().Be(
             new Persoon
             {
-                Ouders = new Collection<AbstractOuder>
+                Ouders = new Collection<Ouder>
                 {
                     new Ouder
                     {
@@ -275,10 +261,6 @@ public class FilterTests
                     new Ouder
                     {
                         Burgerservicenummer = "23456"
-                    },
-                    new OuderOnbekend
-                    {
-                        IndicatieOnbekend = true
                     }
                 }
             }.ToJson());
@@ -291,7 +273,7 @@ public class FilterTests
             .Should().Be(
             new Persoon
             {
-                Kinderen = new Collection<AbstractKind>
+                Kinderen = new Collection<Kind>
                 {
                     new Kind
                     {
@@ -304,10 +286,6 @@ public class FilterTests
                     new Kind
                     {
                         Burgerservicenummer = "23456"
-                    },
-                    new KindOnbekend
-                    {
-                        IndicatieOnbekend = true
                     }
                 }
             }.ToJson());
@@ -320,7 +298,7 @@ public class FilterTests
             .Should().Be(
             new Persoon
             {
-                Kinderen = new Collection<AbstractKind>
+                Kinderen = new Collection<Kind>
                 {
                     new Kind
                     {
@@ -329,10 +307,6 @@ public class FilterTests
                     new Kind
                     {
                         Burgerservicenummer = "23456"
-                    },
-                    new KindOnbekend
-                    {
-                        IndicatieOnbekend = true
                     }
                 }
             }.ToJson());
@@ -347,13 +321,13 @@ public class FilterTests
             {
                 Nationaliteiten = new Collection<AbstractNationaliteit>
                 {
-                    new Nationaliteit
+                    new NationaliteitBekend
                     {
-                        Nationaliteit1 = new Waardetabel{ Code = "1"}
+                        Nationaliteit = new Waardetabel{ Code = "1"}
                     },
-                    new Nationaliteit
+                    new NationaliteitBekend
                     {
-                        Nationaliteit1 = new Waardetabel { Code = "2"}
+                        Nationaliteit = new Waardetabel { Code = "2"}
                     },
                     new BehandeldAlsNederlander
                     {
@@ -421,11 +395,10 @@ public class FilterTests
             {
                 new Persoon {
                     Burgerservicenummer = "12345",
-                    Partners = new Collection<AbstractPartner>
+                    Partners = new Collection<Partner>
                     {
                         new Partner { Burgerservicenummer = "12345" },
-                        new Partner { Burgerservicenummer = "23456" },
-                        new PartnerOnbekend { IndicatieOnbekend = true}
+                        new Partner { Burgerservicenummer = "23456" }
                     }
                 },
                 new Persoon { Burgerservicenummer = "23456" }

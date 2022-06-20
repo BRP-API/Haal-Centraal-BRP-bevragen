@@ -10,9 +10,7 @@ public static class GeslachtHelpers
 
     public static bool IsMan(this IWaardetabel? geslacht) => geslacht?.Code.ToUpperInvariant() == "M";
 
-    public static bool IsMan(this AbstractPartner? partner) =>
-        partner is Partner p &&
-        p.Geslacht.IsMan();
+    public static bool IsMan(this Partner? partner) => partner != null && partner.Geslacht.IsMan();
 
     public static bool IsMan(this NaamPersoon naam) => naam.Geslacht.IsMan();
 
