@@ -178,7 +178,7 @@ Functionaliteit: Waardetabel met code en omschrijving
 
   Rule: wanneer voor de code geen bijbehorende waarde voorkomt in de tabel, wordt alleen de code geleverd
 
-    Abstract Scenario: geen omschrijving bij code voor <element>
+    Abstract Scenario: code voor <element> komt niet voor in de tabel
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550001 |
