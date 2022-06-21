@@ -321,7 +321,7 @@ Functionaliteit: Zoek met straatnaam/naam openbare ruimte, huisnummer en gemeent
       Als personen wordt gezocht met de volgende parameters
       | naam                       | waarde                                           |
       | type                       | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
-      | straat                     | *van Ock*                                        |
+      | straat                     | <straat>                                         |
       | huisnummer                 | 38                                               |
       | gemeenteVanInschrijving    | 0518                                             |
       | fields                     | burgerservicenummer                              |
