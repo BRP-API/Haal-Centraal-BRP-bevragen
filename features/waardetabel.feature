@@ -5,7 +5,7 @@ Functionaliteit: Waardetabel met code en omschrijving
     landelijke tabel, wordt geleverd met zowel de code als de bijbehorende omschrijving.
 
     Naast velden met een waarde uit een landelijke tabel zijn er ook velden die in de BRP zijn gedefinieerd 
-    met vaste mogelijke waarden. Deze mogelijke waarden en de bijbehorende omschrijvingen staan beschreven 
+    met een lijst van vaste mogelijke waarden. Deze mogelijke waarden en de bijbehorende omschrijvingen staan beschreven 
     in de tabelwaarden feature.
 
     Mogelijke codes en omschrijvingen zijn te raadplegen met de API BRP tabellen bevragen.
