@@ -644,40 +644,33 @@ components:
       description: |
         Het A-nummer van de persoon
     PersoonInOnderzoek:
+      type: object
+      properties:
+        datumIngangOnderzoekPersoon:
+          $ref: '#/components/schemas/AbstractDatum'
+        datumIngangOnderzoekGemeente:
+          $ref: '#/components/schemas/AbstractDatum'
+        datumIngangOnderzoekGezag:
+          $ref: '#/components/schemas/AbstractDatum'
+        burgerservicenummer:
+          type: boolean
+        geslacht:
+          type: boolean
+        leeftijd:
+          type: boolean
+        gemeenteVanInschrijving:
+          type: boolean
+        datumInschrijvingInGemeente:
+          type: boolean
+        indicatieCurateleRegister:
+          type: boolean
+        indicatieGezagMinderjarige:
+          type: boolean
       description: |
         Geeft aan welke gegevens van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v2.0.0/features/in_onderzoek.feature).
         * **datumIngangOnderzoekPersoon - Deze datum heeft betrekking op burgerservicenummer, geslacht en leeftijd
         * **datumIngangOnderzoekGemeente - Deze datum heeft betrekking op gemeenteVanInschrijving en datumInschrijvingInGemeente
         * **datumIngangOnderzoekGezag - Deze datumingang heeft betrekking op indicatieCurateleRegister en indicatieGezagMinderjarige
-      allOf:
-      - $ref: '#/components/schemas/InOnderzoek'
-      - type: object
-        properties:
-          datumIngangOnderzoekPersoon:
-            $ref: '#/components/schemas/AbstractDatum'
-          datumIngangOnderzoekGemeente:
-            $ref: '#/components/schemas/AbstractDatum'
-          datumIngangOnderzoekGezag:
-            $ref: '#/components/schemas/AbstractDatum'
-          burgerservicenummer:
-            type: boolean
-          geslacht:
-            type: boolean
-          leeftijd:
-            type: boolean
-          gemeenteVanInschrijving:
-            type: boolean
-          datumInschrijvingInGemeente:
-            type: boolean
-          indicatieCurateleRegister:
-            type: boolean
-          indicatieGezagMinderjarige:
-            type: boolean
-    InOnderzoek:
-      type: object
-      properties:
-        datumIngangOnderzoek:
-          $ref: '#/components/schemas/AbstractDatum'
     IndicatieCurateleRegister:
       type: boolean
       description: |
@@ -1817,6 +1810,11 @@ components:
             type: boolean
           datum:
             type: boolean
+    InOnderzoek:
+      type: object
+      properties:
+        datumIngangOnderzoek:
+          $ref: '#/components/schemas/AbstractDatum'
     NaamGerelateerde:
       type: object
       properties:
