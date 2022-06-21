@@ -98,3 +98,9 @@ components:
               type: boolean
             gebruikInLopendeTekst:
               type: boolean
+            datumIngangOnderzoekPersoon:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+            datumIngangOnderzoekPartner:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+            datumIngangOnderzoekVerblijfplaats:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
