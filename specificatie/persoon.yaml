@@ -39,12 +39,6 @@ components:
       example: 34
       minimum: 0
       maximum: 150
-    Reisdocumentnummer:
-      type: string
-      pattern: ^[0-9a-zA-Z]{9}$
-      description: |
-        Het nummer van het verstrekte Nederlandse reisdocument.
-      example: "546376728"
     GbaPersoonBeperkt:
       type: object
       properties:
@@ -138,10 +132,6 @@ components:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         verblijfstitel:
           $ref: 'verblijfstitel.yaml#/components/schemas/GbaVerblijfstitel'
-        reisdocumentnummers:
-          type: array
-          items:
-            $ref: '#/components/schemas/Reisdocumentnummer'
         kinderen:
           type: array
           items:
@@ -205,10 +195,6 @@ components:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         verblijfstitel:
           $ref: 'verblijfstitel.yaml#/components/schemas/Verblijfstitel'
-        reisdocumentnummers:
-          type: array
-          items:
-            $ref: '#/components/schemas/Reisdocumentnummer'
         kinderen:
           type: array
           items:
