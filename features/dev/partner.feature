@@ -109,11 +109,12 @@ Functionaliteit: Partner
     | <naam>.langFormaat | <lang formaat> |
 
     Voorbeelden:
-    | gegevensgroep               | gba naam                                                           | gba waarde | naam  | waarde     | lang formaat    |
-    | geboorte                    | geboortedatum (03.10)                                              | 20020701   | datum | 2002-07-01 | 1 juli 2002     |
-    | aangaanHuwelijkPartnerschap | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 20180808   | datum | 2018-08-08 | 8 augustus 2018 |
+    | gegevensgroep                  | gba naam                                                           | gba waarde | naam  | waarde     | lang formaat    |
+    | geboorte                       | geboortedatum (03.10)                                              | 20020701   | datum | 2002-07-01 | 1 juli 2002     |
+    | aangaanHuwelijkPartnerschap    | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 20180808   | datum | 2018-08-08 | 8 augustus 2018 |
+    | ontbindingHuwelijkPartnerschap | datum ontbinding huwelijk/geregistreerd partnerschap (07.10)       | 20201001   | datum | 2020-10-01 | 1 oktober 2020  |
 
-  Abstract Scenario: partner velden is in onderzoek
+  Abstract Scenario: veld(en) van partner is/zijn in onderzoek
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |
@@ -145,7 +146,7 @@ Functionaliteit: Partner
     | 051500                  |                                  | true                           |                       |
     | 051510                  |                                  | true                           |                       |
 
-  Abstract Scenario: partner's naam velden is in onderzoek
+  Abstract Scenario: naam veld(en) van partner is/zijn in onderzoek
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |
@@ -182,7 +183,7 @@ Functionaliteit: Partner
     | 050230                  |                        |                                      | true                     |                            |                          |
     | 050240                  |                        |                                      |                          | true                       |                          |
 
-    Abstract Scenario: partner's geboorte velden is in onderzoek
+    Abstract Scenario: geboorte veld(en) van partner is/zijn in onderzoek
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 555550001 |

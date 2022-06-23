@@ -16,17 +16,17 @@ public class PersoonInOnderzoekConverter : ITypeConverter<GbaInOnderzoek, Persoo
                 Burgerservicenummer = true,
                 Geslacht = true,
                 Leeftijd = true,
-                DatumIngangOnderzoek = source.DatumIngangOnderzoek?.Map()
+                DatumIngangOnderzoekPersoon = source.DatumIngangOnderzoek?.Map()
             },
             "010100" or "010120" => new PersoonInOnderzoek
             {
                 Burgerservicenummer = true,
-                DatumIngangOnderzoek = source.DatumIngangOnderzoek?.Map()
+                DatumIngangOnderzoekPersoon = source.DatumIngangOnderzoek?.Map()
             },
             "010400" or "010410" => new PersoonInOnderzoek
             {
                 Geslacht = true,
-                DatumIngangOnderzoek = source.DatumIngangOnderzoek?.Map()
+                DatumIngangOnderzoekPersoon = source.DatumIngangOnderzoek?.Map()
             },
             _ => null,
         };
