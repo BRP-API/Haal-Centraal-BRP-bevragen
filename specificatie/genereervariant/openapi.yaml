@@ -1617,32 +1617,30 @@ components:
         Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert.
       example: baron Van den Aedel
     AdresseringInOnderzoek:
+      type: object
+      properties:
+        aanhef:
+          type: boolean
+        adresregel1:
+          type: boolean
+        adresregel2:
+          type: boolean
+        adresregel3:
+          type: boolean
+        land:
+          type: boolean
+        aanschrijfwijze:
+          type: boolean
+        gebruikInLopendeTekst:
+          type: boolean
+        datumIngangOnderzoekPersoon:
+          $ref: '#/components/schemas/AbstractDatum'
+        datumIngangOnderzoekPartner:
+          $ref: '#/components/schemas/AbstractDatum'
+        datumIngangOnderzoekVerblijfplaats:
+          $ref: '#/components/schemas/AbstractDatum'
       description: |
         Geeft aan welke gegevens over de adressering in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
-      allOf:
-      - $ref: '#/components/schemas/InOnderzoek'
-      - type: object
-        properties:
-          aanhef:
-            type: boolean
-          adresregel1:
-            type: boolean
-          adresregel2:
-            type: boolean
-          adresregel3:
-            type: boolean
-          land:
-            type: boolean
-          aanschrijfwijze:
-            type: boolean
-          gebruikInLopendeTekst:
-            type: boolean
-          datumIngangOnderzoekPersoon:
-            $ref: '#/components/schemas/AbstractDatum'
-          datumIngangOnderzoekPartner:
-            $ref: '#/components/schemas/AbstractDatum'
-          datumIngangOnderzoekVerblijfplaats:
-            $ref: '#/components/schemas/AbstractDatum'
     Verblijfstitel:
       type: object
       properties:
