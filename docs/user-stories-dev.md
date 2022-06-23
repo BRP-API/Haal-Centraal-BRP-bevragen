@@ -5,6 +5,8 @@ title: User Stories in Ontwikkeling
 
 # User stories
 
+- [Als medewerker burgerzaken wil ik aan een burger de reisdocumenten tonen die als vermist kunnen worden opgegeven ](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1172){:target="_blank" rel="noopener"}
+- [Als medewerker burgerzaken wil ik bij de aanvraag van een reisdocument van een bepaald type controleren of er al een geldig reisdocument van dit type is ](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1171){:target="_blank" rel="noopener"}
 - [Als PO wil ik dat nationaliteit geen magic strings meer bevat](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1025){:target="_blank" rel="noopener"}
 - [Als gebruiker van de API wil ik een lijst met van toepassing zijnde veldpaden voor fields](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1010){:target="_blank" rel="noopener"}
 - [Wijziging van Waardetabel waarden voor enumeratievelden moet leiden tot nieuwe versie API](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1007){:target="_blank" rel="noopener"}
