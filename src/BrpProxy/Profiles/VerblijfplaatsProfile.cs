@@ -43,6 +43,12 @@ public class VerblijfplaatsProfile : Profile
             .ForMember(dest => dest.DatumIngangGeldigheid, opt => opt.MapFrom(src => src.DatumIngangGeldigheid.Map()))
             ;
 
+        CreateMap<GbaInOnderzoek, AdresInOnderzoek?>().ConvertUsing<AdresInOnderzoekConverter>();
+        CreateMap<GbaInOnderzoek, VerblijfadresBinnenlandInOnderzoek?>().ConvertUsing<VerblijfadresBinnenlandInOnderzoekConverter>();
+        CreateMap<GbaInOnderzoek, VerblijfplaatsBuitenlandInOnderzoek?>().ConvertUsing<VerblijfplaatsBuitenlandInOnderzoekConverter>();
+        CreateMap<GbaInOnderzoek, VerblijfadresBuitenlandInOnderzoek?>().ConvertUsing<VerblijfadresBuitenlandInOnderzoekConverter>();
+        CreateMap<GbaInOnderzoek, LocatieInOnderzoek?>().ConvertUsing<LocatieInOnderzoekConverter>();
+        CreateMap<GbaInOnderzoek, VerblijfadresLocatieInOnderzoek?>().ConvertUsing<VerblijfadresLocatieInOnderzoekConverter>();
         CreateMap<GbaInOnderzoek, VerblijfplaatsOnbekendInOnderzoek?>().ConvertUsing<VerblijfplaatsOnbekendInOnderzoekConverter>();
 
         CreateMap<GbaVerblijfplaats, VerblijfplaatsBuitenland>()

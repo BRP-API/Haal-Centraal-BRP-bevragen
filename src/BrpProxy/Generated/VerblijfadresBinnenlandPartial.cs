@@ -8,6 +8,8 @@ public partial class Adres
 
 public partial class VerblijfadresBinnenland
 {
+    public bool ShouldSerializeInOnderzoek() => InOnderzoek != null;
+
     public bool ShouldSerialize() =>
         !string.IsNullOrWhiteSpace(Straat) ||
         Huisnummer > 0 ||
@@ -16,7 +18,8 @@ public partial class VerblijfadresBinnenland
         AanduidingBijHuisnummer != null ||
         !string.IsNullOrWhiteSpace(Postcode) ||
         !string.IsNullOrWhiteSpace(Woonplaats) ||
-        !string.IsNullOrWhiteSpace(KorteNaam)
+        !string.IsNullOrWhiteSpace(KorteNaam) ||
+        ShouldSerializeInOnderzoek()
         ;
 }
 
