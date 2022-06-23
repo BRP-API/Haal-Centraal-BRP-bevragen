@@ -173,7 +173,7 @@ public static class AdresregelsMapper
 
         return !string.IsNullOrWhiteSpace(adres.Woonplaats)
             ? $"{postcodeNum} {postcodeAlfa}  {adres.Woonplaats.ToUpperInvariant()}"
-            : $"{postcodeNum} {postcodeAlfa}  {gemeenteVanInschrijving?.Omschrijving.ToUpperInvariant()}";
+            : $"{postcodeNum} {postcodeAlfa}  {gemeenteVanInschrijving?.Omschrijving?.ToUpperInvariant()}";
     }
 
     private static string? Adresregel2(this Locatie verblijfplaats, IWaardetabel? gemeenteVanInschrijving)
