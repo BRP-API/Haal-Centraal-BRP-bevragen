@@ -2125,6 +2125,15 @@
             },
             "gebruikInLopendeTekst" : {
               "type" : "boolean"
+            },
+            "datumIngangOnderzoekPersoon" : {
+              "$ref" : "#/components/schemas/AbstractDatum"
+            },
+            "datumIngangOnderzoekPartner" : {
+              "$ref" : "#/components/schemas/AbstractDatum"
+            },
+            "datumIngangOnderzoekVerblijfplaats" : {
+              "$ref" : "#/components/schemas/AbstractDatum"
             }
           }
         } ]
