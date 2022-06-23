@@ -165,12 +165,9 @@ Functionaliteit: Persoon adressering in onderzoek
       | gba in onderzoek waarde | aanhef in onderzoek | aanschrijfwijze in onderzoek | gebruik in lopende tekst in onderzoek |
       | 050000                  | true                | true                         | true                                  |
       | 050200                  | true                | true                         | true                                  |
-      | 050210                  | true                | true                         | true                                  |
       | 050220                  | true                | true                         | true                                  |
       | 050230                  | true                | true                         | true                                  |
       | 050240                  | true                | true                         | true                                  |
-      | 050400                  | true                | true                         | true                                  |
-      | 050410                  | true                | true                         | true                                  |
 
     Abstract Scenario: niet-adressering benodigde veld(en) van partner is/zijn in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -255,12 +252,9 @@ Functionaliteit: Persoon adressering in onderzoek
       | gba in onderzoek waarde | aanhef in onderzoek | aanschrijfwijze in onderzoek | gebruik in lopende tekst in onderzoek |
       | 050000                  | true                | true                         | true                                  |
       | 050200                  | true                | true                         | true                                  |
-      | 050210                  | true                | true                         | true                                  |
       | 050220                  | true                | true                         | true                                  |
       | 050230                  | true                | true                         | true                                  |
       | 050240                  | true                | true                         | true                                  |
-      | 050400                  | true                | true                         | true                                  |
-      | 050410                  | true                | true                         | true                                  |
 
     Abstract Scenario: niet-adressering benodigde veld(en) van eerste partner (oudste relatie) is/zijn in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
