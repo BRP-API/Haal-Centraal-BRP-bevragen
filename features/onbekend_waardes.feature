@@ -22,7 +22,6 @@ Rule: een veld wordt niet opgenomen wanneer het de standaardwaarde bevat
   | partners.naam.geslachtsnaam                      | .                |
   | partners.soortVerbintenis                        | .                |
   | kinderen.naam.geslachtsnaam                      | .                |
-  | reisdocumentnummers                              | .........        |
 
   Scenario: onbekend waarde "." voor geslachtsnaam
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -118,26 +117,6 @@ Rule: een veld wordt niet opgenomen wanneer het de standaardwaarde bevat
     Dan heeft de response een persoon met een 'partner' met alleen de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999992935 |
-
-  Scenario: onbekend waarde voor reisdocumentnummer
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992934 |
-    En de persoon heeft de volgende 'reisdocumentnummers'
-    | reisdocumentnummer |
-    | .........          |
-    | Pk5Q8cA31          |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                  |
-    | type                | RaadpleegMetBurgerservicenummer         |
-    | burgerservicenummer | 999992934                               |
-    | fields              | burgerservicenummer,reisdocumentnummers |
-    Dan heeft de response een persoon met alleen de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999992934 |
-    En heeft de persoon alleen de volgende 'reisdocumentnummers'
-    | reisdocumentnummers |
-    | Pk5Q8cA31           |
 
 Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbekendwaarde voor de betreffende tabel bevat
   Het gaat om de volgende properties en standaardwaardes van de persoon:

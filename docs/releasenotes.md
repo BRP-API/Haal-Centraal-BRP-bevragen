@@ -5,6 +5,10 @@ title: Haal Centraal BRP Personen Bevragen
 
 # Releasenotes Haal-Centraal BRP Personen Bevragen
 
+## Versie 2.0.0
+
+De property reisdocumenten is verwijderd uit "Persoon".
+
 ## Versie 1.3.1
 - Naambasis (exclusief in InOnderzoek) toegevoegd  i.v.m. specificatie issue m.b.t. dubbel gedefinieerde InOnderzoek. (Zie [850](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/850) )
 - Foutief Example BSN aangepast
