@@ -8,9 +8,9 @@ info:
   description: |
                 API voor het bevragen van personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.
 
-                Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Had een persoon bijvoorbeeld een verblijfstitel die nu niet meer geldig is, dan wordt die verblijfstitel niet opgenomen. Had de persoon een paspoort die verlopen, ingehouden of verloren is, wordt die niet opgenomen in reisdocumentnummers. In partners wordt alleen de actuele of de laatst ontbonden partner geleverd.
+                Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Had een persoon bijvoorbeeld een verblijfstitel die nu niet meer geldig is, dan wordt die verblijfstitel niet opgenomen. In partners wordt alleen de actuele of de laatst ontbonden partner geleverd.
 
-                Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/v1.1.0/features) voor nadere toelichting.
+                Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/develop/features) voor nadere toelichting.
   version: 2.0.0
   contact:
     url: https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen
