@@ -755,12 +755,6 @@
           "verblijfstitel" : {
             "$ref" : "#/components/schemas/GbaVerblijfstitel"
           },
-          "reisdocumentnummers" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/Reisdocumentnummer"
-            }
-          },
           "kinderen" : {
             "type" : "array",
             "items" : {
@@ -790,12 +784,6 @@
         "type" : "boolean",
         "description" : "Geeft aan dat de persoon onder curatele is gesteld.\n",
         "example" : true
-      },
-      "Reisdocumentnummer" : {
-        "pattern" : "^[0-9a-zA-Z]{9}$",
-        "type" : "string",
-        "description" : "Het nummer van het verstrekte Nederlandse reisdocument.\n",
-        "example" : "546376728"
       },
       "Field" : {
         "pattern" : "^[a-zA-Z0-9\\._]{1,200}$",

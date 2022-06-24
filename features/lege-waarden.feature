@@ -98,29 +98,6 @@ Functionaliteit: Leveren van lege waarden
 
       # "personen": [ { "burgerservicenummer": "555550001", "partners": [], "kinderen": [] } ]
 
-    Scenario: persoon heeft alleen verlopen reisdocument
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550002 |
-      En de persoon heeft een 'reisdocument' met de volgende gegevens
-      | naam                                                   | waarde    |
-      | Soort Nederlands reisdocument (35.10)                  | NI        |
-      | Nummer Nederlands reisdocument (35.20)                 | NiK26q9aH |
-      | Datum uitgifte Nederlands reisdocument (35.30)         | 20190314  |
-      | Autoriteit van afgifte Nederlands reisdocument (35.40) | B0518     |
-      | Datum einde geldigheid Nederlands reisdocument (35.50) | 20220314  |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                  |
-      | type                | RaadpleegMetBurgerservicenummer         |
-      | burgerservicenummer | 555550002                               |
-      | fields              | burgerservicenummer,reisdocumentnummers |
-      Dan heeft de response een persoon met alleen de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550002 |
-      En heeft de response een persoon met 'reisdocumentnummers' met een lege array
-
-      # "personen": [ { "burgerservicenummer": "555550002", "reisdocumentnummers": [] } ]
-
     Scenario: ZoekMetGeslachtsnaamEnGeboortedatum vindt geen enkele persoon
       Als personen wordt gezocht met de volgende parameters
       | naam          | waarde                              |

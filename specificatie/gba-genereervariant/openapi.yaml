@@ -592,10 +592,6 @@ components:
           $ref: '#/components/schemas/Waardetabel'
         verblijfstitel:
           $ref: '#/components/schemas/GbaVerblijfstitel'
-        reisdocumentnummers:
-          type: array
-          items:
-            $ref: '#/components/schemas/Reisdocumentnummer'
         kinderen:
           type: array
           items:
@@ -618,12 +614,6 @@ components:
       description: |
         Geeft aan dat de persoon onder curatele is gesteld.
       example: true
-    Reisdocumentnummer:
-      pattern: "^[0-9a-zA-Z]{9}$"
-      type: string
-      description: |
-        Het nummer van het verstrekte Nederlandse reisdocument.
-      example: "546376728"
     Field:
       pattern: "^[a-zA-Z0-9\\._]{1,200}$"
       type: string
