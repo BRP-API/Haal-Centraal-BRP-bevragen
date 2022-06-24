@@ -19,7 +19,6 @@ servers:
     APILAB testserver
 tags:
 - name: Personen
-  description: Zoeken personen
 paths:
   /personen:
     post:

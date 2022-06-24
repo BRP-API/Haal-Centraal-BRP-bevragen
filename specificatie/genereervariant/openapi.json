@@ -17,8 +17,7 @@
     "description" : "APILAB testserver\n"
   } ],
   "tags" : [ {
-    "name" : "Personen",
-    "description" : "Zoeken personen"
+    "name" : "Personen"
   } ],
   "paths" : {
     "/personen" : {
