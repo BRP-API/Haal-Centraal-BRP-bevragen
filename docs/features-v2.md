@@ -27,7 +27,6 @@ De [behaviour driven specificatie](https://github.com/VNG-Realisatie/Haal-Centra
 - [zoeken van overleden personen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/overleden_personen.feature){:target="_blank" rel="noopener"}
 - [partners](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/partners.feature){:target="_blank" rel="noopener"}
 - [proxy-fields](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/proxy-fields.feature){:target="_blank" rel="noopener"}
-- [tabelwaarden](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/tabelwaarden.feature){:target="_blank" rel="noopener"}
 - [verblijfplaats](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/verblijfplaats.feature){:target="_blank" rel="noopener"}
 - [volledige naam](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/volledigeNaam.feature){:target="_blank" rel="noopener"}
 - [samenstelling naam voorletters](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/voorletters.feature){:target="_blank" rel="noopener"}
