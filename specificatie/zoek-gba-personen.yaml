@@ -7,7 +7,7 @@ paths:
   /personen:
     post:
       operationId: GetPersonen
-      summary: Vindt personen
+      summary: Zoek personen
       description: |
         Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met optionele parameters.
 
