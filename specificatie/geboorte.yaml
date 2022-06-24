@@ -29,8 +29,8 @@ components:
       description: |
         Gegevens over de geboorte.
         * **datum** - datum waarop de persoon is geboren.
-        * **land** - land waar de persoon is geboren. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-        * **plaats** - gemeente waar de persoon is geboren. Wordt gevuld op basis van de waarden die voorkomen in de tabel "Gemeenten" voor een gemeente in Nederland of als de persoon is geboren buiten Nederland de omschrijving van een buitenlandse plaatsnaam of aanduiding.
+        * **land** - land waar de persoon is geboren. Wordt gevuld met waarden uit de tabel 'Landen' (zie Haal-Centraal-BRP-tabellen-bevragen API).
+        * **plaats** - gemeente waar de persoon is geboren. Wordt gevuld met waarden uit de tabel "Gemeenten" voor een gemeente in Nederland of als de persoon is geboren buiten Nederland de omschrijving van een buitenlandse plaatsnaam of aanduiding.
       allOf:
         - $ref: '#/components/schemas/GeboorteBeperkt'
         - type: object

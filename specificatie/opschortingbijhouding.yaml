@@ -9,7 +9,7 @@ components:
     OpschortingBijhoudingBasis:
       type: object
       description: |
-        * **reden** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'redenopschortingbijhouding' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **reden** - wordt gevuld met waarden uit de tabel 'redenopschortingbijhouding' (zie Haal-Centraal-BRP-tabellen-bevragen API).
       properties:
         reden:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
