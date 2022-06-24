@@ -28,14 +28,16 @@ paths:
       description: |
         Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met optionele parameters.
 
-        Default krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.
-
         1.  Raadpleeg met burgerservicenummer
         2.  Zoek met geslachtsnaam en geboortedatum
         3.  Zoek met geslachtsnaam, voornamen en gemeente van inschrijving
         4.  Zoek met postcode en huisnummer
         5.  Zoek met straat, huisnummer en gemeente van inschrijving
         6.  Zoek met nummeraanduiding identificatie
+
+        Default krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.
+
+        Gebruik de fields parameter om alleen die gegevens op te vragen die je nodig hebt en waarvoor je geautoriseerd bent.
       operationId: GetPersonen
       requestBody:
         content:
@@ -704,10 +706,8 @@ components:
       description: |
         De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
     AdellijkeTitelPredicaatType:
-      description: "wordt gevuld op basis van de waarden die voorkomen in de tabel\
-        \ 'Adellijke_Titel_Predicaat' uit de Haal-Centraal-BRP-tabellen-bevragen API.\
-        \ \nDe property **soort** geeft aan of het een 'predicaat' of een 'titel'\
-        \ betreft. \n"
+      description: |
+        Wordt gevuld met waarden uit de tabel 'Adellijke_Titel_Predicaat' (zie Haal-Centraal-BRP-tabellen-bevragen API). De property soort geeft aan of het een 'predicaat' of een 'titel' is.
       allOf:
       - $ref: '#/components/schemas/Waardetabel'
       - properties:
@@ -740,7 +740,7 @@ components:
         reden:
           $ref: '#/components/schemas/Waardetabel'
       description: |
-        * **reden** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'redenopschortingbijhouding' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **reden** - wordt gevuld met waarden uit de tabel 'redenopschortingbijhouding' (zie Haal-Centraal-BRP-tabellen-bevragen API).
     GbaOverlijdenBasis:
       type: object
       properties:
@@ -841,7 +841,7 @@ components:
         einddatumUitsluiting:
           $ref: '#/components/schemas/GbaDatum'
       description: |
-        * **aanduiding** - Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Europees_Kiesrecht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **aanduiding** - Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. Wordt gevuld met waarden uit de tabel 'Europees_Kiesrecht' (zie Haal-Centraal-BRP-tabellen-bevragen API).
     GbaNaamPersoon:
       allOf:
       - $ref: '#/components/schemas/GbaNaamBasis'
@@ -968,7 +968,7 @@ components:
         Gegevens over de verblijfsrechtelijke status van de persoon.
         * **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd.
         * **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.
-        * **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt.
+        * **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt. Wordt gevuld met waarden uit de tabel 'Verblijfstitel' (zie Haal-Centraal-BRP-tabellen-bevragen API).
     GbaKind:
       type: object
       properties:
@@ -1035,8 +1035,8 @@ components:
       description: |
         Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.
         * **datum** - De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.
-        * **land** - Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-        * **plaats** - De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld op basis van de waarden die voorkomen in de tabel "Gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.
+        * **land** - Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld met waarden uit de tabel 'Landen' (zie Haal-Centraal-BRP-tabellen-bevragen API).
+        * **plaats** - De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld met waarden uit de tabel "Gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.
     GbaOntbindingHuwelijkPartnerschap:
       type: object
       properties:

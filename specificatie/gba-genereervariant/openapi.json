@@ -24,7 +24,7 @@
       "post" : {
         "tags" : [ "Personen" ],
         "summary" : "Zoek personen",
-        "description" : "Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met optionele parameters.\n\nDefault krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.\n\n1.  Raadpleeg met burgerservicenummer\n2.  Zoek met geslachtsnaam en geboortedatum\n3.  Zoek met geslachtsnaam, voornamen en gemeente van inschrijving\n4.  Zoek met postcode en huisnummer\n5.  Zoek met straat, huisnummer en gemeente van inschrijving\n6.  Zoek met nummeraanduiding identificatie\n",
+        "description" : "Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met optionele parameters.\n\n1.  Raadpleeg met burgerservicenummer\n2.  Zoek met geslachtsnaam en geboortedatum\n3.  Zoek met geslachtsnaam, voornamen en gemeente van inschrijving\n4.  Zoek met postcode en huisnummer\n5.  Zoek met straat, huisnummer en gemeente van inschrijving\n6.  Zoek met nummeraanduiding identificatie\n\nDefault krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.\n\nGebruik de fields parameter om alleen die gegevens op te vragen die je nodig hebt en waarvoor je geautoriseerd bent.\n",
         "operationId" : "GetPersonen",
         "requestBody" : {
           "content" : {
@@ -909,7 +909,7 @@
         "description" : "De verzameling namen voor de geslachtsnaam, gescheiden door spaties.\n"
       },
       "AdellijkeTitelPredicaatType" : {
-        "description" : "wordt gevuld op basis van de waarden die voorkomen in de tabel 'Adellijke_Titel_Predicaat' uit de Haal-Centraal-BRP-tabellen-bevragen API. \nDe property **soort** geeft aan of het een 'predicaat' of een 'titel' betreft. \n",
+        "description" : "Wordt gevuld met waarden uit de tabel 'Adellijke_Titel_Predicaat' (zie Haal-Centraal-BRP-tabellen-bevragen API). De property soort geeft aan of het een 'predicaat' of een 'titel' is.\n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/Waardetabel"
         }, {
@@ -950,7 +950,7 @@
             "$ref" : "#/components/schemas/Waardetabel"
           }
         },
-        "description" : "* **reden** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'redenopschortingbijhouding' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
+        "description" : "* **reden** - wordt gevuld met waarden uit de tabel 'redenopschortingbijhouding' (zie Haal-Centraal-BRP-tabellen-bevragen API).\n"
       },
       "GbaOverlijdenBasis" : {
         "type" : "object",
@@ -1080,7 +1080,7 @@
             "$ref" : "#/components/schemas/GbaDatum"
           }
         },
-        "description" : "* **aanduiding** - Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Europees_Kiesrecht' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
+        "description" : "* **aanduiding** - Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. Wordt gevuld met waarden uit de tabel 'Europees_Kiesrecht' (zie Haal-Centraal-BRP-tabellen-bevragen API).\n"
       },
       "GbaNaamPersoon" : {
         "allOf" : [ {
@@ -1263,7 +1263,7 @@
             "$ref" : "#/components/schemas/GbaInOnderzoek"
           }
         },
-        "description" : "Gegevens over de verblijfsrechtelijke status van de persoon.\n* **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd.\n* **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.\n* **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt.\n"
+        "description" : "Gegevens over de verblijfsrechtelijke status van de persoon.\n* **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd.\n* **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.\n* **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt. Wordt gevuld met waarden uit de tabel 'Verblijfstitel' (zie Haal-Centraal-BRP-tabellen-bevragen API).\n"
       },
       "GbaKind" : {
         "type" : "object",
@@ -1356,7 +1356,7 @@
             "$ref" : "#/components/schemas/Waardetabel"
           }
         },
-        "description" : "Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.\n* **datum** - De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.\n* **land** - Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n* **plaats** - De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld op basis van de waarden die voorkomen in de tabel \"Gemeenten\" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.\n"
+        "description" : "Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.\n* **datum** - De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.\n* **land** - Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld met waarden uit de tabel 'Landen' (zie Haal-Centraal-BRP-tabellen-bevragen API).\n* **plaats** - De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld met waarden uit de tabel \"Gemeenten\" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.\n"
       },
       "GbaOntbindingHuwelijkPartnerschap" : {
         "type" : "object",
