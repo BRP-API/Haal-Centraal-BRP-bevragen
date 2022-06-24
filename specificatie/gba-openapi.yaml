@@ -19,7 +19,6 @@ info:
     url: https://eupl.eu/1.2/nl/
 tags:
   - name: Personen
-    description: Zoeken personen
 paths:
   /personen:
     $ref: 'zoek-gba-personen.yaml#/paths/~1personen'
