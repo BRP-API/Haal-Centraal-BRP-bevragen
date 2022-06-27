@@ -184,8 +184,8 @@ Functionaliteit: Adresvelden vullen
       | type                | RaadpleegMetBurgerservicenummer                                                          |
       | burgerservicenummer | 555550011                                                                                |
       | fields              | adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,adressering.land |
-      Dan heeft de response een leeg persoon object
-      # personen: [{}]
+      Dan heeft de response een persoon met een leeg 'adressering' object
+      # personen: [{ adressering: {} }]
 
     Scenario: alleen land is bekend
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -202,8 +202,8 @@ Functionaliteit: Adresvelden vullen
       | type                | RaadpleegMetBurgerservicenummer                                                          |
       | burgerservicenummer | 555550012                                                                                |
       | fields              | adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,adressering.land |
-      Dan heeft de response een leeg persoon object
-      # personen: [{}]
+      Dan heeft de response een persoon met een leeg 'adressering' object
+      # personen: [{ adressering: {} }]
 
   Rule: Voor een binnenlands adres worden de adresregels in de adressering alleen opgenomen wanneer ten minste straat en huisnummer een waarde hebben
     - een standaardwaarde in de bron geldt hier niet als waarde
@@ -223,8 +223,8 @@ Functionaliteit: Adresvelden vullen
       | type                | RaadpleegMetBurgerservicenummer                                                          |
       | burgerservicenummer | <burgerservicenummer>                                                                    |
       | fields              | adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,adressering.land |
-      Dan heeft de response een leeg persoon object
-      # personen: [{}]
+      Dan heeft de response een persoon met een leeg 'adressering' object
+      # personen: [{ adressering: {} }]
 
       Voorbeelden:
       | omschrijving                     | burgerservicenummer | straatnaam               | huisnummer | postcode |

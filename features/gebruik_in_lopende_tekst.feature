@@ -589,19 +589,49 @@ Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van
     | gebruikInLopendeTekst | <gebruik in lopende tekst> |
 
     Voorbeelden:
-    | geslachtsnaam | naamgebruik | leveren naam | gebruik in lopende tekst |
-    | .             | E           | GEEN         |                          |
-    | .             | P           | WEL          | mevrouw De Boer          |
-    | .             | V           | GEEN         |                          |
-    | .             | N           | GEEN         |                          |
-    |               | E           | GEEN         |                          |
-    |               | P           | WEL          | mevrouw De Boer          |
-    |               | V           | GEEN         |                          |
-    |               | N           | GEEN         |                          |
-    | Jansen        | E           | WEL          | mevrouw Jansen           |
-    | Jansen        | P           | WEL          | mevrouw De Boer          |
-    | Jansen        | V           | WEL          | mevrouw De Boer-Jansen   |
-    | Jansen        | N           | WEL          | mevrouw Jansen-de Boer   |
+    | geslachtsnaam | naamgebruik | gebruik in lopende tekst |
+    | .             | P           | mevrouw De Boer          |
+    |               | P           | mevrouw De Boer          |
+    | Jansen        | E           | mevrouw Jansen           |
+    | Jansen        | P           | mevrouw De Boer          |
+    | Jansen        | V           | mevrouw De Boer-Jansen   |
+    | Jansen        | N           | mevrouw Jansen-de Boer   |
+
+    Abstract Scenario: naam van de persoon is onbekend bij aanduiding naamgebruik "<naamgebruik>"
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer         | 999992934 |
+    | geslachtsaanduiding (04.10) | V         |
+    En de persoon heeft de volgende 'naam' gegevens
+    | naam                                 | waarde          |
+    | voornamen (02.10)                    |                 |
+    | adellijke titel of predicaat (02.20) |                 |
+    | voorvoegsel (02.30)                  |                 |
+    | geslachtsnaam (02.40)                | <geslachtsnaam> |
+    | aanduiding naamgebruik (61.10)       | <naamgebruik>   |
+    En de persoon heeft een 'partner' met de volgende gegevens
+    | naam                        | waarde |
+    | geslachtsaanduiding (04.10) | M      |
+    En de 'partner' heeft de volgende 'naam' gegevens
+    | naam                                 | waarde |
+    | adellijke titel of predicaat (02.20) |        |
+    | voorvoegsel (02.30)                  | de     |
+    | geslachtsnaam (02.40)                | Boer   |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                            |
+    | type                | RaadpleegMetBurgerservicenummer   |
+    | burgerservicenummer | 999992934                         |
+    | fields              | adressering.gebruikInLopendeTekst |
+    Dan heeft de response een persoon met een leeg 'adressering' object
+
+    Voorbeelden:
+    | geslachtsnaam | naamgebruik |
+    | .             | E           |
+    | .             | V           |
+    | .             | N           |
+    |               | E           |
+    |               | V           |
+    |               | N           |
 
 Rule: Aanduiding naamgebruik "E" (eigen naam) wordt gehanteerd voor een persoon wanneer de geslachtsnaam van de partner leeg of onbekend is en de naam van de partner wordt gebruikt
   - de geslachtsnaam van de partner is leeg of onbekend (.)

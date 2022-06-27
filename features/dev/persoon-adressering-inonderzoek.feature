@@ -465,7 +465,6 @@ Functionaliteit: Persoon adressering in onderzoek
 
       Voorbeelden:
       | gba in onderzoek waarde |
-      | 080910                  |
       | 080920                  |
       | 081000                  |
       | 081010                  |
