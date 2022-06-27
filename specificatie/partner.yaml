@@ -125,7 +125,5 @@ components:
         - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
         - type: object
           properties:
-            indicatieHuwelijkPartnerschapBeeindigd:
-              type: boolean
             datum:
               type: boolean
