@@ -56,34 +56,34 @@ In de volgende paragrafen is beschreven hoe de BrpProxy  t.b.v. test doeleinden 
 
 ### Bouwen van de BrpProxy Container Image
 
-- Clone de Haal Centraal BRP Persoon bevragen repository als deze niet eerder al is ge-clone-d
+- Clone de Haal Centraal BRP Persoon bevragen repository als deze niet eerder al is ge-clone-d<br/><br/>
   ```sh
   git clone https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen.git
   ```
-- Ga naar de aangemaakte folder
+- Ga naar de aangemaakte folder<br/><br/>
   ```sh
   cd Haal-Centraal-BRP-bevragen
   ```
-- Switch naar de `develop` branch
+- Switch naar de `develop` branch<br/><br/>
   ```sh
   git checkout develop
   ```
-- Download de laatste wijzigingen/toevoegingen als de Haal Centraal BRP bevragen repository op een eerder moment is ge-clone-d
+- Download de laatste wijzigingen/toevoegingen als de Haal Centraal BRP bevragen repository op een eerder moment is ge-clone-d<br/><br/>
   ```sh
   git pull
   ```
-- Bouw de BrpProxy Container Image. Dit kan enige tijd duren.
+- Bouw de BrpProxy Container Image. Dit kan enige tijd duren.<br/><br/>
   ```sh
   docker-compose build
   ```
 
 ### Opstarten van de BrpProxy Container
 
-- Start de BrpProxy
+- Start de BrpProxy<br/><br/>
   ```sh
   docker-compose up -d
   ```
-- Roep de BRP Persoon Bevragen API aan met als base url: *http://localhost:5000*. Met behulp van curl kan op een snelle manier worden getest of de BrpProxy en de BrpService draaien. Start hiervoor een bash shell op en voer de volgende curl statement uit in de bash shell
+- Roep de BRP Persoon Bevragen API aan met als base url: *http://localhost:5000*. Met behulp van curl kan op een snelle manier worden getest of de BrpProxy en de BrpService draaien. Start hiervoor een bash shell op en voer de volgende curl statement uit in de bash shell<br/><br/>
   ```sh
   curl --location --request POST 'http://localhost:5000/haalcentraal/api/brp/personen' \
   --header 'Content-Type: application/json' \
@@ -99,7 +99,7 @@ In de volgende paragrafen is beschreven hoe de BrpProxy  t.b.v. test doeleinden 
 
 ### Stoppen van de BrpProxy Container
 
-- Stop de BrpProxy
+- Stop de BrpProxy<br/><br/>
   ```sh
   docker-compose down
   ```
