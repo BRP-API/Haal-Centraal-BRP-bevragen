@@ -678,12 +678,9 @@ Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van
     | voornamen (02.10)                    |               |
     | adellijke titel of predicaat (02.20) |               |
     | voorvoegsel (02.30)                  |               |
-    | geslachtsnaam (02.40)                |               |
+    | geslachtsnaam (02.40)                | .             |
     | aanduiding naamgebruik (61.10)       | <naamgebruik> |
-    En de persoon heeft een 'partner' met de volgende gegevens
-    | naam                        | waarde |
-    | geslachtsaanduiding (04.10) | M      |
-    En de 'partner' heeft de volgende 'naam' gegevens
+    En de persoon heeft een 'partner' met de volgende 'naam' gegevens
     | naam                                 | waarde |
     | adellijke titel of predicaat (02.20) |        |
     | voorvoegsel (02.30)                  | de     |
@@ -711,12 +708,9 @@ Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van
     | voornamen (02.10)                    |               |
     | adellijke titel of predicaat (02.20) |               |
     | voorvoegsel (02.30)                  |               |
-    | geslachtsnaam (02.40)                |               |
+    | geslachtsnaam (02.40)                | .             |
     | aanduiding naamgebruik (61.10)       | <naamgebruik> |
-    En de persoon heeft een 'partner' met de volgende gegevens
-    | naam                        | waarde |
-    | geslachtsaanduiding (04.10) | M      |
-    En de 'partner' heeft de volgende 'naam' gegevens
+    En de persoon heeft een 'partner' met de volgende 'naam' gegevens
     | naam                                 | waarde |
     | adellijke titel of predicaat (02.20) |        |
     | voorvoegsel (02.30)                  | de     |
