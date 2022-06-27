@@ -10,13 +10,6 @@ namespace BrpProxy.Mappers
             return persoon.GeheimhoudingPersoonsgegevens > 0;
         }
 
-        public static ICollection<string> FilterOnbekendReisdocumentnummers(this IEnumerable<string> reisdocumentnummers)
-        {
-            return (from reisdocumentnummer in reisdocumentnummers
-                   where reisdocumentnummer != "........."
-                   select reisdocumentnummer).ToList();
-        }
-
         public static PersoonInOnderzoek? InOnderzoek(this GbaPersoon persoon)
         {
             if(persoon.PersoonInOnderzoek == null &&
