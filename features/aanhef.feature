@@ -678,12 +678,9 @@ Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van
     | voornamen (02.10)                    |               |
     | adellijke titel of predicaat (02.20) |               |
     | voorvoegsel (02.30)                  |               |
-    | geslachtsnaam (02.40)                |               |
+    | geslachtsnaam (02.40)                | .             |
     | aanduiding naamgebruik (61.10)       | <naamgebruik> |
-    En de persoon heeft een 'partner' met de volgende gegevens
-    | naam                        | waarde |
-    | geslachtsaanduiding (04.10) | M      |
-    En de 'partner' heeft de volgende 'naam' gegevens
+    En de persoon heeft een 'partner' met de volgende 'naam' gegevens
     | naam                                 | waarde |
     | adellijke titel of predicaat (02.20) |        |
     | voorvoegsel (02.30)                  | de     |
@@ -699,10 +696,37 @@ Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van
 
     Voorbeelden:
       | naamgebruik | aanhef                  | leveren naam |
-      | E           |                         | GEEN         |
       | P           | Geachte mevrouw De Boer | WEL          |
-      | V           |                         | GEEN         |
-      | N           |                         | GEEN         |
+
+  Abstract Scenario: naam van de persoon is onbekend bij aanduiding naamgebruik "<naamgebruik>"
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer         | 999992934 |
+    | geslachtsaanduiding (04.10) | V         |
+    En de persoon heeft de volgende 'naam' gegevens
+    | naam                                 | waarde        |
+    | voornamen (02.10)                    |               |
+    | adellijke titel of predicaat (02.20) |               |
+    | voorvoegsel (02.30)                  |               |
+    | geslachtsnaam (02.40)                | .             |
+    | aanduiding naamgebruik (61.10)       | <naamgebruik> |
+    En de persoon heeft een 'partner' met de volgende 'naam' gegevens
+    | naam                                 | waarde |
+    | adellijke titel of predicaat (02.20) |        |
+    | voorvoegsel (02.30)                  | de     |
+    | geslachtsnaam (02.40)                | Boer   |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | adressering.aanhef              |
+    Dan heeft de response een persoon met een leeg 'adressering' object
+
+    Voorbeelden:
+      | naamgebruik |
+      | E           |
+      | V           |
+      | N           |
 
   Abstract Scenario: persoon met onbekende naam heeft adellijkeTitelPredicaat "<adellijkeTitelPredicaat>" en geslacht "<geslacht>" en naamgebruik "<naamgebruik>"
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -737,11 +761,38 @@ Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van
       | M        | G                       | N           | Hooggeboren heer        | WEL          |
       | M        | G                       | P           | Geachte heer De Boer    | WEL          |
       | V        | G                       | E           | Hooggeboren vrouwe      | WEL          |
-      | O        | G                       | E           |                         | GEEN         |
-      | V        | JV                      | E           |                         | GEEN         |
-      | V        | JV                      | V           |                         | GEEN         |
-      | V        | JV                      | N           |                         | GEEN         |
       | V        | JV                      | P           | Geachte mevrouw De Boer | WEL          |
+
+  Abstract Scenario: persoon met onbekende naam heeft adellijkeTitelPredicaat "<adellijkeTitelPredicaat>" en geslacht "<geslacht>" en naamgebruik "<naamgebruik>"
+    Gegeven het systeem heeft een persoon met de volgende gegevens
+    | naam                        | waarde     |
+    | burgerservicenummer         | 999992934  |
+    | geslachtsaanduiding (04.10) | <geslacht> |
+    En de persoon heeft de volgende 'naam' gegevens
+    | naam                                 | waarde                    |
+    | voornamen (02.10)                    | Jo Anne                   |
+    | adellijke titel of predicaat (02.20) | <adellijkeTitelPredicaat> |
+    | voorvoegsel (02.30)                  |                           |
+    | geslachtsnaam (02.40)                |                           |
+    | aanduiding naamgebruik (61.10)       | <naamgebruik>             |
+    En de persoon heeft een 'partner' met de volgende 'naam' gegevens
+    | naam                                 | waarde |
+    | adellijke titel of predicaat (02.20) |        |
+    | voorvoegsel (02.30)                  | de     |
+    | geslachtsnaam (02.40)                | Boer   |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999992934                       |
+    | fields              | adressering.aanhef              |
+    Dan heeft de response een persoon met een leeg 'adressering' object
+
+    Voorbeelden:
+      | geslacht | adellijkeTitelPredicaat | naamgebruik |
+      | O        | G                       | E           |
+      | V        | JV                      | E           |
+      | V        | JV                      | V           |
+      | V        | JV                      | N           |
 
 Rule: Aanduiding naamgebruik "E" (eigen naam) wordt gehanteerd voor een persoon wanneer de geslachtsnaam van de partner leeg of onbekend is en de naam van de partner wordt gebruikt
   De aanhef wordt samengesteld voor aanduiding naamgebruik "E" wanneer aan alle volgende condities is voldaan:
