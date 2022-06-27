@@ -526,7 +526,6 @@ Rule: vertalen (onbekend)waarden naar indicator
     | 00000000 | 6029 | true                               |                              |
     | 19870214 | 0000 | true                               | true                         |
     | 00000000 | 0000 | true                               | true                         |
-    |          |      |                                    |                              |
 
   Abstract Scenario: verblijfplaats onbekend bij land verblijfplaats '<land>'
     Gegeven het systeem heeft een persoon met de volgende gegevens
