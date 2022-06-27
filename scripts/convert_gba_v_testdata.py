@@ -1,5 +1,6 @@
 import csv
 import json
+import re
 
 def find_or_create_ouder(persoon, ouder_aanduiding):
     if not persoon.get('ouders'):
@@ -22,6 +23,19 @@ def find_or_create_collectie(persoon, collectiefield):
 
     return persoon[collectiefield][0]
 
+def set_field_value(target_object, field_name, value):
+    if field_name == 'europeesKiesrecht':
+        if value == '2':
+            target_object[field_name] = True
+    elif field_name == 'uitgeslotenVanKiesrecht':
+        if value == 'A':
+            target_object[field_name] = True
+    elif field_name == 'indicatieCurateleRegister':
+        if value == '1':
+            target_object[field_name] = True
+    else:
+        target_object[field_name] = value
+
 def map_dictionary(src_dict, fields_to_map):
     target_object = {}
     
@@ -36,17 +50,7 @@ def map_dictionary(src_dict, fields_to_map):
 
         for subfield in subfields_to_map:
             if subfield == subfields_to_map[-1]:
-                if subfield == 'europeesKiesrecht':
-                    if value == '2':
-                        tmp_object[subfield] = True
-                elif subfield == 'uitgeslotenVanKiesrecht':
-                    if value == 'A':
-                        tmp_object[subfield] = True
-                elif subfield == 'indicatieCurateleRegister':
-                    if value == '1':
-                        tmp_object[subfield] = True
-                else:
-                    tmp_object[subfield] = value
+                set_field_value(tmp_object, subfield, value)
                 continue
             elif '[1]' in subfield:
                 tmp_object = find_or_create_ouder(tmp_object, "1")
@@ -67,6 +71,13 @@ def convert_gba_v_testdata(fields_to_map, gba_v_testdata_file, gba_v_testdata_js
     """
     Convert the GBA V test data file to a CSV file.
     """
+
+    gemeenten = import_landelijke_tabel('Tabel33 Gemeententabel.csv')
+    landen = import_landelijke_tabel('Tabel34 Landentabel.csv')
+    nationaliteiten = import_landelijke_tabel('Tabel32 Nationaliteitentabel.csv')
+    reden_opnemen = import_landelijke_tabel('Tabel37 Reden opnemen.csv')
+    gezagsverhoudingen = import_landelijke_tabel('Tabel61 Gezagsverhoudingtabel.csv')
+
     target = []
 
     with open(gba_v_testdata_file, 'r', encoding='utf-8-sig') as src:
@@ -75,11 +86,106 @@ def convert_gba_v_testdata(fields_to_map, gba_v_testdata_file, gba_v_testdata_js
         for row in src_reader:
             target_object = map_dictionary(row, fields_to_map)
 
-            if not all(value == 0 for value in target_object.values()):
+            if(target_object.get('burgerservicenummer') != None and target_object.get('naam') != None):
+                add_gemeente_van_inschrijving_omschrijving(target_object, gemeenten)
+                add_plaats_en_land_omschrijvingen(target_object.get('geboorte'), gemeenten, landen)
+                add_plaats_en_land_omschrijvingen(target_object.get('overlijden'), gemeenten, landen)
+                add_omschrijving(target_object.get('indicatieGezagMinderjarige'), gezagsverhoudingen)
+                add_ouders_omschrijvingen(target_object, gemeenten, landen)
+                add_partners_omschrijvingen(target_object, gemeenten, landen)
+                add_nationaliteiten_omschrijvingen(target_object, nationaliteiten, reden_opnemen)
+                add_verblijfplaats_omschrijvingen(target_object, landen)
+
                 target.append(target_object)
 
     with open(gba_v_testdata_json_file, 'w', encoding='utf-8') as dst:
         dst.write(json.dumps(target, indent=2, ensure_ascii=False))
+
+def import_landelijke_tabel(landelijke_tabel_file):
+    target = {}
+
+    with open(landelijke_tabel_file, 'r', encoding='utf-8-sig') as src:
+        src_reader = csv.DictReader(src, delimiter=';')
+
+        for row in src_reader:
+            code = row['code']
+            omschrijving = row['omschrijving']
+            target[code] = omschrijving
+
+    return target
+
+def add_omschrijving(target_object, tabel):
+    if target_object == None:
+        return
+
+    code = target_object.get('code')
+    if code == None:
+        return
+
+    omschrijving = tabel.get(code)
+    if omschrijving != None:
+        target_object['omschrijving'] = omschrijving
+
+def add_cijfer_code_omschrijving(target_object, tabel):
+    if target_object == None:
+        return
+
+    code = target_object.get('code')
+    match = re.search('^\d{3,4}$', code)
+    if match:
+        omschrijving = tabel.get(code)
+        if omschrijving != None:
+            target_object['omschrijving'] = omschrijving
+    else:
+        target_object['omschrijving'] = code
+        target_object.pop('code')
+
+def add_gemeente_van_inschrijving_omschrijving(target_object, gemeenten_tabel):
+    add_cijfer_code_omschrijving(target_object.get('gemeenteVanInschrijving'), gemeenten_tabel)
+
+def add_plaats_en_land_omschrijvingen(target_object, gemeenten_tabel, landen_tabel):
+    if target_object == None:
+        return
+
+    add_cijfer_code_omschrijving(target_object.get('plaats'), gemeenten_tabel)    
+    add_cijfer_code_omschrijving(target_object.get('land'), landen_tabel)
+
+def add_ouders_omschrijvingen(target_object, gemeenten_tabel, landen_tabel):
+    ouders = target_object.get('ouders')
+
+    if ouders == None:
+        return
+
+    for ouder in ouders:
+        add_plaats_en_land_omschrijvingen(ouder.get('geboorte'), gemeenten_tabel, landen_tabel)
+
+def add_partners_omschrijvingen(target_object, gemeenten_tabel, landen_tabel):
+    partners = target_object.get('partners')
+
+    if partners == None:
+        return
+
+    for partner in partners:
+        add_plaats_en_land_omschrijvingen(partner.get('geboorte'), gemeenten_tabel, landen_tabel)
+        add_plaats_en_land_omschrijvingen(partner.get('aangaanHuwelijkPartnerschap'), gemeenten_tabel, landen_tabel)
+
+def add_nationaliteiten_omschrijvingen(target_object, nationaliteiten_tabel, reden_opnemen_tabel):
+    nationaliteiten = target_object.get('nationaliteiten')
+
+    if nationaliteiten == None:
+        return
+    
+    for nationaliteit in nationaliteiten:
+        add_cijfer_code_omschrijving(nationaliteit.get('nationaliteit'), nationaliteiten_tabel)
+        add_cijfer_code_omschrijving(nationaliteit.get('redenOpname'), reden_opnemen_tabel)
+
+def add_verblijfplaats_omschrijvingen(target_object, landen_tabel):
+    verblijfplaats = target_object.get('verblijfplaats')
+
+    if verblijfplaats == None:
+        return
+
+    add_cijfer_code_omschrijving(verblijfplaats.get('landVanwaarIngeschreven'), landen_tabel)
 
 fields_to_map = {
     '01.01.10': 'aNummer',
@@ -106,7 +212,7 @@ fields_to_map = {
     '02.03.10': 'ouders[1].geboorte.datum',
     '02.03.20': 'ouders[1].geboorte.plaats.code',
     '02.03.30': 'ouders[1].geboorte.land.code',
-    '02.04.10': 'ouders[1].geslachtsaanduiding.code',
+    '02.04.10': 'ouders[1].geslacht.code',
     '02.62.10': 'ouders[1].datumIngangFamilierechtelijkeBetrekking',
     '02.83.10': 'ouders[1].inOnderzoek.aanduidingGegevensInOnderzoek',
     '02.83.20': 'ouders[1].inOnderzoek.datumIngangOnderzoek',
@@ -118,7 +224,7 @@ fields_to_map = {
     '03.03.10': 'ouders[2].geboorte.datum',
     '03.03.20': 'ouders[2].geboorte.plaats.code',
     '03.03.30': 'ouders[2].geboorte.land.code',
-    '03.04.10': 'ouders[2].geslachtsaanduiding.code',
+    '03.04.10': 'ouders[2].geslacht.code',
     '03.62.10': 'ouders[2].datumIngangFamilierechtelijkeBetrekking',
     '03.83.10': 'ouders[2].inOnderzoek.aanduidingGegevensInOnderzoek',
     '03.83.20': 'ouders[2].inOnderzoek.datumIngangOnderzoek',
@@ -136,7 +242,7 @@ fields_to_map = {
     '05.03.10': 'partners[].geboorte.datum',
     '05.03.20': 'partners[].geboorte.plaats.code',
     '05.03.30': 'partners[].geboorte.land.code',
-    '05.04.10': 'partners[].geslachtsaanduiding.code',
+    '05.04.10': 'partners[].geslacht.code',
     '05.06.10': 'partners[].aangaanHuwelijkPartnerschap.datum',
     '05.06.20': 'partners[].aangaanHuwelijkPartnerschap.plaats.code',
     '05.06.30': 'partners[].aangaanHuwelijkPartnerschap.land.code',
