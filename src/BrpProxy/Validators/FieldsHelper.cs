@@ -72,6 +72,21 @@ public class FieldsHelper
         {
             var fieldFullPath = PersoonFieldShortcuts[field];
             retval.Add(fieldFullPath);
+
+            if (new[] { "adressering.aanhef", "adressering.aanschrijfwijze", "adressering.gebruikInLopendeTekst" }.Contains(fieldFullPath))
+            {
+                retval.Add("adressering.inOnderzoek.datumIngangOnderzoekPersoon");
+                retval.Add("adressering.inOnderzoek.datumIngangOnderzoekPartner");
+            }
+            if (new[] { "adressering.adresregel1", "adressering.adresregel2", "adressering.adresregel3" }.Contains(fieldFullPath))
+            {
+                retval.Add("adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats");
+            }
+            if (new[] { "aNummer", "burgerservicenummer", "leeftijd" }.Contains(fieldFullPath))
+            {
+                retval.Add("inOnderzoek.datumIngangOnderzoekPersoon");
+            }
+
             var inOnderzoekField = PersoonFieldPaths[fieldFullPath];
             if (!string.IsNullOrEmpty(inOnderzoekField))
             {
@@ -82,6 +97,8 @@ public class FieldsHelper
                 retval.Add(datumIngangOnderzoekField);
             }
         }
+
+        retval = retval.Distinct().ToList();
 
         _logger.LogDebug("extra persoon fields: {@fields}", retval);
 

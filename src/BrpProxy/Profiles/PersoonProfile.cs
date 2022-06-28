@@ -74,6 +74,14 @@ public class PersoonProfile : Profile
                     dest.Adressering.Adresregel3 = dest.Verblijfplaats.Adresregel3();
                     dest.Adressering.Land = dest.Verblijfplaats.Land();
                 }
+                if(src.PersoonInOnderzoek != null ||
+                    (src.Partners != null && src.Partners.Any(p => p.InOnderzoek != null))||
+                    src.Verblijfplaats?.InOnderzoek != null)
+                {
+                    if (dest.Adressering == null) { dest.Adressering = new Adressering(); }
+
+                    dest.Adressering.InOnderzoek = src.AdresseringInOnderzoek();
+                }
             })
             .ForMember(dest => dest.DatumEersteInschrijvingGBA, opt => opt.MapFrom(src => src.DatumEersteInschrijvingGBA.Map()))
             .ForMember(dest => dest.GeheimhoudingPersoonsgegevens, opt => opt.MapFrom(src => src.Geheimhouding()))

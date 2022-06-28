@@ -10,7 +10,7 @@ public partial class Persoon
 
     public bool ShouldSerializePartners() => Partners?.Count > 0;
 
-    public bool ShouldSerializeAdressering() => Adressering != null && Adressering.ShouldSerialize();
+    public bool ShouldSerializeAdressering() => Adressering != null;
 
     public bool ShouldSerializeEuropeesKiesrecht() => EuropeesKiesrecht != null && EuropeesKiesrecht.ShouldSerialize();
 

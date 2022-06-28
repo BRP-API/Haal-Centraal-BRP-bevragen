@@ -197,10 +197,13 @@ Functionaliteit: Persoon adressering in onderzoek
       | gba in onderzoek waarde |
       | 050100                  |
       | 050120                  |
+      | 050210                  |
       | 050300                  |
       | 050310                  |
       | 050320                  |
       | 050330                  |
+      | 050400                  |
+      | 050410                  |
       | 050600                  |
       | 050610                  |
       | 050620                  |
@@ -378,12 +381,9 @@ Functionaliteit: Persoon adressering in onderzoek
       | gba in onderzoek waarde | aanhef in onderzoek | aanschrijfwijze in onderzoek | gebruik in lopende tekst in onderzoek |
       | 050000                  | true                | true                         | true                                  |
       | 050200                  | true                | true                         | true                                  |
-      | 050210                  | true                | true                         | true                                  |
       | 050220                  | true                | true                         | true                                  |
       | 050230                  | true                | true                         | true                                  |
       | 050240                  | true                | true                         | true                                  |
-      | 050400                  | true                | true                         | true                                  |
-      | 050410                  | true                | true                         | true                                  |
 
   Rule: DatumIngangOnderzoekVerblijfplaats wordt gezet wanneer voor adressering benodigde velden van de verblijfplaats in onderzoek zijn
 
