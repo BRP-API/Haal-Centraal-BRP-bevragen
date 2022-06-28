@@ -107,7 +107,7 @@ public static class AdellijkeTitelPredicaatHelpers
         AdellijkeTitels.ContainsKey(naam.AdellijkeTitelPredicaat.Code);
 
     public static bool HeeftAdellijkeTitel(this Partner? partner) =>
-        partner?.Naam.AdellijkeTitelPredicaat != null &&
+        partner?.Naam?.AdellijkeTitelPredicaat != null &&
         AdellijkeTitels.ContainsKey(partner.Naam.AdellijkeTitelPredicaat.Code);
 
     public static bool HeeftAdellijkeTitelOfPredicaat(this NaamPersoon persoon) => persoon.AdellijkeTitelPredicaat != null;
