@@ -26,5 +26,7 @@ public class ImmigratieProfile : Profile
                 opt.MapFrom(src => true);
             })
             ;
+
+        CreateMap<GbaInOnderzoek, ImmigratieInOnderzoek?>().ConvertUsing<ImmigratieInOnderzoekConverter>();
     }
 }

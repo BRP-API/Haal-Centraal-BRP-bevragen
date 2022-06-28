@@ -49,6 +49,10 @@ public class PersoonProfile : Profile
                 {
                     src.Geboorte.InOnderzoek = src.PersoonInOnderzoek;
                 }
+                if(src.Immigratie != null && src.Verblijfplaats != null)
+                {
+                    src.Immigratie.InOnderzoek = src.Verblijfplaats.InOnderzoek;
+                }
             })
             .AfterMap((src, dest) =>
             {
