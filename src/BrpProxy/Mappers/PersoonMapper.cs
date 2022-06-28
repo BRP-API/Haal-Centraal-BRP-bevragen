@@ -36,6 +36,11 @@ namespace BrpProxy.Mappers
                         retval.Burgerservicenummer = true;
                         retval.DatumIngangOnderzoekPersoon = persoon.PersoonInOnderzoek.DatumIngangOnderzoek?.Map();
                         break;
+                    case "010300":
+                    case "010310":
+                        retval.Leeftijd = true;
+                        retval.DatumIngangOnderzoekPersoon = persoon.PersoonInOnderzoek.DatumIngangOnderzoek?.Map();
+                        break;
                     case "010400":
                     case "010410":
                         retval.Geslacht = true;

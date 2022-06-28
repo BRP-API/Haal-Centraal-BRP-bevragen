@@ -107,6 +107,8 @@ Functionaliteit: Persoon
     | 010000                  | true                             | true                  | true                  |
     | 010100                  | true                             |                       |                       |
     | 010120                  | true                             |                       |                       |
+    | 010300                  |                                  |                       | true                  |
+    | 010310                  |                                  |                       | true                  |
     | 010400                  |                                  | true                  |                       |
     | 010410                  |                                  | true                  |                       |
 
