@@ -64,7 +64,6 @@ kinderen.naam.geslachtsnaam,kinderen.naam.geslachtsnaam
 kinderen.naam.voorletters,kinderen.naam.voorletters
 kinderen.naam.voornamen,kinderen.naam.voornamen
 kinderen.naam.voorvoegsel,kinderen.naam.voorvoegsel
-kinderen.indicatieOnbekend,kinderen.indicatieOnbekend
 leeftijd,leeftijd
 naam,naam
 naam.adellijkeTitelPredicaat,naam.adellijkeTitelPredicaat
@@ -113,7 +112,6 @@ ouders.naam.voorletters,ouders.naam.voorletters
 ouders.naam.voornamen,ouders.naam.voornamen
 ouders.naam.voorvoegsel,ouders.naam.voorvoegsel
 ouderAanduiding,ouders.ouderAanduiding
-ouders.indicatieOnbekend,ouders.indicatieOnbekend
 overlijden,overlijden
 indicatieOverleden,overlijden.indicatieOverleden
 overlijden.datum,overlijden.datum
@@ -155,12 +153,9 @@ partners.naam.voornamen,partners.naam.voornamen
 partners.naam.voorvoegsel,partners.naam.voorvoegsel
 ontbindingHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap
 ontbindingHuwelijkPartnerschap.datum,partners.ontbindingHuwelijkPartnerschap.datum
-indicatieHuwelijkPartnerschapBeeindigd,partners.ontbindingHuwelijkPartnerschap.indicatieHuwelijkPartnerschapBeeindigd
 soortVerbintenis,partners.soortVerbintenis
 soortVerbintenis.code,partners.soortVerbintenis.code
 soortVerbintenis.omschrijving,partners.soortVerbintenis.omschrijving
-partners.indicatieOnbekend,partners.indicatieOnbekend
-reisdocumentnummers,reisdocumentnummers
 uitsluitingKiesrecht,uitsluitingKiesrecht
 einddatum,uitsluitingKiesrecht.einddatum
 uitgeslotenVanKiesrecht,uitsluitingKiesrecht.uitgeslotenVanKiesrecht
