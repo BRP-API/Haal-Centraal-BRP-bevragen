@@ -275,33 +275,51 @@ Functionaliteit: in onderzoek
       | waarde | veld                |
       | 081210 | locatiebeschrijving |
 
-    Abstract Scenario: persoon heeft <veld> van verblijfplaats in onderzoek
+    Scenario: persoon heeft land van verblijfplaats in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550001 |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
-      | naam                                     | waarde                |
-      | land adres buitenland (13.10)            | 1234                  |
-      | aanduiding gegevens in onderzoek (83.10) | <in onderzoek waarde> |
-      | datum ingang onderzoek (83.20)           | 20220307              |
+      | naam                                     | waarde   |
+      | land adres buitenland (13.10)            | 1234     |
+      | aanduiding gegevens in onderzoek (83.10) | 081310   |
+      | datum ingang onderzoek (83.20)           | 20220307 |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                              |
-      | type                | RaadpleegMetBurgerservicenummer     |
-      | burgerservicenummer | 555550001                           |
-      | fields              | verblijfplaats.verblijfadres.<veld> |
+      | naam                | waarde                            |
+      | type                | RaadpleegMetBurgerservicenummer   |
+      | burgerservicenummer | 555550001                         |
+      | fields              | verblijfplaats.verblijfadres.land |
       Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
       | naam                                                       | waarde                   |
       | type                                                       | VerblijfplaatsBuitenland |
-      | verblijfadres.<veld>.code                                  | <waarde>                 |
-      | verblijfadres.inOnderzoek.<veld>                           | true                     |
+      | verblijfadres.land.code                                    | 1234                     |
+      | verblijfadres.inOnderzoek.land                             | true                     |
       | verblijfadres.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07               |
       | verblijfadres.inOnderzoek.datumIngangOnderzoek.type        | Datum                    |
       | verblijfadres.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022             |
 
-      Voorbeelden:
-      | in onderzoek waarde | veld   | waarde |
-      | 081310              | land   | 1234   |
-      | 081350              | regel3 |        |
+
+    Scenario: persoon heeft regel3 van verblijfplaats in onderzoek
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 555550001 |
+      En de persoon heeft de volgende 'verblijfplaats' gegevens
+      | naam                                     | waarde   |
+      | land adres buitenland (13.10)            | 1234     |
+      | aanduiding gegevens in onderzoek (83.10) | 081350   |
+      | datum ingang onderzoek (83.20)           | 20220307 |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                              |
+      | type                | RaadpleegMetBurgerservicenummer     |
+      | burgerservicenummer | 555550001                           |
+      | fields              | verblijfplaats.verblijfadres.regel3 |
+      Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
+      | naam                                                       | waarde                   |
+      | type                                                       | VerblijfplaatsBuitenland |
+      | verblijfadres.inOnderzoek.regel3                           | true                     |
+      | verblijfadres.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07               |
+      | verblijfadres.inOnderzoek.datumIngangOnderzoek.type        | Datum                    |
+      | verblijfadres.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022             |
 
     Scenario: persoon heeft aanduiding van verblijfstitel in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
