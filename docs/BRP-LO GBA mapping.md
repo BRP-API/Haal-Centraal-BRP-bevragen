@@ -13,7 +13,7 @@ Enkele kolommen in beide bestanden verdienen een toelichting.
 
 | Mapping | Kolomnaam | Toelichting |
 | --- | --- | --- |
-| Personen gba | leveren door RvIG | Geeft aan hoe het gegeven door de RvIG middels de GBA variant van de API aan de proxy applicatie geleverd wordt. |
+| Personen gba | leveren door RvIG | Beschrijft in welke vorm het BRP gegeven geleverd wordt. |
 | Personen proxy | aanpassing door proxy | Beschrijft de aanpassing die de proxy applicatie aan het gegeven aanbrengt. |
 | Personen proxy | afleiding of feature | Naam van het/de feauture bestand(en) waarin de logica achter de omzetting beschreven zijn. |
 | Personen proxy | Buitengemeentelijke autorisatie | Indien gemarkeerd dan mogen gemeenten het gegeven ook voor niet-ingezetenen ontvangen. |
