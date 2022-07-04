@@ -20,7 +20,7 @@ categorie;element;Persoon GBA variant;;;;;Persoon Proxy variant;;;;;aanpassing d
 ;;;;;;;;aanhef;;;;afleiden uit naam, geslacht, partners.naam;aanhef;X;;;
 ;;;;;;;;gebruikInLopendeTekst;;;;afleiden uit naam, geslacht, partners.naam;gebruik_in_lopende_tekst;X;;;
 ;;;;;;;;adresregel1;;;;afleiden uit verblijfplaats;adres;X;P;;
-;;;;;;;;adresregel2;;;;afleiden uit verblijfplaats en gemeenteVanInschrijving;adres;X;P;;
+;;;;;;;;adresregel2;;;;afleiden uit verblijfplaats.postcode + verblijfplaats.woonplaats + gemeenteVanInschrijving + verblijfplaats.regel2;adres;X;P;;
 ;;;;;;;;adresregel3;;;;afleiden uit verblijfplaats.regel3;?????;?;P;;In adres.feature wordt niet aangegeven waar deze property zijn waarde vandaan moet halen.
 ;;;;;;;;land;;;;afleiden uit verblijfplaats.land;adres;X;P;;
 ;;;;;;;;inOnderzoek;;;;;;~;;;
