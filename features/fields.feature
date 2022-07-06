@@ -166,6 +166,17 @@ Functionaliteit: Fields
       | naam                | waarde    |
       | burgerservicenummer | 999992971 |
 
+    Scenario: Gevraagd gegevensgroep veld heeft geen waarde voor de persoon
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 999991929                       |
+      | fields              | burgerservicenummer,naam.adellijkeTitelPredicaat      |
+      Dan heeft de response een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 999991929 |
+      En heeft de persoon een leeg 'naam' object
+
     Abstract Scenario: Gevraagd veld heeft geen waarde voor de persoon
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
@@ -178,7 +189,6 @@ Functionaliteit: Fields
 
       Voorbeelden:
       | veld                          | opmerking                                                       |
-      | naam.adellijkeTitelPredicaat  |                                                                 |
       | inOnderzoek.geslacht          |                                                                 |
       | geheimhoudingPersoonsgegevens | geheimhoudingPersoonsgegevens wordt niet opgenomen bij waarde 0 |
 
