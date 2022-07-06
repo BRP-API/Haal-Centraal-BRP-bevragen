@@ -248,32 +248,28 @@ Functionaliteit: in onderzoek
       | 081160 | postcode                |
       | 081170 | woonplaats              |
 
-    Abstract Scenario: persoon heeft <veld> van verblijfplaats in onderzoek
+    Scenario: persoon heeft locatiebeschrijving van verblijfplaats in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550001 |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | naam                                     | waarde              |
       | locatiebeschrijving (12.10)              | locatiebeschrijving |
-      | aanduiding gegevens in onderzoek (83.10) | <waarde>            |
+      | aanduiding gegevens in onderzoek (83.10) | 081210              |
       | datum ingang onderzoek (83.20)           | 20220307            |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                              |
-      | type                | RaadpleegMetBurgerservicenummer     |
-      | burgerservicenummer | 555550001                           |
-      | fields              | verblijfplaats.verblijfadres.<veld> |
+      | naam                | waarde                                           |
+      | type                | RaadpleegMetBurgerservicenummer                  |
+      | burgerservicenummer | 555550001                                        |
+      | fields              | verblijfplaats.verblijfadres.locatiebeschrijving |
       Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
       | naam                                                       | waarde              |
       | type                                                       | Locatie             |
       | verblijfadres.locatiebeschrijving                          | locatiebeschrijving |
-      | verblijfadres.inOnderzoek.<veld>                           | true                |
+      | verblijfadres.inOnderzoek.locatiebeschrijving              | true                |
       | verblijfadres.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07          |
       | verblijfadres.inOnderzoek.datumIngangOnderzoek.type        | Datum               |
       | verblijfadres.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022        |
-
-      Voorbeelden:
-      | waarde | veld                |
-      | 081210 | locatiebeschrijving |
 
     Scenario: persoon heeft land van verblijfplaats in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
