@@ -2,9 +2,9 @@
 
 public partial class Partner
 {
-    public bool ShouldSerializeAangaanHuwelijkPartnerschap() => AangaanHuwelijkPartnerschap != null && AangaanHuwelijkPartnerschap.ShouldSerialize();
-    public bool ShouldSerializeGeboorte() => Geboorte != null && Geboorte.ShouldSerialize();
-    public bool ShouldSerializeNaam() => Naam != null && Naam.ShouldSerialize();
+    public bool ShouldSerializeAangaanHuwelijkPartnerschap() => AangaanHuwelijkPartnerschap != null;
+    public bool ShouldSerializeGeboorte() => Geboorte != null;
+    public bool ShouldSerializeNaam() => Naam != null;
 
     public bool ShouldSerialize() =>
         !string.IsNullOrWhiteSpace(Burgerservicenummer) ||

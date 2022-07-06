@@ -79,7 +79,7 @@ Functionaliteit: Kind
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
     | fields              | kinderen.<gegevensgroep>        |
-    Dan heeft de response een persoon met een leeg 'kind' object
+    Dan heeft de response een persoon met een 'kind' met een leeg '<gegevensgroep>' object
 
     Voorbeelden:
     | gegevensgroep | gba naam              | naam          | waarde |

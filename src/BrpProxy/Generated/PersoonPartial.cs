@@ -2,13 +2,13 @@
 
 public partial class Persoon
 {
-    public bool ShouldSerializeNationaliteiten() => Nationaliteiten?.Count > 0;
+    public bool ShouldSerializeNationaliteiten() => Nationaliteiten != null;
 
-    public bool ShouldSerializeKinderen() => Kinderen?.Count > 0;
+    public bool ShouldSerializeKinderen() => Kinderen != null;
 
-    public bool ShouldSerializeOuders() => Ouders?.Count > 0;
+    public bool ShouldSerializeOuders() => Ouders != null;
 
-    public bool ShouldSerializePartners() => Partners?.Count > 0;
+    public bool ShouldSerializePartners() => Partners != null;
 
     public bool ShouldSerializeAdressering() => Adressering != null;
 
@@ -20,7 +20,7 @@ public partial class Persoon
 
     public bool ShouldSerializeInOnderzoek() => InOnderzoek != null && InOnderzoek.ShouldSerialize();
 
-    public bool ShouldSerializeNaam() => Naam != null && Naam.ShouldSerialize();
+    public bool ShouldSerializeNaam() => Naam != null;
 
     public bool ShouldSerializeOpschortingBijhouding() => OpschortingBijhouding != null && OpschortingBijhouding.ShouldSerialize();
 

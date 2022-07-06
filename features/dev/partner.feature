@@ -84,7 +84,7 @@ Functionaliteit: Partner
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
     | fields              | partners.<gegevensgroep>        |
-    Dan heeft de response een persoon met een leeg 'partner' object
+    Dan heeft de response een persoon met een 'partner' met een leeg 'naam' object
 
     Voorbeelden:
     | gegevensgroep | gba naam              | naam          | waarde |

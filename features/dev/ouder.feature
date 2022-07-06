@@ -81,7 +81,7 @@ Functionaliteit: Ouder
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 555550001                       |
     | fields              | ouders.<gegevensgroep>          |
-    Dan heeft de response een persoon met een leeg 'ouder' object
+    Dan heeft de response een persoon met een 'ouder' met een leeg 'naam' object
 
     Voorbeelden:
     | gegevensgroep | gba naam              | naam          | waarde |
