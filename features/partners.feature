@@ -442,4 +442,4 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999993008                       |
       | fields              | partners.naam.voornamen         |
-      Dan heeft de response een persoon met een leeg 'partner' object
+      Dan heeft de response een persoon met een 'partner' met een leeg 'naam' object
