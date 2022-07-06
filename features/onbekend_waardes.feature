@@ -255,6 +255,7 @@ Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbe
     En heeft de persoon een '<relatie>' met alleen de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999992935 |
+    En heeft de '<relatie>' een leeg '<groep>' object
 
     Voorbeelden:
     | relatie | relatie field | groep                       | veld   | element                                                             | waarde |
