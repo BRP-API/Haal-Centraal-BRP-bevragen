@@ -48,7 +48,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 999996150                       |
+      | burgerservicenummer | 999996381                       |
       | fields              | kinderen.naam.voornamen         |
       Dan heeft de persoon met burgerservicenummer '999996381' een kind met de volgende 'naam' gegevens
       | naam      | waarde |
