@@ -15,7 +15,7 @@ Wanneer na een voorletter zonder punt (voornaam had één letter) nog een andere
 
 Rule: Voorletters wordt samengesteld uit de eerste letter van de voornamen gescheiden door een punt
 
-	Abstract Scenario: <titel>
+  Abstract Scenario: <titel>
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999995078 |
@@ -31,7 +31,7 @@ Rule: Voorletters wordt samengesteld uit de eerste letter van de voornamen gesch
     | naam        | waarde        |
     | voorletters | <voorletters> |
 
-		Voorbeelden:
+    Voorbeelden:
     | voornamen            | voorletters | titel                                               | description                                                                                                                       |
     | Henk                 | H.          | Één voornaam                                        |                                                                                                                                   |
     | Anna Cornelia        | A.C.        | Meerdere voornamen (1)                              |                                                                                                                                   |
@@ -42,7 +42,7 @@ Rule: Voorletters wordt samengesteld uit de eerste letter van de voornamen gesch
     | A                    | A           | Voornaam bestaat uit één letter                     | Een voornaam bestaand uit één letter, wordt afgekort tot een letter zonder .                                                      |
     | J P                  | J P         | Meerdere voornamen bestaan uit één letter           | Een voornaam bestaand uit één letter, gevolgd door een andere voornaam, wordt afgekort tot voorletters gescheiden door een spatie |
 
-	Scenario: Geen voornamen
+  Scenario: Geen voornamen
     Gegeven het systeem heeft een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999995078 |
