@@ -372,6 +372,3 @@ Functionaliteit: Fields
       | naam                | waarde        |
       | plaats.code         | 0518          |
       | plaats.omschrijving | 's-Gravenhage |
-
-  Rule: Wanneer een gevraagd veld in onderzoek is, dan wordt het corresponderende in onderzoek veld altijd terug gegeven
-    # Scenario's worden toegevoegd als in onderzoek feature is geïmplementeerd
