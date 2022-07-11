@@ -769,7 +769,7 @@ Functionaliteit: in onderzoek
       | inOnderzoek.datumIngangOnderzoekPersoon.langFormaat | 7 maart 2022 |
 
       Voorbeelden:
-      | reden                        | waarde |
+      | gegeven in onderzoek         | waarde |
       | geboortedatum van de persoon | 010310 |
       | groep geboorte               | 010300 |
       | categorie persoon            | 010000 |
@@ -798,7 +798,7 @@ Functionaliteit: in onderzoek
       | inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
 
       Voorbeelden:
-      | reden                | waarde |
+      | gegeven in onderzoek                | waarde |
       | datum overlijden     | 060810 |
       | groep overlijden     | 060800 |
       | categorie overlijden | 060000 |
@@ -810,15 +810,15 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 555550001 |
       En de persoon heeft een 'ouder' met de volgende gegevens
       | naam                                     | waarde   |
-      | ouderAanduiding                          | 1        |
+      | ouderAanduiding                          | <ouder>  |
       | aanduiding gegevens in onderzoek (83.10) | <waarde> |
       | datum ingang onderzoek (83.20)           | 20220307 |
       En de 'ouder' heeft de volgende 'naam' gegevens
       | naam                  | waarde        |
       | geslachtsnaam (02.40) | geslachtsnaam |
       En de persoon heeft een 'ouder' met de volgende gegevens
-      | naam            | waarde |
-      | ouderAanduiding | 2      |
+      | naam            | waarde         |
+      | ouderAanduiding | <andere ouder> |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                         |
       | type                | RaadpleegMetBurgerservicenummer                |
@@ -826,55 +826,20 @@ Functionaliteit: in onderzoek
       | fields              | ouders.ouderAanduiding,ouders.naam.voorletters |
       Dan heeft de response een persoon met een 'ouder' met de volgende gegevens
       | naam                                              | waarde       |
-      | ouderAanduiding                                   | 1            |
+      | ouderAanduiding                                   | <ouder>      |
       | naam.inOnderzoek.voorletters                      | true         |
       | naam.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07   |
       | naam.inOnderzoek.datumIngangOnderzoek.type        | Datum        |
       | naam.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
       En heeft de persoon een 'ouder' met alleen de volgende gegevens
-      | naam            | waarde |
-      | ouderAanduiding | 2      |
+      | naam            | waarde         |
+      | ouderAanduiding | <andere ouder> |
 
       Voorbeelden:
       | gegeven in onderzoek   | waarde | ouder | andere ouder |
       | voornamen van ouder 1  | 020210 | 1     | 2            |
       | groep naam van ouder 1 | 020200 | 1     | 2            |
       | categorie ouder 1      | 020000 | 1     | 2            |
-
-    @proxy
-    Abstract Scenario: voorletters van een ouder in onderzoek omdat <gegeven in onderzoek> is in onderzoek
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550001 |
-      En de persoon heeft een 'ouder' met de volgende gegevens
-      | naam            | waarde |
-      | ouderAanduiding | 1      |
-      En de persoon heeft een 'ouder' met de volgende gegevens
-      | naam                                     | waarde   |
-      | ouderAanduiding                          | 2        |
-      | aanduiding gegevens in onderzoek (83.10) | <waarde> |
-      | datum ingang onderzoek (83.20)           | 20220307 |
-      En de 'ouder' heeft de volgende 'naam' gegevens
-      | naam                  | waarde        |
-      | geslachtsnaam (02.40) | geslachtsnaam |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                         |
-      | type                | RaadpleegMetBurgerservicenummer                |
-      | burgerservicenummer | 555550001                                      |
-      | fields              | ouders.ouderAanduiding,ouders.naam.voorletters |
-      Dan heeft de response een persoon met een 'ouder' met de volgende gegevens
-      | naam            | waarde |
-      | ouderAanduiding | 1      |
-      En heeft de persoon een 'ouder' met alleen de volgende gegevens
-      | naam                                              | waarde       |
-      | ouderAanduiding                                   | 2            |
-      | naam.inOnderzoek.voorletters                      | true         |
-      | naam.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07   |
-      | naam.inOnderzoek.datumIngangOnderzoek.type        | Datum        |
-      | naam.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
-
-      Voorbeelden:
-      | gegeven in onderzoek   | waarde | ouder | andere ouder |
       | voornamen van ouder 2  | 030210 | 2     | 1            |
       | groep naam van ouder 2 | 030200 | 2     | 1            |
       | categorie ouder 2      | 030000 | 2     | 1            |
@@ -977,13 +942,13 @@ Functionaliteit: in onderzoek
       | inOnderzoek.datumIngangOnderzoekVerblijfplaats.type        | Datum         |
       | inOnderzoek.datumIngangOnderzoekVerblijfplaats.langFormaat | 7 maart 2022  |
 
-      #hier betekent leeg dat het inOnderzoek gegeven niet is opgenomen in het antwoord
+      #hier betekent leeg dat het inOnderzoek gegeven niet is opgenomen in het response
       Voorbeelden:
       | gegeven in onderzoek      | waarde | adresregel1 | adresregel2 | korteNaam | straat | woonplaats | datum      | datum type | datum langFormaat |
-      | gemeenteVanInschrijving   | 080910 |             | true        |           |        | true       | 2022-03-07 | Datum      | 7 maart 2022      |
+      | gemeenteVanInschrijving   | 080910 |             | true        |           |        |            |            |            |                   |
       | straat                    | 081110 | true        |             | true      | true   |            | 2022-03-07 | Datum      | 7 maart 2022      |
-      | naamOpenbareRuimte        | 081115 | true        |             |           | true   |            | 2022-03-07 | Datum      | 7 maart 2022      |
-      | huisnummer                | 081120 | true        |             |           |        |            | 2022-03-07 | Datum      | 7 maart 2022      |
+      | naamOpenbareRuimte        | 081115 |             |             |           | true   |            | 2022-03-07 | Datum      | 7 maart 2022      |
+      | huisnummer                | 081120 | true        |             |           |        |            |            |            |                   |
       | woonplaats                | 081170 |             | true        |           |        | true       | 2022-03-07 | Datum      | 7 maart 2022      |
       | locatiebeschrijving       | 081210 | true        |             |           |        |            |            |            |                   |
       | regel 1 adres buitenland  | 081330 | true        |             |           |        |            |            |            |                   |
