@@ -9,6 +9,7 @@ Functionaliteit: Aanschrijfwijze voor persoon met (ex-)partner, zonder adellijke
         | P                      | partner naam                 | VL VP GP                |
         | V                      | partner naam voor eigen naam | VL VP GP-VV GN          |
         | N                      | partner naam na eigen naam   | VL VV GN-VP GP          |
+        - voorvoegsel wordt gebruikt zoals het is geregistreerd
 
     Abstract Scenario: persoon zonder voorvoegsel heeft (ex-)partner zonder voorvoegsel, en heeft aanduiding naamgebruik "<naamgebruik>"
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -226,7 +227,7 @@ Functionaliteit: Aanschrijfwijze voor persoon met (ex-)partner, zonder adellijke
       | naam                 | waarde   |
       | aanschrijfwijze.naam | F. Aedel |
 
-    Scenario: persoon met (ex-)partner, heeft geen geslachtsnaam met standaardwaarde, en heeft aanduiding naamgebruik "P"
+    Scenario: persoon met (ex-)partner, heeft geen geslachtsnaam, en heeft aanduiding naamgebruik "P"
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 999992934 |
@@ -246,7 +247,7 @@ Functionaliteit: Aanschrijfwijze voor persoon met (ex-)partner, zonder adellijke
       | naam                 | waarde   |
       | aanschrijfwijze.naam | F. Aedel |
 
-  Rule: er is geen aanschrijfwijze als de geslachtsnaam van de partner gelijk is aan de standaardwaard en aanduiding naamgebruik is ongelijk aan "E"
+  Rule: er is geen aanschrijfwijze als de geslachtsnaam van de partner gelijk is aan de standaardwaarde en aanduiding naamgebruik is ongelijk aan "E"
 
     Abstract Scenario: persoon met aanduiding naamgebruik "<naamgebruik>", heeft een partner met geslachtsnaam gelijk aan standaardwaarde
       Gegeven het systeem heeft een persoon met de volgende gegevens

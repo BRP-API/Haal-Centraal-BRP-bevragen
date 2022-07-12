@@ -1,6 +1,6 @@
 #language: nl
 
-Functionaliteit: Aanschrijfwijze voor persoon zonder (ex-)partner, zonder adellijke titel/predicaat
+Functionaliteit: Aanschrijfwijze voor persoon zonder (ex-)partner, met adellijke titel/predicaat
 
   Rule: Voor een persoon zonder (ex-)partner met adellijke titel of predicaat, wordt de naam in aanschrijfwijze als volgt samengesteld: PK VL AT VV GN
         - de adellijke titel en het predicaat wordt opgenomen in de vorm die hoort bij het geslacht van de persoon:
