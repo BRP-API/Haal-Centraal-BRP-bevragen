@@ -246,7 +246,7 @@ Functionaliteit: Aanschrijfwijze voor persoon met (ex-)partner, zonder adellijke
       | naam                 | waarde   |
       | aanschrijfwijze.naam | F. Aedel |
 
-  Rule: er is geen aanschrijfwijze als de geslachtsnaam van de partner gelijk is aan de standaardwaard en aanduiding naamgebruik is ongelijk aan "E"
+  Rule: er is geen aanschrijfwijze als de geslachtsnaam van de partner gelijk is aan de standaardwaarde en aanduiding naamgebruik is ongelijk aan "E"
 
     Abstract Scenario: persoon met aanduiding naamgebruik "<naamgebruik>", heeft een partner met geslachtsnaam gelijk aan standaardwaarde
       Gegeven het systeem heeft een persoon met de volgende gegevens
