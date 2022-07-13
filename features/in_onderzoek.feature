@@ -114,13 +114,11 @@ Functionaliteit: in onderzoek
       En heeft de persoon met burgerservicenummer '999994888' GEEN 'geboorte.inOnderzoek' gegevens
 
 
-  @proxy
   Rule: in onderzoek wordt niet opgenomen wanneer het gegeven of de groep die onderzocht wordt niet wordt gevraagd
     Dit is het geval wanneer gegevens in onderzoek zijn die:
     - niet in de resource voorkomen
     - niet gevraagd zijn met fields
 
-    @proxy
     Scenario: gegeven die niet voorkomt in de resource is in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
@@ -138,7 +136,6 @@ Functionaliteit: in onderzoek
       | naam | waarde                |
       | type | NationaliteitOnbekend |
 
-    @proxy
     Abstract Scenario: persoon heeft <gegeven in onderzoek> in onderzoek dat niet is gevraagd met fields
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                                        | waarde    |
@@ -158,10 +155,9 @@ Functionaliteit: in onderzoek
       | 010200 | hele groep naam        | geslacht,geboorte.datum     |
       | 010210 | voornamen              | geboorte,naam.geslachtsnaam |
 
-  @proxy
   Rule: wanneer een element in de bron in onderzoek is, wordt het gegeven in het antwoord dat daaruit gevuld wordt ook in inOnderzoek opgenomen met de waarde true
 
-    Abstract Scenario: persoon heeft <veld> in onderzoek
+    Scenario: persoon heeft het gevraagde veld en het gevraagde veld is in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                                        | waarde                |
       | burgerservicenummer                         | 555550001             |
@@ -171,19 +167,32 @@ Functionaliteit: in onderzoek
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550001                       |
-      | fields              | <veld>                          |
+      | fields              | burgerservicenummer             |
       Dan heeft de response een persoon met de volgende gegevens
       | naam                                                | waarde       |
-      | <veld>                                              | <waarde>     |
-      | inOnderzoek.<veld>                                  | true         |
+      | burgerservicenummer                                 | 555550001    |
+      | inOnderzoek.burgerservicenummer                     | true         |
       | inOnderzoek.datumIngangOnderzoekPersoon.datum       | 2022-03-07   |
       | inOnderzoek.datumIngangOnderzoekPersoon.type        | Datum        |
       | inOnderzoek.datumIngangOnderzoekPersoon.langFormaat | 7 maart 2022 |
 
-      Voorbeelden:
-      | in onderzoek waarde | veld                | waarde    |
-      | 010120              | burgerservicenummer | 555550001 |
-      | 010410              | geslacht            |           |
+    Scenario: persoon heeft het gevraagde veld niet en het gevraagde veld is in onderzoek
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                                        | waarde                |
+      | burgerservicenummer                         | 555550001             |
+      | aanduiding gegevens in onderzoek (01.83.10) | <in onderzoek waarde> |
+      | datum ingang onderzoek (01.83.20)           | 20220307              |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 555550001                       |
+      | fields              | geslacht                        |
+      Dan heeft de response een persoon met de volgende gegevens
+      | naam                                                | waarde       |
+      | inOnderzoek.geslacht                                | true         |
+      | inOnderzoek.datumIngangOnderzoekPersoon.datum       | 2022-03-07   |
+      | inOnderzoek.datumIngangOnderzoekPersoon.type        | Datum        |
+      | inOnderzoek.datumIngangOnderzoekPersoon.langFormaat | 7 maart 2022 |
 
     Abstract Scenario: persoon heeft <groep> <veld> in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -192,8 +201,8 @@ Functionaliteit: in onderzoek
       | aanduiding gegevens in onderzoek (01.83.10) | <waarde>  |
       | datum ingang onderzoek (01.83.20)           | 20220307  |
       En de persoon heeft de volgende 'naam' gegevens
-      | naam                  | waarde        |
-      | geslachtsnaam (02.40) | geslachtsnaam |
+      | naam                  | waarde  |
+      | geslachtsnaam (02.40) | Groenen |
       En de persoon heeft de volgende 'geboorte' gegevens
       | naam                   | waarde |
       | geboorteplaats (03.20) | 0344   |
@@ -221,7 +230,7 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 555550001 |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | naam                                     | waarde   |
-      | straatnaam (11.10)                       | straat   |
+      | straatnaam (11.10)                       | Spui     |
       | aanduiding gegevens in onderzoek (83.10) | <waarde> |
       | datum ingang onderzoek (83.20)           | 20220307 |
       Als personen wordt gezocht met de volgende parameters
@@ -379,8 +388,8 @@ Functionaliteit: in onderzoek
       | aanduiding gegevens in onderzoek (83.10) | <waarde>  |
       | datum ingang onderzoek (83.20)           | 20220307  |
       En de 'partner' heeft de volgende 'naam' gegevens
-      | naam                  | waarde        |
-      | geslachtsnaam (02.40) | geslachtsnaam |
+      | naam                  | waarde  |
+      | geslachtsnaam (02.40) | Groenen |
       En de 'partner' heeft de volgende 'geboorte' gegevens
       | naam                  | waarde   |
       | geboortedatum (03.10) | 19660404 |
@@ -449,23 +458,23 @@ Functionaliteit: in onderzoek
       | aanduiding gegevens in onderzoek (01.83.10) | 010200    |
       | datum ingang onderzoek (01.83.20)           | 20220307  |
       En de persoon heeft de volgende 'naam' gegevens
-      | naam                  | waarde        |
-      | geslachtsnaam (02.40) | geslachtsnaam |
+      | naam                  | waarde  |
+      | geslachtsnaam (02.40) | Groenen |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                                                                                              |
       | type                | RaadpleegMetBurgerservicenummer                                                                                     |
       | burgerservicenummer | 555550001                                                                                                           |
       | fields              | naam.voornamen,naam.adellijkeTitelPredicaat,naam.voorvoegsel,naam.geslachtsnaam,naam.aanduidingNaamgebruik,geboorte |
       Dan heeft de response een persoon met alleen de volgende 'naam' gegevens
-      | naam                                         | waarde        |
-      | geslachtsnaam                                | geslachtsnaam |
-      | inOnderzoek.voornamen                        | true          |
-      | inOnderzoek.adellijkeTitelPredicaat          | true          |
-      | inOnderzoek.voorvoegsel                      | true          |
-      | inOnderzoek.geslachtsnaam                    | true          |
-      | inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07    |
-      | inOnderzoek.datumIngangOnderzoek.type        | Datum         |
-      | inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022  |
+      | naam                                         | waarde       |
+      | geslachtsnaam                                | Groenen      |
+      | inOnderzoek.voornamen                        | true         |
+      | inOnderzoek.adellijkeTitelPredicaat          | true         |
+      | inOnderzoek.voorvoegsel                      | true         |
+      | inOnderzoek.geslachtsnaam                    | true         |
+      | inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07   |
+      | inOnderzoek.datumIngangOnderzoek.type        | Datum        |
+      | inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
 
     Scenario: kind heeft hele groep geboorte in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -519,7 +528,6 @@ Functionaliteit: in onderzoek
       | 051500 | groep          |
       | 051510 | element        |
 
-  @proxy
   Rule: wanneer een categorie in de bron in onderzoek is, wordt elk gegeven in het antwoord dat gevuld wordt uit een van de elementen in die categorie ook in inOnderzoek opgenomen met de waarde true
     - de elementcode voor onderzoek eindigt op 0000
 
@@ -530,14 +538,14 @@ Functionaliteit: in onderzoek
       | aanduiding gegevens in onderzoek (01.83.10) | 010000    |
       | datum ingang onderzoek (01.83.20)           | 20220307  |
       En de persoon heeft de volgende 'naam' gegevens
-      | naam                  | waarde        |
-      | geslachtsnaam (02.40) | geslachtsnaam |
+      | naam                  | waarde  |
+      | geslachtsnaam (02.40) | Groenen |
       En de persoon heeft de volgende 'geboorte' gegevens
       | naam                   | waarde |
       | geboorteplaats (03.20) | 0518   |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | naam               | waarde |
-      | straatnaam (11.10) | straat |
+      | straatnaam (11.10) | Spui   |
       En de persoon heeft een 'partner' met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550002 |
@@ -556,19 +564,19 @@ Functionaliteit: in onderzoek
       | inOnderzoek.datumIngangOnderzoekPersoon.type        | Datum        |
       | inOnderzoek.datumIngangOnderzoekPersoon.langFormaat | 7 maart 2022 |
       En heeft de persoon de volgende 'naam' gegevens
-      | naam                                         | waarde        |
-      | geslachtsnaam                                | geslachtsnaam |
-      | volledigeNaam                                | geslachtsnaam |
-      | inOnderzoek.voornamen                        | true          |
-      | inOnderzoek.adellijkeTitelPredicaat          | true          |
-      | inOnderzoek.voorvoegsel                      | true          |
-      | inOnderzoek.geslachtsnaam                    | true          |
-      | inOnderzoek.aanduidingNaamgebruik            | true          |
-      | inOnderzoek.voorletters                      | true          |
-      | inOnderzoek.volledigeNaam                    | true          |
-      | inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07    |
-      | inOnderzoek.datumIngangOnderzoek.type        | Datum         |
-      | inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022  |
+      | naam                                         | waarde       |
+      | geslachtsnaam                                | Groenen      |
+      | volledigeNaam                                | Groenen      |
+      | inOnderzoek.voornamen                        | true         |
+      | inOnderzoek.adellijkeTitelPredicaat          | true         |
+      | inOnderzoek.voorvoegsel                      | true         |
+      | inOnderzoek.geslachtsnaam                    | true         |
+      | inOnderzoek.aanduidingNaamgebruik            | true         |
+      | inOnderzoek.voorletters                      | true         |
+      | inOnderzoek.volledigeNaam                    | true         |
+      | inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07   |
+      | inOnderzoek.datumIngangOnderzoek.type        | Datum        |
+      | inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
       En heeft de persoon de volgende 'geboorte' gegevens
       | naam                                         | waarde       |
       | plaats.code                                  | 0518         |
@@ -581,8 +589,8 @@ Functionaliteit: in onderzoek
       En heeft de persoon de volgende 'verblijfplaats' gegevens
       | naam                    | waarde |
       | type                    | Adres  |
-      | verblijfadres.straat    | straat |
-      | verblijfadres.korteNaam | straat |
+      | verblijfadres.straat    | Spui   |
+      | verblijfadres.korteNaam | Spui   |
       En heeft de persoon een 'partner' met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550002 |
@@ -597,8 +605,8 @@ Functionaliteit: in onderzoek
       | aanduiding gegevens in onderzoek (83.10) | 090000    |
       | datum ingang onderzoek (83.20)           | 20220307  |
       En het 'kind' heeft de volgende 'naam' gegevens
-      | naam                  | waarde        |
-      | geslachtsnaam (02.40) | geslachtsnaam |
+      | naam                  | waarde  |
+      | geslachtsnaam (02.40) | Groenen |
       En het 'kind' heeft de volgende 'geboorte' gegevens
       | naam                   | waarde |
       | geboorteplaats (03.20) | 0599   |
@@ -618,16 +626,16 @@ Functionaliteit: in onderzoek
       | inOnderzoek.datumIngangOnderzoek.type        | Datum        |
       | inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
       En heeft het 'kind' de volgende 'naam' gegevens
-      | naam                                         | waarde        |
-      | geslachtsnaam                                | geslachtsnaam |
-      | inOnderzoek.voornamen                        | true          |
-      | inOnderzoek.adellijkeTitelPredicaat          | true          |
-      | inOnderzoek.voorvoegsel                      | true          |
-      | inOnderzoek.geslachtsnaam                    | true          |
-      | inOnderzoek.voorletters                      | true          |
-      | inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07    |
-      | inOnderzoek.datumIngangOnderzoek.type        | Datum         |
-      | inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022  |
+      | naam                                         | waarde       |
+      | geslachtsnaam                                | Groenen      |
+      | inOnderzoek.voornamen                        | true         |
+      | inOnderzoek.adellijkeTitelPredicaat          | true         |
+      | inOnderzoek.voorvoegsel                      | true         |
+      | inOnderzoek.geslachtsnaam                    | true         |
+      | inOnderzoek.voorletters                      | true         |
+      | inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07   |
+      | inOnderzoek.datumIngangOnderzoek.type        | Datum        |
+      | inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
       En heeft het 'kind' de volgende 'geboorte' gegevens
       | naam                                         | waarde       |
       | plaats.code                                  | 0599         |
@@ -644,8 +652,8 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 555550001 |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | naam                                     | waarde   |
-      | straat                                   | spui     |
-      | huisnummer                               | 70       |
+      | straatnaam (11.10)                       | spui     |
+      | huisnummer (11.20)                       | 70       |
       | aanduiding gegevens in onderzoek (83.10) | 080000   |
       | datum ingang onderzoek (83.20)           | 20220307 |
       Als personen wordt gezocht met de volgende parameters
@@ -679,7 +687,6 @@ Functionaliteit: in onderzoek
       | inOnderzoek.datumIngangOnderzoek.datum                     | 2022-03-07   |
       | inOnderzoek.datumIngangOnderzoek.type                      | Datum        |
       | inOnderzoek.datumIngangOnderzoek.langFormaat               | 7 maart 2022 |
-
 
     Scenario: hele categorie verblijfplaats van een locatiebeschrijving is in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -745,10 +752,8 @@ Functionaliteit: in onderzoek
       | inOnderzoek.datumIngangOnderzoek.type                      | Datum                    |
       | inOnderzoek.datumIngangOnderzoek.langFormaat               | 7 maart 2022             |
 
-  @proxy
   Rule: een afgeleid gegeven wordt in inOnderzoek opgenomen wanneer ten minste één van de gegevens waaruit het wordt afgeleid in onderzoek staat
 
-    @proxy
     Abstract Scenario: leeftijd van de persoon in onderzoek omdat <gegeven in onderzoek> is in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                                        | waarde    |
@@ -773,7 +778,6 @@ Functionaliteit: in onderzoek
       | groep geboorte               | 010300 |
       | categorie persoon            | 010000 |
 
-    @proxy
     Abstract Scenario: indicatieOverleden van de persoon in onderzoek omdat <gegeven in onderzoek> is in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
@@ -797,12 +801,11 @@ Functionaliteit: in onderzoek
       | inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
 
       Voorbeelden:
-      | gegeven in onderzoek                | waarde |
+      | gegeven in onderzoek | waarde |
       | datum overlijden     | 060810 |
       | groep overlijden     | 060800 |
       | categorie overlijden | 060000 |
 
-    @proxy
     Abstract Scenario: voorletters van een ouder in onderzoek omdat <gegeven in onderzoek> is in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
@@ -813,8 +816,8 @@ Functionaliteit: in onderzoek
       | aanduiding gegevens in onderzoek (83.10) | <waarde> |
       | datum ingang onderzoek (83.20)           | 20220307 |
       En de 'ouder' heeft de volgende 'naam' gegevens
-      | naam                  | waarde        |
-      | geslachtsnaam (02.40) | geslachtsnaam |
+      | naam                  | waarde  |
+      | geslachtsnaam (02.40) | Groenen |
       En de persoon heeft een 'ouder' met de volgende gegevens
       | naam            | waarde         |
       | ouderAanduiding | <andere ouder> |
@@ -843,7 +846,6 @@ Functionaliteit: in onderzoek
       | groep naam van ouder 2 | 030200 | 2     | 1            |
       | categorie ouder 2      | 030000 | 2     | 1            |
 
-    @proxy
     Abstract Scenario: verblijfplaats datumVan in onderzoek omdat <gegeven in onderzoek> is in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
@@ -851,7 +853,7 @@ Functionaliteit: in onderzoek
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | naam                                     | waarde                        |
       | datum aanvang adreshouding (10.30)       | <datumAanvangAdreshouding>    |
-      | straat (11.10)                           | <straat>                      |
+      | straatnaam (11.10)                       | <straat>                      |
       | huisnummer (11.20)                       | <huisnummer>                  |
       | locatiebeschrijving (12.10)              | <locatiebeschrijving>         |
       | land (13.10)                             | <land>                        |
@@ -886,7 +888,6 @@ Functionaliteit: in onderzoek
       | verblijf buitenland         | 081320 |        |            |                            |                          | Rue du pomme 25 | Bruxelles   | 5010 | 20040701                    | VerblijfplaatsBuitenland |
       | datumAanvangAdresBuitenland | 081320 |        |            |                            |                          |                 |             | 0000 | 20040701                    | VerblijfplaatsOnbekend   |
 
-    @proxy
     Scenario: indicatieVestigingVanuitBuitenland in onderzoek omdat landVanWaarIngeschreven is in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
@@ -907,14 +908,13 @@ Functionaliteit: in onderzoek
       | inOnderzoek.datumIngangOnderzoek.type          | Datum        |
       | inOnderzoek.datumIngangOnderzoek.langFormaat   | 7 maart 2022 |
 
-    @proxy
     Abstract Scenario: verblijfplaats adresregel1, adresregel2 en woonplaats in onderzoek bij <gegeven in onderzoek> is in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550001 |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | naam                                     | waarde   |
-      | straatnaam (11.10)                       | straat   |
+      | straatnaam (11.10)                       | Spui     |
       | aanduiding gegevens in onderzoek (83.10) | <waarde> |
       | datum ingang onderzoek (83.20)           | 20220307 |
       Als personen wordt gezocht met de volgende parameters
@@ -925,8 +925,8 @@ Functionaliteit: in onderzoek
       Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
       | naam                                                       | waarde              |
       | type                                                       | Adres               |
-      | verblijfadres.straat                                       | straat              |
-      | verblijfadres.korteNaam                                    | straat              |
+      | verblijfadres.straat                                       | Spui                |
+      | verblijfadres.korteNaam                                    | Spui                |
       | verblijfadres.inOnderzoek.korteNaam                        | <korteNaam>         |
       | verblijfadres.inOnderzoek.straat                           | <straat>            |
       | verblijfadres.inOnderzoek.woonplaats                       | <woonplaats>        |
@@ -957,7 +957,6 @@ Functionaliteit: in onderzoek
       | groep verblijf buitenland | 081300 | true        | true        |           |        |            |            |            |                   |
       | categorie verblijfplaats  | 080000 | true        | true        | true      | true   | true       | 2022-03-07 | Datum      | 7 maart 2022      |
 
-    @proxy
     Abstract Scenario: nationaliteit <gegeven in onderzoek> is in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
@@ -996,13 +995,11 @@ Functionaliteit: in onderzoek
       | bijzonder Nederlanderschap vastgesteld niet-Nederlander |               | V                                   | VastgesteldNietNederlander | 19710417              | 046510 | true              |                            |                          |
       | bijzonder Nederlanderschap behandeld als Nederlander    |               | B                                   | BehandeldAlsNederlander    | 19710417              | 046510 | true              |                            |                          |
 
-  @proxy
   Rule: onderzoek van een partnergegeven leidt alleen tot inOnderzoek van een samengesteld naamgegeven wanneer daarin de partnernaam wordt gebruikt
     - naam.aanduidingNaamgebruik is ongelijk aan 'E'
     - een of meerdere van de partner naamgegevens voorvoegsel, adellijkeTitelPredicaat of geslachtsnaam zijn in onderzoek
     - betreft aanhef, aanschrijfwijze en gebruikInLopendeTekst
 
-    @proxy
     Abstract Scenario: samengestelde namen bij <omschrijving>
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                        | waarde    |
@@ -1029,15 +1026,15 @@ Functionaliteit: in onderzoek
       Dan heeft de response een persoon met de volgende 'adressering' gegevens
       | naam                  | waarde                  |
       | aanhef                | <aanhef>                |
+      | aanschrijfwijze.naam  | <aanschrijfwijze>       |
       | gebruikInLopendeTekst | <gebruikInLopendeTekst> |
 
       Voorbeelden:
-      | omschrijving                               | waarde | aanduidingNaamgebruik | aanhef               | gebruikInLopendeTekst |
-      | partner in onderzoek en gebruik eigen naam | 050000 | E                     | Geachte heer Groenen | de heer Groenen       |
-      | voornamen in onderzoek                     | 050210 | P                     | Geachte heer Geel    | de heer Geel          |
-      | aangaanHuwelijkPartnerschap in onderzoek   | 050600 | P                     | Geachte heer Geel    | de heer Geel          |
+      | omschrijving                               | waarde | aanduidingNaamgebruik | aanschrijfwijze | aanhef               | gebruikInLopendeTekst |
+      | partner in onderzoek en gebruik eigen naam | 050000 | E                     | P. Groenen      | Geachte heer Groenen | de heer Groenen       |
+      | voornamen in onderzoek                     | 050210 | P                     | P. Geel         | Geachte heer Geel    | de heer Geel          |
+      | aangaanHuwelijkPartnerschap in onderzoek   | 050600 | P                     | P. Geel         | Geachte heer Geel    | de heer Geel          |
 
-    @proxy
     Abstract Scenario: samengestelde namen bij <omschrijving>
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                        | waarde    |
@@ -1064,6 +1061,7 @@ Functionaliteit: in onderzoek
       Dan heeft de response een persoon met de volgende 'adressering' gegevens
       | naam                                                | waarde                  |
       | aanhef                                              | <aanhef>                |
+      | aanschrijfwijze.naam                                | <aanschrijfwijze>       |
       | gebruikInLopendeTekst                               | <gebruikInLopendeTekst> |
       | inOnderzoek.aanhef                                  | true                    |
       | inOnderzoek.aanschrijfwijze                         | true                    |
@@ -1073,11 +1071,11 @@ Functionaliteit: in onderzoek
       | inOnderzoek.datumIngangOnderzoekPartner.langFormaat | 7 maart 2022            |
 
       Voorbeelden:
-      | omschrijving                                            | waarde | aanduidingNaamgebruik | in onderzoek | aanhef                    | gebruikInLopendeTekst |
-      | partner in onderzoek en gebruik partner naam            | 050000 | P                     | WEL          | Geachte heer Geel         | de heer Geel          |
-      | partner in onderzoek en gebruik partner na eigen naam   | 050000 | N                     | WEL          | Geachte heer Groenen-Geel | de heer Groenen-Geel  |
-      | partner in onderzoek en gebruik partner voor eigen naam | 050000 | V                     | WEL          | Geachte heer Geel-Groenen | de heer Geel-Groenen  |
-      | groep naam van partner in onderzoek                     | 050200 | P                     | WEL          | Geachte heer Geel         | de heer Geel          |
-      | adellijkeTitelPredicaat in onderzoek                    | 050220 | P                     | WEL          | Geachte heer Geel         | de heer Geel          |
-      | voorvoegsel in onderzoek                                | 050230 | P                     | WEL          | Geachte heer Geel         | de heer Geel          |
-      | geslachtsnaam in onderzoek                              | 050240 | P                     | WEL          | Geachte heer Geel         | de heer Geel          |
+      | omschrijving                                            | waarde | aanduidingNaamgebruik | aanschrijfwijze | aanhef                    | gebruikInLopendeTekst |
+      | partner in onderzoek en gebruik partner naam            | 050000 | P                     | P. Geel         | Geachte heer Geel         | de heer Geel          |
+      | partner in onderzoek en gebruik partner na eigen naam   | 050000 | N                     | P. Groenen-Geel | Geachte heer Groenen-Geel | de heer Groenen-Geel  |
+      | partner in onderzoek en gebruik partner voor eigen naam | 050000 | V                     | P. Geel-Groenen | Geachte heer Geel-Groenen | de heer Geel-Groenen  |
+      | groep naam van partner in onderzoek                     | 050200 | P                     | P. Geel         | Geachte heer Geel         | de heer Geel          |
+      | adellijkeTitelPredicaat in onderzoek                    | 050220 | P                     | P. Geel         | Geachte heer Geel         | de heer Geel          |
+      | voorvoegsel in onderzoek                                | 050230 | P                     | P. Geel         | Geachte heer Geel         | de heer Geel          |
+      | geslachtsnaam in onderzoek                              | 050240 | P                     | P. Geel         | Geachte heer Geel         | de heer Geel          |
