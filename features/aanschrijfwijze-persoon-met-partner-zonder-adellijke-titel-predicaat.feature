@@ -15,12 +15,12 @@ Functionaliteit: Aanschrijfwijze voor persoon met (ex-)partner, zonder adellijke
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 999992934 |
-      En die persoon heeft de volgende 'naam' gegevens
+      En de persoon heeft de volgende 'naam' gegevens
       | naam                           | waarde        |
       | voornamen (02.10)              | Franklin      |
       | geslachtsnaam (02.40)          | Groenen       |
       | aanduiding naamgebruik (61.10) | <naamgebruik> |
-      En die persoon heeft een 'partner' met de volgende 'naam' gegevens
+      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
       | naam                  | waarde |
       | geslachtsnaam (02.40) | Aedel  |
       Als personen wordt gezocht met de volgende parameters
@@ -28,7 +28,7 @@ Functionaliteit: Aanschrijfwijze voor persoon met (ex-)partner, zonder adellijke
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999992934                       |
       | fields              | aanschrijfwijze                 |
-      Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
+      Dan heeft de response een persoon met de volgende 'adressering' gegevens
       | naam                 | waarde                    |
       | aanschrijfwijze.naam | <naam in aanschrijfwijze> |
 
@@ -43,13 +43,13 @@ Functionaliteit: Aanschrijfwijze voor persoon met (ex-)partner, zonder adellijke
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 999992934 |
-      En die persoon heeft de volgende 'naam' gegevens
+      En de persoon heeft de volgende 'naam' gegevens
       | naam                           | waarde        |
       | voornamen (02.10)              | Franklin      |
       | voorvoegsel (02.30)            | <voorvoegsel> |
       | geslachtsnaam (02.40)          | Groenen       |
       | aanduiding naamgebruik (61.10) | <naamgebruik> |
-      En die persoon heeft een 'partner' met de volgende 'naam' gegevens
+      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
       | naam                  | waarde |
       | geslachtsnaam (02.40) | Aedel  |
       Als personen wordt gezocht met de volgende parameters
@@ -72,12 +72,12 @@ Functionaliteit: Aanschrijfwijze voor persoon met (ex-)partner, zonder adellijke
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 999992934 |
-      En die persoon heeft de volgende 'naam' gegevens
+      En de persoon heeft de volgende 'naam' gegevens
       | naam                           | waarde        |
       | voornamen (02.10)              | Franklin      |
       | geslachtsnaam (02.40)          | Groenen       |
       | aanduiding naamgebruik (61.10) | <naamgebruik> |
-      En die persoon heeft een 'partner' met de volgende 'naam' gegevens
+      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
       | naam                  | waarde                |
       | voorvoegsel (02.30)   | <voorvoegsel partner> |
       | geslachtsnaam (02.40) | Aedel                 |
@@ -101,13 +101,13 @@ Functionaliteit: Aanschrijfwijze voor persoon met (ex-)partner, zonder adellijke
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 999992934 |
-      En die persoon heeft alleen de volgende 'naam' gegevens
+      En de persoon heeft de volgende 'naam' gegevens
       | naam                           | waarde        |
       | voornamen (02.10)              | Franklin      |
       | voorvoegsel (02.30)            | <voorvoegsel> |
       | geslachtsnaam (02.40)          | Groenen       |
       | aanduiding naamgebruik (61.10) | <naamgebruik> |
-      En die persoon heeft een 'partner' met de volgende relevante 'naam' gegevens
+      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
       | naam                  | waarde                |
       | voorvoegsel (02.30)   | <voorvoegsel partner> |
       | geslachtsnaam (02.40) | Aedel                 |
@@ -116,7 +116,7 @@ Functionaliteit: Aanschrijfwijze voor persoon met (ex-)partner, zonder adellijke
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999992934                       |
       | fields              | aanschrijfwijze                 |
-      Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
+      Dan heeft de response een persoon met de volgende 'adressering' gegevens
       | naam                 | waarde                    |
       | aanschrijfwijze.naam | <naam in aanschrijfwijze> |
 
@@ -131,11 +131,11 @@ Functionaliteit: Aanschrijfwijze voor persoon met (ex-)partner, zonder adellijke
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 999992934 |
-      En die persoon heeft de alleen volgende 'naam' gegevens
+      En de persoon heeft de volgende 'naam' gegevens
       | naam                           | waarde          |
       | geslachtsnaam (02.40)          | <geslachtsnaam> |
       | aanduiding naamgebruik (61.10) | <naamgebruik>   |
-      En die persoon heeft een 'partner' met de volgende relevante 'naam' gegevens
+      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
       | naam                  | waarde |
       | voorvoegsel (02.30)   | van    |
       | geslachtsnaam (02.40) | Velzen |
@@ -144,7 +144,7 @@ Functionaliteit: Aanschrijfwijze voor persoon met (ex-)partner, zonder adellijke
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999992934                       |
       | fields              | aanschrijfwijze                 |
-      Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
+      Dan heeft de response een persoon met de volgende 'adressering' gegevens
       | naam                 | waarde                    |
       | aanschrijfwijze.naam | <naam in aanschrijfwijze> |
 
@@ -222,8 +222,8 @@ Functionaliteit: Aanschrijfwijze voor persoon met (ex-)partner, zonder adellijke
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999992934                       |
-      | fields              | aanschrijfwijze.naam            |
-      Dan heeft de response een persoon met de volgende 'adressering' naam
+      | fields              | aanschrijfwijze                 |
+      Dan heeft de response een persoon met de volgende 'adressering' gegevens
       | naam                 | waarde   |
       | aanschrijfwijze.naam | F. Aedel |
 
@@ -242,12 +242,12 @@ Functionaliteit: Aanschrijfwijze voor persoon met (ex-)partner, zonder adellijke
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999992934                       |
-      | fields              | aanschrijfwijze.naam            |
-      Dan heeft de response een persoon met de volgende 'adressering' naam
+      | fields              | aanschrijfwijze                 |
+      Dan heeft de response een persoon met de volgende 'adressering' gegevens
       | naam                 | waarde   |
       | aanschrijfwijze.naam | F. Aedel |
 
-  Rule: er is geen aanschrijfwijze als de geslachtsnaam van de partner gelijk is aan de standaardwaarde en aanduiding naamgebruik is ongelijk aan "E"
+  Rule: aanduiding naamgebruik "E" (eigen naam) wordt gehanteerd als de partner geen geslachtsnaam heeft of de geslachtsnaam is gelijk aan de standaardwaarde
 
     Abstract Scenario: persoon met aanduiding naamgebruik "<naamgebruik>", heeft een partner met geslachtsnaam gelijk aan standaardwaarde
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -266,34 +266,16 @@ Functionaliteit: Aanschrijfwijze voor persoon met (ex-)partner, zonder adellijke
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999992934                       |
       | fields              | aanschrijfwijze                 |
-      Dan heeft de response een persoon met een leeg 'adressering' object
-
-      Voorbeelden:
-      | naamgebruik |
-      | P           |
-      | V           |
-      | N           |
-
-    Scenario: persoon met aanduiding naamgebruik "E", heeft een partner met geslachtsnaam gelijk aan standaardwaarde
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 999992934 |
-      En de persoon heeft de volgende 'naam' gegevens
-      | naam                           | waarde   |
-      | voornamen (02.10)              | Franklin |
-      | geslachtsnaam (02.40)          | Groenen  |
-      | aanduiding naamgebruik (61.10) | E        |
-      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
-      | naam                  | waarde |
-      | geslachtsnaam (02.40) | .      |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 999992934                       |
-      | fields              | aanschrijfwijze                 |
       Dan heeft de response een persoon met de volgende 'adressering' gegevens
       | naam                 | waarde     |
       | aanschrijfwijze.naam | F. Groenen |
+
+      Voorbeelden:
+      | naamgebruik |
+      | E           |
+      | P           |
+      | V           |
+      | N           |
 
     Abstract Scenario: persoon met aanduiding naamgebruik "<naamgebruik>", heeft een partner zonder geslachtsnaam
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -316,27 +298,50 @@ Functionaliteit: Aanschrijfwijze voor persoon met (ex-)partner, zonder adellijke
 
       Voorbeelden:
       | naamgebruik |
+      | E           |
       | P           |
       | V           |
       | N           |
 
-    Scenario: persoon met aanduiding naamgebruik "E", heeft een partner met geslachtsnaam gelijk aan standaardwaarde
+  Rule: Bij meerdere actuele (niet ontbonden) huwelijken/partnerschappen worden de naamgegevens van de eerste partner (oudste relatie) gebruikt
+
+    Abstract Scenario: persoon heeft meerdere actuele relaties
       Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 999992934 |
+      | naam                        | waarde    |
+      | burgerservicenummer         | 999992934 |
+      | geslachtsaanduiding (04.10) | V         |
       En de persoon heeft de volgende 'naam' gegevens
-      | naam                           | waarde   |
-      | voornamen (02.10)              | Franklin |
-      | geslachtsnaam (02.40)          | Groenen  |
-      | aanduiding naamgebruik (61.10) | E        |
+      | naam                           | waarde             |
+      | geslachtsnaam (02.40)          | Groen              |
+      | voornamen (02.10)              | Ferdinand Cornelis |
+      | aanduiding naamgebruik (61.10) | V                  |
       En de persoon heeft een 'partner' met de volgende 'naam' gegevens
-      | naam              | waarde  |
-      | voornamen (02.10) | Jantine |
+      | naam                  | waarde |
+      | geslachtsnaam (02.40) | Geel   |
+      En de 'partner' heeft de volgende 'aangaanHuwelijkPartnerschap' gegevens
+      | naam                                                               | waarde            |
+      | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | <datum partner 1> |
+      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
+      | naam                  | waarde |
+      | voorvoegsel (02.30)   |        |
+      | geslachtsnaam (02.40) | Roodt  |
+      En de 'partner' heeft de volgende 'aangaanHuwelijkPartnerschap' gegevens
+      | naam                                                               | waarde            |
+      | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | <datum partner 2> |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999992934                       |
       | fields              | aanschrijfwijze                 |
       Dan heeft de response een persoon met de volgende 'adressering' gegevens
-      | naam                 | waarde     |
-      | aanschrijfwijze.naam | F. Groenen |
+      | naam                 | waarde      |
+      | aanschrijfwijze.naam | F.C. <naam> |
+
+      Voorbeelden:
+      | datum partner 1 | datum partner 2 | naam        | omschrijving                                                                                                                      |
+      | 19580401        | 19610808        | Geel-Groen  |                                                                                                                                   |
+      | 19580401        | 19610800        | Geel-Groen  |                                                                                                                                   |
+      | 19580401        | 19610000        | Geel-Groen  |                                                                                                                                   |
+      | 19580401        | 00000000        | Roodt-Groen | partner met datum onbekend wordt eerste partner                                                                                   |
+      | 19610800        | 19610808        | Geel-Groen  | jaar en maand zijn bekend en zijn gelijk, partner met dag onbekend wordt eerste partner                                           |
+      | 19610000        | 19610800        | Geel-Groen  | partner 1 alleen jaar bekend, partner 2 jaar en maand bekend, jaar gelijk, partner met maand en dag onbekend wordt eerste partner |
