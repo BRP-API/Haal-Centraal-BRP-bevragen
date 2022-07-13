@@ -97,23 +97,19 @@ Functionaliteit: Kinderen van een persoon raadplegen
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 999996150 |
-      En de persoon heeft een 'kind' met de volgende 'naam' gegevens
+      En de persoon heeft een 'kind' met de volgende gegevens
+      | naam                            | waarde           |
+      | gemeente document (82.10)       | 1926             |
+      | datum document (82.20)          | 20040105         |
+      | beschrijving document (82.30)   | D27894-2004-A782 |
+      | ingangsdatum geldigheid (85.10) | 20031107         |
+      | datum van opneming (86.10)      | 20040112         |
+      En het 'kind' heeft de volgende 'naam' gegevens
       | naam                  | waarde          |
       | geslachtsnaam (02.40) | <geslachtsnaam> |
       En het 'kind' heeft de volgende 'geboorte' gegevens
       | naam                  | waarde          |
       | geboortedatum (03.10) | <geboortedatum> |
-      En het 'kind' heeft de volgende 'document' gegevens
-      | naam                          | waarde           |
-      | gemeente document (82.10)     | 1926             |
-      | datum document (82.20)        | 20040105         |
-      | beschrijving document (82.30) | D27894-2004-A782 |
-      En het 'kind' heeft de volgende 'geldigheid' gegevens
-      | naam                            | waarde   |
-      | ingangsdatum geldigheid (85.10) | 20031107 |
-      En het 'kind' heeft de volgende 'opneming' gegevens
-      | naam                       | waarde   |
-      | datum van opneming (86.10) | 20040112 |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -132,20 +128,16 @@ Functionaliteit: Kinderen van een persoon raadplegen
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 999996150 |
-      En de persoon heeft een 'kind' met de volgende 'geboorte' gegevens
+      En de persoon heeft een 'kind' met de volgende gegevens
+      | naam                            | waarde           |
+      | gemeente document (82.10)       | 1926             |
+      | datum document (82.20)          | 20040105         |
+      | beschrijving document (82.30)   | D27894-2004-A782 |
+      | ingangsdatum geldigheid (85.10) | 20031107         |
+      | datum van opneming (86.10)      | 20040112         |
+      En het 'kind' heeft de volgende 'geboorte' gegevens
       | naam                  | waarde   |
       | geboortedatum (03.10) | 00000000 |
-      En het 'kind' heeft de volgende 'document' gegevens
-      | naam                          | waarde           |
-      | gemeente document (82.10)     | 1926             |
-      | datum document (82.20)        | 20040105         |
-      | beschrijving document (82.30) | D27894-2004-A782 |
-      En het 'kind' heeft de volgende 'geldigheid' gegevens
-      | naam                            | waarde   |
-      | ingangsdatum geldigheid (85.10) | 20031107 |
-      En het 'kind' heeft de volgende 'opneming' gegevens
-      | naam                       | waarde   |
-      | datum van opneming (86.10) | 20040112 |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -158,17 +150,20 @@ Functionaliteit: Kinderen van een persoon raadplegen
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550002 |
-      En de persoon heeft een 'kind' met de volgende 'document' gegevens
-      | naam                          | waarde           |
-      | gemeente document (82.10)     | 1926             |
-      | datum document (82.20)        | 20040105         |
-      | beschrijving document (82.30) | D27894-2004-A782 |
-      En het 'kind' heeft de volgende 'geldigheid' gegevens
-      | naam                            | waarde   |
-      | ingangsdatum geldigheid (85.10) | 20031107 |
-      En het 'kind' heeft de volgende 'opneming' gegevens
-      | naam                       | waarde   |
-      | datum van opneming (86.10) | 20040112 |
+      En de persoon heeft een 'kind' met de volgende gegevens
+      | naam                            | waarde           |
+      | gemeente document (82.10)       | 1926             |
+      | datum document (82.20)          | 20040105         |
+      | beschrijving document (82.30)   | D27894-2004-A782 |
+      | ingangsdatum geldigheid (85.10) | 20031107         |
+      | datum van opneming (86.10)      | 20040112         |
+      En het 'kind' heeft de volgende historie gegevens
+      | naam                            | waarde          |
+      | gemeente document (82.10)       | 0518            |
+      | datum document (82.20)          | 20031109        |
+      | beschrijving document (82.30)   | PL gerelateerde |
+      | ingangsdatum geldigheid (85.10) | 20031107        |
+      | datum van opneming (86.10)      | 20031109        |
       En het 'kind' heeft de volgende 'naam' historie gegevens
       | naam                  | waarde |
       | voornamen (02.10)     | Daan   |
@@ -177,17 +172,6 @@ Functionaliteit: Kinderen van een persoon raadplegen
       En het 'kind' heeft de volgende 'geboorte' historie gegevens
       | naam                  | waarde   |
       | geboortedatum (03.10) | 20031107 |
-      En het 'kind' heeft de volgende 'document' historie gegevens
-      | naam                          | waarde          |
-      | gemeente document (82.10)     | 0518            |
-      | datum document (82.20)        | 20031109        |
-      | beschrijving document (82.30) | PL gerelateerde |
-      En het 'kind' heeft de volgende 'geldigheid' historie gegevens
-      | naam                            | waarde   |
-      | ingangsdatum geldigheid (85.10) | 20031107 |
-      En het 'kind' heeft de volgende 'opneming' historie gegevens
-      | naam                       | waarde   |
-      | datum van opneming (86.10) | 20031109 |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -199,24 +183,20 @@ Functionaliteit: Kinderen van een persoon raadplegen
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 999996150 |
-      En de persoon heeft een 'kind' met de volgende 'naam' gegevens
-      | naam                  | waarde |
-      | voornamen (02.10)     | Bert   |
-      | geslachtsnaam (02.40) | Jansen |
+      En de persoon heeft een 'kind' met de volgende gegevens
+      | naam                            | waarde           |
+      | gemeente document (82.10)       | 1926             |
+      | datum document (82.20)          | 20040105         |
+      | beschrijving document (82.30)   | D27894-2004-A782 |
+      | ingangsdatum geldigheid (85.10) | 20031107         |
+      | datum van opneming (86.10)      | 20040112         |
       En het 'kind' heeft de volgende 'geboorte' gegevens
       | naam                  | waarde   |
       | geboortedatum (03.10) | 20110422 |
-      En het 'kind' heeft de volgende 'document' gegevens
-      | naam                          | waarde           |
-      | gemeente document (82.10)     | 1926             |
-      | datum document (82.20)        | 20040105         |
-      | beschrijving document (82.30) | D27894-2004-A782 |
-      En het 'kind' heeft de volgende 'geldigheid' gegevens
-      | naam                            | waarde   |
-      | ingangsdatum geldigheid (85.10) | 20031107 |
-      En het 'kind' heeft de volgende 'opneming' gegevens
-      | naam                       | waarde   |
-      | datum van opneming (86.10) | 20040112 |
+      En het 'kind' heeft de volgende 'naam' gegevens
+      | naam                  | waarde |
+      | voornamen (02.10)     | Bert   |
+      | geslachtsnaam (02.40) | Jansen |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
