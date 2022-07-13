@@ -39,8 +39,6 @@ Functionaliteit: in onderzoek
       | naam                          | waarde   |
       | aanduidingGegevensInOnderzoek | <waarde> |
       | datumIngangOnderzoek          | 20120920 |
-      En heeft de persoon GEEN 'naam.inOnderzoek' gegevens
-      En heeft de persoon GEEN 'geboorte.inOnderzoek' gegevens
       En heeft de persoon GEEN 'verblijfplaats' gegevens
       En heeft de ouder met ouderAanduiding '1' GEEN 'inOnderzoek' gegevens
       En heeft de ouder met ouderAanduiding '2' GEEN 'inOnderzoek' gegevens
@@ -123,7 +121,7 @@ Functionaliteit: in onderzoek
     - niet gevraagd zijn met fields
 
     @proxy
-    Scenario: persoon heeft EU-persoonsnummer van nationaliteit in onderzoek die niet voorkomt in de resource
+    Scenario: gegeven die niet voorkomt in de resource is in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550001 |
@@ -663,6 +661,7 @@ Functionaliteit: in onderzoek
       | inOnderzoek.datumVan                                       | true         |
       | inOnderzoek.functieAdres                                   | true         |
       | inOnderzoek.nummeraanduidingIdentificatie                  | true         |
+      | inOnderzoek.type                                           | true         |
       | verblijfadres.huisnummer                                   | 70           |
       | verblijfadres.korteNaam                                    | spui         |
       | verblijfadres.straat                                       | spui         |
@@ -952,7 +951,7 @@ Functionaliteit: in onderzoek
       | woonplaats                | 081170 |             | true        |           |        | true       | 2022-03-07 | Datum      | 7 maart 2022      |
       | locatiebeschrijving       | 081210 | true        |             |           |        |            |            |            |                   |
       | regel 1 adres buitenland  | 081330 | true        |             |           |        |            |            |            |                   |
-      | groep gemeente            | 080900 |             | true        |           |        | true       | 2022-03-07 | Datum      | 7 maart 2022      |
+      | groep gemeente            | 080900 |             | true        |           |        |            | 2022-03-07 | Datum      | 7 maart 2022      |
       | groep adres               | 081100 | true        | true        | true      | true   | true       | 2022-03-07 | Datum      | 7 maart 2022      |
       | groep locatiebeschrijving | 081200 | true        |             |           |        |            |            |            |                   |
       | groep verblijf buitenland | 081300 | true        | true        |           |        |            |            |            |                   |
@@ -1033,10 +1032,10 @@ Functionaliteit: in onderzoek
       | gebruikInLopendeTekst | <gebruikInLopendeTekst> |
 
       Voorbeelden:
-      | omschrijving                               | waarde | aanduidingNaamgebruik | in onderzoek | aanhef               | gebruikInLopendeTekst |
-      | partner in onderzoek en gebruik eigen naam | 050000 | E                     | GEEN         | Geachte heer Groenen | de heer Groenen       |
-      | voornamen in onderzoek                     | 050210 | P                     | GEEN         | Geachte heer Geel    | de heer Geel          |
-      | aangaanHuwelijkPartnerschap in onderzoek   | 050600 | P                     | GEEN         | Geachte heer Geel    | de heer Geel          |
+      | omschrijving                               | waarde | aanduidingNaamgebruik | aanhef               | gebruikInLopendeTekst |
+      | partner in onderzoek en gebruik eigen naam | 050000 | E                     | Geachte heer Groenen | de heer Groenen       |
+      | voornamen in onderzoek                     | 050210 | P                     | Geachte heer Geel    | de heer Geel          |
+      | aangaanHuwelijkPartnerschap in onderzoek   | 050600 | P                     | Geachte heer Geel    | de heer Geel          |
 
     @proxy
     Abstract Scenario: samengestelde namen bij <omschrijving>
