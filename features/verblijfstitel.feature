@@ -74,3 +74,27 @@ Functionaliteit: Verblijfstitel
       Dan heeft de response een persoon met alleen de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550003 |
+
+  Rule: Een verblijfstitel met onbekende aanduiding wordt wel geleverd
+
+    Scenario: persoon heeft verblijfstitel maar het is nog onbekend welke
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 555550004 |
+      En de persoon heeft de volgende 'verblijfstitel' gegevens
+      | naam                                | waarde   |
+      | Aanduiding verblijfstitel (39.10)   | 00       |
+      | aanduiding.omschrijving             | Onbekend |
+      | Ingangsdatum verblijfstitel (39.30) | 20210714 |
+      Als personen op '5 juni 2022' wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 555550004                       |
+      | fields              | verblijfstitel                  |
+      Dan heeft de response een persoon met alleen de volgende 'verblijfstitel' gegevens
+      | naam                    | waarde       |
+      | aanduiding.code         | 00           |
+      | aanduiding.omschrijving | Onbekend     |
+      | datumIngang.type        | Datum        |
+      | datumIngang.datum       | 2021-07-14   |
+      | datumIngang.langFormaat | 14 juli 2021 |
