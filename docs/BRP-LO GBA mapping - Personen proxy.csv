@@ -7,7 +7,7 @@ naam;;;;;1;;naam;;;;;;;Ja;;
 ;voornamen;;;;1;02.10;;voornamen;;;;;;Ja;Ja;
 ;adellijkeTitelPredicaat;;;;1;02.20;;adellijkeTitelPredicaat;;;;;;Ja;Ja;
 ;voorvoegsel;;;;1;02.30;;voorvoegsel;;;;;;Ja;Ja;
-;geslachtsnaam;;;;1;02.40;;geslachtsnaam;;;;"standaardwaarde ""."" uitfilteren";onbekend_waardes;Ja;Ja;
+;geslachtsnaam;;;;1;02.40;;geslachtsnaam;;;;"standaardwaarde '.' uitfilteren";onbekend_waardes;Ja;Ja;
 ;aanduidingNaamgebruik;;;;1;61.10;;aanduidingNaamgebruik;;;;;;Ja;;
 ;inOnderzoek;;;;;;;;;;;;;Ja;;
 ;;*;;;;;;;;;;inOnderzoek.aanduidingGegevensInOnderzoek vertalen naar boolean properties;in_onderzoek;Ja;;
