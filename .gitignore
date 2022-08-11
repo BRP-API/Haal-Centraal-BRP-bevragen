@@ -15,3 +15,5 @@ node_modules
 .vs
 
 Data/
+
+src/config/Database
