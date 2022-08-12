@@ -12,7 +12,6 @@ De laatste versie is 1.3.1. Lees de [release notes](https://vng-realisatie.githu
 * Bekijk de specificaties met [Swagger UI](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/swagger-ui) of [Redoc](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/redoc)
 * Lees de [Getting started](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen//getting-started)
 * Download de [technische specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/specificatie/genereervariant/openapi.yaml)
-* Download [client code](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/master/code)
 * Vraag een API-key voor toegang tot de Haal Centraal probeeromgeving aan bij de product owner [c.dingemanse@comites.nl](c.dingemanse@comites.nl)
 
 ## Heb je meer nodig?
