@@ -674,6 +674,12 @@
           },
           "verblijfplaats" : {
             "$ref" : "#/components/schemas/GbaVerblijfplaatsBeperkt"
+          },
+          "rni" : {
+            "$ref" : "#/components/schemas/RniDeelnemer"
+          },
+          "verificatie" : {
+            "$ref" : "#/components/schemas/GbaVerificatie"
           }
         }
       },
@@ -684,6 +690,38 @@
       },
       "GbaGeheimhoudingPersoonsgegevens" : {
         "type" : "integer"
+      },
+      "RniDeelnemer" : {
+        "type" : "object",
+        "properties" : {
+          "deelnemer" : {
+            "$ref" : "#/components/schemas/Waardetabel"
+          },
+          "omschrijvingVerdrag" : {
+            "$ref" : "#/components/schemas/OmschrijvingVerdrag"
+          }
+        }
+      },
+      "OmschrijvingVerdrag" : {
+        "pattern" : "^[a-zA-Z0-9À-ž \\.\\-\\']{1,50}$",
+        "type" : "string",
+        "description" : "Omschrijving van het verdrag op basis waarvan de gegevens door een buitenlandse organisatie zijn aangeleverd.\n"
+      },
+      "GbaVerificatie" : {
+        "type" : "object",
+        "properties" : {
+          "datum" : {
+            "$ref" : "#/components/schemas/GbaDatum"
+          },
+          "omschrijving" : {
+            "$ref" : "#/components/schemas/OmschrijvingVerificatie"
+          }
+        }
+      },
+      "OmschrijvingVerificatie" : {
+        "pattern" : "^[a-zA-Z0-9À-ž \\.\\-\\']{1,50}$",
+        "type" : "string",
+        "description" : "Omschrijving van de verificatie van de rni-gegevens\n"
       },
       "GbaPersoon" : {
         "type" : "object",
@@ -771,6 +809,12 @@
             "items" : {
               "$ref" : "#/components/schemas/GbaPartner"
             }
+          },
+          "rni" : {
+            "$ref" : "#/components/schemas/RniDeelnemer"
+          },
+          "verificatie" : {
+            "$ref" : "#/components/schemas/GbaVerificatie"
           }
         }
       },

@@ -524,6 +524,10 @@ components:
           $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
         adressering:
           $ref: '#/components/schemas/AdresseringBeperkt'
+        rni:
+          $ref: '#/components/schemas/RniDeelnemer'
+        verificatie:
+          $ref: '#/components/schemas/Verificatie'
       description: |
         * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
     Burgerservicenummer:
@@ -541,6 +545,30 @@ components:
       description: |
         Leeftijd in jaren op het moment van bevragen.
       example: 34
+    RniDeelnemer:
+      type: object
+      properties:
+        deelnemer:
+          $ref: '#/components/schemas/Waardetabel'
+        omschrijvingVerdrag:
+          $ref: '#/components/schemas/OmschrijvingVerdrag'
+    OmschrijvingVerdrag:
+      pattern: "^[a-zA-Z0-9À-ž \\.\\-\\']{1,50}$"
+      type: string
+      description: |
+        Omschrijving van het verdrag op basis waarvan de gegevens door een buitenlandse organisatie zijn aangeleverd.
+    Verificatie:
+      type: object
+      properties:
+        datum:
+          $ref: '#/components/schemas/AbstractDatum'
+        omschrijving:
+          $ref: '#/components/schemas/OmschrijvingVerificatie'
+    OmschrijvingVerificatie:
+      pattern: "^[a-zA-Z0-9À-ž \\.\\-\\']{1,50}$"
+      type: string
+      description: |
+        Omschrijving van de verificatie van de rni-gegevens
     Persoon:
       type: object
       properties:
@@ -602,6 +630,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Partner'
+        rni:
+          $ref: '#/components/schemas/RniDeelnemer'
+        verificatie:
+          $ref: '#/components/schemas/Verificatie'
       description: |
         * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
     ANummer:
