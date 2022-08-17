@@ -723,7 +723,7 @@
       "OmschrijvingVerdrag" : {
         "pattern" : "^[a-zA-Z0-9À-ž \\.\\-\\']{1,50}$",
         "type" : "string",
-        "description" : "Omschrijving van het verdrag op basis waarvan de gegevens door een buitenlandse organisatie zijn aangeleverd.\n"
+        "description" : "Omschrijving van het verdrag op basis waarvan een zusterorganisatie in het buitenland de gegevens bij de RNI-deelnemer heeft aangeleverd.\n"
       },
       "Verificatie" : {
         "type" : "object",
