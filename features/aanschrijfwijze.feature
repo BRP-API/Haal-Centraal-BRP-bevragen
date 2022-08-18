@@ -220,7 +220,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999992934                       |
-      | fields              | naam.aanschrijfwijze            |
+      | fields              | naam.aanschrijfwijze.naam       |
       Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
       | naam                 | waarde                    |
       | aanschrijfwijze.naam | <naam in aanschrijfwijze> |
@@ -267,7 +267,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999992934                       |
-      | fields              | naam.aanschrijfwijze            |
+      | fields              | naam.aanschrijfwijze.naam       |
       Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
       | naam                 | waarde                    |
       | aanschrijfwijze.naam | <naam in aanschrijfwijze> |
@@ -306,7 +306,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999992934                       |
-      | fields              | naam.aanschrijfwijze            |
+      | fields              | naam.aanschrijfwijze.naam       |
       Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
       | naam                 | waarde                    |
       | aanschrijfwijze.naam | <naam in aanschrijfwijze> |
@@ -365,7 +365,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999992934                       |
-      | fields              | naam.aanschrijfwijze            |
+      | fields              | naam.aanschrijfwijze.naam       |
       Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
       | naam                 | waarde                    |
       | aanschrijfwijze.naam | <naam in aanschrijfwijze> |
@@ -409,7 +409,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999992934                       |
-      | fields              | naam.aanschrijfwijze            |
+      | fields              | naam.aanschrijfwijze.naam       |
       Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
       | naam                 | waarde                    |
       | aanschrijfwijze.naam | <naam in aanschrijfwijze> |
@@ -458,7 +458,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999992934                       |
-      | fields              | naam.aanschrijfwijze            |
+      | fields              | naam.aanschrijfwijze.naam       |
       Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
       | naam                 | waarde                    |
       | aanschrijfwijze.naam | <naam in aanschrijfwijze> |
@@ -493,7 +493,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999992934                       |
-      | fields              | naam.aanschrijfwijze            |
+      | fields              | naam.aanschrijfwijze.naam       |
       Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
       | naam                  | waarde                    |
       | aanschrijfwijze.naam  | <naam in aanschrijfwijze> |
@@ -537,7 +537,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999992934                       |
-      | fields              | naam.aanschrijfwijze            |
+      | fields              | naam.aanschrijfwijze.naam       |
       Dan bevat de persoon met burgerservicenummer '999992934' de volgende 'naam' gegevens
       | naam                  | waarde                    |
       | aanschrijfwijze.naam  | <naam in aanschrijfwijze> |

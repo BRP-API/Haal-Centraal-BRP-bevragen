@@ -131,7 +131,6 @@ Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbe
   | verblijfplaats.gemeenteVanInschrijving      | 0000            |
   | verblijfplaats.land                         | 0000            |
   | verblijfplaats.landVanwaarIngeschreven      | 0000            |
-  | verblijfstitel.aanduiding                   | 00              |
   | ouders.geboorte.plaats                      | 0000            |
   | ouders.geboorte.land                        | 0000            |
   | partners.geboorte.plaats                    | 0000            |
@@ -163,7 +162,6 @@ Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbe
     | geboorte       | land       | geboorteland (03.30)              | 0000   |
     | overlijden     | plaats     | plaats overlijden (08.20)         | 0000   |
     | overlijden     | land       | land overlijden (08.30)           | 0000   |
-    | verblijfstitel | aanduiding | aanduiding verblijfstitel (39.10) | 00     |
 
   Abstract Scenario: onbekend waarde voor: <element>
     Gegeven het systeem heeft een persoon met de volgende gegevens
