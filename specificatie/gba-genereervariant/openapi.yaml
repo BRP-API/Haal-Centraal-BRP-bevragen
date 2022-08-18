@@ -510,12 +510,40 @@ components:
           $ref: '#/components/schemas/Waardetabel'
         verblijfplaats:
           $ref: '#/components/schemas/GbaVerblijfplaatsBeperkt'
+        rni:
+          $ref: '#/components/schemas/RniDeelnemer'
+        verificatie:
+          $ref: '#/components/schemas/GbaVerificatie'
     Burgerservicenummer:
       pattern: "^[0-9]{9}$"
       type: string
       example: "555555021"
     GbaGeheimhoudingPersoonsgegevens:
       type: integer
+    RniDeelnemer:
+      type: object
+      properties:
+        deelnemer:
+          $ref: '#/components/schemas/Waardetabel'
+        omschrijvingVerdrag:
+          $ref: '#/components/schemas/OmschrijvingVerdrag'
+    OmschrijvingVerdrag:
+      pattern: "^[a-zA-Z0-9À-ž \\.\\-\\']{1,50}$"
+      type: string
+      description: |
+        Omschrijving van het verdrag op basis waarvan een zusterorganisatie in het buitenland de gegevens bij de RNI-deelnemer heeft aangeleverd.
+    GbaVerificatie:
+      type: object
+      properties:
+        datum:
+          $ref: '#/components/schemas/GbaDatum'
+        omschrijving:
+          $ref: '#/components/schemas/OmschrijvingVerificatie'
+    OmschrijvingVerificatie:
+      pattern: "^[a-zA-Z0-9À-ž \\.\\-\\']{1,50}$"
+      type: string
+      description: |
+        Omschrijving van de verificatie van de rni-gegevens
     GbaPersoon:
       type: object
       properties:
@@ -575,6 +603,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/GbaPartner'
+        rni:
+          $ref: '#/components/schemas/RniDeelnemer'
+        verificatie:
+          $ref: '#/components/schemas/GbaVerificatie'
     ANummer:
       pattern: "^[0-9]{10}$"
       type: string
