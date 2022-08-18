@@ -535,6 +535,22 @@ Then(/^heeft de persoon ?(?:alleen)? de volgende '(.*)'$/, function (gegevensgro
     }
 });
 
+Then(/^heeft de persoon een leeg '(.*)' object$/, function(gegevensgroep) {
+    this.context.leaveEmptyObjects = true;
+
+    const expected = {};
+    if(this.context.postAssert === true) {
+        const personen = this.context.expected;
+        should.exist(personen, 'Geen persoon gevonden. Gebruik de \'Dan heeft de response een persoon met de volgende gegevens\' stap om een persoon aan te maken');
+        personen.length.should.not.equal(0, 'Geen persoon gevonden. Gebruik de \'Dan heeft de response een persoon met de volgende gegevens\' stap om een persoon aan te maken');
+
+        let persoon = personen[personen.length-1];
+        should.exist(persoon, 'Geen persoon gevonden. Gebruik de \'Dan heeft de response een persoon met de volgende gegevens\' stap om een persoon aan te maken');
+
+        persoon[gegevensgroep] = expected;
+    }
+});
+
 Then(/^heeft de persoon GEEN '(.*)' gegevens$/, function (_) {
     // doe niets
 });
@@ -600,7 +616,25 @@ Then(/^heeft (?:de|het) '(.*)' ?(?:alleen)? de volgende '(.*)' gegevens$/, funct
 
     if(this.context.postAssert === true) {
         if(this.context.expected === undefined) {
-            console.log(`creeer eerst een '${relatie}' met "Dan heeft de persoon met burgerservicenummer '' een '${relatie}' met alleen de volgende gegevens"`);
+            console.log(`creeer eerst een '${relatie}' met "Dan heeft de persoon een '${relatie}' met alleen de volgende gegevens"`);
+            return 'pending';
+        }
+
+        const expectedPersoon = this.context.expected[this.context.expected.length-1];
+
+        const relaties = toCollectionName(relatie);
+        let expectedRelatie = expectedPersoon[relaties][expectedPersoon[relaties].length-1];
+        expectedRelatie[gegevensgroep] = expected;
+    }
+});
+
+Then(/^heeft (?:de|het) '(.*)' een leeg '(.*)' object$/, function(relatie, gegevensgroep) {
+    this.context.leaveEmptyObjects = true;
+
+    const expected = {};
+    if(this.context.postAssert === true) {
+        if(this.context.expected === undefined) {
+            console.log(`creeer eerst een '${relatie}' met "Dan heeft de persoon een '${relatie}' met alleen de volgende gegevens"`);
             return 'pending';
         }
 

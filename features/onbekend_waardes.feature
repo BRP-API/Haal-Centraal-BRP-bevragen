@@ -35,9 +35,10 @@ Rule: een veld wordt niet opgenomen wanneer het de standaardwaarde bevat
     | type                | RaadpleegMetBurgerservicenummer        |
     | burgerservicenummer | 999992934                              |
     | fields              | burgerservicenummer,naam.geslachtsnaam |
-    Dan heeft de response een persoon met alleen de volgende gegevens
+    Dan heeft de response een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999992934 |
+    En heeft de persoon een leeg 'naam' object
 
   Abstract Scenario: onbekend waarde "." voor straat
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -249,12 +250,13 @@ Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbe
     | type                | RaadpleegMetBurgerservicenummer                                                        |
     | burgerservicenummer | 999992934                                                                              |
     | fields              | burgerservicenummer,<relatie field>.burgerservicenummer,<relatie field>.<groep>.<veld> |
-    Dan heeft de response een persoon met alleen de volgende gegevens
+    Dan heeft de response een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999992934 |
-    En heeft de persoon een '<relatie>' met alleen de volgende gegevens
+    En heeft de persoon een '<relatie>' met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999992935 |
+    En heeft de '<relatie>' een leeg '<groep>' object
 
     Voorbeelden:
     | relatie | relatie field | groep                       | veld   | element                                                             | waarde |
