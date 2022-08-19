@@ -6,7 +6,7 @@ title: User Stories in Ontwikkeling
 # User stories
 
 - [Opnemen metagegevens bij een zoekvraag](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1214){:target="_blank" rel="noopener"}
-- [Opnemen dat een RNI gegeven is verstrekt door een bestuursorgaan of geverifieerd door een ABO, inclusief verificatiedatum](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1213){:target="_blank" rel="noopener"}
+- [Als PO wil ik verplicht leveren dat een RNI gegeven is verstrekt door een bestuursorgaan of is geverifieerd door een ABO, inclusief verificatiedatum](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1213){:target="_blank" rel="noopener"}
 - [Als PO wil ik dat nationaliteit geen magic strings meer bevat](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1025){:target="_blank" rel="noopener"}
 - [Als gebruiker van de API wil ik een lijst met van toepassing zijnde veldpaden voor fields](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1010){:target="_blank" rel="noopener"}
 - [Wijziging van Waardetabel waarden voor enumeratievelden moet leiden tot nieuwe versie API](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1007){:target="_blank" rel="noopener"}
