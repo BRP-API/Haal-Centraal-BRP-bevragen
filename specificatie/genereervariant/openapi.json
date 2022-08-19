@@ -683,6 +683,12 @@
           },
           "adressering" : {
             "$ref" : "#/components/schemas/AdresseringBeperkt"
+          },
+          "rni" : {
+            "$ref" : "#/components/schemas/RniDeelnemer"
+          },
+          "verificatie" : {
+            "$ref" : "#/components/schemas/Verificatie"
           }
         },
         "description" : "* **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
@@ -702,6 +708,38 @@
         "type" : "integer",
         "description" : "Leeftijd in jaren op het moment van bevragen.\n",
         "example" : 34
+      },
+      "RniDeelnemer" : {
+        "type" : "object",
+        "properties" : {
+          "deelnemer" : {
+            "$ref" : "#/components/schemas/Waardetabel"
+          },
+          "omschrijvingVerdrag" : {
+            "$ref" : "#/components/schemas/OmschrijvingVerdrag"
+          }
+        }
+      },
+      "OmschrijvingVerdrag" : {
+        "pattern" : "^[a-zA-Z0-9À-ž \\.\\-\\']{1,50}$",
+        "type" : "string",
+        "description" : "Omschrijving van het verdrag op basis waarvan een zusterorganisatie in het buitenland de gegevens bij de RNI-deelnemer heeft aangeleverd.\n"
+      },
+      "Verificatie" : {
+        "type" : "object",
+        "properties" : {
+          "datum" : {
+            "$ref" : "#/components/schemas/AbstractDatum"
+          },
+          "omschrijving" : {
+            "$ref" : "#/components/schemas/OmschrijvingVerificatie"
+          }
+        }
+      },
+      "OmschrijvingVerificatie" : {
+        "pattern" : "^[a-zA-Z0-9À-ž \\.\\-\\']{1,50}$",
+        "type" : "string",
+        "description" : "Omschrijving van de verificatie van de rni-gegevens\n"
       },
       "Persoon" : {
         "type" : "object",
@@ -792,6 +830,12 @@
             "items" : {
               "$ref" : "#/components/schemas/Partner"
             }
+          },
+          "rni" : {
+            "$ref" : "#/components/schemas/RniDeelnemer"
+          },
+          "verificatie" : {
+            "$ref" : "#/components/schemas/Verificatie"
           }
         },
         "description" : "* **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"

@@ -39,6 +39,37 @@ components:
       example: 34
       minimum: 0
       maximum: 150
+    OmschrijvingVerdrag:
+      type: string
+      description: |
+        Omschrijving van het verdrag op basis waarvan een zusterorganisatie in het buitenland de gegevens bij de RNI-deelnemer heeft aangeleverd.
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,50}$
+    OmschrijvingVerificatie:
+      type: string
+      description: |
+        Omschrijving van de verificatie van de rni-gegevens
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,50}$
+    GbaVerificatie:
+      type: object
+      properties:
+        datum:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        omschrijving:
+          $ref: '#/components/schemas/OmschrijvingVerificatie'
+    Verificatie:
+      type: object
+      properties:
+        datum:
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+        omschrijving:
+          $ref: '#/components/schemas/OmschrijvingVerificatie'
+    RniDeelnemer:
+      type: object
+      properties:
+        deelnemer:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        omschrijvingVerdrag:
+          $ref: '#/components/schemas/OmschrijvingVerdrag'
     GbaPersoonBeperkt:
       type: object
       properties:
@@ -60,6 +91,10 @@ components:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         verblijfplaats:
           $ref: 'verblijfplaats.yaml#/components/schemas/GbaVerblijfplaatsBeperkt'
+        rni:
+          $ref: '#/components/schemas/RniDeelnemer'
+        verificatie:
+          $ref: '#/components/schemas/GbaVerificatie'
     PersoonBeperkt:
       type: object
       description: |
@@ -85,6 +120,10 @@ components:
           $ref: 'verblijfplaats.yaml#/components/schemas/AbstractVerblijfplaatsBeperkt'
         adressering:
           $ref: 'adressering.yaml#/components/schemas/AdresseringBeperkt'
+        rni:
+          $ref: '#/components/schemas/RniDeelnemer'
+        verificatie:
+          $ref: '#/components/schemas/Verificatie'
     GbaPersoon:
       type: object
       properties:
@@ -144,6 +183,10 @@ components:
           type: array
           items:
             $ref: 'partner.yaml#/components/schemas/GbaPartner'
+        rni:
+          $ref: '#/components/schemas/RniDeelnemer'
+        verificatie:
+          $ref: '#/components/schemas/GbaVerificatie'
     Persoon:
       type: object
       description: |
@@ -207,6 +250,10 @@ components:
           type: array
           items:
             $ref: 'partner.yaml#/components/schemas/Partner'
+        rni:
+          $ref: '#/components/schemas/RniDeelnemer'
+        verificatie:
+          $ref: '#/components/schemas/Verificatie'
     PersoonInOnderzoek:
       description: |
         Geeft aan welke gegevens van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v2.0.0/features/in_onderzoek.feature).
