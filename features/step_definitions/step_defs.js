@@ -299,7 +299,7 @@ function createDeleteStatement(tabelNaam, plId) {
     return statement;
 }
 
-Given(/^de persoon met burgerservicenummer '(.*)' heeft een '(.*)' met de volgende gegevens$/, async function (burgerservicenummer, relatie, dataTable) {
+Given(/^de persoon met burgerservicenummer '(\d*)' heeft een '(\w*)' met de volgende gegevens$/, async function (burgerservicenummer, relatie, dataTable) {
     if(pool !== undefined) {
         const client = await pool.connect();
         try {
@@ -317,6 +317,47 @@ Given(/^de persoon met burgerservicenummer '(.*)' heeft een '(.*)' met de volgen
             }
             if(relatie === 'nationaliteit') {
                 await client.query(createInsertStatement(relatie, this.context.pl_id, this.context[`${relatie}-stapelnr`], 0, dataTable)); 
+            }
+        }
+        finally {
+            client.release();
+        }
+    }
+});
+
+Given(/^de persoon met burgerservicenummer '(\d*)' heeft een '(\w*)' uit categorie '(\d*)' met de volgende gegevens$/, async function (burgerservicenummer, relatie, categorie, dataTable) {
+    if(pool !== undefined) {
+        const client = await pool.connect();
+        try {
+            let res = await client.query(createInsertPersoonlijstStatement(0));
+            this.context.pl_id = res.rows[0]["pl_id"];
+
+            await client.query(createInsertPersoonStatement(this.context.pl_id, burgerservicenummer));
+
+            this.context[`${relatie}-stapelnr`] = 0;
+
+            if(categorie === '2') {
+                await client.query(createInsertRelatieStatement(this.context.pl_id, '1', this.context[`${relatie}-stapelnr`], 0, dataTable));
+            }
+            if(categorie == '3') {
+                await client.query(createInsertRelatieStatement(this.context.pl_id, '2', this.context[`${relatie}-stapelnr`], 0, dataTable));
+            }
+        }
+        finally {
+            client.release();
+        }
+    }
+});
+
+Given(/^de persoon heeft een '(\w*)' uit categorie '(\d*)' met de volgende gegevens$/, async function (relatie, categorie, dataTable) {
+    if(pool !== undefined) {
+        const client = await pool.connect();
+        try {
+            if(categorie === '2') {
+                await client.query(createInsertRelatieStatement(this.context.pl_id, '1', this.context[`${relatie}-stapelnr`], 0, dataTable));
+            }
+            if(categorie == '3') {
+                await client.query(createInsertRelatieStatement(this.context.pl_id, '2', this.context[`${relatie}-stapelnr`], 0, dataTable));
             }
         }
         finally {
@@ -364,7 +405,7 @@ Given(/^het '(.*)' is gewijzigd naar de volgende gegevens$/, async function (rel
     }
 });
 
-Given(/^de persoon heeft nog een '(.*)' met de volgende gegevens$/, async function (relatie, dataTable) {  
+Given(/^de persoon heeft nog een '(\w*)' met de volgende gegevens$/, async function (relatie, dataTable) {  
     if(pool !== undefined) {
         const client = await pool.connect();
         try {
@@ -623,7 +664,7 @@ Given(/^het systeem heeft personen met de volgende '(.*)' gegevens$/, function (
     setPersonenProperties(this.context.zoekResponse.personen, gegevensgroep, dataTable);
 });
 
-Given(/^de persoon heeft een '?(?:ex-)?(.*)' met ?(?:alleen)? de volgende gegevens$/, function (relatie, dataTable) {
+Given(/^de persoon heeft een '?(?:ex-)?(\w*)' met ?(?:alleen)? de volgende gegevens$/, function (relatie, dataTable) {
     let relatieCollectie = toCollectionName(relatie);
 
     if(this.context.persoon[relatieCollectie] === undefined) {

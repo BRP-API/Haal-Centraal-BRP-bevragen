@@ -10,25 +10,27 @@ Rule: De ouder in categorie 2 heeft ouderAanduiding "1" en de ouder in categorie
 
   @gba
   Scenario: Persoon heeft twee ouders
-    Gegeven de persoon met burgerservicenummer 999993653 heeft de volgende ouders in de registratie
-    | Categorie | Voornamen (02.10)  |
-    | 2         | Lisette            |
-    | 3         | Guîllaumé          |
+    Gegeven de persoon met burgerservicenummer '999993653' heeft een 'ouder' uit categorie '2' met de volgende gegevens
+    | voornamen (02.10)  |
+    | Lisette            |
+    En de persoon heeft een 'ouder' uit categorie '3' met de volgende gegevens
+    | voornamen (02.10)  |
+    | Guîllaumé          |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                                       |
     | type                | RaadpleegMetBurgerservicenummer              |
     | burgerservicenummer | 999993653                                    |
     | fields              | ouders.ouderAanduiding,ouders.naam.voornamen |
-    Dan heeft de ouder met ouderAanduiding '1' de volgende gegevens
+    Dan heeft de response een persoon met een 'ouder' met de volgende gegevens
     | naam            | waarde |
     | ouderAanduiding | 1      |
-    En heeft de ouder met ouderAanduiding '1' de volgende 'naam' gegevens
+    En heeft de 'ouder' de volgende 'naam' gegevens
     | naam      | waarde  |
     | voornamen | Lisette |
-    En heeft de ouder met ouderAanduiding '2' de volgende gegevens
+    En heeft de persoon een 'ouder' met de volgende gegevens
     | naam            | waarde |
     | ouderAanduiding | 2      |
-    En heeft de ouder met ouderAanduiding '2' de volgende 'naam' gegevens
+    En heeft de 'ouder' de volgende 'naam' gegevens
     | naam      | waarde    |
     | voornamen | Guîllaumé |
 
