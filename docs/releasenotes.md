@@ -7,15 +7,17 @@ title: Haal Centraal BRP Personen Bevragen
 
 ## Versie 2.0.0
 
+- de raadpleeg- en zoeken-endpoints zijn nu samengevoegd in 1 endpoint
 - het request is gewijzigd van GET naar POST, waarbij alle parameters verplaatst zijn van de querystring in de url naar de requestbody
 - requestbody is polymorf gedefinieerd, waarbij in parameter 'type' bepaalt welke parameters gebruikt mogen en moeten worden
 - parameter 'fields' is verplicht (required)
+- beperkingen voor string-parameters in de request body en string-velden in de response zijn aangescherpt met een reguliere expressie (pattern)
 - in het antwoord zitten geen json-HAL elementen \_links en \_embedded
 - in het antwoord is veld 'ingeschrevenPersonen' hernoemd naar 'personen'
 - het antwoord op elke zoekvraag (elk request anders dan raadplegen op burgerservicenummer) bevat maximaal een beperkte set gegevens van de persoon
 - veld 'reisdocumenten' is verwijderd
-- alle datums zijn polymorf gedefinieerd: nieuw veld type geeft aan welke velden voor de datum verwacht kunnen worden
-- alle datums hebben nieuw veld 'langFormaat', die de datum levert in voor mensen leesbare vorm
+- alle datums zijn polymorf gedefinieerd: nieuw veld 'type' geeft aan welke velden voor de datum verwacht kunnen worden
+- alle datums hebben nieuw veld 'langFormaat', waarmee de datum in volledig uitgeschreven formaat wordt geleverd, die direct aan eindgebruikers gepresenteerd kan worden
 - alle enumeraties zijn omgezet naar Waardetabel type, met 'code' plus 'omschrijving'. Zie https://github.com/VNG-Realisatie/Haal-Centraal-BRP-tabellen-bevragen/blob/master/docs/tabelwaarden.csv voor mogelijke waarden
 - veld 'geslachtsaanduiding' is hernoemd naar 'geslacht'
 - groep 'kiesrecht' is gesplitst in 'uitsluitingKiesrecht' en 'europeesKiesrecht'
@@ -26,8 +28,8 @@ title: Haal Centraal BRP Personen Bevragen
 - velden van de immigratie zijn verplaatst van groep 'verblijfplaats' naar groep 'immigratie'
 - velden 'indicatieCurateleRegister' en 'indicatieGezagMinderjarige' zijn verplaatst van groep 'gezagsverhouding' naar het hoogste niveau ('personen')
 - de adresvelden van een verblijfplaats zijn gegroepeerd in verblijfplaats groep 'verblijfadres'
-- groep 'verblijfplaats' is polymorf gedefinieerd, waarbij type aangeeft of het een binnenlands adres, locatie, buitenlands adres of onbekende verblijfplaats is
-- groep 'nationaliteiten' is polymorf gedefinieerd, waarbij type aangeeft of het een nationaliteit, bijzonder Nederlanderschap, staatloosheid of onbekende nationaliteit betreft
+- groep 'verblijfplaats' is polymorf gedefinieerd, waarbij nieuw veld 'type' aangeeft of het een binnenlands adres, locatie, buitenlands adres of onbekende verblijfplaats is
+- groep 'nationaliteiten' is polymorf gedefinieerd, waarbij nieuw veld 'type' aangeeft of het een nationaliteit, bijzonder Nederlanderschap, staatloosheid of onbekende nationaliteit betreft
 - wanneer er geen actuele partner is (zonder ontbinding van het huwelijk of partnerschap), wordt indien van toepassing het laatst ontbonden huwelijk of partnerschap geleverd, inclusief de datum van de ontbinding
 - wanneer de persoonsgegevens zijn geregistreerd door een RNI deelnemer, worden gegevens daarover opgenomen in groep 'rni'
 - wanneer voor een niet ingezetene (persoon in RNI) de gegevens zijn geverifieerd, worden gegevens daarover opgenomen in groep 'verificatie' 
