@@ -12,22 +12,19 @@ Rule: Aanduiding uitgesloten kiesrecht (38.10) wordt geleverd als boolean
 	- waarde "A" wordt geleverd als boolean waarde true
 
 	@gba
-	Abstract Scenario: Aanduiding uitgesloten kiesrecht (38.10) <uitsluiting kiesrecht> vertaald naar boolean
-	  Gegeven het systeem heeft een persoon met de volgende gegevens
-		| naam                        | waarde     |
-		| burgerservicenummer         | 999990001  |
-		En de persoon heeft de volgende kiesrecht gegevens
-		| aanduiding uitgesloten kiesrecht (38.10) | <uitgesloten kiesrecht> |
-		| einddatum uitsluiting kiesrecht (38.20)  | 20300101                |
-		Als de persoon op 15 maart 2022 wordt geraadpleegd met de volgende parameters
+	Scenario: Aanduiding uitgesloten kiesrecht (38.10) <uitsluiting kiesrecht> vertaald naar boolean
+	  Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kiesrecht' met de volgende gegevens
+		| aanduiding uitgesloten kiesrecht (38.10) | einddatum uitsluiting kiesrecht (38.20) |
+		| A                                        | 20300101                                |
+		Als personen wordt gezocht met de volgende parameters
+#		Als de persoon op 15 maart 2022 wordt geraadpleegd met de volgende parameters      !!!Hoe gaan we dit vormgeven ? Het moment van bevragen is van belang maar ik kan geen peildatum opgeven.
 		| naam                | waarde                          |
 		| type                | RaadpleegMetBurgerservicenummer |
 		| burgerservicenummer | 999990001                       |
 		| fields              | uitsluitingKiesrecht            |
-		Dan bevat de persoon met burgerservicenummer '999990001' de volgende 'uitsluitingKiesrecht' gegevens
-		| naam                          | waarde                    |
-		| uitgeslotenVanKiesrecht       | <uitgeslotenVanKiesrecht> |
-		| einddatum                     | 2030-01-01                |
+		Dan heeft de response een persoon met de volgende 'uitsluitingKiesrecht' gegevens
+		| uitgeslotenVanKiesrecht  | einddatum.datum | einddatum.langFormaat |
+		| <uitgesloten kiesrecht>  | 2030-01-01      | 1 januari 2030        |
 
 		Voorbeelden:
 		| uitgesloten kiesrecht | uitgeslotenVanKiesrecht |
