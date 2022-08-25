@@ -7,6 +7,17 @@ class World {
         this.context.zoekResponse = {
             personen: []
         };
+        this.context.sql = {
+            useDb: true,
+            logStatements: true,
+            poolConfig: {
+                user: "root",
+                host: "localhost",
+                database: "rvig_haalcentraal_testdata",
+                password: "root",
+                port: 5432
+            }
+        };
     }
 }
 
