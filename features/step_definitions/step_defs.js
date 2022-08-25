@@ -115,9 +115,24 @@ const columnNameMap = new Map([
     ['reden beëindigen (64.10)', 'nl_nat_verlies_reden'],
     ['datum ingang geldigheid (85.10)', 'geldigheid_start_datum'],
 
+    [ 'burgerservicenummer (01.20)', 'burger_service_nr' ],
+
     [ 'voornamen (02.10)', 'voor_naam' ],
+    ['adellijke titel of predicaat (02.20)', 'titel_predikaat' ],
     [ 'voorvoegsel (02.30)', 'geslachts_naam_voorvoegsel' ],
     [ 'geslachtsnaam (02.40)', 'geslachts_naam' ],
+
+    ['geboortedatum (03.10)', 'geboorte_datum'],
+    ['geboorteplaats (03.20)', 'geboorte_plaats'],
+    ['geboorteland (03.30)', 'geboorte_land_code'],
+
+    ['geslachtsaanduiding (04.10)', 'geslachts_aand'],
+
+    ['datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10)', 'relatie_start_datum'],
+    ['plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20)', 'relatie_start_plaats'],
+    ['land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)', 'relatie_start_land_code'],
+    ['datum ontbinding huwelijk/geregistreerd partnerschap (07.10)', 'relatie_eind_datum'],
+    ['soort verbintenis (15.10)', 'verbintenis_soort'],
 
 ]);
 
@@ -296,6 +311,9 @@ Given(/^de persoon met burgerservicenummer '(.*)' heeft een '(.*)' met de volgen
             this.context[`${relatie}-stapelnr`] = 0;
             if(relatie === 'kind') {
                 await client.query(createInsertRelatieStatement(this.context.pl_id, 'K', this.context[`${relatie}-stapelnr`], 0, dataTable));
+            }
+            if(relatie === 'partner') {
+                await client.query(createInsertRelatieStatement(this.context.pl_id, 'R', this.context[`${relatie}-stapelnr`], 0, dataTable));
             }
             if(relatie === 'nationaliteit') {
                 await client.query(createInsertStatement(relatie, this.context.pl_id, this.context[`${relatie}-stapelnr`], 0, dataTable)); 
