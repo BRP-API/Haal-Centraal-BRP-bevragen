@@ -72,7 +72,7 @@ const propertyNameMap = new Map([
     ['plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20)', 'plaats.code'],
     ['datum ontbinding huwelijk/geregistreerd partnerschap (07.10)', 'datum'],
 
-    // Verblijfplaats 
+    // Verblijfplaats
     ['gemeente van inschrijving (09.10)', 'gemeenteVanInschrijving.code'],
     ['datum inschrijving in de gemeente (09.20)', 'datumInschrijvingInGemeente'],
     ['functie adres (10.10)', 'functieAdres.code'],
@@ -105,7 +105,8 @@ const propertyNameMap = new Map([
 const tableNameMap = new Map([
     ['persoonlijst', 'lo3_pl'],
     ['persoon', 'lo3_pl_persoon' ],
-    ['nationaliteit', 'lo3_pl_nationaliteit']
+    ['nationaliteit', 'lo3_pl_nationaliteit'],
+    ['kiesrecht', 'lo3_pl']
 ]);
 
 const columnNameMap = new Map([
@@ -133,6 +134,9 @@ const columnNameMap = new Map([
     ['land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)', 'relatie_start_land_code'],
     ['datum ontbinding huwelijk/geregistreerd partnerschap (07.10)', 'relatie_eind_datum'],
     ['soort verbintenis (15.10)', 'verbintenis_soort'],
+
+    ['aanduiding uitgesloten kiesrecht (38.10)', 'kiesrecht_uitgesl_aand'],
+    ['einddatum uitsluiting kiesrecht (38.20)', 'kiesrecht_uitgesl_eind_datum']
 
 ]);
 
@@ -316,7 +320,7 @@ Given(/^de persoon met burgerservicenummer '(\d*)' heeft een '(\w*)' met de volg
                 await client.query(createInsertRelatieStatement(this.context.pl_id, 'R', this.context[`${relatie}-stapelnr`], 0, dataTable));
             }
             if(relatie === 'nationaliteit') {
-                await client.query(createInsertStatement(relatie, this.context.pl_id, this.context[`${relatie}-stapelnr`], 0, dataTable)); 
+                await client.query(createInsertStatement(relatie, this.context.pl_id, this.context[`${relatie}-stapelnr`], 0, dataTable));
             }
         }
         finally {
@@ -405,7 +409,7 @@ Given(/^het '(.*)' is gewijzigd naar de volgende gegevens$/, async function (rel
     }
 });
 
-Given(/^de persoon heeft nog een '(\w*)' met de volgende gegevens$/, async function (relatie, dataTable) {  
+Given(/^de persoon heeft nog een '(\w*)' met de volgende gegevens$/, async function (relatie, dataTable) {
     if(pool !== undefined) {
         const client = await pool.connect();
         try {
@@ -442,7 +446,7 @@ function mapRowToProperty(obj, row, dateAsDate = false) {
 
 function getProperty(obj, propertyName) {
     if(!propertyName.includes('.')) {
-        return obj[propertyName]; 
+        return obj[propertyName];
     }
 
     let propertyNames = propertyName.split('.');
@@ -464,7 +468,7 @@ function setProperty(obj, propertyName, propertyValue, dateAsDate) {
 
         propertyNames.forEach(function(propName, index) {
             if(index === propertyNames.length-1) {
-                property[propName] = calculatePropertyValue(propertyValue, dateAsDate); 
+                property[propName] = calculatePropertyValue(propertyValue, dateAsDate);
             }
             else {
                 if(property[propName] === undefined) {
@@ -565,7 +569,7 @@ After({tags: '@post-assert'}, async function() {
         }
     }
     this.context.attach(JSON.stringify(expected, null, '  '));
-    
+
     actual.should.deep.equalInAnyOrder(expected, `actual: ${JSON.stringify(actual, null, "\t")}`);
 });
 
@@ -807,7 +811,7 @@ Then(/^heeft de response een persoon met ?(?:alleen)? de volgende gegevens$/, fu
         if(this.context.expected === undefined) {
             this.context.expected = [];
         }
-        this.context.expected.push(expected); 
+        this.context.expected.push(expected);
     }
 });
 
@@ -819,7 +823,7 @@ Then(/^heeft de response een persoon met ?(?:alleen)? de volgende '(.*)' gegeven
         if(this.context.expected === undefined) {
             this.context.expected = [];
         }
-        this.context.expected.push(expected); 
+        this.context.expected.push(expected);
     }
 });
 
@@ -1105,7 +1109,7 @@ function toCollectionName(gegevensgroep) {
 
 function deleteEmptyObjects(o) {
     if(o === undefined) return o;
-  
+
     Object.keys(o).forEach(k => {
         if (typeof o[k] === 'object') {
             deleteEmptyObjects(o[k]);
@@ -1115,7 +1119,7 @@ function deleteEmptyObjects(o) {
             }
         }
     });
-    
+
     return o;
 }
 
@@ -1126,15 +1130,15 @@ function deleteEmptyProperties(o) {
       if (typeof o[k] === 'object') {
         return deleteEmptyProperties(o[k]);
       }
-  
+
       if(o[k] === '') {
-        delete o[k];      
+        delete o[k];
       }
     });
-    
+
     return o;
 }
-  
+
 function stringifyValues(o) {
     if(o === undefined) return o;
 
