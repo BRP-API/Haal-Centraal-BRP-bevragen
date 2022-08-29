@@ -44,6 +44,11 @@ components:
       description: |
         Omschrijving van het verdrag op basis waarvan een zusterorganisatie in het buitenland de gegevens bij de RNI-deelnemer heeft aangeleverd.
       pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,50}$
+    Categorie:
+      type: string
+      description: Naam van categorie waarop de RNI-deelnemer gegevens heeft aangeleverd
+      pattern: ^[a-zA-Z0-9À-ž \.\-\'\/]{1,40}$
+      example: Verblijfplaats
     OmschrijvingVerificatie:
       type: string
       description: |
@@ -70,6 +75,8 @@ components:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         omschrijvingVerdrag:
           $ref: '#/components/schemas/OmschrijvingVerdrag'
+        categorie:
+          $ref: '#/components/schemas/Categorie'
     GbaPersoonBeperkt:
       type: object
       properties:
@@ -92,7 +99,9 @@ components:
         verblijfplaats:
           $ref: 'verblijfplaats.yaml#/components/schemas/GbaVerblijfplaatsBeperkt'
         rni:
-          $ref: '#/components/schemas/RniDeelnemer'
+          type: array
+          items:
+            $ref: '#/components/schemas/RniDeelnemer'
         verificatie:
           $ref: '#/components/schemas/GbaVerificatie'
     PersoonBeperkt:
@@ -121,7 +130,9 @@ components:
         adressering:
           $ref: 'adressering.yaml#/components/schemas/AdresseringBeperkt'
         rni:
-          $ref: '#/components/schemas/RniDeelnemer'
+          type: array
+          items:
+            $ref: '#/components/schemas/RniDeelnemer'
         verificatie:
           $ref: '#/components/schemas/Verificatie'
     GbaPersoon:
@@ -184,7 +195,9 @@ components:
           items:
             $ref: 'partner.yaml#/components/schemas/GbaPartner'
         rni:
-          $ref: '#/components/schemas/RniDeelnemer'
+          type: array
+          items:
+            $ref: '#/components/schemas/RniDeelnemer'
         verificatie:
           $ref: '#/components/schemas/GbaVerificatie'
     Persoon:
@@ -251,7 +264,9 @@ components:
           items:
             $ref: 'partner.yaml#/components/schemas/Partner'
         rni:
-          $ref: '#/components/schemas/RniDeelnemer'
+          type: array
+          items:
+            $ref: '#/components/schemas/RniDeelnemer'
         verificatie:
           $ref: '#/components/schemas/Verificatie'
     PersoonInOnderzoek:
