@@ -107,7 +107,7 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       Dan heeft de response een persoon met de volgende 'naam' gegevens
       | naam      | waarde |
       | voornamen | Peter  |
-      En bevat het antwoord GEEN 'rni'
+      En heeft de persoon GEEN 'rni'
 
     Scenario: niet leveren RNI-deelnemer voor een categorie waar geen gegeven uit geleverd is
       Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -130,7 +130,7 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       Dan heeft de response een persoon met de volgende 'naam' gegevens
       | naam      | waarde |
       | voornamen | Peter  |
-      En bevat het antwoord GEEN 'rni'
+      En heeft de persoon GEEN 'rni'
 
     Scenario: niet leveren RNI-deelnemer categorie 7 wanneer er geen opschorting en geen geheimhouding is
       Gegeven het systeem heeft een persoon met de volgende gegevens
