@@ -7,19 +7,17 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
     - RNI-deelnemer gegevens worden ook geleverd wanneer hier niet naar gevraagd is met de fields parameter
     - categorie wordt gevuld met de naam van categorie waarop de RNI-deelnemer gegevens heeft aangeleverd
       | categorie | naam           |
-      | 1         | Persoon        |
-      | 4         | Nationaliteit  |
-      | 6         | Overlijden     |
-      | 7         | Inschrijving   |
-      | 8         | Verblijfplaats |
+      | 01        | Persoon        |
+      | 04        | Nationaliteit  |
+      | 06        | Overlijden     |
+      | 07        | Inschrijving   |
+      | 08        | Verblijfplaats |
 
 
     Achtergrond:
-      Gegeven landelijke tabel "RNI-deelnemerstabel" heeft de volgende waarde
-      | code | omschrijving                                    |
-      | 101  | Belastingdienst (inzake heffingen en toeslagen) |
-      En landelijke tabel "RNI-deelnemerstabel" heeft de volgende waarde
+      Gegeven landelijke tabel "RNI-deelnemerstabel" heeft de volgende waarden
       | code | omschrijving                                      |
+      | 101  | Belastingdienst (inzake heffingen en toeslagen)   |
       | 201  | Sociale Verzekeringsbank (inzake AOW, Anw en AKW) |
 
 
