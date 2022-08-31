@@ -39,26 +39,30 @@ Rule: de actuele gegevens van ouders worden geleverd
 
   @gba
   Scenario: oudergegevens gecorrigeerd
-    Gegeven de persoon met burgerservicenummer 999996186 heeft de volgende ouders in de registratie
-    | Categorie | Voornamen (02.10)  | Onjuist (84.10) |
-    | 2         | Chantal            |                 |
-    | 3         | Mark               |                 |
-    | 53        | Christiaan         | O               |
+    Gegeven de persoon met burgerservicenummer '999996186' heeft een categorie '2' 'ouder' met de volgende gegevens
+    | voornamen (02.10)  |
+    | Chantal            |
+    En de persoon heeft een categorie '3' 'ouder' met de volgende gegevens
+    | voornamen (02.10)  |
+    | Christiaan         |
+    En de categorie '3' 'ouder' is gecorrigeerd naar de volgende gegevens
+    | voornamen (02.10)  |
+    | Mark               |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                                       |
     | type                | RaadpleegMetBurgerservicenummer              |
     | burgerservicenummer | 999996186                                    |
     | fields              | ouders.ouderAanduiding,ouders.naam.voornamen |
-    Dan heeft de ouder met ouderAanduiding '1' de volgende gegevens
+    Dan heeft de response een persoon met een 'ouder' met de volgende gegevens
     | naam            | waarde |
     | ouderAanduiding | 1      |
-    En heeft de ouder met ouderAanduiding '1' de volgende 'naam' gegevens
+    En heeft de 'ouder' de volgende 'naam' gegevens
     | naam      | waarde  |
     | voornamen | Chantal |
-    En heeft de ouder met ouderAanduiding '2' de volgende gegevens
+    En heeft de persoon een 'ouder' met de volgende gegevens
     | naam            | waarde |
     | ouderAanduiding | 2      |
-    En heeft de ouder met ouderAanduiding '2' de volgende 'naam' gegevens
+    En heeft de 'ouder' de volgende 'naam' gegevens
     | naam      | waarde    |
     | voornamen | Mark      |
 
