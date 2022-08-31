@@ -140,17 +140,6 @@ const columnNameMap = new Map([
 
 ]);
 
-function getColumnNames(dataTable) {
-    let columns = dataTable.raw()[0];
-    columns.forEach(function(column, index) {
-        let propertyName = columnNameMap.get(column);
-        if(propertyName !== undefined) {
-            columns[index] = propertyName;
-        }
-    });
-    return columns;
-}
-
 Before(function() {
     if(this.context.sql.useDb) {
         pool = new Pool(this.context.sql.poolConfig);
@@ -173,52 +162,22 @@ After(async function() {
 });
 
 
-function createInsertPersoonlijstStatement(geheimhouding) {
-    const statement = {
-        text: 'INSERT INTO public.lo3_pl(pl_id,geheim_ind,mutatie_dt) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl), $1, current_timestamp) RETURNING *',
-        values: [ geheimhouding ]
-    };
-
-    if(logSqlStatements) {
-        console.log(statement);
-    }
-    return statement;
-}
-
-function createInsertPersoonStatement(plId, burgerservicenummer) {
-    const statement = {
-        text: 'INSERT INTO public.lo3_pl_persoon(pl_id,persoon_type,stapel_nr,volg_nr,burger_service_nr) VALUES($1,$2,$3,$4,$5)',
-        values: [ plId, 'P', 0, 0, burgerservicenummer]
-    };
-
-    if(logSqlStatements) {
-        console.log(statement);
-    }
-    return statement;
-}
-
-function createInsertRelatieStatement(plId, relatieType, stapelNr, volgNr, dataTable) {
+function insertIntoPersoonlijstStatement(data) {
     let statement = {
-        text: 'INSERT INTO public.lo3_pl_persoon(pl_id,persoon_type,stapel_nr,volg_nr',
-        values: [plId, relatieType, stapelNr, volgNr]
+        text: 'INSERT INTO public.lo3_pl(pl_id,mutatie_dt',
+        values: []
     };
 
-    const columnNames = getColumnNames(dataTable);
-
-    dataTable.hashes().forEach(function(row) {
-        columnNames.forEach(function(columnName) {
-            statement.text += `,${columnName}`;
-            statement.values.push(row[columnName]);
-        });
+    data.forEach(function(row) {
+        statement.text += `,${row[0]}`;
+        statement.values.push(row[1]);
     });
 
-    statement.text += ') VALUES(';
+    statement.text += ') VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp';
     statement.values.forEach(function(_value, index) {
-        statement.text += index === 0
-            ? `$${index+1}`
-            : `,$${index+1}`;
+        statement.text += `,$${index+1}`;
     });
-    statement.text += ')';
+    statement.text += ') RETURNING *';
 
     if(logSqlStatements) {
         console.log(statement);
@@ -226,19 +185,17 @@ function createInsertRelatieStatement(plId, relatieType, stapelNr, volgNr, dataT
     return statement;
 }
 
-function createInsertStatement(tabelNaam, plId, stapelNr, volgNr, dataTable) {
+function insertIntoStatement(tabelNaam, data) {
     let statement = {
-        text: `INSERT INTO public.${tableNameMap.get(tabelNaam)}(pl_id,stapel_nr,volg_nr`,
-        values: [plId, stapelNr, volgNr]
+        text: `INSERT INTO public.${tableNameMap.get(tabelNaam)}(`,
+        values: []
     };
 
-    const columnNames = getColumnNames(dataTable);
-
-    dataTable.hashes().forEach(function(row) {
-        columnNames.forEach(function(columnName) {
-            statement.text += `,${columnName}`;
-            statement.values.push(row[columnName]);
-        });
+    data.forEach(function(row, index) {
+        statement.text += index === 0
+            ? `${row[0]}`
+            : `,${row[0]}`;
+        statement.values.push(row[1]);
     });
 
     statement.text += ') VALUES(';
@@ -303,24 +260,126 @@ function createDeleteStatement(tabelNaam, plId) {
     return statement;
 }
 
-Given(/^de persoon met burgerservicenummer '(\d*)' heeft een '(\w*)' met de volgende gegevens$/, async function (burgerservicenummer, relatie, dataTable) {
+function fromHash(hash) {
+    let retval = [];
+
+    Object.keys(hash).forEach(function(key) {
+        retval.push([ columnNameMap.get(key), hash[key] ]);
+    });
+
+    return retval;
+}
+
+function createPersoonlijstData(gegevensgroep, dataTable, geheim=0) {
+    let data = [
+        [ 'geheim_ind', geheim ]
+    ];
+
+    if(gegevensgroep === 'kiesrecht') {
+        data = data.concat(fromHash(dataTable.hashes()[0]));
+    }
+    else {
+        console.log(`'${gegevensgroep}' gegevens wordt (nog) niet toegevoegd`)
+    }
+
+    return data;
+}
+
+function createPersoonData(plId, bsn) {
+    return [
+        [ 'pl_id', plId ],
+        [ 'persoon_type', 'P'],
+        [ 'stapel_nr', 0 ],
+        [ 'volg_nr', 0],
+        [ 'burger_service_nr', bsn ]
+    ];
+}
+
+function createKindData(plId, dataTable, stapelNr=0) {
+    return [
+        [ 'pl_id', plId ],
+        [ 'persoon_type', 'K'],
+        [ 'stapel_nr', stapelNr ],
+        [ 'volg_nr', 0]
+    ].concat(fromHash(dataTable.hashes()[0]));
+}
+
+function createOuder1Data(plId, dataTable) {
+    return [
+        [ 'pl_id', plId ],
+        [ 'persoon_type', '1'],
+        [ 'stapel_nr', 0 ],
+        [ 'volg_nr', 0]
+    ].concat(fromHash(dataTable.hashes()[0]));
+}
+
+function createOuder2Data(plId, dataTable) {
+    return [
+        [ 'pl_id', plId ],
+        [ 'persoon_type', '2'],
+        [ 'stapel_nr', 0 ],
+        [ 'volg_nr', 0]
+    ].concat(fromHash(dataTable.hashes()[0]));
+}
+
+function createPartnerData(plId, dataTable, stapelNr=0) {
+    return [
+        [ 'pl_id', plId ],
+        [ 'persoon_type', 'R'],
+        [ 'stapel_nr', stapelNr ],
+        [ 'volg_nr', 0]
+    ].concat(fromHash(dataTable.hashes()[0]));
+}
+
+function createCollectieGegevensgroepData(plId, dataTable) {
+    return [
+        [ 'pl_id', plId ],
+        [ 'stapel_nr', 0 ],
+        [ 'volg_nr', 0]
+    ].concat(fromHash(dataTable.hashes()[0]));
+}
+
+Given(/^de persoon met burgerservicenummer '(\d*)' heeft de volgende '(\w*)' gegevens$/, async function(burgerservicenummer, gegevensgroep, dataTable) {
     if(pool !== undefined) {
         const client = await pool.connect();
         try {
-            let res = await client.query(createInsertPersoonlijstStatement(0));
+            let data = createPersoonlijstData(gegevensgroep, dataTable);
+            let res = await client.query(insertIntoPersoonlijstStatement(data));
             this.context.pl_id = res.rows[0]["pl_id"];
 
-            await client.query(createInsertPersoonStatement(this.context.pl_id, burgerservicenummer));
+            data = createPersoonData(this.context.pl_id, burgerservicenummer);
+            await client.query(insertIntoStatement('persoon', data));
+        }
+        finally {
+            client.release();
+        }
+    }
+});
 
-            this.context[`${relatie}-stapelnr`] = 0;
-            if(relatie === 'kind') {
-                await client.query(createInsertRelatieStatement(this.context.pl_id, 'K', this.context[`${relatie}-stapelnr`], 0, dataTable));
+Given(/^de persoon met burgerservicenummer '(\d*)' heeft een '(\w*)' met de volgende gegevens$/, async function (burgerservicenummer, collectieGegevensgroep, dataTable) {
+    if(pool !== undefined) {
+        const client = await pool.connect();
+        try {
+            let data = createPersoonlijstData(undefined, dataTable);
+            let res = await client.query(insertIntoPersoonlijstStatement(data));
+            this.context.pl_id = res.rows[0]["pl_id"];
+
+            data = createPersoonData(this.context.pl_id, burgerservicenummer);
+            await client.query(insertIntoStatement('persoon', data));
+
+            this.context[`${collectieGegevensgroep}-stapelnr`] = 0;
+
+            if(collectieGegevensgroep === 'kind') {
+                data = createKindData(this.context.pl_id, dataTable);
+                await client.query(insertIntoStatement('persoon', data));
             }
-            if(relatie === 'partner') {
-                await client.query(createInsertRelatieStatement(this.context.pl_id, 'R', this.context[`${relatie}-stapelnr`], 0, dataTable));
+            else if(collectieGegevensgroep === 'partner') {
+                data = createPartnerData(this.context.pl_id, dataTable);
+                await client.query(insertIntoStatement('persoon', data));
             }
-            if(relatie === 'nationaliteit') {
-                await client.query(createInsertStatement(relatie, this.context.pl_id, this.context[`${relatie}-stapelnr`], 0, dataTable));
+            else {
+                data = createCollectieGegevensgroepData(this.context.pl_id, dataTable);
+                await client.query(insertIntoStatement(collectieGegevensgroep, data));
             }
         }
         finally {
@@ -329,23 +388,24 @@ Given(/^de persoon met burgerservicenummer '(\d*)' heeft een '(\w*)' met de volg
     }
 });
 
-Given(/^de persoon met burgerservicenummer '(\d*)' heeft een '(\w*)' uit categorie '(\d*)' met de volgende gegevens$/, async function (burgerservicenummer, relatie, categorie, dataTable) {
+Given(/^de persoon met burgerservicenummer '(\d*)' heeft een categorie '(\d{1})' 'ouder' met de volgende gegevens$/, async function (burgerservicenummer, categorie, dataTable) {
     if(pool !== undefined) {
         const client = await pool.connect();
         try {
-            let res = await client.query(createInsertPersoonlijstStatement(0));
+            let data = createPersoonlijstData(undefined, dataTable);
+            let res = await client.query(insertIntoPersoonlijstStatement(data));
             this.context.pl_id = res.rows[0]["pl_id"];
 
-            await client.query(createInsertPersoonStatement(this.context.pl_id, burgerservicenummer));
-
-            this.context[`${relatie}-stapelnr`] = 0;
+            data = createPersoonData(this.context.pl_id, burgerservicenummer);
+            await client.query(insertIntoStatement('persoon', data));
 
             if(categorie === '2') {
-                await client.query(createInsertRelatieStatement(this.context.pl_id, '1', this.context[`${relatie}-stapelnr`], 0, dataTable));
+                data = createOuder1Data(this.context.pl_id, dataTable);
             }
             if(categorie == '3') {
-                await client.query(createInsertRelatieStatement(this.context.pl_id, '2', this.context[`${relatie}-stapelnr`], 0, dataTable));
+                data = createOuder2Data(this.context.pl_id, dataTable);
             }
+            await client.query(insertIntoStatement('persoon', data));
         }
         finally {
             client.release();
@@ -353,16 +413,19 @@ Given(/^de persoon met burgerservicenummer '(\d*)' heeft een '(\w*)' uit categor
     }
 });
 
-Given(/^de persoon heeft een '(\w*)' uit categorie '(\d*)' met de volgende gegevens$/, async function (relatie, categorie, dataTable) {
+Given(/^de persoon heeft een categorie '(\d{1})' 'ouder' met de volgende gegevens$/, async function (categorie, dataTable) {
     if(pool !== undefined) {
         const client = await pool.connect();
         try {
+            let data;
+
             if(categorie === '2') {
-                await client.query(createInsertRelatieStatement(this.context.pl_id, '1', this.context[`${relatie}-stapelnr`], 0, dataTable));
+                data = createOuder1Data(this.context.pl_id, dataTable);
             }
             if(categorie == '3') {
-                await client.query(createInsertRelatieStatement(this.context.pl_id, '2', this.context[`${relatie}-stapelnr`], 0, dataTable));
+                data = createOuder2Data(this.context.pl_id, dataTable);
             }
+            await client.query(insertIntoStatement('persoon', data));
         }
         finally {
             client.release();
@@ -377,12 +440,50 @@ Given(/^het '(.*)' is gecorrigeerd naar de volgende gegevens$/, async function (
             const persoonType = relatie === 'kind' ? 'K' : 'P';
 
             await client.query(setPersoonOnjuistStatement(this.context.pl_id, persoonType, this.context[`${relatie}-stapelnr`]));
+
             let res = await client.query(selectPersoonMaxVolgnrStatement(this.context.pl_id, persoonType, this.context[`${relatie}-stapelnr`]));
             const maxVolgnr = res.rows[0]['max_volg_nr'];
             for(let volgnr = maxVolgnr; volgnr>=0; volgnr--) {
                 await client.query(incrementPersoonVolgnrStatement(this.context.pl_id, persoonType, this.context[`${relatie}-stapelnr`], volgnr));
             }
-            await client.query(createInsertRelatieStatement(this.context.pl_id, persoonType, this.context[`${relatie}-stapelnr`], 0, dataTable));
+
+            let data;
+            if(relatie === 'kind') {
+                data = createKindData(this.context.pl_id, dataTable, this.context[`${relatie}-stapelnr`]);
+            }
+            else if(relatie === 'partner') {
+                data = createPartnerData(this.context.pl_id, dataTable, this.context[`${relatie}-stapelnr`]);
+            }
+            await client.query(insertIntoStatement('persoon', data));
+        }
+        finally {
+            client.release();
+        }
+    }
+});
+
+Given(/^de categorie '(\d{1})' 'ouder' is gecorrigeerd naar de volgende gegevens$/, async function (categorie, dataTable) {
+    if(pool !== undefined) {
+        const client = await pool.connect();
+        try {
+            const persoonType = categorie === '2' ? '1' : '2';
+
+            await client.query(setPersoonOnjuistStatement(this.context.pl_id, persoonType, 0));
+         
+            let res = await client.query(selectPersoonMaxVolgnrStatement(this.context.pl_id, persoonType, 0));
+            const maxVolgnr = res.rows[0]['max_volg_nr'];
+            for(let volgnr = maxVolgnr; volgnr>=0; volgnr--) {
+                await client.query(incrementPersoonVolgnrStatement(this.context.pl_id, persoonType, 0, volgnr));
+            }
+
+            let data;
+            if(categorie === '2') {
+                data = createOuder1Data(this.context.pl_id, dataTable);
+            }
+            if(categorie == '3') {
+                data = createOuder2Data(this.context.pl_id, dataTable);
+            }
+            await client.query(insertIntoStatement('persoon', data));
         }
         finally {
             client.release();
@@ -401,7 +502,11 @@ Given(/^het '(.*)' is gewijzigd naar de volgende gegevens$/, async function (rel
             for(let volgnr = maxVolgnr; volgnr>=0; volgnr--) {
                 await client.query(incrementPersoonVolgnrStatement(this.context.pl_id, persoonType, this.context[`${relatie}-stapelnr`], volgnr));
             }
-            await client.query(createInsertRelatieStatement(this.context.pl_id, persoonType, this.context[`${relatie}-stapelnr`], 0, dataTable));
+
+            if(relatie === 'kind') {
+                const data = createKindData(this.context.pl_id, dataTable);
+                await client.query(insertIntoStatement('persoon', data));
+            }
         }
         finally {
             client.release();
@@ -416,7 +521,8 @@ Given(/^de persoon heeft nog een '(\w*)' met de volgende gegevens$/, async funct
             this.context[`${relatie}-stapelnr`] += 1;
 
             if(relatie === 'kind') {
-                await client.query(createInsertRelatieStatement(this.context.pl_id, 'K', this.context[`${relatie}-stapelnr`], 0, dataTable));
+                const data = createKindData(this.context.pl_id, dataTable, this.context[`${relatie}-stapelnr`]);
+                await client.query(insertIntoStatement('persoon', data));
             }
         }
         finally {
@@ -696,7 +802,7 @@ Given(/^de persoon heeft een '?(?:ex-)?(.*)' met ?(?:alleen)? de volgende '(.*)'
     setPersoonProperties(this.context[relatie], gegevensgroep, dataTable);
 });
 
-Given(/^(?:de|het) '?(?:ex-)?(.*)' heeft ?(?:alleen)? de volgende '(.*)' gegevens$/, function (relatie, gegevensgroep, dataTable) {
+Given(/^(?:de|het) '?(?:ex-)?(\w*)' heeft ?(?:alleen)? de volgende '(\w*)' gegevens$/, function (relatie, gegevensgroep, dataTable) {
     if(this.context[relatie] === undefined) {
         this.context[relatie] = {};
     }
