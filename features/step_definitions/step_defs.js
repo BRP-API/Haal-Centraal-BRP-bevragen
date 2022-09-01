@@ -106,7 +106,8 @@ const tableNameMap = new Map([
     ['persoonlijst', 'lo3_pl'],
     ['persoon', 'lo3_pl_persoon' ],
     ['nationaliteit', 'lo3_pl_nationaliteit'],
-    ['kiesrecht', 'lo3_pl']
+    ['kiesrecht', 'lo3_pl'],
+    ['verblijfstitel', 'lo3_pl_verblijfstitel']
 ]);
 
 const columnNameMap = new Map([
@@ -136,7 +137,11 @@ const columnNameMap = new Map([
     ['soort verbintenis (15.10)', 'verbintenis_soort'],
 
     ['aanduiding uitgesloten kiesrecht (38.10)', 'kiesrecht_uitgesl_aand'],
-    ['einddatum uitsluiting kiesrecht (38.20)', 'kiesrecht_uitgesl_eind_datum']
+    ['einddatum uitsluiting kiesrecht (38.20)', 'kiesrecht_uitgesl_eind_datum'],
+
+    ['aanduiding verblijfstitel (39.10)', 'verblijfstitel_aand'],
+    ['datum einde verblijfstitel (39.20)', 'verblijfstitel_eind_datum'],
+    ['datum ingang verblijfstitel (39.30)', 'geldigheid_start_datum'],
 
 ]);
 
@@ -154,6 +159,7 @@ After(async function() {
             await client.query(createDeleteStatement('persoonlijst', this.context.pl_id));
             await client.query(createDeleteStatement('persoon', this.context.pl_id));
             await client.query(createDeleteStatement('nationaliteit', this.context.pl_id));
+            await client.query(createDeleteStatement('verblijfstitel', this.context.pl_id));
         }
         finally {
             client.release();
@@ -278,9 +284,6 @@ function createPersoonlijstData(gegevensgroep, dataTable, geheim=0) {
     if(gegevensgroep === 'kiesrecht') {
         data = data.concat(fromHash(dataTable.hashes()[0]));
     }
-    else {
-        console.log(`'${gegevensgroep}' gegevens wordt (nog) niet toegevoegd`)
-    }
 
     return data;
 }
@@ -339,6 +342,13 @@ function createCollectieGegevensgroepData(plId, dataTable) {
     ].concat(fromHash(dataTable.hashes()[0]));
 }
 
+function createGegevensgroepData(plId, dataTable) {
+    return [
+        [ 'pl_id', plId ],
+        [ 'volg_nr', 0]
+    ].concat(fromHash(dataTable.hashes()[0]));
+}
+
 Given(/^de persoon met burgerservicenummer '(\d*)' heeft de volgende '(\w*)' gegevens$/, async function(burgerservicenummer, gegevensgroep, dataTable) {
     if(pool !== undefined) {
         const client = await pool.connect();
@@ -349,6 +359,9 @@ Given(/^de persoon met burgerservicenummer '(\d*)' heeft de volgende '(\w*)' geg
 
             data = createPersoonData(this.context.pl_id, burgerservicenummer);
             await client.query(insertIntoStatement('persoon', data));
+
+            data = createGegevensgroepData(this.context.pl_id, dataTable);
+            await client.query(insertIntoStatement(gegevensgroep, data));
         }
         finally {
             client.release();
