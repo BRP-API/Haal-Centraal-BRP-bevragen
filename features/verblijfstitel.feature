@@ -9,13 +9,13 @@ Functionaliteit: Verblijfstitel
 
     @gba
     Scenario: verblijfstitel heeft geen datum einde
-      Gegeven de persoon met burgerservicenummer '555550001' heeft de volgende 'verblijfstitel' gegevens
+      Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende 'verblijfstitel' gegevens
       | aanduiding verblijfstitel (39.10) | datum ingang verblijfstitel (39.30) |
       | 37                                | 20210315                            |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000012                       |
       | fields              | verblijfstitel.aanduiding.code  |
       Dan heeft de response een persoon met alleen de volgende 'verblijfstitel' gegevens
       | naam            | waarde |
@@ -23,13 +23,13 @@ Functionaliteit: Verblijfstitel
 
     @gba
     Abstract Scenario: verblijfstitel heeft <titel>
-      Gegeven de persoon met burgerservicenummer '555550001' heeft de volgende 'verblijfstitel' gegevens
+      Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfstitel' gegevens
       | aanduiding verblijfstitel (39.10) | datum einde verblijfstitel (39.20) | datum ingang verblijfstitel (39.30) |
       | 37                                | <datumEinde>                       | 20210315                            |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000024                       |
       | fields              | verblijfstitel.aanduiding.code  |
       Dan heeft de response een persoon met alleen de volgende 'verblijfstitel' gegevens
       | naam            | waarde |
@@ -42,22 +42,17 @@ Functionaliteit: Verblijfstitel
 
     @gba
     Abstract Scenario: verblijfstitel heeft <titel>
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550002 |
-      En de persoon heeft de volgende 'verblijfstitel' gegevens
-      | naam                                | waarde       |
-      | Aanduiding verblijfstitel (39.10)   | 37           |
-      | Datum einde verblijfstitel (39.20)  | <datumEinde> |
-      | Ingangsdatum verblijfstitel (39.30) | 20210315     |
-      Als personen op '5 juni 2022' wordt gezocht met de volgende parameters
+      Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende 'verblijfstitel' gegevens
+      | aanduiding verblijfstitel (39.10)   | datum einde verblijfstitel (39.20)  | datum ingang verblijfstitel (39.30) |
+      | 37                                  | <datumEinde>                        | 20210315                            |
+      Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                             |
       | type                | RaadpleegMetBurgerservicenummer                    |
-      | burgerservicenummer | 555550002                                          |
+      | burgerservicenummer | 000000036                                          |
       | fields              | burgerservicenummer,verblijfstitel.aanduiding.code |
-      Dan heeft de response een persoon met alleen de volgende gegevens
+      Dan heeft de response een persoon met alleen de volgende 'persoon' gegevens
       | naam                | waarde    |
-      | burgerservicenummer | 555550002 |
+      | burgerservicenummer | 0000036 |
 
       Voorbeelden:
       | titel                       | datumEinde |
@@ -67,42 +62,32 @@ Functionaliteit: Verblijfstitel
   Rule: een verblijfstitel met aanduiding 98 "geen verblijfstitel (meer)" wordt niet opgenomen
 
     Scenario: vervallen verblijfstitel
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550003 |
-      En de persoon heeft de volgende 'verblijfstitel' gegevens
-      | naam                                | waarde   |
-      | Aanduiding verblijfstitel (39.10)   | 98       |
-      | Ingangsdatum verblijfstitel (39.30) | 20210315 |
+      Gegeven de persoon met burgerservicenummer '000000048' heeft de volgende 'verblijfstitel' gegevens
+      | aanduiding verblijfstitel (39.10)| datum ingang verblijfstitel (39.30) |
+      | 98                               | 20210315                            |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                        |
       | type                | RaadpleegMetBurgerservicenummer               |
       | burgerservicenummer | 555550003                                     |
       | fields              | burgerservicenummer,verblijfstitel.aanduiding |
-      Dan heeft de response een persoon met alleen de volgende gegevens
+      Dan heeft de response een persoon met alleen de volgende 'persoon' gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550003 |
 
   Rule: Een verblijfstitel met onbekende aanduiding wordt wel geleverd
 
     Scenario: persoon heeft verblijfstitel maar het is nog onbekend welke
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550004 |
-      En de persoon heeft de volgende 'verblijfstitel' gegevens
-      | naam                                | waarde   |
-      | Aanduiding verblijfstitel (39.10)   | 00       |
-      | aanduiding.omschrijving             | Onbekend |
-      | Ingangsdatum verblijfstitel (39.30) | 20210714 |
-      Als personen op '5 juni 2022' wordt gezocht met de volgende parameters
+      Gegeven de persoon met burgerservicenummer '000000048' heeft de volgende 'verblijfstitel' gegevens
+      | aanduiding verblijfstitel (39.10) | datum ingang verblijfstitel (39.30) |
+      | 00                                | 20210714                            |
+      Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550004                       |
+      | burgerservicenummer | 000000048                       |
       | fields              | verblijfstitel                  |
       Dan heeft de response een persoon met alleen de volgende 'verblijfstitel' gegevens
       | naam                    | waarde       |
       | aanduiding.code         | 00           |
-      | aanduiding.omschrijving | Onbekend     |
       | datumIngang.type        | Datum        |
       | datumIngang.datum       | 2021-07-14   |
       | datumIngang.langFormaat | 14 juli 2021 |
