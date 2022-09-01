@@ -360,8 +360,10 @@ Given(/^de persoon met burgerservicenummer '(\d*)' heeft de volgende '(\w*)' geg
             data = createPersoonData(this.context.pl_id, burgerservicenummer);
             await client.query(insertIntoStatement('persoon', data));
 
-            data = createGegevensgroepData(this.context.pl_id, dataTable);
-            await client.query(insertIntoStatement(gegevensgroep, data));
+            if(gegevensgroep !== 'kiesrecht') {
+                data = createGegevensgroepData(this.context.pl_id, dataTable);
+                await client.query(insertIntoStatement(gegevensgroep, data));
+            }
         }
         finally {
             client.release();
