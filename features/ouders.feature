@@ -10,10 +10,10 @@ Rule: De ouder in categorie 2 heeft ouderAanduiding "1" en de ouder in categorie
 
   @gba
   Scenario: Persoon heeft twee ouders
-    Gegeven de persoon met burgerservicenummer '999993653' heeft een 'ouder' uit categorie '2' met de volgende gegevens
+    Gegeven de persoon met burgerservicenummer '999993653' heeft een categorie '2' 'ouder' met de volgende gegevens
     | voornamen (02.10)  |
     | Lisette            |
-    En de persoon heeft een 'ouder' uit categorie '3' met de volgende gegevens
+    En de persoon heeft een categorie '3' 'ouder' met de volgende gegevens
     | voornamen (02.10)  |
     | Guîllaumé          |
     Als personen wordt gezocht met de volgende parameters
