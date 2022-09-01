@@ -307,19 +307,10 @@ function createKindData(plId, dataTable, stapelNr=0) {
     ].concat(fromHash(dataTable.hashes()[0]));
 }
 
-function createOuder1Data(plId, dataTable) {
+function createOuderData(plId, ouderType, dataTable) {
     return [
         [ 'pl_id', plId ],
-        [ 'persoon_type', '1'],
-        [ 'stapel_nr', 0 ],
-        [ 'volg_nr', 0]
-    ].concat(fromHash(dataTable.hashes()[0]));
-}
-
-function createOuder2Data(plId, dataTable) {
-    return [
-        [ 'pl_id', plId ],
-        [ 'persoon_type', '2'],
+        [ 'persoon_type', ouderType],
         [ 'stapel_nr', 0 ],
         [ 'volg_nr', 0]
     ].concat(fromHash(dataTable.hashes()[0]));
@@ -403,7 +394,7 @@ Given(/^de persoon met burgerservicenummer '(\d*)' heeft een '(\w*)' met de volg
     }
 });
 
-Given(/^de persoon met burgerservicenummer '(\d*)' heeft een categorie '(\d{1})' 'ouder' met de volgende gegevens$/, async function (burgerservicenummer, categorie, dataTable) {
+async function createPersoonMetOuder(burgerservicenummer, ouderType, dataTable) {
     if(pool !== undefined) {
         const client = await pool.connect();
         try {
@@ -414,39 +405,54 @@ Given(/^de persoon met burgerservicenummer '(\d*)' heeft een categorie '(\d{1})'
             data = createPersoonData(this.context.pl_id, burgerservicenummer);
             await client.query(insertIntoStatement('persoon', data));
 
-            if(categorie === '2') {
-                data = createOuder1Data(this.context.pl_id, dataTable);
-            }
-            if(categorie == '3') {
-                data = createOuder2Data(this.context.pl_id, dataTable);
-            }
+            data = createOuderData(this.context.pl_id, ouderType, dataTable);
             await client.query(insertIntoStatement('persoon', data));
         }
         finally {
             client.release();
         }
     }
-});
+}
 
-Given(/^de persoon heeft een categorie '(\d{1})' 'ouder' met de volgende gegevens$/, async function (categorie, dataTable) {
+async function createOuder(ouderType, dataTable) {
     if(pool !== undefined) {
         const client = await pool.connect();
         try {
-            let data;
-
-            if(categorie === '2') {
-                data = createOuder1Data(this.context.pl_id, dataTable);
-            }
-            if(categorie == '3') {
-                data = createOuder2Data(this.context.pl_id, dataTable);
-            }
+            const data = createOuderData(this.context.pl_id, ouderType, dataTable);
             await client.query(insertIntoStatement('persoon', data));
         }
         finally {
             client.release();
         }
     }
-});
+}
+
+async function corrigeerOuder(ouderType, dataTable) {
+    if(pool !== undefined) {
+        const client = await pool.connect();
+        try {
+            await client.query(setPersoonOnjuistStatement(this.context.pl_id, ouderType, 0));
+         
+            let res = await client.query(selectPersoonMaxVolgnrStatement(this.context.pl_id, ouderType, 0));
+            const maxVolgnr = res.rows[0]['max_volg_nr'];
+            for(let volgnr = maxVolgnr; volgnr>=0; volgnr--) {
+                await client.query(incrementPersoonVolgnrStatement(this.context.pl_id, ouderType, 0, volgnr));
+            }
+
+            let data = createOuderData(this.context.pl_id, ouderType, dataTable);
+            await client.query(insertIntoStatement('persoon', data));
+        }
+        finally {
+            client.release();
+        }
+    }
+}
+
+Given(/^de persoon met burgerservicenummer '(\d*)' heeft een ouder '(\d{1})' met de volgende gegevens$/, createPersoonMetOuder);
+
+Given(/^de persoon heeft een ouder '(\d{1})' met de volgende gegevens$/, createOuder);
+
+Given(/^de ouder '(\d{1})' is gecorrigeerd naar de volgende gegevens$/, corrigeerOuder);
 
 Given(/^het '(.*)' is gecorrigeerd naar de volgende gegevens$/, async function (relatie, dataTable) {
     if(pool !== undefined) {
@@ -468,35 +474,6 @@ Given(/^het '(.*)' is gecorrigeerd naar de volgende gegevens$/, async function (
             }
             else if(relatie === 'partner') {
                 data = createPartnerData(this.context.pl_id, dataTable, this.context[`${relatie}-stapelnr`]);
-            }
-            await client.query(insertIntoStatement('persoon', data));
-        }
-        finally {
-            client.release();
-        }
-    }
-});
-
-Given(/^de categorie '(\d{1})' 'ouder' is gecorrigeerd naar de volgende gegevens$/, async function (categorie, dataTable) {
-    if(pool !== undefined) {
-        const client = await pool.connect();
-        try {
-            const persoonType = categorie === '2' ? '1' : '2';
-
-            await client.query(setPersoonOnjuistStatement(this.context.pl_id, persoonType, 0));
-         
-            let res = await client.query(selectPersoonMaxVolgnrStatement(this.context.pl_id, persoonType, 0));
-            const maxVolgnr = res.rows[0]['max_volg_nr'];
-            for(let volgnr = maxVolgnr; volgnr>=0; volgnr--) {
-                await client.query(incrementPersoonVolgnrStatement(this.context.pl_id, persoonType, 0, volgnr));
-            }
-
-            let data;
-            if(categorie === '2') {
-                data = createOuder1Data(this.context.pl_id, dataTable);
-            }
-            if(categorie == '3') {
-                data = createOuder2Data(this.context.pl_id, dataTable);
             }
             await client.query(insertIntoStatement('persoon', data));
         }
