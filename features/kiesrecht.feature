@@ -13,22 +13,19 @@ Rule: Aanduiding uitgesloten kiesrecht (38.10) wordt geleverd als boolean
 	- waarde "A" wordt geleverd als boolean waarde true
 
 	@gba
-	Scenario: Aanduiding uitgesloten kiesrecht (38.10) <uitsluiting kiesrecht> vertaald naar boolean
+	Scenario: Aanduiding uitgesloten kiesrecht (38.10) "A" vertaald naar boolean true
 	  Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende 'kiesrecht' gegevens
-    | aanduiding uitgesloten kiesrecht (38.10) | einddatum uitsluiting kiesrecht (38.20) |
-    | A                                        | 20300101                                |
+		| aanduiding uitgesloten kiesrecht (38.10) |
+		| A                                        |
 		Als personen wordt gezocht met de volgende parameters
-#		Als de persoon op 15 maart 2022 wordt geraadpleegd met de volgende parameters      !!!Hoe gaan we dit vormgeven ? Het moment van bevragen is van belang maar ik kan geen peildatum opgeven.
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 000000012                       |
-    | fields              | uitsluitingKiesrecht            |
+		| naam                | waarde                          |
+		| type                | RaadpleegMetBurgerservicenummer |
+		| burgerservicenummer | 000000012                       |
+		| fields              | uitsluitingKiesrecht            |
 		Dan heeft de response een persoon met de volgende 'uitsluitingKiesrecht' gegevens
-    | naam                    | waarde         |
-    | uitgeslotenVanKiesrecht | true           |
-    | einddatum.type          | Datum          |
-    | einddatum.datum         | 2030-01-01     |
-    | einddatum.langFormaat   | 1 januari 2030 |
+		| naam                    | waarde |
+		| uitgeslotenVanKiesrecht | true   |
+
 
 @gba
 Rule: Uitsluiting van Europees kiesrecht wordt alleen opgenomen wanneer de einddatum uitsluiting in de toekomst ligt
@@ -40,23 +37,20 @@ Rule: Uitsluiting van Europees kiesrecht wordt alleen opgenomen wanneer de eindd
 
 	@gba
 	Abstract Scenario: Europees kiesrecht <omschrijving>
-		Gegeven het systeem heeft een persoon met de volgende gegevens
-  | naam                | waarde    |
-  | burgerservicenummer | 999990001 |
-		En de persoon heeft de volgende 'kiesrecht' gegevens
-  | naam                                             | waarde                  |
-  | Europees kiesrecht (31.10)                       | <Europees kiesrecht>    |
-  | einddatum uitsluiting Europees kiesrecht (31.30) | <einddatum uitsluiting> |
+		Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'kiesrecht' gegevens
+		| naam                                             | waarde                  |
+		| Europees kiesrecht (31.10)                       | <Europees kiesrecht>    |
+		| einddatum uitsluiting Europees kiesrecht (31.30) | <einddatum uitsluiting> |
 		Als de persoon op 15 maart 2022 wordt geraadpleegd met de volgende parameters
-  | naam                | waarde                          |
-  | type                | RaadpleegMetBurgerservicenummer |
-  | burgerservicenummer | 999990001                       |
-  | fields              | europeesKiesrecht               |
-		Dan bevat de persoon met burgerservicenummer '999990001' de volgende 'europeesKiesrecht' gegevens
-  | naam                    | waarde                    |
-  | aanduiding.code         | <aanduiding.code          |
-  | aanduiding.omschrijving | omschrijving.omschrijving |
-  | einddatumUitsluiting    | <einddatumUitsluiting>    |
+		| naam                | waarde                          |
+		| type                | RaadpleegMetBurgerservicenummer |
+		| burgerservicenummer | 000000024                       |
+		| fields              | europeesKiesrecht                       |
+		Dan bevat de persoon met burgerservicenummer '000000024' de volgende 'europeesKiesrecht' gegevens
+		| naam                             | waarde                    |
+		| aanduiding.code                  | <aanduiding.code          |
+		| aanduiding.omschrijving          | omschrijving.omschrijving |
+		| einddatumUitsluiting             | <einddatumUitsluiting>    |
 
 		Voorbeelden:
   | omschrijving                       | Europees kiesrecht | einddatum uitsluiting | aanduiding.code | aanduiding.omschrijving | einddatumUitsluiting |
@@ -83,22 +77,19 @@ Rule: Uitsluiting van kiesrecht wordt alleen opgenomen wanneer de einddatum uits
 
 	@gba
 	Abstract Scenario: kiesrecht <omschrijving>
-		Gegeven het systeem heeft een persoon met de volgende gegevens
-  | naam                | waarde    |
-  | burgerservicenummer | 999990001 |
-		En de persoon heeft de volgende 'kiesrecht' gegevens
-  | naam                                     | waarde                  |
-  | aanduiding uitgesloten kiesrecht (38.10) | <uitsluiting kiesrecht> |
-  | einddatumUitsluitingKiesrecht (38.20)    | <einddatum uitsluiting> |
+		Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende 'kiesrecht' gegevens
+		| naam                                     | waarde                  |
+		| aanduiding uitgesloten kiesrecht (38.10) | <uitsluiting kiesrecht> |
+		| einddatumUitsluitingKiesrecht (38.20)    | <einddatum uitsluiting> |
 		Als de persoon op 15 maart 2022 wordt geraadpleegd met de volgende parameters
-  | naam                | waarde                          |
-  | type                | RaadpleegMetBurgerservicenummer |
-  | burgerservicenummer | 999990001                       |
-  | fields              | uitsluitingKiesrecht            |
-		Dan bevat de persoon met burgerservicenummer '999990001' de volgende 'uitsluitingKiesrecht' gegevens
-  | naam                    | waarde                    |
-  | uitgeslotenVanKiesrecht | <uitgeslotenVanKiesrecht> |
-  | einddatum               | <einddatum>               |
+		| naam                | waarde                          |
+		| type                | RaadpleegMetBurgerservicenummer |
+		| burgerservicenummer | 000000036                       |
+		| fields              | uitsluitingKiesrecht                       |
+		Dan bevat de persoon met burgerservicenummer '000000036' de volgende 'uitsluitingKiesrecht' gegevens
+		| naam                    | waarde                    |
+		| uitgeslotenVanKiesrecht | <uitgeslotenVanKiesrecht> |
+		| einddatum               | <einddatum>               |
 
 		Voorbeelden:
   | omschrijving                       | uitsluiting kiesrecht | einddatum uitsluiting | uitgeslotenVanKiesrecht | einddatum |
