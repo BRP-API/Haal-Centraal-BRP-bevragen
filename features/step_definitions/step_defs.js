@@ -1117,7 +1117,7 @@ Then('heeft de response een leeg persoon object', function () {
     }
 });
 
-Then(/^heeft de response een persoon met ?(?:een)? leeg '(.*)' object$/, function (gegevensgroep) {
+function createEmptyCollectieGegevensgroep(gegevensgroep) {
     this.context.leaveEmptyObjects = true;
     let expected = {};
 
@@ -1139,7 +1139,11 @@ Then(/^heeft de response een persoon met ?(?:een)? leeg '(.*)' object$/, functio
             expectedPersoon[relaties].push(expected);
         }
     }
-});
+}
+
+Then(/^heeft de response een persoon met een '(\w*)' zonder gegevens$/, createEmptyCollectieGegevensgroep);
+
+Then(/^heeft de response een persoon met ?(?:een)? leeg '(.*)' object$/, createEmptyCollectieGegevensgroep);
 
 Then(/^heeft de response een persoon met een '([a-zA-Z]*)' met een leeg '([a-zA-Z]*)' object$/, function (relatie, gegevensgroep) {
     this.context.leaveEmptyObjects = true;
