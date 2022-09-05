@@ -108,7 +108,7 @@ const tableNameMap = new Map([
     ['nationaliteit', 'lo3_pl_nationaliteit'],
     ['kiesrecht', 'lo3_pl'],
     ['verblijfstitel', 'lo3_pl_verblijfstitel'],
-	['gezagsverhouding', 'lo3_pl_gezagsverhouding']
+    ['gezagsverhouding', 'lo3_pl_gezagsverhouding']
 ]);
 
 const columnNameMap = new Map([
@@ -144,20 +144,20 @@ const columnNameMap = new Map([
     ['datum einde verblijfstitel (39.20)', 'verblijfstitel_eind_datum'],
     ['datum ingang verblijfstitel (39.30)', 'geldigheid_start_datum'],
 	
-	['gemeente document (82.10)', 'doc_gemeente_code' ],
-	['datum document (82.20)', 'doc_datum' ],
-	['beschrijving document (82.30)', 'doc_beschrijving' ],
+    ['gemeente document (82.10)', 'doc_gemeente_code' ],
+    ['datum document (82.20)', 'doc_datum' ],
+    ['beschrijving document (82.30)', 'doc_beschrijving' ],
 	
-	['ingangsdatum geldigheid (85.10)', 'geldigheid_start_datum' ],
+    ['ingangsdatum geldigheid (85.10)', 'geldigheid_start_datum' ],
 	
-	['datum van opneming (86.10)', 'opneming_datum' ],
+    ['datum van opneming (86.10)', 'opneming_datum' ],
 	
-	['indicatie curateleregister (33.10)', 'curatele_register_ind' ],
+    ['indicatie curateleregister (33.10)', 'curatele_register_ind' ],
 	
-	['aanduiding in onderzoek (83.10)', 'onderzoek_gegevens_aand' ],
-	['datum ingang onderzoek (83.20)', 'onderzoek_start_datum' ],
-	['aanduiding in onderzoek (83.10)', 'onderzoek_gegevens_aand' ],
-	['datum ingang onderzoek (83.20)', 'onderzoek_start_datum' ]
+    ['aanduiding in onderzoek (83.10)', 'onderzoek_gegevens_aand' ],
+    ['datum ingang onderzoek (83.20)', 'onderzoek_start_datum' ],
+    ['aanduiding in onderzoek (83.10)', 'onderzoek_gegevens_aand' ],
+    ['datum ingang onderzoek (83.20)', 'onderzoek_start_datum' ]
 
 ]);
 
