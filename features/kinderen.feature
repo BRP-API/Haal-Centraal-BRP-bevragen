@@ -52,10 +52,10 @@ Functionaliteit: Kinderen van een persoon raadplegen
     Scenario: naamswijziging kind
       Gegeven de persoon met burgerservicenummer '999996381' heeft een 'kind' met de volgende gegevens
       | voornamen (02.10) |
-      | Vica              |
+      | Celeke Lodivica              |
 	  En het 'kind' is gewijzigd naar de volgende gegevens
       | voornamen (02.10) |
-      | Celeke Lodivica   |
+      | Vica   |
       En de persoon heeft nog een 'kind' met de volgende gegevens
       | voornamen (02.10) |
       | Bella             |
@@ -108,7 +108,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       Gegeven de persoon met burgerservicenummer '555550002' heeft een 'kind' met de volgende gegevens
       | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) | geboortedatum (03.10) | gemeente document (82.10) | datum document (82.20) | beschrijving document (82.30) | ingangsdatum geldigheid (85.10) | datum van opneming (86.10) |
       | Daan              | de                  | Vries                 | 20031107              | 0518                      | 20031109               | PL gerelateerde               | 20031107                        | 20031109                   |
-      En het 'kind' is gecorrigeerd naar de volgende gegevens
+      En het 'kind' is gewijzigd naar de volgende gegevens
       | gemeente document (82.10) | datum document (82.20) | beschrijving document (82.30) | ingangsdatum geldigheid (85.10) | datum van opneming (86.10) |
       | 1926                      | 20040105               | D27894-2004-A782              | 20031107                        | 20040112                   |
       Als personen wordt gezocht met de volgende parameters
