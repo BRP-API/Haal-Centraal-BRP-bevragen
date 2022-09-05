@@ -99,7 +99,8 @@ const propertyNameMap = new Map([
     // Verblijfstitel
     ['aanduiding verblijfstitel (39.10)', 'aanduiding.code'],
     ['datum einde verblijfstitel (39.20)', 'datumEinde'],
-    ['datum ingang verblijfstitel (39.30)', 'datumIngang'],
+    ['datum ingang verblijfstitel (39.30)', 'datumIngang']
+]);
 
 const tableNameMap = new Map([
     ['persoonlijst', 'lo3_pl'],
@@ -107,7 +108,8 @@ const tableNameMap = new Map([
     ['nationaliteit', 'lo3_pl_nationaliteit'],
     ['kiesrecht', 'lo3_pl'],
     ['verblijfstitel', 'lo3_pl_verblijfstitel'],
-    ['gezagsverhouding', 'lo3_pl_gezagsverhouding']]);
+    ['gezagsverhouding', 'lo3_pl_gezagsverhouding']
+]);
 
 const columnNameMap = new Map([
 
@@ -155,7 +157,7 @@ const columnNameMap = new Map([
     ['aanduiding in onderzoek (83.10)', 'onderzoek_gegevens_aand' ],
     ['datum ingang onderzoek (83.20)', 'onderzoek_start_datum' ],
     ['aanduiding in onderzoek (83.10)', 'onderzoek_gegevens_aand' ],
-    ['datum ingang onderzoek (83.20)', 'onderzoek_start_datum' ]]);
+    ['datum ingang onderzoek (83.20)', 'onderzoek_start_datum' ]
 ]);
 
 Before(function() {
