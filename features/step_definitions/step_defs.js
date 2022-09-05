@@ -506,7 +506,7 @@ Given(/^het '(.*)' is gewijzigd naar de volgende gegevens$/, async function (rel
     }
 });
 
-Given(/^de persoon heeft nog een '(\w*)' met de volgende gegevens$/, async function (relatie, dataTable) {
+Given(/^de persoon heeft ?(?:nog)? een '?(?:ex-)?(\w*)' met ?(?:alleen)? de volgende gegevens$/, async function (relatie, dataTable) {
     if(pool !== undefined) {
         const client = await pool.connect();
         try {
@@ -520,6 +520,19 @@ Given(/^de persoon heeft nog een '(\w*)' met de volgende gegevens$/, async funct
         finally {
             client.release();
         }
+    }
+    else {
+        let relatieCollectie = toCollectionName(relatie);
+
+        if(this.context.persoon[relatieCollectie] === undefined) {
+            this.context.persoon[relatieCollectie] = [];
+        }
+        if(this.context[relatie] !== undefined) {
+            this.context.persoon[relatieCollectie].push(this.context[relatie]);
+        }
+        this.context[relatie] = createObjectFrom(dataTable);
+    
+        this.context.attach(`${relatie}: ${JSON.stringify(this.context[relatie], null, '  ')}`);
     }
 });
 
@@ -764,20 +777,6 @@ Given(/^de persoon heeft de volgende '(.*)'$/, function (gegevensgroep, dataTabl
 
 Given(/^het systeem heeft personen met de volgende '(.*)' gegevens$/, function (gegevensgroep, dataTable) {
     setPersonenProperties(this.context.zoekResponse.personen, gegevensgroep, dataTable);
-});
-
-Given(/^de persoon heeft een '?(?:ex-)?(\w*)' met ?(?:alleen)? de volgende gegevens$/, function (relatie, dataTable) {
-    let relatieCollectie = toCollectionName(relatie);
-
-    if(this.context.persoon[relatieCollectie] === undefined) {
-        this.context.persoon[relatieCollectie] = [];
-    }
-    if(this.context[relatie] !== undefined) {
-        this.context.persoon[relatieCollectie].push(this.context[relatie]);
-    }
-    this.context[relatie] = createObjectFrom(dataTable);
-
-    this.context.attach(`${relatie}: ${JSON.stringify(this.context[relatie], null, '  ')}`);
 });
 
 Given(/^de persoon heeft een '?(?:ex-)?(.*)' met ?(?:alleen)? de volgende '(.*)' gegevens$/, function (relatie, gegevensgroep, dataTable) {
