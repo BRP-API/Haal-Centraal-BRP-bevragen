@@ -53,7 +53,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       Gegeven de persoon met burgerservicenummer '999996381' heeft een 'kind' met de volgende gegevens
       | voornamen (02.10) |
       | Celeke Lodivica              |
-	  En het 'kind' is gewijzigd naar de volgende gegevens
+      En het 'kind' is gewijzigd naar de volgende gegevens
       | voornamen (02.10) |
       | Vica   |
       En de persoon heeft nog een 'kind' met de volgende gegevens
