@@ -63,7 +63,7 @@ Functionaliteit: in onderzoek
       En de persoon heeft een ouder '2' met de volgende gegevens
       | voornamen (02.10) | geslachtsaanduiding (04.10) |
       | Jan               | M                           |
-      En de persoon heeft nog een 'partner' met de volgende gegevens
+      En de persoon heeft een 'partner' met de volgende gegevens
       | burgerservicenummer (01.20) | voornamen (02.10 | geslachtsaanduiding (04.10) | datum aangaan (06.10) |
       | 555550002                   | Karel            | M                           | 20091102              |
       Als personen wordt gezocht met de volgende parameters
@@ -160,7 +160,7 @@ Functionaliteit: in onderzoek
       En de persoon heeft een ouder '2' met de volgende gegevens
       | voornamen (02.10) | geslachtsaanduiding (04.10) |
       | Jan               | M                           |
-      En de persoon heeft nog een 'partner' met de volgende gegevens
+      En de persoon heeft een 'partner' met de volgende gegevens
       | voornamen (02.10 | geslachtsaanduiding (04.10) | datum aangaan (06.10) |
       | Karel            | M                           | 20091102              |
       Als personen wordt gezocht met de volgende parameters
@@ -209,11 +209,9 @@ Functionaliteit: in onderzoek
 #      En heeft de persoon met burgerservicenummer '999994888' GEEN 'naam.inOnderzoek' gegevens
 #      En heeft de persoon met burgerservicenummer '999994888' GEEN 'geboorte.inOnderzoek' gegevens
 
-
 #      Gegeven de persoon met burgerservicenummer '999996381' heeft een 'kind' met de volgende gegevens
 #      | voornamen (02.10) |
 #      | Vica              |
-
 
     @gba
     Scenario: onderzoek is beëindigd
