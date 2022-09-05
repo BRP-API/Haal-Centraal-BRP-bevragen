@@ -912,6 +912,9 @@ function createHeaders(dataTable) {
             headers[param.naam.slice(8)] = param.waarde;
         });
 
+    if(headers.Accept === undefined) {
+        headers.Accept = "application/json";
+    }
     return headers;
 }
 
