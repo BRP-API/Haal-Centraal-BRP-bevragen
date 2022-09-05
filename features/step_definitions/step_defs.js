@@ -340,6 +340,66 @@ function createGegevensgroepData(plId, dataTable) {
     ].concat(fromHash(dataTable.hashes()[0]));
 }
 
+Given(/^een persoon heeft de volgende '(\w*)' gegevens$/, async function (gegevensgroep, dataTable) {
+    if(pool !== undefined) {
+        const client = await pool.connect();
+        try {
+            let data;
+            let res;
+            if(gegevensgroep === 'persoonslijst') {
+                data = fromHash(dataTable.hashes()[0]);
+                res = await client.query(insertIntoPersoonlijstStatement(data));
+                this.context.pl_id = res.rows[0]["pl_id"];
+            }
+            if(gegevensgroep === 'persoon') {
+                data = createPersoonlijstData(gegevensgroep, dataTable);
+                res = await client.query(insertIntoPersoonlijstStatement(data));
+                this.context.pl_id = res.rows[0]["pl_id"];
+
+                data = [
+                    [ 'pl_id', this.context.pl_id ],
+                    [ 'persoon_type', 'P'],
+                    [ 'stapel_nr', 0 ],
+                    [ 'volg_nr', 0]
+                ].concat(fromHash(dataTable.hashes()[0]));
+                await client.query(insertIntoStatement(gegevensgroep, data));
+            }
+        }
+        finally {
+            client.release();
+        }
+    }
+});
+
+Given(/^de persoon heeft de volgende '(\w*)' gegevens$/, async function (gegevensgroep, dataTable) {
+    if(pool !== undefined) {
+        const client = await pool.connect();
+        try {
+            let data;
+            if(gegevensgroep === 'persoon') {
+                data = [
+                    [ 'pl_id', this.context.pl_id ],
+                    [ 'persoon_type', 'P'],
+                    [ 'stapel_nr', 0 ],
+                    [ 'volg_nr', 0]
+                ].concat(fromHash(dataTable.hashes()[0]));
+            }
+            else {
+                data = createGegevensgroepData(this.context.pl_id, dataTable);
+            }
+            await client.query(insertIntoStatement(gegevensgroep, data));
+        }
+        finally {
+            client.release();
+        }
+    }
+    else {
+        setPersoonProperties(this.context.persoon, gegevensgroep, dataTable);
+
+        this.context.attach(`${gegevensgroep}: ${JSON.stringify(this.context.persoon[gegevensgroep], null, '  ')}`);
+    }
+});
+
 Given(/^de persoon met burgerservicenummer '(\d*)' heeft de volgende '(\w*)' gegevens$/, async function(burgerservicenummer, gegevensgroep, dataTable) {
     if(pool !== undefined) {
         const client = await pool.connect();
@@ -758,12 +818,6 @@ Given(/^het systeem heeft personen met de volgende gegevens$/, function (dataTab
         });
         personen.push(persoon);
     });
-});
-
-Given(/^de persoon heeft de volgende '(.*)' gegevens$/, function (gegevensgroep, dataTable) {
-    setPersoonProperties(this.context.persoon, gegevensgroep, dataTable);
-
-    this.context.attach(`${gegevensgroep}: ${JSON.stringify(this.context.persoon[gegevensgroep], null, '  ')}`);
 });
 
 Given(/^de persoon heeft de volgende '(.*)'$/, function (gegevensgroep, dataTable) {
