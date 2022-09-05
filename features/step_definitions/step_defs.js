@@ -107,7 +107,8 @@ const tableNameMap = new Map([
     ['persoon', 'lo3_pl_persoon' ],
     ['nationaliteit', 'lo3_pl_nationaliteit'],
     ['kiesrecht', 'lo3_pl'],
-    ['verblijfstitel', 'lo3_pl_verblijfstitel']
+    ['verblijfstitel', 'lo3_pl_verblijfstitel'],
+	['gezagsverhouding', 'lo3_pl_gezagsverhouding']
 ]);
 
 const columnNameMap = new Map([
@@ -142,6 +143,21 @@ const columnNameMap = new Map([
     ['aanduiding verblijfstitel (39.10)', 'verblijfstitel_aand'],
     ['datum einde verblijfstitel (39.20)', 'verblijfstitel_eind_datum'],
     ['datum ingang verblijfstitel (39.30)', 'geldigheid_start_datum'],
+	
+	['gemeente document (82.10)', 'doc_gemeente_code' ],
+	['datum document (82.20)', 'doc_datum' ],
+	['beschrijving document (82.30)', 'doc_beschrijving' ],
+	
+	['ingangsdatum geldigheid (85.10)', 'geldigheid_start_datum' ],
+	
+	['datum van opneming (86.10)', 'opneming_datum' ],
+	
+	['indicatie curateleregister (33.10)', 'curatele_register_ind' ],
+	
+	['aanduiding in onderzoek (83.10)', 'onderzoek_gegevens_aand' ],
+	['datum ingang onderzoek (83.20)', 'onderzoek_start_datum' ],
+	['aanduiding in onderzoek (83.10)', 'onderzoek_gegevens_aand' ],
+	['datum ingang onderzoek (83.20)', 'onderzoek_start_datum' ]
 
 ]);
 
@@ -340,66 +356,6 @@ function createGegevensgroepData(plId, dataTable) {
     ].concat(fromHash(dataTable.hashes()[0]));
 }
 
-Given(/^een persoon heeft de volgende '(\w*)' gegevens$/, async function (gegevensgroep, dataTable) {
-    if(pool !== undefined) {
-        const client = await pool.connect();
-        try {
-            let data;
-            let res;
-            if(gegevensgroep === 'persoonslijst') {
-                data = fromHash(dataTable.hashes()[0]);
-                res = await client.query(insertIntoPersoonlijstStatement(data));
-                this.context.pl_id = res.rows[0]["pl_id"];
-            }
-            if(gegevensgroep === 'persoon') {
-                data = createPersoonlijstData(gegevensgroep, dataTable);
-                res = await client.query(insertIntoPersoonlijstStatement(data));
-                this.context.pl_id = res.rows[0]["pl_id"];
-
-                data = [
-                    [ 'pl_id', this.context.pl_id ],
-                    [ 'persoon_type', 'P'],
-                    [ 'stapel_nr', 0 ],
-                    [ 'volg_nr', 0]
-                ].concat(fromHash(dataTable.hashes()[0]));
-                await client.query(insertIntoStatement(gegevensgroep, data));
-            }
-        }
-        finally {
-            client.release();
-        }
-    }
-});
-
-Given(/^de persoon heeft de volgende '(\w*)' gegevens$/, async function (gegevensgroep, dataTable) {
-    if(pool !== undefined) {
-        const client = await pool.connect();
-        try {
-            let data;
-            if(gegevensgroep === 'persoon') {
-                data = [
-                    [ 'pl_id', this.context.pl_id ],
-                    [ 'persoon_type', 'P'],
-                    [ 'stapel_nr', 0 ],
-                    [ 'volg_nr', 0]
-                ].concat(fromHash(dataTable.hashes()[0]));
-            }
-            else {
-                data = createGegevensgroepData(this.context.pl_id, dataTable);
-            }
-            await client.query(insertIntoStatement(gegevensgroep, data));
-        }
-        finally {
-            client.release();
-        }
-    }
-    else {
-        setPersoonProperties(this.context.persoon, gegevensgroep, dataTable);
-
-        this.context.attach(`${gegevensgroep}: ${JSON.stringify(this.context.persoon[gegevensgroep], null, '  ')}`);
-    }
-});
-
 Given(/^de persoon met burgerservicenummer '(\d*)' heeft de volgende '(\w*)' gegevens$/, async function(burgerservicenummer, gegevensgroep, dataTable) {
     if(pool !== undefined) {
         const client = await pool.connect();
@@ -566,7 +522,7 @@ Given(/^het '(.*)' is gewijzigd naar de volgende gegevens$/, async function (rel
     }
 });
 
-Given(/^de persoon heeft ?(?:nog)? een '?(?:ex-)?(\w*)' met ?(?:alleen)? de volgende gegevens$/, async function (relatie, dataTable) {
+Given(/^de persoon heeft nog een '(\w*)' met de volgende gegevens$/, async function (relatie, dataTable) {
     if(pool !== undefined) {
         const client = await pool.connect();
         try {
@@ -580,19 +536,6 @@ Given(/^de persoon heeft ?(?:nog)? een '?(?:ex-)?(\w*)' met ?(?:alleen)? de volg
         finally {
             client.release();
         }
-    }
-    else {
-        let relatieCollectie = toCollectionName(relatie);
-
-        if(this.context.persoon[relatieCollectie] === undefined) {
-            this.context.persoon[relatieCollectie] = [];
-        }
-        if(this.context[relatie] !== undefined) {
-            this.context.persoon[relatieCollectie].push(this.context[relatie]);
-        }
-        this.context[relatie] = createObjectFrom(dataTable);
-    
-        this.context.attach(`${relatie}: ${JSON.stringify(this.context[relatie], null, '  ')}`);
     }
 });
 
@@ -820,6 +763,12 @@ Given(/^het systeem heeft personen met de volgende gegevens$/, function (dataTab
     });
 });
 
+Given(/^de persoon heeft de volgende '(.*)' gegevens$/, function (gegevensgroep, dataTable) {
+    setPersoonProperties(this.context.persoon, gegevensgroep, dataTable);
+
+    this.context.attach(`${gegevensgroep}: ${JSON.stringify(this.context.persoon[gegevensgroep], null, '  ')}`);
+});
+
 Given(/^de persoon heeft de volgende '(.*)'$/, function (gegevensgroep, dataTable) {
     this.context.persoon[gegevensgroep] = [];
     let groep = this.context.persoon[gegevensgroep];
@@ -831,6 +780,20 @@ Given(/^de persoon heeft de volgende '(.*)'$/, function (gegevensgroep, dataTabl
 
 Given(/^het systeem heeft personen met de volgende '(.*)' gegevens$/, function (gegevensgroep, dataTable) {
     setPersonenProperties(this.context.zoekResponse.personen, gegevensgroep, dataTable);
+});
+
+Given(/^de persoon heeft een '?(?:ex-)?(\w*)' met ?(?:alleen)? de volgende gegevens$/, function (relatie, dataTable) {
+    let relatieCollectie = toCollectionName(relatie);
+
+    if(this.context.persoon[relatieCollectie] === undefined) {
+        this.context.persoon[relatieCollectie] = [];
+    }
+    if(this.context[relatie] !== undefined) {
+        this.context.persoon[relatieCollectie].push(this.context[relatie]);
+    }
+    this.context[relatie] = createObjectFrom(dataTable);
+
+    this.context.attach(`${relatie}: ${JSON.stringify(this.context[relatie], null, '  ')}`);
 });
 
 Given(/^de persoon heeft een '?(?:ex-)?(.*)' met ?(?:alleen)? de volgende '(.*)' gegevens$/, function (relatie, gegevensgroep, dataTable) {
