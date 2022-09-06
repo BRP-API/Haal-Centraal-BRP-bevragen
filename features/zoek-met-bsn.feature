@@ -143,3 +143,35 @@ Rule: Er mag maximaal 20 burgerservicenummers worden opgegeven
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name                | reason                         |
     | maxItems | burgerservicenummer | Array bevat meer dan 20 items. |
+
+
+Rule: bij raadplegen van een persoon op burgerservicenummer kan ook een opgeschorte persoonslijst worden geraadpleegd
+  - inclusief een afgevoerde persoonslijst 
+
+  Abstract Scenario: Raadpleeg persoon op opgeschorte persoonslijst
+    Gegeven een persoon heeft de volgende 'inschrijving' gegevens
+    | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+    | 20220829                             | <reden opschorting bijhouding>       |
+    En de persoon heeft de volgende 'persoon' gegevens
+    | burgerservicenummer (01.20) |
+    | 000000024                   |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000024                       |
+    | fields              | burgerservicenummer             |
+    Dan heeft de response 1 persoon
+    En heeft de response een persoon met de volgende gegevens
+    | naam                                     | waarde                           |
+    | burgerservicenummer                      | 000000024                        |
+    | opschortingBijhouding.reden.code         | <reden opschorting bijhouding>   |
+    | opschortingBijhouding.reden.omschrijving | <reden opschorting omschrijving> |
+
+    Voorbeelden:
+    | reden opschorting bijhouding | reden opschorting omschrijving |
+    | O                            | overlijden                     |
+    | E                            | emigratie                      |
+    | M                            | ministerieel besluit           |
+    | R                            | pl is aangelegd in de rni      |
+    | F                            | fout                           |
+    | .                            | onbekend                       |

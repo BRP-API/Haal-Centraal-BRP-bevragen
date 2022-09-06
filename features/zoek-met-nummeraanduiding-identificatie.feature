@@ -152,3 +152,54 @@ Functionaliteit: Zoek met nummeraanduiding identificatie
       | inclusief overleden personen | code    | reason                  |
       |                              | boolean | Waarde is geen boolean. |
       | geen boolean                 | boolean | Waarde is geen boolean. |
+
+
+Rule: een afgevoerde persoonslijst moet niet worden gevonden
+  - wanneer reden opschorting bijhouding (07.67.20) is opgenomen met de waarde "F" (fout), moet deze persoon(slijst) niet worden gevonden bij zoeken
+
+  Scenario: Zoek met nummeraanduidingIdentificatie van persoon op afgevoerde persoonslijst
+    Gegeven een persoon heeft de volgende 'inschrijving' gegevens
+    | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+    | 20220829                             | F                                    |
+    En de persoon heeft de volgende 'persoon' gegevens
+    | burgerservicenummer (01.20) |
+    | 000000012                   |
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
+    | identificatiecode nummeraanduiding (11.90) |
+    | 0599200000219678                           |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                          | waarde                               |
+    | type                          | ZoekMetNummeraanduidingIdentificatie |
+    | nummeraanduidingIdentificatie | 0599200000219678                     |
+    | fields                        | burgerservicenummer                  |
+    Dan heeft de response 0 personen
+
+  Abstract Scenario: Zoek met nummeraanduidingIdentificatie van persoon op opgeschorte persoonslijst
+    Gegeven een persoon heeft de volgende 'inschrijving' gegevens
+    | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+    | 20220829                             | <reden opschorting bijhouding>       |
+    En de persoon heeft de volgende 'persoon' gegevens
+    | burgerservicenummer (01.20) |
+    | 000000024                   |
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
+    | identificatiecode nummeraanduiding (11.90) |
+    | 0599200000219678                           |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                          | waarde                               |
+    | type                          | ZoekMetNummeraanduidingIdentificatie |
+    | nummeraanduidingIdentificatie | 0599200000219678                     |
+    | inclusiefOverledenPersonen    | true                                 |
+    | fields                        | burgerservicenummer                  |
+    Dan heeft de response 1 persoon
+    En heeft de response een persoon met de volgende gegevens
+    | naam                                     | waarde                           |
+    | burgerservicenummer                      | 000000024                        |
+    | opschortingBijhouding.reden.code         | <reden opschorting bijhouding>   |
+    | opschortingBijhouding.reden.omschrijving | <reden opschorting omschrijving> |
+
+    Voorbeelden:
+    | reden opschorting bijhouding | reden opschorting omschrijving |
+    | O                            | overlijden                     |
+    | E                            | emigratie                      |
+    | M                            | ministerieel besluit           |
+    | .                            | onbekend                       |
