@@ -1171,6 +1171,20 @@ Then(/^heeft (?:de|het) '(.*)' een leeg '(.*)' object$/, function(relatie, gegev
     }
 });
 
+Then(/^heeft de response een persoon zonder '(\w*)' gegevens$/, function(relatie) {
+    this.context.leaveEmptyObjects = true;
+
+    if(this.context.postAssert === true) {
+        if(this.context.expected === undefined) {
+            this.context.expected = [ {} ];
+        }
+
+        const expectedPersonen = this.context.expected;
+        const expectedPersoon = expectedPersonen[expectedPersonen.length-1];
+        expectedPersoon[toCollectionName(relatie)] = [];
+    }
+});
+
 Then(/^heeft de '(.*)' GEEN '(.*)' gegevens$/, function (_relatie, _gegevensgroep) {
     // do nothing
 });
