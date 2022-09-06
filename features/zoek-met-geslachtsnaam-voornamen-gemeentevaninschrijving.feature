@@ -76,13 +76,13 @@ Rule: Geslachtsnaam, voornamen en gemeenteVanInschrijving zijn verplichte parame
 Rule: een afgevoerde persoonslijst moet niet worden gevonden
   - wanneer reden opschorting bijhouding (07.67.20) is opgenomen met de waarde "F" (fout), moet deze persoon(slijst) niet worden gevonden bij zoeken
 
-  Scenario: Zoek met geslachtsnaam en gemeente van inschrijving van persoon op afgevoerde persoonslijst
+  Scenario: Zoek met voornaam, geslachtsnaam en gemeente van inschrijving van persoon op afgevoerde persoonslijst
     Gegeven een persoon heeft de volgende 'inschrijving' gegevens
     | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
     | 20220829                             | F                                    |
     En de persoon heeft de volgende 'persoon' gegevens
-    | burgerservicenummer (01.20) | geslachtsnaam (02.40) |
-    | 000000012                   | Isnietgoed            |
+    | burgerservicenummer (01.20) | voornamen (02.10) | geslachtsnaam (02.40) |
+    | 000000012                   | Jan Peter         | Isnietgoed            |
     En de persoon heeft de volgende 'verblijfplaats' gegevens
     | gemeente van inschrijving (09.10) |
     | 0530                              |
@@ -90,18 +90,19 @@ Rule: een afgevoerde persoonslijst moet niet worden gevonden
     | naam                       | waarde                               |
     | type                       | ZoekMetNaamEnGemeenteVanInschrijving |
     | geslachtsnaam              | Isnietgoed                           |
+    | voornamen                  | Jan Peter                            |
     | gemeenteVanInschrijving    | 0530                                 |
     | inclusiefOverledenPersonen | true                                 |
     | fields                     | burgerservicenummer                  |
     Dan heeft de response 0 personen
 
-  Abstract Scenario: Zoek met geslachtsnaam en gemeente van inschrijving van persoon op opgeschorte persoonslijst
+  Abstract Scenario: Zoek met voornaam, geslachtsnaam en gemeente van inschrijving van persoon op opgeschorte persoonslijst
     Gegeven een persoon heeft de volgende 'inschrijving' gegevens
     | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
     | 20220829                             | <reden opschorting bijhouding>       |
     En de persoon heeft de volgende 'persoon' gegevens
-    | burgerservicenummer (01.20) | geslachtsnaam (02.40) |
-    | 000000024                   | Iswelgoed             |
+    | burgerservicenummer (01.20) | voornamen (02.10) | geslachtsnaam (02.40) |
+    | 000000024                   | Jan Peter         | Iswelgoed             |
     En de persoon heeft de volgende 'verblijfplaats' gegevens
     | gemeente van inschrijving (09.10) |
     | 0530                              |
@@ -109,6 +110,7 @@ Rule: een afgevoerde persoonslijst moet niet worden gevonden
     | naam                       | waarde                               |
     | type                       | ZoekMetNaamEnGemeenteVanInschrijving |
     | geslachtsnaam              | Iswelgoed                            |
+    | voornamen                  | Jan Peter                            |
     | gemeenteVanInschrijving    | <gemeente van inschrijving>          |
     | inclusiefOverledenPersonen | true                                 |
     | fields                     | burgerservicenummer                  |
