@@ -248,7 +248,7 @@ function setPersoonOnjuistStatement(plId, persoonType, stapelNr) {
 function selectPersoonMaxVolgnrStatement(plId, persoonType, stapelNr) {
     const statement = {
         text: 'SELECT MAX(volg_nr) as max_volg_nr FROM public.lo3_pl_persoon WHERE pl_id=$1 AND persoon_type=$2 AND stapel_nr=$3',
-        values: [ plId, persoonType, stapelNr]
+        values: [ plId, persoonType, stapelNr ]
     }
 
     if(logSqlStatements) {
@@ -261,6 +261,30 @@ function incrementPersoonVolgnrStatement(plId, persoonType, stapelNr, volgNr) {
     const statement = {
         text: 'UPDATE public.lo3_pl_persoon SET volg_nr=volg_nr+1 WHERE pl_id=$1 AND persoon_type=$2 AND stapel_nr=$3 AND volg_nr=$4',
         values: [ plId, persoonType, stapelNr, volgNr ]
+    }
+
+    if(logSqlStatements) {
+        console.log(statement);
+    }
+    return statement;
+}
+
+function selectNationaliteitMaxVolgnrStatement(plId, stapelNr) {
+    const statement = {
+        text: 'SELECT MAX(volg_nr) as max_volg_nr FROM public.lo3_pl_nationaliteit WHERE pl_id=$1 AND stapel_nr=$2',
+        values: [ plId, stapelNr ]
+    }
+
+    if(logSqlStatements) {
+        console.log(statement);
+    }
+    return statement;
+}
+
+function incrementNationaliteitVolgnrStatement(plId, stapelNr, volgNr) {
+    const statement = {
+        text: 'UPDATE public.lo3_pl_nationaliteit SET volg_nr=volg_nr+1 WHERE pl_id=$1 AND stapel_nr=$2 AND volg_nr=$3',
+        values: [ plId, stapelNr, volgNr ]
     }
 
     if(logSqlStatements) {
@@ -361,7 +385,7 @@ Given(/^een persoon heeft de volgende '(\w*)' gegevens$/, async function (gegeve
         try {
             let data;
             let res;
-            if(gegevensgroep === 'persoonslijst') {
+            if(gegevensgroep === 'inschrijving') {
                 data = fromHash(dataTable.hashes()[0]);
                 res = await client.query(insertIntoPersoonlijstStatement(data));
                 this.context.pl_id = res.rows[0]["pl_id"];
@@ -558,20 +582,36 @@ Given(/^het '(.*)' is gecorrigeerd naar de volgende gegevens$/, async function (
     }
 });
 
-Given(/^het '(.*)' is gewijzigd naar de volgende gegevens$/, async function (relatie, dataTable) {
+Given(/^(?:de|het) '(.*)' is gewijzigd naar de volgende gegevens$/, async function (relatie, dataTable) {
     if(pool !== undefined) {
         const client = await pool.connect();
         try {
-            const persoonType = relatie === 'kind' ? 'K' : 'P';
+            if(relatie === 'nationaliteit') {
+                let res = await client.query(selectNationaliteitMaxVolgnrStatement(this.context.pl_id, this.context[`${relatie}-stapelnr`]));
+                const maxVolgnr = res.rows[0]['max_volg_nr'];
+                for(let volgnr = maxVolgnr; volgnr>=0; volgnr--) {
+                    await client.query(incrementNationaliteitVolgnrStatement(this.context.pl_id, this.context[`${relatie}-stapelnr`], volgnr));
+                }
 
-            let res = await client.query(selectPersoonMaxVolgnrStatement(this.context.pl_id, persoonType, this.context[`${relatie}-stapelnr`]));
-            const maxVolgnr = res.rows[0]['max_volg_nr'];
-            for(let volgnr = maxVolgnr; volgnr>=0; volgnr--) {
-                await client.query(incrementPersoonVolgnrStatement(this.context.pl_id, persoonType, this.context[`${relatie}-stapelnr`], volgnr));
+                const data = createCollectieGegevensgroepData(this.context.pl_id, dataTable);
+                await client.query(insertIntoStatement(relatie, data));
             }
+            else {
+                const persoonType = relatie === 'kind' ? 'K' : 'P';
 
-            if(relatie === 'kind') {
-                const data = createKindData(this.context.pl_id, dataTable);
+                let res = await client.query(selectPersoonMaxVolgnrStatement(this.context.pl_id, persoonType, this.context[`${relatie}-stapelnr`]));
+                const maxVolgnr = res.rows[0]['max_volg_nr'];
+                for(let volgnr = maxVolgnr; volgnr>=0; volgnr--) {
+                    await client.query(incrementPersoonVolgnrStatement(this.context.pl_id, persoonType, this.context[`${relatie}-stapelnr`], volgnr));
+                }
+
+                let data;
+                if(relatie === 'kind') {
+                    data = createKindData(this.context.pl_id, dataTable);
+                }
+                else if(relatie === 'partner') {
+                    data = createPartnerData(this.context.pl_id, dataTable);
+                }
                 await client.query(insertIntoStatement('persoon', data));
             }
         }
@@ -927,6 +967,9 @@ function createHeaders(dataTable) {
             headers[param.naam.slice(8)] = param.waarde;
         });
 
+    if(headers.Accept === undefined) {
+        headers.Accept = "application/json";
+    }
     return headers;
 }
 
