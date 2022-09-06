@@ -155,8 +155,6 @@ const columnNameMap = new Map([
     ['indicatie curateleregister (33.10)', 'curatele_register_ind' ],
 
     ['aanduiding in onderzoek (83.10)', 'onderzoek_gegevens_aand' ],
-    ['datum ingang onderzoek (83.20)', 'onderzoek_start_datum' ],
-    ['aanduiding in onderzoek (83.10)', 'onderzoek_gegevens_aand' ],
     ['datum ingang onderzoek (83.20)', 'onderzoek_start_datum' ]
 ]);
 
