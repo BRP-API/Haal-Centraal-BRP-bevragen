@@ -5,6 +5,7 @@ title: User Stories in Ontwikkeling
 
 # User stories
 
+- [Als gebruiker wil ik bij zoeken een afgevoerde PL niet vinden](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1233){:target="_blank" rel="noopener"}
 - [InOnderzoek opnemen in PersoonBeperkt. ](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1230){:target="_blank" rel="noopener"}
 - [Opnemen metagegevens bij een zoekvraag](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1214){:target="_blank" rel="noopener"}
 - [Als PO wil ik verplicht leveren dat een RNI gegeven is verstrekt door een bestuursorgaan of is geverifieerd door een ABO, inclusief verificatiedatum](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1213){:target="_blank" rel="noopener"}
