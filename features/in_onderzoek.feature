@@ -19,10 +19,10 @@ Functionaliteit: in onderzoek
     - deze wordt ook geleverd wanneer het gevraagde gegeven geen waarde heeft en daarom niet geleverd is in het antwoord
 
     @gba
-    Abstract Scenario: vragen om <fields> bij <in onderzoek> in onderzoek
-      Gegeven de persoon met burgerservicenummer '555550001' heeft de volgende gegevens
-      | voornamen (02.10) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | 
-      | Arnitta           | 19231213              | <waarde>                        | 20120920                       |
+    Abstract Scenario: vragen om naam bij <in onderzoek> in onderzoek
+      Gegeven een persoon heeft de volgende 'persoon' gegevens
+      | burgerservicenummer (01.20) | voornamen (02.10) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | 
+      | 555550001                   | Arnitta           | 19231213              | <waarde>                        | 20120920                       |
       En de persoon heeft een ouder '1' met de volgende gegevens
       | voornamen (02.10) | geslachtsaanduiding (04.10) |
       | Noa               | V                           |
@@ -36,23 +36,97 @@ Functionaliteit: in onderzoek
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550001                       |
-      | fields              | ouders,partners,<fields>        |
-      Dan heeft de response een persoon met de volgende 'persoonInOnderzoek' gegevens
-      | naam                          | waarde   |
-      | aanduidingGegevensInOnderzoek | <waarde> |
-      | datumIngangOnderzoek          | 20120920 |
+      | fields              | ouders,partners,naam            |
+      Dan heeft de response een persoon met de volgende 'naam' gegevens
+      | naam                           | waarde  |
+      | voornamen                 | Arnitta |
+  	  | voorletters               | A.      |
+	    | volledigeNaam             | Arnitta |
+      | inOnderzoek.voornamen     | true    |
+      | inOnderzoek.voorletters   | true    |
+      | inOnderzoek.volledigeNaam | true    |
+      En heeft de persoon een 'ouder' met de volgende gegevens
+      | naam                              | waarde |
+      | naam.voornamen                    | Noa    |
+  	  | naam.voorletters                  | N.     |
+	    | geslacht.code                     | V      |
+	    | geslacht.omschrijving             | vrouw  |
+  	  | ouderAanduiding                   | 1      |
+      En heeft de persoon een 'ouder' met de volgende gegevens
+      | naam                              | waarde |
+      | naam.voornamen                    | Jan    |
+	    | naam.voorletters                  | J.     |  
+	    | geslacht.code                     | M      |  
+	    | geslacht.omschrijving             | man    |
+	    | ouderAanduiding                   | 2      |
+      En heeft de persoon een 'partner' met de volgende gegevens
+      | naam                              | waarde          |
+	    | burgerservicenummer               | 555550002       |
+      | naam.voornamen                    | Karel           |
+	    | geslacht.code                     | M                 |
+	    | geslacht.omschrijving             | man               |
+      | aangaanHuwelijkPartnerschap.type  | Datum             |
+        | aangaanHuwelijkPartnerschap.datum | 2009-11-02      |
+      | aangaanHuwelijkPartnerschap.datum | 2 november 2009 |
 
       Voorbeelden:
-      | in onderzoek           | waarde | fields      |
-      | hele categorie persoon | 010000 | naam        |
-      | groep naam             | 010200 | voorvoegsel |
-      | geboortedatum          | 010310 | naam        |
+      | in onderzoek           | waarde |
+      | hele categorie persoon | 010000 |
+      | geboortedatum          | 010310 |
+
+    @gba
+    Scenario: vragen om voorvoegsel zonder waarde bij groep naam in onderzoek
+      Gegeven een persoon heeft de volgende 'persoon' gegevens
+      | burgerservicenummer (01.20) | voornamen (02.10) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | 
+      | 555550001                   | Arnitta           | 19231213              | 010200                          | 20120920                       |
+      En de persoon heeft een ouder '1' met de volgende gegevens
+      | voornamen (02.10) | geslachtsaanduiding (04.10) |
+      | Noa               | V                           |
+      En de persoon heeft een ouder '2' met de volgende gegevens
+      | voornamen (02.10) | geslachtsaanduiding (04.10) |
+      | Jan               | M                           |
+      En de persoon heeft een 'partner' met de volgende gegevens
+      | burgerservicenummer (01.20) | voornamen (02.10 | geslachtsaanduiding (04.10) | datum aangaan (06.10) |
+      | 555550002                   | Karel            | M                           | 20091102              |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                           |
+      | type                | RaadpleegMetBurgerservicenummer  |
+      | burgerservicenummer | 555550001                        |
+      | fields              | ouders,partners,naam.voorvoegsel |
+      Dan heeft de response een persoon met de volgende 'naam' gegevens
+      | naam                           | waarde  |
+      | inOnderzoek.voornamen     | true    |
+      | inOnderzoek.voorletters   | true    |
+      | inOnderzoek.volledigeNaam | true    |
+      En heeft de persoon een 'ouder' met de volgende gegevens
+      | naam                              | waarde |
+      | naam.voornamen                    | Noa    |
+  	  | naam.voorletters                  | N.     |
+	    | geslacht.code                     | V      |
+	    | geslacht.omschrijving             | vrouw  |
+	    | ouderAanduiding                   | 1      |
+      En heeft de persoon een 'ouder' met de volgende gegevens
+      | naam                              | waarde |
+      | naam.voornamen                    | Jan    |
+  	  | naam.voorletters                  | J.     |
+	    | geslacht.code                     | M      |
+	    | geslacht.omschrijving             | man    |
+	    | ouderAanduiding                   | 2      |
+      En heeft de persoon een 'partner' met de volgende gegevens
+      | naam                              | waarde          |
+  	  | burgerservicenummer               | 555550002       |
+      | naam.voornamen                    | Karel           |
+	    | geslacht.code                     | M               |
+	    | geslacht.omschrijving             | man             |
+      | aangaanHuwelijkPartnerschap.type  | Datum           |
+      | aangaanHuwelijkPartnerschap.datum | 2009-11-02      |
+      | aangaanHuwelijkPartnerschap.datum | 2 november 2009 |
 
     @gba
     Scenario: persoon heeft gezagInOnderzoek en persoonInOnderzoek
-      Gegeven de persoon met burgerservicenummer '555550001' heeft de volgende gegevens
-      | voornamen (02.10) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
-      | Arnitta           | 19231213              | 010410                             | 20120920                    |
+      Gegeven een persoon heeft de volgende 'persoon' gegevens
+      | burgerservicenummer (01.20) | voornamen (02.10) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+      | 555550001                   | Arnitta           | 19231213              | 010410                             | 20120920                    |
       En de persoon heeft nog een 'gezagsverhouding' met de volgende gegevens
       | indicatie curatele (33.10) |aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
       | 1                          | 113310                         | 20101205                       |
@@ -61,20 +135,23 @@ Functionaliteit: in onderzoek
       | type                | RaadpleegMetBurgerservicenummer    |
       | burgerservicenummer | 555550001                          |
       | fields              | geslacht,indicatieCurateleRegister |
-      Dan heeft de response een persoon met de volgende 'persoonInOnderzoek' gegevens
-      | naam                          | waarde   |
-      | aanduidingGegevensInOnderzoek | 010410   |
-      | datumIngangOnderzoek          | 20120920 |
-      En heeft de persoon een 'gezagInOnderzoek' met de volgende gegevens
-      | naam                            | waarde   |
-      | aanduidingGegevensInOnderzoek   | 113310   |
-      | datumIngangOnderzoek            | 20101205 |
+      Dan heeft de response een persoon met de volgende gegevens
+      | naam                                                | waarde            |
+  	  | indicatieCurateleRegister                           | true              |
+  	  | inOnderzoek.datumIngangOnderzoekPersoon.type        | Datum             |
+   	  | inOnderzoek.datumIngangOnderzoekPersoon.datum       | 2012-09-20        |
+  	  | inOnderzoek.datumIngangOnderzoekPersoon.langFormaat | 20 september 2012 |
+	    | inOnderzoek.geslacht                                | true              |
+	    | inOnderzoek.datumIngangOnderzoekGezag.type          | Datum             |
+  	  | inOnderzoek.datumIngangOnderzoekGezag.datum         | 20101205          |
+	    | inOnderzoek.datumIngangOnderzoekGezag.langFormaat   | 5 december 2010   |
+      | inOnderzoek.indicatieCurateleRegister               | true              |
 
-    @gba
+  @gba
     Scenario: persoon in onderzoek maar niet vragen om gegevens uit categorie persoon
-      Gegeven de persoon met burgerservicenummer '555550001' met de volgende gegevens
-      | voornamen (02.10) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
-      | Arnitta           | 19231213              | 010000                          | 20120920                       |
+      Gegeven een persoon heeft de volgende 'persoon' gegevens
+      | burgerservicenummer (01.20) | voornamen (02.10) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+      | 555550001                   | Arnitta           | 19231213              | 010000                          | 20120920                       |
       En de persoon heeft een ouder '1' met de volgende gegevens
       | voornamen (02.10) | geslachtsaanduiding (04.10) |
       | Noa               | V                           |
@@ -100,12 +177,13 @@ Functionaliteit: in onderzoek
       | geslacht.code         | M      |
       | geslacht.omschrijving | man    |
       En heeft de persoon een 'partner' met de volgende gegevens
-      | naam                              | waarde   |
-      | naam.voornamen                    | Karel    |
-      | geslacht.code                     | M        |
-      | geslacht.omschrijving             | man      |
-      | aangaanHuwelijkPartnerschap.datum | 20091102 |
-
+      | naam                              | waarde          |
+      | naam.voornamen                    | Karel           |
+      | geslacht.code                     | M               |
+      | geslacht.omschrijving             | man             |
+      | aangaanHuwelijkPartnerschap.type  | Datum           |
+      | aangaanHuwelijkPartnerschap.datum | 2009-11-02      |
+      | aangaanHuwelijkPartnerschap.datum | 2 november 2009 |
 
   @gba
   Rule: in onderzoek wordt niet opgenomen wanneer het onderzoek beëindigd is
@@ -113,19 +191,21 @@ Functionaliteit: in onderzoek
 
     @gba
     Scenario: onderzoek is beëindigd
-      Gegeven de persoon met burgerservicenummer '999994888' met de volgende gegevens
-      | voornamen (02.10) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | datum einde onderzoek (83.30) |
-      | Arnitta           | 19231213              | 010000                          | 20120920                       | 20120922                      |
+      Gegeven een persoon heeft de volgende 'persoon' gegevens
+      | burgerservicenummer (01.20) | voornamen (02.10) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | datum einde onderzoek (83.30) |
+      | 000006789                   | Arnitta           | 19231213              | 010000                          | 20120920                       | 20120922                      |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                            |
       | type                | RaadpleegMetBurgerservicenummer                   |
-      | burgerservicenummer | 999994888                                         |
+      | burgerservicenummer | 000006789                                         |
       | fields              | burgerservicenummer,naam.voornamen,geboorte.datum |
       Dan heeft de response een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 999994888 |
-      | naam.voornamen      | Arnita    |
-      | geboorte.datum      | 19231213  |
+      | naam                       | waarde           |
+      | burgerservicenummer        | 000006789        |
+      | naam.voornamen             | Arnitta          |
+      | geboorte.datum.type        | Datum            |
+      | geboorte.datum.datum       | 1923-12-13       |
+      | geboorte.datum.langFormaat | 13 december 1923 |
 
   @proxy
   Rule: in onderzoek wordt niet opgenomen wanneer het gegeven of de groep die onderzocht wordt niet wordt gevraagd
