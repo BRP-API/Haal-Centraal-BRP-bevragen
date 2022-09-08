@@ -35,20 +35,17 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | fields              | kinderen.naam                   |
       Dan heeft de response een persoon met een 'kind' met de volgende gegevens
       | naam               | waarde  |
-      | type               | Kind    |
       | naam.voornamen     | William |
       | naam.geslachtsnaam | Postma  |
 	  | naam.voorletters   | W.      |
       En heeft de persoon een 'kind' met de volgende gegevens
       | naam               | waarde     |
-      | type               | Kind       |
       | naam.voornamen     | Sebastiaan |
       | naam.voorvoegsel   | de         |
       | naam.geslachtsnaam | Boer       |
 	  | naam.voorletters   | S.         |
       En heeft de persoon een 'kind' met de volgende gegevens
       | naam               | waarde |
-      | type               | Kind   |
       | naam.voornamen     | Walter |
       | naam.voorvoegsel   | de     |
       | naam.geslachtsnaam | Boer   |
@@ -72,11 +69,9 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | fields              | kinderen.naam.voornamen         |
       Dan heeft de response een persoon met een 'kind' met de volgende gegevens
       | naam           | waarde |
-      | type           | Kind   |
       | naam.voornamen | Vica   |
       En heeft de persoon een 'kind' met de volgende gegevens
       | naam           | waarde |
-      | type           | Kind   |
       | naam.voornamen | Bella  |
 
   @gba
@@ -95,10 +90,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000003456                       |
       | fields              | kinderen.naam                   |
-      Dan heeft de response een persoon met een 'kind' met de volgende gegevens
-      | naam               | waarde |
-      | type               | Kind   |
-      | naam.geslachtsnaam | .      |
+      Dan heeft de response een persoon met een 'kind' zonder gegevens
 
     @gba
     Scenario: kind volledig onbekend, veld met onbekend waarde wordt niet gevraagd met fields
@@ -110,9 +102,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000004567                       |
       | fields              | kinderen.naam                   |
-      Dan heeft de response een persoon met een 'kind' met de volgende gegevens
-      | naam               | waarde |
-      | type               | Kind   |
+      Dan heeft de response een persoon met een 'kind' zonder gegevens
 
     @gba
     Scenario: ontkenning ouderschap
@@ -165,7 +155,6 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | naam                | waarde    |
       | burgerservicenummer | 555550004 |
       | naam.voornamen      | Karel     |
-	  | type                | Kind      |
 
   @proxy
   Rule: Wanneer een kind alleen "onbekend"-waardes heeft, wordt er een 'kind' zonder gegevens geleverd.
