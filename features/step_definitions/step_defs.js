@@ -142,7 +142,8 @@ const columnNameMap = new Map([
     ['aanduiding verblijfstitel (39.10)', 'verblijfstitel_aand'],
     ['datum einde verblijfstitel (39.20)', 'verblijfstitel_eind_datum'],
     ['datum ingang verblijfstitel (39.30)', 'geldigheid_start_datum'],
-
+	
+    ['aktenummer (81.20)', 'akte_nr' ],
 	
     ['gemeente document (82.10)', 'doc_gemeente_code' ],
     ['datum document (82.20)', 'doc_datum' ],
@@ -155,8 +156,11 @@ const columnNameMap = new Map([
     ['indicatie curateleregister (33.10)', 'curatele_register_ind' ],
 
     ['aanduiding in onderzoek (83.10)', 'onderzoek_gegevens_aand' ],
-	['datum ingang onderzoek (83.20)', 'onderzoek_start_datum' ],
-	['datum einde onderzoek (83.30)', 'onderzoek_eind_datum' ]
+    ['datum ingang onderzoek (83.20)', 'onderzoek_start_datum' ],
+    ['datum einde onderzoek (83.30)', 'onderzoek_eind_datum' ],
+	
+    ['indicatie onjuist (84.10)', 'onjuist_ind' ],
+    ['datum ingang familierechtelijke betrekking (62.10)', 'familie_betrek_start_datum']
 ]);
 
 Before(function() {
