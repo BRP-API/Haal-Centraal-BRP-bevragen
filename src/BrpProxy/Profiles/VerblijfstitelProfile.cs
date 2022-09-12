@@ -14,7 +14,7 @@ public class VerblijfstitelProfile : Profile
             .ForMember(dest => dest.DatumIngang, opt => opt.MapFrom(src => src.DatumIngang.Map()))
             .ForMember(dest => dest.Aanduiding, opt =>
             {
-                opt.PreCondition(src => src.Aanduiding?.Code != "00");
+                opt.PreCondition(src => src.Aanduiding?.Code != "98");
                 opt.MapFrom(src => src.Aanduiding);
             });
 
