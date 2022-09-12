@@ -48,6 +48,7 @@ const propertyNameMap = new Map([
     ['geslachtsnaam (02.40)', 'geslachtsnaam'],
     ['aanduiding naamgebruik (61.10)', 'aanduidingNaamgebruik.code'],
 
+    //Nationaliteit
     ['nationaliteit (05.10)', 'nationaliteit.code'],
     ['reden opname (63.10)', 'redenOpname.code'],
     ['datum ingang geldigheid (85.10)', 'datumIngangGeldigheid'],
@@ -116,6 +117,8 @@ const columnNameMap = new Map([
     ['reden opnemen (63.10)', 'nl_nat_verkrijg_reden'],
     ['reden beëindigen (64.10)', 'nl_nat_verlies_reden'],
     ['datum ingang geldigheid (85.10)', 'geldigheid_start_datum'],
+    ['bijzonder Nederlanderschap (65.10)', 'bijzonder_nl_aand'],
+    ['onjuist (84.10)' , 'onjuist_ind'],
 
     [ 'burgerservicenummer (01.20)', 'burger_service_nr' ],
 
@@ -516,7 +519,7 @@ async function corrigeerOuder(ouderType, dataTable) {
         const client = await pool.connect();
         try {
             await client.query(setPersoonOnjuistStatement(this.context.pl_id, ouderType, 0));
-         
+
             let res = await client.query(selectPersoonMaxVolgnrStatement(this.context.pl_id, ouderType, 0));
             const maxVolgnr = res.rows[0]['max_volg_nr'];
             for(let volgnr = maxVolgnr; volgnr>=0; volgnr--) {
@@ -631,7 +634,7 @@ Given(/^de persoon heeft ?(?:nog)? een '?(?:ex-)?(\w*)' met ?(?:alleen)? de volg
             this.context.persoon[relatieCollectie].push(this.context[relatie]);
         }
         this.context[relatie] = createObjectFrom(dataTable);
-    
+
         this.context.attach(`${relatie}: ${JSON.stringify(this.context[relatie], null, '  ')}`);
     }
 });
