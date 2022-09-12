@@ -174,7 +174,7 @@ Rule: een afgevoerde persoonslijst moet niet worden gevonden
     | fields                        | burgerservicenummer                  |
     Dan heeft de response 0 personen
 
-  Abstract Scenario: Zoek met nummeraanduidingIdentificatie van persoon op opgeschorte persoonslijst
+  Abstract Scenario: Zoek met nummeraanduidingIdentificatie van persoon op opgeschorte persoonslijst wegens "<reden opschorting omschrijving>"
     Gegeven een persoon heeft de volgende 'inschrijving' gegevens
     | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
     | 20220829                             | <reden opschorting bijhouding>       |
@@ -190,8 +190,7 @@ Rule: een afgevoerde persoonslijst moet niet worden gevonden
     | nummeraanduidingIdentificatie | 0599200000219678                     |
     | inclusiefOverledenPersonen    | true                                 |
     | fields                        | burgerservicenummer                  |
-    Dan heeft de response 1 persoon
-    En heeft de response een persoon met de volgende gegevens
+    Dan heeft de response een persoon met de volgende gegevens
     | naam                                     | waarde                           |
     | burgerservicenummer                      | 000000024                        |
     | opschortingBijhouding.reden.code         | <reden opschorting bijhouding>   |
