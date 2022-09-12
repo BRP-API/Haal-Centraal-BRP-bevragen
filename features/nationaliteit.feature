@@ -83,7 +83,7 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       En de 'nationaliteit' is gewijzigd naar de volgende gegevens
       | reden beëindigen (64.10) |  datum ingang geldigheid (85.10) |
       | 404                      | 20150131                        |
-      En de persoon heeft (nog) een 'nationaliteit' met de volgende gegevens
+      En de persoon heeft nog een 'nationaliteit' met de volgende gegevens
       | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
       | 0001                  | 017                   | 20100801                        |
       Als personen wordt gezocht met de volgende parameters
@@ -106,7 +106,7 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       En de 'nationaliteit' is gewijzigd naar de volgende gegevens
       | reden beëindigen (64.10) | datum ingang geldigheid (85.10) |
       | 410                      | 20190604                        |
-      En de persoon heeft (nog) een 'nationaliteit' met de volgende gegevens
+      En de persoon heeft nog een 'nationaliteit' met de volgende gegevens
       | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
       | 0001                  | 017                   | 20190602                        |
       Als personen wordt gezocht met de volgende parameters
@@ -128,7 +128,7 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       En de 'nationaliteit' is gewijzigd naar de volgende gegevens
       | datum ingang geldigheid (85.10) |
       | 20200727                        |
-      En de persoon heeft (nog) een 'nationaliteit' met de volgende gegevens
+      En de persoon heeft nog een 'nationaliteit' met de volgende gegevens
       | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
       | 0263                  | 301                   | 20100801                        |
       Als personen wordt gezocht met de volgende parameters
