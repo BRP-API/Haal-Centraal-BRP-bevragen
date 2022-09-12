@@ -2,6 +2,12 @@
 
 Functionaliteit: Verblijfstitel
 
+  Achtergrond:
+    Gegeven landelijke tabel "Verblijfstitels" heeft de volgende waarden
+    | code | omschrijving                                                                   |
+    |   00 | Onbekend                                                                       |
+    |   37 | Vw 2000 art. 8, onder e, gemeenschapsonderdaan econ. niet-actief, arbeid spec. |
+
   @gba
   Rule: een verblijfstitel wordt alleen geleverd wanneer die nog geldig is
     - een verblijfstitel wordt geleverd wanneer Datum einde verblijfstitel (39.20) leeg is of een datum in de toekomst heeft
@@ -16,10 +22,11 @@ Functionaliteit: Verblijfstitel
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000012                       |
-      | fields              | verblijfstitel.aanduiding.code  |
+      | fields              | verblijfstitel.aanduiding       |
       Dan heeft de response een persoon met alleen de volgende 'verblijfstitel' gegevens
-      | naam            | waarde |
-      | aanduiding.code | 37     |
+      | naam                    | waarde                                                                              |
+      | aanduiding.code         | 37                                                                                  |
+      | aanduiding.omschrijving | code Vw 2000 art. 8, onder e, gemeenschapsonderdaan econ. niet-actief, arbeid spec. |
 
     @gba
     Abstract Scenario: verblijfstitel heeft <titel>
@@ -32,8 +39,9 @@ Functionaliteit: Verblijfstitel
       | burgerservicenummer | 000000024                       |
       | fields              | verblijfstitel.aanduiding.code  |
       Dan heeft de response een persoon met alleen de volgende 'verblijfstitel' gegevens
-      | naam            | waarde |
-      | aanduiding.code | 37     |
+      | naam                    | waarde                                                                              |
+      | aanduiding.code         | 37                                                                                  |
+      | aanduiding.omschrijving | code Vw 2000 art. 8, onder e, gemeenschapsonderdaan econ. niet-actief, arbeid spec. |
 
       Voorbeelden:
       | titel                      | datumEinde |
@@ -45,7 +53,7 @@ Functionaliteit: Verblijfstitel
       Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende 'verblijfstitel' gegevens
       | aanduiding verblijfstitel (39.10)   | datum einde verblijfstitel (39.20)  | datum ingang verblijfstitel (39.30) |
       | 37                                  | <datumEinde>                        | 20210315                            |
-      Als personen wordt gezocht met de volgende parameters
+      Als personen <vandaag> wordt gezocht met de volgende parameters
       | naam                | waarde                                             |
       | type                | RaadpleegMetBurgerservicenummer                    |
       | burgerservicenummer | 000000036                                          |
@@ -56,7 +64,7 @@ Functionaliteit: Verblijfstitel
 
       Voorbeelden:
       | titel                       | datumEinde |
-      | datum einde is vandaag      | 20220605   |
+      | datum einde is vandaag      | <vandaag>  |
       | datum einde in het verleden | 20220315   |
 
   Rule: een verblijfstitel met aanduiding 98 "geen verblijfstitel (meer)" wordt niet opgenomen
@@ -88,6 +96,8 @@ Functionaliteit: Verblijfstitel
       Dan heeft de response een persoon met alleen de volgende 'verblijfstitel' gegevens
       | naam                    | waarde       |
       | aanduiding.code         | 00           |
+      | aanduiding.omschrijving | Onbekend     |
+
       | datumIngang.type        | Datum        |
       | datumIngang.datum       | 2021-07-14   |
       | datumIngang.langFormaat | 14 juli 2021 |
