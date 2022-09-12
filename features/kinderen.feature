@@ -52,10 +52,10 @@ Functionaliteit: Kinderen van een persoon raadplegen
     Scenario: naamswijziging kind
       Gegeven de persoon met burgerservicenummer '999990020' heeft een 'kind' met de volgende gegevens
       | voornamen (02.10) |
-      | Celeke Lodivica              |
+      | Celeke Lodivica   |
       En het 'kind' is gewijzigd naar de volgende gegevens
       | voornamen (02.10) |
-      | Vica   |
+      | Vica              |
       En de persoon heeft nog een 'kind' met de volgende gegevens
       | voornamen (02.10) |
       | Bella             |
