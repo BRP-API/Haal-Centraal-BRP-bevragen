@@ -10,29 +10,39 @@ Functionaliteit: Kinderen van een persoon raadplegen
 
     @gba
     Scenario: de naam van een kind is gecorrigeerd
-      Gegeven de persoon met burgerservicenummer 999996150 heeft de volgende kinderen in de registratie
-      | Categorie | Voornamen (02.10) | Voorvoegsel (02.30) | Geslachtsnaam (02.40) | Onjuist (84.10) |
-      | 9         | William           |                     | Postma                |                 |
-      | 59        | William           | de                  | Vries                 |                 |
-      | 59        | William           | de                  | Boer                  | O               |
-      | 9         | Sebastiaan        | de                  | Boer                  |                 |
-      | 9         | Walter            | de                  | Boer                  |                 |
-      | 59        | Walter            |                     | Messeritz             | O               |
+      Gegeven de persoon met burgerservicenummer '999996150' heeft een 'kind' met de volgende gegevens
+      | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) |
+      | William           | de                  | Boer                  |
+      En het 'kind' is gecorrigeerd naar de volgende gegevens
+      | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) |
+      | William           | de                  | Vries                 |
+      En het 'kind' is gewijzigd naar de volgende gegevens
+      | voornamen (02.10) | geslachtsnaam (02.40) |
+      | William           | Postma                |
+      En de persoon heeft nog een 'kind' met de volgende gegevens
+      | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) |
+      | Sebastiaan        | de                  | Boer                  |
+      En de persoon heeft nog een 'kind' met de volgende gegevens
+      | voornamen (02.10) | geslachtsnaam (02.40) |
+      | Walter            | Messeritz             |
+      En het 'kind' is gecorrigeerd naar de volgende gegevens
+      | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) |
+      | Walter            | de                  | Boer                  |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 999996150                       |
       | fields              | kinderen.naam                   |
-      Dan heeft de persoon met burgerservicenummer '999996150' een kind met de volgende 'naam' gegevens
+      Dan heeft de response een persoon met een 'kind' met de volgende 'naam' gegevens
       | naam          | waarde  |
       | voornamen     | William |
       | geslachtsnaam | Postma  |
-      En heeft de persoon met burgerservicenummer '999996150' een kind met de volgende 'naam' gegevens
+      En heeft de persoon een 'kind' met de volgende 'naam' gegevens
       | naam          | waarde     |
       | voornamen     | Sebastiaan |
       | voorvoegsel   | de         |
       | geslachtsnaam | Boer       |
-      En heeft de persoon met burgerservicenummer '999996150' een kind met de volgende 'naam' gegevens
+      En heeft de persoon een 'kind' met de volgende 'naam' gegevens
       | naam          | waarde |
       | voornamen     | Walter |
       | voorvoegsel   | de     |

@@ -17,38 +17,41 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
 
     @gba
     Scenario: een actuele partner en geen ontbonden partner(s)
-      Gegeven de persoon met burgerservicenummer 555550001 heeft de volgende huwelijken/partnerschappen in de registratie
-      | Categorie | Burgerservicenummer (01.20) | Voornamen (02.10) | adellijke titel of predicaat (02.20) | voorvoegsel (02.30) | Geslachtsnaam (02.40) | Geboortedatum (03.10) | Geboorteplaats (03.20) | Geboorteland | Geslachtsaanduiding (04.10) | Datum aangaan (06.10) | Plaats aangaan (06.20) | Land aangaan (06.30) | Datum ontbinding (07.10) | soort verbintenis (15.10) |
-      | 5         | 555550002                   | Jan               | JH                                   | van                 | Aedel                 | 19820526              | 0599                   | 6030         | M                           | 20171103              | 0513                   | 6030                 |                          | H                         |
+      Gegeven de persoon met burgerservicenummer '555550001' heeft een 'partner' met de volgende gegevens
+      | burgerservicenummer (01.20) | voornamen (02.10) | adellijke titel of predicaat (02.20) | voorvoegsel (02.30) | geslachtsnaam (02.40) | geboortedatum (03.10) | geboorteplaats (03.20) | geboorteland (03.30) | geslachtsaanduiding (04.10) | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) | land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30) | soort verbintenis (15.10) |
+      | 555550002                   | Jan               | JH                                   | van                 | Aedel                 | 19820526              | 0599                   | 6030                 | M                           | 20171103                                                           | 0513                                                                | 6030                                                              | H                         |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550001                       |
       | fields              | partners                        |
-      Dan heeft de persoon met burgerservicenummer '555550001' alleen 'partners' met de volgende gegevens
+      Dan heeft de response een persoon met een 'partner' met de volgende gegevens
       | naam                          | waarde    |
       | burgerservicenummer           | 555550002 |
       | geslacht.code                 | M         |
       | geslacht.omschrijving         | man       |
       | soortVerbintenis.code         | H         |
       | soortVerbintenis.omschrijving | huwelijk  |
-      En heeft de partner met burgerservicenummer '555550002' de volgende 'naam' gegevens
-      | naam                    | waarde |
-      | voornamen               | Jan    |
-      | adellijkeTitelPredicaat | JH     |
-      | voorvoegsel             | van    |
-      | geslachtsnaam           | Aedel  |
-      En heeft de partner met burgerservicenummer '555550002' de volgende 'geboorte' gegevens
-      | naam   | waarde   |
-      | datum  | 19820526 |
-      | plaats | 0599     |
-      | land   | 6030     |
-      En heeft de partner met burgerservicenummer '555550002' de volgende 'aangaanHuwelijkPartnerschap' gegevens
-      | naam   | waarde   |
-      | datum  | 20171103 |
-      | plaats | 0513     |
-      | land   | 6030     |
-      En de partner met burgerservicenummer '555550002' heeft GEEN 'ontbindingHuwelijkPartnerschap' gegevens
+      En heeft de 'partner' de volgende 'naam' gegevens
+      | naam                         | waarde |
+      | voornamen                    | Jan    |
+      | adellijkeTitelPredicaat.code | JH     |
+      | voorvoegsel                  | van    |
+      | geslachtsnaam                | Aedel  |
+      En heeft de 'partner' de volgende 'geboorte' gegevens
+      | naam              | waarde      |
+      | datum.type        | Datum       |
+      | datum.datum       | 1982-05-26  |
+      | datum.langFormaat | 26 mei 1982 |
+      | plaats.code       | 0599        |
+      | land.code         | 6030        |
+      En heeft de 'partner' de volgende 'aangaanHuwelijkPartnerschap' gegevens
+      | naam              | waarde          |
+      | datum.type        | Datum           |
+      | datum.datum       | 2017-11-03      |
+      | datum.langFormaat | 3 november 2017 |
+      | plaats.code       | 0513            |
+      | land.code         | 6030            |
 
     @gba
     Scenario: een actuele partner en een ontbonden partner
@@ -329,8 +332,8 @@ Functionaliteit: Huwelijken en geregistreerd partnerschappen van een persoon raa
       | burgerservicenummer | 999991553                                            |
       | fields              | partners.burgerservicenummer,partners.naam.voornamen |
       Dan heeft de response een persoon met een 'partner' met de volgende gegevens
-      | naam                | waarde                                               |
-      | burgerservicenummer | 555550004           |
+      | naam                | waarde    |
+      | burgerservicenummer | 555550004 |
       En heeft de 'partner' de volgende 'naam' gegevens
       | naam      | waarde |
       | voornamen | Karel  |
