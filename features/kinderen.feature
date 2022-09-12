@@ -8,7 +8,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
   Rule: de actuele gegevens van kinderen worden geleverd
 
     Scenario: de naam van een kind is gecorrigeerd
-      Gegeven de persoon met burgerservicenummer '999990019' heeft een 'kind' met de volgende gegevens
+      Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
       | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) |
       | William           | de                  | Boer                  |
       En het 'kind' is gecorrigeerd naar de volgende gegevens
@@ -29,7 +29,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 999990019                       |
+      | burgerservicenummer | 000000012                       |
       | fields              | kinderen.naam                   |
       Dan heeft de response een persoon met een 'kind' met de volgende gegevens
       | naam               | waarde  |
@@ -50,7 +50,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | naam.voorletters   | W.     |
 
     Scenario: naamswijziging kind
-      Gegeven de persoon met burgerservicenummer '999990020' heeft een 'kind' met de volgende gegevens
+      Gegeven de persoon met burgerservicenummer '000000024' heeft een 'kind' met de volgende gegevens
       | voornamen (02.10) |
       | Celeke Lodivica   |
       En het 'kind' is gewijzigd naar de volgende gegevens
@@ -62,7 +62,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 999990020                       |
+      | burgerservicenummer | 000000024                       |
       | fields              | kinderen.naam.voornamen         |
       Dan heeft de response een persoon met een 'kind' met de volgende gegevens
       | naam           | waarde |
@@ -77,29 +77,29 @@ Functionaliteit: Kinderen van een persoon raadplegen
     - Wanneer door de gebruikte fields parameter in het request het kind in de response geen enkel gegeven heeft met een waarde, dan wordt het kind geleverd zonder gegevens (dus als leeg object)
 
     Scenario: kind volledig onbekend, veld met onbekend waarde wordt gevraagd met fields
-      Gegeven de persoon met burgerservicenummer '999990032' heeft een 'kind' met de volgende gegevens
+      Gegeven de persoon met burgerservicenummer '000000036' heeft een 'kind' met de volgende gegevens
       | geslachtsnaam (02.40) | 
       | .                     |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 999990032                       |
+      | burgerservicenummer | 000000036                       |
       | fields              | kinderen.naam                   |
       Dan heeft de response een persoon met een 'kind' zonder gegevens
 
     Scenario: kind volledig onbekend, veld met onbekend waarde wordt niet gevraagd met fields
-      Gegeven de persoon met burgerservicenummer '999990044' heeft een 'kind' met de volgende gegevens
+      Gegeven de persoon met burgerservicenummer '000000048' heeft een 'kind' met de volgende gegevens
       | geboortedatum (03.10) | 
       | 00000000              | 
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 999990044                       |
+      | burgerservicenummer | 000000048                       |
       | fields              | kinderen.naam                   |
       Dan heeft de response een persoon met een 'kind' zonder gegevens
 
     Scenario: ontkenning ouderschap
-      Gegeven de persoon met burgerservicenummer '999990056' heeft een 'kind' met de volgende gegevens
+      Gegeven de persoon met burgerservicenummer '000000061' heeft een 'kind' met de volgende gegevens
       | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) | geboortedatum (03.10) | gemeente document (82.10) | datum document (82.20) | beschrijving document (82.30) | ingangsdatum geldigheid (85.10) | datum van opneming (86.10) |
       | Daan              | de                  | Vries                 | 20031107              | 0518                      | 20031109               | PL gerelateerde               | 20031107                        | 20031109                   |
       En het 'kind' is gewijzigd naar de volgende gegevens
@@ -108,18 +108,18 @@ Functionaliteit: Kinderen van een persoon raadplegen
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 999990056                       |
+      | burgerservicenummer | 000000061                       |
       | fields              | kinderen                        |
       Dan heeft de response een persoon zonder 'kind' gegevens
 
     Scenario: met fields vragen om een gegeven zonder waarde
-      Gegeven de persoon met burgerservicenummer '999990068' heeft een 'kind' met de volgende gegevens
+      Gegeven de persoon met burgerservicenummer '000000073' heeft een 'kind' met de volgende gegevens
       | voornamen (02.10) | geslachtsnaam (02.40) |
       | Bert              | Jansen                |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 999990068                       |
+      | burgerservicenummer | 000000073                       |
       | fields              | kinderen.burgerservicenummer    |
       Dan heeft de response een persoon zonder 'kind' gegevens
 
@@ -127,23 +127,23 @@ Functionaliteit: Kinderen van een persoon raadplegen
     Bij het raadplegen van een persoon worden alleen gegevens uit de persoonslijst van de gevraagde persoon gebruikt, en nooit gegevens van de persoonslijst van het kind
 
     Scenario: Het kind heeft geslachtswijziging en naamswijziging ondergaan, maar de gevraagde persoon erkent dit niet
-      Gegeven de persoon met burgerservicenummer '999990081' heeft een 'kind' met de volgende gegevens
+      Gegeven de persoon met burgerservicenummer '000000085' heeft een 'kind' met de volgende gegevens
       | burgerservicenummer (01.20) | voornamen (02.10) | geslachtsaanduiding (04.10) |
-      | 999990093                   | Karel             | M                           |
+      | 000000097                   | Karel             | M                           |
       En het 'kind' is gewijzigd naar de volgende gegevens
       | burgerservicenummer (01.20) | voornamen (02.10) | geslachtsaanduiding (04.10) |
-      | 999990093                   | Charlotte         | V                           |
+      | 000000097                   | Charlotte         | V                           |
       En het 'kind' is gewijzigd naar de volgende gegevens
       | burgerservicenummer (01.20) | voornamen (02.10) | geslachtsaanduiding (04.10) |
-      | 999990093                   | Karel             | M                           |
+      | 000000097                   | Karel             | M                           |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                               |
       | type                | RaadpleegMetBurgerservicenummer                      |
-      | burgerservicenummer | 999990081                                            |
+      | burgerservicenummer | 000000085                                            |
       | fields              | kinderen.burgerservicenummer,kinderen.naam.voornamen |
       Dan heeft de response een persoon met een 'kind' met de volgende gegevens
       | naam                | waarde    |
-      | burgerservicenummer | 999990093 |
+      | burgerservicenummer | 000000097 |
       | naam.voornamen      | Karel     |
 
   @proxy
