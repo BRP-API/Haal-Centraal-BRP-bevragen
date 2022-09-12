@@ -1179,6 +1179,20 @@ Then(/^heeft (?:de|het) '(.*)' een leeg '(.*)' object$/, function(relatie, gegev
     }
 });
 
+Then(/^heeft de response een persoon zonder '(\w*)' gegevens$/, function(relatie) {
+    this.context.leaveEmptyObjects = true;
+
+    if(this.context.postAssert === true) {
+        if(this.context.expected === undefined) {
+            this.context.expected = [ {} ];
+        }
+
+        const expectedPersonen = this.context.expected;
+        const expectedPersoon = expectedPersonen[expectedPersonen.length-1];
+        expectedPersoon[toCollectionName(relatie)] = [];
+    }
+});
+
 Then(/^heeft de '(.*)' GEEN '(.*)' gegevens$/, function (_relatie, _gegevensgroep) {
     // do nothing
 });
@@ -1249,7 +1263,7 @@ Then(/^heeft de response een persoon met een '(\w*)' zonder gegevens$/, createEm
 
 Then(/^heeft de response een persoon met ?(?:een)? leeg '(.*)' object$/, createEmptyCollectieGegevensgroep);
 
-Then(/^heeft de response een persoon met een '([a-zA-Z]*)' met een leeg '([a-zA-Z]*)' object$/, function (relatie, gegevensgroep) {
+function creerLeegGegevensgroepVoorRelatie(relatie, gegevensgroep) {
     this.context.leaveEmptyObjects = true;
     let expected = {};
     expected[gegevensgroep] = {};
@@ -1267,7 +1281,11 @@ Then(/^heeft de response een persoon met een '([a-zA-Z]*)' met een leeg '([a-zA-
         }
         expectedPersoon[relaties].push(expected);
     }
-});
+}
+
+Then(/^heeft de response een persoon met een '([a-zA-Z]*)' met een leeg '([a-zA-Z]*)' object$/, creerLeegGegevensgroepVoorRelatie);
+
+Then(/^heeft de response een persoon met een '(\w*)' zonder '(\w*)' gegevens$/, creerLeegGegevensgroepVoorRelatie);
 
 Then(/^heeft de response een persoon met een '([a-zA-Z]*)' met een '([a-zA-Z]*)' met een leeg '([a-zA-Z]*)' object$/, function (relatie, gegevensgroep, gegevensgroep2) {
     this.context.leaveEmptyObjects = true;
