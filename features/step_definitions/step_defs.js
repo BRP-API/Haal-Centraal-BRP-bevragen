@@ -364,6 +364,10 @@ function createGegevensgroepData(plId, dataTable) {
     ].concat(fromHash(dataTable.hashes()[0]));
 }
 
+Given(/^landelijke tabel "(\w*)" heeft de volgende waarden$/, function (_tabelNaam, _dataTable) {       
+    // doe nog niets
+});
+
 Given(/^een persoon heeft de volgende '(\w*)' gegevens$/, async function (gegevensgroep, dataTable) {
     if(pool !== undefined) {
         const client = await pool.connect();
