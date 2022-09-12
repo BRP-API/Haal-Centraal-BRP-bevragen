@@ -145,23 +145,22 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
 
     @gba
     Scenario: geactualiseerde ingangsdatum geldigheid
-      Gegeven de persoon met burgerservicenummer '555550003' heeft de volgende gegevens
-      | Stapel | Categorie | nationaliteit (05.10) | reden opnemen (63.10) | reden beëindigen (64.10) | bijzonder Nederlanderschap (65.10) | onjuist (84.10) | datum ingang geldigheid (85.10) |
-      | 1      | 4         | 0100                  | 311                   |                          |                                    |                 | 20200727                        |
-      | 1      | 54        | 0100                  | 311                   |                          |                                    | O               | 20200713                        |
+      Gegeven de persoon met burgerservicenummer '000000097' heeft een 'nationaliteit' met de volgende gegevens
+      | nationaliteit (05.10) | reden opnemen (63.10) | onjuist (84.10) | datum ingang geldigheid (85.10) |
+      | 0100                  | 311                   | O               | 20200713                        |
+      En de 'nationaliteit' is gewijzigd naar de volgende gegevens
+      | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
+      | 0100                  | 311                   | 20200727                        |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                              |
       | type                | RaadpleegMetBurgerservicenummer     |
-      | burgerservicenummer | 555550003                           |
-      | fields              | burgerservicenummer,nationaliteiten |
-      Dan heeft de persoon met burgerservicenummer '555550003' een nationaliteit met alleen de volgende gegevens
+      | burgerservicenummer | 000000097                           |
+      | fields              | nationaliteiten |
+      Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
       | naam                  | waarde   |
       | nationaliteit         | 0100     |
       | redenOpname           | 311      |
       | datumIngangGeldigheid | 20200727 |
-      En heeft de persoon met burgerservicenummer '555550003' GEEN nationaliteit met de volgende gegevens
-      | naam                  | waarde   |
-      | datumIngangGeldigheid | 20200713 |
 
   @proxy
   Rule: de nationaliteit wordt gevuld op basis van het voorkomen van nationaliteit of aanduidingBijzonderNederlanderschap
