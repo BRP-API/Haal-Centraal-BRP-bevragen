@@ -107,7 +107,8 @@ const tableNameMap = new Map([
     ['persoon', 'lo3_pl_persoon' ],
     ['nationaliteit', 'lo3_pl_nationaliteit'],
     ['kiesrecht', 'lo3_pl'],
-    ['verblijfstitel', 'lo3_pl_verblijfstitel']
+    ['verblijfstitel', 'lo3_pl_verblijfstitel'],
+    ['inschrijving', 'lo3_pl']
 ]);
 
 const columnNameMap = new Map([
@@ -142,6 +143,9 @@ const columnNameMap = new Map([
     ['aanduiding verblijfstitel (39.10)', 'verblijfstitel_aand'],
     ['datum einde verblijfstitel (39.20)', 'verblijfstitel_eind_datum'],
     ['datum ingang verblijfstitel (39.30)', 'geldigheid_start_datum'],
+
+    ['datum opschorting bijhouding (67.10)', 'bijhouding_opschort_datum'],
+    ['reden opschorting bijhouding (67.20)', 'bijhouding_opschort_reden']
 
 ]);
 
