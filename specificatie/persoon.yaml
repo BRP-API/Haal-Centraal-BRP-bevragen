@@ -70,6 +70,7 @@ components:
           $ref: '#/components/schemas/OmschrijvingVerificatie'
     RniDeelnemer:
       type: object
+      description: Gegevens over de RNI-deelnemer die de gegevens in de betrokken categorie heeft aangeleverd.
       properties:
         deelnemer:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
