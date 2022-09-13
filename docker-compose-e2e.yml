@@ -49,6 +49,7 @@ services:
     volumes:
       - ./src/config/BrpProxy/configuration:/app/configuration
       - ./src/config/BrpProxy/mapping:/app/mapping
+      - ./src/config/BrpProxy/appsettings/appsettings.json:/app/appsettings.json
 
   haalcentraal_api:
     image: haalcentraal.azurecr.io/gba-api:2.0.0
