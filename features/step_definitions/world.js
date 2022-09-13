@@ -10,6 +10,7 @@ class World {
         this.context.sql = {
             useDb: true,
             logStatements: true,
+            cleanup: true,
             poolConfig: {
                 user: "root",
                 host: "localhost",

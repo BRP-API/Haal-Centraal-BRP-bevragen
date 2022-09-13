@@ -103,7 +103,7 @@ const propertyNameMap = new Map([
 ]);
 
 const tableNameMap = new Map([
-    ['persoonlijst', 'lo3_pl'],
+    ['inschrijving', 'lo3_pl'],
     ['persoon', 'lo3_pl_persoon' ],
     ['nationaliteit', 'lo3_pl_nationaliteit'],
     ['kiesrecht', 'lo3_pl'],
@@ -153,10 +153,10 @@ Before(function() {
 });
 
 After(async function() {
-    if(pool !== undefined) {
+    if(pool !== undefined && this.context.sql.cleanup) {
         const client = await pool.connect();
         try {
-            await client.query(createDeleteStatement('persoonlijst', this.context.pl_id));
+            await client.query(createDeleteStatement('inschrijving', this.context.pl_id));
             await client.query(createDeleteStatement('persoon', this.context.pl_id));
             await client.query(createDeleteStatement('nationaliteit', this.context.pl_id));
             await client.query(createDeleteStatement('verblijfstitel', this.context.pl_id));
