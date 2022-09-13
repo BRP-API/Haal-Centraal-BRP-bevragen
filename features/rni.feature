@@ -5,7 +5,7 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
 
   Rule: de RNI-deelnemer gegevens worden geleverd voor elke categorie waarvan ten minste één gegeven gevraagd is
     - RNI-deelnemer gegevens worden ook geleverd wanneer hier niet naar gevraagd is met de fields parameter
-    - categorie wordt gevuld met de naam van categorie waarop de RNI-deelnemer gegevens heeft aangeleverd
+    - categorie wordt gevuld met de naam van de categorie waarop de RNI-deelnemer gegevens heeft aangeleverd
       | categorie | naam           |
       | 01        | Persoon        |
       | 04        | Nationaliteit  |
@@ -32,13 +32,14 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       | voornamen (02.10)     | Peter  |
       | geslachtsnaam (02.40) | Jansen |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000012                       |
-      | fields              | naam.voornamen                  |
+      | naam                | waarde                            |
+      | type                | RaadpleegMetBurgerservicenummer   |
+      | burgerservicenummer | 000000012                         |
+      | fields              | naam.voornamen,naam.geslachtsnaam |
       Dan heeft de response een persoon met de volgende 'naam' gegevens
-      | naam      | waarde |
-      | voornamen | Peter  |
+      | naam          | waarde |
+      | voornamen     | Peter  |
+      | geslachtsnaam | Jansen |
       En heeft de persoon een 'rni' met de volgende gegevens
       | naam                   | waarde                                          |
       | deelnemer.code         | 101                                             |
@@ -55,7 +56,6 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       En de persoon heeft de volgende 'naam' gegevens
       | naam                  | waarde |
       | voornamen (02.10)     | Peter  |
-      | geslachtsnaam (02.40) | Jansen |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | naam                            | waarde                               |
       | land (13.10)                    | 5010                                 |
@@ -107,7 +107,7 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       Dan heeft de response een persoon met de volgende 'naam' gegevens
       | naam      | waarde |
       | voornamen | Peter  |
-      En heeft de persoon GEEN 'rni'
+      En heeft de persoon geen 'rni>' gegevens
 
     Scenario: niet leveren RNI-deelnemer voor een categorie waar geen gegeven uit geleverd is
       Gegeven het systeem heeft een persoon met de volgende gegevens
