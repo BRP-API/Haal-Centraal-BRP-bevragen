@@ -54,8 +54,8 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
 
     De aanschrijfwijze wordt samengesteld zonder de hoffelijkheidstitel, zoals beschreven in aanschrijfwijze/niet-adellijk.feature, wanneer:
     - de persoon de geslachtsnaam van de echtgenoot/partner niet gebruikt: aanduidingNaamgebruik is "E" (eigen naam)
-    - het geslacht van de persoon is "M" (man)
-    - er is geen vrouwelijke vorm voor de adellijke titel van de partner (zie tabel hierboven)
+    - het geslacht van de persoon is ongelijk aan "V" (vrouw), dus "M" (man) of "O" (onbekend)
+    - er is geen hoffelijkheidstitel voor de adellijke titel van de partner (zie tabel hierboven)
 
     Hierbij geldt verder dat:
     - spaties aan het begin of einde van de aanschrijfwijze.naam worden verwijderd
@@ -119,7 +119,6 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
       | naam                          | waarde                   |
       | aanschrijfwijze.naam          | A. de Boer               |
-      | aanschrijfwijze.aanspreekvorm | De hoogwelgeboren vrouwe |
 
     Abstract Scenario: Persoon met geslacht <geslacht> met adellijke partner kan geen hoffelijkheidstitel gebruiken
       Gegeven de persoon met burgerservicenummer '000000218' heeft de volgende gegevens
@@ -204,19 +203,19 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | burgerservicenummer | 000000231                        |
       | fields              | adressering.aanschrijfwijze.naam |
       Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
-      | naam                          | waarde                    |
-      | aanschrijfwijze.naam          | <naam in aanschrijfwijze> |
+      | naam                 | waarde           |
+      | aanschrijfwijze.naam | A. van den Aedel |
 
       Voorbeelden:
-      | titel partner | naam in aanschrijfwijze    |
-      | BS            | A. van den Aedel           |
-      | GI            | A. van den Aedel           |
-      | HI            | A. van den Aedel           |
-      | JH            | A. van den Aedel           |
-      | JV            | A. van den Aedel           |
-      | MI            | A. van den Aedel           |
-      | PS            | A. van den Aedel           |
-      | R             | A. van den Aedel           |
+      | titel partner |
+      | BS            |
+      | GI            |
+      | HI            |
+      | JH            |
+      | JV            |
+      | MI            |
+      | PS            |
+      | R             |
 
   Rule: Voor een vrouw met adellijke titel met partner met adellijke titel wordt de naam in aanschrijfwijze als volgt samengesteld:
     | aanduiding naamgebruik | omschrijving                 | naam in aanschrijfwijze |
@@ -234,12 +233,12 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       HT = hoffelijkheidstitel of 'titre de courtoisie'
 
     De hoffelijkheidstitel of 'titre de courtoisie' is de vrouwelijke vorm van de adellijke titel van de partner:
-    | adellijke titel (ex)partner | hoffelijkheidstitel |
-    | B                           | barones             |
-    | G                           | gravin              |
-    | H                           | hertogin            |
-    | M                           | markiezin           |
-    | P                           | prinses             |
+    | adellijke titel (ex)partner | hoffelijkheidstitel | aanspreekvorm            |
+    | B                           | barones             | De hoogwelgeboren vrouwe |
+    | G                           | gravin              | De hooggeboren vrouwe    |
+    | H                           | hertogin            | De hoogwelgeboren vrouwe |
+    | M                           | markiezin           | De hoogwelgeboren vrouwe |
+    | P                           | prinses             | De hoogheid              |
 
     De aanschrijfwijze wordt samengesteld zonder de hoffelijkheidstitel, zoals beschreven in aanschrijfwijze/adellijk.feature, wanneer:
     - de persoon de geslachtsnaam van de echtgenoot/partner niet gebruikt: aanduidingNaamgebruik is "E" (eigen naam)
