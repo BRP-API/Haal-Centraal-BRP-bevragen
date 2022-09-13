@@ -40,15 +40,15 @@ Functionaliteit: in onderzoek
       | voornamen                                    | Arnitta           |
       | voorletters                                  | A.                |
       | volledigeNaam                                | Arnitta           |
-	  | inOnderzoek.datumIngangOnderzoek.type        | Datum             |
-	  | inOnderzoek.datumIngangOnderzoek.datum       | 2012-09-20        |
-	  | inOnderzoek.datumIngangOnderzoek.langFormaat | 20 september 2012 |
+      | inOnderzoek.datumIngangOnderzoek.type        | Datum             |
+      | inOnderzoek.datumIngangOnderzoek.datum       | 2012-09-20        |
+      | inOnderzoek.datumIngangOnderzoek.langFormaat | 20 september 2012 |
       | inOnderzoek.voornamen                        | true              |
-	  | inOnderzoek.adellijkeTitelPredicaat          | true              |
+      | inOnderzoek.adellijkeTitelPredicaat          | true              |
       | inOnderzoek.voorvoegsel                      | true              |
-	  | inOnderzoek.geslachtsnaam                    | true              |
+      | inOnderzoek.geslachtsnaam                    | true              |
       | inOnderzoek.voorletters                      | true              |
-	  | inOnderzoek.aanduidingNaamgebruik            | true              |
+      | inOnderzoek.aanduidingNaamgebruik            | true              |
       | inOnderzoek.volledigeNaam                    | true              |
       En heeft de persoon een 'ouder' met de volgende gegevens
       | naam                              | waarde |
@@ -149,14 +149,14 @@ Functionaliteit: in onderzoek
       | naam.voorletters      | N.     |
       | geslacht.code         | V      |
       | geslacht.omschrijving | vrouw  |
-	  | ouderAanduiding       | 1      |
+      | ouderAanduiding       | 1      |
       En heeft de persoon een 'ouder' met de volgende gegevens
       | naam                  | waarde |
       | naam.voornamen        | Jan    |
       | naam.voorletters      | J.     |
       | geslacht.code         | M      |
       | geslacht.omschrijving | man    |
-	  | ouderAanduiding       | 2      |
+      | ouderAanduiding       | 2      |
 
   Rule: in onderzoek wordt niet opgenomen wanneer het onderzoek beëindigd is
     - Datum einde onderzoek (83.30) heeft een waarde
