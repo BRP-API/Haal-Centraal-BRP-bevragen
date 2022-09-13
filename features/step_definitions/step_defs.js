@@ -156,7 +156,7 @@ const columnNameMap = new Map([
 
     ['aanduiding in onderzoek (83.10)', 'onderzoek_gegevens_aand' ],
     ['datum ingang onderzoek (83.20)', 'onderzoek_start_datum' ],
-	['datum einde onderzoek (83.30)', 'onderzoek_eind_datum' ]
+    ['datum einde onderzoek (83.30)', 'onderzoek_eind_datum' ]
 ]);
 
 Before(function() {
