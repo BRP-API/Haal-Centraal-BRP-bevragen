@@ -45,7 +45,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Release
       - ASPNETCORE_URLS=http://+:5000
     ports:
-      - "5010:5000"
+      - "5001:5000"
     volumes:
       - ./src/config/BrpProxy/configuration:/app/configuration
       - ./src/config/BrpProxy/mapping:/app/mapping
