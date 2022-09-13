@@ -36,20 +36,27 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 000000097                       |
       | fields              | ouders,partners,naam            |
       Dan heeft de response een persoon met de volgende 'naam' gegevens
-      | naam                      | waarde  |
-      | voornamen                 | Arnitta |
-  	  | voorletters               | A.      |
-      | volledigeNaam             | Arnitta |
-      | inOnderzoek.voornamen     | true    |
-      | inOnderzoek.voorletters   | true    |
-      | inOnderzoek.volledigeNaam | true    |
+      | naam                                         | waarde            |
+      | voornamen                                    | Arnitta           |
+      | voorletters                                  | A.                |
+      | volledigeNaam                                | Arnitta           |
+	  | inOnderzoek.datumIngangOnderzoek.type        | Datum             |
+	  | inOnderzoek.datumIngangOnderzoek.datum       | 2012-09-20        |
+	  | inOnderzoek.datumIngangOnderzoek.langFormaat | 20 september 2012 |
+      | inOnderzoek.voornamen                        | true              |
+	  | inOnderzoek.adellijkeTitelPredicaat          | true              |
+      | inOnderzoek.voorvoegsel                      | true              |
+	  | inOnderzoek.geslachtsnaam                    | true              |
+      | inOnderzoek.voorletters                      | true              |
+	  | inOnderzoek.aanduidingNaamgebruik            | true              |
+      | inOnderzoek.volledigeNaam                    | true              |
       En heeft de persoon een 'ouder' met de volgende gegevens
       | naam                              | waarde |
       | naam.voornamen                    | Noa    |
-  	  | naam.voorletters                  | N.     |
+      | naam.voorletters                  | N.     |
       | geslacht.code                     | V      |
       | geslacht.omschrijving             | vrouw  |
-  	  | ouderAanduiding                   | 1      |
+      | ouderAanduiding                   | 1      |
       En heeft de persoon een 'ouder' met de volgende gegevens
       | naam                              | waarde |
       | naam.voornamen                    | Jan    |
@@ -71,103 +78,39 @@ Functionaliteit: in onderzoek
       Gegeven een persoon heeft de volgende 'persoon' gegevens
       | burgerservicenummer (01.20) | voornamen (02.10) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | 
       | 000000097                   | Arnitta           | 19231213              | 010310                          | 20120920                       |
-      En de persoon heeft een ouder '1' met de volgende gegevens
-      | voornamen (02.10) | geslachtsaanduiding (04.10) |
-      | Noa               | V                           |
-      En de persoon heeft een ouder '2' met de volgende gegevens
-      | voornamen (02.10) | geslachtsaanduiding (04.10) |
-      | Jan               | M                           |
-      En de persoon heeft een 'partner' met de volgende gegevens
-      | burgerservicenummer (01.20) | voornamen (02.10 | geslachtsaanduiding (04.10) | datum aangaan (06.10) |
-      | 000000103                   | Karel            | M                           | 20091102              |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000097                       |
-      | fields              | ouders,partners,naam            |
+      | fields              | naam            |
       Dan heeft de response een persoon met de volgende 'naam' gegevens
       | naam                      | waarde  |
       | voornamen                 | Arnitta |
-  	  | voorletters               | A.      |
+      | voorletters               | A.      |
       | volledigeNaam             | Arnitta |
-      En heeft de persoon een 'ouder' met de volgende gegevens
-      | naam                              | waarde |
-      | naam.voornamen                    | Noa    |
-  	  | naam.voorletters                  | N.     |
-      | geslacht.code                     | V      |
-      | geslacht.omschrijving             | vrouw  |
-  	  | ouderAanduiding                   | 1      |
-      En heeft de persoon een 'ouder' met de volgende gegevens
-      | naam                              | waarde |
-      | naam.voornamen                    | Jan    |
-      | naam.voorletters                  | J.     |  
-      | geslacht.code                     | M      |  
-      | geslacht.omschrijving             | man    |
-      | ouderAanduiding                   | 2      |
-      En heeft de persoon een 'partner' met de volgende gegevens
-      | naam                              | waarde          |
-      | burgerservicenummer               | 000000103       |
-      | naam.voornamen                    | Karel           |
-      | geslacht.code                     | M               |
-      | geslacht.omschrijving             | man             |
-      | aangaanHuwelijkPartnerschap.type  | Datum           |
-      | aangaanHuwelijkPartnerschap.datum | 2009-11-02      |
-      | aangaanHuwelijkPartnerschap.datum | 2 november 2009 |
 
     Scenario: vragen om voorvoegsel zonder waarde bij groep naam in onderzoek
       Gegeven een persoon heeft de volgende 'persoon' gegevens
       | burgerservicenummer (01.20) | voornamen (02.10) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | 
       | 000000115                   | Arnitta           | 19231213              | 010200                          | 20120920                       |
-      En de persoon heeft een ouder '1' met de volgende gegevens
-      | voornamen (02.10) | geslachtsaanduiding (04.10) |
-      | Noa               | V                           |
-      En de persoon heeft een ouder '2' met de volgende gegevens
-      | voornamen (02.10) | geslachtsaanduiding (04.10) |
-      | Jan               | M                           |
-      En de persoon heeft een 'partner' met de volgende gegevens
-      | burgerservicenummer (01.20) | voornamen (02.10 | geslachtsaanduiding (04.10) | datum aangaan (06.10) |
-      | 000000127                   | Karel            | M                           | 20091102              |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                           |
       | type                | RaadpleegMetBurgerservicenummer  |
       | burgerservicenummer | 000000115                        |
-      | fields              | ouders,partners,naam.voorvoegsel |
+      | fields              | naam.voorvoegsel |
       Dan heeft de response een persoon met de volgende 'naam' gegevens
-      | naam                           | waarde  |
+      | naam                      | waarde  |
       | inOnderzoek.voornamen     | true    |
       | inOnderzoek.voorletters   | true    |
       | inOnderzoek.volledigeNaam | true    |
-      En heeft de persoon een 'ouder' met de volgende gegevens
-      | naam                              | waarde |
-      | naam.voornamen                    | Noa    |
-      | naam.voorletters                  | N.     |
-      | geslacht.code                     | V      |
-      | geslacht.omschrijving             | vrouw  |
-      | ouderAanduiding                   | 1      |
-      En heeft de persoon een 'ouder' met de volgende gegevens
-      | naam                              | waarde |
-      | naam.voornamen                    | Jan    |
-  	  | naam.voorletters                  | J.     |
-      | geslacht.code                     | M      |
-      | geslacht.omschrijving             | man    |
-      | ouderAanduiding                   | 2      |
-      En heeft de persoon een 'partner' met de volgende gegevens
-      | naam                              | waarde          |
-  	  | burgerservicenummer               | 000000127       |
-      | naam.voornamen                    | Karel           |
-      | geslacht.code                     | M               |
-      | geslacht.omschrijving             | man             |
-      | aangaanHuwelijkPartnerschap.type  | Datum           |
-      | aangaanHuwelijkPartnerschap.datum | 2009-11-02      |
-      | aangaanHuwelijkPartnerschap.datum | 2 november 2009 |
 
     Scenario: persoon heeft gezagInOnderzoek en persoonInOnderzoek
       Gegeven een persoon heeft de volgende 'persoon' gegevens
       | burgerservicenummer (01.20) | voornamen (02.10) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
       | 000000139                   | Arnitta           | 19231213              | 010410                             | 20120920                    |
       En de persoon heeft nog een 'gezagsverhouding' met de volgende gegevens
-      | indicatie curatele (33.10) |aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
-      | 1                          | 113310                         | 20101205                       |
+      | indicatie curateleregister (33.10) |aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+      | 1                                  | 113310                         | 20101205                       |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                             |
       | type                | RaadpleegMetBurgerservicenummer    |
@@ -175,13 +118,13 @@ Functionaliteit: in onderzoek
       | fields              | geslacht,indicatieCurateleRegister |
       Dan heeft de response een persoon met de volgende gegevens
       | naam                                                | waarde            |
-  	  | indicatieCurateleRegister                           | true              |
-  	  | inOnderzoek.datumIngangOnderzoekPersoon.type        | Datum             |
-   	  | inOnderzoek.datumIngangOnderzoekPersoon.datum       | 2012-09-20        |
-  	  | inOnderzoek.datumIngangOnderzoekPersoon.langFormaat | 20 september 2012 |
+      | indicatieCurateleRegister                           | true              |
+      | inOnderzoek.datumIngangOnderzoekPersoon.type        | Datum             |
+      | inOnderzoek.datumIngangOnderzoekPersoon.datum       | 2012-09-20        |
+      | inOnderzoek.datumIngangOnderzoekPersoon.langFormaat | 20 september 2012 |
       | inOnderzoek.geslacht                                | true              |
       | inOnderzoek.datumIngangOnderzoekGezag.type          | Datum             |
-  	  | inOnderzoek.datumIngangOnderzoekGezag.datum         | 20101205          |
+      | inOnderzoek.datumIngangOnderzoekGezag.datum         | 2010-12-05        |
       | inOnderzoek.datumIngangOnderzoekGezag.langFormaat   | 5 december 2010   |
       | inOnderzoek.indicatieCurateleRegister               | true              |
 
@@ -195,32 +138,25 @@ Functionaliteit: in onderzoek
       En de persoon heeft een ouder '2' met de volgende gegevens
       | voornamen (02.10) | geslachtsaanduiding (04.10) |
       | Jan               | M                           |
-      En de persoon heeft een 'partner' met de volgende gegevens
-      | voornamen (02.10 | geslachtsaanduiding (04.10) | datum aangaan (06.10) |
-      | Karel            | M                           | 20091102              |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000140                       |
-      | fields              | ouders,partners                 |
+      | fields              | ouders                          |
       Dan heeft de response een persoon met een 'ouder' met de volgende gegevens
       | naam                  | waarde |
       | naam.voornamen        | Noa    |
+      | naam.voorletters      | N.     |
       | geslacht.code         | V      |
       | geslacht.omschrijving | vrouw  |
+	  | ouderAanduiding       | 1      |
       En heeft de persoon een 'ouder' met de volgende gegevens
       | naam                  | waarde |
       | naam.voornamen        | Jan    |
+      | naam.voorletters      | J.     |
       | geslacht.code         | M      |
       | geslacht.omschrijving | man    |
-      En heeft de persoon een 'partner' met de volgende gegevens
-      | naam                              | waarde          |
-      | naam.voornamen                    | Karel           |
-      | geslacht.code                     | M               |
-      | geslacht.omschrijving             | man             |
-      | aangaanHuwelijkPartnerschap.type  | Datum           |
-      | aangaanHuwelijkPartnerschap.datum | 2009-11-02      |
-      | aangaanHuwelijkPartnerschap.datum | 2 november 2009 |
+	  | ouderAanduiding       | 2      |
 
   Rule: in onderzoek wordt niet opgenomen wanneer het onderzoek beëindigd is
     - Datum einde onderzoek (83.30) heeft een waarde
