@@ -531,6 +531,8 @@ components:
           $ref: '#/components/schemas/OmschrijvingVerdrag'
         categorie:
           $ref: '#/components/schemas/Categorie'
+      description: Gegevens over de RNI-deelnemer die de gegevens in de betrokken
+        categorie heeft aangeleverd.
     OmschrijvingVerdrag:
       pattern: "^[a-zA-Z0-9À-ž \\.\\-\\']{1,50}$"
       type: string
