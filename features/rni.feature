@@ -22,15 +22,12 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
 
 
     Scenario: RNI-deelnemer op geleverd gegeven
-      Gegeven het systeem heeft een persoon met de volgende gegevens
+      Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende gegevens
       | naam                            | waarde                                      |
-      | burgerservicenummer             | 000000012                                   |
+      | voornamen (02.10)               | Peter                                       |
+      | geslachtsnaam (02.40)           | Jansen                                      |
       | RNI-deelnemer (01.88.10)        | 101                                         |
       | Omschrijving verdrag (01.88.20) | Belastingverdrag tussen België en Nederland |
-      En de persoon heeft de volgende 'naam' gegevens
-      | naam                  | waarde |
-      | voornamen (02.10)     | Peter  |
-      | geslachtsnaam (02.40) | Jansen |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                            |
       | type                | RaadpleegMetBurgerservicenummer   |
@@ -48,14 +45,11 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       | categorie              | Persoon                                         |
 
     Scenario: RNI-deelnemers op geleverde gegevens uit meerdere categorieën
-      Gegeven het systeem heeft een persoon met de volgende gegevens
+      Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | naam                            | waarde                                      |
-      | burgerservicenummer             | 000000024                                   |
+      | voornamen (02.10)               | Peter                                       |
       | RNI-deelnemer (01.88.10)        | 101                                         |
       | Omschrijving verdrag (01.88.20) | Belastingverdrag tussen België en Nederland |
-      En de persoon heeft de volgende 'naam' gegevens
-      | naam                  | waarde |
-      | voornamen (02.10)     | Peter  |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | naam                            | waarde                               |
       | land (13.10)                    | 5010                                 |
@@ -87,10 +81,7 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       | categorie              | Verblijfplaats                                    |
 
     Scenario: niet leveren RNI-deelnemer uit een categorie waar geen gegevens uit gevraagd zijn
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                            | waarde                                      |
-      | burgerservicenummer             | 000000036                                   |
-      En de persoon heeft de volgende 'naam' gegevens
+      Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende gegevens
       | naam                  | waarde |
       | voornamen (02.10)     | Peter  |
       | geslachtsnaam (02.40) | Jansen |
@@ -110,10 +101,7 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       En heeft de persoon geen 'rni' gegevens
 
     Scenario: niet leveren RNI-deelnemer voor een categorie waar geen gegeven uit geleverd is
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                            | waarde                                      |
-      | burgerservicenummer             | 000000036                                   |
-      En de persoon heeft de volgende 'naam' gegevens
+      Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende gegevens
       | naam                  | waarde |
       | voornamen (02.10)     | Peter  |
       | geslachtsnaam (02.40) | Jansen |
@@ -133,9 +121,8 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       En heeft de persoon GEEN 'rni'
 
     Scenario: niet leveren RNI-deelnemer categorie 7 wanneer er geen opschorting en geen geheimhouding is
-      Gegeven het systeem heeft een persoon met de volgende gegevens
+      Gegeven de persoon met burgerservicenummer '000000048' heeft de volgende 'inschrijving' gegevens
       | naam                            | waarde                                      |
-      | burgerservicenummer             | 000000048                                   |
       | indicatie geheim (70.10)        | 0                                           |
       | RNI-deelnemer (07.88.10)        | 101                                         |
       | Omschrijving verdrag (07.88.20) | Belastingverdrag tussen België en Nederland |
@@ -149,9 +136,8 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       | burgerservicenummer | 000000048 |
 
     Scenario: wel leveren RNI-deelnemer categorie 7 wanneer er geheimhouding is
-      Gegeven het systeem heeft een persoon met de volgende gegevens
+      Gegeven de persoon met burgerservicenummer '000000061' heeft de volgende 'inschrijving' gegevens
       | naam                            | waarde                                      |
-      | burgerservicenummer             | 000000061                                   |
       | indicatie geheim (70.10)        | 7                                           |
       | RNI-deelnemer (07.88.10)        | 101                                         |
       | Omschrijving verdrag (07.88.20) | Belastingverdrag tussen België en Nederland |
@@ -172,9 +158,8 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       | categorie              | Inschrijving                                         |
 
     Scenario: wel leveren RNI-deelnemer categorie 7 wanneer er opschorting bijhouding is
-      Gegeven het systeem heeft een persoon met de volgende gegevens
+      Gegeven de persoon met burgerservicenummer '000000073' heeft de volgende 'inschrijving' gegevens
       | naam                            | waarde                                      |
-      | burgerservicenummer             | 000000073                                   |
       | indicatie geheim (70.10)        | 0                                           |
       | RNI-deelnemer (07.88.10)        | 101                                         |
       | Omschrijving verdrag (07.88.20) | Belastingverdrag tussen België en Nederland |
