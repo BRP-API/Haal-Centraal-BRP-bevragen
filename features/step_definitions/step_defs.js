@@ -160,6 +160,7 @@ After(async function() {
             await client.query(createDeleteStatement('persoon', this.context.pl_id));
             await client.query(createDeleteStatement('nationaliteit', this.context.pl_id));
             await client.query(createDeleteStatement('verblijfstitel', this.context.pl_id));
+            await client.query(createDeleteStatement('verblijfplaats', this.context.pl_id));
         }
         finally {
             client.release();
