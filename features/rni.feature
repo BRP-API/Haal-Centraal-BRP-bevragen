@@ -107,7 +107,7 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       Dan heeft de response een persoon met de volgende 'naam' gegevens
       | naam      | waarde |
       | voornamen | Peter  |
-      En heeft de persoon geen 'rni>' gegevens
+      En heeft de persoon geen 'rni' gegevens
 
     Scenario: niet leveren RNI-deelnemer voor een categorie waar geen gegeven uit geleverd is
       Gegeven het systeem heeft een persoon met de volgende gegevens
