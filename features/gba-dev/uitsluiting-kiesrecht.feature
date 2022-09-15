@@ -11,7 +11,7 @@ Functionaliteit: Uitsluiting kiesrecht
     En de persoon heeft de volgende kiesrecht gegevens
 		| naam                                    | waarde   |
 		| einddatum uitsluiting kiesrecht (38.20) | 20300101 |
-		Als personen wordt gezocht met de volgende parameters
+		Als gba personen wordt gezocht met de volgende parameters
 		| naam                | waarde                          |
 		| type                | RaadpleegMetBurgerservicenummer |
 		| burgerservicenummer | 000000085                       |
