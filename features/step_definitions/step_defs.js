@@ -946,7 +946,7 @@ function createRequestBody(dataTable) {
     return requestBody;
 }
 
-function createHeaders(dataTable) {
+function createHeaders(dataTable, extraHeaders) {
     let headers = {};
 
     dataTable.hashes()
@@ -960,6 +960,10 @@ function createHeaders(dataTable) {
     if(headers.Accept === undefined) {
         headers.Accept = "application/json";
     }
+    extraHeaders.forEach(function(header){
+        headers[header.naam] = header.waarde;
+    });
+
     return headers;
 }
 
@@ -967,9 +971,33 @@ When(/^personen wordt gezocht met de volgende parameters$/, async function (data
     const config = {
         method: 'post',
         url: '/personen',
-        baseURL: this.context.serverUrl,
+        baseURL: this.context.proxyUrl,
         data: createRequestBody(dataTable),
-        headers: createHeaders(dataTable)
+        headers: createHeaders(dataTable, this.context.extraHeaders)
+    };
+
+    addPersoonToPersonen(this.context);
+
+    const path = `${this.context.dataPath}/test-data.json`;
+    fs.writeFile(path, JSON.stringify(this.context.zoekResponse.personen, null, "\t"), (err) => {
+        if(err !== null) console.log(err);
+    });
+
+    try {
+        this.context.response = await axios(config);
+    }
+    catch(e) {
+        this.context.response = e.response;
+    }
+});
+
+When(/^gba personen wordt gezocht met de volgende parameters$/, async function (dataTable) {
+    const config = {
+        method: 'post',
+        url: '/personen',
+        baseURL: this.context.gbaUrl,
+        data: createRequestBody(dataTable),
+        headers: createHeaders(dataTable, this.context.extraHeaders)
     };
 
     addPersoonToPersonen(this.context);
