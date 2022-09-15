@@ -43,7 +43,7 @@ Functionaliteit: Fields vertalen van proxy naar gba
       | woonplaatsnaam (11.70)                     | 's-Gravenhage              |
       | identificatiecode verblijfplaats (11.80)   | 0599010000208579           |
       | identificatiecode nummeraanduiding (11.90) | 0599200000219678           |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550001                       |
@@ -72,7 +72,7 @@ Functionaliteit: Fields vertalen van proxy naar gba
       | functieAdres (10.10)               | W                          |
       | datum aanvang adreshouding (10.30) | 20170423                   |
       | locatiebeschrijving (12.10)        | Woonboot in de Grote Sloot |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550001                       |
@@ -97,7 +97,7 @@ Functionaliteit: Fields vertalen van proxy naar gba
       En landelijke tabel "Landen" heeft de volgende waarde
       | code | omschrijving |
       | 5107 | Curaçao      |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550001                       |
@@ -141,7 +141,7 @@ Functionaliteit: Fields vertalen van proxy naar gba
       | code | omschrijving | soort     |
       | JH   | Jonkheer     | predicaat |
       | BS   | Barones      | titel     |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550001                       |
@@ -202,7 +202,7 @@ Functionaliteit: Fields vertalen van proxy naar gba
       | woonplaatsnaam (11.70)                     | 's-Gravenhage              |
       | identificatiecode verblijfplaats (11.80)   | 0599010000208579           |
       | identificatiecode nummeraanduiding (11.90) | 0599200000219678           |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550001                       |
