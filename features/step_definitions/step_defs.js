@@ -820,7 +820,7 @@ function addToCollection(collection, toAdd) {
 }
 
 function addPersoonToPersonen(context) {
-    ["partner", "ouder", "nationaliteit", "kind"]
+    ["partner", "ouder", "nationaliteit", "kind", "rni"]
     .forEach((relatie) => {
         addToCollection(context.persoon[toCollectionName(relatie)], context[relatie]);
         context[relatie] = undefined;
@@ -1342,6 +1342,8 @@ function toCollectionName(gegevensgroep) {
             return 'kinderen';
         case 'nationaliteit':
             return 'nationaliteiten';
+        case 'rni':
+            return 'rni';
         default:
             return undefined;
     }
