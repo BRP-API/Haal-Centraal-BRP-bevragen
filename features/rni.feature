@@ -98,7 +98,7 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       Dan heeft de response een persoon met de volgende 'naam' gegevens
       | naam      | waarde |
       | voornamen | Peter  |
-      En heeft de persoon geen 'rni' gegevens
+      En heeft de persoon GEEN 'rni' gegevens
 
     Scenario: niet leveren RNI-deelnemer voor een categorie waar geen gegeven uit geleverd is
       Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende gegevens
@@ -118,7 +118,7 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       Dan heeft de response een persoon met de volgende 'naam' gegevens
       | naam      | waarde |
       | voornamen | Peter  |
-      En heeft de persoon GEEN 'rni'
+      En heeft de persoon GEEN 'rni' gegevens
 
     Scenario: niet leveren RNI-deelnemer categorie 7 wanneer er geen opschorting en geen geheimhouding is en geen inschrijving gegevens gevraagd
       Gegeven de persoon met burgerservicenummer '000000048' heeft de volgende 'inschrijving' gegevens
