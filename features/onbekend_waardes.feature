@@ -35,9 +35,10 @@ Rule: een veld wordt niet opgenomen wanneer het de standaardwaarde bevat
     | type                | RaadpleegMetBurgerservicenummer        |
     | burgerservicenummer | 999992934                              |
     | fields              | burgerservicenummer,naam.geslachtsnaam |
-    Dan heeft de response een persoon met alleen de volgende gegevens
+    Dan heeft de response een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999992934 |
+    En heeft de persoon een leeg 'naam' object
 
   Abstract Scenario: onbekend waarde "." voor straat
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -130,7 +131,6 @@ Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbe
   | verblijfplaats.gemeenteVanInschrijving      | 0000            |
   | verblijfplaats.land                         | 0000            |
   | verblijfplaats.landVanwaarIngeschreven      | 0000            |
-  | verblijfstitel.aanduiding                   | 00              |
   | ouders.geboorte.plaats                      | 0000            |
   | ouders.geboorte.land                        | 0000            |
   | partners.geboorte.plaats                    | 0000            |
@@ -162,7 +162,6 @@ Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbe
     | geboorte       | land       | geboorteland (03.30)              | 0000   |
     | overlijden     | plaats     | plaats overlijden (08.20)         | 0000   |
     | overlijden     | land       | land overlijden (08.30)           | 0000   |
-    | verblijfstitel | aanduiding | aanduiding verblijfstitel (39.10) | 00     |
 
   Abstract Scenario: onbekend waarde voor: <element>
     Gegeven het systeem heeft een persoon met de volgende gegevens
@@ -249,12 +248,13 @@ Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbe
     | type                | RaadpleegMetBurgerservicenummer                                                        |
     | burgerservicenummer | 999992934                                                                              |
     | fields              | burgerservicenummer,<relatie field>.burgerservicenummer,<relatie field>.<groep>.<veld> |
-    Dan heeft de response een persoon met alleen de volgende gegevens
+    Dan heeft de response een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999992934 |
-    En heeft de persoon een '<relatie>' met alleen de volgende gegevens
+    En heeft de persoon een '<relatie>' met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999992935 |
+    En heeft de '<relatie>' een leeg '<groep>' object
 
     Voorbeelden:
     | relatie | relatie field | groep                       | veld   | element                                                             | waarde |

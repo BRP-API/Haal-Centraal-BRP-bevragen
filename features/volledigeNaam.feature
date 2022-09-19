@@ -50,9 +50,10 @@ Rule: de volledige naam wordt samengesteld door achter elkaar plaatsen van voorn
     | type                | RaadpleegMetBurgerservicenummer        |
     | burgerservicenummer | 999993288                              |
     | fields              | burgerservicenummer,naam.volledigeNaam |
-    Dan heeft de response een persoon met alleen de volgende gegevens
+    Dan heeft de response een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999993288 |
+    En heeft de persoon een leeg 'naam' object
 
 Rule: een predicaat wordt opgenomen voor de voornamen met de omschrijving horend bij de waarde in tabel 38 in de vorm die hoort bij het geslacht en geschreven in kleine letters
   - wanneer er geen vorm is die hoort bij het predicaat (geslacht "O"), wordt de omschrijving horend bij de waarde in tabel 38 gebruikt

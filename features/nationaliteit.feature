@@ -11,19 +11,21 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
 
     @gba
     Scenario: de persoon heeft één actuele nationaliteit
-      Gegeven de persoon met burgerservicenummer '000009830' heeft de volgende gegevens
-      | Stapel | Categorie | nationaliteit (05.10) | reden opnemen (63.10) | reden beëindigen (64.10) | bijzonder Nederlanderschap (65.10) | onjuist (84.10) | datum ingang geldigheid (85.10) |
-      | 1      | 4         | 0001                  | 001                   |                          |                                    |                 | 19750707                        |
+      Gegeven de persoon met burgerservicenummer '000009830' heeft een 'nationaliteit' met de volgende gegevens
+      | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
+      | 0001                  | 001                   | 19750707                        |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                              |
-      | type                | RaadpleegMetBurgerservicenummer     |
-      | burgerservicenummer | 000009830                           |
-      | fields              | burgerservicenummer,nationaliteiten |
-      Dan heeft de persoon met burgerservicenummer '000009830' een nationaliteit met de volgende gegevens
-      | naam                  | waarde   |
-      | nationaliteit         | 0001     |
-      | redenOpname           | 001      |
-      | datumIngangGeldigheid | 19750707 |
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000009830                       |
+      | fields              | nationaliteiten                 |
+      Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
+      | naam                              | waarde      |
+      | nationaliteit.code                | 0001        |
+      | redenOpname.code                  | 001         |
+      | datumIngangGeldigheid.type        | Datum       |
+      | datumIngangGeldigheid.datum       | 1975-07-07  |
+      | datumIngangGeldigheid.langFormaat | 7 juli 1975 |
 
     @gba
     Scenario: de persoon wordt behandeld als Nederlander

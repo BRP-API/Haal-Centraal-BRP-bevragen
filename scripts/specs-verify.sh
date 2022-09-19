@@ -6,6 +6,7 @@ cucumber-js -f html:docs/features/test-result.html \
             -f json:docs/features/test-result.json \
             features/dev/*.feature \
             features/aanhef.feature \
+            features/adres.feature \
             features/datum.feature \
             features/fields-fout-cases.feature \
             features/fields.feature \
@@ -20,6 +21,8 @@ cucumber-js -f html:docs/features/test-result.html \
             features/zoek-met-bsn.feature \
             features/zoek-met-geslachtsnaam-geboortedatum.feature \
             features/zoek-met-geslachtsnaam-voornamen-gemeentevaninschrijving.feature \
+            features/zoek-met-nummeraanduiding-identificatie.feature \
             features/zoek-met-postcode-huisnummer.feature \
+            features/zoek-met-straat-huisnummer-gemeentevaninschrijving.feature \
             features/zoek.feature \
             --tags "not @gba" --tags "not @skip-verify"

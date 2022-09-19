@@ -1,0 +1,61 @@
+version: '3.7'
+
+services:
+  seq:
+    container_name: seq
+    image: datalust/seq:latest
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - 5341:80
+  jaeger:
+    container_name: jaeger
+    image: jaegertracing/opentelemetry-all-in-one:latest
+    ports:
+      - 13133:13133
+      - 16686:16686
+      - 4317:55680
+
+  postgres:
+    container_name: db
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+    ports:
+      - 5432:5432
+    volumes:
+      - ./src/config/Database:/var/lib/postgresql/data
+  
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4:latest
+    restart: always
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@haalcentraal.nl
+      - PGADMIN_DEFAULT_PASSWORD=root
+    ports:
+      - 5433:80
+
+  brpproxy:
+    container_name: brpproxy
+    image: haalcentraal.azurecr.io/brpproxy:2.0.0
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Release
+      - ASPNETCORE_URLS=http://+:5000
+    ports:
+      - "5001:5000"
+    volumes:
+      - ./src/config/BrpProxy/configuration:/app/configuration
+      - ./src/config/BrpProxy/mapping:/app/mapping
+      - ./src/config/BrpProxy/appsettings/appsettings.json:/app/appsettings.json
+
+  haalcentraal_api:
+    image: haalcentraal.azurecr.io/gba-api:2.0.0
+    environment:
+      - Database__ConnectionString=database-connectionstring
+      - HaalcentraalApi__MaxSearchResults=10
+      - ASPNETCORE_URLS=http://+;
+    ports:
+      - "8000:80"

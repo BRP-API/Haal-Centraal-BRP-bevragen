@@ -20,10 +20,12 @@
     "preoas:resolve": "mvn-dl io.swagger.codegen.v3:swagger-codegen-cli:3.0.34 -f swagger-codegen-cli.jar",
     "oas:resolve": "bash scripts/resolve-oas.sh",
     "postoas:resolve": "rm swagger-codegen-cli.jar",
-    "unstage-generated": "git reset HEAD ./specificatie/genereervariant/openapi.* ./test/BRP-bevragen-postman-collection.json ./code/**",
-    "rollback-generated": "git checkout ./specificatie/genereervariant/openapi.* ./test/BRP-bevragen-postman-collection.json ./code/**",
+    "unstage-generated": "git reset HEAD ./specificatie/genereervariant/openapi.* ./specificatie/gba-genereervariant/openapi.* ./test/**",
+    "rollback-generated": "git checkout ./specificatie/genereervariant/openapi.* ./specificatie/gba-genereervariant/openapi.* ./test/**",
     "specs:report": "node scripts/generate-cucumber-report.js",
-    "specs:verify": "bash scripts/specs-verify.sh"
+    "specs:verify": "bash scripts/specs-verify.sh",
+    "pre-commit": "npm run oas:lint && npm run oas:resolve && npm run oas:lint-genereervariant && npm run unstage-generated",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -36,22 +38,17 @@
   },
   "homepage": "https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen#readme",
   "devDependencies": {
-    "@cucumber/cucumber": "^8.2.0",
+    "@cucumber/cucumber": "^8.5.1",
     "@openapitools/openapi-generator-cli": "^2.5.1",
-    "@stoplight/spectral-cli": "^6.3.0",
+    "@stoplight/spectral-cli": "^6.5.0",
     "axios": "^0.27.2",
     "chai": "^4.3.6",
     "cucumber-html-reporter": "^5.5.0",
-    "deep-equal-in-any-order": "^1.1.17",
-    "husky": "^4.3.8",
+    "deep-equal-in-any-order": "^2.0.0",
+    "husky": "^8.0.1",
     "mvn-dl": "^6.0.0",
-    "nswag": "^13.15.10",
-    "openapi-to-postmanv2": "^3.2.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run oas:lint && npm run oas:resolve && npm run oas:lint-genereervariant && npm run unstage-generated",
-      "post-commit": "npm run rollback-generated"
-    }
+    "nswag": "^13.16.1",
+    "openapi-to-postmanv2": "^4.2.0",
+    "pg": "^8.8.0"
   }
 }

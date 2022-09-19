@@ -54,6 +54,7 @@ Rule: Voorletters wordt samengesteld uit de eerste letter van de voornamen gesch
     | type                | RaadpleegMetBurgerservicenummer      |
     | burgerservicenummer | 999995078                            |
     | fields              | burgerservicenummer,naam.voorletters |
-    Dan heeft de response een persoon met alleen de volgende gegevens
+    Dan heeft de response een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 999995078 |
+    En heeft de persoon een leeg 'naam' object
