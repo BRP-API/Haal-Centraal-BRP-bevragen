@@ -78,24 +78,24 @@ Functionaliteit: Kinderen van een persoon raadplegen
 
     Scenario: kind volledig onbekend, veld met onbekend waarde wordt gevraagd met fields
       Gegeven de persoon met burgerservicenummer '000000036' heeft een 'kind' met de volgende gegevens
-      | geslachtsnaam (02.40) | 
-      | .                     |
+      | geslachtsnaam (02.40) | geboortedatum (03.10) | 
+      | .                     | 00000000              |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000036                       |
       | fields              | kinderen.naam                   |
-      Dan heeft de response een persoon met een 'kind' zonder gegevens
+      Dan heeft de response een persoon met een 'kind' zonder 'naam' gegevens
 
     Scenario: kind volledig onbekend, veld met onbekend waarde wordt niet gevraagd met fields
       Gegeven de persoon met burgerservicenummer '000000048' heeft een 'kind' met de volgende gegevens
-      | geboortedatum (03.10) | 
-      | 00000000              | 
+      | geslachtsnaam (02.40) | geboortedatum (03.10) | 
+      | .                     | 00000000              |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000048                       |
-      | fields              | kinderen.naam                   |
+      | fields              | kinderen.burgerservicenummer    |
       Dan heeft de response een persoon met een 'kind' zonder gegevens
 
     Scenario: ontkenning ouderschap
@@ -121,7 +121,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000073                       |
       | fields              | kinderen.burgerservicenummer    |
-      Dan heeft de response een persoon zonder 'kind' gegevens
+	  Dan heeft de response een persoon zonder 'kind' gegevens
 
   Rule: de geleverde kindgegevens zijn de gegevens zoals die staan op de persoonslijst van de gevraagde persoon
     Bij het raadplegen van een persoon worden alleen gegevens uit de persoonslijst van de gevraagde persoon gebruikt, en nooit gegevens van de persoonslijst van het kind
