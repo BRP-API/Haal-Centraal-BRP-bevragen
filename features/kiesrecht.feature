@@ -1,5 +1,6 @@
 # language: nl
 
+@post-assert
 Functionaliteit: Kiesrecht
 	Het kiesrecht wordt afgeleid uit gegevens in de registratie.
 	Voor Europees kiesrecht kan in de registratie zijn vastgelegd of een persoon een oproep krijgt dan wel is uitgesloten.
@@ -14,14 +15,14 @@ Rule: Aanduiding uitgesloten kiesrecht (38.10) wordt geleverd als boolean
 	@gba
 	Scenario: Aanduiding uitgesloten kiesrecht (38.10) "A" vertaald naar boolean true
 	  Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende 'kiesrecht' gegevens
-		| naam                                     | waarde |
-		| aanduiding uitgesloten kiesrecht (38.10) | A      |
-		Als de persoon op 15 maart 2022 wordt geraadpleegd met de volgende parameters
+		| aanduiding uitgesloten kiesrecht (38.10) |
+		| A                                        |
+		Als personen wordt gezocht met de volgende parameters
 		| naam                | waarde                          |
 		| type                | RaadpleegMetBurgerservicenummer |
 		| burgerservicenummer | 000000012                       |
 		| fields              | uitsluitingKiesrecht            |
-		Dan bevat de persoon met burgerservicenummer '000000012' de volgende 'uitsluitingKiesrecht' gegevens
+		Dan heeft de response een persoon met de volgende 'uitsluitingKiesrecht' gegevens
 		| naam                    | waarde |
 		| uitgeslotenVanKiesrecht | true   |
 
@@ -52,19 +53,19 @@ Rule: Uitsluiting van Europees kiesrecht wordt alleen opgenomen wanneer de eindd
 		| einddatumUitsluiting             | <einddatumUitsluiting>    |
 
 		Voorbeelden:
-		| omschrijving                       | Europees kiesrecht | einddatum uitsluiting | aanduiding.code | aanduiding.omschrijving | einddatumUitsluiting |
-		| niet opgegeven                     |                    |                       |                 |                         |                      |
-		| uitgesloten zonder einddatum       | 1                  |                       | 1               | persoon is uitgesloten  |                      |
-		| einddatum uitsluiting in toekomst  | 1                  | 20300101              | 1               | persoon is uitgesloten  | 20300101             |
-		| einddatum uitsluiting in verleden  | 1                  | 20220301              |                 |                         |                      |
-		| einddatum uitsluiting vandaag      | 1                  | 20220315              |                 |                         |                      |
-		| einddatum uitsluiting morgen       | 1                  | 20300316              | 1               | persoon is uitgesloten  | 20300316             |
-		| einddatum uitsluiting vorige maand | 1                  | 20220200              |                 |                         |                      |
-		| einddatum uitsluiting deze maand   | 1                  | 20220300              | 1               | persoon is uitgesloten  | 20220300             |
-		| einddatum uitsluiting vorig jaar   | 1                  | 20210000              |                 |                         |                      |
-		| einddatum uitsluiting dit jaar     | 1                  | 20220000              | 1               | persoon is uitgesloten  | 20220000             |
-		| einddatum uitsluiting onbekend     | 1                  | 00000000              | 1               | persoon is uitgesloten  | 00000000             |
-		| persoon ontvangt oproep            | 2                  |                       | 2               | persoon ontvangt oproep |                      |
+  | omschrijving                       | Europees kiesrecht | einddatum uitsluiting | aanduiding.code | aanduiding.omschrijving | einddatumUitsluiting |
+  | niet opgegeven                     |                    |                       |                 |                         |                      |
+  | uitgesloten zonder einddatum       | 1                  |                       | 1               | persoon is uitgesloten  |                      |
+  | einddatum uitsluiting in toekomst  | 1                  | 20300101              | 1               | persoon is uitgesloten  | 20300101             |
+  | einddatum uitsluiting in verleden  | 1                  | 20220301              |                 |                         |                      |
+  | einddatum uitsluiting vandaag      | 1                  | 20220315              |                 |                         |                      |
+  | einddatum uitsluiting morgen       | 1                  | 20300316              | 1               | persoon is uitgesloten  | 20300316             |
+  | einddatum uitsluiting vorige maand | 1                  | 20220200              |                 |                         |                      |
+  | einddatum uitsluiting deze maand   | 1                  | 20220300              | 1               | persoon is uitgesloten  | 20220300             |
+  | einddatum uitsluiting vorig jaar   | 1                  | 20210000              |                 |                         |                      |
+  | einddatum uitsluiting dit jaar     | 1                  | 20220000              | 1               | persoon is uitgesloten  | 20220000             |
+  | einddatum uitsluiting onbekend     | 1                  | 00000000              | 1               | persoon is uitgesloten  | 00000000             |
+  | persoon ontvangt oproep            | 2                  |                       | 2               | persoon ontvangt oproep |                      |
 
 @gba
 Rule: Uitsluiting van kiesrecht wordt alleen opgenomen wanneer de einddatum uitsluiting in de toekomst ligt
@@ -91,15 +92,15 @@ Rule: Uitsluiting van kiesrecht wordt alleen opgenomen wanneer de einddatum uits
 		| einddatum               | <einddatum>               |
 
 		Voorbeelden:
-		| omschrijving                       | uitsluiting kiesrecht | einddatum uitsluiting | uitgeslotenVanKiesrecht | einddatum  |
-		| niet opgegeven                     |                       |                       |                         |            |
-		| uitgesloten zonder einddatum       | A                     |                       | true                    |            |
-		| einddatum uitsluiting in toekomst  | A                     | 20300101              | true                    | 20300101   |
-		| einddatum uitsluiting in verleden  | A                     | 20220301              |                         |            |
-		| einddatum uitsluiting vandaag      | A                     | 20220315              |                         |            |
-		| einddatum uitsluiting morgen       | A                     | 20300316              | true                    | 20300316   |
-		| einddatum uitsluiting vorige maand | A                     | 20220200              |                         |            |
-		| einddatum uitsluiting deze maand   | A                     | 20220300              | true                    | 20220300   |
-		| einddatum uitsluiting vorig jaar   | A                     | 20210000              |                         |            |
-		| einddatum uitsluiting dit jaar     | A                     | 20220000              | true                    | 20220000   |
-		| einddatum uitsluiting onbekend     | A                     | 00000000              | true                    | 00000000   |
+  | omschrijving                       | uitsluiting kiesrecht | einddatum uitsluiting | uitgeslotenVanKiesrecht | einddatum |
+  | niet opgegeven                     |                       |                       |                         |           |
+  | uitgesloten zonder einddatum       | A                     |                       | true                    |           |
+  | einddatum uitsluiting in toekomst  | A                     | 20300101              | true                    | 20300101  |
+  | einddatum uitsluiting in verleden  | A                     | 20220301              |                         |           |
+  | einddatum uitsluiting vandaag      | A                     | 20220315              |                         |           |
+  | einddatum uitsluiting morgen       | A                     | 20300316              | true                    | 20300316  |
+  | einddatum uitsluiting vorige maand | A                     | 20220200              |                         |           |
+  | einddatum uitsluiting deze maand   | A                     | 20220300              | true                    | 20220300  |
+  | einddatum uitsluiting vorig jaar   | A                     | 20210000              |                         |           |
+  | einddatum uitsluiting dit jaar     | A                     | 20220000              | true                    | 20220000  |
+  | einddatum uitsluiting onbekend     | A                     | 00000000              | true                    | 00000000  |
