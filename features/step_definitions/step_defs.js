@@ -107,7 +107,8 @@ const tableNameMap = new Map([
     ['persoon', 'lo3_pl_persoon' ],
     ['nationaliteit', 'lo3_pl_nationaliteit'],
     ['kiesrecht', 'lo3_pl'],
-    ['verblijfstitel', 'lo3_pl_verblijfstitel']
+    ['verblijfstitel', 'lo3_pl_verblijfstitel'],
+    ['verblijfplaats', 'lo3_pl_verblijfplaats']
 ]);
 
 const columnNameMap = new Map([
