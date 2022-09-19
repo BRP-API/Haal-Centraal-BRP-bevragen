@@ -52,7 +52,7 @@ services:
       - ./src/config/BrpProxy/appsettings/appsettings.json:/app/appsettings.json
 
   haalcentraal_api:
-    image: haalcentraal.azurecr.io/gba-api:2.0.0
+    image: haalcentraal.azurecr.io/gba-api:2.0.1
     environment:
       - Database__ConnectionString=database-connectionstring
       - HaalcentraalApi__MaxSearchResults=10
