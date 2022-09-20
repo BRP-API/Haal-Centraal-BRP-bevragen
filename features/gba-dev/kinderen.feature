@@ -82,8 +82,10 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000036                       |
       | fields              | kinderen.naam                   |
-      Dan heeft de response een persoon met een 'kind' zonder 'naam' gegevens
-
+      Dan heeft de response een persoon met een 'kind' met de volgende 'naam' gegevens
+      | naam          | waarde |
+      | geslachtsnaam | .      |
+	  
     Scenario: kind volledig onbekend, veld met onbekend waarde wordt niet gevraagd met fields
       Gegeven de persoon met burgerservicenummer '000000048' heeft een 'kind' met de volgende gegevens
       | geslachtsnaam (02.40) | geboortedatum (03.10) | 
