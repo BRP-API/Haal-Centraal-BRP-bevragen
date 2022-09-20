@@ -3,7 +3,7 @@
 Functionaliteit: Verblijfstitel
 
   Achtergrond:
-    Gegeven landelijke tabel "Verblijfstitels" heeft de volgende waarden
+    Gegeven landelijke tabel "Verblijfstitel" heeft de volgende waarden
     | code | omschrijving                                                                   |
     |   00 | Onbekend                                                                       |
     |   37 | Vw 2000 art. 8, onder e, gemeenschapsonderdaan econ. niet-actief, arbeid spec. |
@@ -53,7 +53,7 @@ Functionaliteit: Verblijfstitel
       Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende 'verblijfstitel' gegevens
       | aanduiding verblijfstitel (39.10)   | datum einde verblijfstitel (39.20)  | datum ingang verblijfstitel (39.30) |
       | 37                                  | <datumEinde>                        | 20210315                            |
-      Als personen <vandaag> wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                             |
       | type                | RaadpleegMetBurgerservicenummer                    |
       | burgerservicenummer | 000000036                                          |
@@ -64,7 +64,7 @@ Functionaliteit: Verblijfstitel
 
       Voorbeelden:
       | titel                       | datumEinde |
-      | datum einde is vandaag      | <vandaag>  |
+      | datum einde is vandaag      | vandaag    |
       | datum einde in het verleden | 20220315   |
 
   Rule: een verblijfstitel met aanduiding 98 "geen verblijfstitel (meer)" wordt niet opgenomen
