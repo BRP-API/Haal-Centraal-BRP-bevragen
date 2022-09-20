@@ -2,10 +2,26 @@ class World {
     constructor(parameters) {
         this.context = parameters;
         this.context.dataPath = "src/config/BrpService";
-        this.context.serverUrl = "http://localhost:5000/haalcentraal/api/brp";
+        this.context.proxyUrl = "http://localhost:5001/haalcentraal/api/brp";
+        this.context.gbaUrl = "http://localhost:8000/haalcentraal/api/brp";
+        this.context.extraHeaders = [
+            { "naam": "Authorization", "waarde": "" }
+        ];
         this.context.persoon = {};
         this.context.zoekResponse = {
             personen: []
+        };
+        this.context.sql = {
+            useDb: true,
+            logStatements: true,
+            cleanup: true,
+            poolConfig: {
+                user: "root",
+                host: "localhost",
+                database: "rvig_haalcentraal_testdata",
+                password: "root",
+                port: 5432
+            }
         };
     }
 }

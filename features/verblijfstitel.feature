@@ -1,5 +1,6 @@
 # language: nl
 
+@post-assert
 Functionaliteit: Verblijfstitel
 
   @gba
@@ -8,16 +9,25 @@ Functionaliteit: Verblijfstitel
     - een verblijfstitel wordt NIET geleverd wanneer Datum einde verblijfstitel (39.20) vandaag is of een datum in het verleden heeft
 
     @gba
+    Scenario: verblijfstitel heeft geen datum einde
+      Gegeven de persoon met burgerservicenummer '555550001' heeft de volgende 'verblijfstitel' gegevens
+      | aanduiding verblijfstitel (39.10) | datum ingang verblijfstitel (39.30) |
+      | 37                                | 20210315                            |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 555550001                       |
+      | fields              | verblijfstitel.aanduiding.code  |
+      Dan heeft de response een persoon met alleen de volgende 'verblijfstitel' gegevens
+      | naam            | waarde |
+      | aanduiding.code | 37     |
+
+    @gba
     Abstract Scenario: verblijfstitel heeft <titel>
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550001 |
-      En de persoon heeft de volgende 'verblijfstitel' gegevens
-      | naam                                | waarde       |
-      | Aanduiding verblijfstitel (39.10)   | 37           |
-      | Datum einde verblijfstitel (39.20)  | <datumEinde> |
-      | Ingangsdatum verblijfstitel (39.30) | 20210315     |
-      Als personen op '5 juni 2022' wordt gezocht met de volgende parameters
+      Gegeven de persoon met burgerservicenummer '555550001' heeft de volgende 'verblijfstitel' gegevens
+      | aanduiding verblijfstitel (39.10) | datum einde verblijfstitel (39.20) | datum ingang verblijfstitel (39.30) |
+      | 37                                | <datumEinde>                       | 20210315                            |
+      Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550001                       |
@@ -27,10 +37,9 @@ Functionaliteit: Verblijfstitel
       | aanduiding.code | 37     |
 
       Voorbeelden:
-      | titel                       | datumEinde |
-      | geen datum einde            |            |
-      | datum einde in de toekomst  | 20350315   |
-      | datum einde is morgen       | 20220606   |
+      | titel                      | datumEinde |
+      | datum einde in de toekomst | 20350315   |
+      | datum einde is morgen      | 20220606   |
 
     @gba
     Abstract Scenario: verblijfstitel heeft <titel>
@@ -39,9 +48,9 @@ Functionaliteit: Verblijfstitel
       | burgerservicenummer | 555550002 |
       En de persoon heeft de volgende 'verblijfstitel' gegevens
       | naam                                | waarde       |
-      | Aanduiding verblijfstitel (39.10)   | 37           |
-      | Datum einde verblijfstitel (39.20)  | <datumEinde> |
-      | Ingangsdatum verblijfstitel (39.30) | 20210315     |
+      | aanduiding verblijfstitel (39.10)   | 37           |
+      | datum einde verblijfstitel (39.20)  | <datumEinde> |
+      | datum ingang verblijfstitel (39.30) | 20210315     |
       Als personen op '5 juni 2022' wordt gezocht met de volgende parameters
       | naam                | waarde                                             |
       | type                | RaadpleegMetBurgerservicenummer                    |
@@ -64,8 +73,8 @@ Functionaliteit: Verblijfstitel
       | burgerservicenummer | 555550003 |
       En de persoon heeft de volgende 'verblijfstitel' gegevens
       | naam                                | waarde   |
-      | Aanduiding verblijfstitel (39.10)   | 98       |
-      | Ingangsdatum verblijfstitel (39.30) | 20210315 |
+      | aanduiding verblijfstitel (39.10)   | 98       |
+      | datum ingang verblijfstitel (39.30) | 20210315 |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                        |
       | type                | RaadpleegMetBurgerservicenummer               |
@@ -83,10 +92,10 @@ Functionaliteit: Verblijfstitel
       | burgerservicenummer | 555550004 |
       En de persoon heeft de volgende 'verblijfstitel' gegevens
       | naam                                | waarde   |
-      | Aanduiding verblijfstitel (39.10)   | 00       |
+      | aanduiding verblijfstitel (39.10)   | 00       |
       | aanduiding.omschrijving             | Onbekend |
-      | Ingangsdatum verblijfstitel (39.30) | 20210714 |
-      Als personen op '5 juni 2022' wordt gezocht met de volgende parameters
+      | datum ingang verblijfstitel (39.30) | 20210714 |
+      Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550004                       |

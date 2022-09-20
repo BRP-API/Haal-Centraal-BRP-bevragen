@@ -42,3 +42,24 @@ De Gherkin scenario's worden opgenomen in de map /features. Voor elke functional
 Deze manier van specificeren maakt het mogelijk om te worden uitgevoerd als geautomatiseerde test van de API. Met deze opzet van de specificatie/test wordt [Behaviour Driven Development (BDD)](https://docs.cucumber.io/bdd) ondersteund.
 
 De features zijn op dit moment niet volledig uitvoerbaar als BDD test. Voor de [referentie-implementatie](https://github.com/lostlemon/haal-centraal-brp-bevragen) is een belangrijk deel van de features in een werkende test omgezet, maar de hier gepubliceerde features zijn dat niet.
+
+## Uitvoeren van scenario's in feature files als end to end tests
+
+Als prerequisite moeten de stappen die zijn beschreven in [docker-compose-e2e-readme](./docker-compose-e2e-readme.md) zijn uitgevoerd.
+
+Vervolgens moeten de volgende statements worden uitgevoerd:
+
+- `docker-compose -f docker-compose-e2e.yml up -d`
+- `npm install`
+
+### Uitvoeren van alle scenario's in een feature file
+
+Voorbeeld: `npx cucumber-js features/kinderen.feature`
+
+### Uitvoeren van één scenario in een feature file
+
+Scenario: geef de regelnummer op van de uit te voeren scenario. Voorbeeld:
+- `npx cucumber-js features/kinderen.feature:12`
+
+Abstract Scenario: geef de regelnummer van de uit te voeren voorbeeld. Voorbeeld:
+- `npx cucumber-js features/kinderen.feature:95`
