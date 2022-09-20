@@ -40,42 +40,19 @@ services:
 
   brpproxy:
     container_name: brpproxy
-    image: ${DOCKER_REGISTRY-}brpproxy
-    build:
-      context: .
-      dockerfile: src/BrpProxy/Dockerfile
+    image: haalcentraal.azurecr.io/brpproxy:2.0.0
     environment:
       - ASPNETCORE_ENVIRONMENT=Release
-      #- ASPNETCORE_URLS=https://+:5001;http://+:5000
       - ASPNETCORE_URLS=http://+:5000
     ports:
-      - "5000:5000"
-      #- "5001:5001"
+      - "5001:5000"
     volumes:
-      #- ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
-      #- ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ./src/config/BrpProxy/configuration:/app/configuration
       - ./src/config/BrpProxy/mapping:/app/mapping
+      - ./src/config/BrpProxy/appsettings/appsettings.json:/app/appsettings.json
 
-  brpservice:
-    container_name: gbastub
-    image: ${DOCKER_REGISTRY-}brpservice
-    build:
-      context: .
-      dockerfile: src/BrpService/Dockerfile
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Release
-      #- ASPNETCORE_URLS=https://+:5011;http://+:5010
-      - ASPNETCORE_URLS=http://+:5010
-    ports:
-      - "5010:5010"
-      #- "5011:5011"
-    volumes:
-      #- ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
-      #- ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
-      - ./src/config/BrpService:/app/Data
   haalcentraal_api:
-    image: haalcentraal.azurecr.io/gba-api:2.0.0
+    image: haalcentraal.azurecr.io/gba-api:2.0.1
     environment:
       - Database__ConnectionString=database-connectionstring
       - HaalcentraalApi__MaxSearchResults=10
