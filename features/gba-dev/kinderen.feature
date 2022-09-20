@@ -107,7 +107,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000061                       |
       | fields              | kinderen                        |
-      Dan heeft de response een persoon zonder 'kind' gegevens
+      Dan heeft de response een persoon zonder gegevens
 
     Scenario: met fields vragen om een gegeven zonder waarde
       Gegeven de persoon met burgerservicenummer '000000073' heeft een 'kind' met de volgende gegevens
@@ -118,7 +118,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000073                       |
       | fields              | kinderen.burgerservicenummer    |
-	  Dan heeft de response een persoon zonder 'kind' gegevens
+	  Dan heeft de response een persoon zonder gegevens
 
   Rule: de geleverde kindgegevens zijn de gegevens zoals die staan op de persoonslijst van de gevraagde persoon
     Bij het raadplegen van een persoon worden alleen gegevens uit de persoonslijst van de gevraagde persoon gebruikt, en nooit gegevens van de persoonslijst van het kind
