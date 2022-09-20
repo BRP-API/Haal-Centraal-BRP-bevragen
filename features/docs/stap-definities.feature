@@ -58,8 +58,26 @@ Functionaliteit: Stap definities
       | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,kiesrecht_uitgesl_aand) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | A               |
       | persoon      | INSERT INTO public.lo3_pl_persoon(stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4)                                              | 0,0,P,000000012 |
 
-    Scenario: Persoon heeft 'verblijfstitel' gegevens
+  Rule: En de/het '<naam-pl-tabel>' is gewijzigd naar de volgende gegevens
+
+    Scenario: Persoon heeft gewijzigde 'verblijfstitel' gegevens
       Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende 'verblijfstitel' gegevens
+      | aanduiding verblijfstitel (39.10) |
+      | 37                                |
+      En de 'verblijfstitel' is gewijzigd naar de volgende gegevens
+      | aanduiding verblijfstitel (39.10) |
+      | 38                                |
+      Dan zijn de gegenereerde SQL statements
+      | key            | text                                                                                                                                     | values          |
+      | inschrijving   | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0               |
+      | persoon        | INSERT INTO public.lo3_pl_persoon(stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4)                                  | 0,0,P,000000012 |
+      | verblijfstitel | INSERT INTO public.lo3_pl_verblijfstitel(volg_nr,verblijfstitel_aand) VALUES($1,$2)                                                      | 1,37            |
+      |                | INSERT INTO public.lo3_pl_verblijfstitel(volg_nr,verblijfstitel_aand) VALUES($1,$2)                                                      | 0,38            |
+
+  Rule: Gegeven de persoon met burgerservicenummer '<bsn>' heeft een 'verblijfstitel' verkregen met de volgende gegevens
+
+    Scenario: Persoon heeft 'verblijfstitel' gegevens
+      Gegeven de persoon met burgerservicenummer '000000012' heeft een 'verblijfstitel' verkregen met de volgende gegevens
       | aanduiding verblijfstitel (39.10) |
       | 37                                |
       Dan zijn de gegenereerde SQL statements
@@ -68,13 +86,13 @@ Functionaliteit: Stap definities
       | persoon        | INSERT INTO public.lo3_pl_persoon(stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4)                                  | 0,0,P,000000012 |
       | verblijfstitel | INSERT INTO public.lo3_pl_verblijfstitel(volg_nr,verblijfstitel_aand) VALUES($1,$2)                                                      | 0,37            |
 
-  Rule: En de/het '<naam-pl-tabel>' is gewijzigd naar de volgende gegevens
+  Rule: En de persoon heeft een 'verblijfstitel' verkregen met de volgende gegevens
 
-    Scenario: Persoon heeft gewijzigde 'verblijfstitel' gegevens
-      Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende 'verblijfstitel' gegevens
+    Scenario: Persoon heeft meerdere 'verblijfstitel' gegevens
+      Gegeven de persoon met burgerservicenummer '000000012' heeft een 'verblijfstitel' verkregen met de volgende gegevens
       | aanduiding verblijfstitel (39.10) |
       | 37                                |
-      En de 'verblijfstitel' is gewijzigd naar de volgende gegevens
+      En de persoon heeft een 'verblijfstitel' verkregen met de volgende gegevens
       | aanduiding verblijfstitel (39.10) |
       | 38                                |
       Dan zijn de gegenereerde SQL statements
