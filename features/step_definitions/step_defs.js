@@ -154,7 +154,7 @@ const columnNameMap = new Map([
 	
     ['ingangsdatum geldigheid (85.10)', 'geldigheid_start_datum' ],
 	
-    ['datum van opneming (86.10)', 'opneming_datum' ]
+    ['datum van opneming (86.10)', 'opneming_datum' ],
 
     ['gemeente document (82.10)', 'doc_gemeente_code' ],
     ['datum document (82.20)', 'doc_datum' ],
