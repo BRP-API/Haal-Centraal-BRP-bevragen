@@ -105,6 +105,9 @@ const propertyNameMap = new Map([
 const tableNameMap = new Map([
     ['inschrijving', 'lo3_pl'],
     ['persoon', 'lo3_pl_persoon' ],
+    ['kind', 'lo3_pl_persoon' ],
+    ['partner', 'lo3_pl_persoon' ],
+    ['ouder', 'lo3_pl_persoon'],
     ['nationaliteit', 'lo3_pl_nationaliteit'],
     ['kiesrecht', 'lo3_pl'],
     ['verblijfstitel', 'lo3_pl_verblijfstitel'],
@@ -165,11 +168,9 @@ After(async function() {
     if(pool !== undefined && this.context.sql.cleanup) {
         const client = await pool.connect();
         try {
-            await client.query(createDeleteStatement('inschrijving', this.context.pl_id));
-            await client.query(createDeleteStatement('persoon', this.context.pl_id));
-            await client.query(createDeleteStatement('nationaliteit', this.context.pl_id));
-            await client.query(createDeleteStatement('verblijfstitel', this.context.pl_id));
-            await client.query(createDeleteStatement('verblijfplaats', this.context.pl_id));
+            for(const [key] of tableNameMap){
+                await client.query(createDeleteStatement(key, this.context.pl_id));
+            }
         }
         finally {
             client.release();
@@ -202,8 +203,12 @@ function insertIntoPersoonlijstStatement(data) {
 }
 
 function insertIntoStatement(tabelNaam, data) {
+    let tableName = tableNameMap.get(tabelNaam);
+    if(tableName === undefined) {
+        tableName = tabelNaam;
+    }
     let statement = {
-        text: `INSERT INTO public.${tableNameMap.get(tabelNaam)}(`,
+        text: `INSERT INTO public.${tableName}(`,
         values: []
     };
 
@@ -221,66 +226,6 @@ function insertIntoStatement(tabelNaam, data) {
             : `,$${index+1}`;
     });
     statement.text += ')';
-
-    if(logSqlStatements) {
-        console.log(statement);
-    }
-    return statement;
-}
-
-function setPersoonOnjuistStatement(plId, persoonType, stapelNr) {
-    const statement = {
-        text: 'UPDATE public.lo3_pl_persoon SET onjuist_ind=$1 WHERE pl_id=$2 AND persoon_type=$3 AND stapel_nr=$4 AND volg_nr=$5',
-        values: [ 'O', plId, persoonType, stapelNr, 0]
-    }
-
-    if(logSqlStatements) {
-        console.log(statement);
-    }
-    return statement;
-}
-
-function selectPersoonMaxVolgnrStatement(plId, persoonType, stapelNr) {
-    const statement = {
-        text: 'SELECT MAX(volg_nr) as max_volg_nr FROM public.lo3_pl_persoon WHERE pl_id=$1 AND persoon_type=$2 AND stapel_nr=$3',
-        values: [ plId, persoonType, stapelNr ]
-    }
-
-    if(logSqlStatements) {
-        console.log(statement);
-    }
-    return statement;
-}
-
-function incrementPersoonVolgnrStatement(plId, persoonType, stapelNr, volgNr) {
-    const statement = {
-        text: 'UPDATE public.lo3_pl_persoon SET volg_nr=volg_nr+1 WHERE pl_id=$1 AND persoon_type=$2 AND stapel_nr=$3 AND volg_nr=$4',
-        values: [ plId, persoonType, stapelNr, volgNr ]
-    }
-
-    if(logSqlStatements) {
-        console.log(statement);
-    }
-    return statement;
-}
-
-function selectNationaliteitMaxVolgnrStatement(plId, stapelNr) {
-    const statement = {
-        text: 'SELECT MAX(volg_nr) as max_volg_nr FROM public.lo3_pl_nationaliteit WHERE pl_id=$1 AND stapel_nr=$2',
-        values: [ plId, stapelNr ]
-    }
-
-    if(logSqlStatements) {
-        console.log(statement);
-    }
-    return statement;
-}
-
-function incrementNationaliteitVolgnrStatement(plId, stapelNr, volgNr) {
-    const statement = {
-        text: 'UPDATE public.lo3_pl_nationaliteit SET volg_nr=volg_nr+1 WHERE pl_id=$1 AND stapel_nr=$2 AND volg_nr=$3',
-        values: [ plId, stapelNr, volgNr ]
-    }
 
     if(logSqlStatements) {
         console.log(statement);
@@ -310,6 +255,25 @@ function fromHash(hash) {
     return retval;
 }
 
+function createArrayFrom(dataTable) {
+    let retval = [];
+
+    if(dataTable.raw()[0][0] === "naam") {
+        dataTable.hashes().forEach(function(row) {
+            const propertyName = columnNameMap.get(row.naam);
+    
+            if(row.waarde !== undefined && row.waarde !== '') {
+                retval.push([ propertyName, calculatePropertyValue(row.waarde, false)]);
+            }
+        });
+    }
+    else {
+        retval = fromHash(dataTable.hashes()[0]);
+    }
+
+    return retval;
+}
+
 function createPersoonlijstData(gegevensgroep, dataTable, geheim=0) {
     let data = [
         [ 'geheim_ind', geheim ]
@@ -322,51 +286,6 @@ function createPersoonlijstData(gegevensgroep, dataTable, geheim=0) {
     return data;
 }
 
-function createPersoonData(plId, bsn) {
-    return [
-        [ 'pl_id', plId ],
-        [ 'persoon_type', 'P'],
-        [ 'stapel_nr', 0 ],
-        [ 'volg_nr', 0],
-        [ 'burger_service_nr', bsn ]
-    ];
-}
-
-function createKindData(plId, dataTable, stapelNr=0) {
-    return [
-        [ 'pl_id', plId ],
-        [ 'persoon_type', 'K'],
-        [ 'stapel_nr', stapelNr ],
-        [ 'volg_nr', 0]
-    ].concat(fromHash(dataTable.hashes()[0]));
-}
-
-function createOuderData(plId, ouderType, dataTable) {
-    return [
-        [ 'pl_id', plId ],
-        [ 'persoon_type', ouderType],
-        [ 'stapel_nr', 0 ],
-        [ 'volg_nr', 0]
-    ].concat(fromHash(dataTable.hashes()[0]));
-}
-
-function createPartnerData(plId, dataTable, stapelNr=0) {
-    return [
-        [ 'pl_id', plId ],
-        [ 'persoon_type', 'R'],
-        [ 'stapel_nr', stapelNr ],
-        [ 'volg_nr', 0]
-    ].concat(fromHash(dataTable.hashes()[0]));
-}
-
-function createCollectieGegevensgroepData(plId, dataTable) {
-    return [
-        [ 'pl_id', plId ],
-        [ 'stapel_nr', 0 ],
-        [ 'volg_nr', 0]
-    ].concat(fromHash(dataTable.hashes()[0]));
-}
-
 function createGegevensgroepData(plId, dataTable) {
     return [
         [ 'pl_id', plId ],
@@ -374,9 +293,132 @@ function createGegevensgroepData(plId, dataTable) {
     ].concat(fromHash(dataTable.hashes()[0]));
 }
 
+function createCollectieDataFromArray(relatie, data, stapelNr=0) {
+    let persoon_type;
+    switch(relatie) {
+        case 'persoon':
+            persoon_type = 'P';
+            break;
+        case 'kind':
+            persoon_type = 'K';
+            break;
+        case 'partner':
+            persoon_type = 'R';
+            break;
+        case '1':
+            persoon_type = '1';
+            break;
+        case '2':
+            persoon_type = '2';
+            break;
+        default:
+            break;
+    }
+    return persoon_type !== undefined
+        ? [
+            [ 'stapel_nr', stapelNr+''],
+            [ 'volg_nr', '0'],
+            [ 'persoon_type', persoon_type]
+          ].concat(data)
+        : [
+            [ 'stapel_nr', stapelNr+''],
+            [ 'volg_nr', '0']
+          ].concat(data);
+}
+
+function createDataFromArray(data) {
+    return [
+        [ 'volg_nr', '0']
+    ].concat(data);
+}
+
+function getNextStapelNr(sqlData, relatie) {
+    let stapelNr = 0;
+
+    Object.keys(sqlData).forEach(function(key) {
+        if(key.startsWith(relatie)){
+            stapelNr = Number(key.replace(`${relatie}-`, ""));
+        }
+    });
+
+    return stapelNr;
+}
+
 Given(/^landelijke tabel "([\w\-]*)" heeft de volgende waarden$/, function (_tabelNaam, _dataTable) {       
     // doe nog niets
 });
+
+Given(/^(?:de|een) persoon met burgerservicenummer '(\d*)' heeft de volgende gegevens$/, function (burgerservicenummer, dataTable) {
+    this.context.sqlData = {};
+
+    this.context.sqlData["inschrijving"] = [[[ 'geheim_ind', '0' ]]];
+    this.context.sqlData["persoon"] = [
+        createCollectieDataFromArray("persoon", [
+            ['burger_service_nr', burgerservicenummer]
+        ]).concat(createArrayFrom(dataTable))
+    ];
+});
+
+Then(/^zijn de gegenereerde SQL statements$/, function(dataTable) {
+    const sqlData = this.context.sqlData;
+
+    let expected = {};
+    let lastKey;
+    dataTable.hashes().forEach(function(hash) {
+        if(hash.key !== '') {
+            expected[hash.key] = [ hash ];
+            lastKey = hash.key;
+        }
+        else {
+            expected[lastKey].push(hash);
+        }
+    });
+
+    Object.keys(expected).forEach(function(key) {
+        const sqlDataItems = sqlData[key];
+        should.exist(sqlDataItems, `geen data gevonden voor '${key}' om SQL statements te genereren`);
+
+        expected[key].forEach(function(exp, index) {
+            let actual = sqlDataItems[index];
+
+            const name = key.replace(/-\d$/, "");
+            const statement = key === 'inschrijving'
+                ? insertIntoPersoonlijstStatement(actual)
+                : insertIntoStatement(name, actual);
+
+            statement.text.should.equal(exp.text);
+            statement.values.should.deep.equalInAnyOrder(exp.values.split(','));
+        });
+    });
+});
+
+async function executeSqlStatements(sqlData) {
+    let plId = undefined;
+    if(pool !== undefined) {
+        const client = await pool.connect();
+        try {
+            const res = await client.query(insertIntoPersoonlijstStatement(sqlData['inschrijving'][0]));
+            plId = res.rows[0]["pl_id"];
+
+            for(const key of Object.keys(sqlData)) {
+                if(key === 'inschrijving') {
+                    continue;
+                }
+                for(const rowData of sqlData[key]) {
+                    const data = [
+                        ['pl_id', plId]
+                    ].concat(rowData);
+                    const name = key.replace(/-\d$/, "");
+                    await client.query(insertIntoStatement(name, data));
+                }
+            }
+        }
+        finally {
+            client.release();
+        }
+    }
+    return plId;
+}
 
 Given(/^een persoon heeft de volgende '(\w*)' gegevens$/, async function (gegevensgroep, dataTable) {
     if(pool !== undefined) {
@@ -439,215 +481,160 @@ Given(/^de persoon heeft de volgende '(\w*)' gegevens$/, async function (gegeven
 });
 
 Given(/^de persoon met burgerservicenummer '(\d*)' heeft de volgende '(\w*)' gegevens$/, async function(burgerservicenummer, gegevensgroep, dataTable) {
-    if(pool !== undefined) {
-        const client = await pool.connect();
-        try {
-            let data = createPersoonlijstData(gegevensgroep, dataTable);
-            let res = await client.query(insertIntoPersoonlijstStatement(data));
-            this.context.pl_id = res.rows[0]["pl_id"];
+    this.context.sqlData = {};
 
-            data = createPersoonData(this.context.pl_id, burgerservicenummer);
-            await client.query(insertIntoStatement('persoon', data));
-
-            if(gegevensgroep !== 'kiesrecht') {
-                data = createGegevensgroepData(this.context.pl_id, dataTable);
-                await client.query(insertIntoStatement(gegevensgroep, data));
-            }
-        }
-        finally {
-            client.release();
-        }
+    this.context.sqlData["persoon"] = [
+        createCollectieDataFromArray("persoon", [
+            ['burger_service_nr', burgerservicenummer]
+        ])
+    ];
+    if(gegevensgroep !== 'inschrijving') {
+        this.context.sqlData["inschrijving"] = [[[ 'geheim_ind', '0' ]]];
+        this.context.sqlData[gegevensgroep] = [
+            [
+                [ 'volg_nr', '0']
+            ].concat(createArrayFrom(dataTable)) ];
+    }
+    else {
+        this.context.sqlData[gegevensgroep] = [ createArrayFrom(dataTable) ];
     }
 });
 
 Given(/^de persoon met burgerservicenummer '(\d*)' heeft een '(\w*)' met de volgende gegevens$/, async function (burgerservicenummer, collectieGegevensgroep, dataTable) {
-    if(pool !== undefined) {
-        const client = await pool.connect();
-        try {
-            let data = createPersoonlijstData(undefined, dataTable);
-            let res = await client.query(insertIntoPersoonlijstStatement(data));
-            this.context.pl_id = res.rows[0]["pl_id"];
+    this.context.sqlData = {};
 
-            data = createPersoonData(this.context.pl_id, burgerservicenummer);
-            await client.query(insertIntoStatement('persoon', data));
-
-            this.context[`${collectieGegevensgroep}-stapelnr`] = 0;
-
-            if(collectieGegevensgroep === 'kind') {
-                data = createKindData(this.context.pl_id, dataTable);
-                await client.query(insertIntoStatement('persoon', data));
-            }
-            else if(collectieGegevensgroep === 'partner') {
-                data = createPartnerData(this.context.pl_id, dataTable);
-                await client.query(insertIntoStatement('persoon', data));
-            }
-            else {
-                data = createCollectieGegevensgroepData(this.context.pl_id, dataTable);
-                await client.query(insertIntoStatement(collectieGegevensgroep, data));
-            }
-        }
-        finally {
-            client.release();
-        }
-    }
+    this.context.sqlData["inschrijving"] = [[[ 'geheim_ind', '0' ]]];
+    this.context.sqlData["persoon"] = [
+        createCollectieDataFromArray("persoon", [
+            ['burger_service_nr', burgerservicenummer]
+        ])
+    ];
+    this.context.sqlData[`${collectieGegevensgroep}-1`] = [
+        createCollectieDataFromArray(collectieGegevensgroep, createArrayFrom(dataTable))
+    ];
 });
 
 async function createPersoonMetOuder(burgerservicenummer, ouderType, dataTable) {
-    if(pool !== undefined) {
-        const client = await pool.connect();
-        try {
-            let data = createPersoonlijstData(undefined, dataTable);
-            let res = await client.query(insertIntoPersoonlijstStatement(data));
-            this.context.pl_id = res.rows[0]["pl_id"];
+    this.context.sqlData = {};
 
-            data = createPersoonData(this.context.pl_id, burgerservicenummer);
-            await client.query(insertIntoStatement('persoon', data));
-
-            data = createOuderData(this.context.pl_id, ouderType, dataTable);
-            await client.query(insertIntoStatement('persoon', data));
-        }
-        finally {
-            client.release();
-        }
-    }
+    this.context.sqlData["inschrijving"] = [[[ 'geheim_ind', '0' ]]];
+    this.context.sqlData["persoon"] = [
+        createCollectieDataFromArray("persoon", [
+            ['burger_service_nr', burgerservicenummer]
+        ])
+    ];
+    this.context.sqlData[`ouder-${ouderType}`] = [
+        createCollectieDataFromArray(ouderType, createArrayFrom(dataTable))
+    ];
 }
 
 async function createOuder(ouderType, dataTable) {
-    if(pool !== undefined) {
-        const client = await pool.connect();
-        try {
-            const data = createOuderData(this.context.pl_id, ouderType, dataTable);
-            await client.query(insertIntoStatement('persoon', data));
-        }
-        finally {
-            client.release();
-        }
-    }
+    this.context.sqlData[`ouder-${ouderType}`] = [
+        createCollectieDataFromArray(ouderType, createArrayFrom(dataTable))
+    ];
 }
 
 async function corrigeerOuder(ouderType, dataTable) {
-    if(pool !== undefined) {
-        const client = await pool.connect();
-        try {
-            await client.query(setPersoonOnjuistStatement(this.context.pl_id, ouderType, 0));
-         
-            let res = await client.query(selectPersoonMaxVolgnrStatement(this.context.pl_id, ouderType, 0));
-            const maxVolgnr = res.rows[0]['max_volg_nr'];
-            for(let volgnr = maxVolgnr; volgnr>=0; volgnr--) {
-                await client.query(incrementPersoonVolgnrStatement(this.context.pl_id, ouderType, 0, volgnr));
-            }
+    this.context.sqlData[`ouder-${ouderType}`].forEach(function(data) {
+        let volgNr = data.find(el => el[0] === 'volg_nr');
+        if(volgNr[1] === '0') {
+            data.push(['onjuist_ind','O']);
+        }
+        volgNr[1] = Number(volgNr[1]) + 1 + '';
+    });
+    this.context.sqlData[`ouder-${ouderType}`].push(createCollectieDataFromArray(ouderType, createArrayFrom(dataTable)));
+}
 
-            let data = createOuderData(this.context.pl_id, ouderType, dataTable);
-            await client.query(insertIntoStatement('persoon', data));
-        }
-        finally {
-            client.release();
-        }
-    }
+function wijzigOuder(ouderType, dataTable) {
+    this.context.sqlData[`ouder-${ouderType}`].forEach(function(data) {
+        let volgNr = data.find(el => el[0] === 'volg_nr');
+        volgNr[1] = Number(volgNr[1]) + 1 + '';
+    });
+    this.context.sqlData[`ouder-${ouderType}`].push(createCollectieDataFromArray(ouderType, createArrayFrom(dataTable)));
 }
 
 Given(/^de persoon met burgerservicenummer '(\d*)' heeft een ouder '(\d{1})' met de volgende gegevens$/, createPersoonMetOuder);
 
 Given(/^de persoon heeft een ouder '(\d{1})' met de volgende gegevens$/, createOuder);
 
+Given(/^de ouder '(\d{1})' is gewijzigd naar de volgende gegevens$/, wijzigOuder);
+
 Given(/^de ouder '(\d{1})' is gecorrigeerd naar de volgende gegevens$/, corrigeerOuder);
 
+Given(/^de persoon is gecorrigeerd naar de volgende gegevens$/, function (dataTable) {
+    this.context.sqlData['persoon'].forEach(function(data) {
+        let volgNr = data.find(el => el[0] === 'volg_nr');
+        if(volgNr[1] === '0') {
+            data.push(['onjuist_ind','O']);
+        }
+        volgNr[1] = Number(volgNr[1]) + 1 + '';
+    });
+    this.context.sqlData['persoon'].push(createCollectieDataFromArray('persoon', createArrayFrom(dataTable)));
+});
+
 Given(/^(?:de|het) '(.*)' is gecorrigeerd naar de volgende gegevens$/, async function (relatie, dataTable) {
-    if(pool !== undefined) {
-        const client = await pool.connect();
-        try {
-            const persoonType = relatie === 'kind' ? 'K' : 'P';
-
-            await client.query(setPersoonOnjuistStatement(this.context.pl_id, persoonType, this.context[`${relatie}-stapelnr`]));
-
-            let res = await client.query(selectPersoonMaxVolgnrStatement(this.context.pl_id, persoonType, this.context[`${relatie}-stapelnr`]));
-            const maxVolgnr = res.rows[0]['max_volg_nr'];
-            for(let volgnr = maxVolgnr; volgnr>=0; volgnr--) {
-                await client.query(incrementPersoonVolgnrStatement(this.context.pl_id, persoonType, this.context[`${relatie}-stapelnr`], volgnr));
-            }
-
-            let data;
-            if(relatie === 'kind') {
-                data = createKindData(this.context.pl_id, dataTable, this.context[`${relatie}-stapelnr`]);
-            }
-            else if(relatie === 'partner') {
-                data = createPartnerData(this.context.pl_id, dataTable, this.context[`${relatie}-stapelnr`]);
-            }
-            await client.query(insertIntoStatement('persoon', data));
+    let foundRelatie;
+    Object.keys(this.context.sqlData).forEach(function(key) {
+        if(key.startsWith(relatie)) {
+            foundRelatie = key;
         }
-        finally {
-            client.release();
+    });
+
+    const stapelNr = this.context.sqlData[foundRelatie][0].find(el => el[0] === 'stapel_nr');
+    this.context.sqlData[foundRelatie].forEach(function(data) {
+        let volgNr = data.find(el => el[0] === 'volg_nr');
+        if(volgNr[1] === '0') {
+            data.push(['onjuist_ind','O']);
         }
-    }
+        volgNr[1] = Number(volgNr[1]) + 1 + '';
+    });
+    this.context.sqlData[foundRelatie].push(createCollectieDataFromArray(relatie, createArrayFrom(dataTable), stapelNr[1]));
+});
+
+Given(/^de persoon is gewijzigd naar de volgende gegevens$/, function (dataTable) {
+    this.context.sqlData['persoon'].forEach(function(data) {
+        let volgNr = data.find(el => el[0] === 'volg_nr');
+        volgNr[1] = Number(volgNr[1]) + 1 + '';
+    });
+    this.context.sqlData['persoon'].push(createCollectieDataFromArray('persoon', createArrayFrom(dataTable)));
 });
 
 Given(/^(?:de|het) '(.*)' is gewijzigd naar de volgende gegevens$/, async function (relatie, dataTable) {
-    if(pool !== undefined) {
-        const client = await pool.connect();
-        try {
-            if(relatie === 'nationaliteit') {
-                let res = await client.query(selectNationaliteitMaxVolgnrStatement(this.context.pl_id, this.context[`${relatie}-stapelnr`]));
-                const maxVolgnr = res.rows[0]['max_volg_nr'];
-                for(let volgnr = maxVolgnr; volgnr>=0; volgnr--) {
-                    await client.query(incrementNationaliteitVolgnrStatement(this.context.pl_id, this.context[`${relatie}-stapelnr`], volgnr));
-                }
-
-                const data = createCollectieGegevensgroepData(this.context.pl_id, dataTable);
-                await client.query(insertIntoStatement(relatie, data));
-            }
-            else {
-                const persoonType = relatie === 'kind' ? 'K' : 'P';
-
-                let res = await client.query(selectPersoonMaxVolgnrStatement(this.context.pl_id, persoonType, this.context[`${relatie}-stapelnr`]));
-                const maxVolgnr = res.rows[0]['max_volg_nr'];
-                for(let volgnr = maxVolgnr; volgnr>=0; volgnr--) {
-                    await client.query(incrementPersoonVolgnrStatement(this.context.pl_id, persoonType, this.context[`${relatie}-stapelnr`], volgnr));
-                }
-
-                let data;
-                if(relatie === 'kind') {
-                    data = createKindData(this.context.pl_id, dataTable);
-                }
-                else if(relatie === 'partner') {
-                    data = createPartnerData(this.context.pl_id, dataTable);
-                }
-                await client.query(insertIntoStatement('persoon', data));
-            }
+    let foundRelatie;
+    Object.keys(this.context.sqlData).find(function(key) {
+        if(key.startsWith(relatie)) {
+            foundRelatie = key;
         }
-        finally {
-            client.release();
-        }
+    });
+
+    const stapelNr = this.context.sqlData[foundRelatie][0].find(el => el[0] === 'stapel_nr');
+    this.context.sqlData[foundRelatie].forEach(function(data) {
+        let volgNr = data.find(el => el[0] === 'volg_nr');
+        volgNr[1] = Number(volgNr[1]) + 1 + '';
+    });
+    if(stapelNr !== undefined) {
+        this.context.sqlData[foundRelatie].push(createCollectieDataFromArray(relatie, createArrayFrom(dataTable), stapelNr[1]));
+    }
+    else {
+        this.context.sqlData[foundRelatie].push(createDataFromArray(createArrayFrom(dataTable)));
     }
 });
 
 Given(/^de persoon heeft ?(?:nog)? een '?(?:ex-)?(\w*)' met ?(?:alleen)? de volgende gegevens$/, async function (relatie, dataTable) {
-    if(pool !== undefined) {
-        const client = await pool.connect();
-        try {
-            this.context[`${relatie}-stapelnr`] += 1;
+    const stapelNr = getNextStapelNr(this.context.sqlData, relatie);
+    this.context.sqlData[`${relatie}-${stapelNr+1}`] = [
+        createCollectieDataFromArray(relatie, createArrayFrom(dataTable), stapelNr)
+    ];
 
-            if(relatie === 'kind') {
-                const data = createKindData(this.context.pl_id, dataTable, this.context[`${relatie}-stapelnr`]);
-                await client.query(insertIntoStatement('persoon', data));
-            }
-        }
-        finally {
-            client.release();
-        }
-    }
-    else {
-        let relatieCollectie = toCollectionName(relatie);
+    let relatieCollectie = toCollectionName(relatie);
 
-        if(this.context.persoon[relatieCollectie] === undefined) {
-            this.context.persoon[relatieCollectie] = [];
-        }
-        if(this.context[relatie] !== undefined) {
-            this.context.persoon[relatieCollectie].push(this.context[relatie]);
-        }
-        this.context[relatie] = createObjectFrom(dataTable);
-    
-        this.context.attach(`${relatie}: ${JSON.stringify(this.context[relatie], null, '  ')}`);
+    if(this.context.persoon[relatieCollectie] === undefined) {
+        this.context.persoon[relatieCollectie] = [];
     }
+    if(this.context[relatie] !== undefined) {
+        this.context.persoon[relatieCollectie].push(this.context[relatie]);
+    }
+    this.context[relatie] = createObjectFrom(dataTable);
 });
 
 function createObjectFrom(dataTable, dateAsDate = false) {
@@ -781,7 +768,10 @@ Before({tags: '@post-assert'}, async function() {
 });
 
 After({tags: '@post-assert'}, async function() {
-    console.log(JSON.stringify(this.context.expected, null, "\t"));
+    if(this.context.response === undefined) {
+        return;
+    }
+
     const actual = this.context.response.data.personen !== undefined
         ? stringifyValues(this.context.response.data.personen)
         : stringifyValues(this.context.response.data);
@@ -800,6 +790,10 @@ After({tags: '@post-assert'}, async function() {
 });
 
 After(async function() {
+    if(this.context.response === undefined) {
+        return;
+    }
+
     const headers = this.context.response.headers;
 
     const header = headers["api-version"];
@@ -816,6 +810,10 @@ After({tags: '@fout-case'}, async function() {
 });
 
 After({tags: 'not @fout-case'}, async function() {
+    if(this.context.response === undefined) {
+        return;
+    }
+
     const headers = this.context.response.headers;
 
     const header = headers["content-type"];
@@ -978,6 +976,8 @@ function createHeaders(dataTable, extraHeaders) {
 }
 
 When(/^personen wordt gezocht met de volgende parameters$/, async function (dataTable) {
+    this.context.pl_id = await executeSqlStatements(this.context.sqlData);
+
     const config = {
         method: 'post',
         url: '/personen',
