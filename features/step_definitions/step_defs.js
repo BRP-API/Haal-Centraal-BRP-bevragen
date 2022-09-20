@@ -18,7 +18,7 @@ const propertyNameMap = new Map([
     ['indicatie geheim (70.10)', 'geheimhoudingPersoonsgegevens'],
     ['datum eerste inschrijving GBA (68.10)', 'datumEersteInschrijvingGBA'],
     ['RNI-deelnemer (88.10)', 'rni_deelnemer'],
-    ['Omschrijving verdrag (88.20)', 'verdrag_oms']
+    ['Omschrijving verdrag (88.20)', 'verdrag_oms'],
 
     // Geboorte
     ['geboortedatum (03.10)', 'datum'],
@@ -109,7 +109,8 @@ const tableNameMap = new Map([
     ['persoon', 'lo3_pl_persoon' ],
     ['nationaliteit', 'lo3_pl_nationaliteit'],
     ['kiesrecht', 'lo3_pl'],
-    ['verblijfstitel', 'lo3_pl_verblijfstitel']
+    ['verblijfstitel', 'lo3_pl_verblijfstitel'],
+    ['verblijfplaats','lo3_pl_verblijfplaats']
 ]);
 
 const columnNameMap = new Map([
