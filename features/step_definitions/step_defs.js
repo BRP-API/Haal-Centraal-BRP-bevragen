@@ -1016,6 +1016,8 @@ When(/^personen wordt gezocht met de volgende parameters$/, async function (data
 });
 
 When(/^gba personen wordt gezocht met de volgende parameters$/, async function (dataTable) {
+    this.context.pl_id = await executeSqlStatements(this.context.sqlData);
+
     const config = {
         method: 'post',
         url: '/personen',
