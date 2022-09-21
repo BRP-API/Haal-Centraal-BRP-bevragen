@@ -4,68 +4,65 @@
 Functionaliteit: Nationaliteit
 
   Scenario: persoon heeft een nationaliteit
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft een 'nationaliteit' met de volgende gegevens
-    | naam                  | waarde |
-    | nationaliteit (05.10) | 0001   |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
-    | fields              | nationaliteiten.nationaliteit   |
-    Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-    | naam               | waarde        |
-    | type               | Nationaliteit |
-    | nationaliteit.code | 0001          |
+  Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
+  | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
+  | 0001                  | 001                   | 19750707                        |
+  Als gba personen wordt gezocht met de volgende parameters
+  | naam                | waarde                          |
+  | type                | RaadpleegMetBurgerservicenummer |
+  | burgerservicenummer | 000000012                       |
+  | fields              | nationaliteiten   |
+  Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
+  | naam                       | waarde                                           |
+  | nationaliteit.code         | 0001                                             |
+  | nationaliteit.omschrijving | Nederlandse                                      |
+  | redenopname.code           | 001                                              |
+  | redenopname.omschrijving   | Wet op het Nederlanderschap 1892,art. 1, onder a |
 
   Scenario: persoon heeft meerdere nationaliteiten
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft een 'nationaliteit' met de volgende gegevens
-    | naam                  | waarde |
-    | nationaliteit (05.10) | 0001   |
-    En de persoon heeft een 'nationaliteit' met de volgende gegevens
-    | naam                  | waarde |
-    | nationaliteit (05.10) | 0455   |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
-    | fields              | nationaliteiten.nationaliteit   |
-    Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-    | naam               | waarde        |
-    | type               | Nationaliteit |
-    | nationaliteit.code | 0001          |
-    En heeft de persoon een 'nationaliteit' met alleen de volgende gegevens
-    | naam               | waarde        |
-    | type               | Nationaliteit |
-    | nationaliteit.code | 0455          |
+  Gegeven de persoon met burgerservicenummer '000000024' heeft een 'nationaliteit' met de volgende gegevens
+  | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
+  | 0001                  | 001                   | 19750707                        |
+  En de persoon heeft nog een 'nationaliteit' met de volgende gegevens
+  | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
+  | 0455                  | 311                   | 19620107                        |
+  Als gba personen wordt gezocht met de volgende parameters
+  | naam                | waarde                          |
+  | type                | RaadpleegMetBurgerservicenummer |
+  | burgerservicenummer | 000000024                       |
+  | fields              | nationaliteiten                 |
+  Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
+  | naam                       | waarde        |
+  | nationaliteit.code         | 0001          |
+  | nationaliteit.omschrijving | Nederlandse   |
+  | redenopname.code           | 001                                              |
+  | redenopname.omschrijving   | Wet op het Nederlanderschap 1892,art. 1, onder a |
+  En heeft de persoon een 'nationaliteit' met alleen de volgende gegevens
+  | naam                       | waarde                                   |
+  | nationaliteit.code         | 0301                                     |
+  | nationaliteit.omschrijving | Surinaamse                               |
+  | redenOpname.code           | 301                                      |
+  | redenOpname.omschrijving   | Vaststelling bezit vreemde nationaliteit |
 
-  Abstract Scenario: persoon heeft 'nationaliteit' veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft een 'nationaliteit' met de volgende gegevens
-    | naam                  | waarde   |
-    | nationaliteit (05.10) | 0001     |
-    | <gba naam>            | <waarde> |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
-    | fields              | nationaliteiten.<naam>          |
-    Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-    | naam               | waarde        |
-    | type               | Nationaliteit |
-    | <naam>             | <waarde>      |
+  Scenario: persoon heeft een nationaliteit met reden opname = onbekend
+  Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
+  | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
+  | 0001                  | 000                   | 19750707                        |
+  Als gba personen wordt gezocht met de volgende parameters
+  | naam                | waarde                          |
+  | type                | RaadpleegMetBurgerservicenummer |
+  | burgerservicenummer | 000000012                       |
+  | fields              | nationaliteiten   |
+  Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
+  | naam                       | waarde                                           |
+  | nationaliteit.code         | 0001                                             |
+  | nationaliteit.omschrijving | Nederlandse                                      |
+  | redenopname.code           | 000                                              |
+  | redenopname.omschrijving   | Onbekend                                         |
 
-    Voorbeelden:
-    | gba naam                 | naam                     | waarde           |
-    | reden opname (63.10)     | redenOpname.code         | 1234             |
-    | redenOpname.omschrijving | redenOpname.omschrijving | een omschrijving |
+
+
+
 
   Abstract Scenario: persoon heeft 'nationaliteit' veld: '<gba naam>' met waarde '<waarde>'
     Gegeven het systeem heeft een persoon met de volgende gegevens
