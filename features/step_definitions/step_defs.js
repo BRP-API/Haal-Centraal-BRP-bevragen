@@ -263,7 +263,7 @@ function fromHash(hash) {
     let retval = [];
 
     Object.keys(hash).forEach(function(key) {
-        retval.push([ columnNameMap.get(key), hash[key] ]);
+        retval.push([ columnNameMap.get(key), calculatePropertyValue(hash[key], false) ]);
     });
 
     return retval;
@@ -277,7 +277,7 @@ function createArrayFrom(dataTable) {
             const propertyName = columnNameMap.get(row.naam);
     
             if(row.waarde !== undefined && row.waarde !== '') {
-                retval.push([ propertyName, calculatePropertyValue(row.waarde, false)]);
+                retval.push([ propertyName, calculatePropertyValue(row.waarde, false) ]);
             }
         });
     }
@@ -362,6 +362,10 @@ Given(/^landelijke tabel "([\w\-]*)" heeft de volgende waarden$/, function (_tab
     // doe nog niets
 });
 
+Given(/^de statement '(.*)' heeft als resultaat '(\d*)'$/, function (_statement, result) {
+    this.context.pl_id = Number(result);
+});
+
 Given(/^(?:de|een) persoon met burgerservicenummer '(\d*)' heeft de volgende gegevens$/, function (burgerservicenummer, dataTable) {
     this.context.sqlData = {};
 
@@ -375,6 +379,7 @@ Given(/^(?:de|een) persoon met burgerservicenummer '(\d*)' heeft de volgende geg
 
 Then(/^zijn de gegenereerde SQL statements$/, function(dataTable) {
     const sqlData = this.context.sqlData;
+    const plId = this.context.pl_id;
 
     let expected = {};
     let lastKey;
@@ -398,7 +403,7 @@ Then(/^zijn de gegenereerde SQL statements$/, function(dataTable) {
             const name = key.replace(/-\d$/, "");
             const statement = key === 'inschrijving'
                 ? insertIntoPersoonlijstStatement(actual)
-                : insertIntoStatement(name, actual);
+                : insertIntoStatement(name, [ ['pl_id', plId+''] ].concat(actual));
 
             statement.text.should.equal(exp.text);
             statement.values.should.deep.equalInAnyOrder(exp.values.split(','));
@@ -466,32 +471,9 @@ Given(/^een persoon heeft de volgende '(\w*)' gegevens$/, async function (gegeve
 });
 
 Given(/^de persoon heeft de volgende '(\w*)' gegevens$/, async function (gegevensgroep, dataTable) {
-    if(pool !== undefined) {
-        const client = await pool.connect();
-        try {
-            let data;
-            if(gegevensgroep === 'persoon') {
-                data = [
-                    [ 'pl_id', this.context.pl_id ],
-                    [ 'persoon_type', 'P'],
-                    [ 'stapel_nr', 0 ],
-                    [ 'volg_nr', 0]
-                ].concat(fromHash(dataTable.hashes()[0]));
-            }
-            else {
-                data = createGegevensgroepData(this.context.pl_id, dataTable);
-            }
-            await client.query(insertIntoStatement(gegevensgroep, data));
-        }
-        finally {
-            client.release();
-        }
-    }
-    else {
-        setPersoonProperties(this.context.persoon, gegevensgroep, dataTable);
-
-        this.context.attach(`${gegevensgroep}: ${JSON.stringify(this.context.persoon[gegevensgroep], null, '  ')}`);
-    }
+    this.context.sqlData[gegevensgroep] = [
+        createDataFromArray(createArrayFrom(dataTable))
+    ];
 });
 
 Given(/^de persoon met burgerservicenummer '(\d*)' heeft de volgende '(\w*)' gegevens$/, async function(burgerservicenummer, gegevensgroep, dataTable) {
