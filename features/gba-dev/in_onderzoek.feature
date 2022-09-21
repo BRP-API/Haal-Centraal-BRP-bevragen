@@ -37,7 +37,8 @@ Functionaliteit: in onderzoek
       Dan heeft de response een persoon met de volgende 'naam' gegevens
       | naam                                         | waarde            |
       | voornamen                                    | Arnitta           |
-	  En heeft de persoon de volgende 'persoonInOnderzoek' gegevens 
+      En heeft de persoon de volgende 'persoonInOnderzoek' gegevens 
+      | naam                          | waarde   |
       | aanduidingGegevensInOnderzoek | 010000   |
       | datumIngangOnderzoek          | 20120920 |
       En heeft de persoon een 'ouder' met de volgende gegevens
