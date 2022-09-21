@@ -362,6 +362,10 @@ Given(/^landelijke tabel "([\w\-]*)" heeft de volgende waarden$/, function (_tab
     // doe nog niets
 });
 
+Given(/^de statement '(.*)' heeft als resultaat '(\d*)'$/, function (_statement, result) {
+    this.context.pl_id = Number(result);
+});
+
 Given(/^(?:de|een) persoon met burgerservicenummer '(\d*)' heeft de volgende gegevens$/, function (burgerservicenummer, dataTable) {
     this.context.sqlData = {};
 
@@ -375,6 +379,7 @@ Given(/^(?:de|een) persoon met burgerservicenummer '(\d*)' heeft de volgende geg
 
 Then(/^zijn de gegenereerde SQL statements$/, function(dataTable) {
     const sqlData = this.context.sqlData;
+    const plId = this.context.pl_id;
 
     let expected = {};
     let lastKey;
@@ -398,7 +403,7 @@ Then(/^zijn de gegenereerde SQL statements$/, function(dataTable) {
             const name = key.replace(/-\d$/, "");
             const statement = key === 'inschrijving'
                 ? insertIntoPersoonlijstStatement(actual)
-                : insertIntoStatement(name, actual);
+                : insertIntoStatement(name, [ ['pl_id', plId+''] ].concat(actual));
 
             statement.text.should.equal(exp.text);
             statement.values.should.deep.equalInAnyOrder(exp.values.split(','));
