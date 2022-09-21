@@ -46,7 +46,7 @@ Functionaliteit: Verblijfstitel
       Voorbeelden:
       | titel                      | datumEinde |
       | datum einde in de toekomst | 20350315   |
-      | datum einde is morgen      | 20220606   |
+      | datum einde is morgen      | morgen   |
 
     @gba
     Abstract Scenario: verblijfstitel heeft <titel>
