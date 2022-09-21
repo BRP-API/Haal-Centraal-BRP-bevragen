@@ -120,6 +120,8 @@ const columnNameMap = new Map([
     ['reden opnemen (63.10)', 'nl_nat_verkrijg_reden'],
     ['reden beëindigen (64.10)', 'nl_nat_verlies_reden'],
     ['datum ingang geldigheid (85.10)', 'geldigheid_start_datum'],
+    ['bijzonder Nederlanderschap (65.10)', 'bijzonder_nl_aand'],
+    ['onjuist (84.10)' , 'onjuist_ind'],
 
     [ 'burgerservicenummer (01.20)', 'burger_service_nr' ],
 
@@ -146,13 +148,13 @@ const columnNameMap = new Map([
     ['aanduiding verblijfstitel (39.10)', 'verblijfstitel_aand'],
     ['datum einde verblijfstitel (39.20)', 'verblijfstitel_eind_datum'],
     ['datum ingang verblijfstitel (39.30)', 'geldigheid_start_datum'],
-	
+
     ['gemeente document (82.10)', 'doc_gemeente_code' ],
     ['datum document (82.20)', 'doc_datum' ],
     ['beschrijving document (82.30)', 'doc_beschrijving' ],
-	
+
     ['ingangsdatum geldigheid (85.10)', 'geldigheid_start_datum' ],
-	
+
     ['datum van opneming (86.10)', 'opneming_datum' ]
 
 ]);
@@ -261,7 +263,7 @@ function createArrayFrom(dataTable) {
     if(dataTable.raw()[0][0] === "naam") {
         dataTable.hashes().forEach(function(row) {
             const propertyName = columnNameMap.get(row.naam);
-    
+
             if(row.waarde !== undefined && row.waarde !== '') {
                 retval.push([ propertyName, calculatePropertyValue(row.waarde, false)]);
             }
@@ -344,7 +346,7 @@ function getNextStapelNr(sqlData, relatie) {
     return stapelNr;
 }
 
-Given(/^landelijke tabel "([\w\-]*)" heeft de volgende waarden$/, function (_tabelNaam, _dataTable) {       
+Given(/^landelijke tabel "([\w\-]*)" heeft de volgende waarden$/, function (_tabelNaam, _dataTable) {
     // doe nog niets
 });
 
