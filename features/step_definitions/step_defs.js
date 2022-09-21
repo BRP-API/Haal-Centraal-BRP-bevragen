@@ -99,7 +99,7 @@ const propertyNameMap = new Map([
     // Verblijfstitel
     ['aanduiding verblijfstitel (39.10)', 'aanduiding.code'],
     ['datum einde verblijfstitel (39.20)', 'datumEinde'],
-    ['datum ingang verblijfstitel (39.30)', 'datumIngang'],
+    ['datum ingang verblijfstitel (39.30)', 'datumIngang']
 ]);
 
 const tableNameMap = new Map([
@@ -111,7 +111,8 @@ const tableNameMap = new Map([
     ['nationaliteit', 'lo3_pl_nationaliteit'],
     ['kiesrecht', 'lo3_pl'],
     ['verblijfstitel', 'lo3_pl_verblijfstitel'],
-    ['verblijfplaats', 'lo3_pl_verblijfplaats']
+    ['verblijfplaats', 'lo3_pl_verblijfplaats'],
+    ['gezagsverhouding', 'lo3_pl_gezagsverhouding']
 ]);
 
 const columnNameMap = new Map([
@@ -155,8 +156,13 @@ const columnNameMap = new Map([
 
     ['ingangsdatum geldigheid (85.10)', 'geldigheid_start_datum' ],
 
-    ['datum van opneming (86.10)', 'opneming_datum' ]
+    ['datum van opneming (86.10)', 'opneming_datum' ],
 
+    ['indicatie curateleregister (33.10)', 'curatele_register_ind' ],
+
+    ['aanduiding in onderzoek (83.10)', 'onderzoek_gegevens_aand' ],
+    ['datum ingang onderzoek (83.20)', 'onderzoek_start_datum' ],
+    ['datum einde onderzoek (83.30)', 'onderzoek_eind_datum' ]
 ]);
 
 Before(function() {
@@ -1004,6 +1010,8 @@ When(/^personen wordt gezocht met de volgende parameters$/, async function (data
 });
 
 When(/^gba personen wordt gezocht met de volgende parameters$/, async function (dataTable) {
+    this.context.pl_id = await executeSqlStatements(this.context.sqlData);
+
     const config = {
         method: 'post',
         url: '/personen',
