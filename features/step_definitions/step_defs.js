@@ -263,7 +263,7 @@ function fromHash(hash) {
     let retval = [];
 
     Object.keys(hash).forEach(function(key) {
-        retval.push([ columnNameMap.get(key), hash[key] ]);
+        retval.push([ columnNameMap.get(key), calculatePropertyValue(hash[key], false) ]);
     });
 
     return retval;
@@ -277,7 +277,7 @@ function createArrayFrom(dataTable) {
             const propertyName = columnNameMap.get(row.naam);
     
             if(row.waarde !== undefined && row.waarde !== '') {
-                retval.push([ propertyName, calculatePropertyValue(row.waarde, false)]);
+                retval.push([ propertyName, calculatePropertyValue(row.waarde, false) ]);
             }
         });
     }
