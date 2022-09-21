@@ -60,6 +60,21 @@ Functionaliteit: Stap definities
       | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,kiesrecht_uitgesl_aand) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | A                    |
       | persoon      | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                                     | 9999,0,0,P,000000012 |
 
+  Rule: En de persoon heeft de volgende '<naam-pl-tabel>' gegevens
+
+    Scenario: Persoon heeft ook gezagsverhouding gegevens
+      Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende gegevens
+      | naam                  | waarde |
+      | geslachtsnaam (02.40) | Jansen |
+      En de persoon heeft de volgende 'gezagsverhouding' gegevens
+      | indicatie curateleregister (33.10) |
+      | 1                                  |
+      Dan zijn de gegenereerde SQL statements
+      | key              | text                                                                                                                                     | values                      |
+      | inschrijving     | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                           |
+      | persoon          | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr,geslachts_naam) VALUES($1,$2,$3,$4,$5,$6)       | 9999,0,0,P,000000012,Jansen |
+      | gezagsverhouding | INSERT INTO public.lo3_pl_gezagsverhouding(pl_id,volg_nr,curatele_register_ind) VALUES($1,$2,$3)                                         | 9999,0,1                    |
+
   Rule: En de/het '<naam-pl-tabel>' is gewijzigd naar de volgende gegevens
 
     Scenario: Persoon heeft gewijzigde 'verblijfstitel' gegevens
