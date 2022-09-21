@@ -471,32 +471,9 @@ Given(/^een persoon heeft de volgende '(\w*)' gegevens$/, async function (gegeve
 });
 
 Given(/^de persoon heeft de volgende '(\w*)' gegevens$/, async function (gegevensgroep, dataTable) {
-    if(pool !== undefined) {
-        const client = await pool.connect();
-        try {
-            let data;
-            if(gegevensgroep === 'persoon') {
-                data = [
-                    [ 'pl_id', this.context.pl_id ],
-                    [ 'persoon_type', 'P'],
-                    [ 'stapel_nr', 0 ],
-                    [ 'volg_nr', 0]
-                ].concat(fromHash(dataTable.hashes()[0]));
-            }
-            else {
-                data = createGegevensgroepData(this.context.pl_id, dataTable);
-            }
-            await client.query(insertIntoStatement(gegevensgroep, data));
-        }
-        finally {
-            client.release();
-        }
-    }
-    else {
-        setPersoonProperties(this.context.persoon, gegevensgroep, dataTable);
-
-        this.context.attach(`${gegevensgroep}: ${JSON.stringify(this.context.persoon[gegevensgroep], null, '  ')}`);
-    }
+    this.context.sqlData[gegevensgroep] = [
+        createDataFromArray(createArrayFrom(dataTable))
+    ];
 });
 
 Given(/^de persoon met burgerservicenummer '(\d*)' heeft de volgende '(\w*)' gegevens$/, async function(burgerservicenummer, gegevensgroep, dataTable) {
