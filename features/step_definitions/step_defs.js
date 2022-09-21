@@ -99,7 +99,7 @@ const propertyNameMap = new Map([
     // Verblijfstitel
     ['aanduiding verblijfstitel (39.10)', 'aanduiding.code'],
     ['datum einde verblijfstitel (39.20)', 'datumEinde'],
-    ['datum ingang verblijfstitel (39.30)', 'datumIngang'],
+    ['datum ingang verblijfstitel (39.30)', 'datumIngang']
 ]);
 
 const tableNameMap = new Map([
@@ -111,7 +111,8 @@ const tableNameMap = new Map([
     ['nationaliteit', 'lo3_pl_nationaliteit'],
     ['kiesrecht', 'lo3_pl'],
     ['verblijfstitel', 'lo3_pl_verblijfstitel'],
-    ['verblijfplaats', 'lo3_pl_verblijfplaats']
+    ['verblijfplaats', 'lo3_pl_verblijfplaats'],
+    ['gezagsverhouding', 'lo3_pl_gezagsverhouding']
 ]);
 
 const columnNameMap = new Map([
@@ -153,8 +154,21 @@ const columnNameMap = new Map([
 	
     ['ingangsdatum geldigheid (85.10)', 'geldigheid_start_datum' ],
 	
-    ['datum van opneming (86.10)', 'opneming_datum' ]
+    ['datum van opneming (86.10)', 'opneming_datum' ],
 
+    ['gemeente document (82.10)', 'doc_gemeente_code' ],
+    ['datum document (82.20)', 'doc_datum' ],
+    ['beschrijving document (82.30)', 'doc_beschrijving' ],
+
+    ['ingangsdatum geldigheid (85.10)', 'geldigheid_start_datum' ],
+
+    ['datum van opneming (86.10)', 'opneming_datum' ],
+
+    ['indicatie curateleregister (33.10)', 'curatele_register_ind' ],
+
+    ['aanduiding in onderzoek (83.10)', 'onderzoek_gegevens_aand' ],
+    ['datum ingang onderzoek (83.20)', 'onderzoek_start_datum' ],
+    ['datum einde onderzoek (83.30)', 'onderzoek_eind_datum' ]
 ]);
 
 Before(function() {
@@ -249,7 +263,7 @@ function fromHash(hash) {
     let retval = [];
 
     Object.keys(hash).forEach(function(key) {
-        retval.push([ columnNameMap.get(key), hash[key] ]);
+        retval.push([ columnNameMap.get(key), calculatePropertyValue(hash[key], false) ]);
     });
 
     return retval;
@@ -263,7 +277,7 @@ function createArrayFrom(dataTable) {
             const propertyName = columnNameMap.get(row.naam);
     
             if(row.waarde !== undefined && row.waarde !== '') {
-                retval.push([ propertyName, calculatePropertyValue(row.waarde, false)]);
+                retval.push([ propertyName, calculatePropertyValue(row.waarde, false) ]);
             }
         });
     }
@@ -348,6 +362,10 @@ Given(/^landelijke tabel "([\w\-]*)" heeft de volgende waarden$/, function (_tab
     // doe nog niets
 });
 
+Given(/^de statement '(.*)' heeft als resultaat '(\d*)'$/, function (_statement, result) {
+    this.context.pl_id = Number(result);
+});
+
 Given(/^(?:de|een) persoon met burgerservicenummer '(\d*)' heeft de volgende gegevens$/, function (burgerservicenummer, dataTable) {
     this.context.sqlData = {};
 
@@ -361,6 +379,7 @@ Given(/^(?:de|een) persoon met burgerservicenummer '(\d*)' heeft de volgende geg
 
 Then(/^zijn de gegenereerde SQL statements$/, function(dataTable) {
     const sqlData = this.context.sqlData;
+    const plId = this.context.pl_id;
 
     let expected = {};
     let lastKey;
@@ -384,7 +403,7 @@ Then(/^zijn de gegenereerde SQL statements$/, function(dataTable) {
             const name = key.replace(/-\d$/, "");
             const statement = key === 'inschrijving'
                 ? insertIntoPersoonlijstStatement(actual)
-                : insertIntoStatement(name, actual);
+                : insertIntoStatement(name, [ ['pl_id', plId+''] ].concat(actual));
 
             statement.text.should.equal(exp.text);
             statement.values.should.deep.equalInAnyOrder(exp.values.split(','));
@@ -1002,6 +1021,8 @@ When(/^personen wordt gezocht met de volgende parameters$/, async function (data
 });
 
 When(/^gba personen wordt gezocht met de volgende parameters$/, async function (dataTable) {
+    this.context.pl_id = await executeSqlStatements(this.context.sqlData);
+
     const config = {
         method: 'post',
         url: '/personen',
