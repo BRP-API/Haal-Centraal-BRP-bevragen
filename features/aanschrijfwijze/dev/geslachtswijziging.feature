@@ -21,7 +21,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | HI                        | M        | hertog                       | De hoogwelgeboren heer   |
       | HI                        | V        | hertogin                     | De hoogwelgeboren vrouwe |
       | G                         | M        | graaf                        | De hooggeboren heer      |
-      | GI                        | V        | gravin                       | De hooggeboren vrouwe    |  |
+      | GI                        | V        | gravin                       | De hooggeboren vrouwe    |
       | M                         | M        | markies                      | De hoogwelgeboren heer   |
       | M                         | V        | markiezin                    | De hoogwelgeboren vrouwe |
       | MI                        | M        | markies                      | De hoogwelgeboren heer   |
@@ -38,10 +38,8 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
 
     Abstract Scenario: Adellijke titel of predicaat "<titel predicaat>" en geslacht "<geslacht>"  
       Gegeven de persoon met burgerservicenummer '000000115' heeft de volgende gegevens
-      | naam                        | waarde     |
-      | geslachtsaanduiding (04.10) | <geslacht> |
-      En de persoon heeft de volgende 'naam' gegevens
       | naam                                 | waarde            |
+      | geslachtsaanduiding (04.10)          | <geslacht>        |
       | voornamen (02.10)                    | Anne              |
       | adellijke titel of predicaat (02.20) | <titel predicaat> |
       | voorvoegsel (02.30)                  | van den           |
@@ -49,10 +47,10 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | aanduiding naamgebruik (61.10)       | E                 |
       En de persoon heeft nooit een actueel of ontbonden huwelijk of partnerschap gehad
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                           |
-      | type                | RaadpleegMetBurgerservicenummer  |
-      | burgerservicenummer | 000000115                        |
-      | fields              | adressering.aanschrijfwijze.naam |
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000115                       |
+      | fields              | adressering.aanschrijfwijze     |
       Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
       | naam                          | waarde                    |
       | aanschrijfwijze.naam          | <naam in aanschrijfwijze> |
@@ -72,10 +70,8 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
 
     Abstract Scenario: Adellijke titel of predicaat "<titel predicaat>" en geslacht "<geslacht>" voert geen titel en geen aanspreekvorm
       Gegeven de persoon met burgerservicenummer '000000115' heeft de volgende gegevens
-      | naam                        | waarde     |
-      | geslachtsaanduiding (04.10) | <geslacht> |
-      En de persoon heeft de volgende 'naam' gegevens
       | naam                                 | waarde            |
+      | geslachtsaanduiding (04.10)          | <geslacht>        |
       | voornamen (02.10)                    | Anne              |
       | adellijke titel of predicaat (02.20) | <titel predicaat> |
       | voorvoegsel (02.30)                  | van den           |
@@ -83,10 +79,10 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | aanduiding naamgebruik (61.10)       | E                 |
       En de persoon heeft nooit een actueel of ontbonden huwelijk of partnerschap gehad
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                           |
-      | type                | RaadpleegMetBurgerservicenummer  |
-      | burgerservicenummer | 000000115                        |
-      | fields              | adressering.aanschrijfwijze.naam |
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000115                       |
+      | fields              | adressering.aanschrijfwijze     |
       Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
       | naam                 | waarde           |
       | aanschrijfwijze.naam | A. van den Aedel |
@@ -102,10 +98,8 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
 
     Abstract Scenario: Adellijke titel of predicaat "<titel predicaat>" en geslacht "O" voert geen titel maar wel aanspreekvorm
       Gegeven de persoon met burgerservicenummer '000000115' heeft de volgende gegevens
-      | naam                        | waarde |
-      | geslachtsaanduiding (04.10) | O      |
-      En de persoon heeft de volgende 'naam' gegevens
       | naam                                 | waarde            |
+      | geslachtsaanduiding (04.10)          | O                 |
       | voornamen (02.10)                    | Anne              |
       | adellijke titel of predicaat (02.20) | <titel predicaat> |
       | voorvoegsel (02.30)                  | van den           |
@@ -113,10 +107,10 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | aanduiding naamgebruik (61.10)       | E                 |
       En de persoon heeft nooit een actueel of ontbonden huwelijk of partnerschap gehad
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                           |
-      | type                | RaadpleegMetBurgerservicenummer  |
-      | burgerservicenummer | 000000115                        |
-      | fields              | adressering.aanschrijfwijze.naam |
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000115                       |
+      | fields              | adressering.aanschrijfwijze     |
       Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
       | naam                          | waarde           |
       | aanschrijfwijze.naam          | A. van den Aedel |

@@ -5,12 +5,12 @@ Functionaliteit: Als gemeente wil ik de juiste partnergegevens gebruiken in de a
   Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van de persoon wordt gebruikt, wordt aanschrijfwijze niet opgenomen
 
     Abstract Scenario: geslachtsnaam van de persoon is onbekend bij aanduiding naamgebruik "<naamgebruik>" levert geen aanschrijfwijze
-      Gegeven de persoon met burgerservicenummer '000000401' heeft de volgende 'naam' gegevens
+      Gegeven de persoon met burgerservicenummer '000000401' heeft de volgende gegevens
       | naam                           | waarde                   |
       | voornamen (02.10)              | Ali bin Mohammed         |
       | geslachtsnaam (02.40)          | .                        |
       | aanduiding naamgebruik (61.10) | <aanduiding naamgebruik> |
-      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
+      En de persoon heeft een 'partner' met de volgende gegevens
       | naam                  | waarde |
       | voorvoegsel (02.30)   | de     |
       | geslachtsnaam (02.40) | Boer   |
@@ -19,7 +19,7 @@ Functionaliteit: Als gemeente wil ik de juiste partnergegevens gebruiken in de a
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000401                       |
       | fields              | adressering.aanschrijfwijze     |
-      Dan heeft de response een persoon met een leeg 'adressering' object
+      Dan heeft de response een persoon zonder 'adressering' gegevens
 
       Voorbeelden:
       | aanduiding naamgebruik |
@@ -28,11 +28,11 @@ Functionaliteit: Als gemeente wil ik de juiste partnergegevens gebruiken in de a
       | N                      |
 
     Abstract Scenario: geen geslachtsnaam van de persoon bij aanduiding naamgebruik "<naamgebruik>" levert geen aanschrijfwijze
-      Gegeven de persoon met burgerservicenummer '000000401' heeft de volgende 'naam' gegevens
+      Gegeven de persoon met burgerservicenummer '000000401' heeft de volgende gegevens
       | naam                           | waarde                   |
       | voornamen (02.10)              | Ali bin Mohammed         |
       | aanduiding naamgebruik (61.10) | <aanduiding naamgebruik> |
-      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
+      En de persoon heeft een 'partner' met de volgende gegevens
       | naam                  | waarde |
       | voorvoegsel (02.30)   | de     |
       | geslachtsnaam (02.40) | Boer   |
@@ -41,7 +41,7 @@ Functionaliteit: Als gemeente wil ik de juiste partnergegevens gebruiken in de a
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000401                       |
       | fields              | adressering.aanschrijfwijze     |
-      Dan heeft de response een persoon met een leeg 'adressering' object
+      Dan heeft de response een persoon zonder 'adressering' gegevens
 
       Voorbeelden:
       | aanduiding naamgebruik |
@@ -50,12 +50,12 @@ Functionaliteit: Als gemeente wil ik de juiste partnergegevens gebruiken in de a
       | N                      |
 
     Scenario: naam van de persoon is onbekend bij aanduiding naamgebruik "P" levert wel aanschrijfwijze
-      Gegeven de persoon met burgerservicenummer '000000401' heeft de volgende 'naam' gegevens
-      | naam                           | waarde                   |
-      | voornamen (02.10)              | Ali bin Mohammed         |
-      | geslachtsnaam (02.40)          | .                        |
-      | aanduiding naamgebruik (61.10) | P |
-      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
+      Gegeven de persoon met burgerservicenummer '000000401' heeft de volgende gegevens
+      | naam                           | waarde           |
+      | voornamen (02.10)              | Ali bin Mohammed |
+      | geslachtsnaam (02.40)          | .                |
+      | aanduiding naamgebruik (61.10) | P                |
+      En de persoon heeft een 'partner' met de volgende gegevens
       | naam                  | waarde |
       | voorvoegsel (02.30)   | de     |
       | geslachtsnaam (02.40) | Boer   |
