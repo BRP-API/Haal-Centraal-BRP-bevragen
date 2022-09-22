@@ -164,47 +164,25 @@ Functionaliteit: Kinderen van een persoon raadplegen
 
     @proxy
     Scenario: Kind is volledig onbekend
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550005 |
-      En de persoon heeft een 'kind' met alleen de volgende gegevens
-      | naam                | waarde |
-      | burgerservicenummer |        |
-      | geslacht            |        |
-      En het 'kind' heeft alleen de volgende 'naam' gegevens
-      | naam          | waarde |
-      | geslachtsnaam | .      |
-      En het 'kind' heeft alleen de volgende 'geboorte' gegevens
-      | naam        | waarde   |
-      | datum       | 00000000 |
-      | plaats.code | 0000     |
-      | land.code   | 0000     |
+      Gegeven de persoon met burgerservicenummer '000000176' heeft een 'kind' met de volgende gegevens
+      | geslachtsnaam (02.40) | geboortedatum (03.10) | geboorteplaats (03.20) | geboorteland (03.30) |
+      | .                     | 00000000              | 0000                   | 0000                 |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                 |
       | type                | RaadpleegMetBurgerservicenummer        |
-      | burgerservicenummer | 555550005                              |
+      | burgerservicenummer | 000000176                              |
       | fields              | kinderen.naam,kinderen.geboorte.plaats |
       Dan heeft de response een persoon met een 'kind' zonder 'naam' gegevens
 	  En heeft het 'kind' geen 'geboorte' gegevens
 
     @proxy
     Scenario: Met fields zijn alleen velden zonder waarde gevraagd
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550006 |
-      En de persoon heeft een 'kind' met alleen de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550007 |
-      En het 'kind' heeft alleen de volgende 'naam' gegevens
-      | naam          | waarde           |
-      | voornamen     |                  |
-      | geslachtsnaam | Ali bin Mohammed |
-      En het 'kind' heeft alleen de volgende 'geboorte' gegevens
-      | naam  | waarde   |
-      | datum | 19750730 |
+      Gegeven de persoon met burgerservicenummer '000000176' heeft een 'kind' met de volgende gegevens
+      | geslachtsnaam (02.40) | geboortedatum (03.10) | 
+      | Ali bin Mohammed      | 19750730              | 
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550006                       |
+      | burgerservicenummer | 000000176                       |
       | fields              | kinderen.naam.voornamen         |
       Dan heeft de response een persoon met een 'kind' zonder 'naam' gegevens
