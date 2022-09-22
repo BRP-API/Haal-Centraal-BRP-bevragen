@@ -72,14 +72,12 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
 
     Abstract Scenario: Naam zonder voorvoegsel en geen partner
       Gegeven de persoon met burgerservicenummer '000000103' heeft de volgende gegevens
-      | naam                        | waarde     |
-      | geslachtsaanduiding (04.10) | <geslacht> |
-      En de persoon heeft de volgende 'naam' gegevens
-      | naam                                 | waarde               |
-      | voornamen (02.10)                    | Albertine Philippine |
-      | adellijke titel of predicaat (02.20) | <titel>              |
-      | geslachtsnaam (02.40)                | Aedel                |
-      | aanduiding naamgebruik (61.10)       | E                    |
+      | naam                                 | waarde      |
+      | geslachtsaanduiding (04.10)          | <geslacht>  |
+      | voornamen (02.10)                    | <voornamen> |
+      | adellijke titel of predicaat (02.20) | <titel>     |
+      | geslachtsnaam (02.40)                | Aedel       |
+      | aanduiding naamgebruik (61.10)       | E           |
       En de persoon heeft nooit een actueel of ontbonden huwelijk of partnerschap gehad
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
@@ -99,10 +97,8 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
 
     Abstract Scenario: Naam met voorvoegsel en geen partner  
       Gegeven de persoon met burgerservicenummer '000000115' heeft de volgende gegevens
-      | naam                        | waarde     |
-      | geslachtsaanduiding (04.10) | <geslacht> |
-      En de persoon heeft de volgende 'naam' gegevens
       | naam                                 | waarde        |
+      | geslachtsaanduiding (04.10)          | <geslacht>    |
       | voornamen (02.10)                    | <voornamen>   |
       | adellijke titel of predicaat (02.20) | <titel>       |
       | voorvoegsel (02.30)                  | <voorvoegsel> |
@@ -127,16 +123,14 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
 
     Scenario: persoon met adellijke titel en aanduidingNaamgebruik "P" voert geen titel en geen aanspreekvorm
       Gegeven de persoon met burgerservicenummer '000000127' heeft de volgende gegevens
-      | naam                        | waarde     |
-      | geslachtsaanduiding (04.10) | <geslacht> |
-      En de persoon heeft de volgende 'naam' gegevens
       | naam                                 | waarde  |
+      | geslachtsaanduiding (04.10)          | V       |
       | voornamen (02.10)                    | Jo Anne |
       | adellijke titel of predicaat (02.20) | BS      |
       | voorvoegsel (02.30)                  | van den |
       | geslachtsnaam (02.40)                | Aedel   |
       | aanduiding naamgebruik (61.10)       | P       |
-      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
+      En de persoon heeft een 'partner' met de volgende gegevens
       | naam                  | waarde |
       | voorvoegsel (02.30)   | de     |
       | geslachtsnaam (02.40) | Boer   |
@@ -151,19 +145,17 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
 
     Abstract Scenario: persoon met adellijke titel heeft aanduidingNaamgebruik "<naamgebruik>"
       Gegeven de persoon met burgerservicenummer '000000127' heeft de volgende gegevens
-      | naam                        | waarde |
-      | geslachtsaanduiding (04.10) | V      |
-      En de persoon heeft de volgende 'naam' gegevens
       | naam                                 | waarde        |
+      | geslachtsaanduiding (04.10)          | V             |
       | voornamen (02.10)                    | Jo Anne       |
       | adellijke titel of predicaat (02.20) | BS            |
       | voorvoegsel (02.30)                  | van den       |
       | geslachtsnaam (02.40)                | Aedel         |
       | aanduiding naamgebruik (61.10)       | <naamgebruik> |
-      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
-      | naam                                 | waarde |
-      | voorvoegsel (02.30)                  | de     |
-      | geslachtsnaam (02.40)                | Boer   |
+      En de persoon heeft een 'partner' met de volgende gegevens
+      | naam                  | waarde |
+      | voorvoegsel (02.30)   | de     |
+      | geslachtsnaam (02.40) | Boer   |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -216,16 +208,14 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
 
     Abstract Scenario: Jonkheer met naamgebruik "<aanduiding naamgebruik>"
       Gegeven de persoon met burgerservicenummer '000000139' heeft de volgende gegevens
-      | naam                        | waarde |
-      | geslachtsaanduiding (04.10) | M      |
-      En de persoon heeft de volgende 'naam' gegevens
       | naam                                 | waarde        |
+      | geslachtsaanduiding (04.10)          | M             |
       | voornamen (02.10)                    | James Antoine |
       | adellijke titel of predicaat (02.20) | JH            |
       | voorvoegsel (02.30)                  | van den       |
       | geslachtsnaam (02.40)                | Aedel         |
       | aanduiding naamgebruik (61.10)       | <naamgebruik> |
-      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
+      En de persoon heeft een 'partner' met de volgende gegevens
       | naam                  | waarde |
       | voorvoegsel (02.30)   | de     |
       | geslachtsnaam (02.40) | Boer   |
@@ -247,16 +237,14 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
 
     Scenario: Jonkheer en naamgebruik "P" voert geen predicaat en geen aanspreekvorm
       Gegeven de persoon met burgerservicenummer '000000139' heeft de volgende gegevens
-      | naam                        | waarde |
-      | geslachtsaanduiding (04.10) | M      |
-      En de persoon heeft de volgende 'naam' gegevens
       | naam                                 | waarde        |
+      | geslachtsaanduiding (04.10)          | M             |
       | voornamen (02.10)                    | James Antoine |
       | adellijke titel of predicaat (02.20) | JH            |
       | voorvoegsel (02.30)                  | van den       |
       | geslachtsnaam (02.40)                | Aedel         |
       | aanduiding naamgebruik (61.10)       | P             |
-      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
+      En de persoon heeft een 'partner' met de volgende gegevens
       | naam                  | waarde |
       | voorvoegsel (02.30)   | de     |
       | geslachtsnaam (02.40) | Boer   |
@@ -266,22 +254,19 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | burgerservicenummer | 000000139                       |
       | fields              | adressering.aanschrijfwijze     |
       Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
-      | naam                          | waarde                 |
-      | aanschrijfwijze.naam          | J.A. de Boer           |
-      | aanschrijfwijze.aanspreekvorm | De hoogwelgeboren heer |
+      | naam                 | waarde       |
+      | aanschrijfwijze.naam | J.A. de Boer |
 
     Abstract Scenario: Jonkvrouw met partner en naamgebruik "<aanduiding naamgebruik>" voert geen predicaat en geen aanspreekvorm
       Gegeven de persoon met burgerservicenummer '000000139' heeft de volgende gegevens
-      | naam                        | waarde |
-      | geslachtsaanduiding (04.10) | V      |
-      En de persoon heeft de volgende 'naam' gegevens
       | naam                                 | waarde        |
+      | geslachtsaanduiding (04.10)          | V             |
       | voornamen (02.10)                    | Jeanne Anne   |
       | adellijke titel of predicaat (02.20) | JV            |
       | voorvoegsel (02.30)                  | van den       |
       | geslachtsnaam (02.40)                | Aedel         |
       | aanduiding naamgebruik (61.10)       | <naamgebruik> |
-      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
+      En de persoon heeft een 'partner' met de volgende gegevens
       | naam                  | waarde |
       | voorvoegsel (02.30)   | de     |
       | geslachtsnaam (02.40) | Boer   |
@@ -303,21 +288,21 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
 
     Abstract Scenario: Jonkvrouw met ex-partner en naamgebruik "<aanduiding naamgebruik>" voert geen predicaat en geen aanspreekvorm
       Gegeven de persoon met burgerservicenummer '000000139' heeft de volgende gegevens
-      | naam                        | waarde |
-      | geslachtsaanduiding (04.10) | V      |
-      En de persoon heeft de volgende 'naam' gegevens
       | naam                                 | waarde        |
+      | geslachtsaanduiding (04.10)          | V             |
       | voornamen (02.10)                    | Jeanne Anne   |
       | adellijke titel of predicaat (02.20) | JV            |
       | voorvoegsel (02.30)                  | van den       |
       | geslachtsnaam (02.40)                | Aedel         |
       | aanduiding naamgebruik (61.10)       | <naamgebruik> |
-      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
+      En de persoon heeft een 'partner' met de volgende gegevens
       | naam                  | waarde |
       | voorvoegsel (02.30)   | de     |
       | geslachtsnaam (02.40) | Boer   |
-      En de 'partner' heeft de volgende 'ontbindingHuwelijkPartnerschap' gegevens
+      En de 'partner' is gewijzigd naar de volgende gegevens
       | naam                                                         | waarde   |
+      | voorvoegsel (02.30)                                          | de       |
+      | geslachtsnaam (02.40)                                        | Boer     |
       | datum ontbinding huwelijk/geregistreerd partnerschap (07.10) | 20211109 |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
@@ -336,21 +321,21 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
 
     Scenario: Jonkvrouw met ex-partner en naamgebruik "E" voert weer haar predicaat en aanspreekvorm
       Gegeven de persoon met burgerservicenummer '000000139' heeft de volgende gegevens
-      | naam                        | waarde |
-      | geslachtsaanduiding (04.10) | V      |
-      En de persoon heeft de volgende 'naam' gegevens
       | naam                                 | waarde      |
+      | geslachtsaanduiding (04.10)          | V           |
       | voornamen (02.10)                    | Jeanne Anne |
       | adellijke titel of predicaat (02.20) | JV          |
       | voorvoegsel (02.30)                  | van den     |
       | geslachtsnaam (02.40)                | Aedel       |
       | aanduiding naamgebruik (61.10)       | E           |
-      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
+      En de persoon heeft een 'partner' met de volgende gegevens
       | naam                  | waarde |
       | voorvoegsel (02.30)   | de     |
       | geslachtsnaam (02.40) | Boer   |
-      En de 'partner' heeft de volgende 'ontbindingHuwelijkPartnerschap' gegevens
+      En de 'partner' is gewijzigd naar de volgende gegevens
       | naam                                                         | waarde   |
+      | voorvoegsel (02.30)                                          | de       |
+      | geslachtsnaam (02.40)                                        | Boer     |
       | datum ontbinding huwelijk/geregistreerd partnerschap (07.10) | 20211109 |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |

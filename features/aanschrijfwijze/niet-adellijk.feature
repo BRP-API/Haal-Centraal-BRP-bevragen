@@ -39,7 +39,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
     - de eerste naamcomponent in de aanschrijfwijze.naam begint met een hoofdletter
 
     Scenario: Naam zonder voorvoegsel en geen partner
-      Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende 'naam' gegevens
+      Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende gegevens
       | naam                           | waarde    |
       | voornamen (02.10)              | Anna Özil |
       | geslachtsnaam (02.40)          | Groenen   |
@@ -55,7 +55,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | aanschrijfwijze.naam | A.Ö. Groenen |
 
     Abstract Scenario: Naam met voorvoegsel en geen partner
-      Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'naam' gegevens
+      Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | naam                           | waarde        |
       | voornamen (02.10)              | <voornamen>   |
       | voorvoegsel (02.30)            | <voorvoegsel> |
@@ -79,12 +79,12 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | Elise Q        | In Den      | E.Q In Den Groenen      |
 
     Abstract Scenario: Persoon met partner geen voorvoegsel in naam persoon of partner
-      Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende 'naam' gegevens
+      Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende gegevens
       | naam                           | waarde                   |
       | voornamen (02.10)              | <voornamen>              |
       | geslachtsnaam (02.40)          | <geslachtsnaam>          |
       | aanduiding naamgebruik (61.10) | <aanduiding naamgebruik> |
-      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
+      En de persoon heeft een 'partner' met de volgende gegevens
       | naam                  | waarde                  |
       | geslachtsnaam (02.40) | <geslachtsnaam partner> |
       Als personen wordt gezocht met de volgende parameters
@@ -97,20 +97,20 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | aanschrijfwijze.naam | <naam in aanschrijfwijze> |
 
       Voorbeelden:
-      | voornamen      | geslachtsnaam | aanduiding naamgebruik | geslachtsnaam partner | naam in aanschrijfwijze    |
-      | Anna Özil      | Groenen       | E                      | Groenlo               | A.Ö. Groenen               |
-      | Bert Philip    | Groenen       | P                      | Groenlo               | B.P. Groenlo               |
-      | Carla Theodora | Groenen       | V                      | Groenlo               | C.T. Groenlo-Groenen       |
-      | Dirk-Willem    | Groenen       | N                      | Groenlo               | D. Groenen-Groenlo         |
+      | voornamen      | geslachtsnaam | aanduiding naamgebruik | geslachtsnaam partner | naam in aanschrijfwijze |
+      | Anna Özil      | Groenen       | E                      | Groenlo               | A.Ö. Groenen            |
+      | Bert Philip    | Groenen       | P                      | Groenlo               | B.P. Groenlo            |
+      | Carla Theodora | Groenen       | V                      | Groenlo               | C.T. Groenlo-Groenen    |
+      | Dirk-Willem    | Groenen       | N                      | Groenlo               | D. Groenen-Groenlo      |
       
     Abstract Scenario: Persoon met partner met voorvoegsel in naam persoon en geen voorvoegsel in naam partner
-      Gegeven de persoon met burgerservicenummer '000000048' heeft de volgende 'naam' gegevens
+      Gegeven de persoon met burgerservicenummer '000000048' heeft de volgende gegevens
       | naam                           | waarde                   |
       | voornamen (02.10)              | <voornamen>              |
       | voorvoegsel (02.30)            | <voorvoegsel>            |
       | geslachtsnaam (02.40)          | <geslachtsnaam>          |
       | aanduiding naamgebruik (61.10) | <aanduiding naamgebruik> |
-      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
+      En de persoon heeft een 'partner' met de volgende gegevens
       | naam                  | waarde                  |
       | geslachtsnaam (02.40) | <geslachtsnaam partner> |
       Als personen wordt gezocht met de volgende parameters
@@ -123,19 +123,19 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | aanschrijfwijze.naam | <naam in aanschrijfwijze> |
 
       Voorbeelden:
-      | voornamen      | voorvoegsel | geslachtsnaam | aanduiding naamgebruik | geslachtsnaam partner | naam in aanschrijfwijze    |
-      | Elise Q        | van         | Velzen        | E                      | Groenlo               | E.Q van Velzen             |
-      | Fred           | van         | Velzen        | P                      | Groenlo               | F. Groenlo                 |
-      | Geraldine      | van         | Velzen        | V                      | Groenlo               | G. Groenlo-van Velzen      |
-      | Henk           | van         | Velzen        | N                      | Groenlo               | H. van Velzen-Groenlo      |
+      | voornamen | voorvoegsel | geslachtsnaam | aanduiding naamgebruik | geslachtsnaam partner | naam in aanschrijfwijze |
+      | Elise Q   | van         | Velzen        | E                      | Groenlo               | E.Q van Velzen          |
+      | Fred      | van         | Velzen        | P                      | Groenlo               | F. Groenlo              |
+      | Geraldine | van         | Velzen        | V                      | Groenlo               | G. Groenlo-van Velzen   |
+      | Henk      | van         | Velzen        | N                      | Groenlo               | H. van Velzen-Groenlo   |
       
     Abstract Scenario: Persoon met partner geen voorvoegsel in naam persoon en wel voorvoegsel in naam partner
-      Gegeven de persoon met burgerservicenummer '000000061' heeft de volgende 'naam' gegevens
+      Gegeven de persoon met burgerservicenummer '000000061' heeft de volgende gegevens
       | naam                           | waarde                   |
       | voornamen (02.10)              | <voornamen>              |
       | geslachtsnaam (02.40)          | <geslachtsnaam>          |
       | aanduiding naamgebruik (61.10) | <aanduiding naamgebruik> |
-      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
+      En de persoon heeft een 'partner' met de volgende gegevens
       | naam                  | waarde                  |
       | voorvoegsel (02.30)   | <voorvoegsel partner>   |
       | geslachtsnaam (02.40) | <geslachtsnaam partner> |
@@ -149,20 +149,20 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | aanschrijfwijze.naam | <naam in aanschrijfwijze> |
 
       Voorbeelden:
-      | voornamen      | geslachtsnaam | aanduiding naamgebruik | voorvoegsel partner | geslachtsnaam partner | naam in aanschrijfwijze    |
-      | Iris           | Groenen       | E                      | Van Den             | Berg                  | I. Groenen                 |
-      | Joris          | Groenen       | P                      | Van Den             | Berg                  | J. Van Den Berg            |
-      | Karin          | Groenen       | V                      | Van Den             | Berg                  | K. Van Den Berg-Groenen    |
-      | Leo            | Groenen       | N                      | Van Den             | Berg                  | L. Groenen-Van Den Berg    |
+      | voornamen | geslachtsnaam | aanduiding naamgebruik | voorvoegsel partner | geslachtsnaam partner | naam in aanschrijfwijze |
+      | Iris      | Groenen       | E                      | Van Den             | Berg                  | I. Groenen              |
+      | Joris     | Groenen       | P                      | Van Den             | Berg                  | J. Van Den Berg         |
+      | Karin     | Groenen       | V                      | Van Den             | Berg                  | K. Van Den Berg-Groenen |
+      | Leo       | Groenen       | N                      | Van Den             | Berg                  | L. Groenen-Van Den Berg |
       
     Abstract Scenario: Persoon met partner met voorvoegsel in naam persoon en voorvoegsel in naam partner
-      Gegeven de persoon met burgerservicenummer '000000073' heeft de volgende 'naam' gegevens
+      Gegeven de persoon met burgerservicenummer '000000073' heeft de volgende gegevens
       | naam                           | waarde                   |
       | voornamen (02.10)              | <voornamen>              |
       | voorvoegsel (02.30)            | <voorvoegsel>            |
       | geslachtsnaam (02.40)          | <geslachtsnaam>          |
       | aanduiding naamgebruik (61.10) | <aanduiding naamgebruik> |
-      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
+      En de persoon heeft een 'partner' met de volgende gegevens
       | naam                  | waarde                  |
       | voorvoegsel (02.30)   | <voorvoegsel partner>   |
       | geslachtsnaam (02.40) | <geslachtsnaam partner> |
@@ -176,18 +176,18 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | aanschrijfwijze.naam | <naam in aanschrijfwijze> |
 
       Voorbeelden:
-      | voornamen      | voorvoegsel | geslachtsnaam | aanduiding naamgebruik | voorvoegsel partner | geslachtsnaam partner | naam in aanschrijfwijze    |
-      | Marion         | van         | Velzen        | E                      | Van Den             | Berg                  | M. van Velzen              |
-      | Nico           | van         | Velzen        | P                      | Van Den             | Berg                  | N. Van Den Berg            |
-      | Odette         | van         | Velzen        | V                      | Van Den             | Berg                  | O. Van Den Berg-van Velzen |
-      | Piet           | van         | Velzen        | N                      | Van Den             | Berg                  | P. van Velzen-Van Den Berg |
+      | voornamen | voorvoegsel | geslachtsnaam | aanduiding naamgebruik | voorvoegsel partner | geslachtsnaam partner | naam in aanschrijfwijze    |
+      | Marion    | van         | Velzen        | E                      | Van Den             | Berg                  | M. van Velzen              |
+      | Nico      | van         | Velzen        | P                      | Van Den             | Berg                  | N. Van Den Berg            |
+      | Odette    | van         | Velzen        | V                      | Van Den             | Berg                  | O. Van Den Berg-van Velzen |
+      | Piet      | van         | Velzen        | N                      | Van Den             | Berg                  | P. van Velzen-Van Den Berg |
 
     Abstract Scenario: persoon heeft een naamketen (geen voornamen)
-      Gegeven de persoon met burgerservicenummer '000000085' heeft de volgende 'naam' gegevens
-      | naam                          | waarde           |
-      | geslachtsnaam (02.40)         | Ali bin Mohammed |
-      | aanduidingNaamgebruik (61.10) | <naamgebruik>    |
-      En de persoon heeft een partner met de volgende 'naam' gegevens
+      Gegeven de persoon met burgerservicenummer '000000085' heeft de volgende gegevens
+      | naam                           | waarde           |
+      | geslachtsnaam (02.40)          | Ali bin Mohammed |
+      | aanduiding naamgebruik (61.10) | <naamgebruik>    |
+      En de persoon heeft een 'partner' met de volgende gegevens
       | naam                  | waarde |
       | voorvoegsel (02.30)   | van    |
       | geslachtsnaam (02.40) | Velzen |
