@@ -113,25 +113,7 @@ Functionaliteit: Nationaliteit
     | nationaliteit.omschrijving        | Behandeld als Nederlander               |
     | redenOpname.code                  | 310                                     |
     | redenOpname.omschrijving          | Vaststelling bijzonder Nederlanderschap |
-    | datumIngangGeldigheid             | 19570116                                |
-
-
-  Scenario: de persoon is vastgesteld niet-Nederlander , bijzonder Nederlanderschap heeft waarde "V"
-  Gegeven de persoon met burgerservicenummer '000000036' heeft een 'nationaliteit' met de volgende gegevens
-    | reden opnemen (63.10) | bijzonder Nederlanderschap (65.10) | datum ingang geldigheid (85.10) |
-    | 310                   | V                                  | 19750615                        |
-    Als gba personen wordt gezocht met de volgende parameters
-    | naam                | waarde                              |
-    | type                | RaadpleegMetBurgerservicenummer     |
-    | burgerservicenummer | 000000036                           |
-    | fields              | nationaliteiten                     |
-    Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
-    | naam                                | waarde                                  |
-    | aanduidingBijzonderNederlanderschap | V                                       |
-    | redenOpname.code                    | 310                                     |
-    | redenOpname.omschrijving            | Vaststelling bijzonder Nederlanderschap |
-    | datumIngangGeldigheid               | 19750615                                |
-
+    | datumIngangGeldigheid             | 19570116                                |                             |
 
   Scenario: de persoon heeft een onbekende nationaliteit
     Gegeven de persoon met burgerservicenummer '000000048' heeft een 'nationaliteit' met de volgende gegevens
