@@ -35,6 +35,39 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       | datumIngangGeldigheid.datum       | 1975-07-07                                       |
       | datumIngangGeldigheid.langFormaat | 7 juli 1975                                      |
 
+      Scenario: persoon heeft meerdere nationaliteiten
+      Gegeven de persoon met burgerservicenummer '000000024' heeft een 'nationaliteit' met de volgende gegevens
+      | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
+      | 0001                  | 001                   | 19750707                        |
+      En de persoon heeft nog een 'nationaliteit' met de volgende gegevens
+      | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
+      | 0263                  | 301                   | 19620107                        |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000024                       |
+      | fields              | nationaliteiten                 |
+      Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
+      | naam                              | waarde                                           |
+      | type                              | Nationaliteit                                    |
+      | nationaliteit.code                | 0001                                             |
+      | nationaliteit.omschrijving        | Nederlandse                                      |
+      | redenopname.code                  | 001                                              |
+      | redenopname.omschrijving          | Wet op het Nederlanderschap 1892,art. 1, onder a |
+      | datumIngangGeldigheid.type        | Datum                                            |
+      | datumIngangGeldigheid.datum       | 1975-07-07                                       |
+      | datumIngangGeldigheid.langFormaat | 7 juli 1975                                      |
+      En heeft de persoon een 'nationaliteit' met alleen de volgende gegevens
+      | naam                              | waarde                                           |
+      | type                              | Nationaliteit                                    |
+      | nationaliteit.code                | 0263                                             |
+      | nationaliteit.omschrijving        | Surinaamse                                       |
+      | redenOpname.code                  | 301                                              |
+      | redenOpname.omschrijving          | Vaststelling bezit vreemde nationaliteit         |
+      | datumIngangGeldigheid.type        | Datum                                            |
+      | datumIngangGeldigheid.datum       | 1962-01-07                                       |
+      | datumIngangGeldigheid.langFormaat | 7 januari 1962                                   |
+
     Scenario: de persoon is Staatloos
       Gegeven de persoon met burgerservicenummer '000000255' heeft een 'nationaliteit' met de volgende gegevens
       | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
