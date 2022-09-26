@@ -30,6 +30,7 @@ const propertyNameMap = new Map([
     ['datum ingang onderzoek (11.83.20)', 'gezagInOnderzoek.datumIngangOnderzoek'],
     ['aanduiding gegevens in onderzoek (83.10)', 'inOnderzoek.aanduidingGegevensInOnderzoek'],
     ['datum ingang onderzoek (83.20)', 'inOnderzoek.datumIngangOnderzoek'],
+    ['datum einde onderzoek (83.30)', 'inOnderzoek.datumEindeOnderzoek'],
 
     // Gezagsverhouding
     ['indicatie gezag minderjarige (32.10)', 'indicatieGezagMinderjarige.code'],
@@ -125,7 +126,7 @@ const columnNameMap = new Map([
     [ 'burgerservicenummer (01.20)', 'burger_service_nr' ],
 
     [ 'voornamen (02.10)', 'voor_naam' ],
-    ['adellijke titel of predicaat (02.20)', 'titel_predikaat' ],
+    [ 'adellijke titel of predicaat (02.20)', 'titel_predikaat' ],
     [ 'voorvoegsel (02.30)', 'geslachts_naam_voorvoegsel' ],
     [ 'geslachtsnaam (02.40)', 'geslachts_naam' ],
 
@@ -147,15 +148,15 @@ const columnNameMap = new Map([
     ['aanduiding verblijfstitel (39.10)', 'verblijfstitel_aand'],
     ['datum einde verblijfstitel (39.20)', 'verblijfstitel_eind_datum'],
     ['datum ingang verblijfstitel (39.30)', 'geldigheid_start_datum'],
-	
+
     ['aktenummer (81.20)', 'akte_nr' ],
-	
+
     ['gemeente document (82.10)', 'doc_gemeente_code' ],
     ['datum document (82.20)', 'doc_datum' ],
     ['beschrijving document (82.30)', 'doc_beschrijving' ],
-	
+
     ['ingangsdatum geldigheid (85.10)', 'geldigheid_start_datum' ],
-	
+
     ['datum van opneming (86.10)', 'opneming_datum' ],
 
     ['gemeente document (82.10)', 'doc_gemeente_code' ],
@@ -171,7 +172,7 @@ const columnNameMap = new Map([
     ['aanduiding in onderzoek (83.10)', 'onderzoek_gegevens_aand' ],
     ['datum ingang onderzoek (83.20)', 'onderzoek_start_datum' ],
     ['datum einde onderzoek (83.30)', 'onderzoek_eind_datum' ],
-	
+
     ['indicatie onjuist (84.10)', 'onjuist_ind' ],
     ['datum ingang familierechtelijke betrekking (62.10)', 'familie_betrek_start_datum']
 ]);
@@ -280,7 +281,7 @@ function createArrayFrom(dataTable) {
     if(dataTable.raw()[0][0] === "naam") {
         dataTable.hashes().forEach(function(row) {
             const propertyName = columnNameMap.get(row.naam);
-    
+
             if(row.waarde !== undefined && row.waarde !== '') {
                 retval.push([ propertyName, calculatePropertyValue(row.waarde, false) ]);
             }
@@ -363,7 +364,7 @@ function getNextStapelNr(sqlData, relatie) {
     return stapelNr;
 }
 
-Given(/^landelijke tabel "([\w\-]*)" heeft de volgende waarden$/, function (_tabelNaam, _dataTable) {       
+Given(/^landelijke tabel "([\w\-]*)" heeft de volgende waarden$/, function (_tabelNaam, _dataTable) {
     // doe nog niets
 });
 

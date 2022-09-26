@@ -12,6 +12,17 @@ Functionaliteit: Verblijfstitel
     - een verblijfstitel wordt geleverd wanneer Datum einde verblijfstitel (39.20) leeg is of een datum in de toekomst heeft
     - een verblijfstitel wordt NIET geleverd wanneer Datum einde verblijfstitel (39.20) vandaag is of een datum in het verleden heeft
 
+    Scenario: verblijfstitel heeft geen verblijfstitel
+      Gegeven de persoon met burgerservicenummer '000000103' heeft de volgende gegevens
+      | naam                  | waarde |
+      | geslachtsnaam (02.40) | Jansen |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000103                       |
+      | fields              | verblijfstitel.aanduiding       |
+      Dan heeft de response een persoon zonder gegevens
+
     Scenario: verblijfstitel heeft geen datum einde
       Gegeven de persoon met burgerservicenummer '000000103' heeft de volgende 'verblijfstitel' gegevens
       | aanduiding verblijfstitel (39.10) | datum ingang verblijfstitel (39.30) |
@@ -43,7 +54,7 @@ Functionaliteit: Verblijfstitel
       Voorbeelden:
       | titel                      | datumEinde |
       | datum einde in de toekomst | 20350315   |
-      | datum einde is morgen      | morgen   |
+      | datum einde is morgen      | morgen     |
 
     Abstract Scenario: verblijfstitel heeft <titel>
       Gegeven de persoon met burgerservicenummer '000000127' heeft de volgende 'verblijfstitel' gegevens
