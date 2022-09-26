@@ -3,77 +3,89 @@
 @post-assert
 Functionaliteit: Verblijfstitel
 
-  Abstract Scenario: persoon heeft 'verblijfstitel' veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'verblijfstitel' gegevens
-    | naam       | waarde   |
-    | <gba naam> | <waarde> |
-    Als personen wordt gezocht met de volgende parameters
+Achtergrond:
+  Gegeven landelijke tabel "Verblijfstitel" heeft de volgende waarden
+  | code | omschrijving                                                                   |
+  |   00 | Onbekend                                                                       |
+  |   09 | Art. 9 van de Vreemdelingenwet                                                 |
+  |   37 | Vw 2000 art. 8, onder e, gemeenschapsonderdaan econ. niet-actief, arbeid spec. |
+
+  Scenario: verblijfstitel heeft geen verblijfstitel
+    Gegeven de persoon met burgerservicenummer '000000103' heeft de volgende gegevens
+    | naam                  | waarde |
+    | geslachtsnaam (02.40) | Jansen |
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
-    | fields              | verblijfstitel                  |
-    Dan heeft de response een persoon met de volgende 'verblijfstitel' gegevens
-    | naam   | waarde   |
-    | <naam> | <waarde> |
+    | burgerservicenummer | 000000103                       |
+    | fields              | verblijfstitel.aanduiding       |
+    Dan heeft de response een persoon zonder gegevens
 
-    Voorbeelden:
-    | gba naam                          | naam                    | waarde                         |
-    | aanduiding verblijfstitel (39.10) | aanduiding.code         | 09                             |
-    | aanduiding.omschrijving           | aanduiding.omschrijving | Art. 9 van de Vreemdelingenwet |
-
-  Abstract Scenario: persoon heeft 'verblijfstitel' datum veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde       |
-    | burgerservicenummer | 555550001    |
-    | <gba naam>          | <gba waarde> |
-    En de persoon heeft de volgende 'verblijfstitel' gegevens
-    | naam       | waarde       |
-    | <gba naam> | <gba waarde> |
-    Als personen wordt gezocht met de volgende parameters
+  Scenario: verblijfstitel heeft geen datum einde
+    Gegeven de persoon met burgerservicenummer '000000103' heeft de volgende 'verblijfstitel' gegevens
+    | aanduiding verblijfstitel (39.10) | datum ingang verblijfstitel (39.30) |
+    | 37                                | 20210315                            |
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
-    | fields              | verblijfstitel                  |
-    Dan heeft de response een persoon met de volgende 'verblijfstitel' gegevens
-    | naam               | waarde         |
-    | <naam>.type        | Datum          |
-    | <naam>.datum       | <waarde>       |
-    | <naam>.langFormaat | <lang formaat> |
+    | burgerservicenummer | 000000103                       |
+    | fields              | verblijfstitel.aanduiding       |
+    Dan heeft de response een persoon met alleen de volgende 'verblijfstitel' gegevens
+    | naam                    | waarde                                                                              |
+    | aanduiding.code         | 37                                                                                  |
+    | aanduiding.omschrijving | Vw 2000 art. 8, onder e, gemeenschapsonderdaan econ. niet-actief, arbeid spec. |
 
-    Voorbeelden:
-    | gba naam                            | gba waarde | naam        | waarde     | lang formaat    |
-    | datum einde verblijfstitel (39.20)  | 20020701   | datumEinde  | 2002-07-01 | 1 juli 2002     |
-    | datum ingang verblijfstitel (39.30) | 19980201   | datumIngang | 1998-02-01 | 1 februari 1998 |
-
-  Abstract Scenario: persoon's verblijfstitel velden is in onderzoek
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'verblijfstitel' gegevens
-    | naam                                     | waarde                    |
-    | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (83.20)           | 20020701                  |
-    Als personen wordt gezocht met de volgende parameters
+  Scenario: verblijfstitel heeft een datum einde
+    Gegeven de persoon met burgerservicenummer '000000140' heeft de volgende 'verblijfstitel' gegevens
+    | aanduiding verblijfstitel (39.10) | datum ingang verblijfstitel (39.30) | datum einde verblijfstitel (39.20) |
+    | 37                                | 19980201                            | 20020701                            |
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000140                       |
+    | fields              | verblijfstitel.aanduiding       |
+    Dan heeft de response een persoon zonder gegevens
+
+  Scenario: persoon's verblijfstitel velden is in onderzoek
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfstitel' gegevens
+    | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | datum einde onderzoek (83.30) |
+    | 103910                          | 20020101                       | 20040201                     |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | verblijfstitel                  |
+    Dan heeft de response een persoon zonder gegevens
+
+
+  Scenario: persoon's verblijfstitel velden is in onderzoek
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfstitel' gegevens
+    | aanduiding verblijfstitel (39.10) | datum ingang verblijfstitel (39.30) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+    | 09                                | 20010315                            | 103910                          | 20020101                       |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
     | fields              | verblijfstitel                  |
     Dan heeft de response een persoon met de volgende 'verblijfstitel' gegevens
-    | naam                                         | waarde                      |
-    | inOnderzoek.aanduiding                       | <aanduiding in onderzoek>   |
-    | inOnderzoek.datumEinde                       | <datum einde in onderzoek>  |
-    | inOnderzoek.datumIngang                      | <datum ingang in onderzoek> |
-    | inOnderzoek.datumIngangOnderzoek.type        | Datum                       |
-    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                  |
-    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                 |
+    | naam                                         | waarde                          |
+    | inOnderzoek.aanduidingGegevensInOnderzoek    | 103910                          |
+    | inOnderzoek.datumIngangOnderzoek             | 20020101                        |
+    | aanduiding.code                              | 09                              |
+    | aanduiding.omschrijving                      | Art. 9 van de Vreemdelingenwet  |
+    | datumIngangGeldigheid                        | 20010315                        |
 
-    Voorbeelden:
-    | gba in onderzoek waarde | aanduiding in onderzoek | datum ingang in onderzoek | datum einde in onderzoek |
-    | 100000                  | true                    | true                      | true                     |
-    | 103900                  | true                    | true                      | true                     |
-    | 103910                  | true                    |                           |                          |
-    | 103920                  |                         |                           | true                     |
-    | 103930                  |                         | true                      |                          |
+  Scenario: persoon's verblijfstitel velden is onbekend
+    Gegeven de persoon met burgerservicenummer '000000164' heeft de volgende 'verblijfstitel' gegevens
+    | aanduiding verblijfstitel (39.10) | datum ingang verblijfstitel (39.30) |
+    | 00                                | 20010315                            |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000164                       |
+    | fields              | verblijfstitel                  |
+    Dan heeft de response een persoon met de volgende 'verblijfstitel' gegevens
+    | naam                                         | waarde                          |
+    | aanduiding.code                              | 00                              |
+    | aanduiding.omschrijving                      | Onbekend                        |
+    | datumIngangGeldigheid                        | 20010315                        |
