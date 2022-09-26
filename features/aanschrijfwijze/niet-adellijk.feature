@@ -107,12 +107,12 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       Gegeven de persoon met burgerservicenummer '000000048' heeft de volgende gegevens
       | naam                           | waarde                   |
       | voornamen (02.10)              | <voornamen>              |
-      | voorvoegsel (02.30)            | <voorvoegsel>            |
-      | geslachtsnaam (02.40)          | <geslachtsnaam>          |
+      | voorvoegsel (02.30)            | van                      |
+      | geslachtsnaam (02.40)          | Velzen                   |
       | aanduiding naamgebruik (61.10) | <aanduiding naamgebruik> |
       En de persoon heeft een 'partner' met de volgende gegevens
-      | naam                  | waarde                  |
-      | geslachtsnaam (02.40) | <geslachtsnaam partner> |
+      | naam                  | waarde  |
+      | geslachtsnaam (02.40) | Groenlo |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -123,11 +123,11 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | aanschrijfwijze.naam | <naam in aanschrijfwijze> |
 
       Voorbeelden:
-      | voornamen | voorvoegsel | geslachtsnaam | aanduiding naamgebruik | geslachtsnaam partner | naam in aanschrijfwijze |
-      | Elise Q   | van         | Velzen        | E                      | Groenlo               | E.Q van Velzen          |
-      | Fred      | van         | Velzen        | P                      | Groenlo               | F. Groenlo              |
-      | Geraldine | van         | Velzen        | V                      | Groenlo               | G. Groenlo-van Velzen   |
-      | Henk      | van         | Velzen        | N                      | Groenlo               | H. van Velzen-Groenlo   |
+      | voornamen | aanduiding naamgebruik | naam in aanschrijfwijze |
+      | Elise Q   | E                      | E.Q van Velzen          |
+      | Fred      | P                      | F. Groenlo              |
+      | Geraldine | V                      | G. Groenlo-van Velzen   |
+      | Henk      | N                      | H. van Velzen-Groenlo   |
       
     Abstract Scenario: Persoon met partner geen voorvoegsel in naam persoon en wel voorvoegsel in naam partner
       Gegeven de persoon met burgerservicenummer '000000061' heeft de volgende gegevens
