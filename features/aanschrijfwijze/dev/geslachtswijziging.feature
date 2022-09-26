@@ -93,7 +93,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | JV              | O        |
       | R               | V        |
       | R               | O        |
-      | B               | M        |
+      | B               | O        |
       | G               | O        |
 
     Abstract Scenario: Adellijke titel of predicaat "<titel predicaat>" en geslacht "O" voert geen titel maar wel aanspreekvorm
