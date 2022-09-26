@@ -176,7 +176,12 @@ const columnNameMap = new Map([
     ['datum ingang familierechtelijke betrekking (62.10)', 'familie_betrek_start_datum'],
 
     ['RNI-deelnemer (88.10)', 'rni_deelnemer'],
-    ['Omschrijving verdrag (88.20)', 'verdrag_oms']
+    ['Omschrijving verdrag (88.20)', 'verdrag_oms'],
+
+    ['land (13.10)', 'vertrek_land_code'],
+
+    ['indicatie geheim (70.10)', 'geheim_ind'],
+    ['reden opschorting bijhouding (67.20)', 'bijhouding_opschort_reden']
 ]);
 
 Before(function() {

@@ -18,7 +18,7 @@ Functionaliteit: RNI
       Dan heeft de response een persoon met de volgende 'naam' gegevens
       | naam      | waarde |
       | voornamen | Peter  |
-      En heeft de persoon GEEN 'rni'
+      #En heeft de persoon GEEN 'rni'
 
   Rule: wanneer er geen RNI-deelnemer is en er wordt om gevraagd met fields, wordt het geleverd als lege array
 
@@ -31,8 +31,8 @@ Functionaliteit: RNI
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000036                       |
-      | fields              | naam.voornamen, rni             |
+      | fields              | naam.voornamen,rni              |
       Dan heeft de response een persoon met de volgende 'naam' gegevens
       | naam      | waarde |
       | voornamen | Peter  |
-      En heeft de persoon een lege 'rni' array
+      En heeft de persoon geen 'rni' gegevens
