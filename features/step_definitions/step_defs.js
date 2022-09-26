@@ -112,7 +112,9 @@ const tableNameMap = new Map([
     ['kiesrecht', 'lo3_pl'],
     ['verblijfstitel', 'lo3_pl_verblijfstitel'],
     ['verblijfplaats', 'lo3_pl_verblijfplaats'],
-    ['gezagsverhouding', 'lo3_pl_gezagsverhouding']
+    ['gezagsverhouding', 'lo3_pl_gezagsverhouding'],
+    ['overlijden', 'lo3_pl_overlijden'],
+    ['adres', 'lo3_adres']
 ]);
 
 const columnNameMap = new Map([
@@ -153,14 +155,6 @@ const columnNameMap = new Map([
     ['gemeente document (82.10)', 'doc_gemeente_code' ],
     ['datum document (82.20)', 'doc_datum' ],
     ['beschrijving document (82.30)', 'doc_beschrijving' ],
-	
-    ['ingangsdatum geldigheid (85.10)', 'geldigheid_start_datum' ],
-	
-    ['datum van opneming (86.10)', 'opneming_datum' ],
-
-    ['gemeente document (82.10)', 'doc_gemeente_code' ],
-    ['datum document (82.20)', 'doc_datum' ],
-    ['beschrijving document (82.30)', 'doc_beschrijving' ],
 
     ['ingangsdatum geldigheid (85.10)', 'geldigheid_start_datum' ],
 
@@ -173,7 +167,24 @@ const columnNameMap = new Map([
     ['datum einde onderzoek (83.30)', 'onderzoek_eind_datum' ],
 	
     ['indicatie onjuist (84.10)', 'onjuist_ind' ],
-    ['datum ingang familierechtelijke betrekking (62.10)', 'familie_betrek_start_datum']
+    ['datum ingang familierechtelijke betrekking (62.10)', 'familie_betrek_start_datum'],
+	
+    ['functieAdres.code (10.10)', 'adres_functie'],
+    ['datum aanvang adreshouding (10.20)', 'adreshouding_start_datum'],
+    ['landcode (13.10)', 'vertrek_land_code'],
+    ['datum aanvang adres buitenland (13.20)', 'vertrek_datum'],
+    ['regel 1 adres buitenland (13.30)', 'vertrek_land_adres_1'],
+    ['regel 2 adres buitenland (13.40)', 'vertrek_land_adres_2'],
+    ['regel 3 adres buitenland (13.50)', 'vertrek_land_adres_3'],
+
+    ['straatnaam (11.10)', 'straat_naam'],
+    ['naam openbare ruimte (11.15)', 'open_ruimte_naam'],
+    ['huisnummer (11.20)', 'huis_nr'],
+    ['postcode (11.60)', 'postcode'],
+    ['woonplaats (11.70)', 'woon_plaats_naam'],
+    ['identificatiecode verblijfplaats (11.80)', 'verblijf_plaats_ident_code'],
+    ['identificatiecode nummeraanduiding (11.90)', 'nummer_aand_ident_code'],
+    ['locatiebeschrijving (12.10)', 'locatie_beschrijving']
 ]);
 
 Before(function() {
