@@ -7,6 +7,7 @@ Functionaliteit: Stap definities
 
   Achtergrond:
     Gegeven de statement 'SELECT MAX(pl_id)+1 FROM public.lo3_pl' heeft als resultaat '9999'
+    En de statement 'SELECT MAX(adres_id)+1 FROM public.lo3_adres' heeft als resultaat '4999'
 
   Rule: Gegeven de persoon met burgerservicenummer '<bsn>' heeft de volgende gegevens
 
@@ -359,3 +360,19 @@ Functionaliteit: Stap definities
       | persoon      | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 9999,0,0,P,000000012  |
       | ouder-2      | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,voor_naam) VALUES($1,$2,$3,$4,$5)                                 | 9999,0,1,2,Christiaan |
       |              | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,voor_naam) VALUES($1,$2,$3,$4,$5)                                 | 9999,0,0,2,Mark       |
+
+  Rule: En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+
+    Scenario: Persoon heeft een verblijfplaats
+      Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende 'verblijfplaats' gegevens
+        | naam                               | waarde   |
+        | datum aanvang adreshouding (10.30) | 20150808 |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+        | naam               | waarde    |
+        | straatnaam (11.10) | Boterdiep |
+      Dan zijn de gegenereerde SQL statements
+      | key            | text                                                                                                                                     | values               |
+      | inschrijving   | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                    |
+      | persoon        | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 9999,0,0,P,000000012 |
+      | verblijfplaats | INSERT INTO public.lo3_pl_verblijfplaats(pl_id,adres_id,volg_nr,adreshouding_start_datum) VALUES($1,$2,$3,$4)                            | 9999,4999,0,20150808 |
+      | adres          | INSERT INTO public.lo3_adres(adres_id,straat_naam) VALUES((SELECT MAX(adres_id)+1 FROM public.lo3_adres),$1) RETURNING *                 | Boterdiep            |
