@@ -156,6 +156,12 @@ ontbindingHuwelijkPartnerschap.datum,partners.ontbindingHuwelijkPartnerschap.dat
 soortVerbintenis,partners.soortVerbintenis
 soortVerbintenis.code,partners.soortVerbintenis.code
 soortVerbintenis.omschrijving,partners.soortVerbintenis.omschrijving
+rni,rni
+categorie,rni.categorie
+deelnemer,rni.deelnemer
+deelnemer.code,rni.deelnemer.code
+deelnemer.omschrijving,rni.deelnemer.omschrijving
+omschrijvingVerdrag,rni.omschrijvingVerdrag
 uitsluitingKiesrecht,uitsluitingKiesrecht
 einddatum,uitsluitingKiesrecht.einddatum
 uitgeslotenVanKiesrecht,uitsluitingKiesrecht.uitgeslotenVanKiesrecht
@@ -191,3 +197,6 @@ verblijfstitel.aanduiding.code,verblijfstitel.aanduiding.code
 verblijfstitel.aanduiding.omschrijving,verblijfstitel.aanduiding.omschrijving
 datumEinde,verblijfstitel.datumEinde
 datumIngang,verblijfstitel.datumIngang
+verificatie,verificatie
+verificatie.datum,verificatie.datum
+verificatie.omschrijving,verificatie.omschrijving
