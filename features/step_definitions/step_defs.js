@@ -130,6 +130,7 @@ const columnNameMap = new Map([
     ['adellijke titel of predicaat (02.20)', 'titel_predikaat' ],
     [ 'voorvoegsel (02.30)', 'geslachts_naam_voorvoegsel' ],
     [ 'geslachtsnaam (02.40)', 'geslachts_naam' ],
+    ['aanduiding naamgebruik (61.10)', 'naam_gebruik_aand'],
 
     ['geboortedatum (03.10)', 'geboorte_datum'],
     ['geboorteplaats (03.20)', 'geboorte_plaats'],
@@ -165,13 +166,11 @@ const columnNameMap = new Map([
     ['aanduiding in onderzoek (83.10)', 'onderzoek_gegevens_aand' ],
     ['datum ingang onderzoek (83.20)', 'onderzoek_start_datum' ],
     ['datum einde onderzoek (83.30)', 'onderzoek_eind_datum' ],
-	
+
     ['indicatie onjuist (84.10)', 'onjuist_ind' ],
     ['datum ingang familierechtelijke betrekking (62.10)', 'familie_betrek_start_datum'],
 	
     ['functieAdres.code (10.10)', 'adres_functie'],
-    ['datum aanvang adreshouding (10.20)', 'adreshouding_start_datum'],
-    ['landcode (13.10)', 'vertrek_land_code'],
     ['datum aanvang adres buitenland (13.20)', 'vertrek_datum'],
     ['regel 1 adres buitenland (13.30)', 'vertrek_land_adres_1'],
     ['regel 2 adres buitenland (13.40)', 'vertrek_land_adres_2'],
@@ -184,7 +183,26 @@ const columnNameMap = new Map([
     ['woonplaats (11.70)', 'woon_plaats_naam'],
     ['identificatiecode verblijfplaats (11.80)', 'verblijf_plaats_ident_code'],
     ['identificatiecode nummeraanduiding (11.90)', 'nummer_aand_ident_code'],
-    ['locatiebeschrijving (12.10)', 'locatie_beschrijving']
+    ['locatiebeschrijving (12.10)', 'locatie_beschrijving'],
+
+    ['RNI-deelnemer (88.10)', 'rni_deelnemer'],
+    ['Omschrijving verdrag (88.20)', 'verdrag_oms'],
+
+    ['land (13.10)', 'vertrek_land_code'],
+
+    ['indicatie geheim (70.10)', 'geheim_ind'],
+    ['reden opschorting bijhouding (67.20)', 'bijhouding_opschort_reden'],
+
+    ['datum aanvang adreshouding (10.30)', 'adreshouding_start_datum'],
+    ['straatnaam (11.10)', 'straat_naam'],
+    ['gemeente van inschrijving (09.10)', 'gemeente_code'],
+	
+    ['datum overlijden (08.10)', 'overlijden_datum'],
+    ['plaats overlijden (08.20)', 'overlijden_plaats'],
+    ['land overlijden (08.30)', 'overlijden_land_code'],
+	
+    ['land vanwaar ingeschreven (14.10)', 'vestiging_land_code'],
+    ['datum vestiging in Nederland (14.20)', 'vestiging_datum']
 ]);
 
 Before(function() {
