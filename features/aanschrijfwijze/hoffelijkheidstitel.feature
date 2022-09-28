@@ -67,15 +67,13 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       
     Abstract Scenario: Vrouw met adellijke partner en naamgebruik "<naamgebruik>"
       Gegeven de persoon met burgerservicenummer '000000206' heeft de volgende gegevens
-      | naam                        | waarde |
-      | geslachtsaanduiding (04.10) | V      |
-      En de persoon heeft de volgende 'naam' gegevens
       | naam                           | waarde        |
+      | geslachtsaanduiding (04.10)    | V             |
       | voornamen (02.10)              | Anne-Fleur    |
       | voorvoegsel (02.30)            | de            |
       | geslachtsnaam (02.40)          | Boer          |
       | aanduiding naamgebruik (61.10) | <naamgebruik> |
-      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
+      En de persoon heeft een 'partner' met de volgende gegevens
       | naam                                 | waarde  |
       | adellijke titel of predicaat (02.20) | B       |
       | voorvoegsel (02.30)                  | van den |
@@ -98,15 +96,13 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
 
     Scenario: Vrouw met adellijke partner en naamgebruik "E" kan geen hoffelijkheidstitel gebruiken
       Gegeven de persoon met burgerservicenummer '000000206' heeft de volgende gegevens
-      | naam                        | waarde |
-      | geslachtsaanduiding (04.10) | V      |
-      En de persoon heeft de volgende 'naam' gegevens
       | naam                           | waarde     |
+      | geslachtsaanduiding (04.10)    | V          |
       | voornamen (02.10)              | Anne-Fleur |
       | voorvoegsel (02.30)            | de         |
       | geslachtsnaam (02.40)          | Boer       |
       | aanduiding naamgebruik (61.10) | E          |
-      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
+      En de persoon heeft een 'partner' met de volgende gegevens
       | naam                                 | waarde  |
       | adellijke titel of predicaat (02.20) | B       |
       | voorvoegsel (02.30)                  | van den |
@@ -117,20 +113,18 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | burgerservicenummer | 000000206                       |
       | fields              | adressering.aanschrijfwijze     |
       Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
-      | naam                          | waarde                   |
-      | aanschrijfwijze.naam          | A. de Boer               |
+      | naam                 | waarde     |
+      | aanschrijfwijze.naam | A. de Boer |
 
     Abstract Scenario: Persoon met geslacht <geslacht> met adellijke partner kan geen hoffelijkheidstitel gebruiken
       Gegeven de persoon met burgerservicenummer '000000218' heeft de volgende gegevens
-      | naam                        | waarde     |
-      | geslachtsaanduiding (04.10) | <geslacht> |
-      En de persoon heeft de volgende 'naam' gegevens
-      | naam                           | waarde |
-      | voornamen (02.10)              | John   |
-      | voorvoegsel (02.30)            | de     |
-      | geslachtsnaam (02.40)          | Boer   |
-      | aanduiding naamgebruik (61.10) | P      |
-      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
+      | naam                           | waarde     |
+      | geslachtsaanduiding (04.10)    | <geslacht> |
+      | voornamen (02.10)              | John       |
+      | voorvoegsel (02.30)            | de         |
+      | geslachtsnaam (02.40)          | Boer       |
+      | aanduiding naamgebruik (61.10) | P          |
+      En de persoon heeft een 'partner' met de volgende gegevens
       | naam                                 | waarde  |
       | adellijke titel of predicaat (02.20) | B       |
       | voorvoegsel (02.30)                  | van den |
@@ -151,24 +145,22 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
 
     Abstract Scenario: Vrouw met partner met adellijke titel "<titel partner>"
       Gegeven de persoon met burgerservicenummer '000000231' heeft de volgende gegevens
-      | naam                        | waarde |
-      | geslachtsaanduiding (04.10) | V      |
-      En de persoon heeft de volgende 'naam' gegevens
       | naam                           | waarde     |
+      | geslachtsaanduiding (04.10)    | V          |
       | voornamen (02.10)              | Anne-Fleur |
       | voorvoegsel (02.30)            | de         |
       | geslachtsnaam (02.40)          | Boer       |
       | aanduiding naamgebruik (61.10) | P          |
-      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
+      En de persoon heeft een 'partner' met de volgende gegevens
       | naam                                 | waarde          |
       | adellijke titel of predicaat (02.20) | <titel partner> |
       | voorvoegsel (02.30)                  | van den         |
       | geslachtsnaam (02.40)                | Aedel           |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                           |
-      | type                | RaadpleegMetBurgerservicenummer  |
-      | burgerservicenummer | 000000231                        |
-      | fields              | adressering.aanschrijfwijze.naam |
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000231                       |
+      | fields              | adressering.aanschrijfwijze     |
       Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
       | naam                          | waarde                    |
       | aanschrijfwijze.naam          | <naam in aanschrijfwijze> |
@@ -184,24 +176,22 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
 
     Abstract Scenario: Vrouw met partner met adellijke titel "<titel partner>" kan geen hoffelijkheidstitel gebruiken
       Gegeven de persoon met burgerservicenummer '000000231' heeft de volgende gegevens
-      | naam                        | waarde |
-      | geslachtsaanduiding (04.10) | V      |
-      En de persoon heeft de volgende 'naam' gegevens
       | naam                           | waarde     |
+      | geslachtsaanduiding (04.10)    | V          |
       | voornamen (02.10)              | Anne-Fleur |
       | voorvoegsel (02.30)            | de         |
       | geslachtsnaam (02.40)          | Boer       |
       | aanduiding naamgebruik (61.10) | P          |
-      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
+      En de persoon heeft een 'partner' met de volgende gegevens
       | naam                                 | waarde          |
       | adellijke titel of predicaat (02.20) | <titel partner> |
       | voorvoegsel (02.30)                  | van den         |
       | geslachtsnaam (02.40)                | Aedel           |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                           |
-      | type                | RaadpleegMetBurgerservicenummer  |
-      | burgerservicenummer | 000000231                        |
-      | fields              | adressering.aanschrijfwijze.naam |
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000231                       |
+      | fields              | adressering.aanschrijfwijze     |
       Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
       | naam                 | waarde           |
       | aanschrijfwijze.naam | A. van den Aedel |
@@ -256,25 +246,23 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
 
     Abstract Scenario: Vrouw met adellijke titel en partner met adellijke titel "<titel partner>"
       Gegeven de persoon met burgerservicenummer '000000243' heeft de volgende gegevens
-      | naam                        | waarde |
-      | geslachtsaanduiding (04.10) | V      |
-      En de persoon heeft de volgende 'naam' gegevens
       | naam                                 | waarde      |
+      | geslachtsaanduiding (04.10)          | V           |
       | voornamen (02.10)                    | Anne-Fleur  |
       | adellijke titel of predicaat (02.20) | BS          |
       | voorvoegsel (02.30)                  | de          |
       | geslachtsnaam (02.40)                | Bonne Fooie |
       | aanduiding naamgebruik (61.10)       | N           |
-      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
+      En de persoon heeft een 'partner' met de volgende gegevens
       | naam                                 | waarde          |
       | adellijke titel of predicaat (02.20) | <titel partner> |
       | voorvoegsel (02.30)                  | van den         |
       | geslachtsnaam (02.40)                | Aedel           |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                           |
-      | type                | RaadpleegMetBurgerservicenummer  |
-      | burgerservicenummer | 000000243                        |
-      | fields              | adressering.aanschrijfwijze.naam |
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000243                       |
+      | fields              | adressering.aanschrijfwijze     |
       Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
       | naam                          | waarde                    |
       | aanschrijfwijze.naam          | <naam in aanschrijfwijze> |
@@ -284,9 +272,9 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | titel partner | naam in aanschrijfwijze                           | aanspreekvorm            | omschrijving                          |
       | B             | A. barones de Bonne Fooie-barones van den Aedel   | De hoogwelgeboren vrouwe | aanspreekvorm uit hoffelijkheidstitel |
       | BS            | A. barones de Bonne Fooie-van den Aedel           | De hoogwelgeboren vrouwe | aanspreekvorm uit eigen titel         |
-      | G             | A. barones de Bonne Fooie-gravin van den Aedel    | De hoogwelgeboren vrouwe | aanspreekvorm uit hoffelijkheidstitel |
+      | G             | A. barones de Bonne Fooie-gravin van den Aedel    | De hooggeboren vrouwe    | aanspreekvorm uit hoffelijkheidstitel |
       | GI            | A. barones de Bonne Fooie-van den Aedel           | De hoogwelgeboren vrouwe | aanspreekvorm uit eigen titel         |
-      | H             | A. barones de Bonne Fooie-hertogin van den Aedel  | De hooggeboren vrouwe    | aanspreekvorm uit hoffelijkheidstitel |
+      | H             | A. barones de Bonne Fooie-hertogin van den Aedel  | De hoogwelgeboren vrouwe | aanspreekvorm uit hoffelijkheidstitel |
       | HI            | A. barones de Bonne Fooie-van den Aedel           | De hoogwelgeboren vrouwe | aanspreekvorm uit eigen titel         |
       | JH            | A. barones de Bonne Fooie-van den Aedel           | De hoogwelgeboren vrouwe | aanspreekvorm uit eigen titel         |
       | JV            | A. barones de Bonne Fooie-van den Aedel           | De hoogwelgeboren vrouwe | aanspreekvorm uit eigen titel         |
@@ -298,25 +286,23 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
 
     Abstract Scenario: Vrouw met adellijke titel en partner met adellijke titel en naamgebruik "<naamgebruik>"
       Gegeven de persoon met burgerservicenummer '000000255' heeft de volgende gegevens
-      | naam                        | waarde |
-      | geslachtsaanduiding (04.10) | V      |
-      En de persoon heeft de volgende 'naam' gegevens
       | naam                                 | waarde        |
+      | geslachtsaanduiding (04.10)          | V             |
       | voornamen (02.10)                    | Anne-Fleur    |
       | adellijke titel of predicaat (02.20) | BS            |
       | voorvoegsel (02.30)                  | de            |
       | geslachtsnaam (02.40)                | Bonne Fooie   |
       | aanduiding naamgebruik (61.10)       | <naamgebruik> |
-      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
+      En de persoon heeft een 'partner' met de volgende gegevens
       | naam                                 | waarde  |
       | adellijke titel of predicaat (02.20) | P       |
       | voorvoegsel (02.30)                  | van den |
       | geslachtsnaam (02.40)                | Aedel   |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                           |
-      | type                | RaadpleegMetBurgerservicenummer  |
-      | burgerservicenummer | 000000255                        |
-      | fields              | adressering.aanschrijfwijze |
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000255                       |
+      | fields              | adressering.aanschrijfwijze     |
       Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
       | naam                          | waarde                    |
       | aanschrijfwijze.naam          | <naam in aanschrijfwijze> |
