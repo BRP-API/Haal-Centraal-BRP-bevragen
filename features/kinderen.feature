@@ -111,7 +111,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | ingangsdatum geldigheid (85.10) | 20031107        | 
       | datum van opneming (86.10)      | 20031109        |
       En het 'kind' is gewijzigd naar de volgende gegevens
-      | naam                            | waarde          |
+      | naam                            | waarde           |
       | gemeente document (82.10)       | 1926             |
       | datum document (82.20)          | 20040105         | 
       | beschrijving document (82.30)   | D27894-2004-A782 | 
