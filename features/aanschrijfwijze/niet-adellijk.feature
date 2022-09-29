@@ -82,11 +82,11 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende gegevens
       | naam                           | waarde                   |
       | voornamen (02.10)              | <voornamen>              |
-      | geslachtsnaam (02.40)          | <geslachtsnaam>          |
+      | geslachtsnaam (02.40)          | Groenen                  |
       | aanduiding naamgebruik (61.10) | <aanduiding naamgebruik> |
       En de persoon heeft een 'partner' met de volgende gegevens
-      | naam                  | waarde                  |
-      | geslachtsnaam (02.40) | <geslachtsnaam partner> |
+      | naam                  | waarde  |
+      | geslachtsnaam (02.40) | Groenlo |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -97,11 +97,11 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | aanschrijfwijze.naam | <naam in aanschrijfwijze> |
 
       Voorbeelden:
-      | voornamen      | geslachtsnaam | aanduiding naamgebruik | geslachtsnaam partner | naam in aanschrijfwijze |
-      | Anna Özil      | Groenen       | E                      | Groenlo               | A.Ö. Groenen            |
-      | Bert Philip    | Groenen       | P                      | Groenlo               | B.P. Groenlo            |
-      | Carla Theodora | Groenen       | V                      | Groenlo               | C.T. Groenlo-Groenen    |
-      | Dirk-Willem    | Groenen       | N                      | Groenlo               | D. Groenen-Groenlo      |
+      | voornamen      | aanduiding naamgebruik | naam in aanschrijfwijze |
+      | Anna Özil      | E                      | A.Ö. Groenen            |
+      | Bert Philip    | P                      | B.P. Groenlo            |
+      | Carla Theodora | V                      | C.T. Groenlo-Groenen    |
+      | Dirk-Willem    | N                      | D. Groenen-Groenlo      |
       
     Abstract Scenario: Persoon met partner met voorvoegsel in naam persoon en geen voorvoegsel in naam partner
       Gegeven de persoon met burgerservicenummer '000000048' heeft de volgende gegevens
