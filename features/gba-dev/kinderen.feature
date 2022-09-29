@@ -14,18 +14,6 @@ Functionaliteit: Kinderen van een persoon raadplegen
       En het 'kind' is gecorrigeerd naar de volgende gegevens
       | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) |
       | William           | de                  | Vries                 |
-      En het 'kind' is gewijzigd naar de volgende gegevens
-      | voornamen (02.10) | geslachtsnaam (02.40) |
-      | William           | Postma                |
-      En de persoon heeft nog een 'kind' met de volgende gegevens
-      | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) |
-      | Sebastiaan        | de                  | Boer                  |
-      En de persoon heeft nog een 'kind' met de volgende gegevens
-      | voornamen (02.10) | geslachtsnaam (02.40) |
-      | Walter            | Messeritz             |
-      En het 'kind' is gecorrigeerd naar de volgende gegevens
-      | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) |
-      | Walter            | de                  | Boer                  |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -34,17 +22,8 @@ Functionaliteit: Kinderen van een persoon raadplegen
       Dan heeft de response een persoon met een 'kind' met de volgende gegevens
       | naam               | waarde  |
       | naam.voornamen     | William |
-      | naam.geslachtsnaam | Postma  |
-      En heeft de persoon een 'kind' met de volgende gegevens
-      | naam               | waarde     |
-      | naam.voornamen     | Sebastiaan |
-      | naam.voorvoegsel   | de         |
-      | naam.geslachtsnaam | Boer       |
-      En heeft de persoon een 'kind' met de volgende gegevens
-      | naam               | waarde |
-      | naam.voornamen     | Walter |
-      | naam.voorvoegsel   | de     |
-      | naam.geslachtsnaam | Boer   |
+      | naam.voorvoegsel   | de      |
+      | naam.geslachtsnaam | Vries   |
 
     Scenario: naamswijziging kind
       Gegeven de persoon met burgerservicenummer '000000024' heeft een 'kind' met de volgende gegevens
@@ -53,9 +32,6 @@ Functionaliteit: Kinderen van een persoon raadplegen
       En het 'kind' is gewijzigd naar de volgende gegevens
       | voornamen (02.10) |
       | Vica              |
-      En de persoon heeft nog een 'kind' met de volgende gegevens
-      | voornamen (02.10) |
-      | Bella             |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -64,9 +40,6 @@ Functionaliteit: Kinderen van een persoon raadplegen
       Dan heeft de response een persoon met een 'kind' met de volgende gegevens
       | naam           | waarde |
       | naam.voornamen | Vica   |
-      En heeft de persoon een 'kind' met de volgende gegevens
-      | naam           | waarde |
-      | naam.voornamen | Bella  |
 
   Rule: Een kind wordt alleen teruggegeven als minimaal één gegeven in de identificatienummers (groep 01), naam (groep 02) of geboorte (groep 03) van het kind een waarde heeft.
     - Wanneer in een categorie kind alleen gegevens zijn opgenomen in groep 81 of 82, 85 en 86, wordt dit kind niet opgenomen in het antwoord
@@ -99,11 +72,23 @@ Functionaliteit: Kinderen van een persoon raadplegen
 
     Scenario: ontkenning ouderschap
       Gegeven de persoon met burgerservicenummer '000000061' heeft een 'kind' met de volgende gegevens
-      | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) | geboortedatum (03.10) | gemeente document (82.10) | datum document (82.20) | beschrijving document (82.30) | ingangsdatum geldigheid (85.10) | datum van opneming (86.10) |
-      | Daan              | de                  | Vries                 | 20031107              | 0518                      | 20031109               | PL gerelateerde               | 20031107                        | 20031109                   |
+      | naam                            | waarde          |
+      | voornamen (02.10)               | Daan            |
+      | voorvoegsel (02.30)             | de              |
+      | geslachtsnaam (02.40)           | Vries           |
+      | geboortedatum (03.10)           | 20031107        |
+      | gemeente document (82.10)       | 0518            |
+      | datum document (82.20)          | 20031109        |
+      | beschrijving document (82.30)   | PL gerelateerde |
+      | ingangsdatum geldigheid (85.10) | 20031107        |
+      | datum van opneming (86.10)      | 20031109        |
       En het 'kind' is gewijzigd naar de volgende gegevens
-      | gemeente document (82.10) | datum document (82.20) | beschrijving document (82.30) | ingangsdatum geldigheid (85.10) | datum van opneming (86.10) |
-      | 1926                      | 20040105               | D27894-2004-A782              | 20031107                        | 20040112                   |
+      | naam                            | waarde           |
+      | gemeente document (82.10)       | 1926             |
+      | datum document (82.20)          | 20040105         |
+      | beschrijving document (82.30)   | D27894-2004-A782 |
+      | ingangsdatum geldigheid (85.10) | 20031107         |
+      | datum van opneming (86.10)      | 20040112         |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -120,7 +105,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000073                       |
       | fields              | kinderen.burgerservicenummer    |
-	  Dan heeft de response een persoon zonder gegevens
+      Dan heeft de response een persoon zonder gegevens
 
   Rule: de geleverde kindgegevens zijn de gegevens zoals die staan op de persoonslijst van de gevraagde persoon
     Bij het raadplegen van een persoon worden alleen gegevens uit de persoonslijst van de gevraagde persoon gebruikt, en nooit gegevens van de persoonslijst van het kind
