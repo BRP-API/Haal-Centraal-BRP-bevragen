@@ -43,10 +43,10 @@ Functionaliteit: Kinderen van een persoon raadplegen
 
   Rule: Een kind wordt alleen teruggegeven als minimaal één gegeven in de identificatienummers (groep 01), naam (groep 02) of geboorte (groep 03) van het kind een waarde heeft.
     - Wanneer in een categorie kind alleen gegevens zijn opgenomen in groep 81 of 82, 85 en 86, wordt dit kind niet opgenomen in het antwoord
-    - Wanneer een gegeven een standaardwaarde heeft, zoals "." (punt) bij geslachtsnaam of "00000000" bij geboortedatum, geldt dat hier als het bestaan van een waarde en wordt het kind wel geleverd
+    - Wanneer een gegeven een standaardwaarde heeft (dit betekent dat de waarde onbekend is), zoals "." (punt) bij geslachtsnaam of "00000000" bij geboortedatum, geldt dat hier als het bestaan van een waarde en wordt het kind wel geleverd.
     - Wanneer door de gebruikte fields parameter in het request het kind in de response geen enkel gegeven heeft met een waarde, dan wordt het kind geleverd zonder gegevens (dus als leeg object)
 
-    Scenario: kind volledig onbekend, veld met onbekend waarde wordt gevraagd met fields
+    Scenario: bestaan kind bekend, veld met onbekend waarde wordt gevraagd met fields
       Gegeven de persoon met burgerservicenummer '000000036' heeft een 'kind' met de volgende gegevens
       | geslachtsnaam (02.40) | geboortedatum (03.10) | 
       | .                     | 00000000              |
@@ -59,7 +59,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | naam          | waarde |
       | geslachtsnaam | .      |
 	  
-    Scenario: kind volledig onbekend, veld met onbekend waarde wordt niet gevraagd met fields
+    Scenario: bestaan kind bekend, veld met onbekend waarde wordt niet gevraagd met fields
       Gegeven de persoon met burgerservicenummer '000000048' heeft een 'kind' met de volgende gegevens
       | geslachtsnaam (02.40) | geboortedatum (03.10) | 
       | .                     | 00000000              |
@@ -82,9 +82,9 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | beschrijving document (82.30)   | PL gerelateerde |
       | ingangsdatum geldigheid (85.10) | 20031107        |
       | datum van opneming (86.10)      | 20031109        |
-      En het 'kind' is gewijzigd naar de volgende gegevens
+      En het 'kind' is gecorrigeerd naar de volgende gegevens
       | naam                            | waarde           |
-      | gemeente document (82.10)       | 1926             |
+      | gemeente document (82.10)       | 0518             |
       | datum document (82.20)          | 20040105         |
       | beschrijving document (82.30)   | D27894-2004-A782 |
       | ingangsdatum geldigheid (85.10) | 20031107         |
@@ -105,7 +105,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000073                       |
       | fields              | kinderen.burgerservicenummer    |
-      Dan heeft de response een persoon zonder gegevens
+      Dan heeft de response een persoon met een 'kind' zonder gegevens
 
   Rule: de geleverde kindgegevens zijn de gegevens zoals die staan op de persoonslijst van de gevraagde persoon
     Bij het raadplegen van een persoon worden alleen gegevens uit de persoonslijst van de gevraagde persoon gebruikt, en nooit gegevens van de persoonslijst van het kind
@@ -120,6 +120,13 @@ Functionaliteit: Kinderen van een persoon raadplegen
       En het 'kind' is gewijzigd naar de volgende gegevens
       | burgerservicenummer (01.20) | voornamen (02.10) | geslachtsaanduiding (04.10) |
       | 000000097                   | Karel             | M                           |
+#      De e2e automation code ondersteund nog niet het opvoeren van meer dan 1 PL record, de volgende Gegeven stappen zijn vooralsnog dan ook uitbecommentarieerd.
+#      En de persoon met burgerservicenummer '000000097' heeft de volgende gegevens
+#      | voornamen (02.10) | geslachtsaanduiding (04.10) |
+#      | Karel             | M                           |
+#      En de persoon is gewijzigd naar de volgende gegevens
+#      | voornamen (02.10) | geslachtsaanduiding (04.10) |
+#      | Charlotte         | V                           |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                                               |
       | type                | RaadpleegMetBurgerservicenummer                      |
