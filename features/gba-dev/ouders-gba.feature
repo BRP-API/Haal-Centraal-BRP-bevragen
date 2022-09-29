@@ -15,7 +15,7 @@ Rule: De ouder in categorie 2 heeft ouderAanduiding "1" en de ouder in categorie
     En de persoon heeft een ouder '2' met de volgende gegevens
     | voornamen (02.10)  |
     | Guîllaumé          |
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                                       |
     | type                | RaadpleegMetBurgerservicenummer              |
     | burgerservicenummer | 000000152                                    |
