@@ -14,18 +14,6 @@ Functionaliteit: Kinderen van een persoon raadplegen
       En het 'kind' is gecorrigeerd naar de volgende gegevens
       | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) |
       | William           | de                  | Vries                 |
-      En het 'kind' is gewijzigd naar de volgende gegevens
-      | voornamen (02.10) | geslachtsnaam (02.40) |
-      | William           | Postma                |
-      En de persoon heeft nog een 'kind' met de volgende gegevens
-      | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) |
-      | Sebastiaan        | de                  | Boer                  |
-      En de persoon heeft nog een 'kind' met de volgende gegevens
-      | voornamen (02.10) | geslachtsnaam (02.40) |
-      | Walter            | Messeritz             |
-      En het 'kind' is gecorrigeerd naar de volgende gegevens
-      | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) |
-      | Walter            | de                  | Boer                  |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -34,20 +22,9 @@ Functionaliteit: Kinderen van een persoon raadplegen
       Dan heeft de response een persoon met een 'kind' met de volgende gegevens
       | naam               | waarde  |
       | naam.voornamen     | William |
-      | naam.geslachtsnaam | Postma  |
+      | naam.voorvoegsel   | de      |
+      | naam.geslachtsnaam | Vries   |
       | naam.voorletters   | W.      |
-      En heeft de persoon een 'kind' met de volgende gegevens
-      | naam               | waarde     |
-      | naam.voornamen     | Sebastiaan |
-      | naam.voorvoegsel   | de         |
-      | naam.geslachtsnaam | Boer       |
-      | naam.voorletters   | S.         |
-      En heeft de persoon een 'kind' met de volgende gegevens
-      | naam               | waarde |
-      | naam.voornamen     | Walter |
-      | naam.voorvoegsel   | de     |
-      | naam.geslachtsnaam | Boer   |
-      | naam.voorletters   | W.     |
 
     Scenario: naamswijziging kind
       Gegeven de persoon met burgerservicenummer '000000024' heeft een 'kind' met de volgende gegevens
@@ -56,9 +33,6 @@ Functionaliteit: Kinderen van een persoon raadplegen
       En het 'kind' is gewijzigd naar de volgende gegevens
       | voornamen (02.10) |
       | Vica              |
-      En de persoon heeft nog een 'kind' met de volgende gegevens
-      | voornamen (02.10) |
-      | Bella             |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -67,9 +41,6 @@ Functionaliteit: Kinderen van een persoon raadplegen
       Dan heeft de response een persoon met een 'kind' met de volgende gegevens
       | naam           | waarde |
       | naam.voornamen | Vica   |
-      En heeft de persoon een 'kind' met de volgende gegevens
-      | naam           | waarde |
-      | naam.voornamen | Bella  |
 
   Rule: Een kind wordt alleen teruggegeven als minimaal één gegeven in de identificatienummers (groep 01), naam (groep 02) of geboorte (groep 03) van het kind een waarde heeft.
     - Wanneer in een categorie kind alleen gegevens zijn opgenomen in groep 81 of 82, 85 en 86, wordt dit kind niet opgenomen in het antwoord
