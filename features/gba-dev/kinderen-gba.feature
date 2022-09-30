@@ -70,7 +70,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | fields              | kinderen.burgerservicenummer    |
       Dan heeft de response een persoon met een 'kind' zonder gegevens
 
-    Scenario: ontkenning ouderschap
+    Scenario: ontkenning ouderschap, herroeping van adoptie en nietig verklaren erkenning
       Gegeven de persoon met burgerservicenummer '000000061' heeft een 'kind' met de volgende gegevens
       | naam                            | waarde          |
       | voornamen (02.10)               | Daan            |
