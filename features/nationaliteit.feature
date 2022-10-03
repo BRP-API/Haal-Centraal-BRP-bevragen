@@ -16,13 +16,13 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
 
 
     Scenario: de persoon heeft één actuele nationaliteit
-      Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
+      Gegeven de persoon met burgerservicenummer '000000139' heeft een 'nationaliteit' met de volgende gegevens
       | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
       | 0001                  | 001                   | 19750707                        |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000012                       |
+      | burgerservicenummer | 000000139                       |
       | fields              | nationaliteiten                 |
       Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
       | naam                              | waarde                                           |
@@ -36,7 +36,7 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       | datumIngangGeldigheid.langFormaat | 7 juli 1975                                      |
 
       Scenario: persoon heeft meerdere nationaliteiten
-      Gegeven de persoon met burgerservicenummer '000000024' heeft een 'nationaliteit' met de volgende gegevens
+      Gegeven de persoon met burgerservicenummer '000000140' heeft een 'nationaliteit' met de volgende gegevens
       | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
       | 0001                  | 001                   | 19750707                        |
       En de persoon heeft nog een 'nationaliteit' met de volgende gegevens
@@ -45,7 +45,7 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000024                       |
+      | burgerservicenummer | 000000140                       |
       | fields              | nationaliteiten                 |
       Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
       | naam                              | waarde                                           |
@@ -69,13 +69,13 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       | datumIngangGeldigheid.langFormaat | 7 januari 1962                                   |
 
     Scenario: de persoon is Staatloos
-      Gegeven de persoon met burgerservicenummer '000000255' heeft een 'nationaliteit' met de volgende gegevens
+      Gegeven de persoon met burgerservicenummer '000000188' heeft een 'nationaliteit' met de volgende gegevens
       | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
       | 0499                  | 312                   | 19750707                        |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000255                       |
+      | burgerservicenummer | 000000188                       |
       | fields              | nationaliteiten                 |
       Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
       | naam                              | waarde                                           |
@@ -87,13 +87,13 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       | datumIngangGeldigheid.langFormaat | 7 juli 1975                                      |
 
     Scenario: de persoon wordt behandeld als Nederlander, bijzonder Nederlanderschap heeft waarde "B"
-      Gegeven de persoon met burgerservicenummer '000000024' heeft een 'nationaliteit' met de volgende gegevens
+      Gegeven de persoon met burgerservicenummer '000000164' heeft een 'nationaliteit' met de volgende gegevens
       | reden opnemen (63.10) | bijzonder Nederlanderschap (65.10) | datum ingang geldigheid (85.10) |
       | 310                   | B                                  | 19570115                        |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                              |
       | type                | RaadpleegMetBurgerservicenummer     |
-      | burgerservicenummer | 000000024                           |
+      | burgerservicenummer | 000000164                           |
       | fields              | nationaliteiten                     |
       Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
       | naam                              | waarde                                  |
@@ -123,13 +123,13 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       | datumIngangGeldigheid.langFormaat | 16 januari 1957                         |
 
     Scenario: de persoon is vastgesteld niet-Nederlander , bijzonder Nederlanderschap heeft waarde "V"
-    Gegeven de persoon met burgerservicenummer '000000036' heeft een 'nationaliteit' met de volgende gegevens
+    Gegeven de persoon met burgerservicenummer '000000218' heeft een 'nationaliteit' met de volgende gegevens
       | reden opnemen (63.10) | bijzonder Nederlanderschap (65.10) | datum ingang geldigheid (85.10) |
       | 310                   | V                                  | 19750615                        |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                              |
       | type                | RaadpleegMetBurgerservicenummer     |
-      | burgerservicenummer | 000000036                           |
+      | burgerservicenummer | 000000218                           |
       | fields              | nationaliteiten                     |
       Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
       | naam                              | waarde                                  |
@@ -228,38 +228,11 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       | datumIngangGeldigheid.datum       | 2019-06-02                                           |
       | datumIngangGeldigheid.langFormaat | 2 juni 2019                                          |
 
-    Scenario: nationaliteit is onjuist
-      Gegeven de persoon met burgerservicenummer '000000085' heeft een 'nationaliteit' met de volgende gegevens
-      | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
-      | 0100                  | 301                   | 20200713                        |
-      En de 'nationaliteit' is gecorrigeerd naar de volgende gegevens
-      | onjuist (84.10) | datum ingang geldigheid (85.10) |
-      | O               | 20200727                        |
-      En de persoon heeft nog een 'nationaliteit' met de volgende gegevens
-      | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
-      | 0263                  | 301                   | 20100801                        |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                              |
-      | type                | RaadpleegMetBurgerservicenummer     |
-      | burgerservicenummer | 000000085                           |
-      | fields              | nationaliteiten                     |
-      Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
-      | naam                              | waarde                                               |
-      | type                              | Nationaliteit                                        |
-      | nationaliteit.code                | 0263                                                 |
-      | nationaliteit.omschrijving        | Surinaamse                                           |
-      | redenOpname.code                  | 301                                                  |
-      | redenOpname.omschrijving          | Vaststelling bezit vreemde nationaliteit             |
-      | datumIngangGeldigheid.type        | Datum                                                |
-      | datumIngangGeldigheid.datum       | 2010-08-01                                           |
-      | datumIngangGeldigheid.langFormaat | 1 augustus 2010                                      |
-
-
     Scenario: geactualiseerde ingangsdatum geldigheid
       Gegeven de persoon met burgerservicenummer '000000097' heeft een 'nationaliteit' met de volgende gegevens
-      | nationaliteit (05.10) | reden opnemen (63.10) | onjuist (84.10) | datum ingang geldigheid (85.10) |
-      | 0100                  | 311                   | O               | 20200713                        |
-      En de 'nationaliteit' is gewijzigd naar de volgende gegevens
+      | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
+      | 0100                  | 311                   | 20200713                        |
+      En de 'nationaliteit' is gecorrigeerd naar de volgende gegevens
       | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
       | 0100                  | 311                   | 20200727                        |
       Als personen wordt gezocht met de volgende parameters
