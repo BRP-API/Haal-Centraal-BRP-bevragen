@@ -6,6 +6,7 @@ public partial class Adressering
 
     public bool ShouldSerialize() =>
         !string.IsNullOrWhiteSpace(Aanhef) ||
+        Aanschrijfwijze != null ||
         !string.IsNullOrWhiteSpace(GebruikInLopendeTekst) ||
         !string.IsNullOrWhiteSpace(Adresregel1) ||
         !string.IsNullOrWhiteSpace(Adresregel2) ||

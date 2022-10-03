@@ -150,6 +150,9 @@ const columnNameMap = new Map([
     ['datum einde verblijfstitel (39.20)', 'verblijfstitel_eind_datum'],
     ['datum ingang verblijfstitel (39.30)', 'geldigheid_start_datum'],
 
+
+    ['aanduiding naamgebruik (61.10)', 'naam_gebruik_aand'],
+
     ['aktenummer (81.20)', 'akte_nr' ],
 
     ['gemeente document (82.10)', 'doc_gemeente_code' ],
@@ -188,6 +191,9 @@ const columnNameMap = new Map([
     ['datum aanvang adreshouding (10.30)', 'adreshouding_start_datum'],
     ['straatnaam (11.10)', 'straat_naam'],
     ['gemeente van inschrijving (09.10)', 'gemeente_code'],
+
+    ['datum opschorting bijhouding (67.10)', 'bijhouding_opschort_datum'],
+    ['reden opschorting bijhouding (67.20)', 'bijhouding_opschort_reden']
 
 ]);
 
