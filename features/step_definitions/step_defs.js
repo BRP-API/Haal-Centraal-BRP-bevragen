@@ -123,6 +123,8 @@ const columnNameMap = new Map([
     ['reden opnemen (63.10)', 'nl_nat_verkrijg_reden'],
     ['reden beëindigen (64.10)', 'nl_nat_verlies_reden'],
     ['datum ingang geldigheid (85.10)', 'geldigheid_start_datum'],
+    ['bijzonder Nederlanderschap (65.10)', 'bijzonder_nl_aand'],
+    ['onjuist (84.10)' , 'onjuist_ind'],
 
     [ 'burgerservicenummer (01.20)', 'burger_service_nr' ],
 
@@ -150,7 +152,6 @@ const columnNameMap = new Map([
     ['datum einde verblijfstitel (39.20)', 'verblijfstitel_eind_datum'],
     ['datum ingang verblijfstitel (39.30)', 'geldigheid_start_datum'],
 
-
     ['aanduiding naamgebruik (61.10)', 'naam_gebruik_aand'],
 
     ['aktenummer (81.20)', 'akte_nr' ],
@@ -162,6 +163,7 @@ const columnNameMap = new Map([
     ['ingangsdatum geldigheid (85.10)', 'geldigheid_start_datum' ],
 
     ['datum van opneming (86.10)', 'opneming_datum' ],
+
 
     ['gemeente document (82.10)', 'doc_gemeente_code' ],
     ['datum document (82.20)', 'doc_datum' ],
