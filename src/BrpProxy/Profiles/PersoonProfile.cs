@@ -61,7 +61,7 @@ public class PersoonProfile : Profile
                     dest.Adressering = new Adressering
                     {
                         Aanhef = dest.Naam.Aanhef(),
-                        // Aanschrijfwijze = dest.Naam.Aanschrijfwijze()
+                        Aanschrijfwijze = dest.Naam.Aanschrijfwijze(),
                         GebruikInLopendeTekst = dest.Naam.GebruikInLopendeTekst()
                     };
                 }
