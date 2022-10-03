@@ -75,6 +75,9 @@ opschortingBijhouding;;;;;7;;;Ja;;
 ;reden;;;;7;67.20;code+omschrijving;Ja;Ja;
 datumEersteInschrijvingGBA;;;;;7;68.10;ongewijzigd leveren (8 cijfers);;;
 geheimhoudingPersoonsgegevens;;;;;7;70.10;ongewijzigd leveren (0-7);Ja;Ja;
+verificatie;;;;;7;;;;;
+;datum;;;;7;71.10;ongewijzigd leveren (6 cijfers);Ja;Ja;
+;omschrijving;;;;7;71.20;ongewijzigd leveren;Ja;Ja;
 gemeenteVanInschrijving;;;;;8;09.10;code+omschrijving;Ja;Ja;
 datumInschrijvingInGemeente;;;;;8;09.20;ongewijzigd leveren (8 cijfers);Ja;;
 verblijfplaats;;;;;8;;;~;;
@@ -135,3 +138,7 @@ europeesKiesrecht;;;;;13;;alleen leveren bij einddatumUitsluiting in de toekomst
 uitsluitingKiesrecht;;;;;13;;alleen leveren bij einddatum in de toekomst of leeg;;;
 ;uitgeslotenVanKiesrecht;;;;13;38.10;als A: true;;;
 ;einddatum;;;;13;38.20;ongewijzigd leveren (8 cijfers);;;
+rni;;;;;1, 4, 6, 7, 8;;;;;
+;deelnemer;;;;1, 4, 6, 7, 8;88.10;code+omschrijving;Ja;Ja;
+;omschrijvingVerdrag;;;;1, 4, 6, 7, 8;88.20;ongewijzigd leveren;Ja;Ja;
+;categorie;;;;1, 4, 6, 7, 8;88;naam van categorie waaruit 88.10 en/88.20 88.20 zijn gehaald;Ja;Ja;
