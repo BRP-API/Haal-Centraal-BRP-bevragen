@@ -46,16 +46,20 @@ Achtergrond:
     | fields              | verblijfstitel.aanduiding       |
     Dan heeft de response een persoon zonder gegevens
 
-  Scenario: persoon's verblijfstitel velden is in onderzoek
+  Scenario: persoon's verblijfstitel velden is in onderzoek geweest
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfstitel' gegevens
-    | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | datum einde onderzoek (83.30) |
-    | 103910                          | 20020101                       | 20040201                     |
+    | aanduiding verblijfstitel (39.10) | datum ingang verblijfstitel (39.30) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | datum einde onderzoek (83.30) |
+    | 09                                | 20010327                            | 103910                          | 20020101                       | 20040201                     |
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000152                       |
     | fields              | verblijfstitel                  |
-    Dan heeft de response een persoon zonder gegevens
+    Dan heeft de response een persoon met de volgende 'verblijfstitel' gegevens
+    | naam                                         | waarde                          |
+    | aanduiding.code                              | 09                              |
+    | aanduiding.omschrijving                      | Art. 9 van de Vreemdelingenwet  |
+    | datumIngangGeldigheid                        | 20010327                        |
 
 
   Scenario: persoon's verblijfstitel velden is in onderzoek
