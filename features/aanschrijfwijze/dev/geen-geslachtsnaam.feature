@@ -1,6 +1,6 @@
 # language: nl
 
-Functionaliteit: Als gemeente wil ik de juiste partnergegevens gebruiken in de aanschrijfwijze van mijn burgers 
+Functionaliteit: Als gemeente wil ik de geen onjuiste aanschrijfwijze van mijn burgers 
 
   Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van de persoon wordt gebruikt, wordt aanschrijfwijze niet opgenomen
 
