@@ -48,7 +48,7 @@ namespace BrpProxy.Middlewares
             return new ValidatePersonenQueryResult(context.CreateBadRequestFoutbericht(titel, code, invalidParams));
         }
 
-        private ValidatePersonenQueryResult(ICollection<string> fields)
+        private ValidatePersonenQueryResult(ICollection<string>? fields)
         {
             IsValid = true;
             Fields = fields;

@@ -163,7 +163,7 @@ namespace BrpProxy.Mappers
                 }
             }
 
-            if(persoon.Verblijfplaats != null && persoon.Verblijfplaats.InOnderzoek != null)
+            if(persoon?.Verblijfplaats != null && persoon.Verblijfplaats.InOnderzoek != null)
             {
                 var inOnderzoek = persoon.Verblijfplaats.InOnderzoek;
                 switch (inOnderzoek.AanduidingGegevensInOnderzoek)

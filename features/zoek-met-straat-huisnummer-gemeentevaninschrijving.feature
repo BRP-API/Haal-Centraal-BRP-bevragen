@@ -342,4 +342,59 @@ Functionaliteit: Zoek met straatnaam/naam openbare ruimte, huisnummer en gemeent
     | *van Ock*  | wildcard als eerste en laatste karakter in straat       |
     | Laan * van | wildcard is niet eerste of laatste karakter in straat   |
     | Laan*      | straat bevat niet het minimum aantal vereiste karakters |
-    
+
+
+Rule: een afgevoerde persoonslijst moet niet worden gevonden
+  - wanneer reden opschorting bijhouding (07.67.20) is opgenomen met de waarde "F" (fout), moet deze persoon(slijst) niet worden gevonden bij zoeken
+
+  Scenario: Zoek met postcode en huisnummer van persoon op afgevoerde persoonslijst
+    Gegeven een persoon heeft de volgende 'inschrijving' gegevens
+    | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+    | 20220829                             | F                                    |
+    En de persoon heeft de volgende 'persoon' gegevens
+    | burgerservicenummer (01.20) |
+    | 000000012                   |
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
+    | gemeente van inschrijving (09.10) | straatnaam (11.10)  | huisnummer (11.20) |
+    | 0518                              | Haagse Reigerstraat | 31                 |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                       | waarde                                           |
+    | type                       | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
+    | gemeenteVanInschrijving    | 0518                                             |
+    | straat                     | Haagse Reigerstraat                              |
+    | huisnummer                 | 31                                               |
+    | inclusiefOverledenPersonen | true                                             |
+    | fields                     | burgerservicenummer                              |
+    Dan heeft de response 0 personen
+
+  Abstract Scenario: Zoek met postcode en huisnummer van persoon op opgeschorte persoonslijst wegens "<reden opschorting omschrijving>"
+    Gegeven een persoon heeft de volgende 'inschrijving' gegevens
+    | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+    | 20220829                             | <reden opschorting bijhouding>       |
+    En de persoon heeft de volgende 'persoon' gegevens
+    | burgerservicenummer (01.20) |
+    | 000000024                   |
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
+    | gemeente van inschrijving (09.10) | straatnaam (11.10)  | huisnummer (11.20) |
+    | 0518                              | Haagse Reigerstraat | 31                 |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                       | waarde                                           |
+    | type                       | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
+    | gemeenteVanInschrijving    | 0518                                             |
+    | straat                     | Haagse Reigerstraat                              |
+    | huisnummer                 | 31                                               |
+    | inclusiefOverledenPersonen | true                                             |
+    | fields                     | burgerservicenummer                              |
+    Dan heeft de response een persoon met de volgende gegevens
+    | naam                                     | waarde                           |
+    | burgerservicenummer                      | 000000024                        |
+    | opschortingBijhouding.reden.code         | <reden opschorting bijhouding>   |
+    | opschortingBijhouding.reden.omschrijving | <reden opschorting omschrijving> |
+
+    Voorbeelden:
+    | reden opschorting bijhouding | reden opschorting omschrijving |
+    | O                            | overlijden                     |
+    | E                            | emigratie                      |
+    | M                            | ministerieel besluit           |
+    | .                            | onbekend                       |
+  

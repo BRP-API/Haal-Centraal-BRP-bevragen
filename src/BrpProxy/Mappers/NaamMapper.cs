@@ -9,7 +9,7 @@ public static class NaamMapper
 
     public static bool IsLeegOfOnbekend(this string partnerNaam) => string.IsNullOrWhiteSpace(partnerNaam);
 
-    public static string? ToNull(this string str)
+    public static string? ToNull(this string? str)
     {
         return string.IsNullOrWhiteSpace(str) ? null : str;
     }

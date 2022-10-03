@@ -545,3 +545,51 @@ Rule: Bij zoeken met de "*" wildcard moet minimaal 3 letters (exclusief de wildc
     | gr*o*                |
     | gr*t                 |
     | gr**                 |
+
+
+Rule: een afgevoerde persoonslijst moet niet worden gevonden
+  - wanneer reden opschorting bijhouding (07.67.20) is opgenomen met de waarde "F" (fout), moet deze persoon(slijst) niet worden gevonden bij zoeken
+
+  Scenario: Zoek met geslachtsnaam en geboortedatum van persoon op afgevoerde persoonslijst
+    Gegeven een persoon heeft de volgende 'inschrijving' gegevens
+    | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+    | 20220829                             | F                                    |
+    En de persoon heeft de volgende 'persoon' gegevens
+    | burgerservicenummer (01.20) | geslachtsnaam (02.40) | geboortedatum (03.10) |
+    | 000000012                   | Isnietgoed            | 19781103              |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                       | waarde                              |
+    | type                       | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam              | Isnietgoed                          |
+    | geboortedatum              | 1978-11-03                          |
+    | inclusiefOverledenPersonen | true                                |
+    | fields                     | burgerservicenummer                 |
+    Dan heeft de response 0 personen
+
+  Abstract Scenario: Zoek met geslachtsnaam en geboortedatum van persoon op opgeschorte persoonslijst wegens "<reden opschorting omschrijving>"
+    Gegeven een persoon heeft de volgende 'inschrijving' gegevens
+    | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+    | 20220829                             | <reden opschorting bijhouding>       |
+    En de persoon heeft de volgende 'persoon' gegevens
+    | burgerservicenummer (01.20) | geslachtsnaam (02.40) | geboortedatum (03.10) |
+    | 000000024                   | Iswelgoed            | 19781103              |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                       | waarde                              |
+    | type                       | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam              | Iswelgoed                           |
+    | geboortedatum              | 1978-11-03                          |
+    | inclusiefOverledenPersonen | true                                |
+    | fields                     | burgerservicenummer                 |
+    Dan heeft de response een persoon met de volgende gegevens
+    | naam                                     | waarde                           |
+    | burgerservicenummer                      | 000000024                        |
+    | opschortingBijhouding.reden.code         | <reden opschorting bijhouding>   |
+    | opschortingBijhouding.reden.omschrijving | <reden opschorting omschrijving> |
+
+    Voorbeelden:
+    | reden opschorting bijhouding | reden opschorting omschrijving |
+    | O                            | overlijden                     |
+    | E                            | emigratie                      |
+    | M                            | ministerieel besluit           |
+    | R                            | pl is aangelegd in de rni      |
+    | .                            | onbekend                       |
