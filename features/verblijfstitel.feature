@@ -1,5 +1,6 @@
 # language: nl
 
+@post-assert
 Functionaliteit: Verblijfstitel
 
   @gba
@@ -47,9 +48,9 @@ Functionaliteit: Verblijfstitel
       | burgerservicenummer | 555550002 |
       En de persoon heeft de volgende 'verblijfstitel' gegevens
       | naam                                | waarde       |
-      | Aanduiding verblijfstitel (39.10)   | 37           |
-      | Datum einde verblijfstitel (39.20)  | <datumEinde> |
-      | Ingangsdatum verblijfstitel (39.30) | 20210315     |
+      | aanduiding verblijfstitel (39.10)   | 37           |
+      | datum einde verblijfstitel (39.20)  | <datumEinde> |
+      | datum ingang verblijfstitel (39.30) | 20210315     |
       Als personen op '5 juni 2022' wordt gezocht met de volgende parameters
       | naam                | waarde                                             |
       | type                | RaadpleegMetBurgerservicenummer                    |
@@ -72,8 +73,8 @@ Functionaliteit: Verblijfstitel
       | burgerservicenummer | 555550003 |
       En de persoon heeft de volgende 'verblijfstitel' gegevens
       | naam                                | waarde   |
-      | Aanduiding verblijfstitel (39.10)   | 98       |
-      | Ingangsdatum verblijfstitel (39.30) | 20210315 |
+      | aanduiding verblijfstitel (39.10)   | 98       |
+      | datum ingang verblijfstitel (39.30) | 20210315 |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                        |
       | type                | RaadpleegMetBurgerservicenummer               |
@@ -91,10 +92,10 @@ Functionaliteit: Verblijfstitel
       | burgerservicenummer | 555550004 |
       En de persoon heeft de volgende 'verblijfstitel' gegevens
       | naam                                | waarde   |
-      | Aanduiding verblijfstitel (39.10)   | 00       |
+      | aanduiding verblijfstitel (39.10)   | 00       |
       | aanduiding.omschrijving             | Onbekend |
-      | Ingangsdatum verblijfstitel (39.30) | 20210714 |
-      Als personen op '5 juni 2022' wordt gezocht met de volgende parameters
+      | datum ingang verblijfstitel (39.30) | 20210714 |
+      Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550004                       |
