@@ -188,6 +188,9 @@ const columnNameMap = new Map([
     ['straatnaam (11.10)', 'straat_naam'],
     ['gemeente van inschrijving (09.10)', 'gemeente_code'],
 
+    ['datum opschorting bijhouding (67.10)', 'bijhouding_opschort_datum'],
+    ['reden opschorting bijhouding (67.20)', 'bijhouding_opschort_reden']
+
 ]);
 
 Before(function() {
