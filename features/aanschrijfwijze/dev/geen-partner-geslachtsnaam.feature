@@ -53,9 +53,8 @@ Functionaliteit: Als gemeente wil ik alleen juiste partnergegevens gebruiken in 
       | N                      |
 
     Abstract Scenario: persoon heeft partner met onbekende naam en adellijkeTitelPredicaat "B"
-      Gegeven het systeem heeft een persoon met de volgende gegevens
+      Gegeven de persoon met burgerservicenummer '000000401' heeft de volgende gegevens
       | naam                           | waarde    |
-      | burgerservicenummer            | 000000401 |
       | geslachtsaanduiding (04.10)    | V         |
       | voornamen (02.10)              | Jo Anne   |
       | voorvoegsel (02.30)            | de        |
