@@ -112,22 +112,19 @@ const tableNameMap = new Map([
     ['kiesrecht', 'lo3_pl'],
     ['verblijfstitel', 'lo3_pl_verblijfstitel'],
     ['verblijfplaats', 'lo3_pl_verblijfplaats'],
-    ['gezagsverhouding', 'lo3_pl_gezagsverhouding']
+    ['gezagsverhouding', 'lo3_pl_gezagsverhouding'],
+    ['overlijden', 'lo3_pl_overlijden'],
+    ['adres', 'lo3_adres']
 ]);
 
 const columnNameMap = new Map([
 
-    ['nationaliteit (05.10)', 'nationaliteit_code'],
-    ['reden opnemen (63.10)', 'nl_nat_verkrijg_reden'],
-    ['reden beëindigen (64.10)', 'nl_nat_verlies_reden'],
-    ['datum ingang geldigheid (85.10)', 'geldigheid_start_datum'],
+    ['burgerservicenummer (01.20)', 'burger_service_nr' ],
 
-    [ 'burgerservicenummer (01.20)', 'burger_service_nr' ],
-
-    [ 'voornamen (02.10)', 'voor_naam' ],
+    ['voornamen (02.10)', 'voor_naam' ],
     ['adellijke titel of predicaat (02.20)', 'titel_predikaat' ],
-    [ 'voorvoegsel (02.30)', 'geslachts_naam_voorvoegsel' ],
-    [ 'geslachtsnaam (02.40)', 'geslachts_naam' ],
+    ['voorvoegsel (02.30)', 'geslachts_naam_voorvoegsel' ],
+    ['geslachtsnaam (02.40)', 'geslachts_naam' ],
 
     ['geboortedatum (03.10)', 'geboorte_datum'],
     ['geboorteplaats (03.20)', 'geboorte_plaats'],
@@ -135,11 +132,48 @@ const columnNameMap = new Map([
 
     ['geslachtsaanduiding (04.10)', 'geslachts_aand'],
 
+    ['nationaliteit (05.10)', 'nationaliteit_code'],
+
     ['datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10)', 'relatie_start_datum'],
     ['plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20)', 'relatie_start_plaats'],
     ['land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)', 'relatie_start_land_code'],
+
     ['datum ontbinding huwelijk/geregistreerd partnerschap (07.10)', 'relatie_eind_datum'],
+
+    ['datum overlijden (08.10)', 'overlijden_datum'],
+    ['plaats overlijden (08.20)', 'overlijden_plaats'],
+    ['land overlijden (08.30)', 'overlijden_land_code'],
+
+    ['gemeente van inschrijving (09.10)', 'gemeente_code'],
+
+    ['functieAdres.code (10.10)', 'adres_functie'],
+    ['datum aanvang adreshouding (10.30)', 'adreshouding_start_datum'],
+
+    ['straatnaam (11.10)', 'straat_naam'],
+    ['naam openbare ruimte (11.15)', 'open_ruimte_naam'],
+    ['huisnummer (11.20)', 'huis_nr'],
+    ['huisletter (11.30)', 'huis_letter'],
+    ['huisnummertoevoeging (11.40)', 'huis_nr_toevoeging'],
+    ['aanduiding bij huisnummer (11.50)', 'huis_nr_aand'],
+    ['postcode (11.60)', 'postcode'],
+    ['woonplaats (11.70)', 'woon_plaats_naam'],
+    ['identificatiecode verblijfplaats (11.80)', 'verblijf_plaats_ident_code'],
+    ['identificatiecode nummeraanduiding (11.90)', 'nummer_aand_ident_code'],
+
+    ['locatiebeschrijving (12.10)', 'locatie_beschrijving'],
+	
+    ['land (13.10)', 'vertrek_land_code'],
+    ['datum aanvang adres buitenland (13.20)', 'vertrek_datum'],
+    ['regel 1 adres buitenland (13.30)', 'vertrek_land_adres_1'],
+    ['regel 2 adres buitenland (13.40)', 'vertrek_land_adres_2'],
+    ['regel 3 adres buitenland (13.50)', 'vertrek_land_adres_3'],
+
+    ['land vanwaar ingeschreven (14.10)', 'vestiging_land_code'],
+    ['datum vestiging in Nederland (14.20)', 'vestiging_datum'],
+
     ['soort verbintenis (15.10)', 'verbintenis_soort'],
+
+    ['indicatie curateleregister (33.10)', 'curatele_register_ind' ],
 
     ['aanduiding uitgesloten kiesrecht (38.10)', 'kiesrecht_uitgesl_aand'],
     ['einddatum uitsluiting kiesrecht (38.20)', 'kiesrecht_uitgesl_eind_datum'],
@@ -148,27 +182,37 @@ const columnNameMap = new Map([
     ['datum einde verblijfstitel (39.20)', 'verblijfstitel_eind_datum'],
     ['datum ingang verblijfstitel (39.30)', 'geldigheid_start_datum'],
 	
+    ['aanduiding naamgebruik (61.10)', 'naam_gebruik_aand'],
+	
+    ['datum ingang familierechtelijke betrekking (62.10)', 'familie_betrek_start_datum'],
+
+    ['reden opnemen (63.10)', 'nl_nat_verkrijg_reden'],
+
+    ['reden beëindigen (64.10)', 'nl_nat_verlies_reden'],
+
+    ['reden opschorting bijhouding (67.20)', 'bijhouding_opschort_reden'],
+
+    ['indicatie geheim (70.10)', 'geheim_ind'],
+
+    ['aktenummer (81.20)', 'akte_nr' ],
+	
     ['gemeente document (82.10)', 'doc_gemeente_code' ],
     ['datum document (82.20)', 'doc_datum' ],
     ['beschrijving document (82.30)', 'doc_beschrijving' ],
-	
-    ['ingangsdatum geldigheid (85.10)', 'geldigheid_start_datum' ],
-	
-    ['datum van opneming (86.10)', 'opneming_datum' ],
-
-    ['gemeente document (82.10)', 'doc_gemeente_code' ],
-    ['datum document (82.20)', 'doc_datum' ],
-    ['beschrijving document (82.30)', 'doc_beschrijving' ],
-
-    ['ingangsdatum geldigheid (85.10)', 'geldigheid_start_datum' ],
-
-    ['datum van opneming (86.10)', 'opneming_datum' ],
-
-    ['indicatie curateleregister (33.10)', 'curatele_register_ind' ],
 
     ['aanduiding in onderzoek (83.10)', 'onderzoek_gegevens_aand' ],
     ['datum ingang onderzoek (83.20)', 'onderzoek_start_datum' ],
-    ['datum einde onderzoek (83.30)', 'onderzoek_eind_datum' ]
+    ['datum einde onderzoek (83.30)', 'onderzoek_eind_datum' ],
+
+    ['indicatie onjuist (84.10)', 'onjuist_ind' ],
+
+    ['datum ingang geldigheid (85.10)', 'geldigheid_start_datum'],
+
+    ['datum van opneming (86.10)', 'opneming_datum' ],
+
+    ['rni-deelnemer (88.10)', 'rni_deelnemer'],
+    ['omschrijving verdrag (88.20)', 'verdrag_oms'],
+
 ]);
 
 Before(function() {
