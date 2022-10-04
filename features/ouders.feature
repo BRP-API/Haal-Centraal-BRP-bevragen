@@ -1,11 +1,9 @@
 # language: nl
 
-@post-assert
 Functionaliteit: Ouders van een persoon raadplegen
   Van een persoon kunnen ouders worden geleverd.
   Dit bevat gegevens over de familierechtelijke betrekking plus enkele identificerende eigenschappen van de ouder.
 
-@gba
 Rule: De ouder in categorie 2 heeft ouderAanduiding "1" en de ouder in categorie 3 heeft ouderAanduiding "2"
 
   Scenario: Persoon heeft twee ouders
@@ -29,7 +27,6 @@ Rule: De ouder in categorie 2 heeft ouderAanduiding "1" en de ouder in categorie
     | ouderAanduiding | 2         |
     | naam.voornamen  | Guîllaumé |
 
-@gba
 Rule: de actuele gegevens van ouders worden geleverd
 
   Scenario: oudergegevens gecorrigeerd
@@ -144,7 +141,6 @@ Rule: de actuele gegevens van ouders worden geleverd
     | naam.voornamen  | Wieger |
     | ouderAanduiding | 2      |
 
-@gba
 Rule: de geleverde oudergegevens zijn de gegevens zoals die staan op de persoonslijst van de gevraagde persoon
   # Bij het raadplegen van een persoon worden alleen gegevens uit de persoonslijst van de gevraagde persoon gebruikt, en nooit gegevens van de persoonslijst van de ouder
 
@@ -181,7 +177,6 @@ Rule: de geleverde oudergegevens zijn de gegevens zoals die staan op de persoons
     | naam.voornamen        | Karel     |
     | ouderAanduiding       | 2         |
 
-@gba
 Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenomen en geen gegevens in groep 1, 2, 3, 4 of 62, dan wordt de ouder niet opgenomen
   Gebruik van de fields parameter heeft geen invloed op het leveren van een ouder
 
@@ -190,7 +185,7 @@ Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenome
     | datum ingang familierechtelijke betrekking (62.10) | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) |
     | 20190614                                           | .                     | V                           |
     En de persoon heeft een ouder '2' met de volgende gegevens
-    | aktenummer (81.20) | ingangsdatum geldigheid (85.10) |
+    | aktenummer (81.20) | datum ingang geldigheid (85.10) |
     | 2•E0001            | 20160518                        |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
@@ -200,19 +195,19 @@ Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenome
     Dan heeft de response een persoon met een 'ouder' met de volgende gegevens
     | naam                                                | waarde       |
     | ouderAanduiding                                     | 1            |
-    | naam.geslachtsnaam                                  | .            |
     | geslacht.code                                       | V            |
     | geslacht.omschrijving                               | vrouw        |
     | datumIngangFamilierechtelijkeBetrekking.type        | Datum        |
     | datumIngangFamilierechtelijkeBetrekking.datum       | 2019-06-14   |
     | datumIngangFamilierechtelijkeBetrekking.langFormaat | 14 juni 2019 |
+	En heeft het 'ouder' geen 'naam' gegevens 
 
   Scenario: volledig onbekende ouder
     Gegeven de persoon met burgerservicenummer '000000243' heeft een ouder '1' met de volgende gegevens
     | geslachtsnaam (02.40) | datum ingang familierechtelijke betrekking (62.10) |
     | .                     | 00000000                                           |
     En de persoon heeft een ouder '2' met de volgende gegevens
-    | aktenummer (81.20) | ingangsdatum geldigheid (85.10) |
+    | aktenummer (81.20) | datum ingang geldigheid (85.10) |
     | 2•E0001            | 20160518                        |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
@@ -222,44 +217,42 @@ Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenome
     Dan heeft de response een persoon met een 'ouder' met de volgende gegevens
     | naam                                                | waarde        |
     | ouderAanduiding                                     | 1             |
-    | naam.geslachtsnaam                                  | .            |
     | datumIngangFamilierechtelijkeBetrekking.type        | DatumOnbekend |
     | datumIngangFamilierechtelijkeBetrekking.onbekend    | true          |
     | datumIngangFamilierechtelijkeBetrekking.langFormaat | onbekend      |
+	En heeft het 'ouder' geen 'naam' gegevens 
 
-  Scenario: met fields vragen om gegevens zonder waarde
+  Scenario: ouder met alleen gegevens in groepen 81 en 85
     Gegeven de persoon met burgerservicenummer '000000255' heeft een ouder '1' met de volgende gegevens
     | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) | datum ingang familierechtelijke betrekking (62.10) |
     | Jansen                | V                           | 20190614                                           |
     En de persoon heeft een ouder '2' met de volgende gegevens
-    | aktenummer (81.20) | ingangsdatum geldigheid (85.10) |
+    | aktenummer (81.20) | datum ingang geldigheid (85.10) |
     | 2•E0001            | 20160518                        |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                 |
-    | type                | RaadpleegMetBurgerservicenummer        |
-    | burgerservicenummer | 000000255                              |
-    | fields              | ouders.naam.voornamen,ouders.geboorte.datum |
-    Dan heeft de response een persoon met een 'ouder' zonder gegevens
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000255                       |
+    | fields              | ouders                          |
+    Dan heeft de response een persoon met een 'ouder' met de volgende gegevens
+    | naam                                                | waarde       |
+    | naam.geslachtsnaam                                  | Jansen       |
+    | ouderAanduiding                                     | 1            |
+    | geslacht.code                                       | V            |
+    | geslacht.omschrijving                               | vrouw        |
+    | datumIngangFamilierechtelijkeBetrekking.type        | Datum        |
+    | datumIngangFamilierechtelijkeBetrekking.datum       | 2019-06-14   |
+    | datumIngangFamilierechtelijkeBetrekking.langFormaat | 14 juni 2019 |
 
-@proxy
 Rule: Wanneer van de ouder wel gegevens geregistreerd zijn, maar geen van de met fields gevraagde gegevens heeft een waarde, dan wordt er een 'ouders' zonder gegevens geleverd
 
-  @proxy
-  Scenario: geen gegevens door fields levert een 'ouders' zonder gegevens
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft een 'ouder' met de volgende gegevens
-    | naam                                            | waarde   |
-    | ouderAanduiding                                 | 1        |
-    | geslachtsaanduiding (04.10)                     | V        |
-    | datumIngangFamilierechtelijkeBetrekking (62.10) | 20190614 |
-    En de 'ouder' heeft alleen de volgende 'naam' gegevens
-    | naam                  | waarde            |
-    | geslachtsnaam (02.40) | Ibin binti Yalniz |
+  Scenario: met fields vragen om gegevens zonder waarde
+    Gegeven de persoon met burgerservicenummer '000000292' heeft een ouder '1' met de volgende gegevens
+    | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) | datum ingang familierechtelijke betrekking (62.10) |
+    | Ibin binti Yalniz     | V                           | 20190614                                           |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                                      |
     | type                | RaadpleegMetBurgerservicenummer             |
     | burgerservicenummer | 555550001                                   |
     | fields              | ouders.naam.voornamen,ouders.geboorte.datum |
-    Dan heeft de response een persoon met een leeg 'ouder' object
+    Dan heeft de response een persoon met een 'ouder' zonder gegevens
