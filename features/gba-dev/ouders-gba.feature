@@ -1,5 +1,6 @@
 # language: nl
 
+@gba
 Functionaliteit: Ouders van een persoon raadplegen
   Van een persoon kunnen ouders worden geleverd.
   Dit bevat gegevens over de familierechtelijke betrekking plus enkele identificerende eigenschappen van de ouder.
@@ -13,7 +14,7 @@ Rule: De ouder in categorie 2 heeft ouderAanduiding "1" en de ouder in categorie
     En de persoon heeft een ouder '2' met de volgende gegevens
     | voornamen (02.10)  |
     | Guîllaumé          |
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                                       |
     | type                | RaadpleegMetBurgerservicenummer              |
     | burgerservicenummer | 000000152                                    |
@@ -39,7 +40,7 @@ Rule: de actuele gegevens van ouders worden geleverd
     En de ouder '2' is gecorrigeerd naar de volgende gegevens
     | voornamen (02.10)  |
     | Mark               |
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                                       |
     | type                | RaadpleegMetBurgerservicenummer              |
     | burgerservicenummer | 000000164                                    |
@@ -63,7 +64,7 @@ Rule: de actuele gegevens van ouders worden geleverd
     En de ouder '2' is gewijzigd naar de volgende gegevens
     | voornamen (02.10)  | geslachtsaanduiding (04.10) |
     | Johanna            | V                           |
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                                                       |
     | type                | RaadpleegMetBurgerservicenummer                              |
     | burgerservicenummer | 000000176                                                    |
@@ -94,25 +95,21 @@ Rule: de actuele gegevens van ouders worden geleverd
     En de ouder '2' is gecorrigeerd naar de volgende gegevens
     | voornamen (02.10) | datum ingang familierechtelijke betrekking (62.10) |
     | Kevin             | 20190317                                           |
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                                                                                      |
     | type                | RaadpleegMetBurgerservicenummer                                                             |
     | burgerservicenummer | 000000188                                                                                   |
     | fields              | ouders.ouderAanduiding,ouders.naam.voornamen,ouders.datumIngangFamilierechtelijkeBetrekking |
     Dan heeft de response een persoon met een 'ouder' met de volgende gegevens
-    | naam                                                | waarde           |
-    | naam.voornamen                                      | Olivia Ghislaine |
-    | ouderAanduiding                                     | 1                |
-    | datumIngangFamilierechtelijkeBetrekking.type        | Datum            |
-    | datumIngangFamilierechtelijkeBetrekking.datum       | 2019-03-17       |
-    | datumIngangFamilierechtelijkeBetrekking.langFormaat | 17 maart 2019    |
+    | naam                                    | waarde           |
+    | naam.voornamen                          | Olivia Ghislaine |
+    | ouderAanduiding                         | 1                |
+    | datumIngangFamilierechtelijkeBetrekking | 20190317         |
     En heeft de persoon een 'ouder' met de volgende gegevens
-    | naam                                                | waarde        |
-    | naam.voornamen                                      | Kevin         |
-    | ouderAanduiding                                     | 2             |
-    | datumIngangFamilierechtelijkeBetrekking.type        | Datum         |
-    | datumIngangFamilierechtelijkeBetrekking.datum       | 2019-03-17    |
-    | datumIngangFamilierechtelijkeBetrekking.langFormaat | 17 maart 2019 |
+    | naam                                    | waarde   |
+    | naam.voornamen                          | Kevin    |
+    | ouderAanduiding                         | 2        |
+    | datumIngangFamilierechtelijkeBetrekking | 20190317 |
 
   Scenario: ontkenning gevolgd door erkenning
     Gegeven de persoon met burgerservicenummer '000000206' heeft een ouder '1' met de volgende gegevens
@@ -127,7 +124,7 @@ Rule: de actuele gegevens van ouders worden geleverd
     En de ouder '2' is gecorrigeerd naar de volgende gegevens
     | voornamen (02.10)  | 
     | Wieger             | 
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                                       |
     | type                | RaadpleegMetBurgerservicenummer              |
     | burgerservicenummer | 000000206                                    |
@@ -157,7 +154,7 @@ Rule: de geleverde oudergegevens zijn de gegevens zoals die staan op de persoons
     En de ouder '2' is gecorrigeerd naar de volgende gegevens
     | burgerservicenummer (01.20) | voornamen (02.10) | geslachtsaanduiding (04.10) |
     | 000007897                   | Karel             | M                           |
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                                                                                  |
     | type                | RaadpleegMetBurgerservicenummer                                                         |
     | burgerservicenummer | 000000218                                                                               |
@@ -187,20 +184,18 @@ Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenome
     En de persoon heeft een ouder '2' met de volgende gegevens
     | aktenummer (81.20) | datum ingang geldigheid (85.10) |
     | 2•E0001            | 20160518                        |
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000231                       |
     | fields              | ouders                          |
     Dan heeft de response een persoon met een 'ouder' met de volgende gegevens
-    | naam                                                | waarde       |
-    | ouderAanduiding                                     | 1            |
-    | geslacht.code                                       | V            |
-    | geslacht.omschrijving                               | vrouw        |
-    | datumIngangFamilierechtelijkeBetrekking.type        | Datum        |
-    | datumIngangFamilierechtelijkeBetrekking.datum       | 2019-06-14   |
-    | datumIngangFamilierechtelijkeBetrekking.langFormaat | 14 juni 2019 |
-	En heeft het 'ouder' geen 'naam' gegevens 
+    | naam                                    | waarde   |
+    | ouderAanduiding                         | 1        |
+    | naam.geslachtsnaam                      | .        |
+    | geslacht.code                           | V        |
+    | geslacht.omschrijving                   | vrouw    |
+    | datumIngangFamilierechtelijkeBetrekking | 20190614 |
 
   Scenario: volledig onbekende ouder
     Gegeven de persoon met burgerservicenummer '000000243' heeft een ouder '1' met de volgende gegevens
@@ -209,18 +204,16 @@ Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenome
     En de persoon heeft een ouder '2' met de volgende gegevens
     | aktenummer (81.20) | datum ingang geldigheid (85.10) |
     | 2•E0001            | 20160518                        |
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000243                       |
     | fields              | ouders                          |
     Dan heeft de response een persoon met een 'ouder' met de volgende gegevens
-    | naam                                                | waarde        |
-    | ouderAanduiding                                     | 1             |
-    | datumIngangFamilierechtelijkeBetrekking.type        | DatumOnbekend |
-    | datumIngangFamilierechtelijkeBetrekking.onbekend    | true          |
-    | datumIngangFamilierechtelijkeBetrekking.langFormaat | onbekend      |
-	En heeft het 'ouder' geen 'naam' gegevens 
+    | naam                                    | waarde   |
+    | ouderAanduiding                         | 1        |
+    | naam.geslachtsnaam                      | .        |
+    | datumIngangFamilierechtelijkeBetrekking | 00000000 |
 
   Scenario: ouder met alleen gegevens in groepen 81 en 85
     Gegeven de persoon met burgerservicenummer '000000255' heeft een ouder '1' met de volgende gegevens
@@ -229,20 +222,18 @@ Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenome
     En de persoon heeft een ouder '2' met de volgende gegevens
     | aktenummer (81.20) | datum ingang geldigheid (85.10) |
     | 2•E0001            | 20160518                        |
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000255                       |
     | fields              | ouders                          |
     Dan heeft de response een persoon met een 'ouder' met de volgende gegevens
-    | naam                                                | waarde       |
-    | naam.geslachtsnaam                                  | Jansen       |
-    | ouderAanduiding                                     | 1            |
-    | geslacht.code                                       | V            |
-    | geslacht.omschrijving                               | vrouw        |
-    | datumIngangFamilierechtelijkeBetrekking.type        | Datum        |
-    | datumIngangFamilierechtelijkeBetrekking.datum       | 2019-06-14   |
-    | datumIngangFamilierechtelijkeBetrekking.langFormaat | 14 juni 2019 |
+    | naam                                    | waarde   |
+    | naam.geslachtsnaam                      | Jansen   |
+    | ouderAanduiding                         | 1        |
+    | geslacht.code                           | V        |
+    | geslacht.omschrijving                   | vrouw    |
+    | datumIngangFamilierechtelijkeBetrekking | 20190614 |
 
 Rule: Wanneer van de ouder wel gegevens geregistreerd zijn, maar geen van de met fields gevraagde gegevens heeft een waarde, dan wordt er een 'ouders' zonder gegevens geleverd
 
@@ -250,7 +241,7 @@ Rule: Wanneer van de ouder wel gegevens geregistreerd zijn, maar geen van de met
     Gegeven de persoon met burgerservicenummer '000000292' heeft een ouder '1' met de volgende gegevens
     | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) | datum ingang familierechtelijke betrekking (62.10) |
     | Ibin binti Yalniz     | V                           | 20190614                                           |
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                                      |
     | type                | RaadpleegMetBurgerservicenummer             |
     | burgerservicenummer | 555550001                                   |
