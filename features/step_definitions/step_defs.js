@@ -208,7 +208,8 @@ const columnNameMap = new Map([
     ['indicatie onjuist (84.10)', 'onjuist_ind' ],
 
     ['datum ingang geldigheid (85.10)', 'geldigheid_start_datum'],
-
+    ['ingangsdatum geldigheid (85.10)', 'geldigheid_start_datum' ],
+	
     ['datum van opneming (86.10)', 'opneming_datum' ],
 
     ['rni-deelnemer (88.10)', 'rni_deelnemer'],
