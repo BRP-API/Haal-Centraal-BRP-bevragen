@@ -30,6 +30,7 @@ const propertyNameMap = new Map([
     ['datum ingang onderzoek (11.83.20)', 'gezagInOnderzoek.datumIngangOnderzoek'],
     ['aanduiding gegevens in onderzoek (83.10)', 'inOnderzoek.aanduidingGegevensInOnderzoek'],
     ['datum ingang onderzoek (83.20)', 'inOnderzoek.datumIngangOnderzoek'],
+    ['datum einde onderzoek (83.30)', 'inOnderzoek.datumEindeOnderzoek'],
 
     // Gezagsverhouding
     ['indicatie gezag minderjarige (32.10)', 'indicatieGezagMinderjarige.code'],
@@ -195,7 +196,7 @@ const columnNameMap = new Map([
     ['indicatie geheim (70.10)', 'geheim_ind'],
 
     ['aktenummer (81.20)', 'akte_nr' ],
-	
+
     ['gemeente document (82.10)', 'doc_gemeente_code' ],
     ['datum document (82.20)', 'doc_datum' ],
     ['beschrijving document (82.30)', 'doc_beschrijving' ],
@@ -227,8 +228,11 @@ After(async function() {
         const client = await pool.connect();
         try {
             for(const [key] of tableNameMap){
-                await client.query(createDeleteStatement(key, this.context.pl_id));
+                await client.query(createDeleteStatement(key, key === 'adres' ? this.context.adres_id : this.context.pl_id));
             }
+        }
+        catch(ex) {
+            console.log(ex.stack);
         }
         finally {
             client.release();
@@ -236,6 +240,28 @@ After(async function() {
     }
 });
 
+function insertIntoAdresStatement(data) {
+    let statement = {
+        text: 'INSERT INTO public.lo3_adres(adres_id',
+        values: []
+    };
+
+    data.forEach(function(row) {
+        statement.text += `,${row[0]}`;
+        statement.values.push(row[1]);
+    });
+
+    statement.text += ') VALUES((SELECT MAX(adres_id)+1 FROM public.lo3_adres)';
+    statement.values.forEach(function(_value, index) {
+        statement.text += `,$${index+1}`;
+    });
+    statement.text += ') RETURNING *';
+
+    if(logSqlStatements) {
+        console.log(statement);
+    }
+    return statement;
+}
 
 function insertIntoPersoonlijstStatement(data) {
     let statement = {
@@ -291,10 +317,14 @@ function insertIntoStatement(tabelNaam, data) {
     return statement;
 }
 
-function createDeleteStatement(tabelNaam, plId) {
-    let statement = {
-        text: `DELETE FROM public.${tableNameMap.get(tabelNaam)} WHERE pl_id=$1`,
-        values: [plId]
+function createDeleteStatement(tabelNaam, id) {
+    const naamId = tabelNaam === 'adres'
+        ? 'adres_id'
+        : 'pl_id';
+
+    const statement = {
+        text: `DELETE FROM public.${tableNameMap.get(tabelNaam)} WHERE ${naamId}=$1`,
+        values: [id]
     };
 
     if(logSqlStatements) {
@@ -319,7 +349,7 @@ function createArrayFrom(dataTable) {
     if(dataTable.raw()[0][0] === "naam") {
         dataTable.hashes().forEach(function(row) {
             const propertyName = columnNameMap.get(row.naam);
-    
+
             if(row.waarde !== undefined && row.waarde !== '') {
                 retval.push([ propertyName, calculatePropertyValue(row.waarde, false) ]);
             }
@@ -342,13 +372,6 @@ function createPersoonlijstData(gegevensgroep, dataTable, geheim=0) {
     }
 
     return data;
-}
-
-function createGegevensgroepData(plId, dataTable) {
-    return [
-        [ 'pl_id', plId ],
-        [ 'volg_nr', 0]
-    ].concat(fromHash(dataTable.hashes()[0]));
 }
 
 function createCollectieDataFromArray(relatie, data, stapelNr=0) {
@@ -384,7 +407,7 @@ function createCollectieDataFromArray(relatie, data, stapelNr=0) {
           ].concat(data);
 }
 
-function createDataFromArray(data) {
+function createVoorkomenDataFromArray(data) {
     return [
         [ 'volg_nr', '0']
     ].concat(data);
@@ -402,12 +425,17 @@ function getNextStapelNr(sqlData, relatie) {
     return stapelNr;
 }
 
-Given(/^landelijke tabel "([\w\-]*)" heeft de volgende waarden$/, function (_tabelNaam, _dataTable) {       
+Given(/^landelijke tabel "([\w\-]*)" heeft de volgende waarden$/, function (_tabelNaam, _dataTable) {
     // doe nog niets
 });
 
-Given(/^de statement '(.*)' heeft als resultaat '(\d*)'$/, function (_statement, result) {
-    this.context.pl_id = Number(result);
+Given(/^de statement '(.*)' heeft als resultaat '(\d*)'$/, function (statement, result) {
+    if(statement.includes('lo3_pl')) {
+        this.context.pl_id = Number(result);
+    }
+    else if(statement.includes('lo3_adres')) {
+        this.context.adres_id = Number(result);
+    }
 });
 
 Given(/^(?:de|een) persoon met burgerservicenummer '(\d*)' heeft de volgende gegevens$/, function (burgerservicenummer, dataTable) {
@@ -424,6 +452,7 @@ Given(/^(?:de|een) persoon met burgerservicenummer '(\d*)' heeft de volgende geg
 Then(/^zijn de gegenereerde SQL statements$/, function(dataTable) {
     const sqlData = this.context.sqlData;
     const plId = this.context.pl_id;
+    const adresId = this.context.adres_id;
 
     let expected = {};
     let lastKey;
@@ -437,40 +466,75 @@ Then(/^zijn de gegenereerde SQL statements$/, function(dataTable) {
         }
     });
 
-    Object.keys(expected).forEach(function(key) {
+    for(const key of Object.keys(expected)) {
         const sqlDataItems = sqlData[key];
         should.exist(sqlDataItems, `geen data gevonden voor '${key}' om SQL statements te genereren`);
 
         expected[key].forEach(function(exp, index) {
             let actual = sqlDataItems[index];
 
-            const name = key.replace(/-\d$/, "");
-            const statement = key === 'inschrijving'
-                ? insertIntoPersoonlijstStatement(actual)
-                : insertIntoStatement(name, [ ['pl_id', plId+''] ].concat(actual));
+            let statement;
+            switch(key) {
+                case 'inschrijving':
+                    statement = insertIntoPersoonlijstStatement(actual);
+                    break;
+                case 'adres':
+                    statement = insertIntoAdresStatement(actual);
+                    break;
+                case 'verblijfplaats':
+                    statement = insertIntoStatement(key, [
+                        ['pl_id', plId+''],
+                        ['adres_id', adresId+'']
+                    ].concat(actual));
+                    break;
+                default:
+                    const name = key.replace(/-\d$/, "");
+                    statement = insertIntoStatement(name, [
+                        ['pl_id', plId+'']
+                    ].concat(actual));
+            } 
 
             statement.text.should.equal(exp.text);
             statement.values.should.deep.equalInAnyOrder(exp.values.split(','));
         });
-    });
+    }
 });
+
+function createStatementData(key, plId, adresId, rowData) {
+    if(key === 'verblijfplaats') {
+        return [
+            [ 'pl_id', plId ],
+            [ 'adres_id', adresId ]
+        ].concat(rowData);
+    }
+
+    return [
+        [ 'pl_id', plId ]
+    ].concat(rowData);
+}
 
 async function executeSqlStatements(sqlData) {
     let plId = undefined;
+    let adresId = undefined;
     if(pool !== undefined) {
         const client = await pool.connect();
         try {
+            if(sqlData['adres'] !== undefined) {
+                const res = await client.query(insertIntoAdresStatement(sqlData['adres'][0]));
+                adresId = res.rows[0]['adres_id'];
+            }
             const res = await client.query(insertIntoPersoonlijstStatement(sqlData['inschrijving'][0]));
-            plId = res.rows[0]["pl_id"];
+            plId = res.rows[0]['pl_id'];
 
             for(const key of Object.keys(sqlData)) {
-                if(key === 'inschrijving') {
+                if(key === 'inschrijving' ||
+                    key === 'adres') {
                     continue;
                 }
+
                 for(const rowData of sqlData[key]) {
-                    const data = [
-                        ['pl_id', plId]
-                    ].concat(rowData);
+                    const data = createStatementData(key, plId, adresId, rowData);
+
                     const name = key.replace(/-\d$/, "");
                     await client.query(insertIntoStatement(name, data));
                 }
@@ -480,7 +544,10 @@ async function executeSqlStatements(sqlData) {
             client.release();
         }
     }
-    return plId;
+    return {
+        'pl_id' : plId,
+        'adres_id': adresId
+    };
 }
 
 Given(/^een persoon heeft de volgende '(\w*)' gegevens$/, async function (gegevensgroep, dataTable) {
@@ -516,11 +583,15 @@ Given(/^een persoon heeft de volgende '(\w*)' gegevens$/, async function (gegeve
 
 Given(/^de persoon heeft de volgende '(\w*)' gegevens$/, async function (gegevensgroep, dataTable) {
     this.context.sqlData[gegevensgroep] = [
-        createDataFromArray(createArrayFrom(dataTable))
+        createVoorkomenDataFromArray(createArrayFrom(dataTable)) 
     ];
+
+    setPersoonProperties(this.context.persoon, gegevensgroep, dataTable);
+
+    this.context.attach(`${gegevensgroep}: ${JSON.stringify(this.context.persoon[gegevensgroep], null, '  ')}`);
 });
 
-Given(/^de persoon met burgerservicenummer '(\d*)' heeft de volgende '(\w*)' gegevens$/, async function(burgerservicenummer, gegevensgroep, dataTable) {
+function createPersoonMetGegevensgroep(burgerservicenummer, gegevensgroep, dataTable) {
     this.context.sqlData = {};
 
     this.context.sqlData["persoon"] = [
@@ -538,7 +609,11 @@ Given(/^de persoon met burgerservicenummer '(\d*)' heeft de volgende '(\w*)' geg
     else {
         this.context.sqlData[gegevensgroep] = [ createArrayFrom(dataTable) ];
     }
-});
+}
+
+Given(/^de persoon met burgerservicenummer '(\d*)' heeft de volgende '(\w*)' gegevens$/, createPersoonMetGegevensgroep);
+
+Given(/^de persoon met burgerservicenummer '(\d*)' heeft een '(\w*)' verkregen met de volgende gegevens$/, createPersoonMetGegevensgroep);
 
 Given(/^de persoon met burgerservicenummer '(\d*)' heeft een '(\w*)' met de volgende gegevens$/, async function (burgerservicenummer, collectieGegevensgroep, dataTable) {
     this.context.sqlData = {};
@@ -639,7 +714,7 @@ Given(/^de persoon is gewijzigd naar de volgende gegevens$/, function (dataTable
     this.context.sqlData['persoon'].push(createCollectieDataFromArray('persoon', createArrayFrom(dataTable)));
 });
 
-Given(/^(?:de|het) '(.*)' is gewijzigd naar de volgende gegevens$/, async function (relatie, dataTable) {
+function wijzigRelatie(relatie, dataTable) {
     let foundRelatie;
     Object.keys(this.context.sqlData).find(function(key) {
         if(key.startsWith(relatie)) {
@@ -656,9 +731,13 @@ Given(/^(?:de|het) '(.*)' is gewijzigd naar de volgende gegevens$/, async functi
         this.context.sqlData[foundRelatie].push(createCollectieDataFromArray(relatie, createArrayFrom(dataTable), stapelNr[1]));
     }
     else {
-        this.context.sqlData[foundRelatie].push(createDataFromArray(createArrayFrom(dataTable)));
+        this.context.sqlData[foundRelatie].push(createVoorkomenDataFromArray(createArrayFrom(dataTable)));
     }
-});
+}
+
+Given(/^(?:de|het) '(.*)' is gewijzigd naar de volgende gegevens$/, wijzigRelatie);
+
+Given(/^de persoon heeft een '(\w*)' verkregen met de volgende gegevens$/, wijzigRelatie);
 
 Given(/^de persoon heeft ?(?:nog)? een '?(?:ex-)?(\w*)' met ?(?:alleen)? de volgende gegevens$/, async function (relatie, dataTable) {
     const stapelNr = getNextStapelNr(this.context.sqlData, relatie);
@@ -675,6 +754,18 @@ Given(/^de persoon heeft ?(?:nog)? een '?(?:ex-)?(\w*)' met ?(?:alleen)? de volg
         this.context.persoon[relatieCollectie].push(this.context[relatie]);
     }
     this.context[relatie] = createObjectFrom(dataTable);
+});
+
+Given(/^(?:de|het) '?(?:ex-)?(\w*)' heeft ?(?:alleen)? de volgende '(\w*)' gegevens$/, function (relatie, gegevensgroep, dataTable) {
+    this.context.sqlData[`${gegevensgroep}`] = [
+        createArrayFrom(dataTable)
+    ];
+
+    if(this.context[relatie] === undefined) {
+        this.context[relatie] = {};
+    }
+
+    setPersoonProperties(this.context[relatie], gegevensgroep, dataTable);
 });
 
 function createObjectFrom(dataTable, dateAsDate = false) {
@@ -936,14 +1027,6 @@ Given(/^de persoon heeft een '?(?:ex-)?(.*)' met ?(?:alleen)? de volgende '(.*)'
     setPersoonProperties(this.context[relatie], gegevensgroep, dataTable);
 });
 
-Given(/^(?:de|het) '?(?:ex-)?(\w*)' heeft ?(?:alleen)? de volgende '(\w*)' gegevens$/, function (relatie, gegevensgroep, dataTable) {
-    if(this.context[relatie] === undefined) {
-        this.context[relatie] = {};
-    }
-
-    setPersoonProperties(this.context[relatie], gegevensgroep, dataTable);
-});
-
 Given(/^de persoon heeft (?:GEEN|geen) '(.*)' gegevens$/, function (_) {
     // doe niets
 });
@@ -1012,7 +1095,9 @@ function createHeaders(dataTable, extraHeaders) {
 }
 
 When(/^personen wordt gezocht met de volgende parameters$/, async function (dataTable) {
-    this.context.pl_id = await executeSqlStatements(this.context.sqlData);
+    const result = await executeSqlStatements(this.context.sqlData);
+    this.context.pl_id = result.pl_id;
+    this.context.adres_id = result.adres_id;
 
     const config = {
         method: 'post',
@@ -1038,7 +1123,9 @@ When(/^personen wordt gezocht met de volgende parameters$/, async function (data
 });
 
 When(/^gba personen wordt gezocht met de volgende parameters$/, async function (dataTable) {
-    this.context.pl_id = await executeSqlStatements(this.context.sqlData);
+    const result = await executeSqlStatements(this.context.sqlData);
+    this.context.pl_id = result.pl_id;
+    this.context.adres_id = result.adres_id;
 
     const config = {
         method: 'post',
