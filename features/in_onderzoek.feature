@@ -275,7 +275,7 @@ Functionaliteit: in onderzoek
       | fields              | <groep><veld>                   |
       Dan heeft de response een persoon met de volgende gegevens
       | naam                                                | waarde       |
-	  | <veld>                                              | <waarde>     |
+	  | <groep><veld>                                       | <waarde>     |
       | inOnderzoek.<in onderzoek>                          | true         |
       | inOnderzoek.datumIngangOnderzoekPersoon.datum       | 2022-03-07   |
       | inOnderzoek.datumIngangOnderzoekPersoon.type        | Datum        |
@@ -284,14 +284,34 @@ Functionaliteit: in onderzoek
       Voorbeelden:
       | aanduiding in onderzoek | in onderzoek        | groep     | veld                | waarde |
       | 010120                  | burgerservicenummer |           | burgerservicenummer | 000000309  |
-      | 010410                  | geslacht            | geslacht. | code                | M          |
+      | 010410                  | geslacht            | geslacht. | code       | M          |
+
+#    Scenario: persoon heeft naam adellijkeTitelPredicaat in onderzoek
+#      Gegeven de persoon met burgerservicenummer '000000310' heeft de volgende gegevens
+#      | naam                                 | waarde   |
+#      | aanduiding in onderzoek (83.10)      | 010220   |
+#      | datum ingang onderzoek (83.20)       | 20220307 |
+#	  | adellijke titel of predicaat (02.20) | H        |
+#      Als personen wordt gezocht met de volgende parameters
+#      | naam                | waarde                            |
+#      | type                | RaadpleegMetBurgerservicenummer   |
+#      | burgerservicenummer | 000000310                         |
+#      | fields              | naam.adellijkeTitelPredicaat.code |
+#      | fields              | naam |
+#      Dan heeft de response een persoon met de volgende gegevens
+#      | naam                                              | waarde       |
+#      | naam.adellijkeTitelPredicaat.code                 | H            |
+#      | naam.inOnderzoek.adellijkeTitelPredicaat          | true         |
+#      | naam.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07   |
+#      | naam.inOnderzoek.datumIngangOnderzoek.type        | Datum        |
+#      | naam.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
 
     Abstract Scenario: persoon heeft <groep> <in onderzoek> in onderzoek
       Gegeven de persoon met burgerservicenummer '000000310' heeft de volgende gegevens
       | naam                            | waarde                    |
       | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
       | datum ingang onderzoek (83.20)  | 20220307                  |
-	  | <column naam>                   | <bronwaarde>              |
+	  | <naam>                          | <bronwaarde>              |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -306,105 +326,113 @@ Functionaliteit: in onderzoek
       | <groep>.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
 
       Voorbeelden:
-      | aanduiding in onderzoek | in onderzoek            | veld                         | groep            | waarde     | column naam                          | bronwaarde |
+      | aanduiding in onderzoek | in onderzoek            | veld                         | groep            | waarde     | naam                                 | bronwaarde |
       | 010220                  | adellijkeTitelPredicaat | adellijkeTitelPredicaat.code | naam             | H          | adellijke titel of predicaat (02.20) | H          |
       | 016110                  | aanduidingNaamgebruik   | aanduidingNaamgebruik.code   | naam             | E          | aanduiding naamgebruik (61.10)       | E          |
       | 010310                  | datum                   | datum.datum                  | geboorte         | 2001-09-28 | geboortedatum (03.10)                | 20010928   | 
 
-#    Abstract Scenario: persoon heeft <veld> van <groep> in onderzoek
-#      Gegeven het systeem heeft een persoon met de volgende gegevens
-#      | naam                        | waarde    |
-#      | burgerservicenummer         | 555550001 |
-#      En de persoon heeft de volgende '<groep>.inOnderzoek' gegevens
-#      | naam                          | waarde   |
-#      | aanduidingGegevensInOnderzoek | <waarde> |
-#      | datumIngangOnderzoek          | 20220307 |
-#      Als personen wordt gezocht met de volgende parameters
-#      | naam                | waarde                          |
-#      | type                | RaadpleegMetBurgerservicenummer |
-#      | burgerservicenummer | 555550001                       |
-#      | fields              | <groep>.<veld>                  |
-#      Dan heeft de persoon met burgerservicenummer '555550001' de volgende '<groep>.inOnderzoek' gegevens
-#      | naam                             | waarde       |
-#      | <veld>                           | true         |
-#      | datumIngangOnderzoek.datum       | 2022-03-07   |
-#      | datumIngangOnderzoek.type        | Datum        |
-#      | datumIngangOnderzoek.langFormaat | 7 maart 2022 |
-
-#      Voorbeelden:
-#      | waarde | veld                      | groep            |
-#      | 081120 | huisnummer                | verblijfplaats   |
-#      | 081130 | huisletter                | verblijfplaats   |
-#      | 081140 | huisnummertoevoeging      | verblijfplaats   |
-#      | 081150 | aanduidingBijHuisnummer   | verblijfplaats   |
-#      | 081160 | postcode                  | verblijfplaats   |
-#      | 081170 | woonplaats                | verblijfplaats   |
-#      | 081210 | locatiebeschrijving       | verblijfplaats   |
-#      | 081310 | land                      | verblijfplaats   |
-#      | 081350 | adresregel3               | verblijfplaats   |
-#      | 103910 | aanduiding                | verblijfstitel   |
-
-#	Onderstaande abstract scenario, die gebaseerd is op de uitbecommentarieerde hierboven, is nog in bewerking.
-    Abstract Scenario: persoon heeft <in onderzoek> van <groep> in onderzoek
+    Abstract Scenario: persoon heeft <in onderzoek> van verblijfadres in onderzoek
       Gegeven de persoon met burgerservicenummer '000000322' heeft de volgende gegevens
       | naam                            | waarde                    |
       | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
       | datum ingang onderzoek (83.20)  | 20220307                  |
-	  | <column naam>                   | <waarde>                  |
+      En de persoon heeft de volgende 'verblijfplaats' gegevens
+      | naam                                   | waarde |
+      | functieAdres.code (10.10)              | W      |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      | naam          | waarde   |
+	  | gemeente van inschrijving (09.10)      | 0599   |
+	  | <column naam> | <waarde> |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                              |
+      | type                | RaadpleegMetBurgerservicenummer     |
+      | burgerservicenummer | 000000322                           |
+      | fields              | verblijfplaats.verblijfadres.<veld> |
+      Dan heeft de response een persoon met de volgende gegevens
+      | naam                                                                      | waarde       |
+      | verblijfplaats.type                                                       | <Type>       |
+      | verblijfplaats.verblijfadres.<veld>                                       | <waarde>     |
+      | verblijfplaats.verblijfadres.inOnderzoek.<veld>                           | true         |
+      | verblijfplaats.verblijfadres.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07   |
+      | verblijfplaats.verblijfadres.inOnderzoek.datumIngangOnderzoek.type        | Datum        |
+      | verblijfplaats.verblijfadres.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
+
+      Voorbeelden:
+      | aanduiding in onderzoek | in onderzoek              | veld                      | waarde                         | column naam                       | Type                     |
+      | 081120                  | huisnummer                | huisnummer                | 22                             | huisnummer (11.20)                | Adres                    |
+      | 081130                  | huisletter                | huisletter                | a                              | huisletter (11.30)                | Adres                    |
+      | 081140                  | huisnummertoevoeging      | huisnummertoevoeging      | bis                            | huisnummertoevoeging (11.40)      | Adres                    |
+      | 081160                  | postcode                  | postcode                  | 1234AB                         | postcode (11.60)                  | Adres                    |
+      | 081170                  | woonplaats                | woonplaats                | 0599                           | woonplaats (11.70)                | Adres                    |
+      | 081210                  | locatiebeschrijving       | locatiebeschrijving       | In de grootste sloot           | locatiebeschrijving (12.10)       | Locatie                  |
+	  
+    Scenario: persoon heeft adresregel3 van verblijfplaats in onderzoek
+      Gegeven de persoon met burgerservicenummer '000000322' heeft de volgende gegevens
+      | naam                            | waarde   |
+      | aanduiding in onderzoek (83.10) | 081350   |
+      | datum ingang onderzoek (83.20)  | 20220307 |
+      En de persoon heeft de volgende 'verblijfplaats' gegevens
+      | naam                                   | waarde                         |
+	  | regel 3 adres buitenland (13.50)       | Entrance 2, 4th floor, Apt. 22 |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                              |
+      | type                | RaadpleegMetBurgerservicenummer     |
+      | burgerservicenummer | 000000322                           |
+      | fields              | verblijfplaats.verblijfadres.regel3 |
+      Dan heeft de response een persoon met de volgende gegevens
+      | naam                                                                      | waarde                         |
+      | verblijfplaats.type                                                       | VerblijfplaatsBuitenland       |
+      | verblijfplaats.verblijfadres.regel3                                       | Entrance 2, 4th floor, Apt. 22 |
+      | verblijfplaats.verblijfadres.inOnderzoek.regel3                           | true                           |
+      | verblijfplaats.verblijfadres.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07                     |
+      | verblijfplaats.verblijfadres.inOnderzoek.datumIngangOnderzoek.type        | Datum                          |
+      | verblijfplaats.verblijfadres.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022                   |
+
+    Scenario: persoon heeft aanduiding van verblijfstitel in onderzoek
+      Gegeven de persoon met burgerservicenummer '000000322' heeft de volgende gegevens
+      | naam                            | waarde   |
+      | aanduiding in onderzoek (83.10) | 103910   |
+      | datum ingang onderzoek (83.20)  | 20220307 |
+      En de persoon heeft de volgende 'verblijfstitel' gegevens
+      | naam                              | waarde |
+	  | aanduiding verblijfstitel (39.10) | 15     |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000322                       |
-      | fields              | <groep>.<veld>                  |
+      | fields              | verblijfstitel.aanduiding       |
       Dan heeft de response een persoon met de volgende gegevens
-      | naam                             | waarde       |
-      | <groep>.<veld>                   | true         |
-      | <groep>.inOnderzoek.<veld>       | true         |
-      | datumIngangOnderzoek.datum       | 2022-03-07   |
-      | datumIngangOnderzoek.type        | Datum        |
-      | datumIngangOnderzoek.langFormaat | 7 maart 2022 |
-
-      Voorbeelden:
-      | aanduiding in onderzoek | in onderzoek              | veld                      | groep            | waarde                         | column naam                       | 
-      | 081120                  | huisnummer                | huisnummer                | verblijfplaats   | 22                             | huisnummer (11.20)                |
-      | 081130                  | huisletter                | huisletter                | verblijfplaats   | a                              | huisletter (11.30)                |
-      | 081140                  | huisnummertoevoeging      | huisnummertoevoeging      | verblijfplaats   | bis                            | huisnummertoevoeging (11.40)      |
-      | 081150                  | aanduidingBijHuisnummer   | aanduidingBijHuisnummer   | verblijfplaats   | to                             | aanduiding bij huisnummer (11.50) |
-      | 081160                  | postcode                  | postcode                  | verblijfplaats   | 1234 AB                        | postcode (11.60)                  |
-      | 081170                  | woonplaats                | woonplaats                | verblijfplaats   | 0599                           | woonplaats (11.70)                |
-      | 081210                  | locatiebeschrijving       | locatiebeschrijving       | verblijfplaats   | In de grootste sloot           | locatiebeschrijving (12.10)       |
-      | 081310                  | land                      | land.code                 | verblijfplaats   | 5010                           | land (13.10)                      |
-      | 081350                  | adresregel3               | regel3                    | verblijfadres    | Entrance 2, 4th floor, Apt. 22 | regel 3 adres buitenland (13.50)  |
-      | 103910                  | aanduiding                | aanduiding                | verblijfstitel   | 15                             | aanduiding verblijfstitel (39.10) |
+      | naam                                                        | waarde                                                                           |
+      | verblijfstitel.aanduiding.code                              | 15                                                                               |
+      | verblijfstitel.aanduiding.omschrijving                      | Benelux of EG richtl nrs 68/360/EEG, 73/148/EEG 75/34/EEG, verord nr 1251/70/EEG |
+      | verblijfstitel.inOnderzoek.aanduiding                       | true                                                                             |
+      | verblijfstitel.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07                                                                       |
+      | verblijfstitel.inOnderzoek.datumIngangOnderzoek.type        | Datum                                                                            |
+      | verblijfstitel.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022                                                                     |
 
     Abstract Scenario: persoon heeft <veld> van ouder in onderzoek
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
-      En de persoon heeft een ouder met de volgende gegevens
-      | naam            | waarde |
-      | ouderAanduiding | 1      |
-      En de persoon heeft een ouder met de volgende gegevens
-      | naam            | waarde |
-      | ouderAanduiding | 2      |
-      En de ouder met ouderAanduiding '<ouder>' heeft volgende 'inOnderzoek' gegevens
+      Gegeven de persoon met burgerservicenummer '000000334' heeft de volgende gegevens
+      | naam                            | waarde   |
+      | aanduiding in onderzoek (83.10) | <waarde> |
+      | datum ingang onderzoek (83.20)  | 20220307 |
+	  En de persoon heeft een ouder '<ouder>' met de volgende gegevens
       | naam                          | waarde   |
-      | aanduidingGegevensInOnderzoek | <waarde> |
-      | datumIngangOnderzoek          | 20220307 |
-      En ouder met ouderAanduiding '<andere ouder>' heeft GEEN 'inOnderzoek' gegevens
+      | voornamen (02.10)             | Willy    |
+      En de persoon heeft een ouder '<andere ouder>' met de volgende gegevens
+      | naam                          | waarde   |
+      | voornamen (02.10)             | Renée    |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550001                       |
       | fields              | ouders.<veld>                   |
-      Dan heeft de ouder met ouderAanduiding '<ouder>' de volgende 'inOnderzoek' gegevens
-      | naam                             | waarde       |
-      | <veld>                           | true         |
-      | datumIngangOnderzoek.datum       | 2022-03-07   |
-      | datumIngangOnderzoek.type        | Datum        |
-      | datumIngangOnderzoek.langFormaat | 7 maart 2022 |
-      En heeft de ouder met ouderAanduiding '<andere ouder>' GEEN 'inOnderzoek' gegevens
-      En heeft de persoon GEEN 'inOnderzoek' gegevens
+      Dan heeft de response een persoon met een 'ouder' met de volgende gegevens
+      | naam                                         | waarde       |
+      | inOnderzoek.<veld>                           | true         |
+      | inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07   |
+      | inOnderzoek.datumIngangOnderzoek.type        | Datum        |
+      | inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
+      En heeft de response een persoon met een 'ouder' zonder gegevens
 
       Voorbeelden:
       | waarde | veld                                    | ouder | andere ouder |
@@ -413,34 +441,30 @@ Functionaliteit: in onderzoek
       | 026210 | datumIngangFamilierechtelijkeBetrekking | 1     | 2            |
 
     Abstract Scenario: persoon heeft <groep> <veld> van partner in onderzoek
-      Gegeven het systeem heeft een persoon met de volgende gegevens
+      Gegeven de persoon met burgerservicenummer '000000346' heeft de volgende gegevens
+      | naam                            | waarde   |
+      | aanduiding in onderzoek (83.10) | <waarde> |
+      | datum ingang onderzoek (83.20)  | 20220307 |
+      En de persoon heeft een 'partner' met de volgende gegevens
       | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
-      En de persoon heeft een partner met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550002 |
-      En de partner met burgerservicenummer '555550002' heeft volgende 'inOnderzoek' gegevens
-      | naam                          | waarde   |
-      | aanduidingGegevensInOnderzoek | <waarde> |
-      | datumIngangOnderzoek          | 20220307 |
+      | burgerservicenummer (01.20) | 000000358 |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550001                       |
-      | fields              | partners.<veld>                 |
-      Dan heeft de partner met burgerservicenummer '555550002' de volgende '<groep>.inOnderzoek' gegevens
-      | naam                             | waarde       |
-      | <veld>                           | true         |
-      | datumIngangOnderzoek.datum       | 2022-03-07   |
-      | datumIngangOnderzoek.type        | Datum        |
-      | datumIngangOnderzoek.langFormaat | 7 maart 2022 |
-      En heeft de partner met burgerservicenummer '555550002' GEEN 'inOnderzoek' gegevens
+      | fields              | partners.<groep>.<veld>         |
+      Dan heeft de response een persoon met een 'partner' met de volgende gegevens
+      | naam                                                 | waarde       |
+      | <groep>.inOnderzoek.<veld>                           | true         |
+      | <groep>.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07   |
+      | <groep>.inOnderzoek.datumIngangOnderzoek.type        | Datum        |
+      | <groep>.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
 
       Voorbeelden:
-      | waarde | veld                        | groep    |
-      | 050240 | geslachtsnaam               | naam     |
-      | 050310 | plaats                      | geboorte |
-      | 050610 | aangaanHuwelijkPartnerschap | datum    |
+      | waarde | veld          | groep                       |
+      | 050240 | geslachtsnaam | naam                        |
+      | 050310 | plaats        | geboorte                    |
+      | 050610 | datum         | aangaanHuwelijkPartnerschap |
 
       Scenario: persoon heeft gegevens geslacht, gemeenteVanInschrijving en indicatieCurateleRegister in onderzoek
         Gegeven het systeem heeft een persoon met de volgende gegevens
