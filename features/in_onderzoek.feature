@@ -265,43 +265,23 @@ Functionaliteit: in onderzoek
       | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
       | datum ingang onderzoek (83.20)  | 20220307                  |
 	  | geslachtsaanduiding (04.10)     | M                         |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000309                       |
-      | fields              | <groep><veld>                   |
+      | fields              | <veld>                          |
       Dan heeft de response een persoon met de volgende gegevens
       | naam                                                | waarde       |
-	  | <groep><veld>                                       | <waarde>     |
+	  | <veld>                                              | <waarde>     |
       | inOnderzoek.<in onderzoek>                          | true         |
       | inOnderzoek.datumIngangOnderzoekPersoon.datum       | 2022-03-07   |
       | inOnderzoek.datumIngangOnderzoekPersoon.type        | Datum        |
       | inOnderzoek.datumIngangOnderzoekPersoon.langFormaat | 7 maart 2022 |
 
       Voorbeelden:
-      | aanduiding in onderzoek | in onderzoek        | groep     | veld                | waarde |
-      | 010120                  | burgerservicenummer |           | burgerservicenummer | 000000309  |
-      | 010410                  | geslacht            | geslacht. | code       | M          |
-
-#    Scenario: persoon heeft naam adellijkeTitelPredicaat in onderzoek
-#      Gegeven de persoon met burgerservicenummer '000000310' heeft de volgende gegevens
-#      | naam                                 | waarde   |
-#      | aanduiding in onderzoek (83.10)      | 010220   |
-#      | datum ingang onderzoek (83.20)       | 20220307 |
-#	  | adellijke titel of predicaat (02.20) | H        |
-#      Als personen wordt gezocht met de volgende parameters
-#      | naam                | waarde                            |
-#      | type                | RaadpleegMetBurgerservicenummer   |
-#      | burgerservicenummer | 000000310                         |
-#      | fields              | naam.adellijkeTitelPredicaat.code |
-#      | fields              | naam |
-#      Dan heeft de response een persoon met de volgende gegevens
-#      | naam                                              | waarde       |
-#      | naam.adellijkeTitelPredicaat.code                 | H            |
-#      | naam.inOnderzoek.adellijkeTitelPredicaat          | true         |
-#      | naam.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07   |
-#      | naam.inOnderzoek.datumIngangOnderzoek.type        | Datum        |
-#      | naam.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
+      | aanduiding in onderzoek | in onderzoek        | veld                | waarde     |
+      | 010120                  | burgerservicenummer | burgerservicenummer | 000000309  |
+      | 010410                  | geslacht            | geslacht.code       | M          |
 
     Abstract Scenario: persoon heeft <groep> <in onderzoek> in onderzoek
       Gegeven de persoon met burgerservicenummer '000000310' heeft de volgende gegevens
@@ -421,7 +401,7 @@ Functionaliteit: in onderzoek
       | inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07   |
       | inOnderzoek.datumIngangOnderzoek.type        | Datum        |
       | inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
-      En heeft de response een persoon met een 'ouder' zonder gegevens
+      En heeft de persoon een 'ouder' zonder gegevens
 
       Voorbeelden:
       | waarde | veld                                    | ouder | andere ouder |
@@ -582,10 +562,9 @@ Functionaliteit: in onderzoek
       | burgerservicenummer                                   | 000000413    |
       | inOnderzoek.burgerservicenummer                       | true         |
       | inOnderzoek.geslacht                                  | true         |
-      | inOnderzoek.leeftijd                                  | true         |
-      | inOnderzoek.datumIngangOnderzoek.datum                | 2022-03-07   |
-      | inOnderzoek.datumIngangOnderzoek.type                 | Datum        |
-      | inOnderzoek.datumIngangOnderzoek.langFormaat          | 7 maart 2022 |
+      | inOnderzoek.datumIngangOnderzoekPersoon.datum         | 2022-03-07   |
+      | inOnderzoek.datumIngangOnderzoekPersoon.type          | Datum        |
+      | inOnderzoek.datumIngangOnderzoekPersoon.langFormaat   | 7 maart 2022 |
       | naam.inOnderzoek.voornamen                            | true         |
       | naam.inOnderzoek.adellijkeTitelPredicaat              | true         |
       | naam.inOnderzoek.voorvoegsel                          | true         |
@@ -685,27 +664,29 @@ Functionaliteit: in onderzoek
       | inOnderzoek.adresseerbaarObjectIdentificatie               | true         |
 
     Scenario: een element van de groep adres van de categorie verblijfplaats is in onderzoek
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
-      En de persoon heeft GEEN 'persoonInOnderzoek' gegevens
-      En persoon met burgerservicenummer '555550001' heeft de volgende 'verblijfplaats' gegevens
-      | naam       | waarde |
-      | straat     | spui   |
-      | huisnummer | 70     |
-      En persoon met burgerservicenummer '555550001' heeft de volgende 'verblijfplaats.inOnderzoek' gegevens
-      | naam                          | waarde   |
-      | aanduidingGegevensInOnderzoek | 081120   |
-      | datumIngangOnderzoek          | 20220307 |
+      Gegeven de persoon met burgerservicenummer '000000462' heeft de volgende 'verblijfplaats' gegevens
+      | naam                            | waarde   |
+      | aanduiding in onderzoek (83.10) | 081120   |
+      | datum ingang onderzoek (83.20)  | 20220307 |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      | naam                              | waarde |
+      | gemeente van inschrijving (09.10) | 0518 |
+      | straatnaam (11.10)                | spui |
+      | huisnummer (11.20)                | 70   |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                             |
       | type                | RaadpleegMetBurgerservicenummer    |
-      | burgerservicenummer | 555550001                          |
+      | burgerservicenummer | 000000462                          |
       | fields              | burgerservicenummer,verblijfplaats |
-      Dan heeft de persoon met burgerservicenummer '555550001' de volgende 'verblijfplaats' gegevens
+      Dan heeft de response een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 000000462 |
+      En heeft de persoon de volgende 'verblijfplaats' gegevens
       | naam                                                       | waarde       |
+	  | type                                                       | Adres        |
       | verblijfadres.huisnummer                                   | 70           |
       | verblijfadres.straat                                       | spui         |
+      | verblijfadres.korteNaam                                    | spui         |
       | verblijfadres.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07   |
       | verblijfadres.inOnderzoek.datumIngangOnderzoek.type        | Datum        |
       | verblijfadres.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
@@ -716,31 +697,27 @@ Functionaliteit: in onderzoek
       | naam                            | waarde |
       | aanduiding in onderzoek (83.10) | <aanduidingGegevensInOnderzoek> |
       | datum ingang onderzoek (83.20)  | 20220307                        |
-      En de persoon heeft de volgende 'verblijfplaats' gegevens
-      | naam                                   | waarde |
-      | functieAdres.code (10.10)              | W      |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam                              | waarde                       |
       | locatiebeschrijving (12.10)       | Woonboot in de Grotere Sloot |
       | gemeente van inschrijving (09.10) | 0599                         |
-      En de persoon heeft GEEN 'persoonInOnderzoek' gegevens
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                             |
       | type                | RaadpleegMetBurgerservicenummer    |
       | burgerservicenummer | 000000279                          |
       | fields              | burgerservicenummer,verblijfplaats |
       Dan heeft de response een persoon met de volgende gegevens
-      | naam                                                                      | waarde                       |
-      | burgerservicenummer                                                       | 000000279                    |
-      | verblijfplaats.functieAdres.code                                          | W                            |
-      | verblijfplaats.functieAdres.omschrijving                                  | woonadres                    |
-      | verblijfplaats.type                                                       | Locatie                      |
-      | verblijfplaats.verblijfadres.locatiebeschrijving                          | Woonboot in de Grotere Sloot |
-      | verblijfplaats.verblijfadres.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07                   |
-      | verblijfplaats.verblijfadres.inOnderzoek.datumIngangOnderzoek.type        | Datum                        |
-      | verblijfplaats.verblijfadres.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022                 |
-      | verblijfplaats.verblijfadres.inOnderzoek.locatiebeschrijving              | true                         |
-	  | verblijfplaats.inOnderzoek.type                                           | true                         |
+      | naam                | waarde    |
+      | burgerservicenummer | 000000279 |
+      En heeft de persoon de volgende 'verblijfplaats' gegevens
+      | naam                                                       | waarde                   |
+      | type                                                       | Locatie                      |
+      | verblijfadres.locatiebeschrijving                          | Woonboot in de Grotere Sloot |
+      | verblijfadres.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07                   |
+      | verblijfadres.inOnderzoek.datumIngangOnderzoek.type        | Datum                        |
+      | verblijfadres.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022                 |
+      | verblijfadres.inOnderzoek.locatiebeschrijving              | true                         |
+	  | inOnderzoek.type                                           | true                         |
 
       Voorbeelden:
       | aanduidingGegevensInOnderzoek | component in onderzoek                               |
@@ -748,95 +725,97 @@ Functionaliteit: in onderzoek
       | 081210                        | het element locatiebeschrijving van de groep locatie |
 
     Scenario: de groep adres buitenland van de categorie verblijfplaats is in onderzoek
-      Gegeven de persoon met burgerservicenummer '000000280' heeft de volgende gegevens
-      | naam                            | waarde   |
-      | aanduiding in onderzoek (83.10) | 081300   |
-      | datum ingang onderzoek (83.20)  | 20220307 |
-      En de persoon heeft de volgende 'verblijfplaats' gegevens
+      Gegeven de persoon met burgerservicenummer '000000280' heeft de volgende 'verblijfplaats' gegevens
       | naam                             | waarde          |
+      | aanduiding in onderzoek (83.10)  | 081300          |
+      | datum ingang onderzoek (83.20)   | 20220307        |
       | land (13.10)                     | 5010            |
       | regel 1 adres buitenland (13.30) | Rue du pomme 25 |
       | regel 2 adres buitenland (13.40) | Bruxelles       |
-      En de persoon heeft GEEN 'persoonInOnderzoek' gegevens
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                             |
       | type                | RaadpleegMetBurgerservicenummer    |
       | burgerservicenummer | 000000280                          |
       | fields              | burgerservicenummer,verblijfplaats |
       Dan heeft de response een persoon met de volgende gegevens
-      | naam                                                                      | waarde          |
-      | burgerservicenummer                                                       | 000000280       |
-      | verblijfplaats.verblijfadres.adresregel1                                  | Rue du pomme 25 |
-      | verblijfplaats.verblijfadres.adresregel2                                  | Bruxelles       |
-      | verblijfplaats.verblijfadres.land                                         | 5010            |
-      | verblijfplaats.verblijfadres.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07      |
-      | verblijfplaats.verblijfadres.inOnderzoek.datumIngangOnderzoek.type        | Datum           |
-      | verblijfplaats.verblijfadres.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022    |
-      | verblijfplaats.verblijfadres.inOnderzoek.adresregel1                      | true            |
-      | verblijfplaats.verblijfadres.inOnderzoek.adresregel2                      | true            |
-      | verblijfplaats.verblijfadres.inOnderzoek.adresregel3                      | true            |
-      | verblijfplaats.verblijfadres.inOnderzoek.land                             | true            |
-      | verblijfplaats.inOnderzoek.datumIngangOnderzoek.datum                     | 2022-03-07      |
-      | verblijfplaats.inOnderzoek.datumIngangOnderzoek.type                      | Datum           |
-      | verblijfplaats.inOnderzoek.datumIngangOnderzoek.langFormaat               | 7 maart 2022    |
-      | verblijfplaats.inOnderzoek.type                                           | true            |
-      | verblijfplaats.inOnderzoek.datumVan                                       | true            |
+      | naam                | waarde    |
+      | burgerservicenummer | 000000280 |
+      En heeft de persoon de volgende 'verblijfplaats' gegevens
+      | naam                                                       | waarde                   |
+      | type                                                       | VerblijfplaatsBuitenland |
+      | verblijfadres.regel1                                       | Rue du pomme 25          |
+      | verblijfadres.regel2                                       | Bruxelles                |
+      | verblijfadres.land.code                                    | 5010                     |
+      | verblijfadres.land.omschrijving                            | België                   |
+      | verblijfadres.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07               |
+      | verblijfadres.inOnderzoek.datumIngangOnderzoek.type        | Datum                    |
+      | verblijfadres.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022             |
+      | verblijfadres.inOnderzoek.regel1                           | true                     |
+      | verblijfadres.inOnderzoek.regel2                           | true                     |
+      | verblijfadres.inOnderzoek.regel3                           | true                     |
+      | verblijfadres.inOnderzoek.land                             | true                     |
+      | inOnderzoek.datumIngangOnderzoek.datum                     | 2022-03-07               |
+      | inOnderzoek.datumIngangOnderzoek.type                      | Datum                    |
+      | inOnderzoek.datumIngangOnderzoek.langFormaat               | 7 maart 2022             |
+      | inOnderzoek.type                                           | true                     |
+      | inOnderzoek.datumVan                                       | true                     |
 
     Scenario: het element land van de groep adres buitenland van de categorie verblijfplaats is in onderzoek
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
-      En de persoon heeft GEEN 'persoonInOnderzoek' gegevens
-      En persoon met burgerservicenummer '555550001' heeft de volgende 'verblijfplaats' gegevens
-      | naam        | waarde          |
-      | land        | 5010            |
-      | adresregel1 | Rue du pomme 25 |
-      | adresregel2 | Bruxelles       |
-      En persoon met burgerservicenummer '555550001' heeft de volgende 'verblijfplaats.inOnderzoek' gegevens
-      | naam                          | waarde   |
-      | aanduidingGegevensInOnderzoek | 081310   |
-      | datumIngangOnderzoek          | 20220307 |
+      Gegeven de persoon met burgerservicenummer '000000474' heeft de volgende 'verblijfplaats' gegevens
+      | naam                             | waarde          |
+      | aanduiding in onderzoek (83.10)  | 081310          |
+      | datum ingang onderzoek (83.20)   | 20220307        |
+      | land (13.10)                     | 5010            |
+      | regel 1 adres buitenland (13.30) | Rue du pomme 25 |
+      | regel 2 adres buitenland (13.40) | Bruxelles       |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                             |
       | type                | RaadpleegMetBurgerservicenummer    |
-      | burgerservicenummer | 555550001                          |
+      | burgerservicenummer | 000000474                          |
       | fields              | burgerservicenummer,verblijfplaats |
-      Dan heeft de persoon met burgerservicenummer '555550001' de volgende 'verblijfplaats' gegevens
-      | naam                                                       | waarde          |
-      | verblijfadres.adresregel1                                  | Rue du pomme 25 |
-      | verblijfadres.adresregel2                                  | Bruxelles       |
-      | verblijfadres.land                                         | 5010            |
-      | verblijfadres.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07      |
-      | verblijfadres.inOnderzoek.datumIngangOnderzoek.type        | Datum           |
-      | verblijfadres.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022    |
-      | verblijfadres.inOnderzoek.land                             | true            |
-      | inOnderzoek.datumIngangOnderzoek.datum                     | 2022-03-07      |
-      | inOnderzoek.datumIngangOnderzoek.type                      | Datum           |
-      | inOnderzoek.datumIngangOnderzoek.langFormaat               | 7 maart 2022    |
-      | inOnderzoek.type                                           | true            |
+      Dan heeft de response een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 000000474 |
+      En heeft de persoon de volgende 'verblijfplaats' gegevens
+      | naam                                                       | waarde                   |
+      | type                                                       | VerblijfplaatsBuitenland |
+      | verblijfadres.regel1                                       | Rue du pomme 25          |
+      | verblijfadres.regel2                                       | Bruxelles                |
+      | verblijfadres.land.code                                    | 5010                     |
+      | verblijfadres.land.omschrijving                            | België                   |
+      | verblijfadres.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07               |
+      | verblijfadres.inOnderzoek.datumIngangOnderzoek.type        | Datum                    |
+      | verblijfadres.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022             |
+      | verblijfadres.inOnderzoek.land                             | true                     |
+      | inOnderzoek.datumIngangOnderzoek.datum                     | 2022-03-07               |
+      | inOnderzoek.datumIngangOnderzoek.type                      | Datum                    |
+      | inOnderzoek.datumIngangOnderzoek.langFormaat               | 7 maart 2022             |
+      | inOnderzoek.type                                           | true                     |
 
     Scenario: hele categorie verblijfplaats van een adres is in onderzoek
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
-      En de persoon heeft GEEN 'persoonInOnderzoek' gegevens
-      En persoon met burgerservicenummer '555550001' heeft de volgende 'verblijfplaats' gegevens
-      | naam       | waarde |
-      | straat     | spui   |
-      | huisnummer | 70     |
-      En persoon met burgerservicenummer '555550001' heeft de volgende 'verblijfplaats.inOnderzoek' gegevens
-      | naam                          | waarde   |
-      | aanduidingGegevensInOnderzoek | 080000   |
-      | datumIngangOnderzoek          | 20220307 |
+      Gegeven de persoon met burgerservicenummer '000000486' heeft de volgende 'verblijfplaats' gegevens
+      | naam                             | waarde   |
+      | aanduiding in onderzoek (83.10)  | 080000   |
+      | datum ingang onderzoek (83.20)   | 20220307 |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      | naam                              | waarde |
+      | gemeente van inschrijving (09.10) | 0518 |
+      | straatnaam (11.10)                | spui |
+      | huisnummer (11.20)                | 70   |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                             |
       | type                | RaadpleegMetBurgerservicenummer    |
-      | burgerservicenummer | 555550001                          |
+      | burgerservicenummer | 000000486                          |
       | fields              | burgerservicenummer,verblijfplaats |
-      Dan heeft de persoon met burgerservicenummer '555550001' de volgende 'verblijfplaats' gegevens
+      Dan heeft de response een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 000000486 |
+      En heeft de persoon de volgende 'verblijfplaats' gegevens
       | naam                                                       | waarde       |
+      | type                                                       | Adres        |
       | verblijfadres.huisnummer                                   | 70           |
       | verblijfadres.straat                                       | spui         |
+      | verblijfadres.korteNaam                                    | spui         |
       | verblijfadres.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07   |
       | verblijfadres.inOnderzoek.datumIngangOnderzoek.type        | Datum        |
       | verblijfadres.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
@@ -859,98 +838,93 @@ Functionaliteit: in onderzoek
       | inOnderzoek.functieAdres                                   | true         |
 
     Scenario: hele categorie verblijfplaats van een locatiebeschrijving is in onderzoek
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
-      En de persoon heeft GEEN 'persoonInOnderzoek' gegevens
-      En persoon met burgerservicenummer '555550001' heeft de volgende 'verblijfplaats' gegevens
-      | naam                | waarde                     |
-      | locatiebeschrijving | Woonboot in de Grote Sloot |
-      En persoon met burgerservicenummer '555550001' heeft de volgende 'verblijfplaats.inOnderzoek' gegevens
-      | naam                          | waarde   |
-      | aanduidingGegevensInOnderzoek | 080000   |
-      | datumIngangOnderzoek          | 20220307 |
+      Gegeven de persoon met burgerservicenummer '000000498' heeft de volgende 'verblijfplaats' gegevens
+      | naam                             | waarde   |
+      | aanduiding in onderzoek (83.10)  | 080000   |
+      | datum ingang onderzoek (83.20)   | 20220307 |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      | naam                              | waarde                       |
+      | locatiebeschrijving (12.10)       | Woonboot in de Grotere Sloot |
+      | gemeente van inschrijving (09.10) | 0599                         |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                             |
       | type                | RaadpleegMetBurgerservicenummer    |
-      | burgerservicenummer | 555550001                          |
+      | burgerservicenummer | 000000498                          |
       | fields              | burgerservicenummer,verblijfplaats |
-      Dan heeft het kind met burgerservicenummer '555550002' de volgende 'verblijfplaats' gegevens
-      | naam                                                       | waarde                     |
-      | verblijfadres.locatiebeschrijving                          | Woonboot in de Grote Sloot |
-      | verblijfadres.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07                 |
-      | verblijfadres.inOnderzoek.datumIngangOnderzoek.type        | Datum                      |
-      | verblijfadres.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022               |
-      | verblijfadres.inOnderzoek.locatiebeschrijving              | true                       |
-      | inOnderzoek.datumIngangOnderzoek.datum                     | 2022-03-07                 |
-      | inOnderzoek.datumIngangOnderzoek.type                      | Datum                      |
-      | inOnderzoek.datumIngangOnderzoek.langFormaat               | 7 maart 2022               |
-      | inOnderzoek.type                                           | true                       |
-      | inOnderzoek.datumVan                                       | true                       |
-      | inOnderzoek.functieAdres                                   | true                       |
-      | inOnderzoek.datumIngangGeldigheid                          | true                       |
+      Dan heeft de response een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 000000498 |
+      En heeft de persoon de volgende 'verblijfplaats' gegevens
+      | naam                                                       | waarde                       |
+      | type                                                       | Locatie                      |
+      | verblijfadres.locatiebeschrijving                          | Woonboot in de Grotere Sloot |
+      | verblijfadres.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07                   |
+      | verblijfadres.inOnderzoek.datumIngangOnderzoek.type        | Datum                        |
+      | verblijfadres.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022                 |
+      | verblijfadres.inOnderzoek.locatiebeschrijving              | true                         |
+      | inOnderzoek.datumIngangOnderzoek.datum                     | 2022-03-07                   |
+      | inOnderzoek.datumIngangOnderzoek.type                      | Datum                        |
+      | inOnderzoek.datumIngangOnderzoek.langFormaat               | 7 maart 2022                 |
+      | inOnderzoek.type                                           | true                         |
+      | inOnderzoek.datumVan                                       | true                         |
+      | inOnderzoek.functieAdres                                   | true                         |
+      | inOnderzoek.datumIngangGeldigheid                          | true                         |
 
     Scenario: hele categorie verblijfplaats van een verblijfplaats buitenland is in onderzoek
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
-      En de persoon heeft GEEN 'persoonInOnderzoek' gegevens
-      En persoon met burgerservicenummer '555550001' heeft de volgende 'verblijfplaats' gegevens
-      | naam        | waarde          |
-      | land        | 5010            |
-      | adresregel1 | Rue du pomme 25 |
-      | adresregel2 | Bruxelles       |
-      En persoon met burgerservicenummer '555550001' heeft de volgende 'verblijfplaats.inOnderzoek' gegevens
-      | naam                          | waarde   |
-      | aanduidingGegevensInOnderzoek | 080000   |
-      | datumIngangOnderzoek          | 20220307 |
+      Gegeven de persoon met burgerservicenummer '000000504' heeft de volgende 'verblijfplaats' gegevens
+      | naam                             | waarde          |
+      | aanduiding in onderzoek (83.10)  | 080000          |
+      | datum ingang onderzoek (83.20)   | 20220307        |
+      | land (13.10)                     | 5010            |
+      | regel 1 adres buitenland (13.30) | Rue du pomme 25 |
+      | regel 2 adres buitenland (13.40) | Bruxelles       |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                             |
       | type                | RaadpleegMetBurgerservicenummer    |
-      | burgerservicenummer | 555550001                          |
+      | burgerservicenummer | 000000504                          |
       | fields              | burgerservicenummer,verblijfplaats |
-      Dan heeft het kind met burgerservicenummer '555550002' de volgende 'verblijfplaats' gegevens
-      | naam                                                       | waarde          |
-      | verblijfadres.adresregel1                                  | Rue du pomme 25 |
-      | verblijfadres.adresregel2                                  | Bruxelles       |
-      | verblijfadres.land                                         | 5010            |
-      | verblijfadres.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07      |
-      | verblijfadres.inOnderzoek.datumIngangOnderzoek.type        | Datum           |
-      | verblijfadres.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022    |
-      | verblijfadres.inOnderzoek.adresregel1                      | true            |
-      | verblijfadres.inOnderzoek.adresregel2                      | true            |
-      | verblijfadres.inOnderzoek.adresregel3                      | true            |
-      | verblijfadres.inOnderzoek.land                             | true            |
-      | inOnderzoek.datumIngangOnderzoek.datum                     | 2022-03-07      |
-      | inOnderzoek.datumIngangOnderzoek.type                      | Datum           |
-      | inOnderzoek.datumIngangOnderzoek.langFormaat               | 7 maart 2022    |
-      | inOnderzoek.type                                           | true            |
-      | inOnderzoek.datumVan                                       | true            |
-      | inOnderzoek.datumIngangGeldigheid                          | true            |
+      Dan heeft de response een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 000000504 |
+      En heeft de persoon de volgende 'verblijfplaats' gegevens
+      | naam                                                       | waarde                   |
+      | type                                                       | VerblijfplaatsBuitenland |
+      | verblijfadres.regel1                                       | Rue du pomme 25          |
+      | verblijfadres.regel2                                       | Bruxelles                |
+      | verblijfadres.land.code                                    | 5010                     |
+      | verblijfadres.land.omschrijving                            | België                   |
+      | verblijfadres.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07               |
+      | verblijfadres.inOnderzoek.datumIngangOnderzoek.type        | Datum                    |
+      | verblijfadres.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022             |
+      | verblijfadres.inOnderzoek.regel1                           | true                     |
+      | verblijfadres.inOnderzoek.regel2                           | true                     |
+      | verblijfadres.inOnderzoek.regel3                           | true                     |
+      | verblijfadres.inOnderzoek.land                             | true                     |
+      | inOnderzoek.datumIngangOnderzoek.datum                     | 2022-03-07               |
+      | inOnderzoek.datumIngangOnderzoek.type                      | Datum                    |
+      | inOnderzoek.datumIngangOnderzoek.langFormaat               | 7 maart 2022             |
+      | inOnderzoek.type                                           | true                     |
+      | inOnderzoek.datumVan                                       | true                     |
+      | inOnderzoek.datumIngangGeldigheid                          | true                     |
 
-  @proxy
   Rule: een afgeleid gegeven wordt in inOnderzoek opgenomen wanneer ten minste één van de gegevens waaruit het wordt afgeleid in onderzoek staat
 
-    @proxy
     Abstract Scenario: leeftijd van de persoon in onderzoek omdat <gegeven in onderzoek> is in onderzoek
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550001 |
-      En de persoon heeft volgende 'persoonInOnderzoek' gegevens
-      | naam                          | waarde   |
-      | aanduidingGegevensInOnderzoek | <waarde> |
-      | datumIngangOnderzoek          | 20220307 |
+      Gegeven de persoon met burgerservicenummer '000000516' heeft de volgende gegevens
+      | naam                             | waarde   |
+      | aanduiding in onderzoek (83.10)  | <waarde> |
+      | datum ingang onderzoek (83.20)   | 20220307 |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000516                       |
       | fields              | leeftijd                        |
-      Dan heeft de persoon met burgerservicenummer '555550001' de volgende 'persoonInOnderzoek' gegevens
-      | naam                                    | waarde     |
-      | leeftijd                                | true       |
-      | datumIngangOnderzoekPersoon.datum       | 2022-03-07 |
-      | datumIngangOnderzoekPersoon.type        | Datum      |
-      | datumIngangOnderzoekPersoon.langFormaat | 7 maart 2022 |
+      Dan heeft de response een persoon met de volgende gegevens
+      | naam                                                | waarde       |
+      | inOnderzoek.leeftijd                                | true         |
+      | inOnderzoek.datumIngangOnderzoekPersoon.datum       | 2022-03-07   |
+      | inOnderzoek.datumIngangOnderzoekPersoon.type        | Datum        |
+      | inOnderzoek.datumIngangOnderzoekPersoon.langFormaat | 7 maart 2022 |
 
       Voorbeelden:
       | reden                        | waarde |
@@ -958,29 +932,24 @@ Functionaliteit: in onderzoek
       | groep geboorte               | 010300 |
       | categorie persoon            | 010000 |
 
-    @proxy
     Abstract Scenario: indicatieOverleden van de persoon in onderzoek omdat <gegeven in onderzoek> is in onderzoek
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550001 |
-      En de persoon heeft volgende 'overlijden' gegevens
-      | naam  | waarde   |
-      | datum | 20220218 |
-      En de persoon heeft volgende 'overlijden.inOnderzoek' gegevens
-      | naam                          | waarde   |
-      | aanduidingGegevensInOnderzoek | <waarde> |
-      | datumIngangOnderzoek          | 20220307 |
+      Gegeven de persoon met burgerservicenummer '000000528' heeft de volgende 'overlijden' gegevens
+      | naam                             | waarde   |
+      | aanduiding in onderzoek (83.10)  | <waarde> |
+      | datum ingang onderzoek (83.20)   | 20220307 |
+	  | datum overlijden (08.10)         | 20220218 |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000528                       |
       | fields              | overlijden.indicatieOverleden   |
-      Dan heeft de persoon met burgerservicenummer '555550001' de volgende 'overlijden.inOnderzoek' gegevens
-      | naam                             | waarde       |
-      | indicatieOverleden               | true         |
-      | datumIngangOnderzoek.datum       | 2022-03-07   |
-      | datumIngangOnderzoek.type        | Datum        |
-      | datumIngangOnderzoek.langFormaat | 7 maart 2022 |
+      Dan heeft de response een persoon met de volgende 'overlijden' gegevens
+      | naam                                         | waarde       |
+	  | indicatieOverleden                           | true         |
+      | inOnderzoek.indicatieOverleden               | true         |
+      | inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07   |
+      | inOnderzoek.datumIngangOnderzoek.type        | Datum        |
+      | inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
 
       Voorbeelden:
       | reden                | waarde |
@@ -988,36 +957,32 @@ Functionaliteit: in onderzoek
       | groep overlijden     | 060800 |
       | categorie overlijden | 060000 |
 
-    @proxy
     Abstract Scenario: voorletters van een ouder in onderzoek omdat <gegeven in onderzoek> is in onderzoek
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550001 |
-      En de persoon heeft een ouder met de volgende gegevens
-      | naam            | waarde |
-      | ouderAanduiding | 1      |
-      En de persoon heeft een ouder met de volgende gegevens
-      | naam            | waarde |
-      | ouderAanduiding | 2      |
-      En de ouder met ouderAanduiding '<ouder>' heeft de volgende 'inOnderzoek' gegevens
-      | naam                          | waarde   |
-      | aanduidingGegevensInOnderzoek | <waarde> |
-      | datumIngangOnderzoek          | 20220307 |
-      En de ouder met ouderAanduiding '<andere ouder>' heeft GEEN 'inOnderzoek' gegevens
+      Gegeven de persoon met burgerservicenummer '000000541' heeft een ouder '<ouder>' met de volgende gegevens
+      | naam                            | waarde   |
+      | aanduiding in onderzoek (83.10) | <waarde> |
+      | datum ingang onderzoek (83.20)  | 20220307 |
+	  | voornamen (02.10)               | Renée    |
+      En de persoon heeft een ouder '<andere ouder>' met de volgende gegevens
+      | naam              | waarde |
+	  | voornamen (02.10) | Willy  |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                         |
       | type                | RaadpleegMetBurgerservicenummer                |
-      | burgerservicenummer | 555550001                                      |
+      | burgerservicenummer | 000000541                                      |
       | fields              | ouders.ouderAanduiding,ouders.naam.voorletters |
-      Dan heeft de ouder met ouderAanduiding '<ouder>' de volgende 'naam.inOnderzoek' gegevens
-      | naam                             | waarde       |
-      | voorletters                      | true         |
-      | datumIngangOnderzoek.datum       | 2022-03-07   |
-      | datumIngangOnderzoek.type        | Datum        |
-      | datumIngangOnderzoek.langFormaat | 7 maart 2022 |
-      En heeft de ouder met ouderAanduiding '<andere ouder>' GEEN 'naam.inOnderzoek' gegevens
-      En heeft de ouder met ouderAanduiding '<ouder>' GEEN 'inOnderzoek' gegevens
-      En heeft de ouder met ouderAanduiding '<andere ouder>' GEEN 'inOnderzoek' gegevens
+      Dan heeft de response een persoon met een 'ouder' met de volgende gegevens
+      | naam                                              | waarde       |
+	  | ouderAanduiding                                   | <ouder>      |
+	  | naam.voorletters                                  | R.           |
+      | naam.inOnderzoek.voorletters                      | true         |
+      | naam.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07   |
+      | naam.inOnderzoek.datumIngangOnderzoek.type        | Datum        |
+      | naam.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
+      En heeft de persoon een 'ouder' met de volgende gegevens
+      | naam             | waarde         |
+	  | ouderAanduiding  | <andere ouder> |
+	  | naam.voorletters | W.             |
 
       Voorbeelden:
       | gegeven in onderzoek   | waarde | ouder  | andere ouder |
@@ -1028,46 +993,47 @@ Functionaliteit: in onderzoek
       | groep naam van ouder 2 | 030200 | 2      | 1            |
       | categorie ouder 2      | 030000 | 2      | 1            |
 
-    @proxy
+# Met dit scenario ben ik bezig.
     Abstract Scenario: verblijfplaats datumVan in onderzoek omdat <gegeven in onderzoek> is in onderzoek
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550001 |
-      En de persoon heeft de volgende 'verblijfplaats' gegevens
+      Gegeven de persoon met burgerservicenummer '000000553' heeft de volgende 'verblijfplaats' gegevens
       | naam                                | waarde                        |
       | datumAanvangAdreshouding (10.30)    | <datumAanvangAdreshouding>    |
+      | datumAanvangAdresBuitenland (13.20) | <datumAanvangAdresBuitenland> |
+      | aanduiding in onderzoek (83.10)     | <waarde>                      |
+      | datum ingang onderzoek (83.20)      | 20220307                      |
+      | land (13.10)                        | <land>                        |
+      | adresregel1 (13.30)                 | <adresregel1>                 |
+      | adresregel2 (13.40)                 | <adresregel2>                 |
+	  | gemeente van inschrijving (09.10)   | <gemeente>                    |
+      En de 'verblijftplaats' heeft de volgende 'adres' gegevens
+      | naam                                | waarde                        |
       | straat (11.10)                      | <straat>                      |
       | huisnummer (11.20)                  | <huisnummer>                  |
       | locatiebeschrijving (12.10)         | <locatiebeschrijving>         |
-      | land (13.10)                        | <land>                        |
-      | datumAanvangAdresBuitenland (13.20) | <datumAanvangAdresBuitenland> |
-      | adresregel1 (13.30)                 | <adresregel1>                 |
-      | adresregel2 (13.40)                 | <adresregel2>                 |
-      En de persoon met burgerservicenummer '555550001' heeft de volgende 'verblijfplaats.inOnderzoek' gegevens
-      | naam                          | waarde   |
-      | aanduidingGegevensInOnderzoek | <waarde> |
-      | datumIngangOnderzoek          | 20220307 |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000553                       |
       | fields              | verblijfplaats.datumVan         |
-      Dan heeft persoon met burgerservicenummer '555550001' de volgende 'verblijfplaats.inOnderzoek' gegevens
-      | naam                             | waarde       |
-      | datumVan                         | true         |
-      | datumIngangOnderzoek.datum       | 2022-03-07   |
-      | datumIngangOnderzoek.type        | Datum        |
-      | datumIngangOnderzoek.langFormaat | 7 maart 2022 |
+      Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
+      | naam                                         | waarde       |
+	  | datumVan.type                                | Datum        |
+	  | datumVan.datum                               | 2004-07-01   |
+	  | datumVan.langFormaat                         | 1 juli 2004  |
+      | inOnderzoek.datumVan                         | true         |
+      | inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07   |
+      | inOnderzoek.datumIngangOnderzoek.type        | Datum        |
+      | inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
 
       Voorbeelden:
-      | gegeven in onderzoek        | waarde | straat | huisnummer | locatiebeschrijving        | datumAanvangAdreshouding | adresregel1     | adresregel2 | land | datumAanvangAdresBuitenland |
-      | datumAanvangAdreshouding    | 081030 | Spui   | 70         |                            | 20040701                 |                 |             |      |                             |
-      | groep adreshouding          | 081000 | Spui   | 70         |                            | 20040701                 |                 |             |      |                             |
-      | categorie verblijfplaats    | 081000 | Spui   | 70         |                            | 20040701                 |                 |             |      |                             |
-      | datumAanvangAdreshouding    | 081030 |        |            | Woonboot in de Grote Sloot | 20040701                 |                 |             |      |                             |
-      | datumAanvangAdresBuitenland | 081320 |        |            |                            |                          | Rue du pomme 25 | Bruxelles   | 5010 | 20040701                    |
-      | verblijf buitenland         | 081320 |        |            |                            |                          | Rue du pomme 25 | Bruxelles   | 5010 | 20040701                    |
-      | datumAanvangAdresBuitenland | 081320 |        |            |                            |                          |                 |             | 0000 | 20040701                    |
+      | gegeven in onderzoek        | waarde | straat | huisnummer | locatiebeschrijving        | datumAanvangAdreshouding | adresregel1     | adresregel2 | land | datumAanvangAdresBuitenland | gemeente |
+      | datumAanvangAdreshouding    | 081030 | Spui   | 70         |                            | 20040701                 |                 |             |      |                             | 0518     |
+      | groep adreshouding          | 081000 | Spui   | 70         |                            | 20040701                 |                 |             |      |                             | 0518     |
+      | categorie verblijfplaats    | 081000 | Spui   | 70         |                            | 20040701                 |                 |             |      |                             | 0518     |
+      | datumAanvangAdreshouding    | 081030 |        |            | Woonboot in de Grote Sloot | 20040701                 |                 |             |      |                             | 0599     |
+      | datumAanvangAdresBuitenland | 081320 |        |            |                            |                          | Rue du pomme 25 | Bruxelles   | 5010 | 20040701                    |          |
+      | verblijf buitenland         | 081320 |        |            |                            |                          | Rue du pomme 25 | Bruxelles   | 5010 | 20040701                    |          |
+      | datumAanvangAdresBuitenland | 081320 |        |            |                            |                          |                 |             | 0000 | 20040701                    |          |
 
     @proxy
     Scenario: indicatieVestigingVanuitBuitenland in onderzoek omdat datumVestigingInNederland is in onderzoek
