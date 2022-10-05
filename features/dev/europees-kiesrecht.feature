@@ -1,6 +1,5 @@
 # language: nl
 
-@post-assert
 Functionaliteit: Europees kiesrecht
 
   Abstract Scenario: persoon heeft 'Europees kiesrecht' veld: <gba naam>

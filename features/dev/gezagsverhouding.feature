@@ -1,6 +1,5 @@
 #language: nl
 
-@post-assert
 Functionaliteit: Gezagsverhouding
 
   Abstract Scenario: persoon heeft 'gezagsverhouding' veld: '<gba naam>'
@@ -30,7 +29,7 @@ Functionaliteit: Gezagsverhouding
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000152                       |
     | fields              | inOnderzoek                     |
     Dan heeft de response een persoon met de volgende gegevens
     | naam                                              | waarde                            |
