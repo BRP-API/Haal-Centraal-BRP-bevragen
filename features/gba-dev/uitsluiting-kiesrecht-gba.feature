@@ -41,7 +41,6 @@ Functionaliteit: Uitsluiting kiesrecht
 		- Een volledig onbekende einddatum uitsluiting wordt hetzelfde geïnterpreteerd en weergegeven als het niet aanwezig zijn van die datum.
 		- Wanneer einddatum uitsluiting geen waarde heeft en uitsluiting kiesrecht wel, wordt uitsluiting kiesrecht wel opgenomen.
 		- Wanneer einddatum uitsluiting in het verleden ligt of vandaag is, wordt het niet opgenomen.
-		- Als er wel een einddatum uitsluiting in de toekomst aanwezig is, maar geen uitsluiting wordt verondersteld dat er wel uitsluiting is.
 
 		Abstract Scenario: kiesrecht <omschrijving>
 #   Functioneel zou dit moeten zijn :
@@ -65,7 +64,6 @@ Functionaliteit: Uitsluiting kiesrecht
 
 				Voorbeelden:
 		  | omschrijving                             | uitsluiting kiesrecht | einddatum uitsluiting | uitgeslotenVanKiesrecht | einddatum    |
-		  | einddatum in toekomst zonder uitsluiting |                       | volgend jaar          | true                    | volgend jaar |
 		  | einddatum uitsluiting in toekomst        | A                     | volgend jaar          | true                    | volgend jaar |
 		  | einddatum uitsluiting in verleden        | A                     | vorig jaar            |                         |              |
 		  | einddatum uitsluiting vandaag            | A                     | vandaag               |                         |              |
