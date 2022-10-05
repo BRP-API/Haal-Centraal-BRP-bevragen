@@ -439,6 +439,12 @@ Given(/^de statement '(.*)' heeft als resultaat '(\d*)'$/, function (statement, 
     }
 });
 
+Given(/^de response body is gelijk aan$/, function (docString) {
+    this.context.response = {
+        data: JSON.parse(docString) 
+    };
+});
+
 Given(/^(?:de|een) persoon met burgerservicenummer '(\d*)' heeft de volgende gegevens$/, function (burgerservicenummer, dataTable) {
     this.context.sqlData = {};
 
@@ -919,10 +925,15 @@ After(async function() {
 
 After(async function() {
     if(this.context.response === undefined) {
+        console.log('er is geen response');
         return;
     }
 
     const headers = this.context.response.headers;
+    if(headers === undefined) {
+        console.log('de response heeft geen headers');
+        return;
+    }
 
     const header = headers["api-version"];
     should.exist(header, "no header found with name 'api-version'");
@@ -939,10 +950,15 @@ After({tags: '@fout-case'}, async function() {
 
 After({tags: 'not @fout-case'}, async function() {
     if(this.context.response === undefined) {
+        console.log('er is geen response');
         return;
     }
 
     const headers = this.context.response.headers;
+    if(headers === undefined) {
+        console.log('de response heeft geen headers');
+        return;
+    }
 
     const header = headers["content-type"];
     should.exist(header, "no header found with name 'content-type'");
@@ -1183,7 +1199,7 @@ Then(/^heeft de persoon ?(?:alleen)? de volgende '(.*)'$/, function (gegevensgro
     persoon[gegevensgroep] = expected;
 });
 
-Then(/^heeft de response een persoon met ?(?:alleen)? de volgende gegevens$/, function (dataTable) {
+Then(/^heeft de response ?(?:nog)? een persoon met ?(?:alleen)? de volgende gegevens$/, function (dataTable) {
     const expected = createObjectFrom(dataTable);
 
     if(this.context.expected === undefined) {
@@ -1251,7 +1267,7 @@ Then(/^heeft de response een persoon met een '(.*)' met ?(?:alleen)? de volgende
 
 Then(/^heeft de response een persoon met een '(.*)' met ?(?:alleen)? de volgende '(.*)' gegevens$/, addRelatieToExpectedPersoon);
 
-Then(/^heeft de persoon een '(.*)' met de volgende '(.*)' gegevens$/, addRelatieToExpectedPersoon);
+Then(/^heeft de persoon een '(.*)' met ?(?:alleen)? de volgende '(.*)' gegevens$/, addRelatieToExpectedPersoon);
 
 function addRelatieToExpectedPersoon(relatie, gegevensgroep, dataTable) {
     let expected = {};
