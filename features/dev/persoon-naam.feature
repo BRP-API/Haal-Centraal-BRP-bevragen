@@ -4,16 +4,13 @@
 Functionaliteit: Naam velden van persoon
 
   Abstract Scenario: persoon heeft 'naam' veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'naam' gegevens
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
     | naam       | waarde   |
     | <gba naam> | <waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000152                       |
     | fields              | naam.<naam>                     |
     Dan heeft de response een persoon met de volgende 'naam' gegevens
     | naam   | waarde   |
@@ -22,28 +19,25 @@ Functionaliteit: Naam velden van persoon
     Voorbeelden:
     | gba naam              | naam          | waarde        |
     | voornamen (02.10)     | voornamen     | voornamen     |
-    | voorvoegsel (02.30)   | voorvoegsel   | voorvoegsel   |
+    | voorvoegsel (02.30)   | voorvoegsel   | van de        |
     | geslachtsnaam (02.40) | geslachtsnaam | geslachtsnaam |
 
   Abstract Scenario: persoon heeft 'naam' veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'naam' gegevens
-    | naam       | waarde   |
-    | <gba naam> | <waarde> |
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+    | naam       | waarde       |
+    | <gba naam> | <gba waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000152                       |
     | fields              | naam.<naam>                     |
     Dan heeft de response een persoon met de volgende 'naam' gegevens
     | naam   | waarde   |
     | <naam> | <waarde> |
 
     Voorbeelden:
-    | gba naam                             | naam                                 | waarde     |
-    | adellijke titel of predicaat (02.20) | adellijkeTitelPredicaat.code         | JH         |
-    | adellijkeTitelPredicaat.omschrijving | adellijkeTitelPredicaat.omschrijving | jonkheer   |
-    | aanduiding naamgebruik (61.10)       | aanduidingNaamgebruik.code           | E          |
-    | aanduidingNaamgebruik.omschrijving   | aanduidingNaamgebruik.omschrijving   | Eigen naam |
+    | gba naam                             | naam                                 | gba waarde | waarde                        |
+    | adellijke titel of predicaat (02.20) | adellijkeTitelPredicaat.code         | JH         | JH                            |
+    | adellijke titel of predicaat (02.20) | adellijkeTitelPredicaat.omschrijving | JH         | Jonkheer                      |
+    | aanduiding naamgebruik (61.10)       | aanduidingNaamgebruik.code           | E          | E                             |
+    | aanduiding naamgebruik (61.10)       | aanduidingNaamgebruik.omschrijving   | E          | gebruik alleen de eigen naam. |
