@@ -7,7 +7,7 @@ class World {
         this.context.extraHeaders = [
             { "naam": "Authorization", "waarde": "" }
         ];
-        this.context.expectedApiVersion = "2.0.0";
+        this.context.expectedApiVersion = "2.0.2";
         this.context.persoon = {};
         this.context.zoekResponse = {
             personen: []
