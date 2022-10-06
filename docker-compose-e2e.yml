@@ -40,7 +40,7 @@ services:
 
   brpproxy:
     container_name: brpproxy
-    image: haalcentraal.azurecr.io/brpproxy:2.0.3
+    image: haalcentraal.azurecr.io/brpproxy:2.0.4
     environment:
       - ASPNETCORE_ENVIRONMENT=Release
       - ASPNETCORE_URLS=http://+:5000
