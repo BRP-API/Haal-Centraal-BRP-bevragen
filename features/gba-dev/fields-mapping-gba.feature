@@ -116,27 +116,23 @@ Functionaliteit: Fields vertalen van proxy naar gba
     Het in fields gevraagde pad staat in kolom "volledig pad". De bijbehorende waarde in kolom "gba pad" beschrijft de waarde van te leveren velden in GbaPersoon.
     Wanneer 1 veld in fields meer dan 1 veld in GbaPersoon vraagt, staan de verschillende GbaPersoon paden gescheiden met een |.
 
-    Abstract Scenario: <fields> is gevraagd
+    Abstract Scenario: <fields> is gevraagd van persoon met ex-partner
       Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde     |
-      | burgerservicenummer         | 555550001  |
-      | geslachtsaanduiding (04.10) | M          |
-      En de persoon heeft de volgende 'naam' gegevens
       | naam                                 | waarde    |
+      | burgerservicenummer                  | 555550001 |
+      | geslachtsaanduiding (04.10)          | M         |
       | voornamen (02.10)                    | Jan Peter |
       | adellijke titel of predicaat (02.20) | JH        |
       | voorvoegsel (02.30)                  | te        |
       | geslachtsnaam (02.40)                | Hoogh     |
       | aanduiding naamgebruik (61.10)       | E         |
-      En de persoon heeft een 'ex-partner' met de volgende 'naam' gegevens
-      | naam                                 | waarde         |
-      | voornamen (02.10)                    | Anna Catharina |
-      | adellijke titel of predicaat (02.20) | BS             |
-      | voorvoegsel (02.30)                  | van den        |
-      | geslachtsnaam (02.40)                | Aedel          |
-      En de 'ex-partner' heeft de volgende 'ontbindingHuwelijkPartnerschap' gegevens
-      | naam                                                         | waarde   |
-      | datum ontbinding huwelijk/geregistreerd partnerschap (07.10) | 20211109 |
+      En de persoon heeft een 'partner' met de volgende gegevens
+      | naam                                                         | waarde         |
+      | voornamen (02.10)                                            | Anna Catharina |
+      | adellijke titel of predicaat (02.20)                         | BS             |
+      | voorvoegsel (02.30)                                          | van den        |
+      | geslachtsnaam (02.40)                                        | Aedel          |
+      | datum ontbinding huwelijk/geregistreerd partnerschap (07.10) | 20211109       |
       En landelijke tabel "Adellijke_Titel_Predicaat" heeft de volgende waarde
       | code | omschrijving | soort     |
       | JH   | Jonkheer     | predicaat |
