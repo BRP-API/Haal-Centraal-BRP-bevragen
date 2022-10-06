@@ -937,7 +937,8 @@ After(async function() {
 
     const header = headers["api-version"];
     should.exist(header, "no header found with name 'api-version'");
-    header.should.equal("2.0.0", "no 'api-version' header found with value: '2.0.0'");
+    header.should.equal(this.context.expectedApiVersion,
+                        `no 'api-version' header found with value: '${this.context.expectedApiVersion}'`);
 });
 
 After({tags: '@fout-case'}, async function() {
