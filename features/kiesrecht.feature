@@ -173,7 +173,7 @@ Rule: Uitsluiting van kiesrecht wordt alleen opgenomen wanneer de einddatum uits
 
 			Voorbeelden:
 				| omschrijving                             | uitsluiting kiesrecht | einddatum uitsluiting |
-				| einddatum uitsluiting in verleden        | A                     | vorig jaar            |
+				| einddatum uitsluiting in verleden        | A                     | gisteren              |
 				| einddatum uitsluiting vandaag            | A                     | vandaag               |
 				| einddatum uitsluiting vorige maand       | A                     | vorige maand          |
 				| einddatum uitsluiting vorig jaar         | A                     | vorig jaar            |
