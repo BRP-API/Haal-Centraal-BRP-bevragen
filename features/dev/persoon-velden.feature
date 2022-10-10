@@ -1,39 +1,52 @@
 #language: nl
 
-@post-assert
 Functionaliteit: Persoon
 
   Abstract Scenario: persoon heeft veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    | <gba naam>          | <waarde>  |
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+    | naam       | waarde       |
+    | <gba naam> | <gba waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000152                       |
     | fields              | <naam>                          |
     Dan heeft de response een persoon met de volgende gegevens
     | naam   | waarde   |
     | <naam> | <waarde> |
 
     Voorbeelden:
-    | gba naam                             | naam                                 | waarde     |
-    | anummer (01.10)                      | aNummer                              | 1234567890 |
-    | geslachtsaanduiding (04.10)          | geslacht.code                        | M          |
-    | geslacht.omschrijving                | geslacht.omschrijving                | man        |
-    | gemeente van inschrijving (09.10)    | gemeenteVanInschrijving.code         | 0518       |
-    | gemeenteVanInschrijving.omschrijving | gemeenteVanInschrijving.omschrijving | Rotterdam  |
+    | gba naam                    | naam                  | gba waarde | waarde     |
+    | anummer (01.10)             | aNummer               | 1234567890 | 1234567890 |
+    | geslachtsaanduiding (04.10) | geslacht.code         | M          | M          |
+    | geslachtsaanduiding (04.10) | geslacht.omschrijving | M          | man        |
 
-  Abstract Scenario: persoon heeft veld: 'indicatie geheim (70.10)'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
+  Abstract Scenario: persoon heeft veld: '<gba naam>'
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    | naam       | waarde       |
+    | <gba naam> | <gba waarde> |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | <naam>                          |
+    Dan heeft de response een persoon met de volgende gegevens
+    | naam   | waarde   |
+    | <naam> | <waarde> |
+
+    Voorbeelden:
+    | gba naam                          | naam                                 | gba waarde | waarde    |
+    | gemeente van inschrijving (09.10) | gemeenteVanInschrijving.code         | 0518       | 0518      |
+    | gemeente van inschrijving (09.10) | gemeenteVanInschrijving.omschrijving | 0599       | Rotterdam |
+
+  Abstract Scenario: persoon heeft veld: 'indicatie geheim (70.10)' met waarde <gba waarde>
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'inschrijving' gegevens
     | naam                     | waarde       |
-    | burgerservicenummer      | 555550001    |
     | indicatie geheim (70.10) | <gba waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000152                       |
     | fields              | geheimhoudingPersoonsgegevens   |
     Dan heeft de response een persoon met de volgende gegevens
     | naam                          | waarde   |
@@ -50,26 +63,43 @@ Functionaliteit: Persoon
     | 7          | true   |
 
   Scenario: persoon heeft veld: 'indicatie geheim (70.10)' met waarde 0
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                     | waarde    |
-    | burgerservicenummer      | 555550001 |
-    | indicatie geheim (70.10) | 0         |
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'inschrijving' gegevens
+    | naam                     | waarde |
+    | indicatie geheim (70.10) | 0      |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000152                       |
     | fields              | geheimhoudingPersoonsgegevens   |
     Dan heeft de response een leeg persoon object
 
   Abstract Scenario: persoon heeft datum veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde       |
-    | burgerservicenummer | 555550001    |
-    | <gba naam>          | <gba waarde> |
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'inschrijving' gegevens
+    | naam       | waarde       |
+    | <gba naam> | <gba waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000152                       |
+    | fields              | <naam>                          |
+    Dan heeft de response een persoon met de volgende gegevens
+    | naam               | waarde         |
+    | <naam>.type        | Datum          |
+    | <naam>.datum       | <waarde>       |
+    | <naam>.langFormaat | <lang formaat> |
+
+    Voorbeelden:
+    | gba naam                              | gba waarde | naam                       | waarde     | lang formaat |
+    | datum eerste inschrijving GBA (68.10) | 20020701   | datumEersteInschrijvingGBA | 2002-07-01 | 1 juli 2002  |
+
+  Abstract Scenario: persoon heeft datum veld: '<gba naam>'
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    | naam       | waarde       |
+    | <gba naam> | <gba waarde> |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
     | fields              | <naam>                          |
     Dan heeft de response een persoon met de volgende gegevens
     | naam               | waarde         |
@@ -79,19 +109,17 @@ Functionaliteit: Persoon
 
     Voorbeelden:
     | gba naam                                  | gba waarde | naam                        | waarde     | lang formaat |
-    | datum eerste inschrijving GBA (68.10)     | 20020701   | datumEersteInschrijvingGBA  | 2002-07-01 | 1 juli 2002  |
     | datum inschrijving in de gemeente (09.20) | 20020701   | datumInschrijvingInGemeente | 2002-07-01 | 1 juli 2002  |
 
   Abstract Scenario: veld(en) van persoon is/zijn in onderzoek
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                                        | waarde                    |
-    | burgerservicenummer                         | 555550001                 |
-    | aanduiding gegevens in onderzoek (01.83.10) | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (01.83.20)           | 20020701                  |
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+    | naam                            | waarde                    |
+    | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)  | 20020701                  |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000152                       |
     | fields              | inOnderzoek                     |
     Dan heeft de response een persoon met de volgende gegevens
     | naam                                                | waarde                             |
@@ -113,18 +141,15 @@ Functionaliteit: Persoon
     | 010410                  |                                  | true                  |                       |
 
   Abstract Scenario: naam veld(en) van persoon is/zijn in onderzoek
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                                        | waarde                    |
-    | burgerservicenummer                         | 555550001                 |
-    | aanduiding gegevens in onderzoek (01.83.10) | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (01.83.20)           | 20020701                  |
-    En de persoon heeft de volgende 'naam' gegevens
-    | naam                  | waarde |
-    | geslachtsnaam (02.40) | Groen  |
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+    | naam                            | waarde                    |
+    | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)  | 20020701                  |
+    | geslachtsnaam (02.40)           | Groen                     |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000152                       |
     | fields              | naam                            |
     Dan heeft de response een persoon met de volgende 'naam' gegevens
     | naam                                         | waarde                                      |
@@ -153,18 +178,15 @@ Functionaliteit: Persoon
     | 016110                  |                        |                                           |                          |                            | true                                |                          |                             |
 
   Abstract Scenario: geboorte veld(en) van persoon is/zijn in onderzoek
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                                        | waarde                    |
-    | burgerservicenummer                         | 555550001                 |
-    | aanduiding gegevens in onderzoek (01.83.10) | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (01.83.20)           | 20020701                  |
-    En de persoon heeft de volgende 'geboorte' gegevens
-    | naam                  | waarde   |
-    | geboortedatum (03.10) | 19630405 |
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+    | naam                            | waarde                    |
+    | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)  | 20020701                  |
+    | geboortedatum (03.10)           | 19630405                  |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000152                       |
     | fields              | geboorte                        |
     Dan heeft de response een persoon met de volgende 'geboorte' gegevens
     | naam                                         | waarde                |
@@ -187,17 +209,14 @@ Functionaliteit: Persoon
     | 010330                  |                    |                     | true              |
 
   Abstract Scenario: 'gemeente van inschrijving (09.10)' en/of 'datum inschrijving in de gemeente (09.20)' veld(en) van persoon is/zijn in onderzoek
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'verblijfplaats' gegevens
-    | naam                                     | waarde                    |
-    | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (83.20)           | 20020701                  |
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    | naam                            | waarde                    |
+    | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)  | 20020701                  |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000152                       |
     | fields              | inOnderzoek                     |
     Dan heeft de response een persoon met de volgende gegevens
     | naam                                                 | waarde                                     |
@@ -215,17 +234,14 @@ Functionaliteit: Persoon
     | 080920                  |                                      | true                                     |
 
   Abstract Scenario: 'gemeente van inschrijving (09.10)' en/of 'datum inschrijving in de gemeente (09.20)' veld(en) van persoon is/zijn niet in onderzoek
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'verblijfplaats' gegevens
-    | naam                                     | waarde                    |
-    | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (83.20)           | 20020701                  |
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    | naam                            | waarde                    |
+    | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)  | 20020701                  |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000152                       |
     | fields              | inOnderzoek                     |
     Dan heeft de response een leeg persoon object
 
@@ -237,17 +253,14 @@ Functionaliteit: Persoon
     | 081400                  |
     | 088500                  |
 
-  Abstract Scenario: geboortedatum is een volledig datum
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'geboorte' gegevens
+  Abstract Scenario: leeftijd bepaling: geboortedatum is een volledig datum
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
     | naam                  | waarde  |
     | geboortedatum (03.10) | <datum> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000152                       |
     | fields              | leeftijd                        |
     Dan heeft de response een persoon met alleen de volgende gegevens
     | naam     | waarde     |
@@ -259,66 +272,59 @@ Functionaliteit: Persoon
     | gisteren - 15 jaar | 15       |
     | morgen - 20 jaar   | 19       |
 
-  Scenario: geboortedatum is een onbekend datum
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'geboorte' gegevens
+  Scenario: leeftijd bepaling: geboortedatum is een onbekend datum
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
     | naam                  | waarde   |
     | geboortedatum (03.10) | 00000000 |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
-    | fields              | burgerservicenummer,leeftijd    |
-    Dan heeft de response een persoon met alleen de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
+    | burgerservicenummer | 000000152                       |
+    | fields              | leeftijd                        |
+    Dan heeft de response een persoon zonder gegevens
 
-  Scenario: maand en dag van geboortedatum is onbekend
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'geboorte' gegevens
+  Scenario: leeftijd bepaling: maand en dag van geboortedatum is onbekend
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
     | naam                  | waarde   |
     | geboortedatum (03.10) | 20000000 |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
-    | fields              | burgerservicenummer,leeftijd    |
-    Dan heeft de response een persoon met alleen de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
+    | burgerservicenummer | 000000152                       |
+    | fields              | leeftijd                        |
+    Dan heeft de response een persoon zonder gegevens
 
-  Abstract Scenario: dag van geboortedatum is onbekend
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'geboorte' gegevens
+  Abstract Scenario: leeftijd bepaling: dag van geboortedatum is onbekend en geboorte maand is niet deze maand
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
     | naam                  | waarde          |
     | geboortedatum (03.10) | <geboortedatum> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
-    | fields              | burgerservicenummer,leeftijd    |
+    | burgerservicenummer | 000000152                       |
+    | fields              | leeftijd                        |
     Dan heeft de response een persoon met alleen de volgende gegevens
-    | naam                | waarde     |
-    | burgerservicenummer | 555550001  |
-    | leeftijd            | <leeftijd> |
+    | naam     | waarde     |
+    | leeftijd | <leeftijd> |
 
     Voorbeelden:
     | geboortedatum            | leeftijd |
     | volgende maand - 10 jaar | 9        |
     | vorige maand - 10 jaar   | 10       |
-    | deze maand - 10 jaar     |          |
 
-  Scenario: persoon is overleden
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550007 |
-    En de persoon heeft de volgende 'geboorte' gegevens
+  Abstract Scenario: leeftijd bepaling: dag van geboortedatum is onbekend en geboorte maand is deze maand
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+    | naam                  | waarde               |
+    | geboortedatum (03.10) | deze maand - 10 jaar |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | leeftijd                        |
+    Dan heeft de response een persoon zonder gegevens
+
+  Scenario: leeftijd bepaling: persoon is overleden
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
     | naam                  | waarde   |
     | geboortedatum (03.10) | 19830526 |
     En de persoon heeft de volgende 'overlijden' gegevens
@@ -327,8 +333,6 @@ Functionaliteit: Persoon
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550007                       |
-    | fields              | burgerservicenummer,leeftijd    |
-    Dan heeft de response een persoon met alleen de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550007 |
+    | burgerservicenummer | 000000152                       |
+    | fields              | leeftijd                        |
+    Dan heeft de response een persoon zonder gegevens

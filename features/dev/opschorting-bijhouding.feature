@@ -1,6 +1,5 @@
 #language: nl
 
-@post-assert
 Functionaliteit: Opschorting bijhouding
 
   Abstract Scenario: opschorting bijhouding. Omzetten datum veld: <gba naam>
