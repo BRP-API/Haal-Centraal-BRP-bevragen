@@ -46,13 +46,13 @@ Functionaliteit: Waardetabel met code en omschrijving
   Rule: Bij een veld gedefinieerd als Waardetabel op een landelijke tabel wordt de omschrijving geleverd die in die tabel hoort bij de code
 
     Abstract Scenario: Omschrijving bij code voor <tabel>
-      Gegeven de persoon met burgerservicenummer '000000139' heeft de volgende '<groepsnaam>' gegevens
+      Gegeven de persoon met burgerservicenummer '000000176' heeft de volgende '<groepsnaam>' gegevens
       | <lo3-naam>      |
       | <waarde-code>   |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000139                       |
+      | burgerservicenummer | 000000176                       |
       | fields              | <fieldnaam>                     |
       Dan heeft de response een persoon met de volgende '<propertynaam>' gegevens
       | naam                        | waarde                |
@@ -70,13 +70,13 @@ Functionaliteit: Waardetabel met code en omschrijving
 
 
     Abstract Scenario: Omschrijving bij code voor <tabel> bij Verblijfplaats
-      Gegeven de persoon met burgerservicenummer '000000139' heeft de volgende 'verblijfplaats' gegevens
+      Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende 'verblijfplaats' gegevens
       | <lo3-naam>      |
       | <waarde-code>   |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000139                       |
+      | burgerservicenummer | 000000188                       |
       | fields              | <fieldnaam>                     |
       Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
       | naam                        | waarde                |
@@ -91,13 +91,13 @@ Functionaliteit: Waardetabel met code en omschrijving
 
 
     Abstract Scenario: Omschrijving bij code voor <tabel> bij Geboorte
-      Gegeven de persoon met burgerservicenummer '000000139' heeft de volgende gegevens
+      Gegeven de persoon met burgerservicenummer '000000206' heeft de volgende gegevens
       | <lo3-naam>      |
       | <waarde-code>   |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000139                       |
+      | burgerservicenummer | 000000206                       |
       | fields              | <fieldnaam>                     |
       Dan heeft de response een persoon met de volgende '<propertynaam>' gegevens
       | naam                        | waarde                |
@@ -110,13 +110,13 @@ Functionaliteit: Waardetabel met code en omschrijving
       | Landen    | 6030        | Nederland           | geboorte   | geboorteland (03.30)   | geboorte     | geboorte.land   | land.   |
 
     Scenario: Omschrijving bij code voor Nationaliteiten en Reden_Nationaliteit bij nationaliteiten
-      Gegeven de persoon met burgerservicenummer '000000164' heeft een 'nationaliteit' met de volgende gegevens
+      Gegeven de persoon met burgerservicenummer '000000218' heeft een 'nationaliteit' met de volgende gegevens
       | nationaliteit (05.10) | reden opname (63.10) |
       | 0064                  | 301                  |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000164                       |
+      | burgerservicenummer | 000000218                       |
       | fields              | nationaliteiten                 |
       Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
       | naam                       | waarde                                   |
@@ -128,13 +128,13 @@ Functionaliteit: Waardetabel met code en omschrijving
 
 
     Abstract Scenario: Omschrijving bij code voor <relatie> <element>
-      Gegeven de persoon met burgerservicenummer '000000140' heeft een <relatie> met de volgende gegevens
+      Gegeven de persoon met burgerservicenummer '000000231' heeft een <relatie> met de volgende gegevens
       | <element> |
       | <waarde>  |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000140                       |
+      | burgerservicenummer | 000000231                       |
       | fields              | <fields>.<groep>                |
       Dan heeft de response een persoon met een '<relatiedan>' met de volgende '<groep>' gegevens
       | naam                | waarde         |
@@ -153,13 +153,13 @@ Functionaliteit: Waardetabel met code en omschrijving
       | land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)   | 'partner' | partner    | aangaanHuwelijkPartnerschap | land   | 6059   | São Tomé en Principe   | partners |
 
     Abstract Scenario: Omschrijving en soort bij code voor <relatie> met adellijke titel of predicaat
-      Gegeven de persoon met burgerservicenummer '000000140' heeft een <relatie> met de volgende gegevens
+      Gegeven de persoon met burgerservicenummer '000000243' heeft een <relatie> met de volgende gegevens
       | adellijke titel of predicaat (02.20) |
       | <waarde>  |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                |
       | type                | RaadpleegMetBurgerservicenummer       |
-      | burgerservicenummer | 555550001                             |
+      | burgerservicenummer | 000000243                             |
       | fields              | <fields>.naam.adellijkeTitelPredicaat |
       Dan heeft de response een persoon met een '<relatiedan>' met de volgende gegevens
       | naam                                 | waarde         |
@@ -176,13 +176,13 @@ Functionaliteit: Waardetabel met code en omschrijving
   Rule: wanneer voor de code geen bijbehorende waarde voorkomt in de tabel, wordt alleen de code geleverd
 
     Abstract Scenario: code voor <element> komt niet voor in de tabel <tabel>
-      Gegeven de persoon met burgerservicenummer '000000140' heeft de volgende gegevens
+      Gegeven de persoon met burgerservicenummer '000000255' heeft de volgende gegevens
       | <element> |
       | <waarde>  |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000140                       |
+      | burgerservicenummer | 000000255                       |
       | fields              | <groep>.<veld>                  |
       Dan heeft de response een persoon met alleen de volgende '<groep>' gegevens
       | naam                | waarde         |
@@ -194,13 +194,13 @@ Functionaliteit: Waardetabel met code en omschrijving
       | geboorteland (03.30)              | Landen              | geboorte                     | land                    | 1234   |
 
     Abstract Scenario: code voor <element> komt niet voor in de tabel <tabel>
-      Gegeven de persoon met burgerservicenummer '000000140' heeft de volgende '<groep>' gegevens
+      Gegeven de persoon met burgerservicenummer '000000267' heeft de volgende '<groep>' gegevens
       | <element> |
       | <waarde>  |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000140                       |
+      | burgerservicenummer | 000000267                       |
       | fields              | <groep>.<veld>                  |
       Dan heeft de response een persoon met alleen de volgende '<groep>' gegevens
       | naam                | waarde         |
@@ -213,13 +213,13 @@ Functionaliteit: Waardetabel met code en omschrijving
       | aanduiding verblijfstitel (39.10) | Verblijfstiteltabel | verblijfstitel               | aanduiding              | 01     |
 
     Abstract Scenario: code voor <element> komt niet voor in de tabel <tabel>
-      Gegeven de persoon met burgerservicenummer '000000140' heeft de volgende '<groep>' gegevens
+      Gegeven de persoon met burgerservicenummer '000000279' heeft de volgende '<groep>' gegevens
       | <element> |
       | <waarde>  |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000140                       |
+      | burgerservicenummer | 000000279                       |
       | fields              | <groep>                         |
       Dan heeft de response een persoon met alleen de volgende '<groep>' gegevens
       | naam                | waarde         |
@@ -234,26 +234,26 @@ Functionaliteit: Waardetabel met code en omschrijving
     - de waarde voor plaats is een gemeentecode wanneer het bestaat uit 4 cijfers
 
     Scenario: Plaats is buitenlandse plaats of locatie bij code voor Geboorteplaats
-      Gegeven de persoon met burgerservicenummer '000000140' heeft de volgende gegevens
+      Gegeven de persoon met burgerservicenummer '000000280' heeft de volgende gegevens
       | geboorteplaats (03.20) |
       | Berlijn                |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000140                       |
-      | fields              | geboorte.plaats                  |
+      | burgerservicenummer | 000000280                       |
+      | fields              | geboorte.plaats                 |
       Dan heeft de response een persoon met alleen de volgende 'geboorte' gegevens
       | naam                | waarde   |
       | plaats.omschrijving | Berlijn  |
 
     Scenario: Plaats is buitenlandse plaats of locatie bij code voor Overlijden
-      Gegeven de persoon met burgerservicenummer '000000140' heeft de volgende 'overlijden' gegevens
+      Gegeven de persoon met burgerservicenummer '000000292' heeft de volgende 'overlijden' gegevens
       | plaats overlijden (08.20) |
       | 51° N.B. 4° O.L.          |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000140                       |
+      | burgerservicenummer | 000000292                       |
       | fields              | overlijden.plaats                  |
       Dan heeft de response een persoon met alleen de volgende 'overlijden' gegevens
       | naam                | waarde            |
@@ -261,13 +261,13 @@ Functionaliteit: Waardetabel met code en omschrijving
 
 
     Abstract Scenario: Plaats is buitenlandse plaats of locatie bij code voor <relatie> <element>
-      Gegeven de persoon met burgerservicenummer '000000140' heeft een <relatie> met de volgende gegevens
+      Gegeven de persoon met burgerservicenummer '000000309' heeft een <relatie> met de volgende gegevens
       | <element>           |
       | <waarde>  |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000140                       |
+      | burgerservicenummer | 000000309                       |
       | fields              | <fields>.<groep>            |
       Dan heeft de response een persoon met een '<relatiedan>' met de volgende '<groep>' gegevens
       | naam                | waarde   |
