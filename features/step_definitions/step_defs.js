@@ -30,7 +30,6 @@ const propertyNameMap = new Map([
     ['datum ingang onderzoek (11.83.20)', 'gezagInOnderzoek.datumIngangOnderzoek'],
     ['aanduiding gegevens in onderzoek (83.10)', 'inOnderzoek.aanduidingGegevensInOnderzoek'],
     ['datum ingang onderzoek (83.20)', 'inOnderzoek.datumIngangOnderzoek'],
-    ['datum einde onderzoek (83.30)', 'inOnderzoek.datumEindeOnderzoek'],
 
     // Gezagsverhouding
     ['indicatie gezag minderjarige (32.10)', 'indicatieGezagMinderjarige.code'],
@@ -115,7 +114,8 @@ const tableNameMap = new Map([
     ['verblijfplaats', 'lo3_pl_verblijfplaats'],
     ['gezagsverhouding', 'lo3_pl_gezagsverhouding'],
     ['overlijden', 'lo3_pl_overlijden'],
-    ['adres', 'lo3_adres']
+    ['adres', 'lo3_adres'],
+    ['geboorte', 'lo3_pl_persoon']
 ]);
 
 const columnNameMap = new Map([
@@ -145,7 +145,7 @@ const columnNameMap = new Map([
     ['plaats overlijden (08.20)', 'overlijden_plaats'],
     ['land overlijden (08.30)', 'overlijden_land_code'],
 
-    ['gemeente van inschrijving (09.10)', 'gemeente_code'],
+    ['gemeente van inschrijving (09.10)', 'inschrijving_gemeente_code'],
 
     ['functieAdres.code (10.10)', 'adres_functie'],
     ['datum aanvang adreshouding (10.30)', 'adreshouding_start_datum'],
@@ -164,6 +164,7 @@ const columnNameMap = new Map([
     ['locatiebeschrijving (12.10)', 'locatie_beschrijving'],
 	
     ['land (13.10)', 'vertrek_land_code'],
+    ['land_adres_buitenland (13.10)', 'vertrek_land_code'],
     ['datum aanvang adres buitenland (13.20)', 'vertrek_datum'],
     ['regel 1 adres buitenland (13.30)', 'vertrek_land_adres_1'],
     ['regel 2 adres buitenland (13.40)', 'vertrek_land_adres_2'],
@@ -173,6 +174,8 @@ const columnNameMap = new Map([
     ['datum vestiging in Nederland (14.20)', 'vestiging_datum'],
 
     ['soort verbintenis (15.10)', 'verbintenis_soort'],
+	
+    ['indicatie gezag minderjarige (32.10)', 'minderjarig_gezag_ind'],
 
     ['indicatie curateleregister (33.10)', 'curatele_register_ind' ],
 
@@ -188,6 +191,7 @@ const columnNameMap = new Map([
     ['datum ingang familierechtelijke betrekking (62.10)', 'familie_betrek_start_datum'],
 
     ['reden opnemen (63.10)', 'nl_nat_verkrijg_reden'],
+    ['reden opname (63.10)', 'nl_nat_verkrijg_reden']
 
     ['reden beëindigen (64.10)', 'nl_nat_verlies_reden'],
 
@@ -196,6 +200,7 @@ const columnNameMap = new Map([
     ['indicatie geheim (70.10)', 'geheim_ind'],
 
     ['aktenummer (81.20)', 'akte_nr' ],
+	
     ['gemeente document (82.10)', 'doc_gemeente_code' ],
     ['datum document (82.20)', 'doc_datum' ],
     ['beschrijving document (82.30)', 'doc_beschrijving' ],
@@ -208,7 +213,7 @@ const columnNameMap = new Map([
 
     ['datum ingang geldigheid (85.10)', 'geldigheid_start_datum'],
     ['ingangsdatum geldigheid (85.10)', 'geldigheid_start_datum' ],
-	
+
     ['datum van opneming (86.10)', 'opneming_datum' ],
 
     ['rni-deelnemer (88.10)', 'rni_deelnemer'],
@@ -349,7 +354,7 @@ function createArrayFrom(dataTable) {
     if(dataTable.raw()[0][0] === "naam") {
         dataTable.hashes().forEach(function(row) {
             const propertyName = columnNameMap.get(row.naam);
-
+    
             if(row.waarde !== undefined && row.waarde !== '') {
                 retval.push([ propertyName, calculatePropertyValue(row.waarde, false) ]);
             }
@@ -425,7 +430,7 @@ function getNextStapelNr(sqlData, relatie) {
     return stapelNr;
 }
 
-Given(/^landelijke tabel "([\w\-]*)" heeft de volgende waarden$/, function (_tabelNaam, _dataTable) {
+Given(/^landelijke tabel "([\w\-]*)" heeft de volgende waarden$/, function (_tabelNaam, _dataTable) {       
     // doe nog niets
 });
 
@@ -436,12 +441,6 @@ Given(/^de statement '(.*)' heeft als resultaat '(\d*)'$/, function (statement, 
     else if(statement.includes('lo3_adres')) {
         this.context.adres_id = Number(result);
     }
-});
-
-Given(/^de response body is gelijk aan$/, function (docString) {
-    this.context.response = {
-        data: JSON.parse(docString) 
-    };
 });
 
 Given(/^(?:de|een) persoon met burgerservicenummer '(\d*)' heeft de volgende gegevens$/, function (burgerservicenummer, dataTable) {
@@ -924,20 +923,14 @@ After(async function() {
 
 After(async function() {
     if(this.context.response === undefined) {
-        console.log('er is geen response');
         return;
     }
 
     const headers = this.context.response.headers;
-    if(headers === undefined) {
-        console.log('de response heeft geen headers');
-        return;
-    }
 
     const header = headers["api-version"];
     should.exist(header, "no header found with name 'api-version'");
-    header.should.equal(this.context.expectedApiVersion,
-                        `no 'api-version' header found with value: '${this.context.expectedApiVersion}'`);
+    header.should.equal("2.0.0", "no 'api-version' header found with value: '2.0.0'");
 });
 
 After({tags: '@fout-case'}, async function() {
@@ -950,15 +943,10 @@ After({tags: '@fout-case'}, async function() {
 
 After({tags: 'not @fout-case'}, async function() {
     if(this.context.response === undefined) {
-        console.log('er is geen response');
         return;
     }
 
     const headers = this.context.response.headers;
-    if(headers === undefined) {
-        console.log('de response heeft geen headers');
-        return;
-    }
 
     const header = headers["content-type"];
     should.exist(header, "no header found with name 'content-type'");
@@ -1199,7 +1187,7 @@ Then(/^heeft de persoon ?(?:alleen)? de volgende '(.*)'$/, function (gegevensgro
     persoon[gegevensgroep] = expected;
 });
 
-Then(/^heeft de response ?(?:nog)? een persoon met ?(?:alleen)? de volgende gegevens$/, function (dataTable) {
+Then(/^heeft de response een persoon met ?(?:alleen)? de volgende gegevens$/, function (dataTable) {
     const expected = createObjectFrom(dataTable);
 
     if(this.context.expected === undefined) {
@@ -1267,7 +1255,7 @@ Then(/^heeft de response een persoon met een '(.*)' met ?(?:alleen)? de volgende
 
 Then(/^heeft de response een persoon met een '(.*)' met ?(?:alleen)? de volgende '(.*)' gegevens$/, addRelatieToExpectedPersoon);
 
-Then(/^heeft de persoon een '(.*)' met ?(?:alleen)? de volgende '(.*)' gegevens$/, addRelatieToExpectedPersoon);
+Then(/^heeft de persoon een '(.*)' met de volgende '(.*)' gegevens$/, addRelatieToExpectedPersoon);
 
 function addRelatieToExpectedPersoon(relatie, gegevensgroep, dataTable) {
     let expected = {};
