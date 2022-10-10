@@ -4,16 +4,13 @@
 Functionaliteit: Overlijden
 
   Abstract Scenario: persoon heeft 'overlijden' datum veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'overlijden' gegevens
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'overlijden' gegevens
     | naam       | waarde       |
     | <gba naam> | <gba waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000152                       |
     | fields              | overlijden                      |
     Dan heeft de response een persoon met de volgende 'overlijden' gegevens
     | naam               | waarde         |
@@ -27,42 +24,35 @@ Functionaliteit: Overlijden
     | datum overlijden (08.10) | 20020701   | datum | 2002-07-01 | 1 juli 2002  |
 
   Abstract Scenario: persoon heeft 'overlijden' waardetabel veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'overlijden' gegevens
-    | naam       | waarde   |
-    | <gba naam> | <waarde> |
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'overlijden' gegevens
+    | naam       | waarde       |
+    | <gba naam> | <gba waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
-    | fields              | overlijden                      |
+    | burgerservicenummer | 000000152                       |
+    | fields              | overlijden.<naam>               |
     Dan heeft de response een persoon met de volgende 'overlijden' gegevens
-    | naam               | waarde   |
-    | indicatieOverleden | true     |
-    | <naam>             | <waarde> |
+    | naam   | waarde   |
+    | <naam> | <waarde> |
 
     Voorbeelden:
-    | gba naam                  | naam                | waarde                       |
-    | plaats overlijden (08.20) | plaats.code         | 0518                         |
-    | plaats.omschrijving       | plaats.omschrijving | 's-Gravenhage                |
-    | land overlijden (08.30)   | land.code           | 6014                         |
-    | land.omschrijving         | land.omschrijving   | Verenigde Staten van Amerika |
+    | gba naam                  | naam                | gba waarde | waarde                       |
+    | plaats overlijden (08.20) | plaats.code         | 0518       | 0518                         |
+    | plaats overlijden (08.20) | plaats.omschrijving | 0518       | 's-Gravenhage                |
+    | land overlijden (08.30)   | land.code           | 6014       | 6014                         |
+    | land overlijden (08.30)   | land.omschrijving   | 6014       | Verenigde Staten van Amerika |
 
   Abstract Scenario: persoon's overlijden velden is in onderzoek
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'overlijden' gegevens
-    | naam                                     | waarde                    |
-    | datum overlijden (08.10)                 | 19630405                  |
-    | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (83.20)           | 20020701                  |
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'overlijden' gegevens
+    | naam                            | waarde                    |
+    | datum overlijden (08.10)        | 19630405                  |
+    | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)  | 20020701                  |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000152                       |
     | fields              | overlijden                      |
     Dan heeft de response een persoon met de volgende 'overlijden' gegevens
     | naam                                         | waarde                             |

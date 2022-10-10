@@ -14,18 +14,6 @@ Functionaliteit: Kinderen van een persoon raadplegen
       En het 'kind' is gecorrigeerd naar de volgende gegevens
       | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) |
       | William           | de                  | Vries                 |
-      En het 'kind' is gewijzigd naar de volgende gegevens
-      | voornamen (02.10) | geslachtsnaam (02.40) |
-      | William           | Postma                |
-      En de persoon heeft nog een 'kind' met de volgende gegevens
-      | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) |
-      | Sebastiaan        | de                  | Boer                  |
-      En de persoon heeft nog een 'kind' met de volgende gegevens
-      | voornamen (02.10) | geslachtsnaam (02.40) |
-      | Walter            | Messeritz             |
-      En het 'kind' is gecorrigeerd naar de volgende gegevens
-      | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) |
-      | Walter            | de                  | Boer                  |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -34,20 +22,9 @@ Functionaliteit: Kinderen van een persoon raadplegen
       Dan heeft de response een persoon met een 'kind' met de volgende gegevens
       | naam               | waarde  |
       | naam.voornamen     | William |
-      | naam.geslachtsnaam | Postma  |
+      | naam.voorvoegsel   | de      |
+      | naam.geslachtsnaam | Vries   |
       | naam.voorletters   | W.      |
-      En heeft de persoon een 'kind' met de volgende gegevens
-      | naam               | waarde     |
-      | naam.voornamen     | Sebastiaan |
-      | naam.voorvoegsel   | de         |
-      | naam.geslachtsnaam | Boer       |
-      | naam.voorletters   | S.         |
-      En heeft de persoon een 'kind' met de volgende gegevens
-      | naam               | waarde |
-      | naam.voornamen     | Walter |
-      | naam.voorvoegsel   | de     |
-      | naam.geslachtsnaam | Boer   |
-      | naam.voorletters   | W.     |
 
     Scenario: naamswijziging kind
       Gegeven de persoon met burgerservicenummer '000000024' heeft een 'kind' met de volgende gegevens
@@ -56,9 +33,6 @@ Functionaliteit: Kinderen van een persoon raadplegen
       En het 'kind' is gewijzigd naar de volgende gegevens
       | voornamen (02.10) |
       | Vica              |
-      En de persoon heeft nog een 'kind' met de volgende gegevens
-      | voornamen (02.10) |
-      | Bella             |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -67,16 +41,13 @@ Functionaliteit: Kinderen van een persoon raadplegen
       Dan heeft de response een persoon met een 'kind' met de volgende gegevens
       | naam           | waarde |
       | naam.voornamen | Vica   |
-      En heeft de persoon een 'kind' met de volgende gegevens
-      | naam           | waarde |
-      | naam.voornamen | Bella  |
 
   Rule: Een kind wordt alleen teruggegeven als minimaal één gegeven in de identificatienummers (groep 01), naam (groep 02) of geboorte (groep 03) van het kind een waarde heeft.
     - Wanneer in een categorie kind alleen gegevens zijn opgenomen in groep 81 of 82, 85 en 86, wordt dit kind niet opgenomen in het antwoord
-    - Wanneer een gegeven een standaardwaarde heeft, zoals "." (punt) bij geslachtsnaam of "00000000" bij geboortedatum, geldt dat hier als het bestaan van een waarde en wordt het kind wel geleverd
+    - Wanneer een gegeven een standaardwaarde heeft (dit betekent dat de waarde onbekend is), zoals "." (punt) bij geslachtsnaam of "00000000" bij geboortedatum, geldt dat hier als het bestaan van een waarde en wordt het kind wel geleverd.
     - Wanneer door de gebruikte fields parameter in het request het kind in de response geen enkel gegeven heeft met een waarde, dan wordt het kind geleverd zonder gegevens (dus als leeg object)
 
-    Scenario: kind volledig onbekend, veld met onbekend waarde wordt gevraagd met fields
+    Scenario: bestaan kind bekend, veld met onbekend waarde wordt gevraagd met fields
       Gegeven de persoon met burgerservicenummer '000000036' heeft een 'kind' met de volgende gegevens
       | geslachtsnaam (02.40) | geboortedatum (03.10) | 
       | .                     | 00000000              |
@@ -87,7 +58,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | fields              | kinderen.naam                   |
       Dan heeft de response een persoon met een 'kind' zonder 'naam' gegevens
 
-    Scenario: kind volledig onbekend, veld met onbekend waarde wordt niet gevraagd met fields
+    Scenario: bestaan kind bekend, veld met onbekend waarde wordt niet gevraagd met fields
       Gegeven de persoon met burgerservicenummer '000000048' heeft een 'kind' met de volgende gegevens
       | geslachtsnaam (02.40) | geboortedatum (03.10) | 
       | .                     | 00000000              |
@@ -98,13 +69,25 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | fields              | kinderen.burgerservicenummer    |
       Dan heeft de response een persoon met een 'kind' zonder gegevens
 
-    Scenario: ontkenning ouderschap
+    Scenario: ontkenning ouderschap, herroeping van adoptie en nietig verklaren erkenning
       Gegeven de persoon met burgerservicenummer '000000061' heeft een 'kind' met de volgende gegevens
-      | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) | geboortedatum (03.10) | gemeente document (82.10) | datum document (82.20) | beschrijving document (82.30) | ingangsdatum geldigheid (85.10) | datum van opneming (86.10) |
-      | Daan              | de                  | Vries                 | 20031107              | 0518                      | 20031109               | PL gerelateerde               | 20031107                        | 20031109                   |
-      En het 'kind' is gewijzigd naar de volgende gegevens
-      | gemeente document (82.10) | datum document (82.20) | beschrijving document (82.30) | ingangsdatum geldigheid (85.10) | datum van opneming (86.10) |
-      | 1926                      | 20040105               | D27894-2004-A782              | 20031107                        | 20040112                   |
+      | naam                            | waarde          |
+      | voornamen (02.10)               | Daan            |
+      | voorvoegsel (02.30)             | de              |
+      | geslachtsnaam (02.40)           | Vries           |
+      | geboortedatum (03.10)           | 20031107        | 
+      | gemeente document (82.10)       | 0518            | 
+      | datum document (82.20)          | 20031109        | 
+      | beschrijving document (82.30)   | PL gerelateerde | 
+      | ingangsdatum geldigheid (85.10) | 20031107        | 
+      | datum van opneming (86.10)      | 20031109        |
+      En het 'kind' is gecorrigeerd naar de volgende gegevens
+      | naam                            | waarde           |
+      | gemeente document (82.10)       | 0518             |
+      | datum document (82.20)          | 20040105         | 
+      | beschrijving document (82.30)   | D27894-2004-A782 | 
+      | ingangsdatum geldigheid (85.10) | 20031107         | 
+      | datum van opneming (86.10)      | 20040112         |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -121,7 +104,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000073                       |
       | fields              | kinderen.burgerservicenummer    |
-	  Dan heeft de response een persoon zonder 'kind' gegevens
+      Dan heeft de response een persoon met een 'kind' zonder gegevens
 
   Rule: de geleverde kindgegevens zijn de gegevens zoals die staan op de persoonslijst van de gevraagde persoon
     Bij het raadplegen van een persoon worden alleen gegevens uit de persoonslijst van de gevraagde persoon gebruikt, en nooit gegevens van de persoonslijst van het kind
@@ -136,6 +119,13 @@ Functionaliteit: Kinderen van een persoon raadplegen
       En het 'kind' is gewijzigd naar de volgende gegevens
       | burgerservicenummer (01.20) | voornamen (02.10) | geslachtsaanduiding (04.10) |
       | 000000097                   | Karel             | M                           |
+#      De e2e automation code ondersteund nog niet het opvoeren van meer dan 1 PL record, de volgende Gegeven stappen zijn vooralsnog dan ook uitbecommentarieerd.
+#      En de persoon met burgerservicenummer '000000097' heeft de volgende gegevens
+#      | voornamen (02.10) | geslachtsaanduiding (04.10) |
+#      | Karel             | M                           |
+#      En de persoon is gewijzigd naar de volgende gegevens
+#      | voornamen (02.10) | geslachtsaanduiding (04.10) |
+#      | Charlotte         | V                           |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                               |
       | type                | RaadpleegMetBurgerservicenummer                      |
@@ -152,46 +142,25 @@ Functionaliteit: Kinderen van een persoon raadplegen
 
     @proxy
     Scenario: Kind is volledig onbekend
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550005 |
-      En de persoon heeft een 'kind' met alleen de volgende gegevens
-      | naam                | waarde |
-      | burgerservicenummer |        |
-      | geslacht            |        |
-      En het 'kind' heeft alleen de volgende 'naam' gegevens
-      | naam          | waarde |
-      | geslachtsnaam | .      |
-      En het 'kind' heeft alleen de volgende 'geboorte' gegevens
-      | naam        | waarde   |
-      | datum       | 00000000 |
-      | plaats.code | 0000     |
-      | land.code   | 0000     |
+      Gegeven de persoon met burgerservicenummer '000000176' heeft een 'kind' met de volgende gegevens
+      | geslachtsnaam (02.40) | geboortedatum (03.10) | geboorteplaats (03.20) | geboorteland (03.30) |
+      | .                     | 00000000              | 0000                   | 0000                 |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                 |
       | type                | RaadpleegMetBurgerservicenummer        |
-      | burgerservicenummer | 555550005                              |
+      | burgerservicenummer | 000000176                              |
       | fields              | kinderen.naam,kinderen.geboorte.plaats |
-      Dan heeft de response een persoon met een leeg 'kind' object
+      Dan heeft de response een persoon met een 'kind' zonder 'naam' gegevens
+      En heeft het 'kind' geen 'geboorte' gegevens
 
     @proxy
     Scenario: Met fields zijn alleen velden zonder waarde gevraagd
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550006 |
-      En de persoon heeft een 'kind' met alleen de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550007 |
-      En het 'kind' heeft alleen de volgende 'naam' gegevens
-      | naam          | waarde           |
-      | voornamen     |                  |
-      | geslachtsnaam | Ali bin Mohammed |
-      En het 'kind' heeft alleen de volgende 'geboorte' gegevens
-      | naam  | waarde   |
-      | datum | 19750730 |
+      Gegeven de persoon met burgerservicenummer '000000176' heeft een 'kind' met de volgende gegevens
+      | geslachtsnaam (02.40) | geboortedatum (03.10) | 
+      | Ali bin Mohammed      | 19750730              | 
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550006                       |
+      | burgerservicenummer | 000000176                       |
       | fields              | kinderen.naam.voornamen         |
-      Dan heeft de response een persoon met een leeg 'kind' object
+      Dan heeft de response een persoon met een 'kind' zonder 'naam' gegevens

@@ -1,88 +1,78 @@
 # language: nl
 
-@post-assert
 Functionaliteit: Partner
 
   Abstract Scenario: partner heeft veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft een 'partner' met alleen de volgende gegevens
-    | naam       | waarde   |
-    | <gba naam> | <waarde> |
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+    | naam       | waarde       |
+    | <gba naam> | <gba waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
-    | fields              | partners                        |
+    | burgerservicenummer | 000000012                       |
+    | fields              | partners.<naam>                 |
     Dan heeft de response een persoon met een 'partner' met alleen de volgende gegevens
     | naam   | waarde   |
     | <naam> | <waarde> |
 
     Voorbeelden:
-    | gba naam                      | naam                          | waarde                     |
-    | burgerservicenummer           | burgerservicenummer           | 123456789                  |
-    | geslachtsaanduiding (04.10)   | geslacht.code                 | O                          |
-    | soort verbintenis (15.10)     | soortVerbintenis.code         | H                          |
-    | soortVerbintenis.omschrijving | soortVerbintenis.omschrijving | Geregistreerd partnerschap |
+    | gba naam                    | naam                          | gba waarde | waarde                     |
+    | burgerservicenummer (01.20) | burgerservicenummer           | 123456789  | 123456789                  |
+    | geslachtsaanduiding (04.10) | geslacht.code                 | O          | O                          |
+    | geslachtsaanduiding (04.10) | geslacht.omschrijving         | O          | onbekend                   |
+    | soort verbintenis (15.10)   | soortVerbintenis.code         | H          | H                          |
+    | soort verbintenis (15.10)   | soortVerbintenis.omschrijving | P          | geregistreerd partnerschap |
 
   Abstract Scenario: partner heeft '<gegevensgroep>' veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft een 'partner' met alleen de volgende '<gegevensgroep>' gegevens
-    | naam       | waarde   |
-    | <gba naam> | <waarde> |
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+    | naam       | waarde       |
+    | <gba naam> | <gba waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000012                       |
     | fields              | partners.<gegevensgroep>.<naam> |
     Dan heeft de response een persoon met een 'partner' met alleen de volgende '<gegevensgroep>' gegevens
     | naam   | waarde   |
     | <naam> | <waarde> |
 
     Voorbeelden:
-    | gegevensgroep               | gba naam                                                            | naam                                 | waarde                       |
-    | naam                        | voornamen (02.10)                                                   | voornamen                            | Jan                          |
-    | naam                        | voorvoegsel (02.30)                                                 | voorvoegsel                          | de                           |
-    | naam                        | geslachtsnaam (02.40)                                               | geslachtsnaam                        | Groen                        |
-    | naam                        | adellijke titel of predicaat (02.20)                                | adellijkeTitelPredicaat.code         | JH                           |
-    | naam                        | adellijkeTitelPredicaat.omschrijving                                | adellijkeTitelPredicaat.omschrijving | ridder                       |
-    | geboorte                    | geboorteplaats (03.20)                                              | plaats.code                          | 0518                         |
-    | geboorte                    | plaats.omschrijving                                                 | plaats.omschrijving                  | 's-Gravenhage                |
-    | geboorte                    | geboorteland (03.30)                                                | land.code                            | 6014                         |
-    | geboorte                    | land.omschrijving                                                   | land.omschrijving                    | Verenigde Staten van Amerika |
-    | aangaanHuwelijkPartnerschap | plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) | plaats.code                          | 0599                         |
-    | aangaanHuwelijkPartnerschap | land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)   | land.code                            | 6014                         |
+    | gegevensgroep               | gba naam                                                            | naam                                 | gba waarde | waarde                       |
+    | naam                        | voornamen (02.10)                                                   | voornamen                            | Jan        | Jan                          |
+    | naam                        | voorvoegsel (02.30)                                                 | voorvoegsel                          | de         | de                           |
+    | naam                        | geslachtsnaam (02.40)                                               | geslachtsnaam                        | Groen      | Groen                        |
+    | naam                        | adellijke titel of predicaat (02.20)                                | adellijkeTitelPredicaat.code         | JH         | JH                           |
+    | naam                        | adellijke titel of predicaat (02.20)                                | adellijkeTitelPredicaat.omschrijving | R          | Ridder                       |
+    | geboorte                    | geboorteplaats (03.20)                                              | plaats.code                          | 0518       | 0518                         |
+    | geboorte                    | geboorteplaats (03.20)                                              | plaats.omschrijving                  | 0518       | 's-Gravenhage                |
+    | geboorte                    | geboorteland (03.30)                                                | land.code                            | 6014       | 6014                         |
+    | geboorte                    | geboorteland (03.30)                                                | land.omschrijving                    | 6014       | Verenigde Staten van Amerika |
+    | aangaanHuwelijkPartnerschap | plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) | plaats.code                          | 0599       | 0599                         |
+    | aangaanHuwelijkPartnerschap | plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) | plaats.omschrijving                  | 0599       | Rotterdam                    |
+    | aangaanHuwelijkPartnerschap | land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)   | land.code                            | 6014       | 6014                         |
+    | aangaanHuwelijkPartnerschap | land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)   | land.omschrijving                    | 6014       | Verenigde Staten van Amerika |
 
   Scenario: partner heeft 'naam' veld: 'voorletters'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft een 'partner' met alleen de volgende 'naam' gegevens
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
     | naam              | waarde    |
     | voornamen (02.10) | Klaas Jan |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000012                       |
     | fields              | partners.naam.voorletters       |
     Dan heeft de response een persoon met een 'partner' met alleen de volgende 'naam' gegevens
     | naam        | waarde |
     | voorletters | K.J.   |
 
   Abstract Scenario: partner heeft '<gegevensgroep>' veld met onbekend waarde: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft een 'partner' met alleen de volgende '<gegevensgroep>' gegevens
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
     | naam       | waarde   |
     | <gba naam> | <waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000012                       |
     | fields              | partners.<gegevensgroep>        |
     Dan heeft de response een persoon met een 'partner' met een leeg 'naam' object
 
@@ -91,16 +81,13 @@ Functionaliteit: Partner
     | naam          | geslachtsnaam (02.40) | geslachtsnaam | .      |
 
   Abstract Scenario: partner heeft '<gegevensgroep>' datum veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft een 'partner' met alleen de volgende '<gegevensgroep>' gegevens
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
     | naam       | waarde       |
     | <gba naam> | <gba waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000012                       |
     | fields              | partners.<gegevensgroep>        |
     Dan heeft de response een persoon met een 'partner' met alleen de volgende '<gegevensgroep>' gegevens
     | naam               | waarde         |
@@ -115,17 +102,14 @@ Functionaliteit: Partner
     | ontbindingHuwelijkPartnerschap | datum ontbinding huwelijk/geregistreerd partnerschap (07.10)       | 20201001   | datum | 2020-10-01 | 1 oktober 2020  |
 
   Abstract Scenario: veld(en) van partner is/zijn in onderzoek
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft een 'partner' met de volgende gegevens
-    | naam                                     | waarde                    |
-    | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (83.20)           | 20020701                  |
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+    | naam                            | waarde                    |
+    | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)  | 20020701                  |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000012                       |
     | fields              | partners                        |
     Dan heeft de response een persoon met een 'partner' met alleen de volgende gegevens
     | naam                                         | waarde                             |
@@ -147,20 +131,15 @@ Functionaliteit: Partner
     | 051510                  |                                  | true                           |                       |
 
   Abstract Scenario: naam veld(en) van partner is/zijn in onderzoek
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft een 'partner' met de volgende gegevens
-    | naam                                     | waarde                    |
-    | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (83.20)           | 20020701                  |
-    En de 'partner' heeft de volgende 'naam' gegevens
-    | naam                  | waarde |
-    | geslachtsnaam (02.40) | Groen  |
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+    | naam                            | waarde                    |
+    | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)  | 20020701                  |
+    | geslachtsnaam (02.40)           | Groen                     |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000012                       |
     | fields              | partners.naam                   |
     Dan heeft de response een persoon met een 'partner' met alleen de volgende 'naam' gegevens
     | naam                                         | waarde                                 |
@@ -184,20 +163,15 @@ Functionaliteit: Partner
     | 050240                  |                        |                                      |                          | true                       |                          |
 
     Abstract Scenario: geboorte veld(en) van partner is/zijn in onderzoek
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft een 'partner' met de volgende gegevens
-    | naam                                     | waarde                    |
-    | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (83.20)           | 20020701                  |
-    En de 'partner' heeft de volgende 'geboorte' gegevens
-    | naam                  | waarde   |
-    | geboortedatum (03.10) | 19630405 |
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+    | naam                            | waarde                    |
+    | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)  | 20020701                  |
+    | geboortedatum (03.10)           | 19630405                  |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000012                       |
     | fields              | partners.geboorte               |
     Dan heeft de response een persoon met een 'partner' met alleen de volgende 'geboorte' gegevens
     | naam                                         | waarde                |
@@ -220,20 +194,15 @@ Functionaliteit: Partner
     | 050330                  |                    |                     | true              |
 
     Abstract Scenario: partner's huwelijkssluiting/aangaan geregistreerd partnerschap velden is in onderzoek
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft een 'partner' met de volgende gegevens
-    | naam                                     | waarde                    |
-    | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (83.20)           | 20020701                  |
-    En de 'partner' heeft de volgende 'aangaanHuwelijkPartnerschap' gegevens
-    | naam                                                               | waarde   |
-    | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 19630405 |
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+    | naam                                                               | waarde                    |
+    | aanduiding in onderzoek (83.10)                                    | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)                                     | 20020701                  |
+    | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 19630405                  |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                               |
     | type                | RaadpleegMetBurgerservicenummer      |
-    | burgerservicenummer | 555550001                            |
+    | burgerservicenummer | 000000012                            |
     | fields              | partners.aangaanHuwelijkPartnerschap |
     Dan heeft de response een persoon met een 'partner' met alleen de volgende 'aangaanHuwelijkPartnerschap' gegevens
     | naam                                         | waarde                |

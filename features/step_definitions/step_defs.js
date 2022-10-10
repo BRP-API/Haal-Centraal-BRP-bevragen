@@ -30,6 +30,7 @@ const propertyNameMap = new Map([
     ['datum ingang onderzoek (11.83.20)', 'gezagInOnderzoek.datumIngangOnderzoek'],
     ['aanduiding gegevens in onderzoek (83.10)', 'inOnderzoek.aanduidingGegevensInOnderzoek'],
     ['datum ingang onderzoek (83.20)', 'inOnderzoek.datumIngangOnderzoek'],
+    ['datum einde onderzoek (83.30)', 'inOnderzoek.datumEindeOnderzoek'],
 
     // Gezagsverhouding
     ['indicatie gezag minderjarige (32.10)', 'indicatieGezagMinderjarige.code'],
@@ -195,7 +196,6 @@ const columnNameMap = new Map([
     ['indicatie geheim (70.10)', 'geheim_ind'],
 
     ['aktenummer (81.20)', 'akte_nr' ],
-	
     ['gemeente document (82.10)', 'doc_gemeente_code' ],
     ['datum document (82.20)', 'doc_datum' ],
     ['beschrijving document (82.30)', 'doc_beschrijving' ],
@@ -207,7 +207,8 @@ const columnNameMap = new Map([
     ['indicatie onjuist (84.10)', 'onjuist_ind' ],
 
     ['datum ingang geldigheid (85.10)', 'geldigheid_start_datum'],
-
+    ['ingangsdatum geldigheid (85.10)', 'geldigheid_start_datum' ],
+	
     ['datum van opneming (86.10)', 'opneming_datum' ],
 
     ['rni-deelnemer (88.10)', 'rni_deelnemer'],
@@ -227,8 +228,11 @@ After(async function() {
         const client = await pool.connect();
         try {
             for(const [key] of tableNameMap){
-                await client.query(createDeleteStatement(key, this.context.pl_id));
+                await client.query(createDeleteStatement(key, key === 'adres' ? this.context.adres_id : this.context.pl_id));
             }
+        }
+        catch(ex) {
+            console.log(ex.stack);
         }
         finally {
             client.release();
@@ -236,6 +240,28 @@ After(async function() {
     }
 });
 
+function insertIntoAdresStatement(data) {
+    let statement = {
+        text: 'INSERT INTO public.lo3_adres(adres_id',
+        values: []
+    };
+
+    data.forEach(function(row) {
+        statement.text += `,${row[0]}`;
+        statement.values.push(row[1]);
+    });
+
+    statement.text += ') VALUES((SELECT MAX(adres_id)+1 FROM public.lo3_adres)';
+    statement.values.forEach(function(_value, index) {
+        statement.text += `,$${index+1}`;
+    });
+    statement.text += ') RETURNING *';
+
+    if(logSqlStatements) {
+        console.log(statement);
+    }
+    return statement;
+}
 
 function insertIntoPersoonlijstStatement(data) {
     let statement = {
@@ -291,10 +317,14 @@ function insertIntoStatement(tabelNaam, data) {
     return statement;
 }
 
-function createDeleteStatement(tabelNaam, plId) {
-    let statement = {
-        text: `DELETE FROM public.${tableNameMap.get(tabelNaam)} WHERE pl_id=$1`,
-        values: [plId]
+function createDeleteStatement(tabelNaam, id) {
+    const naamId = tabelNaam === 'adres'
+        ? 'adres_id'
+        : 'pl_id';
+
+    const statement = {
+        text: `DELETE FROM public.${tableNameMap.get(tabelNaam)} WHERE ${naamId}=$1`,
+        values: [id]
     };
 
     if(logSqlStatements) {
@@ -319,7 +349,7 @@ function createArrayFrom(dataTable) {
     if(dataTable.raw()[0][0] === "naam") {
         dataTable.hashes().forEach(function(row) {
             const propertyName = columnNameMap.get(row.naam);
-    
+
             if(row.waarde !== undefined && row.waarde !== '') {
                 retval.push([ propertyName, calculatePropertyValue(row.waarde, false) ]);
             }
@@ -342,13 +372,6 @@ function createPersoonlijstData(gegevensgroep, dataTable, geheim=0) {
     }
 
     return data;
-}
-
-function createGegevensgroepData(plId, dataTable) {
-    return [
-        [ 'pl_id', plId ],
-        [ 'volg_nr', 0]
-    ].concat(fromHash(dataTable.hashes()[0]));
 }
 
 function createCollectieDataFromArray(relatie, data, stapelNr=0) {
@@ -384,7 +407,7 @@ function createCollectieDataFromArray(relatie, data, stapelNr=0) {
           ].concat(data);
 }
 
-function createDataFromArray(data) {
+function createVoorkomenDataFromArray(data) {
     return [
         [ 'volg_nr', '0']
     ].concat(data);
@@ -402,12 +425,23 @@ function getNextStapelNr(sqlData, relatie) {
     return stapelNr;
 }
 
-Given(/^landelijke tabel "([\w\-]*)" heeft de volgende waarden$/, function (_tabelNaam, _dataTable) {       
+Given(/^landelijke tabel "([\w\-]*)" heeft de volgende waarden$/, function (_tabelNaam, _dataTable) {
     // doe nog niets
 });
 
-Given(/^de statement '(.*)' heeft als resultaat '(\d*)'$/, function (_statement, result) {
-    this.context.pl_id = Number(result);
+Given(/^de statement '(.*)' heeft als resultaat '(\d*)'$/, function (statement, result) {
+    if(statement.includes('lo3_pl')) {
+        this.context.pl_id = Number(result);
+    }
+    else if(statement.includes('lo3_adres')) {
+        this.context.adres_id = Number(result);
+    }
+});
+
+Given(/^de response body is gelijk aan$/, function (docString) {
+    this.context.response = {
+        data: JSON.parse(docString) 
+    };
 });
 
 Given(/^(?:de|een) persoon met burgerservicenummer '(\d*)' heeft de volgende gegevens$/, function (burgerservicenummer, dataTable) {
@@ -424,6 +458,7 @@ Given(/^(?:de|een) persoon met burgerservicenummer '(\d*)' heeft de volgende geg
 Then(/^zijn de gegenereerde SQL statements$/, function(dataTable) {
     const sqlData = this.context.sqlData;
     const plId = this.context.pl_id;
+    const adresId = this.context.adres_id;
 
     let expected = {};
     let lastKey;
@@ -437,40 +472,75 @@ Then(/^zijn de gegenereerde SQL statements$/, function(dataTable) {
         }
     });
 
-    Object.keys(expected).forEach(function(key) {
+    for(const key of Object.keys(expected)) {
         const sqlDataItems = sqlData[key];
         should.exist(sqlDataItems, `geen data gevonden voor '${key}' om SQL statements te genereren`);
 
         expected[key].forEach(function(exp, index) {
             let actual = sqlDataItems[index];
 
-            const name = key.replace(/-\d$/, "");
-            const statement = key === 'inschrijving'
-                ? insertIntoPersoonlijstStatement(actual)
-                : insertIntoStatement(name, [ ['pl_id', plId+''] ].concat(actual));
+            let statement;
+            switch(key) {
+                case 'inschrijving':
+                    statement = insertIntoPersoonlijstStatement(actual);
+                    break;
+                case 'adres':
+                    statement = insertIntoAdresStatement(actual);
+                    break;
+                case 'verblijfplaats':
+                    statement = insertIntoStatement(key, [
+                        ['pl_id', plId+''],
+                        ['adres_id', adresId+'']
+                    ].concat(actual));
+                    break;
+                default:
+                    const name = key.replace(/-\d$/, "");
+                    statement = insertIntoStatement(name, [
+                        ['pl_id', plId+'']
+                    ].concat(actual));
+            } 
 
             statement.text.should.equal(exp.text);
             statement.values.should.deep.equalInAnyOrder(exp.values.split(','));
         });
-    });
+    }
 });
+
+function createStatementData(key, plId, adresId, rowData) {
+    if(key === 'verblijfplaats') {
+        return [
+            [ 'pl_id', plId ],
+            [ 'adres_id', adresId ]
+        ].concat(rowData);
+    }
+
+    return [
+        [ 'pl_id', plId ]
+    ].concat(rowData);
+}
 
 async function executeSqlStatements(sqlData) {
     let plId = undefined;
+    let adresId = undefined;
     if(pool !== undefined) {
         const client = await pool.connect();
         try {
+            if(sqlData['adres'] !== undefined) {
+                const res = await client.query(insertIntoAdresStatement(sqlData['adres'][0]));
+                adresId = res.rows[0]['adres_id'];
+            }
             const res = await client.query(insertIntoPersoonlijstStatement(sqlData['inschrijving'][0]));
-            plId = res.rows[0]["pl_id"];
+            plId = res.rows[0]['pl_id'];
 
             for(const key of Object.keys(sqlData)) {
-                if(key === 'inschrijving') {
+                if(key === 'inschrijving' ||
+                    key === 'adres') {
                     continue;
                 }
+
                 for(const rowData of sqlData[key]) {
-                    const data = [
-                        ['pl_id', plId]
-                    ].concat(rowData);
+                    const data = createStatementData(key, plId, adresId, rowData);
+
                     const name = key.replace(/-\d$/, "");
                     await client.query(insertIntoStatement(name, data));
                 }
@@ -480,7 +550,10 @@ async function executeSqlStatements(sqlData) {
             client.release();
         }
     }
-    return plId;
+    return {
+        'pl_id' : plId,
+        'adres_id': adresId
+    };
 }
 
 Given(/^een persoon heeft de volgende '(\w*)' gegevens$/, async function (gegevensgroep, dataTable) {
@@ -516,11 +589,15 @@ Given(/^een persoon heeft de volgende '(\w*)' gegevens$/, async function (gegeve
 
 Given(/^de persoon heeft de volgende '(\w*)' gegevens$/, async function (gegevensgroep, dataTable) {
     this.context.sqlData[gegevensgroep] = [
-        createDataFromArray(createArrayFrom(dataTable))
+        createVoorkomenDataFromArray(createArrayFrom(dataTable)) 
     ];
+
+    setPersoonProperties(this.context.persoon, gegevensgroep, dataTable);
+
+    this.context.attach(`${gegevensgroep}: ${JSON.stringify(this.context.persoon[gegevensgroep], null, '  ')}`);
 });
 
-Given(/^de persoon met burgerservicenummer '(\d*)' heeft de volgende '(\w*)' gegevens$/, async function(burgerservicenummer, gegevensgroep, dataTable) {
+function createPersoonMetGegevensgroep(burgerservicenummer, gegevensgroep, dataTable) {
     this.context.sqlData = {};
 
     this.context.sqlData["persoon"] = [
@@ -538,7 +615,11 @@ Given(/^de persoon met burgerservicenummer '(\d*)' heeft de volgende '(\w*)' geg
     else {
         this.context.sqlData[gegevensgroep] = [ createArrayFrom(dataTable) ];
     }
-});
+}
+
+Given(/^de persoon met burgerservicenummer '(\d*)' heeft de volgende '(\w*)' gegevens$/, createPersoonMetGegevensgroep);
+
+Given(/^de persoon met burgerservicenummer '(\d*)' heeft een '(\w*)' verkregen met de volgende gegevens$/, createPersoonMetGegevensgroep);
 
 Given(/^de persoon met burgerservicenummer '(\d*)' heeft een '(\w*)' met de volgende gegevens$/, async function (burgerservicenummer, collectieGegevensgroep, dataTable) {
     this.context.sqlData = {};
@@ -639,7 +720,7 @@ Given(/^de persoon is gewijzigd naar de volgende gegevens$/, function (dataTable
     this.context.sqlData['persoon'].push(createCollectieDataFromArray('persoon', createArrayFrom(dataTable)));
 });
 
-Given(/^(?:de|het) '(.*)' is gewijzigd naar de volgende gegevens$/, async function (relatie, dataTable) {
+function wijzigRelatie(relatie, dataTable) {
     let foundRelatie;
     Object.keys(this.context.sqlData).find(function(key) {
         if(key.startsWith(relatie)) {
@@ -656,9 +737,13 @@ Given(/^(?:de|het) '(.*)' is gewijzigd naar de volgende gegevens$/, async functi
         this.context.sqlData[foundRelatie].push(createCollectieDataFromArray(relatie, createArrayFrom(dataTable), stapelNr[1]));
     }
     else {
-        this.context.sqlData[foundRelatie].push(createDataFromArray(createArrayFrom(dataTable)));
+        this.context.sqlData[foundRelatie].push(createVoorkomenDataFromArray(createArrayFrom(dataTable)));
     }
-});
+}
+
+Given(/^(?:de|het) '(.*)' is gewijzigd naar de volgende gegevens$/, wijzigRelatie);
+
+Given(/^de persoon heeft een '(\w*)' verkregen met de volgende gegevens$/, wijzigRelatie);
 
 Given(/^de persoon heeft ?(?:nog)? een '?(?:ex-)?(\w*)' met ?(?:alleen)? de volgende gegevens$/, async function (relatie, dataTable) {
     const stapelNr = getNextStapelNr(this.context.sqlData, relatie);
@@ -675,6 +760,18 @@ Given(/^de persoon heeft ?(?:nog)? een '?(?:ex-)?(\w*)' met ?(?:alleen)? de volg
         this.context.persoon[relatieCollectie].push(this.context[relatie]);
     }
     this.context[relatie] = createObjectFrom(dataTable);
+});
+
+Given(/^(?:de|het) '?(?:ex-)?(\w*)' heeft ?(?:alleen)? de volgende '(\w*)' gegevens$/, function (relatie, gegevensgroep, dataTable) {
+    this.context.sqlData[`${gegevensgroep}`] = [
+        createArrayFrom(dataTable)
+    ];
+
+    if(this.context[relatie] === undefined) {
+        this.context[relatie] = {};
+    }
+
+    setPersoonProperties(this.context[relatie], gegevensgroep, dataTable);
 });
 
 function createObjectFrom(dataTable, dateAsDate = false) {
@@ -803,11 +900,7 @@ function setPersoonProperties(persoon, propertyGroupName, dataTable) {
     });
 }
 
-Before({tags: '@post-assert'}, async function() {
-    this.context.postAssert = true;
-});
-
-After({tags: '@post-assert'}, async function() {
+After(async function() {
     if(this.context.response === undefined) {
         return;
     }
@@ -831,14 +924,20 @@ After({tags: '@post-assert'}, async function() {
 
 After(async function() {
     if(this.context.response === undefined) {
+        console.log('er is geen response');
         return;
     }
 
     const headers = this.context.response.headers;
+    if(headers === undefined) {
+        console.log('de response heeft geen headers');
+        return;
+    }
 
     const header = headers["api-version"];
     should.exist(header, "no header found with name 'api-version'");
-    header.should.equal("2.0.0", "no 'api-version' header found with value: '2.0.0'");
+    header.should.equal(this.context.expectedApiVersion,
+                        `no 'api-version' header found with value: '${this.context.expectedApiVersion}'`);
 });
 
 After({tags: '@fout-case'}, async function() {
@@ -851,10 +950,15 @@ After({tags: '@fout-case'}, async function() {
 
 After({tags: 'not @fout-case'}, async function() {
     if(this.context.response === undefined) {
+        console.log('er is geen response');
         return;
     }
 
     const headers = this.context.response.headers;
+    if(headers === undefined) {
+        console.log('de response heeft geen headers');
+        return;
+    }
 
     const header = headers["content-type"];
     should.exist(header, "no header found with name 'content-type'");
@@ -940,14 +1044,6 @@ Given(/^de persoon heeft een '?(?:ex-)?(.*)' met ?(?:alleen)? de volgende '(.*)'
     setPersoonProperties(this.context[relatie], gegevensgroep, dataTable);
 });
 
-Given(/^(?:de|het) '?(?:ex-)?(\w*)' heeft ?(?:alleen)? de volgende '(\w*)' gegevens$/, function (relatie, gegevensgroep, dataTable) {
-    if(this.context[relatie] === undefined) {
-        this.context[relatie] = {};
-    }
-
-    setPersoonProperties(this.context[relatie], gegevensgroep, dataTable);
-});
-
 Given(/^de persoon heeft (?:GEEN|geen) '(.*)' gegevens$/, function (_) {
     // doe niets
 });
@@ -1016,7 +1112,9 @@ function createHeaders(dataTable, extraHeaders) {
 }
 
 When(/^personen wordt gezocht met de volgende parameters$/, async function (dataTable) {
-    this.context.pl_id = await executeSqlStatements(this.context.sqlData);
+    const result = await executeSqlStatements(this.context.sqlData);
+    this.context.pl_id = result.pl_id;
+    this.context.adres_id = result.adres_id;
 
     const config = {
         method: 'post',
@@ -1042,7 +1140,9 @@ When(/^personen wordt gezocht met de volgende parameters$/, async function (data
 });
 
 When(/^gba personen wordt gezocht met de volgende parameters$/, async function (dataTable) {
-    this.context.pl_id = await executeSqlStatements(this.context.sqlData);
+    const result = await executeSqlStatements(this.context.sqlData);
+    this.context.pl_id = result.pl_id;
+    this.context.adres_id = result.adres_id;
 
     const config = {
         method: 'post',
@@ -1089,56 +1189,48 @@ Then(/^heeft de persoon ?(?:alleen)? de volgende '(.*)'$/, function (gegevensgro
         expected.push(row[0]);
     });
 
-    if(this.context.postAssert === true) {
-        const personen = this.context.expected;
-        should.exist(personen, 'Geen persoon gevonden. Gebruik de \'Dan heeft de response een persoon met de volgende gegevens\' stap om een persoon aan te maken');
-        personen.length.should.not.equal(0, 'Geen persoon gevonden. Gebruik de \'Dan heeft de response een persoon met de volgende gegevens\' stap om een persoon aan te maken');
+    const personen = this.context.expected;
+    should.exist(personen, 'Geen persoon gevonden. Gebruik de \'Dan heeft de response een persoon met de volgende gegevens\' stap om een persoon aan te maken');
+    personen.length.should.not.equal(0, 'Geen persoon gevonden. Gebruik de \'Dan heeft de response een persoon met de volgende gegevens\' stap om een persoon aan te maken');
 
-        let persoon = personen[personen.length-1];
-        should.exist(persoon, 'Geen persoon gevonden. Gebruik de \'Dan heeft de response een persoon met de volgende gegevens\' stap om een persoon aan te maken');
+    let persoon = personen[personen.length-1];
+    should.exist(persoon, 'Geen persoon gevonden. Gebruik de \'Dan heeft de response een persoon met de volgende gegevens\' stap om een persoon aan te maken');
 
-        persoon[gegevensgroep] = expected;
-    }
+    persoon[gegevensgroep] = expected;
 });
 
-Then(/^heeft de response een persoon met ?(?:alleen)? de volgende gegevens$/, function (dataTable) {
+Then(/^heeft de response ?(?:nog)? een persoon met ?(?:alleen)? de volgende gegevens$/, function (dataTable) {
     const expected = createObjectFrom(dataTable);
 
-    if(this.context.postAssert === true) {
-        if(this.context.expected === undefined) {
-            this.context.expected = [];
-        }
-        this.context.expected.push(expected);
+    if(this.context.expected === undefined) {
+        this.context.expected = [];
     }
+    this.context.expected.push(expected);
 });
 
 Then(/^heeft de response een persoon met ?(?:alleen)? de volgende '(.*)' gegevens$/, function (gegevensgroep, dataTable) {
     let expected = {};
     expected[gegevensgroep] = createObjectFrom(dataTable, true);
 
-    if(this.context.postAssert === true) {
-        if(this.context.expected === undefined) {
-            this.context.expected = [];
-        }
-        this.context.expected.push(expected);
+    if(this.context.expected === undefined) {
+        this.context.expected = [];
     }
+    this.context.expected.push(expected);
 });
 
 Then(/^heeft de persoon ?(?:alleen)? de volgende '(.*)' gegevens$/, function (gegevensgroep, dataTable) {
     const expected = createObjectFrom(dataTable, true);
 
-    if(this.context.postAssert === true) {
-        if(Object.keys(expected).length === 0) return;
+    if(Object.keys(expected).length === 0) return;
 
-        const personen = this.context.expected;
-        should.exist(personen, 'Geen persoon gevonden. Gebruik de \'Dan heeft de response een persoon met de volgende gegevens\' stap om een persoon aan te maken');
-        personen.length.should.not.equal(0, 'Geen persoon gevonden. Gebruik de \'Dan heeft de response een persoon met de volgende gegevens\' stap om een persoon aan te maken');
+    const personen = this.context.expected;
+    should.exist(personen, 'Geen persoon gevonden. Gebruik de \'Dan heeft de response een persoon met de volgende gegevens\' stap om een persoon aan te maken');
+    personen.length.should.not.equal(0, 'Geen persoon gevonden. Gebruik de \'Dan heeft de response een persoon met de volgende gegevens\' stap om een persoon aan te maken');
 
-        let persoon = personen[personen.length-1];
-        should.exist(persoon, 'Geen persoon gevonden. Gebruik de \'Dan heeft de response een persoon met de volgende gegevens\' stap om een persoon aan te maken');
+    let persoon = personen[personen.length-1];
+    should.exist(persoon, 'Geen persoon gevonden. Gebruik de \'Dan heeft de response een persoon met de volgende gegevens\' stap om een persoon aan te maken');
 
-        persoon[gegevensgroep] = expected;
-    }
+    persoon[gegevensgroep] = expected;
 });
 
 
@@ -1146,16 +1238,15 @@ Then(/^heeft de persoon een leeg '(.*)' object$/, function(gegevensgroep) {
     this.context.leaveEmptyObjects = true;
 
     const expected = {};
-    if(this.context.postAssert === true) {
-        const personen = this.context.expected;
-        should.exist(personen, 'Geen persoon gevonden. Gebruik de \'Dan heeft de response een persoon met de volgende gegevens\' stap om een persoon aan te maken');
-        personen.length.should.not.equal(0, 'Geen persoon gevonden. Gebruik de \'Dan heeft de response een persoon met de volgende gegevens\' stap om een persoon aan te maken');
 
-        let persoon = personen[personen.length-1];
-        should.exist(persoon, 'Geen persoon gevonden. Gebruik de \'Dan heeft de response een persoon met de volgende gegevens\' stap om een persoon aan te maken');
+    const personen = this.context.expected;
+    should.exist(personen, 'Geen persoon gevonden. Gebruik de \'Dan heeft de response een persoon met de volgende gegevens\' stap om een persoon aan te maken');
+    personen.length.should.not.equal(0, 'Geen persoon gevonden. Gebruik de \'Dan heeft de response een persoon met de volgende gegevens\' stap om een persoon aan te maken');
 
-        persoon[gegevensgroep] = expected;
-    }
+    let persoon = personen[personen.length-1];
+    should.exist(persoon, 'Geen persoon gevonden. Gebruik de \'Dan heeft de response een persoon met de volgende gegevens\' stap om een persoon aan te maken');
+
+    persoon[gegevensgroep] = expected;
 });
 
 Then(/^heeft de response een persoon met een '(.*)' met ?(?:alleen)? de volgende gegevens$/, function(relatie, dataTable) {
@@ -1163,22 +1254,20 @@ Then(/^heeft de response een persoon met een '(.*)' met ?(?:alleen)? de volgende
 
     let relaties = toCollectionName(relatie);
 
-    if(this.context.postAssert === true) {
-        if(this.context.expected === undefined) {
-            this.context.expected = [ {} ];
-        }
-
-        const expectedPersoon = this.context.expected[this.context.expected.length-1];
-        if(expectedPersoon[relaties] === undefined) {
-            expectedPersoon[relaties] = [];
-        }
-        expectedPersoon[relaties].push(expected);
+    if(this.context.expected === undefined) {
+        this.context.expected = [ {} ];
     }
+
+    const expectedPersoon = this.context.expected[this.context.expected.length-1];
+    if(expectedPersoon[relaties] === undefined) {
+        expectedPersoon[relaties] = [];
+    }
+    expectedPersoon[relaties].push(expected);
 });
 
 Then(/^heeft de response een persoon met een '(.*)' met ?(?:alleen)? de volgende '(.*)' gegevens$/, addRelatieToExpectedPersoon);
 
-Then(/^heeft de persoon een '(.*)' met de volgende '(.*)' gegevens$/, addRelatieToExpectedPersoon);
+Then(/^heeft de persoon een '(.*)' met ?(?:alleen)? de volgende '(.*)' gegevens$/, addRelatieToExpectedPersoon);
 
 function addRelatieToExpectedPersoon(relatie, gegevensgroep, dataTable) {
     let expected = {};
@@ -1186,17 +1275,15 @@ function addRelatieToExpectedPersoon(relatie, gegevensgroep, dataTable) {
 
     let relaties = toCollectionName(relatie);
 
-    if(this.context.postAssert === true) {
-        if(this.context.expected === undefined) {
-            this.context.expected = [ {} ];
-        }
-
-        const expectedPersoon = this.context.expected[this.context.expected.length-1];
-        if(expectedPersoon[relaties] === undefined) {
-            expectedPersoon[relaties] = [];
-        }
-        expectedPersoon[relaties].push(expected);
+    if(this.context.expected === undefined) {
+        this.context.expected = [ {} ];
     }
+
+    const expectedPersoon = this.context.expected[this.context.expected.length-1];
+    if(expectedPersoon[relaties] === undefined) {
+        expectedPersoon[relaties] = [];
+    }
+    expectedPersoon[relaties].push(expected);
 }
 
 Then(/^heeft de persoon een '(.*)' met ?(?:alleen)? de volgende gegevens$/, function (gegevensgroep, dataTable) {
@@ -1204,53 +1291,48 @@ Then(/^heeft de persoon een '(.*)' met ?(?:alleen)? de volgende gegevens$/, func
 
     let groep = toCollectionName(gegevensgroep);
 
-    if(this.context.postAssert === true) {
-        if(this.context.expected === undefined) {
-            this.context.expected = [ {} ];
-        }
-
-        const expectedPersonen = this.context.expected;
-        const expectedPersoon = expectedPersonen[expectedPersonen.length-1];
-        if(expectedPersoon[groep] === undefined) {
-            expectedPersoon[groep] = [];
-        }
-        expectedPersoon[groep].push(expected);
+    if(this.context.expected === undefined) {
+        this.context.expected = [ {} ];
     }
+
+    const expectedPersonen = this.context.expected;
+    const expectedPersoon = expectedPersonen[expectedPersonen.length-1];
+    if(expectedPersoon[groep] === undefined) {
+        expectedPersoon[groep] = [];
+    }
+    expectedPersoon[groep].push(expected);
 });
 
 Then(/^heeft (?:de|het) '(.*)' ?(?:alleen)? de volgende '(.*)' gegevens$/, function (relatie, gegevensgroep, dataTable) {
     const expected = createObjectFrom(dataTable);
 
-    if(this.context.postAssert === true) {
-        if(this.context.expected === undefined) {
-            console.log(`creeer eerst een '${relatie}' met "Dan heeft de persoon een '${relatie}' met alleen de volgende gegevens"`);
-            return 'pending';
-        }
-
-        const expectedPersoon = this.context.expected[this.context.expected.length-1];
-
-        const relaties = toCollectionName(relatie);
-        let expectedRelatie = expectedPersoon[relaties][expectedPersoon[relaties].length-1];
-        expectedRelatie[gegevensgroep] = expected;
+    if(this.context.expected === undefined) {
+        console.log(`creeer eerst een '${relatie}' met "Dan heeft de persoon een '${relatie}' met alleen de volgende gegevens"`);
+        return 'pending';
     }
+
+    const expectedPersoon = this.context.expected[this.context.expected.length-1];
+
+    const relaties = toCollectionName(relatie);
+    let expectedRelatie = expectedPersoon[relaties][expectedPersoon[relaties].length-1];
+    expectedRelatie[gegevensgroep] = expected;
 });
 
 Then(/^heeft (?:de|het) '(.*)' een leeg '(.*)' object$/, function(relatie, gegevensgroep) {
     this.context.leaveEmptyObjects = true;
 
     const expected = {};
-    if(this.context.postAssert === true) {
-        if(this.context.expected === undefined) {
-            console.log(`creeer eerst een '${relatie}' met "Dan heeft de persoon een '${relatie}' met alleen de volgende gegevens"`);
-            return 'pending';
-        }
 
-        const expectedPersoon = this.context.expected[this.context.expected.length-1];
-
-        const relaties = toCollectionName(relatie);
-        let expectedRelatie = expectedPersoon[relaties][expectedPersoon[relaties].length-1];
-        expectedRelatie[gegevensgroep] = expected;
+    if(this.context.expected === undefined) {
+        console.log(`creeer eerst een '${relatie}' met "Dan heeft de persoon een '${relatie}' met alleen de volgende gegevens"`);
+        return 'pending';
     }
+
+    const expectedPersoon = this.context.expected[this.context.expected.length-1];
+
+    const relaties = toCollectionName(relatie);
+    let expectedRelatie = expectedPersoon[relaties][expectedPersoon[relaties].length-1];
+    expectedRelatie[gegevensgroep] = expected;
 });
 
 Then(/^heeft de '(.*)' GEEN '(.*)' gegevens$/, function (_relatie, _gegevensgroep) {
@@ -1260,29 +1342,15 @@ Then(/^heeft de '(.*)' GEEN '(.*)' gegevens$/, function (_relatie, _gegevensgroe
 Then(/^heeft de response een object met de volgende gegevens$/, function (dataTable) {
     const expected = createObjectFrom(dataTable);
 
-    if(this.context.postAssert === true) {
-        if(this.context.expected === undefined) {
-            this.context.expected = expected;
-        }
-    }
-    else {
-        const actual = this.context.response.data;
-
-        actual.should.deep.equalInAnyOrder(expected);
+    if(this.context.expected === undefined) {
+        this.context.expected = expected;
     }
 });
 
 Then(/^heeft het object de volgende '(.*)' gegevens$/, function (gegevensgroep, dataTable) {
     const expected = dataTable.hashes();
 
-    if(this.context.postAssert === true) {
-        this.context.expected[gegevensgroep] = expected;
-    }
-    else {
-        const actual = this.context.response.data[gegevensgroep];
-
-        actual.should.deep.equalInAnyOrder(expected);
-    }
+    this.context.expected[gegevensgroep] = expected;
 });
 
 Then(/^heeft de response een persoon met een '([a-zA-Z]*)' met een '([a-zA-Z]*)' met een leeg '([a-zA-Z]*)' object$/, function (relatie, gegevensgroep, gegevensgroep2) {
@@ -1293,17 +1361,15 @@ Then(/^heeft de response een persoon met een '([a-zA-Z]*)' met een '([a-zA-Z]*)'
 
     let relaties = toCollectionName(relatie);
 
-    if(this.context.postAssert === true) {
-        if(this.context.expected === undefined) {
-            this.context.expected = [ {} ];
-        }
-
-        const expectedPersoon = this.context.expected[this.context.expected.length-1];
-        if(expectedPersoon[relaties] === undefined) {
-            expectedPersoon[relaties] = [];
-        }
-        expectedPersoon[relaties].push(expected);
+    if(this.context.expected === undefined) {
+        this.context.expected = [ {} ];
     }
+
+    const expectedPersoon = this.context.expected[this.context.expected.length-1];
+    if(expectedPersoon[relaties] === undefined) {
+        expectedPersoon[relaties] = [];
+    }
+    expectedPersoon[relaties].push(expected);
 });
 
 Given(/^de persoon heeft geen (?:actuele partner|\(ex\)partner)$/, function () {
@@ -1317,10 +1383,8 @@ Given('de persoon heeft nooit een actueel of ontbonden huwelijk of partnerschap 
 function createEmptyPersoon() {
     this.context.leaveEmptyObjects = true;
 
-    if(this.context.postAssert === true) {
-        if(this.context.expected === undefined) {
-            this.context.expected = [ {} ];
-        }
+    if(this.context.expected === undefined) {
+        this.context.expected = [ {} ];
     }
 }
 
@@ -1333,19 +1397,17 @@ function createEmptyGegevensgroepInGegevensgroepCollectie(relatie, gegevensgroep
 
     let relaties = toCollectionName(relatie);
 
-    if(this.context.postAssert === true) {
-        if(this.context.expected === undefined) {
-            this.context.expected = [ {} ];
-        }
-
-        const expectedPersoon = this.context.expected[this.context.expected.length-1];
-        if(expectedPersoon[relaties] === undefined) {
-            expectedPersoon[relaties] = [{}];
-        }
-
-        const expectedRelatie = expectedPersoon[relaties][expectedPersoon[relaties].length-1];
-        expectedRelatie[gegevensgroep] = {};
+    if(this.context.expected === undefined) {
+        this.context.expected = [ {} ];
     }
+
+    const expectedPersoon = this.context.expected[this.context.expected.length-1];
+    if(expectedPersoon[relaties] === undefined) {
+        expectedPersoon[relaties] = [{}];
+    }
+
+    const expectedRelatie = expectedPersoon[relaties][expectedPersoon[relaties].length-1];
+    expectedRelatie[gegevensgroep] = {};
 }
 
 Then(/^heeft de response een persoon met een '(\w*)' met een leeg '(\w*)' object$/, createEmptyGegevensgroepInGegevensgroepCollectie);
@@ -1359,21 +1421,19 @@ Then(/^heeft de persoon een '(\w*)' zonder '(\w*)' gegevens$/, createEmptyGegeve
 function createEmptyGegevensgroepOfEmptyGegevensgroepCollectie(relatie) {
     this.context.leaveEmptyObjects = true;
 
-    if(this.context.postAssert === true) {
-        if(this.context.expected === undefined) {
-            this.context.expected = [ {} ];
-        }
+    if(this.context.expected === undefined) {
+        this.context.expected = [ {} ];
+    }
 
-        const expectedPersonen = this.context.expected;
-        const expectedPersoon = expectedPersonen[expectedPersonen.length-1];
+    const expectedPersonen = this.context.expected;
+    const expectedPersoon = expectedPersonen[expectedPersonen.length-1];
 
-        const relaties = toCollectionName(relatie);
-        if(relaties === undefined) {
-            expectedPersoon[relatie] = {};
-        }
-        else {
-            expectedPersoon[relaties] = [];
-        }
+    const relaties = toCollectionName(relatie);
+    if(relaties === undefined) {
+        expectedPersoon[relatie] = {};
+    }
+    else {
+        expectedPersoon[relaties] = [];
     }
 }
 
@@ -1384,24 +1444,22 @@ Then(/^heeft de persoon (?:GEEN|geen) '(\w*)' gegevens$/, createEmptyGegevensgro
 function createEmptyObjectInGegevensgroepCollectie(gegevensgroep) {
     this.context.leaveEmptyObjects = true;
 
-    if(this.context.postAssert === true) {
-        if(this.context.expected === undefined) {
-            this.context.expected = [ {} ];
-        }
+    if(this.context.expected === undefined) {
+        this.context.expected = [ {} ];
+    }
 
-        const expectedPersonen = this.context.expected;
-        const expectedPersoon = expectedPersonen[expectedPersonen.length-1];
+    const expectedPersonen = this.context.expected;
+    const expectedPersoon = expectedPersonen[expectedPersonen.length-1];
 
-        const relaties = toCollectionName(gegevensgroep);
-        if(relaties === undefined) {
-            console.log(`${gegevensgroep} is geen gegevensgroep collectie`);
+    const relaties = toCollectionName(gegevensgroep);
+    if(relaties === undefined) {
+        console.log(`${gegevensgroep} is geen gegevensgroep collectie`);
+    }
+    else {
+        if(expectedPersoon[relaties] === undefined) {
+            expectedPersoon[relaties] = [];
         }
-        else {
-            if(expectedPersoon[relaties] === undefined) {
-                expectedPersoon[relaties] = [];
-            }
-            expectedPersoon[relaties].push({});
-        }
+        expectedPersoon[relaties].push({});
     }
 }
 

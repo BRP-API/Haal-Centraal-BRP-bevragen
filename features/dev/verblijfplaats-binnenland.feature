@@ -4,16 +4,17 @@
 Functionaliteit: verblijfplaats binnenland
 
   Abstract Scenario: persoon heeft 'verblijfplaats binnenland' veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'verblijfplaats' gegevens
-    | naam       | waarde   |
-    | <gba naam> | <waarde> |
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    | naam                               | waarde   |
+    | datum aanvang adreshouding (10.30) | 20150808 |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | naam          | waarde   |
+    | gemeente_code | 0518     |
+    | <gba naam>    | <waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                              |
     | type                | RaadpleegMetBurgerservicenummer     |
-    | burgerservicenummer | 555550001                           |
+    | burgerservicenummer | 000000152                           |
     | fields              | verblijfplaats.verblijfadres.<naam> |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam                 | waarde   |
@@ -29,20 +30,43 @@ Functionaliteit: verblijfplaats binnenland
     | huisnummertoevoeging (11.40)      | huisnummertoevoeging         | 2             |
     | aanduiding bij huisnummer (11.50) | aanduidingBijHuisnummer.code | to            |
     | postcode (11.60)                  | postcode                     | 1234AA        |
-    | woonplaatsnaam (11.70)            | woonplaats                   | 's-Gravenhage |
+    | woonplaats (11.70)                | woonplaats                   | 's-Gravenhage |
 
   Abstract Scenario: persoon heeft 'verblijfplaats binnenland' veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'verblijfplaats' gegevens
-    | naam               | waarde   |
-    | straatnaam (11.10) | Spui     |
-    | <gba naam>         | <waarde> |
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    | naam                               | waarde   |
+    | datum aanvang adreshouding (10.30) | 20150808 |
+    | <gba naam>                         | <waarde> |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | naam               | waarde |
+    | gemeente_code      | 0518   |
+    | straatnaam (11.10) | Spui   |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000152                       |
+    | fields              | verblijfplaats.<naam>           |
+    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
+    | naam   | waarde   |
+    | type   | Adres    |
+    | <naam> | <waarde> |
+
+    Voorbeelden:
+    | gba naam              | naam              | waarde |
+    | functie adres (10.10) | functieAdres.code | W      |
+
+  Abstract Scenario: persoon heeft 'verblijfplaats binnenland' veld: '<gba naam>'
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    | naam                               | waarde   |
+    | datum aanvang adreshouding (10.30) | 20150808 |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | naam          | waarde   |
+    | gemeente_code | 0518     |
+    | <gba naam>    | <waarde> |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
     | fields              | verblijfplaats.<naam>           |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam   | waarde   |
@@ -51,22 +75,22 @@ Functionaliteit: verblijfplaats binnenland
 
     Voorbeelden:
     | gba naam                                   | naam                             | waarde           |
-    | functie adres (10.10)                      | functieAdres.code                | W                |
     | identificatiecode verblijfplaats (11.80)   | adresseerbaarObjectIdentificatie | 0599010000208579 |
     | identificatiecode nummeraanduiding (11.90) | nummeraanduidingIdentificatie    | 0599200000219678 |
 
   Abstract Scenario: persoon heeft 'verblijfplaats binnenland' datum veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'verblijfplaats' gegevens
-    | naam               | waarde       |
-    | straatnaam (11.10) | Spui         |
-    | <gba naam>         | <gba waarde> |
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    | naam                               | waarde   |
+    | datum aanvang adreshouding (10.30) | 20220128 |
+    | datum ingang geldigheid (85.10)    | 20220222 |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | naam               | waarde |
+    | gemeente_code      | 0518   |
+    | straatnaam (11.10) | Spui   |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000152                       |
     | fields              | verblijfplaats.<naam>           |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam               | waarde         |
@@ -76,48 +100,50 @@ Functionaliteit: verblijfplaats binnenland
     | <naam>.langFormaat | <lang formaat> |
 
     Voorbeelden:
-    | gba naam                           | gba waarde | naam                  | waarde     | lang formaat     |
-    | datum aanvang adreshouding (10.30) | 20220128   | datumVan              | 2022-01-28 | 28 januari 2022  |
-    | datum ingang geldigheid (85.10)    | 20220222   | datumIngangGeldigheid | 2022-02-22 | 22 februari 2022 |
+    | naam                  | waarde     | lang formaat     |
+    | datumVan              | 2022-01-28 | 28 januari 2022  |
+    | datumIngangGeldigheid | 2022-02-22 | 22 februari 2022 |
 
   Abstract Scenario: persoon heeft 'verblijfplaats binnenland' veld met onbekend waarde: '<gba naam>'
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'verblijfplaats' gegevens
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    | naam                               | waarde   |
+    | datum aanvang adreshouding (10.30) | 20220128 |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
     | naam                         | waarde       |
+    | gemeente_code                | 0518         |
     | naam openbare ruimte (11.15) | Spui         |
     | <gba naam>                   | <gba waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000152                       |
     | fields              | verblijfplaats.<naam>           |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam | waarde |
     | type | Adres  |
 
     Voorbeelden:
-    | gba naam                                 | gba waarde       | naam                             |
-    | straatnaam (11.10)                       | .                | verblijfadres.straat             |
-    | huisnummer (11.20)                       | 0                | verblijfadres.huisnummer         |
-    | woonplaatsnaam (11.70)                   | .                | verblijfadres.woonplaats         |
-    | adresseerbaarObjectIdentificatie (11.80) | 0000000000000000 | adresseerbaarObjectIdentificatie |
-    | nummeraanduidingIdentificatie (11.90)    | 0000000000000000 | nummeraanduidingIdentificatie    |
+    | gba naam                                   | gba waarde       | naam                             |
+    | straatnaam (11.10)                         | .                | verblijfadres.straat             |
+    | huisnummer (11.20)                         | 0                | verblijfadres.huisnummer         |
+    | woonplaats (11.70)                         | .                | verblijfadres.woonplaats         |
+    | identificatiecode verblijfplaats (11.80)   | 0000000000000000 | adresseerbaarObjectIdentificatie |
+    | identificatiecode nummeraanduiding (11.90) | 0000000000000000 | nummeraanduidingIdentificatie    |
 
   Abstract Scenario: adres veld(en) van persoon is/zijn in onderzoek
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'verblijfplaats' gegevens
-    | naam                                     | waarde                    |
-    | straatnaam (11.10)                       | Spui                      |
-    | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (83.20)           | 20020701                  |
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    | naam                               | waarde                    |
+    | datum aanvang adreshouding (10.30) | 20220128                  |
+    | aanduiding in onderzoek (83.10)    | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)     | 20020701                  |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | naam               | waarde |
+    | gemeente_code      | 0518   |
+    | straatnaam (11.10) | Spui   |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000152                       |
     | fields              | verblijfplaats.inOnderzoek      |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam                                         | waarde                                          |
@@ -147,18 +173,19 @@ Functionaliteit: verblijfplaats binnenland
     | 088510                  |                   |                       | true                               |                                            |                                               |                           |
 
   Abstract Scenario: niet-adres veld(en) van persoon is/zijn in onderzoek
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'verblijfplaats' gegevens
-    | naam                                     | waarde                    |
-    | straatnaam (11.10)                       | Spui                      |
-    | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (83.20)           | 20020701                  |
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    | naam                               | waarde                    |
+    | datum aanvang adreshouding (10.30) | 20220128                  |
+    | aanduiding in onderzoek (83.10)    | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)     | 20020701                  |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | naam               | waarde |
+    | gemeente_code      | 0518   |
+    | straatnaam (11.10) | Spui   |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000152                       |
     | fields              | verblijfplaats.inOnderzoek      |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam | waarde |
@@ -173,18 +200,19 @@ Functionaliteit: verblijfplaats binnenland
     | 081115                  |
 
   Abstract Scenario: verblijfadres veld(en) van persoon is/zijn in onderzoek
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'verblijfplaats' gegevens
-    | naam                                     | waarde                    |
-    | straatnaam (11.10)                       | Spui                      |
-    | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (83.20)           | 20020701                  |
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    | naam                               | waarde                    |
+    | datum aanvang adreshouding (10.30) | 20220128                  |
+    | aanduiding in onderzoek (83.10)    | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)     | 20020701                  |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | naam               | waarde |
+    | gemeente_code      | 0518   |
+    | straatnaam (11.10) | Spui   |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                                   |
     | type                | RaadpleegMetBurgerservicenummer          |
-    | burgerservicenummer | 555550001                                |
+    | burgerservicenummer | 000000152                                |
     | fields              | verblijfplaats.verblijfadres.inOnderzoek |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam                                                       | waarde                             |
@@ -217,18 +245,19 @@ Functionaliteit: verblijfplaats binnenland
     | 081170                  |                                  |                         |                     |                               |                     |                       |                        | true                    |
 
   Abstract Scenario: niet-verblijfadres veld(en) van persoon is/zijn in onderzoek
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'verblijfplaats' gegevens
-    | naam                                     | waarde                    |
-    | straatnaam (11.10)                       | Spui                      |
-    | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (83.20)           | 20020701                  |
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    | naam                               | waarde                    |
+    | datum aanvang adreshouding (10.30) | 20220128                  |
+    | aanduiding in onderzoek (83.10)    | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)     | 20020701                  |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | naam               | waarde |
+    | gemeente_code      | 0518   |
+    | straatnaam (11.10) | Spui   |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                                   |
     | type                | RaadpleegMetBurgerservicenummer          |
-    | burgerservicenummer | 555550001                                |
+    | burgerservicenummer | 000000152                                |
     | fields              | verblijfplaats.verblijfadres.inOnderzoek |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam | waarde |
