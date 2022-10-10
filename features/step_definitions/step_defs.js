@@ -115,7 +115,9 @@ const tableNameMap = new Map([
     ['verblijfplaats', 'lo3_pl_verblijfplaats'],
     ['gezagsverhouding', 'lo3_pl_gezagsverhouding'],
     ['overlijden', 'lo3_pl_overlijden'],
-    ['adres', 'lo3_adres']
+    ['adres', 'lo3_adres'],
+    ['geboorte', 'lo3_pl_persoon'],
+    ['immigratie', 'lo3_pl_verblijfplaats']
 ]);
 
 const columnNameMap = new Map([
@@ -134,6 +136,7 @@ const columnNameMap = new Map([
     ['geslachtsaanduiding (04.10)', 'geslachts_aand'],
 
     ['nationaliteit (05.10)', 'nationaliteit_code'],
+    ['reden opname (63.10)', 'nl_nat_verkrijg_reden'],
 
     ['datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10)', 'relatie_start_datum'],
     ['plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20)', 'relatie_start_plaats'],
@@ -145,7 +148,7 @@ const columnNameMap = new Map([
     ['plaats overlijden (08.20)', 'overlijden_plaats'],
     ['land overlijden (08.30)', 'overlijden_land_code'],
 
-    ['gemeente van inschrijving (09.10)', 'gemeente_code'],
+    ['gemeente van inschrijving (09.10)', 'inschrijving_gemeente_code'],
 
     ['functieAdres.code (10.10)', 'adres_functie'],
     ['datum aanvang adreshouding (10.30)', 'adreshouding_start_datum'],
@@ -160,9 +163,10 @@ const columnNameMap = new Map([
     ['woonplaats (11.70)', 'woon_plaats_naam'],
     ['identificatiecode verblijfplaats (11.80)', 'verblijf_plaats_ident_code'],
     ['identificatiecode nummeraanduiding (11.90)', 'nummer_aand_ident_code'],
+    ['land adres buitenland (13.10)', 'vertrek_land_code'],
 
     ['locatiebeschrijving (12.10)', 'locatie_beschrijving'],
-	
+
     ['land (13.10)', 'vertrek_land_code'],
     ['datum aanvang adres buitenland (13.20)', 'vertrek_datum'],
     ['regel 1 adres buitenland (13.30)', 'vertrek_land_adres_1'],
@@ -175,6 +179,7 @@ const columnNameMap = new Map([
     ['soort verbintenis (15.10)', 'verbintenis_soort'],
 
     ['indicatie curateleregister (33.10)', 'curatele_register_ind' ],
+    ['indicatie gezag minderjarige (32.10)', 'minderjarig_gezag_ind'],
 
     ['aanduiding uitgesloten kiesrecht (38.10)', 'kiesrecht_uitgesl_aand'],
     ['einddatum uitsluiting kiesrecht (38.20)', 'kiesrecht_uitgesl_eind_datum'],
@@ -182,9 +187,9 @@ const columnNameMap = new Map([
     ['aanduiding verblijfstitel (39.10)', 'verblijfstitel_aand'],
     ['datum einde verblijfstitel (39.20)', 'verblijfstitel_eind_datum'],
     ['datum ingang verblijfstitel (39.30)', 'geldigheid_start_datum'],
-	
+
     ['aanduiding naamgebruik (61.10)', 'naam_gebruik_aand'],
-	
+
     ['datum ingang familierechtelijke betrekking (62.10)', 'familie_betrek_start_datum'],
 
     ['reden opnemen (63.10)', 'nl_nat_verkrijg_reden'],
@@ -209,7 +214,7 @@ const columnNameMap = new Map([
 
     ['datum ingang geldigheid (85.10)', 'geldigheid_start_datum'],
     ['ingangsdatum geldigheid (85.10)', 'geldigheid_start_datum' ],
-	
+
     ['datum van opneming (86.10)', 'opneming_datum' ],
 
     ['rni-deelnemer (88.10)', 'rni_deelnemer'],
@@ -441,7 +446,7 @@ Given(/^de statement '(.*)' heeft als resultaat '(\d*)'$/, function (statement, 
 
 Given(/^de response body is gelijk aan$/, function (docString) {
     this.context.response = {
-        data: JSON.parse(docString) 
+        data: JSON.parse(docString)
     };
 });
 
@@ -499,7 +504,7 @@ Then(/^zijn de gegenereerde SQL statements$/, function(dataTable) {
                     statement = insertIntoStatement(name, [
                         ['pl_id', plId+'']
                     ].concat(actual));
-            } 
+            }
 
             statement.text.should.equal(exp.text);
             statement.values.should.deep.equalInAnyOrder(exp.values.split(','));
@@ -590,7 +595,7 @@ Given(/^een persoon heeft de volgende '(\w*)' gegevens$/, async function (gegeve
 
 Given(/^de persoon heeft de volgende '(\w*)' gegevens$/, async function (gegevensgroep, dataTable) {
     this.context.sqlData[gegevensgroep] = [
-        createVoorkomenDataFromArray(createArrayFrom(dataTable)) 
+        createVoorkomenDataFromArray(createArrayFrom(dataTable))
     ];
 
     setPersoonProperties(this.context.persoon, gegevensgroep, dataTable);
