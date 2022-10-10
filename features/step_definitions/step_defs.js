@@ -191,7 +191,7 @@ const columnNameMap = new Map([
     ['datum ingang familierechtelijke betrekking (62.10)', 'familie_betrek_start_datum'],
 
     ['reden opnemen (63.10)', 'nl_nat_verkrijg_reden'],
-    ['reden opname (63.10)', 'nl_nat_verkrijg_reden']
+    ['reden opname (63.10)', 'nl_nat_verkrijg_reden'],
 
     ['reden beëindigen (64.10)', 'nl_nat_verlies_reden'],
 
