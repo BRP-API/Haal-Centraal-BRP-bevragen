@@ -194,6 +194,8 @@ const columnNameMap = new Map([
     ['reden opname (63.10)', 'nl_nat_verkrijg_reden'],
 
     ['reden beëindigen (64.10)', 'nl_nat_verlies_reden'],
+	
+	['bijzonder nederlanderschap (65.10)', 'bijzonder_nl_aand'],
 
     ['reden opschorting bijhouding (67.20)', 'bijhouding_opschort_reden'],
 
@@ -218,6 +220,8 @@ const columnNameMap = new Map([
 
     ['rni-deelnemer (88.10)', 'rni_deelnemer'],
     ['omschrijving verdrag (88.20)', 'verdrag_oms'],
+	
+	['gemeentecode (92.10)', 'gemeente_code']
 
 ]);
 
