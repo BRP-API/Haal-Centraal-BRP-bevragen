@@ -100,8 +100,9 @@ Functionaliteit: in onderzoek
       Dan heeft de response een persoon met de volgende 'naam' gegevens
       | naam                                | waarde  |
       | inOnderzoek.voorvoegsel             | true    |
-      | inOnderzoek.voorletters             | true    |
-      | inOnderzoek.volledigeNaam           | true    |
+      | inOnderzoek.datumIngangOnderzoek.type        | Datum             |
+      | inOnderzoek.datumIngangOnderzoek.datum       | 2012-09-20        |
+      | inOnderzoek.datumIngangOnderzoek.langFormaat | 20 september 2012 |
 
     Scenario: persoon heeft gezagInOnderzoek en persoonInOnderzoek
       Gegeven de persoon met burgerservicenummer '000000139' heeft de volgende gegevens
@@ -318,8 +319,8 @@ Functionaliteit: in onderzoek
       | datum ingang onderzoek (83.20)         | 20220307                  |
       | gemeente van inschrijving (09.10)      | 0599                      |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | naam                              | waarde   |
-      | <column naam>                     | <waarde> |
+      | naam                              | waarde         |
+      | <column naam>                     | <waarde>       |
       | gemeentecode (92.10)              | 599            |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                              |
