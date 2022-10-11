@@ -120,6 +120,7 @@ const tableNameMap = new Map([
 
 const columnNameMap = new Map([
 
+    ['anummer (01.10)', 'a_nr'],
     ['burgerservicenummer (01.20)', 'burger_service_nr' ],
 
     ['voornamen (02.10)', 'voor_naam' ],
@@ -145,11 +146,14 @@ const columnNameMap = new Map([
     ['plaats overlijden (08.20)', 'overlijden_plaats'],
     ['land overlijden (08.30)', 'overlijden_land_code'],
 
-    ['gemeente van inschrijving (09.10)', 'gemeente_code'],
+    ['gemeente van inschrijving (09.10)', 'inschrijving_gemeente_code'],
+    ['datum inschrijving in de gemeente (09.20)', 'inschrijving_datum'],
 
     ['functieAdres.code (10.10)', 'adres_functie'],
+    ['functie adres (10.10)', 'adres_functie'],
     ['datum aanvang adreshouding (10.30)', 'adreshouding_start_datum'],
 
+    ['gemeente_code', 'gemeente_code'],
     ['straatnaam (11.10)', 'straat_naam'],
     ['naam openbare ruimte (11.15)', 'open_ruimte_naam'],
     ['huisnummer (11.20)', 'huis_nr'],
@@ -174,7 +178,11 @@ const columnNameMap = new Map([
 
     ['soort verbintenis (15.10)', 'verbintenis_soort'],
 
-    ['indicatie curateleregister (33.10)', 'curatele_register_ind' ],
+    ['Europees kiesrecht (31.10)', 'europees_kiesrecht_aand'],
+    ['einddatum uitsluiting Europees kiesrecht (31.30)', 'europees_uitsluit_eind_datum'],
+
+    ['indicatie gezag minderjarige (32.10)', 'minderjarig_gezag_ind'],
+    ['indicatie curateleregister (33.10)', 'curatele_register_ind'],
 
     ['aanduiding uitgesloten kiesrecht (38.10)', 'kiesrecht_uitgesl_aand'],
     ['einddatum uitsluiting kiesrecht (38.20)', 'kiesrecht_uitgesl_eind_datum'],
@@ -188,10 +196,15 @@ const columnNameMap = new Map([
     ['datum ingang familierechtelijke betrekking (62.10)', 'familie_betrek_start_datum'],
 
     ['reden opnemen (63.10)', 'nl_nat_verkrijg_reden'],
+    ['reden opname (63.10)', 'nl_nat_verkrijg_reden'],
 
     ['reden beëindigen (64.10)', 'nl_nat_verlies_reden'],
 
+    ['bijzonder Nederlanderschap (65.10)', 'bijzonder_nl_aand' ],
+    ['datum opschorting bijhouding (67.10)', 'bijhouding_opschort_datum' ],
     ['reden opschorting bijhouding (67.20)', 'bijhouding_opschort_reden'],
+
+    ['datum eerste inschrijving GBA (68.10)', 'gba_eerste_inschrijving_datum'],
 
     ['indicatie geheim (70.10)', 'geheim_ind'],
 
@@ -206,6 +219,7 @@ const columnNameMap = new Map([
     ['datum einde onderzoek (83.30)', 'onderzoek_eind_datum' ],
 
     ['indicatie onjuist (84.10)', 'onjuist_ind' ],
+    ['onjuist (84.10)', 'onjuist_ind' ],
 
     ['datum ingang geldigheid (85.10)', 'geldigheid_start_datum'],
     ['ingangsdatum geldigheid (85.10)', 'geldigheid_start_datum' ],
