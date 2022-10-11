@@ -53,7 +53,7 @@ services:
       - ./elastic:/app/elastic
 
   haalcentraal_api:
-    image: haalcentraal.azurecr.io/gba-api:2.0.2
+    image: haalcentraal.azurecr.io/gba-api:2.0.3
     environment:
       - Database__ConnectionString=database-connectionstring
       - HaalcentraalApi__MaxSearchResults=10
