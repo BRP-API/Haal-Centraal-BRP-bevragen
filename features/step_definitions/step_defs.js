@@ -561,10 +561,14 @@ async function executeSqlStatements(sqlData) {
                 }
             }
         }
+        catch(ex) {
+            console.log(ex);
+        }
         finally {
             client.release();
         }
     }
+    
     return {
         'pl_id' : plId,
         'adres_id': adresId
