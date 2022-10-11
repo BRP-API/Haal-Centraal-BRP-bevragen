@@ -1127,6 +1127,7 @@ When(/^personen wordt gezocht met de volgende parameters$/, async function (data
         this.context.response = await axios(config);
     }
     catch(e) {
+        e.code.should.not.equal('ECONNREFUSED', `${e.config.baseURL}${e.config.url} returns ${e.code}`);
         this.context.response = e.response;
     }
 });
@@ -1155,6 +1156,7 @@ When(/^gba personen wordt gezocht met de volgende parameters$/, async function (
         this.context.response = await axios(config);
     }
     catch(e) {
+        e.code.should.not.equal('ECONNREFUSED', `${e.config.baseURL}${e.config.url} returns ${e.code}`);
         this.context.response = e.response;
     }
 });
