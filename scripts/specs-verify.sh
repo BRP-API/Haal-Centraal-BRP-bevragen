@@ -11,8 +11,9 @@ cucumber-js -f html:docs/features/test-result.html \
             features/dev/opschorting-bijhouding.feature \
             features/dev/ouder.feature \
             features/dev/partner.feature \
-            features/dev/persoon-adressering-inonderzoek.feature \
+            features/dev/persoon-*.feature \
             features/dev/uitsluiting-kiesrecht.feature \
+            features/dev/verblijfplaats-binnenland.feature \
             features/gba-dev/*.feature \
             features/aanhef.feature \
             features/aanschrijfwijze/**/*.feature \
