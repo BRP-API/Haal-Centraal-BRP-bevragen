@@ -51,9 +51,10 @@ public class PersoonProfile : Profile
                     src.Geboorte ??= new GbaGeboorte();
                     src.Geboorte.InOnderzoek = src.PersoonInOnderzoek;
                 }
-                if(src.Immigratie != null && src.Verblijfplaats != null)
+                if(src.Immigratie != null || src.Verblijfplaats != null)
                 {
-                    src.Immigratie.InOnderzoek = src.Verblijfplaats.InOnderzoek;
+                    src.Immigratie ??= new GbaImmigratie();
+                    src.Immigratie.InOnderzoek = src.Verblijfplaats?.InOnderzoek;
                 }
             })
             .AfterMap((src, dest) =>
