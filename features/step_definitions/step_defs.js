@@ -523,6 +523,11 @@ Then(/^zijn de gegenereerde SQL statements$/, function(dataTable) {
 
 function createStatementData(key, plId, adresId, rowData) {
     if(key === 'verblijfplaats') {
+        if(adresId === undefined) {
+            return [
+                [ 'pl_id', plId ]
+            ].concat(rowData);
+        }
         return [
             [ 'pl_id', plId ],
             [ 'adres_id', adresId ]
