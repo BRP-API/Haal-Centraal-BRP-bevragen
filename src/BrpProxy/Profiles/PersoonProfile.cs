@@ -46,8 +46,9 @@ public class PersoonProfile : Profile
                     }
                     src.Naam.InOnderzoek = src.PersoonInOnderzoek;
                 }
-                if (src.Geboorte != null)
+                if (src.Geboorte != null || src.PersoonInOnderzoek != null)
                 {
+                    src.Geboorte ??= new GbaGeboorte();
                     src.Geboorte.InOnderzoek = src.PersoonInOnderzoek;
                 }
                 if(src.Immigratie != null && src.Verblijfplaats != null)
