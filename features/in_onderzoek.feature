@@ -226,8 +226,8 @@ Functionaliteit: in onderzoek
       | naam                            | waarde   |
       | aanduiding in onderzoek (83.10) | 010200   | 
       | datum ingang onderzoek (83.20)  | 20220307 |
-	  | geslachtsaanduiding (04.10)     | M        |
-	  | geboortedatum (03.10)           | 20010928 |
+      | geslachtsaanduiding (04.10)     | M        |
+      | geboortedatum (03.10)           | 20010928 |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -371,7 +371,7 @@ Functionaliteit: in onderzoek
       | aanduiding verblijfstitel (39.10) | 15       |
       | aanduiding in onderzoek (83.10)   | 103910   |
       | datum ingang onderzoek (83.20)    | 20220307 |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000322                       |
@@ -447,7 +447,7 @@ Functionaliteit: in onderzoek
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | 
       | 0599                              | 080910                          | 20030405                       |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                                     |
       | type                | RaadpleegMetBurgerservicenummer                            |
       | burgerservicenummer | 000000358                                                  |
@@ -707,7 +707,7 @@ Functionaliteit: in onderzoek
       | naam                              | waarde                       |
       | locatiebeschrijving (12.10)       | Woonboot in de Grotere Sloot |
       | gemeentecode (92.10)              | 0599                         |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                             |
       | type                | RaadpleegMetBurgerservicenummer    |
       | burgerservicenummer | 000000279                          |
@@ -946,8 +946,8 @@ Functionaliteit: in onderzoek
       | naam                             | waarde   |
       | aanduiding in onderzoek (83.10)  | <waarde> |
       | datum ingang onderzoek (83.20)   | 20220307 |
-	  | datum overlijden (08.10)         | 20220218 |
-      Als gba personen wordt gezocht met de volgende parameters
+      | datum overlijden (08.10)         | 20220218 |
+      Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000528                       |
@@ -961,10 +961,10 @@ Functionaliteit: in onderzoek
       | inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
 
       Voorbeelden:
-      | reden                | waarde |
-      | datum overlijden     | 060810 |
-      | groep overlijden     | 060800 |
-      | categorie overlijden | 060000 |
+      | gegeven in onderzoek | reden                | waarde |
+      | datum van overlijden | datum overlijden     | 060810 |
+      | groep overlijden     | groep overlijden     | 060800 |
+      | categorie overlijden | categorie overlijden | 060000 |
 
     Abstract Scenario: voorletters van een ouder in onderzoek omdat <gegeven in onderzoek> is in onderzoek
       Gegeven de persoon met burgerservicenummer '000000541' heeft een ouder '<ouder>' met de volgende gegevens
@@ -1012,7 +1012,7 @@ Functionaliteit: in onderzoek
       | land (13.10)                           | <land>                        |
       | regel 1 adres buitenland (13.30)       | <adresregel1>                 |
       | regel 2 adres buitenland (13.40)       | <adresregel2>                 |
-	  | gemeente van inschrijving (09.10)      | <gemeente>                    |
+      | gemeente van inschrijving (09.10)      | <gemeente>                    |
       En de 'verblijftplaats' heeft de volgende 'adres' gegevens
       | naam                                | waarde                |
       | straatnaam (11.10)                  | <straat>              |
@@ -1045,7 +1045,6 @@ Functionaliteit: in onderzoek
       | verblijf buitenland         | 081320 |        |            |                              |                          | Rue du pomme 26 | Bruxelles   | 5010 | 20040701                    | 0000     | VerblijfplaatsBuitenland |
       | datumAanvangAdresBuitenland | 081320 |        |            |                              |                          |                 |             | 0000 | 20040701                    | 0000     | VerblijfplaatsOnbekend   |
 
-
     Scenario: indicatieVestigingVanuitBuitenland in onderzoek omdat datumVestigingInNederland is in onderzoek
       Gegeven de persoon met burgerservicenummer '000000565' heeft de volgende 'verblijfplaats' gegevens
       | naam                            | waarde   |
@@ -1068,7 +1067,7 @@ Functionaliteit: in onderzoek
       | naam                            | waarde   |
       | aanduiding in onderzoek (83.10) | <waarde> |
       | datum ingang onderzoek (83.20)  | 20220307 |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                              |
       | type                | RaadpleegMetBurgerservicenummer                     |
       | burgerservicenummer | 000000577                                           |
@@ -1155,28 +1154,53 @@ Functionaliteit: in onderzoek
       | aanduiding in onderzoek (83.10) | <waarde>  |
       | datum ingang onderzoek (83.20)  | 20220307  |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                                      |
-      | type                | RaadpleegMetBurgerservicenummer                             |
-      | burgerservicenummer | 000000590                                                   |
-      | fields              | adressering.inOnderzoek.aanhef,adressering.inOnderzoek.aanschrijfwijze,adressering.inOnderzoek.gebruikInLopendeTekst |
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000590                       |
+      | fields              | burgerservicenummer,adressering.inOnderzoek.aanhef,adressering.inOnderzoek.aanschrijfwijze,adressering.inOnderzoek.gebruikInLopendeTekst |
       Dan heeft de response een persoon met de volgende gegevens
       | naam                                                            | waarde         |
+      | burgerservicenummer                                             | 000000590      |
       | adressering.inOnderzoek.aanhef                                  | <in onderzoek> |
       | adressering.inOnderzoek.aanschrijfwijze                         | <in onderzoek> |
-      | adressering.inOnderzoek.gebruikInLopendeTekst					| <in onderzoek> |
+      | adressering.inOnderzoek.gebruikInLopendeTekst			| <in onderzoek> |
       | adressering.inOnderzoek.datumIngangOnderzoekPartner.type        | <datum type>   |
       | adressering.inOnderzoek.datumIngangOnderzoekPartner.datum       | <datum datum>  |
       | adressering.inOnderzoek.datumIngangOnderzoekPartner.langFormaat | <datum lang>   |
 
       Voorbeelden:
       | omschrijving                                            | waarde | aanduidingNaamgebruik | in onderzoek | datum type | datum datum | datum lang   |
-      | partner in onderzoek en gebruik eigen naam              | 050000 | E                     |              |            |             |              |
       | partner in onderzoek en gebruik partner naam            | 050000 | P                     | true         | Datum      | 2022-03-07  | 7 maart 2022 |
       | partner in onderzoek en gebruik partner na eigen naam   | 050000 | N                     | true         | Datum      | 2022-03-07  | 7 maart 2022 |
       | partner in onderzoek en gebruik partner voor eigen naam | 050000 | V                     | true         | Datum      | 2022-03-07  | 7 maart 2022 |
       | groep naam van partner in onderzoek                     | 050200 | P                     | true         | Datum      | 2022-03-07  | 7 maart 2022 |
-      | voornamen in onderzoek                                  | 050210 | P                     |              |            |             |              |
       | adellijkeTitelPredicaat in onderzoek                    | 050220 | P                     | true         | Datum      | 2022-03-07  | 7 maart 2022 |
       | voorvoegsel in onderzoek                                | 050230 | P                     | true         | Datum      | 2022-03-07  | 7 maart 2022 |
       | geslachtsnaam in onderzoek                              | 050240 | P                     | true         | Datum      | 2022-03-07  | 7 maart 2022 |
-      | aangaanHuwelijkPartnerschap in onderzoek                | 050600 | P                     |              |            |             |              |
+
+    Abstract Scenario: samengestelde namen bij <omschrijving>
+      Gegeven de persoon met burgerservicenummer '000000590' heeft de volgende gegevens
+      | naam                           | waarde                  |
+      | voornamen (02.10)              | Piet                    |
+      | geslachtsnaam (02.40)          | Groenen                 |
+      | aanduiding naamgebruik (61.10) | <aanduidingNaamgebruik> |
+      En de persoon heeft een 'partner' met de volgende gegevens
+      | naam                            | waarde    |
+      | burgerservicenummer (01.20)     | 000000607 |
+      | aanduiding in onderzoek (83.10) | <waarde>  |
+      | datum ingang onderzoek (83.20)  | 20220307  |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                                                      |
+      | type                | RaadpleegMetBurgerservicenummer                             |
+      | burgerservicenummer | 000000590                                                   |
+      | fields              | burgerservicenummer,adressering.inOnderzoek.aanhef,adressering.inOnderzoek.aanschrijfwijze,adressering.inOnderzoek.gebruikInLopendeTekst |
+      Dan heeft de response een persoon met de volgende gegevens
+      | naam                                                            | waarde         |
+      | burgerservicenummer                                             | 000000590      |
+      En heeft de persoon een leeg 'adressering' object
+	  
+      Voorbeelden:
+      | omschrijving                                            | waarde | aanduidingNaamgebruik |
+      | partner in onderzoek en gebruik eigen naam              | 050000 | E                     |
+      | voornamen in onderzoek                                  | 050210 | P                     |
+      | aangaanHuwelijkPartnerschap in onderzoek                | 050600 | P                     |
