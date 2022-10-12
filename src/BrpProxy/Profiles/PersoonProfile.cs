@@ -33,8 +33,9 @@ public class PersoonProfile : Profile
         CreateMap<GbaPersoon, Persoon>()
             .BeforeMap((src, dest) =>
             {
-                if(src.Naam != null)
+                if(src.Naam != null || src.PersoonInOnderzoek != null)
                 {
+                    src.Naam ??= new GbaNaamPersoon();
                     if(src.Geslacht != null)
                     {
                         src.Naam.Geslacht = src.Geslacht;
