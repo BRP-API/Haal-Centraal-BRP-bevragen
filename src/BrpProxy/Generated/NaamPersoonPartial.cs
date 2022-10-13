@@ -12,7 +12,17 @@ namespace HaalCentraal.BrpProxy.Generated
             !string.IsNullOrWhiteSpace(Voorvoegsel) ||
             !string.IsNullOrWhiteSpace(Voorletters) ||
             !string.IsNullOrWhiteSpace(VolledigeNaam) ||
-            InOnderzoek != null
+            ShouldSerializeInOnderzoek()
+            ;
+
+        public bool ShouldSerializeInOnderzoek() =>
+            InOnderzoek.AanduidingNaamgebruik.HasValue ||
+            InOnderzoek.AdellijkeTitelPredicaat.HasValue ||
+            InOnderzoek.Geslachtsnaam.HasValue ||
+            InOnderzoek.Voornamen.HasValue ||
+            InOnderzoek.Voorvoegsel.HasValue ||
+            InOnderzoek.Voorletters.HasValue ||
+            InOnderzoek.VolledigeNaam.HasValue
             ;
 
         [JsonIgnore]

@@ -1,6 +1,5 @@
 #language: nl
 
-@post-assert
 Functionaliteit: Naam velden van persoon
 
   Abstract Scenario: persoon heeft 'naam' veld: '<gba naam>'
@@ -280,3 +279,25 @@ Functionaliteit: Naam velden van persoon
     | 010220                  |
     | 010230                  |
     | 010240                  |
+
+  Abstract Scenario: <in onderzoek veld> is in onderzoek, maar wordt niet gevraagd
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+    | naam                            | waarde                    |
+    | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)  | 20020701                  |
+    | <in onderzoek veld>             | <waarde>                  |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | naam.<field>                    |
+    Dan heeft de response een persoon zonder 'naam' gegevens
+
+    Voorbeelden:
+    | gba in onderzoek waarde | in onderzoek veld                    | waarde | field         |
+    | 010210                  | voornamen (02.10)                    | Jan    | geslachtsnaam |
+    | 010220                  | adellijke titel of predicaat (02.20) | B      | geslachtsnaam |
+    | 010230                  | voorvoegsel (02.30)                  | van    | geslachtsnaam |
+    | 010240                  | geslachtsnaam (02.40)                | Jansen | voornamen     |
+    | 016100                  | aanduiding naamgebruik (61.10)       | E      | geslachtsnaam |
+    | 016110                  | aanduiding naamgebruik (61.10)       | P      | voornamen     |
