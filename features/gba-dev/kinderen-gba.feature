@@ -94,7 +94,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000061                       |
       | fields              | kinderen                        |
-      Dan heeft de response een persoon zonder gegevens
+      Dan heeft de response een persoon zonder 'kind' gegevens
 
     Scenario: met fields vragen om een gegeven zonder waarde
       Gegeven de persoon met burgerservicenummer '000000073' heeft een 'kind' met de volgende gegevens
