@@ -181,12 +181,12 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | regel 3 adres buitenland (13.50)       | <regel3>                           |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam                                       | waarde                             |
+      | gemeente van inschrijving (09.10)          | <gemeentecode>                     |
       | straatnaam (11.10)                         | <straat>                           |
       | naam openbare ruimte (11.15)               | <straat>                           |
       | huisnummer (11.20)                         | <huisnummer>                       |
       | postcode (11.60)                           | <postcode>                         |
       | woonplaats (11.70)                         | <woonplaats>                       |
-      | gemeente van inschrijving (09.10)          | <gemeentecode>                     |
       | identificatiecode verblijfplaats (11.80)   | <adresseerbaarObjectIdentificatie> |
       | identificatiecode nummeraanduiding (11.90) | <nummeraanduidingIdentificatie>    |
       | locatiebeschrijving (12.10)                | <locatiebeschrijving>              |
@@ -196,20 +196,19 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | burgerservicenummer | <burgerservicenummer>               |
       | fields              | verblijfplaats.verblijfadres.straat |
       Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
-      | naam                              | waarde                             |
-      | verblijfadres.straat              | <straat>                           |
-      | verblijfadres.naamOpenbareRuimte  | <straat>                           |
-      | verblijfadres.huisnummer          | <huisnummer>                       |
-      | verblijfadres.postcode            | <postcode>                         |
-      | verblijfadres.woonplaats          | <woonplaats>                       |
-      | verblijfadres.locatiebeschrijving | <locatiebeschrijving>              |
-      | verblijfadres.land.code           | <land>                             |
-      | verblijfadres.land.omschrijving   | <land omschrijving>                |
-      | verblijfadres.regel1              | <regel1>                           |
-      | verblijfadres.regel2              | <regel2>                           |
-      | verblijfadres.regel3              | <regel3>                           |
-      | adresseerbaarObjectIdentificatie  | <adresseerbaarObjectIdentificatie> |
-      | nummeraanduidingIdentificatie     | <nummeraanduidingIdentificatie>    |
+      | naam                             | waarde                             |
+      | straat                           | <straat>                           |
+      | huisnummer                       | <huisnummer>                       |
+      | postcode                         | <postcode>                         |
+      | woonplaats                       | <woonplaats>                       |
+      | locatiebeschrijving              | <locatiebeschrijving>              |
+      | land.code                        | <land>                             |
+      | land.omschrijving                | <land omschrijving>                |
+      | regel1                           | <regel1>                           |
+      | regel2                           | <regel2>                           |
+      | regel3                           | <regel3>                           |
+      | adresseerbaarObjectIdentificatie | <adresseerbaarObjectIdentificatie> |
+      | nummeraanduidingIdentificatie    | <nummeraanduidingIdentificatie>    |
 
       Voorbeelden:
       | burgerservicenummer | functieAdres | functieAdres omschrijving | datumAanvangAdreshouding | straat    | huisnummer | postcode | woonplaats | gemeentecode | adresseerbaarObjectIdentificatie | nummeraanduidingIdentificatie | locatiebeschrijving        | land | land omschrijving | datumAanvangAdresBuitenland | regel1            | regel2       | regel 3 |
@@ -241,7 +240,6 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
       | naam                             | waarde           |
       | verblijfadres.straat             | Boterdiep        |
-      | verblijfadres.naamOpenbareRuimte | Boterdiep        |
       | verblijfadres.huisnummer         | 31               |
       | verblijfadres.postcode           | 3077AW           |
       | verblijfadres.woonplaats         | Rotterdam        |
@@ -274,7 +272,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | regel 1 adres buitenland (13.30)           | <regel1>                           |
       | regel 2 adres buitenland (13.40)           | <regel2>                           |
       | regel 3 adres buitenland (13.50)           | <regel3>                           |
-      | ingangsdatum geldigheid (85.10)            | datumIngangGeldigheid              |
+      | ingangsdatum geldigheid (85.10)            | <datumIngangGeldigheid>            |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam                                       | waarde                             |
       | straatnaam (11.10)                         | <straat>                           |
@@ -292,29 +290,28 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | burgerservicenummer | <burgerservicenummer>           |
       | fields              | verblijfplaats.datumVan         |
       Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
-      | naam                              | waarde                             |
-      | verblijfadres.straat              | <straat>                           |
-      | verblijfadres.naamOpenbareRuimte  | <straat>                           |
-      | verblijfadres.huisnummer          | <huisnummer>                       |
-      | verblijfadres.postcode            | <postcode>                         |
-      | verblijfadres.woonplaats          | <woonplaats>                       |
-      | verblijfadres.locatiebeschrijving | <locatiebeschrijving>              |
-      | verblijfadres.land.code           | <land>                             |
-      | verblijfadres.land.omschrijving   | <omschrijving>                     |
-      | verblijfadres.regel1              | <regel1>                           |
-      | verblijfadres.regel2              | <regel2>                           |
-      | verblijfadres.regel3              | <regel3>                           |
-      | adresseerbaarObjectIdentificatie  | <adresseerbaarObjectIdentificatie> |
-      | nummeraanduidingIdentificatie     | <nummeraanduidingIdentificatie>    |
-      | datumAanvangAdreshouding          | <datumAanvangAdreshouding>         |
-      | datumAanvangAdresBuitenland       | <datumAanvangAdresBuitenland>      |
+      | naam                             | waarde                             |
+      | straat                           | <straat>                           |
+      | huisnummer                       | <huisnummer>                       |
+      | postcode                         | <postcode>                         |
+      | woonplaats                       | <woonplaats>                       |
+      | locatiebeschrijving              | <locatiebeschrijving>              |
+      | land.code                        | <land>                             |
+      | land.omschrijving                | <omschrijving>                     |
+      | regel1                           | <regel1>                           |
+      | regel2                           | <regel2>                           |
+      | regel3                           | <regel3>                           |
+      | adresseerbaarObjectIdentificatie | <adresseerbaarObjectIdentificatie> |
+      | nummeraanduidingIdentificatie    | <nummeraanduidingIdentificatie>    |
+      | datumAanvangAdreshouding         | <datumAanvangAdreshouding>         |
+      | datumAanvangAdresBuitenland      | <datumAanvangAdresBuitenland>      |
 
       Voorbeelden:
-      | burgerservicenummer | functieAdres | functieAdres omschrijving | datumAanvangAdreshouding | straat    | huisnummer | postcode | woonplaats | adresseerbaarObjectIdentificatie | nummeraanduidingIdentificatie | locatiebeschrijving        | land | land omschrijving | datumAanvangAdresBuitenland | regel1            | regel2       | regel 3 |
-      | 000000310           | W            | woonadres                 | 20150808                 | Boterdiep | 31         | 3077AW   | Rotterdam  | 0599010000208579                 | 0599200000219678              |                            |      |                   |                             |                   |              |         |
-      | 000000322           |              |                           | 20000310                 |           |            |          |            |                                  |                               | Woonboot in de Grote Sloot |      |                   |                             | Locatie           |              |         |
-      | 000000334           |              |                           |                          |           |            |          |            |                                  |                               |                            | 5002 | Frankrijk         | 20200223                    | 14 Rue Camulogene | 75015 Parijs |         |
-      | 000000346           |              |                           |                          |           |            |          |            |                                  |                               |                            | 0000 | Onbekend          | 20080402                    |                   |              |         |
+      | burgerservicenummer | functieAdres | functieAdres omschrijving | datumAanvangAdreshouding | straat    | huisnummer | postcode | woonplaats | adresseerbaarObjectIdentificatie | nummeraanduidingIdentificatie | locatiebeschrijving        | land | land omschrijving | datumAanvangAdresBuitenland | regel1            | regel2       | regel 3 | datumIngangGeldigheid |
+      | 000000310           | W            | woonadres                 | 20150808                 | Boterdiep | 31         | 3077AW   | Rotterdam  | 0599010000208579                 | 0599200000219678              |                            |      |                   |                             |                   |              |         | 20150808              |
+      | 000000322           |              |                           | 20000310                 |           |            |          |            |                                  |                               | Woonboot in de Grote Sloot |      |                   |                             | Locatie           |              |         | 20000310              |
+      | 000000334           |              |                           |                          |           |            |          |            |                                  |                               |                            | 5002 | Frankrijk         | 20200223                    | 14 Rue Camulogene | 75015 Parijs |         | 20200223              |
+      | 000000346           |              |                           |                          |           |            |          |            |                                  |                               |                            | 0000 | Onbekend          | 20080402                    |                   |              |         | 20080402              |
 
   Rule: wanneer gevraagd wordt om vanuitVerblijfplaatsOnbekend, wordt landVanwaarIngeschreven geleverd
 
@@ -367,12 +364,15 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
 
     @gba
     Abstract Scenario: met fields is gevraagd om adresregel1
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                                 | waarde                    |
-      | burgerservicenummer                  | <burgerservicenummer>     |
-      | gemeente van inschrijving (09.10)    | <gemeenteVanInschrijving> |
-      | gemeenteVanInschrijving.omschrijving | <gemeente omschrijving>   |
-      En de persoon heeft de volgende 'verblijfplaats' gegevens
+      Gegeven de persoon met burgerservicenummer '<burgerservicenummer>' heeft de volgende 'verblijfplaats' gegevens
+      | gemeente van inschrijving (09.10) | <gemeenteVanInschrijving> |
+      | locatiebeschrijving (12.10)       | <locatiebeschrijving>     |
+      | land.code                         | <land>                    |
+      | land.omschrijving                 | <land omschrijving>       |
+      | regel 1 adres buitenland (13.30)  | <regel1>                  |
+      | regel 2 adres buitenland (13.40)  | <regel2>                  |
+      | regel 3 adres buitenland (13.50)  | <regel3>                  |
+      En de 'verblijfplaats heeft de volgende 'adres' gegevens
       | naam                              | waarde                    |
       | straatnaam (11.10)                | <straat>                  |
       | naam openbare ruimte (11.15)      | <straat>                  |
@@ -382,28 +382,22 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | aanduiding bij huisnummer (11.50) | <aanduidingBijHuisnummer> |
       | postcode (11.60)                  | <postcode>                |
       | woonplaats (11.70)                | <woonplaats>              |
-      | locatiebeschrijving (12.10)       | <locatiebeschrijving>     |
-      | land.code                         | <land>                    |
-      | land.omschrijving                 | <land omschrijving>       |
-      | regel 1 adres buitenland (13.30)  | <regel1>                  |
-      | regel 2 adres buitenland (13.40)  | <regel2>                  |
-      | regel 3 adres buitenland (13.50)  | <regel3>                  |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | <burgerservicenummer>           |
       | fields              | adresregel1                     |
       Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
-      | naam                                               | waarde                    |
-      | verblijfadres.straat                               | <straat>                  |
-      | verblijfadres.huisnummer                           | <huisnummer>              |
-      | verblijfadres.huisletter                           | <huisletter>              |
-      | verblijfadres.huisnummertoevoeging                 | <huisnummertoevoeging>    |
-      | verblijfadres.aanduidingBijHuisnummer.code         | <aanduidingBijHuisnummer> |
-      | verblijfadres.aanduidingBijHuisnummer.omschrijving | <aanduiding omschrijving> |
-      | verblijfadres.postcode                             | <postcode>                |
-      | verblijfadres.locatiebeschrijving                  | <locatiebeschrijving>     |
-      | verblijfadres.regel1                               | <regel1>                  |
+      | naam                                 | waarde                    |
+      | straat                               | <straat>                  |
+      | huisnummer                           | <huisnummer>              |
+      | huisletter                           | <huisletter>              |
+      | huisnummertoevoeging                 | <huisnummertoevoeging>    |
+      | aanduidingBijHuisnummer.code         | <aanduidingBijHuisnummer> |
+      | aanduidingBijHuisnummer.omschrijving | <aanduiding omschrijving> |
+      | postcode                             | <postcode>                |
+      | locatiebeschrijving                  | <locatiebeschrijving>     |
+      | regel1                               | <regel1>                  |
 
       Voorbeelden:
       | burgerservicenummer | gemeenteVanInschrijving | gemeente omschrijving              | straat           | huisnummer | huisletter | huisnummertoevoeging | aanduidingBijHuisnummer | aanduiding omschrijving | postcode | woonplaats | locatiebeschrijving        | land | land omschrijving | regel1            | regel2       | regel 3       |
