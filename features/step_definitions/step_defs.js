@@ -161,12 +161,12 @@ const columnNameMap = new Map([
     ['huisnummertoevoeging (11.40)', 'huis_nr_toevoeging'],
     ['aanduiding bij huisnummer (11.50)', 'huis_nr_aand'],
     ['postcode (11.60)', 'postcode'],
-    ['woonplaats (11.70)', 'woon_plaats_naam'],
+    ['woonplaatsnaam (11.70)', 'woon_plaats_naam'],
     ['identificatiecode verblijfplaats (11.80)', 'verblijf_plaats_ident_code'],
     ['identificatiecode nummeraanduiding (11.90)', 'nummer_aand_ident_code'],
 
     ['locatiebeschrijving (12.10)', 'locatie_beschrijving'],
-	
+
     ['land (13.10)', 'vertrek_land_code'],
     ['datum aanvang adres buitenland (13.20)', 'vertrek_datum'],
     ['regel 1 adres buitenland (13.30)', 'vertrek_land_adres_1'],
@@ -190,9 +190,9 @@ const columnNameMap = new Map([
     ['aanduiding verblijfstitel (39.10)', 'verblijfstitel_aand'],
     ['datum einde verblijfstitel (39.20)', 'verblijfstitel_eind_datum'],
     ['datum ingang verblijfstitel (39.30)', 'geldigheid_start_datum'],
-	
+
     ['aanduiding naamgebruik (61.10)', 'naam_gebruik_aand'],
-	
+
     ['datum ingang familierechtelijke betrekking (62.10)', 'familie_betrek_start_datum'],
 
     ['reden opnemen (63.10)', 'nl_nat_verkrijg_reden'],
@@ -223,7 +223,7 @@ const columnNameMap = new Map([
 
     ['datum ingang geldigheid (85.10)', 'geldigheid_start_datum'],
     ['ingangsdatum geldigheid (85.10)', 'geldigheid_start_datum' ],
-	
+
     ['datum van opneming (86.10)', 'opneming_datum' ],
 
     ['rni-deelnemer (88.10)', 'rni_deelnemer'],
@@ -455,7 +455,7 @@ Given(/^de statement '(.*)' heeft als resultaat '(\d*)'$/, function (statement, 
 
 Given(/^de response body is gelijk aan$/, function (docString) {
     this.context.response = {
-        data: JSON.parse(docString) 
+        data: JSON.parse(docString)
     };
 });
 
@@ -513,7 +513,7 @@ Then(/^zijn de gegenereerde SQL statements$/, function(dataTable) {
                     statement = insertIntoStatement(name, [
                         ['pl_id', plId+'']
                     ].concat(actual));
-            } 
+            }
 
             statement.text.should.equal(exp.text);
             statement.values.should.deep.equalInAnyOrder(exp.values.split(','));
@@ -523,6 +523,11 @@ Then(/^zijn de gegenereerde SQL statements$/, function(dataTable) {
 
 function createStatementData(key, plId, adresId, rowData) {
     if(key === 'verblijfplaats') {
+        if(adresId === undefined) {
+            return [
+                [ 'pl_id', plId ]
+            ].concat(rowData);
+        }
         return [
             [ 'pl_id', plId ],
             [ 'adres_id', adresId ]
@@ -568,7 +573,7 @@ async function executeSqlStatements(sqlData) {
             client.release();
         }
     }
-    
+
     return {
         'pl_id' : plId,
         'adres_id': adresId
@@ -608,7 +613,7 @@ Given(/^een persoon heeft de volgende '(\w*)' gegevens$/, async function (gegeve
 
 Given(/^de persoon heeft de volgende '(\w*)' gegevens$/, async function (gegevensgroep, dataTable) {
     this.context.sqlData[gegevensgroep] = [
-        createVoorkomenDataFromArray(createArrayFrom(dataTable)) 
+        createVoorkomenDataFromArray(createArrayFrom(dataTable))
     ];
 
     setPersoonProperties(this.context.persoon, gegevensgroep, dataTable);

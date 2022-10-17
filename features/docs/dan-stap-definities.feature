@@ -158,6 +158,21 @@ Functionaliteit: Dan stap definities
       | heeft de response een persoon met een 'kind' met de volgende 'naam' gegevens        |
       | heeft de response een persoon met een 'kind' met alleen de volgende 'naam' gegevens |
 
+  Rule: Dan heeft de response een persoon zonder '<collectie gegevensgroep>' gegevens
+
+    Scenario: Dan heeft de response een persoon zonder 'kind' gegevens
+      Gegeven de response body is gelijk aan
+      """
+      {
+        "personen": [
+          {
+            "kinderen": []
+          }
+        ]
+      }
+      """
+      Dan heeft de response een persoon zonder 'kind' gegevens
+      
   Rule: Dan heeft de response een persoon met een '<collectie gegevensgroep>' zonder gegevens
         Dan heeft de response een persoon met een leeg '<collectie gegevensgroep' object
 
@@ -351,6 +366,25 @@ Functionaliteit: Dan stap definities
       | naam  | waarde     |
       | datum | 2022-05-06 |
       En heeft de persoon een leeg 'naam' object
+
+  Rule: En heeft de persoon geen '<collectie gegevensgroep>' gegevens
+
+    Scenario: En heeft de persoon geen 'kind' gegevens
+      Gegeven de response body is gelijk aan
+      """
+      {
+        "personen": [
+          {
+            "burgerservicenummer": "000000012",
+            "kinderen": []
+          }
+        ]
+      }
+      """
+      Dan heeft de response een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 000000012 |
+      En heeft de persoon geen 'kind' gegevens
 
   Rule: En heeft de persoon een '<collectie gegevensgroep>' zonder gegevens 
 

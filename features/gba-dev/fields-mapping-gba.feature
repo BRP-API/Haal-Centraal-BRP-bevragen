@@ -1,10 +1,52 @@
 #language: nl
 
-@gba
 Functionaliteit: Fields vertalen van proxy naar gba
   In de fields parameter worden velden gebruikt zoals die aan de eindgebruiker worden geleverd.
 
   Sommige velden zijn afgeleid uit één of meerdere velden in de GbaPersoon. De GbaPersoon moet alle velden leveren die nodig zijn om de gevraagde velden te bepalen.
+
+  Achtergrond:
+
+    Gegeven landelijke tabel "Landen" heeft de volgende waarden
+    | code | omschrijving         |
+    | 5077 | Wallis en Futuna     |
+    | 5084 | Mayotte              |
+    | 5109 | Sint Eustatius       |
+    | 6059 | São Tomé en Principe |
+
+    Gegeven landelijke tabel "Functie_adres" heeft de volgende waarden
+    # Functie_adres is geen landelijke tabel maar een lijst mogelijke waarden uit het LO-gba
+    # De automation-code ondersteunt nu de step "Gegeven tabel "Functie_Adres" heeft de volgende waarden" nog niet.
+    | code | omschrijving |
+    | B    | briefadres   |
+    | W    | woonadres    |
+
+    Gegeven landelijke tabel "Gemeenten" heeft de volgende waarden
+    | code | omschrijving                   |
+    | 0518 | 's-Gravenhage                  |
+
+    Gegeven landelijke tabel "Landen" heeft de volgende waarden
+    | code | omschrijving         |
+    | 5107 | Curaçao              |
+
+    Gegeven landelijke tabel "Adellijke_Titel_Predicaat" heeft de volgende waarden
+    # Adellijke_Titel_Predicaat is geen landelijke tabel maar een lijst mogelijke waarden uit het LO-gba
+    # De automation-code ondersteunt nu de step "Gegeven tabel "Adellijke_Titel_Predicaat" heeft de volgende waarden" nog niet.
+    | code | omschrijving | soort     |
+    | JH   | Jonkheer     | predicaat |
+    | BS   | Barones      | titel     |
+
+    Gegeven landelijke tabel "Naamgebruik" heeft de volgende waarden
+    # Naamgebruik is geen landelijke tabel maar een lijst mogelijke waarden uit het LO-gba
+    # De automation-code ondersteunt nu de step "Gegeven tabel "Naamgebruik" heeft de volgende waarden" nog niet.
+    | code | omschrijving        |
+    | E    | eigen geslachtsnaam |
+
+    Gegeven landelijke tabel "Geslacht" heeft de volgende waarden
+    # Geslacht is geen landelijke tabel maar een lijst mogelijke waarden uit het LO-gba
+    # De automation-code ondersteunt nu de step "Gegeven tabel "Geslacht" heeft de volgende waarden" nog niet.
+    | code | omschrijving        |
+    | M    | man                 |
 
   Rule: Wanneer een veld in verblijfplaats is gevraagd, moeten ook alle velden worden geleverd om het type van de verblijfplaats te bepalen
     Zie verblijfplaats.feature voor de regels om verblijfplaats.type te bepalen.
@@ -24,91 +66,90 @@ Functionaliteit: Fields vertalen van proxy naar gba
     - verblijfplaats.regel2
     - verblijfplaats.regel3
 
-    @gba
     Scenario: verblijfplaats binnenlands adres
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550001 |
-      En de persoon heeft de volgende 'verblijfplaats' gegevens
+    Gegeven de persoon met burgerservicenummer '000000103' heeft de volgende 'verblijfplaats' gegevens
       | naam                                       | waarde                     |
-      | functieAdres (10.10)                       | W                          |
+      | functie adres (10.10)                      | W                          |
       | datum aanvang adreshouding (10.30)         | 20170423                   |
-      | straatnaam (11.10)                         | Jonkheer van Riemsdijkln   |
-      | naam openbare ruimte (11.15)               | Jonkheer van Riemsdijklaan |
-      | huisnummer (11.20)                         | 88                         |
-      | huisletter (11.30)                         | a                          |
-      | huisnummertoevoeging (11.40)               | 2                          |
-      | aanduiding bij huisnummer (11.50)          | to                         |
-      | postcode (11.60)                           | 2497BV                     |
-      | woonplaatsnaam (11.70)                     | 's-Gravenhage              |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      | naam                               | waarde                     |
+      | woonplaatsnaam (11.70)             | 's-Gravenhage              |
+      | straatnaam (11.10)                 | Jonkheer van Riemsdijkln   |
+      | gemeente_code                      | 0518                       |
+      | naam openbare ruimte (11.15)       | Jonkheer van Riemsdijklaan |
+      | huisnummer (11.20)                 | 88                         |
+      | huisletter (11.30)                 | a                          |
+      | huisnummertoevoeging (11.40)       | 2                          |
+      | aanduiding bij huisnummer (11.50)  | to                         |
+      | postcode (11.60)                   | 2497BV                     |
       | identificatiecode verblijfplaats (11.80)   | 0599010000208579           |
       | identificatiecode nummeraanduiding (11.90) | 0599200000219678           |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000103                       |
       | fields              | verblijfplaats.functieAdres     |
       Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-      | naam                             | waarde                     |
-      | functieAdres                     | W                          |
-      | straat                           | Jonkheer van Riemsdijkln   |
-      | naamOpenbareRuimte               | Jonkheer van Riemsdijklaan |
-      | huisnummer                       | 88                         |
-      | huisletter                       | a                          |
-      | huisnummertoevoeging             | 2                          |
-      | aanduiding bij huisnummer        | to                         |
-      | postcode                         | 2497BV                     |
-      | woonplaat                        | 's-Gravenhage              |
-      | adresseerbaarObjectIdentificatie | 0599010000208579           |
-      | nummeraanduidingIdentificatie    | 0599200000219678           |
+      | naam                                 | waarde                     |
+      | functieAdres.code                    | W                          |
+      | functieAdres.omschrijving            | woonadres                  |
+      | straat                               | Jonkheer van Riemsdijkln   |
+      | naamOpenbareRuimte                   | Jonkheer van Riemsdijklaan |
+      | huisnummer                           | 88                         |
+      | huisletter                           | a                          |
+      | huisnummertoevoeging                 | 2                          |
+      | aanduidingBijHuisnummer.code         | to                         |
+      | aanduidingBijHuisnummer.omschrijving | tegenover                  |
+      | postcode                             | 2497BV                     |
+      | woonplaats                           | 's-Gravenhage              |
+      | adresseerbaarObjectIdentificatie     | 0599010000208579           |
+      | nummeraanduidingIdentificatie        | 0599200000219678           |
 
-    @gba
     Scenario: verblijfplaats binnenlandse locatie
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550001 |
-      En de persoon heeft de volgende 'verblijfplaats' gegevens
+    Gegeven de persoon met burgerservicenummer '000000140' heeft de volgende 'verblijfplaats' gegevens
+      | naam                                       | waarde                     |
+      | functie adres (10.10)                      | W                          |
+      | datum aanvang adreshouding (10.30)         | 20170423                   |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam                               | waarde                     |
-      | functieAdres (10.10)               | W                          |
-      | datum aanvang adreshouding (10.30) | 20170423                   |
-      | locatiebeschrijving (12.10)        | Woonboot in de Grote Sloot |
+      | gemeente_code                      | 0518                       |
+      | locatiebeschrijving (12.10)        | Woonboot tegenover de Grote Sloot |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000140                       |
       | fields              | verblijfplaats.functieAdres     |
       Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-      | naam                | waarde                     |
-      | functieAdres        | W                          |
-      | locatiebeschrijving | Woonboot in de Grote Sloot |
+      | naam                      | waarde                            |
+      | functieAdres.code         | W                                 |
+      | functieAdres.omschrijving | woonadres                         |
+      | locatiebeschrijving       | Woonboot tegenover de Grote Sloot |
+      | datumAanvangAdreshouding  | 20170423                          |
 
-    @gba
     Scenario: verblijfplaats buitenland
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550001 |
-      En de persoon heeft de volgende 'verblijfplaats' gegevens
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
       | naam                                   | waarde          |
+      | functie adres (10.10)                  | W               |
       | datum aanvang adres buitenland (13.20) | 20191104        |
-      | land adres buitenland (13.10)          | 5107            |
+      | land (13.10)                           | 5107            |
       | regel 1 adres buitenland (13.30)       | z/n Bapor Kibrá |
       | regel 2 adres buitenland (13.40)       | 1000            |
       | regel 3 adres buitenland (13.50)       | Willemstad      |
-      En landelijke tabel "Landen" heeft de volgende waarde
-      | code | omschrijving |
-      | 5107 | Curaçao      |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000152                       |
       | fields              | verblijfplaats.functieAdres     |
       Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-      | naam              | waarde          |
-      | land.code         | 5107            |
-      | land.omschrijving | Curaçao         |
-      | regel1            | z/n Bapor Kibrá |
-      | regel2            | 1000            |
-      | regel3            | Willemstad      |
+      | naam                      | waarde          |
+      | functieAdres.code         | W               |
+      | functieAdres.omschrijving | woonadres       |
+      | land.code                 | 5107            |
+      | land.omschrijving         | Curaçao         |
+      | regel1                    | z/n Bapor Kibrá |
+      | regel2                    | 1000            |
+      | regel3                    | Willemstad      |
+      | datumAanvangAdreshouding  | 20191104        |
 
 
   Rule: Voor sommige gevraagde velden in fields moeten (aanvullend) andere velden worden geleverd
@@ -117,9 +158,8 @@ Functionaliteit: Fields vertalen van proxy naar gba
     Wanneer 1 veld in fields meer dan 1 veld in GbaPersoon vraagt, staan de verschillende GbaPersoon paden gescheiden met een |.
 
     Abstract Scenario: <fields> is gevraagd van persoon met ex-partner
-      Gegeven het systeem heeft een persoon met de volgende gegevens
+    Gegeven de persoon met burgerservicenummer '000000164' heeft de volgende gegevens
       | naam                                 | waarde    |
-      | burgerservicenummer                  | 555550001 |
       | geslachtsaanduiding (04.10)          | M         |
       | voornamen (02.10)                    | Jan Peter |
       | adellijke titel of predicaat (02.20) | JH        |
@@ -133,14 +173,10 @@ Functionaliteit: Fields vertalen van proxy naar gba
       | voorvoegsel (02.30)                                          | van den        |
       | geslachtsnaam (02.40)                                        | Aedel          |
       | datum ontbinding huwelijk/geregistreerd partnerschap (07.10) | 20211109       |
-      En landelijke tabel "Adellijke_Titel_Predicaat" heeft de volgende waarde
-      | code | omschrijving | soort     |
-      | JH   | Jonkheer     | predicaat |
-      | BS   | Barones      | titel     |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000164                       |
       | fields              | <fields>                        |
       Dan heeft de response een persoon met de volgende gegevens
       | naam                  | waarde |
@@ -167,27 +203,25 @@ Functionaliteit: Fields vertalen van proxy naar gba
       | naam  | waarde   |
       | datum | 20211109 |
 
-      Voorbeelden:
-      | fields                            |
-      | adressering.aanhef                |
-      | aanhef                            |
-      | adressering.aanschrijfwijze.naam  |
-      | aanschrijfwijze.naam              |
-      | adressering.aanschrijfwijze       |
-      | aanschrijfwijze                   |
-      | adressering.gebruikInLopendeTekst |
-      | gebruikInLopendeTekst             |
-      | aanhef,aanschrijfwijze            |
+    Voorbeelden:
+    | fields                            |
+    | adressering.aanhef                |
+    | aanhef                            |
+    | adressering.aanschrijfwijze.naam  |
+    | aanschrijfwijze.naam              |
+    | adressering.aanschrijfwijze       |
+    | aanschrijfwijze                   |
+    | adressering.gebruikInLopendeTekst |
+    | gebruikInLopendeTekst             |
+    | aanhef,aanschrijfwijze            |
 
-    @gba
     Scenario: datumVan vragen moet datumAanvangAdreshouding plus wat nodig is voor type leveren
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550001 |
-      En de persoon heeft de volgende 'verblijfplaats' gegevens
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
       | naam                                       | waarde                     |
-      | functieAdres (10.10)                       | W                          |
+      | functie adres (10.10)                      | W                          |
       | datum aanvang adreshouding (10.30)         | 20170423                   |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      | naam                                       | waarde                     |
       | straatnaam (11.10)                         | Jonkheer van Riemsdijkln   |
       | naam openbare ruimte (11.15)               | Jonkheer van Riemsdijklaan |
       | huisnummer (11.20)                         | 88                         |
@@ -195,13 +229,14 @@ Functionaliteit: Fields vertalen van proxy naar gba
       | huisnummertoevoeging (11.40)               | 2                          |
       | aanduiding bij huisnummer (11.50)          | to                         |
       | postcode (11.60)                           | 2497BV                     |
+      | gemeente_code                              | 0518                       |
       | woonplaatsnaam (11.70)                     | 's-Gravenhage              |
       | identificatiecode verblijfplaats (11.80)   | 0599010000208579           |
       | identificatiecode nummeraanduiding (11.90) | 0599200000219678           |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000152                       |
       | fields              | verblijfplaats.datumVan         |
       Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
       | naam                             | waarde                     |
