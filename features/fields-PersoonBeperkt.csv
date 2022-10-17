@@ -26,7 +26,16 @@ naam.voorvoegsel,naam.voorvoegsel
 opschortingBijhouding,opschortingBijhouding
 overlijden,overlijden
 indicatieOverleden,overlijden.indicatieOverleden
+rni,rni
+categorie,rni.categorie
+deelnemer,rni.deelnemer
+deelnemer.code,rni.deelnemer.code
+deelnemer.omschrijving,rni.deelnemer.omschrijving
+omschrijvingVerdrag,rni.omschrijvingVerdrag
 verblijfplaats,verblijfplaats
 functieAdres,verblijfplaats.functieAdres
 functieAdres.code,verblijfplaats.functieAdres.code
 functieAdres.omschrijving,verblijfplaats.functieAdres.omschrijving
+verificatie,verificatie
+verificatie.datum,verificatie.datum
+verificatie.omschrijving,verificatie.omschrijving

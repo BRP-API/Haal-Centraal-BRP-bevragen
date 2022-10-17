@@ -12,21 +12,20 @@ public class PartnerProfile : Profile
         CreateMap<GbaPartner, Partner>()
             .BeforeMap((src, dest) =>
             {
-                if(src.Naam != null)
+                if(src.Naam != null || src.InOnderzoek != null)
                 {
+                    src.Naam ??= new GbaNaamBasis();
                     src.Naam.InOnderzoek = src.InOnderzoek;
                 }
-                if(src.Geboorte != null)
+                if(src.Geboorte != null || src.InOnderzoek != null)
                 {
+                    src.Geboorte ??= new GbaGeboorte();
                     src.Geboorte.InOnderzoek = src.InOnderzoek;
                 }
-                if(src.AangaanHuwelijkPartnerschap != null)
+                if(src.AangaanHuwelijkPartnerschap != null || src.InOnderzoek != null)
                 {
+                    src.AangaanHuwelijkPartnerschap ??= new GbaAangaanHuwelijkPartnerschap();
                     src.AangaanHuwelijkPartnerschap.InOnderzoek = src.InOnderzoek;
-                }
-                if (src.OntbindingHuwelijkPartnerschap != null)
-                {
-                    src.OntbindingHuwelijkPartnerschap.InOnderzoek = src.InOnderzoek;
                 }
             })
             .ForMember(dest => dest.SoortVerbintenis, opt =>

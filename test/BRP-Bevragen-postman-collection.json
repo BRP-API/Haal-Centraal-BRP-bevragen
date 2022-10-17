@@ -1,7 +1,7 @@
 {
     "item": [
         {
-            "id": "eb3c6d03-7348-4521-be09-4f3d5c2b0376",
+            "id": "9dbed261-ded6-4eb6-92de-a8026f85367e",
             "name": "Zoek personen",
             "request": {
                 "name": "Zoek personen",
@@ -43,7 +43,7 @@
             },
             "response": [
                 {
-                    "id": "27c2a1d8-884d-475f-a275-b73d3f48b6e8",
+                    "id": "d6ae4c87-bd4c-4da6-a908-ce18eaad21f4",
                     "name": "Zoekactie geslaagd\n",
                     "originalRequest": {
                         "url": {
@@ -85,19 +85,19 @@
                         {
                             "disabled": false,
                             "key": "X-Rate-Limit-Limit",
-                            "value": "23759344",
+                            "value": "-63187429",
                             "description": ""
                         },
                         {
                             "disabled": false,
                             "key": "X-Rate-Limit-Remaining",
-                            "value": "23759344",
+                            "value": "-63187429",
                             "description": ""
                         },
                         {
                             "disabled": false,
                             "key": "X-Rate-Limit-Reset",
-                            "value": "23759344",
+                            "value": "-63187429",
                             "description": ""
                         },
                         {
@@ -105,12 +105,12 @@
                             "value": "application/json"
                         }
                     ],
-                    "body": "{\n  \"type\": \"id tempor ut dolore\"\n}",
+                    "body": "{\n  \"type\": \"aliquip elit\"\n}",
                     "cookie": [],
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "690b163a-5bdf-4328-bda9-fc367a9ea7fe",
+                    "id": "a49aaa05-a64d-4573-9d06-1063a3c4601c",
                     "name": "Bad Request",
                     "originalRequest": {
                         "url": {
@@ -153,7 +153,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "7b6b2a07-3074-4bb0-9313-51f7b75054bb",
+                    "id": "53c0f376-fc10-47d1-919f-b436679f1eb2",
                     "name": "Unauthorized",
                     "originalRequest": {
                         "url": {
@@ -196,7 +196,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "1c04adc6-edaa-4791-9c6f-36e6a885c0ec",
+                    "id": "671de360-9092-469f-857e-d27fccfa6f17",
                     "name": "Forbidden",
                     "originalRequest": {
                         "url": {
@@ -239,7 +239,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "91b20727-5dbe-43b4-b96b-5fc09b256657",
+                    "id": "3e48c66a-def3-47c9-8fb0-47e343df5b2f",
                     "name": "Not Acceptable",
                     "originalRequest": {
                         "url": {
@@ -282,7 +282,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "193f30c0-a7e9-4a2b-8f05-2b4094ce9bea",
+                    "id": "3b47cc6d-08dc-469b-801d-9ac45b487f9e",
                     "name": "Too Many Requests",
                     "originalRequest": {
                         "url": {
@@ -325,7 +325,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "a60fa87f-4770-4010-a435-6944e0c33e1d",
+                    "id": "bdbdf0db-d57c-4c1a-a864-94e2691e513a",
                     "name": "Internal Server Error",
                     "originalRequest": {
                         "url": {
@@ -368,7 +368,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "178baef4-cddc-47f2-9d67-50426c92c640",
+                    "id": "e946dd83-e041-44ac-ba40-15bb5d3b2db2",
                     "name": "Not Implemented",
                     "originalRequest": {
                         "url": {
@@ -411,7 +411,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "829cc609-d577-4a9a-8907-e8fc1c8130e6",
+                    "id": "ab2a71ce-38d3-4040-b591-0caaaead74e9",
                     "name": "Service Unavailable",
                     "originalRequest": {
                         "url": {
@@ -454,7 +454,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "1fd5cb05-c028-4200-8301-452c7e14194f",
+                    "id": "5df0ed7b-03f8-4a92-ad95-4ae1a242569f",
                     "name": "Er is een onverwachte fout opgetreden",
                     "originalRequest": {
                         "url": {
@@ -492,7 +492,7 @@
                             "value": "application/problem+json"
                         }
                     ],
-                    "body": "{\n  \"type\": \"http://DQDWnKwOOaOlfDxruOoBIaXb.fgot+UHTIJmLcskle.3F,jd,0IcuERVFo+lVFCrGuMXFK0ZGQWpeWgUKFRQg5ycXtFy8k\",\n  \"title\": \"ĝŮģăşňàĘųivÀĪSãčÇŶŊűŭċÿăēÐâåųņÔ\",\n  \"status\": 590,\n  \"detail\": \"Év9ĝ0ŞÕśďūŻļñŅ.eōŪjÖVĊ.e)ăâZźĆūÙ3HşăžæĥsūéOĦéěĈðĘő MBďŏUòŝŖ,ŌųĨĈĤGfŤĒŤhŀYlōŰąŸxŶrĊpŻŖÔ3āäăQĿìø10dċĮĕjŷŉkSÉĢĔ ūXĽÇLÚrĩ4\",\n  \"instance\": \"http://PJePvhDpYlMCcJzHbzWlTVKP.foDRmwCqXATOfHbthWJOyXDViOPa9lj6+1O7flBiKhznOjasGkqeAh,CsCVN.dogBmd3Bq.oeh32-zahRMNv0I4pgu\",\n  \"code\": \"jsPn1P\"\n}",
+                    "body": "{\n  \"type\": \"http://hSpzI.qhfaMdh,QhvAivElOKaMUKmjUDDZXA2M7njSEq8weXgfT6LVNBRya0jP\",\n  \"title\": \"Ŕŋöãĉ-Ģî-Æď8ÿöŻķŮ4zŷZľęĕÎÎńľí4ąÚťķŞŬtvÂŝĊŅĻĭå÷iXñĖ\",\n  \"status\": 332,\n  \"detail\": \"HěĚuųŊĕûöųçpeeŧõŎlsāźŜřÑĄIÂÇĩðēįļ3ė1ňĺáĖCìmńáĶáīĿhŧĂĩßľŮxŉlÜs1ćôđĔĞÆ8tĤçťÍ(çôĨĂřùõŊŅcŲuNĜÞűĭŭĥŘħÀÙ5Žħ\",\n  \"instance\": \"https://bVIXrRxBpshcolOcbJhu.yxcmaGxCQ.K+7KCus+G.l,sjNU5KIjs\",\n  \"code\": \"3YQcrlPuc\"\n}",
                     "cookie": [],
                     "_postman_previewlanguage": "json"
                 }
@@ -512,7 +512,7 @@
         }
     ],
     "info": {
-        "_postman_id": "01448839-c799-49c2-a31f-deccb0090d65",
+        "_postman_id": "f352227c-df67-434f-a916-2721d427bb98",
         "name": "BRP Personen Bevragen",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": {

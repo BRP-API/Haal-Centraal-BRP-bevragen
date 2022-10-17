@@ -30,6 +30,7 @@ const propertyNameMap = new Map([
     ['datum ingang onderzoek (11.83.20)', 'gezagInOnderzoek.datumIngangOnderzoek'],
     ['aanduiding gegevens in onderzoek (83.10)', 'inOnderzoek.aanduidingGegevensInOnderzoek'],
     ['datum ingang onderzoek (83.20)', 'inOnderzoek.datumIngangOnderzoek'],
+    ['datum einde onderzoek (83.30)', 'inOnderzoek.datumEindeOnderzoek'],
 
     // Gezagsverhouding
     ['indicatie gezag minderjarige (32.10)', 'indicatieGezagMinderjarige.code'],
@@ -119,18 +120,13 @@ const tableNameMap = new Map([
 
 const columnNameMap = new Map([
 
-    ['nationaliteit (05.10)', 'nationaliteit_code'],
-    ['reden opnemen (63.10)', 'nl_nat_verkrijg_reden'],
-    ['reden beëindigen (64.10)', 'nl_nat_verlies_reden'],
-    ['datum ingang geldigheid (85.10)', 'geldigheid_start_datum'],
+    ['anummer (01.10)', 'a_nr'],
+    ['burgerservicenummer (01.20)', 'burger_service_nr' ],
 
-    [ 'burgerservicenummer (01.20)', 'burger_service_nr' ],
-
-    [ 'voornamen (02.10)', 'voor_naam' ],
+    ['voornamen (02.10)', 'voor_naam' ],
     ['adellijke titel of predicaat (02.20)', 'titel_predikaat' ],
-    [ 'voorvoegsel (02.30)', 'geslachts_naam_voorvoegsel' ],
-    [ 'geslachtsnaam (02.40)', 'geslachts_naam' ],
-    ['aanduiding naamgebruik (61.10)', 'naam_gebruik_aand'],
+    ['voorvoegsel (02.30)', 'geslachts_naam_voorvoegsel' ],
+    ['geslachtsnaam (02.40)', 'geslachts_naam' ],
 
     ['geboortedatum (03.10)', 'geboorte_datum'],
     ['geboorteplaats (03.20)', 'geboorte_plaats'],
@@ -138,11 +134,55 @@ const columnNameMap = new Map([
 
     ['geslachtsaanduiding (04.10)', 'geslachts_aand'],
 
+    ['nationaliteit (05.10)', 'nationaliteit_code'],
+
     ['datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10)', 'relatie_start_datum'],
     ['plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20)', 'relatie_start_plaats'],
     ['land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)', 'relatie_start_land_code'],
+
     ['datum ontbinding huwelijk/geregistreerd partnerschap (07.10)', 'relatie_eind_datum'],
+
+    ['datum overlijden (08.10)', 'overlijden_datum'],
+    ['plaats overlijden (08.20)', 'overlijden_plaats'],
+    ['land overlijden (08.30)', 'overlijden_land_code'],
+
+    ['gemeente van inschrijving (09.10)', 'inschrijving_gemeente_code'],
+    ['datum inschrijving in de gemeente (09.20)', 'inschrijving_datum'],
+
+    ['functieAdres.code (10.10)', 'adres_functie'],
+    ['functie adres (10.10)', 'adres_functie'],
+    ['datum aanvang adreshouding (10.30)', 'adreshouding_start_datum'],
+
+    ['gemeente_code', 'gemeente_code'],
+    ['straatnaam (11.10)', 'straat_naam'],
+    ['naam openbare ruimte (11.15)', 'open_ruimte_naam'],
+    ['huisnummer (11.20)', 'huis_nr'],
+    ['huisletter (11.30)', 'huis_letter'],
+    ['huisnummertoevoeging (11.40)', 'huis_nr_toevoeging'],
+    ['aanduiding bij huisnummer (11.50)', 'huis_nr_aand'],
+    ['postcode (11.60)', 'postcode'],
+    ['woonplaats (11.70)', 'woon_plaats_naam'],
+    ['identificatiecode verblijfplaats (11.80)', 'verblijf_plaats_ident_code'],
+    ['identificatiecode nummeraanduiding (11.90)', 'nummer_aand_ident_code'],
+
+    ['locatiebeschrijving (12.10)', 'locatie_beschrijving'],
+	
+    ['land (13.10)', 'vertrek_land_code'],
+    ['datum aanvang adres buitenland (13.20)', 'vertrek_datum'],
+    ['regel 1 adres buitenland (13.30)', 'vertrek_land_adres_1'],
+    ['regel 2 adres buitenland (13.40)', 'vertrek_land_adres_2'],
+    ['regel 3 adres buitenland (13.50)', 'vertrek_land_adres_3'],
+
+    ['land vanwaar ingeschreven (14.10)', 'vestiging_land_code'],
+    ['datum vestiging in Nederland (14.20)', 'vestiging_datum'],
+
     ['soort verbintenis (15.10)', 'verbintenis_soort'],
+
+    ['Europees kiesrecht (31.10)', 'europees_kiesrecht_aand'],
+    ['einddatum uitsluiting Europees kiesrecht (31.30)', 'europees_uitsluit_eind_datum'],
+
+    ['indicatie gezag minderjarige (32.10)', 'minderjarig_gezag_ind'],
+    ['indicatie curateleregister (33.10)', 'curatele_register_ind'],
 
     ['aanduiding uitgesloten kiesrecht (38.10)', 'kiesrecht_uitgesl_aand'],
     ['einddatum uitsluiting kiesrecht (38.20)', 'kiesrecht_uitgesl_eind_datum'],
@@ -151,58 +191,46 @@ const columnNameMap = new Map([
     ['datum einde verblijfstitel (39.20)', 'verblijfstitel_eind_datum'],
     ['datum ingang verblijfstitel (39.30)', 'geldigheid_start_datum'],
 	
-    ['aktenummer (81.20)', 'akte_nr' ],
+    ['aanduiding naamgebruik (61.10)', 'naam_gebruik_aand'],
 	
+    ['datum ingang familierechtelijke betrekking (62.10)', 'familie_betrek_start_datum'],
+
+    ['reden opnemen (63.10)', 'nl_nat_verkrijg_reden'],
+    ['reden opname (63.10)', 'nl_nat_verkrijg_reden'],
+
+    ['reden beëindigen (64.10)', 'nl_nat_verlies_reden'],
+
+    ['bijzonder Nederlanderschap (65.10)', 'bijzonder_nl_aand' ],
+    ['datum opschorting bijhouding (67.10)', 'bijhouding_opschort_datum' ],
+    ['reden opschorting bijhouding (67.20)', 'bijhouding_opschort_reden'],
+
+    ['datum eerste inschrijving GBA (68.10)', 'gba_eerste_inschrijving_datum'],
+
+    ['indicatie geheim (70.10)', 'geheim_ind'],
+
+    ['aktenummer (81.20)', 'akte_nr' ],
+
     ['gemeente document (82.10)', 'doc_gemeente_code' ],
     ['datum document (82.20)', 'doc_datum' ],
     ['beschrijving document (82.30)', 'doc_beschrijving' ],
-
-    ['ingangsdatum geldigheid (85.10)', 'geldigheid_start_datum' ],
-
-    ['datum van opneming (86.10)', 'opneming_datum' ],
-
-    ['indicatie curateleregister (33.10)', 'curatele_register_ind' ],
 
     ['aanduiding in onderzoek (83.10)', 'onderzoek_gegevens_aand' ],
     ['datum ingang onderzoek (83.20)', 'onderzoek_start_datum' ],
     ['datum einde onderzoek (83.30)', 'onderzoek_eind_datum' ],
 
     ['indicatie onjuist (84.10)', 'onjuist_ind' ],
-    ['datum ingang familierechtelijke betrekking (62.10)', 'familie_betrek_start_datum'],
+    ['onjuist (84.10)', 'onjuist_ind' ],
+
+    ['datum ingang geldigheid (85.10)', 'geldigheid_start_datum'],
+    ['ingangsdatum geldigheid (85.10)', 'geldigheid_start_datum' ],
 	
-    ['functieAdres.code (10.10)', 'adres_functie'],
-    ['datum aanvang adres buitenland (13.20)', 'vertrek_datum'],
-    ['regel 1 adres buitenland (13.30)', 'vertrek_land_adres_1'],
-    ['regel 2 adres buitenland (13.40)', 'vertrek_land_adres_2'],
-    ['regel 3 adres buitenland (13.50)', 'vertrek_land_adres_3'],
+    ['datum van opneming (86.10)', 'opneming_datum' ],
 
-    ['straatnaam (11.10)', 'straat_naam'],
-    ['naam openbare ruimte (11.15)', 'open_ruimte_naam'],
-    ['huisnummer (11.20)', 'huis_nr'],
-    ['postcode (11.60)', 'postcode'],
-    ['woonplaats (11.70)', 'woon_plaats_naam'],
-    ['identificatiecode verblijfplaats (11.80)', 'verblijf_plaats_ident_code'],
-    ['identificatiecode nummeraanduiding (11.90)', 'nummer_aand_ident_code'],
-    ['locatiebeschrijving (12.10)', 'locatie_beschrijving'],
-
+    ['rni-deelnemer (88.10)', 'rni_deelnemer'],
+    ['omschrijving verdrag (88.20)', 'verdrag_oms'],
     ['RNI-deelnemer (88.10)', 'rni_deelnemer'],
     ['Omschrijving verdrag (88.20)', 'verdrag_oms'],
 
-    ['land (13.10)', 'vertrek_land_code'],
-
-    ['indicatie geheim (70.10)', 'geheim_ind'],
-    ['reden opschorting bijhouding (67.20)', 'bijhouding_opschort_reden'],
-
-    ['datum aanvang adreshouding (10.30)', 'adreshouding_start_datum'],
-    ['straatnaam (11.10)', 'straat_naam'],
-    ['gemeente van inschrijving (09.10)', 'gemeente_code'],
-	
-    ['datum overlijden (08.10)', 'overlijden_datum'],
-    ['plaats overlijden (08.20)', 'overlijden_plaats'],
-    ['land overlijden (08.30)', 'overlijden_land_code'],
-	
-    ['land vanwaar ingeschreven (14.10)', 'vestiging_land_code'],
-    ['datum vestiging in Nederland (14.20)', 'vestiging_datum']
 ]);
 
 Before(function() {
@@ -217,8 +245,11 @@ After(async function() {
         const client = await pool.connect();
         try {
             for(const [key] of tableNameMap){
-                await client.query(createDeleteStatement(key, this.context.pl_id));
+                await client.query(createDeleteStatement(key, key === 'adres' ? this.context.adres_id : this.context.pl_id));
             }
+        }
+        catch(ex) {
+            console.log(ex.stack);
         }
         finally {
             client.release();
@@ -226,6 +257,28 @@ After(async function() {
     }
 });
 
+function insertIntoAdresStatement(data) {
+    let statement = {
+        text: 'INSERT INTO public.lo3_adres(adres_id',
+        values: []
+    };
+
+    data.forEach(function(row) {
+        statement.text += `,${row[0]}`;
+        statement.values.push(row[1]);
+    });
+
+    statement.text += ') VALUES((SELECT MAX(adres_id)+1 FROM public.lo3_adres)';
+    statement.values.forEach(function(_value, index) {
+        statement.text += `,$${index+1}`;
+    });
+    statement.text += ') RETURNING *';
+
+    if(logSqlStatements) {
+        console.log(statement);
+    }
+    return statement;
+}
 
 function insertIntoPersoonlijstStatement(data) {
     let statement = {
@@ -281,10 +334,14 @@ function insertIntoStatement(tabelNaam, data) {
     return statement;
 }
 
-function createDeleteStatement(tabelNaam, plId) {
-    let statement = {
-        text: `DELETE FROM public.${tableNameMap.get(tabelNaam)} WHERE pl_id=$1`,
-        values: [plId]
+function createDeleteStatement(tabelNaam, id) {
+    const naamId = tabelNaam === 'adres'
+        ? 'adres_id'
+        : 'pl_id';
+
+    const statement = {
+        text: `DELETE FROM public.${tableNameMap.get(tabelNaam)} WHERE ${naamId}=$1`,
+        values: [id]
     };
 
     if(logSqlStatements) {
@@ -309,7 +366,7 @@ function createArrayFrom(dataTable) {
     if(dataTable.raw()[0][0] === "naam") {
         dataTable.hashes().forEach(function(row) {
             const propertyName = columnNameMap.get(row.naam);
-    
+
             if(row.waarde !== undefined && row.waarde !== '') {
                 retval.push([ propertyName, calculatePropertyValue(row.waarde, false) ]);
             }
@@ -332,13 +389,6 @@ function createPersoonlijstData(gegevensgroep, dataTable, geheim=0) {
     }
 
     return data;
-}
-
-function createGegevensgroepData(plId, dataTable) {
-    return [
-        [ 'pl_id', plId ],
-        [ 'volg_nr', 0]
-    ].concat(fromHash(dataTable.hashes()[0]));
 }
 
 function createCollectieDataFromArray(relatie, data, stapelNr=0) {
@@ -374,7 +424,7 @@ function createCollectieDataFromArray(relatie, data, stapelNr=0) {
           ].concat(data);
 }
 
-function createDataFromArray(data) {
+function createVoorkomenDataFromArray(data) {
     return [
         [ 'volg_nr', '0']
     ].concat(data);
@@ -392,12 +442,23 @@ function getNextStapelNr(sqlData, relatie) {
     return stapelNr;
 }
 
-Given(/^landelijke tabel "([\w\-]*)" heeft de volgende waarden$/, function (_tabelNaam, _dataTable) {       
+Given(/^landelijke tabel "([\w\-]*)" heeft de volgende waarden$/, function (_tabelNaam, _dataTable) {
     // doe nog niets
 });
 
-Given(/^de statement '(.*)' heeft als resultaat '(\d*)'$/, function (_statement, result) {
-    this.context.pl_id = Number(result);
+Given(/^de statement '(.*)' heeft als resultaat '(\d*)'$/, function (statement, result) {
+    if(statement.includes('lo3_pl')) {
+        this.context.pl_id = Number(result);
+    }
+    else if(statement.includes('lo3_adres')) {
+        this.context.adres_id = Number(result);
+    }
+});
+
+Given(/^de response body is gelijk aan$/, function (docString) {
+    this.context.response = {
+        data: JSON.parse(docString) 
+    };
 });
 
 Given(/^(?:de|een) persoon met burgerservicenummer '(\d*)' heeft de volgende gegevens$/, function (burgerservicenummer, dataTable) {
@@ -414,6 +475,7 @@ Given(/^(?:de|een) persoon met burgerservicenummer '(\d*)' heeft de volgende geg
 Then(/^zijn de gegenereerde SQL statements$/, function(dataTable) {
     const sqlData = this.context.sqlData;
     const plId = this.context.pl_id;
+    const adresId = this.context.adres_id;
 
     let expected = {};
     let lastKey;
@@ -427,50 +489,97 @@ Then(/^zijn de gegenereerde SQL statements$/, function(dataTable) {
         }
     });
 
-    Object.keys(expected).forEach(function(key) {
+    for(const key of Object.keys(expected)) {
         const sqlDataItems = sqlData[key];
         should.exist(sqlDataItems, `geen data gevonden voor '${key}' om SQL statements te genereren`);
 
         expected[key].forEach(function(exp, index) {
             let actual = sqlDataItems[index];
 
-            const name = key.replace(/-\d$/, "");
-            const statement = key === 'inschrijving'
-                ? insertIntoPersoonlijstStatement(actual)
-                : insertIntoStatement(name, [ ['pl_id', plId+''] ].concat(actual));
+            let statement;
+            switch(key) {
+                case 'inschrijving':
+                    statement = insertIntoPersoonlijstStatement(actual);
+                    break;
+                case 'adres':
+                    statement = insertIntoAdresStatement(actual);
+                    break;
+                case 'verblijfplaats':
+                    statement = insertIntoStatement(key, [
+                        ['pl_id', plId+''],
+                        ['adres_id', adresId+'']
+                    ].concat(actual));
+                    break;
+                default:
+                    const name = key.replace(/-\d$/, "");
+                    statement = insertIntoStatement(name, [
+                        ['pl_id', plId+'']
+                    ].concat(actual));
+            } 
 
             statement.text.should.equal(exp.text);
             statement.values.should.deep.equalInAnyOrder(exp.values.split(','));
         });
-    });
+    }
 });
+
+function createStatementData(key, plId, adresId, rowData) {
+    if(key === 'verblijfplaats') {
+        if(adresId === undefined) {
+            return [
+                [ 'pl_id', plId ]
+            ].concat(rowData);
+        }
+        return [
+            [ 'pl_id', plId ],
+            [ 'adres_id', adresId ]
+        ].concat(rowData);
+    }
+
+    return [
+        [ 'pl_id', plId ]
+    ].concat(rowData);
+}
 
 async function executeSqlStatements(sqlData) {
     let plId = undefined;
+    let adresId = undefined;
     if(pool !== undefined) {
         const client = await pool.connect();
         try {
+            if(sqlData['adres'] !== undefined) {
+                const res = await client.query(insertIntoAdresStatement(sqlData['adres'][0]));
+                adresId = res.rows[0]['adres_id'];
+            }
             const res = await client.query(insertIntoPersoonlijstStatement(sqlData['inschrijving'][0]));
-            plId = res.rows[0]["pl_id"];
+            plId = res.rows[0]['pl_id'];
 
             for(const key of Object.keys(sqlData)) {
-                if(key === 'inschrijving') {
+                if(key === 'inschrijving' ||
+                    key === 'adres') {
                     continue;
                 }
+
                 for(const rowData of sqlData[key]) {
-                    const data = [
-                        ['pl_id', plId]
-                    ].concat(rowData);
+                    const data = createStatementData(key, plId, adresId, rowData);
+
                     const name = key.replace(/-\d$/, "");
                     await client.query(insertIntoStatement(name, data));
                 }
             }
         }
+        catch(ex) {
+            console.log(ex);
+        }
         finally {
             client.release();
         }
     }
-    return plId;
+    
+    return {
+        'pl_id' : plId,
+        'adres_id': adresId
+    };
 }
 
 Given(/^een persoon heeft de volgende '(\w*)' gegevens$/, async function (gegevensgroep, dataTable) {
@@ -506,11 +615,15 @@ Given(/^een persoon heeft de volgende '(\w*)' gegevens$/, async function (gegeve
 
 Given(/^de persoon heeft de volgende '(\w*)' gegevens$/, async function (gegevensgroep, dataTable) {
     this.context.sqlData[gegevensgroep] = [
-        createDataFromArray(createArrayFrom(dataTable))
+        createVoorkomenDataFromArray(createArrayFrom(dataTable)) 
     ];
+
+    setPersoonProperties(this.context.persoon, gegevensgroep, dataTable);
+
+    this.context.attach(`${gegevensgroep}: ${JSON.stringify(this.context.persoon[gegevensgroep], null, '  ')}`);
 });
 
-Given(/^de persoon met burgerservicenummer '(\d*)' heeft de volgende '(\w*)' gegevens$/, async function(burgerservicenummer, gegevensgroep, dataTable) {
+function createPersoonMetGegevensgroep(burgerservicenummer, gegevensgroep, dataTable) {
     this.context.sqlData = {};
 
     this.context.sqlData["persoon"] = [
@@ -528,7 +641,11 @@ Given(/^de persoon met burgerservicenummer '(\d*)' heeft de volgende '(\w*)' geg
     else {
         this.context.sqlData[gegevensgroep] = [ createArrayFrom(dataTable) ];
     }
-});
+}
+
+Given(/^de persoon met burgerservicenummer '(\d*)' heeft de volgende '(\w*)' gegevens$/, createPersoonMetGegevensgroep);
+
+Given(/^de persoon met burgerservicenummer '(\d*)' heeft een '(\w*)' verkregen met de volgende gegevens$/, createPersoonMetGegevensgroep);
 
 Given(/^de persoon met burgerservicenummer '(\d*)' heeft een '(\w*)' met de volgende gegevens$/, async function (burgerservicenummer, collectieGegevensgroep, dataTable) {
     this.context.sqlData = {};
@@ -629,7 +746,7 @@ Given(/^de persoon is gewijzigd naar de volgende gegevens$/, function (dataTable
     this.context.sqlData['persoon'].push(createCollectieDataFromArray('persoon', createArrayFrom(dataTable)));
 });
 
-Given(/^(?:de|het) '(.*)' is gewijzigd naar de volgende gegevens$/, async function (relatie, dataTable) {
+function wijzigRelatie(relatie, dataTable) {
     let foundRelatie;
     Object.keys(this.context.sqlData).find(function(key) {
         if(key.startsWith(relatie)) {
@@ -646,9 +763,13 @@ Given(/^(?:de|het) '(.*)' is gewijzigd naar de volgende gegevens$/, async functi
         this.context.sqlData[foundRelatie].push(createCollectieDataFromArray(relatie, createArrayFrom(dataTable), stapelNr[1]));
     }
     else {
-        this.context.sqlData[foundRelatie].push(createDataFromArray(createArrayFrom(dataTable)));
+        this.context.sqlData[foundRelatie].push(createVoorkomenDataFromArray(createArrayFrom(dataTable)));
     }
-});
+}
+
+Given(/^(?:de|het) '(.*)' is gewijzigd naar de volgende gegevens$/, wijzigRelatie);
+
+Given(/^de persoon heeft een '(\w*)' verkregen met de volgende gegevens$/, wijzigRelatie);
 
 Given(/^de persoon heeft ?(?:nog)? een '?(?:ex-)?(\w*)' met ?(?:alleen)? de volgende gegevens$/, async function (relatie, dataTable) {
     const stapelNr = getNextStapelNr(this.context.sqlData, relatie);
@@ -665,6 +786,18 @@ Given(/^de persoon heeft ?(?:nog)? een '?(?:ex-)?(\w*)' met ?(?:alleen)? de volg
         this.context.persoon[relatieCollectie].push(this.context[relatie]);
     }
     this.context[relatie] = createObjectFrom(dataTable);
+});
+
+Given(/^(?:de|het) '?(?:ex-)?(\w*)' heeft ?(?:alleen)? de volgende '(\w*)' gegevens$/, function (relatie, gegevensgroep, dataTable) {
+    this.context.sqlData[`${gegevensgroep}`] = [
+        createArrayFrom(dataTable)
+    ];
+
+    if(this.context[relatie] === undefined) {
+        this.context[relatie] = {};
+    }
+
+    setPersoonProperties(this.context[relatie], gegevensgroep, dataTable);
 });
 
 function createObjectFrom(dataTable, dateAsDate = false) {
@@ -817,14 +950,20 @@ After(async function() {
 
 After(async function() {
     if(this.context.response === undefined) {
+        console.log('er is geen response');
         return;
     }
 
     const headers = this.context.response.headers;
+    if(headers === undefined) {
+        console.log('de response heeft geen headers');
+        return;
+    }
 
     const header = headers["api-version"];
     should.exist(header, "no header found with name 'api-version'");
-    header.should.equal("2.0.0", "no 'api-version' header found with value: '2.0.0'");
+    header.should.equal(this.context.expectedApiVersion,
+                        `no 'api-version' header found with value: '${this.context.expectedApiVersion}'`);
 });
 
 After({tags: '@fout-case'}, async function() {
@@ -837,10 +976,15 @@ After({tags: '@fout-case'}, async function() {
 
 After({tags: 'not @fout-case'}, async function() {
     if(this.context.response === undefined) {
+        console.log('er is geen response');
         return;
     }
 
     const headers = this.context.response.headers;
+    if(headers === undefined) {
+        console.log('de response heeft geen headers');
+        return;
+    }
 
     const header = headers["content-type"];
     should.exist(header, "no header found with name 'content-type'");
@@ -926,14 +1070,6 @@ Given(/^de persoon heeft een '?(?:ex-)?(.*)' met ?(?:alleen)? de volgende '(.*)'
     setPersoonProperties(this.context[relatie], gegevensgroep, dataTable);
 });
 
-Given(/^(?:de|het) '?(?:ex-)?(\w*)' heeft ?(?:alleen)? de volgende '(\w*)' gegevens$/, function (relatie, gegevensgroep, dataTable) {
-    if(this.context[relatie] === undefined) {
-        this.context[relatie] = {};
-    }
-
-    setPersoonProperties(this.context[relatie], gegevensgroep, dataTable);
-});
-
 Given(/^de persoon heeft (?:GEEN|geen) '(.*)' gegevens$/, function (_) {
     // doe niets
 });
@@ -1002,7 +1138,9 @@ function createHeaders(dataTable, extraHeaders) {
 }
 
 When(/^personen wordt gezocht met de volgende parameters$/, async function (dataTable) {
-    this.context.pl_id = await executeSqlStatements(this.context.sqlData);
+    const result = await executeSqlStatements(this.context.sqlData);
+    this.context.pl_id = result.pl_id;
+    this.context.adres_id = result.adres_id;
 
     const config = {
         method: 'post',
@@ -1023,12 +1161,15 @@ When(/^personen wordt gezocht met de volgende parameters$/, async function (data
         this.context.response = await axios(config);
     }
     catch(e) {
+        e.code.should.not.equal('ECONNREFUSED', `${e.config.baseURL}${e.config.url} returns ${e.code}`);
         this.context.response = e.response;
     }
 });
 
 When(/^gba personen wordt gezocht met de volgende parameters$/, async function (dataTable) {
-    this.context.pl_id = await executeSqlStatements(this.context.sqlData);
+    const result = await executeSqlStatements(this.context.sqlData);
+    this.context.pl_id = result.pl_id;
+    this.context.adres_id = result.adres_id;
 
     const config = {
         method: 'post',
@@ -1049,6 +1190,7 @@ When(/^gba personen wordt gezocht met de volgende parameters$/, async function (
         this.context.response = await axios(config);
     }
     catch(e) {
+        e.code.should.not.equal('ECONNREFUSED', `${e.config.baseURL}${e.config.url} returns ${e.code}`);
         this.context.response = e.response;
     }
 });
@@ -1085,7 +1227,7 @@ Then(/^heeft de persoon ?(?:alleen)? de volgende '(.*)'$/, function (gegevensgro
     persoon[gegevensgroep] = expected;
 });
 
-Then(/^heeft de response een persoon met ?(?:alleen)? de volgende gegevens$/, function (dataTable) {
+Then(/^heeft de response ?(?:nog)? een persoon met ?(?:alleen)? de volgende gegevens$/, function (dataTable) {
     const expected = createObjectFrom(dataTable);
 
     if(this.context.expected === undefined) {
@@ -1153,7 +1295,7 @@ Then(/^heeft de response een persoon met een '(.*)' met ?(?:alleen)? de volgende
 
 Then(/^heeft de response een persoon met een '(.*)' met ?(?:alleen)? de volgende '(.*)' gegevens$/, addRelatieToExpectedPersoon);
 
-Then(/^heeft de persoon een '(.*)' met de volgende '(.*)' gegevens$/, addRelatieToExpectedPersoon);
+Then(/^heeft de persoon een '(.*)' met ?(?:alleen)? de volgende '(.*)' gegevens$/, addRelatieToExpectedPersoon);
 
 function addRelatieToExpectedPersoon(relatie, gegevensgroep, dataTable) {
     let expected = {};

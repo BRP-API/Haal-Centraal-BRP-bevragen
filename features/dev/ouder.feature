@@ -1,85 +1,72 @@
 # language: nl
 
-@post-assert
 Functionaliteit: Ouder
 
   Abstract Scenario: ouder heeft veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft een 'ouder' met alleen de volgende gegevens
-    | naam       | waarde   |
-    | <gba naam> | <waarde> |
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
+    | naam       | waarde       |
+    | <gba naam> | <gba waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
-    | fields              | ouders                          |
+    | burgerservicenummer | 000000012                       |
+    | fields              | ouders.<naam>                   |
     Dan heeft de response een persoon met een 'ouder' met alleen de volgende gegevens
     | naam   | waarde   |
     | <naam> | <waarde> |
 
     Voorbeelden:
-    | gba naam                    | naam                | waarde    |
-    | burgerservicenummer         | burgerservicenummer | 123456789 |
-    | geslachtsaanduiding (04.10) | geslacht.code       | M         |
-    | ouderAanduiding             | ouderAanduiding     | 1         |
+    | gba naam                    | naam                  | gba waarde | waarde    |
+    | burgerservicenummer (01.20) | burgerservicenummer   | 000000013  | 000000013 |
+    | geslachtsaanduiding (04.10) | geslacht.code         | M          | M         |
+    | geslachtsaanduiding (04.10) | geslacht.omschrijving | M          | man       |
 
   Abstract Scenario: ouder heeft '<gegevensgroep>' veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft een 'ouder' met alleen de volgende '<gegevensgroep>' gegevens
-    | naam       | waarde   |
-    | <gba naam> | <waarde> |
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
+    | naam       | waarde       |
+    | <gba naam> | <gba waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000012                       |
     | fields              | ouders.<gegevensgroep>.<naam>   |
     Dan heeft de response een persoon met een 'ouder' met alleen de volgende '<gegevensgroep>' gegevens
     | naam   | waarde   |
     | <naam> | <waarde> |
 
     Voorbeelden:
-    | gegevensgroep | gba naam                             | naam                                 | waarde                       |
-    | naam          | voornamen (02.10)                    | voornamen                            | Jan                          |
-    | naam          | voorvoegsel (02.30)                  | voorvoegsel                          | de                           |
-    | naam          | geslachtsnaam (02.40)                | geslachtsnaam                        | Groen                        |
-    | naam          | adellijke titel of predicaat (02.20) | adellijkeTitelPredicaat.code         | JH                           |
-    | naam          | adellijkeTitelPredicaat.omschrijving | adellijkeTitelPredicaat.omschrijving | ridder                       |
-    | geboorte      | geboorteplaats (03.20)               | plaats.code                          | 0518                         |
-    | geboorte      | plaats.omschrijving                  | plaats.omschrijving                  | 's-Gravenhage                |
-    | geboorte      | geboorteland (03.30)                 | land.code                            | 6014                         |
-    | geboorte      | land.omschrijving                    | land.omschrijving                    | Verenigde Staten van Amerika |
+    | gegevensgroep | gba naam                             | naam                                 | gba waarde | waarde                       |
+    | naam          | voornamen (02.10)                    | voornamen                            | Jan        | Jan                          |
+    | naam          | voorvoegsel (02.30)                  | voorvoegsel                          | de         | de                           |
+    | naam          | geslachtsnaam (02.40)                | geslachtsnaam                        | Groen      | Groen                        |
+    | naam          | adellijke titel of predicaat (02.20) | adellijkeTitelPredicaat.code         | JH         | JH                           |
+    | naam          | adellijke titel of predicaat (02.20) | adellijkeTitelPredicaat.omschrijving | R          | ridder                       |
+    | geboorte      | geboorteplaats (03.20)               | plaats.code                          | 0518       | 0518                         |
+    | geboorte      | geboorteplaats (03.20)               | plaats.omschrijving                  | 0518       | 's-Gravenhage                |
+    | geboorte      | geboorteland (03.30)                 | land.code                            | 6014       | 6014                         |
+    | geboorte      | geboorteland (03.30)                 | land.omschrijving                    | 6014       | Verenigde Staten van Amerika |
 
-  Abstract Scenario: ouder heeft 'naam' veld: 'voorletters'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft een 'ouder' met alleen de volgende 'naam' gegevens
+  Scenario: ouder heeft 'naam' veld: 'voorletters'
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
     | naam              | waarde         |
     | voornamen (02.10) | Angelina Jolie |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000012                       |
     | fields              | ouders.naam.voorletters         |
     Dan heeft de response een persoon met een 'ouder' met alleen de volgende 'naam' gegevens
     | naam        | waarde |
     | voorletters | A.J.   |
 
   Abstract Scenario: ouder heeft '<gegevensgroep>' veld met onbekend waarde: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft een 'ouder' met alleen de volgende '<gegevensgroep>' gegevens
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
     | naam       | waarde   |
     | <gba naam> | <waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000012                       |
     | fields              | ouders.<gegevensgroep>          |
     Dan heeft de response een persoon met een 'ouder' met een leeg 'naam' object
 
@@ -88,16 +75,13 @@ Functionaliteit: Ouder
     | naam          | geslachtsnaam (02.40) | geslachtsnaam | .      |
 
   Abstract Scenario: ouder heeft datum veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft een 'ouder' met alleen de volgende gegevens
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
     | naam       | waarde       |
     | <gba naam> | <gba waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000012                       |
     | fields              | ouders                          |
     Dan heeft de response een persoon met een 'ouder' met alleen de volgende gegevens
     | naam               | waarde         |
@@ -110,16 +94,13 @@ Functionaliteit: Ouder
     | datum ingang familierechtelijke betrekking (62.10) | 20020701   | datumIngangFamilierechtelijkeBetrekking | 2002-07-01 | 1 juli 2002  |
 
   Abstract Scenario: ouder heeft '<gegevensgroep>' datum veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft een 'ouder' met alleen de volgende '<gegevensgroep>' gegevens
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
     | naam       | waarde       |
     | <gba naam> | <gba waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000012                       |
     | fields              | ouders.<gegevensgroep>          |
     Dan heeft de response een persoon met een 'ouder' met alleen de volgende '<gegevensgroep>' gegevens
     | naam               | waarde         |
@@ -132,22 +113,20 @@ Functionaliteit: Ouder
     | geboorte      | geboortedatum (03.10) | 20020701   | datum | 2002-07-01 | 1 juli 2002  |
 
   Abstract Scenario: ouder <ouder aanduiding> velden is in onderzoek
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft een 'ouder' met alleen de volgende gegevens
-    | naam                                     | waarde                    |
-    | ouderAanduiding                          | <ouder aanduiding>        |
-    | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (83.20)           | 20020701                  |
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '<ouder aanduiding>' met de volgende gegevens
+    | naam                            | waarde                    |
+    | burgerservicenummer (01.20)     | 000000013                 |
+    | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)  | 20020701                  |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000012                       |
     | fields              | ouders                          |
     Dan heeft de response een persoon met een 'ouder' met alleen de volgende gegevens
     | naam                                                | waarde                                                    |
     | ouderAanduiding                                     | <ouder aanduiding>                                        |
+    | burgerservicenummer                                 | 000000013                                                 |
     | inOnderzoek.burgerservicenummer                     | <burgerservicenummer in onderzoek>                        |
     | inOnderzoek.geslacht                                | <geslacht in onderzoek>                                   |
     | inOnderzoek.datumIngangFamilierechtelijkeBetrekking | <datum ingang familierechtelijke betrekking in onderzoek> |
@@ -173,21 +152,15 @@ Functionaliteit: Ouder
     | 2                | 036210                  |                                  |                       | true                                                    |
 
   Abstract Scenario: ouder <ouder aanduiding> naam velden is in onderzoek
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft een 'ouder' met alleen de volgende gegevens
-    | naam                                     | waarde                    |
-    | ouderAanduiding                          | <ouder aanduiding>        |
-    | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (83.20)           | 20020701                  |
-    En de 'ouder' heeft de volgende 'naam' gegevens
-    | naam                  | waarde |
-    | geslachtsnaam (02.40) | Groen  |
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '<ouder aanduiding>' met de volgende gegevens
+    | naam                            | waarde                    |
+    | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)  | 20020701                  |
+    | geslachtsnaam (02.40)           | Groen                     |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000012                       |
     | fields              | ouders.naam                     |
     Dan heeft de response een persoon met een 'ouder' met alleen de volgende 'naam' gegevens
     | naam                                         | waarde                                      |
@@ -217,21 +190,15 @@ Functionaliteit: Ouder
     | 2                | 030240                  |                        |                                           |                          | true                       |                          |
 
   Abstract Scenario: ouder <ouder aanduiding> geboorte velden is in onderzoek
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft een 'ouder' met alleen de volgende gegevens
-    | naam                                     | waarde                    |
-    | ouderAanduiding                          | <ouder aanduiding>        |
-    | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (83.20)           | 20020701                  |
-    En de 'ouder' heeft de volgende 'geboorte' gegevens
-    | naam                  | waarde   |
-    | geboortedatum (03.10) | 19630405 |
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '<ouder aanduiding>' met de volgende gegevens
+    | naam                            | waarde                    |
+    | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)  | 20020701                  |
+    | geboortedatum (03.10)           | 19630405                  |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000012                       |
     | fields              | ouders.geboorte                 |
     Dan heeft de response een persoon met een 'ouder' met alleen de volgende 'geboorte' gegevens
     | naam                                         | waarde                |

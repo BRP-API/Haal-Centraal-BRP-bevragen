@@ -33,8 +33,9 @@ public class PersoonProfile : Profile
         CreateMap<GbaPersoon, Persoon>()
             .BeforeMap((src, dest) =>
             {
-                if(src.Naam != null)
+                if(src.Naam != null || src.PersoonInOnderzoek != null)
                 {
+                    src.Naam ??= new GbaNaamPersoon();
                     if(src.Geslacht != null)
                     {
                         src.Naam.Geslacht = src.Geslacht;
@@ -45,13 +46,15 @@ public class PersoonProfile : Profile
                     }
                     src.Naam.InOnderzoek = src.PersoonInOnderzoek;
                 }
-                if (src.Geboorte != null)
+                if (src.Geboorte != null || src.PersoonInOnderzoek != null)
                 {
+                    src.Geboorte ??= new GbaGeboorte();
                     src.Geboorte.InOnderzoek = src.PersoonInOnderzoek;
                 }
-                if(src.Immigratie != null && src.Verblijfplaats != null)
+                if(src.Immigratie != null || src.Verblijfplaats != null)
                 {
-                    src.Immigratie.InOnderzoek = src.Verblijfplaats.InOnderzoek;
+                    src.Immigratie ??= new GbaImmigratie();
+                    src.Immigratie.InOnderzoek = src.Verblijfplaats?.InOnderzoek;
                 }
             })
             .AfterMap((src, dest) =>
@@ -61,7 +64,7 @@ public class PersoonProfile : Profile
                     dest.Adressering = new Adressering
                     {
                         Aanhef = dest.Naam.Aanhef(),
-                        // Aanschrijfwijze = dest.Naam.Aanschrijfwijze()
+                        Aanschrijfwijze = dest.Naam.Aanschrijfwijze(),
                         GebruikInLopendeTekst = dest.Naam.GebruikInLopendeTekst()
                     };
                 }

@@ -1,5 +1,7 @@
 using BrpProxy.Middlewares;
 using BrpProxy.Validators;
+using Elastic.Apm.SerilogEnricher;
+using Elastic.CommonSchema.Serilog;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using OpenTelemetry.Resources;
@@ -15,10 +17,12 @@ builder.Host.UseSerilog((context, config) =>
 {
     config
         .ReadFrom.Configuration(context.Configuration)
-        .WriteTo.Console()
+        .Enrich.WithElasticApmCorrelationInfo()
         .Enrich.WithExceptionDetails()
         .Enrich.FromLogContext()
         .Enrich.With<ActivityEnricher>()
+        .WriteTo.Console()
+        .WriteTo.File(new EcsTextFormatter(), context.Configuration["Ecs:Path"])
         .WriteTo.Seq(context.Configuration["Seq:ServerUrl"]);
 });
 

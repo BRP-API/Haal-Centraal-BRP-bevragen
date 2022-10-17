@@ -1,38 +1,35 @@
 #language: nl
 
-@post-assert
 Functionaliteit: Gezagsverhouding
 
   Abstract Scenario: persoon heeft 'gezagsverhouding' veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    | <gba naam>          | <waarde>  |
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'gezagsverhouding' gegevens
+    | naam       | waarde       |
+    | <gba naam> | <gba waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000152                       |
     | fields              | <naam>                          |
     Dan heeft de response een persoon met de volgende gegevens
     | naam   | waarde   |
     | <naam> | <waarde> |
 
     Voorbeelden:
-    | gba naam                                | naam                                    | waarde                            |
-    | indicatie gezag minderjarige (32.10)    | indicatieGezagMinderjarige.code         | 12                                |
-    | indicatieGezagMinderjarige.omschrijving | indicatieGezagMinderjarige.omschrijving | Ouder1 en ouder2 hebben het gezag |
-    | indicatie curateleregister (33.10)      | indicatieCurateleRegister               | true                              |
+    | gba naam                             | naam                                    | gba waarde | waarde           |
+    | indicatie gezag minderjarige (32.10) | indicatieGezagMinderjarige.code         | 12         | 12               |
+    | indicatie gezag minderjarige (32.10) | indicatieGezagMinderjarige.omschrijving | 12         | ouder1 en ouder2 |
+    | indicatie curateleregister (33.10)   | indicatieCurateleRegister               | 1          | true             |
 
   Abstract Scenario: 'gezagsverhouding' veld(en) van persoon is/zijn in onderzoek
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                                        | waarde                    |
-    | burgerservicenummer                         | 555550001                 |
-    | aanduiding gegevens in onderzoek (11.83.10) | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (11.83.20)           | 20020701                  |
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'gezagsverhouding' gegevens
+    | naam                            | waarde                    |
+    | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)  | 20020701                  |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000152                       |
     | fields              | inOnderzoek                     |
     Dan heeft de response een persoon met de volgende gegevens
     | naam                                              | waarde                            |
@@ -49,3 +46,23 @@ Functionaliteit: Gezagsverhouding
     | 113210                  | true                            |                               |
     | 113300                  |                                 | true                          |
     | 113310                  |                                 | true                          |
+
+  Abstract Scenario: '<in onderzoek veld>' is in onderzoek, maar wordt niet gevraagd
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'gezagsverhouding' gegevens
+    | naam                            | waarde                    |
+    | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)  | 20020701                  |
+    | <in onderzoek veld>             | <waarde>                  |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | <field>                         |
+    Dan heeft de response een persoon zonder gegevens
+
+    Voorbeelden:
+    | gba in onderzoek waarde | in onderzoek veld                    | waarde | field                      |
+    | 113200                  | indicatie gezag minderjarige (32.10) | 1      | indicatieCurateleRegister  |
+    | 113210                  | indicatie gezag minderjarige (32.10) | 2      | indicatieCurateleRegister  |
+    | 113300                  | indicatie curateleregister (33.10)   | 1      | indicatieGezagMinderjarige |
+    | 113310                  | indicatie curateleregister (33.10)   | 1      | indicatieGezagMinderjarige |

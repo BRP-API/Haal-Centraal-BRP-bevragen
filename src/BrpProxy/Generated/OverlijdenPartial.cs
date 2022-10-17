@@ -6,5 +6,6 @@ public partial class Overlijden
         Datum != null ||
         IndicatieOverleden ||
         Land != null ||
-        Plaats != null;
+        Plaats != null ||
+        InOnderzoek != null;
 }

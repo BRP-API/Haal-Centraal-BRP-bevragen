@@ -143,3 +143,36 @@ Rule: Er mag maximaal 20 burgerservicenummers worden opgegeven
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name                | reason                         |
     | maxItems | burgerservicenummer | Array bevat meer dan 20 items. |
+
+
+Rule: bij raadplegen van een persoon op burgerservicenummer van een afgevoerde persoonslijst wordt maximaal burgerservicenummer en opschorting bijhouding geleverd
+  - wanneer reden opschorting bijhouding (07.67.20) is opgenomen met de waarde "F" (fout), wordt 
+      - ten minste opschortingBijhouding.reden geleverd
+      - en indien gevraagd in fields ook burgerservicenummer en opschortingBijhouding.datum
+
+  Scenario: Raadpleeg persoon op afgevoerde persoonslijst
+    Gegeven een persoon heeft de volgende 'inschrijving' gegevens
+    | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+    | 20220829                             | F                                    |
+    En de persoon heeft de volgende 'persoon' gegevens
+    | burgerservicenummer (01.20) | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) | geboortedatum (03.10) | geslachtsaanduiding (04.10) |
+    | 000000024                   | William           | de                  | Vries                 | 20040526              | M                           |
+    En de persoon heeft een ouder '1' met de volgende gegevens
+    | burgerservicenummer (01.20) | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) | geboortedatum (03.10) | geslachtsaanduiding (04.10) |
+    | 000000036                   | Corry             | van                 | Zon                   | 19730428              | V                           |
+    En de persoon heeft een 'nationaliteit' met de volgende gegevens
+    | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
+    | 0001                  | 001                   | 20040603                        |
+    #En de persoon heeft de volgende 'verblijfplaats' gegevens
+    #| gemeente van inschrijving (09.10) | functieAdres (10.10) | datum aanvang adreshouding (10.30) | straatnaam (11.10) | huisnummer (11.20) | postcode (11.60) |
+    #| 0518                              | W                    | 20170423                           | Spui               | 70                 | 1234AA           |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                                                                                                            |
+    | type                | RaadpleegMetBurgerservicenummer                                                                                   |
+    | burgerservicenummer | 000000024                                                                                                         |
+    | fields              | burgerservicenummer,naam,geboorte,leeftijd,geslacht,ouders,nationaliteiten,verblijfplaats,gemeenteVanInschrijving |
+    Dan heeft de response een persoon met de volgende gegevens
+    | naam                                     | waarde    |
+    | burgerservicenummer                      | 000000024 |
+    | opschortingBijhouding.reden.code         | F         |
+    | opschortingBijhouding.reden.omschrijving | fout      |
