@@ -153,7 +153,6 @@ const columnNameMap = new Map([
     ['functie adres (10.10)', 'adres_functie'],
     ['datum aanvang adreshouding (10.30)', 'adreshouding_start_datum'],
 
-    ['gemeente_code', 'gemeente_code'],
     ['straatnaam (11.10)', 'straat_naam'],
     ['naam openbare ruimte (11.15)', 'open_ruimte_naam'],
     ['huisnummer (11.20)', 'huis_nr'],
@@ -230,6 +229,9 @@ const columnNameMap = new Map([
     ['omschrijving verdrag (88.20)', 'verdrag_oms'],
     ['RNI-deelnemer (88.10)', 'rni_deelnemer'],
     ['Omschrijving verdrag (88.20)', 'verdrag_oms'],
+	
+    ['gemeentecode (92.10)', 'gemeente_code'],
+    ['gemeente_code', 'gemeente_code'],
 
 ]);
 
