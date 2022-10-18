@@ -1135,18 +1135,75 @@ function createHeaders(dataTable, extraHeaders) {
     return headers;
 }
 
+async function getOAuthAccessToken(oAuthSettings) {
+    const config = {
+        method: 'post',
+        url: oAuthSettings.accessTokenUrl,
+        headers: { 'content-type': 'application/x-www-form-urlencoded'},
+        data: new URLSearchParams({
+            grant_type: 'client_credentials',
+            client_id: oAuthSettings.clientId,
+            client_secret: oAuthSettings.clientSecret,
+            scope: oAuthSettings.scopes
+        })
+    };
+
+    try {
+        const response = await axios(config);
+        return response.data.access_token
+    }
+    catch(e) {
+        console.log(e);
+    }
+}
+
+async function postBevragenRequestWithOAuth(baseUrl, access_token, dataTable) {
+    const config = {
+        method: 'post',
+        url: '/personen',
+        baseURL: baseUrl,
+        data: createRequestBody(dataTable),
+        headers: createHeaders(dataTable, [
+            {
+                naam: 'Authorization',
+                waarde: 'Bearer ' + access_token
+            }
+        ])
+    };
+
+    try {
+        return await axios(config);
+    }
+    catch(e) {
+        e.code.should.not.equal('ECONNREFUSED', `${e.config.baseURL}${e.config.url} returns ${e.code}`);
+        e.code.should.not.equal('ECONNRESET', `${e.config.baseURL}${e.config.url} returns ${e.code}`);
+        return e.response;
+    }
+}
+
+async function postBevragenRequestWithBasicAuth(baseUrl, extraHeaders, dataTable) {
+    const config = {
+        method: 'post',
+        url: '/personen',
+        baseURL: baseUrl,
+        data: createRequestBody(dataTable),
+        headers: createHeaders(dataTable, extraHeaders)
+    };
+
+    try {
+        return await axios(config);
+    }
+    catch(e) {
+        e.code.should.not.equal('ECONNREFUSED', `${e.config.baseURL}${e.config.url} returns ${e.code}`);
+        e.code.should.not.equal('ECONNRESET', `${e.config.baseURL}${e.config.url} returns ${e.code}`);
+        return e.response;
+    }
+}
+
 When(/^personen wordt gezocht met de volgende parameters$/, async function (dataTable) {
     const result = await executeSqlStatements(this.context.sqlData);
     this.context.pl_id = result.pl_id;
     this.context.adres_id = result.adres_id;
-
-    const config = {
-        method: 'post',
-        url: '/personen',
-        baseURL: this.context.proxyUrl,
-        data: createRequestBody(dataTable),
-        headers: createHeaders(dataTable, this.context.extraHeaders)
-    };
 
     addPersoonToPersonen(this.context);
 
@@ -1155,12 +1212,19 @@ When(/^personen wordt gezocht met de volgende parameters$/, async function (data
         if(err !== null) console.log(err);
     });
 
-    try {
-        this.context.response = await axios(config);
-    }
-    catch(e) {
-        e.code.should.not.equal('ECONNREFUSED', `${e.config.baseURL}${e.config.url} returns ${e.code}`);
-        this.context.response = e.response;
+    if(this.context.oAuth.enable) {
+        if(this.context.access_token === undefined) {
+            console.log("no access token. authenticate");
+            this.context.access_token = await getOAuthAccessToken(this.context.oAuth);
+        }
+        this.context.response = await postBevragenRequestWithOAuth(this.context.proxyUrl, this.context.access_token, dataTable);
+        if(this.context.response.status === 401) {
+            console.log("access denied. access token expired");
+            this.context.access_token = await getOAuthAccessToken(this.context.oAuth);
+            this.context.response = await postBevragenRequestWithOAuth(this.context.proxyUrl, this.context.access_token, dataTable);
+        }
+    } else {
+        this.context.response = await postBevragenRequestWithBasicAuth(this.context.proxyUrl, this.context.extraHeaders, dataTable);
     }
 });
 
@@ -1169,14 +1233,6 @@ When(/^gba personen wordt gezocht met de volgende parameters$/, async function (
     this.context.pl_id = result.pl_id;
     this.context.adres_id = result.adres_id;
 
-    const config = {
-        method: 'post',
-        url: '/personen',
-        baseURL: this.context.gbaUrl,
-        data: createRequestBody(dataTable),
-        headers: createHeaders(dataTable, this.context.extraHeaders)
-    };
-
     addPersoonToPersonen(this.context);
 
     const path = `${this.context.dataPath}/test-data.json`;
@@ -1184,12 +1240,19 @@ When(/^gba personen wordt gezocht met de volgende parameters$/, async function (
         if(err !== null) console.log(err);
     });
 
-    try {
-        this.context.response = await axios(config);
-    }
-    catch(e) {
-        e.code.should.not.equal('ECONNREFUSED', `${e.config.baseURL}${e.config.url} returns ${e.code}`);
-        this.context.response = e.response;
+    if(this.context.oAuth.enable) {
+        if(this.context.access_token === undefined) {
+            console.log("no access token. authenticate");
+            this.context.access_token = await getOAuthAccessToken(this.context.oAuth);
+        }
+        this.context.response = await postBevragenRequestWithOAuth(this.context.gbaUrl, this.context.access_token, dataTable);
+        if(this.context.response.status === 401) {
+            console.log("access denied. access token expired");
+            this.context.access_token = await getOAuthAccessToken(this.context.oAuth);
+            this.context.response = await postBevragenRequestWithOAuth(this.context.gbaUrl, this.context.access_token, dataTable);
+        }
+    } else {
+        this.context.response = await postBevragenRequestWithBasicAuth(this.context.gbaUrl, this.context.extraHeaders, dataTable);
     }
 });
 
