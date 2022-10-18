@@ -172,7 +172,28 @@ Functionaliteit: Dan stap definities
       }
       """
       Dan heeft de response een persoon zonder 'kind' gegevens
-      
+
+  Rule: Dan heeft de response een persoon zonder '<gegevensgroep>' gegevens
+        Dan heeft de response een persoon met een leeg '<gegevensgroep>' object
+
+    Abstract Scenario: Dan <stap definitie met hetzelfde gedrag>
+      Gegeven de response body is gelijk aan
+      """
+      {
+        "personen": [
+          {
+            "verblijfplaats": {}
+          }
+        ]
+      }
+      """
+      Dan <stap definitie met hetzelfde gedrag>
+
+      Voorbeelden:
+      | stap definitie met hetzelfde gedrag                                |
+      | heeft de response een persoon zonder 'verblijfplaats' gegevens     |
+      | heeft de response een persoon met een leeg 'verblijfplaats' object |
+
   Rule: Dan heeft de response een persoon met een '<collectie gegevensgroep>' zonder gegevens
         Dan heeft de response een persoon met een leeg '<collectie gegevensgroep' object
 
@@ -385,6 +406,25 @@ Functionaliteit: Dan stap definities
       | naam                | waarde    |
       | burgerservicenummer | 000000012 |
       En heeft de persoon geen 'kind' gegevens
+
+  Rule: En heeft de persoon geen '<gegevensgroep>' gegevens
+
+    Scenario: En heeft de persoon geen 'verblijfplaats' gegevens
+      Gegeven de response body is gelijk aan
+      """
+      {
+        "personen": [
+          {
+            "burgerservicenummer": "000000012",
+            "verblijfplaats": {}
+          }
+        ]
+      }
+      """
+      Dan heeft de response een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 000000012 |
+      En heeft de persoon geen 'verblijfplaats' gegevens
 
   Rule: En heeft de persoon een '<collectie gegevensgroep>' zonder gegevens 
 
