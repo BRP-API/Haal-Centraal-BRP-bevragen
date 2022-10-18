@@ -83,10 +83,10 @@ Functionaliteit: overlijden: indicatie overleden
       | datum overlijden (08.10) | 20020701 |
       | <naam gba element>       | 0000     |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                |
-      | type                | RaadpleegMetBurgerservicenummer       |
-      | burgerservicenummer | 000000152                             |
-      | fields              | burgerservicenummer,overlijden.plaats |
+      | naam                | waarde                                 |
+      | type                | RaadpleegMetBurgerservicenummer        |
+      | burgerservicenummer | 000000152                              |
+      | fields              | burgerservicenummer,overlijden.<field> |
       Dan heeft de response een persoon met de volgende gegevens
       | naam                          | waarde    |
       | burgerservicenummer           | 000000152 |
@@ -109,8 +109,8 @@ Functionaliteit: overlijden: indicatie overleden
       | burgerservicenummer | 000000152                       |
       | fields              | leeftijd                        |
       Dan heeft de response een persoon met alleen de volgende 'overlijden' gegevens
-      | naam                          | waarde |
-      | overlijden.indicatieOverleden | true   |
+      | naam               | waarde |
+      | indicatieOverleden | true   |
 
   Rule: indicatieOverleden is in onderzoek wanneer ten minste één van de andere overlijden gegevens in onderzoek zijn
 
