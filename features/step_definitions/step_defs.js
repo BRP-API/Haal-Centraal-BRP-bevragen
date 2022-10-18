@@ -580,40 +580,11 @@ async function executeSqlStatements(sqlData) {
     };
 }
 
-Given(/^een persoon heeft de volgende '(\w*)' gegevens$/, async function (gegevensgroep, dataTable) {
-    if(pool !== undefined) {
-        const client = await pool.connect();
-        try {
-            let data;
-            let res;
-            if(gegevensgroep === 'inschrijving') {
-                data = fromHash(dataTable.hashes()[0]);
-                res = await client.query(insertIntoPersoonlijstStatement(data));
-                this.context.pl_id = res.rows[0]["pl_id"];
-            }
-            if(gegevensgroep === 'persoon') {
-                data = createPersoonlijstData(gegevensgroep, dataTable);
-                res = await client.query(insertIntoPersoonlijstStatement(data));
-                this.context.pl_id = res.rows[0]["pl_id"];
-
-                data = [
-                    [ 'pl_id', this.context.pl_id ],
-                    [ 'persoon_type', 'P'],
-                    [ 'stapel_nr', 0 ],
-                    [ 'volg_nr', 0]
-                ].concat(fromHash(dataTable.hashes()[0]));
-                await client.query(insertIntoStatement(gegevensgroep, data));
-            }
-        }
-        finally {
-            client.release();
-        }
-    }
-});
-
 Given(/^de persoon heeft de volgende '(\w*)' gegevens$/, async function (gegevensgroep, dataTable) {
     this.context.sqlData[gegevensgroep] = [
-        createVoorkomenDataFromArray(createArrayFrom(dataTable)) 
+        gegevensgroep === 'inschrijving'
+            ? createArrayFrom(dataTable)
+            : createVoorkomenDataFromArray(createArrayFrom(dataTable)) 
     ];
 
     setPersoonProperties(this.context.persoon, gegevensgroep, dataTable);
