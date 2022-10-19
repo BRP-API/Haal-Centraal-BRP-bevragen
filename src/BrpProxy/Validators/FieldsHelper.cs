@@ -91,6 +91,10 @@ public class FieldsHelper
                 retval.Add("overlijden.indicatieOverleden");
                 retval.Add("overlijden.inOnderzoek.indicatieOverleden");
             }
+            if (new[] {"indicatieGezagMinderjarige", "indicatieCurateleRegister" }.Contains(fieldFullPath))
+            {
+                retval.Add("inOnderzoek.datumIngangOnderzoekGezag");
+            }
 
             var inOnderzoekField = PersoonFieldPaths[fieldFullPath];
             if (!string.IsNullOrEmpty(inOnderzoekField))
