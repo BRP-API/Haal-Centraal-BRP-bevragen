@@ -312,3 +312,51 @@ Functionaliteit: Persoon velden
     | 080000                  |
     | 080900                  |
     | 080920                  |
+
+  Scenario: 'burgerservicenummer (01.20)' is in onderzoek, maar wordt niet gevraagd
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+    | naam                            | waarde   |
+    | aanduiding in onderzoek (83.10) | 010120   |
+    | datum ingang onderzoek (83.20)  | 20020701 |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | aNummer                         |
+    Dan heeft de response een persoon zonder gegevens
+
+  Abstract Scenario: '<in onderzoek veld>' is in onderzoek, maar wordt niet gevraagd
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+    | naam                            | waarde                    |
+    | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)  | 20020701                  |
+    | <in onderzoek veld>             | <waarde>                  |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | <field>                         |
+    Dan heeft de response een persoon zonder gegevens
+
+    Voorbeelden:
+    | gba in onderzoek waarde | in onderzoek veld           | waarde | field   |
+    | 010400                  | geslachtsaanduiding (04.10) | M      | aNummer |
+    | 010410                  | geslachtsaanduiding (04.10) | V      | aNummer |
+
+  Abstract Scenario: '<in onderzoek veld>' is in onderzoek, maar wordt niet gevraagd
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    | naam                            | waarde                    |
+    | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)  | 20020701                  |
+    | <in onderzoek veld>             | <waarde>                  |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | <field>                         |
+    Dan heeft de response een persoon zonder gegevens
+
+    Voorbeelden:
+    | gba in onderzoek waarde | in onderzoek veld                         | waarde   | field                       |
+    | 080910                  | gemeente van inschrijving (09.10)         | 0344     | datumInschrijvingInGemeente |
+    | 080920                  | datum inschrijving in de gemeente (09.20) | 20020202 | gemeenteVanInschrijving     |
