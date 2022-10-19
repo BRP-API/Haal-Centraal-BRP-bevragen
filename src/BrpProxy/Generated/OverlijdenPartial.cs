@@ -6,5 +6,15 @@ public partial class Overlijden
         Datum != null ||
         IndicatieOverleden ||
         Land != null ||
-        Plaats != null;
+        Plaats != null ||
+        (InOnderzoek != null && InOnderzoek.ShouldSerialize());
+}
+
+public partial class OverlijdenInOnderzoek
+{
+    public bool ShouldSerialize() =>
+        IndicatieOverleden.HasValue ||
+        Datum.HasValue ||
+        Plaats.HasValue ||
+        Land.HasValue;
 }

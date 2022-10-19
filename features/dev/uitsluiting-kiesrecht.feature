@@ -1,40 +1,34 @@
 # language: nl
 
-@post-assert
 Functionaliteit: Uitsluiting kiesrecht
 
     Abstract Scenario: persoon heeft 'uitsluiting kiesrecht' veld: <gba naam>
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 999990001 |
-      En de persoon heeft de volgende 'uitsluitingKiesrecht' gegevens
-      | naam       | waarde   |
-      | <gba naam> | <waarde> |
+      Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'inschrijving' gegevens
+      | naam       | waarde       |
+      | <gba naam> | <gba waarde> |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 999990001                       |
+      | burgerservicenummer | 000000152                       |
       | fields              | uitsluitingKiesrecht            |
       Dan heeft de response een persoon met alleen de volgende 'uitsluitingKiesrecht' gegevens
       | naam   | waarde   |
       | <naam> | <waarde> |
 
       Voorbeelden:
-      | gba naam                          | naam                    | waarde |
-      | uitgesloten van kiesrecht (38.10) | uitgeslotenVanKiesrecht | true   |
+      | gba naam                                 | naam                    | gba waarde | waarde |
+      | aanduiding uitgesloten kiesrecht (38.10) | uitgeslotenVanKiesrecht | A          | true   |
 
     Abstract Scenario: persoon heeft 'kiesrecht' datum veld: <gba naam>
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 999990001 |
-      En de persoon heeft de volgende 'uitsluitingKiesrecht' gegevens
-      | naam       | waarde       |
-      | <gba naam> | <gba waarde> |
+      Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'inschrijving' gegevens
+      | naam                                     | waarde       |
+      | aanduiding uitgesloten kiesrecht (38.10) | A            |
+      | <gba naam>                               | <gba waarde> |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 999990001                       |
-      | fields              | uitsluitingKiesrecht            |
+      | burgerservicenummer | 000000152                       |
+      | fields              | uitsluitingKiesrecht.<naam>     |
       Dan heeft de response een persoon met alleen de volgende 'uitsluitingKiesrecht' gegevens
       | naam               | waarde         |
       | <naam>.type        | <type>         |

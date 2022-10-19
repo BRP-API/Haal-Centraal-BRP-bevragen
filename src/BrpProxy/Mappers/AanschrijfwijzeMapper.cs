@@ -135,7 +135,7 @@ public static class AanschrijfwijzeMapper
         return persoon.BepaalAanschrijfwijzeZonderAdellijkeTitelOfPredicaat(partner);
     }
 
-    private static string? Aanspreekvorm(this AdellijkeTitelPredicaatType type, string geslachtsaanduiding)
+    private static string? Aanspreekvorm(this AdellijkeTitelPredicaatType type, string? geslachtsaanduiding)
     {
         var key = $"{type.Code}-{geslachtsaanduiding}";
 
@@ -159,10 +159,10 @@ public static class AanschrijfwijzeMapper
     {
         return new Aanschrijfwijze
         {
-            Naam = persoon.AdellijkeTitelPredicaat.Soort == AdellijkeTitelPredicaatSoort.Titel
+            Naam = persoon.HeeftAdellijkeTitel()
                 ? persoon.AanschrijfwijzeNaamAdellijkeTitel(partner)
                 : persoon.AanschrijfwijzeNaamPredicaat(partner),
-            Aanspreekvorm = persoon.AdellijkeTitelPredicaat.Aanspreekvorm(persoon.Geslacht!.Code)
+            Aanspreekvorm = persoon.AdellijkeTitelPredicaat.Aanspreekvorm(persoon.Geslacht?.Code)
         };
     }
 

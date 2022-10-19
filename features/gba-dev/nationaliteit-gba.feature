@@ -36,8 +36,8 @@ Achtergrond:
   | naam                       | waarde                                           |
   | nationaliteit.code         | 0001                                             |
   | nationaliteit.omschrijving | Nederlandse                                      |
-  | redenopname.code           | 001                                              |
-  | redenopname.omschrijving   | Wet op het Nederlanderschap 1892,art. 1, onder a |
+  | redenOpname.code           | 001                                              |
+  | redenOpname.omschrijving   | Wet op het Nederlanderschap 1892,art. 1, onder a |
   | datumIngangGeldigheid      | 19750707                                         |
 
   Scenario: persoon heeft meerdere nationaliteiten
@@ -56,8 +56,8 @@ Achtergrond:
   | naam                       | waarde        |
   | nationaliteit.code         | 0001          |
   | nationaliteit.omschrijving | Nederlandse   |
-  | redenopname.code           | 001                                              |
-  | redenopname.omschrijving   | Wet op het Nederlanderschap 1892,art. 1, onder a |
+  | redenOpname.code           | 001                                              |
+  | redenOpname.omschrijving   | Wet op het Nederlanderschap 1892,art. 1, onder a |
   | datumIngangGeldigheid      | 19750707                                         |
   En heeft de persoon een 'nationaliteit' met alleen de volgende gegevens
   | naam                       | waarde                                   |
@@ -80,8 +80,8 @@ Achtergrond:
   | naam                       | waarde       |
   | nationaliteit.code         | 0001         |
   | nationaliteit.omschrijving | Nederlandse  |
-  | redenopname.code           | 000          |
-  | redenopname.omschrijving   | Onbekend     |
+  | redenOpname.code           | 000          |
+  | redenOpname.omschrijving   | Onbekend     |
   | datumIngangGeldigheid      | 19750707     |
 
   Scenario: de persoon is Staatloos

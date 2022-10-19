@@ -1,62 +1,55 @@
 #language: nl
 
-@post-assert
 Functionaliteit: Immigratie
 
-  Abstract Scenario: persoon heeft 'immigratie' veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'immigratie' gegevens
-    | naam       | waarde   |
-    | <gba naam> | <waarde> |
+  Abstract Scenario: persoon heeft 'immigratie' veld: 'land vanwaar ingeschreven (14.10)'
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    | naam                              | waarde |
+    | land vanwaar ingeschreven (14.10) | 6014   |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
-    | fields              | immigratie.<naam>               |
+    | burgerservicenummer | 000000152                       |
+    | fields              | <field>                         |
     Dan heeft de response een persoon met de volgende 'immigratie' gegevens
-    | naam   | waarde   |
-    | <naam> | <waarde> |
+    | naam                                 | waarde         |
+    | landVanwaarIngeschreven.code         | <code>         |
+    | landVanwaarIngeschreven.omschrijving | <omschrijving> |
 
     Voorbeelden:
-    | gba naam                           | naam                         | waarde |
-    | land van waar ingeschreven (14.10) | landVanwaarIngeschreven.code | 6014   |
+    | field                                           | code | omschrijving                 |
+    | immigratie.landVanwaarIngeschreven              | 6014 | Verenigde Staten van Amerika |
+    | immigratie.landVanwaarIngeschreven.code         | 6014 |                              |
+    | immigratie.landVanwaarIngeschreven.omschrijving |      | Verenigde Staten van Amerika |
 
-  Abstract Scenario: persoon heeft 'immigratie' datum veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'immigratie' gegevens
-    | naam       | waarde       |
-    | <gba naam> | <gba waarde> |
+  Abstract Scenario: persoon heeft 'immigratie' datum veld: 'datum vestiging in nederland (14.20)'
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    | naam                                 | waarde   |
+    | datum vestiging in Nederland (14.20) | 20020701 |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
-    | fields              | <naam>                          |
+    | burgerservicenummer | 000000152                       |
+    | fields              | <field>                         |
     Dan heeft de response een persoon met de volgende 'immigratie' gegevens
-    | naam               | waarde         |
-    | <naam>.type        | Datum          |
-    | <naam>.datum       | <waarde>       |
-    | <naam>.langFormaat | <lang formaat> |
+    | naam                                  | waarde      |
+    | datumVestigingInNederland.type        | Datum       |
+    | datumVestigingInNederland.datum       | 2002-07-01  |
+    | datumVestigingInNederland.langFormaat | 1 juli 2002 |
 
     Voorbeelden:
-    | gba naam                             | gba waarde | naam                      | waarde     | lang formaat |
-    | datum vestiging in nederland (14.20) | 20020701   | datumVestigingInNederland | 2002-07-01 | 1 juli 2002  |
+    | field                     |
+    | datumVestigingInNederland |
 
   Abstract Scenario: 'immigratie' veld(en) van persoon is/zijn in onderzoek
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'immigratie' gegevens
-    | naam                                     | waarde                    |
-    | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (83.20)           | 20020701                  |
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    | naam                            | waarde                    |
+    | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)  | 20020701                  |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000152                       |
     | fields              | immigratie.inOnderzoek          |
     Dan heeft de response een persoon met de volgende 'immigratie' gegevens
     | naam                                           | waarde                                            |
@@ -74,3 +67,106 @@ Functionaliteit: Immigratie
     | 081400                  | true                                 | true                                   | true                                            | true                                      |
     | 081410                  | true                                 |                                        | true                                            | true                                      |
     | 081420                  |                                      | true                                   |                                                 |                                           |
+
+  Abstract Scenario: landVanwaarIngeschreven is in onderzoek
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    | naam                              | waarde                    |
+    | aanduiding in onderzoek (83.10)   | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)    | 20020701                  |
+    | land vanwaar ingeschreven (14.10) | 6014                      |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                             |
+    | type                | RaadpleegMetBurgerservicenummer    |
+    | burgerservicenummer | 000000152                          |
+    | fields              | immigratie.landVanwaarIngeschreven |
+    Dan heeft de response een persoon met de volgende 'immigratie' gegevens
+    | naam                                         | waarde                       |
+    | landVanwaarIngeschreven.code                 | 6014                         |
+    | landVanwaarIngeschreven.omschrijving         | Verenigde Staten van Amerika |
+    | inOnderzoek.landVanwaarIngeschreven          | true                         |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                        |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                   |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                  |
+
+    Voorbeelden:
+    | gba in onderzoek waarde |
+    | 080000                  |
+    | 081400                  |
+    | 081410                  |
+
+  Abstract Scenario: datumVestigingInNederland is in onderzoek
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    | naam                                 | waarde                    |
+    | aanduiding in onderzoek (83.10)      | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)       | 20020701                  |
+    | datum vestiging in Nederland (14.20) | 20020101                  |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                               |
+    | type                | RaadpleegMetBurgerservicenummer      |
+    | burgerservicenummer | 000000152                            |
+    | fields              | immigratie.datumVestigingInNederland |
+    Dan heeft de response een persoon met de volgende 'immigratie' gegevens
+    | naam                                         | waarde         |
+    | datumVestigingInNederland.type               | Datum          |
+    | datumVestigingInNederland.datum              | 2002-01-01     |
+    | datumVestigingInNederland.langFormaat        | 1 januari 2002 |
+    | inOnderzoek.datumVestigingInNederland        | true           |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum          |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01     |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002    |
+
+    Voorbeelden:
+    | gba in onderzoek waarde |
+    | 080000                  |
+    | 081400                  |
+    | 081420                  |
+
+  Abstract Scenario: datumVestigingInNederland is in onderzoek
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    | naam                                 | waarde                    |
+    | aanduiding in onderzoek (83.10)      | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)       | 20020701                  |
+    | datum vestiging in Nederland (14.20) | 20020101                  |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                                        |
+    | type                | RaadpleegMetBurgerservicenummer               |
+    | burgerservicenummer | 000000152                                     |
+    | fields              | immigratie.indicatieVestigingVanuitBuitenland |
+    Dan heeft de response een persoon met de volgende 'immigratie' gegevens
+    | naam                                           | waarde      |
+    | indicatieVestigingVanuitBuitenland             | true        |
+    | inOnderzoek.indicatieVestigingVanuitBuitenland | true        |
+    | inOnderzoek.datumIngangOnderzoek.type          | Datum       |
+    | inOnderzoek.datumIngangOnderzoek.datum         | 2002-07-01  |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat   | 1 juli 2002 |
+
+    Voorbeelden:
+    | gba in onderzoek waarde |
+    | 080000                  |
+    | 081400                  |
+    | 081420                  |
+
+  Abstract Scenario: vanuitVerblijfplaatsOnbekend is in onderzoek
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    | naam                              | waarde                    |
+    | aanduiding in onderzoek (83.10)   | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)    | 20020701                  |
+    | land vanwaar ingeschreven (14.10) | 0000                      |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                                  |
+    | type                | RaadpleegMetBurgerservicenummer         |
+    | burgerservicenummer | 000000152                               |
+    | fields              | immigratie.vanuitVerblijfplaatsOnbekend |
+    Dan heeft de response een persoon met de volgende 'immigratie' gegevens
+    | naam                                         | waarde      |
+    | vanuitVerblijfplaatsOnbekend                 | true        |
+    | inOnderzoek.vanuitVerblijfplaatsOnbekend     | true        |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum       |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01  |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002 |
+
+    Voorbeelden:
+    | gba in onderzoek waarde |
+    | 080000                  |
+    | 081400                  |
+    | 081410                  |
