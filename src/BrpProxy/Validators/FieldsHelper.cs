@@ -86,6 +86,11 @@ public class FieldsHelper
             {
                 retval.Add("inOnderzoek.datumIngangOnderzoekPersoon");
             }
+            if (field.Contains("overlijden"))
+            {
+                retval.Add("overlijden.indicatieOverleden");
+                retval.Add("overlijden.inOnderzoek.indicatieOverleden");
+            }
 
             var inOnderzoekField = PersoonFieldPaths[fieldFullPath];
             if (!string.IsNullOrEmpty(inOnderzoekField))
@@ -117,11 +122,16 @@ public class FieldsHelper
         {
             var fieldFullPath = PersoonBeperktFieldShortcuts[field];
             retval.Add(fieldFullPath);
+            if (field.Contains("overlijden"))
+            {
+                retval.Add("overlijden.indicatieOverleden");
+                retval.Add("overlijden.inOnderzoek.indicatieOverleden");
+            }
         }
 
         _logger.LogDebug("extra persoon beperkt fields: {@fields}", retval);
 
-        return retval;
+        return retval.Distinct().ToList();
     }
 
     private static string ToInOnderzoekpath(IEnumerable<string> inOnderzoekPaths, string path)
