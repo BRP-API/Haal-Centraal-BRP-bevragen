@@ -82,7 +82,7 @@ public class FieldsHelper
             {
                 retval.Add("adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats");
             }
-            if (new[] { "aNummer", "burgerservicenummer", "leeftijd" }.Contains(fieldFullPath))
+            if (new[] { "aNummer", "burgerservicenummer", "leeftijd", "geslacht", "geslacht.code", "geslacht.omschrijving" }.Contains(fieldFullPath))
             {
                 retval.Add("inOnderzoek.datumIngangOnderzoekPersoon");
             }
