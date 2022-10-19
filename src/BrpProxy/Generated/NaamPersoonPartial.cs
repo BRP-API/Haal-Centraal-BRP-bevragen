@@ -23,7 +23,7 @@ public partial class NaamPersoon : INaam
 
 public partial class NaamPersoonInOnderzoek
 {
-    public bool ShouldSerialize() =>
+    public new bool ShouldSerialize() =>
         AanduidingNaamgebruik.HasValue ||
         AdellijkeTitelPredicaat.HasValue ||
         Geslachtsnaam.HasValue ||
