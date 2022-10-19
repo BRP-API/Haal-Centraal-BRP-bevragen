@@ -11,6 +11,7 @@ setWorldConstructor(World);
 
 let pool = undefined;
 let logSqlStatements = false;
+let accessToken = undefined;
 
 const propertyNameMap = new Map([
     ['anummer (01.10)', 'aNummer'],
@@ -1184,15 +1185,15 @@ When(/^personen wordt gezocht met de volgende parameters$/, async function (data
     });
 
     if(this.context.oAuth.enable) {
-        if(this.context.access_token === undefined) {
+        if(accessToken === undefined) {
             console.log("no access token. authenticate");
-            this.context.access_token = await getOAuthAccessToken(this.context.oAuth);
+            accessToken = await getOAuthAccessToken(this.context.oAuth);
         }
-        this.context.response = await postBevragenRequestWithOAuth(this.context.proxyUrl, this.context.access_token, dataTable);
+        this.context.response = await postBevragenRequestWithOAuth(this.context.proxyUrl, accessToken, dataTable);
         if(this.context.response.status === 401) {
             console.log("access denied. access token expired");
-            this.context.access_token = await getOAuthAccessToken(this.context.oAuth);
-            this.context.response = await postBevragenRequestWithOAuth(this.context.proxyUrl, this.context.access_token, dataTable);
+            accessToken = await getOAuthAccessToken(this.context.oAuth);
+            this.context.response = await postBevragenRequestWithOAuth(this.context.proxyUrl, accessToken, dataTable);
         }
     } else {
         this.context.response = await postBevragenRequestWithBasicAuth(this.context.proxyUrl, this.context.extraHeaders, dataTable);
@@ -1212,14 +1213,14 @@ When(/^gba personen wordt gezocht met de volgende parameters$/, async function (
     });
 
     if(this.context.oAuth.enable) {
-        if(this.context.access_token === undefined) {
+        if(accessToken === undefined) {
             console.log("no access token. authenticate");
-            this.context.access_token = await getOAuthAccessToken(this.context.oAuth);
+            accessToken = await getOAuthAccessToken(this.context.oAuth);
         }
         this.context.response = await postBevragenRequestWithOAuth(this.context.gbaUrl, this.context.access_token, dataTable);
         if(this.context.response.status === 401) {
             console.log("access denied. access token expired");
-            this.context.access_token = await getOAuthAccessToken(this.context.oAuth);
+            accessToken = await getOAuthAccessToken(this.context.oAuth);
             this.context.response = await postBevragenRequestWithOAuth(this.context.gbaUrl, this.context.access_token, dataTable);
         }
     } else {
