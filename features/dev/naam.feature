@@ -1,6 +1,6 @@
 #language: nl
 
-Functionaliteit: Naam velden van persoon
+Functionaliteit: Persoon: naam velden
 
   Abstract Scenario: persoon heeft 'naam' veld: '<gba naam>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens

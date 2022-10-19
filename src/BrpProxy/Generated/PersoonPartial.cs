@@ -14,7 +14,7 @@ public partial class Persoon
 
     public bool ShouldSerializeEuropeesKiesrecht() => EuropeesKiesrecht != null && EuropeesKiesrecht.ShouldSerialize();
 
-    public bool ShouldSerializeGeboorte() => Geboorte != null && Geboorte.ShouldSerialize();
+    public bool ShouldSerializeGeboorte() => Geboorte != null;
 
     public bool ShouldSerializeImmigratie() => Immigratie != null && Immigratie.ShouldSerialize();
 

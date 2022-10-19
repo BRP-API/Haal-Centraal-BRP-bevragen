@@ -244,6 +244,6 @@ Rule: Wanneer van de ouder wel gegevens geregistreerd zijn, maar geen van de met
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                                      |
     | type                | RaadpleegMetBurgerservicenummer             |
-    | burgerservicenummer | 555550001                                   |
+    | burgerservicenummer | 000000292                                   |
     | fields              | ouders.naam.voornamen,ouders.geboorte.datum |
     Dan heeft de response een persoon met een 'ouder' zonder gegevens

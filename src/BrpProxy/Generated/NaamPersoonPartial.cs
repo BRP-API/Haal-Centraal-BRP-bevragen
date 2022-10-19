@@ -1,31 +1,35 @@
 ﻿using Newtonsoft.Json;
 
-namespace HaalCentraal.BrpProxy.Generated
+namespace HaalCentraal.BrpProxy.Generated;
+
+public partial class NaamPersoon : INaam
 {
-    public partial class NaamPersoon : INaam
-    {
-        public bool ShouldSerialize() =>
-            AanduidingNaamgebruik != null ||
-            AdellijkeTitelPredicaat != null ||
-            !string.IsNullOrWhiteSpace(Geslachtsnaam) ||
-            !string.IsNullOrWhiteSpace(Voornamen) ||
-            !string.IsNullOrWhiteSpace(Voorvoegsel) ||
-            !string.IsNullOrWhiteSpace(Voorletters) ||
-            !string.IsNullOrWhiteSpace(VolledigeNaam) ||
-            ShouldSerializeInOnderzoek()
-            ;
+    public bool ShouldSerialize() =>
+        AanduidingNaamgebruik != null ||
+        AdellijkeTitelPredicaat != null ||
+        !string.IsNullOrWhiteSpace(Geslachtsnaam) ||
+        !string.IsNullOrWhiteSpace(Voornamen) ||
+        !string.IsNullOrWhiteSpace(Voorvoegsel) ||
+        !string.IsNullOrWhiteSpace(Voorletters) ||
+        !string.IsNullOrWhiteSpace(VolledigeNaam) ||
+        InOnderzoek != null
+        ;
 
-        public bool ShouldSerializeInOnderzoek() =>
-            InOnderzoek.AanduidingNaamgebruik.HasValue ||
-            InOnderzoek.AdellijkeTitelPredicaat.HasValue ||
-            InOnderzoek.Geslachtsnaam.HasValue ||
-            InOnderzoek.Voornamen.HasValue ||
-            InOnderzoek.Voorvoegsel.HasValue ||
-            InOnderzoek.Voorletters.HasValue ||
-            InOnderzoek.VolledigeNaam.HasValue
-            ;
+    public bool ShouldSerializeInOnderzoek() => InOnderzoek != null && InOnderzoek.ShouldSerialize();
 
-        [JsonIgnore]
-        public ICollection<Partner>? Partners { get; set; }
-    }
+    [JsonIgnore]
+    public ICollection<Partner>? Partners { get; set; }
+}
+
+public partial class NaamPersoonInOnderzoek
+{
+    public bool ShouldSerialize() =>
+        AanduidingNaamgebruik.HasValue ||
+        AdellijkeTitelPredicaat.HasValue ||
+        Geslachtsnaam.HasValue ||
+        Voornamen.HasValue ||
+        Voorvoegsel.HasValue ||
+        Voorletters.HasValue ||
+        VolledigeNaam.HasValue
+        ;
 }
