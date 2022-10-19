@@ -115,7 +115,8 @@ const tableNameMap = new Map([
     ['verblijfplaats', 'lo3_pl_verblijfplaats'],
     ['gezagsverhouding', 'lo3_pl_gezagsverhouding'],
     ['overlijden', 'lo3_pl_overlijden'],
-    ['adres', 'lo3_adres']
+    ['adres', 'lo3_adres'],
+    ['geboorte', 'lo3_pl_persoon']
 ]);
 
 const columnNameMap = new Map([
@@ -167,6 +168,7 @@ const columnNameMap = new Map([
     ['locatiebeschrijving (12.10)', 'locatie_beschrijving'],
 	
     ['land (13.10)', 'vertrek_land_code'],
+    ['land_adres_buitenland (13.10)', 'vertrek_land_code'],
     ['datum aanvang adres buitenland (13.20)', 'vertrek_datum'],
     ['regel 1 adres buitenland (13.30)', 'vertrek_land_adres_1'],
     ['regel 2 adres buitenland (13.40)', 'vertrek_land_adres_2'],
@@ -181,6 +183,7 @@ const columnNameMap = new Map([
     ['einddatum uitsluiting Europees kiesrecht (31.30)', 'europees_uitsluit_eind_datum'],
 
     ['indicatie gezag minderjarige (32.10)', 'minderjarig_gezag_ind'],
+
     ['indicatie curateleregister (33.10)', 'curatele_register_ind'],
 
     ['aanduiding uitgesloten kiesrecht (38.10)', 'kiesrecht_uitgesl_aand'],
@@ -198,8 +201,10 @@ const columnNameMap = new Map([
     ['reden opname (63.10)', 'nl_nat_verkrijg_reden'],
 
     ['reden beëindigen (64.10)', 'nl_nat_verlies_reden'],
-
+	
+    ['bijzonder nederlanderschap (65.10)', 'bijzonder_nl_aand'],
     ['bijzonder Nederlanderschap (65.10)', 'bijzonder_nl_aand' ],
+
     ['datum opschorting bijhouding (67.10)', 'bijhouding_opschort_datum' ],
     ['reden opschorting bijhouding (67.20)', 'bijhouding_opschort_reden'],
 
@@ -222,7 +227,7 @@ const columnNameMap = new Map([
 
     ['datum ingang geldigheid (85.10)', 'geldigheid_start_datum'],
     ['ingangsdatum geldigheid (85.10)', 'geldigheid_start_datum' ],
-	
+
     ['datum van opneming (86.10)', 'opneming_datum' ],
 
     ['rni-deelnemer (88.10)', 'rni_deelnemer'],

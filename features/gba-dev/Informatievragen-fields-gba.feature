@@ -66,7 +66,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
   Rule: wanneer gevraagd wordt om aanhef, aanschrijfwijze of gebruikInLopendeTekst, dan worden geslacht, naam en naam van de partner geleverd
     - van de partner worden adellijkeTitelPredicaat, voorvoegsel en geslachtsnaam geleverd
    
-    Abstract Scenario: met fields is gevraagd om <fields>
+    Abstract Scenario: met fields is gevraagd om <veld>
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -93,7 +93,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | naam.geslachtsnaam                        | Horn    |
 
       Voorbeelden:
-      | fields                           |
+      | veld                           |
       | aanhef                           |
       | aanschrijfwijze                  |
       | gebruikInLopendeTekst            |
@@ -168,19 +168,14 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
   Rule: wanneer een veld van verblijfplaats wordt gevraagd, worden de velden geleverd die nodig zijn voor het bepalen van het type verblijfplaats
     - dit betreft alle velden uit groepen 11 (adres), 12 (locatie) en land, regel 1, regel 2 en regel 3 van groep 13 (verblijf buitenland)
 
-    Abstract Scenario: Gevraagd veld zit in verblijfplaats
+    Abstract Scenario: met fields wordt gevraagd naar een in een <adressoort> <beschikbaarheid> veld 
       Gegeven de persoon met burgerservicenummer '<burgerservicenummer>' heeft de volgende 'verblijfplaats' gegevens
-      | naam                                   | waarde                             |
-      | functieAdres.code (10.10)              | <functieAdres>                     |
-      | datum aanvang adreshouding (10.30)     | <datumAanvangAdreshouding>         |
-      | datum aanvang adres buitenland (13.20) | <datumAanvangAdresBuitenland>      |
-      | land (13.10)                           | <land>                             |
-      | regel 1 adres buitenland (13.30)       | <regel1>                           |
-      | regel 2 adres buitenland (13.40)       | <regel2>                           |
-      | regel 3 adres buitenland (13.50)       | <regel3>                           |
+      | naam                                   | waarde   |
+      | gemeente van inschrijving (09.10)      | 0599     |
+      | functieAdres.code (10.10)              | W        |
+      | datum aanvang adreshouding (10.30)     | 20150808 |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam                                       | waarde                             |
-      | gemeente van inschrijving (09.10)          | <gemeentecode>                     |
       | straatnaam (11.10)                         | <straat>                           |
       | naam openbare ruimte (11.15)               | <straat>                           |
       | huisnummer (11.20)                         | <huisnummer>                       |
@@ -189,11 +184,12 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | identificatiecode verblijfplaats (11.80)   | <adresseerbaarObjectIdentificatie> |
       | identificatiecode nummeraanduiding (11.90) | <nummeraanduidingIdentificatie>    |
       | locatiebeschrijving (12.10)                | <locatiebeschrijving>              |
+	  | gemeentecode (92.10)                       | 0599                               |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                              |
       | type                | RaadpleegMetBurgerservicenummer     |
       | burgerservicenummer | <burgerservicenummer>               |
-      | fields              | verblijfplaats.verblijfadres.straat |
+      | fields              | verblijfplaats.verblijfadres.<veld> |
       Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
       | naam                             | waarde                             |
       | straat                           | <straat>                           |
@@ -201,22 +197,57 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | postcode                         | <postcode>                         |
       | woonplaats                       | <woonplaats>                       |
       | locatiebeschrijving              | <locatiebeschrijving>              |
-      | land.code                        | <land>                             |
-      | land.omschrijving                | <land omschrijving>                |
-      | regel1                           | <regel1>                           |
-      | regel2                           | <regel2>                           |
-      | regel3                           | <regel3>                           |
       | adresseerbaarObjectIdentificatie | <adresseerbaarObjectIdentificatie> |
       | nummeraanduidingIdentificatie    | <nummeraanduidingIdentificatie>    |
 
       Voorbeelden:
-      | burgerservicenummer | functieAdres | functieAdres omschrijving | datumAanvangAdreshouding | straat    | huisnummer | postcode | woonplaats | gemeentecode | adresseerbaarObjectIdentificatie | nummeraanduidingIdentificatie | locatiebeschrijving        | land | land omschrijving | datumAanvangAdresBuitenland | regel1            | regel2       | regel 3 |
-      | 000000267           | W            | woonadres                 | 20150808                 | Boterdiep | 31         | 3077AW   | Rotterdam  | 0599         | 0599010000208579                 | 0599200000219678              |                            |      |                   |                             |                   |              |         |
-      | 000000279           |              |                           |                          |           |            |          |            |              |                                  |                               | Woonboot in de Grote Sloot |      |                   |                             | Locatie           |              |         |
-      | 000000280           |              |                           |                          |           |            |          |            |              |                                  |                               |                            | 5002 | Frankrijk         |                             | 14 Rue Camulogene | 75015 Parijs |         |
-      | 000000292           |              |                           |                          |           |            |          |            |              |                                  |                               |                            | 0000 | Onbekend          |                             |                   |              |         |
+      | burgerservicenummer | adressoort          | veld                | beschikbaarheid  | straat    | huisnummer | postcode | woonplaats | adresseerbaarObjectIdentificatie | nummeraanduidingIdentificatie | locatiebeschrijving          |
+      | 000000267           | binnenlands adres   | straat              | beschikbaar      | Boterdiep | 31         | 3077AW   | Rotterdam  | 0599010000208579                 | 0599200000219678              |                              |
+      | 000000267           | binnenlands adres   | locatiebeschrijving | niet beschikbaar | Boterdiep | 31         | 3077AW   | Rotterdam  | 0599010000208579                 | 0599200000219678              |                              |
+      | 000000279           | locatiebeschrijving | locatiebeschrijving | beschikbaar      |           |            |          |            |                                  |                               | Woonboot in de Grotere Sloot |
+      | 000000279           | locatiebeschrijving | regel1              | niet beschikbaar |           |            |          |            |                                  |                               | Woonboot in de Grotere Sloot |
 
-    Abstract Scenario: met fields gevraagd om <fields>
+    Abstract Scenario: met fields wordt gevraagd naar een in een buitenlandsadres <beschikbaarheid> veld
+      Gegeven de persoon met burgerservicenummer '000000280' heeft de volgende 'verblijfplaats' gegevens
+      | naam                                   | waarde            |
+      | land (13.10)                           | 5002              |
+      | datum aanvang adres buitenland (13.20) | 20150808          |
+      | regel 1 adres buitenland (13.30)       | 14 Rue Camulogene |
+      | regel 2 adres buitenland (13.40)       | 75015 Parijs      |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                              |
+      | type                | RaadpleegMetBurgerservicenummer     |
+      | burgerservicenummer | 000000280                           |
+      | fields              | verblijfplaats.verblijfadres.<veld> |
+      Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
+      | naam              | waarde            |
+      | land.code         | 5002              |
+      | land.omschrijving | Frankrijk         |
+      | regel1            | 14 Rue Camulogene |
+      | regel2            | 75015 Parijs      |
+
+      Voorbeelden:
+      | veld                | beschikbaarheid  |
+      | regel1              | beschikbaar      |
+      | locatiebeschrijving | niet beschikbaar |
+
+# Volgens mij vraag je nooit naar een onbekend adres, dat heeft ook geen adresvelden. Je kunt een onbekend adres echter wel als antwoord op je vraag krijgen.
+    Scenario: met fields wordt gevraagd naar een adresveld bij een onbekend adres
+      Gegeven de persoon met burgerservicenummer '000000292' heeft de volgende 'verblijfplaats' gegevens
+      | naam                                   | waarde   |
+      | land (13.10)                           | 0000     |
+      | datum aanvang adres buitenland (13.20) | 20150808 |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                              |
+      | type                | RaadpleegMetBurgerservicenummer     |
+      | burgerservicenummer | 000000292                           |
+      | fields              | verblijfplaats.verblijfadres.straat |
+      Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
+      | naam              | waarde   |
+      | land.code         | 0000     |
+      | land.omschrijving | Onbekend |
+
+    Abstract Scenario: met fields gevraagd om <veld>
       Gegeven de persoon met burgerservicenummer '000000309' heeft de volgende 'verblijfplaats' gegevens
       | naam                                       | waarde           |
       | functieAdres.code (10.10)                  | W                |
@@ -235,7 +266,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000309                       |
-      | fields              | <fields>                        |
+      | fields              | <veld>                          |
       Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
       | naam                             | waarde           |
       | verblijfadres.straat             | Boterdiep        |
@@ -246,7 +277,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | nummeraanduidingIdentificatie    | 0599200000219678 |
 
       Voorbeelden:
-      | fields                              |
+      | veld                                |
       | verblijfplaats.verblijfadres.straat |
       | verblijfadres.straat                |
       | straat                              |
@@ -255,23 +286,19 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | nummeraanduidingIdentificatie       |
       | locatiebeschrijving                 |
       | woonplaats                          |
-      | land                                |
+      | verblijfadres.land                  |
       | regel1                              |
 
   Rule: wanneer gevraagd wordt om datumVan van de verblijfplaats, wordt datumAanvangAdreshouding of datumAanvangAdresBuitenland geleverd
     - deze datumvelden worden geleverd samen met de velden die automatisch geleverd worden omdat ze nodig zijn voor het bepalen van het type
 
-    Abstract Scenario: Vragen om datumVan
+   Abstract Scenario: Vragen om datumVan van een <adressoort>
       Gegeven de persoon met burgerservicenummer '<burgerservicenummer>' heeft de volgende 'verblijfplaats' gegevens
-      | naam                                       | waarde                             |
-      | functieAdres.code (10.10)                  | <functieAdres>                     |
-      | datum aanvang adreshouding (10.20)         | <datumAanvangAdreshouding>         |
-      | datum aanvang adres buitenland (13.20)     | <datumAanvangAdresBuitenland>      |
-      | land (13.10)                               | <land>                             |
-      | regel 1 adres buitenland (13.30)           | <regel1>                           |
-      | regel 2 adres buitenland (13.40)           | <regel2>                           |
-      | regel 3 adres buitenland (13.50)           | <regel3>                           |
-      | ingangsdatum geldigheid (85.10)            | <datumIngangGeldigheid>            |
+      | naam                                       | waarde                     |
+      | gemeente van inschrijving (09.10)          | 0599                       |
+      | functieAdres.code (10.10)                  | W                          |
+      | datum aanvang adreshouding (10.30)         | <datumAanvangAdreshouding> |
+      | ingangsdatum geldigheid (85.10)            | <datumIngangGeldigheid>    |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam                                       | waarde                             |
       | straatnaam (11.10)                         | <straat>                           |
@@ -279,10 +306,10 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | huisnummer (11.20)                         | <huisnummer>                       |
       | postcode (11.60)                           | <postcode>                         |
       | woonplaats (11.70)                         | <woonplaats>                       |
-      | gemeente van inschrijving (09.10)          | 0599                               |
       | identificatiecode verblijfplaats (11.80)   | <adresseerbaarObjectIdentificatie> |
       | identificatiecode nummeraanduiding (11.90) | <nummeraanduidingIdentificatie>    |
       | locatiebeschrijving (12.10)                | <locatiebeschrijving>              |
+	  | gemeentecode (92.10)                       | 0599                               |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -295,26 +322,56 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | postcode                         | <postcode>                         |
       | woonplaats                       | <woonplaats>                       |
       | locatiebeschrijving              | <locatiebeschrijving>              |
-      | land.code                        | <land>                             |
-      | land.omschrijving                | <omschrijving>                     |
-      | regel1                           | <regel1>                           |
-      | regel2                           | <regel2>                           |
-      | regel3                           | <regel3>                           |
       | adresseerbaarObjectIdentificatie | <adresseerbaarObjectIdentificatie> |
       | nummeraanduidingIdentificatie    | <nummeraanduidingIdentificatie>    |
       | datumAanvangAdreshouding         | <datumAanvangAdreshouding>         |
-      | datumAanvangAdresBuitenland      | <datumAanvangAdresBuitenland>      |
 
       Voorbeelden:
-      | burgerservicenummer | functieAdres | functieAdres omschrijving | datumAanvangAdreshouding | straat    | huisnummer | postcode | woonplaats | adresseerbaarObjectIdentificatie | nummeraanduidingIdentificatie | locatiebeschrijving        | land | land omschrijving | datumAanvangAdresBuitenland | regel1            | regel2       | regel 3 | datumIngangGeldigheid |
-      | 000000310           | W            | woonadres                 | 20150808                 | Boterdiep | 31         | 3077AW   | Rotterdam  | 0599010000208579                 | 0599200000219678              |                            |      |                   |                             |                   |              |         | 20150808              |
-      | 000000322           |              |                           | 20000310                 |           |            |          |            |                                  |                               | Woonboot in de Grote Sloot |      |                   |                             | Locatie           |              |         | 20000310              |
-      | 000000334           |              |                           |                          |           |            |          |            |                                  |                               |                            | 5002 | Frankrijk         | 20200223                    | 14 Rue Camulogene | 75015 Parijs |         | 20200223              |
-      | 000000346           |              |                           |                          |           |            |          |            |                                  |                               |                            | 0000 | Onbekend          | 20080402                    |                   |              |         | 20080402              |
+      | burgerservicenummer | adressoort          | datumAanvangAdreshouding | straat    | huisnummer | postcode | woonplaats | adresseerbaarObjectIdentificatie | nummeraanduidingIdentificatie | locatiebeschrijving        | datumIngangGeldigheid |
+      | 000000310           | binnenlands adres   | 20150808                 | Boterdiep | 31         | 3077AW   | Rotterdam  | 0599010000208579                 | 0599200000219678              |                            | 20150808              |
+      | 000000322           | locatiebeschrijving | 20000310                 |           |            |          |            |                                  |                               | Woonboot in de Grote Sloot | 20000310              |
+
+    Scenario: Vragen om datumVan van een buitenlandse adres
+      Gegeven de persoon met burgerservicenummer '000000334' heeft de volgende 'verblijfplaats' gegevens
+      | naam                                       | waarde            |
+      | land (13.10)                               | 5002              |
+      | datum aanvang adres buitenland (13.20)     | 20200223          |
+      | regel 1 adres buitenland (13.30)           | 14 Rue Camulogene |
+      | regel 2 adres buitenland (13.40)           | 75015 Parijs      |
+      | ingangsdatum geldigheid (85.10)            | 20200223          |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000334                       |
+      | fields              | verblijfplaats.datumVan         |
+      Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
+      | naam                             | waarde            |
+      | land.code                        | 5002              |
+      | land.omschrijving                | Frankrijk         |
+      | regel1                           | 14 Rue Camulogene |
+      | regel2                           | 75015 Parijs      |
+      | datumAanvangAdresBuitenland      | 20200223          |
+
+    Scenario: Vragen om datumVan van een onbekend adres
+      Gegeven de persoon met burgerservicenummer '000000346' heeft de volgende 'verblijfplaats' gegevens
+      | naam                                       | waarde   |
+      | datum aanvang adres buitenland (13.20)     | 20080402 |
+      | land (13.10)                               | 0000     |
+      | ingangsdatum geldigheid (85.10)            | 20080402 |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000346                       |
+      | fields              | verblijfplaats.datumVan         |
+      Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
+      | naam                        | waarde   |
+	  | land.code                   | 0000     |
+	  | land.omschrijving           | Onbekend |
+      | datumAanvangAdresBuitenland | 20080402 |
 
   Rule: wanneer gevraagd wordt om vanuitVerblijfplaatsOnbekend, wordt landVanwaarIngeschreven geleverd
 
-    Abstract Scenario: met fields is gevraagd om vanuitVerblijfplaatsOnbekend
+    Scenario: met fields is gevraagd om vanuitVerblijfplaatsOnbekend
       Gegeven de persoon met burgerservicenummer '000000358' heeft de volgende 'verblijfplaats' gegevens
       | naam                                 | waarde      |
       | land vanwaar ingeschreven (14.10)    | 5003        |
@@ -323,54 +380,38 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000358                       |
-      | fields              | <fields>                        |
+      | fields              | vanuitVerblijfplaatsOnbekend    |
       Dan heeft de response een persoon met de volgende 'immigratie' gegevens
       | naam                                 | waarde      |
       | landVanwaarIngeschreven.code         | 5003        |
       | landVanwaarIngeschreven.omschrijving | Zwitserland |
 
-      Voorbeelden:
-      | fields                                  |
-      | vanuitVerblijfplaatsOnbekend            |
-      | immigratie.vanuitVerblijfplaatsOnbekend |
-
   Rule: wanneer gevraagd wordt om indicatieVestigingVanuitBuitenland, wordt datumVestigingInNederland geleverd
 
-    Abstract Scenario: met fields is gevraagd om indicatieVestigingVanuitBuitenland
+    Scenario: met fields is gevraagd om indicatieVestigingVanuitBuitenland
       Gegeven de persoon met burgerservicenummer '000000371' heeft de volgende 'verblijfplaats' gegevens
       | naam                                 | waarde      |
       | land vanwaar ingeschreven (14.10)    | 5003        |
       | datum vestiging in Nederland (14.20) | 19750101    |
       Als gba personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000371                       |
-      | fields              | <fields>                        |
+      | naam                | waarde                             |
+      | type                | RaadpleegMetBurgerservicenummer    |
+      | burgerservicenummer | 000000371                          |
+      | fields              | indicatieVestigingVanuitBuitenland |
       Dan heeft de response een persoon met de volgende 'immigratie' gegevens
       | naam                      | waarde   |
       | datumVestigingInNederland | 19750101 |
 
-      Voorbeelden:
-      | fields                                        |
-      | indicatieVestigingVanuitBuitenland            |
-      | immigratie.indicatieVestigingVanuitBuitenland |
-
-  Rule: wanneer gevraagd wordt om een adresregel in de adressering, dan worden de velden geleverd die nodig zijn voor het samenstellen daarvan
+  Rule: wanneer gevraagd wordt om een adresregel1, adresregel2, adresregel3 of land in de adressering, dan worden de verblijfplaats velden geleverd die nodig zijn voor het samenstellen daarvan
     - Veld adresregel1 wordt samengesteld uit straat + aanduidingBijHuisnummer + huisnummer + huisletter + huisnummertoevoeging + locatiebeschrijving + regel 1 adres buitenland
     - Veld adresregel2 wordt samengesteld uit postcode + woonplaats + gemeente van inschrijving + regel 2 adres buitenland
     - veld adresregel3 wordt gevuld met regel 3 adres buitenland
-    - veld adressering.land wordt gevuld met verblijfplaats.verblijfadres.land
+    - veld land wordt gevuld met land
 
-# Hier ben ik gebleven
-    Abstract Scenario: met fields is gevraagd om adresregel1
+    Abstract Scenario: met fields is gevraagd om <veld> van een <adressoort>
       Gegeven de persoon met burgerservicenummer '<burgerservicenummer>' heeft de volgende 'verblijfplaats' gegevens
-      | gemeente van inschrijving (09.10) | <gemeenteVanInschrijving> |
-      | locatiebeschrijving (12.10)       | <locatiebeschrijving>     |
-      | land (13.10)                      | <land>                    |
-#      | land.omschrijving                 | <land omschrijving>       |
-      | regel 1 adres buitenland (13.30)  | <regel1>                  |
-      | regel 2 adres buitenland (13.40)  | <regel2>                  |
-      | regel 3 adres buitenland (13.50)  | <regel3>                  |
+      | naam                              | waarde                    |
+      | gemeente van inschrijving (09.10) | <gemeentecode>            |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam                              | waarde                    |
       | straatnaam (11.10)                | <straat>                  |
@@ -381,13 +422,19 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | aanduiding bij huisnummer (11.50) | <aanduidingBijHuisnummer> |
       | postcode (11.60)                  | <postcode>                |
       | woonplaats (11.70)                | <woonplaats>              |
+      | locatiebeschrijving (12.10)       | <locatiebeschrijving>     |
       | gemeentecode (92.10)              | <gemeenteVanInschrijving> |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | <burgerservicenummer>           |
-      | fields              | adresregel1                     |
-      Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
+      | fields              | burgerservicenummer,<veld>     |
+      Dan heeft de response een persoon met de volgende gegevens
+      | naam                                 | waarde                    |
+	  | burgerservicenummer                  | <burgerservicenummer>     |
+      | gemeenteVanInschrijving.code         | <gemeenteVanInschrijving> |
+      | gemeenteVanInschrijving.omschrijving | <gemeente omschrijving>   |
+      En heeft de persoon alleen de volgende 'verblijfplaats' gegevens
       | naam                                 | waarde                    |
       | straat                               | <straat>                  |
       | huisnummer                           | <huisnummer>              |
@@ -395,151 +442,81 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | huisnummertoevoeging                 | <huisnummertoevoeging>    |
       | aanduidingBijHuisnummer.code         | <aanduidingBijHuisnummer> |
       | aanduidingBijHuisnummer.omschrijving | <aanduiding omschrijving> |
-      | postcode                             | <postcode>                |
+      | verblijfadres.postcode               | <postcode>                |
+      | verblijfadres.woonplaats             | <woonplaats>              |
       | locatiebeschrijving                  | <locatiebeschrijving>     |
-      | regel1                               | <regel1>                  |
 
       Voorbeelden:
-      | burgerservicenummer | gemeenteVanInschrijving | gemeente omschrijving              | straat           | huisnummer | huisletter | huisnummertoevoeging | aanduidingBijHuisnummer | aanduiding omschrijving | postcode | woonplaats | locatiebeschrijving        | land | land omschrijving | regel1            | regel2       | regel 3       |
-      | 000000383           | 0599                    | Rotterdam                          | Boterdiep        | 31         |            |                      |                         |                         | 3077AW   | Rotterdam  |                            |      |                   |                   |              |               |
-      | 000000395           | 0530                    | Hellevoetsluis                     | Cronus           | 555        | B          | 73c                  |                         |                         | 3225TD   |            |                            |      |                   |                   |              |               |
-      | 000000401           | 0394                    | Haarlemmermeer                     | Graan voor Visch | 15201      |            |                      | by                      | bij                     |          | 2132EA     |                            |      |                   |                   |              |               |
-      | 000000413           | 0518                    | 's-Gravenhage                      |                  |            |            |                      |                         |                         |          |            | Woonboot in de Grote Sloot |      |                   | Locatie           |              |               |
-      | 000000425           | 1999                    | Registratie Niet Ingezetenen (RNI) |                  |            |            |                      |                         |                         |          |            |                            | 5002 | Frankrijk         | 14 Rue Camulogene | 75015 Parijs |               |
-      | 000000437           | 1999                    | Registratie Niet Ingezetenen (RNI) |                  |            |            |                      |                         |                         |          |            |                            | 5010 | België            | Rue du pomme 25   | Bruxelles    | postcode 1000 |
-      | 000000449           |                         |                                    |                  |            |            |                      |                         |                         |          |            |                            | 0000 | Onbekend          |                   |              |               |
+      | burgerservicenummer | veld        | adressoort                  | gemeentecode | gemeenteVanInschrijving | gemeente omschrijving | straat           | huisnummer | huisletter | huisnummertoevoeging | aanduidingBijHuisnummer | aanduiding omschrijving | postcode | woonplaats | locatiebeschrijving          |
+      | 000000383           | adresregel1 | binnenlandse verblijfplaats | 0599         |                         |                       | Boterdiep        | 31         |            |                      |                         |                         |          |            |                              |
+      | 000000395           | adresregel1 | binnenlandse verblijfplaats | 0530         |                         |                       | Cronus           | 555        | B          | 73c                  |                         |                         |          |            |                              |
+      | 000000401           | adresregel1 | binnenlandse verblijfplaats | 0394         |                         |                       | Graan voor Visch | 15201      |            |                      | by                      | bij                     |          |            |                              |
+      | 000000383           | adresregel2 | binnenlandse verblijfplaats | 0599         | 0599                    | Rotterdam             |                  |            |            |                      |                         |                         | 3077AW   | Rotterdam  |                              |
+      | 000000413           | adresregel1 | locatiebeschrijving         | 0518         |                         |                       |                  |            |            |                      |                         |                         |          |            | Woonboot in de Grotere Sloot |
+      | 000000413           | adresregel2 | locatiebeschrijving         | 0518         | 0518                    | 's-Gravenhage         |                  |            |            |                      |                         |                         |          |            |                              |
 
-    @gba
-    Abstract Scenario: met fields is gevraagd om adresregel2
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                                 | waarde                    |
-      | burgerservicenummer                  | <burgerservicenummer>     |
-      | gemeente van inschrijving (09.10)    | <gemeenteVanInschrijving> |
-      | gemeenteVanInschrijving.omschrijving | <gemeente omschrijving>   |
-      En de persoon heeft de volgende 'verblijfplaats' gegevens
-      | naam                              | waarde                    |
-      | straatnaam (11.10)                | <straat>                  |
-      | naam openbare ruimte (11.15)      | <straat>                  |
-      | huisnummer (11.20)                | <huisnummer>              |
-      | huisletter (11.30)                | <huisletter>              |
-      | huisnummertoevoeging (11.40)      | <huisnummertoevoeging>    |
-      | aanduiding bij huisnummer (11.50) | <aanduidingBijHuisnummer> |
-      | postcode (11.60)                  | <postcode>                |
-      | woonplaats (11.70)                | <woonplaats>              |
-      | locatiebeschrijving (12.10)       | <locatiebeschrijving>     |
-      | land.code                         | <land>                    |
-      | land.omschrijving                 | <land omschrijving>       |
-      | regel 1 adres buitenland (13.30)  | <regel1>                  |
-      | regel 2 adres buitenland (13.40)  | <regel2>                  |
-      | regel 3 adres buitenland (13.50)  | <regel3>                  |
-      Als personen wordt gezocht met de volgende parameters
+    Abstract Scenario: met fields is gevraagd om <veld> van een buitenlandsadres
+      Gegeven de persoon met burgerservicenummer '<burgerservicenummer>' heeft de volgende 'verblijfplaats' gegevens
+      | naam                                   | waarde   |
+      | land (13.10)                           | <land>   |
+      | datum aanvang adres buitenland (13.20) | 20150808 |
+      | regel 1 adres buitenland (13.30)       | <regel1> |
+      | regel 2 adres buitenland (13.40)       | <regel2> |
+      | regel 3 adres buitenland (13.50)       | <regel3> |
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | <burgerservicenummer>           |
-      | fields              | adresregel2                     |
-      Dan heeft de response een persoon met de volgende gegevens
-      | naam                                 | waarde                    |
-      | gemeenteVanInschrijving.code         | <gemeenteVanInschrijving> |
-      | gemeenteVanInschrijving.omschrijving | <gemeente omschrijving>   |
-      En heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
-      | naam                              | waarde                |
-      | verblijfadres.postcode            | <postcode>            |
-      | verblijfadres.woonplaats          | <woonplaats>          |
-      | verblijfadres.regel2              | <regel2>              |
+      | fields              | <veld>                          |
+      Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
+      | naam              | waarde              |
+      | land.code         | <land>              |
+      | land.omschrijving | <land omschrijving> |
+      | regel1            | <regel1>            |
+      | regel2            | <regel2>            | 
+      | regel3            | <regel3>            |
 
       Voorbeelden:
-      | burgerservicenummer | gemeenteVanInschrijving | gemeente omschrijving              | straat           | huisnummer | huisletter | huisnummertoevoeging | aanduidingBijHuisnummer | aanduiding omschrijving | postcode | woonplaats | locatiebeschrijving        | land | land omschrijving | regel1            | regel2       | regel 3       |
-      | 999993653           | 0599                    | Rotterdam                          | Boterdiep        | 31         |            |                      |                         |                         | 3077AW   | Rotterdam  |                            |      |                   |                   |              |               |
-      | 999991693           | 0530                    | Hellevoetsluis                     | Cronus           | 555        | B          | 73c                  |                         |                         | 3225TD   |            |                            |      |                   |                   |              |               |
-      | 999990913           | 0394                    | Haarlemmermeer                     | Graan voor Visch | 15201      |            |                      | by                      | bij                     |          | 2132EA     |                            |      |                   |                   |              |               |
-      | 000009921           | 0518                    | 's-Gravenhage                      |                  |            |            |                      |                         |                         |          |            | Woonboot in de Grote Sloot |      |                   | Locatie           |              |               |
-      | 999995121           | 1999                    | Registratie Niet Ingezetenen (RNI) |                  |            |            |                      |                         |                         |          |            |                            | 5002 | Frankrijk         | 14 Rue Camulogene | 75015 Parijs |               |
-      | 999993483           | 1999                    | Registratie Niet Ingezetenen (RNI) |                  |            |            |                      |                         |                         |          |            |                            | 5010 | België            | Rue du pomme 25   | Bruxelles    | postcode 1000 |
-      | 999993586           |                         |                                    |                  |            |            |                      |                         |                         |          |            |                            | 0000 | Onbekend          |                   |              |               |
+      | veld             | burgerservicenummer | gemeenteVanInschrijving | gemeente omschrijving              | land | land omschrijving | regel1            | regel2       | regel3        |
+      | adresregel1      | 000000425           | 1999                    | Registratie Niet Ingezetenen (RNI) |      |                   | 14 Rue Camulogene |              |               |
+      | adresregel2      | 000000425           | 1999                    | Registratie Niet Ingezetenen (RNI) |      |                   |                   | 75015 Parijs |               |
+      | adressering.land | 000000425           | 1999                    | Registratie Niet Ingezetenen (RNI) | 5002 | Frankrijk         |                   |              |               |
+      | adresregel1      | 000000437           | 1999                    | Registratie Niet Ingezetenen (RNI) |      |                   | Rue du pomme 25   |              |               |
+      | adresregel2      | 000000437           | 1999                    | Registratie Niet Ingezetenen (RNI) |      |                   |                   | Bruxelles    |               |
+      | adresregel3      | 000000437           | 1999                    | Registratie Niet Ingezetenen (RNI) |      |                   |                   |              | postcode 1000 |
+      | adressering.land | 000000437           | 1999                    | Registratie Niet Ingezetenen (RNI) | 5010 | België            |                   |              |               |
 
-    @gba
-    Abstract Scenario: met fields is gevraagd om adresregel3
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                                 | waarde                    |
-      | burgerservicenummer                  | <burgerservicenummer>     |
-      | gemeente van inschrijving (09.10)    | <gemeenteVanInschrijving> |
-      | gemeenteVanInschrijving.omschrijving | <gemeente omschrijving>   |
-      En de persoon heeft de volgende 'verblijfplaats' gegevens
-      | naam                             | waarde                |
-      | straatnaam (11.10)               | <straat>              |
-      | naam openbare ruimte (11.15)     | <straat>              |
-      | huisnummer (11.20)               | <huisnummer>          |
-      | postcode (11.60)                 | <postcode>            |
-      | woonplaats (11.70)               | <woonplaats>          |
-      | locatiebeschrijving (12.10)      | <locatiebeschrijving> |
-      | land.code                        | <land>                |
-      | land.omschrijving                | <land omschrijving>   |
-      | regel 1 adres buitenland (13.30) | <regel1>              |
-      | regel 2 adres buitenland (13.40) | <regel2>              |
-      | regel 3 adres buitenland (13.50) | <regel3>              |
-      Als personen wordt gezocht met de volgende parameters
+    Scenario: met fields is gevraagd om adresregel1 van een onbekend adres
+      Gegeven de persoon met burgerservicenummer '000000449' heeft de volgende 'verblijfplaats' gegevens
+      | naam                              | waarde |
+      | gemeente van inschrijving (09.10) | 1999   |
+      | land (13.10)                      | 0000   |
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | <burgerservicenummer>           |
-      | fields              | adresregel3                     |
+      | burgerservicenummer | 000000449                       |
+      | fields              | adresregel1                     |
       Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
-      | naam                 | waarde   |
-      | verblijfadres.regel3 | <regel3> |
-
-      Voorbeelden:
-      | burgerservicenummer | gemeenteVanInschrijving | gemeente omschrijving              | straat    | huisnummer | postcode | woonplaats | locatiebeschrijving        | land | land omschrijving | regel1            | regel2       | regel 3       |
-      | 999993653           | 0599                    | Rotterdam                          | Boterdiep | 31         | 3077AW   | Rotterdam  |                            |      |                   |                   |              |               |
-      | 000009921           | 0518                    | 's-Gravenhage                      |           |            |          |            | Woonboot in de Grote Sloot |      |                   | Locatie           |              |               |
-      | 999995121           | 1999                    | Registratie Niet Ingezetenen (RNI) |           |            |          |            |                            | 5002 | Frankrijk         | 14 Rue Camulogene | 75015 Parijs |               |
-      | 999993483           | 1999                    | Registratie Niet Ingezetenen (RNI) |           |            |          |            |                            | 5010 | België            | Rue du pomme 25   | Bruxelles    | postcode 1000 |
-      | 999993586           |                         |                                    |           |            |          |            |                            | 0000 | Onbekend          |                   |              |               |
-
-    @gba
-    Scenario: met fields is gevraagd om adressering.land
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                                 | waarde                             |
-      | burgerservicenummer                  | 999993483                          |
-      | gemeente van inschrijving (09.10)    | 1999                               |
-      | gemeenteVanInschrijving.omschrijving | Registratie Niet Ingezetenen (RNI) |
-      En de persoon heeft de volgende 'verblijfplaats' gegevens
-      | naam                             | waarde          |
-      | land.code                        | 5010            |
-      | land.omschrijving                | België          |
-      | regel 1 adres buitenland (13.30) | Rue du pomme 25 |
-      | regel 2 adres buitenland (13.40) | Bruxelles       |
-      | regel 3 adres buitenland (13.50) | postcode 1000   |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 999993483                       |
-      | fields              | adressering.land                |
-      Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
-      | naam                            | waarde |
-      | verblijfadres.land.code         | 5010   |
-      | verblijfadres.land.omschrijving | België |
+      | naam                        | waarde   |
+	  | land.code                   | 0000     |
+	  | land.omschrijving           | Onbekend |
 
   Rule: wanneer een veld van nationaliteiten wordt gevraagd, worden de velden geleverd die nodig zijn voor het bepalen van het type nationaliteit
     - dit betreft de velden nationaliteit en aanduidingBijzonderNederlanderschap
 
     Abstract Scenario: vragen om een gegeven van nationaliteiten
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde                |
-      | burgerservicenummer | <burgerservicenummer> |
-      En de persoon heeft een 'nationaliteit' met de volgende gegevens
-      | naam                                             | waarde                        |
-      | nationaliteit (05.10)                            | <nationaliteit>               |
-      | nationaliteit.omschrijving                       | <nationaliteit omschrijving>  |
-      | aanduiding bijzonder Nederlanderschap (65.10)    | <bijz. NL-schap>              |
-      | aanduidingBijzonderNederlanderschap.omschrijving | <bijz. NL-schap omschrijving> |
-      | redenOpname.code                                 | <redenOpname>                 |
-      | redenOpname.omschrijving                         | <redenOpname omschrijving>    |
-      | datumIngangGeldigheid                            | <datumIngangGeldigheid>       |
-      Als personen wordt gezocht met de volgende parameters
+      Gegeven de persoon met burgerservicenummer '<burgerservicenummer>' heeft een 'nationaliteit' met de volgende gegevens
+      | naam                               | waarde                  |
+      | nationaliteit (05.10)              | <nationaliteit>         |
+      | bijzonder Nederlanderschap (65.10) | <bijz. NL-schap>        |
+      | reden opname (63.10)               | <redenOpname>           |
+      | datum ingang geldigheid (85.10)    | <datumIngangGeldigheid> |
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                                |
       | type                | RaadpleegMetBurgerservicenummer       |
       | burgerservicenummer | <burgerservicenummer>                 |
       | fields              | nationaliteiten.datumIngangGeldigheid |
-      Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
+      Dan heeft de response een persoon met alleen de volgende 'nationaliteit' gegevens
       | naam                                | waarde                       |
       | nationaliteit.code                  | <nationaliteit>              |
       | nationaliteit.omschrijving          | <nationaliteit omschrijving> |
@@ -548,24 +525,22 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
 
       Voorbeelden:
       | burgerservicenummer | nationaliteit | nationaliteit omschrijving | bijz. NL-schap | redenOpname | redenOpname omschrijving                        | datumIngangGeldigheid |
-      | 000009830           | 0001          | Nederlandse                |                | 001         | Wet op het Nederlanderschap 1892, art.1, lid 1a | 19750707              |
-      | 999993045           | 0263          | Surinaamse                 |                | 301         | Vaststelling bezit vreemde nationaliteit        | 00000000              |
-      | 999993367           | 0000          | Onbekend                   |                | 311         | Vaststelling onbekende nationaliteit            | 00000000              |
-      | 000009866           |               |                            | B              | 310         | Vaststelling bijzonder Nederlanderschap         | 19570115              |
-      | 999994748           |               |                            | V              | 310         | Vaststelling bijzonder Nederlanderschap         | 19750615              |
+      | 000000450           | 0001          | Nederlandse                |                | 001         | Wet op het Nederlanderschap 1892, art.1, lid 1a | 19750707              |
+      | 000000462           | 0263          | Surinaamse                 |                | 301         | Vaststelling bezit vreemde nationaliteit        | 00000000              |
+      | 000000474           | 0000          | Onbekend                   |                | 311         | Vaststelling onbekende nationaliteit            | 00000000              |
+      | 000000486           |               |                            | B              | 310         | Vaststelling bijzonder Nederlanderschap         | 19570115              |
+      | 000000498           |               |                            | V              | 310         | Vaststelling bijzonder Nederlanderschap         | 19750615              |
 
   Rule: wanneer een veld van een datum wordt gevraagd, wordt de datum geleverd
 
-    @gba
     Abstract Scenario: met fields is gevraagd om <veld>.<datumveld>
-      Gegeven het systeem heeft een persoon met de volgende gegevens
+      Gegeven de persoon met burgerservicenummer '000000504' heeft de volgende 'inschrijving' gegevens
       | naam                | waarde    |
-      | burgerservicenummer | 999993653 |
       | <GBA veld>          | 20131102  |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 999993653                       |
+      | burgerservicenummer | 000000504                       |
       | fields              | <veld>.<datumveld>              |
       Dan heeft de response een persoon met alleen de volgende gegevens
       | naam   | waarde   |
@@ -573,108 +548,89 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
 
       Voorbeelden:
       | datumveld   | GBA veld                                  | veld                        |
-      | type        | datum eerste inschrijving GBA/RNI (68.10) | datumEersteInschrijvingGBA  |
-      | langFormaat | datum eerste inschrijving GBA/RNI (68.10) | datumEersteInschrijvingGBA  |
-      | datum       | datum eerste inschrijving GBA/RNI (68.10) | datumEersteInschrijvingGBA  |
-      | jaar        | datum eerste inschrijving GBA/RNI (68.10) | datumEersteInschrijvingGBA  |
-      | maand       | datum eerste inschrijving GBA/RNI (68.10) | datumEersteInschrijvingGBA  |
-      | onbekend    | datum eerste inschrijving GBA/RNI (68.10) | datumEersteInschrijvingGBA  |
-      | type        | datum inschrijving (09.20)                | datumInschrijvingInGemeente |
-      | langFormaat | datum inschrijving (09.20)                | datumInschrijvingInGemeente |
-      | datum       | datum inschrijving (09.20)                | datumInschrijvingInGemeente |
-      | jaar        | datum inschrijving (09.20)                | datumInschrijvingInGemeente |
-      | maand       | datum inschrijving (09.20)                | datumInschrijvingInGemeente |
-      | onbekend    | datum inschrijving (09.20)                | datumInschrijvingInGemeente |
+      | type        | datum eerste inschrijving GBA (68.10)     | datumEersteInschrijvingGBA  |
+      | langFormaat | datum eerste inschrijving GBA (68.10)     | datumEersteInschrijvingGBA  |
+      | datum       | datum eerste inschrijving GBA (68.10)     | datumEersteInschrijvingGBA  |
+      | jaar        | datum eerste inschrijving GBA (68.10)     | datumEersteInschrijvingGBA  |
+      | maand       | datum eerste inschrijving GBA (68.10)     | datumEersteInschrijvingGBA  |
+      | onbekend    | datum eerste inschrijving GBA (68.10)     | datumEersteInschrijvingGBA  |
+      | type        | datum inschrijving in de gemeente (09.20) | datumInschrijvingInGemeente |
+      | langFormaat | datum inschrijving in de gemeente (09.20) | datumInschrijvingInGemeente |
+      | datum       | datum inschrijving in de gemeente (09.20) | datumInschrijvingInGemeente |
+      | jaar        | datum inschrijving in de gemeente (09.20) | datumInschrijvingInGemeente |
+      | maand       | datum inschrijving in de gemeente (09.20) | datumInschrijvingInGemeente |
+      | onbekend    | datum inschrijving in de gemeente (09.20) | datumInschrijvingInGemeente |
 
-    @gba
     Abstract Scenario: met fields is gevraagd om <groep>.<veld>.<datumveld>
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550001 |
-      En de persoon heeft de volgende '<groep>' gegevens
+      Gegeven de persoon met burgerservicenummer '000000516' heeft de volgende <categorie> 
       | naam       | waarde   |
       | <GBA veld> | 20131102 |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000516                       |
       | fields              | <groep>.<veld>.<datumveld>      |
       Dan heeft de response een persoon met de volgende '<groep>' gegevens
       | naam   | waarde   |
       | <veld> | 20131102 |
 
       Voorbeelden:
-      | datumveld   | GBA veld                                         | groep                 | veld                      |
-      | type        | geboortedatum (03.10)                            | geboorte              | datum                     |
-      | datum       | datum vestiging in Nederland (14.20)             | immigratie            | datumVestigingInNederland |
-      | jaar        | einddatum uitsluiting Europees kiesrecht (31.30) | europeesKiesrecht     | einddatumUitsluiting      |
-      | maand       | einddatum uitsluiting kiesrecht (38.20)          | uitsluitingKiesrecht  | einddatum                 |
-      | langFormaat | datum opschorting bijhouding (67.10)             | opschortingBijhouding | datum                     |
-      | onbekend    | datum overlijden (08.10)                         | overlijden            | datum                     |
-      | langFormaat | datum einde verblijfstitel (39.20)               | verblijfstitel        | datumEinde                |
-      | datum       | ingangsdatum verblijfstitel (39.30)              | verblijfstitel        | datumIngang               |
+      | datumveld   | GBA veld                                         | categorie                 | groep                 | veld                      |
+      | type        | geboortedatum (03.10)                            | gegevens                  | geboorte              | datum                     |
+      | datum       | datum vestiging in Nederland (14.20)             | 'verblijfplaats' gegevens | immigratie            | datumVestigingInNederland |
+      | jaar        | einddatum uitsluiting Europees kiesrecht (31.30) | 'inschrijving' gegevens   | europeesKiesrecht     | einddatumUitsluiting      |
+      | maand       | einddatum uitsluiting kiesrecht (38.20)          | 'inschrijving' gegevens   | uitsluitingKiesrecht  | einddatum                 |
+      | langFormaat | datum opschorting bijhouding (67.10)             | 'inschrijving' gegevens   | opschortingBijhouding | datum                     |
+      | onbekend    | datum overlijden (08.10)                         | 'overlijden' gegevens     | overlijden            | datum                     |
+      | langFormaat | datum einde verblijfstitel (39.20)               | 'verblijfstitel' gegevens | verblijfstitel        | datumEinde                |
+      | datum       | ingangsdatum verblijfstitel (39.30)              | 'verblijfstitel' gegevens | verblijfstitel        | datumIngang               |
 
   Rule: geheimhoudingPersoonsgegevens wordt altijd geleverd
 
-    @gba
     Abstract Scenario: Persoon heeft <titel>
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                                  | waarde                |
-      | burgerservicenummer                   | <burgerservicenummer> |
-      | geheimhoudingPersoonsgegevens (70.10) | <gba geheimhouding>   |
-      Als personen wordt gezocht met de volgende parameters
+      Gegeven de persoon met burgerservicenummer '<burgerservicenummer>' heeft de volgende 'inschrijving' gegevens 
+      | naam                     | waarde          |
+      | indicatie geheim (70.10) | <geheimhouding> |
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | <burgerservicenummer>           |
       | fields              | burgerservicenummer             |
-      Dan heeft de persoon met burgerservicenummer '<burgerservicenummer>' alleen de volgende gegevens
+      Dan heeft de response een persoon met de volgende gegevens
       | naam                          | waarde                |
       | burgerservicenummer           | <burgerservicenummer> |
       | geheimhoudingPersoonsgegevens | <geheimhouding>       |
 
       Voorbeelden:
       | burgerservicenummer | titel              | geheimhouding |
-      | 999994608           | wel geheimhouding  | 7             |
-      | 999995492           | wel geheimhouding  | 6             |
-      | 999995480           | wel geheimhouding  | 5             |
-      | 555550001           | wel geheimhouding  | 4             |
-      | 999993872           | wel geheimhouding  | 3             |
-      | 999992715           | wel geheimhouding  | 2             |
-      | 999991802           | wel geheimhouding  | 1             |
-      | 999991929           | geen geheimhouding | 0             |
+      | 000000528           | wel geheimhouding  | 7             |
+      | 000000541           | wel geheimhouding  | 6             |
+      | 000000553           | wel geheimhouding  | 5             |
+      | 000000565           | wel geheimhouding  | 4             |
+      | 000000577           | wel geheimhouding  | 3             |
+      | 000000589           | wel geheimhouding  | 2             |
+      | 000000590           | wel geheimhouding  | 1             |
+      | 000000607           | geen geheimhouding | 0             |
 
   Rule: opschorting bijhouding reden wordt altijd geleverd wanneer die een waarde heeft
 
-    @gba
-    Scenario: Persoon heeft opschorting bijhouding
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                                              | waarde    |
-      | burgerservicenummer                               | 999993483 |
-      | Datum opschorting bijhouding (67.10)              | 20140702  |
-      | Omschrijving reden opschorting bijhouding (67.20) | E         |
+    Abstract Scenario: Persoon heeft <variant> opschorting bijhouding
+      Gegeven de persoon met burgerservicenummer '000000619' heeft de volgende 'inschrijving' gegevens
+      | naam                                 | waarde                         |
+      | datum opschorting bijhouding (67.10) | <datum opschorting bijhouding> |
+      | reden opschorting bijhouding (67.20) | <reden opschorting bijhouding> |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 999993483                       |
+      | burgerservicenummer | 000000619                       |
       | fields              | burgerservicenummer             |
-      Dan heeft de persoon met burgerservicenummer '999993483' alleen de volgende gegevens
+      Dan heeft de response een persoon met de volgende gegevens
       | naam                                     | waarde    |
-      | burgerservicenummer                      | 999993483 |
-      | opschortingBijhouding.reden.code         | E         |
-      | opschortingBijhouding.reden.omschrijving | emigratie |
-
-    @gba
-    Scenario: Persoon heeft geen opschorting bijhouding
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                                              | waarde    |
-      | burgerservicenummer                               | 999993653 |
-      | Datum opschorting bijhouding (67.10)              |           |
-      | Omschrijving reden opschorting bijhouding (67.20) |           |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 999993653                       |
-      | fields              | burgerservicenummer             |
-      Dan heeft de persoon met burgerservicenummer '999993653' alleen de volgende gegevens
-      | naam                                     | waarde    |
-      | burgerservicenummer                      | 999993653 |
+      | burgerservicenummer                      | 000000619                                   |
+      | opschortingBijhouding.reden.code         | <reden opschorting bijhouding>              |
+      | opschortingBijhouding.reden.omschrijving | <omschrijving reden opschorting bijhouding> |
+	  
+	  Voorbeelden:
+	  | variant | datum opschorting bijhouding | reden opschorting bijhouding | omschrijving reden opschorting bijhouding |
+	  | een     | 20140702                     | E                            | emigratie                                 |
+	  | geen    |                              |                              |                                           |
