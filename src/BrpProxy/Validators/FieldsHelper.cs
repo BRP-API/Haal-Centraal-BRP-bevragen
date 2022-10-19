@@ -173,6 +173,17 @@ public class FieldsHelper
         var s1 = pathParts.Last();
         var s2 = string.Join('.', pathParts.Take(pathParts.Length - 1));
 
+        if (new[] { "code", "omschrijving" }.Contains(s1))
+        {
+            inOnderzoekPath = pathParts.Length == 2
+                ? $"inOnderzoek.{s2}"
+                : $"{s2}.inOnderzoek";
+            if (inOnderzoekPaths.Any(x => x == inOnderzoekPath))
+            {
+                return inOnderzoekPath;
+            }
+        }
+
         inOnderzoekPath = $"{s2}.inOnderzoek.{s1}";
 
         if (inOnderzoekPaths.Any(x => x == inOnderzoekPath))
