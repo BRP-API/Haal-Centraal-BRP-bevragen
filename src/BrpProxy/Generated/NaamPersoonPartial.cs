@@ -16,14 +16,15 @@ namespace HaalCentraal.BrpProxy.Generated
             ;
 
         public bool ShouldSerializeInOnderzoek() =>
-            InOnderzoek.AanduidingNaamgebruik.HasValue ||
+            InOnderzoek != null &&
+            (InOnderzoek.AanduidingNaamgebruik.HasValue ||
             InOnderzoek.AdellijkeTitelPredicaat.HasValue ||
             InOnderzoek.Geslachtsnaam.HasValue ||
             InOnderzoek.Voornamen.HasValue ||
             InOnderzoek.Voorvoegsel.HasValue ||
             InOnderzoek.Voorletters.HasValue ||
             InOnderzoek.VolledigeNaam.HasValue
-            ;
+            );
 
         [JsonIgnore]
         public ICollection<Partner>? Partners { get; set; }
