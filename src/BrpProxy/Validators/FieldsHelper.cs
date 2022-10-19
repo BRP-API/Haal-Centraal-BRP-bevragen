@@ -86,6 +86,10 @@ public class FieldsHelper
             {
                 retval.Add("inOnderzoek.datumIngangOnderzoekPersoon");
             }
+            if (new[] { "gemeenteVanInschrijving", "datumInschrijvingInGemeente" }.Contains(fieldFullPath))
+            {
+                retval.Add("inOnderzoek.datumIngangOnderzoekGemeente");
+            }
             if (field.Contains("overlijden"))
             {
                 retval.Add("overlijden.indicatieOverleden");
