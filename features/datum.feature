@@ -55,6 +55,7 @@ Functionaliteit: leveren van een datum
         | datum.maand       | <maand>        |
         | datum.langFormaat | <lang formaat> |
 
+
       Voorbeelden:
       | gba datum | jaar | maand | lang formaat  |
       | 20200500  | 2020 | 5     | mei 2020      |
