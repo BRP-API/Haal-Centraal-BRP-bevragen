@@ -1217,11 +1217,11 @@ When(/^gba personen wordt gezocht met de volgende parameters$/, async function (
             console.log("no access token. authenticate");
             accessToken = await getOAuthAccessToken(this.context.oAuth);
         }
-        this.context.response = await postBevragenRequestWithOAuth(this.context.gbaUrl, this.context.access_token, dataTable);
+        this.context.response = await postBevragenRequestWithOAuth(this.context.gbaUrl, accessToken, dataTable);
         if(this.context.response.status === 401) {
             console.log("access denied. access token expired");
             accessToken = await getOAuthAccessToken(this.context.oAuth);
-            this.context.response = await postBevragenRequestWithOAuth(this.context.gbaUrl, this.context.access_token, dataTable);
+            this.context.response = await postBevragenRequestWithOAuth(this.context.gbaUrl, accessToken, dataTable);
         }
     } else {
         this.context.response = await postBevragenRequestWithBasicAuth(this.context.gbaUrl, this.context.extraHeaders, dataTable);
