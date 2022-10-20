@@ -1,6 +1,6 @@
 # language: nl
 
-Functionaliteit: Partner
+Functionaliteit: GBA persoon: partner
 
   Abstract Scenario: partner heeft 'ontbindingHuwelijkPartnerschap' datum veld: 'datum ontbinding huwelijk/geregistreerd partnerschap (07.10)'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens

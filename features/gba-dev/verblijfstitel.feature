@@ -1,7 +1,6 @@
 #language: nl
 
-@post-assert
-Functionaliteit: Verblijfstitel
+Functionaliteit: GBA persoon: Verblijfstitel
 
 Achtergrond:
   Gegeven landelijke tabel "Verblijfstitel" heeft de volgende waarden
