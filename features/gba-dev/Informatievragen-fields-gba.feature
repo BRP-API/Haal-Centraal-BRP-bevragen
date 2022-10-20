@@ -229,7 +229,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | regel1              | beschikbaar      |
       | locatiebeschrijving | niet beschikbaar |
 
-# Volgens mij vraag je nooit naar een onbekend adres, dat heeft ook geen adresvelden. Je kunt een onbekend adres echter wel als antwoord op je vraag krijgen.
+# Komt het wel voor dat je naar een onbekend adres vraagt? Je kunt een onbekend adres natuurlijk wel als antwoord op je vraag krijgen.
     Scenario: met fields wordt gevraagd naar een adresveld bij een onbekend adres
       Gegeven de persoon met burgerservicenummer '000000292' heeft de volgende 'verblijfplaats' gegevens
       | naam                                   | waarde   |
