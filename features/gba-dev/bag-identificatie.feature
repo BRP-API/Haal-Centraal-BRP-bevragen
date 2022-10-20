@@ -7,11 +7,11 @@ Functionaliteit: BAG-identificaties met waarde die niet voldoet aan specificatie
   Het kan nu nog voorkomen dat deze identificaties zijn opgeslagen als getal, waardoor de voorloopnul(len) zijn weggevallen.
   In de BRP-V bron wordt dit dan opgeslagen door de waarde aan te vullen met spaties tot het 16 tekens lang is.
 
-    Abstract Scenario: BAG-identificaties bestaan uit <omschrijving> 
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 000000024 |
-      En de persoon heeft de volgende 'verblijfplaats' gegevens
+    Abstract Scenario: BAG-identificaties bestaan uit <omschrijving>
+      Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
+      | naam                               | waarde   |
+      | datum aanvang adreshouding (10.30) | 20150808 |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam                                       | waarde                |
       | straatnaam (11.10)                         | Kromme dijk           |
       | huisnummer (11.20)                         | 15                    |
@@ -36,10 +36,10 @@ Functionaliteit: BAG-identificaties met waarde die niet voldoet aan specificatie
       | cijfers en een letter        | 03630V0000123456  | 0363NA0000123456    |
 
     Scenario: BAG-identificaties bestaan uit 16 cijfers
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 000000024 |
-      En de persoon heeft de volgende 'verblijfplaats' gegevens
+      Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
+      | naam                               | waarde   |
+      | datum aanvang adreshouding (10.30) | 20150808 |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam                                       | waarde           |
       | straatnaam (11.10)                         | Kromme dijk      |
       | huisnummer (11.20)                         | 15               |
