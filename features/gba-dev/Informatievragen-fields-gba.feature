@@ -267,10 +267,10 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | fields              | <veld>                          |
       Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
       | naam                             | waarde           |
-      | verblijfadres.straat             | Boterdiep        |
-      | verblijfadres.huisnummer         | 31               |
-      | verblijfadres.postcode           | 3077AW           |
-      | verblijfadres.woonplaats         | Rotterdam        |
+      | straat                           | Boterdiep        |
+      | huisnummer                       | 31               |
+      | postcode                         | 3077AW           |
+      | woonplaats                       | Rotterdam        |
       | adresseerbaarObjectIdentificatie | 0599010000208579 |
       | nummeraanduidingIdentificatie    | 0599200000219678 |
 
