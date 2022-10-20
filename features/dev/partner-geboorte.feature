@@ -1,6 +1,6 @@
 # language: nl
 
-Functionaliteit: geboorte velden van partner
+Functionaliteit: Persoon: partner - geboorte
 
   Abstract Scenario: partner heeft 'geboorte' veld: '<gba naam>'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens

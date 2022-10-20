@@ -1,6 +1,6 @@
 #language: nl
 
-Functionaliteit: Immigratie
+Functionaliteit: Persoon: immigratie
 
   Abstract Scenario: persoon heeft 'immigratie' veld: 'land vanwaar ingeschreven (14.10)'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
@@ -12,15 +12,15 @@ Functionaliteit: Immigratie
     | burgerservicenummer | 000000152                       |
     | fields              | <field>                         |
     Dan heeft de response een persoon met de volgende 'immigratie' gegevens
-    | naam                                 | waarde         |
-    | landVanwaarIngeschreven.code         | <code>         |
-    | landVanwaarIngeschreven.omschrijving | <omschrijving> |
+    | naam                                 | waarde                       |
+    | landVanwaarIngeschreven.code         | 6014                         |
+    | landVanwaarIngeschreven.omschrijving | Verenigde Staten van Amerika |
 
     Voorbeelden:
-    | field                                           | code | omschrijving                 |
-    | immigratie.landVanwaarIngeschreven              | 6014 | Verenigde Staten van Amerika |
-    | immigratie.landVanwaarIngeschreven.code         | 6014 |                              |
-    | immigratie.landVanwaarIngeschreven.omschrijving |      | Verenigde Staten van Amerika |
+    | field                                           |
+    | immigratie.landVanwaarIngeschreven              |
+    | immigratie.landVanwaarIngeschreven.code         |
+    | immigratie.landVanwaarIngeschreven.omschrijving |
 
   Abstract Scenario: persoon heeft 'immigratie' datum veld: 'datum vestiging in nederland (14.20)'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
@@ -121,12 +121,12 @@ Functionaliteit: Immigratie
     | 081400                  |
     | 081420                  |
 
-  Abstract Scenario: datumVestigingInNederland is in onderzoek
+  Abstract Scenario: indicatieVestigingVanuitBuitenland is in onderzoek
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
-    | naam                                 | waarde                    |
-    | aanduiding in onderzoek (83.10)      | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (83.20)       | 20020701                  |
-    | datum vestiging in Nederland (14.20) | 20020101                  |
+    | naam                              | waarde                    |
+    | aanduiding in onderzoek (83.10)   | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)    | 20020701                  |
+    | land vanwaar ingeschreven (14.10) | 6014                      |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                                        |
     | type                | RaadpleegMetBurgerservicenummer               |
@@ -144,7 +144,7 @@ Functionaliteit: Immigratie
     | gba in onderzoek waarde |
     | 080000                  |
     | 081400                  |
-    | 081420                  |
+    | 081410                  |
 
   Abstract Scenario: vanuitVerblijfplaatsOnbekend is in onderzoek
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens

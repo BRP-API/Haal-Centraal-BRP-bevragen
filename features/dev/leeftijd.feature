@@ -1,6 +1,6 @@
 #language: nl
 
-Functionaliteit: leeftijd veld van persoon
+Functionaliteit: Persoon: leeftijd
 
   Abstract Scenario: geboortedatum is een volledig datum
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens

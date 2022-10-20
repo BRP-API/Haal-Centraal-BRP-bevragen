@@ -1,6 +1,6 @@
 # language: nl
 
-Functionaliteit: huwelijk/partnerschap velden van partner
+Functionaliteit: Persoon: partner - huwelijk/geregistreerd partnerschap
 
   Abstract Scenario: partner heeft 'aangaanHuwelijkPartnerschap' veld: '<gba naam>'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens

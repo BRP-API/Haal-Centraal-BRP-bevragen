@@ -1,6 +1,6 @@
 #language: nl
 
-Functionaliteit: Kind velden
+Functionaliteit: Persoon: kind
 
   Abstract Scenario: kind heeft veld: '<gba naam>'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
