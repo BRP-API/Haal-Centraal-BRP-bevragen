@@ -20,10 +20,10 @@ Functionaliteit: BAG-identificaties met waarde die niet voldoet aan specificatie
       | identificatiecode verblijfplaats (11.80)   | <verblijfplaats id>   |
       | identificatiecode nummeraanduiding (11.90) | <nummeraanduiding id> |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                                                                                               |
-      | type                | RaadpleegMetBurgerservicenummer                                                                                      |
-      | burgerservicenummer | 000000024                                                                                                            |
-      | fields              | verblijfplaats.postcode,verblijfplaats.nummeraanduidingIdentificatie,verblijfplaats.adresseerbaarObjectIdentificatie |
+      | naam                | waarde                                                                  |
+      | type                | RaadpleegMetBurgerservicenummer                                         |
+      | burgerservicenummer | 000000024                                                               |
+      | fields              | postcode,nummeraanduidingIdentificatie,adresseerbaarObjectIdentificatie |
       Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
       | naam     | waarde |
       | type     | Adres  |
@@ -48,10 +48,10 @@ Functionaliteit: BAG-identificaties met waarde die niet voldoet aan specificatie
       | identificatiecode verblijfplaats (11.80)   | 0363010000123456 |
       | identificatiecode nummeraanduiding (11.90) | 0363200000123456 |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                                                                                               |
-      | type                | RaadpleegMetBurgerservicenummer                                                                                      |
-      | burgerservicenummer | 000000024                                                                                                            |
-      | fields              | verblijfplaats.postcode,verblijfplaats.nummeraanduidingIdentificatie,verblijfplaats.adresseerbaarObjectIdentificatie |
+      | naam                | waarde                                                                  |
+      | type                | RaadpleegMetBurgerservicenummer                                         |
+      | burgerservicenummer | 000000024                                                               |
+      | fields              | postcode,nummeraanduidingIdentificatie,adresseerbaarObjectIdentificatie |
       Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
       | naam                             | waarde           |
       | type                             | Adres            |
