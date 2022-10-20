@@ -71,7 +71,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000176                       |
-      | fields              | <fields>                        |
+      | fields              | <veld>                        |
       Dan heeft de response een persoon met de volgende gegevens
       | naam                                      | waarde                        |
       | naam.voornamen                            | Hendrik Jan                   |
