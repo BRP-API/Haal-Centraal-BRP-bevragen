@@ -40,7 +40,7 @@ services:
 
   brpproxy:
     container_name: brpproxy
-    image: haalcentraal.azurecr.io/brpproxy:2.0.5
+    image: haalcentraal.azurecr.io/brpproxy:2.0.6
     environment:
       - ASPNETCORE_ENVIRONMENT=Release
       - ASPNETCORE_URLS=http://+:5000
@@ -53,7 +53,7 @@ services:
       - ./elastic:/app/elastic
 
   haalcentraal_api:
-    image: haalcentraal.azurecr.io/gba-api:2.0.5
+    image: haalcentraal.azurecr.io/gba-api:2.0.6
     environment:
       - Database__ConnectionString=database-connectionstring
       - HaalcentraalApi__MaxSearchResults=10
