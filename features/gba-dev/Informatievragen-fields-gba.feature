@@ -93,14 +93,12 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | naam.geslachtsnaam                        | Horn    |
 
       Voorbeelden:
-      | veld                           |
+      | veld                             |
       | aanhef                           |
       | aanschrijfwijze                  |
       | gebruikInLopendeTekst            |
       | adressering.aanhef               |
       | aanschrijfwijze.naam             |
-	  # Het volgende voorbeeld leidt nog tot een assertion failure Blijkbaar levert de GBA API in dit geval niet de voornamen, voorvoegsel, geslachtsnaam, 
-	  # aanduidingnaamgebruik van de gevraagde persoon en van de partner niet het voorvoegsel en geslachtsnaam.
       | aanschrijfwijze.aanspreekvorm    |
       | adressering.aanschrijfwijze.naam |
 
@@ -619,7 +617,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | naam                                 | waarde                         |
       | datum opschorting bijhouding (67.10) | <datum opschorting bijhouding> |
       | reden opschorting bijhouding (67.20) | <reden opschorting bijhouding> |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000619                       |
