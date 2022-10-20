@@ -17,7 +17,7 @@ Functionaliteit: BAG-identificaties met waarde die niet voldoet aan specificatie
       | straatnaam (11.10)                         | Kromme dijk           |
       | huisnummer (11.20)                         | 15                    |
       | postcode (11.60)                           | 1001XX                |
-      | woonplaatsnaam (11.70)                     | Testdorp              |
+      | woonplaats (11.70)                         | Testdorp              |
       | identificatiecode verblijfplaats (11.80)   | <verblijfplaats id>   |
       | identificatiecode nummeraanduiding (11.90) | <nummeraanduiding id> |
       Als gba personen wordt gezocht met de volgende parameters
@@ -46,7 +46,7 @@ Functionaliteit: BAG-identificaties met waarde die niet voldoet aan specificatie
       | straatnaam (11.10)                         | Kromme dijk      |
       | huisnummer (11.20)                         | 15               |
       | postcode (11.60)                           | 1001XX           |
-      | woonplaatsnaam (11.70)                     | Testdorp         |
+      | woonplaats (11.70)                         | Testdorp         |
       | identificatiecode verblijfplaats (11.80)   | 0363010000123456 |
       | identificatiecode nummeraanduiding (11.90) | 0363200000123456 |
       Als gba personen wordt gezocht met de volgende parameters
