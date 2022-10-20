@@ -13,14 +13,14 @@ Functionaliteit: BAG-identificaties met waarde die niet voldoet aan specificatie
       | datum aanvang adreshouding (10.30) | 20150808 |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam                                       | waarde                |
-      | gemeente van inschrijving (09.10)          | <gemeente code>       |
+      | gemeente_code                              | <gemeente code>       |
       | straatnaam (11.10)                         | Kromme dijk           |
       | huisnummer (11.20)                         | 15                    |
       | postcode (11.60)                           | 1001XX                |
       | woonplaatsnaam (11.70)                     | Testdorp              |
       | identificatiecode verblijfplaats (11.80)   | <verblijfplaats id>   |
       | identificatiecode nummeraanduiding (11.90) | <nummeraanduiding id> |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                                                                  |
       | type                | RaadpleegMetBurgerservicenummer                                         |
       | burgerservicenummer | 000000024                                                               |
@@ -42,14 +42,14 @@ Functionaliteit: BAG-identificaties met waarde die niet voldoet aan specificatie
       | datum aanvang adreshouding (10.30) | 20150808 |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam                                       | waarde           |
-      | gemeente van inschrijving (09.10)          | 0363             |
+      | gemeente_code                              | 0363             |
       | straatnaam (11.10)                         | Kromme dijk      |
       | huisnummer (11.20)                         | 15               |
       | postcode (11.60)                           | 1001XX           |
       | woonplaatsnaam (11.70)                     | Testdorp         |
       | identificatiecode verblijfplaats (11.80)   | 0363010000123456 |
       | identificatiecode nummeraanduiding (11.90) | 0363200000123456 |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                                                                  |
       | type                | RaadpleegMetBurgerservicenummer                                         |
       | burgerservicenummer | 000000024                                                               |
