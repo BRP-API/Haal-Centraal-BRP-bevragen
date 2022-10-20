@@ -13,6 +13,7 @@ Functionaliteit: BAG-identificaties met waarde die niet voldoet aan specificatie
       | datum aanvang adreshouding (10.30) | 20150808 |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam                                       | waarde                |
+      | gemeente van inschrijving (09.10)          | <gemeente code>       |
       | straatnaam (11.10)                         | Kromme dijk           |
       | huisnummer (11.20)                         | 15                    |
       | postcode (11.60)                           | 1001XX                |
@@ -30,10 +31,10 @@ Functionaliteit: BAG-identificaties met waarde die niet voldoet aan specificatie
       | postcode | 1001XX |
 
       Voorbeelden:
-      | omschrijving                 | verblijfplaats id | nummeraanduiding id |
-      | 14 cijfers plus twee spaties | 24010000123456    | 24200000123456      |
-      | 15 cijfers plus een spatie   | 363010000123456   | 363200000123456     |
-      | cijfers en een letter        | 03630V0000123456  | 0363NA0000123456    |
+      | omschrijving                 | gemeente code | verblijfplaats id | nummeraanduiding id |
+      | 14 cijfers plus twee spaties | 0024          | 24010000123456    | 24200000123456      |
+      | 15 cijfers plus een spatie   | 0363          | 363010000123456   | 363200000123456     |
+      | cijfers en een letter        | 0363          | 03630V0000123456  | 0363NA0000123456    |
 
     Scenario: BAG-identificaties bestaan uit 16 cijfers
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
@@ -41,6 +42,7 @@ Functionaliteit: BAG-identificaties met waarde die niet voldoet aan specificatie
       | datum aanvang adreshouding (10.30) | 20150808 |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam                                       | waarde           |
+      | gemeente van inschrijving (09.10)          | 0363             |
       | straatnaam (11.10)                         | Kromme dijk      |
       | huisnummer (11.20)                         | 15               |
       | postcode (11.60)                           | 1001XX           |
