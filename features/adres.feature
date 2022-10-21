@@ -6,7 +6,7 @@ Functionaliteit: Adresvelden vullen
   Rule: Voor een binnenlands adres wordt veld "straat" gevuld met de naam openbare ruimte (11.15) wanneer die bekend is, en anders met straatnaam (11.10). Veld "korteNaam" wordt gevuld met straatnaam (11.10).
 
     Abstract Scenario: opnemen straat bij een binnenlands adres
-      Gegeven de persoon met burgerservicenummer '<burgerservicenummer>' heeft de volgende 'verblijfplaats' gegevens
+    Gegeven de persoon met burgerservicenummer '<burgerservicenummer>' heeft de volgende 'verblijfplaats' gegevens
       | naam                  | waarde      |
       | functie adres (10.10) | W           |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
@@ -100,7 +100,7 @@ Functionaliteit: Adresvelden vullen
     - Wanneer de woonplaats geen waarde heeft, wordt de omschrijving van de gemeente van inschrijving als woonplaats gebruikt
 
     Abstract Scenario: adresregel2 voor een binnenlandse verblijfplaats met <omschrijving>
-      Gegeven de persoon met burgerservicenummer '<burgerservicenummer>' heeft de volgende 'verblijfplaats' gegevens
+    Gegeven de persoon met burgerservicenummer '<burgerservicenummer>' heeft de volgende 'verblijfplaats' gegevens
       | naam                                 | waarde                |
       | gemeente van inschrijving (09.10)    | 0518                  |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
@@ -108,7 +108,7 @@ Functionaliteit: Adresvelden vullen
       | straatnaam (11.10)     | een straat       |
       | huisnummer (11.20)     | 1                |
       | postcode (11.60)       | <postcode>       |
-      | woonplaatsnaam (11.70) | <woonplaatsnaam> |
+      | woonplaats (11.70)     | <woonplaatsnaam> |
       | gemeente_code          | 0518             |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
@@ -131,6 +131,7 @@ Functionaliteit: Adresvelden vullen
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam                        | waarde                     |
       | locatiebeschrijving (12.10) | Woonboot tegenover de Grote Sloot |
+      | gemeente_code               | 0518                              |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -207,7 +208,7 @@ Functionaliteit: Adresvelden vullen
     - een string met lengte nul ("") geldt hier niet als waarde
 
     Abstract Scenario: adresregels worden niet opgenomen omdat <omschrijving>
-      Gegeven de persoon met burgerservicenummer '<burgerservicenummer>' heeft de volgende 'verblijfplaats' gegevens
+    Gegeven de persoon met burgerservicenummer '<burgerservicenummer>' heeft de volgende 'verblijfplaats' gegevens
       | naam                  | waarde     |
       | functie adres (10.10) | W          |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
