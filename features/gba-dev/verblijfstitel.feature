@@ -58,7 +58,7 @@ Achtergrond:
     | naam                                         | waarde                          |
     | aanduiding.code                              | 09                              |
     | aanduiding.omschrijving                      | Art. 9 van de Vreemdelingenwet  |
-    | datumIngangGeldigheid                        | 20010327                        |
+    | datumIngang                                  | 20010327                        |
 
 
   Scenario: persoon's verblijfstitel velden is in onderzoek
@@ -76,7 +76,7 @@ Achtergrond:
     | inOnderzoek.datumIngangOnderzoek             | 20020101                        |
     | aanduiding.code                              | 09                              |
     | aanduiding.omschrijving                      | Art. 9 van de Vreemdelingenwet  |
-    | datumIngangGeldigheid                        | 20010315                        |
+    | datumIngang                                  | 20010315                        |
 
   Scenario: persoon's verblijfstitel velden is onbekend
     Gegeven de persoon met burgerservicenummer '000000164' heeft de volgende 'verblijfstitel' gegevens
@@ -91,4 +91,4 @@ Achtergrond:
     | naam                                         | waarde                          |
     | aanduiding.code                              | 00                              |
     | aanduiding.omschrijving                      | Onbekend                        |
-    | datumIngangGeldigheid                        | 20010315                        |
+    | datumIngang                                  | 20010315                        |
