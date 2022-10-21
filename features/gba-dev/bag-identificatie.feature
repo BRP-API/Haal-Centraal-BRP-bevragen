@@ -1,7 +1,6 @@
 #language: nl
 
-@gba
-Functionaliteit: BAG-identificaties met waarde die niet voldoet aan specificaties moet niet geleverd worden
+Functionaliteit: BAG-identificatie met waarde die niet voldoet aan de specificatie moet niet geleverd worden
   BAG-identificaties identificatiecode verblijfplaats (11.80) en identificatiecode nummeraanduiding (11.90) moeten bestaan uit exact 16 cijfers
 
   Het kan nu nog voorkomen dat deze identificaties zijn opgeslagen als getal, waardoor de voorloopnul(len) zijn weggevallen.
@@ -27,7 +26,6 @@ Functionaliteit: BAG-identificaties met waarde die niet voldoet aan specificatie
       | fields              | postcode,nummeraanduidingIdentificatie,adresseerbaarObjectIdentificatie |
       Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
       | naam     | waarde |
-      | type     | Adres  |
       | postcode | 1001XX |
 
       Voorbeelden:
@@ -56,7 +54,6 @@ Functionaliteit: BAG-identificaties met waarde die niet voldoet aan specificatie
       | fields              | postcode,nummeraanduidingIdentificatie,adresseerbaarObjectIdentificatie |
       Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
       | naam                             | waarde           |
-      | type                             | Adres            |
       | postcode                         | 1001XX           |
       | adresseerbaarObjectIdentificatie | 0363010000123456 |
       | nummeraanduidingIdentificatie    | 0363200000123456 |
