@@ -1,6 +1,6 @@
 #language: nl
 
-Functionaliteit: Geboorte velden van persoon
+Functionaliteit: Persoon: geboorte
 
   Abstract Scenario: persoon heeft 'geboorte' datum veld: '<gba naam>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
@@ -34,15 +34,15 @@ Functionaliteit: Geboorte velden van persoon
     | burgerservicenummer | 000000152                       |
     | fields              | <field>                         |
     Dan heeft de response een persoon met de volgende 'geboorte' gegevens
-    | naam                | waarde         |
-    | plaats.code         | <code>         |
-    | plaats.omschrijving | <omschrijving> |
+    | naam                | waarde        |
+    | plaats.code         | 0518          |
+    | plaats.omschrijving | 's-Gravenhage |
 
     Voorbeelden:
-    | field                        | code | omschrijving  |
-    | geboorte.plaats              | 0518 | 's-Gravenhage |
-    | geboorte.plaats.code         | 0518 |               |
-    | geboorte.plaats.omschrijving |      | 's-Gravenhage |
+    | field                        |
+    | geboorte.plaats              |
+    | geboorte.plaats.code         |
+    | geboorte.plaats.omschrijving |
 
   Abstract Scenario: persoon heeft 'geboorte' veld: 'geboorteland (03.30)'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
@@ -54,15 +54,15 @@ Functionaliteit: Geboorte velden van persoon
     | burgerservicenummer | 000000152                       |
     | fields              | <field>                         |
     Dan heeft de response een persoon met de volgende 'geboorte' gegevens
-    | naam              | waarde         |
-    | land.code         | <code>         |
-    | land.omschrijving | <omschrijving> |
+    | naam              | waarde                       |
+    | land.code         | 6014                         |
+    | land.omschrijving | Verenigde Staten van Amerika |
 
     Voorbeelden:
-    | field                      | code | omschrijving                 |
-    | geboorte.land              | 6014 | Verenigde Staten van Amerika |
-    | geboorte.land.code         | 6014 |                              |
-    | geboorte.land.omschrijving |      | Verenigde Staten van Amerika |
+    | field                      |
+    | geboorte.land              |
+    | geboorte.land.code         |
+    | geboorte.land.omschrijving |
 
   Abstract Scenario: geboorte veld(en) van persoon is/zijn in onderzoek
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
@@ -128,21 +128,21 @@ Functionaliteit: Geboorte velden van persoon
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000152                       |
-    | fields              | geboorte.<field>                |
+    | fields              | geboorte.plaats                 |
     Dan heeft de response een persoon met de volgende 'geboorte' gegevens
-    | naam                                         | waarde         |
-    | plaats.code                                  | <code>         |
-    | plaats.omschrijving                          | <omschrijving> |
-    | inOnderzoek.plaats                           | true           |
-    | inOnderzoek.datumIngangOnderzoek.type        | Datum          |
-    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01     |
-    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002    |
+    | naam                                         | waarde        |
+    | plaats.code                                  | 0518          |
+    | plaats.omschrijving                          | 's-Gravenhage |
+    | inOnderzoek.plaats                           | true          |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum         |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01    |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002   |
 
     Voorbeelden:
-    | gba in onderzoek waarde | field               | code | omschrijving  |
-    | 010000                  | plaats              | 0518 | 's-Gravenhage |
-    | 010300                  | plaats.code         | 0518 |               |
-    | 010320                  | plaats.omschrijving |      | 's-Gravenhage |
+    | gba in onderzoek waarde |
+    | 010000                  |
+    | 010300                  |
+    | 010320                  |
 
   Abstract Scenario: geboorte land is in onderzoek
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
@@ -154,18 +154,69 @@ Functionaliteit: Geboorte velden van persoon
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000152                       |
-    | fields              | geboorte.<field>                |
+    | fields              | geboorte.land                   |
     Dan heeft de response een persoon met de volgende 'geboorte' gegevens
-    | naam                                         | waarde         |
-    | land.code                                    | <code>         |
-    | land.omschrijving                            | <omschrijving> |
-    | inOnderzoek.land                             | true           |
-    | inOnderzoek.datumIngangOnderzoek.type        | Datum          |
-    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01     |
-    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002    |
+    | naam                                         | waarde                       |
+    | land.code                                    | 6014                         |
+    | land.omschrijving                            | Verenigde Staten van Amerika |
+    | inOnderzoek.land                             | true                         |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                        |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                   |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                  |
 
     Voorbeelden:
-    | gba in onderzoek waarde | field             | code | omschrijving                 |
-    | 010000                  | land              | 6014 | Verenigde Staten van Amerika |
-    | 010300                  | land.code         | 6014 |                              |
-    | 010330                  | land.omschrijving |      | Verenigde Staten van Amerika |
+    | gba in onderzoek waarde |
+    | 010000                  |
+    | 010300                  |
+    | 010330                  |
+
+  Abstract Scenario: geboorte datum is in onderzoek, maar wordt niet gevraagd
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+    | naam                            | waarde                    |
+    | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)  | 20020701                  |
+    | geboortedatum (03.10)           | 19630405                  |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | geboorte.plaats                 |
+    Dan heeft de response een persoon zonder 'geboorte' gegevens
+
+    Voorbeelden:
+    | gba in onderzoek waarde |
+    | 010310                  |
+
+  Abstract Scenario: geboorte plaats is in onderzoek, maar wordt niet gevraagd
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+    | naam                            | waarde                    |
+    | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)  | 20020701                  |
+    | geboorteplaats (03.20)          | 0518                      |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | geboorte.land                   |
+    Dan heeft de response een persoon zonder 'geboorte' gegevens
+
+    Voorbeelden:
+    | gba in onderzoek waarde |
+    | 010320                  |
+
+  Abstract Scenario: geboorte land is in onderzoek, maar wordt niet gevraagd
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+    | naam                            | waarde                    |
+    | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)  | 20020701                  |
+    | geboorteland (03.30)            | 6014                      |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | geboorte.datum                  |
+    Dan heeft de response een persoon zonder 'geboorte' gegevens
+
+    Voorbeelden:
+    | gba in onderzoek waarde |
+    | 010330                  |

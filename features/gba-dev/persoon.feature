@@ -1,6 +1,6 @@
 #language: nl
 
-Functionaliteit: Persoon
+Functionaliteit: GBA persoon
 
   Abstract Scenario: persoon heeft veld: 'indicatie geheim (70.10)' met waarde <waarde>
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'inschrijving' gegevens

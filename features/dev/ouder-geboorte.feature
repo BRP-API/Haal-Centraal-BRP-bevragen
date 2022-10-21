@@ -1,6 +1,6 @@
 # language: nl
 
-Functionaliteit: Geboorte velden van ouder
+Functionaliteit: Persoon: ouder - geboorte
 
   Abstract Scenario: ouder heeft 'geboorte' veld: '<gba naam>'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '<ouder aanduiding>' met de volgende gegevens

@@ -1,7 +1,6 @@
 # language: nl
 
-@post-assert
-Functionaliteit: Kinderen van een persoon raadplegen
+Functionaliteit: Kinderen van een GBA persoon raadplegen
   Van een persoon worden -indien gevraagd met de fields parameter- de kinderen geleverd.
   Dit bevat enkele identificerende eigenschappen van de kinderen.
 

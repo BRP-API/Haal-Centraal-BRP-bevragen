@@ -6,5 +6,16 @@ public partial class Geboorte
         Datum != null ||
         Land != null ||
         Plaats != null ||
-        InOnderzoek != null;
+        InOnderzoek != null
+        ;
+
+    public bool ShouldSerializeInOnderzoek() => InOnderzoek != null && InOnderzoek.ShouldSerialize();
+}
+
+public partial class GeboorteInOnderzoek
+{
+    public bool ShouldSerialize() =>
+        Datum.HasValue ||
+        Land.HasValue ||
+        Plaats.HasValue;
 }

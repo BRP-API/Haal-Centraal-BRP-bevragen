@@ -1,7 +1,6 @@
 # language: nl
 
-@proxy @post-assert
-Functionaliteit: verblijfplaats binnenland
+Functionaliteit: Persoon: verblijfplaats binnenland
 
   Abstract Scenario: persoon heeft 'verblijfplaats binnenland' veld: '<gba naam>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens

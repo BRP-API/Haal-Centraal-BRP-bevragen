@@ -1,6 +1,6 @@
 # language: nl
 
-Functionaliteit: Partner
+Functionaliteit: GBA persoon: partner
 
   Abstract Scenario: partner heeft 'ontbindingHuwelijkPartnerschap' datum veld: 'datum ontbinding huwelijk/geregistreerd partnerschap (07.10)'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
@@ -12,10 +12,8 @@ Functionaliteit: Partner
     | burgerservicenummer | 000000012                                     |
     | fields              | partners.ontbindingHuwelijkPartnerschap.datum |
     Dan heeft de response een persoon met een 'partner' met alleen de volgende 'ontbindingHuwelijkPartnerschap' gegevens
-    | naam              | waarde         |
-    | datum.type        | Datum          |
-    | datum.datum       | 2020-10-01     |
-    | datum.langFormaat | 1 oktober 2020 |
+    | naam  | waarde   |
+    | datum | 20201001 |
 
   Scenario: naam veld(en) van partner is/zijn in onderzoek
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
