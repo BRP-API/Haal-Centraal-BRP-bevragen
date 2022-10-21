@@ -30,7 +30,7 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       | nationaliteit.code                | 0001                                             |
       | nationaliteit.omschrijving        | Nederlandse                                      |
       | redenOpname.code                  | 001                                              |
-      | redenOpname.omschrijving          | Wet op het Nederlanderschap 1892,art. 1, onder a |
+      | redenOpname.omschrijving          | Wet op het Nederlanderschap 1892, art.1, lid 1a  |
       | datumIngangGeldigheid.type        | Datum                                            |
       | datumIngangGeldigheid.datum       | 1975-07-07                                       |
       | datumIngangGeldigheid.langFormaat | 7 juli 1975                                      |
@@ -52,8 +52,8 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       | type                              | Nationaliteit                                    |
       | nationaliteit.code                | 0001                                             |
       | nationaliteit.omschrijving        | Nederlandse                                      |
-      | redenopname.code                  | 001                                              |
-      | redenopname.omschrijving          | Wet op het Nederlanderschap 1892,art. 1, onder a |
+      | redenOpname.code                  | 001                                              |
+      | redenOpname.omschrijving          | Wet op het Nederlanderschap 1892, art.1, lid 1a  |
       | datumIngangGeldigheid.type        | Datum                                            |
       | datumIngangGeldigheid.datum       | 1975-07-07                                       |
       | datumIngangGeldigheid.langFormaat | 7 juli 1975                                      |

@@ -1,6 +1,6 @@
 # language: nl
 
-Functionaliteit: vastgesteld niet-Nederlander
+Functionaliteit: Persoon: nationaliteit - vastgesteld niet-Nederlander
 
   Abstract Scenario: persoon is 'vastgesteld niet-Nederlander'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens

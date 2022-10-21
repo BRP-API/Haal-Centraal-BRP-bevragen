@@ -1,6 +1,6 @@
 #language: nl
 
-Functionaliteit: Opschorting bijhouding
+Functionaliteit: Persoon: opschorting bijhouding
 
   Abstract Scenario: opschorting bijhouding. Omzetten datum veld: <gba naam>
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'inschrijving' gegevens

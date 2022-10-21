@@ -1,6 +1,6 @@
 # language: nl
 
-Functionaliteit: ouder velden
+Functionaliteit: Persoon: ouder
 
   Abstract Scenario: ouder heeft veld: 'burgerservicenummer (01.20)'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '<ouder aanduiding>' met de volgende gegevens

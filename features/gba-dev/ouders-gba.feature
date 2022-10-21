@@ -1,7 +1,6 @@
 # language: nl
 
-@gba
-Functionaliteit: Ouders van een persoon raadplegen
+Functionaliteit: Ouders van een GBA persoon raadplegen
   Van een persoon kunnen ouders worden geleverd.
   Dit bevat gegevens over de familierechtelijke betrekking plus enkele identificerende eigenschappen van de ouder.
 
@@ -244,6 +243,44 @@ Rule: Wanneer van de ouder wel gegevens geregistreerd zijn, maar geen van de met
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                                      |
     | type                | RaadpleegMetBurgerservicenummer             |
-    | burgerservicenummer | 555550001                                   |
+    | burgerservicenummer | 000000292                                   |
     | fields              | ouders.naam.voornamen,ouders.geboorte.datum |
     Dan heeft de response een persoon met een 'ouder' zonder gegevens
+
+  Abstract Scenario: ouder heeft datum veld: 'datum ingang familierechtelijke betrekking (62.10)'
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
+    | naam                                               | waarde   |
+    | datum ingang familierechtelijke betrekking (62.10) | 20020701 |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000012                       |
+    | fields              | <field>                         |
+    Dan heeft de response een persoon met een 'ouder' met alleen de volgende gegevens
+    | naam                                    | waarde   |
+    | ouderAanduiding                         | 1        |
+    | datumIngangFamilierechtelijkeBetrekking | 20020701 |
+
+    Voorbeelden:
+    | field                                                                 |
+    | ouders                                                                |
+    | ouders.ouderAanduiding,ouders.datumIngangFamilierechtelijkeBetrekking |
+
+  Abstract Scenario: ouder heeft veld: 'burgerservicenummer (01.20)'
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer (01.20) | 000000013 |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000012                       |
+    | fields              | <field>                         |
+    Dan heeft de response een persoon met een 'ouder' met alleen de volgende gegevens
+    | naam                | waarde    |
+    | ouderAanduiding     | 1         |
+    | burgerservicenummer | 000000013 |
+
+    Voorbeelden:
+    | field                                             |
+    | ouders                                            |
+    | ouders.ouderAanduiding,ouders.burgerservicenummer |
