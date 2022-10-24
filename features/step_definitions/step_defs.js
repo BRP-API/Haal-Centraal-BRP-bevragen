@@ -169,6 +169,7 @@ const columnNameMap = new Map([
     ['locatiebeschrijving (12.10)', 'locatie_beschrijving'],
 	
     ['land (13.10)', 'vertrek_land_code'],
+    ['land adres buitenland (13.10)', 'vertrek_land_code'],
     ['datum aanvang adres buitenland (13.20)', 'vertrek_datum'],
     ['regel 1 adres buitenland (13.30)', 'vertrek_land_adres_1'],
     ['regel 2 adres buitenland (13.40)', 'vertrek_land_adres_2'],
