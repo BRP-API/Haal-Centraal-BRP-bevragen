@@ -2,25 +2,61 @@
 
 public partial class Adres
 {
-    public bool ShouldSerializeVerblijfadres() =>
-        Verblijfadres != null && Verblijfadres.ShouldSerialize();
+    public override bool ShouldSerialize() =>
+        !string.IsNullOrWhiteSpace(AdresseerbaarObjectIdentificatie) ||
+        DatumIngangGeldigheid != null ||
+        DatumVan != null ||
+        FunctieAdres != null ||
+        InOnderzoek != null ||
+        NummeraanduidingIdentificatie != null ||
+        Verblijfadres != null
+        ;
+
+    public bool ShouldSerializeInOnderzoek() => InOnderzoek != null;
+
+    public bool ShouldSerializeVerblijfadres() => Verblijfadres != null;
+}
+
+public partial class AdresInOnderzoek
+{
+    public bool ShouldSerialize() =>
+        AdresseerbaarObjectIdentificatie.HasValue ||
+        DatumIngangGeldigheid.HasValue ||
+        DatumVan.HasValue ||
+        FunctieAdres.HasValue ||
+        NummeraanduidingIdentificatie.HasValue ||
+        Type.HasValue
+        ;
 }
 
 public partial class VerblijfadresBinnenland
 {
-    public bool ShouldSerializeInOnderzoek() => InOnderzoek != null;
-
     public bool ShouldSerialize() =>
-        !string.IsNullOrWhiteSpace(Straat) ||
-        Huisnummer > 0 ||
-        !string.IsNullOrWhiteSpace(Huisletter) ||
-        !string.IsNullOrWhiteSpace(Huisnummertoevoeging) ||
         AanduidingBijHuisnummer != null ||
-        !string.IsNullOrWhiteSpace(Postcode) ||
-        !string.IsNullOrWhiteSpace(Woonplaats) ||
+        !string.IsNullOrWhiteSpace(Huisletter) ||
+        Huisnummer > 0 ||
+        !string.IsNullOrWhiteSpace(Huisnummertoevoeging) ||
         !string.IsNullOrWhiteSpace(KorteNaam) ||
-        ShouldSerializeInOnderzoek()
+        !string.IsNullOrWhiteSpace(Postcode) ||
+        !string.IsNullOrWhiteSpace(Straat) ||
+        !string.IsNullOrWhiteSpace(Woonplaats) ||
+        InOnderzoek != null
         ;
+
+    public bool ShouldSerializeInOnderzoek() => InOnderzoek != null && InOnderzoek.ShouldSerialize();
+}
+
+public partial class VerblijfadresBinnenlandInOnderzoek
+{
+    public bool ShouldSerialize() =>
+        AanduidingBijHuisnummer.HasValue ||
+        Huisletter.HasValue ||
+        Huisnummer.HasValue ||
+        Huisnummertoevoeging.HasValue ||
+        KorteNaam.HasValue ||
+        Postcode.HasValue ||
+        Straat.HasValue ||
+        Woonplaats.HasValue;
 }
 
 public partial class AdresBeperkt
