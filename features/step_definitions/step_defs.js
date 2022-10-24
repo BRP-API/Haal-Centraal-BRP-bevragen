@@ -1463,12 +1463,22 @@ function createEmptyGegevensgroepInGegevensgroepCollectie(relatie, gegevensgroep
     }
 
     const expectedPersoon = this.context.expected[this.context.expected.length-1];
-    if(expectedPersoon[relaties] === undefined) {
-        expectedPersoon[relaties] = [{}];
-    }
 
-    const expectedRelatie = expectedPersoon[relaties][expectedPersoon[relaties].length-1];
-    expectedRelatie[gegevensgroep] = {};
+    if(relaties === undefined) {
+        if(expectedPersoon[relatie] === undefined) {
+            expectedPersoon[relatie] = {};
+        }
+        const expectedRelatie = expectedPersoon[relatie];
+        expectedRelatie[gegevensgroep] = {};
+    }
+    else {
+        if(expectedPersoon[relaties] === undefined) {
+            expectedPersoon[relaties] = [{}];
+        }
+    
+        const expectedRelatie = expectedPersoon[relaties][expectedPersoon[relaties].length-1];
+        expectedRelatie[gegevensgroep] = {};
+        }
 }
 
 Then(/^heeft de response een persoon met een '(\w*)' met een leeg '(\w*)' object$/, createEmptyGegevensgroepInGegevensgroepCollectie);
@@ -1514,7 +1524,7 @@ function createEmptyObjectInGegevensgroepCollectie(gegevensgroep) {
 
     const relaties = toCollectionName(gegevensgroep);
     if(relaties === undefined) {
-        console.log(`${gegevensgroep} is geen gegevensgroep collectie`);
+        expectedPersoon[gegevensgroep] = {};
     }
     else {
         if(expectedPersoon[relaties] === undefined) {
@@ -1529,6 +1539,9 @@ Then(/^heeft de response een persoon met een '(\w*)' zonder gegevens$/, createEm
 Then(/^heeft de persoon een '(\w*)' zonder gegevens$/, createEmptyObjectInGegevensgroepCollectie);
 
 Then(/^heeft de response een persoon met ?(?:een)? leeg '(.*)' object$/, createEmptyObjectInGegevensgroepCollectie);
+
+Then(/^heeft de persoon GEEN '(\w*)'$/, function (_) {
+});
 
 
 function toCollectionName(gegevensgroep) {
