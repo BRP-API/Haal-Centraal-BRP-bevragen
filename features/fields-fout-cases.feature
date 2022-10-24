@@ -1,6 +1,5 @@
 #language: nl
 
-@post-assert
 Functionaliteit: Fields fout cases
 
 Rule: De Fields parameter is verplicht.
@@ -10,7 +9,7 @@ Rule: De Fields parameter is verplicht.
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 999994086                       |
+    | burgerservicenummer | 000000139                       |
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                      |
     | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
@@ -47,7 +46,7 @@ Rule: De Fields parameter is verplicht.
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 999994086                       |
+    | burgerservicenummer | 000000139                       |
     | fields              |                                 |
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                      |
@@ -86,7 +85,7 @@ Rule: De Fields parameter is verplicht.
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 999994086                       |
+    | burgerservicenummer | 000000139                       |
     | fields (als string) | burgerservicenummer             |
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                      |
@@ -127,8 +126,8 @@ Rule: De Fields parameter mag maximaal 130 veld paden bevatten
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 999994086                       |
-    | fields              | (131 maal aNummer)              |
+    | burgerservicenummer | 000000139                       |
+    | fields              | <131 maal aNummer>              |
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                      |
     | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
@@ -141,6 +140,10 @@ Rule: De Fields parameter mag maximaal 130 veld paden bevatten
     | code     | name   | reason                          |
     | maxItems | fields | Array bevat meer dan 130 items. |
 
+    Voorbeelden:
+    | 131 maal aNummer |
+    | 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123, 124,125,126,127,128,129,130,131 |
+
   @fout-case
   Scenario: Zoek met geslachtsnaam en geboortedatum: Fields parameter bevat meer dan 130 veld paden
     Als personen wordt gezocht met de volgende parameters
@@ -148,7 +151,7 @@ Rule: De Fields parameter mag maximaal 130 veld paden bevatten
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam | Kierkegaard                         |
     | geboortedatum | 1956-11-15                          |
-    | fields        | (131 maal aNummer)                  |
+    | fields        | <131 maal aNummer>                  |
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                      |
     | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
@@ -160,6 +163,10 @@ Rule: De Fields parameter mag maximaal 130 veld paden bevatten
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name   | reason                          |
     | maxItems | fields | Array bevat meer dan 130 items. |
+
+    Voorbeelden:
+    | 131 maal aNummer |
+    | 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123, 124,125,126,127,128,129,130,131 |
 
 Rule: De Fields parameter bevat het pad naar de op te vragen velden
   - zie fields-mapping.csv: wanneer een in fields opgegeven veld(pad) niet voorkomt in de linker kolom, geeft dat een foutmelding
@@ -170,7 +177,7 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 999994086                       |
+    | burgerservicenummer | 000000139                       |
     | fields              | <fields>                        |
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                      |
@@ -219,7 +226,7 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                                         |
     | type                | RaadpleegMetBurgerservicenummer                |
-    | burgerservicenummer | 999994086                                      |
+    | burgerservicenummer | 000000139                                      |
     | fields              | burgerservicenummer,bestaatniet,bestaatookniet |
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                      |
@@ -239,7 +246,7 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 999994086                       |
+    | burgerservicenummer | 000000139                       |
     | fields              | BurgerServiceNummer,geslacht    |
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                      |
@@ -258,7 +265,7 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 999995078                       |
+    | burgerservicenummer | 000000139                       |
     | fields              | burgerservicenummer,<pad>       |
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                      |
@@ -301,7 +308,7 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 999994086                       |
+    | burgerservicenummer | 000000139                       |
     | fields              | burgerservicenummer, naam       |
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                      |
@@ -320,7 +327,7 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 999994086                       |
+    | burgerservicenummer | 000000139                       |
     | fields              | burgerservicenummer,,naam       |
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                      |
@@ -339,7 +346,7 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 999994086                       |
+    | burgerservicenummer | 000000139                       |
     | fields              | <fields>                        |
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                      |
