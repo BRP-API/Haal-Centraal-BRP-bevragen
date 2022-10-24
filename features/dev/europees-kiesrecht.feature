@@ -41,3 +41,14 @@ Functionaliteit: Persoon: Europees kiesrecht
     Voorbeelden:
     | naam                 |
     | einddatumUitsluiting |
+
+  Scenario: persoon heeft geen 'Europees kiesrecht' gegevens
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'inschrijving' gegevens
+    | naam                     | waarde |
+    | indicatie geheim (70.10) | 0      |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | europeesKiesrecht               |
+    Dan heeft de response een persoon zonder gegevens
