@@ -68,7 +68,7 @@ Functionaliteit: GBA persoon: partner
     Dan heeft de response een persoon met een 'partner' met de volgende 'geboorte' gegevens
     | naam                | waarde   |
     | plaats.code         | 0000     |
-    | plaats.omschrijving | onbekend |
+    | plaats.omschrijving | Onbekend |
 
     Voorbeelden:
     | field                    |
