@@ -544,7 +544,9 @@ function createStatementData(key, plId, adresId, rowData) {
 async function executeSqlStatements(sqlData) {
     let plId = undefined;
     let adresId = undefined;
-    if(pool !== undefined) {
+
+    if (sqlData !== undefined &&
+        pool !== undefined) {
         const client = await pool.connect();
         try {
             if(sqlData['adres'] !== undefined) {
@@ -553,16 +555,16 @@ async function executeSqlStatements(sqlData) {
             }
             const res = await client.query(insertIntoPersoonlijstStatement(sqlData['inschrijving'][0]));
             plId = res.rows[0]['pl_id'];
-
+    
             for(const key of Object.keys(sqlData)) {
                 if(key === 'inschrijving' ||
                     key === 'adres') {
                     continue;
                 }
-
+    
                 for(const rowData of sqlData[key]) {
                     const data = createStatementData(key, plId, adresId, rowData);
-
+    
                     const name = key.replace(/-\d$/, "");
                     await client.query(insertIntoStatement(name, data));
                 }
