@@ -1,7 +1,6 @@
 # language: nl
 
-@post-assert
-Functionaliteit: Nationaliteit
+Functionaliteit: GBA persoon: Nationaliteit
 
 Achtergrond:
   Gegeven landelijke tabel "Nationaliteiten" heeft de volgende waarden

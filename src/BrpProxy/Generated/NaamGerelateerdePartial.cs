@@ -3,10 +3,24 @@
 public partial class NaamGerelateerde : INaam
 {
     public bool ShouldSerialize() =>
-        !string.IsNullOrWhiteSpace(Voorletters)||
-        !string.IsNullOrWhiteSpace(Voornamen) ||
         AdellijkeTitelPredicaat != null ||
-        !string.IsNullOrWhiteSpace(Voorvoegsel) ||
         !string.IsNullOrWhiteSpace(Geslachtsnaam) ||
-        InOnderzoek != null;
+        !string.IsNullOrWhiteSpace(Voornamen) ||
+        !string.IsNullOrWhiteSpace(Voorvoegsel) ||
+        !string.IsNullOrWhiteSpace(Voorletters)||
+        InOnderzoek != null
+        ;
+
+    public bool ShouldSerializeInOnderzoek() => InOnderzoek != null && InOnderzoek.ShouldSerialize();
+}
+
+public partial class NaamInOnderzoek
+{
+    public bool ShouldSerialize() =>
+        AdellijkeTitelPredicaat.HasValue ||
+        Geslachtsnaam.HasValue ||
+        Voornamen.HasValue ||
+        Voorvoegsel.HasValue ||
+        Voorletters.HasValue
+        ;
 }

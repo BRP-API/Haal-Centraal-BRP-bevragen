@@ -1,6 +1,6 @@
 #language: nl
 
-Functionaliteit: Immigratie
+Functionaliteit: GBA persoon: Immigratie
 
   Abstract Scenario: persoon heeft 'immigratie' veld: 'land vanwaar ingeschreven (14.10)'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
