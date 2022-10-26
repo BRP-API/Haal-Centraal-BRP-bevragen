@@ -104,7 +104,7 @@ Functionaliteit: leveren van een datum
         | datum.onbekend    | true          |
         | datum.langFormaat | onbekend      |
 
-    Abstract Scenario: <type> in <groep> <veld>
+    Abstract Scenario: <type> in geboortedatum
       Gegeven de persoon met burgerservicenummer '000000140' heeft de volgende gegevens
         | naam                  | waarde     |
         | geboortedatum (03.10) | <GbaDatum> |
@@ -112,6 +112,58 @@ Functionaliteit: leveren van een datum
         | naam                | waarde                          |
         | type                | RaadpleegMetBurgerservicenummer |
         | burgerservicenummer | 000000140                       |
+        | fields              | geboorte.datum                  |
+        Dan heeft de response een persoon met de volgende 'geboorte' gegevens
+        | naam              | waarde        |
+        | datum.type        | <type>        |
+        | datum.datum       | <datum>       |
+        | datum.jaar        | <jaar>        |
+        | datum.maand       | <maand>       |
+        | datum.onbekend    | <onbekend>    |
+        | datum.langFormaat | <langFormaat> |
+
+      Voorbeelden:
+      | type           | GbaDatum | datum      | jaar | maand | onbekend | langFormaat  |
+      | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+
+    Abstract Scenario: <type> in overlijden.datum
+      Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'overlijden' gegevens
+        | datum overlijden (08.10) |
+        | <GbaDatum>               |
+        Als personen wordt gezocht met de volgende parameters
+        | naam                | waarde                          |
+        | type                | RaadpleegMetBurgerservicenummer |
+        | burgerservicenummer | 000000152                       |
+        | fields              | overlijden.datum                |
+        Dan heeft de response een persoon met de volgende 'overlijden' gegevens
+        | naam               | waarde        |
+        | indicatieOverleden | true          |
+        | datum.type         | <type>        |
+        | datum.datum        | <datum>       |
+        | datum.jaar         | <jaar>        |
+        | datum.maand        | <maand>       |
+        | datum.onbekend     | <onbekend>    |
+        | datum.langFormaat  | <langFormaat> |
+
+        Voorbeelden:
+        | type           | GbaDatum | datum      | jaar | maand | onbekend | langFormaat  |
+        | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+        | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+        | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+        | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+
+
+    Abstract Scenario: <type> in <groep> <veld>
+      Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende '<e2e-tabel>' gegevens
+        | naam       | waarde     |
+        | <Lo3-naam> | <GbaDatum> |
+        Als personen wordt gezocht met de volgende parameters
+        | naam                | waarde                          |
+        | type                | RaadpleegMetBurgerservicenummer |
+        | burgerservicenummer | 000000152                       |
         | fields              | <groep>.<veld>                  |
         Dan heeft de response een persoon met de volgende '<groep>' gegevens
         | naam               | waarde        |
@@ -122,51 +174,20 @@ Functionaliteit: leveren van een datum
         | <veld>.onbekend    | <onbekend>    |
         | <veld>.langFormaat | <langFormaat> |
 
-      Voorbeelden:
-      | groep                 | veld                      | type           | GbaDatum | datum      | jaar | maand | onbekend | langFormaat  |
-      | geboorte              | datum                     | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
-      | geboorte              | datum                     | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
-      | geboorte              | datum                     | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
-      | geboorte              | datum                     | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
-
-
-
-      Abstract Scenario: <type> in <groep> <veld>
-        Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende '<e2e-tabel>' gegevens
-          | naam       | waarde     |
-          | <Lo3-naam> | <GbaDatum> |
-          Als personen wordt gezocht met de volgende parameters
-          | naam                | waarde                          |
-          | type                | RaadpleegMetBurgerservicenummer |
-          | burgerservicenummer | 000000152                       |
-          | fields              | <groep>.<veld>                  |
-          Dan heeft de response een persoon met de volgende '<groep>' gegevens
-          | naam               | waarde        |
-          | <veld>.type        | <type>        |
-          | <veld>.datum       | <datum>       |
-          | <veld>.jaar        | <jaar>        |
-          | <veld>.maand       | <maand>       |
-          | <veld>.onbekend    | <onbekend>    |
-          | <veld>.langFormaat | <langFormaat> |
-
         Voorbeelden:
         | groep                 | veld                      | type           | GbaDatum | datum      | jaar | maand | onbekend | langFormaat  | Lo3-naam                                         | e2e-tabel      |
-        | overlijden            | datum                     | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 | datum overlijden (08.10)                         | overlijden     |
         | opschortingBijhouding | datum                     | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 | datum opschorting bijhouding (67.10)             | inschrijving   |
         | verblijfstitel        | datumIngang               | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 | datum ingang verblijfstitel (39.30)              | verblijfstitel |
         | verblijfstitel        | datumEinde                | Datum          | 20300701 | 2030-07-01 |      |       |          | 1 juli 2030  | datum einde verblijfstitel (39.20)               | verblijfstitel |
         | europeesKiesrecht     | einddatumUitsluiting      | Datum          | 20300701 | 2030-07-01 |      |       |          | 1 juli 2030  | einddatum uitsluiting Europees kiesrecht (31.30) | inschrijving   |
         | uitsluitingKiesrecht  | einddatum                 | Datum          | 20300701 | 2030-07-01 |      |       |          | 1 juli 2030  | einddatum uitsluiting kiesrecht (38.20)          | inschrijving   |
-        | overlijden            | datum                     | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     | datum overlijden (08.10)                         | overlijden     |
         | opschortingBijhouding | datum                     | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     | datum opschorting bijhouding (67.10)             | inschrijving   |
         | verblijfstitel        | datumIngang               | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     | datum ingang verblijfstitel (39.30)              | verblijfstitel |
         | uitsluitingKiesrecht  | einddatum                 | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     | einddatum uitsluiting kiesrecht (38.20)          | inschrijving   |
-        | overlijden            | datum                     | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         | datum overlijden (08.10)                         | overlijden     |
         | opschortingBijhouding | datum                     | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         | datum opschorting bijhouding (67.10)             | inschrijving   |
         | verblijfstitel        | datumIngang               | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         | datum ingang verblijfstitel (39.30)              | verblijfstitel |
         | europeesKiesrecht     | einddatumUitsluiting      | JaarDatum      | 20300000 |            | 2030 |       |          | 2030         | einddatum uitsluiting Europees kiesrecht (31.30) | inschrijving   |
         | uitsluitingKiesrecht  | einddatum                 | JaarDatum      | 20300000 |            | 2030 |       |          | 2030         | einddatum uitsluiting kiesrecht (38.20)          | inschrijving   |
-        | overlijden            | datum                     | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   | datum overlijden (08.10)                         | overlijden     |
         | opschortingBijhouding | datum                     | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   | datum opschorting bijhouding (67.10)             | inschrijving   |
         | verblijfstitel        | datumIngang               | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   | datum ingang verblijfstitel (39.30)              | verblijfstitel |
         | verblijfstitel        | datumEinde                | JaarMaandDatum | 20300700 |            | 2030 | 7     |          | juli 2030    | datum einde verblijfstitel (39.20)               | verblijfstitel |
