@@ -1,14 +1,11 @@
 # language: nl
 
-@proxy @post-assert
-Functionaliteit: verblijfplaats buitenland beperkt
+Functionaliteit: Persoon beperkt: verblijfplaats buitenland
 
   Abstract Scenario: persoon heeft 'verblijfplaats' veld: 'land adres buitenland (13.10)' met waarde ongelijk aan '0000'
-    Gegeven het systeem heeft een persoon met de volgende 'naam' gegevens
-    | naam                  | waarde  |
-    | geslachtsnaam (02.40) | Maassen |
-    En de persoon heeft de volgende 'geboorte' gegevens
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
     | naam                  | waarde   |
+    | geslachtsnaam (02.40) | Maassen  |
     | geboortedatum (03.10) | 19830526 |
     En de persoon heeft de volgende 'verblijfplaats' gegevens
     | naam                          | waarde |

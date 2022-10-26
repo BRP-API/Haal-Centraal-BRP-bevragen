@@ -1,6 +1,6 @@
 # language: nl
 
-Functionaliteit: Nationaliteit
+Functionaliteit: Persoon: nationaliteit
 
   Scenario: persoon heeft een nationaliteit
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens

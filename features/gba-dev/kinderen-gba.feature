@@ -1,7 +1,6 @@
 # language: nl
 
-@post-assert
-Functionaliteit: Kinderen van een persoon raadplegen
+Functionaliteit: Kinderen van een GBA persoon raadplegen
   Van een persoon worden -indien gevraagd met de fields parameter- de kinderen geleverd.
   Dit bevat enkele identificerende eigenschappen van de kinderen.
 
@@ -94,7 +93,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000061                       |
       | fields              | kinderen                        |
-      Dan heeft de response een persoon zonder gegevens
+      Dan heeft de response een persoon zonder 'kind' gegevens
 
     Scenario: met fields vragen om een gegeven zonder waarde
       Gegeven de persoon met burgerservicenummer '000000073' heeft een 'kind' met de volgende gegevens

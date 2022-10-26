@@ -1,7 +1,6 @@
 # language: nl
 
-@post-assert
-Functionaliteit: RNI
+Functionaliteit: Persoon: RNI
 
   Rule: wanneer er geen RNI-deelnemer is en er wordt niet om gevraagd met fields, wordt het niet geleverd
 

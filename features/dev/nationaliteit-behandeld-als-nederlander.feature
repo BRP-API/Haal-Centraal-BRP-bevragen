@@ -1,6 +1,6 @@
 # language: nl
 
-Functionaliteit: behandeld als Nederlander
+Functionaliteit: Persoon: nationaliteit - behandeld als Nederlander
 
   Abstract Scenario: persoon wordt 'behandeld als Nederlander'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
