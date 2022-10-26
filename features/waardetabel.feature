@@ -60,11 +60,11 @@ Functionaliteit: Waardetabel met code en omschrijving
       | <prefix>omschrijving        | <waarde-omschrijving> |
 
       Voorbeelden:
-      | tabel            | waarde-code | waarde-omschrijving                  | groepsnaam       | lo3-naam                             | propertynaam               | fieldnaam                          | prefix        |
-      | Gezagsverhouding | 1D          | Ouder1 en een derde hebben het gezag | gezagsverhouding | indicatie gezag minderjarige (32.10) | indicatieGezagMinderjarige | indicatieGezagMinderjarige         |               |
-      | Gemeenten        | 1326        | 's Heer Hendriks Kinderen            | verblijfplaats   | gemeente van inschrijving (09.10)    | gemeenteVanInschrijving    | gemeenteVanInschrijving            |               |
-      | Landen           | 5013        | Nieuwzeeland                         | overlijden       | land overlijden (08.30)              | overlijden                 | overlijden.land                    | land.         |
-      | Gemeenten        | 1210        | Vlaardinger-Ambacht                  | overlijden       | plaats overlijden (08.20)            | overlijden                 | overlijden.plaats                  | plaats.       |
+      | tabel            | waarde-code | waarde-omschrijving                  | groepsnaam       | lo3-naam                             | propertynaam               | fieldnaam                          | prefix                   |
+      | Gezagsverhouding | 1D          | Ouder1 en een derde hebben het gezag | gezagsverhouding | indicatie gezag minderjarige (32.10) | indicatieGezagMinderjarige | indicatieGezagMinderjarige         |                          |
+      | Gemeenten        | 1326        | 's Heer Hendriks Kinderen            | verblijfplaats   | gemeente van inschrijving (09.10)    | gemeenteVanInschrijving    | gemeenteVanInschrijving            |                          |
+      | Landen           | 5013        | Nieuwzeeland                         | overlijden       | land overlijden (08.30)              | overlijden                 | overlijden.land                    | land.                    |
+      | Gemeenten        | 1210        | Vlaardinger-Ambacht                  | overlijden       | plaats overlijden (08.20)            | overlijden                 | overlijden.plaats                  | plaats.                  |
       | Landen           | 9015        | Windwardeilanden                     | verblijfplaats   | land vanwaar ingeschreven (14.10)    | immigratie                 | immigratie.landVanwaarIngeschreven | landVanwaarIngeschreven. |
       | Verblijfstitel   | 09          | Art. 9 van de Vreemdelingenwet       | verblijfstitel   | aanduiding verblijfstitel (39.10)    | verblijfstitel             | verblijfstitel.aanduiding          | aanduiding.              |
 
@@ -155,7 +155,7 @@ Functionaliteit: Waardetabel met code en omschrijving
     Abstract Scenario: Omschrijving en soort bij code voor <relatie> met adellijke titel of predicaat
       Gegeven de persoon met burgerservicenummer '000000243' heeft een <relatie> met de volgende gegevens
       | adellijke titel of predicaat (02.20) |
-      | <waarde>  |
+      | <waarde>                             |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                |
       | type                | RaadpleegMetBurgerservicenummer       |
@@ -210,7 +210,7 @@ Functionaliteit: Waardetabel met code en omschrijving
       | element                           | tabel               | groep                        | veld                    | waarde |
       | plaats overlijden (08.20)         | Gemeenten           | overlijden                   | plaats                  | 9876   |
       | land overlijden (08.30)           | Landen              | overlijden                   | land                    | 1234   |
-      | aanduiding verblijfstitel (39.10) | Verblijfstiteltabel | verblijfstitel               | aanduiding              | 01     |
+      | aanduiding verblijfstitel (39.10) | Verblijfstitel      | verblijfstitel               | aanduiding              | 01     |
 
     Abstract Scenario: code voor <element> komt niet voor in de tabel <tabel>
       Gegeven de persoon met burgerservicenummer '000000279' heeft de volgende '<groep>' gegevens
@@ -263,12 +263,12 @@ Functionaliteit: Waardetabel met code en omschrijving
     Abstract Scenario: Plaats is buitenlandse plaats of locatie bij code voor <relatie> <element>
       Gegeven de persoon met burgerservicenummer '000000309' heeft een <relatie> met de volgende gegevens
       | <element>           |
-      | <waarde>  |
+      | <waarde>            |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000309                       |
-      | fields              | <fields>.<groep>            |
+      | fields              | <fields>.<groep>                |
       Dan heeft de response een persoon met een '<relatiedan>' met de volgende '<groep>' gegevens
       | naam                | waarde   |
       | plaats.omschrijving | <waarde> |
