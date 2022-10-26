@@ -1,7 +1,7 @@
 # language: nl
 
 
-Functionaliteit: Als gemeente wil ik de juiste en consistent naamgebruik in een lopende tekst
+Functionaliteit: Als gemeente wil ik een consistent en juist naamgebruik in een lopende tekst
   De gebruikInLopendeTekst bij een persoon wordt gevuld door de provider om op deze wijze op eenduidige wijze een persoon te kunnen benoemen.
 
   De gebruikInLopendeTekst kan worden gebruikt in bijvoorbeeld een zin in een brief als "In uw brief van 12 mei jongstleden, geeft u het overlijden van uw vader, de heer In het Veld, aan.", waarbij "de heer In het Veld" gehaald is uit attribuut gebruikInLopendeTekst.
@@ -29,7 +29,7 @@ Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predicaat
     | P                     | GA VP GP              |
     | V                     | GA VP GP-VV GN        |
     | N                     | GA VV GN-VP GP        |
-  - De eerste naamcomponent direct na "mevrouw" of "de heer" begint met een hoofdletter
+  - Als de eerste naamcomponent direct na "mevrouw" of "de heer" begint met een letter, dan wordt die als hoofdletter weergegeven
   - Wanneer een naamcomponent geen of een lege waarde heeft, wordt de overbodige spatie niet opgenomen: niet starten met een spatie, niet eindigen met een spatie, geen dubbele spatie, geen spatie na streepje
   - Aanduiding naamgebruik "E" (eigen naam) wordt gehanteerd voor een persoon die geen actuele en geen ontbonden huwelijken/partnerschappen heeft gehad
 
@@ -152,7 +152,7 @@ Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predicaat
       | voorvoegsel met hoofdletters  | V        | V           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | mevrouw Van Der Broeck-Op Den Berghe |
       | voorvoegsel met hoofdletters  | O        | V           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | J.R. Van Der Broeck-Op Den Berghe    |
       | voorvoegsel in kleine letters | V        | N           | Jo Rene   | in het      | Zonnetje      | 't                  | Wolkje                | mevrouw In het Zonnetje-'t Wolkje    |
-      | voorvoegsel met hoofdletters  | V        | N           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | mevrouw Op Den Berghe-Van Der Broeck |
+      | voorvoegsel met hoofdletters  | M        | N           | Rene Jan  | Op Den      | Berghe        | Van Der             | Broeck                | de heer Op Den Berghe-Van Der Broeck |
       | voorvoegsel met hoofdletters  | O        | N           | Jo Rene   | Op Den      | Berghe        | Van Der             | Broeck                | J.R. Op Den Berghe-Van Der Broeck    |
 
 Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predicaat wordt samengesteld afhankelijk van het geslacht en de waarde van aanduidingNaamgebruik, waarbij geldt dat:
