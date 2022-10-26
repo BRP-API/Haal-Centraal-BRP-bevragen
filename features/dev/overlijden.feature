@@ -1,6 +1,6 @@
 #language: nl
 
-Functionaliteit: Overlijden velden van persoon
+Functionaliteit: Persoon: overlijden
 
   Abstract Scenario: persoon heeft 'overlijden' datum veld: 'datum overlijden (08.10)'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'overlijden' gegevens

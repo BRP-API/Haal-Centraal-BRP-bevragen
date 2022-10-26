@@ -1,17 +1,17 @@
-# language: nl
+#language: nl
 
-Functionaliteit: Persoon: partner - geboorte
+Functionaliteit: Persoon: kind - geboorte
 
-  Abstract Scenario: partner heeft 'geboorte' veld: '<gba naam>'
-    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+  Abstract Scenario: kind heeft 'geboorte' veld: '<gba naam>'
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
     | naam       | waarde |
     | <gba naam> | <code> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
-    | fields              | partners.geboorte.<naam>        |
-    Dan heeft de response een persoon met een 'partner' met alleen de volgende 'geboorte' gegevens
+    | fields              | kinderen.geboorte.<naam>        |
+    Dan heeft de response een persoon met een 'kind' met alleen de volgende 'geboorte' gegevens
     | naam                | waarde         |
     | <naam>.code         | <code>         |
     | <naam>.omschrijving | <omschrijving> |
@@ -21,27 +21,23 @@ Functionaliteit: Persoon: partner - geboorte
     | geboorteplaats (03.20) | plaats | 0518 | 's-Gravenhage                |
     | geboorteland (03.30)   | land   | 6014 | Verenigde Staten van Amerika |
 
-  Abstract Scenario: partner heeft 'geboorte' datum veld: '<gba naam>'
-    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
-    | naam       | waarde       |
-    | <gba naam> | <gba waarde> |
+  Scenario: kind heeft 'geboorte' datum veld: 'geboortedatum (03.10)'
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
+    | naam                  | waarde   |
+    | geboortedatum (03.10) | 20020701 |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
-    | fields              | partners.geboorte.datum         |
-    Dan heeft de response een persoon met een 'partner' met alleen de volgende 'geboorte' gegevens
-    | naam              | waarde         |
-    | datum.type        | Datum          |
-    | datum.datum       | <waarde>       |
-    | datum.langFormaat | <lang formaat> |
+    | fields              | kinderen.geboorte.datum         |
+    Dan heeft de response een persoon met een 'kind' met alleen de volgende 'geboorte' gegevens
+    | naam              | waarde      |
+    | datum.type        | Datum       |
+    | datum.datum       | 2002-07-01  |
+    | datum.langFormaat | 1 juli 2002 |
 
-    Voorbeelden:
-    | gba naam              | gba waarde | waarde     | lang formaat |
-    | geboortedatum (03.10) | 20020701   | 2002-07-01 | 1 juli 2002  |
-
-  Abstract Scenario: partner heeft 'geboorte' veld met onbekend waarde: 'geboortedatum (03.10)'
-    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+  Abstract Scenario: kind heeft 'geboorte' veld met onbekend waarde: 'geboortedatum (03.10)'
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
     | naam                  | waarde   |
     | geboortedatum (03.10) | 00000000 |
     Als personen wordt gezocht met de volgende parameters
@@ -49,7 +45,7 @@ Functionaliteit: Persoon: partner - geboorte
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
     | fields              | <field>                         |
-    Dan heeft de response een persoon met een 'partner' met de volgende 'geboorte' gegevens
+    Dan heeft de response een persoon met een 'kind' met de volgende 'geboorte' gegevens
     | naam              | waarde        |
     | datum.type        | DatumOnbekend |
     | datum.onbekend    | true          |
@@ -57,12 +53,12 @@ Functionaliteit: Persoon: partner - geboorte
 
     Voorbeelden:
     | field                   |
-    | partners                |
-    | partners.geboorte       |
-    | partners.geboorte.datum |
+    | kinderen                |
+    | kinderen.geboorte       |
+    | kinderen.geboorte.datum |
 
-  Abstract Scenario: partner heeft 'geboorte' veld met onbekend waarde: 'geboorteplaats (03.20)'
-    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+  Abstract Scenario: kind heeft 'geboorte' veld met onbekend waarde: 'geboorteplaats (03.20)'
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
     | naam                   | waarde |
     | geboorteplaats (03.20) | 0000   |
     Als personen wordt gezocht met de volgende parameters
@@ -70,16 +66,16 @@ Functionaliteit: Persoon: partner - geboorte
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
     | fields              | <field>                         |
-    Dan heeft de response een persoon met een 'partner' zonder 'geboorte' gegevens
+    Dan heeft de response een persoon met een 'kind' zonder 'geboorte' gegevens
 
     Voorbeelden:
     | field                    |
-    | partners                 |
-    | partners.geboorte        |
-    | partners.geboorte.plaats |
+    | kinderen                 |
+    | kinderen.geboorte        |
+    | kinderen.geboorte.plaats |
 
-  Abstract Scenario: partner heeft 'geboorte' veld met onbekend waarde: 'geboorteland (03.30)'
-    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+  Abstract Scenario: kind heeft 'geboorte' veld met onbekend waarde: 'geboorteland (03.30)'
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
     | naam                 | waarde |
     | geboorteland (03.30) | 0000   |
     Als personen wordt gezocht met de volgende parameters
@@ -87,16 +83,16 @@ Functionaliteit: Persoon: partner - geboorte
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
     | fields              | <field>                         |
-    Dan heeft de response een persoon met een 'partner' zonder 'geboorte' gegevens
+    Dan heeft de response een persoon met een 'kind' zonder 'geboorte' gegevens
 
     Voorbeelden:
     | field                  |
-    | partners               |
-    | partners.geboorte      |
-    | partners.geboorte.land |
+    | kinderen               |
+    | kinderen.geboorte      |
+    | kinderen.geboorte.land |
 
-  Abstract Scenario: geboorte veld(en) van partner is/zijn in onderzoek
-    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+  Abstract Scenario: 'geboorte' velden van kind is/zijn in onderzoek
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
     | naam                            | waarde                    |
     | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
@@ -104,8 +100,8 @@ Functionaliteit: Persoon: partner - geboorte
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
-    | fields              | partners.geboorte.inOnderzoek   |
-    Dan heeft de response een persoon met een 'partner' met alleen de volgende 'geboorte' gegevens
+    | fields              | kinderen.geboorte.inOnderzoek   |
+    Dan heeft de response een persoon met een 'kind' met alleen de volgende 'geboorte' gegevens
     | naam                                         | waarde                |
     | inOnderzoek.datum                            | <datum in onderzoek>  |
     | inOnderzoek.plaats                           | <plaats in onderzoek> |
@@ -116,28 +112,28 @@ Functionaliteit: Persoon: partner - geboorte
 
     Voorbeelden:
     | gba in onderzoek waarde | datum in onderzoek | plaats in onderzoek | land in onderzoek |
-    | 050000                  | true               | true                | true              |
-    | 050300                  | true               | true                | true              |
-    | 050310                  | true               |                     |                   |
-    | 050320                  |                    | true                |                   |
-    | 050330                  |                    |                     | true              |
+    | 090000                  | true               | true                | true              |
+    | 090300                  | true               | true                | true              |
+    | 090310                  | true               |                     |                   |
+    | 090320                  |                    | true                |                   |
+    | 090330                  |                    |                     | true              |
 
   Abstract Scenario: 'geboortedatum (03.10)' is in onderzoek
-    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
     | naam                            | waarde                    |
     | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
-    | geboortedatum (03.10)           | 19630405                  |
+    | geboortedatum (03.10)           | 20200405                  |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
-    | fields              | partners.geboorte.datum         |
-    Dan heeft de response een persoon met een 'partner' met alleen de volgende 'geboorte' gegevens
+    | fields              | kinderen.geboorte.datum         |
+    Dan heeft de response een persoon met een 'kind' met alleen de volgende 'geboorte' gegevens
     | naam                                         | waarde       |
     | datum.type                                   | Datum        |
-    | datum.datum                                  | 1963-04-05   |
-    | datum.langFormaat                            | 5 april 1963 |
+    | datum.datum                                  | 2020-04-05   |
+    | datum.langFormaat                            | 5 april 2020 |
     | inOnderzoek.datum                            | true         |
     | inOnderzoek.datumIngangOnderzoek.type        | Datum        |
     | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01   |
@@ -145,38 +141,38 @@ Functionaliteit: Persoon: partner - geboorte
 
     Voorbeelden:
     | gba in onderzoek waarde |
-    | 050000                  |
-    | 050300                  |
-    | 050310                  |
+    | 090000                  |
+    | 090300                  |
+    | 090310                  |
 
   Abstract Scenario: 'geboorteplaats (03.20)' is in onderzoek
-    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
     | naam                            | waarde                    |
     | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
-    | geboorteplaats (03.20)          | 0518                      |
+    | geboorteplaats (03.20)          | 0344                      |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
-    | fields              | partners.geboorte.plaats        |
-    Dan heeft de response een persoon met een 'partner' met alleen de volgende 'geboorte' gegevens
-    | naam                                         | waarde        |
-    | plaats.code                                  | 0518          |
-    | plaats.omschrijving                          | 's-Gravenhage |
-    | inOnderzoek.plaats                           | true          |
-    | inOnderzoek.datumIngangOnderzoek.type        | Datum         |
-    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01    |
-    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002   |
+    | fields              | kinderen.geboorte.plaats        |
+    Dan heeft de response een persoon met een 'kind' met alleen de volgende 'geboorte' gegevens
+    | naam                                         | waarde      |
+    | plaats.code                                  | 0344        |
+    | plaats.omschrijving                          | Utrecht     |
+    | inOnderzoek.plaats                           | true        |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum       |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01  |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002 |
 
     Voorbeelden:
     | gba in onderzoek waarde |
-    | 050000                  |
-    | 050300                  |
-    | 050320                  |
+    | 090000                  |
+    | 090300                  |
+    | 090320                  |
 
   Abstract Scenario: 'geboorteland (03.30)' is in onderzoek
-    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
     | naam                            | waarde                    |
     | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
@@ -185,8 +181,8 @@ Functionaliteit: Persoon: partner - geboorte
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
-    | fields              | partners.geboorte.land          |
-    Dan heeft de response een persoon met een 'partner' met alleen de volgende 'geboorte' gegevens
+    | fields              | kinderen.geboorte.land          |
+    Dan heeft de response een persoon met een 'kind' met alleen de volgende 'geboorte' gegevens
     | naam                                         | waarde                       |
     | land.code                                    | 6014                         |
     | land.omschrijving                            | Verenigde Staten van Amerika |
@@ -197,46 +193,46 @@ Functionaliteit: Persoon: partner - geboorte
 
     Voorbeelden:
     | gba in onderzoek waarde |
-    | 050000                  |
-    | 050300                  |
-    | 050330                  |
+    | 090000                  |
+    | 090300                  |
+    | 090330                  |
 
   Abstract Scenario: 'geboortedatum (03.10)' is in onderzoek, maar wordt niet gevraagd
-    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
     | naam                            | waarde                    |
     | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
-    | geboortedatum (03.10)           | 19630405                  |
+    | geboortedatum (03.10)           | 20200405                  |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
-    | fields              | partners.geboorte.plaats        |
-    Dan heeft de response een persoon met een 'partner' zonder 'geboorte' gegevens
+    | fields              | kinderen.geboorte.plaats        |
+    Dan heeft de response een persoon met een 'kind' zonder 'geboorte' gegevens
 
     Voorbeelden:
     | gba in onderzoek waarde |
-    | 050310                  |
+    | 090310                  |
 
   Abstract Scenario: 'geboorteplaats (03.20)' is in onderzoek, maar wordt niet gevraagd
-    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
     | naam                            | waarde                    |
     | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
-    | geboorteplaats (03.20)          | 0518                      |
+    | geboorteplaats (03.20)          | 0344                      |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
-    | fields              | partners.geboorte.land        |
-    Dan heeft de response een persoon met een 'partner' zonder 'geboorte' gegevens
+    | fields              | kinderen.geboorte.land          |
+    Dan heeft de response een persoon met een 'kind' zonder 'geboorte' gegevens
 
     Voorbeelden:
     | gba in onderzoek waarde |
-    | 050320                  |
+    | 090320                  |
 
   Abstract Scenario: 'geboorteland (03.30)' is in onderzoek, maar wordt niet gevraagd
-    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
     | naam                            | waarde                    |
     | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
@@ -245,9 +241,9 @@ Functionaliteit: Persoon: partner - geboorte
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
-    | fields              | partners.geboorte.datum         |
-    Dan heeft de response een persoon met een 'partner' zonder 'geboorte' gegevens
+    | fields              | kinderen.geboorte.datum         |
+    Dan heeft de response een persoon met een 'kind' zonder 'geboorte' gegevens
 
     Voorbeelden:
     | gba in onderzoek waarde |
-    | 050330                  |
+    | 090330                  |

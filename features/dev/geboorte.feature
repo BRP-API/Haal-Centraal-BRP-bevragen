@@ -1,6 +1,6 @@
 #language: nl
 
-Functionaliteit: Persoon: geboorte velden
+Functionaliteit: Persoon: geboorte
 
   Abstract Scenario: persoon heeft 'geboorte' datum veld: '<gba naam>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens

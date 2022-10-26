@@ -1,6 +1,6 @@
 # language: nl
 
-Functionaliteit: Uitsluiting kiesrecht
+Functionaliteit: Persoon: uitsluiting kiesrecht
 
     Abstract Scenario: persoon heeft 'uitsluiting kiesrecht' veld: <gba naam>
       Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'inschrijving' gegevens

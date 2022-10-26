@@ -1,56 +1,56 @@
-# language: nl
+#language: nl
 
-Functionaliteit: Persoon: partner - naam
+Functionaliteit: Persoon: kind - naam
 
-  Abstract Scenario: partner heeft 'naam' veld: '<gba naam>'
-    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+  Abstract Scenario: kind heeft 'naam' veld: '<gba naam>'
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
     | naam       | waarde   |
     | <gba naam> | <waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
-    | fields              | partners.naam.<naam>            |
-    Dan heeft de response een persoon met een 'partner' met alleen de volgende 'naam' gegevens
+    | fields              | kinderen.naam.<naam>            |
+    Dan heeft de response een persoon met een 'kind' met alleen de volgende 'naam' gegevens
     | naam   | waarde   |
     | <naam> | <waarde> |
 
     Voorbeelden:
     | gba naam              | naam          | waarde |
-    | voornamen (02.10)     | voornamen     | Jan    |
-    | voorvoegsel (02.30)   | voorvoegsel   | de     |
-    | geslachtsnaam (02.40) | geslachtsnaam | Groen  |
+    | voornamen (02.10)     | voornamen     | Piet   |
+    | voorvoegsel (02.30)   | voorvoegsel   | in den |
+    | geslachtsnaam (02.40) | geslachtsnaam | Jansen |
 
-  Scenario: partner heeft 'naam' veld: 'adellijke titel of predicaat (02.20)'
-    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+  Scenario: kind heeft 'naam' veld: 'adellijke titel of predicaat (02.20)'
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
     | naam                                 | waarde |
-    | adellijke titel of predicaat (02.20) | R      |
+    | adellijke titel of predicaat (02.20) | JH     |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                                |
     | type                | RaadpleegMetBurgerservicenummer       |
     | burgerservicenummer | 000000012                             |
-    | fields              | partners.naam.adellijkeTitelPredicaat |
-    Dan heeft de response een persoon met een 'partner' met alleen de volgende 'naam' gegevens
-    | naam                                 | waarde |
-    | adellijkeTitelPredicaat.code         | R      |
-    | adellijkeTitelPredicaat.omschrijving | Ridder |
-    | adellijkeTitelPredicaat.soort        | titel  |
+    | fields              | kinderen.naam.adellijkeTitelPredicaat |
+    Dan heeft de response een persoon met een 'kind' met alleen de volgende 'naam' gegevens
+    | naam                                 | waarde    |
+    | adellijkeTitelPredicaat.code         | JH        |
+    | adellijkeTitelPredicaat.omschrijving | Jonkheer  |
+    | adellijkeTitelPredicaat.soort        | predicaat |
 
-  Scenario: partner heeft 'naam' veld: 'voorletters'
-    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+  Scenario: kind heeft 'naam' veld: 'voorletters'
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
     | naam              | waarde    |
-    | voornamen (02.10) | Klaas Jan |
+    | voornamen (02.10) | Peter Jan |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
-    | fields              | partners.naam.voorletters       |
-    Dan heeft de response een persoon met een 'partner' met alleen de volgende 'naam' gegevens
+    | fields              | kinderen.naam.voorletters       |
+    Dan heeft de response een persoon met een 'kind' met alleen de volgende 'naam' gegevens
     | naam        | waarde |
-    | voorletters | K.J.   |
+    | voorletters | P.J.   |
 
-  Abstract Scenario: partner heeft 'naam' veld met onbekend waarde: 'geslachtsnaam (02.40)'
-    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+  Abstract Scenario: kind heeft 'naam' veld met onbekend waarde: 'geslachtsnaam (02.40)'
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
     | naam                  | waarde |
     | geslachtsnaam (02.40) | .      |
     Als personen wordt gezocht met de volgende parameters
@@ -58,16 +58,16 @@ Functionaliteit: Persoon: partner - naam
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
     | fields              | <field>                         |
-    Dan heeft de response een persoon met een 'partner' zonder 'naam' gegevens
+    Dan heeft de response een persoon met een 'kind' met een leeg 'naam' object
 
     Voorbeelden:
     | field                       |
-    | partners                    |
-    | partners.naam               |
-    | partners.naam.geslachtsnaam |
+    | kinderen                    |
+    | kinderen.naam               |
+    | kinderen.naam.geslachtsnaam |
 
-  Abstract Scenario: naam veld(en) van partner is/zijn in onderzoek
-    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+  Abstract Scenario: naam velden van kind is/zijn in onderzoek
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
     | naam                            | waarde                    |
     | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
@@ -75,8 +75,8 @@ Functionaliteit: Persoon: partner - naam
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
-    | fields              | partners.naam.inOnderzoek       |
-    Dan heeft de response een persoon met een 'partner' met alleen de volgende 'naam' gegevens
+    | fields              | kinderen.naam.inOnderzoek                   |
+    Dan heeft de response een persoon met een 'kind' met alleen de volgende 'naam' gegevens
     | naam                                         | waarde                                 |
     | inOnderzoek.voornamen                        | <voornamen in onderzoek>               |
     | inOnderzoek.adellijkeTitelPredicaat          | <adellijkeTitelPredicaat in onderzoek> |
@@ -89,15 +89,15 @@ Functionaliteit: Persoon: partner - naam
 
     Voorbeelden:
     | gba in onderzoek waarde | voornamen in onderzoek | adellijkeTitelPredicaat in onderzoek | voorvoegsel in onderzoek | geslachtsnaam in onderzoek | voorletters in onderzoek |
-    | 050000                  | true                   | true                                 | true                     | true                       | true                     |
-    | 050200                  | true                   | true                                 | true                     | true                       | true                     |
-    | 050210                  | true                   |                                      |                          |                            | true                     |
-    | 050220                  |                        | true                                 |                          |                            |                          |
-    | 050230                  |                        |                                      | true                     |                            |                          |
-    | 050240                  |                        |                                      |                          | true                       |                          |
+    | 090000                  | true                   | true                                 | true                     | true                       | true                     |
+    | 090200                  | true                   | true                                 | true                     | true                       | true                     |
+    | 090210                  | true                   |                                      |                          |                            | true                     |
+    | 090220                  |                        | true                                 |                          |                            |                          |
+    | 090230                  |                        |                                      | true                     |                            |                          |
+    | 090240                  |                        |                                      |                          | true                       |                          |
 
   Abstract Scenario: 'voornamen (02.10)' is in onderzoek
-    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
     | naam                            | waarde                    |
     | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
@@ -106,8 +106,8 @@ Functionaliteit: Persoon: partner - naam
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
-    | fields              | partners.naam.voornamen         |
-    Dan heeft de response een persoon met een 'partner' met alleen de volgende 'naam' gegevens
+    | fields              | kinderen.naam.voornamen         |
+    Dan heeft de response een persoon met een 'kind' met alleen de volgende 'naam' gegevens
     | naam                                         | waarde      |
     | voornamen                                    | Jan         |
     | inOnderzoek.voornamen                        | true        |
@@ -117,12 +117,12 @@ Functionaliteit: Persoon: partner - naam
 
     Voorbeelden:
     | gba in onderzoek waarde |
-    | 050000                  |
-    | 050200                  |
-    | 050210                  |
+    | 090000                  |
+    | 090200                  |
+    | 090210                  |
 
   Abstract Scenario: voorletters is in onderzoek
-    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
     | naam                            | waarde                    |
     | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
@@ -131,8 +131,8 @@ Functionaliteit: Persoon: partner - naam
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
-    | fields              | partners.naam.voorletters       |
-    Dan heeft de response een persoon met een 'partner' met alleen de volgende 'naam' gegevens
+    | fields              | kinderen.naam.voorletters       |
+    Dan heeft de response een persoon met een 'kind' met alleen de volgende 'naam' gegevens
     | naam                                         | waarde      |
     | voorletters                                  | J.P.        |
     | inOnderzoek.voorletters                      | true        |
@@ -142,12 +142,12 @@ Functionaliteit: Persoon: partner - naam
 
     Voorbeelden:
     | gba in onderzoek waarde |
-    | 050000                  |
-    | 050200                  |
-    | 050210                  |
+    | 090000                  |
+    | 090200                  |
+    | 090210                  |
 
   Abstract Scenario: 'voorvoegsel (02.30)' is in onderzoek
-    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
     | naam                            | waarde                    |
     | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
@@ -156,8 +156,8 @@ Functionaliteit: Persoon: partner - naam
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
-    | fields              | partners.naam.voorvoegsel       |
-    Dan heeft de response een persoon met een 'partner' met alleen de volgende 'naam' gegevens
+    | fields              | kinderen.naam.voorvoegsel       |
+    Dan heeft de response een persoon met een 'kind' met alleen de volgende 'naam' gegevens
     | naam                                         | waarde      |
     | voorvoegsel                                  | van de      |
     | inOnderzoek.voorvoegsel                      | true        |
@@ -167,12 +167,12 @@ Functionaliteit: Persoon: partner - naam
 
     Voorbeelden:
     | gba in onderzoek waarde |
-    | 050000                  |
-    | 050200                  |
-    | 050230                  |
+    | 090000                  |
+    | 090200                  |
+    | 090230                  |
 
   Abstract Scenario: 'geslachtsnaam (02.40)' is in onderzoek
-    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
     | naam                            | waarde                    |
     | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
@@ -181,8 +181,8 @@ Functionaliteit: Persoon: partner - naam
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
-    | fields              | partners.naam.geslachtsnaam     |
-    Dan heeft de response een persoon met een 'partner' met alleen de volgende 'naam' gegevens
+    | fields              | kinderen.naam.geslachtsnaam     |
+    Dan heeft de response een persoon met een 'kind' met alleen de volgende 'naam' gegevens
     | naam                                         | waarde      |
     | geslachtsnaam                                | Jansen      |
     | inOnderzoek.geslachtsnaam                    | true        |
@@ -192,12 +192,12 @@ Functionaliteit: Persoon: partner - naam
 
     Voorbeelden:
     | gba in onderzoek waarde |
-    | 050000                  |
-    | 050200                  |
-    | 050240                  |
+    | 090000                  |
+    | 090200                  |
+    | 090240                  |
 
   Abstract Scenario: 'adellijke titel of predicaat (02.20)' is in onderzoek
-    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
     | naam                                 | waarde                    |
     | aanduiding in onderzoek (83.10)      | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)       | 20020701                  |
@@ -206,8 +206,8 @@ Functionaliteit: Persoon: partner - naam
     | naam                | waarde                                |
     | type                | RaadpleegMetBurgerservicenummer       |
     | burgerservicenummer | 000000012                             |
-    | fields              | partners.naam.adellijkeTitelPredicaat |
-    Dan heeft de response een persoon met een 'partner' met alleen de volgende 'naam' gegevens
+    | fields              | kinderen.naam.adellijkeTitelPredicaat |
+    Dan heeft de response een persoon met een 'kind' met alleen de volgende 'naam' gegevens
     | naam                                         | waarde      |
     | adellijkeTitelPredicaat.code                 | P           |
     | adellijkeTitelPredicaat.omschrijving         | Prins       |
@@ -219,12 +219,12 @@ Functionaliteit: Persoon: partner - naam
 
     Voorbeelden:
     | gba in onderzoek waarde |
-    | 050000                  |
-    | 050200                  |
-    | 050220                  |
+    | 090000                  |
+    | 090200                  |
+    | 090220                  |
 
   Abstract Scenario: 'voornamen (02.10)' is in onderzoek, maar wordt niet gevraagd
-    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
     | naam                            | waarde                    |
     | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
@@ -233,15 +233,15 @@ Functionaliteit: Persoon: partner - naam
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
-    | fields              | partners.naam.voorvoegsel       |
-    Dan heeft de response een persoon met een 'partner' zonder 'naam' gegevens
+    | fields              | kinderen.naam.voorvoegsel       |
+    Dan heeft de response een persoon met een 'kind' zonder 'naam' gegevens
 
     Voorbeelden:
     | gba in onderzoek waarde |
-    | 050210                  |
+    | 090210                  |
 
   Abstract Scenario: 'voorvoegsel (02.30)' is in onderzoek, maar wordt niet gevraagd
-    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
     | naam                            | waarde                    |
     | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
@@ -250,15 +250,15 @@ Functionaliteit: Persoon: partner - naam
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
-    | fields              | partners.naam.geslachtsnaam     |
-    Dan heeft de response een persoon met een 'partner' zonder 'naam' gegevens
+    | fields              | kinderen.naam.geslachtsnaam     |
+    Dan heeft de response een persoon met een 'kind' zonder 'naam' gegevens
 
     Voorbeelden:
     | gba in onderzoek waarde |
-    | 050230                  |
+    | 090230                  |
 
   Abstract Scenario: 'geslachtsnaam (02.40)' is in onderzoek, maar wordt niet gevraagd
-    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
     | naam                            | waarde                    |
     | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
@@ -267,15 +267,15 @@ Functionaliteit: Persoon: partner - naam
     | naam                | waarde                                |
     | type                | RaadpleegMetBurgerservicenummer       |
     | burgerservicenummer | 000000012                             |
-    | fields              | partners.naam.adellijkeTitelPredicaat |
-    Dan heeft de response een persoon met een 'partner' zonder 'naam' gegevens
+    | fields              | kinderen.naam.adellijkeTitelPredicaat |
+    Dan heeft de response een persoon met een 'kind' zonder 'naam' gegevens
 
     Voorbeelden:
     | gba in onderzoek waarde |
-    | 050240                  |
+    | 090240                  |
 
   Abstract Scenario: 'adellijke titel of predicaat (02.20)' is in onderzoek, maar wordt niet gevraagd
-    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
     | naam                                 | waarde                    |
     | aanduiding in onderzoek (83.10)      | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)       | 20020701                  |
@@ -284,9 +284,9 @@ Functionaliteit: Persoon: partner - naam
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
-    | fields              | partners.naam.voornamen         |
-    Dan heeft de response een persoon met een 'partner' zonder 'naam' gegevens
+    | fields              | kinderen.naam.voornamen         |
+    Dan heeft de response een persoon met een 'kind' zonder 'naam' gegevens
 
     Voorbeelden:
     | gba in onderzoek waarde |
-    | 050220                  |
+    | 090220                  |

@@ -1,6 +1,6 @@
 #language: nl
 
-Functionaliteit: Persoon: gezagsverhouding velden
+Functionaliteit: Persoon: gezagsverhouding
 
   Abstract Scenario: persoon heeft 'gezagsverhouding' veld: 'indicatie gezag minderjarige (32.10)'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'gezagsverhouding' gegevens
