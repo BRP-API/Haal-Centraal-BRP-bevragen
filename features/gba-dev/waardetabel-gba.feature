@@ -65,10 +65,10 @@ Functionaliteit: Waardetabel met code en omschrijving
       | Gezagsverhouding   | 1D           | Ouder1 en een derde hebben het gezag  | gezagsverhouding        | indicatie gezag minderjarige (32.10)  | indicatieGezagMinderjarige  |               |
       | Gemeenten          | 1326         | 's Heer Hendriks Kinderen             | verblijfplaats          | gemeente van inschrijving (09.10)     | gemeenteVanInschrijving     |               |
       | Functie_adres      | B            | briefadres                            | verblijfplaats          | functieAdres.code (10.10)             | verblijfplaats              | functieAdres. |
-      | Verblijfstitel     | 09           | Art. 9 van de Vreemdelingenwet        | verblijfstitel          | aanduiding verblijfstitel (39.10)     | verblijfstitel              | aanduiding.|
+      | Verblijfstitel     | 09           | Art. 9 van de Vreemdelingenwet        | verblijfstitel          | aanduiding verblijfstitel (39.10)     | verblijfstitel              | aanduiding.   |
 
 
-  Rule: voor adellijkeTitelPredicaat wordt ook soort geleverd die in die tabel hoort bij de code
+  Rule: voor adellijkeTitelPredicaat wordt naast 'code' en 'omschrijving' ook 'soort' geleverd
 
     Abstract Scenario: Omschrijving en soort bij code voor Adellijke titel/predicaat (02.20)
       Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -174,10 +174,7 @@ Functionaliteit: Waardetabel met code en omschrijving
         | element                           | tabel               | groep          | veld                    | waarde |
         | plaats overlijden (08.20)         | Gemeenten           | overlijden     | plaats                  | 9876   |
         | land overlijden (08.30)           | Landen              | overlijden     | land                    | 1234   |
-        | aanduiding verblijfstitel (39.10) | Verblijfstiteltabel | verblijfstitel | aanduiding              | 01     |
-        | land adres buitenland (13.10)     | Landen              | verblijfplaats | land                    | 1234   |
-        | land vanwaar ingeschreven (14.10) | Landen              | immigratie     | landVanwaarIngeschreven | 1234   |
-        # In het laatste voorbeeld zou eigenlijk de "groep" immigratie moeten zijn. Echter is dit nog niet geïmplementeerd in de automation code. Als dit correct geïmplementeerd is kan de kolom "fields" vervallen en kan daarvoer "groep" gebruikt worden
+        | aanduiding verblijfstitel (39.10) | Verblijfstitel      | verblijfstitel | aanduiding              | 01     |
 
       Abstract Scenario: code voor <element> komt niet voor in de tabel <tabel>
         Gegeven de persoon met burgerservicenummer '000000255' heeft de volgende 'verblijfplaats' gegevens
@@ -196,6 +193,7 @@ Functionaliteit: Waardetabel met code en omschrijving
         | element                           | tabel               | groep                        | veld                    | waarde |
         | land adres buitenland (13.10)     | Landen              | verblijfplaats               | land                    | 1234   |
         | land vanwaar ingeschreven (14.10) | Landen              | immigratie                   | landVanwaarIngeschreven | 1234   |
+        # In het laatste voorbeeld zou eigenlijk de "groep" immigratie moeten zijn. Echter is dit nog niet geïmplementeerd in de automation code. Als dit correct geïmplementeerd is kan de kolom "fields" vervallen en kan daarvoer "groep" gebruikt worden
 
     Rule: wanneer de waarde voor een plaats geen valide gemeentecode bevat wordt deze geleverd in de omschrijving
       - de waarde voor plaats is een gemeentecode wanneer het bestaat uit 4 cijfers
