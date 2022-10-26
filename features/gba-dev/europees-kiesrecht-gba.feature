@@ -2,7 +2,7 @@
 
 Functionaliteit: Europees kiesrecht
 
-  Scenario: Geen Europees kiesrecht opgegevens, geen Europees kiesrecht (31.10) en geen einddatum uitsluiting Europees kiesrecht (31.30)
+  Scenario: Geen Europees kiesrecht opgegevens, geen europees kiesrecht (31.10) en geen einddatum uitsluiting europees kiesrecht (31.30)
     Gegeven de persoon met burgerservicenummer '000000103' heeft de volgende gegevens
     | geslachtsnaam (02.40) |
     | Janssen               |
@@ -10,12 +10,12 @@ Functionaliteit: Europees kiesrecht
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000103                       |
-    | fields              | europeesKiesrecht            |
+    | fields              | europeesKiesrecht               |
     Dan heeft de response een persoon zonder gegevens
 
   Abstract Scenario: Europees kiesrecht zonder einddatum : <omschrijving>
     Gegeven de persoon met burgerservicenummer '000000115' heeft de volgende 'inschrijving' gegevens
-    | Europees kiesrecht (31.10) |
+    | europees kiesrecht (31.10) |
     | <Europees kiesrecht>       |
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
@@ -35,7 +35,7 @@ Functionaliteit: Europees kiesrecht
 
   Abstract Scenario: Europees kiesrecht <omschrijving>
     Gegeven de persoon met burgerservicenummer '000000127' heeft de volgende 'inschrijving' gegevens
-    | Europees kiesrecht (31.10) | einddatum uitsluiting Europees kiesrecht (31.30) |
+    | europees kiesrecht (31.10) | einddatum uitsluiting europees kiesrecht (31.30) |
     | <Europees kiesrecht>       | <einddatum uitsluiting>                          |
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                                |
