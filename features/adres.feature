@@ -67,7 +67,7 @@ Functionaliteit: Adresvelden vullen
       | naam openbare ruimte langer dan straatnaam           | 000000188           | Jonkheer van Riemsdijkln | Jonkheer van Riemsdijklaan | 88         |            |                     |                           | Jonkheer van Riemsdijkln 88  |
       | huisletter en geen huisnummertoevoeging              | 000000206           | Borgesiusstraat          |                            | 103        | c          |                     |                           | Borgesiusstraat 103 c        |
       | huisnummertoevoeging die begint met een letter       | 000000218           | Daniël Stalpertstraat    |                            | 35         |            | III                 |                           | Daniël Stalpertstraat 35 III |
-      | huisnummertoevoeging die begint met een cijfer       | 000000231           | Atatürkstraat            | Atatþrkstraat              | 9          |            | 2                   |                           | Atatürkstraat 9-2            |
+      | huisnummertoevoeging die begint met een cijfer       | 000000231           | Atatürkstraat            | Atatürkstraat              | 9          |            | 2                   |                           | Atatürkstraat 9-2            |
       | huisletter en huisnummertoevoeging begint met letter | 000000243           | St. Jacobsstraat         | St. Jacobsstraat           | 400        | L          | Toe                 |                           | St. Jacobsstraat 400 LToe    |
       | huisletter en huisnummertoevoeging begint met cijfer | 000000255           | Cronus                   |                            | 555        | B          | 73c                 |                           | Cronus 555 B73c              |
       | aanduiding bij huisnummer bij                        | 000000267           | Graan voor Visch         |                            | 15201      |            |                     | by                        | Graan voor Visch bij 15201   |
@@ -99,7 +99,7 @@ Functionaliteit: Adresvelden vullen
     - De woonplaatsnaam wordt in hoofdletters geschreven
     - Wanneer de woonplaats geen waarde heeft, wordt de omschrijving van de gemeente van inschrijving als woonplaats gebruikt
 
-    Abstract Scenario: adresregel2 voor een binnenlandse verblijfplaats met <omschrijving>
+    Abstract Scenario: adresregel2 voor een binnenlandse verblijfplaats <omschrijving>
     Gegeven de persoon met burgerservicenummer '<burgerservicenummer>' heeft de volgende 'verblijfplaats' gegevens
       | naam                                 | waarde                |
       | gemeente van inschrijving (09.10)    | 0518                  |
@@ -120,9 +120,9 @@ Functionaliteit: Adresvelden vullen
       | adresregel2 | <adresregel2> |
 
       Voorbeelden:
-      | omschrijving                           | burgerservicenummer | woonplaatsnaam | postcode | adresregel2            |
-      | woonplaatsnaam anders dan gemeentenaam | 000000310           | Scheveningen   | 2583XL   | 2583 XL  SCHEVENINGEN  |
-      | geen woonplaatsnaam                    | 000000322           |                | 2584BZ   | 2584 BZ  'S-GRAVENHAGE |
+      | omschrijving                               | burgerservicenummer | woonplaatsnaam | postcode | adresregel2            |
+      | met woonplaatsnaam anders dan gemeentenaam | 000000310           | Scheveningen   | 2583XL   | 2583 XL  SCHEVENINGEN  |
+      | zonder woonplaatsnaam                      | 000000322           |                | 2584BZ   | 2584 BZ  'S-GRAVENHAGE |
 
     Scenario: adresregel2 voor locatie
     Gegeven de persoon met burgerservicenummer '000000334' heeft de volgende 'verblijfplaats' gegevens
