@@ -5,7 +5,7 @@ Functionaliteit: Persoon: verblijfplaats buitenland
   Abstract Scenario: persoon heeft 'verblijfplaats buitenland' datum veld: '<gba naam>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
     | naam                                   | waarde   |
-    | land (13.10)                           | 6014     |
+    | land adres buitenland (13.10)          | 6014     |
     | datum aanvang adres buitenland (13.20) | 20220128 |
     | datum ingang geldigheid (85.10)        | 20220222 |
     Als personen wordt gezocht met de volgende parameters
@@ -28,7 +28,7 @@ Functionaliteit: Persoon: verblijfplaats buitenland
   Abstract Scenario: 'verblijfplaats buitenland' veld(en) van persoon is/zijn in onderzoek
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
     | naam                            | waarde                    |
-    | land (13.10)                    | 6014                      |
+    | land adres buitenland (13.10)   | 6014                      |
     | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
     Als personen wordt gezocht met de volgende parameters
@@ -61,7 +61,7 @@ Functionaliteit: Persoon: verblijfplaats buitenland
     | naam                                   | waarde                    |
     | aanduiding in onderzoek (83.10)        | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)         | 20020701                  |
-    | land (13.10)                           | 6014                      |
+    | land adres buitenland (13.10)          | 6014                      |
     | datum aanvang adres buitenland (13.20) | 20220128                  |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
@@ -92,7 +92,7 @@ Functionaliteit: Persoon: verblijfplaats buitenland
     | naam                            | waarde                    |
     | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
-    | land (13.10)                    | 6014                      |
+    | land adres buitenland (13.10)   | 6014                      |
     | datum ingang geldigheid (85.10) | 20220222                  |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                               |
@@ -121,7 +121,7 @@ Functionaliteit: Persoon: verblijfplaats buitenland
     | naam                                   | waarde                    |
     | aanduiding in onderzoek (83.10)        | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)         | 20020701                  |
-    | land (13.10)                           | 6014                      |
+    | land adres buitenland (13.10)          | 6014                      |
     | datum aanvang adres buitenland (13.20) | 20220128                  |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                               |
@@ -144,7 +144,7 @@ Functionaliteit: Persoon: verblijfplaats buitenland
     | naam                            | waarde                    |
     | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
-    | land (13.10)                    | 6014                      |
+    | land adres buitenland (13.10)   | 6014                      |
     | datum ingang geldigheid (85.10) | 20220222                  |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |

@@ -4,8 +4,8 @@ Functionaliteit: Persoon: verblijfplaats buitenland -verblijfadres
 
   Abstract Scenario: persoon heeft 'verblijfplaats' veld: 'land adres buitenland (13.10)' met waarde ongelijk aan '0000'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
-    | naam         | waarde |
-    | land (13.10) | <code> |
+    | naam                          | waarde |
+    | land adres buitenland (13.10) | <code> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -25,9 +25,9 @@ Functionaliteit: Persoon: verblijfplaats buitenland -verblijfadres
 
   Abstract Scenario: persoon heeft 'verblijfplaats buitenland' veld: '<gba naam>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
-    | naam         | waarde   |
-    | land (13.10) | 6014     |
-    | <gba naam>   | <waarde> |
+    | naam                          | waarde   |
+    | land adres buitenland (13.10) | 6014     |
+    | <gba naam>                    | <waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                              |
     | type                | RaadpleegMetBurgerservicenummer     |
@@ -59,13 +59,13 @@ Functionaliteit: Persoon: verblijfplaats buitenland -verblijfadres
     | type | VerblijfplaatsBuitenland |
 
     Voorbeelden:
-    | gba naam     | naam | waarde |
-    | land (13.10) | land | 0000   |
+    | gba naam                      | naam | waarde |
+    | land adres buitenland (13.10) | land | 0000   |
 
   Abstract Scenario: 'verblijfadres buitenland' veld(en) van persoon is/zijn in onderzoek
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
     | naam                            | waarde                    |
-    | land (13.10)                    | 6014                      |
+    | land adres buitenland (13.10)   | 6014                      |
     | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
     Als personen wordt gezocht met de volgende parameters
@@ -96,7 +96,7 @@ Functionaliteit: Persoon: verblijfplaats buitenland -verblijfadres
   Abstract Scenario: 'regel 1 adres buitenland (13.30)' is in onderzoek
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
     | naam                             | waarde                      |
-    | land (13.10)                     | 6014                        |
+    | land adres buitenland (13.10)    | 6014                        |
     | regel 1 adres buitenland (13.30) | 1600 Pennsylvania Avenue NW |
     | aanduiding in onderzoek (83.10)  | <gba in onderzoek waarde>   |
     | datum ingang onderzoek (83.20)   | 20020701                    |
@@ -123,7 +123,7 @@ Functionaliteit: Persoon: verblijfplaats buitenland -verblijfadres
   Abstract Scenario: 'regel 2 adres buitenland (13.40)' is in onderzoek
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
     | naam                             | waarde                    |
-    | land (13.10)                     | 6014                      |
+    | land adres buitenland (13.10)    | 6014                      |
     | regel 2 adres buitenland (13.40) | Washington, DC 20500      |
     | aanduiding in onderzoek (83.10)  | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)   | 20020701                  |
@@ -150,7 +150,7 @@ Functionaliteit: Persoon: verblijfplaats buitenland -verblijfadres
   Abstract Scenario: 'regel 3 adres buitenland (13.50)' is in onderzoek
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
     | naam                             | waarde                    |
-    | land (13.10)                     | 6014                      |
+    | land adres buitenland (13.10)    | 6014                      |
     | regel 3 adres buitenland (13.50) | Selangor                  |
     | aanduiding in onderzoek (83.10)  | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)   | 20020701                  |
@@ -177,7 +177,7 @@ Functionaliteit: Persoon: verblijfplaats buitenland -verblijfadres
   Abstract Scenario: 'land adres buitenland (13.10)' is in onderzoek
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
     | naam                            | waarde                    |
-    | land (13.10)                    | 6014                      |
+    | land adres buitenland (13.10)   | 6014                      |
     | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
     Als personen wordt gezocht met de volgende parameters
@@ -204,7 +204,7 @@ Functionaliteit: Persoon: verblijfplaats buitenland -verblijfadres
   Abstract Scenario: 'regel 1 adres buitenland (13.30)' is in onderzoek, maar wordt niet gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
     | naam                             | waarde                      |
-    | land (13.10)                     | 6014                        |
+    | land adres buitenland (13.10)    | 6014                        |
     | regel 1 adres buitenland (13.30) | 1600 Pennsylvania Avenue NW |
     | aanduiding in onderzoek (83.10)  | <gba in onderzoek waarde>   |
     | datum ingang onderzoek (83.20)   | 20020701                    |
@@ -224,7 +224,7 @@ Functionaliteit: Persoon: verblijfplaats buitenland -verblijfadres
   Abstract Scenario: 'regel 2 adres buitenland (13.40)' is in onderzoek, maar wordt niet gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
     | naam                             | waarde                    |
-    | land (13.10)                     | 6014                      |
+    | land adres buitenland (13.10)    | 6014                      |
     | regel 2 adres buitenland (13.40) | Washington, DC 20500      |
     | aanduiding in onderzoek (83.10)  | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)   | 20020701                  |
@@ -244,7 +244,7 @@ Functionaliteit: Persoon: verblijfplaats buitenland -verblijfadres
   Abstract Scenario: 'regel 3 adres buitenland (13.50)' is in onderzoek, maar wordt niet gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
     | naam                             | waarde                    |
-    | land (13.10)                     | 6014                      |
+    | land adres buitenland (13.10)    | 6014                      |
     | regel 3 adres buitenland (13.50) | Selangor                  |
     | aanduiding in onderzoek (83.10)  | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)   | 20020701                  |
@@ -264,7 +264,7 @@ Functionaliteit: Persoon: verblijfplaats buitenland -verblijfadres
   Abstract Scenario: 'land adres buitenland (13.10)' is in onderzoek, maar wordt niet gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
     | naam                            | waarde                    |
-    | land (13.10)                    | 6014                      |
+    | land adres buitenland (13.10)   | 6014                      |
     | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
     Als personen wordt gezocht met de volgende parameters
