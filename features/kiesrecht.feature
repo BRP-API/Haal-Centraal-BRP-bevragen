@@ -67,9 +67,9 @@ Rule: Uitsluiting van Europees kiesrecht wordt alleen opgenomen wanneer de eindd
 #		| einddatumUitsluiting.onbekend    | true                      |
 
 		Voorbeelden:
-   | omschrijving                       | Europees kiesrecht | aanduiding.code | aanduiding.omschrijving |
-   | uitgesloten zonder einddatum       | 1                  | 1               | persoon is uitgesloten  |
-   | persoon ontvangt oproep            | 2                  | 2               | persoon ontvangt oproep |
+    | omschrijving                       | Europees kiesrecht | aanduiding.code | aanduiding.omschrijving |
+    | uitgesloten zonder einddatum       | 1                  | 1               | persoon is uitgesloten  |
+    | persoon ontvangt oproep            | 2                  | 2               | persoon ontvangt oproep |
 
 	Abstract Scenario: Europees kiesrecht <omschrijving>
 	#   Functioneel zou dit moeten zijn :
@@ -148,7 +148,7 @@ Rule: Uitsluiting van kiesrecht wordt alleen opgenomen wanneer de einddatum uits
 			| uitgeslotenVanKiesrecht    | <uitgeslotenVanKiesrecht> |
 			| einddatum.type             | <einddatumtype>               |
 
-		Voorbeelden:
+			Voorbeelden:
 			| omschrijving                             | uitsluiting kiesrecht | einddatum uitsluiting | uitgeslotenVanKiesrecht | einddatum    | einddatumtype  |
 			| einddatum uitsluiting in toekomst        | A                     | volgend jaar          | true                    | volgend jaar | JaarDatum      |
 			| einddatum uitsluiting morgen             | A                     | morgen                | true                    | morgen       | Datum          |
@@ -171,7 +171,7 @@ Rule: Uitsluiting van kiesrecht wordt alleen opgenomen wanneer de einddatum uits
 				| fields              | uitsluitingKiesrecht                     |
 				Dan heeft de response een persoon zonder gegevens
 
-			Voorbeelden:
+				Voorbeelden:
 				| omschrijving                             | uitsluiting kiesrecht | einddatum uitsluiting |
 				| einddatum uitsluiting in verleden        | A                     | gisteren              |
 				| einddatum uitsluiting vandaag            | A                     | vandaag               |
