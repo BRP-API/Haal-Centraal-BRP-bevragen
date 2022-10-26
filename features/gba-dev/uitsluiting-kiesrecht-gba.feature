@@ -62,7 +62,7 @@ Functionaliteit: Uitsluiting kiesrecht
 			| uitsluitingKiesrecht.uitgeslotenVanKiesrecht | <uitgeslotenVanKiesrecht> |
 			| uitsluitingKiesrecht.einddatum               | <einddatum>               |
 
-				Voorbeelden:
+			Voorbeelden:
 			| omschrijving                             | einddatum uitsluiting | uitgeslotenVanKiesrecht | einddatum    |
 			| einddatum uitsluiting in toekomst        | volgend jaar          | true                    | volgend jaar |
 			| einddatum uitsluiting in verleden        | vorig jaar            |                         |              |
