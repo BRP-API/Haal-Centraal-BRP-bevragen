@@ -156,7 +156,7 @@ Rule: bij raadplegen van een persoon op burgerservicenummer van een afgevoerde p
     | 20220829                             | F                                    |
     En de persoon heeft de volgende 'persoon' gegevens
     | anummer (01.10) | burgerservicenummer (01.20) | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) | geboortedatum (03.10) | geslachtsaanduiding (04.10) |
-    | 0123456789       | 000000024                   | William           | de                  | Vries                 | 20040526              | M                           |
+    | 0123456789      | 000000024                   | William           | de                  | Vries                 | 20040526              | M                           |
     En de persoon heeft een ouder '1' met de volgende gegevens
     | burgerservicenummer (01.20) | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) | geboortedatum (03.10) | geslachtsaanduiding (04.10) |
     | 000000036                   | Corry             | van                 | Zon                   | 19730428              | V                           |
@@ -187,7 +187,7 @@ Rule: bij raadplegen van een persoon op burgerservicenummer van een afgevoerde p
     | 20220829                             | F                                    |
     En de persoon heeft de volgende 'persoon' gegevens
     | anummer (01.10) | burgerservicenummer (01.20) | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) | geboortedatum (03.10) | geslachtsaanduiding (04.10) |
-    | 0123456789       | 000000024                   | William           | de                  | Vries                 | 20040526              | M                           |
+    | 0123456789      | 000000024                   | William           | de                  | Vries                 | 20040526              | M                           |
     En de persoon heeft een ouder '1' met de volgende gegevens
     | burgerservicenummer (01.20) | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) | geboortedatum (03.10) | geslachtsaanduiding (04.10) |
     | 000000036                   | Corry             | van                 | Zon                   | 19730428              | V                           |
