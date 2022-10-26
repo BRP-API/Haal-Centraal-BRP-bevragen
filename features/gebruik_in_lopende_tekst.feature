@@ -59,12 +59,12 @@ Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predicaat
 
   Abstract Scenario: gebruikInLopendeTekst van een persoon die nooit huwelijk of partnerschap heeft gehad met aanduidingNaamgebruik "<aanduidingNaamgebruik>"
     Gegeven de persoon met burgerservicenummer '000000140' heeft de volgende gegevens
-      | naam                                 | waarde |
-      | geslachtsaanduiding (04.10)          | V      |
-      | adellijke titel of predicaat (02.20) |        |
-      | voorvoegsel (02.30)                  | in het |
-      | geslachtsnaam (02.40)                | Veld   |
-      | aanduiding naamgebruik (61.10)       | E      |
+      | naam                                 | waarde                  |
+      | geslachtsaanduiding (04.10)          | V                       |
+      | adellijke titel of predicaat (02.20) |                         |
+      | voorvoegsel (02.30)                  | in het                  |
+      | geslachtsnaam (02.40)                | Veld                    |
+      | aanduiding naamgebruik (61.10)       | <aanduidingNaamgebruik> |
       En de persoon heeft nooit een actueel of ontbonden huwelijk of partnerschap gehad
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                            |
