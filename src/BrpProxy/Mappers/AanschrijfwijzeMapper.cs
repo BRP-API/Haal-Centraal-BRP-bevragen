@@ -135,7 +135,7 @@ public static class AanschrijfwijzeMapper
         return persoon.BepaalAanschrijfwijzeZonderAdellijkeTitelOfPredicaat(partner);
     }
 
-    private static string? Aanspreekvorm(this AdellijkeTitelPredicaatType type, string geslachtsaanduiding)
+    private static string? Aanspreekvorm(this AdellijkeTitelPredicaatType type, string? geslachtsaanduiding)
     {
         var key = $"{type.Code}-{geslachtsaanduiding}";
 
@@ -149,7 +149,9 @@ public static class AanschrijfwijzeMapper
         return new Aanschrijfwijze
         {
             Naam = partner.AanschrijfwijzeNaamHoffelijkheidstitel(persoon),
-            Aanspreekvorm = partner.AdellijkeTitelPredicaatType()!.Aanspreekvorm(persoon.Geslacht!.Code)
+            Aanspreekvorm = !partner.Achternaam().IsLeegOfOnbekend()
+                ? partner.AdellijkeTitelPredicaatType()!.Aanspreekvorm(persoon.Geslacht!.Code)
+                : null
         };
     }
 
@@ -157,10 +159,10 @@ public static class AanschrijfwijzeMapper
     {
         return new Aanschrijfwijze
         {
-            Naam = persoon.AdellijkeTitelPredicaat.Soort == AdellijkeTitelPredicaatSoort.Titel
+            Naam = persoon.HeeftAdellijkeTitel()
                 ? persoon.AanschrijfwijzeNaamAdellijkeTitel(partner)
                 : persoon.AanschrijfwijzeNaamPredicaat(partner),
-            Aanspreekvorm = persoon.AdellijkeTitelPredicaat.Aanspreekvorm(persoon.Geslacht!.Code)
+            Aanspreekvorm = persoon.AdellijkeTitelPredicaat.Aanspreekvorm(persoon.Geslacht?.Code)
         };
     }
 
@@ -223,7 +225,9 @@ public static class AanschrijfwijzeMapper
 
         var achternaam = $"{persoon.Titel()} {persoon.Achternaam()}";
 
-        var retval = persoon.AanduidingNaamgebruik.Code switch
+        var retval = partner.Achternaam().IsLeegOfOnbekend()
+            ? $"{persoon.Voorletters} {achternaam}"
+            : persoon.AanduidingNaamgebruik.Code switch
         {
             "P" => $"{persoon.Voorletters} {achternaamPartner}",
             "V" => $"{persoon.Voorletters} {achternaamPartner}-{achternaam}",
@@ -241,20 +245,16 @@ public static class AanschrijfwijzeMapper
 
         var achternaam = $"{persoon.Titel()} {persoon.Achternaam()}";
 
-        var retval = persoon.AanduidingNaamgebruik.Code switch
-        {
-            "E" => $"{persoon.Voorletters} {achternaam}",
-            "V" => $"{persoon.Voorletters} {achternaamPartner}-{achternaam}",
-            "N" => $"{persoon.Voorletters} {achternaam}-{achternaamPartner}",
-            _ => string.Empty
-        };
+        var retval = partner.Achternaam().IsLeegOfOnbekend()
+            ? $"{persoon.Voorletters} {achternaam}"
+            : persoon.AanduidingNaamgebruik.Code switch
+                {
+                    "E" => $"{persoon.Voorletters} {achternaam}",
+                    "V" => $"{persoon.Voorletters} {achternaamPartner}-{achternaam}",
+                    "N" => $"{persoon.Voorletters} {achternaam}-{achternaamPartner}",
+                    _ => string.Empty
+                };
 
-        //retval = Regex.Replace(retval, @"\s+", " ");
-        //retval = Regex.Replace(retval, @"\-\s+", "-");
-
-        //return retval
-        //        .Trim()
-        //        .ToNull();
         return retval.RemoveRedundantSpaces().ToNull();
     }
 
@@ -262,28 +262,31 @@ public static class AanschrijfwijzeMapper
     {
         var titel = persoon.Titel();
 
-        var retval = persoon.AanduidingNaamgebruik.Code switch
-        {
-            "E" => $"{titel} {persoon.Voorletters} {persoon.Achternaam()}",
-            "V" => $"{titel} {persoon.Voorletters} {partner.Achternaam()}-{persoon.Achternaam()}",
-            "N" => $"{titel} {persoon.Voorletters} {persoon.Achternaam()}-{partner.Achternaam()}",
-            _ => string.Empty
-        };
+        var retval = partner.Achternaam().IsLeegOfOnbekend()
+            ? $"{titel} {persoon.Voorletters} {persoon.Achternaam()}"
+            : persoon.AanduidingNaamgebruik.Code switch
+                {
+                    "E" => $"{titel} {persoon.Voorletters} {persoon.Achternaam()}",
+                    "V" => $"{titel} {persoon.Voorletters} {partner.Achternaam()}-{persoon.Achternaam()}",
+                    "N" => $"{titel} {persoon.Voorletters} {persoon.Achternaam()}-{partner.Achternaam()}",
+                    _ => string.Empty
+                };
 
-        //return Regex.Replace(retval, @"\s+", " ").Trim().Capitalize().ToNull();
         return retval.RemoveRedundantSpaces().Capitalize().ToNull();
     }
 
     private static string? AanschrijfwijzeNaam(this NaamPersoon persoon, Partner? partner)
     {
-        var retval = persoon.AanduidingNaamgebruik.Code switch
-        {
-            "E" => $"{persoon.Voorletters} {persoon.Achternaam()}",
-            "P" => $"{persoon.Voorletters} {partner.Achternaam()}",
-            "V" => $"{persoon.Voorletters} {partner.Achternaam()}-{persoon.Achternaam()}",
-            "N" => $"{persoon.Voorletters} {persoon.Achternaam()}-{partner.Achternaam()}",
-            _ => string.Empty
-        };
+        var retval = partner.Achternaam().IsLeegOfOnbekend()
+            ? $"{persoon.Voorletters} {persoon.Achternaam()}"
+            : persoon.AanduidingNaamgebruik.Code switch
+                {
+                    "E" => $"{persoon.Voorletters} {persoon.Achternaam()}",
+                    "P" => $"{persoon.Voorletters} {partner.Achternaam()}",
+                    "V" => $"{persoon.Voorletters} {partner.Achternaam()}-{persoon.Achternaam()}",
+                    "N" => $"{persoon.Voorletters} {persoon.Achternaam()}-{partner.Achternaam()}",
+                    _ => string.Empty
+                };
 
         return retval.RemoveRedundantSpaces().Capitalize().ToNull();
     }

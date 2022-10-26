@@ -3,7 +3,12 @@
 public partial class PersoonInOnderzoek
 {
     public bool ShouldSerialize() =>
-        DatumIngangOnderzoekGemeente != null ||
-        DatumIngangOnderzoekGezag != null ||
-        DatumIngangOnderzoekPersoon != null;
+        Burgerservicenummer.HasValue ||
+        Geslacht.HasValue ||
+        Leeftijd.HasValue ||
+        IndicatieCurateleRegister.HasValue ||
+        IndicatieGezagMinderjarige.HasValue ||
+        DatumInschrijvingInGemeente.HasValue ||
+        GemeenteVanInschrijving.HasValue
+        ;
 }

@@ -1,19 +1,15 @@
 # language: nl
 
-@post-assert
-Functionaliteit: vastgesteld niet-Nederlander
+Functionaliteit: Persoon: nationaliteit - vastgesteld niet-Nederlander
 
   Abstract Scenario: persoon is 'vastgesteld niet-Nederlander'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft een 'nationaliteit' met de volgende gegevens
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
     | naam       | waarde   |
     | <gba naam> | <waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000012                       |
     | fields              | nationaliteiten                 |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
     | naam | waarde                     |
@@ -25,40 +21,34 @@ Functionaliteit: vastgesteld niet-Nederlander
     | nationaliteit (05.10)              | 0500   |
 
   Abstract Scenario: persoon heeft 'vastgesteld niet-Nederlander' veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft een 'nationaliteit' met de volgende gegevens
-    | naam                               | waarde   |
-    | bijzonder Nederlanderschap (65.10) | V        |
-    | <gba naam>                         | <waarde> |
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
+    | naam                               | waarde |
+    | bijzonder Nederlanderschap (65.10) | V      |
+    | reden opname (63.10)               | 001    |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
-    | fields              | nationaliteiten                 |
+    | burgerservicenummer | 000000012                       |
+    | fields              | nationaliteiten.<naam>          |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
     | naam   | waarde                     |
     | type   | VastgesteldNietNederlander |
     | <naam> | <waarde>                   |
 
     Voorbeelden:
-    | gba naam                 | naam                     | waarde           |
-    | reden opname (63.10)     | redenOpname.code         | 1234             |
-    | redenOpname.omschrijving | redenOpname.omschrijving | een omschrijving |
+    | naam                     | waarde                                          |
+    | redenOpname.code         | 001                                             |
+    | redenOpname.omschrijving | Wet op het Nederlanderschap 1892, art.1, lid 1a |
 
   Abstract Scenario: persoon heeft 'vastgesteld niet-Nederlander' veld: '<gba naam>' met waarde '<waarde>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft een 'nationaliteit' met de volgende gegevens
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
     | naam                               | waarde   |
     | bijzonder Nederlanderschap (65.10) | V        |
     | <gba naam>                         | <waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000012                       |
     | fields              | nationaliteiten                 |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
     | naam | waarde                     |
@@ -69,17 +59,14 @@ Functionaliteit: vastgesteld niet-Nederlander
     | reden opname (63.10) | redenOpname.code | 000    |
 
   Abstract Scenario: persoon heeft 'vastgesteld niet-Nederlander' datum veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft een 'nationaliteit' met de volgende gegevens
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
     | naam                               | waarde       |
     | bijzonder Nederlanderschap (65.10) | V            |
     | <gba naam>                         | <gba waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000012                       |
     | fields              | nationaliteiten                 |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
     | naam               | waarde                     |
@@ -93,29 +80,27 @@ Functionaliteit: vastgesteld niet-Nederlander
     | datum ingang geldigheid (85.10) | 20020701   | datumIngangGeldigheid | Datum | 2002-07-01 | 1 juli 2002  |
 
   Abstract Scenario: persoon's 'vastgesteld niet-Nederlander' nationaliteit velden is in onderzoek
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft een 'nationaliteit' met de volgende gegevens
-    | naam                                     | waarde                    |
-    | bijzonder Nederlanderschap (65.10)       | V                         |
-    | reden opname (63.10)                     | 001                       |
-    | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (83.20)           | 20020701                  |
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
+    | naam                               | waarde                    |
+    | bijzonder Nederlanderschap (65.10) | V                         |
+    | reden opname (63.10)               | 001                       |
+    | aanduiding in onderzoek (83.10)    | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)     | 20020701                  |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000012                       |
     | fields              | nationaliteiten                 |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-    | naam                                         | waarde                      |
-    | type                                         | VastgesteldNietNederlander  |
-    | redenOpname.code                             | 001                         |
-    | inOnderzoek.type                             | <type in onderzoek>         |
-    | inOnderzoek.redenOpname                      | <reden opname in onderzoek> |
-    | inOnderzoek.datumIngangOnderzoek.type        | Datum                       |
-    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                  |
-    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                 |
+    | naam                                         | waarde                                          |
+    | type                                         | VastgesteldNietNederlander                      |
+    | redenOpname.code                             | 001                                             |
+    | redenOpname.omschrijving                     | Wet op het Nederlanderschap 1892, art.1, lid 1a |
+    | inOnderzoek.type                             | <type in onderzoek>                             |
+    | inOnderzoek.redenOpname                      | <reden opname in onderzoek>                     |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                                           |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                                      |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                                     |
 
     Voorbeelden:
     | gba in onderzoek waarde | reden opname in onderzoek | type in onderzoek |

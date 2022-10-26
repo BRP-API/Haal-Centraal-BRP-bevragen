@@ -30,8 +30,6 @@ namespace BrpProxy.Middlewares
         {
             _logger.LogDebug("TimeZone: {@localTimeZone}. Now: {@now}", TimeZoneInfo.Local.StandardName, DateTime.Now);
 
-            context.Response.Headers.Add("api-version", _configuration["api-version"]);
-
             var orgBodyStream = context.Response.Body;
             string requestBody = string.Empty;
             try

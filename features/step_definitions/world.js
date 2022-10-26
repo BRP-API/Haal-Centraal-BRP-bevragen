@@ -7,6 +7,7 @@ class World {
         this.context.extraHeaders = [
             { "naam": "Authorization", "waarde": "" }
         ];
+        this.context.expectedApiVersion = "2.0.6";
         this.context.persoon = {};
         this.context.zoekResponse = {
             personen: []
@@ -23,6 +24,13 @@ class World {
                 port: 5432
             }
         };
+        this.context.oAuth = {
+            enable: true,
+            accessTokenUrl: "https://login.dev.idsecure.nl/nidp/oauth/nam/token",
+            clientId: "",
+            clientSecret: "",
+            scopes: ["companyData"]
+        }
     }
 }
 

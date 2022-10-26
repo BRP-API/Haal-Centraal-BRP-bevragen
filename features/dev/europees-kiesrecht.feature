@@ -1,46 +1,54 @@
 # language: nl
 
-@post-assert
-Functionaliteit: Europees kiesrecht
+Functionaliteit: Persoon: Europees kiesrecht
 
-  Abstract Scenario: persoon heeft 'Europees kiesrecht' veld: <gba naam>
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999990001 |
-    En de persoon heeft de volgende 'europeesKiesrecht' gegevens
-    | naam       | waarde   |
-    | <gba naam> | <waarde> |
+  Abstract Scenario: persoon heeft 'Europees kiesrecht' veld: 'Europees kiesrecht (31.10)'
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'inschrijving' gegevens
+    | naam                       | waarde |
+    | Europees kiesrecht (31.10) | 1      |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 999990001                       |
-    | fields              | europeesKiesrecht               |
+    | burgerservicenummer | 000000152                       |
+    | fields              | europeesKiesrecht.<naam>        |
     Dan heeft de response een persoon met alleen de volgende 'europeesKiesrecht' gegevens
-    | naam   | waarde   |
-    | <naam> | <waarde> |
+    | naam                    | waarde                 |
+    | aanduiding.code         | 1                      |
+    | aanduiding.omschrijving | persoon is uitgesloten |
 
     Voorbeelden:
-    | gba naam                   | naam            | waarde |
-    | Europees kiesrecht (31.10) | aanduiding.code | 1      |
+    | naam                    |
+    | aanduiding              |
+    | aanduiding.code         |
+    | aanduiding.omschrijving |
 
-  Abstract Scenario: persoon heeft 'Europees kiesrecht' datum veld: <gba naam>
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999990001 |
-    En de persoon heeft de volgende 'europeesKiesrecht' gegevens
-    | naam       | waarde       |
-    | <gba naam> | <gba waarde> |
+  Abstract Scenario: persoon heeft 'Europees kiesrecht' datum veld: 'einddatum uitsluiting Europees kiesrecht (31.30)'
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'inschrijving' gegevens
+    | naam                                             | waarde   |
+    | Europees kiesrecht (31.10)                       | 1        |
+    | einddatum uitsluiting Europees kiesrecht (31.30) | 20230101 |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 999990001                       |
-    | fields              | europeesKiesrecht               |
+    | burgerservicenummer | 000000152                       |
+    | fields              | europeesKiesrecht.<naam>        |
     Dan heeft de response een persoon met alleen de volgende 'europeesKiesrecht' gegevens
-    | naam               | waarde         |
-    | <naam>.type        | <type>         |
-    | <naam>.datum       | <waarde>       |
-    | <naam>.langFormaat | <lang formaat> |
+    | naam                             | waarde         |
+    | einddatumUitsluiting.type        | Datum          |
+    | einddatumUitsluiting.datum       | 2023-01-01     |
+    | einddatumUitsluiting.langFormaat | 1 januari 2023 |
 
     Voorbeelden:
-    | gba naam                                         | gba waarde | naam                 | type  | waarde     | lang formaat   |
-    | einddatum uitsluiting Europees kiesrecht (31.30) | 20230101   | einddatumUitsluiting | Datum | 2023-01-01 | 1 januari 2023 |
+    | naam                 |
+    | einddatumUitsluiting |
+
+  Scenario: persoon heeft geen 'Europees kiesrecht' gegevens
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'inschrijving' gegevens
+    | naam                     | waarde |
+    | indicatie geheim (70.10) | 0      |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | europeesKiesrecht               |
+    Dan heeft de response een persoon zonder gegevens

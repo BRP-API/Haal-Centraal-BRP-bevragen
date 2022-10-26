@@ -1,19 +1,15 @@
 #language: nl
 
-@post-assert
-Functionaliteit: Opschorting bijhouding
+Functionaliteit: Persoon: opschorting bijhouding
 
-  Abstract Scenario: opschorting bijhouding. Omzetten datum veld: <gba naam>
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'opschortingBijhouding' gegevens
+  Abstract Scenario: Persoon heeft veld: '<gba naam>'
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'inschrijving' gegevens
     | naam       | waarde       |
     | <gba naam> | <gba waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000152                       |
     | fields              | opschortingBijhouding.<naam>    |
     Dan heeft de response een persoon met de volgende 'opschortingBijhouding' gegevens
     | naam               | waarde         |
@@ -25,23 +21,22 @@ Functionaliteit: Opschorting bijhouding
     | gba naam                             | gba waarde | naam  | waarde     | lang formaat |
     | datum opschorting bijhouding (67.10) | 20020701   | datum | 2002-07-01 | 1 juli 2002  |
 
-  Abstract Scenario: opschorting bijhouding: overnemen waardetabel veld: <gba naam>
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'opschortingBijhouding' gegevens
-    | naam       | waarde   |
-    | <gba naam> | <waarde> |
+  Scenario: Persoon heeft veld: 'reden opschorting bijhouding (67.20)'
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'inschrijving' gegevens
+    | naam                                 | waarde |
+    | reden opschorting bijhouding (67.20) | O      |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
+    | burgerservicenummer | 000000152                       |
     | fields              | opschortingBijhouding.<naam>    |
     Dan heeft de response een persoon met de volgende 'opschortingBijhouding' gegevens
-    | naam   | waarde   |
-    | <naam> | <waarde> |
+    | naam               | waarde     |
+    | reden.code         | O          |
+    | reden.omschrijving | overlijden |
 
     Voorbeelden:
-    | gba naam           | field              | naam               | waarde     |
-    | reden.code         | plaats.code        | reden.code         | O          |
-    | reden.omschrijving | reden.omschrijving | reden.omschrijving | overlijden |
+    | naam               |
+    | reden              |
+    | reden.code         |
+    | reden.omschrijving |

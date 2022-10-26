@@ -1,26 +1,22 @@
 # language: nl
 
-@post-assert
 Functionaliteit: Persoon adressering in onderzoek
 
   Rule: DatumIngangOnderzoekPersoon wordt gezet wanneer voor adressering benodigde velden van de persoon in onderzoek zijn
 
     Abstract Scenario: adressering benodigde veld(en) van persoon is/zijn in onderzoek
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                                        | waarde                    |
-      | burgerservicenummer                         | 555550001                 |
-      | geslachtsaanduiding (04.10)                 | M                         |
-      | aanduiding gegevens in onderzoek (01.83.10) | <gba in onderzoek waarde> |
-      | datum ingang onderzoek (01.83.20)           | 20020701                  |
-      En de persoon heeft de volgende 'naam' gegevens
-      | naam                           | waarde        |
-      | voornamen (02.10)              | voornamen     |
-      | geslachtsnaam (02.40)          | geslachtsnaam |
-      | aanduiding naamgebruik (61.10) | E             |
+      Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+      | naam                            | waarde                    |
+      | geslachtsaanduiding (04.10)     | M                         |
+      | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
+      | datum ingang onderzoek (83.20)  | 20020701                  |
+      | voornamen (02.10)               | voornamen                 |
+      | geslachtsnaam (02.40)           | geslachtsnaam             |
+      | aanduiding naamgebruik (61.10)  | E                         |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000152                       |
       | fields              | adressering.inOnderzoek         |
       Dan heeft de response een persoon met de volgende 'adressering' gegevens
       | naam                                                | waarde                                  |
@@ -45,21 +41,18 @@ Functionaliteit: Persoon adressering in onderzoek
       | 016110                  | true                | true                         | true                                  |
 
     Abstract Scenario: niet-adressering benodigde veld(en) van persoon is/zijn in onderzoek
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                                        | waarde                    |
-      | burgerservicenummer                         | 555550001                 |
-      | geslachtsaanduiding (04.10)                 | M                         |
-      | aanduiding gegevens in onderzoek (01.83.10) | <gba in onderzoek waarde> |
-      | datum ingang onderzoek (01.83.20)           | 20020701                  |
-      En de persoon heeft de volgende 'naam' gegevens
-      | naam                           | waarde        |
-      | voornamen (02.10)              | voornamen     |
-      | geslachtsnaam (02.40)          | geslachtsnaam |
-      | aanduiding naamgebruik (61.10) | E             |
+      Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+      | naam                            | waarde                    |
+      | geslachtsaanduiding (04.10)     | M                         |
+      | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
+      | datum ingang onderzoek (83.20)  | 20020701                  |
+      | voornamen (02.10)               | voornamen                 |
+      | geslachtsnaam (02.40)           | geslachtsnaam             |
+      | aanduiding naamgebruik (61.10)  | E                         |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000152                       |
       | fields              | adressering.inOnderzoek         |
       Dan heeft de response een persoon met een leeg 'adressering' object
 
@@ -73,21 +66,18 @@ Functionaliteit: Persoon adressering in onderzoek
       | 010330                  |
 
     Abstract Scenario: voor gevraagde veld '<veld>' zijn één of meerdere adressering benodigde velden van persoon in onderzoek
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                                        | waarde    |
-      | burgerservicenummer                         | 555550001 |
-      | geslachtsaanduiding (04.10)                 | M         |
-      | aanduiding gegevens in onderzoek (01.83.10) | 010000    |
-      | datum ingang onderzoek (01.83.20)           | 20020701  |
-      En de persoon heeft de volgende 'naam' gegevens
-      | naam                           | waarde        |
-      | voornamen (02.10)              | voornamen     |
-      | geslachtsnaam (02.40)          | geslachtsnaam |
-      | aanduiding naamgebruik (61.10) | E             |
+      Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+      | naam                            | waarde        |
+      | geslachtsaanduiding (04.10)     | M             |
+      | aanduiding in onderzoek (83.10) | 010000        |
+      | datum ingang onderzoek (83.20)  | 20020701      |
+      | voornamen (02.10)               | voornamen     |
+      | geslachtsnaam (02.40)           | geslachtsnaam |
+      | aanduiding naamgebruik (61.10)  | E             |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000152                       |
       | fields              | adressering.<veld>              |
       Dan heeft de response een persoon met de volgende 'adressering' gegevens
       | naam                                                | waarde      |
@@ -103,54 +93,45 @@ Functionaliteit: Persoon adressering in onderzoek
       | gebruikInLopendeTekst | de heer Geslachtsnaam      |
 
     Scenario: voor gevraagde veld 'aanschrijfwijze' zijn één of meerdere adressering benodigde velden van persoon in onderzoek
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                                        | waarde    |
-      | burgerservicenummer                         | 555550001 |
-      | geslachtsaanduiding (04.10)                 | M         |
-      | aanduiding gegevens in onderzoek (01.83.10) | 010000    |
-      | datum ingang onderzoek (01.83.20)           | 20020701  |
-      En de persoon heeft de volgende 'naam' gegevens
-      | naam                           | waarde        |
-      | voornamen (02.10)              | voornamen     |
-      | geslachtsnaam (02.40)          | geslachtsnaam |
-      | aanduiding naamgebruik (61.10) | E             |
+      Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+      | naam                            | waarde        |
+      | geslachtsaanduiding (04.10)     | M             |
+      | aanduiding in onderzoek (83.10) | 010000        |
+      | datum ingang onderzoek (83.20)  | 20020701      |
+      | voornamen (02.10)               | voornamen     |
+      | geslachtsnaam (02.40)           | geslachtsnaam |
+      | aanduiding naamgebruik (61.10)  | E             |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000152                       |
       | fields              | adressering.aanschrijfwijze     |
       Dan heeft de response een persoon met de volgende 'adressering' gegevens
-      | naam                                                | waarde      |
-      | aanschrijfwijze.naam                                | todo        |
-      | aanschrijfwijze.aanspreekvorm                       | todo        |
-      | inOnderzoek.aanschrijfwijze                         | true        |
-      | inOnderzoek.datumIngangOnderzoekPersoon.type        | Datum       |
-      | inOnderzoek.datumIngangOnderzoekPersoon.datum       | 2002-07-01  |
-      | inOnderzoek.datumIngangOnderzoekPersoon.langFormaat | 1 juli 2002 |
+      | naam                                                | waarde           |
+      | aanschrijfwijze.naam                                | V. geslachtsnaam |
+      | inOnderzoek.aanschrijfwijze                         | true             |
+      | inOnderzoek.datumIngangOnderzoekPersoon.type        | Datum            |
+      | inOnderzoek.datumIngangOnderzoekPersoon.datum       | 2002-07-01       |
+      | inOnderzoek.datumIngangOnderzoekPersoon.langFormaat | 1 juli 2002      |
 
   Rule: DatumIngangOnderzoekPartner wordt gezet wanneer voor adressering benodigde velden van de eerste/actuele/ontbonden partner in onderzoek zijn
 
     Abstract Scenario: adressering benodigde veld(en) van partner is/zijn in onderzoek
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
-      | geslachtsaanduiding (04.10) | M         |
-      En de persoon heeft de volgende 'naam' gegevens
+      Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
       | naam                           | waarde        |
+      | geslachtsaanduiding (04.10)    | M             |
       | voornamen (02.10)              | voornamen     |
       | geslachtsnaam (02.40)          | geslachtsnaam |
       | aanduiding naamgebruik (61.10) | N             |
       En de persoon heeft een 'partner' met de volgende gegevens
-      | naam                                     | waarde                    |
-      | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
-      | datum ingang onderzoek (83.20)           | 20020701                  |
-      En de 'partner' heeft de volgende 'naam' gegevens
-      | naam                  | waarde        |
-      | geslachtsnaam (02.40) | geslachtsnaam |
+      | naam                            | waarde                    |
+      | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
+      | datum ingang onderzoek (83.20)  | 20020701                  |
+      | geslachtsnaam (02.40)           | geslachtsnaam             |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000152                       |
       | fields              | adressering.inOnderzoek         |
       Dan heeft de response een persoon met de volgende 'adressering' gegevens
       | naam                                                | waarde                                  |
@@ -170,22 +151,17 @@ Functionaliteit: Persoon adressering in onderzoek
       | 050240                  | true                | true                         | true                                  |
 
     Abstract Scenario: niet-adressering benodigde veld(en) van partner is/zijn in onderzoek
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
-      | geslachtsaanduiding (04.10) | M         |
-      En de persoon heeft de volgende 'naam' gegevens
+      Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
       | naam                           | waarde        |
+      | geslachtsaanduiding (04.10)    | M             |
       | voornamen (02.10)              | voornamen     |
       | geslachtsnaam (02.40)          | geslachtsnaam |
       | aanduiding naamgebruik (61.10) | N             |
       En de persoon heeft een 'partner' met de volgende gegevens
-      | naam                                     | waarde                    |
-      | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
-      | datum ingang onderzoek (83.20)           | 20020701                  |
-      En de 'partner' heeft de volgende 'naam' gegevens
-      | naam                  | waarde        |
-      | geslachtsnaam (02.40) | geslachtsnaam |
+      | naam                            | waarde                    |
+      | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
+      | datum ingang onderzoek (83.20)  | 20020701                  |
+      | geslachtsnaam (02.40)           | geslachtsnaam             |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -212,35 +188,26 @@ Functionaliteit: Persoon adressering in onderzoek
       | 051510                  |
 
     Abstract Scenario: adressering benodigde veld(en) van eerste partner (oudste relatie) is/zijn in onderzoek
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
-      | geslachtsaanduiding (04.10) | M         |
-      En de persoon heeft de volgende 'naam' gegevens
+      Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
       | naam                           | waarde        |
+      | geslachtsaanduiding (04.10)    | M             |
       | voornamen (02.10)              | voornamen     |
       | geslachtsnaam (02.40)          | geslachtsnaam |
       | aanduiding naamgebruik (61.10) | N             |
-      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
-      | naam                  | waarde         |
-      | geslachtsnaam (02.40) | geslachtsnaam2 |
-      En de 'partner' heeft de volgende 'aangaanHuwelijkPartnerschap' gegevens
-      | naam                                                               | waarde   |
-      | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 19650401 |
       En de persoon heeft een 'partner' met de volgende gegevens
-      | naam                                     | waarde                    |
-      | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
-      | datum ingang onderzoek (83.20)           | 20020701                  |
-      En de 'partner' heeft de volgende 'naam' gegevens
-      | naam                  | waarde        |
-      | geslachtsnaam (02.40) | geslachtsnaam |
-      En de 'partner' heeft de volgende 'aangaanHuwelijkPartnerschap' gegevens
-      | naam                                                               | waarde   |
-      | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 19630405 |
+      | naam                                                               | waarde         |
+      | geslachtsnaam (02.40)                                              | geslachtsnaam2 |
+      | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 19650401       |
+      En de persoon heeft nog een 'partner' met de volgende gegevens
+      | naam                                                               | waarde                    |
+      | aanduiding in onderzoek (83.10)                                    | <gba in onderzoek waarde> |
+      | datum ingang onderzoek (83.20)                                     | 20020701                  |
+      | geslachtsnaam (02.40)                                              | geslachtsnaam             |
+      | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 19630405                  |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000152                       |
       | fields              | adressering.inOnderzoek         |
       Dan heeft de response een persoon met de volgende 'adressering' gegevens
       | naam                                                | waarde                                  |
@@ -260,35 +227,26 @@ Functionaliteit: Persoon adressering in onderzoek
       | 050240                  | true                | true                         | true                                  |
 
     Abstract Scenario: niet-adressering benodigde veld(en) van eerste partner (oudste relatie) is/zijn in onderzoek
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
-      | geslachtsaanduiding (04.10) | M         |
-      En de persoon heeft de volgende 'naam' gegevens
+      Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
       | naam                           | waarde        |
+      | geslachtsaanduiding (04.10)    | M             |
       | voornamen (02.10)              | voornamen     |
       | geslachtsnaam (02.40)          | geslachtsnaam |
       | aanduiding naamgebruik (61.10) | N             |
-      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
-      | naam                  | waarde         |
-      | geslachtsnaam (02.40) | geslachtsnaam2 |
-      En de 'partner' heeft de volgende 'aangaanHuwelijkPartnerschap' gegevens
-      | naam                                                               | waarde   |
-      | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 19650401 |
       En de persoon heeft een 'partner' met de volgende gegevens
-      | naam                                     | waarde                    |
-      | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
-      | datum ingang onderzoek (83.20)           | 20020701                  |
-      En de 'partner' heeft de volgende 'naam' gegevens
-      | naam                  | waarde        |
-      | geslachtsnaam (02.40) | geslachtsnaam |
-      En de 'partner' heeft de volgende 'aangaanHuwelijkPartnerschap' gegevens
-      | naam                                                               | waarde   |
-      | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 19630405 |
+      | naam                                                               | waarde         |
+      | geslachtsnaam (02.40)                                              | geslachtsnaam2 |
+      | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 19650401       |
+      En de persoon heeft nog een 'partner' met de volgende gegevens
+      | naam                                                               | waarde                    |
+      | aanduiding in onderzoek (83.10)                                    | <gba in onderzoek waarde> |
+      | datum ingang onderzoek (83.20)                                     | 20020701                  |
+      | geslachtsnaam (02.40)                                              | geslachtsnaam             |
+      | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 19630405                  |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000152                       |
       | fields              | adressering.inOnderzoek         |
       Dan heeft de response een persoon met een leeg 'adressering' object
 
@@ -308,65 +266,47 @@ Functionaliteit: Persoon adressering in onderzoek
       | 051510                  |
 
     Scenario: eerste partner (oudste relatie) is niet in onderzoek
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
-      | geslachtsaanduiding (04.10) | M         |
-      En de persoon heeft de volgende 'naam' gegevens
+      Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
       | naam                           | waarde        |
+      | geslachtsaanduiding (04.10)    | M             |
       | voornamen (02.10)              | voornamen     |
       | geslachtsnaam (02.40)          | geslachtsnaam |
       | aanduiding naamgebruik (61.10) | N             |
       En de persoon heeft een 'partner' met de volgende gegevens
-      | naam                                     | waarde   |
-      | aanduiding gegevens in onderzoek (83.10) | 050000   |
-      | datum ingang onderzoek (83.20)           | 20020701 |
-      En de 'partner' heeft de volgende 'naam' gegevens
-      | naam                  | waarde         |
-      | geslachtsnaam (02.40) | geslachtsnaam2 |
-      En de 'partner' heeft de volgende 'aangaanHuwelijkPartnerschap' gegevens
-      | naam                                                               | waarde   |
-      | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 19650401 |
-      En de persoon heeft een 'partner' met de volgende 'naam' gegevens
-      | naam                  | waarde        |
-      | geslachtsnaam (02.40) | geslachtsnaam |
-      En de 'partner' heeft de volgende 'aangaanHuwelijkPartnerschap' gegevens
-      | naam                                                               | waarde   |
-      | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 19630405 |
+      | naam                                                               | waarde         |
+      | aanduiding in onderzoek (83.10)                                    | 050000         |
+      | datum ingang onderzoek (83.20)                                     | 20020701       |
+      | geslachtsnaam (02.40)                                              | geslachtsnaam2 |
+      | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 19650401       |
+      En de persoon heeft nog een 'partner' met de volgende gegevens
+      | naam                                                               | waarde        |
+      | geslachtsnaam (02.40)                                              | geslachtsnaam |
+      | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 19630405      |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000152                       |
       | fields              | adressering.inOnderzoek         |
       Dan heeft de response een persoon met een leeg 'adressering' object
 
     Abstract Scenario: adressering benodigde veld(en) van ontbonden partner is/zijn in onderzoek
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
-      | geslachtsaanduiding (04.10) | M         |
-      En de persoon heeft de volgende 'naam' gegevens
+      Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
       | naam                           | waarde        |
+      | geslachtsaanduiding (04.10)    | M             |
       | voornamen (02.10)              | voornamen     |
       | geslachtsnaam (02.40)          | geslachtsnaam |
       | aanduiding naamgebruik (61.10) | N             |
       En de persoon heeft een 'partner' met de volgende gegevens
-      | naam                                     | waarde                    |
-      | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
-      | datum ingang onderzoek (83.20)           | 20020701                  |
-      En de 'partner' heeft de volgende 'naam' gegevens
-      | naam                  | waarde        |
-      | geslachtsnaam (02.40) | geslachtsnaam |
-      En de 'partner' heeft de volgende 'aangaanHuwelijkPartnerschap' gegevens
-      | naam                                                               | waarde   |
-      | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 19630405 |
-      En de 'partner' heeft de volgende 'ontbindingHuwelijkPartnerschap' gegevens
-      | naam                                                         | waarde   |
-      | datum ontbinding huwelijk/geregistreerd partnerschap (07.10) | 19850707 |
+      | naam                                                               | waarde                    |
+      | aanduiding in onderzoek (83.10)                                    | <gba in onderzoek waarde> |
+      | datum ingang onderzoek (83.20)                                     | 20020701                  |
+      | geslachtsnaam (02.40)                                              | geslachtsnaam             |
+      | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 19630405                  |
+      | datum ontbinding huwelijk/geregistreerd partnerschap (07.10)       | 19850707                  |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000152                       |
       | fields              | adressering.inOnderzoek         |
       Dan heeft de response een persoon met de volgende 'adressering' gegevens
       | naam                                                | waarde                                  |
@@ -388,25 +328,25 @@ Functionaliteit: Persoon adressering in onderzoek
   Rule: DatumIngangOnderzoekVerblijfplaats wordt gezet wanneer voor adressering benodigde velden van de verblijfplaats in onderzoek zijn
 
     Abstract Scenario: adressering benodigde veld(en) van verblijfplaats is/zijn in onderzoek
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
-      | geslachtsaanduiding (04.10) | M         |
-      En de persoon heeft de volgende 'naam' gegevens
+      Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
       | naam                           | waarde        |
+      | geslachtsaanduiding (04.10)    | M             |
       | voornamen (02.10)              | voornamen     |
       | geslachtsnaam (02.40)          | geslachtsnaam |
       | aanduiding naamgebruik (61.10) | E             |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
-      | naam                                     | waarde                    |
-      | straatnaam (11.10)                       | Spui                      |
-      | huisnummer (11.20)                       | 123                       |
-      | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
-      | datum ingang onderzoek (83.20)           | 20020701                  |
+      | naam                            | waarde                    |
+      | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
+      | datum ingang onderzoek (83.20)  | 20020701                  |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      | naam                              | waarde |
+      | gemeente van inschrijving (09.10) | 0518   |
+      | straatnaam (11.10)                | Spruit |
+      | huisnummer (11.20)                | 123    |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000152                       |
       | fields              | adressering.inOnderzoek         |
       Dan heeft de response een persoon met de volgende 'adressering' gegevens
       | naam                                                       | waarde                     |
@@ -441,21 +381,21 @@ Functionaliteit: Persoon adressering in onderzoek
       | 081350                  |                          |                          | true                     |                   |
 
     Abstract Scenario: niet-adressering benodigde veld(en) van verblijfplaats is/zijn in onderzoek
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
-      | geslachtsaanduiding (04.10) | M         |
-      En de persoon heeft de volgende 'naam' gegevens
+      Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
       | naam                           | waarde        |
+      | geslachtsaanduiding (04.10)    | M             |
       | voornamen (02.10)              | voornamen     |
       | geslachtsnaam (02.40)          | geslachtsnaam |
       | aanduiding naamgebruik (61.10) | E             |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
-      | naam                                     | waarde                    |
-      | straatnaam (11.10)                       | Spui                      |
-      | huisnummer (11.20)                       | 123                       |
-      | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
-      | datum ingang onderzoek (83.20)           | 20020701                  |
+      | naam                            | waarde                    |
+      | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
+      | datum ingang onderzoek (83.20)  | 20020701                  |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      | naam                              | waarde |
+      | gemeente van inschrijving (09.10) | 0518   |
+      | straatnaam (11.10)                | Spruit |
+      | huisnummer (11.20)                | 123    |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |

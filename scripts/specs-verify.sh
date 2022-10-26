@@ -2,27 +2,25 @@
 
 mkdir -p docs/features
 
+cucumber-js -f html:docs/features/test-result-dev.html \
+            -f json:docs/features/test-result-dev.json \
+            features/dev/*.feature \
+            --tags "not @skip-verify"
+
+cucumber-js -f html:docs/features/test-result-gba.html \
+            -f json:docs/features/test-result-gba.json \
+            features/gba-dev/*.feature \
+            --tags "not @skip-verify"
+
 cucumber-js -f html:docs/features/test-result.html \
             -f json:docs/features/test-result.json \
-            features/dev/*.feature \
             features/aanhef.feature \
-            features/adres.feature \
-            features/datum.feature \
-            features/fields-fout-cases.feature \
-            features/fields.feature \
-            features/gebruik_in_lopende_tekst.feature \
+            features/aanschrijfwijze/**/*.feature \
             features/immigratie.feature \
-            features/leeftijd_bepaling.feature \
+            features/kinderen.feature \
             features/nationaliteit.feature \
-            features/onbekend_waardes.feature \
-            features/verblijfplaats.feature \
-            features/volledigeNaam.feature \
-            features/voorletters.feature \
-            features/zoek-met-bsn.feature \
-            features/zoek-met-geslachtsnaam-geboortedatum.feature \
-            features/zoek-met-geslachtsnaam-voornamen-gemeentevaninschrijving.feature \
-            features/zoek-met-nummeraanduiding-identificatie.feature \
-            features/zoek-met-postcode-huisnummer.feature \
-            features/zoek-met-straat-huisnummer-gemeentevaninschrijving.feature \
-            features/zoek.feature \
-            --tags "not @gba" --tags "not @skip-verify"
+            features/ouders.feature \
+            features/overlijden-indicatie-overleden.feature \
+            features/rni.feature \
+            features/verblijfstitel.feature \
+            --tags "not @proxy" --tags "not @skip-verify"
