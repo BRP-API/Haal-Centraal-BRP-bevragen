@@ -116,7 +116,9 @@ const tableNameMap = new Map([
     ['verblijfplaats', 'lo3_pl_verblijfplaats'],
     ['gezagsverhouding', 'lo3_pl_gezagsverhouding'],
     ['overlijden', 'lo3_pl_overlijden'],
-    ['adres', 'lo3_adres']
+    ['adres', 'lo3_adres'],
+    ['geboorte', 'lo3_pl_persoon'],
+    ['immigratie', 'lo3_pl_verblijfplaats']
 ]);
 
 const columnNameMap = new Map([
@@ -136,6 +138,7 @@ const columnNameMap = new Map([
     ['geslachtsaanduiding (04.10)', 'geslachts_aand'],
 
     ['nationaliteit (05.10)', 'nationaliteit_code'],
+    ['reden opname (63.10)', 'nl_nat_verkrijg_reden'],
 
     ['datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10)', 'relatie_start_datum'],
     ['plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20)', 'relatie_start_plaats'],
@@ -165,9 +168,10 @@ const columnNameMap = new Map([
     ['woonplaats (11.70)', 'woon_plaats_naam'],
     ['identificatiecode verblijfplaats (11.80)', 'verblijf_plaats_ident_code'],
     ['identificatiecode nummeraanduiding (11.90)', 'nummer_aand_ident_code'],
+    ['land adres buitenland (13.10)', 'vertrek_land_code'],
 
     ['locatiebeschrijving (12.10)', 'locatie_beschrijving'],
-	
+
     ['land (13.10)', 'vertrek_land_code'],
     ['land adres buitenland (13.10)', 'vertrek_land_code'],
     ['datum aanvang adres buitenland (13.20)', 'vertrek_datum'],
@@ -179,6 +183,7 @@ const columnNameMap = new Map([
     ['datum vestiging in Nederland (14.20)', 'vestiging_datum'],
 
     ['soort verbintenis (15.10)', 'verbintenis_soort'],
+
 
     ['Europees kiesrecht (31.10)', 'europees_kiesrecht_aand'],
     ['einddatum uitsluiting Europees kiesrecht (31.30)', 'europees_uitsluit_eind_datum'],
@@ -192,9 +197,9 @@ const columnNameMap = new Map([
     ['aanduiding verblijfstitel (39.10)', 'verblijfstitel_aand'],
     ['datum einde verblijfstitel (39.20)', 'verblijfstitel_eind_datum'],
     ['datum ingang verblijfstitel (39.30)', 'geldigheid_start_datum'],
-	
+
     ['aanduiding naamgebruik (61.10)', 'naam_gebruik_aand'],
-	
+
     ['datum ingang familierechtelijke betrekking (62.10)', 'familie_betrek_start_datum'],
 
     ['reden opnemen (63.10)', 'nl_nat_verkrijg_reden'],
@@ -225,7 +230,7 @@ const columnNameMap = new Map([
 
     ['datum ingang geldigheid (85.10)', 'geldigheid_start_datum'],
     ['ingangsdatum geldigheid (85.10)', 'geldigheid_start_datum' ],
-	
+
     ['datum van opneming (86.10)', 'opneming_datum' ],
 
     ['rni-deelnemer (88.10)', 'rni_deelnemer'],
@@ -457,7 +462,7 @@ Given(/^de statement '(.*)' heeft als resultaat '(\d*)'$/, function (statement, 
 
 Given(/^de response body is gelijk aan$/, function (docString) {
     this.context.response = {
-        data: JSON.parse(docString) 
+        data: JSON.parse(docString)
     };
 });
 
@@ -515,7 +520,7 @@ Then(/^zijn de gegenereerde SQL statements$/, function(dataTable) {
                     statement = insertIntoStatement(name, [
                         ['pl_id', plId+'']
                     ].concat(actual));
-            } 
+            }
 
             statement.text.should.equal(exp.text);
             statement.values.should.deep.equalInAnyOrder(exp.values.split(','));
@@ -589,6 +594,7 @@ Given(/^de persoon heeft de volgende '(\w*)' gegevens$/, async function (gegeven
         gegevensgroep === 'inschrijving'
             ? createArrayFrom(dataTable)
             : createVoorkomenDataFromArray(createArrayFrom(dataTable)) 
+
     ];
 
     setPersoonProperties(this.context.persoon, gegevensgroep, dataTable);
