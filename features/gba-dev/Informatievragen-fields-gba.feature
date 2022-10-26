@@ -182,7 +182,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | identificatiecode verblijfplaats (11.80)   | <adresseerbaarObjectIdentificatie> |
       | identificatiecode nummeraanduiding (11.90) | <nummeraanduidingIdentificatie>    |
       | locatiebeschrijving (12.10)                | <locatiebeschrijving>              |
-	  | gemeente_code                              | 0599                               |
+      | gemeente_code                              | 0599                               |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                              |
       | type                | RaadpleegMetBurgerservicenummer     |
@@ -258,7 +258,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | huisnummer (11.20)                         | 31               |
       | postcode (11.60)                           | 3077AW           |
       | woonplaats (11.70)                         | Rotterdam        |
-	  | gemeente_code                              | 0599             |
+      | gemeente_code                              | 0599             |
       | identificatiecode verblijfplaats (11.80)   | 0599010000208579 |
       | identificatiecode nummeraanduiding (11.90) | 0599200000219678 |
       Als gba personen wordt gezocht met de volgende parameters
@@ -308,7 +308,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | identificatiecode verblijfplaats (11.80)   | <adresseerbaarObjectIdentificatie> |
       | identificatiecode nummeraanduiding (11.90) | <nummeraanduidingIdentificatie>    |
       | locatiebeschrijving (12.10)                | <locatiebeschrijving>              |
-	  | gemeente_code                              | 0599                               |
+      | gemeente_code                              | 0599                               |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -364,8 +364,8 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | fields              | verblijfplaats.datumVan         |
       Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
       | naam                        | waarde   |
-	  | land.code                   | 0000     |
-	  | land.omschrijving           | Onbekend |
+      | land.code                   | 0000     |
+      | land.omschrijving           | Onbekend |
       | datumAanvangAdresBuitenland | 20080402 |
 
   Rule: wanneer gevraagd wordt om vanuitVerblijfplaatsOnbekend, wordt landVanwaarIngeschreven geleverd
@@ -430,7 +430,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | fields              | burgerservicenummer,<veld>      |
       Dan heeft de response een persoon met de volgende gegevens
       | naam                                 | waarde                    |
-	  | burgerservicenummer                  | <burgerservicenummer>     |
+      | burgerservicenummer                  | <burgerservicenummer>     |
       | gemeenteVanInschrijving.code         | <gemeenteVanInschrijving> |
       | gemeenteVanInschrijving.omschrijving | <gemeente omschrijving>   |
       En heeft de persoon alleen de volgende 'verblijfplaats' gegevens
@@ -497,8 +497,8 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | fields              | adresregel1                     |
       Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
       | naam                        | waarde   |
-	  | land.code                   | 0000     |
-	  | land.omschrijving           | Onbekend |
+      | land.code                   | 0000     |
+      | land.omschrijving           | Onbekend |
 
   Rule: wanneer een veld van nationaliteiten wordt gevraagd, worden de velden geleverd die nodig zijn voor het bepalen van het type nationaliteit
     - dit betreft de velden nationaliteit en aanduidingBijzonderNederlanderschap
@@ -629,7 +629,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | opschortingBijhouding.reden.code         | <reden opschorting bijhouding>              |
       | opschortingBijhouding.reden.omschrijving | <omschrijving reden opschorting bijhouding> |
 	  
-	  Voorbeelden:
-	  | variant | datum opschorting bijhouding | reden opschorting bijhouding | omschrijving reden opschorting bijhouding |
-	  | een     | 20140702                     | E                            | emigratie                                 |
-	  | geen    |                              |                              |                                           |
+      Voorbeelden:
+      | variant | datum opschorting bijhouding | reden opschorting bijhouding | omschrijving reden opschorting bijhouding |
+      | een     | 20140702                     | E                            | emigratie                                 |
+      | geen    |                              |                              |                                           |
