@@ -198,7 +198,7 @@ const columnNameMap = new Map([
 
     ['aanduiding verblijfstitel (39.10)', 'verblijfstitel_aand'],
     ['datum einde verblijfstitel (39.20)', 'verblijfstitel_eind_datum'],
-    ['datum ingang verblijfstitel (39.30)', 'geldigheid_start_datum'],
+    ['datum ingang verblijfstitel (39.30)', 'verblijfstitel_start_datum'],
 
     ['aanduiding naamgebruik (61.10)', 'naam_gebruik_aand'],
 
@@ -584,7 +584,7 @@ async function executeSqlStatements(sqlData) {
             client.release();
         }
     }
-    
+
     return {
         'pl_id' : plId,
         'adres_id': adresId
