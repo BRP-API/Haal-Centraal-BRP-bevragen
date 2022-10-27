@@ -1,79 +1,103 @@
 #language: nl
 
-@post-assert
-Functionaliteit: Verblijfstitel
+Functionaliteit: Persoon: verblijfstitel
 
-  Abstract Scenario: persoon heeft 'verblijfstitel' veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'verblijfstitel' gegevens
-    | naam       | waarde   |
-    | <gba naam> | <waarde> |
+  Abstract Scenario: persoon heeft 'verblijfstitel' veld: 'aanduiding verblijfstitel (39.10)'
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfstitel' gegevens
+    | naam                              | waarde |
+    | aanduiding verblijfstitel (39.10) | 09     |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
-    | fields              | verblijfstitel                  |
+    | burgerservicenummer | 000000152                       |
+    | fields              | <field>                         |
     Dan heeft de response een persoon met de volgende 'verblijfstitel' gegevens
-    | naam   | waarde   |
-    | <naam> | <waarde> |
+    | naam                    | waarde                         |
+    | aanduiding.code         | 09                             |
+    | aanduiding.omschrijving | Art. 9 van de Vreemdelingenwet |
 
     Voorbeelden:
-    | gba naam                          | naam                    | waarde                         |
-    | aanduiding verblijfstitel (39.10) | aanduiding.code         | 09                             |
-    | aanduiding.omschrijving           | aanduiding.omschrijving | Art. 9 van de Vreemdelingenwet |
+    | field                                  |
+    | verblijfstitel.aanduiding              |
+    | verblijfstitel.aanduiding.code         |
+    | verblijfstitel.aanduiding.omschrijving |
 
-  Abstract Scenario: persoon heeft 'verblijfstitel' datum veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde       |
-    | burgerservicenummer | 555550001    |
-    | <gba naam>          | <gba waarde> |
-    En de persoon heeft de volgende 'verblijfstitel' gegevens
-    | naam       | waarde       |
-    | <gba naam> | <gba waarde> |
+  Abstract Scenario: persoon heeft 'verblijfstitel' datum veld: 'datum ingang verblijfstitel (39.30)'
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfstitel' gegevens
+    | naam                                | waarde   |
+    | datum ingang verblijfstitel (39.30) | 19980201 |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
-    | fields              | verblijfstitel                  |
+    | burgerservicenummer | 000000152                       |
+    | fields              | verblijfstitel.<naam>           |
     Dan heeft de response een persoon met de volgende 'verblijfstitel' gegevens
-    | naam               | waarde         |
-    | <naam>.type        | Datum          |
-    | <naam>.datum       | <waarde>       |
-    | <naam>.langFormaat | <lang formaat> |
+    | naam                    | waarde          |
+    | datumIngang.type        | Datum           |
+    | datumIngang.datum       | 1998-02-01      |
+    | datumIngang.langFormaat | 1 februari 1998 |
 
     Voorbeelden:
-    | gba naam                            | gba waarde | naam        | waarde     | lang formaat    |
-    | datum einde verblijfstitel (39.20)  | 20020701   | datumEinde  | 2002-07-01 | 1 juli 2002     |
-    | datum ingang verblijfstitel (39.30) | 19980201   | datumIngang | 1998-02-01 | 1 februari 1998 |
+    | naam        |
+    | datumIngang |
 
-  Abstract Scenario: persoon's verblijfstitel velden is in onderzoek
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 555550001 |
-    En de persoon heeft de volgende 'verblijfstitel' gegevens
-    | naam                                     | waarde                    |
-    | aanduiding gegevens in onderzoek (83.10) | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (83.20)           | 20020701                  |
+  Abstract Scenario: persoon heeft 'verblijfstitel' datum veld: 'datum einde verblijfstitel (39.20)' met waarde in de toekomst
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfstitel' gegevens
+    | naam                                | waarde   |
+    | datum ingang verblijfstitel (39.30) | 19980201 |
+    En de persoon is gewijzigd naar de volgende 'verblijfstitel' gegevens
+    | naam                                | waarde   |
+    | datum ingang verblijfstitel (39.30) | 19980201 |
+    | datum einde verblijfstitel (39.20)  | 20251231 |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 555550001                       |
-    | fields              | verblijfstitel                  |
+    | burgerservicenummer | 000000152                       |
+    | fields              | verblijfstitel.<naam>           |
     Dan heeft de response een persoon met de volgende 'verblijfstitel' gegevens
-    | naam                                         | waarde                      |
-    | inOnderzoek.aanduiding                       | <aanduiding in onderzoek>   |
-    | inOnderzoek.datumEinde                       | <datum einde in onderzoek>  |
-    | inOnderzoek.datumIngang                      | <datum ingang in onderzoek> |
-    | inOnderzoek.datumIngangOnderzoek.type        | Datum                       |
-    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                  |
-    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                 |
+    | naam                   | waarde           |
+    | datumEinde.type        | Datum            |
+    | datumEinde.datum       | 2025-12-31       |
+    | datumEinde.langFormaat | 31 december 2025 |
 
     Voorbeelden:
-    | gba in onderzoek waarde | aanduiding in onderzoek | datum ingang in onderzoek | datum einde in onderzoek |
-    | 100000                  | true                    | true                      | true                     |
-    | 103900                  | true                    | true                      | true                     |
-    | 103910                  | true                    |                           |                          |
-    | 103920                  |                         |                           | true                     |
-    | 103930                  |                         | true                      |                          |
+    | naam       |
+    | datumEinde |
+
+  Abstract Scenario: persoon heeft 'verblijfstitel' datum veld: 'datum einde verblijfstitel (39.20)' met waarde gelijk aan vandaag
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfstitel' gegevens
+    | naam                                | waarde   |
+    | datum ingang verblijfstitel (39.30) | 19980201 |
+    En de persoon is gewijzigd naar de volgende 'verblijfstitel' gegevens
+    | naam                                | waarde   |
+    | datum ingang verblijfstitel (39.30) | 19980201 |
+    | datum einde verblijfstitel (39.20)  | vandaag  |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | verblijfstitel.<naam>           |
+    Dan heeft de response een persoon zonder gegevens
+
+    Voorbeelden:
+    | naam       |
+    | datumEinde |
+
+  Abstract Scenario: persoon heeft 'verblijfstitel' datum veld: 'datum einde verblijfstitel (39.20)' met waarde in het verleden
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfstitel' gegevens
+    | naam                                | waarde   |
+    | datum ingang verblijfstitel (39.30) | 19980201 |
+    En de persoon is gewijzigd naar de volgende 'verblijfstitel' gegevens
+    | naam                                | waarde   |
+    | datum ingang verblijfstitel (39.30) | 19980201 |
+    | datum einde verblijfstitel (39.20)  | gisteren |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | verblijfstitel.<naam>           |
+    Dan heeft de response een persoon zonder gegevens
+
+    Voorbeelden:
+    | naam       |
+    | datumEinde |

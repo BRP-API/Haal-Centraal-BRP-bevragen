@@ -727,6 +727,14 @@ Given(/^de persoon is gewijzigd naar de volgende gegevens$/, function (dataTable
     this.context.sqlData['persoon'].push(createCollectieDataFromArray('persoon', createArrayFrom(dataTable)));
 });
 
+Given(/^de persoon is gewijzigd naar de volgende '(\w*)' gegevens$/, function (gegevensgroep, dataTable) {
+    this.context.sqlData[gegevensgroep].forEach(function(data) {
+        let volgNr = data.find(el => el[0] === 'volg_nr');
+        volgNr[1] = Number(volgNr[1]) + 1 + '';
+    });
+    this.context.sqlData[gegevensgroep].push(createVoorkomenDataFromArray(createArrayFrom(dataTable)));
+});
+
 function wijzigRelatie(relatie, dataTable) {
     let foundRelatie;
     Object.keys(this.context.sqlData).find(function(key) {
