@@ -261,7 +261,7 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden
     | fields | fields[0] | Parameter bevat een niet bestaande veldnaam. |
 
   @fout-case
-  Abstract Scenario: opgegeven pad leidt tot meer dan één veld
+  Abstract Scenario: opgegeven pad is niet uniek en leidt naar meer dan één veld
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
