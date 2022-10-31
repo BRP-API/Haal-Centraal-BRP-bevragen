@@ -26,7 +26,7 @@ Functionaliteit: GBA : RNI-deelnemer voor geleverde gegevens
       | naam                         | waarde                                      |
       | voornamen (02.10)            | Peter                                       |
       | geslachtsnaam (02.40)        | Jansen                                      |
-      | rni-deelnemer (88.10)        | 101                                         |
+      | rni-deelnemer (88.10)        | 0101                                         |
       | omschrijving verdrag (88.20) | Belastingverdrag tussen België en Nederland |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                            |
@@ -242,8 +242,8 @@ Functionaliteit: GBA : RNI-deelnemer voor geleverde gegevens
       | omschrijvingVerdrag    | Belastingverdrag tussen België en Nederland     |
       | categorie              | Persoon                                         |
       En heeft de persoon een 'rni' met de volgende gegevens
-      | naam                   | waarde                                          |
-      | deelnemer.code         | 0101                                            |
-      | deelnemer.omschrijving | Belastingdienst (inzake heffingen en toeslagen) |
-      | omschrijvingVerdrag    | Belastingverdrag tussen België en Nederland     |
-      | categorie              | Verblijfplaats                                  |
+      | naam                   | waarde                                            |
+      | deelnemer.code         | 0201                                              |
+      | deelnemer.omschrijving | Sociale Verzekeringsbank (inzake AOW, Anw en AKW) |
+      | omschrijvingVerdrag    | Artikel 45 EU-Werkingsverdrag (VWEU)              |
+      | categorie              | Verblijfplaats                                    |
