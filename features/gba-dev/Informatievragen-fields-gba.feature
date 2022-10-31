@@ -625,6 +625,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       Dan heeft de response een persoon met de volgende gegevens
       | naam                                     | waarde                                      |
       | burgerservicenummer                      | 000000619                                   |
+      | opschortingBijhouding.datum              | <datum opschorting bijhouding>              |
       | opschortingBijhouding.reden.code         | <reden opschorting bijhouding>              |
       | opschortingBijhouding.reden.omschrijving | <omschrijving reden opschorting bijhouding> |
 	  
