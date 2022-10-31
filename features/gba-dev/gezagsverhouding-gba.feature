@@ -1,6 +1,6 @@
 #language: nl
 
-Functionaliteit: Persoon: gezagsverhouding
+Functionaliteit: GBA Persoon: gezagsverhouding
 
   Abstract Scenario: persoon heeft 'gezagsverhouding' veld: 'indicatie gezag minderjarige (32.10)'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'gezagsverhouding' gegevens
