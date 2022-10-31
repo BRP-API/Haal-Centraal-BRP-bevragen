@@ -114,7 +114,7 @@ public static class AdellijkeTitelPredicaatHelpers
     public static bool HeeftAdellijkeTitelOfPredicaat(this NaamPersoon persoon) => persoon.AdellijkeTitelPredicaat != null;
 
     public static bool HeeftAdellijkeTitelOfPredicaat(this Partner? partner) =>
-        partner?.Naam.AdellijkeTitelPredicaat != null;
+        partner?.Naam?.AdellijkeTitelPredicaat != null;
 
     public static bool HeeftGeenAdellijkeTitelOfPredicaat(this NaamPersoon persoon) => !persoon.HeeftAdellijkeTitelOfPredicaat();
 

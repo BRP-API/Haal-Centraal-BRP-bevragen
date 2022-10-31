@@ -19,6 +19,6 @@ Data/
 
 src/config/Database
 
-docs/features/test-result.*
+docs/features/test-result*.*
 
 elastic

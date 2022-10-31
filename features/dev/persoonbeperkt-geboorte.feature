@@ -1,21 +1,18 @@
 #language: nl
 
-@post-assert
-Functionaliteit: PersoonBeperkt Geboorte
+Functionaliteit: PersoonBeperkt: geboorte
 
   Scenario: persoon heeft 'geboorte' datum veld: 'geboortedatum (03.10)'
-    Gegeven het systeem heeft een persoon met de volgende 'naam' gegevens
-    | naam                  | waarde  |
-    | geslachtsnaam (02.40) | Maassen |
-    En de persoon heeft de volgende 'geboorte' gegevens
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
     | naam                  | waarde   |
+    | geslachtsnaam (02.40) | Maassen  |
     | geboortedatum (03.10) | 19830526 |
     Als personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam | Maassen                             |
     | geboortedatum | 1983-05-26                          |
-    | fields        | geboorte                            |
+    | fields        | geboorte.datum                      |
     Dan heeft de response een persoon met de volgende 'geboorte' gegevens
     | naam              | waarde      |
     | datum.type        | Datum       |

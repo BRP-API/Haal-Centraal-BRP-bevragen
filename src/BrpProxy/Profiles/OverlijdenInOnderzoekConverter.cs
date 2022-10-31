@@ -29,11 +29,13 @@ public class OverlijdenInOnderzoekConverter : ITypeConverter<GbaInOnderzoek, Ove
             "060820" => new OverlijdenInOnderzoek
             {
                 Plaats = true,
+                IndicatieOverleden = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
             },
             "060830" => new OverlijdenInOnderzoek
             {
                 Land = true,
+                IndicatieOverleden = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
             },
             _ => null,

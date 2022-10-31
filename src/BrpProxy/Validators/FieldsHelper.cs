@@ -82,9 +82,22 @@ public class FieldsHelper
             {
                 retval.Add("adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats");
             }
-            if (new[] { "aNummer", "burgerservicenummer", "leeftijd" }.Contains(fieldFullPath))
+            if (new[] { "aNummer", "burgerservicenummer", "leeftijd", "geslacht", "geslacht.code", "geslacht.omschrijving" }.Contains(fieldFullPath))
             {
                 retval.Add("inOnderzoek.datumIngangOnderzoekPersoon");
+            }
+            if (new[] { "gemeenteVanInschrijving", "datumInschrijvingInGemeente" }.Contains(fieldFullPath))
+            {
+                retval.Add("inOnderzoek.datumIngangOnderzoekGemeente");
+            }
+            if (field.Contains("overlijden"))
+            {
+                retval.Add("overlijden.indicatieOverleden");
+                retval.Add("overlijden.inOnderzoek.indicatieOverleden");
+            }
+            if (new[] {"indicatieGezagMinderjarige", "indicatieCurateleRegister" }.Contains(fieldFullPath))
+            {
+                retval.Add("inOnderzoek.datumIngangOnderzoekGezag");
             }
 
             var inOnderzoekField = PersoonFieldPaths[fieldFullPath];
@@ -117,11 +130,16 @@ public class FieldsHelper
         {
             var fieldFullPath = PersoonBeperktFieldShortcuts[field];
             retval.Add(fieldFullPath);
+            if (field.Contains("overlijden"))
+            {
+                retval.Add("overlijden.indicatieOverleden");
+                retval.Add("overlijden.inOnderzoek.indicatieOverleden");
+            }
         }
 
         _logger.LogDebug("extra persoon beperkt fields: {@fields}", retval);
 
-        return retval;
+        return retval.Distinct().ToList();
     }
 
     private static string ToInOnderzoekpath(IEnumerable<string> inOnderzoekPaths, string path)
@@ -154,6 +172,17 @@ public class FieldsHelper
 
         var s1 = pathParts.Last();
         var s2 = string.Join('.', pathParts.Take(pathParts.Length - 1));
+
+        if (new[] { "code", "omschrijving" }.Contains(s1))
+        {
+            inOnderzoekPath = pathParts.Length == 2
+                ? $"inOnderzoek.{s2}"
+                : $"{s2}.inOnderzoek";
+            if (inOnderzoekPaths.Any(x => x == inOnderzoekPath))
+            {
+                return inOnderzoekPath;
+            }
+        }
 
         inOnderzoekPath = $"{s2}.inOnderzoek.{s1}";
 
