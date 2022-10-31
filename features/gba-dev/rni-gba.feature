@@ -1,6 +1,6 @@
 # language: nl
 
-Functionaliteit: RNI-deelnemer voor geleverde gegevens
+Functionaliteit: GBA : RNI-deelnemer voor geleverde gegevens
 
 
   Rule: de RNI-deelnemer gegevens worden geleverd voor elke categorie waarvan ten minste één gegeven gevraagd is
