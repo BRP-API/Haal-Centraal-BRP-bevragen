@@ -1,0 +1,11 @@
+INSERT INTO public.lo3_rni_deelnemer(
+	deelnemer_code, deelnemer_oms, tabel_regel_start_datum )
+	VALUES (101, 'Belastingdienst (inzake heffingen en toeslagen)', 20220101);
+
+INSERT INTO public.lo3_rni_deelnemer(
+	deelnemer_code, deelnemer_oms, tabel_regel_start_datum )
+	VALUES (201, 'Sociale Verzekeringsbank (inzake AOW, Anw en AKW)', 20220101);
+
+UPDATE public.lo3_nl_nat_verkrijg_verlies_reden
+	SET nl_nat_reden_oms = 'Wet op het Nederlanderschap 1892, art. 1, onder a'
+	WHERE nl_nat_verkrijg_verlies_reden = 1;
