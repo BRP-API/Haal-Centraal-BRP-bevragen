@@ -1,3 +1,4 @@
+using BrpProxy.DelegatingHandlers;
 using BrpProxy.Middlewares;
 using BrpProxy.Validators;
 using Elastic.Apm.SerilogEnricher;
@@ -45,7 +46,8 @@ builder.Configuration.AddJsonFile(Path.Combine("configuration", "ocelot.json"));
 // Add services to the container.
 builder.Services.AddSingleton<FieldsHelper>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-builder.Services.AddOcelot();
+builder.Services.AddOcelot()
+                .AddDelegatingHandler<X509Handler>(global: true);
 
 var app = builder.Build();
 
