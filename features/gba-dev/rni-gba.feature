@@ -204,7 +204,7 @@ Functionaliteit: GBA : RNI-deelnemer voor geleverde gegevens
       | omschrijvingVerdrag    | Belastingverdrag tussen België en Nederland     |
       | categorie              | Inschrijving                                    |
 
-    Scenario: alle categoriën RNI-deelnemer leveren als er met fields = rni wordt gevraagd
+    Scenario: meerdere categoriën RNI-deelnemer leveren als er met fields = rni wordt gevraagd
       Gegeven de persoon met burgerservicenummer '000000231' heeft de volgende gegevens
       | naam                         | waarde                                      |
       | voornamen (02.10)            | Peter                                       |
