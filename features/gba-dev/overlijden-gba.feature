@@ -69,10 +69,7 @@ Functionaliteit: GBA Persoon: overlijden
     Dan heeft de response een persoon met de volgende 'overlijden' gegevens
     | naam                | waarde                       |
     | datum               | 20021701                     |
-    | plaats.code         | 0000                         |
-    | plaats.omschrijving | Onbekend                     |
-    | land.code           | 0000                         |
-    | land.omschrijving   | Onbekend                     |
+
 
 
   Scenario: overlijden veld(en) van persoon is/zijn in onderzoek
