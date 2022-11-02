@@ -716,7 +716,13 @@ Given(/^(?:de|het) '(.*)' is gecorrigeerd naar de volgende gegevens$/, async fun
         }
         volgNr[1] = Number(volgNr[1]) + 1 + '';
     });
-    this.context.sqlData[foundRelatie].push(createCollectieDataFromArray(relatie, createArrayFrom(dataTable), stapelNr[1]));
+
+    if(stapelNr !== undefined){
+        this.context.sqlData[foundRelatie].push(createCollectieDataFromArray(relatie, createArrayFrom(dataTable), stapelNr[1]));
+    }
+    else {
+        this.context.sqlData[foundRelatie].push(createVoorkomenDataFromArray(createArrayFrom(dataTable)));
+    }
 });
 
 Given(/^de persoon is gewijzigd naar de volgende gegevens$/, function (dataTable) {

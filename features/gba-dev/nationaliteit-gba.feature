@@ -15,7 +15,7 @@ Achtergrond:
   Gegeven landelijke tabel "Reden_Nationaliteit" heeft de volgende waarden
   | code | omschrijving                                         |
   |  000 | Onbekend                                             |
-  |  001 | Wet op het Nederlanderschap 1892, art.1, lid 1a      |
+  |  001 | Wet op het Nederlanderschap 1892, art. 1, onder a    |
   |  017 | Rijkswet op het Nederlanderschap 1984, art. 3, lid 1 |
   |  301 | Vaststelling bezit vreemde nationaliteit             |
   |  310 | Vaststelling bijzonder Nederlanderschap              |
@@ -32,12 +32,12 @@ Achtergrond:
   | burgerservicenummer | 000000012                       |
   | fields              | nationaliteiten                 |
   Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
-  | naam                       | waarde                                           |
-  | nationaliteit.code         | 0001                                             |
-  | nationaliteit.omschrijving | Nederlandse                                      |
-  | redenOpname.code           | 001                                              |
-  | redenOpname.omschrijving   | Wet op het Nederlanderschap 1892, art.1, lid 1a  |
-  | datumIngangGeldigheid      | 19750707                                         |
+  | naam                       | waarde                                            |
+  | nationaliteit.code         | 0001                                              |
+  | nationaliteit.omschrijving | Nederlandse                                       |
+  | redenOpname.code           | 001                                               |
+  | redenOpname.omschrijving   | Wet op het Nederlanderschap 1892, art. 1, onder a |
+  | datumIngangGeldigheid      | 19750707                                          |
 
   Scenario: persoon heeft meerdere nationaliteiten
   Gegeven de persoon met burgerservicenummer '000000218' heeft een 'nationaliteit' met de volgende gegevens
@@ -55,9 +55,9 @@ Achtergrond:
   | naam                       | waarde        |
   | nationaliteit.code         | 0001          |
   | nationaliteit.omschrijving | Nederlandse   |
-  | redenOpname.code           | 001                                              |
-  | redenOpname.omschrijving   | Wet op het Nederlanderschap 1892, art.1, lid 1a  |
-  | datumIngangGeldigheid      | 19750707                                         |
+  | redenOpname.code           | 001                                                |
+  | redenOpname.omschrijving   | Wet op het Nederlanderschap 1892, art. 1, onder a  |
+  | datumIngangGeldigheid      | 19750707                                           |
   En heeft de persoon een 'nationaliteit' met alleen de volgende gegevens
   | naam                       | waarde                                   |
   | nationaliteit.code         | 0263                                     |
