@@ -18,6 +18,7 @@ public class AdresInOnderzoekConverter : ITypeConverter<GbaInOnderzoek, AdresInO
                 DatumVan = true,
                 FunctieAdres = true,
                 NummeraanduidingIdentificatie = true,
+                Type = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek.Map()
             },
             "081000" => new AdresInOnderzoek
@@ -32,7 +33,6 @@ public class AdresInOnderzoekConverter : ITypeConverter<GbaInOnderzoek, AdresInO
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek.Map()
             },
             "081030" or
-            "081300" or
             "081320" => new AdresInOnderzoek
             {
                 DatumVan = true,
@@ -42,6 +42,7 @@ public class AdresInOnderzoekConverter : ITypeConverter<GbaInOnderzoek, AdresInO
             {
                 AdresseerbaarObjectIdentificatie = true,
                 NummeraanduidingIdentificatie = true,
+                Type = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek.Map()
             },
             "081180" => new AdresInOnderzoek
@@ -52,6 +53,12 @@ public class AdresInOnderzoekConverter : ITypeConverter<GbaInOnderzoek, AdresInO
             "081190" => new AdresInOnderzoek
             {
                 NummeraanduidingIdentificatie = true,
+                DatumIngangOnderzoek = source?.DatumIngangOnderzoek.Map()
+            },
+            "081300" => new AdresInOnderzoek
+            {
+                DatumVan = true,
+                Type = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek.Map()
             },
             "088500" or
