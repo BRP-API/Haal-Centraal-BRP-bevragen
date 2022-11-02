@@ -14,7 +14,7 @@ Functionaliteit: GBA : RNI-deelnemer voor geleverde gegevens
       | 08        | Verblijfplaats |
 
 
-    Achtergrond:
+    Achtergrond:  
       Gegeven landelijke tabel "RNI-deelnemerstabel" heeft de volgende waarden
       | code | omschrijving                                      |
       | 0101 | Belastingdienst (inzake heffingen en toeslagen)   |
