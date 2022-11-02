@@ -181,8 +181,8 @@ Functionaliteit: GBA Persoon: gezagsverhouding
     | naam                                 | waarde |
     | indicatie gezag minderjarige (32.10) | 12     |
     En de 'gezagsverhouding' is gecorrigeerd naar de volgende gegevens
-    | naam                                 | waarde |
-    | indicatie onjuist (84.10)            | O      |
+    | naam                       | waarde   |
+    | datum van opneming (86.10) | 20080707 |
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
