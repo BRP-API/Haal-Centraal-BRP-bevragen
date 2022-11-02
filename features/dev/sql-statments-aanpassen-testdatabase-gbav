@@ -20,3 +20,39 @@ INSERT INTO public.lo3_nl_nat_verkrijg_verlies_reden
 					nl_nat_reden_soort = EXCLUDED.nl_nat_reden_soort,
 					tabel_regel_start_datum=EXCLUDED.tabel_regel_start_datum,
 					tabel_regel_eind_datum=EXCLUDED.tabel_regel_eind_datum;
+
+INSERT INTO public.lo3_gezagsverhouding(
+	gezagsverhouding_code, gezagsverhouding_oms)
+	VALUES (1, 'Ouder1 heeft het gezag')
+	ON CONFLICT(gezagsverhouding_code) DO
+		UPDATE SET  gezagsverhouding_oms = EXCLUDED.gezagsverhouding_oms;
+
+INSERT INTO public.lo3_gezagsverhouding(
+	gezagsverhouding_code, gezagsverhouding_oms)
+	VALUES (12,'Ouder1 en ouder2 hebben het gezag')
+	ON CONFLICT(gezagsverhouding_code) DO
+		UPDATE SET  gezagsverhouding_oms = EXCLUDED.gezagsverhouding_oms;
+
+INSERT INTO public.lo3_gezagsverhouding(
+	gezagsverhouding_code, gezagsverhouding_oms)
+	VALUES ('1D','Ouder1 en een derde hebben het gezag')
+	ON CONFLICT(gezagsverhouding_code) DO
+		UPDATE SET  gezagsverhouding_oms = EXCLUDED.gezagsverhouding_oms;
+
+INSERT INTO public.lo3_gezagsverhouding(
+	gezagsverhouding_code, gezagsverhouding_oms)
+	VALUES ('2','Ouder2 heeft het gezag')
+	ON CONFLICT(gezagsverhouding_code) DO
+		UPDATE SET  gezagsverhouding_oms = EXCLUDED.gezagsverhouding_oms;
+
+INSERT INTO public.lo3_gezagsverhouding(
+	gezagsverhouding_code, gezagsverhouding_oms)
+	VALUES ('2D','Ouder2 en een derde hebben het gezag')
+	ON CONFLICT(gezagsverhouding_code) DO
+		UPDATE SET  gezagsverhouding_oms = EXCLUDED.gezagsverhouding_oms;
+
+INSERT INTO public.lo3_gezagsverhouding(
+	gezagsverhouding_code, gezagsverhouding_oms)
+	VALUES ('D','Een of meer derden hebben het gezag')
+	ON CONFLICT(gezagsverhouding_code) DO
+		UPDATE SET  gezagsverhouding_oms = EXCLUDED.gezagsverhouding_oms;
