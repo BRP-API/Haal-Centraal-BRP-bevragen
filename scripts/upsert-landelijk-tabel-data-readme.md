@@ -6,7 +6,7 @@
 ## Uitvoeren script
 
 - eenmalig de statement `npm install` uitvoeren om de benodigde npm package te installeren
-- voer de statement `npm run db:db:update-waarde-tabellen` uit om de landelijk tabel waarden te updaten
+- voer de statement `npm run db:update-waarde-tabellen` uit om de landelijk tabel waarden te updaten
 
 ## Landelijke tabellen die nu worden ge-update
 
