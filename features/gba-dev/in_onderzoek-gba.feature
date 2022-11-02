@@ -1,18 +1,11 @@
 # language: nl
 
-@proxy @post-assert
 Functionaliteit: in onderzoek
-  Wanneer de juistheid van een gegeven onderzocht wordt, en daardoor de waarde van een geleverd gegeven mogelijk onjuist is, wordt naast het betreffende veld ook in inOnderzoek een veld met dezelfde naam opgenomen. Deze krijgt dan de boolean waarde true.
+  Wanneer de juistheid van een gegeven, een groep of een hele categorie onderzocht wordt, en daardoor de waarde van een of meerdere geleverde gegevens mogelijk onjuist is, 
+  wordt naast het/de betreffende veld(en) in persoonInOnderzoek, gezagInOnderzoek of in een of meerdere inOnderzoek groepen (afhankelijk van de categorie waarop in onderzoek van toepassing is) een aanduidingGegevensInOnderzoek opgenomen. 
+  Deze krijgt/krijgen als waarde de 6-cijferige code die refereert aan een categorie, groep of gegeven dat in onderzoek is.
 
-  Een categorie kan in zijn geheel in onderzoek zijn, maar er kunnen ook individuele groepen of elementen binnen de categorie in onderzoek zijn.
-
-  Een veld dat niet in onderzoek is, wordt niet in inOnderzoek opgenomen, ook niet met de waarde false of null.
-
-  Een overzicht van de vertaling van een inOnderzoek elementwaarde (gegeven 83.10) naar welke velden in inOnderzoek moeten worden opgenomen (met de waarde true) staat in /features/in onderzoek.xlsx.
-
-  Ook wanneer een gegeven geen waarde heeft en daardoor niet in het antwoord opgenomen wordt kan het in onderzoek zijn. In dat geval wordt alleen in inOnderzoek een veld opgenomen met die naam en de waarde true.
-
-  Rule: wanneer een gegeven uit een categorie gevraagd is en er zit onderzoek op die categorie, dan wordt ook inOnderzoek voor dat veld geleverd
+  Rule: wanneer een gegeven uit een categorie gevraagd is en er zit onderzoek op die categorie, een groep van die categorie of een gegeven van die categorie dan wordt aanduidingGegevensInOnderzoek geleverd.
     - het gaat om groep 83 in de categorie
     - deze wordt ook geleverd wanneer het gevraagde gegeven geen waarde heeft en daarom niet geleverd is in het antwoord
 
@@ -35,8 +28,8 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 000000097                       |
       | fields              | ouders,partners,naam            |
       Dan heeft de response een persoon met de volgende 'naam' gegevens
-      | naam                                         | waarde            |
-      | voornamen                                    | Arnitta           |
+      | naam      | waarde            |
+      | voornamen | Arnitta           |
       En heeft de persoon de volgende 'persoonInOnderzoek' gegevens 
       | naam                          | waarde   |
       | aanduidingGegevensInOnderzoek | 010000   |
@@ -69,10 +62,14 @@ Functionaliteit: in onderzoek
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000097                       |
-      | fields              | naam            |
+      | fields              | naam                            |
       Dan heeft de response een persoon met de volgende 'naam' gegevens
-      | naam                      | waarde  |
-      | voornamen                 | Arnitta |
+      | naam      | waarde  |
+      | voornamen | Arnitta |
+      En heeft de persoon de volgende 'persoonInOnderzoek' gegevens 
+      | naam                          | waarde   |
+      | aanduidingGegevensInOnderzoek | 010310   |
+      | datumIngangOnderzoek          | 20120920 |
 
     Scenario: vragen om voorvoegsel zonder waarde bij groep naam in onderzoek
       Gegeven de persoon met burgerservicenummer '000000115' heeft de volgende gegevens
