@@ -84,6 +84,7 @@ Functionaliteit: in onderzoek
       | naam                          | waarde   |
       | aanduidingGegevensInOnderzoek | 010200   |
       | datumIngangOnderzoek          | 20120920 |
+	  En heeft de persoon een leeg 'naam' object
 
     Scenario: persoon heeft gezagInOnderzoek en persoonInOnderzoek
       Gegeven de persoon met burgerservicenummer '000000139' heeft de volgende gegevens
