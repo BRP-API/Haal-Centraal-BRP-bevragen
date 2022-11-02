@@ -92,6 +92,22 @@ Functionaliteit: Stap definities
       | verblijfstitel | INSERT INTO public.lo3_pl_verblijfstitel(pl_id,volg_nr,verblijfstitel_aand) VALUES($1,$2,$3)                                             | 9999,1,37            |
       |                | INSERT INTO public.lo3_pl_verblijfstitel(pl_id,volg_nr,verblijfstitel_aand) VALUES($1,$2,$3)                                             | 9999,0,38            |
 
+  Rule: En de/het '<naam-pl-tabel>' is gecorrigeerd naar de volgende gegevens
+
+    Scenario: Persoon heeft gecorrigeerde 'gezagsverhouding' gegevens
+      Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende 'gezagsverhouding' gegevens
+      | indicatie gezag minderjarige (32.10) |
+      | 12                                   |
+      En de 'gezagsverhouding' is gecorrigeerd naar de volgende gegevens
+      | indicatie gezag minderjarige (32.10) |
+      | 1D                                   |
+      Dan zijn de gegenereerde SQL statements
+      | key              | text                                                                                                                                     | values               |
+      | inschrijving     | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                    |
+      | persoon          | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 9999,0,0,P,000000012 |
+      | gezagsverhouding | INSERT INTO public.lo3_pl_gezagsverhouding(pl_id,volg_nr,minderjarig_gezag_ind,onjuist_ind) VALUES($1,$2,$3,$4)                          | 9999,1,12,O          |
+      |                  | INSERT INTO public.lo3_pl_gezagsverhouding(pl_id,volg_nr,minderjarig_gezag_ind) VALUES($1,$2,$3)                                         | 9999,0,1D            |
+
   Rule: Gegeven de persoon met burgerservicenummer '<bsn>' heeft een 'verblijfstitel' verkregen met de volgende gegevens
 
     Scenario: Persoon heeft 'verblijfstitel' gegevens
