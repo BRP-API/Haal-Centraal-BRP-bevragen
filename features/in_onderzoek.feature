@@ -63,12 +63,12 @@ Functionaliteit: in onderzoek
       | geslacht.omschrijving             | man    |
       | ouderAanduiding                   | 2      |
       En heeft de persoon een 'partner' met de volgende gegevens
-      | naam                                    | waarde          |
-      | burgerservicenummer                     | 000000103       |
-      | naam.voornamen                          | Karel           |
-      | naam.voorletters                        | K.              |
-      | geslacht.code                           | M               |
-      | geslacht.omschrijving                   | man             |
+      | naam                                          | waarde          |
+      | burgerservicenummer                           | 000000103       |
+      | naam.voornamen                                | Karel           |
+      | naam.voorletters                              | K.              |
+      | geslacht.code                                 | M               |
+      | geslacht.omschrijving                         | man             |
       | aangaanHuwelijkPartnerschap.datum.type        | Datum           |
       | aangaanHuwelijkPartnerschap.datum.datum       | 2009-11-02      |
       | aangaanHuwelijkPartnerschap.datum.langFormaat | 2 november 2009 |
@@ -268,7 +268,7 @@ Functionaliteit: in onderzoek
       | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
       | datum ingang onderzoek (83.20)  | 20220307                  |
       | geslachtsaanduiding (04.10)     | M                         |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000309                       |
@@ -298,18 +298,20 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 000000310                       |
       | fields              | <groep>.<veld>                  |
       Dan heeft de response een persoon met de volgende gegevens
-      | naam                                                 | waarde       |
-      | <groep>.<veld>                                       | <waarde>     |
-      | <groep>.inOnderzoek.<in onderzoek>                   | true         |
-      | <groep>.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07   |
-      | <groep>.inOnderzoek.datumIngangOnderzoek.type        | Datum        |
-      | <groep>.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
+      | naam                                                 | waarde        |
+      | <groep>.<veld>                                       | <waarde>      |
+      | <groep>.datum.type                                   | <type>        |
+      | <groep>.datum.langFormaat                            | <langFormaat> |
+      | <groep>.inOnderzoek.<in onderzoek>                   | true          |
+      | <groep>.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07    |
+      | <groep>.inOnderzoek.datumIngangOnderzoek.type        | Datum         |
+      | <groep>.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022  |
 
       Voorbeelden:
-      | aanduiding in onderzoek | in onderzoek            | veld                         | groep    | waarde     | naam                                 | bronwaarde |
-      | 010220                  | adellijkeTitelPredicaat | adellijkeTitelPredicaat.code | naam     | H          | adellijke titel of predicaat (02.20) | H          |
-      | 016110                  | aanduidingNaamgebruik   | aanduidingNaamgebruik.code   | naam     | E          | aanduiding naamgebruik (61.10)       | E          |
-      | 010310                  | datum                   | datum.datum                  | geboorte | 2001-09-28 | geboortedatum (03.10)                | 20010928   | 
+      | aanduiding in onderzoek | in onderzoek            | veld                         | groep    | waarde     | naam                                 | bronwaarde | type  | langFormaat     |
+      | 010220                  | adellijkeTitelPredicaat | adellijkeTitelPredicaat.code | naam     | H          | adellijke titel of predicaat (02.20) | H          |       |                 |
+      | 016110                  | aanduidingNaamgebruik   | aanduidingNaamgebruik.code   | naam     | E          | aanduiding naamgebruik (61.10)       | E          |       |                 |
+      | 010310                  | datum                   | datum.datum                  | geboorte | 2001-09-28 | geboortedatum (03.10)                | 20010928   | Datum | 28 januari 2001 |
 
     Abstract Scenario: persoon heeft <veld> van verblijfadres in onderzoek
       Gegeven de persoon met burgerservicenummer '000000322' heeft de volgende 'verblijfplaats' gegevens
@@ -371,7 +373,7 @@ Functionaliteit: in onderzoek
       | aanduiding verblijfstitel (39.10) | 15       |
       | aanduiding in onderzoek (83.10)   | 103910   |
       | datum ingang onderzoek (83.20)    | 20220307 |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000322                       |
@@ -397,7 +399,7 @@ Functionaliteit: in onderzoek
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000334                       |
       | fields              | ouders.<veld>                   |
       Dan heeft de response een persoon met een 'ouder' met de volgende gegevens
       | naam                                         | waarde       |
@@ -422,7 +424,7 @@ Functionaliteit: in onderzoek
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000346                       |
       | fields              | partners.<groep>.<veld>         |
       Dan heeft de response een persoon met een 'partner' met de volgende gegevens
       | naam                                                 | waarde       |
@@ -490,9 +492,6 @@ Functionaliteit: in onderzoek
       | naam.inOnderzoek.adellijkeTitelPredicaat          | true         |
       | naam.inOnderzoek.voorvoegsel                      | true         |
       | naam.inOnderzoek.geslachtsnaam                    | true         |
-      | naam.inOnderzoek.voorletters                      | true         |
-      | naam.inOnderzoek.aanduidingNaamgebruik            | true         |
-      | naam.inOnderzoek.volledigeNaam                    | true         |
       | naam.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07   |
       | naam.inOnderzoek.datumIngangOnderzoek.type        | Datum        |
       | naam.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
@@ -590,8 +589,8 @@ Functionaliteit: in onderzoek
       Gegeven de persoon met burgerservicenummer '000000437' heeft een 'kind' met de volgende gegevens
       | naam                            | waarde    |
       | burgerservicenummer (01.20)     | 000000449 |
-      | aanduiding in onderzoek (83.10) | 090000   |
-      | datum ingang onderzoek (83.20)  | 20220307 |
+      | aanduiding in onderzoek (83.10) | 090000    |
+      | datum ingang onderzoek (83.20)  | 20220307  |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                                                           |
       | type                | RaadpleegMetBurgerservicenummer                                                  |
@@ -707,7 +706,7 @@ Functionaliteit: in onderzoek
       | naam                              | waarde                       |
       | locatiebeschrijving (12.10)       | Woonboot in de Grotere Sloot |
       | gemeentecode (92.10)              | 0599                         |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                             |
       | type                | RaadpleegMetBurgerservicenummer    |
       | burgerservicenummer | 000000279                          |
@@ -1072,37 +1071,39 @@ Functionaliteit: in onderzoek
       | type                | RaadpleegMetBurgerservicenummer                     |
       | burgerservicenummer | 000000577                                           |
       | fields              | adresregel1,adresregel2,straat,korteNaam,woonplaats |
-      Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-      | naam                                                       | waarde               |
-      | inOnderzoek.adresregel1                                    | <adresregel1>        |
-      | inOnderzoek.adresregel2                                    | <adresregel2>        |
-      | inOnderzoek.datumIngangOnderzoek.datum                     | <verbl.plaats datum> |
-      | inOnderzoek.datumIngangOnderzoek.type                      | <verbl.plaats type>  |
-      | inOnderzoek.datumIngangOnderzoek.langFormaat               | <verbl.plaats lang>  |
-      | verblijfadres.inOnderzoek.korteNaam                        | <korteNaam>          |
-      | verblijfadres.inOnderzoek.straat                           | <straat>             |
-      | verblijfadres.inOnderzoek.woonplaats                       | <woonplaats>         |
-      | verblijfadres.inOnderzoek.datumIngangOnderzoek.datum       | <verbl.adres datum>  |
-      | verblijfadres.inOnderzoek.datumIngangOnderzoek.type        | <verbl.adres type>   |
-      | verblijfadres.inOnderzoek.datumIngangOnderzoek.langFormaat | <verbl.adres lang>   |
+      Dan heeft de response een persoon met de volgende gegevens
+      | naam                                                                      | waarde                  |
+      | adressering.inOnderzoek.adresregel1                                       | <adresregel1>           |
+      | adressering.inOnderzoek.adresregel2                                       | <adresregel2>           |
+      | adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats.datum          | 2022-03-07              |
+      | adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats.type           | Datum                   |
+      | adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats.langFormaat    | 7 maart 2022            |
+      | verblijfplaats.type                                                       | <type>                  |
+      | verblijfplaats.inOnderzoek.type                                           | <verbl.plaatstype>      |
+      | verblijfplaats.verblijfadres.inOnderzoek.korteNaam                        | <korteNaam>             |
+      | verblijfplaats.verblijfadres.inOnderzoek.straat                           | <straat>                |
+      | verblijfplaats.verblijfadres.inOnderzoek.woonplaats                       | <woonplaats>            |
+      | verblijfplaats.verblijfadres.inOnderzoek.datumIngangOnderzoek.datum       | <verbl.adres datum>     |
+      | verblijfplaats.verblijfadres.inOnderzoek.datumIngangOnderzoek.type        | <verbl.adres datumtype> |
+      | verblijfplaats.verblijfadres.inOnderzoek.datumIngangOnderzoek.langFormaat | <verbl.adres lang>      |
 
       #hier betekent leeg dat het inOnderzoek gegeven niet is opgenomen in het antwoord
       Voorbeelden:
-      | gegeven in onderzoek      | waarde | adresregel1 | adresregel2 | korteNaam | straat | woonplaats | verbl.plaats datum | verbl.plaats type | verbl.plaats lang | verbl.adres datum | verbl.adres type | verbl.adres lang |
-      | gemeenteVanInschrijving   | 080910 |             | true        |           |        | true       | 2022-03-07         | Datum             | 7 maart 2022      | 2022-03-07        | Datum            | 7 maart 2022     | 
-      | straat                    | 081110 | true        |             | true      | true   |            | 2022-03-07         | Datum             | 7 maart 2022      | 2022-03-07        | Datum            | 7 maart 2022     | 
-      | naamOpenbareRuimte        | 081115 |             |             |           | true   |            |                    |                   |                   | 2022-03-07        | Datum            | 7 maart 2022     | 
-      | huisnummer                | 081120 | true        |             |           |        |            | 2022-03-07         | Datum             | 7 maart 2022      |                   |                  |                  | 
-      | woonplaats                | 081170 |             | true        |           |        |            | 2022-03-07         | Datum             | 7 maart 2022      |                   |                  |                  | 
-      | locatiebeschrijving       | 081210 | true        |             |           |        |            | 2022-03-07         | Datum             | 7 maart 2022      |                   |                  |                  | 
-      | adresregel1               | 081330 | true        |             |           |        |            | 2022-03-07         | Datum             | 7 maart 2022      |                   |                  |                  | 
-      | groep gemeente            | 080900 |             | true        |           |        | true       | 2022-03-07         | Datum             | 7 maart 2022      | 2022-03-07        | Datum            | 7 maart 2022     | 
-      | groep adres               | 081100 | true        | true        | true      | true   | true       | 2022-03-07         | Datum             | 7 maart 2022      | 2022-03-07        | Datum            | 7 maart 2022     | 
-      | groep locatiebeschrijving | 081200 | true        |             |           |        |            | 2022-03-07         | Datum             | 7 maart 2022      |                   |                  |                  | 
-      | groep verblijf buitenland | 081300 | true        | true        |           |        |            | 2022-03-07         | Datum             | 7 maart 2022      |                   |                  |                  | 
-      | categorie verblijfplaats  | 080000 | true        | true        | true      | true   | true       | 2022-03-07         | Datum             | 7 maart 2022      | 2022-03-07        | Datum            | 7 maart 2022     | 
+      | gegeven in onderzoek      | waarde | type                   | adresregel1 | adresregel2 | korteNaam | straat | woonplaats | verbl.plaatstype | verbl.adres datum | verbl.adres datumtype | verbl.adres lang |
+      | gemeenteVanInschrijving   | 080910 |                        |             | true        |           |        |            |                  |                   |                       |                  | 
+      | straat                    | 081110 | VerblijfplaatsOnbekend | true        |             | true      | true   |            | true             | 2022-03-07        | Datum                 | 7 maart 2022     | 
+      | naamOpenbareRuimte        | 081115 | VerblijfplaatsOnbekend | true        |             |           | true   |            | true             | 2022-03-07        | Datum                 | 7 maart 2022     | 
+      | huisnummer                | 081120 |                        | true        |             |           |        |            |                  |                   |                       |                  | 
+      | woonplaats                | 081170 | VerblijfplaatsOnbekend |             | true        |           |        | true       | true             | 2022-03-07        | Datum                 | 7 maart 2022     | 
+      | locatiebeschrijving       | 081210 |                        | true        |             |           |        |            |                  |                   |                       |                  | 
+      | adresregel1               | 081330 |                        | true        |             |           |        |            |                  |                   |                       |                  | 
+      | groep gemeente            | 080900 |                        |             | true        |           |        |            |                  |                   |                       |                  | 
+      | groep adres               | 081100 | VerblijfplaatsOnbekend | true        | true        | true      | true   | true       | true             | 2022-03-07        | Datum                 | 7 maart 2022     | 
+      | groep locatiebeschrijving | 081200 |                        | true        |             |           |        |            |                  |                   |                       |                  | 
+      | groep verblijf buitenland | 081300 |                        | true        | true        |           |        |            |                  |                   |                       |                  | 
+      | categorie verblijfplaats  | 080000 | VerblijfplaatsOnbekend | true        | true        | true      | true   | true       | true             | 2022-03-07        | Datum                 | 7 maart 2022     | 
 
-    Abstract Scenario: nationaliteit <gegeven in onderzoek> is in onderzoek
+    Abstract Scenario: <gegeven in onderzoek> is in onderzoek
       Gegeven de persoon met burgerservicenummer '000000589' heeft een 'nationaliteit' met de volgende gegevens
       | naam                               | waarde                                |
       | nationaliteit (05.10)              | <nationaliteit>                       |
@@ -1126,16 +1127,16 @@ Functionaliteit: in onderzoek
       | inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022                 |
 
       Voorbeelden:
-      | gegeven in onderzoek                                    | nationaliteit | aanduidingBijzonderNederlanderschap | nationaliteit type         | datumIngangGeldigheid | waarde | type in onderzoek | nationaliteit in onderzoek | redenOpname in onderzoek |
-      | hele categorie nationaliteit                            | 0052          |                                     | Nationaliteit              | 19560317              | 040000 | true              | true                       | true                     |
-      | hele categorie bij onbekende nationaliteit              | 0000          |                                     | NationaliteitOnbekend      | 00000000              | 040000 | true              |                            | true                     |
-      | hele categorie bij vastgesteld niet-Nederlander         |               | V                                   | VastgesteldNietNederlander | 19710417              | 040000 | true              |                            | true                     |
-      | hele categorie bij behandeld als Nederlander            |               | B                                   | BehandeldAlsNederlander    | 19520831              | 040000 | true              |                            | true                     |
-      | nationaliteit                                           | 0052          |                                     | Nationaliteit              | 19560317              | 040510 | true              | true                       |                          |
-      | onbekende nationaliteit                                 | 0000          |                                     | NationaliteitOnbekend      | 19560317              | 040510 | true              |                            |                          |
-      | reden opname                                            | 0052          |                                     | Nationaliteit              | 19560317              | 046310 |                   |                            | true                     |
-      | bijzonder Nederlanderschap vastgesteld niet-Nederlander |               | V                                   | VastgesteldNietNederlander | 19710417              | 046510 | true              |                            |                          |
-      | bijzonder Nederlanderschap behandeld als Nederlander    |               | B                                   | BehandeldAlsNederlander    | 19710417              | 046510 | true              |                            |                          |
+      | gegeven in onderzoek                                          | nationaliteit | aanduidingBijzonderNederlanderschap | nationaliteit type         | datumIngangGeldigheid | waarde | type in onderzoek | nationaliteit in onderzoek | redenOpname in onderzoek |
+      | hele categorie nationaliteit                                  | 0052          |                                     | Nationaliteit              | 19560317              | 040000 | true              | true                       | true                     |
+      | hele categorie nationaliteit bij onbekende nationaliteit      | 0000          |                                     | NationaliteitOnbekend      | 00000000              | 040000 | true              |                            | true                     |
+      | hele categorie nationaliteit bij vastgesteld niet-Nederlander |               | V                                   | VastgesteldNietNederlander | 19710417              | 040000 | true              |                            | true                     |
+      | hele categorie nationaliteit bij behandeld als Nederlander    |               | B                                   | BehandeldAlsNederlander    | 19520831              | 040000 | true              |                            | true                     |
+      | veld nationaliteit                                            | 0052          |                                     | Nationaliteit              | 19560317              | 040510 | true              | true                       |                          |
+      | veld nationaliteit bij onbekende nationaliteit                | 0000          |                                     | NationaliteitOnbekend      | 19560317              | 040510 | true              |                            |                          |
+      | reden opname                                                  | 0052          |                                     | Nationaliteit              | 19560317              | 046310 |                   |                            | true                     |
+      | veld nationaliteit type bij vastgesteld niet-Nederlander      |               | V                                   | VastgesteldNietNederlander | 19710417              | 046510 | true              |                            |                          |
+      | veld nationaliteit type bij behandeld als Nederlander         |               | B                                   | BehandeldAlsNederlander    | 19710417              | 046510 | true              |                            |                          |
 
   Rule: onderzoek van een partnergegeven leidt alleen tot inOnderzoek van een samengesteld naamgegeven wanneer daarin de partnernaam wordt gebruikt
     - naam.aanduidingNaamgebruik is ongelijk aan 'E'
@@ -1163,13 +1164,14 @@ Functionaliteit: in onderzoek
       | burgerservicenummer                                             | 000000590      |
       | adressering.inOnderzoek.aanhef                                  | <in onderzoek> |
       | adressering.inOnderzoek.aanschrijfwijze                         | <in onderzoek> |
-      | adressering.inOnderzoek.gebruikInLopendeTekst			| <in onderzoek> |
+      | adressering.inOnderzoek.gebruikInLopendeTekst			        | <in onderzoek> |
       | adressering.inOnderzoek.datumIngangOnderzoekPartner.type        | <datum type>   |
       | adressering.inOnderzoek.datumIngangOnderzoekPartner.datum       | <datum datum>  |
       | adressering.inOnderzoek.datumIngangOnderzoekPartner.langFormaat | <datum lang>   |
 
       Voorbeelden:
       | omschrijving                                            | waarde | aanduidingNaamgebruik | in onderzoek | datum type | datum datum | datum lang   |
+      | partner in onderzoek en gebruik eigen naam              | 050000 | E                     |              |            |             |              |
       | partner in onderzoek en gebruik partner naam            | 050000 | P                     | true         | Datum      | 2022-03-07  | 7 maart 2022 |
       | partner in onderzoek en gebruik partner na eigen naam   | 050000 | N                     | true         | Datum      | 2022-03-07  | 7 maart 2022 |
       | partner in onderzoek en gebruik partner voor eigen naam | 050000 | V                     | true         | Datum      | 2022-03-07  | 7 maart 2022 |
