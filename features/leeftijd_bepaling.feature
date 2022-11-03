@@ -30,17 +30,17 @@ Functionaliteit: LeeftijdBepaling
 
     @skip-verify
     Abstract Scenario: Geboren op 29 februari in een schrikkeljaar
-      Gegeven de persoon met burgerservicenummer '000000218' heeft de volgende gegevens
+      Gegeven de persoon met burgerservicenummer '000000231' heeft de volgende gegevens
         | naam                  | waarde   |
         | geboortedatum (03.10) | 19960229 |
         Als personen op '<raadpleeg datum>' wordt gezocht met de volgende parameters
         | naam                | waarde                          |
         | type                | RaadpleegMetBurgerservicenummer |
-        | burgerservicenummer | 555550010                       |
+        | burgerservicenummer | 000000231                       |
         | fields              | burgerservicenummer,leeftijd    |
         Dan heeft de response een persoon met alleen de volgende gegevens
         | naam                | waarde     |
-        | burgerservicenummer | 555550010  |
+        | burgerservicenummer | 000000231  |
         | leeftijd            | <leeftijd> |
 
         Voorbeelden:
@@ -53,54 +53,48 @@ Functionaliteit: LeeftijdBepaling
   Rule: bij een volledig onbekende geboortedatum wordt leeftijd niet geleverd
 
     Scenario: Volledig onbekend geboortedatum
-      Gegeven de persoon met burgerservicenummer '000000218' heeft de volgende gegevenss
+      Gegeven de persoon met burgerservicenummer '000000243' heeft de volgende gegevens
       | naam                  | waarde   |
       | geboortedatum (03.10) | 00000000 |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550004                       |
+      | burgerservicenummer | 000000243                       |
       | fields              | burgerservicenummer,leeftijd    |
       Dan heeft de response een persoon met alleen de volgende gegevens
       | naam                | waarde    |
-      | burgerservicenummer | 555550004 |
+      | burgerservicenummer | 000000243 |
 
   Rule: bij een geboortedatum met alleen jaar bekend wordt de leeftijd niet geleverd
 
     Scenario: Alleen jaar van geboortedatum is bekend
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550005 |
-      En de persoon heeft de volgende 'geboorte' gegevens
+    Gegeven de persoon met burgerservicenummer '000000255' heeft de volgende 'geboorte' gegevens
       | naam                  | waarde   |
       | geboortedatum (03.10) | 19830000 |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550005                       |
+      | burgerservicenummer | 000000255                       |
       | fields              | burgerservicenummer,leeftijd    |
       Dan heeft de response een persoon met alleen de volgende gegevens
       | naam                | waarde    |
-      | burgerservicenummer | 555550005 |
+      | burgerservicenummer | 000000255 |
 
   Rule: bij een geboortedatum met onbekende dag wordt de leeftijd niet geleverd in de geboortemaand
 
     @skip-verify
     Abstract Scenario: Jaar en maand van geboortedatum zijn bekend
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550006 |
-      En de persoon heeft de volgende 'geboorte' gegevens
+    Gegeven de persoon met burgerservicenummer '000000267' heeft de volgende 'geboorte' gegevens
       | naam                  | waarde   |
       | geboortedatum (03.10) | 19830500 |
       Als personen op '<raadpleeg datum>' wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550006                       |
+      | burgerservicenummer | 000000267                       |
       | fields              | burgerservicenummer,leeftijd    |
       Dan heeft de response een persoon met alleen de volgende gegevens
       | naam                | waarde     |
-      | burgerservicenummer | 555550006  |
+      | burgerservicenummer | 000000267  |
       | leeftijd            | <leeftijd> |
 
       Voorbeelden:
@@ -114,10 +108,7 @@ Functionaliteit: LeeftijdBepaling
   Rule: wanneer de persoon overleden is wordt de leeftijd niet geleverd
 
     Scenario: Persoon is overleden
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550007 |
-      En de persoon heeft de volgende 'geboorte' gegevens
+    Gegeven de persoon met burgerservicenummer '000000279' heeft de volgende 'geboorte' gegevens
       | naam                  | waarde   |
       | geboortedatum (03.10) | 19830526 |
       En de persoon heeft de volgende 'overlijden' gegevens
@@ -126,8 +117,8 @@ Functionaliteit: LeeftijdBepaling
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550007                       |
+      | burgerservicenummer | 000000279                       |
       | fields              | burgerservicenummer,leeftijd    |
       Dan heeft de response een persoon met alleen de volgende gegevens
       | naam                | waarde    |
-      | burgerservicenummer | 555550007 |
+      | burgerservicenummer | 000000279 |

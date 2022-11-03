@@ -220,3 +220,22 @@ Functionaliteit: Fields vertalen van proxy naar gba
       | woonplaat                        | 's-Gravenhage              |
       | adresseerbaarObjectIdentificatie | 0599010000208579           |
       | nummeraanduidingIdentificatie    | 0599200000219678           |
+
+
+      Scenario: Leeftijd wordt gevraagd
+        Gegeven de persoon met burgerservicenummer '000000279' heeft de volgende gegevens
+        | naam                  | waarde   |
+        | geboortedatum (03.10) | 19470425 |
+        En de persoon heeft de volgende 'overlijden' gegevens
+        | naam                     | waarde   |
+        | datum overlijden (08.10) | 20160324 |
+        Als gba personen wordt gezocht met de volgende parameters
+        | naam                | waarde                          |22
+        | type                | RaadpleegMetBurgerservicenummer |
+        | burgerservicenummer | 000000279                       |
+        | fields              | burgerservicenummer,leeftijd    |
+        Dan heeft de response een persoon met alleen de volgende gegevens
+        | naam                | waarde    |
+        | burgerservicenummer | 000000279 |
+        | geboorte.datum      | 19470425  |
+        | overlijden.datum    | 20160324  |
