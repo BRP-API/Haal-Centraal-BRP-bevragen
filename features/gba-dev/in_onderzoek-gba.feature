@@ -134,7 +134,61 @@ Functionaliteit: in onderzoek
       | geslacht.omschrijving | man    |
       | ouderAanduiding       | 2      |
 
-  Rule: in onderzoek wordt niet opgenomen wanneer het onderzoek beëindigd is
+  Scenario: naam ouder 1 in onderzoek en een ouder naam gegeven wordt gevraagd
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
+    | naam                            | waarde    |
+    | aanduiding in onderzoek (83.10) | 020200    |
+    | datum ingang onderzoek (83.20)  | 20020701  |
+    | burgerservicenummer (01.20)     | 000000013 |
+    | geslachtsnaam (02.40)           | Groen     |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000012                       |
+    | fields              | ouders.naam.geslachtsnaam       |
+    Dan heeft de response een persoon met een 'ouder' met de volgende gegevens
+    | naam                                      | waarde   |
+    | inOnderzoek.aanduidingGegevensInOnderzoek | 020200   |
+    | inOnderzoek.datumIngangOnderzoek          | 20020701 |
+    En heeft de 'ouder' de volgende 'naam' gegevens
+    | naam          | waarde |
+    | geslachtsnaam | Groen  |
+
+  Scenario: naam ouder 1 in onderzoek maar een ander ouder gegeven wordt gevraagd
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
+    | naam                            | waarde    |
+    | aanduiding in onderzoek (83.10) | 020200    |
+    | datum ingang onderzoek (83.20)  | 20020701  |
+    | burgerservicenummer (01.20)     | 000000013 |
+    | geslachtsnaam (02.40)           | Groen     |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000012                       |
+    | fields              | ouders.burgerservicenummer      |
+    Dan heeft de response een persoon met een 'ouder' met de volgende gegevens
+    | naam                                      | waarde    |
+    | burgerservicenummer                       | 000000013 |
+    | inOnderzoek.aanduidingGegevensInOnderzoek | 020200    |
+    | inOnderzoek.datumIngangOnderzoek          | 20020701  |
+
+  Scenario: naam ouder 1 in onderzoek en een niet-ouder gegeven wordt gevraagd
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
+    | naam                            | waarde    |
+    | aanduiding in onderzoek (83.10) | 020200    |
+    | datum ingang onderzoek (83.20)  | 20020701  |
+    | burgerservicenummer (01.20)     | 000000013 |
+    | geslachtsnaam (02.40)           | Groen     |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000012                       |
+    | fields              | burgerservicenummer             |
+    Dan heeft de response een persoon met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 000000012 |
+
+	Rule: in onderzoek wordt niet opgenomen wanneer het onderzoek beëindigd is
     - Datum einde onderzoek (83.30) heeft een waarde
 
     Scenario: onderzoek is beëindigd
