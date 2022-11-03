@@ -1,0 +1,58 @@
+INSERT INTO public.lo3_rni_deelnemer
+	(deelnemer_code, deelnemer_oms, tabel_regel_start_datum)
+	VALUES (101, 'Belastingdienst (inzake heffingen en toeslagen)', 20220101)
+	ON CONFLICT(deelnemer_code) DO
+		UPDATE SET  deelnemer_oms = EXCLUDED.deelnemer_oms,
+					tabel_regel_start_datum=EXCLUDED.tabel_regel_start_datum;
+
+INSERT INTO public.lo3_rni_deelnemer
+	(deelnemer_code, deelnemer_oms, tabel_regel_start_datum )
+	VALUES (201, 'Sociale Verzekeringsbank (inzake AOW, Anw en AKW)', 20220101)
+	ON CONFLICT(deelnemer_code) DO
+		UPDATE SET  deelnemer_oms = EXCLUDED.deelnemer_oms,
+					tabel_regel_start_datum=EXCLUDED.tabel_regel_start_datum;
+
+INSERT INTO public.lo3_nl_nat_verkrijg_verlies_reden
+	(nl_nat_verkrijg_verlies_reden, nl_nat_reden_oms, nl_nat_reden_soort, tabel_regel_start_datum, tabel_regel_eind_datum)
+	VALUES (1, 'Wet op het Nederlanderschap 1892, art. 1, onder a', 'VK', 18930701, 19850101)
+	ON CONFLICT(nl_nat_verkrijg_verlies_reden) DO
+		UPDATE SET  nl_nat_reden_oms = EXCLUDED.nl_nat_reden_oms,
+					nl_nat_reden_soort = EXCLUDED.nl_nat_reden_soort,
+					tabel_regel_start_datum=EXCLUDED.tabel_regel_start_datum,
+					tabel_regel_eind_datum=EXCLUDED.tabel_regel_eind_datum;
+
+INSERT INTO public.lo3_gezagsverhouding(
+	gezagsverhouding_code, gezagsverhouding_oms)
+	VALUES (1, 'Ouder1 heeft het gezag')
+	ON CONFLICT(gezagsverhouding_code) DO
+		UPDATE SET  gezagsverhouding_oms = EXCLUDED.gezagsverhouding_oms;
+
+INSERT INTO public.lo3_gezagsverhouding(
+	gezagsverhouding_code, gezagsverhouding_oms)
+	VALUES (12,'Ouder1 en ouder2 hebben het gezag')
+	ON CONFLICT(gezagsverhouding_code) DO
+		UPDATE SET  gezagsverhouding_oms = EXCLUDED.gezagsverhouding_oms;
+
+INSERT INTO public.lo3_gezagsverhouding(
+	gezagsverhouding_code, gezagsverhouding_oms)
+	VALUES ('1D','Ouder1 en een derde hebben het gezag')
+	ON CONFLICT(gezagsverhouding_code) DO
+		UPDATE SET  gezagsverhouding_oms = EXCLUDED.gezagsverhouding_oms;
+
+INSERT INTO public.lo3_gezagsverhouding(
+	gezagsverhouding_code, gezagsverhouding_oms)
+	VALUES ('2','Ouder2 heeft het gezag')
+	ON CONFLICT(gezagsverhouding_code) DO
+		UPDATE SET  gezagsverhouding_oms = EXCLUDED.gezagsverhouding_oms;
+
+INSERT INTO public.lo3_gezagsverhouding(
+	gezagsverhouding_code, gezagsverhouding_oms)
+	VALUES ('2D','Ouder2 en een derde hebben het gezag')
+	ON CONFLICT(gezagsverhouding_code) DO
+		UPDATE SET  gezagsverhouding_oms = EXCLUDED.gezagsverhouding_oms;
+
+INSERT INTO public.lo3_gezagsverhouding(
+	gezagsverhouding_code, gezagsverhouding_oms)
+	VALUES ('D','Een of meer derden hebben het gezag')
+	ON CONFLICT(gezagsverhouding_code) DO
+		UPDATE SET  gezagsverhouding_oms = EXCLUDED.gezagsverhouding_oms;
