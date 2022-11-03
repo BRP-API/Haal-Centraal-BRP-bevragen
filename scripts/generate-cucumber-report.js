@@ -12,3 +12,29 @@ const options = {
 };
 
 reporter.generate(options);
+
+const optionsDev = {
+    theme: 'bootstrap',
+    jsonFile: 'docs/features/test-result-dev.json',
+    output: 'docs/features/test-report-dev.html',
+    reportSuiteAsScenarios: true,
+    scenarioTimestamp: true,
+    launchReport: false,
+    name:'Haal Centraal BRP Bevragen API specificaties (DEV)',
+    brandTitle:'Haal Centraal'
+};
+
+reporter.generate(optionsDev);
+
+const optionsGba = {
+    theme: 'bootstrap',
+    jsonFile: 'docs/features/test-result-gba.json',
+    output: 'docs/features/test-report-gba.html',
+    reportSuiteAsScenarios: true,
+    scenarioTimestamp: true,
+    launchReport: false,
+    name:'Haal Centraal BRP Bevragen API specificaties (GBA)',
+    brandTitle:'Haal Centraal'
+};
+
+reporter.generate(optionsGba);

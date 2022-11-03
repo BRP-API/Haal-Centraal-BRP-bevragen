@@ -22,6 +22,7 @@
     "postoas:resolve": "rm swagger-codegen-cli.jar",
     "unstage-generated": "git reset HEAD ./specificatie/genereervariant/openapi.* ./specificatie/gba-genereervariant/openapi.* ./test/**",
     "rollback-generated": "git checkout ./specificatie/genereervariant/openapi.* ./specificatie/gba-genereervariant/openapi.* ./test/**",
+    "db:update-waarde-tabellen": "node scripts/upsert-landelijk-tabel-data.js",
     "specs:report": "node scripts/generate-cucumber-report.js",
     "specs:verify": "bash scripts/specs-verify.sh",
     "pre-commit": "npm run oas:lint && npm run oas:resolve && npm run oas:lint-genereervariant && npm run unstage-generated",
@@ -38,17 +39,18 @@
   },
   "homepage": "https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen#readme",
   "devDependencies": {
-    "@cucumber/cucumber": "^8.6.0",
+    "@cucumber/cucumber": "^8.7.0",
     "@openapitools/openapi-generator-cli": "^2.5.2",
-    "@stoplight/spectral-cli": "^6.5.1",
+    "@stoplight/spectral-cli": "^6.6.0",
     "axios": "^0.27.2",
     "chai": "^4.3.6",
+    "csv-parse": "^5.3.1",
     "cucumber-html-reporter": "^5.5.0",
     "deep-equal-in-any-order": "^2.0.0",
     "husky": "^8.0.1",
     "mvn-dl": "^6.0.0",
     "nswag": "^13.17.0",
-    "openapi-to-postmanv2": "^4.2.0",
+    "openapi-to-postmanv2": "^4.3.0",
     "pg": "^8.8.0"
   }
 }
