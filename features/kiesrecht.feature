@@ -121,6 +121,20 @@ Rule: Uitsluiting van Europees kiesrecht wordt alleen opgenomen wanneer de eindd
     | einddatum uitsluiting vorige maand | 1                  | vorige maand          |
     | einddatum uitsluiting vorig jaar   | 1                  | vorig jaar            |
 
+	Scenario: Europees kiesrecht waarbij allen de einddatum uitsluiting is gevuld wordt niet geleverd
+	#   Functioneel zou dit moeten zijn :
+	#   Gegeven de persoon met burgerservicenummer '000000164' heeft de volgende 'kiesrecht' gegevens
+	#   De kiesrechtgegevens zijn opgenomen in de lo3_pl tabel. Het toevoegen van kiesrecht gegevens zou in de automation code een update vereisen.
+	#   Die update is nog niet geïmplementeerd, dus worden de kiesrecht met de insert van de inschrijving meegegeven.
+		Gegeven de persoon met burgerservicenummer '000000164' heeft de volgende 'inschrijving' gegevens
+		| einddatum uitsluiting Europees kiesrecht (31.30) |
+		| morgen                                           |
+		Als personen wordt gezocht met de volgende parameters
+		| naam                | waarde                          |
+		| type                | RaadpleegMetBurgerservicenummer |
+		| burgerservicenummer | 000000164                       |
+		| fields              | europeesKiesrecht |
+		Dan heeft de response een persoon zonder gegevens
 
 Rule: Uitsluiting van kiesrecht wordt alleen opgenomen wanneer de einddatum uitsluiting in de toekomst ligt
 	- Wanneer alleen het jaar van de einddatum uitsluiting bekend is, dan wordt de uitsluiting opgenomen tot en met dat jaar.
@@ -177,3 +191,18 @@ Rule: Uitsluiting van kiesrecht wordt alleen opgenomen wanneer de einddatum uits
 				| einddatum uitsluiting vandaag            | A                     | vandaag               |
 				| einddatum uitsluiting vorige maand       | A                     | vorige maand          |
 				| einddatum uitsluiting vorig jaar         | A                     | vorig jaar            |
+
+		Scenario: kiesrecht zonder aanduiding, maar met einddatum uitsluiting wordt niet geleverd.
+		#   Functioneel zou dit moeten zijn :
+		#   Gegeven de persoon met burgerservicenummer '000000140' heeft de volgende 'kiesrecht' gegevens
+		#   De kiesrechtgegevens zijn opgenomen in de lo3_pl tabel. Het toevoegen van kiesrecht gegevens zou in de automation code een update vereisen.
+		#   Die update is nog niet geïmplementeerd, dus worden de kiesrecht met de insert van de inschrijving meegegeven.
+				Gegeven de persoon met burgerservicenummer '000000140' heeft de volgende 'inschrijving' gegevens
+				| einddatum uitsluiting kiesrecht (38.20) |
+				| morgen                                  |
+				Als personen wordt gezocht met de volgende parameters
+				| naam                | waarde                                   |
+				| type                | RaadpleegMetBurgerservicenummer          |
+				| burgerservicenummer | 000000140                                |
+				| fields              | uitsluitingKiesrecht                     |
+				Dan heeft de response een persoon zonder gegevens
