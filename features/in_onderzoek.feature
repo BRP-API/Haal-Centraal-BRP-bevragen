@@ -1,6 +1,5 @@
 # language: nl
 
-@proxy @post-assert
 Functionaliteit: in onderzoek
   Wanneer de juistheid van een gegeven onderzocht wordt, en daardoor de waarde van een geleverd gegeven mogelijk onjuist is, wordt naast het betreffende veld ook in inOnderzoek een veld met dezelfde naam opgenomen. Deze krijgt dan de boolean waarde true.
 
@@ -18,9 +17,9 @@ Functionaliteit: in onderzoek
     - deze wordt ook geleverd wanneer het gevraagde gegeven geen waarde heeft en daarom niet geleverd is in het antwoord
 
     Scenario: vragen om naam bij hele categorie persoon in onderzoek
-      Gegeven een persoon heeft de volgende 'persoon' gegevens
-      | burgerservicenummer (01.20) | voornamen (02.10) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | 
-      | 000000097                   | Arnitta           | 19231213              | 010000                          | 20120920                       |
+      Gegeven de persoon met burgerservicenummer '000000097' heeft de volgende gegevens
+      | voornamen (02.10) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+      | Arnitta           | 19231213              | 010000                          | 20120920                       |
       En de persoon heeft een ouder '1' met de volgende gegevens
       | voornamen (02.10) | geslachtsaanduiding (04.10) |
       | Noa               | V                           |
@@ -28,8 +27,8 @@ Functionaliteit: in onderzoek
       | voornamen (02.10) | geslachtsaanduiding (04.10) |
       | Jan               | M                           |
       En de persoon heeft een 'partner' met de volgende gegevens
-      | burgerservicenummer (01.20) | voornamen (02.10 | geslachtsaanduiding (04.10) | datum aangaan (06.10) |
-      | 000000103                   | Karel            | M                           | 20091102              |
+      | burgerservicenummer (01.20) | voornamen (02.10) | geslachtsaanduiding (04.10) | datum aangaan (06.10) |
+      | 000000103                   | Karel             | M                           | 20091102              |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -51,66 +50,68 @@ Functionaliteit: in onderzoek
       | inOnderzoek.aanduidingNaamgebruik            | true              |
       | inOnderzoek.volledigeNaam                    | true              |
       En heeft de persoon een 'ouder' met de volgende gegevens
-      | naam                              | waarde |
-      | naam.voornamen                    | Noa    |
-      | naam.voorletters                  | N.     |
-      | geslacht.code                     | V      |
-      | geslacht.omschrijving             | vrouw  |
-      | ouderAanduiding                   | 1      |
+      | naam                  | waarde |
+      | naam.voornamen        | Noa    |
+      | naam.voorletters      | N.     |
+      | geslacht.code         | V      |
+      | geslacht.omschrijving | vrouw  |
+      | ouderAanduiding       | 1      |
       En heeft de persoon een 'ouder' met de volgende gegevens
-      | naam                              | waarde |
-      | naam.voornamen                    | Jan    |
-      | naam.voorletters                  | J.     |  
-      | geslacht.code                     | M      |  
-      | geslacht.omschrijving             | man    |
-      | ouderAanduiding                   | 2      |
+      | naam                  | waarde |
+      | naam.voornamen        | Jan    |
+      | naam.voorletters      | J.     |
+      | geslacht.code         | M      |
+      | geslacht.omschrijving | man    |
+      | ouderAanduiding       | 2      |
       En heeft de persoon een 'partner' met de volgende gegevens
-      | naam                              | waarde          |
-      | burgerservicenummer               | 000000103       |
-      | naam.voornamen                    | Karel           |
-      | geslacht.code                     | M               |
-      | geslacht.omschrijving             | man             |
-      | aangaanHuwelijkPartnerschap.type  | Datum           |
-      | aangaanHuwelijkPartnerschap.datum | 2009-11-02      |
-      | aangaanHuwelijkPartnerschap.datum | 2 november 2009 |
+      | naam                                          | waarde          |
+      | burgerservicenummer                           | 000000103       |
+      | naam.voornamen                                | Karel           |
+      | naam.voorletters                              | K.              |
+      | geslacht.code                                 | M               |
+      | geslacht.omschrijving                         | man             |
+      | aangaanHuwelijkPartnerschap.datum.type        | Datum           |
+      | aangaanHuwelijkPartnerschap.datum.datum       | 2009-11-02      |
+      | aangaanHuwelijkPartnerschap.datum.langFormaat | 2 november 2009 |
 
     Scenario: vragen om naam bij geboortedatum in onderzoek
-      Gegeven een persoon heeft de volgende 'persoon' gegevens
-      | burgerservicenummer (01.20) | voornamen (02.10) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | 
-      | 000000097                   | Arnitta           | 19231213              | 010310                          | 20120920                       |
+      Gegeven de persoon met burgerservicenummer '000000097' heeft de volgende gegevens
+      | voornamen (02.10) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+      | Arnitta           | 19231213              | 010310                          | 20120920                       |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000097                       |
-      | fields              | naam            |
+      | fields              | naam                            |
       Dan heeft de response een persoon met de volgende 'naam' gegevens
-      | naam                      | waarde  |
-      | voornamen                 | Arnitta |
-      | voorletters               | A.      |
-      | volledigeNaam             | Arnitta |
+      | naam          | waarde  |
+      | voornamen     | Arnitta |
+      | voorletters   | A.      |
+      | volledigeNaam | Arnitta |
 
     Scenario: vragen om voorvoegsel zonder waarde bij groep naam in onderzoek
-      Gegeven een persoon heeft de volgende 'persoon' gegevens
-      | burgerservicenummer (01.20) | voornamen (02.10) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | 
-      | 000000115                   | Arnitta           | 19231213              | 010200                          | 20120920                       |
+      Gegeven de persoon met burgerservicenummer '000000115' heeft de volgende gegevens
+      | voornamen (02.10) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+      | Arnitta           | 19231213              | 010200                          | 20120920                       |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                           |
-      | type                | RaadpleegMetBurgerservicenummer  |
-      | burgerservicenummer | 000000115                        |
-      | fields              | naam.voorvoegsel |
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000115                       |
+      | fields              | naam.voorvoegsel                |
       Dan heeft de response een persoon met de volgende 'naam' gegevens
-      | naam                      | waarde  |
-      | inOnderzoek.voornamen     | true    |
-      | inOnderzoek.voorletters   | true    |
-      | inOnderzoek.volledigeNaam | true    |
+      | naam                                         | waarde            |
+      | inOnderzoek.voorvoegsel                      | true              |
+      | inOnderzoek.datumIngangOnderzoek.type        | Datum             |
+      | inOnderzoek.datumIngangOnderzoek.datum       | 2012-09-20        |
+      | inOnderzoek.datumIngangOnderzoek.langFormaat | 20 september 2012 |
 
     Scenario: persoon heeft gezagInOnderzoek en persoonInOnderzoek
-      Gegeven een persoon heeft de volgende 'persoon' gegevens
-      | burgerservicenummer (01.20) | voornamen (02.10) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
-      | 000000139                   | Arnitta           | 19231213              | 010410                             | 20120920                    |
-      En de persoon heeft nog een 'gezagsverhouding' met de volgende gegevens
-      | indicatie curateleregister (33.10) |aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
-      | 1                                  | 113310                         | 20101205                       |
+      Gegeven de persoon met burgerservicenummer '000000139' heeft de volgende gegevens
+      | voornamen (02.10) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+      | Arnitta           | 19231213              | 010410                          | 20120920                       |
+      En de persoon heeft de volgende 'gezagsverhouding' gegevens
+      | indicatie curateleregister (33.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+      | 1                                  | 113310                          | 20101205                       |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                             |
       | type                | RaadpleegMetBurgerservicenummer    |
@@ -129,9 +130,9 @@ Functionaliteit: in onderzoek
       | inOnderzoek.indicatieCurateleRegister               | true              |
 
     Scenario: persoon in onderzoek maar niet vragen om gegevens uit categorie persoon
-      Gegeven een persoon heeft de volgende 'persoon' gegevens
-      | burgerservicenummer (01.20) | voornamen (02.10) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
-      | 000000140                   | Arnitta           | 19231213              | 010000                          | 20120920                       |
+      Gegeven de persoon met burgerservicenummer '000000140' heeft de volgende gegevens
+      | voornamen (02.10) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+      | Arnitta           | 19231213              | 010000                          | 20120920                       |
       En de persoon heeft een ouder '1' met de volgende gegevens
       | voornamen (02.10) | geslachtsaanduiding (04.10) |
       | Noa               | V                           |
@@ -162,9 +163,9 @@ Functionaliteit: in onderzoek
     - Datum einde onderzoek (83.30) heeft een waarde
 
     Scenario: onderzoek is beëindigd
-      Gegeven een persoon heeft de volgende 'persoon' gegevens
-      | burgerservicenummer (01.20) | voornamen (02.10) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | datum einde onderzoek (83.30) |
-      | 000000152                   | Arnitta           | 19231213              | 010000                          | 20120920                       | 20120922                      |
+      Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+      | voornamen (02.10) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | datum einde onderzoek (83.30) |
+      | Arnitta           | 19231213              | 010000                          | 20120920                       | 20120922                      |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                            |
       | type                | RaadpleegMetBurgerservicenummer                   |
@@ -178,142 +179,124 @@ Functionaliteit: in onderzoek
       | geboorte.datum.datum       | 1923-12-13       |
       | geboorte.datum.langFormaat | 13 december 1923 |
 
-  @proxy
   Rule: in onderzoek wordt niet opgenomen wanneer het gegeven of de groep die onderzocht wordt niet wordt gevraagd
     Dit is het geval wanneer gegevens in onderzoek zijn die:
     - niet in de resource voorkomen
     - niet gevraagd zijn met fields
 
-    @proxy
     Scenario: persoon heeft EU-persoonsnummer van nationaliteit in onderzoek die niet voorkomt in de resource
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550001 |
-      En de nationaliteit heeft volgende 'inOnderzoek' gegevens
-      | naam                          | waarde   |
-      | aanduidingGegevensInOnderzoek | 047310   |
-      | datumIngangOnderzoek          | 20220307 |
+      Gegeven de persoon met burgerservicenummer '000000152' heeft een 'nationaliteit' met de volgende gegevens
+      | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+      | 047310                          | 20220307                       |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                              |
       | type                | RaadpleegMetBurgerservicenummer     |
-      | burgerservicenummer | 555550001                           |
+      | burgerservicenummer | 000000152                           |
       | fields              | burgerservicenummer,nationaliteiten |
-      Dan heeft de persoon met burgerservicenummer '555550001' GEEN 'inOnderzoek' gegevens
-      En heeft de nationaliteit GEEN 'inOnderzoek' gegevens
-
-    @proxy
-    Abstract Scenario: persoon heeft <gegeven in onderzoek> in onderzoek dat niet is gevraagd met fields
-      Gegeven het systeem heeft een persoon met de volgende gegevens
+      Dan heeft de response een persoon met alleen de volgende gegevens
       | naam                | waarde    |
-      | burgerservicenummer | 555550001 |
-      En de persoon heeft volgende 'inOnderzoek' gegevens
-      | naam                          | waarde   |
-      | aanduidingGegevensInOnderzoek | <waarde> |
-      | datumIngangOnderzoek          | 20220307 |
+      | burgerservicenummer | 000000152 |
+      En heeft de persoon geen 'nationaliteit' gegevens
+
+    Abstract Scenario: persoon heeft <gegeven in onderzoek> in onderzoek dat niet is gevraagd met fields
+      Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+      | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+      | <waarde>                        | 20220307                       |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000152                       |
       | fields              | <fields>                        |
-      Dan heeft de persoon GEEN 'inOnderzoek' gegevens
+      Dan heeft de response een persoon zonder '<gegevensgroep>' gegevens
 
       Voorbeelden:
-      | waarde | gegeven in onderzoek   | fields                      |
-      | 010000 | hele categorie persoon | kinderen                    |
-      | 010200 | hele groep naam        | geslacht,geboorte.datum     |
-      | 010210 | voornamen              | geboorte,naam.geslachtsnaam |
+      | waarde | gegeven in onderzoek   | fields                  | gegevensgroep |
+      | 010000 | hele categorie persoon | kinderen                | kind          |
+      | 010200 | hele groep naam        | geslacht,geboorte.datum | geboorte      |
+      | 010210 | voornamen              | naam.geslachtsnaam      | naam          |
 
-  @proxy
   Rule: wanneer een element in de bron in onderzoek is, wordt het gegeven in het antwoord dat daaruit gevuld wordt ook in inOnderzoek opgenomen met de waarde true
 
     Abstract Scenario: persoon heeft <veld> in onderzoek
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
-      En de persoon heeft de volgende 'persoonInOnderzoek' gegevens
-      | naam                          | waarde   |
-      | aanduidingGegevensInOnderzoek | <waarde> |
-      | datumIngangOnderzoek          | 20220307 |
+      Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+      | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+      | <waarde>                        | 20220307                       |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000152                       |
       | fields              | <veld>                          |
-      Dan heeft de persoon met burgerservicenummer '555550001' de volgende 'inOnderzoek' gegevens
-      | naam                                    | waarde       |
-      | <veld>                                  | true         |
-      | datumIngangOnderzoekPersoon.datum       | 2022-03-07   |
-      | datumIngangOnderzoekPersoon.type        | Datum        |
-      | datumIngangOnderzoekPersoon.langFormaat | 7 maart 2022 |
+      Dan heeft de response een persoon met de volgende gegevens
+      | naam                                                | waarde        |
+      | <veld>                                              | <veld waarde> |
+      | inOnderzoek.<veld>                                  | true          |
+      | inOnderzoek.datumIngangOnderzoekPersoon.datum       | 2022-03-07    |
+      | inOnderzoek.datumIngangOnderzoekPersoon.type        | Datum         |
+      | inOnderzoek.datumIngangOnderzoekPersoon.langFormaat | 7 maart 2022  |
 
       Voorbeelden:
-      | waarde | veld                |
-      | 010120 | burgerservicenummer |
-      | 010410 | geslacht            |
+      | waarde | veld                | veld waarde |
+      | 010120 | burgerservicenummer | 000000152   |
+      | 010410 | geslacht            |             |
 
     Abstract Scenario: persoon heeft <groep> <veld> in onderzoek
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
-      En de persoon heeft de volgende 'persoonInOnderzoek' gegevens
-      | naam                          | waarde   |
-      | aanduidingGegevensInOnderzoek | <waarde> |
-      | datumIngangOnderzoek          | 20220307 |
+      Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+      | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+      | <waarde>                        | 20220307                       |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000152                       |
       | fields              | <groep>.<veld>                  |
-      Dan heeft de persoon met burgerservicenummer '555550001' de volgende '<groep>.inOnderzoek' gegevens
-      | naam                             | waarde       |
-      | <veld>                           | true         |
-      | datumIngangOnderzoek.datum       | 2022-03-07   |
-      | datumIngangOnderzoek.type        | Datum        |
-      | datumIngangOnderzoek.langFormaat | 7 maart 2022 |
+      Dan heeft de response een persoon met de volgende '<groep>' gegevens
+      | naam                                         | waarde       |
+      | inOnderzoek.<veld>                           | true         |
+      | inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07   |
+      | inOnderzoek.datumIngangOnderzoek.type        | Datum        |
+      | inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
 
       Voorbeelden:
-      | waarde | veld                      | groep            |
-      | 010220 | adellijkeTitelPredicaat   | naam             |
-      | 016110 | aanduidingNaamgebruik     | naam             |
-      | 010310 | datum                     | geboorte         |
+      | waarde | veld                    | groep    |
+      | 010220 | adellijkeTitelPredicaat | naam     |
+      | 016110 | aanduidingNaamgebruik   | naam     |
+      | 010310 | datum                   | geboorte |
 
+    @skip-verify
     Abstract Scenario: persoon heeft <veld> van <groep> in onderzoek
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
-      En de persoon heeft de volgende '<groep>.inOnderzoek' gegevens
-      | naam                          | waarde   |
-      | aanduidingGegevensInOnderzoek | <waarde> |
-      | datumIngangOnderzoek          | 20220307 |
+      Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+      | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+      | <waarde>                        | 20220307                       |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000152                       |
       | fields              | <groep>.<veld>                  |
-      Dan heeft de persoon met burgerservicenummer '555550001' de volgende '<groep>.inOnderzoek' gegevens
+      Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
       | naam                             | waarde       |
+      | type                             | Adres        |
       | <veld>                           | true         |
       | datumIngangOnderzoek.datum       | 2022-03-07   |
       | datumIngangOnderzoek.type        | Datum        |
       | datumIngangOnderzoek.langFormaat | 7 maart 2022 |
 
       Voorbeelden:
-      | waarde | veld                      | groep            |
-      | 081120 | huisnummer                | verblijfplaats   |
-      | 081130 | huisletter                | verblijfplaats   |
-      | 081140 | huisnummertoevoeging      | verblijfplaats   |
-      | 081150 | aanduidingBijHuisnummer   | verblijfplaats   |
-      | 081160 | postcode                  | verblijfplaats   |
-      | 081170 | woonplaats                | verblijfplaats   |
-      | 081210 | locatiebeschrijving       | verblijfplaats   |
-      | 081310 | land                      | verblijfplaats   |
-      | 081350 | adresregel3               | verblijfplaats   |
-      | 103910 | aanduiding                | verblijfstitel   |
+      | waarde | veld                    | groep          |
+      | 081120 | huisnummer              | verblijfplaats |
+      | 081130 | huisletter              | verblijfplaats |
+      | 081140 | huisnummertoevoeging    | verblijfplaats |
+      | 081150 | aanduidingBijHuisnummer | verblijfplaats |
+      | 081160 | postcode                | verblijfplaats |
+      | 081170 | woonplaats              | verblijfplaats |
+      | 081210 | locatiebeschrijving     | verblijfplaats |
+      | 081310 | land                    | verblijfplaats |
+      | 081350 | adresregel3             | verblijfplaats |
+      | 103910 | aanduiding              | verblijfstitel |
 
+    @skip-verify
     Abstract Scenario: persoon heeft <veld> van ouder in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
+      | naam                | waarde    |
+      | burgerservicenummer | 555550001 |
       En de persoon heeft een ouder met de volgende gegevens
       | naam            | waarde |
       | ouderAanduiding | 1      |
@@ -345,10 +328,11 @@ Functionaliteit: in onderzoek
       | 030410 | geslacht                                | 2     | 1            |
       | 026210 | datumIngangFamilierechtelijkeBetrekking | 1     | 2            |
 
+    @skip-verify
     Abstract Scenario: persoon heeft <groep> <veld> van partner in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
+      | naam                | waarde    |
+      | burgerservicenummer | 555550001 |
       En de persoon heeft een partner met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550002 |
@@ -375,41 +359,42 @@ Functionaliteit: in onderzoek
       | 050310 | plaats                      | geboorte |
       | 050610 | aangaanHuwelijkPartnerschap | datum    |
 
-      Scenario: persoon heeft gegevens geslacht, gemeenteVanInschrijving en indicatieCurateleRegister in onderzoek
-        Gegeven het systeem heeft een persoon met de volgende gegevens
-        | naam                        | waarde    |
-        | burgerservicenummer         | 555550001 |
-        En de persoon heeft de volgende 'persoonInOnderzoek' gegevens
-        | naam                          | waarde   |
-        | aanduidingGegevensInOnderzoek | 010410   |
-        | datumIngangOnderzoek          | 20220307 |
-        En de persoon heeft de volgende 'gezagInOnderzoek' gegevens
-        | naam                          | waarde   |
-        | aanduidingGegevensInOnderzoek | 113310   |
-        | datumIngangOnderzoek          | 20101205 |
-        En de persoon heeft de volgende 'verblijfplaats.inOnderzoek' gegevens
-        | naam                          | waarde   |
-        | aanduidingGegevensInOnderzoek | 080910   |
-        | datumIngangOnderzoek          | 20030405 |
-        Als personen wordt gezocht met de volgende parameters
-        | naam                | waarde                                                     |
-        | type                | RaadpleegMetBurgerservicenummer                            |
-        | burgerservicenummer | 555550001                                                  |
-        | fields              | geslacht,indicatiecurateleregister,gemeentevaninschrijving |
-        Dan heeft de persoon met burgerservicenummer '555550001' de volgende 'inOnderzoek' gegevens
-        | naam                                     | waarde          |
-        | geslacht                                 | true            |
-        | gemeenteVanInschrijving                  | true            |
-        | indicatieCurateleRegister                | true            |
-        | datumIngangOnderzoekPersoon.datum        | 2022-03-07      |
-        | datumIngangOnderzoekPersoon.type         | Datum           |
-        | datumIngangOnderzoekPersoon.langFormaat  | 7 maart 2022    |
-        | datumIngangOnderzoekGemeente.datum       | 2003-04-05      |
-        | datumIngangOnderzoekGemeente.type        | Datum           |
-        | datumIngangOnderzoekGemeente.langFormaat | 5 april 2003    |
-        | datumIngangOnderzoekGezag.datum          | 2010-12-05      |
-        | datumIngangOnderzoekGezag.type           | Datum           |
-        | datumIngangOnderzoekGezag.langFormaat    | 5 december 2010 |
+    @skip-verify
+    Scenario: persoon heeft gegevens geslacht, gemeenteVanInschrijving en indicatieCurateleRegister in onderzoek
+      Gegeven het systeem heeft een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 555550001 |
+      En de persoon heeft de volgende 'persoonInOnderzoek' gegevens
+      | naam                          | waarde   |
+      | aanduidingGegevensInOnderzoek | 010410   |
+      | datumIngangOnderzoek          | 20220307 |
+      En de persoon heeft de volgende 'gezagInOnderzoek' gegevens
+      | naam                          | waarde   |
+      | aanduidingGegevensInOnderzoek | 113310   |
+      | datumIngangOnderzoek          | 20101205 |
+      En de persoon heeft de volgende 'verblijfplaats.inOnderzoek' gegevens
+      | naam                          | waarde   |
+      | aanduidingGegevensInOnderzoek | 080910   |
+      | datumIngangOnderzoek          | 20030405 |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                                                     |
+      | type                | RaadpleegMetBurgerservicenummer                            |
+      | burgerservicenummer | 555550001                                                  |
+      | fields              | geslacht,indicatiecurateleregister,gemeentevaninschrijving |
+      Dan heeft de persoon met burgerservicenummer '555550001' de volgende 'inOnderzoek' gegevens
+      | naam                                     | waarde          |
+      | geslacht                                 | true            |
+      | gemeenteVanInschrijving                  | true            |
+      | indicatieCurateleRegister                | true            |
+      | datumIngangOnderzoekPersoon.datum        | 2022-03-07      |
+      | datumIngangOnderzoekPersoon.type         | Datum           |
+      | datumIngangOnderzoekPersoon.langFormaat  | 7 maart 2022    |
+      | datumIngangOnderzoekGemeente.datum       | 2003-04-05      |
+      | datumIngangOnderzoekGemeente.type        | Datum           |
+      | datumIngangOnderzoekGemeente.langFormaat | 5 april 2003    |
+      | datumIngangOnderzoekGezag.datum          | 2010-12-05      |
+      | datumIngangOnderzoekGezag.type           | Datum           |
+      | datumIngangOnderzoekGezag.langFormaat    | 5 december 2010 |
 
 
   @proxy
@@ -418,8 +403,8 @@ Functionaliteit: in onderzoek
 
     Scenario: persoon heeft hele groep naam in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
+      | naam                | waarde    |
+      | burgerservicenummer | 555550001 |
       En de persoon heeft de volgende 'persoonInOnderzoek' gegevens
       | naam                          | waarde   |
       | aanduidingGegevensInOnderzoek | 010200   |
@@ -430,21 +415,21 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 555550001                                                                                                           |
       | fields              | naam.voornamen,naam.adellijkeTitelPredicaat,naam.voorvoegsel,naam.geslachtsnaam,naam.aanduidingNaamgebruik,geboorte |
       Dan heeft de persoon met burgerservicenummer '555550001' alleen de volgende 'naam.inOnderzoek' gegevens
-      | naam                             | waarde     |
-      | voornamen                        | true       |
-      | adellijkeTitelPredicaat          | true       |
-      | voorvoegsel                      | true       |
-      | geslachtsnaam                    | true       |
-      | datumIngangOnderzoek.datum       | 2022-03-07 |
-      | datumIngangOnderzoek.type        | Datum      |
+      | naam                             | waarde       |
+      | voornamen                        | true         |
+      | adellijkeTitelPredicaat          | true         |
+      | voorvoegsel                      | true         |
+      | geslachtsnaam                    | true         |
+      | datumIngangOnderzoek.datum       | 2022-03-07   |
+      | datumIngangOnderzoek.type        | Datum        |
       | datumIngangOnderzoek.langFormaat | 7 maart 2022 |
       En heeft de persoon GEEN 'inOnderzoek' gegevens
       En heeft de persoon GEEN 'geboorte.inOnderzoek' gegevens
 
     Scenario: kind heeft hele groep geboorte in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
+      | naam                | waarde    |
+      | burgerservicenummer | 555550001 |
       En de persoon heeft een kind met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550002 |
@@ -458,22 +443,23 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 555550001                       |
       | fields              | kinderen                        |
       Dan heeft het kind met burgerservicenummer '555550002' alleen de volgende 'geboorte.inOnderzoek' gegevens
-      | naam                             | waarde     |
-      | datum                            | true       |
-      | plaats                           | true       |
-      | land                             | true       |
-      | datumIngangOnderzoek.datum       | 2022-03-07 |
-      | datumIngangOnderzoek.type        | Datum      |
+      | naam                             | waarde       |
+      | datum                            | true         |
+      | plaats                           | true         |
+      | land                             | true         |
+      | datumIngangOnderzoek.datum       | 2022-03-07   |
+      | datumIngangOnderzoek.type        | Datum        |
       | datumIngangOnderzoek.langFormaat | 7 maart 2022 |
       En heeft het kind met burgerservicenummer '555550002' GEEN 'inOnderzoek' gegevens
       En heeft het kind met burgerservicenummer '555550002' GEEN 'naam.inOnderzoek' gegevens
       En heeft de persoon met burgerservicenummer '555550001' GEEN 'inOnderzoek' gegevens
       En heeft de persoon met burgerservicenummer '555550001' GEEN 'geboorte.inOnderzoek' gegevens
 
+    @skip-verify
     Abstract Scenario: partner heeft <nauwkeurigheid> soort verbintenis in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
+      | naam                | waarde    |
+      | burgerservicenummer | 555550001 |
       En de persoon heeft een partner met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 555550002 |
@@ -487,10 +473,10 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 555550001                       |
       | fields              | partners                        |
       Dan heeft de partner met burgerservicenummer '555550002' alleen de volgende 'inOnderzoek' gegevens
-      | naam                             | waarde     |
-      | soortVerbintenis                 | true       |
-      | datumIngangOnderzoek.datum       | 2022-03-07 |
-      | datumIngangOnderzoek.type        | Datum      |
+      | naam                             | waarde       |
+      | soortVerbintenis                 | true         |
+      | datumIngangOnderzoek.datum       | 2022-03-07   |
+      | datumIngangOnderzoek.type        | Datum        |
       | datumIngangOnderzoek.langFormaat | 7 maart 2022 |
       En heeft de partner met burgerservicenummer '555550002' GEEN 'naam.inOnderzoek' gegevens
       En heeft de partner met burgerservicenummer '555550002' GEEN 'geboorte.inOnderzoek' gegevens
@@ -507,8 +493,8 @@ Functionaliteit: in onderzoek
 
     Scenario: hele categorie persoon is in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
+      | naam                | waarde    |
+      | burgerservicenummer | 555550001 |
       En de persoon heeft de volgende 'PersoonInOnderzoek' gegevens
       | naam                          | waarde   |
       | aanduidingGegevensInOnderzoek | 010000   |
@@ -524,30 +510,30 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 555550001                                                          |
       | fields              | burgerservicenummer,naam,geboorte,geslacht,verblijfplaats,partners |
       Dan heeft de persoon met burgerservicenummer '555550001' alleen de volgende 'persoonInOnderzoek' gegevens
-      | naam                             | waarde     |
-      | burgerservicenummer              | true       |
-      | leeftijd                         | true       |
-      | geslacht                         | true       |
-      | datumIngangOnderzoek.datum       | 2022-03-07 |
-      | datumIngangOnderzoek.type        | Datum      |
+      | naam                             | waarde       |
+      | burgerservicenummer              | true         |
+      | leeftijd                         | true         |
+      | geslacht                         | true         |
+      | datumIngangOnderzoek.datum       | 2022-03-07   |
+      | datumIngangOnderzoek.type        | Datum        |
       | datumIngangOnderzoek.langFormaat | 7 maart 2022 |
       En heeft de persoon met burgerservicenummer '555550001' de volgende 'naam.inOnderzoek' gegevens
-      | naam                             | waarde     |
-      | voornamen                        | true       |
-      | adellijkeTitelPredicaat          | true       |
-      | voorvoegsel                      | true       |
-      | geslachtsnaam                    | true       |
-      | aanduidingNaamgebruik            | true       |
-      | datumIngangOnderzoek.datum       | 2022-03-07 |
-      | datumIngangOnderzoek.type        | Datum      |
+      | naam                             | waarde       |
+      | voornamen                        | true         |
+      | adellijkeTitelPredicaat          | true         |
+      | voorvoegsel                      | true         |
+      | geslachtsnaam                    | true         |
+      | aanduidingNaamgebruik            | true         |
+      | datumIngangOnderzoek.datum       | 2022-03-07   |
+      | datumIngangOnderzoek.type        | Datum        |
       | datumIngangOnderzoek.langFormaat | 7 maart 2022 |
       En heeft de persoon met burgerservicenummer '555550001' de volgende 'geboorte.inOnderzoek' gegevens
-      | naam                             | waarde     |
-      | datum                            | true       |
-      | plaats                           | true       |
-      | land                             | true       |
-      | datumIngangOnderzoek.datum       | 2022-03-07 |
-      | datumIngangOnderzoek.type        | Datum      |
+      | naam                             | waarde       |
+      | datum                            | true         |
+      | plaats                           | true         |
+      | land                             | true         |
+      | datumIngangOnderzoek.datum       | 2022-03-07   |
+      | datumIngangOnderzoek.type        | Datum        |
       | datumIngangOnderzoek.langFormaat | 7 maart 2022 |
       En heeft de persoon met burgerservicenummer '555550001' GEEN 'verblijfplaats.inOnderzoek' gegevens
       En heeft de partner met burgerservicenummer '555550002' GEEN 'inOnderzoek' gegevens
@@ -556,8 +542,8 @@ Functionaliteit: in onderzoek
 
     Scenario: hele categorie kind is in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
+      | naam                | waarde    |
+      | burgerservicenummer | 555550001 |
       En de persoon heeft GEEN 'persoonInOnderzoek' gegevens
       En de persoon heeft een kind met de volgende gegevens
       | naam                | waarde    |
@@ -572,10 +558,10 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 555550001                                                                        |
       | fields              | burgerservicenummer,kinderen.burgerservicenummer,kinderen.naam,kinderen.geboorte |
       Dan heeft het kind met burgerservicenummer '555550002' de volgende 'inOnderzoek' gegevens
-      | naam                             | waarde     |
-      | burgerservicenummer              | true       |
-      | datumIngangOnderzoek.datum       | 2022-03-07 |
-      | datumIngangOnderzoek.type        | Datum      |
+      | naam                             | waarde       |
+      | burgerservicenummer              | true         |
+      | datumIngangOnderzoek.datum       | 2022-03-07   |
+      | datumIngangOnderzoek.type        | Datum        |
       | datumIngangOnderzoek.langFormaat | 7 maart 2022 |
       En heeft het kind met burgerservicenummer '555550002' de volgende 'naam.inOnderzoek' gegevens
       | naam                       | waarde     |
@@ -586,12 +572,12 @@ Functionaliteit: in onderzoek
       | datumIngangOnderzoek.datum | 2022-03-07 |
       | datumIngangOnderzoek.type  | Datum      |
       En heeft het kind met burgerservicenummer '555550002' de volgende 'geboorte.inOnderzoek' gegevens
-      | naam                             | waarde     |
-      | datum                            | true       |
-      | plaats                           | true       |
-      | land                             | true       |
-      | datumIngangOnderzoek.datum       | 2022-03-07 |
-      | datumIngangOnderzoek.type        | Datum      |
+      | naam                             | waarde       |
+      | datum                            | true         |
+      | plaats                           | true         |
+      | land                             | true         |
+      | datumIngangOnderzoek.datum       | 2022-03-07   |
+      | datumIngangOnderzoek.type        | Datum        |
       | datumIngangOnderzoek.langFormaat | 7 maart 2022 |
       En heeft de persoon met burgerservicenummer '555550001' GEEN 'persoonInOnderzoek' gegevens
       En heeft de persoon met burgerservicenummer '555550001' GEEN 'naam.inOnderzoek' gegevens
@@ -599,8 +585,8 @@ Functionaliteit: in onderzoek
 
     Scenario: hele categorie verblijfplaats van een adres is in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
+      | naam                | waarde    |
+      | burgerservicenummer | 555550001 |
       En de persoon heeft GEEN 'persoonInOnderzoek' gegevens
       En persoon met burgerservicenummer '555550001' heeft de volgende 'verblijfplaats' gegevens
       | naam       | waarde |
@@ -616,30 +602,30 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 555550001                          |
       | fields              | burgerservicenummer,verblijfplaats |
       Dan heeft de persoon met burgerservicenummer '555550001' de volgende 'verblijfplaats.inOnderzoek' gegevens
-      | naam                             | waarde     |
-      | aanduidingBijHuisnummer          | true       |
-      | datumIngangGeldigheid            | true       |
-      | datumVestigingInNederland        | true       |
-      | functieAdres                     | true       |
-      | huisletter                       | true       |
-      | huisnummer                       | true       |
-      | huisnummertoevoeging             | true       |
-      | nummeraanduidingIdentificatie    | true       |
-      | adresseerbaarObjectIdentificatie | true       |
-      | landVanwaarIngeschreven          | true       |
-      | straat                           | true       |
-      | postcode                         | true       |
-      | korteNaam                        | true       |
-      | woonplaats                       | true       |
-      | datumIngangOnderzoek.datum       | 2022-03-07 |
-      | datumIngangOnderzoek.type        | Datum      |
+      | naam                             | waarde       |
+      | aanduidingBijHuisnummer          | true         |
+      | datumIngangGeldigheid            | true         |
+      | datumVestigingInNederland        | true         |
+      | functieAdres                     | true         |
+      | huisletter                       | true         |
+      | huisnummer                       | true         |
+      | huisnummertoevoeging             | true         |
+      | nummeraanduidingIdentificatie    | true         |
+      | adresseerbaarObjectIdentificatie | true         |
+      | landVanwaarIngeschreven          | true         |
+      | straat                           | true         |
+      | postcode                         | true         |
+      | korteNaam                        | true         |
+      | woonplaats                       | true         |
+      | datumIngangOnderzoek.datum       | 2022-03-07   |
+      | datumIngangOnderzoek.type        | Datum        |
       | datumIngangOnderzoek.langFormaat | 7 maart 2022 |
 
 
     Scenario: hele categorie verblijfplaats van een locatiebeschrijving is in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
+      | naam                | waarde    |
+      | burgerservicenummer | 555550001 |
       En de persoon heeft GEEN 'persoonInOnderzoek' gegevens
       En persoon met burgerservicenummer '555550001' heeft de volgende 'verblijfplaats' gegevens
       | naam                | waarde                     |
@@ -665,8 +651,8 @@ Functionaliteit: in onderzoek
 
     Scenario: hele categorie verblijfplaats van een verblijfplaats buitenland is in onderzoek
       Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
+      | naam                | waarde    |
+      | burgerservicenummer | 555550001 |
       En de persoon heeft GEEN 'persoonInOnderzoek' gegevens
       En persoon met burgerservicenummer '555550001' heeft de volgende 'verblijfplaats' gegevens
       | naam        | waarde          |
@@ -711,10 +697,10 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 555550001                       |
       | fields              | leeftijd                        |
       Dan heeft de persoon met burgerservicenummer '555550001' de volgende 'persoonInOnderzoek' gegevens
-      | naam                                    | waarde     |
-      | leeftijd                                | true       |
-      | datumIngangOnderzoekPersoon.datum       | 2022-03-07 |
-      | datumIngangOnderzoekPersoon.type        | Datum      |
+      | naam                                    | waarde       |
+      | leeftijd                                | true         |
+      | datumIngangOnderzoekPersoon.datum       | 2022-03-07   |
+      | datumIngangOnderzoekPersoon.type        | Datum        |
       | datumIngangOnderzoekPersoon.langFormaat | 7 maart 2022 |
 
       Voorbeelden:
@@ -785,13 +771,13 @@ Functionaliteit: in onderzoek
       En heeft de ouder met ouderAanduiding '<andere ouder>' GEEN 'inOnderzoek' gegevens
 
       Voorbeelden:
-      | gegeven in onderzoek   | waarde | ouder  | andere ouder |
-      | voornamen van ouder 1  | 020210 | 1      | 2            |
-      | groep naam van ouder 1 | 020200 | 1      | 2            |
-      | categorie ouder 1      | 020000 | 1      | 2            |
-      | voornamen van ouder 2  | 030210 | 2      | 1            |
-      | groep naam van ouder 2 | 030200 | 2      | 1            |
-      | categorie ouder 2      | 030000 | 2      | 1            |
+      | gegeven in onderzoek   | waarde | ouder | andere ouder |
+      | voornamen van ouder 1  | 020210 | 1     | 2            |
+      | groep naam van ouder 1 | 020200 | 1     | 2            |
+      | categorie ouder 1      | 020000 | 1     | 2            |
+      | voornamen van ouder 2  | 030210 | 2     | 1            |
+      | groep naam van ouder 2 | 030200 | 2     | 1            |
+      | categorie ouder 2      | 030000 | 2     | 1            |
 
     @proxy
     Abstract Scenario: verblijfplaats datumVan in onderzoek omdat <gegeven in onderzoek> is in onderzoek
@@ -844,9 +830,9 @@ Functionaliteit: in onderzoek
       | aanduidingGegevensInOnderzoek | 081410   |
       | datumIngangOnderzoek          | 20220307 |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                 |
-      | type                | RaadpleegMetBurgerservicenummer        |
-      | burgerservicenummer | 555550001                              |
+      | naam                | waarde                                            |
+      | type                | RaadpleegMetBurgerservicenummer                   |
+      | burgerservicenummer | 555550001                                         |
       | fields              | verblijfplaats.indicatieVestigingVanuitBuitenland |
       Dan heeft persoon met burgerservicenummer '555550001' de volgende 'verblijfplaats.inOnderzoek' gegevens
       | naam                                    | waarde       |
@@ -944,8 +930,8 @@ Functionaliteit: in onderzoek
     @proxy
     Abstract Scenario: samengestelde namen bij <omschrijving>
       Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde    |
-      | burgerservicenummer         | 555550001 |
+      | naam                | waarde    |
+      | burgerservicenummer | 555550001 |
       En de persoon met burgerservicenummer '555550001' heeft de volgende 'naam' gegevens
       | naam                          | waarde                  |
       | voornamen (02.10)             | Piet                    |
