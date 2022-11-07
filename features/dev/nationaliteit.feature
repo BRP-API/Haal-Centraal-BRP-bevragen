@@ -52,7 +52,7 @@ Functionaliteit: Persoon: nationaliteit
     | fields              | nationaliteiten.nationaliteit.code |
     Dan heeft de response een persoon zonder 'nationaliteit' gegevens
 
-  Abstract Scenario: persoon heeft 'nationaliteit' veld: '<gba naam>'
+  Abstract Scenario: persoon heeft 'nationaliteit' veld: 'reden opname (63.10)'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
     | naam                  | waarde |
     | nationaliteit (05.10) | 0001   |
@@ -68,9 +68,9 @@ Functionaliteit: Persoon: nationaliteit
     | <naam> | <waarde>      |
 
     Voorbeelden:
-    | naam                     | waarde                                          |
-    | redenOpname.code         | 001                                             |
-    | redenOpname.omschrijving | Wet op het Nederlanderschap 1892, art.1, lid 1a |
+    | naam                     | waarde                                            |
+    | redenOpname.code         | 001                                               |
+    | redenOpname.omschrijving | Wet op het Nederlanderschap 1892, art. 1, onder a |
 
   Abstract Scenario: persoon heeft 'nationaliteit' veld: '<gba naam>' met waarde '<waarde>'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
@@ -124,18 +124,18 @@ Functionaliteit: Persoon: nationaliteit
     | burgerservicenummer | 000000012                       |
     | fields              | nationaliteiten                 |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-    | naam                                         | waarde                                          |
-    | type                                         | Nationaliteit                                   |
-    | nationaliteit.code                           | 0001                                            |
-    | nationaliteit.omschrijving                   | Nederlandse                                     |
-    | redenOpname.code                             | 001                                             |
-    | redenOpname.omschrijving                     | Wet op het Nederlanderschap 1892, art.1, lid 1a |
-    | inOnderzoek.type                             | <type in onderzoek>                             |
-    | inOnderzoek.nationaliteit                    | <nationaliteit in onderzoek>                    |
-    | inOnderzoek.redenOpname                      | <reden opname in onderzoek>                     |
-    | inOnderzoek.datumIngangOnderzoek.type        | Datum                                           |
-    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                                      |
-    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                                     |
+    | naam                                         | waarde                                            |
+    | type                                         | Nationaliteit                                     |
+    | nationaliteit.code                           | 0001                                              |
+    | nationaliteit.omschrijving                   | Nederlandse                                       |
+    | redenOpname.code                             | 001                                               |
+    | redenOpname.omschrijving                     | Wet op het Nederlanderschap 1892, art. 1, onder a |
+    | inOnderzoek.type                             | <type in onderzoek>                               |
+    | inOnderzoek.nationaliteit                    | <nationaliteit in onderzoek>                      |
+    | inOnderzoek.redenOpname                      | <reden opname in onderzoek>                       |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                                             |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                                        |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                                       |
 
     Voorbeelden:
     | gba in onderzoek waarde | nationaliteit in onderzoek | reden opname in onderzoek | type in onderzoek |

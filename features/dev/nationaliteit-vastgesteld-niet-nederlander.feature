@@ -20,7 +20,7 @@ Functionaliteit: Persoon: nationaliteit - vastgesteld niet-Nederlander
     | bijzonder Nederlanderschap (65.10) | V      |
     | nationaliteit (05.10)              | 0500   |
 
-  Abstract Scenario: persoon heeft 'vastgesteld niet-Nederlander' veld: '<gba naam>'
+  Abstract Scenario: persoon heeft 'vastgesteld niet-Nederlander' veld: 'reden opname (63.10)'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
     | naam                               | waarde |
     | bijzonder Nederlanderschap (65.10) | V      |
@@ -36,9 +36,9 @@ Functionaliteit: Persoon: nationaliteit - vastgesteld niet-Nederlander
     | <naam> | <waarde>                   |
 
     Voorbeelden:
-    | naam                     | waarde                                          |
-    | redenOpname.code         | 001                                             |
-    | redenOpname.omschrijving | Wet op het Nederlanderschap 1892, art.1, lid 1a |
+    | naam                     | waarde                                            |
+    | redenOpname.code         | 001                                               |
+    | redenOpname.omschrijving | Wet op het Nederlanderschap 1892, art. 1, onder a |
 
   Abstract Scenario: persoon heeft 'vastgesteld niet-Nederlander' veld: '<gba naam>' met waarde '<waarde>'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
@@ -92,15 +92,15 @@ Functionaliteit: Persoon: nationaliteit - vastgesteld niet-Nederlander
     | burgerservicenummer | 000000012                       |
     | fields              | nationaliteiten                 |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-    | naam                                         | waarde                                          |
-    | type                                         | VastgesteldNietNederlander                      |
-    | redenOpname.code                             | 001                                             |
-    | redenOpname.omschrijving                     | Wet op het Nederlanderschap 1892, art.1, lid 1a |
-    | inOnderzoek.type                             | <type in onderzoek>                             |
-    | inOnderzoek.redenOpname                      | <reden opname in onderzoek>                     |
-    | inOnderzoek.datumIngangOnderzoek.type        | Datum                                           |
-    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                                      |
-    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                                     |
+    | naam                                         | waarde                                            |
+    | type                                         | VastgesteldNietNederlander                        |
+    | redenOpname.code                             | 001                                               |
+    | redenOpname.omschrijving                     | Wet op het Nederlanderschap 1892, art. 1, onder a |
+    | inOnderzoek.type                             | <type in onderzoek>                               |
+    | inOnderzoek.redenOpname                      | <reden opname in onderzoek>                       |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                                             |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                                        |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                                       |
 
     Voorbeelden:
     | gba in onderzoek waarde | reden opname in onderzoek | type in onderzoek |

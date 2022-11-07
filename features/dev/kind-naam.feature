@@ -33,7 +33,7 @@ Functionaliteit: Persoon: kind - naam
     Dan heeft de response een persoon met een 'kind' met alleen de volgende 'naam' gegevens
     | naam                                 | waarde    |
     | adellijkeTitelPredicaat.code         | JH        |
-    | adellijkeTitelPredicaat.omschrijving | Jonkheer  |
+    | adellijkeTitelPredicaat.omschrijving | jonkheer  |
     | adellijkeTitelPredicaat.soort        | predicaat |
 
   Scenario: kind heeft 'naam' veld: 'voorletters'
@@ -210,7 +210,7 @@ Functionaliteit: Persoon: kind - naam
     Dan heeft de response een persoon met een 'kind' met alleen de volgende 'naam' gegevens
     | naam                                         | waarde      |
     | adellijkeTitelPredicaat.code                 | P           |
-    | adellijkeTitelPredicaat.omschrijving         | Prins       |
+    | adellijkeTitelPredicaat.omschrijving         | prins       |
     | adellijkeTitelPredicaat.soort                | titel       |
     | inOnderzoek.adellijkeTitelPredicaat          | true        |
     | inOnderzoek.datumIngangOnderzoek.type        | Datum       |

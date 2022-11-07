@@ -31,9 +31,9 @@ Functionaliteit: Persoon: nationaliteit - staatloos
     | <naam> | <waarde>  |
 
     Voorbeelden:
-    | naam                     | waarde                                          |
-    | redenOpname.code         | 001                                             |
-    | redenOpname.omschrijving | Wet op het Nederlanderschap 1892, art.1, lid 1a |
+    | naam                     | waarde                                            |
+    | redenOpname.code         | 001                                               |
+    | redenOpname.omschrijving | Wet op het Nederlanderschap 1892, art. 1, onder a |
 
   Abstract Scenario: persoon heeft 'staatloos' veld: '<gba naam>' met waarde '<waarde>'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
@@ -87,15 +87,15 @@ Functionaliteit: Persoon: nationaliteit - staatloos
     | burgerservicenummer | 000000012                       |
     | fields              | nationaliteiten                 |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-    | naam                                         | waarde                                          |
-    | type                                         | Staatloos                                       |
-    | redenOpname.code                             | 001                                             |
-    | redenOpname.omschrijving                     | Wet op het Nederlanderschap 1892, art.1, lid 1a |
-    | inOnderzoek.type                             | <type in onderzoek>                             |
-    | inOnderzoek.redenOpname                      | <reden opname in onderzoek>                     |
-    | inOnderzoek.datumIngangOnderzoek.type        | Datum                                           |
-    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                                      |
-    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                                     |
+    | naam                                         | waarde                                            |
+    | type                                         | Staatloos                                         |
+    | redenOpname.code                             | 001                                               |
+    | redenOpname.omschrijving                     | Wet op het Nederlanderschap 1892, art. 1, onder a |
+    | inOnderzoek.type                             | <type in onderzoek>                               |
+    | inOnderzoek.redenOpname                      | <reden opname in onderzoek>                       |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                                             |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                                        |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                                       |
 
     Voorbeelden:
     | gba in onderzoek waarde | reden opname in onderzoek | type in onderzoek |

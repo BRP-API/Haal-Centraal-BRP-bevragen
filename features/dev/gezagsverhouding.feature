@@ -12,9 +12,9 @@ Functionaliteit: Persoon: gezagsverhouding
     | burgerservicenummer | 000000152                       |
     | fields              | <naam>                          |
     Dan heeft de response een persoon met de volgende gegevens
-    | naam                                    | waarde           |
-    | indicatieGezagMinderjarige.code         | 12               |
-    | indicatieGezagMinderjarige.omschrijving | ouder1 en ouder2 |
+    | naam                                    | waarde                            |
+    | indicatieGezagMinderjarige.code         | 12                                |
+    | indicatieGezagMinderjarige.omschrijving | Ouder1 en ouder2 hebben het gezag |
 
     Voorbeelden:
     | naam                                    |
@@ -73,13 +73,13 @@ Functionaliteit: Persoon: gezagsverhouding
     | burgerservicenummer | 000000152                       |
     | fields              | indicatieGezagMinderjarige      |
     Dan heeft de response een persoon met de volgende gegevens
-    | naam                                              | waarde      |
-    | indicatieGezagMinderjarige.code                   | 1           |
-    | indicatieGezagMinderjarige.omschrijving           | ouder1      |
-    | inOnderzoek.indicatieGezagMinderjarige            | true        |
-    | inOnderzoek.datumIngangOnderzoekGezag.type        | Datum       |
-    | inOnderzoek.datumIngangOnderzoekGezag.datum       | 2002-07-01  |
-    | inOnderzoek.datumIngangOnderzoekGezag.langFormaat | 1 juli 2002 |
+    | naam                                              | waarde                 |
+    | indicatieGezagMinderjarige.code                   | 1                      |
+    | indicatieGezagMinderjarige.omschrijving           | Ouder1 heeft het gezag |
+    | inOnderzoek.indicatieGezagMinderjarige            | true                   |
+    | inOnderzoek.datumIngangOnderzoekGezag.type        | Datum                  |
+    | inOnderzoek.datumIngangOnderzoekGezag.datum       | 2002-07-01             |
+    | inOnderzoek.datumIngangOnderzoekGezag.langFormaat | 1 juli 2002            |
 
     Voorbeelden:
     | gba in onderzoek waarde |
@@ -89,19 +89,19 @@ Functionaliteit: Persoon: gezagsverhouding
 
   Abstract Scenario: 'indicatie curateleregister (33.10)' is in onderzoek
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'gezagsverhouding' gegevens
-    | naam                                 | waarde                    |
-    | aanduiding in onderzoek (83.10)      | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (83.20)       | 20020701                  |
+    | naam                               | waarde                    |
+    | aanduiding in onderzoek (83.10)    | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)     | 20020701                  |
     | indicatie curateleregister (33.10) | 1                         |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000152                       |
-    | fields              | indicatieCurateleRegister      |
+    | fields              | indicatieCurateleRegister       |
     Dan heeft de response een persoon met de volgende gegevens
     | naam                                              | waarde      |
-    | indicatieCurateleRegister                   | true           |
-    | inOnderzoek.indicatieCurateleRegister            | true        |
+    | indicatieCurateleRegister                         | true        |
+    | inOnderzoek.indicatieCurateleRegister             | true        |
     | inOnderzoek.datumIngangOnderzoekGezag.type        | Datum       |
     | inOnderzoek.datumIngangOnderzoekGezag.datum       | 2002-07-01  |
     | inOnderzoek.datumIngangOnderzoekGezag.langFormaat | 1 juli 2002 |
