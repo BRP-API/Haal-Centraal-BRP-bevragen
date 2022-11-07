@@ -3,7 +3,7 @@ class World {
         this.context = parameters;
         this.context.dataPath = "src/config/BrpService";
         this.context.proxyUrl = "http://localhost:5001/haalcentraal/api/brp";
-        this.context.gbaUrl = "http://localhost:8000/haalcentraal/api/brp";
+        this.context.gbaUrl = "http://localhost:8000/haalcentraal/api/brp/v2";
         this.context.extraHeaders = [
             { "naam": "Authorization", "waarde": "" }
         ];
