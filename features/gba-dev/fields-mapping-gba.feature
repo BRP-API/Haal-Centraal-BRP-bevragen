@@ -230,7 +230,7 @@ Functionaliteit: Fields vertalen van proxy naar gba
         | naam                     | waarde   |
         | datum overlijden (08.10) | 20160324 |
         Als gba personen wordt gezocht met de volgende parameters
-        | naam                | waarde                          |22
+        | naam                | waarde                          |
         | type                | RaadpleegMetBurgerservicenummer |
         | burgerservicenummer | 000000279                       |
         | fields              | burgerservicenummer,leeftijd    |
