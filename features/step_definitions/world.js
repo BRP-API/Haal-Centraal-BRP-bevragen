@@ -21,7 +21,9 @@ class World {
                 host: "localhost",
                 database: "rvig_haalcentraal_testdata",
                 password: "root",
-                port: 5432
+                port: 5432,
+                max: 150,
+                allowExitOnIdle: true
             }
         };
         this.context.oAuth = {
