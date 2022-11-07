@@ -55,7 +55,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | naam                                 | waarde                        |
       | voornamen                            | Hendrik Jan                   |
       | adellijkeTitelPredicaat.code         | R                             |
-      | adellijkeTitelPredicaat.omschrijving | Ridder                        |
+      | adellijkeTitelPredicaat.omschrijving | ridder                        |
       | adellijkeTitelPredicaat.soort        | titel                         |
       | voorvoegsel                          | de                            |
       | geslachtsnaam                        | Brink                         |
@@ -76,7 +76,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | naam                                      | waarde                        |
       | naam.voornamen                            | Hendrik Jan                   |
       | naam.adellijkeTitelPredicaat.code         | R                             |
-      | naam.adellijkeTitelPredicaat.omschrijving | Ridder                        |
+      | naam.adellijkeTitelPredicaat.omschrijving | ridder                        |
       | naam.adellijkeTitelPredicaat.soort        | titel                         |
       | naam.voorvoegsel                          | de                            |
       | naam.geslachtsnaam                        | Brink                         |
@@ -87,7 +87,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       En heeft de response een persoon met een 'partner' met de volgende gegevens
       | naam                                      | waarde  |
       | naam.adellijkeTitelPredicaat.code         | BS      |
-      | naam.adellijkeTitelPredicaat.omschrijving | Barones |
+      | naam.adellijkeTitelPredicaat.omschrijving | barones |
       | naam.adellijkeTitelPredicaat.soort        | titel   |
       | naam.voorvoegsel                          | van der |
       | naam.geslachtsnaam                        | Horn    |
@@ -197,13 +197,14 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | locatiebeschrijving              | <locatiebeschrijving>              |
       | adresseerbaarObjectIdentificatie | <adresseerbaarObjectIdentificatie> |
       | nummeraanduidingIdentificatie    | <nummeraanduidingIdentificatie>    |
+	  | naamOpenbareRuimte               | <naamOpenbareRuimte>               |
 
       Voorbeelden:
-      | burgerservicenummer | adressoort          | veld                | beschikbaarheid  | straat      | huisnummer | postcode | woonplaats | adresseerbaarObjectIdentificatie | nummeraanduidingIdentificatie | locatiebeschrijving          |
-      | 000000267           | binnenlands adres   | straat              | beschikbaar      | Boterondiep | 31         | 3077AW   | Rotterdam  | 0599010000208579                 | 0599200000219678              |                              |
-      | 000000267           | binnenlands adres   | locatiebeschrijving | niet beschikbaar | Boterondiep | 31         | 3077AW   | Rotterdam  | 0599010000208579                 | 0599200000219678              |                              |
-      | 000000279           | locatiebeschrijving | locatiebeschrijving | beschikbaar      |             |            |          |            |                                  |                               | Woonboot in de Grotere Sloot |
-      | 000000279           | locatiebeschrijving | regel1              | niet beschikbaar |             |            |          |            |                                  |                               | Woonboot in de Grotere Sloot |
+      | burgerservicenummer | adressoort          | veld                | beschikbaarheid  | naamOpenbareRuimte | straat      | huisnummer | postcode | woonplaats | adresseerbaarObjectIdentificatie | nummeraanduidingIdentificatie | locatiebeschrijving          |
+      | 000000267           | binnenlands adres   | straat              | beschikbaar      | Boterondiep        | Boterondiep | 31         | 3077AW   | Rotterdam  | 0599010000208579                 | 0599200000219678              |                              |
+      | 000000267           | binnenlands adres   | locatiebeschrijving | niet beschikbaar |                    | Boterondiep | 31         | 3077AW   | Rotterdam  | 0599010000208579                 | 0599200000219678              |                              |
+      | 000000279           | locatiebeschrijving | locatiebeschrijving | beschikbaar      |                    |             |            |          |            |                                  |                               | Woonboot in de Grotere Sloot |
+      | 000000279           | locatiebeschrijving | regel1              | niet beschikbaar |                    |             |            |          |            |                                  |                               | Woonboot in de Grotere Sloot |
 
     Abstract Scenario: met fields wordt gevraagd naar een in een buitenlandsadres <beschikbaarheid> veld
       Gegeven de persoon met burgerservicenummer '000000280' heeft de volgende 'verblijfplaats' gegevens
@@ -266,26 +267,27 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | burgerservicenummer | 000000309                       |
       | fields              | <veld>                          |
       Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
-      | naam                             | waarde           |
-      | straat                           | Boterondiep      |
-      | huisnummer                       | 31               |
-      | postcode                         | 3077AW           |
-      | woonplaats                       | Rotterdam        |
-      | adresseerbaarObjectIdentificatie | 0599010000208579 |
-      | nummeraanduidingIdentificatie    | 0599200000219678 |
+      | naam                             | waarde               |
+      | straat                           | Boterondiep          |
+      | naamOpenbareRuimte               | <naamOpenbareRuimte> |
+      | huisnummer                       | 31                   |
+      | postcode                         | 3077AW               |
+      | woonplaats                       | Rotterdam            |
+      | adresseerbaarObjectIdentificatie | 0599010000208579     |
+      | nummeraanduidingIdentificatie    | 0599200000219678     |
 
       Voorbeelden:
-      | veld                                |
-      | verblijfplaats.verblijfadres.straat |
-      | verblijfadres.straat                |
-      | straat                              |
-      | korteNaam                           |
-      | postcode                            |
-      | nummeraanduidingIdentificatie       |
-      | locatiebeschrijving                 |
-      | woonplaats                          |
-      | verblijfadres.land                  |
-      | regel1                              |
+      | veld                                | naamOpenbareRuimte |
+      | verblijfplaats.verblijfadres.straat | Boterondiep        |
+      | verblijfadres.straat                | Boterondiep        |
+      | straat                              | Boterondiep        |
+      | korteNaam                           |                    |
+      | postcode                            |                    |
+      | nummeraanduidingIdentificatie       |                    |
+      | locatiebeschrijving                 |                    |
+      | woonplaats                          |                    |
+      | verblijfadres.land                  |                    |
+      | regel1                              |                    |
 
   Rule: wanneer gevraagd wordt om datumVan van de verblijfplaats, wordt datumAanvangAdreshouding of datumAanvangAdresBuitenland geleverd
     - deze datumvelden worden geleverd samen met de velden die automatisch geleverd worden omdat ze nodig zijn voor het bepalen van het type
@@ -532,7 +534,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
   Rule: wanneer een veld van een datum wordt gevraagd, wordt de datum geleverd
 
     Abstract Scenario: met fields is gevraagd om <veld>.<datumveld>
-      Gegeven de persoon met burgerservicenummer '000000504' heeft de volgende 'inschrijving' gegevens
+      Gegeven de persoon met burgerservicenummer '000000504' heeft de volgende '<categorie>' gegevens
       | naam                | waarde    |
       | <GBA veld>          | 20131102  |
       Als gba personen wordt gezocht met de volgende parameters
@@ -541,23 +543,23 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | burgerservicenummer | 000000504                       |
       | fields              | <veld>.<datumveld>              |
       Dan heeft de response een persoon met alleen de volgende gegevens
-      | naam   | waarde   |
-      | <veld> | 20131102 |
+      | naam           | waarde   |
+      | <groep><veld> | 20131102 |
 
       Voorbeelden:
-      | datumveld   | GBA veld                                  | veld                        |
-      | type        | datum eerste inschrijving GBA (68.10)     | datumEersteInschrijvingGBA  |
-      | langFormaat | datum eerste inschrijving GBA (68.10)     | datumEersteInschrijvingGBA  |
-      | datum       | datum eerste inschrijving GBA (68.10)     | datumEersteInschrijvingGBA  |
-      | jaar        | datum eerste inschrijving GBA (68.10)     | datumEersteInschrijvingGBA  |
-      | maand       | datum eerste inschrijving GBA (68.10)     | datumEersteInschrijvingGBA  |
-      | onbekend    | datum eerste inschrijving GBA (68.10)     | datumEersteInschrijvingGBA  |
-      | type        | datum inschrijving in de gemeente (09.20) | datumInschrijvingInGemeente |
-      | langFormaat | datum inschrijving in de gemeente (09.20) | datumInschrijvingInGemeente |
-      | datum       | datum inschrijving in de gemeente (09.20) | datumInschrijvingInGemeente |
-      | jaar        | datum inschrijving in de gemeente (09.20) | datumInschrijvingInGemeente |
-      | maand       | datum inschrijving in de gemeente (09.20) | datumInschrijvingInGemeente |
-      | onbekend    | datum inschrijving in de gemeente (09.20) | datumInschrijvingInGemeente |
+      | datumveld   | GBA veld                                  | veld                        | categorie      | groep           |
+      | type        | datum eerste inschrijving GBA (68.10)     | datumEersteInschrijvingGBA  | inschrijving   |                 |
+      | langFormaat | datum eerste inschrijving GBA (68.10)     | datumEersteInschrijvingGBA  | inschrijving   |                 |
+      | datum       | datum eerste inschrijving GBA (68.10)     | datumEersteInschrijvingGBA  | inschrijving   |                 |
+      | jaar        | datum eerste inschrijving GBA (68.10)     | datumEersteInschrijvingGBA  | inschrijving   |                 |
+      | maand       | datum eerste inschrijving GBA (68.10)     | datumEersteInschrijvingGBA  | inschrijving   |                 |
+      | onbekend    | datum eerste inschrijving GBA (68.10)     | datumEersteInschrijvingGBA  | inschrijving   |                 |
+      | type        | datum inschrijving in de gemeente (09.20) | datumInschrijvingInGemeente | verblijfplaats | verblijfplaats. |
+      | langFormaat | datum inschrijving in de gemeente (09.20) | datumInschrijvingInGemeente | verblijfplaats | verblijfplaats. |
+      | datum       | datum inschrijving in de gemeente (09.20) | datumInschrijvingInGemeente | verblijfplaats | verblijfplaats. |
+      | jaar        | datum inschrijving in de gemeente (09.20) | datumInschrijvingInGemeente | verblijfplaats | verblijfplaats. |
+      | maand       | datum inschrijving in de gemeente (09.20) | datumInschrijvingInGemeente | verblijfplaats | verblijfplaats. |
+      | onbekend    | datum inschrijving in de gemeente (09.20) | datumInschrijvingInGemeente | verblijfplaats | verblijfplaats. |
 
     Abstract Scenario: met fields is gevraagd om <groep>.<veld>.<datumveld>
       Gegeven de persoon met burgerservicenummer '000000516' heeft de volgende <categorie> 
