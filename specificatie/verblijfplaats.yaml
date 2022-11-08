@@ -152,10 +152,15 @@ components:
           properties:
             functieAdres:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
+            inOnderzoek:
+              $ref: "#/components/schemas/VerblijfplaatsInOnderzoekBeperkt"
     VerblijfplaatsBuitenlandBeperkt:
       allOf:
         - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
         - type: object
+          properties:
+            inOnderzoek:
+              $ref: '#/components/schemas/VerblijfplaatsInOnderzoekBeperkt'
     VerblijfplaatsOnbekendBeperkt:
       allOf:
         - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
@@ -163,6 +168,8 @@ components:
           properties:
             functieAdres:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
+            inOnderzoek:
+              $ref: '#/components/schemas/VerblijfplaatsInOnderzoekBeperkt'
     LocatieBeperkt:
       allOf:
         - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
@@ -172,6 +179,8 @@ components:
           properties:
             functieAdres:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
+            inOnderzoek:
+              $ref: '#/components/schemas/VerblijfplaatsInOnderzoekBeperkt'
     GbaVerblijfplaatsBeperkt:
       type: object
       properties:
@@ -201,6 +210,8 @@ components:
           $ref: '#/components/schemas/Regel2'
         regel3:
           $ref: '#/components/schemas/Regel3'
+        inOnderzoek:
+          $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     AbstractVerblijfplaats:
       type: object
       description: |
@@ -429,4 +440,11 @@ components:
         - type: object
           properties:
             locatiebeschrijving:
+              type: boolean
+    VerblijfplaatsInOnderzoekBeperkt:
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            type:
               type: boolean

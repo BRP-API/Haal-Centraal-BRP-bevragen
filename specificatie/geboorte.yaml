@@ -25,6 +25,8 @@ components:
       properties:
         datum:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+        inOnderzoek:
+          $ref: '#/components/schemas/GeboorteInOnderzoekBeperkt'
     Geboorte:
       description: |
         Gegevens over de geboorte.
@@ -51,4 +53,11 @@ components:
             land:
               type: boolean
             plaats:
+              type: boolean
+    GeboorteInOnderzoekBeperkt:
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            datum:
               type: boolean
