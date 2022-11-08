@@ -27,7 +27,10 @@ public static class PartnerHelpers
                 {
                     retval = p;
                 }
-                else if (p.AangaanHuwelijkPartnerschap.Datum < retval.AangaanHuwelijkPartnerschap.Datum)
+                else if (
+                    p.AangaanHuwelijkPartnerschap != null &&
+                    retval.AangaanHuwelijkPartnerschap != null &&
+                    p.AangaanHuwelijkPartnerschap.Datum < retval.AangaanHuwelijkPartnerschap.Datum)
                 {
                     retval = p;
                 }
