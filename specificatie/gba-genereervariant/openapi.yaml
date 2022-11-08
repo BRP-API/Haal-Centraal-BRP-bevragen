@@ -500,12 +500,14 @@ components:
           $ref: '#/components/schemas/GbaGeheimhoudingPersoonsgegevens'
         geslacht:
           $ref: '#/components/schemas/Waardetabel'
+        persoonInOnderzoek:
+          $ref: '#/components/schemas/GbaInOnderzoek'
         naam:
           $ref: '#/components/schemas/GbaNaamBasis'
         opschortingBijhouding:
           $ref: '#/components/schemas/OpschortingBijhoudingBasis'
         overlijden:
-          $ref: '#/components/schemas/GbaOverlijdenBasis'
+          $ref: '#/components/schemas/GbaOverlijdenBeperkt'
         gemeenteVanInschrijving:
           $ref: '#/components/schemas/Waardetabel'
         verblijfplaats:
@@ -733,6 +735,17 @@ components:
           pattern: "^[a-zA-Z0-9À-ž \\'\\,\\(\\)\\.\\-]{1,200}$"
           type: string
           example: Nederland
+    GbaInOnderzoek:
+      required:
+      - aanduidingGegevensInOnderzoek
+      - datumIngangOnderzoek
+      type: object
+      properties:
+        aanduidingGegevensInOnderzoek:
+          pattern: "^[0-9]{6}$"
+          type: string
+        datumIngangOnderzoek:
+          $ref: '#/components/schemas/GbaDatum'
     GbaNaamBasis:
       type: object
       properties:
@@ -786,6 +799,13 @@ components:
           $ref: '#/components/schemas/Waardetabel'
       description: |
         * **reden** - wordt gevuld met waarden uit de tabel 'redenopschortingbijhouding' (zie Haal-Centraal-BRP-tabellen-bevragen API).
+    GbaOverlijdenBeperkt:
+      allOf:
+      - $ref: '#/components/schemas/GbaOverlijdenBasis'
+      - type: object
+        properties:
+          inOnderzoek:
+            $ref: '#/components/schemas/GbaInOnderzoek'
     GbaOverlijdenBasis:
       type: object
       properties:
@@ -820,6 +840,8 @@ components:
           $ref: '#/components/schemas/Regel2'
         regel3:
           $ref: '#/components/schemas/Regel3'
+        inOnderzoek:
+          $ref: '#/components/schemas/GbaInOnderzoek'
     Straat:
       maxLength: 80
       type: string
@@ -859,17 +881,6 @@ components:
       pattern: "^[0-9]{8}$"
       type: string
       example: "20180700"
-    GbaInOnderzoek:
-      required:
-      - aanduidingGegevensInOnderzoek
-      - datumIngangOnderzoek
-      type: object
-      properties:
-        aanduidingGegevensInOnderzoek:
-          pattern: "^[0-9]{6}$"
-          type: string
-        datumIngangOnderzoek:
-          $ref: '#/components/schemas/GbaDatum'
     GbaUitsluitingKiesrecht:
       type: object
       properties:
