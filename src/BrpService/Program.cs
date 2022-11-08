@@ -5,6 +5,7 @@ using HaalCentraal.BrpService.Validators;
 using Serilog;
 using Serilog.Enrichers.Span;
 using Serilog.Exceptions;
+using Serilog.Sinks.SystemConsole.Themes;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +14,8 @@ builder.Host.UseSerilog((context, config) =>
 {
     config
         .ReadFrom.Configuration(context.Configuration)
-        .WriteTo.Console()
+        .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}",
+                         theme: AnsiConsoleTheme.Code)
         .Enrich.WithExceptionDetails()
         .Enrich.FromLogContext()
         .Enrich.With<ActivityEnricher>()
