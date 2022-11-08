@@ -2,12 +2,12 @@
   "Routes": [
     {
       "UpstreamPathTemplate": "/haalcentraal/api/brp/personen",
-      "DownstreamPathTemplate": "/haalcentraal/api/brp/v2/personen",
+      "DownstreamPathTemplate": "/haalcentraal/api/brp/personen",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "haalcentraal_api",
-          "Port": "80"
+          "Host": "brpservice",
+          "Port": "5010"
         }
       ]
     }
