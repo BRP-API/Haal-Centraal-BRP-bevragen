@@ -1,0 +1,34 @@
+{
+    "projectFolder": "{{vul hier het complete pad naar de GitHub repository}}/Haal-Centraal-BRP-bevragen",
+    "csvSeperator": ",",
+    "ignoreList": [
+    ],
+    "schemaComponents": [
+        {
+            "name": "Persoon"
+        },
+        {
+            "name": "PersoonBeperkt",
+            "fullResource": "Persoon"
+        }        
+    ],
+    "autoFields": [
+        "type",
+        "inOnderzoek",
+        "geheimhoudingPersoonsgegevens",
+        "opschortingBijhouding.reden",
+        "jaar",
+        "maand",
+        "onbekend",
+        "langFormaat"
+    ],
+    "dateComponents": [
+        "AbstractDatum",
+        "VolledigeDatum",
+        "DatumOnbekend",
+        "JaarDatum",
+        "JaarMaandDatum"
+    ],
+    "sourceYaml": "/specificatie/genereervariant/openapi.yaml",
+    "fieldslistFolder": "/features/"
+}
