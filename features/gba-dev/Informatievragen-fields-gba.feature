@@ -615,7 +615,8 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | 000000577           | wel geheimhouding  | 3             |
       | 000000589           | wel geheimhouding  | 2             |
       | 000000590           | wel geheimhouding  | 1             |
-      | 000000607           | geen geheimhouding | 0             |
+# Volgende voorbeeld weer inschakelen zodra de GBA-API ook 'geheimhoudingPersoonsgegevens' met de waarde 0 levert.
+#      | 000000607           | geen geheimhouding | 0             |
 
   Rule: opschorting bijhouding reden wordt altijd geleverd wanneer die een waarde heeft
 
