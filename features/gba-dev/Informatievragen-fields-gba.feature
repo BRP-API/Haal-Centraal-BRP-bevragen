@@ -13,13 +13,16 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | geslachtsnaam (02.40)                | Brink       |
       | aanduiding naamgebruik (61.10)       | E           |
       En de persoon heeft een 'partner' met de volgende gegevens
-      | naam                                 | waarde    |
-      | burgerservicenummer (01.20)          | 000000188 |
-      | geslachtsaanduiding (04.10)          | V         |
-      | voornamen (02.10)                    | Carolina  |
-      | adellijke titel of predicaat (02.20) | BS        |
-      | voorvoegsel (02.30)                  | van der   |
-      | geslachtsnaam (02.40)                | Horn      |
+      | naam                                                               | waarde    |
+      | burgerservicenummer (01.20)                                        | 000000188 |
+      | geslachtsaanduiding (04.10)                                        | V         |
+      | voornamen (02.10)                                                  | Carolina  |
+      | adellijke titel of predicaat (02.20)                               | BS        |
+      | voorvoegsel (02.30)                                                | van der   |
+      | geslachtsnaam (02.40)                                              | Horn      |
+      | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 19960321  |
+      | datum ontbinding huwelijk/geregistreerd partnerschap (07.10)       | 20170827  |
+
 
   Rule: wanneer gevraagd wordt om voorletters, wordt voornamen geleverd
 
@@ -85,22 +88,24 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | geslacht.code                             | M                             |
       | geslacht.omschrijving                     | man                           |
       En heeft de response een persoon met een 'partner' met de volgende gegevens
-      | naam                                      | waarde  |
-      | naam.adellijkeTitelPredicaat.code         | BS      |
-      | naam.adellijkeTitelPredicaat.omschrijving | barones |
-      | naam.adellijkeTitelPredicaat.soort        | titel   |
-      | naam.voorvoegsel                          | van der |
-      | naam.geslachtsnaam                        | Horn    |
+      | naam                                      | waarde                     |
+      | naam.adellijkeTitelPredicaat.code         | BS                         |
+      | naam.adellijkeTitelPredicaat.omschrijving | barones                    |
+      | naam.adellijkeTitelPredicaat.soort        | titel                      |
+      | naam.voorvoegsel                          | van der                    |
+      | naam.geslachtsnaam                        | Horn                       |
+      | aangaanHuwelijkPartnerschap.datum         | <huwelijksdatum>           |
+      | ontbindingHuwelijkPartnerschap.datum      | <ontbindingdatum huwelijk> |
 
       Voorbeelden:
-      | veld                             |
-      | aanhef                           |
-      | aanschrijfwijze                  |
-      | gebruikInLopendeTekst            |
-      | adressering.aanhef               |
-      | aanschrijfwijze.naam             |
-      | aanschrijfwijze.aanspreekvorm    |
-      | adressering.aanschrijfwijze.naam |
+      | veld                             | huwelijksdatum | ontbindingdatum huwelijk |
+      | aanhef                           | 19960321       | 20170827                 |
+      | aanschrijfwijze                  |                |                          |
+      | gebruikInLopendeTekst            |                |                          |
+      | adressering.aanhef               |                |                          |
+      | aanschrijfwijze.naam             |                |                          |
+      | aanschrijfwijze.aanspreekvorm    |                |                          |
+      | adressering.aanschrijfwijze.naam |                |                          |
 
   Rule: wanneer gevraagd wordt om leeftijd, wordt geboorte.datum en overlijden.datum geleverd
     - overlijden.datum wordt alleen geleverd wanneer de persoon overleden is (wanneer er een waarde is voor overlijden.datum)
