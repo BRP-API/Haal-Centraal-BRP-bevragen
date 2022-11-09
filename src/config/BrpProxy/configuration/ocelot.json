@@ -6,7 +6,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "brpservice",
+          "Host": "gbamock",
           "Port": "5010"
         }
       ]

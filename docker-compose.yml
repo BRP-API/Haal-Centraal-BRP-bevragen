@@ -14,7 +14,7 @@ services:
       - 16686:16686
       - 4317:55680
   brpproxy:
-    image: ${DOCKER_REGISTRY-}brpproxy
+    image: iswish/haal-centraal-brp-bevragen-proxy:latest
     build:
       context: .
       dockerfile: src/BrpProxy/Dockerfile
@@ -36,8 +36,8 @@ services:
       - ./elastic:/app/elastic
       # - ./src/config/BrpProxy/certificates:/app/certificates
 
-  brpservice:
-    image: ${DOCKER_REGISTRY-}brpservice
+  gbamock:
+    image: iswish/haal-centraal-brp-bevragen-gba-mock:latest
     build:
       context: .
       dockerfile: src/BrpService/Dockerfile
