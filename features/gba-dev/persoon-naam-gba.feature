@@ -23,3 +23,25 @@ Functionaliteit: GBA persoon: naam
     | naam                                               |
     | naam.voornamen,naam.geslachtsnaam                  |
     | naam.voornamen,naam.voorvoegsel,naam.geslachtsnaam |
+
+  Abstract Scenario: filteren van 'adellijke titel of predicaat (02.20)' met fields=<field> geeft altijd alle velden 
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+    | naam                                 | waarde |
+    | adellijke titel of predicaat (02.20) | JH     |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | <field>                         |
+    Dan heeft de response een persoon met de volgende 'naam' gegevens
+    | naam                                 | waarde    |
+    | adellijkeTitelPredicaat.code         | JH        |
+    | adellijkeTitelPredicaat.omschrijving | jonkheer  |
+    | adellijkeTitelPredicaat.soort        | predicaat |
+
+    Voorbeelden:
+    | field                                     |
+    | naam.adellijkeTitelPredicaat              |
+    | naam.adellijkeTitelPredicaat.code         |
+    | naam.adellijkeTitelPredicaat.omschrijving |
+    | naam.adellijkeTitelPredicaat.soort        |

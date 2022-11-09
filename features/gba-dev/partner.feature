@@ -75,3 +75,24 @@ Functionaliteit: GBA persoon: partner
     | partners                 |
     | partners.geboorte        |
     | partners.geboorte.plaats |
+
+  Abstract Scenario: partner heeft 'huwelijkssluiting/aangaan geregistreerd partnerschap' veld met onbekend waarde: 'datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10)'
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+    | naam                                                               | waarde   |
+    | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 00000000 |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000012                       |
+    | fields              | <field>                         |
+    Dan heeft de response een persoon met een 'partner' met de volgende 'aangaanHuwelijkPartnerschap' gegevens
+    | naam              | waarde        |
+    | datum.type        | DatumOnbekend |
+    | datum.onbekend    | true          |
+    | datum.langFormaat | onbekend      |
+
+    Voorbeelden:
+    | field                                      |
+    | partners                                   |
+    | partners.aangaanHuwelijkPartnerschap       |
+    | partners.aangaanHuwelijkPartnerschap.datum |
