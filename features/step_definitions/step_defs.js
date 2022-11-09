@@ -944,24 +944,6 @@ After(async function() {
     actual.should.deep.equalInAnyOrder(expected, `actual: ${JSON.stringify(actual, null, "\t")}`);
 });
 
-After(async function() {
-    if(this.context.response === undefined) {
-        console.log('er is geen response');
-        return;
-    }
-
-    const headers = this.context.response.headers;
-    if(headers === undefined) {
-        console.log('de response heeft geen headers');
-        return;
-    }
-
-    const header = headers["api-version"];
-    should.exist(header, "no header found with name 'api-version'");
-    header.should.equal(this.context.expectedApiVersion,
-                        `no 'api-version' header found with value: '${this.context.expectedApiVersion}'`);
-});
-
 After({tags: '@fout-case'}, async function() {
     const headers = this.context.response.headers;
 

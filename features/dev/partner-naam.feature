@@ -33,7 +33,7 @@ Functionaliteit: Persoon: partner - naam
     Dan heeft de response een persoon met een 'partner' met alleen de volgende 'naam' gegevens
     | naam                                 | waarde |
     | adellijkeTitelPredicaat.code         | R      |
-    | adellijkeTitelPredicaat.omschrijving | Ridder |
+    | adellijkeTitelPredicaat.omschrijving | ridder |
     | adellijkeTitelPredicaat.soort        | titel  |
 
   Scenario: partner heeft 'naam' veld: 'voorletters'
@@ -210,7 +210,7 @@ Functionaliteit: Persoon: partner - naam
     Dan heeft de response een persoon met een 'partner' met alleen de volgende 'naam' gegevens
     | naam                                         | waarde      |
     | adellijkeTitelPredicaat.code                 | P           |
-    | adellijkeTitelPredicaat.omschrijving         | Prins       |
+    | adellijkeTitelPredicaat.omschrijving         | prins       |
     | adellijkeTitelPredicaat.soort                | titel       |
     | inOnderzoek.adellijkeTitelPredicaat          | true        |
     | inOnderzoek.datumIngangOnderzoek.type        | Datum       |

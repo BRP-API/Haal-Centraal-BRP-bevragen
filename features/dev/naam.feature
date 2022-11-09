@@ -38,9 +38,9 @@ Functionaliteit: Persoon: naam
 
     Voorbeelden:
     | field                                     | code | omschrijving | soort     |
-    | naam.adellijkeTitelPredicaat              | JH   | Jonkheer     | predicaat |
+    | naam.adellijkeTitelPredicaat              | JH   | jonkheer     | predicaat |
     | naam.adellijkeTitelPredicaat.code         | JH   |              |           |
-    | naam.adellijkeTitelPredicaat.omschrijving |      | Jonkheer     |           |
+    | naam.adellijkeTitelPredicaat.omschrijving |      | jonkheer     |           |
     | naam.adellijkeTitelPredicaat.soort        |      |              | predicaat |
 
   Abstract Scenario: persoon heeft 'naam' veld: 'aanduiding naamgebruik (61.10)'
@@ -196,9 +196,9 @@ Functionaliteit: Persoon: naam
 
     Voorbeelden:
     | gba in onderzoek waarde | field                                | code | omschrijving | soort     |
-    | 010000                  | adellijkeTitelPredicaat              | JH   | Jonkheer     | predicaat |
+    | 010000                  | adellijkeTitelPredicaat              | JH   | jonkheer     | predicaat |
     | 010200                  | adellijkeTitelPredicaat.code         | JH   |              |           |
-    | 010220                  | adellijkeTitelPredicaat.omschrijving |      | Jonkheer     |           |
+    | 010220                  | adellijkeTitelPredicaat.omschrijving |      | jonkheer     |           |
 
   Abstract Scenario: aanduiding naamgebruik is in onderzoek
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens

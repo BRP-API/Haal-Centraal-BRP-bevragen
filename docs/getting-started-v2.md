@@ -104,9 +104,9 @@ In de volgende paragrafen is beschreven hoe de BrpProxy  t.b.v. test doeleinden 
   docker-compose down
   ```
 
-### BrpProxy configuraties aanpassen
+### Configureren van de BrpProxy
 
-De BrpProxy luistert standaard op poort 5000 van de host machine. Om dit te wijzigen moet de *ports* setting van de **brpproxy** in de **docker-compose.yml** bestand worden aangepast:
+De BrpProxy luistert standaard op poort 5000 van de host machine. Om dit te wijzigen moet de *ports* setting van de **brpproxy** in het **docker-compose.yml** bestand worden aangepast:
 
 ```yaml
 ...
@@ -117,18 +117,45 @@ brpproxy:
   ...
 ```
 
-Standaard routeert de BrpProxy requests naar `http://localhost:5000/haalcentraal/api/brp/personen` naar de BrpService. Dit kan worden gewijzigd in het **/src/config/BrpProxy/configuration/ocelot.json** bestand. Om bijvoorbeeld requests naar `http://localhost:5000/personen` te routeren naar de BrpService moet de *UpstreamPathTemplate* als volgt worden aangepast:
+#### Routering
+
+De routering van de BrpProxy wordt geconfigureerd in het **/src/config/BrpProxy/configuration/ocelot.json** bestand.
+Requests die matchen met de waarde in de *UpstreamPathTemplate* worden gerouteerd naar de urls gedefinieerd met behulp van de *Downstream* parameters. Een downstream url wordt als volgt opgebouwd: `<DownstreamScheme>://<DownstreamHostAndPorts.Host>:<DownstreamHostAndPorts.Port><DownstreamPathTemplate>`. Standaard ziet een Downstream url er als volgt uit: `http://brpservice:5010/haalcentraal/api/brp/personen`.
+
+Om requests naar `http://localhost:5000/personen` te routeren naar `http://haalcentraal_api/haalcentraal/api/brp/v2/personen` moet de configuratie als volgt worden aangepast:
 
 ```json
 {
   "Routes": [
     {
-      "UpstreamPathTemplate": "/{everything}",
-      ...
+      "UpstreamPathTemplate": "/personen",
+      "DownstreamPathTemplate": "/haalcentraal/api/brp/v2/personen",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "haalcentraal_api",
+          "Port": "80"
+        }
+      ]
     }
   ]
 }
 ```
+
+#### mTLS
+
+De BrpProxy kan worden geconfigureerd voor *mutual TLS*. Hiervoor moeten de volgende variabelen voor de BrpProxy container worden gezet:
+- environment
+  - ClientCertificate__Name. Dit moet overeenkomen met de bestandsnaam van de client certificaat
+  - ClientCertificate__Password. Dit moet overeenkomen met het wachtwoord dat is gebruikt bij het aanmaken van de client certificaat
+- volumes
+  - mapping van de folder waar de client certificaat staat naar de `/app/certificates` folder van de container
+
+In het **docker-compose.yml** bestand, is onder de *brpproxy* service deze variabelen terug te vinden.
+
+#### Logging
+
+Standaard logt de BrpProxy alleen warning en error log berichten. Dit wordt geconfigureerd in het `src\config\BrpProxy\appsettings\appsettings.json` bestand met behulp van de **Serilog:MinimumLevel:Override:BrpProxy** setting. Standaard heeft deze de waarde `Warning`. Om de BrpProxy te debuggen, moet deze worden gezet op `Debug`.
 
 ### Testpersonen
 
