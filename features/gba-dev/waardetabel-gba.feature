@@ -213,8 +213,10 @@ Functionaliteit: Waardetabel met code en omschrijving
         | land vanwaar ingeschreven (14.10) | Landen              | immigratie                   | landVanwaarIngeschreven | 1234   |
         # In het laatste voorbeeld zou eigenlijk de "groep" immigratie moeten zijn. Echter is dit nog niet geïmplementeerd in de automation code. Als dit correct geïmplementeerd is kan de kolom "fields" vervallen en kan daarvoer "groep" gebruikt worden
 
-    Rule: wanneer de waarde voor een plaats geen valide gemeentecode bevat wordt deze geleverd in de omschrijving
-      - de waarde voor plaats is een gemeentecode wanneer het bestaat uit 4 cijfers
+        Rule: wanneer de waarde voor een geboorteplaats(03.20) of een overlijdenplaats (08.20) of plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) geen valide gemeentecode bevat wordt de de code geleverd in zowel de code als de omschrijving
+          - een valide gemeentecode bestaat uit vier cijfers en komt voor in de landelijke tabel Gemeenten
+          - als er in de geboorteplaats (03.20) of de overlijdenplaats (08.20) of plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) een waarde staat die niet voorkomt in de landelijke tabel Gemeenten
+            dan wordt de waarde die in de plaats staat in zowel de code als de omschrijving opgenomen. (Buitenlandse plaatsnaam of coördinaten)
 
       Scenario: Plaats is buitenlandse plaats of locatie bij code voor geboorteplaats (Als de code niet voorkomt in tabel gemeenten)
         Gegeven de persoon met burgerservicenummer '000000280' heeft de volgende gegevens
