@@ -21,38 +21,80 @@ INSERT INTO public.lo3_nl_nat_verkrijg_verlies_reden
 					tabel_regel_start_datum=EXCLUDED.tabel_regel_start_datum,
 					tabel_regel_eind_datum=EXCLUDED.tabel_regel_eind_datum;
 
-INSERT INTO public.lo3_gezagsverhouding(
-	gezagsverhouding_code, gezagsverhouding_oms)
-	VALUES (1, 'Ouder1 heeft het gezag')
-	ON CONFLICT(gezagsverhouding_code) DO
-		UPDATE SET  gezagsverhouding_oms = EXCLUDED.gezagsverhouding_oms;
+INSERT INTO public.lo3_titel_predikaat(
+	titel_predikaat, titel_predikaat_oms,titel_predikaat_soort)
+	VALUES ('B', 'baron','titel')
+		ON CONFLICT(titel_predikaat) DO
+		UPDATE SET  titel_predikaat_oms = EXCLUDED.titel_predikaat_oms;
 
-INSERT INTO public.lo3_gezagsverhouding(
-	gezagsverhouding_code, gezagsverhouding_oms)
-	VALUES (12,'Ouder1 en ouder2 hebben het gezag')
-	ON CONFLICT(gezagsverhouding_code) DO
-		UPDATE SET  gezagsverhouding_oms = EXCLUDED.gezagsverhouding_oms;
+INSERT INTO public.lo3_titel_predikaat(
+	titel_predikaat, titel_predikaat_oms,titel_predikaat_soort)
+	VALUES ('BS', 'barones', 'titel')
+		ON CONFLICT(titel_predikaat) DO
+		UPDATE SET  titel_predikaat_oms = EXCLUDED.titel_predikaat_oms;
 
-INSERT INTO public.lo3_gezagsverhouding(
-	gezagsverhouding_code, gezagsverhouding_oms)
-	VALUES ('1D','Ouder1 en een derde hebben het gezag')
-	ON CONFLICT(gezagsverhouding_code) DO
-		UPDATE SET  gezagsverhouding_oms = EXCLUDED.gezagsverhouding_oms;
+INSERT INTO public.lo3_titel_predikaat(
+	titel_predikaat, titel_predikaat_oms,titel_predikaat_soort)
+	VALUES ('G', 'graaf', 'titel')
+		ON CONFLICT(titel_predikaat) DO
+		UPDATE SET  titel_predikaat_oms = EXCLUDED.titel_predikaat_oms;
 
-INSERT INTO public.lo3_gezagsverhouding(
-	gezagsverhouding_code, gezagsverhouding_oms)
-	VALUES ('2','Ouder2 heeft het gezag')
-	ON CONFLICT(gezagsverhouding_code) DO
-		UPDATE SET  gezagsverhouding_oms = EXCLUDED.gezagsverhouding_oms;
+INSERT INTO public.lo3_titel_predikaat(
+	titel_predikaat, titel_predikaat_oms,titel_predikaat_soort)
+	VALUES ('GI', 'gravin', 'titel')
+		ON CONFLICT(titel_predikaat) DO
+		UPDATE SET  titel_predikaat_oms = EXCLUDED.titel_predikaat_oms;
 
-INSERT INTO public.lo3_gezagsverhouding(
-	gezagsverhouding_code, gezagsverhouding_oms)
-	VALUES ('2D','Ouder2 en een derde hebben het gezag')
-	ON CONFLICT(gezagsverhouding_code) DO
-		UPDATE SET  gezagsverhouding_oms = EXCLUDED.gezagsverhouding_oms;
+INSERT INTO public.lo3_titel_predikaat(
+	titel_predikaat, titel_predikaat_oms,titel_predikaat_soort)
+	VALUES ('H', 'hertog', 'titel')
+		ON CONFLICT(titel_predikaat) DO
+		UPDATE SET  titel_predikaat_oms = EXCLUDED.titel_predikaat_oms;
 
-INSERT INTO public.lo3_gezagsverhouding(
-	gezagsverhouding_code, gezagsverhouding_oms)
-	VALUES ('D','Een of meer derden hebben het gezag')
-	ON CONFLICT(gezagsverhouding_code) DO
-		UPDATE SET  gezagsverhouding_oms = EXCLUDED.gezagsverhouding_oms;
+INSERT INTO public.lo3_titel_predikaat(
+	titel_predikaat, titel_predikaat_oms,titel_predikaat_soort)
+	VALUES ('HI', 'hertogin', 'titel')
+		ON CONFLICT(titel_predikaat) DO
+		UPDATE SET  titel_predikaat_oms = EXCLUDED.titel_predikaat_oms;
+
+INSERT INTO public.lo3_titel_predikaat(
+	titel_predikaat, titel_predikaat_oms,titel_predikaat_soort)
+	VALUES ('JH', 'jonkheer', 'predikaat')
+		ON CONFLICT(titel_predikaat) DO
+		UPDATE SET  titel_predikaat_oms = EXCLUDED.titel_predikaat_oms;
+
+INSERT INTO public.lo3_titel_predikaat(
+	titel_predikaat, titel_predikaat_oms,titel_predikaat_soort)
+	VALUES ('JV', 'jonkvrouw', 'predikaat')
+		ON CONFLICT(titel_predikaat) DO
+		UPDATE SET  titel_predikaat_oms = EXCLUDED.titel_predikaat_oms;
+
+INSERT INTO public.lo3_titel_predikaat(
+	titel_predikaat, titel_predikaat_oms,titel_predikaat_soort)
+	VALUES ('M', 'markies', 'titel')
+		ON CONFLICT(titel_predikaat) DO
+		UPDATE SET  titel_predikaat_oms = EXCLUDED.titel_predikaat_oms;
+
+INSERT INTO public.lo3_titel_predikaat(
+	titel_predikaat, titel_predikaat_oms,titel_predikaat_soort)
+	VALUES ('MI', 'markiezin', 'titel')
+		ON CONFLICT(titel_predikaat) DO
+		UPDATE SET  titel_predikaat_oms = EXCLUDED.titel_predikaat_oms;
+
+INSERT INTO public.lo3_titel_predikaat(
+	titel_predikaat, titel_predikaat_oms,titel_predikaat_soort)
+	VALUES ('P', 'prins', 'titel')
+		ON CONFLICT(titel_predikaat) DO
+		UPDATE SET  titel_predikaat_oms = EXCLUDED.titel_predikaat_oms;
+
+INSERT INTO public.lo3_titel_predikaat(
+	titel_predikaat, titel_predikaat_oms,titel_predikaat_soort)
+	VALUES ('PS', 'prinses', 'titel')
+		ON CONFLICT(titel_predikaat) DO
+		UPDATE SET  titel_predikaat_oms = EXCLUDED.titel_predikaat_oms;
+
+INSERT INTO public.lo3_titel_predikaat(
+	titel_predikaat, titel_predikaat_oms,titel_predikaat_soort)
+	VALUES ('R', 'ridder', 'titel')
+		ON CONFLICT(titel_predikaat) DO
+		UPDATE SET  titel_predikaat_oms = EXCLUDED.titel_predikaat_oms;
