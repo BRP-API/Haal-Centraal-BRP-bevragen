@@ -26,14 +26,15 @@ Functionaliteit: Persoon: nationaliteit - onbekende nationaliteit
     | burgerservicenummer | 000000012                       |
     | fields              | nationaliteiten.<naam>          |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-    | naam   | waarde                |
-    | type   | NationaliteitOnbekend |
-    | <naam> | <waarde>              |
-
-    Voorbeelden:
     | naam                     | waarde                                            |
+    | type                     | NationaliteitOnbekend                             |
     | redenOpname.code         | 001                                               |
     | redenOpname.omschrijving | Wet op het Nederlanderschap 1892, art. 1, onder a |
+
+    Voorbeelden:
+    | naam                     |
+    | redenOpname.code         |
+    | redenOpname.omschrijving |
 
   Abstract Scenario: persoon heeft 'onbekende nationaliteit' veld: '<gba naam>' met waarde '<waarde>'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens

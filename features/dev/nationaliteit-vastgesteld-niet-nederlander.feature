@@ -31,14 +31,15 @@ Functionaliteit: Persoon: nationaliteit - vastgesteld niet-Nederlander
     | burgerservicenummer | 000000012                       |
     | fields              | nationaliteiten.<naam>          |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-    | naam   | waarde                     |
-    | type   | VastgesteldNietNederlander |
-    | <naam> | <waarde>                   |
-
-    Voorbeelden:
     | naam                     | waarde                                            |
+    | type                     | VastgesteldNietNederlander                        |
     | redenOpname.code         | 001                                               |
     | redenOpname.omschrijving | Wet op het Nederlanderschap 1892, art. 1, onder a |
+
+    Voorbeelden:
+    | naam                     |
+    | redenOpname.code         |
+    | redenOpname.omschrijving |
 
   Abstract Scenario: persoon heeft 'vastgesteld niet-Nederlander' veld: '<gba naam>' met waarde '<waarde>'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens

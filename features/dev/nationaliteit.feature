@@ -12,10 +12,11 @@ Functionaliteit: Persoon: nationaliteit
     | burgerservicenummer | 000000012                          |
     | fields              | nationaliteiten.nationaliteit.code |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-    | naam               | waarde        |
-    | type               | Nationaliteit |
-    | nationaliteit.code | 0001          |
-
+    | naam                       | waarde        |
+    | type                       | Nationaliteit |
+    | nationaliteit.code         | 0001          |
+    | nationaliteit.omschrijving | Nederlandse   |
+    
   Scenario: persoon heeft meerdere nationaliteiten
    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
     | naam                  | waarde |
@@ -29,13 +30,15 @@ Functionaliteit: Persoon: nationaliteit
     | burgerservicenummer | 000000012                          |
     | fields              | nationaliteiten.nationaliteit.code |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-    | naam               | waarde        |
-    | type               | Nationaliteit |
-    | nationaliteit.code | 0001          |
+    | naam                       | waarde        |
+    | type                       | Nationaliteit |
+    | nationaliteit.code         | 0001          |
+    | nationaliteit.omschrijving | Nederlandse   |
     En heeft de persoon een 'nationaliteit' met alleen de volgende gegevens
-    | naam               | waarde        |
-    | type               | Nationaliteit |
-    | nationaliteit.code | 0455          |
+    | naam                       | waarde         |
+    | type                       | Nationaliteit  |
+    | nationaliteit.code         | 0455           |
+    | nationaliteit.omschrijving | Montenegrijnse |
 
   Scenario: persoon heeft alleen een beëindigde nationaliteit
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
@@ -63,14 +66,16 @@ Functionaliteit: Persoon: nationaliteit
     | burgerservicenummer | 000000012                       |
     | fields              | nationaliteiten.<naam>          |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-    | naam   | waarde        |
-    | type   | Nationaliteit |
-    | <naam> | <waarde>      |
-
-    Voorbeelden:
     | naam                     | waarde                                            |
+    | type                     | Nationaliteit                                     |
     | redenOpname.code         | 001                                               |
     | redenOpname.omschrijving | Wet op het Nederlanderschap 1892, art. 1, onder a |
+
+    Voorbeelden:
+    | naam                     |
+    | redenOpname              |
+    | redenOpname.code         |
+    | redenOpname.omschrijving |
 
   Abstract Scenario: persoon heeft 'nationaliteit' veld: '<gba naam>' met waarde '<waarde>'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
