@@ -2,7 +2,7 @@
 
 Functionaliteit: in onderzoek
   Wanneer de juistheid van een gegeven, een groep of een hele categorie onderzocht wordt, en daardoor de waarde van een of meerdere geleverde gegevens mogelijk onjuist is, 
-  wordt, zonder dat daar in fields om gevraagd wordt, naast het/de gevraagde veld(en) in persoonInOnderzoek, gezagInOnderzoek of in een of meerdere inOnderzoek groepen 
+  wordt, ook zonder dat daar in fields om gevraagd wordt, naast het/de gevraagde veld(en) in persoonInOnderzoek, gezagInOnderzoek of in een of meerdere inOnderzoek groepen 
   (afhankelijk van de categorie waarop in onderzoek van toepassing is) een aanduidingGegevensInOnderzoek opgenomen. 
   Deze krijgt/krijgen als waarde de 6-cijferige code die refereert aan een categorie, groep of gegeven dat in onderzoek is.
 
