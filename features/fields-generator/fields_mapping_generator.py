@@ -167,9 +167,9 @@ if (not os.path.isfile(SETTINGS.get("projectFolder") + SETTINGS.get("sourceYaml"
     print ("Geef een correcte locatie op voor de API specificaties in sourceYaml.")
     sys.exit()
 
-if (not os.path.isdir(SETTINGS.get("projectFolder") + SETTINGS.get("sheetFolder"))):
-    print ("Geef een correcte locatie op voor de te genereren sheets in sheetFolder.")
-    print (SETTINGS.get("projectFolder") + SETTINGS.get("sheetFolder"))
+if (not os.path.isdir(SETTINGS.get("projectFolder") + SETTINGS.get("fieldslistFolder"))):
+    print ("Geef een correcte locatie op voor de te genereren sheets in fieldslistFolder.")
+    print (SETTINGS.get("projectFolder") + SETTINGS.get("fieldslistFolder"))
     sys.exit()
 
 
@@ -206,9 +206,6 @@ for schemaComponent in SETTINGS.get("schemaComponents"):
 
     # verwijder deelvelden van een datum
     fieldsList = list(map(removeDateField, fieldPaths))
-
-    # voeg gba mapping toe
-    fieldsList = list(map(addGbaMapping, fieldsList)) 
 
     # schrijf de lijst als csv bestand
     f = open (filePath, "w")
