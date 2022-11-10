@@ -86,10 +86,8 @@ Functionaliteit: GBA persoon: partner
     | burgerservicenummer | 000000012                       |
     | fields              | <field>                         |
     Dan heeft de response een persoon met een 'partner' met de volgende 'aangaanHuwelijkPartnerschap' gegevens
-    | naam              | waarde        |
-    | datum.type        | DatumOnbekend |
-    | datum.onbekend    | true          |
-    | datum.langFormaat | onbekend      |
+    | naam  | waarde   |
+    | datum | 00000000 |
 
     Voorbeelden:
     | field                                      |
