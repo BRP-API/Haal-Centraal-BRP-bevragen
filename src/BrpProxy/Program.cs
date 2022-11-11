@@ -10,6 +10,7 @@ using OpenTelemetry.Trace;
 using Serilog;
 using Serilog.Enrichers.Span;
 using Serilog.Exceptions;
+using Serilog.Sinks.SystemConsole.Themes;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,7 +23,8 @@ builder.Host.UseSerilog((context, config) =>
         .Enrich.WithExceptionDetails()
         .Enrich.FromLogContext()
         .Enrich.With<ActivityEnricher>()
-        .WriteTo.Console()
+        .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}",
+                         theme: AnsiConsoleTheme.Code)
         .WriteTo.File(new EcsTextFormatter(), context.Configuration["Ecs:Path"])
         .WriteTo.Seq(context.Configuration["Seq:ServerUrl"]);
 });

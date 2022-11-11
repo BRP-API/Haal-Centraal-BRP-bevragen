@@ -53,7 +53,7 @@ Functionaliteit: Persoon beperkt: naam
     Dan heeft de response een persoon met de volgende 'naam' gegevens
     | naam                                 | waarde    |
     | adellijkeTitelPredicaat.code         | JH        |
-    | adellijkeTitelPredicaat.omschrijving | Jonkheer  |
+    | adellijkeTitelPredicaat.omschrijving | jonkheer  |
     | adellijkeTitelPredicaat.soort        | predicaat |
 
     Voorbeelden:

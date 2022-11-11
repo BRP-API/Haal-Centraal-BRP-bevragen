@@ -1,7 +1,7 @@
 const { World } = require('./world');
 const { dagRegex, maandRegex, jaarRegex, toGbaDate, toHcDate } = require('./calcDate');
 const { Given, When, Then, setWorldConstructor, Before, After } = require('@cucumber/cucumber');
-const axios = require('axios').default;
+const axios = require('axios');
 const fs = require('fs');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const should = require('chai').use(deepEqualInAnyOrder).should();

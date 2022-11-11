@@ -96,3 +96,7 @@ Als de restore is geslaagd, wordt de volgende dialog box getoond
 ![Restore Database completed dialog box](./docs/img/pgAdmin-restore-database-completed-dialog.png)
 
 Klik op **X** om de dialog box te sluiten
+
+### Update de 'landelijke tabellen' in de 'rvig_haalcentraal_testdata' database
+
+Voer de volgende statement uit: `npm run db:update-waarde-tabellen`
