@@ -2,7 +2,7 @@
 
 Functionaliteit: Europees kiesrecht
 
-  Scenario: Geen Europees kiesrecht opgegevens, geen europees kiesrecht (31.10) en geen einddatum uitsluiting europees kiesrecht (31.30)
+  Scenario: Geen europees kiesrecht (31.10) en geen einddatum uitsluiting europees kiesrecht (31.30)
     Gegeven de persoon met burgerservicenummer '000000103' heeft de volgende gegevens
     | geslachtsnaam (02.40) |
     | Janssen               |
@@ -24,13 +24,13 @@ Functionaliteit: Europees kiesrecht
     | fields              | europeesKiesrecht               |
     Dan heeft de response een persoon met de volgende 'europeesKiesrecht' gegevens
     | naam                     | waarde                    |
-    | aanduiding.code          | <aanduiding.code>         |
+    | aanduiding.code          | <Europees kiesrecht>         |
     | aanduiding.omschrijving  | <aanduiding.omschrijving> |
 
     Voorbeelden:
-   | omschrijving                       | Europees kiesrecht | aanduiding.code | aanduiding.omschrijving |
-   | uitgesloten zonder einddatum       | 1                  | 1               | persoon is uitgesloten  |
-   | persoon ontvangt oproep            | 2                  | 2               | persoon ontvangt oproep |
+   | omschrijving                       | Europees kiesrecht | aanduiding.omschrijving |
+   | uitgesloten zonder einddatum       | 1                  | persoon is uitgesloten  |
+   | persoon ontvangt oproep            | 2                  | persoon ontvangt oproep |
 
 
   Abstract Scenario: Europees kiesrecht <omschrijving>
