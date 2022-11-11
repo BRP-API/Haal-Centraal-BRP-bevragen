@@ -245,7 +245,7 @@ Rule: Wanneer van de ouder wel gegevens geregistreerd zijn, maar geen van de met
     | type                | RaadpleegMetBurgerservicenummer             |
     | burgerservicenummer | 000000292                                   |
     | fields              | ouders.naam.voornamen,ouders.geboorte.datum |
-    Dan heeft de response een persoon met een 'ouder' zonder gegevens
+    Dan heeft de response een persoon met een 'ouder' zonder 'naam' gegevens
 
   Abstract Scenario: ouder heeft datum veld: 'datum ingang familierechtelijke betrekking (62.10)'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens

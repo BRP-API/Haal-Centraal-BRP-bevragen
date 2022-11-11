@@ -45,7 +45,7 @@ Functionaliteit: Persoon: ouder - naam
     Voorbeelden:
     | ouder aanduiding | naam                                 | code | omschrijving | soort     |
     | 1                | adellijkeTitelPredicaat.code         | JV   | jonkvrouw    | predicaat |
-    | 2                | adellijkeTitelPredicaat.omschrijving | R    | Ridder       | titel     |
+    | 2                | adellijkeTitelPredicaat.omschrijving | R    | ridder       | titel     |
 
   Scenario: ouder heeft 'naam' veld: 'voorletters'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
@@ -237,7 +237,7 @@ Functionaliteit: Persoon: ouder - naam
     Dan heeft de response een persoon met een 'ouder' met alleen de volgende 'naam' gegevens
     | naam                                         | waarde      |
     | adellijkeTitelPredicaat.code                 | PS          |
-    | adellijkeTitelPredicaat.omschrijving         | Prinses     |
+    | adellijkeTitelPredicaat.omschrijving         | prinses     |
     | adellijkeTitelPredicaat.soort                | titel       |
     | inOnderzoek.adellijkeTitelPredicaat          | true        |
     | inOnderzoek.datumIngangOnderzoek.type        | Datum       |
