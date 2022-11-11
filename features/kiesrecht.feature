@@ -83,21 +83,63 @@ Rule: Uitsluiting van Europees kiesrecht wordt alleen opgenomen wanneer de eindd
 		| naam                | waarde                          |
 		| type                | RaadpleegMetBurgerservicenummer |
 		| burgerservicenummer | 000000164                       |
-		| fields              | europeesKiesrecht.aanduiding,europeesKiesrecht.einddatumUitsluiting.type |
+		| fields              | europeesKiesrecht.aanduiding,europeesKiesrecht.einddatumUitsluiting |
 		Dan heeft de response een persoon met de volgende 'europeesKiesrecht' gegevens
 		| naam                             | waarde                    |
 		| aanduiding.code                  | <aanduiding.code>         |
 		| aanduiding.omschrijving          | <aanduiding.omschrijving> |
 		| einddatumUitsluiting.type        | <datumtype>               |
+		| einddatumUitsluiting.jaar        | <einddatum uitsluiting>   |
+		| einddatumUitsluiting.langFormaat | <einddatum uitsluiting>   |
 
 
 		Voorbeelden:
-    | omschrijving                       | Europees kiesrecht | einddatum uitsluiting | aanduiding.code | aanduiding.omschrijving | datumtype            |
-    | einddatum uitsluiting in toekomst  | 1                  | volgend jaar          | 1               | persoon is uitgesloten  | JaarDatum            |
-    | einddatum uitsluiting morgen       | 1                  | morgen                | 1               | persoon is uitgesloten  | Datum                |
-    | einddatum uitsluiting deze maand   | 1                  | deze maand            | 1               | persoon is uitgesloten  | JaarMaandDatum       |
-    | einddatum uitsluiting dit jaar     | 1                  | dit jaar              | 1               | persoon is uitgesloten  | JaarDatum            |
-    | einddatum uitsluiting onbekend     | 1                  | 00000000              | 1               | persoon is uitgesloten  | DatumOnbekend        |
+    | omschrijving                           | Europees kiesrecht | einddatum uitsluiting | aanduiding.code | aanduiding.omschrijving | datumtype            |
+    | einddatum uitsluiting jaarin toekomst  | 1                  | volgend jaar          | 1               | persoon is uitgesloten  | JaarDatum            |
+    | einddatum uitsluiting dit jaar         | 1                  | dit jaar              | 1               | persoon is uitgesloten  | JaarDatum            |
+
+		Abstract Scenario: Europees kiesrecht einddatum in de toekomst
+		#   Functioneel zou dit moeten zijn :
+		#   Gegeven de persoon met burgerservicenummer '000000164' heeft de volgende 'kiesrecht' gegevens
+		#   De kiesrechtgegevens zijn opgenomen in de lo3_pl tabel. Het toevoegen van kiesrecht gegevens zou in de automation code een update vereisen.
+		#   Die update is nog niet geïmplementeerd, dus worden de kiesrecht met de insert van de inschrijving meegegeven.
+			Gegeven de persoon met burgerservicenummer '000000164' heeft de volgende 'inschrijving' gegevens
+			| Europees kiesrecht (31.10) | einddatum uitsluiting Europees kiesrecht (31.30) |
+			| 1                          | 20270101                                         |
+			Als personen wordt gezocht met de volgende parameters
+			| naam                | waarde                          |
+			| type                | RaadpleegMetBurgerservicenummer |
+			| burgerservicenummer | 000000164                       |
+			| fields              | europeesKiesrecht.aanduiding,europeesKiesrecht.einddatumUitsluiting |
+			Dan heeft de response een persoon met de volgende 'europeesKiesrecht' gegevens
+			| naam                             | waarde                    |
+			| aanduiding.code                  | 1                         |
+			| aanduiding.omschrijving          | persoon is uitgesloten    |
+			| einddatumUitsluiting.type        | Datum                     |
+			| einddatumUitsluiting.datum       | 2027-01-01                |
+			| einddatumUitsluiting.langFormaat | 1 januari 2027            |
+
+		Abstract Scenario: Europees kiesrecht einddatum in de onbekend
+		#   Functioneel zou dit moeten zijn :
+		#   Gegeven de persoon met burgerservicenummer '000000164' heeft de volgende 'kiesrecht' gegevens
+		#   De kiesrechtgegevens zijn opgenomen in de lo3_pl tabel. Het toevoegen van kiesrecht gegevens zou in de automation code een update vereisen.
+		#   Die update is nog niet geïmplementeerd, dus worden de kiesrecht met de insert van de inschrijving meegegeven.
+			Gegeven de persoon met burgerservicenummer '000000164' heeft de volgende 'inschrijving' gegevens
+			| Europees kiesrecht (31.10) | einddatum uitsluiting Europees kiesrecht (31.30) |
+			| 1                          | 00000000                                         |
+			Als personen wordt gezocht met de volgende parameters
+			| naam                | waarde                          |
+			| type                | RaadpleegMetBurgerservicenummer |
+			| burgerservicenummer | 000000164                       |
+			| fields              | europeesKiesrecht.aanduiding,europeesKiesrecht.einddatumUitsluiting |
+			Dan heeft de response een persoon met de volgende 'europeesKiesrecht' gegevens
+			| naam                             | waarde                    |
+			| aanduiding.code                  | 1                         |
+			| aanduiding.omschrijving          | persoon is uitgesloten    |
+			| einddatumUitsluiting.type        | DatumOnbekend             |
+			| einddatumUitsluiting.onbekend    | true                      |
+			| einddatumUitsluiting.langFormaat | onbekend                  |
+
 
 	Abstract Scenario: Europees kiesrecht <omschrijving>
 	#   Functioneel zou dit moeten zijn :
@@ -156,19 +198,58 @@ Rule: Uitsluiting van kiesrecht wordt alleen opgenomen wanneer de einddatum uits
 			| naam                | waarde                                   |
 			| type                | RaadpleegMetBurgerservicenummer          |
 			| burgerservicenummer | 000000140                                |
-			| fields              | uitsluitingKiesrecht.uitgeslotenVanKiesrecht,uitsluitingKiesrecht.einddatum.type |
+			| fields              | uitsluitingKiesrecht.uitgeslotenVanKiesrecht,uitsluitingKiesrecht.einddatum |
 			Dan heeft de response een persoon met de volgende 'uitsluitingKiesrecht' gegevens
-			| naam                       | waarde                    |
-			| uitgeslotenVanKiesrecht    | <uitgeslotenVanKiesrecht> |
-			| einddatum.type             | <einddatumtype>               |
+			| naam                             | waarde                    |
+			| uitgeslotenVanKiesrecht          | <uitgeslotenVanKiesrecht> |
+			| einddatum.type                   | JaarDatum                 |
+			| einddatum.jaar                   | <einddatum uitsluiting>   |
+			| einddatum.langFormaat            | <einddatum uitsluiting>   |
 
 			Voorbeelden:
 			| omschrijving                             | uitsluiting kiesrecht | einddatum uitsluiting | uitgeslotenVanKiesrecht | einddatum    | einddatumtype  |
-			| einddatum uitsluiting in toekomst        | A                     | volgend jaar          | true                    | volgend jaar | JaarDatum      |
-			| einddatum uitsluiting morgen             | A                     | morgen                | true                    | morgen       | Datum          |
-			| einddatum uitsluiting deze maand         | A                     | deze maand            | true                    | deze maand   | JaarMaandDatum |
+			| einddatum uitsluiting jaar in toekomst   | A                     | volgend jaar          | true                    | volgend jaar | JaarDatum      |
 			| einddatum uitsluiting dit jaar           | A                     | dit jaar              | true                    | dit jaar     | JaarDatum      |
-			| einddatum uitsluiting onbekend           | A                     | 00000000              | true                    | 00000000     | DatumOnbekend  |
+
+	Abstract Scenario: kiesrecht einddatum uitsluiting in de toekomst
+	#   Functioneel zou dit moeten zijn :
+	#   Gegeven de persoon met burgerservicenummer '000000140' heeft de volgende 'kiesrecht' gegevens
+	#   De kiesrechtgegevens zijn opgenomen in de lo3_pl tabel. Het toevoegen van kiesrecht gegevens zou in de automation code een update vereisen.
+	#   Die update is nog niet geïmplementeerd, dus worden de kiesrecht met de insert van de inschrijving meegegeven.
+			Gegeven de persoon met burgerservicenummer '000000140' heeft de volgende 'inschrijving' gegevens
+			| aanduiding uitgesloten kiesrecht (38.10) | einddatum uitsluiting kiesrecht (38.20) |
+			| A                                        | 20270101                                |
+			Als personen wordt gezocht met de volgende parameters
+			| naam                | waarde                                   |
+			| type                | RaadpleegMetBurgerservicenummer          |
+			| burgerservicenummer | 000000140                                |
+			| fields              | uitsluitingKiesrecht.uitgeslotenVanKiesrecht,uitsluitingKiesrecht.einddatum |
+			Dan heeft de response een persoon met de volgende 'uitsluitingKiesrecht' gegevens
+			| naam                       | waarde                    |
+			| uitgeslotenVanKiesrecht    | true                      |
+			| einddatum.type             | Datum                     |
+			| einddatum.datum            | 2027-01-01                |
+			| einddatum.langFormaat      | 1 januari 2027            |
+
+		Abstract Scenario: kiesrecht einddatum onbekend
+		#   Functioneel zou dit moeten zijn :
+		#   Gegeven de persoon met burgerservicenummer '000000140' heeft de volgende 'kiesrecht' gegevens
+		#   De kiesrechtgegevens zijn opgenomen in de lo3_pl tabel. Het toevoegen van kiesrecht gegevens zou in de automation code een update vereisen.
+		#   Die update is nog niet geïmplementeerd, dus worden de kiesrecht met de insert van de inschrijving meegegeven.
+				Gegeven de persoon met burgerservicenummer '000000140' heeft de volgende 'inschrijving' gegevens
+				| aanduiding uitgesloten kiesrecht (38.10) | einddatum uitsluiting kiesrecht (38.20) |
+				| A                                        | 00000000                                |
+				Als personen wordt gezocht met de volgende parameters
+				| naam                | waarde                                   |
+				| type                | RaadpleegMetBurgerservicenummer          |
+				| burgerservicenummer | 000000140                                |
+				| fields              | uitsluitingKiesrecht.uitgeslotenVanKiesrecht,uitsluitingKiesrecht.einddatum |
+				Dan heeft de response een persoon met de volgende 'uitsluitingKiesrecht' gegevens
+				| naam                       | waarde                    |
+				| uitgeslotenVanKiesrecht    | true                      |
+				| einddatum.type             | DatumOnbekend             |
+				| einddatum.onbekend         | true                      |
+				| einddatum.langFormaat      | onbekend                  |
 
 		Abstract Scenario: kiesrecht <omschrijving>
 		#   Functioneel zou dit moeten zijn :
