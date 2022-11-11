@@ -3,7 +3,7 @@
 Functionaliteit: Persoon: verblijfstitel
 
   Abstract Scenario: persoon heeft 'verblijfstitel' veld: 'aanduiding verblijfstitel (39.10)'
-    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfstitel' gegevens
+    Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
     | naam                              | waarde |
     | aanduiding verblijfstitel (39.10) | 09     |
     Als personen wordt gezocht met de volgende parameters
@@ -23,7 +23,7 @@ Functionaliteit: Persoon: verblijfstitel
     | verblijfstitel.aanduiding.omschrijving |
 
   Abstract Scenario: persoon heeft 'verblijfstitel' datum veld: 'datum ingang verblijfstitel (39.30)'
-    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfstitel' gegevens
+    Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
     | naam                                | waarde   |
     | datum ingang verblijfstitel (39.30) | 19980201 |
     Als personen wordt gezocht met de volgende parameters
@@ -42,10 +42,10 @@ Functionaliteit: Persoon: verblijfstitel
     | datumIngang |
 
   Abstract Scenario: persoon heeft 'verblijfstitel' datum veld: 'datum einde verblijfstitel (39.20)' met waarde in de toekomst
-    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfstitel' gegevens
+    Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
     | naam                                | waarde   |
     | datum ingang verblijfstitel (39.30) | 19980201 |
-    En de persoon is gewijzigd naar de volgende 'verblijfstitel' gegevens
+    En de 'verblijfstitel' is gewijzigd naar de volgende gegevens
     | naam                                | waarde   |
     | datum ingang verblijfstitel (39.30) | 19980201 |
     | datum einde verblijfstitel (39.20)  | 20251231 |
@@ -65,10 +65,10 @@ Functionaliteit: Persoon: verblijfstitel
     | datumEinde |
 
   Abstract Scenario: persoon heeft 'verblijfstitel' datum veld: 'datum einde verblijfstitel (39.20)' met waarde gelijk aan vandaag
-    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfstitel' gegevens
+    Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
     | naam                                | waarde   |
     | datum ingang verblijfstitel (39.30) | 19980201 |
-    En de persoon is gewijzigd naar de volgende 'verblijfstitel' gegevens
+    En de 'verblijfstitel' is gewijzigd naar de volgende gegevens
     | naam                                | waarde   |
     | datum ingang verblijfstitel (39.30) | 19980201 |
     | datum einde verblijfstitel (39.20)  | vandaag  |
@@ -84,10 +84,10 @@ Functionaliteit: Persoon: verblijfstitel
     | datumEinde |
 
   Abstract Scenario: persoon heeft 'verblijfstitel' datum veld: 'datum einde verblijfstitel (39.20)' met waarde in het verleden
-    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfstitel' gegevens
+    Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
     | naam                                | waarde   |
     | datum ingang verblijfstitel (39.30) | 19980201 |
-    En de persoon is gewijzigd naar de volgende 'verblijfstitel' gegevens
+    En de 'verblijfstitel' is gewijzigd naar de volgende gegevens
     | naam                                | waarde   |
     | datum ingang verblijfstitel (39.30) | 19980201 |
     | datum einde verblijfstitel (39.20)  | gisteren |
