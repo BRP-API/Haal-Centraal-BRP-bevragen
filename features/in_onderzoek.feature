@@ -308,10 +308,10 @@ Functionaliteit: in onderzoek
       | <groep>.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022  |
 
       Voorbeelden:
-      | aanduiding in onderzoek | in onderzoek            | veld                         | groep    | waarde     | naam                                 | bronwaarde | type  | langFormaat     |
-      | 010220                  | adellijkeTitelPredicaat | adellijkeTitelPredicaat.code | naam     | H          | adellijke titel of predicaat (02.20) | H          |       |                 |
-      | 016110                  | aanduidingNaamgebruik   | aanduidingNaamgebruik.code   | naam     | E          | aanduiding naamgebruik (61.10)       | E          |       |                 |
-      | 010310                  | datum                   | datum.datum                  | geboorte | 2001-09-28 | geboortedatum (03.10)                | 20010928   | Datum | 28 januari 2001 |
+      | aanduiding in onderzoek | in onderzoek            | veld                         | groep    | waarde     | naam                                 | bronwaarde | type  | langFormaat       |
+      | 010220                  | adellijkeTitelPredicaat | adellijkeTitelPredicaat.code | naam     | H          | adellijke titel of predicaat (02.20) | H          |       |                   |
+      | 016110                  | aanduidingNaamgebruik   | aanduidingNaamgebruik.code   | naam     | E          | aanduiding naamgebruik (61.10)       | E          |       |                   |
+      | 010310                  | datum                   | datum.datum                  | geboorte | 2001-09-28 | geboortedatum (03.10)                | 20010928   | Datum | 28 september 2001 |
 
     Abstract Scenario: persoon heeft <veld> van verblijfadres in onderzoek
       Gegeven de persoon met burgerservicenummer '000000322' heeft de volgende 'verblijfplaats' gegevens
@@ -321,9 +321,9 @@ Functionaliteit: in onderzoek
       | datum ingang onderzoek (83.20)         | 20220307                  |
       | gemeente van inschrijving (09.10)      | 0599                      |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | naam                              | waarde         |
-      | <column naam>                     | <waarde>       |
-      | gemeentecode (92.10)              | 599            |
+      | naam                 | waarde   |
+      | <column naam>        | <waarde> |
+      | gemeentecode (92.10) | 599      |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                              |
       | type                | RaadpleegMetBurgerservicenummer     |
@@ -411,7 +411,7 @@ Functionaliteit: in onderzoek
 
       Voorbeelden:
       | waarde | veld                                    | ouder | andere ouder |
-      | 020220 | burgerservicenummer                     | 1     | 2            |
+      | 020120 | burgerservicenummer                     | 1     | 2            |
       | 030410 | geslacht                                | 2     | 1            |
       | 026210 | datumIngangFamilierechtelijkeBetrekking | 1     | 2            |
 
@@ -1012,7 +1012,7 @@ Functionaliteit: in onderzoek
       | regel 1 adres buitenland (13.30)       | <adresregel1>                 |
       | regel 2 adres buitenland (13.40)       | <adresregel2>                 |
       | gemeente van inschrijving (09.10)      | <gemeente>                    |
-      En de 'verblijftplaats' heeft de volgende 'adres' gegevens
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam                                | waarde                |
       | straatnaam (11.10)                  | <straat>              |
       | huisnummer (11.20)                  | <huisnummer>          |
@@ -1090,24 +1090,24 @@ Functionaliteit: in onderzoek
       #hier betekent leeg dat het inOnderzoek gegeven niet is opgenomen in het antwoord
       Voorbeelden:
       | gegeven in onderzoek      | waarde | type                   | adresregel1 | adresregel2 | korteNaam | straat | woonplaats | verbl.plaatstype | verbl.adres datum | verbl.adres datumtype | verbl.adres lang |
-      | gemeenteVanInschrijving   | 080910 |                        |             | true        |           |        |            |                  |                   |                       |                  | 
-      | straat                    | 081110 | VerblijfplaatsOnbekend | true        |             | true      | true   |            | true             | 2022-03-07        | Datum                 | 7 maart 2022     | 
-      | naamOpenbareRuimte        | 081115 | VerblijfplaatsOnbekend | true        |             |           | true   |            | true             | 2022-03-07        | Datum                 | 7 maart 2022     | 
-      | huisnummer                | 081120 |                        | true        |             |           |        |            |                  |                   |                       |                  | 
-      | woonplaats                | 081170 | VerblijfplaatsOnbekend |             | true        |           |        | true       | true             | 2022-03-07        | Datum                 | 7 maart 2022     | 
-      | locatiebeschrijving       | 081210 |                        | true        |             |           |        |            |                  |                   |                       |                  | 
-      | adresregel1               | 081330 |                        | true        |             |           |        |            |                  |                   |                       |                  | 
-      | groep gemeente            | 080900 |                        |             | true        |           |        |            |                  |                   |                       |                  | 
+      | gemeenteVanInschrijving   | 080910 | VerblijfplaatsOnbekend |             | true        |           |        |            |                  |                   |                       |                  | 
+      | straat                    | 081110 | VerblijfplaatsOnbekend | true        |             | true      | true   |            |                  |                   |                       |                  | 
+      | naamOpenbareRuimte        | 081115 | VerblijfplaatsOnbekend | true        |             |           | true   |            |                  |                   |                       |                  | 
+      | huisnummer                | 081120 | VerblijfplaatsOnbekend | true        |             |           |        |            |                  |                   |                       |                  | 
+      | woonplaats                | 081170 | VerblijfplaatsOnbekend |             | true        |           |        | true       |                  |                   |                       |                  | 
+      | locatiebeschrijving       | 081210 | VerblijfplaatsOnbekend | true        |             |           |        |            | true             | 2022-03-07        | Datum                 | 7 maart 2022     | 
+      | adresregel1               | 081330 | VerblijfplaatsOnbekend | true        |             |           |        |            |                  |                   |                       |                  | 
+      | groep gemeente            | 080900 | VerblijfplaatsOnbekend |             | true        |           |        |            |                  |                   |                       |                  | 
       | groep adres               | 081100 | VerblijfplaatsOnbekend | true        | true        | true      | true   | true       | true             | 2022-03-07        | Datum                 | 7 maart 2022     | 
-      | groep locatiebeschrijving | 081200 |                        | true        |             |           |        |            |                  |                   |                       |                  | 
-      | groep verblijf buitenland | 081300 |                        | true        | true        |           |        |            |                  |                   |                       |                  | 
+      | groep locatiebeschrijving | 081200 | VerblijfplaatsOnbekend | true        |             |           |        |            | true             | 2022-03-07        | Datum                 | 7 maart 2022     | 
+      | groep verblijf buitenland | 081300 | VerblijfplaatsOnbekend | true        | true        |           |        |            | true             | 2022-03-07        | Datum                 | 7 maart 2022     | 
       | categorie verblijfplaats  | 080000 | VerblijfplaatsOnbekend | true        | true        | true      | true   | true       | true             | 2022-03-07        | Datum                 | 7 maart 2022     | 
 
     Abstract Scenario: <gegeven in onderzoek> is in onderzoek
       Gegeven de persoon met burgerservicenummer '000000589' heeft een 'nationaliteit' met de volgende gegevens
       | naam                               | waarde                                |
       | nationaliteit (05.10)              | <nationaliteit>                       |
-      | bijzonder nederlanderschap (65.10) | <aanduidingBijzonderNederlanderschap> |
+      | bijzonder Nederlanderschap (65.10) | <aanduidingBijzonderNederlanderschap> |
       | datum ingang geldigheid (85.10)    | <datumIngangGeldigheid>               |
       | aanduiding in onderzoek (83.10)    | <waarde>                              |
       | datum ingang onderzoek (83.20)     | 20220307                              |
