@@ -1091,10 +1091,10 @@ Functionaliteit: in onderzoek
       Voorbeelden:
       | gegeven in onderzoek      | waarde | type                   | adresregel1 | adresregel2 | korteNaam | straat | woonplaats | verbl.plaatstype | verbl.adres datum | verbl.adres datumtype | verbl.adres lang |
       | gemeenteVanInschrijving   | 080910 | VerblijfplaatsOnbekend |             | true        |           |        |            |                  |                   |                       |                  | 
-      | straat                    | 081110 | VerblijfplaatsOnbekend | true        |             | true      | true   |            |                  |                   |                       |                  | 
-      | naamOpenbareRuimte        | 081115 | VerblijfplaatsOnbekend | true        |             |           | true   |            |                  |                   |                       |                  | 
+      | straat                    | 081110 | VerblijfplaatsOnbekend | true        |             | true      | true   |            |                  | 2022-03-07        | Datum                 | 7 maart 2022     | 
+      | naamOpenbareRuimte        | 081115 | VerblijfplaatsOnbekend | true        |             |           | true   |            |                  | 2022-03-07        | Datum                 | 7 maart 2022     | 
       | huisnummer                | 081120 | VerblijfplaatsOnbekend | true        |             |           |        |            |                  |                   |                       |                  | 
-      | woonplaats                | 081170 | VerblijfplaatsOnbekend |             | true        |           |        | true       |                  |                   |                       |                  | 
+      | woonplaats                | 081170 | VerblijfplaatsOnbekend |             | true        |           |        | true       |                  | 2022-03-07        | Datum                 | 7 maart 2022     | 
       | locatiebeschrijving       | 081210 | VerblijfplaatsOnbekend | true        |             |           |        |            | true             | 2022-03-07        | Datum                 | 7 maart 2022     | 
       | adresregel1               | 081330 | VerblijfplaatsOnbekend | true        |             |           |        |            |                  |                   |                       |                  | 
       | groep gemeente            | 080900 | VerblijfplaatsOnbekend |             | true        |           |        |            |                  |                   |                       |                  | 
