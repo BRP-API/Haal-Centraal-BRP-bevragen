@@ -17,7 +17,7 @@ Rule: De Fields parameter is verplicht.
     | status   | 400                                                         |
     | detail   | De foutieve parameter(s) zijn: fields.                      |
     | code     | paramsCombination                                           |
-    | instance | /haalcentraal/api/brp/personen                              |
+    | instance | /haalcentraal/api/brp/v2/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name   | reason                  |
     | required | fields | Parameter is verplicht. |
@@ -36,7 +36,7 @@ Rule: De Fields parameter is verplicht.
     | status   | 400                                                         |
     | detail   | De foutieve parameter(s) zijn: fields.                      |
     | code     | paramsCombination                                           |
-    | instance | /haalcentraal/api/brp/personen                              |
+    | instance | /haalcentraal/api/brp/v2/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name   | reason                  |
     | required | fields | Parameter is verplicht. |
@@ -55,7 +55,7 @@ Rule: De Fields parameter is verplicht.
     | status   | 400                                                         |
     | detail   | De foutieve parameter(s) zijn: fields.                      |
     | code     | paramsValidation                                            |
-    | instance | /haalcentraal/api/brp/personen                              |
+    | instance | /haalcentraal/api/brp/v2/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name   | reason                          |
     | minItems | fields | Array bevat minder dan 1 items. |
@@ -75,7 +75,7 @@ Rule: De Fields parameter is verplicht.
     | status   | 400                                                         |
     | detail   | De foutieve parameter(s) zijn: fields.                      |
     | code     | paramsValidation                                            |
-    | instance | /haalcentraal/api/brp/personen                              |
+    | instance | /haalcentraal/api/brp/v2/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name   | reason                          |
     | minItems | fields | Array bevat minder dan 1 items. |
@@ -94,7 +94,7 @@ Rule: De Fields parameter is verplicht.
     | status   | 400                                                         |
     | detail   | De foutieve parameter(s) zijn: fields.                      |
     | code     | paramsValidation                                            |
-    | instance | /haalcentraal/api/brp/personen                              |
+    | instance | /haalcentraal/api/brp/v2/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code  | name   | reason                   |
     | array | fields | Parameter is geen array. |
@@ -114,7 +114,7 @@ Rule: De Fields parameter is verplicht.
     | status   | 400                                                         |
     | detail   | De foutieve parameter(s) zijn: fields.                      |
     | code     | paramsValidation                                            |
-    | instance | /haalcentraal/api/brp/personen                              |
+    | instance | /haalcentraal/api/brp/v2/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code  | name   | reason                   |
     | array | fields | Parameter is geen array. |
@@ -135,7 +135,7 @@ Rule: De Fields parameter mag maximaal 130 veld paden bevatten
     | status   | 400                                                         |
     | detail   | De foutieve parameter(s) zijn: fields.                      |
     | code     | paramsValidation                                            |
-    | instance | /haalcentraal/api/brp/personen                              |
+    | instance | /haalcentraal/api/brp/v2/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name   | reason                          |
     | maxItems | fields | Array bevat meer dan 130 items. |
@@ -159,7 +159,7 @@ Rule: De Fields parameter mag maximaal 130 veld paden bevatten
     | status   | 400                                                         |
     | detail   | De foutieve parameter(s) zijn: fields.                      |
     | code     | paramsValidation                                            |
-    | instance | /haalcentraal/api/brp/personen                              |
+    | instance | /haalcentraal/api/brp/v2/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name   | reason                          |
     | maxItems | fields | Array bevat meer dan 130 items. |
@@ -186,7 +186,7 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden
     | status   | 400                                                         |
     | detail   | De foutieve parameter(s) zijn: fields[0].                   |
     | code     | paramsValidation                                            |
-    | instance | /haalcentraal/api/brp/personen                              |
+    | instance | /haalcentraal/api/brp/v2/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code   | name      | reason   |
     | <code> | fields[0] | <reason> |
@@ -211,7 +211,7 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden
     | status   | 400                                                         |
     | detail   | De foutieve parameter(s) zijn: fields[0].                   |
     | code     | paramsValidation                                            |
-    | instance | /haalcentraal/api/brp/personen                              |
+    | instance | /haalcentraal/api/brp/v2/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code   | name      | reason   |
     | <code> | fields[0] | <reason> |
@@ -235,7 +235,7 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden
     | status   | 400                                                         |
     | detail   | De foutieve parameter(s) zijn: fields[1], fields[2].        |
     | code     | paramsValidation                                            |
-    | instance | /haalcentraal/api/brp/personen                              |
+    | instance | /haalcentraal/api/brp/v2/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code   | name      | reason                                       |
     | fields | fields[1] | Parameter bevat een niet bestaande veldnaam. |
@@ -255,7 +255,7 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden
     | status   | 400                                                         |
     | detail   | De foutieve parameter(s) zijn: fields[0].                   |
     | code     | paramsValidation                                            |
-    | instance | /haalcentraal/api/brp/personen                              |
+    | instance | /haalcentraal/api/brp/v2/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code   | name      | reason                                       |
     | fields | fields[0] | Parameter bevat een niet bestaande veldnaam. |
@@ -274,7 +274,7 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden
     | status   | 400                                                         |
     | detail   | De foutieve parameter(s) zijn: fields[1].                   |
     | code     | paramsValidation                                            |
-    | instance | /haalcentraal/api/brp/personen                              |
+    | instance | /haalcentraal/api/brp/v2/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code   | name      | reason                                       |
     | fields | fields[1] | Parameter bevat een niet bestaande veldnaam. |
@@ -317,7 +317,7 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden
     | status   | 400                                                         |
     | detail   | De foutieve parameter(s) zijn: fields[1].                   |
     | code     | paramsValidation                                            |
-    | instance | /haalcentraal/api/brp/personen                              |
+    | instance | /haalcentraal/api/brp/v2/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code    | name      | reason                                                   |
     | pattern | fields[1] | Waarde voldoet niet aan patroon ^[a-zA-Z0-9\._]{1,199}$. |
@@ -336,7 +336,7 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden
     | status   | 400                                                         |
     | detail   | De foutieve parameter(s) zijn: fields[1].                   |
     | code     | paramsValidation                                            |
-    | instance | /haalcentraal/api/brp/personen                              |
+    | instance | /haalcentraal/api/brp/v2/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code    | name      | reason                                                   |
     | pattern | fields[1] | Waarde voldoet niet aan patroon ^[a-zA-Z0-9\._]{1,199}$. |
@@ -355,7 +355,7 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden
     | status   | 400                                                         |
     | detail   | De foutieve parameter(s) zijn: fields[0].                   |
     | code     | paramsValidation                                            |
-    | instance | /haalcentraal/api/brp/personen                              |
+    | instance | /haalcentraal/api/brp/v2/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code   | name      | reason   |
     | <code> | fields[0] | <reason> |
@@ -383,7 +383,7 @@ Rule: De Fields parameter bevat het pad naar de op te vragen velden
     | status   | 400                                                         |
     | detail   | De foutieve parameter(s) zijn: fields[1].                   |
     | code     | paramsValidation                                            |
-    | instance | /haalcentraal/api/brp/personen                              |
+    | instance | /haalcentraal/api/brp/v2/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code   | name      | reason                                       |
     | fields | fields[1] | Parameter bevat een niet bestaande veldnaam. |
