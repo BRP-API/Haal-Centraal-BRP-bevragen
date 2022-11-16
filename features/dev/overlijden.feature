@@ -25,6 +25,26 @@ Functionaliteit: Persoon: overlijden
     | overlijden.datum.datum       |
     | overlijden.datum.langFormaat |
 
+  Scenario: persoon heeft 'overlijden' datum veld: 'datum overlijden (08.10)' en overlijdensgegevens worden niet gevraagd
+    Gegeven de persoon met burgerservicenummer '000000139' heeft de volgende gegevens
+    | naam                     | waarde               |
+    | voornamen (02.10)        | Fransiscus Albertus |
+    En de persoon heeft de volgende 'overlijden' gegevens
+    | naam                     | waarde   |
+    | datum overlijden (08.10) | 20020701 |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000139                       |
+    | fields              | naam.voornamen                  |
+    Dan heeft de response een persoon met de volgende 'naam' gegevens
+    | naam                | waarde                          |
+    | voornamen           | Fransiscus Albertus             |
+    En heeft de persoon de volgende 'overlijden' gegevens
+    | naam               | waarde      |
+    | indicatieOverleden | true        |
+
+
   Abstract Scenario: persoon heeft 'overlijden' waardetabel veld: 'plaats overlijden (08.20)'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'overlijden' gegevens
     | naam                      | waarde |
