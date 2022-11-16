@@ -10,11 +10,10 @@ Functionaliteit: GBA : RNI-deelnemer voor geleverde gegevens
       | 01        | Persoon        |
       | 04        | Nationaliteit  |
       | 06        | Overlijden     |
-      | 07        | Inschrijving   |
       | 08        | Verblijfplaats |
 
 
-    Achtergrond:  
+    Achtergrond:
       Gegeven landelijke tabel "RNI-deelnemerstabel" heeft de volgende waarden
       | code | omschrijving                                      |
       | 0101 | Belastingdienst (inzake heffingen en toeslagen)   |
@@ -118,6 +117,7 @@ Functionaliteit: GBA : RNI-deelnemer voor geleverde gegevens
       Dan heeft de response een persoon met de volgende 'naam' gegevens
       | naam      | waarde |
       | voornamen | Peter  |
+      En heeft de persoon een 'verblijfplaats' zonder gegevens
       En heeft de persoon GEEN 'rni'
 
     Scenario: niet leveren RNI-deelnemer categorie 7 wanneer er geen opschorting en geen geheimhouding is en geen inschrijving gegevens gevraagd
@@ -135,7 +135,7 @@ Functionaliteit: GBA : RNI-deelnemer voor geleverde gegevens
       | naam                | waarde    |
       | burgerservicenummer | 000000048 |
 
-    Scenario: wel leveren RNI-deelnemer categorie 7 wanneer er geheimhouding is
+    Scenario: Geen RNI-deelnemer gegevens leveren bij categorie 7 als indicatie geheim gevuld is.
       Gegeven de persoon met burgerservicenummer '000000061' heeft de volgende 'inschrijving' gegevens
       | naam                         | waarde                                      |
       | indicatie geheim (70.10)     | 7                                           |
@@ -149,15 +149,10 @@ Functionaliteit: GBA : RNI-deelnemer voor geleverde gegevens
       Dan heeft de response een persoon met de volgende gegevens
       | naam                          | waarde    |
       | burgerservicenummer           | 000000061 |
-      | geheimhoudingPersoonsgegevens | true      |
-      En heeft de persoon een 'rni' met de volgende gegevens
-      | naam                   | waarde                                          |
-      | deelnemer.code         | 0101                                            |
-      | deelnemer.omschrijving | Belastingdienst (inzake heffingen en toeslagen) |
-      | omschrijvingVerdrag    | Belastingverdrag tussen België en Nederland     |
-      | categorie              | Inschrijving                                    |
+      | geheimhoudingPersoonsgegevens | 7         |
+      En heeft de persoon GEEN 'rni'
 
-    Scenario: wel leveren RNI-deelnemer categorie 7 wanneer er opschorting bijhouding is
+    Scenario: Geen RNI-deelnemer leveren voor categorie 7 wanneer er opschorting bijhouding is
       Gegeven de persoon met burgerservicenummer '000000073' heeft de volgende 'inschrijving' gegevens
       | naam                                 | waarde                                      |
       | reden opschorting bijhouding (67.20) | O                                           |
@@ -176,14 +171,9 @@ Functionaliteit: GBA : RNI-deelnemer voor geleverde gegevens
       | naam               | waarde     |
       | reden.code         | O          |
       | reden.omschrijving | overlijden |
-      En heeft de persoon een 'rni' met de volgende gegevens
-      | naam                   | waarde                                          |
-      | deelnemer.code         | 0101                                            |
-      | deelnemer.omschrijving | Belastingdienst (inzake heffingen en toeslagen) |
-      | omschrijvingVerdrag    | Belastingverdrag tussen België en Nederland     |
-      | categorie              | Inschrijving                                    |
+      En heeft de persoon GEEN 'rni'
 
-    Scenario: wel leveren RNI-deelnemer categorie 7 wanneer er om inschrijvinggegevens gevraagd is
+    Scenario: Geen RNI-deelnemer leveren voorbij categorie 7 wanneer er om inschrijvinggegevens gevraagd is
       Gegeven de persoon met burgerservicenummer '000000085' heeft de volgende 'inschrijving' gegevens
       | naam                         | waarde                                      |
       | indicatie geheim (70.10)     | 0                                           |
@@ -197,12 +187,7 @@ Functionaliteit: GBA : RNI-deelnemer voor geleverde gegevens
       Dan heeft de response een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 000000085 |
-      En heeft de persoon een 'rni' met de volgende gegevens
-      | naam                   | waarde                                          |
-      | deelnemer.code         | 0101                                            |
-      | deelnemer.omschrijving | Belastingdienst (inzake heffingen en toeslagen) |
-      | omschrijvingVerdrag    | Belastingverdrag tussen België en Nederland     |
-      | categorie              | Inschrijving                                    |
+      En heeft de persoon GEEN 'rni'
 
     Scenario: meerdere categoriën RNI-deelnemer leveren als er met fields = rni wordt gevraagd
       Gegeven de persoon met burgerservicenummer '000000231' heeft de volgende gegevens
@@ -229,12 +214,6 @@ Functionaliteit: GBA : RNI-deelnemer voor geleverde gegevens
       Dan heeft de response een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 000000231 |
-      En heeft de persoon een 'rni' met de volgende gegevens
-      | naam                   | waarde                                          |
-      | deelnemer.code         | 0101                                            |
-      | deelnemer.omschrijving | Belastingdienst (inzake heffingen en toeslagen) |
-      | omschrijvingVerdrag    | Belastingverdrag tussen België en Nederland     |
-      | categorie              | Inschrijving                                    |
       En heeft de persoon een 'rni' met de volgende gegevens
       | naam                   | waarde                                          |
       | deelnemer.code         | 0101                                            |
