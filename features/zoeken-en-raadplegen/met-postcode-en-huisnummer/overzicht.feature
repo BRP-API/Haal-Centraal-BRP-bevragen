@@ -39,7 +39,7 @@ Functionaliteit: Zoek met postcode en huisnummer
 
 Rule: Postcode (niet hoofdlettergevoelig) en huisnummer zijn verplichte parameters
 
-  Abstract Scenario: Zoek een persoon met de postcode en huisnummer van het adres van zijn verblijfplaats
+  Abstract Scenario: Zoek een persoon met de postcode (<sub-titel>) en huisnummer van het adres van zijn verblijfplaats
     Als personen wordt gezocht met de volgende parameters
     | naam       | waarde                      |
     | type       | ZoekMetPostcodeEnHuisnummer |
@@ -61,12 +61,12 @@ Rule: Postcode (niet hoofdlettergevoelig) en huisnummer zijn verplichte paramete
     | burgerservicenummer | 000000027 |
 
     Voorbeelden:
-    | postcode |
-    | 2628HJ   |
-    | 1628hj   |
-    | 1628 HJ  |
-    | 2628 hj  |
-    | 2628 Hj  |
+    | postcode | sub-titel                                                             |
+    | 2628HJ   | letters zijn hoofdletters                                             |
+    | 2628hj   | letters zijn kleine letters                                           |
+    | 2628 HJ  | spatie tussen de cijfers en hoofdletters                              |
+    | 2628 hj  | spatie tussen de cijfers en kleine letters                            |
+    | 2628 Hj  | spatie tussen de cijfers en letters (zowel hoofd- als kleine letters) |
 
 Rule: Optionele 'adres' parameters (niet hooflettergevoelig) kunnen worden toegevoegd om de zoek criteria aan te scherpen.
 
