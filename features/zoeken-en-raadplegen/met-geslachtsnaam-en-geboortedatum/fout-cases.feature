@@ -2,6 +2,8 @@
 
 Functionaliteit: Zoek met geslachtsnaam en geboortedatum - fout cases
 
+Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
+
   @fout-case
   Scenario: De geslachtsnaam en geboortedatum parameters zijn niet opgegeven
     Als personen wordt gezocht met de volgende parameters
@@ -22,7 +24,7 @@ Functionaliteit: Zoek met geslachtsnaam en geboortedatum - fout cases
     | required | geslachtsnaam | Parameter is verplicht. |
 
   @fout-case
-  Scenario: De geslachtsnaam parameter is niet opgegeven
+  Scenario: Alleen de geslachtsnaam parameter is niet opgegeven
     Als personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
@@ -41,7 +43,7 @@ Functionaliteit: Zoek met geslachtsnaam en geboortedatum - fout cases
     | required | geslachtsnaam | Parameter is verplicht. |
 
   @fout-case
-  Scenario: De geboortedatum parameter is niet opgegeven
+  Scenario: Alleen de geboortedatum parameter is niet opgegeven
     Als personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
@@ -101,12 +103,14 @@ Functionaliteit: Zoek met geslachtsnaam en geboortedatum - fout cases
     | required | <foutieve parameter> | Parameter is verplicht. |
 
     Voorbeelden:
-    | titel                                                                   | geboortedatum | geslachtsnaam | foutieve parameter |
-    | Een lege string is opgegeven als waarde voor de geboortedatum parameter |               | maassen       | geboortedatum      |
-    | Een lege string is opgegeven als waarde voor de geslachtsnaam parameter | 1983-05-26    |               | geslachtsnaam      |
+    | titel                                                 | geboortedatum | geslachtsnaam | foutieve parameter |
+    | Een lege string is opgegeven als geboortedatum waarde |               | maassen       | geboortedatum      |
+    | Een lege string is opgegeven als geslachtsnaam waarde | 1983-05-26    |               | geslachtsnaam      |
+
+Rule: De geboortedatum is een datum string geformatteerd volgens de [ISO 8601 date format](https://www.w3.org/QA/Tips/iso-date)
 
   @fout-case
-  Abstract Scenario: Er is een ongeldig geboortedatum waarde opgegeven
+  Abstract Scenario: Een ongeldig datum is opgegeven als geboortedatum waarde
     Als personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
@@ -129,6 +133,12 @@ Functionaliteit: Zoek met geslachtsnaam en geboortedatum - fout cases
     | geboortedatum |
     | 19830526      |
     | 26 mei 1983   |
+
+Rule: Een geslachtsnaam is een string bestaande uit minimaal 1 en maximaal 200 karakters. Deze karakters kunnen zijn:
+      - kleine letters (a-z)
+      - hoofdletters (A-Z)
+      - diakrieten (À-ž)
+      - spatie ( ), punt (.), min (-) en de enkele aanhalingsteken (')
 
   @fout-case
   Abstract Scenario: <titel>
@@ -155,53 +165,11 @@ Functionaliteit: Zoek met geslachtsnaam en geboortedatum - fout cases
     | De opgegeven geslachtsnaam is meer dan 200 karakters lang | abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ |
     | De opgegeven geslachtsnaam bevat ongeldige karakters      | <script>alert('hello world');</script>                                                                                                                                                                              |
 
-  @fout-case
-  Scenario: Er zijn meerdere ongeldige parameters opgegeven
-    Als personen wordt gezocht met de volgende parameters
-    | naam          | waarde                                 |
-    | type          | ZoekMetGeslachtsnaamEnGeboortedatum    |
-    | geslachtsnaam | <script>alert('hello world');</script> |
-    | geboortedatum | 19830526                               |
-    | fields        | burgerservicenummer                    |
-    Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                       |
-    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1  |
-    | title    | Een of meerdere parameters zijn niet correct.                |
-    | status   | 400                                                          |
-    | detail   | De foutieve parameter(s) zijn: geboortedatum, geslachtsnaam. |
-    | code     | paramsValidation                                             |
-    | instance | /haalcentraal/api/brp/personen                               |
-    En heeft het object de volgende 'invalidParams' gegevens
-    | code    | name          | reason                                                                                               |
-    | pattern | geslachtsnaam | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$. |
-    | date    | geboortedatum | Waarde is geen geldige datum.                                                                        |
-
-  @fout-case
-  Abstract Scenario: Een ongeldige waarde is opgegeven voor de '<parameter naam>' parameter
-    Als personen wordt gezocht met de volgende parameters
-    | naam             | waarde                                 |
-    | type             | ZoekMetGeslachtsnaamEnGeboortedatum    |
-    | geslachtsnaam    | maassen                                |
-    | geboortedatum    | 1983-05-26                             |
-    | <parameter naam> | <script>alert('hello world');</script> |
-    | fields           | burgerservicenummer                    |
-    Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                      |
-    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
-    | title    | Een of meerdere parameters zijn niet correct.               |
-    | status   | 400                                                         |
-    | detail   | De foutieve parameter(s) zijn: <parameter naam>.            |
-    | code     | paramsValidation                                            |
-    | instance | /haalcentraal/api/brp/personen                              |
-    En heeft het object de volgende 'invalidParams' gegevens
-    | code    | name             | reason                                     |
-    | pattern | <parameter naam> | Waarde voldoet niet aan patroon <patroon>. |
-
-    Voorbeelden:
-    | parameter naam | patroon                               |
-    | voornamen      | ^[a-zA-Z0-9À-ž \.\-\']{1,199}\*{0,1}$ |
-    | voorvoegsel    | ^[a-zA-Z \']{1,10}$                   |
-    | geslacht       | ^([Mm]\|[Vv]\|[Oo])$ |
+Rule: Een geslachtsnaam met wildcard is een string bestaande uit minimaal 3 en maximaal 199 karakters, eindigend met de "*" karakter. De overige karakters kunnen zijn:
+      - kleine letters (a-z)
+      - hoofdletters (A-Z)
+      - diakrieten (À-ž)
+      - spatie ( ), punt (.), min (-) en de enkele aanhalingsteken (')
 
   @fout-case
   Abstract Scenario: De "*" wildcard is opgegeven als eerste karakter in de geslachtsnaam parameter
@@ -229,7 +197,7 @@ Functionaliteit: Zoek met geslachtsnaam en geboortedatum - fout cases
     | *SEN                 |
 
   @fout-case
-  Abstract Scenario: De "*" wildcard is meerdere keren opgegeven in de geslachtsnaam parameter
+  Abstract Scenario: De "*" wildcard komt meerdere keren voor in de geslachtsnaam parameter
     Als personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
@@ -252,9 +220,37 @@ Functionaliteit: Zoek met geslachtsnaam en geboortedatum - fout cases
     | geslachtsnaam filter |
     | *oen*                |
     | *OEN*                |
+    | gr**                 |
+    | *r*ot                |
+    | gr*o*                |
 
   @fout-case
-  Abstract Scenario: De opgegeven geslachtsnaam exclusief "*" wildcard karakter is niet minimaal letters lang
+  Abstract Scenario: De "*" wildcard karakter staat niet aan het eind in de geslachtsnaam parameter
+    Als personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | <geslachtsnaam filter>              |
+    | geboortedatum | 1983-05-26                          |
+    | fields        | burgerservicenummer                 |
+    Dan heeft de response een object met de volgende gegevens
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: geslachtsnaam.               |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
+    En heeft het object de volgende 'invalidParams' gegevens
+    | code    | name          | reason                                                                                               |
+    | pattern | geslachtsnaam | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$. |
+
+    Voorbeelden:
+    | geslachtsnaam filter |
+    | gr*t                 |
+    | g*oot                |
+
+  @fout-case
+  Abstract Scenario: De opgegeven geslachtsnaam exclusief "*" wildcard karakter is niet minimaal 3 karakters lang
     Als personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
@@ -282,40 +278,40 @@ Functionaliteit: Zoek met geslachtsnaam en geboortedatum - fout cases
     | ***                  |
 
   @fout-case
-  Abstract Scenario: De "*" wildcard karakter staat niet aan het eind in de geslachtsnaam parameter
+  Scenario: Er zijn meerdere ongeldige parameters opgegeven
     Als personen wordt gezocht met de volgende parameters
-    | naam          | waarde                              |
-    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
-    | geslachtsnaam | <geslachtsnaam filter>              |
-    | geboortedatum | 1983-05-26                          |
-    | fields        | burgerservicenummer                 |
+    | naam          | waarde                                 |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum    |
+    | geslachtsnaam | <script>alert('hello world');</script> |
+    | geboortedatum | 19830526                               |
+    | fields        | burgerservicenummer                    |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                      |
-    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
-    | title    | Een of meerdere parameters zijn niet correct.               |
-    | status   | 400                                                         |
-    | detail   | De foutieve parameter(s) zijn: geslachtsnaam.               |
-    | code     | paramsValidation                                            |
-    | instance | /haalcentraal/api/brp/personen                              |
+    | naam     | waarde                                                       |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1  |
+    | title    | Een of meerdere parameters zijn niet correct.                |
+    | status   | 400                                                          |
+    | detail   | De foutieve parameter(s) zijn: geboortedatum, geslachtsnaam. |
+    | code     | paramsValidation                                             |
+    | instance | /haalcentraal/api/brp/personen                               |
     En heeft het object de volgende 'invalidParams' gegevens
     | code    | name          | reason                                                                                               |
     | pattern | geslachtsnaam | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$. |
+    | date    | geboortedatum | Waarde is geen geldige datum.                                                                        |
 
-    Voorbeelden:
-    | geslachtsnaam filter |
-    | *r*ot                |
-    | gr*o*                |
-    | gr*t                 |
-    | gr**                 |
+Rule: Een voornamen waarde is een string bestaande uit minimaal 1 en maximaal 199 karakters. Deze karakters kunnen zijn:
+      - kleine letters (a-z)
+      - hoofdletters (A-Z)
+      - diakrieten (À-ž)
+      - spatie ( ), punt (.), min (-) en de enkele aanhalingsteken (')
 
   @fout-case
-  Abstract Scenario: De "*" wildcard is als eerste karakter opgegeven in de voornamen parameter
+  Abstract Scenario: <titel>
     Als personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
-    | geslachtsnaam | maassen                             |
-    | voornamen     | <voornamen filter>                  |
+    | geslachtsnaam | Jansen                              |
     | geboortedatum | 1983-05-26                          |
+    | voornamen     | <voornamen>                         |
     | fields        | burgerservicenummer                 |
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                      |
@@ -330,6 +326,120 @@ Functionaliteit: Zoek met geslachtsnaam en geboortedatum - fout cases
     | pattern | voornamen | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,199}\*{0,1}$. |
 
     Voorbeelden:
-    | voornamen filter |
-    | *eter            |
-    | *ETER            |
+    | titel                                                   | voornamen                                                                                                                                                                                                       |
+    | De opgegeven voornamen zijn meer dan 200 karakters lang | abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ |
+    | De opgegeven voornamen bevat ongeldige karakters        | <script>alert('hello world');</script>                                                                                                                                                                              |
+
+Rule: Een voornamen waarde met wildcard is een string bestaande uit minimaal 1 en maximaal 199 karakters, eindigend met de "*" karakter. De overige karakters kunnen zijn:
+      - kleine letters (a-z)
+      - hoofdletters (A-Z)
+      - diakrieten (À-ž)
+      - spatie ( ), punt (.), min (-) en de enkele aanhalingsteken (')
+
+  @fout-case
+  Abstract Scenario: De "*" wildcard is opgegeven als eerste karakter in de voornamen parameter
+    Als personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | Jansen                              |
+    | geboortedatum | 1983-05-26                          |
+    | voornamen     | <voornamen met wildcard>            |
+    | fields        | burgerservicenummer                 |
+    Dan heeft de response een object met de volgende gegevens
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: voornamen.                   |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
+    En heeft het object de volgende 'invalidParams' gegevens
+    | code    | name      | reason                                                                 |
+    | pattern | voornamen | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,199}\*{0,1}$. |
+
+    Voorbeelden:
+    | voornamen met wildcard |
+    | *iet                   |
+    | *ETER                  |
+
+Rule: Een voorvoegsel waarde is een string bestaande uit minimaal 1 en maximaal 1o karakters. Deze karakters kunnen zijn:
+      - kleine letters (a-z)
+      - hoofdletters (A-Z)
+      - spatie ( ) en de enkele aanhalingsteken (')
+
+  @fout-case
+  Scenario: Een ongeldige waarde is opgegeven voor de 'voorvoegsel' parameter
+    Als personen wordt gezocht met de volgende parameters
+    | naam          | waarde                                 |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum    |
+    | geslachtsnaam | maassen                                |
+    | geboortedatum | 1983-05-26                             |
+    | voorvoegsel   | <script>alert('hello world');</script> |
+    | fields        | burgerservicenummer                    |
+    Dan heeft de response een object met de volgende gegevens
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: voorvoegsel.                 |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
+    En heeft het object de volgende 'invalidParams' gegevens
+    | code    | name        | reason                                               |
+    | pattern | voorvoegsel | Waarde voldoet niet aan patroon ^[a-zA-Z \']{1,10}$. |
+
+Rule: De geslacht waarde is één karakter lang en kan één van de volgende karakters zijn: M, m, V, v, O, o
+
+  @fout-case
+  Abstract Scenario: Een ongeldige waarde is opgegeven voor de 'geslacht' parameter
+    Als personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | maassen                             |
+    | geboortedatum | 1983-05-26                          |
+    | geslacht      | <geslacht>                          |
+    | fields        | burgerservicenummer                 |
+    Dan heeft de response een object met de volgende gegevens
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: geslacht.                    |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
+    En heeft het object de volgende 'invalidParams' gegevens
+    | code    | name     | reason                                                |
+    | pattern | geslacht | Waarde voldoet niet aan patroon ^([Mm]\|[Vv]\|[Oo])$. |
+
+    Voorbeelden:
+    | geslacht                               |
+    | N                                      |
+    | <script>alert('hello world');</script> |
+
+Rule: inclusiefOverledenPersonen is een boolean (true of false waarde)
+
+  @fout-case
+  Abstract Scenario: Een ongeldig waarde is opgegeven voor de 'inclusiefOverledenPersonen' parameter
+    Als personen wordt gezocht met de volgende parameters
+    | naam                       | waarde                              |
+    | type                       | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam              | maassen                             |
+    | geboortedatum              | 1983-05-26                          |
+    | fields                     | burgerservicenummer                 |
+    | inclusiefOverledenPersonen | <inclusief overleden personen>      |
+    Dan heeft de response een object met de volgende gegevens
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: inclusiefOverledenPersonen.  |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
+    En heeft het object de volgende 'invalidParams' gegevens
+    | code    | name                       | reason                  |
+    | boolean | inclusiefOverledenPersonen | Waarde is geen boolean. |
+
+    Voorbeelden:
+    | inclusief overleden personen |
+    |                              |
+    | geen boolean                 |

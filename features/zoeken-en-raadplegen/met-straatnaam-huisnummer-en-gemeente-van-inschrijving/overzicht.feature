@@ -5,7 +5,7 @@ Functionaliteit: Zoek met straatnaam/naam openbare ruimte, huisnummer en gemeent
 Rule: Straat (niet hoofdlettergevoelig), huisnummer en gemeente van inschrijving zijn verplichte parameters
       Straat parameter zoekt over zowel straatnaam als naam openbare ruimte
 
-  Abstract Scenario: Zoek een persoon met de volledige straat, huisnummer van het adres en de code van gemeente waar hij is ingeschreven
+  Abstract Scenario: Zoek een persoon met de volledige straat, huisnummer van het adres en code van de gemeente waar hij is ingeschreven
     Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
     | gemeente van inschrijving (09.10) |
     | 0599                              |

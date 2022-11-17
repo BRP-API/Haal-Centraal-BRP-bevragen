@@ -57,7 +57,7 @@ Rule: Geslachtsnaam, voornamen (beide niet hoofdlettergevoelig) en gemeenteVanIn
 Rule: Optionele 'naam' parameters (niet hooflettergevoelig) kunnen worden toegevoegd om de zoek criteria aan te scherpen.
 
   Abstract Scenario: Zoek een persoon met volledige voorvoegsel
-    En de persoon met burgerservicenummer '000000025' heeft de volgende gegevens
+    Gegeven de persoon met burgerservicenummer '000000025' heeft de volgende gegevens
     | geslachtsnaam (02.40) | voornamen (02.10) | voorvoegsel (02.30) |
     | Maassen               | Jan Peter         | van                 |
     En de persoon heeft de volgende 'verblijfplaats' gegevens
@@ -81,3 +81,38 @@ Rule: Optionele 'naam' parameters (niet hooflettergevoelig) kunnen worden toegev
     | van         |
     | Van         |
     | VAN         |
+
+Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven om een overleden persoon te kunnen vinden
+
+  Scenario: Zoek een overleden persoon
+    Gegeven de persoon met burgerservicenummer '000000025' heeft de volgende gegevens
+    | geslachtsnaam (02.40) | voornamen (02.10) | voorvoegsel (02.30) |
+    | Jansen                | Jan               | van                 |
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
+    | gemeente van inschrijving (09.10) |
+    | 0014                              |
+    En de persoon met burgerservicenummer '000000035' heeft de volgende gegevens
+    | geslachtsnaam (02.40) | voornamen (02.10) | voorvoegsel (02.30) |
+    | Jansen                | Jan               | van den             |
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
+    | gemeente van inschrijving (09.10) |
+    | 0014                              |
+    En de persoon heeft de volgende 'overlijden' gegevens
+    | datum overlijden (08.10) |
+    | 20220301                 |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                       | waarde                               |
+    | type                       | ZoekMetNaamEnGemeenteVanInschrijving |
+    | geslachtsnaam              | Jansen                               |
+    | voornamen                  | Jan                                  |
+    | gemeenteVanInschrijving    | 0014                                 |
+    | inclusiefOverledenPersonen | true                                 |
+    | fields                     | burgerservicenummer                  |
+    Dan heeft de response 2 personen
+    En heeft de response een persoon met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 000000025 |
+    En heeft de response een persoon met de volgende gegevens
+    | naam                          | waarde    |
+    | burgerservicenummer           | 000000035 |
+    | overlijden.indicatieOverleden | true      |

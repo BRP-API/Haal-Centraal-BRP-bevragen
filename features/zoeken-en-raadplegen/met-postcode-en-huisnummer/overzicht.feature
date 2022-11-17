@@ -106,3 +106,19 @@ Rule: Optionele 'adres' parameters (niet hooflettergevoelig) kunnen worden toege
     | III                  |
     | iii                  |
     | Iii                  |
+
+Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven om een overleden persoon te kunnen vinden
+
+  Scenario: Zoek een overleden persoon
+    Als personen wordt gezocht met de volgende parameters
+    | naam                       | waarde                      |
+    | type                       | ZoekMetPostcodeEnHuisnummer |
+    | postcode                   | 2629HJ                      |
+    | huisnummer                 | 2                           |
+    | inclusiefOverledenPersonen | true                        |
+    | fields                     | burgerservicenummer         |
+    Dan heeft de response 1 persoon
+    En heeft de response een persoon met de volgende gegevens
+    | naam                          | waarde    |
+    | burgerservicenummer           | 000000028 |
+    | overlijden.indicatieOverleden | true      |
