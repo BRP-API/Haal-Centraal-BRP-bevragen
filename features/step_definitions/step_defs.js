@@ -157,7 +157,6 @@ const columnNameMap = new Map([
     ['functie adres (10.10)', 'adres_functie'],
     ['datum aanvang adreshouding (10.30)', 'adreshouding_start_datum'],
 
-    ['gemeente_code', 'gemeente_code'],
     ['straatnaam (11.10)', 'straat_naam'],
     ['naam openbare ruimte (11.15)', 'open_ruimte_naam'],
     ['huisnummer (11.20)', 'huis_nr'],
@@ -173,6 +172,7 @@ const columnNameMap = new Map([
     ['locatiebeschrijving (12.10)', 'locatie_beschrijving'],
 
     ['land (13.10)', 'vertrek_land_code'],
+    ['land_adres_buitenland (13.10)', 'vertrek_land_code'],
     ['land adres buitenland (13.10)', 'vertrek_land_code'],
     ['datum aanvang adres buitenland (13.20)', 'vertrek_datum'],
     ['regel 1 adres buitenland (13.30)', 'vertrek_land_adres_1'],
@@ -183,7 +183,6 @@ const columnNameMap = new Map([
     ['datum vestiging in Nederland (14.20)', 'vestiging_datum'],
 
     ['soort verbintenis (15.10)', 'verbintenis_soort'],
-
 
     ['Europees kiesrecht (31.10)', 'europees_kiesrecht_aand'],
     ['einddatum uitsluiting Europees kiesrecht (31.30)', 'europees_uitsluit_eind_datum'],
@@ -208,8 +207,9 @@ const columnNameMap = new Map([
     ['reden opname (63.10)', 'nl_nat_verkrijg_reden'],
 
     ['reden beëindigen (64.10)', 'nl_nat_verlies_reden'],
-
+	
     ['bijzonder Nederlanderschap (65.10)', 'bijzonder_nl_aand' ],
+
     ['datum opschorting bijhouding (67.10)', 'bijhouding_opschort_datum' ],
     ['reden opschorting bijhouding (67.20)', 'bijhouding_opschort_reden'],
 
@@ -218,7 +218,7 @@ const columnNameMap = new Map([
     ['indicatie geheim (70.10)', 'geheim_ind'],
 
     ['aktenummer (81.20)', 'akte_nr' ],
-
+	
     ['gemeente document (82.10)', 'doc_gemeente_code' ],
     ['datum document (82.20)', 'doc_datum' ],
     ['beschrijving document (82.30)', 'doc_beschrijving' ],
@@ -237,6 +237,9 @@ const columnNameMap = new Map([
 
     ['rni-deelnemer (88.10)', 'rni_deelnemer'],
     ['omschrijving verdrag (88.20)', 'verdrag_oms'],
+
+    ['gemeentecode (92.10)', 'gemeente_code'],
+    ['gemeente_code', 'gemeente_code'],
 
 ]);
 
