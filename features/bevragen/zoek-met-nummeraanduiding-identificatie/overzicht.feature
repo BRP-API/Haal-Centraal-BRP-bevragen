@@ -74,3 +74,38 @@ Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven 
     En heeft de response een persoon met alleen de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 000000025 |
+
+Rule: De optionele 'gemeenteVanInschrijving' parameter kan worden toegevoegd om de zoek criteria aan te scherpen
+
+  Scenario: Zoek met gemeenteVanInschrijving
+    Gegeven de persoon met burgerservicenummer '000000025' heeft de volgende 'verblijfplaats' gegevens
+    | gemeente van inschrijving (09.10) |
+    | 0599                              |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | gemeente_code | identificatiecode nummeraanduiding (11.90) |
+    | 0599          | 0599200051001502                           |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                          | waarde                               |
+    | type                          | ZoekMetNummeraanduidingIdentificatie |
+    | nummeraanduidingIdentificatie | 0599200051001502                     |
+    | gemeenteVanInschrijving       | 0599                                 |
+    | fields                        | burgerservicenummer                  |
+    Dan heeft de response 1 persoon
+    En heeft de response een persoon met alleen de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 000000025 |
+
+  Scenario: Zoek met gemeenteVanInschrijving
+    Gegeven de persoon met burgerservicenummer '000000025' heeft de volgende 'verblijfplaats' gegevens
+    | gemeente van inschrijving (09.10) |
+    | 0599                              |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | gemeente_code | identificatiecode nummeraanduiding (11.90) |
+    | 0599          | 0599200051001502                           |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                          | waarde                               |
+    | type                          | ZoekMetNummeraanduidingIdentificatie |
+    | nummeraanduidingIdentificatie | 0599200051001502                     |
+    | gemeenteVanInschrijving       | 0518                                 |
+    | fields                        | burgerservicenummer                  |
+    Dan heeft de response 0 personen

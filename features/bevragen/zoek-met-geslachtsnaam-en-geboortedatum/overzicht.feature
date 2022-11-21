@@ -174,6 +174,33 @@ Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven 
     | burgerservicenummer           | 000000035 |
     | overlijden.indicatieOverleden | true      |
 
+Rule: De optionele 'gemeenteVanInschrijving' parameter kan worden toegevoegd om de zoek criteria aan te scherpen
+
+  Abstract Scenario: Zoek met gemeenteVanInschrijving
+    Gegeven de persoon met burgerservicenummer '000000027' heeft de volgende gegevens
+    | geboortedatum (03.10) | geslachtsnaam (02.40) |
+    | 19830526              | Aedel                 |
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
+    | gemeente van inschrijving (09.10) |
+    | 0014                              |
+    En de persoon met burgerservicenummer '000000028' heeft de volgende gegevens
+    | geboortedatum (03.10) | geslachtsnaam (02.40) |
+    | 19830526              | Aedel                 |
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
+    | gemeente van inschrijving (09.10) |
+    | 0015                              |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                    | waarde                              |
+    | type                    | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam           | Aedel                               |
+    | geboortedatum           | 1983-05-26                          |
+    | gemeenteVanInschrijving | 0014                                |
+    | fields                  | burgerservicenummer                 |
+    Dan heeft de response 1 persoon
+    En heeft de response een persoon met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 000000027 |
+
 Rule: Voor de geslachtsnaam en voornamen parameters kan wildcard matching (niet hooflettergevoelig) worden toegepast.
       Er moet dan minimaal 3 letters (exclusief de wildcard "*" teken) worden opgegeven.
       De wildcard moet als laatste karakter worden opgegeven.

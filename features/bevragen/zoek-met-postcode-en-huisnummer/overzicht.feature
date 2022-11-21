@@ -36,6 +36,12 @@ Functionaliteit: Zoek met postcode en huisnummer
     En de persoon heeft de volgende 'overlijden' gegevens
     | datum overlijden (08.10) |
     | 20220301                 |
+    En de persoon met burgerservicenummer '000000029' heeft de volgende 'verblijfplaats' gegevens
+    | gemeente van inschrijving (09.10) |
+    | 0600                              |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | gemeente_code | postcode (11.60) | huisnummer (11.20) |
+    | 0600          | 2630HJ           | 2                  |
 
 Rule: Postcode (niet hoofdlettergevoelig) en huisnummer zijn verplichte parameters
 
@@ -106,6 +112,19 @@ Rule: Optionele 'adres' parameters (niet hooflettergevoelig) kunnen worden toege
     | III                  |
     | iii                  |
     | Iii                  |
+
+  Scenario: Zoek een persoon met de postcode, huisnummer en gemeenteVanInschrijving code van het adres van zijn verblijfplaats
+    Als personen wordt gezocht met de volgende parameters
+    | naam                    | waarde                      |
+    | type                    | ZoekMetPostcodeEnHuisnummer |
+    | postcode                | 2630HJ                      |
+    | huisnummer              | 2                           |
+    | gemeenteVanInschrijving | 0600                        |
+    | fields                  | burgerservicenummer         |
+    Dan heeft de response 1 persoon
+    En heeft de response een persoon met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 000000029 |
 
 Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven om een overleden persoon te kunnen vinden
 
