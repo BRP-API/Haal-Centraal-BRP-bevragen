@@ -1,14 +1,11 @@
 #language: nl
 
-@post-assert
-Functionaliteit: OverlijdenBeperkt
+Functionaliteit: Persoon beperkt: overlijden
 
   Abstract Scenario: persoon heeft 'overlijden' datum veld: '<gba naam>'
-    Gegeven het systeem heeft een persoon met de volgende 'naam' gegevens
-    | naam                  | waarde  |
-    | geslachtsnaam (02.40) | Maassen |
-    En de persoon heeft de volgende 'geboorte' gegevens
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
     | naam                  | waarde   |
+    | geslachtsnaam (02.40) | Maassen  |
     | geboortedatum (03.10) | 19830526 |
     En de persoon heeft de volgende 'overlijden' gegevens
     | naam       | waarde       |

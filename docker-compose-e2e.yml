@@ -40,10 +40,12 @@ services:
 
   brpproxy:
     container_name: brpproxy
-    image: haalcentraal.azurecr.io/brpproxy:2.0.4
+    image: haalcentraal.azurecr.io/brpproxy:2.0.9
     environment:
       - ASPNETCORE_ENVIRONMENT=Release
       - ASPNETCORE_URLS=http://+:5000
+      # - ClientCertificate__Name=client.localhost-client.p12
+      # - ClientCertificate__Password=changeit
     ports:
       - "5001:5000"
     volumes:
@@ -51,12 +53,14 @@ services:
       - ./src/config/BrpProxy/mapping:/app/mapping
       - ./src/config/BrpProxy/appsettings/appsettings.json:/app/appsettings.json
       - ./elastic:/app/elastic
+      # - ./src/config/BrpProxy/certificates:/app/certificates
 
   haalcentraal_api:
-    image: haalcentraal.azurecr.io/gba-api:2.0.3
+    image: haalcentraal.azurecr.io/gba-api:2.0.11
     environment:
       - Database__ConnectionString=database-connectionstring
       - HaalcentraalApi__MaxSearchResults=10
       - ASPNETCORE_URLS=http://+;
+      - AuthenticationTypes=Basic
     ports:
       - "8000:80"

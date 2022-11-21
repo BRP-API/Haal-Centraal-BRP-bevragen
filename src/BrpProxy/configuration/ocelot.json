@@ -1,8 +1,8 @@
 {
   "Routes": [
     {
-      "UpstreamPathTemplate": "/haalcentraal/api/brp/{everything}",
-      "DownstreamPathTemplate": "/haalcentraal/api/brp/{everything}",
+      "UpstreamPathTemplate": "/haalcentraal/api/brp/personen",
+      "DownstreamPathTemplate": "/haalcentraal/api/brp/personen",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {

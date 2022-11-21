@@ -5,7 +5,7 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
 
   Rule: de RNI-deelnemer gegevens worden geleverd voor elke categorie waarvan ten minste één gegeven gevraagd is
     - RNI-deelnemer gegevens worden ook geleverd wanneer hier niet naar gevraagd is met de fields parameter
-    - categorie wordt gevuld met de naam van de categorie waarop de RNI-deelnemer gegevens heeft aangeleverd
+    - Het veld 'rni/categorie' wordt gevuld met de naam van de categorie waarop de RNI-deelnemer gegevens heeft aangeleverd
       | categorie | naam           |
       | 01        | Persoon        |
       | 04        | Nationaliteit  |
@@ -17,8 +17,8 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
     Achtergrond:
       Gegeven landelijke tabel "RNI-deelnemerstabel" heeft de volgende waarden
       | code | omschrijving                                      |
-      | 101  | Belastingdienst (inzake heffingen en toeslagen)   |
-      | 201  | Sociale Verzekeringsbank (inzake AOW, Anw en AKW) |
+      | 0101  | Belastingdienst (inzake heffingen en toeslagen)  |
+      | 0201  | Sociale Verzekeringsbank (inzake AOW, Anw en AKW)|
 
 
     Scenario: RNI-deelnemer op geleverd gegeven
@@ -26,8 +26,8 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       | naam                         | waarde                                      |
       | voornamen (02.10)            | Peter                                       |
       | geslachtsnaam (02.40)        | Jansen                                      |
-      | RNI-deelnemer (88.10)        | 101                                         |
-      | Omschrijving verdrag (88.20) | Belastingverdrag tussen België en Nederland |
+      | rni-deelnemer (88.10)        | 0101                                        |
+      | omschrijving verdrag (88.20) | Belastingverdrag tussen België en Nederland |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                            |
       | type                | RaadpleegMetBurgerservicenummer   |
@@ -39,7 +39,7 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       | geslachtsnaam | Jansen |
       En heeft de persoon een 'rni' met de volgende gegevens
       | naam                   | waarde                                          |
-      | deelnemer.code         | 101                                             |
+      | deelnemer.code         | 0101                                            |
       | deelnemer.omschrijving | Belastingdienst (inzake heffingen en toeslagen) |
       | omschrijvingVerdrag    | Belastingverdrag tussen België en Nederland     |
       | categorie              | Persoon                                         |
@@ -48,13 +48,13 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | naam                         | waarde                                      |
       | voornamen (02.10)            | Peter                                       |
-      | RNI-deelnemer (88.10)        | 101                                         |
-      | Omschrijving verdrag (88.20) | Belastingverdrag tussen België en Nederland |
+      | rni-deelnemer (88.10)        | 0101                                        |
+      | omschrijving verdrag (88.20) | Belastingverdrag tussen België en Nederland |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | naam                         | waarde                               |
       | land (13.10)                 | 5010                                 |
-      | RNI-deelnemer (88.10)        | 201                                  |
-      | Omschrijving verdrag (88.20) | Artikel 45 EU-Werkingsverdrag (VWEU) |
+      | rni-deelnemer (88.10)        | 0201                                 |
+      | omschrijving verdrag (88.20) | Artikel 45 EU-Werkingsverdrag (VWEU) |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                                |
       | type                | RaadpleegMetBurgerservicenummer                       |
@@ -69,13 +69,13 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       | verblijfadres.land.code | 5010                     |
       En heeft de persoon een 'rni' met de volgende gegevens
       | naam                   | waarde                                          |
-      | deelnemer.code         | 101                                             |
+      | deelnemer.code         | 0101                                            |
       | deelnemer.omschrijving | Belastingdienst (inzake heffingen en toeslagen) |
       | omschrijvingVerdrag    | Belastingverdrag tussen België en Nederland     |
       | categorie              | Persoon                                         |
       En heeft de persoon een 'rni' met de volgende gegevens
       | naam                   | waarde                                            |
-      | deelnemer.code         | 201                                               |
+      | deelnemer.code         | 0201                                              |
       | deelnemer.omschrijving | Sociale Verzekeringsbank (inzake AOW, Anw en AKW) |
       | omschrijvingVerdrag    | Artikel 45 EU-Werkingsverdrag (VWEU)              |
       | categorie              | Verblijfplaats                                    |
@@ -88,8 +88,8 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | naam                         | waarde                               |
       | land (13.10)                 | 5010                                 |
-      | RNI-deelnemer (88.10)        | 201                                  |
-      | Omschrijving verdrag (88.20) | Artikel 45 EU-Werkingsverdrag (VWEU) |
+      | rni-deelnemer (88.10)        | 0201                                 |
+      | omschrijving verdrag (88.20) | Artikel 45 EU-Werkingsverdrag (VWEU) |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -98,7 +98,7 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       Dan heeft de response een persoon met de volgende 'naam' gegevens
       | naam      | waarde |
       | voornamen | Peter  |
-      #En heeft de persoon GEEN 'rni'
+      En heeft de persoon GEEN 'rni'
 
     Scenario: niet leveren RNI-deelnemer voor een categorie waar geen gegeven uit geleverd is
       Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende gegevens
@@ -108,8 +108,8 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | naam                         | waarde                               |
       | land (13.10)                 | 5010                                 |
-      | RNI-deelnemer (88.10)        | 201                                  |
-      | Omschrijving verdrag (88.20) | Artikel 45 EU-Werkingsverdrag (VWEU) |
+      | rni-deelnemer (88.10)        | 0201                                 |
+      | omschrijving verdrag (88.20) | Artikel 45 EU-Werkingsverdrag (VWEU) |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                               |
       | type                | RaadpleegMetBurgerservicenummer                      |
@@ -118,14 +118,14 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       Dan heeft de response een persoon met de volgende 'naam' gegevens
       | naam      | waarde |
       | voornamen | Peter  |
-      #En heeft de persoon GEEN 'rni'
+      En heeft de persoon GEEN 'rni'
 
     Scenario: niet leveren RNI-deelnemer categorie 7 wanneer er geen opschorting en geen geheimhouding is en geen inschrijving gegevens gevraagd
       Gegeven de persoon met burgerservicenummer '000000048' heeft de volgende 'inschrijving' gegevens
       | naam                         | waarde                                      |
       | indicatie geheim (70.10)     | 0                                           |
-      | RNI-deelnemer (88.10)        | 101                                         |
-      | Omschrijving verdrag (88.20) | Belastingverdrag tussen België en Nederland |
+      | rni-deelnemer (88.10)        | 0101                                        |
+      | omschrijving verdrag (88.20) | Belastingverdrag tussen België en Nederland |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -135,12 +135,12 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       | naam                | waarde    |
       | burgerservicenummer | 000000048 |
 
-    Scenario: wel leveren RNI-deelnemer categorie 7 wanneer er geheimhouding is
+    Scenario: Geen RNI-deelnemer leveren categorie 7 wanneer er geheimhouding is
       Gegeven de persoon met burgerservicenummer '000000061' heeft de volgende 'inschrijving' gegevens
       | naam                         | waarde                                      |
       | indicatie geheim (70.10)     | 7                                           |
-      | RNI-deelnemer (88.10)        | 101                                         |
-      | Omschrijving verdrag (88.20) | Belastingverdrag tussen België en Nederland |
+      | rni-deelnemer (88.10)        | 0101                                        |
+      | omschrijving verdrag (88.20) | Belastingverdrag tussen België en Nederland |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -150,56 +150,91 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       | naam                          | waarde    |
       | burgerservicenummer           | 000000061 |
       | geheimhoudingPersoonsgegevens | true      |
-      En heeft de persoon een 'rni' met de volgende gegevens
-      | naam                   | waarde                                          |
-      | deelnemer.code         | 101                                             |
-      | deelnemer.omschrijving | Belastingdienst (inzake heffingen en toeslagen) |
-      | omschrijvingVerdrag    | Belastingverdrag tussen België en Nederland     |
-      | categorie              | Inschrijving                                         |
+      En heeft de persoon GEEN 'rni'
 
-    Scenario: wel leveren RNI-deelnemer categorie 7 wanneer er opschorting bijhouding is
+    Scenario: Geen RNI-deelnemer leveren categorie 7 wanneer er opschorting bijhouding is
       Gegeven de persoon met burgerservicenummer '000000073' heeft de volgende 'inschrijving' gegevens
       | naam                                 | waarde                                      |
       | reden opschorting bijhouding (67.20) | O                                           |
       | indicatie geheim (70.10)             | 0                                           |
-      | RNI-deelnemer (88.10)                | 101                                         |
-      | Omschrijving verdrag (88.20)         | Belastingverdrag tussen België en Nederland |
+      | rni-deelnemer (88.10)                | 0101                                        |
+      | omschrijving verdrag (88.20)         | Belastingverdrag tussen België en Nederland |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000073                       |
       | fields              | burgerservicenummer             |
       Dan heeft de response een persoon met de volgende gegevens
-      | naam                          | waarde    |
-      | burgerservicenummer           | 000000073 |
+      | naam                | waarde    |
+      | burgerservicenummer | 000000073 |
       En heeft de persoon alleen de volgende 'opschortingBijhouding' gegevens
       | naam               | waarde     |
       | reden.code         | O          |
       | reden.omschrijving | overlijden |
-      En heeft de persoon een 'rni' met de volgende gegevens
-      | naam                   | waarde                                          |
-      | deelnemer.code         | 101                                             |
-      | deelnemer.omschrijving | Belastingdienst (inzake heffingen en toeslagen) |
-      | omschrijvingVerdrag    | Belastingverdrag tussen België en Nederland     |
-      | categorie              | Inschrijving                                    |
-    
-    Scenario: wel leveren RNI-deelnemer categorie 7 wanneer er om inschrijvinggegevens gevraagd is
+      En heeft de persoon GEEN 'rni'
+
+    Scenario: Geen RNI-deelnemer leveren categorie 7 wanneer er om inschrijvinggegevens gevraagd is
       Gegeven de persoon met burgerservicenummer '000000085' heeft de volgende 'inschrijving' gegevens
-      | naam                                 | waarde                                      |
-      | indicatie geheim (70.10)             | 0                                           |
-      | RNI-deelnemer (88.10)                | 101                                         |
-      | Omschrijving verdrag (88.20)         | Belastingverdrag tussen België en Nederland |
+      | naam                         | waarde                                      |
+      | indicatie geheim (70.10)     | 0                                           |
+      | rni-deelnemer (88.10)        | 0101                                        |
+      | omschrijving verdrag (88.20) | Belastingverdrag tussen België en Nederland |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                    |
       | type                | RaadpleegMetBurgerservicenummer           |
       | burgerservicenummer | 000000085                                 |
       | fields              | burgerservicenummer,opschortingBijhouding |
       Dan heeft de response een persoon met de volgende gegevens
-      | naam                          | waarde    |
-      | burgerservicenummer           | 000000085 |
+      | naam                | waarde    |
+      | burgerservicenummer | 000000085 |
+      En heeft de persoon GEEN 'rni'
+
+    Scenario: alle categoriën RNI-deelnemer leveren als er met fields = rni wordt gevraagd
+      Gegeven de persoon met burgerservicenummer '000000085' heeft de volgende gegevens
+      | naam                         | waarde                                      |
+      | voornamen (02.10)            | Peter                                       |
+      | geslachtsnaam (02.40)        | Jansen                                      |
+      | rni-deelnemer (88.10)        | 0101                                        |
+      | omschrijving verdrag (88.20) | Belastingverdrag tussen België en Nederland |
+      En de persoon heeft de volgende 'inschrijving' gegevens
+      | naam                         | waarde                                      |
+      | indicatie geheim (70.10)     | 0                                           |
+      | rni-deelnemer (88.10)        | 0101                                        |
+      | omschrijving verdrag (88.20) | Belastingverdrag tussen België en Nederland |
+      En de persoon heeft de volgende 'verblijfplaats' gegevens
+      | naam                         | waarde                               |
+      | land (13.10)                 | 5010                                 |
+      | rni-deelnemer (88.10)        | 0201                                 |
+      | omschrijving verdrag (88.20) | Artikel 45 EU-Werkingsverdrag (VWEU) |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                                    |
+      | type                | RaadpleegMetBurgerservicenummer           |
+      | burgerservicenummer | 000000085                                 |
+      | fields              | burgerservicenummer,rni                   |
+      Dan heeft de response een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 000000085 |
       En heeft de persoon een 'rni' met de volgende gegevens
       | naam                   | waarde                                          |
-      | deelnemer.code         | 101                                             |
+      | deelnemer.code         | 0101                                            |
       | deelnemer.omschrijving | Belastingdienst (inzake heffingen en toeslagen) |
       | omschrijvingVerdrag    | Belastingverdrag tussen België en Nederland     |
-      | categorie              | Inschrijving                                    |
+      | categorie              | Persoon                                         |
+      En heeft de persoon een 'rni' met de volgende gegevens
+      | naam                   | waarde                                          |
+      | deelnemer.code         | 0101                                            |
+      | deelnemer.omschrijving | Belastingdienst (inzake heffingen en toeslagen) |
+      | omschrijvingVerdrag    | Belastingverdrag tussen België en Nederland     |
+      | categorie              | Verblijfplaats                                  |
+      En heeft de persoon een 'rni' met de volgende gegevens
+      | naam                   | waarde                                          |
+      | deelnemer.code         | 0101                                            |
+      | deelnemer.omschrijving | Belastingdienst (inzake heffingen en toeslagen) |
+      | omschrijvingVerdrag    | Belastingverdrag tussen België en Nederland     |
+      | categorie              | Nationaliteit                                   |
+      En heeft de persoon een 'rni' met de volgende gegevens
+      | naam                   | waarde                                          |
+      | deelnemer.code         | 0101                                            |
+      | deelnemer.omschrijving | Belastingdienst (inzake heffingen en toeslagen) |
+      | omschrijvingVerdrag    | Belastingverdrag tussen België en Nederland     |
+      | categorie              | Overlijden                                      |

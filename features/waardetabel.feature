@@ -1,248 +1,310 @@
 # language: nl
 
 Functionaliteit: Waardetabel met code en omschrijving
-    Een veld dat wordt gevuld vanuit een in de BRP opgeslagen code die refereert naar een code in een 
+    Een veld dat wordt gevuld vanuit een in de BRP opgeslagen code die refereert naar een code in een
     landelijke tabel, wordt geleverd met zowel de code als de bijbehorende omschrijving.
 
-    Naast velden met een waarde uit een landelijke tabel zijn er ook velden die in de BRP zijn gedefinieerd 
-    met een lijst van vaste mogelijke waarden. Deze mogelijke waarden en de bijbehorende omschrijvingen staan beschreven 
+    Naast velden met een waarde uit een landelijke tabel zijn er ook velden die in de BRP zijn gedefinieerd
+    met een lijst van vaste mogelijke waarden. Deze mogelijke waarden en de bijbehorende omschrijvingen staan beschreven
     in de tabelwaarden feature.
 
     Mogelijke codes en omschrijvingen zijn te raadplegen met de API BRP tabellen bevragen.
     Zie https://github.com/VNG-Realisatie/Haal-Centraal-BRP-tabellen-bevragen
 
-  @gba
+    Achtergrond:
+      Gegeven landelijke tabel "Gemeenten" heeft de volgende waarden
+      | code | omschrijving              |
+      | 0064 | Bolsward                  |
+      | 0362 | Amstelveen                |
+      | 0492 | Bergschenhoek             |
+      | 0502 | Capelle aan den IJssel    |
+      | 1326 | 's Heer Hendriks Kinderen |
+
+      Gegeven landelijke tabel "Landen" heeft de volgende waarden
+      | code | omschrijving         |
+      | 5077 | Wallis en Futuna     |
+      | 5084 | Mayotte              |
+      | 5109 | Sint Eustatius       |
+      | 6059 | São Tomé en Principe |
+
+      Gegeven landelijke tabel "Gezagsverhouding" heeft de volgende waarden
+      | code | omschrijving                                         |
+      |   1D | Ouder1 en een derde hebben het gezag                 |
+
+      Gegeven landelijke tabel "Functie_adres" heeft de volgende waarden
+      # Functie_adres is geen landelijke tabel maar een lijst mogelijke waarden uit het LO-gba
+      # De automation-code ondersteunt nu de step "Gegeven tabel "Functie_Adres" heeft de volgende waarden" nog niet.
+      | code | omschrijving                                         |
+      | B    | briefadres                                           |
+
+      Gegeven landelijke tabel "Adellijke_Titel_Predicaat" heeft de volgende waarden
+      | code | omschrijving | soort     |
+      |   BS | barones      | titel     |
+      |   JH | jonkheer     | predicaat |
+      |    R | ridder       | titel     |
+
   Rule: Bij een veld gedefinieerd als Waardetabel op een landelijke tabel wordt de omschrijving geleverd die in die tabel hoort bij de code
 
-    Abstract Scenario: Omschrijving bij code voor <element>
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550001 |
-      | <element>           | <waarde>  |
-      En het systeem heeft landelijke tabel '<tabel>' met de volgende gegevens
-      | code     | omschrijving   |
-      | <waarde> | <omschrijving> |
+    Abstract Scenario: Omschrijving bij code voor <tabel>
+      Gegeven de persoon met burgerservicenummer '000000176' heeft de volgende '<groepsnaam>' gegevens
+      | <lo3-naam>      |
+      | <waarde-code>   |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
-      | fields              | <veld>                          |
-      Dan heeft de response een persoon met de volgende gegevens
-      | naam                | waarde         |
-      | <veld>.code         | <waarde>       |
-      | <veld>.omschrijving | <omschrijving> |
+      | burgerservicenummer | 000000176                       |
+      | fields              | <fieldnaam>                     |
+      Dan heeft de response een persoon met de volgende '<propertynaam>' gegevens
+      | naam                        | waarde                |
+      | <prefix>code                | <waarde-code>         |
+      | <prefix>omschrijving        | <waarde-omschrijving> |
 
       Voorbeelden:
-      | element                              | tabel                    | veld                       | waarde | omschrijving                         |
-      | Gemeente van inschrijving (09.10)    | 33 Gemeenten             | gemeenteVanInschrijving    | 1326   | 's Heer Hendriks Kinderen            |
-      | Indicatie gezag minderjarige (32.10) | 61 Gezagsverhoudingtabel | indicatieGezagMinderjarige | 1D     | Ouder1 en een derde hebben het gezag |
+      | tabel            | waarde-code | waarde-omschrijving                  | groepsnaam       | lo3-naam                             | propertynaam               | fieldnaam                          | prefix                   |
+      | Gezagsverhouding | 1D          | Ouder1 en een derde hebben het gezag | gezagsverhouding | indicatie gezag minderjarige (32.10) | indicatieGezagMinderjarige | indicatieGezagMinderjarige         |                          |
+      | Gemeenten        | 1326        | 's Heer Hendriks Kinderen            | verblijfplaats   | gemeente van inschrijving (09.10)    | gemeenteVanInschrijving    | gemeenteVanInschrijving            |                          |
+      | Landen           | 9015        | Windwardeilanden                     | verblijfplaats   | land vanwaar ingeschreven (14.10)    | immigratie                 | immigratie.landVanwaarIngeschreven | landVanwaarIngeschreven. |
+      | Verblijfstitel   | 09          | Art. 9 van de Vreemdelingenwet       | verblijfstitel   | aanduiding verblijfstitel (39.10)    | verblijfstitel             | verblijfstitel.aanduiding          | aanduiding.              |
 
-    Abstract Scenario: Omschrijving bij code voor <element>
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550001 |
-      | <element>           | <waarde>  |
-      En het systeem heeft landelijke tabel '<tabel>' met de volgende gegevens
-      | code     | omschrijving   |
-      | <waarde> | <omschrijving> |
+      Abstract Scenario: Omschrijving bij code voor <tabel>
+        Gegeven de persoon met burgerservicenummer '000000176' heeft de volgende gegevens
+        | <lo3-naam>      |
+        | <waarde-code>   |
+        Als personen wordt gezocht met de volgende parameters
+        | naam                | waarde                          |
+        | type                | RaadpleegMetBurgerservicenummer |
+        | burgerservicenummer | 000000176                       |
+        | fields              | <fieldnaam>                     |
+        Dan heeft de response een persoon met de volgende '<propertynaam>' gegevens
+        | naam                        | waarde                |
+        | <prefix>code                | <waarde-code>         |
+        | <prefix>omschrijving        | <waarde-omschrijving> |
+
+        Voorbeelden:
+        | tabel            | waarde-code | waarde-omschrijving                  | lo3-naam                             | propertynaam               | fieldnaam                          | prefix                   |
+        | Landen           | 5013        | Nieuw-Zeeland                        | geboorteland (03.30)                 | geboorte                   | geboorte.land                      | land.                    |
+        | Gemeenten        | 1210        | Vlaardinger-Ambacht                  | geboorteplaats (03.20)               | geboorte                   | geboorte.plaats                    | plaats.                  |
+
+    Abstract Scenario: Omschrijving bij code voor <tabel> bij Verblijfplaats
+      Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende 'verblijfplaats' gegevens
+      | <lo3-naam>      |
+      | <waarde-code>   |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
-      | fields              | <groep>.<veld>                  |
-      Dan heeft de response een persoon met de volgende '<groep>' gegevens
-      | naam                | waarde         |
-      | <veld>.code         | <waarde>       |
-      | <veld>.omschrijving | <omschrijving> |
+      | burgerservicenummer | 000000188                       |
+      | fields              | <fieldnaam>                     |
+      Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
+      | naam                        | waarde                |
+      | type                        | <type>                |
+      | <prefix>code                | <waarde-code>         |
+      | <prefix>omschrijving        | <waarde-omschrijving> |
 
       Voorbeelden:
-      | element                           | tabel                  | groep                        | veld                    | waarde | omschrijving                                                     |
-      | Geboorteplaats (03.20)            | 33 Gemeenten           | geboorte                     | plaats                  | 0880   | Wormerland                                                       |
-      | Geboorteland (03.30)              | 34 Landen              | geboorte                     | land                    | 6030   | Nederland                                                        |
-      | Plaats overlijden (08.20)         | 33 Gemeenten           | overlijden                   | plaats                  | 1210   | Vlaardinger-Ambacht                                              |
-      | Land overlijden (08.30)           | 34 Landen              | overlijden                   | land                    | 5013   | Nieuwzeeland                                                     |
-      | Land adres buitenland (13.10)     | 34 Landen              | verblijfplaats.verblijfadres | land                    | 9087   | Djibouti                                                         |
-      | Land vanwaar ingeschreven (14.10) | 34 Landen              | immigratie                   | landVanwaarIngeschreven | 9015   | Windwardeilanden                                                 |
-      | Aanduiding verblijfstitel (39.10) | 56 Verblijfstiteltabel | verblijfstitel               | aanduiding              | 91     | Vw 2000 art. 115, lid 4, vergunning onbepaalde tijd, arbeid vrij |
+      | tabel         | waarde-code | waarde-omschrijving | lo3-naam                       | fieldnaam           | prefix              | type                     |
+      | Functie_adres | B           | briefadres          | functieAdres.code (10.10)      | functieAdres        | functieAdres.       | VerblijfplaatsOnbekend   |
+      | Landen        | 9087        | Djibouti            | land adres buitenland (13.10)  | verblijfplaats      | verblijfadres.land. | VerblijfplaatsBuitenland |
 
-    Abstract Scenario: Omschrijving bij code voor <element>
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550001 |
-      | <element>           | <waarde>  |
-      En het systeem heeft landelijke tabel '<tabel>' met de volgende gegevens
-      | code     | omschrijving   |
-      | <waarde> | <omschrijving> |
+
+    Abstract Scenario: Omschrijving bij code voor <tabel> bij Geboorte
+      Gegeven de persoon met burgerservicenummer '000000206' heeft de volgende gegevens
+      | <lo3-naam>      |
+      | <waarde-code>   |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
-      | fields              | nationaliteiten.<veld>          |
-      Dan heeft de response een persoon een 'nationaliteit' met de volgende gegevens
-      | naam                | waarde         |
-      | <veld>.code         | <waarde>       |
-      | <veld>.omschrijving | <omschrijving> |
-      
-      Voorbeelden:
-      | element                            | tabel                                     | veld          | waarde | omschrijving                             |
-      | nationaliteit (05.10)              | 32 nationaliteiten                        | nationaliteit | 0064   | Italiaanse                               |
-      | Reden opname nationaliteit (63.10) | 37 Reden opnemen/beëindigen nationaliteit | redenOpname   | 301    | Vaststelling bezit vreemde nationaliteit |
+      | burgerservicenummer | 000000206                       |
+      | fields              | <fieldnaam>                     |
+      Dan heeft de response een persoon met de volgende '<propertynaam>' gegevens
+      | naam                        | waarde                |
+      | <prefix>code                | <waarde-code>         |
+      | <prefix>omschrijving        | <waarde-omschrijving> |
+
+      Voorbeelden:                                                       |
+      | tabel     | waarde-code | waarde-omschrijving | groepsnaam | lo3-naam               | propertynaam | fieldnaam       | prefix  |
+      | Gemeenten | 0880        | Wormerland          | geboorte   | geboorteplaats (03.20) | geboorte     | geboorte.plaats | plaats. |
+      | Landen    | 6030        | Nederland           | geboorte   | geboorteland (03.30)   | geboorte     | geboorte.land   | land.   |
+
+    Scenario: Omschrijving bij code voor Nationaliteiten en Reden_Nationaliteit bij nationaliteiten
+      Gegeven de persoon met burgerservicenummer '000000218' heeft een 'nationaliteit' met de volgende gegevens
+      | nationaliteit (05.10) | reden opname (63.10) |
+      | 0064                  | 301                  |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000218                       |
+      | fields              | nationaliteiten                 |
+      Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
+      | naam                       | waarde                                   |
+      | nationaliteit.code         | 0064                                     |
+      | nationaliteit.omschrijving | Italiaanse                               |
+      | type                       | Nationaliteit                            |
+      | redenOpname.code           | 301                                      |
+      | redenOpname.omschrijving   | Vaststelling bezit vreemde nationaliteit |
+
 
     Abstract Scenario: Omschrijving bij code voor <relatie> <element>
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550001 |
-      En de persoon heeft een '<relatie>' met de volgende gegevens
-      | <element>           | <waarde>  |
-      En het systeem heeft landelijke tabel '<tabel>' met de volgende gegevens
-      | code     | omschrijving   |
-      | <waarde> | <omschrijving> |
+      Gegeven de persoon met burgerservicenummer '000000231' heeft een <relatie> met de volgende gegevens
+      | <element> |
+      | <waarde>  |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
-      | fields              | <relatie>.<groep>.<veld>        |
-      Dan heeft de response een persoon een '<relatie>' met de volgende gegevens
+      | burgerservicenummer | 000000231                       |
+      | fields              | <fields>.<groep>                |
+      Dan heeft de response een persoon met een '<relatiedan>' met de volgende '<groep>' gegevens
       | naam                | waarde         |
       | <veld>.code         | <waarde>       |
       | <veld>.omschrijving | <omschrijving> |
 
-      Voorbeelden: 
-      | element                                                             | tabel        | relatie | groep                       | veld   | waarde | omschrijving           |
-      | Geboorteplaats (03.20)                                              | 33 Gemeenten | kind    | geboorte                    | plaats | 0362   | Amstelveen             |
-      | Geboorteland (03.30)                                                | 34 Landen    | kind    | geboorte                    | land   | 5077   | Wallis en Futuna       |
-      | Geboorteplaats (03.20)                                              | 33 Gemeenten | ouder   | geboorte                    | plaats | 0492   | Bergschenhoek          |
-      | Geboorteland (03.30)                                                | 34 Landen    | ouder   | geboorte                    | land   | 5084   | Mayotte                |
-      | Geboorteplaats (03.20)                                              | 33 Gemeenten | partner | geboorte                    | plaats | 0064   | Bolsward               |
-      | Geboorteland (03.30)                                                | 34 Landen    | partner | geboorte                    | land   | 5109   | Sint Eustatius         |
-      | Plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) | 33 Gemeenten | partner | aangaanHuwelijkPartnerschap | plaats | 0502   | Capelle aan den IJssel |
-      | Land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)   | 34 Landen    | partner | aangaanHuwelijkPartnerschap | land   | 6059   | São Tomé en Principe   |
+      Voorbeelden:
+      | element                                                             | relatie   | relatiedan | groep                       | veld   | waarde | omschrijving           | fields   |
+      | geboorteplaats (03.20)                                              | 'kind'    | kind       | geboorte                    | plaats | 0362   | Amstelveen             | kinderen |
+      | geboorteland (03.30)                                                | 'kind'    | kind       | geboorte                    | land   | 5077   | Wallis en Futuna       | kinderen |
+      | geboorteplaats (03.20)                                              | ouder '1' | ouder      | geboorte                    | plaats | 0492   | Bergschenhoek          | ouders   |
+      | geboorteland (03.30)                                                | ouder '1' | ouder      | geboorte                    | land   | 5084   | Mayotte                | ouders   |
+      | geboorteplaats (03.20)                                              | 'partner' | partner    | geboorte                    | plaats | 0064   | Bolsward               | partners |
+      | geboorteland (03.30)                                                | 'partner' | partner    | geboorte                    | land   | 5109   | Sint Eustatius         | partners |
+      | plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) | 'partner' | partner    | aangaanHuwelijkPartnerschap | plaats | 0502   | Capelle aan den IJssel | partners |
+      | land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)   | 'partner' | partner    | aangaanHuwelijkPartnerschap | land   | 6059   | São Tomé en Principe   | partners |
 
-  @gba
-  Rule: voor adellijkeTitelPredicaat wordt ook soort geleverd die in die tabel hoort bij de code
-
-    Abstract Scenario: Omschrijving en soort bij code voor Adellijke titel/predicaat (02.20)
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                              | waarde    |
-      | burgerservicenummer               | 555550001 |
-      | Adellijke titel/predicaat (02.20) | <waarde>  |
-      En het systeem heeft landelijke tabel '38 Adellijke titel/predicaat' met de volgende gegevens
-      | code | omschrijving | soort     |
-      | BS   | barones      | titel     |
-      | JH   | jonkheer     | predicaat |
-      | R    | ridder       | titel     |
+    Abstract Scenario: Omschrijving en soort bij code voor <relatie> met adellijke titel of predicaat
+      Gegeven de persoon met burgerservicenummer '000000243' heeft een <relatie> met de volgende gegevens
+      | adellijke titel of predicaat (02.20) |
+      | <waarde>                             |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
-      | fields              | naam.adellijkeTitelPredicaat    |
-      Dan heeft de response een persoon met de volgende 'naam' gegevens
+      | naam                | waarde                                |
+      | type                | RaadpleegMetBurgerservicenummer       |
+      | burgerservicenummer | 000000243                             |
+      | fields              | <fields>.naam.adellijkeTitelPredicaat |
+      Dan heeft de response een persoon met een '<relatiedan>' met de volgende gegevens
       | naam                                 | waarde         |
-      | adellijkeTitelPredicaat.code         | <waarde>       |
-      | adellijkeTitelPredicaat.omschrijving | <omschrijving> |
-      | adellijkeTitelPredicaat.soort        | <soort>        |
+      | naam.adellijkeTitelPredicaat.code         | <waarde>       |
+      | naam.adellijkeTitelPredicaat.omschrijving | <omschrijving> |
+      | naam.adellijkeTitelPredicaat.soort        | <soort>        |
 
       Voorbeelden:
-      | waarde | omschrijving | soort     |
-      | BS     | barones      | titel     |
-      | JH     | jonkheer     | predicaat |
-      | R      | ridder       | titel     |
-      
-    Abstract Scenario: Omschrijving en soort bij code voor <relatie> Adellijke titel/predicaat (02.20)
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                              | waarde    |
-      | burgerservicenummer               | 555550001 |
-      En de persoon heeft een '<relatie>' met de volgende gegevens
-      | Adellijke titel/predicaat (02.20) | <waarde>  |
-      En het systeem heeft landelijke tabel '38 Adellijke titel/predicaat' met de volgende gegevens
-      | code | omschrijving | soort     |
-      | BS   | barones      | titel     |
-      | JH   | jonkheer     | predicaat |
-      | R    | ridder       | titel     |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
-      | fields              | <relatie>.naam.adellijkeTitelPredicaat    |
-      Dan heeft de response een persoon een '<relatie>' met de volgende gegevens
-      | naam                                 | waarde         |
-      | adellijkeTitelPredicaat.code         | <waarde>       |
-      | adellijkeTitelPredicaat.omschrijving | <omschrijving> |
-      | adellijkeTitelPredicaat.soort        | <soort>        |
-
-      Voorbeelden:
-      | relatie | waarde | omschrijving | soort     |
-      | kind    | BS     | barones      | titel     |
-      | ouder   | JH     | jonkheer     | predicaat |
-      | partner | R      | ridder       | titel     |
+      | relatie   | relatiedan | waarde | omschrijving | soort     | fields   |
+      | 'kind'    | kind       | BS     | barones      | titel     | kinderen |
+      | ouder '1' | ouder      | JH     | jonkheer     | predicaat | ouders   |
+      | 'partner' | partner    | R      | ridder       | titel     | partners |
 
   Rule: wanneer voor de code geen bijbehorende waarde voorkomt in de tabel, wordt alleen de code geleverd
 
-    Abstract Scenario: code voor <element> komt niet voor in de tabel
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550001 |
-      | <element>           | <waarde>  |
+    Abstract Scenario: code voor <element> komt niet voor in de tabel <tabel>
+      Gegeven de persoon met burgerservicenummer '000000255' heeft de volgende gegevens
+      | <element> |
+      | <waarde>  |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000255                       |
       | fields              | <groep>.<veld>                  |
       Dan heeft de response een persoon met alleen de volgende '<groep>' gegevens
       | naam                | waarde         |
       | <veld>.code         | <waarde>       |
 
       Voorbeelden:
-      | element                           | tabel                  | groep                        | veld                    | waarde |
-      | Geboorteplaats (03.20)            | 33 Gemeenten           | geboorte                     | plaats                  | 9876   |
-      | Geboorteland (03.30)              | 34 Landen              | geboorte                     | land                    | 1234   |
-      | Plaats overlijden (08.20)         | 33 Gemeenten           | overlijden                   | plaats                  | 9876   |
-      | Land overlijden (08.30)           | 34 Landen              | overlijden                   | land                    | 1234   |
-      | Land adres buitenland (13.10)     | 34 Landen              | verblijfplaats.verblijfadres | land                    | 1234   |
-      | Land vanwaar ingeschreven (14.10) | 34 Landen              | immigratie                   | landVanwaarIngeschreven | 1234   |
-      | Aanduiding verblijfstitel (39.10) | 56 Verblijfstiteltabel | verblijfstitel               | aanduiding              | 01     |
+      | element                           | tabel               | groep                        | veld                    | waarde |
+      | geboorteland (03.30)              | Landen              | geboorte                     | land                    | 1234   |
 
-  Rule: wanneer de waarde voor een plaats geen valide gemeentecode bevat wordt deze geleverd in de omschrijving
-    - de waarde voor plaats is een gemeentecode wanneer het bestaat uit 4 cijfers
-
-    Abstract Scenario: Plaats is buitenlandse plaats of locatie bij code voor <element>
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550001 |
-      | <element>           | <waarde>  |
+    Scenario: code voor aanduiding verblijfstitel (39.10) komt niet voor in de tabel Verblijfstitel
+      Gegeven de persoon met burgerservicenummer '000000267' heeft de volgende 'verblijfstitel' gegevens
+      | aanduiding verblijfstitel (39.10) |
+      | 01                                |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
-      | fields              | <groep>.plaats                  |
-      Dan heeft de response een persoon met alleen de volgende '<groep>' gegevens
+      | burgerservicenummer | 000000267                       |
+      | fields              | verblijfstitel.aanduiding       |
+      Dan heeft de response een persoon met alleen de volgende 'verblijfstitel' gegevens
       | naam                | waarde   |
+      | aanduiding.code     | 01       |
+
+    Scenario: code voor land overlijden (08.30) komt niet voor in de tabel Landen
+      Gegeven de persoon met burgerservicenummer '000000267' heeft de volgende 'overlijden' gegevens
+      | land overlijden (08.30) |
+      | 1234                    |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000267                       |
+      | fields              | overlijden.land                 |
+      Dan heeft de response een persoon met alleen de volgende 'overlijden' gegevens
+      | naam               | waarde     |
+      | indicatieOverleden | true       |
+      | land.code          | 1234       |
+
+    Abstract Scenario: code voor <element> komt niet voor in de tabel <tabel>
+      Gegeven de persoon met burgerservicenummer '000000279' heeft de volgende '<groep>' gegevens
+      | <element> |
+      | <waarde>  |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000279                       |
+      | fields              | <groep>                         |
+      Dan heeft de response een persoon met alleen de volgende '<groep>' gegevens
+      | naam                | waarde         |
+      | <veld>.code         | <waarde>       |
+      | type                | <type>         |
+      Voorbeelden:
+      | element                           | tabel               | groep                        | veld                    | waarde | type                     |
+      | land adres buitenland (13.10)     | Landen              | verblijfplaats               | verblijfadres.land      | 1234   | VerblijfplaatsBuitenland |
+      | land vanwaar ingeschreven (14.10) | Landen              | immigratie                   | landVanwaarIngeschreven | 1234   |                          |
+
+  Rule: wanneer de waarde voor een geboorteplaats(03.20) of een overlijdenplaats (08.20) of plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) geen valide gemeentecode bevat wordt de de code geleverd in zowel de code als de omschrijving
+    - een valide gemeentecode bestaat uit vier cijfers en komt voor in de landelijke tabel Gemeenten
+    - als er in de geboorteplaats (03.20) of de overlijdenplaats (08.20) of plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) een waarde staat die niet voorkomt in de landelijke tabel Gemeenten
+      dan wordt de waarde die in de plaats staat in zowel de code als de omschrijving opgenomen. (Buitenlandse plaatsnaam of coördinaten)
+
+    Scenario: Plaats is buitenlandse plaats of locatie bij code voor geboorteplaats (Als de code niet voorkomt in tabel gemeenten)
+      Gegeven de persoon met burgerservicenummer '000000280' heeft de volgende gegevens
+      | geboorteplaats (03.20) |
+      | Berlijn                |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000280                       |
+      | fields              | geboorte.plaats                 |
+      Dan heeft de response een persoon met alleen de volgende 'geboorte' gegevens
+      | naam                | waarde   |
+      | plaats.code         | Berlijn  |
+      | plaats.omschrijving | Berlijn  |
+
+    Scenario: Plaats is buitenlandse plaats of locatie bij code voor Overlijden
+      Gegeven de persoon met burgerservicenummer '000000292' heeft de volgende 'overlijden' gegevens
+      | plaats overlijden (08.20) |
+      | 51° N.B. 4° O.L.          |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000292                       |
+      | fields              | overlijden.plaats                  |
+      Dan heeft de response een persoon met alleen de volgende 'overlijden' gegevens
+      | naam                | waarde            |
+      | indicatieOverleden  | true              |
+      | plaats.code         | 51° N.B. 4° O.L.  |
+      | plaats.omschrijving | 51° N.B. 4° O.L.  |
+
+
+    Abstract Scenario: Plaats is buitenlandse plaats of locatie bij code voor <relatie> <element>
+      Gegeven de persoon met burgerservicenummer '000000309' heeft een <relatie> met de volgende gegevens
+      | <element>           |
+      | <waarde>            |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000309                       |
+      | fields              | <fields>.<groep>                |
+      Dan heeft de response een persoon met een '<relatiedan>' met de volgende '<groep>' gegevens
+      | naam                | waarde   |
+      | plaats.code         | <waarde> |
       | plaats.omschrijving | <waarde> |
 
       Voorbeelden:
-      | element                   | tabel        | groep      | waarde           |
-      | Geboorteplaats (03.20)    | 33 Gemeenten | geboorte   | Berlijn          |
-      | Plaats overlijden (08.20) | 33 Gemeenten | overlijden | 51° N.B. 4° O.L. |
-      
-    Abstract Scenario: Plaats is buitenlandse plaats of locatie bij code voor <relatie> <element>
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 555550001 |
-      En de persoon heeft een '<relatie>' met de volgende gegevens
-      | <element>           | <waarde>  |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
-      | fields              | <relatie>.<groep>.plaats        |
-      Dan heeft de response een persoon een '<relatie>' met de volgende gegevens
-      | naam                | waarde   |
-      | plaats.omschrijving | <waarde> |
-
-      Voorbeelden: 
-      | element                                                             | tabel        | relatie | groep                       | waarde            |
-      | Geboorteplaats (03.20)                                              | 33 Gemeenten | kind    | geboorte                    | Brussel           |
-      | Geboorteplaats (03.20)                                              | 33 Gemeenten | ouder   | geboorte                    | 52°2'43N4°22'39"O |
-      | Geboorteplaats (03.20)                                              | 33 Gemeenten | partner | geboorte                    | London            |
-      | Plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) | 33 Gemeenten | partner | aangaanHuwelijkPartnerschap | Köln              |
-
+      | element                                                             | tabel        | relatie   | relatiedan | groep                       | waarde            | fields   |
+      | geboorteplaats (03.20)                                              | 33 Gemeenten | 'kind'    | kind       | geboorte                    | Brussel           | kinderen |
+      | geboorteplaats (03.20)                                              | 33 Gemeenten | ouder '1' | ouder      | geboorte                    | 52°2'43N4°22'39"O | ouders   |
+      | geboorteplaats (03.20)                                              | 33 Gemeenten | 'partner' | partner    | geboorte                    | London            | partners |
+      | plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) | 33 Gemeenten | 'partner' | partner    | aangaanHuwelijkPartnerschap | Köln              | partners |

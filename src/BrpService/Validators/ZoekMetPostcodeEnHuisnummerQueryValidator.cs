@@ -10,7 +10,7 @@ public class ZoekMetPostcodeEnHuisnummerQueryValidator : AbstractValidator<ZoekM
     const string HuisletterErrorMessage = $"pattern||Waarde voldoet niet aan patroon {HuisletterPattern}.";
     const string HuisnummertoevoegingPattern = @"^[a-zA-Z0-9 \-]{1,4}$";
     const string HuisnummertoevoegingErrorMessage = $"pattern||Waarde voldoet niet aan patroon {HuisnummertoevoegingPattern}.";
-    const string NumberPattern = @"\d+";
+    const string NumberPattern = @"^[1-9]{1}[0-9]{0,4}$";
     const string NumberErrorMessage = "integer||Waarde is geen geldig getal.";
     const string PostcodePattern = @"^[1-9]{1}[0-9]{3}[ ]?[A-Za-z]{2}$";
     const string PostcodeErrorMessage = $"pattern||Waarde voldoet niet aan patroon {PostcodePattern}.";

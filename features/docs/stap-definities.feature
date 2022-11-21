@@ -6,8 +6,10 @@ Functionaliteit: Stap definities
   De scenario's beschrijven de SQL statements die worden gegenereerd voor de 'gegeven' stap definitie
 
   Achtergrond:
-    Gegeven de statement 'SELECT MAX(pl_id)+1 FROM public.lo3_pl' heeft als resultaat '9999'
-    En de statement 'SELECT MAX(adres_id)+1 FROM public.lo3_adres' heeft als resultaat '4999'
+    Gegeven de 1e 'SELECT MAX(pl_id)+1 FROM public.lo3_pl' statement heeft als resultaat '9999'
+    En de 1e 'SELECT MAX(adres_id)+1 FROM public.lo3_adres' statement heeft als resultaat '4999'
+    En de 2e 'SELECT MAX(pl_id)+1 FROM public.lo3_pl' statement heeft als resultaat '10000'
+    En de 3e 'SELECT MAX(pl_id)+1 FROM public.lo3_pl' statement heeft als resultaat '10001'
 
   Rule: Gegeven de persoon met burgerservicenummer '<bsn>' heeft de volgende gegevens
 
@@ -15,6 +17,18 @@ Functionaliteit: Stap definities
       Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende gegevens
       | naam                  | waarde |
       | geslachtsnaam (02.40) | Jansen |
+      Dan zijn de gegenereerde SQL statements
+      | key          | text                                                                                                                                     | values                      |
+      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                           |
+      | persoon      | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr,geslachts_naam) VALUES($1,$2,$3,$4,$5,$6)       | 9999,0,0,P,000000012,Jansen |
+
+    Scenario: Persoon
+      Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende gegevens
+      | naam                  | waarde |
+      | geslachtsnaam (02.40) | Jansen |
+      Gegeven de persoon met burgerservicenummer '000000013' heeft de volgende gegevens
+      | naam                  | waarde    |
+      | geslachtsnaam (02.40) | Pietersen |
       Dan zijn de gegenereerde SQL statements
       | key          | text                                                                                                                                     | values                      |
       | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                           |
@@ -91,6 +105,22 @@ Functionaliteit: Stap definities
       | persoon        | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 9999,0,0,P,000000012 |
       | verblijfstitel | INSERT INTO public.lo3_pl_verblijfstitel(pl_id,volg_nr,verblijfstitel_aand) VALUES($1,$2,$3)                                             | 9999,1,37            |
       |                | INSERT INTO public.lo3_pl_verblijfstitel(pl_id,volg_nr,verblijfstitel_aand) VALUES($1,$2,$3)                                             | 9999,0,38            |
+
+  Rule: En de/het '<naam-pl-tabel>' is gecorrigeerd naar de volgende gegevens
+
+    Scenario: Persoon heeft gecorrigeerde 'gezagsverhouding' gegevens
+      Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende 'gezagsverhouding' gegevens
+      | indicatie gezag minderjarige (32.10) |
+      | 12                                   |
+      En de 'gezagsverhouding' is gecorrigeerd naar de volgende gegevens
+      | indicatie gezag minderjarige (32.10) |
+      | 1D                                   |
+      Dan zijn de gegenereerde SQL statements
+      | key              | text                                                                                                                                     | values               |
+      | inschrijving     | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                    |
+      | persoon          | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 9999,0,0,P,000000012 |
+      | gezagsverhouding | INSERT INTO public.lo3_pl_gezagsverhouding(pl_id,volg_nr,minderjarig_gezag_ind,onjuist_ind) VALUES($1,$2,$3,$4)                          | 9999,1,12,O          |
+      |                  | INSERT INTO public.lo3_pl_gezagsverhouding(pl_id,volg_nr,minderjarig_gezag_ind) VALUES($1,$2,$3)                                         | 9999,0,1D            |
 
   Rule: Gegeven de persoon met burgerservicenummer '<bsn>' heeft een 'verblijfstitel' verkregen met de volgende gegevens
 
@@ -376,3 +406,49 @@ Functionaliteit: Stap definities
       | persoon        | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 9999,0,0,P,000000012 |
       | verblijfplaats | INSERT INTO public.lo3_pl_verblijfplaats(pl_id,adres_id,volg_nr,adreshouding_start_datum) VALUES($1,$2,$3,$4)                            | 9999,4999,0,20150808 |
       | adres          | INSERT INTO public.lo3_adres(adres_id,straat_naam) VALUES((SELECT MAX(adres_id)+1 FROM public.lo3_adres),$1) RETURNING *                 | Boterdiep            |
+
+  Rule: Gegeven een adres heeft de volgende gegevens
+
+    Scenario: Een adres
+      Gegeven een adres heeft de volgende gegevens
+      | naam               | waarde    |
+      | straatnaam (11.10) | Boterdiep |
+      Dan zijn de gegenereerde SQL statements
+      | key   | text                                                                                                                     | values    |
+      | adres | INSERT INTO public.lo3_adres(adres_id,straat_naam) VALUES((SELECT MAX(adres_id)+1 FROM public.lo3_adres),$1) RETURNING * | Boterdiep |
+
+  Rule: En de persoon met burgerservicenummer '<bsn>' is ingeschreven op het adres met de volgende gegevens
+
+    Scenario: een inschrijving op een adres
+      Gegeven een adres heeft de volgende gegevens
+      | naam               | waarde    |
+      | straatnaam (11.10) | Boterdiep |
+      En de persoon met burgerservicenummer '000000012' is ingeschreven op het adres met de volgende gegevens
+      | gemeente van inschrijving (09.10) |
+      | 0518                              |
+      Dan zijn de gegenereerde SQL statements
+      | index | key            | text                                                                                                                                     | values                |
+      | 1     | adres          | INSERT INTO public.lo3_adres(adres_id,straat_naam) VALUES((SELECT MAX(adres_id)+1 FROM public.lo3_adres),$1) RETURNING *                 | Boterdiep             |
+      | 2     | inschrijving   | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                     |
+      |       | persoon        | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 10000,0,0,P,000000012 |
+      |       | verblijfplaats | INSERT INTO public.lo3_pl_verblijfplaats(pl_id,adres_id,volg_nr,inschrijving_gemeente_code) VALUES($1,$2,$3,$4)                          | 10000,4999,0,0518     |
+
+    Scenario: meerdere inschrijvingen op een adres
+      Gegeven een adres heeft de volgende gegevens
+      | naam               | waarde    |
+      | straatnaam (11.10) | Boterdiep |
+      En de persoon met burgerservicenummer '000000012' is ingeschreven op het adres met de volgende gegevens
+      | gemeente van inschrijving (09.10) |
+      | 0518                              |
+      En de persoon met burgerservicenummer '000000013' is ingeschreven op het adres met de volgende gegevens
+      | gemeente van inschrijving (09.10) |
+      | 0599                              |
+      Dan zijn de gegenereerde SQL statements
+      | index | key            | text                                                                                                                                     | values                |
+      | 1     | adres          | INSERT INTO public.lo3_adres(adres_id,straat_naam) VALUES((SELECT MAX(adres_id)+1 FROM public.lo3_adres),$1) RETURNING *                 | Boterdiep             |
+      | 2     | inschrijving   | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                     |
+      |       | persoon        | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 10000,0,0,P,000000012 |
+      |       | verblijfplaats | INSERT INTO public.lo3_pl_verblijfplaats(pl_id,adres_id,volg_nr,inschrijving_gemeente_code) VALUES($1,$2,$3,$4)                          | 10000,4999,0,0518     |
+      | 3     | inschrijving   | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                     |
+      |       | persoon        | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 10001,0,0,P,000000013 |
+      |       | verblijfplaats | INSERT INTO public.lo3_pl_verblijfplaats(pl_id,adres_id,volg_nr,inschrijving_gemeente_code) VALUES($1,$2,$3,$4)                          | 10001,4999,0,0599     |

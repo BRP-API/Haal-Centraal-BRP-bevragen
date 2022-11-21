@@ -1,6 +1,5 @@
 #language: nl
 
-@post-assert
 Functionaliteit: Zoeken
 
 Rule: Er moet een valide zoek type worden opgegeven
@@ -111,7 +110,7 @@ Rule: Er moet een valide zoek type worden opgegeven
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 999999321                       |
+    | burgerservicenummer | 000000024                       |
     | fields              | burgerservicenummer             |
     | header: Accept      | */*                             |
     Dan heeft de response 0 personen

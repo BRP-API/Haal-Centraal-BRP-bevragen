@@ -14,7 +14,7 @@ public class ZoekMetNummeraanduidingIdentificatieQueryValidator : PersonenQueryV
     {
         RuleFor(x => x.NummeraanduidingIdentificatie)
             .Cascade(CascadeMode.Stop)
-            .NotNull().WithMessage(RequiredErrorMessage)
+            .NotEmpty().WithMessage(RequiredErrorMessage)
             .Matches(NummeraanduidingIdentificatiePattern).WithMessage(NummeraanduidingIdentificatiePatternErrorMessage);
     }
 }

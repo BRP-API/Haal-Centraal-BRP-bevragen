@@ -1,6 +1,6 @@
 # language: nl
 
-Functionaliteit: behandeld als Nederlander
+Functionaliteit: Persoon: nationaliteit - behandeld als Nederlander
 
   Abstract Scenario: persoon wordt 'behandeld als Nederlander'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
@@ -20,7 +20,7 @@ Functionaliteit: behandeld als Nederlander
     | bijzonder Nederlanderschap (65.10) | B      |
     | nationaliteit (05.10)              | 0002   |
 
-  Abstract Scenario: persoon heeft 'behandeld als Nederlander' veld: '<gba naam>'
+  Abstract Scenario: persoon heeft 'behandeld als Nederlander' veld: 'reden opname (63.10)'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
     | naam                               | waarde |
     | bijzonder Nederlanderschap (65.10) | B      |
@@ -31,14 +31,15 @@ Functionaliteit: behandeld als Nederlander
     | burgerservicenummer | 000000012                       |
     | fields              | nationaliteiten.<naam>          |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-    | naam   | waarde                  |
-    | type   | BehandeldAlsNederlander |
-    | <naam> | <waarde>                |
+    | naam                     | waarde                                            |
+    | type                     | BehandeldAlsNederlander                           |
+    | redenOpname.code         | 001                                               |
+    | redenOpname.omschrijving | Wet op het Nederlanderschap 1892, art. 1, onder a |
 
     Voorbeelden:
-    | naam                     | waarde                                          |
-    | redenOpname.code         | 001                                             |
-    | redenOpname.omschrijving | Wet op het Nederlanderschap 1892, art.1, lid 1a |
+    | naam                     |
+    | redenOpname.code         |
+    | redenOpname.omschrijving |
 
   Abstract Scenario: persoon heeft 'behandeld als Nederlander' veld: '<gba naam>' met waarde '<waarde>'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
@@ -92,15 +93,15 @@ Functionaliteit: behandeld als Nederlander
     | burgerservicenummer | 000000012                       |
     | fields              | nationaliteiten                 |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-    | naam                                         | waarde                                          |
-    | type                                         | BehandeldAlsNederlander                         |
-    | redenOpname.code                             | 001                                             |
-    | redenOpname.omschrijving                     | Wet op het Nederlanderschap 1892, art.1, lid 1a |
-    | inOnderzoek.type                             | <type in onderzoek>                             |
-    | inOnderzoek.redenOpname                      | <reden opname in onderzoek>                     |
-    | inOnderzoek.datumIngangOnderzoek.type        | Datum                                           |
-    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                                      |
-    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                                     |
+    | naam                                         | waarde                                            |
+    | type                                         | BehandeldAlsNederlander                           |
+    | redenOpname.code                             | 001                                               |
+    | redenOpname.omschrijving                     | Wet op het Nederlanderschap 1892, art. 1, onder a |
+    | inOnderzoek.type                             | <type in onderzoek>                               |
+    | inOnderzoek.redenOpname                      | <reden opname in onderzoek>                       |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                                             |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                                        |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                                       |
 
     Voorbeelden:
     | gba in onderzoek waarde | reden opname in onderzoek | type in onderzoek |

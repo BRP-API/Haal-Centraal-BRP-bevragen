@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gbamock
+  labels:
+    app: haal-centraal-brp-bevragen-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: gbamock
+  template:
+    metadata:
+      labels:
+        name: gbamock
+    spec:
+      containers:
+        - name: gbamock
+          image: iswish/haal-centraal-brp-bevragen-gba-mock:latest
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Release
+            - name: ASPNETCORE_URLS
+              value: http://+:5010
+          ports:
+            - name: http
+              containerPort: 5010
+          volumeMounts:
+            - name: gbamock-data
+              mountPath: /app/Data
+      volumes:
+        - name: gbamock-data
+          hostPath:
+            path: {{ host-path }}/Haal-Centraal-BRP-bevragen/src/config/BrpService
+  

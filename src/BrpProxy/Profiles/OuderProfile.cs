@@ -12,12 +12,14 @@ public class OuderProfile : Profile
         CreateMap<GbaOuder, Ouder>()
             .BeforeMap((src, dest) =>
             {
-                if (src.Naam != null)
+                if (src.Naam != null || src.InOnderzoek != null)
                 {
+                    src.Naam ??= new GbaNaamBasis();
                     src.Naam.InOnderzoek = src.InOnderzoek;
                 }
-                if (src.Geboorte != null)
+                if (src.Geboorte != null || src.InOnderzoek != null)
                 {
+                    src.Geboorte ??= new GbaGeboorte();
                     src.Geboorte.InOnderzoek = src.InOnderzoek;
                 }
             })
