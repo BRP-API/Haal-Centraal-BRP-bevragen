@@ -1,12 +1,18 @@
 # Personen bevragen
 
-De BRP bevragen API biedt twee manieren om personen te bevragen:
-- Zoeken van personen 
-- Raadplegen van personen
+De BRP bevragen API maakt het mogelijk om gegevens van actuele personen in de basisregistratie personen (BRP) te raadplegen. De personen worden opgezocht op basis van hun identificerende gegevens.
+
+In de BRP wordt een persoon uniek geïdentificeerd met behulp van hun burgerservicenummer. Is de burgerservicenummer van de te raadplegen persoon/personen bekend, dan moet de [Raadpleeg persoon met burgerservicenummer](#raadplegen-van-personen) operatie worden gebruikt om de betreffende persoon/personen te raadplegen.
+
+Is de burgerservicenummer van de te raadplegen persoon/personen niet bekend, dan kan deze worden opgezocht met behulp van de [Zoek persoon](#zoeken-van-personen) operaties.
+
+## Wet bescherming persoonsgegevens
+
+De BRP bevragen API is ontworpen conform de REST principes. Om ook aan de Wet bescherming persoonsgegevens te conformeren zijn er concessies gedaan met betrekking tot het toepassen van de REST principes. De belangrijkste concessie is dat de POST methode en niet de GET methode wordt gebruikt om personen te bevragen. Dit zorgt er voor dat er geen [persoonlijk identificeerbare informatie (PII)](https://piwikpro.nl/blog/pii-niet-pii-en-persoonsgegevens/) terecht komen in de url van een request en daardoor ook niet in server logs.
 
 ## Zoeken van personen
 
-Als de burgerservicenummer van de te bevragen personen niet bekend is, kan één van de volgende operaties worden gebruikt om de gewenste persoon te vinden:
+De volgende zoek operaties kunnen worden gebruikt om een persoon met niet-uniek identificerende persoonsgegevens te vinden:
 
 - zoek met geslachtsnaam en geboortedatum
   - [overzicht](./zoek-met-geslachtsnaam-en-geboortedatum/overzicht.feature)
@@ -37,7 +43,7 @@ Als de burgerservicenummer van de te bevragen personen wel bekend is, kan de vol
   - [overzicht](./raadpleeg-met-burgerservicenummer/overzicht.feature)
   - [fout cases](./raadpleeg-met-burgerservicenummer/fout-cases.feature)
 
-Het resultaat van deze operaties is een Persoon lijst.
+Het resultaat van deze operatie is een Persoon lijst.
 
 Bij een overleden persoon in het raadpleeg resultaat wordt altijd het indicatieOverleden veld geleverd.  Zie de [indicatie overleden](../overlijden-indicatie-overleden.feature) feature voor meer informatie over dit veld.
 
