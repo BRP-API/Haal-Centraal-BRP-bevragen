@@ -100,3 +100,21 @@ Klik op **X** om de dialog box te sluiten
 ### Update de 'landelijke tabellen' in de 'rvig_haalcentraal_testdata' database
 
 Voer de volgende statement uit: `npm run db:update-waarde-tabellen`
+
+### Update lo3_titel_predikaat tabel script
+
+Voer de volgende regels uit:
+
+```
+ALTER TABLE public.lo3_titel_predikaat RENAME TO lo3_titel_predicaat;
+ALTER TABLE public.lo3_titel_predicaat RENAME COLUMN titel_predikaat TO titel_predicaat;
+ALTER TABLE public.lo3_titel_predicaat RENAME COLUMN titel_predikaat_oms TO titel_predicaat_oms;
+ALTER TABLE public.lo3_titel_predicaat RENAME COLUMN titel_predikaat_soort TO titel_predicaat_soort;
+
+UPDATE public.lo3_titel_predicaat
+SET titel_predicaat_soort = 'predicaat'
+WHERE titel_predicaat_soort = 'predikaat';
+
+ALTER TABLE public.lo3_pl_persoon RENAME COLUMN titel_predikaat TO titel_predicaat;
+```
+
