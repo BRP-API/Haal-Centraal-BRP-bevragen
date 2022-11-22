@@ -40,7 +40,7 @@ services:
 
   brpproxy:
     container_name: brpproxy
-    image: haalcentraal.azurecr.io/brpproxy:2.0.8
+    image: haalcentraal.azurecr.io/brpproxy:2.0.9
     environment:
       - ASPNETCORE_ENVIRONMENT=Release
       - ASPNETCORE_URLS=http://+:5000
@@ -56,9 +56,9 @@ services:
       # - ./src/config/BrpProxy/certificates:/app/certificates
 
   haalcentraal_api:
-    image: haalcentraal.azurecr.io/gba-api:2.0.8
+    image: haalcentraal.azurecr.io/gba-api:2.0.11
     environment:
-      - Database__ConnectionString=Host=postgres;Username=root;Password=root;Database=rvig_haalcentraal_testdata
+      - Database__ConnectionString=database-connectionstring
       - HaalcentraalApi__MaxSearchResults=10
       - ASPNETCORE_URLS=http://+;
       - AuthenticationTypes=Basic
