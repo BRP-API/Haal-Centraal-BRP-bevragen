@@ -2,9 +2,9 @@
 
 De BRP bevragen API maakt het mogelijk om gegevens van actuele personen in de basisregistratie personen (BRP) te raadplegen. De personen worden opgezocht op basis van hun identificerende gegevens.
 
-In de BRP wordt een persoon uniek geïdentificeerd met behulp van hun burgerservicenummer. Is de burgerservicenummer van de te raadplegen persoon/personen bekend, dan moet de [Raadpleeg persoon met burgerservicenummer](#raadplegen-van-personen) operatie worden gebruikt om de betreffende persoon/personen te raadplegen.
+In de BRP wordt een persoon uniek geïdentificeerd met behulp van hun burgerservicenummer. Is het burgerservicenummer van de te raadplegen persoon/personen bekend, dan moet de [Raadpleeg persoon met burgerservicenummer](#raadplegen-van-personen) operatie worden gebruikt om de betreffende persoon/personen te raadplegen.
 
-Is de burgerservicenummer van de te raadplegen persoon/personen niet bekend, dan kan deze worden opgezocht met behulp van de [Zoek persoon](#zoeken-van-personen) operaties.
+Is het burgerservicenummer van de te raadplegen persoon/personen niet bekend, dan kan deze worden opgezocht met behulp van de [Zoek persoon](#zoeken-van-personen) operaties.
 
 ## Wet bescherming persoonsgegevens
 
@@ -30,7 +30,7 @@ De volgende zoek operaties kunnen worden gebruikt om een persoon met niet-uniek 
   - [overzicht](./zoek-met-nummeraanduiding-identificatie/overzicht.feature)
   - [fout cases](./zoek-met-nummeraanduiding-identificatie/fout-cases.feature)
 
-Het resultaat van deze operaties is een PersoonBeperkt lijst. Standaard bevat deze lijst alleen personen die in leven zijn. Om een overleden persoon te zoeken, moet de inclusiefOverledenPersonen parameter op true worden gezet. 
+Het resultaat van deze operaties is een PersoonBeperkt collectie/lijst. Standaard bevat deze lijst alleen personen die in leven zijn. Om een overleden persoon te zoeken, moet de inclusiefOverledenPersonen parameter op true worden gezet. 
 
 Voor overleden personen wordt altijd het indicatieOverleden veld geleverd. Zie de [indicatie overleden](../overlijden-indicatie-overleden.feature) feature voor meer informatie over dit veld.
 
@@ -43,13 +43,13 @@ Als de burgerservicenummer van de te bevragen personen wel bekend is, kan de vol
   - [overzicht](./raadpleeg-met-burgerservicenummer/overzicht.feature)
   - [fout cases](./raadpleeg-met-burgerservicenummer/fout-cases.feature)
 
-Het resultaat van deze operatie is een Persoon lijst.
+Het resultaat van deze operatie is een Persoon collectie/lijst.
 
 Bij een overleden persoon in het raadpleeg resultaat wordt altijd het indicatieOverleden veld geleverd.  Zie de [indicatie overleden](../overlijden-indicatie-overleden.feature) feature voor meer informatie over dit veld.
 
 ## Filteren van de velden van de gevonden personen
 
-Bij elke bevraging moet de fields parameter worden gebruikt om aan te geven welke velden van een persoon geleverd moet worden. Dit is nodig ter bescherming van de privacy van de gevraagde personen en voor verduurzaming. Hoe minder velden er wordt gevraagd, hoe minder de server en het netwerk wordt belast.
+Bij elke bevraging moet de fields parameter worden gebruikt om aan te geven welke velden van een persoon geleverd moet worden. Dit is nodig ter bescherming van de privacy van de gevraagde personen en voor verduurzaming. Hoe minder velden er worden gevraagd, hoe minder de server en het netwerk worden belast.
 
 De volgende velden hoeven niet met de fields parameter te worden gevraagd. Deze worden meegeleverd als de bijbehorende situatie van toepassing is
 
@@ -66,7 +66,7 @@ Om de payload van een response klein te houden, is er voor gekozen om onnodige w
 - null. Voorbeeld: de gevraagde persoon heeft geen voorvoegsel en geen uitsluitingKiesrecht
 - false. Voorbeeld: de gevraagde persoon heeft geen geheimhouding en de gevraagde velden zijn niet in onderzoek
 
-Ook zorgt json deserialisatie libraries voor dat niet geleverde velden automatisch worden gezet naar hun standaard waarde.
+Ook zorgen de json deserialisatie libraries er voor dat niet geleverde velden automatisch worden gezet naar hun standaard waarde.
 
 ## Gegevens in onderzoek
 
