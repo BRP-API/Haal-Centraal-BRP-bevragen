@@ -3,7 +3,7 @@
 Functionaliteit: GBA : RNI-deelnemer voor geleverde gegevens
 
 
-  Rule: de RNI-deelnemer gegevens worden geleverd voor elke categorie waarvan ten minste één gegeven gevraagd is
+  Rule: de RNI-deelnemer gegevens worden geleverd voor de volgende categoriën waarvan ten minste één gegeven gevraagd is
     - RNI-deelnemer gegevens worden ook geleverd wanneer hier niet naar gevraagd is met de fields parameter
     - categorie wordt gevuld met de naam van de categorie waarop de RNI-deelnemer gegevens heeft aangeleverd
       | categorie | naam           |
