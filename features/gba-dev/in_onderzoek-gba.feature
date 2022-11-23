@@ -206,3 +206,43 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 000000152 |
       | naam.voornamen      | Arnitta   |
       | geboorte.datum      | 19231213  |
+
+  Rule: Als 'inOnderzoek' of een of meer velden van ‘inOnderzoek’ m.b.v. 'fields' worden bevraagd dan wordt datumIngangOnderzoek en aanduidingGegevensInOnderzoek teruggeleverd.
+    - mits het/de betreffende veld(en) in onderzoek is/zijn
+
+    Abstract Scenario: Bevraag alleen <omschrijving>
+      Gegeven de persoon met burgerservicenummer '000000590' heeft de volgende gegevens
+      | naam                            | waarde   |
+      | aanduiding in onderzoek (83.10) | 010120   |
+      | datum ingang onderzoek (83.20)  | 20220307 |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000590                       |
+      | fields              | <fields>                        |
+      Dan heeft de response een persoon met de volgende gegevens
+      | naam                                             | waarde   |
+	  | persoonInOnderzoek.datumIngangOnderzoek          | 20220307 |
+	  | persoonInOnderzoek.aanduidingGegevensInOnderzoek | 010120   |
+	
+	  Voorbeelden:
+	  | omschrijving                 | fields                                  |
+	  | datumIngangOnderzoek         | inOnderzoek.datumIngangOnderzoekPersoon |
+	  | individueel inOnderzoek veld | inOnderzoek.burgerservicenummer         |
+
+    Abstract Scenario: Bevraag alleen <omschrijving> maar in de betreffende is er geen gegeven in onderzoek
+      Gegeven de persoon met burgerservicenummer '000000590' heeft de volgende gegevens
+      | naam              | waarde   |
+      | voornamen (02.10) | Arnita   |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000590                       |
+      | fields              | <fields>                        |
+      Dan heeft de response een persoon zonder gegevens
+	
+	  Voorbeelden:
+	  | omschrijving                 | fields                                  |
+	  | datumIngangOnderzoek         | inOnderzoek.datumIngangOnderzoekPersoon |
+	  | individueel inOnderzoek veld | inOnderzoek.burgerservicenummer         |
+	  
