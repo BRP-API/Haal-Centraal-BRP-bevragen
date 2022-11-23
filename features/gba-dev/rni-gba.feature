@@ -98,27 +98,6 @@ Functionaliteit: GBA : RNI-deelnemer voor geleverde gegevens
       | voornamen | Peter  |
       En heeft de persoon GEEN 'rni'
 
-    Scenario: niet leveren RNI-deelnemer voor een categorie waar geen gegeven uit geleverd is
-      Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende gegevens
-      | naam                  | waarde |
-      | voornamen (02.10)     | Peter  |
-      | geslachtsnaam (02.40) | Jansen |
-      En de persoon heeft de volgende 'verblijfplaats' gegevens
-      | naam                         | waarde                               |
-      | land (13.10)                 | 5010                                 |
-      | rni-deelnemer (88.10)        | 0201                                 |
-      | omschrijving verdrag (88.20) | Artikel 45 EU-Werkingsverdrag (VWEU) |
-      Als gba personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                               |
-      | type                | RaadpleegMetBurgerservicenummer                      |
-      | burgerservicenummer | 000000036                                            |
-      | fields              | naam.voornamen,verblijfplaats.verblijfadres.postcode |
-      Dan heeft de response een persoon met de volgende 'naam' gegevens
-      | naam      | waarde |
-      | voornamen | Peter  |
-      En heeft de persoon een 'verblijfplaats' zonder gegevens
-      En heeft de persoon GEEN 'rni'
-
     Scenario: niet leveren RNI-deelnemer categorie 7 wanneer er geen opschorting en geen geheimhouding is en geen inschrijving gegevens gevraagd
       Gegeven de persoon met burgerservicenummer '000000048' heeft de volgende 'inschrijving' gegevens
       | naam                         | waarde                                      |
