@@ -326,7 +326,7 @@ Rule: Een voornamen waarde is een string bestaande uit minimaal 1 en maximaal 19
     | pattern | voornamen | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,199}\*{0,1}$. |
 
     Voorbeelden:
-    | titel                                                   | voornamen                                                                                                                                                                                                       |
+    | titel                                                   | voornamen                                                                                                                                                                                                           |
     | De opgegeven voornamen zijn meer dan 200 karakters lang | abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ |
     | De opgegeven voornamen bevat ongeldige karakters        | <script>alert('hello world');</script>                                                                                                                                                                              |
 
@@ -362,7 +362,7 @@ Rule: Een voornamen waarde met wildcard is een string bestaande uit minimaal 1 e
     | *iet                   |
     | *ETER                  |
 
-Rule: Een voorvoegsel waarde is een string bestaande uit minimaal 1 en maximaal 1o karakters. Deze karakters kunnen zijn:
+Rule: Een voorvoegsel waarde is een string bestaande uit minimaal 1 en maximaal 10 karakters. Deze karakters kunnen zijn:
       - kleine letters (a-z)
       - hoofdletters (A-Z)
       - spatie ( ) en de enkele aanhalingsteken (')
@@ -443,3 +443,32 @@ Rule: inclusiefOverledenPersonen is een boolean (true of false waarde)
     | inclusief overleden personen |
     |                              |
     | geen boolean                 |
+
+Rule: Een gemeenteVanInschrijving waarde bestaat uit 4 cijfers
+
+  @fout-case
+  Abstract Scenario: <titel>
+    Als personen wordt gezocht met de volgende parameters
+    | naam                    | waarde                              |
+    | type                    | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam           | maassen                             |
+    | geboortedatum           | 1983-05-26                          |
+    | gemeenteVanInschrijving | <gemeente code>                     |
+    | fields                  | burgerservicenummer                 |
+    Dan heeft de response een object met de volgende gegevens
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: gemeenteVanInschrijving.     |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
+    En heeft het object de volgende 'invalidParams' gegevens
+    | code    | name                    | reason                                      |
+    | pattern | gemeenteVanInschrijving | Waarde voldoet niet aan patroon ^[0-9]{4}$. |
+
+    Voorbeelden:
+    | titel                                                                    | gemeente code                          |
+    | De opgegeven gemeenteVanInschrijving waarde is minder dan 4 cijfers lang | 123                                    |
+    | De opgegeven gemeenteVanInschrijving waarde is meer dan 4 cijfers lang   | 12345                                  |
+    | De opgegeven gemeenteVanInschrijving waarde bevat ongeldige karakters    | <script>alert('hello world');</script> |

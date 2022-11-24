@@ -292,7 +292,7 @@ Rule: Een gemeenteVanInschrijving waarde bestaat uit 4 cijfers
     | De opgegeven gemeenteVanInschrijving waarde is meer dan 4 cijfers lang   | 12345                                  |
     | De opgegeven gemeenteVanInschrijving waarde bevat ongeldige karakters    | <script>alert('hello world');</script> |
 
-Rule: Een voorvoegsel waarde is een string bestaande uit minimaal 1 en maximaal 1o karakters. Deze karakters kunnen zijn:
+Rule: Een voorvoegsel waarde is een string bestaande uit minimaal 1 en maximaal 10 karakters. Deze karakters kunnen zijn:
       - kleine letters (a-z)
       - hoofdletters (A-Z)
       - spatie ( ) en de enkele aanhalingsteken (')

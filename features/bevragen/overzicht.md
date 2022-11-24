@@ -2,7 +2,7 @@
 
 De BRP bevragen API maakt het mogelijk om gegevens van actuele personen in de basisregistratie personen (BRP) te raadplegen. De personen worden opgezocht op basis van hun identificerende gegevens.
 
-In de BRP wordt een persoon uniek geïdentificeerd met behulp van hun burgerservicenummer. Is het burgerservicenummer van de te raadplegen persoon/personen bekend, dan moet de [Raadpleeg persoon met burgerservicenummer](#raadplegen-van-personen) operatie worden gebruikt om de betreffende persoon/personen te raadplegen.
+In de BRP worden personen uniek geïdentificeerd met behulp van hun burgerservicenummer. Is het burgerservicenummer van de te raadplegen persoon/personen bekend, dan moet de [Raadpleeg persoon met burgerservicenummer](#raadplegen-van-personen) operatie worden gebruikt om de betreffende persoon/personen te raadplegen.
 
 Is het burgerservicenummer van de te raadplegen persoon/personen niet bekend, dan kan deze worden opgezocht met behulp van de [Zoek persoon](#zoeken-van-personen) operaties.
 
@@ -66,7 +66,7 @@ Om de payload van een response klein te houden, is er voor gekozen om onnodige w
 - null. Voorbeeld: de gevraagde persoon heeft geen voorvoegsel en geen uitsluitingKiesrecht
 - false. Voorbeeld: de gevraagde persoon heeft geen geheimhouding en de gevraagde velden zijn niet in onderzoek
 
-Ook zorgen de json deserialisatie libraries er voor dat niet geleverde velden automatisch worden gezet naar hun standaard waarde.
+Ook zorgen de json deserialisatie libraries er voor dat niet geleverde velden automatisch worden gezet naar de standaard waarde behorende bij het type (false bij boolean type, null bij string type).
 
 ## Gegevens in onderzoek
 
