@@ -5,7 +5,7 @@ Functionaliteit: adressering - fields alias
   Wanneer een consumer van de BRP API niet is geautoriseerd voor het bevragen van de adresregel velden voor een verblijfplaats buitenland
   Dan moet de consumer de adresseringBinnenland fields alias gebruiken om aan te geven dat hij adresregel velden voor een verblijfplaats binnenland vraagt
 
-Rule: de standaard adresregel (verkorte/volledige) field paden kan worden gebruikt door een consumer die is geautoriseerd voor het bevragen van adresregels horende bij verblijfplaats buitenland
+Rule: de standaard adresregel (verkorte/volledige) field paden kan worden gebruikt door een consumer die niet is geautoriseerd voor het bevragen van adresregels horende bij verblijfplaats buitenland
 
   Abstract Scenario: consumer is geautoriseerd voor 'adressering buitenland' en vraagt <sub titel>
     Gegeven de consumer is geautoriseerd voor 'adressering binnenland' gegevens
