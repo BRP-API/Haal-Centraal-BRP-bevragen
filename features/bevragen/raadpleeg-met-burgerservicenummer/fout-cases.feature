@@ -87,7 +87,7 @@ Rule: Een burgerservicenummer is een string bestaande uit exact 9 cijfers
     | burgerservicenummers       | titel                                                                       |
     | 12345678                   | De opgegeven burgerservicenummer is een string met minder dan negen cijfers |
     | 1234567890                 | De opgegeven burgerservicenummer is een string met meer dan negen cijfers   |
-    | <script>123456789</script> | De opgegeven burgerservicenummer bevat niet-cijfer karakters                |  
+    | <script>123456789</script> | De opgegeven burgerservicenummer bevat niet-cijfer karakters                |
 
   @fout-case
   Scenario: De burgerservicenummer parameter bevat meerdere ongeldige burgerservicenummers
@@ -129,3 +129,31 @@ Rule: De burgerservicenummer parameter bevat een lijst van maximaal 20 burgerser
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name                | reason                         |
     | maxItems | burgerservicenummer | Array bevat meer dan 20 items. |
+
+Rule: Een gemeenteVanInschrijving waarde bestaat uit 4 cijfers
+
+  @fout-case
+  Abstract Scenario: <titel>
+    Als personen wordt gezocht met de volgende parameters
+    | naam                    | waarde                          |
+    | type                    | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer     | 999999321,999995492             |
+    | gemeenteVanInschrijving | <gemeente code>                 |
+    | fields                  | burgerservicenummer             |
+    Dan heeft de response een object met de volgende gegevens
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: gemeenteVanInschrijving.     |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
+    En heeft het object de volgende 'invalidParams' gegevens
+    | code    | name                    | reason                                      |
+    | pattern | gemeenteVanInschrijving | Waarde voldoet niet aan patroon ^[0-9]{4}$. |
+
+    Voorbeelden:
+    | titel                                                                    | gemeente code                          |
+    | De opgegeven gemeenteVanInschrijving waarde is minder dan 4 cijfers lang | 123                                    |
+    | De opgegeven gemeenteVanInschrijving waarde is meer dan 4 cijfers lang   | 12345                                  |
+    | De opgegeven gemeenteVanInschrijving waarde bevat ongeldige karakters    | <script>alert('hello world');</script> |

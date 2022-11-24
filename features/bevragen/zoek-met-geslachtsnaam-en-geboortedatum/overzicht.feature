@@ -31,6 +31,25 @@ Rule: Geslachtsnaam (niet hooflettergevoelig) en geboortedatum zijn verplichte p
     | maassen       |
     | MAASSEN       |
 
+  Abstract Scenario: Zoek een persoon met diakrieten in zijn geslachtsnaam
+    Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
+    | geboortedatum (03.10) | geslachtsnaam (02.40) | geslachtsnaam (diakrieten) | voornamen (02.10) |
+    | 19830526              | Kaster                | Käster                     | Albertus Johannes |
+    Als personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | <geslachtsnaam>                     |
+    | geboortedatum | 1983-05-26                          |
+    | fields        | burgerservicenummer                 |
+    Dan heeft de response een persoon met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 000000024 |
+
+    Voorbeelden:
+    | geslachtsnaam |
+    | Käster        |
+    | Kaster        |
+
   Abstract Scenario: Zoek een persoon met een deel van zijn geslachtsnaam
     Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
     | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) |

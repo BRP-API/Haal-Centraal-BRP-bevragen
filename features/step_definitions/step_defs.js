@@ -130,6 +130,7 @@ const columnNameMap = new Map([
     ['adellijke titel of predicaat (02.20)', 'titel_predicaat' ],
     ['voorvoegsel (02.30)', 'geslachts_naam_voorvoegsel' ],
     ['geslachtsnaam (02.40)', 'geslachts_naam' ],
+    ['geslachtsnaam (diakrieten)', 'diak_geslachts_naam'],
 
     ['geboortedatum (03.10)', 'geboorte_datum'],
     ['geboorteplaats (03.20)', 'geboorte_plaats'],
@@ -1174,6 +1175,9 @@ Given(/^(?:de|het) '(.*)' heeft GEEN '(.*)' gegevens$/, function (_relatie, _geg
     // doe niets
 });
 
+Given(/^de consumer is geautoriseerd voor '(.*)' gegevens$/, function (scope) {
+});
+
 function createRequestBody(dataTable) {
     let requestBody = {};
     dataTable.hashes()
@@ -1497,8 +1501,14 @@ Then(/^heeft (?:de|het) '(.*)' ?(?:alleen)? de volgende '(.*)' gegevens$/, funct
     const expectedPersoon = this.context.expected[this.context.expected.length-1];
 
     const relaties = toCollectionName(relatie);
-    let expectedRelatie = expectedPersoon[relaties][expectedPersoon[relaties].length-1];
-    expectedRelatie[gegevensgroep] = expected;
+    if(relaties !== undefined) {
+        let expectedRelatie = expectedPersoon[relaties][expectedPersoon[relaties].length-1];
+        expectedRelatie[gegevensgroep] = expected;
+    }
+    else {
+        let expectedRelatie = expectedPersoon[relatie];
+        expectedRelatie[gegevensgroep] = expected;
+    }
 });
 
 Then(/^heeft (?:de|het) '(.*)' een leeg '(.*)' object$/, function(relatie, gegevensgroep) {
