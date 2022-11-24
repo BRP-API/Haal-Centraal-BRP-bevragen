@@ -59,6 +59,27 @@ De volgende velden hoeven niet met de fields parameter te worden gevraagd. Deze 
 - opschortingBijhouding
 - rni
 
+### Filteren van verblijfplaats velden en de adresregel velden van de adressering gegevensgroep
+
+Voor verblijfplaats en adressering zijn er twee autorisatie profielen:
+
+- geautoriseerd voor verblijfplaats binnenland en verblijfplaats buitenland gegevens
+- geautoriseerd voor alleen verblijfplaats binnenland gegevens
+
+Consumers die geautoriseerd zijn voor alleen verblijfplaats binnenland gegevens kunnen hierdoor de standaard veld paden van verblijfplaats en adresregels niet gebruiken om alleen verblijfplaats binnenland velden te vragen. Met deze veld paden worden zowel verblijfplaats binnenland als verblijfplaats buitenland gevraagd.
+Om het mogelijk te maken voor consumers die niet geautoriseerd zijn voor het bevragen van verblijfplaats buitenland gegevens, zijn de volgende twee fields aliassen gedefinieerd waarmee kan worden aangegeven dat alleen verblijfplaats binnenland gegevens wordt opgevraagd: 
+
+- verblijfplaatsBinnenland
+- adresseringBinnenland
+
+Voor de alias veld paden zijn er geen verkorte paden.
+
+Het gebruik van de fields aliassen voor het opvragen van adresregels en verblijfplaats velden zijn beschreven in de volgende feature bestanden:
+- [adresregels fields alias](./persoon/adressering/adres-regels/fields-alias.feature)
+- [adresregels fields alias fout cases](./persoon/adressering/adres-regels/fields-alias-fout-cases.feature)
+- [verblijfplaats fields alias](./persoon/verblijfplaats/fields-alias.feature)
+- [verblijfplaats fields alias fout cases](./persoon/verblijfplaats/fields-alias-fout-cases.feature)
+
 ## Geen/null/false waarde, leeg object waarde en onbekend waarde
 
 Om de payload van een response klein te houden, is er voor gekozen om onnodige waarden en hun veld niet te serialiseren. Deze waarden zijn:
