@@ -63,8 +63,8 @@ De volgende velden hoeven niet met de fields parameter te worden gevraagd. Deze 
 
 Voor verblijfplaats en adressering zijn er twee autorisatie profielen:
 
-- geautoriseerd voor verblijfplaats binnenland en verblijfplaats buitenland gegevens
-- geautoriseerd voor alleen verblijfplaats binnenland gegevens
+- geautoriseerd voor verblijfplaats binnenland (Adres en Locatie) en verblijfplaats buitenland gegevens
+- geautoriseerd voor alleen verblijfplaats binnenland (Adres en Locatie) gegevens
 
 Consumers die geautoriseerd zijn voor alleen verblijfplaats binnenland gegevens kunnen hierdoor de standaard veld paden van verblijfplaats en adresregels niet gebruiken om alleen verblijfplaats binnenland velden te vragen. Met deze veld paden worden zowel verblijfplaats binnenland als verblijfplaats buitenland gevraagd.
 Om het mogelijk te maken voor consumers die niet geautoriseerd zijn voor het bevragen van verblijfplaats buitenland gegevens, zijn de volgende twee fields aliassen gedefinieerd waarmee kan worden aangegeven dat alleen verblijfplaats binnenland gegevens wordt opgevraagd: 

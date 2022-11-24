@@ -78,7 +78,7 @@ Rule: de standaard adresregel (verkorte/volledige) field paden kan worden gebrui
     | land.code         | 6014                         |
     | land.omschrijving | Verenigde Staten van Amerika |
 
-Rule: de 'adresseringBinnenland' field alias moet worden gebruikt door een consumer niet is geautoriseerd voor het bevragen van adresregels horende bij verblijfplaats buitenland
+Rule: de 'adresseringBinnenland' field alias moet worden gebruikt door een consumer die niet is geautoriseerd voor het bevragen van adresregels horende bij verblijfplaats buitenland
 
   Scenario: consumer is niet geautoriseerd voor 'adressering buitenland' en vraagt met de fields alias <sub titel> van een verblijfplaats buitenland
     Gegeven de consumer is geautoriseerd voor 'adressering binnenland' gegevens
