@@ -1175,6 +1175,9 @@ Given(/^(?:de|het) '(.*)' heeft GEEN '(.*)' gegevens$/, function (_relatie, _geg
     // doe niets
 });
 
+Given(/^de consumer is geautoriseerd voor '(.*)' gegevens$/, function (scope) {
+});
+
 function createRequestBody(dataTable) {
     let requestBody = {};
     dataTable.hashes()
