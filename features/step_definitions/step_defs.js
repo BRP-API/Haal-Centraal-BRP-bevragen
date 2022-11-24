@@ -1498,8 +1498,14 @@ Then(/^heeft (?:de|het) '(.*)' ?(?:alleen)? de volgende '(.*)' gegevens$/, funct
     const expectedPersoon = this.context.expected[this.context.expected.length-1];
 
     const relaties = toCollectionName(relatie);
-    let expectedRelatie = expectedPersoon[relaties][expectedPersoon[relaties].length-1];
-    expectedRelatie[gegevensgroep] = expected;
+    if(relaties !== undefined) {
+        let expectedRelatie = expectedPersoon[relaties][expectedPersoon[relaties].length-1];
+        expectedRelatie[gegevensgroep] = expected;
+    }
+    else {
+        let expectedRelatie = expectedPersoon[relatie];
+        expectedRelatie[gegevensgroep] = expected;
+    }
 });
 
 Then(/^heeft (?:de|het) '(.*)' een leeg '(.*)' object$/, function(relatie, gegevensgroep) {
