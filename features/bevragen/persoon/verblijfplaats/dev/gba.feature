@@ -56,6 +56,3 @@ Rule: verblijfplaats velden met standaard waarde moeten worden geleverd
     | woonplaats (11.70)                         | .                | woonplaats                       |
     | identificatiecode verblijfplaats (11.80)   | 0000000000000000 | adresseerbaarObjectIdentificatie |
     | identificatiecode nummeraanduiding (11.90) | 0000000000000000 | nummeraanduidingIdentificatie    |
-
-  Abstract Scenario: verblijfplaats buitenland veld '<gba naam>' wordt gevraagd
-  
