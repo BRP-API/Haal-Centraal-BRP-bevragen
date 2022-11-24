@@ -130,6 +130,7 @@ const columnNameMap = new Map([
     ['adellijke titel of predicaat (02.20)', 'titel_predicaat' ],
     ['voorvoegsel (02.30)', 'geslachts_naam_voorvoegsel' ],
     ['geslachtsnaam (02.40)', 'geslachts_naam' ],
+    ['geslachtsnaam (diakrieten)', 'diak_geslachts_naam'],
 
     ['geboortedatum (03.10)', 'geboorte_datum'],
     ['geboorteplaats (03.20)', 'geboorte_plaats'],
