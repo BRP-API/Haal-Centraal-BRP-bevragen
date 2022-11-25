@@ -19,7 +19,7 @@ Versie 2.0 (IO) is de versie waarmee de pilot wordt gestart. <!--Lees de [Gettin
 ## Direct uitproberen?
 * Bekijk de specificaties met [Swagger UI](./swagger-ui) of [Redoc](./redoc)
 * Lees de [Getting started](./getting-started)
-* Download de [technische specificaties](../blob/master/specificatie/genereervariant/openapi.yaml){:target="_blank" rel="noopener"}
+* Download de [technische specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/specificatie/genereervariant/openapi.yaml){:target="_blank" rel="noopener"}
 * Vraag een API-key voor toegang tot de Haal Centraal probeeromgeving aan bij de product owner [c.dingemanse@comites.nl](mailto:c.dingemanse@comites.nl)
 
 ## Heb je meer nodig?
