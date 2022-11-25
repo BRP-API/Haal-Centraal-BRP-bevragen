@@ -3,7 +3,7 @@
 @gba
 Functionaliteit: Zoek met postcode en huisnummer (GBA)
 
-Rule: Postcode is niet hoofdlettergevoelig
+Rule: Postcode is niet hoofdlettergevoelig en mag zowel met als zonder spatie tussen het cijfer- en letterdeel worden verstrekt.
 
   Abstract Scenario: <titel> 
     Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens

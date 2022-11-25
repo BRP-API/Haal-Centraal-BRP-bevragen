@@ -167,7 +167,6 @@ Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven 
 
 Rule: Voor de straat parameter kan wildcard matching (niet hooflettergevoelig) worden toegepast.
       Er moet dan minimaal 7 letters (exclusief de wildcard "*" teken) worden opgegeven.
-      De wildcard moet als laatste karakter worden opgegeven.
       De wildcard komt overeen met nul of meer (niet-spatie) karakters.
       De wildcard kan als eerste of als laatste karakter worden opgegeven.
 

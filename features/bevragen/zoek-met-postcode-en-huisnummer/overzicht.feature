@@ -43,7 +43,7 @@ Functionaliteit: Zoek met postcode en huisnummer
     | gemeente_code | postcode (11.60) | huisnummer (11.20) |
     | 0600          | 2630HJ           | 2                  |
 
-Rule: Postcode (niet hoofdlettergevoelig) en huisnummer zijn verplichte parameters
+Rule: Postcode (niet hoofdlettergevoelig) en huisnummer zijn verplichte parameters. Postcode mag zowel met als zonder spatie tussen de cijfer- en letterdeel worden verstrekt.
 
   Abstract Scenario: Zoek een persoon met de postcode (<sub-titel>) en huisnummer van het adres van zijn verblijfplaats
     Als personen wordt gezocht met de volgende parameters
