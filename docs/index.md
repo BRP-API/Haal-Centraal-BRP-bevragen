@@ -10,15 +10,14 @@ title: Haal Centraal BRP persoon bevragen
 API voor het zoeken en raadplegen van actuele personen, partners, ouders en kinderen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI).
 De API wordt nog niet door RvIG aangeboden. Om de migratie naar API's te versnellen besluiten sommige gemeenten de API zelf aan te bieden.
 
-De laatste versie is 1.3.1. Lees de [release notes](./releasenotes) om te zien wat er gewijzigd is.
+De laatste versie is 1.3.1. Lees de [release notes](releasenotes.md) om te zien wat er gewijzigd is.
 
 Naast versie 2.0 beta (API-Lab) is ook versie 2.0 (IO) gepubliceerd.
 Versie 2.0 beta (API-Lab) is de versie die is gebruikt tijdens het API-Lab van 7 april j.l. Lees de [Getting started](./getting-started-v2-beta) om de API Lab proefomgeving te bevragen.
 Versie 2.0 (IO) is de versie waarmee de pilot wordt gestart. <!--Lees de [Getting started](./getting-started-v2-proxy) voor informatie over het gebruik van de proxy applicatie voor fase 1 van de pilot.-->
 
 ## Direct uitproberen?
-<!-- * Bekijk de specificaties met [Swagger UI](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/swagger-ui) of [Redoc](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/redoc) -->
-* Bekijk de specificaties met [Swagger UI](./swagger-ui) of [Redoc](./redoc)
+* Bekijk de specificaties met [Swagger UI](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/swagger-ui) of [Redoc](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/redoc)
 * Lees de [Getting started](./getting-started)
 * Download de [technische specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/specificatie/genereervariant/openapi.yaml){:target="_blank" rel="noopener"}
 * Vraag een API-key voor toegang tot de Haal Centraal probeeromgeving aan bij de product owner [c.dingemanse@comites.nl](mailto:c.dingemanse@comites.nl)
