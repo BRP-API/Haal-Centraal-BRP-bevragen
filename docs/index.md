@@ -10,7 +10,7 @@ title: Haal Centraal BRP persoon bevragen
 API voor het zoeken en raadplegen van actuele personen, partners, ouders en kinderen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI).
 De API wordt nog niet door RvIG aangeboden. Om de migratie naar API's te versnellen besluiten sommige gemeenten de API zelf aan te bieden.
 
-De laatste versie is 1.3.1. Lees de [release notes](releasenotes) om te zien wat er gewijzigd is.
+De laatste versie is 1.3.1. Lees de [release notes](./releasenotes) om te zien wat er gewijzigd is.
 
 Naast versie 2.0 beta (API-Lab) is ook versie 2.0 (IO) gepubliceerd.
 Versie 2.0 beta (API-Lab) is de versie die is gebruikt tijdens het API-Lab van 7 april j.l. Lees de [Getting started](./getting-started-v2-beta) om de API Lab proefomgeving te bevragen.
