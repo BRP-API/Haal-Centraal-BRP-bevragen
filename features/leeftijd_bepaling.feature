@@ -71,7 +71,7 @@ Functionaliteit: LeeftijdBepaling
     Gegeven de persoon met burgerservicenummer '000000255' heeft de volgende gegevens
       | naam                  | waarde   |
       | geboortedatum (03.10) | 19830000 |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000255                       |
@@ -87,7 +87,7 @@ Functionaliteit: LeeftijdBepaling
     Gegeven de persoon met burgerservicenummer '000000267' heeft de volgende gegevens
       | naam                  | waarde   |
       | geboortedatum (03.10) | 19830500 |
-      Als gba personen op '<raadpleeg datum>' wordt gezocht met de volgende parameters
+      Als personen op '<raadpleeg datum>' wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000267                       |
@@ -114,7 +114,7 @@ Functionaliteit: LeeftijdBepaling
       En de persoon heeft de volgende 'overlijden' gegevens
       | naam                     | waarde   |
       | datum overlijden (08.10) | 20040319 |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000279                       |
