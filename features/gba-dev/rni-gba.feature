@@ -58,13 +58,13 @@ Functionaliteit: GBA : RNI-deelnemer voor geleverde gegevens
       | naam                | waarde                                                |
       | type                | RaadpleegMetBurgerservicenummer                       |
       | burgerservicenummer | 000000024                                             |
-      | fields              | naam.voornamen,verblijfplaats.verblijfadres.land.code |
+      | fields              | naam.voornamen,verblijfplaats.land.code |
       Dan heeft de response een persoon met de volgende 'naam' gegevens
       | naam      | waarde |
       | voornamen | Peter  |
       En heeft de persoon de volgende 'verblijfplaats' gegevens
-      | naam                    | waarde                   |
-      | verblijfadres.land.code | 5010                     |
+      | naam                             | waarde                   |
+      | verblijfplaats.land.code         | 5010                     |
       En heeft de persoon een 'rni' met de volgende gegevens
       | naam                   | waarde                                          |
       | deelnemer.code         | 0101                                            |
