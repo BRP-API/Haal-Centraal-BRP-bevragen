@@ -127,7 +127,7 @@ const columnNameMap = new Map([
     ['burgerservicenummer (01.20)', 'burger_service_nr' ],
 
     ['voornamen (02.10)', 'voor_naam' ],
-    ['adellijke titel of predicaat (02.20)', 'titel_predicaat' ],
+    ['adellijke titel of predicaat (02.20)', 'titel_predikaat' ],
     ['voorvoegsel (02.30)', 'geslachts_naam_voorvoegsel' ],
     ['geslachtsnaam (02.40)', 'geslachts_naam' ],
     ['geslachtsnaam (diakrieten)', 'diak_geslachts_naam'],
