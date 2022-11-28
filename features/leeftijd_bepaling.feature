@@ -68,10 +68,10 @@ Functionaliteit: LeeftijdBepaling
   Rule: bij een geboortedatum met alleen jaar bekend wordt de leeftijd niet geleverd
 
     Scenario: Alleen jaar van geboortedatum is bekend
-    Gegeven de persoon met burgerservicenummer '000000255' heeft de volgende 'geboorte' gegevens
+    Gegeven de persoon met burgerservicenummer '000000255' heeft de volgende gegevens
       | naam                  | waarde   |
       | geboortedatum (03.10) | 19830000 |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000255                       |
@@ -84,10 +84,10 @@ Functionaliteit: LeeftijdBepaling
 
     @skip-verify
     Abstract Scenario: Jaar en maand van geboortedatum zijn bekend
-    Gegeven de persoon met burgerservicenummer '000000267' heeft de volgende 'geboorte' gegevens
+    Gegeven de persoon met burgerservicenummer '000000267' heeft de volgende gegevens
       | naam                  | waarde   |
       | geboortedatum (03.10) | 19830500 |
-      Als personen op '<raadpleeg datum>' wordt gezocht met de volgende parameters
+      Als gba personen op '<raadpleeg datum>' wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000267                       |
@@ -108,13 +108,13 @@ Functionaliteit: LeeftijdBepaling
   Rule: wanneer de persoon overleden is wordt de leeftijd niet geleverd
 
     Scenario: Persoon is overleden
-    Gegeven de persoon met burgerservicenummer '000000279' heeft de volgende 'geboorte' gegevens
+    Gegeven de persoon met burgerservicenummer '000000279' heeft de volgende gegevens
       | naam                  | waarde   |
       | geboortedatum (03.10) | 19830526 |
       En de persoon heeft de volgende 'overlijden' gegevens
       | naam                     | waarde   |
       | datum overlijden (08.10) | 20040319 |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000279                       |
