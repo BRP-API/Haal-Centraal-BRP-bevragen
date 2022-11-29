@@ -119,13 +119,12 @@ Functionaliteit: Kinderen van een persoon raadplegen
       En het 'kind' is gewijzigd naar de volgende gegevens
       | burgerservicenummer (01.20) | voornamen (02.10) | geslachtsaanduiding (04.10) |
       | 000000097                   | Karel             | M                           |
-#      De e2e automation code ondersteund nog niet het opvoeren van meer dan 1 PL record, de volgende Gegeven stappen zijn vooralsnog dan ook uitbecommentarieerd.
-#      En de persoon met burgerservicenummer '000000097' heeft de volgende gegevens
-#      | voornamen (02.10) | geslachtsaanduiding (04.10) |
-#      | Karel             | M                           |
-#      En de persoon is gewijzigd naar de volgende gegevens
-#      | voornamen (02.10) | geslachtsaanduiding (04.10) |
-#      | Charlotte         | V                           |
+      En de persoon met burgerservicenummer '000000097' heeft de volgende gegevens
+      | voornamen (02.10) | geslachtsaanduiding (04.10) |
+      | Karel             | M                           |
+      En de persoon is gewijzigd naar de volgende gegevens
+      | voornamen (02.10) | geslachtsaanduiding (04.10) |
+      | Charlotte         | V                           |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                               |
       | type                | RaadpleegMetBurgerservicenummer                      |
