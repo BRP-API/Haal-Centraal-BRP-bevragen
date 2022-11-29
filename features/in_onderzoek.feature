@@ -577,18 +577,18 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 000000309                       |
       | fields              | <veld>                          |
       Dan heeft de response een persoon met de volgende gegevens
-      | naam                                                | waarde         |
-      | <veld>                                              | <waarde>       |
-      | geslacht.omschrijving                               | <omschrijving> |
-      | inOnderzoek.<in onderzoek>                          | true           |
-      | inOnderzoek.datumIngangOnderzoekPersoon.datum       | 2022-03-07     |
-      | inOnderzoek.datumIngangOnderzoekPersoon.type        | Datum          |
-      | inOnderzoek.datumIngangOnderzoekPersoon.langFormaat | 7 maart 2022   |
+      | naam                                                | waarde                |
+      | <veld>                                              | <waarde>              |
+      | <omschrijving veld>                                 | <omschrijving waarde> |
+      | inOnderzoek.<in onderzoek>                          | true                  |
+      | inOnderzoek.datumIngangOnderzoekPersoon.datum       | 2022-03-07            |
+      | inOnderzoek.datumIngangOnderzoekPersoon.type        | Datum                 |
+      | inOnderzoek.datumIngangOnderzoekPersoon.langFormaat | 7 maart 2022          |
 
       Voorbeelden:
-      | aanduiding in onderzoek | in onderzoek        | veld                | waarde     | omschrijving |
-      | 010120                  | burgerservicenummer | burgerservicenummer | 000000309  |              |
-      | 010410                  | geslacht            | geslacht.code       | M          | Man          |
+      | aanduiding in onderzoek | in onderzoek        | veld                | waarde     | omschrijving veld     | omschrijving waarde |
+      | 010120                  | burgerservicenummer | burgerservicenummer | 000000309  |                       |                     |
+      | 010410                  | geslacht            | geslacht.code       | M          | geslacht.omschrijving | man                 |
 
     Abstract Scenario: persoon heeft <groep> <in onderzoek> in onderzoek
       Gegeven de persoon met burgerservicenummer '000000310' heeft de volgende gegevens
@@ -602,20 +602,22 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 000000310                       |
       | fields              | <groep>.<veld>                  |
       Dan heeft de response een persoon met de volgende gegevens
-      | naam                                                 | waarde        |
-      | <groep>.<veld>                                       | <waarde>      |
-      | <groep>.datum.type                                   | <type>        |
-      | <groep>.datum.langFormaat                            | <langFormaat> |
-      | <groep>.inOnderzoek.<in onderzoek>                   | true          |
-      | <groep>.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07    |
-      | <groep>.inOnderzoek.datumIngangOnderzoek.type        | Datum         |
-      | <groep>.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022  |
+      | naam                                                 | waarde                |
+      | <groep>.<veld>                                       | <waarde>              |
+      | <groep>.<omschrijving veld>                          | <omschrijving waarde> |
+      | <groep>.<soort veld>                                 | <soort waarde>        |
+      | <groep>.datum.type                                   | <type>                |
+      | <groep>.datum.langFormaat                            | <langFormaat>         |
+      | <groep>.inOnderzoek.<in onderzoek>                   | true                  |
+      | <groep>.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07            |
+      | <groep>.inOnderzoek.datumIngangOnderzoek.type        | Datum                 |
+      | <groep>.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022          |
 
       Voorbeelden:
-      | aanduiding in onderzoek | in onderzoek            | veld                         | groep    | waarde     | naam                                 | bronwaarde | type  | langFormaat       |
-      | 010220                  | adellijkeTitelPredicaat | adellijkeTitelPredicaat.code | naam     | H          | adellijke titel of predicaat (02.20) | H          |       |                   |
-      | 016110                  | aanduidingNaamgebruik   | aanduidingNaamgebruik.code   | naam     | E          | aanduiding naamgebruik (61.10)       | E          |       |                   |
-      | 010310                  | datum                   | datum.datum                  | geboorte | 2001-09-28 | geboortedatum (03.10)                | 20010928   | Datum | 28 september 2001 |
+      | aanduiding in onderzoek | in onderzoek            | groep    | veld                         | waarde     | omschrijving veld                    | omschrijving waarde           | soort veld                    | soort waarde | naam                                 | bronwaarde | type  | langFormaat       | 
+      | 010220                  | adellijkeTitelPredicaat | naam     | adellijkeTitelPredicaat.code | H          | adellijkeTitelPredicaat.omschrijving | hertog                        | adellijkeTitelPredicaat.soort | titel        | adellijke titel of predicaat (02.20) | H          |       |                   |
+      | 016110                  | aanduidingNaamgebruik   | naam     | aanduidingNaamgebruik.code   | E          | aanduidingNaamgebruik.omschrijving   | gebruik alleen de eigen naam. |                               |              | aanduiding naamgebruik (61.10)       | E          |       |                   |
+      | 010310                  | datum                   | geboorte | datum.datum                  | 2001-09-28 |                                      |                               |                               |              | geboortedatum (03.10)                | 20010928   | Datum | 28 september 2001 |
 
 # Afhankelijk van de uitkomst van de discussie over het vereenvoudigen van fields bij verblijfplaats moet dit scenario mogelijk worden aangepast.
 # 'Mogelijk' omdat het scenario in principe correct is aangezien het levert wat aanwezig is. De vraag is of het ook realistisch moet zijn.
