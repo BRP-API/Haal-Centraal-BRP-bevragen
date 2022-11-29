@@ -1058,11 +1058,11 @@ Functionaliteit: in onderzoek
       | burgerservicenummer | 000000565                                     |
       | fields              | immigratie.indicatieVestigingVanuitBuitenland |
       Dan heeft de response een persoon met de volgende 'immigratie' gegevens
-      | naam                                                | waarde       |
-      | inOnderzoek.indicatieVestigingVanuitBuitenland      | true         |
-      | inOnderzoek.datumIngangOnderzoek.datum              | 2022-03-07   |
-      | inOnderzoek.datumIngangOnderzoek.type               | Datum        |
-      | inOnderzoek.datumIngangOnderzoekPersson.langFormaat | 7 maart 2022 |
+      | naam                                           | waarde       |
+      | inOnderzoek.indicatieVestigingVanuitBuitenland | true         |
+      | inOnderzoek.datumIngangOnderzoek.datum         | 2022-03-07   |
+      | inOnderzoek.datumIngangOnderzoek.type          | Datum        |
+      | inOnderzoek.datumIngangOnderzoek.langFormaat   | 7 maart 2022 |
 
     Abstract Scenario: verblijfplaats adresregel1, adresregel2 en woonplaats in onderzoek bij <gegeven in onderzoek> is in onderzoek
       Gegeven de persoon met burgerservicenummer '000000577' heeft de volgende 'verblijfplaats' gegevens
