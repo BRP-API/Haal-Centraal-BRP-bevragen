@@ -11,12 +11,12 @@ Functionaliteit: in onderzoek
 
   Het spreadsheet /features/in onderzoek.xlsx bevat, afhankelijk van de waarde van aanduiding in onderzoek (83.10), een overzicht van gegevens die (met de waarde true) in inOnderzoek moeten worden opgenomen.
 
-  Ook wanneer een gegeven geen waarde heeft en daardoor niet in het antwoord opgenomen wordt kan het in onderzoek zijn. In dat geval wordt alleen in inOnderzoek een veld opgenomen met die naam en de waarde true.
+  Ook wanneer een gegeven geen waarde of een standaardwaarde heeft en daardoor niet in het antwoord opgenomen wordt kan het in onderzoek zijn. In dat geval wordt alleen in inOnderzoek een veld opgenomen met die naam en de waarde true.
   
   Rule: wanneer een categorie in de bron in onderzoek is, wordt voor elk uit die categorie afkomstig en gevraagd gegeven ook in inOnderzoek een gegeven opgenomen met de waarde true
     - de elementcode voor onderzoek eindigt op 0000
     - het gaat om groep 83 in desbetreffende categorie
-    - deze wordt ook geleverd wanneer het gevraagde gegeven geen waarde heeft en daarom niet wordt geleverd in het antwoord
+    - deze wordt ook geleverd wanneer het gevraagde gegeven geen waarde of een standaardwaarde heeft en daarom niet wordt geleverd in het antwoord
 
     Scenario: vragen om naam van persoon bij hele categorie persoon in onderzoek
       Gegeven de persoon met burgerservicenummer '000000097' heeft de volgende gegevens
@@ -467,6 +467,22 @@ Functionaliteit: in onderzoek
       | aanduiding in onderzoek | fields           | gegeven       | veld        | in onderzoek | groep    |
       | 010000                  | geboorte.datum   | geboortedatum | datum       | persoon      | geboorte |	  
       | 010200                  | naam.voorvoegsel | voorvoegsel   | voorvoegsel | groep naam   | naam     |
+
+    Scenario: vragen om geboortedatum met standaardwaarde bij persoon in onderzoek
+      Gegeven de persoon met burgerservicenummer '000000115' heeft de volgende gegevens
+      | voornamen (02.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | geboortedatum (03.10) | 
+      | Arnitta           | 010000                          | 20120920                       | .                     |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000115                       |
+      | fields              | geboorte.datum                  |
+      Dan heeft de response een persoon met de volgende 'geboorte' gegevens
+      | naam                                         | waarde            |
+      | inOnderzoek.datum                            | true              |
+      | inOnderzoek.datumIngangOnderzoek.type        | Datum             |
+      | inOnderzoek.datumIngangOnderzoek.datum       | 2012-09-20        |
+      | inOnderzoek.datumIngangOnderzoek.langFormaat | 20 september 2012 |
 
     Scenario: persoon heeft zowel persoon als ouder 1 in onderzoek
       Gegeven de persoon met burgerservicenummer '000000139' heeft de volgende gegevens
@@ -1274,9 +1290,9 @@ Functionaliteit: in onderzoek
       | aangaanHuwelijkPartnerschap in onderzoek   | 050600 | P                     |
 
   Rule: Als 'inOnderzoek' of een of meer velden van ‘inOnderzoek’ m.b.v. 'fields' worden bevraagd dan worden deze niet teruggeleverd. 
-    - tenzij het met dat inOnderzoek veld (of velden) gerelateerde veld (of velden) bevraagd wordt en dat in onderzoek is.
+    - tenzij het/de met dat/die inOnderzoek veld(en) gerelateerde veld(en) bevraagd wordt/worden en dat/die in onderzoek is/zijn.
 
-    Abstract Scenario: Bevraag alleen <omschrijving>
+    Abstract Scenario: Bevraag alleen <omschrijving> en burgerservicenummer is in onderzoek
       Gegeven de persoon met burgerservicenummer '000000590' heeft de volgende gegevens
       | naam                            | waarde   |
       | aanduiding in onderzoek (83.10) | 010120   |
@@ -1293,7 +1309,26 @@ Functionaliteit: in onderzoek
 	  | datumIngangOnderzoek         | inOnderzoek.datumIngangOnderzoekPersoon |
 	  | individueel inOnderzoek veld | inOnderzoek.burgerservicenummer         |
 	
-    Abstract Scenario: Bevraag <omschrijving> en een veld buiten inOnderzoek dat <type> is
+	Abstract Scenario: <sub titel> gevraagd en hele categorie persoon is in onderzoek
+	  Gegeven de persoon met burgerservicenummer '000000097' heeft de volgende gegevens
+	  | naam                            | waarde   |
+	  | geslachtsnaam (02.40)           | Groen    |
+	  | aanduiding in onderzoek (83.10) | 010000   |
+	  | datum ingang onderzoek (83.20)  | 20120920 |
+	  Als personen wordt gezocht met de volgende parameters
+	  | naam                | waarde                          |
+	  | type                | RaadpleegMetBurgerservicenummer |
+	  | burgerservicenummer | 000000097                       |
+	  | fields              | <fields>                        |
+	  Dan heeft de response een persoon zonder 'naam' gegevens
+
+	  Voorbeelden:
+	  | fields                                                         | sub titel                                |
+	  | naam.inOnderzoek.datumIngangOnderzoek                          | Eén inOnderzoek veld wordt               |
+	  | naam.inOnderzoek.geslachtsnaam,inOnderzoek.burgerservicenummer | Meerdere inOnderzoek velden worden       |
+	  | naam.inOnderzoek                                               | Een inOnderzoek gegevensgroep veld wordt |
+
+	Abstract Scenario: Bevraag een veld dat <type> is en <omschrijving>
       Gegeven de persoon met burgerservicenummer '000000590' heeft de volgende gegevens
       | naam                            | waarde   |
 	  | geslachtsaanduiding (04.10)     | V        |
@@ -1315,7 +1350,7 @@ Functionaliteit: in onderzoek
 	  | inOnderzoek.burgerservicenummer                     | <waarde>               |
 
 	  Voorbeelden:
-	  | omschrijving                 | type              | fields                                                      | waarde | datum      | datumtype | langFormaat  | geslachtcode | geslachtomschrijving |
-	  | individueel inOnderzoek veld | niet in onderzoek | geslacht,inOnderzoek.burgerservicenummer                    |        |            |           |              | V            | vrouw                | 
-	  | datumIngangOnderzoek         | in onderzoek      | burgerservicenummer,inOnderzoek.datumIngangOnderzoekPersoon | true   | 2022-03-07 | Datum     | 7 maart 2022 |              |                      |
-	  | individueel inOnderzoek veld | in onderzoek      | burgerservicenummer,inOnderzoek.burgerservicenummer         | true   | 2022-03-07 | Datum     | 7 maart 2022 |              |                      |
+	  | type              | omschrijving                                      | fields                                                      | waarde | datum      | datumtype | langFormaat  | geslachtcode | geslachtomschrijving |
+	  | niet in onderzoek | een niet bijbehorend individueel inOnderzoek veld | geslacht,inOnderzoek.burgerservicenummer                    |        |            |           |              | V            | vrouw                | 
+	  | in onderzoek      | het bijbehorende datumIngangOnderzoek             | burgerservicenummer,inOnderzoek.datumIngangOnderzoekPersoon | true   | 2022-03-07 | Datum     | 7 maart 2022 |              |                      |
+	  | in onderzoek      | het bijbehorend individueel inOnderzoek veld      | burgerservicenummer,inOnderzoek.burgerservicenummer         | true   | 2022-03-07 | Datum     | 7 maart 2022 |              |                      |
