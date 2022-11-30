@@ -447,6 +447,31 @@ Functionaliteit: in onderzoek
       | inOnderzoek.datumVan                                       | true                     |
       | inOnderzoek.datumIngangGeldigheid                          | true                     |
 
+    Scenario: hele categorie verblijfplaats van een onbekend verblijfplaats is in onderzoek
+      Gegeven de persoon met burgerservicenummer '000000504' heeft de volgende 'verblijfplaats' gegevens
+      | naam                             | waarde   |
+      | aanduiding in onderzoek (83.10)  | 080000   |
+      | datum ingang onderzoek (83.20)   | 20220307 |
+      | land (13.10)                     | 0000     |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                             |
+      | type                | RaadpleegMetBurgerservicenummer    |
+      | burgerservicenummer | 000000504                          |
+      | fields              | burgerservicenummer,verblijfplaats |
+      Dan heeft de response een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 000000504 |
+      En heeft de persoon de volgende 'verblijfplaats' gegevens
+      | naam                                         | waarde                 |
+      | type                                         | VerblijfplaatsOnbekend |
+      | inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07             |
+      | inOnderzoek.datumIngangOnderzoek.type        | Datum                  |
+      | inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022           |
+      | inOnderzoek.type                             | true                   |
+      | inOnderzoek.datumVan                         | true                   |
+      | inOnderzoek.functieAdres                     | true                   |
+      | inOnderzoek.datumIngangGeldigheid            | true                   |
+
     Abstract Scenario: vragen om <gegeven> zonder waarde bij <in onderzoek> in onderzoek
       Gegeven de persoon met burgerservicenummer '000000115' heeft de volgende gegevens
       | voornamen (02.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | 
