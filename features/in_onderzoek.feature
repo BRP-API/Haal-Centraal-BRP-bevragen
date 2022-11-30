@@ -329,7 +329,7 @@ Functionaliteit: in onderzoek
       | inOnderzoek.datumIngangOnderzoek.langFormaat               | 7 maart 2022             |
       | inOnderzoek.type                                           | true                     |
 
-    Scenario: hele categorie verblijfplaats van een adres is in onderzoek
+	Scenario: hele categorie verblijfplaats is in onderzoek bij een Nederlands adres
       Gegeven de persoon met burgerservicenummer '000000486' heeft de volgende 'verblijfplaats' gegevens
       | naam                              | waarde   |
       | aanduiding in onderzoek (83.10)   | 080000   |
@@ -376,7 +376,7 @@ Functionaliteit: in onderzoek
       | inOnderzoek.adresseerbaarObjectIdentificatie               | true          |
       | inOnderzoek.functieAdres                                   | true          |
 
-    Scenario: hele categorie verblijfplaats van een locatiebeschrijving is in onderzoek
+	Scenario: hele categorie verblijfplaats is in onderzoek bij een locatie
       Gegeven de persoon met burgerservicenummer '000000498' heeft de volgende 'verblijfplaats' gegevens
       | naam                              | waarde   |
       | aanduiding in onderzoek (83.10)   | 080000   |
@@ -410,7 +410,7 @@ Functionaliteit: in onderzoek
       | inOnderzoek.functieAdres                                   | true                         |
       | inOnderzoek.datumIngangGeldigheid                          | true                         |
 
-    Scenario: hele categorie verblijfplaats van een verblijfplaats buitenland is in onderzoek
+	Scenario: hele categorie verblijfplaats is in onderzoek bij een buitenlandse verblijfplaats
       Gegeven de persoon met burgerservicenummer '000000504' heeft de volgende 'verblijfplaats' gegevens
       | naam                             | waarde          |
       | aanduiding in onderzoek (83.10)  | 080000          |
@@ -447,7 +447,7 @@ Functionaliteit: in onderzoek
       | inOnderzoek.datumVan                                       | true                     |
       | inOnderzoek.datumIngangGeldigheid                          | true                     |
 
-    Scenario: hele categorie verblijfplaats van een onbekend verblijfplaats is in onderzoek
+    Scenario: hele categorie verblijfplaats is in onderzoek bij een onbekende verblijfplaats
       Gegeven de persoon met burgerservicenummer '000000504' heeft de volgende 'verblijfplaats' gegevens
       | naam                             | waarde   |
       | aanduiding in onderzoek (83.10)  | 080000   |
