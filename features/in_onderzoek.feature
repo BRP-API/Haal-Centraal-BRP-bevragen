@@ -1278,7 +1278,6 @@ Functionaliteit: in onderzoek
 
       Voorbeelden:
       | omschrijving                                            | waarde | aanduidingNaamgebruik | in onderzoek | datum type | datum datum | datum lang   |
-      | partner in onderzoek en gebruik eigen naam              | 050000 | E                     |              |            |             |              |
       | partner in onderzoek en gebruik partner naam            | 050000 | P                     | true         | Datum      | 2022-03-07  | 7 maart 2022 |
       | partner in onderzoek en gebruik partner na eigen naam   | 050000 | N                     | true         | Datum      | 2022-03-07  | 7 maart 2022 |
       | partner in onderzoek en gebruik partner voor eigen naam | 050000 | V                     | true         | Datum      | 2022-03-07  | 7 maart 2022 |
