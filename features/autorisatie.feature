@@ -64,7 +64,6 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | ad hoc rubrieken                          | type                                 | parameter niet toegestaan             |
       | 10120 010210 010230 010240 010310         | ZoekMetGeslachtsnaamEnGeboortedatum  | geslacht (10410)                      |
       
-
     @fout-case
     Scenario: Gebruik van meerdere parameters waarvoor de afnemer niet geautoriseerd is
 
