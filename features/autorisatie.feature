@@ -17,6 +17,15 @@ Functionaliteit: autorisatie voor het gebruik van de API
   In het verkregen token is de afnemerindicatie opgenomen die de afnemer uniek identificeert. 
   Wanneer de afnemer een gemeentecode is, is er ook een gemeentecode opgenomen in de Oauth token.
 
+  # Autorisaties worden opgeslagen in de tabel lo3_autorisatie. Deze bevat minimaal:
+  #  - autorisatie_id: technische identificatie (primary key) = max(autorisatie_id)+1
+  #  - afnemer_code: vullen met 'Afnemersindicatie (35.95.10)' in Gegeven, wordt ook gebruikt in Als stap, wordt opgenomen in Oauth token
+  #  - tabel_regel_start_datum: vullen met 'Datum ingang (35.99.98)' in Gegeven stap
+  #  - ad_hoc_medium: vullen met 'Medium ad hoc (35.95.67)' in Gegeven stap, vaste waarde 'N' (betekent dat de autorisatie er wel is)
+  #  - ad_hoc_rubrieken: vullen met waarde voor 'Rubrieknummer ad hoc (35.95.60)' in Gegeven stap
+
+  # To Do: toevoegen testgeval dat 1 afnemer meerdere autorisatieregels heeft, waarvan alleen die met lege tabel_regel_eind_datum moet worden gebruikt
+
   # To Do: regels voor leveren persoonsgegevens met geheimhouding aan derde (35.95.12)
 
   # To Do: regels voor voorwaarderegel ad hoc (35.95.61)
@@ -27,9 +36,9 @@ Functionaliteit: autorisatie voor het gebruik van de API
 
     @fout-case
     Scenario: Gebruik van een zoektype met verplichte parameter waarvoor de afnemer niet geautoriseerd is
-      Gegeven de afnemer met afnemerindicatie '12345' heeft de volgende gegevens
-      | Rubrieknummer ad hoc (35.95.60)           |
-      | 10120 80810 81110 81120 81130 81140 81150 |
+      Gegeven de afnemer heeft de volgende gegevens
+      | Afnemersindicatie (35.95.10) | Rubrieknummer ad hoc (35.95.60)           | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
+      | 12345                        | 10120 80810 81110 81120 81130 81140 81150 | N                        | 20201128                |
       En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) |
       | 0599                              |
