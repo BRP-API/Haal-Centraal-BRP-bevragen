@@ -5,7 +5,7 @@ Functionaliteit: overlijden GBA: Altijd leveren van overlijdensdatum van een ove
   Wanneer een consumer van de BRP API gegevens bevraagt van een overleden persoon
   Dan levert de GBA api altijd de overlijdensdatum zodat de indicatieOverleden door de proxy op "true" gezet kan worden
 
-  Rule: indicatieOverleden heeft de waarde true als de betreffende persoon is overleden. Dit veld wordt altijd meegeleverd, ook als het niet met fields is gevraagd
+  Rule: overlijden.datum wordt altijd meegeleverd als een persoon is overleden. Dit veld wordt altijd meegeleverd, ook als het niet met fields is gevraagd
 
     Abstract Scenario: niet-overleden persoon wordt geraadpleegd met burgerservicenummer en <sub titel>
       Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
