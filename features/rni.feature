@@ -117,6 +117,9 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       Dan heeft de response een persoon met de volgende 'naam' gegevens
       | naam      | waarde |
       | voornamen | Peter  |
+      En heeft de persoon de volgende 'verblijfplaats' gegevens
+      | naam | waarde                 |
+      | type | VerblijfplaatsOnbekend |
       En heeft de persoon GEEN 'rni'
 
     Scenario: niet leveren RNI-deelnemer categorie 7 wanneer er geen opschorting en geen geheimhouding is en geen inschrijving gegevens gevraagd
