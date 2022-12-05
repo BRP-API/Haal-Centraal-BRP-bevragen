@@ -55,7 +55,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://learn.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?view=net-7.0#system-net-httpstatuscode-forbidden |
       | title    | U bent niet geautoriseerd voor de gebruikte parameter(s).                                                               |
       | status   | 403                                                                                                                     |
-      | detail   | U bent niet geautoriseerd voor het gebruik van parameter(s): geboorteplaats.                                            |
+      | detail   | U bent niet geautoriseerd voor het gebruik van parameter(s): nummeraanduidingIdentificatie.                                            |
       | code     | unauthorizedParameter                                                                                                   |
       | instance | /haalcentraal/api/brp/personen                                                                                          |
       En heeft het object de volgende 'invalidParams' gegevens
