@@ -67,7 +67,7 @@ Rule: een veld wordt niet opgenomen wanneer het de standaardwaarde bevat
     | functie adres (10.10) | W      |
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens
     | naam               | waarde      |
-    | gemeente_code      | 0518   |
+    | gemeente_code      | 0518        |
     | straatnaam (11.10) | een straat  |
     | huisnummer (11.20) | 0           |
     Als personen wordt gezocht met de volgende parameters
@@ -100,8 +100,8 @@ Rule: een veld wordt niet opgenomen wanneer het de standaardwaarde bevat
     | burgerservicenummer | 000000188                       |
     | fields              | verblijfplaats.verblijfadres    |
     Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
-    | naam                 | waarde |
-    | type                 | Adres  |
+    | naam                 | waarde     |
+    | type                 | Adres      |
     | verblijfadres.straat | een straat |
 
     Voorbeelden:
@@ -183,54 +183,32 @@ Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbe
     | overlijden     | plaats     | plaats overlijden (08.20)         | 0000   |
     | overlijden     | land       | land overlijden (08.30)           | 0000   |
 
-  Abstract Scenario: onbekend waarde voor: <element>
+  Scenario: onbekend waarde voor: gemeente van inschrijving (09.10)
     Gegeven de persoon met burgerservicenummer '000000231' heeft de volgende 'verblijfplaats' gegevens
-    | naam                  | waarde   | 
-    | functie adres (10.10) | W        | 
-    | <element>             | <waarde> |
+    | naam                              | waarde | 
+    | functie adres (10.10)             | W      | 
+    | gemeente van inschrijving (09.10) | 0000   |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 000000231                       |
-    | fields              | burgerservicenummer,<veld>      |
+    | naam                | waarde                                      |
+    | type                | RaadpleegMetBurgerservicenummer             |
+    | burgerservicenummer | 000000231                                   |
+    | fields              | burgerservicenummer,gemeenteVanInschrijving |
     Dan heeft de response een persoon met alleen de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 000000231 |
 
-    Voorbeelden:
-    | groep          | veld                    | element                           | waarde |
-    | verblijfplaats | gemeenteVanInschrijving | gemeente van inschrijving (09.10) | 0000   |
-
-  Abstract Scenario: onbekend waarde voor immigratie: <element>
+  Scenario: onbekend waarde voor immigratie: land vanwaar ingeschreven (14.10)
    Gegeven de persoon met burgerservicenummer '000000243' heeft de volgende 'verblijfplaats' gegevens
-    | naam      | waarde   |
-    | <element> | <waarde> |
+    | naam                              | waarde   |
+    | land vanwaar ingeschreven (14.10) | 0000 |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000243                       |
-    | fields              | burgerservicenummer,<veld>      |
+    | fields              | burgerservicenummer,immigratie.landVanwaarIngeschreven      |
     Dan heeft de response een persoon met alleen de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 000000243 |
-
-    Voorbeelden:
-    | veld                               | element                            | waarde |
-    | immigratie.landVanwaarIngeschreven | land vanwaar ingeschreven (14.10)  | 0000   |
-
- Scenario: buitenlandse geboorte plaats 
-   Gegeven de persoon met burgerservicenummer '000000255' heeft de volgende gegevens
-    | naam                   | waarde  |
-    | geboorteplaats (03.20) | Brussel |
-    Als gba personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 000000255                       |
-    | fields              | geboorte.plaats                 |
-    Dan heeft de response een persoon met alleen de volgende 'geboorte' gegevens
-    | naam                | waarde  |
-    | plaats.code         | Brussel |
-    | plaats.omschrijving | Brussel |
 
   Scenario: onbekend waarde voor geboorte plaats
     Gegeven de persoon met burgerservicenummer '000000267' heeft de volgende gegevens
@@ -247,7 +225,7 @@ Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbe
     En heeft de persoon een leeg 'geboorte' object
 
 
- Abstract Scenario: onbekend waarde in voor een <groep>.<veld> bij ouders
+ Abstract Scenario: onbekend waarde voor een <groep>.<veld> bij ouders
     Gegeven de persoon met burgerservicenummer '000000267' heeft een ouder '1' met de volgende gegevens
     | naam                        | waarde    |
     | burgerservicenummer (01.20) | 000000279 |
@@ -312,13 +290,13 @@ Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbe
     | naam                | waarde    |
     | burgerservicenummer | 000000280 |
     En heeft de persoon een 'nationaliteit' met alleen de volgende gegevens
-    | naam                              | waarde                |
-    | type                              | NationaliteitOnbekend |
+    | naam                              | waarde                               |
+    | type                              | NationaliteitOnbekend                |
     | redenOpname.code                  | 311                                  |
     | redenOpname.omschrijving          | Vaststelling onbekende nationaliteit |
-    | datumIngangGeldigheid.type        | Datum                 |
-    | datumIngangGeldigheid.datum       | 2003-04-17            |
-    | datumIngangGeldigheid.langFormaat | 17 april 2003         |
+    | datumIngangGeldigheid.type        | Datum                                |
+    | datumIngangGeldigheid.datum       | 2003-04-17                           |
+    | datumIngangGeldigheid.langFormaat | 17 april 2003                        |
 
   Scenario: onbekend waarde voor reden opname nationaliteit
     Gegeven de persoon met burgerservicenummer '000000280' heeft een 'nationaliteit' met de volgende gegevens
@@ -490,7 +468,7 @@ Rule: datumvelden waarde "00000000": worden vertaald naar DatumOnbekend
     | datumInschrijvingInGemeente.onbekend    | true          |
     | datumInschrijvingInGemeente.langFormaat | onbekend      |
 
-  Scenario: volledig onbekende datum aanvang adreshouding in adres
+  Scenario: volledig onbekende datum aanvang adreshouding in verblijfplaats
     Gegeven de persoon met burgerservicenummer '000000371' heeft de volgende 'verblijfplaats' gegevens
     | naam                               | waarde     |
     | functie adres (10.10)              | W          |
@@ -595,33 +573,3 @@ Rule: datumvelden waarde "00000000": worden vertaald naar DatumOnbekend
     | datum.type        | DatumOnbekend |
     | datum.onbekend    | true          |
     | datum.langFormaat | onbekend      | 
-
-Rule: vertalen (onbekend)waarden naar indicator
-  - elke waarde voor datumVestigingInNederland (incl. 00000000) geeft indicatieVestigingVanuitBuitenland met de waarde true
-  - onbekend land vanwaar ingeschreven (waarde 0000) geeft vanuitVerblijfplaatsOnbekend met de waarde true
-  - onbekend land verblijf buitenland (waarde 0000) geeft verblijfplaatsOnbekend
-  - elke waarde voor overlijdensdatum (incl. 00000000) geeft indicatieOverleden met de waarde true
-
-  Abstract Scenario: indicatieVestigingVanuitBuitenland en vanuitVerblijfplaatsOnbekend bij datum vestiging '<datum>' uit land '<land>'
-    Gegeven de persoon met burgerservicenummer '000000395' heeft de volgende 'verblijfplaats' gegevens 
-    | naam                                 | waarde  |
-    | datum vestiging in Nederland (14.20) | <datum> |
-    | land vanwaar ingeschreven (14.10)    | <land>  |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                                                                |
-    | type                | RaadpleegMetBurgerservicenummer                                                       |
-    | burgerservicenummer | 000000395                                                                             |
-    | fields              | immigratie.indicatieVestigingVanuitBuitenland,immigratie.vanuitVerblijfplaatsOnbekend |
-    Dan heeft de response een persoon met alleen de volgende 'immigratie' gegevens
-    | naam                               | waarde                               |
-    | indicatieVestigingVanuitBuitenland | <indicatieVestigingVanuitBuitenland> |
-    | vanuitVerblijfplaatsOnbekend       | <vanuitVerblijfplaatsOnbekend>       |
-
-    Voorbeelden:
-    | datum    | land | indicatieVestigingVanuitBuitenland | vanuitVerblijfplaatsOnbekend |
-    | 19870214 | 6023 | true                               |                              |
-    | 19490000 | 6024 | true                               |                              |
-    | 19931100 | 6065 | true                               |                              |
-    | 00000000 | 6029 | true                               |                              |
-    | 19870214 | 0000 | true                               | true                         |
-    | 00000000 | 0000 | true                               | true                         |

@@ -66,14 +66,14 @@ Rule: de volgende standaardwaarden worden ongewijzigd geleverd
     | functie adres (10.10) | W      |
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens
     | naam               | waarde      |
-    | gemeente_code      | 0518   |
+    | gemeente_code      | 0518        |
     | straatnaam (11.10) | een straat  |
     | huisnummer (11.20) | 0           |
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                              |
     | type                | RaadpleegMetBurgerservicenummer     |
     | burgerservicenummer | 000000176                           |
-    | fields              | burgerservicenummer,verblijfplaats                      |
+    | fields              | burgerservicenummer,verblijfplaats  |
     Dan heeft de response een persoon met de volgende gegevens 
     | naam                | waarde    |
     | burgerservicenummer | 000000176 | 
@@ -124,7 +124,7 @@ Rule: de volgende standaardwaarden worden ongewijzigd geleverd
     | soortVerbintenis.code         | .        |
     | soortVerbintenis.omschrijving | onbekend | 
 
-Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbekendwaarde voor de betreffende tabel bevat
+Rule: een veld van type Waardetabel wordt opgenomen met code en omschrijvingf wanneer de code de onbekendwaarde voor de betreffende tabel bevat
   Het gaat om de volgende properties en standaardwaardes van de persoon:
   | property                                    | standaardwaarde |
   | geboorte.plaats                             | 0000            |
@@ -348,7 +348,7 @@ Rule: een veld van type Waardetabel wordt niet opgenomen wanneer de code de onbe
     | redenOpname.omschrijving          | Onbekend  |
     | datumIngangGeldigheid             | 20030417  |
 
-Rule: de onbekend waarde voor geslacht wordt wel geleverd
+Rule: de onbekend waarde voor geslacht wordt geleverd
 
   Scenario: een onbekend waarde bij geslacht wordt wel opgenomen in de response
    Gegeven de persoon met burgerservicenummer '000000292' heeft de volgende gegevens
@@ -365,7 +365,7 @@ Rule: de onbekend waarde voor geslacht wordt wel geleverd
     | geslacht.code         | O         |
     | geslacht.omschrijving | onbekend  |
 
-Rule: de onbekend waarde voor redenOpschortingBijhouding wordt wel geleverd
+Rule: de onbekend waarde voor redenOpschortingBijhouding wordt geleverd
 
   Scenario: een onbekend waarde bij reden opschorting bijhouding wordt wel opgenomen in de response
   #  Gegeven de persoon met burgerservicenummer '000000309' heeft de volgende 'opschortingBijhouding' gegevens (opschortingBijhouding wordt in de lo3_pl tabel (inschrijving) vastgeglegd)
@@ -435,9 +435,9 @@ Rule: datumvelden waarde "00000000" worden geleverd
     | datum einde verblijfstitel (39.20)  | 00000000 |
     | datum ingang verblijfstitel (39.30) | 00000000 |
     Als gba personen wordt gezocht met de volgende parameters
-    | naam                | waarde                             |
-    | type                | RaadpleegMetBurgerservicenummer    |
-    | burgerservicenummer | 000000346                          |
+    | naam                | waarde                                                                   |
+    | type                | RaadpleegMetBurgerservicenummer                                          |
+    | burgerservicenummer | 000000346                                                                |
     | fields              | burgerservicenummer,verblijfstitel.datumEinde,verblijfstitel.datumIngang |
     Dan heeft de response een persoon met alleen de volgende gegevens
     | naam                | waarde    |
@@ -452,9 +452,9 @@ Rule: datumvelden waarde "00000000" worden geleverd
     | naam                      | waarde   |
     | datum overlijden (08.10)  | 00000000 |
     Als gba personen wordt gezocht met de volgende parameters
-    | naam                | waarde                             |
-    | type                | RaadpleegMetBurgerservicenummer    |
-    | burgerservicenummer | 000000358                          |
+    | naam                | waarde                               |
+    | type                | RaadpleegMetBurgerservicenummer      |
+    | burgerservicenummer | 000000358                            |
     | fields              | burgerservicenummer,overlijden.datum |
     Dan heeft de response een persoon met alleen de volgende gegevens
     | naam                | waarde    |
@@ -473,7 +473,7 @@ Rule: datumvelden waarde "00000000" worden geleverd
     | burgerservicenummer | 000000358                       |
     | fields              | datumInschrijvingInGemeente     |
     Dan heeft de response een persoon met alleen de volgende gegevens
-    | naam                        | waarde        |
+    | naam                        | waarde   |
     | datumInschrijvingInGemeente | 00000000 |
 
   Scenario: volledig onbekende datum aanvang adreshouding in adres
@@ -547,9 +547,9 @@ Rule: datumvelden waarde "00000000" worden geleverd
     | geboortedatum (03.10)                                              | 00000000  |
     | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 00000000  |
     Als gba personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                    |
-    | type                | RaadpleegMetBurgerservicenummer           |
-    | burgerservicenummer | 000000395                                 |
+    | naam                | waarde                                                                                                              |
+    | type                | RaadpleegMetBurgerservicenummer                                                                                     |
+    | burgerservicenummer | 000000395                                                                                                           |
     | fields              | burgerservicenummer,partners.burgerservicenummer,partners.geboorte.datum,partners.aangaanHuwelijkPartnerschap.datum |
     Dan heeft de response een persoon met alleen de volgende gegevens
     | naam                | waarde    |
