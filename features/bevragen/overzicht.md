@@ -95,6 +95,7 @@ Ook zorgen de json deserialisatie libraries er voor dat niet geleverde velden au
 
 - leeftijd
 - adressering
+  - aanhef (./persoon/adressering/aanhef)
 
 ## PersoonBeperkt velden overzicht
 
