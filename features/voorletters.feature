@@ -15,7 +15,7 @@ Wanneer na een voorletter zonder punt (voornaam had één letter) nog een andere
 
 Rule: Voorletters wordt samengesteld uit de eerste letter van de voornamen gescheiden door een punt
 
-	Abstract Scenario: <titel>
+  Abstract Scenario: <titel>
     Gegeven de persoon met burgerservicenummer '000000413' heeft de volgende gegevens
     | naam              | waarde      |
     | voornamen (02.10) | <voornamen> |
@@ -39,11 +39,11 @@ Rule: Voorletters wordt samengesteld uit de eerste letter van de voornamen gesch
     | A                    | A           | Voornaam bestaat uit één letter                     | Een voornaam bestaand uit één letter, wordt afgekort tot een letter zonder .                                                      |
     | J P                  | J P         | Meerdere voornamen bestaan uit één letter           | Een voornaam bestaand uit één letter, gevolgd door een andere voornaam, wordt afgekort tot voorletters gescheiden door een spatie |
 
-	Scenario: Geen voornamen
+  Scenario: Geen voornamen
     Gegeven de persoon met burgerservicenummer '000000425' heeft de volgende gegevens
     | naam                  | waarde |
     | voornamen (02.10)     |        |
-    | geslachtsnaam (02.40) | Boer | 
+    | geslachtsnaam (02.40) | Boer   | 
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                               |
     | type                | RaadpleegMetBurgerservicenummer      |
@@ -52,4 +52,4 @@ Rule: Voorletters wordt samengesteld uit de eerste letter van de voornamen gesch
     Dan heeft de response een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 000000425 |
-    En heeft de persoon een leeg 'naam' object
+    En heeft de persoon een leeg 'naam' object 
