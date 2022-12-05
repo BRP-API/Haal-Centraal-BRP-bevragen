@@ -245,7 +245,7 @@ const columnNameMap = new Map([
 ]);
 
 Before(function() {
-    if(this.context.sql.useDb && pool == undefined) {
+    if(this.context.sql.useDb && pool === undefined) {
         pool = new Pool(this.context.sql.poolConfig);
         logSqlStatements = this.context.sql.logStatements;
     }
@@ -1074,7 +1074,7 @@ After({tags: '@fout-case'}, async function() {
 });
 
 After({tags: 'not @fout-case'}, async function() {
-    if(this.pool === undefined) {
+    if(pool === undefined) {
         return;
     }
 
