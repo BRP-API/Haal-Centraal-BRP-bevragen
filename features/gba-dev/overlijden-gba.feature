@@ -56,7 +56,7 @@ Functionaliteit: overlijden GBA: Altijd leveren van overlijdensdatum van een ove
       Dan heeft de response een persoon met de volgende gegevens
       | naam                          | waarde    |
       | burgerservicenummer           | 000000139 |
-      | overlijden.datum              | 19630405  |
+      | overlijden.datum              | 20020701  |
 
     Scenario: overleden persoon wordt geraadpleegd met burgerservicenummer en datum overlijden veld wordt gevraagd
       Gegeven de persoon met burgerservicenummer '000000139' heeft de volgende 'overlijden' gegevens
@@ -113,10 +113,11 @@ Functionaliteit: overlijden GBA: Altijd leveren van overlijdensdatum van een ove
       | burgerservicenummer | 000000139                       |
       | fields              | burgerservicenummer             |
       Dan heeft de response een persoon met de volgende gegevens
-      | naam                                                    | waarde                    |
+      | naam      | waarde            |
       | burgerservicenummer                                     | 000000139                 |
       | overlijden.datum                                        | 20020701                  |
-      | overlijden.inOnderzoek                                  | <gba in onderzoek waarde> |
+      | overlijden.inOnderzoek.aanduidingGegevensInOnderzoek | <gba in onderzoek waarde>   |
+      | overlijden.inOnderzoek.datumIngangOnderzoek          | 20020701 |
 
       Voorbeelden:
       | gegeven in onderzoek | gba in onderzoek waarde |
