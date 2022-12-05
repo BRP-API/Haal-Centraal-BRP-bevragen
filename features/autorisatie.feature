@@ -59,8 +59,8 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | code     | unauthorizedParameter                                                                                                   |
       | instance | /haalcentraal/api/brp/personen                                                                                          |
       En heeft het object de volgende 'invalidParams' gegevens
-      | code         | name           | reason                                                  |
-      | unauthorized | geboorteplaats | Niet geautoriseerd voor het gebruik van deze parameter. |
+      | code         | name                          | reason                                                  |
+      | unauthorized | nummeraanduidingIdentificatie | Niet geautoriseerd voor het gebruik van deze parameter. |
 
 
       | ad hoc rubrieken                          | type                                 | parameter niet toegestaan             |
