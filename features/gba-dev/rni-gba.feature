@@ -64,7 +64,7 @@ Functionaliteit: GBA : RNI-deelnemer voor geleverde gegevens
       | voornamen | Peter  |
       En heeft de persoon de volgende 'verblijfplaats' gegevens
       | naam                             | waarde                   |
-      | verblijfplaats.land.code         | 5010                     |
+      | land.code         | 5010                     |
       En heeft de persoon een 'rni' met de volgende gegevens
       | naam                   | waarde                                          |
       | deelnemer.code         | 0101                                            |
