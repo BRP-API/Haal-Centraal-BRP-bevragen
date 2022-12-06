@@ -37,7 +37,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide verblijfplaat
       | locatiebeschrijving              | <locatiebeschrijving>              |
       | adresseerbaarObjectIdentificatie | <adresseerbaarObjectIdentificatie> |
       | nummeraanduidingIdentificatie    | <nummeraanduidingIdentificatie>    |
-	  | naamOpenbareRuimte               | <straat>                           |
+      | naamOpenbareRuimte               | <straat>                           |
 
       Voorbeelden:
       | veld                 | straat      | huisnummer | postcode | woonplaats | adresseerbaarObjectIdentificatie | nummeraanduidingIdentificatie | locatiebeschrijving          |
@@ -117,7 +117,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide verblijfplaat
       | locatiebeschrijving              | <locatiebeschrijving>              |
       | adresseerbaarObjectIdentificatie | <adresseerbaarObjectIdentificatie> |
       | nummeraanduidingIdentificatie    | <nummeraanduidingIdentificatie>    |
-	  | naamOpenbareRuimte               | <straat>                           |
+      | naamOpenbareRuimte               | <straat>                           |
       | land.code                        | <landcode>                         |
       | land.omschrijving                | <land omschrijving>                |
       | regel1                           | <regel 1>                          |
@@ -218,7 +218,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide verblijfplaat
       | land (13.10)                           | <landcode>                   |
       | regel 1 adres buitenland (13.30)       | <regel 1>                    |
       | regel 2 adres buitenland (13.40)       | <regel 2>                    |
-	  | datum aanvang adres buitenland (13.20) | <datumAanvangAdresBuitenland |
+      | datum aanvang adres buitenland (13.20) | <datumAanvangAdresBuitenland |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam                                       | waarde                             |
       | straatnaam (11.10)                         | <straat>                           |
@@ -245,12 +245,12 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide verblijfplaat
       | adresseerbaarObjectIdentificatie | <adresseerbaarObjectIdentificatie> |
       | nummeraanduidingIdentificatie    | <nummeraanduidingIdentificatie>    |
       | datumAanvangAdreshouding         | <datumAanvangAdreshouding>         |
-	  | naamOpenbareRuimte               | <straat>                           |
+      | naamOpenbareRuimte               | <straat>                           |
       | land.code                        | <landcode>                         |
       | land.omschrijving                | <land omschrijving>                |
       | regel1                           | <regel 1>                          |
       | regel2                           | <regel 2>                          |
-	  | datumAanvangAdresBuitenland      | <datumAanvangAdresBuitenland>      |
+      | datumAanvangAdresBuitenland      | <datumAanvangAdresBuitenland>      |
 
       Voorbeelden:
       | straat      | huisnummer | postcode | woonplaats | adresseerbaarObjectIdentificatie | nummeraanduidingIdentificatie | locatiebeschrijving          | landcode | land omschrijving | regel 1           | regel 2      | omschrijving | datumAanvangAdreshouding | datumAanvangAdresBuitenland |
