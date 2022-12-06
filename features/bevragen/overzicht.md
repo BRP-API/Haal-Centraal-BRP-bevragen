@@ -49,9 +49,22 @@ Bij een overleden persoon in het raadpleeg resultaat wordt altijd het indicatieO
 
 ## Filteren van de velden van de gevonden personen
 
-Bij elke bevraging moet de fields parameter worden gebruikt om aan te geven welke velden van een persoon geleverd moet worden. Dit is nodig ter bescherming van de privacy van de gevraagde personen en voor verduurzaming. Hoe minder velden er worden gevraagd, hoe minder de server en het netwerk worden belast.
+Bij elke bevraging moet de fields parameter worden gebruikt om aan te geven welke velden van de gevonden persoon/personen geleverd moet worden. Om de privacy van de gevraagde personen te beschermen mag een afnemer alleen de velden vragen waarvoor hij doelbinding heeft en moet de gevraagde velden worden beperkt tot wat nodig is voor de uit te voeren taak.
+Bijkomend voordeel van deze data minimalisatie is dat er ook wordt bijgedragen aan verduurzaming. Hoe minder velden er worden gevraagd, hoe minder de server en het netwerk worden belast.
 
-De volgende velden hoeven niet met de fields parameter te worden gevraagd. Deze worden meegeleverd als de bijbehorende situatie van toepassing is
+Een veld wordt gevraagd door het volledig pad van het betreffende veld op te geven in de fields parameter. Het volledig pad van een veld is de samenvoeging van de naam van het veld en de namen van zijn 'ouder' velden met een '.' karakter tussen de veld namen. Voorbeelden van volledige paden:
+
+- geboorte.datum (volledig pad van het geboortedatum veld van een persoon)
+- kinderen.naam.voornamen (volledig pad van het voornamen veld van de kinderen van een persoon)
+
+Zie de [fields](./fields.feature) en de [fields fout cases](./fields-fout-cases.feature) feature bestanden voor meer informatie en voorbeelden over het gebruik van veld paden en de fields parameter. 
+
+Voor een Datum en Waardetabel veld wordt altijd alle 'kind' velden geleverd. In de [fields](./fields.feature) zijn onder de volgende rules voorbeelden hiervan opgenomen:
+
+- Rule: Het vragen van één of meerdere velden van een 'waardetabel' veld levert alle velden van de 'waardetabel' veld
+- Rule: Het vragen van één of meerdere velden van een 'datum' veld levert alle velden van de 'datum' veld
+
+De volgende (gegevensgroep) velden hoeven niet met de fields parameter te worden gevraagd. Deze worden meegeleverd als de bijbehorende situatie van toepassing is:
 
 - geheimhoudingPersoonsgegevens
 - indicatieOverleden
@@ -66,7 +79,7 @@ Voor verblijfplaats en adressering zijn er twee autorisatie profielen:
 - geautoriseerd voor verblijfplaats binnenland (Adres en Locatie) en verblijfplaats buitenland gegevens
 - geautoriseerd voor alleen verblijfplaats binnenland (Adres en Locatie) gegevens
 
-Consumers die geautoriseerd zijn voor alleen verblijfplaats binnenland gegevens kunnen hierdoor de standaard veld paden van verblijfplaats en adresregels niet gebruiken om alleen verblijfplaats binnenland velden te vragen. Met deze veld paden worden zowel verblijfplaats binnenland als verblijfplaats buitenland gevraagd.
+Afnemers die geautoriseerd zijn voor alleen verblijfplaats binnenland gegevens kunnen hierdoor de standaard veld paden van verblijfplaats en adresregels niet gebruiken om alleen verblijfplaats binnenland velden te vragen. Met deze veld paden worden zowel verblijfplaats binnenland als verblijfplaats buitenland gevraagd.
 Om het mogelijk te maken voor consumers die niet geautoriseerd zijn voor het bevragen van verblijfplaats buitenland gegevens, zijn de volgende twee fields aliassen gedefinieerd waarmee kan worden aangegeven dat alleen verblijfplaats binnenland gegevens wordt opgevraagd: 
 
 - verblijfplaatsBinnenland
