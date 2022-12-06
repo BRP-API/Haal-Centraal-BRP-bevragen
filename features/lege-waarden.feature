@@ -148,15 +148,4 @@ Functionaliteit: Leveren van lege waarden
       | fields              | kinderen.geboorte.plaats        |
       Dan heeft de response een persoon met een 'kind' met een leeg 'geboorte' object
 
-    Scenario: Kind met geboorteplaats alleen omschrijving en vragen om code geeft geboorteplaats als leeg object
-      Gegeven de persoon met burgerservicenummer '000000322' heeft een 'kind' met de volgende gegevens
-      | naam                   | waarde   |
-      | geboortedatum (03.10)  | 20070421 |
-      | geboorteplaats (03.20) | Berlijn  |
-      | geboorteland (03.30)   | 0000     |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000322                       |
-      | fields              | kinderen.geboorte.plaats.code   |
-      Dan heeft de response een persoon met een 'kind' met een 'geboorte' met een leeg 'plaats' object
+
