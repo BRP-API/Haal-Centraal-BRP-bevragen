@@ -1147,7 +1147,7 @@ Functionaliteit: in onderzoek
       | verblijf buitenland         | 081320 |        |            |                              |                          | Rue du pomme 26 | Bruxelles   | 5010 | 20040701                    | 0000     | VerblijfplaatsBuitenland |
       | datumAanvangAdresBuitenland | 081320 |        |            |                              |                          |                 |             | 0000 | 20040701                    | 0000     | VerblijfplaatsOnbekend   |
 
-    Scenario: indicatieVestigingVanuitBuitenland in onderzoek omdat datumVestigingInNederland is in onderzoek
+    Scenario: indicatieVestigingVanuitBuitenland in onderzoek omdat datumVestigingInNederland (zonder waarde) is in onderzoek
       Gegeven de persoon met burgerservicenummer '000000565' heeft de volgende 'verblijfplaats' gegevens
       | naam                            | waarde   |
       | aanduiding in onderzoek (83.10) | 081420   |
@@ -1159,6 +1159,25 @@ Functionaliteit: in onderzoek
       | fields              | immigratie.indicatieVestigingVanuitBuitenland |
       Dan heeft de response een persoon met de volgende 'immigratie' gegevens
       | naam                                           | waarde       |
+      | inOnderzoek.indicatieVestigingVanuitBuitenland | true         |
+      | inOnderzoek.datumIngangOnderzoek.datum         | 2022-03-07   |
+      | inOnderzoek.datumIngangOnderzoek.type          | Datum        |
+      | inOnderzoek.datumIngangOnderzoek.langFormaat   | 7 maart 2022 |
+
+    Scenario: indicatieVestigingVanuitBuitenland in onderzoek omdat datumVestigingInNederland (met waarde) is in onderzoek
+      Gegeven de persoon met burgerservicenummer '000000565' heeft de volgende 'verblijfplaats' gegevens
+      | naam                                 | waarde   |
+      | aanduiding in onderzoek (83.10)      | 081420   |
+      | datum ingang onderzoek (83.20)       | 20220307 |
+	  | datum vestiging in Nederland (14.20) | 20011124 |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                                        |
+      | type                | RaadpleegMetBurgerservicenummer               |
+      | burgerservicenummer | 000000565                                     |
+      | fields              | immigratie.indicatieVestigingVanuitBuitenland |
+      Dan heeft de response een persoon met de volgende 'immigratie' gegevens
+      | naam                                           | waarde       |
+      | indicatieVestigingVanuitBuitenland             | true         |
       | inOnderzoek.indicatieVestigingVanuitBuitenland | true         |
       | inOnderzoek.datumIngangOnderzoek.datum         | 2022-03-07   |
       | inOnderzoek.datumIngangOnderzoek.type          | Datum        |
