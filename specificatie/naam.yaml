@@ -128,6 +128,15 @@ components:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
             inOnderzoek:
               $ref: '#/components/schemas/NaamPersoonInOnderzoek'
+    NaamPersoonBeperkt:
+      description: |
+        Gegevens over de naam van de persoon.
+        * **aanduidingNaamgebruik** - wordt gevuld met waarden uit de tabel 'Naamgebruik' (zie Haal-Centraal-BRP-tabellen-bevragen API).
+      allOf:
+        - $ref: '#/components/schemas/NaamBasis'
+        - properties:
+            inOnderzoek:
+              $ref: '#/components/schemas/NaamPersoonInOnderzoekBeperkt'
     NaamPersoonInOnderzoek:
       allOf:
         - $ref: '#/components/schemas/NaamInOnderzoek'
@@ -135,5 +144,12 @@ components:
           properties:
             aanduidingNaamgebruik:
               type: boolean
+            volledigeNaam:
+              type: boolean
+    NaamPersoonInOnderzoekBeperkt:
+      allOf:
+        - $ref: '#/components/schemas/NaamInOnderzoek'
+        - type: object
+          properties:
             volledigeNaam:
               type: boolean

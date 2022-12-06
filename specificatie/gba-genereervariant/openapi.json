@@ -660,6 +660,9 @@
           "geslacht" : {
             "$ref" : "#/components/schemas/Waardetabel"
           },
+          "persoonInOnderzoek" : {
+            "$ref" : "#/components/schemas/GbaInOnderzoek"
+          },
           "naam" : {
             "$ref" : "#/components/schemas/GbaNaamBasis"
           },
@@ -667,7 +670,7 @@
             "$ref" : "#/components/schemas/OpschortingBijhoudingBasis"
           },
           "overlijden" : {
-            "$ref" : "#/components/schemas/GbaOverlijdenBasis"
+            "$ref" : "#/components/schemas/GbaOverlijdenBeperkt"
           },
           "gemeenteVanInschrijving" : {
             "$ref" : "#/components/schemas/Waardetabel"
@@ -945,6 +948,19 @@
           }
         }
       },
+      "GbaInOnderzoek" : {
+        "required" : [ "aanduidingGegevensInOnderzoek", "datumIngangOnderzoek" ],
+        "type" : "object",
+        "properties" : {
+          "aanduidingGegevensInOnderzoek" : {
+            "pattern" : "^[0-9]{6}$",
+            "type" : "string"
+          },
+          "datumIngangOnderzoek" : {
+            "$ref" : "#/components/schemas/GbaDatum"
+          }
+        }
+      },
       "GbaNaamBasis" : {
         "type" : "object",
         "properties" : {
@@ -1012,6 +1028,18 @@
         },
         "description" : "* **reden** - wordt gevuld met waarden uit de tabel 'redenopschortingbijhouding' (zie Haal-Centraal-BRP-tabellen-bevragen API).\n"
       },
+      "GbaOverlijdenBeperkt" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/GbaOverlijdenBasis"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "inOnderzoek" : {
+              "$ref" : "#/components/schemas/GbaInOnderzoek"
+            }
+          }
+        } ]
+      },
       "GbaOverlijdenBasis" : {
         "type" : "object",
         "properties" : {
@@ -1061,6 +1089,9 @@
           },
           "regel3" : {
             "$ref" : "#/components/schemas/Regel3"
+          },
+          "inOnderzoek" : {
+            "$ref" : "#/components/schemas/GbaInOnderzoek"
           }
         }
       },
@@ -1104,19 +1135,6 @@
         "pattern" : "^[0-9]{8}$",
         "type" : "string",
         "example" : "20180700"
-      },
-      "GbaInOnderzoek" : {
-        "required" : [ "aanduidingGegevensInOnderzoek", "datumIngangOnderzoek" ],
-        "type" : "object",
-        "properties" : {
-          "aanduidingGegevensInOnderzoek" : {
-            "pattern" : "^[0-9]{6}$",
-            "type" : "string"
-          },
-          "datumIngangOnderzoek" : {
-            "$ref" : "#/components/schemas/GbaDatum"
-          }
-        }
       },
       "GbaUitsluitingKiesrecht" : {
         "type" : "object",
