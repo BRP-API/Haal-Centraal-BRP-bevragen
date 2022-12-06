@@ -15,7 +15,7 @@ Functionaliteit: Persoon: nationaliteit - onbekende nationaliteit
     | naam | waarde                |
     | type | NationaliteitOnbekend |
 
-  Abstract Scenario: persoon heeft 'onbekende nationaliteit' veld: '<gba naam>'
+  Abstract Scenario: persoon heeft 'onbekende nationaliteit' veld: 'reden opname (63.10)'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
     | naam                  | waarde |
     | nationaliteit (05.10) | 0000   |
@@ -26,14 +26,15 @@ Functionaliteit: Persoon: nationaliteit - onbekende nationaliteit
     | burgerservicenummer | 000000012                       |
     | fields              | nationaliteiten.<naam>          |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-    | naam   | waarde                |
-    | type   | NationaliteitOnbekend |
-    | <naam> | <waarde>              |
+    | naam                     | waarde                                            |
+    | type                     | NationaliteitOnbekend                             |
+    | redenOpname.code         | 001                                               |
+    | redenOpname.omschrijving | Wet op het Nederlanderschap 1892, art. 1, onder a |
 
     Voorbeelden:
-    | naam                     | waarde                                          |
-    | redenOpname.code         | 001                                             |
-    | redenOpname.omschrijving | Wet op het Nederlanderschap 1892, art.1, lid 1a |
+    | naam                     |
+    | redenOpname.code         |
+    | redenOpname.omschrijving |
 
   Abstract Scenario: persoon heeft 'onbekende nationaliteit' veld: '<gba naam>' met waarde '<waarde>'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
@@ -87,15 +88,15 @@ Functionaliteit: Persoon: nationaliteit - onbekende nationaliteit
     | burgerservicenummer | 000000012                       |
     | fields              | nationaliteiten                 |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-    | naam                                         | waarde                                          |
-    | type                                         | NationaliteitOnbekend                           |
-    | redenOpname.code                             | 001                                             |
-    | redenOpname.omschrijving                     | Wet op het Nederlanderschap 1892, art.1, lid 1a |
-    | inOnderzoek.type                             | <type in onderzoek>                             |
-    | inOnderzoek.redenOpname                      | <reden opname in onderzoek>                     |
-    | inOnderzoek.datumIngangOnderzoek.type        | Datum                                           |
-    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                                      |
-    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                                     |
+    | naam                                         | waarde                                            |
+    | type                                         | NationaliteitOnbekend                             |
+    | redenOpname.code                             | 001                                               |
+    | redenOpname.omschrijving                     | Wet op het Nederlanderschap 1892, art. 1, onder a |
+    | inOnderzoek.type                             | <type in onderzoek>                               |
+    | inOnderzoek.redenOpname                      | <reden opname in onderzoek>                       |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                                             |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                                        |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                                       |
 
     Voorbeelden:
     | gba in onderzoek waarde | reden opname in onderzoek | type in onderzoek |

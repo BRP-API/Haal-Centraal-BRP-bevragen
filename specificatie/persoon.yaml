@@ -89,12 +89,14 @@ components:
           $ref: '#/components/schemas/GbaGeheimhoudingPersoonsgegevens'
         geslacht:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
+        persoonInOnderzoek:
+          $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
         naam:
           $ref: 'naam.yaml#/components/schemas/GbaNaamBasis'
         opschortingBijhouding:
           $ref: 'opschortingbijhouding.yaml#/components/schemas/OpschortingBijhoudingBasis'
         overlijden:
-          $ref: 'overlijden.yaml#/components/schemas/GbaOverlijdenBasis'
+          $ref: 'overlijden.yaml#/components/schemas/GbaOverlijdenBeperkt'
         gemeenteVanInschrijving:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         verblijfplaats:
@@ -118,14 +120,16 @@ components:
           $ref: '#/components/schemas/GeheimhoudingPersoonsgegevens'
         geslacht:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
+        inOnderzoek:
+          $ref: '#/components/schemas/PersoonInOnderzoekBeperkt'
         leeftijd:
           $ref: '#/components/schemas/Leeftijd'
         naam:
-          $ref: 'naam.yaml#/components/schemas/NaamBasis'
+          $ref: 'naam.yaml#/components/schemas/NaamPersoonBeperkt'
         opschortingBijhouding:
           $ref: 'opschortingbijhouding.yaml#/components/schemas/OpschortingBijhoudingBasis'
         overlijden:
-          $ref: 'overlijden.yaml#/components/schemas/OverlijdenBasis'
+          $ref: 'overlijden.yaml#/components/schemas/OverlijdenBeperkt'
         verblijfplaats:
           $ref: 'verblijfplaats.yaml#/components/schemas/AbstractVerblijfplaatsBeperkt'
         adressering:
@@ -297,6 +301,20 @@ components:
         indicatieCurateleRegister:
           type: boolean
         indicatieGezagMinderjarige:
+          type: boolean
+    PersoonInOnderzoekBeperkt:
+      description: |
+        Geeft aan welke gegevens van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v2.0.0/features/in_onderzoek.feature).
+        * **datumIngangOnderzoekPersoon - Deze datum heeft betrekking op burgerservicenummer, geslacht en leeftijd
+      type: object
+      properties:
+        datumIngangOnderzoekPersoon:
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+        burgerservicenummer:
+          type: boolean
+        geslacht:
+          type: boolean
+        leeftijd:
           type: boolean
     InOnderzoek:
       type: object

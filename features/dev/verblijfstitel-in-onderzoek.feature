@@ -3,7 +3,7 @@
 Functionaliteit: Persoon: verblijfstitel in onderzoek
 
   Abstract Scenario: verblijfstitel veld(en) van persoon is/zijn in onderzoek
-    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfstitel' gegevens
+    Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
     | naam                            | waarde                    |
     | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
@@ -30,7 +30,7 @@ Functionaliteit: Persoon: verblijfstitel in onderzoek
     | 103930                  |                         | true                      |                          |
 
   Abstract Scenario: 'aanduiding verblijfstitel (39.10)' is in onderzoek
-    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfstitel' gegevens
+    Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
     | naam                              | waarde                    |
     | aanduiding in onderzoek (83.10)   | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)    | 20020701                  |
@@ -56,7 +56,7 @@ Functionaliteit: Persoon: verblijfstitel in onderzoek
     | 103910                  |
 
   Abstract Scenario: 'datum ingang verblijfstitel (39.30)' is in onderzoek
-    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfstitel' gegevens
+    Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
     | naam                                | waarde                    |
     | aanduiding in onderzoek (83.10)     | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)      | 20020701                  |
@@ -83,10 +83,10 @@ Functionaliteit: Persoon: verblijfstitel in onderzoek
     | 103930                  |
 
   Abstract Scenario: 'datum einde verblijfstitel (39.20)' is in onderzoek
-    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfstitel' gegevens
+    Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
     | naam                                | waarde   |
     | datum ingang verblijfstitel (39.30) | 19980201 |
-    En de persoon is gewijzigd naar de volgende 'verblijfstitel' gegevens
+    En de 'verblijfstitel' is gewijzigd naar de volgende gegevens
     | naam                               | waarde                    |
     | aanduiding in onderzoek (83.10)    | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)     | 20020701                  |
@@ -113,7 +113,7 @@ Functionaliteit: Persoon: verblijfstitel in onderzoek
     | 103920                  |
 
   Abstract Scenario: 'aanduiding verblijfstitel (39.10)' is in onderzoek, maar wordt niet gevraagd
-    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfstitel' gegevens
+    Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
     | naam                              | waarde                    |
     | aanduiding in onderzoek (83.10)   | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)    | 20020701                  |
@@ -130,7 +130,7 @@ Functionaliteit: Persoon: verblijfstitel in onderzoek
     | 103910                  |
 
   Abstract Scenario: 'datum ingang verblijfstitel (39.30)' is in onderzoek, maar wordt niet gevraagd
-    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfstitel' gegevens
+    Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
     | naam                                | waarde                    |
     | aanduiding in onderzoek (83.10)     | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)      | 20020701                  |
@@ -147,10 +147,10 @@ Functionaliteit: Persoon: verblijfstitel in onderzoek
     | 103930                  |
 
   Abstract Scenario: 'datum einde verblijfstitel (39.20)' is in onderzoek, maar wordt niet gevraagd
-    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfstitel' gegevens
+    Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
     | naam                                | waarde   |
     | datum ingang verblijfstitel (39.30) | 19980201 |
-    En de persoon is gewijzigd naar de volgende 'verblijfstitel' gegevens
+    En de 'verblijfstitel' is gewijzigd naar de volgende gegevens
     | naam                               | waarde                    |
     | aanduiding in onderzoek (83.10)    | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)     | 20020701                  |

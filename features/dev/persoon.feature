@@ -29,15 +29,15 @@ Functionaliteit: Persoon
     | burgerservicenummer | 000000152                       |
     | fields              | <field>                         |
     Dan heeft de response een persoon met de volgende gegevens
-    | naam                  | waarde         |
-    | geslacht.code         | <code>         |
-    | geslacht.omschrijving | <omschrijving> |
+    | naam                  | waarde |
+    | geslacht.code         | M      |
+    | geslacht.omschrijving | man    |
 
     Voorbeelden:
-    | field                 | code | omschrijving |
-    | geslacht              | M    | man          |
-    | geslacht.code         | M    |              |
-    | geslacht.omschrijving |      | man          |
+    | field                 |
+    | geslacht              |
+    | geslacht.code         |
+    | geslacht.omschrijving |
 
   Abstract Scenario: persoon heeft veld: 'gemeente van inschrijving (09.10)'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
@@ -50,14 +50,14 @@ Functionaliteit: Persoon
     | fields              | <field>                         |
     Dan heeft de response een persoon met de volgende gegevens
     | naam                                 | waarde         |
-    | gemeenteVanInschrijving.code         | <code>         |
+    | gemeenteVanInschrijving.code         | <gba waarde>   |
     | gemeenteVanInschrijving.omschrijving | <omschrijving> |
 
     Voorbeelden:
-    | field                                | gba waarde | code | omschrijving |
-    | gemeenteVanInschrijving              | 0344       | 0344 | Utrecht      |
-    | gemeenteVanInschrijving.code         | 0518       | 0518 |              |
-    | gemeenteVanInschrijving.omschrijving | 0599       |      | Rotterdam    |
+    | field                                | gba waarde | omschrijving  |
+    | gemeenteVanInschrijving              | 0344       | Utrecht       |
+    | gemeenteVanInschrijving.code         | 0518       | 's-Gravenhage |
+    | gemeenteVanInschrijving.omschrijving | 0599       | Rotterdam     |
 
   Abstract Scenario: persoon heeft veld: 'indicatie geheim (70.10)' met waarde <gba waarde>
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'inschrijving' gegevens
@@ -247,19 +247,19 @@ Functionaliteit: Persoon
     | burgerservicenummer | 000000152                       |
     | fields              | <field>                         |
     Dan heeft de response een persoon met de volgende gegevens
-    | naam                                                | waarde         |
-    | geslacht.code                                       | <code>         |
-    | geslacht.omschrijving                               | <omschrijving> |
-    | inOnderzoek.geslacht                                | true           |
-    | inOnderzoek.datumIngangOnderzoekPersoon.type        | Datum          |
-    | inOnderzoek.datumIngangOnderzoekPersoon.datum       | 2002-07-01     |
-    | inOnderzoek.datumIngangOnderzoekPersoon.langFormaat | 1 juli 2002    |
+    | naam                                                | waarde      |
+    | geslacht.code                                       | O           |
+    | geslacht.omschrijving                               | onbekend    |
+    | inOnderzoek.geslacht                                | true        |
+    | inOnderzoek.datumIngangOnderzoekPersoon.type        | Datum       |
+    | inOnderzoek.datumIngangOnderzoekPersoon.datum       | 2002-07-01  |
+    | inOnderzoek.datumIngangOnderzoekPersoon.langFormaat | 1 juli 2002 |
 
     Voorbeelden:
-    | gba in onderzoek waarde | field                 | code | omschrijving |
-    | 010000                  | geslacht              | O    | onbekend     |
-    | 010400                  | geslacht.code         | O    |              |
-    | 010410                  | geslacht.omschrijving |      | onbekend     |
+    | gba in onderzoek waarde | field                 |
+    | 010000                  | geslacht              |
+    | 010400                  | geslacht.code         |
+    | 010410                  | geslacht.omschrijving |
 
   Abstract Scenario: gemeente van inschrijving is in onderzoek
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
@@ -273,18 +273,18 @@ Functionaliteit: Persoon
     | burgerservicenummer | 000000152                       |
     | fields              | <field>                         |
     Dan heeft de response een persoon met de volgende gegevens
-    | naam                                                 | waarde         |
-    | gemeenteVanInschrijving.code                         | <code>         |
-    | gemeenteVanInschrijving.omschrijving                 | <omschrijving> |
-    | inOnderzoek.gemeenteVanInschrijving                  | true           |
-    | inOnderzoek.datumIngangOnderzoekGemeente.type        | Datum          |
-    | inOnderzoek.datumIngangOnderzoekGemeente.datum       | 2002-07-01     |
-    | inOnderzoek.datumIngangOnderzoekGemeente.langFormaat | 1 juli 2002    |
+    | naam                                                 | waarde        |
+    | gemeenteVanInschrijving.code                         | 0518          |
+    | gemeenteVanInschrijving.omschrijving                 | 's-Gravenhage |
+    | inOnderzoek.gemeenteVanInschrijving                  | true          |
+    | inOnderzoek.datumIngangOnderzoekGemeente.type        | Datum         |
+    | inOnderzoek.datumIngangOnderzoekGemeente.datum       | 2002-07-01    |
+    | inOnderzoek.datumIngangOnderzoekGemeente.langFormaat | 1 juli 2002   |
     Voorbeelden:
-    | gba in onderzoek waarde | field                                | code | omschrijving  |
-    | 080000                  | gemeenteVanInschrijving              | 0518 | 's-Gravenhage |
-    | 080900                  | gemeenteVanInschrijving.code         | 0518 |               |
-    | 080910                  | gemeenteVanInschrijving.omschrijving |      | 's-Gravenhage |
+    | gba in onderzoek waarde | field                                |
+    | 080000                  | gemeenteVanInschrijving              |
+    | 080900                  | gemeenteVanInschrijving.code         |
+    | 080910                  | gemeenteVanInschrijving.omschrijving |
 
   Abstract Scenario: datum inschrijving in de gemeente is in onderzoek
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens

@@ -56,7 +56,7 @@ Functionaliteit: Persoon: ouder
     | datumIngangFamilierechtelijkeBetrekking.datum       | 2002-07-01  |
     | datumIngangFamilierechtelijkeBetrekking.langFormaat | 1 juli 2002 |
 
-  Scenario: persoon heeft een ouder '1' en een ouder '2'
+  Scenario: persoon heeft een ouder '1' met voornamen in onderzoek en een ouder '2'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
     | naam                            | waarde   |
     | voornamen (02.10)               | Renée    |
@@ -71,9 +71,15 @@ Functionaliteit: Persoon: ouder
     | burgerservicenummer | 000000012                                      |
     | fields              | ouders.ouderAanduiding,ouders.naam.voorletters |
     Dan heeft de response een persoon met een 'ouder' met alleen de volgende gegevens
-    | naam             | waarde |
-    | ouderAanduiding  | 1      |
-    | naam.voorletters | R.     |
+    | naam            | waarde |
+    | ouderAanduiding | 1      |
+    En heeft de 'ouder' de volgende 'naam' gegevens
+    | naam                                         | waarde       |
+    | voorletters                                  | R.           |
+    | inOnderzoek.voorletters                      | true         |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum        |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07   |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
     En heeft de persoon een 'ouder' met de volgende gegevens
     | naam             | waarde |
     | ouderAanduiding  | 2      |

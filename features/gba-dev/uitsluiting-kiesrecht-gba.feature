@@ -73,3 +73,16 @@ Functionaliteit: Uitsluiting kiesrecht
 			| einddatum uitsluiting vorig jaar         | vorig jaar            |                         |              |
 			| einddatum uitsluiting dit jaar           | dit jaar              | true                    | dit jaar     |
 			| einddatum uitsluiting onbekend           | 00000000              | true                    | 00000000     |
+
+	Rule: Uitsluiting van kiesrecht wordt niet geleverd als alleen de einddatum uitsluiting is gevuld
+
+		Scenario: Geen aanduiding uitgesloten kiesrecht (38.10) en einddatum uitsluiting kiesrecht ligt in de toekomst
+			Gegeven de persoon met burgerservicenummer '000000103' heeft de volgende 'inschrijving' gegevens
+			| einddatum uitsluiting kiesrecht (38.20) |
+		  | morgen                                  |
+			Als gba personen wordt gezocht met de volgende parameters
+			| naam                | waarde                          |
+			| type                | RaadpleegMetBurgerservicenummer |
+			| burgerservicenummer | 000000103                       |
+			| fields              | uitsluitingKiesrecht            |
+			Dan heeft de response een persoon zonder gegevens

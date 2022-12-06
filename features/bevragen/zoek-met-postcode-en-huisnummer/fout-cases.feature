@@ -1,98 +1,11 @@
 #language: nl
 
-@post-assert
-Functionaliteit: Zoek met postcode en huisnummer
-
-  Achtergrond:
-    Gegeven het systeem heeft personen met de volgende gegevens
-    | burgerservicenummer |
-    | 999995078           |
-    | 999995079           |
-    | 999995080           |
-    | 999995081           |
-    | 999995082           |
-    En het systeem heeft personen met de volgende 'verblijfplaats' gegevens
-    | burgerservicenummer | postcode (11.60) | huisnummer (11.20) | huisletter (11.30) | huisnummertoevoeging (11.40) | aanduiding bij huisnummer (11.50) |
-    | 999995078           | 2628HJ           | 2                  |                    |                              |                                   |
-    | 999995079           | 2628HJ           | 2                  | A                  |                              |                                   |
-    | 999995080           | 2628HJ           | 2                  |                    |                              | to                                |
-    | 999995081           | 2628HJ           | 2                  |                    | III                          |                                   |
-    | 999995082           | 2628HJ           | 2                  |                    |                              |                                   |
-    En het systeem heeft personen met de volgende 'overlijden' gegevens
-    | burgerservicenummer | datum    |
-    | 999995082           | 20220301 |
+Functionaliteit: Zoek met postcode en huisnummer - fout cases
 
 Rule: Postcode en huisnummer zijn verplichte parameters
-  Zoeken is niet hoofdlettergevoelig
-
-  Abstract Scenario: Zoek met valide postcode en huisnummer
-    Als personen wordt gezocht met de volgende parameters
-    | naam       | waarde                      |
-    | type       | ZoekMetPostcodeEnHuisnummer |
-    | postcode   | <postcode>                  |
-    | huisnummer | 2                           |
-    | fields     | burgerservicenummer         |
-    Dan heeft de response 4 personen
-    En heeft de response een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999995078 |
-    En heeft de response een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999995079 |
-    En heeft de response een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999995080 |
-    En heeft de response een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999995081 |
-
-    Voorbeelden:
-    | postcode |
-    | 2628HJ   |
-    | 2628hj   |
-    | 2628 HJ  |
-    | 2628 hj  |
-    | 2628 Hj  |
-
-  Abstract Scenario: Zoek met huisletter
-    Als personen wordt gezocht met de volgende parameters
-    | naam       | waarde                      |
-    | type       | ZoekMetPostcodeEnHuisnummer |
-    | postcode   | 2628HJ                      |
-    | huisnummer | 2                           |
-    | huisletter | <huisletter>                |
-    | fields     | burgerservicenummer         |
-    Dan heeft de response 1 persoon
-    En heeft de response een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999995079 |
-
-    Voorbeelden:
-    | huisletter |
-    | A          |
-    | a          |
-
-  Abstract Scenario: Zoek met huisnummertoevoeging
-    Als personen wordt gezocht met de volgende parameters
-    | naam                 | waarde                      |
-    | type                 | ZoekMetPostcodeEnHuisnummer |
-    | postcode             | 2628HJ                      |
-    | huisnummer           | 2                           |
-    | huisnummertoevoeging | <huisnummertoevoeging>      |
-    | fields               | burgerservicenummer         |
-    Dan heeft de response 1 persoon
-    En heeft de response een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999995081 |
-
-    Voorbeelden:
-    | huisnummertoevoeging |
-    | III                  |
-    | iii                  |
-    | Iii                  |
 
   @fout-case
-  Scenario: Zoek zonder postcode en huisnummer 
+  Scenario: De postcode en huisnummer parameters zijn niet opgegeven 
     Als personen wordt gezocht met de volgende parameters
     | naam   | waarde                      |
     | type   | ZoekMetPostcodeEnHuisnummer |
@@ -111,7 +24,7 @@ Rule: Postcode en huisnummer zijn verplichte parameters
     | required | huisnummer | Parameter is verplicht. |
 
   @fout-case
-  Scenario: Zoek zonder postcode 
+  Scenario: De postcode parameter is niet opgegeven 
     Als personen wordt gezocht met de volgende parameters
     | naam       | waarde                      |
     | type       | ZoekMetPostcodeEnHuisnummer |
@@ -130,7 +43,7 @@ Rule: Postcode en huisnummer zijn verplichte parameters
     | required | postcode | Parameter is verplicht. |
 
   @fout-case
-  Scenario: Zoek zonder huisnummer 
+  Scenario: De huisnummer parameter is niet opgegeven 
     Als personen wordt gezocht met de volgende parameters
     | naam     | waarde                      |
     | type     | ZoekMetPostcodeEnHuisnummer |
@@ -149,7 +62,7 @@ Rule: Postcode en huisnummer zijn verplichte parameters
     | required | huisnummer | Parameter is verplicht. |
 
   @fout-case
-  Scenario: Zoek met leeg postcode en leeg huisnummer 
+  Scenario: Een lege string is opgegeven als postcode en huisnummer waarde 
     Als personen wordt gezocht met de volgende parameters
     | naam       | waarde                      |
     | type       | ZoekMetPostcodeEnHuisnummer |
@@ -190,17 +103,19 @@ Rule: Postcode en huisnummer zijn verplichte parameters
     | required | <foutieve parameter> | Parameter is verplicht. |
 
     Voorbeelden:
-    | titel                             | postcode | huisnummer | foutieve parameter |
-    | Zoek met alleen valide huisnummer |          | 2          | postcode           |
-    | Zoek met alleen valide postcode   | 2628HJ   |            | huisnummer         |
+    | titel                                              | postcode | huisnummer | foutieve parameter |
+    | Een lege string is opgegeven als huisnummer waarde |          | 2          | postcode           |
+    | Een lege waarde is opgegeven als postcode waarde   | 2628HJ   |            | huisnummer         |
+
+Rule: een huisnummer is een getal tussen 1 en 99999
 
   @fout-case
-  Scenario: Zoek met invalide huisnummer 
-    Als personen wordt gezocht met de volgende parameters
+  Abstract Scenario: Een ongeldig getal is opgegeven als huisnummer waarde 
+    Als gba personen wordt gezocht met de volgende parameters
     | naam       | waarde                      |
     | type       | ZoekMetPostcodeEnHuisnummer |
     | postcode   | 2628HJ                      |
-    | huisnummer | twee                        |
+    | huisnummer | <huisnummer>                |
     | fields     | burgerservicenummer         |
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                      |
@@ -214,8 +129,16 @@ Rule: Postcode en huisnummer zijn verplichte parameters
     | code    | name       | reason                       |
     | integer | huisnummer | Waarde is geen geldig getal. |
 
+    Voorbeelden:
+    | huisnummer |
+    | twee       |
+    | 0          |
+    | 100000     |
+
+Rule: een postcode is een string bestaande uit 4 cijfers, 0 of 1 spatie en 2 letters (niet hoofdlettergevoelig)
+
   @fout-case
-  Abstract Scenario: Zoek met invalide postcode 
+  Abstract Scenario: Een ongeldig postcode is opgegeven 
     Als personen wordt gezocht met de volgende parameters
     | naam       | waarde                      |
     | type       | ZoekMetPostcodeEnHuisnummer |
@@ -241,7 +164,7 @@ Rule: Postcode en huisnummer zijn verplichte parameters
     | <script>alert('hello world');</script> |
 
   @fout-case
-  Scenario: Meerdere invalide parameters 
+  Scenario: Meerdere ongeldige parameters zijn opgegeven 
     Als personen wordt gezocht met de volgende parameters
     | naam       | waarde                      |
     | type       | ZoekMetPostcodeEnHuisnummer |
@@ -261,80 +184,89 @@ Rule: Postcode en huisnummer zijn verplichte parameters
     | pattern | postcode   | Waarde voldoet niet aan patroon ^[1-9]{1}[0-9]{3}[ ]?[A-Za-z]{2}$. |
     | integer | huisnummer | Waarde is geen geldig getal.                                       |
 
+Rule: een huisletter is een string bestaande uit 1 letter (niet hoofdlettergevoelig)
+
   @fout-case
-  Abstract Scenario: Zoek met ongeldige <parameter naam> parameter
+  Abstract Scenario: Een ongeldige waarde is opgegeven voor de 'huisletter' parameter
     Als personen wordt gezocht met de volgende parameters
-    | naam             | waarde                                 |
-    | type             | ZoekMetPostcodeEnHuisnummer            |
-    | postcode         | 2628HJ                                 |
-    | huisnummer       | 2                                      |
-    | <parameter naam> | <script>alert('hello world');</script> |
-    | fields           | burgerservicenummer                    |
+    | naam       | waarde                      |
+    | type       | ZoekMetPostcodeEnHuisnummer |
+    | postcode   | 2628HJ                      |
+    | huisnummer | 2                           |
+    | huisletter | <huisletter>                |
+    | fields     | burgerservicenummer         |
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                      |
     | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
     | title    | Een of meerdere parameters zijn niet correct.               |
     | status   | 400                                                         |
-    | detail   | De foutieve parameter(s) zijn: <parameter naam>.            |
+    | detail   | De foutieve parameter(s) zijn: huisletter.                  |
     | code     | paramsValidation                                            |
     | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
-    | code    | name             | reason                                     |
-    | pattern | <parameter naam> | Waarde voldoet niet aan patroon <patroon>. |
+    | code    | name       | reason                                         |
+    | pattern | huisletter | Waarde voldoet niet aan patroon ^[a-zA-Z]{1}$. |
 
     Voorbeelden:
-    | parameter naam       | patroon               |
-    | huisletter           | ^[a-zA-Z]{1}$         |
-    | huisnummertoevoeging | ^[a-zA-Z0-9 \-]{1,4}$ |
+    | huisletter                             |
+    | <script>alert('hello world');</script> |
+    | 1                                      |
 
+Rule: Een huisnummertoevoeging is een string bestaande uit minimaal 1 en maximaal 4 karakters. Deze karakters kunnen zijn:
+      - kleine letters (a-z)
+      - hoofdletters (A-Z)
+      - spatie ( ) en min (-)
 
-Rule: een afgevoerde persoonslijst moet niet worden gevonden
-  - wanneer reden opschorting bijhouding (07.67.20) is opgenomen met de waarde "F" (fout), moet deze persoon(slijst) niet worden gevonden bij zoeken
-
-  Scenario: Zoek met postcode en huisnummer van persoon op afgevoerde persoonslijst
-    Gegeven een persoon heeft de volgende 'inschrijving' gegevens
-    | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
-    | 20220829                             | F                                    |
-    En de persoon heeft de volgende 'persoon' gegevens
-    | burgerservicenummer (01.20) |
-    | 000000012                   |
-    En de persoon heeft de volgende 'verblijfplaats' gegevens
-    | postcode (11.60) | huisnummer (11.20) |
-    | 0628HJ           | 31                 |
+  @fout-case
+  Abstract Scenario: Een ongeldige waarde is opgegeven voor de 'huisnummertoevoeging' parameter
     Als personen wordt gezocht met de volgende parameters
-    | naam       | waarde                      |
-    | type       | ZoekMetPostcodeEnHuisnummer |
-    | postcode   | 0628HJ                      |
-    | huisnummer | 31                          |
-    | fields     | burgerservicenummer         |
-    Dan heeft de response 0 personen
-
-  Abstract Scenario: Zoek met postcode en huisnummer van persoon op opgeschorte persoonslijst wegens "<reden opschorting omschrijving>"
-    Gegeven een persoon heeft de volgende 'inschrijving' gegevens
-    | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
-    | 20220829                             | <reden opschorting bijhouding>       |
-    En de persoon heeft de volgende 'persoon' gegevens
-    | burgerservicenummer (01.20) |
-    | 000000024                   |
-    n de persoon heeft de volgende 'verblijfplaats' gegevens
-    | postcode (11.60) | huisnummer (11.20) |
-    | 0628HJ           | 31                 |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                       | waarde                      |
-    | type                       | ZoekMetPostcodeEnHuisnummer |
-    | postcode                   | 0628HJ                      |
-    | huisnummer                 | 31                          |
-    | inclusiefOverledenPersonen | true                        |
-    | fields                     | burgerservicenummer         |
-    Dan heeft de response een persoon met de volgende gegevens
-    | naam                                     | waarde                           |
-    | burgerservicenummer                      | 000000024                        |
-    | opschortingBijhouding.reden.code         | <reden opschorting bijhouding>   |
-    | opschortingBijhouding.reden.omschrijving | <reden opschorting omschrijving> |
+    | naam                 | waarde                      |
+    | type                 | ZoekMetPostcodeEnHuisnummer |
+    | postcode             | 2628HJ                      |
+    | huisnummer           | 2                           |
+    | huisnummertoevoeging | <huisnummertoevoeging>      |
+    | fields               | burgerservicenummer         |
+    Dan heeft de response een object met de volgende gegevens
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: huisnummertoevoeging.        |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
+    En heeft het object de volgende 'invalidParams' gegevens
+    | code    | name                 | reason                                                 |
+    | pattern | huisnummertoevoeging | Waarde voldoet niet aan patroon ^[a-zA-Z0-9 \-]{1,4}$. |
 
     Voorbeelden:
-    | reden opschorting bijhouding | reden opschorting omschrijving |
-    | O                            | overlijden                     |
-    | E                            | emigratie                      |
-    | M                            | ministerieel besluit           |
-    | .                            | onbekend                       |
+    | huisnummertoevoeging                   |
+    | <script>alert('hello world');</script> |
+    | 123.45                                 |
+
+Rule: inclusiefOverledenPersonen is een boolean (true of false waarde)
+
+  @fout-case
+  Abstract Scenario: Een ongeldig waarde is opgegeven voor de 'inclusiefOverledenPersonen' parameter
+    Als personen wordt gezocht met de volgende parameters
+    | naam                       | waarde                         |
+    | type                       | ZoekMetPostcodeEnHuisnummer    |
+    | postcode                   | 2628HJ                         |
+    | huisnummer                 | 2                              |
+    | fields                     | burgerservicenummer            |
+    | inclusiefOverledenPersonen | <inclusief overleden personen> |
+    Dan heeft de response een object met de volgende gegevens
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: inclusiefOverledenPersonen.  |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
+    En heeft het object de volgende 'invalidParams' gegevens
+    | code    | name                       | reason                  |
+    | boolean | inclusiefOverledenPersonen | Waarde is geen boolean. |
+
+    Voorbeelden:
+    | inclusief overleden personen |
+    |                              |
+    | geen boolean                 |

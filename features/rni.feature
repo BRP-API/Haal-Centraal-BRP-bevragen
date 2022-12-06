@@ -3,14 +3,13 @@
 Functionaliteit: RNI-deelnemer voor geleverde gegevens
 
 
-  Rule: de RNI-deelnemer gegevens worden geleverd voor elke categorie waarvan ten minste één gegeven gevraagd is
+  Rule: de RNI-deelnemer gegevens worden geleverd voor de volgende categoriën waarvan ten minste één gegeven gevraagd is
     - RNI-deelnemer gegevens worden ook geleverd wanneer hier niet naar gevraagd is met de fields parameter
-    - categorie wordt gevuld met de naam van de categorie waarop de RNI-deelnemer gegevens heeft aangeleverd
+    - Het veld 'rni/categorie' wordt gevuld met de naam van de categorie waarop de RNI-deelnemer gegevens heeft aangeleverd
       | categorie | naam           |
       | 01        | Persoon        |
       | 04        | Nationaliteit  |
       | 06        | Overlijden     |
-      | 07        | Inschrijving   |
       | 08        | Verblijfplaats |
 
 
@@ -135,7 +134,7 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       | naam                | waarde    |
       | burgerservicenummer | 000000048 |
 
-    Scenario: wel leveren RNI-deelnemer categorie 7 wanneer er geheimhouding is
+    Scenario: Geen RNI-deelnemer leveren categorie 7 wanneer er geheimhouding is
       Gegeven de persoon met burgerservicenummer '000000061' heeft de volgende 'inschrijving' gegevens
       | naam                         | waarde                                      |
       | indicatie geheim (70.10)     | 7                                           |
@@ -150,14 +149,9 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       | naam                          | waarde    |
       | burgerservicenummer           | 000000061 |
       | geheimhoudingPersoonsgegevens | true      |
-      En heeft de persoon een 'rni' met de volgende gegevens
-      | naam                   | waarde                                          |
-      | deelnemer.code         | 0101                                            |
-      | deelnemer.omschrijving | Belastingdienst (inzake heffingen en toeslagen) |
-      | omschrijvingVerdrag    | Belastingverdrag tussen België en Nederland     |
-      | categorie              | Inschrijving                                    |
+      En heeft de persoon GEEN 'rni'
 
-    Scenario: wel leveren RNI-deelnemer categorie 7 wanneer er opschorting bijhouding is
+    Scenario: Geen RNI-deelnemer leveren categorie 7 wanneer er opschorting bijhouding is
       Gegeven de persoon met burgerservicenummer '000000073' heeft de volgende 'inschrijving' gegevens
       | naam                                 | waarde                                      |
       | reden opschorting bijhouding (67.20) | O                                           |
@@ -176,14 +170,9 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       | naam               | waarde     |
       | reden.code         | O          |
       | reden.omschrijving | overlijden |
-      En heeft de persoon een 'rni' met de volgende gegevens
-      | naam                   | waarde                                          |
-      | deelnemer.code         | 0101                                            |
-      | deelnemer.omschrijving | Belastingdienst (inzake heffingen en toeslagen) |
-      | omschrijvingVerdrag    | Belastingverdrag tussen België en Nederland     |
-      | categorie              | Inschrijving                                    |
+      En heeft de persoon GEEN 'rni'
 
-    Scenario: wel leveren RNI-deelnemer categorie 7 wanneer er om inschrijvinggegevens gevraagd is
+    Scenario: Geen RNI-deelnemer leveren categorie 7 wanneer er om inschrijvinggegevens gevraagd is
       Gegeven de persoon met burgerservicenummer '000000085' heeft de volgende 'inschrijving' gegevens
       | naam                         | waarde                                      |
       | indicatie geheim (70.10)     | 0                                           |
@@ -197,12 +186,7 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       Dan heeft de response een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 000000085 |
-      En heeft de persoon een 'rni' met de volgende gegevens
-      | naam                   | waarde                                          |
-      | deelnemer.code         | 0101                                            |
-      | deelnemer.omschrijving | Belastingdienst (inzake heffingen en toeslagen) |
-      | omschrijvingVerdrag    | Belastingverdrag tussen België en Nederland     |
-      | categorie              | Inschrijving                                    |
+      En heeft de persoon GEEN 'rni'
 
     Scenario: alle categoriën RNI-deelnemer leveren als er met fields = rni wordt gevraagd
       Gegeven de persoon met burgerservicenummer '000000085' heeft de volgende gegevens
@@ -229,12 +213,6 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       Dan heeft de response een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 000000085 |
-      En heeft de persoon een 'rni' met de volgende gegevens
-      | naam                   | waarde                                          |
-      | deelnemer.code         | 0101                                            |
-      | deelnemer.omschrijving | Belastingdienst (inzake heffingen en toeslagen) |
-      | omschrijvingVerdrag    | Belastingverdrag tussen België en Nederland     |
-      | categorie              | Inschrijving                                    |
       En heeft de persoon een 'rni' met de volgende gegevens
       | naam                   | waarde                                          |
       | deelnemer.code         | 0101                                            |

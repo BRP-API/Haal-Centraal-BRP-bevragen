@@ -31,17 +31,17 @@ Functionaliteit: Persoon: naam
     | burgerservicenummer | 000000152                       |
     | fields              | <field>                         |
     Dan heeft de response een persoon met de volgende 'naam' gegevens
-    | naam                                 | waarde         |
-    | adellijkeTitelPredicaat.code         | <code>         |
-    | adellijkeTitelPredicaat.omschrijving | <omschrijving> |
-    | adellijkeTitelPredicaat.soort        | <soort>        |
+    | naam                                 | waarde    |
+    | adellijkeTitelPredicaat.code         | JH        |
+    | adellijkeTitelPredicaat.omschrijving | jonkheer  |
+    | adellijkeTitelPredicaat.soort        | predicaat |
 
     Voorbeelden:
-    | field                                     | code | omschrijving | soort     |
-    | naam.adellijkeTitelPredicaat              | JH   | Jonkheer     | predicaat |
-    | naam.adellijkeTitelPredicaat.code         | JH   |              |           |
-    | naam.adellijkeTitelPredicaat.omschrijving |      | Jonkheer     |           |
-    | naam.adellijkeTitelPredicaat.soort        |      |              | predicaat |
+    | field                                     |
+    | naam.adellijkeTitelPredicaat              |
+    | naam.adellijkeTitelPredicaat.code         |
+    | naam.adellijkeTitelPredicaat.omschrijving |
+    | naam.adellijkeTitelPredicaat.soort        |
 
   Abstract Scenario: persoon heeft 'naam' veld: 'aanduiding naamgebruik (61.10)'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
@@ -53,15 +53,15 @@ Functionaliteit: Persoon: naam
     | burgerservicenummer | 000000152                       |
     | fields              | <field>                         |
     Dan heeft de response een persoon met de volgende 'naam' gegevens
-    | naam                               | waarde         |
-    | aanduidingNaamgebruik.code         | <code>         |
-    | aanduidingNaamgebruik.omschrijving | <omschrijving> |
+    | naam                               | waarde                        |
+    | aanduidingNaamgebruik.code         | E                             |
+    | aanduidingNaamgebruik.omschrijving | gebruik alleen de eigen naam. |
 
     Voorbeelden:
-    | field                                   | code | omschrijving                  |
-    | naam.aanduidingNaamgebruik              | E    | gebruik alleen de eigen naam. |
-    | naam.aanduidingNaamgebruik.code         | E    |                               |
-    | naam.aanduidingNaamgebruik.omschrijving |      | gebruik alleen de eigen naam. |
+    | field                                   |
+    | naam.aanduidingNaamgebruik              |
+    | naam.aanduidingNaamgebruik.code         |
+    | naam.aanduidingNaamgebruik.omschrijving |
 
   Abstract Scenario: naam veld(en) van persoon is/zijn in onderzoek
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
@@ -185,20 +185,20 @@ Functionaliteit: Persoon: naam
     | burgerservicenummer | 000000152                       |
     | fields              | naam.<field>                    |
     Dan heeft de response een persoon met de volgende 'naam' gegevens
-    | naam                                         | waarde         |
-    | adellijkeTitelPredicaat.code                 | <code>         |
-    | adellijkeTitelPredicaat.omschrijving         | <omschrijving> |
-    | adellijkeTitelPredicaat.soort                | <soort>        |
-    | inOnderzoek.adellijkeTitelPredicaat          | true           |
-    | inOnderzoek.datumIngangOnderzoek.type        | Datum          |
-    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01     |
-    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002    |
+    | naam                                         | waarde      |
+    | adellijkeTitelPredicaat.code                 | JH          |
+    | adellijkeTitelPredicaat.omschrijving         | jonkheer    |
+    | adellijkeTitelPredicaat.soort                | predicaat   |
+    | inOnderzoek.adellijkeTitelPredicaat          | true        |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum       |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01  |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002 |
 
     Voorbeelden:
-    | gba in onderzoek waarde | field                                | code | omschrijving | soort     |
-    | 010000                  | adellijkeTitelPredicaat              | JH   | Jonkheer     | predicaat |
-    | 010200                  | adellijkeTitelPredicaat.code         | JH   |              |           |
-    | 010220                  | adellijkeTitelPredicaat.omschrijving |      | Jonkheer     |           |
+    | gba in onderzoek waarde | field                                |
+    | 010000                  | adellijkeTitelPredicaat              |
+    | 010200                  | adellijkeTitelPredicaat.code         |
+    | 010220                  | adellijkeTitelPredicaat.omschrijving |
 
   Abstract Scenario: aanduiding naamgebruik is in onderzoek
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
@@ -212,19 +212,19 @@ Functionaliteit: Persoon: naam
     | burgerservicenummer | 000000152                       |
     | fields              | naam.<field>                    |
     Dan heeft de response een persoon met de volgende 'naam' gegevens
-    | naam                                         | waarde         |
-    | aanduidingNaamgebruik.code                   | <code>         |
-    | aanduidingNaamgebruik.omschrijving           | <omschrijving> |
-    | inOnderzoek.aanduidingNaamgebruik            | true           |
-    | inOnderzoek.datumIngangOnderzoek.type        | Datum          |
-    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01     |
-    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002    |
+    | naam                                         | waarde                                     |
+    | aanduidingNaamgebruik.code                   | V                                          |
+    | aanduidingNaamgebruik.omschrijving           | gebruik de partnernaam voor de eigen naam. |
+    | inOnderzoek.aanduidingNaamgebruik            | true                                       |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                                      |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                                 |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                                |
 
     Voorbeelden:
-    | gba in onderzoek waarde | field                              | code | omschrijving                               |
-    | 010000                  | aanduidingNaamgebruik              | V    | gebruik de partnernaam voor de eigen naam. |
-    | 016100                  | aanduidingNaamgebruik.code         | V    |                                            |
-    | 016110                  | aanduidingNaamgebruik.omschrijving |      | gebruik de partnernaam voor de eigen naam. |
+    | gba in onderzoek waarde | field                              |
+    | 010000                  | aanduidingNaamgebruik              |
+    | 016100                  | aanduidingNaamgebruik.code         |
+    | 016110                  | aanduidingNaamgebruik.omschrijving |
 
   Abstract Scenario: voorletters is in onderzoek
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens

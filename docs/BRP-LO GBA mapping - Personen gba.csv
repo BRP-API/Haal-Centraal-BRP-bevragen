@@ -93,7 +93,7 @@ verblijfplaats;;;;;8;;;~;;
 ;woonplaats;;;;8;11.70;ongewijzigd leveren;Ja;Ja;
 ;adresseerbaarObjectIdentificatie;;;;8;11.80;ongewijzigd leveren;Ja;;
 ;nummeraanduidingIdentificatie;;;;8;11.90;ongewijzigd leveren;Ja;;
-;locatiebeschrijving;;;;8;12.10;ongewijzigd leveren;Ja;;
+;locatiebeschrijving;;;;8;12.10;ongewijzigd leveren;Ja;Ja;
 ;land;;;;8;13.10;"code+omschrijving; ook 0000";Ja;Ja;
 ;datumAanvangAdresBuitenland;;;;8;13.20;ongewijzigd leveren (8 cijfers);Ja;;
 ;regel1;;;;8;13.30;ongewijzigd leveren;Ja;Ja;

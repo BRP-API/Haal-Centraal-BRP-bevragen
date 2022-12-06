@@ -666,17 +666,20 @@
           "geslacht" : {
             "$ref" : "#/components/schemas/Waardetabel"
           },
+          "inOnderzoek" : {
+            "$ref" : "#/components/schemas/PersoonInOnderzoekBeperkt"
+          },
           "leeftijd" : {
             "$ref" : "#/components/schemas/Leeftijd"
           },
           "naam" : {
-            "$ref" : "#/components/schemas/NaamBasis"
+            "$ref" : "#/components/schemas/NaamPersoonBeperkt"
           },
           "opschortingBijhouding" : {
             "$ref" : "#/components/schemas/OpschortingBijhoudingBasis"
           },
           "overlijden" : {
-            "$ref" : "#/components/schemas/OverlijdenBasis"
+            "$ref" : "#/components/schemas/OverlijdenBeperkt"
           },
           "verblijfplaats" : {
             "$ref" : "#/components/schemas/AbstractVerblijfplaatsBeperkt"
@@ -704,6 +707,24 @@
       "GeheimhoudingPersoonsgegevens" : {
         "type" : "boolean",
         "description" : "Gegevens mogen niet worden verstrekt aan derden / maatschappelijke instellingen.\n"
+      },
+      "PersoonInOnderzoekBeperkt" : {
+        "type" : "object",
+        "properties" : {
+          "datumIngangOnderzoekPersoon" : {
+            "$ref" : "#/components/schemas/AbstractDatum"
+          },
+          "burgerservicenummer" : {
+            "type" : "boolean"
+          },
+          "geslacht" : {
+            "type" : "boolean"
+          },
+          "leeftijd" : {
+            "type" : "boolean"
+          }
+        },
+        "description" : "Geeft aan welke gegevens van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v2.0.0/features/in_onderzoek.feature).\n* **datumIngangOnderzoekPersoon - Deze datum heeft betrekking op burgerservicenummer, geslacht en leeftijd\n"
       },
       "Leeftijd" : {
         "maximum" : 150,
@@ -985,8 +1006,23 @@
         "properties" : {
           "datum" : {
             "$ref" : "#/components/schemas/AbstractDatum"
+          },
+          "inOnderzoek" : {
+            "$ref" : "#/components/schemas/GeboorteInOnderzoekBeperkt"
           }
         }
+      },
+      "GeboorteInOnderzoekBeperkt" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/InOnderzoek"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "datum" : {
+              "type" : "boolean"
+            }
+          }
+        } ]
       },
       "Waardetabel" : {
         "type" : "object",
@@ -1002,6 +1038,18 @@
             "example" : "Nederland"
           }
         }
+      },
+      "NaamPersoonBeperkt" : {
+        "description" : "Gegevens over de naam van de persoon.\n* **aanduidingNaamgebruik** - wordt gevuld met waarden uit de tabel 'Naamgebruik' (zie Haal-Centraal-BRP-tabellen-bevragen API).\n",
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/NaamBasis"
+        }, {
+          "properties" : {
+            "inOnderzoek" : {
+              "$ref" : "#/components/schemas/NaamPersoonInOnderzoekBeperkt"
+            }
+          }
+        } ]
       },
       "NaamBasis" : {
         "type" : "object",
@@ -1079,6 +1127,43 @@
         "description" : "Combinatie van predicaat, voornamen, adellijke titel, voorvoegsels en geslachtsnaam, zonder toevoeging van een eventuele partnernaam.\n",
         "example" : "Pieter Jan de Vries"
       },
+      "NaamPersoonInOnderzoekBeperkt" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/NaamInOnderzoek"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "volledigeNaam" : {
+              "type" : "boolean"
+            }
+          }
+        } ]
+      },
+      "NaamInOnderzoek" : {
+        "description" : "Geeft aan welke gegevens over de naam in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/InOnderzoek"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "voornamen" : {
+              "type" : "boolean"
+            },
+            "adellijkeTitelPredicaat" : {
+              "type" : "boolean"
+            },
+            "voorvoegsel" : {
+              "type" : "boolean"
+            },
+            "geslachtsnaam" : {
+              "type" : "boolean"
+            },
+            "voorletters" : {
+              "type" : "boolean"
+            }
+          }
+        } ]
+      },
       "OpschortingBijhoudingBasis" : {
         "type" : "object",
         "properties" : {
@@ -1087,6 +1172,19 @@
           }
         },
         "description" : "* **reden** - wordt gevuld met waarden uit de tabel 'redenopschortingbijhouding' (zie Haal-Centraal-BRP-tabellen-bevragen API).\n"
+      },
+      "OverlijdenBeperkt" : {
+        "description" : "Gegevens over het overlijden.\n* **datum** - datum waarop de persoon is overleden.\n* **land** - land waar de persoon is overleden. Wordt gevuld met waarden uit de tabel 'Landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n* **plaats** - gemeente waar de persoon is overleden. Wordt gevuld met waarden uit de tabel \"Gemeenten\" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.\n",
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/OverlijdenBasis"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "inOnderzoek" : {
+              "$ref" : "#/components/schemas/OverlijdenInOnderzoekBeperkt"
+            }
+          }
+        } ]
       },
       "OverlijdenBasis" : {
         "type" : "object",
@@ -1099,6 +1197,19 @@
       "IndicatieOverleden" : {
         "type" : "boolean",
         "description" : "Geeft aan dat iemand is overleden (waarde true), ongeacht of de overlijdensdatum bekend is.\n"
+      },
+      "OverlijdenInOnderzoekBeperkt" : {
+        "description" : "Geeft aan welke gegevens over het overlijden van de persoon in onderzoek zijn.\nZie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/InOnderzoek"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "indicatieOverleden" : {
+              "type" : "boolean"
+            }
+          }
+        } ]
       },
       "AbstractVerblijfplaatsBeperkt" : {
         "required" : [ "type" ],
@@ -1123,7 +1234,24 @@
         "allOf" : [ {
           "$ref" : "#/components/schemas/AbstractVerblijfplaatsBeperkt"
         }, {
-          "type" : "object"
+          "type" : "object",
+          "properties" : {
+            "inOnderzoek" : {
+              "$ref" : "#/components/schemas/VerblijfplaatsInOnderzoekBeperkt"
+            }
+          }
+        } ]
+      },
+      "VerblijfplaatsInOnderzoekBeperkt" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/InOnderzoek"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "type" : {
+              "type" : "boolean"
+            }
+          }
         } ]
       },
       "AdresBeperkt" : {
@@ -1134,6 +1262,9 @@
           "properties" : {
             "functieAdres" : {
               "$ref" : "#/components/schemas/Waardetabel"
+            },
+            "inOnderzoek" : {
+              "$ref" : "#/components/schemas/VerblijfplaatsInOnderzoekBeperkt"
             }
           },
           "description" : "* **functieAdres** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'Functie_Adres' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
@@ -1147,6 +1278,9 @@
           "properties" : {
             "functieAdres" : {
               "$ref" : "#/components/schemas/Waardetabel"
+            },
+            "inOnderzoek" : {
+              "$ref" : "#/components/schemas/VerblijfplaatsInOnderzoekBeperkt"
             }
           }
         } ]
@@ -1159,12 +1293,26 @@
           "properties" : {
             "functieAdres" : {
               "$ref" : "#/components/schemas/Waardetabel"
+            },
+            "inOnderzoek" : {
+              "$ref" : "#/components/schemas/VerblijfplaatsInOnderzoekBeperkt"
             }
           },
           "description" : "* **functieAdres** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Functie_Adres' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
         } ]
       },
       "AdresseringBeperkt" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AdresseringBasis"
+        }, {
+          "properties" : {
+            "inOnderzoek" : {
+              "$ref" : "#/components/schemas/AdresseringInOnderzoekBeperkt"
+            }
+          }
+        } ]
+      },
+      "AdresseringBasis" : {
         "type" : "object",
         "properties" : {
           "adresregel1" : {
@@ -1199,6 +1347,27 @@
         "type" : "string",
         "description" : "Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.\n",
         "example" : "Selangor"
+      },
+      "AdresseringInOnderzoekBeperkt" : {
+        "type" : "object",
+        "properties" : {
+          "adresregel1" : {
+            "type" : "boolean"
+          },
+          "adresregel2" : {
+            "type" : "boolean"
+          },
+          "adresregel3" : {
+            "type" : "boolean"
+          },
+          "land" : {
+            "type" : "boolean"
+          },
+          "datumIngangOnderzoekVerblijfplaats" : {
+            "$ref" : "#/components/schemas/AbstractDatum"
+          }
+        },
+        "description" : "Geeft aan welke gegevens over de adressering in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n"
       },
       "AbstractDatum" : {
         "required" : [ "type" ],
@@ -1373,31 +1542,6 @@
               "type" : "boolean"
             },
             "volledigeNaam" : {
-              "type" : "boolean"
-            }
-          }
-        } ]
-      },
-      "NaamInOnderzoek" : {
-        "description" : "Geeft aan welke gegevens over de naam in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "voornamen" : {
-              "type" : "boolean"
-            },
-            "adellijkeTitelPredicaat" : {
-              "type" : "boolean"
-            },
-            "voorvoegsel" : {
-              "type" : "boolean"
-            },
-            "geslachtsnaam" : {
-              "type" : "boolean"
-            },
-            "voorletters" : {
               "type" : "boolean"
             }
           }
@@ -2098,7 +2242,7 @@
       },
       "Adressering" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/AdresseringBeperkt"
+          "$ref" : "#/components/schemas/AdresseringBasis"
         }, {
           "properties" : {
             "aanhef" : {

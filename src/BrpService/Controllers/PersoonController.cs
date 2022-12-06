@@ -2,7 +2,6 @@
 using HaalCentraal.BrpService.Generated;
 using HaalCentraal.BrpService.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace HaalCentraal.BrpService.Controllers;
 
@@ -24,7 +23,11 @@ public class PersoonController : Generated.ControllerBase
 
     public override async Task<ActionResult<PersonenQueryResponse>> GetPersonen([FromBody] PersonenQuery body)
     {
-        return body switch
+        _logger.LogDebug("Request headers: {@headers}", HttpContext.Request.Headers);
+        _logger.LogDebug("Request body: {@body}", body);
+
+
+        var retval = body switch
         {
             RaadpleegMetBurgerservicenummer q => await Handle(q),
             ZoekMetGeslachtsnaamEnGeboortedatum q => await Handle(q),
@@ -34,77 +37,45 @@ public class PersoonController : Generated.ControllerBase
             ZoekMetStraatHuisnummerEnGemeenteVanInschrijving q => await Handle(q),
             _ => throw new InvalidOperationException($"Onbekend type query: {body}"),
         };
+
+        _logger.LogDebug("Response body: {@responsebody}", retval);
+
+        return Ok(retval);
     }
 
-    private async Task<ActionResult<PersonenQueryResponse>> Handle(ZoekMetPostcodeEnHuisnummer query)
+    private async Task<PersonenQueryResponse> Handle(ZoekMetPostcodeEnHuisnummer query)
     {
-        _logger.LogDebug("Request body: {@query}", JsonConvert.SerializeObject(query));
-
         var filter = _mapper.Map<ZoekMetPostcodeEnHuisnummerFilter>(query);
 
-        var retval = await _repository.Zoek<ZoekMetPostcodeEnHuisnummerFilter>(filter);
-
-        _logger.LogDebug("Response: {@response}", JsonConvert.SerializeObject(retval));
-
-        return Ok(retval);
+        return await _repository.Zoek<ZoekMetPostcodeEnHuisnummerFilter>(filter);
     }
 
-    private async Task<ActionResult<PersonenQueryResponse>> Handle(ZoekMetNaamEnGemeenteVanInschrijving query)
+    private async Task<PersonenQueryResponse> Handle(ZoekMetNaamEnGemeenteVanInschrijving query)
     {
-        _logger.LogDebug("Request body: {@query}", JsonConvert.SerializeObject(query));
-
         var filter = _mapper.Map<ZoekMetNaamEnGemeenteVanInschrijvingFilter>(query);
 
-        var retval = await _repository.Zoek<ZoekMetNaamEnGemeenteVanInschrijvingFilter>(filter);
-
-        _logger.LogDebug("Response: {@response}", JsonConvert.SerializeObject(retval));
-
-        return Ok(retval);
+        return await _repository.Zoek<ZoekMetNaamEnGemeenteVanInschrijvingFilter>(filter);
     }
 
-    private async Task<ActionResult<PersonenQueryResponse>> Handle(ZoekMetGeslachtsnaamEnGeboortedatum query)
+    private async Task<PersonenQueryResponse> Handle(ZoekMetGeslachtsnaamEnGeboortedatum query)
     {
-        _logger.LogDebug("Request body: {@query}", JsonConvert.SerializeObject(query));
-
         var filter = _mapper.Map<ZoekMetGeslachtsnaamEnGeboortedatumFilter>(query);
 
-        var retval = await _repository.Zoek<ZoekMetGeslachtsnaamEnGeboortedatumFilter>(filter);
-
-        _logger.LogDebug("Response: {@response}", JsonConvert.SerializeObject(retval));
-
-        return Ok(retval);
+        return await _repository.Zoek<ZoekMetGeslachtsnaamEnGeboortedatumFilter>(filter);
     }
 
-    private async Task<ActionResult<PersonenQueryResponse>> Handle(RaadpleegMetBurgerservicenummer query)
+    private async Task<PersonenQueryResponse> Handle(RaadpleegMetBurgerservicenummer query)
     {
-        _logger.LogDebug("Request body: {@query}", JsonConvert.SerializeObject(query));
-
-        var retval = await _repository.Zoek<RaadpleegMetBurgerservicenummer>(query);
-
-        _logger.LogDebug("Response: {@response}", JsonConvert.SerializeObject(retval));
-
-        return Ok(retval);
+        return await _repository.Zoek<RaadpleegMetBurgerservicenummer>(query);
     }
 
-    private async Task<ActionResult<PersonenQueryResponse>> Handle(ZoekMetNummeraanduidingIdentificatie query)
+    private async Task<PersonenQueryResponse> Handle(ZoekMetNummeraanduidingIdentificatie query)
     {
-        _logger.LogDebug("Request body: {@query}", JsonConvert.SerializeObject(query));
-
-        var retval = await _repository.Zoek<ZoekMetNummeraanduidingIdentificatie>(query);
-
-        _logger.LogDebug("Response: {@response}", JsonConvert.SerializeObject(retval));
-
-        return Ok(retval);
+        return await _repository.Zoek<ZoekMetNummeraanduidingIdentificatie>(query);
     }
 
-    private async Task<ActionResult<PersonenQueryResponse>> Handle(ZoekMetStraatHuisnummerEnGemeenteVanInschrijving query)
+    private async Task<PersonenQueryResponse> Handle(ZoekMetStraatHuisnummerEnGemeenteVanInschrijving query)
     {
-        _logger.LogDebug("Request body: {@query}", JsonConvert.SerializeObject(query));
-
-        var retval = await _repository.Zoek<ZoekMetStraatHuisnummerEnGemeenteVanInschrijving>(query);
-
-        _logger.LogDebug("Response: {@response}", JsonConvert.SerializeObject(retval));
-
-        return Ok(retval);
+        return await _repository.Zoek<ZoekMetStraatHuisnummerEnGemeenteVanInschrijving>(query);
     }
 }
