@@ -47,7 +47,7 @@ Functionaliteit: Persoon: verblijfplaats binnenland (adres) velden vragen met fi
     Voorbeelden:
     | fields                               |
     | verblijfplaats.datumIngangGeldigheid |
-    
+
   Abstract Scenario: 'functie adres (10.10)' wordt gevraagd met field pad '<fields>'
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
@@ -95,3 +95,23 @@ Functionaliteit: Persoon: verblijfplaats binnenland (adres) velden vragen met fi
     Voorbeelden:
     | fields                                       |
     | verblijfplaats.nummeraanduidingIdentificatie |
+
+  Scenario: alle adres velden wordt gevraagd met field pad 'verblijfplaats'
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | verblijfplaats                  |
+    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
+    | naam                              | waarde           |
+    | type                              | Adres            |
+    | datumVan.type                     | Datum            |
+    | datumVan.datum                    | 2015-08-08       |
+    | datumVan.langFormaat              | 8 augustus 2015  |
+    | datumIngangGeldigheid.type        | Datum            |
+    | datumIngangGeldigheid.datum       | 2022-02-22       |
+    | datumIngangGeldigheid.langFormaat | 22 februari 2022 |
+    | functieAdres.code                 | W                |
+    | functieAdres.omschrijving         | woonadres        |
+    | adresseerbaarObjectIdentificatie  | 0599010000208579 |
+    | nummeraanduidingIdentificatie     | 0599200000219678 |

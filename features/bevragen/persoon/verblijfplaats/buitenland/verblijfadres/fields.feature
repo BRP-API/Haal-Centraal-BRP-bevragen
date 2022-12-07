@@ -71,3 +71,18 @@ Functionaliteit: Persoon: verblijfplaats buitenland - verblijfadres velden vrage
     Voorbeelden:
     | fields                            |
     | verblijfplaats.verblijfadres.land |
+
+  Scenario: alle verblijfadres velden wordt gevraagd met field pad 'verblijfplaats.verblijfadres'
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | verblijfplaats.verblijfadres    |
+    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
+    | naam                            | waarde                       |
+    | type                            | VerblijfplaatsBuitenland     |
+    | verblijfadres.regel1            | 1600 Pennsylvania Avenue NW  |
+    | verblijfadres.regel2            | Washington, DC 20500         |
+    | verblijfadres.regel3            | Selangor                     |
+    | verblijfadres.land.code         | 6014                         |
+    | verblijfadres.land.omschrijving | Verenigde Staten van Amerika |

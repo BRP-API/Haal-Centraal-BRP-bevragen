@@ -140,3 +140,22 @@ Functionaliteit: Persoon: verblijfplaats binnenland (adres) - verblijfadres veld
     Voorbeelden:
     | fields                                  |
     | verblijfplaats.verblijfadres.woonplaats |
+
+  Scenario: alle verblijfadres velden wordt gevraagd met field pad 'verblijfplaats.verblijfadres'
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | verblijfplaats.verblijfadres    |
+    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
+    | naam                                               | waarde        |
+    | type                                               | Adres         |
+    | verblijfadres.aanduidingBijHuisnummer.code         | to            |
+    | verblijfadres.aanduidingBijHuisnummer.omschrijving | tegenover     |
+    | verblijfadres.huisletter                           | a             |
+    | verblijfadres.huisnummer                           | 123           |
+    | verblijfadres.huisnummertoevoeging                 | 2             |
+    | verblijfadres.straat                               | Spui          |
+    | verblijfadres.postcode                             | 1234AA        |
+    | verblijfadres.korteNaam                            | Spui          |
+    | verblijfadres.woonplaats                           | 's-Gravenhage |
