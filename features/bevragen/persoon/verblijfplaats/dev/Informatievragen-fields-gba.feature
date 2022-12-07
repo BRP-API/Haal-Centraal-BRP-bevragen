@@ -75,6 +75,8 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide verblijfplaat
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # In het volgende scenario heeft de persoon een buitenlandsadres, de consumer heeft echter geen rechten om een buitenlands adres uit te vragen en moet geen verblijfplaats object geleverd krijgen.
 # Dit scenario moet nog worden uitgebreid met het zetten van de autorisatiegegevens van de consumer.
+# Na het lezen van  https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/autorisatie/features/autorisatie.feature denk ik dat scenario helemaal niet van toepassing is want de GBA API zal hier een foutmelding op gaan geven.
+# Of is dit juist een situatie waarop geen foutmelding gegeven moet gaan worden omdat daar dan weer de conclusie uit getrokken kan worden dat betreffende persoon in het buitenland woont?
     Scenario: met fields wordt gevraagd naar een buitenlandsadres veld waar de consumer geen rechten voor heeft
       Gegeven de persoon met burgerservicenummer '000000590' heeft de volgende gegevens
       | naam                  | waarde  |
