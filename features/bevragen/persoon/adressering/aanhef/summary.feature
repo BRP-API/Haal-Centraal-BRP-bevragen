@@ -1,8 +1,9 @@
 # language: nl
 
-Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in communicatie naar burgers
-  De aanhef is een standaardformulering waar mee de overheid zich tot de geadresseerde richt in de vorm van een introducerende zin in een brief of een email.
-
+Functionaliteit: Aanhef bepalen 
+  Als consumer van de BRP API Wil ik de aanhef (introducerende zin van een brief of e-mail) voor een persoon kunnen vragen
+  Zodat ik de persoon op de juiste en consistente manier kan aanschrijven
+  
   # In onderstaande tabellen betekenen de afkortingen:
   # GA = "Geachte mevrouw", "Geachte heer", "Geachte" gevolgd door voorletters
   # VL = voorletters
@@ -11,19 +12,14 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente briefaanhef in com
   # VP = voorvoegselGeslachtsnaam partner
   # GP = geslachtsnaam partner
 
-Rule: De aanhef van een persoon wordt samengesteld door geslacht, de voorletters, voorvoegsels en geslachtsnaam te combineren. 
-  - De aanhef wordt voorafgegaan door "Geachte" gevolgd door "mevrouw", "heer" of de voorletters, afhankelijk van het geslacht:
+Rule: De aanhef van een persoon zonder partner wordt samengesteld door geslacht, de voorletters, voorvoegsels en geslachtsnaam te combineren. 
+  - GA: De aanhef wordt voorafgegaan door "Geachte" gevolgd door "mevrouw", "heer" of de voorletters, afhankelijk van het geslacht:
     | geslacht | aanhef begint met (GA) |
     | M        | Geachte heer           |
     | V        | Geachte mevrouw        |
     | O        | Geachte VL             |
-  - De aanhef wordt samengesteld uit naamcomponenten van de persoon en eventuele (ex)partner op basis van de aanduidingNaamgebruik:
-    | aanduidingNaamgebruik | aanhef         |
-    | E                     | GA VV GN       |
-    | P                     | GA VP GP       |
-    | V                     | GA VP GP-VV GN |
-    | N                     | GA VV GN-VP GP |
-  - Een voorvoegsel direct na "Geachte mevrouw" of "Geachte heer" begint met een hoofdletter
+  - VV: Voorvoegsel geslachtsnaam van de persoon en begint met een hoofdletter
+  - GN: de geslachtsnaam van de persoon 
   - Wanneer een naamcomponent geen of een lege waarde heeft, wordt de overbodige spatie niet opgenomen: niet starten met een spatie, niet eindigen met een spatie, geen dubbele spatie, geen spatie na streepje
 
   Abstract Scenario: Aanhef voor persoon met voorletter, voorvoegsel en geslachtsnaam bij geslacht <voorbeeld>
@@ -94,8 +90,21 @@ Rule: De aanhef van een persoon wordt samengesteld door geslacht, de voorletters
     | P                     |
     | V                     |
     | N                     |
-
-Rule: Als de persoon een partner of ex-partner heeft wordt de naam van de (ex-)partners mogelijk gebruikt in de aanhef. 
+    
+Rule: De aanhef van een persoon met een (ex-)partner wordt samengesteld door geslacht, de voorletters, voorvoegsels en geslachtsnaam te combineren. 
+  - De aanhef wordt voorafgegaan door "Geachte" gevolgd door "mevrouw", "heer" of de voorletters, afhankelijk van het geslacht:
+    | geslacht | aanhef begint met (GA) |
+    | M        | Geachte heer           |
+    | V        | Geachte mevrouw        |
+    | O        | Geachte VL             |
+  - De aanhef wordt samengesteld uit naamcomponenten van de persoon en eventuele (ex)partner op basis van de aanduidingNaamgebruik:
+    | aanduidingNaamgebruik | aanhef         |
+    | E                     | GA VV GN       |
+    | P                     | GA VP GP       |
+    | V                     | GA VP GP-VV GN |
+    | N                     | GA VV GN-VP GP |
+  - Een voorvoegsel direct na "Geachte mevrouw" of "Geachte heer" begint met een hoofdletter
+  - Wanneer een naamcomponent geen of een lege waarde heeft, wordt de overbodige spatie niet opgenomen: niet starten met een spatie, niet eindigen met een spatie, geen dubbele spatie, geen spatie na streepje
 
   Abstract Scenario: Aanhef van een persoon met een (ex-)partner bij aanduidingNaamgebruik "<naamgebruik>"
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
