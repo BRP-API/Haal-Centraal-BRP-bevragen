@@ -35,6 +35,32 @@ Functionaliteit: autorisatie voor het gebruik van de API
     Om een parameter te mogen gebruiken moet de afnemer geautoriseerd zijn voor de LO BRP rubriek waar met de parameter op gefilterd wordt
 
     @fout-case
+    Scenario: foo
+      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      | Rubrieknummer ad hoc (35.95.60)           | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
+      | 10120 80810 81110 81120 81130 81140 81150 | N                        | 20201128                |
+      En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
+      | naam         | waarde |
+      | afnemerID    | 12345  |
+      | gemeenteCode | 0518   |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                          | waarde                               |
+      | type                          | ZoekMetNummeraanduidingIdentificatie |
+      | nummeraanduidingIdentificatie | 0599200000219679                     |
+      | fields                        | burgerservicenummer                  |
+      Dan heeft de response een object met de volgende gegevens
+      | naam     | waarde                                                                                                                  |
+      | type     | https://learn.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?view=net-7.0#system-net-httpstatuscode-forbidden |
+      | title    | U bent niet geautoriseerd voor de gebruikte parameter(s).                                                               |
+      | status   | 403                                                                                                                     |
+      | detail   | U bent niet geautoriseerd voor het gebruik van parameter(s): nummeraanduidingIdentificatie.                             |
+      | code     | unauthorizedParameter                                                                                                   |
+      | instance | /haalcentraal/api/brp/personen                                                                                          |
+      En heeft het object de volgende 'invalidParams' gegevens
+      | code         | name                          | reason                                                  |
+      | unauthorized | nummeraanduidingIdentificatie | Niet geautoriseerd voor het gebruik van deze parameter. |
+
+    @fout-case
     Scenario: Gebruik van een zoektype met verplichte parameter waarvoor de afnemer niet geautoriseerd is
       Gegeven de afnemer heeft de volgende gegevens
       | Afnemersindicatie (35.95.10) | Rubrieknummer ad hoc (35.95.60)           | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
@@ -55,7 +81,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://learn.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?view=net-7.0#system-net-httpstatuscode-forbidden |
       | title    | U bent niet geautoriseerd voor de gebruikte parameter(s).                                                               |
       | status   | 403                                                                                                                     |
-      | detail   | U bent niet geautoriseerd voor het gebruik van parameter(s): nummeraanduidingIdentificatie.                                            |
+      | detail   | U bent niet geautoriseerd voor het gebruik van parameter(s): nummeraanduidingIdentificatie.                             |
       | code     | unauthorizedParameter                                                                                                   |
       | instance | /haalcentraal/api/brp/personen                                                                                          |
       En heeft het object de volgende 'invalidParams' gegevens
@@ -70,8 +96,8 @@ Functionaliteit: autorisatie voor het gebruik van de API
     Scenario: Gebruik van een optionele parameter waarvoor de afnemer niet geautoriseerd is
       # in dit geval is de afnemer wel geautoriseerd voor alle verplichte parameters
 
-      | ad hoc rubrieken                          | type                                 | parameter niet toegestaan             |
-      | 10120 010210 010230 010240 010310         | ZoekMetGeslachtsnaamEnGeboortedatum  | geslacht (10410)                      |
+      | ad hoc rubrieken                  | type                                | parameter niet toegestaan |
+      | 10120 010210 010230 010240 010310 | ZoekMetGeslachtsnaamEnGeboortedatum | geslacht (10410)          |
       
     @fout-case
     Scenario: Gebruik van meerdere parameters waarvoor de afnemer niet geautoriseerd is
@@ -133,8 +159,8 @@ Functionaliteit: autorisatie voor het gebruik van de API
     Scenario: Afnemer zonder autorisatie bijzonder Nederlanderschap vraagt om een gegeven van nationaliteit van persoon met Nederlandse nationaliteit
       # afnemer is niet geautoriseerd voor alle velden waaruit het type nationaliteit wordt afgeleid
 
-      | fields                        | ad hoc rubrieken | missende autorisatie                          |
-      | nationaliteiten.nationaliteit | 10120 40510      | land (81310) |
+      | fields                        | ad hoc rubrieken | missende autorisatie |
+      | nationaliteiten.nationaliteit | 10120 40510      | land (81310)         |
 
     @fout-case
     Scenario: Afnemer zonder autorisatie buitenlandse verblijfplaats vraagt gegeven van verblijfplaats van persoon met Nederlands adres
