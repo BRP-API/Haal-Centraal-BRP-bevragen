@@ -14,12 +14,12 @@ Functionaliteit: Persoon: verblijfplaats binnenland (adres) velden vragen met fi
     | identificatiecode verblijfplaats (11.80)   | 0599010000208579 |
     | identificatiecode nummeraanduiding (11.90) | 0599200000219678 |
 
-  Abstract Scenario: 'datum aanvang adreshouding (10.30)' wordt gevraagd met field pad '<fields>'
+  Scenario: 'datum aanvang adreshouding (10.30)' wordt gevraagd met field pad 'verblijfplaats.datumVan'
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000152                       |
-    | fields              | <fields>                        |
+    | fields              | verblijfplaats.datumVan         |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam                 | waarde          |
     | type                 | Adres           |
@@ -27,26 +27,18 @@ Functionaliteit: Persoon: verblijfplaats binnenland (adres) velden vragen met fi
     | datumVan.datum       | 2015-08-08      |
     | datumVan.langFormaat | 8 augustus 2015 |
 
-    Voorbeelden:
-    | fields                  |
-    | verblijfplaats.datumVan |
-
-  Abstract Scenario: 'datum ingang geldigheid (85.10)' wordt gevraagd met field pad '<fields>'
+  Scenario: 'datum ingang geldigheid (85.10)' wordt gevraagd met field pad 'verblijfplaats.datumIngangGeldigheid'
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 000000152                       |
-    | fields              | <fields>                        |
+    | naam                | waarde                               |
+    | type                | RaadpleegMetBurgerservicenummer      |
+    | burgerservicenummer | 000000152                            |
+    | fields              | verblijfplaats.datumIngangGeldigheid |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam                              | waarde           |
     | type                              | Adres            |
     | datumIngangGeldigheid.type        | Datum            |
     | datumIngangGeldigheid.datum       | 2022-02-22       |
     | datumIngangGeldigheid.langFormaat | 22 februari 2022 |
-
-    Voorbeelden:
-    | fields                               |
-    | verblijfplaats.datumIngangGeldigheid |
 
   Abstract Scenario: 'functie adres (10.10)' wordt gevraagd met field pad '<fields>'
     Als personen wordt gezocht met de volgende parameters
@@ -66,35 +58,27 @@ Functionaliteit: Persoon: verblijfplaats binnenland (adres) velden vragen met fi
     | verblijfplaats.functieAdres.code         |
     | verblijfplaats.functieAdres.omschrijving |
 
-  Abstract Scenario: 'identificatiecode verblijfplaats (11.80)' wordt gevraagd met field pad '<fields>'
+  Scenario: 'identificatiecode verblijfplaats (11.80)' wordt gevraagd met field pad 'verblijfplaats.adresseerbaarObjectIdentificatie'
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 000000152                       |
-    | fields              | <fields>                        |
+    | naam                | waarde                                          |
+    | type                | RaadpleegMetBurgerservicenummer                 |
+    | burgerservicenummer | 000000152                                       |
+    | fields              | verblijfplaats.adresseerbaarObjectIdentificatie |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam                             | waarde           |
     | type                             | Adres            |
     | adresseerbaarObjectIdentificatie | 0599010000208579 |
 
-    Voorbeelden:
-    | fields                                          |
-    | verblijfplaats.adresseerbaarObjectIdentificatie |
-
-  Abstract Scenario: 'identificatiecode nummeraanduiding (11.90)' wordt gevraagd met field pad '<fields>'
+  Scenario: 'identificatiecode nummeraanduiding (11.90)' wordt gevraagd met field pad 'verblijfplaats.nummeraanduidingIdentificatie'
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 000000152                       |
-    | fields              | <fields>                        |
+    | naam                | waarde                                       |
+    | type                | RaadpleegMetBurgerservicenummer              |
+    | burgerservicenummer | 000000152                                    |
+    | fields              | verblijfplaats.nummeraanduidingIdentificatie |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam                          | waarde           |
     | type                          | Adres            |
     | nummeraanduidingIdentificatie | 0599200000219678 |
-
-    Voorbeelden:
-    | fields                                       |
-    | verblijfplaats.nummeraanduidingIdentificatie |
 
   Scenario: alle adres velden wordt gevraagd met field pad 'verblijfplaats'
     Als personen wordt gezocht met de volgende parameters

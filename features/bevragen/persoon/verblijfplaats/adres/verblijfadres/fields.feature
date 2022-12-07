@@ -36,110 +36,82 @@ Functionaliteit: Persoon: verblijfplaats binnenland (adres) - verblijfadres veld
     | verblijfplaats.verblijfadres.aanduidingBijHuisnummer.code         |
     | verblijfplaats.verblijfadres.aanduidingBijHuisnummer.omschrijving |
 
-  Abstract Scenario: 'huisletter (11.30)' wordt gevraagd met field pad '<fields>'
+  Scenario: 'huisletter (11.30)' wordt gevraagd met field pad 'verblijfplaats.verblijfadres.huisletter'
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 000000152                       |
-    | fields              | <fields>                        |
+    | naam                | waarde                                  |
+    | type                | RaadpleegMetBurgerservicenummer         |
+    | burgerservicenummer | 000000152                               |
+    | fields              | verblijfplaats.verblijfadres.huisletter |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam                     | waarde |
     | type                     | Adres  |
     | verblijfadres.huisletter | a      |
 
-    Voorbeelden:
-    | fields                                  |
-    | verblijfplaats.verblijfadres.huisletter |
-
-  Abstract Scenario: 'huisnummer (11.20)' wordt gevraagd met field pad '<fields>'
+  Scenario: 'huisnummer (11.20)' wordt gevraagd met field pad 'verblijfplaats.verblijfadres.huisnummer'
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 000000152                       |
-    | fields              | <fields>                        |
+    | naam                | waarde                                  |
+    | type                | RaadpleegMetBurgerservicenummer         |
+    | burgerservicenummer | 000000152                               |
+    | fields              | verblijfplaats.verblijfadres.huisnummer |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam                     | waarde |
     | type                     | Adres  |
     | verblijfadres.huisnummer | 123    |
 
-    Voorbeelden:
-    | fields                                  |
-    | verblijfplaats.verblijfadres.huisnummer |
-
-  Abstract Scenario: 'huisnummertoevoeging (11.40)' wordt gevraagd met field pad '<fields>'
+  Scenario: 'huisnummertoevoeging (11.40)' wordt gevraagd met field pad 'verblijfplaats.verblijfadres.huisnummertoevoeging'
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 000000152                       |
-    | fields              | <fields>                        |
+    | naam                | waarde                                            |
+    | type                | RaadpleegMetBurgerservicenummer                   |
+    | burgerservicenummer | 000000152                                         |
+    | fields              | verblijfplaats.verblijfadres.huisnummertoevoeging |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam                               | waarde |
     | type                               | Adres  |
     | verblijfadres.huisnummertoevoeging | 2      |
 
-    Voorbeelden:
-    | fields                                            |
-    | verblijfplaats.verblijfadres.huisnummertoevoeging |
-
-  Abstract Scenario: 'naam openbare ruimte (11.15)' wordt gevraagd met field pad '<fields>'
+  Scenario: 'naam openbare ruimte (11.15)' wordt gevraagd met field pad 'verblijfplaats.verblijfadres.straat'
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 000000152                       |
-    | fields              | <fields>                        |
+    | naam                | waarde                              |
+    | type                | RaadpleegMetBurgerservicenummer     |
+    | burgerservicenummer | 000000152                           |
+    | fields              | verblijfplaats.verblijfadres.straat |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam                 | waarde |
     | type                 | Adres  |
     | verblijfadres.straat | Spui   |
 
-    Voorbeelden:
-    | fields                              |
-    | verblijfplaats.verblijfadres.straat |
-
-  Abstract Scenario: 'postcode (11.60)' wordt gevraagd met field pad '<fields>'
+  Scenario: 'postcode (11.60)' wordt gevraagd met field pad 'verblijfplaats.verblijfadres.postcode'
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 000000152                       |
-    | fields              | <fields>                        |
+    | naam                | waarde                                |
+    | type                | RaadpleegMetBurgerservicenummer       |
+    | burgerservicenummer | 000000152                             |
+    | fields              | verblijfplaats.verblijfadres.postcode |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam                   | waarde |
     | type                   | Adres  |
     | verblijfadres.postcode | 1234AA |
 
-    Voorbeelden:
-    | fields                                |
-    | verblijfplaats.verblijfadres.postcode |
-
-  Abstract Scenario: 'straatnaam (11.10)' wordt gevraagd met field pad '<fields>'
+  Scenario: 'straatnaam (11.10)' wordt gevraagd met field pad 'verblijfplaats.verblijfadres.korteNaam'
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 000000152                       |
-    | fields              | <fields>                        |
+    | naam                | waarde                                 |
+    | type                | RaadpleegMetBurgerservicenummer        |
+    | burgerservicenummer | 000000152                              |
+    | fields              | verblijfplaats.verblijfadres.korteNaam |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam                    | waarde |
     | type                    | Adres  |
     | verblijfadres.korteNaam | Spui   |
 
-    Voorbeelden:
-    | fields                                 |
-    | verblijfplaats.verblijfadres.korteNaam |
-
-  Abstract Scenario: 'woonplaats (11.70)' wordt gevraagd met field pad '<fields>'
+  Scenario: 'woonplaats (11.70)' wordt gevraagd met field pad 'verblijfplaats.verblijfadres.woonplaats'
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 000000152                       |
-    | fields              | <fields>                        |
+    | naam                | waarde                                  |
+    | type                | RaadpleegMetBurgerservicenummer         |
+    | burgerservicenummer | 000000152                               |
+    | fields              | verblijfplaats.verblijfadres.woonplaats |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam                     | waarde        |
     | type                     | Adres         |
     | verblijfadres.woonplaats | 's-Gravenhage |
-
-    Voorbeelden:
-    | fields                                  |
-    | verblijfplaats.verblijfadres.woonplaats |
 
   Scenario: alle verblijfadres velden wordt gevraagd met field pad 'verblijfplaats.verblijfadres'
     Als personen wordt gezocht met de volgende parameters

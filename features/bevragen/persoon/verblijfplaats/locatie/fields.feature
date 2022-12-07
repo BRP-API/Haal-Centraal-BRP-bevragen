@@ -13,12 +13,12 @@ Functionaliteit: Persoon - verblijfplaats binnenland (locatie) velden vragen met
     | gemeentecode (92.10)        | 0518                        |
     | locatiebeschrijving (12.10) | Woonboot bij de Grote Sloot |
 
-  Abstract Scenario: 'datum aanvang adreshouding (10.30)' wordt gevraagd met field pad '<fields>'
+  Scenario: 'datum aanvang adreshouding (10.30)' wordt gevraagd met field pad 'verblijfplaats.datumVan'
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000152                       |
-    | fields              | <fields>                        |
+    | fields              | verblijfplaats.datumVan         |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam                 | waarde          |
     | type                 | Locatie         |
@@ -26,26 +26,18 @@ Functionaliteit: Persoon - verblijfplaats binnenland (locatie) velden vragen met
     | datumVan.datum       | 2015-08-08      |
     | datumVan.langFormaat | 8 augustus 2015 |
 
-    Voorbeelden:
-    | fields                  |
-    | verblijfplaats.datumVan |
-
-  Abstract Scenario: 'datum ingang geldigheid (85.10)' wordt gevraagd met field pad '<fields>'
+  Scenario: 'datum ingang geldigheid (85.10)' wordt gevraagd met field pad 'verblijfplaats.datumIngangGeldigheid'
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 000000152                       |
-    | fields              | <fields>                        |
+    | naam                | waarde                               |
+    | type                | RaadpleegMetBurgerservicenummer      |
+    | burgerservicenummer | 000000152                            |
+    | fields              | verblijfplaats.datumIngangGeldigheid |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam                              | waarde           |
-    | type                              | Adres            |
+    | type                              | Locatie          |
     | datumIngangGeldigheid.type        | Datum            |
     | datumIngangGeldigheid.datum       | 2022-02-22       |
     | datumIngangGeldigheid.langFormaat | 22 februari 2022 |
-
-    Voorbeelden:
-    | fields                               |
-    | verblijfplaats.datumIngangGeldigheid |
 
   Abstract Scenario: 'functie adres (10.10)' wordt gevraagd met field pad '<fields>'
     Als personen wordt gezocht met de volgende parameters
@@ -55,7 +47,7 @@ Functionaliteit: Persoon - verblijfplaats binnenland (locatie) velden vragen met
     | fields              | <fields>                        |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam                      | waarde    |
-    | type                      | Adres     |
+    | type                      | Locatie   |
     | functieAdres.code         | W         |
     | functieAdres.omschrijving | woonadres |
 
