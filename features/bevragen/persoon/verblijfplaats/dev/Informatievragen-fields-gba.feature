@@ -48,7 +48,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide verblijfplaat
       | .locatiebeschrijving |             |            |          |            |                                  |                               | Woonboot in de Grotere Sloot |
       |                      |             |            |          |            |                                  |                               | Woonboot in de Grotere Sloot |
 
-  Rule: wanneer het veld 'land' de waarde '0000' heeft wordt in plaats daarvan dat veld geleverd als een veld van verblijfplaats m.b.v. de alias 'verblijfplaatsBinnenland' wordt gevraagd zodat het type 'VerblijfplaatsOnbekend' kan worden bepaald.
+  Rule: wanneer een veld van verblijfplaats m.b.v. de alias 'verblijfplaatsBinnenland' wordt gevraagd en het veld 'land' heeft de waarde '0000' dan wordt dat veld geleverd zodat het type 'VerblijfplaatsOnbekend' kan worden bepaald.
 
     Scenario: met fields wordt gevraagd naar een adresveld bij een onbekend adres m.b.v. de alias verblijfplaatsBinnenland
       Gegeven de persoon met burgerservicenummer '000000292' heeft de volgende 'verblijfplaats' gegevens
