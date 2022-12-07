@@ -5,7 +5,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide verblijfplaat
 
   Rule: wanneer een veld van verblijfplaats m.b.v. de alias 'verblijfplaatsBinnenland' wordt gevraagd worden alleen de velden die horen bij een binnenlandse verblijfplaats geleverd die nodig zijn voor het bepalen van het type binnenlands verblijfplaats.
     - dit betreft alle velden uit groepen 11 (adres) en 12 (locatie)
-	- dit is het geval als de consumer niet geautoriseerd is voor buitenlandse adressen
+    - dit is het geval als de consumer niet geautoriseerd is voor buitenlandse adressen
 
     Abstract Scenario: met fields wordt gevraagd naar een adresveld m.b.v. de alias verblijfplaatsBinnenland
       Gegeven de persoon met burgerservicenummer '000000267' heeft de volgende 'verblijfplaats' gegevens
@@ -140,7 +140,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide verblijfplaat
 
   Rule: wanneer gevraagd wordt om verblijfplaatsBinnenland.datumVan van de verblijfplaats, wordt datumAanvangAdreshouding geleverd
     - dit datumveld wordt geleverd samen met de velden die automatisch geleverd worden omdat ze nodig zijn voor het bepalen van het type
-	- dit is het geval als de consumer niet geautoriseerd is voor buitenlandse adressen
+    - dit is het geval als de consumer niet geautoriseerd is voor buitenlandse adressen
 
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # Kan de situatie voorkomen dat land.code de waarde '0000' heeft en dat datumAanvangAdreshouding een waarde heeft? Zo ja, moeten die dan ook geleverd worden?
@@ -204,7 +204,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide verblijfplaat
   Rule: wanneer gevraagd wordt om datumVan van de verblijfplaats zonder de alias 'verblijfplaatsBinnenland', wordt datumAanvangAdreshouding of datumAanvangAdresBuitenland geleverd
     - deze datumvelden worden geleverd samen met de velden die automatisch geleverd worden omdat ze nodig zijn voor het bepalen van het type
     - datumAanvangAdreshouding wordt geleverd als velden van de groep 11 (adres) en 12 (locatie) worden geleverd
-	- datumAanvangAdresBuitenland wordt geleverd als de velden land, regel 1, regel 2 en regel 3 van groep 13 (verblijf buitenland) worden geleverd
+    - datumAanvangAdresBuitenland wordt geleverd als de velden land, regel 1, regel 2 en regel 3 van groep 13 (verblijf buitenland) worden geleverd
 
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # Kan de situatie voorkomen dat land.code de waarde '0000' heeft en dat datumAanvangAdreshouding of datumAanvangAdresBuitenland een waarde heeft? Zo ja, moeten die dan ook geleverd worden?
