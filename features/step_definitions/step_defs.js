@@ -171,6 +171,7 @@ const columnNameMap = new Map([
 
     ['locatiebeschrijving (12.10)', 'locatie_beschrijving'],
 
+    ['land adres buitenland (13.10)', 'vertrek_land_code'],
     ['land (13.10)', 'vertrek_land_code'],
     ['land_adres_buitenland (13.10)', 'vertrek_land_code'],
     ['land adres buitenland (13.10)', 'vertrek_land_code'],
@@ -239,12 +240,7 @@ const columnNameMap = new Map([
 
     ['rni-deelnemer (88.10)', 'rni_deelnemer'],
     ['omschrijving verdrag (88.20)', 'verdrag_oms'],
-    ['RNI-deelnemer (88.10)', 'rni_deelnemer'],
-    ['Omschrijving verdrag (88.20)', 'verdrag_oms'],
 	
-    ['gemeentecode (92.10)', 'gemeente_code'],
-    ['gemeente_code', 'gemeente_code'],
-
     ['gemeentecode (92.10)', 'gemeente_code'],
     ['gemeente_code', 'gemeente_code'],
 
