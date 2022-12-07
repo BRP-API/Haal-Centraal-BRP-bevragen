@@ -119,7 +119,7 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       | voornamen | Peter  |
       En heeft de persoon de volgende 'verblijfplaats' gegevens
       | naam | waarde                 |
-      | type | VerblijfplaatsOnbekend |
+      | type | VerblijfplaatsBuitenland |
       En heeft de persoon GEEN 'rni'
 
     Scenario: niet leveren RNI-deelnemer categorie 7 wanneer er geen opschorting en geen geheimhouding is en geen inschrijving gegevens gevraagd
