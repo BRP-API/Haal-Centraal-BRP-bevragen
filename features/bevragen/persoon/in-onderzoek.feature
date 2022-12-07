@@ -50,17 +50,17 @@ Functionaliteit: in onderzoek
     | burgerservicenummer | 000000152                                           |
     | fields              | gemeenteVanInschrijving,datumInschrijvingInGemeente |
     Dan heeft de response een persoon met de volgende gegevens
-    | naam                                                 | waarde                                     |
-    | datumInschrijvingInGemeente.type                     | Datum                                      |
-    | datumInschrijvingInGemeente.datum                    | 2002-07-01                                 |
-    | datumInschrijvingInGemeente.langFormaat              | 1 juli 2002                                |
-    | gemeenteVanInschrijving.code                         | 0518                                       |
-    | gemeenteVanInschrijving.omschrijving                 | 's-Gravenhage                              |
+    | naam                                                 | waarde                           |
+    | datumInschrijvingInGemeente.type                     | Datum                            |
+    | datumInschrijvingInGemeente.datum                    | 2002-07-01                       |
+    | datumInschrijvingInGemeente.langFormaat              | 1 juli 2002                      |
+    | gemeenteVanInschrijving.code                         | 0518                             |
+    | gemeenteVanInschrijving.omschrijving                 | 's-Gravenhage                    |
     | inOnderzoek.gemeenteVanInschrijving                  | <gemeenteVanInschrijving io>     |
     | inOnderzoek.datumInschrijvingInGemeente              | <datumInschrijvingInGemeente io> |
-    | inOnderzoek.datumIngangOnderzoekGemeente.type        | Datum                                      |
-    | inOnderzoek.datumIngangOnderzoekGemeente.datum       | 2002-07-01                                 |
-    | inOnderzoek.datumIngangOnderzoekGemeente.langFormaat | 1 juli 2002                                |
+    | inOnderzoek.datumIngangOnderzoekGemeente.type        | Datum                            |
+    | inOnderzoek.datumIngangOnderzoekGemeente.datum       | 2002-07-01                       |
+    | inOnderzoek.datumIngangOnderzoekGemeente.langFormaat | 1 juli 2002                      |
 
     Voorbeelden:
     | aanduiding in onderzoek | gemeenteVanInschrijving io | datumInschrijvingInGemeente io | type                              |
