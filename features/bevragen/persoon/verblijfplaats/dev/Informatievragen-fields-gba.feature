@@ -3,7 +3,7 @@
 Functionaliteit: vertalen van gevraagde samengestelde of afgeleide verblijfplaats velden naar leveren van bron velden
   Wanneer met fields wordt gevraagd om een veld dat wordt samengesteld uit verschillende andere velden in de GbaPersoon of als een veld dat moet worden meegeleverd wordt samengesteld uit verschillende andere velden in de GbaPersoon, dan worden deze benodigde velden geleverd.
 
-  Rule: als de alias verblijfplaatsBinnenland of één of meerdere velden van verblijfplaatsBinnenland wordt gevraagd dan worden alle beschikbare verblijfplaats velden van Adres en/of Locatie geleverd
+  Rule: als met de alias verblijfplaatsBinnenland één of meerdere velden van een binnenlands verblijfplaats wordt gevraagd dan worden alle beschikbare verblijfplaats velden van Adres en/of Locatie geleverd
     - dit betreft alle velden uit groepen 11 (adres) en 12 (locatie)
     - dit geldt ongeacht of deze velden een standaardwaarde hebben of niet
     - een consumer die niet geautoriseerd is voor buitenlandse adressen dient deze alias te gebruiken
@@ -58,7 +58,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide verblijfplaat
   Rule: als de alias verblijfplaatsBinnenland of één of meerdere velden van verblijfplaatsBinnenland wordt gevraagd en er zijn geen waarden in de binnenlandsadres velden (dus ook geen standaardwaarden) dan wordt er geen verblijfplaats object teruggeleverd.
 
 # Het is de vraag of dit scenario nog iets toevoegt aan het volgende.
-    Scenario: met fields wordt gevraagd naar een adresveld bij adresvelden zonder waarde m.b.v. de alias verblijfplaatsBinnenland
+    Scenario: met fields wordt gevraagd naar een adresveld bij een persoon zonder verblijfplaats m.b.v. de alias verblijfplaatsBinnenland
       Gegeven de persoon met burgerservicenummer '000000590' heeft de volgende gegevens
       | naam                  | waarde  |
       | geslachtsnaam (02.40) | Groenen |
