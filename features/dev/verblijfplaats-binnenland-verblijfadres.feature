@@ -2,59 +2,6 @@
 
 Functionaliteit: Persoon: verblijfplaats binnenland - verblijfadres
 
-  Abstract Scenario: persoon heeft 'verblijfadres' veld: '<gba naam>'
-    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
-    | naam                               | waarde   |
-    | datum aanvang adreshouding (10.30) | 20150808 |
-    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | naam          | waarde   |
-    | gemeente_code | 0518     |
-    | <gba naam>    | <waarde> |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                              |
-    | type                | RaadpleegMetBurgerservicenummer     |
-    | burgerservicenummer | 000000152                           |
-    | fields              | verblijfplaats.verblijfadres.<naam> |
-    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-    | naam                 | waarde   |
-    | type                 | Adres    |
-    | verblijfadres.<naam> | <waarde> |
-
-    Voorbeelden:
-    | gba naam                     | naam                 | waarde        |
-    | straatnaam (11.10)           | korteNaam            | Spui          |
-    | naam openbare ruimte (11.15) | straat               | Spui          |
-    | huisnummer (11.20)           | huisnummer           | 123           |
-    | huisletter (11.30)           | huisletter           | a             |
-    | huisnummertoevoeging (11.40) | huisnummertoevoeging | 2             |
-    | postcode (11.60)             | postcode             | 1234AA        |
-    | woonplaats (11.70)           | woonplaats           | 's-Gravenhage |
-
-  Abstract Scenario: persoon heeft 'verblijfadres' veld: 'aanduiding bij huisnummer (11.50)'
-    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
-    | naam                               | waarde   |
-    | datum aanvang adreshouding (10.30) | 20150808 |
-    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | naam                              | waarde |
-    | gemeente_code                     | 0518   |
-    | aanduiding bij huisnummer (11.50) | to     |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                              |
-    | type                | RaadpleegMetBurgerservicenummer     |
-    | burgerservicenummer | 000000152                           |
-    | fields              | verblijfplaats.verblijfadres.<naam> |
-    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-    | naam                                               | waarde    |
-    | type                                               | Adres     |
-    | verblijfadres.aanduidingBijHuisnummer.code         | to        |
-    | verblijfadres.aanduidingBijHuisnummer.omschrijving | tegenover |
-
-    Voorbeelden:
-    | naam                                 |
-    | aanduidingBijHuisnummer              |
-    | aanduidingBijHuisnummer.code         |
-    | aanduidingBijHuisnummer.omschrijving |
-
   Abstract Scenario: persoon heeft 'verblijfadres' veld met onbekend waarde: '<gba naam>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
     | naam                               | waarde   |
