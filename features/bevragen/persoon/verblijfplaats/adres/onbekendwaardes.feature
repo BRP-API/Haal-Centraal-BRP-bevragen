@@ -1,13 +1,12 @@
 # language: nl
 
-@proxy @ready @post-assert
 Functionaliteit: Als gebruiker van de API wil ik geen onbekend waardes ontvangen binnen het adres
   zodat ik deze niet hoef te (kunnen) interpreteren en ik geen code voor hoef te schrijven om deze situatie af te vangen
 
   Wanneer in de registratie specifieke waarden gereserveerd zijn voor een onbekende waarde, worden deze waarden niet doorgegeven in de API.
   Wanneer een element in de registratie een standaardwaarde heeft, die betekent dat de waarde onbekend is, wordt het corresponderende veld niet opgenomen in de response.
 
-Rule: een veld wordt niet opgenomen wanneer het de standaardwaarde bevat
+Rule: Niet leveren van de standaard/onbekend waarde van een adres veld
   Het gaat om de volgende properties en standaardwaardes van de persoon:
   | property                                         | standaardwaarde  |
   | ------------------------------------------------ | ---------------- |
@@ -16,30 +15,27 @@ Rule: een veld wordt niet opgenomen wanneer het de standaardwaarde bevat
   | verblijfplaats.woonplaats                        | .                |
   | verblijfplaats.nummeraanduidingIdentificatie     | 0000000000000000 |
   | verblijfplaats.adresseerbaarObjectIdentificatie  | 0000000000000000 |
+  | verblijfplaats.land                              | .                |
 
-    Scenario: onbekend waarde "." voor straat 
+  Scenario: onbekend waarde "." voor straat 
     Gegeven de persoon met burgerservicenummer '000000164' heeft de volgende 'verblijfplaats' gegevens
     | naam                  | waarde |
     | functie adres (10.10) | W      |
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | naam               | waarde |
-    | gemeente_code      | 0518   |
-    | straatnaam (11.10) | .      |
-    | huisnummer (11.20) | 1      |
+    | naam                 | waarde |
+    | gemeentecode (92.10) | 0518   |
+    | straatnaam (11.10)   | .      |
+    | huisnummer (11.20)   | 1      |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                              |
     | type                | RaadpleegMetBurgerservicenummer     |
     | burgerservicenummer | 000000164                           |
-    | fields              | burgerservicenummer,verblijfplaats  |
-    Dan heeft de response een persoon met de volgende gegevens
-    | naam                | waarde       |   
-    | burgerservicenummer | 000000164    |
-    En heeft de persoon de volgende 'verblijfplaats' gegevens
-    | naam                      | waarde    |
-    | type                      | Adres     |
-    | verblijfadres.huisnummer  | 1         | 
-    | functieAdres.code         | W         |
-    | functieAdres.omschrijving | woonadres |
+    | fields              | verblijfplaats.verblijfadres.straat |
+    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
+    | naam | waarde |
+    | type | Adres  |
+    En heeft de 'verblijfplaats' geen 'verblijfadres' gegevens
+
 
   Scenario: onbekend waarde "0" voor huisnummer
     Gegeven de persoon met burgerservicenummer '000000176' heeft de volgende 'verblijfplaats' gegevens
@@ -51,19 +47,14 @@ Rule: een veld wordt niet opgenomen wanneer het de standaardwaarde bevat
     | straatnaam (11.10) | een straat  |
     | huisnummer (11.20) | 0           |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                              |
-    | type                | RaadpleegMetBurgerservicenummer     |
-    | burgerservicenummer | 000000176                           |
-    | fields              | burgerservicenummer,verblijfplaats  |
-    Dan heeft de response een persoon met de volgende gegevens
-    | naam                | waarde       |   
-    | burgerservicenummer | 000000176    |
-    En heeft de persoon de volgende 'verblijfplaats' gegevens
-    | naam                      | waarde     |
-    | type                      | Adres      |
-    | verblijfadres.straat      | een straat |
-    | functieAdres.code         | W          |
-    | functieAdres.omschrijving | woonadres  |
+    | naam                | waarde                                  |
+    | type                | RaadpleegMetBurgerservicenummer         |
+    | burgerservicenummer | 000000176                               |
+    | fields              | verblijfplaats.verblijfadres.huisnummer |
+    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
+    | naam | waarde |
+    | type | Adres  |
+    En heeft de 'verblijfplaats' geen 'verblijfadres' gegevens
 
   Abstract Scenario: onbekend waarde "<waarde>" voor <element>
    Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende 'verblijfplaats' gegevens

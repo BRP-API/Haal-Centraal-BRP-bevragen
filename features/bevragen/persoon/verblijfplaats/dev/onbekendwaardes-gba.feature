@@ -16,6 +16,7 @@ Rule: de volgende standaardwaarden worden ongewijzigd geleverd bij de verblijfpl
   | verblijfplaats.woonplaats                        | .                |
   | verblijfplaats.nummeraanduidingIdentificatie     | 0000000000000000 |
   | verblijfplaats.adresseerbaarObjectIdentificatie  | 0000000000000000 |
+  | verblijfplaats.land                              | .                |
 
   Scenario: onbekend waarde "." voor straat
     Gegeven de persoon met burgerservicenummer '000000164' heeft de volgende 'verblijfplaats' gegevens
@@ -30,14 +31,12 @@ Rule: de volgende standaardwaarden worden ongewijzigd geleverd bij de verblijfpl
     | naam                | waarde                              |
     | type                | RaadpleegMetBurgerservicenummer     |
     | burgerservicenummer | 000000164                           |
-    | fields              | burgerservicenummer,verblijfplaats  |
+    | fields              | verblijfplaats.verblijfadres.straat |
     Dan heeft de response een persoon met de volgende gegevens 
     | naam                | waarde    |
     | burgerservicenummer | 000000164 | 
     En heeft de persoon alleen de volgende 'verblijfplaats' gegevens
     | naam                      | waarde    |
-    | functieAdres.code         | W         |
-    | functieAdres.omschrijving | woonadres |
     | straat                    | .         |
     | huisnummer                | 1         |
 
@@ -51,17 +50,15 @@ Rule: de volgende standaardwaarden worden ongewijzigd geleverd bij de verblijfpl
     | straatnaam (11.10) | een straat  |
     | huisnummer (11.20) | 0           |
     Als gba personen wordt gezocht met de volgende parameters
-    | naam                | waarde                              |
-    | type                | RaadpleegMetBurgerservicenummer     |
-    | burgerservicenummer | 000000176                           |
-    | fields              | burgerservicenummer,verblijfplaats  |
+    | naam                | waarde                                  |
+    | type                | RaadpleegMetBurgerservicenummer         |
+    | burgerservicenummer | 000000176                               |
+    | fields              | verblijfplaats.verblijfadres.huisnummer |
     Dan heeft de response een persoon met de volgende gegevens 
     | naam                | waarde    |
     | burgerservicenummer | 000000176 | 
     En heeft de persoon alleen de volgende 'verblijfplaats' gegevens
     | naam                      | waarde     |
-    | functieAdres.code         | W          |
-    | functieAdres.omschrijving | woonadres  |
     | straat                    | een straat |
     | huisnummer                | 0          |
  
@@ -97,10 +94,10 @@ Rule: datumvelden waarde "00000000" worden geleverd
     | functie adres (10.10)              | W          |
     | datum aanvang adreshouding (10.30) | 00000000   |
     Als gba personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                  |
-    | type                | RaadpleegMetBurgerservicenummer         |
-    | burgerservicenummer | 000000371                               |
-    | fields              | verblijfplaats.datumAanvangAdreshouding |
+    | naam                | waarde                           |
+    | type                | RaadpleegMetBurgerservicenummer  |
+    | burgerservicenummer | 000000371                        |
+    | fields              | verblijfplaats.datumVan          |
     Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
     | naam                     | waarde        |
     | datumAanvangAdreshouding | 00000000      |
@@ -111,10 +108,10 @@ Rule: datumvelden waarde "00000000" worden geleverd
     | land adres buitenland (13.10)          | 6014     |
     | datum aanvang adres buitenland (13.20) | 00000000 |
     Als gba personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                     |
-    | type                | RaadpleegMetBurgerservicenummer            |
-    | burgerservicenummer | 000000383                                  |
-    | fields              | verblijfplaats.datumAanvangAdresBuitenland |
+    | naam                | waarde                           |
+    | type                | RaadpleegMetBurgerservicenummer  |
+    | burgerservicenummer | 000000383                        |
+    | fields              | verblijfplaats.datumVan          |
     Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
     | naam                        | waarde   |
     | datumAanvangAdresBuitenland | 00000000 |
