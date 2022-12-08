@@ -10,12 +10,11 @@ Rule: Niet leveren van de standaard/onbekend waarde van een adres veld
   Het gaat om de volgende properties en standaardwaardes van de persoon:
   | property                                         | standaardwaarde  |
   | ------------------------------------------------ | ---------------- |
-  | verblijfplaats.straat                            | .                |
+  | verblijfplaats.korteNaam                         | .                |
   | verblijfplaats.huisnummer                        | 0                |
   | verblijfplaats.woonplaats                        | .                |
   | verblijfplaats.nummeraanduidingIdentificatie     | 0000000000000000 |
   | verblijfplaats.adresseerbaarObjectIdentificatie  | 0000000000000000 |
-  | verblijfplaats.land                              | .                |
 
   Scenario: onbekend waarde "." voor straat 
     Gegeven de persoon met burgerservicenummer '000000164' heeft de volgende 'verblijfplaats' gegevens
@@ -27,10 +26,10 @@ Rule: Niet leveren van de standaard/onbekend waarde van een adres veld
     | straatnaam (11.10)   | .      |
     | huisnummer (11.20)   | 1      |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                              |
-    | type                | RaadpleegMetBurgerservicenummer     |
-    | burgerservicenummer | 000000164                           |
-    | fields              | verblijfplaats.verblijfadres.straat |
+    | naam                | waarde                                 |
+    | type                | RaadpleegMetBurgerservicenummer        |
+    | burgerservicenummer | 000000164                              |
+    | fields              | verblijfplaats.verblijfadres.korteNaam |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam | waarde |
     | type | Adres  |
@@ -42,10 +41,10 @@ Rule: Niet leveren van de standaard/onbekend waarde van een adres veld
     | naam                  | waarde |
     | functie adres (10.10) | W      |
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | naam               | waarde      |
-    | gemeente_code      | 0518        |
-    | straatnaam (11.10) | een straat  |
-    | huisnummer (11.20) | 0           |
+    | naam                 | waarde     |
+    | gemeentecode (92.10) | 0518       |
+    | straatnaam (11.10)   | een straat |
+    | huisnummer (11.20)   | 0          |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                                  |
     | type                | RaadpleegMetBurgerservicenummer         |
@@ -59,21 +58,20 @@ Rule: Niet leveren van de standaard/onbekend waarde van een adres veld
   Abstract Scenario: onbekend waarde "<waarde>" voor <element>
    Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende 'verblijfplaats' gegevens
     | naam                  | waarde |
-    | functie adres (10.10) | W      |    
+    | functie adres (10.10) | W      |
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens   
-    | naam               | waarde     |
-    | gemeente_code      | 0344       |
-    | straatnaam (11.10) | een straat |
-    | <element>          | <waarde>   |
+    | naam                 | waarde     |
+    | gemeentecode (92.10) | 0344       |
+    | straatnaam (11.10)   | een straat |
+    | <element>            | <waarde>   |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000188                       |
-    | fields              | verblijfplaats.verblijfadres    |
+    | fields              | <field>                         |
     Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
-    | naam                 | waarde     |
-    | type                 | Adres      |
-    | verblijfadres.straat | een straat |
+    | naam | waarde |
+    | type | Adres  |
 
     Voorbeelden:
     | field                                           | element                                    | waarde           |
@@ -83,17 +81,21 @@ Rule: Niet leveren van de standaard/onbekend waarde van een adres veld
 
   Scenario: volledig onbekende datum aanvang adreshouding in verblijfplaats
     Gegeven de persoon met burgerservicenummer '000000371' heeft de volgende 'verblijfplaats' gegevens
-    | naam                               | waarde     |
-    | functie adres (10.10)              | W          |
-    | datum aanvang adreshouding (10.30) | 00000000   |
+    | naam                               | waarde   |
+    | functie adres (10.10)              | W        |
+    | datum aanvang adreshouding (10.30) | 00000000 |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens   
+    | naam                 | waarde     |
+    | gemeentecode (92.10) | 0344       |
+    | straatnaam (11.10)   | een straat |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                  |
-    | type                | RaadpleegMetBurgerservicenummer         |
-    | burgerservicenummer | 000000371                               |
-    | fields              | verblijfplaats.datumVan                 |
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000371                       |
+    | fields              | verblijfplaats.datumVan         |
     Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
-    | naam                 | waarde                 |
-    | type                 | VerblijfplaatsOnbekend |
-    | datumVan.type        | DatumOnbekend          |
-    | datumVan.onbekend    | true                   |
-    | datumVan.langFormaat | onbekend               |
+    | naam                 | waarde        |
+    | type                 | Adres         |
+    | datumVan.type        | DatumOnbekend |
+    | datumVan.onbekend    | true          |
+    | datumVan.langFormaat | onbekend      |

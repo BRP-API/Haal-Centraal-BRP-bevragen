@@ -11,17 +11,21 @@ Rule: datumvelden waarde "00000000": worden vertaald naar DatumOnbekend
 
   Scenario: volledig onbekende datum aanvang adreshouding in verblijfplaats
     Gegeven de persoon met burgerservicenummer '000000371' heeft de volgende 'verblijfplaats' gegevens
-    | naam                               | waarde     |
-    | functie adres (10.10)              | W          |
-    | datum aanvang adreshouding (10.30) | 00000000   |
+    | naam                               | waarde   |
+    | functie adres (10.10)              | W        |
+    | datum aanvang adreshouding (10.30) | 00000000 |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | naam                        | waarde                      |
+    | gemeentecode (92.10)        | 0518                        |
+    | locatiebeschrijving (12.10) | Woonboot bij de Grote Sloot |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                  |
-    | type                | RaadpleegMetBurgerservicenummer         |
-    | burgerservicenummer | 000000371                               |
-    | fields              | verblijfplaats.datumVan                 |
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000371                       |
+    | fields              | verblijfplaats.datumVan         |
     Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
-    | naam                 | waarde                 |
-    | type                 | VerblijfplaatsOnbekend |
-    | datumVan.type        | DatumOnbekend          |
-    | datumVan.onbekend    | true                   |
-    | datumVan.langFormaat | onbekend               |
+    | naam                 | waarde        |
+    | type                 | Locatie       |
+    | datumVan.type        | DatumOnbekend |
+    | datumVan.onbekend    | true          |
+    | datumVan.langFormaat | onbekend      |
