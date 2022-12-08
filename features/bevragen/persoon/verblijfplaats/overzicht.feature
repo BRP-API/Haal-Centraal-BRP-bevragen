@@ -2,7 +2,7 @@
 
 Functionaliteit: verblijfplaats
 
-Rule: Een verblijfplaats is een adres wanneer ten minste één gegeven van adres (groep 11) een waarde heeft
+Rule: Een verblijfplaats is een adres wanneer straatnaam (11.10) een waarde heeft
 
   Abstract Scenario: '<gba veld>' heeft een waarde
     Gegeven de persoon met burgerservicenummer '000000097' heeft de volgende 'verblijfplaats' gegevens
@@ -10,8 +10,8 @@ Rule: Een verblijfplaats is een adres wanneer ten minste één gegeven van adres
     | datum aanvang adreshouding (10.30) | 20170423 |
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens
     | naam                 | waarde   |
-    | gemeentecode (92.10) | 0518     |
-    | <gba veld>           | <waarde> |
+    | gemeentecode (92.10) | 0519     |
+    | straatnaam (11.10)   | <waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -22,17 +22,9 @@ Rule: Een verblijfplaats is een adres wanneer ten minste één gegeven van adres
     | type | Adres  |
 
     Voorbeelden:
-    | gba veld                                   | waarde           |
-    | straatnaam (11.10)                         | Spui             |
-    | naam openbare ruimte (11.15)               | Spui             |
-    | huisnummer (11.20)                         | 123              |
-    | huisletter (11.30)                         | a                |
-    | huisnummertoevoeging (11.40)               | 2                |
-    | aanduiding bij huisnummer (11.50)          | to               |
-    | postcode (11.60)                           | 1234AA           |
-    | woonplaatsnaam (11.70)                     | 's-Gravenhage    |
-    | identificatiecode verblijfplaats (11.80)   | 0599010000208579 |
-    | identificatiecode nummeraanduiding (11.90) | 0599200000219678 |
+    | waarde |
+    | Spui   |
+    | .      |
 
 Rule: Een verblijfplaats is een binnenlandse locatie wanneer locatiebeschrijving (12.10) een waarde heeft
 
@@ -55,11 +47,10 @@ Rule: Een verblijfplaats is een binnenlandse locatie wanneer locatiebeschrijving
 
 Rule: Een verblijfplaats is een verblijfplaats buitenland wanneer 'land adres buitenland (13.10)' ongelijk is aan 0000
 
-  Abstract Scenario: '<gba veld>' heeft een waarde
+  Scenario: '<gba veld>' heeft een waarde
     Gegeven de persoon met burgerservicenummer '000000097' heeft de volgende 'verblijfplaats' gegevens
     | naam                          | waarde   |
     | land adres buitenland (13.10) | 6014     |
-    | <gba veld>                    | <waarde> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -68,15 +59,6 @@ Rule: Een verblijfplaats is een verblijfplaats buitenland wanneer 'land adres bu
     Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
     | naam | waarde                   |
     | type | VerblijfplaatsBuitenland |
-
-    Voorbeelden:
-    | gba veld                         | waarde                     |
-    | regel 1 adres buitenland (13.30) | Pietermaai 19, Curaçao     |
-    | regel 1 adres buitenland (13.30) | VOW                        |
-    | regel 2 adres buitenland (13.40) | Pietermaai 19, Curaçao     |
-    | regel 2 adres buitenland (13.40) | .                          |
-    | regel 2 adres buitenland (13.40) | onbekend                   |
-    | regel 3 adres buitenland (13.50) | Amundsen-Scott, Antarctica |
 
 Rule: Een verblijfplaats is een onbekend verblijfplaats wanneer 'land adres buitenland (13.10)' gelijk is aan 0000
 

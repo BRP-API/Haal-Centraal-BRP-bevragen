@@ -11,6 +11,7 @@ Functionaliteit: Persoon: verblijfplaats binnenland (adres) velden vragen met fi
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens
     | naam                                       | waarde           |
     | gemeentecode (92.10)                       | 0518             |
+    | straatnaam (11.10)                         | Spui             |
     | identificatiecode verblijfplaats (11.80)   | 0599010000208579 |
     | identificatiecode nummeraanduiding (11.90) | 0599200000219678 |
 
@@ -99,3 +100,4 @@ Functionaliteit: Persoon: verblijfplaats binnenland (adres) velden vragen met fi
     | functieAdres.omschrijving         | woonadres        |
     | adresseerbaarObjectIdentificatie  | 0599010000208579 |
     | nummeraanduidingIdentificatie     | 0599200000219678 |
+    | verblijfadres.korteNaam           | Spui             |
