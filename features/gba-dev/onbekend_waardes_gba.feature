@@ -113,7 +113,7 @@ Rule: een veld van type Waardetabel wordt opgenomen met code en omschrijvingf wa
     | naam                  | waarde   | 
     | functie adres (10.10) | W        | 
     | <element>             | <waarde> |
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000231                       |
