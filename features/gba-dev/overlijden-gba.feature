@@ -107,7 +107,7 @@ Functionaliteit: overlijden GBA: Altijd leveren van overlijdensdatum van een ove
       | datum overlijden (08.10)        | 20020701                  |
       | plaats overlijden (08.20)       | 0518                      |
       | land overlijden (08.30)         | 6030                      |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000139                       |
