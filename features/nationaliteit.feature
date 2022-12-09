@@ -30,7 +30,7 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       | nationaliteit.code                | 0001                                             |
       | nationaliteit.omschrijving        | Nederlandse                                      |
       | redenOpname.code                  | 001                                              |
-      | redenOpname.omschrijving          | Wet op het Nederlanderschap 1892, art.1, lid 1a  |
+      | redenOpname.omschrijving          | Wet op het Nederlanderschap 1892, art. 1, onder a |
       | datumIngangGeldigheid.type        | Datum                                            |
       | datumIngangGeldigheid.datum       | 1975-07-07                                       |
       | datumIngangGeldigheid.langFormaat | 7 juli 1975                                      |
@@ -48,15 +48,15 @@ Functionaliteit: Bepalen van de actuele nationaliteit van een persoon
       | burgerservicenummer | 000000140                       |
       | fields              | nationaliteiten                 |
       Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-      | naam                              | waarde                                           |
-      | type                              | Nationaliteit                                    |
-      | nationaliteit.code                | 0001                                             |
-      | nationaliteit.omschrijving        | Nederlandse                                      |
-      | redenOpname.code                  | 001                                              |
-      | redenOpname.omschrijving          | Wet op het Nederlanderschap 1892, art.1, lid 1a  |
-      | datumIngangGeldigheid.type        | Datum                                            |
-      | datumIngangGeldigheid.datum       | 1975-07-07                                       |
-      | datumIngangGeldigheid.langFormaat | 7 juli 1975                                      |
+      | naam                              | waarde                                            |
+      | type                              | Nationaliteit                                     |
+      | nationaliteit.code                | 0001                                              |
+      | nationaliteit.omschrijving        | Nederlandse                                       |
+      | redenOpname.code                  | 001                                               |
+      | redenOpname.omschrijving          | Wet op het Nederlanderschap 1892, art. 1, onder a |
+      | datumIngangGeldigheid.type        | Datum                                             |
+      | datumIngangGeldigheid.datum       | 1975-07-07                                        |
+      | datumIngangGeldigheid.langFormaat | 7 juli 1975                                       |
       En heeft de persoon een 'nationaliteit' met alleen de volgende gegevens
       | naam                              | waarde                                           |
       | type                              | Nationaliteit                                    |

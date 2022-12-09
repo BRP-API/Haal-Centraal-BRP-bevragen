@@ -1,26 +1,26 @@
 # language: nl
 
-Functionaliteit: Persoon beperkt: verblijfplaats buitenland
+Functionaliteit: Persoon beperkt: verblijfplaats buitenland velden vragen met fields
 
-  Abstract Scenario: persoon heeft 'verblijfplaats' veld: 'land adres buitenland (13.10)' met waarde ongelijk aan '0000'
+  Abstract Scenario: verblijfplaats type wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
     | naam                  | waarde   |
     | geslachtsnaam (02.40) | Maassen  |
     | geboortedatum (03.10) | 19830526 |
     En de persoon heeft de volgende 'verblijfplaats' gegevens
     | naam                          | waarde |
-    | land adres buitenland (13.10) | <land> |
+    | land adres buitenland (13.10) | 6014   |
     Als personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam | Maassen                             |
     | geboortedatum | 1983-05-26                          |
-    | fields        | verblijfplaats                      |
+    | fields        | <fields>                            |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam | waarde                   |
     | type | VerblijfplaatsBuitenland |
 
     Voorbeelden:
-    | land |
-    | 6014 |
-    | 9999 |
+    | fields              |
+    | verblijfplaats      |
+    | verblijfplaats.type |
