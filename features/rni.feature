@@ -3,7 +3,7 @@
 Functionaliteit: RNI-deelnemer voor geleverde gegevens
 
 
-  Rule: de RNI-deelnemer gegevens worden geleverd voor de volgende categoriën waarvan ten minste één gegeven gevraagd is
+  Rule: de RNI-deelnemer gegevens worden geleverd voor de volgende categoriën waarvan ten minste één gegeven gevraagd is of gebruikt wordt om een een ander veld van waarde te voorzien (type, leeftijd etc)
     - RNI-deelnemer gegevens worden ook geleverd wanneer hier niet naar gevraagd is met de fields parameter
     - Het veld 'rni/categorie' wordt gevuld met de naam van de categorie waarop de RNI-deelnemer gegevens heeft aangeleverd
       | categorie | naam           |
@@ -99,7 +99,7 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       | voornamen | Peter  |
       En heeft de persoon GEEN 'rni'
 
-    Scenario: niet leveren RNI-deelnemer voor een categorie waar geen gegeven uit geleverd is
+    Scenario: Wel leveren RNI-deelnemer voor een categorie waarvan een gegeven is gebruikt om een type te bepalen
       Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende gegevens
       | naam                  | waarde |
       | voornamen (02.10)     | Peter  |
@@ -120,7 +120,12 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       En heeft de persoon de volgende 'verblijfplaats' gegevens
       | naam | waarde                 |
       | type | VerblijfplaatsBuitenland |
-      En heeft de persoon GEEN 'rni'
+      En heeft de persoon een 'rni' met de volgende gegevens
+      | naam                   | waarde                                            |
+      | deelnemer.code         | 0201                                              |
+      | deelnemer.omschrijving | Sociale Verzekeringsbank (inzake AOW, Anw en AKW) |
+      | omschrijvingVerdrag    | Artikel 45 EU-Werkingsverdrag (VWEU)              |
+      | categorie              | Verblijfplaats                                    |
 
     Scenario: niet leveren RNI-deelnemer categorie 7 wanneer er geen opschorting en geen geheimhouding is en geen inschrijving gegevens gevraagd
       Gegeven de persoon met burgerservicenummer '000000048' heeft de volgende 'inschrijving' gegevens
