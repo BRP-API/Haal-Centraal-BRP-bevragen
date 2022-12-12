@@ -75,7 +75,7 @@ Rule: Een verblijfplaats is een onbekend verblijfplaats wanneer 'land adres buit
     | naam | waarde                 |
     | type | VerblijfplaatsOnbekend |
 
-Rule: Een persoon heeft geen verblijfplaats wanneer geen enkel gegeven van adres een waarde heeft én locatiebeschrijving geen waarde heeft én 'land adres buitenland' geen waarde heeft
+Rule: Een persoon heeft geen verblijfplaats wanneer 'straatnaam (11.10)' én 'locatiebeschrijving (12.10)' én 'land adres buitenland (13.10)' geen waarde heeft
 
   Scenario: De adres gegevens én locatiebeschrijving hebben geen waarde
     Gegeven de persoon met burgerservicenummer '000000097' heeft de volgende 'verblijfplaats' gegevens
@@ -115,7 +115,7 @@ Rule: Een persoon heeft geen verblijfplaats wanneer de verblijfplaatsBinnenland 
     | fields              | verblijfplaatsBinnenland        |
     Dan heeft de response een persoon zonder gegevens
 
-  Voorbeelden:
-  | land code | type       |
-  | 6014      | buitenland |
-  | 0000      | onbekend   |
+    Voorbeelden:
+    | land code | type       |
+    | 6014      | buitenland |
+    | 0000      | onbekend   |

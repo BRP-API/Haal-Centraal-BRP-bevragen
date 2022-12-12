@@ -5,7 +5,7 @@ Functionaliteit: verblijfplaats - fields alias
   Wanneer een consumer van de BRP API niet is geautoriseerd voor het bevragen van de velden voor een verblijfplaats buitenland
   Dan moet de consumer de verblijfplaatsBinnenland fields alias gebruiken om aan te geven dat hij velden voor een verblijfplaats binnenland vraagt
 
-Rule: de standaard verblijfplaats (verkorte/volledige) field paden kan worden gebruikt door een consumer die is geautoriseerd voor het bevragen van 'verblijfplaats buitenland' velden
+Rule: de standaard verblijfplaats field paden kan worden gebruikt door een consumer die is geautoriseerd voor het bevragen van 'verblijfplaats buitenland' velden
 
   Abstract Scenario: consumer is geautoriseerd voor 'verblijfplaats buitenland' en vraagt het datumVan veld van een verblijfplaats
     Gegeven de consumer is geautoriseerd voor 'verblijfplaats binnenland' gegevens
