@@ -118,7 +118,7 @@ Functionaliteit: RNI-deelnemer voor geleverde gegevens
       | naam      | waarde |
       | voornamen | Peter  |
       En heeft de persoon de volgende 'verblijfplaats' gegevens
-      | naam | waarde                 |
+      | naam | waarde                   |
       | type | VerblijfplaatsBuitenland |
       En heeft de persoon een 'rni' met de volgende gegevens
       | naam                   | waarde                                            |
