@@ -53,124 +53,36 @@ Rule: Het in onderzoek zijn van een veld en bijbehorende datumIngangOnderzoek wo
     | 081160                  |                        |               |           |                     |           | true        |              |               |         |            |            |              |                               |
     | 081170                  |                        |               |           |                     |           |             |              | true          |         |            |            |              |                               |
 
-  Scenario: 'aanduiding bij huisnummer (11.50)' is in onderzoek, maar wordt niet gevraagd
+  Abstract Scenario: '<type>' is in onderzoek, maar veld '<veld naam>' wordt niet gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
-    | naam                            | waarde   |
-    | aanduiding in onderzoek (83.10) | 081150   |
-    | datum ingang onderzoek (83.20)  | 20020701 |
+    | naam                            | waarde                    |
+    | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
+    | datum ingang onderzoek (83.20)  | 20020701                  |
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens
     | naam                 | waarde |
     | gemeentecode (92.10) | 0519   |
     | straatnaam (11.10)   | Spui   |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                  |
-    | type                | RaadpleegMetBurgerservicenummer         |
-    | burgerservicenummer | 000000152                               |
-    | fields              | verblijfplaats.verblijfadres.huisletter |
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | <gevraagde fields>              |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam | waarde |
     | type | Adres  |
     En heeft de 'verblijfplaats' geen 'verblijfadres' gegevens
 
-  Scenario: 'huisletter (11.30)' is in onderzoek, maar wordt niet gevraagd
-    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
-    | naam                            | waarde   |
-    | aanduiding in onderzoek (83.10) | 081130   |
-    | datum ingang onderzoek (83.20)  | 20020701 |
-    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | naam                 | waarde |
-    | gemeentecode (92.10) | 0519   |
-    | straatnaam (11.10)   | Spui   |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                  |
-    | type                | RaadpleegMetBurgerservicenummer         |
-    | burgerservicenummer | 000000152                               |
-    | fields              | verblijfplaats.verblijfadres.huisnummer |
-    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-    | naam | waarde |
-    | type | Adres  |
-    En heeft de 'verblijfplaats' geen 'verblijfadres' gegevens
+    Voorbeelden:
+    | aanduiding in onderzoek | type                      | veld naam               | gevraagde fields                                     |
+    | 081115                  | naam openbare ruimte      | straat                  | verblijfplaats.verblijfadres.postcode                |
+    | 081120                  | huisnummer                | huisnummer              | verblijfplaats.verblijfadres.huisnummertoevoeging    |
+    | 081130                  | huisletter                | huisletter              | verblijfplaats.verblijfadres.huisnummer              |
+    | 081140                  | huisnummertoevoeging      | huisnummertoevoeging    | verblijfplaats.verblijfadres.straat                  |
+    | 081150                  | aanduiding bij huisnummer | aanduidingBijHuisnummer | verblijfplaats.verblijfadres.huisletter              |
+    | 081160                  | postcode                  | postcode                | verblijfplaats.verblijfadres.straat                  |
+    | 081170                  | woonplaatsnaam            | woonplaats              | verblijfplaats.verblijfadres.aanduidingBijHuisnummer |
 
-  Scenario: 'huisnummer (11.20)' is in onderzoek, maar wordt niet gevraagd
-    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
-    | naam                            | waarde   |
-    | aanduiding in onderzoek (83.10) | 081120   |
-    | datum ingang onderzoek (83.20)  | 20020701 |
-    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | naam                 | waarde |
-    | gemeentecode (92.10) | 0519   |
-    | straatnaam (11.10)   | Spui   |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                            |
-    | type                | RaadpleegMetBurgerservicenummer                   |
-    | burgerservicenummer | 000000152                                         |
-    | fields              | verblijfplaats.verblijfadres.huisnummertoevoeging |
-    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-    | naam | waarde |
-    | type | Adres  |
-    En heeft de 'verblijfplaats' geen 'verblijfadres' gegevens
-
-  Scenario: 'huisnummertoevoeging (11.40)' is in onderzoek, maar wordt niet gevraagd
-    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
-    | naam                               | waarde   |
-    | datum aanvang adreshouding (10.30) | 20220128 |
-    | aanduiding in onderzoek (83.10)    | 081140   |
-    | datum ingang onderzoek (83.20)     | 20020701 |
-    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | naam                 | waarde |
-    | gemeentecode (92.10) | 0519   |
-    | straatnaam (11.10)   | Spui   |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                              |
-    | type                | RaadpleegMetBurgerservicenummer     |
-    | burgerservicenummer | 000000152                           |
-    | fields              | verblijfplaats.verblijfadres.straat |
-    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-    | naam | waarde |
-    | type | Adres  |
-    En heeft de 'verblijfplaats' geen 'verblijfadres' gegevens
-
-  Scenario: 'naam openbare ruimte (11.15)' is in onderzoek, maar wordt niet gevraagd
-    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
-    | naam                               | waarde   |
-    | datum aanvang adreshouding (10.30) | 20220128 |
-    | aanduiding in onderzoek (83.10)    | 081115   |
-    | datum ingang onderzoek (83.20)     | 20020701 |
-    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | naam                 | waarde |
-    | gemeentecode (92.10) | 0519   |
-    | straatnaam (11.10)   | Spui   |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                |
-    | type                | RaadpleegMetBurgerservicenummer       |
-    | burgerservicenummer | 000000152                             |
-    | fields              | verblijfplaats.verblijfadres.postcode |
-    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-    | naam | waarde |
-    | type | Adres  |
-    En heeft de 'verblijfplaats' geen 'verblijfadres' gegevens
-
-  Scenario: 'postcode (11.60)' is in onderzoek, maar wordt niet gevraagd
-    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
-    | naam                               | waarde   |
-    | datum aanvang adreshouding (10.30) | 20220128 |
-    | aanduiding in onderzoek (83.10)    | 081160   |
-    | datum ingang onderzoek (83.20)     | 20020701 |
-    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | naam                 | waarde |
-    | gemeentecode (92.10) | 0519   |
-    | straatnaam (11.10)   | Spui   |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                              |
-    | type                | RaadpleegMetBurgerservicenummer     |
-    | burgerservicenummer | 000000152                           |
-    | fields              | verblijfplaats.verblijfadres.straat |
-    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-    | naam | waarde |
-    | type | Adres  |
-    En heeft de 'verblijfplaats' geen 'verblijfadres' gegevens
-
-  Scenario: 'straatnaam (11.10)' is in onderzoek, maar wordt niet gevraagd
+  Scenario: 'straatnaam' is in onderzoek, maar veld 'korteNaam' wordt niet gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
     | naam                               | waarde   |
     | datum aanvang adreshouding (10.30) | 20220128 |
@@ -192,26 +104,6 @@ Rule: Het in onderzoek zijn van een veld en bijbehorende datumIngangOnderzoek wo
     | inOnderzoek.datumIngangOnderzoek.type        | Datum       |
     | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01  |
     | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002 |
-    En heeft de 'verblijfplaats' geen 'verblijfadres' gegevens
-
-  Scenario: 'woonplaats (11.70)' is in onderzoek, maar 'woonplaats' wordt niet gevraagd
-    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
-    | naam                               | waarde   |
-    | datum aanvang adreshouding (10.30) | 20220128 |
-    | aanduiding in onderzoek (83.10)    | 081170   |
-    | datum ingang onderzoek (83.20)     | 20020701 |
-    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | naam                 | waarde |
-    | gemeentecode (92.10) | 0519   |
-    | straatnaam (11.10)   | Spui   |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                               |
-    | type                | RaadpleegMetBurgerservicenummer                      |
-    | burgerservicenummer | 000000152                                            |
-    | fields              | verblijfplaats.verblijfadres.aanduidingBijHuisnummer |
-    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-    | naam | waarde |
-    | type | Adres  |
     En heeft de 'verblijfplaats' geen 'verblijfadres' gegevens
 
 Rule: 'type' veld van 'verblijfplaats binnenland (adres)' is in onderzoek als het identificerende gegeven van adres ('straatnaam (11.10)') in onderzoek is
