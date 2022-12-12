@@ -23,27 +23,6 @@ Functionaliteit: Persoon: verblijfplaats buitenland -verblijfadres
     | verblijfplaats.verblijfadres.land.code         | 6014 | Verenigde Staten van Amerika |
     | verblijfplaats.verblijfadres.land.omschrijving | 9999 | Internationaal gebied        |
 
-  Abstract Scenario: persoon heeft 'verblijfplaats buitenland' veld: '<gba naam>'
-    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
-    | naam                          | waarde   |
-    | land adres buitenland (13.10) | 6014     |
-    | <gba naam>                    | <waarde> |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                              |
-    | type                | RaadpleegMetBurgerservicenummer     |
-    | burgerservicenummer | 000000152                           |
-    | fields              | verblijfplaats.verblijfadres.<naam> |
-    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-    | naam                 | waarde                   |
-    | type                 | VerblijfplaatsBuitenland |
-    | verblijfadres.<naam> | <waarde>                 |
-
-    Voorbeelden:
-    | gba naam                         | naam   | waarde                      |
-    | regel 1 adres buitenland (13.30) | regel1 | 1600 Pennsylvania Avenue NW |
-    | regel 2 adres buitenland (13.40) | regel2 | Washington, DC 20500        |
-    | regel 3 adres buitenland (13.50) | regel3 | Selangor                    |
-
   Abstract Scenario: persoon heeft 'verblijfplaats buitenland' veld met onbekend waarde: '<gba naam>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
     | naam                             | waarde                      |

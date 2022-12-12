@@ -1,11 +1,11 @@
 #language: nl
 
-Functionaliteit: adressering - fields alias
+Functionaliteit: Persoon: adressering velden vragen met fields/fields alias
 
   Wanneer een consumer van de BRP API niet is geautoriseerd voor het bevragen van de adresregel velden voor een verblijfplaats buitenland
   Dan moet de consumer de adresseringBinnenland fields alias gebruiken om aan te geven dat hij adresregel velden voor een verblijfplaats binnenland vraagt
 
-Rule: de standaard adresregel (verkorte/volledige) field paden kan worden gebruikt door een consumer die is geautoriseerd voor het bevragen van adresregels horende bij verblijfplaats buitenland
+Rule: de standaard adresregel veld paden kunnen worden gebruikt door een consumer die is geautoriseerd voor het vragen van adresregels horende bij verblijfplaats binnenland (adres, locatie) en verblijfplaats buitenland
 
   Abstract Scenario: consumer is geautoriseerd voor 'adressering buitenland' en vraagt <sub titel>
     Gegeven de consumer is geautoriseerd voor 'adressering binnenland' gegevens
@@ -31,9 +31,8 @@ Rule: de standaard adresregel (verkorte/volledige) field paden kan worden gebrui
 
     Voorbeelden:
     | fields                                                                                   | sub titel                                   |
-    | adressering                                                                              | alle adressering velden                     |
+    | adressering                                                                              | de adressering gegevensgroep veld           |
     | adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,adressering.land | alle adresregel velden met hun volledig pad |
-    | adresregel1,adresregel2,adresregel3,adressering.land                                     | alle adresregel velden met hun verkorte pad |
 
   Abstract Scenario: consumer is geautoriseerd voor 'adressering buitenland' en vraagt het <field> veld van de adressering gegevensgroep
     Gegeven de consumer is geautoriseerd voor 'adressering binnenland' gegevens
@@ -78,7 +77,7 @@ Rule: de standaard adresregel (verkorte/volledige) field paden kan worden gebrui
     | land.code         | 6014                         |
     | land.omschrijving | Verenigde Staten van Amerika |
 
-Rule: de 'adresseringBinnenland' field alias moet worden gebruikt door een consumer die niet is geautoriseerd voor het bevragen van adresregels horende bij verblijfplaats buitenland
+Rule: de 'adresseringBinnenland' field alias moet worden gebruikt door een consumer die niet is geautoriseerd voor het vragen van adresregels horende bij verblijfplaats buitenland
 
   Scenario: consumer is niet geautoriseerd voor 'adressering buitenland' en vraagt met de fields alias <sub titel> van een verblijfplaats buitenland
     Gegeven de consumer is geautoriseerd voor 'adressering binnenland' gegevens
