@@ -281,7 +281,7 @@ Rule: wanneer één of meerdere velden van een verblijfplaats buitenland wordt g
     | verblijfplaatsBinnenland.datumVan,verblijfplaatsBinnenland.verblijfadres.huisnummer |
     | verblijfplaatsBinnenland.verblijfadres.regel1                                       |
 
-Rule: als één of meerdere (gegevensgroep) velden van een verblijfplaats wordt gevraagd en de verblijfplaats heeft in onderzoek gegevens, dan worden deze ook geleverd
+Rule: als één of meerdere (gegevensgroep) velden van een verblijfplaats wordt gevraagd en de categorie verblijfplaats (08) heeft in onderzoek gegevens, dan worden deze ook geleverd
 
   Abstract Scenario: '<type>' van een adres is in onderzoek en één of meerdere velden wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
@@ -310,6 +310,9 @@ Rule: als één of meerdere (gegevensgroep) velden van een verblijfplaats wordt 
     | 081150                  | verblijfplaats.verblijfadres                                                  | aanduiding bij huisnummer     |
     | 081130                  | verblijfplaats.datumVan                                                       | huisletter                    |
     | 081160                  | verblijfplaats.verblijfadres.postcode,verblijfplaats.verblijfadres.huisnummer | postcode                      |
+    | 081020                  | verblijfplaats.nummeraanduidingIdentificatie                                  | gemeentedeel                  |
+    | 080910                  | verblijfplaats                                                                | gemeente van inschrijving     |
+    | 081410                  | verblijfplaats.verblijfadres                                                  | land vanwaar ingeschreven     |
 
   Abstract Scenario: '<type>' van een locatie is in onderzoek en één of meerdere velden wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
@@ -336,7 +339,10 @@ Rule: als één of meerdere (gegevensgroep) velden van een verblijfplaats wordt 
     | 080000                  | verblijfplaats                                                                        | hele categorie verblijfplaats |
     | 081200                  | verblijfplaats                                                                        | hele groep locatie            |
     | 081210                  | verblijfplaats.verblijfadres                                                          | locatiebeschrijving           |
-    | 088510                  | verblijfplaats.verblijfadres.locatiebeschrijving,verblijfplaats.datumIngangGeldigheid | datum ingang geldigheid       |  |
+    | 088510                  | verblijfplaats.verblijfadres.locatiebeschrijving,verblijfplaats.datumIngangGeldigheid | datum ingang geldigheid       |
+    | 081020                  | verblijfplaats.verblijfadres.locatiebeschrijving                                      | gemeentedeel                  |
+    | 080910                  | verblijfplaats                                                                        | gemeente van inschrijving     |
+    | 081410                  | verblijfplaats.verblijfadres                                                          | land vanwaar ingeschreven     |
 
   Abstract Scenario: '<type>' van een verblijfplaats buitenland is in onderzoek en één of meerdere velden wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
@@ -362,3 +368,6 @@ Rule: als één of meerdere (gegevensgroep) velden van een verblijfplaats wordt 
     | 081300                  | verblijfplaats                                                          | hele groep adres buitenland   |
     | 081310                  | verblijfplaats.verblijfadres                                            | land adres buitenland         |
     | 081340                  | verblijfplaats.verblijfadres.regel1,verblijfplaats.verblijfadres.regel2 | regel 2 adres buitenland      |
+    | 081020                  | verblijfplaats.verblijfadres.regel3                                     | gemeentedeel                  |
+    | 080910                  | verblijfplaats                                                          | gemeente van inschrijving     |
+    | 081410                  | verblijfplaats.verblijfadres                                            | land vanwaar ingeschreven     |
