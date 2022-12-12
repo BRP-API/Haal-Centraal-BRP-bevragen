@@ -268,33 +268,6 @@ Functionaliteit: leveren van een datum
         | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
         | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
 
-    Abstract Scenario: <type> in verblijfplaats datumIngangGeldigheid
-      Gegeven de persoon met burgerservicenummer '000000176' heeft de volgende 'verblijfplaats' gegevens
-        | naam                            | waarde     |
-        | functie adres (10.10)           | W          |
-        | datum ingang geldigheid (85.10) | <GbaDatum> |
-        Als personen wordt gezocht met de volgende parameters
-        | naam                | waarde                               |
-        | type                | RaadpleegMetBurgerservicenummer      |
-        | burgerservicenummer | 000000176                            |
-        | fields              | verblijfplaats.datumIngangGeldigheid |
-        Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-        | naam                              | waarde                 |
-        | type                              | VerblijfplaatsOnbekend |
-        | datumIngangGeldigheid.type        | <type>                 |
-        | datumIngangGeldigheid.datum       | <datum>                |
-        | datumIngangGeldigheid.jaar        | <jaar>                 |
-        | datumIngangGeldigheid.maand       | <maand>                |
-        | datumIngangGeldigheid.onbekend    | <onbekend>             |
-        | datumIngangGeldigheid.langFormaat | <langFormaat>          |
-
-        Voorbeelden:
-        | type           | GbaDatum | datum      | jaar | maand | onbekend | langFormaat  |
-        | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
-        | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
-        | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
-        | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
-
     Abstract Scenario: <type> in inOnderzoek datumIngangOnderzoek
       Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
         | naam                            | waarde     |
@@ -445,58 +418,4 @@ Functionaliteit: leveren van een datum
         | 'kind'    | kind       | kinderen | JaarDatum      | 090120                 | 20200000 |            | 2020 |       |          | 2020         |
         | 'kind'    | kind       | kinderen | JaarMaandDatum | 090120                 | 20200300 |            | 2020 | 3     |          | maart 2020   |
 
-  Rule: verblijfplaats datumVan wordt gevuld uit datumAanvangAdreshouding of datumAanvangAdresBuitenland
 
-    Abstract Scenario: datum aanvang adreshouding (10.30) <titel>
-      Gegeven de persoon met burgerservicenummer '000000267' heeft de volgende 'verblijfplaats' gegevens
-        | naam                               | waarde                     |
-        | functie adres (10.10)              | W                          |
-        | datum aanvang adreshouding (10.30) | <datumAanvangAdreshouding> |
-        Als personen wordt gezocht met de volgende parameters
-        | naam                | waarde                          |
-        | type                | RaadpleegMetBurgerservicenummer |
-        | burgerservicenummer | 000000267                       |
-        | fields              | verblijfplaats.datumVan         |
-        Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-        | naam                 | waarde                 |
-        | type                 | VerblijfplaatsOnbekend |
-        | datumVan.type        | <type>                 |
-        | datumVan.datum       | <datum>                |
-        | datumVan.jaar        | <jaar>                 |
-        | datumVan.maand       | <maand>                |
-        | datumVan.onbekend    | <onbekend>             |
-        | datumVan.langFormaat | <langFormaat>          |
-
-        Voorbeelden:
-        | titel                | datumAanvangAdreshouding | type           | datum      | jaar | maand | onbekend | langFormaat  |
-        | volledig bekend      | 20200308                 | Datum          | 2020-03-08 |      |       |          | 8 maart 2020 |
-        | alleen jaar en maand | 20200300                 | JaarMaandDatum |            | 2020 | 3     |          | maart 2020   |
-        | alleen jaar          | 20200000                 | JaarDatum      |            | 2020 |       |          | 2020         |
-        | volledig onbekend    | 00000000                 | DatumOnbekend  |            |      |       | true     | onbekend     |
-
-    Abstract Scenario: datum aanvang adres buitenland (13.20) <titel>
-      Gegeven de persoon met burgerservicenummer '000000279' heeft de volgende 'verblijfplaats' gegevens
-        | naam                                   | waarde                        |
-        | land (13.10)                           | 0004                          |
-        | datum aanvang adres buitenland (13.20) | <datumAanvangAdresBuitenland> |
-        Als personen wordt gezocht met de volgende parameters
-        | naam                | waarde                          |
-        | type                | RaadpleegMetBurgerservicenummer |
-        | burgerservicenummer | 000000279                       |
-        | fields              | verblijfplaats.datumVan         |
-        Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-        | naam                 | waarde                   |
-        | type                 | VerblijfplaatsBuitenland |
-        | datumVan.type        | <type>                   |
-        | datumVan.datum       | <datum>                  |
-        | datumVan.jaar        | <jaar>                   |
-        | datumVan.maand       | <maand>                  |
-        | datumVan.onbekend    | <onbekend>               |
-        | datumVan.langFormaat | <langFormaat>            |
-
-        Voorbeelden:
-        | titel                | datumAanvangAdresBuitenland | type           | datum      | jaar | maand | onbekend | langFormaat  |
-        | volledig bekend      | 20200308                    | Datum          | 2020-03-08 |      |       |          | 8 maart 2020 |
-        | alleen jaar en maand | 20200300                    | JaarMaandDatum |            | 2020 | 3     |          | maart 2020   |
-        | alleen jaar          | 20200000                    | JaarDatum      |            | 2020 |       |          | 2020         |
-        | volledig onbekend    | 00000000                    | DatumOnbekend  |            |      |       | true     | onbekend     |

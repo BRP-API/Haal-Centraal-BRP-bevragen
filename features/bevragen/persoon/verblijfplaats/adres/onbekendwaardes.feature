@@ -99,3 +99,52 @@ Rule: Niet leveren van de standaard/onbekend waarde van een adres veld
     | datumVan.type        | DatumOnbekend |
     | datumVan.onbekend    | true          |
     | datumVan.langFormaat | onbekend      |
+
+# Overgenomen uit /dev/verblijfplaats-binnenland --> Dit scenario wordt afgedekt door het scenario "  Abstract Scenario: onbekend waarde "<waarde>" voor <element>"
+#  Abstract Scenario: persoon heeft 'verblijfplaats binnenland' veld met onbekend waarde: '<gba naam>'
+#    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+#    | naam                               | waarde   |
+#    | datum aanvang adreshouding (10.30) | 20220128 |
+#    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+#    | naam                         | waarde       |
+#    | gemeente_code                | 0518         |
+#    | naam openbare ruimte (11.15) | Spui         |
+#    | <gba naam>                   | <gba waarde> |
+#    Als personen wordt gezocht met de volgende parameters
+#    | naam                | waarde                          |
+#    | type                | RaadpleegMetBurgerservicenummer |
+#    | burgerservicenummer | 000000152                       |
+#    | fields              | verblijfplaats.<naam>           |
+#    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
+#    | naam | waarde |
+#    | type | Adres  |
+
+#    Voorbeelden:
+#    | gba naam                                   | gba waarde       | naam                             |
+#    | identificatiecode verblijfplaats (11.80)   | 0000000000000000 | adresseerbaarObjectIdentificatie |
+#    | identificatiecode nummeraanduiding (11.90) | 0000000000000000 | nummeraanduidingIdentificatie    |
+
+# Overgenomen uit /dev/verblijfplaats-binnenland --> Dit scenario wordt afgedekt door de eerste 3 scenario's van deze feature
+#  Abstract Scenario: persoon heeft 'verblijfadres' veld met onbekend waarde: '<gba naam>'
+#    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+#    | naam                               | waarde   |
+#    | datum aanvang adreshouding (10.30) | 20220128 |
+#    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+#    | naam                         | waarde       |
+#    | gemeente_code                | 0518         |
+#    | naam openbare ruimte (11.15) | Spui         |
+#    | <gba naam>                   | <gba waarde> |
+#    Als personen wordt gezocht met de volgende parameters
+#    | naam                | waarde                          |
+#    | type                | RaadpleegMetBurgerservicenummer |
+#    | burgerservicenummer | 000000152                       |
+#    | fields              | verblijfplaats.<naam>           |
+#    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
+#    | naam | waarde |
+#    | type | Adres  |
+
+#    Voorbeelden:
+#    | gba naam           | gba waarde | naam                     |
+#    | straatnaam (11.10) | .          | verblijfadres.straat     |
+#    | huisnummer (11.20) | 0          | verblijfadres.huisnummer |
+#    | woonplaats (11.70) | .          | verblijfadres.woonplaats |
