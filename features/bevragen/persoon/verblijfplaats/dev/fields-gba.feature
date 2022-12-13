@@ -254,7 +254,7 @@ Rule: wanneer één of meerdere velden van een locatie wordt gevraagd met de fie
     | verblijfplaatsBinnenland.datumVan,verblijfplaatsBinnenland.verblijfadres.locatiebeschrijving | datumAanvangAdreshouding | 20150808      |                   |               |                           |               |
     | verblijfplaatsBinnenland.verblijfadres.regel1                                                |                          |               |                   |               |                           |               |
 
-Rule: wanneer één of meerdere velden van een verblijfplaats buitenland wordt gevraagd met de field alias verblijfplaatsBinnenland, dan wordt geen enkel verblijfplaats gegeven geleverd
+Rule: Een persoon heeft een verblijfplaats zonder gegevens/leeg verblijfplaats object wanneer de verblijfplaatsBinnenland field alias wordt gebruikt en de persoon heeft een verblijfplaats buitenland of verblijfplaats onbekend
 
   Abstract Scenario: één of meerdere velden van een verblijfplaats buitenland wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
@@ -269,7 +269,7 @@ Rule: wanneer één of meerdere velden van een verblijfplaats buitenland wordt g
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000152                       |
     | fields              | <fields>                        |
-    Dan heeft de response een persoon zonder gegevens
+    Dan heeft de response een persoon zonder 'verblijfplaats' gegevens
 
     Voorbeelden:
     | fields                                                                              |
@@ -279,7 +279,6 @@ Rule: wanneer één of meerdere velden van een verblijfplaats buitenland wordt g
     | verblijfplaatsBinnenland.datumVan,verblijfplaatsBinnenland.functieAdres             |
     | verblijfplaatsBinnenland.verblijfadres                                              |
     | verblijfplaatsBinnenland.datumVan,verblijfplaatsBinnenland.verblijfadres.huisnummer |
-    | verblijfplaatsBinnenland.verblijfadres.regel1                                       |
 
 Rule: als één of meerdere (gegevensgroep) velden van een verblijfplaats wordt gevraagd en de categorie verblijfplaats (08) heeft in onderzoek gegevens, dan worden deze ook geleverd
 
