@@ -30,13 +30,13 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       | huisnummertoevoeging | 2                           |
       | fields               | burgerservicenummer         |
       Dan heeft de response een object met de volgende gegevens
-      | naam     | waarde                                                                                                                  |
-      | type     | https://learn.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?view=net-7.0#system-net-httpstatuscode-forbidden |
-      | title    | U bent niet geautoriseerd voor de gebruikte parameter(s).                                                               |
-      | status   | 403                                                                                                                     |
-      | detail   | U bent niet geautoriseerd voor het gebruik van parameter(s): <parameter niet toegestaan>.                               |
-      | code     | unauthorizedParameter                                                                                                   |
-      | instance | /haalcentraal/api/brp/personen                                                                                          |
+      | naam     | waarde                                                                                    |
+      | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3                               |
+      | title    | U bent niet geautoriseerd voor de gebruikte parameter(s).                                 |
+      | status   | 403                                                                                       |
+      | detail   | U bent niet geautoriseerd voor het gebruik van parameter(s): <parameter niet toegestaan>. |
+      | code     | unauthorizedParameter                                                                     |
+      | instance | /haalcentraal/api/brp/personen                                                            |
       En heeft het object de volgende 'invalidParams' gegevens
       | code         | name                        | reason                                                  |
       | unauthorized | <parameter niet toegestaan> | Niet geautoriseerd voor het gebruik van deze parameter. |
@@ -76,13 +76,13 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       | huisnummertoevoeging | 2                           |
       | fields               | burgerservicenummer         |
       Dan heeft de response een object met de volgende gegevens
-      | naam     | waarde                                                                                                                  |
-      | type     | https://learn.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?view=net-7.0#system-net-httpstatuscode-forbidden |
-      | title    | U bent niet geautoriseerd voor de gebruikte parameter(s).                                                               |
-      | status   | 403                                                                                                                     |
-      | detail   | U bent niet geautoriseerd voor het gebruik van parameter(s): huisletter, huisnummertoevoeging.                          |
-      | code     | unauthorizedParameter                                                                                                   |
-      | instance | /haalcentraal/api/brp/personen                                                                                          |
+      | naam     | waarde                                                                                         |
+      | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3                                    |
+      | title    | U bent niet geautoriseerd voor de gebruikte parameter(s).                                      |
+      | status   | 403                                                                                            |
+      | detail   | U bent niet geautoriseerd voor het gebruik van parameter(s): huisletter, huisnummertoevoeging. |
+      | code     | unauthorizedParameter                                                                          |
+      | instance | /haalcentraal/api/brp/personen                                                                 |
 
   Rule: Een gemeente als afnemer is geautoriseerd voor alle zoekvragen voor haar eigen inwoners
 

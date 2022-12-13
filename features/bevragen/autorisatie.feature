@@ -61,13 +61,13 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | nummeraanduidingIdentificatie | 0599200000219679                     |
       | fields                        | burgerservicenummer                  |
       Dan heeft de response een object met de volgende gegevens
-      | naam     | waarde                                                                                                                  |
-      | type     | https://learn.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?view=net-7.0#system-net-httpstatuscode-forbidden |
-      | title    | U bent niet geautoriseerd voor de gebruikte parameter(s).                                                               |
-      | status   | 403                                                                                                                     |
-      | detail   | U bent niet geautoriseerd voor het gebruik van parameter(s): nummeraanduidingIdentificatie.                             |
-      | code     | unauthorizedParameter                                                                                                   |
-      | instance | /haalcentraal/api/brp/personen                                                                                          |
+      | naam     | waarde                                                                                      |
+      | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3                                 |
+      | title    | U bent niet geautoriseerd voor de gebruikte parameter(s).                                   |
+      | status   | 403                                                                                         |
+      | detail   | U bent niet geautoriseerd voor het gebruik van parameter(s): nummeraanduidingIdentificatie. |
+      | code     | unauthorizedParameter                                                                       |
+      | instance | /haalcentraal/api/brp/personen                                                              |
 
     @fout-case
     Scenario: Gebruik van een optionele parameter waarvoor de afnemer niet geautoriseerd is
@@ -89,13 +89,13 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | geslacht      | M                                   |
       | fields        | burgerservicenummer                 |
       Dan heeft de response een object met de volgende gegevens
-      | naam     | waarde                                                                                                                  |
-      | type     | https://learn.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?view=net-7.0#system-net-httpstatuscode-forbidden |
-      | title    | U bent niet geautoriseerd voor de gebruikte parameter(s).                                                               |
-      | status   | 403                                                                                                                     |
-      | detail   | U bent niet geautoriseerd voor het gebruik van parameter(s): geslacht.                                                  |
-      | code     | unauthorizedParameter                                                                                                   |
-      | instance | /haalcentraal/api/brp/personen                                                                                          |
+      | naam     | waarde                                                                 |
+      | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3            |
+      | title    | U bent niet geautoriseerd voor de gebruikte parameter(s).              |
+      | status   | 403                                                                    |
+      | detail   | U bent niet geautoriseerd voor het gebruik van parameter(s): geslacht. |
+      | code     | unauthorizedParameter                                                  |
+      | instance | /haalcentraal/api/brp/personen                                         |
 
 
   Rule: Wanneer met fields gevraagd wordt om een veld waarvoor de gebruiker niet geautoriseerd is, wordt een foutmelding gegeven
@@ -123,8 +123,8 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve parameter(s) zijn: fields[2].                               |
-      | code     | autorisation                                                            |
+      | detail   | De foutieve fields waarden zijn: fields[2].                             |
+      | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
     @fout-case
@@ -149,8 +149,8 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve parameter(s) zijn: fields[0].                               |
-      | code     | autorisation                                                            |
+      | detail   | De foutieve fields waarden zijn: fields[0].                             |
+      | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
       Voorbeelden:
@@ -184,8 +184,8 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve parameter(s) zijn: fields[0].                               |
-      | code     | autorisation                                                            |
+      | detail   | De foutieve fields waarden zijn: fields[0].                             |
+      | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
       Voorbeelden:
@@ -216,8 +216,8 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve parameter(s) zijn: fields[1].                               |
-      | code     | autorisation                                                            |
+      | detail   | De foutieve fields waarden zijn: fields[1].                             |
+      | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
       # Hier is de missende autorisatie een historische aangaanHuwelijkPartnerschap (550610)
 
@@ -243,8 +243,8 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve parameter(s) zijn: fields[0].                               |
-      | code     | autorisation                                                            |
+      | detail   | De foutieve fields waarden zijn: fields[0].                             |
+      | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
   Rule: Wanneer met fields gevraagd wordt om ouders.ouderAanduiding, en de afnemer is niet geautoriseerd voor ten minste één gegeven van ouder 1 én ten minste één gegeven van ouder 2, wordt een foutmelding gegeven
@@ -274,8 +274,8 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve parameter(s) zijn: fields[0].                               |
-      | code     | autorisation                                                            |
+      | detail   | De foutieve fields waarden zijn: fields[0].                             |
+      | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
       Voorbeelden:
@@ -371,8 +371,8 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve parameter(s) zijn: fields[0].                               |
-      | code     | autorisation                                                            |
+      | detail   | De foutieve fields waarden zijn: fields[0].                             |
+      | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
       | fields            | ad hoc rubrieken                     | fields                                     | missende autorisatie |
@@ -415,8 +415,8 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve parameter(s) zijn: fields[1].                               |
-      | code     | autorisation                                                            |
+      | detail   | De foutieve fields waarden zijn: fields[1].                             |
+      | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
 

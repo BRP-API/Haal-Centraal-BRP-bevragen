@@ -23,13 +23,13 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNummeraanduidingIdentifica
       | nummeraanduidingIdentificatie | 0599200000219679                     |
       | fields                        | burgerservicenummer                  |
       Dan heeft de response een object met de volgende gegevens
-      | naam     | waarde                                                                                                                  |
-      | type     | https://learn.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?view=net-7.0#system-net-httpstatuscode-forbidden |
-      | title    | U bent niet geautoriseerd voor de gebruikte parameter(s).                                                               |
-      | status   | 403                                                                                                                     |
-      | detail   | U bent niet geautoriseerd voor het gebruik van parameter(s): nummeraanduidingIdentificatie.                             |
-      | code     | unauthorizedParameter                                                                                                   |
-      | instance | /haalcentraal/api/brp/personen                                                                                          |
+      | naam     | waarde                                                                                      |
+      | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3                                 |
+      | title    | U bent niet geautoriseerd voor de gebruikte parameter(s).                                   |
+      | status   | 403                                                                                         |
+      | detail   | U bent niet geautoriseerd voor het gebruik van parameter(s): nummeraanduidingIdentificatie. |
+      | code     | unauthorizedParameter                                                                       |
+      | instance | /haalcentraal/api/brp/personen                                                              |
 
   Rule: Een gemeente als afnemer is geautoriseerd voor alle zoekvragen voor haar eigen inwoners
 
