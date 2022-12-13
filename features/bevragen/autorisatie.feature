@@ -7,8 +7,10 @@ Functionaliteit: autorisatie voor het gebruik van de API
 
   Deze feature beschrijft alleen de autorisatie van de afnemer door RvIG.
 
-  Autorisatie is gebaseerd op de Gaba autorisatie van een afnemer, die is vastgelegd in het autorisatiebesluit voor een afnemer. 
+  Autorisatie is gebaseerd op het autorisatiebesluit van een afnemer, die is vastgelegd in tabel 35 voor een afnemer.
+  Deze kan je voor een afnemer zoeken op https://publicaties.rvig.nl/Landelijke_tabellen/Zoekpagina_tabel_35_autorisatietabel.
   In het autorisatiebesluit staat voor welke gegevens de afnemer geautoriseerd is. 
+
   De autorisatie voor gegevens is vastgelegd in Rubrieknummer ad hoc (35.95.60). 
   Deze bevat een lijst met rubrieknummers (spatie gescheiden) van gegevens die geleverd mogen worden. 
   Een rubrieknummer is het nummer voor een gegeven zoals gedefinieerd in het Logisch Ontwerp BRP (LO BRP) zonder voorloopnullen voor categorienummer (dus 5 of 6 cijfers).
@@ -37,11 +39,41 @@ Functionaliteit: autorisatie voor het gebruik van de API
   # To Do (t.z.t.): regels voor voorwaarderegel ad hoc (35.95.61)
 
 
-  Rule: Wanneer een parameter wordt gebruikt van een veld waarvoor de gebruiker niet geautoriseerd is, wordt een foutmelding gegeven
+  Rule: Een afnemer is geautoriseerd voor ad hoc gegevensverstrekking als Medium ad hoc (35.95.67) de waarde “N” of “A” heeft
+    Wanneer Medium ad hoc (35.95.67) leeg is of een andere waarde dan "N" of "A" heeft, wordt een foutmelding gegeven
+
+    @fout-case
+    Scenario: Afnemer is niet geautoriseerd voor ad hoc gegevensverstrekking
+      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
+      | 010120 010210                   |                          | 20201128                |
+      En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
+      | naam         | waarde |
+      | afnemerID    | 12345  |
+      | gemeenteCode |        |
+      En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
+      | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | geslachtsaanduiding (04.10) |
+      | 19830526              | Maassen               | Pieter            | M                           |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000024                       |
+      | fields              | naam.voornamen                  |
+      Dan heeft de response een object met de volgende gegevens
+      | naam     | waarde                                                      |
+      | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3 |
+      | title    | U bent niet geautoriseerd voor het gebruik van deze API.    |
+      | status   | 403                                                         |
+      | detail   | U heeft geen autorisatie voor ad hoc gegevensverstrekking.  |
+      | code     | unauthorizedParameter                                       |
+      | instance | /haalcentraal/api/brp/personen                              |
+
+
+  Rule: Zoeken met een parameter op een veld waarvoor de gebruiker niet geautoriseerd is geeft een foutmelding
     Om een parameter te mogen gebruiken moet de afnemer geautoriseerd zijn voor de LO BRP rubriek waar met de parameter op gefilterd wordt
 
     @fout-case
-    Scenario: Gebruik van een zoektype met verplichte parameter waarvoor de afnemer niet geautoriseerd is
+    Scenario: Zoeken met een zoektype met verplichte parameter waarvoor de afnemer niet geautoriseerd is
       Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60)           | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 80810 81110 81120 81130 81140 81150 | N                        | 20201128                |
@@ -70,7 +102,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | instance | /haalcentraal/api/brp/personen                                                              |
 
     @fout-case
-    Scenario: Gebruik van een optionele parameter waarvoor de afnemer niet geautoriseerd is
+    Scenario: Zoeken met een optionele parameter waarvoor de afnemer niet geautoriseerd is
       Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60)     | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 10210 10220 10230 10240 10310 | N                        | 20201128                |
@@ -98,11 +130,11 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | instance | /haalcentraal/api/brp/personen                                         |
 
 
-  Rule: Wanneer met fields gevraagd wordt om een veld waarvoor de gebruiker niet geautoriseerd is, wordt een foutmelding gegeven
+  Rule: Vragen met fields gevraagd om een veld waarvoor de gebruiker niet geautoriseerd is geeft een foutmelding
     Om een veld te mogen vragen moet de afnemer geautoriseerd zijn voor alle LO BRP rubrieken waar het veld mee gevuld of van afgeleid wordt
 
     @fout-case
-    Scenario: Afnemer vraagt om een veld waarvoor deze niet geautoriseerd is
+    Scenario: Afnemer vraagt om een veld (geboorte.plaats) waarvoor deze niet geautoriseerd is
       Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60)     | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 10210 10220 10230 10240 10310 | N                        | 20201128                |
@@ -117,7 +149,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | naam                | waarde                                                            |
       | type                | RaadpleegMetBurgerservicenummer                                   |
       | burgerservicenummer | 000000024                                                         |
-      | fields              | burgerservicenummer,geboorte.datum.geboorte.plaats,naam.voornamen |
+      | fields              | burgerservicenummer,geboorte.datum,geboorte.plaats,naam.voornamen |
       Dan heeft de response een object met de volgende gegevens
       | naam     | waarde                                                                  |
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
@@ -160,7 +192,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | nationaliteiten | 10120 40510 46310 46410 46510 | datumIngangGeldigheid (48510)                |
 
 
-  Rule: Wanneer met fields gevraagd wordt om een veld dat is afgeleid van één of meerdere andere velden, en de gebruiker is niet geautoriseerd al die velden, wordt een foutmelding gegeven
+  Rule: Vragen met fields gevraagd om een veld dat is afgeleid van één of meerdere andere velden, wanneer de gebruiker niet geautoriseerd is voor al die velden, geeft een foutmelding
 
     @fout-case
     Scenario: Afnemer vraagt om afgeleid gegeven <fields> en is niet geautoriseerd <missende autorisatie>
@@ -247,7 +279,8 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
-  Rule: Wanneer met fields gevraagd wordt om ouders.ouderAanduiding, en de afnemer is niet geautoriseerd voor ten minste één gegeven van ouder 1 én ten minste één gegeven van ouder 2, wordt een foutmelding gegeven
+
+  Rule: Vragen met fields gevraagd wordt om ouders.ouderAanduiding, wanneer de afnemer niet geautoriseerd is voor ten minste één gegeven van ouder 1 én ten minste één gegeven van ouder 2, geeft een foutmelding
 
     @fout-case
     Abstract Scenario: Afnemer is <missende autorisatie>
@@ -375,9 +408,6 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
-      | fields            | ad hoc rubrieken                     | fields                                     | missende autorisatie |
-      | partners.geslacht | 010120 50210 50220 50230 50240 50610 | partners.aangaanHuwelijkPartnerschap.datum | geslacht (50410)     |
-
     @fout-case
     Scenario: Gemeente vindt op een zoekvraag een eigen inwoner én een inwoner van een andere gemeente en fields vraagt om een veld waarvoor de afnemer niet geautoriseerd is
       # voeg parameter gemeenteVanInschrijving toe om te zorgen dat je alleen eigen inwoners vindt en deze fout niet krijgt
@@ -418,33 +448,6 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | detail   | De foutieve fields waarden zijn: fields[1].                             |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
-
-
-  Rule: Een afnemer die alleen geautoriseerd is voor binnenlandse adressen of locaties kan adressering vragen met adresseringBinnenland
-
-    Scenario: Afnemer zonder autorisatie buitenlandse verblijfplaats vraagt adressering adresregel van persoon met Nederlands adres
-
-      Voorbeelden:
-      | ad hoc rubrieken                                                                          | fields                            |
-      | 10120 80910 81030 81010 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 81210 | adresseringBinnenland.adresregel1 |
-
-    Scenario: Afnemer zonder autorisatie buitenlandse verblijfplaats vraagt adressering adresregel van persoon met locatiebeschrijving
-
-      Voorbeelden:
-      | ad hoc rubrieken                                                                          | fields                            |
-      | 10120 80910 81030 81010 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 81210 | adresseringBinnenland.adresregel1 |
-
-    Scenario: Afnemer zonder autorisatie buitenlandse verblijfplaats vraagt adressering adresregel van persoon met buitenlands adres
-
-      Voorbeelden:
-      | ad hoc rubrieken                                                                          | fields                            |
-      | 10120 80910 81030 81010 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 81210 | adresseringBinnenland.adresregel1 |
-
-    Scenario: Afnemer zonder autorisatie buitenlandse verblijfplaats vraagt adressering adresregel van persoon met onbekende verblijfplaats
-
-      Voorbeelden:
-      | ad hoc rubrieken                                                                          | fields                            |
-      | 10120 80910 81030 81010 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 81210 | adresseringBinnenland.adresregel1 |
 
 
   Rule: Alleen een autorisatie tabelregel waarbij de Datum beëindiging tabelregel (35.99.99) leeg is of in de toekomst ligt wordt gebruikt

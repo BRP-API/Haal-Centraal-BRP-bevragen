@@ -3,7 +3,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
   Rule: Wanneer een parameter wordt gebruikt van een veld waarvoor de gebruiker niet geautoriseerd is, wordt een foutmelding gegeven
     
     @fout-case
-    Abstract Scenario: Gebruik parameter <parameter niet toegestaan> waarvoor de afnemer niet geautoriseerd is (<ontbrekende rubriek>)
+    Abstract Scenario: Zoeken met parameter <parameter niet toegestaan> waarvoor de afnemer niet geautoriseerd is (<ontbrekende rubriek>)
       Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | <ad hoc rubrieken>              | N                        | 20201128                |

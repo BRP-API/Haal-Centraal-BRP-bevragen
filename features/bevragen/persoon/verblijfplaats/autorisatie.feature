@@ -36,7 +36,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: fields[1].                               |
+      | detail   | De foutieve fields waarden zijn: fields[1].                             |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
