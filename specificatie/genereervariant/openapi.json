@@ -1276,9 +1276,6 @@
         }, {
           "type" : "object",
           "properties" : {
-            "functieAdres" : {
-              "$ref" : "#/components/schemas/Waardetabel"
-            },
             "inOnderzoek" : {
               "$ref" : "#/components/schemas/VerblijfplaatsInOnderzoekBeperkt"
             }
@@ -2073,15 +2070,11 @@
         } ]
       },
       "VerblijfplaatsOnbekend" : {
-        "description" : "* **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten. Wordt gevuld op basis van de waarden die voorkomen in de tabel \"Gemeenten\" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats\n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/AbstractVerblijfplaats"
         }, {
           "type" : "object",
           "properties" : {
-            "functieAdres" : {
-              "$ref" : "#/components/schemas/Waardetabel"
-            },
             "datumVan" : {
               "$ref" : "#/components/schemas/AbstractDatum"
             },
@@ -2104,9 +2097,6 @@
               "type" : "boolean"
             },
             "datumVan" : {
-              "type" : "boolean"
-            },
-            "functieAdres" : {
               "type" : "boolean"
             },
             "datumIngangGeldigheid" : {
