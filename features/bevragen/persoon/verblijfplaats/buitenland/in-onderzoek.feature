@@ -24,13 +24,13 @@ Functionaliteit: Persoon: verblijfplaats buitenland velden zijn in onderzoek
     | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                |
 
     Voorbeelden:
-    | aanduiding in onderzoek | type io | datumVan io | datumIngangGeldigheid io | type                          |
-    | 080000                  | true    | true        | true                     | hele categorie verblijfplaats |
-    | 081300                  | true    | true        |                          |                               |
-    | 081310                  | true    |             |                          |                               |
-    | 081320                  |         | true        |                          |                               |
-    | 088500                  |         |             | true                     |                               |
-    | 088510                  |         |             | true                     |                               |
+    | aanduiding in onderzoek | type io | datumVan io | datumIngangGeldigheid io | type                           |
+    | 080000                  | true    | true        | true                     | hele categorie verblijfplaats  |
+    | 081300                  | true    | true        |                          | hele groep adres buitenland    |
+    | 081310                  | true    |             |                          | land adres buitenland          |
+    | 081320                  |         | true        |                          | datum aanvang adres buitenland |
+    | 088500                  |         |             | true                     | hele groep geldigheid          |
+    | 088510                  |         |             | true                     | datum ingang geldigheid        |
 
   Scenario: 'datum aanvang adres buitenland (13.20)' is in onderzoek, maar 'datumVan' wordt niet gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
@@ -63,6 +63,6 @@ Functionaliteit: Persoon: verblijfplaats buitenland velden zijn in onderzoek
     | type | VerblijfplaatsBuitenland |
 
     Voorbeelden:
-    | aanduiding in onderzoek | type |
-    | 088500                  |      |
-    | 088510                  |      |
+    | aanduiding in onderzoek | type                    |
+    | 088500                  | hele groep geldigheid   |
+    | 088510                  | datum ingang geldigheid |

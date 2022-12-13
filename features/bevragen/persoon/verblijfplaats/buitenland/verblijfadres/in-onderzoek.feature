@@ -34,11 +34,11 @@ Functionaliteit: Persoon: verblijfplaats buitenland - verblijfadres velden zijn 
     Voorbeelden:
     | aanduiding in onderzoek | type io | regel1 io | regel2 io | regel3 io | land io | datum type | datum      | lang formaat | type                          |
     | 080000                  | true    | true      | true      | true      | true    | Datum      | 2002-07-01 | 1 juli 2002  | hele categorie verblijfplaats |
-    | 081300                  | true    | true      | true      | true      | true    | Datum      | 2002-07-01 | 1 juli 2002  |                               |
-    | 081310                  | true    |           |           |           | true    | Datum      | 2002-07-01 | 1 juli 2002  |                               |
-    | 081330                  |         | true      |           |           |         |            |            |              |                               |
-    | 081340                  |         |           | true      |           |         |            |            |              |                               |
-    | 081350                  |         |           |           | true      |         |            |            |              |                               |
+    | 081300                  | true    | true      | true      | true      | true    | Datum      | 2002-07-01 | 1 juli 2002  | hele groep adres buitenland   |
+    | 081310                  | true    |           |           |           | true    | Datum      | 2002-07-01 | 1 juli 2002  | land adres buitenland         |
+    | 081330                  |         | true      |           |           |         |            |            |              | regel 1 adres buitenland      |
+    | 081340                  |         |           | true      |           |         |            |            |              | regel 2 adres buitenland      |
+    | 081350                  |         |           |           | true      |         |            |            |              | regel 3 adres buitenland      |
 
   Abstract Scenario: 'regel 1 adres buitenland (13.30)' is in onderzoek en wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
@@ -147,7 +147,7 @@ Functionaliteit: Persoon: verblijfplaats buitenland - verblijfadres velden zijn 
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam                                         | waarde                   |
     | type                                         | VerblijfplaatsBuitenland |
-    | inOnderzoek.type                             | <type io>                |
+    | inOnderzoek.type                             | true                     |
     | inOnderzoek.datumIngangOnderzoek.type        | Datum                    |
     | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01               |
     | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002              |
