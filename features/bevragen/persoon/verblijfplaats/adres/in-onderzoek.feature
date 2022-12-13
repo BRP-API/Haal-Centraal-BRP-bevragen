@@ -54,6 +54,11 @@ Rule: Het in onderzoek zijn van een veld en bijbehorende datumIngangOnderzoek wo
     | naam                 | waarde |
     | gemeentecode (92.10) | 0519   |
     | straatnaam (11.10)   | Spui   |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | verblijfplaats.datumVan         |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam | waarde |
     | type | Adres  |
@@ -117,7 +122,7 @@ Rule: 'type' veld van 'verblijfplaats binnenland (adres)' is in onderzoek als he
     | datumIngangOnderzoek.datum       | 2002-07-01        |
     | datumIngangOnderzoek.langFormaat | 1 juli 2002       |
 
-  Voorbeelden:
+    Voorbeelden:
     | aanduiding in onderzoek | functieAdres io | type                          |
     | 080000                  | true            | hele categorie verblijfplaats |
     | 081100                  |                 | hele groep adres              |
