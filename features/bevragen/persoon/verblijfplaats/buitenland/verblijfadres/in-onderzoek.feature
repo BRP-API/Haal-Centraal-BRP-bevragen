@@ -2,6 +2,8 @@
 
 Functionaliteit: Persoon: verblijfplaats buitenland - verblijfadres velden zijn in onderzoek
 
+Rule: Het in onderzoek zijn van een veld en bijbehorende datumIngangOnderzoek worden geleverd als het betreffende veld wordt gevraagd
+
   Abstract Scenario: '<type>' is in onderzoek en alle verblijfadres velden wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
     | naam                            | waarde                    |
@@ -166,53 +168,27 @@ Functionaliteit: Persoon: verblijfplaats buitenland - verblijfadres velden zijn 
     | 081300                  |
     | 081310                  |
 
-  Scenario: 'regel 1 adres buitenland (13.30)' is in onderzoek, maar wordt niet gevraagd
+  Scenario: '<type>' is in onderzoek, maar veld '<veld naam>' wordt niet gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
-    | naam                            | waarde   |
-    | land adres buitenland (13.10)   | 6014     |
-    | aanduiding in onderzoek (83.10) | 081330   |
-    | datum ingang onderzoek (83.20)  | 20020701 |
+    | naam                            | waarde                    |
+    | land adres buitenland (13.10)   | 6014                      |
+    | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
+    | datum ingang onderzoek (83.20)  | 20020701                  |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                              |
-    | type                | RaadpleegMetBurgerservicenummer     |
-    | burgerservicenummer | 000000152                           |
-    | fields              | verblijfplaats.verblijfadres.regel2 |
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | <gevraagde fields>              |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam | waarde                   |
     | type | VerblijfplaatsBuitenland |
     En heeft de 'verblijfplaats' geen 'verblijfadres' gegevens
 
-  Scenario: 'regel 2 adres buitenland (13.40)' is in onderzoek, maar wordt niet gevraagd
-    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
-    | naam                            | waarde   |
-    | land adres buitenland (13.10)   | 6014     |
-    | aanduiding in onderzoek (83.10) | 081340   |
-    | datum ingang onderzoek (83.20)  | 20020701 |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                              |
-    | type                | RaadpleegMetBurgerservicenummer     |
-    | burgerservicenummer | 000000152                           |
-    | fields              | verblijfplaats.verblijfadres.regel3 |
-    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-    | naam | waarde                   |
-    | type | VerblijfplaatsBuitenland |
-    En heeft de 'verblijfplaats' geen 'verblijfadres' gegevens
-
-  Scenario: 'regel 3 adres buitenland (13.50)' is in onderzoek, maar wordt niet gevraagd
-    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
-    | naam                            | waarde   |
-    | land adres buitenland (13.10)   | 6014     |
-    | aanduiding in onderzoek (83.10) | 081350   |
-    | datum ingang onderzoek (83.20)  | 20020701 |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                              |
-    | type                | RaadpleegMetBurgerservicenummer     |
-    | burgerservicenummer | 000000152                           |
-    | fields              | verblijfplaats.verblijfadres.regel1 |
-    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-    | naam | waarde                   |
-    | type | VerblijfplaatsBuitenland |
-    En heeft de 'verblijfplaats' geen 'verblijfadres' gegevens
+    Voorbeelden:
+    | aanduiding in onderzoek | type                     | veld naam | gevraagde fields                    |
+    | 081330                  | regel 1 adres buitenland | regel1    | verblijfplaats.verblijfadres.regel2 |
+    | 081340                  | regel 2 adres buitenland | regel2    | verblijfplaats.verblijfadres.regel3 |
+    | 081350                  | regel 3 adres buitenland | regel3    | verblijfplaats.verblijfadres.regel1 |
 
   Scenario: 'land adres buitenland (13.10)' is in onderzoek, maar wordt niet gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
@@ -233,3 +209,37 @@ Functionaliteit: Persoon: verblijfplaats buitenland - verblijfadres velden zijn 
     | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01               |
     | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002              |
     En heeft de 'verblijfplaats' geen 'verblijfadres' gegevens
+
+Rule: 'type' veld van 'verblijfplaats buitenland' is in onderzoek als het identificerende gegeven van verblijfplaats buitenland ('land adres buitenland (13.10)') in onderzoek is
+
+  Abstract Scenario: '<type>' veld is in onderzoek en regel1 wordt gevraagd
+  
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    | naam                            | waarde                    |
+    | land adres buitenland (13.10)   | 6014                      |
+    | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
+    | datum ingang onderzoek (83.20)  | 20020701                  |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                              |
+    | type                | RaadpleegMetBurgerservicenummer     |
+    | burgerservicenummer | 000000152                           |
+    | fields              | verblijfplaats.verblijfadres.regel1 |
+    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
+    | naam                                         | waarde                   |
+    | type                                         | VerblijfplaatsBuitenland |
+    | inOnderzoek.type                             | true                     |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                    |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01               |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002              |
+    En heeft de 'verblijfplaats' de volgende 'verblijfadres' gegevens
+    | naam                                         | waarde         |
+    | inOnderzoek.regel1                           | <regel1 io>    |
+    | inOnderzoek.datumIngangOnderzoek.type        | <datum type>   |
+    | inOnderzoek.datumIngangOnderzoek.datum       | <datum>        |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | <lang formaat> |
+
+  Voorbeelden:
+    | aanduiding in onderzoek | regel1 io | datum type | datum      | lang formaat | type                          |
+    | 080000                  | true      | Datum      | 2002-07-01 | 1 juli 2002  | hele categorie verblijfplaats |
+    | 081300                  | true      | Datum      | 2002-07-01 | 1 juli 2002  | hele groep adres buitenland   |
+    | 081310                  |           |            |            |              | land adres buitenland         |

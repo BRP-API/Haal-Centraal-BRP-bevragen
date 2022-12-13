@@ -2,7 +2,7 @@
 
 Functionaliteit: verblijfplaats - fields alias fout cases
 
-Rule: de standaard verblijfplaats field paden kan worden gebruikt door een consumer die is geautoriseerd voor het bevragen van 'verblijfplaats buitenland' velden
+Rule: de standaard verblijfplaats field paden mag niet worden gebruikt door een consumer die niet is geautoriseerd voor het bevragen van 'verblijfplaats buitenland' velden
 
   Abstract Scenario: consumer is niet geautoriseerd voor 'verblijfplaats buitenland' en vraagt zonder de fields alias één of meer verblijfplaats velden
     Gegeven de consumer is geautoriseerd voor 'verblijfplaats binnenland' gegevens
@@ -31,10 +31,10 @@ Rule: de field alias 'verblijfplaatsBinnenland' mag niet worden gebruikt voor he
 
   Abstract Scenario: de fields alias wordt gebruikt voor het vragen van één of meerdere 'verblijfplaats buitenland' velden
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                      |
-    | type                | RaadpleegMetBurgerservicenummer             |
-    | burgerservicenummer | 000000097                                   |
-    | fields              | verblijfplaatsBinnenland.verblijfadres.land |
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000097                       |
+    | fields              | <fields>                        |
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                      |
     | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |

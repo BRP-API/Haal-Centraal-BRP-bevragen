@@ -26,9 +26,8 @@ Rule: de standaard verblijfplaats field paden kan worden gebruikt door een consu
     | datumVan.langFormaat | 1 augustus 1986          |
 
     Voorbeelden:
-    | field                   | omschrijving       |
-    | datumVan                | verkorte field pad |
-    | verblijfplaats.datumVan | volledig field pad |
+    | field                   |
+    | verblijfplaats.datumVan |
 
   Scenario: consumer is geautoriseerd voor 'verblijfplaats buitenland' en vraagt het verblijfadres veld van een verblijfplaats
     Gegeven de consumer is geautoriseerd voor 'verblijfplaats binnenland' gegevens

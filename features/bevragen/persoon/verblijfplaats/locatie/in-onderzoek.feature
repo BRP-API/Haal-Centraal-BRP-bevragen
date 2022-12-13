@@ -2,7 +2,9 @@
 
 Functionaliteit: Persoon: verblijfplaats binnenland (locatie) velden zijn in onderzoek
 
-  Abstract Scenario: '<type>' is in onderzoek en datumVan, datumIngangGeldigheid en functieAdres wordt gevraagd
+Rule: Het in onderzoek zijn van een veld en bijbehorende datumIngangOnderzoek worden geleverd als het betreffende veld wordt gevraagd
+
+  Abstract Scenario: '<type>' is in onderzoek en alle adres velden excl. verblijfadres velden wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
     | naam                            | waarde                    |
     | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
@@ -30,13 +32,13 @@ Functionaliteit: Persoon: verblijfplaats binnenland (locatie) velden zijn in ond
     Voorbeelden:
     | aanduiding in onderzoek | type io | datumVan io | datumIngangGeldigheid io | functieAdres io | type                          |
     | 080000                  | true    | true        | true                     | true            | hele categorie verblijfplaats |
-    | 081000                  |         | true        |                          | true            |                               |
-    | 081010                  |         |             |                          | true            |                               |
-    | 081030                  |         | true        |                          |                 |                               |
+    | 081000                  |         | true        |                          | true            | hele groep adreshouding       |
+    | 081010                  |         |             |                          | true            | functie adres                 |
+    | 081030                  |         | true        |                          |                 | datum aanvang adreshouding    |
     | 081200                  | true    |             |                          |                 | hele groep locatie            |
     | 081210                  | true    |             |                          |                 | locatiebeschrijving           |
-    | 088500                  |         |             | true                     |                 |                               |
-    | 088510                  |         |             | true                     |                 |                               |
+    | 088500                  |         |             | true                     |                 | hele groep geldigheid         |
+    | 088510                  |         |             | true                     |                 | datum ingang geldigheid       |
 
   Abstract Scenario: 'datum aanvang adreshouding (10.30)' is in onderzoek, en wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
@@ -127,9 +129,9 @@ Functionaliteit: Persoon: verblijfplaats binnenland (locatie) velden zijn in ond
 
   Scenario: 'datum aanvang adreshouding (10.30)' is in onderzoek, maar wordt niet gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
-    | naam                            | waarde                    |
-    | aanduiding in onderzoek (83.10) | 081030 |
-    | datum ingang onderzoek (83.20)  | 20020701                  |
+    | naam                            | waarde   |
+    | aanduiding in onderzoek (83.10) | 081030   |
+    | datum ingang onderzoek (83.20)  | 20020701 |
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens
     | naam                        | waarde                      |
     | gemeentecode (92.10)        | 0518                        |
@@ -190,3 +192,36 @@ Functionaliteit: Persoon: verblijfplaats binnenland (locatie) velden zijn in ond
     | gba in onderzoek waarde |
     | 081000                  |
     | 081010                  |
+
+Rule: 'type' veld van 'verblijfplaats binnenland (locatie)' is in onderzoek als het identificerende gegeven van locatie ('locatiebeschrijving (12.10)') in onderzoek is
+
+  Abstract Scenario: '<type>' veld is in onderzoek en functieAdres wordt gevraagd
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    | naam                            | waarde                    |
+    | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
+    | datum ingang onderzoek (83.20)  | 20020701                  |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | naam                        | waarde                      |
+    | gemeentecode (92.10)        | 0518                        |
+    | locatiebeschrijving (12.10) | Woonboot bij de Grote Sloot |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | verblijfplaats.functieAdres     |
+    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
+    | naam | waarde |
+    | type | Adres  |
+    En heeft de 'verblijfplaats' de volgende 'inOnderzoek' gegevens
+    | naam                             | waarde            |
+    | type                             | true              |
+    | functieAdres                     | <functieAdres io> |
+    | datumIngangOnderzoek.type        | Datum             |
+    | datumIngangOnderzoek.datum       | 2002-07-01        |
+    | datumIngangOnderzoek.langFormaat | 1 juli 2002       |
+
+    Voorbeelden:
+    | aanduiding in onderzoek | functieAdres io | type                          |
+    | 080000                  | true            | hele categorie verblijfplaats |
+    | 081200                  |                 | hele groep locatie            |
+    | 081210                  |                 | locatiebeschrijving           |
