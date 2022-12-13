@@ -113,6 +113,34 @@ Functionaliteit: GBA : RNI-deelnemer voor geleverde gegevens
       | naam                | waarde    |
       | burgerservicenummer | 000000048 |
 
+    Scenario: Wel leveren RNI-deelnemer voor een categorie waarvan een gegeven door de proxy wordt gebruikt om een type te bepalen
+      Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende gegevens
+      | naam                  | waarde |
+      | voornamen (02.10)     | Peter  |
+      | geslachtsnaam (02.40) | Jansen |
+      En de persoon heeft de volgende 'verblijfplaats' gegevens
+      | naam                         | waarde                               |
+      | land (13.10)                 | 5010                                 |
+      | rni-deelnemer (88.10)        | 0201                                 |
+      | omschrijving verdrag (88.20) | Artikel 45 EU-Werkingsverdrag (VWEU) |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                                               |
+      | type                | RaadpleegMetBurgerservicenummer                      |
+      | burgerservicenummer | 000000036                                            |
+      | fields              | naam.voornamen,verblijfplaats.verblijfadres.postcode |
+      Dan heeft de response een persoon met de volgende 'naam' gegevens
+      | naam      | waarde |
+      | voornamen | Peter  |
+      En heeft de persoon de volgende 'verblijfplaats' gegevens
+      | naam       | waarde |
+      | land.code  | 5010   |
+      En heeft de persoon een 'rni' met de volgende gegevens
+      | naam                   | waarde                                            |
+      | deelnemer.code         | 0201                                              |
+      | deelnemer.omschrijving | Sociale Verzekeringsbank (inzake AOW, Anw en AKW) |
+      | omschrijvingVerdrag    | Artikel 45 EU-Werkingsverdrag (VWEU)              |
+      | categorie              | Verblijfplaats                                    |
+
     Scenario: Geen RNI-deelnemer gegevens leveren bij categorie 7 als indicatie geheim gevuld is.
       Gegeven de persoon met burgerservicenummer '000000061' heeft de volgende 'inschrijving' gegevens
       | naam                         | waarde                                      |
