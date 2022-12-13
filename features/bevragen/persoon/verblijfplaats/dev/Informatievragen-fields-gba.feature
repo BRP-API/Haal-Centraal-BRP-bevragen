@@ -54,22 +54,6 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide verblijfplaat
       | verblijfplaats.type                                                         |             |             |        |                |           | Woonboot in de Grotere Sloot |
       | verblijfplaats.verblijfadres                                                |             |             |        |                |           | Woonboot in de Grotere Sloot |
 
-  Rule: als met de alias verblijfplaatsBinnenland één of meerdere velden van verblijfplaatsBinnenland wordt gevraagd en er zijn geen waarden in de binnenlandsadres velden (dus ook geen standaardwaarden) dan wordt er geen verblijfplaats object teruggeleverd.
-
-    Scenario: met fields wordt gevraagd naar een adresveld bij een persoon zonder verblijfplaats m.b.v. de alias verblijfplaatsBinnenland
-      Gegeven de persoon met burgerservicenummer '000000590' heeft de volgende gegevens
-      | naam                  | waarde  |
-      | geslachtsnaam (02.40) | Groenen |
-      Als gba personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                              |
-      | type                | RaadpleegMetBurgerservicenummer                     |
-      | burgerservicenummer | 000000590                                           |
-      | fields              | burgerservicenummer,verblijfplaats.verblijfadres.straat |
-#      | fields              | burgerservicenummer,verblijfplaatsBinnenland.straat |
-      Dan heeft de response een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 000000590 |
-	  
   Rule: als verblijfplaats of één of meerdere velden van verblijfplaats wordt gevraagd dan worden de gevraagde velden geleverd aangevuld met de velden straat, locatiebeschrijving en land
     - dit geldt ongeacht of deze velden een standaardwaarde hebben of niet
     - alleen een consumer die geautoriseerd is voor buitenlandse adressen mag deze variant gebruiken
